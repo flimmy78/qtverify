@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -16,7 +16,7 @@
     <Keyword>Qt4VSv1.0</Keyword>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <OutputDirectory>..\RUNHOME\tmp\qtVerify\obj\</OutputDirectory>
     <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
     <CharacterSet>NotSet</CharacterSet>
@@ -24,7 +24,7 @@
     <IntermediateDirectory>..\RUNHOME\tmp\qtVerify\obj\</IntermediateDirectory>
     <PrimaryOutput>qtVerify</PrimaryOutput>
   </PropertyGroup>
-  <PropertyGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <OutputDirectory>..\RUNHOME\tmp\qtVerify\obj\</OutputDirectory>
     <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
     <CharacterSet>NotSet</CharacterSet>
@@ -34,29 +34,29 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings" />
-  <ImportGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;" Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists(&apos;$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props&apos;)" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
   </ImportGroup>
-  <ImportGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;" Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists(&apos;$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props&apos;)" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <OutDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">..\RUNHOME\tmp\qtVerify\obj\</OutDir>
-    <IntDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">..\RUNHOME\tmp\qtVerify\obj\</IntDir>
-    <TargetName Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">qtVerify</TargetName>
-    <IgnoreImportLibrary Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">true</IgnoreImportLibrary>
-    <PostBuildEventUseInBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">true</PostBuildEventUseInBuild>
-    <OutDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">..\RUNHOME\tmp\qtVerify\obj\</OutDir>
-    <IntDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">..\RUNHOME\tmp\qtVerify\obj\</IntDir>
-    <TargetName Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">qtVerify</TargetName>
-    <IgnoreImportLibrary Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">true</IgnoreImportLibrary>
-    <LinkIncremental Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">false</LinkIncremental>
-    <PostBuildEventUseInBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">true</PostBuildEventUseInBuild>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\RUNHOME\tmp\qtVerify\obj\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\RUNHOME\tmp\qtVerify\obj\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">qtVerify</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</IgnoreImportLibrary>
+    <PostBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</PostBuildEventUseInBuild>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\RUNHOME\tmp\qtVerify\obj\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\RUNHOME\tmp\qtVerify\obj\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">qtVerify</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <PostBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</PostBuildEventUseInBuild>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>&quot;c:\Qt\4.8.5\include\QtCore&quot;;&quot;c:\Qt\4.8.5\include\QtGui&quot;;&quot;c:\Qt\4.8.5\include\QtSql&quot;;&quot;c:\Qt\4.8.5\include&quot;;&quot;include&quot;;&quot;..\alg&quot;;&quot;c:\Qt\4.8.5\include\ActiveQt&quot;;&quot;..\RUNHOME\tmp\qtVerify\moc&quot;;&quot;..\RUNHOME\tmp\qtVerify\ui&quot;;c:\Qt\4.8.5\mkspecs\win32-msvc2010;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>"c:\Qt\4.8.5\include\QtCore";"c:\Qt\4.8.5\include\QtGui";"c:\Qt\4.8.5\include\QtSql";"c:\Qt\4.8.5\include";"include";"..\alg";"c:\Qt\4.8.5\include\ActiveQt";"..\RUNHOME\tmp\qtVerify\moc";"..\RUNHOME\tmp\qtVerify\ui";c:\Qt\4.8.5\mkspecs\win32-msvc2010;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zm200 -w34100 -w34189 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>..\RUNHOME\tmp\qtVerify\obj\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
@@ -74,9 +74,9 @@
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>f:\repos1\qtVerify\RUNHOME\lib\alg.lib;c:\Qt\4.8.5\lib\qaxserver.lib;c:\Qt\4.8.5\lib\qaxcontainerd.lib;c:\Qt\4.8.5\lib\QtSqld4.lib;c:\Qt\4.8.5\lib\QtGuid4.lib;c:\Qt\4.8.5\lib\QtCored4.lib;user32.lib;ole32.lib;oleaut32.lib;gdi32.lib;C:\Qt\4.8.5\lib\QtGui4.lib;C:\Qt\4.8.5\lib\QtCore4.lib;advapi32.lib;C:\Qt\4.8.5\lib\QtGuid4.lib;C:\Qt\4.8.5\lib\QtCored4.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>f:\repos1\qtVerify\RUNHOME\lib;f:\repos1\qtVerify\RUNHOME\bin;c:\Qt\4.8.5\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalOptions>&quot;/MANIFESTDEPENDENCY:type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos; processorArchitecture=&apos;*&apos;&quot; %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>f:\delusoft\trunk\qtverify\RUNHOME\lib\alg.lib;c:\Qt\4.8.5\lib\qaxserver.lib;c:\Qt\4.8.5\lib\qaxcontainerd.lib;c:\Qt\4.8.5\lib\QtSqld4.lib;c:\Qt\4.8.5\lib\QtGuid4.lib;c:\Qt\4.8.5\lib\QtCored4.lib;user32.lib;ole32.lib;oleaut32.lib;gdi32.lib;C:\Qt\4.8.5\lib\QtGui4.lib;C:\Qt\4.8.5\lib\QtCore4.lib;advapi32.lib;C:\Qt\4.8.5\lib\QtGuid4.lib;C:\Qt\4.8.5\lib\QtCored4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>f:\delusoft\trunk\qtverify\RUNHOME\lib;f:\delusoft\trunk\qtverify\RUNHOME\bin;c:\Qt\4.8.5\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
       <DataExecutionPrevention>true</DataExecutionPrevention>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreImportLibrary>true</IgnoreImportLibrary>
@@ -94,13 +94,13 @@
       <PreprocessorDefinitions>_CONSOLE;UNICODE;WIN32;WIN32;_AFXDLL;QT_DLL;QT_SQL_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_HAVE_MMX;QT_HAVE_3DNOW;QT_HAVE_SSE;QT_HAVE_MMXEXT;QT_HAVE_SSE2;QT_THREAD_SUPPORT;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <PostBuildEvent>
-      <Command>copy F:\repos1\qtVerify\RUNHOME\tmp\qtVerify\obj\qtVerify.exe F:\repos1\qtVerify\RUNHOME\bin &amp; copy .\language\qtVerify_zh.qm F:\repos1\qtVerify\RUNHOME\uif\i18n</Command>
-      <Message>copy F:\repos1\qtVerify\RUNHOME\tmp\qtVerify\obj\qtVerify.exe F:\repos1\qtVerify\RUNHOME\bin &amp; copy .\language\qtVerify_zh.qm F:\repos1\qtVerify\RUNHOME\uif\i18n</Message>
+      <Command>copy F:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\obj\qtVerify.exe F:\delusoft\trunk\qtverify\RUNHOME\bin &amp; copy .\language\qtVerify_zh.qm F:\delusoft\trunk\qtverify\RUNHOME\uif\i18n</Command>
+      <Message>copy F:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\obj\qtVerify.exe F:\delusoft\trunk\qtverify\RUNHOME\bin &amp; copy .\language\qtVerify_zh.qm F:\delusoft\trunk\qtverify\RUNHOME\uif\i18n</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>&quot;c:\Qt\4.8.5\include\QtCore&quot;;&quot;c:\Qt\4.8.5\include\QtGui&quot;;&quot;c:\Qt\4.8.5\include\QtSql&quot;;&quot;c:\Qt\4.8.5\include&quot;;&quot;include&quot;;&quot;..\alg&quot;;&quot;c:\Qt\4.8.5\include\ActiveQt&quot;;&quot;..\RUNHOME\tmp\qtVerify\moc&quot;;&quot;..\RUNHOME\tmp\qtVerify\ui&quot;;c:\Qt\4.8.5\mkspecs\win32-msvc2010;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>"c:\Qt\4.8.5\include\QtCore";"c:\Qt\4.8.5\include\QtGui";"c:\Qt\4.8.5\include\QtSql";"c:\Qt\4.8.5\include";"include";"..\alg";"c:\Qt\4.8.5\include\ActiveQt";"..\RUNHOME\tmp\qtVerify\moc";"..\RUNHOME\tmp\qtVerify\ui";c:\Qt\4.8.5\mkspecs\win32-msvc2010;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zm200 -w34100 -w34189 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>..\RUNHOME\tmp\qtVerify\obj\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
@@ -117,9 +117,9 @@
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>f:\repos1\qtVerify\RUNHOME\lib\alg.lib;c:\Qt\4.8.5\lib\qaxserver.lib;c:\Qt\4.8.5\lib\qaxcontainerd.lib;c:\Qt\4.8.5\lib\QtSql4.lib;c:\Qt\4.8.5\lib\QtGui4.lib;c:\Qt\4.8.5\lib\QtCore4.lib;user32.lib;ole32.lib;oleaut32.lib;gdi32.lib;C:\Qt\4.8.5\lib\QtGui4.lib;C:\Qt\4.8.5\lib\QtCore4.lib;advapi32.lib;C:\Qt\4.8.5\lib\QtGuid4.lib;C:\Qt\4.8.5\lib\QtCored4.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>f:\repos1\qtVerify\RUNHOME\lib;f:\repos1\qtVerify\RUNHOME\bin;c:\Qt\4.8.5\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalOptions>&quot;/MANIFESTDEPENDENCY:type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos; processorArchitecture=&apos;*&apos;&quot; %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>f:\delusoft\trunk\qtverify\RUNHOME\lib\alg.lib;c:\Qt\4.8.5\lib\qaxserver.lib;c:\Qt\4.8.5\lib\qaxcontainerd.lib;c:\Qt\4.8.5\lib\QtSql4.lib;c:\Qt\4.8.5\lib\QtGui4.lib;c:\Qt\4.8.5\lib\QtCore4.lib;user32.lib;ole32.lib;oleaut32.lib;gdi32.lib;C:\Qt\4.8.5\lib\QtGui4.lib;C:\Qt\4.8.5\lib\QtCore4.lib;advapi32.lib;C:\Qt\4.8.5\lib\QtGuid4.lib;C:\Qt\4.8.5\lib\QtCored4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>f:\delusoft\trunk\qtverify\RUNHOME\lib;f:\delusoft\trunk\qtverify\RUNHOME\bin;c:\Qt\4.8.5\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
       <DataExecutionPrevention>true</DataExecutionPrevention>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreImportLibrary>true</IgnoreImportLibrary>
@@ -138,8 +138,8 @@
       <PreprocessorDefinitions>_CONSOLE;UNICODE;WIN32;WIN32;_AFXDLL;QT_DLL;QT_NO_DEBUG;QT_SQL_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_HAVE_MMX;QT_HAVE_3DNOW;QT_HAVE_SSE;QT_HAVE_MMXEXT;QT_HAVE_SSE2;QT_THREAD_SUPPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <PostBuildEvent>
-      <Command>copy F:\repos1\qtVerify\RUNHOME\tmp\qtVerify\obj\qtVerify.exe F:\repos1\qtVerify\RUNHOME\bin &amp; copy .\language\qtVerify_zh.qm F:\repos1\qtVerify\RUNHOME\uif\i18n</Command>
-      <Message>copy F:\repos1\qtVerify\RUNHOME\tmp\qtVerify\obj\qtVerify.exe F:\repos1\qtVerify\RUNHOME\bin &amp; copy .\language\qtVerify_zh.qm F:\repos1\qtVerify\RUNHOME\uif\i18n</Message>
+      <Command>copy F:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\obj\qtVerify.exe F:\delusoft\trunk\qtverify\RUNHOME\bin &amp; copy .\language\qtVerify_zh.qm F:\delusoft\trunk\qtverify\RUNHOME\uif\i18n</Command>
+      <Message>copy F:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\obj\qtVerify.exe F:\delusoft\trunk\qtverify\RUNHOME\bin &amp; copy .\language\qtVerify_zh.qm F:\delusoft\trunk\qtverify\RUNHOME\uif\i18n</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -153,64 +153,64 @@
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="include\dbshow.h">
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe;include\dbshow.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include\QtSql&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;include&quot; -I&quot;..\alg&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;..\RUNHOME\tmp\qtVerify\moc&quot; -I&quot;..\RUNHOME\tmp\qtVerify\ui&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\dbshow.h -o f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_dbshow.cpp</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">MOC include\dbshow.h</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_dbshow.cpp;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe;include\dbshow.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include\QtSql&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;include&quot; -I&quot;..\alg&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;..\RUNHOME\tmp\qtVerify\moc&quot; -I&quot;..\RUNHOME\tmp\qtVerify\ui&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\dbshow.h -o f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_dbshow.cpp</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">MOC include\dbshow.h</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_dbshow.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\4.8.5\bin\moc.exe;include\dbshow.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I"c:\Qt\4.8.5\include\QtCore" -I"c:\Qt\4.8.5\include\QtGui" -I"c:\Qt\4.8.5\include\QtSql" -I"c:\Qt\4.8.5\include" -I"include" -I"..\alg" -I"c:\Qt\4.8.5\include\ActiveQt" -I"..\RUNHOME\tmp\qtVerify\moc" -I"..\RUNHOME\tmp\qtVerify\ui" -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\dbshow.h -o f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_dbshow.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MOC include\dbshow.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_dbshow.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\4.8.5\bin\moc.exe;include\dbshow.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I"c:\Qt\4.8.5\include\QtCore" -I"c:\Qt\4.8.5\include\QtGui" -I"c:\Qt\4.8.5\include\QtSql" -I"c:\Qt\4.8.5\include" -I"include" -I"..\alg" -I"c:\Qt\4.8.5\include\ActiveQt" -I"..\RUNHOME\tmp\qtVerify\moc" -I"..\RUNHOME\tmp\qtVerify\ui" -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\dbshow.h -o f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_dbshow.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MOC include\dbshow.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_dbshow.cpp;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="include\qextserialbase.h">
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe;include\qextserialbase.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include\QtSql&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;include&quot; -I&quot;..\alg&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;..\RUNHOME\tmp\qtVerify\moc&quot; -I&quot;..\RUNHOME\tmp\qtVerify\ui&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\qextserialbase.h -o f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_qextserialbase.cpp</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">MOC include\qextserialbase.h</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_qextserialbase.cpp;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe;include\qextserialbase.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include\QtSql&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;include&quot; -I&quot;..\alg&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;..\RUNHOME\tmp\qtVerify\moc&quot; -I&quot;..\RUNHOME\tmp\qtVerify\ui&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\qextserialbase.h -o f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_qextserialbase.cpp</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">MOC include\qextserialbase.h</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_qextserialbase.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\4.8.5\bin\moc.exe;include\qextserialbase.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I"c:\Qt\4.8.5\include\QtCore" -I"c:\Qt\4.8.5\include\QtGui" -I"c:\Qt\4.8.5\include\QtSql" -I"c:\Qt\4.8.5\include" -I"include" -I"..\alg" -I"c:\Qt\4.8.5\include\ActiveQt" -I"..\RUNHOME\tmp\qtVerify\moc" -I"..\RUNHOME\tmp\qtVerify\ui" -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\qextserialbase.h -o f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_qextserialbase.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MOC include\qextserialbase.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_qextserialbase.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\4.8.5\bin\moc.exe;include\qextserialbase.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I"c:\Qt\4.8.5\include\QtCore" -I"c:\Qt\4.8.5\include\QtGui" -I"c:\Qt\4.8.5\include\QtSql" -I"c:\Qt\4.8.5\include" -I"include" -I"..\alg" -I"c:\Qt\4.8.5\include\ActiveQt" -I"..\RUNHOME\tmp\qtVerify\moc" -I"..\RUNHOME\tmp\qtVerify\ui" -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\qextserialbase.h -o f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_qextserialbase.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MOC include\qextserialbase.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_qextserialbase.cpp;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="include\qextserialport.h">
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe;include\qextserialport.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include\QtSql&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;include&quot; -I&quot;..\alg&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;..\RUNHOME\tmp\qtVerify\moc&quot; -I&quot;..\RUNHOME\tmp\qtVerify\ui&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\qextserialport.h -o f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_qextserialport.cpp</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">MOC include\qextserialport.h</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_qextserialport.cpp;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe;include\qextserialport.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include\QtSql&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;include&quot; -I&quot;..\alg&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;..\RUNHOME\tmp\qtVerify\moc&quot; -I&quot;..\RUNHOME\tmp\qtVerify\ui&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\qextserialport.h -o f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_qextserialport.cpp</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">MOC include\qextserialport.h</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_qextserialport.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\4.8.5\bin\moc.exe;include\qextserialport.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I"c:\Qt\4.8.5\include\QtCore" -I"c:\Qt\4.8.5\include\QtGui" -I"c:\Qt\4.8.5\include\QtSql" -I"c:\Qt\4.8.5\include" -I"include" -I"..\alg" -I"c:\Qt\4.8.5\include\ActiveQt" -I"..\RUNHOME\tmp\qtVerify\moc" -I"..\RUNHOME\tmp\qtVerify\ui" -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\qextserialport.h -o f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_qextserialport.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MOC include\qextserialport.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_qextserialport.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\4.8.5\bin\moc.exe;include\qextserialport.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I"c:\Qt\4.8.5\include\QtCore" -I"c:\Qt\4.8.5\include\QtGui" -I"c:\Qt\4.8.5\include\QtSql" -I"c:\Qt\4.8.5\include" -I"include" -I"..\alg" -I"c:\Qt\4.8.5\include\ActiveQt" -I"..\RUNHOME\tmp\qtVerify\moc" -I"..\RUNHOME\tmp\qtVerify\ui" -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\qextserialport.h -o f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_qextserialport.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MOC include\qextserialport.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_qextserialport.cpp;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="include\qtverify.h">
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe;include\qtverify.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include\QtSql&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;include&quot; -I&quot;..\alg&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;..\RUNHOME\tmp\qtVerify\moc&quot; -I&quot;..\RUNHOME\tmp\qtVerify\ui&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\qtverify.h -o f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_qtverify.cpp</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">MOC include\qtverify.h</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_qtverify.cpp;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe;include\qtverify.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include\QtSql&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;include&quot; -I&quot;..\alg&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;..\RUNHOME\tmp\qtVerify\moc&quot; -I&quot;..\RUNHOME\tmp\qtVerify\ui&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\qtverify.h -o f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_qtverify.cpp</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">MOC include\qtverify.h</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_qtverify.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\4.8.5\bin\moc.exe;include\qtverify.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I"c:\Qt\4.8.5\include\QtCore" -I"c:\Qt\4.8.5\include\QtGui" -I"c:\Qt\4.8.5\include\QtSql" -I"c:\Qt\4.8.5\include" -I"include" -I"..\alg" -I"c:\Qt\4.8.5\include\ActiveQt" -I"..\RUNHOME\tmp\qtVerify\moc" -I"..\RUNHOME\tmp\qtVerify\ui" -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\qtverify.h -o f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_qtverify.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MOC include\qtverify.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_qtverify.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\4.8.5\bin\moc.exe;include\qtverify.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I"c:\Qt\4.8.5\include\QtCore" -I"c:\Qt\4.8.5\include\QtGui" -I"c:\Qt\4.8.5\include\QtSql" -I"c:\Qt\4.8.5\include" -I"include" -I"..\alg" -I"c:\Qt\4.8.5\include\ActiveQt" -I"..\RUNHOME\tmp\qtVerify\moc" -I"..\RUNHOME\tmp\qtVerify\ui" -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\qtverify.h -o f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_qtverify.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MOC include\qtverify.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_qtverify.cpp;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="include\serialportset.h">
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe;include\serialportset.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include\QtSql&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;include&quot; -I&quot;..\alg&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;..\RUNHOME\tmp\qtVerify\moc&quot; -I&quot;..\RUNHOME\tmp\qtVerify\ui&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\serialportset.h -o f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_serialportset.cpp</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">MOC include\serialportset.h</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_serialportset.cpp;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe;include\serialportset.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include\QtSql&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;include&quot; -I&quot;..\alg&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;..\RUNHOME\tmp\qtVerify\moc&quot; -I&quot;..\RUNHOME\tmp\qtVerify\ui&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\serialportset.h -o f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_serialportset.cpp</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">MOC include\serialportset.h</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_serialportset.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\4.8.5\bin\moc.exe;include\serialportset.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I"c:\Qt\4.8.5\include\QtCore" -I"c:\Qt\4.8.5\include\QtGui" -I"c:\Qt\4.8.5\include\QtSql" -I"c:\Qt\4.8.5\include" -I"include" -I"..\alg" -I"c:\Qt\4.8.5\include\ActiveQt" -I"..\RUNHOME\tmp\qtVerify\moc" -I"..\RUNHOME\tmp\qtVerify\ui" -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\serialportset.h -o f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_serialportset.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MOC include\serialportset.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_serialportset.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\4.8.5\bin\moc.exe;include\serialportset.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I"c:\Qt\4.8.5\include\QtCore" -I"c:\Qt\4.8.5\include\QtGui" -I"c:\Qt\4.8.5\include\QtSql" -I"c:\Qt\4.8.5\include" -I"include" -I"..\alg" -I"c:\Qt\4.8.5\include\ActiveQt" -I"..\RUNHOME\tmp\qtVerify\moc" -I"..\RUNHOME\tmp\qtVerify\ui" -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\serialportset.h -o f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_serialportset.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MOC include\serialportset.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_serialportset.cpp;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="include\win_qextserialport.h">
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe;include\win_qextserialport.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include\QtSql&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;include&quot; -I&quot;..\alg&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;..\RUNHOME\tmp\qtVerify\moc&quot; -I&quot;..\RUNHOME\tmp\qtVerify\ui&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\win_qextserialport.h -o f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_win_qextserialport.cpp</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">MOC include\win_qextserialport.h</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_win_qextserialport.cpp;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe;include\win_qextserialport.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include\QtSql&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;include&quot; -I&quot;..\alg&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;..\RUNHOME\tmp\qtVerify\moc&quot; -I&quot;..\RUNHOME\tmp\qtVerify\ui&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\win_qextserialport.h -o f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_win_qextserialport.cpp</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">MOC include\win_qextserialport.h</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\moc\moc_win_qextserialport.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\4.8.5\bin\moc.exe;include\win_qextserialport.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I"c:\Qt\4.8.5\include\QtCore" -I"c:\Qt\4.8.5\include\QtGui" -I"c:\Qt\4.8.5\include\QtSql" -I"c:\Qt\4.8.5\include" -I"include" -I"..\alg" -I"c:\Qt\4.8.5\include\ActiveQt" -I"..\RUNHOME\tmp\qtVerify\moc" -I"..\RUNHOME\tmp\qtVerify\ui" -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\win_qextserialport.h -o f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_win_qextserialport.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MOC include\win_qextserialport.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_win_qextserialport.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\4.8.5\bin\moc.exe;include\win_qextserialport.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I"c:\Qt\4.8.5\include\QtCore" -I"c:\Qt\4.8.5\include\QtGui" -I"c:\Qt\4.8.5\include\QtSql" -I"c:\Qt\4.8.5\include" -I"include" -I"..\alg" -I"c:\Qt\4.8.5\include\ActiveQt" -I"..\RUNHOME\tmp\qtVerify\moc" -I"..\RUNHOME\tmp\qtVerify\ui" -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\win_qextserialport.h -o f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_win_qextserialport.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MOC include\win_qextserialport.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\moc\moc_win_qextserialport.cpp;%(Outputs)</Outputs>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -221,10 +221,10 @@
     <ClCompile Include="..\RUNHOME\tmp\qtVerify\moc\moc_serialportset.cpp" />
     <ClCompile Include="..\RUNHOME\tmp\qtVerify\moc\moc_win_qextserialport.cpp" />
     <ClCompile Include="debug\qrc_qtverify.cpp">
-      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="release\qrc_qtverify.cpp">
-      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClInclude Include="..\RUNHOME\tmp\qtVerify\ui\ui_dbshow.h" />
     <ClInclude Include="..\RUNHOME\tmp\qtVerify\ui\ui_qtverify.h" />
@@ -237,49 +237,49 @@
   <ItemGroup>
     <CustomBuild Include="ui\dbshow.ui">
       <FileType>Document</FileType>
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\uic.exe;ui\dbshow.ui;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\uic.exe ui\dbshow.ui -o f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\ui\ui_dbshow.h</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">UIC ui\dbshow.ui</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\ui\ui_dbshow.h;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\uic.exe;ui\dbshow.ui;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\uic.exe ui\dbshow.ui -o f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\ui\ui_dbshow.h</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">UIC ui\dbshow.ui</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\ui\ui_dbshow.h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\4.8.5\bin\uic.exe;ui\dbshow.ui;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\4.8.5\bin\uic.exe ui\dbshow.ui -o f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\ui\ui_dbshow.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">UIC ui\dbshow.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\ui\ui_dbshow.h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\4.8.5\bin\uic.exe;ui\dbshow.ui;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\4.8.5\bin\uic.exe ui\dbshow.ui -o f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\ui\ui_dbshow.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">UIC ui\dbshow.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\ui\ui_dbshow.h;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="ui\qtverify.ui">
       <FileType>Document</FileType>
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\uic.exe;ui\qtverify.ui;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\uic.exe ui\qtverify.ui -o f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\ui\ui_qtverify.h</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">UIC ui\qtverify.ui</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\ui\ui_qtverify.h;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\uic.exe;ui\qtverify.ui;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\uic.exe ui\qtverify.ui -o f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\ui\ui_qtverify.h</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">UIC ui\qtverify.ui</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\ui\ui_qtverify.h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\4.8.5\bin\uic.exe;ui\qtverify.ui;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\4.8.5\bin\uic.exe ui\qtverify.ui -o f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\ui\ui_qtverify.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">UIC ui\qtverify.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\ui\ui_qtverify.h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\4.8.5\bin\uic.exe;ui\qtverify.ui;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\4.8.5\bin\uic.exe ui\qtverify.ui -o f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\ui\ui_qtverify.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">UIC ui\qtverify.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\ui\ui_qtverify.h;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="ui\serialportset.ui">
       <FileType>Document</FileType>
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\uic.exe;ui\serialportset.ui;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\uic.exe ui\serialportset.ui -o f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\ui\ui_serialportset.h</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">UIC ui\serialportset.ui</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\ui\ui_serialportset.h;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\uic.exe;ui\serialportset.ui;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\uic.exe ui\serialportset.ui -o f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\ui\ui_serialportset.h</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">UIC ui\serialportset.ui</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">f:\repos1\qtVerify\RUNHOME\tmp\qtVerify\ui\ui_serialportset.h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\4.8.5\bin\uic.exe;ui\serialportset.ui;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\4.8.5\bin\uic.exe ui\serialportset.ui -o f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\ui\ui_serialportset.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">UIC ui\serialportset.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\ui\ui_serialportset.h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\4.8.5\bin\uic.exe;ui\serialportset.ui;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\4.8.5\bin\uic.exe ui\serialportset.ui -o f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\ui\ui_serialportset.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">UIC ui\serialportset.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">f:\delusoft\trunk\qtverify\RUNHOME\tmp\qtVerify\ui\ui_serialportset.h;%(Outputs)</Outputs>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="qtverify.qrc">
       <FileType>Document</FileType>
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\rcc.exe;qtverify.qrc;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\rcc.exe -name qtverify qtverify.qrc -o debug\qrc_qtverify.cpp</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">RCC qtverify.qrc</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">debug\qrc_qtverify.cpp;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\rcc.exe;qtverify.qrc;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\rcc.exe -name qtverify qtverify.qrc -o release\qrc_qtverify.cpp</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">RCC qtverify.qrc</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">release\qrc_qtverify.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\4.8.5\bin\rcc.exe;qtverify.qrc;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\4.8.5\bin\rcc.exe -name qtverify qtverify.qrc -o debug\qrc_qtverify.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">RCC qtverify.qrc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">debug\qrc_qtverify.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\4.8.5\bin\rcc.exe;qtverify.qrc;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\4.8.5\bin\rcc.exe -name qtverify qtverify.qrc -o release\qrc_qtverify.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">RCC qtverify.qrc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">release\qrc_qtverify.cpp;%(Outputs)</Outputs>
     </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

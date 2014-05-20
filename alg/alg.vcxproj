@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -16,7 +16,7 @@
     <Keyword>Qt4VSv1.0</Keyword>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <OutputDirectory>..\RUNHOME\tmp\alg\obj\</OutputDirectory>
     <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
     <CharacterSet>NotSet</CharacterSet>
@@ -24,7 +24,7 @@
     <IntermediateDirectory>debug\</IntermediateDirectory>
     <PrimaryOutput>alg</PrimaryOutput>
   </PropertyGroup>
-  <PropertyGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <OutputDirectory>..\RUNHOME\tmp\alg\obj\</OutputDirectory>
     <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
     <CharacterSet>NotSet</CharacterSet>
@@ -34,29 +34,29 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings" />
-  <ImportGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;" Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists(&apos;$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props&apos;)" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
   </ImportGroup>
-  <ImportGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;" Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists(&apos;$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props&apos;)" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <OutDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">..\RUNHOME\tmp\alg\obj\</OutDir>
-    <IntDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">debug\</IntDir>
-    <TargetName Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">alg</TargetName>
-    <IgnoreImportLibrary Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">true</IgnoreImportLibrary>
-    <PostBuildEventUseInBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">true</PostBuildEventUseInBuild>
-    <OutDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">..\RUNHOME\tmp\alg\obj\</OutDir>
-    <IntDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">release\</IntDir>
-    <TargetName Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">alg</TargetName>
-    <IgnoreImportLibrary Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">true</IgnoreImportLibrary>
-    <LinkIncremental Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">false</LinkIncremental>
-    <PostBuildEventUseInBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">true</PostBuildEventUseInBuild>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\RUNHOME\tmp\alg\obj\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">alg</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</IgnoreImportLibrary>
+    <PostBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</PostBuildEventUseInBuild>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\RUNHOME\tmp\alg\obj\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">alg</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <PostBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</PostBuildEventUseInBuild>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>&quot;c:\Qt\4.8.5\include\QtCore&quot;;&quot;c:\Qt\4.8.5\include\QtGui&quot;;&quot;c:\Qt\4.8.5\include&quot;;&quot;.&quot;;&quot;c:\Qt\4.8.5\include\ActiveQt&quot;;&quot;debug&quot;;c:\Qt\4.8.5\mkspecs\win32-msvc2010;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>"c:\Qt\4.8.5\include\QtCore";"c:\Qt\4.8.5\include\QtGui";"c:\Qt\4.8.5\include";".";"c:\Qt\4.8.5\include\ActiveQt";"debug";c:\Qt\4.8.5\mkspecs\win32-msvc2010;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zm200 -w34100 -w34189 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>debug\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
@@ -93,13 +93,13 @@
       <PreprocessorDefinitions>_CONSOLE;UNICODE;WIN32;WIN32;_AFXDLL;QT_DLL;QT_GUI_LIB;QT_CORE_LIB;QT_HAVE_MMX;QT_HAVE_3DNOW;QT_HAVE_SSE;QT_HAVE_MMXEXT;QT_HAVE_SSE2;QT_THREAD_SUPPORT;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <PostBuildEvent>
-      <Command>copy F:\repos1\qtVerify\RUNHOME\tmp\alg\obj\alg.lib F:\repos1\qtVerify\RUNHOME\lib &amp; copy F:\repos1\qtVerify\RUNHOME\tmp\alg\obj\alg.dll F:\repos1\qtVerify\RUNHOME\dll</Command>
-      <Message>copy F:\repos1\qtVerify\RUNHOME\tmp\alg\obj\alg.lib F:\repos1\qtVerify\RUNHOME\lib &amp; copy F:\repos1\qtVerify\RUNHOME\tmp\alg\obj\alg.dll F:\repos1\qtVerify\RUNHOME\dll</Message>
+      <Command>copy F:\delusoft\trunk\qtverify\RUNHOME\tmp\alg\obj\alg.lib F:\delusoft\trunk\qtverify\RUNHOME\lib &amp; copy F:\delusoft\trunk\qtverify\RUNHOME\tmp\alg\obj\alg.dll F:\delusoft\trunk\qtverify\RUNHOME\dll</Command>
+      <Message>copy F:\delusoft\trunk\qtverify\RUNHOME\tmp\alg\obj\alg.lib F:\delusoft\trunk\qtverify\RUNHOME\lib &amp; copy F:\delusoft\trunk\qtverify\RUNHOME\tmp\alg\obj\alg.dll F:\delusoft\trunk\qtverify\RUNHOME\dll</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>&quot;c:\Qt\4.8.5\include\QtCore&quot;;&quot;c:\Qt\4.8.5\include\QtGui&quot;;&quot;c:\Qt\4.8.5\include&quot;;&quot;.&quot;;&quot;c:\Qt\4.8.5\include\ActiveQt&quot;;&quot;release&quot;;c:\Qt\4.8.5\mkspecs\win32-msvc2010;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>"c:\Qt\4.8.5\include\QtCore";"c:\Qt\4.8.5\include\QtGui";"c:\Qt\4.8.5\include";".";"c:\Qt\4.8.5\include\ActiveQt";"release";c:\Qt\4.8.5\mkspecs\win32-msvc2010;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zm200 -w34100 -w34189 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>release\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
@@ -136,8 +136,8 @@
       <PreprocessorDefinitions>_CONSOLE;UNICODE;WIN32;WIN32;_AFXDLL;QT_DLL;QT_NO_DEBUG;QT_GUI_LIB;QT_CORE_LIB;QT_HAVE_MMX;QT_HAVE_3DNOW;QT_HAVE_SSE;QT_HAVE_MMXEXT;QT_HAVE_SSE2;QT_THREAD_SUPPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <PostBuildEvent>
-      <Command>copy F:\repos1\qtVerify\RUNHOME\tmp\alg\obj\alg.lib F:\repos1\qtVerify\RUNHOME\lib &amp; copy F:\repos1\qtVerify\RUNHOME\tmp\alg\obj\alg.dll F:\repos1\qtVerify\RUNHOME\dll</Command>
-      <Message>copy F:\repos1\qtVerify\RUNHOME\tmp\alg\obj\alg.lib F:\repos1\qtVerify\RUNHOME\lib &amp; copy F:\repos1\qtVerify\RUNHOME\tmp\alg\obj\alg.dll F:\repos1\qtVerify\RUNHOME\dll</Message>
+      <Command>copy F:\delusoft\trunk\qtverify\RUNHOME\tmp\alg\obj\alg.lib F:\delusoft\trunk\qtverify\RUNHOME\lib &amp; copy F:\delusoft\trunk\qtverify\RUNHOME\tmp\alg\obj\alg.dll F:\delusoft\trunk\qtverify\RUNHOME\dll</Command>
+      <Message>copy F:\delusoft\trunk\qtverify\RUNHOME\tmp\alg\obj\alg.lib F:\delusoft\trunk\qtverify\RUNHOME\lib &amp; copy F:\delusoft\trunk\qtverify\RUNHOME\tmp\alg\obj\alg.dll F:\delusoft\trunk\qtverify\RUNHOME\dll</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
