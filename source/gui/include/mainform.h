@@ -23,11 +23,11 @@ public:
 	DbSqlite *dbsqliteobj;
 
 public slots:
-	void slotSerialPortSet();
-	void slotDBShow_MySql();
-	void slotDBShow_Sqlite();
-	void slotQueryExcel();
-	void on_btnStart_Clicked();
+	void on_action_spset_triggered();
+	void on_action_mysql_triggered();
+	void on_action_sqlite_triggered();
+	void on_action_queryExcel_triggered();
+	void on_btnStart_clicked();
 	void on_btnSave_clicked();
 
 private:

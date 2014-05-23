@@ -210,22 +210,5 @@
  <resources>
   <include location="../qtverify.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>btnExit</sender>
-   <signal>clicked()</signal>
-   <receiver>qMainFormClass</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>639</x>
-     <y>461</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>368</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

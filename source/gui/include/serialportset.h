@@ -14,7 +14,7 @@ public:
 	SerialPortSet(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~SerialPortSet();
 
-	void anyfunc();
+	void sp_anyfunc();
 
 public slots:
 	
@@ -25,9 +25,9 @@ private:
 
 private slots:
 	void readMyCom();
-	void on_openMyComBtn_clicked();
-	void on_closeMyComBtn_clicked();
-	void on_sendMsgBtn_clicked();
+	void on_btnOpenCom_clicked();
+	void on_btnCloseCom_clicked();
+	void on_btnSendMsg_clicked();
 };
 
 #endif // SERIALPORTSET_H

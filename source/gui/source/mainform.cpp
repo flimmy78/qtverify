@@ -14,13 +14,13 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	dbmysqlobj = new DbMySql();
 	dbsqliteobj = new DbSqlite();
 
-//  connect(ui.btnExit, SIGNAL(clicked()), this, SLOT(close()));
-	connect(ui.btnSave, SIGNAL(clicked()), this, SLOT(on_btnSave_clicked()));
-	connect(ui.btnStart, SIGNAL(clicked()), this, SLOT(on_btnStart_Clicked()));
-	connect(ui.action_spset, SIGNAL(triggered()), this, SLOT(slotSerialPortSet()));
-	connect(ui.action_mysql, SIGNAL(triggered()), this, SLOT(slotDBShow_MySql()));
-	connect(ui.action_sqlite, SIGNAL(triggered()), this, SLOT(slotDBShow_Sqlite()));
-	connect(ui.action_queryExcel, SIGNAL(triggered()), this, SLOT(slotQueryExcel()));
+	connect(ui.btnExit, SIGNAL(clicked()), this, SLOT(close()));
+// 	connect(ui.btnSave, SIGNAL(clicked()), this, SLOT(on_btnSave_clicked()));
+// 	connect(ui.btnStart, SIGNAL(clicked()), this, SLOT(on_btnStart_clicked()));
+// 	connect(ui.action_spset, SIGNAL(triggered()), this, SLOT(on_action_spset_triggered()));
+// 	connect(ui.action_mysql, SIGNAL(triggered()), this, SLOT(on_action_mysql_triggered()));
+// 	connect(ui.action_sqlite, SIGNAL(triggered()), this, SLOT(on_action_sqlite_triggered()));
+// 	connect(ui.action_queryExcel, SIGNAL(triggered()), this, SLOT(on_action_queryExcel_triggered()));
 	
 }
 
@@ -29,28 +29,28 @@ MainForm::~MainForm()
 
 }
 
-void MainForm::slotSerialPortSet()
+void MainForm::on_action_spset_triggered()
 {
 //  QMessageBox::warning(this, "title", "you clicked");	
 	spobj->show();
 }
 
-void MainForm::slotDBShow_MySql()
+void MainForm::on_action_mysql_triggered()
 {
 	dbmysqlobj->show();
 }
 
-void MainForm::slotDBShow_Sqlite()
+void MainForm::on_action_sqlite_triggered()
 {
 	dbsqliteobj->show();
 }
 
-void MainForm::on_btnStart_Clicked()
+void MainForm::on_btnStart_clicked()
 {
 	m_algobj->calc(2.0, 5.6);
 }
 
-void MainForm::slotQueryExcel()
+void MainForm::on_action_queryExcel_triggered()
 {
 	QAxObject *excel = NULL;
 	QAxObject *workbooks = NULL;
@@ -85,5 +85,5 @@ void MainForm::slotQueryExcel()
 
 void MainForm::on_btnSave_clicked()
 {
-	spobj->anyfunc();
+	spobj->sp_anyfunc();
 }

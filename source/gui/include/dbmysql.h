@@ -26,8 +26,8 @@ private:
 	Ui::DbMySqlClass dbmysqlui;
 
 private slots:
-	void slotConnectMySqlDataBase();
-	void slotQueryData();
+	void on_btnConnect_clicked();
+	void on_btnQuery_clicked();
 
 };
 

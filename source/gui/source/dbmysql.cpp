@@ -10,10 +10,10 @@ DbMySql::DbMySql(QWidget *parent, Qt::WFlags flags)
 {
 	dbmysqlui.setupUi(this);
 
-	connect(dbmysqlui.btnConnect, SIGNAL(clicked()), this, SLOT(slotConnectMySqlDataBase()));
-	connect(dbmysqlui.btnQuery, SIGNAL(clicked()), this, SLOT(slotQueryData()));
-	dbmysqlui.btnQuery->setEnabled(false);
+// 	connect(dbmysqlui.btnConnect, SIGNAL(clicked()), this, SLOT(on_btnConnect_clicked()));
+// 	connect(dbmysqlui.btnQuery, SIGNAL(clicked()), this, SLOT(on_btnQuery_clicked()));
 
+	dbmysqlui.btnQuery->setEnabled(false);
 }
 
 DbMySql::~DbMySql()
@@ -21,7 +21,7 @@ DbMySql::~DbMySql()
 
 }
 
-void DbMySql::slotConnectMySqlDataBase()
+void DbMySql::on_btnConnect_clicked()
 {
 	db = QSqlDatabase::addDatabase("QMYSQL"); // 使用mysql数据库驱动 
 	db.setHostName("localhost");
@@ -42,7 +42,7 @@ void DbMySql::slotConnectMySqlDataBase()
 	}
 }
 
-void DbMySql::slotQueryData()
+void DbMySql::on_btnQuery_clicked()
 {
 	QSqlQuery query; // 新建一个查询的实例
 	if(query.exec("select * from employee")) // 尝试列出 employee 表的所有记录

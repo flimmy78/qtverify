@@ -7,6 +7,10 @@ SerialPortSet::SerialPortSet(QWidget *parent, Qt::WFlags flags)
 {
 	spsetui.setupUi(this);
 
+// 	connect(spsetui.btnOpenCom, SIGNAL(clicked()), this, SLOT(on_btnOpenCom_clicked()));
+// 	connect(spsetui.btnCloseCom, SIGNAL(clicked()), this, SLOT(on_btnCloseCom_clicked()));
+// 	connect(spsetui.btnSendMsg, SIGNAL(clicked()), this, SLOT(on_btnSendMsg_clicked()));
+
 	spsetui.btnCloseCom->setEnabled(false); //开始“关闭串口”按钮不可用
 	spsetui.btnSendMsg->setEnabled(false); //开始“发送数据”按钮不可用
 }
@@ -16,13 +20,13 @@ SerialPortSet::~SerialPortSet()
 
 }
 
-void SerialPortSet::anyfunc()
+void SerialPortSet::sp_anyfunc()
 {
-	QMessageBox::information(this, "SerialPortSet", "anyfunc", "Ok", "Cancel");	
-	qDebug("%s, %d, SerialPortSet::anyfunc \n", __FILE__, __LINE__);
+	QMessageBox::information(this, "SerialPortSet", "sp_anyfunc", "Ok", "Cancel");	
+	qDebug("%s, %d, SerialPortSet::sp_anyfunc \n", __FILE__, __LINE__);
 }
 
-void SerialPortSet::on_openMyComBtn_clicked()
+void SerialPortSet::on_btnOpenCom_clicked()
 {
 	struct PortSettings myComSetting = {BAUD9600,DATA_8,PAR_NONE,STOP_1,FLOW_OFF,500};//定义一个结构体，用来存放串口各个参数
 	myCom = new Win_QextSerialPort("com1",myComSetting,QextSerialBase::EventDriven);//定义串口对象，并传递参数，在构造函数里对其进行初始化
@@ -34,7 +38,7 @@ void SerialPortSet::on_openMyComBtn_clicked()
 	spsetui.btnSendMsg->setEnabled(true);	//打开串口后“发送数据”按钮可用
 }
 
-void SerialPortSet::on_closeMyComBtn_clicked()
+void SerialPortSet::on_btnCloseCom_clicked()
 {
 	myCom->close(); //关闭串口，该函数在win_qextserialport.cpp文件中定义
 
@@ -43,7 +47,7 @@ void SerialPortSet::on_closeMyComBtn_clicked()
 	spsetui.btnSendMsg->setEnabled(false); //关闭串口后“发送数据”按钮不可用
 }
 
-void SerialPortSet::on_sendMsgBtn_clicked()
+void SerialPortSet::on_btnSendMsg_clicked()
 {
 	myCom->write(spsetui.lineEditSendMsg->text().toAscii());//以ASCII码形式将行编辑框中的数据写入串口
 	spsetui.textBrowserRecMsg->insertPlainText("sp data is :\n");
