@@ -24,10 +24,11 @@ private:
 	Win_QextSerialPort *myCom;
 
 private slots:
-	void readMyCom();
+	void slotReadMyCom();
 	void on_btnOpenCom_clicked();
 	void on_btnCloseCom_clicked();
 	void on_btnSendMsg_clicked();
+	void on_btnClearMsg_clicked();
 };
 
 #endif // SERIALPORTSET_H
