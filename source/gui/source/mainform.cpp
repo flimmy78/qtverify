@@ -3,47 +3,54 @@
 
 #include "mainform.h"
 
-qtVerify::qtVerify(QWidget *parent, Qt::WFlags flags)
+MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
 {
 	ui.setupUi(this);
-	ui.pushButton_Exit->setFlat(true);
+	ui.btnExit->setFlat(true);
 
 	m_algobj = new alg();
  	spobj = new SerialPortSet();
-	dbshowobj = new DbShow();
+	dbmysqlobj = new DbMySql();
+	dbsqliteobj = new DbSqlite();
 
-//  connect(ui.pushButton_Exit, SIGNAL(clicked()), this, SLOT(close()));
-	connect(ui.pushButton_Save, SIGNAL(clicked()), this, SLOT(on_pushButton_Save_clicked()));
-	connect(ui.pushButton_Start, SIGNAL(clicked()), this, SLOT(slotCalc()));
+//  connect(ui.btnExit, SIGNAL(clicked()), this, SLOT(close()));
+	connect(ui.btnSave, SIGNAL(clicked()), this, SLOT(on_btnSave_clicked()));
+	connect(ui.btnStart, SIGNAL(clicked()), this, SLOT(on_btnStart_Clicked()));
 	connect(ui.action_spset, SIGNAL(triggered()), this, SLOT(slotSerialPortSet()));
-	connect(ui.action_database, SIGNAL(triggered()), this, SLOT(slotDBShow()));
-	connect(ui.action_dataquery, SIGNAL(triggered()), this, SLOT(slotDataQuery()));
+	connect(ui.action_mysql, SIGNAL(triggered()), this, SLOT(slotDBShow_MySql()));
+	connect(ui.action_sqlite, SIGNAL(triggered()), this, SLOT(slotDBShow_Sqlite()));
+	connect(ui.action_queryExcel, SIGNAL(triggered()), this, SLOT(slotQueryExcel()));
 	
 }
 
-qtVerify::~qtVerify()
+MainForm::~MainForm()
 {
 
 }
 
-void qtVerify::slotSerialPortSet()
+void MainForm::slotSerialPortSet()
 {
 //  QMessageBox::warning(this, "title", "you clicked");	
 	spobj->show();
 }
 
-void qtVerify::slotDBShow()
+void MainForm::slotDBShow_MySql()
 {
-	dbshowobj->show();
+	dbmysqlobj->show();
 }
 
-void qtVerify::slotCalc()
+void MainForm::slotDBShow_Sqlite()
+{
+	dbsqliteobj->show();
+}
+
+void MainForm::on_btnStart_Clicked()
 {
 	m_algobj->calc(2.0, 5.6);
 }
 
-void qtVerify::slotDataQuery()
+void MainForm::slotQueryExcel()
 {
 	QAxObject *excel = NULL;
 	QAxObject *workbooks = NULL;
@@ -76,7 +83,7 @@ void qtVerify::slotDataQuery()
 	}
 }
 
-void qtVerify::on_pushButton_Save_clicked()
+void MainForm::on_btnSave_clicked()
 {
 	spobj->anyfunc();
 }

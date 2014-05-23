@@ -2,26 +2,26 @@
 #include <QtGui/QDateTimeEdit>
 #include <QtGui/QTextEdit>
 
-#include "dbshow.h"
+#include "dbmysql.h"
 
 
-DbShow::DbShow(QWidget *parent, Qt::WFlags flags)
+DbMySql::DbMySql(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
-	dbshowui.setupUi(this);
+	dbmysqlui.setupUi(this);
 
-	connect(dbshowui.conMySqlBtn, SIGNAL(clicked()), this, SLOT(slotConnectMySqlDataBase()));
-	connect(dbshowui.QueryBtn, SIGNAL(clicked()), this, SLOT(slotQueryData()));
-	dbshowui.QueryBtn->setEnabled(false);
+	connect(dbmysqlui.btnConnect, SIGNAL(clicked()), this, SLOT(slotConnectMySqlDataBase()));
+	connect(dbmysqlui.btnQuery, SIGNAL(clicked()), this, SLOT(slotQueryData()));
+	dbmysqlui.btnQuery->setEnabled(false);
 
 }
 
-DbShow::~DbShow()
+DbMySql::~DbMySql()
 {
 
 }
 
-void DbShow::slotConnectMySqlDataBase()
+void DbMySql::slotConnectMySqlDataBase()
 {
 	db = QSqlDatabase::addDatabase("QMYSQL"); // 使用mysql数据库驱动 
 	db.setHostName("localhost");
@@ -33,16 +33,16 @@ void DbShow::slotConnectMySqlDataBase()
 	if(ok) // 这里用xopens已经成功连上数据库
 	{
 		QMessageBox::information(this, "DbShow", "connect mysql database success !", "Ok", "Cancel");	
-		dbshowui.QueryBtn->setEnabled(true);
+		dbmysqlui.btnQuery->setEnabled(true);
 	}
 	else
 	{
 		QMessageBox::information(this, "DbShow", "connect mysql database failed !", "Ok", "Cancel");	
-		dbshowui.QueryBtn->setEnabled(false);
+		dbmysqlui.btnQuery->setEnabled(false);
 	}
 }
 
-void DbShow::slotQueryData()
+void DbMySql::slotQueryData()
 {
 	QSqlQuery query; // 新建一个查询的实例
 	if(query.exec("select * from employee")) // 尝试列出 employee 表的所有记录
@@ -59,9 +59,9 @@ void DbShow::slotQueryData()
 			numRows = query.at() + 1;
 		}
 		QString id, lname, fname, phone; QDateTime dob; 
-		dbshowui.display->append("==========================================="); 
-		dbshowui.display->append(QString::fromLocal8Bit(" id | 姓名 | 生日 | 电话")); 
-		dbshowui.display->append("--------------------------------------");
+		dbmysqlui.display->append("==========================================="); 
+		dbmysqlui.display->append(QString::fromLocal8Bit(" id | 姓名 | 生日 | 电话")); 
+		dbmysqlui.display->append("--------------------------------------");
 		while(query.next())// 定位结果到下一条记录
 		{ 
 			id = query.value(0).toString();
@@ -70,14 +70,14 @@ void DbShow::slotQueryData()
 			dob = query.value(3).toDateTime();
 			phone = QString::fromLocal8Bit(query.value(4).toByteArray());
 			QString result = id + " " + fname + lname + " " + (dob.toString()) + " "+phone;
-			dbshowui.display->append(result); 
+			dbmysqlui.display->append(result); 
 		}
-		dbshowui.display->append("============================================");
-		dbshowui.display->append(QString("totally %1 rows").arg( numRows) );
+		dbmysqlui.display->append("============================================");
+		dbmysqlui.display->append(QString("totally %1 rows").arg( numRows) );
 	}
 	else  // 如果查询失败，用下面的方法得到具体数据库返回的原因
 	{
 		QSqlError error = query.lastError();
-		dbshowui.display->append("From mysql database: " + error.databaseText());
+		dbmysqlui.display->append("From mysql database: " + error.databaseText());
 	}
 }

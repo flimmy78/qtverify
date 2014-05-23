@@ -15,10 +15,10 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="0">
-    <widget class="QTextBrowser" name="textBrowser"/>
+    <widget class="QTextBrowser" name="textBrowserRecMsg"/>
    </item>
    <item row="1" column="1">
-    <widget class="QPushButton" name="openMyComBtn">
+    <widget class="QPushButton" name="btnOpenCom">
      <property name="text">
       <string>打开串口</string>
      </property>
@@ -38,10 +38,10 @@
     </widget>
    </item>
    <item row="6" column="0">
-    <widget class="QLineEdit" name="sendMsgLineEdit"/>
+    <widget class="QLineEdit" name="lineEditSendMsg"/>
    </item>
    <item row="6" column="1">
-    <widget class="QPushButton" name="sendMsgBtn">
+    <widget class="QPushButton" name="btnSendMsg">
      <property name="text">
       <string>发送数据</string>
      </property>
@@ -61,7 +61,7 @@
     </widget>
    </item>
    <item row="2" column="1">
-    <widget class="QPushButton" name="closeMyComBtn">
+    <widget class="QPushButton" name="btnCloseCom">
      <property name="text">
       <string>关闭串口</string>
      </property>

@@ -7,8 +7,8 @@ SerialPortSet::SerialPortSet(QWidget *parent, Qt::WFlags flags)
 {
 	spsetui.setupUi(this);
 
-	spsetui.closeMyComBtn->setEnabled(false); //开始“关闭串口”按钮不可用
-	spsetui.sendMsgBtn->setEnabled(false); //开始“发送数据”按钮不可用
+	spsetui.btnCloseCom->setEnabled(false); //开始“关闭串口”按钮不可用
+	spsetui.btnSendMsg->setEnabled(false); //开始“发送数据”按钮不可用
 }
 
 SerialPortSet::~SerialPortSet()
@@ -29,28 +29,28 @@ void SerialPortSet::on_openMyComBtn_clicked()
 	myCom ->open(QIODevice::ReadWrite);//以可读写方式打开串口
 	connect(myCom,SIGNAL(readyRead()),this,SLOT(readMyCom()));//信号和槽函数关联，当串口缓冲区有数据时，进行读串口操作
 
-	spsetui.openMyComBtn->setEnabled(false); //打开串口后“打开串口”按钮不可用
-	spsetui.closeMyComBtn->setEnabled(true); //打开串口后“关闭串口”按钮可用
-	spsetui.sendMsgBtn->setEnabled(true);	//打开串口后“发送数据”按钮可用
+	spsetui.btnOpenCom->setEnabled(false); //打开串口后“打开串口”按钮不可用
+	spsetui.btnCloseCom->setEnabled(true); //打开串口后“关闭串口”按钮可用
+	spsetui.btnSendMsg->setEnabled(true);	//打开串口后“发送数据”按钮可用
 }
 
 void SerialPortSet::on_closeMyComBtn_clicked()
 {
 	myCom->close(); //关闭串口，该函数在win_qextserialport.cpp文件中定义
 
-	spsetui.openMyComBtn->setEnabled(true); //关闭串口后“打开串口”按钮可用
-	spsetui.closeMyComBtn->setEnabled(false); //关闭串口后“关闭串口”按钮不可用
-	spsetui.sendMsgBtn->setEnabled(false); //关闭串口后“发送数据”按钮不可用
+	spsetui.btnOpenCom->setEnabled(true); //关闭串口后“打开串口”按钮可用
+	spsetui.btnCloseCom->setEnabled(false); //关闭串口后“关闭串口”按钮不可用
+	spsetui.btnSendMsg->setEnabled(false); //关闭串口后“发送数据”按钮不可用
 }
 
 void SerialPortSet::on_sendMsgBtn_clicked()
 {
-	myCom->write(spsetui.sendMsgLineEdit->text().toAscii());//以ASCII码形式将行编辑框中的数据写入串口
-	spsetui.textBrowser->insertPlainText("sp data is :\n");
+	myCom->write(spsetui.lineEditSendMsg->text().toAscii());//以ASCII码形式将行编辑框中的数据写入串口
+	spsetui.textBrowserRecMsg->insertPlainText("sp data is :\n");
 }
 
 void SerialPortSet::readMyCom()
 {
 	QByteArray temp = myCom->readAll();
-	spsetui.textBrowser->insertPlainText(temp);
+	spsetui.textBrowserRecMsg->insertPlainText(temp);
 }

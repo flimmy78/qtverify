@@ -74,7 +74,7 @@
       </property>
       <layout class="QGridLayout" name="gridLayout">
        <item row="0" column="0">
-        <widget class="QPushButton" name="pushButton_Para">
+        <widget class="QPushButton" name="btnPara">
          <property name="text">
           <string>Para</string>
          </property>
@@ -88,21 +88,21 @@
         </widget>
        </item>
        <item row="0" column="2">
-        <widget class="QPushButton" name="pushButton_Start">
+        <widget class="QPushButton" name="btnStart">
          <property name="text">
           <string>Start</string>
          </property>
         </widget>
        </item>
        <item row="0" column="3">
-        <widget class="QPushButton" name="pushButton_Save">
+        <widget class="QPushButton" name="btnSave">
          <property name="text">
           <string>Save</string>
          </property>
         </widget>
        </item>
        <item row="0" column="4">
-        <widget class="QPushButton" name="pushButton_Exit">
+        <widget class="QPushButton" name="btnExit">
          <property name="text">
           <string>Exit</string>
          </property>
@@ -127,8 +127,8 @@
      <string>SystemSet(&amp;S)</string>
     </property>
     <addaction name="action_spset"/>
-    <addaction name="action_database"/>
-    <addaction name="action_sql"/>
+    <addaction name="action_mysql"/>
+    <addaction name="action_sqlite"/>
    </widget>
    <widget class="QMenu" name="menu">
     <property name="title">
@@ -140,7 +140,7 @@
     <property name="title">
      <string>DataQuery</string>
     </property>
-    <addaction name="action_dataquery"/>
+    <addaction name="action_queryExcel"/>
    </widget>
    <addaction name="menuSystemSet"/>
    <addaction name="menu"/>
@@ -172,30 +172,30 @@
     <string>流量传感器-质量法</string>
    </property>
   </action>
-  <action name="action_dataquery">
+  <action name="action_queryExcel">
    <property name="text">
-    <string>流量传感器-质量法</string>
+    <string>Query Excel</string>
    </property>
   </action>
-  <action name="action_database">
+  <action name="action_mysql">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
      <normaloff>:/qtVerify/images/ldf_sampledate.PNG</normaloff>:/qtVerify/images/ldf_sampledate.PNG</iconset>
    </property>
    <property name="text">
-    <string>database</string>
+    <string>mysql</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+D</string>
    </property>
   </action>
-  <action name="action_sql">
+  <action name="action_sqlite">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
      <normaloff>:/qtVerify/images/debug.png</normaloff>:/qtVerify/images/debug.png</iconset>
    </property>
    <property name="text">
-    <string>sql</string>
+    <string>sqlite</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Q</string>
@@ -204,15 +204,15 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
-  <tabstop>pushButton_Save</tabstop>
-  <tabstop>pushButton_Exit</tabstop>
+  <tabstop>btnSave</tabstop>
+  <tabstop>btnExit</tabstop>
  </tabstops>
  <resources>
   <include location="../qtverify.qrc"/>
  </resources>
  <connections>
   <connection>
-   <sender>pushButton_Exit</sender>
+   <sender>btnExit</sender>
    <signal>clicked()</signal>
    <receiver>qMainFormClass</receiver>
    <slot>close()</slot>

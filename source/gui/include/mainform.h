@@ -1,34 +1,37 @@
-#ifndef QTVERIFY_H
-#define QTVERIFY_H
+#ifndef MAINFORM_H
+#define MAINFORM_H
 
 #include <QtGui/QMainWindow>
 
 #include "ui_mainform.h"
 #include "serialportset.h"
-#include "dbshow.h"
+#include "dbmysql.h"
+#include "dbsqlite.h"
 #include "alg.h"
 
-class qtVerify : public QMainWindow
+class MainForm : public QMainWindow
 {
 	Q_OBJECT
 
 public:
-	qtVerify(QWidget *parent = 0, Qt::WFlags flags = 0);
-	~qtVerify();
+	MainForm(QWidget *parent = 0, Qt::WFlags flags = 0);
+	~MainForm();
 
 	alg *m_algobj;
 	SerialPortSet *spobj;
-	DbShow *dbshowobj;
+	DbMySql *dbmysqlobj;
+	DbSqlite *dbsqliteobj;
 
 public slots:
 	void slotSerialPortSet();
-	void slotDBShow();
-	void slotCalc();
-	void slotDataQuery();
-	void on_pushButton_Save_clicked();
+	void slotDBShow_MySql();
+	void slotDBShow_Sqlite();
+	void slotQueryExcel();
+	void on_btnStart_Clicked();
+	void on_btnSave_clicked();
 
 private:
 	Ui::qMainFormClass ui;
 };
 
-#endif // QTVERIFY_H
+#endif // MAINFORM_H

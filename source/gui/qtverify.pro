@@ -5,6 +5,7 @@
 TEMPLATE = app
 CONFIG  += qt warn_on debug console axcontainer
 TARGET = qtverify
+#RC_FILE = qtverify.rc
 
 QT += sql
 
@@ -17,7 +18,8 @@ LIBS += -lalg -lqaxserver -lqaxcontainerd
 
 # Input
 HEADERS += include/mainform.h	\
-					 include/dbshow.h	\
+					 include/dbmysql.h	\
+					 include/dbsqlite.h	\
 					 include/serialportset.h  \
 					 include/qextserialbase.h	\
 					 include/qextserialport.h	\
@@ -25,12 +27,14 @@ HEADERS += include/mainform.h	\
 #					 include/excel.h
 					 
 FORMS += 	ui/mainform.ui	\
-				 	ui/dbshow.ui		\
+				 	ui/dbmysql.ui		\
+				 	ui/dbsqlite.ui		\
 				 	ui/serialportset.ui	\
 				 
 SOURCES += source/main.cpp	\
 					 source/mainform.cpp	\
-					 source/dbshow.cpp		\
+					 source/dbmysql.cpp		\
+					 source/dbsqlite.cpp		\
 					 source/serialportset.cpp		\
 					 source/qextserialbase.cpp	\
 					 source/qextserialport.cpp	\
@@ -38,7 +42,6 @@ SOURCES += source/main.cpp	\
 #					 source/excel.cpp
 					 
 RESOURCES += qtverify.qrc
-#RC_FILE = qtverify.rc
 
 win32{
 DEFINES += WIN32 _AFXDLL

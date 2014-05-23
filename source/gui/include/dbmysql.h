@@ -1,5 +1,5 @@
-#ifndef DBSHOW_H
-#define DBSHOW_H
+#ifndef DBMYSQL_H
+#define DBMYSQL_H
 
 #include <QtGui/QWidget>
 #include <QtSql/QSqlDatabase>
@@ -7,15 +7,15 @@
 #include <QtSql/QSqlDriver>
 #include <QtSql/QSqlError>
 
-#include "ui_dbshow.h"
+#include "ui_dbmysql.h"
 
-class DbShow : public QWidget
+class DbMySql : public QWidget
 {
 	Q_OBJECT
 
 public:
-	DbShow(QWidget *parent = 0, Qt::WFlags flags = 0);
-	~DbShow();
+	DbMySql(QWidget *parent = 0, Qt::WFlags flags = 0);
+	~DbMySql();
 
 	QSqlDatabase db;
 
@@ -23,7 +23,7 @@ public slots:
 
 
 private:
-	Ui::DBShowClass dbshowui;
+	Ui::DbMySqlClass dbmysqlui;
 
 private slots:
 	void slotConnectMySqlDataBase();
@@ -31,4 +31,4 @@ private slots:
 
 };
 
-#endif // DBSHOW_H
+#endif // DBMYSQL_H

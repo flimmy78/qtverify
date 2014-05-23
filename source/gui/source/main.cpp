@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 	QTextCodec::setCodecForCStrings( QTextCodec::codecForName("GB2312"));
 
 	char filename[100];
-	sprintf_s( filename, "%s/uif/i18n/qtVerify_zh.qm", getenv("RUNHOME"));
+	sprintf_s( filename, "%s/uif/i18n/qtverify_zh.qm", getenv("RUNHOME"));
 	QTranslator *translator;
 	translator = new QTranslator();
 	bool loadok = translator->load( filename );
@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 	}
 	app.installTranslator( translator );
 
-	qtVerify w;
+	MainForm w;
 	w.show();
 	
 	return app.exec();
