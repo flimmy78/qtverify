@@ -1,4 +1,5 @@
-#include <QtGui/QMessageBox>
+ï»¿#include <QtGui/QMessageBox>
+#include <QtCore/QDebug>
 
 #include "serialportset.h"
 
@@ -7,9 +8,9 @@ SerialPortSet::SerialPortSet(QWidget *parent, Qt::WFlags flags)
 {
 	spsetui.setupUi(this);
 
-	spsetui.btnCloseCom->setEnabled(false); //¿ªÊ¼¡°¹Ø±Õ´®¿Ú¡±°´Å¥²»¿ÉÓÃ
-	spsetui.btnSendMsg->setEnabled(false);  //¿ªÊ¼¡°·¢ËÍÊý¾Ý¡±°´Å¥²»¿ÉÓÃ
-	spsetui.btnClearMsg->setEnabled(false); //¿ªÊ¼¡°Çå³ýÊý¾Ý¡±°´Å¥²»¿ÉÓÃ
+	spsetui.btnCloseCom->setEnabled(false); //å¼€å§‹â€œå…³é—­ä¸²å£â€æŒ‰é’®ä¸å¯ç”¨
+	spsetui.btnSendMsg->setEnabled(false);  //å¼€å§‹â€œå‘é€æ•°æ®â€æŒ‰é’®ä¸å¯ç”¨
+	spsetui.btnClearMsg->setEnabled(false); //å¼€å§‹â€œæ¸…é™¤æ•°æ®â€æŒ‰é’®ä¸å¯ç”¨
 }
 
 SerialPortSet::~SerialPortSet()
@@ -25,52 +26,52 @@ void SerialPortSet::sp_anyfunc()
 
 void SerialPortSet::on_btnOpenCom_clicked()
 {
-	QString portName = spsetui.portNameComboBox->currentText(); //»ñÈ¡´®¿ÚÃû
-	myCom = new Win_QextSerialPort(portName,QextSerialBase::EventDriven);//¶¨Òå´®¿Ú¶ÔÏó£¬²¢´«µÝ²ÎÊý£¬ÔÚ¹¹Ôìº¯ÊýÀï¶ÔÆä½øÐÐ³õÊ¼»¯
-	if (!myCom ->open(QIODevice::ReadWrite))//´ò¿ª´®¿ÚÊ§°Ü
+	QString portName = spsetui.portNameComboBox->currentText(); //èŽ·å–ä¸²å£å
+	myCom = new Win_QextSerialPort(portName,QextSerialBase::EventDriven);//å®šä¹‰ä¸²å£å¯¹è±¡ï¼Œå¹¶ä¼ é€’å‚æ•°ï¼Œåœ¨æž„é€ å‡½æ•°é‡Œå¯¹å…¶è¿›è¡Œåˆå§‹åŒ–
+	if (!myCom ->open(QIODevice::ReadWrite))//æ‰“å¼€ä¸²å£å¤±è´¥
 	{
 		QMessageBox::information(this, "SerialPortSet", QString("Open %1 Failed!").arg(portName), "Ok", "Cancel");	
 		return;
 	}
 	
-	//ÉèÖÃ²¨ÌØÂÊ
-	if(spsetui.baudRateComboBox->currentText()==tr("9600")) //¸ù¾Ý×éºÏ¿òÄÚÈÝ¶Ô´®¿Ú½øÐÐÉèÖÃ
+	//è®¾ç½®æ³¢ç‰¹çŽ‡
+	if(spsetui.baudRateComboBox->currentText()==tr("9600")) //æ ¹æ®ç»„åˆæ¡†å†…å®¹å¯¹ä¸²å£è¿›è¡Œè®¾ç½®
 		myCom->setBaudRate(BAUD9600);
 	else if(spsetui.baudRateComboBox->currentText()==tr("115200"))
 		myCom->setBaudRate(BAUD115200);
 
-	//ÉèÖÃÊý¾ÝÎ»
+	//è®¾ç½®æ•°æ®ä½
 	if(spsetui.dataBitsComboBox->currentText()==tr("8"))
 		myCom->setDataBits(DATA_8);
 	else if(spsetui.dataBitsComboBox->currentText()==tr("7"))
 		myCom->setDataBits(DATA_7);
 
-	//ÉèÖÃÆæÅ¼Ð£Ñé
-	if(spsetui.parityComboBox->currentText()==tr("ÎÞ"))
+	//è®¾ç½®å¥‡å¶æ ¡éªŒ
+	if(spsetui.parityComboBox->currentText()==tr("æ— "))
 		myCom->setParity(PAR_NONE);
-	else if(spsetui.parityComboBox->currentText()==tr("Ææ"))
+	else if(spsetui.parityComboBox->currentText()==tr("å¥‡"))
 		myCom->setParity(PAR_ODD);
-	else if(spsetui.parityComboBox->currentText()==tr("Å¼"))
+	else if(spsetui.parityComboBox->currentText()==tr("å¶"))
 		myCom->setParity(PAR_EVEN);
 
-	//ÉèÖÃÍ£Ö¹Î»
+	//è®¾ç½®åœæ­¢ä½
 	if(spsetui.stopBitsComboBox->currentText()==tr("1"))
 		myCom->setStopBits(STOP_1);
 	else if(spsetui.stopBitsComboBox->currentText()==tr("2"))
 		myCom->setStopBits(STOP_2);
 
-	myCom->setFlowControl(FLOW_OFF); //ÉèÖÃÊý¾ÝÁ÷¿ØÖÆ£¬ÎÒÃÇÊ¹ÓÃÎÞÊý¾ÝÁ÷¿ØÖÆµÄÄ¬ÈÏÉèÖÃ
-	myCom->setTimeout(500); //ÉèÖÃÑÓÊ±
+	myCom->setFlowControl(FLOW_OFF); //è®¾ç½®æ•°æ®æµæŽ§åˆ¶ï¼Œæˆ‘ä»¬ä½¿ç”¨æ— æ•°æ®æµæŽ§åˆ¶çš„é»˜è®¤è®¾ç½®
+	myCom->setTimeout(500); //è®¾ç½®å»¶æ—¶
 
 	connect(myCom,SIGNAL(readyRead()),this,SLOT(slotReadMyCom()));
-	//ÐÅºÅºÍ²Ûº¯Êý¹ØÁª£¬µ±´®¿Ú»º³åÇøÓÐÊý¾ÝÊ±£¬½øÐÐ¶Á´®¿Ú²Ù×÷
+	//ä¿¡å·å’Œæ§½å‡½æ•°å…³è”ï¼Œå½“ä¸²å£ç¼“å†²åŒºæœ‰æ•°æ®æ—¶ï¼Œè¿›è¡Œè¯»ä¸²å£æ“ä½œ
 
-	spsetui.btnOpenCom->setEnabled(false); //´ò¿ª´®¿Úºó¡°´ò¿ª´®¿Ú¡±°´Å¥²»¿ÉÓÃ
-	spsetui.btnCloseCom->setEnabled(true); //´ò¿ª´®¿Úºó¡°¹Ø±Õ´®¿Ú¡±°´Å¥¿ÉÓÃ
-	spsetui.btnSendMsg->setEnabled(true);  //´ò¿ª´®¿Úºó¡°·¢ËÍÊý¾Ý¡±°´Å¥¿ÉÓÃ
-	spsetui.btnClearMsg->setEnabled(true); //´ò¿ª´®¿Úºó¡°Çå³ýÊý¾Ý¡±°´Å¥¿ÉÓÃ
+	spsetui.btnOpenCom->setEnabled(false); //æ‰“å¼€ä¸²å£åŽâ€œæ‰“å¼€ä¸²å£â€æŒ‰é’®ä¸å¯ç”¨
+	spsetui.btnCloseCom->setEnabled(true); //æ‰“å¼€ä¸²å£åŽâ€œå…³é—­ä¸²å£â€æŒ‰é’®å¯ç”¨
+	spsetui.btnSendMsg->setEnabled(true);  //æ‰“å¼€ä¸²å£åŽâ€œå‘é€æ•°æ®â€æŒ‰é’®å¯ç”¨
+	spsetui.btnClearMsg->setEnabled(true); //æ‰“å¼€ä¸²å£åŽâ€œæ¸…é™¤æ•°æ®â€æŒ‰é’®å¯ç”¨
 	
-	spsetui.baudRateComboBox->setEnabled(false); //ÉèÖÃ¸÷¸ö×éºÏ¿ò²»¿ÉÓÃ
+	spsetui.baudRateComboBox->setEnabled(false); //è®¾ç½®å„ä¸ªç»„åˆæ¡†ä¸å¯ç”¨
 	spsetui.dataBitsComboBox->setEnabled(false);
 	spsetui.parityComboBox->setEnabled(false);
 	spsetui.stopBitsComboBox->setEnabled(false);
@@ -78,42 +79,42 @@ void SerialPortSet::on_btnOpenCom_clicked()
 
 
 /*
-	struct PortSettings myComSetting = {BAUD9600,DATA_8,PAR_NONE,STOP_1,FLOW_OFF,500};//¶¨ÒåÒ»¸ö½á¹¹Ìå£¬ÓÃÀ´´æ·Å´®¿Ú¸÷¸ö²ÎÊý
-	myCom = new Win_QextSerialPort("com1",myComSetting,QextSerialBase::EventDriven);//¶¨Òå´®¿Ú¶ÔÏó£¬²¢´«µÝ²ÎÊý£¬ÔÚ¹¹Ôìº¯ÊýÀï¶ÔÆä½øÐÐ³õÊ¼»¯
-	myCom ->open(QIODevice::ReadWrite);//ÒÔ¿É¶ÁÐ´·½Ê½´ò¿ª´®¿Ú
-	connect(myCom,SIGNAL(readyRead()),this,SLOT(slotReadMyCom()));//ÐÅºÅºÍ²Ûº¯Êý¹ØÁª£¬µ±´®¿Ú»º³åÇøÓÐÊý¾ÝÊ±£¬½øÐÐ¶Á´®¿Ú²Ù×÷
+	struct PortSettings myComSetting = {BAUD9600,DATA_8,PAR_NONE,STOP_1,FLOW_OFF,500};//å®šä¹‰ä¸€ä¸ªç»“æž„ä½“ï¼Œç”¨æ¥å­˜æ”¾ä¸²å£å„ä¸ªå‚æ•°
+	myCom = new Win_QextSerialPort("com1",myComSetting,QextSerialBase::EventDriven);//å®šä¹‰ä¸²å£å¯¹è±¡ï¼Œå¹¶ä¼ é€’å‚æ•°ï¼Œåœ¨æž„é€ å‡½æ•°é‡Œå¯¹å…¶è¿›è¡Œåˆå§‹åŒ–
+	myCom ->open(QIODevice::ReadWrite);//ä»¥å¯è¯»å†™æ–¹å¼æ‰“å¼€ä¸²å£
+	connect(myCom,SIGNAL(readyRead()),this,SLOT(slotReadMyCom()));//ä¿¡å·å’Œæ§½å‡½æ•°å…³è”ï¼Œå½“ä¸²å£ç¼“å†²åŒºæœ‰æ•°æ®æ—¶ï¼Œè¿›è¡Œè¯»ä¸²å£æ“ä½œ
 
-	spsetui.btnOpenCom->setEnabled(false); //´ò¿ª´®¿Úºó¡°´ò¿ª´®¿Ú¡±°´Å¥²»¿ÉÓÃ
-	spsetui.btnCloseCom->setEnabled(true); //´ò¿ª´®¿Úºó¡°¹Ø±Õ´®¿Ú¡±°´Å¥¿ÉÓÃ
-	spsetui.btnSendMsg->setEnabled(true);	//´ò¿ª´®¿Úºó¡°·¢ËÍÊý¾Ý¡±°´Å¥¿ÉÓÃ
+	spsetui.btnOpenCom->setEnabled(false); //æ‰“å¼€ä¸²å£åŽâ€œæ‰“å¼€ä¸²å£â€æŒ‰é’®ä¸å¯ç”¨
+	spsetui.btnCloseCom->setEnabled(true); //æ‰“å¼€ä¸²å£åŽâ€œå…³é—­ä¸²å£â€æŒ‰é’®å¯ç”¨
+	spsetui.btnSendMsg->setEnabled(true);	//æ‰“å¼€ä¸²å£åŽâ€œå‘é€æ•°æ®â€æŒ‰é’®å¯ç”¨
 */
 }
 
 void SerialPortSet::on_btnCloseCom_clicked()
 {
-	myCom->close(); //¹Ø±Õ´®¿Ú£¬¸Ãº¯ÊýÔÚwin_qextserialport.cppÎÄ¼þÖÐ¶¨Òå
+	myCom->close(); //å…³é—­ä¸²å£ï¼Œè¯¥å‡½æ•°åœ¨win_qextserialport.cppæ–‡ä»¶ä¸­å®šä¹‰
 
-	spsetui.btnOpenCom->setEnabled(true); //¹Ø±Õ´®¿Úºó¡°´ò¿ª´®¿Ú¡±°´Å¥¿ÉÓÃ
-	spsetui.btnCloseCom->setEnabled(false); //¹Ø±Õ´®¿Úºó¡°¹Ø±Õ´®¿Ú¡±°´Å¥²»¿ÉÓÃ
-	spsetui.btnSendMsg->setEnabled(false); //¹Ø±Õ´®¿Úºó¡°·¢ËÍÊý¾Ý¡±°´Å¥²»¿ÉÓÃ
-	spsetui.baudRateComboBox->setEnabled(true); //ÉèÖÃ¸÷¸ö×éºÏ¿ò¿ÉÓÃ
+	spsetui.btnOpenCom->setEnabled(true); //å…³é—­ä¸²å£åŽâ€œæ‰“å¼€ä¸²å£â€æŒ‰é’®å¯ç”¨
+	spsetui.btnCloseCom->setEnabled(false); //å…³é—­ä¸²å£åŽâ€œå…³é—­ä¸²å£â€æŒ‰é’®ä¸å¯ç”¨
+	spsetui.btnSendMsg->setEnabled(false); //å…³é—­ä¸²å£åŽâ€œå‘é€æ•°æ®â€æŒ‰é’®ä¸å¯ç”¨
+	spsetui.baudRateComboBox->setEnabled(true); //è®¾ç½®å„ä¸ªç»„åˆæ¡†å¯ç”¨
 	spsetui.dataBitsComboBox->setEnabled(true);
 	spsetui.parityComboBox->setEnabled(true);
 	spsetui.stopBitsComboBox->setEnabled(true);
 	spsetui.portNameComboBox->setEnabled(true);
 
 /*
-	spsetui.btnOpenCom->setEnabled(true); //¹Ø±Õ´®¿Úºó¡°´ò¿ª´®¿Ú¡±°´Å¥¿ÉÓÃ
-	spsetui.btnCloseCom->setEnabled(false); //¹Ø±Õ´®¿Úºó¡°¹Ø±Õ´®¿Ú¡±°´Å¥²»¿ÉÓÃ
-	spsetui.btnSendMsg->setEnabled(false); //¹Ø±Õ´®¿Úºó¡°·¢ËÍÊý¾Ý¡±°´Å¥²»¿ÉÓÃ
+	spsetui.btnOpenCom->setEnabled(true); //å…³é—­ä¸²å£åŽâ€œæ‰“å¼€ä¸²å£â€æŒ‰é’®å¯ç”¨
+	spsetui.btnCloseCom->setEnabled(false); //å…³é—­ä¸²å£åŽâ€œå…³é—­ä¸²å£â€æŒ‰é’®ä¸å¯ç”¨
+	spsetui.btnSendMsg->setEnabled(false); //å…³é—­ä¸²å£åŽâ€œå‘é€æ•°æ®â€æŒ‰é’®ä¸å¯ç”¨
 */
 }
 
 void SerialPortSet::on_btnSendMsg_clicked()
 {
-	int ret = myCom->write(spsetui.lineEditSendMsg->text().toAscii());//ÒÔASCIIÂëÐÎÊ½½«ÐÐ±à¼­¿òÖÐµÄÊý¾ÝÐ´Èë´®¿Ú
-	
+	int ret = myCom->write(spsetui.lineEditSendMsg->text().toAscii());//ä»¥ASCIIç å½¢å¼å°†è¡Œç¼–è¾‘æ¡†ä¸­çš„æ•°æ®å†™å…¥ä¸²å£
 //  spsetui.textBrowserRecMsg->insertPlainText(QString("send ret=%1\n").arg(ret));
+	qDebug()<<"write:"<<myCom->bytesToWrite()<<"bytes";
 }
 
 void SerialPortSet::on_btnClearMsg_clicked()
@@ -123,6 +124,10 @@ void SerialPortSet::on_btnClearMsg_clicked()
 
 void SerialPortSet::slotReadMyCom()
 {
-	QByteArray temp = myCom->readAll();
-	spsetui.textBrowserRecMsg->insertPlainText(temp);
+	if (myCom->bytesAvailable() >= 8)
+	{
+		qDebug()<<"read:"<<myCom->bytesAvailable()<<"bytes";
+		QByteArray temp = myCom->readAll();
+		spsetui.textBrowserRecMsg->insertPlainText(temp);
+	}
 }

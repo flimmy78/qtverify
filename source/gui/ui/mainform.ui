@@ -161,7 +161,7 @@
      <normaloff>:/qtVerify/images/setting.png</normaloff>:/qtVerify/images/setting.png</iconset>
    </property>
    <property name="text">
-    <string>spset</string>
+    <string>SpSet(&amp;P)</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+P</string>
@@ -183,7 +183,7 @@
      <normaloff>:/qtVerify/images/ldf_sampledate.PNG</normaloff>:/qtVerify/images/ldf_sampledate.PNG</iconset>
    </property>
    <property name="text">
-    <string>mysql</string>
+    <string>MySql</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+D</string>
@@ -195,7 +195,7 @@
      <normaloff>:/qtVerify/images/debug.png</normaloff>:/qtVerify/images/debug.png</iconset>
    </property>
    <property name="text">
-    <string>sqlite</string>
+    <string>Sqlite</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Q</string>
