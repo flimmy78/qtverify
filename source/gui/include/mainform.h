@@ -29,6 +29,7 @@ public slots:
 	void on_action_queryExcel_triggered();
 	void on_btnStart_clicked();
 	void on_btnSave_clicked();
+	void on_btnPara_clicked();
 
 private:
 	Ui::qMainFormClass ui;

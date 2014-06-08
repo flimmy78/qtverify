@@ -19,8 +19,9 @@ public:
 	~DbSqlite();
 
 	QSqlDatabase db;
+	uint m_count;
 
-	public slots:
+public slots:
 
 
 private:
@@ -30,6 +31,8 @@ private:
 		void on_btnConnect_clicked();
 		void on_btnQuery_clicked();
 		void on_btnOK_clicked();
+		void on_btnInsert_clicked();
+		void on_btnStop_clicked();
 };
 
 #endif // DBSQLITE_H

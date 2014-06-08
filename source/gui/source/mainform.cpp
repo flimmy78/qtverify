@@ -1,5 +1,6 @@
 #include <QtGui/QMessageBox>
 #include <QAxObject>
+#include <QProcess>
 
 #include "mainform.h"
 
@@ -15,12 +16,6 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	dbsqliteobj = new DbSqlite();
 
 	connect(ui.btnExit, SIGNAL(clicked()), this, SLOT(close()));
-// 	connect(ui.btnSave, SIGNAL(clicked()), this, SLOT(on_btnSave_clicked()));
-// 	connect(ui.btnStart, SIGNAL(clicked()), this, SLOT(on_btnStart_clicked()));
-// 	connect(ui.action_spset, SIGNAL(triggered()), this, SLOT(on_action_spset_triggered()));
-// 	connect(ui.action_mysql, SIGNAL(triggered()), this, SLOT(on_action_mysql_triggered()));
-// 	connect(ui.action_sqlite, SIGNAL(triggered()), this, SLOT(on_action_sqlite_triggered()));
-// 	connect(ui.action_queryExcel, SIGNAL(triggered()), this, SLOT(on_action_queryExcel_triggered()));
 	
 }
 
@@ -86,4 +81,12 @@ void MainForm::on_action_queryExcel_triggered()
 void MainForm::on_btnSave_clicked()
 {
 	spobj->sp_anyfunc();
+}
+
+void MainForm::on_btnPara_clicked()
+{
+	QProcess *myProcess = new QProcess(this);
+	QStringList cmdlist;
+	cmdlist<<"/v:"<<"192.168.1.132"<<"/console";
+	myProcess->start("mstsc", cmdlist);
 }

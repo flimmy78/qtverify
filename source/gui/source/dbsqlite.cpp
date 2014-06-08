@@ -1,6 +1,7 @@
 #include <QtGui/QMessageBox>
 #include <QtGui/QDateTimeEdit>
 #include <QtGui/QTextEdit>
+#include <QDebug>
 
 #include "dbsqlite.h"
 
@@ -10,12 +11,11 @@ DbSqlite::DbSqlite(QWidget *parent, Qt::WFlags flags)
 {
 	dbsqliteui.setupUi(this);
 
-// 	connect(dbsqliteui.btnConnect, SIGNAL(clicked()), this, SLOT(on_btnConnect_clicked()));
-// 	connect(dbsqliteui.btnQuery, SIGNAL(clicked()), this, SLOT(on_btnQuery_clicked()));
-// 	connect(dbsqliteui.btnOK, SIGNAL(clicked()), this, SLOT(on_btnOK_clicked()));
-
 	dbsqliteui.btnQuery->setEnabled(false);
 	dbsqliteui.btnOK->setEnabled(false);
+	dbsqliteui.btnInsert->setEnabled(false);
+
+	m_count = 0;
 }
 
 DbSqlite::~DbSqlite()
@@ -36,12 +36,14 @@ void DbSqlite::on_btnConnect_clicked()
 		QMessageBox::information(this, "DbShow", "connect sqlite database success !", "Ok", "Cancel");	
 		dbsqliteui.btnQuery->setEnabled(true);
 		dbsqliteui.btnOK->setEnabled(true);
+		dbsqliteui.btnInsert->setEnabled(true);
 	}
 	else
 	{
 		QMessageBox::information(this, "DbShow", "connect sqlite database failed !", "Ok", "Cancel");	
 		dbsqliteui.btnQuery->setEnabled(false);
 		dbsqliteui.btnOK->setEnabled(false);
+		dbsqliteui.btnInsert->setEnabled(false);
 	}
 }
 
@@ -85,3 +87,37 @@ void DbSqlite::on_btnOK_clicked()
 	model->select();
 	dbsqliteui.tableView->setModel(model);
 }
+
+void DbSqlite::on_btnInsert_clicked()
+{
+	QDateTime statTime = QDateTime::currentDateTime();
+	qDebug()<<"start time is:"<<statTime.toString("yyMMddhhmmss");
+	QDateTime endTime;
+	int sucNum=0, failNum=0;
+	QSqlQuery query;
+	m_count = dbsqliteui.spinBoxNums->value();
+	while (m_count--)
+	{
+		if(query.exec(" INSERT INTO employee VALUES ('001', 'Jordan', 'Michael', '2000-05-18', '5188')")) 
+		{
+// 			qDebug()<<"insert"<<++sucNum<<"record success!";
+			sucNum++;
+		}
+		else
+		{
+// 			qDebug()<<"insert"<<++failNum<<"failed!";
+			failNum++;
+		}
+	}
+	endTime = QDateTime::currentDateTime();
+	qDebug()<<"  end time is:"<<endTime.toString("yyMMddhhmmss");
+	int usedSec = statTime.msecsTo(endTime);
+	qDebug()<<"Insert"<<dbsqliteui.spinBoxNums->value()<<"record£» success"<<sucNum<<"£» failed"<<failNum<<"¡£used time is:"<<usedSec<<"micro seconds\n";
+}
+
+void DbSqlite::on_btnStop_clicked()
+{
+	m_count = 1;
+	qDebug()<<"on_btnStop_clicked, m_count ="<<m_count;
+}
+
