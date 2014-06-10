@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="qtVerify">
+    <file>images/delulogo.png</file>
     <file>images/about.png</file>
     <file>images/access_free.png</file>
     <file>images/data_export.png</file>

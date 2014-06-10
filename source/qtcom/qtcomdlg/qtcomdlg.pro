@@ -12,18 +12,17 @@ QMAKE_LIBDIR +=  ./           \
 DESTDIR = $(RUNHOME)\tmp\qtcom\qtcomdlg\obj
 MOC_DIR = $(RUNHOME)/tmp/qtcom/qtcomdlg/moc
 OBJECTS_DIR = $(RUNHOME)/tmp/qtcom/qtcomdlg/obj
-UI_DIR = $(RUNHOME)/tmp/qtcom/qtcomdlg/ui
+UI_DIR = $(RUNHOME_INC)/include
 
 INCLUDEPATH  	=    ./      \
 									 include \ 
 									 $$(RUNHOME_INC)/include \
-									 $${UI_DIR}
 
-HEADERS	+= include/qtcomdlg_global.h \
-           include/serialportset.h   \
-           include/qextserialbase.h  \
-           include/qextserialport.h  \
-           include/win_qextserialport.h
+HEADERS	+= $(RUNHOME_INC)/include/qtcomdlg_global.h \
+           $(RUNHOME_INC)/include/serialportset.h   \
+           $(RUNHOME_INC)/include/qextserialbase.h  \
+           $(RUNHOME_INC)/include/qextserialport.h  \
+           $(RUNHOME_INC)/include/win_qextserialport.h
 	
 SOURCES	+= source/serialportset.cpp   \
            source/qextserialbase.cpp  \

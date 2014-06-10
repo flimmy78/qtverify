@@ -15,7 +15,7 @@ QMAKE_LIBDIR = 	$(RUNHOME)/lib \
                 $(RUNHOME)/bin \
 
 								
-LIBS += -lalg -lqtcomdlg -lqaxserver -lqaxcontainerd
+LIBS += -lalg -lqtcomdlg -lqualitydlg -lqaxserver -lqaxcontainerd
 
 # Input
 HEADERS += include/mainform.h	\
@@ -25,7 +25,7 @@ HEADERS += include/mainform.h	\
 					 
 FORMS += 	ui/mainform.ui	\
 				 	ui/dbmysql.ui		\
-				 	ui/dbsqlite.ui	
+				 	ui/dbsqlite.ui	\
 				 
 SOURCES += source/main.cpp	\
 					 source/mainform.cpp	\
@@ -50,8 +50,6 @@ INCLUDEPATH += 	./include	\
 								$${UI_DIR}	\
 								$$(RUNHOME_INC)/include		\
 								F:\mysoft\trunk\plugindemo\GameSystem  \
-								F:\delusoft\trunk\qtverify\source\qtcom\qtcomdlg\include \
-								F:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qtcom\qtcomdlg\ui
 
 
 TRANSLATIONS += ./language/qtverify_en.ts ./language/qtverify_zh.ts

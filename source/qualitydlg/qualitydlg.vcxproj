@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9C9106C2-E1FC-3102-A14E-2CEBAB74BF21}</ProjectGuid>
+    <RootNamespace>qualitydlg</RootNamespace>
+    <Keyword>Qt4VSv1.0</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;" Label="Configuration">
+    <OutputDirectory>$(RUNHOME)\tmp\qualitydlg\obj\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <IntermediateDirectory>$(RUNHOME)\tmp\qualitydlg\obj\</IntermediateDirectory>
+    <PrimaryOutput>qualitydlg</PrimaryOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;" Label="Configuration">
+    <OutputDirectory>$(RUNHOME)\tmp\qualitydlg\obj\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <IntermediateDirectory>$(RUNHOME)\tmp\qualitydlg\obj\</IntermediateDirectory>
+    <PrimaryOutput>qualitydlg</PrimaryOutput>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists(&apos;$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props&apos;)" />
+  </ImportGroup>
+  <ImportGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists(&apos;$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props&apos;)" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">$(RUNHOME)\tmp\qualitydlg\obj\</OutDir>
+    <IntDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">$(RUNHOME)\tmp\qualitydlg\obj\</IntDir>
+    <TargetName Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">qualitydlg</TargetName>
+    <IgnoreImportLibrary Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">true</IgnoreImportLibrary>
+    <PostBuildEventUseInBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">true</PostBuildEventUseInBuild>
+    <OutDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">$(RUNHOME)\tmp\qualitydlg\obj\</OutDir>
+    <IntDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">$(RUNHOME)\tmp\qualitydlg\obj\</IntDir>
+    <TargetName Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">qualitydlg</TargetName>
+    <IgnoreImportLibrary Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">false</LinkIncremental>
+    <PostBuildEventUseInBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">true</PostBuildEventUseInBuild>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">
+    <ClCompile>
+      <AdditionalIncludeDirectories>&quot;c:\Qt\4.8.5\include\QtCore&quot;;&quot;c:\Qt\4.8.5\include\QtGui&quot;;&quot;c:\Qt\4.8.5\include&quot;;&quot;.&quot;;&quot;include&quot;;&quot;..\include&quot;;&quot;$(RUNHOME_INC)\include&quot;;&quot;c:\Qt\4.8.5\include\ActiveQt&quot;;&quot;f:\delusoft\trunk\qtverify\source\qualitydlg\$(RUNHOME)\tmp\qualitydlg\moc&quot;;&quot;f:\delusoft\trunk\qtverify\source\qualitydlg\$(RUNHOME_INC)\include&quot;;c:\Qt\4.8.5\mkspecs\win32-msvc2010;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zm200 -w34100 -w34189 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>$(RUNHOME)\tmp\qualitydlg\obj\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>$(RUNHOME)\tmp\qualitydlg\obj\</ObjectFileName>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QUALITYDLG_DLL;QT_DLL;QT_GUI_LIB;QT_CORE_LIB;QT_HAVE_MMX;QT_HAVE_3DNOW;QT_HAVE_SSE;QT_HAVE_MMXEXT;QT_HAVE_SSE2;QT_THREAD_SUPPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <ProgramDataBaseFileName>.\</ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>c:\Qt\4.8.5\lib\QtGuid4.lib;c:\Qt\4.8.5\lib\QtCored4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>.\;$(RUNHOME)\lib;$(RUNHOME)\bin;c:\Qt\4.8.5\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkDLL>true</LinkDLL>
+      <OutputFile>$(OutDir)\qualitydlg.dll</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QUALITYDLG_DLL;QT_DLL;QT_GUI_LIB;QT_CORE_LIB;QT_HAVE_MMX;QT_HAVE_3DNOW;QT_HAVE_SSE;QT_HAVE_MMXEXT;QT_HAVE_SSE2;QT_THREAD_SUPPORT;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <PostBuildEvent>
+      <Command>copy $(RUNHOME)\tmp\qualitydlg\obj\qualitydlg.lib F:\delusoft\trunk\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\qualitydlg\obj\qualitydlg.dll F:\delusoft\trunk\qtverify\release\RUNHOME\dll</Command>
+      <Message>copy $(RUNHOME)\tmp\qualitydlg\obj\qualitydlg.lib F:\delusoft\trunk\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\qualitydlg\obj\qualitydlg.dll F:\delusoft\trunk\qtverify\release\RUNHOME\dll</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">
+    <ClCompile>
+      <AdditionalIncludeDirectories>&quot;c:\Qt\4.8.5\include\QtCore&quot;;&quot;c:\Qt\4.8.5\include\QtGui&quot;;&quot;c:\Qt\4.8.5\include&quot;;&quot;.&quot;;&quot;include&quot;;&quot;..\include&quot;;&quot;$(RUNHOME_INC)\include&quot;;&quot;c:\Qt\4.8.5\include\ActiveQt&quot;;&quot;f:\delusoft\trunk\qtverify\source\qualitydlg\$(RUNHOME)\tmp\qualitydlg\moc&quot;;&quot;f:\delusoft\trunk\qtverify\source\qualitydlg\$(RUNHOME_INC)\include&quot;;c:\Qt\4.8.5\mkspecs\win32-msvc2010;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zm200 -w34100 -w34189 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>$(RUNHOME)\tmp\qualitydlg\obj\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>$(RUNHOME)\tmp\qualitydlg\obj\</ObjectFileName>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QUALITYDLG_DLL;QT_DLL;QT_NO_DEBUG;QT_GUI_LIB;QT_CORE_LIB;QT_HAVE_MMX;QT_HAVE_3DNOW;QT_HAVE_SSE;QT_HAVE_MMXEXT;QT_HAVE_SSE2;QT_THREAD_SUPPORT;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <ProgramDataBaseFileName>.\</ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>c:\Qt\4.8.5\lib\QtGui4.lib;c:\Qt\4.8.5\lib\QtCore4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>.\;$(RUNHOME)\lib;$(RUNHOME)\bin;c:\Qt\4.8.5\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkDLL>true</LinkDLL>
+      <LinkIncremental>false</LinkIncremental>
+      <OutputFile>$(OutDir)\qualitydlg.dll</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QUALITYDLG_DLL;QT_DLL;QT_NO_DEBUG;QT_GUI_LIB;QT_CORE_LIB;QT_HAVE_MMX;QT_HAVE_3DNOW;QT_HAVE_SSE;QT_HAVE_MMXEXT;QT_HAVE_SSE2;QT_THREAD_SUPPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <PostBuildEvent>
+      <Command>copy $(RUNHOME)\tmp\qualitydlg\obj\qualitydlg.lib F:\delusoft\trunk\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\qualitydlg\obj\qualitydlg.dll F:\delusoft\trunk\qtverify\release\RUNHOME\dll</Command>
+      <Message>copy $(RUNHOME)\tmp\qualitydlg\obj\qualitydlg.lib F:\delusoft\trunk\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\qualitydlg\obj\qualitydlg.dll F:\delusoft\trunk\qtverify\release\RUNHOME\dll</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="source\qualitydlg.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\include\qualitydlg.h">
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">..\include\qualitydlg.h;C:\Qt\4.8.5\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DQUALITYDLG_DLL -DQT_DLL -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;.&quot; -I&quot;include&quot; -I&quot;..\include&quot; -I&quot;$(RUNHOME_INC)\include&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;f:\delusoft\trunk\qtverify\source\qualitydlg\$(RUNHOME)\tmp\qualitydlg\moc&quot; -I&quot;f:\delusoft\trunk\qtverify\source\qualitydlg\$(RUNHOME_INC)\include&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\include\qualitydlg.h -o f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qualitydlg\moc\moc_qualitydlg.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">MOC ..\include\qualitydlg.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">$(RUNHOME)\tmp\qualitydlg\moc\moc_qualitydlg.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">..\include\qualitydlg.h;C:\Qt\4.8.5\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DQUALITYDLG_DLL -DQT_DLL -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;.&quot; -I&quot;include&quot; -I&quot;..\include&quot; -I&quot;$(RUNHOME_INC)\include&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;f:\delusoft\trunk\qtverify\source\qualitydlg\$(RUNHOME)\tmp\qualitydlg\moc&quot; -I&quot;f:\delusoft\trunk\qtverify\source\qualitydlg\$(RUNHOME_INC)\include&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\include\qualitydlg.h -o f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qualitydlg\moc\moc_qualitydlg.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">MOC ..\include\qualitydlg.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">$(RUNHOME)\tmp\qualitydlg\moc\moc_qualitydlg.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="..\include\qualitydlg_global.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qualitydlg\moc\moc_qualitydlg.cpp" />
+    <ClInclude Include="f:\delusoft\trunk\qtverify\source\include\ui_qualitydlg.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="language\qualitydlg_en.ts" />
+    <None Include="language\qualitydlg_es.ts" />
+    <None Include="language\qualitydlg_zh.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="ui\qualitydlg.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\uic.exe;ui\qualitydlg.ui;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\uic.exe ui\qualitydlg.ui -o f:\delusoft\trunk\qtverify\source\include\ui_qualitydlg.h</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">UIC ui\qualitydlg.ui</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">$(RUNHOME_INC)\include\ui_qualitydlg.h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\uic.exe;ui\qualitydlg.ui;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\uic.exe ui\qualitydlg.ui -o f:\delusoft\trunk\qtverify\source\include\ui_qualitydlg.h</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">UIC ui\qualitydlg.ui</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">$(RUNHOME_INC)\include\ui_qualitydlg.h;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

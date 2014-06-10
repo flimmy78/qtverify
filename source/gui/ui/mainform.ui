@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>868</width>
-    <height>584</height>
+    <width>904</width>
+    <height>582</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,52 +16,32 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_2">
     <item row="0" column="0" colspan="2">
-     <widget class="QGroupBox" name="groupBox">
-      <property name="title">
-       <string>总检数据</string>
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="../qtverify.qrc">:/qtVerify/images/delulogo.png</pixmap>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
-    <item row="1" column="0" rowspan="3">
-     <widget class="QGroupBox" name="groupBox_2">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
+    <item row="1" column="0">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
-      <property name="title">
-       <string>热量表</string>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>458</width>
+        <height>20</height>
+       </size>
       </property>
-     </widget>
+     </spacer>
     </item>
     <item row="1" column="1">
-     <widget class="QGroupBox" name="groupBox_3">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="title">
-       <string>阀门状态</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QGroupBox" name="groupBox_4">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="title">
-       <string>数据采集</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="1">
      <widget class="QGroupBox" name="groupBox_5">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -118,7 +98,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>868</width>
+     <width>904</width>
      <height>23</height>
     </rect>
    </property>
@@ -129,12 +109,29 @@
     <addaction name="action_spset"/>
     <addaction name="action_mysql"/>
     <addaction name="action_sqlite"/>
+    <addaction name="actionComSet"/>
+    <addaction name="actionPortSet"/>
    </widget>
    <widget class="QMenu" name="menu">
     <property name="title">
      <string>VerifyItem</string>
     </property>
-    <addaction name="actionQuality"/>
+    <widget class="QMenu" name="menu_2">
+     <property name="title">
+      <string>质量法</string>
+     </property>
+     <addaction name="actionQualityComp"/>
+     <addaction name="actionQualityTotal"/>
+    </widget>
+    <widget class="QMenu" name="menu_3">
+     <property name="title">
+      <string>标准表法</string>
+     </property>
+     <addaction name="actionStandardComp"/>
+     <addaction name="actionStandardTotal"/>
+    </widget>
+    <addaction name="menu_2"/>
+    <addaction name="menu_3"/>
     <addaction name="actionPlugin"/>
    </widget>
    <widget class="QMenu" name="menuDataQuery">
@@ -143,9 +140,15 @@
     </property>
     <addaction name="action_queryExcel"/>
    </widget>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>About</string>
+    </property>
+   </widget>
    <addaction name="menuSystemSet"/>
    <addaction name="menu"/>
    <addaction name="menuDataQuery"/>
+   <addaction name="menuAbout"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -166,11 +169,6 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+P</string>
-   </property>
-  </action>
-  <action name="actionQuality">
-   <property name="text">
-    <string>流量传感器-质量法</string>
    </property>
   </action>
   <action name="action_queryExcel">
@@ -205,6 +203,36 @@
   <action name="actionPlugin">
    <property name="text">
     <string>plugin</string>
+   </property>
+  </action>
+  <action name="actionQualityComp">
+   <property name="text">
+    <string>分量测量</string>
+   </property>
+  </action>
+  <action name="actionQualityTotal">
+   <property name="text">
+    <string>总量测量</string>
+   </property>
+  </action>
+  <action name="actionStandardComp">
+   <property name="text">
+    <string>分量</string>
+   </property>
+  </action>
+  <action name="actionStandardTotal">
+   <property name="text">
+    <string>总量</string>
+   </property>
+  </action>
+  <action name="actionComSet">
+   <property name="text">
+    <string>串口设置</string>
+   </property>
+  </action>
+  <action name="actionPortSet">
+   <property name="text">
+    <string>终端模块端口设置</string>
    </property>
   </action>
  </widget>

@@ -9,12 +9,12 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
 {
 	ui.setupUi(this);
-	ui.btnExit->setFlat(true);
 
-	m_algobj = new alg();
- 	spobj = new SerialPortSet();
 	dbmysqlobj = new DbMySql();
 	dbsqliteobj = new DbSqlite();
+	m_algobj = new alg();
+	spobj = new SerialPortSet();
+	m_qualitydlg = new QualityDlg();
 
 	connect(ui.btnExit, SIGNAL(clicked()), this, SLOT(close()));
 	
@@ -22,7 +22,6 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 
 MainForm::~MainForm()
 {
-
 }
 
 void MainForm::on_action_spset_triggered()
@@ -111,3 +110,9 @@ void MainForm::on_actionPlugin_triggered()
 		}
 	}
 }
+
+void MainForm::on_actionQualityComp_triggered()
+{
+	m_qualitydlg->show();
+}
+

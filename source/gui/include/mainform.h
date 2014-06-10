@@ -4,12 +4,14 @@
 #include <QtGui/QMainWindow>
 
 #include "ui_mainform.h"
-#include "serialportset.h"
 #include "dbmysql.h"
 #include "dbsqlite.h"
-#include "alg.h"
 #include "monsterinterface.h" //²å¼þ½Ó¿Ú
-#include "interface.h"
+#include "alg.h"
+#include "serialportset.h"
+#include "qualitydlg.h"
+
+// #define  DELETE_ARRAY(a)      {if ( a ) delete []a, a = NULL;}
 
 
 class MainForm : public QMainWindow
@@ -20,11 +22,13 @@ public:
 	MainForm(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~MainForm();
 
-	alg *m_algobj;
-	MonsterInterface *m_monster;
-	SerialPortSet *spobj;
 	DbMySql *dbmysqlobj;
 	DbSqlite *dbsqliteobj;
+	MonsterInterface *m_monster;
+	alg *m_algobj;
+	SerialPortSet *spobj;
+	QualityDlg *m_qualitydlg;
+
 
 public slots:
 	void on_action_spset_triggered();
@@ -32,6 +36,8 @@ public slots:
 	void on_action_sqlite_triggered();
 	void on_action_queryExcel_triggered();
 	void on_actionPlugin_triggered();
+	void on_actionQualityComp_triggered();
+
 	void on_btnStart_clicked();
 	void on_btnSave_clicked();
 	void on_btnPara_clicked();
