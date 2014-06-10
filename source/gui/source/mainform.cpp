@@ -1,6 +1,7 @@
 #include <QtGui/QMessageBox>
 #include <QAxObject>
 #include <QProcess>
+#include <QtCore>
 
 #include "mainform.h"
 
@@ -89,4 +90,24 @@ void MainForm::on_btnPara_clicked()
 	QStringList cmdlist;
 	cmdlist<<"/v:"<<"192.168.1.132"<<"/console";
 	myProcess->start("mstsc", cmdlist);
+}
+
+
+void MainForm::on_actionPlugin_triggered()
+{
+	QDir pluginsDir("F:/mysoft/trunk/plugindemo/GameSystem/plugins");
+	foreach (QString fileName, pluginsDir.entryList(QDir::Files)) 
+	{
+		QFileInfo pluginFileInfo(fileName);
+		if (pluginFileInfo.completeSuffix() == "dll" || pluginFileInfo.completeSuffix() == "so") 
+		{
+			QPluginLoader *pluginLoader	= new QPluginLoader(pluginsDir.absoluteFilePath(fileName), this);
+			QObject *pluginObject = pluginLoader->instance();
+			if (pluginObject) 
+			{
+				m_monster = qobject_cast <MonsterInterface *>(pluginObject);
+				qDebug() << m_monster->name();
+			}
+		}
+	}
 }

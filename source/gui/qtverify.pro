@@ -12,7 +12,8 @@ QT += sql
 DEPENDPATH += . GeneratedFiles							 
 
 QMAKE_LIBDIR = 	$(RUNHOME)/lib \
-								$(RUNHOME)/bin
+                $(RUNHOME)/bin \
+
 								
 LIBS += -lalg -lqaxserver -lqaxcontainerd
 
@@ -55,7 +56,8 @@ UI_DIR = $(RUNHOME)/tmp/qtverify/ui
 
 INCLUDEPATH += 	./include	\
 								../alg	\
-								$${UI_DIR}
+								$${UI_DIR}	\
+								F:\mysoft\trunk\plugindemo\GameSystem
 
 TRANSLATIONS += ./language/qtverify_en.ts ./language/qtverify_zh.ts
 

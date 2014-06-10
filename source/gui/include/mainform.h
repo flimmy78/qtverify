@@ -8,6 +8,8 @@
 #include "dbmysql.h"
 #include "dbsqlite.h"
 #include "alg.h"
+#include "monsterinterface.h" //²å¼þ½Ó¿Ú
+
 
 class MainForm : public QMainWindow
 {
@@ -18,6 +20,7 @@ public:
 	~MainForm();
 
 	alg *m_algobj;
+	MonsterInterface *m_monster;
 	SerialPortSet *spobj;
 	DbMySql *dbmysqlobj;
 	DbSqlite *dbsqliteobj;
@@ -27,6 +30,7 @@ public slots:
 	void on_action_mysql_triggered();
 	void on_action_sqlite_triggered();
 	void on_action_queryExcel_triggered();
+	void on_actionPlugin_triggered();
 	void on_btnStart_clicked();
 	void on_btnSave_clicked();
 	void on_btnPara_clicked();

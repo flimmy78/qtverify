@@ -134,7 +134,8 @@
     <property name="title">
      <string>VerifyItem</string>
     </property>
-    <addaction name="action_2"/>
+    <addaction name="actionQuality"/>
+    <addaction name="actionPlugin"/>
    </widget>
    <widget class="QMenu" name="menuDataQuery">
     <property name="title">
@@ -167,7 +168,7 @@
     <string>Ctrl+P</string>
    </property>
   </action>
-  <action name="action_2">
+  <action name="actionQuality">
    <property name="text">
     <string>流量传感器-质量法</string>
    </property>
@@ -199,6 +200,11 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionPlugin">
+   <property name="text">
+    <string>plugin</string>
    </property>
   </action>
  </widget>
