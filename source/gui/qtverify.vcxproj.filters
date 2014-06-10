@@ -69,18 +69,6 @@
     <ClCompile Include="source\mainform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\qextserialbase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\qextserialport.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\serialportset.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\win_qextserialport.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="include\dbmysql.h">
@@ -92,18 +80,6 @@
     <CustomBuild Include="include\mainform.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="include\qextserialbase.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="include\qextserialport.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="include\serialportset.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="include\win_qextserialport.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qtverify\moc\moc_dbmysql.cpp">
@@ -113,18 +89,6 @@
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qtverify\moc\moc_mainform.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qtverify\moc\moc_qextserialbase.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qtverify\moc\moc_qextserialport.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qtverify\moc\moc_serialportset.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qtverify\moc\moc_win_qextserialport.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="debug\qrc_qtverify.cpp">
@@ -140,9 +104,6 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qtverify\ui\ui_mainform.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qtverify\ui\ui_serialportset.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -162,9 +123,6 @@
       <Filter>Form Files</Filter>
     </CustomBuild>
     <CustomBuild Include="ui\mainform.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="ui\serialportset.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
   </ItemGroup>

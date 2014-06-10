@@ -9,6 +9,7 @@
 #include "dbsqlite.h"
 #include "alg.h"
 #include "monsterinterface.h" //²å¼þ½Ó¿Ú
+#include "interface.h"
 
 
 class MainForm : public QMainWindow

@@ -15,31 +15,22 @@ QMAKE_LIBDIR = 	$(RUNHOME)/lib \
                 $(RUNHOME)/bin \
 
 								
-LIBS += -lalg -lqaxserver -lqaxcontainerd
+LIBS += -lalg -lqtcomdlg -lqaxserver -lqaxcontainerd
 
 # Input
 HEADERS += include/mainform.h	\
 					 include/dbmysql.h	\
 					 include/dbsqlite.h	\
-					 include/serialportset.h  \
-					 include/qextserialbase.h	\
-					 include/qextserialport.h	\
-					 include/win_qextserialport.h	\
 #					 include/excel.h
 					 
 FORMS += 	ui/mainform.ui	\
 				 	ui/dbmysql.ui		\
-				 	ui/dbsqlite.ui		\
-				 	ui/serialportset.ui	\
+				 	ui/dbsqlite.ui	
 				 
 SOURCES += source/main.cpp	\
 					 source/mainform.cpp	\
 					 source/dbmysql.cpp		\
 					 source/dbsqlite.cpp		\
-					 source/serialportset.cpp		\
-					 source/qextserialbase.cpp	\
-					 source/qextserialport.cpp	\
-					 source/win_qextserialport.cpp	\
 #					 source/excel.cpp
 					 
 RESOURCES += qtverify.qrc
@@ -57,7 +48,11 @@ UI_DIR = $(RUNHOME)/tmp/qtverify/ui
 INCLUDEPATH += 	./include	\
 								../alg	\
 								$${UI_DIR}	\
-								F:\mysoft\trunk\plugindemo\GameSystem
+								$$(RUNHOME_INC)/include		\
+								F:\mysoft\trunk\plugindemo\GameSystem  \
+								F:\delusoft\trunk\qtverify\source\qtcom\qtcomdlg\include \
+								F:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qtcom\qtcomdlg\ui
+
 
 TRANSLATIONS += ./language/qtverify_en.ts ./language/qtverify_zh.ts
 
