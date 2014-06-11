@@ -3,11 +3,11 @@
 
 #include <QtGui/QWidget>
 
-#include "qtcomdlg_global.h"
+#include "comsetdlg_global.h"
 #include "ui_serialportset.h"
 #include "win_qextserialport.h"
 
-class QTCOMDLG_EXPORT SerialPortSet : public QWidget
+class COMSETDLG_EXPORT SerialPortSet : public QWidget
 {
 	Q_OBJECT
 
