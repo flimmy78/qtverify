@@ -7,6 +7,7 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
 	ui.setupUi(this);
+
 }
 
 QualityDlg::~QualityDlg()
@@ -23,7 +24,7 @@ void QualityDlg::setValveBtnBackColor(QPushButton *btn, bool isOpen)
 {
 	if (isOpen)
 	{
-		btn->setStyleSheet("background:green;border:0px;");  
+		btn->setStyleSheet("background:QColor(0,255,0);border:0px;");  
 	}
 	else
 	{

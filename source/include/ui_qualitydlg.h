@@ -61,7 +61,7 @@ public:
     QLabel *label_6;
     QLineEdit *lineEdit_5;
     QLabel *label_7;
-    QGroupBox *groupBox_6;
+    QGroupBox *groupBox_heatmeter;
     QGridLayout *gridLayout_23;
     QGroupBox *groupBox_9;
     QGridLayout *gridLayout_7;
@@ -296,7 +296,7 @@ public:
     {
         if (QualityDlgClass->objectName().isEmpty())
             QualityDlgClass->setObjectName(QString::fromUtf8("QualityDlgClass"));
-        QualityDlgClass->resize(1351, 577);
+        QualityDlgClass->resize(1351, 656);
         gridLayout_24 = new QGridLayout(QualityDlgClass);
         gridLayout_24->setObjectName(QString::fromUtf8("gridLayout_24"));
         groupBox = new QGroupBox(QualityDlgClass);
@@ -449,17 +449,17 @@ public:
 
         gridLayout_24->addWidget(groupBox, 0, 0, 1, 2);
 
-        groupBox_6 = new QGroupBox(QualityDlgClass);
-        groupBox_6->setObjectName(QString::fromUtf8("groupBox_6"));
+        groupBox_heatmeter = new QGroupBox(QualityDlgClass);
+        groupBox_heatmeter->setObjectName(QString::fromUtf8("groupBox_heatmeter"));
         QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(groupBox_6->sizePolicy().hasHeightForWidth());
-        groupBox_6->setSizePolicy(sizePolicy1);
-        groupBox_6->setFlat(false);
-        gridLayout_23 = new QGridLayout(groupBox_6);
+        sizePolicy1.setHeightForWidth(groupBox_heatmeter->sizePolicy().hasHeightForWidth());
+        groupBox_heatmeter->setSizePolicy(sizePolicy1);
+        groupBox_heatmeter->setFlat(false);
+        gridLayout_23 = new QGridLayout(groupBox_heatmeter);
         gridLayout_23->setObjectName(QString::fromUtf8("gridLayout_23"));
-        groupBox_9 = new QGroupBox(groupBox_6);
+        groupBox_9 = new QGroupBox(groupBox_heatmeter);
         groupBox_9->setObjectName(QString::fromUtf8("groupBox_9"));
         gridLayout_7 = new QGridLayout(groupBox_9);
         gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
@@ -541,7 +541,7 @@ public:
 
         gridLayout_23->addWidget(groupBox_9, 0, 0, 1, 1);
 
-        groupBox_10 = new QGroupBox(groupBox_6);
+        groupBox_10 = new QGroupBox(groupBox_heatmeter);
         groupBox_10->setObjectName(QString::fromUtf8("groupBox_10"));
         gridLayout_12 = new QGridLayout(groupBox_10);
         gridLayout_12->setObjectName(QString::fromUtf8("gridLayout_12"));
@@ -620,7 +620,7 @@ public:
 
         gridLayout_23->addWidget(groupBox_10, 0, 1, 1, 1);
 
-        groupBox_11 = new QGroupBox(groupBox_6);
+        groupBox_11 = new QGroupBox(groupBox_heatmeter);
         groupBox_11->setObjectName(QString::fromUtf8("groupBox_11"));
         gridLayout_13 = new QGridLayout(groupBox_11);
         gridLayout_13->setObjectName(QString::fromUtf8("gridLayout_13"));
@@ -699,7 +699,7 @@ public:
 
         gridLayout_23->addWidget(groupBox_11, 0, 2, 1, 1);
 
-        groupBox_12 = new QGroupBox(groupBox_6);
+        groupBox_12 = new QGroupBox(groupBox_heatmeter);
         groupBox_12->setObjectName(QString::fromUtf8("groupBox_12"));
         gridLayout_14 = new QGridLayout(groupBox_12);
         gridLayout_14->setObjectName(QString::fromUtf8("gridLayout_14"));
@@ -778,7 +778,7 @@ public:
 
         gridLayout_23->addWidget(groupBox_12, 0, 3, 1, 1);
 
-        groupBox_13 = new QGroupBox(groupBox_6);
+        groupBox_13 = new QGroupBox(groupBox_heatmeter);
         groupBox_13->setObjectName(QString::fromUtf8("groupBox_13"));
         gridLayout_15 = new QGridLayout(groupBox_13);
         gridLayout_15->setObjectName(QString::fromUtf8("gridLayout_15"));
@@ -857,7 +857,7 @@ public:
 
         gridLayout_23->addWidget(groupBox_13, 0, 4, 1, 1);
 
-        groupBox_14 = new QGroupBox(groupBox_6);
+        groupBox_14 = new QGroupBox(groupBox_heatmeter);
         groupBox_14->setObjectName(QString::fromUtf8("groupBox_14"));
         gridLayout_16 = new QGridLayout(groupBox_14);
         gridLayout_16->setObjectName(QString::fromUtf8("gridLayout_16"));
@@ -936,7 +936,7 @@ public:
 
         gridLayout_23->addWidget(groupBox_14, 0, 5, 1, 1);
 
-        groupBox_15 = new QGroupBox(groupBox_6);
+        groupBox_15 = new QGroupBox(groupBox_heatmeter);
         groupBox_15->setObjectName(QString::fromUtf8("groupBox_15"));
         gridLayout_17 = new QGridLayout(groupBox_15);
         gridLayout_17->setObjectName(QString::fromUtf8("gridLayout_17"));
@@ -1015,7 +1015,7 @@ public:
 
         gridLayout_23->addWidget(groupBox_15, 1, 0, 1, 1);
 
-        groupBox_16 = new QGroupBox(groupBox_6);
+        groupBox_16 = new QGroupBox(groupBox_heatmeter);
         groupBox_16->setObjectName(QString::fromUtf8("groupBox_16"));
         gridLayout_18 = new QGridLayout(groupBox_16);
         gridLayout_18->setObjectName(QString::fromUtf8("gridLayout_18"));
@@ -1094,7 +1094,7 @@ public:
 
         gridLayout_23->addWidget(groupBox_16, 1, 1, 1, 1);
 
-        groupBox_17 = new QGroupBox(groupBox_6);
+        groupBox_17 = new QGroupBox(groupBox_heatmeter);
         groupBox_17->setObjectName(QString::fromUtf8("groupBox_17"));
         gridLayout_19 = new QGridLayout(groupBox_17);
         gridLayout_19->setObjectName(QString::fromUtf8("gridLayout_19"));
@@ -1173,7 +1173,7 @@ public:
 
         gridLayout_23->addWidget(groupBox_17, 1, 2, 1, 1);
 
-        groupBox_18 = new QGroupBox(groupBox_6);
+        groupBox_18 = new QGroupBox(groupBox_heatmeter);
         groupBox_18->setObjectName(QString::fromUtf8("groupBox_18"));
         gridLayout_20 = new QGridLayout(groupBox_18);
         gridLayout_20->setObjectName(QString::fromUtf8("gridLayout_20"));
@@ -1252,7 +1252,7 @@ public:
 
         gridLayout_23->addWidget(groupBox_18, 1, 3, 1, 1);
 
-        groupBox_19 = new QGroupBox(groupBox_6);
+        groupBox_19 = new QGroupBox(groupBox_heatmeter);
         groupBox_19->setObjectName(QString::fromUtf8("groupBox_19"));
         gridLayout_21 = new QGridLayout(groupBox_19);
         gridLayout_21->setObjectName(QString::fromUtf8("gridLayout_21"));
@@ -1331,7 +1331,7 @@ public:
 
         gridLayout_23->addWidget(groupBox_19, 1, 4, 1, 1);
 
-        groupBox_20 = new QGroupBox(groupBox_6);
+        groupBox_20 = new QGroupBox(groupBox_heatmeter);
         groupBox_20->setObjectName(QString::fromUtf8("groupBox_20"));
         gridLayout_22 = new QGridLayout(groupBox_20);
         gridLayout_22->setObjectName(QString::fromUtf8("gridLayout_22"));
@@ -1411,7 +1411,7 @@ public:
         gridLayout_23->addWidget(groupBox_20, 1, 5, 1, 1);
 
 
-        gridLayout_24->addWidget(groupBox_6, 1, 0, 1, 1);
+        gridLayout_24->addWidget(groupBox_heatmeter, 1, 0, 1, 1);
 
         gridLayout_11 = new QGridLayout();
         gridLayout_11->setObjectName(QString::fromUtf8("gridLayout_11"));
@@ -1674,7 +1674,7 @@ public:
         label_5->setText(QApplication::translate("QualityDlgClass", "\345\207\272\345\217\243", 0, QApplication::UnicodeUTF8));
         label_6->setText(QApplication::translate("QualityDlgClass", "\316\251", 0, QApplication::UnicodeUTF8));
         label_7->setText(QApplication::translate("QualityDlgClass", "\342\204\203", 0, QApplication::UnicodeUTF8));
-        groupBox_6->setTitle(QApplication::translate("QualityDlgClass", "\346\243\200\345\256\232\347\203\255\351\207\217\350\241\250", 0, QApplication::UnicodeUTF8));
+        groupBox_heatmeter->setTitle(QApplication::translate("QualityDlgClass", "\346\243\200\345\256\232\347\203\255\351\207\217\350\241\250", 0, QApplication::UnicodeUTF8));
         groupBox_9->setTitle(QApplication::translate("QualityDlgClass", "1", 0, QApplication::UnicodeUTF8));
         label_25->setText(QApplication::translate("QualityDlgClass", "\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
         label_26->setText(QApplication::translate("QualityDlgClass", "V0(L)", 0, QApplication::UnicodeUTF8));
@@ -1786,11 +1786,11 @@ public:
         label_9->setText(QApplication::translate("QualityDlgClass", "\345\260\217\345\244\251\345\271\263  ", 0, QApplication::UnicodeUTF8));
         label_14->setText(QApplication::translate("QualityDlgClass", "kg", 0, QApplication::UnicodeUTF8));
         label_10->setText(QApplication::translate("QualityDlgClass", "\347\236\254\346\227\266\346\265\201\351\207\217", 0, QApplication::UnicodeUTF8));
-        label_15->setText(QApplication::translate("QualityDlgClass", "m/s", 0, QApplication::UnicodeUTF8));
+        label_15->setText(QApplication::translate("QualityDlgClass", "\343\216\241/s", 0, QApplication::UnicodeUTF8));
         label_11->setText(QApplication::translate("QualityDlgClass", "\345\205\245\345\217\243\346\270\251\345\272\246", 0, QApplication::UnicodeUTF8));
-        label_16->setText(QApplication::translate("QualityDlgClass", "\302\260C", 0, QApplication::UnicodeUTF8));
+        label_16->setText(QApplication::translate("QualityDlgClass", "\342\204\203", 0, QApplication::UnicodeUTF8));
         label_12->setText(QApplication::translate("QualityDlgClass", "\345\207\272\345\217\243\346\270\251\345\272\246", 0, QApplication::UnicodeUTF8));
-        label_17->setText(QApplication::translate("QualityDlgClass", "\302\260C", 0, QApplication::UnicodeUTF8));
+        label_17->setText(QApplication::translate("QualityDlgClass", "\342\204\203", 0, QApplication::UnicodeUTF8));
         groupBox_8->setTitle(QApplication::translate("QualityDlgClass", "\346\223\215\344\275\234\346\255\245\351\252\244", 0, QApplication::UnicodeUTF8));
         pushButton_3->setText(QApplication::translate("QualityDlgClass", "\345\217\202\346\225\260", 0, QApplication::UnicodeUTF8));
         pushButton_4->setText(QApplication::translate("QualityDlgClass", "\346\216\222\346\260\224", 0, QApplication::UnicodeUTF8));

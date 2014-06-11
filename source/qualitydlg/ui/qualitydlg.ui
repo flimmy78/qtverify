@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1351</width>
-    <height>577</height>
+    <height>656</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -180,7 +180,7 @@
     </widget>
    </item>
    <item row="1" column="0">
-    <widget class="QGroupBox" name="groupBox_6">
+    <widget class="QGroupBox" name="groupBox_heatmeter">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
        <horstretch>0</horstretch>
@@ -1504,7 +1504,7 @@
         <item row="2" column="2">
          <widget class="QLabel" name="label_15">
           <property name="text">
-           <string>m/s</string>
+           <string>㎡/s</string>
           </property>
          </widget>
         </item>
@@ -1528,7 +1528,7 @@
         <item row="3" column="2">
          <widget class="QLabel" name="label_16">
           <property name="text">
-           <string>°C</string>
+           <string>℃</string>
           </property>
          </widget>
         </item>
@@ -1552,7 +1552,7 @@
         <item row="4" column="2">
          <widget class="QLabel" name="label_17">
           <property name="text">
-           <string>°C</string>
+           <string>℃</string>
           </property>
          </widget>
         </item>
