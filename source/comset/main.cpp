@@ -12,9 +12,9 @@ int main( int argc, char ** argv )
 	char *path = getenv("RUNHOME");
 	if (NULL != path) 
 	{
-		char filename[64];
-		memset( filename, 0, sizeof(char)*64 );
-		sprintf( filename, "%s/uif/i18n/qtcomdlg_zh.qm", path );
+		char filename[100];
+		memset( filename, 0, sizeof(char)*100 );
+		sprintf( filename, "%s/uif/i18n/comsetdlg_zh.qm", path );
 		bool loadok = translator.load(filename, "");
 		if (!loadok)
 		{
