@@ -116,3 +116,17 @@ void MainForm::on_actionQualityComp_triggered()
 	m_qualitydlg->show();
 }
 
+void MainForm::on_actionQualityTotal_triggered()
+{
+	int count = spobj->myCom->bytesAvailable();
+	QByteArray temp = spobj->myCom->readAll();
+	if (!temp.isEmpty())
+	{
+		int number = temp.size();
+		for (int i=0; i<number; i++)
+		{
+			printf_s("i=%d, data=%02c\n", i, (UINT8)temp.at(i));
+		}
+	}
+}
+

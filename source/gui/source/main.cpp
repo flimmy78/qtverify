@@ -24,12 +24,12 @@ int main(int argc, char *argv[])
 	bool loadok = translator->load( filename );
 	if (!loadok)
 	{
-		 printf(" load translator file \"%s\" failed! \n", filename);
+		 printf_s(" load translator file \"%s\" failed! \n", filename);
 	}
 	app.installTranslator( translator );
 
 	MainForm w;
 	w.show();
-	
+
 	return app.exec();
 }

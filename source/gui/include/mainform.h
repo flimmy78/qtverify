@@ -37,6 +37,7 @@ public slots:
 	void on_action_queryExcel_triggered();
 	void on_actionPlugin_triggered();
 	void on_actionQualityComp_triggered();
+	void on_actionQualityTotal_triggered();
 
 	void on_btnStart_clicked();
 	void on_btnSave_clicked();

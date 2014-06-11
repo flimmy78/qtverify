@@ -212,6 +212,10 @@ public:
          << QApplication::translate("SerialPortSetClass", "COM2", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SerialPortSetClass", "COM3", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SerialPortSetClass", "COM4", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SerialPortSetClass", "COM5", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SerialPortSetClass", "COM6", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SerialPortSetClass", "COM7", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SerialPortSetClass", "COM8", 0, QApplication::UnicodeUTF8)
         );
         label_4->setText(QApplication::translate("SerialPortSetClass", "\346\263\242\347\211\271\347\216\207", 0, QApplication::UnicodeUTF8));
         baudRateComboBox->clear();

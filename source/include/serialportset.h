@@ -15,6 +15,8 @@ public:
 	SerialPortSet(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~SerialPortSet();
 
+	Win_QextSerialPort *myCom;
+
 	void sp_anyfunc();
 
 public slots:
@@ -22,7 +24,6 @@ public slots:
 
 private:
 	Ui::SerialPortSetClass spsetui;
-	Win_QextSerialPort *myCom;
 
 private slots:
 	void slotReadMyCom();

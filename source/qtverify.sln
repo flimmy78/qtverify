@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qtcomdlg", "qtcom\qtcomdlg\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qualitydlg", "qualitydlg\qualitydlg.vcxproj", "{9C9106C2-E1FC-3102-A14E-2CEBAB74BF21}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qtcom", "qtcom\qtcom.vcxproj", "{1CAB4AF8-89F4-344E-86E3-28FA40ED5966}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -31,6 +33,10 @@ Global
 		{9C9106C2-E1FC-3102-A14E-2CEBAB74BF21}.Debug|Win32.Build.0 = Debug|Win32
 		{9C9106C2-E1FC-3102-A14E-2CEBAB74BF21}.Release|Win32.ActiveCfg = Release|Win32
 		{9C9106C2-E1FC-3102-A14E-2CEBAB74BF21}.Release|Win32.Build.0 = Release|Win32
+		{1CAB4AF8-89F4-344E-86E3-28FA40ED5966}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1CAB4AF8-89F4-344E-86E3-28FA40ED5966}.Debug|Win32.Build.0 = Debug|Win32
+		{1CAB4AF8-89F4-344E-86E3-28FA40ED5966}.Release|Win32.ActiveCfg = Release|Win32
+		{1CAB4AF8-89F4-344E-86E3-28FA40ED5966}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
