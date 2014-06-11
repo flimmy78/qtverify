@@ -15,7 +15,7 @@ QMAKE_LIBDIR = 	$(RUNHOME)/lib \
                 $(RUNHOME)/bin \
 
 								
-LIBS += -lalg -lqtcomdlg -lqualitydlg -lqaxserver -lqaxcontainerd
+LIBS += -lalg -lcomsetdlg -lqualitydlg -lqaxserver -lqaxcontainerd
 
 # Input
 HEADERS += include/mainform.h	\

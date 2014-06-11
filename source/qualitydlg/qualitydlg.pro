@@ -7,7 +7,9 @@ DEFINES	+= QUALITYDLG_DLL
 
 QMAKE_LIBDIR +=  ./           \
         	     $(RUNHOME)/lib \
-	             $(RUNHOME)/bin \
+	             $(RUNHOME)/bin 
+	            
+LIBS +=	-lQt3Supportd4 -lQt3Support4
 
 DESTDIR = $(RUNHOME)\tmp\qualitydlg\obj
 MOC_DIR = $(RUNHOME)/tmp/qualitydlg/moc
@@ -24,6 +26,8 @@ HEADERS	+= $$(RUNHOME_INC)/include/qualitydlg_global.h \
 SOURCES	+= source/qualitydlg.cpp  
 					 
 FORMS	+= ui/qualitydlg.ui
+     
+RESOURCES += qualitydlg.qrc     
          
 win32{
 	MY_DEST_LIB_VAR = $${DESTDIR} $${TARGET}.lib
@@ -36,5 +40,5 @@ win32{
 }
 
 TRANSLATIONS =  \
-		language/qualitydlg_zh.ts language/qualitydlg_en.ts language/qualitydlg_es.ts
+		language/qualitydlg_zh.ts language/qualitydlg_en.ts
 		

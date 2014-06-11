@@ -2,11 +2,6 @@
 #include <QtGui/QApplication>
 #include <QtCore/QTextCodec>
 #include <QtCore/QTranslator>
-#include <QtPlugin>
-
-QT_BEGIN_NAMESPACE
-// Q_IMPORT_PLUGIN(pnp_basictools)
-QT_END_NAMESPACE
 
 
 int main(int argc, char *argv[])
@@ -29,7 +24,7 @@ int main(int argc, char *argv[])
 	app.installTranslator( translator );
 
 	MainForm w;
-	w.show();
+	w.showMaximized();
 
 	return app.exec();
 }

@@ -14,7 +14,7 @@ public:
 	QualityDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~QualityDlg();
 
-	public slots:
+public slots:
 
 
 private:

@@ -113,7 +113,7 @@ void MainForm::on_actionPlugin_triggered()
 
 void MainForm::on_actionQualityComp_triggered()
 {
-	m_qualitydlg->show();
+	m_qualitydlg->showMaximized();
 }
 
 void MainForm::on_actionQualityTotal_triggered()
