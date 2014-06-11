@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "comset", "comset\comset.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "comsetdlg", "comset\comsetdlg\comsetdlg.vcxproj", "{ACBCFCED-5545-33E5-8750-559E710EA3AE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "protocol", "protocol\protocol.vcxproj", "{8F584EDB-EA1B-3E01-9432-0EBD925AD3A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -37,6 +39,10 @@ Global
 		{ACBCFCED-5545-33E5-8750-559E710EA3AE}.Debug|Win32.Build.0 = Debug|Win32
 		{ACBCFCED-5545-33E5-8750-559E710EA3AE}.Release|Win32.ActiveCfg = Release|Win32
 		{ACBCFCED-5545-33E5-8750-559E710EA3AE}.Release|Win32.Build.0 = Release|Win32
+		{8F584EDB-EA1B-3E01-9432-0EBD925AD3A5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8F584EDB-EA1B-3E01-9432-0EBD925AD3A5}.Debug|Win32.Build.0 = Debug|Win32
+		{8F584EDB-EA1B-3E01-9432-0EBD925AD3A5}.Release|Win32.ActiveCfg = Release|Win32
+		{8F584EDB-EA1B-3E01-9432-0EBD925AD3A5}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

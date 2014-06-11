@@ -30,7 +30,7 @@ QT_BEGIN_NAMESPACE
 class Ui_QualityDlgClass
 {
 public:
-    QGridLayout *gridLayout_11;
+    QGridLayout *gridLayout_24;
     QGroupBox *groupBox;
     QGridLayout *gridLayout_5;
     Q3ButtonGroup *buttonGroup;
@@ -255,14 +255,18 @@ public:
     QLineEdit *lineEdit_93;
     QLabel *label_108;
     QLineEdit *lineEdit_94;
+    QGridLayout *gridLayout_11;
     QGroupBox *groupBox_2;
     QGridLayout *gridLayout_9;
-    QLabel *label_18;
-    QLabel *label_19;
-    QLabel *label_20;
-    QLabel *label_21;
-    QLabel *label_22;
-    QLabel *label_23;
+    QPushButton *btnWaterIn;
+    QPushButton *btnWaterOut;
+    QPushButton *btnWaterValve1;
+    QPushButton *btnWaterValve2;
+    QPushButton *btnWaterValve3;
+    QPushButton *btnWaterValve4;
+    QGroupBox *groupBox_7;
+    QGridLayout *gridLayout_10;
+    QLabel *label_24;
     QGroupBox *groupBox_3;
     QGridLayout *gridLayout_6;
     QLabel *label_8;
@@ -280,9 +284,6 @@ public:
     QLabel *label_12;
     QLineEdit *lineEdit_10;
     QLabel *label_17;
-    QGroupBox *groupBox_7;
-    QGridLayout *gridLayout_10;
-    QLabel *label_24;
     QGroupBox *groupBox_8;
     QGridLayout *gridLayout_8;
     QPushButton *pushButton_3;
@@ -296,8 +297,8 @@ public:
         if (QualityDlgClass->objectName().isEmpty())
             QualityDlgClass->setObjectName(QString::fromUtf8("QualityDlgClass"));
         QualityDlgClass->resize(1351, 577);
-        gridLayout_11 = new QGridLayout(QualityDlgClass);
-        gridLayout_11->setObjectName(QString::fromUtf8("gridLayout_11"));
+        gridLayout_24 = new QGridLayout(QualityDlgClass);
+        gridLayout_24->setObjectName(QString::fromUtf8("gridLayout_24"));
         groupBox = new QGroupBox(QualityDlgClass);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
@@ -446,7 +447,7 @@ public:
         gridLayout_5->addWidget(groupBox_5, 0, 3, 1, 1);
 
 
-        gridLayout_11->addWidget(groupBox, 0, 0, 1, 3);
+        gridLayout_24->addWidget(groupBox, 0, 0, 1, 2);
 
         groupBox_6 = new QGroupBox(QualityDlgClass);
         groupBox_6->setObjectName(QString::fromUtf8("groupBox_6"));
@@ -455,6 +456,7 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(groupBox_6->sizePolicy().hasHeightForWidth());
         groupBox_6->setSizePolicy(sizePolicy1);
+        groupBox_6->setFlat(false);
         gridLayout_23 = new QGridLayout(groupBox_6);
         gridLayout_23->setObjectName(QString::fromUtf8("gridLayout_23"));
         groupBox_9 = new QGroupBox(groupBox_6);
@@ -463,13 +465,18 @@ public:
         gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
         label_25 = new QLabel(groupBox_9);
         label_25->setObjectName(QString::fromUtf8("label_25"));
+        QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Preferred);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(label_25->sizePolicy().hasHeightForWidth());
+        label_25->setSizePolicy(sizePolicy2);
 
         gridLayout_7->addWidget(label_25, 0, 0, 1, 1);
 
         lineEdit_11 = new QLineEdit(groupBox_9);
         lineEdit_11->setObjectName(QString::fromUtf8("lineEdit_11"));
 
-        gridLayout_7->addWidget(lineEdit_11, 0, 2, 1, 1);
+        gridLayout_7->addWidget(lineEdit_11, 0, 1, 1, 2);
 
         label_26 = new QLabel(groupBox_9);
         label_26->setObjectName(QString::fromUtf8("label_26"));
@@ -504,7 +511,7 @@ public:
         label_29 = new QLabel(groupBox_9);
         label_29->setObjectName(QString::fromUtf8("label_29"));
 
-        gridLayout_7->addWidget(label_29, 4, 0, 1, 1);
+        gridLayout_7->addWidget(label_29, 4, 0, 1, 2);
 
         lineEdit_15 = new QLineEdit(groupBox_9);
         lineEdit_15->setObjectName(QString::fromUtf8("lineEdit_15"));
@@ -519,7 +526,7 @@ public:
         lineEdit_16 = new QLineEdit(groupBox_9);
         lineEdit_16->setObjectName(QString::fromUtf8("lineEdit_16"));
 
-        gridLayout_7->addWidget(lineEdit_16, 5, 1, 1, 2);
+        gridLayout_7->addWidget(lineEdit_16, 5, 2, 1, 1);
 
         label_32 = new QLabel(groupBox_9);
         label_32->setObjectName(QString::fromUtf8("label_32"));
@@ -529,7 +536,7 @@ public:
         lineEdit_17 = new QLineEdit(groupBox_9);
         lineEdit_17->setObjectName(QString::fromUtf8("lineEdit_17"));
 
-        gridLayout_7->addWidget(lineEdit_17, 6, 1, 1, 2);
+        gridLayout_7->addWidget(lineEdit_17, 6, 2, 1, 1);
 
 
         gridLayout_23->addWidget(groupBox_9, 0, 0, 1, 1);
@@ -540,13 +547,15 @@ public:
         gridLayout_12->setObjectName(QString::fromUtf8("gridLayout_12"));
         label_30 = new QLabel(groupBox_10);
         label_30->setObjectName(QString::fromUtf8("label_30"));
+        sizePolicy2.setHeightForWidth(label_30->sizePolicy().hasHeightForWidth());
+        label_30->setSizePolicy(sizePolicy2);
 
         gridLayout_12->addWidget(label_30, 0, 0, 1, 1);
 
         lineEdit_18 = new QLineEdit(groupBox_10);
         lineEdit_18->setObjectName(QString::fromUtf8("lineEdit_18"));
 
-        gridLayout_12->addWidget(lineEdit_18, 0, 2, 1, 1);
+        gridLayout_12->addWidget(lineEdit_18, 0, 1, 1, 2);
 
         label_33 = new QLabel(groupBox_10);
         label_33->setObjectName(QString::fromUtf8("label_33"));
@@ -581,7 +590,7 @@ public:
         label_36 = new QLabel(groupBox_10);
         label_36->setObjectName(QString::fromUtf8("label_36"));
 
-        gridLayout_12->addWidget(label_36, 4, 0, 1, 1);
+        gridLayout_12->addWidget(label_36, 4, 0, 1, 2);
 
         lineEdit_22 = new QLineEdit(groupBox_10);
         lineEdit_22->setObjectName(QString::fromUtf8("lineEdit_22"));
@@ -596,7 +605,7 @@ public:
         lineEdit_23 = new QLineEdit(groupBox_10);
         lineEdit_23->setObjectName(QString::fromUtf8("lineEdit_23"));
 
-        gridLayout_12->addWidget(lineEdit_23, 5, 1, 1, 2);
+        gridLayout_12->addWidget(lineEdit_23, 5, 2, 1, 1);
 
         label_38 = new QLabel(groupBox_10);
         label_38->setObjectName(QString::fromUtf8("label_38"));
@@ -606,7 +615,7 @@ public:
         lineEdit_24 = new QLineEdit(groupBox_10);
         lineEdit_24->setObjectName(QString::fromUtf8("lineEdit_24"));
 
-        gridLayout_12->addWidget(lineEdit_24, 6, 1, 1, 2);
+        gridLayout_12->addWidget(lineEdit_24, 6, 2, 1, 1);
 
 
         gridLayout_23->addWidget(groupBox_10, 0, 1, 1, 1);
@@ -617,13 +626,15 @@ public:
         gridLayout_13->setObjectName(QString::fromUtf8("gridLayout_13"));
         label_39 = new QLabel(groupBox_11);
         label_39->setObjectName(QString::fromUtf8("label_39"));
+        sizePolicy2.setHeightForWidth(label_39->sizePolicy().hasHeightForWidth());
+        label_39->setSizePolicy(sizePolicy2);
 
         gridLayout_13->addWidget(label_39, 0, 0, 1, 1);
 
         lineEdit_25 = new QLineEdit(groupBox_11);
         lineEdit_25->setObjectName(QString::fromUtf8("lineEdit_25"));
 
-        gridLayout_13->addWidget(lineEdit_25, 0, 2, 1, 1);
+        gridLayout_13->addWidget(lineEdit_25, 0, 1, 1, 2);
 
         label_40 = new QLabel(groupBox_11);
         label_40->setObjectName(QString::fromUtf8("label_40"));
@@ -658,7 +669,7 @@ public:
         label_43 = new QLabel(groupBox_11);
         label_43->setObjectName(QString::fromUtf8("label_43"));
 
-        gridLayout_13->addWidget(label_43, 4, 0, 1, 1);
+        gridLayout_13->addWidget(label_43, 4, 0, 1, 2);
 
         lineEdit_29 = new QLineEdit(groupBox_11);
         lineEdit_29->setObjectName(QString::fromUtf8("lineEdit_29"));
@@ -673,7 +684,7 @@ public:
         lineEdit_30 = new QLineEdit(groupBox_11);
         lineEdit_30->setObjectName(QString::fromUtf8("lineEdit_30"));
 
-        gridLayout_13->addWidget(lineEdit_30, 5, 1, 1, 2);
+        gridLayout_13->addWidget(lineEdit_30, 5, 2, 1, 1);
 
         label_45 = new QLabel(groupBox_11);
         label_45->setObjectName(QString::fromUtf8("label_45"));
@@ -683,7 +694,7 @@ public:
         lineEdit_31 = new QLineEdit(groupBox_11);
         lineEdit_31->setObjectName(QString::fromUtf8("lineEdit_31"));
 
-        gridLayout_13->addWidget(lineEdit_31, 6, 1, 1, 2);
+        gridLayout_13->addWidget(lineEdit_31, 6, 2, 1, 1);
 
 
         gridLayout_23->addWidget(groupBox_11, 0, 2, 1, 1);
@@ -694,18 +705,20 @@ public:
         gridLayout_14->setObjectName(QString::fromUtf8("gridLayout_14"));
         label_46 = new QLabel(groupBox_12);
         label_46->setObjectName(QString::fromUtf8("label_46"));
+        sizePolicy2.setHeightForWidth(label_46->sizePolicy().hasHeightForWidth());
+        label_46->setSizePolicy(sizePolicy2);
 
         gridLayout_14->addWidget(label_46, 0, 0, 1, 1);
 
         lineEdit_32 = new QLineEdit(groupBox_12);
         lineEdit_32->setObjectName(QString::fromUtf8("lineEdit_32"));
 
-        gridLayout_14->addWidget(lineEdit_32, 0, 2, 1, 1);
+        gridLayout_14->addWidget(lineEdit_32, 0, 1, 1, 2);
 
         label_47 = new QLabel(groupBox_12);
         label_47->setObjectName(QString::fromUtf8("label_47"));
 
-        gridLayout_14->addWidget(label_47, 1, 0, 1, 1);
+        gridLayout_14->addWidget(label_47, 1, 0, 1, 2);
 
         lineEdit_33 = new QLineEdit(groupBox_12);
         lineEdit_33->setObjectName(QString::fromUtf8("lineEdit_33"));
@@ -715,7 +728,7 @@ public:
         label_48 = new QLabel(groupBox_12);
         label_48->setObjectName(QString::fromUtf8("label_48"));
 
-        gridLayout_14->addWidget(label_48, 2, 0, 1, 1);
+        gridLayout_14->addWidget(label_48, 2, 0, 1, 2);
 
         lineEdit_34 = new QLineEdit(groupBox_12);
         lineEdit_34->setObjectName(QString::fromUtf8("lineEdit_34"));
@@ -735,7 +748,7 @@ public:
         label_50 = new QLabel(groupBox_12);
         label_50->setObjectName(QString::fromUtf8("label_50"));
 
-        gridLayout_14->addWidget(label_50, 4, 0, 1, 1);
+        gridLayout_14->addWidget(label_50, 4, 0, 1, 2);
 
         lineEdit_36 = new QLineEdit(groupBox_12);
         lineEdit_36->setObjectName(QString::fromUtf8("lineEdit_36"));
@@ -745,22 +758,22 @@ public:
         label_51 = new QLabel(groupBox_12);
         label_51->setObjectName(QString::fromUtf8("label_51"));
 
-        gridLayout_14->addWidget(label_51, 5, 0, 1, 1);
+        gridLayout_14->addWidget(label_51, 5, 0, 1, 2);
 
         lineEdit_37 = new QLineEdit(groupBox_12);
         lineEdit_37->setObjectName(QString::fromUtf8("lineEdit_37"));
 
-        gridLayout_14->addWidget(lineEdit_37, 5, 1, 1, 2);
+        gridLayout_14->addWidget(lineEdit_37, 5, 2, 1, 1);
 
         label_52 = new QLabel(groupBox_12);
         label_52->setObjectName(QString::fromUtf8("label_52"));
 
-        gridLayout_14->addWidget(label_52, 6, 0, 1, 1);
+        gridLayout_14->addWidget(label_52, 6, 0, 1, 2);
 
         lineEdit_38 = new QLineEdit(groupBox_12);
         lineEdit_38->setObjectName(QString::fromUtf8("lineEdit_38"));
 
-        gridLayout_14->addWidget(lineEdit_38, 6, 1, 1, 2);
+        gridLayout_14->addWidget(lineEdit_38, 6, 2, 1, 1);
 
 
         gridLayout_23->addWidget(groupBox_12, 0, 3, 1, 1);
@@ -771,13 +784,15 @@ public:
         gridLayout_15->setObjectName(QString::fromUtf8("gridLayout_15"));
         label_53 = new QLabel(groupBox_13);
         label_53->setObjectName(QString::fromUtf8("label_53"));
+        sizePolicy2.setHeightForWidth(label_53->sizePolicy().hasHeightForWidth());
+        label_53->setSizePolicy(sizePolicy2);
 
         gridLayout_15->addWidget(label_53, 0, 0, 1, 1);
 
         lineEdit_39 = new QLineEdit(groupBox_13);
         lineEdit_39->setObjectName(QString::fromUtf8("lineEdit_39"));
 
-        gridLayout_15->addWidget(lineEdit_39, 0, 2, 1, 1);
+        gridLayout_15->addWidget(lineEdit_39, 0, 1, 1, 2);
 
         label_54 = new QLabel(groupBox_13);
         label_54->setObjectName(QString::fromUtf8("label_54"));
@@ -812,7 +827,7 @@ public:
         label_57 = new QLabel(groupBox_13);
         label_57->setObjectName(QString::fromUtf8("label_57"));
 
-        gridLayout_15->addWidget(label_57, 4, 0, 1, 1);
+        gridLayout_15->addWidget(label_57, 4, 0, 1, 2);
 
         lineEdit_43 = new QLineEdit(groupBox_13);
         lineEdit_43->setObjectName(QString::fromUtf8("lineEdit_43"));
@@ -827,7 +842,7 @@ public:
         lineEdit_44 = new QLineEdit(groupBox_13);
         lineEdit_44->setObjectName(QString::fromUtf8("lineEdit_44"));
 
-        gridLayout_15->addWidget(lineEdit_44, 5, 1, 1, 2);
+        gridLayout_15->addWidget(lineEdit_44, 5, 2, 1, 1);
 
         label_59 = new QLabel(groupBox_13);
         label_59->setObjectName(QString::fromUtf8("label_59"));
@@ -837,7 +852,7 @@ public:
         lineEdit_45 = new QLineEdit(groupBox_13);
         lineEdit_45->setObjectName(QString::fromUtf8("lineEdit_45"));
 
-        gridLayout_15->addWidget(lineEdit_45, 6, 1, 1, 2);
+        gridLayout_15->addWidget(lineEdit_45, 6, 2, 1, 1);
 
 
         gridLayout_23->addWidget(groupBox_13, 0, 4, 1, 1);
@@ -848,13 +863,15 @@ public:
         gridLayout_16->setObjectName(QString::fromUtf8("gridLayout_16"));
         label_60 = new QLabel(groupBox_14);
         label_60->setObjectName(QString::fromUtf8("label_60"));
+        sizePolicy2.setHeightForWidth(label_60->sizePolicy().hasHeightForWidth());
+        label_60->setSizePolicy(sizePolicy2);
 
         gridLayout_16->addWidget(label_60, 0, 0, 1, 1);
 
         lineEdit_46 = new QLineEdit(groupBox_14);
         lineEdit_46->setObjectName(QString::fromUtf8("lineEdit_46"));
 
-        gridLayout_16->addWidget(lineEdit_46, 0, 2, 1, 1);
+        gridLayout_16->addWidget(lineEdit_46, 0, 1, 1, 2);
 
         label_61 = new QLabel(groupBox_14);
         label_61->setObjectName(QString::fromUtf8("label_61"));
@@ -889,7 +906,7 @@ public:
         label_64 = new QLabel(groupBox_14);
         label_64->setObjectName(QString::fromUtf8("label_64"));
 
-        gridLayout_16->addWidget(label_64, 4, 0, 1, 1);
+        gridLayout_16->addWidget(label_64, 4, 0, 1, 2);
 
         lineEdit_50 = new QLineEdit(groupBox_14);
         lineEdit_50->setObjectName(QString::fromUtf8("lineEdit_50"));
@@ -904,7 +921,7 @@ public:
         lineEdit_51 = new QLineEdit(groupBox_14);
         lineEdit_51->setObjectName(QString::fromUtf8("lineEdit_51"));
 
-        gridLayout_16->addWidget(lineEdit_51, 5, 1, 1, 2);
+        gridLayout_16->addWidget(lineEdit_51, 5, 2, 1, 1);
 
         label_66 = new QLabel(groupBox_14);
         label_66->setObjectName(QString::fromUtf8("label_66"));
@@ -914,7 +931,7 @@ public:
         lineEdit_52 = new QLineEdit(groupBox_14);
         lineEdit_52->setObjectName(QString::fromUtf8("lineEdit_52"));
 
-        gridLayout_16->addWidget(lineEdit_52, 6, 1, 1, 2);
+        gridLayout_16->addWidget(lineEdit_52, 6, 2, 1, 1);
 
 
         gridLayout_23->addWidget(groupBox_14, 0, 5, 1, 1);
@@ -925,13 +942,15 @@ public:
         gridLayout_17->setObjectName(QString::fromUtf8("gridLayout_17"));
         label_67 = new QLabel(groupBox_15);
         label_67->setObjectName(QString::fromUtf8("label_67"));
+        sizePolicy2.setHeightForWidth(label_67->sizePolicy().hasHeightForWidth());
+        label_67->setSizePolicy(sizePolicy2);
 
         gridLayout_17->addWidget(label_67, 0, 0, 1, 1);
 
         lineEdit_53 = new QLineEdit(groupBox_15);
         lineEdit_53->setObjectName(QString::fromUtf8("lineEdit_53"));
 
-        gridLayout_17->addWidget(lineEdit_53, 0, 2, 1, 1);
+        gridLayout_17->addWidget(lineEdit_53, 0, 1, 1, 2);
 
         label_68 = new QLabel(groupBox_15);
         label_68->setObjectName(QString::fromUtf8("label_68"));
@@ -966,7 +985,7 @@ public:
         label_71 = new QLabel(groupBox_15);
         label_71->setObjectName(QString::fromUtf8("label_71"));
 
-        gridLayout_17->addWidget(label_71, 4, 0, 1, 1);
+        gridLayout_17->addWidget(label_71, 4, 0, 1, 2);
 
         lineEdit_57 = new QLineEdit(groupBox_15);
         lineEdit_57->setObjectName(QString::fromUtf8("lineEdit_57"));
@@ -981,7 +1000,7 @@ public:
         lineEdit_58 = new QLineEdit(groupBox_15);
         lineEdit_58->setObjectName(QString::fromUtf8("lineEdit_58"));
 
-        gridLayout_17->addWidget(lineEdit_58, 5, 1, 1, 2);
+        gridLayout_17->addWidget(lineEdit_58, 5, 2, 1, 1);
 
         label_73 = new QLabel(groupBox_15);
         label_73->setObjectName(QString::fromUtf8("label_73"));
@@ -991,7 +1010,7 @@ public:
         lineEdit_59 = new QLineEdit(groupBox_15);
         lineEdit_59->setObjectName(QString::fromUtf8("lineEdit_59"));
 
-        gridLayout_17->addWidget(lineEdit_59, 6, 1, 1, 2);
+        gridLayout_17->addWidget(lineEdit_59, 6, 2, 1, 1);
 
 
         gridLayout_23->addWidget(groupBox_15, 1, 0, 1, 1);
@@ -1002,13 +1021,15 @@ public:
         gridLayout_18->setObjectName(QString::fromUtf8("gridLayout_18"));
         label_74 = new QLabel(groupBox_16);
         label_74->setObjectName(QString::fromUtf8("label_74"));
+        sizePolicy2.setHeightForWidth(label_74->sizePolicy().hasHeightForWidth());
+        label_74->setSizePolicy(sizePolicy2);
 
         gridLayout_18->addWidget(label_74, 0, 0, 1, 1);
 
         lineEdit_60 = new QLineEdit(groupBox_16);
         lineEdit_60->setObjectName(QString::fromUtf8("lineEdit_60"));
 
-        gridLayout_18->addWidget(lineEdit_60, 0, 2, 1, 1);
+        gridLayout_18->addWidget(lineEdit_60, 0, 1, 1, 2);
 
         label_75 = new QLabel(groupBox_16);
         label_75->setObjectName(QString::fromUtf8("label_75"));
@@ -1043,7 +1064,7 @@ public:
         label_78 = new QLabel(groupBox_16);
         label_78->setObjectName(QString::fromUtf8("label_78"));
 
-        gridLayout_18->addWidget(label_78, 4, 0, 1, 1);
+        gridLayout_18->addWidget(label_78, 4, 0, 1, 2);
 
         lineEdit_64 = new QLineEdit(groupBox_16);
         lineEdit_64->setObjectName(QString::fromUtf8("lineEdit_64"));
@@ -1058,7 +1079,7 @@ public:
         lineEdit_65 = new QLineEdit(groupBox_16);
         lineEdit_65->setObjectName(QString::fromUtf8("lineEdit_65"));
 
-        gridLayout_18->addWidget(lineEdit_65, 5, 1, 1, 2);
+        gridLayout_18->addWidget(lineEdit_65, 5, 2, 1, 1);
 
         label_80 = new QLabel(groupBox_16);
         label_80->setObjectName(QString::fromUtf8("label_80"));
@@ -1068,7 +1089,7 @@ public:
         lineEdit_66 = new QLineEdit(groupBox_16);
         lineEdit_66->setObjectName(QString::fromUtf8("lineEdit_66"));
 
-        gridLayout_18->addWidget(lineEdit_66, 6, 1, 1, 2);
+        gridLayout_18->addWidget(lineEdit_66, 6, 2, 1, 1);
 
 
         gridLayout_23->addWidget(groupBox_16, 1, 1, 1, 1);
@@ -1079,13 +1100,15 @@ public:
         gridLayout_19->setObjectName(QString::fromUtf8("gridLayout_19"));
         label_81 = new QLabel(groupBox_17);
         label_81->setObjectName(QString::fromUtf8("label_81"));
+        sizePolicy2.setHeightForWidth(label_81->sizePolicy().hasHeightForWidth());
+        label_81->setSizePolicy(sizePolicy2);
 
         gridLayout_19->addWidget(label_81, 0, 0, 1, 1);
 
         lineEdit_67 = new QLineEdit(groupBox_17);
         lineEdit_67->setObjectName(QString::fromUtf8("lineEdit_67"));
 
-        gridLayout_19->addWidget(lineEdit_67, 0, 2, 1, 1);
+        gridLayout_19->addWidget(lineEdit_67, 0, 1, 1, 2);
 
         label_82 = new QLabel(groupBox_17);
         label_82->setObjectName(QString::fromUtf8("label_82"));
@@ -1120,7 +1143,7 @@ public:
         label_85 = new QLabel(groupBox_17);
         label_85->setObjectName(QString::fromUtf8("label_85"));
 
-        gridLayout_19->addWidget(label_85, 4, 0, 1, 1);
+        gridLayout_19->addWidget(label_85, 4, 0, 1, 2);
 
         lineEdit_71 = new QLineEdit(groupBox_17);
         lineEdit_71->setObjectName(QString::fromUtf8("lineEdit_71"));
@@ -1135,7 +1158,7 @@ public:
         lineEdit_72 = new QLineEdit(groupBox_17);
         lineEdit_72->setObjectName(QString::fromUtf8("lineEdit_72"));
 
-        gridLayout_19->addWidget(lineEdit_72, 5, 1, 1, 2);
+        gridLayout_19->addWidget(lineEdit_72, 5, 2, 1, 1);
 
         label_87 = new QLabel(groupBox_17);
         label_87->setObjectName(QString::fromUtf8("label_87"));
@@ -1145,7 +1168,7 @@ public:
         lineEdit_73 = new QLineEdit(groupBox_17);
         lineEdit_73->setObjectName(QString::fromUtf8("lineEdit_73"));
 
-        gridLayout_19->addWidget(lineEdit_73, 6, 1, 1, 2);
+        gridLayout_19->addWidget(lineEdit_73, 6, 2, 1, 1);
 
 
         gridLayout_23->addWidget(groupBox_17, 1, 2, 1, 1);
@@ -1156,13 +1179,15 @@ public:
         gridLayout_20->setObjectName(QString::fromUtf8("gridLayout_20"));
         label_88 = new QLabel(groupBox_18);
         label_88->setObjectName(QString::fromUtf8("label_88"));
+        sizePolicy2.setHeightForWidth(label_88->sizePolicy().hasHeightForWidth());
+        label_88->setSizePolicy(sizePolicy2);
 
         gridLayout_20->addWidget(label_88, 0, 0, 1, 1);
 
         lineEdit_74 = new QLineEdit(groupBox_18);
         lineEdit_74->setObjectName(QString::fromUtf8("lineEdit_74"));
 
-        gridLayout_20->addWidget(lineEdit_74, 0, 2, 1, 1);
+        gridLayout_20->addWidget(lineEdit_74, 0, 1, 1, 2);
 
         label_89 = new QLabel(groupBox_18);
         label_89->setObjectName(QString::fromUtf8("label_89"));
@@ -1197,7 +1222,7 @@ public:
         label_92 = new QLabel(groupBox_18);
         label_92->setObjectName(QString::fromUtf8("label_92"));
 
-        gridLayout_20->addWidget(label_92, 4, 0, 1, 1);
+        gridLayout_20->addWidget(label_92, 4, 0, 1, 2);
 
         lineEdit_78 = new QLineEdit(groupBox_18);
         lineEdit_78->setObjectName(QString::fromUtf8("lineEdit_78"));
@@ -1212,7 +1237,7 @@ public:
         lineEdit_79 = new QLineEdit(groupBox_18);
         lineEdit_79->setObjectName(QString::fromUtf8("lineEdit_79"));
 
-        gridLayout_20->addWidget(lineEdit_79, 5, 1, 1, 2);
+        gridLayout_20->addWidget(lineEdit_79, 5, 2, 1, 1);
 
         label_94 = new QLabel(groupBox_18);
         label_94->setObjectName(QString::fromUtf8("label_94"));
@@ -1222,7 +1247,7 @@ public:
         lineEdit_80 = new QLineEdit(groupBox_18);
         lineEdit_80->setObjectName(QString::fromUtf8("lineEdit_80"));
 
-        gridLayout_20->addWidget(lineEdit_80, 6, 1, 1, 2);
+        gridLayout_20->addWidget(lineEdit_80, 6, 2, 1, 1);
 
 
         gridLayout_23->addWidget(groupBox_18, 1, 3, 1, 1);
@@ -1233,13 +1258,15 @@ public:
         gridLayout_21->setObjectName(QString::fromUtf8("gridLayout_21"));
         label_95 = new QLabel(groupBox_19);
         label_95->setObjectName(QString::fromUtf8("label_95"));
+        sizePolicy2.setHeightForWidth(label_95->sizePolicy().hasHeightForWidth());
+        label_95->setSizePolicy(sizePolicy2);
 
         gridLayout_21->addWidget(label_95, 0, 0, 1, 1);
 
         lineEdit_81 = new QLineEdit(groupBox_19);
         lineEdit_81->setObjectName(QString::fromUtf8("lineEdit_81"));
 
-        gridLayout_21->addWidget(lineEdit_81, 0, 2, 1, 1);
+        gridLayout_21->addWidget(lineEdit_81, 0, 1, 1, 2);
 
         label_96 = new QLabel(groupBox_19);
         label_96->setObjectName(QString::fromUtf8("label_96"));
@@ -1274,7 +1301,7 @@ public:
         label_99 = new QLabel(groupBox_19);
         label_99->setObjectName(QString::fromUtf8("label_99"));
 
-        gridLayout_21->addWidget(label_99, 4, 0, 1, 1);
+        gridLayout_21->addWidget(label_99, 4, 0, 1, 2);
 
         lineEdit_85 = new QLineEdit(groupBox_19);
         lineEdit_85->setObjectName(QString::fromUtf8("lineEdit_85"));
@@ -1289,7 +1316,7 @@ public:
         lineEdit_86 = new QLineEdit(groupBox_19);
         lineEdit_86->setObjectName(QString::fromUtf8("lineEdit_86"));
 
-        gridLayout_21->addWidget(lineEdit_86, 5, 1, 1, 2);
+        gridLayout_21->addWidget(lineEdit_86, 5, 2, 1, 1);
 
         label_101 = new QLabel(groupBox_19);
         label_101->setObjectName(QString::fromUtf8("label_101"));
@@ -1299,7 +1326,7 @@ public:
         lineEdit_87 = new QLineEdit(groupBox_19);
         lineEdit_87->setObjectName(QString::fromUtf8("lineEdit_87"));
 
-        gridLayout_21->addWidget(lineEdit_87, 6, 1, 1, 2);
+        gridLayout_21->addWidget(lineEdit_87, 6, 2, 1, 1);
 
 
         gridLayout_23->addWidget(groupBox_19, 1, 4, 1, 1);
@@ -1310,13 +1337,15 @@ public:
         gridLayout_22->setObjectName(QString::fromUtf8("gridLayout_22"));
         label_102 = new QLabel(groupBox_20);
         label_102->setObjectName(QString::fromUtf8("label_102"));
+        sizePolicy2.setHeightForWidth(label_102->sizePolicy().hasHeightForWidth());
+        label_102->setSizePolicy(sizePolicy2);
 
         gridLayout_22->addWidget(label_102, 0, 0, 1, 1);
 
         lineEdit_88 = new QLineEdit(groupBox_20);
         lineEdit_88->setObjectName(QString::fromUtf8("lineEdit_88"));
 
-        gridLayout_22->addWidget(lineEdit_88, 0, 2, 1, 1);
+        gridLayout_22->addWidget(lineEdit_88, 0, 1, 1, 2);
 
         label_103 = new QLabel(groupBox_20);
         label_103->setObjectName(QString::fromUtf8("label_103"));
@@ -1351,7 +1380,7 @@ public:
         label_106 = new QLabel(groupBox_20);
         label_106->setObjectName(QString::fromUtf8("label_106"));
 
-        gridLayout_22->addWidget(label_106, 4, 0, 1, 1);
+        gridLayout_22->addWidget(label_106, 4, 0, 1, 2);
 
         lineEdit_92 = new QLineEdit(groupBox_20);
         lineEdit_92->setObjectName(QString::fromUtf8("lineEdit_92"));
@@ -1366,7 +1395,7 @@ public:
         lineEdit_93 = new QLineEdit(groupBox_20);
         lineEdit_93->setObjectName(QString::fromUtf8("lineEdit_93"));
 
-        gridLayout_22->addWidget(lineEdit_93, 5, 1, 1, 2);
+        gridLayout_22->addWidget(lineEdit_93, 5, 2, 1, 1);
 
         label_108 = new QLabel(groupBox_20);
         label_108->setObjectName(QString::fromUtf8("label_108"));
@@ -1376,81 +1405,116 @@ public:
         lineEdit_94 = new QLineEdit(groupBox_20);
         lineEdit_94->setObjectName(QString::fromUtf8("lineEdit_94"));
 
-        gridLayout_22->addWidget(lineEdit_94, 6, 1, 1, 2);
+        gridLayout_22->addWidget(lineEdit_94, 6, 2, 1, 1);
 
 
         gridLayout_23->addWidget(groupBox_20, 1, 5, 1, 1);
 
 
-        gridLayout_11->addWidget(groupBox_6, 1, 0, 3, 1);
+        gridLayout_24->addWidget(groupBox_6, 1, 0, 1, 1);
 
+        gridLayout_11 = new QGridLayout();
+        gridLayout_11->setObjectName(QString::fromUtf8("gridLayout_11"));
         groupBox_2 = new QGroupBox(QualityDlgClass);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
+        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(groupBox_2->sizePolicy().hasHeightForWidth());
+        groupBox_2->setSizePolicy(sizePolicy3);
         gridLayout_9 = new QGridLayout(groupBox_2);
         gridLayout_9->setObjectName(QString::fromUtf8("gridLayout_9"));
-        label_18 = new QLabel(groupBox_2);
-        label_18->setObjectName(QString::fromUtf8("label_18"));
-        label_18->setLayoutDirection(Qt::LeftToRight);
-        label_18->setAutoFillBackground(true);
-        label_18->setFrameShape(QFrame::StyledPanel);
-        label_18->setFrameShadow(QFrame::Plain);
-        label_18->setAlignment(Qt::AlignCenter);
+        btnWaterIn = new QPushButton(groupBox_2);
+        btnWaterIn->setObjectName(QString::fromUtf8("btnWaterIn"));
+        sizePolicy3.setHeightForWidth(btnWaterIn->sizePolicy().hasHeightForWidth());
+        btnWaterIn->setSizePolicy(sizePolicy3);
+        btnWaterIn->setLayoutDirection(Qt::LeftToRight);
+        btnWaterIn->setAutoFillBackground(false);
+        btnWaterIn->setAutoDefault(false);
+        btnWaterIn->setDefault(false);
+        btnWaterIn->setFlat(false);
 
-        gridLayout_9->addWidget(label_18, 0, 0, 1, 1);
+        gridLayout_9->addWidget(btnWaterIn, 0, 0, 1, 1);
 
-        label_19 = new QLabel(groupBox_2);
-        label_19->setObjectName(QString::fromUtf8("label_19"));
-        label_19->setAutoFillBackground(true);
-        label_19->setFrameShape(QFrame::StyledPanel);
-        label_19->setTextFormat(Qt::AutoText);
-        label_19->setScaledContents(false);
-        label_19->setAlignment(Qt::AlignCenter);
+        btnWaterOut = new QPushButton(groupBox_2);
+        btnWaterOut->setObjectName(QString::fromUtf8("btnWaterOut"));
+        sizePolicy3.setHeightForWidth(btnWaterOut->sizePolicy().hasHeightForWidth());
+        btnWaterOut->setSizePolicy(sizePolicy3);
+        btnWaterOut->setLayoutDirection(Qt::LeftToRight);
+        btnWaterOut->setAutoFillBackground(false);
+        btnWaterOut->setAutoDefault(false);
+        btnWaterOut->setDefault(false);
+        btnWaterOut->setFlat(false);
 
-        gridLayout_9->addWidget(label_19, 0, 1, 1, 1);
+        gridLayout_9->addWidget(btnWaterOut, 0, 1, 1, 1);
 
-        label_20 = new QLabel(groupBox_2);
-        label_20->setObjectName(QString::fromUtf8("label_20"));
-        label_20->setAutoFillBackground(true);
-        label_20->setFrameShape(QFrame::StyledPanel);
-        label_20->setAlignment(Qt::AlignCenter);
+        btnWaterValve1 = new QPushButton(groupBox_2);
+        btnWaterValve1->setObjectName(QString::fromUtf8("btnWaterValve1"));
+        sizePolicy3.setHeightForWidth(btnWaterValve1->sizePolicy().hasHeightForWidth());
+        btnWaterValve1->setSizePolicy(sizePolicy3);
+        btnWaterValve1->setLayoutDirection(Qt::LeftToRight);
+        btnWaterValve1->setAutoFillBackground(false);
+        btnWaterValve1->setAutoDefault(false);
+        btnWaterValve1->setDefault(false);
+        btnWaterValve1->setFlat(false);
 
-        gridLayout_9->addWidget(label_20, 0, 2, 1, 1);
+        gridLayout_9->addWidget(btnWaterValve1, 1, 0, 1, 1);
 
-        label_21 = new QLabel(groupBox_2);
-        label_21->setObjectName(QString::fromUtf8("label_21"));
-        label_21->setAutoFillBackground(true);
-        label_21->setFrameShape(QFrame::StyledPanel);
-        label_21->setAlignment(Qt::AlignCenter);
+        btnWaterValve2 = new QPushButton(groupBox_2);
+        btnWaterValve2->setObjectName(QString::fromUtf8("btnWaterValve2"));
+        sizePolicy3.setHeightForWidth(btnWaterValve2->sizePolicy().hasHeightForWidth());
+        btnWaterValve2->setSizePolicy(sizePolicy3);
+        btnWaterValve2->setLayoutDirection(Qt::LeftToRight);
+        btnWaterValve2->setAutoFillBackground(false);
+        btnWaterValve2->setAutoDefault(false);
+        btnWaterValve2->setDefault(false);
+        btnWaterValve2->setFlat(false);
 
-        gridLayout_9->addWidget(label_21, 0, 3, 1, 1);
+        gridLayout_9->addWidget(btnWaterValve2, 1, 1, 1, 1);
 
-        label_22 = new QLabel(groupBox_2);
-        label_22->setObjectName(QString::fromUtf8("label_22"));
-        label_22->setAutoFillBackground(true);
-        label_22->setFrameShape(QFrame::StyledPanel);
-        label_22->setAlignment(Qt::AlignCenter);
+        btnWaterValve3 = new QPushButton(groupBox_2);
+        btnWaterValve3->setObjectName(QString::fromUtf8("btnWaterValve3"));
+        sizePolicy3.setHeightForWidth(btnWaterValve3->sizePolicy().hasHeightForWidth());
+        btnWaterValve3->setSizePolicy(sizePolicy3);
+        btnWaterValve3->setLayoutDirection(Qt::LeftToRight);
+        btnWaterValve3->setAutoFillBackground(false);
+        btnWaterValve3->setAutoDefault(false);
+        btnWaterValve3->setDefault(false);
+        btnWaterValve3->setFlat(false);
 
-        gridLayout_9->addWidget(label_22, 0, 4, 1, 1);
+        gridLayout_9->addWidget(btnWaterValve3, 2, 0, 1, 1);
 
-        label_23 = new QLabel(groupBox_2);
-        label_23->setObjectName(QString::fromUtf8("label_23"));
-        label_23->setAutoFillBackground(true);
-        label_23->setFrameShape(QFrame::StyledPanel);
-        label_23->setAlignment(Qt::AlignCenter);
-        label_23->setWordWrap(true);
-        label_23->setOpenExternalLinks(false);
-        label_23->setTextInteractionFlags(Qt::LinksAccessibleByMouse);
+        btnWaterValve4 = new QPushButton(groupBox_2);
+        btnWaterValve4->setObjectName(QString::fromUtf8("btnWaterValve4"));
+        sizePolicy3.setHeightForWidth(btnWaterValve4->sizePolicy().hasHeightForWidth());
+        btnWaterValve4->setSizePolicy(sizePolicy3);
+        btnWaterValve4->setLayoutDirection(Qt::LeftToRight);
+        btnWaterValve4->setAutoFillBackground(false);
+        btnWaterValve4->setAutoDefault(false);
+        btnWaterValve4->setDefault(false);
+        btnWaterValve4->setFlat(false);
 
-        gridLayout_9->addWidget(label_23, 0, 5, 1, 1);
+        gridLayout_9->addWidget(btnWaterValve4, 2, 1, 1, 1);
 
 
-        gridLayout_11->addWidget(groupBox_2, 1, 1, 1, 2);
+        gridLayout_11->addWidget(groupBox_2, 0, 0, 1, 1);
+
+        groupBox_7 = new QGroupBox(QualityDlgClass);
+        groupBox_7->setObjectName(QString::fromUtf8("groupBox_7"));
+        gridLayout_10 = new QGridLayout(groupBox_7);
+        gridLayout_10->setObjectName(QString::fromUtf8("gridLayout_10"));
+        label_24 = new QLabel(groupBox_7);
+        label_24->setObjectName(QString::fromUtf8("label_24"));
+        sizePolicy3.setHeightForWidth(label_24->sizePolicy().hasHeightForWidth());
+        label_24->setSizePolicy(sizePolicy3);
+
+        gridLayout_10->addWidget(label_24, 0, 0, 1, 1);
+
+
+        gridLayout_11->addWidget(groupBox_7, 1, 0, 1, 1);
 
         groupBox_3 = new QGroupBox(QualityDlgClass);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
-        QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Preferred);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
         sizePolicy2.setHeightForWidth(groupBox_3->sizePolicy().hasHeightForWidth());
         groupBox_3->setSizePolicy(sizePolicy2);
         gridLayout_6 = new QGridLayout(groupBox_3);
@@ -1541,24 +1605,7 @@ public:
         gridLayout_6->addWidget(label_17, 4, 2, 1, 1);
 
 
-        gridLayout_11->addWidget(groupBox_3, 2, 1, 1, 1);
-
-        groupBox_7 = new QGroupBox(QualityDlgClass);
-        groupBox_7->setObjectName(QString::fromUtf8("groupBox_7"));
-        gridLayout_10 = new QGridLayout(groupBox_7);
-        gridLayout_10->setObjectName(QString::fromUtf8("gridLayout_10"));
-        label_24 = new QLabel(groupBox_7);
-        label_24->setObjectName(QString::fromUtf8("label_24"));
-        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(label_24->sizePolicy().hasHeightForWidth());
-        label_24->setSizePolicy(sizePolicy3);
-
-        gridLayout_10->addWidget(label_24, 0, 0, 1, 1);
-
-
-        gridLayout_11->addWidget(groupBox_7, 2, 2, 1, 1);
+        gridLayout_11->addWidget(groupBox_3, 2, 0, 1, 1);
 
         groupBox_8 = new QGroupBox(QualityDlgClass);
         groupBox_8->setObjectName(QString::fromUtf8("groupBox_8"));
@@ -1595,7 +1642,10 @@ public:
         gridLayout_8->addWidget(pushButton_7, 0, 4, 1, 1);
 
 
-        gridLayout_11->addWidget(groupBox_8, 3, 1, 1, 2);
+        gridLayout_11->addWidget(groupBox_8, 3, 0, 1, 1);
+
+
+        gridLayout_24->addLayout(gridLayout_11, 1, 1, 1, 1);
 
 
         retranslateUi(QualityDlgClass);
@@ -1605,7 +1655,7 @@ public:
 
     void retranslateUi(QWidget *QualityDlgClass)
     {
-        QualityDlgClass->setWindowTitle(QApplication::translate("QualityDlgClass", "QulityMethod", 0, QApplication::UnicodeUTF8));
+        QualityDlgClass->setWindowTitle(QApplication::translate("QualityDlgClass", "\346\265\201\351\207\217\344\274\240\346\204\237\345\231\250\346\243\200\346\265\213", 0, QApplication::UnicodeUTF8));
         groupBox->setTitle(QApplication::translate("QualityDlgClass", "\346\200\273\346\243\200\346\225\260\346\215\256", 0, QApplication::UnicodeUTF8));
         buttonGroup->setTitle(QApplication::translate("QualityDlgClass", "\345\256\211\350\243\205\344\275\215\347\275\256", 0, QApplication::UnicodeUTF8));
         radioButton->setText(QApplication::translate("QualityDlgClass", "\350\277\233\345\217\243", 0, QApplication::UnicodeUTF8));
@@ -1619,115 +1669,117 @@ public:
         pushButton->setText(QApplication::translate("QualityDlgClass", "\351\207\207\351\233\206", 0, QApplication::UnicodeUTF8));
         pushButton_2->setText(QApplication::translate("QualityDlgClass", "\345\201\234\346\255\242", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("QualityDlgClass", "\350\277\233\345\217\243", 0, QApplication::UnicodeUTF8));
-        label_3->setText(QApplication::translate("QualityDlgClass", "\346\254\247\345\247\206", 0, QApplication::UnicodeUTF8));
-        label_4->setText(QApplication::translate("QualityDlgClass", "\302\260C", 0, QApplication::UnicodeUTF8));
+        label_3->setText(QApplication::translate("QualityDlgClass", "\316\251", 0, QApplication::UnicodeUTF8));
+        label_4->setText(QApplication::translate("QualityDlgClass", "\342\204\203", 0, QApplication::UnicodeUTF8));
         label_5->setText(QApplication::translate("QualityDlgClass", "\345\207\272\345\217\243", 0, QApplication::UnicodeUTF8));
-        label_6->setText(QApplication::translate("QualityDlgClass", "\346\254\247\345\247\206", 0, QApplication::UnicodeUTF8));
-        label_7->setText(QApplication::translate("QualityDlgClass", "\302\260C", 0, QApplication::UnicodeUTF8));
+        label_6->setText(QApplication::translate("QualityDlgClass", "\316\251", 0, QApplication::UnicodeUTF8));
+        label_7->setText(QApplication::translate("QualityDlgClass", "\342\204\203", 0, QApplication::UnicodeUTF8));
         groupBox_6->setTitle(QApplication::translate("QualityDlgClass", "\346\243\200\345\256\232\347\203\255\351\207\217\350\241\250", 0, QApplication::UnicodeUTF8));
         groupBox_9->setTitle(QApplication::translate("QualityDlgClass", "1", 0, QApplication::UnicodeUTF8));
         label_25->setText(QApplication::translate("QualityDlgClass", "\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
-        label_26->setText(QApplication::translate("QualityDlgClass", "V0", 0, QApplication::UnicodeUTF8));
-        label_27->setText(QApplication::translate("QualityDlgClass", "V1", 0, QApplication::UnicodeUTF8));
-        label_28->setText(QApplication::translate("QualityDlgClass", "E0", 0, QApplication::UnicodeUTF8));
-        label_29->setText(QApplication::translate("QualityDlgClass", "E1", 0, QApplication::UnicodeUTF8));
-        label_31->setText(QApplication::translate("QualityDlgClass", "&V", 0, QApplication::UnicodeUTF8));
-        label_32->setText(QApplication::translate("QualityDlgClass", "&E", 0, QApplication::UnicodeUTF8));
+        label_26->setText(QApplication::translate("QualityDlgClass", "V0(L)", 0, QApplication::UnicodeUTF8));
+        label_27->setText(QApplication::translate("QualityDlgClass", "V1(L)", 0, QApplication::UnicodeUTF8));
+        label_28->setText(QApplication::translate("QualityDlgClass", "E0(kwh)", 0, QApplication::UnicodeUTF8));
+        label_29->setText(QApplication::translate("QualityDlgClass", "E1(kwh)", 0, QApplication::UnicodeUTF8));
+        label_31->setText(QApplication::translate("QualityDlgClass", "\316\264v(%)", 0, QApplication::UnicodeUTF8));
+        label_32->setText(QApplication::translate("QualityDlgClass", "\316\264e(%)", 0, QApplication::UnicodeUTF8));
         groupBox_10->setTitle(QApplication::translate("QualityDlgClass", "2", 0, QApplication::UnicodeUTF8));
         label_30->setText(QApplication::translate("QualityDlgClass", "\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
-        label_33->setText(QApplication::translate("QualityDlgClass", "V0", 0, QApplication::UnicodeUTF8));
-        label_34->setText(QApplication::translate("QualityDlgClass", "V1", 0, QApplication::UnicodeUTF8));
-        label_35->setText(QApplication::translate("QualityDlgClass", "E0", 0, QApplication::UnicodeUTF8));
-        label_36->setText(QApplication::translate("QualityDlgClass", "E1", 0, QApplication::UnicodeUTF8));
-        label_37->setText(QApplication::translate("QualityDlgClass", "&V", 0, QApplication::UnicodeUTF8));
-        label_38->setText(QApplication::translate("QualityDlgClass", "&E", 0, QApplication::UnicodeUTF8));
+        label_33->setText(QApplication::translate("QualityDlgClass", "V0(L)", 0, QApplication::UnicodeUTF8));
+        label_34->setText(QApplication::translate("QualityDlgClass", "V1(L)", 0, QApplication::UnicodeUTF8));
+        label_35->setText(QApplication::translate("QualityDlgClass", "E0(kwh)", 0, QApplication::UnicodeUTF8));
+        label_36->setText(QApplication::translate("QualityDlgClass", "E1(kwh)", 0, QApplication::UnicodeUTF8));
+        label_37->setText(QApplication::translate("QualityDlgClass", "\316\264v(%)", 0, QApplication::UnicodeUTF8));
+        label_38->setText(QApplication::translate("QualityDlgClass", "\316\264e(%)", 0, QApplication::UnicodeUTF8));
         groupBox_11->setTitle(QApplication::translate("QualityDlgClass", "3", 0, QApplication::UnicodeUTF8));
         label_39->setText(QApplication::translate("QualityDlgClass", "\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
-        label_40->setText(QApplication::translate("QualityDlgClass", "V0", 0, QApplication::UnicodeUTF8));
-        label_41->setText(QApplication::translate("QualityDlgClass", "V1", 0, QApplication::UnicodeUTF8));
-        label_42->setText(QApplication::translate("QualityDlgClass", "E0", 0, QApplication::UnicodeUTF8));
-        label_43->setText(QApplication::translate("QualityDlgClass", "E1", 0, QApplication::UnicodeUTF8));
-        label_44->setText(QApplication::translate("QualityDlgClass", "&V", 0, QApplication::UnicodeUTF8));
-        label_45->setText(QApplication::translate("QualityDlgClass", "&E", 0, QApplication::UnicodeUTF8));
+        label_40->setText(QApplication::translate("QualityDlgClass", "V0(L)", 0, QApplication::UnicodeUTF8));
+        label_41->setText(QApplication::translate("QualityDlgClass", "V1(L)", 0, QApplication::UnicodeUTF8));
+        label_42->setText(QApplication::translate("QualityDlgClass", "E0(kwh)", 0, QApplication::UnicodeUTF8));
+        label_43->setText(QApplication::translate("QualityDlgClass", "E1(kwh)", 0, QApplication::UnicodeUTF8));
+        label_44->setText(QApplication::translate("QualityDlgClass", "\316\264v(%)", 0, QApplication::UnicodeUTF8));
+        label_45->setText(QApplication::translate("QualityDlgClass", "\316\264e(%)", 0, QApplication::UnicodeUTF8));
         groupBox_12->setTitle(QApplication::translate("QualityDlgClass", "4", 0, QApplication::UnicodeUTF8));
         label_46->setText(QApplication::translate("QualityDlgClass", "\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
-        label_47->setText(QApplication::translate("QualityDlgClass", "V0", 0, QApplication::UnicodeUTF8));
-        label_48->setText(QApplication::translate("QualityDlgClass", "V1", 0, QApplication::UnicodeUTF8));
-        label_49->setText(QApplication::translate("QualityDlgClass", "E0", 0, QApplication::UnicodeUTF8));
-        label_50->setText(QApplication::translate("QualityDlgClass", "E1", 0, QApplication::UnicodeUTF8));
-        label_51->setText(QApplication::translate("QualityDlgClass", "&V", 0, QApplication::UnicodeUTF8));
-        label_52->setText(QApplication::translate("QualityDlgClass", "&E", 0, QApplication::UnicodeUTF8));
+        label_47->setText(QApplication::translate("QualityDlgClass", "V0(L)", 0, QApplication::UnicodeUTF8));
+        label_48->setText(QApplication::translate("QualityDlgClass", "V1(L)", 0, QApplication::UnicodeUTF8));
+        label_49->setText(QApplication::translate("QualityDlgClass", "E0(kwh)", 0, QApplication::UnicodeUTF8));
+        label_50->setText(QApplication::translate("QualityDlgClass", "E1(kwh)", 0, QApplication::UnicodeUTF8));
+        label_51->setText(QApplication::translate("QualityDlgClass", "\316\264v(%)", 0, QApplication::UnicodeUTF8));
+        label_52->setText(QApplication::translate("QualityDlgClass", "\316\264e(%)", 0, QApplication::UnicodeUTF8));
         groupBox_13->setTitle(QApplication::translate("QualityDlgClass", "5", 0, QApplication::UnicodeUTF8));
         label_53->setText(QApplication::translate("QualityDlgClass", "\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
-        label_54->setText(QApplication::translate("QualityDlgClass", "V0", 0, QApplication::UnicodeUTF8));
-        label_55->setText(QApplication::translate("QualityDlgClass", "V1", 0, QApplication::UnicodeUTF8));
-        label_56->setText(QApplication::translate("QualityDlgClass", "E0", 0, QApplication::UnicodeUTF8));
-        label_57->setText(QApplication::translate("QualityDlgClass", "E1", 0, QApplication::UnicodeUTF8));
-        label_58->setText(QApplication::translate("QualityDlgClass", "&V", 0, QApplication::UnicodeUTF8));
-        label_59->setText(QApplication::translate("QualityDlgClass", "&E", 0, QApplication::UnicodeUTF8));
+        label_54->setText(QApplication::translate("QualityDlgClass", "V0(L)", 0, QApplication::UnicodeUTF8));
+        label_55->setText(QApplication::translate("QualityDlgClass", "V1(L)", 0, QApplication::UnicodeUTF8));
+        label_56->setText(QApplication::translate("QualityDlgClass", "E0(kwh)", 0, QApplication::UnicodeUTF8));
+        label_57->setText(QApplication::translate("QualityDlgClass", "E1(kwh)", 0, QApplication::UnicodeUTF8));
+        label_58->setText(QApplication::translate("QualityDlgClass", "\316\264v(%)", 0, QApplication::UnicodeUTF8));
+        label_59->setText(QApplication::translate("QualityDlgClass", "\316\264e(%)", 0, QApplication::UnicodeUTF8));
         groupBox_14->setTitle(QApplication::translate("QualityDlgClass", "6", 0, QApplication::UnicodeUTF8));
         label_60->setText(QApplication::translate("QualityDlgClass", "\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
-        label_61->setText(QApplication::translate("QualityDlgClass", "V0", 0, QApplication::UnicodeUTF8));
-        label_62->setText(QApplication::translate("QualityDlgClass", "V1", 0, QApplication::UnicodeUTF8));
-        label_63->setText(QApplication::translate("QualityDlgClass", "E0", 0, QApplication::UnicodeUTF8));
-        label_64->setText(QApplication::translate("QualityDlgClass", "E1", 0, QApplication::UnicodeUTF8));
-        label_65->setText(QApplication::translate("QualityDlgClass", "&V", 0, QApplication::UnicodeUTF8));
-        label_66->setText(QApplication::translate("QualityDlgClass", "&E", 0, QApplication::UnicodeUTF8));
+        label_61->setText(QApplication::translate("QualityDlgClass", "V0(L)", 0, QApplication::UnicodeUTF8));
+        label_62->setText(QApplication::translate("QualityDlgClass", "V1(L)", 0, QApplication::UnicodeUTF8));
+        label_63->setText(QApplication::translate("QualityDlgClass", "E0(kwh)", 0, QApplication::UnicodeUTF8));
+        label_64->setText(QApplication::translate("QualityDlgClass", "E1(kwh)", 0, QApplication::UnicodeUTF8));
+        label_65->setText(QApplication::translate("QualityDlgClass", "\316\264v(%)", 0, QApplication::UnicodeUTF8));
+        label_66->setText(QApplication::translate("QualityDlgClass", "\316\264e(%)", 0, QApplication::UnicodeUTF8));
         groupBox_15->setTitle(QApplication::translate("QualityDlgClass", "7", 0, QApplication::UnicodeUTF8));
         label_67->setText(QApplication::translate("QualityDlgClass", "\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
-        label_68->setText(QApplication::translate("QualityDlgClass", "V0", 0, QApplication::UnicodeUTF8));
-        label_69->setText(QApplication::translate("QualityDlgClass", "V1", 0, QApplication::UnicodeUTF8));
-        label_70->setText(QApplication::translate("QualityDlgClass", "E0", 0, QApplication::UnicodeUTF8));
-        label_71->setText(QApplication::translate("QualityDlgClass", "E1", 0, QApplication::UnicodeUTF8));
-        label_72->setText(QApplication::translate("QualityDlgClass", "&V", 0, QApplication::UnicodeUTF8));
-        label_73->setText(QApplication::translate("QualityDlgClass", "&E", 0, QApplication::UnicodeUTF8));
+        label_68->setText(QApplication::translate("QualityDlgClass", "V0(L)", 0, QApplication::UnicodeUTF8));
+        label_69->setText(QApplication::translate("QualityDlgClass", "V1(L)", 0, QApplication::UnicodeUTF8));
+        label_70->setText(QApplication::translate("QualityDlgClass", "E0(kwh)", 0, QApplication::UnicodeUTF8));
+        label_71->setText(QApplication::translate("QualityDlgClass", "E1(kwh)", 0, QApplication::UnicodeUTF8));
+        label_72->setText(QApplication::translate("QualityDlgClass", "\316\264v(%)", 0, QApplication::UnicodeUTF8));
+        label_73->setText(QApplication::translate("QualityDlgClass", "\316\264e(%)", 0, QApplication::UnicodeUTF8));
         groupBox_16->setTitle(QApplication::translate("QualityDlgClass", "8", 0, QApplication::UnicodeUTF8));
         label_74->setText(QApplication::translate("QualityDlgClass", "\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
-        label_75->setText(QApplication::translate("QualityDlgClass", "V0", 0, QApplication::UnicodeUTF8));
-        label_76->setText(QApplication::translate("QualityDlgClass", "V1", 0, QApplication::UnicodeUTF8));
-        label_77->setText(QApplication::translate("QualityDlgClass", "E0", 0, QApplication::UnicodeUTF8));
-        label_78->setText(QApplication::translate("QualityDlgClass", "E1", 0, QApplication::UnicodeUTF8));
-        label_79->setText(QApplication::translate("QualityDlgClass", "&V", 0, QApplication::UnicodeUTF8));
-        label_80->setText(QApplication::translate("QualityDlgClass", "&E", 0, QApplication::UnicodeUTF8));
+        label_75->setText(QApplication::translate("QualityDlgClass", "V0(L)", 0, QApplication::UnicodeUTF8));
+        label_76->setText(QApplication::translate("QualityDlgClass", "V1(L)", 0, QApplication::UnicodeUTF8));
+        label_77->setText(QApplication::translate("QualityDlgClass", "E0(kwh)", 0, QApplication::UnicodeUTF8));
+        label_78->setText(QApplication::translate("QualityDlgClass", "E1(kwh)", 0, QApplication::UnicodeUTF8));
+        label_79->setText(QApplication::translate("QualityDlgClass", "\316\264v(%)", 0, QApplication::UnicodeUTF8));
+        label_80->setText(QApplication::translate("QualityDlgClass", "\316\264e(%)", 0, QApplication::UnicodeUTF8));
         groupBox_17->setTitle(QApplication::translate("QualityDlgClass", "9", 0, QApplication::UnicodeUTF8));
         label_81->setText(QApplication::translate("QualityDlgClass", "\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
-        label_82->setText(QApplication::translate("QualityDlgClass", "V0", 0, QApplication::UnicodeUTF8));
-        label_83->setText(QApplication::translate("QualityDlgClass", "V1", 0, QApplication::UnicodeUTF8));
-        label_84->setText(QApplication::translate("QualityDlgClass", "E0", 0, QApplication::UnicodeUTF8));
-        label_85->setText(QApplication::translate("QualityDlgClass", "E1", 0, QApplication::UnicodeUTF8));
-        label_86->setText(QApplication::translate("QualityDlgClass", "&V", 0, QApplication::UnicodeUTF8));
-        label_87->setText(QApplication::translate("QualityDlgClass", "&E", 0, QApplication::UnicodeUTF8));
+        label_82->setText(QApplication::translate("QualityDlgClass", "V0(L)", 0, QApplication::UnicodeUTF8));
+        label_83->setText(QApplication::translate("QualityDlgClass", "V1(L)", 0, QApplication::UnicodeUTF8));
+        label_84->setText(QApplication::translate("QualityDlgClass", "E0(kwh)", 0, QApplication::UnicodeUTF8));
+        label_85->setText(QApplication::translate("QualityDlgClass", "E1(kwh)", 0, QApplication::UnicodeUTF8));
+        label_86->setText(QApplication::translate("QualityDlgClass", "\316\264v(%)", 0, QApplication::UnicodeUTF8));
+        label_87->setText(QApplication::translate("QualityDlgClass", "\316\264e(%)", 0, QApplication::UnicodeUTF8));
         groupBox_18->setTitle(QApplication::translate("QualityDlgClass", "10", 0, QApplication::UnicodeUTF8));
         label_88->setText(QApplication::translate("QualityDlgClass", "\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
-        label_89->setText(QApplication::translate("QualityDlgClass", "V0", 0, QApplication::UnicodeUTF8));
-        label_90->setText(QApplication::translate("QualityDlgClass", "V1", 0, QApplication::UnicodeUTF8));
-        label_91->setText(QApplication::translate("QualityDlgClass", "E0", 0, QApplication::UnicodeUTF8));
-        label_92->setText(QApplication::translate("QualityDlgClass", "E1", 0, QApplication::UnicodeUTF8));
-        label_93->setText(QApplication::translate("QualityDlgClass", "&V", 0, QApplication::UnicodeUTF8));
-        label_94->setText(QApplication::translate("QualityDlgClass", "&E", 0, QApplication::UnicodeUTF8));
+        label_89->setText(QApplication::translate("QualityDlgClass", "V0(L)", 0, QApplication::UnicodeUTF8));
+        label_90->setText(QApplication::translate("QualityDlgClass", "V1(L)", 0, QApplication::UnicodeUTF8));
+        label_91->setText(QApplication::translate("QualityDlgClass", "E0(kwh)", 0, QApplication::UnicodeUTF8));
+        label_92->setText(QApplication::translate("QualityDlgClass", "E1(kwh)", 0, QApplication::UnicodeUTF8));
+        label_93->setText(QApplication::translate("QualityDlgClass", "\316\264v(%)", 0, QApplication::UnicodeUTF8));
+        label_94->setText(QApplication::translate("QualityDlgClass", "\316\264e(%)", 0, QApplication::UnicodeUTF8));
         groupBox_19->setTitle(QApplication::translate("QualityDlgClass", "11", 0, QApplication::UnicodeUTF8));
         label_95->setText(QApplication::translate("QualityDlgClass", "\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
-        label_96->setText(QApplication::translate("QualityDlgClass", "V0", 0, QApplication::UnicodeUTF8));
-        label_97->setText(QApplication::translate("QualityDlgClass", "V1", 0, QApplication::UnicodeUTF8));
-        label_98->setText(QApplication::translate("QualityDlgClass", "E0", 0, QApplication::UnicodeUTF8));
-        label_99->setText(QApplication::translate("QualityDlgClass", "E1", 0, QApplication::UnicodeUTF8));
-        label_100->setText(QApplication::translate("QualityDlgClass", "&V", 0, QApplication::UnicodeUTF8));
-        label_101->setText(QApplication::translate("QualityDlgClass", "&E", 0, QApplication::UnicodeUTF8));
+        label_96->setText(QApplication::translate("QualityDlgClass", "V0(L)", 0, QApplication::UnicodeUTF8));
+        label_97->setText(QApplication::translate("QualityDlgClass", "V1(L)", 0, QApplication::UnicodeUTF8));
+        label_98->setText(QApplication::translate("QualityDlgClass", "E0(kwh)", 0, QApplication::UnicodeUTF8));
+        label_99->setText(QApplication::translate("QualityDlgClass", "E1(kwh)", 0, QApplication::UnicodeUTF8));
+        label_100->setText(QApplication::translate("QualityDlgClass", "\316\264v(%)", 0, QApplication::UnicodeUTF8));
+        label_101->setText(QApplication::translate("QualityDlgClass", "\316\264e(%)", 0, QApplication::UnicodeUTF8));
         groupBox_20->setTitle(QApplication::translate("QualityDlgClass", "12", 0, QApplication::UnicodeUTF8));
         label_102->setText(QApplication::translate("QualityDlgClass", "\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
-        label_103->setText(QApplication::translate("QualityDlgClass", "V0", 0, QApplication::UnicodeUTF8));
-        label_104->setText(QApplication::translate("QualityDlgClass", "V1", 0, QApplication::UnicodeUTF8));
-        label_105->setText(QApplication::translate("QualityDlgClass", "E0", 0, QApplication::UnicodeUTF8));
-        label_106->setText(QApplication::translate("QualityDlgClass", "E1", 0, QApplication::UnicodeUTF8));
-        label_107->setText(QApplication::translate("QualityDlgClass", "&V", 0, QApplication::UnicodeUTF8));
-        label_108->setText(QApplication::translate("QualityDlgClass", "&E", 0, QApplication::UnicodeUTF8));
+        label_103->setText(QApplication::translate("QualityDlgClass", "V0(L)", 0, QApplication::UnicodeUTF8));
+        label_104->setText(QApplication::translate("QualityDlgClass", "V1(L)", 0, QApplication::UnicodeUTF8));
+        label_105->setText(QApplication::translate("QualityDlgClass", "E0(kwh)", 0, QApplication::UnicodeUTF8));
+        label_106->setText(QApplication::translate("QualityDlgClass", "E1(kwh)", 0, QApplication::UnicodeUTF8));
+        label_107->setText(QApplication::translate("QualityDlgClass", "\316\264v(%)", 0, QApplication::UnicodeUTF8));
+        label_108->setText(QApplication::translate("QualityDlgClass", "\316\264e(%)", 0, QApplication::UnicodeUTF8));
         groupBox_2->setTitle(QApplication::translate("QualityDlgClass", "\351\230\200\351\227\250\347\212\266\346\200\201", 0, QApplication::UnicodeUTF8));
-        label_18->setText(QApplication::translate("QualityDlgClass", "\350\277\233\346\260\264\351\230\200", 0, QApplication::UnicodeUTF8));
-        label_19->setText(QApplication::translate("QualityDlgClass", "\345\260\217\346\265\201\351\207\217\351\230\200", 0, QApplication::UnicodeUTF8));
-        label_20->setText(QApplication::translate("QualityDlgClass", "\344\270\255\346\265\201\351\207\217\351\230\200", 0, QApplication::UnicodeUTF8));
-        label_21->setText(QApplication::translate("QualityDlgClass", "\345\244\247\346\265\201\351\207\217\351\230\200", 0, QApplication::UnicodeUTF8));
-        label_22->setText(QApplication::translate("QualityDlgClass", "\346\224\276\346\260\264\351\230\200", 0, QApplication::UnicodeUTF8));
-        label_23->setText(QApplication::translate("QualityDlgClass", "\344\270\255\346\265\201\351\207\217\351\230\2002", 0, QApplication::UnicodeUTF8));
+        btnWaterIn->setText(QApplication::translate("QualityDlgClass", "\350\277\233\346\260\264\351\230\200", 0, QApplication::UnicodeUTF8));
+        btnWaterOut->setText(QApplication::translate("QualityDlgClass", "\346\224\276\346\260\264\351\230\200", 0, QApplication::UnicodeUTF8));
+        btnWaterValve1->setText(QApplication::translate("QualityDlgClass", "\345\260\217\346\265\201\351\207\217\351\230\200", 0, QApplication::UnicodeUTF8));
+        btnWaterValve2->setText(QApplication::translate("QualityDlgClass", "\344\270\255\346\265\201\351\207\217\351\230\200", 0, QApplication::UnicodeUTF8));
+        btnWaterValve3->setText(QApplication::translate("QualityDlgClass", "\345\244\247\346\265\201\351\207\217\351\230\200", 0, QApplication::UnicodeUTF8));
+        btnWaterValve4->setText(QApplication::translate("QualityDlgClass", "\344\270\255\346\265\201\351\207\217\351\230\2002", 0, QApplication::UnicodeUTF8));
+        groupBox_7->setTitle(QApplication::translate("QualityDlgClass", "\346\265\201\347\250\213\346\217\220\347\244\272", 0, QApplication::UnicodeUTF8));
+        label_24->setText(QApplication::translate("QualityDlgClass", "\346\265\201\347\250\213\357\274\232", 0, QApplication::UnicodeUTF8));
         groupBox_3->setTitle(QApplication::translate("QualityDlgClass", "\346\225\260\346\215\256\351\207\207\351\233\206", 0, QApplication::UnicodeUTF8));
         label_8->setText(QApplication::translate("QualityDlgClass", "\345\244\247\345\244\251\345\271\263  ", 0, QApplication::UnicodeUTF8));
         label_13->setText(QApplication::translate("QualityDlgClass", "kg", 0, QApplication::UnicodeUTF8));
@@ -1739,8 +1791,6 @@ public:
         label_16->setText(QApplication::translate("QualityDlgClass", "\302\260C", 0, QApplication::UnicodeUTF8));
         label_12->setText(QApplication::translate("QualityDlgClass", "\345\207\272\345\217\243\346\270\251\345\272\246", 0, QApplication::UnicodeUTF8));
         label_17->setText(QApplication::translate("QualityDlgClass", "\302\260C", 0, QApplication::UnicodeUTF8));
-        groupBox_7->setTitle(QApplication::translate("QualityDlgClass", "\346\265\201\347\250\213\346\217\220\347\244\272", 0, QApplication::UnicodeUTF8));
-        label_24->setText(QApplication::translate("QualityDlgClass", "TextLabel", 0, QApplication::UnicodeUTF8));
         groupBox_8->setTitle(QApplication::translate("QualityDlgClass", "\346\223\215\344\275\234\346\255\245\351\252\244", 0, QApplication::UnicodeUTF8));
         pushButton_3->setText(QApplication::translate("QualityDlgClass", "\345\217\202\346\225\260", 0, QApplication::UnicodeUTF8));
         pushButton_4->setText(QApplication::translate("QualityDlgClass", "\346\216\222\346\260\224", 0, QApplication::UnicodeUTF8));

@@ -14,5 +14,22 @@ QualityDlg::~QualityDlg()
 
 }
 
+void QualityDlg::on_btnWaterIn_clicked()
+{
+	setValveBtnBackColor(ui.btnWaterIn, true);
+}
+
+void QualityDlg::setValveBtnBackColor(QPushButton *btn, bool isOpen)
+{
+	if (isOpen)
+	{
+		btn->setStyleSheet("background:green;border:0px;");  
+	}
+	else
+	{
+		btn->setStyleSheet("background:red;border:0px;");  
+	}
+}
+
 
 

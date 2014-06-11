@@ -15,7 +15,14 @@ public:
 	~QualityDlg();
 
 public slots:
+	void on_btnWaterIn_clicked();
+// 	void on_btnWaterOut_clicked();
+// 	void on_btnWaterValve1_clicked();
+// 	void on_btnWaterValve2_clicked();
+// 	void on_btnWaterValve3_clicked();
+// 	void on_btnWaterValve4_clicked();
 
+	void setValveBtnBackColor(QPushButton *btn, bool isOpen);
 
 private:
 	Ui::QualityDlgClass ui;
