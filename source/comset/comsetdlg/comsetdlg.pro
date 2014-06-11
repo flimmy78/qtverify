@@ -42,5 +42,5 @@ win32{
 }
 
 TRANSLATIONS =  \
-		language/comsetdlg_zh.ts language/comsetdlg_en.ts language/comsetdlg_es.ts
+		language/comsetdlg_zh.ts language/comsetdlg_en.ts
 		
