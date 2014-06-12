@@ -1,14 +1,16 @@
 #include <QtGui/QMessageBox>
 #include <QtCore/QDebug>
-
+#include <QThread>
 #include "qualitydlg.h"
 
 QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
+	qDebug()<<"QualityDlg thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
 
 	m_paraset = new ParaSetDlg();
+
 }
 
 QualityDlg::~QualityDlg()
@@ -29,7 +31,7 @@ void QualityDlg::setValveBtnBackColor(QPushButton *btn, bool isOpen)
 {
 	if (isOpen)
 	{
-		btn->setStyleSheet("background:QColor(0,255,0);border:0px;");  
+		btn->setStyleSheet("background:green;border:0px;");  
 	}
 	else
 	{
@@ -40,5 +42,15 @@ void QualityDlg::setValveBtnBackColor(QPushButton *btn, bool isOpen)
 void QualityDlg::on_btnParaSet_clicked()
 {
 	m_paraset->show();
+}
+
+void QualityDlg::on_btnExit_clicked()
+{
+	this->close();
+}
+
+void QualityDlg::readWaterTemperature()
+{
+	qDebug()<<"readWaterTemperature:";
 }
 

@@ -1600,7 +1600,7 @@
          </widget>
         </item>
         <item row="0" column="4">
-         <widget class="QPushButton" name="pushButton_7">
+         <widget class="QPushButton" name="btnExit">
           <property name="text">
            <string>退出</string>
           </property>
