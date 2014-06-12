@@ -10,25 +10,30 @@ QMAKE_LIBDIR +=  ./           \
 	             $(RUNHOME)/bin \
 
 DESTDIR = $(RUNHOME)\tmp\comset\comsetdlg\obj
-MOC_DIR = $(RUNHOME)/tmp/comset/comsetdlg/moc
+#MOC_DIR = $(RUNHOME)/tmp/comset/comsetdlg/moc
 OBJECTS_DIR = $(RUNHOME)/tmp/comset/comsetdlg/obj
 UI_DIR = $(RUNHOME_INC)/include
 
 INCLUDEPATH  	=    ./      \
 									 include \ 
 									 $$(RUNHOME_INC)/include \
-									 $$(RUNHOME_INC)/include/qextforcomset
+									 $$(RUNHOME_INC)/include/qextserial
 
-HEADERS	+= $(RUNHOME_INC)/include/comsetdlg_global.h \
-           $(RUNHOME_INC)/include/comsetdlg.h   \
-           $(RUNHOME_INC)/include/qextforcomset/qextserialbase.h  \
-           $(RUNHOME_INC)/include/qextforcomset/qextserialport.h  \
-           $(RUNHOME_INC)/include/qextforcomset/win_qextserialport.h
+HEADERS	+= $$(RUNHOME_INC)/include/comsetdlg_global.h \
+           $$(RUNHOME_INC)/include/comsetdlg.h   \
+        	 $$(RUNHOME_INC)/include/qextserial/qextserialport_global.h  \
+        	 $$(RUNHOME_INC)/include/qextserial/qextserialport.h
 	
 SOURCES	+= source/comsetdlg.cpp   \
-           $(RUNHOME_INC)/include/qextforcomset/qextserialbase.cpp  \
-           $(RUNHOME_INC)/include/qextforcomset/qextserialport.cpp  \
-           $(RUNHOME_INC)/include/qextforcomset/win_qextserialport.cpp 
+	         $$(RUNHOME_INC)/include/qextserial/qextserialport.cpp
+
+win32 {
+     SOURCES += $$(RUNHOME_INC)/include/qextserial/qextserialport_win.cpp
+}
+
+unix {
+     SOURCES += $$(RUNHOME_INC)/include/qextserial/qextserialport_unix.cpp
+}
 					 
 FORMS	+= ui/comsetdlg.ui \
          

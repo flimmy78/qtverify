@@ -5,7 +5,7 @@ CONFIG += qt warn_on debug
 RC_FILE = comset.rc
 
 INCLUDEPATH	 +=  $$(RUNHOME_INC)/include  \
-								 $$(RUNHOME_INC)/include/qextforcomset
+								 $$(RUNHOME_INC)/include/qextserial
 
 QMAKE_LIBDIR += \
               $$(RUNHOME)/lib \

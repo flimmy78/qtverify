@@ -52,7 +52,6 @@ INCLUDEPATH += 	./include	\
 								$${UI_DIR}	\
 								$$(RUNHOME_INC)/include		\
 								$$(RUNHOME_INC)/include/qextserial \
-								$$(RUNHOME_INC)/include/qextforcomset \
 								F:\mysoft\trunk\plugindemo\GameSystem
 
 

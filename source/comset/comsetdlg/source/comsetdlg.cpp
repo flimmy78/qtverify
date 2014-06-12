@@ -27,7 +27,7 @@ void ComSetDlg::sp_anyfunc()
 void ComSetDlg::on_btnOpenCom_clicked()
 {
 	QString portName = ui.portNameComboBox->currentText(); //获取串口名
-	myCom = new Win_QextSerialPort(portName,QextSerialBase::EventDriven);//定义串口对象，并传递参数，在构造函数里对其进行初始化
+	myCom = new QextSerialPort(portName,QextSerialPort::EventDriven);//定义串口对象，并传递参数，在构造函数里对其进行初始化
 	if (!myCom ->open(QIODevice::ReadWrite))//打开串口失败
 	{
 		QMessageBox::information(this, "SerialPortSet", QString("Open %1 Failed!").arg(portName), "Ok", "Cancel");	

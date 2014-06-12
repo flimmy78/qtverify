@@ -5,7 +5,7 @@
 
 #include "comsetdlg_global.h"
 #include "ui_comsetdlg.h"
-#include "win_qextserialport.h"
+#include "qextserialport.h"
 
 class COMSETDLG_EXPORT ComSetDlg : public QWidget
 {
@@ -15,7 +15,7 @@ public:
 	ComSetDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~ComSetDlg();
 
-	Win_QextSerialPort *myCom;
+	QextSerialPort *myCom;
 
 	void sp_anyfunc();
 
