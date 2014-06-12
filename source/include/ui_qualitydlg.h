@@ -290,7 +290,7 @@ public:
     QPushButton *pushButton_4;
     QPushButton *pushButton_5;
     QPushButton *pushButton_6;
-    QPushButton *pushButton_7;
+    QPushButton *btnExit;
 
     void setupUi(QWidget *QualityDlgClass)
     {
@@ -1636,10 +1636,10 @@ public:
 
         gridLayout_8->addWidget(pushButton_6, 0, 3, 1, 1);
 
-        pushButton_7 = new QPushButton(groupBox_8);
-        pushButton_7->setObjectName(QString::fromUtf8("pushButton_7"));
+        btnExit = new QPushButton(groupBox_8);
+        btnExit->setObjectName(QString::fromUtf8("btnExit"));
 
-        gridLayout_8->addWidget(pushButton_7, 0, 4, 1, 1);
+        gridLayout_8->addWidget(btnExit, 0, 4, 1, 1);
 
 
         gridLayout_11->addWidget(groupBox_8, 3, 0, 1, 1);
@@ -1796,7 +1796,7 @@ public:
         pushButton_4->setText(QApplication::translate("QualityDlgClass", "\346\216\222\346\260\224", 0, QApplication::UnicodeUTF8));
         pushButton_5->setText(QApplication::translate("QualityDlgClass", "\345\274\200\345\247\213", 0, QApplication::UnicodeUTF8));
         pushButton_6->setText(QApplication::translate("QualityDlgClass", "\344\277\235\345\255\230", 0, QApplication::UnicodeUTF8));
-        pushButton_7->setText(QApplication::translate("QualityDlgClass", "\351\200\200\345\207\272", 0, QApplication::UnicodeUTF8));
+        btnExit->setText(QApplication::translate("QualityDlgClass", "\351\200\200\345\207\272", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

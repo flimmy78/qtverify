@@ -13,6 +13,7 @@ public:
 	ParaSetDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~ParaSetDlg();
 
+
 public slots:
 
 private:

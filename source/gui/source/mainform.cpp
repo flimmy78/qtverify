@@ -8,11 +8,13 @@
 MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
 {
+	qDebug()<<"MainForm thread:"<<QThread::currentThreadId();
+
 	ui.setupUi(this);
 
-	dbmysqlobj = new DbMySql(this);
+	dbmysqlobj = new DbMySql();
 	dbsqliteobj = new DbSqlite();
-	m_alg = new AlgClass();
+	m_alg = new CAlg();
 	m_spset = new SerialPortSet();
 	m_qualitydlg = new QualityDlg();
 
@@ -43,7 +45,7 @@ MainForm::~MainForm()
 
 void MainForm::on_action_spset_triggered()
 {
-	//  QMessageBox::warning(this, "title", "you clicked");	
+//  QMessageBox::warning(this, "title", "you clicked");	
 	m_spset->show();
 }
 

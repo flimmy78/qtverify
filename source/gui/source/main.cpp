@@ -2,7 +2,9 @@
 #include <QtGui/QApplication>
 #include <QtCore/QTextCodec>
 #include <QtCore/QTranslator>
+#include <QDebug>
 
+MainForm *g_mainform;
 
 int main(int argc, char *argv[])
 {
@@ -22,9 +24,10 @@ int main(int argc, char *argv[])
 		 printf_s(" load translator file \"%s\" failed! \n", filename);
 	}
 	app.installTranslator( translator );
+	qDebug()<<"main thread:"<<QThread::currentThreadId();
 
-	MainForm w;
-	w.showMaximized();
+	g_mainform = new MainForm;
+	g_mainform->showMaximized();
 
 	return app.exec();
 }

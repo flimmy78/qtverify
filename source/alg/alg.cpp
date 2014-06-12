@@ -1,17 +1,17 @@
 #include <QtCore/QDebug>
 #include "alg.h"
 
-AlgClass::AlgClass()
+CAlg::CAlg()
 {
 
 }
 
-AlgClass::~AlgClass()
+CAlg::~CAlg()
 {
 
 }
 
-float AlgClass::calc(float a, float b)
+float CAlg::calc(float a, float b)
 {
 	float sum = a + b;
 	qDebug("%.2f + %.2f = %.2f \n", a, b, sum);

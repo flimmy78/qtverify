@@ -26,8 +26,11 @@ public slots:
 // 	void on_btnWaterValve4_clicked();
 
 	void on_btnParaSet_clicked();
+	void on_btnExit_clicked();
 
 	void setValveBtnBackColor(QPushButton *btn, bool isOpen);
+
+	void readWaterTemperature();
 
 private:
 	Ui::QualityDlgClass ui;

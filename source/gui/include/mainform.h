@@ -10,6 +10,7 @@
 #include "alg.h"
 #include "serialportset.h"
 #include "qualitydlg.h"
+#include "mythread.h"
 
 // #define  DELETE_ARRAY(a)      {if ( a ) delete []a, a = NULL;}
 
@@ -25,7 +26,7 @@ public:
 	DbMySql *dbmysqlobj;
 	DbSqlite *dbsqliteobj;
 	MonsterInterface *m_monster;
-	AlgClass *m_alg;
+	CAlg *m_alg;
 	SerialPortSet *m_spset;
 	QualityDlg *m_qualitydlg;
 
@@ -46,5 +47,7 @@ public slots:
 private:
 	Ui::qMainFormClass ui;
 };
+
+extern MainForm *g_mainform;
 
 #endif // MAINFORM_H

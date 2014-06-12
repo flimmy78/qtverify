@@ -3,11 +3,11 @@
 
 
 
-class _declspec(dllexport) AlgClass
+class _declspec(dllexport) CAlg
 {
 public:
-	AlgClass();
-	~AlgClass();
+	CAlg();
+	~CAlg();
 
 	float calc(float a, float b);
 
