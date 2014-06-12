@@ -17,19 +17,19 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;" Label="Configuration">
-    <OutputDirectory>$(RUNHOME)\tmp\qualitydlg\obj\</OutputDirectory>
+    <OutputDirectory>$(RUNHOME)\tmp\quality\qualitydlg\obj\</OutputDirectory>
     <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
     <CharacterSet>NotSet</CharacterSet>
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <IntermediateDirectory>$(RUNHOME)\tmp\qualitydlg\obj\</IntermediateDirectory>
+    <IntermediateDirectory>$(RUNHOME)\tmp\quality\qualitydlg\obj\</IntermediateDirectory>
     <PrimaryOutput>qualitydlg</PrimaryOutput>
   </PropertyGroup>
   <PropertyGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;" Label="Configuration">
-    <OutputDirectory>$(RUNHOME)\tmp\qualitydlg\obj\</OutputDirectory>
+    <OutputDirectory>$(RUNHOME)\tmp\quality\qualitydlg\obj\</OutputDirectory>
     <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
     <CharacterSet>NotSet</CharacterSet>
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <IntermediateDirectory>$(RUNHOME)\tmp\qualitydlg\obj\</IntermediateDirectory>
+    <IntermediateDirectory>$(RUNHOME)\tmp\quality\qualitydlg\obj\</IntermediateDirectory>
     <PrimaryOutput>qualitydlg</PrimaryOutput>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -42,13 +42,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <OutDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">$(RUNHOME)\tmp\qualitydlg\obj\</OutDir>
-    <IntDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">$(RUNHOME)\tmp\qualitydlg\obj\</IntDir>
+    <OutDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">$(RUNHOME)\tmp\quality\qualitydlg\obj\</OutDir>
+    <IntDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">$(RUNHOME)\tmp\quality\qualitydlg\obj\</IntDir>
     <TargetName Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">qualitydlg</TargetName>
     <IgnoreImportLibrary Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">true</IgnoreImportLibrary>
     <PostBuildEventUseInBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">true</PostBuildEventUseInBuild>
-    <OutDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">$(RUNHOME)\tmp\qualitydlg\obj\</OutDir>
-    <IntDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">$(RUNHOME)\tmp\qualitydlg\obj\</IntDir>
+    <OutDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">$(RUNHOME)\tmp\quality\qualitydlg\obj\</OutDir>
+    <IntDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">$(RUNHOME)\tmp\quality\qualitydlg\obj\</IntDir>
     <TargetName Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">qualitydlg</TargetName>
     <IgnoreImportLibrary Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">true</IgnoreImportLibrary>
     <LinkIncremental Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">false</LinkIncremental>
@@ -56,15 +56,15 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">
     <ClCompile>
-      <AdditionalIncludeDirectories>&quot;c:\Qt\4.8.5\include\QtCore&quot;;&quot;c:\Qt\4.8.5\include\QtGui&quot;;&quot;c:\Qt\4.8.5\include&quot;;&quot;.&quot;;&quot;include&quot;;&quot;..\..\include&quot;;&quot;c:\Qt\4.8.5\include\ActiveQt&quot;;&quot;f:\delusoft\trunk\qtverify\source\quality\qualitydlg\$(RUNHOME)\tmp\qualitydlg\moc&quot;;&quot;f:\delusoft\trunk\qtverify\source\quality\qualitydlg\$(RUNHOME_INC)\include&quot;;c:\Qt\4.8.5\mkspecs\win32-msvc2010;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>&quot;c:\Qt\4.8.5\include\QtCore&quot;;&quot;c:\Qt\4.8.5\include\QtGui&quot;;&quot;c:\Qt\4.8.5\include&quot;;&quot;c:\Qt\4.8.5\include\QtTest&quot;;&quot;.&quot;;&quot;include&quot;;&quot;..\..\include&quot;;&quot;..\..\include\qextserial&quot;;&quot;c:\Qt\4.8.5\include\ActiveQt&quot;;&quot;debug&quot;;&quot;f:\delusoft\trunk\qtverify\source\quality\qualitydlg\$(RUNHOME_INC)\include&quot;;c:\Qt\4.8.5\mkspecs\win32-msvc2010;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zm200 -w34100 -w34189 %(AdditionalOptions)</AdditionalOptions>
-      <AssemblerListingLocation>$(RUNHOME)\tmp\qualitydlg\obj\</AssemblerListingLocation>
+      <AssemblerListingLocation>$(RUNHOME)\tmp\quality\qualitydlg\obj\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
-      <ObjectFileName>$(RUNHOME)\tmp\qualitydlg\obj\</ObjectFileName>
+      <ObjectFileName>$(RUNHOME)\tmp\quality\qualitydlg\obj\</ObjectFileName>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QUALITYDLG_DLL;QT_DLL;QT_GUI_LIB;QT_CORE_LIB;QT_HAVE_MMX;QT_HAVE_3DNOW;QT_HAVE_SSE;QT_HAVE_MMXEXT;QT_HAVE_SSE2;QT_THREAD_SUPPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CONSOLE;UNICODE;WIN32;QUALITYDLG_DLL;QT_DLL;QT_GUI_LIB;QT_CORE_LIB;QT_HAVE_MMX;QT_HAVE_3DNOW;QT_HAVE_SSE;QT_HAVE_MMXEXT;QT_HAVE_SSE2;QT_THREAD_SUPPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessToFile>false</PreprocessToFile>
       <ProgramDataBaseFileName>.\</ProgramDataBaseFileName>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -74,7 +74,7 @@
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>c:\Qt\4.8.5\lib\Qt3Supportd4.lib;c:\Qt\4.8.5\lib\Qt3Support4.lib;c:\Qt\4.8.5\lib\QtGuid4.lib;c:\Qt\4.8.5\lib\QtCored4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>c:\Qt\4.8.5\lib\Qt3Supportd4.lib;c:\Qt\4.8.5\lib\Qt3Support4.lib;c:\Qt\4.8.5\lib\QtTestd4.lib;c:\Qt\4.8.5\lib\QtGuid4.lib;c:\Qt\4.8.5\lib\QtCored4.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>.\;$(RUNHOME)\lib;$(RUNHOME)\bin;c:\Qt\4.8.5\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <DataExecutionPrevention>true</DataExecutionPrevention>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -90,23 +90,23 @@
       <WarningLevel>0</WarningLevel>
     </Midl>
     <ResourceCompile>
-      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QUALITYDLG_DLL;QT_DLL;QT_GUI_LIB;QT_CORE_LIB;QT_HAVE_MMX;QT_HAVE_3DNOW;QT_HAVE_SSE;QT_HAVE_MMXEXT;QT_HAVE_SSE2;QT_THREAD_SUPPORT;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CONSOLE;UNICODE;WIN32;QUALITYDLG_DLL;QT_DLL;QT_GUI_LIB;QT_CORE_LIB;QT_HAVE_MMX;QT_HAVE_3DNOW;QT_HAVE_SSE;QT_HAVE_MMXEXT;QT_HAVE_SSE2;QT_THREAD_SUPPORT;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <PostBuildEvent>
-      <Command>copy $(RUNHOME)\tmp\qualitydlg\obj\qualitydlg.lib F:\delusoft\trunk\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\qualitydlg\obj\qualitydlg.dll F:\delusoft\trunk\qtverify\release\RUNHOME\dll</Command>
-      <Message>copy $(RUNHOME)\tmp\qualitydlg\obj\qualitydlg.lib F:\delusoft\trunk\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\qualitydlg\obj\qualitydlg.dll F:\delusoft\trunk\qtverify\release\RUNHOME\dll</Message>
+      <Command>copy $(RUNHOME)\tmp\quality\qualitydlg\obj\qualitydlg.lib F:\delusoft\trunk\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\quality\qualitydlg\obj\qualitydlg.dll F:\delusoft\trunk\qtverify\release\RUNHOME\dll</Command>
+      <Message>copy $(RUNHOME)\tmp\quality\qualitydlg\obj\qualitydlg.lib F:\delusoft\trunk\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\quality\qualitydlg\obj\qualitydlg.dll F:\delusoft\trunk\qtverify\release\RUNHOME\dll</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">
     <ClCompile>
-      <AdditionalIncludeDirectories>&quot;c:\Qt\4.8.5\include\QtCore&quot;;&quot;c:\Qt\4.8.5\include\QtGui&quot;;&quot;c:\Qt\4.8.5\include&quot;;&quot;.&quot;;&quot;include&quot;;&quot;..\..\include&quot;;&quot;c:\Qt\4.8.5\include\ActiveQt&quot;;&quot;f:\delusoft\trunk\qtverify\source\quality\qualitydlg\$(RUNHOME)\tmp\qualitydlg\moc&quot;;&quot;f:\delusoft\trunk\qtverify\source\quality\qualitydlg\$(RUNHOME_INC)\include&quot;;c:\Qt\4.8.5\mkspecs\win32-msvc2010;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>&quot;c:\Qt\4.8.5\include\QtCore&quot;;&quot;c:\Qt\4.8.5\include\QtGui&quot;;&quot;c:\Qt\4.8.5\include&quot;;&quot;c:\Qt\4.8.5\include\QtTest&quot;;&quot;.&quot;;&quot;include&quot;;&quot;..\..\include&quot;;&quot;..\..\include\qextserial&quot;;&quot;c:\Qt\4.8.5\include\ActiveQt&quot;;&quot;release&quot;;&quot;f:\delusoft\trunk\qtverify\source\quality\qualitydlg\$(RUNHOME_INC)\include&quot;;c:\Qt\4.8.5\mkspecs\win32-msvc2010;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zm200 -w34100 -w34189 %(AdditionalOptions)</AdditionalOptions>
-      <AssemblerListingLocation>$(RUNHOME)\tmp\qualitydlg\obj\</AssemblerListingLocation>
+      <AssemblerListingLocation>$(RUNHOME)\tmp\quality\qualitydlg\obj\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
       <ExceptionHandling>Sync</ExceptionHandling>
-      <ObjectFileName>$(RUNHOME)\tmp\qualitydlg\obj\</ObjectFileName>
+      <ObjectFileName>$(RUNHOME)\tmp\quality\qualitydlg\obj\</ObjectFileName>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QUALITYDLG_DLL;QT_DLL;QT_NO_DEBUG;QT_GUI_LIB;QT_CORE_LIB;QT_HAVE_MMX;QT_HAVE_3DNOW;QT_HAVE_SSE;QT_HAVE_MMXEXT;QT_HAVE_SSE2;QT_THREAD_SUPPORT;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CONSOLE;UNICODE;WIN32;QUALITYDLG_DLL;QT_DLL;QT_NO_DEBUG;QT_GUI_LIB;QT_CORE_LIB;QT_HAVE_MMX;QT_HAVE_3DNOW;QT_HAVE_SSE;QT_HAVE_MMXEXT;QT_HAVE_SSE2;QT_THREAD_SUPPORT;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessToFile>false</PreprocessToFile>
       <ProgramDataBaseFileName>.\</ProgramDataBaseFileName>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -116,7 +116,7 @@
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>c:\Qt\4.8.5\lib\Qt3Supportd4.lib;c:\Qt\4.8.5\lib\Qt3Support4.lib;c:\Qt\4.8.5\lib\QtGui4.lib;c:\Qt\4.8.5\lib\QtCore4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>c:\Qt\4.8.5\lib\Qt3Supportd4.lib;c:\Qt\4.8.5\lib\Qt3Support4.lib;c:\Qt\4.8.5\lib\QtTest4.lib;c:\Qt\4.8.5\lib\QtGui4.lib;c:\Qt\4.8.5\lib\QtCore4.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>.\;$(RUNHOME)\lib;$(RUNHOME)\bin;c:\Qt\4.8.5\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <DataExecutionPrevention>true</DataExecutionPrevention>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -133,43 +133,66 @@
       <WarningLevel>0</WarningLevel>
     </Midl>
     <ResourceCompile>
-      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QUALITYDLG_DLL;QT_DLL;QT_NO_DEBUG;QT_GUI_LIB;QT_CORE_LIB;QT_HAVE_MMX;QT_HAVE_3DNOW;QT_HAVE_SSE;QT_HAVE_MMXEXT;QT_HAVE_SSE2;QT_THREAD_SUPPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CONSOLE;UNICODE;WIN32;QUALITYDLG_DLL;QT_DLL;QT_NO_DEBUG;QT_GUI_LIB;QT_CORE_LIB;QT_HAVE_MMX;QT_HAVE_3DNOW;QT_HAVE_SSE;QT_HAVE_MMXEXT;QT_HAVE_SSE2;QT_THREAD_SUPPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <PostBuildEvent>
-      <Command>copy $(RUNHOME)\tmp\qualitydlg\obj\qualitydlg.lib F:\delusoft\trunk\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\qualitydlg\obj\qualitydlg.dll F:\delusoft\trunk\qtverify\release\RUNHOME\dll</Command>
-      <Message>copy $(RUNHOME)\tmp\qualitydlg\obj\qualitydlg.lib F:\delusoft\trunk\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\qualitydlg\obj\qualitydlg.dll F:\delusoft\trunk\qtverify\release\RUNHOME\dll</Message>
+      <Command>copy $(RUNHOME)\tmp\quality\qualitydlg\obj\qualitydlg.lib F:\delusoft\trunk\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\quality\qualitydlg\obj\qualitydlg.dll F:\delusoft\trunk\qtverify\release\RUNHOME\dll</Command>
+      <Message>copy $(RUNHOME)\tmp\quality\qualitydlg\obj\qualitydlg.lib F:\delusoft\trunk\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\quality\qualitydlg\obj\qualitydlg.dll F:\delusoft\trunk\qtverify\release\RUNHOME\dll</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\parasetdlg.cpp" />
+    <ClCompile Include="..\..\include\qextserial\qextserialport.cpp" />
+    <ClCompile Include="..\..\include\qextserial\qextserialport_win.cpp" />
     <ClCompile Include="source\qualitydlg.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\include\parasetdlg.h">
       <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">..\..\include\parasetdlg.h;C:\Qt\4.8.5\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DQUALITYDLG_DLL -DQT_DLL -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;.&quot; -I&quot;include&quot; -I&quot;..\..\include&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;f:\delusoft\trunk\qtverify\source\quality\qualitydlg\$(RUNHOME)\tmp\qualitydlg\moc&quot; -I&quot;f:\delusoft\trunk\qtverify\source\quality\qualitydlg\$(RUNHOME_INC)\include&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\..\include\parasetdlg.h -o f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qualitydlg\moc\moc_parasetdlg.cpp</Command>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DQUALITYDLG_DLL -DQT_DLL -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;c:\Qt\4.8.5\include\QtTest&quot; -I&quot;.&quot; -I&quot;include&quot; -I&quot;..\..\include&quot; -I&quot;..\..\include\qextserial&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;debug&quot; -I&quot;f:\delusoft\trunk\qtverify\source\quality\qualitydlg\$(RUNHOME_INC)\include&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\..\include\parasetdlg.h -o debug\moc_parasetdlg.cpp</Command>
       <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">MOC ..\..\include\parasetdlg.h</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">$(RUNHOME)\tmp\qualitydlg\moc\moc_parasetdlg.cpp;%(Outputs)</Outputs>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">debug\moc_parasetdlg.cpp;%(Outputs)</Outputs>
       <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">..\..\include\parasetdlg.h;C:\Qt\4.8.5\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DQUALITYDLG_DLL -DQT_DLL -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;.&quot; -I&quot;include&quot; -I&quot;..\..\include&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;f:\delusoft\trunk\qtverify\source\quality\qualitydlg\$(RUNHOME)\tmp\qualitydlg\moc&quot; -I&quot;f:\delusoft\trunk\qtverify\source\quality\qualitydlg\$(RUNHOME_INC)\include&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\..\include\parasetdlg.h -o f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qualitydlg\moc\moc_parasetdlg.cpp</Command>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DQUALITYDLG_DLL -DQT_DLL -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;c:\Qt\4.8.5\include\QtTest&quot; -I&quot;.&quot; -I&quot;include&quot; -I&quot;..\..\include&quot; -I&quot;..\..\include\qextserial&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;release&quot; -I&quot;f:\delusoft\trunk\qtverify\source\quality\qualitydlg\$(RUNHOME_INC)\include&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\..\include\parasetdlg.h -o release\moc_parasetdlg.cpp</Command>
       <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">MOC ..\..\include\parasetdlg.h</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">$(RUNHOME)\tmp\qualitydlg\moc\moc_parasetdlg.cpp;%(Outputs)</Outputs>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">release\moc_parasetdlg.cpp;%(Outputs)</Outputs>
     </CustomBuild>
+    <CustomBuild Include="..\..\include\qextserial\qextserialport.h">
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">..\..\include\qextserial\qextserialport.h;C:\Qt\4.8.5\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DQUALITYDLG_DLL -DQT_DLL -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;c:\Qt\4.8.5\include\QtTest&quot; -I&quot;.&quot; -I&quot;include&quot; -I&quot;..\..\include&quot; -I&quot;..\..\include\qextserial&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;debug&quot; -I&quot;f:\delusoft\trunk\qtverify\source\quality\qualitydlg\$(RUNHOME_INC)\include&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\..\include\qextserial\qextserialport.h -o debug\moc_qextserialport.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">MOC ..\..\include\qextserial\qextserialport.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">debug\moc_qextserialport.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">..\..\include\qextserial\qextserialport.h;C:\Qt\4.8.5\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DQUALITYDLG_DLL -DQT_DLL -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;c:\Qt\4.8.5\include\QtTest&quot; -I&quot;.&quot; -I&quot;include&quot; -I&quot;..\..\include&quot; -I&quot;..\..\include\qextserial&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;release&quot; -I&quot;f:\delusoft\trunk\qtverify\source\quality\qualitydlg\$(RUNHOME_INC)\include&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\..\include\qextserial\qextserialport.h -o release\moc_qextserialport.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">MOC ..\..\include\qextserial\qextserialport.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">release\moc_qextserialport.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="..\..\include\qextserial\qextserialport_global.h" />
     <CustomBuild Include="..\..\include\qualitydlg.h">
       <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">..\..\include\qualitydlg.h;C:\Qt\4.8.5\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DQUALITYDLG_DLL -DQT_DLL -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;.&quot; -I&quot;include&quot; -I&quot;..\..\include&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;f:\delusoft\trunk\qtverify\source\quality\qualitydlg\$(RUNHOME)\tmp\qualitydlg\moc&quot; -I&quot;f:\delusoft\trunk\qtverify\source\quality\qualitydlg\$(RUNHOME_INC)\include&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\..\include\qualitydlg.h -o f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qualitydlg\moc\moc_qualitydlg.cpp</Command>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DQUALITYDLG_DLL -DQT_DLL -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;c:\Qt\4.8.5\include\QtTest&quot; -I&quot;.&quot; -I&quot;include&quot; -I&quot;..\..\include&quot; -I&quot;..\..\include\qextserial&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;debug&quot; -I&quot;f:\delusoft\trunk\qtverify\source\quality\qualitydlg\$(RUNHOME_INC)\include&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\..\include\qualitydlg.h -o debug\moc_qualitydlg.cpp</Command>
       <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">MOC ..\..\include\qualitydlg.h</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">$(RUNHOME)\tmp\qualitydlg\moc\moc_qualitydlg.cpp;%(Outputs)</Outputs>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">debug\moc_qualitydlg.cpp;%(Outputs)</Outputs>
       <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">..\..\include\qualitydlg.h;C:\Qt\4.8.5\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DQUALITYDLG_DLL -DQT_DLL -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;.&quot; -I&quot;include&quot; -I&quot;..\..\include&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;f:\delusoft\trunk\qtverify\source\quality\qualitydlg\$(RUNHOME)\tmp\qualitydlg\moc&quot; -I&quot;f:\delusoft\trunk\qtverify\source\quality\qualitydlg\$(RUNHOME_INC)\include&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\..\include\qualitydlg.h -o f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qualitydlg\moc\moc_qualitydlg.cpp</Command>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DQUALITYDLG_DLL -DQT_DLL -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;c:\Qt\4.8.5\include\QtTest&quot; -I&quot;.&quot; -I&quot;include&quot; -I&quot;..\..\include&quot; -I&quot;..\..\include\qextserial&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;release&quot; -I&quot;f:\delusoft\trunk\qtverify\source\quality\qualitydlg\$(RUNHOME_INC)\include&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\..\include\qualitydlg.h -o release\moc_qualitydlg.cpp</Command>
       <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">MOC ..\..\include\qualitydlg.h</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">$(RUNHOME)\tmp\qualitydlg\moc\moc_qualitydlg.cpp;%(Outputs)</Outputs>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">release\moc_qualitydlg.cpp;%(Outputs)</Outputs>
     </CustomBuild>
     <ClInclude Include="..\..\include\qualitydlg_global.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qualitydlg\moc\moc_parasetdlg.cpp" />
-    <ClCompile Include="f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qualitydlg\moc\moc_qualitydlg.cpp" />
+    <ClCompile Include="debug\moc_parasetdlg.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_parasetdlg.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_qualitydlg.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_qualitydlg.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="debug\qrc_qualitydlg.cpp">
       <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">true</ExcludedFromBuild>
     </ClCompile>

@@ -1,7 +1,7 @@
 
 TEMPLATE	= lib
 TARGET    = qualitydlg
-CONFIG += qt dll debug
+CONFIG += qt dll debug qtestlib
 
 DEFINES	+= QUALITYDLG_DLL
 
@@ -11,21 +11,34 @@ QMAKE_LIBDIR +=  ./           \
 	            
 LIBS +=	-lQt3Supportd4 -lQt3Support4
 
-DESTDIR = $(RUNHOME)\tmp\qualitydlg\obj
-MOC_DIR = $(RUNHOME)/tmp/qualitydlg/moc
-OBJECTS_DIR = $(RUNHOME)/tmp/qualitydlg/obj
+DESTDIR = $(RUNHOME)\tmp\quality\qualitydlg\obj
+#MOC_DIR = $(RUNHOME)/tmp/quality/qualitydlg/moc
+OBJECTS_DIR = $(RUNHOME)/tmp/quality/qualitydlg/obj
 UI_DIR = $(RUNHOME_INC)/include
 
 INCLUDEPATH  	=    ./      \
 									 include \ 
 									 $$(RUNHOME_INC)/include \
+									 $$(RUNHOME_INC)/include/qextserial
 
 HEADERS	+= $$(RUNHOME_INC)/include/qualitydlg_global.h \
            $$(RUNHOME_INC)/include/qualitydlg.h \
-           $$(RUNHOME_INC)/include/parasetdlg.h  
+           $$(RUNHOME_INC)/include/parasetdlg.h \ 
+        	 $$(RUNHOME_INC)/include/qextserial/qextserialport_global.h  \
+        	 $$(RUNHOME_INC)/include/qextserial/qextserialport.h
 	
 SOURCES	+= source/qualitydlg.cpp  \
-					 source/parasetdlg.cpp 
+					 source/parasetdlg.cpp  \
+	         $$(RUNHOME_INC)/include/qextserial/qextserialport.cpp
+
+win32 {
+     SOURCES += $$(RUNHOME_INC)/include/qextserial/qextserialport_win.cpp
+}
+
+unix {
+     SOURCES += $$(RUNHOME_INC)/include/qextserial/qextserialport_unix.cpp
+}
+
 					 
 FORMS	+= ui/qualitydlg.ui \
          ui/parasetdlg.ui
