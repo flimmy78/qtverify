@@ -1,17 +1,17 @@
 #include <QtCore/QDebug>
-#include "alg.h"
+#include "protocol.h"
 
-AlgClass::AlgClass()
+CProtocol::CProtocol()
 {
 
 }
 
-AlgClass::~AlgClass()
+CProtocol::~CProtocol()
 {
 
 }
 
-float AlgClass::calc(float a, float b)
+float CProtocol::calc(float a, float b)
 {
 	float sum = a + b;
 	qDebug("%.2f + %.2f = %.2f \n", a, b, sum);

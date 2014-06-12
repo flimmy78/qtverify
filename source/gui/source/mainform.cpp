@@ -10,24 +10,41 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 {
 	ui.setupUi(this);
 
-	dbmysqlobj = new DbMySql();
+	dbmysqlobj = new DbMySql(this);
 	dbsqliteobj = new DbSqlite();
-	m_algobj = new alg();
-	spobj = new SerialPortSet();
+	m_alg = new AlgClass();
+	m_spset = new SerialPortSet();
 	m_qualitydlg = new QualityDlg();
 
 	connect(ui.btnExit, SIGNAL(clicked()), this, SLOT(close()));
-	
+
 }
 
 MainForm::~MainForm()
 {
+	if (m_alg)
+	{
+		delete m_alg;
+		m_alg = NULL;
+	}
+
+	if (m_spset)
+	{
+		delete m_spset;
+		m_spset = NULL;
+	}
+
+	if (m_qualitydlg)
+	{
+		delete m_qualitydlg;
+		m_qualitydlg = NULL;
+	}
 }
 
 void MainForm::on_action_spset_triggered()
 {
-//  QMessageBox::warning(this, "title", "you clicked");	
-	spobj->show();
+	//  QMessageBox::warning(this, "title", "you clicked");	
+	m_spset->show();
 }
 
 void MainForm::on_action_mysql_triggered()
@@ -42,7 +59,7 @@ void MainForm::on_action_sqlite_triggered()
 
 void MainForm::on_btnStart_clicked()
 {
-	m_algobj->calc(2.0, 5.6);
+	m_alg->calc(2.0, 5.6);
 }
 
 void MainForm::on_action_queryExcel_triggered()
@@ -73,14 +90,14 @@ void MainForm::on_action_queryExcel_triggered()
 		for (int j = intColStart; j < intColStart + intCols; j++) //列 
 		{
 			QAxObject * range = worksheet->querySubObject("Cells(int,int)", i, j ); //获取单元格  
- 			qDebug("row %d, col %d, value is %d\n", i, j, range->property("Value").toInt()); //************出问题!!!!!! 
+			qDebug("row %d, col %d, value is %d\n", i, j, range->property("Value").toInt()); //************出问题!!!!!! 
 		} 
 	}
 }
 
 void MainForm::on_btnSave_clicked()
 {
-	spobj->sp_anyfunc();
+	m_spset->sp_anyfunc();
 }
 
 void MainForm::on_btnPara_clicked()
@@ -118,8 +135,8 @@ void MainForm::on_actionQualityComp_triggered()
 
 void MainForm::on_actionQualityTotal_triggered()
 {
-	int count = spobj->myCom->bytesAvailable();
-	QByteArray temp = spobj->myCom->readAll();
+	int count = m_spset->myCom->bytesAvailable();
+	QByteArray temp = m_spset->myCom->readAll();
 	if (!temp.isEmpty())
 	{
 		int number = temp.size();

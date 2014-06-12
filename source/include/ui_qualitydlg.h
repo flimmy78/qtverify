@@ -286,7 +286,7 @@ public:
     QLabel *label_17;
     QGroupBox *groupBox_8;
     QGridLayout *gridLayout_8;
-    QPushButton *pushButton_3;
+    QPushButton *btnParaSet;
     QPushButton *pushButton_4;
     QPushButton *pushButton_5;
     QPushButton *pushButton_6;
@@ -1616,10 +1616,10 @@ public:
         groupBox_8->setSizePolicy(sizePolicy4);
         gridLayout_8 = new QGridLayout(groupBox_8);
         gridLayout_8->setObjectName(QString::fromUtf8("gridLayout_8"));
-        pushButton_3 = new QPushButton(groupBox_8);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        btnParaSet = new QPushButton(groupBox_8);
+        btnParaSet->setObjectName(QString::fromUtf8("btnParaSet"));
 
-        gridLayout_8->addWidget(pushButton_3, 0, 0, 1, 1);
+        gridLayout_8->addWidget(btnParaSet, 0, 0, 1, 1);
 
         pushButton_4 = new QPushButton(groupBox_8);
         pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
@@ -1661,7 +1661,7 @@ public:
         radioButton->setText(QApplication::translate("QualityDlgClass", "\350\277\233\345\217\243", 0, QApplication::UnicodeUTF8));
         radioButton_2->setText(QApplication::translate("QualityDlgClass", "\345\207\272\345\217\243", 0, QApplication::UnicodeUTF8));
         buttonGroup_2->setTitle(QApplication::translate("QualityDlgClass", "\347\203\255\351\207\217\345\215\225\344\275\215", 0, QApplication::UnicodeUTF8));
-        radioButton_3->setText(QApplication::translate("QualityDlgClass", "kwh", 0, QApplication::UnicodeUTF8));
+        radioButton_3->setText(QApplication::translate("QualityDlgClass", "KWH", 0, QApplication::UnicodeUTF8));
         radioButton_4->setText(QApplication::translate("QualityDlgClass", "MJ", 0, QApplication::UnicodeUTF8));
         groupBox_4->setTitle(QApplication::translate("QualityDlgClass", "\346\234\200\345\260\217\346\270\251\345\267\256", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("QualityDlgClass", "K", 0, QApplication::UnicodeUTF8));
@@ -1786,13 +1786,13 @@ public:
         label_9->setText(QApplication::translate("QualityDlgClass", "\345\260\217\345\244\251\345\271\263  ", 0, QApplication::UnicodeUTF8));
         label_14->setText(QApplication::translate("QualityDlgClass", "kg", 0, QApplication::UnicodeUTF8));
         label_10->setText(QApplication::translate("QualityDlgClass", "\347\236\254\346\227\266\346\265\201\351\207\217", 0, QApplication::UnicodeUTF8));
-        label_15->setText(QApplication::translate("QualityDlgClass", "\343\216\241/s", 0, QApplication::UnicodeUTF8));
+        label_15->setText(QApplication::translate("QualityDlgClass", "m\302\263/s", 0, QApplication::UnicodeUTF8));
         label_11->setText(QApplication::translate("QualityDlgClass", "\345\205\245\345\217\243\346\270\251\345\272\246", 0, QApplication::UnicodeUTF8));
         label_16->setText(QApplication::translate("QualityDlgClass", "\342\204\203", 0, QApplication::UnicodeUTF8));
         label_12->setText(QApplication::translate("QualityDlgClass", "\345\207\272\345\217\243\346\270\251\345\272\246", 0, QApplication::UnicodeUTF8));
         label_17->setText(QApplication::translate("QualityDlgClass", "\342\204\203", 0, QApplication::UnicodeUTF8));
         groupBox_8->setTitle(QApplication::translate("QualityDlgClass", "\346\223\215\344\275\234\346\255\245\351\252\244", 0, QApplication::UnicodeUTF8));
-        pushButton_3->setText(QApplication::translate("QualityDlgClass", "\345\217\202\346\225\260", 0, QApplication::UnicodeUTF8));
+        btnParaSet->setText(QApplication::translate("QualityDlgClass", "\345\217\202\346\225\260", 0, QApplication::UnicodeUTF8));
         pushButton_4->setText(QApplication::translate("QualityDlgClass", "\346\216\222\346\260\224", 0, QApplication::UnicodeUTF8));
         pushButton_5->setText(QApplication::translate("QualityDlgClass", "\345\274\200\345\247\213", 0, QApplication::UnicodeUTF8));
         pushButton_6->setText(QApplication::translate("QualityDlgClass", "\344\277\235\345\255\230", 0, QApplication::UnicodeUTF8));

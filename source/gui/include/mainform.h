@@ -25,8 +25,8 @@ public:
 	DbMySql *dbmysqlobj;
 	DbSqlite *dbsqliteobj;
 	MonsterInterface *m_monster;
-	alg *m_algobj;
-	SerialPortSet *spobj;
+	AlgClass *m_alg;
+	SerialPortSet *m_spset;
 	QualityDlg *m_qualitydlg;
 
 

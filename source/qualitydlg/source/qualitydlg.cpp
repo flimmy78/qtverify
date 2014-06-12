@@ -8,11 +8,16 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 {
 	ui.setupUi(this);
 
+	m_paraset = new ParaSetDlg();
 }
 
 QualityDlg::~QualityDlg()
 {
-
+	if (m_paraset)
+	{
+		delete m_paraset;
+		m_paraset = NULL;
+	}
 }
 
 void QualityDlg::on_btnWaterIn_clicked()
@@ -32,5 +37,8 @@ void QualityDlg::setValveBtnBackColor(QPushButton *btn, bool isOpen)
 	}
 }
 
-
+void QualityDlg::on_btnParaSet_clicked()
+{
+	m_paraset->show();
+}
 
