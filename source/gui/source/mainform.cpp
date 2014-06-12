@@ -15,7 +15,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	dbmysqlobj = new DbMySql();
 	dbsqliteobj = new DbSqlite();
 	m_alg = new CAlg();
-	m_spset = new SerialPortSet();
+	m_comset = new ComSetDlg();
 	m_qualitydlg = new QualityDlg();
 
 	connect(ui.btnExit, SIGNAL(clicked()), this, SLOT(close()));
@@ -30,10 +30,10 @@ MainForm::~MainForm()
 		m_alg = NULL;
 	}
 
-	if (m_spset)
+	if (m_comset)
 	{
-		delete m_spset;
-		m_spset = NULL;
+		delete m_comset;
+		m_comset = NULL;
 	}
 
 	if (m_qualitydlg)
@@ -46,7 +46,7 @@ MainForm::~MainForm()
 void MainForm::on_action_spset_triggered()
 {
 //  QMessageBox::warning(this, "title", "you clicked");	
-	m_spset->show();
+	m_comset->show();
 }
 
 void MainForm::on_action_mysql_triggered()
@@ -99,7 +99,7 @@ void MainForm::on_action_queryExcel_triggered()
 
 void MainForm::on_btnSave_clicked()
 {
-	m_spset->sp_anyfunc();
+	m_comset->sp_anyfunc();
 }
 
 void MainForm::on_btnPara_clicked()
@@ -110,6 +110,11 @@ void MainForm::on_btnPara_clicked()
 	myProcess->start("mstsc", cmdlist);
 }
 
+void MainForm::on_btnAirOut_clicked()
+{
+	QProcess *myProcess = new QProcess(this);
+	myProcess->start("comset.exe");
+}
 
 void MainForm::on_actionPlugin_triggered()
 {
@@ -137,8 +142,8 @@ void MainForm::on_actionQualityComp_triggered()
 
 void MainForm::on_actionQualityTotal_triggered()
 {
-	int count = m_spset->myCom->bytesAvailable();
-	QByteArray temp = m_spset->myCom->readAll();
+	int count = m_comset->myCom->bytesAvailable();
+	QByteArray temp = m_comset->myCom->readAll();
 	if (!temp.isEmpty())
 	{
 		int number = temp.size();

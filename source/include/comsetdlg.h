@@ -1,19 +1,19 @@
-#ifndef SERIALPORTSET_H
-#define SERIALPORTSET_H
+#ifndef COMSETDLG_H
+#define COMSETDLG_H
 
 #include <QtGui/QWidget>
 
 #include "comsetdlg_global.h"
-#include "ui_serialportset.h"
+#include "ui_comsetdlg.h"
 #include "win_qextserialport.h"
 
-class COMSETDLG_EXPORT SerialPortSet : public QWidget
+class COMSETDLG_EXPORT ComSetDlg : public QWidget
 {
 	Q_OBJECT
 
 public:
-	SerialPortSet(QWidget *parent = 0, Qt::WFlags flags = 0);
-	~SerialPortSet();
+	ComSetDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
+	~ComSetDlg();
 
 	Win_QextSerialPort *myCom;
 
@@ -23,7 +23,7 @@ public slots:
 	
 
 private:
-	Ui::SerialPortSetClass spsetui;
+	Ui::ComSetDlgClass ui;
 
 private slots:
 	void slotReadMyCom();
@@ -33,4 +33,4 @@ private slots:
 	void on_btnClearMsg_clicked();
 };
 
-#endif // SERIALPORTSET_H
+#endif // COMSETDLG_H

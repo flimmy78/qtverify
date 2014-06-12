@@ -8,7 +8,7 @@
 #include "dbsqlite.h"
 #include "monsterinterface.h" //²å¼þ½Ó¿Ú
 #include "alg.h"
-#include "serialportset.h"
+#include "comsetdlg.h"
 #include "qualitydlg.h"
 #include "mythread.h"
 
@@ -27,7 +27,7 @@ public:
 	DbSqlite *dbsqliteobj;
 	MonsterInterface *m_monster;
 	CAlg *m_alg;
-	SerialPortSet *m_spset;
+	ComSetDlg *m_comset;
 	QualityDlg *m_qualitydlg;
 
 
@@ -43,6 +43,7 @@ public slots:
 	void on_btnStart_clicked();
 	void on_btnSave_clicked();
 	void on_btnPara_clicked();
+	void on_btnAirOut_clicked();
 
 private:
 	Ui::qMainFormClass ui;

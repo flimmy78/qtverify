@@ -1,7 +1,7 @@
 #include <QtGui/QApplication>
 #include <QtCore/QTranslator>
 
-#include "serialportset.h"
+#include "comsetdlg.h"
 
 
 int main( int argc, char ** argv )
@@ -23,7 +23,7 @@ int main( int argc, char ** argv )
 		app.installTranslator(&translator);
 	}
 
-	SerialPortSet w;
+	ComSetDlg w;
 	w.show();
 
 	return app.exec();

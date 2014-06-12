@@ -19,17 +19,17 @@ INCLUDEPATH  	=    ./      \
 									 $$(RUNHOME_INC)/include \
 
 HEADERS	+= $(RUNHOME_INC)/include/comsetdlg_global.h \
-           $(RUNHOME_INC)/include/serialportset.h   \
+           $(RUNHOME_INC)/include/comsetdlg.h   \
            $(RUNHOME_INC)/include/qextserialbase.h  \
            $(RUNHOME_INC)/include/qextserialport.h  \
            $(RUNHOME_INC)/include/win_qextserialport.h
 	
-SOURCES	+= source/serialportset.cpp   \
+SOURCES	+= source/comsetdlg.cpp   \
            source/qextserialbase.cpp  \
            source/qextserialport.cpp  \
            source/win_qextserialport.cpp 
 					 
-FORMS	+= ui/serialportset.ui \
+FORMS	+= ui/comsetdlg.ui \
          
 win32{
 	MY_DEST_LIB_VAR = $${DESTDIR} $${TARGET}.lib

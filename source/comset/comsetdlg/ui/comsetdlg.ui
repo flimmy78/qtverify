@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SerialPortSetClass</class>
- <widget class="QWidget" name="SerialPortSetClass">
+ <class>ComSetDlgClass</class>
+ <widget class="QWidget" name="ComSetDlgClass">
   <property name="windowModality">
    <enum>Qt::ApplicationModal</enum>
   </property>
@@ -14,7 +14,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>SerialPortSet</string>
+   <string>ComSetDlg</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_5">
    <item row="0" column="0">
