@@ -8,7 +8,6 @@ ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 {
 	qDebug()<<"ParaSetDlg thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
-
 }
 
 ParaSetDlg::~ParaSetDlg()

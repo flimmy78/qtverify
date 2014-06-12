@@ -10,7 +10,6 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 	ui.setupUi(this);
 
 	m_paraset = new ParaSetDlg();
-
 }
 
 QualityDlg::~QualityDlg()

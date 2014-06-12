@@ -65,13 +65,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="..\include\parasetdlg.h">
+    <CustomBuild Include="..\..\include\parasetdlg.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\include\qualitydlg.h">
+    <CustomBuild Include="..\..\include\qualitydlg.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <ClInclude Include="..\include\qualitydlg_global.h">
+    <ClInclude Include="..\..\include\qualitydlg_global.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
