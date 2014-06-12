@@ -17,17 +17,18 @@ UI_DIR = $(RUNHOME_INC)/include
 INCLUDEPATH  	=    ./      \
 									 include \ 
 									 $$(RUNHOME_INC)/include \
+									 $$(RUNHOME_INC)/include/qextsp
 
 HEADERS	+= $(RUNHOME_INC)/include/comsetdlg_global.h \
            $(RUNHOME_INC)/include/comsetdlg.h   \
-           $(RUNHOME_INC)/include/qextserialbase.h  \
-           $(RUNHOME_INC)/include/qextserialport.h  \
-           $(RUNHOME_INC)/include/win_qextserialport.h
+           $(RUNHOME_INC)/include/qextsp/qextserialbase.h  \
+           $(RUNHOME_INC)/include/qextsp/qextserialport.h  \
+           $(RUNHOME_INC)/include/qextsp/win_qextserialport.h
 	
 SOURCES	+= source/comsetdlg.cpp   \
-           source/qextserialbase.cpp  \
-           source/qextserialport.cpp  \
-           source/win_qextserialport.cpp 
+           $(RUNHOME_INC)/include/qextsp/qextserialbase.cpp  \
+           $(RUNHOME_INC)/include/qextsp/qextserialport.cpp  \
+           $(RUNHOME_INC)/include/qextsp/win_qextserialport.cpp 
 					 
 FORMS	+= ui/comsetdlg.ui \
          
