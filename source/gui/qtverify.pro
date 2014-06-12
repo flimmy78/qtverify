@@ -51,7 +51,9 @@ INCLUDEPATH += 	./include	\
 								../alg	\
 								$${UI_DIR}	\
 								$$(RUNHOME_INC)/include		\
-								F:\mysoft\trunk\plugindemo\GameSystem  \
+								$$(RUNHOME_INC)/include/qextserial \
+								$$(RUNHOME_INC)/include/qextforcomset \
+								F:\mysoft\trunk\plugindemo\GameSystem
 
 
 TRANSLATIONS += ./language/qtverify_en.ts ./language/qtverify_zh.ts
