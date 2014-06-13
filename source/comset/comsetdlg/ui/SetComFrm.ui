@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>749</width>
-    <height>784</height>
+    <width>882</width>
+    <height>611</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <rect>
      <x>30</x>
      <y>10</y>
-     <width>171</width>
+     <width>141</width>
      <height>181</height>
     </rect>
    </property>
@@ -28,8 +28,8 @@
    <widget class="QComboBox" name="comboSerialNum">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>40</y>
+      <x>60</x>
+      <y>20</y>
       <width>69</width>
       <height>22</height>
      </rect>
@@ -38,8 +38,8 @@
    <widget class="QComboBox" name="comboBaudRate">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>40</y>
+      <x>60</x>
+      <y>50</y>
       <width>69</width>
       <height>22</height>
      </rect>
@@ -67,8 +67,8 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>20</y>
+      <x>10</x>
+      <y>50</y>
       <width>36</width>
       <height>20</height>
      </rect>
@@ -80,8 +80,8 @@
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>70</y>
+      <x>10</x>
+      <y>80</y>
       <width>36</width>
       <height>20</height>
      </rect>
@@ -93,8 +93,8 @@
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>120</y>
+      <x>10</x>
+      <y>140</y>
       <width>36</width>
       <height>20</height>
      </rect>
@@ -106,8 +106,8 @@
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>120</y>
+      <x>10</x>
+      <y>110</y>
       <width>36</width>
       <height>20</height>
      </rect>
@@ -119,8 +119,8 @@
    <widget class="QComboBox" name="comboBits">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>90</y>
+      <x>60</x>
+      <y>80</y>
       <width>69</width>
       <height>22</height>
      </rect>
@@ -129,7 +129,7 @@
    <widget class="QComboBox" name="comboChkBit">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>60</x>
       <y>140</y>
       <width>69</width>
       <height>22</height>
@@ -139,8 +139,8 @@
    <widget class="QComboBox" name="comboEndBit">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>140</y>
+      <x>60</x>
+      <y>110</y>
       <width>69</width>
       <height>22</height>
      </rect>
@@ -150,72 +150,20 @@
   <widget class="QGroupBox" name="gBoxBalance">
    <property name="geometry">
     <rect>
-     <x>200</x>
+     <x>180</x>
      <y>10</y>
-     <width>171</width>
+     <width>151</width>
      <height>181</height>
     </rect>
    </property>
    <property name="title">
     <string>天平采集</string>
    </property>
-   <widget class="QComboBox" name="comboSerialNum_2">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>40</y>
-      <width>69</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="comboBaudRate_2">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>40</y>
-      <width>69</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>20</y>
-      <width>24</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="text">
-     <string>串口</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_9">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>20</y>
-      <width>36</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>波特率</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_10">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>70</y>
+      <y>80</y>
       <width>36</width>
       <height>20</height>
      </rect>
@@ -224,11 +172,67 @@
      <string>数据位</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>110</y>
+      <width>36</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>停止位</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboEndBit_2">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>110</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBaudRate_2">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>50</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>50</y>
+      <width>36</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>波特率</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboSerialNum_2">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>20</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
    <widget class="QLabel" name="label_11">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>70</y>
+      <x>20</x>
+      <y>140</y>
       <width>36</width>
       <height>20</height>
      </rect>
@@ -240,83 +244,7 @@
    <widget class="QLabel" name="label_12">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>120</y>
-      <width>36</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>停止位</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="comboBits_2">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>90</y>
-      <width>69</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="comboChkBit_2">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>90</y>
-      <width>69</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="comboEndBit_2">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>140</y>
-      <width>69</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QGroupBox" name="gBoxTempSenor">
-   <property name="geometry">
-    <rect>
-     <x>370</x>
-     <y>10</y>
-     <width>171</width>
-     <height>181</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>温度采集</string>
-   </property>
-   <widget class="QComboBox" name="comboSerialNum_3">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>40</y>
-      <width>69</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="comboBaudRate_3">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>40</y>
-      <width>69</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_13">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
+      <x>30</x>
       <y>20</y>
       <width>24</width>
       <height>20</height>
@@ -332,24 +260,44 @@
      <string>串口</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_14">
+   <widget class="QComboBox" name="comboBits_2">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>20</y>
-      <width>36</width>
-      <height>20</height>
+      <x>70</x>
+      <y>80</y>
+      <width>69</width>
+      <height>22</height>
      </rect>
     </property>
-    <property name="text">
-     <string>波特率</string>
-    </property>
    </widget>
-   <widget class="QLabel" name="label_15">
+   <widget class="QComboBox" name="comboChkBit_2">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>70</y>
+      <x>70</x>
+      <y>140</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="gBoxTempSenor">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>10</y>
+     <width>141</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>温度采集</string>
+   </property>
+   <widget class="QLabel" name="label_13">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
       <width>36</width>
       <height>20</height>
      </rect>
@@ -358,11 +306,67 @@
      <string>数据位</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_14">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>110</y>
+      <width>36</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>停止位</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboEndBit_3">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>110</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBaudRate_3">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>50</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_15">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>36</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>波特率</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboSerialNum_3">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>20</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
    <widget class="QLabel" name="label_16">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>70</y>
+      <x>10</x>
+      <y>140</y>
       <width>36</width>
       <height>20</height>
      </rect>
@@ -375,20 +379,26 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>120</y>
-      <width>36</width>
+      <y>20</y>
+      <width>24</width>
       <height>20</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
     <property name="text">
-     <string>停止位</string>
+     <string>串口</string>
     </property>
    </widget>
    <widget class="QComboBox" name="comboBits_3">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>90</y>
+      <x>60</x>
+      <y>80</y>
       <width>69</width>
       <height>22</height>
      </rect>
@@ -397,17 +407,7 @@
    <widget class="QComboBox" name="comboChkBit_3">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>90</y>
-      <width>69</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="comboEndBit_3">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
+      <x>60</x>
       <y>140</y>
       <width>69</width>
       <height>22</height>
@@ -418,20 +418,46 @@
   <widget class="QGroupBox" name="gBoxStdTmpSensor">
    <property name="geometry">
     <rect>
-     <x>540</x>
+     <x>490</x>
      <y>10</y>
-     <width>171</width>
+     <width>141</width>
      <height>181</height>
     </rect>
    </property>
    <property name="title">
     <string>标准温度</string>
    </property>
-   <widget class="QComboBox" name="comboSerialNum_4">
+   <widget class="QLabel" name="label_18">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>40</y>
+      <y>80</y>
+      <width>36</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>数据位</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_19">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>110</y>
+      <width>36</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>停止位</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboEndBit_4">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>110</y>
       <width>69</width>
       <height>22</height>
      </rect>
@@ -440,14 +466,50 @@
    <widget class="QComboBox" name="comboBaudRate_4">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>40</y>
+      <x>60</x>
+      <y>50</y>
       <width>69</width>
       <height>22</height>
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="label_18">
+   <widget class="QLabel" name="label_20">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>36</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>波特率</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboSerialNum_4">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>20</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_21">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>140</y>
+      <width>36</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>校验位</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_22">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -466,63 +528,11 @@
      <string>串口</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_19">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>20</y>
-      <width>36</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>波特率</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_20">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>70</y>
-      <width>36</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>数据位</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_21">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>70</y>
-      <width>36</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>校验位</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_22">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>120</y>
-      <width>36</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>停止位</string>
-    </property>
-   </widget>
    <widget class="QComboBox" name="comboBits_4">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>90</y>
+      <x>60</x>
+      <y>80</y>
       <width>69</width>
       <height>22</height>
      </rect>
@@ -531,17 +541,7 @@
    <widget class="QComboBox" name="comboChkBit_4">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>90</y>
-      <width>69</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="comboEndBit_4">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
+      <x>60</x>
       <y>140</y>
       <width>69</width>
       <height>22</height>
@@ -554,82 +554,30 @@
     <rect>
      <x>10</x>
      <y>190</y>
-     <width>731</width>
-     <height>571</height>
+     <width>861</width>
+     <height>391</height>
     </rect>
    </property>
    <property name="title">
     <string>被检表</string>
    </property>
-   <widget class="QGroupBox" name="gBoxMeter_1">
+   <widget class="QGroupBox" name="gBoxMeter">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>20</y>
-      <width>171</width>
+      <width>141</width>
       <height>181</height>
      </rect>
     </property>
     <property name="title">
      <string>1号表</string>
     </property>
-    <widget class="QComboBox" name="comboSerialNum_5">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBaudRate_5">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>40</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_23">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>20</y>
-       <width>24</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>串口</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_24">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>20</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>波特率</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_25">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>70</y>
+       <x>10</x>
+       <y>80</y>
        <width>36</width>
        <height>20</height>
       </rect>
@@ -638,11 +586,67 @@
       <string>数据位</string>
      </property>
     </widget>
+    <widget class="QLabel" name="label_24">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>110</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>停止位</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBaudRate_5">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>50</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboEndBit_5">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>110</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_25">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>波特率</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboSerialNum_5">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>20</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
     <widget class="QLabel" name="label_26">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>70</y>
+       <x>10</x>
+       <y>140</y>
        <width>36</width>
        <height>20</height>
       </rect>
@@ -655,20 +659,26 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>120</y>
-       <width>36</width>
+       <y>20</y>
+       <width>24</width>
        <height>20</height>
       </rect>
      </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
-      <string>停止位</string>
+      <string>串口</string>
      </property>
     </widget>
     <widget class="QComboBox" name="comboBits_5">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>90</y>
+       <x>60</x>
+       <y>80</y>
        <width>69</width>
        <height>22</height>
       </rect>
@@ -677,57 +687,125 @@
     <widget class="QComboBox" name="comboChkBit_5">
      <property name="geometry">
       <rect>
-       <x>90</x>
-       <y>90</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboEndBit_5">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
+       <x>60</x>
        <y>140</y>
        <width>69</width>
        <height>22</height>
       </rect>
      </property>
     </widget>
+    <zorder>label_23</zorder>
+    <zorder>label_24</zorder>
+    <zorder>comboBaudRate_5</zorder>
+    <zorder>comboEndBit_5</zorder>
+    <zorder>label_25</zorder>
+    <zorder>comboSerialNum_5</zorder>
+    <zorder>label_26</zorder>
+    <zorder>label_27</zorder>
+    <zorder>comboBits_5</zorder>
+    <zorder>comboChkBit_5</zorder>
+    <zorder>gBoxMeter_12</zorder>
+    <zorder>gBoxMeter_8</zorder>
+    <zorder>gBoxMeter_9</zorder>
+    <zorder>gBoxMeter_10</zorder>
+    <zorder>gBoxMeter_7</zorder>
+    <zorder>gBoxMeter_11</zorder>
    </widget>
    <widget class="QGroupBox" name="gBoxMeter_2">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>150</x>
       <y>20</y>
-      <width>171</width>
+      <width>141</width>
       <height>181</height>
      </rect>
     </property>
     <property name="title">
      <string>2号表</string>
     </property>
-    <widget class="QComboBox" name="comboSerialNum_8">
+    <widget class="QLabel" name="label_33">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>40</y>
-       <width>69</width>
-       <height>22</height>
+       <y>80</y>
+       <width>36</width>
+       <height>20</height>
       </rect>
      </property>
+     <property name="text">
+      <string>数据位</string>
+     </property>
     </widget>
-    <widget class="QComboBox" name="comboBaudRate_8">
+    <widget class="QLabel" name="label_34">
      <property name="geometry">
       <rect>
-       <x>90</x>
-       <y>40</y>
+       <x>10</x>
+       <y>110</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>停止位</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBaudRate_7">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>50</y>
        <width>69</width>
        <height>22</height>
       </rect>
      </property>
     </widget>
-    <widget class="QLabel" name="label_38">
+    <widget class="QComboBox" name="comboEndBit_7">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>110</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_35">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>波特率</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboSerialNum_7">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>20</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_36">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>140</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>校验位</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_37">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -746,24 +824,44 @@
       <string>串口</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_39">
+    <widget class="QComboBox" name="comboBits_7">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>20</y>
-       <width>36</width>
-       <height>20</height>
+       <x>60</x>
+       <y>80</y>
+       <width>69</width>
+       <height>22</height>
       </rect>
      </property>
-     <property name="text">
-      <string>波特率</string>
-     </property>
     </widget>
-    <widget class="QLabel" name="label_40">
+    <widget class="QComboBox" name="comboChkBit_7">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>70</y>
+       <x>60</x>
+       <y>140</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="gBoxMeter_3">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>20</y>
+      <width>141</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>3号表</string>
+    </property>
+    <widget class="QLabel" name="label_38">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
        <width>36</width>
        <height>20</height>
       </rect>
@@ -772,11 +870,67 @@
       <string>数据位</string>
      </property>
     </widget>
+    <widget class="QLabel" name="label_39">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>110</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>停止位</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBaudRate_8">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>50</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboEndBit_8">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>110</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_40">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>波特率</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboSerialNum_8">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>20</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
     <widget class="QLabel" name="label_41">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>70</y>
+       <x>10</x>
+       <y>140</y>
        <width>36</width>
        <height>20</height>
       </rect>
@@ -789,82 +943,6 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>120</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>停止位</string>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBits_8">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>90</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboChkBit_8">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>90</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboEndBit_8">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>140</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="gBoxMeter_3">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>20</y>
-      <width>171</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>3号表</string>
-    </property>
-    <widget class="QComboBox" name="comboSerialNum_9">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBaudRate_9">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>40</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_43">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
        <y>20</y>
        <width>24</width>
        <height>20</height>
@@ -880,24 +958,44 @@
       <string>串口</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_44">
+    <widget class="QComboBox" name="comboBits_8">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>20</y>
-       <width>36</width>
-       <height>20</height>
+       <x>60</x>
+       <y>80</y>
+       <width>69</width>
+       <height>22</height>
       </rect>
      </property>
-     <property name="text">
-      <string>波特率</string>
-     </property>
     </widget>
-    <widget class="QLabel" name="label_45">
+    <widget class="QComboBox" name="comboChkBit_8">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>70</y>
+       <x>60</x>
+       <y>140</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="gBoxMeter_4">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>20</y>
+      <width>141</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>4号表</string>
+    </property>
+    <widget class="QLabel" name="label_43">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
        <width>36</width>
        <height>20</height>
       </rect>
@@ -906,11 +1004,67 @@
       <string>数据位</string>
      </property>
     </widget>
+    <widget class="QLabel" name="label_44">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>110</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>停止位</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBaudRate_9">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>50</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboEndBit_9">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>110</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_45">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>波特率</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboSerialNum_9">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>20</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
     <widget class="QLabel" name="label_46">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>70</y>
+       <x>10</x>
+       <y>140</y>
        <width>36</width>
        <height>20</height>
       </rect>
@@ -923,82 +1077,6 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>120</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>停止位</string>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBits_9">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>90</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboChkBit_9">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>90</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboEndBit_9">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>140</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="gBoxMeter_4">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>20</y>
-      <width>171</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>4号表</string>
-    </property>
-    <widget class="QComboBox" name="comboSerialNum_10">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBaudRate_10">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>40</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_48">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
        <y>20</y>
        <width>24</width>
        <height>20</height>
@@ -1014,24 +1092,44 @@
       <string>串口</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_49">
+    <widget class="QComboBox" name="comboBits_9">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>20</y>
-       <width>36</width>
-       <height>20</height>
+       <x>60</x>
+       <y>80</y>
+       <width>69</width>
+       <height>22</height>
       </rect>
      </property>
-     <property name="text">
-      <string>波特率</string>
-     </property>
     </widget>
-    <widget class="QLabel" name="label_50">
+    <widget class="QComboBox" name="comboChkBit_9">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>70</y>
+       <x>60</x>
+       <y>140</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="gBoxMeter_5">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>20</y>
+      <width>141</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>5号表</string>
+    </property>
+    <widget class="QLabel" name="label_48">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
        <width>36</width>
        <height>20</height>
       </rect>
@@ -1040,11 +1138,67 @@
       <string>数据位</string>
      </property>
     </widget>
+    <widget class="QLabel" name="label_49">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>110</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>停止位</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBaudRate_10">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>50</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboEndBit_10">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>110</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_50">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>波特率</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboSerialNum_10">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>20</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
     <widget class="QLabel" name="label_51">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>70</y>
+       <x>10</x>
+       <y>140</y>
        <width>36</width>
        <height>20</height>
       </rect>
@@ -1057,82 +1211,6 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>120</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>停止位</string>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBits_10">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>90</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboChkBit_10">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>90</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboEndBit_10">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>140</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="gBoxMeter_5">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>200</y>
-      <width>171</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>5号表</string>
-    </property>
-    <widget class="QComboBox" name="comboSerialNum_11">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBaudRate_11">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>40</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_53">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
        <y>20</y>
        <width>24</width>
        <height>20</height>
@@ -1148,24 +1226,44 @@
       <string>串口</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_54">
+    <widget class="QComboBox" name="comboBits_10">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>20</y>
-       <width>36</width>
-       <height>20</height>
+       <x>60</x>
+       <y>80</y>
+       <width>69</width>
+       <height>22</height>
       </rect>
      </property>
-     <property name="text">
-      <string>波特率</string>
-     </property>
     </widget>
-    <widget class="QLabel" name="label_55">
+    <widget class="QComboBox" name="comboChkBit_10">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>70</y>
+       <x>60</x>
+       <y>140</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="gBoxMeter_6">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>20</y>
+      <width>141</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>6号表</string>
+    </property>
+    <widget class="QLabel" name="label_53">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
        <width>36</width>
        <height>20</height>
       </rect>
@@ -1174,11 +1272,67 @@
       <string>数据位</string>
      </property>
     </widget>
+    <widget class="QLabel" name="label_54">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>110</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>停止位</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBaudRate_11">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>50</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboEndBit_11">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>110</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_55">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>波特率</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboSerialNum_11">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>20</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
     <widget class="QLabel" name="label_56">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>70</y>
+       <x>10</x>
+       <y>140</y>
        <width>36</width>
        <height>20</height>
       </rect>
@@ -1191,20 +1345,26 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>120</y>
-       <width>36</width>
+       <y>20</y>
+       <width>24</width>
        <height>20</height>
       </rect>
      </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
-      <string>停止位</string>
+      <string>串口</string>
      </property>
     </widget>
     <widget class="QComboBox" name="comboBits_11">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>90</y>
+       <x>60</x>
+       <y>80</y>
        <width>69</width>
        <height>22</height>
       </rect>
@@ -1213,821 +1373,7 @@
     <widget class="QComboBox" name="comboChkBit_11">
      <property name="geometry">
       <rect>
-       <x>90</x>
-       <y>90</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboEndBit_11">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>140</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="gBoxMeter_6">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>200</y>
-      <width>171</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>6号表</string>
-    </property>
-    <widget class="QComboBox" name="comboSerialNum_12">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBaudRate_12">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>40</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_58">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>20</y>
-       <width>24</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>串口</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_59">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>20</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>波特率</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_60">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>70</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>数据位</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_61">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>70</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>校验位</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_62">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>120</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>停止位</string>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBits_12">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>90</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboChkBit_12">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>90</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboEndBit_12">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>140</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="gBoxMeter_7">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>200</y>
-      <width>171</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>7号表</string>
-    </property>
-    <widget class="QComboBox" name="comboSerialNum_13">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBaudRate_13">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>40</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_63">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>20</y>
-       <width>24</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>串口</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_64">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>20</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>波特率</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_65">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>70</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>数据位</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_66">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>70</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>校验位</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_67">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>120</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>停止位</string>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBits_13">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>90</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboChkBit_13">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>90</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboEndBit_13">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>140</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="gBoxMeter_8">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>200</y>
-      <width>171</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>8号表</string>
-    </property>
-    <widget class="QComboBox" name="comboSerialNum_14">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBaudRate_14">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>40</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_68">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>20</y>
-       <width>24</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>串口</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_69">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>20</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>波特率</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_70">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>70</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>数据位</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_71">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>70</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>校验位</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_72">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>120</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>停止位</string>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBits_14">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>90</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboChkBit_14">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>90</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboEndBit_14">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>140</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="gBoxMeter_12">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>380</y>
-      <width>171</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>12号表</string>
-    </property>
-    <widget class="QComboBox" name="comboSerialNum_15">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBaudRate_15">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>40</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_73">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>20</y>
-       <width>24</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>串口</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_74">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>20</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>波特率</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_75">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>70</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>数据位</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_76">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>70</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>校验位</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_77">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>120</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>停止位</string>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBits_15">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>90</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboChkBit_15">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>90</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboEndBit_15">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>140</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="gBoxMeter_11">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>380</y>
-      <width>171</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>11号表</string>
-    </property>
-    <widget class="QComboBox" name="comboSerialNum_16">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBaudRate_16">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>40</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_78">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>20</y>
-       <width>24</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>串口</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_79">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>20</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>波特率</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_80">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>70</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>数据位</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_81">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>70</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>校验位</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_82">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>120</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>停止位</string>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBits_16">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>90</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboChkBit_16">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>90</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboEndBit_16">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>140</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="gBoxMeter_10">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>380</y>
-      <width>171</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>10号表</string>
-    </property>
-    <widget class="QComboBox" name="comboSerialNum_17">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBaudRate_17">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>40</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_83">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>20</y>
-       <width>24</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>串口</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_84">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>20</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>波特率</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_85">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>70</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>数据位</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_86">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>70</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>校验位</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_87">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>120</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>停止位</string>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBits_17">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>90</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboChkBit_17">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>90</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboEndBit_17">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
+       <x>60</x>
        <y>140</y>
        <width>69</width>
        <height>22</height>
@@ -2038,72 +1384,20 @@
    <widget class="QGroupBox" name="gBoxMeter_9">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>380</y>
-      <width>171</width>
+      <x>290</x>
+      <y>200</y>
+      <width>141</width>
       <height>181</height>
      </rect>
     </property>
     <property name="title">
      <string>9号表</string>
     </property>
-    <widget class="QComboBox" name="comboSerialNum_18">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBaudRate_18">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>40</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_88">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>20</y>
-       <width>24</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>串口</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_89">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>20</y>
-       <width>36</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>波特率</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_90">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>70</y>
+       <x>10</x>
+       <y>80</y>
        <width>36</width>
        <height>20</height>
       </rect>
@@ -2112,11 +1406,67 @@
       <string>数据位</string>
      </property>
     </widget>
+    <widget class="QLabel" name="label_89">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>110</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>停止位</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBaudRate_18">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>50</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboEndBit_18">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>110</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_90">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>波特率</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboSerialNum_18">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>20</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
     <widget class="QLabel" name="label_91">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>70</y>
+       <x>10</x>
+       <y>140</y>
        <width>36</width>
        <height>20</height>
       </rect>
@@ -2129,20 +1479,26 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>120</y>
-       <width>36</width>
+       <y>20</y>
+       <width>24</width>
        <height>20</height>
       </rect>
      </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
-      <string>停止位</string>
+      <string>串口</string>
      </property>
     </widget>
     <widget class="QComboBox" name="comboBits_18">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>90</y>
+       <x>60</x>
+       <y>80</y>
        <width>69</width>
        <height>22</height>
       </rect>
@@ -2151,17 +1507,677 @@
     <widget class="QComboBox" name="comboChkBit_18">
      <property name="geometry">
       <rect>
-       <x>90</x>
-       <y>90</y>
+       <x>60</x>
+       <y>140</y>
        <width>69</width>
        <height>22</height>
       </rect>
      </property>
     </widget>
-    <widget class="QComboBox" name="comboEndBit_18">
+   </widget>
+   <widget class="QGroupBox" name="gBoxMeter_8">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>200</y>
+      <width>141</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>8号表</string>
+    </property>
+    <widget class="QLabel" name="label_93">
      <property name="geometry">
       <rect>
        <x>10</x>
+       <y>80</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>数据位</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_94">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>110</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>停止位</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBaudRate_19">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>50</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboEndBit_19">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>110</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_95">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>波特率</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboSerialNum_19">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>20</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_96">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>140</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>校验位</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_97">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>24</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>串口</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBits_19">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>80</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboChkBit_19">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>140</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="gBoxMeter_12">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>200</y>
+      <width>141</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>12号表</string>
+    </property>
+    <widget class="QLabel" name="label_98">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>数据位</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_99">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>110</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>停止位</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBaudRate_20">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>50</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboEndBit_20">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>110</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_100">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>波特率</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboSerialNum_20">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>20</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_101">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>140</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>校验位</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_102">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>24</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>串口</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBits_20">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>80</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboChkBit_20">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>140</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="gBoxMeter_10">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>200</y>
+      <width>141</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>10号表</string>
+    </property>
+    <widget class="QLabel" name="label_103">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>数据位</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_104">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>110</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>停止位</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBaudRate_21">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>50</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboEndBit_21">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>110</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_105">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>波特率</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboSerialNum_21">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>20</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_106">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>140</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>校验位</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_107">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>24</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>串口</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBits_21">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>80</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboChkBit_21">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>140</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="gBoxMeter_11">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>200</y>
+      <width>141</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>11号表</string>
+    </property>
+    <widget class="QLabel" name="label_108">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>数据位</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_109">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>110</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>停止位</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBaudRate_22">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>50</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboEndBit_22">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>110</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_110">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>波特率</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboSerialNum_22">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>20</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_111">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>140</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>校验位</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_112">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>24</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>串口</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBits_22">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>80</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboChkBit_22">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>140</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="gBoxMeter_7">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>200</y>
+      <width>141</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>7号表</string>
+    </property>
+    <widget class="QLabel" name="label_113">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>数据位</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_114">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>110</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>停止位</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBaudRate_23">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>50</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboEndBit_23">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>110</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_115">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>波特率</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboSerialNum_23">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>20</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_116">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>140</y>
+       <width>36</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>校验位</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_117">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>24</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>串口</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBits_23">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>80</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboChkBit_23">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
        <y>140</y>
        <width>69</width>
        <height>22</height>
@@ -2173,8 +2189,8 @@
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>530</x>
-     <y>760</y>
+     <x>570</x>
+     <y>580</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -2186,8 +2202,8 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>760</y>
+     <x>170</x>
+     <y>580</y>
      <width>75</width>
      <height>23</height>
     </rect>
