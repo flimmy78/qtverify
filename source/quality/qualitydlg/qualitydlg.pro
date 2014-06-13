@@ -25,11 +25,13 @@ HEADERS	+= $$(RUNHOME_INC)/include/qualitydlg_global.h \
            $$(RUNHOME_INC)/include/qualitydlg.h \
            $$(RUNHOME_INC)/include/parasetdlg.h \ 
         	 $$(RUNHOME_INC)/include/qextserial/qextserialport_global.h  \
-        	 $$(RUNHOME_INC)/include/qextserial/qextserialport.h
+        	 $$(RUNHOME_INC)/include/qextserial/qextserialport.h	\
+        	 $$(RUNHOME_INC)/include/comthread.h
 	
 SOURCES	+= source/qualitydlg.cpp  \
 					 source/parasetdlg.cpp  \
-	         $$(RUNHOME_INC)/include/qextserial/qextserialport.cpp
+	         $$(RUNHOME_INC)/include/qextserial/qextserialport.cpp \
+	         source/comthread.cpp
 
 win32 {
      SOURCES += $$(RUNHOME_INC)/include/qextserial/qextserialport_win.cpp

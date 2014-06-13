@@ -1,6 +1,6 @@
 #include <QtGui/QMessageBox>
 #include <QtCore/QDebug>
-#include <QThread>
+
 #include "qualitydlg.h"
 
 QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
@@ -9,23 +9,15 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 	qDebug()<<"QualityDlg thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
 
-	m_ComTemp = NULL;
-	openTemperatureCom(); 
 	m_paraset = new ParaSetDlg();
+
+ 	m_tempObj.moveToThread(&m_tempThread);
+	m_tempThread.start();
+	m_tempObj.myslot();
 }
 
 QualityDlg::~QualityDlg()
 {
-	if(m_ComTemp != NULL)
-	{
-		if(m_ComTemp->isOpen())
-		{
-			m_ComTemp->close();
-		}
-		delete m_ComTemp;
-	}
-
-
 	if (m_paraset)
 	{
 		delete m_paraset;
@@ -60,35 +52,66 @@ void QualityDlg::on_btnExit_clicked()
 	this->close();
 }
 
-void QualityDlg::openTemperatureCom()
+
+ComObject::ComObject() : QObject()
 {
-	QString portName = "COM7";//获取串口名
-#ifdef Q_OS_LINUX
-	m_ComTemp = new QextSerialPort("/dev/" + portName);
-#elif defined (Q_OS_WIN)
-	m_ComTemp = new QextSerialPort(portName, QextSerialPort::EventDriven);
-#endif
-	connect(m_ComTemp, SIGNAL(readyRead()), this, SLOT(readTemperatureComBuffer()));
+	m_tempCom = NULL;
+}
 
-	m_ComTemp->setBaudRate(BAUD9600); //设置波特率  
-	m_ComTemp->setDataBits(DATA_8); //设置数据位
-	m_ComTemp->setParity(PAR_EVEN); //设置校验位
-	m_ComTemp->setStopBits(STOP_1); //设置停止位
-	m_ComTemp->setFlowControl(FLOW_OFF); //设置数据流控制  
-	m_ComTemp->setTimeout(TIME_OUT);     //设置延时
-
-	if(m_ComTemp->open(QIODevice::ReadWrite))
+ComObject::~ComObject()
+{
+	if(m_tempCom != NULL)
 	{
-		QMessageBox::information(this, tr("Open Success"), tr("Open SerialPort ") + portName + tr(" Success!"), QMessageBox::Ok);
+		if(m_tempCom->isOpen())
+		{
+			m_tempCom->close();
+		}
+		delete m_tempCom;
+	}
+}
+
+void ComObject::myslot()
+{    
+	qDebug()<<"myslot thread:" <<QThread::currentThreadId();
+	openTemperatureCom();
+}   
+
+void ComObject::openTemperatureCom()
+{
+	qDebug()<<"openTemperatureCom thread:"<<QThread::currentThreadId();
+
+	QString portName = "COM2";//获取串口名
+#ifdef Q_OS_LINUX
+	m_tempCom = new QextSerialPort("/dev/" + portName);
+#elif defined (Q_OS_WIN)
+	m_tempCom = new QextSerialPort(portName, QextSerialPort::EventDriven);
+#endif
+	connect(m_tempCom, SIGNAL(readyRead()), this, SLOT(readTemperatureComBuffer()));
+
+	m_tempCom->setBaudRate(BAUD9600); //设置波特率  
+	m_tempCom->setDataBits(DATA_8);   //设置数据位
+	m_tempCom->setParity(PAR_EVEN);   //设置校验位
+	m_tempCom->setStopBits(STOP_1);   //设置停止位
+	m_tempCom->setFlowControl(FLOW_OFF); //设置数据流控制  
+	m_tempCom->setTimeout(TIME_OUT);     //设置延时
+
+	if(m_tempCom->open(QIODevice::ReadWrite))
+	{
+// 		QMessageBox::information(this, tr("Open Success"), tr("Open SerialPort ") + portName + tr(" Success!"), QMessageBox::Ok);
 	}
 	else
 	{
-		QMessageBox::critical(this, tr("Open Failed"), tr("Can't Open SerialPort ") + portName + tr("\nDevice isn't exist or is occupied!"), QMessageBox::Ok);
+// 		QMessageBox::critical(this, tr("Open Failed"), tr("Can't Open SerialPort ") + portName + tr("\nDevice isn't exist or is occupied!"), QMessageBox::Ok);
+		return;
 	}
+
+	m_tempCom->write("0xA8yangshen");
 }
 
-void QualityDlg::readTemperatureComBuffer()
+void ComObject::readTemperatureComBuffer()
 {
-	qDebug()<<"readWaterTemperature:";
+	QByteArray temp = m_tempCom->readAll();
+	qDebug()<<"readTemperatureComBuffer thread:"<<QThread::currentThreadId()<<", Read data is:"<<temp;
 }
+
 

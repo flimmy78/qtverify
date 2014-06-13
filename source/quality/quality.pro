@@ -4,7 +4,8 @@ TARGET    = quality
 CONFIG += qt warn_on debug
 RC_FILE = quality.rc
 
-INCLUDEPATH	 +=  $$(RUNHOME_INC)/include  \
+INCLUDEPATH	 +=  ./qualitydlg/include     \
+								 $$(RUNHOME_INC)/include  \
                  $$(RUNHOME_INC)/include/qextserial
 
 QMAKE_LIBDIR += \

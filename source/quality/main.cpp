@@ -1,8 +1,11 @@
 #include <QtGui/QApplication>
 #include <QtCore/QTranslator>
+#include <QtCore/QThread>
+#include <QtCore/QDebug>
 
 #include "qualitydlg.h"
 
+QualityDlg *g_qualitydlg;
 
 int main( int argc, char ** argv )
 {
@@ -22,9 +25,10 @@ int main( int argc, char ** argv )
 		}
 		app.installTranslator(&translator);
 	}
+	qDebug()<<"quality main thread:"<<QThread::currentThreadId();
 
-	QualityDlg w;
-	w.showMaximized();
+	g_qualitydlg = new QualityDlg();
+	g_qualitydlg->showMaximized();
 
 	return app.exec();
 }

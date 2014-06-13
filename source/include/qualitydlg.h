@@ -6,9 +6,29 @@
 #include "qualitydlg_global.h"
 #include "ui_qualitydlg.h"
 #include "parasetdlg.h"
-#include "qextserialport.h"
+#include "comthread.h"
 
-#define TIME_OUT 10				//延时，TIME_OUT是串口读写的延时
+#include "qextserialport.h"
+#define TIME_OUT	10		//延时，TIME_OUT是串口读写的延时
+
+
+class ComObject : public QObject 
+{       
+	Q_OBJECT  
+
+public: 
+	ComObject();
+	~ComObject();
+
+	QextSerialPort *m_tempCom;
+
+
+public slots:
+	void myslot();
+	void openTemperatureCom();
+	void readTemperatureComBuffer();
+
+};    
 
 class QUALITYDLG_EXPORT QualityDlg : public QWidget
 {
@@ -19,7 +39,10 @@ public:
 	~QualityDlg();
 
 	ParaSetDlg *m_paraset;
-	QextSerialPort *m_ComTemp;
+
+	ComThread m_tempThread;
+ 	ComObject m_tempObj;
+
 
 public slots:
 	void on_btnWaterIn_clicked();
@@ -33,9 +56,6 @@ public slots:
 	void on_btnExit_clicked();
 
 	void setValveBtnBackColor(QPushButton *btn, bool isOpen);
-
-	void openTemperatureCom();
-	void readTemperatureComBuffer();
 
 private:
 	Ui::QualityDlgClass ui;

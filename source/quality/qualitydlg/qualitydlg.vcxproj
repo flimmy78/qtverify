@@ -141,12 +141,23 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\comthread.cpp" />
     <ClCompile Include="source\parasetdlg.cpp" />
     <ClCompile Include="..\..\include\qextserial\qextserialport.cpp" />
     <ClCompile Include="..\..\include\qextserial\qextserialport_win.cpp" />
     <ClCompile Include="source\qualitydlg.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <CustomBuild Include="..\..\include\comthread.h">
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">..\..\include\comthread.h;C:\Qt\4.8.5\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DQUALITYDLG_DLL -DQT_DLL -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;c:\Qt\4.8.5\include\QtTest&quot; -I&quot;.&quot; -I&quot;include&quot; -I&quot;..\..\include&quot; -I&quot;..\..\include\qextserial&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;debug&quot; -I&quot;f:\delusoft\trunk\qtverify\source\quality\qualitydlg\$(RUNHOME_INC)\include&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\..\include\comthread.h -o debug\moc_comthread.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">MOC ..\..\include\comthread.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">debug\moc_comthread.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">..\..\include\comthread.h;C:\Qt\4.8.5\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DQUALITYDLG_DLL -DQT_DLL -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;c:\Qt\4.8.5\include\QtTest&quot; -I&quot;.&quot; -I&quot;include&quot; -I&quot;..\..\include&quot; -I&quot;..\..\include\qextserial&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;release&quot; -I&quot;f:\delusoft\trunk\qtverify\source\quality\qualitydlg\$(RUNHOME_INC)\include&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\..\include\comthread.h -o release\moc_comthread.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">MOC ..\..\include\comthread.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">release\moc_comthread.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
     <CustomBuild Include="..\..\include\parasetdlg.h">
       <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">..\..\include\parasetdlg.h;C:\Qt\4.8.5\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
       <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DQUALITYDLG_DLL -DQT_DLL -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;c:\Qt\4.8.5\include\QtTest&quot; -I&quot;.&quot; -I&quot;include&quot; -I&quot;..\..\include&quot; -I&quot;..\..\include\qextserial&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;debug&quot; -I&quot;f:\delusoft\trunk\qtverify\source\quality\qualitydlg\$(RUNHOME_INC)\include&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\..\include\parasetdlg.h -o debug\moc_parasetdlg.cpp</Command>
@@ -181,6 +192,12 @@
     <ClInclude Include="..\..\include\qualitydlg_global.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="debug\moc_comthread.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_comthread.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="debug\moc_parasetdlg.cpp">
       <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">true</ExcludedFromBuild>
     </ClCompile>
