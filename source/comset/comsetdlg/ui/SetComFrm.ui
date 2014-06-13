@@ -1268,29 +1268,8 @@
      </property>
     </item>
    </widget>
-   <zorder>label_18</zorder>
-   <zorder>label_20</zorder>
-   <zorder>label_21</zorder>
-   <zorder>label_22</zorder>
-   <zorder>comboStdTmpSerialNum</zorder>
-   <zorder>comboBalChkBit</zorder>
-   <zorder>label_16</zorder>
-   <zorder>comboTempChkBit</zorder>
-   <zorder>label_11</zorder>
-   <zorder>label_19</zorder>
-   <zorder>comboTempEndBit</zorder>
-   <zorder>label_14</zorder>
-   <zorder>comboBalEndBit</zorder>
-   <zorder>label_9</zorder>
-   <zorder>label_16</zorder>
-   <zorder>comboTempChkBit</zorder>
-   <zorder>label_19</zorder>
-   <zorder>comboStdTmpBaudRate</zorder>
-   <zorder>comboStdTmpChkBit</zorder>
-   <zorder>comboStdTmpEndBit</zorder>
-   <zorder>comboStdTmpBits</zorder>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="btnExit">
    <property name="geometry">
     <rect>
      <x>570</x>
@@ -1303,7 +1282,7 @@
     <string>退出</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="btnSave">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -5104,8 +5083,8 @@
   <tabstop>comboValveEndBit</tabstop>
   <tabstop>comboValveChkBit</tabstop>
   <tabstop>comboValveSerialNum</tabstop>
-  <tabstop>pushButton</tabstop>
-  <tabstop>pushButton_2</tabstop>
+  <tabstop>btnSave</tabstop>
+  <tabstop>btnExit</tabstop>
  </tabstops>
  <resources/>
  <connections/>
