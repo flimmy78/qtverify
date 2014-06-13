@@ -36,7 +36,8 @@ unix {
 }
 					 
 FORMS	+= ui/comsetdlg.ui \
-         
+		   ui/SetComFrm.ui \
+
 win32{
 	MY_DEST_LIB_VAR = $${DESTDIR} $${TARGET}.lib
 	MY_DEST_LIB = $$join( MY_DEST_LIB_VAR, "\\" )
