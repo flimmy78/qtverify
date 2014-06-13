@@ -20,6 +20,12 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 
 	connect(ui.btnExit, SIGNAL(clicked()), this, SLOT(close()));
 
+	QLabel *permanent = new QLabel(this);
+	permanent->setFrameStyle(QFrame::NoFrame | QFrame::Sunken);
+	permanent->setText(tr("<a href=\"http://www.sdm.com.cn\">山东德鲁计量科技有限公司</a>"));
+	permanent->setTextFormat(Qt::RichText);
+	permanent->setOpenExternalLinks(true);
+	ui.statusBar->addPermanentWidget(permanent);
 }
 
 MainForm::~MainForm()

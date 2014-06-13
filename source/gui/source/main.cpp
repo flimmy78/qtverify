@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 		 printf_s(" load translator file \"%s\" failed! \n", filename);
 	}
 	app.installTranslator( translator );
-	qDebug()<<"main thread:"<<QThread::currentThreadId();
+	qDebug()<<"qtverify main thread:"<<QThread::currentThreadId();
 
 	g_mainform = new MainForm;
 	g_mainform->showMaximized();
