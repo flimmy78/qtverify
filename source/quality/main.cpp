@@ -5,8 +5,6 @@
 
 #include "qualitydlg.h"
 
-QualityDlg *g_qualitydlg;
-
 int main( int argc, char ** argv )
 {
 	QApplication app( argc, argv );
@@ -27,8 +25,8 @@ int main( int argc, char ** argv )
 	}
 	qDebug()<<"quality main thread:"<<QThread::currentThreadId();
 
-	g_qualitydlg = new QualityDlg();
-	g_qualitydlg->showMaximized();
+	QualityDlg w;
+	w.showMaximized();
 
 	return app.exec();
 }

@@ -279,7 +279,7 @@ public:
     QLineEdit *lineEdit_8;
     QLabel *label_15;
     QLabel *label_11;
-    QLineEdit *lineEdit_9;
+    QLineEdit *lnEditTempIn;
     QLabel *label_16;
     QLabel *label_12;
     QLineEdit *lineEdit_10;
@@ -1575,12 +1575,12 @@ public:
 
         gridLayout_6->addWidget(label_11, 3, 0, 1, 1);
 
-        lineEdit_9 = new QLineEdit(groupBox_3);
-        lineEdit_9->setObjectName(QString::fromUtf8("lineEdit_9"));
-        sizePolicy.setHeightForWidth(lineEdit_9->sizePolicy().hasHeightForWidth());
-        lineEdit_9->setSizePolicy(sizePolicy);
+        lnEditTempIn = new QLineEdit(groupBox_3);
+        lnEditTempIn->setObjectName(QString::fromUtf8("lnEditTempIn"));
+        sizePolicy.setHeightForWidth(lnEditTempIn->sizePolicy().hasHeightForWidth());
+        lnEditTempIn->setSizePolicy(sizePolicy);
 
-        gridLayout_6->addWidget(lineEdit_9, 3, 1, 1, 1);
+        gridLayout_6->addWidget(lnEditTempIn, 3, 1, 1, 1);
 
         label_16 = new QLabel(groupBox_3);
         label_16->setObjectName(QString::fromUtf8("label_16"));

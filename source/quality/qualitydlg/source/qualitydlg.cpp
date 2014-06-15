@@ -11,9 +11,12 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 
 	m_paraset = new ParaSetDlg();
 
- 	m_tempObj.moveToThread(&m_tempThread);
+	m_tempObj = new TempComObject();
+	m_tempObj->moveToThread(&m_tempThread);
 	m_tempThread.start();
-	m_tempObj.myslot();
+	m_tempObj->myslot();
+
+	connect(m_tempObj, SIGNAL(tempValueIsReady(const QString &)), this, SLOT(freshComTempValue(const QString &)));
 }
 
 QualityDlg::~QualityDlg()
@@ -22,6 +25,11 @@ QualityDlg::~QualityDlg()
 	{
 		delete m_paraset;
 		m_paraset = NULL;
+	}
+	if (m_tempObj)
+	{
+		delete m_tempObj;
+		m_tempObj = NULL;
 	}
 }
 
@@ -52,13 +60,24 @@ void QualityDlg::on_btnExit_clicked()
 	this->close();
 }
 
+void QualityDlg::freshComTempValue(const QString& tempStr)
+{
+	ui.lnEditTempIn->setText(tempStr);
+}
 
-ComObject::ComObject() : QObject()
+
+
+/************************************************
+串口操作类
+功能：打开串口；设置串口参数；关闭串口；
+      读取串口缓冲区数据；根据协议解析等
+*************************************************/
+TempComObject::TempComObject() : QObject()
 {
 	m_tempCom = NULL;
 }
 
-ComObject::~ComObject()
+TempComObject::~TempComObject()
 {
 	if(m_tempCom != NULL)
 	{
@@ -70,13 +89,13 @@ ComObject::~ComObject()
 	}
 }
 
-void ComObject::myslot()
+void TempComObject::myslot()
 {    
 	qDebug()<<"myslot thread:" <<QThread::currentThreadId();
 	openTemperatureCom();
 }   
 
-void ComObject::openTemperatureCom()
+void TempComObject::openTemperatureCom()
 {
 	qDebug()<<"openTemperatureCom thread:"<<QThread::currentThreadId();
 
@@ -98,20 +117,26 @@ void ComObject::openTemperatureCom()
 	if(m_tempCom->open(QIODevice::ReadWrite))
 	{
 // 		QMessageBox::information(this, tr("Open Success"), tr("Open SerialPort ") + portName + tr(" Success!"), QMessageBox::Ok);
+		qDebug()<<"Open SerialPort:"<<portName<<"Success!";
 	}
 	else
 	{
 // 		QMessageBox::critical(this, tr("Open Failed"), tr("Can't Open SerialPort ") + portName + tr("\nDevice isn't exist or is occupied!"), QMessageBox::Ok);
+		qDebug()<<"Open SerialPort:"<<portName<<"Failed!";
 		return;
 	}
 
 	m_tempCom->write("0xA8yangshen");
 }
 
-void ComObject::readTemperatureComBuffer()
+void TempComObject::readTemperatureComBuffer()
 {
 	QByteArray temp = m_tempCom->readAll();
 	qDebug()<<"readTemperatureComBuffer thread:"<<QThread::currentThreadId()<<", Read data is:"<<temp;
+	float tempValue = 66.68;
+	QString tempStr;
+	tempStr.setNum(tempValue, 'f', 2);
+	emit tempValueIsReady(tempStr);
 }
 
 

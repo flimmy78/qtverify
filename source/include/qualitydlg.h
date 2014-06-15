@@ -9,25 +9,27 @@
 #include "comthread.h"
 
 #include "qextserialport.h"
+
 #define TIME_OUT	10		//延时，TIME_OUT是串口读写的延时
 
 
-class ComObject : public QObject 
+class TempComObject : public QObject 
 {       
 	Q_OBJECT  
 
 public: 
-	ComObject();
-	~ComObject();
+	TempComObject();
+	~TempComObject();
 
 	QextSerialPort *m_tempCom;
 
+signals:
+	void tempValueIsReady(const QString& tempStr);
 
 public slots:
 	void myslot();
 	void openTemperatureCom();
 	void readTemperatureComBuffer();
-
 };    
 
 class QUALITYDLG_EXPORT QualityDlg : public QWidget
@@ -41,7 +43,7 @@ public:
 	ParaSetDlg *m_paraset;
 
 	ComThread m_tempThread;
- 	ComObject m_tempObj;
+ 	TempComObject *m_tempObj;
 
 
 public slots:
@@ -56,6 +58,8 @@ public slots:
 	void on_btnExit_clicked();
 
 	void setValveBtnBackColor(QPushButton *btn, bool isOpen);
+
+	void freshComTempValue(const QString& tempStr);
 
 private:
 	Ui::QualityDlgClass ui;
