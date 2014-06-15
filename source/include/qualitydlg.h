@@ -19,8 +19,12 @@ public:
 
 	ParaSetDlg *m_paraset;
 
-	ComThread m_tempThread;
- 	TempComObject *m_tempObj;
+	ComThread m_tempThread;  //温度采集线程
+	TempComObject *m_tempObj;
+
+	ComThread m_valveThread;  //阀门控制线程
+	ValveComObject *m_valveObj;
+
 
 
 public slots:
@@ -33,6 +37,10 @@ public slots:
 
 	void slotFreshComTempValue(const QString& tempStr);
 
+	void openTemperatureCom(); //温度采集串口
+
+	void openValveControlCom();//阀门控制串口 
+	void slotSetValveBtnStatus(const int& isOpen );
 private:
 	Ui::QualityDlgClass ui;
 

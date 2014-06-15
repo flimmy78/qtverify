@@ -41,6 +41,9 @@ public slots:
 
 };    
 
+/***************************************
+
+****************************************/
 class TempComObject : public ComObject
 {
 	Q_OBJECT  
@@ -57,6 +60,29 @@ signals:
 public slots:
 	void openTemperatureCom(ComInfoStruct *comStruct);
 	void readTemperatureComBuffer();
+	void analyseFrame();
+};
+
+/***************************************
+
+****************************************/
+class ValveComObject : public ComObject
+{
+	Q_OBJECT  
+
+public: 
+	ValveComObject();
+	~ValveComObject();
+
+	QextSerialPort *m_valveCom;
+
+signals:
+	void valveComIsAnalysed(const int& isOpen);
+
+public slots:
+	void openValveControlCom(ComInfoStruct *comStruct);
+	void writeValveControlComBuffer();
+	void readValveControlComBuffer();
 	void analyseFrame();
 };
 

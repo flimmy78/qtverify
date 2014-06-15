@@ -25,18 +25,8 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 
 	m_paraset = new ParaSetDlg();
 
-	ComInfoStruct tempStruct;
-	tempStruct.portName = "COM2";
-	tempStruct.baudRate = 9600;
-	tempStruct.dataBit = 8;
-	tempStruct.parity = 2;
-	tempStruct.stopBit = STOP_1;
-	m_tempObj = new TempComObject();
-	m_tempObj->moveToThread(&m_tempThread);
-	m_tempThread.start();
-	m_tempObj->openTemperatureCom(&tempStruct);
-
-	connect(m_tempObj, SIGNAL(tempComIsAnalysed(const QString &)), this, SLOT(slotFreshComTempValue(const QString &)));
+// 	openTemperatureCom(); //打开温度采集串口
+	openValveControlCom();//打开阀门控制串口
 }
 
 QualityDlg::~QualityDlg()
@@ -51,10 +41,48 @@ QualityDlg::~QualityDlg()
 		delete m_tempObj;
 		m_tempObj = NULL;
 	}
+	if (m_valveObj)
+	{
+		delete m_valveObj;
+		m_valveObj = NULL;
+	}
+}
+
+void QualityDlg::openTemperatureCom()
+{
+	ComInfoStruct tempStruct;
+	tempStruct.portName = "COM2";
+	tempStruct.baudRate = 9600;
+	tempStruct.dataBit = 8;
+	tempStruct.parity = 2;
+	tempStruct.stopBit = STOP_1;
+	m_tempObj = new TempComObject();
+	m_tempObj->moveToThread(&m_tempThread);
+	m_tempThread.start();
+	m_tempObj->openTemperatureCom(&tempStruct);
+
+	connect(m_tempObj, SIGNAL(tempComIsAnalysed(const QString &)), this, SLOT(slotFreshComTempValue(const QString &)));
+}
+
+void QualityDlg::openValveControlCom()
+{
+	ComInfoStruct valveStruct;
+	valveStruct.portName = "COM2";
+	valveStruct.baudRate = 9600;
+	valveStruct.dataBit = 8;
+	valveStruct.parity = 2;
+	valveStruct.stopBit = STOP_1;
+	m_valveObj = new ValveComObject();
+	m_valveObj->moveToThread(&m_valveThread);
+	m_valveThread.start();
+	m_valveObj->openValveControlCom(&valveStruct);
+
+	connect(m_valveObj, SIGNAL(valveComIsAnalysed(const int &)), this, SLOT(slotSetValveBtnStatus(const int &)));
 }
 
 void QualityDlg::on_btnWaterIn_clicked()
 {
+	m_valveObj->writeValveControlComBuffer();
 	setValveBtnBackColor(ui.btnWaterIn, true);
 }
 
@@ -83,6 +111,11 @@ void QualityDlg::on_btnExit_clicked()
 void QualityDlg::slotFreshComTempValue(const QString& tempStr)
 {
 	ui.lnEditTempIn->setText(tempStr);
+}
+
+void QualityDlg::slotSetValveBtnStatus(const int& isOpen )
+{
+	setValveBtnBackColor(ui.btnWaterIn, isOpen);
 }
 
 
