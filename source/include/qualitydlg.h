@@ -20,7 +20,7 @@ public:
 	ParaSetDlg *m_paraset;
 
 	ComThread m_tempThread;
- 	ComObject *m_tempObj;
+ 	TempComObject *m_tempObj;
 
 
 public slots:

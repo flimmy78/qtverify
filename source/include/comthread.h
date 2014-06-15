@@ -22,6 +22,7 @@ protected:
 
 
 #include "qextserialport.h"
+#include "qualitydlg_global.h"
 
 #define TIME_OUT	10		//延时，TIME_OUT是串口读写的延时
 
@@ -33,17 +34,13 @@ public:
 	ComObject();
 	~ComObject();
 
-	QextSerialPort *m_tempCom;
 
 signals:
-	void tempValueIsReady(const QString& tempStr);
 
 public slots:
-	void myslot();
-	void openTemperatureCom();
-	void readTemperatureComBuffer();
+
 };    
-/*
+
 class TempComObject : public ComObject
 {
 	Q_OBJECT  
@@ -55,12 +52,12 @@ public:
 	QextSerialPort *m_tempCom;
 
 signals:
-	void tempValueIsReady(const QString& tempStr);
+	void tempComIsAnalysed(const QString& tempStr);
 
 public slots:
-	void myslot();
-	void openTemperatureCom();
+	void openTemperatureCom(ComInfoStruct *comStruct);
 	void readTemperatureComBuffer();
-};*/
+	void analyseFrame();
+};
 
 #endif //COMTHREAD_H

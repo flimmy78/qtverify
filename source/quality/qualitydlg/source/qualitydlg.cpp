@@ -25,12 +25,18 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 
 	m_paraset = new ParaSetDlg();
 
-	m_tempObj = new ComObject();
+	ComInfoStruct tempStruct;
+	tempStruct.portName = "COM2";
+	tempStruct.baudRate = 9600;
+	tempStruct.dataBit = 8;
+	tempStruct.parity = 2;
+	tempStruct.stopBit = STOP_1;
+	m_tempObj = new TempComObject();
 	m_tempObj->moveToThread(&m_tempThread);
 	m_tempThread.start();
-	m_tempObj->myslot();
+	m_tempObj->openTemperatureCom(&tempStruct);
 
-	connect(m_tempObj, SIGNAL(tempValueIsReady(const QString &)), this, SLOT(slotFreshComTempValue(const QString &)));
+	connect(m_tempObj, SIGNAL(tempComIsAnalysed(const QString &)), this, SLOT(slotFreshComTempValue(const QString &)));
 }
 
 QualityDlg::~QualityDlg()
