@@ -14,6 +14,7 @@
 
 #include <QtGui/QMessageBox>
 #include <QtCore/QDebug>
+#include <QtCore/QTimer>
 
 #include "qualitydlg.h"
 
@@ -25,8 +26,11 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 
 	m_paraset = new ParaSetDlg();
 
-// 	openTemperatureCom(); //打开温度采集串口
-	openValveControlCom();//打开阀门控制串口
+	m_tempObj = NULL;
+	initTemperatureCom(); //初始化温度采集串口
+
+	m_valveObj = NULL;
+// 	openValveControlCom();//打开阀门控制串口
 }
 
 QualityDlg::~QualityDlg()
@@ -48,20 +52,23 @@ QualityDlg::~QualityDlg()
 	}
 }
 
-void QualityDlg::openTemperatureCom()
+void QualityDlg::initTemperatureCom()
 {
 	ComInfoStruct tempStruct;
 	tempStruct.portName = "COM2";
 	tempStruct.baudRate = 9600;
 	tempStruct.dataBit = 8;
-	tempStruct.parity = 2;
+	tempStruct.parity = 0;
 	tempStruct.stopBit = STOP_1;
 	m_tempObj = new TempComObject();
 	m_tempObj->moveToThread(&m_tempThread);
 	m_tempThread.start();
 	m_tempObj->openTemperatureCom(&tempStruct);
+	connect(m_tempObj, SIGNAL(temperatureIsReady(const QString &)), this, SLOT(slotFreshComTempValue(const QString &)));
 
-	connect(m_tempObj, SIGNAL(tempComIsAnalysed(const QString &)), this, SLOT(slotFreshComTempValue(const QString &)));
+	m_tempTimer = new QTimer();
+	connect(m_tempTimer, SIGNAL(timeout()), m_tempObj, SLOT(writeTemperatureComBuffer()));
+	m_tempTimer->start(TIMEOUT_TEMPER);
 }
 
 void QualityDlg::openValveControlCom()
@@ -110,7 +117,8 @@ void QualityDlg::on_btnExit_clicked()
 
 void QualityDlg::slotFreshComTempValue(const QString& tempStr)
 {
-	ui.lnEditTempIn->setText(tempStr);
+	ui.lnEditTempIn->setText(tempStr.right(4));
+	ui.lnEditTempOut->setText(tempStr.left(4));
 }
 
 void QualityDlg::slotSetValveBtnStatus(const int& isOpen )

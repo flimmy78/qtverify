@@ -3,6 +3,32 @@
 
 #include <QtCore/QThread>  
 #include <QtCore/QObject> 
+#include <intsafe.h>
+
+#define ADDR_FIX			0x80
+#define ADDR_FIRST			0x01
+#define ADDR_CODE_FIRST		(ADDR_FIX + ADDR_FIRST)
+#define READ_CODE			0x52
+
+
+#define PV_STATE		0x00
+#define SV_STATE		0x01
+#define MV_STATE		0x02
+#define WARN_STATE      0x03
+#define PARA_STATE      0x04
+#define CHECK_STATE     0x05
+
+
+typedef struct  
+{
+	INT16 pv;		//测量值PV，
+	INT16 sv;		//给定值SV
+	INT8  mv;       //输出值MV
+	UINT8 warn;	    //报警状态
+	INT16 para;     //所读写参数值
+	UINT16 check;	//校验码
+}Temp_Frame_Struct;
+
 
 class ComThread : public QThread 
 {      
@@ -53,14 +79,18 @@ public:
 	~TempComObject();
 
 	QextSerialPort *m_tempCom;
+	Temp_Frame_Struct *m_tempFrame;
 
 signals:
-	void tempComIsAnalysed(const QString& tempStr);
+	void temperatureIsReady(const QString& tempStr);
 
 public slots:
 	void openTemperatureCom(ComInfoStruct *comStruct);
+	void writeTemperatureComBuffer();
 	void readTemperatureComBuffer();
+	UINT16 CountCheck(Temp_Frame_Struct *pFrame);
 	void analyseFrame();
+
 };
 
 /***************************************

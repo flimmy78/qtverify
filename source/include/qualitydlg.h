@@ -8,6 +8,7 @@
 #include "parasetdlg.h"
 #include "comthread.h"
 
+#define TIMEOUT_TEMPER  1000 //每1秒钟请求一次温度值
 
 class QUALITYDLG_EXPORT QualityDlg : public QWidget
 {
@@ -21,6 +22,7 @@ public:
 
 	ComThread m_tempThread;  //温度采集线程
 	TempComObject *m_tempObj;
+	QTimer *m_tempTimer;
 
 	ComThread m_valveThread;  //阀门控制线程
 	ValveComObject *m_valveObj;
@@ -37,7 +39,7 @@ public slots:
 
 	void slotFreshComTempValue(const QString& tempStr);
 
-	void openTemperatureCom(); //温度采集串口
+	void initTemperatureCom(); //温度采集串口
 
 	void openValveControlCom();//阀门控制串口 
 	void slotSetValveBtnStatus(const int& isOpen );
