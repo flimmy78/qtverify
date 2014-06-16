@@ -1791,7 +1791,7 @@ public:
         label_9->setText(QApplication::translate("QualityDlgClass", "\345\260\217\345\244\251\345\271\263  ", 0, QApplication::UnicodeUTF8));
         label_14->setText(QApplication::translate("QualityDlgClass", "kg", 0, QApplication::UnicodeUTF8));
         label_10->setText(QApplication::translate("QualityDlgClass", "\347\236\254\346\227\266\346\265\201\351\207\217", 0, QApplication::UnicodeUTF8));
-        label_15->setText(QApplication::translate("QualityDlgClass", "m\302\263/s", 0, QApplication::UnicodeUTF8));
+        label_15->setText(QApplication::translate("QualityDlgClass", "m\302\263/h", 0, QApplication::UnicodeUTF8));
         label_11->setText(QApplication::translate("QualityDlgClass", "\345\205\245\345\217\243\346\270\251\345\272\246", 0, QApplication::UnicodeUTF8));
         label_16->setText(QApplication::translate("QualityDlgClass", "\342\204\203", 0, QApplication::UnicodeUTF8));
         label_12->setText(QApplication::translate("QualityDlgClass", "\345\207\272\345\217\243\346\270\251\345\272\246", 0, QApplication::UnicodeUTF8));

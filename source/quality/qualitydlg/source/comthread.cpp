@@ -333,8 +333,6 @@ void ValveComObject::openValveControlCom(ComInfoStruct *comStruct)
 		qDebug()<<"Open SerialPort:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
 		return;
 	}
-
-	m_valveCom->write("test valve");
 }
 
 void ValveComObject::writeValveControlComBuffer()

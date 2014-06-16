@@ -27,10 +27,11 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 	m_paraset = new ParaSetDlg();
 
 	m_tempObj = NULL;
-	initTemperatureCom(); //初始化温度采集串口
+	m_tempTimer = NULL;
+// 	initTemperatureCom(); //初始化温度采集串口
 
 	m_valveObj = NULL;
-// 	openValveControlCom();//打开阀门控制串口
+	openValveControlCom();//打开阀门控制串口
 }
 
 QualityDlg::~QualityDlg()
@@ -44,6 +45,11 @@ QualityDlg::~QualityDlg()
 	{
 		delete m_tempObj;
 		m_tempObj = NULL;
+	}
+	if (m_tempTimer)
+	{
+		delete m_tempTimer;
+		m_tempTimer = NULL;
 	}
 	if (m_valveObj)
 	{
@@ -77,8 +83,8 @@ void QualityDlg::openValveControlCom()
 	valveStruct.portName = "COM2";
 	valveStruct.baudRate = 9600;
 	valveStruct.dataBit = 8;
-	valveStruct.parity = 2;
-	valveStruct.stopBit = STOP_1;
+	valveStruct.parity = 0;
+	valveStruct.stopBit = 0;
 	m_valveObj = new ValveComObject();
 	m_valveObj->moveToThread(&m_valveThread);
 	m_valveThread.start();

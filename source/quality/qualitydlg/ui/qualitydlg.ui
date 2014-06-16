@@ -1513,7 +1513,7 @@
         <item row="2" column="2">
          <widget class="QLabel" name="label_15">
           <property name="text">
-           <string>m³/s</string>
+           <string>m³/h</string>
           </property>
          </widget>
         </item>
