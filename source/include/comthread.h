@@ -5,6 +5,11 @@
 #include <QtCore/QObject> 
 #include <intsafe.h>
 
+
+//温度采集协议 begin
+#define DATA_WIDTH			4  //温度值字符串长度 4 
+#define DATA_PRECISION		1  //温度值精度，一位小数
+
 #define ADDR_FIX			0x80
 #define ADDR_FIRST			0x01
 #define ADDR_CODE_FIRST		(ADDR_FIX + ADDR_FIRST)
@@ -28,7 +33,7 @@ typedef struct
 	INT16 para;     //所读写参数值
 	UINT16 check;	//校验码
 }Temp_Frame_Struct;
-
+//温度采集协议 end
 
 class ComThread : public QThread 
 {      

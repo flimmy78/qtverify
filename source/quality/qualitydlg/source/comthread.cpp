@@ -118,7 +118,7 @@ void TempComObject::openTemperatureCom(ComInfoStruct *comStruct)
 //请求温度
 void TempComObject::writeTemperatureComBuffer()
 {
-	qDebug()<<"write TemperatureComBuffer thread:"<<QThread::currentThreadId();
+// 	qDebug()<<"write TemperatureComBuffer thread:"<<QThread::currentThreadId();
 	QByteArray buf;
 	buf.append(ADDR_CODE_FIRST).append(ADDR_CODE_FIRST);//地址代号
 	buf.append(READ_CODE); //标准读代码
@@ -134,13 +134,13 @@ void TempComObject::writeTemperatureComBuffer()
 	UINT8 hightnum = checkstr.left(2).toUInt(&ok, 16);
 	buf.append(lownum).append(hightnum);
 	m_tempCom->write(buf);
-// 	m_tempCom->write("Write Temp com");
 }
 
+//读串口缓冲区
 void TempComObject::readTemperatureComBuffer()
 {
 	int state = PV_STATE;
-	qDebug()<<"read TemperatureComBuffer thread:"<<QThread::currentThreadId();
+// 	qDebug()<<"read TemperatureComBuffer thread:"<<QThread::currentThreadId();
 
 	QByteArray temp = m_tempCom->readAll();
 	UINT8 uch = 0; //无符号8位数字
@@ -151,9 +151,6 @@ void TempComObject::readTemperatureComBuffer()
 	UINT16 checknum=0; //程序计算的检验码
 	for (m=0; m<number; m++)
 	{
-// 		ch = (UINT8)temp.at(m);
-// 		qDebug()<<ch;
-// 
 		switch(state)
 		{
 		case PV_STATE: //16位有符号
@@ -276,13 +273,11 @@ UINT16 TempComObject::CountCheck(Temp_Frame_Struct *pFrame)
 
 void TempComObject::analyseFrame()
 {
-	qDebug()<<"TempComObject::analyseFrame thread:"<<QThread::currentThreadId();
-
+// 	qDebug()<<"TempComObject::analyseFrame thread:"<<QThread::currentThreadId();
 	float PV = ((float)m_tempFrame->pv)/10;
 	float SV = ((float)m_tempFrame->sv)/10;
-	QString pvStr, svStr;
-	pvStr.setNum(PV, 'f', 1);
-	svStr.setNum(SV, 'f', 1);
+	QString pvStr = QString("%1").arg(PV, DATA_WIDTH, 'f', DATA_PRECISION);
+	QString svStr = QString("%1").arg(SV, DATA_WIDTH, 'f', DATA_PRECISION);
 	QString Str = pvStr + svStr;
 	emit temperatureIsReady(Str);
 }

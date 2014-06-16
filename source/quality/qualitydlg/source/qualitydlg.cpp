@@ -59,7 +59,7 @@ void QualityDlg::initTemperatureCom()
 	tempStruct.baudRate = 9600;
 	tempStruct.dataBit = 8;
 	tempStruct.parity = 0;
-	tempStruct.stopBit = STOP_1;
+	tempStruct.stopBit = 0;
 	m_tempObj = new TempComObject();
 	m_tempObj->moveToThread(&m_tempThread);
 	m_tempThread.start();
@@ -117,8 +117,8 @@ void QualityDlg::on_btnExit_clicked()
 
 void QualityDlg::slotFreshComTempValue(const QString& tempStr)
 {
-	ui.lnEditTempIn->setText(tempStr.right(4));
-	ui.lnEditTempOut->setText(tempStr.left(4));
+	ui.lnEditTempIn->setText(tempStr.right(DATA_WIDTH)); //入口温度 PV
+	ui.lnEditTempOut->setText(tempStr.left(DATA_WIDTH)); //出口温度 SV
 }
 
 void QualityDlg::slotSetValveBtnStatus(const int& isOpen )

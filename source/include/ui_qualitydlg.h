@@ -1528,6 +1528,7 @@ public:
         lineEdit_6->setObjectName(QString::fromUtf8("lineEdit_6"));
         sizePolicy.setHeightForWidth(lineEdit_6->sizePolicy().hasHeightForWidth());
         lineEdit_6->setSizePolicy(sizePolicy);
+        lineEdit_6->setReadOnly(true);
 
         gridLayout_6->addWidget(lineEdit_6, 0, 1, 1, 1);
 
@@ -1545,6 +1546,7 @@ public:
         lineEdit_7->setObjectName(QString::fromUtf8("lineEdit_7"));
         sizePolicy.setHeightForWidth(lineEdit_7->sizePolicy().hasHeightForWidth());
         lineEdit_7->setSizePolicy(sizePolicy);
+        lineEdit_7->setReadOnly(true);
 
         gridLayout_6->addWidget(lineEdit_7, 1, 1, 1, 1);
 
@@ -1562,6 +1564,7 @@ public:
         lineEdit_8->setObjectName(QString::fromUtf8("lineEdit_8"));
         sizePolicy.setHeightForWidth(lineEdit_8->sizePolicy().hasHeightForWidth());
         lineEdit_8->setSizePolicy(sizePolicy);
+        lineEdit_8->setReadOnly(true);
 
         gridLayout_6->addWidget(lineEdit_8, 2, 1, 1, 1);
 
@@ -1579,6 +1582,7 @@ public:
         lnEditTempIn->setObjectName(QString::fromUtf8("lnEditTempIn"));
         sizePolicy.setHeightForWidth(lnEditTempIn->sizePolicy().hasHeightForWidth());
         lnEditTempIn->setSizePolicy(sizePolicy);
+        lnEditTempIn->setReadOnly(true);
 
         gridLayout_6->addWidget(lnEditTempIn, 3, 1, 1, 1);
 
@@ -1596,6 +1600,7 @@ public:
         lnEditTempOut->setObjectName(QString::fromUtf8("lnEditTempOut"));
         sizePolicy.setHeightForWidth(lnEditTempOut->sizePolicy().hasHeightForWidth());
         lnEditTempOut->setSizePolicy(sizePolicy);
+        lnEditTempOut->setReadOnly(true);
 
         gridLayout_6->addWidget(lnEditTempOut, 4, 1, 1, 1);
 
