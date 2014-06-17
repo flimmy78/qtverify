@@ -28,10 +28,13 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 
 	m_tempObj = NULL;
 	m_tempTimer = NULL;
-	initTemperatureCom(); //初始化温度采集串口
+// 	initTemperatureCom(); //初始化温度采集串口
 
 	m_valveObj = NULL;
-// 	openValveControlCom();//打开阀门控制串口
+// 	initValveControlCom();//打开阀门控制串口
+
+	m_balanceObj = NULL;
+	initBalanceCom();
 }
 
 QualityDlg::~QualityDlg()
@@ -55,6 +58,11 @@ QualityDlg::~QualityDlg()
 	{
 		delete m_valveObj;
 		m_valveObj = NULL;
+	}
+	if (m_balanceObj)
+	{
+		delete m_balanceObj;
+		m_balanceObj = NULL;
 	}
 }
 
@@ -93,6 +101,22 @@ void QualityDlg::initValveControlCom()
 	connect(m_valveObj, SIGNAL(valveComIsAnalysed(const int &)), this, SLOT(slotSetValveBtnStatus(const int &)));
 }
 
+void QualityDlg::initBalanceCom()
+{
+	ComInfoStruct balanceStruct;
+	balanceStruct.portName = "COM2";
+	balanceStruct.baudRate = 9600;
+	balanceStruct.dataBit = 8;
+	balanceStruct.parity = 0;
+	balanceStruct.stopBit = 0;
+	m_balanceObj = new BalanceComObject();
+	m_balanceObj->moveToThread(&m_balanceThread);
+	m_balanceThread.start();
+	m_balanceObj->openBalanceCom(&balanceStruct);
+
+ 	connect(m_balanceObj, SIGNAL(balanceValueIsReady(const QString &)), this, SLOT(slotFreshBalanceValue(const QString &)));
+}
+
 void QualityDlg::on_btnWaterIn_clicked()
 {
 	m_valveObj->writeValveControlComBuffer();
@@ -125,6 +149,11 @@ void QualityDlg::slotFreshComTempValue(const QString& tempStr)
 {
 	ui.lnEditTempIn->setText(tempStr.right(DATA_WIDTH)); //入口温度 PV
 	ui.lnEditTempOut->setText(tempStr.left(DATA_WIDTH)); //出口温度 SV
+}
+
+void QualityDlg::slotFreshBalanceValue(const QString& Str)
+{
+	ui.lnEditBigBalance->setText(Str);
 }
 
 void QualityDlg::slotSetValveBtnStatus(const int& isOpen )

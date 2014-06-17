@@ -270,10 +270,10 @@ public:
     QGroupBox *groupBox_3;
     QGridLayout *gridLayout_6;
     QLabel *label_8;
-    QLineEdit *lineEdit_6;
+    QLineEdit *lnEditBigBalance;
     QLabel *label_13;
     QLabel *label_9;
-    QLineEdit *lineEdit_7;
+    QLineEdit *lnEditSmallBalance;
     QLabel *label_14;
     QLabel *label_10;
     QLineEdit *lineEdit_8;
@@ -1524,13 +1524,13 @@ public:
 
         gridLayout_6->addWidget(label_8, 0, 0, 1, 1);
 
-        lineEdit_6 = new QLineEdit(groupBox_3);
-        lineEdit_6->setObjectName(QString::fromUtf8("lineEdit_6"));
-        sizePolicy.setHeightForWidth(lineEdit_6->sizePolicy().hasHeightForWidth());
-        lineEdit_6->setSizePolicy(sizePolicy);
-        lineEdit_6->setReadOnly(true);
+        lnEditBigBalance = new QLineEdit(groupBox_3);
+        lnEditBigBalance->setObjectName(QString::fromUtf8("lnEditBigBalance"));
+        sizePolicy.setHeightForWidth(lnEditBigBalance->sizePolicy().hasHeightForWidth());
+        lnEditBigBalance->setSizePolicy(sizePolicy);
+        lnEditBigBalance->setReadOnly(true);
 
-        gridLayout_6->addWidget(lineEdit_6, 0, 1, 1, 1);
+        gridLayout_6->addWidget(lnEditBigBalance, 0, 1, 1, 1);
 
         label_13 = new QLabel(groupBox_3);
         label_13->setObjectName(QString::fromUtf8("label_13"));
@@ -1542,13 +1542,13 @@ public:
 
         gridLayout_6->addWidget(label_9, 1, 0, 1, 1);
 
-        lineEdit_7 = new QLineEdit(groupBox_3);
-        lineEdit_7->setObjectName(QString::fromUtf8("lineEdit_7"));
-        sizePolicy.setHeightForWidth(lineEdit_7->sizePolicy().hasHeightForWidth());
-        lineEdit_7->setSizePolicy(sizePolicy);
-        lineEdit_7->setReadOnly(true);
+        lnEditSmallBalance = new QLineEdit(groupBox_3);
+        lnEditSmallBalance->setObjectName(QString::fromUtf8("lnEditSmallBalance"));
+        sizePolicy.setHeightForWidth(lnEditSmallBalance->sizePolicy().hasHeightForWidth());
+        lnEditSmallBalance->setSizePolicy(sizePolicy);
+        lnEditSmallBalance->setReadOnly(true);
 
-        gridLayout_6->addWidget(lineEdit_7, 1, 1, 1, 1);
+        gridLayout_6->addWidget(lnEditSmallBalance, 1, 1, 1, 1);
 
         label_14 = new QLabel(groupBox_3);
         label_14->setObjectName(QString::fromUtf8("label_14"));

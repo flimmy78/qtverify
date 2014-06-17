@@ -70,7 +70,8 @@ public slots:
 };
 
 /***************************************
-
+类名：ValveComObject
+功能：阀门控制串口类- 打开串口；设置串口参数；关闭串口；
 ****************************************/
 class ValveComObject : public ComObject
 {
@@ -91,5 +92,32 @@ public slots:
 	void readValveControlComBuffer();
 	void analyseFrame();
 };
+
+
+/***************************************
+类名：BalanceComObject
+功能：天平串口类- 打开串口；设置串口参数；关闭串口；
+****************************************/
+class BalanceComObject : public ComObject
+{
+	Q_OBJECT  
+
+public: 
+	BalanceComObject();
+	~BalanceComObject();
+
+	QextSerialPort *m_balanceCom;
+	BalanceProtocol *m_balanceProtocol;   //天平通讯协议类对象
+
+signals:
+	void balanceValueIsReady(const QString& tempStr); //成功获取天平数值
+
+public slots:
+	void openBalanceCom(ComInfoStruct *comStruct);
+	void readBalanceComBuffer();
+};
+
+
+
 
 #endif //COMTHREAD_H

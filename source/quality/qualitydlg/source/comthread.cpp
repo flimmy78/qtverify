@@ -9,7 +9,8 @@
 **  版本历史:   2014/06 第一版
 **  内容包含:
 **  说明:
-**  更新记录:
+**  更新记录:   2014-6-14增加温度串口管理类
+                2014-6-17增加天平串口管理类
 ***********************************************/
 
 #include <QtCore/QDebug>
@@ -174,7 +175,7 @@ void ValveComObject::openValveControlCom(ComInfoStruct *comStruct)
 
 	QString portName = comStruct->portName;// "COM2";//获取串口名
 #ifdef Q_OS_LINUX
-	m_tempCom = new QextSerialPort("/dev/" + portName);
+	m_valveCom = new QextSerialPort("/dev/" + portName);
 #elif defined (Q_OS_WIN)
 	m_valveCom = new QextSerialPort(portName, QextSerialPort::EventDriven);
 #endif
@@ -215,4 +216,80 @@ void ValveComObject::analyseFrame()
 	qDebug()<<"ValveComObject::analyseFrame thread:"<<QThread::currentThreadId();
 	int isOpen = 1;
 	emit valveComIsAnalysed(isOpen);
+}
+
+
+/*********************************************************
+类名：BalanceComObject
+功能：天平串口类- 打开串口；设置串口参数；关闭串口；
+**********************************************************/
+BalanceComObject::BalanceComObject() : ComObject()
+{
+	m_balanceCom = NULL;
+
+	m_balanceProtocol = new BalanceProtocol;
+}
+
+BalanceComObject::~BalanceComObject()
+{
+	if(m_balanceCom != NULL)
+	{
+		if(m_balanceCom->isOpen())
+		{
+			m_balanceCom->close();
+		}
+		delete m_balanceCom;
+	}
+
+	if (m_balanceProtocol)
+	{
+		delete m_balanceProtocol;
+		m_balanceProtocol = NULL;
+	}
+}
+
+void BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
+{
+	qDebug()<<"openBalanceCom thread:"<<QThread::currentThreadId();
+
+	QString portName = comStruct->portName;// "COM2";//获取串口名
+#ifdef Q_OS_LINUX
+	m_balanceCom = new QextSerialPort("/dev/" + portName);
+#elif defined (Q_OS_WIN)
+	m_balanceCom = new QextSerialPort(portName, QextSerialPort::EventDriven);
+#endif
+	connect(m_balanceCom, SIGNAL(readyRead()), this, SLOT(readBalanceComBuffer()));
+
+	m_balanceCom->setBaudRate((BaudRateType)comStruct->baudRate);// BAUD9600); //设置波特率  
+	m_balanceCom->setDataBits((DataBitsType)comStruct->dataBit);//DATA_8);   //设置数据位
+	m_balanceCom->setParity((ParityType)comStruct->parity);//PAR_EVEN);   //设置校验位
+	m_balanceCom->setStopBits((StopBitsType)comStruct->stopBit);//STOP_1);   //设置停止位
+	m_balanceCom->setFlowControl(FLOW_OFF); //设置数据流控制  
+	m_balanceCom->setTimeout(TIME_OUT);     //设置延时
+
+	if(m_balanceCom->open(QIODevice::ReadWrite)) 
+	{
+		qDebug()<<"Open SerialPort:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
+	}
+	else
+	{
+		qDebug()<<"Open SerialPort:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
+		return;
+	}
+
+	m_balanceCom->write("ab");
+}
+
+void BalanceComObject::readBalanceComBuffer()
+{
+	QByteArray tmp = m_balanceCom->readAll();
+	qDebug()<<"readBalanceComBuffer thread:"<<QThread::currentThreadId()<<", Read data is:"<<tmp;
+
+	bool ret = false;
+	ret = m_balanceProtocol->readBalanceComBuffer(tmp); //通讯协议接口
+// 	if (ret)
+// 	{
+		QString tempStr = "99.99";// m_tempProtocol->getTempStr();
+		emit balanceValueIsReady(tempStr);
+// 	}
 }

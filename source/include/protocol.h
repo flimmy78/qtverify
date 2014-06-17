@@ -61,6 +61,7 @@ private:
 
 };
 
+//温度采集协议
 class PROTOCOL_EXPORT TempProtocol : public CProtocol
 {
 
@@ -81,8 +82,23 @@ public slots:
 
 	QString getTempStr();
 	QByteArray getSendBuf();
+
 private:
 
+};
+
+//天平协议
+class PROTOCOL_EXPORT BalanceProtocol : public CProtocol
+{
+
+public:
+	BalanceProtocol();
+	~BalanceProtocol();
+
+public slots:
+	bool readBalanceComBuffer(QByteArray tmp);
+
+private:
 };
 
 #endif // PROTOCOL_H

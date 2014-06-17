@@ -9,7 +9,7 @@
 **  版本历史:   2014/06 第一版
 **  内容包含:
 **  说明:
-**  更新记录:
+**  更新记录:   2014-6-17增加温度采集协议（厦门宇电AI702巡检仪）
 ***********************************************/
 
 #include <QtCore/QDebug>
@@ -52,7 +52,6 @@ TempProtocol::~TempProtocol()
 		delete m_tempFrame;
 		m_tempFrame = NULL;
 	}
-
 }
 
 void TempProtocol::makeSendBuf()
@@ -228,3 +227,23 @@ QByteArray TempProtocol::getSendBuf()
 {
 	return m_sendBuf;
 }
+
+
+/***********************************************
+类名：BalanceProtocol
+功能：天平协议
+************************************************/
+BalanceProtocol::BalanceProtocol()
+{
+}
+
+BalanceProtocol::~BalanceProtocol()
+{
+}
+
+bool BalanceProtocol::readBalanceComBuffer(QByteArray tmp)
+{
+	bool ret = false;
+	return ret;
+}
+

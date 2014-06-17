@@ -27,6 +27,9 @@ public:
 	ComThread m_valveThread;  //阀门控制线程
 	ValveComObject *m_valveObj;
 
+	ComThread m_balanceThread; //天平采集线程
+	BalanceComObject *m_balanceObj;
+
 
 
 public slots:
@@ -37,12 +40,15 @@ public slots:
 
 	void setValveBtnBackColor(QPushButton *btn, bool isOpen);
 
-	void slotFreshComTempValue(const QString& tempStr);
+	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
+	void slotFreshBalanceValue(const QString& Str);     //刷新天平数值
 
 	void initTemperatureCom(); //温度采集串口
 
 	void initValveControlCom();//阀门控制串口 
 	void slotSetValveBtnStatus(const int& isOpen );
+
+	void initBalanceCom();     //天平串口
 private:
 	Ui::QualityDlgClass ui;
 
