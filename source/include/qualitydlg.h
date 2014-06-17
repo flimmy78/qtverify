@@ -8,7 +8,7 @@
 #include "parasetdlg.h"
 #include "comthread.h"
 
-#define TIMEOUT_TEMPER  1000 //每1秒钟请求一次温度值
+#define TIMEOUT_TEMPER  500 //每0.5秒钟请求一次温度值
 
 class QUALITYDLG_EXPORT QualityDlg : public QWidget
 {

@@ -160,11 +160,11 @@ bool TempProtocol::readTemperComBuffer(QByteArray tmp)
 					check_i = 0;
 					state = PV_STATE;
 					ck = CountCheck(m_tempFrame);
-// 					if (ck == m_tempFrame->check) //校验通过
-// 					{
+					if (ck == m_tempFrame->check) //校验通过
+					{
 						analyseFrame();
 						ret = true;
-// 					}
+					}
 				}
 				break;
 			}
