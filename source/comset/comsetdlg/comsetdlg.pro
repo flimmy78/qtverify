@@ -23,11 +23,13 @@ INCLUDEPATH  	=    ./      \
 HEADERS	+= $$(RUNHOME_INC)/include/comsetdlg_global.h \
            $$(RUNHOME_INC)/include/comsetdlg.h   \
 		   $$(RUNHOME_INC)/include/SetComFrm.h   \
+		   $$(RUNHOME_INC)/include/ReadComConfig.h   \
         	 $$(RUNHOME_INC)/include/qextserial/qextserialport_global.h  \
         	 $$(RUNHOME_INC)/include/qextserial/qextserialport.h
 	
 SOURCES	+= source/comsetdlg.cpp  \
 			source/SetComFrm.cpp \
+			source/ReadComConfig.cpp \
 	         $$(RUNHOME_INC)/include/qextserial/qextserialport.cpp
 
 win32 {

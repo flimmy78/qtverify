@@ -2,7 +2,7 @@
 #include <QtCore/QTranslator>
 
 #include "SetComFrm.h"
-
+#include "ReadComConfig.h"
 
 int main( int argc, char ** argv )
 {
@@ -25,6 +25,16 @@ int main( int argc, char ** argv )
 
 	SetComFrm w;
 	w.show();
+	ReadComConfig r;
+	QMap<QString, QString> map;
+	try
+	{
+		qDebug() << r.ReadMeterConfigByNum("5")["com"];
+	}
+	catch (QString e)
+	{
+		qDebug() << e;
+	}
 
 	return app.exec();
 }

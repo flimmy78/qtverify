@@ -8,106 +8,106 @@
         <endbit>1</endbit>
     </config>
     <config id="balance">
-        <com>COM2</com>
-        <baud>9600</baud>
+        <com>COM1</com>
+        <baud>2400</baud>
         <bits>5</bits>
         <chkbit>无</chkbit>
         <endbit>1</endbit>
     </config>
     <config id="temp">
-        <com>COM3</com>
-        <baud>19200</baud>
+        <com>COM1</com>
+        <baud>2400</baud>
         <bits>5</bits>
         <chkbit>无</chkbit>
         <endbit>1</endbit>
     </config>
     <config id="stdtemp">
-        <com>COM4</com>
-        <baud>4800</baud>
+        <com>COM1</com>
+        <baud>2400</baud>
         <bits>5</bits>
         <chkbit>无</chkbit>
         <endbit>1</endbit>
     </config>
     <config id="meters">
         <config id="meter1">
-            <com>COM5</com>
+            <com>COM2</com>
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>无</chkbit>
             <endbit>1</endbit>
         </config>
         <config id="meter2">
-            <com>COM6</com>
+            <com>COM2</com>
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>无</chkbit>
             <endbit>1</endbit>
         </config>
         <config id="meter3">
-            <com>COM7</com>
+            <com>COM2</com>
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>无</chkbit>
             <endbit>1</endbit>
         </config>
         <config id="meter4">
-            <com>COM8</com>
+            <com>COM2</com>
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>无</chkbit>
             <endbit>1</endbit>
         </config>
         <config id="meter5">
-            <com>COM9</com>
+            <com>COM3</com>
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>无</chkbit>
             <endbit>1</endbit>
         </config>
         <config id="meter6">
-            <com>COM10</com>
+            <com>COM3</com>
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>无</chkbit>
             <endbit>1</endbit>
         </config>
         <config id="meter7">
-            <com>COM11</com>
+            <com>COM1</com>
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>无</chkbit>
             <endbit>1</endbit>
         </config>
         <config id="meter8">
-            <com>COM12</com>
+            <com>COM1</com>
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>无</chkbit>
             <endbit>1</endbit>
         </config>
         <config id="meter9">
-            <com>COM13</com>
+            <com>COM1</com>
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>无</chkbit>
             <endbit>1</endbit>
         </config>
         <config id="meter10">
-            <com>COM14</com>
+            <com>COM1</com>
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>无</chkbit>
             <endbit>1</endbit>
         </config>
         <config id="meter11">
-            <com>COM15</com>
+            <com>COM1</com>
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>无</chkbit>
             <endbit>1</endbit>
         </config>
         <config id="meter12">
-            <com>COM16</com>
+            <com>COM1</com>
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>无</chkbit>

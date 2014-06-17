@@ -18,7 +18,7 @@ SetComFrm::~SetComFrm()
 
 }
 
-/******************************************按钮事件******************************/
+#pragma region 按钮事件
 void SetComFrm::on_btnExit_clicked()
 {
 	close();
@@ -33,10 +33,9 @@ void SetComFrm::on_btnSave_clicked()
 	WriteMetersConfig();
 	QMessageBox::about(NULL, "Success", "Successfully Save Settings !");
 }
-/*************************************************************************************/
+#pragma endregion
 
-/*****************************读取界面选择*************************************/
-
+#pragma region 读取界面选择
 QVector<QString> SetComFrm::ReadValeSet()//读取界面上阀门控制的配置
 {
 	QVector<QString> Configs = ReadGBoxSet(gui.gBoxValve);
@@ -85,8 +84,8 @@ QVector<QString> SetComFrm::ReadMeterSetByNum(QString MeterNum)//按照表号读
 	return meter_configs;
 }
 
-/*由于每个GroupBox的结构都相同，所以设计一个通用函数，读取当前GBox的设置值
-这个函数只适用于控件按规则: (控件名类名+设备名+设置项), 命名的情况*/
+//由于每个GroupBox的结构都相同，所以设计一个通用函数，读取当前GBox的设置值
+//这个函数只适用于控件按规则: (控件名类名+设备名+设置项), 命名的情况
 QVector<QString>  SetComFrm::ReadGBoxSet(QGroupBox *gBox)
 {
 	QString com_num ;
@@ -134,9 +133,10 @@ QVector<QString>  SetComFrm::ReadGBoxSet(QGroupBox *gBox)
 	strArray.append(end_bit);
 	return strArray;
 }
-/*************************************************************************************/
+#pragma endregion
 
-/*****************************写入配置*******************************************/
+#pragma region 写入配置
+
 bool  SetComFrm::WriteValveConfig(QVector<QString> ValveConfigs)
 {
 	return WriteConfigById("valve", ValveConfigs);
@@ -214,19 +214,8 @@ bool  SetComFrm::WriteConfigById(QString ConfigId, QVector<QString> Configs)
 		}
 		n = n.nextSibling();
 	}
-	QFile filexml(ConfigFileName);
-
-	if( !filexml.open( QFile::WriteOnly | QFile::Truncate) )
-	{
-		qWarning("error::ParserXML->writeOperateXml->file.open\n");
-		return false;
-	}
-	QTextStream ts(&filexml);
-	ts.reset();
-	ts.setCodec("utf-8");
-	m_doc.save(ts, 4, QDomNode::EncodingFromTextStream);
-	filexml.close();
-	return true;
+	
+	return WriteConfigFile();
 }
 
 bool SetComFrm::OpenConfigFile()
@@ -246,11 +235,21 @@ bool SetComFrm::OpenConfigFile()
 	file.close();
 	return true;
 }
-/*************************************************************************************/
 
-/*****************************读取配置*******************************************/
-//QString  SetComFrm::ReadValeConfig()
-//{
-//
-//}
-/*************************************************************************************/
+bool SetComFrm::WriteConfigFile()
+{
+	QFile filexml(ConfigFileName);
+
+	if( !filexml.open( QFile::WriteOnly | QFile::Truncate) )
+	{
+		QMessageBox::critical(NULL, "warning", "Can not write to file: " + ConfigFileName, QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+		return false;
+	}
+	QTextStream ts(&filexml);
+	ts.reset();
+	ts.setCodec("utf-8");
+	m_doc.save(ts, 4, QDomNode::EncodingFromTextStream);
+	filexml.close();
+	return true;
+}
+#pragma endregion
