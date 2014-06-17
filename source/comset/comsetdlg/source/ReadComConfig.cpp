@@ -38,8 +38,7 @@ QMap<QString, QString> ReadComConfig::ReadStdTempConfig()
 
 QMap<QString, QString> ReadComConfig::ReadMeterConfigByNum(QString MeterNum)
 {
-	QString pattern("[0-9]{1,2}");
-	QRegExp rx(pattern);
+	QRegExp rx("[0-9]{1,2}");
 	if (!rx.exactMatch(MeterNum))
 	{
 		throw QString("Please input an integer!");
@@ -59,6 +58,7 @@ QMap<QString, QString> ReadComConfig::ReadConfigByName(QString ConfigId)
 		return configs;
 
 	QDomNode n;
+	//≈–∂œ «∑Ò∂¡»°±ªºÏ±Ì≈‰÷√
 	if (ConfigId.contains("meter"))
 		n = root.lastChild().firstChild();
 	else
