@@ -3,37 +3,8 @@
 
 #include <QtCore/QThread>  
 #include <QtCore/QObject> 
-#include <intsafe.h>
 
-
-//温度采集协议 begin
-#define DATA_WIDTH			4  //温度值字符串长度 4 
-#define DATA_PRECISION		1  //温度值精度，一位小数
-
-#define ADDR_FIX			0x80
-#define ADDR_FIRST			0x01
-#define ADDR_CODE_FIRST		(ADDR_FIX + ADDR_FIRST)
-#define READ_CODE			0x52
-
-
-#define PV_STATE		0x00
-#define SV_STATE		0x01
-#define MV_STATE		0x02
-#define WARN_STATE      0x03
-#define PARA_STATE      0x04
-#define CHECK_STATE     0x05
-
-
-typedef struct  
-{
-	INT16 pv;		//测量值PV，
-	INT16 sv;		//给定值SV
-	INT8  mv;       //输出值MV
-	UINT8 warn;	    //报警状态
-	INT16 para;     //所读写参数值
-	UINT16 check;	//校验码
-}Temp_Frame_Struct;
-//温度采集协议 end
+#include "protocol.h"
 
 class ComThread : public QThread 
 {      
@@ -73,7 +44,8 @@ public slots:
 };    
 
 /***************************************
-
+类名：TempComObject
+功能：温度串口类- 打开串口；设置串口参数；关闭串口；
 ****************************************/
 class TempComObject : public ComObject
 {
@@ -83,18 +55,17 @@ public:
 	TempComObject();
 	~TempComObject();
 
-	QextSerialPort *m_tempCom;
-	Temp_Frame_Struct *m_tempFrame;
+	QextSerialPort *m_tempCom;      //温度采集串口
+	Temp_Frame_Struct *m_tempFrame; //温度采集通讯帧结构
+	TempProtocol *m_tempProtocol;   //温度采集通讯协议类对象
 
 signals:
-	void temperatureIsReady(const QString& tempStr);
+	void temperatureIsReady(const QString& tempStr); //成功获取温度值
 
 public slots:
 	void openTemperatureCom(ComInfoStruct *comStruct);
 	void writeTemperatureComBuffer();
 	void readTemperatureComBuffer();
-	UINT16 CountCheck(Temp_Frame_Struct *pFrame);
-	void analyseFrame();
 
 };
 

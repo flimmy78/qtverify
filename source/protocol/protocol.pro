@@ -1,8 +1,10 @@
 TEMPLATE = lib
 CONFIG += dll console debug
+DEFINES += PROTOCOL_DLL
 TARGET = protocol
 DEPENDPATH += .
-INCLUDEPATH += .
+INCLUDEPATH += ./		\
+               $$(RUNHOME_INC)/include
 
 QMAKE_LIBDIR +=  ./             \
         	  		 $(RUNHOME)/lib \
@@ -10,7 +12,8 @@ QMAKE_LIBDIR +=  ./             \
 
 
 # Input
-HEADERS += protocol.h
+HEADERS += $$(RUNHOME_INC)/include/protocol.h
+
 SOURCES += protocol.cpp
 
 

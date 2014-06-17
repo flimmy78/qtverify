@@ -62,6 +62,8 @@ TempComObject::TempComObject() : ComObject()
 
 	m_tempFrame = new Temp_Frame_Struct();
 	memset(m_tempFrame, 0, sizeof(Temp_Frame_Struct));
+
+	m_tempProtocol = new TempProtocol();
 }
 
 TempComObject::~TempComObject()
@@ -79,6 +81,12 @@ TempComObject::~TempComObject()
 	{
 		delete m_tempFrame;
 		m_tempFrame = NULL;
+	}
+
+	if (m_tempProtocol != NULL)
+	{
+		delete m_tempProtocol;
+		m_tempProtocol = NULL;
 	}
 
 }
@@ -118,174 +126,33 @@ void TempComObject::openTemperatureCom(ComInfoStruct *comStruct)
 //请求温度
 void TempComObject::writeTemperatureComBuffer()
 {
-// 	qDebug()<<"write TemperatureComBuffer thread:"<<QThread::currentThreadId();
-	QByteArray buf;
-	buf.append(ADDR_CODE_FIRST).append(ADDR_CODE_FIRST);//地址代号
-	buf.append(READ_CODE); //标准读代码
-	UINT8 paracode = 0x00; //参数代号
-	buf.append(paracode); 
-	UINT8 datacode = 0x00;
-	buf.append(datacode).append(datacode);
- 	UINT16 checkcode = paracode*256 + READ_CODE + ADDR_FIRST;
-	QString checkstr;
-	checkstr = QString("%1").arg(checkcode, 4, 16).replace(" ", "0");
-	bool ok;
-	UINT8 lownum = checkstr.right(2).toUInt(&ok, 16);
-	UINT8 hightnum = checkstr.left(2).toUInt(&ok, 16);
-	buf.append(lownum).append(hightnum);
+ 	qDebug()<<"TempComObject::writeTemperatureComBuffer thread:"<<QThread::currentThreadId();
+	m_tempProtocol->makeSendBuf();
+	QByteArray buf = m_tempProtocol->getSendBuf();
 	m_tempCom->write(buf);
 }
 
 //读串口缓冲区
 void TempComObject::readTemperatureComBuffer()
 {
-	int state = PV_STATE;
-// 	qDebug()<<"read TemperatureComBuffer thread:"<<QThread::currentThreadId();
+	QByteArray tmp = m_tempCom->readAll();
+ 	qDebug()<<"read TemperatureComBuffer thread:"<<QThread::currentThreadId()<<",data is:"<<tmp;
 
-	QByteArray temp = m_tempCom->readAll();
-	UINT8 uch = 0; //无符号8位数字
-	INT8  ch = 0;  //有符号8位数字 
-	int number = temp.size();
-	int m=0;
-	int pv_i=0, sv_i=0, para_i=0, check_i=0;
-	UINT16 checknum=0; //程序计算的检验码
-	for (m=0; m<number; m++)
+	bool ret = false;
+	ret = m_tempProtocol->readTemperComBuffer(tmp); //通讯协议接口
+	if (ret)
 	{
-		switch(state)
-		{
-		case PV_STATE: //16位有符号
-			{
-				if (pv_i == 0) //低字节
-				{
-					uch = (UINT8)temp.at(m);
-					m_tempFrame->pv = uch;
-					pv_i++;
-					break;
-				}
-				if (pv_i == 1) //高字节
-				{
-					ch = (INT8)temp.at(m);
-					state = SV_STATE;
-					m_tempFrame->pv = ch*256 + m_tempFrame->pv;
-					pv_i = 0;
-				}
-				break;
-			}
-		case SV_STATE: //16位有符号
-			{   
-				if (sv_i == 0) //低字节
-				{
-					uch = (UINT8)temp.at(m);
-					m_tempFrame->sv = uch;
-					sv_i++;
-					break;
-				}
-				if (sv_i == 1) //高字节
-				{
-					ch = (INT8)temp.at(m);
-					state = MV_STATE;
-					m_tempFrame->sv = ch*256 + m_tempFrame->sv;
-					sv_i = 0;
-				}
-				break;
-			}
-
-		case MV_STATE: //8位有符号
-			{
-				ch = (INT8)temp.at(m);
-				m_tempFrame->mv = ch;
-				state = WARN_STATE;
-				break;
-			}    
-		case WARN_STATE: //8位无符号
-			{
-				uch = (UINT8)temp.at(m);
-				m_tempFrame->warn = uch;
-				state = PARA_STATE;
-				break;
-			} 
-		case PARA_STATE: //16位有符号
-			{
-				if (para_i == 0) //低字节 无符号
-				{
-					uch = (UINT8)temp.at(m);
-					m_tempFrame->para = uch;
-					para_i++;
-					break;
-				}
-				if (para_i == 1) //高字节 有符号
-				{
-					ch = (INT8)temp.at(m);
-					state = CHECK_STATE;
-					m_tempFrame->para = ch*256 + m_tempFrame->para;
-					para_i = 0;
-				}
-				break;
-			} 
-		case CHECK_STATE: //16位无符号
-			{
-				ch = (UINT8)temp.at(m);
-				if (check_i == 0) //低字节
-				{
-					m_tempFrame->check = ch;
-					check_i++;
-					break;
-				}
-				if (check_i == 1) //高字节
-				{
-					m_tempFrame->check = ch*256 + m_tempFrame->check;
-					check_i = 0;
-					state = PV_STATE;
-					checknum = CountCheck(m_tempFrame);
-					if (checknum == m_tempFrame->check)
-					{
-						analyseFrame();
-					}
-				}
-				break;
-			}
-		default :
-			{
-				state = PV_STATE;
-				break;
-			}
-		} //END OF switch(state)        
-	} //END OF for (m=0; m<number; m++)
-
-}
-
-
-//计算"校验码"
-UINT16 TempComObject::CountCheck(Temp_Frame_Struct *pFrame)
-{
-	if (NULL == pFrame)
-	{
-		return 0;
+		QString tempStr = m_tempProtocol->getTempStr();
+		emit temperatureIsReady(tempStr);
 	}
-
-	UINT16 cs = 0;
-	cs = pFrame->pv + pFrame->sv + (pFrame->warn*256 + pFrame->mv) + pFrame->para + ADDR_FIRST;
-
-	return cs; 
 }
 
 
 
-void TempComObject::analyseFrame()
-{
-// 	qDebug()<<"TempComObject::analyseFrame thread:"<<QThread::currentThreadId();
-	float PV = ((float)m_tempFrame->pv)/10;
-	float SV = ((float)m_tempFrame->sv)/10;
-	QString pvStr = QString("%1").arg(PV, DATA_WIDTH, 'f', DATA_PRECISION);
-	QString svStr = QString("%1").arg(SV, DATA_WIDTH, 'f', DATA_PRECISION);
-	QString Str = pvStr + svStr;
-	emit temperatureIsReady(Str);
-}
-
-/************************************************
+/*********************************************************
 类名：ValveComObject
 功能：阀门控制串口类- 打开串口；设置串口参数；关闭串口；
-*************************************************/
+**********************************************************/
 ValveComObject::ValveComObject() : ComObject()
 {
 	m_valveCom = NULL;

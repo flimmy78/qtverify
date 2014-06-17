@@ -28,10 +28,10 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 
 	m_tempObj = NULL;
 	m_tempTimer = NULL;
-// 	initTemperatureCom(); //初始化温度采集串口
+	initTemperatureCom(); //初始化温度采集串口
 
 	m_valveObj = NULL;
-	openValveControlCom();//打开阀门控制串口
+// 	openValveControlCom();//打开阀门控制串口
 }
 
 QualityDlg::~QualityDlg()

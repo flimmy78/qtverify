@@ -9,7 +9,7 @@ QMAKE_LIBDIR +=  ./           \
         	     $(RUNHOME)/lib \
 	             $(RUNHOME)/bin 
 	            
-LIBS +=	-lQt3Supportd4 -lQt3Support4
+LIBS +=	-lQt3Supportd4 -lQt3Support4 -lprotocol
 
 DESTDIR = $(RUNHOME)\tmp\quality\qualitydlg\obj
 #MOC_DIR = $(RUNHOME)/tmp/quality/qualitydlg/moc
