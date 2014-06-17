@@ -26,16 +26,12 @@ void SetComFrm::on_btnExit_clicked()
 
 void SetComFrm::on_btnSave_clicked()
 {
-	//QVector<QString> meterconfigs = ReadMeterSetByNum("3");
-	QVector<QString> valve_configs = ReadValeSet();
-	WriteValveConfig(valve_configs);
-	QVector<QString> balance_configs = ReadBalanceSet();
-	WriteBalanceConfig(balance_configs);
-	QVector<QString> temp_configs = ReadTempSet();
-	WriteTempConfig(temp_configs);
-	QVector<QString> stdtmp_configs = ReadStdTempSet();
-	WriteStdTempConfig(stdtmp_configs);
-	QMessageBox::information(NULL, "Success", "Successfully Save Settings !", QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+	WriteValveConfig(ReadValeSet());
+	WriteBalanceConfig(ReadBalanceSet());
+	WriteTempConfig(ReadTempSet());
+	WriteStdTempConfig(ReadStdTempSet());
+	WriteMetersConfig();
+	QMessageBox::about(NULL, "Success", "Successfully Save Settings !");
 }
 /*************************************************************************************/
 
@@ -161,27 +157,52 @@ bool  SetComFrm::WriteStdTempConfig(QVector<QString> StdTempConfigs)
 	return WriteConfigById("stdtemp", StdTempConfigs);
 }
 
+bool SetComFrm::WriteMetersConfig()
+{
+	QVector<QString> Configs;//相应表号的界面配置
+	QString meter_num;//表号
+	for (int i=1; i< 13; i++)
+	{
+		meter_num = QString::number(i, 10); 
+		Configs = ReadMeterSetByNum(meter_num);
+		if (!WriteMeterConfigByNum(meter_num, Configs))
+		{
+			QMessageBox::about(NULL, "False", "False  Save Settings of Meter: " + meter_num +"# !");
+			return false;
+		}
+	}
+	return true;
+}
+
+bool SetComFrm::WriteMeterConfigByNum(QString MeterNum, QVector<QString> MeterConfigs)
+{
+	QString ConfigId = "meter" + MeterNum;
+
+	return WriteConfigById(ConfigId, MeterConfigs);
+}
 
 bool  SetComFrm::WriteConfigById(QString ConfigId, QVector<QString> Configs)
 {
 	if (!OpenConfigFile())
 		return false;
 	
-	//QString path = QFileInfo(ConfigFileName).absoluteFilePath();
 	//修改保存xml
 	QDomElement root = m_doc.documentElement();
 	if(root.tagName()!= "configs")
 		return false;
 
-	QDomNode n = root.firstChild();
+	QDomNode n;
+	if (ConfigId.contains("meter"))
+		 n = root.lastChild().firstChild();
+	else
+		n = root.firstChild();
+	
 	while ( !n.isNull() )
 	{
 		QDomElement e = n.toElement();
 		if( !e.isNull())
 		{
-			/*qDebug() << "e's tagname:" + e.tagName() + ";" + "e's nodename:" + e.nodeName()
-				<< "e's attrName:" + e.attribute("id");*/
-			if( e.tagName() == "config" && e.attribute("id") == ConfigId)
+			if( e.tagName() == "config" && e.attribute("id") == ConfigId)//查找id号
 			{
 				QDomNodeList list = e.childNodes(); //获得元素e的所有子节点的列表(com号、波特率、校验位等)
 				for(int i=0; i<list.count(); i++) //遍历该列表

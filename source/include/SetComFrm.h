@@ -44,7 +44,8 @@ private:
 	bool WriteBalanceConfig(QVector<QString> BalanceConfigs);
 	bool WriteTempConfig(QVector<QString> TempConfigs);
 	bool WriteStdTempConfig(QVector<QString> StdTempConfigs);
-	bool WriteMeterConfigByNum();
+	bool WriteMetersConfig();
+	bool WriteMeterConfigByNum(QString MeterNum, QVector<QString> MeterConfigs);
 	bool WriteConfigById(QString ConfigId, QVector<QString> Configs);
 	bool OpenConfigFile();
 	/***************************************************/
