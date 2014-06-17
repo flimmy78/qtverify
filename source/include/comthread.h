@@ -5,7 +5,7 @@
 #include <QtCore/QObject> 
 
 #include "protocol.h"
-#include "comsetdlg_global.h"
+#include "comsetdlg.h"
 
 class ComThread : public QThread 
 {      
