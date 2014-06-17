@@ -77,7 +77,7 @@ void QualityDlg::initTemperatureCom()
 	m_tempTimer->start(TIMEOUT_TEMPER);
 }
 
-void QualityDlg::openValveControlCom()
+void QualityDlg::initValveControlCom()
 {
 	ComInfoStruct valveStruct;
 	valveStruct.portName = "COM2";

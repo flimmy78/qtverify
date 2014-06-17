@@ -112,12 +112,10 @@ void TempComObject::openTemperatureCom(ComInfoStruct *comStruct)
 
 	if(m_tempCom->open(QIODevice::ReadWrite))
 	{
-// 		QMessageBox::information(this, tr("Open Success"), tr("Open SerialPort ") + portName + tr(" Success!"), QMessageBox::Ok);
 		qDebug()<<"Open SerialPort:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
 	}
 	else
 	{
-// 		QMessageBox::critical(this, tr("Open Failed"), tr("Can't Open SerialPort ") + portName + tr("\nDevice isn't exist or is occupied!"), QMessageBox::Ok);
 		qDebug()<<"Open SerialPort:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
 		return;
 	}
@@ -191,12 +189,10 @@ void ValveComObject::openValveControlCom(ComInfoStruct *comStruct)
 
 	if(m_valveCom->open(QIODevice::ReadWrite))
 	{
-// 		QMessageBox::information(this, tr("Open Success"), tr("Open SerialPort ") + portName + tr(" Success!"), QMessageBox::Ok);
 		qDebug()<<"Open SerialPort:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
 	}
 	else
 	{
-// 		QMessageBox::critical(this, tr("Open Failed"), tr("Can't Open SerialPort ") + portName + tr("\nDevice isn't exist or is occupied!"), QMessageBox::Ok);
 		qDebug()<<"Open SerialPort:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
 		return;
 	}

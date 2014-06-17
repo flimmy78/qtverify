@@ -41,7 +41,7 @@ public slots:
 
 	void initTemperatureCom(); //温度采集串口
 
-	void openValveControlCom();//阀门控制串口 
+	void initValveControlCom();//阀门控制串口 
 	void slotSetValveBtnStatus(const int& isOpen );
 private:
 	Ui::QualityDlgClass ui;
