@@ -14,6 +14,8 @@
 ***********************************************/
 
 #include <QtCore/QDebug>
+#include <QtTest/QTest>
+
 #include "comthread.h"
 
 /************************************************
@@ -228,6 +230,8 @@ BalanceComObject::BalanceComObject() : ComObject()
 	m_balanceCom = NULL;
 
 	m_balanceProtocol = new BalanceProtocol;
+
+	m_sendContinue = true;
 }
 
 BalanceComObject::~BalanceComObject()
@@ -282,6 +286,21 @@ void BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
 	buf.append(0x2D).append(0x31).append(0x32).append(0x33).append(0x34).append(0x2E).append(0x35).append(0x36).append(0x37).append(0x38);
 	buf.append(0x20).append(0x6B).append(0x67).append(0x20).append(0x0D).append(0x0A);
 	m_balanceCom->write(buf);
+
+}
+
+void BalanceComObject::writeBalanceComBuffer()
+{
+	UINT8 wg = 0x31;
+	while(m_sendContinue)
+	{
+		QByteArray buf;
+		buf.append(0x4E).append(0x20).append(0x20).append(0x20).append(0x20).append(0x20);
+		buf.append(0x2D).append(wg++).append(0x38).append(0x37).append(0x36).append(0x2E).append(0x35).append(0x34).append(0x33).append(0x32);
+		buf.append(0x20).append(0x6B).append(0x67).append(0x20).append(0x0D).append(0x0A);
+		m_balanceCom->write(buf);
+		QTest::qWait(1000);
+	}
 }
 
 void BalanceComObject::readBalanceComBuffer()
@@ -296,4 +315,9 @@ void BalanceComObject::readBalanceComBuffer()
 		QString balStr = m_balanceProtocol->getBalanceValue();
 		emit balanceValueIsReady(balStr);
 	}
+}
+
+void BalanceComObject::setSendContinue(bool a)
+{
+	m_sendContinue = a;
 }

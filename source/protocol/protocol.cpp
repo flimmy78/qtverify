@@ -249,6 +249,10 @@ bool BalanceProtocol::readBalanceComBuffer(QByteArray tmp)
 	m_balValue = "";
 	bool ret = false;
 	int num = tmp.size();
+	if (num < 16)
+	{
+		return ret;
+	}
 	int m=0;
 	char ch;
 	UINT8 ch1, ch2;

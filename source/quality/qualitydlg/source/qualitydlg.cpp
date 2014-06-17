@@ -39,12 +39,13 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 
 QualityDlg::~QualityDlg()
 {
-	if (m_paraset)
+	if (m_paraset)  //参数设置
 	{
 		delete m_paraset;
 		m_paraset = NULL;
 	}
-	if (m_tempObj)
+
+	if (m_tempObj)  // 温度采集
 	{
 		delete m_tempObj;
 		m_tempObj = NULL;
@@ -54,12 +55,14 @@ QualityDlg::~QualityDlg()
 		delete m_tempTimer;
 		m_tempTimer = NULL;
 	}
-	if (m_valveObj)
+
+	if (m_valveObj)  //阀门控制
 	{
 		delete m_valveObj;
 		m_valveObj = NULL;
 	}
-	if (m_balanceObj)
+
+	if (m_balanceObj)  //天平采集
 	{
 		delete m_balanceObj;
 		m_balanceObj = NULL;
@@ -123,6 +126,11 @@ void QualityDlg::on_btnWaterIn_clicked()
 	setValveBtnBackColor(ui.btnWaterIn, true);
 }
 
+void QualityDlg::on_btnWaterOut_clicked()
+{
+	m_balanceObj->writeBalanceComBuffer(); //测试用
+}
+
 void QualityDlg::setValveBtnBackColor(QPushButton *btn, bool isOpen)
 {
 	if (isOpen)
@@ -142,6 +150,7 @@ void QualityDlg::on_btnParaSet_clicked()
 
 void QualityDlg::on_btnExit_clicked()
 {
+	m_balanceObj->setSendContinue(false);
 	this->close();
 }
 

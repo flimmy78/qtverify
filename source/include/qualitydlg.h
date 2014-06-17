@@ -34,6 +34,7 @@ public:
 
 public slots:
 	void on_btnWaterIn_clicked();
+	void on_btnWaterOut_clicked();
 
 	void on_btnParaSet_clicked();
 	void on_btnExit_clicked();

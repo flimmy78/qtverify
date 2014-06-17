@@ -108,6 +108,7 @@ public:
 
 	QextSerialPort *m_balanceCom;
 	BalanceProtocol *m_balanceProtocol;   //天平通讯协议类对象
+	bool m_sendContinue;
 
 signals:
 	void balanceValueIsReady(const QString& tempStr); //成功获取天平数值
@@ -115,6 +116,8 @@ signals:
 public slots:
 	void openBalanceCom(ComInfoStruct *comStruct);
 	void readBalanceComBuffer();
+	void writeBalanceComBuffer();
+	void setSendContinue(bool a);
 };
 
 
