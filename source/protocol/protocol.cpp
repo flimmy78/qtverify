@@ -235,6 +235,7 @@ QByteArray TempProtocol::getSendBuf()
 ************************************************/
 BalanceProtocol::BalanceProtocol()
 {
+	m_balValue = "";
 }
 
 BalanceProtocol::~BalanceProtocol()
@@ -243,7 +244,28 @@ BalanceProtocol::~BalanceProtocol()
 
 bool BalanceProtocol::readBalanceComBuffer(QByteArray tmp)
 {
+	m_balValue = "";
 	bool ret = false;
+	int num = tmp.size();
+	int m=0;
+	char ch;
+	UINT8 ch1, ch2;
+	ch1 = (UINT8)tmp.at(num-1);
+	ch2 = (UINT8)tmp.at(num-2);
+	if (ch1==0x0A && ch2==0x0D)
+	{
+		for (m=num-16; m<num-6; m++)
+		{
+			ch = tmp.at(m);
+			m_balValue += ch;
+		}
+		ret = true;
+	}
+
 	return ret;
 }
 
+QString BalanceProtocol::getBalanceValue()
+{
+	return m_balValue;
+}

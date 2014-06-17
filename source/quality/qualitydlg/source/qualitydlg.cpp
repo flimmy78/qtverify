@@ -154,6 +154,8 @@ void QualityDlg::slotFreshComTempValue(const QString& tempStr)
 void QualityDlg::slotFreshBalanceValue(const QString& Str)
 {
 	ui.lnEditBigBalance->setText(Str);
+	double v = ui.lnEditBigBalance->text().toDouble();
+	ui.lnEditSmallBalance->setText(QString("%1").arg(v, 9, 'f', 4));
 }
 
 void QualityDlg::slotSetValveBtnStatus(const int& isOpen )

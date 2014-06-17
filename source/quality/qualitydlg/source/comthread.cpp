@@ -277,7 +277,11 @@ void BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
 		return;
 	}
 
-	m_balanceCom->write("ab");
+	QByteArray buf;
+	buf.append(0x4E).append(0x20).append(0x20).append(0x20).append(0x20).append(0x20);
+	buf.append(0x2D).append(0x31).append(0x32).append(0x33).append(0x34).append(0x2E).append(0x35).append(0x36).append(0x37).append(0x38);
+	buf.append(0x20).append(0x6B).append(0x67).append(0x20).append(0x0D).append(0x0A);
+	m_balanceCom->write(buf);
 }
 
 void BalanceComObject::readBalanceComBuffer()
@@ -287,9 +291,9 @@ void BalanceComObject::readBalanceComBuffer()
 
 	bool ret = false;
 	ret = m_balanceProtocol->readBalanceComBuffer(tmp); //通讯协议接口
-// 	if (ret)
-// 	{
-		QString tempStr = "99.99";// m_tempProtocol->getTempStr();
-		emit balanceValueIsReady(tempStr);
-// 	}
+	if (ret)
+	{
+		QString balStr = m_balanceProtocol->getBalanceValue();
+		emit balanceValueIsReady(balStr);
+	}
 }

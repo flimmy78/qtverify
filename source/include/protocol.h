@@ -95,8 +95,11 @@ public:
 	BalanceProtocol();
 	~BalanceProtocol();
 
+	QString m_balValue;
+
 public slots:
 	bool readBalanceComBuffer(QByteArray tmp);
+	QString getBalanceValue();
 
 private:
 };
