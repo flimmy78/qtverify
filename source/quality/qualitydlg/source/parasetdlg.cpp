@@ -26,5 +26,10 @@ ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 
 ParaSetDlg::~ParaSetDlg()
 {
+	qDebug()<<"!!! ParaSetDlg destructor";
+}
+
+void ParaSetDlg::closeEvent(QCloseEvent * event)
+{
 
 }

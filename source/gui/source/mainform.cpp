@@ -15,9 +15,10 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	dbmysqlobj = new DbMySql();
 	dbsqliteobj = new DbSqlite();
 	m_alg = new CAlg();
-	m_spset = new ComSetDlg();
-	m_setcom = new SetComFrm();
-	m_qualitydlg = new QualityDlg();
+
+	m_spset = NULL;
+	m_setcom = NULL;
+	m_qualitydlg = NULL;
 
 	connect(ui.btnExit, SIGNAL(clicked()), this, SLOT(close()));
 
@@ -31,6 +32,18 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 
 MainForm::~MainForm()
 {
+	if (dbmysqlobj)
+	{
+		delete dbmysqlobj;
+		dbmysqlobj = NULL;
+	}
+
+	if (dbsqliteobj)
+	{
+		delete dbsqliteobj;
+		dbsqliteobj = NULL;
+	}
+
 	if (m_alg)
 	{
 		delete m_alg;
@@ -58,11 +71,19 @@ MainForm::~MainForm()
 
 void MainForm::on_action_spset_triggered()
 {
+	if (NULL == m_spset)
+	{
+		m_spset = new ComSetDlg();
+	}
 	m_spset->show();
 }
 
 void MainForm::on_actionComSet_triggered()
 {
+	if (NULL == m_setcom)
+	{
+		m_setcom = new SetComFrm();
+	}
 	m_setcom->show();
 }
 
@@ -153,6 +174,10 @@ void MainForm::on_actionPlugin_triggered()
 
 void MainForm::on_actionQualityComp_triggered()
 {
+	if (NULL == m_qualitydlg)
+	{
+		m_qualitydlg = new QualityDlg();
+	}
 	m_qualitydlg->showMaximized();
 }
 

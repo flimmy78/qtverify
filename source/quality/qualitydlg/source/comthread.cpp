@@ -46,7 +46,7 @@ void ComThread::run()
 类名：ComObject
 功能：串口操作基类
 *************************************************/
-ComObject::ComObject() : QObject()
+ComObject::ComObject(QObject* parent) : QObject(parent)
 {
 }
 
@@ -59,7 +59,7 @@ ComObject::~ComObject()
 类名：TempComObject
 功能：温度串口类- 打开串口；设置串口参数；关闭串口；
 *************************************************/
-TempComObject::TempComObject() : ComObject()
+TempComObject::TempComObject(QObject* parent) : ComObject(parent)
 {
 	m_tempCom = NULL;
 
@@ -154,7 +154,7 @@ void TempComObject::readTemperatureComBuffer()
 类名：ValveComObject
 功能：阀门控制串口类- 打开串口；设置串口参数；关闭串口；
 **********************************************************/
-ValveComObject::ValveComObject() : ComObject()
+ValveComObject::ValveComObject(QObject* parent) : ComObject(parent)
 {
 	m_valveCom = NULL;
 }
@@ -166,6 +166,7 @@ ValveComObject::~ValveComObject()
 		if(m_valveCom->isOpen())
 		{
 			m_valveCom->close();
+			qDebug()<<"m_valveCom closed";
 		}
 		delete m_valveCom;
 	}
@@ -246,7 +247,7 @@ void ValveComObject::analyseFrame()
 类名：BalanceComObject
 功能：天平串口类- 打开串口；设置串口参数；关闭串口；
 **********************************************************/
-BalanceComObject::BalanceComObject() : ComObject()
+BalanceComObject::BalanceComObject(QObject* parent) : ComObject(parent)
 {
 	m_balanceCom = NULL;
 

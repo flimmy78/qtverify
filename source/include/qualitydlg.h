@@ -34,7 +34,7 @@ public:
 	ComThread m_balanceThread; //天平采集线程
 	BalanceComObject *m_balanceObj;
 
-
+	void closeEvent(QCloseEvent * event);
 
 public slots:
 	void on_btnWaterIn_clicked();

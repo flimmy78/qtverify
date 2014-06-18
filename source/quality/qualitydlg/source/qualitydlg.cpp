@@ -24,8 +24,10 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 	qDebug()<<"QualityDlg thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
 
+	m_paraset = NULL;
 	m_paraset = new ParaSetDlg();
 
+	m_readComConfig = NULL;
 	m_readComConfig = new ReadComConfig();
 
 	m_tempObj = NULL;
@@ -43,6 +45,12 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 
 QualityDlg::~QualityDlg()
 {
+}
+
+void QualityDlg::closeEvent( QCloseEvent * event)
+{
+	qDebug()<<"^^^^^QualityDlg::closeEvent";
+
 	if (m_paraset)  //参数设置
 	{
 		delete m_paraset;
@@ -59,11 +67,6 @@ QualityDlg::~QualityDlg()
 	{
 		delete m_tempObj;
 		m_tempObj = NULL;
-	}
-	if (m_tempTimer)
-	{
-		delete m_tempTimer;
-		m_tempTimer = NULL;
 	}
 
 	if (m_valveObj)  //阀门控制
@@ -93,7 +96,7 @@ void QualityDlg::initTemperatureCom()
 	m_tempObj->openTemperatureCom(&tempStruct);
 	connect(m_tempObj, SIGNAL(temperatureIsReady(const QString &)), this, SLOT(slotFreshComTempValue(const QString &)));
 
-	m_tempTimer = new QTimer();
+	m_tempTimer = new QTimer(this);
 	connect(m_tempTimer, SIGNAL(timeout()), m_tempObj, SLOT(writeTemperatureComBuffer()));
 	m_tempTimer->start(TIMEOUT_TEMPER); //周期请求温度
 }
@@ -101,11 +104,6 @@ void QualityDlg::initTemperatureCom()
 void QualityDlg::initValveControlCom()
 {
 	ComInfoStruct valveStruct = m_readComConfig->ReadValeConfig();
-// 	valveStruct.portName = "COM2";
-// 	valveStruct.baudRate = 9600;
-// 	valveStruct.dataBit = 8;
-// 	valveStruct.parity = 0;
-// 	valveStruct.stopBit = 0;
 	m_valveObj = new ValveComObject();
 	m_valveObj->moveToThread(&m_valveThread);
 	m_valveThread.start();
@@ -117,11 +115,6 @@ void QualityDlg::initValveControlCom()
 void QualityDlg::initBalanceCom()
 {
 	ComInfoStruct balanceStruct = m_readComConfig->ReadBalanceConfig();
-// 	balanceStruct.portName = "COM2";
-// 	balanceStruct.baudRate = 9600;
-// 	balanceStruct.dataBit = 8;
-// 	balanceStruct.parity = 0;
-// 	balanceStruct.stopBit = 0;
 	m_balanceObj = new BalanceComObject();
 	m_balanceObj->moveToThread(&m_balanceThread);
 	m_balanceThread.start();

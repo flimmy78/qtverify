@@ -33,7 +33,7 @@ class ComObject : public QObject
 	Q_OBJECT  
 
 public: 
-	ComObject();
+	ComObject(QObject* parent=0);
 	~ComObject();
 
 
@@ -52,7 +52,7 @@ class TempComObject : public ComObject
 	Q_OBJECT  
 
 public: 
-	TempComObject();
+	TempComObject(QObject* parent=0);
 	~TempComObject();
 
 	QextSerialPort *m_tempCom;      //温度采集串口
@@ -78,7 +78,7 @@ class ValveComObject : public ComObject
 	Q_OBJECT  
 
 public: 
-	ValveComObject();
+	ValveComObject(QObject* parent=0);
 	~ValveComObject();
 
 	QextSerialPort *m_valveCom;
@@ -103,7 +103,7 @@ class BalanceComObject : public ComObject
 	Q_OBJECT  
 
 public: 
-	BalanceComObject();
+	BalanceComObject(QObject* parent=0);
 	~BalanceComObject();
 
 	QextSerialPort *m_balanceCom;
@@ -119,8 +119,6 @@ public slots:
 	void writeBalanceComBuffer();
 	void setSendContinue(bool a);
 };
-
-
 
 
 #endif //COMTHREAD_H

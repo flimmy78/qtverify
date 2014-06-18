@@ -55,6 +55,7 @@ TempProtocol::~TempProtocol()
 	}
 }
 
+//请求温度值 组帧
 void TempProtocol::makeSendBuf()
 {
 	m_sendBuf = "";
@@ -73,6 +74,7 @@ void TempProtocol::makeSendBuf()
 	m_sendBuf.append(lownum).append(hightnum);
 }
 
+//解帧 获取温度值
 bool TempProtocol::readTemperComBuffer(QByteArray tmp)
 {
 	memset(m_tempFrame, 0, sizeof(Temp_Frame_Struct));
