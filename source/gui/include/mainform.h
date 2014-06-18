@@ -13,8 +13,6 @@
 #include "qualitydlg.h"
 #include "mythread.h"
 
-// #define  DELETE_ARRAY(a)      {if ( a ) delete []a, a = NULL;}
-
 
 class MainForm : public QMainWindow
 {

@@ -63,7 +63,6 @@ void MainForm::on_action_spset_triggered()
 
 void MainForm::on_actionComSet_triggered()
 {
-//  QMessageBox::warning(this, "title", "you clicked");	
 	m_setcom->show();
 }
 

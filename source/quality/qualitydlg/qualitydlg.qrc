@@ -3,5 +3,7 @@
     <file>images/delulogo.png</file>
     <file>images/debug.png</file>
     <file>images/data_save.png</file>
+    <file>images/close.png</file>
+    <file>images/open.png</file>
   </qresource>
 </RCC>

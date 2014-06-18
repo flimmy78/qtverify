@@ -249,7 +249,7 @@ bool BalanceProtocol::readBalanceComBuffer(QByteArray tmp)
 	m_balValue = "";
 	bool ret = false;
 	int num = tmp.size();
-	if (num < 16)
+	if (num < 16) //一帧通常是22字节；
 	{
 		return ret;
 	}

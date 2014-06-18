@@ -84,11 +84,11 @@ public:
 	QextSerialPort *m_valveCom;
 
 signals:
-	void valveComIsAnalysed(const int& isOpen);
+	void valveComIsAnalysed(const bool& status);
 
 public slots:
 	void openValveControlCom(ComInfoStruct *comStruct);
-	void writeValveControlComBuffer();
+	void writeValveControlComBuffer(bool status);
 	void readValveControlComBuffer();
 	void analyseFrame();
 };

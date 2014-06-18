@@ -201,17 +201,37 @@ void ValveComObject::openValveControlCom(ComInfoStruct *comStruct)
 	}
 }
 
-void ValveComObject::writeValveControlComBuffer()
+void ValveComObject::writeValveControlComBuffer(bool status)
 {
 	qDebug()<<"writeValveControlComBuffer thread:"<<QThread::currentThreadId();
-	m_valveCom->write("write Valve Com");
+	
+	QByteArray buf;
+	if (status) //打开阀门
+	{
+		buf.append(0x01);
+	}
+	else //关闭阀门
+	{
+		buf.append(0x02);
+	}
+	m_valveCom->write(buf);
 }
 
 void ValveComObject::readValveControlComBuffer()
 {
-	QByteArray temp = m_valveCom->readAll();
-	qDebug()<<"readValveControlComBuffer thread:"<<QThread::currentThreadId()<<", Read data is:"<<temp;
-	analyseFrame();
+	QByteArray tmp = m_valveCom->readAll();
+	int num = tmp.size();
+	UINT8 ch = (UINT8)tmp.at(0);
+	qDebug()<<"readValveControlComBuffer thread:"<<QThread::currentThreadId()<<", Read data is:"<<ch;
+	if (ch==0x01) //打开阀门成功
+	{
+		emit valveComIsAnalysed(true);
+	}
+	else if (ch==0x02) //关闭阀门成功
+	{
+		emit valveComIsAnalysed(false);
+	}
+// 	analyseFrame();
 }
 
 void ValveComObject::analyseFrame()
