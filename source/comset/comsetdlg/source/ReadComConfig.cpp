@@ -1,3 +1,16 @@
+/***********************************************
+**  文件名:     ReadComConfig.cpp
+**  功能:       读取 $RUNHOME/ini/comconfig.xml文件的串口配置
+**  操作系统:   基于Trolltech Qt4.8.5的跨平台系统
+**  生成时间:   2014/6/16
+**  专业组:     德鲁计量软件组
+**  程序设计者: 宋宝善
+**  程序员:     宋宝善
+**  版本历史:   2014/06 第一版
+**  内容包含:
+**  说明:
+**  更新记录:
+***********************************************/
 #include <QtGui/QMessageBox>
 #include <QtCore/QDebug>
 #include <QFile>
@@ -5,38 +18,44 @@
 #include <iostream>
 
 #include "ReadComConfig.h"
+#include "comsetdlg.h"
 
 ReadComConfig::ReadComConfig()
 {
-	ConfigFileName="comconfig.xml";
+	QString path = QProcessEnvironment::systemEnvironment().value("RUNHOME");
+#ifdef Q_OS_LINUX
+	ConfigFileName = path + "\/ini\/comconfig.xml";
+#elif defined (Q_OS_WIN)
+	ConfigFileName = path + "\\ini\\comconfig.xml";
+#endif
 }
 
 ReadComConfig::~ReadComConfig()
 {
 
 }
-
-QMap<QString, QString> ReadComConfig::ReadValeConfig()
+/*读取阀门设置*/
+ComInfoStruct ReadComConfig::ReadValeConfig()
 {
 	return ReadConfigByName("valve");
 }
-
-QMap<QString, QString> ReadComConfig::ReadBalanceConfig()
+/*读取天平设置*/
+ComInfoStruct ReadComConfig::ReadBalanceConfig()
 {
 	return ReadConfigByName("balance");
 }
-
-QMap<QString, QString> ReadComConfig::ReadTempConfig()
+/*读取温度采集设置*/
+ComInfoStruct ReadComConfig::ReadTempConfig()
 {
 	return ReadConfigByName("temp");
 }
-
-QMap<QString, QString> ReadComConfig::ReadStdTempConfig()
+/*读取标准温度计设置*/
+ComInfoStruct ReadComConfig::ReadStdTempConfig()
 {
 	return ReadConfigByName("stdtemp");
 }
-
-QMap<QString, QString> ReadComConfig::ReadMeterConfigByNum(QString MeterNum)
+/*读取被检表设置*/
+ComInfoStruct ReadComConfig::ReadMeterConfigByNum(QString MeterNum)
 {
 	QRegExp rx("[0-9]{1,2}");
 	if (!rx.exactMatch(MeterNum))
@@ -45,17 +64,23 @@ QMap<QString, QString> ReadComConfig::ReadMeterConfigByNum(QString MeterNum)
 	}
 	return ReadConfigByName("meter" + MeterNum);
 }
-
-QMap<QString, QString> ReadComConfig::ReadConfigByName(QString ConfigId)
+/*按xml中的id读取设置*/
+ComInfoStruct ReadComConfig::ReadConfigByName(QString ConfigId)
 {
 	QMap<QString, QString> configs;
-
-	if (!OpenConfigFile())
-		return configs;
+	ComInfoStruct com_info;
+	try
+	{
+		OpenConfigFile();
+	}
+	catch(QString e)
+	{
+		throw e;
+	}
 
 	QDomElement root = m_doc.documentElement();
 	if(root.tagName()!= "configs")
-		return configs;
+		throw "file format is invalid";
 
 	QDomNode n;
 	//判断是否读取被检表配置
@@ -82,20 +107,25 @@ QMap<QString, QString> ReadComConfig::ReadConfigByName(QString ConfigId)
 		n = n.nextSibling();
 	}
 
-	return configs;
+	com_info.portName = configs["com"];
+	com_info.baudRate = configs["baud"].toInt();
+	com_info.dataBit = configs["bits"].toInt();
+	com_info.parity = configs["chkbit"].toInt();
+	com_info.stopBit = configs["endbit"].toInt();
+	return com_info;
 }
-
+/*打开文件测试*/
 bool ReadComConfig::OpenConfigFile()
 {
 	QFile file( ConfigFileName );
 	if( !file.open( QFile::ReadOnly | QFile::Text  ) )
 	{
-		QMessageBox::critical(NULL, "warning", "Can not open file: " + ConfigFileName, QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+		throw QString("Can not open file: " + ConfigFileName);
 		return false;
 	}
 	if( !m_doc.setContent( &file ) )
 	{
-		QMessageBox::critical(NULL, "warning", "Can not setContent file: " + ConfigFileName, QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+		throw QString("Can not setContent file: " + ConfigFileName);
 		file.close();
 		return false;
 	}

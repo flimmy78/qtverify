@@ -1,4 +1,17 @@
-﻿#include <QtGui/QMessageBox>
+﻿/***********************************************
+**  文件名:     SetComFrm.cpp
+**  功能:       将用户对各个设备的串口设置保存到 $RUNHOME/ini/comconfig.xml文件中
+**  操作系统:   基于Trolltech Qt4.8.5的跨平台系统
+**  生成时间:   2014/6/15
+**  专业组:     德鲁计量软件组
+**  程序设计者: 宋宝善
+**  程序员:     宋宝善
+**  版本历史:   2014/06 第一版
+**  内容包含:
+**  说明:
+**  更新记录:
+***********************************************/
+#include <QtGui/QMessageBox>
 #include <QtCore/QDebug>
 #include <QFile>
 #include <QtXml/QtXml>
@@ -10,7 +23,13 @@ SetComFrm::SetComFrm(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
 	gui.setupUi(this);
-	ConfigFileName = "comconfig.xml";
+	QString path = QProcessEnvironment::systemEnvironment().value("RUNHOME");
+#ifdef Q_OS_LINUX
+	ConfigFileName = path + "\/ini\/comconfig.xml";
+	#elif defined (Q_OS_WIN)
+	ConfigFileName = path + "\\ini\\comconfig.xml";
+#endif
+
 }
 
 SetComFrm::~SetComFrm()
@@ -18,7 +37,7 @@ SetComFrm::~SetComFrm()
 
 }
 
-#pragma region 按钮事件
+
 void SetComFrm::on_btnExit_clicked()
 {
 	close();
@@ -33,34 +52,33 @@ void SetComFrm::on_btnSave_clicked()
 	WriteMetersConfig();
 	QMessageBox::about(NULL, "Success", "Successfully Save Settings !");
 }
-#pragma endregion
 
-#pragma region 读取界面选择
-QVector<QString> SetComFrm::ReadValeSet()//读取界面上阀门控制的配置
+/*读取界面上阀门控制的配置*/
+QVector<QString> SetComFrm::ReadValeSet()
 {
 	QVector<QString> Configs = ReadGBoxSet(gui.gBoxValve);
 	return Configs;
 }
-
-QVector<QString> SetComFrm::ReadBalanceSet()//读取界面上天平的配置
+/*读取界面上天平的配置*/
+QVector<QString> SetComFrm::ReadBalanceSet()
 {
 	QVector<QString> Configs = ReadGBoxSet(gui.gBoxBalance);
 	return Configs;
 }
-
-QVector<QString> SetComFrm::ReadTempSet()//读取界面上温度采集的配置
+/*读取界面上温度采集的配置*/
+QVector<QString> SetComFrm::ReadTempSet()
 {
 	QVector<QString> Configs = ReadGBoxSet(gui.gBoxTempSenor);
 	return Configs;
 }
-
-QVector<QString> SetComFrm::ReadStdTempSet()//读取界面上标准温度的配置
+/*读取界面上标准温度的配置*/
+QVector<QString> SetComFrm::ReadStdTempSet()
 {
 	QVector<QString> Configs = ReadGBoxSet(gui.gBoxStdTmpSensor);
 	return Configs;
 }
-
-QVector<QString> SetComFrm::ReadMeterSetByNum(QString MeterNum)//按照表号读取界面上被检表的配置
+/*按照表号读取界面上被检表的配置*/
+QVector<QString> SetComFrm::ReadMeterSetByNum(QString MeterNum)
 {
 	QVector<QString> meter_configs;
 	const QObjectList list=gui.gBoxMeters->children();
@@ -84,8 +102,10 @@ QVector<QString> SetComFrm::ReadMeterSetByNum(QString MeterNum)//按照表号读
 	return meter_configs;
 }
 
-//由于每个GroupBox的结构都相同，所以设计一个通用函数，读取当前GBox的设置值
-//这个函数只适用于控件按规则: (控件名类名+设备名+设置项), 命名的情况
+/*************************************************************************************************************
+由于每个GroupBox的结构都相同，所以设计一个通用函数，读取当前GBox的设置值.
+这个函数只适用于控件按规则: (控件名类名+设备名+设置项), 命名的情况
+*************************************************************************************************************/
 QVector<QString>  SetComFrm::ReadGBoxSet(QGroupBox *gBox)
 {
 	QString com_num ;
@@ -117,7 +137,7 @@ QVector<QString>  SetComFrm::ReadGBoxSet(QGroupBox *gBox)
 			}
 			else if (occur = object_name .contains("ChkBit",Qt::CaseSensitive))
 			{
-				chk_bit = CBox->currentText();
+				chk_bit = QString::number(CBox->currentIndex(), 10);
 			}
 			else if (occur = object_name .contains("EndBit",Qt::CaseSensitive))
 			{
@@ -133,30 +153,27 @@ QVector<QString>  SetComFrm::ReadGBoxSet(QGroupBox *gBox)
 	strArray.append(end_bit);
 	return strArray;
 }
-#pragma endregion
-
-#pragma region 写入配置
-
+/*写入阀门设置*/
 bool  SetComFrm::WriteValveConfig(QVector<QString> ValveConfigs)
 {
 	return WriteConfigById("valve", ValveConfigs);
 }
-
+/*写入天平设置*/
 bool  SetComFrm::WriteBalanceConfig(QVector<QString> BalanceConfigs)
 {
 	return WriteConfigById("balance", BalanceConfigs);
 }
-
+/*写入温度采集设置*/
 bool  SetComFrm::WriteTempConfig(QVector<QString> TempConfigs)
 {
 	return WriteConfigById("temp", TempConfigs);
 }
-
+/*写入标准温度计设置*/
 bool  SetComFrm::WriteStdTempConfig(QVector<QString> StdTempConfigs)
 {
 	return WriteConfigById("stdtemp", StdTempConfigs);
 }
-
+/*写入被检表设置*/
 bool SetComFrm::WriteMetersConfig()
 {
 	QVector<QString> Configs;//相应表号的界面配置
@@ -173,14 +190,14 @@ bool SetComFrm::WriteMetersConfig()
 	}
 	return true;
 }
-
+/*按表号写入设置*/
 bool SetComFrm::WriteMeterConfigByNum(QString MeterNum, QVector<QString> MeterConfigs)
 {
 	QString ConfigId = "meter" + MeterNum;
 
 	return WriteConfigById(ConfigId, MeterConfigs);
 }
-
+/*按xml中的标签id写入设置*/
 bool  SetComFrm::WriteConfigById(QString ConfigId, QVector<QString> Configs)
 {
 	if (!OpenConfigFile())
@@ -217,7 +234,7 @@ bool  SetComFrm::WriteConfigById(QString ConfigId, QVector<QString> Configs)
 	
 	return WriteConfigFile();
 }
-
+/*打开测试*/
 bool SetComFrm::OpenConfigFile()
 {
 	QFile file( ConfigFileName );
@@ -235,7 +252,7 @@ bool SetComFrm::OpenConfigFile()
 	file.close();
 	return true;
 }
-
+/*设置字符编码*/
 bool SetComFrm::WriteConfigFile()
 {
 	QFile filexml(ConfigFileName);
@@ -252,4 +269,3 @@ bool SetComFrm::WriteConfigFile()
 	filexml.close();
 	return true;
 }
-#pragma endregion

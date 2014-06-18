@@ -3,7 +3,7 @@
 
 #include "SetComFrm.h"
 #include "ReadComConfig.h"
-
+#include "comsetdlg.h"
 int main( int argc, char ** argv )
 {
 	QApplication app( argc, argv );
@@ -26,10 +26,18 @@ int main( int argc, char ** argv )
 	SetComFrm w;
 	w.show();
 	ReadComConfig r;
-	QMap<QString, QString> map;
+	ComInfoStruct cominfo=r.ReadValeConfig();
+
 	try
 	{
-		qDebug() << r.ReadMeterConfigByNum("5")["com"];
+		qDebug() << cominfo.portName;
+		qDebug() << cominfo.baudRate;
+		qDebug() << cominfo.dataBit;
+		qDebug() << cominfo.parity;
+		qDebug() << cominfo.stopBit;
+		qDebug() << "\/";
+		QString aa = "sadfd";
+		qDebug() << aa.toInt();
 	}
 	catch (QString e)
 	{

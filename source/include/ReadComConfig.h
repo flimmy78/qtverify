@@ -4,23 +4,25 @@
 #include <QtXml/QtXml>
 
 #include "comsetdlg_global.h"
+#include "comsetdlg.h"
 
 class COMSETDLG_EXPORT ReadComConfig
 {
 public:
 	ReadComConfig();
 	~ReadComConfig();
+	
 	/************∂¡»°≈‰÷√Œƒº˛****************/
-	QMap<QString, QString> ReadValeConfig();
-	QMap<QString, QString> ReadBalanceConfig();
-	QMap<QString, QString> ReadTempConfig();
-	QMap<QString, QString> ReadStdTempConfig();
-	QMap<QString, QString> ReadMeterConfigByNum(QString MeterNum);
+	ComInfoStruct ReadValeConfig();
+	ComInfoStruct ReadBalanceConfig();
+	ComInfoStruct ReadTempConfig();
+	ComInfoStruct ReadStdTempConfig();
+	ComInfoStruct ReadMeterConfigByNum(QString MeterNum);
 	/***************************************************/
 private:
 	QString ConfigFileName;
 	QDomDocument m_doc;
-	QMap<QString, QString> ReadConfigByName(QString ConfigId);
+	ComInfoStruct ReadConfigByName(QString ConfigId);
 	bool OpenConfigFile();
 };
 
