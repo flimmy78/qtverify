@@ -1,6 +1,7 @@
 ﻿/***********************************************
 **  文件名:     SetComFrm.cpp
-**  功能:       将用户对各个设备的串口设置保存到 $RUNHOME/ini/comconfig.xml文件中
+**  功能:       将用户对各个设备的串口设置保存到 $RUNHOME/ini/comconfig.xml文件中;
+					并在窗口加载时，将配置文件中的相应配置装载到窗口中
 **  操作系统:   基于Trolltech Qt4.8.5的跨平台系统
 **  生成时间:   2014/6/15
 **  专业组:     德鲁计量软件组
@@ -23,6 +24,8 @@ SetComFrm::SetComFrm(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
 	gui.setupUi(this);
+	m_config = new ReadComConfig();
+	InstallConfigs();
 	QString path = QProcessEnvironment::systemEnvironment().value("RUNHOME");
 #ifdef Q_OS_LINUX
 	ConfigFileName = path + "\/ini\/comconfig.xml";
@@ -34,7 +37,11 @@ SetComFrm::SetComFrm(QWidget *parent, Qt::WFlags flags)
 
 SetComFrm::~SetComFrm()
 {
-
+	if (m_config)
+	{
+		delete m_config;
+		m_config=NULL;
+	}
 }
 
 
@@ -53,6 +60,106 @@ void SetComFrm::on_btnSave_clicked()
 	QMessageBox::about(NULL, "Success", "Successfully Save Settings !");
 }
 
+/***************************************************************************/
+void SetComFrm::InstallConfigs()
+{
+	InstallValeConfig();
+	InstallBalanceConfig();
+	InstallTempConfig();
+	InstallStdtmpConfig();
+	InstallMetersConfig();
+}
+
+void SetComFrm::InstallValeConfig()
+{
+	QStringList valve_index = m_config->ReadIndexByName("valve");
+	gui.comboValveSerialNum->setCurrentIndex(valve_index[0].toInt());
+	gui.comboValveBaudRate->setCurrentIndex(valve_index[1].toInt());
+	gui.comboValveBits->setCurrentIndex(valve_index[2].toInt());
+	gui.comboValveChkBit->setCurrentIndex(valve_index[3].toInt());
+	gui.comboValveEndBit->setCurrentIndex(valve_index[4].toInt());
+}
+
+void SetComFrm::InstallBalanceConfig()
+{
+	QStringList valve_index = m_config->ReadIndexByName("balance");
+	gui.comboBalSerialNum->setCurrentIndex(valve_index[0].toInt());
+	gui.comboBalBaudRate->setCurrentIndex(valve_index[1].toInt());
+	gui.comboBalBits->setCurrentIndex(valve_index[2].toInt());
+	gui.comboBalChkBit->setCurrentIndex(valve_index[3].toInt());
+	gui.comboBalEndBit->setCurrentIndex(valve_index[4].toInt());
+}
+
+void SetComFrm::InstallTempConfig()
+{
+	QStringList valve_index = m_config->ReadIndexByName("temp");
+	gui.comboTempSerialNum->setCurrentIndex(valve_index[0].toInt());
+	gui.comboTempBaudRate->setCurrentIndex(valve_index[1].toInt());
+	gui.comboTempBits->setCurrentIndex(valve_index[2].toInt());
+	gui.comboTempChkBit->setCurrentIndex(valve_index[3].toInt());
+	gui.comboTempEndBit->setCurrentIndex(valve_index[4].toInt());
+}
+
+void SetComFrm::InstallStdtmpConfig()
+{
+	QStringList valve_index = m_config->ReadIndexByName("stdtemp");
+	gui.comboStdTmpSerialNum->setCurrentIndex(valve_index[0].toInt());
+	gui.comboStdTmpBaudRate->setCurrentIndex(valve_index[1].toInt());
+	gui.comboStdTmpBits->setCurrentIndex(valve_index[2].toInt());
+	gui.comboStdTmpChkBit->setCurrentIndex(valve_index[3].toInt());
+	gui.comboStdTmpEndBit->setCurrentIndex(valve_index[4].toInt());
+}
+
+void SetComFrm::InstallMetersConfig()
+{
+	const QObjectList list=gui.gBoxMeters->children();
+	foreach(QObject *obj, list)
+	{
+		QString class_name = QString::fromAscii( obj->metaObject()->className() );
+		if (class_name == "QGroupBox")
+		{
+			InstallMeterConfigByNum((QGroupBox*)obj);
+		}
+	}
+}
+
+void SetComFrm::InstallMeterConfigByNum(QGroupBox *gBox)
+{
+	const QObjectList list=gBox->children();
+	QString config_id = "meter" + gBox->objectName().split("_")[1];
+	QStringList configs = m_config->ReadIndexByName(config_id);
+	foreach(QObject* obj, list)
+	{
+		QString class_name = QString::fromAscii( obj->metaObject()->className() );
+		if(class_name=="QComboBox")
+		{
+			QComboBox *CBox=(QComboBox*)obj;
+			QString object_name = CBox->objectName();
+
+			if (object_name .contains("SerialNum",Qt::CaseSensitive))
+			{
+				CBox->setCurrentIndex(configs[0].toInt());
+			}
+			else if (object_name .contains("BaudRate",Qt::CaseSensitive))
+			{
+				CBox->setCurrentIndex(configs[1].toInt());
+			}
+			else if (object_name .contains("Bits",Qt::CaseSensitive))
+			{
+				CBox->setCurrentIndex(configs[2].toInt());
+			}
+			else if (object_name .contains("ChkBit",Qt::CaseSensitive))
+			{
+				CBox->setCurrentIndex(configs[3].toInt());
+			}
+			else if (object_name .contains("EndBit",Qt::CaseSensitive))
+			{
+				CBox->setCurrentIndex(configs[4].toInt());
+			}
+		}
+	}
+}
+/***************************************************************************/
 /*读取界面上阀门控制的配置*/
 QVector<QString> SetComFrm::ReadValeSet()
 {
@@ -113,7 +220,7 @@ QVector<QString>  SetComFrm::ReadGBoxSet(QGroupBox *gBox)
 	QString bits ;
 	QString chk_bit ;
 	QString end_bit ;
-
+	QString sep="#SEP#";//分隔符，用于分隔界面值和索引值
 	const QObjectList list=gBox->children();
 	foreach(QObject* obj, list)
 	{
@@ -125,23 +232,23 @@ QVector<QString>  SetComFrm::ReadGBoxSet(QGroupBox *gBox)
 
 			if (bool occur = object_name .contains("SerialNum",Qt::CaseSensitive))
 			{
-				com_num = CBox->currentText();
+				com_num = CBox->currentText() + sep + QString::number(CBox->currentIndex(), 10);
 			}
 			else if (occur = object_name .contains("BaudRate",Qt::CaseSensitive))
 			{
-				baud_rate = CBox->currentText();
+				baud_rate = CBox->currentText()+ sep + QString::number(CBox->currentIndex(), 10);
 			}
 			else if (occur = object_name .contains("Bits",Qt::CaseSensitive))
 			{
-				bits = CBox->currentText();
+				bits = CBox->currentText()+ sep + QString::number(CBox->currentIndex(), 10);
 			}
 			else if (occur = object_name .contains("ChkBit",Qt::CaseSensitive))
 			{
-				chk_bit = QString::number(CBox->currentIndex(), 10);
+				chk_bit = QString::number(CBox->currentIndex(), 10)+ sep + QString::number(CBox->currentIndex(), 10);
 			}
 			else if (occur = object_name .contains("EndBit",Qt::CaseSensitive))
 			{
-				end_bit = QString::number(CBox->currentIndex(), 10);
+				end_bit = QString::number(CBox->currentIndex(), 10)+ sep + QString::number(CBox->currentIndex(), 10);
 			}
 		}
 	}

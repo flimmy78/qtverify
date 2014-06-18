@@ -6,6 +6,7 @@
 
 #include "ui_SetComFrm.h"
 #include "comsetdlg_global.h"
+#include "ReadComConfig.h"
 
 class COMSETDLG_EXPORT SetComFrm : public QWidget
 {
@@ -21,6 +22,15 @@ private:
 	Ui::SetComFrm gui;
 	QString ConfigFileName;
 	QDomDocument m_doc;
+	ReadComConfig *m_config;//读取配置信息
+
+	void InstallConfigs();
+	void InstallValeConfig();
+	void InstallBalanceConfig();
+	void InstallTempConfig();
+	void InstallStdtmpConfig();
+	void InstallMetersConfig();
+	void InstallMeterConfigByNum(QGroupBox *gbox);
 	/***********读取窗体中的配置****************/
 	QVector<QString> ReadValeSet();//读取阀门控制配置
 	QVector<QString> ReadBalanceSet();

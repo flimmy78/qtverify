@@ -106,14 +106,67 @@ ComInfoStruct ReadComConfig::ReadConfigByName(QString ConfigId)
 		}
 		n = n.nextSibling();
 	}
-
-	com_info.portName = configs["com"];
-	com_info.baudRate = configs["baud"].toInt();
-	com_info.dataBit = configs["bits"].toInt();
-	com_info.parity = configs["chkbit"].toInt();
-	com_info.stopBit = configs["endbit"].toInt();
+	QString sep="#SEP#";
+	com_info.portName = configs["com"].split(sep)[0];
+	com_info.baudRate = configs["baud"].split(sep)[0].toInt();
+	com_info.dataBit = configs["bits"].split(sep)[0].toInt();
+	com_info.parity = configs["chkbit"].split(sep)[0].toInt();
+	com_info.stopBit = configs["endbit"].split(sep)[0].toInt();
 	return com_info;
 }
+
+
+
+QStringList ReadComConfig::ReadIndexByName(QString ConfigId)
+{
+	QMap<QString, QString> configs;
+	QStringList com_info;
+	try
+	{
+		OpenConfigFile();
+	}
+	catch(QString e)
+	{
+		throw e;
+	}
+
+	QDomElement root = m_doc.documentElement();
+	if(root.tagName()!= "configs")
+		throw "file format is invalid";
+
+	QDomNode n;
+	//判断是否读取被检表配置
+	if (ConfigId.contains("meter"))
+		n = root.lastChild().firstChild();
+	else
+		n = root.firstChild();
+
+	while ( !n.isNull() )
+	{
+		QDomElement e = n.toElement();
+		if( !e.isNull())
+		{
+			if( e.tagName() == "config" && e.attribute("id") == ConfigId)//查找id号
+			{
+				QDomNodeList list = e.childNodes(); //获得元素e的所有子节点的列表(com号、波特率、校验位等)
+				for(int i=0; i<list.count(); i++) //遍历该列表
+				{
+					QDomNode node = list.at(i);
+					configs[node.nodeName()] = node.firstChild().nodeValue();
+				}
+			}      
+		}
+		n = n.nextSibling();
+	}
+	QString sep="#SEP#";
+	com_info.append(configs["com"].split(sep)[1]);
+	com_info.append(configs["baud"].split(sep)[1]);
+	com_info.append(configs["bits"].split(sep)[1]);
+	com_info.append(configs["chkbit"].split(sep)[1]);
+	com_info.append(configs["endbit"].split(sep)[1]);
+	return com_info;
+}
+
 /*打开文件测试*/
 bool ReadComConfig::OpenConfigFile()
 {
