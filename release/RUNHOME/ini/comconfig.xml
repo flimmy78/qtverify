@@ -12,7 +12,7 @@
         <baud>2400</baud>
         <bits>5</bits>
         <chkbit>0</chkbit>
-        <endbit>1</endbit>
+        <endbit>2</endbit>
     </config>
     <config id="temp">
         <com>COM1</com>
@@ -34,84 +34,84 @@
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>0</chkbit>
-            <endbit>1</endbit>
+            <endbit>0</endbit>
         </config>
         <config id="meter2">
             <com>COM1</com>
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>0</chkbit>
-            <endbit>1</endbit>
+            <endbit>0</endbit>
         </config>
         <config id="meter3">
             <com>COM1</com>
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>0</chkbit>
-            <endbit>1</endbit>
+            <endbit>0</endbit>
         </config>
         <config id="meter4">
             <com>COM1</com>
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>0</chkbit>
-            <endbit>1</endbit>
+            <endbit>0</endbit>
         </config>
         <config id="meter5">
             <com>COM1</com>
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>0</chkbit>
-            <endbit>1</endbit>
+            <endbit>0</endbit>
         </config>
         <config id="meter6">
             <com>COM1</com>
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>0</chkbit>
-            <endbit>1</endbit>
+            <endbit>0</endbit>
         </config>
         <config id="meter7">
             <com>COM1</com>
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>0</chkbit>
-            <endbit>1</endbit>
+            <endbit>0</endbit>
         </config>
         <config id="meter8">
             <com>COM1</com>
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>0</chkbit>
-            <endbit>1</endbit>
+            <endbit>0</endbit>
         </config>
         <config id="meter9">
             <com>COM1</com>
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>0</chkbit>
-            <endbit>1</endbit>
+            <endbit>0</endbit>
         </config>
         <config id="meter10">
             <com>COM1</com>
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>0</chkbit>
-            <endbit>1</endbit>
+            <endbit>0</endbit>
         </config>
         <config id="meter11">
             <com>COM1</com>
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>0</chkbit>
-            <endbit>1</endbit>
+            <endbit>0</endbit>
         </config>
         <config id="meter12">
             <com>COM1</com>
             <baud>2400</baud>
             <bits>5</bits>
             <chkbit>0</chkbit>
-            <endbit>1</endbit>
+            <endbit>0</endbit>
         </config>
         <config id="meter13">
             <com>com4</com>

@@ -141,7 +141,7 @@ QVector<QString>  SetComFrm::ReadGBoxSet(QGroupBox *gBox)
 			}
 			else if (occur = object_name .contains("EndBit",Qt::CaseSensitive))
 			{
-				end_bit = CBox->currentText();
+				end_bit = QString::number(CBox->currentIndex(), 10);
 			}
 		}
 	}

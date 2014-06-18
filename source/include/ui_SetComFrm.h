@@ -851,6 +851,7 @@ public:
         comboValveEndBit->clear();
         comboValveEndBit->insertItems(0, QStringList()
          << QApplication::translate("SetComFrm", "1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetComFrm", "1.5", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetComFrm", "2", 0, QApplication::UnicodeUTF8)
         );
         label_7->setText(QApplication::translate("SetComFrm", "\345\201\234\346\255\242\344\275\215", 0, QApplication::UnicodeUTF8));
@@ -902,6 +903,7 @@ public:
         comboBalEndBit->clear();
         comboBalEndBit->insertItems(0, QStringList()
          << QApplication::translate("SetComFrm", "1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetComFrm", "1.5", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetComFrm", "2", 0, QApplication::UnicodeUTF8)
         );
         comboBalBits->clear();
@@ -959,6 +961,7 @@ public:
         comboTempEndBit->clear();
         comboTempEndBit->insertItems(0, QStringList()
          << QApplication::translate("SetComFrm", "1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetComFrm", "1.5", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetComFrm", "2", 0, QApplication::UnicodeUTF8)
         );
         comboTempBits->clear();
@@ -1016,6 +1019,7 @@ public:
         comboStdTmpEndBit->clear();
         comboStdTmpEndBit->insertItems(0, QStringList()
          << QApplication::translate("SetComFrm", "1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetComFrm", "1.5", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetComFrm", "2", 0, QApplication::UnicodeUTF8)
         );
         comboStdTmpBits->clear();
@@ -1082,6 +1086,7 @@ public:
         comboMeterEndBit_1->clear();
         comboMeterEndBit_1->insertItems(0, QStringList()
          << QApplication::translate("SetComFrm", "1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetComFrm", "1.5", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetComFrm", "2", 0, QApplication::UnicodeUTF8)
         );
         label_27->setText(QApplication::translate("SetComFrm", "\345\201\234\346\255\242\344\275\215", 0, QApplication::UnicodeUTF8));
@@ -1139,6 +1144,7 @@ public:
         comboMeterEndBit_2->clear();
         comboMeterEndBit_2->insertItems(0, QStringList()
          << QApplication::translate("SetComFrm", "1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetComFrm", "1.5", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetComFrm", "2", 0, QApplication::UnicodeUTF8)
         );
         label_32->setText(QApplication::translate("SetComFrm", "\345\201\234\346\255\242\344\275\215", 0, QApplication::UnicodeUTF8));
@@ -1196,6 +1202,7 @@ public:
         comboMeterEndBit_3->clear();
         comboMeterEndBit_3->insertItems(0, QStringList()
          << QApplication::translate("SetComFrm", "1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetComFrm", "1.5", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetComFrm", "2", 0, QApplication::UnicodeUTF8)
         );
         label_37->setText(QApplication::translate("SetComFrm", "\345\201\234\346\255\242\344\275\215", 0, QApplication::UnicodeUTF8));
@@ -1253,6 +1260,7 @@ public:
         comboMeterEndBit_4->clear();
         comboMeterEndBit_4->insertItems(0, QStringList()
          << QApplication::translate("SetComFrm", "1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetComFrm", "1.5", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetComFrm", "2", 0, QApplication::UnicodeUTF8)
         );
         label_42->setText(QApplication::translate("SetComFrm", "\345\201\234\346\255\242\344\275\215", 0, QApplication::UnicodeUTF8));
@@ -1310,6 +1318,7 @@ public:
         comboMeterEndBit_5->clear();
         comboMeterEndBit_5->insertItems(0, QStringList()
          << QApplication::translate("SetComFrm", "1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetComFrm", "1.5", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetComFrm", "2", 0, QApplication::UnicodeUTF8)
         );
         label_47->setText(QApplication::translate("SetComFrm", "\345\201\234\346\255\242\344\275\215", 0, QApplication::UnicodeUTF8));
@@ -1367,6 +1376,7 @@ public:
         comboMeterEndBit_6->clear();
         comboMeterEndBit_6->insertItems(0, QStringList()
          << QApplication::translate("SetComFrm", "1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetComFrm", "1.5", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetComFrm", "2", 0, QApplication::UnicodeUTF8)
         );
         label_52->setText(QApplication::translate("SetComFrm", "\345\201\234\346\255\242\344\275\215", 0, QApplication::UnicodeUTF8));
@@ -1424,6 +1434,7 @@ public:
         comboMeterEndBit_7->clear();
         comboMeterEndBit_7->insertItems(0, QStringList()
          << QApplication::translate("SetComFrm", "1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetComFrm", "1.5", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetComFrm", "2", 0, QApplication::UnicodeUTF8)
         );
         label_57->setText(QApplication::translate("SetComFrm", "\345\201\234\346\255\242\344\275\215", 0, QApplication::UnicodeUTF8));
@@ -1481,6 +1492,7 @@ public:
         comboMeterEndBit_8->clear();
         comboMeterEndBit_8->insertItems(0, QStringList()
          << QApplication::translate("SetComFrm", "1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetComFrm", "1.5", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetComFrm", "2", 0, QApplication::UnicodeUTF8)
         );
         label_62->setText(QApplication::translate("SetComFrm", "\345\201\234\346\255\242\344\275\215", 0, QApplication::UnicodeUTF8));
@@ -1538,6 +1550,7 @@ public:
         comboMeterEndBit_9->clear();
         comboMeterEndBit_9->insertItems(0, QStringList()
          << QApplication::translate("SetComFrm", "1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetComFrm", "1.5", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetComFrm", "2", 0, QApplication::UnicodeUTF8)
         );
         label_67->setText(QApplication::translate("SetComFrm", "\345\201\234\346\255\242\344\275\215", 0, QApplication::UnicodeUTF8));
@@ -1595,6 +1608,7 @@ public:
         comboMeterEndBit_10->clear();
         comboMeterEndBit_10->insertItems(0, QStringList()
          << QApplication::translate("SetComFrm", "1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetComFrm", "1.5", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetComFrm", "2", 0, QApplication::UnicodeUTF8)
         );
         label_72->setText(QApplication::translate("SetComFrm", "\345\201\234\346\255\242\344\275\215", 0, QApplication::UnicodeUTF8));
@@ -1652,6 +1666,7 @@ public:
         comboMeterEndBit_11->clear();
         comboMeterEndBit_11->insertItems(0, QStringList()
          << QApplication::translate("SetComFrm", "1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetComFrm", "1.5", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetComFrm", "2", 0, QApplication::UnicodeUTF8)
         );
         label_77->setText(QApplication::translate("SetComFrm", "\345\201\234\346\255\242\344\275\215", 0, QApplication::UnicodeUTF8));
@@ -1709,6 +1724,7 @@ public:
         comboMeterEndBit_12->clear();
         comboMeterEndBit_12->insertItems(0, QStringList()
          << QApplication::translate("SetComFrm", "1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetComFrm", "1.5", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetComFrm", "2", 0, QApplication::UnicodeUTF8)
         );
         label_82->setText(QApplication::translate("SetComFrm", "\345\201\234\346\255\242\344\275\215", 0, QApplication::UnicodeUTF8));
