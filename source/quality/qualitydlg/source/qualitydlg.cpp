@@ -34,10 +34,12 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 	m_tempTimer = NULL;
 // 	initTemperatureCom(); //初始化温度采集串口
 
-	m_valveObj = NULL;
-	initValveControlCom();//打开阀门控制串口
-	m_valveWaterInStatus = false;//false：关闭状态; true:打开状态
+	m_controlObj = NULL;
+	initControlCom();//打开控制串口
+	m_valveWaterInStatus = false;//进水阀门状态 false：关闭状态; true:打开状态 
 	setBtnBackColor(ui.btnWaterIn, m_valveWaterInStatus);
+	m_Valve1Status = false; //大流量点阀门状态
+	setBtnBackColor(ui.btnWaterValve1, m_Valve1Status);
 
 	m_balanceObj = NULL;
 // 	initBalanceCom();
@@ -69,10 +71,10 @@ void QualityDlg::closeEvent( QCloseEvent * event)
 		m_tempObj = NULL;
 	}
 
-	if (m_valveObj)  //阀门控制
+	if (m_controlObj)  //阀门控制
 	{
-		delete m_valveObj;
-		m_valveObj = NULL;
+		delete m_controlObj;
+		m_controlObj = NULL;
 	}
 
 	if (m_balanceObj)  //天平采集
@@ -101,15 +103,15 @@ void QualityDlg::initTemperatureCom()
 	m_tempTimer->start(TIMEOUT_TEMPER); //周期请求温度
 }
 
-void QualityDlg::initValveControlCom()
+void QualityDlg::initControlCom()
 {
 	ComInfoStruct valveStruct = m_readComConfig->ReadValeConfig();
-	m_valveObj = new ValveComObject();
-	m_valveObj->moveToThread(&m_valveThread);
+	m_controlObj = new ControlComObject();
+	m_controlObj->moveToThread(&m_valveThread);
 	m_valveThread.start();
-	m_valveObj->openValveControlCom(&valveStruct);
+	m_controlObj->openControlCom(&valveStruct);
 
-	connect(m_valveObj, SIGNAL(valveComIsAnalysed(const bool &)), this, SLOT(slotSetValveBtnStatus(const bool &)));
+	connect(m_controlObj, SIGNAL(controlComIsAnalysed(const bool &)), this, SLOT(slotSetValveBtnStatus(const bool &)));
 }
 
 void QualityDlg::initBalanceCom()
@@ -125,12 +127,23 @@ void QualityDlg::initBalanceCom()
 
 void QualityDlg::on_btnWaterIn_clicked()
 {
-	m_valveObj->writeValveControlComBuffer(!m_valveWaterInStatus);
+	int portno = 1; //假设端口号为1
+	m_controlObj->writeControlComBuffer(portno, !m_valveWaterInStatus);
+	m_valveWaterInStatus = !m_valveWaterInStatus; //只测试用
+	setBtnBackColor(ui.btnWaterIn, m_valveWaterInStatus); //只测试用
 }
 
 void QualityDlg::on_btnWaterOut_clicked()
 {
-	m_balanceObj->writeBalanceComBuffer(); //测试用
+//	m_balanceObj->writeBalanceComBuffer(); //只为测试用 写天平串口缓冲区
+}
+
+void QualityDlg::on_btnWaterValve1_clicked()
+{
+	int portno = 2; //假设端口号为1
+	m_controlObj->writeControlComBuffer(portno, !m_Valve1Status);
+	m_Valve1Status = !m_Valve1Status; //只测试用
+	setBtnBackColor(ui.btnWaterValve1, m_Valve1Status); //只测试用
 }
 
 void QualityDlg::setBtnBackColor(QPushButton *btn, bool status)
@@ -176,7 +189,7 @@ void QualityDlg::slotFreshBalanceValue(const QString& Str)
 void QualityDlg::slotSetValveBtnStatus(const bool& status )
 {
 	m_valveWaterInStatus = status;
-	setBtnBackColor(ui.btnWaterIn, status);
+	setBtnBackColor(ui.btnWaterIn, m_valveWaterInStatus);
 }
 
 

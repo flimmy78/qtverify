@@ -258,9 +258,9 @@ public:
     QGroupBox *groupBox_2;
     QGridLayout *gridLayout_9;
     QPushButton *btnWaterIn;
-    QPushButton *btnWaterValve3;
     QPushButton *btnWaterValve1;
     QPushButton *btnWaterValve2;
+    QPushButton *btnWaterValve3;
     QPushButton *btnWaterValve4;
     QPushButton *btnWaterOut;
     QGroupBox *groupBox_7;
@@ -1431,19 +1431,6 @@ public:
 
         gridLayout_9->addWidget(btnWaterIn, 0, 0, 1, 1);
 
-        btnWaterValve3 = new QPushButton(groupBox_2);
-        btnWaterValve3->setObjectName(QString::fromUtf8("btnWaterValve3"));
-        sizePolicy2.setHeightForWidth(btnWaterValve3->sizePolicy().hasHeightForWidth());
-        btnWaterValve3->setSizePolicy(sizePolicy2);
-        btnWaterValve3->setMaximumSize(QSize(40, 100));
-        btnWaterValve3->setLayoutDirection(Qt::LeftToRight);
-        btnWaterValve3->setAutoFillBackground(false);
-        btnWaterValve3->setAutoDefault(false);
-        btnWaterValve3->setDefault(false);
-        btnWaterValve3->setFlat(false);
-
-        gridLayout_9->addWidget(btnWaterValve3, 0, 1, 1, 1);
-
         btnWaterValve1 = new QPushButton(groupBox_2);
         btnWaterValve1->setObjectName(QString::fromUtf8("btnWaterValve1"));
         sizePolicy2.setHeightForWidth(btnWaterValve1->sizePolicy().hasHeightForWidth());
@@ -1455,7 +1442,7 @@ public:
         btnWaterValve1->setDefault(false);
         btnWaterValve1->setFlat(false);
 
-        gridLayout_9->addWidget(btnWaterValve1, 0, 2, 1, 1);
+        gridLayout_9->addWidget(btnWaterValve1, 0, 1, 1, 1);
 
         btnWaterValve2 = new QPushButton(groupBox_2);
         btnWaterValve2->setObjectName(QString::fromUtf8("btnWaterValve2"));
@@ -1468,7 +1455,20 @@ public:
         btnWaterValve2->setDefault(false);
         btnWaterValve2->setFlat(false);
 
-        gridLayout_9->addWidget(btnWaterValve2, 0, 3, 1, 1);
+        gridLayout_9->addWidget(btnWaterValve2, 0, 2, 1, 1);
+
+        btnWaterValve3 = new QPushButton(groupBox_2);
+        btnWaterValve3->setObjectName(QString::fromUtf8("btnWaterValve3"));
+        sizePolicy2.setHeightForWidth(btnWaterValve3->sizePolicy().hasHeightForWidth());
+        btnWaterValve3->setSizePolicy(sizePolicy2);
+        btnWaterValve3->setMaximumSize(QSize(40, 100));
+        btnWaterValve3->setLayoutDirection(Qt::LeftToRight);
+        btnWaterValve3->setAutoFillBackground(false);
+        btnWaterValve3->setAutoDefault(false);
+        btnWaterValve3->setDefault(false);
+        btnWaterValve3->setFlat(false);
+
+        gridLayout_9->addWidget(btnWaterValve3, 0, 3, 1, 1);
 
         btnWaterValve4 = new QPushButton(groupBox_2);
         btnWaterValve4->setObjectName(QString::fromUtf8("btnWaterValve4"));
@@ -1788,15 +1788,15 @@ public:
         btnWaterIn->setText(QApplication::translate("QualityDlgClass", "\350\277\233\n"
 "\346\260\264\n"
 "\351\230\200", 0, QApplication::UnicodeUTF8));
-        btnWaterValve3->setText(QApplication::translate("QualityDlgClass", "\345\244\247\n"
-"\346\265\201\n"
-"\351\207\217\n"
-"\351\230\200", 0, QApplication::UnicodeUTF8));
-        btnWaterValve1->setText(QApplication::translate("QualityDlgClass", "\345\260\217\n"
+        btnWaterValve1->setText(QApplication::translate("QualityDlgClass", "\345\244\247\n"
 "\346\265\201\n"
 "\351\207\217\n"
 "\351\230\200", 0, QApplication::UnicodeUTF8));
         btnWaterValve2->setText(QApplication::translate("QualityDlgClass", "\344\270\255\n"
+"\346\265\201\n"
+"\351\207\217\n"
+"\351\230\200", 0, QApplication::UnicodeUTF8));
+        btnWaterValve3->setText(QApplication::translate("QualityDlgClass", "\345\260\217\n"
 "\346\265\201\n"
 "\351\207\217\n"
 "\351\230\200", 0, QApplication::UnicodeUTF8));

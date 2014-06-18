@@ -73,23 +73,24 @@ public slots:
 类名：ValveComObject
 功能：阀门控制串口类- 打开串口；设置串口参数；关闭串口；
 ****************************************/
-class ValveComObject : public ComObject
+class ControlComObject : public ComObject
 {
 	Q_OBJECT  
 
 public: 
-	ValveComObject(QObject* parent=0);
-	~ValveComObject();
+	ControlComObject(QObject* parent=0);
+	~ControlComObject();
 
-	QextSerialPort *m_valveCom;
+	QextSerialPort *m_controlCom;
+	ControlProtocol *m_controlProtocol;   //下位机控制通讯协议类对象
 
 signals:
-	void valveComIsAnalysed(const bool& status);
+	void controlComIsAnalysed(const bool& status);
 
 public slots:
-	void openValveControlCom(ComInfoStruct *comStruct);
-	void writeValveControlComBuffer(bool status);
-	void readValveControlComBuffer();
+	void openControlCom(ComInfoStruct *comStruct);
+	void writeControlComBuffer(int portno, bool status);
+	void readControlComBuffer();
 	void analyseFrame();
 };
 
@@ -108,7 +109,7 @@ public:
 
 	QextSerialPort *m_balanceCom;
 	BalanceProtocol *m_balanceProtocol;   //天平通讯协议类对象
-	bool m_sendContinue;
+	bool m_sendContinue; //只为测试用
 
 signals:
 	void balanceValueIsReady(const QString& tempStr); //成功获取天平数值

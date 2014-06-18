@@ -277,3 +277,56 @@ QString BalanceProtocol::getBalanceValue()
 {
 	return m_balValue;
 }
+
+
+/***********************************************
+类名：ControlProtocol
+功能：下位机控制协议
+************************************************/
+ControlProtocol::ControlProtocol()
+{
+	m_sendBuf = "";
+
+	m_OpenPortNo[1] = 0xE1; //打开阀门(闭合继电器)
+	m_OpenPortNo[2] = 0xE3;
+	m_OpenPortNo[3] = 0xE5;
+	m_OpenPortNo[4] = 0xE7;
+	m_OpenPortNo[5] = 0xE9;
+	m_OpenPortNo[6] = 0xEB;
+	m_OpenPortNo[7] = 0xED;
+	m_OpenPortNo[8] = 0xEF;
+
+	m_closePortNo[1] = 0xE0; //关闭阀门(断开继电器)
+	m_closePortNo[2] = 0xE2;
+	m_closePortNo[3] = 0xE4;
+	m_closePortNo[4] = 0xE6;
+	m_closePortNo[5] = 0xE8;
+	m_closePortNo[6] = 0xEA;
+	m_closePortNo[7] = 0xEC;
+	m_closePortNo[8] = 0xEE;
+}
+
+ControlProtocol::~ControlProtocol()
+{
+}
+
+void ControlProtocol::makeRelaySendBuf(int portno, bool status)
+{
+	m_sendBuf = "";
+	m_sendBuf.append(0xFF);
+	if (status) //打开阀门(闭合继电器)
+	{
+		m_sendBuf.append(m_OpenPortNo[portno]);
+	}
+	else //关闭阀门(断开继电器)
+	{
+		m_sendBuf.append(m_closePortNo[portno]);
+	}
+	UINT8 code0 = 0x00;
+	m_sendBuf.append(code0).append(code0).append(0xFE);
+}
+
+QByteArray ControlProtocol::getSendBuf()
+{
+	return m_sendBuf;
+}

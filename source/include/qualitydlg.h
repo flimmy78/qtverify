@@ -28,8 +28,9 @@ public:
 	QTimer *m_tempTimer;
 
 	ComThread m_valveThread;  //阀门控制线程
-	ValveComObject *m_valveObj;
-	bool m_valveWaterInStatus;
+	ControlComObject *m_controlObj;
+	bool m_valveWaterInStatus; //进水阀门状态
+	bool m_Valve1Status;  //大流量点阀门状态
 
 	ComThread m_balanceThread; //天平采集线程
 	BalanceComObject *m_balanceObj;
@@ -39,6 +40,7 @@ public:
 public slots:
 	void on_btnWaterIn_clicked();
 	void on_btnWaterOut_clicked();
+	void on_btnWaterValve1_clicked();
 
 	void on_btnParaSet_clicked();
 	void on_btnSave_clicked();
@@ -51,7 +53,7 @@ public slots:
 
 	void initTemperatureCom(); //温度采集串口
 
-	void initValveControlCom();//阀门控制串口 
+	void initControlCom();//阀门控制串口 
 	void slotSetValveBtnStatus(const bool& status );
 
 	void initBalanceCom();     //天平串口

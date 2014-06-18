@@ -151,47 +151,54 @@ void TempComObject::readTemperatureComBuffer()
 
 
 /*********************************************************
-类名：ValveComObject
-功能：阀门控制串口类- 打开串口；设置串口参数；关闭串口；
+类名：ControlComObject
+功能：控制串口类- 打开串口；设置串口参数；关闭串口；
 **********************************************************/
-ValveComObject::ValveComObject(QObject* parent) : ComObject(parent)
+ControlComObject::ControlComObject(QObject* parent) : ComObject(parent)
 {
-	m_valveCom = NULL;
+	m_controlCom = NULL;
+	m_controlProtocol = new ControlProtocol();
 }
 
-ValveComObject::~ValveComObject()
+ControlComObject::~ControlComObject()
 {
-	if(m_valveCom != NULL)
+	if(m_controlCom != NULL)
 	{
-		if(m_valveCom->isOpen())
+		if(m_controlCom->isOpen())
 		{
-			m_valveCom->close();
-			qDebug()<<"m_valveCom closed";
+			m_controlCom->close();
+			qDebug()<<"m_controlCom closed";
 		}
-		delete m_valveCom;
+		delete m_controlCom;
+	}
+
+	if (m_controlProtocol != NULL)
+	{
+		delete m_controlProtocol;
+		m_controlProtocol = NULL;
 	}
 }
 
-void ValveComObject::openValveControlCom(ComInfoStruct *comStruct)
+void ControlComObject::openControlCom(ComInfoStruct *comStruct)
 {
 	qDebug()<<"openValveControlCom thread:"<<QThread::currentThreadId();
 
 	QString portName = comStruct->portName;// "COM2";//获取串口名
 #ifdef Q_OS_LINUX
-	m_valveCom = new QextSerialPort("/dev/" + portName);
+	m_controlCom = new QextSerialPort("/dev/" + portName);
 #elif defined (Q_OS_WIN)
-	m_valveCom = new QextSerialPort(portName, QextSerialPort::EventDriven);
+	m_controlCom = new QextSerialPort(portName, QextSerialPort::EventDriven);
 #endif
-	connect(m_valveCom, SIGNAL(readyRead()), this, SLOT(readValveControlComBuffer()));
+	connect(m_controlCom, SIGNAL(readyRead()), this, SLOT(readControlComBuffer()));
 
-	m_valveCom->setBaudRate((BaudRateType)comStruct->baudRate);// BAUD9600); //设置波特率  
-	m_valveCom->setDataBits((DataBitsType)comStruct->dataBit);//DATA_8);   //设置数据位
-	m_valveCom->setParity((ParityType)comStruct->parity);//PAR_EVEN);   //设置校验位
-	m_valveCom->setStopBits((StopBitsType)comStruct->stopBit);//STOP_1);   //设置停止位
-	m_valveCom->setFlowControl(FLOW_OFF); //设置数据流控制  
-	m_valveCom->setTimeout(TIME_OUT);     //设置延时
+	m_controlCom->setBaudRate((BaudRateType)comStruct->baudRate);// BAUD9600); //设置波特率  
+	m_controlCom->setDataBits((DataBitsType)comStruct->dataBit);//DATA_8);   //设置数据位
+	m_controlCom->setParity((ParityType)comStruct->parity);//PAR_EVEN);   //设置校验位
+	m_controlCom->setStopBits((StopBitsType)comStruct->stopBit);//STOP_1);   //设置停止位
+	m_controlCom->setFlowControl(FLOW_OFF); //设置数据流控制  
+	m_controlCom->setTimeout(TIME_OUT);     //设置延时
 
-	if(m_valveCom->open(QIODevice::ReadWrite))
+	if(m_controlCom->open(QIODevice::ReadWrite))
 	{
 		qDebug()<<"Open SerialPort:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
 	}
@@ -202,44 +209,34 @@ void ValveComObject::openValveControlCom(ComInfoStruct *comStruct)
 	}
 }
 
-void ValveComObject::writeValveControlComBuffer(bool status)
+void ControlComObject::writeControlComBuffer(int portno, bool status)
 {
 	qDebug()<<"writeValveControlComBuffer thread:"<<QThread::currentThreadId();
 	
 	QByteArray buf;
-	if (status) //打开阀门
-	{
-		buf.append(0x01);
-	}
-	else //关闭阀门
-	{
-		buf.append(0x02);
-	}
-	m_valveCom->write(buf);
+	m_controlProtocol->makeRelaySendBuf(portno, status);
+	buf = m_controlProtocol->getSendBuf();
+	m_controlCom->write(buf);
 }
 
-void ValveComObject::readValveControlComBuffer()
+void ControlComObject::readControlComBuffer()
 {
-	QByteArray tmp = m_valveCom->readAll();
+	QByteArray tmp = m_controlCom->readAll();
 	int num = tmp.size();
-	UINT8 ch = (UINT8)tmp.at(0);
-	qDebug()<<"readValveControlComBuffer thread:"<<QThread::currentThreadId()<<", Read data is:"<<ch;
-	if (ch==0x01) //打开阀门成功
+	int m = 0;
+	for (m=0; m<num; m++)
 	{
-		emit valveComIsAnalysed(true);
-	}
-	else if (ch==0x02) //关闭阀门成功
-	{
-		emit valveComIsAnalysed(false);
+		UINT8 ch = (UINT8)tmp.at(m);
+		qDebug()<<"readValveControlComBuffer thread:"<<QThread::currentThreadId()<<", Read data is:"<<ch;
 	}
 // 	analyseFrame();
 }
 
-void ValveComObject::analyseFrame()
+void ControlComObject::analyseFrame()
 {
 	qDebug()<<"ValveComObject::analyseFrame thread:"<<QThread::currentThreadId();
 	int isOpen = 1;
-	emit valveComIsAnalysed(isOpen);
+	emit controlComIsAnalysed(isOpen);
 }
 
 
@@ -311,6 +308,7 @@ void BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
 
 }
 
+//写天平串口缓冲区 只为测试用
 void BalanceComObject::writeBalanceComBuffer()
 {
 	UINT8 wg = 0x31;
@@ -339,6 +337,7 @@ void BalanceComObject::readBalanceComBuffer()
 	}
 }
 
+//只为测试用
 void BalanceComObject::setSendContinue(bool a)
 {
 	m_sendContinue = a;

@@ -17,6 +17,21 @@
 
 #include <intsafe.h>
 #include <QtCore/QThread>
+#include <QtCore/QMap>
+
+//协议基类
+class  CProtocol
+{
+public:
+	CProtocol();
+	~CProtocol();
+
+	float calc(float a, float b);
+
+private:
+
+};
+
 
 //温度采集协议 begin
 #define DATA_WIDTH			4  //温度值字符串长度 4 
@@ -45,21 +60,6 @@ typedef struct
 	INT16 para;     //所读写参数值
 	INT16 check;	//校验码
 }Temp_Frame_Struct;
-//温度采集协议 end
-
-
-
-class  CProtocol
-{
-public:
-	CProtocol();
-	~CProtocol();
-
-	float calc(float a, float b);
-
-private:
-
-};
 
 //温度采集协议
 class PROTOCOL_EXPORT TempProtocol : public CProtocol
@@ -86,6 +86,8 @@ public slots:
 private:
 
 };
+//温度采集协议 end
+
 
 //天平协议
 class PROTOCOL_EXPORT BalanceProtocol : public CProtocol
@@ -100,6 +102,25 @@ public:
 public slots:
 	bool readBalanceComBuffer(QByteArray tmp);
 	QString getBalanceValue();
+
+private:
+};
+
+//下位机控制协议 begin
+class PROTOCOL_EXPORT ControlProtocol : public CProtocol
+{
+
+public:
+	ControlProtocol();
+	~ControlProtocol();
+
+	QByteArray m_sendBuf;
+	QMap<int, UINT8> m_closePortNo;
+	QMap<int, UINT8> m_OpenPortNo;
+
+public slots:
+	void makeRelaySendBuf(int portno, bool status);
+	QByteArray getSendBuf();
 
 private:
 };
