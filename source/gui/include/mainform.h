@@ -9,6 +9,7 @@
 #include "monsterinterface.h" //²å¼þ½Ó¿Ú
 #include "alg.h"
 #include "comsetdlg.h"
+#include "SetComFrm.h"
 #include "qualitydlg.h"
 #include "mythread.h"
 
@@ -27,7 +28,8 @@ public:
 	DbSqlite *dbsqliteobj;
 	MonsterInterface *m_monster;
 	CAlg *m_alg;
-	ComSetDlg *m_comset;
+	SetComFrm *m_setcom;
+	ComSetDlg *m_spset;
 	QualityDlg *m_qualitydlg;
 
 
@@ -35,6 +37,7 @@ public slots:
 	void on_action_spset_triggered();
 	void on_action_mysql_triggered();
 	void on_action_sqlite_triggered();
+	void on_actionComSet_triggered();
 	void on_action_queryExcel_triggered();
 	void on_actionPlugin_triggered();
 	void on_actionQualityComp_triggered();

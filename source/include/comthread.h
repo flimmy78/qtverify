@@ -15,9 +15,8 @@ public:
 	ComThread(QObject* parent=0);
 	~ComThread();
 
-
-	public slots:     
-		void slot_main();   
+public slots:     
+	void slot_main();   
 
 protected:     
 	virtual void run();     

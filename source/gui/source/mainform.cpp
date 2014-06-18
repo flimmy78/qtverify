@@ -15,7 +15,8 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	dbmysqlobj = new DbMySql();
 	dbsqliteobj = new DbSqlite();
 	m_alg = new CAlg();
-	m_comset = new ComSetDlg();
+	m_spset = new ComSetDlg();
+	m_setcom = new SetComFrm();
 	m_qualitydlg = new QualityDlg();
 
 	connect(ui.btnExit, SIGNAL(clicked()), this, SLOT(close()));
@@ -36,10 +37,16 @@ MainForm::~MainForm()
 		m_alg = NULL;
 	}
 
-	if (m_comset)
+	if (m_spset)
 	{
-		delete m_comset;
-		m_comset = NULL;
+		delete m_spset;
+		m_spset = NULL;
+	}
+
+	if (m_setcom)
+	{
+		delete m_setcom;
+		m_setcom = NULL;
 	}
 
 	if (m_qualitydlg)
@@ -51,8 +58,13 @@ MainForm::~MainForm()
 
 void MainForm::on_action_spset_triggered()
 {
+	m_spset->show();
+}
+
+void MainForm::on_actionComSet_triggered()
+{
 //  QMessageBox::warning(this, "title", "you clicked");	
-	m_comset->show();
+	m_setcom->show();
 }
 
 void MainForm::on_action_mysql_triggered()
@@ -105,7 +117,6 @@ void MainForm::on_action_queryExcel_triggered()
 
 void MainForm::on_btnSave_clicked()
 {
-	m_comset->sp_anyfunc();
 }
 
 void MainForm::on_btnPara_clicked()

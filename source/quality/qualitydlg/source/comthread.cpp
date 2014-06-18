@@ -107,9 +107,9 @@ void TempComObject::openTemperatureCom(ComInfoStruct *comStruct)
 	connect(m_tempCom, SIGNAL(readyRead()), this, SLOT(readTemperatureComBuffer()));
 
 	m_tempCom->setBaudRate((BaudRateType)comStruct->baudRate);// BAUD9600); //设置波特率  
-	m_tempCom->setDataBits((DataBitsType)comStruct->dataBit);//DATA_8);   //设置数据位
-	m_tempCom->setParity((ParityType)comStruct->parity);//PAR_EVEN);   //设置校验位
-	m_tempCom->setStopBits((StopBitsType)comStruct->stopBit);//STOP_1);   //设置停止位
+	m_tempCom->setDataBits((DataBitsType)comStruct->dataBit); //DATA_8);    //设置数据位
+	m_tempCom->setParity((ParityType)comStruct->parity);	  //PAR_EVEN);  //设置校验位
+	m_tempCom->setStopBits((StopBitsType)comStruct->stopBit); //STOP_1);    //设置停止位
 	m_tempCom->setFlowControl(FLOW_OFF); //设置数据流控制  
 	m_tempCom->setTimeout(TIME_OUT);     //设置延时
 
@@ -213,6 +213,7 @@ void ValveComObject::readValveControlComBuffer()
 	qDebug()<<"readValveControlComBuffer thread:"<<QThread::currentThreadId()<<", Read data is:"<<temp;
 	analyseFrame();
 }
+
 void ValveComObject::analyseFrame()
 {
 	qDebug()<<"ValveComObject::analyseFrame thread:"<<QThread::currentThreadId();
