@@ -32,7 +32,7 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 
 	m_tempObj = NULL;
 	m_tempTimer = NULL;
-// 	initTemperatureCom(); //初始化温度采集串口
+	initTemperatureCom(); //初始化温度采集串口
 
 	m_controlObj = NULL;
 	initControlCom();//打开控制串口
@@ -42,7 +42,7 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 	setBtnBackColor(ui.btnWaterValve1, m_Valve1Status);
 
 	m_balanceObj = NULL;
-// 	initBalanceCom();
+	initBalanceCom();
 }
 
 QualityDlg::~QualityDlg()

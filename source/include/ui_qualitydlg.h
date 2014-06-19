@@ -30,7 +30,7 @@ QT_BEGIN_NAMESPACE
 class Ui_QualityDlgClass
 {
 public:
-    QGridLayout *gridLayout_11;
+    QGridLayout *gridLayout_10;
     QGroupBox *groupBox;
     QGridLayout *gridLayout_5;
     QGroupBox *groupBox_5;
@@ -263,8 +263,8 @@ public:
     QPushButton *btnWaterValve3;
     QPushButton *btnWaterValve4;
     QPushButton *btnWaterOut;
+    QPushButton *btnWaterPump;
     QGroupBox *groupBox_7;
-    QGridLayout *gridLayout_10;
     QLabel *label_24;
     QGroupBox *groupBox_3;
     QGridLayout *gridLayout_6;
@@ -288,16 +288,15 @@ public:
     QPushButton *btnParaSet;
     QPushButton *pushButton_4;
     QPushButton *pushButton_5;
-    QPushButton *btnSave;
     QPushButton *btnExit;
 
     void setupUi(QWidget *QualityDlgClass)
     {
         if (QualityDlgClass->objectName().isEmpty())
             QualityDlgClass->setObjectName(QString::fromUtf8("QualityDlgClass"));
-        QualityDlgClass->resize(1351, 656);
-        gridLayout_11 = new QGridLayout(QualityDlgClass);
-        gridLayout_11->setObjectName(QString::fromUtf8("gridLayout_11"));
+        QualityDlgClass->resize(1135, 680);
+        gridLayout_10 = new QGridLayout(QualityDlgClass);
+        gridLayout_10->setObjectName(QString::fromUtf8("gridLayout_10"));
         groupBox = new QGroupBox(QualityDlgClass);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
@@ -446,7 +445,7 @@ public:
         gridLayout_5->addWidget(buttonGroup, 0, 0, 1, 1);
 
 
-        gridLayout_11->addWidget(groupBox, 0, 0, 1, 2);
+        gridLayout_10->addWidget(groupBox, 0, 0, 1, 2);
 
         groupBox_heatmeter = new QGroupBox(QualityDlgClass);
         groupBox_heatmeter->setObjectName(QString::fromUtf8("groupBox_heatmeter"));
@@ -858,6 +857,8 @@ public:
 
         groupBox_14 = new QGroupBox(groupBox_heatmeter);
         groupBox_14->setObjectName(QString::fromUtf8("groupBox_14"));
+        sizePolicy1.setHeightForWidth(groupBox_14->sizePolicy().hasHeightForWidth());
+        groupBox_14->setSizePolicy(sizePolicy1);
         gridLayout_16 = new QGridLayout(groupBox_14);
         gridLayout_16->setObjectName(QString::fromUtf8("gridLayout_16"));
         label_60 = new QLabel(groupBox_14);
@@ -1410,7 +1411,7 @@ public:
         gridLayout_23->addWidget(groupBox_20, 1, 5, 1, 1);
 
 
-        gridLayout_11->addWidget(groupBox_heatmeter, 1, 0, 4, 1);
+        gridLayout_10->addWidget(groupBox_heatmeter, 1, 0, 4, 1);
 
         groupBox_2 = new QGroupBox(QualityDlgClass);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
@@ -1496,8 +1497,21 @@ public:
 
         gridLayout_9->addWidget(btnWaterOut, 0, 5, 1, 1);
 
+        btnWaterPump = new QPushButton(groupBox_2);
+        btnWaterPump->setObjectName(QString::fromUtf8("btnWaterPump"));
+        sizePolicy2.setHeightForWidth(btnWaterPump->sizePolicy().hasHeightForWidth());
+        btnWaterPump->setSizePolicy(sizePolicy2);
+        btnWaterPump->setMaximumSize(QSize(40, 100));
+        btnWaterPump->setLayoutDirection(Qt::LeftToRight);
+        btnWaterPump->setAutoFillBackground(false);
+        btnWaterPump->setAutoDefault(false);
+        btnWaterPump->setDefault(false);
+        btnWaterPump->setFlat(false);
 
-        gridLayout_11->addWidget(groupBox_2, 1, 1, 1, 1);
+        gridLayout_9->addWidget(btnWaterPump, 0, 6, 1, 1);
+
+
+        gridLayout_10->addWidget(groupBox_2, 1, 1, 1, 1);
 
         groupBox_7 = new QGroupBox(QualityDlgClass);
         groupBox_7->setObjectName(QString::fromUtf8("groupBox_7"));
@@ -1506,20 +1520,16 @@ public:
         sizePolicy3.setVerticalStretch(0);
         sizePolicy3.setHeightForWidth(groupBox_7->sizePolicy().hasHeightForWidth());
         groupBox_7->setSizePolicy(sizePolicy3);
-        gridLayout_10 = new QGridLayout(groupBox_7);
-        gridLayout_10->setObjectName(QString::fromUtf8("gridLayout_10"));
         label_24 = new QLabel(groupBox_7);
         label_24->setObjectName(QString::fromUtf8("label_24"));
+        label_24->setGeometry(QRect(22, 22, 251, 201));
         QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy4.setHorizontalStretch(0);
         sizePolicy4.setVerticalStretch(0);
         sizePolicy4.setHeightForWidth(label_24->sizePolicy().hasHeightForWidth());
         label_24->setSizePolicy(sizePolicy4);
 
-        gridLayout_10->addWidget(label_24, 0, 0, 1, 1);
-
-
-        gridLayout_11->addWidget(groupBox_7, 2, 1, 1, 1);
+        gridLayout_10->addWidget(groupBox_7, 2, 1, 1, 1);
 
         groupBox_3 = new QGroupBox(QualityDlgClass);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
@@ -1621,7 +1631,7 @@ public:
         gridLayout_6->addWidget(label_17, 4, 2, 1, 1);
 
 
-        gridLayout_11->addWidget(groupBox_3, 3, 1, 1, 1);
+        gridLayout_10->addWidget(groupBox_3, 3, 1, 1, 1);
 
         groupBox_8 = new QGroupBox(QualityDlgClass);
         groupBox_8->setObjectName(QString::fromUtf8("groupBox_8"));
@@ -1647,18 +1657,13 @@ public:
 
         gridLayout_8->addWidget(pushButton_5, 0, 2, 1, 1);
 
-        btnSave = new QPushButton(groupBox_8);
-        btnSave->setObjectName(QString::fromUtf8("btnSave"));
-
-        gridLayout_8->addWidget(btnSave, 0, 3, 1, 1);
-
         btnExit = new QPushButton(groupBox_8);
         btnExit->setObjectName(QString::fromUtf8("btnExit"));
 
-        gridLayout_8->addWidget(btnExit, 0, 4, 1, 1);
+        gridLayout_8->addWidget(btnExit, 0, 3, 1, 1);
 
 
-        gridLayout_11->addWidget(groupBox_8, 4, 1, 1, 1);
+        gridLayout_10->addWidget(groupBox_8, 4, 1, 1, 1);
 
 
         retranslateUi(QualityDlgClass);
@@ -1808,6 +1813,8 @@ public:
         btnWaterOut->setText(QApplication::translate("QualityDlgClass", "\346\224\276\n"
 "\346\260\264\n"
 "\351\230\200", 0, QApplication::UnicodeUTF8));
+        btnWaterPump->setText(QApplication::translate("QualityDlgClass", "\346\260\264\n"
+"\346\263\265", 0, QApplication::UnicodeUTF8));
         groupBox_7->setTitle(QApplication::translate("QualityDlgClass", "\346\265\201\347\250\213\346\217\220\347\244\272", 0, QApplication::UnicodeUTF8));
         label_24->setText(QApplication::translate("QualityDlgClass", "\346\265\201\347\250\213\357\274\232", 0, QApplication::UnicodeUTF8));
         groupBox_3->setTitle(QApplication::translate("QualityDlgClass", "\346\225\260\346\215\256\351\207\207\351\233\206", 0, QApplication::UnicodeUTF8));
@@ -1825,7 +1832,6 @@ public:
         btnParaSet->setText(QApplication::translate("QualityDlgClass", "\345\217\202\346\225\260", 0, QApplication::UnicodeUTF8));
         pushButton_4->setText(QApplication::translate("QualityDlgClass", "\346\216\222\346\260\224", 0, QApplication::UnicodeUTF8));
         pushButton_5->setText(QApplication::translate("QualityDlgClass", "\345\274\200\345\247\213", 0, QApplication::UnicodeUTF8));
-        btnSave->setText(QApplication::translate("QualityDlgClass", "\344\277\235\345\255\230", 0, QApplication::UnicodeUTF8));
         btnExit->setText(QApplication::translate("QualityDlgClass", "\351\200\200\345\207\272", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

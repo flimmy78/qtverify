@@ -202,6 +202,7 @@
     <ClCompile Include="release\qrc_qtverify.cpp">
       <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">true</ExcludedFromBuild>
     </ClCompile>
+    <CustomBuild Include="f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qtverify\obj\qtverify.res" />
     <ClInclude Include="f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qtverify\ui\ui_dbmysql.h" />
     <ClInclude Include="f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qtverify\ui\ui_dbsqlite.h" />
     <ClInclude Include="f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qtverify\ui\ui_mainform.h" />
@@ -300,6 +301,9 @@
     <None Include="images\tree_node_open.png" />
     <None Include="images\tree_top_close.png" />
     <None Include="images\tree_top_open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="qtverify.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

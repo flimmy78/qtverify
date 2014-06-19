@@ -1,9 +1,9 @@
 
 TEMPLATE	= lib
 TARGET    = qualitydlg
-CONFIG += qt dll debug qtestlib
+CONFIG += qt dll debug qtestlib thread
 
-DEFINES	+= QUALITYDLG_DLL
+DEFINES	+= QUALITYDLG_DLL QT_THREAD_SUPPORT
 
 QMAKE_LIBDIR +=  ./           \
         	     $(RUNHOME)/lib \

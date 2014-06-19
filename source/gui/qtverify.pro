@@ -5,7 +5,7 @@
 TEMPLATE = app
 CONFIG  += qt warn_on debug console axcontainer
 TARGET = qtverify
-#RC_FILE = qtverify.rc
+RC_FILE = qtverify.rc
 
 QT += sql
 
