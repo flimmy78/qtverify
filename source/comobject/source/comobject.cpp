@@ -16,7 +16,7 @@
 #include <QtCore/QDebug>
 #include <QtTest/QTest>
 
-#include "comthread.h"
+#include "comobject.h"
 
 /************************************************
 类名：ComThread
@@ -137,7 +137,7 @@ void TempComObject::writeTemperatureComBuffer()
 void TempComObject::readTemperatureComBuffer()
 {
 	QByteArray tmp = m_tempCom->readAll();
- 	qDebug()<<"read TemperatureComBuffer thread:"<<QThread::currentThreadId()<<",data is:"<<tmp;
+ 	qDebug()<<"read TemperatureComBuffer thread:"<<QThread::currentThreadId();
 
 	bool ret = false;
 	ret = m_tempProtocol->readTemperComBuffer(tmp); //通讯协议接口
@@ -157,6 +157,7 @@ void TempComObject::readTemperatureComBuffer()
 ControlComObject::ControlComObject(QObject* parent) : ComObject(parent)
 {
 	m_controlCom = NULL;
+	m_controlProtocol = NULL;
 	m_controlProtocol = new ControlProtocol();
 }
 

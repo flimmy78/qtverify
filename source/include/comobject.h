@@ -1,5 +1,20 @@
-#ifndef	COMTHREAD_H
-#define COMTHREAD_H
+#ifndef	COMOBJECT_H
+#define COMOBJECT_H
+
+#ifdef COMOBJECT_DLL
+#  ifdef WIN32
+#  define COMOBJECT_EXPORT __declspec(dllexport)
+#  else
+#  define COMOBJECT_EXPORT
+#  endif
+#else
+#  ifdef WIN32
+#  define COMOBJECT_EXPORT __declspec(dllimport)
+#  else
+#  define COMOBJECT_EXPORT
+#  endif
+#endif
+
 
 #include <QtCore/QThread>  
 #include <QtCore/QObject> 
@@ -7,7 +22,7 @@
 #include "protocol.h"
 #include "comsetdlg.h"
 
-class ComThread : public QThread 
+class COMOBJECT_EXPORT ComThread : public QThread 
 {      
 	Q_OBJECT 
 
@@ -28,7 +43,7 @@ protected:
 
 #define TIME_OUT	10		//延时，TIME_OUT是串口读写的延时
 
-class ComObject : public QObject 
+class COMOBJECT_EXPORT ComObject : public QObject 
 {       
 	Q_OBJECT  
 
@@ -47,7 +62,7 @@ public slots:
 类名：TempComObject
 功能：温度串口类- 打开串口；设置串口参数；关闭串口；
 ****************************************/
-class TempComObject : public ComObject
+class COMOBJECT_EXPORT TempComObject : public ComObject
 {
 	Q_OBJECT  
 
@@ -73,7 +88,7 @@ public slots:
 类名：ValveComObject
 功能：阀门控制串口类- 打开串口；设置串口参数；关闭串口；
 ****************************************/
-class ControlComObject : public ComObject
+class COMOBJECT_EXPORT ControlComObject : public ComObject
 {
 	Q_OBJECT  
 
@@ -99,7 +114,7 @@ public slots:
 类名：BalanceComObject
 功能：天平串口类- 打开串口；设置串口参数；关闭串口；
 ****************************************/
-class BalanceComObject : public ComObject
+class COMOBJECT_EXPORT BalanceComObject : public ComObject
 {
 	Q_OBJECT  
 
@@ -122,4 +137,4 @@ public slots:
 };
 
 
-#endif //COMTHREAD_H
+#endif //COMOBJECT_H

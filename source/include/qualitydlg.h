@@ -6,7 +6,7 @@
 #include "qualitydlg_global.h"
 #include "ui_qualitydlg.h"
 #include "parasetdlg.h"
-#include "comthread.h"
+#include "comobject.h"
 #include "ReadComConfig.h"
 
 #define TIMEOUT_TEMPER  500 //每0.5秒钟请求一次温度值
@@ -43,7 +43,7 @@ public slots:
 	void on_btnWaterValve1_clicked();
 
 	void on_btnParaSet_clicked();
-	void on_btnSave_clicked();
+	void on_btnStart_clicked();
 	void on_btnExit_clicked();
 
 	void setBtnBackColor(QPushButton *btn, bool status);

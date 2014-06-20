@@ -35,14 +35,14 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 	initTemperatureCom(); //初始化温度采集串口
 
 	m_controlObj = NULL;
-	initControlCom();//打开控制串口
+// 	initControlCom();//打开控制串口
 	m_valveWaterInStatus = false;//进水阀门状态 false：关闭状态; true:打开状态 
 	setBtnBackColor(ui.btnWaterIn, m_valveWaterInStatus);
 	m_Valve1Status = false; //大流量点阀门状态
 	setBtnBackColor(ui.btnWaterValve1, m_Valve1Status);
 
 	m_balanceObj = NULL;
-	initBalanceCom();
+// 	initBalanceCom();
 }
 
 QualityDlg::~QualityDlg()
@@ -135,7 +135,7 @@ void QualityDlg::on_btnWaterIn_clicked()
 
 void QualityDlg::on_btnWaterOut_clicked()
 {
-//	m_balanceObj->writeBalanceComBuffer(); //只为测试用 写天平串口缓冲区
+	m_balanceObj->writeBalanceComBuffer(); //临时调试用(模拟天平连续发送数据) 写天平串口缓冲区
 }
 
 void QualityDlg::on_btnWaterValve1_clicked()
@@ -148,13 +148,15 @@ void QualityDlg::on_btnWaterValve1_clicked()
 
 void QualityDlg::setBtnBackColor(QPushButton *btn, bool status)
 {
-	if (status)
+	if (status) //打开
 	{
 		btn->setStyleSheet("background:red;border:0px;");  
+		btn->setIcon(QIcon("open.png"));
 	}
 	else
 	{
 		btn->setStyleSheet("background:green;border:0px;");  
+		btn->setIcon(QIcon("close.png"));
 	}
 }
 
@@ -163,7 +165,7 @@ void QualityDlg::on_btnParaSet_clicked()
 	m_paraset->show();
 }
 
-void QualityDlg::on_btnSave_clicked()
+void QualityDlg::on_btnStart_clicked()
 {
 	m_balanceObj->setSendContinue(false); //临时调试用(模拟天平连续发送数据) 停止连续发送
 }

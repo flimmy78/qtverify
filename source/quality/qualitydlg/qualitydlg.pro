@@ -9,7 +9,7 @@ QMAKE_LIBDIR +=  ./           \
         	     $(RUNHOME)/lib \
 	             $(RUNHOME)/bin 
 	            
-LIBS +=	-lQt3Supportd4 -lQt3Support4 -lprotocol -lcomsetdlg
+LIBS +=	-lQt3Supportd4 -lQt3Support4 -lprotocol -lcomsetdlg -lcomobject
 
 DESTDIR = $(RUNHOME)\tmp\quality\qualitydlg\obj
 #MOC_DIR = $(RUNHOME)/tmp/quality/qualitydlg/moc
@@ -18,28 +18,15 @@ UI_DIR = $(RUNHOME_INC)/include
 
 INCLUDEPATH  	=    ./      \
 									 include \ 
-									 $$(RUNHOME_INC)/include \
+									 $$(RUNHOME_INC)/include	\
 									 $$(RUNHOME_INC)/include/qextserial
 
 HEADERS	+= $$(RUNHOME_INC)/include/qualitydlg_global.h \
            $$(RUNHOME_INC)/include/qualitydlg.h \
            $$(RUNHOME_INC)/include/parasetdlg.h \ 
-        	 $$(RUNHOME_INC)/include/qextserial/qextserialport_global.h  \
-        	 $$(RUNHOME_INC)/include/qextserial/qextserialport.h	\
-        	 $$(RUNHOME_INC)/include/comthread.h
 	
 SOURCES	+= source/qualitydlg.cpp  \
 					 source/parasetdlg.cpp  \
-	         $$(RUNHOME_INC)/include/qextserial/qextserialport.cpp \
-	         source/comthread.cpp
-
-win32 {
-     SOURCES += $$(RUNHOME_INC)/include/qextserial/qextserialport_win.cpp
-}
-
-unix {
-     SOURCES += $$(RUNHOME_INC)/include/qextserial/qextserialport_unix.cpp
-}
 
 					 
 FORMS	+= ui/qualitydlg.ui \
