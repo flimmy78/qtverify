@@ -100,11 +100,13 @@ public:
 	ControlProtocol *m_controlProtocol;   //下位机控制通讯协议类对象
 
 signals:
-	void controlComIsAnalysed(const bool& status);
+	void controlRelayIsOk();
+	void controlRegulateIsOk();
 
 public slots:
 	void openControlCom(ComInfoStruct *comStruct);
-	void writeControlComBuffer(int portno, bool status);
+	void makeRelaySendBuf(UINT8 portno, bool status);
+	void makeRegulateSendBuf(UINT8 portno, int degree);
 	void readControlComBuffer();
 	void analyseFrame();
 };

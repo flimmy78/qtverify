@@ -182,9 +182,9 @@ ControlComObject::~ControlComObject()
 
 void ControlComObject::openControlCom(ComInfoStruct *comStruct)
 {
-	qDebug()<<"openValveControlCom thread:"<<QThread::currentThreadId();
+	qDebug()<<"openControlCom thread:"<<QThread::currentThreadId();
 
-	QString portName = comStruct->portName;// "COM2";//获取串口名
+	QString portName = comStruct->portName; //获取串口名
 #ifdef Q_OS_LINUX
 	m_controlCom = new QextSerialPort("/dev/" + portName);
 #elif defined (Q_OS_WIN)
@@ -192,10 +192,10 @@ void ControlComObject::openControlCom(ComInfoStruct *comStruct)
 #endif
 	connect(m_controlCom, SIGNAL(readyRead()), this, SLOT(readControlComBuffer()));
 
-	m_controlCom->setBaudRate((BaudRateType)comStruct->baudRate);// BAUD9600); //设置波特率  
-	m_controlCom->setDataBits((DataBitsType)comStruct->dataBit);//DATA_8);   //设置数据位
-	m_controlCom->setParity((ParityType)comStruct->parity);//PAR_EVEN);   //设置校验位
-	m_controlCom->setStopBits((StopBitsType)comStruct->stopBit);//STOP_1);   //设置停止位
+	m_controlCom->setBaudRate((BaudRateType)comStruct->baudRate); //设置波特率  
+	m_controlCom->setDataBits((DataBitsType)comStruct->dataBit);  //设置数据位
+	m_controlCom->setParity((ParityType)comStruct->parity);       //设置校验位
+	m_controlCom->setStopBits((StopBitsType)comStruct->stopBit);  //设置停止位
 	m_controlCom->setFlowControl(FLOW_OFF); //设置数据流控制  
 	m_controlCom->setTimeout(TIME_OUT);     //设置延时
 
@@ -210,9 +210,10 @@ void ControlComObject::openControlCom(ComInfoStruct *comStruct)
 	}
 }
 
-void ControlComObject::writeControlComBuffer(int portno, bool status)
+//继电器控制
+void ControlComObject::makeRelaySendBuf(UINT8 portno, bool status)
 {
-	qDebug()<<"writeValveControlComBuffer thread:"<<QThread::currentThreadId();
+	qDebug()<<"makeRelaySendBuf thread:"<<QThread::currentThreadId();
 	
 	QByteArray buf;
 	m_controlProtocol->makeRelaySendBuf(portno, status);
@@ -220,24 +221,51 @@ void ControlComObject::writeControlComBuffer(int portno, bool status)
 	m_controlCom->write(buf);
 }
 
+//调节阀开度
+void ControlComObject::makeRegulateSendBuf(UINT8 portno, int degree)
+{
+	QByteArray buf;
+	m_controlProtocol->makeRegulateSendBuf(portno, degree);
+	buf = m_controlProtocol->getSendBuf();
+	m_controlCom->write(buf);
+}
+
 void ControlComObject::readControlComBuffer()
 {
+// 	qDebug()<<"readControlComBuffer ControlComObject thread:"<<QThread::currentThreadId();
+	int num = m_controlCom->bytesAvailable();
+	if (num < 7) //与协议帧长度有关
+	{
+		return;
+	}
 	QByteArray tmp = m_controlCom->readAll();
-	int num = tmp.size();
+	UINT8 ret = 0x00;
+	ret = m_controlProtocol->readControlComBuffer(tmp);
+	if (ret == FUNC_RELAY)
+	{
+		qDebug()<<"controlRelayIsOk"<<"\n";
+		emit controlRelayIsOk();
+	}
+	if (ret == FUNC_REGULATE)
+	{
+		qDebug()<<"controlRegulateIsOk"<<"\n";
+		emit controlRegulateIsOk();
+	}
+
+/*	int num = tmp.size();
 	int m = 0;
 	for (m=0; m<num; m++)
 	{
 		UINT8 ch = (UINT8)tmp.at(m);
 		qDebug()<<"readValveControlComBuffer thread:"<<QThread::currentThreadId()<<", Read data is:"<<ch;
-	}
+	}*/
 // 	analyseFrame();
 }
 
 void ControlComObject::analyseFrame()
 {
 	qDebug()<<"ValveComObject::analyseFrame thread:"<<QThread::currentThreadId();
-	int isOpen = 1;
-	emit controlComIsAnalysed(isOpen);
+	emit controlRelayIsOk();
 }
 
 

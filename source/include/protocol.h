@@ -107,6 +107,31 @@ private:
 };
 
 //下位机控制协议 begin
+#define		START_CODE		0x69		//起始码
+#define		END_CODE		0x16		//结束码
+#define		FUNC_RELAY		0x01		//功能码-继电器控制
+#define		FUNC_REGULATE   0x02		//功能码-调节阀控制
+#define     FUNC_QUERY		0x03		//功能码-查询
+
+
+#define START_STATE		0x00
+#define FUNC_STATE		0x01
+#define DATA_STATE		0x02
+#define CS_STATE        0x03
+#define END_STATE       0x04
+
+#define		DATA_LENGTH			55  //数据区字节个数(最多55个)
+#define		RELAY_DATA_LENGTH	5	//继电器控制 数据区字节个数
+#define		REGU_DATA_LENGTH	3   //调节阀控制 数据区字节个数
+typedef struct  
+{
+	UINT8 startCode;	//起始码
+	UINT8 funcCode;		//功能码
+	UINT8 data[DATA_LENGTH];  //数据区
+	UINT8 check;	    //校验码
+	UINT8 endCode;      //结束码
+}Con_Frame_Struct;
+
 class PROTOCOL_EXPORT ControlProtocol : public CProtocol
 {
 
@@ -115,12 +140,16 @@ public:
 	~ControlProtocol();
 
 	QByteArray m_sendBuf;
-	QMap<int, UINT8> m_closePortNo;
-	QMap<int, UINT8> m_OpenPortNo;
+	Con_Frame_Struct *m_conFrame;
 
 public slots:
-	void makeRelaySendBuf(int portno, bool status);
+	void makeRelaySendBuf(UINT8 portno, bool status);
+	void makeRegulateSendBuf(UINT8 portno, int degree);
+	void makeQuerySendBuf();
 	QByteArray getSendBuf();
+	UINT8 readControlComBuffer(QByteArray tmp);
+	UINT8 CountCheck(Con_Frame_Struct *pFrame);
+	void analyseFrame();
 
 private:
 };

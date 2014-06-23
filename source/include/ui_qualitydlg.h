@@ -15,6 +15,7 @@
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
+#include <QtGui/QDial>
 #include <QtGui/QGridLayout>
 #include <QtGui/QGroupBox>
 #include <QtGui/QHBoxLayout>
@@ -23,6 +24,8 @@
 #include <QtGui/QLineEdit>
 #include <QtGui/QPushButton>
 #include <QtGui/QRadioButton>
+#include <QtGui/QSlider>
+#include <QtGui/QSpinBox>
 #include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -30,7 +33,7 @@ QT_BEGIN_NAMESPACE
 class Ui_QualityDlgClass
 {
 public:
-    QGridLayout *gridLayout_10;
+    QGridLayout *gridLayout_11;
     QGroupBox *groupBox;
     QGridLayout *gridLayout_5;
     QGroupBox *groupBox_5;
@@ -265,7 +268,13 @@ public:
     QPushButton *btnWaterOut;
     QPushButton *btnWaterPump;
     QGroupBox *groupBox_7;
+    QGridLayout *gridLayout_10;
     QLabel *label_24;
+    QSlider *verticalSlider1;
+    QDial *dial;
+    QHBoxLayout *horizontalLayout_3;
+    QSpinBox *spinBox1;
+    QPushButton *btnRegulate1;
     QGroupBox *groupBox_3;
     QGridLayout *gridLayout_6;
     QLabel *label_8;
@@ -295,8 +304,8 @@ public:
         if (QualityDlgClass->objectName().isEmpty())
             QualityDlgClass->setObjectName(QString::fromUtf8("QualityDlgClass"));
         QualityDlgClass->resize(1135, 680);
-        gridLayout_10 = new QGridLayout(QualityDlgClass);
-        gridLayout_10->setObjectName(QString::fromUtf8("gridLayout_10"));
+        gridLayout_11 = new QGridLayout(QualityDlgClass);
+        gridLayout_11->setObjectName(QString::fromUtf8("gridLayout_11"));
         groupBox = new QGroupBox(QualityDlgClass);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
@@ -445,7 +454,7 @@ public:
         gridLayout_5->addWidget(buttonGroup, 0, 0, 1, 1);
 
 
-        gridLayout_10->addWidget(groupBox, 0, 0, 1, 2);
+        gridLayout_11->addWidget(groupBox, 0, 0, 1, 4);
 
         groupBox_heatmeter = new QGroupBox(QualityDlgClass);
         groupBox_heatmeter->setObjectName(QString::fromUtf8("groupBox_heatmeter"));
@@ -1411,7 +1420,7 @@ public:
         gridLayout_23->addWidget(groupBox_20, 1, 5, 1, 1);
 
 
-        gridLayout_10->addWidget(groupBox_heatmeter, 1, 0, 4, 1);
+        gridLayout_11->addWidget(groupBox_heatmeter, 1, 0, 5, 1);
 
         groupBox_2 = new QGroupBox(QualityDlgClass);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
@@ -1511,7 +1520,7 @@ public:
         gridLayout_9->addWidget(btnWaterPump, 0, 6, 1, 1);
 
 
-        gridLayout_10->addWidget(groupBox_2, 1, 1, 1, 1);
+        gridLayout_11->addWidget(groupBox_2, 1, 1, 1, 3);
 
         groupBox_7 = new QGroupBox(QualityDlgClass);
         groupBox_7->setObjectName(QString::fromUtf8("groupBox_7"));
@@ -1520,16 +1529,49 @@ public:
         sizePolicy3.setVerticalStretch(0);
         sizePolicy3.setHeightForWidth(groupBox_7->sizePolicy().hasHeightForWidth());
         groupBox_7->setSizePolicy(sizePolicy3);
+        gridLayout_10 = new QGridLayout(groupBox_7);
+        gridLayout_10->setObjectName(QString::fromUtf8("gridLayout_10"));
         label_24 = new QLabel(groupBox_7);
         label_24->setObjectName(QString::fromUtf8("label_24"));
-        label_24->setGeometry(QRect(22, 22, 251, 201));
         QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy4.setHorizontalStretch(0);
         sizePolicy4.setVerticalStretch(0);
         sizePolicy4.setHeightForWidth(label_24->sizePolicy().hasHeightForWidth());
         label_24->setSizePolicy(sizePolicy4);
 
-        gridLayout_10->addWidget(groupBox_7, 2, 1, 1, 1);
+        gridLayout_10->addWidget(label_24, 0, 0, 1, 1);
+
+
+        gridLayout_11->addWidget(groupBox_7, 2, 1, 1, 2);
+
+        verticalSlider1 = new QSlider(QualityDlgClass);
+        verticalSlider1->setObjectName(QString::fromUtf8("verticalSlider1"));
+        verticalSlider1->setMaximum(100);
+        verticalSlider1->setOrientation(Qt::Vertical);
+
+        gridLayout_11->addWidget(verticalSlider1, 3, 1, 1, 1);
+
+        dial = new QDial(QualityDlgClass);
+        dial->setObjectName(QString::fromUtf8("dial"));
+        dial->setMaximum(100);
+
+        gridLayout_11->addWidget(dial, 3, 2, 1, 1);
+
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        spinBox1 = new QSpinBox(QualityDlgClass);
+        spinBox1->setObjectName(QString::fromUtf8("spinBox1"));
+        spinBox1->setMaximum(100);
+
+        horizontalLayout_3->addWidget(spinBox1);
+
+        btnRegulate1 = new QPushButton(QualityDlgClass);
+        btnRegulate1->setObjectName(QString::fromUtf8("btnRegulate1"));
+
+        horizontalLayout_3->addWidget(btnRegulate1);
+
+
+        gridLayout_11->addLayout(horizontalLayout_3, 3, 3, 1, 1);
 
         groupBox_3 = new QGroupBox(QualityDlgClass);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
@@ -1631,7 +1673,7 @@ public:
         gridLayout_6->addWidget(label_17, 4, 2, 1, 1);
 
 
-        gridLayout_10->addWidget(groupBox_3, 3, 1, 1, 1);
+        gridLayout_11->addWidget(groupBox_3, 4, 1, 1, 3);
 
         groupBox_8 = new QGroupBox(QualityDlgClass);
         groupBox_8->setObjectName(QString::fromUtf8("groupBox_8"));
@@ -1663,7 +1705,7 @@ public:
         gridLayout_8->addWidget(btnExit, 0, 3, 1, 1);
 
 
-        gridLayout_10->addWidget(groupBox_8, 4, 1, 1, 1);
+        gridLayout_11->addWidget(groupBox_8, 5, 1, 1, 3);
 
 
         retranslateUi(QualityDlgClass);
@@ -1817,6 +1859,7 @@ public:
 "\346\263\265", 0, QApplication::UnicodeUTF8));
         groupBox_7->setTitle(QApplication::translate("QualityDlgClass", "\346\265\201\347\250\213\346\217\220\347\244\272", 0, QApplication::UnicodeUTF8));
         label_24->setText(QApplication::translate("QualityDlgClass", "\346\265\201\347\250\213\357\274\232", 0, QApplication::UnicodeUTF8));
+        btnRegulate1->setText(QApplication::translate("QualityDlgClass", "\350\260\203\350\212\202\351\230\2001", 0, QApplication::UnicodeUTF8));
         groupBox_3->setTitle(QApplication::translate("QualityDlgClass", "\346\225\260\346\215\256\351\207\207\351\233\206", 0, QApplication::UnicodeUTF8));
         label_8->setText(QApplication::translate("QualityDlgClass", "\345\244\247\345\244\251\345\271\263  ", 0, QApplication::UnicodeUTF8));
         label_13->setText(QApplication::translate("QualityDlgClass", "kg", 0, QApplication::UnicodeUTF8));

@@ -42,6 +42,8 @@ public slots:
 	void on_btnWaterOut_clicked();
 	void on_btnWaterValve1_clicked();
 
+	void on_btnRegulate1_clicked();
+
 	void on_btnParaSet_clicked();
 	void on_btnStart_clicked();
 	void on_btnExit_clicked();
@@ -54,7 +56,8 @@ public slots:
 	void initTemperatureCom(); //温度采集串口
 
 	void initControlCom();//阀门控制串口 
-	void slotSetValveBtnStatus(const bool& status );
+	void slotSetValveBtnStatus(); //继电器返回成功对应的槽函数
+	void slotSetRegulateOk();
 
 	void initBalanceCom();     //天平串口
 private:

@@ -11,9 +11,11 @@
 **  说明:
 **  更新记录:   2014-6-16增加温度采集协议（厦门宇电AI702巡检仪）
                 2014-6-17增加天平协议(赛多利斯)
+				2014-6-23增加控制板新协议
 ***********************************************/
 
 #include <QtCore/QDebug>
+#include <math.h>
 #include "protocol.h"
 
 CProtocol::CProtocol()
@@ -287,46 +289,230 @@ ControlProtocol::ControlProtocol()
 {
 	m_sendBuf = "";
 
-	m_OpenPortNo[1] = 0xE1; //打开阀门(闭合继电器)
-	m_OpenPortNo[2] = 0xE3;
-	m_OpenPortNo[3] = 0xE5;
-	m_OpenPortNo[4] = 0xE7;
-	m_OpenPortNo[5] = 0xE9;
-	m_OpenPortNo[6] = 0xEB;
-	m_OpenPortNo[7] = 0xED;
-	m_OpenPortNo[8] = 0xEF;
-
-	m_closePortNo[1] = 0xE0; //关闭阀门(断开继电器)
-	m_closePortNo[2] = 0xE2;
-	m_closePortNo[3] = 0xE4;
-	m_closePortNo[4] = 0xE6;
-	m_closePortNo[5] = 0xE8;
-	m_closePortNo[6] = 0xEA;
-	m_closePortNo[7] = 0xEC;
-	m_closePortNo[8] = 0xEE;
+	m_conFrame = new Con_Frame_Struct();
+	memset(m_conFrame, 0, sizeof(Con_Frame_Struct));
 }
 
 ControlProtocol::~ControlProtocol()
 {
 }
 
-void ControlProtocol::makeRelaySendBuf(int portno, bool status)
+/************************************************************************
+	新控制板协议：继电器控制 同时只控制1路                                       
+	status: true(开关闭合)；false(开关打开)
+************************************************************************/
+void ControlProtocol::makeRelaySendBuf(UINT8 portno, bool status)
 {
 	m_sendBuf = "";
-	m_sendBuf.append(0xFF);
-	if (status) //打开阀门(闭合继电器)
-	{
-		m_sendBuf.append(m_OpenPortNo[portno]);
-	}
-	else //关闭阀门(断开继电器)
-	{
-		m_sendBuf.append(m_closePortNo[portno]);
-	}
+	m_sendBuf.append(START_CODE).append(FUNC_RELAY);
+	UINT8 relay_num = 0x01; //控制的继电器数量 1路
+	m_sendBuf.append(relay_num);
+	m_sendBuf.append(portno); //第protno路继电器
+	float a = 2;
 	UINT8 code0 = 0x00;
-	m_sendBuf.append(code0).append(code0).append(0xFE);
+	UINT8 data;
+	UINT8 st = status ? 0xFF : 0x00;
+	
+	if (portno>=1 && portno<=8)
+	{
+		data = (UINT8)pow(a, (portno-1)) & st;
+		m_sendBuf.append(data).append(code0).append(code0);
+	}
+	else if (portno>=9 && portno<=16)
+	{
+		data = (UINT8)pow(a, (portno-9)) & st;;
+		m_sendBuf.append(code0).append(data).append(code0);
+	}
+	else if (portno>=17 && portno<=24)
+	{
+		data = (UINT8)pow(a, (portno-17)) & st;;
+		m_sendBuf.append(code0).append(code0).append(data);
+	}
+	UINT8 cs = START_CODE + FUNC_RELAY + relay_num + portno + code0 + code0 + data;
+	m_sendBuf.append(cs).append(END_CODE);
 }
+
+
+//控制调节阀 同时只控制一路
+void ControlProtocol::makeRegulateSendBuf(UINT8 portno, int degree)
+{
+	m_sendBuf = "";
+	m_sendBuf.append(START_CODE).append(FUNC_REGULATE);
+	float a = 2;
+	UINT8 regulate_num = (UINT8)pow(a, (portno-1)); //控制的调节阀数量 只控制1路
+	m_sendBuf.append(regulate_num);
+	UINT8 dataL = 0x66; //开度 低字节 需要实验和计算得到
+	UINT8 dataH = 0x88; //开度 高字节
+	m_sendBuf.append(dataL).append(dataH);
+	UINT8 cs = START_CODE + FUNC_REGULATE + regulate_num + dataL + dataH;
+	m_sendBuf.append(cs).append(END_CODE);
+}
+
+//查询从机状态
+void ControlProtocol::makeQuerySendBuf()
+{
+	m_sendBuf = "";
+	m_sendBuf.append(START_CODE).append(FUNC_QUERY);
+	UINT8 code0 = 0x00;
+	m_sendBuf.append(code0).append(code0).append(code0).append(code0);
+	UINT8 cs = START_CODE + FUNC_QUERY + code0 + code0 + code0 + code0;
+	m_sendBuf.append(cs).append(END_CODE);
+}
+
 
 QByteArray ControlProtocol::getSendBuf()
 {
 	return m_sendBuf;
+}
+
+
+//解帧
+UINT8 ControlProtocol::readControlComBuffer(QByteArray tmp)
+{
+// 	qDebug()<<"readControlComBuffer ControlProtocol thread:"<<QThread::currentThreadId();
+	UINT8 ret = 0x00;
+	int state = START_STATE;
+	UINT8 ch = 0; //无符号8位数字
+	int number = tmp.size();
+
+	int m=0;
+	int num_i=0;
+	UINT8 ck=0; //程序计算的检验码
+	for (m=0; m<number; m++)
+	{
+		ch = (UINT8)tmp.at(m);
+		qDebug()<<"read data is:"<<ch;
+		switch(state)
+		{
+		case START_STATE: //8位无符号
+			{
+				if (ch == START_CODE)
+				{
+					m_conFrame->startCode = START_CODE;
+					state = FUNC_STATE;
+				}
+				break;
+			}
+		case FUNC_STATE: //8位无符号
+			{   
+				if (ch == FUNC_RELAY) //功能码-继电器控制
+				{
+					m_conFrame->funcCode = FUNC_RELAY;
+					state = DATA_STATE;
+					break;
+				}
+				if (ch == FUNC_REGULATE) //功能码-调节阀控制
+				{
+					m_conFrame->funcCode = FUNC_REGULATE;
+					state = DATA_STATE;
+					break;
+				}
+				if (ch = FUNC_QUERY) //功能码-查询
+				{
+					m_conFrame->funcCode = FUNC_QUERY;
+					state = DATA_STATE;
+					break;
+				}
+				break;
+			}
+
+		case DATA_STATE: //8位无符号
+			{
+				if (m_conFrame->funcCode == FUNC_RELAY)
+				{
+					m_conFrame->data[num_i++] = ch;
+					if (num_i == RELAY_DATA_LENGTH)
+					{
+						state = CS_STATE;
+						num_i = 0;
+					}
+				}
+				if (m_conFrame->funcCode == FUNC_REGULATE)
+				{
+					m_conFrame->data[num_i++] = ch;
+					if (num_i == REGU_DATA_LENGTH)
+					{
+						state = CS_STATE;
+						num_i = 0;
+					}
+				}
+				if (m_conFrame->funcCode == FUNC_QUERY)
+				{
+					m_conFrame->data[num_i++] = ch;
+					if (num_i == DATA_LENGTH)
+					{
+						state = CS_STATE;
+						num_i = 0;
+					}
+				}
+
+				break;
+			}    
+		case CS_STATE: //8位无符号
+			{
+				m_conFrame->check = ch;
+				state = END_STATE;
+				break;
+			} 
+		case END_STATE: //8位无符号
+			{
+				m_conFrame->endCode = END_CODE;
+				state = START_STATE;
+				ck = CountCheck(m_conFrame);
+				if (ck == m_conFrame->check) //校验通过
+				{
+					analyseFrame();
+					qDebug()<<"check is ok 校验通过";
+					ret = m_conFrame->funcCode; //以功能码返回，便于区分
+				}
+				break;
+			} 
+		default :
+			{
+				state = START_STATE;
+				break;
+			}
+		} //END OF switch(state)        
+	} //END OF for (m=0; m<number; m++)
+	
+	return ret;
+}
+
+UINT8 ControlProtocol::CountCheck(Con_Frame_Struct *pFrame)
+{
+	if (NULL == pFrame)
+	{
+		return 0;
+	}
+
+	UINT8 cs = pFrame->startCode + pFrame->funcCode;
+	int i = 0;
+	if (pFrame->funcCode == FUNC_RELAY)
+	{
+		for (i=0; i<RELAY_DATA_LENGTH; i++)
+		{
+			cs += pFrame->data[i];
+		}
+	}
+	if (pFrame->funcCode == FUNC_REGULATE)
+	{
+		for (i=0; i<REGU_DATA_LENGTH; i++)
+		{
+			cs += pFrame->data[i];
+		}
+	}
+	if (pFrame->funcCode == FUNC_QUERY)
+	{
+		for (i=0; i<DATA_LENGTH; i++)
+		{
+			cs += pFrame->data[i];
+		}
+	}
+
+	return cs;
+}
+
+void ControlProtocol::analyseFrame()
+{
+
 }

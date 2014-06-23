@@ -32,10 +32,10 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 
 	m_tempObj = NULL;
 	m_tempTimer = NULL;
-	initTemperatureCom(); //初始化温度采集串口
+// 	initTemperatureCom(); //初始化温度采集串口
 
 	m_controlObj = NULL;
-// 	initControlCom();//打开控制串口
+	initControlCom();//打开控制串口
 	m_valveWaterInStatus = false;//进水阀门状态 false：关闭状态; true:打开状态 
 	setBtnBackColor(ui.btnWaterIn, m_valveWaterInStatus);
 	m_Valve1Status = false; //大流量点阀门状态
@@ -111,7 +111,8 @@ void QualityDlg::initControlCom()
 	m_valveThread.start();
 	m_controlObj->openControlCom(&valveStruct);
 
-	connect(m_controlObj, SIGNAL(controlComIsAnalysed(const bool &)), this, SLOT(slotSetValveBtnStatus(const bool &)));
+	connect(m_controlObj, SIGNAL(controlRelayIsOk()), this, SLOT(slotSetValveBtnStatus()));
+	connect(m_controlObj, SIGNAL(controlRegulateIsOk()), this, SLOT(slotSetRegulateOk()));
 }
 
 void QualityDlg::initBalanceCom()
@@ -127,10 +128,8 @@ void QualityDlg::initBalanceCom()
 
 void QualityDlg::on_btnWaterIn_clicked()
 {
-	int portno = 1; //假设端口号为1
-	m_controlObj->writeControlComBuffer(portno, !m_valveWaterInStatus);
-	m_valveWaterInStatus = !m_valveWaterInStatus; //只测试用
-	setBtnBackColor(ui.btnWaterIn, m_valveWaterInStatus); //只测试用
+	UINT8 portno = 6; //假设端口号为6
+	m_controlObj->makeRelaySendBuf(portno, !m_valveWaterInStatus);
 }
 
 void QualityDlg::on_btnWaterOut_clicked()
@@ -140,22 +139,30 @@ void QualityDlg::on_btnWaterOut_clicked()
 
 void QualityDlg::on_btnWaterValve1_clicked()
 {
-	int portno = 2; //假设端口号为1
-	m_controlObj->writeControlComBuffer(portno, !m_Valve1Status);
+	UINT8 portno = 2; //假设端口号为1
+	m_controlObj->makeRelaySendBuf(portno, !m_Valve1Status);
 	m_Valve1Status = !m_Valve1Status; //只测试用
 	setBtnBackColor(ui.btnWaterValve1, m_Valve1Status); //只测试用
 }
 
+//调节阀开度
+void QualityDlg::on_btnRegulate1_clicked()
+{
+	ui.btnRegulate1->setStyleSheet("background:light;border:0px;");  
+	UINT8 portno = 4; //假设是第4路调节阀
+	m_controlObj->makeRegulateSendBuf(portno, ui.spinBox1->value());
+}
+
 void QualityDlg::setBtnBackColor(QPushButton *btn, bool status)
 {
-	if (status) //打开
-	{
-		btn->setStyleSheet("background:red;border:0px;");  
-		btn->setIcon(QIcon("open.png"));
-	}
-	else
+	if (status) //阀门打开 绿色
 	{
 		btn->setStyleSheet("background:green;border:0px;");  
+		btn->setIcon(QIcon("open.png"));
+	}
+	else //阀门关闭 红色
+	{
+		btn->setStyleSheet("background:red;border:0px;");  
 		btn->setIcon(QIcon("close.png"));
 	}
 }
@@ -188,12 +195,16 @@ void QualityDlg::slotFreshBalanceValue(const QString& Str)
 	ui.lnEditSmallBalance->setText(QString("%1").arg(v, 9, 'f', 4));
 }
 
-void QualityDlg::slotSetValveBtnStatus(const bool& status )
+void QualityDlg::slotSetValveBtnStatus()
 {
-	m_valveWaterInStatus = status;
+	m_valveWaterInStatus = !m_valveWaterInStatus;
 	setBtnBackColor(ui.btnWaterIn, m_valveWaterInStatus);
 }
 
+void QualityDlg::slotSetRegulateOk()
+{
+	setBtnBackColor(ui.btnRegulate1, true);
+}
 
 
 
