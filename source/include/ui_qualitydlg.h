@@ -81,14 +81,14 @@ public:
     QLineEdit *lineEdit_16;
     QLabel *label_32;
     QLineEdit *lineEdit_17;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton_6;
+    QPushButton *btnReadMeterNo;
+    QPushButton *btnReadMeterData;
     QPushButton *pushButton_7;
     QPushButton *pushButton_5;
     QGroupBox *groupBox_7;
     QGridLayout *gridLayout_10;
     QLabel *label_24;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QGridLayout *gridLayout_11;
     QGroupBox *groupBox_8;
     QGridLayout *gridLayout_8;
@@ -121,7 +121,7 @@ public:
     QLineEdit *lnEditSmallBalance;
     QLabel *label_14;
     QLabel *label_10;
-    QLineEdit *lineEdit_8;
+    QLineEdit *lnEditFlow;
     QLabel *label_15;
     QLabel *label_11;
     QLineEdit *lnEditTempIn;
@@ -403,19 +403,19 @@ public:
 
         gridLayout_12->addWidget(lineEdit_17, 6, 2, 1, 3);
 
-        pushButton_3 = new QPushButton(groupBox_9);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        sizePolicy1.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
-        pushButton_3->setSizePolicy(sizePolicy1);
+        btnReadMeterNo = new QPushButton(groupBox_9);
+        btnReadMeterNo->setObjectName(QString::fromUtf8("btnReadMeterNo"));
+        sizePolicy1.setHeightForWidth(btnReadMeterNo->sizePolicy().hasHeightForWidth());
+        btnReadMeterNo->setSizePolicy(sizePolicy1);
 
-        gridLayout_12->addWidget(pushButton_3, 7, 0, 1, 1);
+        gridLayout_12->addWidget(btnReadMeterNo, 7, 0, 1, 1);
 
-        pushButton_6 = new QPushButton(groupBox_9);
-        pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
-        sizePolicy1.setHeightForWidth(pushButton_6->sizePolicy().hasHeightForWidth());
-        pushButton_6->setSizePolicy(sizePolicy1);
+        btnReadMeterData = new QPushButton(groupBox_9);
+        btnReadMeterData->setObjectName(QString::fromUtf8("btnReadMeterData"));
+        sizePolicy1.setHeightForWidth(btnReadMeterData->sizePolicy().hasHeightForWidth());
+        btnReadMeterData->setSizePolicy(sizePolicy1);
 
-        gridLayout_12->addWidget(pushButton_6, 7, 3, 1, 1);
+        gridLayout_12->addWidget(btnReadMeterData, 7, 3, 1, 1);
 
         pushButton_7 = new QPushButton(groupBox_9);
         pushButton_7->setObjectName(QString::fromUtf8("pushButton_7"));
@@ -451,13 +451,13 @@ public:
 
         gridLayout_10->addWidget(label_24, 0, 0, 1, 1);
 
-        widget = new QWidget(QualityDlgClass);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(220, 160, 340, 368));
-        gridLayout_11 = new QGridLayout(widget);
+        layoutWidget = new QWidget(QualityDlgClass);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(220, 160, 340, 368));
+        gridLayout_11 = new QGridLayout(layoutWidget);
         gridLayout_11->setObjectName(QString::fromUtf8("gridLayout_11"));
         gridLayout_11->setContentsMargins(0, 0, 0, 0);
-        groupBox_8 = new QGroupBox(widget);
+        groupBox_8 = new QGroupBox(layoutWidget);
         groupBox_8->setObjectName(QString::fromUtf8("groupBox_8"));
         QSizePolicy sizePolicy4(QSizePolicy::Minimum, QSizePolicy::Fixed);
         sizePolicy4.setHorizontalStretch(0);
@@ -493,13 +493,13 @@ public:
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        spinBox1 = new QSpinBox(widget);
+        spinBox1 = new QSpinBox(layoutWidget);
         spinBox1->setObjectName(QString::fromUtf8("spinBox1"));
         spinBox1->setMaximum(100);
 
         horizontalLayout_3->addWidget(spinBox1);
 
-        btnRegulate1 = new QPushButton(widget);
+        btnRegulate1 = new QPushButton(layoutWidget);
         btnRegulate1->setObjectName(QString::fromUtf8("btnRegulate1"));
 
         horizontalLayout_3->addWidget(btnRegulate1);
@@ -511,7 +511,7 @@ public:
 
         horizontalLayout_4->addItem(horizontalSpacer_2);
 
-        btnQueryStatus = new QPushButton(widget);
+        btnQueryStatus = new QPushButton(layoutWidget);
         btnQueryStatus->setObjectName(QString::fromUtf8("btnQueryStatus"));
         QSizePolicy sizePolicy5(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy5.setHorizontalStretch(0);
@@ -524,7 +524,7 @@ public:
 
         gridLayout_11->addLayout(horizontalLayout_4, 1, 0, 1, 1);
 
-        groupBox_2 = new QGroupBox(widget);
+        groupBox_2 = new QGroupBox(layoutWidget);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
         sizePolicy.setHeightForWidth(groupBox_2->sizePolicy().hasHeightForWidth());
         groupBox_2->setSizePolicy(sizePolicy);
@@ -626,7 +626,7 @@ public:
 
         gridLayout_7 = new QGridLayout();
         gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
-        groupBox_3 = new QGroupBox(widget);
+        groupBox_3 = new QGroupBox(layoutWidget);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
         sizePolicy5.setHeightForWidth(groupBox_3->sizePolicy().hasHeightForWidth());
         groupBox_3->setSizePolicy(sizePolicy5);
@@ -673,13 +673,13 @@ public:
 
         gridLayout_6->addWidget(label_10, 2, 0, 1, 1);
 
-        lineEdit_8 = new QLineEdit(groupBox_3);
-        lineEdit_8->setObjectName(QString::fromUtf8("lineEdit_8"));
-        sizePolicy.setHeightForWidth(lineEdit_8->sizePolicy().hasHeightForWidth());
-        lineEdit_8->setSizePolicy(sizePolicy);
-        lineEdit_8->setReadOnly(true);
+        lnEditFlow = new QLineEdit(groupBox_3);
+        lnEditFlow->setObjectName(QString::fromUtf8("lnEditFlow"));
+        sizePolicy.setHeightForWidth(lnEditFlow->sizePolicy().hasHeightForWidth());
+        lnEditFlow->setSizePolicy(sizePolicy);
+        lnEditFlow->setReadOnly(true);
 
-        gridLayout_6->addWidget(lineEdit_8, 2, 1, 1, 1);
+        gridLayout_6->addWidget(lnEditFlow, 2, 1, 1, 1);
 
         label_15 = new QLabel(groupBox_3);
         label_15->setObjectName(QString::fromUtf8("label_15"));
@@ -729,7 +729,7 @@ public:
 
         gridLayout_7->addItem(verticalSpacer, 0, 1, 1, 1);
 
-        spinBoxTime = new QSpinBox(widget);
+        spinBoxTime = new QSpinBox(layoutWidget);
         spinBoxTime->setObjectName(QString::fromUtf8("spinBoxTime"));
         sizePolicy5.setHeightForWidth(spinBoxTime->sizePolicy().hasHeightForWidth());
         spinBoxTime->setSizePolicy(sizePolicy5);
@@ -776,8 +776,10 @@ public:
         label_29->setText(QApplication::translate("QualityDlgClass", "E1(kwh)", 0, QApplication::UnicodeUTF8));
         label_31->setText(QApplication::translate("QualityDlgClass", "\316\264v(%)", 0, QApplication::UnicodeUTF8));
         label_32->setText(QApplication::translate("QualityDlgClass", "\316\264e(%)", 0, QApplication::UnicodeUTF8));
-        pushButton_3->setText(QApplication::translate("QualityDlgClass", "a", 0, QApplication::UnicodeUTF8));
-        pushButton_6->setText(QApplication::translate("QualityDlgClass", "c", 0, QApplication::UnicodeUTF8));
+        btnReadMeterNo->setText(QApplication::translate("QualityDlgClass", "\350\257\273\345\217\226\n"
+"\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
+        btnReadMeterData->setText(QApplication::translate("QualityDlgClass", "\350\257\273\350\241\250\n"
+"\346\225\260\346\215\256", 0, QApplication::UnicodeUTF8));
         pushButton_7->setText(QApplication::translate("QualityDlgClass", "d", 0, QApplication::UnicodeUTF8));
         pushButton_5->setText(QApplication::translate("QualityDlgClass", "b", 0, QApplication::UnicodeUTF8));
         groupBox_7->setTitle(QApplication::translate("QualityDlgClass", "\346\265\201\347\250\213\346\217\220\347\244\272", 0, QApplication::UnicodeUTF8));

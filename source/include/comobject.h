@@ -99,6 +99,7 @@ public:
 	QextSerialPort *m_controlCom;
 	ControlProtocol *m_controlProtocol;   //下位机控制通讯协议类对象
 	Con_Frame_Struct *m_conFrame;
+	QByteArray m_conTmp;
 
 signals:
 	void controlRelayIsOk();
@@ -110,7 +111,6 @@ public slots:
 	void makeRegulateSendBuf(UINT8 portno, int degree);
 	void makeQuerySendBuf();
 	void readControlComBuffer();
-	void analyseFrame();
 };
 
 
@@ -138,6 +138,29 @@ public slots:
 	void readBalanceComBuffer();
 	void writeBalanceComBuffer();
 	void setSendContinue(bool a);
+};
+
+/***************************************
+类名：MeterComObject
+功能：热量表串口类- 打开串口；设置串口参数；关闭串口；
+****************************************/
+class COMOBJECT_EXPORT MeterComObject : public ComObject
+{
+	Q_OBJECT  
+
+public: 
+	MeterComObject(QObject* parent=0);
+	~MeterComObject();
+
+	QextSerialPort *m_meterCom1;
+
+signals:
+
+public slots:
+	void openMeterCom1(ComInfoStruct *comStruct);
+	void readMeterCom1Buffer();
+	void writeMeterCom1Buffer();
+
 };
 
 

@@ -35,7 +35,19 @@ public:
 	ComThread m_balanceThread; //天平采集线程
 	BalanceComObject *m_balanceObj;
 
+	ComThread m_meterThread1;  //热量表1线程
+	MeterComObject *m_meterObj1;
+
+	int m_flowcount;  //计算流量时 计数用
+	float m_flow1;
+	float m_flow2;
+
 	void closeEvent(QCloseEvent * event);
+	void initTemperatureCom(); //温度采集串口
+	void initBalanceCom();     //天平串口
+	void initControlCom();	   //阀门控制串口 
+	void initHeatMeterCom1();  //热量表串口
+
 
 public slots:
 	void on_btnWaterIn_clicked();
@@ -49,17 +61,17 @@ public slots:
 	void on_btnStart_clicked();
 	void on_btnExit_clicked();
 
-	void setBtnBackColor(QPushButton *btn, bool status);
-
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
 	void slotFreshBalanceValue(const QString& Str);     //刷新天平数值
 
-	void initTemperatureCom(); //温度采集串口
-	void initBalanceCom();     //天平串口
-	void initControlCom();	   //阀门控制串口 
-
 	void slotSetValveBtnStatus(); //继电器返回成功对应的槽函数
 	void slotSetRegulateOk();
+
+	void setBtnBackColor(QPushButton *btn, bool status);
+
+	void slotFreshFlow();
+
+	void on_btnReadMeterNo_clicked();
 
 private:
 	Ui::QualityDlgClass ui;

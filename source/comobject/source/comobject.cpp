@@ -164,6 +164,8 @@ ControlComObject::ControlComObject(QObject* parent) : ComObject(parent)
 	m_conFrame = NULL;
 	m_conFrame = new Con_Frame_Struct();
 	memset(m_conFrame, 0, sizeof(Con_Frame_Struct));
+
+	m_conTmp = "";
 }
 
 ControlComObject::~ControlComObject()
@@ -247,14 +249,16 @@ void ControlComObject::makeQuerySendBuf()
 void ControlComObject::readControlComBuffer()
 {
 	qDebug()<<"readControlComBuffer ControlComObject thread:"<<QThread::currentThreadId();
-	int num = m_controlCom->bytesAvailable();
-	if (num < 7) //与协议帧长度有关
+	m_conTmp.append(m_controlCom->readAll());
+	int num = m_conTmp.size();
+	if (m_conTmp.at(num-1) != END_CODE) //一帧接收完毕
 	{
 		return;
 	}
-	QByteArray tmp = m_controlCom->readAll();
+	
 	UINT8 ret = 0x00;
-	ret = m_controlProtocol->readControlComBuffer(tmp);
+	ret = m_controlProtocol->readControlComBuffer(m_conTmp);
+	m_conTmp.clear(); //清零
 	if (ret == FUNC_RELAY)
 	{
 		qDebug()<<"controlRelayIsOk"<<"\n";
@@ -269,23 +273,7 @@ void ControlComObject::readControlComBuffer()
 	{
 		m_conFrame = m_controlProtocol->getConFrame();
 	}
-
-/*	int num = tmp.size();
-	int m = 0;
-	for (m=0; m<num; m++)
-	{
-		UINT8 ch = (UINT8)tmp.at(m);
-		qDebug()<<"readValveControlComBuffer thread:"<<QThread::currentThreadId()<<", Read data is:"<<ch;
-	}*/
-// 	analyseFrame();
 }
-
-void ControlComObject::analyseFrame()
-{
-	qDebug()<<"ValveComObject::analyseFrame thread:"<<QThread::currentThreadId();
-	emit controlRelayIsOk();
-}
-
 
 /*********************************************************
 类名：BalanceComObject
@@ -388,4 +376,65 @@ void BalanceComObject::readBalanceComBuffer()
 void BalanceComObject::setSendContinue(bool a)
 {
 	m_sendContinue = a;
+}
+
+/*********************************************************
+类名：MeterComObject
+功能：热量表串口类- 打开串口；设置串口参数；关闭串口；
+**********************************************************/
+MeterComObject::MeterComObject(QObject* parent) : ComObject(parent)
+{
+
+}
+
+MeterComObject::~MeterComObject()
+{
+	if(m_meterCom1 != NULL)
+	{
+		if(m_meterCom1->isOpen())
+		{
+			m_meterCom1->close();
+		}
+		delete m_meterCom1;
+	}
+}
+
+void MeterComObject::openMeterCom1(ComInfoStruct *comStruct)
+{
+	qDebug()<<"openMeterCom1 thread:"<<QThread::currentThreadId();
+
+	QString portName = comStruct->portName; //获取串口名
+#ifdef Q_OS_LINUX
+	m_meterCom1 = new QextSerialPort("/dev/" + portName);
+#elif defined (Q_OS_WIN)
+	m_meterCom1 = new QextSerialPort(portName, QextSerialPort::EventDriven);
+#endif
+	connect(m_meterCom1, SIGNAL(readyRead()), this, SLOT(readMeterCom1Buffer()));
+
+	m_meterCom1->setBaudRate((BaudRateType)comStruct->baudRate);  //设置波特率  
+	m_meterCom1->setDataBits((DataBitsType)comStruct->dataBit);   //设置数据位
+	m_meterCom1->setParity((ParityType)comStruct->parity);        //设置校验位
+	m_meterCom1->setStopBits((StopBitsType)comStruct->stopBit);   //设置停止位
+	m_meterCom1->setFlowControl(FLOW_OFF); //设置数据流控制  
+	m_meterCom1->setTimeout(TIME_OUT);     //设置延时
+
+	if(m_meterCom1->open(QIODevice::ReadWrite)) 
+	{
+		qDebug()<<"Open SerialPort:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
+	}
+	else
+	{
+		qDebug()<<"Open SerialPort:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
+		return;
+	}
+}
+
+void MeterComObject::readMeterCom1Buffer()
+{
+
+}
+
+void MeterComObject::writeMeterCom1Buffer()
+{
+
 }

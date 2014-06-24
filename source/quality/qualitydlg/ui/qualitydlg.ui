@@ -386,7 +386,7 @@
         </widget>
        </item>
        <item row="7" column="0">
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="btnReadMeterNo">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
            <horstretch>0</horstretch>
@@ -394,12 +394,13 @@
           </sizepolicy>
          </property>
          <property name="text">
-          <string>a</string>
+          <string>读取
+表号</string>
          </property>
         </widget>
        </item>
        <item row="7" column="3">
-        <widget class="QPushButton" name="pushButton_6">
+        <widget class="QPushButton" name="btnReadMeterData">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
            <horstretch>0</horstretch>
@@ -407,7 +408,8 @@
           </sizepolicy>
          </property>
          <property name="text">
-          <string>c</string>
+          <string>读表
+数据</string>
          </property>
         </widget>
        </item>
@@ -476,7 +478,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>220</x>
@@ -924,7 +926,7 @@
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QLineEdit" name="lineEdit_8">
+          <widget class="QLineEdit" name="lnEditFlow">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
              <horstretch>0</horstretch>

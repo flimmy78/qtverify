@@ -32,17 +32,24 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 
 	m_tempObj = NULL;
 	m_tempTimer = NULL;
-// 	initTemperatureCom(); //初始化温度采集串口
+// 	initTemperatureCom();	//初始化温度采集串口
 
 	m_controlObj = NULL;
-	initControlCom();//打开控制串口
+	initControlCom();		//初始化控制串口
 	m_valveWaterInStatus = false;//进水阀门状态 false：关闭状态; true:打开状态 
 	setBtnBackColor(ui.btnWaterIn, m_valveWaterInStatus);
 	m_Valve1Status = false; //大流量点阀门状态
 	setBtnBackColor(ui.btnWaterValve1, m_Valve1Status);
 
 	m_balanceObj = NULL;
-// 	initBalanceCom();
+// 	initBalanceCom();		//初始化天平串口
+
+	m_meterObj1 = NULL;
+// 	initHeatMeterCom1();	//初始化热量表1串口
+
+	m_flowcount = 0;
+	m_flow1 = 0.0;
+	m_flow2 = 0.0;
 }
 
 QualityDlg::~QualityDlg()
@@ -82,8 +89,18 @@ void QualityDlg::closeEvent( QCloseEvent * event)
 		delete m_balanceObj;
 		m_balanceObj = NULL;
 	}
+	
+	if (m_meterObj1)  //热量表1串口通讯
+	{
+		delete m_meterObj1;
+		m_meterObj1 = NULL;
+	}
 }
 
+/***************************************
+	温度采集
+	周期请求
+****************************************/
 void QualityDlg::initTemperatureCom()
 {
 	ComInfoStruct tempStruct = m_readComConfig->ReadTempConfig();
@@ -95,9 +112,12 @@ void QualityDlg::initTemperatureCom()
 
 	m_tempTimer = new QTimer(this);
 	connect(m_tempTimer, SIGNAL(timeout()), m_tempObj, SLOT(writeTemperatureComBuffer()));
+	connect(m_tempTimer, SIGNAL(timeout()), this, SLOT(slotFreshFlow()));
+	
 	m_tempTimer->start(TIMEOUT_TEMPER); //周期请求温度
 }
 
+//控制板通讯串口
 void QualityDlg::initControlCom()
 {
 	ComInfoStruct valveStruct = m_readComConfig->ReadValveConfig();
@@ -110,6 +130,7 @@ void QualityDlg::initControlCom()
 	connect(m_controlObj, SIGNAL(controlRegulateIsOk()), this, SLOT(slotSetRegulateOk()));
 }
 
+//天平采集串口
 void QualityDlg::initBalanceCom()
 {
 	ComInfoStruct balanceStruct = m_readComConfig->ReadBalanceConfig();
@@ -119,6 +140,18 @@ void QualityDlg::initBalanceCom()
 	m_balanceObj->openBalanceCom(&balanceStruct);
 
  	connect(m_balanceObj, SIGNAL(balanceValueIsReady(const QString &)), this, SLOT(slotFreshBalanceValue(const QString &)));
+}
+
+//热量表1串口通讯
+void QualityDlg::initHeatMeterCom1()
+{
+	ComInfoStruct comStruct = m_readComConfig->ReadMeterConfigByNum("1");
+	m_meterObj1 = new MeterComObject();
+	m_meterObj1->moveToThread(&m_meterThread1);
+	m_meterThread1.start();
+	m_meterObj1->openMeterCom1(&comStruct);
+
+// 	connect(m_meterObj1, SIGNAL(balanceValueIsReady(const QString &)), this, SLOT(slotFreshBalanceValue(const QString &)));
 }
 
 //控制继电器开断
@@ -208,5 +241,27 @@ void QualityDlg::setBtnBackColor(QPushButton *btn, bool status)
 	}
 }
 
+//计算瞬时流量
+void QualityDlg::slotFreshFlow()
+{
+	float flowValue = 0.0;
+	if (m_flowcount == 0)
+	{
+		m_flow1 = ui.lnEditBigBalance->text().toFloat();
+	}
+	m_flowcount ++;
+	if (m_flowcount == 20) //20*TIMEOUT_TEMPER
+	{
+		m_flow2 = ui.lnEditBigBalance->text().toFloat();
+		m_flowcount = 0;
+		flowValue = 3.6*(m_flow2 - m_flow1)/(20*TIMEOUT_TEMPER);
+		ui.lnEditFlow->setText(QString("%1").arg(flowValue));
+	}
+}
 
+//读取表号
+void QualityDlg::on_btnReadMeterNo_clicked()
+{
+	m_meterObj1->writeMeterCom1Buffer(); //请求表号
+}
 
