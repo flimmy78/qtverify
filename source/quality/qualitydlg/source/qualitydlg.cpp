@@ -126,6 +126,7 @@ void QualityDlg::initBalanceCom()
  	connect(m_balanceObj, SIGNAL(balanceValueIsReady(const QString &)), this, SLOT(slotFreshBalanceValue(const QString &)));
 }
 
+//控制继电器开断
 void QualityDlg::on_btnWaterIn_clicked()
 {
 	UINT8 portno = 6; //假设端口号为6
@@ -151,6 +152,12 @@ void QualityDlg::on_btnRegulate1_clicked()
 	ui.btnRegulate1->setStyleSheet("background:light;border:0px;");  
 	UINT8 portno = 4; //假设是第4路调节阀
 	m_controlObj->makeRegulateSendBuf(portno, ui.spinBox1->value());
+}
+
+//查询从机状态
+void QualityDlg::on_btnQueryStatus_clicked()
+{
+	m_controlObj->makeQuerySendBuf();
 }
 
 void QualityDlg::setBtnBackColor(QPushButton *btn, bool status)

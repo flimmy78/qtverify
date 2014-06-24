@@ -135,12 +135,13 @@ typedef struct
 class PROTOCOL_EXPORT ControlProtocol : public CProtocol
 {
 
+	QByteArray m_sendBuf;
+	Con_Frame_Struct *m_conFrame;
+
 public:
 	ControlProtocol();
 	~ControlProtocol();
 
-	QByteArray m_sendBuf;
-	Con_Frame_Struct *m_conFrame;
 
 public slots:
 	void makeRelaySendBuf(UINT8 portno, bool status);
@@ -150,6 +151,7 @@ public slots:
 	UINT8 readControlComBuffer(QByteArray tmp);
 	UINT8 CountCheck(Con_Frame_Struct *pFrame);
 	void analyseFrame();
+	Con_Frame_Struct* getConFrame();
 
 private:
 };

@@ -369,7 +369,7 @@ QByteArray ControlProtocol::getSendBuf()
 //解帧
 UINT8 ControlProtocol::readControlComBuffer(QByteArray tmp)
 {
-// 	qDebug()<<"readControlComBuffer ControlProtocol thread:"<<QThread::currentThreadId();
+	qDebug()<<"readControlComBuffer ControlProtocol thread:"<<QThread::currentThreadId();
 	UINT8 ret = 0x00;
 	int state = START_STATE;
 	UINT8 ch = 0; //无符号8位数字
@@ -515,4 +515,9 @@ UINT8 ControlProtocol::CountCheck(Con_Frame_Struct *pFrame)
 void ControlProtocol::analyseFrame()
 {
 
+}
+
+Con_Frame_Struct * ControlProtocol::getConFrame()
+{
+	return m_conFrame;
 }

@@ -43,6 +43,7 @@ public slots:
 	void on_btnWaterValve1_clicked();
 
 	void on_btnRegulate1_clicked();
+	void on_btnQueryStatus_clicked();
 
 	void on_btnParaSet_clicked();
 	void on_btnStart_clicked();

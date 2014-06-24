@@ -157,8 +157,13 @@ void TempComObject::readTemperatureComBuffer()
 ControlComObject::ControlComObject(QObject* parent) : ComObject(parent)
 {
 	m_controlCom = NULL;
+
 	m_controlProtocol = NULL;
 	m_controlProtocol = new ControlProtocol();
+
+	m_conFrame = NULL;
+	m_conFrame = new Con_Frame_Struct();
+	memset(m_conFrame, 0, sizeof(Con_Frame_Struct));
 }
 
 ControlComObject::~ControlComObject()
@@ -230,9 +235,18 @@ void ControlComObject::makeRegulateSendBuf(UINT8 portno, int degree)
 	m_controlCom->write(buf);
 }
 
+//查询从机状态
+void ControlComObject::makeQuerySendBuf()
+{
+	QByteArray buf;
+	m_controlProtocol->makeQuerySendBuf();
+	buf = m_controlProtocol->getSendBuf();
+	m_controlCom->write(buf);
+}
+
 void ControlComObject::readControlComBuffer()
 {
-// 	qDebug()<<"readControlComBuffer ControlComObject thread:"<<QThread::currentThreadId();
+	qDebug()<<"readControlComBuffer ControlComObject thread:"<<QThread::currentThreadId();
 	int num = m_controlCom->bytesAvailable();
 	if (num < 7) //与协议帧长度有关
 	{
@@ -250,6 +264,10 @@ void ControlComObject::readControlComBuffer()
 	{
 		qDebug()<<"controlRegulateIsOk"<<"\n";
 		emit controlRegulateIsOk();
+	}
+	if (ret == FUNC_QUERY)
+	{
+		m_conFrame = m_controlProtocol->getConFrame();
 	}
 
 /*	int num = tmp.size();

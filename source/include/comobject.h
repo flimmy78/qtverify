@@ -98,6 +98,7 @@ public:
 
 	QextSerialPort *m_controlCom;
 	ControlProtocol *m_controlProtocol;   //下位机控制通讯协议类对象
+	Con_Frame_Struct *m_conFrame;
 
 signals:
 	void controlRelayIsOk();
@@ -107,6 +108,7 @@ public slots:
 	void openControlCom(ComInfoStruct *comStruct);
 	void makeRelaySendBuf(UINT8 portno, bool status);
 	void makeRegulateSendBuf(UINT8 portno, int degree);
+	void makeQuerySendBuf();
 	void readControlComBuffer();
 	void analyseFrame();
 };
