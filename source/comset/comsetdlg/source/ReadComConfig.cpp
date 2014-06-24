@@ -35,7 +35,7 @@ ReadComConfig::~ReadComConfig()
 
 }
 /*∂¡»°∑ß√≈…Ë÷√*/
-ComInfoStruct ReadComConfig::ReadValeConfig()
+ComInfoStruct ReadComConfig::ReadValveConfig()
 {
 	return ReadConfigByName("valve");
 }

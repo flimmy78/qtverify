@@ -26,7 +26,7 @@ int main( int argc, char ** argv )
 	SetComFrm w;
 	w.show();
 	ReadComConfig r;
-	ComInfoStruct cominfo=r.ReadValeConfig();
+	ComInfoStruct cominfo=r.ReadValveConfig();
 
 	try
 	{

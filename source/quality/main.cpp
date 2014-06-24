@@ -40,7 +40,7 @@ int main( int argc, char ** argv )
 	qDebug()<<"quality main thread:"<<QThread::currentThreadId();
 
 	QualityDlg w;
-	w.showMaximized();
+	w.show();
 
 	return app.exec();
 }

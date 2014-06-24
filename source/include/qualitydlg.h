@@ -21,16 +21,16 @@ public:
 
 	ParaSetDlg *m_paraset;
 
-	ReadComConfig *m_readComConfig;//读串口设置
+	ReadComConfig *m_readComConfig; //读串口设置
 
 	ComThread m_tempThread;  //温度采集线程
 	TempComObject *m_tempObj;
 	QTimer *m_tempTimer;
 
-	ComThread m_valveThread;  //阀门控制线程
+	ComThread m_valveThread;   //阀门控制线程
 	ControlComObject *m_controlObj;
 	bool m_valveWaterInStatus; //进水阀门状态
-	bool m_Valve1Status;  //大流量点阀门状态
+	bool m_Valve1Status;       //大流量点阀门状态
 
 	ComThread m_balanceThread; //天平采集线程
 	BalanceComObject *m_balanceObj;
@@ -55,12 +55,12 @@ public slots:
 	void slotFreshBalanceValue(const QString& Str);     //刷新天平数值
 
 	void initTemperatureCom(); //温度采集串口
+	void initBalanceCom();     //天平串口
+	void initControlCom();	   //阀门控制串口 
 
-	void initControlCom();//阀门控制串口 
 	void slotSetValveBtnStatus(); //继电器返回成功对应的槽函数
 	void slotSetRegulateOk();
 
-	void initBalanceCom();     //天平串口
 private:
 	Ui::QualityDlgClass ui;
 

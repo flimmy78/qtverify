@@ -178,7 +178,7 @@ void MainForm::on_actionQualityComp_triggered()
 	{
 		m_qualitydlg = new QualityDlg();
 	}
-	m_qualitydlg->showMaximized();
+	m_qualitydlg->show();
 }
 
 void MainForm::on_actionQualityTotal_triggered()

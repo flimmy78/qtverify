@@ -87,11 +87,6 @@ void QualityDlg::closeEvent( QCloseEvent * event)
 void QualityDlg::initTemperatureCom()
 {
 	ComInfoStruct tempStruct = m_readComConfig->ReadTempConfig();
-// 	tempStruct.portName = "COM2";
-// 	tempStruct.baudRate = 9600;
-// 	tempStruct.dataBit = 8;
-// 	tempStruct.parity = 0;
-// 	tempStruct.stopBit = 0;
 	m_tempObj = new TempComObject();
 	m_tempObj->moveToThread(&m_tempThread);
 	m_tempThread.start();
@@ -105,7 +100,7 @@ void QualityDlg::initTemperatureCom()
 
 void QualityDlg::initControlCom()
 {
-	ComInfoStruct valveStruct = m_readComConfig->ReadValeConfig();
+	ComInfoStruct valveStruct = m_readComConfig->ReadValveConfig();
 	m_controlObj = new ControlComObject();
 	m_controlObj->moveToThread(&m_valveThread);
 	m_valveThread.start();
@@ -160,20 +155,6 @@ void QualityDlg::on_btnQueryStatus_clicked()
 	m_controlObj->makeQuerySendBuf();
 }
 
-void QualityDlg::setBtnBackColor(QPushButton *btn, bool status)
-{
-	if (status) //阀门打开 绿色
-	{
-		btn->setStyleSheet("background:green;border:0px;");  
-		btn->setIcon(QIcon("open.png"));
-	}
-	else //阀门关闭 红色
-	{
-		btn->setStyleSheet("background:red;border:0px;");  
-		btn->setIcon(QIcon("close.png"));
-	}
-}
-
 void QualityDlg::on_btnParaSet_clicked()
 {
 	m_paraset->show();
@@ -211,6 +192,20 @@ void QualityDlg::slotSetValveBtnStatus()
 void QualityDlg::slotSetRegulateOk()
 {
 	setBtnBackColor(ui.btnRegulate1, true);
+}
+
+void QualityDlg::setBtnBackColor(QPushButton *btn, bool status)
+{
+	if (status) //阀门打开 绿色
+	{
+		btn->setStyleSheet("background:green;border:0px;");  
+		btn->setIcon(QIcon("open.png"));
+	}
+	else //阀门关闭 红色
+	{
+		btn->setStyleSheet("background:red;border:0px;");  
+		btn->setIcon(QIcon("close.png"));
+	}
 }
 
 

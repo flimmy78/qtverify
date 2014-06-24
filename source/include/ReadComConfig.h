@@ -13,7 +13,7 @@ public:
 	~ReadComConfig();
 	QStringList ReadIndexByName(QString ConfigId);//读取配置文件中相应配置的索引值
 	/************读取配置文件****************/
-	ComInfoStruct ReadValeConfig();
+	ComInfoStruct ReadValveConfig();
 	ComInfoStruct ReadBalanceConfig();
 	ComInfoStruct ReadTempConfig();
 	ComInfoStruct ReadStdTempConfig();
