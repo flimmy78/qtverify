@@ -89,7 +89,10 @@ private:
 //温度采集协议 end
 
 
-//天平协议
+//天平协议 begin
+#define    ASCII_CR			0x0D	//回车键
+#define    ASCII_LF			0x0A	//换行键
+
 class PROTOCOL_EXPORT BalanceProtocol : public CProtocol
 {
 
@@ -105,6 +108,7 @@ public slots:
 
 private:
 };
+//天平协议 end
 
 //下位机控制协议 begin
 #define		START_CODE		0x69		//起始码

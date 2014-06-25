@@ -32,10 +32,10 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 
 	m_tempObj = NULL;
 	m_tempTimer = NULL;
-// 	initTemperatureCom();	//初始化温度采集串口
+	initTemperatureCom();	//初始化温度采集串口
 
 	m_controlObj = NULL;
-	initControlCom();		//初始化控制串口
+// 	initControlCom();		//初始化控制串口
 	m_valveWaterInStatus = false;//进水阀门状态 false：关闭状态; true:打开状态 
 	setBtnBackColor(ui.btnWaterIn, m_valveWaterInStatus);
 	m_Valve1Status = false; //大流量点阀门状态

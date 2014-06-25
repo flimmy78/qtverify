@@ -129,6 +129,7 @@ public:
 	QextSerialPort *m_balanceCom;
 	BalanceProtocol *m_balanceProtocol;   //天平通讯协议类对象
 	bool m_sendContinue; //只为测试用
+	QByteArray m_balTmp;
 
 signals:
 	void balanceValueIsReady(const QString& tempStr); //成功获取天平数值

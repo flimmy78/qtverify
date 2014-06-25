@@ -262,7 +262,7 @@ bool BalanceProtocol::readBalanceComBuffer(QByteArray tmp)
 	UINT8 ch1, ch2;
 	ch1 = (UINT8)tmp.at(num-1);
 	ch2 = (UINT8)tmp.at(num-2);
-	if (ch1==0x0A && ch2==0x0D)
+	if (ch1==ASCII_LF && ch2==ASCII_CR) //0x0A换行; 0x0D回车（表示一帧结束）
 	{
 		for (m=num-16; m<num-6; m++)
 		{

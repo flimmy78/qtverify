@@ -133,7 +133,7 @@ void TempComObject::writeTemperatureComBuffer()
 	m_tempCom->write(buf);
 }
 
-//读串口缓冲区
+//读温度串口缓冲区
 void TempComObject::readTemperatureComBuffer()
 {
 	QByteArray tmp = m_tempCom->readAll();
@@ -147,7 +147,6 @@ void TempComObject::readTemperatureComBuffer()
 		emit temperatureIsReady(tempStr);
 	}
 }
-
 
 
 /*********************************************************
@@ -286,6 +285,8 @@ BalanceComObject::BalanceComObject(QObject* parent) : ComObject(parent)
 	m_balanceProtocol = new BalanceProtocol;
 
 	m_sendContinue = true;
+
+	m_balTmp = "";
 }
 
 BalanceComObject::~BalanceComObject()
@@ -355,20 +356,35 @@ void BalanceComObject::writeBalanceComBuffer()
 		buf.append(0x20).append(0x6B).append(0x67).append(0x20).append(0x0D).append(0x0A);
 		m_balanceCom->write(buf);
 		QTest::qWait(1000);
+		if (wg > 0x39)
+		{
+			wg = 0x31;
+		}
 	}
 }
 
+//读取天平串口数据
 void BalanceComObject::readBalanceComBuffer()
 {
-	QByteArray tmp = m_balanceCom->readAll();
-	qDebug()<<"readBalanceComBuffer thread:"<<QThread::currentThreadId()<<", Read data is:"<<tmp;
-
-	bool ret = false;
-	ret = m_balanceProtocol->readBalanceComBuffer(tmp); //通讯协议接口
-	if (ret)
+	m_balTmp.append(m_balanceCom->readAll());
+	int num = m_balTmp.size();
+// 	if (num < 22 ) //赛多利斯天平 一帧22字节
+// 	{
+// 		return;
+// 	}
+	if (num ==22 && m_balTmp.at(num-1) == ASCII_LF && m_balTmp.at(num-2) == ASCII_CR ) //最后两个字节是回车符和换行符
 	{
-		QString balStr = m_balanceProtocol->getBalanceValue();
-		emit balanceValueIsReady(balStr);
+// 		QByteArray tmp = m_balanceCom->readAll();
+		qDebug()<<"readBalanceComBuffer thread:"<<QThread::currentThreadId()<<", Read data is:"<<m_balTmp;
+
+		bool ret = false;
+		ret = m_balanceProtocol->readBalanceComBuffer(m_balTmp); //通讯协议接口
+		m_balTmp.clear();
+		if (ret)
+		{
+			QString balStr = m_balanceProtocol->getBalanceValue();
+			emit balanceValueIsReady(balStr);
+		}
 	}
 }
 
