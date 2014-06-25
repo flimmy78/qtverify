@@ -16,6 +16,8 @@ public:
 	void closeEvent(QCloseEvent * event);
 
 public slots:
+	void on_btnExit_clicked();
+	void on_btnSave_clicked();
 
 private:
 	Ui::ParaSetDlgClass ui;
