@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "alg", "alg\alg.vcxproj", "{F78EC62D-3B66-3B1A-A19B-4BF5FEC8916A}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "comset", "comset\comset.vcxproj", "{BEF4AA2B-B217-37C0-95AD-0ED2B0283991}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "comsetdlg", "comset\comsetdlg\comsetdlg.vcxproj", "{ACBCFCED-5545-33E5-8750-559E710EA3AE}"
@@ -21,16 +19,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "comobject", "comobject\como
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qtexdb", "qtexdb\qtexdb.vcxproj", "{E6934CA9-CE3D-3A0D-9822-8EAE2A8E0584}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "algorithm", "algorithm\algorithm.vcxproj", "{73BFE56E-C4FA-32D7-8C38-5F651501336A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F78EC62D-3B66-3B1A-A19B-4BF5FEC8916A}.Debug|Win32.ActiveCfg = Debug|Win32
-		{F78EC62D-3B66-3B1A-A19B-4BF5FEC8916A}.Debug|Win32.Build.0 = Debug|Win32
-		{F78EC62D-3B66-3B1A-A19B-4BF5FEC8916A}.Release|Win32.ActiveCfg = Release|Win32
-		{F78EC62D-3B66-3B1A-A19B-4BF5FEC8916A}.Release|Win32.Build.0 = Release|Win32
 		{BEF4AA2B-B217-37C0-95AD-0ED2B0283991}.Debug|Win32.ActiveCfg = Debug|Win32
 		{BEF4AA2B-B217-37C0-95AD-0ED2B0283991}.Debug|Win32.Build.0 = Debug|Win32
 		{BEF4AA2B-B217-37C0-95AD-0ED2B0283991}.Release|Win32.ActiveCfg = Release|Win32
@@ -67,6 +63,10 @@ Global
 		{E6934CA9-CE3D-3A0D-9822-8EAE2A8E0584}.Debug|Win32.Build.0 = Debug|Win32
 		{E6934CA9-CE3D-3A0D-9822-8EAE2A8E0584}.Release|Win32.ActiveCfg = Release|Win32
 		{E6934CA9-CE3D-3A0D-9822-8EAE2A8E0584}.Release|Win32.Build.0 = Release|Win32
+		{73BFE56E-C4FA-32D7-8C38-5F651501336A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{73BFE56E-C4FA-32D7-8C38-5F651501336A}.Debug|Win32.Build.0 = Debug|Win32
+		{73BFE56E-C4FA-32D7-8C38-5F651501336A}.Release|Win32.ActiveCfg = Release|Win32
+		{73BFE56E-C4FA-32D7-8C38-5F651501336A}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
