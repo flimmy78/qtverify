@@ -27,6 +27,10 @@ public:
 
 private:
 
+public slots:
+	void WriteSettings();
+	void ReadSettings();
+
 };
 
 #endif // QTEXDB_H

@@ -8,6 +8,7 @@
 #include "parasetdlg.h"
 #include "comobject.h"
 #include "ReadComConfig.h"
+#include "algorithm.h"
 
 #define TIMEOUT_TEMPER  500 //每0.5秒钟请求一次温度值
 
@@ -42,12 +43,13 @@ public:
 	float m_flow1;
 	float m_flow2;
 
+	PORTSET_INI_STR m_portsetinfo;
+
 	void closeEvent(QCloseEvent * event);
 	void initTemperatureCom(); //温度采集串口
 	void initBalanceCom();     //天平串口
-	void initControlCom();	   //阀门控制串口 
+	void initControlCom();     //阀门控制串口
 	void initHeatMeterCom1();  //热量表串口
-
 
 public slots:
 	void on_btnWaterIn_clicked();
