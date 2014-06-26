@@ -74,7 +74,7 @@
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>c:\Qt\4.8.5\lib\Qt3Supportd4.lib;c:\Qt\4.8.5\lib\Qt3Support4.lib;$(RUNHOME)\lib\protocol.lib;$(RUNHOME)\lib\comsetdlg.lib;$(RUNHOME)\lib\comobject.lib;$(RUNHOME)\lib\qtexdb.lib;c:\Qt\4.8.5\lib\QtTestd4.lib;c:\Qt\4.8.5\lib\QtGuid4.lib;c:\Qt\4.8.5\lib\QtCored4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>c:\Qt\4.8.5\lib\Qt3Supportd4.lib;c:\Qt\4.8.5\lib\Qt3Support4.lib;$(RUNHOME)\lib\protocol.lib;$(RUNHOME)\lib\comsetdlg.lib;$(RUNHOME)\lib\comobject.lib;$(RUNHOME)\lib\qtexdb.lib;$(RUNHOME)\lib\algorithm.lib;c:\Qt\4.8.5\lib\QtTestd4.lib;c:\Qt\4.8.5\lib\QtGuid4.lib;c:\Qt\4.8.5\lib\QtCored4.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>.\;$(RUNHOME)\lib;$(RUNHOME)\bin;c:\Qt\4.8.5\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <DataExecutionPrevention>true</DataExecutionPrevention>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -116,7 +116,7 @@
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>c:\Qt\4.8.5\lib\Qt3Supportd4.lib;c:\Qt\4.8.5\lib\Qt3Support4.lib;$(RUNHOME)\lib\protocol.lib;$(RUNHOME)\lib\comsetdlg.lib;$(RUNHOME)\lib\comobject.lib;$(RUNHOME)\lib\qtexdb.lib;c:\Qt\4.8.5\lib\QtTest4.lib;c:\Qt\4.8.5\lib\QtGui4.lib;c:\Qt\4.8.5\lib\QtCore4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>c:\Qt\4.8.5\lib\Qt3Supportd4.lib;c:\Qt\4.8.5\lib\Qt3Support4.lib;$(RUNHOME)\lib\protocol.lib;$(RUNHOME)\lib\comsetdlg.lib;$(RUNHOME)\lib\comobject.lib;$(RUNHOME)\lib\qtexdb.lib;$(RUNHOME)\lib\algorithm.lib;c:\Qt\4.8.5\lib\QtTest4.lib;c:\Qt\4.8.5\lib\QtGui4.lib;c:\Qt\4.8.5\lib\QtCore4.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>.\;$(RUNHOME)\lib;$(RUNHOME)\bin;c:\Qt\4.8.5\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <DataExecutionPrevention>true</DataExecutionPrevention>
       <GenerateDebugInformation>false</GenerateDebugInformation>

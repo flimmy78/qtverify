@@ -41,6 +41,8 @@ void ParaSetDlg::closeEvent(QCloseEvent * event)
 void ParaSetDlg::on_btnSave_clicked()
 {
 	testFunc(10, 20);
+	CQtExdb a;
+	a.ReadSettings();
 }
 
 void ParaSetDlg::on_btnExit_clicked()

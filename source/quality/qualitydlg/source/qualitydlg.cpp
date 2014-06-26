@@ -50,6 +50,9 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 	m_flowcount = 0;
 	m_flow1 = 0.0;
 	m_flow2 = 0.0;
+
+	getPortSetIni(&m_portsetinfo); //获取下位机端口设置信息
+
 }
 
 QualityDlg::~QualityDlg()
@@ -155,9 +158,9 @@ void QualityDlg::initHeatMeterCom1()
 }
 
 //控制继电器开断
-void QualityDlg::on_btnWaterIn_clicked()
+void QualityDlg::on_btnWaterIn_clicked() //进水阀
 {
-	UINT8 portno = 6; //假设端口号为6
+	UINT8 portno = m_portsetinfo.waterInNo;
 	m_controlObj->makeRelaySendBuf(portno, !m_valveWaterInStatus);
 }
 
@@ -178,7 +181,7 @@ void QualityDlg::on_btnWaterValve1_clicked()
 void QualityDlg::on_btnRegulate1_clicked()
 {
 	ui.btnRegulate1->setStyleSheet("background:light;border:0px;");  
-	UINT8 portno = 4; //假设是第4路调节阀
+	UINT8 portno = m_portsetinfo.regflow1No; //
 	m_controlObj->makeRegulateSendBuf(portno, ui.spinBox1->value());
 }
 
@@ -262,6 +265,7 @@ void QualityDlg::slotFreshFlow()
 //读取表号
 void QualityDlg::on_btnReadMeterNo_clicked()
 {
-	m_meterObj1->writeMeterCom1Buffer(); //请求表号
+// 	m_meterObj1->writeMeterCom1Buffer(); //请求表号
 }
+
 
