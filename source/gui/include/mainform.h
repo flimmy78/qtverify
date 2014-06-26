@@ -25,7 +25,7 @@ public:
 	DbMySql *dbmysqlobj;
 	DbSqlite *dbsqliteobj;
 	MonsterInterface *m_monster;
-	CAlg *m_alg;
+	CAlgorithm *m_alg;
 	SetComFrm *m_setcom;
 	ComSetDlg *m_spset;
 	QualityDlg *m_qualitydlg;

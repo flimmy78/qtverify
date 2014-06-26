@@ -74,7 +74,7 @@
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>$(RUNHOME)\lib\alg.lib;$(RUNHOME)\lib\comsetdlg.lib;$(RUNHOME)\lib\qualitydlg.lib;c:\Qt\4.8.5\lib\qaxserver.lib;c:\Qt\4.8.5\lib\qaxcontainerd.lib;c:\Qt\4.8.5\lib\QtSqld4.lib;c:\Qt\4.8.5\lib\QtGuid4.lib;c:\Qt\4.8.5\lib\QtCored4.lib;user32.lib;ole32.lib;oleaut32.lib;gdi32.lib;C:\Qt\4.8.5\lib\QtGui4.lib;C:\Qt\4.8.5\lib\QtCore4.lib;advapi32.lib;C:\Qt\4.8.5\lib\QtGuid4.lib;C:\Qt\4.8.5\lib\QtCored4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(RUNHOME)\lib\algorithm.lib;$(RUNHOME)\lib\comsetdlg.lib;$(RUNHOME)\lib\qualitydlg.lib;c:\Qt\4.8.5\lib\qaxserver.lib;c:\Qt\4.8.5\lib\qaxcontainerd.lib;c:\Qt\4.8.5\lib\QtSqld4.lib;c:\Qt\4.8.5\lib\QtGuid4.lib;c:\Qt\4.8.5\lib\QtCored4.lib;user32.lib;ole32.lib;oleaut32.lib;gdi32.lib;C:\Qt\4.8.5\lib\QtGui4.lib;C:\Qt\4.8.5\lib\QtCore4.lib;advapi32.lib;C:\Qt\4.8.5\lib\QtGuid4.lib;C:\Qt\4.8.5\lib\QtCored4.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(RUNHOME)\lib;$(RUNHOME)\bin;c:\Qt\4.8.5\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>&quot;/MANIFESTDEPENDENCY:type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos; processorArchitecture=&apos;*&apos;&quot; %(AdditionalOptions)</AdditionalOptions>
       <DataExecutionPrevention>true</DataExecutionPrevention>
@@ -117,7 +117,7 @@
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>$(RUNHOME)\lib\alg.lib;$(RUNHOME)\lib\comsetdlg.lib;$(RUNHOME)\lib\qualitydlg.lib;c:\Qt\4.8.5\lib\qaxserver.lib;c:\Qt\4.8.5\lib\qaxcontainerd.lib;c:\Qt\4.8.5\lib\QtSql4.lib;c:\Qt\4.8.5\lib\QtGui4.lib;c:\Qt\4.8.5\lib\QtCore4.lib;user32.lib;ole32.lib;oleaut32.lib;gdi32.lib;C:\Qt\4.8.5\lib\QtGui4.lib;C:\Qt\4.8.5\lib\QtCore4.lib;advapi32.lib;C:\Qt\4.8.5\lib\QtGuid4.lib;C:\Qt\4.8.5\lib\QtCored4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(RUNHOME)\lib\algorithm.lib;$(RUNHOME)\lib\comsetdlg.lib;$(RUNHOME)\lib\qualitydlg.lib;c:\Qt\4.8.5\lib\qaxserver.lib;c:\Qt\4.8.5\lib\qaxcontainerd.lib;c:\Qt\4.8.5\lib\QtSql4.lib;c:\Qt\4.8.5\lib\QtGui4.lib;c:\Qt\4.8.5\lib\QtCore4.lib;user32.lib;ole32.lib;oleaut32.lib;gdi32.lib;C:\Qt\4.8.5\lib\QtGui4.lib;C:\Qt\4.8.5\lib\QtCore4.lib;advapi32.lib;C:\Qt\4.8.5\lib\QtGuid4.lib;C:\Qt\4.8.5\lib\QtCored4.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(RUNHOME)\lib;$(RUNHOME)\bin;c:\Qt\4.8.5\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>&quot;/MANIFESTDEPENDENCY:type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos; processorArchitecture=&apos;*&apos;&quot; %(AdditionalOptions)</AdditionalOptions>
       <DataExecutionPrevention>true</DataExecutionPrevention>

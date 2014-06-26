@@ -14,7 +14,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 
 	dbmysqlobj = new DbMySql();
 	dbsqliteobj = new DbSqlite();
-	m_alg = new CAlg();
+	m_alg = new CAlgorithm();
 
 	m_spset = NULL;
 	m_setcom = NULL;
