@@ -12,6 +12,21 @@
 
 #define TIMEOUT_TEMPER  500 //每0.5秒钟请求一次温度值
 
+#define VALVE_OPEN		true	//阀门打开状态
+#define VALVE_CLOSE		false   //阀门关闭状态
+
+#define VALVE_IN_IDX	 0	//进水阀
+#define VALVE_BIG_IDX	 1	//大流量阀
+#define VALVE_MID1_IDX	 2	//中一流量
+#define VALVE_MID2_IDX	 3	//中二流量
+#define VALVE_SMALL_IDX	 4	//小流量
+#define VALVE_OUT_IDX	 5	//放水阀
+#define VALVE_PUMP_IDX	 6	//水泵
+
+#define  VALVE_NUM	7	//实际用到的阀门总数
+
+
+
 class QUALITYDLG_EXPORT QualityDlg : public QWidget
 {
 	Q_OBJECT
@@ -30,8 +45,18 @@ public:
 
 	ComThread m_valveThread;   //阀门控制线程
 	ControlComObject *m_controlObj;
-	bool m_valveWaterInStatus; //进水阀门状态
-	bool m_Valve1Status;       //大流量点阀门状态
+
+	QMap<int, bool> m_valveStatus;
+	QMap<int, QPushButton*> m_valveBtn;	
+// 	bool m_waterInStatus;	//进水阀门状态
+// 	bool m_waterOutStatus;  //放水阀门状态
+// 	bool m_valveBigStatus;		//大流量阀门状态
+// 	bool m_valveMiddle1Status;  //中流一阀门状态
+// 	bool m_valveMiddle2Status;  //中流二阀门状态
+// 	bool m_valveSmallStatus;    //小流量点阀门状态
+// 	bool m_valvePumpStatus;		//水泵状态
+	int m_nowPortNo;	//当前控制阀门端口号
+	int m_nowPortIdx;	//当前控制阀门端口索引
 
 	ComThread m_balanceThread; //天平采集线程
 	BalanceComObject *m_balanceObj;
@@ -43,7 +68,8 @@ public:
 	float m_flow1;
 	float m_flow2;
 
-	PORTSET_INI_STR m_portsetinfo;
+	PORTSET_INI_STR m_portsetinfo; //端口配置
+	PARASET_INI_STR m_parasetinfo; //参数设置(质量法-分量检测)
 
 	void closeEvent(QCloseEvent * event);
 	void initTemperatureCom(); //温度采集串口
@@ -51,10 +77,16 @@ public:
 	void initControlCom();     //阀门控制串口
 	void initHeatMeterCom1();  //热量表串口
 
+	void initValveStatus();	   //初始化阀门状态
+
 public slots:
-	void on_btnWaterIn_clicked();
-	void on_btnWaterOut_clicked();
-	void on_btnWaterValve1_clicked();
+	void on_btnWaterIn_clicked(); //进水阀
+	void on_btnWaterOut_clicked();//放水阀
+	void on_btnValveBig_clicked(); //大流量阀
+	void on_btnValveMiddle1_clicked(); //中流一
+	void on_btnValveMiddle2_clicked(); //中流二
+	void on_btnValveSmall_clicked(); //小流量阀
+	void on_btnWaterPump_clicked(); //水泵
 
 	void on_btnRegulate1_clicked();
 	void on_btnQueryStatus_clicked();

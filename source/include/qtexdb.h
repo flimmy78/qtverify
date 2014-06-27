@@ -16,14 +16,28 @@
 #  endif
 #endif
 
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
+#include <QtSql/QSqlDriver>
+#include <QtSql/QSqlError>
+
+#include "basedef.h"
+
 QTEXDB_EXPORT int testFunc(int a, int b);
 
-class QTEXDB_EXPORT CQtExdb
+class QTEXDB_EXPORT CBaseExdb
 {
 public:
-	CQtExdb();
-	~CQtExdb();
+	CBaseExdb();
+	~CBaseExdb();
 
+	QSqlDatabase db;
+
+	int startdb();
+	void closedb();
+
+	int getMeterStandard(int& num, MeterStandard_PTR &ptr);
+	int getMeterType(int& num, MeterType_PTR &ptr);
 
 private:
 

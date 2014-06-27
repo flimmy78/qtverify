@@ -32,14 +32,12 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 
 	m_tempObj = NULL;
 	m_tempTimer = NULL;
-	initTemperatureCom();	//初始化温度采集串口
+// 	initTemperatureCom();	//初始化温度采集串口
 
 	m_controlObj = NULL;
-// 	initControlCom();		//初始化控制串口
-	m_valveWaterInStatus = false;//进水阀门状态 false：关闭状态; true:打开状态 
-	setBtnBackColor(ui.btnWaterIn, m_valveWaterInStatus);
-	m_Valve1Status = false; //大流量点阀门状态
-	setBtnBackColor(ui.btnWaterValve1, m_Valve1Status);
+	initControlCom();		//初始化控制串口
+
+	initValveStatus();      //初始化阀门状态
 
 	m_balanceObj = NULL;
 // 	initBalanceCom();		//初始化天平串口
@@ -51,8 +49,8 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 	m_flow1 = 0.0;
 	m_flow2 = 0.0;
 
-	getPortSetIni(&m_portsetinfo); //获取下位机端口设置信息
-
+	getPortSetIni(&m_portsetinfo); //获取下位机端口配置信息
+	getParaSetIni(&m_parasetinfo); //获取参数设置信息
 }
 
 QualityDlg::~QualityDlg()
@@ -133,6 +131,52 @@ void QualityDlg::initControlCom()
 	connect(m_controlObj, SIGNAL(controlRegulateIsOk()), this, SLOT(slotSetRegulateOk()));
 }
 
+//初始化阀门状态
+void QualityDlg::initValveStatus()
+{
+	m_nowPortNo = 0;
+	m_nowPortIdx = 0;
+
+	for(int i=0; i<VALVE_NUM; i++)
+	{
+		m_valveStatus[i] = VALVE_CLOSE;
+	}
+	m_valveBtn[VALVE_IN_IDX] = ui.btnWaterIn;
+	m_valveBtn[VALVE_BIG_IDX] = ui.btnValveBig;
+	m_valveBtn[VALVE_MID1_IDX] = ui.btnValveMiddle1;
+	m_valveBtn[VALVE_MID2_IDX] = ui.btnValveMiddle2;
+	m_valveBtn[VALVE_SMALL_IDX] = ui.btnValveSmall;
+	m_valveBtn[VALVE_OUT_IDX] = ui.btnWaterOut;
+	m_valveBtn[VALVE_PUMP_IDX] = ui.btnWaterPump;
+
+	for(int i=0; i<VALVE_NUM; i++)
+	{
+		setBtnBackColor(m_valveBtn[i], m_valveStatus[i]);
+	}
+
+	
+/*	m_waterInStatus = VALVE_CLOSE;//进水阀门状态 
+	setBtnBackColor(ui.btnWaterIn, m_waterInStatus);
+
+	m_waterOutStatus = VALVE_CLOSE;//放水阀门状态  
+	setBtnBackColor(ui.btnWaterOut, m_waterOutStatus);
+
+	m_valveBigStatus = VALVE_CLOSE; //大流量点阀门状态
+	setBtnBackColor(ui.btnValveBig, m_valveBigStatus);
+
+	m_valveMiddle1Status = VALVE_CLOSE;//中流一阀门状态  
+	setBtnBackColor(ui.btnValveMiddle1, m_valveMiddle1Status);
+
+	m_valveMiddle2Status = VALVE_CLOSE; //中流二阀门状态
+	setBtnBackColor(ui.btnValveMiddle2, m_valveMiddle1Status);
+
+	m_valveSmallStatus = VALVE_CLOSE; //小流量点阀门状态
+	setBtnBackColor(ui.btnValveSmall, m_valveSmallStatus);
+
+	m_valvePumpStatus = VALVE_CLOSE; //水泵状态
+	setBtnBackColor(ui.btnWaterPump, m_valvePumpStatus);*/
+}
+
 //天平采集串口
 void QualityDlg::initBalanceCom()
 {
@@ -157,31 +201,70 @@ void QualityDlg::initHeatMeterCom1()
 // 	connect(m_meterObj1, SIGNAL(balanceValueIsReady(const QString &)), this, SLOT(slotFreshBalanceValue(const QString &)));
 }
 
-//控制继电器开断
+/*
+**	控制继电器开断
+*/
 void QualityDlg::on_btnWaterIn_clicked() //进水阀
 {
-	UINT8 portno = m_portsetinfo.waterInNo;
-	m_controlObj->makeRelaySendBuf(portno, !m_valveWaterInStatus);
+	m_nowPortIdx = VALVE_IN_IDX;
+	m_nowPortNo = m_portsetinfo.waterInNo;
+	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortIdx]);
 }
 
-void QualityDlg::on_btnWaterOut_clicked()
+void QualityDlg::on_btnWaterOut_clicked() //出水阀
 {
-	m_balanceObj->writeBalanceComBuffer(); //临时调试用(模拟天平连续发送数据) 写天平串口缓冲区
+	m_nowPortIdx = VALVE_OUT_IDX;
+	m_nowPortNo = m_portsetinfo.waterOutNo;
+	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortIdx]);
+
+// 	m_balanceObj->writeBalanceComBuffer(); //临时调试用(模拟天平连续发送数据) 写天平串口缓冲区
 }
 
-void QualityDlg::on_btnWaterValve1_clicked()
+void QualityDlg::on_btnValveBig_clicked() //大流量阀
 {
-	UINT8 portno = 2; //假设端口号为1
-	m_controlObj->makeRelaySendBuf(portno, !m_Valve1Status);
-	m_Valve1Status = !m_Valve1Status; //只测试用
-	setBtnBackColor(ui.btnWaterValve1, m_Valve1Status); //只测试用
+	m_nowPortIdx = VALVE_BIG_IDX;
+	m_nowPortNo = m_portsetinfo.bigNo;
+	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortIdx]);
 }
 
-//调节阀开度
-void QualityDlg::on_btnRegulate1_clicked()
+void QualityDlg::on_btnValveMiddle1_clicked() //中流一阀
 {
-	ui.btnRegulate1->setStyleSheet("background:light;border:0px;");  
-	UINT8 portno = m_portsetinfo.regflow1No; //
+	m_nowPortIdx = VALVE_MID1_IDX;
+	m_nowPortNo = m_portsetinfo.middle1No;
+	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortIdx]);
+
+}
+
+void QualityDlg::on_btnValveMiddle2_clicked() //中流二阀
+{
+	m_nowPortIdx = VALVE_MID2_IDX;
+	m_nowPortNo = m_portsetinfo.middle2No;
+	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortIdx]);
+
+}
+
+void QualityDlg::on_btnValveSmall_clicked() //小流量阀
+{
+	m_nowPortIdx = VALVE_SMALL_IDX;
+	m_nowPortNo = m_portsetinfo.smallNo;
+	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortIdx]);
+}
+
+void QualityDlg::on_btnWaterPump_clicked() //水泵
+{
+	m_nowPortIdx = VALVE_PUMP_IDX;
+	m_nowPortNo = m_portsetinfo.pumpNo;
+	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortIdx]);
+}
+
+
+/*
+**	调节阀开度
+*/
+void QualityDlg::on_btnRegulate1_clicked() //调节阀1
+{
+// 	ui.btnRegulate1->setStyleSheet("background:light;border:0px;");  
+	UINT8 portno = m_portsetinfo.regflow1No;
 	m_controlObj->makeRegulateSendBuf(portno, ui.spinBox1->value());
 }
 
@@ -221,8 +304,8 @@ void QualityDlg::slotFreshBalanceValue(const QString& Str)
 
 void QualityDlg::slotSetValveBtnStatus()
 {
-	m_valveWaterInStatus = !m_valveWaterInStatus;
-	setBtnBackColor(ui.btnWaterIn, m_valveWaterInStatus);
+	m_valveStatus[m_nowPortIdx] = !m_valveStatus[m_nowPortIdx];
+	setBtnBackColor(m_valveBtn[m_nowPortIdx], m_valveStatus[m_nowPortIdx]);
 }
 
 void QualityDlg::slotSetRegulateOk()
@@ -239,7 +322,7 @@ void QualityDlg::setBtnBackColor(QPushButton *btn, bool status)
 	}
 	else //阀门关闭 红色
 	{
-		btn->setStyleSheet("background:red;border:0px;");  
+		btn->setStyleSheet("background:lightgray;border:0px;");  
 		btn->setIcon(QIcon("close.png"));
 	}
 }

@@ -540,7 +540,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>260</x>
@@ -690,7 +690,7 @@
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QPushButton" name="btnWaterValve1">
+        <widget class="QPushButton" name="btnValveBig">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
            <horstretch>0</horstretch>
@@ -727,7 +727,7 @@
         </widget>
        </item>
        <item row="0" column="2">
-        <widget class="QPushButton" name="btnWaterValve2">
+        <widget class="QPushButton" name="btnValveMiddle1">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
            <horstretch>0</horstretch>
@@ -750,7 +750,8 @@
           <string>中
 流
 量
-阀</string>
+阀
+1</string>
          </property>
          <property name="autoDefault">
           <bool>false</bool>
@@ -764,7 +765,7 @@
         </widget>
        </item>
        <item row="0" column="3">
-        <widget class="QPushButton" name="btnWaterValve3">
+        <widget class="QPushButton" name="btnValveSmall">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
            <horstretch>0</horstretch>
@@ -801,7 +802,7 @@
         </widget>
        </item>
        <item row="0" column="4">
-        <widget class="QPushButton" name="btnWaterValve4">
+        <widget class="QPushButton" name="btnValveMiddle2">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
            <horstretch>0</horstretch>

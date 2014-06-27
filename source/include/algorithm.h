@@ -17,7 +17,8 @@
 
 #include "basedef.h"
 
-ALGORITHM_EXPORT int getPortSetIni(PORTSET_INI_PTR info);
+ALGORITHM_EXPORT int getPortSetIni(PORTSET_INI_PTR info); //端口配置
+ALGORITHM_EXPORT int getParaSetIni(PARASET_INI_PTR info); //参数设置(质量法-分量检测)
 
 class ALGORITHM_EXPORT CAlgorithm
 {
