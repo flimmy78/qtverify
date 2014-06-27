@@ -41,9 +41,9 @@ int getParaSetIni(PARASET_INI_PTR info)
 #endif
 
 	QSettings settings(filename, QSettings::IniFormat);
-	settings.setIniCodec("GBK");
-	strcpy(info->meterstandard, settings.value("paraset/standard").toString().toLocal8Bit());
-	strcpy(info->metertype, settings.value("paraset/metertype").toString().toLocal8Bit());
+	settings.setIniCodec("GB2312"); //解决ini文件读中文乱码
+	strcpy(info->meterstandard, settings.value("paraset/standard").toString().toAscii());
+	strcpy(info->metertype, settings.value("paraset/collectCode").toString().toAscii());
 
 	return true;
 }

@@ -51,6 +51,7 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 
 	getPortSetIni(&m_portsetinfo); //获取下位机端口配置信息
 	getParaSetIni(&m_parasetinfo); //获取参数设置信息
+	qDebug()<<"metertype:"<<m_parasetinfo.metertype;
 }
 
 QualityDlg::~QualityDlg()

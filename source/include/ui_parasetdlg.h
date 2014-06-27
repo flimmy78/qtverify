@@ -46,7 +46,7 @@ public:
     QComboBox *cmbCollectCode;
     QGridLayout *gridLayout_6;
     QLabel *label_9;
-    QComboBox *cmbManuCompany;
+    QComboBox *cmbManufacture;
     QLabel *label_10;
     QComboBox *cmbVerifyCompany;
     QGridLayout *gridLayout_5;
@@ -156,10 +156,10 @@ public:
 
         gridLayout_6->addWidget(label_9, 0, 0, 1, 1);
 
-        cmbManuCompany = new QComboBox(groupBox);
-        cmbManuCompany->setObjectName(QString::fromUtf8("cmbManuCompany"));
+        cmbManufacture = new QComboBox(groupBox);
+        cmbManufacture->setObjectName(QString::fromUtf8("cmbManufacture"));
 
-        gridLayout_6->addWidget(cmbManuCompany, 0, 1, 1, 1);
+        gridLayout_6->addWidget(cmbManufacture, 0, 1, 1, 1);
 
         label_10 = new QLabel(groupBox);
         label_10->setObjectName(QString::fromUtf8("label_10"));

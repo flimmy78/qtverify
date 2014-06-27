@@ -21,6 +21,16 @@ public:
 typedef PORTSET_INI_STR* PORTSET_INI_PTR;
 
 /*
+**      FUNCTION -- 获取质量法参数设置信息(qualityParaSet.ini文件)
+*/
+class PARASET_INI_STR{
+public:
+    char     meterstandard[8];               //表规格
+    char     metertype[24];					 //表类型
+};
+typedef PARASET_INI_STR* PARASET_INI_PTR;
+
+/*
 **      FUNCTION -- 热量表规格 
 */
 class MeterStandard_STR{
@@ -36,18 +46,8 @@ typedef MeterStandard_STR* MeterStandard_PTR;
 class MeterType_STR{
 public:
     int       id;                   //
-    char   name[24];					 //
+    char   name[24];				//
 };
 typedef MeterType_STR* MeterType_PTR;
-
-/*
-**      FUNCTION -- 获取质量法参数设置信息(qualityParaSet.ini文件)
-*/
-class PARASET_INI_STR{
-public:
-    char     meterstandard[8];                   //表规格
-    char     metertype[24];					 //表类型
-};
-typedef PARASET_INI_STR* PARASET_INI_PTR;
 
 #endif	//BASEDEF_H

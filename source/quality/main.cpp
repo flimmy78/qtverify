@@ -23,6 +23,10 @@ int main( int argc, char ** argv )
 {
 	QApplication app( argc, argv );
 
+	QTextCodec::setCodecForTr(QTextCodec::codecForName("GB2312"));
+	QTextCodec::setCodecForLocale(QTextCodec::codecForName("GB2312"));
+	QTextCodec::setCodecForCStrings( QTextCodec::codecForName("GB2312"));
+
 	QTranslator translator(0);
 	char *path = getenv("RUNHOME");
 	if (NULL != path) 
