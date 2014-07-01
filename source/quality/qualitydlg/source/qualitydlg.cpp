@@ -32,15 +32,15 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 
 	m_tempObj = NULL;
 	m_tempTimer = NULL;
-// 	initTemperatureCom();	//初始化温度采集串口
+ 	initTemperatureCom();	//初始化温度采集串口
 
 	m_controlObj = NULL;
 	initControlCom();		//初始化控制串口
-
 	initValveStatus();      //初始化阀门状态
+	initRegulateStatus();   //初始化调节阀状态
 
 	m_balanceObj = NULL;
-// 	initBalanceCom();		//初始化天平串口
+	initBalanceCom();		//初始化天平串口
 
 	m_meterObj1 = NULL;
 // 	initHeatMeterCom1();	//初始化热量表1串口
@@ -142,40 +142,40 @@ void QualityDlg::initValveStatus()
 	{
 		m_valveStatus[i] = VALVE_CLOSE;
 	}
+
 	m_valveBtn[VALVE_IN_IDX] = ui.btnWaterIn;
 	m_valveBtn[VALVE_BIG_IDX] = ui.btnValveBig;
 	m_valveBtn[VALVE_MID1_IDX] = ui.btnValveMiddle1;
 	m_valveBtn[VALVE_MID2_IDX] = ui.btnValveMiddle2;
 	m_valveBtn[VALVE_SMALL_IDX] = ui.btnValveSmall;
 	m_valveBtn[VALVE_OUT_IDX] = ui.btnWaterOut;
-	m_valveBtn[VALVE_PUMP_IDX] = ui.btnWaterPump;
 
-	for(int i=0; i<VALVE_NUM; i++)
+	for(int j=0; j<VALVE_NUM; j++)
 	{
-		setBtnBackColor(m_valveBtn[i], m_valveStatus[i]);
+		setValveBtnBackColor(m_valveBtn[j], m_valveStatus[j]);
+	}
+}
+
+//初始化调节阀状态
+void QualityDlg::initRegulateStatus()
+{
+	m_nowRegNo = 0;
+	m_nowRegIdx = 0;
+
+	for (int i=0; i<REGULATE_NUM; i++)
+	{
+		m_regStatus[i] = false;
 	}
 
-	
-/*	m_waterInStatus = VALVE_CLOSE;//进水阀门状态 
-	setBtnBackColor(ui.btnWaterIn, m_waterInStatus);
+	m_regBtn[REGULATE_1_IDX] = ui.btnRegulate1;
+// 	m_regBtn[REGULATE_2_IDX] = ;
+// 	m_regBtn[REGULATE_3_IDX] = ;
+	m_regBtn[REGULATE_PUMP_IDX] = ui.btnWaterPump;
 
-	m_waterOutStatus = VALVE_CLOSE;//放水阀门状态  
-	setBtnBackColor(ui.btnWaterOut, m_waterOutStatus);
-
-	m_valveBigStatus = VALVE_CLOSE; //大流量点阀门状态
-	setBtnBackColor(ui.btnValveBig, m_valveBigStatus);
-
-	m_valveMiddle1Status = VALVE_CLOSE;//中流一阀门状态  
-	setBtnBackColor(ui.btnValveMiddle1, m_valveMiddle1Status);
-
-	m_valveMiddle2Status = VALVE_CLOSE; //中流二阀门状态
-	setBtnBackColor(ui.btnValveMiddle2, m_valveMiddle1Status);
-
-	m_valveSmallStatus = VALVE_CLOSE; //小流量点阀门状态
-	setBtnBackColor(ui.btnValveSmall, m_valveSmallStatus);
-
-	m_valvePumpStatus = VALVE_CLOSE; //水泵状态
-	setBtnBackColor(ui.btnWaterPump, m_valvePumpStatus);*/
+	for (int j=0; j<REGULATE_NUM; j++)
+	{
+		setRegBtnBackColor(m_regBtn[j], m_regStatus[j]);
+	}
 }
 
 //天平采集串口
@@ -251,22 +251,24 @@ void QualityDlg::on_btnValveSmall_clicked() //小流量阀
 	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortIdx]);
 }
 
+/*
+**	调节阀开度、水泵(变频器频率)
+*/
 void QualityDlg::on_btnWaterPump_clicked() //水泵
 {
-	m_nowPortIdx = VALVE_PUMP_IDX;
-	m_nowPortNo = m_portsetinfo.pumpNo;
-	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortIdx]);
+	m_nowRegIdx = REGULATE_PUMP_IDX;
+	m_nowRegNo = m_portsetinfo.pumpNo;
+	setRegBtnBackColor(m_regBtn[m_nowRegIdx], false); //初始化调节阀背景色
+	m_controlObj->makeRegulateSendBuf(m_nowRegNo, ui.spinBox1->value());
 }
 
-
-/*
-**	调节阀开度
-*/
 void QualityDlg::on_btnRegulate1_clicked() //调节阀1
 {
 // 	ui.btnRegulate1->setStyleSheet("background:light;border:0px;");  
-	UINT8 portno = m_portsetinfo.regflow1No;
-	m_controlObj->makeRegulateSendBuf(portno, ui.spinBox1->value());
+	m_nowRegIdx = REGULATE_1_IDX;
+	m_nowRegNo = m_portsetinfo.regflow1No;
+	setRegBtnBackColor(m_regBtn[m_nowRegIdx], false); //初始化调节阀背景色
+	m_controlObj->makeRegulateSendBuf(m_nowRegNo, ui.spinBox1->value());
 }
 
 //查询从机状态
@@ -292,8 +294,8 @@ void QualityDlg::on_btnExit_clicked()
 
 void QualityDlg::slotFreshComTempValue(const QString& tempStr)
 {
-	ui.lnEditTempIn->setText(tempStr.right(DATA_WIDTH)); //入口温度 PV
-	ui.lnEditTempOut->setText(tempStr.left(DATA_WIDTH)); //出口温度 SV
+	ui.lnEditTempIn->setText(tempStr.left(DATA_WIDTH)); //入口温度 PV
+	ui.lnEditTempOut->setText(tempStr.right(DATA_WIDTH)); //出口温度 SV
 }
 
 void QualityDlg::slotFreshBalanceValue(const QString& Str)
@@ -303,19 +305,26 @@ void QualityDlg::slotFreshBalanceValue(const QString& Str)
 	ui.lnEditSmallBalance->setText(QString("%1").arg(v, 9, 'f', 4));
 }
 
+//响应阀门状态设置成功
 void QualityDlg::slotSetValveBtnStatus()
 {
 	m_valveStatus[m_nowPortIdx] = !m_valveStatus[m_nowPortIdx];
-	setBtnBackColor(m_valveBtn[m_nowPortIdx], m_valveStatus[m_nowPortIdx]);
+	setValveBtnBackColor(m_valveBtn[m_nowPortIdx], m_valveStatus[m_nowPortIdx]);
 }
 
+//响应调节阀调节成功
 void QualityDlg::slotSetRegulateOk()
 {
-	setBtnBackColor(ui.btnRegulate1, true);
+	setValveBtnBackColor(m_regBtn[m_nowRegIdx], true);
 }
 
-void QualityDlg::setBtnBackColor(QPushButton *btn, bool status)
+//设置阀门按钮背景色
+void QualityDlg::setValveBtnBackColor(QPushButton *btn, bool status)
 {
+	if (NULL == btn)
+	{
+		return;
+	}
 	if (status) //阀门打开 绿色
 	{
 		btn->setStyleSheet("background:green;border:0px;");  
@@ -323,8 +332,25 @@ void QualityDlg::setBtnBackColor(QPushButton *btn, bool status)
 	}
 	else //阀门关闭 红色
 	{
-		btn->setStyleSheet("background:lightgray;border:0px;");  
+		btn->setStyleSheet("background:red;border:0px;");  
 		btn->setIcon(QIcon("close.png"));
+	}
+}
+
+//设置调节阀按钮背景色
+void QualityDlg::setRegBtnBackColor(QPushButton *btn, bool status)
+{
+	if (NULL == btn)
+	{
+		return;
+	}
+	if (status) //调节成功
+	{
+		btn->setStyleSheet("background:blue;border:0px;");  
+	}
+	else //调节失败
+	{
+		btn->setStyleSheet("background:lightgray;border:0px;");  
 	}
 }
 
@@ -334,12 +360,14 @@ void QualityDlg::slotFreshFlow()
 	float flowValue = 0.0;
 	if (m_flowcount == 0)
 	{
-		m_flow1 = ui.lnEditBigBalance->text().toFloat();
+		QString a1 = ui.lnEditBigBalance->text();
+		m_flow1 = ui.lnEditBigBalance->text().right(9).toFloat();
 	}
 	m_flowcount ++;
 	if (m_flowcount == 20) //20*TIMEOUT_TEMPER
 	{
-		m_flow2 = ui.lnEditBigBalance->text().toFloat();
+		QString a2 = ui.lnEditBigBalance->text(); 
+		m_flow2 = ui.lnEditBigBalance->text().right(9).toFloat();
 		m_flowcount = 0;
 		flowValue = 3.6*(m_flow2 - m_flow1)/(20*TIMEOUT_TEMPER);
 		ui.lnEditFlow->setText(QString("%1").arg(flowValue));

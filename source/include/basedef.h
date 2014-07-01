@@ -12,11 +12,10 @@ public:
     int     middle2No;                     //
     int     smallNo;                     //
     int     waterOutNo;                  //
-	int     pumpNo;
 	int		regflow1No;
 	int		regflow2No;
 	int		regflow3No;
-	int		regflow4No;
+	int     pumpNo;
 };
 typedef PORTSET_INI_STR* PORTSET_INI_PTR;
 

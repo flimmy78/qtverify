@@ -219,12 +219,12 @@ void TempProtocol::analyseFrame()
 	QString pvStr = QString("%1").arg(PV, DATA_WIDTH, 'f', DATA_PRECISION);
 	QString svStr = QString("%1").arg(SV, DATA_WIDTH, 'f', DATA_PRECISION);
 	m_tempStr = pvStr + svStr;
-	qDebug()<<"TempProtocol::analyseFrame thread:"<<QThread::currentThreadId();
+// 	qDebug()<<"TempProtocol::analyseFrame thread:"<<QThread::currentThreadId();
 }
 
 QString TempProtocol::getTempStr()
 {
-	qDebug()<<"TempProtocol::getTempStr thread:"<<QThread::currentThreadId();
+// 	qDebug()<<"TempProtocol::getTempStr thread:"<<QThread::currentThreadId();
 	return m_tempStr;
 }
 
@@ -334,15 +334,19 @@ void ControlProtocol::makeRelaySendBuf(UINT8 portno, bool status)
 
 
 //控制调节阀 同时只控制一路
-void ControlProtocol::makeRegulateSendBuf(UINT8 portno, int degree)
+void ControlProtocol::makeRegulateSendBuf(UINT8 portno, UINT16 degree)
 {
 	m_sendBuf = "";
 	m_sendBuf.append(START_CODE).append(FUNC_REGULATE);
 	float a = 2;
 	UINT8 regulate_num = (UINT8)pow(a, (portno-1)); //控制的调节阀数量 只控制1路
 	m_sendBuf.append(regulate_num);
-	UINT8 dataL = 0x66; //开度 低字节 需要实验和计算得到
-	UINT8 dataH = 0x88; //开度 高字节
+	QString degStr = QString("%1").arg(degree, 4, 16).replace(" ", "0");
+	bool ok;
+	UINT8 dataL = degStr.right(2).toUInt(&ok, 16);//开度 低字节 需要实验和计算得到
+	UINT8 dataH = degStr.left(2).toUInt(&ok, 16); //开度 高字节
+// 	UINT8 dataL = 0x66;
+// 	UINT8 dataH = 0x01;
 	m_sendBuf.append(dataL).append(dataH);
 	UINT8 cs = START_CODE + FUNC_REGULATE + regulate_num + dataL + dataH;
 	m_sendBuf.append(cs).append(END_CODE);

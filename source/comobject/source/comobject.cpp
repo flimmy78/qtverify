@@ -127,7 +127,7 @@ void TempComObject::openTemperatureCom(ComInfoStruct *comStruct)
 //请求温度
 void TempComObject::writeTemperatureComBuffer()
 {
- 	qDebug()<<"TempComObject::writeTemperatureComBuffer thread:"<<QThread::currentThreadId();
+// 	qDebug()<<"TempComObject::writeTemperatureComBuffer thread:"<<QThread::currentThreadId();
 	m_tempProtocol->makeSendBuf();
 	QByteArray buf = m_tempProtocol->getSendBuf();
 	m_tempCom->write(buf);
@@ -137,7 +137,7 @@ void TempComObject::writeTemperatureComBuffer()
 void TempComObject::readTemperatureComBuffer()
 {
 	QByteArray tmp = m_tempCom->readAll();
- 	qDebug()<<"read TemperatureComBuffer thread:"<<QThread::currentThreadId();
+// 	qDebug()<<"read TemperatureComBuffer thread:"<<QThread::currentThreadId();
 
 	bool ret = false;
 	ret = m_tempProtocol->readTemperComBuffer(tmp); //通讯协议接口
@@ -258,17 +258,17 @@ void ControlComObject::readControlComBuffer()
 	UINT8 ret = 0x00;
 	ret = m_controlProtocol->readControlComBuffer(m_conTmp);
 	m_conTmp.clear(); //清零
-	if (ret == FUNC_RELAY)
+	if (ret == FUNC_RELAY) //继电器
 	{
 		qDebug()<<"controlRelayIsOk"<<"\n";
 		emit controlRelayIsOk();
 	}
-	if (ret == FUNC_REGULATE)
+	if (ret == FUNC_REGULATE) //调节阀
 	{
 		qDebug()<<"controlRegulateIsOk"<<"\n";
 		emit controlRegulateIsOk();
 	}
-	if (ret == FUNC_QUERY)
+	if (ret == FUNC_QUERY) //查询
 	{
 		m_conFrame = m_controlProtocol->getConFrame();
 	}
@@ -372,7 +372,7 @@ void BalanceComObject::readBalanceComBuffer()
 // 	{
 // 		return;
 // 	}
-	if (num ==22 && m_balTmp.at(num-1) == ASCII_LF && m_balTmp.at(num-2) == ASCII_CR ) //最后两个字节是回车符和换行符
+	if (num >=22 && m_balTmp.at(num-1) == ASCII_LF && m_balTmp.at(num-2) == ASCII_CR ) //最后两个字节是回车符和换行符
 	{
 // 		QByteArray tmp = m_balanceCom->readAll();
 		qDebug()<<"readBalanceComBuffer thread:"<<QThread::currentThreadId()<<", Read data is:"<<m_balTmp;

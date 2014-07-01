@@ -149,7 +149,7 @@ public:
 
 public slots:
 	void makeRelaySendBuf(UINT8 portno, bool status);
-	void makeRegulateSendBuf(UINT8 portno, int degree);
+	void makeRegulateSendBuf(UINT8 portno, UINT16 degree);
 	void makeQuerySendBuf();
 	QByteArray getSendBuf();
 	UINT8 readControlComBuffer(QByteArray tmp);
