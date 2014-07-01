@@ -12,7 +12,7 @@
 #include "SetComFrm.h"
 #include "qualitydlg.h"
 #include "mythread.h"
-
+#include "SetPortFrm.h"
 
 class MainForm : public QMainWindow
 {
@@ -26,9 +26,10 @@ public:
 	DbSqlite *dbsqliteobj;
 	MonsterInterface *m_monster;
 	CAlgorithm *m_alg;
-	SetComFrm *m_setcom;
+	SetComFrm *m_setcom; //串口参数设置
 	ComSetDlg *m_spset;
 	QualityDlg *m_qualitydlg;
+	SetPortFrm *m_portSet; //端口模块设置
 
 
 public slots:
@@ -36,6 +37,7 @@ public slots:
 	void on_action_mysql_triggered();
 	void on_action_sqlite_triggered();
 	void on_actionComSet_triggered();
+	void on_actionPortSet_triggered();
 	void on_action_queryExcel_triggered();
 	void on_actionPlugin_triggered();
 	void on_actionQualityComp_triggered();

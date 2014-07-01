@@ -19,6 +19,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_spset = NULL;
 	m_setcom = NULL;
 	m_qualitydlg = NULL;
+	m_portSet = NULL;
 
 	connect(ui.btnExit, SIGNAL(clicked()), this, SLOT(close()));
 
@@ -62,6 +63,12 @@ MainForm::~MainForm()
 		m_setcom = NULL;
 	}
 
+	if (m_portSet)
+	{
+		delete m_portSet;
+		m_portSet = NULL;
+	}
+
 	if (m_qualitydlg)
 	{
 		delete m_qualitydlg;
@@ -85,6 +92,15 @@ void MainForm::on_actionComSet_triggered()
 		m_setcom = new SetComFrm();
 	}
 	m_setcom->show();
+}
+
+void MainForm::on_actionPortSet_triggered()
+{
+	if (NULL == m_portSet)
+	{
+		m_portSet = new SetPortFrm();
+	}
+	m_portSet->show();
 }
 
 void MainForm::on_action_mysql_triggered()
