@@ -315,7 +315,7 @@ void QualityDlg::slotSetValveBtnStatus()
 //响应调节阀调节成功
 void QualityDlg::slotSetRegulateOk()
 {
-	setValveBtnBackColor(m_regBtn[m_nowRegIdx], true);
+	setRegBtnBackColor(m_regBtn[m_nowRegIdx], true);
 }
 
 //设置阀门按钮背景色

@@ -459,7 +459,7 @@ public:
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         spinBox1 = new QSpinBox(layoutWidget);
         spinBox1->setObjectName(QString::fromUtf8("spinBox1"));
-        spinBox1->setMaximum(100);
+        spinBox1->setMaximum(9999);
 
         horizontalLayout_3->addWidget(spinBox1);
 
