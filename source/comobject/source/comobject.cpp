@@ -165,6 +165,7 @@ ControlComObject::ControlComObject(QObject* parent) : ComObject(parent)
 	memset(m_conFrame, 0, sizeof(Con_Frame_Struct));
 
 	m_conTmp = "";
+	m_balValue = "";
 }
 
 ControlComObject::~ControlComObject()
@@ -247,7 +248,8 @@ void ControlComObject::makeQuerySendBuf()
 
 void ControlComObject::readControlComBuffer()
 {
-	qDebug()<<"readControlComBuffer ControlComObject thread:"<<QThread::currentThreadId();
+// 	qDebug()<<"readControlComBuffer ControlComObject thread:"<<QThread::currentThreadId();
+	QDateTime begintime = QDateTime::currentDateTime();
 	m_conTmp.append(m_controlCom->readAll());
 	int num = m_conTmp.size();
 	if (m_conTmp.at(num-1) != END_CODE) //一帧接收完毕
@@ -271,6 +273,14 @@ void ControlComObject::readControlComBuffer()
 	if (ret == FUNC_QUERY) //查询
 	{
 		m_conFrame = m_controlProtocol->getConFrame();
+	}
+	if (ret == FUNC_BALANCE) //天平
+	{
+		m_balValue = m_controlProtocol->getBalanceValue();
+		emit controlGetBalanceValueIsOk(m_balValue);
+		QDateTime endtime = QDateTime::currentDateTime();
+		UINT32 usedSec = begintime.msecsTo(endtime);
+// 		qDebug()<<"读取天平数据，用时"<<usedSec<<"毫秒";
 	}
 }
 
@@ -368,17 +378,13 @@ void BalanceComObject::readBalanceComBuffer()
 {
 	m_balTmp.append(m_balanceCom->readAll());
 	int num = m_balTmp.size();
-// 	if (num < 22 ) //赛多利斯天平 一帧22字节
-// 	{
-// 		return;
-// 	}
-	if (num >=22 && m_balTmp.at(num-1) == ASCII_LF && m_balTmp.at(num-2) == ASCII_CR ) //最后两个字节是回车符和换行符
+
+	if (num>=BAL_DATA_LENGTH && m_balTmp.at(num-1)==ASCII_LF && m_balTmp.at(num-2)==ASCII_CR ) //最后两个字节是回车符和换行符
 	{
-// 		QByteArray tmp = m_balanceCom->readAll();
-		qDebug()<<"readBalanceComBuffer thread:"<<QThread::currentThreadId()<<", Read data is:"<<m_balTmp;
+// 		qDebug()<<"readBalanceComBuffer thread:"<<QThread::currentThreadId()<<", Read data is:"<<m_balTmp;
 
 		bool ret = false;
-		ret = m_balanceProtocol->readBalanceComBuffer(m_balTmp); //通讯协议接口
+		ret = m_balanceProtocol->readBalanceComBuffer(m_balTmp.right(BAL_DATA_LENGTH)); //通讯协议接口
 		m_balTmp.clear();
 		if (ret)
 		{

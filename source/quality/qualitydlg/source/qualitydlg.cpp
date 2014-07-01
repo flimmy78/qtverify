@@ -32,7 +32,7 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 
 	m_tempObj = NULL;
 	m_tempTimer = NULL;
- 	initTemperatureCom();	//初始化温度采集串口
+	initTemperatureCom();	//初始化温度采集串口
 
 	m_controlObj = NULL;
 	initControlCom();		//初始化控制串口
@@ -130,6 +130,9 @@ void QualityDlg::initControlCom()
 
 	connect(m_controlObj, SIGNAL(controlRelayIsOk()), this, SLOT(slotSetValveBtnStatus()));
 	connect(m_controlObj, SIGNAL(controlRegulateIsOk()), this, SLOT(slotSetRegulateOk()));
+	connect(m_controlObj, SIGNAL(controlGetBalanceValueIsOk(const QString&)), this, SLOT(slotFreshBalanceValue(const QString &)));
+// 	connect(m_controlObj, SIGNAL(controlGetBalanceValueIsOk(const QString&)), this, SLOT(slotFreshFlow()));
+
 }
 
 //初始化阀门状态
@@ -294,15 +297,15 @@ void QualityDlg::on_btnExit_clicked()
 
 void QualityDlg::slotFreshComTempValue(const QString& tempStr)
 {
-	ui.lnEditTempIn->setText(tempStr.left(DATA_WIDTH)); //入口温度 PV
+	ui.lnEditTempIn->setText(tempStr.left(DATA_WIDTH));   //入口温度 PV
 	ui.lnEditTempOut->setText(tempStr.right(DATA_WIDTH)); //出口温度 SV
 }
 
 void QualityDlg::slotFreshBalanceValue(const QString& Str)
 {
 	ui.lnEditBigBalance->setText(Str);
-	double v = ui.lnEditBigBalance->text().toDouble();
-	ui.lnEditSmallBalance->setText(QString("%1").arg(v, 9, 'f', 4));
+// 	double v = ui.lnEditBigBalance->text().toDouble();
+// 	ui.lnEditBigBalance->setText(QString("%1").arg(v, 9, 'f', 4));
 }
 
 //响应阀门状态设置成功
@@ -358,19 +361,25 @@ void QualityDlg::setRegBtnBackColor(QPushButton *btn, bool status)
 void QualityDlg::slotFreshFlow()
 {
 	float flowValue = 0.0;
+	int length = ui.lnEditBigBalance->text().length();
 	if (m_flowcount == 0)
 	{
 		QString a1 = ui.lnEditBigBalance->text();
-		m_flow1 = ui.lnEditBigBalance->text().right(9).toFloat();
+		m_flow1 = ui.lnEditBigBalance->text().right(length-1).toFloat();
+		qDebug()<<"初始重量："<<m_flow1;
 	}
 	m_flowcount ++;
-	if (m_flowcount == 20) //20*TIMEOUT_TEMPER
+	if (m_flowcount == CALC_FLOW_COUNT) //实际计算频率 = CALC_FLOW_COUNT*TIMEOUT_TEMPER
 	{
 		QString a2 = ui.lnEditBigBalance->text(); 
-		m_flow2 = ui.lnEditBigBalance->text().right(9).toFloat();
+		m_flow2 = ui.lnEditBigBalance->text().right(length-1).toFloat();
+		qDebug()<<"结束重量："<<m_flow2;
 		m_flowcount = 0;
-		flowValue = 3.6*(m_flow2 - m_flow1)/(20*TIMEOUT_TEMPER);
-		ui.lnEditFlow->setText(QString("%1").arg(flowValue));
+		flowValue = 3.6*(m_flow2 - m_flow1)*1000/(CALC_FLOW_COUNT*TIMEOUT_TEMPER);
+		float difFlow = m_flow2 - m_flow1;
+		qDebug()<<"重量差值："<<difFlow;
+		qDebug()<<"流量："<<flowValue<<"\n";
+		ui.lnEditFlow->setText(QString("%1").arg(flowValue, 6, 'g', 4));
 	}
 }
 

@@ -90,8 +90,8 @@ private:
 
 
 //天平协议 begin
-#define    ASCII_CR			0x0D	//回车键
-#define    ASCII_LF			0x0A	//换行键
+#define    ASCII_CR				0x0D	//回车键
+#define    ASCII_LF				0x0A	//换行键
 
 class PROTOCOL_EXPORT BalanceProtocol : public CProtocol
 {
@@ -116,6 +116,7 @@ private:
 #define		FUNC_RELAY		0x01		//功能码-继电器控制
 #define		FUNC_REGULATE   0x02		//功能码-调节阀控制
 #define     FUNC_QUERY		0x03		//功能码-查询
+#define     FUNC_BALANCE	0x04		//功能码-获取天平重量
 
 
 #define START_STATE		0x00
@@ -127,6 +128,7 @@ private:
 #define		DATA_LENGTH			55  //数据区字节个数(最多55个)
 #define		RELAY_DATA_LENGTH	5	//继电器控制 数据区字节个数
 #define		REGU_DATA_LENGTH	3   //调节阀控制 数据区字节个数
+#define     BAL_DATA_LENGTH		22	//天平	数据区字节个数
 typedef struct  
 {
 	UINT8 startCode;	//起始码
@@ -141,6 +143,7 @@ class PROTOCOL_EXPORT ControlProtocol : public CProtocol
 
 	QByteArray m_sendBuf;
 	Con_Frame_Struct *m_conFrame;
+	QString m_balValueStr;
 
 public:
 	ControlProtocol();
@@ -156,6 +159,7 @@ public slots:
 	UINT8 CountCheck(Con_Frame_Struct *pFrame);
 	void analyseFrame();
 	Con_Frame_Struct* getConFrame();
+	QString getBalanceValue();
 
 private:
 };

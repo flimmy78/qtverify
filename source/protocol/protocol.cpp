@@ -291,6 +291,8 @@ ControlProtocol::ControlProtocol()
 
 	m_conFrame = new Con_Frame_Struct();
 	memset(m_conFrame, 0, sizeof(Con_Frame_Struct));
+
+	m_balValueStr = "";
 }
 
 ControlProtocol::~ControlProtocol()
@@ -373,7 +375,7 @@ QByteArray ControlProtocol::getSendBuf()
 //解帧
 UINT8 ControlProtocol::readControlComBuffer(QByteArray tmp)
 {
-	qDebug()<<"readControlComBuffer ControlProtocol thread:"<<QThread::currentThreadId();
+// 	qDebug()<<"readControlComBuffer ControlProtocol thread:"<<QThread::currentThreadId();
 	UINT8 ret = 0x00;
 	int state = START_STATE;
 	UINT8 ch = 0; //无符号8位数字
@@ -385,7 +387,7 @@ UINT8 ControlProtocol::readControlComBuffer(QByteArray tmp)
 	for (m=0; m<number; m++)
 	{
 		ch = (UINT8)tmp.at(m);
-		qDebug()<<"read data is:"<<ch;
+// 		qDebug()<<"read data is:"<<ch;
 		switch(state)
 		{
 		case START_STATE: //8位无符号
@@ -411,9 +413,15 @@ UINT8 ControlProtocol::readControlComBuffer(QByteArray tmp)
 					state = DATA_STATE;
 					break;
 				}
-				if (ch = FUNC_QUERY) //功能码-查询
+				if (ch == FUNC_QUERY) //功能码-查询
 				{
 					m_conFrame->funcCode = FUNC_QUERY;
+					state = DATA_STATE;
+					break;
+				}
+				if (ch == FUNC_BALANCE) //功能码-天平采集
+				{
+					m_conFrame->funcCode = FUNC_BALANCE;
 					state = DATA_STATE;
 					break;
 				}
@@ -422,7 +430,7 @@ UINT8 ControlProtocol::readControlComBuffer(QByteArray tmp)
 
 		case DATA_STATE: //8位无符号
 			{
-				if (m_conFrame->funcCode == FUNC_RELAY)
+				if (m_conFrame->funcCode == FUNC_RELAY) //继电器
 				{
 					m_conFrame->data[num_i++] = ch;
 					if (num_i == RELAY_DATA_LENGTH)
@@ -431,7 +439,7 @@ UINT8 ControlProtocol::readControlComBuffer(QByteArray tmp)
 						num_i = 0;
 					}
 				}
-				if (m_conFrame->funcCode == FUNC_REGULATE)
+				if (m_conFrame->funcCode == FUNC_REGULATE) //调节阀
 				{
 					m_conFrame->data[num_i++] = ch;
 					if (num_i == REGU_DATA_LENGTH)
@@ -440,10 +448,19 @@ UINT8 ControlProtocol::readControlComBuffer(QByteArray tmp)
 						num_i = 0;
 					}
 				}
-				if (m_conFrame->funcCode == FUNC_QUERY)
+				if (m_conFrame->funcCode == FUNC_QUERY)  //查询
 				{
 					m_conFrame->data[num_i++] = ch;
 					if (num_i == DATA_LENGTH)
+					{
+						state = CS_STATE;
+						num_i = 0;
+					}
+				}
+				if (m_conFrame->funcCode == FUNC_BALANCE)  //天平
+				{
+					m_conFrame->data[num_i++] = ch;
+					if (num_i == BAL_DATA_LENGTH)
 					{
 						state = CS_STATE;
 						num_i = 0;
@@ -466,7 +483,7 @@ UINT8 ControlProtocol::readControlComBuffer(QByteArray tmp)
 				if (ck == m_conFrame->check) //校验通过
 				{
 					analyseFrame();
-					qDebug()<<"check is ok 校验通过";
+// 					qDebug()<<"check is ok 校验通过";
 					ret = m_conFrame->funcCode; //以功能码返回，便于区分
 				}
 				break;
@@ -512,16 +529,49 @@ UINT8 ControlProtocol::CountCheck(Con_Frame_Struct *pFrame)
 			cs += pFrame->data[i];
 		}
 	}
+	if (pFrame->funcCode == FUNC_BALANCE)
+	{
+		for (i=0; i<BAL_DATA_LENGTH; i++)
+		{
+			cs += pFrame->data[i];
+		}
+	}
 
 	return cs;
 }
 
 void ControlProtocol::analyseFrame()
 {
+	if (NULL==m_conFrame)
+	{
+		return;
+	}
 
+	if (m_conFrame->funcCode == FUNC_BALANCE) //天平采集
+	{
+		m_balValueStr = ""; //先清零
+		char ch;
+		UINT8 ch1, ch2;
+		ch1 = m_conFrame->data[BAL_DATA_LENGTH-1];
+		ch2 = m_conFrame->data[BAL_DATA_LENGTH-2];
+		if (ch1==ASCII_LF && ch2==ASCII_CR) //0x0A换行; 0x0D回车（表示一帧结束）
+		{
+			for (int i=6; i<16; i++)
+			{
+				ch = m_conFrame->data[i];
+				m_balValueStr += ch;
+			}
+// 			m_balValueStr.replace(" ", "0");
+		}
+	}
 }
 
 Con_Frame_Struct * ControlProtocol::getConFrame()
 {
 	return m_conFrame;
+}
+
+QString ControlProtocol::getBalanceValue()
+{
+	return m_balValueStr;
 }

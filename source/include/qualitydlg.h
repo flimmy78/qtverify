@@ -10,7 +10,8 @@
 #include "ReadComConfig.h"
 #include "algorithm.h"
 
-#define TIMEOUT_TEMPER  500 //每0.5秒钟请求一次温度值
+#define TIMEOUT_TEMPER		500 //每0.5秒钟请求一次温度值
+#define CALC_FLOW_COUNT		2   //计算流量频率（实际计算频率 = CALC_FLOW_COUNT * TIMEOUT_TEMPER）
 
 #define VALVE_OPEN		true	//阀门打开状态
 #define VALVE_CLOSE		false   //阀门关闭状态

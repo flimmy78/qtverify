@@ -100,10 +100,12 @@ public:
 	ControlProtocol *m_controlProtocol;   //下位机控制通讯协议类对象
 	Con_Frame_Struct *m_conFrame;
 	QByteArray m_conTmp;
+	QString m_balValue;
 
 signals:
 	void controlRelayIsOk();
 	void controlRegulateIsOk();
+	void controlGetBalanceValueIsOk(const QString& balValue);
 
 public slots:
 	void openControlCom(ComInfoStruct *comStruct);
