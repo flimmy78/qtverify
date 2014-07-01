@@ -1,0 +1,1424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SetPortFrm</class>
+ <widget class="QWidget" name="SetPortFrm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>399</width>
+    <height>260</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>SetPortFrm</string>
+  </property>
+  <widget class="QGroupBox" name="gBox_Valve">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>171</width>
+     <height>211</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>阀门</string>
+   </property>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>54</width>
+      <height>12</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>进水总阀</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>60</y>
+      <width>54</width>
+      <height>12</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>放水总阀</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>90</y>
+      <width>54</width>
+      <height>12</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>大流量阀</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>120</y>
+      <width>61</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>中二流量阀</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>150</y>
+      <width>61</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>中一流量阀</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>180</y>
+      <width>54</width>
+      <height>12</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>小流量阀</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cBox_Inlet">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>20</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>端口1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口2</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口3</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口4</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口5</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口6</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口7</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口8</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口9</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口10</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口11</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口12</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口13</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口14</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口15</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口16</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口17</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口18</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口19</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口20</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="cBox_Outlet">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>50</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>端口1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口2</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口3</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口4</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口5</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口6</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口7</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口8</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口9</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口10</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口11</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口12</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口13</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口14</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口15</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口16</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口17</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口18</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口19</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口20</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="cBox_Rate_1">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>80</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>端口1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口2</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口3</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口4</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口5</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口6</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口7</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口8</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口9</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口10</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口11</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口12</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口13</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口14</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口15</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口16</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口17</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口18</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口19</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口20</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="cBox_Rate_2">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>110</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>端口1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口2</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口3</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口4</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口5</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口6</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口7</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口8</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口9</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口10</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口11</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口12</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口13</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口14</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口15</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口16</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口17</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口18</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口19</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口20</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="cBox_Rate_3">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>140</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>端口1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口2</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口3</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口4</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口5</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口6</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口7</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口8</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口9</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口10</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口11</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口12</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口13</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口14</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口15</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口16</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口17</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口18</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口19</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口20</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="cBox_Rate_4">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>170</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>端口1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口2</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口3</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口4</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口5</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口6</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口7</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口8</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口9</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口10</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口11</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口12</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口13</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口14</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口15</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口16</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口17</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口18</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口19</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口20</string>
+     </property>
+    </item>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="btn_Save">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>220</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>保存</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="gBox_Dev">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>10</y>
+     <width>171</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>设备</string>
+   </property>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>54</width>
+      <height>12</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>水泵</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>60</y>
+      <width>54</width>
+      <height>12</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>调节阀1</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>90</y>
+      <width>54</width>
+      <height>12</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>调节阀2</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cBox_Pump">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>20</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>端口1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口2</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口3</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口4</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口5</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口6</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口7</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口8</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口9</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口10</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口11</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口12</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口13</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口14</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口15</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口16</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口17</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口18</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口19</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口20</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="cBox_Regulate_1">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>50</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>端口1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口2</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口3</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口4</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口5</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口6</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口7</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口8</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口9</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口10</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口11</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口12</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口13</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口14</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口15</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口16</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口17</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口18</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口19</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口20</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="cBox_Regulate_2">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>80</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>端口1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口2</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口3</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口4</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口5</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口6</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口7</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口8</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口9</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口10</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口11</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口12</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口13</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口14</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口15</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口16</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口17</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口18</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口19</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口20</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="cBox_Regulate_3">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>110</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>端口1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口2</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口3</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口4</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口5</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口6</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口7</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口8</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口9</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口10</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口11</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口12</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口13</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口14</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口15</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口16</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口17</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口18</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口19</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口20</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="cBox_Regulate_4">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>140</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>端口1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口2</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口3</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口4</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口5</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口6</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口7</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口8</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口9</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口10</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口11</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口12</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口13</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口14</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口15</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口16</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口17</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口18</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口19</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>端口20</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>120</y>
+      <width>54</width>
+      <height>12</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>调节阀3</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>150</y>
+      <width>54</width>
+      <height>12</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>调节阀4</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="btn_Exit">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>220</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>退出</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
