@@ -220,7 +220,7 @@ QVector<QString>  SetComFrm::ReadGBoxSet(QGroupBox *gBox)
 	QString bits ;
 	QString chk_bit ;
 	QString end_bit ;
-	QString sep="#SEP#";//分隔符，用于分隔界面值和索引值
+	const QString sep="#SEP#";//分隔符，用于分隔界面值和索引值
 	const QObjectList list=gBox->children();
 	foreach(QObject* obj, list)
 	{

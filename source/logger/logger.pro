@@ -6,7 +6,9 @@ TEMPLATE = lib
 CONFIG += dll console debug
 TARGET = logger
 DEPENDPATH += .
-INCLUDEPATH += .
+INCLUDEPATH  	+=    ./      \
+									 include \ 
+									 $$(RUNHOME_INC)/include \
 DEFINES	+= LOGGER_DLL
 
 QMAKE_LIBDIR +=  ./             \

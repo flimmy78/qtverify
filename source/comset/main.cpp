@@ -1,6 +1,9 @@
 #include <QtGui/QApplication>
 #include <QtCore/QTranslator>
+#include <QSettings>
+#include <QtCore/QPoint>
 
+#include "SetPortFrm.h"
 #include "SetComFrm.h"
 #include "ReadComConfig.h"
 #include "comsetdlg.h"
@@ -22,27 +25,32 @@ int main( int argc, char ** argv )
 		}
 		app.installTranslator(&translator);
 	}*/
+	//try
+	//{
+		//ReadComConfig r;
+		//ComInfoStruct cominfo=r.ReadValeConfig();
 
+		//qDebug() << cominfo.portName;
+		//qDebug() << cominfo.baudRate;
+		//qDebug() << cominfo.dataBit;
+		//qDebug() << cominfo.parity;
+		//qDebug() << cominfo.stopBit;
+		//qDebug() << "\/";
+		//QString aa = "sadfd";
+		//qDebug() << aa.toInt();
+	//}
+	//catch (QString e)
+	//{
+	//	qDebug() << e;
+	//}
 	SetComFrm w;
 	w.show();
-	ReadComConfig r;
-	ComInfoStruct cominfo=r.ReadValveConfig();
+	//QSettings *ConfigIni = new QSettings("./QtPad.ini", QSettings::IniFormat);
 
-	try
-	{
-		qDebug() << cominfo.portName;
-		qDebug() << cominfo.baudRate;
-		qDebug() << cominfo.dataBit;
-		qDebug() << cominfo.parity;
-		qDebug() << cominfo.stopBit;
-		qDebug() << "\/";
-		QString aa = "sadfd";
-		qDebug() << aa.toInt();
-	}
-	catch (QString e)
-	{
-		qDebug() << e;
-	}
-
+	//QString pth = ConfigIni->fileName();
+	//ConfigIni->setValue("pnt/point", "fuck");
+	//ConfigIni->setValue("com/com1/com2", QPoint(100, 40));
+	//delete ConfigIni;
+	 
 	return app.exec();
 }

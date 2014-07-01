@@ -15,6 +15,7 @@
 #  endif
 #endif
 
+#include <QString>
 
 class LOGGER_EXPORT CLogger
 {
@@ -22,10 +23,9 @@ public:
 	CLogger();
 	~CLogger();
 
-	float calc(float a, float b);
-
+	bool WriteLn(const char *);
 private:
-
+	QString logfile;
 };
 
 #endif // LOGGER_H
