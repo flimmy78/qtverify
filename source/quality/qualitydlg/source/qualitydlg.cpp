@@ -357,7 +357,7 @@ void QualityDlg::setRegBtnBackColor(QPushButton *btn, bool status)
 	}
 }
 
-//计算瞬时流量
+//计算瞬时流量(待改进、需要实验验证)
 void QualityDlg::slotFreshFlow()
 {
 	float flowValue = 0.0;
