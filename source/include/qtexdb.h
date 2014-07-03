@@ -38,6 +38,7 @@ public:
 
 	int getMeterStandard(int& num, MeterStandard_PTR &ptr);
 	int getMeterType(int& num, MeterType_PTR &ptr);
+	int getManufacture(int& num, Manufacture_PTR &ptr);
 
 private:
 

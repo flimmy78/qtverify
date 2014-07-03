@@ -30,7 +30,7 @@ public:
 typedef PARASET_INI_STR* PARASET_INI_PTR;
 
 /*
-**      FUNCTION -- 热量表规格 
+**      FUNCTION -- 热量表规格(DN15,DN20,DN25等) 
 */
 class MeterStandard_STR{
 public:
@@ -48,5 +48,15 @@ public:
     char   desc[24];				//
 };
 typedef MeterType_STR* MeterType_PTR;
+
+/*
+**      FUNCTION -- 制造单位()
+*/
+class Manufacture_STR{
+public:
+    int       id;                   //
+    char   desc[60];				//
+};
+typedef Manufacture_STR* Manufacture_PTR;
 
 #endif	//BASEDEF_H

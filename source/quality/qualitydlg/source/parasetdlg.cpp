@@ -34,6 +34,9 @@ ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 	m_meterTypeNum = 0;
 	m_meterTypePtr = NULL;
 
+	m_manuFacNum = 0;
+	m_manuFacPtr = NULL;
+
 	initUiData();
 }
 
@@ -56,6 +59,12 @@ void ParaSetDlg::closeEvent(QCloseEvent * event)
 	{
 		delete []m_meterTypePtr;
 		m_meterTypePtr = NULL;
+	}
+
+	if (m_manuFacPtr)
+	{
+		delete []m_manuFacPtr;
+		m_manuFacPtr = NULL;
 	}
 
 	m_basedb.closedb();
@@ -89,6 +98,7 @@ void ParaSetDlg::on_btnExit_clicked()
 
 void ParaSetDlg::initUiData()
 {
+	//表规格
 	m_basedb.getMeterStandard(m_meterStdNum, m_meterStdPtr);
 	for (int i=0; i<m_meterStdNum; i++)
 	{
@@ -96,10 +106,21 @@ void ParaSetDlg::initUiData()
 		ui.cmbStandard->insertItem(i, m_meterStdPtr[i].name);
 	}
 
+	//表类型
 	m_basedb.getMeterType(m_meterTypeNum, m_meterTypePtr);
 	for (int j=0; j<m_meterTypeNum; j++)
 	{
 		qDebug()<<"id:"<<m_meterTypePtr[j].id<<",desc:"<<QString::fromLocal8Bit(m_meterTypePtr[j].desc);
 		ui.cmbCollectCode->insertItem(j, QString::fromLocal8Bit(m_meterTypePtr[j].desc)); //汉字编码
 	}	
+
+	//制造单位
+	m_basedb.getManufacture(m_manuFacNum, m_manuFacPtr);
+	for (int m=0; m<m_manuFacNum; m++)
+	{
+		qDebug()<<"id:"<<m_manuFacPtr[m].id<<",desc:"<<QString::fromLocal8Bit(m_manuFacPtr[m].desc);
+		ui.cmbManufacture->insertItem(m, QString::fromLocal8Bit(m_manuFacPtr[m].desc)); //汉字编码
+	}	
+
+
 }

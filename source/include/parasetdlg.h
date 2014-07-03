@@ -21,6 +21,9 @@ public:
 	int m_meterTypeNum;	//热量表类型
 	MeterType_PTR m_meterTypePtr;
 
+	int m_manuFacNum;	//制造单位
+	Manufacture_PTR m_manuFacPtr;
+
 	CBaseExdb m_basedb;
 
 	void initUiData(); //从数据库读取记录，填充combox等
