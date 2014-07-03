@@ -131,12 +131,12 @@ int CBaseExdb::getMeterType(int& num, MeterType_PTR &ptr)
 		memset(ptr, 0, sizeof(MeterType_STR)*num);
 	}
 
-	if(query.exec("select id,name from t_meter_type order by id"))
+	if(query.exec("select id,desc from t_meter_type order by id"))
 	{
 		while(query.next())
 		{
 			ptr[i].id = query.value(0).toInt();
-			strcpy(ptr[i].name, query.value(1).toString().toLocal8Bit()); //ºº×Ö±àÂë
+			strcpy(ptr[i].desc, query.value(1).toString().toLocal8Bit()); //ºº×Ö±àÂë
 			i++;
 		}
 	}

@@ -45,7 +45,7 @@ typedef MeterStandard_STR* MeterStandard_PTR;
 class MeterType_STR{
 public:
     int       id;                   //
-    char   name[24];				//
+    char   desc[24];				//
 };
 typedef MeterType_STR* MeterType_PTR;
 

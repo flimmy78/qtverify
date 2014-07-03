@@ -99,8 +99,7 @@ void ParaSetDlg::initUiData()
 	m_basedb.getMeterType(m_meterTypeNum, m_meterTypePtr);
 	for (int j=0; j<m_meterTypeNum; j++)
 	{
-		qDebug()<<"id:"<<m_meterTypePtr[j].id<<",name:"<<QString::fromLocal8Bit(m_meterTypePtr[j].name);
-		ui.cmbCollectCode->insertItem(j, QString::fromLocal8Bit(m_meterTypePtr[j].name)); //ºº×Ö±àÂë
-	}
-	
+		qDebug()<<"id:"<<m_meterTypePtr[j].id<<",desc:"<<QString::fromLocal8Bit(m_meterTypePtr[j].desc);
+		ui.cmbCollectCode->insertItem(j, QString::fromLocal8Bit(m_meterTypePtr[j].desc)); //ºº×Ö±àÂë
+	}	
 }

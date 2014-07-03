@@ -267,19 +267,19 @@ void QualityDlg::on_btnWaterPump_clicked() //水泵
 
 void QualityDlg::on_btnRegulate1_clicked() //调节阀1
 {
-// 	ui.btnRegulate1->setStyleSheet("background:light;border:0px;");  
 	m_nowRegIdx = REGULATE_1_IDX;
 	m_nowRegNo = m_portsetinfo.regflow1No;
 	setRegBtnBackColor(m_regBtn[m_nowRegIdx], false); //初始化调节阀背景色
 	m_controlObj->makeRegulateSendBuf(m_nowRegNo, ui.spinBox1->value());
 }
 
-//查询从机状态
+//查询从机(控制板)状态
 void QualityDlg::on_btnQueryStatus_clicked()
 {
 	m_controlObj->makeQuerySendBuf();
 }
 
+//参数设置
 void QualityDlg::on_btnParaSet_clicked()
 {
 	m_paraset->show();
@@ -287,11 +287,11 @@ void QualityDlg::on_btnParaSet_clicked()
 
 void QualityDlg::on_btnStart_clicked()
 {
-	m_balanceObj->setSendContinue(false); //临时调试用(模拟天平连续发送数据) 停止连续发送
 }
 
 void QualityDlg::on_btnExit_clicked()
 {
+	m_balanceObj->setSendContinue(false); //临时调试用(模拟天平连续发送数据) 停止连续发送
 	this->close();
 }
 
@@ -304,8 +304,6 @@ void QualityDlg::slotFreshComTempValue(const QString& tempStr)
 void QualityDlg::slotFreshBalanceValue(const QString& Str)
 {
 	ui.lnEditBigBalance->setText(Str);
-// 	double v = ui.lnEditBigBalance->text().toDouble();
-// 	ui.lnEditBigBalance->setText(QString("%1").arg(v, 9, 'f', 4));
 }
 
 //响应阀门状态设置成功
