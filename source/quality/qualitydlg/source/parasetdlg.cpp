@@ -80,14 +80,14 @@ void ParaSetDlg::on_btnSave_clicked()
 #else
 	sprintf( filename, "%s\\ini\\qualityParaSet.ini", runhome );
 #endif
-	QString collectCode = ui.cmbCollectCode->currentText();
 
 	QSettings settings(filename, QSettings::IniFormat);
 	settings.setIniCodec("GB2312"); //解决向ini文件中写汉字乱码
 	settings.beginGroup("paraset");
 	settings.setValue("standard", ui.cmbStandard->currentText());
-	settings.setValue("metertype", 40);
-	settings.setValue("collectCode", collectCode);
+	settings.setValue("metertype", ui.cmbCollectCode->currentText());
+	settings.setValue("manufacture", ui.cmbManufacture->currentText());
+	settings.setValue("grade", (ui.cmbGrade->currentIndex()+1));
 	settings.endGroup();
 }
 
