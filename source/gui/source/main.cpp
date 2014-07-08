@@ -1,8 +1,10 @@
-#include "mainform.h"
 #include <QtGui/QApplication>
 #include <QtCore/QTextCodec>
 #include <QtCore/QTranslator>
-#include <QDebug>
+#include <QtCore/QDebug>
+
+#include "mainform.h"
+#include "logger.h"
 
 MainForm *g_mainform;
 
@@ -28,6 +30,15 @@ int main(int argc, char *argv[])
 
 	g_mainform = new MainForm;
 	g_mainform->showMaximized();
+
+	//注册MessageHandler
+	qInstallMsgHandler(myMessageOutput);
+
+	//打印日志到文件中
+	qDebug("This is a debug message");
+	qWarning("This is a warning message");
+	qCritical("This is a critical message");
+// 	qFatal("This is a fatal message");
 
 	return app.exec();
 }

@@ -17,7 +17,7 @@ QMAKE_LIBDIR +=  ./             \
 
 
 # Input
-HEADERS += logger.h
+HEADERS += $$(RUNHOME_INC)/include/logger.h
 SOURCES += logger.cpp
 
 
