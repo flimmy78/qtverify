@@ -70,13 +70,13 @@ public:
     QGridLayout *gridLayout_10;
     QLabel *label_12;
     QGridLayout *gridLayout_9;
-    QLineEdit *lineEdit_7;
+    QLineEdit *lnEdit_Flow1;
     QSpacerItem *horizontalSpacer_6;
-    QLineEdit *lineEdit_8;
+    QLineEdit *lnEdit_Flow2;
     QSpacerItem *horizontalSpacer_7;
-    QLineEdit *lineEdit_9;
+    QLineEdit *lnEdit_Flow3;
     QSpacerItem *horizontalSpacer_8;
-    QLineEdit *lineEdit_10;
+    QLineEdit *lnEdit_Flow4;
     QLineEdit *lineEdit_11;
     QSpacerItem *horizontalSpacer_9;
     QLineEdit *lineEdit_12;
@@ -350,41 +350,41 @@ public:
 
         gridLayout_9 = new QGridLayout();
         gridLayout_9->setObjectName(QString::fromUtf8("gridLayout_9"));
-        lineEdit_7 = new QLineEdit(groupBox_3);
-        lineEdit_7->setObjectName(QString::fromUtf8("lineEdit_7"));
-        lineEdit_7->setAlignment(Qt::AlignCenter);
+        lnEdit_Flow1 = new QLineEdit(groupBox_3);
+        lnEdit_Flow1->setObjectName(QString::fromUtf8("lnEdit_Flow1"));
+        lnEdit_Flow1->setAlignment(Qt::AlignCenter);
 
-        gridLayout_9->addWidget(lineEdit_7, 0, 0, 1, 1);
+        gridLayout_9->addWidget(lnEdit_Flow1, 0, 0, 1, 1);
 
         horizontalSpacer_6 = new QSpacerItem(13, 17, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         gridLayout_9->addItem(horizontalSpacer_6, 0, 1, 1, 1);
 
-        lineEdit_8 = new QLineEdit(groupBox_3);
-        lineEdit_8->setObjectName(QString::fromUtf8("lineEdit_8"));
-        lineEdit_8->setAlignment(Qt::AlignCenter);
+        lnEdit_Flow2 = new QLineEdit(groupBox_3);
+        lnEdit_Flow2->setObjectName(QString::fromUtf8("lnEdit_Flow2"));
+        lnEdit_Flow2->setAlignment(Qt::AlignCenter);
 
-        gridLayout_9->addWidget(lineEdit_8, 0, 2, 1, 1);
+        gridLayout_9->addWidget(lnEdit_Flow2, 0, 2, 1, 1);
 
         horizontalSpacer_7 = new QSpacerItem(28, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         gridLayout_9->addItem(horizontalSpacer_7, 0, 3, 1, 1);
 
-        lineEdit_9 = new QLineEdit(groupBox_3);
-        lineEdit_9->setObjectName(QString::fromUtf8("lineEdit_9"));
-        lineEdit_9->setAlignment(Qt::AlignCenter);
+        lnEdit_Flow3 = new QLineEdit(groupBox_3);
+        lnEdit_Flow3->setObjectName(QString::fromUtf8("lnEdit_Flow3"));
+        lnEdit_Flow3->setAlignment(Qt::AlignCenter);
 
-        gridLayout_9->addWidget(lineEdit_9, 0, 4, 1, 1);
+        gridLayout_9->addWidget(lnEdit_Flow3, 0, 4, 1, 1);
 
         horizontalSpacer_8 = new QSpacerItem(18, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         gridLayout_9->addItem(horizontalSpacer_8, 0, 5, 1, 1);
 
-        lineEdit_10 = new QLineEdit(groupBox_3);
-        lineEdit_10->setObjectName(QString::fromUtf8("lineEdit_10"));
-        lineEdit_10->setAlignment(Qt::AlignCenter);
+        lnEdit_Flow4 = new QLineEdit(groupBox_3);
+        lnEdit_Flow4->setObjectName(QString::fromUtf8("lnEdit_Flow4"));
+        lnEdit_Flow4->setAlignment(Qt::AlignCenter);
 
-        gridLayout_9->addWidget(lineEdit_10, 0, 6, 1, 1);
+        gridLayout_9->addWidget(lnEdit_Flow4, 0, 6, 1, 1);
 
         lineEdit_11 = new QLineEdit(groupBox_3);
         lineEdit_11->setObjectName(QString::fromUtf8("lineEdit_11"));
@@ -847,10 +847,10 @@ public:
         label_11->setText(QApplication::translate("ParaSetDlgClass", "\344\270\212\351\231\220\346\265\201\351\207\217\345\200\274", 0, QApplication::UnicodeUTF8));
         groupBox_3->setTitle(QApplication::translate("ParaSetDlgClass", "\345\217\202\346\225\260\350\256\276\347\275\256", 0, QApplication::UnicodeUTF8));
         label_12->setText(QApplication::translate("ParaSetDlgClass", "\346\265\201\351\207\217\347\202\271", 0, QApplication::UnicodeUTF8));
-        lineEdit_7->setText(QApplication::translate("ParaSetDlgClass", "2.5", 0, QApplication::UnicodeUTF8));
-        lineEdit_8->setText(QApplication::translate("ParaSetDlgClass", "0.75", 0, QApplication::UnicodeUTF8));
-        lineEdit_9->setText(QApplication::translate("ParaSetDlgClass", "0.25", 0, QApplication::UnicodeUTF8));
-        lineEdit_10->setText(QApplication::translate("ParaSetDlgClass", "0.05", 0, QApplication::UnicodeUTF8));
+        lnEdit_Flow1->setText(QApplication::translate("ParaSetDlgClass", "2.5", 0, QApplication::UnicodeUTF8));
+        lnEdit_Flow2->setText(QApplication::translate("ParaSetDlgClass", "0.75", 0, QApplication::UnicodeUTF8));
+        lnEdit_Flow3->setText(QApplication::translate("ParaSetDlgClass", "0.25", 0, QApplication::UnicodeUTF8));
+        lnEdit_Flow4->setText(QApplication::translate("ParaSetDlgClass", "0.05", 0, QApplication::UnicodeUTF8));
         lineEdit_11->setText(QApplication::translate("ParaSetDlgClass", "50", 0, QApplication::UnicodeUTF8));
         lineEdit_12->setText(QApplication::translate("ParaSetDlgClass", "20", 0, QApplication::UnicodeUTF8));
         lineEdit_13->setText(QApplication::translate("ParaSetDlgClass", "10", 0, QApplication::UnicodeUTF8));

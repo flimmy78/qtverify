@@ -38,6 +38,19 @@ ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 	m_manuFacPtr = NULL;
 
 	initUiData();
+
+//	this->setStyleSheet("QLineEdit { background-color: yellow }");
+
+// 	ui.lnEdit_Flow1->setStyleSheet("color: red;"
+// 		"background-color: yellow;"
+// 		"selection-color: greed;"
+// 		"selection-background-color: blue;");
+
+	ui.lnEdit_Flow1->setStyleSheet("border: 2px solid gray;"
+		"border-radius: 10px;"
+		"padding: 0 8px;"
+		"background: yellow;"
+		"selection-background-color:darkgray;");
 }
 
 ParaSetDlg::~ParaSetDlg()

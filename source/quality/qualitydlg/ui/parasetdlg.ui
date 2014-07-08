@@ -372,7 +372,7 @@
       <item row="0" column="1" rowspan="4">
        <layout class="QGridLayout" name="gridLayout_9">
         <item row="0" column="0">
-         <widget class="QLineEdit" name="lineEdit_7">
+         <widget class="QLineEdit" name="lnEdit_Flow1">
           <property name="text">
            <string>2.5</string>
           </property>
@@ -395,7 +395,7 @@
          </spacer>
         </item>
         <item row="0" column="2">
-         <widget class="QLineEdit" name="lineEdit_8">
+         <widget class="QLineEdit" name="lnEdit_Flow2">
           <property name="text">
            <string>0.75</string>
           </property>
@@ -418,7 +418,7 @@
          </spacer>
         </item>
         <item row="0" column="4">
-         <widget class="QLineEdit" name="lineEdit_9">
+         <widget class="QLineEdit" name="lnEdit_Flow3">
           <property name="text">
            <string>0.25</string>
           </property>
@@ -441,7 +441,7 @@
          </spacer>
         </item>
         <item row="0" column="6">
-         <widget class="QLineEdit" name="lineEdit_10">
+         <widget class="QLineEdit" name="lnEdit_Flow4">
           <property name="text">
            <string>0.05</string>
           </property>

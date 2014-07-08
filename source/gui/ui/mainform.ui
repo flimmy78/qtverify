@@ -99,18 +99,19 @@
      <x>0</x>
      <y>0</y>
      <width>904</width>
-     <height>23</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuSystemSet">
     <property name="title">
      <string>SystemSet(&amp;S)</string>
     </property>
-    <addaction name="action_spset"/>
-    <addaction name="action_mysql"/>
-    <addaction name="action_sqlite"/>
+    <addaction name="actionComDebuger"/>
+    <addaction name="actionMySql"/>
+    <addaction name="actionSqlite"/>
     <addaction name="actionComSet"/>
     <addaction name="actionPortSet"/>
+    <addaction name="actionMasterSlaveSet"/>
    </widget>
    <widget class="QMenu" name="menu">
     <property name="title">
@@ -138,7 +139,7 @@
     <property name="title">
      <string>DataQuery</string>
     </property>
-    <addaction name="action_queryExcel"/>
+    <addaction name="actionQueryExcel"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
@@ -159,24 +160,24 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="action_spset">
+  <action name="actionComDebuger">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
      <normaloff>:/qtVerify/images/setting.png</normaloff>:/qtVerify/images/setting.png</iconset>
    </property>
    <property name="text">
-    <string>SpSet(&amp;P)</string>
+    <string>串口调试工具</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+P</string>
    </property>
   </action>
-  <action name="action_queryExcel">
+  <action name="actionQueryExcel">
    <property name="text">
     <string>Query Excel</string>
    </property>
   </action>
-  <action name="action_mysql">
+  <action name="actionMySql">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
      <normaloff>:/qtVerify/images/ldf_sampledate.PNG</normaloff>:/qtVerify/images/ldf_sampledate.PNG</iconset>
@@ -188,7 +189,7 @@
     <string>Ctrl+D</string>
    </property>
   </action>
-  <action name="action_sqlite">
+  <action name="actionSqlite">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
      <normaloff>:/qtVerify/images/debug.png</normaloff>:/qtVerify/images/debug.png</iconset>
@@ -233,6 +234,11 @@
   <action name="actionPortSet">
    <property name="text">
     <string>终端模块端口设置</string>
+   </property>
+  </action>
+  <action name="actionMasterSlaveSet">
+   <property name="text">
+    <string>主机-从机设置</string>
    </property>
   </action>
  </widget>

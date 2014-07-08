@@ -16,7 +16,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	dbsqliteobj = new DbSqlite();
 	m_alg = new CAlgorithm();
 
-	m_spset = NULL;
+	m_comdebugger = NULL;
 	m_setcom = NULL;
 	m_qualitydlg = NULL;
 	m_portSet = NULL;
@@ -51,10 +51,10 @@ MainForm::~MainForm()
 		m_alg = NULL;
 	}
 
-	if (m_spset)
+	if (m_comdebugger)
 	{
-		delete m_spset;
-		m_spset = NULL;
+		delete m_comdebugger;
+		m_comdebugger = NULL;
 	}
 
 	if (m_setcom)
@@ -76,13 +76,13 @@ MainForm::~MainForm()
 	}
 }
 
-void MainForm::on_action_spset_triggered()
+void MainForm::on_actionComDebuger_triggered()
 {
-	if (NULL == m_spset)
+	if (NULL == m_comdebugger)
 	{
-		m_spset = new ComSetDlg();
+		m_comdebugger = new ComSetDlg();
 	}
-	m_spset->show();
+	m_comdebugger->show();
 }
 
 void MainForm::on_actionComSet_triggered()
@@ -103,12 +103,12 @@ void MainForm::on_actionPortSet_triggered()
 	m_portSet->show();
 }
 
-void MainForm::on_action_mysql_triggered()
+void MainForm::on_actionMySql_triggered()
 {
 	dbmysqlobj->show();
 }
 
-void MainForm::on_action_sqlite_triggered()
+void MainForm::on_actionSqlite_triggered()
 {
 	dbsqliteobj->show();
 }
@@ -118,7 +118,7 @@ void MainForm::on_btnStart_clicked()
 	m_alg->calc(2.0, 5.6);
 }
 
-void MainForm::on_action_queryExcel_triggered()
+void MainForm::on_actionQueryExcel_triggered()
 {
 	QAxObject *excel = NULL;
 	QAxObject *workbooks = NULL;
@@ -166,7 +166,7 @@ void MainForm::on_btnPara_clicked()
 void MainForm::on_btnAirOut_clicked()
 {
 	QProcess *myProcess = new QProcess(this);
-	myProcess->start("comset.exe");
+	myProcess->start("calc.exe");
 }
 
 void MainForm::on_actionPlugin_triggered()

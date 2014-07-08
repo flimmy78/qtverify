@@ -124,10 +124,10 @@ void ComSetDlg::on_btnClearMsg_clicked()
 
 void ComSetDlg::slotReadMyCom()
 {
-	if (myCom->bytesAvailable() >= 8)
-	{
+// 	if (myCom->bytesAvailable() >= 8)
+// 	{
 		qDebug()<<"read:"<<myCom->bytesAvailable()<<"bytes";
 		QByteArray temp = myCom->readAll();
 		ui.textBrowserRecMsg->insertPlainText(temp);
-	}
+// 	}
 }

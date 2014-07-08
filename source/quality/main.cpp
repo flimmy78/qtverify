@@ -42,7 +42,7 @@ int main( int argc, char ** argv )
 		app.installTranslator(&translator);
 	}
 	qDebug()<<"quality main thread:"<<QThread::currentThreadId();
-
+// 	qApp->setStyleSheet("QLineEdit { background-color: yellow }");
 	QualityDlg w;
 	w.show();
 

@@ -27,18 +27,18 @@ public:
 	MonsterInterface *m_monster;
 	CAlgorithm *m_alg;
 	SetComFrm *m_setcom; //串口参数设置
-	ComSetDlg *m_spset;
+	ComSetDlg *m_comdebugger;
 	QualityDlg *m_qualitydlg;
 	SetPortFrm *m_portSet; //端口模块设置
 
 
 public slots:
-	void on_action_spset_triggered();
-	void on_action_mysql_triggered();
-	void on_action_sqlite_triggered();
+	void on_actionComDebuger_triggered();
+	void on_actionMySql_triggered();
+	void on_actionSqlite_triggered();
 	void on_actionComSet_triggered();
 	void on_actionPortSet_triggered();
-	void on_action_queryExcel_triggered();
+	void on_actionQueryExcel_triggered();
 	void on_actionPlugin_triggered();
 	void on_actionQualityComp_triggered();
 	void on_actionQualityTotal_triggered();

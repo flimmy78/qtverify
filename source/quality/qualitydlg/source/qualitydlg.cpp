@@ -333,7 +333,16 @@ void QualityDlg::setValveBtnBackColor(QPushButton *btn, bool status)
 	}
 	else //·§ÃÅ¹Ø±Õ ºìÉ«
 	{
-		btn->setStyleSheet("background:red;border:0px;");  
+// 		btn->setStyleSheet("background:red;border:0px;");  
+		btn->setStyleSheet( "background-color: rgb(250,0,0);"
+// 			"border-style: outset;"
+// 			"border-width: 2px;"
+			"border-radius: 10px;"
+// 			"border-color: beige;"
+// 			"font: bold 14px;"
+// 			"min-width: 10em;"
+// 			"padding: 6px;" 
+		);
 		btn->setIcon(QIcon("close.png"));
 	}
 }
