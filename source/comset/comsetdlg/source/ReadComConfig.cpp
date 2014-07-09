@@ -19,6 +19,7 @@
 
 #include "ReadComConfig.h"
 #include "comsetdlg.h"
+#include "commondefine.h"
 
 ReadComConfig::ReadComConfig()
 {

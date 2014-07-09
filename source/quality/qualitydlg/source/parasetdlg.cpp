@@ -18,7 +18,7 @@
 #include <QtCore/QSettings>
 
 #include "parasetdlg.h"
-
+#include "commondefine.h"
 
 ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)

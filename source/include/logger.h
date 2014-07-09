@@ -20,11 +20,9 @@
 #include <QtCore/QDebug>
 #include <QtCore/QMutex>
 #include <QtGui/QDateTimeEdit>
+#include <QtCore/QFile>
 
-#define qDebug() (qDebug()<<"Debug:"<<"file<"<<__FILE__<<">, line<"<<__LINE__<<">:")
-#define qWarning() (qWarning()<<"Warning:"<<"file<"<<__FILE__<<">, line<"<<__LINE__<<">:")
-#define qCritical() (qCritical()<<"Critical:"<<"file<"<<__FILE__<<">, line<"<<__LINE__<<">:")
-// #define qFatal() (qFatal("Fatal: file< %s >, line< %d >:", __FILE__, __LINE__)) //这种重定向会导致信息无法写入文件
+#include "commondefine.h"
 
 void myMessageOutput(QtMsgType type, const char *msg)
 {
@@ -34,8 +32,8 @@ void myMessageOutput(QtMsgType type, const char *msg)
  	QString text;
 	switch (type) {
 	case QtDebugMsg:
-		fprintf(stderr, "%s\n", msg);
-		text = QString("%1").arg(msg);
+		fprintf(stderr, "Debug: %s\n", msg);
+		text = QString("Debug: %1").arg(msg);
 		mutex.unlock();
 		return; // qDebug()信息不写入日志文件,只在后台打印
 	case QtWarningMsg:

@@ -16,6 +16,7 @@
 #include <QSettings>
 
 #include "SetPortFrm.h"
+#include "commondefine.h"
 
 SetPortFrm::SetPortFrm(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)

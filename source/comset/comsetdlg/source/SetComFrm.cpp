@@ -19,6 +19,7 @@
 #include <iostream>
 
 #include "SetComFrm.h"
+#include "commondefine.h"
 
 SetComFrm::SetComFrm(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)

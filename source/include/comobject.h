@@ -130,7 +130,6 @@ public:
 
 	QextSerialPort *m_balanceCom;
 	BalanceProtocol *m_balanceProtocol;   //天平通讯协议类对象
-	bool m_sendContinue; //只为测试用
 	QByteArray m_balTmp;
 
 signals:
@@ -139,8 +138,6 @@ signals:
 public slots:
 	void openBalanceCom(ComInfoStruct *comStruct);
 	void readBalanceComBuffer();
-	void writeBalanceComBuffer();
-	void setSendContinue(bool a);
 };
 
 /***************************************

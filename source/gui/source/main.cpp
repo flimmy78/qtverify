@@ -16,6 +16,16 @@ int main(int argc, char *argv[])
 	QTextCodec::setCodecForLocale(QTextCodec::codecForName("GB2312"));
 	QTextCodec::setCodecForCStrings( QTextCodec::codecForName("GB2312"));
 
+	//注册MessageHandler
+	qInstallMsgHandler(myMessageOutput);
+
+	//打印日志到文件中
+	qDebug()<<"This is a debug message";
+	qWarning()<<"This is a warning message";
+	qCritical()<<"This is a critical message";
+// 	qFatal("file< %s >, line< %d >, This is a fatal message", __FILE__, __LINE__);
+// 	qFatal("This is a fatal message");
+
 	char filename[100];
 	sprintf_s( filename, "%s/uif/i18n/qtverify_zh.qm", getenv("RUNHOME"));
 	QTranslator *translator;
@@ -30,16 +40,6 @@ int main(int argc, char *argv[])
 
 	g_mainform = new MainForm;
 	g_mainform->showMaximized();
-
-	//注册MessageHandler
-	qInstallMsgHandler(myMessageOutput);
-
-	//打印日志到文件中
-	qDebug()<<"This is a debug message";
-	qWarning()<<"This is a warning message";
-	qCritical()<<"This is a critical message";
-// 	qFatal("file< %s >, line< %d >, This is a fatal message", __FILE__, __LINE__);
-// 	qFatal("This is a fatal message");
 
 	return app.exec();
 }

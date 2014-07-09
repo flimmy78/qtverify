@@ -31,6 +31,7 @@ public:
 	QualityDlg *m_qualitydlg;
 	SetPortFrm *m_portSet; //¶Ë¿ÚÄ£¿éÉèÖÃ
 
+	void closeEvent(QCloseEvent * event);
 
 public slots:
 	void on_actionComDebuger_triggered();

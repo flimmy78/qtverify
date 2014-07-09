@@ -17,6 +17,7 @@
 #include <QtTest/QTest>
 
 #include "comobject.h"
+#include "commondefine.h"
 
 /************************************************
 类名：ComThread
@@ -137,7 +138,7 @@ void TempComObject::writeTemperatureComBuffer()
 void TempComObject::readTemperatureComBuffer()
 {
 	QByteArray tmp = m_tempCom->readAll();
-// 	qDebug()<<"read TemperatureComBuffer thread:"<<QThread::currentThreadId();
+ 	qDebug()<<"read TemperatureComBuffer thread:"<<QThread::currentThreadId();
 
 	bool ret = false;
 	ret = m_tempProtocol->readTemperComBuffer(tmp); //通讯协议接口
@@ -294,8 +295,6 @@ BalanceComObject::BalanceComObject(QObject* parent) : ComObject(parent)
 
 	m_balanceProtocol = new BalanceProtocol;
 
-	m_sendContinue = true;
-
 	m_balTmp = "";
 }
 
@@ -354,25 +353,6 @@ void BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
 
 }
 
-//写天平串口缓冲区 只为测试用
-void BalanceComObject::writeBalanceComBuffer()
-{
-	UINT8 wg = 0x31;
-	while(m_sendContinue)
-	{
-		QByteArray buf;
-		buf.append(0x4E).append(0x20).append(0x20).append(0x20).append(0x20).append(0x20);
-		buf.append(0x2D).append(wg++).append(0x38).append(0x37).append(0x36).append(0x2E).append(0x35).append(0x34).append(0x33).append(0x32);
-		buf.append(0x20).append(0x6B).append(0x67).append(0x20).append(0x0D).append(0x0A);
-		m_balanceCom->write(buf);
-		QTest::qWait(1000);
-		if (wg > 0x39)
-		{
-			wg = 0x31;
-		}
-	}
-}
-
 //读取天平串口数据
 void BalanceComObject::readBalanceComBuffer()
 {
@@ -381,7 +361,7 @@ void BalanceComObject::readBalanceComBuffer()
 
 	if (num>=BAL_DATA_LENGTH && m_balTmp.at(num-1)==ASCII_LF && m_balTmp.at(num-2)==ASCII_CR ) //最后两个字节是回车符和换行符
 	{
-// 		qDebug()<<"readBalanceComBuffer thread:"<<QThread::currentThreadId()<<", Read data is:"<<m_balTmp;
+ 		qDebug()<<"readBalanceComBuffer thread:"<<QThread::currentThreadId()<<", Read data is:"<<m_balTmp;
 
 		bool ret = false;
 		ret = m_balanceProtocol->readBalanceComBuffer(m_balTmp.right(BAL_DATA_LENGTH)); //通讯协议接口
@@ -394,11 +374,6 @@ void BalanceComObject::readBalanceComBuffer()
 	}
 }
 
-//只为测试用
-void BalanceComObject::setSendContinue(bool a)
-{
-	m_sendContinue = a;
-}
 
 /*********************************************************
 类名：MeterComObject

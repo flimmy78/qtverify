@@ -17,7 +17,7 @@
 #include <QtCore/QTimer>
 
 #include "qualitydlg.h"
-#include "logger.h"
+#include "commondefine.h"
 
 QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
@@ -98,6 +98,16 @@ void QualityDlg::closeEvent( QCloseEvent * event)
 		delete m_meterObj1;
 		m_meterObj1 = NULL;
 	}
+
+	if (m_tempTimer) //计时器
+	{
+		if (m_tempTimer->isActive())
+		{
+			m_tempTimer->stop();
+		}
+		delete m_tempTimer;
+		m_tempTimer = NULL;
+	}
 }
 
 /***************************************
@@ -113,7 +123,7 @@ void QualityDlg::initTemperatureCom()
 	m_tempObj->openTemperatureCom(&tempStruct);
 	connect(m_tempObj, SIGNAL(temperatureIsReady(const QString &)), this, SLOT(slotFreshComTempValue(const QString &)));
 
-	m_tempTimer = new QTimer(this);
+	m_tempTimer = new QTimer();
 	connect(m_tempTimer, SIGNAL(timeout()), m_tempObj, SLOT(writeTemperatureComBuffer()));
 	connect(m_tempTimer, SIGNAL(timeout()), this, SLOT(slotFreshFlow()));
 	
@@ -131,9 +141,9 @@ void QualityDlg::initControlCom()
 
 	connect(m_controlObj, SIGNAL(controlRelayIsOk()), this, SLOT(slotSetValveBtnStatus()));
 	connect(m_controlObj, SIGNAL(controlRegulateIsOk()), this, SLOT(slotSetRegulateOk()));
-	connect(m_controlObj, SIGNAL(controlGetBalanceValueIsOk(const QString&)), this, SLOT(slotFreshBalanceValue(const QString &)));
-// 	connect(m_controlObj, SIGNAL(controlGetBalanceValueIsOk(const QString&)), this, SLOT(slotFreshFlow()));
 
+	//天平数值从控制板获取
+	connect(m_controlObj, SIGNAL(controlGetBalanceValueIsOk(const QString&)), this, SLOT(slotFreshBalanceValue(const QString &)));
 }
 
 //初始化阀门状态
@@ -191,6 +201,7 @@ void QualityDlg::initBalanceCom()
 	m_balanceThread.start();
 	m_balanceObj->openBalanceCom(&balanceStruct);
 
+	//天平数值由上位机直接通过天平串口采集
  	connect(m_balanceObj, SIGNAL(balanceValueIsReady(const QString &)), this, SLOT(slotFreshBalanceValue(const QString &)));
 }
 
@@ -221,8 +232,6 @@ void QualityDlg::on_btnWaterOut_clicked() //出水阀
 	m_nowPortIdx = VALVE_OUT_IDX;
 	m_nowPortNo = m_portsetinfo.waterOutNo;
 	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortIdx]);
-
-// 	m_balanceObj->writeBalanceComBuffer(); //临时调试用(模拟天平连续发送数据) 写天平串口缓冲区
 }
 
 void QualityDlg::on_btnValveBig_clicked() //大流量阀
@@ -292,7 +301,6 @@ void QualityDlg::on_btnStart_clicked()
 
 void QualityDlg::on_btnExit_clicked()
 {
-	m_balanceObj->setSendContinue(false); //临时调试用(模拟天平连续发送数据) 停止连续发送
 	this->close();
 }
 
@@ -368,6 +376,7 @@ void QualityDlg::setRegBtnBackColor(QPushButton *btn, bool status)
 //计算瞬时流量(待改进、需要实验验证)
 void QualityDlg::slotFreshFlow()
 {
+// 	qDebug()<<"slotFreshFlow thread:"<<QThread::currentThreadId(); //主线程
 	float flowValue = 0.0;
 	int length = ui.lnEditBigBalance->text().length();
 	if (m_flowcount == 0)

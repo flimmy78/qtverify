@@ -2,6 +2,7 @@
 #include <QtCore/QDebug>
 
 #include "comsetdlg.h"
+#include "commondefine.h"
 
 ComSetDlg::ComSetDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
@@ -113,8 +114,7 @@ void ComSetDlg::on_btnCloseCom_clicked()
 void ComSetDlg::on_btnSendMsg_clicked()
 {
 	int ret = myCom->write(ui.lineEditSendMsg->text().toAscii());//以ASCII码形式将行编辑框中的数据写入串口
-//  spsetui.textBrowserRecMsg->insertPlainText(QString("send ret=%1\n").arg(ret));
-	qDebug()<<"write:"<<myCom->bytesToWrite()<<"bytes";
+	qDebug()<<"write:"<<ui.lineEditSendMsg->text().toAscii().length()<<"bytes";//<<sizeof(ui.lineEditSendMsg->text())<<ui.lineEditSendMsg->text().length();
 }
 
 void ComSetDlg::on_btnClearMsg_clicked()

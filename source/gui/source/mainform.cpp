@@ -33,6 +33,12 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 
 MainForm::~MainForm()
 {
+}
+
+void MainForm::closeEvent( QCloseEvent * event)
+{
+	qDebug()<<"^^^^^MainForm::closeEvent";
+
 	if (dbmysqlobj)
 	{
 		delete dbmysqlobj;
@@ -192,6 +198,12 @@ void MainForm::on_actionQualityComp_triggered()
 {
 	if (NULL == m_qualitydlg)
 	{
+		m_qualitydlg = new QualityDlg();
+	}
+	else //目的是执行QualityDlg的构造函数
+	{
+		delete m_qualitydlg;
+		m_qualitydlg = NULL;
 		m_qualitydlg = new QualityDlg();
 	}
 	m_qualitydlg->show();
