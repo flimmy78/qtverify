@@ -43,7 +43,7 @@ int main( int argc, char ** argv )
 	//{
 	//	qDebug() << e;
 	//}
-	SetPortFrm w;
+	SetComFrm w;
 	w.show();
 	//QSettings *ConfigIni = new QSettings("./QtPad.ini", QSettings::IniFormat);
 

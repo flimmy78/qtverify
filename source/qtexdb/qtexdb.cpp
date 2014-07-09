@@ -63,9 +63,17 @@ void CBaseExdb::ReadSettings()
 
 int CBaseExdb::startdb()
 {
+	if (QSqlDatabase::contains("qt_sql_default_connection"))
+	{
+		db = QSqlDatabase::database("qt_sql_default_connection");
+	}
+	else
+	{
+		db = QSqlDatabase::addDatabase("QSQLITE");
+	}
+
 	char dbname[100];
 	sprintf_s(dbname, "%s/database/mysqlite375.db", getenv("RUNHOME"));
-	db = QSqlDatabase::addDatabase("QSQLITE"); // 使用sqlite数据库驱动 
 	db.setDatabaseName(dbname);
 	bool ok = db.open(); // 尝试连接数据库
 
