@@ -24,7 +24,7 @@
 #define qDebug() (qDebug()<<"Debug:"<<"file<"<<__FILE__<<">, line<"<<__LINE__<<">:")
 #define qWarning() (qWarning()<<"Warning:"<<"file<"<<__FILE__<<">, line<"<<__LINE__<<">:")
 #define qCritical() (qCritical()<<"Critical:"<<"file<"<<__FILE__<<">, line<"<<__LINE__<<">:")
-#define qFatal() (qFatal("Fatal: file< %s >, line< %d >:", __FILE__, __LINE__))
+// #define qFatal() (qFatal("Fatal: file< %s >, line< %d >:", __FILE__, __LINE__)) //这种重定向会导致信息无法写入文件
 
 void myMessageOutput(QtMsgType type, const char *msg)
 {
@@ -47,8 +47,8 @@ void myMessageOutput(QtMsgType type, const char *msg)
 		text = QString("%1").arg(msg);
 		break;
 	case QtFatalMsg:
-		fprintf(stderr, "%s\n", msg);
-		text = QString("%1").arg(msg);
+		fprintf(stderr, "Fatal: %s\n", msg);
+		text = QString("Fatal: %1").arg(msg);
 // 		abort();
 		break;
 	default:
