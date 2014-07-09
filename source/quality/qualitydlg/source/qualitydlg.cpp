@@ -17,6 +17,7 @@
 #include <QtCore/QTimer>
 
 #include "qualitydlg.h"
+#include "logger.h"
 
 QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)

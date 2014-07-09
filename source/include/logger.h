@@ -21,6 +21,63 @@
 #include <QtCore/QMutex>
 #include <QtGui/QDateTimeEdit>
 
+#define qDebug() (qDebug()<<"Debug:"<<"file<"<<__FILE__<<">, line<"<<__LINE__<<">:")
+#define qWarning() (qWarning()<<"Warning:"<<"file<"<<__FILE__<<">, line<"<<__LINE__<<">:")
+#define qCritical() (qCritical()<<"Critical:"<<"file<"<<__FILE__<<">, line<"<<__LINE__<<">:")
+#define qFatal() (qFatal("Fatal: file< %s >, line< %d >:", __FILE__, __LINE__))
+
+void myMessageOutput(QtMsgType type, const char *msg)
+{
+	static QMutex mutex;
+	mutex.lock();
+
+ 	QString text;
+	switch (type) {
+	case QtDebugMsg:
+		fprintf(stderr, "%s\n", msg);
+		text = QString("%1").arg(msg);
+		mutex.unlock();
+		return; // qDebug()信息不写入日志文件,只在后台打印
+	case QtWarningMsg:
+		fprintf(stderr, "%s\n", msg);
+		text = QString("%1").arg(msg);
+		break;
+	case QtCriticalMsg:
+		fprintf(stderr, "%s\n", msg);
+		text = QString("%1").arg(msg);
+		break;
+	case QtFatalMsg:
+		fprintf(stderr, "%s\n", msg);
+		text = QString("%1").arg(msg);
+// 		abort();
+		break;
+	default:
+		fprintf(stderr, "Unknown Msg Type: %s\n", msg);
+		text = QString("Unknown Msg Type: %1").arg(msg);
+		break;
+	}
+
+ 	QString current_date_time = QDateTime::currentDateTime().toString("hh:mm:ss ddd");
+	QString message = QString("%1 %2").arg(current_date_time).arg(text);
+	QString current_day = QDateTime::currentDateTime().toString("yyyy-MM-dd");
+
+	char filename[100];
+	memset(filename, 0, sizeof(char)*100);
+	sprintf_s(filename, "%s/log/log_%s.txt", getenv("RUNHOME"), current_day.toStdString().c_str());
+	QFile file(QString("%1").arg(filename));
+	if (file.open(QIODevice::WriteOnly | QIODevice::Append))
+	{
+		QTextStream text_stream(&file);
+		text_stream<<message<<"\r\n";
+		file.flush();
+		file.close();
+	}
+
+	mutex.unlock();
+}
+
+
+
 class LOGGER_EXPORT CLogger
 {
 public:
@@ -31,49 +88,5 @@ public:
 private:
 	QString logfile;
 };
-
-
-void myMessageOutput(QtMsgType type, const char *msg)
-{
-	static QMutex mutex;
-	mutex.lock();
-
-	QString text;
-	switch (type) {
-	case QtDebugMsg:
-		text = QString("Debug:");
-		break;
-	case QtWarningMsg:
-		text = QString("Warning:");
-		break;
-	case QtCriticalMsg:
-		text = QString("Critical:");
-		break;
-	case QtFatalMsg:
-		text = QString("Fatal:");
-// 		abort();
-	}
-
-	QString context_info = QString("File:(%1) Line:(%2)").arg(__FILE__).arg(__LINE__);
-	QString current_date_time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss ddd");
-	QString current_date = QString("(%1)").arg(current_date_time);
-	QString message = QString("%1 %2 %3 %4").arg(text).arg(context_info).arg(msg).arg(current_date);
-
-	char filename[60];
-	memset(filename, 0, sizeof(char)*60);
-	sprintf_s(filename, "%s/log/log.txt", getenv("RUNHOME"));
-	QFile file(QString("%1").arg(filename));
-	if (file.open(QIODevice::WriteOnly | QIODevice::Append))
-	{
-		QTextStream text_stream(&file);
-		text_stream<<message<<"\r\n";
-
-		file.flush();
-		file.close();
-	}
-
-	mutex.unlock();
-}
-
 
 #endif // LOGGER_H
