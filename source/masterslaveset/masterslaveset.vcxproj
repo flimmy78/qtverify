@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E52D31BD-0E86-32DB-ACFA-AD603A6E20E1}</ProjectGuid>
+    <RootNamespace>masterslaveset</RootNamespace>
+    <Keyword>Qt4VSv1.0</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <OutputDirectory>$(RUNHOME)\tmp\masterslaveset\obj\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <IntermediateDirectory>$(RUNHOME)\tmp\masterslaveset\obj\</IntermediateDirectory>
+    <PrimaryOutput>masterslaveset</PrimaryOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <OutputDirectory>$(RUNHOME)\tmp\masterslaveset\obj\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <IntermediateDirectory>$(RUNHOME)\tmp\masterslaveset\obj\</IntermediateDirectory>
+    <PrimaryOutput>masterslaveset</PrimaryOutput>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(RUNHOME)\tmp\masterslaveset\obj\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(RUNHOME)\tmp\masterslaveset\obj\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">masterslaveset</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</IgnoreImportLibrary>
+    <PostBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</PostBuildEventUseInBuild>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(RUNHOME)\tmp\masterslaveset\obj\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(RUNHOME)\tmp\masterslaveset\obj\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">masterslaveset</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <PostBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</PostBuildEventUseInBuild>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>"c:\Qt\4.8.5\include\QtCore";"c:\Qt\4.8.5\include\QtGui";"c:\Qt\4.8.5\include";".";"include";"..\include";"c:\Qt\4.8.5\include\ActiveQt";"debug";"f:\delusoft\trunk\qtverify\source\masterslaveset\$(RUNHOME_INC)\include";c:\Qt\4.8.5\mkspecs\win32-msvc2010;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zm200 -w34100 -w34189 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>$(RUNHOME)\tmp\masterslaveset\obj\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>$(RUNHOME)\tmp\masterslaveset\obj\</ObjectFileName>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;MASTERSLAVESET_DLL;QT_DLL;QT_GUI_LIB;QT_CORE_LIB;QT_HAVE_MMX;QT_HAVE_3DNOW;QT_HAVE_SSE;QT_HAVE_MMXEXT;QT_HAVE_SSE2;QT_THREAD_SUPPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <ProgramDataBaseFileName>.\</ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>c:\Qt\4.8.5\lib\Qt3Supportd4.lib;$(RUNHOME)\lib\algorithm.lib;c:\Qt\4.8.5\lib\QtGuid4.lib;c:\Qt\4.8.5\lib\QtCored4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>.\;$(RUNHOME)\lib;$(RUNHOME)\bin;c:\Qt\4.8.5\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkDLL>true</LinkDLL>
+      <OutputFile>$(OutDir)\masterslaveset.dll</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;MASTERSLAVESET_DLL;QT_DLL;QT_GUI_LIB;QT_CORE_LIB;QT_HAVE_MMX;QT_HAVE_3DNOW;QT_HAVE_SSE;QT_HAVE_MMXEXT;QT_HAVE_SSE2;QT_THREAD_SUPPORT;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <PostBuildEvent>
+      <Command>copy $(RUNHOME)\tmp\masterslaveset\obj\masterslaveset.lib F:\delusoft\trunk\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\masterslaveset\obj\masterslaveset.dll F:\delusoft\trunk\qtverify\release\RUNHOME\dll</Command>
+      <Message>copy $(RUNHOME)\tmp\masterslaveset\obj\masterslaveset.lib F:\delusoft\trunk\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\masterslaveset\obj\masterslaveset.dll F:\delusoft\trunk\qtverify\release\RUNHOME\dll</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>"c:\Qt\4.8.5\include\QtCore";"c:\Qt\4.8.5\include\QtGui";"c:\Qt\4.8.5\include";".";"include";"..\include";"c:\Qt\4.8.5\include\ActiveQt";"release";"f:\delusoft\trunk\qtverify\source\masterslaveset\$(RUNHOME_INC)\include";c:\Qt\4.8.5\mkspecs\win32-msvc2010;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zm200 -w34100 -w34189 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>$(RUNHOME)\tmp\masterslaveset\obj\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>$(RUNHOME)\tmp\masterslaveset\obj\</ObjectFileName>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;MASTERSLAVESET_DLL;QT_DLL;QT_NO_DEBUG;QT_GUI_LIB;QT_CORE_LIB;QT_HAVE_MMX;QT_HAVE_3DNOW;QT_HAVE_SSE;QT_HAVE_MMXEXT;QT_HAVE_SSE2;QT_THREAD_SUPPORT;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <ProgramDataBaseFileName>.\</ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>c:\Qt\4.8.5\lib\Qt3Supportd4.lib;$(RUNHOME)\lib\algorithm.lib;c:\Qt\4.8.5\lib\QtGui4.lib;c:\Qt\4.8.5\lib\QtCore4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>.\;$(RUNHOME)\lib;$(RUNHOME)\bin;c:\Qt\4.8.5\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkDLL>true</LinkDLL>
+      <LinkIncremental>false</LinkIncremental>
+      <OutputFile>$(OutDir)\masterslaveset.dll</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;MASTERSLAVESET_DLL;QT_DLL;QT_NO_DEBUG;QT_GUI_LIB;QT_CORE_LIB;QT_HAVE_MMX;QT_HAVE_3DNOW;QT_HAVE_SSE;QT_HAVE_MMXEXT;QT_HAVE_SSE2;QT_THREAD_SUPPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <PostBuildEvent>
+      <Command>copy $(RUNHOME)\tmp\masterslaveset\obj\masterslaveset.lib F:\delusoft\trunk\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\masterslaveset\obj\masterslaveset.dll F:\delusoft\trunk\qtverify\release\RUNHOME\dll</Command>
+      <Message>copy $(RUNHOME)\tmp\masterslaveset\obj\masterslaveset.lib F:\delusoft\trunk\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\masterslaveset\obj\masterslaveset.dll F:\delusoft\trunk\qtverify\release\RUNHOME\dll</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="source\masterslaveset.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\include\masterslaveset.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\include\masterslaveset.h;C:\Qt\4.8.5\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DMASTERSLAVESET_DLL -DQT_DLL -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I"c:\Qt\4.8.5\include\QtCore" -I"c:\Qt\4.8.5\include\QtGui" -I"c:\Qt\4.8.5\include" -I"." -I"include" -I"..\include" -I"c:\Qt\4.8.5\include\ActiveQt" -I"debug" -I"f:\delusoft\trunk\qtverify\source\masterslaveset\$(RUNHOME_INC)\include" -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\include\masterslaveset.h -o debug\moc_masterslaveset.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MOC ..\include\masterslaveset.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">debug\moc_masterslaveset.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\include\masterslaveset.h;C:\Qt\4.8.5\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DMASTERSLAVESET_DLL -DQT_DLL -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I"c:\Qt\4.8.5\include\QtCore" -I"c:\Qt\4.8.5\include\QtGui" -I"c:\Qt\4.8.5\include" -I"." -I"include" -I"..\include" -I"c:\Qt\4.8.5\include\ActiveQt" -I"release" -I"f:\delusoft\trunk\qtverify\source\masterslaveset\$(RUNHOME_INC)\include" -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\include\masterslaveset.h -o release\moc_masterslaveset.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MOC ..\include\masterslaveset.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">release\moc_masterslaveset.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="debug\moc_masterslaveset.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_masterslaveset.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClInclude Include="f:\delusoft\trunk\qtverify\source\include\ui_masterslaveset.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="language\masterslaveset_en.ts" />
+    <None Include="language\masterslaveset_zh.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="ui\masterslaveset.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\4.8.5\bin\uic.exe;Qt3Support\Q3ButtonGroup;Qt3Support\Q3GroupBox;ui\masterslaveset.ui;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\4.8.5\bin\uic.exe ui\masterslaveset.ui -o f:\delusoft\trunk\qtverify\source\include\ui_masterslaveset.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">UIC ui\masterslaveset.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(RUNHOME_INC)\include\ui_masterslaveset.h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\4.8.5\bin\uic.exe;Qt3Support\Q3ButtonGroup;Qt3Support\Q3GroupBox;ui\masterslaveset.ui;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\4.8.5\bin\uic.exe ui\masterslaveset.ui -o f:\delusoft\trunk\qtverify\source\include\ui_masterslaveset.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">UIC ui\masterslaveset.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(RUNHOME_INC)\include\ui_masterslaveset.h;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

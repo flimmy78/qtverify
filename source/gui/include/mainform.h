@@ -13,6 +13,7 @@
 #include "qualitydlg.h"
 #include "mythread.h"
 #include "SetPortFrm.h"
+#include "masterslaveset.h"
 
 class MainForm : public QMainWindow
 {
@@ -28,8 +29,9 @@ public:
 	CAlgorithm *m_alg;
 	SetComFrm *m_setcom; //串口参数设置
 	ComSetDlg *m_comdebugger;
-	QualityDlg *m_qualitydlg;
+	QualityDlg *m_qualitydlg; //质量法-分量检测
 	SetPortFrm *m_portSet; //端口模块设置
+	CMasterSlave *m_masterslave; //主机-从机设置
 
 	void closeEvent(QCloseEvent * event);
 
@@ -43,11 +45,14 @@ public slots:
 	void on_actionPlugin_triggered();
 	void on_actionQualityComp_triggered();
 	void on_actionQualityTotal_triggered();
+	void on_actionExit_triggered();
+	void on_actionMasterSlaveSet_triggered();
 
 	void on_btnStart_clicked();
 	void on_btnSave_clicked();
 	void on_btnPara_clicked();
 	void on_btnAirOut_clicked();
+	void on_btnExit_clicked();
 
 private:
 	Ui::qMainFormClass ui;

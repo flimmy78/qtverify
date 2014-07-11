@@ -19,6 +19,7 @@
 
 ALGORITHM_EXPORT int getPortSetIni(PORTSET_INI_PTR info); //端口配置
 ALGORITHM_EXPORT int getParaSetIni(PARASET_INI_PTR info); //参数设置(质量法-分量检测)
+ALGORITHM_EXPORT int getMasterSlaveIni(MASTERSLAVE_INI_PTR info); //主机-从机设置信息
 
 class ALGORITHM_EXPORT CAlgorithm
 {

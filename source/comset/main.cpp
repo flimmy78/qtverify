@@ -7,6 +7,8 @@
 #include "SetComFrm.h"
 #include "ReadComConfig.h"
 #include "comsetdlg.h"
+#include "masterslaveset.h"
+
 int main( int argc, char ** argv )
 {
 	QApplication app( argc, argv );
@@ -43,7 +45,7 @@ int main( int argc, char ** argv )
 	//{
 	//	qDebug() << e;
 	//}
-	SetComFrm w;
+	CMasterSlave w;
 	w.show();
 	//QSettings *ConfigIni = new QSettings("./QtPad.ini", QSettings::IniFormat);
 

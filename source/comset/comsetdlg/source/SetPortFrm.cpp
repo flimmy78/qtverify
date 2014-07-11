@@ -39,6 +39,7 @@ SetPortFrm::~SetPortFrm()
 	if (PortSet)
 	{
 		delete PortSet;
+		PortSet = NULL;
 	}
 }
 

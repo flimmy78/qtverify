@@ -21,6 +21,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qtexdb", "qtexdb\qtexdb.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "algorithm", "algorithm\algorithm.vcxproj", "{73BFE56E-C4FA-32D7-8C38-5F651501336A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "masterslaveset", "masterslaveset\masterslaveset.vcxproj", "{E52D31BD-0E86-32DB-ACFA-AD603A6E20E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -67,6 +69,10 @@ Global
 		{73BFE56E-C4FA-32D7-8C38-5F651501336A}.Debug|Win32.Build.0 = Debug|Win32
 		{73BFE56E-C4FA-32D7-8C38-5F651501336A}.Release|Win32.ActiveCfg = Release|Win32
 		{73BFE56E-C4FA-32D7-8C38-5F651501336A}.Release|Win32.Build.0 = Release|Win32
+		{E52D31BD-0E86-32DB-ACFA-AD603A6E20E1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E52D31BD-0E86-32DB-ACFA-AD603A6E20E1}.Debug|Win32.Build.0 = Debug|Win32
+		{E52D31BD-0E86-32DB-ACFA-AD603A6E20E1}.Release|Win32.ActiveCfg = Release|Win32
+		{E52D31BD-0E86-32DB-ACFA-AD603A6E20E1}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

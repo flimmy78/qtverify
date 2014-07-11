@@ -47,6 +47,37 @@ int getParaSetIni(PARASET_INI_PTR info)
 	return true;
 }
 
+int getMasterSlaveIni(MASTERSLAVE_INI_PTR info)
+{
+	char filename[255];
+	char* runhome = getenv( "RUNHOME" );
+#ifdef __unix
+	sprintf( filename, "%s/ini/masterslaveset.ini", runhome );
+#else
+	sprintf( filename, "%s\\ini\\masterslaveset.ini", runhome );
+#endif
+
+	QSettings settings(filename, QSettings::IniFormat);
+
+	info->netmode = settings.value("localhost/netmode").toInt();
+	info->hostflag = settings.value("localhost/hostflag").toInt();
+	strcpy(info->mastername, settings.value("master/hostname").toString().toAscii());
+	strcpy(info->masterIP, settings.value("master/ip").toString().toAscii());
+	strcpy(info->slave1name, settings.value("slave1/hostname").toString().toAscii());
+	strcpy(info->slave1IP, settings.value("slave1/ip").toString().toAscii());
+	strcpy(info->slave2name, settings.value("slave2/hostname").toString().toAscii());
+	strcpy(info->slave2IP, settings.value("slave2/ip").toString().toAscii());
+	strcpy(info->slave3name, settings.value("slave3/hostname").toString().toAscii());
+	strcpy(info->slave3IP, settings.value("slave3/ip").toString().toAscii());
+	strcpy(info->slave4name, settings.value("slave4/hostname").toString().toAscii());
+	strcpy(info->slave4IP, settings.value("slave4/ip").toString().toAscii());
+
+	return true;
+}
+
+
+/**********************************************************
+***********************************************************/
 CAlgorithm::CAlgorithm()
 {
 

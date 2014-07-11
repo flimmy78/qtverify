@@ -20,8 +20,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_setcom = NULL;
 	m_qualitydlg = NULL;
 	m_portSet = NULL;
-
-	connect(ui.btnExit, SIGNAL(clicked()), this, SLOT(close()));
+	m_masterslave = NULL;
 
 	QLabel *permanent = new QLabel(this);
 	permanent->setFrameStyle(QFrame::NoFrame | QFrame::Sunken);
@@ -80,6 +79,12 @@ void MainForm::closeEvent( QCloseEvent * event)
 		delete m_qualitydlg;
 		m_qualitydlg = NULL;
 	}
+
+	if (m_masterslave)
+	{
+		delete m_masterslave;
+		m_masterslave = NULL;
+	}
 }
 
 void MainForm::on_actionComDebuger_triggered()
@@ -117,6 +122,11 @@ void MainForm::on_actionMySql_triggered()
 void MainForm::on_actionSqlite_triggered()
 {
 	dbsqliteobj->show();
+}
+
+void MainForm::on_actionExit_triggered()
+{
+	this->close();
 }
 
 void MainForm::on_btnStart_clicked()
@@ -175,6 +185,11 @@ void MainForm::on_btnAirOut_clicked()
 	myProcess->start("calc.exe");
 }
 
+void MainForm::on_btnExit_clicked()
+{
+	this->close();
+}
+
 void MainForm::on_actionPlugin_triggered()
 {
 	QDir pluginsDir("F:/mysoft/trunk/plugindemo/GameSystem/plugins");
@@ -213,3 +228,11 @@ void MainForm::on_actionQualityTotal_triggered()
 {
 }
 
+void MainForm::on_actionMasterSlaveSet_triggered()
+{
+	if (NULL == m_masterslave)
+	{
+		m_masterslave = new CMasterSlave();
+	}
+	m_masterslave->show();
+}

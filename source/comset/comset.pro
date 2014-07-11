@@ -11,7 +11,7 @@ QMAKE_LIBDIR += \
               $$(RUNHOME)/lib \
               $$(RUNHOME)/bin
            
-LIBS	+= -lcomsetdlg
+LIBS	+= -lcomsetdlg -lmasterslaveset
 
 SOURCES	+= main.cpp
 

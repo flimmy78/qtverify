@@ -145,6 +145,7 @@
     <property name="title">
      <string>About</string>
     </property>
+    <addaction name="actionExit"/>
    </widget>
    <addaction name="menuSystemSet"/>
    <addaction name="menu"/>
@@ -239,6 +240,11 @@
   <action name="actionMasterSlaveSet">
    <property name="text">
     <string>主机-从机设置</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
    </property>
   </action>
  </widget>
