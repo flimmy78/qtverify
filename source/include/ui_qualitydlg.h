@@ -709,7 +709,7 @@ public:
 
     void retranslateUi(QWidget *QualityDlgClass)
     {
-        QualityDlgClass->setWindowTitle(QApplication::translate("QualityDlgClass", "\346\265\201\351\207\217\344\274\240\346\204\237\345\231\250\346\243\200\346\265\213", 0, QApplication::UnicodeUTF8));
+        QualityDlgClass->setWindowTitle(QApplication::translate("QualityDlgClass", "\351\207\207\351\233\206\344\270\216\346\265\213\350\257\225", 0, QApplication::UnicodeUTF8));
         groupBox->setTitle(QApplication::translate("QualityDlgClass", "\346\200\273\346\243\200\346\225\260\346\215\256", 0, QApplication::UnicodeUTF8));
         buttonGroup->setTitle(QApplication::translate("QualityDlgClass", "\345\256\211\350\243\205\344\275\215\347\275\256", 0, QApplication::UnicodeUTF8));
         radioButton->setText(QApplication::translate("QualityDlgClass", "\350\277\233\345\217\243", 0, QApplication::UnicodeUTF8));

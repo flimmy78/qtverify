@@ -47,6 +47,7 @@ public slots:
 	void on_actionQualityTotal_triggered();
 	void on_actionExit_triggered();
 	void on_actionMasterSlaveSet_triggered();
+	void on_actionTest_triggered();
 
 	void on_btnStart_clicked();
 	void on_btnSave_clicked();

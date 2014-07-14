@@ -13,52 +13,11 @@ int testFunc(int a, int b)
 
 CBaseExdb::CBaseExdb()
 {
-	WriteSettings();
-	ReadSettings();
 }
 
 CBaseExdb::~CBaseExdb()
 {
 
-}
-
-void CBaseExdb::WriteSettings()
-{
-	char filename[255];
-	char* runhome = getenv( "RUNHOME" );
-#ifdef __unix
-	sprintf( filename, "%s/ini/Option.ini", runhome );
-#else
-	sprintf( filename, "%s\\ini\\Option.ini", runhome );
-#endif
-
-	QSettings settings(filename, QSettings::IniFormat); // 当前目录的INI文件
-	settings.beginGroup("DevOption");
-	settings.setValue("mainFun", 25);
-	settings.setValue("subFun", 40);
-	settings.setValue("service", "sonics");
-	settings.endGroup();
-}
-
-void CBaseExdb::ReadSettings()
-{
-	char filename[255];
-	char* runhome = getenv( "RUNHOME" );
-#ifdef __unix
-	sprintf( filename, "%s/ini/Option.ini", runhome );
-#else
-	sprintf( filename, "%s\\ini\\Option.ini", runhome );
-#endif
-
-	QSettings settings(filename, QSettings::IniFormat); // 当前目录的INI文件
-
-	int mainFun = settings.value("DevOption/mainFun").toInt();
-	int subFun = settings.value("DevOption/subFun").toInt();
-	QString service = settings.value("DevOption/service").toString();
-
-	qDebug() << "mainFun" << mainFun;
-	qDebug() << "subFun" << subFun;
-	qDebug() << "service" << service;
 }
 
 int CBaseExdb::startdb()

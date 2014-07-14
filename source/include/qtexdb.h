@@ -43,8 +43,6 @@ public:
 private:
 
 public slots:
-	void WriteSettings();
-	void ReadSettings();
 
 };
 

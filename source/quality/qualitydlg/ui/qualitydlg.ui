@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>流量传感器检测</string>
+   <string>采集与测试</string>
   </property>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">

@@ -134,6 +134,7 @@
     <addaction name="menu_2"/>
     <addaction name="menu_3"/>
     <addaction name="actionPlugin"/>
+    <addaction name="actionTest"/>
    </widget>
    <widget class="QMenu" name="menuDataQuery">
     <property name="title">
@@ -209,22 +210,22 @@
   </action>
   <action name="actionQualityComp">
    <property name="text">
-    <string>分量测量</string>
+    <string>分量检定</string>
    </property>
   </action>
   <action name="actionQualityTotal">
    <property name="text">
-    <string>总量测量</string>
+    <string>总量检定</string>
    </property>
   </action>
   <action name="actionStandardComp">
    <property name="text">
-    <string>分量</string>
+    <string>分量检定</string>
    </property>
   </action>
   <action name="actionStandardTotal">
    <property name="text">
-    <string>总量</string>
+    <string>总量检定</string>
    </property>
   </action>
   <action name="actionComSet">
@@ -245,6 +246,11 @@
   <action name="actionExit">
    <property name="text">
     <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionTest">
+   <property name="text">
+    <string>采集与测试</string>
    </property>
   </action>
  </widget>

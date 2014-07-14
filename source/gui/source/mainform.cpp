@@ -209,7 +209,28 @@ void MainForm::on_actionPlugin_triggered()
 	}
 }
 
+//质量法-分量检定
 void MainForm::on_actionQualityComp_triggered()
+{
+}
+
+//质量法-总量检定
+void MainForm::on_actionQualityTotal_triggered()
+{
+}
+
+//主机-从机设置
+void MainForm::on_actionMasterSlaveSet_triggered()
+{
+	if (NULL == m_masterslave)
+	{
+		m_masterslave = new CMasterSlave();
+	}
+	m_masterslave->show();
+}
+
+//采集与测试程序
+void MainForm::on_actionTest_triggered()
 {
 	if (NULL == m_qualitydlg)
 	{
@@ -222,17 +243,4 @@ void MainForm::on_actionQualityComp_triggered()
 		m_qualitydlg = new QualityDlg();
 	}
 	m_qualitydlg->show();
-}
-
-void MainForm::on_actionQualityTotal_triggered()
-{
-}
-
-void MainForm::on_actionMasterSlaveSet_triggered()
-{
-	if (NULL == m_masterslave)
-	{
-		m_masterslave = new CMasterSlave();
-	}
-	m_masterslave->show();
 }
