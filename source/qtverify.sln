@@ -25,6 +25,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "masterslaveset", "mastersla
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "logindialog", "userMange\logindialog\logindialog.vcxproj", "{8AA99D97-DACD-3166-975D-3D406A050F11}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "weightmethod", "weightMethod\weightmethod.vcxproj", "{6468725C-514C-3711-A12F-1C2DB70C67D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -79,6 +81,10 @@ Global
 		{8AA99D97-DACD-3166-975D-3D406A050F11}.Debug|Win32.Build.0 = Debug|Win32
 		{8AA99D97-DACD-3166-975D-3D406A050F11}.Release|Win32.ActiveCfg = Release|Win32
 		{8AA99D97-DACD-3166-975D-3D406A050F11}.Release|Win32.Build.0 = Release|Win32
+		{6468725C-514C-3711-A12F-1C2DB70C67D4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6468725C-514C-3711-A12F-1C2DB70C67D4}.Debug|Win32.Build.0 = Debug|Win32
+		{6468725C-514C-3711-A12F-1C2DB70C67D4}.Release|Win32.ActiveCfg = Release|Win32
+		{6468725C-514C-3711-A12F-1C2DB70C67D4}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

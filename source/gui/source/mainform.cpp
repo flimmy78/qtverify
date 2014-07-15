@@ -21,6 +21,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_qualitydlg = NULL;
 	m_portSet = NULL;
 	m_masterslave = NULL;
+	m_weightDlg = NULL;
 
 	QLabel *permanent = new QLabel(this);
 	permanent->setFrameStyle(QFrame::NoFrame | QFrame::Sunken);
@@ -85,6 +86,13 @@ void MainForm::closeEvent( QCloseEvent * event)
 		delete m_masterslave;
 		m_masterslave = NULL;
 	}
+
+	if (m_weightDlg)
+	{
+		delete m_weightDlg;
+		m_weightDlg = NULL;
+	}
+
 }
 
 void MainForm::on_actionComDebuger_triggered()
@@ -212,6 +220,17 @@ void MainForm::on_actionPlugin_triggered()
 //质量法-分量检定
 void MainForm::on_actionQualityComp_triggered()
 {
+	if (NULL == m_weightDlg)
+	{
+		m_weightDlg = new WeightMethodDlg();
+	}
+	else //目的是执行WeightMethodDlg的构造函数
+	{
+		delete m_weightDlg;
+		m_weightDlg = NULL;
+		m_weightDlg = new WeightMethodDlg();
+	}
+	m_weightDlg->show();
 }
 
 //质量法-总量检定
@@ -229,7 +248,7 @@ void MainForm::on_actionMasterSlaveSet_triggered()
 	m_masterslave->show();
 }
 
-//采集与测试程序
+//采集与控制测试程序
 void MainForm::on_actionTest_triggered()
 {
 	if (NULL == m_qualitydlg)

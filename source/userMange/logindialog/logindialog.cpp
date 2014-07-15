@@ -25,6 +25,7 @@ LoginDialog::LoginDialog(QWidget *parent)
 	ui.setupUi(this);
 
 	ui.passwordEdit->setFocus();
+	ui.passwordEdit->setEchoMode(QLineEdit::Password);
 	ui.loginButton->setDefault(true);
 
 	db.startdb();
