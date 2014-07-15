@@ -28,6 +28,7 @@ int main( int argc, char ** argv )
 	QTextCodec::setCodecForLocale(QTextCodec::codecForName("GB2312"));
 	QTextCodec::setCodecForCStrings( QTextCodec::codecForName("GB2312"));
 
+	//×¢²áMessageHandler
 	qInstallMsgHandler(myMessageOutput);
 
 	QTranslator translator(0);

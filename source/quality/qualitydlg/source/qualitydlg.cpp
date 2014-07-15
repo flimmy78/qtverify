@@ -50,9 +50,19 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 	m_flow1 = 0.0;
 	m_flow2 = 0.0;
 
-	getPortSetIni(&m_portsetinfo); //获取下位机端口配置信息
-	getParaSetIni(&m_parasetinfo); //获取参数设置信息
+	//获取下位机端口配置信息
+	if (!getPortSetIni(&m_portsetinfo))
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("获取下位机端口配置信息失败!请重新设置！"));
+	}
+
+	//获取参数设置信息
+	if (!getParaSetIni(&m_parasetinfo))
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("获取质量法参数配置信息失败!请重新设置！"));
+	}
 	qDebug()<<"metertype:"<<m_parasetinfo.metertype;
+
 }
 
 QualityDlg::~QualityDlg()
@@ -79,24 +89,32 @@ void QualityDlg::closeEvent( QCloseEvent * event)
 	{
 		delete m_tempObj;
 		m_tempObj = NULL;
+
+		m_tempThread.exit(); //否则日志中会有警告"QThread: Destroyed while thread is still running"
 	}
 
 	if (m_controlObj)  //阀门控制
 	{
 		delete m_controlObj;
 		m_controlObj = NULL;
+
+		m_valveThread.exit();
 	}
 
 	if (m_balanceObj)  //天平采集
 	{
 		delete m_balanceObj;
 		m_balanceObj = NULL;
+
+		m_balanceThread.exit();
 	}
 	
 	if (m_meterObj1)  //热量表1串口通讯
 	{
 		delete m_meterObj1;
 		m_meterObj1 = NULL;
+
+		m_meterThread1.exit();
 	}
 
 	if (m_tempTimer) //计时器

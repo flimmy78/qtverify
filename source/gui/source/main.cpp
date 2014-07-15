@@ -21,9 +21,9 @@ int main(int argc, char *argv[])
 	qInstallMsgHandler(myMessageOutput);
 
 	//打印日志到文件中
-	qDebug()<<"This is a debug message";
-	qWarning()<<"This is a warning message";
-	qCritical()<<"This is a critical message";
+// 	qDebug()<<"This is a debug message";
+// 	qWarning()<<"This is a warning message";
+// 	qCritical()<<"This is a critical message";
 // 	qFatal("file< %s >, line< %d >, This is a fatal message", __FILE__, __LINE__);
 // 	qFatal("This is a fatal message");
 
