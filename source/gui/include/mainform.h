@@ -7,11 +7,9 @@
 #include "dbmysql.h"
 #include "dbsqlite.h"
 #include "monsterinterface.h" //²å¼þ½Ó¿Ú
-#include "alg.h"
 #include "comsetdlg.h"
 #include "SetComFrm.h"
 #include "qualitydlg.h"
-#include "mythread.h"
 #include "SetPortFrm.h"
 #include "masterslaveset.h"
 #include "weightmethod.h"

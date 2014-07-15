@@ -1,9 +1,23 @@
+/***********************************************
+**  文件名:     qtexdb.cpp
+**  功能:       封装的数据库管理类(SQLITE3)
+**  操作系统:   基于Trolltech Qt4.8.5的跨平台系统
+**  生成时间:   2014/6/25
+**  专业组:     德鲁计量软件组
+**  程序设计者: YS
+**  程序员:     YS
+**  版本历史:   2014/06 第一版
+**  内容包含:
+**  说明:
+**  更新记录:   
+***********************************************/
+
 #include <QtCore/QDebug>
 #include <QtCore/QSettings>
 #include <QtGui/QMessageBox>
 
 #include "qtexdb.h"
-
+#include "commondefine.h"
 
 int testFunc(int a, int b)
 {
@@ -31,7 +45,8 @@ int CBaseExdb::startdb()
 		db = QSqlDatabase::addDatabase("QSQLITE");
 	}
 
-	char dbname[100];
+	char dbname[FILENAME_LENGTH];
+	memset(dbname, 0, sizeof(char)*FILENAME_LENGTH);
 	sprintf_s(dbname, "%s/database/mysqlite375.db", getenv("RUNHOME"));
 	db.setDatabaseName(dbname);
 	bool ok = db.open(); // 尝试连接数据库

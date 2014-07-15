@@ -40,16 +40,16 @@ public:
     {
         if (LoginDialogClass->objectName().isEmpty())
             LoginDialogClass->setObjectName(QString::fromUtf8("LoginDialogClass"));
-        LoginDialogClass->resize(406, 291);
+        LoginDialogClass->resize(383, 262);
         loginButton = new QPushButton(LoginDialogClass);
         loginButton->setObjectName(QString::fromUtf8("loginButton"));
-        loginButton->setGeometry(QRect(160, 250, 93, 28));
+        loginButton->setGeometry(QRect(90, 210, 93, 28));
         quitButton = new QPushButton(LoginDialogClass);
         quitButton->setObjectName(QString::fromUtf8("quitButton"));
-        quitButton->setGeometry(QRect(290, 250, 93, 28));
+        quitButton->setGeometry(QRect(220, 210, 93, 28));
         layoutWidget = new QWidget(LoginDialogClass);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(60, 60, 301, 71));
+        layoutWidget->setGeometry(QRect(50, 40, 271, 71));
         gridLayout = new QGridLayout(layoutWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);

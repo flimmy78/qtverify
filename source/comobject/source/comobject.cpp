@@ -77,6 +77,7 @@ TempComObject::~TempComObject()
 		if(m_tempCom->isOpen())
 		{
 			m_tempCom->close();
+			qDebug()<<"m_tempCom closed";
 		}
 		delete m_tempCom;
 	}
@@ -116,11 +117,11 @@ void TempComObject::openTemperatureCom(ComInfoStruct *comStruct)
 
 	if(m_tempCom->open(QIODevice::ReadWrite))
 	{
-		qDebug()<<"Open SerialPort:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
+		qDebug()<<"Open Temperature Com:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
 	}
 	else
 	{
-		qDebug()<<"Open SerialPort:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
+		qDebug()<<"Open Temperature Com:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
 		return;
 	}
 }
@@ -209,11 +210,11 @@ void ControlComObject::openControlCom(ComInfoStruct *comStruct)
 
 	if(m_controlCom->open(QIODevice::ReadWrite))
 	{
-		qDebug()<<"Open SerialPort:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
+		qDebug()<<"Open Control Com:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
 	}
 	else
 	{
-		qDebug()<<"Open SerialPort:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
+		qDebug()<<"Open Control Com:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
 		return;
 	}
 }
@@ -305,6 +306,7 @@ BalanceComObject::~BalanceComObject()
 		if(m_balanceCom->isOpen())
 		{
 			m_balanceCom->close();
+			qDebug()<<"m_balanceCom closed";
 		}
 		delete m_balanceCom;
 	}
@@ -337,11 +339,11 @@ void BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
 
 	if(m_balanceCom->open(QIODevice::ReadWrite)) 
 	{
-		qDebug()<<"Open SerialPort:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
+		qDebug()<<"Open Balance Com:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
 	}
 	else
 	{
-		qDebug()<<"Open SerialPort:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
+		qDebug()<<"Open Balance Com:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
 		return;
 	}
 
@@ -391,6 +393,7 @@ MeterComObject::~MeterComObject()
 		if(m_meterCom1->isOpen())
 		{
 			m_meterCom1->close();
+			qDebug()<<"m_meterCom1 closed";
 		}
 		delete m_meterCom1;
 	}
@@ -417,11 +420,11 @@ void MeterComObject::openMeterCom1(ComInfoStruct *comStruct)
 
 	if(m_meterCom1->open(QIODevice::ReadWrite)) 
 	{
-		qDebug()<<"Open SerialPort:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
+		qDebug()<<"Open openMeter1 Com:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
 	}
 	else
 	{
-		qDebug()<<"Open SerialPort:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
+		qDebug()<<"Open Meter1 Com:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
 		return;
 	}
 }

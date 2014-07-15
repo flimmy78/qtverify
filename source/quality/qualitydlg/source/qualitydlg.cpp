@@ -46,7 +46,7 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 	m_meterObj1 = NULL;
 // 	initHeatMeterCom1();	//初始化热量表1串口
 
-	m_flowcount = 0;
+	m_flowcount = 0;		//计算流量用
 	m_flow1 = 0.0;
 	m_flow2 = 0.0;
 
@@ -62,7 +62,6 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 		QMessageBox::warning(this, tr("Warning"), tr("获取质量法参数配置信息失败!请重新设置！"));
 	}
 	qDebug()<<"metertype:"<<m_parasetinfo.metertype;
-
 }
 
 QualityDlg::~QualityDlg()
@@ -361,7 +360,7 @@ void QualityDlg::setValveBtnBackColor(QPushButton *btn, bool status)
 	else //阀门关闭 红色
 	{
 // 		btn->setStyleSheet("background:red;border:0px;");  
-		btn->setStyleSheet( "background-color: rgb(250,0,0);"
+		btn->setStyleSheet( "background-color:rgb(255,0,0);border:0px;"
 // 			"border-style: outset;"
 // 			"border-width: 2px;"
 			"border-radius: 10px;"
@@ -387,11 +386,13 @@ void QualityDlg::setRegBtnBackColor(QPushButton *btn, bool status)
 	}
 	else //调节失败
 	{
-		btn->setStyleSheet("background:lightgray;border:0px;");  
+ 		btn->setStyleSheet("");  
 	}
 }
 
-//计算瞬时流量(待改进、需要实验验证)
+/************************************************************************/
+/* 计算瞬时流量(待改进、需要实验验证)                                   */
+/************************************************************************/
 void QualityDlg::slotFreshFlow()
 {
 // 	qDebug()<<"slotFreshFlow thread:"<<QThread::currentThreadId(); //主线程

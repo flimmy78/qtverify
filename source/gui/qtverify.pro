@@ -22,7 +22,6 @@ LIBS += -lalgorithm -lcomsetdlg -lqualitydlg -lqaxserver -lqaxcontainerd -lmaste
 HEADERS += include/mainform.h	\
 					 include/dbmysql.h	\
 					 include/dbsqlite.h	\
-					 include/mythread.h	\
 #					 include/excel.h
 					 
 FORMS += 	ui/mainform.ui	\
@@ -33,7 +32,6 @@ SOURCES += source/main.cpp	\
 					 source/mainform.cpp	\
 					 source/dbmysql.cpp		\
 					 source/dbsqlite.cpp	\
-					 source/mythread.cpp	\
 #					 source/excel.cpp
 					 
 RESOURCES += qtverify.qrc

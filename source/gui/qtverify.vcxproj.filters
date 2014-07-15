@@ -69,9 +69,6 @@
     <ClCompile Include="source\mainform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\mythread.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="include\dbmysql.h">
@@ -83,9 +80,6 @@
     <CustomBuild Include="include\mainform.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="include\mythread.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qtverify\moc\moc_dbmysql.cpp">
@@ -95,9 +89,6 @@
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qtverify\moc\moc_mainform.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qtverify\moc\moc_mythread.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="debug\qrc_qtverify.cpp">

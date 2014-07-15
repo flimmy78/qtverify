@@ -147,7 +147,6 @@
     <ClCompile Include="source\dbsqlite.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\mainform.cpp" />
-    <ClCompile Include="source\mythread.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="include\dbmysql.h">
@@ -180,22 +179,11 @@
       <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">MOC include\mainform.h</Message>
       <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">$(RUNHOME)\tmp\qtverify\moc\moc_mainform.cpp;%(Outputs)</Outputs>
     </CustomBuild>
-    <CustomBuild Include="include\mythread.h">
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe;include\mythread.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include\QtSql&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;include&quot; -I&quot;..\alg&quot; -I&quot;$(RUNHOME)\tmp\qtverify\ui&quot; -I&quot;..\include&quot; -I&quot;..\include\qextserial&quot; -I&quot;f:\mysoft\trunk\plugindemo\GameSystem&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;f:\delusoft\trunk\qtverify\source\gui\$(RUNHOME)\tmp\qtverify\moc&quot; -I&quot;f:\delusoft\trunk\qtverify\source\gui\$(RUNHOME)\tmp\qtverify\ui&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\mythread.h -o f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qtverify\moc\moc_mythread.cpp</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">MOC include\mythread.h</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">$(RUNHOME)\tmp\qtverify\moc\moc_mythread.cpp;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe;include\mythread.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DWIN32 -D_AFXDLL -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include\QtSql&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;include&quot; -I&quot;..\alg&quot; -I&quot;$(RUNHOME)\tmp\qtverify\ui&quot; -I&quot;..\include&quot; -I&quot;..\include\qextserial&quot; -I&quot;f:\mysoft\trunk\plugindemo\GameSystem&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;f:\delusoft\trunk\qtverify\source\gui\$(RUNHOME)\tmp\qtverify\moc&quot; -I&quot;f:\delusoft\trunk\qtverify\source\gui\$(RUNHOME)\tmp\qtverify\ui&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 include\mythread.h -o f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qtverify\moc\moc_mythread.cpp</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">MOC include\mythread.h</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">$(RUNHOME)\tmp\qtverify\moc\moc_mythread.cpp;%(Outputs)</Outputs>
-    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qtverify\moc\moc_dbmysql.cpp" />
     <ClCompile Include="f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qtverify\moc\moc_dbsqlite.cpp" />
     <ClCompile Include="f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qtverify\moc\moc_mainform.cpp" />
-    <ClCompile Include="f:\delusoft\trunk\qtverify\release\RUNHOME\tmp\qtverify\moc\moc_mythread.cpp" />
     <ClCompile Include="debug\qrc_qtverify.cpp">
       <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">true</ExcludedFromBuild>
     </ClCompile>

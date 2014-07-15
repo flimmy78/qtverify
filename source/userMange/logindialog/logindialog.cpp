@@ -18,6 +18,7 @@
 #include <QtCore/QDebug>
 
 #include "logindialog.h"
+#include "commondefine.h"
 
 LoginDialog::LoginDialog(QWidget *parent)
 	: QDialog(parent)
@@ -28,7 +29,11 @@ LoginDialog::LoginDialog(QWidget *parent)
 	ui.passwordEdit->setEchoMode(QLineEdit::Password);
 	ui.loginButton->setDefault(true);
 
-	db.startdb();
+	if (!db.startdb())
+	{
+		qWarning()<<"Á¬½ÓÊý¾Ý¿âÊ§°Ü£¡";
+	}
+	
 
 	initUserComboBox();
 }
@@ -56,7 +61,7 @@ void LoginDialog::on_loginButton_clicked()
 {
 	if(ui.passwordEdit->text().isEmpty())
 	{
-		QMessageBox::information(this, tr("ÇëÊäÈëÃÜÂë"), tr("ÇëÊäÈëÃÜÂëÔÙµÇÂ¼"), QMessageBox::Ok);
+		QMessageBox::information(this, tr("ÇëÊäÈëÃÜÂë"), tr("ÇëÊäÈëÃÜÂëÔÙµÇÂ¼"));
 		ui.passwordEdit->setFocus();
 	}
 	else
@@ -70,7 +75,7 @@ void LoginDialog::on_loginButton_clicked()
 		}
 		else
 		{
-			QMessageBox::warning(this, tr("ÃÜÂë´íÎó"), tr("ÇëÊäÈëÕýÈ·ÃÜÂëºóÔÙµÇÂ¼"),QMessageBox::Ok);
+			QMessageBox::warning(this, tr("ÃÜÂë´íÎó"), tr("ÇëÊäÈëÕýÈ·ÃÜÂëºóÔÙµÇÂ¼"));
 			ui.passwordEdit->clear();
 			ui.passwordEdit->setFocus();
 		}
