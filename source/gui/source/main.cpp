@@ -5,6 +5,7 @@
 
 #include "mainform.h"
 #include "logger.h"
+#include "logindialog.h"
 
 MainForm *g_mainform;
 
@@ -39,7 +40,14 @@ int main(int argc, char *argv[])
 	qDebug()<<"qtverify main thread:"<<QThread::currentThreadId();
 
 	g_mainform = new MainForm;
-	g_mainform->showMaximized();
-
-	return app.exec();
+	LoginDialog login;
+	if (login.exec() == QDialog::Accepted)
+	{
+		g_mainform->showMaximized();
+		return app.exec();
+	}
+	else
+	{
+		return 0;
+	}
 }
