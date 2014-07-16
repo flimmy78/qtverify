@@ -10,9 +10,6 @@ DbMySql::DbMySql(QWidget *parent, Qt::WFlags flags)
 {
 	dbmysqlui.setupUi(this);
 
-// 	connect(dbmysqlui.btnConnect, SIGNAL(clicked()), this, SLOT(on_btnConnect_clicked()));
-// 	connect(dbmysqlui.btnQuery, SIGNAL(clicked()), this, SLOT(on_btnQuery_clicked()));
-
 	dbmysqlui.btnQuery->setEnabled(false);
 }
 

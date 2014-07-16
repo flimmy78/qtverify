@@ -34,6 +34,26 @@ public:
 typedef PARASET_INI_STR* PARASET_INI_PTR;
 
 /*
+**      FUNCTION -- 获取主机-从机设置信息(masterslaveset.ini文件)
+*/
+class MASTERSLAVE_INI_STR{
+public:
+    int     netmode;				//0:本地模式；1:网络模式
+    int     hostflag;				//0:从机；1:主机
+	char	mastername[20];			//主机 机器名
+	char	masterIP[20];			//主机 IP地址
+	char	slave1name[20];			//从机1 机器名
+	char	slave1IP[20];			//从机1	IP地址
+	char	slave2name[20];			//从机2 机器名
+	char	slave2IP[20];			//从机2	IP地址
+	char	slave3name[20];			//从机3 机器名
+	char	slave3IP[20];			//从机3	IP地址
+	char	slave4name[20];			//从机4 机器名
+	char	slave4IP[20];			//从机4	IP地址
+};
+typedef MASTERSLAVE_INI_STR* MASTERSLAVE_INI_PTR;
+
+/*
 **      FUNCTION -- 热量表规格(DN15,DN20,DN25等) 
 */
 class MeterStandard_STR{
