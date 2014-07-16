@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>675</width>
-    <height>531</height>
+    <width>823</width>
+    <height>632</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,7 @@
   </property>
   <layout class="QGridLayout" name="gridLayout_11">
    <item row="0" column="0" colspan="4">
-    <widget class="QGroupBox" name="groupBox">
+    <widget class="QGroupBox" name="gBox_Head">
      <property name="title">
       <string>检定参数</string>
      </property>
@@ -248,7 +248,7 @@
     </widget>
    </item>
    <item row="1" column="0" colspan="4">
-    <widget class="QGroupBox" name="groupBox_2">
+    <widget class="QGroupBox" name="gBox_UpperFlowLmt">
      <property name="title">
       <string>控制阀设置</string>
      </property>
@@ -263,7 +263,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_3"/>
+         <widget class="QLineEdit" name="lineEdit_Upper_1"/>
         </item>
         <item>
          <spacer name="horizontalSpacer_3">
@@ -279,7 +279,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_4">
+         <widget class="QLineEdit" name="lineEdit_Upper_2">
           <property name="palette">
            <palette>
             <active>
@@ -333,7 +333,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_5"/>
+         <widget class="QLineEdit" name="lineEdit_Upper_3"/>
         </item>
         <item>
          <spacer name="horizontalSpacer_5">
@@ -349,15 +349,63 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_6"/>
+         <widget class="QLineEdit" name="lineEdit_Upper_4"/>
         </item>
        </layout>
       </item>
      </layout>
     </widget>
    </item>
+   <item row="5" column="0">
+    <widget class="QGroupBox" name="groupBox_4">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title">
+      <string>安全系数</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>流量</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEdit_sc_flow"/>
+      </item>
+      <item row="0" column="2">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>18</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>总量</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QLineEdit" name="lineEdit_sc_thermal"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
    <item row="2" column="0" colspan="4">
-    <widget class="QGroupBox" name="groupBox_3">
+    <widget class="QGroupBox" name="gBox_FlowPnt">
      <property name="title">
       <string>参数设置</string>
      </property>
@@ -371,168 +419,23 @@
       </item>
       <item row="0" column="1" rowspan="4">
        <layout class="QGridLayout" name="gridLayout_9">
-        <item row="0" column="0">
-         <widget class="QLineEdit" name="lnEdit_Flow1">
-          <property name="text">
-           <string>2.5</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <spacer name="horizontalSpacer_6">
+        <item row="2" column="3">
+         <spacer name="horizontalSpacer_13">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
             <width>13</width>
-            <height>17</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="0" column="2">
-         <widget class="QLineEdit" name="lnEdit_Flow2">
-          <property name="text">
-           <string>0.75</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="3">
-         <spacer name="horizontalSpacer_7">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>28</width>
             <height>20</height>
            </size>
           </property>
          </spacer>
         </item>
-        <item row="0" column="4">
-         <widget class="QLineEdit" name="lnEdit_Flow3">
+        <item row="2" column="2">
+         <widget class="QLineEdit" name="lineEdit_Valve_2">
           <property name="text">
-           <string>0.25</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="5">
-         <spacer name="horizontalSpacer_8">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>18</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="0" column="6">
-         <widget class="QLineEdit" name="lnEdit_Flow4">
-          <property name="text">
-           <string>0.05</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLineEdit" name="lineEdit_11">
-          <property name="text">
-           <string>50</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <spacer name="horizontalSpacer_9">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>13</width>
-            <height>17</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="1" column="2">
-         <widget class="QLineEdit" name="lineEdit_12">
-          <property name="text">
-           <string>20</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="3">
-         <spacer name="horizontalSpacer_10">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>28</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="1" column="4">
-         <widget class="QLineEdit" name="lineEdit_13">
-          <property name="text">
-           <string>10</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="5">
-         <spacer name="horizontalSpacer_11">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>18</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="1" column="6">
-         <widget class="QLineEdit" name="lineEdit_14">
-          <property name="text">
-           <string>5</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLineEdit" name="lineEdit_15">
-          <property name="text">
-           <string>大</string>
+           <string>中一</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -552,41 +455,28 @@
           </property>
          </spacer>
         </item>
-        <item row="2" column="2">
-         <widget class="QLineEdit" name="lineEdit_16">
+        <item row="2" column="0">
+         <widget class="QLineEdit" name="lineEdit_Valve_1">
           <property name="text">
-           <string>中一</string>
+           <string>大</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
-        <item row="2" column="3">
-         <spacer name="horizontalSpacer_13">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>13</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="2" column="4">
-         <widget class="QLineEdit" name="lineEdit_17">
+        <item row="1" column="6">
+         <widget class="QLineEdit" name="lineEdit_Quantity_4">
           <property name="text">
-           <string>中二</string>
+           <string>5</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
-        <item row="2" column="5">
-         <spacer name="horizontalSpacer_14">
+        <item row="1" column="5">
+         <spacer name="horizontalSpacer_11">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -598,44 +488,268 @@
           </property>
          </spacer>
         </item>
-        <item row="2" column="6">
-         <widget class="QLineEdit" name="lineEdit_18">
+        <item row="1" column="4">
+         <widget class="QLineEdit" name="lineEdit_Quantity_3">
           <property name="text">
-           <string>小</string>
+           <string>10</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
-        <item row="3" column="0">
-         <widget class="QComboBox" name="comboBox">
+        <item row="1" column="3">
+         <spacer name="horizontalSpacer_10">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>28</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="2">
+         <widget class="QLineEdit" name="lineEdit_Quantity_2">
+          <property name="text">
+           <string>20</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <spacer name="horizontalSpacer_9">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>13</width>
+            <height>17</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLineEdit" name="lineEdit_Quantity_1">
+          <property name="text">
+           <string>50</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="6">
+         <widget class="QLineEdit" name="lnEdit_Flow4">
+          <property name="text">
+           <string>0.05</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="5">
+         <spacer name="horizontalSpacer_8">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>18</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="4">
+         <widget class="QLineEdit" name="lnEdit_Flow3">
+          <property name="text">
+           <string>0.25</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <spacer name="horizontalSpacer_7">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>28</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="2">
+         <widget class="QLineEdit" name="lnEdit_Flow2">
+          <property name="text">
+           <string>0.75</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <spacer name="horizontalSpacer_6">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>13</width>
+            <height>17</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLineEdit" name="lnEdit_Flow1">
+          <property name="text">
+           <string>2.5</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="6">
+         <widget class="QComboBox" name="cBox_seq_4">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <item>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>../../none.ico</normaloff>../../none.ico</iconset>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>      1</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>      2</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>      3</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>      4</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="3" column="4">
+         <widget class="QComboBox" name="cBox_seq_3">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
-          <property name="font">
-           <font>
-            <weight>50</weight>
-            <italic>false</italic>
-            <bold>false</bold>
-            <kerning>false</kerning>
-           </font>
+          <property name="currentIndex">
+           <number>0</number>
           </property>
-          <property name="acceptDrops">
-           <bool>false</bool>
+          <item>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>../../none.ico</normaloff>../../none.ico</iconset>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>      1</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>      2</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>      3</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>      4</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="3" column="5">
+         <spacer name="horizontalSpacer_17">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
           </property>
-          <property name="layoutDirection">
-           <enum>Qt::LeftToRight</enum>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>18</width>
+            <height>17</height>
+           </size>
           </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
+         </spacer>
+        </item>
+        <item row="3" column="3">
+         <spacer name="horizontalSpacer_16">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
           </property>
-          <property name="frame">
-           <bool>true</bool>
+          <property name="sizeType">
+           <enum>QSizePolicy::Preferred</enum>
           </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>18</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="3" column="2">
+         <widget class="QComboBox" name="cBox_seq_2">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <item>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>../../none.ico</normaloff>../../none.ico</iconset>
+           </property>
+          </item>
           <item>
            <property name="text">
             <string>      1</string>
@@ -674,17 +788,43 @@
           </property>
          </spacer>
         </item>
-        <item row="3" column="2">
-         <widget class="QComboBox" name="comboBox_2">
+        <item row="3" column="0">
+         <widget class="QComboBox" name="cBox_seq_1">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
-          <property name="currentIndex">
-           <number>1</number>
+          <property name="font">
+           <font>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+            <kerning>false</kerning>
+           </font>
           </property>
+          <property name="acceptDrops">
+           <bool>false</bool>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="frame">
+           <bool>true</bool>
+          </property>
+          <item>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>../../none.ico</normaloff>../../none.ico</iconset>
+           </property>
+          </item>
           <item>
            <property name="text">
             <string>      1</string>
@@ -702,18 +842,25 @@
           </item>
           <item>
            <property name="text">
-            <string>     4</string>
+            <string>      4</string>
            </property>
           </item>
          </widget>
         </item>
-        <item row="3" column="3">
-         <spacer name="horizontalSpacer_16">
+        <item row="2" column="6">
+         <widget class="QLineEdit" name="lineEdit_Valve_4">
+          <property name="text">
+           <string>小</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="5">
+         <spacer name="horizontalSpacer_14">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Preferred</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -723,77 +870,14 @@
           </property>
          </spacer>
         </item>
-        <item row="3" column="4">
-         <widget class="QComboBox" name="comboBox_3">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
+        <item row="2" column="4">
+         <widget class="QLineEdit" name="lineEdit_Valve_3">
+          <property name="text">
+           <string>中二</string>
           </property>
-          <property name="currentIndex">
-           <number>2</number>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
-          <item>
-           <property name="text">
-            <string>      1</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>      2</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>      3</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>      4</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item row="3" column="5">
-         <spacer name="horizontalSpacer_17">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>18</width>
-            <height>17</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="3" column="6">
-         <widget class="QComboBox" name="comboBox_4">
-          <property name="currentIndex">
-           <number>3</number>
-          </property>
-          <item>
-           <property name="text">
-            <string>      1</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>      2</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>      3</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>      4</string>
-           </property>
-          </item>
          </widget>
         </item>
        </layout>
@@ -845,14 +929,17 @@
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QRadioButton" name="radioButton">
+         <widget class="QRadioButton" name="tBtn_autoPick_true">
           <property name="text">
            <string>是</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QRadioButton" name="radioButton_2">
+         <widget class="QRadioButton" name="tBtn_autoPick_false">
           <property name="text">
            <string>否</string>
           </property>
@@ -884,14 +971,17 @@
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_6">
         <item>
-         <widget class="QRadioButton" name="radioButton_3">
+         <widget class="QRadioButton" name="tBtn_totalverify_true">
           <property name="text">
            <string>是</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QRadioButton" name="radioButton_4">
+         <widget class="QRadioButton" name="tBtn_totalverify_false">
           <property name="text">
            <string>否</string>
           </property>
@@ -923,14 +1013,17 @@
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_8">
         <item>
-         <widget class="QRadioButton" name="radioButton_7">
+         <widget class="QRadioButton" name="tBtn_adjustError_true">
           <property name="text">
            <string>是</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QRadioButton" name="radioButton_8">
+         <widget class="QRadioButton" name="tBtn_adjustError_false">
           <property name="text">
            <string>否</string>
           </property>
@@ -962,14 +1055,17 @@
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_7">
         <item>
-         <widget class="QRadioButton" name="radioButton_9">
+         <widget class="QRadioButton" name="tBtn_writeNum_true">
           <property name="text">
            <string>是</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QRadioButton" name="radioButton_10">
+         <widget class="QRadioButton" name="tBtn_writeNum_false">
           <property name="text">
            <string>否</string>
           </property>
@@ -989,14 +1085,17 @@
        </property>
        <layout class="QGridLayout" name="gridLayout">
         <item row="0" column="0">
-         <widget class="QRadioButton" name="radioButton_11">
+         <widget class="QRadioButton" name="tBtn_continuous_true">
           <property name="text">
            <string>多点连续</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QRadioButton" name="radioButton_12">
+         <widget class="QRadioButton" name="tBtn_continuous_false">
           <property name="text">
            <string>各点独立</string>
           </property>
@@ -1022,29 +1121,6 @@
       </spacer>
      </item>
      <item>
-      <widget class="Q3ButtonGroup" name="buttonGroup_3">
-       <property name="title">
-        <string>表波特率</string>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_9">
-        <item>
-         <widget class="QRadioButton" name="radioButton_5">
-          <property name="text">
-           <string>1200</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="radioButton_6">
-          <property name="text">
-           <string>2400</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item>
       <spacer name="horizontalSpacer_26">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -1063,7 +1139,7 @@
      <item>
       <widget class="Q3ButtonGroup" name="buttonGroup_7">
        <property name="title">
-        <string>重复检测时</string>
+        <string>排气</string>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
@@ -1106,75 +1182,29 @@
            </palette>
           </property>
           <property name="text">
-           <string>是否进行排气  </string>
+           <string>排气时间</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QRadioButton" name="radioButton_13">
-          <property name="text">
-           <string>是</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="radioButton_14">
-          <property name="text">
-           <string>否</string>
-          </property>
-         </widget>
+         <widget class="QLineEdit" name="lineEdit_exTime"/>
         </item>
        </layout>
       </widget>
      </item>
     </layout>
    </item>
-   <item row="5" column="0">
-    <widget class="QGroupBox" name="groupBox_4">
+   <item row="5" column="3">
+    <widget class="QPushButton" name="btnExit">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="title">
-      <string>安全系数</string>
+     <property name="text">
+      <string>退出</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout_2">
-      <item row="0" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>流量</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="lineEdit"/>
-      </item>
-      <item row="0" column="2">
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>18</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="0" column="3">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>总量</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="4">
-       <widget class="QLineEdit" name="lineEdit_2"/>
-      </item>
-     </layout>
     </widget>
    </item>
    <item row="5" column="1">
@@ -1194,19 +1224,6 @@
     <widget class="QPushButton" name="btnSave">
      <property name="text">
       <string>保存</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="3">
-    <widget class="QPushButton" name="btnExit">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>退出</string>
      </property>
     </widget>
    </item>

@@ -22,15 +22,16 @@ INCLUDEPATH  	=    ./      \
 									 $$(RUNHOME_INC)/include/qextserial
 
 HEADERS	+= $$(RUNHOME_INC)/include/qualitydlg_global.h \
+		   $$(RUNHOME_INC)/include/parasetdlg_global.h \
            $$(RUNHOME_INC)/include/qualitydlg.h \
            $$(RUNHOME_INC)/include/parasetdlg.h \ 
 	
 SOURCES	+= source/qualitydlg.cpp  \
-					 source/parasetdlg.cpp  \
+			source/parasetdlg.cpp  \
 
 					 
 FORMS	+= ui/qualitydlg.ui \
-         ui/parasetdlg.ui
+           ui/parasetdlg.ui
      
 RESOURCES += qualitydlg.qrc     
          
