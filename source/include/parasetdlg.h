@@ -2,12 +2,15 @@
 #define PARASETDLG_H
 
 #include <QtGui/QWidget>
+#include <QSettings>
+#include <QDateTime>
 
 #include "ui_parasetdlg.h"
 #include "qtexdb.h"
-
-
-class ParaSetDlg : public QWidget
+#include "parasetdlg_global.h"
+#include "basedef.h"
+class PARASETDLG_EXPORT ParaSetReader;
+class PARASETDLG_EXPORT ParaSetDlg : public QWidget
 {
 	Q_OBJECT
 
@@ -27,9 +30,6 @@ public:
 	CBaseExdb m_basedb;
 
 	void initUiData(); //从数据库读取记录，填充combox等
-
-	
-
 	void closeEvent(QCloseEvent * event);
 
 public slots:
@@ -38,9 +38,40 @@ public slots:
 
 private:
 	Ui::ParaSetDlgClass ui;
+	char filename[255];
+	
+	QSettings *settings;//配置文件
+	QParams_PTR params;//本次的配置参数
+	ParaSetReader *lastParams;//上次的配置参数
+	QString sep;//分隔符
+	qint64 timestamp;//时间戳
 
+	QVector<QLineEdit*> lineEdit_uppers;
+	QVector<QLineEdit*> lineEdit_flows;
+	QVector<QLineEdit*> lineEdit_quantites;
+	QVector<QLineEdit*> lineEdit_valves;
+	QVector<QComboBox*> cBox_seqs;
+
+	void flowPointVector();
+	void installLastParams();//装载上次的参数配置
+	void SaveHead();//保存基本信息
+	void SaveFlowPoint(int i);//保存流量点信息
+	void SaveBool();//保存布尔值
+	void SaveOther();//保存其他信息
 private slots:
 
 };
 
+class PARASETDLG_EXPORT ParaSetReader
+{
+	public:
+		QSettings *settings;
+		QParams_PTR params;
+
+		ParaSetReader();
+		~ParaSetReader();
+
+		QParams_PTR readParamValues();
+		int* readParamIndexes();
+};
 #endif // PARASETDLG_H
