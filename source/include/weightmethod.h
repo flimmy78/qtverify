@@ -30,9 +30,9 @@ public:
 
 public slots:
 	void closeEvent(QCloseEvent * event);
-
+	void removeSubTab(int index);
 private slots:
-	void on_btnExit_clicked();
+
 private:
 	Ui::WeightMethodClass ui;
 

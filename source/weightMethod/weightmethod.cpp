@@ -26,6 +26,17 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	qDebug()<<"WeightMethodDlg thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
 
+	ui.tabWidget->setTabsClosable(true);
+	connect(ui.tabWidget,SIGNAL(tabCloseRequested(int)),this,SLOT(removeSubTab(int)));
+
+	ui.lcdNumberInTemper->display("27.8");
+	QString inTemper = QString("%1").arg(ui.lcdNumberInTemper->value(), 4);
+	float iii = inTemper.toFloat();
+
+/*	for (int i=0; i<4; i++)
+	{
+		ui.tabWidget->removeTab(1);
+	}*/
 }
 
 WeightMethodDlg::~WeightMethodDlg()
@@ -38,7 +49,8 @@ void WeightMethodDlg::closeEvent( QCloseEvent * event)
 
 }
 
-void WeightMethodDlg::on_btnExit_clicked()
-{
-	this->close();
-}
+//�رձ�ǩҳ
+void WeightMethodDlg::removeSubTab(int index) 
+{ 
+	ui.tabWidget->removeTab(index); 
+} 

@@ -25,7 +25,7 @@ public slots:
 
 
 private:
-	Ui::DbSqliteClass dbsqliteui;
+	Ui::DbSqliteClass ui;
 
 	private slots:
 		void on_btnConnect_clicked();

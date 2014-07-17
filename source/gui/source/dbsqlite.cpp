@@ -1,7 +1,11 @@
 #include <QtGui/QMessageBox>
 #include <QtGui/QDateTimeEdit>
 #include <QtGui/QTextEdit>
-#include <QDebug>
+#include <QtCore/QDebug>
+#include <QtSql/QSqlRecord>
+#include <QtSql/QSqlIndex>
+#include <QtSql/QSqlRelationalTableModel>
+#include <QtSql/QSqlRelationalDelegate>
 
 #include "dbsqlite.h"
 
@@ -9,11 +13,11 @@
 DbSqlite::DbSqlite(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
-	dbsqliteui.setupUi(this);
+	ui.setupUi(this);
 
-	dbsqliteui.btnQuery->setEnabled(false);
-	dbsqliteui.btnOK->setEnabled(false);
-	dbsqliteui.btnInsert->setEnabled(false);
+	ui.btnQuery->setEnabled(false);
+	ui.btnOK->setEnabled(false);
+	ui.btnInsert->setEnabled(false);
 
 	m_count = 0;
 }
@@ -34,16 +38,16 @@ void DbSqlite::on_btnConnect_clicked()
 	if(ok) // 成功连上数据库
 	{
 		QMessageBox::information(this, "DbShow", "connect sqlite database success !", "Ok", "Cancel");	
-		dbsqliteui.btnQuery->setEnabled(true);
-		dbsqliteui.btnOK->setEnabled(true);
-		dbsqliteui.btnInsert->setEnabled(true);
+		ui.btnQuery->setEnabled(true);
+		ui.btnOK->setEnabled(true);
+		ui.btnInsert->setEnabled(true);
 	}
 	else
 	{
 		QMessageBox::information(this, "DbShow", "connect sqlite database failed !", "Ok", "Cancel");	
-		dbsqliteui.btnQuery->setEnabled(false);
-		dbsqliteui.btnOK->setEnabled(false);
-		dbsqliteui.btnInsert->setEnabled(false);
+		ui.btnQuery->setEnabled(false);
+		ui.btnOK->setEnabled(false);
+		ui.btnInsert->setEnabled(false);
 	}
 }
 
@@ -55,9 +59,9 @@ void DbSqlite::on_btnQuery_clicked()
 		// 本次查询成功
 		int numRows = 0;
 		QString id, lname, fname, phone; QDateTime dob; 
-		dbsqliteui.display->append("==========================================="); 
-		dbsqliteui.display->append(QString::fromLocal8Bit(" id | 姓名 | 生日 | 电话")); 
-		dbsqliteui.display->append("--------------------------------------");
+		ui.display->append("==========================================="); 
+		ui.display->append(QString::fromLocal8Bit(" id | 姓名 | 生日 | 电话")); 
+		ui.display->append("--------------------------------------");
 		while(query.next())// 定位结果到下一条记录
 		{ 
 			id = query.value(0).toString();
@@ -66,26 +70,46 @@ void DbSqlite::on_btnQuery_clicked()
 			dob = query.value(3).toDateTime();
 			phone = QString::fromLocal8Bit(query.value(4).toByteArray());
 			QString result = id + " " + fname + lname + " " + (dob.toString()) + " "+phone;
-			dbsqliteui.display->append(result); 
+			ui.display->append(result); 
 
 			numRows ++;
 		}
-		dbsqliteui.display->append("============================================");
-		dbsqliteui.display->append(QString("totally %1 rows").arg( numRows) );
+		ui.display->append("============================================");
+		ui.display->append(QString("totally %1 rows").arg( numRows) );
 	}
 	else  // 如果查询失败，用下面的方法得到具体数据库返回的原因
 	{
 		QSqlError error = query.lastError();
-		dbsqliteui.display->append("From sqlite database: " + error.databaseText());
+		ui.display->append("From sqlite database: " + error.databaseText());
 	}
 }
 
 void DbSqlite::on_btnOK_clicked()
 {
-	QSqlTableModel *model = new QSqlTableModel(this, db);
-	model->setTable("employee");
+	QSqlRelationalTableModel *model = new QSqlRelationalTableModel(this, db);
+	model->setEditStrategy(QSqlTableModel::OnFieldChange); //属性变化时写入数据库
+	model->setTable("t_verify_record");
+	//将t_verify_record表的第18个属性设为t_meter_standard表的id属性的外键，并将其显示为t_meter_standard表的name属性的值
+	model->setRelation(17, QSqlRelation("t_meter_standard","id","name"));
+	model->setHeaderData(17, Qt::Horizontal, QObject::tr("规格"));
+	model->setRelation(18, QSqlRelation("t_meter_type","id","desc"));
+	model->setHeaderData(18, Qt::Horizontal, QObject::tr("表类型"));
+	model->setRelation(19, QSqlRelation("t_manufacture_tab","id","desc"));
+	model->setHeaderData(19, Qt::Horizontal, QObject::tr("生产厂家"));
 	model->select();
-	dbsqliteui.tableView->setModel(model);
+	ui.tableView->setModel(model);
+//	ui.tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);  //使其不可编辑
+
+	QString tbname = model->tableName();
+	QString fdname1 = model->record(0).fieldName(0);
+	QString pkname = model->primaryKey().name();
+	int cnt = model->primaryKey().count();
+	QString pkname1 = model->primaryKey().fieldName(0);
+	int rowcount = model->rowCount();
+	int pmId = model->primaryKey().value(0).toUInt();
+	int colCount = model->columnCount();
+
+ 	ui.tableView->setItemDelegate(new QSqlRelationalDelegate(ui.tableView));
 }
 
 void DbSqlite::on_btnInsert_clicked()
@@ -95,7 +119,7 @@ void DbSqlite::on_btnInsert_clicked()
 	QDateTime endTime;
 	int sucNum=0, failNum=0;
 	QSqlQuery query;
-	m_count = dbsqliteui.spinBoxNums->value();
+	m_count = ui.spinBoxNums->value();
 	while (m_count--)
 	{
 		if(query.exec(" INSERT INTO employee VALUES ('001', 'Jordan', 'Michael', '2000-05-18', '5188')")) 
@@ -112,7 +136,7 @@ void DbSqlite::on_btnInsert_clicked()
 	endTime = QDateTime::currentDateTime();
 	qDebug()<<"  end time is:"<<endTime.toString("yyMMddhhmmss");
 	int usedSec = statTime.msecsTo(endTime);
-	qDebug()<<"Insert"<<dbsqliteui.spinBoxNums->value()<<"record； success"<<sucNum<<"； failed"<<failNum<<"。used time is:"<<usedSec<<"micro seconds\n";
+	qDebug()<<"Insert"<<ui.spinBoxNums->value()<<"record； success"<<sucNum<<"； failed"<<failNum<<"。used time is:"<<usedSec<<"micro seconds\n";
 }
 
 void DbSqlite::on_btnStop_clicked()
