@@ -73,5 +73,11 @@ class PARASETDLG_EXPORT ParaSetReader
 
 		QParams_PTR readParamValues();
 		int* readParamIndexes();
+private:
+	void readHead();
+	void readFlowPoints();
+	void readFlowPoint(int i);
+	void readBool();
+	void readOther();
 };
 #endif // PARASETDLG_H
