@@ -5,6 +5,10 @@
 	#define VERIFY_POINTS 10//检定流量点的数量, 一般为4个(大, 中一, 中二, 小), 但客户也可能需要更多
 #endif
 
+#ifndef SEP
+#define SEP "#SEP#"//检定流量点的数量, 一般为4个(大, 中一, 中二, 小), 但客户也可能需要更多
+#endif
+
 /*
 **      FUNCTION -- 获取下位机端口设置信息(portset.ini文件)
 */
@@ -105,6 +109,7 @@ public:
 	//检定流量点信息; fp为flow point的头字母
 	qint64 fp_timestamp[VERIFY_POINTS];//第i流量点的时间戳
 	int total_fp;//有效流量点的数目
+	int fp_sorted[VERIFY_POINTS];//按检定次序排序后的流量点序列
 	float fp_upperlmt[VERIFY_POINTS];//第i流量点的上限流量值(2.7m³/h)
 	float fp_verify[VERIFY_POINTS];//第i流量点的检定流量值(2.5m³/h)
 	float fp_quantity[VERIFY_POINTS];//第i流量点的检定水量(50L)
