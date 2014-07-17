@@ -106,7 +106,10 @@ public:
 	char m_pickcode[50];//采集代码
 	float m_nflowpnt;//被检表的常用流量
 
-	//检定流量点信息; fp为flow point的头字母
+	/*
+	* 检定流量点信息; fp为flow point的头字母
+	* i 是界面上预先定义的控件顺序
+	*/
 	qint64 fp_timestamp[VERIFY_POINTS];//第i流量点的时间戳
 	int total_fp;//有效流量点的数目
 	float fp_upperlmt[VERIFY_POINTS];//第i流量点的上限流量值(2.7m³/h)
