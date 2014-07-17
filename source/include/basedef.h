@@ -104,6 +104,7 @@ public:
 
 	//检定流量点信息; fp为flow point的头字母
 	qint64 fp_timestamp[VERIFY_POINTS];//第i流量点的时间戳
+	int total_fp;//有效流量点的数目
 	float fp_upperlmt[VERIFY_POINTS];//第i流量点的上限流量值(2.7m³/h)
 	float fp_verify[VERIFY_POINTS];//第i流量点的检定流量值(2.5m³/h)
 	float fp_quantity[VERIFY_POINTS];//第i流量点的检定水量(50L)
