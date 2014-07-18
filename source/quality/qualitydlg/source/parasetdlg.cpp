@@ -17,6 +17,7 @@
 #include <QThread>
 #include <QtCore/QSettings>
 #include <QTextCodec>
+#include <QtGui/QMessageBox>
 
 #include "parasetdlg.h"
 #include "commondefine.h"
@@ -148,7 +149,25 @@ void ParaSetDlg::installHead()
 
 void ParaSetDlg::installFlowPoint()
 {
-
+	qint64 file_tmstp = settings->value("Timestamp/timestamp").toLongLong();
+	QStringList heads = settings->childGroups();//配置文件中的组名
+	// 第i流量点
+	for (int i=0; i<VERIFY_POINTS; i++)
+	{
+		QString head = "FlowPoint_" + QString::number(i);
+		if (heads.contains(head))
+		{
+			if (file_tmstp ==  settings->value(head + "/timestamp").toLongLong())
+			{
+				lineEdit_uppers[i]->setText(settings->value(head + "/upperflow_"  + QString::number(i)).toString());
+				lineEdit_flows[i]->setText(settings->value(head + "/verifyflow_"  + QString::number(i)).toString());
+				lineEdit_quantites[i]->setText(settings->value(head + "/flowquantity_"  + QString::number(i)).toString());
+				lineEdit_valves[i]->setText(settings->value(head + "/valve_"  + QString::number(i)).toString());
+				qDebug()<<settings->value(head + "/flowquantity_"  + QString::number(i)).toInt();
+				cBox_seqs[i]->setCurrentIndex(settings->value(head + "/seq_"  + QString::number(i)).toInt());
+			}
+		}
+	}
 }
 
 void ParaSetDlg::installBool()
@@ -342,7 +361,7 @@ void ParaSetReader::readHead()
 		strcpy(params->m_type,  settings->value("head/metertype").toString().split(SEP)[1].toLocal8Bit());
 		strcpy(params->m_manufac,  settings->value("head/manufacture").toString().split(SEP)[1].toLocal8Bit());	
 		strcpy(params->m_model,  settings->value("head/model").toString().split(SEP)[1].toLocal8Bit());
-		strcpy(params->m_model,  settings->value("head/verifycompany").toString().split(SEP)[1].toLocal8Bit());
+		strcpy(params->m_vcomp,  settings->value("head/verifycompany").toString().split(SEP)[1].toLocal8Bit());
 		strcpy(params->m_vperson,  settings->value("head/verifyperson").toString().split(SEP)[1].toLocal8Bit());
 		strcpy(params->m_pickcode,  settings->value("head/pickcode").toString().split(SEP)[1].toLocal8Bit());
 		params->m_grade = settings->value("head/grade").toString().split(SEP)[0].toInt() + 1;
@@ -376,25 +395,32 @@ void ParaSetReader::readFlowPoints()
 
 void ParaSetReader::readBool()
 {
-	params->bo_adjerror	= settings->value("Bool/adjusterror").toBool();
-	params->bo_autopick = settings->value("Bool/adjusterror").toBool();
-	params->bo_converify = settings->value("Bool/continuouscheck").toBool();
-	params->bo_total = settings->value("Bool/Tqualitycheck").toBool();
-	params->bo_writenum = settings->value("Bool/writemeternumber").toBool();
-	params->bo_resetzero = settings->value("Bool/resetzero").toBool();
+	if (params->file_timestamp ==  settings->value("Bool/timestamp").toString().toLongLong())
+	{
+		params->bo_adjerror	= settings->value("Bool/adjusterror").toBool();
+		params->bo_autopick = settings->value("Bool/autopick").toBool();
+		params->bo_converify = settings->value("Bool/continuouscheck").toBool();
+		params->bo_total = settings->value("Bool/Tqualitycheck").toBool();
+		params->bo_writenum = settings->value("Bool/writemeternumber").toBool();
+		params->bo_resetzero = settings->value("Bool/resetzero").toBool();
+	}
 }
 
 void ParaSetReader::readOther()
 {
-	params->sc_flow =  settings->value("Other/flowsafecoefficient").toFloat();
-	params->sc_thermal =  settings->value("Other/thermalsafecoefficient").toFloat();
-	params->ex_time =  settings->value("Other/exhausttime").toFloat();
+	if (params->file_timestamp ==  settings->value("Other/timestamp").toString().toLongLong())
+	{
+		params->sc_flow =  settings->value("Other/flowsafecoefficient").toFloat();
+		params->sc_thermal =  settings->value("Other/thermalsafecoefficient").toFloat();
+		params->ex_time =  settings->value("Other/exhausttime").toFloat();
+	}
 }
 /*
 *得到检测序列号为i的流量点信息
 */
 flow_point_info ParaSetReader::getFpBySeq(int i)
 {
+	//遍历各有效流量点; 如果当前流量点的检定次序为i, 则返回此流量点信息
 	for (int j=0;j<params->total_fp;j++)
 	{
 		if (params->fp_info[j].fp_seq == i)
@@ -402,5 +428,6 @@ flow_point_info ParaSetReader::getFpBySeq(int i)
 			return params->fp_info[j];
 		}
 	}
-	throw "this sequence does not exist!";
+	
+	throw i;//如果遍历各有效流量点后没有匹配的检定次序,那么此检定次序不存在
 }
