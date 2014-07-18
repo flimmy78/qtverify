@@ -224,7 +224,7 @@ void MainForm::on_actionPlugin_triggered()
 			QObject *pluginObject = pluginLoader->instance();
 			if (pluginObject) 
 			{
-				m_monster = qobject_cast <MonsterInterface *>(pluginObject);
+ 				m_monster = qobject_cast <MonsterInterface *>(pluginObject);
 				qDebug() << m_monster->name();
 			}
 		}

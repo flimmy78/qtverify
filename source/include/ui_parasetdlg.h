@@ -860,25 +860,25 @@ public:
         lnEdit_Flow3->setText(QApplication::translate("ParaSetDlgClass", "0.25", 0, QApplication::UnicodeUTF8));
         lnEdit_Flow2->setText(QApplication::translate("ParaSetDlgClass", "0.75", 0, QApplication::UnicodeUTF8));
         lnEdit_Flow1->setText(QApplication::translate("ParaSetDlgClass", "2.5", 0, QApplication::UnicodeUTF8));
-        cBox_seq_4->setItemText(0, QString());
+        cBox_seq_4->setItemText(0, QApplication::translate("ParaSetDlgClass", "\346\227\240", 0, QApplication::UnicodeUTF8));
         cBox_seq_4->setItemText(1, QApplication::translate("ParaSetDlgClass", "      1", 0, QApplication::UnicodeUTF8));
         cBox_seq_4->setItemText(2, QApplication::translate("ParaSetDlgClass", "      2", 0, QApplication::UnicodeUTF8));
         cBox_seq_4->setItemText(3, QApplication::translate("ParaSetDlgClass", "      3", 0, QApplication::UnicodeUTF8));
         cBox_seq_4->setItemText(4, QApplication::translate("ParaSetDlgClass", "      4", 0, QApplication::UnicodeUTF8));
 
-        cBox_seq_3->setItemText(0, QString());
+        cBox_seq_3->setItemText(0, QApplication::translate("ParaSetDlgClass", "\346\227\240", 0, QApplication::UnicodeUTF8));
         cBox_seq_3->setItemText(1, QApplication::translate("ParaSetDlgClass", "      1", 0, QApplication::UnicodeUTF8));
         cBox_seq_3->setItemText(2, QApplication::translate("ParaSetDlgClass", "      2", 0, QApplication::UnicodeUTF8));
         cBox_seq_3->setItemText(3, QApplication::translate("ParaSetDlgClass", "      3", 0, QApplication::UnicodeUTF8));
         cBox_seq_3->setItemText(4, QApplication::translate("ParaSetDlgClass", "      4", 0, QApplication::UnicodeUTF8));
 
-        cBox_seq_2->setItemText(0, QString());
+        cBox_seq_2->setItemText(0, QApplication::translate("ParaSetDlgClass", "\346\227\240", 0, QApplication::UnicodeUTF8));
         cBox_seq_2->setItemText(1, QApplication::translate("ParaSetDlgClass", "      1", 0, QApplication::UnicodeUTF8));
         cBox_seq_2->setItemText(2, QApplication::translate("ParaSetDlgClass", "      2", 0, QApplication::UnicodeUTF8));
         cBox_seq_2->setItemText(3, QApplication::translate("ParaSetDlgClass", "      3", 0, QApplication::UnicodeUTF8));
         cBox_seq_2->setItemText(4, QApplication::translate("ParaSetDlgClass", "      4", 0, QApplication::UnicodeUTF8));
 
-        cBox_seq_1->setItemText(0, QString());
+        cBox_seq_1->setItemText(0, QApplication::translate("ParaSetDlgClass", "\346\227\240", 0, QApplication::UnicodeUTF8));
         cBox_seq_1->setItemText(1, QApplication::translate("ParaSetDlgClass", "      1", 0, QApplication::UnicodeUTF8));
         cBox_seq_1->setItemText(2, QApplication::translate("ParaSetDlgClass", "      2", 0, QApplication::UnicodeUTF8));
         cBox_seq_1->setItemText(3, QApplication::translate("ParaSetDlgClass", "      3", 0, QApplication::UnicodeUTF8));

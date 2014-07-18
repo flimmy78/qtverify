@@ -117,26 +117,30 @@ void DbSqlite::on_btnInsert_clicked()
 	QDateTime statTime = QDateTime::currentDateTime();
 	qDebug()<<"start time is:"<<statTime.toString("yyMMddhhmmss");
 	QDateTime endTime;
-	int sucNum=0, failNum=0;
-	QSqlQuery query;
 	m_count = ui.spinBoxNums->value();
-	while (m_count--)
+	db.transaction(); //开启事务处理
+	QSqlQuery q;
+	q.prepare("insert into t_meter_standard values(?, ?)");
+	QVariantList ints;
+	QVariantList names;
+	while (m_count)
 	{
-		if(query.exec(" INSERT INTO employee VALUES ('001', 'Jordan', 'Michael', '2000-05-18', '5188')")) 
-		{
-// 			qDebug()<<"insert"<<++sucNum<<"record success!";
-			sucNum++;
-		}
-		else
-		{
-// 			qDebug()<<"insert"<<++failNum<<"failed!";
-			failNum++;
-		}
+		ints << m_count;
+		names << QString("DN-%1").arg(m_count);
+		m_count--;
+	}	
+	q.addBindValue(ints);
+	q.addBindValue(names);
+	if (!q.execBatch())
+	{
+		qDebug() << q.lastError();
+		return;
 	}
+	db.commit(); //提交事务，此时才真正打开文件执行SQL语句
 	endTime = QDateTime::currentDateTime();
 	qDebug()<<"  end time is:"<<endTime.toString("yyMMddhhmmss");
 	int usedSec = statTime.msecsTo(endTime);
-	qDebug()<<"Insert"<<ui.spinBoxNums->value()<<"record； success"<<sucNum<<"； failed"<<failNum<<"。used time is:"<<usedSec<<"micro seconds\n";
+	qDebug()<<"Insert"<<ui.spinBoxNums->value()<<"record。"<<"used time is:"<<usedSec<<"micro seconds\n";
 }
 
 void DbSqlite::on_btnStop_clicked()
