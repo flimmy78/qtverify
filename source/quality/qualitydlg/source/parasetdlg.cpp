@@ -26,23 +26,19 @@ ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 {
 	qDebug()<<"ParaSetDlg thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
+
 	flowPointVector();
 
-
 	m_basedb.startdb();
-
 	m_meterStdNum = 0;
 	m_meterStdPtr = NULL;
-
 	m_meterTypeNum = 0;
 	m_meterTypePtr = NULL;
-
 	m_manuFacNum = 0;
 	m_manuFacPtr = NULL;
 
-	initUiData();
-	sep="#SEP#";
-	installLastParams();
+	initUiData();//以数据库中的数据, 初始化comboBox的值
+
 	char* runhome = getenv( "RUNHOME" );
 #ifdef __unix
 	sprintf( filename, "%s/ini/qualityParaSet.ini", runhome );
@@ -52,6 +48,8 @@ ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 
 	settings = new QSettings(filename, QSettings::IniFormat);
 	settings->setIniCodec("GB2312");//解决向ini文件中写汉字乱码
+
+	installLastParams();//加载上次的配置信息
 
 	ui.lnEdit_Flow1->setStyleSheet("border: 2px solid gray;"
 		"border-radius: 10px;"
@@ -130,9 +128,58 @@ void ParaSetDlg::initUiData()
 
 void ParaSetDlg::installLastParams()
 {
+	installHead();
+	installFlowPoint();
+	installBool();
+	installOther();
+}
+
+void ParaSetDlg::installHead()
+{
+	ui.cmbStandard->setCurrentIndex(settings->value("head/standard").toString().split(SEP)[0].toInt());
+	ui.cmbCollectCode->setCurrentIndex(settings->value("head/pickcode").toString().split(SEP)[0].toInt());
+	ui.cmbManufacture->setCurrentIndex(settings->value("head/manufacture").toString().split(SEP)[0].toInt());
+	ui.cmbGrade->setCurrentIndex(settings->value("head/grade").toString().split(SEP)[0].toInt());
+	ui.cmbModel->setCurrentIndex(settings->value("head/model").toString().split(SEP)[0].toInt());
+	ui.cmbVerifyCompany->setCurrentIndex(settings->value("head/verifycompany").toString().split(SEP)[0].toInt());
+	ui.cmbVerifyPerson->setCurrentIndex(settings->value("head/verifyperson").toString().split(SEP)[0].toInt());
+	ui.cmbFlow->setCurrentIndex(settings->value("head/nflowpoint").toString().split(SEP)[0].toInt());
+}
+
+void ParaSetDlg::installFlowPoint()
+{
 
 }
 
+void ParaSetDlg::installBool()
+{
+	 ui.tBtn_autoPick_true->setChecked(settings->value("Bool/autopick").toBool()) ;
+	 ui.tBtn_autoPick_false->setChecked(!(settings->value("Bool/autopick").toBool())) ;
+
+	 ui.tBtn_totalverify_true->setChecked(settings->value("Bool/Tqualitycheck").toBool()) ;
+	 ui.tBtn_totalverify_false->setChecked(!(settings->value("Bool/Tqualitycheck").toBool())) ;
+
+	 ui.tBtn_adjustError_true->setChecked(settings->value("Bool/adjusterror").toBool()) ;
+	 ui.tBtn_adjustError_false->setChecked(!(settings->value("Bool/adjusterror").toBool())) ;
+
+	 ui.tBtn_writeNum_true->setChecked(settings->value("Bool/writemeternumber").toBool()) ;
+	 ui.tBtn_writeNum_false->setChecked(!(settings->value("Bool/writemeternumber").toBool())) ;
+
+	 ui.tBtn_continuous_true->setChecked(settings->value("Bool/continuouscheck").toBool()) ;
+	 ui.tBtn_continuous_false->setChecked(!(settings->value("Bool/continuouscheck").toBool())) ;
+}
+
+void ParaSetDlg::installOther()
+{
+	ui.lineEdit_sc_flow->setText(settings->value("Other/flowsafecoefficient").toString());
+	ui.lineEdit_sc_thermal->setText(settings->value("Other/thermalsafecoefficient").toString());
+	ui.lineEdit_exTime->setText(settings->value("Other/exhausttime").toString());
+}
+
+/*将各流量点中, 相似功能的控件加入数组, 便于使用; 
+**这就好比界面上的一组控件代表一个关系表(关系型数据库)中的一条记录, 
+**而每个控件代表记录中的不同的域
+*/
 void ParaSetDlg::flowPointVector()
 {
 	
@@ -182,15 +229,15 @@ void ParaSetDlg::SaveHead()
 {
 	settings->beginGroup("head");
 	settings->setValue("timestamp",timestamp);
-	settings->setValue("standard", QString::number(ui.cmbStandard->currentIndex()) + sep + ui.cmbStandard->currentText());
-	settings->setValue("metertype", QString::number(ui.cmbCollectCode->currentIndex()) + sep + ui.cmbCollectCode->currentText());
-	settings->setValue("manufacture", QString::number(ui.cmbManufacture->currentIndex()) + sep + ui.cmbManufacture->currentText());
-	settings->setValue("grade", QString::number(ui.cmbGrade->currentIndex()) + sep + ui.cmbGrade->currentText());
-	settings->setValue("model", QString::number(ui.cmbModel->currentIndex()) + sep + ui.cmbModel->currentText());
-	settings->setValue("verifycompany", QString::number(ui.cmbVerifyCompany->currentIndex()) + sep + ui.cmbVerifyCompany->currentText());
-	settings->setValue("verifyperson", QString::number(ui.cmbVerifyPerson->currentIndex()) + sep + ui.cmbVerifyPerson->currentText());
-	settings->setValue("pickcode", QString::number(ui.cmbCollectCode->currentIndex()) + sep + ui.cmbCollectCode->currentText());
-	settings->setValue("nflowpoint", QString::number(ui.cmbFlow->currentIndex()) + sep + ui.cmbFlow->currentText());
+	settings->setValue("standard", QString::number(ui.cmbStandard->currentIndex()) + SEP + ui.cmbStandard->currentText());
+	settings->setValue("metertype", QString::number(ui.cmbCollectCode->currentIndex()) + SEP + ui.cmbCollectCode->currentText());
+	settings->setValue("manufacture", QString::number(ui.cmbManufacture->currentIndex()) + SEP + ui.cmbManufacture->currentText());
+	settings->setValue("grade", QString::number(ui.cmbGrade->currentIndex()) + SEP + ui.cmbGrade->currentText());
+	settings->setValue("model", QString::number(ui.cmbModel->currentIndex()) + SEP + ui.cmbModel->currentText());
+	settings->setValue("verifycompany", QString::number(ui.cmbVerifyCompany->currentIndex()) + SEP + ui.cmbVerifyCompany->currentText());
+	settings->setValue("verifyperson", QString::number(ui.cmbVerifyPerson->currentIndex()) + SEP + ui.cmbVerifyPerson->currentText());
+	settings->setValue("pickcode", QString::number(ui.cmbCollectCode->currentIndex()) + SEP + ui.cmbCollectCode->currentText());
+	settings->setValue("nflowpoint", QString::number(ui.cmbFlow->currentIndex()) + SEP + ui.cmbFlow->currentText());
 	settings->endGroup();
 }
 
@@ -224,6 +271,7 @@ void ParaSetDlg::SaveBool()
 	settings->setValue("adjusterror", ui.tBtn_adjustError_true->isChecked() );//是否修正误差
 	settings->setValue("writemeternumber", ui.tBtn_writeNum_true->isChecked() );//是否写表号
 	settings->setValue("continuouscheck", ui.tBtn_continuous_true->isChecked() );//是否连续检定
+	//settings->setValue("resetzero", ui.tBtn_resetzero_true->isChecked() );//是否初值回零
 	settings->endGroup();
 }
 
@@ -251,11 +299,19 @@ ParaSetReader::ParaSetReader()
 	settings = new QSettings(filename, QSettings::IniFormat);
 	settings->setIniCodec("GB2312");//解决向ini文件中写汉字乱码
 
-		params =new Quality_Params;
-		memset(params, 0, sizeof(QParams_PTR));
+	params =new Quality_Params;
+	memset(params, 0, sizeof(QParams_PTR));
+
+	readParamValues();
 }
+
 ParaSetReader::~ParaSetReader()
 {
+	if (settings)
+	{
+		delete settings;
+		settings = NULL;
+	}
 	if (params)
 	{
 		delete params;
@@ -264,25 +320,87 @@ ParaSetReader::~ParaSetReader()
 }
 /*
 * 读取配置文件的信息
-* index: 参数字符串被分隔符打断后的索引值
 */
-QParams_PTR ParaSetReader::readParamValues()
+void ParaSetReader::readParamValues()
 {
 
 	QString sep = "#SEP#";
-	//文件时间戳
+	//读取文件时间戳
 	params->file_timestamp = settings->value("Timestamp/timestamp").toString().toLongLong();
-	//读取基本信息
-	strcpy(params->m_stand,  settings->value("head/standard").toString().split(sep)[1].toLocal8Bit());
-	strcpy(params->m_type,  settings->value("head/metertype").toString().split(sep)[1].toLocal8Bit());
-	strcpy(params->m_manufac,  settings->value("head/manufacture").toString().split(sep)[1].toLocal8Bit());	
-	strcpy(params->m_model,  settings->value("head/model").toString().split(sep)[1].toLocal8Bit());
-	strcpy(params->m_model,  settings->value("head/verifycompany").toString().split(sep)[1].toLocal8Bit());
-	strcpy(params->m_vperson,  settings->value("head/verifyperson").toString().split(sep)[1].toLocal8Bit());
-	strcpy(params->m_pickcode,  settings->value("head/pickcode").toString().split(sep)[1].toLocal8Bit());
-	params->m_grade = settings->value("head/grade").toString().split(sep)[1].toInt();
-	params->m_nflowpnt = settings->value("head/nflowpoint").toString().split(sep)[1].toFloat();
+	readHead();
+	readBool();
+	readOther();
+	readFlowPoints();
+}
 
+void ParaSetReader::readHead()
+{
+	if (params->file_timestamp ==  settings->value("head/timestamp").toString().toLongLong())
+	{
+		//读取基本信息
+		strcpy(params->m_stand,  settings->value("head/standard").toString().split(SEP)[1].toLocal8Bit());
+		strcpy(params->m_type,  settings->value("head/metertype").toString().split(SEP)[1].toLocal8Bit());
+		strcpy(params->m_manufac,  settings->value("head/manufacture").toString().split(SEP)[1].toLocal8Bit());	
+		strcpy(params->m_model,  settings->value("head/model").toString().split(SEP)[1].toLocal8Bit());
+		strcpy(params->m_model,  settings->value("head/verifycompany").toString().split(SEP)[1].toLocal8Bit());
+		strcpy(params->m_vperson,  settings->value("head/verifyperson").toString().split(SEP)[1].toLocal8Bit());
+		strcpy(params->m_pickcode,  settings->value("head/pickcode").toString().split(SEP)[1].toLocal8Bit());
+		params->m_grade = settings->value("head/grade").toString().split(SEP)[0].toInt() + 1;
+		params->m_nflowpnt = settings->value("head/nflowpoint").toString().split(SEP)[1].toFloat();
+	}
+}
 
-	return params;
+void ParaSetReader::readFlowPoints()
+{
+	params->total_fp = 0;
+	QStringList heads = settings->childGroups();//配置文件中的组名
+	// 第i流量点
+	for (int i=0; i<VERIFY_POINTS; i++)
+	{
+		QString head = "FlowPoint_" + QString::number(i);
+		if (heads.contains(head))
+		{
+			if (params->file_timestamp ==  settings->value(head + "/timestamp").toLongLong())
+			{
+				params->total_fp++;
+				params->fp_info[i].fp_freq =  settings->value(head + "/pumpfrequencey_"  + QString::number(i)).toFloat();
+				params->fp_info[i].fp_upperlmt =  settings->value(head + "/upperflow_"  + QString::number(i)).toFloat();
+				params->fp_info[i].fp_verify =  settings->value(head + "/verifyflow_"  + QString::number(i)).toFloat();
+				params->fp_info[i].fp_quantity =  settings->value(head + "/flowquantity_"  + QString::number(i)).toFloat();
+				params->fp_info[i].fp_valve =  settings->value(head + "/valve_"  + QString::number(i)).toInt();
+				params->fp_info[i].fp_seq =  settings->value(head + "/seq_"  + QString::number(i)).toInt();
+			}
+		}
+	}
+}
+
+void ParaSetReader::readBool()
+{
+	params->bo_adjerror	= settings->value("Bool/adjusterror").toBool();
+	params->bo_autopick = settings->value("Bool/adjusterror").toBool();
+	params->bo_converify = settings->value("Bool/continuouscheck").toBool();
+	params->bo_total = settings->value("Bool/Tqualitycheck").toBool();
+	params->bo_writenum = settings->value("Bool/writemeternumber").toBool();
+	params->bo_resetzero = settings->value("Bool/resetzero").toBool();
+}
+
+void ParaSetReader::readOther()
+{
+	params->sc_flow =  settings->value("Other/flowsafecoefficient").toFloat();
+	params->sc_thermal =  settings->value("Other/thermalsafecoefficient").toFloat();
+	params->ex_time =  settings->value("Other/exhausttime").toFloat();
+}
+/*
+*得到检测序列号为i的流量点信息
+*/
+flow_point_info ParaSetReader::getFpBySeq(int i)
+{
+	for (int j=0;j<params->total_fp;j++)
+	{
+		if (params->fp_info[j].fp_seq == i)
+		{
+			return params->fp_info[j];
+		}
+	}
+	throw "this sequence does not exist!";
 }

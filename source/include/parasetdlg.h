@@ -43,7 +43,6 @@ private:
 	QSettings *settings;//配置文件
 	QParams_PTR params;//本次的配置参数
 	ParaSetReader *lastParams;//上次的配置参数
-	QString sep;//分隔符
 	qint64 timestamp;//时间戳
 
 	QVector<QLineEdit*> lineEdit_uppers;
@@ -53,7 +52,13 @@ private:
 	QVector<QComboBox*> cBox_seqs;
 
 	void flowPointVector();
+
 	void installLastParams();//装载上次的参数配置
+	void 	installHead();
+	void installFlowPoint();
+	void installBool();
+	void installOther();
+
 	void SaveHead();//保存基本信息
 	void SaveFlowPoint(int i);//保存流量点信息
 	void SaveBool();//保存布尔值
@@ -71,12 +76,15 @@ class PARASETDLG_EXPORT ParaSetReader
 		ParaSetReader();
 		~ParaSetReader();
 
-		QParams_PTR readParamValues();
+		
+		flow_point_info getFpBySeq(int);
+
 		int* readParamIndexes();
 private:
+	void readParamValues();
 	void readHead();
 	void readFlowPoints();
-	void readFlowPoint(int i);
+
 	void readBool();
 	void readOther();
 };

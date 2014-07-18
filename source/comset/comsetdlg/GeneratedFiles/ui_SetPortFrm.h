@@ -14,10 +14,13 @@
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
 #include <QtGui/QComboBox>
+#include <QtGui/QGridLayout>
 #include <QtGui/QGroupBox>
+#include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QPushButton>
+#include <QtGui/QSpacerItem>
 #include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -25,116 +28,203 @@ QT_BEGIN_NAMESPACE
 class Ui_SetPortFrm
 {
 public:
+    QGridLayout *gridLayout_3;
     QGroupBox *gBox_Valve;
+    QGridLayout *gridLayout;
     QLabel *label;
-    QLabel *label_2;
-    QLabel *label_3;
-    QLabel *label_4;
-    QLabel *label_5;
-    QLabel *label_6;
     QComboBox *cBox_Inlet;
+    QLabel *label_2;
     QComboBox *cBox_Outlet;
+    QLabel *label_3;
     QComboBox *cBox_Rate_1;
+    QLabel *label_4;
     QComboBox *cBox_Rate_2;
+    QLabel *label_5;
     QComboBox *cBox_Rate_3;
+    QLabel *label_6;
     QComboBox *cBox_Rate_4;
-    QPushButton *btn_Save;
     QGroupBox *gBox_Dev;
+    QGridLayout *gridLayout_2;
     QLabel *label_7;
-    QLabel *label_8;
-    QLabel *label_9;
     QComboBox *cBox_Pump;
+    QLabel *label_8;
     QComboBox *cBox_Regulate_1;
+    QLabel *label_9;
     QComboBox *cBox_Regulate_2;
-    QComboBox *cBox_Regulate_3;
-    QComboBox *cBox_Regulate_4;
     QLabel *label_10;
+    QComboBox *cBox_Regulate_3;
     QLabel *label_11;
+    QComboBox *cBox_Regulate_4;
+    QSpacerItem *verticalSpacer;
+    QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer_2;
+    QPushButton *btn_Save;
+    QSpacerItem *horizontalSpacer;
     QPushButton *btn_Exit;
+    QSpacerItem *horizontalSpacer_3;
 
     void setupUi(QWidget *SetPortFrm)
     {
         if (SetPortFrm->objectName().isEmpty())
             SetPortFrm->setObjectName(QString::fromUtf8("SetPortFrm"));
         SetPortFrm->resize(399, 260);
+        gridLayout_3 = new QGridLayout(SetPortFrm);
+        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
         gBox_Valve = new QGroupBox(SetPortFrm);
         gBox_Valve->setObjectName(QString::fromUtf8("gBox_Valve"));
-        gBox_Valve->setGeometry(QRect(10, 10, 171, 211));
+        gridLayout = new QGridLayout(gBox_Valve);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         label = new QLabel(gBox_Valve);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(20, 30, 54, 12));
-        label_2 = new QLabel(gBox_Valve);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(20, 60, 54, 12));
-        label_3 = new QLabel(gBox_Valve);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(20, 90, 54, 12));
-        label_4 = new QLabel(gBox_Valve);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(20, 120, 61, 16));
-        label_5 = new QLabel(gBox_Valve);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setGeometry(QRect(20, 150, 61, 16));
-        label_6 = new QLabel(gBox_Valve);
-        label_6->setObjectName(QString::fromUtf8("label_6"));
-        label_6->setGeometry(QRect(20, 180, 54, 12));
+
+        gridLayout->addWidget(label, 0, 0, 1, 1);
+
         cBox_Inlet = new QComboBox(gBox_Valve);
         cBox_Inlet->setObjectName(QString::fromUtf8("cBox_Inlet"));
-        cBox_Inlet->setGeometry(QRect(90, 20, 69, 22));
+
+        gridLayout->addWidget(cBox_Inlet, 0, 1, 1, 1);
+
+        label_2 = new QLabel(gBox_Valve);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+
+        gridLayout->addWidget(label_2, 1, 0, 1, 1);
+
         cBox_Outlet = new QComboBox(gBox_Valve);
         cBox_Outlet->setObjectName(QString::fromUtf8("cBox_Outlet"));
-        cBox_Outlet->setGeometry(QRect(90, 50, 69, 22));
+
+        gridLayout->addWidget(cBox_Outlet, 1, 1, 1, 1);
+
+        label_3 = new QLabel(gBox_Valve);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+
+        gridLayout->addWidget(label_3, 2, 0, 1, 1);
+
         cBox_Rate_1 = new QComboBox(gBox_Valve);
         cBox_Rate_1->setObjectName(QString::fromUtf8("cBox_Rate_1"));
-        cBox_Rate_1->setGeometry(QRect(90, 80, 69, 22));
+
+        gridLayout->addWidget(cBox_Rate_1, 2, 1, 1, 1);
+
+        label_4 = new QLabel(gBox_Valve);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+
+        gridLayout->addWidget(label_4, 3, 0, 1, 1);
+
         cBox_Rate_2 = new QComboBox(gBox_Valve);
         cBox_Rate_2->setObjectName(QString::fromUtf8("cBox_Rate_2"));
-        cBox_Rate_2->setGeometry(QRect(90, 110, 69, 22));
+
+        gridLayout->addWidget(cBox_Rate_2, 3, 1, 1, 1);
+
+        label_5 = new QLabel(gBox_Valve);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+
+        gridLayout->addWidget(label_5, 4, 0, 1, 1);
+
         cBox_Rate_3 = new QComboBox(gBox_Valve);
         cBox_Rate_3->setObjectName(QString::fromUtf8("cBox_Rate_3"));
-        cBox_Rate_3->setGeometry(QRect(90, 140, 69, 22));
+
+        gridLayout->addWidget(cBox_Rate_3, 4, 1, 1, 1);
+
+        label_6 = new QLabel(gBox_Valve);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
+
+        gridLayout->addWidget(label_6, 5, 0, 1, 1);
+
         cBox_Rate_4 = new QComboBox(gBox_Valve);
         cBox_Rate_4->setObjectName(QString::fromUtf8("cBox_Rate_4"));
-        cBox_Rate_4->setGeometry(QRect(90, 170, 69, 22));
-        btn_Save = new QPushButton(SetPortFrm);
-        btn_Save->setObjectName(QString::fromUtf8("btn_Save"));
-        btn_Save->setGeometry(QRect(50, 220, 75, 23));
+
+        gridLayout->addWidget(cBox_Rate_4, 5, 1, 1, 1);
+
+
+        gridLayout_3->addWidget(gBox_Valve, 0, 0, 2, 1);
+
         gBox_Dev = new QGroupBox(SetPortFrm);
         gBox_Dev->setObjectName(QString::fromUtf8("gBox_Dev"));
-        gBox_Dev->setGeometry(QRect(210, 10, 171, 181));
+        gridLayout_2 = new QGridLayout(gBox_Dev);
+        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         label_7 = new QLabel(gBox_Dev);
         label_7->setObjectName(QString::fromUtf8("label_7"));
-        label_7->setGeometry(QRect(20, 30, 54, 12));
-        label_8 = new QLabel(gBox_Dev);
-        label_8->setObjectName(QString::fromUtf8("label_8"));
-        label_8->setGeometry(QRect(20, 60, 54, 12));
-        label_9 = new QLabel(gBox_Dev);
-        label_9->setObjectName(QString::fromUtf8("label_9"));
-        label_9->setGeometry(QRect(20, 90, 54, 12));
+
+        gridLayout_2->addWidget(label_7, 0, 0, 1, 1);
+
         cBox_Pump = new QComboBox(gBox_Dev);
         cBox_Pump->setObjectName(QString::fromUtf8("cBox_Pump"));
-        cBox_Pump->setGeometry(QRect(90, 20, 69, 22));
+
+        gridLayout_2->addWidget(cBox_Pump, 0, 1, 1, 1);
+
+        label_8 = new QLabel(gBox_Dev);
+        label_8->setObjectName(QString::fromUtf8("label_8"));
+
+        gridLayout_2->addWidget(label_8, 1, 0, 1, 1);
+
         cBox_Regulate_1 = new QComboBox(gBox_Dev);
         cBox_Regulate_1->setObjectName(QString::fromUtf8("cBox_Regulate_1"));
-        cBox_Regulate_1->setGeometry(QRect(90, 50, 69, 22));
+
+        gridLayout_2->addWidget(cBox_Regulate_1, 1, 1, 1, 1);
+
+        label_9 = new QLabel(gBox_Dev);
+        label_9->setObjectName(QString::fromUtf8("label_9"));
+
+        gridLayout_2->addWidget(label_9, 2, 0, 1, 1);
+
         cBox_Regulate_2 = new QComboBox(gBox_Dev);
         cBox_Regulate_2->setObjectName(QString::fromUtf8("cBox_Regulate_2"));
-        cBox_Regulate_2->setGeometry(QRect(90, 80, 69, 22));
-        cBox_Regulate_3 = new QComboBox(gBox_Dev);
-        cBox_Regulate_3->setObjectName(QString::fromUtf8("cBox_Regulate_3"));
-        cBox_Regulate_3->setGeometry(QRect(90, 110, 69, 22));
-        cBox_Regulate_4 = new QComboBox(gBox_Dev);
-        cBox_Regulate_4->setObjectName(QString::fromUtf8("cBox_Regulate_4"));
-        cBox_Regulate_4->setGeometry(QRect(90, 140, 69, 22));
+
+        gridLayout_2->addWidget(cBox_Regulate_2, 2, 1, 1, 1);
+
         label_10 = new QLabel(gBox_Dev);
         label_10->setObjectName(QString::fromUtf8("label_10"));
-        label_10->setGeometry(QRect(20, 120, 54, 12));
+
+        gridLayout_2->addWidget(label_10, 3, 0, 1, 1);
+
+        cBox_Regulate_3 = new QComboBox(gBox_Dev);
+        cBox_Regulate_3->setObjectName(QString::fromUtf8("cBox_Regulate_3"));
+
+        gridLayout_2->addWidget(cBox_Regulate_3, 3, 1, 1, 1);
+
         label_11 = new QLabel(gBox_Dev);
         label_11->setObjectName(QString::fromUtf8("label_11"));
-        label_11->setGeometry(QRect(20, 150, 54, 12));
+
+        gridLayout_2->addWidget(label_11, 4, 0, 1, 1);
+
+        cBox_Regulate_4 = new QComboBox(gBox_Dev);
+        cBox_Regulate_4->setObjectName(QString::fromUtf8("cBox_Regulate_4"));
+
+        gridLayout_2->addWidget(cBox_Regulate_4, 4, 1, 1, 1);
+
+
+        gridLayout_3->addWidget(gBox_Dev, 0, 1, 1, 1);
+
+        verticalSpacer = new QSpacerItem(20, 19, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_3->addItem(verticalSpacer, 1, 1, 1, 1);
+
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_2);
+
+        btn_Save = new QPushButton(SetPortFrm);
+        btn_Save->setObjectName(QString::fromUtf8("btn_Save"));
+
+        horizontalLayout->addWidget(btn_Save);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
         btn_Exit = new QPushButton(SetPortFrm);
         btn_Exit->setObjectName(QString::fromUtf8("btn_Exit"));
-        btn_Exit->setGeometry(QRect(310, 220, 75, 23));
+
+        horizontalLayout->addWidget(btn_Exit);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_3);
+
+
+        gridLayout_3->addLayout(horizontalLayout, 2, 0, 1, 2);
+
 
         retranslateUi(SetPortFrm);
 
@@ -146,11 +236,6 @@ public:
         SetPortFrm->setWindowTitle(QApplication::translate("SetPortFrm", "SetPortFrm", 0, QApplication::UnicodeUTF8));
         gBox_Valve->setTitle(QApplication::translate("SetPortFrm", "\351\230\200\351\227\250", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("SetPortFrm", "\350\277\233\346\260\264\346\200\273\351\230\200", 0, QApplication::UnicodeUTF8));
-        label_2->setText(QApplication::translate("SetPortFrm", "\346\224\276\346\260\264\346\200\273\351\230\200", 0, QApplication::UnicodeUTF8));
-        label_3->setText(QApplication::translate("SetPortFrm", "\345\244\247\346\265\201\351\207\217\351\230\200", 0, QApplication::UnicodeUTF8));
-        label_4->setText(QApplication::translate("SetPortFrm", "\344\270\255\344\272\214\346\265\201\351\207\217\351\230\200", 0, QApplication::UnicodeUTF8));
-        label_5->setText(QApplication::translate("SetPortFrm", "\344\270\255\344\270\200\346\265\201\351\207\217\351\230\200", 0, QApplication::UnicodeUTF8));
-        label_6->setText(QApplication::translate("SetPortFrm", "\345\260\217\346\265\201\351\207\217\351\230\200", 0, QApplication::UnicodeUTF8));
         cBox_Inlet->clear();
         cBox_Inlet->insertItems(0, QStringList()
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2431", 0, QApplication::UnicodeUTF8)
@@ -174,6 +259,7 @@ public:
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24319", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24320", 0, QApplication::UnicodeUTF8)
         );
+        label_2->setText(QApplication::translate("SetPortFrm", "\346\224\276\346\260\264\346\200\273\351\230\200", 0, QApplication::UnicodeUTF8));
         cBox_Outlet->clear();
         cBox_Outlet->insertItems(0, QStringList()
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2431", 0, QApplication::UnicodeUTF8)
@@ -197,6 +283,7 @@ public:
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24319", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24320", 0, QApplication::UnicodeUTF8)
         );
+        label_3->setText(QApplication::translate("SetPortFrm", "\345\244\247\346\265\201\351\207\217\351\230\200", 0, QApplication::UnicodeUTF8));
         cBox_Rate_1->clear();
         cBox_Rate_1->insertItems(0, QStringList()
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2431", 0, QApplication::UnicodeUTF8)
@@ -220,6 +307,7 @@ public:
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24319", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24320", 0, QApplication::UnicodeUTF8)
         );
+        label_4->setText(QApplication::translate("SetPortFrm", "\344\270\255\344\272\214\346\265\201\351\207\217\351\230\200", 0, QApplication::UnicodeUTF8));
         cBox_Rate_2->clear();
         cBox_Rate_2->insertItems(0, QStringList()
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2431", 0, QApplication::UnicodeUTF8)
@@ -243,6 +331,7 @@ public:
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24319", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24320", 0, QApplication::UnicodeUTF8)
         );
+        label_5->setText(QApplication::translate("SetPortFrm", "\344\270\255\344\270\200\346\265\201\351\207\217\351\230\200", 0, QApplication::UnicodeUTF8));
         cBox_Rate_3->clear();
         cBox_Rate_3->insertItems(0, QStringList()
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2431", 0, QApplication::UnicodeUTF8)
@@ -266,6 +355,7 @@ public:
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24319", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24320", 0, QApplication::UnicodeUTF8)
         );
+        label_6->setText(QApplication::translate("SetPortFrm", "\345\260\217\346\265\201\351\207\217\351\230\200", 0, QApplication::UnicodeUTF8));
         cBox_Rate_4->clear();
         cBox_Rate_4->insertItems(0, QStringList()
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2431", 0, QApplication::UnicodeUTF8)
@@ -289,11 +379,8 @@ public:
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24319", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24320", 0, QApplication::UnicodeUTF8)
         );
-        btn_Save->setText(QApplication::translate("SetPortFrm", "\344\277\235\345\255\230", 0, QApplication::UnicodeUTF8));
         gBox_Dev->setTitle(QApplication::translate("SetPortFrm", "\350\256\276\345\244\207", 0, QApplication::UnicodeUTF8));
         label_7->setText(QApplication::translate("SetPortFrm", "\346\260\264\346\263\265", 0, QApplication::UnicodeUTF8));
-        label_8->setText(QApplication::translate("SetPortFrm", "\350\260\203\350\212\202\351\230\2001", 0, QApplication::UnicodeUTF8));
-        label_9->setText(QApplication::translate("SetPortFrm", "\350\260\203\350\212\202\351\230\2002", 0, QApplication::UnicodeUTF8));
         cBox_Pump->clear();
         cBox_Pump->insertItems(0, QStringList()
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2431", 0, QApplication::UnicodeUTF8)
@@ -317,6 +404,7 @@ public:
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24319", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24320", 0, QApplication::UnicodeUTF8)
         );
+        label_8->setText(QApplication::translate("SetPortFrm", "\350\260\203\350\212\202\351\230\2001", 0, QApplication::UnicodeUTF8));
         cBox_Regulate_1->clear();
         cBox_Regulate_1->insertItems(0, QStringList()
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2431", 0, QApplication::UnicodeUTF8)
@@ -340,6 +428,7 @@ public:
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24319", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24320", 0, QApplication::UnicodeUTF8)
         );
+        label_9->setText(QApplication::translate("SetPortFrm", "\350\260\203\350\212\202\351\230\2002", 0, QApplication::UnicodeUTF8));
         cBox_Regulate_2->clear();
         cBox_Regulate_2->insertItems(0, QStringList()
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2431", 0, QApplication::UnicodeUTF8)
@@ -363,6 +452,7 @@ public:
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24319", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24320", 0, QApplication::UnicodeUTF8)
         );
+        label_10->setText(QApplication::translate("SetPortFrm", "\350\260\203\350\212\202\351\230\2003", 0, QApplication::UnicodeUTF8));
         cBox_Regulate_3->clear();
         cBox_Regulate_3->insertItems(0, QStringList()
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2431", 0, QApplication::UnicodeUTF8)
@@ -386,6 +476,7 @@ public:
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24319", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24320", 0, QApplication::UnicodeUTF8)
         );
+        label_11->setText(QApplication::translate("SetPortFrm", "\350\260\203\350\212\202\351\230\2004", 0, QApplication::UnicodeUTF8));
         cBox_Regulate_4->clear();
         cBox_Regulate_4->insertItems(0, QStringList()
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2431", 0, QApplication::UnicodeUTF8)
@@ -409,8 +500,7 @@ public:
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24319", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24320", 0, QApplication::UnicodeUTF8)
         );
-        label_10->setText(QApplication::translate("SetPortFrm", "\350\260\203\350\212\202\351\230\2003", 0, QApplication::UnicodeUTF8));
-        label_11->setText(QApplication::translate("SetPortFrm", "\350\260\203\350\212\202\351\230\2004", 0, QApplication::UnicodeUTF8));
+        btn_Save->setText(QApplication::translate("SetPortFrm", "\344\277\235\345\255\230", 0, QApplication::UnicodeUTF8));
         btn_Exit->setText(QApplication::translate("SetPortFrm", "\351\200\200\345\207\272", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

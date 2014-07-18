@@ -6,7 +6,7 @@
 #include "ui_mainform.h"
 #include "dbmysql.h"
 #include "dbsqlite.h"
-#include "monsterinterface.h" //插件接口
+//#include "monsterinterface.h" //插件接口
 #include "comsetdlg.h"
 #include "SetComFrm.h"
 #include "qualitydlg.h"
@@ -24,7 +24,7 @@ public:
 
 	DbMySql *dbmysqlobj;
 	DbSqlite *dbsqliteobj;
-	MonsterInterface *m_monster;
+	//MonsterInterface *m_monster;
 	CAlgorithm *m_alg;
 	SetComFrm *m_setcom; //串口参数设置
 	ComSetDlg *m_comdebugger;

@@ -6,7 +6,7 @@
 #endif
 
 #ifndef SEP
-#define SEP "#SEP#"//检定流量点的数量, 一般为4个(大, 中一, 中二, 小), 但客户也可能需要更多
+#define SEP "#SEP#"//分隔符
 #endif
 
 /*
@@ -88,6 +88,23 @@ public:
 typedef Manufacture_STR* Manufacture_PTR;
 
 /*
+* 检定流量点信息; fp为flow point的头字母
+* i 是界面上预先定义的控件顺序
+*/
+
+struct flow_point_info_str
+{
+	qint64 fp_timestamp;//第i流量点的时间戳
+	float fp_upperlmt;//第i流量点的上限流量值(2.7m³/h)
+	float fp_verify;//第i流量点的检定流量值(2.5m³/h)
+	float fp_quantity;//第i流量点的检定水量(50L)
+	float fp_freq;//第i流量点的水泵频率(35Hz)
+	int fp_valve;//第i流量点的控制阀(大)
+	int fp_seq;//第i流量点的检定次序(3)
+};
+typedef struct flow_point_info_str flow_point_info;
+
+/*
 **      质量检定法用到的相关参数值
 */
 class Quality_Params
@@ -102,22 +119,12 @@ public:
 	int m_grade;//被检表等级(一级,二级,三级等)
 	char m_model[50];//被检表规格(DELU-14.17W, SHARKY-475等)
 	char m_vcomp[50];//检定机构(山东省计量院)
-	char m_vperson[50];//检定员(王老五)
+	char m_vperson[50];//检定员(张三)
 	char m_pickcode[50];//采集代码
 	float m_nflowpnt;//被检表的常用流量
 
-	/*
-	* 检定流量点信息; fp为flow point的头字母
-	* i 是界面上预先定义的控件顺序
-	*/
-	qint64 fp_timestamp[VERIFY_POINTS];//第i流量点的时间戳
+	flow_point_info fp_info[VERIFY_POINTS];//第i流量点信息
 	int total_fp;//有效流量点的数目
-	float fp_upperlmt[VERIFY_POINTS];//第i流量点的上限流量值(2.7m³/h)
-	float fp_verify[VERIFY_POINTS];//第i流量点的检定流量值(2.5m³/h)
-	float fp_quantity[VERIFY_POINTS];//第i流量点的检定水量(50L)
-	float fp_freq[VERIFY_POINTS];//第i流量点的水泵频率(35Hz)
-	char fp_valve[VERIFY_POINTS][10];//第i流量点的控制阀(大)
-	int fp_seq[VERIFY_POINTS];//第i流量点的检定次序(3)
 
 	//检定时的控制参数, 全部为布尔型参数, 故前缀以bo_开头
 	qint64 bo_timestamp;//布尔值时间戳
@@ -126,7 +133,7 @@ public:
 	bool bo_adjerror;//是否调整误差
 	bool bo_writenum;//是否写表号
 	bool bo_converify;//是否连续检定
-
+	bool bo_resetzero;//是否初值回零
 	//其他参数
 	qint64 oth_timestamp;//其他参数时间戳
 	float sc_flow;//流量安全系数,sc为safe coefficient头字母

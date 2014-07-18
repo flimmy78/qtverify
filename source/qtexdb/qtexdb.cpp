@@ -120,6 +120,7 @@ int CBaseExdb::getMeterType(int& num, MeterType_PTR &ptr)
 		{
 			ptr[i].id = query.value(0).toInt();
 			strcpy(ptr[i].desc, query.value(1).toString().toLocal8Bit()); //ºº×Ö±àÂë
+			qDebug()<<ptr[i].desc<<"::"<<query.value(1).toString().toLocal8Bit();
 			i++;
 		}
 	}

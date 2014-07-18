@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -16,7 +16,7 @@
     <Keyword>Qt4VSv1.0</Keyword>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <OutputDirectory>$(RUNHOME)\tmp\comobject\obj\</OutputDirectory>
     <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
     <CharacterSet>NotSet</CharacterSet>
@@ -24,7 +24,7 @@
     <IntermediateDirectory>$(RUNHOME)\tmp\comobject\obj\</IntermediateDirectory>
     <PrimaryOutput>comobject</PrimaryOutput>
   </PropertyGroup>
-  <PropertyGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <OutputDirectory>$(RUNHOME)\tmp\comobject\obj\</OutputDirectory>
     <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
     <CharacterSet>NotSet</CharacterSet>
@@ -34,29 +34,29 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings" />
-  <ImportGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;" Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists(&apos;$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props&apos;)" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
   </ImportGroup>
-  <ImportGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;" Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists(&apos;$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props&apos;)" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <OutDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">$(RUNHOME)\tmp\comobject\obj\</OutDir>
-    <IntDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">$(RUNHOME)\tmp\comobject\obj\</IntDir>
-    <TargetName Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">comobject</TargetName>
-    <IgnoreImportLibrary Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">true</IgnoreImportLibrary>
-    <PostBuildEventUseInBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">true</PostBuildEventUseInBuild>
-    <OutDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">$(RUNHOME)\tmp\comobject\obj\</OutDir>
-    <IntDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">$(RUNHOME)\tmp\comobject\obj\</IntDir>
-    <TargetName Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">comobject</TargetName>
-    <IgnoreImportLibrary Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">true</IgnoreImportLibrary>
-    <LinkIncremental Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">false</LinkIncremental>
-    <PostBuildEventUseInBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">true</PostBuildEventUseInBuild>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(RUNHOME)\tmp\comobject\obj\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(RUNHOME)\tmp\comobject\obj\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">comobject</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</IgnoreImportLibrary>
+    <PostBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</PostBuildEventUseInBuild>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(RUNHOME)\tmp\comobject\obj\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(RUNHOME)\tmp\comobject\obj\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">comobject</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <PostBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</PostBuildEventUseInBuild>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>&quot;c:\Qt\4.8.5\include\QtCore&quot;;&quot;c:\Qt\4.8.5\include\QtGui&quot;;&quot;c:\Qt\4.8.5\include&quot;;&quot;c:\Qt\4.8.5\include\QtTest&quot;;&quot;.&quot;;&quot;include&quot;;&quot;..\include&quot;;&quot;..\include\qextserial&quot;;&quot;c:\Qt\4.8.5\include\ActiveQt&quot;;&quot;debug&quot;;c:\Qt\4.8.5\mkspecs\win32-msvc2010;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>"..\..\..\Qt\4.8.5\include\QtCore";"..\..\..\Qt\4.8.5\include\QtGui";"..\..\..\Qt\4.8.5\include";"..\..\..\Qt\4.8.5\include\QtTest";".";"include";"..\include";"..\include\qextserial";"..\..\..\Qt\4.8.5\include\ActiveQt";"debug";..\..\..\Qt\4.8.5\mkspecs\win32-msvc2010;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zm200 -w34100 -w34189 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>$(RUNHOME)\tmp\comobject\obj\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
@@ -74,8 +74,8 @@
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>c:\Qt\4.8.5\lib\Qt3Supportd4.lib;c:\Qt\4.8.5\lib\Qt3Support4.lib;$(RUNHOME)\lib\protocol.lib;$(RUNHOME)\lib\comsetdlg.lib;c:\Qt\4.8.5\lib\QtTestd4.lib;c:\Qt\4.8.5\lib\QtGuid4.lib;c:\Qt\4.8.5\lib\QtCored4.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>.\;$(RUNHOME)\lib;$(RUNHOME)\bin;c:\Qt\4.8.5\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d:\Qt\4.8.5\lib\Qt3Supportd4.lib;d:\Qt\4.8.5\lib\Qt3Support4.lib;$(RUNHOME)\lib\protocol.lib;$(RUNHOME)\lib\comsetdlg.lib;d:\Qt\4.8.5\lib\QtTestd4.lib;d:\Qt\4.8.5\lib\QtGuid4.lib;d:\Qt\4.8.5\lib\QtCored4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>.\;$(RUNHOME)\lib;$(RUNHOME)\bin;d:\Qt\4.8.5\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <DataExecutionPrevention>true</DataExecutionPrevention>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreImportLibrary>true</IgnoreImportLibrary>
@@ -93,13 +93,13 @@
       <PreprocessorDefinitions>_CONSOLE;UNICODE;WIN32;COMOBJECT_DLL;QT_THREAD_SUPPORT;QT_THREAD_SUPPORT;QT_DLL;QT_GUI_LIB;QT_CORE_LIB;QT_HAVE_MMX;QT_HAVE_3DNOW;QT_HAVE_SSE;QT_HAVE_MMXEXT;QT_HAVE_SSE2;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <PostBuildEvent>
-      <Command>copy $(RUNHOME)\tmp\comobject\obj\comobject.lib F:\delusoft\trunk\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\comobject\obj\comobject.dll F:\delusoft\trunk\qtverify\release\RUNHOME\dll</Command>
-      <Message>copy $(RUNHOME)\tmp\comobject\obj\comobject.lib F:\delusoft\trunk\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\comobject\obj\comobject.dll F:\delusoft\trunk\qtverify\release\RUNHOME\dll</Message>
+      <Command>copy $(RUNHOME)\tmp\comobject\obj\comobject.lib D:\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\comobject\obj\comobject.dll D:\qtverify\release\RUNHOME\dll</Command>
+      <Message>copy $(RUNHOME)\tmp\comobject\obj\comobject.lib D:\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\comobject\obj\comobject.dll D:\qtverify\release\RUNHOME\dll</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>&quot;c:\Qt\4.8.5\include\QtCore&quot;;&quot;c:\Qt\4.8.5\include\QtGui&quot;;&quot;c:\Qt\4.8.5\include&quot;;&quot;c:\Qt\4.8.5\include\QtTest&quot;;&quot;.&quot;;&quot;include&quot;;&quot;..\include&quot;;&quot;..\include\qextserial&quot;;&quot;c:\Qt\4.8.5\include\ActiveQt&quot;;&quot;release&quot;;c:\Qt\4.8.5\mkspecs\win32-msvc2010;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>"..\..\..\Qt\4.8.5\include\QtCore";"..\..\..\Qt\4.8.5\include\QtGui";"..\..\..\Qt\4.8.5\include";"..\..\..\Qt\4.8.5\include\QtTest";".";"include";"..\include";"..\include\qextserial";"..\..\..\Qt\4.8.5\include\ActiveQt";"release";..\..\..\Qt\4.8.5\mkspecs\win32-msvc2010;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zm200 -w34100 -w34189 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>$(RUNHOME)\tmp\comobject\obj\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
@@ -116,8 +116,8 @@
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>c:\Qt\4.8.5\lib\Qt3Supportd4.lib;c:\Qt\4.8.5\lib\Qt3Support4.lib;$(RUNHOME)\lib\protocol.lib;$(RUNHOME)\lib\comsetdlg.lib;c:\Qt\4.8.5\lib\QtTest4.lib;c:\Qt\4.8.5\lib\QtGui4.lib;c:\Qt\4.8.5\lib\QtCore4.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>.\;$(RUNHOME)\lib;$(RUNHOME)\bin;c:\Qt\4.8.5\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d:\Qt\4.8.5\lib\Qt3Supportd4.lib;d:\Qt\4.8.5\lib\Qt3Support4.lib;$(RUNHOME)\lib\protocol.lib;$(RUNHOME)\lib\comsetdlg.lib;d:\Qt\4.8.5\lib\QtTest4.lib;d:\Qt\4.8.5\lib\QtGui4.lib;d:\Qt\4.8.5\lib\QtCore4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>.\;$(RUNHOME)\lib;$(RUNHOME)\bin;d:\Qt\4.8.5\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <DataExecutionPrevention>true</DataExecutionPrevention>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreImportLibrary>true</IgnoreImportLibrary>
@@ -136,8 +136,8 @@
       <PreprocessorDefinitions>_CONSOLE;UNICODE;WIN32;COMOBJECT_DLL;QT_THREAD_SUPPORT;QT_THREAD_SUPPORT;QT_DLL;QT_NO_DEBUG;QT_GUI_LIB;QT_CORE_LIB;QT_HAVE_MMX;QT_HAVE_3DNOW;QT_HAVE_SSE;QT_HAVE_MMXEXT;QT_HAVE_SSE2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <PostBuildEvent>
-      <Command>copy $(RUNHOME)\tmp\comobject\obj\comobject.lib F:\delusoft\trunk\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\comobject\obj\comobject.dll F:\delusoft\trunk\qtverify\release\RUNHOME\dll</Command>
-      <Message>copy $(RUNHOME)\tmp\comobject\obj\comobject.lib F:\delusoft\trunk\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\comobject\obj\comobject.dll F:\delusoft\trunk\qtverify\release\RUNHOME\dll</Message>
+      <Command>copy $(RUNHOME)\tmp\comobject\obj\comobject.lib D:\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\comobject\obj\comobject.dll D:\qtverify\release\RUNHOME\dll</Command>
+      <Message>copy $(RUNHOME)\tmp\comobject\obj\comobject.lib D:\qtverify\release\RUNHOME\lib &amp; copy $(RUNHOME)\tmp\comobject\obj\comobject.dll D:\qtverify\release\RUNHOME\dll</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -147,33 +147,33 @@
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\include\comobject.h">
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">..\include\comobject.h;C:\Qt\4.8.5\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DCOMOBJECT_DLL -DQT_THREAD_SUPPORT -DQT_THREAD_SUPPORT -DQT_DLL -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;c:\Qt\4.8.5\include\QtTest&quot; -I&quot;.&quot; -I&quot;include&quot; -I&quot;..\include&quot; -I&quot;..\include\qextserial&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;debug&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\include\comobject.h -o debug\moc_comobject.cpp</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">MOC ..\include\comobject.h</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">debug\moc_comobject.cpp;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">..\include\comobject.h;C:\Qt\4.8.5\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DCOMOBJECT_DLL -DQT_THREAD_SUPPORT -DQT_THREAD_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;c:\Qt\4.8.5\include\QtTest&quot; -I&quot;.&quot; -I&quot;include&quot; -I&quot;..\include&quot; -I&quot;..\include\qextserial&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;release&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\include\comobject.h -o release\moc_comobject.cpp</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">MOC ..\include\comobject.h</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">release\moc_comobject.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\include\comobject.h;D:\Qt\4.8.5\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DCOMOBJECT_DLL -DQT_THREAD_SUPPORT -DQT_THREAD_SUPPORT -DQT_DLL -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -I"..\..\..\Qt\4.8.5\include\QtCore" -I"..\..\..\Qt\4.8.5\include\QtGui" -I"..\..\..\Qt\4.8.5\include" -I"..\..\..\Qt\4.8.5\include\QtTest" -I"." -I"include" -I"..\include" -I"..\include\qextserial" -I"..\..\..\Qt\4.8.5\include\ActiveQt" -I"debug" -I..\..\..\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\include\comobject.h -o debug\moc_comobject.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MOC ..\include\comobject.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">debug\moc_comobject.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\include\comobject.h;D:\Qt\4.8.5\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DCOMOBJECT_DLL -DQT_THREAD_SUPPORT -DQT_THREAD_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -I"..\..\..\Qt\4.8.5\include\QtCore" -I"..\..\..\Qt\4.8.5\include\QtGui" -I"..\..\..\Qt\4.8.5\include" -I"..\..\..\Qt\4.8.5\include\QtTest" -I"." -I"include" -I"..\include" -I"..\include\qextserial" -I"..\..\..\Qt\4.8.5\include\ActiveQt" -I"release" -I..\..\..\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\include\comobject.h -o release\moc_comobject.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MOC ..\include\comobject.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">release\moc_comobject.cpp;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\include\qextserial\qextserialport.h">
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">..\include\qextserial\qextserialport.h;C:\Qt\4.8.5\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DCOMOBJECT_DLL -DQT_THREAD_SUPPORT -DQT_THREAD_SUPPORT -DQT_DLL -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;c:\Qt\4.8.5\include\QtTest&quot; -I&quot;.&quot; -I&quot;include&quot; -I&quot;..\include&quot; -I&quot;..\include\qextserial&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;debug&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\include\qextserial\qextserialport.h -o debug\moc_qextserialport.cpp</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">MOC ..\include\qextserial\qextserialport.h</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">debug\moc_qextserialport.cpp;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">..\include\qextserial\qextserialport.h;C:\Qt\4.8.5\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">C:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DCOMOBJECT_DLL -DQT_THREAD_SUPPORT -DQT_THREAD_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -I&quot;c:\Qt\4.8.5\include\QtCore&quot; -I&quot;c:\Qt\4.8.5\include\QtGui&quot; -I&quot;c:\Qt\4.8.5\include&quot; -I&quot;c:\Qt\4.8.5\include\QtTest&quot; -I&quot;.&quot; -I&quot;include&quot; -I&quot;..\include&quot; -I&quot;..\include\qextserial&quot; -I&quot;c:\Qt\4.8.5\include\ActiveQt&quot; -I&quot;release&quot; -Ic:\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\include\qextserial\qextserialport.h -o release\moc_qextserialport.cpp</Command>
-      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">MOC ..\include\qextserial\qextserialport.h</Message>
-      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">release\moc_qextserialport.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\include\qextserial\qextserialport.h;D:\Qt\4.8.5\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DCOMOBJECT_DLL -DQT_THREAD_SUPPORT -DQT_THREAD_SUPPORT -DQT_DLL -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -I"..\..\..\Qt\4.8.5\include\QtCore" -I"..\..\..\Qt\4.8.5\include\QtGui" -I"..\..\..\Qt\4.8.5\include" -I"..\..\..\Qt\4.8.5\include\QtTest" -I"." -I"include" -I"..\include" -I"..\include\qextserial" -I"..\..\..\Qt\4.8.5\include\ActiveQt" -I"debug" -I..\..\..\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\include\qextserial\qextserialport.h -o debug\moc_qextserialport.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MOC ..\include\qextserial\qextserialport.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">debug\moc_qextserialport.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\include\qextserial\qextserialport.h;D:\Qt\4.8.5\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Qt\4.8.5\bin\moc.exe  -DUNICODE -DWIN32 -DCOMOBJECT_DLL -DQT_THREAD_SUPPORT -DQT_THREAD_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -I"..\..\..\Qt\4.8.5\include\QtCore" -I"..\..\..\Qt\4.8.5\include\QtGui" -I"..\..\..\Qt\4.8.5\include" -I"..\..\..\Qt\4.8.5\include\QtTest" -I"." -I"include" -I"..\include" -I"..\include\qextserial" -I"..\..\..\Qt\4.8.5\include\ActiveQt" -I"release" -I..\..\..\Qt\4.8.5\mkspecs\win32-msvc2010 -D_MSC_VER=1600 -DWIN32 ..\include\qextserial\qextserialport.h -o release\moc_qextserialport.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MOC ..\include\qextserial\qextserialport.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">release\moc_qextserialport.cpp;%(Outputs)</Outputs>
     </CustomBuild>
     <ClInclude Include="..\include\qextserial\qextserialport_global.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="debug\moc_comobject.cpp">
-      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|Win32&apos;">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="release\moc_comobject.cpp">
-      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|Win32&apos;">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

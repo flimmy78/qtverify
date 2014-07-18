@@ -582,7 +582,7 @@
           </property>
           <item>
            <property name="text">
-            <string/>
+            <string>无</string>
            </property>
            <property name="icon">
             <iconset>
@@ -624,7 +624,7 @@
           </property>
           <item>
            <property name="text">
-            <string/>
+            <string>无</string>
            </property>
            <property name="icon">
             <iconset>
@@ -695,7 +695,7 @@
           </property>
           <item>
            <property name="text">
-            <string/>
+            <string>无</string>
            </property>
            <property name="icon">
             <iconset>
@@ -770,7 +770,7 @@
           </property>
           <item>
            <property name="text">
-            <string/>
+            <string>无</string>
            </property>
            <property name="icon">
             <iconset>
