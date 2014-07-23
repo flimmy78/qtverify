@@ -321,6 +321,7 @@ ParaSetReader::ParaSetReader()
 
 	char filename[255];
 	char* runhome = getenv( "RUNHOME" );
+	//检定前的参数文件
 #ifdef __unix
 	sprintf( filename, "%s/ini/qualityParaSet.ini", runhome );
 #else
@@ -329,6 +330,14 @@ ParaSetReader::ParaSetReader()
 
 	settings = new QSettings(filename, QSettings::IniFormat);
 	settings->setIniCodec("GB2312");//解决向ini文件中写汉字乱码
+	//端口号的配置文件
+#ifdef __unix
+	sprintf( filename, "%s/ini/portset.ini", runhome );
+#else
+	sprintf( filename, "%s\\ini\\portset.ini", runhome );
+#endif
+	portInfo = new QSettings(filename, QSettings::IniFormat);
+	portInfo->setIniCodec("GB2312");
 
 	params =new Quality_Params;
 	memset(params, 0, sizeof(QParams_PTR));
@@ -350,6 +359,10 @@ ParaSetReader::~ParaSetReader()
 	}
 }
 
+/*
+* 将配置文件保存的comboBox索引号与
+* 端口字段对应
+*/
 void ParaSetReader::initValveMap()
 {
 	valve_port_map.insert(0,"bigNo");
@@ -408,7 +421,8 @@ void ParaSetReader::readFlowPoints()
 				params->fp_info[i].fp_upperlmt =  settings->value(head + "/upperflow_"  + QString::number(i)).toFloat();
 				params->fp_info[i].fp_verify =  settings->value(head + "/verifyflow_"  + QString::number(i)).toFloat();
 				params->fp_info[i].fp_quantity =  settings->value(head + "/flowquantity_"  + QString::number(i)).toFloat();
-				params->fp_info[i].fp_valve =  settings->value(head + "/valve_"  + QString::number(i)).toInt();
+				int idx=settings->value(head + "/valve_"  + QString::number(i)).toInt();//获取参数配置文件中保存的阀门comboBox的索引
+				params->fp_info[i].fp_valve =  portInfo->value("Relay/" + valve_port_map[idx]).toInt();//获取阀门端口号
 				params->fp_info[i].fp_seq =  settings->value(head + "/seq_"  + QString::number(i)).toInt();
 			}
 		}
