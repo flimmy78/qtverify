@@ -1,7 +1,7 @@
 ﻿---------------------------------
 --表型号
 ---------------------------------
-drop table T_Meter_Model
+drop table if exists "T_Meter_Model"
 ;
 create table T_Meter_Model
 (
@@ -9,13 +9,13 @@ F_ID integer not null primary key autoincrement,  --型号ID
 F_Name varchar(24),
 F_Desc varchar(60)
 );
-insert into T_Meter_Model(F_ID, F_Name, F_Desc) values(0, 'E-UWZ', '型号1');
+insert into T_Meter_Model(F_ID, F_Name, F_Desc) values(0, 'E-UWZ1', '型号1');
 
 
 ---------------------------------
 --表规格
 ---------------------------------
-drop table T_Meter_Standard
+drop table if exists "T_Meter_Standard"
 ;
 create table T_Meter_Standard
 (
@@ -30,7 +30,7 @@ insert into T_Meter_Standard(F_ID, F_Name) values(2, 'DN25');
 ---------------------------------
 --表类型
 ---------------------------------
-drop table T_Meter_Type
+drop table if exists "T_Meter_Type"
 ;
 create table T_Meter_Type
 (
@@ -45,7 +45,7 @@ insert into T_Meter_Type(F_ID, F_Name, F_Desc) values(1, 'supersonic', '超声�
 ---------------------------------
 --制造单位
 ---------------------------------
-drop table T_Manufacture_Unit
+drop table if exists "T_Manufacture_Unit"
 ;
 create table T_Manufacture_Unit
 (
@@ -61,7 +61,7 @@ insert into T_Manufacture_Unit(F_ID, F_Name, F_Desc) values(2, 'HYLY', '华仪�
 ---------------------------------
 --送检单位
 ---------------------------------
-drop table T_Verify_Unit
+drop table if exists "T_Verify_Unit"
 ;
 create table T_Verify_Unit
 (
@@ -77,6 +77,8 @@ insert into T_Verify_Unit(F_ID, F_Name, F_Desc) values(2, 'YTJL', '烟台计量�
 ---------------------------------
 --用户定义表
 ---------------------------------
+drop table if exists "T_User_Def_Tab"
+;
 create table T_User_Def_Tab
 (
 F_ID integer not null primary key autoincrement,
@@ -92,6 +94,8 @@ insert into T_User_Def_Tab(F_ID, F_Name, F_Desc, F_RoleID) values(1, 'oper', '�
 ---------------------------------
 --角色定义表
 ---------------------------------
+drop table if exists "T_Role_Def_Tab"
+;
 create table T_Role_Def_Tab
 (
 F_ID integer not null primary key autoincrement,
@@ -109,7 +113,7 @@ insert into T_Role_Def_Tab(F_ID, F_Name, F_Desc) values(1, 'common', '普通用�
 ---------------------------------
 --检定结果记录表
 ---------------------------------
-drop table T_Verify_Record
+drop table if exists "T_Verify_Record"
 ;
 create table T_Verify_Record
 (
