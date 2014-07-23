@@ -1,6 +1,8 @@
 ﻿#ifndef BASEDEF_H
 #define BASEDEF_H
 
+#include "commondefine.h"
+
 #ifndef VERIFY_POINTS
 	#define VERIFY_POINTS 8//检定流量点的数量, 一般为4个(大, 中一, 中二, 小), 但客户也可能需要更多
 #endif
@@ -63,7 +65,7 @@ typedef MASTERSLAVE_INI_STR* MASTERSLAVE_INI_PTR;
 class MeterStandard_STR{
 public:
     int       id;                   //
-    char   name[8];					 //
+    char   name[ASCNAME_LEN];		//
 };
 typedef MeterStandard_STR* MeterStandard_PTR;
 
@@ -73,7 +75,8 @@ typedef MeterStandard_STR* MeterStandard_PTR;
 class MeterType_STR{
 public:
     int       id;                   //
-    char   desc[24];				//
+	char   name[ASCNAME_LEN];				//
+	char   desc[DESC_LEN];				//
 };
 typedef MeterType_STR* MeterType_PTR;
 
@@ -82,8 +85,9 @@ typedef MeterType_STR* MeterType_PTR;
 */
 class Manufacture_STR{
 public:
-    int       id;                   //
-    char   desc[60];				//
+    int     id;                   //
+	char    name[ASCNAME_LEN];
+    char    desc[DESC_LEN];				//
 };
 typedef Manufacture_STR* Manufacture_PTR;
 

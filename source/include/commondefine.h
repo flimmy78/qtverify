@@ -14,6 +14,7 @@
 /* 通用宏定义                                                           */
 /************************************************************************/
 #define FILENAME_LENGTH		100		//文件名(全路径)长度
-
+#define ASCNAME_LEN			24		//数据库表中代码域的长度
+#define DESC_LEN			60		//数据库表中描述域的长度
 
 #endif //COMMONDEFINE_H

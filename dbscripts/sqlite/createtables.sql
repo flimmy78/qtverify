@@ -1,26 +1,26 @@
----------------------------------
---±íĞÍºÅ
+ï»¿---------------------------------
+--è¡¨å‹å·
 ---------------------------------
 drop table T_Meter_Model
 ;
 create table T_Meter_Model
 (
-F_ID integer not null primary key autoincrement,	--ĞÍºÅID
+F_ID integer not null primary key autoincrement,  --å‹å·ID
 F_Name varchar(24),
 F_Desc varchar(60)
 );
-insert into T_Meter_Model(F_ID, F_Name, F_Desc) values(0, 'E-UWZ', 'ĞÍºÅ1');
+insert into T_Meter_Model(F_ID, F_Name, F_Desc) values(0, 'E-UWZ', 'å‹å·1');
 
 
 ---------------------------------
---±í¹æ¸ñ
+--è¡¨è§„æ ¼
 ---------------------------------
 drop table T_Meter_Standard
 ;
 create table T_Meter_Standard
 (
-F_ID integer not null primary key autoincrement,	--¹æ¸ñID
-F_Name varchar(24) not null 											--¹æ¸ñ´úÂë
+F_ID integer not null primary key autoincrement,  --è§„æ ¼ID
+F_Name varchar(24) not null                       --è§„æ ¼ä»£ç 
 );
 insert into T_Meter_Standard(F_ID, F_Name) values(0, 'DN15');
 insert into T_Meter_Standard(F_ID, F_Name) values(1, 'DN20');
@@ -28,7 +28,7 @@ insert into T_Meter_Standard(F_ID, F_Name) values(2, 'DN25');
 
 
 ---------------------------------
---±íÀàĞÍ
+--è¡¨ç±»å‹
 ---------------------------------
 drop table T_Meter_Type
 ;
@@ -38,12 +38,12 @@ F_ID integer not null primary key autoincrement,
 F_Name varchar(24),
 F_Desc varchar(60)
 );
-insert into T_Meter_Type(F_ID, F_Name, F_Desc) values(0, 'machine', '»úĞµ±í');
-insert into T_Meter_Type(F_ID, F_Name, F_Desc) values(1, 'supersonic', '³¬Éù²¨±í');
+insert into T_Meter_Type(F_ID, F_Name, F_Desc) values(0, 'machine', 'æœºæ¢°è¡¨');
+insert into T_Meter_Type(F_ID, F_Name, F_Desc) values(1, 'supersonic', 'è¶…å£°æ³¢è¡¨');
 
 
 ---------------------------------
---ÖÆÔìµ¥Î»
+--åˆ¶é€ å•ä½
 ---------------------------------
 drop table T_Manufacture_Unit
 ;
@@ -53,13 +53,13 @@ F_ID integer not null primary key autoincrement,
 F_Name varchar(24),
 F_Desc varchar(60)
 );
-insert into T_Manufacture_Unit(F_ID, F_Name, F_Desc) values(0, 'SDM', 'É½¶«µÂÂ³¼ÆÁ¿');
-insert into T_Manufacture_Unit(F_ID, F_Name, F_Desc) values(1, 'SDJG', 'ÑÌÌ¨¾§¸ñÒÇ±í');
-insert into T_Manufacture_Unit(F_ID, F_Name, F_Desc) values(2, 'HYLY', '»ªÒÇÀÖÒµ');
+insert into T_Manufacture_Unit(F_ID, F_Name, F_Desc) values(0, 'SDM', 'å±±ä¸œå¾·é²');
+insert into T_Manufacture_Unit(F_ID, F_Name, F_Desc) values(1, 'SDJG', 'çƒŸå°æ™¶æ ¼');
+insert into T_Manufacture_Unit(F_ID, F_Name, F_Desc) values(2, 'HYLY', 'åä»ªä¹ä¸š');
 
 
 ---------------------------------
---ËÍ¼ìµ¥Î»
+--é€æ£€å•ä½
 ---------------------------------
 drop table T_Verify_Unit
 ;
@@ -69,13 +69,13 @@ F_ID integer not null primary key autoincrement,
 F_Name varchar(24),
 F_Desc varchar(60)
 );
-insert into T_Verify_Unit(F_ID, F_Name, F_Desc) values(0, 'SDJL', 'É½¶«¼ÆÁ¿Ôº');
-insert into T_Verify_Unit(F_ID, F_Name, F_Desc) values(1, 'QDJL', 'Çàµº¼ÆÁ¿Ëù');
-insert into T_Verify_Unit(F_ID, F_Name, F_Desc) values(2, 'YTJL', 'ÑÌÌ¨¼ÆÁ¿Ëù');
+insert into T_Verify_Unit(F_ID, F_Name, F_Desc) values(0, 'SDJL', 'å±±ä¸œè®¡é‡é™¢');
+insert into T_Verify_Unit(F_ID, F_Name, F_Desc) values(1, 'QDJL', 'é’å²›è®¡é‡æ‰€');
+insert into T_Verify_Unit(F_ID, F_Name, F_Desc) values(2, 'YTJL', 'çƒŸå°è®¡é‡æ‰€');
 
 
 ---------------------------------
---ÓÃ»§¶¨Òå±í
+--ç”¨æˆ·å®šä¹‰è¡¨
 ---------------------------------
 create table T_User_Def_Tab
 (
@@ -83,14 +83,14 @@ F_ID integer not null primary key autoincrement,
 F_Name varchar(24),
 F_Desc varchar(60),
 F_Password varchar(24),
-F_RoleID interger					--½ÇÉ«ID£¬Íâ¼ü(T_Role_Def_Tab)
+F_RoleID interger          --è§’è‰²IDï¼Œå¤–é”®(T_Role_Def_Tab)
 );
-insert into T_User_Def_Tab(F_ID, F_Name, F_Desc, F_RoleID) values(0, 'admin', '¹ÜÀíÔ±', 0);
-insert into T_User_Def_Tab(F_ID, F_Name, F_Desc, F_RoleID) values(1, 'oper', '²Ù×÷Ô±', 1);
+insert into T_User_Def_Tab(F_ID, F_Name, F_Desc, F_RoleID) values(0, 'admin', 'ç®¡ç†å‘˜', 0);
+insert into T_User_Def_Tab(F_ID, F_Name, F_Desc, F_RoleID) values(1, 'oper', 'æ“ä½œå‘˜', 1);
 
 
 ---------------------------------
---½ÇÉ«¶¨Òå±í
+--è§’è‰²å®šä¹‰è¡¨
 ---------------------------------
 create table T_Role_Def_Tab
 (
@@ -101,44 +101,44 @@ F_Func1 interger,
 F_Func2 interger,
 F_Func3 interger
 );
-insert into T_Role_Def_Tab(F_ID, F_Name, F_Desc) values(0, 'root', '³¬¼¶ÓÃ»§');
-insert into T_Role_Def_Tab(F_ID, F_Name, F_Desc) values(1, 'common', 'ÆÕÍ¨ÓÃ»§');
+insert into T_Role_Def_Tab(F_ID, F_Name, F_Desc) values(0, 'root', 'è¶…çº§ç”¨æˆ·');
+insert into T_Role_Def_Tab(F_ID, F_Name, F_Desc) values(1, 'common', 'æ™®é€šç”¨æˆ·');
 
 
 
 ---------------------------------
---¼ì¶¨½á¹û¼ÇÂ¼±í
+--æ£€å®šç»“æœè®°å½•è¡¨
 ---------------------------------
 drop table T_Verify_Record
 ;
 create table T_Verify_Record
 (
 F_ID integer not null primary key autoincrement,
-F_TimeStamp interger not null,			--Ê±¼ä´Á£¨¾àÀë1970Äê1ÔÂ1ÈÕµÄÃëÊı£¬10Î»ÕûÊı£¬ÀıÈç1406043519£©
-F_MeterNo interger not null, 				--±íºÅ
-F_FlowPointIdx integer not null,		--Á÷Á¿µãË÷Òı£¬ÀıÈç1,2,3,4...
-F_FlowPoint float,									--Á÷Á¿µãÊıÖµ£¬µ¥Î»m3/h
-F_BeginVolume float,								--ÈÈÁ¿±í³õÖµ£¨Ìå»ı£©£¬µ¥Î»L
-F_EndVolume float,									--ÈÈÁ¿±íÖÕÖµ£¨Ìå»ı£©£¬µ¥Î»L
-F_DeltaVolume float,								--ÈÈÁ¿±íÊ¾Öµ£¨Ìå»ı£©£¬µ¥Î»L£¬=(ÖÕÖµ-³õÖµ)
-F_BeginWeight float,								--ÌìÆ½³õÖµ£¨ÖØÁ¿£©£¬µ¥Î»kg
-F_EndWeight float,									--ÌìÆ½ÖÕÖµ£¨ÖØÁ¿£©£¬µ¥Î»kg
-F_DeltaWeight float,								--ÌìÆ½Ê¾Öµ£¨ÖØÁ¿£©£¬µ¥Î»kg£¬=(ÖÕÖµ-³õÖµ)
-F_Temperature float,								--ÎÂ¶È£¬µ¥Î»¡æ
-F_Density float,										--ÃÜ¶È£¬µ¥Î»kg/L
-F_StandVolume float,								--¾­¹ıĞŞÕıµÄ±ê×¼Ìå»ı£¬µ¥Î»L
-F_DispError float,									--Ê¾ÖµÎó²î£¬µ¥Î»%
-F_StdError float,										--ÒªÇóÎó²î(ºÏ¸ñ±ê×¼),µ¥Î»%
-F_Result	interger,									--¼ì¶¨½á¹û£¨1£ººÏ¸ñ£¬0£º²»ºÏ¸ñ£©
-F_MeterPosNo interger,							--±íÎ»ºÅ
-F_Model integer,										--±íĞÍºÅ()£¬Íâ¼ü(T_Meter_Model)
-F_Standard integer,									--±í¹æ¸ñ(DN15/DN20/DN25)£¬Íâ¼ü(T_Meter_Standard)
-F_MeterType integer,								--±íÀàĞÍ()£¬Íâ¼ü(T_Meter_Type)
-F_Manufacture	integer,							--ÖÆÔìµ¥Î»£¬Íâ¼ü(T_Manufacture_Unit)
-F_VerifyUnit integer,							  --ËÍ¼ìµ¥Î»£¬Íâ¼ü(T_Verify_Unit)
-F_Grade integer,										--¼ÆÁ¿µÈ¼¶£¨1,2,3£©
-F_VerifyPerson integer,						  --¼ì¶¨Ô±£¬Íâ¼ü(T_User_Def_Tab)
-F_CheckPerson integer,						  --ºËÑéÔ±£¬Íâ¼ü(T_User_Def_Tab)
-F_Verify_Date	date									--¼ì¶¨ÈÕÆÚ(20140522)
+F_TimeStamp interger not null,      --æ—¶é—´æˆ³ï¼ˆè·ç¦»1970å¹´1æœˆ1æ—¥çš„ç§’æ•°ï¼Œ10ä½æ•´æ•°ï¼Œä¾‹å¦‚1406043519ï¼‰
+F_MeterNo interger not null,        --è¡¨å·
+F_FlowPointIdx integer not null,    --æµé‡ç‚¹ç´¢å¼•ï¼Œä¾‹å¦‚1,2,3,4...
+F_FlowPoint float,                  --æµé‡ç‚¹æ•°å€¼ï¼Œå•ä½m3/h
+F_BeginVolume float,                --çƒ­é‡è¡¨åˆå€¼ï¼ˆä½“ç§¯ï¼‰ï¼Œå•ä½L
+F_EndVolume float,                  --çƒ­é‡è¡¨ç»ˆå€¼ï¼ˆä½“ç§¯ï¼‰ï¼Œå•ä½L
+F_DeltaVolume float,                --çƒ­é‡è¡¨ç¤ºå€¼ï¼ˆä½“ç§¯ï¼‰ï¼Œå•ä½Lï¼Œ=(ç»ˆå€¼-åˆå€¼)
+F_BeginWeight float,                --å¤©å¹³åˆå€¼ï¼ˆé‡é‡ï¼‰ï¼Œå•ä½kg
+F_EndWeight float,                  --å¤©å¹³ç»ˆå€¼ï¼ˆé‡é‡ï¼‰ï¼Œå•ä½kg
+F_DeltaWeight float,                --å¤©å¹³ç¤ºå€¼ï¼ˆé‡é‡ï¼‰ï¼Œå•ä½kgï¼Œ=(ç»ˆå€¼-åˆå€¼)
+F_Temperature float,                --æ¸©åº¦ï¼Œå•ä½â„ƒ
+F_Density float,                    --å¯†åº¦ï¼Œå•ä½kg/L
+F_StandVolume float,                --ç»è¿‡ä¿®æ­£çš„æ ‡å‡†ä½“ç§¯ï¼Œå•ä½L
+F_DispError float,                  --ç¤ºå€¼è¯¯å·®ï¼Œå•ä½%
+F_StdError float,                   --è¦æ±‚è¯¯å·®(åˆæ ¼æ ‡å‡†),å•ä½%
+F_Result	interger,                 --æ£€å®šç»“æœï¼ˆ1ï¼šåˆæ ¼ï¼Œ0ï¼šä¸åˆæ ¼ï¼‰
+F_MeterPosNo interger,              --è¡¨ä½å·
+F_Model integer,                    --è¡¨å‹å·()ï¼Œå¤–é”®(T_Meter_Model)
+F_Standard integer,                 --è¡¨è§„æ ¼(DN15/DN20/DN25)ï¼Œå¤–é”®(T_Meter_Standard)
+F_MeterType integer,                --è¡¨ç±»å‹()ï¼Œå¤–é”®(T_Meter_Type)
+F_Manufacture	integer,              --åˆ¶é€ å•ä½ï¼Œå¤–é”®(T_Manufacture_Unit)
+F_VerifyUnit integer,               --é€æ£€å•ä½ï¼Œå¤–é”®(T_Verify_Unit)
+F_Grade integer,                    --è®¡é‡ç­‰çº§ï¼ˆ1,2,3ï¼‰
+F_VerifyPerson integer,             --æ£€å®šå‘˜ï¼Œå¤–é”®(T_User_Def_Tab)
+F_CheckPerson integer,              --æ ¸éªŒå‘˜ï¼Œå¤–é”®(T_User_Def_Tab)
+F_Verify_Date	date                  --æ£€å®šæ—¥æœŸ(20140522)
 );
 create unique index uk_T_Verify_Record on T_Verify_Record (F_MeterNo, F_TimeStamp, F_FlowPointIdx);

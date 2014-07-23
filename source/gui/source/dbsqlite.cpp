@@ -20,6 +20,12 @@ DbSqlite::DbSqlite(QWidget *parent, Qt::WFlags flags)
 	ui.btnInsert->setEnabled(false);
 
 	m_count = 0;
+
+// 	QStringList drivers = QSqlDatabase::drivers();
+// 	foreach(QString driver, drivers)
+// 	{
+// 		qDebug()<<driver;
+// 	}
 }
 
 DbSqlite::~DbSqlite()

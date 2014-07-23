@@ -81,7 +81,7 @@ int CBaseExdb::getMeterStandard(int& num, MeterStandard_PTR &ptr)
 		memset(ptr, 0, sizeof(MeterStandard_STR)*num);
 	}
 
-	if(query.exec("select id,name from t_meter_standard order by id"))
+	if(query.exec("select f_id,f_name from t_meter_standard order by f_id"))
 	{
 		while(query.next())
 		{
@@ -114,12 +114,13 @@ int CBaseExdb::getMeterType(int& num, MeterType_PTR &ptr)
 		memset(ptr, 0, sizeof(MeterType_STR)*num);
 	}
 
-	if(query.exec("select id,desc from t_meter_type order by id"))
+	if(query.exec("select f_id,f_name,f_desc from t_meter_type order by f_id"))
 	{
 		while(query.next())
 		{
 			ptr[i].id = query.value(0).toInt();
-			strcpy(ptr[i].desc, query.value(1).toString().toLocal8Bit()); //汉字编码
+			strcpy(ptr[i].name, query.value(1).toString().toAscii());
+			strcpy(ptr[i].desc, query.value(2).toString().toLocal8Bit()); //汉字编码
 			qDebug()<<ptr[i].desc<<"::"<<query.value(1).toString().toLocal8Bit();
 			i++;
 		}
@@ -139,7 +140,7 @@ int CBaseExdb::getManufacture(int& num, Manufacture_PTR &ptr)
 {
 	int i = 0;
 	QSqlQuery query; // 新建一个查询的实例
-	if(query.exec("select count(*) from t_manufacture_tab")) // t_manufacture_tab 表的记录数
+	if(query.exec("select count(*) from t_manufacture_unit")) // t_manufacture_unit 表的记录数
 	{
 		// 本次查询成功
 		query.first(); //第一条记录
@@ -148,12 +149,15 @@ int CBaseExdb::getManufacture(int& num, Manufacture_PTR &ptr)
 		memset(ptr, 0, sizeof(Manufacture_STR)*num);
 	}
 
-	if(query.exec("select id,desc from t_manufacture_tab order by id"))
+	QString testStr;
+	if(query.exec("select f_id,f_name,f_desc from t_manufacture_unit order by f_id"))
 	{
 		while(query.next())
 		{
 			ptr[i].id = query.value(0).toInt();
-			strcpy(ptr[i].desc, query.value(1).toString().toLocal8Bit()); //汉字编码
+			strcpy(ptr[i].name, query.value(1).toString().toAscii());
+			testStr = query.value(2).toString();
+			strcpy(ptr[i].desc, query.value(2).toString().toLocal8Bit()); //汉字编码
 			i++;
 		}
 	}

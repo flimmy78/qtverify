@@ -30,7 +30,10 @@ ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 
 	flowPointVector();
 
-	m_basedb.startdb();
+	if (!m_basedb.startdb())
+	{
+		qFatal("数据库未打开");
+	}
 	m_meterStdNum = 0;
 	m_meterStdPtr = NULL;
 	m_meterTypeNum = 0;
