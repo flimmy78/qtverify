@@ -49,7 +49,7 @@ public:
     QLabel *label_13;
     QLabel *label_14;
     QLabel *label_18;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QGridLayout *gridLayout_9;
     QLineEdit *lnEdit_Flow1;
     QSpacerItem *horizontalSpacer_6;
@@ -108,12 +108,12 @@ public:
     QLabel *label_7;
     QLabel *label_8;
     QComboBox *cmbGrade;
-    QWidget *layoutWidget;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_2;
     QSpacerItem *horizontalSpacer_2;
     QPushButton *btnSave;
     QPushButton *btnExit;
-    QWidget *layoutWidget1;
+    QWidget *layoutWidget2;
     QHBoxLayout *horizontalLayout_4;
     Q3ButtonGroup *buttonGroup_6;
     QGridLayout *gridLayout;
@@ -132,7 +132,7 @@ public:
     QGridLayout *gridLayout_11;
     QLabel *label_19;
     QLineEdit *lineEdit_exTime;
-    QWidget *layoutWidget2;
+    QWidget *layoutWidget3;
     QHBoxLayout *horizontalLayout_5;
     Q3ButtonGroup *buttonGroup_2;
     QHBoxLayout *horizontalLayout;
@@ -165,10 +165,10 @@ public:
     {
         if (ParaSetDlgClass->objectName().isEmpty())
             ParaSetDlgClass->setObjectName(QString::fromUtf8("ParaSetDlgClass"));
-        ParaSetDlgClass->resize(816, 568);
+        ParaSetDlgClass->resize(779, 605);
         gBox_UpperFlowLmt = new QGroupBox(ParaSetDlgClass);
         gBox_UpperFlowLmt->setObjectName(QString::fromUtf8("gBox_UpperFlowLmt"));
-        gBox_UpperFlowLmt->setGeometry(QRect(9, 101, 771, 54));
+        gBox_UpperFlowLmt->setGeometry(QRect(20, 120, 751, 71));
         gridLayout_8 = new QGridLayout(gBox_UpperFlowLmt);
         gridLayout_8->setObjectName(QString::fromUtf8("gridLayout_8"));
         horizontalLayout_3 = new QHBoxLayout();
@@ -222,29 +222,29 @@ public:
 
         gBox_FlowPnt = new QGroupBox(ParaSetDlgClass);
         gBox_FlowPnt->setObjectName(QString::fromUtf8("gBox_FlowPnt"));
-        gBox_FlowPnt->setGeometry(QRect(10, 160, 771, 171));
+        gBox_FlowPnt->setGeometry(QRect(10, 200, 761, 185));
         label_12 = new QLabel(gBox_FlowPnt);
         label_12->setObjectName(QString::fromUtf8("label_12"));
-        label_12->setGeometry(QRect(10, 22, 36, 16));
+        label_12->setGeometry(QRect(12, 27, 45, 16));
         label_15 = new QLabel(gBox_FlowPnt);
         label_15->setObjectName(QString::fromUtf8("label_15"));
-        label_15->setGeometry(QRect(10, 130, 48, 16));
+        label_15->setGeometry(QRect(12, 149, 60, 16));
         label_13 = new QLabel(gBox_FlowPnt);
         label_13->setObjectName(QString::fromUtf8("label_13"));
-        label_13->setGeometry(QRect(10, 51, 36, 16));
+        label_13->setGeometry(QRect(12, 58, 45, 16));
         label_14 = new QLabel(gBox_FlowPnt);
         label_14->setObjectName(QString::fromUtf8("label_14"));
-        label_14->setGeometry(QRect(10, 80, 36, 16));
+        label_14->setGeometry(QRect(12, 88, 45, 16));
         label_18 = new QLabel(gBox_FlowPnt);
         label_18->setObjectName(QString::fromUtf8("label_18"));
-        label_18->setGeometry(QRect(10, 109, 24, 16));
-        widget = new QWidget(gBox_FlowPnt);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(62, 22, 671, 134));
-        gridLayout_9 = new QGridLayout(widget);
+        label_18->setGeometry(QRect(12, 119, 30, 16));
+        layoutWidget = new QWidget(gBox_FlowPnt);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(79, 20, 631, 146));
+        gridLayout_9 = new QGridLayout(layoutWidget);
         gridLayout_9->setObjectName(QString::fromUtf8("gridLayout_9"));
         gridLayout_9->setContentsMargins(0, 0, 0, 0);
-        lnEdit_Flow1 = new QLineEdit(widget);
+        lnEdit_Flow1 = new QLineEdit(layoutWidget);
         lnEdit_Flow1->setObjectName(QString::fromUtf8("lnEdit_Flow1"));
         lnEdit_Flow1->setAlignment(Qt::AlignCenter);
 
@@ -254,7 +254,7 @@ public:
 
         gridLayout_9->addItem(horizontalSpacer_6, 0, 1, 1, 1);
 
-        lnEdit_Flow2 = new QLineEdit(widget);
+        lnEdit_Flow2 = new QLineEdit(layoutWidget);
         lnEdit_Flow2->setObjectName(QString::fromUtf8("lnEdit_Flow2"));
         lnEdit_Flow2->setAlignment(Qt::AlignCenter);
 
@@ -264,7 +264,7 @@ public:
 
         gridLayout_9->addItem(horizontalSpacer_10, 0, 3, 1, 1);
 
-        lnEdit_Flow3 = new QLineEdit(widget);
+        lnEdit_Flow3 = new QLineEdit(layoutWidget);
         lnEdit_Flow3->setObjectName(QString::fromUtf8("lnEdit_Flow3"));
         lnEdit_Flow3->setAlignment(Qt::AlignCenter);
 
@@ -274,13 +274,13 @@ public:
 
         gridLayout_9->addItem(horizontalSpacer_11, 0, 5, 1, 1);
 
-        lnEdit_Flow4 = new QLineEdit(widget);
+        lnEdit_Flow4 = new QLineEdit(layoutWidget);
         lnEdit_Flow4->setObjectName(QString::fromUtf8("lnEdit_Flow4"));
         lnEdit_Flow4->setAlignment(Qt::AlignCenter);
 
         gridLayout_9->addWidget(lnEdit_Flow4, 0, 6, 1, 1);
 
-        lineEdit_Quantity_1 = new QLineEdit(widget);
+        lineEdit_Quantity_1 = new QLineEdit(layoutWidget);
         lineEdit_Quantity_1->setObjectName(QString::fromUtf8("lineEdit_Quantity_1"));
         lineEdit_Quantity_1->setAlignment(Qt::AlignCenter);
 
@@ -290,7 +290,7 @@ public:
 
         gridLayout_9->addItem(horizontalSpacer_7, 1, 1, 1, 1);
 
-        lineEdit_Quantity_2 = new QLineEdit(widget);
+        lineEdit_Quantity_2 = new QLineEdit(layoutWidget);
         lineEdit_Quantity_2->setObjectName(QString::fromUtf8("lineEdit_Quantity_2"));
         lineEdit_Quantity_2->setAlignment(Qt::AlignCenter);
 
@@ -300,7 +300,7 @@ public:
 
         gridLayout_9->addItem(horizontalSpacer_12, 1, 3, 1, 1);
 
-        lineEdit_Quantity_3 = new QLineEdit(widget);
+        lineEdit_Quantity_3 = new QLineEdit(layoutWidget);
         lineEdit_Quantity_3->setObjectName(QString::fromUtf8("lineEdit_Quantity_3"));
         lineEdit_Quantity_3->setAlignment(Qt::AlignCenter);
 
@@ -310,13 +310,13 @@ public:
 
         gridLayout_9->addItem(horizontalSpacer_13, 1, 5, 1, 1);
 
-        lineEdit_Quantity_4 = new QLineEdit(widget);
+        lineEdit_Quantity_4 = new QLineEdit(layoutWidget);
         lineEdit_Quantity_4->setObjectName(QString::fromUtf8("lineEdit_Quantity_4"));
         lineEdit_Quantity_4->setAlignment(Qt::AlignCenter);
 
         gridLayout_9->addWidget(lineEdit_Quantity_4, 1, 6, 1, 1);
 
-        cBox_Valve_1 = new QComboBox(widget);
+        cBox_Valve_1 = new QComboBox(layoutWidget);
         QIcon icon;
         icon.addFile(QString::fromUtf8("C:/Users/Administrator/none.ico"), QSize(), QIcon::Normal, QIcon::Off);
         cBox_Valve_1->addItem(icon, QString());
@@ -346,7 +346,7 @@ public:
 
         gridLayout_9->addItem(horizontalSpacer_20, 2, 1, 2, 1);
 
-        cBox_Valve_2 = new QComboBox(widget);
+        cBox_Valve_2 = new QComboBox(layoutWidget);
         cBox_Valve_2->addItem(icon, QString());
         cBox_Valve_2->addItem(QString());
         cBox_Valve_2->addItem(QString());
@@ -366,7 +366,7 @@ public:
 
         gridLayout_9->addItem(horizontalSpacer_21, 2, 3, 2, 1);
 
-        cBox_Valve_3 = new QComboBox(widget);
+        cBox_Valve_3 = new QComboBox(layoutWidget);
         cBox_Valve_3->addItem(icon, QString());
         cBox_Valve_3->addItem(QString());
         cBox_Valve_3->addItem(QString());
@@ -386,7 +386,7 @@ public:
 
         gridLayout_9->addItem(horizontalSpacer_26, 2, 5, 1, 1);
 
-        cBox_Valve_4 = new QComboBox(widget);
+        cBox_Valve_4 = new QComboBox(layoutWidget);
         cBox_Valve_4->addItem(icon, QString());
         cBox_Valve_4->addItem(QString());
         cBox_Valve_4->addItem(QString());
@@ -406,7 +406,7 @@ public:
 
         gridLayout_9->addItem(horizontalSpacer_14, 3, 5, 2, 1);
 
-        lineEdit_freq_1 = new QLineEdit(widget);
+        lineEdit_freq_1 = new QLineEdit(layoutWidget);
         lineEdit_freq_1->setObjectName(QString::fromUtf8("lineEdit_freq_1"));
         lineEdit_freq_1->setAlignment(Qt::AlignCenter);
 
@@ -416,7 +416,7 @@ public:
 
         gridLayout_9->addItem(horizontalSpacer_8, 4, 1, 1, 1);
 
-        lineEdit_freq_2 = new QLineEdit(widget);
+        lineEdit_freq_2 = new QLineEdit(layoutWidget);
         lineEdit_freq_2->setObjectName(QString::fromUtf8("lineEdit_freq_2"));
         lineEdit_freq_2->setAlignment(Qt::AlignCenter);
 
@@ -426,19 +426,19 @@ public:
 
         gridLayout_9->addItem(horizontalSpacer_15, 4, 3, 1, 1);
 
-        lineEdit_freq_3 = new QLineEdit(widget);
+        lineEdit_freq_3 = new QLineEdit(layoutWidget);
         lineEdit_freq_3->setObjectName(QString::fromUtf8("lineEdit_freq_3"));
         lineEdit_freq_3->setAlignment(Qt::AlignCenter);
 
         gridLayout_9->addWidget(lineEdit_freq_3, 4, 4, 1, 1);
 
-        lineEdit_freq_4 = new QLineEdit(widget);
+        lineEdit_freq_4 = new QLineEdit(layoutWidget);
         lineEdit_freq_4->setObjectName(QString::fromUtf8("lineEdit_freq_4"));
         lineEdit_freq_4->setAlignment(Qt::AlignCenter);
 
         gridLayout_9->addWidget(lineEdit_freq_4, 4, 6, 1, 1);
 
-        cBox_seq_1 = new QComboBox(widget);
+        cBox_seq_1 = new QComboBox(layoutWidget);
         cBox_seq_1->addItem(icon, QString());
         cBox_seq_1->addItem(QString());
         cBox_seq_1->addItem(QString());
@@ -459,7 +459,7 @@ public:
 
         gridLayout_9->addItem(horizontalSpacer_9, 5, 1, 1, 1);
 
-        cBox_seq_2 = new QComboBox(widget);
+        cBox_seq_2 = new QComboBox(layoutWidget);
         cBox_seq_2->addItem(icon, QString());
         cBox_seq_2->addItem(QString());
         cBox_seq_2->addItem(QString());
@@ -478,7 +478,7 @@ public:
 
         gridLayout_9->addItem(horizontalSpacer_16, 5, 3, 1, 1);
 
-        cBox_seq_3 = new QComboBox(widget);
+        cBox_seq_3 = new QComboBox(layoutWidget);
         cBox_seq_3->addItem(icon, QString());
         cBox_seq_3->addItem(QString());
         cBox_seq_3->addItem(QString());
@@ -494,7 +494,7 @@ public:
 
         gridLayout_9->addItem(horizontalSpacer_17, 5, 5, 1, 1);
 
-        cBox_seq_4 = new QComboBox(widget);
+        cBox_seq_4 = new QComboBox(layoutWidget);
         cBox_seq_4->addItem(icon, QString());
         cBox_seq_4->addItem(QString());
         cBox_seq_4->addItem(QString());
@@ -506,7 +506,7 @@ public:
 
         gBox_Head = new QGroupBox(ParaSetDlgClass);
         gBox_Head->setObjectName(QString::fromUtf8("gBox_Head"));
-        gBox_Head->setGeometry(QRect(9, 9, 530, 80));
+        gBox_Head->setGeometry(QRect(9, 9, 761, 101));
         gridLayout_7 = new QGridLayout(gBox_Head);
         gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
         gridLayout_3 = new QGridLayout();
@@ -628,37 +628,37 @@ public:
 
         gridLayout_7->addLayout(gridLayout_5, 0, 3, 1, 1);
 
-        layoutWidget = new QWidget(ParaSetDlgClass);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(9, 518, 761, 30));
-        horizontalLayout_2 = new QHBoxLayout(layoutWidget);
+        layoutWidget1 = new QWidget(ParaSetDlgClass);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(9, 570, 761, 30));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
         horizontalSpacer_2 = new QSpacerItem(13, 28, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_2->addItem(horizontalSpacer_2);
 
-        btnSave = new QPushButton(layoutWidget);
+        btnSave = new QPushButton(layoutWidget1);
         btnSave->setObjectName(QString::fromUtf8("btnSave"));
         sizePolicy1.setHeightForWidth(btnSave->sizePolicy().hasHeightForWidth());
         btnSave->setSizePolicy(sizePolicy1);
 
         horizontalLayout_2->addWidget(btnSave);
 
-        btnExit = new QPushButton(layoutWidget);
+        btnExit = new QPushButton(layoutWidget1);
         btnExit->setObjectName(QString::fromUtf8("btnExit"));
         sizePolicy1.setHeightForWidth(btnExit->sizePolicy().hasHeightForWidth());
         btnExit->setSizePolicy(sizePolicy1);
 
         horizontalLayout_2->addWidget(btnExit);
 
-        layoutWidget1 = new QWidget(ParaSetDlgClass);
-        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(9, 426, 761, 86));
-        horizontalLayout_4 = new QHBoxLayout(layoutWidget1);
+        layoutWidget2 = new QWidget(ParaSetDlgClass);
+        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(9, 470, 761, 86));
+        horizontalLayout_4 = new QHBoxLayout(layoutWidget2);
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
         horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
-        buttonGroup_6 = new Q3ButtonGroup(layoutWidget1);
+        buttonGroup_6 = new Q3ButtonGroup(layoutWidget2);
         buttonGroup_6->setObjectName(QString::fromUtf8("buttonGroup_6"));
         buttonGroup_6->setColumnLayout(0, Qt::Vertical);
         gridLayout = new QGridLayout();
@@ -685,7 +685,7 @@ public:
 
         horizontalLayout_4->addItem(horizontalSpacer_18);
 
-        groupBox_4 = new QGroupBox(layoutWidget1);
+        groupBox_4 = new QGroupBox(layoutWidget2);
         groupBox_4->setObjectName(QString::fromUtf8("groupBox_4"));
         sizePolicy1.setHeightForWidth(groupBox_4->sizePolicy().hasHeightForWidth());
         groupBox_4->setSizePolicy(sizePolicy1);
@@ -722,7 +722,7 @@ public:
 
         horizontalLayout_4->addItem(horizontalSpacer_19);
 
-        buttonGroup_7 = new Q3ButtonGroup(layoutWidget1);
+        buttonGroup_7 = new Q3ButtonGroup(layoutWidget2);
         buttonGroup_7->setObjectName(QString::fromUtf8("buttonGroup_7"));
         buttonGroup_7->setColumnLayout(0, Qt::Vertical);
         gridLayout_11 = new QGridLayout();
@@ -753,13 +753,13 @@ public:
 
         horizontalLayout_4->addWidget(buttonGroup_7);
 
-        layoutWidget2 = new QWidget(ParaSetDlgClass);
-        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
-        layoutWidget2->setGeometry(QRect(21, 340, 751, 48));
-        horizontalLayout_5 = new QHBoxLayout(layoutWidget2);
+        layoutWidget3 = new QWidget(ParaSetDlgClass);
+        layoutWidget3->setObjectName(QString::fromUtf8("layoutWidget3"));
+        layoutWidget3->setGeometry(QRect(21, 390, 751, 58));
+        horizontalLayout_5 = new QHBoxLayout(layoutWidget3);
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
         horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
-        buttonGroup_2 = new Q3ButtonGroup(layoutWidget2);
+        buttonGroup_2 = new Q3ButtonGroup(layoutWidget3);
         buttonGroup_2->setObjectName(QString::fromUtf8("buttonGroup_2"));
         buttonGroup_2->setColumnLayout(0, Qt::Vertical);
         horizontalLayout = new QHBoxLayout();
@@ -786,7 +786,7 @@ public:
 
         horizontalLayout_5->addItem(horizontalSpacer_22);
 
-        buttonGroup = new Q3ButtonGroup(layoutWidget2);
+        buttonGroup = new Q3ButtonGroup(layoutWidget3);
         buttonGroup->setObjectName(QString::fromUtf8("buttonGroup"));
         buttonGroup->setColumnLayout(0, Qt::Vertical);
         horizontalLayout_6 = new QHBoxLayout();
@@ -813,7 +813,7 @@ public:
 
         horizontalLayout_5->addItem(horizontalSpacer_23);
 
-        buttonGroup_4 = new Q3ButtonGroup(layoutWidget2);
+        buttonGroup_4 = new Q3ButtonGroup(layoutWidget3);
         buttonGroup_4->setObjectName(QString::fromUtf8("buttonGroup_4"));
         buttonGroup_4->setColumnLayout(0, Qt::Vertical);
         horizontalLayout_8 = new QHBoxLayout();
@@ -840,7 +840,7 @@ public:
 
         horizontalLayout_5->addItem(horizontalSpacer_24);
 
-        buttonGroup_5 = new Q3ButtonGroup(layoutWidget2);
+        buttonGroup_5 = new Q3ButtonGroup(layoutWidget3);
         buttonGroup_5->setObjectName(QString::fromUtf8("buttonGroup_5"));
         buttonGroup_5->setColumnLayout(0, Qt::Vertical);
         horizontalLayout_7 = new QHBoxLayout();
@@ -867,7 +867,7 @@ public:
 
         horizontalLayout_5->addItem(horizontalSpacer_25);
 
-        buttonGroup_8 = new Q3ButtonGroup(layoutWidget2);
+        buttonGroup_8 = new Q3ButtonGroup(layoutWidget3);
         buttonGroup_8->setObjectName(QString::fromUtf8("buttonGroup_8"));
         buttonGroup_8->setColumnLayout(0, Qt::Vertical);
         horizontalLayout_10 = new QHBoxLayout();
@@ -892,10 +892,10 @@ public:
 
         label_16 = new QLabel(ParaSetDlgClass);
         label_16->setObjectName(QString::fromUtf8("label_16"));
-        label_16->setGeometry(QRect(750, 174, 24, 30));
+        label_16->setGeometry(QRect(730, 220, 24, 30));
         label_17 = new QLabel(ParaSetDlgClass);
         label_17->setObjectName(QString::fromUtf8("label_17"));
-        label_17->setGeometry(QRect(750, 210, 24, 31));
+        label_17->setGeometry(QRect(730, 250, 24, 31));
         layoutWidget->raise();
         layoutWidget->raise();
         layoutWidget->raise();

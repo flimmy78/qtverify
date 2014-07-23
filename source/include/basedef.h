@@ -1,10 +1,17 @@
 ﻿#ifndef BASEDEF_H
 #define BASEDEF_H
 
-#include "commondefine.h"
+
+/************************************************************************/
+/* 变量长度宏定义                                                       */
+/************************************************************************/
+#define FILENAME_LENGTH		100		//文件名(全路径)长度
+#define ASCNAME_LEN			24		//数据库表中代码域的长度
+#define DESC_LEN			60		//数据库表中描述域的长度
+
 
 #ifndef VERIFY_POINTS
-	#define VERIFY_POINTS 8//检定流量点的数量, 一般为4个(大, 中一, 中二, 小), 但客户也可能需要更多
+#define VERIFY_POINTS	8//检定流量点的数量, 一般为4个(大, 中一, 中二, 小), 但客户也可能需要更多
 #endif
 
 #ifndef SEP
