@@ -6,7 +6,7 @@
 **  专业组:     德鲁计量软件组
 **  程序设计者: YS
 **  程序员:     YS
-**  版本历史:   2014/06 第一版
+**  版本历史:   2014/07 第一版
 **  内容包含:
 **  说明:
 **  更新记录:
@@ -152,7 +152,7 @@ void ParaSetDlg::installHead()
 
 void ParaSetDlg::installFlowPoint()
 {
-	qint64 file_tmstp = settings->value("Timestamp/timestamp").toLongLong();
+	qint64 file_tmstp = settings->value("Timestamp/timestamp").toLongLong();//读取文件时间戳
 	QStringList heads = settings->childGroups();//配置文件中的组名
 	// 第i流量点
 	for (int i=0; i<VERIFY_POINTS; i++)
@@ -165,8 +165,8 @@ void ParaSetDlg::installFlowPoint()
 				lineEdit_uppers[i]->setText(settings->value(head + "/upperflow_"  + QString::number(i)).toString());
 				lineEdit_flows[i]->setText(settings->value(head + "/verifyflow_"  + QString::number(i)).toString());
 				lineEdit_quantites[i]->setText(settings->value(head + "/flowquantity_"  + QString::number(i)).toString());
-				lineEdit_valves[i]->setText(settings->value(head + "/valve_"  + QString::number(i)).toString());
-				qDebug()<<settings->value(head + "/flowquantity_"  + QString::number(i)).toInt();
+				cBox_valves[i]->setCurrentIndex(settings->value(head + "/valve_"  + QString::number(i)).toInt());
+				lineEdit_freqs[i]->setText(settings->value(head + "/pumpfrequencey_"  + QString::number(i)).toString());
 				cBox_seqs[i]->setCurrentIndex(settings->value(head + "/seq_"  + QString::number(i)).toInt());
 			}
 		}
@@ -175,20 +175,24 @@ void ParaSetDlg::installFlowPoint()
 
 void ParaSetDlg::installBool()
 {
+	//自动采集
 	 ui.tBtn_autoPick_true->setChecked(settings->value("Bool/autopick").toBool()) ;
 	 ui.tBtn_autoPick_false->setChecked(!(settings->value("Bool/autopick").toBool())) ;
-
+	 //总量检定
 	 ui.tBtn_totalverify_true->setChecked(settings->value("Bool/Tqualitycheck").toBool()) ;
 	 ui.tBtn_totalverify_false->setChecked(!(settings->value("Bool/Tqualitycheck").toBool())) ;
-
+	 //调整误差
 	 ui.tBtn_adjustError_true->setChecked(settings->value("Bool/adjusterror").toBool()) ;
 	 ui.tBtn_adjustError_false->setChecked(!(settings->value("Bool/adjusterror").toBool())) ;
-
+	 //写表号
 	 ui.tBtn_writeNum_true->setChecked(settings->value("Bool/writemeternumber").toBool()) ;
 	 ui.tBtn_writeNum_false->setChecked(!(settings->value("Bool/writemeternumber").toBool())) ;
-
+	 //连续检定
 	 ui.tBtn_continuous_true->setChecked(settings->value("Bool/continuouscheck").toBool()) ;
 	 ui.tBtn_continuous_false->setChecked(!(settings->value("Bool/continuouscheck").toBool())) ;
+	 //初值回零
+	 ui.tBtn_resetzero_true->setChecked(settings->value("Bool/resetzero").toBool());
+	 ui.tBtn_resetzero_false->setChecked(!(settings->value("Bool/resetzero").toBool()));
 }
 
 void ParaSetDlg::installOther()
@@ -204,27 +208,32 @@ void ParaSetDlg::installOther()
 */
 void ParaSetDlg::flowPointVector()
 {
-	
+	//上限流量点
 	lineEdit_uppers.append(ui.lineEdit_Upper_1);
 	lineEdit_uppers.append(ui.lineEdit_Upper_2);
 	lineEdit_uppers.append(ui.lineEdit_Upper_3);
 	lineEdit_uppers.append(ui.lineEdit_Upper_4);
-	
+	//检测流量点
 	lineEdit_flows.append(ui.lnEdit_Flow1);
 	lineEdit_flows.append(ui.lnEdit_Flow2);
 	lineEdit_flows.append(ui.lnEdit_Flow3);
 	lineEdit_flows.append(ui.lnEdit_Flow4);
-	
+	//检定量
 	lineEdit_quantites.append(ui.lineEdit_Quantity_1);
 	lineEdit_quantites.append(ui.lineEdit_Quantity_2);
 	lineEdit_quantites.append(ui.lineEdit_Quantity_3);
 	lineEdit_quantites.append(ui.lineEdit_Quantity_4);
-	
-	lineEdit_valves.append(ui.lineEdit_Valve_1);
-	lineEdit_valves.append(ui.lineEdit_Valve_2);
-	lineEdit_valves.append(ui.lineEdit_Valve_3);
-	lineEdit_valves.append(ui.lineEdit_Valve_4);
-	
+	//控制阀
+	cBox_valves.append(ui.cBox_Valve_1);
+	cBox_valves.append(ui.cBox_Valve_2);
+	cBox_valves.append(ui.cBox_Valve_3);
+	cBox_valves.append(ui.cBox_Valve_4);
+	//水泵频率
+	lineEdit_freqs.append(ui.lineEdit_freq_1);
+	lineEdit_freqs.append(ui.lineEdit_freq_2);
+	lineEdit_freqs.append(ui.lineEdit_freq_3);
+	lineEdit_freqs.append(ui.lineEdit_freq_4);
+	//检定次序
 	cBox_seqs.append((ui.cBox_seq_1));
 	cBox_seqs.append((ui.cBox_seq_2));
 	cBox_seqs.append((ui.cBox_seq_3));
@@ -277,8 +286,8 @@ void ParaSetDlg::SaveFlowPoint(int i)
 		settings->setValue("upperflow_" +  QString::number(i, 10), lineEdit_uppers[i]->text());//上限流量值
 		settings->setValue("verifyflow_" +  QString::number(i, 10), lineEdit_flows[i]->text());//流量点
 		settings->setValue("flowquantity_" +  QString::number(i, 10), lineEdit_quantites[i]->text());//检定水量
-		settings->setValue("pumpfrequencey_" +  QString::number(i, 10), lineEdit_valves[i]->text());//变频器频率
-		settings->setValue("valve_" +  QString::number(i, 10), lineEdit_valves[i]->text());//对应的阀门
+		settings->setValue("pumpfrequencey_" +  QString::number(i, 10), lineEdit_freqs[i]->text());//变频器频率
+		settings->setValue("valve_" +  QString::number(i, 10), cBox_valves[i]->currentIndex());//对应的阀门
 		settings->setValue("seq_" +  QString::number(i, 10), cBox_seqs[i]->currentIndex());//检定顺序
 		settings->endGroup();
 	}
@@ -293,7 +302,7 @@ void ParaSetDlg::SaveBool()
 	settings->setValue("adjusterror", ui.tBtn_adjustError_true->isChecked() );//是否修正误差
 	settings->setValue("writemeternumber", ui.tBtn_writeNum_true->isChecked() );//是否写表号
 	settings->setValue("continuouscheck", ui.tBtn_continuous_true->isChecked() );//是否连续检定
-	//settings->setValue("resetzero", ui.tBtn_resetzero_true->isChecked() );//是否初值回零
+	settings->setValue("resetzero", ui.tBtn_resetzero_true->isChecked() );//是否初值回零
 	settings->endGroup();
 }
 
@@ -323,7 +332,7 @@ ParaSetReader::ParaSetReader()
 
 	params =new Quality_Params;
 	memset(params, 0, sizeof(QParams_PTR));
-
+	initValveMap();
 	readParamValues();
 }
 
@@ -340,13 +349,20 @@ ParaSetReader::~ParaSetReader()
 		params=NULL;
 	}
 }
+
+void ParaSetReader::initValveMap()
+{
+	valve_port_map.insert(0,"bigNo");
+	valve_port_map.insert(1,"middle1No");
+	valve_port_map.insert(2,"middle2No");
+	valve_port_map.insert(3,"smallNo");
+}
+
 /*
 * 读取配置文件的信息
 */
 void ParaSetReader::readParamValues()
 {
-
-	QString sep = "#SEP#";
 	//读取文件时间戳
 	params->file_timestamp = settings->value("Timestamp/timestamp").toString().toLongLong();
 	readHead();
@@ -374,14 +390,17 @@ void ParaSetReader::readHead()
 
 void ParaSetReader::readFlowPoints()
 {
-	params->total_fp = 0;
+	params->total_fp = 0;//将流量点数目置为零
 	QStringList heads = settings->childGroups();//配置文件中的组名
 	// 第i流量点
 	for (int i=0; i<VERIFY_POINTS; i++)
 	{
-		QString head = "FlowPoint_" + QString::number(i);
+		QString head = "FlowPoint_" + QString::number(i);//当前流量点的名字
+		//如果组名中有当前检测的流量点, 则读取它的其他信息
 		if (heads.contains(head))
 		{
+			//如果当前流量点的时间戳与文件保存时的时间戳一样, 那么它就是上次被保存过的信息
+			//反之则不是上次保存的(可能是失效的配置), 将其丢弃
 			if (params->file_timestamp ==  settings->value(head + "/timestamp").toLongLong())
 			{
 				params->total_fp++;

@@ -48,7 +48,8 @@ private:
 	QVector<QLineEdit*> lineEdit_uppers;//上限流量点控件数组
 	QVector<QLineEdit*> lineEdit_flows;//检定流量点控件数组
 	QVector<QLineEdit*> lineEdit_quantites;//检定水量控件数组
-	QVector<QLineEdit*> lineEdit_valves;//流量点对应的阀门控件数组
+	QVector<QComboBox*> cBox_valves;//流量点对应的阀门控件数组
+	QVector<QLineEdit*> lineEdit_freqs;//水泵频率控件数组
 	QVector<QComboBox*> cBox_seqs;//检定次序控件数组
 
 	void flowPointVector();//将各流量点中, 相似功能的控件加入数组, 便于使用
@@ -81,6 +82,9 @@ class PARASETDLG_EXPORT ParaSetReader
 
 		flow_point_info getFpBySeq(int i);//取出检定次序为i的流量点信息
 private:
+	QMap<int,QString> valve_port_map;//建立阀门的字面值与其端口号的双射关系
+
+	void initValveMap();
 	void readParamValues();//读取配置文件所有的信息
 
 	void readHead();//读取配置文件的[head]组的信息
