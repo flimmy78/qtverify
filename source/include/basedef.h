@@ -124,15 +124,15 @@ public:
 	qint64 file_timestamp;//配置文件的时间戳
 	//被检热量表的基本信息; m为meter的头字母
 	qint64 m_timestamp;//基本信息时间戳
-	char m_stand[50];//被检表规格(DN15,DN20,DN25等) 
-	char m_type[50];//被检表类型(机械表、超声波表等)
-	char m_manufac[100];//制造厂商(德鲁航天, 天罡等)
+	int m_stand;//被检表规格(DN15,DN20,DN25等) 
+	int m_type;//被检表类型(机械表、超声波表等)
+	int m_manufac;//制造厂商(德鲁航天, 天罡等)
 	int m_grade;//被检表等级(一级,二级,三级等)
-	char m_model[50];//被检表规格(DELU-14.17W, SHARKY-475等)
-	char m_vcomp[50];//检定机构(山东省计量院)
-	char m_vperson[50];//检定员(张三)
-	char m_pickcode[50];//采集代码
-	float m_nflowpnt;//被检表的常用流量
+	int m_model;//被检表规格(DELU-14.17W, SHARKY-475等)
+	int m_vcomp;//检定机构(山东省计量院)
+	int m_vperson;//检定员(张三)
+	int m_pickcode;//采集代码
+	int m_nflowpnt;//被检表的常用流量
 
 	flow_point_info fp_info[VERIFY_POINTS];//第i流量点信息
 	int total_fp;//有效流量点的数目

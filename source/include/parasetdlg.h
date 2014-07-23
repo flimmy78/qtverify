@@ -73,19 +73,17 @@ private slots:
 */
 class PARASETDLG_EXPORT ParaSetReader
 {
-	public:
+public:
 		
-		QParams_PTR params;
+	QParams_PTR params;
+	QMap<int,QString> valve_port_map;//建立阀门的字面值与其端口号的双射关系
+	ParaSetReader();
+	~ParaSetReader();
 
-		ParaSetReader();
-		~ParaSetReader();
-
-		flow_point_info getFpBySeq(int i);//取出检定次序为i的流量点信息
+	flow_point_info getFpBySeq(int i);//取出检定次序为i的流量点信息
 private:
 	QSettings *settings;
 	QSettings *portInfo;//阀门端口配置文件
-
-	QMap<int,QString> valve_port_map;//建立阀门的字面值与其端口号的双射关系
 
 	void initValveMap();
 	void readParamValues();//读取配置文件所有的信息
