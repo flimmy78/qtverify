@@ -244,6 +244,13 @@ void ParaSetDlg::flowPointVector()
 
 void ParaSetDlg::on_btnSave_clicked()
 {
+	//先检查选定次序的合法性
+	if (!chkSeq())
+	{
+		QMessageBox::about(NULL, "illegal", "verify sequence is invalid!");
+		return;
+	}
+	
 	timestamp = QDateTime::currentMSecsSinceEpoch();
 	settings->beginGroup("Timestamp");
 	settings->setValue("timestamp",timestamp);
@@ -256,6 +263,43 @@ void ParaSetDlg::on_btnSave_clicked()
 	
 	SaveBool();
 	SaveOther();
+	QMessageBox::about(NULL, "OK", "Saving configurations successfully!");
+}
+
+/*
+* 检定序列里必须要有1, 
+* 且是以1起始, 中间不间断的自然数序列
+* 比如: [1]; [1, 2]; [1, 2, 3]; 依此类推
+* 设n为最大的检定次序号
+* 则此检定序列的非零元素的和, 一定与自然数的前n项和相等
+* 反之, 此检定序列中必定存在重复项
+*/
+bool ParaSetDlg::chkSeq()
+{
+	int max_seq;//最大的次序号
+	max_seq = 0;
+	int total_seqs;//非零的检定次序号的和
+	total_seqs = 0;
+	for (int i=0; i < VERIFY_POINTS; i++)
+	{
+		//挑出最大的次序号
+		if (max_seq < cBox_seqs[i]->currentIndex())
+		{
+			max_seq = cBox_seqs[i]->currentIndex();
+		}
+
+		if (cBox_seqs[i]->currentIndex() > 0)
+		{
+			total_seqs+=cBox_seqs[i]->currentIndex();//非0元素的和
+		}
+	}
+	//如果最大的次序号为0, 则认为用户漏选了检定次序
+	if (max_seq == 0)
+	{
+		return false;
+	}
+
+	return ((max_seq * (max_seq + 1)) / 2) == total_seqs;
 }
 
 void ParaSetDlg::SaveHead()
@@ -457,6 +501,7 @@ void ParaSetReader::readOther()
 		params->ex_time =  settings->value("Other/exhausttime").toFloat();
 	}
 }
+
 /*
 *得到检测序列号为i的流量点信息
 */

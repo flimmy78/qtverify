@@ -11,7 +11,7 @@
 
 
 #ifndef VERIFY_POINTS
-#define VERIFY_POINTS	8//检定流量点的数量, 一般为4个(大, 中一, 中二, 小), 但客户也可能需要更多
+#define VERIFY_POINTS	4//检定流量点的数量, 一般为4个(大, 中一, 中二, 小), 但客户也可能需要更多
 #endif
 
 #ifndef SEP

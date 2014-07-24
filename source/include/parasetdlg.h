@@ -60,6 +60,7 @@ private:
 	void installBool();//加载配置文件的[Bool]组的信息
 	void installOther();//加载配置文件的[Other]组的信息
 
+	bool chkSeq();//检查选定的检定次序是否满足要求
 	void SaveHead();//保存基本信息
 	void SaveFlowPoint(int i);//保存流量点信息
 	void SaveBool();//保存布尔值
