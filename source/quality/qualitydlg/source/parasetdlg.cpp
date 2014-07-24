@@ -22,6 +22,9 @@
 #include "parasetdlg.h"
 #include "commondefine.h"
 
+/*************************************************************************
+************************ParaSetDlg Start******************************
+**************************************************************************/
 ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
@@ -269,28 +272,42 @@ void ParaSetDlg::on_btnSave_clicked()
 /*
 * 检定序列里必须要有1, 
 * 且是以1起始, 中间不间断的自然数序列
-* 比如: [1]; [1, 2]; [1, 2, 3]; 依此类推
-* 设n为最大的检定次序号
-* 则此检定序列的非零元素的和, 一定与自然数的前n项和相等
-* 反之, 此检定序列中必定存在重复项
+* 比如: [1]; [1, 2]; [1, 2, 3]; 依此类推.
+* 假设有一正整数序列
+* 设n为其最大元素值
+* 若此序列无重复项,
+* 且n与序列元素的个数相等
+* 那么这个序列一定是以1起始,以n终止的自然数列
 */
 bool ParaSetDlg::chkSeq()
 {
-	int max_seq;//最大的次序号
-	max_seq = 0;
-	int total_seqs;//非零的检定次序号的和
-	total_seqs = 0;
+	int max_seq = 0;//最大的次序号
+	int total_seqs = 0;//非零的检定次序号的和
+	QVector<int> repeat_seq;//已发现的元素序列
+
 	for (int i=0; i < VERIFY_POINTS; i++)
 	{
+		int idx = cBox_seqs[i]->currentIndex();
 		//挑出最大的次序号
-		if (max_seq < cBox_seqs[i]->currentIndex())
+		if (max_seq < idx)
 		{
-			max_seq = cBox_seqs[i]->currentIndex();
+			max_seq = idx;
 		}
 
-		if (cBox_seqs[i]->currentIndex() > 0)
+		//计算非0元素的个数
+		if (idx > 0)
 		{
-			total_seqs+=cBox_seqs[i]->currentIndex();//非0元素的和
+			total_seqs ++;
+		}
+		
+		//如果存在重复元素, 则返回false;否则将当前元素加入已发现的元素序列
+		if (repeat_seq.contains(idx))
+		{
+			return false;
+		}
+		else
+		{
+			repeat_seq.append(idx);
 		}
 	}
 	//如果最大的次序号为0, 则认为用户漏选了检定次序
@@ -299,7 +316,7 @@ bool ParaSetDlg::chkSeq()
 		return false;
 	}
 
-	return ((max_seq * (max_seq + 1)) / 2) == total_seqs;
+	return (max_seq == total_seqs);
 }
 
 void ParaSetDlg::SaveHead()
@@ -361,7 +378,13 @@ void ParaSetDlg::SaveOther()
 	settings->setValue("exhausttime", ui.lineEdit_exTime->text());//排气时间
 	settings->endGroup();
 }
+/*************************************************************************
+************************ParaSetDlg End*******************************
+**************************************************************************/
 
+/*************************************************************************
+************************ParaSetReader Start*************************
+**************************************************************************/
 ParaSetReader::ParaSetReader()
 {
 
@@ -518,3 +541,6 @@ flow_point_info ParaSetReader::getFpBySeq(int i)
 	
 	throw i;//如果遍历各有效流量点后没有匹配的检定次序,那么此检定次序不存在
 }
+/*************************************************************************
+************************ParaSetReader End**************************
+**************************************************************************/
