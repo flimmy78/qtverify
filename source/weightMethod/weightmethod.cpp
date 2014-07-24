@@ -35,6 +35,12 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	QString inTemper = QString("%1").arg(ui.lcdNumberInTemper->value(), 4);
 	float iii = inTemper.toFloat();
 
+	m_balTimer = new QTimer(this);
+	connect(m_balTimer, SIGNAL(timeout()), this, SLOT(freshBigBalaceValue()));
+	m_balTimer->start(200); //模拟天平每200毫秒更新一次
+	m_balValue = 0.0;
+	m_tempValue = 20.0;
+
 /*	for (int i=0; i<4; i++)
 	{
 		ui.tabWidget->removeTab(1);
@@ -51,23 +57,19 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	connect(m_exaustTimer, SIGNAL(timeout()), this, SLOT(slotExaustFinished()));
 
 
-	m_balTimer = new QTimer(this);
-	connect(m_balTimer, SIGNAL(timeout()), this, SLOT(freshBigBalaceValue()));
-	m_balTimer->start(200); //模拟天平每200毫秒更新一次
-	m_balValue = 0.0;
 
 	m_continueVerify = true;
 	m_resetZero = false;
 	m_flowPointNum = 0;
 	m_exaustSecond = 45;
-	if (!readParaConfig())
-	{
-		qWarning()<<"读取参数配置文件失败!";
-	}
 	m_meterStartValue = NULL;
 	m_meterEndValue = NULL;
 	m_balStartV = 0;
 	m_balEndV = 0;
+	if (!readParaConfig())
+	{
+		qWarning()<<"读取参数配置文件失败!";
+	}
 
 	if (!isComAndPortNormal())
 	{
@@ -128,6 +130,7 @@ int WeightMethodDlg::readParaConfig()
 	m_meterNum = m_meterNumMap[standard]; //不同表规格对应的最大检表数量
 	m_meterStartValue = new float[m_meterNum]; 
 	memset(m_meterStartValue, 0, sizeof(float)*m_meterNum);
+	m_meterStartValue[0] = 111.111;
 	m_meterEndValue = new float[m_meterNum];
 	memset(m_meterEndValue, 0, sizeof(float)*m_meterNum);
 	ui.tableWidget->setRowCount(m_meterNum);
@@ -316,14 +319,14 @@ void WeightMethodDlg::startVerify()
 	{
 		for (int j=0; j<m_flowPointNum; j++)
 		{
-			startVerifyFlowPoint(j);
+			startVerifyFlowPoint(j+1);
 		}
 	}
 
 	////////////////////////////////不连续检定
 	if (!m_continueVerify)
 	{
-		if (startVerifyFlowPoint(0)) //第一个流量点检定
+		if (startVerifyFlowPoint(1)) //第一个流量点检定
 		{
 			ui.btnNext->show();
 			ui.btnNext->setDefault(true);
@@ -341,6 +344,15 @@ void WeightMethodDlg::freshBigBalaceValue()
 	}
 	m_balValue += 0.01;
 	ui.lnEditBigBalance->setText(QString("%1").arg(m_balValue));
+
+	if (m_tempValue > 90)
+	{
+		m_tempValue = 20;
+	}
+	m_tempValue += 0.2;
+	ui.lcdNumberInTemper->display(m_tempValue);
+	ui.lcdNumberOutTemper->display(m_tempValue+0.12);
+
 }
 
 /*
@@ -361,7 +373,7 @@ int WeightMethodDlg::judgeBalanceCapacitySingle(int order)
 	return true;
 }
 
-//单个流量点的检定
+//单个流量点的检定,order从1开始
 int WeightMethodDlg::startVerifyFlowPoint(int order)
 {
 	if (!m_continueVerify) //非连续检定，每次检定开始之前都要判断天平容量

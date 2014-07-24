@@ -37,6 +37,7 @@ public:
 
 	QTimer *m_balTimer; //模拟天平定时刷新用 仅用于测试
 	float m_balValue;
+	float m_tempValue;  //模拟温度值
 
 
 	//检定过程相关的控制参数 begin

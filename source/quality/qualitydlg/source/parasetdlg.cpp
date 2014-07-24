@@ -526,7 +526,7 @@ void ParaSetReader::readOther()
 }
 
 /*
-*得到检测序列号为i的流量点信息
+*得到检测序列号为i的流量点信息,i从1开始？
 */
 flow_point_info ParaSetReader::getFpBySeq(int i)
 {
