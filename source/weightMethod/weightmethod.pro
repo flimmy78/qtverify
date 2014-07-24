@@ -9,7 +9,7 @@ QMAKE_LIBDIR +=  ./           \
         	     $(RUNHOME)/lib \
 	             $(RUNHOME)/bin 
 	            
-LIBS +=	-lQt3Supportd4 -lQt3Support4 -lprotocol -lcomsetdlg -lcomobject -lqtexdb -lalgorithm
+LIBS +=	-lQt3Supportd4 -lQt3Support4 -lprotocol -lcomsetdlg -lcomobject -lqtexdb -lalgorithm -lqualitydlg
 
 DESTDIR = $(RUNHOME)\tmp\weightmethod
 #MOC_DIR = $(RUNHOME)/tmp/weightmethod/moc

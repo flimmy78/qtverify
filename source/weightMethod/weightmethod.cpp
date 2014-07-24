@@ -41,30 +41,31 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	}*/
 	////////////////////////////////////////////////////////
 
+	m_meterNumMap[0] = 16; //DN15规格，最多检定16块
+	m_meterNumMap[1] = 16; //DN20规格，最多检定16块
+    m_meterNumMap[2] = 12; //DN25规格，最多检定12块
+
+	m_paraSetReader = new ParaSetReader();
 
 	m_exaustTimer = new QTimer(this); //排气定时器
 	connect(m_exaustTimer, SIGNAL(timeout()), this, SLOT(slotExaustFinished()));
-	m_exaustSecond = 10; //排气时间默认45秒
+
 
 	m_balTimer = new QTimer(this);
 	connect(m_balTimer, SIGNAL(timeout()), this, SLOT(freshBigBalaceValue()));
 	m_balTimer->start(200); //模拟天平每200毫秒更新一次
 	m_balValue = 0.0;
 
-
+	m_continueVerify = true;
+	m_resetZero = false;
+	m_flowPointNum = 0;
+	m_exaustSecond = 45;
 	if (!readParaConfig())
 	{
 		qWarning()<<"读取参数配置文件失败!";
 	}
-	m_continueVerify = true;
-	m_resetZero = false; 
 	m_meterStartValue = NULL;
 	m_meterEndValue = NULL;
-	m_meterNum = 12; //假设每次检定12块表
-	m_meterStartValue = new float[m_meterNum]; 
-	memset(m_meterStartValue, 0, sizeof(float)*m_meterNum);
-	m_meterEndValue = new float[m_meterNum];
-	memset(m_meterEndValue, 0, sizeof(float)*m_meterNum);
 	m_balStartV = 0;
 	m_balEndV = 0;
 
@@ -87,6 +88,12 @@ WeightMethodDlg::~WeightMethodDlg()
 void WeightMethodDlg::closeEvent( QCloseEvent * event)
 {
 	qDebug()<<"^^^^^WeightMethodDlg::closeEvent";
+
+	if (NULL == m_paraSetReader)
+	{
+		delete []m_paraSetReader;
+		m_paraSetReader = NULL;
+	}
 
 }
 
@@ -111,6 +118,20 @@ int WeightMethodDlg::isWaterOutValveOpen()
 //读参数配置文件
 int WeightMethodDlg::readParaConfig()
 {
+	m_continueVerify = m_paraSetReader->params->bo_converify; //连续检定
+	m_resetZero = m_paraSetReader->params->bo_resetzero; //初值回零
+	m_flowPointNum = m_paraSetReader->params->total_fp;  //有效流量点的个数 
+	m_exaustSecond = m_paraSetReader->params->ex_time;   //排气时间
+
+
+	int standard = m_paraSetReader->params->m_stand; //表规格
+	m_meterNum = m_meterNumMap[standard]; //不同表规格对应的最大检表数量
+	m_meterStartValue = new float[m_meterNum]; 
+	memset(m_meterStartValue, 0, sizeof(float)*m_meterNum);
+	m_meterEndValue = new float[m_meterNum];
+	memset(m_meterEndValue, 0, sizeof(float)*m_meterNum);
+	ui.tableWidget->setRowCount(m_meterNum);
+
 	return true;
 }
 
@@ -201,6 +222,7 @@ void WeightMethodDlg::slotExaustFinished()
 //读取表号
 int WeightMethodDlg::readMeterNumber()
 {
+
 	return true;
 }
 
@@ -289,12 +311,10 @@ void WeightMethodDlg::startVerify()
 	}
 
 
-
-	int flowNum = 4; //假设有4个流量点
 	////////////////////////////////连续检定
 	if (m_continueVerify)
 	{
-		for (int j=0; j<flowNum; j++)
+		for (int j=0; j<m_flowPointNum; j++)
 		{
 			startVerifyFlowPoint(j);
 		}
@@ -346,7 +366,7 @@ int WeightMethodDlg::startVerifyFlowPoint(int order)
 {
 	if (!m_continueVerify) //非连续检定，每次检定开始之前都要判断天平容量
 	{
-		if (!judgeBalanceCapacitySingle(order)) //判断天平容量是否能够满足检定用量
+		if (!judgeBalanceCapacitySingle(order)) //判断天平容量是否能够满足单次检定用量
 		{
 			openWaterOutValve();
 		}
@@ -375,11 +395,13 @@ int WeightMethodDlg::startVerifyFlowPoint(int order)
 	m_pipeInTemper = ui.lcdNumberInTemper->value();
 	m_pipeOutTemper = ui.lcdNumberOutTemper->value();
 
-	if (openValve(order)) //打开order对应的阀门
+	int portNo = m_paraSetReader->getFpBySeq(order).fp_valve;  //order对应的阀门端口号
+	float verifyQuantity = m_paraSetReader->getFpBySeq(order).fp_quantity; //第order次检定对应的检定量
+	if (openValve(portNo))
 	{
-		if (judgeBalanceInitValue(m_balStartV + 50)) //第order次检定对应的检定量
+		if (judgeBalanceInitValue(m_balStartV + verifyQuantity))
 		{
-			closeValve(order); //关闭order对应的阀门
+			closeValve(portNo); //关闭order对应的阀门
 			m_balEndV = ui.lnEditBigBalance->text().toFloat(); //记录天平终值
 			memset(m_meterEndValue, 50.5, sizeof(float)*m_meterNum); //记录表终值
 

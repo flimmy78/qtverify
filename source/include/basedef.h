@@ -128,7 +128,7 @@ public:
 	int m_type;//被检表类型(机械表、超声波表等)
 	int m_manufac;//制造厂商(德鲁航天, 天罡等)
 	int m_grade;//被检表等级(一级,二级,三级等)
-	int m_model;//被检表规格(DELU-14.17W, SHARKY-475等)
+	int m_model;//被检表型号(DELU-14.17W, SHARKY-475等)
 	int m_vcomp;//检定机构(山东省计量院)
 	int m_vperson;//检定员(张三)
 	int m_pickcode;//采集代码

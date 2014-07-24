@@ -20,6 +20,7 @@
 #include <QtGui/QWidget>
 
 #include "ui_weightmethod.h"
+#include "parasetdlg.h"
 
 class WEIGHTMETHOD_EXPORT WeightMethodDlg : public QWidget
 {
@@ -28,6 +29,8 @@ class WEIGHTMETHOD_EXPORT WeightMethodDlg : public QWidget
 public:
 	WeightMethodDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~WeightMethodDlg();
+
+	ParaSetReader *m_paraSetReader;
 
 	QTimer *m_exaustTimer; //排气定时器
 	int m_exaustSecond;	
@@ -39,7 +42,9 @@ public:
 	//检定过程相关的控制参数 begin
 	bool m_continueVerify; //是否连续检定
 	bool m_resetZero;      //是否初值回零
-	int m_meterNum;           //被检表的个数
+	QMap<int, int> m_meterNumMap;//被检表最大个数，与规格相关
+	int m_meterNum;           //被检表最大个数
+	int m_flowPointNum;       //流量点的个数
 	float *m_meterStartValue; //被检表的初值
 	float *m_meterEndValue;   //被检表的终值
 	float m_balStartV;        //天平初值
