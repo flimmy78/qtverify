@@ -77,6 +77,7 @@ public:
     QLabel *label_10;
     QLineEdit *lnEditSmallBalance;
     QLabel *label_12;
+    QPushButton *btnNext;
     QWidget *tab2;
     QWidget *tab3;
     QWidget *tab4;
@@ -364,6 +365,9 @@ public:
 
         gridLayout_3->addWidget(label_12, 1, 2, 1, 1);
 
+        btnNext = new QPushButton(tab1);
+        btnNext->setObjectName(QString::fromUtf8("btnNext"));
+        btnNext->setGeometry(QRect(920, 570, 93, 28));
         tabWidget->addTab(tab1, QString());
         tab2 = new QWidget();
         tab2->setObjectName(QString::fromUtf8("tab2"));
@@ -451,6 +455,7 @@ public:
         label_10->setText(QApplication::translate("WeightMethodClass", "\345\260\217\345\244\251\345\271\263", 0, QApplication::UnicodeUTF8));
         lnEditSmallBalance->setText(QString());
         label_12->setText(QApplication::translate("WeightMethodClass", "\343\216\217", 0, QApplication::UnicodeUTF8));
+        btnNext->setText(QApplication::translate("WeightMethodClass", "\344\270\213\344\270\200\346\255\245", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab1), QApplication::translate("WeightMethodClass", "Tab1", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab2), QApplication::translate("WeightMethodClass", "Tab2", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab3), QApplication::translate("WeightMethodClass", "Tab3", 0, QApplication::UnicodeUTF8));

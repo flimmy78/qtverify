@@ -607,6 +607,19 @@
         </item>
        </layout>
       </widget>
+      <widget class="QPushButton" name="btnNext">
+       <property name="geometry">
+        <rect>
+         <x>920</x>
+         <y>570</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>下一步</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="tab2">
       <attribute name="title">
