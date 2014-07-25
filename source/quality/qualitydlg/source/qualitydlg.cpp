@@ -209,7 +209,7 @@ void QualityDlg::initRegulateStatus()
 	}
 }
 
-//天平采集串口
+//天平采集串口 上位机直接采集
 void QualityDlg::initBalanceCom()
 {
 	ComInfoStruct balanceStruct = m_readComConfig->ReadBalanceConfig();

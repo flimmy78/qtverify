@@ -16,11 +16,14 @@
 #endif
 
 #define BALANCE_START_VALUE		2 //天平初值
+#define TIMEOUT_TEMPER		500 //每0.5秒钟请求一次温度值
 
 #include <QtGui/QWidget>
 
 #include "ui_weightmethod.h"
 #include "parasetdlg.h"
+#include "comobject.h"
+#include "ReadComConfig.h"
 
 class WEIGHTMETHOD_EXPORT WeightMethodDlg : public QWidget
 {
@@ -36,9 +39,15 @@ public:
 	int m_exaustSecond;	
 
 	QTimer *m_balTimer; //模拟天平定时刷新用 仅用于测试
-	float m_balValue;
+	float m_balValue;   //模拟天平值
 	float m_tempValue;  //模拟温度值
 
+	ComThread m_balanceThread; //天平采集线程
+	BalanceComObject *m_balanceObj;
+
+	ComThread m_tempThread;  //温度采集线程
+	TempComObject *m_tempObj;
+	QTimer *m_tempTimer;
 
 	//检定过程相关的控制参数 begin
 	bool m_continueVerify; //是否连续检定
@@ -54,6 +63,10 @@ public:
 	float m_pipeOutTemper;    //出口温度
 	//检定过程相关的控制参数 end
 
+	ReadComConfig *m_readComConfig; //读串口设置
+	void initBalanceCom();     //天平串口
+	void initTemperatureCom(); //温度采集串口
+
 	int isComAndPortNormal(); //串口、端口设置是否正常
 	int isWaterOutValveOpen(); //检查放水阀门是否打开
 	int readParaConfig();		//读参数配置文件
@@ -63,7 +76,7 @@ public:
 public slots:
 	void closeEvent(QCloseEvent * event);
 	void removeSubTab(int index);
-	int on_btnExhaust_clicked();  //点击"排气按钮"
+	void on_btnExhaust_clicked();  //点击"排气按钮"
 	void on_btnStart_clicked();    //点击"开始"按钮
 	void on_btnNext_clicked();
 	int openAllValuesAndPump();   //打开所有阀门和水泵
@@ -83,6 +96,9 @@ public slots:
 	int openValve(int portno);    //打开控制阀
 	int closeValve(int portno);   //关闭控制阀
 
+	void slotFreshBalanceValue(const QString& Str); //刷新天平数值
+	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
+	void slotFreshFlow(); //计算流量
 
 	void freshBigBalaceValue();   //刷新大天平数值 仅用于测试 模拟天平数值变化
 

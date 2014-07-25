@@ -41,6 +41,17 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	m_balValue = 0.0;
 	m_tempValue = 20.0;
 
+	m_readComConfig = NULL;
+	m_readComConfig = new ReadComConfig();
+
+	m_balanceObj = NULL;
+	initBalanceCom();		//初始化天平串口
+
+	m_tempObj = NULL;
+	m_tempTimer = NULL;
+	initTemperatureCom();	//初始化温度采集串口
+
+
 /*	for (int i=0; i<4; i++)
 	{
 		ui.tabWidget->removeTab(1);
@@ -91,10 +102,41 @@ void WeightMethodDlg::closeEvent( QCloseEvent * event)
 {
 	qDebug()<<"^^^^^WeightMethodDlg::closeEvent";
 
-	if (NULL == m_paraSetReader)
+	if (NULL == m_paraSetReader) //读检定参数
 	{
 		delete []m_paraSetReader;
 		m_paraSetReader = NULL;
+	}
+
+	if (m_readComConfig)  //读串口设置
+	{
+		delete m_readComConfig;
+		m_readComConfig = NULL;
+	}
+
+	if (m_tempObj)  // 温度采集
+	{
+		delete m_tempObj;
+		m_tempObj = NULL;
+
+		m_tempThread.exit(); //否则日志中会有警告"QThread: Destroyed while thread is still running"
+	}
+	if (m_tempTimer) //计时器
+	{
+		if (m_tempTimer->isActive())
+		{
+			m_tempTimer->stop();
+		}
+		delete m_tempTimer;
+		m_tempTimer = NULL;
+	}
+
+	if (m_balanceObj)  //天平采集
+	{
+		delete m_balanceObj;
+		m_balanceObj = NULL;
+
+		m_balanceThread.exit();
 	}
 
 }
@@ -104,6 +146,62 @@ void WeightMethodDlg::removeSubTab(int index)
 { 
 	ui.tabWidget->removeTab(index); 
 } 
+
+//天平采集串口 上位机直接采集
+void WeightMethodDlg::initBalanceCom()
+{
+	ComInfoStruct balanceStruct = m_readComConfig->ReadBalanceConfig();
+	m_balanceObj = new BalanceComObject();
+	m_balanceObj->moveToThread(&m_balanceThread);
+	m_balanceThread.start();
+	m_balanceObj->openBalanceCom(&balanceStruct);
+
+	//天平数值由上位机直接通过天平串口采集
+	connect(m_balanceObj, SIGNAL(balanceValueIsReady(const QString &)), this, SLOT(slotFreshBalanceValue(const QString &)));
+}
+
+
+/***************************************
+	温度采集串口 上位机直接采集
+	周期请求
+****************************************/
+void WeightMethodDlg::initTemperatureCom()
+{
+	ComInfoStruct tempStruct = m_readComConfig->ReadTempConfig();
+	m_tempObj = new TempComObject();
+	m_tempObj->moveToThread(&m_tempThread);
+	m_tempThread.start();
+	m_tempObj->openTemperatureCom(&tempStruct);
+	connect(m_tempObj, SIGNAL(temperatureIsReady(const QString &)), this, SLOT(slotFreshComTempValue(const QString &)));
+
+	m_tempTimer = new QTimer();
+	connect(m_tempTimer, SIGNAL(timeout()), m_tempObj, SLOT(writeTemperatureComBuffer()));
+// 	connect(m_tempTimer, SIGNAL(timeout()), this, SLOT(slotFreshFlow()));
+	
+	m_tempTimer->start(TIMEOUT_TEMPER); //周期请求温度
+}
+
+//在界面刷新天平数值
+void WeightMethodDlg::slotFreshBalanceValue(const QString& Str)
+{
+	ui.lnEditBigBalance->setText(Str);
+}
+
+//在界面刷新入口温度和出口温度值
+void WeightMethodDlg::slotFreshComTempValue(const QString& tempStr)
+{
+	ui.lcdNumberInTemper->display(tempStr.left(DATA_WIDTH).toFloat());   //入口温度 PV
+	ui.lcdNumberOutTemper->display(tempStr.right(DATA_WIDTH).toFloat()); //出口温度 SV
+}
+
+/************************************************************************/
+/* 计算瞬时流量(待改进、需要实验验证)                                   */
+/************************************************************************/
+void WeightMethodDlg::slotFreshFlow()
+{
+ 	qDebug()<<"slotFreshFlow thread:"<<QThread::currentThreadId(); //
+
+}
 
 //检测串口、端口设置是否正确
 int WeightMethodDlg::isComAndPortNormal()
@@ -141,18 +239,18 @@ int WeightMethodDlg::readParaConfig()
 /*
 **	点击"排气按钮"，开始检定
 */
-int WeightMethodDlg::on_btnExhaust_clicked()
+void WeightMethodDlg::on_btnExhaust_clicked()
 {
 	if (!isDataCollectNormal())
 	{
 		qWarning()<<"数据采集不正常，请检查";
-		return false;
+		return;
 	}
 
 	if (!openAllValuesAndPump())
 	{
 		qWarning()<<"打开所有阀门和水泵 失败!";
-		return false;
+		return;
 	}
 
 	m_exaustTimer->start(m_exaustSecond*1000);//开始排气倒计时
@@ -161,7 +259,7 @@ int WeightMethodDlg::on_btnExhaust_clicked()
 
 	setMeterVerifyStatus();
 
-	return true;
+	return;
 }
 
 //检查数据采集是否正常，包括天平、温度、电磁流量计
