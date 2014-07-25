@@ -30,9 +30,7 @@ ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 {
 	qDebug()<<"ParaSetDlg thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
-
-	flowPointVector();
-
+/**************************初始化数据库*****************************************/
 	if (!m_basedb.startdb())
 	{
 		qFatal("数据库未打开");
@@ -43,20 +41,20 @@ ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 	m_meterTypePtr = NULL;
 	m_manuFacNum = 0;
 	m_manuFacPtr = NULL;
-
 	initUiData();//以数据库中的数据, 初始化comboBox的值
-
-	char* runhome = getenv( "RUNHOME" );
+/**************************初始化settings*****************************************/
+	char filename[255];//配置文件的文件名
 #ifdef __unix
-	sprintf( filename, "%s/ini/qualityParaSet.ini", runhome );
+	sprintf( filename, "%s/ini/qualityParaSet.ini", getenv( "RUNHOME" ) );
 #else
-	sprintf( filename, "%s\\ini\\qualityParaSet.ini", runhome );
+	sprintf( filename, "%s\\ini\\qualityParaSet.ini", getenv( "RUNHOME" ) );
 #endif
-
 	settings = new QSettings(filename, QSettings::IniFormat);
 	settings->setIniCodec("GB2312");//解决向ini文件中写汉字乱码
-
-	lastParams = new ParaSetReader;
+/**************************初始化lastParams*************************************/
+	lastParams = new ParaSetReader();
+	flowPointVector();
+	
 	installLastParams();//加载上次的配置信息
 
 	ui.lnEdit_Flow1->setStyleSheet("border: 2px solid gray;"
@@ -69,12 +67,6 @@ ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 ParaSetDlg::~ParaSetDlg()
 {
 	qDebug()<<"!!! ParaSetDlg destructor";
-}
-
-void ParaSetDlg::closeEvent(QCloseEvent * event)
-{
-	qDebug()<<"&&& ParaSetDlg closeEvent";
-
 	if (m_meterStdPtr)
 	{
 		delete []m_meterStdPtr;
@@ -110,6 +102,11 @@ void ParaSetDlg::on_btnExit_clicked()
 	this->close();
 }
 
+void ParaSetDlg::closeEvent(QCloseEvent * event)
+{
+	delete this;
+}
+
 void ParaSetDlg::initUiData()
 {
 	//表规格
@@ -134,9 +131,7 @@ void ParaSetDlg::initUiData()
 	{
 		qDebug()<<"id:"<<m_manuFacPtr[m].id<<",desc:"<<QString::fromLocal8Bit(m_manuFacPtr[m].desc);
 		ui.cmbManufacture->insertItem(m, QString::fromLocal8Bit(m_manuFacPtr[m].desc)); //汉字编码
-	}	
-
-
+	}
 }
 
 void ParaSetDlg::installLastParams()
@@ -166,7 +161,7 @@ void ParaSetDlg::installFlowPoint()
 	{
 		QString head = "FlowPoint_" + QString::number(i);
 		//如果检定次序号大于0, 则此流量点参与检测
-		if (lastParams->params->fp_info[i].fp_seq>0)
+		if (lastParams->params->fp_info[i].fp_seq > 0)
 		{
 				lineEdit_uppers[i]->setText(QString::number(lastParams->params->fp_info[i].fp_upperlmt));
 				lineEdit_flows[i]->setText(QString::number(lastParams->params->fp_info[i].fp_verify));
@@ -253,17 +248,22 @@ void ParaSetDlg::on_btnSave_clicked()
 		QMessageBox::about(NULL, "illegal", "verify sequence is invalid!");
 		return;
 	}
-	
+
+	QStringList heads = settings->childGroups();
 	timestamp = QDateTime::currentMSecsSinceEpoch();
-	settings->beginGroup("Timestamp");
-	settings->setValue("timestamp",timestamp);
-	settings->endGroup();
-	SaveHead();
-	for (int i=0; i<4; i++)
+	if (heads.contains("Timestamp"))
 	{
-		SaveFlowPoint(i);
+		settings->setValue("Timestamp/timestamp",timestamp);
+	} 
+	else
+	{
+		settings->beginGroup("Timestamp");
+		settings->setValue("Timestamp/timestamp",timestamp);
+		settings->endGroup();
 	}
-	
+
+	SaveHead();
+	SaveFlowPoint();
 	SaveBool();
 	SaveOther();
 	QMessageBox::about(NULL, "OK", "Saving configurations successfully!");
@@ -339,20 +339,23 @@ void ParaSetDlg::SaveHead()
 * 保存第i流量点参数
 * i: 界面上的第i个流量点, 而不是检定顺序 
 */
-void ParaSetDlg::SaveFlowPoint(int i)
+void ParaSetDlg::SaveFlowPoint()
 {
-	//只保存检定顺序 > 1 的流量点
-	if(cBox_seqs[i]->currentIndex() > 0)
+	for (int i=0; i < VERIFY_POINTS; i++)
 	{
-		settings->beginGroup("FlowPoint_" +  QString::number(i, 10));
-		settings->setValue("timestamp",timestamp);
-		settings->setValue("upperflow_" +  QString::number(i, 10), lineEdit_uppers[i]->text());//上限流量值
-		settings->setValue("verifyflow_" +  QString::number(i, 10), lineEdit_flows[i]->text());//流量点
-		settings->setValue("flowquantity_" +  QString::number(i, 10), lineEdit_quantites[i]->text());//检定水量
-		settings->setValue("pumpfrequencey_" +  QString::number(i, 10), lineEdit_freqs[i]->text());//变频器频率
-		settings->setValue("valve_" +  QString::number(i, 10), cBox_valves[i]->currentIndex());//对应的阀门
-		settings->setValue("seq_" +  QString::number(i, 10), cBox_seqs[i]->currentIndex());//检定顺序
-		settings->endGroup();
+		//只保存检定顺序 > 1 的流量点
+		if(cBox_seqs[i]->currentIndex() > 0)
+		{
+			settings->beginGroup("FlowPoint_" +  QString::number(i, 10));
+			settings->setValue("timestamp",timestamp);
+			settings->setValue("upperflow_" +  QString::number(i, 10), lineEdit_uppers[i]->text());//上限流量值
+			settings->setValue("verifyflow_" +  QString::number(i, 10), lineEdit_flows[i]->text());//流量点
+			settings->setValue("flowquantity_" +  QString::number(i, 10), lineEdit_quantites[i]->text());//检定水量
+			settings->setValue("pumpfrequencey_" +  QString::number(i, 10), lineEdit_freqs[i]->text());//变频器频率
+			settings->setValue("valve_" +  QString::number(i, 10), cBox_valves[i]->currentIndex());//对应的阀门
+			settings->setValue("seq_" +  QString::number(i, 10), cBox_seqs[i]->currentIndex());//检定顺序
+			settings->endGroup();
+		}
 	}
 }
 
@@ -466,7 +469,7 @@ void ParaSetReader::readHead()
 		params->m_vcomp = settings->value("head/verifycompany").toInt();
 		params->m_vperson = settings->value("head/verifyperson").toInt();
 		params->m_pickcode = settings->value("head/pickcode").toInt();
-		params->m_grade = settings->value("head/grade").toInt() + 1;
+		params->m_grade = settings->value("head/grade").toInt();
 		params->m_nflowpnt = settings->value("head/nflowpoint").toInt();
 	}
 }

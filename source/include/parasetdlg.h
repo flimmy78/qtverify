@@ -31,14 +31,14 @@ public:
 
 	void initUiData(); //从数据库读取记录，填充combox等
 	void closeEvent(QCloseEvent * event);
-
+	//void showEvent(QShowEvent *event);
 public slots:
 	void on_btnExit_clicked();
 	void on_btnSave_clicked();
 
 private:
 	Ui::ParaSetDlgClass ui;
-	char filename[255];//配置文件的文件名
+
 	
 	QSettings *settings;//配置文件
 	QParams_PTR params;//本次的配置参数
@@ -62,7 +62,7 @@ private:
 
 	bool chkSeq();//检查选定的检定次序是否满足要求
 	void SaveHead();//保存基本信息
-	void SaveFlowPoint(int i);//保存流量点信息
+	void SaveFlowPoint();//保存流量点信息
 	void SaveBool();//保存布尔值
 	void SaveOther();//保存其他信息
 private slots:
