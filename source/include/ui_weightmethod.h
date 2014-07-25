@@ -50,8 +50,8 @@ public:
     QToolButton *btnValveMiddle1;
     QToolButton *btnValveMiddle2;
     QToolButton *btnValveSmall;
-    QToolButton *toolButtonStartPump;
-    QToolButton *toolButtonStopPump;
+    QToolButton *btnWaterPumpStart;
+    QToolButton *btnWaterPumpStop;
     QTableWidget *tableWidget;
     QPushButton *btnExhaust;
     QPushButton *btnStart;
@@ -186,19 +186,19 @@ public:
 
         gridLayout_4->addWidget(btnValveSmall, 0, 6, 3, 1);
 
-        toolButtonStartPump = new QToolButton(groupBox_2);
-        toolButtonStartPump->setObjectName(QString::fromUtf8("toolButtonStartPump"));
-        sizePolicy3.setHeightForWidth(toolButtonStartPump->sizePolicy().hasHeightForWidth());
-        toolButtonStartPump->setSizePolicy(sizePolicy3);
+        btnWaterPumpStart = new QToolButton(groupBox_2);
+        btnWaterPumpStart->setObjectName(QString::fromUtf8("btnWaterPumpStart"));
+        sizePolicy3.setHeightForWidth(btnWaterPumpStart->sizePolicy().hasHeightForWidth());
+        btnWaterPumpStart->setSizePolicy(sizePolicy3);
 
-        gridLayout_4->addWidget(toolButtonStartPump, 1, 0, 1, 1);
+        gridLayout_4->addWidget(btnWaterPumpStart, 1, 0, 1, 1);
 
-        toolButtonStopPump = new QToolButton(groupBox_2);
-        toolButtonStopPump->setObjectName(QString::fromUtf8("toolButtonStopPump"));
-        sizePolicy3.setHeightForWidth(toolButtonStopPump->sizePolicy().hasHeightForWidth());
-        toolButtonStopPump->setSizePolicy(sizePolicy3);
+        btnWaterPumpStop = new QToolButton(groupBox_2);
+        btnWaterPumpStop->setObjectName(QString::fromUtf8("btnWaterPumpStop"));
+        sizePolicy3.setHeightForWidth(btnWaterPumpStop->sizePolicy().hasHeightForWidth());
+        btnWaterPumpStop->setSizePolicy(sizePolicy3);
 
-        gridLayout_4->addWidget(toolButtonStopPump, 2, 0, 1, 1);
+        gridLayout_4->addWidget(btnWaterPumpStop, 2, 0, 1, 1);
 
         tableWidget = new QTableWidget(tab1);
         if (tableWidget->columnCount() < 6)
@@ -424,8 +424,8 @@ public:
 "\346\265\201\n"
 "\351\207\217\n"
 "\351\230\200", 0, QApplication::UnicodeUTF8));
-        toolButtonStartPump->setText(QApplication::translate("WeightMethodClass", "\345\220\257\345\212\250\346\260\264\346\263\265", 0, QApplication::UnicodeUTF8));
-        toolButtonStopPump->setText(QApplication::translate("WeightMethodClass", "\345\205\263\351\227\255\346\260\264\346\263\265", 0, QApplication::UnicodeUTF8));
+        btnWaterPumpStart->setText(QApplication::translate("WeightMethodClass", "\345\220\257\345\212\250\346\260\264\346\263\265", 0, QApplication::UnicodeUTF8));
+        btnWaterPumpStop->setText(QApplication::translate("WeightMethodClass", "\345\205\263\351\227\255\346\260\264\346\263\265", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("WeightMethodClass", "\350\241\250\344\275\215\345\217\267", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);

@@ -139,7 +139,7 @@ void TempComObject::writeTemperatureComBuffer()
 void TempComObject::readTemperatureComBuffer()
 {
 	QByteArray tmp = m_tempCom->readAll();
- 	qDebug()<<"read TemperatureComBuffer thread:"<<QThread::currentThreadId();
+// 	qDebug()<<"read TemperatureComBuffer thread:"<<QThread::currentThreadId();
 
 	bool ret = false;
 	ret = m_tempProtocol->readTemperComBuffer(tmp); //通讯协议接口

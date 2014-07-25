@@ -20,6 +20,7 @@
 
 #include "weightmethod.h"
 #include "commondefine.h"
+#include "algorithm.h"
 
 WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
@@ -41,8 +42,14 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	m_balValue = 0.0;
 	m_tempValue = 20.0;
 
-	m_readComConfig = NULL;
+	m_readComConfig = NULL; //读串口设置接口
 	m_readComConfig = new ReadComConfig();
+
+	//获取下位机端口配置信息
+	if (!getPortSetIni(&m_portsetinfo))
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("获取下位机端口配置信息失败!请重新设置！"));
+	}
 
 	m_balanceObj = NULL;
 	initBalanceCom();		//初始化天平串口
@@ -234,6 +241,8 @@ void WeightMethodDlg::initValveStatus()
 		setValveBtnBackColor(m_valveBtn[j], m_valveStatus[j]);
 	}
 }
+
+
 
 //在界面刷新天平数值
 void WeightMethodDlg::slotFreshBalanceValue(const QString& Str)
@@ -642,4 +651,74 @@ void WeightMethodDlg::setRegBtnBackColor(QPushButton *btn, bool status)
 	{
 		btn->setStyleSheet("");  
 	}
+}
+
+
+/*
+**	控制继电器开断
+*/
+void WeightMethodDlg::on_btnWaterIn_clicked() //进水阀
+{
+	m_nowPortIdx = VALVE_IN_IDX;
+	m_nowPortNo = m_portsetinfo.waterInNo;
+	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortIdx]);
+}
+
+void WeightMethodDlg::on_btnWaterOut_clicked() //出水阀
+{
+	m_nowPortIdx = VALVE_OUT_IDX;
+	m_nowPortNo = m_portsetinfo.waterOutNo;
+	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortIdx]);
+}
+
+void WeightMethodDlg::on_btnValveBig_clicked() //大流量阀
+{
+	m_nowPortIdx = VALVE_BIG_IDX;
+	m_nowPortNo = m_portsetinfo.bigNo;
+	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortIdx]);
+}
+
+void WeightMethodDlg::on_btnValveMiddle1_clicked() //中流一阀
+{
+	m_nowPortIdx = VALVE_MID1_IDX;
+	m_nowPortNo = m_portsetinfo.middle1No;
+	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortIdx]);
+
+}
+
+void WeightMethodDlg::on_btnValveMiddle2_clicked() //中流二阀
+{
+	m_nowPortIdx = VALVE_MID2_IDX;
+	m_nowPortNo = m_portsetinfo.middle2No;
+	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortIdx]);
+
+}
+
+void WeightMethodDlg::on_btnValveSmall_clicked() //小流量阀
+{
+	m_nowPortIdx = VALVE_SMALL_IDX;
+	m_nowPortNo = m_portsetinfo.smallNo;
+	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortIdx]);
+}
+
+
+/*
+** 启动水泵
+*/
+void WeightMethodDlg::on_btnWaterPumpStart_clicked()
+{
+	if (ui.spinBoxFrequency->value() <= 0)
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("请设置变频器频率！"));
+		ui.spinBoxFrequency->setFocus();
+	}
+	m_controlObj->makeRegulateSendBuf(m_portsetinfo.pumpNo, ui.spinBoxFrequency->value());
+}
+
+/*
+** 停止水泵
+*/
+void WeightMethodDlg::on_btnWaterPumpStop_clicked()
+{
+	m_controlObj->makeRegulateSendBuf(m_portsetinfo.pumpNo, 0);
 }

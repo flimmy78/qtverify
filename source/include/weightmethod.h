@@ -31,8 +31,7 @@
 #define VALVE_MID2_IDX	 3	//中二流量
 #define VALVE_SMALL_IDX	 4	//小流量
 #define VALVE_OUT_IDX	 5	//放水阀
-
-#define  VALVE_NUM	6	//实际用到的阀门总数
+#define VALVE_NUM	     6	//实际用到的阀门总数
 
 
 #include <QtGui/QWidget>
@@ -73,6 +72,7 @@ public:
 	int m_nowPortNo;	//当前控制阀门端口号
 	int m_nowPortIdx;	//当前控制阀门端口索引
 
+
 	//检定过程相关的控制参数 begin
 	bool m_continueVerify; //是否连续检定
 	bool m_resetZero;      //是否初值回零
@@ -88,13 +88,15 @@ public:
 	//检定过程相关的控制参数 end
 
 	ReadComConfig *m_readComConfig; //读串口设置
+	PORTSET_INI_STR m_portsetinfo; //端口配置
+
 	void initBalanceCom();     //天平串口
 	void initTemperatureCom(); //温度采集串口
 	void initControlCom();     //阀门控制串口
 	void initValveStatus();	   //初始化阀门状态
 
-	int isComAndPortNormal(); //串口、端口设置是否正常
-	int isWaterOutValveOpen(); //检查放水阀门是否打开
+	int isComAndPortNormal();   //串口、端口设置是否正常
+	int isWaterOutValveOpen();  //检查放水阀门是否打开
 	int readParaConfig();		//读参数配置文件
 	int isDataCollectNormal();	//检查数据采集是否正常（天平、温度、电磁流量计等）
 	int isAllMeterInVerifyStatus(); //判断热量表都已进入检定状态
@@ -118,11 +120,11 @@ public slots:
 	void startVerify();           //开始检定
 	int judgeBalanceCapacity();   //判断天平容量是否能够满足检定用量 连续检定
 	int judgeBalanceCapacitySingle(int order); //判断天平容量是否能够满足检定用量 不连续检定
-	int startVerifyFlowPoint(int order); //单个流量点的检定
+	int startVerifyFlowPoint(int order);       //单个流量点的检定
 	int openValve(int portno);    //打开控制阀
 	int closeValve(int portno);   //关闭控制阀
 
-	void slotFreshBalanceValue(const QString& Str); //刷新天平数值
+	void slotFreshBalanceValue(const QString& Str);     //刷新天平数值
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
 	void slotFreshFlow(); //计算流量
 
@@ -131,6 +133,16 @@ public slots:
 
 	void setValveBtnBackColor(QToolButton *btn, bool status); //设置阀门按钮背景色
 	void setRegBtnBackColor(QPushButton *btn, bool status);	  //设置调节阀按钮背景色
+
+	void on_btnWaterIn_clicked();      //进水阀
+	void on_btnWaterOut_clicked();     //放水阀
+	void on_btnValveBig_clicked();     //大流量阀
+	void on_btnValveMiddle1_clicked(); //中流一
+	void on_btnValveMiddle2_clicked(); //中流二
+	void on_btnValveSmall_clicked();   //小流量阀
+
+	void on_btnWaterPumpStart_clicked(); //启动水泵
+	void on_btnWaterPumpStop_clicked();  //停止水泵
 
 
 	void freshBigBalaceValue();   //刷新大天平数值 仅用于测试 模拟天平数值变化
