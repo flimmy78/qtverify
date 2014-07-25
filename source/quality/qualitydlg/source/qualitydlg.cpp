@@ -25,6 +25,8 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 	qDebug()<<"QualityDlg thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
 
+	m_paraset = NULL;
+
 	m_readComConfig = NULL;
 	m_readComConfig = new ReadComConfig();
 
@@ -69,9 +71,9 @@ void QualityDlg::closeEvent( QCloseEvent * event)
 {
 	qDebug()<<"^^^^^QualityDlg::closeEvent";
 
-	if (m_paraset)  //参数设置
+	if (m_paraset)
 	{
-		//delete m_paraset;
+		delete m_paraset;
 		m_paraset = NULL;
 	}
 
@@ -306,8 +308,15 @@ void QualityDlg::on_btnQueryStatus_clicked()
 //参数设置
 void QualityDlg::on_btnParaSet_clicked()
 {
-	m_paraset = NULL;
-	m_paraset = new ParaSetDlg();
+	if (NULL == m_paraset)
+	{
+		m_paraset = new ParaSetDlg();
+	}
+	else
+	{
+		delete m_paraset;
+		m_paraset = new ParaSetDlg();
+	}
 	m_paraset->show();
 }
 

@@ -45,9 +45,9 @@ ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 /**************************初始化settings*****************************************/
 	char filename[255];//配置文件的文件名
 #ifdef __unix
-	sprintf( filename, "%s/ini/qualityParaSet.ini", getenv( "RUNHOME" ) );
+	sprintf_s( filename, "%s/ini/qualityParaSet.ini", getenv( "RUNHOME" ) );
 #else
-	sprintf( filename, "%s\\ini\\qualityParaSet.ini", getenv( "RUNHOME" ) );
+	sprintf_s( filename, "%s\\ini\\qualityParaSet.ini", getenv( "RUNHOME" ) );
 #endif
 	settings = new QSettings(filename, QSettings::IniFormat);
 	settings->setIniCodec("GB2312");//解决向ini文件中写汉字乱码
@@ -67,6 +67,15 @@ ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 ParaSetDlg::~ParaSetDlg()
 {
 	qDebug()<<"!!! ParaSetDlg destructor";
+}
+
+void ParaSetDlg::on_btnExit_clicked()
+{
+	this->close();
+}
+
+void ParaSetDlg::closeEvent(QCloseEvent * event)
+{
 	if (m_meterStdPtr)
 	{
 		delete []m_meterStdPtr;
@@ -95,16 +104,6 @@ ParaSetDlg::~ParaSetDlg()
 		lastParams=NULL;
 	}
 	m_basedb.closedb();
-}
-
-void ParaSetDlg::on_btnExit_clicked()
-{
-	this->close();
-}
-
-void ParaSetDlg::closeEvent(QCloseEvent * event)
-{
-	delete this;
 }
 
 void ParaSetDlg::initUiData()
@@ -395,18 +394,18 @@ ParaSetReader::ParaSetReader()
 	char* runhome = getenv( "RUNHOME" );
 	//检定前的参数文件
 #ifdef __unix
-	sprintf( filename, "%s/ini/qualityParaSet.ini", runhome );
+	sprintf_s( filename, "%s/ini/qualityParaSet.ini", runhome );
 #else
-	sprintf( filename, "%s\\ini\\qualityParaSet.ini", runhome );
+	sprintf_s( filename, "%s\\ini\\qualityParaSet.ini", runhome );
 #endif
 
 	settings = new QSettings(filename, QSettings::IniFormat);
 	settings->setIniCodec("GB2312");//解决向ini文件中写汉字乱码
 	//端口号的配置文件
 #ifdef __unix
-	sprintf( filename, "%s/ini/portset.ini", runhome );
+	sprintf_s( filename, "%s/ini/portset.ini", runhome );
 #else
-	sprintf( filename, "%s\\ini\\portset.ini", runhome );
+	sprintf_s( filename, "%s\\ini\\portset.ini", runhome );
 #endif
 	portInfo = new QSettings(filename, QSettings::IniFormat);
 	portInfo->setIniCodec("GB2312");

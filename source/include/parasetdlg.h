@@ -9,7 +9,34 @@
 #include "qtexdb.h"
 #include "parasetdlg_global.h"
 #include "basedef.h"
-class PARASETDLG_EXPORT ParaSetReader;
+
+/*
+** 将配置文件中的所有字面信息保存至结构QParams_PTR中
+*/
+class PARASETDLG_EXPORT ParaSetReader
+{
+public:
+		
+	QParams_PTR params;
+	QMap<int,QString> valve_port_map;//建立阀门的字面值与其端口号的双射关系
+	ParaSetReader();
+	~ParaSetReader();
+
+	flow_point_info getFpBySeq(int i);//取出检定次序为i的流量点信息
+private:
+	QSettings *settings;
+	QSettings *portInfo;//阀门端口配置文件
+
+	void initValveMap();
+	void readParamValues();//读取配置文件所有的信息
+
+	void readHead();//读取配置文件的[head]组的信息
+	void readFlowPoints();//读取配置文件的[FlowPoint_i]组的信息
+	void readBool();//读取配置文件的[Bool]组的信息
+	void readOther();//读取配置文件的[Other]组的信息
+};
+
+
 class PARASETDLG_EXPORT ParaSetDlg : public QWidget
 {
 	Q_OBJECT
@@ -31,7 +58,7 @@ public:
 
 	void initUiData(); //从数据库读取记录，填充combox等
 	void closeEvent(QCloseEvent * event);
-	//void showEvent(QShowEvent *event);
+//  void showEvent(QShowEvent *event);
 public slots:
 	void on_btnExit_clicked();
 	void on_btnSave_clicked();
@@ -69,29 +96,4 @@ private slots:
 
 };
 
-/*
-** 将配置文件中的所有字面信息保存至结构QParams_PTR中
-*/
-class PARASETDLG_EXPORT ParaSetReader
-{
-public:
-		
-	QParams_PTR params;
-	QMap<int,QString> valve_port_map;//建立阀门的字面值与其端口号的双射关系
-	ParaSetReader();
-	~ParaSetReader();
-
-	flow_point_info getFpBySeq(int i);//取出检定次序为i的流量点信息
-private:
-	QSettings *settings;
-	QSettings *portInfo;//阀门端口配置文件
-
-	void initValveMap();
-	void readParamValues();//读取配置文件所有的信息
-
-	void readHead();//读取配置文件的[head]组的信息
-	void readFlowPoints();//读取配置文件的[FlowPoint_i]组的信息
-	void readBool();//读取配置文件的[Bool]组的信息
-	void readOther();//读取配置文件的[Other]组的信息
-};
 #endif // PARASETDLG_H
