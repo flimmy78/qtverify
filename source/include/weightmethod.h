@@ -77,10 +77,14 @@ public:
 	bool m_continueVerify; //是否连续检定
 	bool m_resetZero;      //是否初值回零
 	QMap<int, int> m_meterNumMap;//被检表最大个数，与规格相关
-	int m_meterNum;           //被检表最大个数
+	int m_rowNum;             //表格的行数（被检表的最大个数）
+	int m_meterNum;           //实际检表的个数
 	int m_flowPointNum;       //流量点的个数
 	float *m_meterStartValue; //被检表的初值
 	float *m_meterEndValue;   //被检表的终值
+	float *m_meterTemper;	  //被检表的温度
+	float *m_meterDensity;    //被检表的密度
+	float *m_meterStdValue;   //被检表的标准值
 	float m_balStartV;        //天平初值
 	float m_balEndV;          //天平终值
 	float m_pipeInTemper;     //入口温度

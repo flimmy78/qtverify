@@ -82,9 +82,14 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	m_continueVerify = true;
 	m_resetZero = false;
 	m_flowPointNum = 0;
+	m_rowNum = 0;
+	m_meterNum = 0;
 	m_exaustSecond = 45;
 	m_meterStartValue = NULL;
 	m_meterEndValue = NULL;
+	m_meterTemper = NULL;
+	m_meterDensity = NULL;
+	m_meterStdValue = NULL;
 	m_balStartV = 0;
 	m_balEndV = 0;
 	if (!readParaConfig())
@@ -288,13 +293,14 @@ int WeightMethodDlg::readParaConfig()
 
 
 	int standard = m_paraSetReader->params->m_stand; //表规格
-	m_meterNum = m_meterNumMap[standard]; //不同表规格对应的最大检表数量
-	m_meterStartValue = new float[m_meterNum]; 
-	memset(m_meterStartValue, 0, sizeof(float)*m_meterNum);
-	m_meterStartValue[0] = 111.111;
-	m_meterEndValue = new float[m_meterNum];
-	memset(m_meterEndValue, 0, sizeof(float)*m_meterNum);
-	ui.tableWidget->setRowCount(m_meterNum);
+	m_rowNum = m_meterNumMap[standard];      //不同表规格对应的最大检表数量
+	ui.tableWidget->setRowCount(m_rowNum);       //设置表格行数
+	QStringList vLabels;
+	for (int i=1; i<= m_rowNum; i++)
+	{
+		vLabels<<QString("表位号%1").arg(i);
+	}
+	ui.tableWidget->setVerticalHeaderLabels(vLabels);
 
 	return true;
 }
@@ -460,6 +466,34 @@ void WeightMethodDlg::on_btnNext_clicked()
 //开始检定
 void WeightMethodDlg::startVerify()
 {
+	//判断实际检表的个数 根据获取到的表号个数
+	for (int i=0; i<m_rowNum; i++)
+	{
+		if (NULL == ui.tableWidget->item(i, 0)) //"表号"单元格为空
+		{
+			continue;
+		}
+		//增加判断表号的合理性 ??
+ 		m_meterNum++;
+	}
+	if (m_meterNum <= 0)
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("请输入表号！"));
+		return;
+	}
+	m_meterStartValue = new float[m_meterNum]; //表初值 
+	memset(m_meterStartValue, 0, sizeof(float)*m_meterNum);
+	m_meterEndValue = new float[m_meterNum];   //表终值
+	memset(m_meterEndValue, 0, sizeof(float)*m_meterNum);
+	m_meterTemper = new float[m_meterNum];     //表温度
+	memset(m_meterTemper, 0, sizeof(float)*m_meterNum);
+	m_meterDensity = new float[m_meterNum];    //表密度
+	memset(m_meterDensity, 0, sizeof(float)*m_meterNum);
+	m_meterStdValue = new float[m_meterNum];    //被检表的标准值
+	memset(m_meterStdValue, 0, sizeof(float)*m_meterNum);
+
+
+
 	if (m_continueVerify) //连续检定
 	{
 		if (!judgeBalanceCapacity()) //判断天平容量是否能够满足检定用量

@@ -201,8 +201,8 @@ public:
         gridLayout_4->addWidget(btnWaterPumpStop, 2, 0, 1, 1);
 
         tableWidget = new QTableWidget(tab1);
-        if (tableWidget->columnCount() < 6)
-            tableWidget->setColumnCount(6);
+        if (tableWidget->columnCount() < 5)
+            tableWidget->setColumnCount(5);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
         QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
@@ -213,8 +213,6 @@ public:
         tableWidget->setHorizontalHeaderItem(3, __qtablewidgetitem3);
         QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(4, __qtablewidgetitem4);
-        QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(5, __qtablewidgetitem5);
         tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
         tableWidget->setGeometry(QRect(20, 20, 881, 581));
         btnExhaust = new QPushButton(tab1);
@@ -427,17 +425,15 @@ public:
         btnWaterPumpStart->setText(QApplication::translate("WeightMethodClass", "\345\220\257\345\212\250\346\260\264\346\263\265", 0, QApplication::UnicodeUTF8));
         btnWaterPumpStop->setText(QApplication::translate("WeightMethodClass", "\345\205\263\351\227\255\346\260\264\346\263\265", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QApplication::translate("WeightMethodClass", "\350\241\250\344\275\215\345\217\267", 0, QApplication::UnicodeUTF8));
+        ___qtablewidgetitem->setText(QApplication::translate("WeightMethodClass", "\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QApplication::translate("WeightMethodClass", "\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
+        ___qtablewidgetitem1->setText(QApplication::translate("WeightMethodClass", "\346\265\201\351\207\217(m\302\263/h)", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem2 = tableWidget->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QApplication::translate("WeightMethodClass", "\346\265\201\351\207\217(m\302\263/h)", 0, QApplication::UnicodeUTF8));
+        ___qtablewidgetitem2->setText(QApplication::translate("WeightMethodClass", "\345\210\235\345\200\274(L)", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem3 = tableWidget->horizontalHeaderItem(3);
-        ___qtablewidgetitem3->setText(QApplication::translate("WeightMethodClass", "\345\210\235\345\200\274(L)", 0, QApplication::UnicodeUTF8));
+        ___qtablewidgetitem3->setText(QApplication::translate("WeightMethodClass", "\347\273\210\345\200\274(L)", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem4 = tableWidget->horizontalHeaderItem(4);
-        ___qtablewidgetitem4->setText(QApplication::translate("WeightMethodClass", "\347\273\210\345\200\274(L)", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem5 = tableWidget->horizontalHeaderItem(5);
-        ___qtablewidgetitem5->setText(QApplication::translate("WeightMethodClass", "\350\257\257\345\267\256(%)", 0, QApplication::UnicodeUTF8));
+        ___qtablewidgetitem4->setText(QApplication::translate("WeightMethodClass", "\350\257\257\345\267\256(%)", 0, QApplication::UnicodeUTF8));
         btnExhaust->setText(QApplication::translate("WeightMethodClass", "\346\216\222\346\260\224", 0, QApplication::UnicodeUTF8));
         btnStart->setText(QApplication::translate("WeightMethodClass", "\345\274\200\345\247\213", 0, QApplication::UnicodeUTF8));
         btnStop->setText(QApplication::translate("WeightMethodClass", "\347\273\210\346\255\242\346\243\200\346\265\213", 0, QApplication::UnicodeUTF8));
