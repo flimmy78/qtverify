@@ -44,12 +44,12 @@ public:
     QHBoxLayout *horizontalLayout;
     QLabel *label_13;
     QSpinBox *spinBoxFrequency;
-    QToolButton *toolButtonWaterIn;
-    QToolButton *toolButtonWaterOut;
-    QToolButton *toolButtonBig;
-    QToolButton *toolButtonMiddle1;
-    QToolButton *toolButtonMiddle2;
-    QToolButton *toolButtonSmall;
+    QToolButton *btnWaterIn;
+    QToolButton *btnWaterOut;
+    QToolButton *btnValveBig;
+    QToolButton *btnValveMiddle1;
+    QToolButton *btnValveMiddle2;
+    QToolButton *btnValveSmall;
     QToolButton *toolButtonStartPump;
     QToolButton *toolButtonStopPump;
     QTableWidget *tableWidget;
@@ -141,50 +141,50 @@ public:
 
         gridLayout_4->addLayout(horizontalLayout, 0, 0, 1, 1);
 
-        toolButtonWaterIn = new QToolButton(groupBox_2);
-        toolButtonWaterIn->setObjectName(QString::fromUtf8("toolButtonWaterIn"));
+        btnWaterIn = new QToolButton(groupBox_2);
+        btnWaterIn->setObjectName(QString::fromUtf8("btnWaterIn"));
         QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy3.setHorizontalStretch(0);
         sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(toolButtonWaterIn->sizePolicy().hasHeightForWidth());
-        toolButtonWaterIn->setSizePolicy(sizePolicy3);
+        sizePolicy3.setHeightForWidth(btnWaterIn->sizePolicy().hasHeightForWidth());
+        btnWaterIn->setSizePolicy(sizePolicy3);
 
-        gridLayout_4->addWidget(toolButtonWaterIn, 0, 1, 3, 1);
+        gridLayout_4->addWidget(btnWaterIn, 0, 1, 3, 1);
 
-        toolButtonWaterOut = new QToolButton(groupBox_2);
-        toolButtonWaterOut->setObjectName(QString::fromUtf8("toolButtonWaterOut"));
-        sizePolicy3.setHeightForWidth(toolButtonWaterOut->sizePolicy().hasHeightForWidth());
-        toolButtonWaterOut->setSizePolicy(sizePolicy3);
+        btnWaterOut = new QToolButton(groupBox_2);
+        btnWaterOut->setObjectName(QString::fromUtf8("btnWaterOut"));
+        sizePolicy3.setHeightForWidth(btnWaterOut->sizePolicy().hasHeightForWidth());
+        btnWaterOut->setSizePolicy(sizePolicy3);
 
-        gridLayout_4->addWidget(toolButtonWaterOut, 0, 2, 3, 1);
+        gridLayout_4->addWidget(btnWaterOut, 0, 2, 3, 1);
 
-        toolButtonBig = new QToolButton(groupBox_2);
-        toolButtonBig->setObjectName(QString::fromUtf8("toolButtonBig"));
-        sizePolicy3.setHeightForWidth(toolButtonBig->sizePolicy().hasHeightForWidth());
-        toolButtonBig->setSizePolicy(sizePolicy3);
+        btnValveBig = new QToolButton(groupBox_2);
+        btnValveBig->setObjectName(QString::fromUtf8("btnValveBig"));
+        sizePolicy3.setHeightForWidth(btnValveBig->sizePolicy().hasHeightForWidth());
+        btnValveBig->setSizePolicy(sizePolicy3);
 
-        gridLayout_4->addWidget(toolButtonBig, 0, 3, 3, 1);
+        gridLayout_4->addWidget(btnValveBig, 0, 3, 3, 1);
 
-        toolButtonMiddle1 = new QToolButton(groupBox_2);
-        toolButtonMiddle1->setObjectName(QString::fromUtf8("toolButtonMiddle1"));
-        sizePolicy3.setHeightForWidth(toolButtonMiddle1->sizePolicy().hasHeightForWidth());
-        toolButtonMiddle1->setSizePolicy(sizePolicy3);
+        btnValveMiddle1 = new QToolButton(groupBox_2);
+        btnValveMiddle1->setObjectName(QString::fromUtf8("btnValveMiddle1"));
+        sizePolicy3.setHeightForWidth(btnValveMiddle1->sizePolicy().hasHeightForWidth());
+        btnValveMiddle1->setSizePolicy(sizePolicy3);
 
-        gridLayout_4->addWidget(toolButtonMiddle1, 0, 4, 3, 1);
+        gridLayout_4->addWidget(btnValveMiddle1, 0, 4, 3, 1);
 
-        toolButtonMiddle2 = new QToolButton(groupBox_2);
-        toolButtonMiddle2->setObjectName(QString::fromUtf8("toolButtonMiddle2"));
-        sizePolicy3.setHeightForWidth(toolButtonMiddle2->sizePolicy().hasHeightForWidth());
-        toolButtonMiddle2->setSizePolicy(sizePolicy3);
+        btnValveMiddle2 = new QToolButton(groupBox_2);
+        btnValveMiddle2->setObjectName(QString::fromUtf8("btnValveMiddle2"));
+        sizePolicy3.setHeightForWidth(btnValveMiddle2->sizePolicy().hasHeightForWidth());
+        btnValveMiddle2->setSizePolicy(sizePolicy3);
 
-        gridLayout_4->addWidget(toolButtonMiddle2, 0, 5, 3, 1);
+        gridLayout_4->addWidget(btnValveMiddle2, 0, 5, 3, 1);
 
-        toolButtonSmall = new QToolButton(groupBox_2);
-        toolButtonSmall->setObjectName(QString::fromUtf8("toolButtonSmall"));
-        sizePolicy3.setHeightForWidth(toolButtonSmall->sizePolicy().hasHeightForWidth());
-        toolButtonSmall->setSizePolicy(sizePolicy3);
+        btnValveSmall = new QToolButton(groupBox_2);
+        btnValveSmall->setObjectName(QString::fromUtf8("btnValveSmall"));
+        sizePolicy3.setHeightForWidth(btnValveSmall->sizePolicy().hasHeightForWidth());
+        btnValveSmall->setSizePolicy(sizePolicy3);
 
-        gridLayout_4->addWidget(toolButtonSmall, 0, 6, 3, 1);
+        gridLayout_4->addWidget(btnValveSmall, 0, 6, 3, 1);
 
         toolButtonStartPump = new QToolButton(groupBox_2);
         toolButtonStartPump->setObjectName(QString::fromUtf8("toolButtonStartPump"));
@@ -402,25 +402,25 @@ public:
         label_2->setText(QApplication::translate("WeightMethodClass", "\345\236\213\345\217\267", 0, QApplication::UnicodeUTF8));
         groupBox_2->setTitle(QApplication::translate("WeightMethodClass", "\351\230\200\351\227\250\343\200\201\346\260\264\346\263\265\343\200\201\345\217\230\351\242\221\345\231\250\346\216\247\345\210\266", 0, QApplication::UnicodeUTF8));
         label_13->setText(QApplication::translate("WeightMethodClass", "\351\242\221\347\216\207", 0, QApplication::UnicodeUTF8));
-        toolButtonWaterIn->setText(QApplication::translate("WeightMethodClass", "\350\277\233\n"
+        btnWaterIn->setText(QApplication::translate("WeightMethodClass", "\350\277\233\n"
 "\346\260\264\n"
 "\351\230\200", 0, QApplication::UnicodeUTF8));
-        toolButtonWaterOut->setText(QApplication::translate("WeightMethodClass", "\346\224\276\n"
+        btnWaterOut->setText(QApplication::translate("WeightMethodClass", "\346\224\276\n"
 "\346\260\264\n"
 "\351\230\200", 0, QApplication::UnicodeUTF8));
-        toolButtonBig->setText(QApplication::translate("WeightMethodClass", "\345\244\247\n"
+        btnValveBig->setText(QApplication::translate("WeightMethodClass", "\345\244\247\n"
 "\346\265\201\n"
 "\351\207\217\n"
 "\351\230\200", 0, QApplication::UnicodeUTF8));
-        toolButtonMiddle1->setText(QApplication::translate("WeightMethodClass", "\344\270\255\n"
+        btnValveMiddle1->setText(QApplication::translate("WeightMethodClass", "\344\270\255\n"
 "\346\265\201\n"
 "\344\270\200\n"
 "\351\230\200", 0, QApplication::UnicodeUTF8));
-        toolButtonMiddle2->setText(QApplication::translate("WeightMethodClass", "\344\270\255\n"
+        btnValveMiddle2->setText(QApplication::translate("WeightMethodClass", "\344\270\255\n"
 "\346\265\201\n"
 "\344\272\214\n"
 "\351\230\200", 0, QApplication::UnicodeUTF8));
-        toolButtonSmall->setText(QApplication::translate("WeightMethodClass", "\345\260\217\n"
+        btnValveSmall->setText(QApplication::translate("WeightMethodClass", "\345\260\217\n"
 "\346\265\201\n"
 "\351\207\217\n"
 "\351\230\200", 0, QApplication::UnicodeUTF8));

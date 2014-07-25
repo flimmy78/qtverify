@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
 // 	LoginDialog login;
 // 	if (login.exec() == QDialog::Accepted)
 // 	{
-		g_mainform->showMaximized();
+		g_mainform->show();//showMaximized();
 		return app.exec();
 // 	}
 // 	else

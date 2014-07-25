@@ -16,7 +16,24 @@
 #endif
 
 #define BALANCE_START_VALUE		2 //天平初值
+
 #define TIMEOUT_TEMPER		500 //每0.5秒钟请求一次温度值
+
+#define VALVE_OPEN		true	//阀门打开状态
+#define VALVE_CLOSE		false   //阀门关闭状态
+
+/*
+**	阀门位置索引
+*/
+#define VALVE_IN_IDX	 0	//进水阀
+#define VALVE_BIG_IDX	 1	//大流量阀
+#define VALVE_MID1_IDX	 2	//中一流量
+#define VALVE_MID2_IDX	 3	//中二流量
+#define VALVE_SMALL_IDX	 4	//小流量
+#define VALVE_OUT_IDX	 5	//放水阀
+
+#define  VALVE_NUM	6	//实际用到的阀门总数
+
 
 #include <QtGui/QWidget>
 
@@ -49,6 +66,13 @@ public:
 	TempComObject *m_tempObj;
 	QTimer *m_tempTimer;
 
+	ComThread m_valveThread;   //阀门控制线程
+	ControlComObject *m_controlObj;
+	QMap<int, bool> m_valveStatus;
+	QMap<int, QToolButton*> m_valveBtn;	
+	int m_nowPortNo;	//当前控制阀门端口号
+	int m_nowPortIdx;	//当前控制阀门端口索引
+
 	//检定过程相关的控制参数 begin
 	bool m_continueVerify; //是否连续检定
 	bool m_resetZero;      //是否初值回零
@@ -66,6 +90,8 @@ public:
 	ReadComConfig *m_readComConfig; //读串口设置
 	void initBalanceCom();     //天平串口
 	void initTemperatureCom(); //温度采集串口
+	void initControlCom();     //阀门控制串口
+	void initValveStatus();	   //初始化阀门状态
 
 	int isComAndPortNormal(); //串口、端口设置是否正常
 	int isWaterOutValveOpen(); //检查放水阀门是否打开
@@ -99,6 +125,13 @@ public slots:
 	void slotFreshBalanceValue(const QString& Str); //刷新天平数值
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
 	void slotFreshFlow(); //计算流量
+
+	void slotSetValveBtnStatus(); //继电器返回成功对应的槽函数
+	void slotSetRegulateOk();     //调节阀返回成功对应的槽函数
+
+	void setValveBtnBackColor(QToolButton *btn, bool status); //设置阀门按钮背景色
+	void setRegBtnBackColor(QPushButton *btn, bool status);	  //设置调节阀按钮背景色
+
 
 	void freshBigBalaceValue();   //刷新大天平数值 仅用于测试 模拟天平数值变化
 

@@ -51,6 +51,9 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	m_tempTimer = NULL;
 	initTemperatureCom();	//初始化温度采集串口
 
+	m_controlObj = NULL;
+	initControlCom();		//初始化控制串口
+	initValveStatus();      //初始化阀门状态
 
 /*	for (int i=0; i<4; i++)
 	{
@@ -102,9 +105,9 @@ void WeightMethodDlg::closeEvent( QCloseEvent * event)
 {
 	qDebug()<<"^^^^^WeightMethodDlg::closeEvent";
 
-	if (NULL == m_paraSetReader) //读检定参数
+	if (m_paraSetReader) //读检定参数
 	{
-		delete []m_paraSetReader;
+		delete m_paraSetReader;
 		m_paraSetReader = NULL;
 	}
 
@@ -137,6 +140,14 @@ void WeightMethodDlg::closeEvent( QCloseEvent * event)
 		m_balanceObj = NULL;
 
 		m_balanceThread.exit();
+	}
+
+	if (m_controlObj)  //阀门控制
+	{
+		delete m_controlObj;
+		m_controlObj = NULL;
+
+		m_valveThread.exit();
 	}
 
 }
@@ -179,6 +190,49 @@ void WeightMethodDlg::initTemperatureCom()
 // 	connect(m_tempTimer, SIGNAL(timeout()), this, SLOT(slotFreshFlow()));
 	
 	m_tempTimer->start(TIMEOUT_TEMPER); //周期请求温度
+}
+
+//控制板通讯串口
+void WeightMethodDlg::initControlCom()
+{
+	ComInfoStruct valveStruct = m_readComConfig->ReadValveConfig();
+	m_controlObj = new ControlComObject();
+	m_controlObj->moveToThread(&m_valveThread);
+	m_valveThread.start();
+	m_controlObj->openControlCom(&valveStruct);
+
+	connect(m_controlObj, SIGNAL(controlRelayIsOk()), this, SLOT(slotSetValveBtnStatus()));
+	connect(m_controlObj, SIGNAL(controlRegulateIsOk()), this, SLOT(slotSetRegulateOk()));
+
+	//天平数值从控制板获取
+// 	connect(m_controlObj, SIGNAL(controlGetBalanceValueIsOk(const QString&)), this, SLOT(slotFreshBalanceValue(const QString &)));
+}
+
+/*
+** 初始化阀门状态
+** 需要改进得更加灵活
+*/
+void WeightMethodDlg::initValveStatus()
+{
+	m_nowPortNo = 0;
+	m_nowPortIdx = 0;
+
+	for(int i=0; i<VALVE_NUM; i++)
+	{
+		m_valveStatus[i] = VALVE_CLOSE; //初始化 全部阀门状态为关闭
+	}
+
+	m_valveBtn[VALVE_IN_IDX] = ui.btnWaterIn;
+	m_valveBtn[VALVE_BIG_IDX] = ui.btnValveBig;
+	m_valveBtn[VALVE_MID1_IDX] = ui.btnValveMiddle1;
+	m_valveBtn[VALVE_MID2_IDX] = ui.btnValveMiddle2;
+	m_valveBtn[VALVE_SMALL_IDX] = ui.btnValveSmall;
+	m_valveBtn[VALVE_OUT_IDX] = ui.btnWaterOut;
+
+	for(int j=0; j<VALVE_NUM; j++)
+	{
+		setValveBtnBackColor(m_valveBtn[j], m_valveStatus[j]);
+	}
 }
 
 //在界面刷新天平数值
@@ -536,4 +590,56 @@ int WeightMethodDlg::openValve(int portno)
 int WeightMethodDlg::closeValve(int portno)
 {
 	return true;
+}
+
+//响应阀门状态设置成功
+void WeightMethodDlg::slotSetValveBtnStatus()
+{
+	m_valveStatus[m_nowPortIdx] = !m_valveStatus[m_nowPortIdx];
+	setValveBtnBackColor(m_valveBtn[m_nowPortIdx], m_valveStatus[m_nowPortIdx]);
+}
+
+//响应调节阀调节成功
+void WeightMethodDlg::slotSetRegulateOk()
+{
+// 	setRegBtnBackColor(m_regBtn[m_nowRegIdx], true);
+}
+
+
+//设置阀门按钮背景色
+void WeightMethodDlg::setValveBtnBackColor(QToolButton *btn, bool status)
+{
+	if (NULL == btn)
+	{
+		return;
+	}
+	if (status) //阀门打开 绿色
+	{
+		btn->setStyleSheet("background:green;border:0px;");  
+// 		btn->setIcon(QIcon("open.png"));
+	}
+	else //阀门关闭 红色
+	{
+		btn->setStyleSheet( "background-color:rgb(160,0,0);border:0px;"
+			"border-radius: 10px;"
+		);
+// 		btn->setIcon(QIcon("close.png"));
+	}
+}
+
+//设置调节阀按钮背景色
+void WeightMethodDlg::setRegBtnBackColor(QPushButton *btn, bool status)
+{
+	if (NULL == btn)
+	{
+		return;
+	}
+	if (status) //调节成功
+	{
+		btn->setStyleSheet("background:blue;border:0px;");  
+	}
+	else //调节失败
+	{
+		btn->setStyleSheet("");  
+	}
 }
