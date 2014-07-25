@@ -410,8 +410,8 @@ ParaSetReader::ParaSetReader()
 	portInfo = new QSettings(filename, QSettings::IniFormat);
 	portInfo->setIniCodec("GB2312");
 
-	params =new Quality_Params;
-	memset(params, 0, sizeof(QParams_PTR));
+	params =new Quality_Params_STR;
+	memset(params, 0, sizeof(Quality_Params_PTR));
 	initValveMap();
 	readParamValues();
 }
@@ -530,7 +530,7 @@ void ParaSetReader::readOther()
 /*
 *得到检测序列号为i的流量点信息,i从1开始？
 */
-flow_point_info ParaSetReader::getFpBySeq(int i)
+Flow_Point_Info ParaSetReader::getFpBySeq(int i)
 {
 	//遍历各有效流量点; 如果当前流量点的检定次序为i, 则返回此流量点信息
 	for (int j=0;j<params->total_fp;j++)

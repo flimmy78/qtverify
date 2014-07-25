@@ -29,7 +29,7 @@ public:
 	CMasterSlave(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~CMasterSlave();
 
-	MASTERSLAVE_INI_STR m_masterslaveIni; //主机-从机配置
+	MasterSlave_Ini_STR m_masterslaveIni; //主机-从机配置
 	QSettings *m_settings;
 
 public slots:

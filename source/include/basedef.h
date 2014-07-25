@@ -11,7 +11,7 @@
 
 
 #ifndef VERIFY_POINTS
-#define VERIFY_POINTS	4//检定流量点的数量, 一般为4个(大, 中一, 中二, 小), 但客户也可能需要更多
+#define VERIFY_POINTS	4  //检定流量点的数量, 一般为4个(大, 中一, 中二, 小), 但客户也可能需要更多
 #endif
 
 #ifndef SEP
@@ -21,7 +21,7 @@
 /*
 **      FUNCTION -- 获取下位机端口设置信息(portset.ini文件)
 */
-class PORTSET_INI_STR{
+class PortSet_Ini_STR{
 public:
     int     waterInNo;                   //
     int     bigNo;					 //
@@ -34,22 +34,22 @@ public:
 	int		regflow3No;
 	int     pumpNo;
 };
-typedef PORTSET_INI_STR* PORTSET_INI_PTR;
+typedef PortSet_Ini_STR* PortSet_Ini_PTR;
 
 /*
 **      FUNCTION -- 获取质量法参数设置信息(qualityParaSet.ini文件)
 */
-class PARASET_INI_STR{
+class ParaSet_Ini_STR{
 public:
     char     meterstandard[8];               //表规格
     char     metertype[24];					 //表类型
 };
-typedef PARASET_INI_STR* PARASET_INI_PTR;
+typedef ParaSet_Ini_STR* ParaSet_Ini_PTR;
 
 /*
 **      FUNCTION -- 获取主机-从机设置信息(masterslaveset.ini文件)
 */
-class MASTERSLAVE_INI_STR{
+class MasterSlave_Ini_STR{
 public:
     int     netmode;				//0:本地模式；1:网络模式
     int     hostflag;				//0:从机；1:主机
@@ -64,7 +64,7 @@ public:
 	char	slave4name[20];			//从机4 机器名
 	char	slave4IP[20];			//从机4	IP地址
 };
-typedef MASTERSLAVE_INI_STR* MASTERSLAVE_INI_PTR;
+typedef MasterSlave_Ini_STR* MasterSlave_Ini_PTR;
 
 /*
 **      FUNCTION -- 热量表规格(DN15,DN20,DN25等) 
@@ -103,7 +103,7 @@ typedef Manufacture_STR* Manufacture_PTR;
 * i 是界面上预先定义的控件顺序
 */
 
-struct flow_point_info_str
+struct Flow_Point_Info_STR
 {
 	qint64 fp_timestamp;//第i流量点的时间戳
 	float fp_upperlmt;//第i流量点的上限流量值(2.7m³/h)
@@ -113,12 +113,12 @@ struct flow_point_info_str
 	int fp_valve;//第i流量点的控制阀(大)
 	int fp_seq;//第i流量点的检定次序(3)
 };
-typedef struct flow_point_info_str flow_point_info;
+typedef struct Flow_Point_Info_STR Flow_Point_Info;
 
 /*
 **      质量检定法用到的相关参数值
 */
-class Quality_Params
+class Quality_Params_STR
 {
 public:
 	qint64 file_timestamp;//配置文件的时间戳
@@ -134,7 +134,7 @@ public:
 	int m_pickcode;//采集代码
 	int m_nflowpnt;//被检表的常用流量
 
-	flow_point_info fp_info[VERIFY_POINTS];//第i流量点信息
+	Flow_Point_Info fp_info[VERIFY_POINTS];//第i流量点信息
 	int total_fp;//有效流量点的数目
 
 	//检定时的控制参数, 全部为布尔型参数, 故前缀以bo_开头
@@ -151,6 +151,6 @@ public:
 	float sc_thermal;//热量安全系数
 	int ex_time;//排气时间
 };
-typedef Quality_Params* QParams_PTR;
+typedef Quality_Params_STR* Quality_Params_PTR;
 
 #endif	//BASEDEF_H

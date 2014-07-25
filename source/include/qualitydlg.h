@@ -82,8 +82,8 @@ public:
 	float m_flow1;
 	float m_flow2;
 
-	PORTSET_INI_STR m_portsetinfo; //端口配置
-	PARASET_INI_STR m_parasetinfo; //参数设置(质量法-分量检测)
+	PortSet_Ini_STR m_portsetinfo; //端口配置
+	ParaSet_Ini_STR m_parasetinfo; //参数设置(质量法-分量检测)
 
 	void closeEvent(QCloseEvent * event);
 	void initTemperatureCom(); //温度采集串口

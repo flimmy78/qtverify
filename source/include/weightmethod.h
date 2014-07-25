@@ -49,6 +49,8 @@ public:
 	WeightMethodDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~WeightMethodDlg();
 
+	CBaseExdb m_db;
+
 	ParaSetReader *m_paraSetReader;
 
 	QTimer *m_exaustTimer; //排气定时器
@@ -92,7 +94,7 @@ public:
 	//检定过程相关的控制参数 end
 
 	ReadComConfig *m_readComConfig; //读串口设置
-	PORTSET_INI_STR m_portsetinfo; //端口配置
+	PortSet_Ini_STR m_portsetinfo; //端口配置
 
 	void initBalanceCom();     //天平串口
 	void initTemperatureCom(); //温度采集串口

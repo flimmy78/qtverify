@@ -32,15 +32,17 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	connect(ui.tabWidget,SIGNAL(tabCloseRequested(int)),this,SLOT(removeSubTab(int)));
 
 	/////////////////////////////////////////////////////////
-	ui.lcdNumberInTemper->display("27.8");
-	QString inTemper = QString("%1").arg(ui.lcdNumberInTemper->value(), 4);
-	float iii = inTemper.toFloat();
-
 	m_balTimer = new QTimer(this);
 	connect(m_balTimer, SIGNAL(timeout()), this, SLOT(freshBigBalaceValue()));
 	m_balTimer->start(200); //模拟天平每200毫秒更新一次
 	m_balValue = 0.0;
 	m_tempValue = 20.0;
+	/////////////////////////////////////////////////////////
+
+	if (!m_db.startdb())
+	{
+		qFatal("打开数据库失败!");
+	}
 
 	m_readComConfig = NULL; //读串口设置接口
 	m_readComConfig = new ReadComConfig();
@@ -162,6 +164,7 @@ void WeightMethodDlg::closeEvent( QCloseEvent * event)
 		m_valveThread.exit();
 	}
 
+	m_db.closedb();
 }
 
 //关闭标签页
@@ -466,7 +469,7 @@ void WeightMethodDlg::on_btnNext_clicked()
 //开始检定
 void WeightMethodDlg::startVerify()
 {
-	//判断实际检表的个数 根据获取到的表号个数
+	//判断实际检表的个数(根据获取到的表号个数)
 	for (int i=0; i<m_rowNum; i++)
 	{
 		if (NULL == ui.tableWidget->item(i, 0)) //"表号"单元格为空

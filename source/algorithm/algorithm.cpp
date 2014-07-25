@@ -19,7 +19,7 @@
 #include "commondefine.h"
 
 //获取控制板的端口号配置信息
-int getPortSetIni(PORTSET_INI_PTR info)
+int getPortSetIni(PortSet_Ini_PTR info)
 {
 	char filename[FILENAME_LENGTH];
 	memset(filename, 0, sizeof(char)*FILENAME_LENGTH);
@@ -53,7 +53,7 @@ int getPortSetIni(PORTSET_INI_PTR info)
 }
 
 //获取参数设置(质量法-分量检测)
-int getParaSetIni(PARASET_INI_PTR info)
+int getParaSetIni(ParaSet_Ini_PTR info)
 {
 	char filename[FILENAME_LENGTH];
 	memset(filename, 0, sizeof(char)*FILENAME_LENGTH);
@@ -78,7 +78,7 @@ int getParaSetIni(PARASET_INI_PTR info)
 }
 
 //获取主机-从机设置信息
-int getMasterSlaveIni(MASTERSLAVE_INI_PTR info)
+int getMasterSlaveIni(MasterSlave_Ini_PTR info)
 {
 	char filename[FILENAME_LENGTH];
 	memset(filename, 0, sizeof(char)*FILENAME_LENGTH);
