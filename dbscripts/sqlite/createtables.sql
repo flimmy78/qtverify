@@ -146,11 +146,11 @@ F_VerifyUnit smallint,              --送检单位，外键(T_Verify_Unit)
 F_Grade smallint,                   --计量等级（1,2,3）
 F_VerifyPerson smallint,            --检定员，外键(T_User_Def_Tab)
 F_CheckPerson smallint,             --核验员，外键(T_User_Def_Tab)
-F_VerifyDate	date,               --检定日期(20140522)
+F_VerifyDate	interger,             --检定日期(20140522)
 F_EnvTemper float,                  --环境温度，单位℃
 F_EnvHumidity float,                --环境湿度
 F_AirPressure float,                --大气压力
-F_ValidDate	date,                   --检表结果有效期(生产型不需要)
-F_RecordNumber smallint             --检定记录证书编号(每块表每次检定（多个流量点共用）形成一个编号)
+F_ValidDate	interger,               --检表结果有效期(生产型不需要)
+F_RecordNumber interger             --检定记录证书编号(每块表每次检定（多个流量点共用）形成一个编号)
 );
 create unique index uk_T_Verify_Record on T_Verify_Record (F_MeterNo, F_TimeStamp, F_FlowPointIdx);

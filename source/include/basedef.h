@@ -1,6 +1,7 @@
 ﻿#ifndef BASEDEF_H
 #define BASEDEF_H
 
+#include <intsafe.h>
 
 /************************************************************************/
 /* 变量长度宏定义                                                       */
@@ -99,10 +100,56 @@ public:
 typedef Manufacture_STR* Manufacture_PTR;
 
 /*
+**      FUNCTION -- 检定结果记录表（质量法）
+*/
+class Record_Quality_STR{
+public:
+    UINT32  id;                   
+	UINT32	timestamp;
+	UINT16  meterNo;
+	UINT16  flowPointIdx;
+	float   flowPoint;         //流量(m3/h)
+	UINT16  totalFlag;         //总量检定标志(1:总量检定  0:分量检定)
+	float	meterValue0;
+	float	meterValue1;
+	float	meterDeltaV;
+	float	balWeight0;
+	float   balWeight1;
+	float   balDeltaW;
+	float	inSlotTemper;	//恒温槽入口温度
+	float	outSlotTemper;	//恒温槽出口温度
+	float	pipeTemper;		//管路温度
+	float	density;		//密度(kg/L)
+	float	stdValue;		//经过修正的标准值
+	float	dispError;		//示值误差
+	float	stdError;		//要求误差(合格标准)
+	UINT16  result;			//检定结果(1:合格  0:不合格)
+	UINT16	meterPosNo;		//表位号
+	UINT16	model;			//表型号
+	UINT16	standard;		//表规格
+	UINT16	meterType;		//表类型
+	UINT16	manufacture;	//制造单位
+	UINT16	verifyUnit;		//送检单位
+	UINT16	grade;			//计量等级
+	UINT16	verifyPerson;	//检定员
+	UINT16	checkPerson;	//核验员
+	UINT32	date;			//检定日期（20140725）
+	float	envTemper;		//环境温度
+	float	envHumidity;	//环境湿度
+	float	airPress;		//大气压力
+	UINT32	validDate;		//检定结果有效期(20150725)
+	UINT32	recordNumber;	//检定记录证书编号
+};
+typedef Record_Quality_STR* Record_Quality_PTR;
+
+
+
+
+
+/*
 * 检定流量点信息; fp为flow point的头字母
 * i 是界面上预先定义的控件顺序
 */
-
 struct Flow_Point_Info_STR
 {
 	qint64 fp_timestamp;//第i流量点的时间戳

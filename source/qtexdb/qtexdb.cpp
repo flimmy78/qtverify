@@ -169,3 +169,9 @@ int CBaseExdb::getManufacture(int& num, Manufacture_PTR &ptr)
 
 	return true;
 }
+
+int CBaseExdb::insertVerfiyRecords(int num, Record_Quality_PTR ptr)
+{
+
+	return true;
+}
