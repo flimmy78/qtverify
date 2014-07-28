@@ -362,7 +362,7 @@ void QualityDlg::setValveBtnBackColor(QPushButton *btn, bool status)
 	}
 	if (status) //阀门打开 绿色
 	{
-		btn->setStyleSheet("background:green;border:0px;");  
+		btn->setStyleSheet("background:green;border:0px;"); 
 		btn->setIcon(QIcon("open.png"));
 	}
 	else //阀门关闭 红色

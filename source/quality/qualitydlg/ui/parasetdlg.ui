@@ -1012,22 +1012,17 @@
        <widget class="QComboBox" name="cmbFlow">
         <item>
          <property name="text">
+          <string>1.5</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
           <string>2.5</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>0.75</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>0.25</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>0.05</string>
+          <string>3.5</string>
          </property>
         </item>
        </widget>

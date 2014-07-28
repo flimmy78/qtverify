@@ -100,6 +100,23 @@ public:
 typedef Manufacture_STR* Manufacture_PTR;
 
 /*
+**      FUNCTION -- 各规格热表的默认检定参数()
+*/
+class DftDbInfo_STR
+{
+public:
+	int id;//主键
+	int stand_id;//外键,表规格的id
+	float n_flow;//常用流量点
+	float upper_flow;//检定流量点
+	float v_flow;//检定量
+	float v_quan;//水泵频率
+	float pump_freq;//水泵频率
+	int vale_num;//阀门编号
+	int seq;//检测序列号
+};
+typedef DftDbInfo_STR* DftDbInfo_PTR;
+/*
 **      FUNCTION -- 检定结果记录表（质量法）
 */
 class Record_Quality_STR{

@@ -30,6 +30,7 @@ ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 {
 	qDebug()<<"ParaSetDlg thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
+	cBoxData_inited = false;
 /**************************初始化数据库*****************************************/
 	if (!m_basedb.startdb())
 	{
@@ -106,6 +107,35 @@ void ParaSetDlg::closeEvent(QCloseEvent * event)
 	m_basedb.closedb();
 }
 
+void ParaSetDlg::on_cmbStandard_currentIndexChanged()
+{
+	qDebug()<<"on_cmbStandard_currentIndexChanged is called; currentIndex is :"<< ui.cmbStandard->currentIndex();
+	if (cBoxData_inited)
+	{
+		installDftDBinfo();
+	}
+}
+
+void ParaSetDlg::installDftDBinfo()
+{
+	int idx = ui.cmbStandard->currentIndex();//表规格的当前索引值
+	int count;//查询到的记录个数
+	DftDbInfo_PTR dbinfo_ptr;
+	if (m_basedb.getDftDBinfo(count, dbinfo_ptr, idx))
+	{
+		ui.cmbFlow->setCurrentIndex(dbinfo_ptr[0].stand_id);
+		for(int i=0; i < VERIFY_POINTS; i++)
+		{
+			lineEdit_uppers[i]->setText(QString::number(dbinfo_ptr[i].upper_flow));
+			lineEdit_flows[i]->setText(QString::number(dbinfo_ptr[i].v_flow));
+			lineEdit_quantites[i]->setText(QString::number(dbinfo_ptr[i].v_quan));
+			lineEdit_freqs[i]->setText(QString::number(dbinfo_ptr[i].pump_freq));
+			cBox_valves[i]->setCurrentIndex(dbinfo_ptr[i].vale_num);
+			cBox_seqs[i]->setCurrentIndex(dbinfo_ptr[i].seq);
+		}
+	}
+}
+
 void ParaSetDlg::initUiData()
 {
 	//表规格
@@ -131,6 +161,7 @@ void ParaSetDlg::initUiData()
 		qDebug()<<"id:"<<m_manuFacPtr[m].id<<",desc:"<<QString::fromLocal8Bit(m_manuFacPtr[m].desc);
 		ui.cmbManufacture->insertItem(m, QString::fromLocal8Bit(m_manuFacPtr[m].desc)); //汉字编码
 	}
+	cBoxData_inited = true;//下拉条已初始化完毕
 }
 
 void ParaSetDlg::installLastParams()
@@ -275,7 +306,7 @@ void ParaSetDlg::on_btnSave_clicked()
 * 假设有一正整数序列
 * 设n为其最大元素值
 * 若此序列无重复项,
-* 且n与序列元素的个数相等
+* 且n与序列的元素个数相等
 * 那么这个序列一定是以1起始,以n终止的自然数列
 */
 bool ParaSetDlg::chkSeq()

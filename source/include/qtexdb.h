@@ -39,7 +39,7 @@ public:
 	int getMeterStandard(int& num, MeterStandard_PTR &ptr);
 	int getMeterType(int& num, MeterType_PTR &ptr);
 	int getManufacture(int& num, Manufacture_PTR &ptr);
-
+	int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id);
 	int insertVerfiyRecords(int num, Record_Quality_PTR ptr);
 
 private:

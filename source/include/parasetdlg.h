@@ -62,10 +62,10 @@ public:
 public slots:
 	void on_btnExit_clicked();
 	void on_btnSave_clicked();
-
+	void on_cmbStandard_currentIndexChanged();
 private:
 	Ui::ParaSetDlgClass ui;
-
+	bool cBoxData_inited;//标记, 界面的下拉条已经从数据库中读取了数据
 	
 	QSettings *settings;//配置文件
 	Quality_Params_PTR params;//本次的配置参数
@@ -86,6 +86,8 @@ private:
 	void installFlowPoint();//加载配置文件的[FlowPoint_i]组的信息
 	void installBool();//加载配置文件的[Bool]组的信息
 	void installOther();//加载配置文件的[Other]组的信息
+
+	void installDftDBinfo();//加载数据库中默认的参数
 
 	bool chkSeq();//检查选定的检定次序是否满足要求
 	void SaveHead();//保存基本信息

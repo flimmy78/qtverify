@@ -170,6 +170,53 @@ int CBaseExdb::getManufacture(int& num, Manufacture_PTR &ptr)
 	return true;
 }
 
+/*
+ *  获取各规格热表的默认检定参数
+ *  num: 查询结果的记录数
+ *  ptr: 与数据表t_meter_default_params对应的结构
+ *  stand_id: 表规格的主键值, 用于索引界面上的comboBox
+ */
+int CBaseExdb::getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id)
+{
+	//int num;
+	int i = 0;
+	QSqlQuery query; // 新建一个查询的实例
+	bool a = query.driver()->hasFeature(QSqlDriver::Transactions);
+	QString sql = "select count(*) from t_meter_default_params where f_standard_id = " + QString::number(stand_id);
+	if(query.exec(sql)) // t_meter_standard 表的记录数
+	{
+		// 本次查询成功
+		query.first(); //第一条记录
+		num = query.value(0).toInt();
+		ptr = new DftDbInfo_STR[num];
+		memset(ptr, 0, sizeof(DftDbInfo_STR)*num);
+	}
+	sql = "select f_id, f_standard_id, f_nflowpoint, f_upperflow, f_verifyflow, f_flowquantity, f_pumpfrequencey, f_valve_i, f_seq_i, F_Flow_idx from t_meter_default_params where f_standard_id = " + QString::number(stand_id) + " order by F_Flow_idx";
+	if(query.exec(sql))
+	{
+		while(query.next())
+		{
+			ptr[i].id = query.value(0).toInt();
+			ptr[i].stand_id = query.value(1).toInt();
+			ptr[i].n_flow = query.value(2).toFloat();
+			ptr[i].upper_flow = query.value(3).toFloat();
+			ptr[i].v_flow = query.value(4).toFloat();
+			ptr[i].v_quan = query.value(5).toFloat();
+			ptr[i].pump_freq = query.value(6).toFloat();
+			ptr[i].vale_num = query.value(7).toInt();
+			ptr[i].seq = query.value(8).toInt();
+			i++;
+		}
+	}
+	else  // 如果查询失败，用下面的方法得到具体数据库返回的原因
+	{
+		QSqlError error = query.lastError();
+		return false;
+	}
+
+	return true;
+}
+
 int CBaseExdb::insertVerfiyRecords(int num, Record_Quality_PTR ptr)
 {
 

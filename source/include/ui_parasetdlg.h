@@ -994,10 +994,9 @@ public:
         label_5->setText(QApplication::translate("ParaSetDlgClass", "\345\270\270\347\224\250\346\265\201\351\207\217", 0, QApplication::UnicodeUTF8));
         cmbFlow->clear();
         cmbFlow->insertItems(0, QStringList()
+         << QApplication::translate("ParaSetDlgClass", "1.5", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("ParaSetDlgClass", "2.5", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("ParaSetDlgClass", "0.75", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("ParaSetDlgClass", "0.25", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("ParaSetDlgClass", "0.05", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("ParaSetDlgClass", "3.5", 0, QApplication::UnicodeUTF8)
         );
         label_6->setText(QApplication::translate("ParaSetDlgClass", "\351\207\207\351\233\206\344\273\243\347\240\201", 0, QApplication::UnicodeUTF8));
         label_9->setText(QApplication::translate("ParaSetDlgClass", "\345\210\266\351\200\240\345\215\225\344\275\215", 0, QApplication::UnicodeUTF8));
