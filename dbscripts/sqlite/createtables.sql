@@ -154,3 +154,35 @@ F_ValidDate	interger,               --检表结果有效期(生产型不需要)
 F_RecordNumber interger             --检定记录证书编号(每块表每次检定（多个流量点共用）形成一个编号)
 );
 create unique index uk_T_Verify_Record on T_Verify_Record (F_MeterNo, F_TimeStamp, F_FlowPointIdx);
+
+---------------------------------
+--热表各规格的默认参数表
+---------------------------------
+drop table if exists "T_Meter_Default_Params"
+;
+create table t_meter_default_params
+(
+	F_Id integer not null primary key autoincrement, 										-- 参数id
+	F_Standard_id integer constraint [fk_m_stand] references [t_meter_standard]([f_id]),    -- 外键,表规格id(T_Meter_Standard.id)
+	F_Nflowpoint float,																		-- 常用流量点
+	F_Upperflow float,																		-- 上限流量点		
+	F_Verifyflow float,																		-- 检定流量点
+	F_Flowquantity float,																	-- 检定量
+	F_Pumpfrequencey float,																	-- 水泵频率
+	F_Valve_i smallint,																		-- 阀门编号	
+	F_Seq_i smallint,																		-- 检测序列号
+	F_Flow_idx smallint																	-- 流量点索引(界面)
+);
+
+insert into t_meter_default_params values(1, 0, 1.5, 1.6, 1.5, 40, 34, 0, 1);
+insert into t_meter_default_params values(2, 0, 1.5, 0.5, 0.45, 20, 33, 1, 2);
+insert into t_meter_default_params values(3, 0, 1.5, 0.16, 0.15, 10, 33, 2, 3);
+insert into t_meter_default_params values(4, 0, 1.5, 0.035, 0.03, 5, 33, 3, 4);
+insert into t_meter_default_params values(5, 1, 2.5, 2.6, 2.5, 50, 34, 0, 1);
+insert into t_meter_default_params values(6, 1, 2.5, 0.8, 0.75, 20, 33, 1, 2);
+insert into t_meter_default_params values(7, 1, 2.5, 0.3, 0.25, 10, 33, 2, 3);
+insert into t_meter_default_params values(8, 1, 2.5, 0.06, 0.05, 5, 33, 3, 4);
+insert into t_meter_default_params values(9, 2, 3.5, 3.6, 3.5, 50, 34, 0, 1);
+insert into t_meter_default_params values(10, 2, 3.5, 1.1, 1.05, 20, 33, 1, 2);
+insert into t_meter_default_params values(11, 2, 3.5, 0.4, 0.35, 10, 33, 2, 3);
+insert into t_meter_default_params values(12, 2, 3.5, 0.08, 0.07, 5, 33, 3, 4);
