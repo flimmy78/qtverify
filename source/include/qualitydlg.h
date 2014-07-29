@@ -80,9 +80,12 @@ public:
 	ComThread m_meterThread1;  //热量表1线程
 	MeterComObject *m_meterObj1;
 
-	uint m_flowcount;  //计算流量时 计数用 0~4294967295, 按10微秒计数一次, 可计数497年
+	uint m_flowcount;  //计算流量时 计数用 , 0~4294967295, 按10微秒计数一次, 可计数497年
+	uint m_totalcount;//累积法计数器
 	float m_flow1;//天平初值
 	float m_flow2;//天平终值
+	float start_quan;//累积法天平初值
+	float end_quan;//累积法天平终值
 	float total_quantity;//累积质量(从读数开始, 到读数结束一共的累积量)
 	float bal_quan;//天平读数模拟量
 	
@@ -126,6 +129,7 @@ public slots:
 	void setRegBtnBackColor(QPushButton *btn, bool status);	//设置调节阀按钮背景色
 
 	void slotFreshFlow(); //计算流量
+	void slotFreshFlow_total();//计算流量(总累计法)
 	void setBalQuan();//模拟天平读数
 	void on_btnReadMeterNo_clicked();
 
