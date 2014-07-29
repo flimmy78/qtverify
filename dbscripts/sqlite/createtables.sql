@@ -160,7 +160,7 @@ create unique index uk_T_Verify_Record on T_Verify_Record (F_MeterNo, F_TimeStam
 ---------------------------------
 drop table if exists "T_Meter_Default_Params"
 ;
-create table t_meter_default_params
+create table T_Meter_Default_Params
 (
 	F_Id integer not null primary key autoincrement, 										-- 参数id
 	F_Standard_id integer constraint [fk_m_stand] references [t_meter_standard]([f_id]),    -- 外键,表规格id(T_Meter_Standard.id)
@@ -171,7 +171,7 @@ create table t_meter_default_params
 	F_Pumpfrequencey float,																	-- 水泵频率
 	F_Valve_i smallint,																		-- 阀门编号	
 	F_Seq_i smallint,																		-- 检测序列号
-	F_Flow_idx smallint																	-- 流量点索引(界面)
+	F_Flow_idx smallint																		-- 流量点索引(界面)
 );
 
 insert into t_meter_default_params values(1, 0, 1.5, 1.6, 1.5, 40, 34, 0, 1);

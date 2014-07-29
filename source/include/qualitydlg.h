@@ -58,6 +58,8 @@ public:
 	ComThread m_tempThread;  //温度采集线程
 	TempComObject *m_tempObj;
 	QTimer *m_tempTimer;
+	QTimer *m_flowTimer;//流量计时器
+	QTimer *m_setBalTimer;//设定天平读数计时器
 
 	ComThread m_valveThread;   //阀门控制线程
 	ControlComObject *m_controlObj;
@@ -78,14 +80,18 @@ public:
 	ComThread m_meterThread1;  //热量表1线程
 	MeterComObject *m_meterObj1;
 
-	int m_flowcount;  //计算流量时 计数用
-	float m_flow1;
-	float m_flow2;
+	uint m_flowcount;  //计算流量时 计数用 0~4294967295, 按10微秒计数一次, 可计数497年
+	float m_flow1;//天平初值
+	float m_flow2;//天平终值
+	float total_quantity;//累积质量(从读数开始, 到读数结束一共的累积量)
+	float bal_quan;//天平读数模拟量
+	
 
 	PortSet_Ini_STR m_portsetinfo; //端口配置
 	ParaSet_Ini_STR m_parasetinfo; //参数设置(质量法-分量检测)
 
 	void closeEvent(QCloseEvent * event);
+	void showEvent(QShowEvent *event);
 	void initTemperatureCom(); //温度采集串口
 	void initBalanceCom();     //天平串口
 	void initControlCom();     //阀门控制串口
@@ -120,7 +126,7 @@ public slots:
 	void setRegBtnBackColor(QPushButton *btn, bool status);	//设置调节阀按钮背景色
 
 	void slotFreshFlow(); //计算流量
-
+	void setBalQuan();//模拟天平读数
 	void on_btnReadMeterNo_clicked();
 
 private:

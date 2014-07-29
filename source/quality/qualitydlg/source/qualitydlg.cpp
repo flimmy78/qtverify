@@ -42,12 +42,22 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 	m_balanceObj = NULL;
 	initBalanceCom();		//初始化天平串口
 
-	m_meterObj1 = NULL;
-// 	initHeatMeterCom1();	//初始化热量表1串口
+	bal_quan = 0.0;
+	m_setBalTimer = new QTimer();
+	connect(m_setBalTimer, SIGNAL(timeout()), this, SLOT(setBalQuan()));
+	m_setBalTimer->start(TIMEOUT_TEMPER/5);
 
 	m_flowcount = 0;		//计算流量用
 	m_flow1 = 0.0;
 	m_flow2 = 0.0;
+	total_quantity = 0.0;
+	m_flowTimer = new QTimer();
+	connect(m_flowTimer, SIGNAL(timeout()), this,  SLOT(slotFreshFlow()));
+	m_flowTimer->start(TIMEOUT_TEMPER);
+
+	m_meterObj1 = NULL;
+// 	initHeatMeterCom1();	//初始化热量表1串口
+
 
 	//获取下位机端口配置信息
 	if (!getPortSetIni(&m_portsetinfo))
@@ -124,6 +134,63 @@ void QualityDlg::closeEvent( QCloseEvent * event)
 		delete m_tempTimer;
 		m_tempTimer = NULL;
 	}
+
+	if (m_flowTimer)
+	{
+		if (m_flowTimer->isActive())
+		{
+			m_flowTimer->stop();
+		}
+		delete m_flowTimer;
+		m_flowTimer = NULL;
+	}
+
+	if (m_setBalTimer)
+	{
+		if (m_setBalTimer->isActive())
+		{
+			m_setBalTimer->stop();
+		}
+		delete m_setBalTimer;
+		m_setBalTimer = NULL;
+	}
+
+
+}
+
+void QualityDlg::showEvent(QShowEvent *event)
+{
+	m_flowcount = 0;
+	total_quantity = 0;
+	//if (!m_setBalTimer)
+	//{
+	//	bal_quan = 0.0;
+	//	m_setBalTimer = new QTimer();
+	//	connect(m_setBalTimer, SIGNAL(timeout()), this, SLOT(setBalQuan()));
+	//	m_setBalTimer->start(TIMEOUT_TEMPER/10);
+	//}
+
+	//if (!m_flowTimer)
+	//{
+	//	m_flowcount = 0;		//计算流量用
+	//	m_flow1 = 0.0;
+	//	m_flow2 = 0.0;
+	//	total_quantity = 0.0;
+	//	m_flowTimer = new QTimer();
+	//	connect(m_flowTimer, SIGNAL(timeout()), this,  SLOT(slotFreshFlow()));
+	//	m_flowTimer->start(TIMEOUT_TEMPER/10);
+	//}
+}
+
+void QualityDlg::setBalQuan()
+{
+	qDebug()<< " current thread id: "<< QThread::currentThreadId();
+	QTime time;
+	time= QTime::currentTime();
+	qsrand(time.msec()+time.second()*1000);
+	float random=qrand()%10;//生成随机数 0~10
+	QString txt = QString::number(ui.lnEditBigBalance->text().toFloat() + random/10);
+	ui.lnEditBigBalance->setText(txt);
 }
 
 /***************************************
@@ -141,7 +208,7 @@ void QualityDlg::initTemperatureCom()
 
 	m_tempTimer = new QTimer();
 	connect(m_tempTimer, SIGNAL(timeout()), m_tempObj, SLOT(writeTemperatureComBuffer()));
-	connect(m_tempTimer, SIGNAL(timeout()), this, SLOT(slotFreshFlow()));
+	//connect(m_tempTimer, SIGNAL(timeout()), this, SLOT(slotFreshFlow()));
 	
 	m_tempTimer->start(TIMEOUT_TEMPER); //周期请求温度
 }
@@ -401,30 +468,46 @@ void QualityDlg::setRegBtnBackColor(QPushButton *btn, bool status)
 /************************************************************************/
 /* 计算瞬时流量(待改进、需要实验验证)                                   */
 /************************************************************************/
+//void QualityDlg::slotFreshFlow()
+//{
+//// 	qDebug()<<"slotFreshFlow thread:"<<QThread::currentThreadId(); //主线程
+//	float flowValue = 0.0;
+//	int length = ui.lnEditBigBalance->text().length();
+//	if (m_flowcount == 0)
+//	{
+//		QString a1 = ui.lnEditBigBalance->text();
+//		m_flow1 = ui.lnEditBigBalance->text().right(length-1).toFloat();
+//		qDebug()<<"start weight: "<<m_flow1;
+//	}
+//	m_flowcount ++;
+//	if (m_flowcount == CALC_FLOW_COUNT) //实际计算频率 = CALC_FLOW_COUNT*TIMEOUT_TEMPER
+//	{
+//		QString a2 = ui.lnEditBigBalance->text();
+//		m_flow2 = ui.lnEditBigBalance->text().right(length-1).toFloat();
+//		qDebug()<<"end weight: "<<m_flow2;
+//		m_flowcount = 0;
+//		flowValue = 3.6*(m_flow2 - m_flow1)*1000/(CALC_FLOW_COUNT*TIMEOUT_TEMPER);
+//		float difFlow = m_flow2 - m_flow1;
+//		qDebug()<<"delta weight: "<<difFlow;
+//		qDebug()<<"flow: "<<flowValue<<"\n";
+//		ui.lnEditFlow->setText(QString("%1").arg(flowValue, 6, 'g', 4));
+//	}
+//}
+
+/************************************************************************/
+/* 累积水量法(参考老程序的算法)                                   */
+/************************************************************************/
 void QualityDlg::slotFreshFlow()
 {
-// 	qDebug()<<"slotFreshFlow thread:"<<QThread::currentThreadId(); //主线程
 	float flowValue = 0.0;
-	int length = ui.lnEditBigBalance->text().length();
-	if (m_flowcount == 0)
-	{
-		QString a1 = ui.lnEditBigBalance->text();
-		m_flow1 = ui.lnEditBigBalance->text().right(length-1).toFloat();
-		qDebug()<<"初始重量："<<m_flow1;
-	}
-	m_flowcount ++;
-	if (m_flowcount == CALC_FLOW_COUNT) //实际计算频率 = CALC_FLOW_COUNT*TIMEOUT_TEMPER
-	{
-		QString a2 = ui.lnEditBigBalance->text(); 
-		m_flow2 = ui.lnEditBigBalance->text().right(length-1).toFloat();
-		qDebug()<<"结束重量："<<m_flow2;
-		m_flowcount = 0;
-		flowValue = 3.6*(m_flow2 - m_flow1)*1000/(CALC_FLOW_COUNT*TIMEOUT_TEMPER);
-		float difFlow = m_flow2 - m_flow1;
-		qDebug()<<"重量差值："<<difFlow;
-		qDebug()<<"流量："<<flowValue<<"\n";
-		ui.lnEditFlow->setText(QString("%1").arg(flowValue, 6, 'g', 4));
-	}
+	m_flowcount ++;//计数器累加
+	m_flow2 = ui.lnEditBigBalance->text().toFloat();//取当前天平值, 作为当前运算的终值
+	float delta_weight = m_flow2 - m_flow1;
+	total_quantity += delta_weight;
+	flowValue = 3.6*(total_quantity)*1000/(m_flowcount*TIMEOUT_TEMPER);//总累积水量/总时间
+
+	ui.lnEditFlow->setText(QString("%1").arg(flowValue, 6, 'g', 4));
+	m_flow1 = m_flow2;//将当前值保存, 作为下次运算的初值
 }
 
 //读取表号
@@ -432,5 +515,3 @@ void QualityDlg::on_btnReadMeterNo_clicked()
 {
 // 	m_meterObj1->writeMeterCom1Buffer(); //请求表号
 }
-
-

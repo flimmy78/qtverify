@@ -84,7 +84,7 @@ bool TempProtocol::readTemperComBuffer(QByteArray tmp)
 	int state = PV_STATE;
 
 	UINT8 uch = 0; //无符号8位数字
-	INT8  ch = 0;  //有符号8位数字 
+	INT8  ch = 0;  //有符号8位数字
 	int number = tmp.size();
 	int m=0;
 	int pv_i=0, sv_i=0, para_i=0, check_i=0;
