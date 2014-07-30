@@ -598,7 +598,7 @@ int WeightMethodDlg::startVerifyFlowPoint(int order)
 		for (int i=0; i<m_meterNum; i++)
 		{
 			m_meterStartValue[i] = 0.66;  //读取被检表初值
-		}		
+		}
 	}
 
 	m_balStartV = ui.lnEditBigBalance->text().toFloat(); //记录天平初值
@@ -682,11 +682,11 @@ void WeightMethodDlg::setRegBtnBackColor(QPushButton *btn, bool status)
 	}
 	if (status) //调节成功
 	{
-		btn->setStyleSheet("background:blue;border:0px;");  
+		btn->setStyleSheet("background:blue;border:0px;");
 	}
 	else //调节失败
 	{
-		btn->setStyleSheet("");  
+		btn->setStyleSheet("");
 	}
 }
 

@@ -14,6 +14,7 @@
 
 #include <QtCore/QDebug>
 #include <QtCore/QSettings>
+ #include <QProcessEnvironment>
 
 #include "algorithm.h"
 #include "commondefine.h"
@@ -132,4 +133,41 @@ float CAlgorithm::calc(float a, float b)
 	float sum = a + b;
 	qDebug("%.2f + %.2f = %.2f \n", a, b, sum);
 	return sum;
+}
+
+/****************************************************************************
+* 按表位号计算其温度(距离均布法)                                      *
+* inlet: 进水口温度值                                                              *
+* oulet: 出水口温度值                                                             *
+* meterType: 表规格(DN15, DN20等), 以此决定被检表数量*
+* num: 被检表的表位号, 以此计算此热表离进口的距离        *
+/****************************************************************************/
+float CAlgorithm::getMeterTempByPos(float inlet, float oulet, enum metertype meterType, int num)
+{
+	//1, 根据meterType读取 {管路-表位号} 的配置参数, 取出管路总长度t_length
+	//1.1* 获取配置文件
+	QString IniPath;
+#ifdef Q_OS_LINUX
+	IniPath = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\/ini\/meterposition.ini";
+#elif defined (Q_OS_WIN)
+	IniPath = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\\ini\\meterposition.ini";
+#endif
+	QSettings *PortSet = new QSettings(IniPath, QSettings::IniFormat);
+	//1.2* 读取管路总长度t_length
+	float t_length = PortSet->value("total/length").toFloat();
+	//2, 根据取得的配置参数和num计算被检热表离进水口的距离d_length; 
+	float d_length = PortSet->value(QString::number(meterType) + "/" + QString::number(num)).toFloat();
+	delete PortSet;
+	PortSet = NULL;
+	//3, 根据 被检热表离进水口的距离和管路总长度计算温度系数 coeff = d/L
+	float coeff = d_length / t_length;
+	//4, 计算温度差值 delta = (oulet - inlet)
+	float delta = oulet - inlet;
+	//4.1* 如果进出口温度相等, 则检测台不在检定状态, 抛出异常
+	if (delta == 0)
+	{
+		throw delta;
+	}
+	//5, 根据温度差值和温度系数最终得出被检热表的温度值 t = (inlet + coeff * delta)
+	return (inlet + coeff * delta);
 }

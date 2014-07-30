@@ -52,7 +52,9 @@ void SetPortFrm::on_btn_Save_clicked()
 {
 	WriteIni();
 }
-
+/************************************************************************/
+/* 读取上次的端口配置                                                    */
+/************************************************************************/
 void SetPortFrm::InstallIni()
 {
 	gui.cBox_Inlet->setCurrentIndex(PortSet->value("Relay/waterInNo").toInt() - 1);
@@ -68,7 +70,9 @@ void SetPortFrm::InstallIni()
 	gui.cBox_Regulate_3->setCurrentIndex(PortSet->value("Regulate/regflow3No").toInt() - 1);
 	gui.cBox_Regulate_4->setCurrentIndex(PortSet->value("Regulate/regflow4No").toInt() - 1);
 }
-
+/************************************************************************/
+/* 保存端口配置                                                                */
+/************************************************************************/
 void SetPortFrm::WriteIni()
 {
 	PortSet->setValue("Relay/waterInNo",gui.cBox_Inlet->currentIndex() + 1);

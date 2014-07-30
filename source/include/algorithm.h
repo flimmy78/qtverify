@@ -30,6 +30,8 @@ public:
 
 	float calc(float a, float b);
 
+	float getMeterTempByPos(float inlet, float oulet, enum metertype meterType, int num);//按表位号计算其温度
+	float getDensityByTemp(float temp);//根据水的温度值查找密度值
 private:
 
 };
