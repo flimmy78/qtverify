@@ -21,10 +21,11 @@ create table T_Meter_Standard
 (
 F_ID integer not null primary key autoincrement,  --规格ID
 F_Name varchar(24) not null                       --规格代码
+F_Meter_Quantity smallint						  -- 被检表的数量(2014.07.31 修改By Song baoshan)
 );
-insert into T_Meter_Standard(F_ID, F_Name) values(0, 'DN15');
-insert into T_Meter_Standard(F_ID, F_Name) values(1, 'DN20');
-insert into T_Meter_Standard(F_ID, F_Name) values(2, 'DN25');
+insert into T_Meter_Standard(F_ID, F_Name) values(0, 'DN15', 12);
+insert into T_Meter_Standard(F_ID, F_Name) values(1, 'DN20', 12);
+insert into T_Meter_Standard(F_ID, F_Name) values(2, 'DN25', 10);
 
 
 ---------------------------------
