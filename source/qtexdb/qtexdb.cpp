@@ -81,12 +81,13 @@ int CBaseExdb::getMeterStandard(int& num, MeterStandard_PTR &ptr)
 		memset(ptr, 0, sizeof(MeterStandard_STR)*num);
 	}
 
-	if(query.exec("select f_id,f_name from t_meter_standard order by f_id"))
+	if(query.exec("select f_id,f_name, F_Meter_Quantity from t_meter_standard order by f_id"))
 	{
 		while(query.next())
 		{
 			ptr[i].id = query.value(0).toInt();
 			strcpy(ptr[i].name, query.value(1).toString().toAscii());
+			ptr[i].quantity = query.value(2).toInt();
 			i++;
 		}
 	}

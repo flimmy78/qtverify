@@ -82,8 +82,9 @@ typedef MasterSlave_Ini_STR* MasterSlave_Ini_PTR;
 */
 class MeterStandard_STR{
 public:
-    int       id;                   //
-    char   name[ASCNAME_LEN];		//
+    int       id;                   //主键
+    char   name[ASCNAME_LEN];		//规格
+	UINT8 quantity;//被检表的最大数量
 };
 typedef MeterStandard_STR* MeterStandard_PTR;
 
