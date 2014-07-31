@@ -615,9 +615,9 @@ int WeightMethodDlg::startVerifyFlowPoint(int order)
 			m_balEndV = ui.lnEditBigBalance->text().toFloat(); //记录天平终值
 			memset(m_meterEndValue, 50.5, sizeof(float)*m_meterNum); //记录表终值
 
-			//计算每个被检表的温度
-			//计算每个被检表的密度
-			//计算每个被检表的标准值
+			//计算每个被检表的温度 √
+			//计算每个被检表的密度 √
+			//计算每个被检表的标准值 √
 			//计算每个表的误差，在界面显示
 			//保存至数据库
 		}

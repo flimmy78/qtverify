@@ -120,7 +120,7 @@ int getMasterSlaveIni(MasterSlave_Ini_PTR info)
 ***********************************************************/
 CAlgorithm::CAlgorithm()
 {
-
+	
 }
 
 CAlgorithm::~CAlgorithm()
@@ -139,10 +139,9 @@ float CAlgorithm::calc(float a, float b)
 * 按表位号计算其温度(距离均布法)                                      *
 * inlet: 进水口温度值                                                              *
 * oulet: 出水口温度值                                                             *
-* meterType: 表规格(DN15, DN20等), 以此决定被检表数量*
 * num: 被检表的表位号, 以此计算此热表离进口的距离        *
 /****************************************************************************/
-float CAlgorithm::getMeterTempByPos(float inlet, float oulet, enum metertype meterType, int num)
+float CAlgorithm::getMeterTempByPos(float inlet, float oulet, int num)
 {
 	//1, 根据meterType读取 {管路-表位号} 的配置参数, 取出管路总长度t_length
 	//1.1* 获取配置文件
@@ -155,19 +154,118 @@ float CAlgorithm::getMeterTempByPos(float inlet, float oulet, enum metertype met
 	QSettings *PortSet = new QSettings(IniPath, QSettings::IniFormat);
 	//1.2* 读取管路总长度t_length
 	float t_length = PortSet->value("total/length").toFloat();
-	//2, 根据取得的配置参数和num计算被检热表离进水口的距离d_length; 
+	//2, 根据取得的配置参数和num计算被检热表离进水口的距离d_length;
+	//2.1* 获取被检表的规格
+	QString paraPath;
+#ifdef Q_OS_LINUX
+	paraPath = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\/ini\/qualityParaSet.ini";
+#elif defined (Q_OS_WIN)
+	paraPath = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\\ini\\qualityParaSet.ini";
+#endif
+	QSettings *ParaSet = new QSettings(paraPath, QSettings::IniFormat);//参数配置文件
+	int meterType = ParaSet->value("head/standard").toInt();//被检表规格
 	float d_length = PortSet->value(QString::number(meterType) + "/" + QString::number(num)).toFloat();
+	//2.2* 释放内存
+	delete ParaSet;
+	ParaSet = NULL;
 	delete PortSet;
 	PortSet = NULL;
-	//3, 根据 被检热表离进水口的距离和管路总长度计算温度系数 coeff = d/L
+	//3, 根据 被检热表离进水口的距离和管路总长度计算温度系数 coeff = d_length / t_length
 	float coeff = d_length / t_length;
 	//4, 计算温度差值 delta = (oulet - inlet)
 	float delta = oulet - inlet;
-	//4.1* 如果进出口温度相等, 则检测台不在检定状态, 抛出异常
-	if (delta == 0)
-	{
-		throw delta;
-	}
 	//5, 根据温度差值和温度系数最终得出被检热表的温度值 t = (inlet + coeff * delta)
 	return (inlet + coeff * delta);
+}
+
+/************************************************************************
+* 根据水温-密度表(JGG 225-2010 热量表检定规程)
+* 进行多项式拟合(MATLAB, 9次方)
+* f(x) = p1*x^9 + p2*x^8 + p3*x^7 + p4*x^6 + 
+* p5*x^5 + p6*x^4 + p7*x^3 + p8*x^2 + p9*x + p10               
+/************************************************************************/
+double CAlgorithm::getDensityByFit(float temp)
+{
+	//p1~p10为多项式系数
+	double const p1 =  -3.562e-18;
+	double const p2 =   2.303e-15;
+	double const p3 =  -5.989e-13;
+	double const p4 =   7.617e-11;
+	double const p5 =  -3.716e-09;
+	double const p6 =  -2.719e-07;
+	double const p7 =   6.455e-05;
+	double const p8 =   -0.008346;
+	double const p9 =     0.05982;
+	double const p10 =       1000.12;
+	//exp2~exp9为参数的次幂
+	double exp2 = temp * temp;
+	double exp3 = exp2 * temp;
+	double exp4 = exp3 * temp;
+	double exp5 = exp4 * temp;
+	double exp6 = exp5 * temp;
+	double exp7 = exp6 * temp;
+	double exp8 = exp7 * temp;
+	double exp9 = exp8 * temp;
+
+	return  p1*exp9 + p2*exp8 + p3*exp7 + p4*exp6 + p5*exp5 + p6 * exp4 + p7*exp3 +  + p8*exp2 +  + p9*temp + p10;
+}
+
+/*****************************************************************************
+* 查表求对应水温的密度值
+* 设当前水温为temp
+* temp的整数部分为 low, 
+* low温度值查表可得density[low - 1](density的索引从0开始)
+* (若temp的小数部分不为零, 那么在温度low至low+1之间
+* 应用线性算法求解其密度)
+/****************************************************************************/
+double CAlgorithm::getDensityByQuery(float temp)
+{
+	int low = getInt(temp);
+
+	return density[low -1] +  getDecimal(temp) * (density[low] - density[low]);
+}
+
+/************************************************************************
+* 计算浮点数的整数部分           
+/************************************************************************/
+int CAlgorithm::getInt(float p)
+{
+	if (p > 0)
+	{
+		return int(p);
+	}
+	else if (p == 0)
+	{
+		return 0;
+	}
+	else
+	{
+		return (int(p) - 1);
+	}
+}
+/************************************************************************
+* 计算浮点数的小数部分           
+/************************************************************************/
+float CAlgorithm::getDecimal(float p)
+{
+	return (p - getInt(p));
+}
+
+/************************************************************************
+* 按表位号获取对应表位的标准体积流量                        
+* mass: 天平的质量差
+* inlet: 进水口温度
+* outlet: 出水口温度
+* num: 表位号
+************************************************************************/
+double CAlgorithm::getStdVolByPos(float mass, float inlet, float outlet, int num)
+{	
+	float temp = getMeterTempByPos(inlet, outlet, num);//获取温度
+#ifdef FIT
+	float den = getDensityByFit(temp);//获取密度
+#else
+	float den = getDensityByQuery(temp);//获取密度
+#endif
+
+	return (mass / den);//返回标准体积
 }

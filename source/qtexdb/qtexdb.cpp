@@ -179,7 +179,6 @@ int CBaseExdb::getManufacture(int& num, Manufacture_PTR &ptr)
  */
 int CBaseExdb::getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id)
 {
-	//int num;
 	int i = 0;
 	QSqlQuery query; // 新建一个查询的实例
 	bool a = query.driver()->hasFeature(QSqlDriver::Transactions);
