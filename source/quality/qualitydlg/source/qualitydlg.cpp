@@ -195,7 +195,7 @@ void QualityDlg::setBalQuan()
 	qsrand(time.msec()+time.second()*1000);
 	float random=qrand()%10;//生成随机数 0~10
 	float delta = 0.1;
-	QString txt = QString::number(ui.lnEditBigBalance->text().toFloat() + random/10);
+	QString txt = QString::number(ui.lnEditBigBalance->text().toFloat() + delta);
 	ui.lnEditBigBalance->setText(txt);
 }
 
@@ -502,7 +502,7 @@ void QualityDlg::setRegBtnBackColor(QPushButton *btn, bool status)
 
 
 /************************************************************************/
-/* 计算瞬时流量(瞬时法)                                                  */
+/* 计算瞬时流量(瞬时法)                                                */
 /************************************************************************/
 void QualityDlg::slotFreshFlow()
 {
@@ -512,29 +512,28 @@ void QualityDlg::slotFreshFlow()
 	/* 按照原来程序的逻辑, 那么就丢失了一个δt的质量增量 */
 	/**************************************************************************/
 	m_flowcount++;
-	if ( m_flowcount == 1)
-	{
-		QString a1 = ui.lnEditBigBalance->text();
-		m_flow1 = ui.lnEditBigBalance->text().toFloat();
-	}
+	//if ( m_flowcount == 1)
+	//{
+	//	QString a1 = ui.lnEditBigBalance->text();
+	//	m_flow1 = ui.lnEditBigBalance->text().toFloat();
+	//}
 
-	if (m_flowcount == CALC_FLOW_COUNT + 1)//实际计算频率 = CALC_FLOW_COUNT*TIMEOUT_TEMPER
+	if (m_flowcount == CALC_FLOW_COUNT)//实际计算频率 = CALC_FLOW_COUNT*TIMEOUT_TEMPER
 	{
-		QString a2 = ui.lnEditBigBalance->text();
 		m_flow2 = ui.lnEditBigBalance->text().toFloat();
-
-		flowValue = 3.6*(m_flow2 - m_flow1)*1000/(CALC_FLOW_COUNT*TIMEOUT_TEMPER);
-		//flowValue = (m_flow2 - m_flow1)*1000/(CALC_FLOW_COUNT*TIMEOUT_TEMPER);// kg/s
 		float difFlow = m_flow2 - m_flow1;
+		flowValue = 3.6*(difFlow)*1000/(CALC_FLOW_COUNT*TIMEOUT_TEMPER);
+		//flowValue = (m_flow2 - m_flow1)*1000/(CALC_FLOW_COUNT*TIMEOUT_TEMPER);// kg/s
+		
 		m_flowcount = 0;
 		ui.lnEditFlow->setText(QString("%1").arg(flowValue, 6, 'g', 4));
-		//m_flow1 = m_flow2;
+		m_flow1 = m_flow2;
 	}
 	
 }
 
 /************************************************************************/
-/* 累积水量法(参考老程序的算法)                                   */
+/* 计算瞬时流量(累积水量法, 参考老程序的算法)          */
 /************************************************************************/
 void QualityDlg::slotFreshFlow_total()
 {

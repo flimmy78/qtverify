@@ -109,6 +109,9 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 		qDebug()<<"放水阀门未打开";
 		openWaterOutValve();
 	}
+	//////////////////////////////////////////////////////////////////////////
+	m_chkAlg = new CAlgorithm();//初始化计算类
+	//////////////////////////////////////////////////////////////////////////
 }
 
 WeightMethodDlg::~WeightMethodDlg()
@@ -162,6 +165,12 @@ void WeightMethodDlg::closeEvent( QCloseEvent * event)
 		m_controlObj = NULL;
 
 		m_valveThread.exit();
+	}
+
+	if (m_chkAlg)//计算类
+	{
+		delete m_chkAlg;
+		m_chkAlg = NULL;
 	}
 
 	m_db.closedb();

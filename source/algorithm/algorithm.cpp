@@ -120,7 +120,7 @@ int getMasterSlaveIni(MasterSlave_Ini_PTR info)
 ***********************************************************/
 CAlgorithm::CAlgorithm()
 {
-	
+
 }
 
 CAlgorithm::~CAlgorithm()
@@ -196,8 +196,8 @@ double CAlgorithm::getDensityByFit(float temp)
 	double const p7 =   6.455e-05;
 	double const p8 =   -0.008346;
 	double const p9 =     0.05982;
-	double const p10 =       1000.12;
-	//exp2~exp9为参数的次幂
+	double const p10 =  1000.12;
+	//exp2~exp9为参数的幂值
 	double exp2 = temp * temp;
 	double exp3 = exp2 * temp;
 	double exp4 = exp3 * temp;

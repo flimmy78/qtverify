@@ -73,6 +73,7 @@ public:
 	QMap<int, QToolButton*> m_valveBtn;	
 	int m_nowPortNo;	//当前控制阀门端口号
 	int m_nowPortIdx;	//当前控制阀门端口索引
+	CAlgorithm m_chkAlg;//检定过程用到的计算方法
 
 
 	//检定过程相关的控制参数 begin
