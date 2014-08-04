@@ -200,6 +200,7 @@ public:
 	//被检热量表的基本信息; m为meter的头字母
 	qint64 m_timestamp;//基本信息时间戳
 	int m_stand;//被检表规格(DN15,DN20,DN25等) 
+	int m_maxMeters;//被检表的最大数量
 	int m_type;//被检表类型(机械表、超声波表等)
 	int m_manufac;//制造厂商(德鲁航天, 天罡等)
 	int m_grade;//被检表等级(一级,二级,三级等)

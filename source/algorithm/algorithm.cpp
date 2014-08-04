@@ -181,6 +181,7 @@ float CAlgorithm::getMeterTempByPos(float inlet, float oulet, int num)
 /************************************************************************
 * 根据水温-密度表(JGG 225-2010 热量表检定规程)
 * 进行多项式拟合(MATLAB, 9次方)
+* float temp: 温度值 ( 1 ≤ temp ≤ 150 )
 * f(x) = p1*x^9 + p2*x^8 + p3*x^7 + p4*x^6 + 
 * p5*x^5 + p6*x^4 + p7*x^3 + p8*x^2 + p9*x + p10               
 /************************************************************************/
@@ -215,8 +216,8 @@ double CAlgorithm::getDensityByFit(float temp)
 * 设当前水温为temp
 * temp的整数部分为 low, 
 * low温度值查表可得density[low - 1](density的索引从0开始)
-* (若temp的小数部分不为零, 那么在温度low至low+1之间
-* 应用线性算法求解其密度)
+* (若temp的小数部分不为零, 那么认为在温度low至low+1之间
+* 密度值的变化是线性的)
 /****************************************************************************/
 double CAlgorithm::getDensityByQuery(float temp)
 {

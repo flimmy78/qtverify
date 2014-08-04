@@ -100,6 +100,29 @@ int CBaseExdb::getMeterStandard(int& num, MeterStandard_PTR &ptr)
 	return true;
 }
 
+/************************************************************************/
+/* 按主键获取对应表规格的最大检定数量                       */
+/************************************************************************/
+int CBaseExdb::getMaxMeterByIdx(int idx)
+{
+	MeterStandard_PTR ptr;
+	QSqlQuery query; // 新建一个查询的实例
+	bool a = query.driver()->hasFeature(QSqlDriver::Transactions);
+	QString sql = "select F_Meter_Quantity from t_meter_standard where f_id = "+ QString::number(idx);
+	if(query.exec(sql))
+	{
+		while(query.next())
+		{
+			return query.value(0).toInt();
+		}
+	}
+	else  // 如果查询失败，用下面的方法得到具体数据库返回的原因
+	{
+		QSqlError error = query.lastError();
+		return -1;
+	}
+}
+
 //获取所有的表类型
 int CBaseExdb::getMeterType(int& num, MeterType_PTR &ptr)
 {

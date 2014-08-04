@@ -493,6 +493,17 @@ void ParaSetReader::readHead()
 		//读取基本信息
 		params->m_timestamp=settings->value("head/timestamp").toLongLong();
 		params->m_stand = settings->value("head/standard").toInt();
+		/////////////////////读取最大检表数/////////////////////////
+		CBaseExdb *db = new CBaseExdb();
+		db->startdb();
+		params->m_maxMeters = db->getMaxMeterByIdx(params->m_stand);
+		db->closedb();
+		if (db)
+		{
+			delete db;
+			db = NULL;
+		}
+		///////////////////////////////////////////////////////////////////
 		params->m_type = settings->value("head/metertype").toInt();
 		params->m_manufac = settings->value("head/manufacture").toInt();	
 		params->m_model = settings->value("head/model").toInt();
