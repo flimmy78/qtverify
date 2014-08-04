@@ -216,14 +216,14 @@ double CAlgorithm::getDensityByFit(float temp)
 * 设当前水温为temp
 * temp的整数部分为 low, 
 * low温度值查表可得density[low - 1](density的索引从0开始)
-* (若temp的小数部分不为零, 那么认为在温度low至low+1之间
-* 密度值的变化是线性的)
+* (若temp的小数部分不为零, 那么认为在温度low-1至low之间
+* 密度值是线性变化的)
 /****************************************************************************/
 double CAlgorithm::getDensityByQuery(float temp)
 {
 	int low = getInt(temp);
 
-	return density[low -1] +  getDecimal(temp) * (density[low] - density[low]);
+	return density[low -1] +  getDecimal(temp) * (density[low] - density[low - 1]);
 }
 
 /************************************************************************
