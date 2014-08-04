@@ -20,12 +20,12 @@ drop table if exists "T_Meter_Standard"
 create table T_Meter_Standard
 (
 F_ID integer not null primary key autoincrement,  --规格ID
-F_Name varchar(24) not null                       --规格代码
+F_Name varchar(24) not null,                       --规格代码
 F_Meter_Quantity smallint						  -- 被检表的数量(2014.07.31 修改By Song baoshan)
 );
-insert into T_Meter_Standard(F_ID, F_Name) values(0, 'DN15', 12);
-insert into T_Meter_Standard(F_ID, F_Name) values(1, 'DN20', 12);
-insert into T_Meter_Standard(F_ID, F_Name) values(2, 'DN25', 10);
+insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(0, 'DN15', 12);
+insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(1, 'DN20', 12);
+insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(2, 'DN25', 10);
 
 
 ---------------------------------
@@ -171,8 +171,7 @@ create table T_Meter_Default_Params
 	F_Flowquantity float,																	-- 检定量
 	F_Pumpfrequencey float,																	-- 水泵频率
 	F_Valve_i smallint,																		-- 阀门编号	
-	F_Seq_i smallint,																		-- 检测序列号
-	F_Flow_idx smallint																		-- 流量点索引(界面)
+	F_Seq_i smallint																		-- 检测序列号
 );
 
 insert into t_meter_default_params values(1, 0, 1.5, 1.6, 1.5, 40, 34, 0, 1);
