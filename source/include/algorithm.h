@@ -172,7 +172,7 @@ const float density[150] = {
 	918.95,
 	918.02,
 	917.08
-};//水温-密度表, (下标的索引值 + 1) 即为(整数温度值)
+};//水温-密度表, (下标的索引值 + 1) 即为(整数温度值), 密度单位(千克/立方米, kg/m3)
 class ALGORITHM_EXPORT CAlgorithm
 {
 public:

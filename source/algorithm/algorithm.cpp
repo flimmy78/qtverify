@@ -135,12 +135,12 @@ float CAlgorithm::calc(float a, float b)
 	return sum;
 }
 
-/****************************************************************************
-* 按表位号计算其温度(距离均布法)                                      *
-* inlet: 进水口温度值                                                              *
-* oulet: 出水口温度值                                                             *
-* num: 被检表的表位号, 以此计算此热表离进口的距离        *
-/****************************************************************************/
+/*********************************************************************************************
+* 按表位号计算其温度(距离均布法)                                      
+* inlet: 进水口温度值                                                              
+* oulet: 出水口温度值																						   
+* num: 表位号(从1开始至最大检表数量), 以此计算此热表离进口的距离        
+/********************************************************************************************/
 float CAlgorithm::getMeterTempByPos(float inlet, float oulet, int num)
 {
 	//1, 根据meterType读取 {管路-表位号} 的配置参数, 取出管路总长度t_length
@@ -181,7 +181,7 @@ float CAlgorithm::getMeterTempByPos(float inlet, float oulet, int num)
 /************************************************************************
 * 根据水温-密度表(JGG 225-2010 热量表检定规程)
 * 进行多项式拟合(MATLAB, 9次方)
-* float temp: 温度值 ( 1 ≤ temp ≤ 150 )
+* float temp: 温度值 ( 1 ≤ temp ≤ 150 , 单位千克/升, kg/L)
 * f(x) = p1*x^9 + p2*x^8 + p3*x^7 + p4*x^6 + 
 * p5*x^5 + p6*x^4 + p7*x^3 + p8*x^2 + p9*x + p10               
 /************************************************************************/
@@ -208,11 +208,11 @@ double CAlgorithm::getDensityByFit(float temp)
 	double exp8 = exp7 * temp;
 	double exp9 = exp8 * temp;
 
-	return  p1*exp9 + p2*exp8 + p3*exp7 + p4*exp6 + p5*exp5 + p6 * exp4 + p7*exp3 +  + p8*exp2 +  + p9*temp + p10;
+	return  (p1*exp9 + p2*exp8 + p3*exp7 + p4*exp6 + p5*exp5 + p6 * exp4 + p7*exp3 +  + p8*exp2 +  + p9*temp + p10) / 1000.0;
 }
 
 /*****************************************************************************
-* 查表求对应水温的密度值
+* 查表求对应水温的密度值(单位千克/升, kg/L)
 * 设当前水温为temp
 * temp的整数部分为 low, 
 * low温度值查表可得density[low - 1](density的索引从0开始)
@@ -223,7 +223,7 @@ double CAlgorithm::getDensityByQuery(float temp)
 {
 	int low = getInt(temp);
 
-	return density[low -1] +  getDecimal(temp) * (density[low] - density[low - 1]);
+	return (density[low -1] +  getDecimal(temp) * (density[low] - density[low - 1])) / 1000.0;
 }
 
 /************************************************************************
@@ -253,11 +253,11 @@ float CAlgorithm::getDecimal(float p)
 }
 
 /************************************************************************
-* 按表位号获取对应表位的标准体积流量                        
-* mass: 天平的质量差
+* 按表位号获取对应表位的标准体积流量 (单位升, L)                       
+* mass: 天平的质量差(单位千克, kg)
 * inlet: 进水口温度
 * outlet: 出水口温度
-* num: 表位号
+* num: 表位号(从1开始至最大检表数量)
 ************************************************************************/
 double CAlgorithm::getStdVolByPos(float mass, float inlet, float outlet, int num)
 {	
