@@ -33,6 +33,19 @@
 #define VALVE_OUT_IDX	 5	//放水阀
 #define VALVE_NUM	     6	//实际用到的阀门总数
 
+/*
+** 表格列
+*/
+#define COLUMN_FLOW_POINT	1 //流量点
+#define COLUMN_START_VALUE	2 //初值列
+#define COLUMN_END_VALUE	3 //终值列
+#define COLUMN_BAL_START	4 //天平初值
+#define COLUMN_BAL_END		5 //天平终值
+#define COLUMN_TEMPER		6 //温度列
+#define COLUMN_DENSITY		7 //密度列
+#define COLUMN_STD_VALUE	8 //标准值
+#define COLUMN_ERROR		9 //示值误差列
+
 
 #include <QtGui/QWidget>
 
@@ -111,7 +124,7 @@ public:
 
 	int isComAndPortNormal();   //串口、端口设置是否正常
 	int isWaterOutValveOpen();  //检查放水阀门是否打开
-	int readParaConfig();		//读参数配置文件
+	int readNowParaConfig();		//读参数配置文件
 	int isDataCollectNormal();	//检查数据采集是否正常（天平、温度、电磁流量计等）
 	int isAllMeterInVerifyStatus(); //判断热量表都已进入检定状态
 	int isMeterPosValid(int row); //判断表位号是否有效(该表位是否需要检表)

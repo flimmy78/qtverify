@@ -87,7 +87,7 @@ public:
     {
         if (WeightMethodClass->objectName().isEmpty())
             WeightMethodClass->setObjectName(QString::fromUtf8("WeightMethodClass"));
-        WeightMethodClass->resize(1178, 825);
+        WeightMethodClass->resize(1284, 838);
         gridLayout = new QGridLayout(WeightMethodClass);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         tabWidget = new QTabWidget(WeightMethodClass);
@@ -96,7 +96,7 @@ public:
         tab1->setObjectName(QString::fromUtf8("tab1"));
         btnParaSet = new QPushButton(tab1);
         btnParaSet->setObjectName(QString::fromUtf8("btnParaSet"));
-        btnParaSet->setGeometry(QRect(20, 640, 93, 28));
+        btnParaSet->setGeometry(QRect(20, 620, 93, 28));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -104,7 +104,7 @@ public:
         btnParaSet->setSizePolicy(sizePolicy);
         groupBox = new QGroupBox(tab1);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(130, 631, 441, 131));
+        groupBox->setGeometry(QRect(20, 660, 261, 121));
         label = new QLabel(groupBox);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(12, 27, 30, 16));
@@ -113,7 +113,7 @@ public:
         label_2->setGeometry(QRect(12, 77, 30, 16));
         groupBox_2 = new QGroupBox(tab1);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setGeometry(QRect(650, 627, 441, 141));
+        groupBox_2->setGeometry(QRect(290, 630, 401, 151));
         gridLayout_4 = new QGridLayout(groupBox_2);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
         horizontalLayout = new QHBoxLayout();
@@ -202,8 +202,8 @@ public:
         gridLayout_4->addWidget(btnWaterPumpStop, 2, 0, 1, 1);
 
         tableWidget = new QTableWidget(tab1);
-        if (tableWidget->columnCount() < 5)
-            tableWidget->setColumnCount(5);
+        if (tableWidget->columnCount() < 10)
+            tableWidget->setColumnCount(10);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
         QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
@@ -214,26 +214,37 @@ public:
         tableWidget->setHorizontalHeaderItem(3, __qtablewidgetitem3);
         QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(4, __qtablewidgetitem4);
+        QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(5, __qtablewidgetitem5);
+        QTableWidgetItem *__qtablewidgetitem6 = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(6, __qtablewidgetitem6);
+        QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(7, __qtablewidgetitem7);
+        QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(8, __qtablewidgetitem8);
+        QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(9, __qtablewidgetitem9);
         tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
-        tableWidget->setGeometry(QRect(20, 20, 881, 581));
+        tableWidget->setGeometry(QRect(20, 20, 1221, 581));
+        tableWidget->setEditTriggers(QAbstractItemView::CurrentChanged|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed);
         btnExhaust = new QPushButton(tab1);
         btnExhaust->setObjectName(QString::fromUtf8("btnExhaust"));
-        btnExhaust->setGeometry(QRect(920, 520, 93, 28));
+        btnExhaust->setGeometry(QRect(1150, 620, 93, 28));
         btnStart = new QPushButton(tab1);
         btnStart->setObjectName(QString::fromUtf8("btnStart"));
-        btnStart->setGeometry(QRect(1040, 520, 93, 28));
+        btnStart->setGeometry(QRect(1150, 660, 93, 28));
         btnStop = new QPushButton(tab1);
         btnStop->setObjectName(QString::fromUtf8("btnStop"));
-        btnStop->setGeometry(QRect(1040, 570, 93, 28));
+        btnStop->setGeometry(QRect(1150, 740, 93, 28));
         groupBox_3 = new QGroupBox(tab1);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
-        groupBox_3->setGeometry(QRect(920, 250, 211, 191));
+        groupBox_3->setGeometry(QRect(920, 620, 221, 151));
         labelHintInfo = new QLabel(groupBox_3);
         labelHintInfo->setObjectName(QString::fromUtf8("labelHintInfo"));
-        labelHintInfo->setGeometry(QRect(20, 20, 171, 161));
+        labelHintInfo->setGeometry(QRect(20, 20, 151, 121));
         layoutWidget = new QWidget(tab1);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(920, 20, 211, 85));
+        layoutWidget->setGeometry(QRect(710, 690, 191, 85));
         gridLayout_2 = new QGridLayout(layoutWidget);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         gridLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -318,7 +329,7 @@ public:
 
         layoutWidget1 = new QWidget(tab1);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(920, 140, 211, 51));
+        layoutWidget1->setGeometry(QRect(710, 620, 191, 51));
         gridLayout_3 = new QGridLayout(layoutWidget1);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
         gridLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -366,7 +377,7 @@ public:
 
         btnNext = new QPushButton(tab1);
         btnNext->setObjectName(QString::fromUtf8("btnNext"));
-        btnNext->setGeometry(QRect(920, 570, 93, 28));
+        btnNext->setGeometry(QRect(1150, 700, 93, 28));
         tabWidget->addTab(tab1, QString());
         tab2 = new QWidget();
         tab2->setObjectName(QString::fromUtf8("tab2"));
@@ -428,13 +439,23 @@ public:
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("WeightMethodClass", "\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QApplication::translate("WeightMethodClass", "\346\265\201\351\207\217(m\302\263/h)", 0, QApplication::UnicodeUTF8));
+        ___qtablewidgetitem1->setText(QApplication::translate("WeightMethodClass", "\346\265\201\351\207\217\347\202\271(m\302\263/h)", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem2 = tableWidget->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QApplication::translate("WeightMethodClass", "\345\210\235\345\200\274(L)", 0, QApplication::UnicodeUTF8));
+        ___qtablewidgetitem2->setText(QApplication::translate("WeightMethodClass", "\350\241\250\345\210\235\345\200\274(L)", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem3 = tableWidget->horizontalHeaderItem(3);
-        ___qtablewidgetitem3->setText(QApplication::translate("WeightMethodClass", "\347\273\210\345\200\274(L)", 0, QApplication::UnicodeUTF8));
+        ___qtablewidgetitem3->setText(QApplication::translate("WeightMethodClass", "\350\241\250\347\273\210\345\200\274(L)", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem4 = tableWidget->horizontalHeaderItem(4);
-        ___qtablewidgetitem4->setText(QApplication::translate("WeightMethodClass", "\350\257\257\345\267\256(%)", 0, QApplication::UnicodeUTF8));
+        ___qtablewidgetitem4->setText(QApplication::translate("WeightMethodClass", "\345\244\251\345\271\263\345\210\235\345\200\274(kg)", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem5 = tableWidget->horizontalHeaderItem(5);
+        ___qtablewidgetitem5->setText(QApplication::translate("WeightMethodClass", "\345\244\251\345\271\263\347\273\210\345\200\274(kg)", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem6 = tableWidget->horizontalHeaderItem(6);
+        ___qtablewidgetitem6->setText(QApplication::translate("WeightMethodClass", "\346\270\251\345\272\246(\342\204\203)", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem7 = tableWidget->horizontalHeaderItem(7);
+        ___qtablewidgetitem7->setText(QApplication::translate("WeightMethodClass", "\345\257\206\345\272\246(kg/L)", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem8 = tableWidget->horizontalHeaderItem(8);
+        ___qtablewidgetitem8->setText(QApplication::translate("WeightMethodClass", "\346\240\207\345\207\206\345\200\274(L)", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem9 = tableWidget->horizontalHeaderItem(9);
+        ___qtablewidgetitem9->setText(QApplication::translate("WeightMethodClass", "\347\244\272\345\200\274\350\257\257\345\267\256(%)", 0, QApplication::UnicodeUTF8));
         btnExhaust->setText(QApplication::translate("WeightMethodClass", "\346\216\222\346\260\224", 0, QApplication::UnicodeUTF8));
         btnStart->setText(QApplication::translate("WeightMethodClass", "\345\274\200\345\247\213", 0, QApplication::UnicodeUTF8));
         btnStop->setText(QApplication::translate("WeightMethodClass", "\347\273\210\346\255\242\346\243\200\346\265\213", 0, QApplication::UnicodeUTF8));
