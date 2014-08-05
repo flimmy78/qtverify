@@ -338,3 +338,34 @@ int CBaseExdb::insertVerifyRec(Record_Quality_PTR ptr)
 	}
 	return true;
 }
+
+/******************************************************/
+/* 获取表的定义语句                                  */
+/* tbl_name: 表的名                                     */
+/* 异常: 表名不存在                                    */
+/******************************************************/
+QString CBaseExdb::getTblDdl(QString tbl_name)
+{
+	QString sql = QString("SELECT sql FROM sqlite_master WHERE upper(tbl_name) = upper('%1') AND type = 'table'").arg(tbl_name);//查询语句
+	QString ddl;//表的定义语句
+	bool open = startdb();
+	QStringList tbls = db.tables();
+	//如果表名不存在, 抛出异常
+	if (!tbls.contains(tbl_name, Qt::CaseInsensitive))
+	{
+		throw QString("no this table: %1").arg(tbl_name);
+	}
+	//开始查询
+	QSqlQuery query(db);
+	if (query.exec(sql))
+	{
+		query.first();
+		ddl = query.value(0).toString();
+	}
+	else
+	{
+		throw query.lastError().text();
+	}
+	closedb();
+	return ddl;
+}

@@ -42,6 +42,8 @@ public:
 	int getManufacture(int& num, Manufacture_PTR &ptr);
 	int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id);
 	int insertVerifyRec(Record_Quality_PTR ptr);
+
+	QString getTblDdl(QString tbl_name);
 private:
 
 public slots:
