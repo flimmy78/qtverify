@@ -40,6 +40,7 @@
 #include "parasetdlg.h"
 #include "comobject.h"
 #include "ReadComConfig.h"
+#include "algorithm.h"
 
 class WEIGHTMETHOD_EXPORT WeightMethodDlg : public QWidget
 {
@@ -52,6 +53,8 @@ public:
 	CBaseExdb m_db;
 
 	ParaSetReader *m_paraSetReader;
+	ParaSetDlg *m_paraSetDlg;
+
 
 	QTimer *m_exaustTimer; //排气定时器
 	int m_exaustSecond;	
@@ -73,29 +76,33 @@ public:
 	QMap<int, QToolButton*> m_valveBtn;	
 	int m_nowPortNo;	//当前控制阀门端口号
 	int m_nowPortIdx;	//当前控制阀门端口索引
-	CAlgorithm m_chkAlg;//检定过程用到的计算方法
+	CAlgorithm *m_chkAlg;//检定过程用到的计算方法
 
 
 	//检定过程相关的控制参数 begin
 	bool m_continueVerify; //是否连续检定
 	bool m_resetZero;      //是否初值回零
-	QMap<int, int> m_meterNumMap;//被检表最大个数，与规格相关
+	bool m_autopick;       //是否自动采集
 	int m_rowNum;             //表格的行数（被检表的最大个数）
 	int m_meterNum;           //实际检表的个数
+	QMap<int, int> m_meterPosNo; //表位号
 	int m_flowPointNum;       //流量点的个数
 	float *m_meterStartValue; //被检表的初值
 	float *m_meterEndValue;   //被检表的终值
 	float *m_meterTemper;	  //被检表的温度
 	float *m_meterDensity;    //被检表的密度
 	float *m_meterStdValue;   //被检表的标准值
+	float *m_meterError;	  //被检表的误差
 	float m_balStartV;        //天平初值
 	float m_balEndV;          //天平终值
-	float m_pipeInTemper;     //入口温度
-	float m_pipeOutTemper;    //出口温度
+	double m_pipeInTemper;     //入口温度
+	double m_pipeOutTemper;    //出口温度
+	int m_tempCount;		   //
 	//检定过程相关的控制参数 end
 
+	int m_nowOrder;					//当前检定次序
 	ReadComConfig *m_readComConfig; //读串口设置
-	PortSet_Ini_STR m_portsetinfo; //端口配置
+	PortSet_Ini_STR m_portsetinfo;  //端口配置
 
 	void initBalanceCom();     //天平串口
 	void initTemperatureCom(); //温度采集串口
@@ -107,7 +114,7 @@ public:
 	int readParaConfig();		//读参数配置文件
 	int isDataCollectNormal();	//检查数据采集是否正常（天平、温度、电磁流量计等）
 	int isAllMeterInVerifyStatus(); //判断热量表都已进入检定状态
-
+	int isMeterPosValid(int row); //判断表位号是否有效(该表位是否需要检表)
 public slots:
 	void closeEvent(QCloseEvent * event);
 	void removeSubTab(int index);
@@ -124,12 +131,17 @@ public slots:
 	int openBigFlowValve();       //打开大流量点阀门
 	int closeBigFlowValve();      //关闭大流量点阀门
 	int judgeBalanceInitValue(float v); //判断天平质量
+	int judgeBalanceAndSumTemper(float v); //判断天平质量，并累加进出口温度，每秒累加一次，用于计算进出口平均温度
 	void startVerify();           //开始检定
 	int judgeBalanceCapacity();   //判断天平容量是否能够满足检定用量 连续检定
 	int judgeBalanceCapacitySingle(int order); //判断天平容量是否能够满足检定用量 不连续检定
-	int startVerifyFlowPoint(int order);       //单个流量点的检定
+	int prepareVerifyFlowPoint(int order);     //准备单个流量点的检定
+	int startVerifyFlowPoint(int order);       //开始单个流量点的检定
 	int openValve(int portno);    //打开控制阀
 	int closeValve(int portno);   //关闭控制阀
+	int getMeterStartValue();     //获取表初值
+	int getMeterEndValue();       //获取表终值
+	int calcMeterError();         //计算表误差
 
 	void slotFreshBalanceValue(const QString& Str);     //刷新天平数值
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
@@ -141,6 +153,7 @@ public slots:
 	void setValveBtnBackColor(QToolButton *btn, bool status); //设置阀门按钮背景色
 	void setRegBtnBackColor(QPushButton *btn, bool status);	  //设置调节阀按钮背景色
 
+	void on_btnParaSet_clicked();	   //参数设置
 	void on_btnWaterIn_clicked();      //进水阀
 	void on_btnWaterOut_clicked();     //放水阀
 	void on_btnValveBig_clicked();     //大流量阀
@@ -151,6 +164,7 @@ public slots:
 	void on_btnWaterPumpStart_clicked(); //启动水泵
 	void on_btnWaterPumpStop_clicked();  //停止水泵
 
+	void on_tableWidget_cellChanged(int row, int column);
 
 	void freshBigBalaceValue();   //刷新大天平数值 仅用于测试 模拟天平数值变化
 
