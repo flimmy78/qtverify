@@ -104,6 +104,8 @@ void ParaSetDlg::closeEvent(QCloseEvent * event)
 		delete lastParams;
 		lastParams=NULL;
 	}
+
+
 	m_basedb.closedb();
 }
 
@@ -297,6 +299,7 @@ void ParaSetDlg::on_btnSave_clicked()
 	SaveBool();
 	SaveOther();
 	QMessageBox::about(NULL, "OK", "Saving configurations successfully!");
+	emit saveSuccessSignal();
 }
 
 /*

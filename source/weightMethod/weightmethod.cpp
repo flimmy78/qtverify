@@ -44,6 +44,7 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	m_balValue = 0.0;
 	m_tempValue = 20.0;
 /////////////////////////////////////////////////////////////
+	m_exitFlag = true; //退出界面后，不再检查天平容量
 
 	if (!m_db.startdb())
 	{
@@ -96,12 +97,17 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	m_balStartV = 0;
 	m_balEndV = 0;
 
+	m_recNum = 0;
+	m_recPtr = NULL;
+	m_timestamp = 0;
+
 	m_paraSetDlg = NULL;    //参数设置对话框
 	m_paraSetReader = new ParaSetReader(); //读参数设置接口
 	if (!readNowParaConfig()) //获取当前参数设置
 	{
 		qWarning()<<"读取参数配置文件失败!";
 	}
+	showNowKeyParaConfig();
 
 	if (!isComAndPortNormal())
 	{
@@ -122,6 +128,8 @@ WeightMethodDlg::~WeightMethodDlg()
 void WeightMethodDlg::closeEvent( QCloseEvent * event)
 {
 	qDebug()<<"^^^^^WeightMethodDlg::closeEvent";
+
+	m_exitFlag = false;
 
 	if (m_paraSetReader) //读检定参数
 	{
@@ -306,6 +314,10 @@ int WeightMethodDlg::isWaterOutValveOpen()
 //读参数配置文件
 int WeightMethodDlg::readNowParaConfig()
 {
+	if (NULL == m_paraSetReader)
+	{
+		return false;
+	}
 	m_continueVerify = m_paraSetReader->params->bo_converify; //连续检定
 	m_resetZero = m_paraSetReader->params->bo_resetzero; //初值回零
 	m_autopick = m_paraSetReader->params->bo_autopick;   //自动采集
@@ -457,7 +469,7 @@ int WeightMethodDlg::closeBigFlowValve()
 //响应处理天平质量的变化
 int WeightMethodDlg::judgeBalanceInitValue(float v)
 {
-	while (ui.lnEditBigBalance->text().toFloat() < v)
+	while (m_exitFlag && (ui.lnEditBigBalance->text().toFloat() < v))
 	{
 		qDebug()<<"天平重量 ="<<ui.lnEditBigBalance->text().toFloat()<<", 小于要求的重量 "<<v;
 		QTest::qWait(1000);
@@ -468,7 +480,7 @@ int WeightMethodDlg::judgeBalanceInitValue(float v)
 
 int WeightMethodDlg::judgeBalanceAndSumTemper(float v)
 {
-	while (ui.lnEditBigBalance->text().toFloat() < v)
+	while (m_exitFlag && (ui.lnEditBigBalance->text().toFloat() < v))
 	{
 		qDebug()<<"天平重量 ="<<ui.lnEditBigBalance->text().toFloat()<<", 小于要求的重量 "<<v;
 		m_pipeInTemper += ui.lcdNumberInTemper->value();
@@ -495,10 +507,16 @@ void WeightMethodDlg::on_btnStart_clicked()
 //点击"下一步"按钮
 void WeightMethodDlg::on_btnNext_clicked()
 {
+ 	ui.tableWidget->clearContents();
 	m_nowOrder ++;
 	prepareVerifyFlowPoint(m_nowOrder); // 开始进行下一次流量点的检定
 }
 
+//点击"终止检测"按钮
+void WeightMethodDlg::on_btnStop_clicked()
+{
+
+}
 
 //开始检定
 void WeightMethodDlg::startVerify()
@@ -527,6 +545,8 @@ void WeightMethodDlg::startVerify()
 		QMessageBox::warning(this, tr("Warning"), tr("请输入表号！"));
 		return;
 	}
+
+	m_timestamp = QDateTime(QDate(1970,1,1)).secsTo(QDateTime::currentDateTime()); //记录时间戳
 	m_meterStartValue = new float[m_meterNum]; //表初值 
 	memset(m_meterStartValue, 0, sizeof(float)*m_meterNum);
 
@@ -699,25 +719,35 @@ int WeightMethodDlg::startVerifyFlowPoint(int order)
 			{
 				return false;
 			}
-			calcMeterError();
+			calcMeterErrorAndSaveDb();
 		}
 	}
 
 	return true;
 }
 
-int WeightMethodDlg::calcMeterError()
+int WeightMethodDlg::calcMeterErrorAndSaveDb()
 {
 	for (int m=0; m<m_meterNum; m++) //
 	{
 		m_meterError[m] = (m_meterEndValue[m] - m_meterStartValue[m] - m_meterStdValue[m])/m_meterStdValue[m];//计算每个表的误差
 
-// 		ui.tableWidget->setItem(m_meterPosNo[m]-1, 2, new QTableWidgetItem(QString("%1").setNum(m_meterStartValue[m], 'g', 6))); //表初值
-// 		ui.tableWidget->setItem(m_meterPosNo[m]-1, 3, new QTableWidgetItem(QString("%1").setNum(m_meterEndValue[m], 'g', 6)));   //表终值
 		ui.tableWidget->setItem(m_meterPosNo[m]-1, COLUMN_ERROR, new QTableWidgetItem(QString("%1").setNum(m_meterError[m], 'g', 6))); //误差
-		//保存至数据库
 	}
-	
+
+	m_recNum = m_meterNum;
+	m_recPtr = new Record_Quality_STR[m_recNum];
+	for (int i=0; i<m_recNum; i++)
+	{
+		memset(m_recPtr, 0, sizeof(Record_Quality_STR)*m_recNum);
+		m_recPtr[i].timestamp = m_timestamp;
+		m_recPtr[i].meterNo = ui.tableWidget->item(m_meterPosNo[i]-1, 0)->text().toInt();
+		m_recPtr[i].flowPointIdx = m_nowOrder; //
+
+	}
+
+	saveVerifyRecord(); //保存至数据库
+
 	return true; 
 }
 
@@ -797,6 +827,7 @@ void WeightMethodDlg::on_btnParaSet_clicked()
 		delete m_paraSetDlg;
 		m_paraSetDlg = new ParaSetDlg();
 	}
+	connect(m_paraSetDlg, SIGNAL(saveSuccessSignal()), this, SLOT(showNowKeyParaConfig()));
 	m_paraSetDlg->show();
 }
 
@@ -953,7 +984,7 @@ void WeightMethodDlg::on_tableWidget_cellChanged(int row, int column)
 
 		if (row == (m_meterPosNo[m_meterNum-1]-1)) //输入最后一个表终值
 		{
-			calcMeterError();
+			calcMeterErrorAndSaveDb();
 		}
 		else //不是最后一个表终值,自动定位到下一个
 		{
@@ -977,4 +1008,28 @@ int WeightMethodDlg::isMeterPosValid(int row)
 		}
 	}
 	return -1;
+}
+
+//保存检定记录
+int WeightMethodDlg::saveVerifyRecord()
+{
+ 	m_db.insertVerifyRec(m_recPtr, m_recNum);
+	return true;
+}
+
+//显示当前关键参数设置信息
+void WeightMethodDlg::showNowKeyParaConfig()
+{
+	if (NULL == m_paraSetReader)
+	{
+		return;
+	}
+	else
+	{
+		delete m_paraSetReader;
+		m_paraSetReader = new ParaSetReader();
+	}
+	ui.cmbAutoPick->setCurrentIndex(m_paraSetReader->params->bo_autopick);
+	ui.cmbContinue->setCurrentIndex(m_paraSetReader->params->bo_converify);
+// 	ui.labelStandard->setText();
 }

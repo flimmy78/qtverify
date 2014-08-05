@@ -91,7 +91,7 @@ public:
 	int m_nowPortIdx;	//当前控制阀门端口索引
 	CAlgorithm *m_chkAlg;//检定过程用到的计算方法
 
-
+	bool m_exitFlag;      //关闭界面后退出
 	//检定过程相关的控制参数 begin
 	bool m_continueVerify; //是否连续检定
 	bool m_resetZero;      //是否初值回零
@@ -113,6 +113,10 @@ public:
 	int m_tempCount;		   //
 	//检定过程相关的控制参数 end
 
+	int m_recNum; //有效的检定记录个数
+	Record_Quality_PTR m_recPtr; //有效的检定记录
+	int m_timestamp;
+
 	int m_nowOrder;					//当前检定次序
 	ReadComConfig *m_readComConfig; //读串口设置
 	PortSet_Ini_STR m_portsetinfo;  //端口配置
@@ -128,12 +132,15 @@ public:
 	int isDataCollectNormal();	//检查数据采集是否正常（天平、温度、电磁流量计等）
 	int isAllMeterInVerifyStatus(); //判断热量表都已进入检定状态
 	int isMeterPosValid(int row); //判断表位号是否有效(该表位是否需要检表)
+
+
 public slots:
 	void closeEvent(QCloseEvent * event);
 	void removeSubTab(int index);
-	void on_btnExhaust_clicked();  //点击"排气按钮"
+	void on_btnExhaust_clicked();  //点击"排气"按钮
 	void on_btnStart_clicked();    //点击"开始"按钮
-	void on_btnNext_clicked();
+	void on_btnNext_clicked();     //点击"下一步"按钮
+	void on_btnStop_clicked();     //点击"终止检测"按钮
 	int openAllValuesAndPump();   //打开所有阀门和水泵
 	void slotExaustFinished();    //排气时间结束
 	int readMeterNumber();        //读取表号
@@ -154,7 +161,7 @@ public slots:
 	int closeValve(int portno);   //关闭控制阀
 	int getMeterStartValue();     //获取表初值
 	int getMeterEndValue();       //获取表终值
-	int calcMeterError();         //计算表误差
+	int calcMeterErrorAndSaveDb();//计算表误差
 
 	void slotFreshBalanceValue(const QString& Str);     //刷新天平数值
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
@@ -178,13 +185,15 @@ public slots:
 	void on_btnWaterPumpStop_clicked();  //停止水泵
 
 	void on_tableWidget_cellChanged(int row, int column);
+	int saveVerifyRecord(); //保存检定记录
+
+	void showNowKeyParaConfig(); //显示当前关键参数设置信息
 
 	void freshBigBalaceValue();   //刷新大天平数值 仅用于测试 模拟天平数值变化
 
 private slots:
 
 signals:
-
 
 private:
 	Ui::WeightMethodClass ui;

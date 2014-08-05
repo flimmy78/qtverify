@@ -13,6 +13,7 @@
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
+#include <QtGui/QComboBox>
 #include <QtGui/QGridLayout>
 #include <QtGui/QGroupBox>
 #include <QtGui/QHBoxLayout>
@@ -37,8 +38,11 @@ public:
     QWidget *tab1;
     QPushButton *btnParaSet;
     QGroupBox *groupBox;
-    QLabel *label;
-    QLabel *label_2;
+    QLabel *labelStandard;
+    QLabel *label_14;
+    QLabel *label_15;
+    QComboBox *cmbAutoPick;
+    QComboBox *cmbContinue;
     QGroupBox *groupBox_2;
     QGridLayout *gridLayout_4;
     QHBoxLayout *horizontalLayout;
@@ -105,12 +109,21 @@ public:
         groupBox = new QGroupBox(tab1);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         groupBox->setGeometry(QRect(20, 660, 261, 121));
-        label = new QLabel(groupBox);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(12, 27, 30, 16));
-        label_2 = new QLabel(groupBox);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(12, 77, 30, 16));
+        labelStandard = new QLabel(groupBox);
+        labelStandard->setObjectName(QString::fromUtf8("labelStandard"));
+        labelStandard->setGeometry(QRect(10, 27, 81, 16));
+        label_14 = new QLabel(groupBox);
+        label_14->setObjectName(QString::fromUtf8("label_14"));
+        label_14->setGeometry(QRect(10, 60, 81, 16));
+        label_15 = new QLabel(groupBox);
+        label_15->setObjectName(QString::fromUtf8("label_15"));
+        label_15->setGeometry(QRect(10, 90, 81, 16));
+        cmbAutoPick = new QComboBox(groupBox);
+        cmbAutoPick->setObjectName(QString::fromUtf8("cmbAutoPick"));
+        cmbAutoPick->setGeometry(QRect(110, 60, 111, 22));
+        cmbContinue = new QComboBox(groupBox);
+        cmbContinue->setObjectName(QString::fromUtf8("cmbContinue"));
+        cmbContinue->setGeometry(QRect(110, 90, 111, 22));
         groupBox_2 = new QGroupBox(tab1);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
         groupBox_2->setGeometry(QRect(290, 630, 401, 151));
@@ -408,8 +421,19 @@ public:
         WeightMethodClass->setWindowTitle(QApplication::translate("WeightMethodClass", "\350\264\250\351\207\217\346\263\225\346\243\200\345\256\232", 0, QApplication::UnicodeUTF8));
         btnParaSet->setText(QApplication::translate("WeightMethodClass", "\345\217\202\346\225\260\350\256\276\347\275\256", 0, QApplication::UnicodeUTF8));
         groupBox->setTitle(QApplication::translate("WeightMethodClass", "\345\275\223\345\211\215\345\217\202\346\225\260(\345\205\263\351\224\256\344\277\241\346\201\257)", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("WeightMethodClass", "\350\247\204\346\240\274", 0, QApplication::UnicodeUTF8));
-        label_2->setText(QApplication::translate("WeightMethodClass", "\345\236\213\345\217\267", 0, QApplication::UnicodeUTF8));
+        labelStandard->setText(QApplication::translate("WeightMethodClass", "\350\247\204\346\240\274\357\274\232", 0, QApplication::UnicodeUTF8));
+        label_14->setText(QApplication::translate("WeightMethodClass", "\351\207\207\351\233\206\346\226\271\345\274\217\357\274\232", 0, QApplication::UnicodeUTF8));
+        label_15->setText(QApplication::translate("WeightMethodClass", "\346\230\257\345\220\246\350\277\236\347\273\255", 0, QApplication::UnicodeUTF8));
+        cmbAutoPick->clear();
+        cmbAutoPick->insertItems(0, QStringList()
+         << QApplication::translate("WeightMethodClass", "\346\211\213\345\212\250\351\207\207\351\233\206", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WeightMethodClass", "\350\207\252\345\212\250\351\207\207\351\233\206", 0, QApplication::UnicodeUTF8)
+        );
+        cmbContinue->clear();
+        cmbContinue->insertItems(0, QStringList()
+         << QApplication::translate("WeightMethodClass", "\351\235\236\350\277\236\347\273\255\346\243\200\345\256\232", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WeightMethodClass", "\350\277\236\347\273\255\346\243\200\345\256\232", 0, QApplication::UnicodeUTF8)
+        );
         groupBox_2->setTitle(QApplication::translate("WeightMethodClass", "\351\230\200\351\227\250\343\200\201\346\260\264\346\263\265\343\200\201\345\217\230\351\242\221\345\231\250\346\216\247\345\210\266", 0, QApplication::UnicodeUTF8));
         label_13->setText(QApplication::translate("WeightMethodClass", "\351\242\221\347\216\207", 0, QApplication::UnicodeUTF8));
         btnWaterIn->setText(QApplication::translate("WeightMethodClass", "\350\277\233\n"

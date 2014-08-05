@@ -59,10 +59,15 @@ public:
 	void initUiData(); //从数据库读取记录，填充combox等
 	void closeEvent(QCloseEvent * event);
 //  void showEvent(QShowEvent *event);
+
+signals:
+	void saveSuccessSignal();
+
 public slots:
 	void on_btnExit_clicked();
 	void on_btnSave_clicked();
 	void on_cmbStandard_currentIndexChanged();
+
 private:
 	Ui::ParaSetDlgClass ui;
 	bool cBoxData_inited;//标记, 界面的下拉条已经从数据库中读取了数据
