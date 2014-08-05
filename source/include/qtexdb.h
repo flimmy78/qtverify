@@ -44,6 +44,8 @@ public:
 	int insertVerifyRec(Record_Quality_PTR ptr);
 
 	QString getTblDdl(QString tbl_name);
+	QString removeComment(QString s);
+	QMap<QString, QString> getColInfo(QString ddl);
 private:
 
 public slots:

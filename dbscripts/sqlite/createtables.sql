@@ -123,35 +123,35 @@ F_TimeStamp interger not null,      --时间戳（距离1970年1月1日的秒数
 F_MeterNo smallint not null,        --表号
 F_FlowPointIdx smallint not null,   --流量点索引，例如1,2,3,4...
 F_FlowPoint float,                  --流量点数值，单位m3/h
-F_TotalFlag	smallint,               --总量检定标志，0：分量法；1：总量法
+F_TotalFlag smallint,               --总量检定标志，0：分量法；1：总量法
 F_MeterValue0 float,                --热量表初值（体积或热量），单位L
 F_MeterValue1 float,                --热量表终值（体积或热量），单位L
 F_MeterDeltaV float,                --热量表示值（体积或热量），单位L，=(终值-初值)
 F_BalWeight0 float,                 --天平初值（重量），单位kg
 F_BalWeight1 float,                 --天平终值（重量），单位kg
 F_BalDeltaW float,                  --天平示值（重量），单位kg，=(终值-初值)
-F_InSlotTemper	float,              --恒温槽入口温度，单位℃(总量检定使用)
-F_OutSlotTemper	float,              --恒温槽出口温度，单位℃(总量检定使用)
+F_InSlotTemper float,              	--恒温槽入口温度，单位℃(总量检定使用)
+F_OutSlotTemper float,              --恒温槽出口温度，单位℃(总量检定使用)
 F_PipeTemper float,                 --分配到每个表位的管路温度，单位℃(分量检定使用)
 F_Density float,                    --密度，单位kg/L
 F_StandValue float,                 --经过修正的标准值，体积(L)或热力
 F_DispError float,                  --示值误差，单位%
 F_StdError float,                   --要求误差(合格标准),单位%
-F_Result	smallint,               --检定结果（1：合格，0：不合格）
+F_Result smallint,               	--检定结果（1：合格，0：不合格）
 F_MeterPosNo smallint,              --表位号
 F_Model smallint,                   --表型号()，外键(T_Meter_Model)
 F_Standard smallint,                --表规格(DN15/DN20/DN25)，外键(T_Meter_Standard)
 F_MeterType smallint,               --表类型()，外键(T_Meter_Type)
-F_Manufacture	smallint,             --制造单位，外键(T_Manufacture_Unit)
+F_Manufacture smallint,             --制造单位，外键(T_Manufacture_Unit)
 F_VerifyUnit smallint,              --送检单位，外键(T_Verify_Unit)
 F_Grade smallint,                   --计量等级（1,2,3）
 F_VerifyPerson smallint,            --检定员，外键(T_User_Def_Tab)
 F_CheckPerson smallint,             --核验员，外键(T_User_Def_Tab)
-F_VerifyDate	interger,             --检定日期(20140522)
+F_VerifyDate interger,             	--检定日期(20140522)
 F_EnvTemper float,                  --环境温度，单位℃
 F_EnvHumidity float,                --环境湿度
 F_AirPressure float,                --大气压力
-F_ValidDate	interger,               --检表结果有效期(生产型不需要)
+F_ValidDate interger,               --检表结果有效期(生产型不需要)
 F_RecordNumber interger             --检定记录证书编号(每块表每次检定（多个流量点共用）形成一个编号)
 );
 create unique index uk_T_Verify_Record on T_Verify_Record (F_MeterNo, F_TimeStamp, F_FlowPointIdx);

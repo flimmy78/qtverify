@@ -339,16 +339,19 @@ int CBaseExdb::insertVerifyRec(Record_Quality_PTR ptr)
 	return true;
 }
 
-/******************************************************/
-/* 获取表的定义语句                                  */
-/* tbl_name: 表的名                                     */
-/* 异常: 表名不存在                                    */
+/******************************************************
+* 获取表的定义语句                                  *
+* tbl_name: 表的名                                     *
+* 异常: 表名不存在                                    *
 /******************************************************/
 QString CBaseExdb::getTblDdl(QString tbl_name)
 {
 	QString sql = QString("SELECT sql FROM sqlite_master WHERE upper(tbl_name) = upper('%1') AND type = 'table'").arg(tbl_name);//查询语句
 	QString ddl;//表的定义语句
-	bool open = startdb();
+	if (!db.isOpen())
+	{
+		startdb();
+	}
 	QStringList tbls = db.tables();
 	//如果表名不存在, 抛出异常
 	if (!tbls.contains(tbl_name, Qt::CaseInsensitive))
@@ -366,6 +369,70 @@ QString CBaseExdb::getTblDdl(QString tbl_name)
 	{
 		throw query.lastError().text();
 	}
-	closedb();
+	if (db.isOpen())
+	{
+		closedb();
+	}
 	return ddl;
+}
+
+/************************************************************************/
+/* 去掉sql语句中的注释                                                    */
+/* s: sql语句, 可以带注释, 也可以不带注释                      */
+/************************************************************************/
+QString CBaseExdb::removeComment(QString s)
+{
+	QString t;
+	bool starts=false, ends=false;
+	for(int i = 0; i < s.length() - 1; i++)
+	{
+		//注释以"--"开始, 以'\n'结束
+		if ( (s[i] == '-') && (s[i + 1] == '-'))
+		{
+			//comment starts
+			while ( s[i] != '\n')
+			{
+				i++;
+			}
+			//comment ends
+		}
+		else
+		{
+			t.append(s[i]);
+		}
+	}
+
+	//由于循环时, 只扫描到倒数第2个字符
+	//所以要检查最后一个字符是否需要追加至返回字串
+	char last = s[s.length()-1].toAscii();
+	if (last != ' ' && last != '\n')
+	{
+		t.append(last);
+	}
+	return t;
+}
+
+/************************************************************************/
+/* 得到QMap<字段名, 字段类型>键值                             */
+/* ddl: 建表的sql语句                                                        */
+/************************************************************************/
+QMap<QString, QString> CBaseExdb::getColInfo(QString ddl)
+{
+	/////////////////去掉括号,只保留字段定义///////////////////////
+	int left_parenthesis_idx = ddl.indexOf('(');//第一个左括号索引
+	int right_parenthesis_idx = ddl.lastIndexOf(')');//最后一个右括号索引
+	QString mid = ddl.mid(left_parenthesis_idx + 1, right_parenthesis_idx - left_parenthesis_idx - 1);
+	//mid = mid.left(mid.length()-1);
+	////////////////////去掉注释, 并合并空白/////////////////////////
+	QString remove_comment = removeComment(mid).simplified();
+	/////////////////////用','号打断//////////////////////////////////////
+	QStringList columns = remove_comment.split(',');
+
+	QMap<QString, QString> colInfo;//QMap<字段名, 字段类型>键值
+	for (int i = 0; i < columns.count(); i++)
+	{
+		QStringList col = columns[i].simplified().split(' ');//去掉字串开头与结尾的空白, 合并中间的空白
+		colInfo[col[0]] = col[1];//存储键-值
+	}
+	return colInfo;
 }
