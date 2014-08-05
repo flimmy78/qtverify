@@ -341,7 +341,7 @@ int CBaseExdb::insertVerifyRec(Record_Quality_PTR ptr)
 
 /******************************************************
 * 获取表的定义语句                                  *
-* tbl_name: 表的名                                     *
+* tbl_name: 表的名称                                 *
 * 异常: 表名不存在                                    *
 /******************************************************/
 QString CBaseExdb::getTblDdl(QString tbl_name)
@@ -414,10 +414,12 @@ QString CBaseExdb::removeComment(QString s)
 
 /************************************************************************/
 /* 得到QMap<字段名, 字段类型>键值                             */
-/* ddl: 建表的sql语句                                                        */
+/* tbl_name: 表的名称                                                       */
 /************************************************************************/
-QMap<QString, QString> CBaseExdb::getColInfo(QString ddl)
+QMap<QString, QString> CBaseExdb::getColInfo(QString tbl_name)
 {
+	//获取建表的sql语句
+	QString ddl = getTblDdl(tbl_name);
 	/////////////////去掉括号,只保留字段定义///////////////////////
 	int left_parenthesis_idx = ddl.indexOf('(');//第一个左括号索引
 	int right_parenthesis_idx = ddl.lastIndexOf(')');//最后一个右括号索引
