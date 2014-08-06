@@ -134,7 +134,7 @@ class Record_Quality_STR{
 public:
     UINT32  id;                   
 	UINT32	timestamp;
-	UINT16  meterNo;
+	UINT32  meterNo;
 	UINT16  flowPointIdx;
 	float   flowPoint;         //流量(m3/h)
 	UINT16  totalFlag;         //总量检定标志(1:总量检定  0:分量检定)
