@@ -120,7 +120,7 @@ create table T_Verify_Record
 (
 F_ID integer not null primary key autoincrement,
 F_TimeStamp interger not null,      --时间戳（距离1970年1月1日的秒数，10位整数，例如1406043519）
-F_MeterNo smallint not null,        --表号
+F_MeterNo interger not null,        --表号
 F_FlowPointIdx smallint not null,   --流量点索引，例如1,2,3,4...
 F_FlowPoint float,                  --流量点数值，单位m3/h
 F_TotalFlag smallint,               --总量检定标志，0：分量法；1：总量法
