@@ -36,6 +36,7 @@
 /*
 ** 表格列
 */
+#define COLUMN_METER_NUMBER 0 //表号列
 #define COLUMN_FLOW_POINT	1 //流量点
 #define COLUMN_START_VALUE	2 //初值列
 #define COLUMN_END_VALUE	3 //终值列
@@ -95,6 +96,8 @@ public:
 	bool m_exitFlag;      //关闭界面后退出
 
 	//检定过程相关的控制参数 begin
+	Quality_Params_PTR m_nowParams; //当前检定参数
+
 	bool m_continueVerify;    //是否连续检定
 	bool m_resetZero;         //是否初值回零
 	bool m_autopick;          //是否自动采集
@@ -135,7 +138,6 @@ public:
 
 	int isComAndPortNormal();   //串口、端口设置是否正常
 	int isWaterOutValveOpen();  //检查放水阀门是否打开
-	int readNowParaConfig();	//读参数配置文件
 	int isDataCollectNormal();	//检查数据采集是否正常（天平、温度、电磁流量计等）
 	int isAllMeterInVerifyStatus(); //判断热量表都已进入检定状态
 	int isMeterPosValid(int row);   //判断表位号是否有效(该表位是否需要检表)
@@ -144,6 +146,11 @@ public:
 public slots:
 	void closeEvent(QCloseEvent * event);
 	void removeSubTab(int index);
+
+	int readNowParaConfig();	 //获取当前检定参数
+	void showNowKeyParaConfig(); //显示当前关键参数设置信息
+	void setTableRowCount();     //设置表格行数
+
 	void on_btnExhaust_clicked(); //点击"排气"按钮
 	void on_btnStart_clicked();   //点击"开始"按钮
 	void on_btnNext_clicked();    //点击"下一步"按钮
@@ -194,7 +201,6 @@ public slots:
 	void on_tableWidget_cellChanged(int row, int column);
 	int saveVerifyRecord(); //保存检定记录
 
-	void showNowKeyParaConfig(); //显示当前关键参数设置信息
 
 	void freshBigBalaceValue();   //刷新大天平数值 仅用于测试 模拟天平数值变化
 

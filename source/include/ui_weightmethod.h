@@ -128,7 +128,7 @@ public:
         cmbContinue->setGeometry(QRect(110, 90, 111, 22));
         groupBox_2 = new QGroupBox(tab1);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setGeometry(QRect(290, 630, 401, 151));
+        groupBox_2->setGeometry(QRect(290, 630, 401, 141));
         gridLayout_4 = new QGridLayout(groupBox_2);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
         horizontalLayout = new QHBoxLayout();

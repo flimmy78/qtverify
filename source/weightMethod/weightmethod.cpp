@@ -28,7 +28,7 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 {
 	qDebug()<<"WeightMethodDlg thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
-
+	ui.btnNext->hide(); //隐藏"下一步"按钮
 /*	
 	ui.tabWidget->setTabsClosable(true);
 	connect(ui.tabWidget,SIGNAL(tabCloseRequested(int)),this,SLOT(removeSubTab(int)));
@@ -81,6 +81,8 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	m_tempCount = 0; //计算平均温度用的累加计数器
 	m_nowOrder = 0;  //当前进行的检定序号
 
+	m_nowParams = new Quality_Params_STR;
+	memset(m_nowParams, 0, sizeof(Quality_Params_STR));
 	m_continueVerify = true; //连续检定
 	m_resetZero = false;     //初值回零
 	m_autopick = false;      //自动采集
@@ -105,11 +107,10 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 
 	m_paraSetDlg = NULL;    //参数设置对话框
 	m_paraSetReader = new ParaSetReader(); //读参数设置接口
-	if (!readNowParaConfig()) //获取当前参数设置
+	if (!readNowParaConfig()) //获取当前检定参数
 	{
 		qWarning()<<"读取参数配置文件失败!";
 	}
-	showNowKeyParaConfig();
 
 	if (!isComAndPortNormal())
 	{
@@ -313,23 +314,39 @@ int WeightMethodDlg::isWaterOutValveOpen()
 	return true;
 }
 
-//读参数配置文件
+//获取当前检定参数
 int WeightMethodDlg::readNowParaConfig()
 {
 	if (NULL == m_paraSetReader)
 	{
 		return false;
 	}
-	m_continueVerify = m_paraSetReader->params->bo_converify; //连续检定
-	m_resetZero = m_paraSetReader->params->bo_resetzero; //初值回零
-	m_autopick = m_paraSetReader->params->bo_autopick;   //自动采集
-	m_flowPointNum = m_paraSetReader->params->total_fp;  //有效流量点的个数 
-	m_exaustSecond = m_paraSetReader->params->ex_time;   //排气时间
-	m_rowNum = m_paraSetReader->params->m_maxMeters;     //不同表规格对应的最大检表数量
-	m_totalFlag = m_paraSetReader->params->bo_total;	 //总量检定标志(1:总量检定  0:分量检定)
-	m_standard = m_paraSetReader->params->m_stand;       //表规格
-	m_model = m_paraSetReader->params->m_model;   //表型号
-	m_meterType = m_paraSetReader->params->m_type;//表类型
+
+	m_nowParams = m_paraSetReader->getParams();
+	m_continueVerify = m_nowParams->bo_converify; //连续检定
+	m_resetZero = m_nowParams->bo_resetzero; //初值回零
+	m_autopick = m_nowParams->bo_autopick;   //自动采集
+	m_flowPointNum = m_nowParams->total_fp;  //有效流量点的个数 
+	m_exaustSecond = m_nowParams->ex_time;   //排气时间
+	m_rowNum = m_nowParams->m_maxMeters;     //不同表规格对应的最大检表数量
+	m_totalFlag = m_nowParams->bo_total;	 //总量检定标志(1:总量检定  0:分量检定)
+	m_standard = m_nowParams->m_stand;       //表规格
+	m_model = m_nowParams->m_model;   //表型号
+	m_meterType = m_nowParams->m_type;//表类型
+
+	setTableRowCount();
+	showNowKeyParaConfig();
+
+	return true;
+}
+
+//设置表格行数
+void WeightMethodDlg::setTableRowCount()
+{
+	if (m_rowNum <= 0)
+	{
+		return;
+	}
 
 	ui.tableWidget->setRowCount(m_rowNum); //设置表格行数
 	QStringList vLabels;
@@ -338,8 +355,19 @@ int WeightMethodDlg::readNowParaConfig()
 		vLabels<<QString("表位号%1").arg(i);
 	}
 	ui.tableWidget->setVerticalHeaderLabels(vLabels);
+}
 
-	return true;
+//显示当前关键参数设置信息
+void WeightMethodDlg::showNowKeyParaConfig()
+{
+	if (NULL == m_nowParams)
+	{
+		return;
+	}
+
+	ui.cmbAutoPick->setCurrentIndex(m_nowParams->bo_autopick);
+	ui.cmbContinue->setCurrentIndex(m_nowParams->bo_converify);
+// 	ui.labelStandard->setText();
 }
 
 /*
@@ -512,7 +540,18 @@ void WeightMethodDlg::on_btnStart_clicked()
 //点击"下一步"按钮
 void WeightMethodDlg::on_btnNext_clicked()
 {
- 	ui.tableWidget->clearContents();
+	for (int i=0; i<m_rowNum; i++)
+	{
+		for (int j=1; j<ui.tableWidget->columnCount(); j++)
+		{
+			if (ui.tableWidget->item(i,j) == 0)
+			{
+				continue;
+			}
+			ui.tableWidget->item(i,j)->setText("");
+		}
+	}
+// 	ui.tableWidget->clearContents();
 	m_nowOrder ++;
 	prepareVerifyFlowPoint(m_nowOrder); // 开始进行下一次流量点的检定
 }
@@ -728,7 +767,6 @@ int WeightMethodDlg::startVerifyFlowPoint(int order)
 			calcMeterErrorAndSaveDb();
 		}
 	}
-
 	return true;
 }
 
@@ -769,14 +807,24 @@ int WeightMethodDlg::calcMeterErrorAndSaveDb()
 		m_recPtr[i].standard = m_standard;
 		m_recPtr[i].model = m_model;
 		m_recPtr[i].meterType = m_meterType; //表类型
-		m_recPtr[i].manufacture = m_paraSetReader->params->m_manufac;
-		m_recPtr[i].verifyUnit = m_paraSetReader->params->m_vcomp;
-		m_recPtr[i].verifyPerson = m_paraSetReader->params->m_vperson;
+		m_recPtr[i].manufacture = m_nowParams->m_manufac;
+		m_recPtr[i].verifyUnit = m_nowParams->m_vcomp;
+		m_recPtr[i].verifyPerson = m_nowParams->m_vperson;
 
 
 	}
 
 	saveVerifyRecord(); //保存至数据库
+
+
+	if (!m_continueVerify)
+	{
+		ui.btnNext->show();
+	}
+	else
+	{
+		ui.btnNext->hide();
+	}
 
 	return true; 
 }
@@ -857,7 +905,7 @@ void WeightMethodDlg::on_btnParaSet_clicked()
 		delete m_paraSetDlg;
 		m_paraSetDlg = new ParaSetDlg();
 	}
-	connect(m_paraSetDlg, SIGNAL(saveSuccessSignal()), this, SLOT(showNowKeyParaConfig()));
+	connect(m_paraSetDlg, SIGNAL(saveSuccessSignal()), this, SLOT(readNowParaConfig()));
 	m_paraSetDlg->show();
 }
 
@@ -1045,21 +1093,4 @@ int WeightMethodDlg::saveVerifyRecord()
 {
  	m_db.insertVerifyRec(m_recPtr, m_recNum);
 	return true;
-}
-
-//显示当前关键参数设置信息
-void WeightMethodDlg::showNowKeyParaConfig()
-{
-	if (NULL == m_paraSetReader)
-	{
-		return;
-	}
-	else
-	{
-		delete m_paraSetReader;
-		m_paraSetReader = new ParaSetReader();
-	}
-	ui.cmbAutoPick->setCurrentIndex(m_paraSetReader->params->bo_autopick);
-	ui.cmbContinue->setCurrentIndex(m_paraSetReader->params->bo_converify);
-// 	ui.labelStandard->setText();
 }
