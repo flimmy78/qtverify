@@ -21,6 +21,7 @@
 #include "weightmethod.h"
 #include "commondefine.h"
 #include "algorithm.h"
+#include "math.h"
 
 WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
@@ -37,13 +38,13 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	}
 */
 
-/////////////////////////////////////////////////////////////
+/*********************************************************/
 	m_balTimer = new QTimer(this);
 	connect(m_balTimer, SIGNAL(timeout()), this, SLOT(freshBigBalaceValue()));
 	m_balTimer->start(200); //模拟天平每200毫秒更新一次
 	m_balValue = 0.0;
 	m_tempValue = 20.0;
-/////////////////////////////////////////////////////////////
+/*********************************************************/
 	m_exitFlag = true; //退出界面后，不再检查天平容量
 
 	if (!m_db.startdb())
@@ -51,8 +52,7 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 		qFatal("打开数据库失败!");
 	}
 
-	m_readComConfig = NULL; //读串口设置接口
-	m_readComConfig = new ReadComConfig();
+	m_readComConfig = new ReadComConfig(); //读串口设置接口
 
 	m_balanceObj = NULL;
 	initBalanceCom();		//初始化天平串口
@@ -67,7 +67,7 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	initValveStatus();      //初始化阀门状态
 
 
-	m_chkAlg = new CAlgorithm();//初始化计算类
+	m_chkAlg = new CAlgorithm();//计算类接口
 
 	if (!getPortSetIni(&m_portsetinfo)) //获取下位机端口号配置信息
 	{
@@ -78,7 +78,7 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	m_exaustTimer = new QTimer(this); //排气定时器
 	connect(m_exaustTimer, SIGNAL(timeout()), this, SLOT(slotExaustFinished()));
 
-	m_tempCount = 0; //计算平均温度用的计数器
+	m_tempCount = 0; //计算平均温度用的累加计数器
 	m_nowOrder = 0;  //当前进行的检定序号
 
 	m_continueVerify = true; //连续检定
@@ -88,6 +88,7 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	m_rowNum = 0;            //某规格表最多支持的检表个数
 	m_meterNum = 0;          //实际检表个数
 	m_exaustSecond = 45;     //默认排气时间45秒
+	m_totalFlag = 0;         //默认分量检定
 	m_meterStartValue = NULL;
 	m_meterEndValue = NULL;
 	m_meterTemper = NULL;
@@ -96,10 +97,11 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	m_meterError = NULL;
 	m_balStartV = 0;
 	m_balEndV = 0;
+	m_timeStamp = 0;
+	m_flowPoint = 0;
 
 	m_recNum = 0;
 	m_recPtr = NULL;
-	m_timestamp = 0;
 
 	m_paraSetDlg = NULL;    //参数设置对话框
 	m_paraSetReader = new ParaSetReader(); //读参数设置接口
@@ -323,8 +325,11 @@ int WeightMethodDlg::readNowParaConfig()
 	m_autopick = m_paraSetReader->params->bo_autopick;   //自动采集
 	m_flowPointNum = m_paraSetReader->params->total_fp;  //有效流量点的个数 
 	m_exaustSecond = m_paraSetReader->params->ex_time;   //排气时间
-	int standard = m_paraSetReader->params->m_stand;     //表规格
 	m_rowNum = m_paraSetReader->params->m_maxMeters;     //不同表规格对应的最大检表数量
+	m_totalFlag = m_paraSetReader->params->bo_total;	 //总量检定标志(1:总量检定  0:分量检定)
+	m_standard = m_paraSetReader->params->m_stand;       //表规格
+	m_model = m_paraSetReader->params->m_model;   //表型号
+	m_meterType = m_paraSetReader->params->m_type;//表类型
 
 	ui.tableWidget->setRowCount(m_rowNum); //设置表格行数
 	QStringList vLabels;
@@ -546,7 +551,8 @@ void WeightMethodDlg::startVerify()
 		return;
 	}
 
-	m_timestamp = QDateTime(QDate(1970,1,1)).secsTo(QDateTime::currentDateTime()); //记录时间戳
+	m_timeStamp = QDateTime(QDate(1970,1,1)).secsTo(QDateTime::currentDateTime()); //记录时间戳
+
 	m_meterStartValue = new float[m_meterNum]; //表初值 
 	memset(m_meterStartValue, 0, sizeof(float)*m_meterNum);
 
@@ -688,7 +694,7 @@ int WeightMethodDlg::startVerifyFlowPoint(int order)
 	m_pipeInTemper = ui.lcdNumberInTemper->value();
 	m_pipeOutTemper = ui.lcdNumberOutTemper->value();
 
-	float flow = m_paraSetReader->getFpBySeq(order).fp_verify; //order对应的流量点
+	m_flowPoint = m_paraSetReader->getFpBySeq(order).fp_verify; //order对应的流量点
 	int portNo = m_paraSetReader->getFpBySeq(order).fp_valve;  //order对应的阀门端口号
 	float verifyQuantity = m_paraSetReader->getFpBySeq(order).fp_quantity; //第order次检定对应的检定量
 	if (openValve(portNo)) //打开阀门，开始跑流量
@@ -706,7 +712,7 @@ int WeightMethodDlg::startVerifyFlowPoint(int order)
 				m_meterDensity[m] = m_chkAlg->getDensityByQuery(m_meterTemper[m]);//计算每个被检表的密度
 				m_meterStdValue[m] = m_chkAlg->getStdVolByPos((m_balEndV-m_balStartV), m_pipeInTemper, m_pipeOutTemper, m_meterPosNo[m]); //计算每个被检表的体积标准值
 
-				ui.tableWidget->setItem(m_meterPosNo[m]-1, COLUMN_FLOW_POINT, new QTableWidgetItem(QString("%1").setNum(flow, 'g', 6)));//流量点
+				ui.tableWidget->setItem(m_meterPosNo[m]-1, COLUMN_FLOW_POINT, new QTableWidgetItem(QString("%1").setNum(m_flowPoint, 'g', 6)));//流量点
 				ui.tableWidget->setItem(m_meterPosNo[m]-1, COLUMN_BAL_START, new QTableWidgetItem(QString("%1").setNum(m_balStartV, 'g', 6)));//天平初值
 				ui.tableWidget->setItem(m_meterPosNo[m]-1, COLUMN_BAL_END, new QTableWidgetItem(QString("%1").setNum(m_balEndV, 'g', 6)));    //天平终值
 				ui.tableWidget->setItem(m_meterPosNo[m]-1, COLUMN_TEMPER, new QTableWidgetItem(QString("%1").setNum(m_meterTemper[m], 'g', 6)));  //温度
@@ -737,12 +743,36 @@ int WeightMethodDlg::calcMeterErrorAndSaveDb()
 
 	m_recNum = m_meterNum;
 	m_recPtr = new Record_Quality_STR[m_recNum];
+	memset(m_recPtr, 0, sizeof(Record_Quality_STR)*m_recNum);
 	for (int i=0; i<m_recNum; i++)
 	{
-		memset(m_recPtr, 0, sizeof(Record_Quality_STR)*m_recNum);
-		m_recPtr[i].timestamp = m_timestamp;
+		m_recPtr[i].timestamp = m_timeStamp;
+		m_recPtr[i].flowPoint = m_flowPoint;
 		m_recPtr[i].meterNo = ui.tableWidget->item(m_meterPosNo[i]-1, 0)->text().toInt();
 		m_recPtr[i].flowPointIdx = m_nowOrder; //
+		m_recPtr[i].totalFlag = m_totalFlag;
+		m_recPtr[i].meterValue0 = m_meterStartValue[i];
+		m_recPtr[i].meterValue1 = m_meterEndValue[i];
+		m_recPtr[i].meterDeltaV = m_recPtr[i].meterValue1 - m_recPtr[i].meterValue0;
+		m_recPtr[i].balWeight0 = m_balStartV;
+		m_recPtr[i].balWeight1 = m_balEndV;
+		m_recPtr[i].balDeltaW = m_recPtr[i].balWeight1 - m_recPtr[i].balWeight0;
+		m_recPtr[i].inSlotTemper = m_pipeInTemper;
+		m_recPtr[i].outSlotTemper = m_pipeOutTemper;
+		m_recPtr[i].pipeTemper = m_meterTemper[i]; 
+		m_recPtr[i].density = m_meterDensity[i];
+		m_recPtr[i].stdValue = m_meterStdValue[i];
+		m_recPtr[i].dispError = m_meterError[i];
+		m_recPtr[i].stdError = 0.02; //二级表 标准误差
+		m_recPtr[i].result = (fabs(m_recPtr[i].dispError) <= fabs(m_recPtr[i].stdError)) ? 1 : 0;
+		m_recPtr[i].meterPosNo = m_meterPosNo[i];
+		m_recPtr[i].standard = m_standard;
+		m_recPtr[i].model = m_model;
+		m_recPtr[i].meterType = m_meterType; //表类型
+		m_recPtr[i].manufacture = m_paraSetReader->params->m_manufac;
+		m_recPtr[i].verifyUnit = m_paraSetReader->params->m_vcomp;
+		m_recPtr[i].verifyPerson = m_paraSetReader->params->m_vperson;
+
 
 	}
 

@@ -89,13 +89,15 @@ public:
 	QMap<int, QToolButton*> m_valveBtn;	
 	int m_nowPortNo;	//当前控制阀门端口号
 	int m_nowPortIdx;	//当前控制阀门端口索引
+
 	CAlgorithm *m_chkAlg;//检定过程用到的计算方法
 
 	bool m_exitFlag;      //关闭界面后退出
+
 	//检定过程相关的控制参数 begin
-	bool m_continueVerify; //是否连续检定
-	bool m_resetZero;      //是否初值回零
-	bool m_autopick;       //是否自动采集
+	bool m_continueVerify;    //是否连续检定
+	bool m_resetZero;         //是否初值回零
+	bool m_autopick;          //是否自动采集
 	int m_rowNum;             //表格的行数（被检表的最大个数）
 	int m_meterNum;           //实际检表的个数
 	QMap<int, int> m_meterPosNo; //表位号
@@ -108,14 +110,19 @@ public:
 	float *m_meterError;	  //被检表的误差
 	float m_balStartV;        //天平初值
 	float m_balEndV;          //天平终值
-	double m_pipeInTemper;     //入口温度
-	double m_pipeOutTemper;    //出口温度
-	int m_tempCount;		   //
+	double m_pipeInTemper;    //入口温度
+	double m_pipeOutTemper;   //出口温度
+	int m_standard;           //表规格
+	int m_model;              //表型号
+	int m_meterType;          //表类型
+	int m_tempCount;		  //计算平均温度用的累加计数器
+	int m_totalFlag;          //1:总量检定；2:分量检定
 	//检定过程相关的控制参数 end
 
 	int m_recNum; //有效的检定记录个数
 	Record_Quality_PTR m_recPtr; //有效的检定记录
-	int m_timestamp;
+	int m_timeStamp;
+	float m_flowPoint;
 
 	int m_nowOrder;					//当前检定次序
 	ReadComConfig *m_readComConfig; //读串口设置
@@ -128,19 +135,19 @@ public:
 
 	int isComAndPortNormal();   //串口、端口设置是否正常
 	int isWaterOutValveOpen();  //检查放水阀门是否打开
-	int readNowParaConfig();		//读参数配置文件
+	int readNowParaConfig();	//读参数配置文件
 	int isDataCollectNormal();	//检查数据采集是否正常（天平、温度、电磁流量计等）
 	int isAllMeterInVerifyStatus(); //判断热量表都已进入检定状态
-	int isMeterPosValid(int row); //判断表位号是否有效(该表位是否需要检表)
+	int isMeterPosValid(int row);   //判断表位号是否有效(该表位是否需要检表)
 
 
 public slots:
 	void closeEvent(QCloseEvent * event);
 	void removeSubTab(int index);
-	void on_btnExhaust_clicked();  //点击"排气"按钮
-	void on_btnStart_clicked();    //点击"开始"按钮
-	void on_btnNext_clicked();     //点击"下一步"按钮
-	void on_btnStop_clicked();     //点击"终止检测"按钮
+	void on_btnExhaust_clicked(); //点击"排气"按钮
+	void on_btnStart_clicked();   //点击"开始"按钮
+	void on_btnNext_clicked();    //点击"下一步"按钮
+	void on_btnStop_clicked();    //点击"终止检测"按钮
 	int openAllValuesAndPump();   //打开所有阀门和水泵
 	void slotExaustFinished();    //排气时间结束
 	int readMeterNumber();        //读取表号
@@ -150,7 +157,7 @@ public slots:
 	int openWaterOutValve();      //打开放水阀
 	int openBigFlowValve();       //打开大流量点阀门
 	int closeBigFlowValve();      //关闭大流量点阀门
-	int judgeBalanceInitValue(float v); //判断天平质量
+	int judgeBalanceInitValue(float v);    //判断天平质量
 	int judgeBalanceAndSumTemper(float v); //判断天平质量，并累加进出口温度，每秒累加一次，用于计算进出口平均温度
 	void startVerify();           //开始检定
 	int judgeBalanceCapacity();   //判断天平容量是否能够满足检定用量 连续检定

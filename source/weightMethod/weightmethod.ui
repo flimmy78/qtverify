@@ -94,6 +94,9 @@
         </property>
        </widget>
        <widget class="QComboBox" name="cmbAutoPick">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="geometry">
          <rect>
           <x>110</x>
@@ -114,6 +117,9 @@
         </item>
        </widget>
        <widget class="QComboBox" name="cmbContinue">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="geometry">
          <rect>
           <x>110</x>

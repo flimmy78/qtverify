@@ -120,9 +120,11 @@ public:
         label_15->setGeometry(QRect(10, 90, 81, 16));
         cmbAutoPick = new QComboBox(groupBox);
         cmbAutoPick->setObjectName(QString::fromUtf8("cmbAutoPick"));
+        cmbAutoPick->setEnabled(false);
         cmbAutoPick->setGeometry(QRect(110, 60, 111, 22));
         cmbContinue = new QComboBox(groupBox);
         cmbContinue->setObjectName(QString::fromUtf8("cmbContinue"));
+        cmbContinue->setEnabled(false);
         cmbContinue->setGeometry(QRect(110, 90, 111, 22));
         groupBox_2 = new QGroupBox(tab1);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));

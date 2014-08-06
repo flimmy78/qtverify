@@ -75,6 +75,11 @@ void ParaSetDlg::on_btnExit_clicked()
 	this->close();
 }
 
+void ParaSetDlg::showEvent(QShowEvent * event)
+{
+// 	QMessageBox::warning(this, "warning", "showEvent");
+}
+
 void ParaSetDlg::closeEvent(QCloseEvent * event)
 {
 	if (m_meterStdPtr)

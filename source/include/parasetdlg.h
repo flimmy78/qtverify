@@ -67,6 +67,7 @@ public slots:
 	void on_btnExit_clicked();
 	void on_btnSave_clicked();
 	void on_cmbStandard_currentIndexChanged();
+	void showEvent(QShowEvent * event);
 
 private:
 	Ui::ParaSetDlgClass ui;
