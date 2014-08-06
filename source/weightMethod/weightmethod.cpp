@@ -393,6 +393,8 @@ void WeightMethodDlg::on_btnExhaust_clicked()
 		qWarning()<<"打开所有阀门和水泵 失败!";
 		return;
 	}
+	clearTableContents();
+	m_meterNum = 0;
 
 	m_exaustTimer->start(m_exaustSecond*1000);//开始排气倒计时
 
@@ -540,6 +542,22 @@ int WeightMethodDlg::isAllMeterInVerifyStatus()
 	return true;
 }
 
+void WeightMethodDlg::clearTableContents()
+{
+	for (int i=0; i<m_rowNum; i++)
+	{
+		for (int j=1; j<ui.tableWidget->columnCount(); j++)
+		{
+			if (ui.tableWidget->item(i,j) == 0)
+			{
+				continue;
+			}
+			ui.tableWidget->item(i,j)->setText("");
+		}
+	}
+	// 	ui.tableWidget->clearContents();
+}
+
 //点击"开始"按钮
 void WeightMethodDlg::on_btnStart_clicked()
 {
@@ -554,18 +572,8 @@ void WeightMethodDlg::on_btnNext_clicked()
 		QMessageBox::warning(this, "warning", "所有流量点已经检定完毕!");
 		return;
 	}
-	for (int i=0; i<m_rowNum; i++)
-	{
-		for (int j=1; j<ui.tableWidget->columnCount(); j++)
-		{
-			if (ui.tableWidget->item(i,j) == 0)
-			{
-				continue;
-			}
-			ui.tableWidget->item(i,j)->setText("");
-		}
-	}
-// 	ui.tableWidget->clearContents();
+
+	clearTableContents();
 
 	m_nowOrder ++;
 	prepareVerifyFlowPoint(m_nowOrder); // 开始进行下一次流量点的检定
@@ -825,7 +833,8 @@ int WeightMethodDlg::calcMeterErrorAndSaveDb()
 		m_recPtr[i].density = m_meterDensity[i];
 		m_recPtr[i].stdValue = m_meterStdValue[i];
 		m_recPtr[i].dispError = m_meterError[i];
-		m_recPtr[i].stdError = m_gradeErr[m_standard]; //二级表 标准误差
+		m_recPtr[i].grade = m_nowParams->m_grade;
+		m_recPtr[i].stdError = m_gradeErr[m_nowParams->m_grade]; //二级表 标准误差
 		m_recPtr[i].result = (fabs(m_recPtr[i].dispError) <= fabs(m_recPtr[i].stdError)) ? 1 : 0;
 		m_recPtr[i].meterPosNo = m_meterPosMap[i];
 		m_recPtr[i].standard = m_standard;

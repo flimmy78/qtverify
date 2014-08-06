@@ -205,7 +205,7 @@ public slots:
 
 	void on_tableWidget_cellChanged(int row, int column);
 	int saveVerifyRecord(); //保存检定记录
-
+	void clearTableContents();
 
 	void freshBigBalaceValue();   //刷新大天平数值 仅用于测试 模拟天平数值变化
 
