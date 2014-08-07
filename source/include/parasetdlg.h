@@ -58,8 +58,6 @@ public:
 	int m_manuFacNum;	//制造单位
 	Manufacture_PTR m_manuFacPtr;
 
-	CBaseExdb m_basedb;
-
 	void initUiData(); //从数据库读取记录，填充combox等
 	void closeEvent(QCloseEvent * event);
 //  void showEvent(QShowEvent *event);

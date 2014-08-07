@@ -57,11 +57,6 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 /*********************************************************/
 	m_stopFlag = false; //退出界面后，不再检查天平容量
 
-	if (!m_db.startdb())
-	{
-		qFatal("打开数据库失败!");
-	}
-
 	m_readComConfig = new ReadComConfig(); //读串口设置接口
 
 	m_balanceObj = NULL;
@@ -211,7 +206,7 @@ void WeightMethodDlg::closeEvent( QCloseEvent * event)
 		m_chkAlg = NULL;
 	}
 
-	m_db.closedb(); //关闭数据库
+	closedb(); //关闭数据库
 }
 
 //关闭标签页
@@ -1144,6 +1139,6 @@ int WeightMethodDlg::isMeterPosValid(int row)
 //保存检定记录
 int WeightMethodDlg::saveVerifyRecord()
 {
- 	m_db.insertVerifyRec(m_recPtr, m_recNum);
+ 	insertVerifyRec(m_recPtr, m_recNum);
 	return true;
 }

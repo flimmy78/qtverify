@@ -23,33 +23,25 @@
 
 #include "basedef.h"
 
+extern "C" {  // only need to export C interface if	used by C++ source code
 QTEXDB_EXPORT int testFunc(int a, int b);
 
-class QTEXDB_EXPORT CBaseExdb
-{
-public:
-	CBaseExdb();
-	~CBaseExdb();
+QTEXDB_EXPORT int startdb(); //操作数据库前必须先调用startdb()
+QTEXDB_EXPORT void closedb();//程序退出前，调用closedb()，关闭数据库
 
-	QSqlDatabase db;
+QTEXDB_EXPORT	int getMeterStandard(int& num, MeterStandard_PTR &ptr);
+QTEXDB_EXPORT	int getMaxMeterByIdx(int idx);
+QTEXDB_EXPORT	int getMeterType(int& num, MeterType_PTR &ptr);
+QTEXDB_EXPORT	int getManufacture(int& num, Manufacture_PTR &ptr);
+QTEXDB_EXPORT	int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id);
+QTEXDB_EXPORT	int insertVerifyRec(Record_Quality_PTR ptr, int num);
 
-	int startdb();
-	void closedb();
+}
+QTEXDB_EXPORT	QString getTblDdl(QString tbl_name);
+QTEXDB_EXPORT	QString removeComment(QString s);
+QTEXDB_EXPORT	QMap<QString, QString> getColInfo(QString ddl);
 
-	int getMeterStandard(int& num, MeterStandard_PTR &ptr);
-	int getMaxMeterByIdx(int idx);
-	int getMeterType(int& num, MeterType_PTR &ptr);
-	int getManufacture(int& num, Manufacture_PTR &ptr);
-	int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id);
-	int insertVerifyRec(Record_Quality_PTR ptr, int num);
 
-	QString getTblDdl(QString tbl_name);
-	QString removeComment(QString s);
-	QMap<QString, QString> getColInfo(QString ddl);
-private:
 
-public slots:
-
-};
 
 #endif // QTEXDB_H

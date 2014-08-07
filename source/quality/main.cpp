@@ -47,9 +47,12 @@ int main( int argc, char ** argv )
 	}
 	qDebug()<<"quality main thread:"<<QThread::currentThreadId();
 // 	qApp->setStyleSheet("QLineEdit { background-color: yellow }");
+	startdb();
 
 	QualityDlg w;
 	w.show();
+	app.exec();
 
-	return app.exec();
+	closedb();
+	return 0;
 }

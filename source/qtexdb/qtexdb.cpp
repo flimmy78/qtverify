@@ -1,6 +1,6 @@
 /***********************************************
 **  文件名:     qtexdb.cpp
-**  功能:       封装的数据库管理类(SQLITE3)
+**  功能:       封装的数据库操作函数(SQLITE3)
 **  操作系统:   基于Trolltech Qt4.8.5的跨平台系统
 **  生成时间:   2014/6/25
 **  专业组:     德鲁计量软件组
@@ -9,7 +9,9 @@
 **  版本历史:   2014/06 第一版
 **  内容包含:
 **  说明:
-**  更新记录:   
+**  更新记录:  
+	2014-8-7修改:
+		由导出类改为导出函数，操作数据库前，先startdb()，然后直接调用导出函数即可，程序退出时，调用closedb()。
 ***********************************************/
 
 #include <QtCore/QDebug>
@@ -25,17 +27,13 @@ int testFunc(int a, int b)
 	return (a + b);
 }
 
-CBaseExdb::CBaseExdb()
-{
-}
 
-CBaseExdb::~CBaseExdb()
+
+QSqlDatabase db;
+
+int startdb()
 {
 
-}
-
-int CBaseExdb::startdb()
-{
 	if (QSqlDatabase::contains("qt_sql_default_connection"))
 	{
 		db = QSqlDatabase::database("qt_sql_default_connection");
@@ -61,17 +59,17 @@ int CBaseExdb::startdb()
 	}
 }
 
-void CBaseExdb::closedb()
+void closedb()
 {
 	db.close();
 }
 
 //获取所有的表规格
-int CBaseExdb::getMeterStandard(int& num, MeterStandard_PTR &ptr)
+int getMeterStandard(int& num, MeterStandard_PTR &ptr)
 {
 	int i = 0;
 	QSqlQuery query; // 新建一个查询的实例
-	bool a = query.driver()->hasFeature(QSqlDriver::Transactions);
+// 	bool a = query.driver()->hasFeature(QSqlDriver::Transactions);
 	if(query.exec("select count(*) from t_meter_standard")) // t_meter_standard 表的记录数
 	{
 		// 本次查询成功
@@ -103,11 +101,9 @@ int CBaseExdb::getMeterStandard(int& num, MeterStandard_PTR &ptr)
 /************************************************************************/
 /* 按主键获取对应表规格的最大检定数量                       */
 /************************************************************************/
-int CBaseExdb::getMaxMeterByIdx(int idx)
+int getMaxMeterByIdx(int idx)
 {
-	MeterStandard_PTR ptr;
 	QSqlQuery query; // 新建一个查询的实例
-	bool a = query.driver()->hasFeature(QSqlDriver::Transactions);
 	QString sql = "select F_Meter_Quantity from t_meter_standard where f_id = "+ QString::number(idx);
 	if(query.exec(sql))
 	{
@@ -124,7 +120,7 @@ int CBaseExdb::getMaxMeterByIdx(int idx)
 }
 
 //获取所有的表类型
-int CBaseExdb::getMeterType(int& num, MeterType_PTR &ptr)
+int getMeterType(int& num, MeterType_PTR &ptr)
 {
 	int i = 0;
 	QSqlQuery query; // 新建一个查询的实例
@@ -160,7 +156,7 @@ int CBaseExdb::getMeterType(int& num, MeterType_PTR &ptr)
 
 
 //获取所有的制造单位
-int CBaseExdb::getManufacture(int& num, Manufacture_PTR &ptr)
+int getManufacture(int& num, Manufacture_PTR &ptr)
 {
 	int i = 0;
 	QSqlQuery query; // 新建一个查询的实例
@@ -200,11 +196,10 @@ int CBaseExdb::getManufacture(int& num, Manufacture_PTR &ptr)
  *  ptr: 与数据表t_meter_default_params对应的结构
  *  stand_id: 表规格的主键值, 用于索引界面上的comboBox
  */
-int CBaseExdb::getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id)
+int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id)
 {
 	int i = 0;
 	QSqlQuery query; // 新建一个查询的实例
-	bool a = query.driver()->hasFeature(QSqlDriver::Transactions);
 	QString sql = "select count(*) from t_meter_default_params where f_standard_id = " + QString::number(stand_id);
 	if(query.exec(sql)) // t_meter_standard 表的记录数
 	{
@@ -241,7 +236,7 @@ int CBaseExdb::getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id)
 }
 
 //向数据库插入一条检定结果
-int CBaseExdb::insertVerifyRec(Record_Quality_PTR ptr, int num)
+int insertVerifyRec(Record_Quality_PTR ptr, int num)
 {
 	if (!db.isOpen())
 	{
@@ -348,7 +343,7 @@ int CBaseExdb::insertVerifyRec(Record_Quality_PTR ptr, int num)
 * tbl_name: 表的名称                                 *
 * 异常: 表名不存在                                    *
 /******************************************************/
-QString CBaseExdb::getTblDdl(QString tbl_name)
+QString getTblDdl(QString tbl_name)
 {
 	QString sql = QString("SELECT sql FROM sqlite_master WHERE upper(tbl_name) = upper('%1') AND type = 'table'").arg(tbl_name);//查询语句
 	QString ddl;//表的定义语句
@@ -384,7 +379,7 @@ QString CBaseExdb::getTblDdl(QString tbl_name)
 /* 去掉sql语句中的注释                                                    */
 /* s: sql语句, 可以带注释, 也可以不带注释                      */
 /************************************************************************/
-QString CBaseExdb::removeComment(QString s)
+QString removeComment(QString s)
 {
 	QString t;
 	bool starts=false, ends=false;
@@ -417,10 +412,10 @@ QString CBaseExdb::removeComment(QString s)
 }
 
 /************************************************************************/
-/* 得到QMap<字段名, 字段类型>键值                             */
-/* tbl_name: 表的名称                                                       */
+/* 得到QMap<字段名, 字段类型>键值                                       */
+/* tbl_name: 表的名称                                                   */
 /************************************************************************/
-QMap<QString, QString> CBaseExdb::getColInfo(QString tbl_name)
+QMap<QString, QString> getColInfo(QString tbl_name)
 {
 	//获取建表的sql语句
 	QString ddl = getTblDdl(tbl_name);

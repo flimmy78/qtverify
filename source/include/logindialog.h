@@ -30,8 +30,6 @@ public:
 	explicit LoginDialog(QWidget *parent = 0);
 	~LoginDialog();
 
-	CBaseExdb db;
-
 	void initUserComboBox();
 
 private slots:

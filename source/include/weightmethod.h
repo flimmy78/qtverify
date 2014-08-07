@@ -65,7 +65,6 @@ public:
 	WeightMethodDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~WeightMethodDlg();
 
-	CBaseExdb m_db;
 	QDataWidgetMapper *m_mapper;
 
 	ParaSetReader *m_paraSetReader;

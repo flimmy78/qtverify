@@ -39,15 +39,16 @@ int main(int argc, char *argv[])
 	app.installTranslator( translator );
 	qDebug()<<"qtverify main thread:"<<QThread::currentThreadId();
 
+	startdb();
+
 	g_mainform = new MainForm;
 // 	LoginDialog login;
 // 	if (login.exec() == QDialog::Accepted)
 // 	{
 		g_mainform->show();//showMaximized();
-		return app.exec();
-// 	}
-// 	else
-// 	{
-// 		return 0;
-// 	}
+		app.exec();
+//	}
+
+	closedb();
+	return 0;
 }

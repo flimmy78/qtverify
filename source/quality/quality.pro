@@ -12,7 +12,7 @@ QMAKE_LIBDIR += \
               $$(RUNHOME)/lib \
               $$(RUNHOME)/bin
            
-LIBS	+= -lqualitydlg
+LIBS	+= -lqualitydlg -lqtexdb
 
 SOURCES	+= main.cpp
 

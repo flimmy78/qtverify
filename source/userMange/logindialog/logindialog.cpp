@@ -29,26 +29,19 @@ LoginDialog::LoginDialog(QWidget *parent)
 	ui.passwordEdit->setEchoMode(QLineEdit::Password);
 	ui.loginButton->setDefault(true);
 
-	if (!db.startdb())
-	{
-		qWarning()<<"连接数据库失败！";
-	}
-	
-
 	initUserComboBox();
 }
 
 LoginDialog::~LoginDialog()
 {
 	qDebug()<<"!!! CLoginDialog destructor";
-	db.closedb();
 }
 
 void LoginDialog::initUserComboBox()
 {
 	int idx=0;
 	QSqlQuery query;
-	if (query.exec("select desc from t_user_def_tab order by id"))
+	if (query.exec("select F_Desc from T_User_Def_Tab order by F_ID"))
 	{
 		while(query.next())
 		{
@@ -67,7 +60,7 @@ void LoginDialog::on_loginButton_clicked()
 	else
 	{
 		QSqlQuery query;
-		query.exec(QString("select password from t_user_def_tab where id=%1").arg(ui.userComboBox->currentIndex()));
+		query.exec(QString("select F_Password from T_User_Def_Tab where F_ID=%1").arg(ui.userComboBox->currentIndex()));
 		query.next();
 		if (query.value(0).toString() == ui.passwordEdit->text())
 		{

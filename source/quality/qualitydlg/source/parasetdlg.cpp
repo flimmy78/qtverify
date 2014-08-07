@@ -32,10 +32,6 @@ ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 	ui.setupUi(this);
 	cBoxData_inited = false;
 /**************************初始化数据库*****************************************/
-	if (!m_basedb.startdb())
-	{
-		qFatal("数据库未打开");
-	}
 	m_meterStdNum = 0;
 	m_meterStdPtr = NULL;
 	m_meterTypeNum = 0;
@@ -111,7 +107,7 @@ void ParaSetDlg::closeEvent(QCloseEvent * event)
 	}
 
 
-	m_basedb.closedb();
+	closedb();
 }
 
 void ParaSetDlg::on_cmbStandard_currentIndexChanged()
@@ -128,7 +124,7 @@ void ParaSetDlg::installDftDBinfo()
 	int idx = ui.cmbStandard->currentIndex();//表规格的当前索引值
 	int count;//查询到的记录个数
 	DftDbInfo_PTR dbinfo_ptr;
-	if (m_basedb.getDftDBinfo(count, dbinfo_ptr, idx))
+	if (getDftDBinfo(count, dbinfo_ptr, idx))
 	{
 		ui.cmbFlow->setCurrentIndex(dbinfo_ptr[0].stand_id);
 		for(int i=0; i < VERIFY_POINTS; i++)
@@ -146,7 +142,7 @@ void ParaSetDlg::installDftDBinfo()
 void ParaSetDlg::initUiData()
 {
 	//表规格
-	m_basedb.getMeterStandard(m_meterStdNum, m_meterStdPtr);
+	getMeterStandard(m_meterStdNum, m_meterStdPtr);
 	for (int i=0; i<m_meterStdNum; i++)
 	{
 		qDebug()<<"id:"<<m_meterStdPtr[i].id<<",name:"<<m_meterStdPtr[i].name;
@@ -154,7 +150,7 @@ void ParaSetDlg::initUiData()
 	}
 
 	//表类型
-	m_basedb.getMeterType(m_meterTypeNum, m_meterTypePtr);
+	getMeterType(m_meterTypeNum, m_meterTypePtr);
 	for (int j=0; j<m_meterTypeNum; j++)
 	{
 		qDebug()<<"id:"<<m_meterTypePtr[j].id<<",desc:"<<QString::fromLocal8Bit(m_meterTypePtr[j].desc);
@@ -162,7 +158,7 @@ void ParaSetDlg::initUiData()
 	}	
 
 	//制造单位
-	m_basedb.getManufacture(m_manuFacNum, m_manuFacPtr);
+	getManufacture(m_manuFacNum, m_manuFacPtr);
 	for (int m=0; m<m_manuFacNum; m++)
 	{
 		qDebug()<<"id:"<<m_manuFacPtr[m].id<<",desc:"<<QString::fromLocal8Bit(m_manuFacPtr[m].desc);
@@ -515,15 +511,8 @@ void ParaSetReader::readHead()
 		m_params->m_timestamp=m_settings->value("head/timestamp").toLongLong();
 		m_params->m_stand = m_settings->value("head/standard").toInt();
 		/////////////////////读取最大检表数/////////////////////////
-		CBaseExdb *db = new CBaseExdb();
-		db->startdb();
-		m_params->m_maxMeters = db->getMaxMeterByIdx(m_params->m_stand);
-		db->closedb();
-		if (db)
-		{
-			delete db;
-			db = NULL;
-		}
+		m_params->m_maxMeters = getMaxMeterByIdx(m_params->m_stand);
+
 		///////////////////////////////////////////////////////////////////
 		m_params->m_type = m_settings->value("head/metertype").toInt();
 		m_params->m_manufac = m_settings->value("head/manufacture").toInt();	

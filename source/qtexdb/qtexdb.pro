@@ -5,7 +5,7 @@
 TEMPLATE = lib
 CONFIG += dll console debug
 TARGET = qtexdb
-DEFINES	+= QTEXDB_DLL 
+DEFINES	+= QTEXDB_DLL
 QT += sql
 
 DEPENDPATH += .
