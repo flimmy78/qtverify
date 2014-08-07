@@ -88,8 +88,8 @@ F_Desc varchar(60),
 F_Password varchar(24),
 F_RoleID interger          --角色ID，外键(T_Role_Def_Tab)
 );
-insert into T_User_Def_Tab(F_ID, F_Name, F_Desc, F_RoleID) values(0, 'admin', '管理员', 0);
-insert into T_User_Def_Tab(F_ID, F_Name, F_Desc, F_RoleID) values(1, 'oper', '操作员', 1);
+insert into T_User_Def_Tab(F_ID, F_Name, F_Desc, F_Password, F_RoleID) values(0, 'admin', '管理员', 'admin', 0);
+insert into T_User_Def_Tab(F_ID, F_Name, F_Desc, F_Password, F_RoleID) values(1, 'oper', '操作员', '1234', 1);
 
 
 ---------------------------------
