@@ -133,7 +133,7 @@ typedef DftDbInfo_STR* DftDbInfo_PTR;
 class Record_Quality_STR{
 public:
     UINT32  id;                   
-	UINT32	timestamp;
+	char	timestamp[24];
 	UINT32  meterNo;
 	UINT16  flowPointIdx;
 	float   flowPoint;         //流量(m3/h)
@@ -161,11 +161,11 @@ public:
 	UINT16	grade;			//计量等级
 	UINT16	verifyPerson;	//检定员
 	UINT16	checkPerson;	//核验员
-	UINT32	date;			//检定日期（20140725）
+	char	date[12];		//检定日期（2014-07-25）
 	float	envTemper;		//环境温度
 	float	envHumidity;	//环境湿度
 	float	airPress;		//大气压力
-	UINT32	validDate;		//检定结果有效期(20150725)
+	char	validDate[12];	//检定结果有效期('2015-07-25')
 	UINT32	recordNumber;	//检定记录证书编号
 };
 typedef Record_Quality_STR* Record_Quality_PTR;

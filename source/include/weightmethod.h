@@ -15,6 +15,7 @@
 #  endif
 #endif
 
+#define VALID_YEAR	2 //检表有效期 2年
 #define BALANCE_START_VALUE		2 //天平初值
 
 #define TIMEOUT_TEMPER		500 //每0.5秒钟请求一次温度值
@@ -127,7 +128,10 @@ public:
 
 	int m_recNum; //有效的检定记录个数
 	Record_Quality_PTR m_recPtr; //有效的检定记录
-	int m_timeStamp;
+	QString m_timeStamp; //时间戳 秒数
+	QString m_nowDate;  
+	QString m_validDate;
+
 	float m_flowPoint;
 	int m_nowOrder;				//当前检定次序
 

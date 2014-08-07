@@ -104,7 +104,9 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	m_meterError = NULL;
 	m_balStartV = 0;
 	m_balEndV = 0;
-	m_timeStamp = 0;
+	m_timeStamp = "";
+	m_nowDate = "";
+	m_validDate = "";
 	m_flowPoint = 0;          //流量(m3/h)
 
 	m_recNum = 0;
@@ -608,7 +610,9 @@ void WeightMethodDlg::startVerify()
 		return;
 	}
 
-	m_timeStamp = QDateTime(QDate(1970,1,1)).secsTo(QDateTime::currentDateTime()); //记录时间戳
+	m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
+	m_nowDate = QDateTime::currentDateTime().toString("yyyy-MM-dd"); //当前日期'2014-08-07'
+	m_validDate = QDateTime::currentDateTime().addYears(VALID_YEAR).toString("yyyy-MM-dd"); //有效期
 
 	m_meterStartValue = new float[m_meterNum]; //表初值 
 	memset(m_meterStartValue, 0, sizeof(float)*m_meterNum);
@@ -827,7 +831,7 @@ int WeightMethodDlg::calcMeterErrorAndSaveDb()
 	memset(m_recPtr, 0, sizeof(Record_Quality_STR)*m_recNum);
 	for (int i=0; i<m_recNum; i++)
 	{
-		m_recPtr[i].timestamp = m_timeStamp;
+		strncpy(m_recPtr[i].timestamp, m_timeStamp.toAscii(), 24);
 		m_recPtr[i].flowPoint = m_flowPoint;
 		m_recPtr[i].meterNo = ui.tableWidget->item(m_meterPosMap[i]-1, 0)->text().toInt();
 		m_recPtr[i].flowPointIdx = m_nowOrder; //
@@ -854,7 +858,8 @@ int WeightMethodDlg::calcMeterErrorAndSaveDb()
 		m_recPtr[i].manufacture = m_nowParams->m_manufac;
 		m_recPtr[i].verifyUnit = m_nowParams->m_vcomp;
 		m_recPtr[i].verifyPerson = m_nowParams->m_vperson;
-
+		strncpy(m_recPtr[i].date, m_nowDate.toAscii(), 12);
+		strncpy(m_recPtr[i].validDate, m_validDate.toAscii(), 12);
 
 	}
 

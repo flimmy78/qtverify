@@ -285,7 +285,7 @@ int insertVerifyRec(Record_Quality_PTR ptr, int num)
 		sql.append(")");
 		sql.append("values");
 		sql.append("(");//start
-		sql.append(QString("%1, ").arg(ptr[i].timestamp, 0, 10));//F_TimeStamp
+		sql.append(QString("\'%1\', ").arg(ptr[i].timestamp, 0, 10));//F_TimeStamp
 		sql.append(QString("%1, ").arg(ptr[i].meterNo,0, 10));//F_MeterNo
 		sql.append(QString("%1, ").arg(ptr[i].flowPointIdx, 0, 10));//F_FlowPointIdx
 		sql.append(QString("%1, ").arg(ptr[i].flowPoint, 6, 'g', 6));//F_FlowPoint
@@ -313,11 +313,11 @@ int insertVerifyRec(Record_Quality_PTR ptr, int num)
 		sql.append(QString("%1, ").arg(ptr[i].grade, 0, 10));//F_Grade
 		sql.append(QString("%1, ").arg(ptr[i].verifyPerson, 0, 10));//F_VerifyPerson
 		sql.append(QString("%1, ").arg(ptr[i].checkPerson, 0, 10));//F_CheckPerson
-		sql.append(QString("%1, ").arg(ptr[i].date, 0, 10));//F_VerifyDate
+		sql.append(QString("\'%1\', ").arg(ptr[i].date));//F_VerifyDate
 		sql.append(QString("%1, ").arg(ptr[i].envTemper, 6, 'g', 6));//F_EnvTemper
 		sql.append(QString("%1, ").arg(ptr[i].envHumidity, 6, 'g', 6));//F_EnvHumidity
 		sql.append(QString("%1, ").arg(ptr[i].airPress, 6, 'g', 6));//F_AirPressure
-		sql.append(QString("%1, ").arg(ptr[i].validDate, 0, 10));//F_ValidDate
+		sql.append(QString("\'%1\', ").arg(ptr[i].validDate, 0, 10));//F_ValidDate
 		sql.append(QString("%1").arg(ptr[i].recordNumber, 0, 10));//F_RecordNumber
 		sql.append(")");//end
 		if (query.exec(sql))
@@ -326,7 +326,7 @@ int insertVerifyRec(Record_Quality_PTR ptr, int num)
 		}
 		else
 		{
-			QSqlError error = query.lastError();
+ 			QSqlError error = query.lastError();
 			qDebug() << error.text();
 		}
 	}
