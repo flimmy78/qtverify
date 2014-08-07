@@ -17,6 +17,8 @@
 #include <QtCore/QTimer>
 #include <QtCore/QThread>
 #include <QTest>
+#include <QtSql/QSqlTableModel>
+
 
 #include "weightmethod.h"
 #include "commondefine.h"
@@ -28,8 +30,10 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 {
 	qDebug()<<"WeightMethodDlg thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
-// 	ui.btnNext->hide(); //隐藏"下一步"按钮
+ 	ui.btnNext->hide(); //隐藏"下一步"按钮
+	ui.btnStart->hide();
 	waitInput = false;
+
 
 	//不同等级的热量表对应的标准误差
 	m_gradeErr[1] = 0.01;
@@ -51,7 +55,7 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	m_balValue = 0.0;
 	m_tempValue = 20.0;
 /*********************************************************/
-	m_exitFlag = true; //退出界面后，不再检查天平容量
+	m_stopFlag = false; //退出界面后，不再检查天平容量
 
 	if (!m_db.startdb())
 	{
@@ -111,12 +115,21 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	m_recNum = 0;
 	m_recPtr = NULL;
 
+	QSqlTableModel *model = new QSqlTableModel(this);  
+	model->setTable(tr("T_Meter_Standard"));  
+	model->select();  
+	m_mapper = new QDataWidgetMapper(this);
+	m_mapper->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
+	m_mapper->setModel(model);
+	m_mapper->addMapping(ui.lnEditStandard, 1); //映射表"T_Meter_Standard"的第二个字段
+
 	m_paraSetDlg = NULL;    //参数设置对话框
 	m_paraSetReader = new ParaSetReader(); //读参数设置接口
 	if (!readNowParaConfig()) //获取当前检定参数
 	{
 		qWarning()<<"读取参数配置文件失败!";
 	}
+
 
 	if (!isComAndPortNormal())
 	{
@@ -138,7 +151,7 @@ void WeightMethodDlg::closeEvent( QCloseEvent * event)
 {
 	qDebug()<<"^^^^^WeightMethodDlg::closeEvent";
 
-	m_exitFlag = false;
+	m_stopFlag = true;
 
 	if (m_paraSetReader) //读检定参数
 	{
@@ -374,6 +387,8 @@ void WeightMethodDlg::showNowKeyParaConfig()
 
 	ui.cmbAutoPick->setCurrentIndex(m_nowParams->bo_autopick);
 	ui.cmbContinue->setCurrentIndex(m_nowParams->bo_converify);
+
+	m_mapper->setCurrentIndex(m_nowParams->m_stand);
 // 	ui.labelStandard->setText();
 }
 
@@ -393,6 +408,7 @@ void WeightMethodDlg::on_btnExhaust_clicked()
 		qWarning()<<"打开所有阀门和水泵 失败!";
 		return;
 	}
+	m_stopFlag = false;
 	clearTableContents();
 	m_meterNum = 0;
 
@@ -423,7 +439,7 @@ int WeightMethodDlg::openAllValuesAndPump()
 void WeightMethodDlg::slotExaustFinished()
 {
 	m_exaustTimer->stop(); //停止排气计时
-
+	qDebug()<<"排气时间:"<<m_exaustSecond<<"秒结束";
 	if (!closeAllFlowPointValves()) //关闭所有流量点阀门 失败
 	{
 		if (!closeAllFlowPointValves()) //再尝试关闭一次
@@ -511,7 +527,7 @@ int WeightMethodDlg::closeBigFlowValve()
 //响应处理天平质量的变化
 int WeightMethodDlg::judgeBalanceInitValue(float v)
 {
-	while (m_exitFlag && (ui.lnEditBigBalance->text().toFloat() < v))
+	while (!m_stopFlag && (ui.lnEditBigBalance->text().toFloat() < v))
 	{
 		qDebug()<<"天平重量 ="<<ui.lnEditBigBalance->text().toFloat()<<", 小于要求的重量 "<<v;
 		QTest::qWait(1000);
@@ -522,7 +538,7 @@ int WeightMethodDlg::judgeBalanceInitValue(float v)
 
 int WeightMethodDlg::judgeBalanceAndCalcTemper(float targetV)
 {
-	while (m_exitFlag && (ui.lnEditBigBalance->text().toFloat() < targetV))
+	while (!m_stopFlag && (ui.lnEditBigBalance->text().toFloat() < targetV))
 	{
 		qDebug()<<"天平重量 ="<<ui.lnEditBigBalance->text().toFloat()<<", 小于要求的重量 "<<targetV;
 		m_pipeInTemper += ui.lcdNumberInTemper->value();
@@ -582,7 +598,7 @@ void WeightMethodDlg::on_btnNext_clicked()
 //点击"终止检测"按钮
 void WeightMethodDlg::on_btnStop_clicked()
 {
-
+	m_stopFlag = true;
 }
 
 //开始检定

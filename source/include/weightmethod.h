@@ -49,6 +49,7 @@
 
 
 #include <QtGui/QWidget>
+#include <QtGui/QDataWidgetMapper>
 
 #include "ui_weightmethod.h"
 #include "parasetdlg.h"
@@ -65,6 +66,7 @@ public:
 	~WeightMethodDlg();
 
 	CBaseExdb m_db;
+	QDataWidgetMapper *m_mapper;
 
 	ParaSetReader *m_paraSetReader;
 	ParaSetDlg *m_paraSetDlg;
@@ -92,7 +94,7 @@ public:
 
 	CAlgorithm *m_chkAlg;//检定过程用到的计算方法
 
-	bool m_exitFlag;      //关闭界面后退出
+	bool m_stopFlag;      //关闭界面后退出
 
 	//检定过程相关的控制参数 begin
 	Quality_Params_PTR m_nowParams; //当前检定参数

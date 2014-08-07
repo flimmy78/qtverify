@@ -184,7 +184,7 @@ void ParaSetDlg::installHead()
 	ui.cmbStandard->setCurrentIndex(lastParams->m_params->m_stand);
 	ui.cmbCollectCode->setCurrentIndex(lastParams->m_params->m_pickcode);
 	ui.cmbManufacture->setCurrentIndex(lastParams->m_params->m_manufac);
-	ui.cmbGrade->setCurrentIndex(lastParams->m_params->m_grade);
+	ui.cmbGrade->setCurrentIndex(lastParams->m_params->m_grade-1);
 	ui.cmbModel->setCurrentIndex(lastParams->m_params->m_model);
 	ui.cmbVerifyCompany->setCurrentIndex(lastParams->m_params->m_vcomp);
 	ui.cmbVerifyPerson->setCurrentIndex(lastParams->m_params->m_vperson);
@@ -364,7 +364,7 @@ void ParaSetDlg::SaveHead()
 	settings->setValue("standard", ui.cmbStandard->currentIndex());
 	settings->setValue("metertype", ui.cmbCollectCode->currentIndex());
 	settings->setValue("manufacture", ui.cmbManufacture->currentIndex());
-	settings->setValue("grade", ui.cmbGrade->currentIndex());
+	settings->setValue("grade", ui.cmbGrade->currentIndex()+1);
 	settings->setValue("model", ui.cmbModel->currentIndex());
 	settings->setValue("verifycompany", ui.cmbVerifyCompany->currentIndex());
 	settings->setValue("verifyperson", ui.cmbVerifyPerson->currentIndex());

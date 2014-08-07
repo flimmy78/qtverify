@@ -2,6 +2,7 @@
 TEMPLATE	= lib
 TARGET    = weightmethod
 CONFIG += qt dll debug thread qtestlib
+QT += sql
 
 DEFINES	+= WEIGHTMETHOD_DLL QT_THREAD_SUPPORT
 
