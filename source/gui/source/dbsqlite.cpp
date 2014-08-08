@@ -1,3 +1,17 @@
+/***********************************************
+**  文件名:     dbsqlite.cpp
+**  功能:       查询检定结果(SQLITE3)
+**  操作系统:   基于Trolltech Qt4.8.5的跨平台系统
+**  生成时间:   2014/8/8
+**  专业组:     德鲁计量软件组
+**  程序设计者: YS
+**  程序员:     YS
+**  版本历史:   2014/08 第一版
+**  内容包含:
+**  说明:
+**  更新记录:  
+***********************************************/
+
 #include <QtGui/QMessageBox>
 #include <QtGui/QDateTimeEdit>
 #include <QtGui/QTextEdit>
@@ -15,17 +29,15 @@ DbSqlite::DbSqlite(QWidget *parent, Qt::WFlags flags)
 {
 	ui.setupUi(this);
 
-	ui.btnQuery->setEnabled(false);
-	ui.btnOK->setEnabled(false);
-	ui.btnInsert->setEnabled(false);
-
 	m_count = 0;
+	ui.btnInsert->setEnabled(false);
+	ui.btnStop->setEnabled(false);
 
-// 	QStringList drivers = QSqlDatabase::drivers();
-// 	foreach(QString driver, drivers)
-// 	{
-// 		qDebug()<<driver;
-// 	}
+	QStringList drivers = QSqlDatabase::drivers();
+	foreach(QString driver, drivers)
+	{
+		qDebug()<<driver;
+	}
 }
 
 DbSqlite::~DbSqlite()
@@ -33,78 +45,27 @@ DbSqlite::~DbSqlite()
 
 }
 
-void DbSqlite::on_btnConnect_clicked()
-{
-	char dbname[100];
-	sprintf_s(dbname, "%s/database/mysqlite375.db", getenv("RUNHOME"));
-	db = QSqlDatabase::addDatabase("QSQLITE"); // 使用sqlite数据库驱动 
-	db.setDatabaseName(dbname);
-	bool ok = db.open(); // 尝试连接数据库
-
-	if(ok) // 成功连上数据库
-	{
-		QMessageBox::information(this, "DbShow", "connect sqlite database success !", "Ok", "Cancel");	
-		ui.btnQuery->setEnabled(true);
-		ui.btnOK->setEnabled(true);
-		ui.btnInsert->setEnabled(true);
-	}
-	else
-	{
-		QMessageBox::information(this, "DbShow", "connect sqlite database failed !", "Ok", "Cancel");	
-		ui.btnQuery->setEnabled(false);
-		ui.btnOK->setEnabled(false);
-		ui.btnInsert->setEnabled(false);
-	}
-}
-
 void DbSqlite::on_btnQuery_clicked()
 {
-	QSqlQuery query; // 新建一个查询的实例
-	if(query.exec("select * from employee")) // 尝试列出 employee 表的所有记录
-	{
-		// 本次查询成功
-		int numRows = 0;
-		QString id, lname, fname, phone; QDateTime dob; 
-		ui.display->append("==========================================="); 
-		ui.display->append(QString::fromLocal8Bit(" id | 姓名 | 生日 | 电话")); 
-		ui.display->append("--------------------------------------");
-		while(query.next())// 定位结果到下一条记录
-		{ 
-			id = query.value(0).toString();
-			lname = QString::fromLocal8Bit(query.value(1).toByteArray());
-			fname = QString::fromLocal8Bit(query.value(2).toByteArray());
-			dob = query.value(3).toDateTime();
-			phone = QString::fromLocal8Bit(query.value(4).toByteArray());
-			QString result = id + " " + fname + lname + " " + (dob.toString()) + " "+phone;
-			ui.display->append(result); 
-
-			numRows ++;
-		}
-		ui.display->append("============================================");
-		ui.display->append(QString("totally %1 rows").arg( numRows) );
-	}
-	else  // 如果查询失败，用下面的方法得到具体数据库返回的原因
-	{
-		QSqlError error = query.lastError();
-		ui.display->append("From sqlite database: " + error.databaseText());
-	}
-}
-
-void DbSqlite::on_btnOK_clicked()
-{
-	QSqlRelationalTableModel *model = new QSqlRelationalTableModel(this, db);
+	QSqlRelationalTableModel *model = new QSqlRelationalTableModel(this);
 	model->setEditStrategy(QSqlTableModel::OnFieldChange); //属性变化时写入数据库
-	model->setTable("t_verify_record");
-	//将t_verify_record表的第18个属性设为t_meter_standard表的id属性的外键，并将其显示为t_meter_standard表的name属性的值
-	model->setRelation(17, QSqlRelation("t_meter_standard","id","name"));
-	model->setHeaderData(17, Qt::Horizontal, QObject::tr("规格"));
-	model->setRelation(18, QSqlRelation("t_meter_type","id","desc"));
-	model->setHeaderData(18, Qt::Horizontal, QObject::tr("表类型"));
-	model->setRelation(19, QSqlRelation("t_manufacture_tab","id","desc"));
-	model->setHeaderData(19, Qt::Horizontal, QObject::tr("生产厂家"));
+	model->setTable("T_Verify_Record");
+	//将T_Verify_Record表的第22个属性设为T_Meter_Standard表的id属性的外键，并将其显示为t_meter_standard表的name属性的值
+	model->setRelation(22, QSqlRelation("T_Meter_Standard","F_ID","F_Name"));
+	model->setHeaderData(22, Qt::Horizontal, QObject::tr("规格"));
+	model->setRelation(23, QSqlRelation("T_Meter_Type","F_ID","F_Desc"));
+	model->setHeaderData(23, Qt::Horizontal, QObject::tr("表类型"));
+	model->setRelation(24, QSqlRelation("T_Manufacture_Unit","F_ID","F_Desc"));
+	model->setHeaderData(24, Qt::Horizontal, QObject::tr("制造单位"));
+	model->setRelation(25, QSqlRelation("T_Verify_Unit","F_ID","F_Desc"));
+	model->setHeaderData(25, Qt::Horizontal, QObject::tr("送检单位"));
+	model->setRelation(27, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));
+	model->setHeaderData(27, Qt::Horizontal, QObject::tr("检定员"));
+	model->setRelation(28, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));
+	model->setHeaderData(28, Qt::Horizontal, QObject::tr("核验员"));
 	model->select();
 	ui.tableView->setModel(model);
-//	ui.tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);  //使其不可编辑
+	ui.tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);  //使其不可编辑
 
 	QString tbname = model->tableName();
 	QString fdname1 = model->record(0).fieldName(0);
@@ -124,7 +85,7 @@ void DbSqlite::on_btnInsert_clicked()
 	qDebug()<<"start time is:"<<statTime.toString("yyMMddhhmmss");
 	QDateTime endTime;
 	m_count = ui.spinBoxNums->value();
-	db.transaction(); //开启事务处理
+// 	m_db.transaction(); //开启事务处理
 	QSqlQuery q;
 	q.prepare("insert into t_meter_standard values(?, ?)");
 	QVariantList ints;
@@ -142,7 +103,7 @@ void DbSqlite::on_btnInsert_clicked()
 		qDebug() << q.lastError();
 		return;
 	}
-	db.commit(); //提交事务，此时才真正打开文件执行SQL语句
+// 	m_db.commit(); //提交事务，此时才真正打开文件执行SQL语句
 	endTime = QDateTime::currentDateTime();
 	qDebug()<<"  end time is:"<<endTime.toString("yyMMddhhmmss");
 	int usedSec = statTime.msecsTo(endTime);

@@ -28,7 +28,6 @@ int testFunc(int a, int b)
 }
 
 
-
 QSqlDatabase db;
 
 int startdb()

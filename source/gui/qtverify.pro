@@ -46,13 +46,12 @@ MOC_DIR = $(RUNHOME)/tmp/qtverify/moc
 OBJECTS_DIR = $(RUNHOME)/tmp/qtverify/obj
 UI_DIR = $(RUNHOME)/tmp/qtverify/ui
 
+
 INCLUDEPATH += 	./include	\
-								../alg	\
 								$${UI_DIR}	\
 								$$(RUNHOME_INC)/include		\
 								$$(RUNHOME_INC)/include/qextserial \
 								F:\mysoft\trunk\plugindemo\GameSystem
-
 
 TRANSLATIONS += ./language/qtverify_en.ts ./language/qtverify_zh.ts
 
