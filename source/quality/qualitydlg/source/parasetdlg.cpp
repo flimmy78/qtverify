@@ -106,8 +106,6 @@ void ParaSetDlg::closeEvent(QCloseEvent * event)
 		lastParams=NULL;
 	}
 
-
-	closedb();
 }
 
 void ParaSetDlg::on_cmbStandard_currentIndexChanged()

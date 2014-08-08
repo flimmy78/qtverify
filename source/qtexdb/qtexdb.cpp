@@ -235,14 +235,11 @@ int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id)
 	return true;
 }
 
-//向数据库插入一条检定结果
+/*
+** 向数据库插入一条检定结果。调用者负责提前打开数据库startdb()
+*/
 int insertVerifyRec(Record_Quality_PTR ptr, int num)
 {
-	if (!db.isOpen())
-	{
-		startdb();
-	}
-
 	for (int i=0; i<num; i++)
 	{
 		QSqlQuery query(db); // 新建一个查询的实例
@@ -331,10 +328,6 @@ int insertVerifyRec(Record_Quality_PTR ptr, int num)
 		}
 	}
 	
-	if (db.isOpen())
-	{
-		closedb();
-	}
 	return true;
 }
 
@@ -347,10 +340,7 @@ QString getTblDdl(QString tbl_name)
 {
 	QString sql = QString("SELECT sql FROM sqlite_master WHERE upper(tbl_name) = upper('%1') AND type = 'table'").arg(tbl_name);//查询语句
 	QString ddl;//表的定义语句
-	if (!db.isOpen())
-	{
-		startdb();
-	}
+
 	QStringList tbls = db.tables();
 	//如果表名不存在, 抛出异常
 	if (!tbls.contains(tbl_name, Qt::CaseInsensitive))
@@ -368,10 +358,7 @@ QString getTblDdl(QString tbl_name)
 	{
 		throw query.lastError().text();
 	}
-	if (db.isOpen())
-	{
-		closedb();
-	}
+
 	return ddl;
 }
 

@@ -208,7 +208,6 @@ void WeightMethodDlg::closeEvent( QCloseEvent * event)
 		m_chkAlg = NULL;
 	}
 
-	closedb(); //关闭数据库
 }
 
 //关闭标签页
@@ -831,7 +830,7 @@ int WeightMethodDlg::calcMeterErrorAndSaveDb()
 	memset(m_recPtr, 0, sizeof(Record_Quality_STR)*m_recNum);
 	for (int i=0; i<m_recNum; i++)
 	{
-		strncpy(m_recPtr[i].timestamp, m_timeStamp.toAscii(), 24);
+		strncpy(m_recPtr[i].timestamp, m_timeStamp.toAscii(), TIMESTAMP_LEN);
 		m_recPtr[i].flowPoint = m_flowPoint;
 		m_recPtr[i].meterNo = ui.tableWidget->item(m_meterPosMap[i]-1, 0)->text().toInt();
 		m_recPtr[i].flowPointIdx = m_nowOrder; //
@@ -858,8 +857,8 @@ int WeightMethodDlg::calcMeterErrorAndSaveDb()
 		m_recPtr[i].manufacture = m_nowParams->m_manufac;
 		m_recPtr[i].verifyUnit = m_nowParams->m_vcomp;
 		m_recPtr[i].verifyPerson = m_nowParams->m_vperson;
-		strncpy(m_recPtr[i].date, m_nowDate.toAscii(), 12);
-		strncpy(m_recPtr[i].validDate, m_validDate.toAscii(), 12);
+		strncpy(m_recPtr[i].date, m_nowDate.toAscii(), DATE_LEN);
+		strncpy(m_recPtr[i].validDate, m_validDate.toAscii(), DATE_LEN);
 
 	}
 
