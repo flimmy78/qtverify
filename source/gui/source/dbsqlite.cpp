@@ -63,11 +63,20 @@ void DbSqlite::on_btnQuery_clicked()
 	model->setHeaderData(27, Qt::Horizontal, QObject::tr("检定员"));
 	model->setRelation(28, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));
 	model->setHeaderData(28, Qt::Horizontal, QObject::tr("核验员"));
+
+	model->setHeaderData(1, Qt::Horizontal, QObject::tr("时间戳"));
+	model->setHeaderData(2, Qt::Horizontal, QObject::tr("表号"));
+	model->setHeaderData(3, Qt::Horizontal, QObject::tr("流量点"));
+	model->setHeaderData(4, Qt::Horizontal, QObject::tr("流量"));
+	model->setHeaderData(5, Qt::Horizontal, QObject::tr("总量检定标志"));
+
 	model->select();
 	ui.tableView->setModel(model);
+	ui.tableView->resizeColumnsToContents(); //列宽度自适应
+ 	ui.tableView->setItemDelegate(new QSqlRelationalDelegate(ui.tableView)); //外键字段只能在已有的数据中编辑
 	ui.tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);  //使其不可编辑
 
-	QString tbname = model->tableName();
+/*	QString tbname = model->tableName();
 	QString fdname1 = model->record(0).fieldName(0);
 	QString pkname = model->primaryKey().name();
 	int cnt = model->primaryKey().count();
@@ -75,8 +84,7 @@ void DbSqlite::on_btnQuery_clicked()
 	int rowcount = model->rowCount();
 	int pmId = model->primaryKey().value(0).toUInt();
 	int colCount = model->columnCount();
-
- 	ui.tableView->setItemDelegate(new QSqlRelationalDelegate(ui.tableView));
+	*/
 }
 
 void DbSqlite::on_btnInsert_clicked()
