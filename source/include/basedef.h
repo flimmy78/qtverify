@@ -11,7 +11,8 @@
 #define DESC_LEN			60		//数据库表中描述域的长度
 #define TIMESTAMP_LEN	    24      //数据库中timestamp类型对应的字符串长度'2014-08-08 08:30:30.666'
 #define DATE_LEN            12      //数据库中date类型对应的字符串长度'2014-08-08'
-
+#define METERNO_LEN			16      //"表号"的字符串长度
+#define METERNO_PREFIX      "111100"  //表号的前缀 每个厂家不一样 德鲁="111100"
 
 #ifndef VERIFY_POINTS
 #define VERIFY_POINTS	4  //检定流量点的数量, 一般为4个(大, 中一, 中二, 小), 但客户也可能需要更多
@@ -86,7 +87,7 @@ class MeterStandard_STR{
 public:
     int       id;                   //主键
     char   name[ASCNAME_LEN];		//规格
-	UINT8 quantity;//被检表的最大数量
+	UINT16 quantity;//被检表的最大数量
 };
 typedef MeterStandard_STR* MeterStandard_PTR;
 
@@ -95,9 +96,9 @@ typedef MeterStandard_STR* MeterStandard_PTR;
 */
 class MeterType_STR{
 public:
-    int       id;                   //
-	char   name[ASCNAME_LEN];				//
-	char   desc[DESC_LEN];				//
+    int    id;                   //
+	char   name[ASCNAME_LEN];	 //
+	char   desc[DESC_LEN];	     //
 };
 typedef MeterType_STR* MeterType_PTR;
 
@@ -134,12 +135,12 @@ typedef DftDbInfo_STR* DftDbInfo_PTR;
 */
 class Record_Quality_STR{
 public:
-    UINT32  id;                   
+    int     id;                   
 	char	timestamp[TIMESTAMP_LEN];
-	UINT32  meterNo;
-	UINT16  flowPointIdx;
+	char    meterNo[METERNO_LEN];
+	INT16   flowPointIdx;
 	float   flowPoint;         //流量(m3/h)
-	UINT16  totalFlag;         //总量检定标志(1:总量检定  0:分量检定)
+	INT16   totalFlag;         //总量检定标志(1:总量检定  0:分量检定)
 	float	meterValue0;
 	float	meterValue1;
 	float	meterDeltaV;
@@ -153,22 +154,22 @@ public:
 	float	stdValue;		//经过修正的标准值
 	float	dispError;		//示值误差
 	float	stdError;		//要求误差(合格标准)
-	UINT16  result;			//检定结果(1:合格  0:不合格)
-	UINT16	meterPosNo;		//表位号
-	UINT16	model;			//表型号
-	UINT16	standard;		//表规格
-	UINT16	meterType;		//表类型
-	UINT16	manufacture;	//制造单位
-	UINT16	verifyUnit;		//送检单位
-	UINT16	grade;			//计量等级
-	UINT16	verifyPerson;	//检定员
-	UINT16	checkPerson;	//核验员
-	char	date[DATE_LEN];		//检定日期（'2014-07-25'）
+	INT16   result;			//检定结果(1:合格  0:不合格)
+	INT16	meterPosNo;		//表位号
+	int	model;			    //表型号
+	int	standard;		    //表规格
+	int	meterType;		    //表类型
+	int	manufactDept;	    //制造单位
+	int	verifyDept;		    //送检单位
+	INT16	grade;	        //计量等级
+	int	verifyPerson;	    //检定员
+	int	checkPerson;	    //核验员
+	char	date[DATE_LEN];	//检定日期（'2014-07-25'）
 	float	envTemper;		//环境温度
 	float	envHumidity;	//环境湿度
 	float	airPress;		//大气压力
 	char	validDate[DATE_LEN];	//检定结果有效期('2015-07-25')
-	UINT32	recordNumber;	//检定记录证书编号
+	INT32	recordNumber;	//检定记录证书编号
 };
 typedef Record_Quality_STR* Record_Quality_PTR;
 

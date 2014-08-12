@@ -103,7 +103,7 @@ public:
 	bool m_autopick;          //是否自动采集
 	int m_flowPointNum;       //流量点的个数
 	int m_exaustSecond;		  //排气时间
-	int m_totalFlag;          //1:总量检定；2:分量检定
+	INT16 m_totalFlag;        //1:总量检定；2:分量检定
 	int m_standard;           //表规格
 	int m_model;              //表型号
 	int m_meterType;          //表类型

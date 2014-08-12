@@ -159,7 +159,7 @@ int getManufacture(int& num, Manufacture_PTR &ptr)
 {
 	int i = 0;
 	QSqlQuery query; // 新建一个查询的实例
-	if(query.exec("select count(*) from t_manufacture_unit")) // t_manufacture_unit 表的记录数
+	if(query.exec("select count(*) from t_manufacture_dept")) // t_manufacture_dept 表的记录数
 	{
 		// 本次查询成功
 		query.first(); //第一条记录
@@ -169,7 +169,7 @@ int getManufacture(int& num, Manufacture_PTR &ptr)
 	}
 
 	QString testStr;
-	if(query.exec("select f_id,f_name,f_desc from t_manufacture_unit order by f_id"))
+	if(query.exec("select f_id,f_name,f_desc from t_manufacture_dept order by f_id"))
 	{
 		while(query.next())
 		{
@@ -199,7 +199,7 @@ int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id)
 {
 	int i = 0;
 	QSqlQuery query; // 新建一个查询的实例
-	QString sql = "select count(*) from t_meter_default_params where f_standard_id = " + QString::number(stand_id);
+	QString sql = "select count(*) from t_meter_default_params where F_StandardID = " + QString::number(stand_id);
 	if(query.exec(sql)) // t_meter_standard 表的记录数
 	{
 		// 本次查询成功
@@ -208,7 +208,7 @@ int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id)
 		ptr = new DftDbInfo_STR[num];
 		memset(ptr, 0, sizeof(DftDbInfo_STR)*num);
 	}
-	sql = "select f_id, f_standard_id, f_nflowpoint, f_upperflow, f_verifyflow, f_flowquantity, f_pumpfrequencey, f_valve_i, f_seq_i, F_Flow_idx from t_meter_default_params where f_standard_id = " + QString::number(stand_id) + " order by F_Flow_idx";
+	sql = "select f_id, F_StandardID, f_nflowpoint, f_upperflow, f_verifyflow, f_flowquantity, f_pumpfrequencey, f_valve_i, f_seq_i, F_Flow_idx from t_meter_default_params where F_StandardID = " + QString::number(stand_id) + " order by F_Flow_idx";
 	if(query.exec(sql))
 	{
 		while(query.next())
@@ -267,8 +267,8 @@ int insertVerifyRec(Record_Quality_PTR ptr, int num)
 		sql.append("F_Model,");
 		sql.append("F_Standard ,");
 		sql.append("F_MeterType,");
-		sql.append("F_Manufacture,");
-		sql.append("F_VerifyUnit,");
+		sql.append("F_ManufactDept,");
+		sql.append("F_VerifyDept,");
 		sql.append("F_Grade,");
 		sql.append("F_VerifyPerson,");
 		sql.append("F_CheckPerson,");
@@ -304,8 +304,8 @@ int insertVerifyRec(Record_Quality_PTR ptr, int num)
 		sql.append(QString("%1, ").arg(ptr[i].model, 0, 10));//F_Model
 		sql.append(QString("%1, ").arg(ptr[i].standard, 0, 10));//F_Standard
 		sql.append(QString("%1, ").arg(ptr[i].meterType, 0, 10));//F_MeterType
-		sql.append(QString("%1, ").arg(ptr[i].manufacture, 0, 10));//F_Manufacture
-		sql.append(QString("%1, ").arg(ptr[i].verifyUnit, 0, 10));//F_VerifyUnit
+		sql.append(QString("%1, ").arg(ptr[i].manufactDept, 0, 10));//F_ManufactDept
+		sql.append(QString("%1, ").arg(ptr[i].verifyDept, 0, 10));//F_VerifyDept
 		sql.append(QString("%1, ").arg(ptr[i].grade, 0, 10));//F_Grade
 		sql.append(QString("%1, ").arg(ptr[i].verifyPerson, 0, 10));//F_VerifyPerson
 		sql.append(QString("%1, ").arg(ptr[i].checkPerson, 0, 10));//F_CheckPerson

@@ -55,9 +55,9 @@ void DbSqlite::on_btnQuery_clicked()
 	model->setHeaderData(22, Qt::Horizontal, QObject::tr("规格"));
 	model->setRelation(23, QSqlRelation("T_Meter_Type","F_ID","F_Desc"));
 	model->setHeaderData(23, Qt::Horizontal, QObject::tr("表类型"));
-	model->setRelation(24, QSqlRelation("T_Manufacture_Unit","F_ID","F_Desc"));
+	model->setRelation(24, QSqlRelation("T_Manufacture_Dept","F_ID","F_Desc"));
 	model->setHeaderData(24, Qt::Horizontal, QObject::tr("制造单位"));
-	model->setRelation(25, QSqlRelation("T_Verify_Unit","F_ID","F_Desc"));
+	model->setRelation(25, QSqlRelation("T_Verify_Dept","F_ID","F_Desc"));
 	model->setHeaderData(25, Qt::Horizontal, QObject::tr("送检单位"));
 	model->setRelation(27, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));
 	model->setHeaderData(27, Qt::Horizontal, QObject::tr("检定员"));

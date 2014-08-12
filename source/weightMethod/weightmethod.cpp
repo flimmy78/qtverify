@@ -825,6 +825,7 @@ int WeightMethodDlg::calcMeterErrorAndSaveDb()
 		ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_ERROR, new QTableWidgetItem(QString("%1").setNum(m_meterError[m], 'g', 6))); //Îó²î
 	}
 
+	QString meterNoStr;
 	m_recNum = m_meterNum;
 	m_recPtr = new Record_Quality_STR[m_recNum];
 	memset(m_recPtr, 0, sizeof(Record_Quality_STR)*m_recNum);
@@ -832,7 +833,8 @@ int WeightMethodDlg::calcMeterErrorAndSaveDb()
 	{
 		strncpy(m_recPtr[i].timestamp, m_timeStamp.toAscii(), TIMESTAMP_LEN);
 		m_recPtr[i].flowPoint = m_flowPoint;
-		m_recPtr[i].meterNo = ui.tableWidget->item(m_meterPosMap[i]-1, 0)->text().toInt();
+		meterNoStr = METERNO_PREFIX + QString("%1").arg(ui.tableWidget->item(m_meterPosMap[i]-1, 0)->text(), 8, '0');
+		strcpy(m_recPtr[i].meterNo, meterNoStr.toAscii());
 		m_recPtr[i].flowPointIdx = m_nowOrder; //
 		m_recPtr[i].totalFlag = m_totalFlag;
 		m_recPtr[i].meterValue0 = m_meterStartValue[i];
@@ -854,8 +856,8 @@ int WeightMethodDlg::calcMeterErrorAndSaveDb()
 		m_recPtr[i].standard = m_standard;
 		m_recPtr[i].model = m_model;
 		m_recPtr[i].meterType = m_meterType; //±íÀàÐÍ
-		m_recPtr[i].manufacture = m_nowParams->m_manufac;
-		m_recPtr[i].verifyUnit = m_nowParams->m_vcomp;
+		m_recPtr[i].manufactDept = m_nowParams->m_manufac;
+		m_recPtr[i].verifyDept = m_nowParams->m_vcomp;
 		m_recPtr[i].verifyPerson = m_nowParams->m_vperson;
 		strncpy(m_recPtr[i].date, m_nowDate.toAscii(), DATE_LEN);
 		strncpy(m_recPtr[i].validDate, m_validDate.toAscii(), DATE_LEN);
