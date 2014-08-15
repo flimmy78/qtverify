@@ -13,12 +13,9 @@
 #define TIMEOUT_TEMPER		500 //每0.5秒钟请求一次温度值
 #define CALC_FLOW_COUNT		2   //计算流量频率（实际计算频率 = CALC_FLOW_COUNT * TIMEOUT_TEMPER）
 
-#define VALVE_OPEN		true	//阀门打开状态
-#define VALVE_CLOSE		false   //阀门关闭状态
 
 /*
 **	阀门位置索引
-*/
 #define VALVE_IN_IDX	 0	//进水阀
 #define VALVE_BIG_IDX	 1	//大流量阀
 #define VALVE_MID1_IDX	 2	//中一流量
@@ -27,6 +24,8 @@
 #define VALVE_OUT_IDX	 5	//放水阀
 
 #define  VALVE_NUM	6	//实际用到的阀门总数
+*/
+
 
 /*
 **	调节阀位置索引
@@ -122,7 +121,7 @@ public slots:
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
 	void slotFreshBalanceValue(const QString& Str);     //刷新天平数值
 
-	void slotSetValveBtnStatus(); //继电器返回成功对应的槽函数
+	void slotSetValveBtnStatus(const UINT8 &portno, const bool &status); //继电器返回成功对应的槽函数
 	void slotSetRegulateOk();
 
 	void setValveBtnBackColor(QPushButton *btn, bool status); //设置阀门按钮背景色

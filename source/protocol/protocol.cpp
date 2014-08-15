@@ -301,7 +301,7 @@ ControlProtocol::~ControlProtocol()
 
 /************************************************************************
 	新控制板协议：继电器控制 同时只控制1路                                       
-	status: true(开关闭合)；false(开关打开)
+	status: true(阀门打开)；false(阀门关闭)
 ************************************************************************/
 void ControlProtocol::makeRelaySendBuf(UINT8 portno, bool status)
 {
@@ -327,7 +327,7 @@ void ControlProtocol::makeRelaySendBuf(UINT8 portno, bool status)
 	}
 	else if (portno>=17 && portno<=24)
 	{
-		data = (UINT8)pow(a, (portno-17)) & st;;
+		data = (UINT8)pow(a, (portno-17)) & st;
 		m_sendBuf.append(code0).append(code0).append(data);
 	}
 	UINT8 cs = START_CODE + FUNC_RELAY + relay_num + portno + code0 + code0 + data;

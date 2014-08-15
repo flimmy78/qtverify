@@ -87,10 +87,9 @@ public:
 
 	ComThread m_valveThread;   //阀门控制线程
 	ControlComObject *m_controlObj;
-	QMap<int, bool> m_valveStatus;
+	QMap<int, bool> m_valveStatus; //阀门号与阀门状态的映射关系
 	QMap<int, QToolButton*> m_valveBtn;	
 	int m_nowPortNo;	//当前控制阀门端口号
-	int m_nowPortIdx;	//当前控制阀门端口索引
 
 	CAlgorithm *m_chkAlg;//检定过程用到的计算方法
 
@@ -181,8 +180,8 @@ public slots:
 	int judgeBalanceCapacitySingle(int order); //判断天平容量是否能够满足检定用量 不连续检定
 	int prepareVerifyFlowPoint(int order);     //准备单个流量点的检定
 	int startVerifyFlowPoint(int order);       //开始单个流量点的检定
-	int openValve(int portno);    //打开控制阀
-	int closeValve(int portno);   //关闭控制阀
+	int openValve(UINT8 portno);    //打开控制阀
+	int closeValve(UINT8 portno);   //关闭控制阀
 	int getMeterStartValue();     //获取表初值
 	int getMeterEndValue();       //获取表终值
 	int calcMeterErrorAndSaveDb();//计算表误差
@@ -191,7 +190,7 @@ public slots:
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
 	void slotFreshFlow(); //计算流量
 
-	void slotSetValveBtnStatus(); //继电器返回成功对应的槽函数
+	void slotSetValveBtnStatus(const UINT8 &portno, const bool &status); //继电器返回成功对应的槽函数
 	void slotSetRegulateOk();     //调节阀返回成功对应的槽函数
 
 	void setValveBtnBackColor(QToolButton *btn, bool status); //设置阀门按钮背景色

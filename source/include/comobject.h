@@ -22,6 +22,11 @@
 #include "protocol.h"
 #include "comsetdlg.h"
 
+
+#define VALVE_OPEN		true	//阀门打开状态
+#define VALVE_CLOSE		false   //阀门关闭状态
+
+
 class COMOBJECT_EXPORT ComThread : public QThread 
 {      
 	Q_OBJECT 
@@ -103,7 +108,7 @@ public:
 	QString m_balValue;
 
 signals:
-	void controlRelayIsOk();
+	void controlRelayIsOk(UINT8 portno, bool status);
 	void controlRegulateIsOk();
 	void controlGetBalanceValueIsOk(const QString& balValue);
 

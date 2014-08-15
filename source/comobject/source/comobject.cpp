@@ -262,21 +262,28 @@ void ControlComObject::readControlComBuffer()
 	UINT8 ret = 0x00;
 	ret = m_controlProtocol->readControlComBuffer(m_conTmp);
 	m_conTmp.clear(); //清零
+
+	UINT8 portno;
+	UINT8 st;
+	bool status;
 	if (ret == FUNC_RELAY) //继电器
 	{
+		portno = m_controlProtocol->getConFrame()->data[1];
+		st = m_controlProtocol->getConFrame()->data[(portno-1)/8 + 2];
+		status = st ? VALVE_OPEN : VALVE_CLOSE;
+		emit controlRelayIsOk(portno, status);
 		qDebug()<<"controlRelayIsOk"<<"\n";
-		emit controlRelayIsOk();
 	}
-	if (ret == FUNC_REGULATE) //调节阀
+	else if (ret == FUNC_REGULATE) //调节阀
 	{
 		qDebug()<<"controlRegulateIsOk"<<"\n";
 		emit controlRegulateIsOk();
 	}
-	if (ret == FUNC_QUERY) //查询
+	else if (ret == FUNC_QUERY) //查询
 	{
 		m_conFrame = m_controlProtocol->getConFrame();
 	}
-	if (ret == FUNC_BALANCE) //天平
+	else if (ret == FUNC_BALANCE) //天平
 	{
 		m_balValue = m_controlProtocol->getBalanceValue();
 		emit controlGetBalanceValueIsOk(m_balValue);
