@@ -229,7 +229,7 @@ void QualityDlg::initControlCom()
 	m_valveThread.start();
 	m_controlObj->openControlCom(&valveStruct);
 
-	connect(m_controlObj, SIGNAL(controlRelayIsOk(const UINT8 &, const &bool)), this, SLOT(slotSetValveBtnStatus(const UINT8 &, const &bool)));
+	connect(m_controlObj, SIGNAL(controlRelayIsOk(const UINT8 &, const bool &)), this, SLOT(slotSetValveBtnStatus(const UINT8 &, const bool &)));
 	connect(m_controlObj, SIGNAL(controlRegulateIsOk()), this, SLOT(slotSetRegulateOk()));
 
 	//天平数值从控制板获取

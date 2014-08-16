@@ -108,7 +108,7 @@ public:
 	QString m_balValue;
 
 signals:
-	void controlRelayIsOk(UINT8 portno, bool status);
+	void controlRelayIsOk(const UINT8 &portno, const bool &status);
 	void controlRegulateIsOk();
 	void controlGetBalanceValueIsOk(const QString& balValue);
 

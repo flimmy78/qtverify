@@ -39,8 +39,8 @@
 */
 #define COLUMN_METER_NUMBER 0 //表号列
 #define COLUMN_FLOW_POINT	1 //流量点
-#define COLUMN_START_VALUE	2 //初值列
-#define COLUMN_END_VALUE	3 //终值列
+#define COLUMN_METER_START	2 //表初值列
+#define COLUMN_METER_END	3 //表终值列
 #define COLUMN_BAL_START	4 //天平初值
 #define COLUMN_BAL_END		5 //天平终值
 #define COLUMN_TEMPER		6 //温度列
@@ -183,6 +183,7 @@ public slots:
 	int openValve(UINT8 portno);    //打开控制阀
 	int closeValve(UINT8 portno);   //关闭控制阀
 	int getMeterStartValue();     //获取表初值
+	void makeStartValueByLastEndValue(); //上一次的终值作为本次的初值
 	int getMeterEndValue();       //获取表终值
 	int calcMeterErrorAndSaveDb();//计算表误差
 

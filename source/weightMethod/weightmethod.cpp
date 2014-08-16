@@ -258,7 +258,7 @@ void WeightMethodDlg::initControlCom()
 	m_valveThread.start();
 	m_controlObj->openControlCom(&valveStruct);
 
-	connect(m_controlObj, SIGNAL(controlRelayIsOk(const UINT8 &, const &bool)), this, SLOT(slotSetValveBtnStatus(const UINT8 &, const bool &)));
+	connect(m_controlObj, SIGNAL(controlRelayIsOk(const UINT8 &, const bool &)), this, SLOT(slotSetValveBtnStatus(const UINT8 &, const bool &)));
 	connect(m_controlObj, SIGNAL(controlRegulateIsOk()), this, SLOT(slotSetRegulateOk()));
 
 	//天平数值从控制板获取
@@ -562,7 +562,7 @@ void WeightMethodDlg::clearTableContents()
 {
 	for (int i=0; i<m_rowNum; i++)
 	{
-		for (int j=1; j<ui.tableWidget->columnCount(); j++)
+		for (int j=1; j<ui.tableWidget->columnCount(); j++) //从第二列开始
 		{
 			if (ui.tableWidget->item(i,j) == 0)
 			{
@@ -571,7 +571,7 @@ void WeightMethodDlg::clearTableContents()
 			ui.tableWidget->item(i,j)->setText("");
 		}
 	}
-	// 	ui.tableWidget->clearContents();
+// 	ui.tableWidget->clearContents();
 }
 
 //点击"开始"按钮
@@ -749,16 +749,16 @@ int WeightMethodDlg::prepareVerifyFlowPoint(int order)
 
 	if (!m_continueVerify) //非连续检定，每次检定开始之前都要判断天平容量
 	{
-		if (!judgeBalanceCapacitySingle(order)) //判断天平容量是否能够满足单次检定用量
+		if (!judgeBalanceCapacitySingle(order)) //天平容量不满足本次检定用量
 		{
-			openWaterOutValve();
+			openWaterOutValve(); //打开放水阀，天平放水
 		}
-		while (!judgeBalanceCapacitySingle(order))
+		while (!judgeBalanceCapacitySingle(order)) //等待天平放水，直至满足本次检定用量
 		{ 
 			QTest::qWait(1000);
 		}
 		closeWaterOutValve(); //若满足检定用量，则关闭放水阀
-		QTest::qWait(3000); //等待3秒钟，等待水流稳定
+		QTest::qWait(3000);   //等待3秒钟，等待水流稳定
 	}
 
 	if (m_resetZero) //初值回零
@@ -768,9 +768,16 @@ int WeightMethodDlg::prepareVerifyFlowPoint(int order)
 	}
 	else //初值不回零
 	{
-		if (!getMeterStartValue()) //获取表初值
+		if (order >= 2) //第二个检定点之后
 		{
-			return false;
+			makeStartValueByLastEndValue(); //上一次的终值作为本次的初值
+		}
+		else //第一个检定点
+		{
+			if (!getMeterStartValue()) //获取表初值
+			{
+				return false;
+			}
 		}
 	}
 
@@ -1041,9 +1048,21 @@ int WeightMethodDlg::getMeterStartValue()
 	else //手动输入
 	{
 		QMessageBox::information(this, tr("Hint"), tr("请输入热量表初值！"));
-		ui.tableWidget->setCurrentCell(m_meterPosMap[0]-1, COLUMN_START_VALUE); //定位到第一个需要输入初值的地方
+		ui.tableWidget->setCurrentCell(m_meterPosMap[0]-1, COLUMN_METER_START); //定位到第一个需要输入初值的地方
 		waitInput = true;
 		return false;
+	}
+}
+
+//上一次的终值作为本次的初值
+void WeightMethodDlg::makeStartValueByLastEndValue()
+{
+	for (int i=0; i<m_meterNum; i++)
+	{
+		m_meterStartValue[i] = m_meterEndValue[i];
+// 		m_balStartV = m_balEndV;
+		ui.tableWidget->item(m_meterPosMap[i]-1, COLUMN_METER_START)->setText(QString("%1").arg(m_meterStartValue[i]));
+// 		ui.tableWidget->item(m_meterPosMap[i]-1, COLUMN_BAL_START)->setText(QString("%1").arg(m_balStartV));
 	}
 }
 
@@ -1061,7 +1080,7 @@ int WeightMethodDlg::getMeterEndValue()
 	else //手动输入
 	{
 		QMessageBox::information(this, tr("Hint"), tr("请输入热量表终值！"));
-		ui.tableWidget->setCurrentCell(m_meterPosMap[0]-1 ,COLUMN_END_VALUE); //定位到第一个需要输入终值的地方
+		ui.tableWidget->setCurrentCell(m_meterPosMap[0]-1 ,COLUMN_METER_END); //定位到第一个需要输入终值的地方
 		waitInput = true;
 		return false;
 	}
@@ -1077,7 +1096,7 @@ void WeightMethodDlg::on_tableWidget_cellChanged(int row, int column)
 
 	int idx = -1;
 
-	if (column == COLUMN_START_VALUE) //表初值列
+	if (column == COLUMN_METER_START) //表初值列
 	{
 		idx = isMeterPosValid(row);
 		if (idx < 0)
@@ -1100,7 +1119,7 @@ void WeightMethodDlg::on_tableWidget_cellChanged(int row, int column)
 		}
 	}
 
-	if (column == COLUMN_END_VALUE) //表终值列
+	if (column == COLUMN_METER_END) //表终值列
 	{
 		idx = isMeterPosValid(row);
 		if (idx < 0)
