@@ -752,13 +752,14 @@ int WeightMethodDlg::prepareVerifyFlowPoint(int order)
 		if (!judgeBalanceCapacitySingle(order)) //天平容量不满足本次检定用量
 		{
 			openWaterOutValve(); //打开放水阀，天平放水
+
+			while (!judgeBalanceCapacitySingle(order)) //等待天平放水，直至满足本次检定用量
+			{ 
+				QTest::qWait(1000);
+			}
+			closeWaterOutValve(); //若满足检定用量，则关闭放水阀
+			QTest::qWait(3000);   //等待3秒钟，等待水流稳定
 		}
-		while (!judgeBalanceCapacitySingle(order)) //等待天平放水，直至满足本次检定用量
-		{ 
-			QTest::qWait(1000);
-		}
-		closeWaterOutValve(); //若满足检定用量，则关闭放水阀
-		QTest::qWait(3000);   //等待3秒钟，等待水流稳定
 	}
 
 	if (m_resetZero) //初值回零
