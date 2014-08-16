@@ -302,6 +302,7 @@ void ParaSetDlg::on_btnSave_clicked()
 }
 
 /*
+* 检查被用户选定的检定序列号是否合法
 * 检定序列里必须要有1, 
 * 且是以1起始, 中间不间断的自然数序列
 * 比如: [1]; [1, 2]; [1, 2, 3]; 依此类推.
@@ -314,32 +315,30 @@ void ParaSetDlg::on_btnSave_clicked()
 bool ParaSetDlg::chkSeq()
 {
 	int max_seq = 0;//最大的次序号
-	int total_seqs = 0;//非零的检定次序号的和
+	int total_seqs = 0;//非零的检定次序号的个数
 	QVector<int> repeat_seq;//已发现的元素序列
 
 	for (int i=0; i < VERIFY_POINTS; i++)
 	{
-		int idx = cBox_seqs[i]->currentIndex();
+		int current_seq = cBox_seqs[i]->currentIndex();
 		//挑出最大的次序号
-		if (max_seq < idx)
+		if (max_seq < current_seq)
 		{
-			max_seq = idx;
-		}
-
-		//计算非0元素的个数
-		if (idx > 0)
-		{
-			total_seqs ++;
+			max_seq = current_seq;
 		}
 		
-		//如果存在重复元素, 则返回false;否则将当前元素加入已发现的元素序列
-		if (repeat_seq.contains(idx))
+		if (current_seq > 0)
 		{
-			return false;
-		}
-		else
-		{
-			repeat_seq.append(idx);
+			total_seqs ++;//计算非0元素的个数
+			//如果存在*重复*的!*非零元素*!, 则返回false;否则将当前元素加入已发现的元素序列
+			if (repeat_seq.contains(current_seq))
+			{
+				return false;
+			}
+			else
+			{
+				repeat_seq.append(current_seq);
+			}
 		}
 	}
 	//如果最大的次序号为0, 则认为用户漏选了检定次序
