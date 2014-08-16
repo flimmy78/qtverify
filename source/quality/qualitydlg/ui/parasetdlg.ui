@@ -973,23 +973,7 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QComboBox" name="cmbModel">
-        <item>
-         <property name="text">
-          <string>型号1</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>型号2</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>型号3</string>
-         </property>
-        </item>
-       </widget>
+       <widget class="QComboBox" name="cmbModel"/>
       </item>
      </layout>
     </item>
@@ -1077,41 +1061,14 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QComboBox" name="cmbVerifyCompany">
-        <item>
-         <property name="text">
-          <string>山东计量院</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>烟台计量院</string>
-         </property>
-        </item>
-       </widget>
+       <widget class="QComboBox" name="cmbVerifyCompany"/>
       </item>
      </layout>
     </item>
     <item row="0" column="3">
      <layout class="QGridLayout" name="gridLayout_5">
       <item row="1" column="1">
-       <widget class="QComboBox" name="cmbVerifyPerson">
-        <item>
-         <property name="text">
-          <string>检测员1</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>检测员2</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>检测员3</string>
-         </property>
-        </item>
-       </widget>
+       <widget class="QComboBox" name="cmbVerifyPerson"/>
       </item>
       <item row="0" column="0">
        <widget class="QLabel" name="label_7">

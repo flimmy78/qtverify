@@ -2,6 +2,7 @@
 TEMPLATE	= lib
 TARGET    = qualitydlg
 CONFIG += qt dll debug qtestlib thread
+QT += sql
 
 DEFINES	+= QUALITYDLG_DLL QT_THREAD_SUPPORT
 

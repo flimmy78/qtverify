@@ -985,12 +985,6 @@ public:
         gBox_Head->setTitle(QApplication::translate("ParaSetDlgClass", "\346\243\200\345\256\232\345\217\202\346\225\260", 0, QApplication::UnicodeUTF8));
         label_3->setText(QApplication::translate("ParaSetDlgClass", "\350\247\204\346\240\274", 0, QApplication::UnicodeUTF8));
         label_4->setText(QApplication::translate("ParaSetDlgClass", "\345\236\213\345\217\267", 0, QApplication::UnicodeUTF8));
-        cmbModel->clear();
-        cmbModel->insertItems(0, QStringList()
-         << QApplication::translate("ParaSetDlgClass", "\345\236\213\345\217\2671", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("ParaSetDlgClass", "\345\236\213\345\217\2672", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("ParaSetDlgClass", "\345\236\213\345\217\2673", 0, QApplication::UnicodeUTF8)
-        );
         label_5->setText(QApplication::translate("ParaSetDlgClass", "\345\270\270\347\224\250\346\265\201\351\207\217", 0, QApplication::UnicodeUTF8));
         cmbFlow->clear();
         cmbFlow->insertItems(0, QStringList()
@@ -1001,17 +995,6 @@ public:
         label_6->setText(QApplication::translate("ParaSetDlgClass", "\351\207\207\351\233\206\344\273\243\347\240\201", 0, QApplication::UnicodeUTF8));
         label_9->setText(QApplication::translate("ParaSetDlgClass", "\345\210\266\351\200\240\345\215\225\344\275\215", 0, QApplication::UnicodeUTF8));
         label_10->setText(QApplication::translate("ParaSetDlgClass", "\351\200\201\346\243\200\345\215\225\344\275\215", 0, QApplication::UnicodeUTF8));
-        cmbVerifyCompany->clear();
-        cmbVerifyCompany->insertItems(0, QStringList()
-         << QApplication::translate("ParaSetDlgClass", "\345\261\261\344\270\234\350\256\241\351\207\217\351\231\242", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("ParaSetDlgClass", "\347\203\237\345\217\260\350\256\241\351\207\217\351\231\242", 0, QApplication::UnicodeUTF8)
-        );
-        cmbVerifyPerson->clear();
-        cmbVerifyPerson->insertItems(0, QStringList()
-         << QApplication::translate("ParaSetDlgClass", "\346\243\200\346\265\213\345\221\2301", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("ParaSetDlgClass", "\346\243\200\346\265\213\345\221\2302", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("ParaSetDlgClass", "\346\243\200\346\265\213\345\221\2303", 0, QApplication::UnicodeUTF8)
-        );
         label_7->setText(QApplication::translate("ParaSetDlgClass", "\350\256\241\351\207\217\347\255\211\347\272\247", 0, QApplication::UnicodeUTF8));
         label_8->setText(QApplication::translate("ParaSetDlgClass", "\346\243\200\346\265\213\345\221\230", 0, QApplication::UnicodeUTF8));
         cmbGrade->clear();

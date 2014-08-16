@@ -18,6 +18,8 @@
 #include <QtCore/QSettings>
 #include <QTextCodec>
 #include <QtGui/QMessageBox>
+#include <QtSql/QSqlTableModel>
+#include <QtSql/QSqlRelationalTableModel>
 
 #include "parasetdlg.h"
 #include "commondefine.h"
@@ -162,6 +164,37 @@ void ParaSetDlg::initUiData()
 		qDebug()<<"id:"<<m_manuFacPtr[m].id<<",desc:"<<QString::fromLocal8Bit(m_manuFacPtr[m].desc);
 		ui.cmbManufacture->insertItem(m, QString::fromLocal8Bit(m_manuFacPtr[m].desc)); //汉字编码
 	}
+
+	//送检单位
+	int col_id = 0;
+	QSqlRelationalTableModel *model = new QSqlRelationalTableModel(this);  
+	model->setTable(tr("T_Verify_Dept"));  
+	model->setRelation(col_id, QSqlRelation("T_Verify_Dept","F_ID","F_Desc"));  
+	//QComboBox与QListWidget很相拟,因为它有一个内部模型去保存它的数据条目,所以我们用自己建的模型代替那个自带的模型。
+	//给出QSqlRelationalTableModel使用的关系模型，这个模型有两列,必须指出组合框应该显示哪一列   
+	QSqlTableModel *relationModel = model->relationModel(col_id); // 部门ID   
+	ui.cmbVerifyCompany->setModel(relationModel);  
+	ui.cmbVerifyCompany->setModelColumn(relationModel->fieldIndex("F_Desc")); // 使用字段名得到正确的标题索引,以使组合框显示部门名  
+
+	//检测员
+	int col_id1 = 0;
+	QSqlRelationalTableModel *model1 = new QSqlRelationalTableModel(this);  
+	model1->setTable(tr("T_User_Def_Tab"));  
+	model1->setRelation(col_id1, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));  
+	QSqlTableModel *relationModel1 = model1->relationModel(col_id1);   
+	ui.cmbVerifyPerson->setModel(relationModel1);  
+	ui.cmbVerifyPerson->setModelColumn(relationModel1->fieldIndex("F_Desc"));
+
+	//型号
+	int col_id2 = 0;
+	QSqlRelationalTableModel *model2 = new QSqlRelationalTableModel(this);  
+	model2->setTable(tr("T_Meter_Model"));  
+	model2->setRelation(col_id2, QSqlRelation("T_Meter_Model","F_ID","F_Desc"));  
+	QSqlTableModel *relationModel2 = model2->relationModel(col_id2);   
+	ui.cmbModel->setModel(relationModel2);  
+	ui.cmbModel->setModelColumn(relationModel2->fieldIndex("F_Desc")); 
+
+
 	cBoxData_inited = true;//下拉条已初始化完毕
 }
 
