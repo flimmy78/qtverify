@@ -321,15 +321,16 @@ bool ParaSetDlg::chkSeq()
 	for (int i=0; i < VERIFY_POINTS; i++)
 	{
 		int current_seq = cBox_seqs[i]->currentIndex();
-		//挑出最大的次序号
-		if (max_seq < current_seq)
+
+		if (current_seq > 0)//本函数中的自然数序列不包含零元素
 		{
-			max_seq = current_seq;
-		}
-		
-		if (current_seq > 0)
-		{
-			total_seqs ++;//计算非0元素的个数
+			//挑出最大的!*非零元素*!次序号
+			if (max_seq < current_seq)
+			{
+				max_seq = current_seq;
+			}
+
+			total_seqs ++;//计算!*非零元素*!的个数
 			//如果存在*重复*的!*非零元素*!, 则返回false;否则将当前元素加入已发现的元素序列
 			if (repeat_seq.contains(current_seq))
 			{
