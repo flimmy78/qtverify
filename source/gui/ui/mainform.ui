@@ -139,7 +139,7 @@
     <property name="title">
      <string>DataQuery</string>
     </property>
-    <addaction name="actionSqlite"/>
+    <addaction name="actionQuery"/>
     <addaction name="actionQueryExcel"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
@@ -192,7 +192,7 @@
     <string>Ctrl+D</string>
    </property>
   </action>
-  <action name="actionSqlite">
+  <action name="actionQuery">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
      <normaloff>:/qtVerify/images/debug.png</normaloff>:/qtVerify/images/debug.png</iconset>

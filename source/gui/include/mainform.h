@@ -5,7 +5,7 @@
 
 #include "ui_mainform.h"
 #include "dbmysql.h"
-#include "dbsqlite.h"
+#include "queryresult.h"
 #include "monsterinterface.h" //插件接口
 #include "comsetdlg.h"
 #include "SetComFrm.h"
@@ -23,7 +23,7 @@ public:
 	~MainForm();
 
 	DbMySql *dbmysqlobj;
-	DbSqlite *dbsqliteobj;
+	QueryResult *m_query;
 	MonsterInterface *m_monster;
 	CAlgorithm *m_alg;
 	SetComFrm *m_setcom; //串口参数设置
@@ -38,7 +38,7 @@ public:
 public slots:
 	void on_actionComDebuger_triggered();
 	void on_actionMySql_triggered();
-	void on_actionSqlite_triggered();
+	void on_actionQuery_triggered();
 	void on_actionComSet_triggered();
 	void on_actionPortSet_triggered();
 	void on_actionQueryExcel_triggered();

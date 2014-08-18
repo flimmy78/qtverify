@@ -21,17 +21,17 @@ LIBS += -lalgorithm -lcomsetdlg -lqualitydlg -lqaxserver -lqaxcontainerd -lmaste
 # Input
 HEADERS += include/mainform.h	\
 					 include/dbmysql.h	\
-					 include/dbsqlite.h	\
+					 include/queryresult.h	\
 #					 include/excel.h
 					 
 FORMS += 	ui/mainform.ui	\
 				 	ui/dbmysql.ui		\
-				 	ui/dbsqlite.ui	\
+				 	ui/queryresult.ui	\
 				 
 SOURCES += source/main.cpp	\
 					 source/mainform.cpp	\
 					 source/dbmysql.cpp		\
-					 source/dbsqlite.cpp	\
+					 source/queryresult.cpp	\
 #					 source/excel.cpp
 					 
 RESOURCES += qtverify.qrc

@@ -27,7 +27,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	ui.setupUi(this);
 
 	dbmysqlobj = new DbMySql();
-	dbsqliteobj = new DbSqlite();
+	m_query = new QueryResult();
 	m_alg = new CAlgorithm();
 
 	m_comdebugger = NULL;
@@ -59,10 +59,10 @@ void MainForm::closeEvent( QCloseEvent * event)
 		dbmysqlobj = NULL;
 	}
 
-	if (dbsqliteobj)
+	if (m_query)
 	{
-		delete dbsqliteobj;
-		dbsqliteobj = NULL;
+		delete m_query;
+		m_query = NULL;
 	}
 
 	if (m_alg)
@@ -141,9 +141,9 @@ void MainForm::on_actionMySql_triggered()
 	dbmysqlobj->show();
 }
 
-void MainForm::on_actionSqlite_triggered()
+void MainForm::on_actionQuery_triggered()
 {
-	dbsqliteobj->show();
+	m_query->show();
 }
 
 void MainForm::on_actionExit_triggered()
