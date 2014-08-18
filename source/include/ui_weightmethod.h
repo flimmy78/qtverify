@@ -66,6 +66,7 @@ public:
     QPushButton *btnStart;
     QPushButton *btnStop;
     QGroupBox *groupBox_3;
+    QGridLayout *gridLayout_6;
     QLabel *labelHintInfo;
     QWidget *layoutWidget2;
     QGridLayout *gridLayout_2;
@@ -290,9 +291,13 @@ public:
         groupBox_3 = new QGroupBox(tab1);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
         groupBox_3->setGeometry(QRect(920, 620, 221, 151));
+        gridLayout_6 = new QGridLayout(groupBox_3);
+        gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
         labelHintInfo = new QLabel(groupBox_3);
         labelHintInfo->setObjectName(QString::fromUtf8("labelHintInfo"));
-        labelHintInfo->setGeometry(QRect(20, 20, 191, 121));
+
+        gridLayout_6->addWidget(labelHintInfo, 0, 0, 1, 1);
+
         layoutWidget2 = new QWidget(tab1);
         layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
         layoutWidget2->setGeometry(QRect(710, 690, 191, 85));

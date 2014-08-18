@@ -32,8 +32,8 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	ui.setupUi(this);
  	ui.btnNext->hide(); //隐藏"下一步"按钮
 	ui.btnStart->hide();
-	waitInput = false;
-
+	m_inputStartValue = false;
+	m_inputEndValue = false;
 
 	//不同等级的热量表对应的标准误差
 	m_gradeErr[1] = 0.01;
@@ -547,17 +547,23 @@ int WeightMethodDlg::judgeBalanceInitValue(float v)
 
 int WeightMethodDlg::judgeBalanceAndCalcTemper(float targetV)
 {
+	int second;
+	float nowFlow =m_paraSetReader->getFpBySeq(m_nowOrder).fp_verify;;
 	while (!m_stopFlag && (ui.lnEditBigBalance->text().toFloat() < targetV))
 	{
 		qDebug()<<"天平重量 ="<<ui.lnEditBigBalance->text().toFloat()<<", 小于要求的重量 "<<targetV;
 		m_pipeInTemper += ui.lcdNumberInTemper->value();
 		m_pipeOutTemper += ui.lcdNumberOutTemper->value();
 		m_tempCount++;
+
+		second = 3.6*(targetV - ui.lnEditBigBalance->text().toFloat())/nowFlow;
+		ui.labelHintInfo->setText(QString("流量点: %1 m3/h\n剩余时间 %2 秒").arg(nowFlow).arg(second));
 		QTest::qWait(1000);
 	}
 
 	m_pipeInTemper = m_pipeInTemper/m_tempCount;   //入口平均温度
 	m_pipeOutTemper = m_pipeOutTemper/m_tempCount; //出口平均温度
+	ui.labelHintInfo->setText(QString("流量点: %1 m3/h\n检定完毕!").arg(nowFlow));
 	return true;
 }
 
@@ -621,6 +627,13 @@ void WeightMethodDlg::startVerify()
 		QMessageBox::warning(this, tr("Warning"), tr("请输入表号！"));
 		return;
 	}
+
+	m_flowPoint = m_paraSetReader->getFpBySeq(1).fp_verify;//第一个流量点
+	for (int m=0; m<m_meterNum; m++) //
+	{
+		ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_FLOW_POINT, new QTableWidgetItem(QString::number(m_flowPoint, 'f', 2)));//流量点
+	}
+
 
 	m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
 	m_nowDate = QDateTime::currentDateTime().toString("yyyy-MM-dd"); //当前日期'2014-08-07'
@@ -818,12 +831,12 @@ int WeightMethodDlg::startVerifyFlowPoint(int order)
 				m_meterDensity[m] = m_chkAlg->getDensityByQuery(m_meterTemper[m]);//计算每个被检表的密度
 				m_meterStdValue[m] = m_chkAlg->getStdVolByPos((m_balEndV-m_balStartV), m_pipeInTemper, m_pipeOutTemper, m_meterPosMap[m]); //计算每个被检表的体积标准值
 
-				ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_FLOW_POINT, new QTableWidgetItem(QString("%1").setNum(m_flowPoint, 'g', 6)));//流量点
-				ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_BAL_START, new QTableWidgetItem(QString("%1").setNum(m_balStartV, 'g', 6)));//天平初值
-				ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_BAL_END, new QTableWidgetItem(QString("%1").setNum(m_balEndV, 'g', 6)));    //天平终值
-				ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_TEMPER, new QTableWidgetItem(QString("%1").setNum(m_meterTemper[m], 'g', 6)));  //温度
-				ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_DENSITY, new QTableWidgetItem(QString("%1").setNum(m_meterDensity[m], 'g', 6)));//密度
-				ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_STD_VALUE, new QTableWidgetItem(QString("%1").setNum(m_meterStdValue[m], 'g', 6)));//标准值
+				ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_FLOW_POINT, new QTableWidgetItem(QString::number(m_flowPoint, 'f', 2)));//流量点
+				ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_BAL_START, new QTableWidgetItem(QString::number(m_balStartV, 'f', 2)));//天平初值
+				ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_BAL_END, new QTableWidgetItem(QString::number(m_balEndV, 'f', 2)));    //天平终值
+				ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_TEMPER, new QTableWidgetItem(QString::number(m_meterTemper[m], 'f', 2)));  //温度
+				ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_DENSITY, new QTableWidgetItem(QString::number(m_meterDensity[m], 'f', 2)));//密度
+				ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_STD_VALUE, new QTableWidgetItem(QString::number(m_meterStdValue[m], 'f', 2)));//标准值
 			}
 
 
@@ -842,8 +855,7 @@ int WeightMethodDlg::calcMeterErrorAndSaveDb()
 	for (int m=0; m<m_meterNum; m++) //
 	{
 		m_meterError[m] = (m_meterEndValue[m] - m_meterStartValue[m] - m_meterStdValue[m])/m_meterStdValue[m];//计算每个表的误差
-
-		ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_ERROR, new QTableWidgetItem(QString("%1").setNum(m_meterError[m], 'g', 6))); //误差
+		ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_ERROR, new QTableWidgetItem(QString::number(m_meterError[m], 'f', 6))); //误差
 	}
 
 	QString meterNoStr;
@@ -1059,7 +1071,7 @@ int WeightMethodDlg::getMeterStartValue()
 	{
 		QMessageBox::information(this, tr("Hint"), tr("请输入热量表初值！"));
 		ui.tableWidget->setCurrentCell(m_meterPosMap[0]-1, COLUMN_METER_START); //定位到第一个需要输入初值的地方
-		waitInput = true;
+		m_inputStartValue = true; //允许输入初值
 		return false;
 	}
 }
@@ -1067,12 +1079,12 @@ int WeightMethodDlg::getMeterStartValue()
 //上一次的终值作为本次的初值
 void WeightMethodDlg::makeStartValueByLastEndValue()
 {
+	float flow = m_paraSetReader->getFpBySeq(m_nowOrder).fp_verify;
 	for (int i=0; i<m_meterNum; i++)
 	{
 		m_meterStartValue[i] = m_meterEndValue[i];
-// 		m_balStartV = m_balEndV;
 		ui.tableWidget->item(m_meterPosMap[i]-1, COLUMN_METER_START)->setText(QString("%1").arg(m_meterStartValue[i]));
-// 		ui.tableWidget->item(m_meterPosMap[i]-1, COLUMN_BAL_START)->setText(QString("%1").arg(m_balStartV));
+ 		ui.tableWidget->item(m_meterPosMap[i]-1, COLUMN_FLOW_POINT)->setText(QString("%1").arg(flow));
 	}
 }
 
@@ -1090,8 +1102,8 @@ int WeightMethodDlg::getMeterEndValue()
 	else //手动输入
 	{
 		QMessageBox::information(this, tr("Hint"), tr("请输入热量表终值！"));
-		ui.tableWidget->setCurrentCell(m_meterPosMap[0]-1 ,COLUMN_METER_END); //定位到第一个需要输入终值的地方
-		waitInput = true;
+		ui.tableWidget->setCurrentCell(m_meterPosMap[0]-1, COLUMN_METER_END); //定位到第一个需要输入终值的地方
+		m_inputEndValue = true; //允许输入终值
 		return false;
 	}
 }
@@ -1099,14 +1111,14 @@ int WeightMethodDlg::getMeterEndValue()
 //响应处理用户输入完表初值、表终值
 void WeightMethodDlg::on_tableWidget_cellChanged(int row, int column)
 {
-	if (m_autopick || !waitInput) //自动采集 或 非等待输入状态
+	if (m_autopick) //自动采集
 	{
 		return;
 	}
 
 	int idx = -1;
 
-	if (column == COLUMN_METER_START) //表初值列
+	if (column==COLUMN_METER_START && m_inputStartValue) //表初值列 且 允许输入初值
 	{
 		idx = isMeterPosValid(row);
 		if (idx < 0)
@@ -1120,7 +1132,7 @@ void WeightMethodDlg::on_tableWidget_cellChanged(int row, int column)
 
 		if (row == (m_meterPosMap[m_meterNum-1]-1)) //输入最后一个表初值
 		{
-			waitInput = false;
+			m_inputStartValue = false;
 			startVerifyFlowPoint(m_nowOrder);
 		}
 		else //不是最后一个表初值,自动定位到下一个
@@ -1129,7 +1141,7 @@ void WeightMethodDlg::on_tableWidget_cellChanged(int row, int column)
 		}
 	}
 
-	if (column == COLUMN_METER_END) //表终值列
+	if (column==COLUMN_METER_END && m_inputEndValue) //表终值列 且 允许输入终值
 	{
 		idx = isMeterPosValid(row);
 		if (idx < 0)
@@ -1143,7 +1155,7 @@ void WeightMethodDlg::on_tableWidget_cellChanged(int row, int column)
 
 		if (row == (m_meterPosMap[m_meterNum-1]-1)) //输入最后一个表终值
 		{
-			waitInput = false;
+			m_inputEndValue = false;
 			calcMeterErrorAndSaveDb();
 		}
 		else //不是最后一个表终值,自动定位到下一个

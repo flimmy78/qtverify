@@ -134,7 +134,8 @@ public:
 	float m_flowPoint;
 	int m_nowOrder;				//当前检定次序
 
-	bool waitInput; //等待输入状态
+	bool m_inputStartValue; //等待输入初值状态
+	bool m_inputEndValue;   //等待输入终值状态
 
 	ReadComConfig *m_readComConfig; //读串口设置
 	PortSet_Ini_STR m_portsetinfo;  //端口配置
