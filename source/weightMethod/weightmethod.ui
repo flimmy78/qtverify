@@ -16,8 +16,17 @@
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
+     <property name="tabPosition">
+      <enum>QTabWidget::North</enum>
+     </property>
+     <property name="tabShape">
+      <enum>QTabWidget::Rounded</enum>
+     </property>
      <property name="currentIndex">
       <number>0</number>
+     </property>
+     <property name="tabsClosable">
+      <bool>false</bool>
      </property>
      <widget class="QWidget" name="tab1">
       <attribute name="title">
@@ -54,7 +63,7 @@
        <property name="title">
         <string>当前参数(关键信息)</string>
        </property>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -80,7 +89,7 @@
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>11</x>
@@ -425,7 +434,7 @@
          <rect>
           <x>20</x>
           <y>20</y>
-          <width>151</width>
+          <width>191</width>
           <height>121</height>
          </rect>
         </property>
@@ -637,6 +646,9 @@
           <property name="text">
            <string/>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item row="0" column="2">
@@ -675,6 +687,9 @@
           </property>
           <property name="text">
            <string/>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>

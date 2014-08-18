@@ -115,7 +115,7 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	model->setTable(tr("T_Meter_Standard"));  
 	model->select();  
 	m_mapper = new QDataWidgetMapper(this);
-	m_mapper->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
+	m_mapper->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
 	m_mapper->setModel(model);
 	m_mapper->addMapping(ui.lnEditStandard, 1); //映射表"T_Meter_Standard"的第二个字段
 
@@ -412,7 +412,8 @@ void WeightMethodDlg::on_btnExhaust_clicked()
 	clearTableContents();
 	m_meterNum = 0;
 
-	m_exaustTimer->start(m_exaustSecond*1000);//开始排气倒计时
+	m_exaustSecond = m_nowParams->ex_time;
+	m_exaustTimer->start(1000);//开始排气倒计时
 
 	readMeterNumber();
 
@@ -438,8 +439,16 @@ int WeightMethodDlg::openAllValuesAndPump()
 */
 void WeightMethodDlg::slotExaustFinished()
 {
+	m_exaustSecond --;
+	ui.labelHintInfo->setText(QString("排气倒计时：%1 秒").arg(m_exaustSecond));
+	qDebug()<<"排气倒计时:"<<m_exaustSecond<<"秒";
+
+	if (m_exaustSecond > 1)
+	{
+		return;
+	}
 	m_exaustTimer->stop(); //停止排气计时
-	qDebug()<<"排气时间:"<<m_exaustSecond<<"秒结束";
+	ui.labelHintInfo->setText(QString("排气倒计时 结束！"));
 	if (!closeAllFlowPointValves()) //关闭所有流量点阀门 失败
 	{
 		if (!closeAllFlowPointValves()) //再尝试关闭一次

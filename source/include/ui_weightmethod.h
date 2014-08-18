@@ -38,11 +38,11 @@ public:
     QWidget *tab1;
     QPushButton *btnParaSet;
     QGroupBox *groupBox;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout_2;
     QLabel *labelStandard;
     QLineEdit *lnEditStandard;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QGridLayout *gridLayout_5;
     QLabel *label_14;
     QComboBox *cmbAutoPick;
@@ -67,7 +67,7 @@ public:
     QPushButton *btnStop;
     QGroupBox *groupBox_3;
     QLabel *labelHintInfo;
-    QWidget *layoutWidget;
+    QWidget *layoutWidget2;
     QGridLayout *gridLayout_2;
     QLabel *label_3;
     QLCDNumber *lcdNumberFlow;
@@ -78,7 +78,7 @@ public:
     QLabel *label_5;
     QLCDNumber *lcdNumberOutTemper;
     QLabel *label_8;
-    QWidget *layoutWidget1;
+    QWidget *layoutWidget3;
     QGridLayout *gridLayout_3;
     QLabel *label_9;
     QLineEdit *lnEditBigBalance;
@@ -101,6 +101,9 @@ public:
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         tabWidget = new QTabWidget(WeightMethodClass);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
+        tabWidget->setTabPosition(QTabWidget::North);
+        tabWidget->setTabShape(QTabWidget::Rounded);
+        tabWidget->setTabsClosable(false);
         tab1 = new QWidget();
         tab1->setObjectName(QString::fromUtf8("tab1"));
         btnParaSet = new QPushButton(tab1);
@@ -114,46 +117,46 @@ public:
         groupBox = new QGroupBox(tab1);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         groupBox->setGeometry(QRect(20, 660, 261, 121));
-        widget = new QWidget(groupBox);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(10, 20, 121, 23));
-        horizontalLayout_2 = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(groupBox);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(10, 20, 121, 23));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        labelStandard = new QLabel(widget);
+        labelStandard = new QLabel(layoutWidget);
         labelStandard->setObjectName(QString::fromUtf8("labelStandard"));
 
         horizontalLayout_2->addWidget(labelStandard);
 
-        lnEditStandard = new QLineEdit(widget);
+        lnEditStandard = new QLineEdit(layoutWidget);
         lnEditStandard->setObjectName(QString::fromUtf8("lnEditStandard"));
         lnEditStandard->setEnabled(false);
 
         horizontalLayout_2->addWidget(lnEditStandard);
 
-        widget1 = new QWidget(groupBox);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(11, 61, 191, 51));
-        gridLayout_5 = new QGridLayout(widget1);
+        layoutWidget1 = new QWidget(groupBox);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(11, 61, 191, 51));
+        gridLayout_5 = new QGridLayout(layoutWidget1);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
         gridLayout_5->setContentsMargins(0, 0, 0, 0);
-        label_14 = new QLabel(widget1);
+        label_14 = new QLabel(layoutWidget1);
         label_14->setObjectName(QString::fromUtf8("label_14"));
 
         gridLayout_5->addWidget(label_14, 0, 0, 1, 1);
 
-        cmbAutoPick = new QComboBox(widget1);
+        cmbAutoPick = new QComboBox(layoutWidget1);
         cmbAutoPick->setObjectName(QString::fromUtf8("cmbAutoPick"));
         cmbAutoPick->setEnabled(false);
 
         gridLayout_5->addWidget(cmbAutoPick, 0, 1, 1, 1);
 
-        label_15 = new QLabel(widget1);
+        label_15 = new QLabel(layoutWidget1);
         label_15->setObjectName(QString::fromUtf8("label_15"));
 
         gridLayout_5->addWidget(label_15, 1, 0, 1, 1);
 
-        cmbContinue = new QComboBox(widget1);
+        cmbContinue = new QComboBox(layoutWidget1);
         cmbContinue->setObjectName(QString::fromUtf8("cmbContinue"));
         cmbContinue->setEnabled(false);
 
@@ -289,14 +292,14 @@ public:
         groupBox_3->setGeometry(QRect(920, 620, 221, 151));
         labelHintInfo = new QLabel(groupBox_3);
         labelHintInfo->setObjectName(QString::fromUtf8("labelHintInfo"));
-        labelHintInfo->setGeometry(QRect(20, 20, 151, 121));
-        layoutWidget = new QWidget(tab1);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(710, 690, 191, 85));
-        gridLayout_2 = new QGridLayout(layoutWidget);
+        labelHintInfo->setGeometry(QRect(20, 20, 191, 121));
+        layoutWidget2 = new QWidget(tab1);
+        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(710, 690, 191, 85));
+        gridLayout_2 = new QGridLayout(layoutWidget2);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         gridLayout_2->setContentsMargins(0, 0, 0, 0);
-        label_3 = new QLabel(layoutWidget);
+        label_3 = new QLabel(layoutWidget2);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         sizePolicy.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
         label_3->setSizePolicy(sizePolicy);
@@ -304,7 +307,7 @@ public:
 
         gridLayout_2->addWidget(label_3, 0, 0, 1, 1);
 
-        lcdNumberFlow = new QLCDNumber(layoutWidget);
+        lcdNumberFlow = new QLCDNumber(layoutWidget2);
         lcdNumberFlow->setObjectName(QString::fromUtf8("lcdNumberFlow"));
         QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Minimum);
         sizePolicy4.setHorizontalStretch(0);
@@ -314,14 +317,14 @@ public:
 
         gridLayout_2->addWidget(lcdNumberFlow, 0, 1, 1, 1);
 
-        label_6 = new QLabel(layoutWidget);
+        label_6 = new QLabel(layoutWidget2);
         label_6->setObjectName(QString::fromUtf8("label_6"));
         sizePolicy.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
         label_6->setSizePolicy(sizePolicy);
 
         gridLayout_2->addWidget(label_6, 0, 2, 1, 1);
 
-        label_4 = new QLabel(layoutWidget);
+        label_4 = new QLabel(layoutWidget2);
         label_4->setObjectName(QString::fromUtf8("label_4"));
         sizePolicy.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
         label_4->setSizePolicy(sizePolicy);
@@ -329,7 +332,7 @@ public:
 
         gridLayout_2->addWidget(label_4, 1, 0, 1, 1);
 
-        lcdNumberInTemper = new QLCDNumber(layoutWidget);
+        lcdNumberInTemper = new QLCDNumber(layoutWidget2);
         lcdNumberInTemper->setObjectName(QString::fromUtf8("lcdNumberInTemper"));
         sizePolicy4.setHeightForWidth(lcdNumberInTemper->sizePolicy().hasHeightForWidth());
         lcdNumberInTemper->setSizePolicy(sizePolicy4);
@@ -346,14 +349,14 @@ public:
 
         gridLayout_2->addWidget(lcdNumberInTemper, 1, 1, 1, 1);
 
-        label_7 = new QLabel(layoutWidget);
+        label_7 = new QLabel(layoutWidget2);
         label_7->setObjectName(QString::fromUtf8("label_7"));
         sizePolicy.setHeightForWidth(label_7->sizePolicy().hasHeightForWidth());
         label_7->setSizePolicy(sizePolicy);
 
         gridLayout_2->addWidget(label_7, 1, 2, 1, 1);
 
-        label_5 = new QLabel(layoutWidget);
+        label_5 = new QLabel(layoutWidget2);
         label_5->setObjectName(QString::fromUtf8("label_5"));
         sizePolicy.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
         label_5->setSizePolicy(sizePolicy);
@@ -361,62 +364,64 @@ public:
 
         gridLayout_2->addWidget(label_5, 2, 0, 1, 1);
 
-        lcdNumberOutTemper = new QLCDNumber(layoutWidget);
+        lcdNumberOutTemper = new QLCDNumber(layoutWidget2);
         lcdNumberOutTemper->setObjectName(QString::fromUtf8("lcdNumberOutTemper"));
         sizePolicy4.setHeightForWidth(lcdNumberOutTemper->sizePolicy().hasHeightForWidth());
         lcdNumberOutTemper->setSizePolicy(sizePolicy4);
 
         gridLayout_2->addWidget(lcdNumberOutTemper, 2, 1, 1, 1);
 
-        label_8 = new QLabel(layoutWidget);
+        label_8 = new QLabel(layoutWidget2);
         label_8->setObjectName(QString::fromUtf8("label_8"));
         sizePolicy.setHeightForWidth(label_8->sizePolicy().hasHeightForWidth());
         label_8->setSizePolicy(sizePolicy);
 
         gridLayout_2->addWidget(label_8, 2, 2, 1, 1);
 
-        layoutWidget1 = new QWidget(tab1);
-        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(710, 620, 191, 51));
-        gridLayout_3 = new QGridLayout(layoutWidget1);
+        layoutWidget3 = new QWidget(tab1);
+        layoutWidget3->setObjectName(QString::fromUtf8("layoutWidget3"));
+        layoutWidget3->setGeometry(QRect(710, 620, 191, 51));
+        gridLayout_3 = new QGridLayout(layoutWidget3);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
         gridLayout_3->setContentsMargins(0, 0, 0, 0);
-        label_9 = new QLabel(layoutWidget1);
+        label_9 = new QLabel(layoutWidget3);
         label_9->setObjectName(QString::fromUtf8("label_9"));
         sizePolicy.setHeightForWidth(label_9->sizePolicy().hasHeightForWidth());
         label_9->setSizePolicy(sizePolicy);
 
         gridLayout_3->addWidget(label_9, 0, 0, 1, 1);
 
-        lnEditBigBalance = new QLineEdit(layoutWidget1);
+        lnEditBigBalance = new QLineEdit(layoutWidget3);
         lnEditBigBalance->setObjectName(QString::fromUtf8("lnEditBigBalance"));
         sizePolicy2.setHeightForWidth(lnEditBigBalance->sizePolicy().hasHeightForWidth());
         lnEditBigBalance->setSizePolicy(sizePolicy2);
+        lnEditBigBalance->setReadOnly(true);
 
         gridLayout_3->addWidget(lnEditBigBalance, 0, 1, 1, 1);
 
-        label_11 = new QLabel(layoutWidget1);
+        label_11 = new QLabel(layoutWidget3);
         label_11->setObjectName(QString::fromUtf8("label_11"));
         sizePolicy.setHeightForWidth(label_11->sizePolicy().hasHeightForWidth());
         label_11->setSizePolicy(sizePolicy);
 
         gridLayout_3->addWidget(label_11, 0, 2, 1, 1);
 
-        label_10 = new QLabel(layoutWidget1);
+        label_10 = new QLabel(layoutWidget3);
         label_10->setObjectName(QString::fromUtf8("label_10"));
         sizePolicy.setHeightForWidth(label_10->sizePolicy().hasHeightForWidth());
         label_10->setSizePolicy(sizePolicy);
 
         gridLayout_3->addWidget(label_10, 1, 0, 1, 1);
 
-        lnEditSmallBalance = new QLineEdit(layoutWidget1);
+        lnEditSmallBalance = new QLineEdit(layoutWidget3);
         lnEditSmallBalance->setObjectName(QString::fromUtf8("lnEditSmallBalance"));
         sizePolicy2.setHeightForWidth(lnEditSmallBalance->sizePolicy().hasHeightForWidth());
         lnEditSmallBalance->setSizePolicy(sizePolicy2);
+        lnEditSmallBalance->setReadOnly(true);
 
         gridLayout_3->addWidget(lnEditSmallBalance, 1, 1, 1, 1);
 
-        label_12 = new QLabel(layoutWidget1);
+        label_12 = new QLabel(layoutWidget3);
         label_12->setObjectName(QString::fromUtf8("label_12"));
         sizePolicy.setHeightForWidth(label_12->sizePolicy().hasHeightForWidth());
         label_12->setSizePolicy(sizePolicy);
