@@ -616,7 +616,7 @@ void ParaSetReader::readOther()
 Flow_Point_Info ParaSetReader::getFpBySeq(int i)
 {
 	//遍历各有效流量点; 如果当前流量点的检定次序为i, 则返回此流量点信息
-	for (int j=0;j<m_params->total_fp;j++)
+	for (int j=0; j < VERIFY_POINTS; j++)
 	{
 		if (m_params->fp_info[j].fp_seq == i)
 		{
