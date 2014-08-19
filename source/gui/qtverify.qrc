@@ -1,54 +1,39 @@
 <RCC>
-  <qresource prefix="qtVerify">
-    <file>images/delulogo.png</file>
+  <qresource prefix="qtverify">
     <file>images/about.png</file>
-    <file>images/access_free.png</file>
+    <file>images/comdebugger.png</file>
+    <file>images/comset.png</file>
     <file>images/data_export.png</file>
     <file>images/data_import.png</file>
     <file>images/data_save.png</file>
-    <file>images/debug.png</file>
-    <file>images/describe.png</file>
-    <file>images/disp_prop_set.png</file>
-    <file>images/event_set.png</file>
+    <file>images/date.png</file>
+    <file>images/delulogo.png</file>
     <file>images/exit.png</file>
     <file>images/help.png</file>
     <file>images/his_day_access.png</file>
     <file>images/his_export.png</file>
     <file>images/his_import.png</file>
-    <file>images/his_month_access.png</file>
-    <file>images/his_year_access.png</file>
-    <file>images/ldf_control.PNG</file>
-    <file>images/ldf_createitem.PNG</file>
-    <file>images/ldf_exec.PNG</file>
-    <file>images/ldf_execguide.PNG</file>
-    <file>images/ldf_exit.PNG</file>
-    <file>images/ldf_outputfile.PNG</file>
-    <file>images/ldf_readdata.PNG</file>
-    <file>images/ldf_sampleclean.PNG</file>
-    <file>images/ldf_sampledata.PNG</file>
-    <file>images/ldf_sampledate.PNG</file>
-    <file>images/ldf_sampledweight.PNG</file>
-    <file>images/ldf_saveascurdata.PNG</file>
-    <file>images/ldf_savecurdata.PNG</file>
-    <file>images/ldf_showcurdata.PNG</file>
-    <file>images/ldfgui_icon.png</file>
+    <file>images/hostslaveset.png</file>
+    <file>images/ldf_savecurdata.png</file>
+    <file>images/collecttest.png</file>
+    <file>images/mysql.png</file>
     <file>images/modifypara.png</file>
-    <file>images/ontimer.png</file>
+    <file>images/portset.png</file>
+    <file>images/quality.png</file>
+    <file>images/qualitycomp.png</file>
+    <file>images/qualitytotal.png</file>
+    <file>images/queryexcel.png</file>
+    <file>images/queryresult.png</file>
+    <file>images/readdata.png</file>
+    <file>images/sampledata.png</file>
     <file>images/save.png</file>
     <file>images/setting.png</file>
-    <file>images/time_modify.png</file>
+    <file>images/std.png</file>
+    <file>images/stdcomp.png</file>
+    <file>images/stdtotal.png</file>
     <file>images/tree_leaf_close.png</file>
     <file>images/tree_leaf_open.png</file>
     <file>images/tree_node_close.png</file>
     <file>images/tree_node_open.png</file>
-    <file>images/tree_top_close.png</file>
-    <file>images/tree_top_open.png</file>
-    <file>images/setting.png</file>
-    <file>images/debug.png</file>
-    <file>images/about.png</file>
-    <file>images/help.png</file>
-    <file>images/exit.png</file>
-    <file>images/data_export.png</file>
-    <file>images/data_import.png</file>
   </qresource>
 </RCC>

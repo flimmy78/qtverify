@@ -185,6 +185,20 @@ insert into T_Role_Def_Tab(F_ID, F_Name, F_Desc) values(0, 'root', '超级用户
 insert into T_Role_Def_Tab(F_ID, F_Name, F_Desc) values(1, 'common', '普通用户');
 
 
+---------------------------------
+--是否表
+---------------------------------
+drop table if exists "T_Yes_No_Tab"
+;
+create table T_Yes_No_Tab
+(
+F_ID integer not null primary key autoincrement,
+F_Name varchar(8),
+F_Desc varchar(12)
+);
+insert into T_Yes_No_Tab(F_ID, F_Name, F_Desc) values(0, 'No', '不合格');
+insert into T_Yes_No_Tab(F_ID, F_Name, F_Desc) values(1, 'Yes', '合格');
+
 
 ---------------------------------
 --热表各规格的默认参数表

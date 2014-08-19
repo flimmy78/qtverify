@@ -557,13 +557,13 @@ int WeightMethodDlg::judgeBalanceAndCalcTemper(float targetV)
 		m_tempCount++;
 
 		second = 3.6*(targetV - ui.lnEditBigBalance->text().toFloat())/nowFlow;
-		ui.labelHintInfo->setText(QString("流量点: %1 m3/h\n剩余时间 %2 秒").arg(nowFlow).arg(second));
+		ui.labelHintInfo->setText(QString("第%1流量点: %2 m3/h\n剩余时间 %3 秒").arg(m_nowOrder).arg(nowFlow).arg(second));
 		QTest::qWait(1000);
 	}
 
 	m_pipeInTemper = m_pipeInTemper/m_tempCount;   //入口平均温度
 	m_pipeOutTemper = m_pipeOutTemper/m_tempCount; //出口平均温度
-	ui.labelHintInfo->setText(QString("流量点: %1 m3/h\n检定完毕!").arg(nowFlow));
+	ui.labelHintInfo->setText(QString("第%1流量点: %2 m3/h\n检定完毕!").arg(m_nowOrder).arg(nowFlow));
 	return true;
 }
 
