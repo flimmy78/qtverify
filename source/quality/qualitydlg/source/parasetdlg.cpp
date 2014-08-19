@@ -611,7 +611,9 @@ void ParaSetReader::readOther()
 }
 
 /*
-*得到检测序列号为i的流量点信息,i从1开始？
+* 得到检测序列号为i的流量点信息,i从1开始,
+*  以ParaSetReader.m_params->total_fp结束
+* 异常: i 不在[1...ParaSetReader.m_params->total_fp]之间
 */
 Flow_Point_Info ParaSetReader::getFpBySeq(int i)
 {
