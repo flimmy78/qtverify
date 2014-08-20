@@ -190,7 +190,7 @@ void QualityDlg::showEvent(QShowEvent *event)
 
 void QualityDlg::setBalQuan()
 {
-	//qDebug()<< " current thread id: "<< QThread::currentThreadId();
+//	qDebug()<< " current thread id: "<< QThread::currentThreadId();
 	QTime time;
 	time= QTime::currentTime();
 	qsrand(time.msec()+time.second()*1000);
@@ -524,7 +524,7 @@ void QualityDlg::slotFreshFlow()
 		//flowValue = (m_flow2 - m_flow1)*1000/(CALC_FLOW_COUNT*TIMEOUT_TEMPER);// kg/s
 		
 		m_flowcount = 0;
-		ui.lnEditFlow->setText(QString("%1").arg(flowValue, 6, 'g', 4));
+		ui.lnEditFlow->setText(QString::number(flowValue, 'f', 2));
 		m_flow1 = m_flow2;
 	}
 	
@@ -535,6 +535,12 @@ void QualityDlg::slotFreshFlow()
 /************************************************************************/
 void QualityDlg::slotFreshFlow_total()
 {
+	if (m_totalcount > 4294967290) //防止m_totalcount溢出 32位无符号整数范围0~4294967295
+	{
+		m_totalcount = 0;
+		total_quantity = 0;
+	}
+
 	float flowValue = 0.0;
 	m_totalcount ++;//计数器累加
 	end_quan = ui.lnEditBigBalance->text().toFloat();//取当前天平值, 作为当前运算的终值
@@ -543,7 +549,7 @@ void QualityDlg::slotFreshFlow_total()
 	total_quantity += delta_weight;
 	flowValue = 3.6*(total_quantity)*1000/(m_totalcount*TIMEOUT_TEMPER);//总累积水量/总时间  (吨/小时, t/h)
 	//flowValue = (total_quantity)*1000/(m_totalcount*TIMEOUT_TEMPER);// kg/s
-	ui.lnEditSmallBalance->setText(QString("%1").arg(flowValue, 6, 'g', 4));
+	ui.lnEditSmallBalance->setText(QString::number(flowValue, 'f', 2)); //暂时在ui.lnEditSmallBalance中显示流量
 	start_quan = end_quan;//将当前值保存, 作为下次运算的初值
 }
 
