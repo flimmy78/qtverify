@@ -278,6 +278,7 @@ public:
         tableWidget->setHorizontalHeaderItem(9, __qtablewidgetitem9);
         tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
         tableWidget->setGeometry(QRect(20, 20, 1221, 581));
+        tableWidget->setInputMethodHints(Qt::ImhFormattedNumbersOnly);
         tableWidget->setEditTriggers(QAbstractItemView::CurrentChanged|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed);
         btnExhaust = new QPushButton(tab1);
         btnExhaust->setObjectName(QString::fromUtf8("btnExhaust"));
@@ -422,7 +423,8 @@ public:
         lnEditSmallBalance->setObjectName(QString::fromUtf8("lnEditSmallBalance"));
         sizePolicy2.setHeightForWidth(lnEditSmallBalance->sizePolicy().hasHeightForWidth());
         lnEditSmallBalance->setSizePolicy(sizePolicy2);
-        lnEditSmallBalance->setReadOnly(true);
+        lnEditSmallBalance->setInputMethodHints(Qt::ImhNone);
+        lnEditSmallBalance->setReadOnly(false);
 
         gridLayout_3->addWidget(lnEditSmallBalance, 1, 1, 1, 1);
 

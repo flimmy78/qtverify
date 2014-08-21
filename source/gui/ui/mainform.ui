@@ -302,7 +302,7 @@
      <normaloff>:/qtverify/images/exit.png</normaloff>:/qtverify/images/exit.png</iconset>
    </property>
    <property name="text">
-    <string>Exit</string>
+    <string>退出</string>
    </property>
   </action>
   <action name="actionTest">

@@ -137,6 +137,8 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 		qDebug()<<"放水阀门未打开";
 		openWaterOutValve();
 	}
+
+	ui.lnEditSmallBalance->setInputMask("00000000");
 }
 
 WeightMethodDlg::~WeightMethodDlg()
@@ -435,7 +437,7 @@ int WeightMethodDlg::openAllValuesAndPump()
 }
 
 /*
-** 排气时间结束的响应函数
+** 定时器响应函数
 */
 void WeightMethodDlg::slotExaustFinished()
 {
@@ -564,6 +566,10 @@ int WeightMethodDlg::judgeBalanceAndCalcTemper(float targetV)
 	m_pipeInTemper = m_pipeInTemper/m_tempCount;   //入口平均温度
 	m_pipeOutTemper = m_pipeOutTemper/m_tempCount; //出口平均温度
 	ui.labelHintInfo->setText(QString("第%1流量点: %2 m3/h\n检定完毕!").arg(m_nowOrder).arg(nowFlow));
+	if (m_nowOrder == m_flowPointNum)
+	{
+		ui.labelHintInfo->setText(QString("所有%1个流量点已检定完毕!").arg(m_flowPointNum));
+	}
 	return true;
 }
 
@@ -613,7 +619,18 @@ void WeightMethodDlg::on_btnNext_clicked()
 //点击"终止检测"按钮
 void WeightMethodDlg::on_btnStop_clicked()
 {
-	m_stopFlag = true;
+	m_stopFlag = true; //不再检查天平质量
+	m_inputStartValue = false;
+	m_inputEndValue = false;
+	
+	m_exaustTimer->stop();//停止排气定时器
+
+	//关闭进水阀、所有流量点阀门
+
+	//打开放水阀
+
+	//停止水泵
+
 }
 
 //开始检定
@@ -663,27 +680,28 @@ void WeightMethodDlg::startVerify()
 		if (!judgeBalanceCapacity()) //判断天平容量是否能够满足检定用量
 		{
 			openWaterOutValve();
+			while (!judgeBalanceCapacity())
+			{ 
+				QTest::qWait(1000);
+			}
+			closeWaterOutValve(); //若满足检定用量，则关闭放水阀
+			QTest::qWait(3000); //等待3秒钟(等待水流稳定)
 		}
-		while (!judgeBalanceCapacity())
-		{ 
-			QTest::qWait(1000);
-		}
-		closeWaterOutValve(); //若满足检定用量，则关闭放水阀
-		QTest::qWait(3000); //等待3秒钟(等待水流稳定)
 	}
 
 
-	////////////////////////////////连续检定
-	if (m_continueVerify)
+	////////////////////////////////自动采集
+	if (m_autopick)
 	{
 		for (int j=0; j<m_flowPointNum; j++)
 		{
+			m_nowOrder = j+1;
 			prepareVerifyFlowPoint(j+1);
 		}
 	}
 
-	////////////////////////////////不连续检定
-	if (!m_continueVerify)
+	////////////////////////////////手动采集
+	if (!m_autopick)
 	{
 		if (prepareVerifyFlowPoint(1)) //第一个流量点检定
 		{
@@ -793,6 +811,11 @@ int WeightMethodDlg::prepareVerifyFlowPoint(int order)
 	{
 		if (order >= 2) //第二个检定点之后
 		{
+			if (m_autopick)
+			{
+				QTest::qWait(2000); //等2秒，供操作人员看上一次的检定结果
+				clearTableContents();
+			}
 			makeStartValueByLastEndValue(); //上一次的终值作为本次的初值
 		}
 		else //第一个检定点
@@ -900,11 +923,11 @@ int WeightMethodDlg::calcMeterErrorAndSaveDb()
 	saveVerifyRecord(); //保存至数据库
 
 
-	if (!m_continueVerify)
+	if (!m_autopick) //手动采集
 	{
 		ui.btnNext->show();
 	}
-	else
+	else //自动采集 
 	{
 		ui.btnNext->hide();
 	}
@@ -1064,6 +1087,7 @@ int WeightMethodDlg::getMeterStartValue()
 		for (int i=0; i<m_meterNum; i++)
 		{
 			m_meterStartValue[i] = 0.66;  //读取被检表初值
+			ui.tableWidget->setItem(m_meterPosMap[i]-1, COLUMN_METER_START, new QTableWidgetItem(QString::number(m_meterStartValue[i])));//表初值
 		}
 		return true;
 	}
@@ -1096,6 +1120,7 @@ int WeightMethodDlg::getMeterEndValue()
 		for (int i=0; i<m_meterNum; i++)
 		{
 			m_meterEndValue[i] = 10.88;  //读取被检表终值
+			ui.tableWidget->setItem(m_meterPosMap[i]-1, COLUMN_METER_END, new QTableWidgetItem(QString::number(m_meterEndValue[i])));//表终值
 		}
 		return true;
 	}
@@ -1112,6 +1137,11 @@ int WeightMethodDlg::getMeterEndValue()
 void WeightMethodDlg::on_tableWidget_cellChanged(int row, int column)
 {
 	if (m_autopick) //自动采集
+	{
+		return;
+	}
+
+	if (NULL == ui.tableWidget->item(row,  column))
 	{
 		return;
 	}
