@@ -88,7 +88,6 @@ private:
 	QVector<QComboBox*> cBox_seqs;//检定次序控件数组
 
 	void flowPointVector();//将各流量点中, 相似功能的控件加入数组, 便于使用
-
 	void installLastParams();//装载上次的参数配置
 	void installHead();//加载配置文件的[head]组的信息
 	void installFlowPoint();//加载配置文件的[FlowPoint_i]组的信息

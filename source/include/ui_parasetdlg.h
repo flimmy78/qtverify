@@ -324,6 +324,7 @@ public:
         cBox_Valve_1->addItem(QString());
         cBox_Valve_1->addItem(QString());
         cBox_Valve_1->setObjectName(QString::fromUtf8("cBox_Valve_1"));
+        cBox_Valve_1->setEnabled(false);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -352,6 +353,7 @@ public:
         cBox_Valve_2->addItem(QString());
         cBox_Valve_2->addItem(QString());
         cBox_Valve_2->setObjectName(QString::fromUtf8("cBox_Valve_2"));
+        cBox_Valve_2->setEnabled(false);
         sizePolicy.setHeightForWidth(cBox_Valve_2->sizePolicy().hasHeightForWidth());
         cBox_Valve_2->setSizePolicy(sizePolicy);
         cBox_Valve_2->setFont(font);
@@ -372,6 +374,7 @@ public:
         cBox_Valve_3->addItem(QString());
         cBox_Valve_3->addItem(QString());
         cBox_Valve_3->setObjectName(QString::fromUtf8("cBox_Valve_3"));
+        cBox_Valve_3->setEnabled(false);
         sizePolicy.setHeightForWidth(cBox_Valve_3->sizePolicy().hasHeightForWidth());
         cBox_Valve_3->setSizePolicy(sizePolicy);
         cBox_Valve_3->setFont(font);
@@ -392,6 +395,7 @@ public:
         cBox_Valve_4->addItem(QString());
         cBox_Valve_4->addItem(QString());
         cBox_Valve_4->setObjectName(QString::fromUtf8("cBox_Valve_4"));
+        cBox_Valve_4->setEnabled(false);
         sizePolicy.setHeightForWidth(cBox_Valve_4->sizePolicy().hasHeightForWidth());
         cBox_Valve_4->setSizePolicy(sizePolicy);
         cBox_Valve_4->setFont(font);
@@ -907,6 +911,9 @@ public:
 
         retranslateUi(ParaSetDlgClass);
 
+        cBox_Valve_2->setCurrentIndex(1);
+        cBox_Valve_3->setCurrentIndex(2);
+        cBox_Valve_4->setCurrentIndex(3);
         cBox_seq_2->setCurrentIndex(0);
         cBox_seq_3->setCurrentIndex(0);
         cBox_seq_4->setCurrentIndex(0);

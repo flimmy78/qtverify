@@ -375,6 +375,9 @@
      </item>
      <item row="2" column="0" rowspan="2">
       <widget class="QComboBox" name="cBox_Valve_1">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -442,6 +445,9 @@
      </item>
      <item row="2" column="2" rowspan="2">
       <widget class="QComboBox" name="cBox_Valve_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -464,6 +470,9 @@
        </property>
        <property name="autoFillBackground">
         <bool>false</bool>
+       </property>
+       <property name="currentIndex">
+        <number>1</number>
        </property>
        <property name="frame">
         <bool>true</bool>
@@ -509,6 +518,9 @@
      </item>
      <item row="2" column="4" rowspan="2">
       <widget class="QComboBox" name="cBox_Valve_3">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -531,6 +543,9 @@
        </property>
        <property name="autoFillBackground">
         <bool>false</bool>
+       </property>
+       <property name="currentIndex">
+        <number>2</number>
        </property>
        <property name="frame">
         <bool>true</bool>
@@ -576,6 +591,9 @@
      </item>
      <item row="2" column="6" rowspan="2">
       <widget class="QComboBox" name="cBox_Valve_4">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -598,6 +616,9 @@
        </property>
        <property name="autoFillBackground">
         <bool>false</bool>
+       </property>
+       <property name="currentIndex">
+        <number>3</number>
        </property>
        <property name="frame">
         <bool>true</bool>
