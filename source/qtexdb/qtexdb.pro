@@ -3,7 +3,7 @@
 ######################################################################
 
 TEMPLATE = lib
-CONFIG += dll console debug
+CONFIG += dll console debug axcontainer
 TARGET = qtexdb
 DEFINES	+= QTEXDB_DLL
 QT += sql
@@ -14,12 +14,17 @@ INCLUDEPATH += ./	\
 
 QMAKE_LIBDIR +=  ./             \
         	  		 $(RUNHOME)/lib \
-	          		 $(RUNHOME)/bin \
+	          		 $(RUNHOME)/bin
+	          		 
+LIBS += -lqaxserver -lqaxcontainerd 
 
 
 # Input
-HEADERS += $$(RUNHOME_INC)/include/qtexdb.h
-SOURCES += qtexdb.cpp
+HEADERS += $$(RUNHOME_INC)/include/qtexdb.h \
+           $$(RUNHOME_INC)/include/excelengine.h
+					 
+SOURCES += qtexdb.cpp \
+           excelengine.cpp
 
 
 win32{

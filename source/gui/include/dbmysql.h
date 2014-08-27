@@ -17,13 +17,13 @@ public:
 	DbMySql(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~DbMySql();
 
-	QSqlDatabase db;
+	QSqlDatabase m_db;
 
 public slots:
 
 
 private:
-	Ui::DbMySqlClass dbmysqlui;
+	Ui::DbMySqlClass ui;
 
 private slots:
 	void on_btnConnect_clicked();

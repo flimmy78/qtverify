@@ -8,9 +8,9 @@
 DbMySql::DbMySql(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
-	dbmysqlui.setupUi(this);
+	ui.setupUi(this);
 
-	dbmysqlui.btnQuery->setEnabled(false);
+	ui.btnQuery->setEnabled(false);
 }
 
 DbMySql::~DbMySql()
@@ -20,22 +20,22 @@ DbMySql::~DbMySql()
 
 void DbMySql::on_btnConnect_clicked()
 {
-	db = QSqlDatabase::addDatabase("QMYSQL"); // 使用mysql数据库驱动 
-	db.setHostName("localhost");
-	db.setDatabaseName("dbs1"); // 我们之前建立的数据库
-	db.setUserName("xopens"); // 我们创建的 xopens 用户名
-	db.setPassword("ytdf000"); // xopens 用户的密码
-	bool ok = db.open(); // 尝试连接数据库
-// 	db.exec("SET NAMES 'GB2312'");
+	m_db = QSqlDatabase::addDatabase("QMYSQL"); // 使用mysql数据库驱动 
+	m_db.setHostName("localhost");
+	m_db.setDatabaseName("dbs1"); // 我们之前建立的数据库
+	m_db.setUserName("xopens"); // 我们创建的 xopens 用户名
+	m_db.setPassword("ytdf000"); // xopens 用户的密码
+	bool ok = m_db.open(); // 尝试连接数据库
+// 	m_db.exec("SET NAMES 'GB2312'");
 	if(ok) // 这里用xopens已经成功连上数据库
 	{
 		QMessageBox::information(this, "DbShow", "connect mysql database success !", "Ok", "Cancel");	
-		dbmysqlui.btnQuery->setEnabled(true);
+		ui.btnQuery->setEnabled(true);
 	}
 	else
 	{
 		QMessageBox::information(this, "DbShow", "connect mysql database failed !", "Ok", "Cancel");	
-		dbmysqlui.btnQuery->setEnabled(false);
+		ui.btnQuery->setEnabled(false);
 	}
 }
 
@@ -46,7 +46,7 @@ void DbMySql::on_btnQuery_clicked()
 	{
 		// 本次查询成功
 		int numRows = 0; // 询问数据库驱动，是否驱动含有某种特性 
-		if(db.driver()->hasFeature(QSqlDriver::QuerySize))
+		if(m_db.driver()->hasFeature(QSqlDriver::QuerySize))
 		{
 			numRows = query.size(); // 如果支持结果影响的行数，那么直接记录下来
 		}
@@ -56,9 +56,9 @@ void DbMySql::on_btnQuery_clicked()
 			numRows = query.at() + 1;
 		}
 		QString id, lname, fname, phone; QDateTime dob; 
-		dbmysqlui.display->append("==========================================="); 
-		dbmysqlui.display->append(QString::fromLocal8Bit(" id | 姓名 | 生日 | 电话")); 
-		dbmysqlui.display->append("--------------------------------------");
+		ui.display->append("==========================================="); 
+		ui.display->append(QString::fromLocal8Bit(" id | 姓名 | 生日 | 电话")); 
+		ui.display->append("--------------------------------------");
 		while(query.next())// 定位结果到下一条记录
 		{ 
 			id = query.value(0).toString();
@@ -67,14 +67,14 @@ void DbMySql::on_btnQuery_clicked()
 			dob = query.value(3).toDateTime();
 			phone = QString::fromLocal8Bit(query.value(4).toByteArray());
 			QString result = id + " " + fname + lname + " " + (dob.toString()) + " "+phone;
-			dbmysqlui.display->append(result); 
+			ui.display->append(result); 
 		}
-		dbmysqlui.display->append("============================================");
-		dbmysqlui.display->append(QString("totally %1 rows").arg( numRows) );
+		ui.display->append("============================================");
+		ui.display->append(QString("totally %1 rows").arg( numRows) );
 	}
 	else  // 如果查询失败，用下面的方法得到具体数据库返回的原因
 	{
 		QSqlError error = query.lastError();
-		dbmysqlui.display->append("From mysql database: " + error.databaseText());
+		ui.display->append("From mysql database: " + error.databaseText());
 	}
 }

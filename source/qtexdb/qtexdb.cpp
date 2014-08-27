@@ -27,26 +27,24 @@ int testFunc(int a, int b)
 	return (a + b);
 }
 
-
-QSqlDatabase db;
+QSqlDatabase g_db;
 
 int startdb()
 {
-
 	if (QSqlDatabase::contains("qt_sql_default_connection"))
 	{
-		db = QSqlDatabase::database("qt_sql_default_connection");
+		g_db = QSqlDatabase::database("qt_sql_default_connection");
 	}
 	else
 	{
-		db = QSqlDatabase::addDatabase("QSQLITE");
+		g_db = QSqlDatabase::addDatabase("QSQLITE");
 	}
 
 	char dbname[FILENAME_LENGTH];
 	memset(dbname, 0, sizeof(char)*FILENAME_LENGTH);
 	sprintf_s(dbname, "%s/database/mysqlite375.db", getenv("RUNHOME"));
-	db.setDatabaseName(dbname);
-	bool ok = db.open(); // 尝试连接数据库
+	g_db.setDatabaseName(dbname);
+	bool ok = g_db.open(); // 尝试连接数据库
 
 	if(ok) // 成功连上数据库
 	{
@@ -60,7 +58,7 @@ int startdb()
 
 void closedb()
 {
-	db.close();
+	g_db.close();
 }
 
 //获取所有的表规格
@@ -241,7 +239,7 @@ int insertVerifyRec(Record_Quality_PTR ptr, int num)
 {
 	for (int i=0; i<num; i++)
 	{
-		QSqlQuery query(db); // 新建一个查询的实例
+		QSqlQuery query(g_db); // 新建一个查询的实例
 		QString sql = "insert into T_Verify_Record";
 		sql.append("(");
 		sql.append("F_TimeStamp,");
@@ -340,14 +338,14 @@ QString getTblDdl(QString tbl_name)
 	QString sql = QString("SELECT sql FROM sqlite_master WHERE upper(tbl_name) = upper('%1') AND type = 'table'").arg(tbl_name);//查询语句
 	QString ddl;//表的定义语句
 
-	QStringList tbls = db.tables();
+	QStringList tbls = g_db.tables();
 	//如果表名不存在, 抛出异常
 	if (!tbls.contains(tbl_name, Qt::CaseInsensitive))
 	{
 		throw QString("no this table: %1").arg(tbl_name);
 	}
 	//开始查询
-	QSqlQuery query(db);
+	QSqlQuery query(g_db);
 	if (query.exec(sql))
 	{
 		query.first();

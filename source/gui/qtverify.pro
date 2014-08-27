@@ -3,7 +3,7 @@
 ######################################################################
 
 TEMPLATE = app
-CONFIG  += qt warn_on debug console axcontainer
+CONFIG  += qt warn_on debug console
 TARGET = qtverify
 RC_FILE = qtverify.rc
 
@@ -21,8 +21,7 @@ LIBS += -lalgorithm -lcomsetdlg -lqualitydlg -lqaxserver -lqaxcontainerd -lmaste
 # Input
 HEADERS += include/mainform.h	\
 					 include/dbmysql.h	\
-					 include/queryresult.h	\
-#					 include/excel.h
+					 include/queryresult.h
 					 
 FORMS += 	ui/mainform.ui	\
 				 	ui/dbmysql.ui		\
@@ -31,8 +30,7 @@ FORMS += 	ui/mainform.ui	\
 SOURCES += source/main.cpp	\
 					 source/mainform.cpp	\
 					 source/dbmysql.cpp		\
-					 source/queryresult.cpp	\
-#					 source/excel.cpp
+					 source/queryresult.cpp
 					 
 RESOURCES += qtverify.qrc
 

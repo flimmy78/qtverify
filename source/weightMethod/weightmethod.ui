@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1284</width>
-    <height>838</height>
+    <height>862</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -721,6 +721,19 @@
        </property>
        <property name="text">
         <string>下一步</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnExport">
+       <property name="geometry">
+        <rect>
+         <x>1150</x>
+         <y>780</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>导出Excel</string>
        </property>
       </widget>
      </widget>

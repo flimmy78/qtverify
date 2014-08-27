@@ -18,6 +18,7 @@
 #include <QtCore/QThread>
 #include <QTest>
 #include <QtSql/QSqlTableModel>
+#include <QtGui/QFileDialog>
 
 
 #include "weightmethod.h"
@@ -568,7 +569,8 @@ int WeightMethodDlg::judgeBalanceAndCalcTemper(float targetV)
 	ui.labelHintInfo->setText(QString("第%1流量点: %2 m3/h\n检定完毕!").arg(m_nowOrder).arg(nowFlow));
 	if (m_nowOrder == m_flowPointNum)
 	{
-		ui.labelHintInfo->setText(QString("所有%1个流量点已检定完毕!").arg(m_flowPointNum));
+		ui.labelHintInfo->setText("所有流量点已经检定完毕!");
+		ui.btnNext->setEnabled(false);
 	}
 	return true;
 }
@@ -631,6 +633,7 @@ void WeightMethodDlg::on_btnStop_clicked()
 
 	//停止水泵
 
+	ui.labelHintInfo->setText("已终止检测");
 }
 
 //开始检定
@@ -654,7 +657,7 @@ void WeightMethodDlg::startVerify()
 
 	m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
 	m_nowDate = QDateTime::currentDateTime().toString("yyyy-MM-dd"); //当前日期'2014-08-07'
-	m_validDate = QDateTime::currentDateTime().addYears(VALID_YEAR).toString("yyyy-MM-dd"); //有效期
+	m_validDate = QDateTime::currentDateTime().addYears(VALID_YEAR).addDays(-1).toString("yyyy-MM-dd"); //有效期
 
 	m_meterStartValue = new float[m_meterNum]; //表初值 
 	memset(m_meterStartValue, 0, sizeof(float)*m_meterNum);
@@ -972,14 +975,12 @@ void WeightMethodDlg::setValveBtnBackColor(QToolButton *btn, bool status)
 	}
 	if (status) //阀门打开 绿色
 	{
-		btn->setStyleSheet("background:green;border:0px;");  
+		btn->setStyleSheet("background:rgb(199,237,204);border:0px;");  
 // 		btn->setIcon(QIcon("open.png"));
 	}
 	else //阀门关闭 红色
 	{
-		btn->setStyleSheet( "background-color:rgb(160,0,0);border:0px;"
-			"border-radius: 10px;"
-		);
+		btn->setStyleSheet( "background-color:rgb(255,200,200);border:0px;border-radius:10px;");
 // 		btn->setIcon(QIcon("close.png"));
 	}
 }
@@ -1218,3 +1219,43 @@ int WeightMethodDlg::saveVerifyRecord()
  	insertVerifyRec(m_recPtr, m_recNum);
 	return true;
 }
+
+/*
+void WeightMethodDlg::on_btnOpen_clicked()
+{
+	QString fileName = QFileDialog::getOpenFileName(this, tr("open file"), " ",  tr("excelfile(*.xls*)"));
+	m_excel.Open(fileName, 1, false); //打开指定的xls文件的指定sheet，且指定是否可见
+
+	int num = 0;
+	for (int i=1; i<=10; i++)
+	{
+		for (int j=1; j<=10; j++)
+		{
+			m_excel.SetCellData(i,j,++num); //修改指定单元数据
+		}
+	}
+
+	QVariant data = m_excel.GetCellData(1,1); //访问指定单元格数据
+	m_excel.GetCellData(2,2);
+	m_excel.GetCellData(3,3);
+	m_excel.Save(); //保存
+	m_excel.Close();
+}
+
+void WeightMethodDlg::on_btnImport_clicked()
+{
+	QString fileName = QFileDialog::getOpenFileName(this, tr("open file"), " ",  tr("excelfile(*.xls*)"));
+	m_excel.Open(fileName, 1, false);
+	m_excel.ReadDataToTable(ui.excelTable); //导入到widget中
+	m_excel.Close();
+}
+*/
+void WeightMethodDlg::on_btnExport_clicked()
+{
+	QString fileName = QFileDialog::getOpenFileName(this, tr("open file"), " ",  tr("excelfile(*.xls*)"));
+	m_excel.Open(fileName, 1, false);
+	m_excel.SaveDataFrTable(ui.tableWidget); //导出报表
+	m_excel.Close();
+}
+
+

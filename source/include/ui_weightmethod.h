@@ -88,6 +88,7 @@ public:
     QLineEdit *lnEditSmallBalance;
     QLabel *label_12;
     QPushButton *btnNext;
+    QPushButton *btnExport;
     QWidget *tab2;
     QWidget *tab3;
     QWidget *tab4;
@@ -97,7 +98,7 @@ public:
     {
         if (WeightMethodClass->objectName().isEmpty())
             WeightMethodClass->setObjectName(QString::fromUtf8("WeightMethodClass"));
-        WeightMethodClass->resize(1284, 838);
+        WeightMethodClass->resize(1284, 862);
         gridLayout = new QGridLayout(WeightMethodClass);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         tabWidget = new QTabWidget(WeightMethodClass);
@@ -438,6 +439,9 @@ public:
         btnNext = new QPushButton(tab1);
         btnNext->setObjectName(QString::fromUtf8("btnNext"));
         btnNext->setGeometry(QRect(1150, 700, 93, 28));
+        btnExport = new QPushButton(tab1);
+        btnExport->setObjectName(QString::fromUtf8("btnExport"));
+        btnExport->setGeometry(QRect(1150, 780, 93, 28));
         tabWidget->addTab(tab1, QString());
         tab2 = new QWidget();
         tab2->setObjectName(QString::fromUtf8("tab2"));
@@ -545,6 +549,7 @@ public:
         lnEditSmallBalance->setText(QString());
         label_12->setText(QApplication::translate("WeightMethodClass", "\343\216\217", 0, QApplication::UnicodeUTF8));
         btnNext->setText(QApplication::translate("WeightMethodClass", "\344\270\213\344\270\200\346\255\245", 0, QApplication::UnicodeUTF8));
+        btnExport->setText(QApplication::translate("WeightMethodClass", "\345\257\274\345\207\272Excel", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab1), QApplication::translate("WeightMethodClass", "Tab1", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab2), QApplication::translate("WeightMethodClass", "Tab2", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab3), QApplication::translate("WeightMethodClass", "Tab3", 0, QApplication::UnicodeUTF8));

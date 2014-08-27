@@ -51,12 +51,51 @@
 
 #include <QtGui/QWidget>
 #include <QtGui/QDataWidgetMapper>
+#include <QtGui/QItemDelegate>
 
 #include "ui_weightmethod.h"
 #include "parasetdlg.h"
 #include "comobject.h"
 #include "ReadComConfig.h"
 #include "algorithm.h"
+#include "excelengine.h"
+
+
+//ID列，只能输入1－12个数字   
+//利用QLineEdit委托和正则表达式对输入进行限制   
+class UserIDDelegate : public QItemDelegate  
+{  
+	Q_OBJECT  
+public:  
+	UserIDDelegate(QObject *parent = 0): QItemDelegate(parent) { }  
+	QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option,  
+		const QModelIndex &index) const  
+	{  
+		QLineEdit *editor = new QLineEdit(parent);  
+		QRegExp regExp("[0-9]{0,10}");  
+		editor->setValidator(new QRegExpValidator(regExp, parent));  
+		return editor;  
+	}  
+	void setEditorData(QWidget *editor, const QModelIndex &index) const  
+	{  
+		QString text = index.model()->data(index, Qt::EditRole).toString();  
+		QLineEdit *lineEdit = static_cast<QLineEdit*>(editor);  
+		lineEdit->setText(text);  
+	}  
+	void setModelData(QWidget *editor, QAbstractItemModel *model,  
+		const QModelIndex &index) const  
+	{  
+		QLineEdit *lineEdit = static_cast<QLineEdit*>(editor);  
+		QString text = lineEdit->text();  
+		model->setData(index, text, Qt::EditRole);  
+	}  
+	void updateEditorGeometry(QWidget *editor,  
+		const QStyleOptionViewItem &option, const QModelIndex &index) const  
+	{  
+		editor->setGeometry(option.rect);  
+	}  
+};  
+
 
 class WEIGHTMETHOD_EXPORT WeightMethodDlg : public QWidget
 {
@@ -65,6 +104,8 @@ class WEIGHTMETHOD_EXPORT WeightMethodDlg : public QWidget
 public:
 	WeightMethodDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~WeightMethodDlg();
+
+	ExcelEngine m_excel;
 
 	QDataWidgetMapper *m_mapper;
 
@@ -215,6 +256,11 @@ public slots:
 
 	void freshBigBalaceValue();   //刷新大天平数值 仅用于测试 模拟天平数值变化
 
+// 	void on_btnOpen_clicked();
+// 	void on_btnImport_clicked();
+	void on_btnExport_clicked();
+
+
 private slots:
 
 signals:
@@ -223,6 +269,5 @@ private:
 	Ui::WeightMethodClass ui;
 
 };
-
 
 #endif //WEIGHTMETHOD_H
