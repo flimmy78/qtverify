@@ -570,7 +570,7 @@ int WeightMethodDlg::judgeBalanceAndCalcTemper(float targetV)
 	if (m_nowOrder == m_flowPointNum)
 	{
 		ui.labelHintInfo->setText("所有流量点已经检定完毕!");
-		ui.btnNext->setEnabled(false);
+		ui.btnNext->hide();
 	}
 	return true;
 }
@@ -615,7 +615,12 @@ void WeightMethodDlg::on_btnNext_clicked()
 	clearTableContents();
 
 	m_nowOrder ++;
+	if (m_nowOrder == m_flowPointNum)
+	{
+		ui.btnNext->hide();
+	}
 	prepareVerifyFlowPoint(m_nowOrder); // 开始进行下一次流量点的检定
+
 }
 
 //点击"终止检测"按钮
@@ -709,7 +714,7 @@ void WeightMethodDlg::startVerify()
 		if (prepareVerifyFlowPoint(1)) //第一个流量点检定
 		{
 			ui.btnNext->show();
-			ui.btnNext->setDefault(true);
+			ui.btnNext->setFocus();
 		}
 	}
 	//检测结束
@@ -884,6 +889,7 @@ int WeightMethodDlg::calcMeterErrorAndSaveDb()
 		ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_ERROR, new QTableWidgetItem(QString::number(m_meterError[m], 'f', 6))); //误差
 	}
 
+	QString meterNoPrefix = getNumPrefixOfManufac(m_nowParams->m_manufac);
 	QString meterNoStr;
 	m_recNum = m_meterNum;
 	m_recPtr = new Record_Quality_STR[m_recNum];
@@ -892,7 +898,7 @@ int WeightMethodDlg::calcMeterErrorAndSaveDb()
 	{
 		strncpy(m_recPtr[i].timestamp, m_timeStamp.toAscii(), TIMESTAMP_LEN);
 		m_recPtr[i].flowPoint = m_flowPoint;
-		meterNoStr = METERNO_PREFIX + QString("%1").arg(ui.tableWidget->item(m_meterPosMap[i]-1, 0)->text(), 8, '0');
+		meterNoStr = meterNoPrefix + QString("%1").arg(ui.tableWidget->item(m_meterPosMap[i]-1, 0)->text(), 8, '0');
 		strcpy(m_recPtr[i].meterNo, meterNoStr.toAscii());
 		m_recPtr[i].flowPointIdx = m_nowOrder; //
 		m_recPtr[i].totalFlag = m_totalFlag;
@@ -926,13 +932,13 @@ int WeightMethodDlg::calcMeterErrorAndSaveDb()
 	saveVerifyRecord(); //保存至数据库
 
 
-	if (!m_autopick) //手动采集
-	{
-		ui.btnNext->show();
-	}
-	else //自动采集 
+	if (m_autopick) //自动采集
 	{
 		ui.btnNext->hide();
+	}
+	else if ( !m_autopick && (m_nowOrder != m_flowPointNum) )//手动采集并且不是最后一个检定点 
+	{
+		ui.btnNext->show();
 	}
 
 	return true; 

@@ -166,15 +166,14 @@ int getManufacture(int& num, Manufacture_PTR &ptr)
 		memset(ptr, 0, sizeof(Manufacture_STR)*num);
 	}
 
-	QString testStr;
-	if(query.exec("select f_id,f_name,f_desc from t_manufacture_dept order by f_id"))
+	if(query.exec("select f_id,f_name,f_desc,f_numprefix from t_manufacture_dept order by f_id"))
 	{
 		while(query.next())
 		{
 			ptr[i].id = query.value(0).toInt();
 			strcpy(ptr[i].name, query.value(1).toString().toAscii());
-			testStr = query.value(2).toString();
 			strcpy(ptr[i].desc, query.value(2).toString().toLocal8Bit()); //汉字编码
+			strcpy(ptr[i].numprefix, query.value(3).toString().toLocal8Bit());
 			i++;
 		}
 	}
@@ -185,6 +184,29 @@ int getManufacture(int& num, Manufacture_PTR &ptr)
 	}
 
 	return true;
+}
+
+QString getNumPrefixOfManufac(int idx)
+{
+	if (idx < 0)
+	{
+		return "";
+	}
+
+	QString str, sqlstr;
+	sqlstr = QString("select f_id,f_numprefix from t_manufacture_dept where f_id=%1").arg(idx);
+	QSqlQuery query; // 新建一个查询的实例
+	if(query.exec(sqlstr))
+	{
+		query.next();
+		str = query.value(1).toString();
+		return str;
+	}
+	else  // 如果查询失败，用下面的方法得到具体数据库返回的原因
+	{
+		QSqlError error = query.lastError();
+		return "";
+	}
 }
 
 /*

@@ -12,7 +12,7 @@
 #define TIMESTAMP_LEN	    24      //数据库中timestamp类型对应的字符串长度'2014-08-08 08:30:30.666'
 #define DATE_LEN            12      //数据库中date类型对应的字符串长度'2014-08-08'
 #define METERNO_LEN			16      //"表号"的字符串长度
-#define METERNO_PREFIX      "111100"  //表号的前缀 每个厂家不一样 德鲁="111100"
+#define NUMPREFIX_LEN		6		//"表号"的前缀长度。6位前缀
 
 #ifndef VERIFY_POINTS
 #define VERIFY_POINTS	4  //检定流量点的数量, 一般为4个(大, 中一, 中二, 小), 但客户也可能需要更多
@@ -110,6 +110,7 @@ public:
     int     id;                   //
 	char    name[ASCNAME_LEN];
     char    desc[DESC_LEN];				//
+	char    numprefix[NUMPREFIX_LEN]; //该厂家的表号前缀
 };
 typedef Manufacture_STR* Manufacture_PTR;
 

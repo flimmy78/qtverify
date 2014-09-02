@@ -127,11 +127,12 @@ create table T_Manufacture_Dept
 (
 F_ID integer not null primary key autoincrement,
 F_Name varchar(24),
-F_Desc varchar(60)
+F_Desc varchar(60),
+F_NumPrefix varchar(6)
 );
-insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc) values(0, 'SDM', '山东德鲁');
-insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc) values(1, 'SDJG', '烟台晶格');
-insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc) values(2, 'HYLY', '华仪乐业');
+insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc,F_NumPrefix) values(0, 'SDM', '山东德鲁','111100');
+insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc,F_NumPrefix) values(1, 'SDJG', '烟台晶格','111111');
+insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc,F_NumPrefix) values(2, 'HYLY', '华仪乐业','222222');
 
 
 ---------------------------------
