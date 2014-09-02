@@ -102,8 +102,8 @@ void QueryResult::on_btnInsert_clicked()
 	qDebug()<<"start time is:"<<statTime.toString("yyMMddhhmmss");
 	QDateTime endTime;
 	m_count = ui.spinBoxNums->value();
-//  QSqlDatabase db = QSqlDatabase::database("qt_sql_default_connection");
-// 	db.transaction(); //开启事务处理
+    QSqlDatabase db = QSqlDatabase::database("qt_sql_default_connection");
+	db.transaction(); //开启事务处理
 	QSqlQuery q;
 	q.prepare("insert into T_Meter_Standard(F_ID,F_Name) values(?, ?)");
 	QVariantList ints;
@@ -121,7 +121,7 @@ void QueryResult::on_btnInsert_clicked()
 		qDebug() << q.lastError();
 		return;
 	}
-//  db.commit(); //提交事务，此时才真正打开文件执行SQL语句
+    db.commit(); //提交事务，此时才真正打开文件执行SQL语句
 	endTime = QDateTime::currentDateTime();
 	qDebug()<<"  end time is:"<<endTime.toString("yyMMddhhmmss");
 	int usedSec = statTime.msecsTo(endTime);

@@ -244,7 +244,7 @@ bool ExcelEngine::SaveDataFrTable(QTableWidget *tableWidget)
     {
         for (int j=0; j<tableC; j++)
         {
-            if ( tableWidget->item(i,j) != NULL )
+            if ( (tableWidget->item(i,j) != NULL) && (!tableWidget->item(i,j)->text().isEmpty()) )
             {
                 this->SetCellData(i+2,j+1,tableWidget->item(i,j)->text());
             }
