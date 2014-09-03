@@ -109,7 +109,6 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	m_validDate = "";
 	m_flowPoint = 0;          //流量(m3/h)
 
-	m_recNum = 0;
 	m_recPtr = NULL;
 
 	QSqlTableModel *model = new QSqlTableModel(this);  
@@ -376,6 +375,10 @@ void WeightMethodDlg::setTableRowCount()
 	for (int i=1; i<= m_rowNum; i++)
 	{
 		vLabels<<QString("表位号%1").arg(i);
+// 		QSpinBox *box = new QSpinBox(this);
+// 		box->setMinimum(0);
+// 		box->setMaximum(99999999);
+// 		ui.tableWidget->setCellWidget(i-1,0, box);
 	}
 	ui.tableWidget->setVerticalHeaderLabels(vLabels);
 }
@@ -653,6 +656,14 @@ void WeightMethodDlg::startVerify()
 		return;
 	}
 
+	if (m_recPtr != NULL)
+	{
+		delete []m_recPtr;
+		m_recPtr = NULL;
+	}
+	m_recPtr = new Record_Quality_STR[m_meterNum];
+	memset(m_recPtr, 0, sizeof(Record_Quality_STR)*m_meterNum);
+
 	m_flowPoint = m_paraSetReader->getFpBySeq(1).fp_verify;//第一个流量点
 	for (int m=0; m<m_meterNum; m++) //
 	{
@@ -875,15 +886,17 @@ int WeightMethodDlg::startVerifyFlowPoint(int order)
 			{
 				return false;
 			}
-			calcMeterErrorAndSaveDb();
 		}
 	}
 	return true;
 }
 
-int WeightMethodDlg::calcMeterErrorAndSaveDb()
+/*
+** 计算所有被检表的误差
+*/
+int WeightMethodDlg::calcAllMeterError()
 {
-	for (int m=0; m<m_meterNum; m++) //
+	for (int m=0; m<m_meterNum; m++)
 	{
 		m_meterError[m] = (m_meterEndValue[m] - m_meterStartValue[m] - m_meterStdValue[m])/m_meterStdValue[m];//计算每个表的误差
 		ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_ERROR, new QTableWidgetItem(QString::number(m_meterError[m], 'f', 6))); //误差
@@ -891,16 +904,14 @@ int WeightMethodDlg::calcMeterErrorAndSaveDb()
 
 	QString meterNoPrefix = getNumPrefixOfManufac(m_nowParams->m_manufac);
 	QString meterNoStr;
-	m_recNum = m_meterNum;
-	m_recPtr = new Record_Quality_STR[m_recNum];
-	memset(m_recPtr, 0, sizeof(Record_Quality_STR)*m_recNum);
-	for (int i=0; i<m_recNum; i++)
+
+	for (int i=0; i<m_meterNum; i++)
 	{
 		strncpy(m_recPtr[i].timestamp, m_timeStamp.toAscii(), TIMESTAMP_LEN);
 		m_recPtr[i].flowPoint = m_flowPoint;
 		meterNoStr = meterNoPrefix + QString("%1").arg(ui.tableWidget->item(m_meterPosMap[i]-1, 0)->text(), 8, '0');
 		strcpy(m_recPtr[i].meterNo, meterNoStr.toAscii());
-		m_recPtr[i].flowPointIdx = m_nowOrder; //
+		m_recPtr[i].flowPointIdx = m_nowOrder;
 		m_recPtr[i].totalFlag = m_totalFlag;
 		m_recPtr[i].meterValue0 = m_meterStartValue[i];
 		m_recPtr[i].meterValue1 = m_meterEndValue[i];
@@ -926,22 +937,57 @@ int WeightMethodDlg::calcMeterErrorAndSaveDb()
 		m_recPtr[i].verifyPerson = m_nowParams->m_vperson;
 		strncpy(m_recPtr[i].date, m_nowDate.toAscii(), DATE_LEN);
 		strncpy(m_recPtr[i].validDate, m_validDate.toAscii(), DATE_LEN);
-
-	}
-
-	saveVerifyRecord(); //保存至数据库
-
-
-	if (m_autopick) //自动采集
-	{
-		ui.btnNext->hide();
-	}
-	else if ( !m_autopick && (m_nowOrder != m_flowPointNum) )//手动采集并且不是最后一个检定点 
-	{
-		ui.btnNext->show();
 	}
 
 	return true; 
+}
+
+/*
+** 计算某个被检表的误差
+** 输入参数：
+**     idx:被检表数组的索引
+*/
+int WeightMethodDlg::calcMeterError(int idx)
+{
+	m_meterError[idx] = (m_meterEndValue[idx] - m_meterStartValue[idx] - m_meterStdValue[idx])/m_meterStdValue[idx];//计算某个表的误差
+	ui.tableWidget->setItem(m_meterPosMap[idx]-1, COLUMN_ERROR, new QTableWidgetItem(QString::number(m_meterError[idx], 'f', 6))); //误差
+
+	QString meterNoPrefix = getNumPrefixOfManufac(m_nowParams->m_manufac);
+	QString meterNoStr;
+
+	strncpy(m_recPtr[idx].timestamp, m_timeStamp.toAscii(), TIMESTAMP_LEN);
+	m_recPtr[idx].flowPoint = m_flowPoint;
+	meterNoStr = meterNoPrefix + QString("%1").arg(ui.tableWidget->item(m_meterPosMap[idx]-1, 0)->text(), 8, '0');
+	strcpy(m_recPtr[idx].meterNo, meterNoStr.toAscii());
+	m_recPtr[idx].flowPointIdx = m_nowOrder; //
+	m_recPtr[idx].totalFlag = m_totalFlag;
+	m_recPtr[idx].meterValue0 = m_meterStartValue[idx];
+	m_recPtr[idx].meterValue1 = m_meterEndValue[idx];
+	m_recPtr[idx].meterDeltaV = m_recPtr[idx].meterValue1 - m_recPtr[idx].meterValue0;
+	m_recPtr[idx].balWeight0 = m_balStartV;
+	m_recPtr[idx].balWeight1 = m_balEndV;
+	m_recPtr[idx].balDeltaW = m_recPtr[idx].balWeight1 - m_recPtr[idx].balWeight0;
+	m_recPtr[idx].inSlotTemper = m_pipeInTemper;
+	m_recPtr[idx].outSlotTemper = m_pipeOutTemper;
+	m_recPtr[idx].pipeTemper = m_meterTemper[idx]; 
+	m_recPtr[idx].density = m_meterDensity[idx];
+	m_recPtr[idx].stdValue = m_meterStdValue[idx];
+	m_recPtr[idx].dispError = m_meterError[idx];
+	m_recPtr[idx].grade = m_nowParams->m_grade;
+	m_recPtr[idx].stdError = m_gradeErr[m_nowParams->m_grade]; //二级表 标准误差
+	m_recPtr[idx].result = (fabs(m_recPtr[idx].dispError) <= fabs(m_recPtr[idx].stdError)) ? 1 : 0;
+	m_recPtr[idx].meterPosNo = m_meterPosMap[idx];
+	m_recPtr[idx].standard = m_standard;
+	m_recPtr[idx].model = m_model;
+	m_recPtr[idx].meterType = m_meterType; //表类型
+	m_recPtr[idx].manufactDept = m_nowParams->m_manufac;
+	m_recPtr[idx].verifyDept = m_nowParams->m_vcomp;
+	m_recPtr[idx].verifyPerson = m_nowParams->m_vperson;
+	strncpy(m_recPtr[idx].date, m_nowDate.toAscii(), DATE_LEN);
+	strncpy(m_recPtr[idx].validDate, m_validDate.toAscii(), DATE_LEN);
+
+	return true; 
+
 }
 
 //打开阀门
@@ -1188,16 +1234,28 @@ void WeightMethodDlg::on_tableWidget_cellChanged(int row, int column)
 		else
 		{
 			m_meterEndValue[idx] = ui.tableWidget->item(row, column)->text().toFloat();
-		}
+			calcMeterError(idx);
+			insertVerifyRec(&m_recPtr[idx], 1);
 
-		if (row == (m_meterPosMap[m_meterNum-1]-1)) //输入最后一个表终值
-		{
-			m_inputEndValue = false;
-			calcMeterErrorAndSaveDb();
-		}
-		else //不是最后一个表终值,自动定位到下一个
-		{
-			ui.tableWidget->setCurrentCell(m_meterPosMap[idx+1]-1, column);
+			if (row == (m_meterPosMap[m_meterNum-1]-1)) //输入最后一个表终值
+			{
+				m_inputEndValue = false;
+// 				calcAllMeterError();
+// 				saveAllVerifyRecords();
+
+				if (m_autopick) //自动采集
+				{
+					ui.btnNext->hide();
+				}
+				else if ( !m_autopick && (m_nowOrder != m_flowPointNum) )//手动采集并且不是最后一个检定点 
+				{
+					ui.btnNext->show();
+				}
+			}
+			else //不是最后一个表终值,自动定位到下一个
+			{
+				ui.tableWidget->setCurrentCell(m_meterPosMap[idx+1]-1, column);
+			}
 		}
 	}
 
@@ -1205,7 +1263,7 @@ void WeightMethodDlg::on_tableWidget_cellChanged(int row, int column)
 
 /*
 ** 判断表位号是否有效(该表位是否需要检表)
-** 返回待检表数组的索引
+** 返回被检表数组的索引
 */
 int WeightMethodDlg::isMeterPosValid(int row)
 {
@@ -1219,10 +1277,12 @@ int WeightMethodDlg::isMeterPosValid(int row)
 	return -1;
 }
 
-//保存检定记录
-int WeightMethodDlg::saveVerifyRecord()
+/*
+** 保存所有被检表的检定记录
+*/
+int WeightMethodDlg::saveAllVerifyRecords()
 {
- 	insertVerifyRec(m_recPtr, m_recNum);
+ 	insertVerifyRec(m_recPtr, m_meterNum);
 	return true;
 }
 

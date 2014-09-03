@@ -166,7 +166,6 @@ public:
 	double m_pipeOutTemper;   //出口温度
 	//检定过程相关的控制参数 end
 
-	int m_recNum; //有效的检定记录个数
 	Record_Quality_PTR m_recPtr; //有效的检定记录
 	QString m_timeStamp; //时间戳 秒数
 	QString m_nowDate;  
@@ -227,7 +226,8 @@ public slots:
 	int getMeterStartValue();     //获取表初值
 	void makeStartValueByLastEndValue(); //上一次的终值作为本次的初值
 	int getMeterEndValue();       //获取表终值
-	int calcMeterErrorAndSaveDb();//计算表误差
+	int calcAllMeterError();//计算所有被检表的误差
+	int calcMeterError(int idx); //计算某个表的误差
 
 	void slotFreshBalanceValue(const QString& Str);     //刷新天平数值
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
@@ -251,7 +251,7 @@ public slots:
 	void on_btnWaterPumpStop_clicked();  //停止水泵
 
 	void on_tableWidget_cellChanged(int row, int column);
-	int saveVerifyRecord(); //保存检定记录
+	int saveAllVerifyRecords(); //保存所有被检表的检定记录
 	void clearTableContents();
 
 	void freshBigBalaceValue();   //刷新大天平数值 仅用于测试 模拟天平数值变化
