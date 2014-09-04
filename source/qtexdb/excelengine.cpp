@@ -240,13 +240,15 @@ bool ExcelEngine::SaveDataFrTable(QTableWidget *tableWidget)
     }
 
     //Ð´Êý¾Ý
-    for (int i=0; i<tableR; i++)
+	int i, j, m=0;
+    for (i=0; i<tableR; i++)
     {
-        for (int j=0; j<tableC; j++)
+        for (j=0; j<tableC; j++)
         {
             if ( (tableWidget->item(i,j) != NULL) && (!tableWidget->item(i,j)->text().isEmpty()) )
             {
-                this->SetCellData(i+2,j+1,tableWidget->item(i,j)->text());
+                this->SetCellData(m/tableC+2, j+1, tableWidget->item(i,j)->text());
+				m++;
             }
         }
     }

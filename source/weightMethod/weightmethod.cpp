@@ -670,7 +670,6 @@ void WeightMethodDlg::startVerify()
 		ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_FLOW_POINT, new QTableWidgetItem(QString::number(m_flowPoint, 'f', 2)));//流量点
 	}
 
-
 	m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
 	m_nowDate = QDateTime::currentDateTime().toString("yyyy-MM-dd"); //当前日期'2014-08-07'
 	m_validDate = QDateTime::currentDateTime().addYears(VALID_YEAR).addDays(-1).toString("yyyy-MM-dd"); //有效期
@@ -693,7 +692,6 @@ void WeightMethodDlg::startVerify()
 	m_meterError = new float[m_meterNum];      //被检表的误差
 	memset(m_meterError, 0, sizeof(float)*m_meterNum);
 	
-
 	if (m_continueVerify) //连续检定
 	{
 		if (!judgeBalanceCapacity()) //判断天平容量是否能够满足检定用量
@@ -708,9 +706,8 @@ void WeightMethodDlg::startVerify()
 		}
 	}
 
-
-	////////////////////////////////自动采集
-	if (m_autopick)
+	//////////////////////////////
+	if (m_autopick) //自动采集
 	{
 		for (int j=0; j<m_flowPointNum; j++)
 		{
@@ -718,9 +715,7 @@ void WeightMethodDlg::startVerify()
 			prepareVerifyFlowPoint(j+1);
 		}
 	}
-
-	////////////////////////////////手动采集
-	if (!m_autopick)
+	else //手动采集
 	{
 		if (prepareVerifyFlowPoint(1)) //第一个流量点检定
 		{
@@ -881,10 +876,15 @@ int WeightMethodDlg::startVerifyFlowPoint(int order)
 				ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_STD_VALUE, new QTableWidgetItem(QString::number(m_meterStdValue[m], 'f', 2)));//标准值
 			}
 
-
 			if (!getMeterEndValue()) //获取表终值
 			{
 				return false;
+			}
+
+			if (m_autopick) //自动采集
+			{
+				calcAllMeterError();
+				saveAllVerifyRecords();
 			}
 		}
 	}
@@ -1200,7 +1200,7 @@ void WeightMethodDlg::on_tableWidget_cellChanged(int row, int column)
 	}
 
 	int idx = -1;
-
+	bool ok;
 	if (column==COLUMN_METER_START && m_inputStartValue) //表初值列 且 允许输入初值
 	{
 		idx = isMeterPosValid(row);
@@ -1210,7 +1210,12 @@ void WeightMethodDlg::on_tableWidget_cellChanged(int row, int column)
 		}
 		else
 		{
-			m_meterStartValue[idx] = ui.tableWidget->item(row, column)->text().toFloat();
+			m_meterStartValue[idx] = ui.tableWidget->item(row, column)->text().toFloat(&ok);
+			if (!ok)
+			{
+				QMessageBox::warning(this, tr("Warning"), tr("输入错误！请输入数字"));
+				return;
+			}
 		}
 
 		if (row == (m_meterPosMap[m_meterNum-1]-1)) //输入最后一个表初值
@@ -1233,7 +1238,12 @@ void WeightMethodDlg::on_tableWidget_cellChanged(int row, int column)
 		}
 		else
 		{
-			m_meterEndValue[idx] = ui.tableWidget->item(row, column)->text().toFloat();
+			m_meterEndValue[idx] = ui.tableWidget->item(row, column)->text().toFloat(&ok);
+			if (!ok)
+			{
+				QMessageBox::warning(this, tr("Warning"), tr("输入错误！请输入数字"));
+				return;
+			}
 			calcMeterError(idx);
 			insertVerifyRec(&m_recPtr[idx], 1);
 

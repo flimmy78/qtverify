@@ -27,7 +27,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	ui.setupUi(this);
 
 	dbmysqlobj = new DbMySql();
-	m_query = new QueryResult();
+	m_query = NULL;
 	m_alg = new CAlgorithm();
 
 	m_comdebugger = NULL;
@@ -143,6 +143,15 @@ void MainForm::on_actionMySql_triggered()
 
 void MainForm::on_actionQuery_triggered()
 {
+	if (NULL == m_query)
+	{
+		m_query = new QueryResult();
+	}
+	else
+	{
+		delete m_query;
+		m_query = new QueryResult();
+	}
 	m_query->show();
 }
 

@@ -21,6 +21,8 @@ public:
 
 	uint m_count;
 
+	void initUiData();
+
 public slots:
 
 

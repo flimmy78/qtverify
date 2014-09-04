@@ -31,14 +31,14 @@ QueryResult::QueryResult(QWidget *parent, Qt::WFlags flags)
 	ui.setupUi(this);
 
 	m_count = 0;
-// 	ui.btnInsert->setEnabled(false);
-// 	ui.btnStop->setEnabled(false);
 
 	QStringList drivers = QSqlDatabase::drivers();
 	foreach(QString driver, drivers)
 	{
 		qDebug()<<driver;
 	}
+
+	initUiData();
 }
 
 QueryResult::~QueryResult()
@@ -46,11 +46,55 @@ QueryResult::~QueryResult()
 
 }
 
+//
+void QueryResult::initUiData()
+{
+	//制造单位
+	int col_id1 = 0;
+	QSqlRelationalTableModel *model1 = new QSqlRelationalTableModel(this);  
+	model1->setTable(tr("T_Manufacture_Dept"));  
+	model1->setRelation(col_id1, QSqlRelation("T_Manufacture_Dept","F_ID","F_Desc"));  
+	QSqlTableModel *relationModel1 = model1->relationModel(col_id1);   
+	ui.cmbManufactDept->setModel(relationModel1);  
+	ui.cmbManufactDept->setModelColumn(relationModel1->fieldIndex("F_Desc")); 
+// 	ui.cmbManufactDept->insertItem(ui.cmbManufactDept->count(), "");
+// 	ui.cmbManufactDept->setCurrentIndex(ui.cmbManufactDept->count()-1);
+
+	//送检单位
+	int col_id2 = 0;
+	QSqlRelationalTableModel *model2 = new QSqlRelationalTableModel(this);  
+	model2->setTable(tr("T_Verify_Dept"));  
+	model2->setRelation(col_id2, QSqlRelation("T_Verify_Dept","F_ID","F_Desc"));  
+	QSqlTableModel *relationModel2 = model2->relationModel(col_id2);   
+	ui.cmbVerifyDept->setModel(relationModel2);  
+	ui.cmbVerifyDept->setModelColumn(relationModel2->fieldIndex("F_Desc")); 
+// 	ui.cmbVerifyDept->insertItem(ui.cmbVerifyDept->count(), "");
+// 	ui.cmbVerifyDept->setCurrentIndex(ui.cmbVerifyDept->count()-1);
+
+	//检定员
+	int col_id3 = 0;
+	QSqlRelationalTableModel *model3 = new QSqlRelationalTableModel(this);  
+	model3->setTable(tr("T_User_Def_Tab"));  
+	model3->setRelation(col_id3, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));  
+	QSqlTableModel *relationModel3 = model3->relationModel(col_id3);   
+	ui.cmbVerifyPerson->setModel(relationModel3);  
+	ui.cmbVerifyPerson->setModelColumn(relationModel3->fieldIndex("F_Desc")); 
+// 	ui.cmbVerifyPerson->insertItem(ui.cmbVerifyPerson->count(), "");
+// 	ui.cmbVerifyPerson->setCurrentIndex(ui.cmbVerifyPerson->count()-1);
+
+	ui.startDateTime->setDateTime(QDateTime::currentDateTime().addDays(-7));//过去一周
+	ui.endDateTime->setDateTime(QDateTime::currentDateTime());
+}
+
+//查询检定结果
 void QueryResult::on_btnQuery_clicked()
 {
 	QSqlRelationalTableModel *model = new QSqlRelationalTableModel(this);
 	model->setEditStrategy(QSqlTableModel::OnFieldChange); //属性变化时写入数据库
 	model->setTable("T_Verify_Record");
+	model->setFilter(QString("F_ManufactDept=%1 and F_VerifyDept=%2 and F_VerifyPerson=%3 and F_TimeStamp>=\'%4\' and F_TimeStamp<=\'%5\'").arg(ui.cmbManufactDept->currentIndex())\
+		.arg(ui.cmbVerifyDept->currentIndex()).arg(ui.cmbVerifyPerson->currentIndex()).arg(ui.startDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"))\
+		.arg((ui.endDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"))));
 	
 	model->setRelation(19, QSqlRelation("T_Yes_No_Tab","F_ID","F_Desc"));
 	model->setHeaderData(19, Qt::Horizontal, QObject::tr("合格标志"));
@@ -84,6 +128,7 @@ void QueryResult::on_btnQuery_clicked()
 	ui.tableView->resizeColumnsToContents(); //列宽度自适应
  	ui.tableView->setItemDelegate(new QSqlRelationalDelegate(ui.tableView)); //外键字段只能在已有的数据中编辑
 	ui.tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);  //使其不可编辑
+// 	ui.tableView->hideColumn(0);
 
 /*	QString tbname = model->tableName();
 	QString fdname1 = model->record(0).fieldName(0);

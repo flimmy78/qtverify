@@ -89,6 +89,7 @@ int getMeterStandard(int& num, MeterStandard_PTR &ptr)
 	else  // 如果查询失败，用下面的方法得到具体数据库返回的原因
 	{
 		QSqlError error = query.lastError();
+		qWarning()<<error.text();
 		return false;
 	}
 
@@ -112,6 +113,7 @@ int getMaxMeterByIdx(int idx)
 	else  // 如果查询失败，用下面的方法得到具体数据库返回的原因
 	{
 		QSqlError error = query.lastError();
+		qWarning()<<error.text();
 		return -1;
 	}
 }
@@ -145,6 +147,7 @@ int getMeterType(int& num, MeterType_PTR &ptr)
 	else  // 如果查询失败，用下面的方法得到具体数据库返回的原因
 	{
 		QSqlError error = query.lastError();
+		qWarning()<<error.text();
 		return false;
 	}
 
@@ -180,6 +183,7 @@ int getManufacture(int& num, Manufacture_PTR &ptr)
 	else  // 如果查询失败，用下面的方法得到具体数据库返回的原因
 	{
 		QSqlError error = query.lastError();
+		qWarning()<<error.text();
 		return false;
 	}
 
@@ -205,6 +209,7 @@ QString getNumPrefixOfManufac(int idx)
 	else  // 如果查询失败，用下面的方法得到具体数据库返回的原因
 	{
 		QSqlError error = query.lastError();
+		qWarning()<<error.text();
 		return "";
 	}
 }
@@ -228,7 +233,8 @@ int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id)
 		ptr = new DftDbInfo_STR[num];
 		memset(ptr, 0, sizeof(DftDbInfo_STR)*num);
 	}
-	sql = "select f_id, F_StandardID, f_nflowpoint, f_upperflow, f_verifyflow, f_flowquantity, f_pumpfrequencey, f_valve_i, f_seq_i, F_Flow_idx from t_meter_default_params where F_StandardID = " + QString::number(stand_id) + " order by F_Flow_idx";
+	sql = "select f_id, F_StandardID, f_nflowpoint, f_upperflow, f_verifyflow, f_flowquantity, f_pumpfrequencey, f_valve_i, \
+		  f_seq_i, F_Flow_idx from t_meter_default_params where F_StandardID = " + QString::number(stand_id) + " order by F_Flow_idx";
 	if(query.exec(sql))
 	{
 		while(query.next())
@@ -248,6 +254,7 @@ int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id)
 	else  // 如果查询失败，用下面的方法得到具体数据库返回的原因
 	{
 		QSqlError error = query.lastError();
+		qWarning()<<error.text();
 		return false;
 	}
 
@@ -338,12 +345,12 @@ int insertVerifyRec(Record_Quality_PTR ptr, int num)
 		sql.append(")");//end
 		if (query.exec(sql))
 		{
-			qDebug() << "insert succeed";
+			qDebug()<<"insert succeed";
 		}
 		else
 		{
  			QSqlError error = query.lastError();
-			qDebug() << error.text();
+			qWarning()<<error.text();
 		}
 	}
 	
