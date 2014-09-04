@@ -57,8 +57,8 @@ void QueryResult::initUiData()
 	QSqlTableModel *relationModel1 = model1->relationModel(col_id1);   
 	ui.cmbManufactDept->setModel(relationModel1);  
 	ui.cmbManufactDept->setModelColumn(relationModel1->fieldIndex("F_Desc")); 
-// 	ui.cmbManufactDept->insertItem(ui.cmbManufactDept->count(), "");
-// 	ui.cmbManufactDept->setCurrentIndex(ui.cmbManufactDept->count()-1);
+	ui.cmbManufactDept->insertItem(ui.cmbManufactDept->count(), "");
+	ui.cmbManufactDept->setCurrentIndex(ui.cmbManufactDept->count()-1);
 
 	//送检单位
 	int col_id2 = 0;
@@ -68,8 +68,8 @@ void QueryResult::initUiData()
 	QSqlTableModel *relationModel2 = model2->relationModel(col_id2);   
 	ui.cmbVerifyDept->setModel(relationModel2);  
 	ui.cmbVerifyDept->setModelColumn(relationModel2->fieldIndex("F_Desc")); 
-// 	ui.cmbVerifyDept->insertItem(ui.cmbVerifyDept->count(), "");
-// 	ui.cmbVerifyDept->setCurrentIndex(ui.cmbVerifyDept->count()-1);
+	ui.cmbVerifyDept->insertItem(ui.cmbVerifyDept->count(), "");
+	ui.cmbVerifyDept->setCurrentIndex(ui.cmbVerifyDept->count()-1);
 
 	//检定员
 	int col_id3 = 0;
@@ -79,8 +79,8 @@ void QueryResult::initUiData()
 	QSqlTableModel *relationModel3 = model3->relationModel(col_id3);   
 	ui.cmbVerifyPerson->setModel(relationModel3);  
 	ui.cmbVerifyPerson->setModelColumn(relationModel3->fieldIndex("F_Desc")); 
-// 	ui.cmbVerifyPerson->insertItem(ui.cmbVerifyPerson->count(), "");
-// 	ui.cmbVerifyPerson->setCurrentIndex(ui.cmbVerifyPerson->count()-1);
+	ui.cmbVerifyPerson->insertItem(ui.cmbVerifyPerson->count(), "");
+	ui.cmbVerifyPerson->setCurrentIndex(ui.cmbVerifyPerson->count()-1);
 
 	ui.startDateTime->setDateTime(QDateTime::currentDateTime().addDays(-7));//过去一周
 	ui.endDateTime->setDateTime(QDateTime::currentDateTime());
@@ -92,9 +92,23 @@ void QueryResult::on_btnQuery_clicked()
 	QSqlRelationalTableModel *model = new QSqlRelationalTableModel(this);
 	model->setEditStrategy(QSqlTableModel::OnFieldChange); //属性变化时写入数据库
 	model->setTable("T_Verify_Record");
-	model->setFilter(QString("F_ManufactDept=%1 and F_VerifyDept=%2 and F_VerifyPerson=%3 and F_TimeStamp>=\'%4\' and F_TimeStamp<=\'%5\'").arg(ui.cmbManufactDept->currentIndex())\
-		.arg(ui.cmbVerifyDept->currentIndex()).arg(ui.cmbVerifyPerson->currentIndex()).arg(ui.startDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"))\
-		.arg((ui.endDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"))));
+
+	QString conStr;
+	conStr = QString("F_TimeStamp>=\'%1\' and F_TimeStamp<=\'%2\'").arg(ui.startDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"))\
+		.arg(ui.endDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz")); //起止时间
+	if (ui.cmbManufactDept->currentIndex() != (ui.cmbManufactDept->count()-1))//制造单位
+	{
+		conStr.append(QString(" and F_ManufactDept=%1").arg(ui.cmbManufactDept->currentIndex()));
+	}
+	if (ui.cmbVerifyDept->currentIndex() != (ui.cmbVerifyDept->count()-1))//送检单位
+	{
+		conStr.append(QString(" and F_VerifyDept=%1").arg(ui.cmbVerifyDept->currentIndex()));
+	}
+	if (ui.cmbVerifyPerson->currentIndex() != (ui.cmbVerifyPerson->count()-1))//检定员
+	{
+		conStr.append(QString(" and F_VerifyPerson=%1").arg(ui.cmbVerifyPerson->currentIndex()));
+	}
+	model->setFilter(conStr);
 	
 	model->setRelation(19, QSqlRelation("T_Yes_No_Tab","F_ID","F_Desc"));
 	model->setHeaderData(19, Qt::Horizontal, QObject::tr("合格标志"));
@@ -113,7 +127,6 @@ void QueryResult::on_btnQuery_clicked()
 	model->setHeaderData(27, Qt::Horizontal, QObject::tr("检定员"));
 	model->setRelation(28, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));
 	model->setHeaderData(28, Qt::Horizontal, QObject::tr("核验员"));
-
 
 	model->setHeaderData(1, Qt::Horizontal, QObject::tr("时间"));
 	model->setHeaderData(2, Qt::Horizontal, QObject::tr("表号"));

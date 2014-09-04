@@ -395,7 +395,6 @@ void WeightMethodDlg::showNowKeyParaConfig()
 	ui.cmbContinue->setCurrentIndex(m_nowParams->bo_converify);
 
 	m_mapper->setCurrentIndex(m_nowParams->m_stand);
-// 	ui.labelStandard->setText();
 }
 
 /*
