@@ -15,30 +15,6 @@
 
 
 /*
-**	阀门位置索引
-#define VALVE_IN_IDX	 0	//进水阀
-#define VALVE_BIG_IDX	 1	//大流量阀
-#define VALVE_MID1_IDX	 2	//中一流量
-#define VALVE_MID2_IDX	 3	//中二流量
-#define VALVE_SMALL_IDX	 4	//小流量
-#define VALVE_OUT_IDX	 5	//放水阀
-
-#define  VALVE_NUM	6	//实际用到的阀门总数
-*/
-
-
-/*
-**	调节阀位置索引
-*/
-#define REGULATE_1_IDX		0 //调节阀1
-#define REGULATE_2_IDX		1 //调节阀2
-#define REGULATE_3_IDX		2 //调节阀3
-#define REGULATE_PUMP_IDX	3 //调节阀4(水泵)
-
-#define REGULATE_NUM	4   //调节阀个数
-
-
-/*
 **	类名：DataTestDlg
 **	功能：数据采集与测试
 */
@@ -63,15 +39,13 @@ public:
 	ComThread m_valveThread;   //阀门控制线程
 	ControlComObject *m_controlObj;
 
-	QMap<int, bool> m_valveStatus;
-	QMap<int, QPushButton*> m_valveBtn;	
+	QMap<int, bool> m_valveStatus;//<阀门端口号，阀门状态>
+	QMap<int, QPushButton*> m_valveBtn;	//<阀门端口号，阀门按钮>
 	int m_nowPortNo;	//当前控制阀门端口号
-	int m_nowPortIdx;	//当前控制阀门端口索引
 
-	QMap<int, bool> m_regStatus;
-	QMap<int, QPushButton*> m_regBtn;	
+	QMap<int, bool> m_regStatus; //<调节阀端口号，调节阀状态>
+	QMap<int, QPushButton*> m_regBtn;//<调节阀端口号，调节阀按钮>	
 	int m_nowRegNo;  //当前调节阀端口号
-	int m_nowRegIdx; //当前调节阀端口索引
 
 	ComThread m_balanceThread; //天平采集线程
 	BalanceComObject *m_balanceObj;
@@ -97,7 +71,7 @@ public:
 	void initTemperatureCom(); //温度采集串口
 	void initBalanceCom();     //天平串口
 	void initControlCom();     //阀门控制串口
-	void initHeatMeterCom1();  //热量表串口
+	void initComOfHeatMeter1();  //热量表1串口
 
 	void initValveStatus();	   //初始化阀门状态
 	void initRegulateStatus(); //初始化调节阀状态
@@ -120,6 +94,7 @@ public slots:
 
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
 	void slotFreshBalanceValue(const QString& Str);     //刷新天平数值
+	void slotFreshMeterNo(const QString& meterNo);      //刷新表号
 
 	void slotSetValveBtnStatus(const UINT8 &portno, const bool &status); //继电器返回成功对应的槽函数
 	void slotSetRegulateOk();

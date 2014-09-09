@@ -58,7 +58,7 @@ DataTestDlg::DataTestDlg(QWidget *parent, Qt::WFlags flags)
 	m_flowTimer->start(TIMEOUT_TEMPER);
 
 	m_meterObj1 = NULL;
-// 	initHeatMeterCom1();	//初始化热量表1串口
+ 	initComOfHeatMeter1();	//初始化热量表1串口
 
 
 	//获取下位机端口配置信息
@@ -250,7 +250,7 @@ void DataTestDlg::initValveStatus()
 	m_valveBtn[m_portsetinfo.waterInNo] = ui.btnWaterIn;
 	m_valveBtn[m_portsetinfo.waterOutNo] = ui.btnWaterOut;
 
-	//初始化 全部阀门状态为关闭
+	//端口号-阀门状态 全部阀门状态为关闭
 	m_valveStatus[m_portsetinfo.bigNo] = VALVE_CLOSE;
 	m_valveStatus[m_portsetinfo.smallNo] = VALVE_CLOSE;
 	m_valveStatus[m_portsetinfo.middle1No] = VALVE_CLOSE;
@@ -270,22 +270,16 @@ void DataTestDlg::initValveStatus()
 void DataTestDlg::initRegulateStatus()
 {
 	m_nowRegNo = 0;
-	m_nowRegIdx = 0;
 
-	for (int i=0; i<REGULATE_NUM; i++)
-	{
-		m_regStatus[i] = false;
-	}
+	//端口号-阀门按钮 映射关系
+	m_regBtn[m_portsetinfo.pumpNo] = ui.btnWaterPump;
+	m_regBtn[m_portsetinfo.regflow1No] = ui.btnRegulate1;
 
-	m_regBtn[REGULATE_1_IDX] = ui.btnRegulate1;
-// 	m_regBtn[REGULATE_2_IDX] = ;
-// 	m_regBtn[REGULATE_3_IDX] = ;
-	m_regBtn[REGULATE_PUMP_IDX] = ui.btnWaterPump;
+	m_regStatus[m_portsetinfo.pumpNo] = REG_SUCCESS;
+	m_regStatus[m_portsetinfo.regflow1No] = REG_SUCCESS;
 
-	for (int j=0; j<REGULATE_NUM; j++)
-	{
-		setRegBtnBackColor(m_regBtn[j], m_regStatus[j]);
-	}
+	setRegBtnBackColor(m_regBtn[m_portsetinfo.pumpNo], m_regStatus[m_portsetinfo.pumpNo]);
+	setRegBtnBackColor(m_regBtn[m_portsetinfo.regflow1No], m_regStatus[m_portsetinfo.regflow1No]);
 }
 
 //天平采集串口 上位机直接采集
@@ -302,15 +296,15 @@ void DataTestDlg::initBalanceCom()
 }
 
 //热量表1串口通讯
-void DataTestDlg::initHeatMeterCom1()
+void DataTestDlg::initComOfHeatMeter1()
 {
-	ComInfoStruct comStruct = m_readComConfig->ReadMeterConfigByNum("1");
+	ComInfoStruct comStruct1 = m_readComConfig->ReadMeterConfigByNum("1");
 	m_meterObj1 = new MeterComObject();
 	m_meterObj1->moveToThread(&m_meterThread1);
 	m_meterThread1.start();
-	m_meterObj1->openMeterCom1(&comStruct);
+	m_meterObj1->openMeterCom(&comStruct1);
 
-// 	connect(m_meterObj1, SIGNAL(balanceValueIsReady(const QString &)), this, SLOT(slotFreshBalanceValue(const QString &)));
+ 	connect(m_meterObj1, SIGNAL(readMeterNoIsOK(const QString &)), this, SLOT(slotFreshMeterNo(const QString &)));
 }
 
 /*
@@ -357,17 +351,15 @@ void DataTestDlg::on_btnValveSmall_clicked() //小流量阀
 */
 void DataTestDlg::on_btnWaterPump_clicked() //水泵
 {
-	m_nowRegIdx = REGULATE_PUMP_IDX;
 	m_nowRegNo = m_portsetinfo.pumpNo;
-	setRegBtnBackColor(m_regBtn[m_nowRegIdx], false); //初始化调节阀背景色
+	setRegBtnBackColor(m_regBtn[m_nowRegNo], false); //初始化调节阀背景色
 	m_controlObj->makeRegulateSendBuf(m_nowRegNo, ui.spinBox1->value());
 }
 
 void DataTestDlg::on_btnRegulate1_clicked() //调节阀1
 {
-	m_nowRegIdx = REGULATE_1_IDX;
 	m_nowRegNo = m_portsetinfo.regflow1No;
-	setRegBtnBackColor(m_regBtn[m_nowRegIdx], false); //初始化调节阀背景色
+	setRegBtnBackColor(m_regBtn[m_nowRegNo], false); //初始化调节阀背景色
 	m_controlObj->makeRegulateSendBuf(m_nowRegNo, ui.spinBox1->value());
 }
 
@@ -422,7 +414,7 @@ void DataTestDlg::slotSetValveBtnStatus(const UINT8 &portno, const bool &status)
 //响应调节阀调节成功
 void DataTestDlg::slotSetRegulateOk()
 {
-	setRegBtnBackColor(m_regBtn[m_nowRegIdx], true);
+	setRegBtnBackColor(m_regBtn[m_nowRegNo], REG_SUCCESS);
 }
 
 //设置阀门按钮背景色
@@ -439,8 +431,7 @@ void DataTestDlg::setValveBtnBackColor(QPushButton *btn, bool status)
 	}
 	else //阀门关闭 红色
 	{
-// 		btn->setStyleSheet("background:red;border:0px;");  
-		btn->setStyleSheet( "background-color:rgb(255,0,0);border:0px;"
+		btn->setStyleSheet("background-color:rgb(255,0,0);border:0px;"
 // 			"border-style: outset;"
 // 			"border-width: 2px;"
 			"border-radius: 10px;"
@@ -462,11 +453,11 @@ void DataTestDlg::setRegBtnBackColor(QPushButton *btn, bool status)
 	}
 	if (status) //调节成功
 	{
-		btn->setStyleSheet("background:blue;border:0px;");  
+		btn->setStyleSheet("background:rgb(199,237,204);border:0px;");  
 	}
 	else //调节失败
 	{
- 		btn->setStyleSheet("");  
+ 		btn->setStyleSheet("background:rgb(255,200,200);border:0px;");  
 	}
 }
 
@@ -475,7 +466,7 @@ void DataTestDlg::setRegBtnBackColor(QPushButton *btn, bool status)
 /************************************************************************/
 //void QualityDlg::slotFreshFlow()
 //{
-//// 	qDebug()<<"slotFreshFlow thread:"<<QThread::currentThreadId(); //主线程
+// 	qDebug()<<"slotFreshFlow thread:"<<QThread::currentThreadId(); //主线程
 //	float flowValue = 0.0;
 //	int length = ui.lnEditBigBalance->text().length();
 //	if (m_flowcount == 0)
@@ -505,7 +496,7 @@ void DataTestDlg::setRegBtnBackColor(QPushButton *btn, bool status)
 /************************************************************************/
 void DataTestDlg::slotFreshFlow()
 {
-	// 	qDebug()<<"slotFreshFlow thread:"<<QThread::currentThreadId(); //主线程
+// 	qDebug()<<"slotFreshFlow thread:"<<QThread::currentThreadId(); //主线程
 	float flowValue = 0.0;
 	/**************************************************************************/
 	/* 按照原来程序的逻辑, 那么就丢失了一个δt的质量增量 */
@@ -532,7 +523,7 @@ void DataTestDlg::slotFreshFlow()
 }
 
 /************************************************************************/
-/* 计算瞬时流量(累积水量法, 参考老程序的算法)          */
+/* 计算瞬时流量(累积水量法, 参考老程序的算法)                           */
 /************************************************************************/
 void DataTestDlg::slotFreshFlow_total()
 {
@@ -557,7 +548,7 @@ void DataTestDlg::slotFreshFlow_total()
 //读取表号
 void DataTestDlg::on_btnReadMeterNo_clicked()
 {
-// 	m_meterObj1->writeMeterCom1Buffer(); //请求表号
+ 	m_meterObj1->writeMeterComBuffer(); //请求表号
 }
 
 //读表数据
@@ -570,4 +561,9 @@ void DataTestDlg::on_btnReadMeterData_clicked()
 void DataTestDlg::on_btnSetVerifyStatus_clicked()
 {
 
+}
+
+void DataTestDlg::slotFreshMeterNo(const QString& meterNo)
+{
+	ui.lnEditMeterNo->setText(meterNo);
 }

@@ -395,53 +395,52 @@ MeterComObject::MeterComObject(QObject* parent) : ComObject(parent)
 
 MeterComObject::~MeterComObject()
 {
-	if(m_meterCom1 != NULL)
+	if(m_meterCom != NULL)
 	{
-		if(m_meterCom1->isOpen())
+		if(m_meterCom->isOpen())
 		{
-			m_meterCom1->close();
+			m_meterCom->close();
 			qDebug()<<"m_meterCom1 closed";
 		}
-		delete m_meterCom1;
+		delete m_meterCom;
 	}
 }
 
-void MeterComObject::openMeterCom1(ComInfoStruct *comStruct)
+void MeterComObject::openMeterCom(ComInfoStruct *comStruct)
 {
-	qDebug()<<"openMeterCom1 thread:"<<QThread::currentThreadId();
-
 	QString portName = comStruct->portName; //获取串口名
+	qDebug()<<"openMeterCom:"<<portName<<"thread:"<<QThread::currentThreadId();
 #ifdef Q_OS_LINUX
-	m_meterCom1 = new QextSerialPort("/dev/" + portName);
+	m_meterCom = new QextSerialPort("/dev/" + portName);
 #elif defined (Q_OS_WIN)
-	m_meterCom1 = new QextSerialPort(portName, QextSerialPort::EventDriven);
+	m_meterCom = new QextSerialPort(portName, QextSerialPort::EventDriven);
 #endif
-	connect(m_meterCom1, SIGNAL(readyRead()), this, SLOT(readMeterCom1Buffer()));
+	connect(m_meterCom, SIGNAL(readyRead()), this, SLOT(readMeterComBuffer()));
 
-	m_meterCom1->setBaudRate((BaudRateType)comStruct->baudRate);  //设置波特率  
-	m_meterCom1->setDataBits((DataBitsType)comStruct->dataBit);   //设置数据位
-	m_meterCom1->setParity((ParityType)comStruct->parity);        //设置校验位
-	m_meterCom1->setStopBits((StopBitsType)comStruct->stopBit);   //设置停止位
-	m_meterCom1->setFlowControl(FLOW_OFF); //设置数据流控制  
-	m_meterCom1->setTimeout(TIME_OUT);     //设置延时
+	m_meterCom->setBaudRate((BaudRateType)comStruct->baudRate);  //设置波特率  
+	m_meterCom->setDataBits((DataBitsType)comStruct->dataBit);   //设置数据位
+	m_meterCom->setParity((ParityType)comStruct->parity);        //设置校验位
+	m_meterCom->setStopBits((StopBitsType)comStruct->stopBit);   //设置停止位
+	m_meterCom->setFlowControl(FLOW_OFF); //设置数据流控制  
+	m_meterCom->setTimeout(TIME_OUT);     //设置延时
 
-	if(m_meterCom1->open(QIODevice::ReadWrite)) 
+	if(m_meterCom->open(QIODevice::ReadWrite)) 
 	{
-		qDebug()<<"Open openMeter1 Com:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
+		qDebug()<<"Open openMeter Com:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
 	}
 	else
 	{
-		qDebug()<<"Open Meter1 Com:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
+		qDebug()<<"Open Meter Com:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
 		return;
 	}
 }
 
-void MeterComObject::readMeterCom1Buffer()
+void MeterComObject::readMeterComBuffer()
 {
 
 }
 
-void MeterComObject::writeMeterCom1Buffer()
+void MeterComObject::writeMeterComBuffer()
 {
 
 }

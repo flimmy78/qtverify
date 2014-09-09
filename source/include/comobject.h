@@ -26,6 +26,9 @@
 #define VALVE_OPEN		true	//阀门打开状态
 #define VALVE_CLOSE		false   //阀门关闭状态
 
+#define REG_SUCCESS	 true	//调节阀调节成功
+#define REG_FAILED	 false  //调节阀调节失败
+
 
 class COMOBJECT_EXPORT ComThread : public QThread 
 {      
@@ -157,14 +160,15 @@ public:
 	MeterComObject(QObject* parent=0);
 	~MeterComObject();
 
-	QextSerialPort *m_meterCom1;
+	QextSerialPort *m_meterCom;
 
 signals:
+	void readMeterNoIsOK(const QString& meterNo);
 
 public slots:
-	void openMeterCom1(ComInfoStruct *comStruct);
-	void readMeterCom1Buffer();
-	void writeMeterCom1Buffer();
+	void openMeterCom(ComInfoStruct *comStruct);
+	void readMeterComBuffer();
+	void writeMeterComBuffer();
 
 };
 
