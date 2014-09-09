@@ -58,15 +58,15 @@ drop table if exists "T_Meter_Default_Params"
 ;
 create table T_Meter_Default_Params
 (
-	F_ID integer not null primary key autoincrement, 			-- 参数id
+	F_ID integer not null primary key autoincrement,      -- 参数id
 	F_StandardID integer,                                 -- 外键,表规格id(T_Meter_Standard.F_ID)
-	F_Nflowpoint float,																		-- 常用流量点
-	F_Upperflow float,																		-- 上限流量点		
-	F_Verifyflow float,																		-- 检定流量点
-	F_Flowquantity float,																	-- 检定量
-	F_Pumpfrequencey float,																-- 水泵频率
-	F_Valve_i smallint,																		-- 阀门编号	
-	F_Seq_i smallint,																		  -- 检测序列号
+	F_NormalFlow float,                                   -- 常用流量点
+	F_UpperFlow float,                                    -- 上限流量点		
+	F_VerifyFlow float,                                   -- 检定流量点
+	F_FlowQuantity float,                                 -- 检定量
+	F_PumpFrequencey float,                               -- 水泵频率
+	F_Valve_i smallint,                                   -- 阀门编号	
+	F_Seq_i smallint,                                     -- 检测序列号
   constraint F_StandardID_fk foreign key(F_StandardID) references T_Meter_Standard(F_ID)
 );
 
@@ -204,16 +204,16 @@ insert into T_Yes_No_Tab(F_ID, F_Name, F_Desc) values(1, 'Yes', '合格');
 ---------------------------------
 --热表各规格的默认参数表
 ---------------------------------
-insert into t_meter_default_params values(1, 0, 1.5, 1.6, 1.5, 40, 34, 0, 1);
-insert into t_meter_default_params values(2, 0, 1.5, 0.5, 0.45, 20, 33, 1, 2);
-insert into t_meter_default_params values(3, 0, 1.5, 0.16, 0.15, 10, 33, 2, 3);
-insert into t_meter_default_params values(4, 0, 1.5, 0.035, 0.03, 5, 33, 3, 4);
-insert into t_meter_default_params values(5, 1, 2.5, 2.6, 2.5, 50, 34, 0, 1);
-insert into t_meter_default_params values(6, 1, 2.5, 0.8, 0.75, 20, 33, 1, 2);
-insert into t_meter_default_params values(7, 1, 2.5, 0.3, 0.25, 10, 33, 2, 3);
-insert into t_meter_default_params values(8, 1, 2.5, 0.06, 0.05, 5, 33, 3, 4);
-insert into t_meter_default_params values(9, 2, 3.5, 3.6, 3.5, 50, 34, 0, 1);
-insert into t_meter_default_params values(10, 2, 3.5, 1.1, 1.05, 20, 33, 1, 2);
-insert into t_meter_default_params values(11, 2, 3.5, 0.4, 0.35, 10, 33, 2, 3);
-insert into t_meter_default_params values(12, 2, 3.5, 0.08, 0.07, 5, 33, 3, 4);
+insert into T_Meter_Default_Params values(1, 0, 1.5, 1.6, 1.5, 40, 34, 0, 1);
+insert into T_Meter_Default_Params values(2, 0, 1.5, 0.5, 0.45, 20, 33, 1, 2);
+insert into T_Meter_Default_Params values(3, 0, 1.5, 0.16, 0.15, 10, 33, 2, 3);
+insert into T_Meter_Default_Params values(4, 0, 1.5, 0.035, 0.03, 5, 33, 3, 4);
+insert into T_Meter_Default_Params values(5, 1, 2.5, 2.6, 2.5, 50, 34, 0, 1);
+insert into T_Meter_Default_Params values(6, 1, 2.5, 0.8, 0.75, 20, 33, 1, 2);
+insert into T_Meter_Default_Params values(7, 1, 2.5, 0.3, 0.25, 10, 33, 2, 3);
+insert into T_Meter_Default_Params values(8, 1, 2.5, 0.06, 0.05, 5, 33, 3, 4);
+insert into T_Meter_Default_Params values(9, 2, 3.5, 3.6, 3.5, 50, 34, 0, 1);
+insert into T_Meter_Default_Params values(10, 2, 3.5, 1.1, 1.05, 20, 33, 1, 2);
+insert into T_Meter_Default_Params values(11, 2, 3.5, 0.4, 0.35, 10, 33, 2, 3);
+insert into T_Meter_Default_Params values(12, 2, 3.5, 0.08, 0.07, 5, 33, 3, 4);
 
