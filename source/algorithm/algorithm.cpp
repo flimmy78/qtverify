@@ -72,8 +72,8 @@ int getParaSetIni(ParaSet_Ini_PTR info)
 
 	QSettings settings(filename, QSettings::IniFormat);
 	settings.setIniCodec("GB2312"); //解决ini文件读中文乱码
-	strcpy(info->meterstandard, settings.value("paraset/standard").toString().toAscii());
-	strcpy(info->metertype, settings.value("paraset/metertype").toString().toAscii());
+	strcpy(info->meterstandard, settings.value("head/standard").toString().toAscii());
+	strcpy(info->metertype, settings.value("head/metertype").toString().toAscii());
 
 	return true;
 }
