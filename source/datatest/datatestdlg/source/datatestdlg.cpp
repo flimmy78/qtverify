@@ -1,5 +1,5 @@
 /***********************************************
-**  文件名:     qualitydlg.cpp
+**  文件名:     datatestdlg.cpp
 **  功能:       采集与控制测试程序
 **  操作系统:   基于Trolltech Qt4.8.5的跨平台系统
 **  生成时间:   2014/6/12
@@ -16,10 +16,10 @@
 #include <QtCore/QDebug>
 #include <QtCore/QTimer>
 
-#include "qualitydlg.h"
+#include "datatestdlg.h"
 #include "commondefine.h"
 
-QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
+DataTestDlg::DataTestDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
 	qDebug()<<"QualityDlg thread:"<<QThread::currentThreadId();
@@ -42,7 +42,7 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 
 	bal_quan = 0.0;
 	m_setBalTimer = new QTimer();
-	connect(m_setBalTimer, SIGNAL(timeout()), this, SLOT(setBalQuan()));
+	connect(m_setBalTimer, SIGNAL(timeout()), this, SLOT(setBalQuantity()));
 	m_setBalTimer->start(TIMEOUT_TEMPER/10);
 
 	m_flowcount = 0;		//计算流量用
@@ -78,11 +78,11 @@ QualityDlg::QualityDlg(QWidget *parent, Qt::WFlags flags)
 	qDebug()<<"metertype:"<<m_parasetinfo.metertype;
 }
 
-QualityDlg::~QualityDlg()
+DataTestDlg::~DataTestDlg()
 {
 }
 
-void QualityDlg::closeEvent( QCloseEvent * event)
+void DataTestDlg::closeEvent( QCloseEvent * event)
 {
 	qDebug()<<"^^^^^QualityDlg::closeEvent";
 
@@ -163,7 +163,7 @@ void QualityDlg::closeEvent( QCloseEvent * event)
 
 }
 
-void QualityDlg::showEvent(QShowEvent *event)
+void DataTestDlg::showEvent(QShowEvent *event)
 {
 	m_flowcount = 0;
 	m_totalcount = 0;
@@ -188,7 +188,8 @@ void QualityDlg::showEvent(QShowEvent *event)
 	//}
 }
 
-void QualityDlg::setBalQuan()
+//模拟天平读数
+void DataTestDlg::setBalQuantity()
 {
 //	qDebug()<< " current thread id: "<< QThread::currentThreadId();
 	QTime time;
@@ -204,7 +205,7 @@ void QualityDlg::setBalQuan()
 	温度采集
 	周期请求
 ****************************************/
-void QualityDlg::initTemperatureCom()
+void DataTestDlg::initTemperatureCom()
 {
 	ComInfoStruct tempStruct = m_readComConfig->ReadTempConfig();
 	m_tempObj = new TempComObject();
@@ -221,7 +222,7 @@ void QualityDlg::initTemperatureCom()
 }
 
 //控制板通讯串口
-void QualityDlg::initControlCom()
+void DataTestDlg::initControlCom()
 {
 	ComInfoStruct valveStruct = m_readComConfig->ReadValveConfig();
 	m_controlObj = new ControlComObject();
@@ -237,7 +238,7 @@ void QualityDlg::initControlCom()
 }
 
 //初始化阀门状态
-void QualityDlg::initValveStatus()
+void DataTestDlg::initValveStatus()
 {
 	m_nowPortNo = 0;
 
@@ -266,7 +267,7 @@ void QualityDlg::initValveStatus()
 }
 
 //初始化调节阀状态
-void QualityDlg::initRegulateStatus()
+void DataTestDlg::initRegulateStatus()
 {
 	m_nowRegNo = 0;
 	m_nowRegIdx = 0;
@@ -288,7 +289,7 @@ void QualityDlg::initRegulateStatus()
 }
 
 //天平采集串口 上位机直接采集
-void QualityDlg::initBalanceCom()
+void DataTestDlg::initBalanceCom()
 {
 	ComInfoStruct balanceStruct = m_readComConfig->ReadBalanceConfig();
 	m_balanceObj = new BalanceComObject();
@@ -301,7 +302,7 @@ void QualityDlg::initBalanceCom()
 }
 
 //热量表1串口通讯
-void QualityDlg::initHeatMeterCom1()
+void DataTestDlg::initHeatMeterCom1()
 {
 	ComInfoStruct comStruct = m_readComConfig->ReadMeterConfigByNum("1");
 	m_meterObj1 = new MeterComObject();
@@ -315,37 +316,37 @@ void QualityDlg::initHeatMeterCom1()
 /*
 **	控制继电器开断
 */
-void QualityDlg::on_btnWaterIn_clicked() //进水阀
+void DataTestDlg::on_btnWaterIn_clicked() //进水阀
 {
 	m_nowPortNo = m_portsetinfo.waterInNo;
 	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
 }
 
-void QualityDlg::on_btnWaterOut_clicked() //出水阀
+void DataTestDlg::on_btnWaterOut_clicked() //出水阀
 {
 	m_nowPortNo = m_portsetinfo.waterOutNo;
 	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
 }
 
-void QualityDlg::on_btnValveBig_clicked() //大流量阀
+void DataTestDlg::on_btnValveBig_clicked() //大流量阀
 {
 	m_nowPortNo = m_portsetinfo.bigNo;
 	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
 }
 
-void QualityDlg::on_btnValveMiddle1_clicked() //中流一阀
+void DataTestDlg::on_btnValveMiddle1_clicked() //中流一阀
 {
 	m_nowPortNo = m_portsetinfo.middle1No;
 	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
 }
 
-void QualityDlg::on_btnValveMiddle2_clicked() //中流二阀
+void DataTestDlg::on_btnValveMiddle2_clicked() //中流二阀
 {
 	m_nowPortNo = m_portsetinfo.middle2No;
 	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
 }
 
-void QualityDlg::on_btnValveSmall_clicked() //小流量阀
+void DataTestDlg::on_btnValveSmall_clicked() //小流量阀
 {
 	m_nowPortNo = m_portsetinfo.smallNo;
 	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
@@ -354,7 +355,7 @@ void QualityDlg::on_btnValveSmall_clicked() //小流量阀
 /*
 **	调节阀开度、水泵(变频器频率)
 */
-void QualityDlg::on_btnWaterPump_clicked() //水泵
+void DataTestDlg::on_btnWaterPump_clicked() //水泵
 {
 	m_nowRegIdx = REGULATE_PUMP_IDX;
 	m_nowRegNo = m_portsetinfo.pumpNo;
@@ -362,7 +363,7 @@ void QualityDlg::on_btnWaterPump_clicked() //水泵
 	m_controlObj->makeRegulateSendBuf(m_nowRegNo, ui.spinBox1->value());
 }
 
-void QualityDlg::on_btnRegulate1_clicked() //调节阀1
+void DataTestDlg::on_btnRegulate1_clicked() //调节阀1
 {
 	m_nowRegIdx = REGULATE_1_IDX;
 	m_nowRegNo = m_portsetinfo.regflow1No;
@@ -371,13 +372,13 @@ void QualityDlg::on_btnRegulate1_clicked() //调节阀1
 }
 
 //查询从机(控制板)状态
-void QualityDlg::on_btnQueryStatus_clicked()
+void DataTestDlg::on_btnQueryStatus_clicked()
 {
 	m_controlObj->makeQuerySendBuf();
 }
 
 //参数设置
-void QualityDlg::on_btnParaSet_clicked()
+void DataTestDlg::on_btnParaSet_clicked()
 {
 	if (NULL == m_paraset)
 	{
@@ -391,41 +392,41 @@ void QualityDlg::on_btnParaSet_clicked()
 	m_paraset->show();
 }
 
-void QualityDlg::on_btnStart_clicked()
+void DataTestDlg::on_btnStart_clicked()
 {
 }
 
-void QualityDlg::on_btnExit_clicked()
+void DataTestDlg::on_btnExit_clicked()
 {
 	this->close();
 }
 
-void QualityDlg::slotFreshComTempValue(const QString& tempStr)
+void DataTestDlg::slotFreshComTempValue(const QString& tempStr)
 {
 	ui.lnEditTempIn->setText(tempStr.left(DATA_WIDTH));   //入口温度 PV
 	ui.lnEditTempOut->setText(tempStr.right(DATA_WIDTH)); //出口温度 SV
 }
 
-void QualityDlg::slotFreshBalanceValue(const QString& Str)
+void DataTestDlg::slotFreshBalanceValue(const QString& Str)
 {
 	ui.lnEditBigBalance->setText(Str);
 }
 
 //响应阀门状态设置成功
-void QualityDlg::slotSetValveBtnStatus(const UINT8 &portno, const bool &status)
+void DataTestDlg::slotSetValveBtnStatus(const UINT8 &portno, const bool &status)
 {
 	m_valveStatus[portno] = status;
 	setValveBtnBackColor(m_valveBtn[portno], m_valveStatus[portno]);
 }
 
 //响应调节阀调节成功
-void QualityDlg::slotSetRegulateOk()
+void DataTestDlg::slotSetRegulateOk()
 {
 	setRegBtnBackColor(m_regBtn[m_nowRegIdx], true);
 }
 
 //设置阀门按钮背景色
-void QualityDlg::setValveBtnBackColor(QPushButton *btn, bool status)
+void DataTestDlg::setValveBtnBackColor(QPushButton *btn, bool status)
 {
 	if (NULL == btn)
 	{
@@ -453,7 +454,7 @@ void QualityDlg::setValveBtnBackColor(QPushButton *btn, bool status)
 }
 
 //设置调节阀按钮背景色
-void QualityDlg::setRegBtnBackColor(QPushButton *btn, bool status)
+void DataTestDlg::setRegBtnBackColor(QPushButton *btn, bool status)
 {
 	if (NULL == btn)
 	{
@@ -502,7 +503,7 @@ void QualityDlg::setRegBtnBackColor(QPushButton *btn, bool status)
 /************************************************************************/
 /* 计算瞬时流量(瞬时法)                                                */
 /************************************************************************/
-void QualityDlg::slotFreshFlow()
+void DataTestDlg::slotFreshFlow()
 {
 	// 	qDebug()<<"slotFreshFlow thread:"<<QThread::currentThreadId(); //主线程
 	float flowValue = 0.0;
@@ -533,7 +534,7 @@ void QualityDlg::slotFreshFlow()
 /************************************************************************/
 /* 计算瞬时流量(累积水量法, 参考老程序的算法)          */
 /************************************************************************/
-void QualityDlg::slotFreshFlow_total()
+void DataTestDlg::slotFreshFlow_total()
 {
 	if (m_totalcount > 4294967290) //防止m_totalcount溢出 32位无符号整数范围0~4294967295
 	{
@@ -554,7 +555,19 @@ void QualityDlg::slotFreshFlow_total()
 }
 
 //读取表号
-void QualityDlg::on_btnReadMeterNo_clicked()
+void DataTestDlg::on_btnReadMeterNo_clicked()
 {
 // 	m_meterObj1->writeMeterCom1Buffer(); //请求表号
+}
+
+//读表数据
+void DataTestDlg::on_btnReadMeterData_clicked()
+{
+
+}
+
+//设置检定状态
+void DataTestDlg::on_btnSetVerifyStatus_clicked()
+{
+
 }

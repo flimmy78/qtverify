@@ -419,6 +419,9 @@ void WeightMethodDlg::on_btnExhaust_clicked()
 
 	m_exaustSecond = m_nowParams->ex_time;
 	m_exaustTimer->start(1000);//开始排气倒计时
+	ui.labelHintInfo->setText(QString("排气倒计时：%1 秒").arg(m_exaustSecond));
+	qDebug()<<"排气倒计时:"<<m_exaustSecond<<"秒";
+
 
 	readMeterNumber();
 
@@ -725,6 +728,7 @@ void WeightMethodDlg::startVerify()
 	//检测结束
 }
 
+//获取有效检表个数
 int WeightMethodDlg::getValidMeterNum()
 {
 	bool ok;
@@ -1026,13 +1030,13 @@ void WeightMethodDlg::setValveBtnBackColor(QToolButton *btn, bool status)
 	}
 	if (status) //阀门打开 绿色
 	{
-		btn->setStyleSheet("background:rgb(199,237,204);border:0px;");  
-// 		btn->setIcon(QIcon("open.png"));
+		btn->setStyleSheet("background-color:rgb(199,237,204);border:0px;border-radius:10px;");
+// 		btn->setIcon(QIcon(QString("%1/uif/pixmap/btncheckon.png").arg(getenv("RUNHOME"))));
 	}
 	else //阀门关闭 红色
 	{
-		btn->setStyleSheet( "background-color:rgb(255,200,200);border:0px;border-radius:10px;");
-// 		btn->setIcon(QIcon("close.png"));
+		btn->setStyleSheet("background-color:rgb(255,200,200);border:0px;border-radius:10px;");
+// 		btn->setIcon(QIcon(QString("%1/uif/pixmap/btncheckoff.png").arg(getenv("RUNHOME"))));
 	}
 }
 
@@ -1088,6 +1092,7 @@ void WeightMethodDlg::on_btnValveBig_clicked() //大流量阀
 {
 	m_nowPortNo = m_portsetinfo.bigNo;
 	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]); //临时测试用
 }
 
 void WeightMethodDlg::on_btnValveMiddle1_clicked() //中流一阀

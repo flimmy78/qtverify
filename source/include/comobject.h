@@ -44,7 +44,7 @@ protected:
 
 
 #include "qextserialport.h"
-#include "qualitydlg_global.h"
+#include "datatestdlg_global.h"
 
 #define TIME_OUT	10		//延时，TIME_OUT是串口读写的延时
 

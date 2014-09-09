@@ -1,10 +1,10 @@
 TEMPLATE	= app
-TARGET    = quality
+TARGET    = datatest
 
 CONFIG += qt warn_on debug
-RC_FILE = quality.rc
+RC_FILE = datatest.rc
 
-INCLUDEPATH	 +=  ./qualitydlg/include     \
+INCLUDEPATH	 +=  ./datatestdlg/include     \
 								 $$(RUNHOME_INC)/include  \
                  $$(RUNHOME_INC)/include/qextserial
 
@@ -12,7 +12,7 @@ QMAKE_LIBDIR += \
               $$(RUNHOME)/lib \
               $$(RUNHOME)/bin
            
-LIBS	+= -lqualitydlg -lqtexdb
+LIBS	+= -ldatatestdlg -lqtexdb
 
 SOURCES	+= main.cpp
 
@@ -23,12 +23,12 @@ win32:debug{
 win32{
 DEFINES += WIN32 _AFXDLL
 DEFINES -= _USRDLL
-DESTDIR = $(RUNHOME)\tmp\quality\obj
+DESTDIR = $(RUNHOME)\tmp\datatest\obj
 }
 
-MOC_DIR = $(RUNHOME)/tmp/quality/moc
-OBJECTS_DIR = $(RUNHOME)/tmp/quality/obj
-UI_DIR = $(RUNHOME)/tmp/quality/ui
+MOC_DIR = $(RUNHOME)/tmp/datatest/moc
+OBJECTS_DIR = $(RUNHOME)/tmp/datatest/obj
+UI_DIR = $(RUNHOME)/tmp/datatest/ui
 
 
 win32{

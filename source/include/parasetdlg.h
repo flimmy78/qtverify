@@ -101,6 +101,7 @@ private:
 	void SaveFlowPoint();//保存流量点信息
 	void SaveBool();//保存布尔值
 	void SaveOther();//保存其他信息
+
 private slots:
 
 };

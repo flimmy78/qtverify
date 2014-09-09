@@ -2,7 +2,7 @@
 #define PARASETDLG_GLOBAL_H
 
 
-#ifdef QUALITYDLG_DLL
+#ifdef DATATESTDLG_DLL
 #  ifdef WIN32
 #  define PARASETDLG_EXPORT __declspec(dllexport)
 #  else

@@ -1,10 +1,10 @@
-#ifndef QUALITYDLG_H
-#define QUALITYDLG_H
+#ifndef DATATESTDLG_H
+#define DATATESTDLG_H
 
 #include <QtGui/QWidget>
 
-#include "qualitydlg_global.h"
-#include "ui_qualitydlg.h"
+#include "datatestdlg_global.h"
+#include "ui_datatestdlg.h"
 #include "parasetdlg.h"
 #include "comobject.h"
 #include "ReadComConfig.h"
@@ -39,16 +39,16 @@
 
 
 /*
-**	类名：QualityDlg
-**	功能：质量法-分量检定
+**	类名：DataTestDlg
+**	功能：数据采集与测试
 */
-class QUALITYDLG_EXPORT QualityDlg : public QWidget
+class DATATESTDLG_EXPORT DataTestDlg : public QWidget
 {
 	Q_OBJECT
 
 public:
-	QualityDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
-	~QualityDlg();
+	DataTestDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
+	~DataTestDlg();
 
 	ParaSetDlg *m_paraset;
 
@@ -128,15 +128,17 @@ public slots:
 	void setRegBtnBackColor(QPushButton *btn, bool status);	//设置调节阀按钮背景色
 
 	void slotFreshFlow(); //计算流量
-	void slotFreshFlow_total();//计算流量(总累计法)
-	void setBalQuan();//模拟天平读数
-	void on_btnReadMeterNo_clicked();
+	void slotFreshFlow_total();//计算流量(累计法)
+	void setBalQuantity();//模拟天平读数
+	void on_btnReadMeterNo_clicked(); //读取表号
+	void on_btnReadMeterData_clicked(); //读表数据
+	void on_btnSetVerifyStatus_clicked(); //设置检定状态
 
 private:
-	Ui::QualityDlgClass ui;
+	Ui::DataTestDlgClass ui;
 
 private slots:
 
 };
 
-#endif // QUALITYDLG_H
+#endif // DATATESTDLG_H

@@ -233,8 +233,8 @@ int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id)
 		ptr = new DftDbInfo_STR[num];
 		memset(ptr, 0, sizeof(DftDbInfo_STR)*num);
 	}
-	sql = "select f_id, F_StandardID, f_nflowpoint, f_upperflow, f_verifyflow, f_flowquantity, f_pumpfrequencey, f_valve_i, \
-		  f_seq_i, F_Flow_idx from t_meter_default_params where F_StandardID = " + QString::number(stand_id) + " order by F_Flow_idx";
+	sql = "select F_ID, F_StandardID, F_NormalFlow, F_UpperFlow, F_VerifyFlow, F_FlowQuantity, F_PumpFrequencey, F_Valve_i, \
+		  F_Seq_i from T_Meter_Default_Params where F_StandardID = " + QString::number(stand_id) + " order by F_ID";
 	if(query.exec(sql))
 	{
 		while(query.next())

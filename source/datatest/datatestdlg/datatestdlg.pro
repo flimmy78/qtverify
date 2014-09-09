@@ -1,10 +1,10 @@
 
 TEMPLATE	= lib
-TARGET    = qualitydlg
+TARGET    = datatestdlg
 CONFIG += qt dll debug qtestlib thread
 QT += sql
 
-DEFINES	+= QUALITYDLG_DLL QT_THREAD_SUPPORT
+DEFINES	+= DATATESTDLG_DLL QT_THREAD_SUPPORT
 
 QMAKE_LIBDIR +=  ./           \
         	     $(RUNHOME)/lib \
@@ -12,9 +12,9 @@ QMAKE_LIBDIR +=  ./           \
 	            
 LIBS +=	-lQt3Supportd4 -lQt3Support4 -lprotocol -lcomsetdlg -lcomobject -lqtexdb -lalgorithm
 
-DESTDIR = $(RUNHOME)\tmp\quality\qualitydlg\obj
-#MOC_DIR = $(RUNHOME)/tmp/quality/qualitydlg/moc
-OBJECTS_DIR = $(RUNHOME)/tmp/quality/qualitydlg/obj
+DESTDIR = $(RUNHOME)\tmp\datatest\datatestdlg\obj
+#MOC_DIR = $(RUNHOME)/tmp/datatest/datatestdlg/moc
+OBJECTS_DIR = $(RUNHOME)/tmp/datatest/datatestdlg/obj
 UI_DIR = $(RUNHOME_INC)/include
 
 INCLUDEPATH  	=    ./      \
@@ -22,19 +22,19 @@ INCLUDEPATH  	=    ./      \
 									 $$(RUNHOME_INC)/include	\
 									 $$(RUNHOME_INC)/include/qextserial
 
-HEADERS	+= $$(RUNHOME_INC)/include/qualitydlg_global.h \
-		   $$(RUNHOME_INC)/include/parasetdlg_global.h \
-           $$(RUNHOME_INC)/include/qualitydlg.h \
+HEADERS	+= $$(RUNHOME_INC)/include/datatestdlg_global.h \
+		       $$(RUNHOME_INC)/include/parasetdlg_global.h \
+           $$(RUNHOME_INC)/include/datatestdlg.h \
            $$(RUNHOME_INC)/include/parasetdlg.h \ 
 	
-SOURCES	+= source/qualitydlg.cpp  \
+SOURCES	+= source/datatestdlg.cpp  \
 			source/parasetdlg.cpp  \
 
 					 
-FORMS	+= ui/qualitydlg.ui \
-           ui/parasetdlg.ui
+FORMS	+= ui/datatestdlg.ui \
+         ui/parasetdlg.ui
      
-RESOURCES += qualitydlg.qrc     
+RESOURCES += datatestdlg.qrc     
          
 win32{
 	MY_DEST_LIB_VAR = $${DESTDIR} $${TARGET}.lib
@@ -47,5 +47,5 @@ win32{
 }
 
 TRANSLATIONS =  \
-		language/qualitydlg_zh.ts language/qualitydlg_en.ts
+		language/datatestdlg_zh.ts language/datatestdlg_en.ts
 		

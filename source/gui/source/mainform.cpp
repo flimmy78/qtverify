@@ -276,13 +276,13 @@ void MainForm::on_actionTest_triggered()
 {
 	if (NULL == m_qualitydlg)
 	{
-		m_qualitydlg = new QualityDlg();
+		m_qualitydlg = new DataTestDlg();
 	}
 	else //目的是执行QualityDlg的构造函数
 	{
 		delete m_qualitydlg;
 		m_qualitydlg = NULL;
-		m_qualitydlg = new QualityDlg();
+		m_qualitydlg = new DataTestDlg();
 	}
 	m_qualitydlg->show();
 }
