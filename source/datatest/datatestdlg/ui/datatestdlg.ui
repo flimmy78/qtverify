@@ -768,7 +768,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QSpinBox" name="spinBox1">
+         <widget class="QSpinBox" name="spinBoxFreq">
           <property name="maximum">
            <number>9999</number>
           </property>
@@ -1024,6 +1024,9 @@
       <layout class="QGridLayout" name="gridLayout_8">
        <item row="0" column="0">
         <widget class="QPushButton" name="btnParaSet">
+         <property name="autoFillBackground">
+          <bool>true</bool>
+         </property>
          <property name="text">
           <string>参数</string>
          </property>

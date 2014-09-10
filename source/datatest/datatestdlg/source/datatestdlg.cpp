@@ -353,14 +353,14 @@ void DataTestDlg::on_btnWaterPump_clicked() //水泵
 {
 	m_nowRegNo = m_portsetinfo.pumpNo;
 	setRegBtnBackColor(m_regBtn[m_nowRegNo], false); //初始化调节阀背景色
-	m_controlObj->makeRegulateSendBuf(m_nowRegNo, ui.spinBox1->value());
+	m_controlObj->makeRegulateSendBuf(m_nowRegNo, ui.spinBoxFreq->value());
 }
 
 void DataTestDlg::on_btnRegulate1_clicked() //调节阀1
 {
 	m_nowRegNo = m_portsetinfo.regflow1No;
 	setRegBtnBackColor(m_regBtn[m_nowRegNo], false); //初始化调节阀背景色
-	m_controlObj->makeRegulateSendBuf(m_nowRegNo, ui.spinBox1->value());
+	m_controlObj->makeRegulateSendBuf(m_nowRegNo, ui.spinBoxFreq->value());
 }
 
 //查询从机(控制板)状态
@@ -393,15 +393,22 @@ void DataTestDlg::on_btnExit_clicked()
 	this->close();
 }
 
+//刷新温度
 void DataTestDlg::slotFreshComTempValue(const QString& tempStr)
 {
 	ui.lnEditTempIn->setText(tempStr.left(DATA_WIDTH));   //入口温度 PV
 	ui.lnEditTempOut->setText(tempStr.right(DATA_WIDTH)); //出口温度 SV
 }
 
+//刷新天平数值
 void DataTestDlg::slotFreshBalanceValue(const QString& Str)
 {
 	ui.lnEditBigBalance->setText(Str);
+	if (Str.toFloat() > 100); //防止天平溢出 暂设天平容量为100kg
+	{
+		// 打开放水阀
+		// 关闭进水阀
+	}
 }
 
 //响应阀门状态设置成功
@@ -548,6 +555,8 @@ void DataTestDlg::slotFreshFlow_total()
 //读取表号
 void DataTestDlg::on_btnReadMeterNo_clicked()
 {
+	ui.lnEditMeterNo->clear();
+	qDebug()<<"读取表号 开始...";
  	m_meterObj1->writeMeterComBuffer(); //请求表号
 }
 
@@ -566,4 +575,5 @@ void DataTestDlg::on_btnSetVerifyStatus_clicked()
 void DataTestDlg::slotFreshMeterNo(const QString& meterNo)
 {
 	ui.lnEditMeterNo->setText(meterNo);
+	qDebug()<<"读取表号 成功...";
 }

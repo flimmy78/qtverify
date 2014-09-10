@@ -12,6 +12,7 @@
 **  更新记录:   2014-6-16增加温度采集协议（厦门宇电AI702巡检仪）
                 2014-6-17增加天平协议(赛多利斯)
 				2014-6-23增加控制板新协议
+				2014-9-10增加德鲁热量表通讯协议(上位机与热量表直接通讯)
 ***********************************************/
 
 #include <QtCore/QDebug>
@@ -167,18 +168,18 @@ bool TempProtocol::readTemperComBuffer(QByteArray tmp)
 				if (check_i == 0) //低字节
 				{
 					uch = (UINT8)tmp.at(m);
-					m_tempFrame->check = uch;
+					m_tempFrame->cs = uch;
 					check_i++;
 					break;
 				}
 				if (check_i == 1) //高字节
 				{
 					ch = (INT8)tmp.at(m);
-					m_tempFrame->check = ch*256 + m_tempFrame->check;
+					m_tempFrame->cs = ch*256 + m_tempFrame->cs;
 					check_i = 0;
 					state = PV_STATE;
 					ck = CountCheck(m_tempFrame);
-					if (ck == m_tempFrame->check) //校验通过
+					if (ck == m_tempFrame->cs) //校验通过
 					{
 						analyseFrame();
 						ret = true;
@@ -289,14 +290,19 @@ ControlProtocol::ControlProtocol()
 {
 	m_sendBuf = "";
 
-	m_conFrame = new Con_Frame_Struct();
-	memset(m_conFrame, 0, sizeof(Con_Frame_Struct));
+	m_ctrlFrame = new Ctrl_Frame_Struct();
+	memset(m_ctrlFrame, 0, sizeof(Ctrl_Frame_Struct));
 
 	m_balValueStr = "";
 }
 
 ControlProtocol::~ControlProtocol()
 {
+	if (m_ctrlFrame)
+	{
+		delete m_ctrlFrame;
+		m_ctrlFrame = NULL;
+	}
 }
 
 /************************************************************************
@@ -306,7 +312,7 @@ ControlProtocol::~ControlProtocol()
 void ControlProtocol::makeRelaySendBuf(UINT8 portno, bool status)
 {
 	m_sendBuf = "";
-	m_sendBuf.append(START_CODE).append(FUNC_RELAY);
+	m_sendBuf.append(CTRL_START_CODE).append(CTRL_FUNC_RELAY);
 	UINT8 relay_num = 0x01; //控制的继电器数量 1路
 	m_sendBuf.append(relay_num);
 	m_sendBuf.append(portno); //第protno路继电器
@@ -330,8 +336,8 @@ void ControlProtocol::makeRelaySendBuf(UINT8 portno, bool status)
 		data = (UINT8)pow(a, (portno-17)) & st;
 		m_sendBuf.append(code0).append(code0).append(data);
 	}
-	UINT8 cs = START_CODE + FUNC_RELAY + relay_num + portno + code0 + code0 + data;
-	m_sendBuf.append(cs).append(END_CODE);
+	UINT8 cs = CTRL_START_CODE + CTRL_FUNC_RELAY + relay_num + portno + code0 + code0 + data;
+	m_sendBuf.append(cs).append(CTRL_END_CODE);
 }
 
 
@@ -339,7 +345,7 @@ void ControlProtocol::makeRelaySendBuf(UINT8 portno, bool status)
 void ControlProtocol::makeRegulateSendBuf(UINT8 portno, UINT16 degree)
 {
 	m_sendBuf = "";
-	m_sendBuf.append(START_CODE).append(FUNC_REGULATE);
+	m_sendBuf.append(CTRL_START_CODE).append(CTRL_FUNC_REGULATE);
 	float a = 2;
 	UINT8 regulate_num = (UINT8)pow(a, (portno-1)); //控制的调节阀数量 只控制1路
 	m_sendBuf.append(regulate_num);
@@ -350,19 +356,19 @@ void ControlProtocol::makeRegulateSendBuf(UINT8 portno, UINT16 degree)
 // 	UINT8 dataL = 0x66;
 // 	UINT8 dataH = 0x01;
 	m_sendBuf.append(dataL).append(dataH);
-	UINT8 cs = START_CODE + FUNC_REGULATE + regulate_num + dataL + dataH;
-	m_sendBuf.append(cs).append(END_CODE);
+	UINT8 cs = CTRL_START_CODE + CTRL_FUNC_REGULATE + regulate_num + dataL + dataH;
+	m_sendBuf.append(cs).append(CTRL_END_CODE);
 }
 
 //查询从机状态
 void ControlProtocol::makeQuerySendBuf()
 {
 	m_sendBuf = "";
-	m_sendBuf.append(START_CODE).append(FUNC_QUERY);
+	m_sendBuf.append(CTRL_START_CODE).append(CTRL_FUNC_QUERY);
 	UINT8 code0 = 0x00;
 	m_sendBuf.append(code0).append(code0).append(code0).append(code0);
-	UINT8 cs = START_CODE + FUNC_QUERY + code0 + code0 + code0 + code0;
-	m_sendBuf.append(cs).append(END_CODE);
+	UINT8 cs = CTRL_START_CODE + CTRL_FUNC_QUERY + code0 + code0 + code0 + code0;
+	m_sendBuf.append(cs).append(CTRL_END_CODE);
 }
 
 
@@ -377,7 +383,7 @@ UINT8 ControlProtocol::readControlComBuffer(QByteArray tmp)
 {
 // 	qDebug()<<"readControlComBuffer ControlProtocol thread:"<<QThread::currentThreadId();
 	UINT8 ret = 0x00;
-	int state = START_STATE;
+	int state = CTRL_START_STATE;
 	UINT8 ch = 0; //无符号8位数字
 	int number = tmp.size();
 
@@ -390,107 +396,107 @@ UINT8 ControlProtocol::readControlComBuffer(QByteArray tmp)
 // 		qDebug()<<"read data is:"<<ch;
 		switch(state)
 		{
-		case START_STATE: //8位无符号
+		case CTRL_START_STATE: //8位无符号
 			{
-				if (ch == START_CODE)
+				if (ch == CTRL_START_CODE)
 				{
-					m_conFrame->startCode = START_CODE;
-					state = FUNC_STATE;
+					m_ctrlFrame->startCode = CTRL_START_CODE;
+					state = CTRL_FUNC_STATE;
 				}
 				break;
 			}
-		case FUNC_STATE: //8位无符号
+		case CTRL_FUNC_STATE: //8位无符号
 			{   
-				if (ch == FUNC_RELAY) //功能码-继电器控制
+				if (ch == CTRL_FUNC_RELAY) //功能码-继电器控制
 				{
-					m_conFrame->funcCode = FUNC_RELAY;
-					state = DATA_STATE;
+					m_ctrlFrame->funcCode = CTRL_FUNC_RELAY;
+					state = CTRL_DATA_STATE;
 					break;
 				}
-				if (ch == FUNC_REGULATE) //功能码-调节阀控制
+				if (ch == CTRL_FUNC_REGULATE) //功能码-调节阀控制
 				{
-					m_conFrame->funcCode = FUNC_REGULATE;
-					state = DATA_STATE;
+					m_ctrlFrame->funcCode = CTRL_FUNC_REGULATE;
+					state = CTRL_DATA_STATE;
 					break;
 				}
-				if (ch == FUNC_QUERY) //功能码-查询
+				if (ch == CTRL_FUNC_QUERY) //功能码-查询
 				{
-					m_conFrame->funcCode = FUNC_QUERY;
-					state = DATA_STATE;
+					m_ctrlFrame->funcCode = CTRL_FUNC_QUERY;
+					state = CTRL_DATA_STATE;
 					break;
 				}
-				if (ch == FUNC_BALANCE) //功能码-天平采集
+				if (ch == CTRL_FUNC_BALANCE) //功能码-天平采集
 				{
-					m_conFrame->funcCode = FUNC_BALANCE;
-					state = DATA_STATE;
+					m_ctrlFrame->funcCode = CTRL_FUNC_BALANCE;
+					state = CTRL_DATA_STATE;
 					break;
 				}
 				break;
 			}
 
-		case DATA_STATE: //8位无符号
+		case CTRL_DATA_STATE: //8位无符号
 			{
-				if (m_conFrame->funcCode == FUNC_RELAY) //继电器
+				if (m_ctrlFrame->funcCode == CTRL_FUNC_RELAY) //继电器
 				{
-					m_conFrame->data[num_i++] = ch;
+					m_ctrlFrame->data[num_i++] = ch;
 					if (num_i == RELAY_DATA_LENGTH)
 					{
-						state = CS_STATE;
+						state = CTRL_CS_STATE;
 						num_i = 0;
 					}
 				}
-				if (m_conFrame->funcCode == FUNC_REGULATE) //调节阀
+				if (m_ctrlFrame->funcCode == CTRL_FUNC_REGULATE) //调节阀
 				{
-					m_conFrame->data[num_i++] = ch;
+					m_ctrlFrame->data[num_i++] = ch;
 					if (num_i == REGU_DATA_LENGTH)
 					{
-						state = CS_STATE;
+						state = CTRL_CS_STATE;
 						num_i = 0;
 					}
 				}
-				if (m_conFrame->funcCode == FUNC_QUERY)  //查询
+				if (m_ctrlFrame->funcCode == CTRL_FUNC_QUERY)  //查询
 				{
-					m_conFrame->data[num_i++] = ch;
+					m_ctrlFrame->data[num_i++] = ch;
 					if (num_i == DATA_LENGTH)
 					{
-						state = CS_STATE;
+						state = CTRL_CS_STATE;
 						num_i = 0;
 					}
 				}
-				if (m_conFrame->funcCode == FUNC_BALANCE)  //天平
+				if (m_ctrlFrame->funcCode == CTRL_FUNC_BALANCE)  //天平
 				{
-					m_conFrame->data[num_i++] = ch;
+					m_ctrlFrame->data[num_i++] = ch;
 					if (num_i == BAL_DATA_LENGTH)
 					{
-						state = CS_STATE;
+						state = CTRL_CS_STATE;
 						num_i = 0;
 					}
 				}
 
 				break;
 			}    
-		case CS_STATE: //8位无符号
+		case CTRL_CS_STATE: //8位无符号
 			{
-				m_conFrame->check = ch;
-				state = END_STATE;
+				m_ctrlFrame->cs = ch;
+				state = CTRL_END_STATE;
 				break;
 			} 
-		case END_STATE: //8位无符号
+		case CTRL_END_STATE: //8位无符号
 			{
-				m_conFrame->endCode = END_CODE;
-				state = START_STATE;
-				ck = CountCheck(m_conFrame);
-				if (ck == m_conFrame->check) //校验通过
+				m_ctrlFrame->endCode = CTRL_END_CODE;
+				state = CTRL_START_STATE;
+				ck = CountCheck(m_ctrlFrame);
+				if (ck == m_ctrlFrame->cs) //校验通过
 				{
 					analyseFrame();
 // 					qDebug()<<"check is ok 校验通过";
-					ret = m_conFrame->funcCode; //以功能码返回，便于区分
+					ret = m_ctrlFrame->funcCode; //以功能码返回，便于区分
 				}
 				break;
 			} 
 		default :
 			{
-				state = START_STATE;
+				state = CTRL_START_STATE;
 				break;
 			}
 		} //END OF switch(state)        
@@ -499,7 +505,7 @@ UINT8 ControlProtocol::readControlComBuffer(QByteArray tmp)
 	return ret;
 }
 
-UINT8 ControlProtocol::CountCheck(Con_Frame_Struct *pFrame)
+UINT8 ControlProtocol::CountCheck(Ctrl_Frame_Struct *pFrame)
 {
 	if (NULL == pFrame)
 	{
@@ -508,28 +514,28 @@ UINT8 ControlProtocol::CountCheck(Con_Frame_Struct *pFrame)
 
 	UINT8 cs = pFrame->startCode + pFrame->funcCode;
 	int i = 0;
-	if (pFrame->funcCode == FUNC_RELAY)
+	if (pFrame->funcCode == CTRL_FUNC_RELAY)
 	{
 		for (i=0; i<RELAY_DATA_LENGTH; i++)
 		{
 			cs += pFrame->data[i];
 		}
 	}
-	if (pFrame->funcCode == FUNC_REGULATE)
+	if (pFrame->funcCode == CTRL_FUNC_REGULATE)
 	{
 		for (i=0; i<REGU_DATA_LENGTH; i++)
 		{
 			cs += pFrame->data[i];
 		}
 	}
-	if (pFrame->funcCode == FUNC_QUERY)
+	if (pFrame->funcCode == CTRL_FUNC_QUERY)
 	{
 		for (i=0; i<DATA_LENGTH; i++)
 		{
 			cs += pFrame->data[i];
 		}
 	}
-	if (pFrame->funcCode == FUNC_BALANCE)
+	if (pFrame->funcCode == CTRL_FUNC_BALANCE)
 	{
 		for (i=0; i<BAL_DATA_LENGTH; i++)
 		{
@@ -542,23 +548,23 @@ UINT8 ControlProtocol::CountCheck(Con_Frame_Struct *pFrame)
 
 void ControlProtocol::analyseFrame()
 {
-	if (NULL==m_conFrame)
+	if (NULL==m_ctrlFrame)
 	{
 		return;
 	}
 
-	if (m_conFrame->funcCode == FUNC_BALANCE) //天平采集
+	if (m_ctrlFrame->funcCode == CTRL_FUNC_BALANCE) //天平采集
 	{
 		m_balValueStr = ""; //先清零
 		char ch;
 		UINT8 ch1, ch2;
-		ch1 = m_conFrame->data[BAL_DATA_LENGTH-1];
-		ch2 = m_conFrame->data[BAL_DATA_LENGTH-2];
+		ch1 = m_ctrlFrame->data[BAL_DATA_LENGTH-1];
+		ch2 = m_ctrlFrame->data[BAL_DATA_LENGTH-2];
 		if (ch1==ASCII_LF && ch2==ASCII_CR) //0x0A换行; 0x0D回车（表示一帧结束）
 		{
 			for (int i=6; i<16; i++)
 			{
-				ch = m_conFrame->data[i];
+				ch = m_ctrlFrame->data[i];
 				m_balValueStr += ch;
 			}
 // 			m_balValueStr.replace(" ", "0");
@@ -566,12 +572,233 @@ void ControlProtocol::analyseFrame()
 	}
 }
 
-Con_Frame_Struct * ControlProtocol::getConFrame()
+Ctrl_Frame_Struct * ControlProtocol::getConFrame()
 {
-	return m_conFrame;
+	return m_ctrlFrame;
 }
 
 QString ControlProtocol::getBalanceValue()
 {
 	return m_balValueStr;
+}
+
+/***********************************************
+类名：MeterProtocol
+功能：热量表通讯协议
+************************************************/
+MeterProtocol::MeterProtocol()
+{
+	m_sendBuf = "";
+
+	m_meterFrame = new Meter_Frame_Struct();
+	memset(m_meterFrame, 0, sizeof(Meter_Frame_Struct));
+
+}
+
+MeterProtocol::~MeterProtocol()
+{
+	if (m_meterFrame)
+	{
+		delete m_meterFrame;
+		m_meterFrame = NULL;
+	}
+}
+
+// 组帧
+void MeterProtocol::makeSendBuf()
+{
+	m_sendBuf = "";
+	for (int i=0; i<100; i++)
+	{
+		m_sendBuf.append(METER_WAKEUP_CODE);//唤醒红外
+	}
+	for (int j=0; j<4; j++)
+	{
+		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
+	}
+	m_sendBuf.append(METER_START_CODE);//起始符
+	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
+	for (int m=0; m<METER_ADDR_LEN; m++)
+	{
+		m_sendBuf.append(METER_ADDR_CODE); //广播地址
+	}
+	m_sendBuf.append(METER_CTRL_CODE);//控制码
+	m_sendBuf.append(0x03);//数据长度
+	m_sendBuf.append(0x3F).append(0x90); //数据标识
+	m_sendBuf.append(0x03);//序列号
+	m_sendBuf.append(0x04);//校验码
+	m_sendBuf.append(METER_END_CODE);//结束符
+}
+
+QByteArray MeterProtocol::getSendBuf()
+{
+	return m_sendBuf;
+}
+
+//解帧
+UINT8 MeterProtocol::readMeterComBuffer(QByteArray tmp)
+{
+	qDebug()<<"readMeterComBuffer MeterProtocol thread:"<<QThread::currentThreadId();
+
+	UINT8 ret = 0x00;
+	int state = METER_START_STATE;
+	UINT8 ch = 0; //无符号8位数字
+	int number = tmp.size();
+
+	int m=0;
+	int addr_num=0, dataID_num=0, data_num=0;
+	UINT8 ck=0; //程序计算的检验码
+	for (m=0; m<number; m++)
+	{
+		ch = (UINT8)tmp.at(m);
+// 		qDebug()<<"read data is:"<<ch;
+		if (ch == METER_PREFIX_CODE)
+		{
+			continue;
+		}
+		switch(state)
+		{
+		case METER_START_STATE: //
+			{
+				if (ch == METER_START_CODE)
+				{
+					m_meterFrame->startCode = METER_START_CODE;
+					state = METER_TYPE_STATE;
+				}
+				break;
+			}
+		case METER_TYPE_STATE: //
+			{   
+				if (ch == METER_TYPE_ANSWER_CODE) //响应
+				{
+					m_meterFrame->typeCode = ch;
+					state = METER_ADDR_STATE;
+				}
+				break;
+			}
+
+		case METER_ADDR_STATE: //
+			{
+				m_meterFrame->addr[addr_num++] = ch;
+				if (addr_num == METER_ADDR_LEN)
+				{
+					state = METER_CTRL_STATE;
+					addr_num = 0;
+				}
+				break;
+			}    
+		case METER_CTRL_STATE: //
+			{
+				m_meterFrame->ctrlCode = ch;
+				state = METER_DATALEN_STATE;
+				break;
+			} 
+		case METER_DATALEN_STATE: //
+			{
+				m_meterFrame->dataLen = ch;
+				state = METER_DATAID_STATE;
+				break;
+			} 
+		case METER_DATAID_STATE: //
+			{
+				m_meterFrame->dataID[dataID_num++] = ch;
+				if (dataID_num == METER_DATAID_LEN)
+				{
+					state = METER_SN_STATE;
+					dataID_num = 0;
+				}
+				break;
+			} 
+		case METER_SN_STATE: //序列号
+			{
+				m_meterFrame->sn = ch;
+				state = METER_DATA_STATE;
+				break;
+			} 
+		case METER_DATA_STATE: //
+			{
+				m_meterFrame->data[data_num++] = ch;
+				if (data_num == METER_DATA_LEN)
+				{
+					state = METER_CS_STATE;
+					data_num = 0;
+				}
+				break;
+			} 
+		case METER_CS_STATE: //
+			{
+				m_meterFrame->cs = ch;
+				state = METER_END_STATE;
+				break;
+			} 
+		case METER_END_STATE: //
+			{
+				m_meterFrame->endCode = ch;
+				state = METER_START_STATE;
+				ck = CountCheck(m_meterFrame);
+				if (ck == m_meterFrame->cs) //校验通过
+				{
+ 					analyseFrame();
+					ret = 1; //
+					qDebug()<<"check is ok 校验通过";
+				}
+				break;
+			} 
+		default :
+			{
+				state = METER_START_STATE;
+				break;
+			}
+		} //END OF switch(state)        
+	} //END OF for (m=0; m<number; m++)
+
+	return ret;
+}
+
+//计算"校验码"
+UINT8 MeterProtocol::CountCheck(Meter_Frame_Struct *pFrame)
+{
+	if (NULL == pFrame)
+	{
+		return 0;
+	}
+
+	UINT8 cs = 0;
+	cs = pFrame->startCode + pFrame->typeCode;
+	for (int i=0; i<METER_ADDR_LEN; i++)
+	{
+		cs += pFrame->addr[i];
+	}
+	cs += pFrame->ctrlCode;
+	cs += pFrame->dataLen;
+	for (int j=0; j<METER_DATAID_LEN; j++)
+	{
+		cs += pFrame->dataID[j];
+	}
+	cs += pFrame->sn;
+	for (int m=0; m<METER_DATA_LEN; m++)
+	{
+		cs += pFrame->data[m];
+	}
+
+	return cs; 
+}
+
+void MeterProtocol::analyseFrame()
+{
+	if (NULL == m_meterFrame)
+	{
+		return;
+	}
+	m_fullMeterNo = "";
+	for (int i=METER_ADDR_LEN-1; i>=0; i--)
+	{
+		 m_fullMeterNo.append(QString("%1").arg(m_meterFrame->addr[i], 2, 16)).replace(' ', '0');
+	}
+}
+
+
+QString MeterProtocol::getFullMeterNo()
+{
+	return m_fullMeterNo;
 }

@@ -163,8 +163,8 @@ ControlComObject::ControlComObject(QObject* parent) : ComObject(parent)
 	m_controlProtocol = new ControlProtocol();
 
 	m_conFrame = NULL;
-	m_conFrame = new Con_Frame_Struct();
-	memset(m_conFrame, 0, sizeof(Con_Frame_Struct));
+	m_conFrame = new Ctrl_Frame_Struct();
+	memset(m_conFrame, 0, sizeof(Ctrl_Frame_Struct));
 
 	m_conTmp = "";
 	m_balValue = "";
@@ -254,7 +254,11 @@ void ControlComObject::readControlComBuffer()
 	QDateTime begintime = QDateTime::currentDateTime();
 	m_conTmp.append(m_controlCom->readAll());
 	int num = m_conTmp.size();
-	if (m_conTmp.at(num-1) != END_CODE) //一帧接收完毕
+	if (num <= 0)
+	{
+		return;
+	}
+	if (m_conTmp.at(num-1) != CTRL_END_CODE) //一帧接收完毕
 	{
 		return;
 	}
@@ -266,7 +270,7 @@ void ControlComObject::readControlComBuffer()
 	UINT8 portno;
 	UINT8 st;
 	bool status;
-	if (ret == FUNC_RELAY) //继电器
+	if (ret == CTRL_FUNC_RELAY) //继电器
 	{
 		portno = m_controlProtocol->getConFrame()->data[1];
 		st = m_controlProtocol->getConFrame()->data[(portno-1)/8 + 2];
@@ -274,16 +278,16 @@ void ControlComObject::readControlComBuffer()
 		emit controlRelayIsOk(portno, status);
 		qDebug()<<"controlRelayIsOk"<<"\n";
 	}
-	else if (ret == FUNC_REGULATE) //调节阀
+	else if (ret == CTRL_FUNC_REGULATE) //调节阀
 	{
 		qDebug()<<"controlRegulateIsOk"<<"\n";
 		emit controlRegulateIsOk();
 	}
-	else if (ret == FUNC_QUERY) //查询
+	else if (ret == CTRL_FUNC_QUERY) //查询
 	{
 		m_conFrame = m_controlProtocol->getConFrame();
 	}
-	else if (ret == FUNC_BALANCE) //天平
+	else if (ret == CTRL_FUNC_BALANCE) //天平
 	{
 		m_balValue = m_controlProtocol->getBalanceValue();
 		emit controlGetBalanceValueIsOk(m_balValue);
@@ -368,7 +372,7 @@ void BalanceComObject::readBalanceComBuffer()
 	m_balTmp.append(m_balanceCom->readAll());
 	int num = m_balTmp.size();
 
-	if (num>=BAL_DATA_LENGTH && m_balTmp.at(num-1)==ASCII_LF && m_balTmp.at(num-2)==ASCII_CR ) //最后两个字节是回车符和换行符
+	if ( num>=BAL_DATA_LENGTH && m_balTmp.at(num-1)==ASCII_LF && m_balTmp.at(num-2)==ASCII_CR ) //最后两个字节是回车符和换行符
 	{
  		qDebug()<<"readBalanceComBuffer thread:"<<QThread::currentThreadId()<<", Read data is:"<<m_balTmp;
 
@@ -390,7 +394,9 @@ void BalanceComObject::readBalanceComBuffer()
 **********************************************************/
 MeterComObject::MeterComObject(QObject* parent) : ComObject(parent)
 {
-
+	m_meterCom = NULL;
+	m_meterProtocol = new MeterProtocol();
+	m_meterTmp="";
 }
 
 MeterComObject::~MeterComObject()
@@ -400,10 +406,17 @@ MeterComObject::~MeterComObject()
 		if(m_meterCom->isOpen())
 		{
 			m_meterCom->close();
-			qDebug()<<"m_meterCom1 closed";
+			qDebug()<<"m_meterCom closed";
 		}
 		delete m_meterCom;
 	}
+
+	if (m_meterProtocol != NULL)
+	{
+		delete m_meterProtocol;
+		m_meterProtocol = NULL;
+	}
+
 }
 
 void MeterComObject::openMeterCom(ComInfoStruct *comStruct)
@@ -437,10 +450,39 @@ void MeterComObject::openMeterCom(ComInfoStruct *comStruct)
 
 void MeterComObject::readMeterComBuffer()
 {
+// 	qDebug()<<"readMeterComBuffer MeterComObject thread:"<<QThread::currentThreadId();
+	m_meterTmp.append(m_meterCom->readAll());
+	int num = m_meterTmp.size();
+	if (num < 71) //不含前导符，一帧至少71个字节
+	{
+		return;
+	}
+	if (m_meterTmp.at(num-1) !=  METER_END_CODE) //一帧接收完毕
+	{
+		return;
+	}
 
+	UINT8 ret = 0x00;
+	ret = m_meterProtocol->readMeterComBuffer(m_meterTmp);
+	m_meterTmp.clear(); //清零
+	QDateTime begintime = QDateTime::currentDateTime();
+	qDebug()<<"begintime:"<<begintime.toString("yyyy-MM-dd HH:mm:ss.zzz");
+
+	QString meterNo;
+	if (ret == 1) //解帧成功
+	{
+		meterNo = m_meterProtocol->getFullMeterNo();
+		emit readMeterNoIsOK(meterNo);
+		QDateTime endtime = QDateTime::currentDateTime();
+		qDebug()<<"endtime:  "<<endtime.toString("yyyy-MM-dd HH:mm:ss.zzz");
+		UINT32 usedSec = begintime.msecsTo(endtime);
+		qDebug()<<"解析热量表数据，用时"<<usedSec<<"毫秒";
+	}
 }
 
 void MeterComObject::writeMeterComBuffer()
 {
-
+	m_meterProtocol->makeSendBuf();
+	QByteArray buf = m_meterProtocol->getSendBuf();
+	m_meterCom->write(buf);
 }

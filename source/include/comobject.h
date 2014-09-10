@@ -106,7 +106,7 @@ public:
 
 	QextSerialPort *m_controlCom;
 	ControlProtocol *m_controlProtocol;   //下位机控制通讯协议类对象
-	Con_Frame_Struct *m_conFrame;
+	Ctrl_Frame_Struct *m_conFrame;
 	QByteArray m_conTmp;
 	QString m_balValue;
 
@@ -161,6 +161,8 @@ public:
 	~MeterComObject();
 
 	QextSerialPort *m_meterCom;
+	MeterProtocol *m_meterProtocol;
+	QByteArray m_meterTmp;
 
 signals:
 	void readMeterNoIsOK(const QString& meterNo);

@@ -100,7 +100,7 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QHBoxLayout *horizontalLayout;
     QLabel *label_18;
-    QSpinBox *spinBox1;
+    QSpinBox *spinBoxFreq;
     QSpacerItem *horizontalSpacer_3;
     QPushButton *btnRegulate1;
     QSpacerItem *horizontalSpacer_2;
@@ -559,11 +559,11 @@ public:
 
         horizontalLayout->addWidget(label_18);
 
-        spinBox1 = new QSpinBox(layoutWidget);
-        spinBox1->setObjectName(QString::fromUtf8("spinBox1"));
-        spinBox1->setMaximum(9999);
+        spinBoxFreq = new QSpinBox(layoutWidget);
+        spinBoxFreq->setObjectName(QString::fromUtf8("spinBoxFreq"));
+        spinBoxFreq->setMaximum(9999);
 
-        horizontalLayout->addWidget(spinBox1);
+        horizontalLayout->addWidget(spinBoxFreq);
 
 
         horizontalLayout_2->addLayout(horizontalLayout);
@@ -720,6 +720,7 @@ public:
         gridLayout_8->setObjectName(QString::fromUtf8("gridLayout_8"));
         btnParaSet = new QPushButton(groupBox_8);
         btnParaSet->setObjectName(QString::fromUtf8("btnParaSet"));
+        btnParaSet->setAutoFillBackground(true);
 
         gridLayout_8->addWidget(btnParaSet, 0, 0, 1, 1);
 
