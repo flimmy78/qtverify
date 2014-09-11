@@ -166,6 +166,7 @@ public:
 
 signals:
 	void readMeterNoIsOK(const QString& meterNo);
+	void readMeterDataIsOK(const QString& flow, const QString& heat);
 
 public slots:
 	void openMeterCom(ComInfoStruct *comStruct);

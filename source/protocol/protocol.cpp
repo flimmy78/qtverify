@@ -608,14 +608,19 @@ MeterProtocol::~MeterProtocol()
 void MeterProtocol::makeSendBuf()
 {
 	m_sendBuf = "";
-	for (int i=0; i<100; i++)
+
+	int wakeCodeNum = 100;
+	for (int i=0; i<wakeCodeNum; i++)
 	{
 		m_sendBuf.append(METER_WAKEUP_CODE);//唤醒红外
 	}
-	for (int j=0; j<4; j++)
+
+	int preCodeNum = 4;
+	for (int j=0; j<preCodeNum; j++)
 	{
 		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
 	}
+
 	m_sendBuf.append(METER_START_CODE);//起始符
 	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
 	for (int m=0; m<METER_ADDR_LEN; m++)
@@ -626,7 +631,9 @@ void MeterProtocol::makeSendBuf()
 	m_sendBuf.append(0x03);//数据长度
 	m_sendBuf.append(0x3F).append(0x90); //数据标识
 	m_sendBuf.append(0x03);//序列号
-	m_sendBuf.append(0x04);//校验码
+	UINT8 cs = METER_START_CODE + METER_TYPE_ASK_CODE + METER_ADDR_CODE*METER_ADDR_LEN + METER_CTRL_CODE\
+		+ 0x03 + 0x3F + 0x90 + 0x03;
+	m_sendBuf.append(cs);//校验码
 	m_sendBuf.append(METER_END_CODE);//结束符
 }
 
@@ -790,15 +797,64 @@ void MeterProtocol::analyseFrame()
 	{
 		return;
 	}
+
+	//表号
 	m_fullMeterNo = "";
 	for (int i=METER_ADDR_LEN-1; i>=0; i--)
 	{
 		 m_fullMeterNo.append(QString("%1").arg(m_meterFrame->addr[i], 2, 16)).replace(' ', '0');
 	}
+
+	//供水温度
+	m_inTemper = "";
+	m_inTemper.append(QString("%1%2.%3").arg(m_meterFrame->data[2], 2, 16)\
+		.arg(m_meterFrame->data[1], 2, 16).arg(m_meterFrame->data[0], 2, 16));
+	m_inTemper.replace(' ', '0');
+
+	//流量
+	m_flow = "";
+	m_flow.append(QString("%1.%2%3%4").arg(m_meterFrame->data[9], 2, 16)\
+		.arg(m_meterFrame->data[8], 2, 16).arg(m_meterFrame->data[7], 2, 16)\
+		.arg(m_meterFrame->data[6], 2, 16));
+	m_flow.replace(' ', '0');
+
+	//热量
+	m_heat = "";
+	m_heat.append(QString("%1%2.%3%4").arg(m_meterFrame->data[14], 2, 16)\
+		.arg(m_meterFrame->data[13], 2, 16).arg(m_meterFrame->data[12], 2, 16)\
+		.arg(m_meterFrame->data[11], 2, 16));
+	m_heat.replace(' ', '0');
+
+	//回水温度
+	m_outTemper = "";
+	m_outTemper.append(QString("%1%2.%3").arg(m_meterFrame->data[48], 2, 16)\
+		.arg(m_meterFrame->data[47], 2, 16).arg(m_meterFrame->data[46], 2, 16));
+	m_outTemper.replace(' ', '0');
+
 }
 
 
 QString MeterProtocol::getFullMeterNo()
 {
 	return m_fullMeterNo;
+}
+
+QString MeterProtocol::getFlow()
+{
+	return m_flow;
+}
+
+QString MeterProtocol::getInTemper()
+{
+	return m_inTemper;
+}
+
+QString MeterProtocol::getOutTemper()
+{
+	return m_outTemper;
+}
+
+QString MeterProtocol::getHeat()
+{
+	return m_heat;
 }

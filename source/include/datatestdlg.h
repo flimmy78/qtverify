@@ -94,7 +94,9 @@ public slots:
 
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
 	void slotFreshBalanceValue(const QString& Str);     //刷新天平数值
+	
 	void slotFreshMeterNo(const QString& meterNo);      //刷新表号
+	void slotFreshMeterData(const QString& flow, const QString& heat); //刷新表数据(流量、热量)
 
 	void slotSetValveBtnStatus(const UINT8 &portno, const bool &status); //继电器返回成功对应的槽函数
 	void slotSetRegulateOk();

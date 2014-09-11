@@ -221,6 +221,11 @@ public slots:
 
 	QByteArray getSendBuf();
 	QString getFullMeterNo();
+	QString getFlow();
+	QString getInTemper();
+	QString getOutTemper();
+	QString getHeat();
+
 
 private:
 	QString m_fullMeterNo;  //完整表号 7个字节

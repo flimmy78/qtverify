@@ -72,9 +72,9 @@ public:
     QLabel *label_27;
     QLineEdit *lnEditVolumn1;
     QLabel *label_28;
-    QLineEdit *lnEditEnergy0;
+    QLineEdit *lnEditHeat0;
     QLabel *label_29;
-    QLineEdit *lnEditEnergy1;
+    QLineEdit *lnEditHeat1;
     QLabel *label_31;
     QLineEdit *lnEditVolumnError;
     QLabel *label_32;
@@ -350,24 +350,24 @@ public:
 
         gridLayout_12->addWidget(label_28, 3, 0, 1, 2);
 
-        lnEditEnergy0 = new QLineEdit(groupBox_9);
-        lnEditEnergy0->setObjectName(QString::fromUtf8("lnEditEnergy0"));
-        sizePolicy.setHeightForWidth(lnEditEnergy0->sizePolicy().hasHeightForWidth());
-        lnEditEnergy0->setSizePolicy(sizePolicy);
+        lnEditHeat0 = new QLineEdit(groupBox_9);
+        lnEditHeat0->setObjectName(QString::fromUtf8("lnEditHeat0"));
+        sizePolicy.setHeightForWidth(lnEditHeat0->sizePolicy().hasHeightForWidth());
+        lnEditHeat0->setSizePolicy(sizePolicy);
 
-        gridLayout_12->addWidget(lnEditEnergy0, 3, 2, 1, 3);
+        gridLayout_12->addWidget(lnEditHeat0, 3, 2, 1, 3);
 
         label_29 = new QLabel(groupBox_9);
         label_29->setObjectName(QString::fromUtf8("label_29"));
 
         gridLayout_12->addWidget(label_29, 4, 0, 1, 2);
 
-        lnEditEnergy1 = new QLineEdit(groupBox_9);
-        lnEditEnergy1->setObjectName(QString::fromUtf8("lnEditEnergy1"));
-        sizePolicy.setHeightForWidth(lnEditEnergy1->sizePolicy().hasHeightForWidth());
-        lnEditEnergy1->setSizePolicy(sizePolicy);
+        lnEditHeat1 = new QLineEdit(groupBox_9);
+        lnEditHeat1->setObjectName(QString::fromUtf8("lnEditHeat1"));
+        sizePolicy.setHeightForWidth(lnEditHeat1->sizePolicy().hasHeightForWidth());
+        lnEditHeat1->setSizePolicy(sizePolicy);
 
-        gridLayout_12->addWidget(lnEditEnergy1, 4, 2, 1, 3);
+        gridLayout_12->addWidget(lnEditHeat1, 4, 2, 1, 3);
 
         label_31 = new QLabel(groupBox_9);
         label_31->setObjectName(QString::fromUtf8("label_31"));

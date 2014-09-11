@@ -469,13 +469,21 @@ void MeterComObject::readMeterComBuffer()
 	qDebug()<<"begintime:"<<begintime.toString("yyyy-MM-dd HH:mm:ss.zzz");
 
 	QString meterNo;
+	QString flow,heat;
 	if (ret == 1) //解帧成功
 	{
+		//表号
 		meterNo = m_meterProtocol->getFullMeterNo();
 		emit readMeterNoIsOK(meterNo);
 		QDateTime endtime = QDateTime::currentDateTime();
 		qDebug()<<"endtime:  "<<endtime.toString("yyyy-MM-dd HH:mm:ss.zzz");
 		UINT32 usedSec = begintime.msecsTo(endtime);
+
+		//流量、热量
+		flow = m_meterProtocol->getFlow();
+		heat = m_meterProtocol->getHeat();
+		emit readMeterDataIsOK(flow, heat);
+
 		qDebug()<<"解析热量表数据，用时"<<usedSec<<"毫秒";
 	}
 }

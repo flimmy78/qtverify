@@ -320,7 +320,7 @@
         </widget>
        </item>
        <item row="3" column="2" colspan="3">
-        <widget class="QLineEdit" name="lnEditEnergy0">
+        <widget class="QLineEdit" name="lnEditHeat0">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -337,7 +337,7 @@
         </widget>
        </item>
        <item row="4" column="2" colspan="3">
-        <widget class="QLineEdit" name="lnEditEnergy1">
+        <widget class="QLineEdit" name="lnEditHeat1">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
            <horstretch>0</horstretch>
