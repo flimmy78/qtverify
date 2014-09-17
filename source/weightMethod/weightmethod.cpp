@@ -92,7 +92,7 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	m_resetZero = false;     //初值回零
 	m_autopick = false;      //自动采集
 	m_flowPointNum = 0;      //流量点个数
-	m_rowNum = 0;            //某规格表最多支持的检表个数
+	m_maxMeterNum = 0;       //某规格表最多支持的检表个数
 	m_meterNum = 0;          //实际检表个数
 	m_exaustSecond = 45;     //默认排气时间45秒
 	m_totalFlag = 0;         //默认分量检定
@@ -132,13 +132,17 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 		qWarning()<<"串口、端口设置错误!";
 	}
 
+	m_meterThread = NULL;
+	m_meterObj = NULL;
+	initMeterCom(); //初始化热量表通讯串口
+
 	if (!isWaterOutValveOpen())
 	{
 		qDebug()<<"放水阀门未打开";
 		openWaterOutValve();
 	}
 
-	ui.lnEditSmallBalance->setInputMask("00000000");
+// 	ui.lnEditSmallBalance->setInputMask("00000000");
 }
 
 WeightMethodDlg::~WeightMethodDlg()
@@ -209,6 +213,18 @@ void WeightMethodDlg::closeEvent( QCloseEvent * event)
 		m_chkAlg = NULL;
 	}
 
+	//热量表通讯
+	if (m_meterObj)
+	{
+		delete []m_meterObj;
+		m_meterObj = NULL;
+
+		for (int i=0; i<m_maxMeterNum; i++)
+		{
+			m_meterThread[i].exit();
+		}
+	}
+
 }
 
 //关闭标签页
@@ -265,6 +281,28 @@ void WeightMethodDlg::initControlCom()
 
 	//天平数值从控制板获取
 // 	connect(m_controlObj, SIGNAL(controlGetBalanceValueIsOk(const QString&)), this, SLOT(slotFreshBalanceValue(const QString &)));
+}
+
+//热量表通讯串口
+void WeightMethodDlg::initMeterCom()
+{
+	if (m_maxMeterNum <= 0)
+	{
+		return;
+	}
+
+	m_meterThread = new ComThread[m_maxMeterNum];
+
+	m_meterObj = new MeterComObject[m_maxMeterNum];
+	int i=0;
+	for (i=0; i<m_maxMeterNum; i++)
+	{
+		m_meterObj[i].moveToThread(&m_meterThread[i]);
+		m_meterThread[i].start();
+		m_meterObj[i].openMeterCom(&m_readComConfig->ReadMeterConfigByNum(QString("%1").arg(i+1)));
+
+		connect(&m_meterObj[i], SIGNAL(readMeterNoIsOK(const QString&, const QString&)), this, SLOT(slotSetMeterNumber(const QString&, const QString&)));
+	}
 }
 
 /*
@@ -354,7 +392,7 @@ int WeightMethodDlg::readNowParaConfig()
 	m_standard = m_nowParams->m_stand;       //表规格
 	m_model = m_nowParams->m_model;   //表型号
 	m_meterType = m_nowParams->m_type;//表类型
-	m_rowNum = m_nowParams->m_maxMeters;     //不同表规格对应的最大检表数量
+	m_maxMeterNum = m_nowParams->m_maxMeters;     //不同表规格对应的最大检表数量
 
 	setTableRowCount();
 	showNowKeyParaConfig();
@@ -365,14 +403,14 @@ int WeightMethodDlg::readNowParaConfig()
 //设置表格行数
 void WeightMethodDlg::setTableRowCount()
 {
-	if (m_rowNum <= 0)
+	if (m_maxMeterNum <= 0)
 	{
 		return;
 	}
 
-	ui.tableWidget->setRowCount(m_rowNum); //设置表格行数
+	ui.tableWidget->setRowCount(m_maxMeterNum); //设置表格行数
 	QStringList vLabels;
-	for (int i=1; i<= m_rowNum; i++)
+	for (int i=1; i<= m_maxMeterNum; i++)
 	{
 		vLabels<<QString("表位号%1").arg(i);
 // 		QSpinBox *box = new QSpinBox(this);
@@ -422,8 +460,14 @@ void WeightMethodDlg::on_btnExhaust_clicked()
 	ui.labelHintInfo->setText(QString("排气倒计时：%1 秒").arg(m_exaustSecond));
 	qDebug()<<"排气倒计时:"<<m_exaustSecond<<"秒";
 
-
-	readMeterNumber();
+	if (m_autopick) //自动读表
+	{
+		readMeterNumber();
+	}
+	else //手动读表
+	{
+		ui.labelHint->setText("请输入表号!");
+	}
 
 	setMeterVerifyStatus();
 	
@@ -457,6 +501,7 @@ void WeightMethodDlg::slotExaustFinished()
 	}
 	m_exaustTimer->stop(); //停止排气计时
 	ui.labelHintInfo->setText(QString("排气倒计时 结束！"));
+	ui.labelHint->clear();
 	if (!closeAllFlowPointValves()) //关闭所有流量点阀门 失败
 	{
 		if (!closeAllFlowPointValves()) //再尝试关闭一次
@@ -497,11 +542,10 @@ void WeightMethodDlg::slotExaustFinished()
 }
 
 /*
-** 读取表号 自动读取或手动填写
+** 读取表号 自动读取
 */
 int WeightMethodDlg::readMeterNumber()
 {
-
 	return true;
 }
 
@@ -588,7 +632,7 @@ int WeightMethodDlg::isAllMeterInVerifyStatus()
 
 void WeightMethodDlg::clearTableContents()
 {
-	for (int i=0; i<m_rowNum; i++)
+	for (int i=0; i<m_maxMeterNum; i++)
 	{
 		for (int j=1; j<ui.tableWidget->columnCount(); j++) //从第二列开始
 		{
@@ -732,7 +776,7 @@ void WeightMethodDlg::startVerify()
 int WeightMethodDlg::getValidMeterNum()
 {
 	bool ok;
-	for (int i=0; i<m_rowNum; i++)
+	for (int i=0; i<m_maxMeterNum; i++)
 	{
 		if (NULL == ui.tableWidget->item(i, 0)) //"表号"单元格为空
 		{
@@ -1021,6 +1065,12 @@ void WeightMethodDlg::slotSetRegulateOk()
 }
 
 
+//自动读取表号成功
+void WeightMethodDlg::slotSetMeterNumber(const QString& portName, const QString& meterNo)
+{
+	ui.tableWidget->setItem(0, COLUMN_METER_NUMBER, new QTableWidgetItem(meterNo.right(8))); //表号
+}
+
 //设置阀门按钮背景色
 void WeightMethodDlg::setValveBtnBackColor(QToolButton *btn, bool status)
 {
@@ -1298,6 +1348,14 @@ int WeightMethodDlg::saveAllVerifyRecords()
 {
  	insertVerifyRec(m_recPtr, m_meterNum);
 	return true;
+}
+
+void WeightMethodDlg::on_btnReadMeterNo_clicked()
+{
+	for (int i=0; i<m_maxMeterNum; i++)
+	{
+		m_meterObj[i].writeMeterComBuffer();
+	}
 }
 
 /*

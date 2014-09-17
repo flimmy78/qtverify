@@ -397,6 +397,7 @@ MeterComObject::MeterComObject(QObject* parent) : ComObject(parent)
 	m_meterCom = NULL;
 	m_meterProtocol = new MeterProtocol();
 	m_meterTmp="";
+	m_portName = "";
 }
 
 MeterComObject::~MeterComObject()
@@ -421,12 +422,12 @@ MeterComObject::~MeterComObject()
 
 void MeterComObject::openMeterCom(ComInfoStruct *comStruct)
 {
-	QString portName = comStruct->portName; //获取串口名
-	qDebug()<<"openMeterCom:"<<portName<<"thread:"<<QThread::currentThreadId();
+	m_portName = comStruct->portName; //获取串口名
+// 	qDebug()<<"openMeterCom:"<<m_portName<<"thread:"<<QThread::currentThreadId();
 #ifdef Q_OS_LINUX
-	m_meterCom = new QextSerialPort("/dev/" + portName);
+	m_meterCom = new QextSerialPort("/dev/" + m_portName);
 #elif defined (Q_OS_WIN)
-	m_meterCom = new QextSerialPort(portName, QextSerialPort::EventDriven);
+	m_meterCom = new QextSerialPort(m_portName, QextSerialPort::EventDriven);
 #endif
 	connect(m_meterCom, SIGNAL(readyRead()), this, SLOT(readMeterComBuffer()));
 
@@ -439,18 +440,18 @@ void MeterComObject::openMeterCom(ComInfoStruct *comStruct)
 
 	if(m_meterCom->open(QIODevice::ReadWrite)) 
 	{
-		qDebug()<<"Open openMeter Com:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
+		qDebug()<<"Open openMeter Com:"<<m_portName<<"Success!"<<" thread id:"<<QThread::currentThreadId();
 	}
 	else
 	{
-		qDebug()<<"Open Meter Com:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
+		qDebug()<<"Open Meter Com:"<<m_portName<<"Failed!"<<" thread id:"<<QThread::currentThreadId();
 		return;
 	}
 }
 
 void MeterComObject::readMeterComBuffer()
 {
-// 	qDebug()<<"readMeterComBuffer MeterComObject thread:"<<QThread::currentThreadId();
+	qDebug()<<"readMeterComBuffer MeterComObject thread:"<<QThread::currentThreadId();
 	m_meterTmp.append(m_meterCom->readAll());
 	int num = m_meterTmp.size();
 	if (num < 71) //不含前导符，一帧至少71个字节
@@ -474,7 +475,7 @@ void MeterComObject::readMeterComBuffer()
 	{
 		//表号
 		meterNo = m_meterProtocol->getFullMeterNo();
-		emit readMeterNoIsOK(meterNo);
+		emit readMeterNoIsOK(m_portName, meterNo);
 		QDateTime endtime = QDateTime::currentDateTime();
 		qDebug()<<"endtime:  "<<endtime.toString("yyyy-MM-dd HH:mm:ss.zzz");
 		UINT32 usedSec = begintime.msecsTo(endtime);
@@ -482,7 +483,7 @@ void MeterComObject::readMeterComBuffer()
 		//流量、热量
 		flow = m_meterProtocol->getFlow();
 		heat = m_meterProtocol->getHeat();
-		emit readMeterDataIsOK(flow, heat);
+		emit readMeterDataIsOK(m_portName, flow, heat);
 
 		qDebug()<<"解析热量表数据，用时"<<usedSec<<"毫秒";
 	}

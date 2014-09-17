@@ -163,10 +163,11 @@ public:
 	QextSerialPort *m_meterCom;
 	MeterProtocol *m_meterProtocol;
 	QByteArray m_meterTmp;
+	QString m_portName;
 
 signals:
-	void readMeterNoIsOK(const QString& meterNo);
-	void readMeterDataIsOK(const QString& flow, const QString& heat);
+	void readMeterNoIsOK(const QString& portName, const QString& meterNo);
+	void readMeterDataIsOK(const QString& portName, const QString& flow, const QString& heat);
 
 public slots:
 	void openMeterCom(ComInfoStruct *comStruct);

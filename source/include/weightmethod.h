@@ -118,6 +118,10 @@ public:
 	QMap<int, QToolButton*> m_valveBtn;	
 	int m_nowPortNo;	//当前控制阀门端口号
 
+	ComThread *m_meterThread;	//热量表通讯线程
+	MeterComObject *m_meterObj;	//
+
+
 	CAlgorithm *m_chkAlg;//检定过程用到的计算方法
 
 	bool m_stopFlag;      //关闭界面后退出
@@ -135,7 +139,7 @@ public:
 	int m_meterType;          //表类型
 
 	int m_tempCount;		  //计算平均温度用的累加计数器
-	int m_rowNum;             //表格的行数（被检表的最大个数）
+	int m_maxMeterNum;        //表格的行数（被检表的最大个数）
 	int m_meterNum;           //实际检表的个数
 	QMap<int, int> m_meterPosMap; //被检表与表位号的映射关系
 	QMap<int, float> m_gradeErr;  //不同等级热表对应的标准误差
@@ -169,6 +173,7 @@ public:
 	void initBalanceCom();     //天平串口
 	void initTemperatureCom(); //温度采集串口
 	void initControlCom();     //阀门控制串口
+	void initMeterCom();       //热量表串口
 	void initValveStatus();	   //初始化阀门状态
 
 	int isComAndPortNormal();   //串口、端口设置是否正常
@@ -222,6 +227,7 @@ public slots:
 	void slotSetValveBtnStatus(const UINT8 &portno, const bool &status); //继电器返回成功对应的槽函数
 	void slotSetRegulateOk();     //调节阀返回成功对应的槽函数
 
+ 	void slotSetMeterNumber(const QString& portName, const QString& meterNumber);
 	void setValveBtnBackColor(QToolButton *btn, bool status); //设置阀门按钮背景色
 	void setRegBtnBackColor(QPushButton *btn, bool status);	  //设置调节阀按钮背景色
 
@@ -241,6 +247,8 @@ public slots:
 	void clearTableContents();
 
 	void freshBigBalaceValue();   //刷新大天平数值 仅用于测试 模拟天平数值变化
+
+	void on_btnReadMeterNo_clicked(); //读取表号按钮
 
 // 	void on_btnOpen_clicked();
 // 	void on_btnImport_clicked();

@@ -37,7 +37,7 @@
         <rect>
          <x>20</x>
          <y>620</y>
-         <width>93</width>
+         <width>71</width>
          <height>28</height>
         </rect>
        </property>
@@ -55,7 +55,7 @@
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>660</y>
+         <y>670</y>
          <width>261</width>
          <height>121</height>
         </rect>
@@ -154,9 +154,9 @@
        <property name="geometry">
         <rect>
          <x>290</x>
-         <y>630</y>
+         <y>620</y>
          <width>401</width>
-         <height>141</height>
+         <height>171</height>
         </rect>
        </property>
        <property name="title">
@@ -381,72 +381,50 @@
         </property>
        </column>
       </widget>
-      <widget class="QPushButton" name="btnExhaust">
-       <property name="geometry">
-        <rect>
-         <x>1150</x>
-         <y>620</y>
-         <width>93</width>
-         <height>28</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>排气</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="btnStart">
-       <property name="geometry">
-        <rect>
-         <x>1150</x>
-         <y>660</y>
-         <width>93</width>
-         <height>28</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>开始</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="btnStop">
-       <property name="geometry">
-        <rect>
-         <x>1150</x>
-         <y>740</y>
-         <width>93</width>
-         <height>28</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>终止检测</string>
-       </property>
-      </widget>
       <widget class="QGroupBox" name="groupBox_3">
        <property name="geometry">
         <rect>
          <x>920</x>
          <y>620</y>
          <width>221</width>
-         <height>151</height>
+         <height>181</height>
         </rect>
        </property>
        <property name="title">
         <string>流程提示</string>
        </property>
-       <layout class="QGridLayout" name="gridLayout_6">
-        <item row="0" column="0">
-         <widget class="QLabel" name="labelHintInfo">
-          <property name="text">
-           <string>提示信息</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       <widget class="QLabel" name="labelHintInfo">
+        <property name="geometry">
+         <rect>
+          <x>12</x>
+          <y>27</y>
+          <width>201</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>提示信息</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labelHint">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>90</y>
+          <width>191</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>710</x>
-         <y>690</y>
+         <y>700</y>
          <width>191</width>
          <height>85</height>
         </rect>
@@ -615,7 +593,7 @@
        <property name="geometry">
         <rect>
          <x>710</x>
-         <y>620</y>
+         <y>630</y>
          <width>191</width>
          <height>51</height>
         </rect>
@@ -710,31 +688,78 @@
         </item>
        </layout>
       </widget>
-      <widget class="QPushButton" name="btnNext">
+      <widget class="QPushButton" name="btnReadMeterNo">
        <property name="geometry">
         <rect>
-         <x>1150</x>
-         <y>700</y>
-         <width>93</width>
+         <x>110</x>
+         <y>620</y>
+         <width>71</width>
          <height>28</height>
         </rect>
        </property>
        <property name="text">
-        <string>下一步</string>
+        <string>读取表号</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="btnExport">
+      <widget class="QPushButton" name="btnReadMeterData">
        <property name="geometry">
         <rect>
-         <x>1150</x>
-         <y>780</y>
-         <width>93</width>
+         <x>200</x>
+         <y>620</y>
+         <width>71</width>
          <height>28</height>
         </rect>
        </property>
        <property name="text">
-        <string>导出Excel</string>
+        <string>读表数据</string>
        </property>
+      </widget>
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>1150</x>
+         <y>620</y>
+         <width>95</width>
+         <height>181</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QPushButton" name="btnExhaust">
+          <property name="text">
+           <string>排气</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnStart">
+          <property name="text">
+           <string>开始</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnNext">
+          <property name="text">
+           <string>下一步</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnStop">
+          <property name="text">
+           <string>终止检测</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnExport">
+          <property name="text">
+           <string>导出Excel</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
      <widget class="QWidget" name="tab2">

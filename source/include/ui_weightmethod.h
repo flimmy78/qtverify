@@ -26,6 +26,7 @@
 #include <QtGui/QTabWidget>
 #include <QtGui/QTableWidget>
 #include <QtGui/QToolButton>
+#include <QtGui/QVBoxLayout>
 #include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -62,12 +63,9 @@ public:
     QToolButton *btnWaterPumpStart;
     QToolButton *btnWaterPumpStop;
     QTableWidget *tableWidget;
-    QPushButton *btnExhaust;
-    QPushButton *btnStart;
-    QPushButton *btnStop;
     QGroupBox *groupBox_3;
-    QGridLayout *gridLayout_6;
     QLabel *labelHintInfo;
+    QLabel *labelHint;
     QWidget *layoutWidget2;
     QGridLayout *gridLayout_2;
     QLabel *label_3;
@@ -87,7 +85,14 @@ public:
     QLabel *label_10;
     QLineEdit *lnEditSmallBalance;
     QLabel *label_12;
+    QPushButton *btnReadMeterNo;
+    QPushButton *btnReadMeterData;
+    QWidget *widget;
+    QVBoxLayout *verticalLayout;
+    QPushButton *btnExhaust;
+    QPushButton *btnStart;
     QPushButton *btnNext;
+    QPushButton *btnStop;
     QPushButton *btnExport;
     QWidget *tab2;
     QWidget *tab3;
@@ -110,7 +115,7 @@ public:
         tab1->setObjectName(QString::fromUtf8("tab1"));
         btnParaSet = new QPushButton(tab1);
         btnParaSet->setObjectName(QString::fromUtf8("btnParaSet"));
-        btnParaSet->setGeometry(QRect(20, 620, 93, 28));
+        btnParaSet->setGeometry(QRect(20, 620, 71, 28));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -118,7 +123,7 @@ public:
         btnParaSet->setSizePolicy(sizePolicy);
         groupBox = new QGroupBox(tab1);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(20, 660, 261, 121));
+        groupBox->setGeometry(QRect(20, 670, 261, 121));
         layoutWidget = new QWidget(groupBox);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
         layoutWidget->setGeometry(QRect(10, 20, 121, 23));
@@ -166,7 +171,7 @@ public:
 
         groupBox_2 = new QGroupBox(tab1);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setGeometry(QRect(290, 630, 401, 141));
+        groupBox_2->setGeometry(QRect(290, 620, 401, 171));
         gridLayout_4 = new QGridLayout(groupBox_2);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
         horizontalLayout = new QHBoxLayout();
@@ -281,28 +286,18 @@ public:
         tableWidget->setGeometry(QRect(20, 20, 1221, 581));
         tableWidget->setInputMethodHints(Qt::ImhFormattedNumbersOnly);
         tableWidget->setEditTriggers(QAbstractItemView::CurrentChanged|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed);
-        btnExhaust = new QPushButton(tab1);
-        btnExhaust->setObjectName(QString::fromUtf8("btnExhaust"));
-        btnExhaust->setGeometry(QRect(1150, 620, 93, 28));
-        btnStart = new QPushButton(tab1);
-        btnStart->setObjectName(QString::fromUtf8("btnStart"));
-        btnStart->setGeometry(QRect(1150, 660, 93, 28));
-        btnStop = new QPushButton(tab1);
-        btnStop->setObjectName(QString::fromUtf8("btnStop"));
-        btnStop->setGeometry(QRect(1150, 740, 93, 28));
         groupBox_3 = new QGroupBox(tab1);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
-        groupBox_3->setGeometry(QRect(920, 620, 221, 151));
-        gridLayout_6 = new QGridLayout(groupBox_3);
-        gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
+        groupBox_3->setGeometry(QRect(920, 620, 221, 181));
         labelHintInfo = new QLabel(groupBox_3);
         labelHintInfo->setObjectName(QString::fromUtf8("labelHintInfo"));
-
-        gridLayout_6->addWidget(labelHintInfo, 0, 0, 1, 1);
-
+        labelHintInfo->setGeometry(QRect(12, 27, 201, 51));
+        labelHint = new QLabel(groupBox_3);
+        labelHint->setObjectName(QString::fromUtf8("labelHint"));
+        labelHint->setGeometry(QRect(10, 90, 191, 51));
         layoutWidget2 = new QWidget(tab1);
         layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
-        layoutWidget2->setGeometry(QRect(710, 690, 191, 85));
+        layoutWidget2->setGeometry(QRect(710, 700, 191, 85));
         gridLayout_2 = new QGridLayout(layoutWidget2);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         gridLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -387,7 +382,7 @@ public:
 
         layoutWidget3 = new QWidget(tab1);
         layoutWidget3->setObjectName(QString::fromUtf8("layoutWidget3"));
-        layoutWidget3->setGeometry(QRect(710, 620, 191, 51));
+        layoutWidget3->setGeometry(QRect(710, 630, 191, 51));
         gridLayout_3 = new QGridLayout(layoutWidget3);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
         gridLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -436,12 +431,43 @@ public:
 
         gridLayout_3->addWidget(label_12, 1, 2, 1, 1);
 
-        btnNext = new QPushButton(tab1);
+        btnReadMeterNo = new QPushButton(tab1);
+        btnReadMeterNo->setObjectName(QString::fromUtf8("btnReadMeterNo"));
+        btnReadMeterNo->setGeometry(QRect(110, 620, 71, 28));
+        btnReadMeterData = new QPushButton(tab1);
+        btnReadMeterData->setObjectName(QString::fromUtf8("btnReadMeterData"));
+        btnReadMeterData->setGeometry(QRect(200, 620, 71, 28));
+        widget = new QWidget(tab1);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(1150, 620, 95, 181));
+        verticalLayout = new QVBoxLayout(widget);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        btnExhaust = new QPushButton(widget);
+        btnExhaust->setObjectName(QString::fromUtf8("btnExhaust"));
+
+        verticalLayout->addWidget(btnExhaust);
+
+        btnStart = new QPushButton(widget);
+        btnStart->setObjectName(QString::fromUtf8("btnStart"));
+
+        verticalLayout->addWidget(btnStart);
+
+        btnNext = new QPushButton(widget);
         btnNext->setObjectName(QString::fromUtf8("btnNext"));
-        btnNext->setGeometry(QRect(1150, 700, 93, 28));
-        btnExport = new QPushButton(tab1);
+
+        verticalLayout->addWidget(btnNext);
+
+        btnStop = new QPushButton(widget);
+        btnStop->setObjectName(QString::fromUtf8("btnStop"));
+
+        verticalLayout->addWidget(btnStop);
+
+        btnExport = new QPushButton(widget);
         btnExport->setObjectName(QString::fromUtf8("btnExport"));
-        btnExport->setGeometry(QRect(1150, 780, 93, 28));
+
+        verticalLayout->addWidget(btnExport);
+
         tabWidget->addTab(tab1, QString());
         tab2 = new QWidget();
         tab2->setObjectName(QString::fromUtf8("tab2"));
@@ -531,11 +557,9 @@ public:
         ___qtablewidgetitem8->setText(QApplication::translate("WeightMethodClass", "\346\240\207\345\207\206\345\200\274(L)", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem9 = tableWidget->horizontalHeaderItem(9);
         ___qtablewidgetitem9->setText(QApplication::translate("WeightMethodClass", "\347\244\272\345\200\274\350\257\257\345\267\256(%)", 0, QApplication::UnicodeUTF8));
-        btnExhaust->setText(QApplication::translate("WeightMethodClass", "\346\216\222\346\260\224", 0, QApplication::UnicodeUTF8));
-        btnStart->setText(QApplication::translate("WeightMethodClass", "\345\274\200\345\247\213", 0, QApplication::UnicodeUTF8));
-        btnStop->setText(QApplication::translate("WeightMethodClass", "\347\273\210\346\255\242\346\243\200\346\265\213", 0, QApplication::UnicodeUTF8));
         groupBox_3->setTitle(QApplication::translate("WeightMethodClass", "\346\265\201\347\250\213\346\217\220\347\244\272", 0, QApplication::UnicodeUTF8));
         labelHintInfo->setText(QApplication::translate("WeightMethodClass", "\346\217\220\347\244\272\344\277\241\346\201\257", 0, QApplication::UnicodeUTF8));
+        labelHint->setText(QString());
         label_3->setText(QApplication::translate("WeightMethodClass", "\346\265\201\351\207\217", 0, QApplication::UnicodeUTF8));
         label_6->setText(QApplication::translate("WeightMethodClass", "m\302\263/h", 0, QApplication::UnicodeUTF8));
         label_4->setText(QApplication::translate("WeightMethodClass", "\345\205\245\345\217\243\346\270\251\345\272\246", 0, QApplication::UnicodeUTF8));
@@ -548,7 +572,12 @@ public:
         label_10->setText(QApplication::translate("WeightMethodClass", "\345\260\217\345\244\251\345\271\263", 0, QApplication::UnicodeUTF8));
         lnEditSmallBalance->setText(QString());
         label_12->setText(QApplication::translate("WeightMethodClass", "\343\216\217", 0, QApplication::UnicodeUTF8));
+        btnReadMeterNo->setText(QApplication::translate("WeightMethodClass", "\350\257\273\345\217\226\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
+        btnReadMeterData->setText(QApplication::translate("WeightMethodClass", "\350\257\273\350\241\250\346\225\260\346\215\256", 0, QApplication::UnicodeUTF8));
+        btnExhaust->setText(QApplication::translate("WeightMethodClass", "\346\216\222\346\260\224", 0, QApplication::UnicodeUTF8));
+        btnStart->setText(QApplication::translate("WeightMethodClass", "\345\274\200\345\247\213", 0, QApplication::UnicodeUTF8));
         btnNext->setText(QApplication::translate("WeightMethodClass", "\344\270\213\344\270\200\346\255\245", 0, QApplication::UnicodeUTF8));
+        btnStop->setText(QApplication::translate("WeightMethodClass", "\347\273\210\346\255\242\346\243\200\346\265\213", 0, QApplication::UnicodeUTF8));
         btnExport->setText(QApplication::translate("WeightMethodClass", "\345\257\274\345\207\272Excel", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab1), QApplication::translate("WeightMethodClass", "Tab1", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab2), QApplication::translate("WeightMethodClass", "Tab2", 0, QApplication::UnicodeUTF8));
