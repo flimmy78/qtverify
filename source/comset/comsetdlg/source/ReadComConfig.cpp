@@ -65,6 +65,12 @@ ComInfoStruct ReadComConfig::ReadMeterConfigByNum(QString MeterNum)
 	}
 	return ReadConfigByName("meter" + MeterNum);
 }
+
+ComInfoStruct ReadComConfig::ReadMeterConfigByNum(int MeterNum)
+{
+	return ReadMeterConfigByNum(QString::number(MeterNum));
+}
+
 /*按xml中的id读取设置*/
 ComInfoStruct ReadComConfig::ReadConfigByName(QString ConfigId)
 {
@@ -107,12 +113,12 @@ ComInfoStruct ReadComConfig::ReadConfigByName(QString ConfigId)
 		}
 		n = n.nextSibling();
 	}
-	QString sep="#SEP#";
-	com_info.portName = configs["com"].split(sep)[0];
-	com_info.baudRate = configs["baud"].split(sep)[0].toInt();
-	com_info.dataBit = configs["bits"].split(sep)[0].toInt();
-	com_info.parity = configs["chkbit"].split(sep)[0].toInt();
-	com_info.stopBit = configs["endbit"].split(sep)[0].toInt();
+	//QString sep="#SEP#";
+	com_info.portName = configs["com"].split(SEP)[0];
+	com_info.baudRate = configs["baud"].split(SEP)[0].toInt();
+	com_info.dataBit = configs["bits"].split(SEP)[0].toInt();
+	com_info.parity = configs["chkbit"].split(SEP)[0].toInt();
+	com_info.stopBit = configs["endbit"].split(SEP)[0].toInt();
 	return com_info;
 }
 
@@ -159,12 +165,12 @@ QStringList ReadComConfig::ReadIndexByName(QString ConfigId)
 		}
 		n = n.nextSibling();
 	}
-	QString sep="#SEP#";
-	com_info.append(configs["com"].split(sep)[1]);
-	com_info.append(configs["baud"].split(sep)[1]);
-	com_info.append(configs["bits"].split(sep)[1]);
-	com_info.append(configs["chkbit"].split(sep)[1]);
-	com_info.append(configs["endbit"].split(sep)[1]);
+	//QString sep="#SEP#";
+	com_info.append(configs["com"].split(SEP)[1]);
+	com_info.append(configs["baud"].split(SEP)[1]);
+	com_info.append(configs["bits"].split(SEP)[1]);
+	com_info.append(configs["chkbit"].split(SEP)[1]);
+	com_info.append(configs["endbit"].split(SEP)[1]);
 	return com_info;
 }
 
@@ -185,4 +191,22 @@ bool ReadComConfig::OpenConfigFile()
 	}
 	file.close();
 	return true;
+}
+
+/********************************************************************** */
+/*  根据端口号返回对应的表位号                                             */
+/*  参数: QString comNum, 端口名称                                       */
+/*  返回值:int MeterNum, 如果在配置文件中成功查找到表位号, 则返回此表位号		*/
+/*         失败, 返回 -1
+/************************************************************************/
+int ReadComConfig::readMeterNumByComNum(QString comNum)
+{
+		ComInfoStruct meterConfigSTR;
+		for (int i=1; i <= METER_QUANTITY; i++)
+		{
+			meterConfigSTR = ReadMeterConfigByNum(i);
+			if (meterConfigSTR.portName == comNum)			
+				return i;			
+		}
+		return -1;
 }

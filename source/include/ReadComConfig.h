@@ -3,6 +3,7 @@
 
 #include <QtXml/QtXml>
 
+#include "basedef.h"
 #include "comsetdlg_global.h"
 #include "comsetdlg.h"
 
@@ -18,6 +19,8 @@ public:
 	ComInfoStruct ReadTempConfig();
 	ComInfoStruct ReadStdTempConfig();
 	ComInfoStruct ReadMeterConfigByNum(QString MeterNum);
+	ComInfoStruct ReadMeterConfigByNum(int MeterNum);
+	int readMeterNumByComNum(QString comNum);//根据端口号返回对应的表位号
 	/***************************************************/
 private:
 	QString ConfigFileName;
