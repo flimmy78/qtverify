@@ -300,8 +300,9 @@ void WeightMethodDlg::initMeterCom()
 		m_meterObj[i].moveToThread(&m_meterThread[i]);
 		m_meterThread[i].start();
 		m_meterObj[i].openMeterCom(&m_readComConfig->ReadMeterConfigByNum(QString("%1").arg(i+1)));
-
+		
 		connect(&m_meterObj[i], SIGNAL(readMeterNoIsOK(const QString&, const QString&)), this, SLOT(slotSetMeterNumber(const QString&, const QString&)));
+		connect(&m_meterObj[i], SIGNAL(readMeterDataIsOK(const QString&, const QString&, const QString&)), this, SLOT(slotSetMeterData(const QString&, const QString&, const QString&)));
 	}
 }
 
@@ -1065,10 +1066,26 @@ void WeightMethodDlg::slotSetRegulateOk()
 }
 
 
-//自动读取表号成功
-void WeightMethodDlg::slotSetMeterNumber(const QString& portName, const QString& meterNo)
+//自动读取表号成功 显示表号
+void WeightMethodDlg::slotSetMeterNumber(const QString& comName, const QString& meterNo)
 {
-	ui.tableWidget->setItem(0, COLUMN_METER_NUMBER, new QTableWidgetItem(meterNo.right(8))); //表号
+	int meterPosNum = m_readComConfig->getMeterNumByComName(comName);
+	if (meterPosNum < 1)
+	{
+		return;
+	}
+	ui.tableWidget->setItem(meterPosNum-1, COLUMN_METER_NUMBER, new QTableWidgetItem(meterNo.right(8))); //表号
+}
+
+//自动读取表数据成功 显示表数据
+void WeightMethodDlg::slotSetMeterData(const QString& comName, const QString& flow, const QString& heat)
+{
+	int meterPosNum = m_readComConfig->getMeterNumByComName(comName);
+	if (meterPosNum < 1)
+	{
+		return;
+	}
+	ui.tableWidget->setItem(meterPosNum-1, COLUMN_METER_START, new QTableWidgetItem(flow));
 }
 
 //设置阀门按钮背景色
@@ -1354,8 +1371,15 @@ void WeightMethodDlg::on_btnReadMeterNo_clicked()
 {
 	for (int i=0; i<m_maxMeterNum; i++)
 	{
+		ui.tableWidget->setItem(i, COLUMN_METER_NUMBER, new QTableWidgetItem(QString()));
+		ui.tableWidget->setItem(i, COLUMN_METER_START, new QTableWidgetItem(QString()));
 		m_meterObj[i].writeMeterComBuffer();
 	}
+}
+
+void WeightMethodDlg::on_btnExit_clicked()
+{
+	this->close();
 }
 
 /*

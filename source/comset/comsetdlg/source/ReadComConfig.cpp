@@ -194,18 +194,18 @@ bool ReadComConfig::OpenConfigFile()
 }
 
 /********************************************************************** */
-/*  根据端口号返回对应的表位号                                             */
-/*  参数: QString comNum, 端口名称                                       */
-/*  返回值:int MeterNum, 如果在配置文件中成功查找到表位号, 则返回此表位号		*/
+/*  根据端口号返回对应的表位号                                          */
+/*  参数: QString comName, 端口名称,例如"COM1"                          */
+/*  返回值:int MeterNum, 如果在配置文件中成功查找到表位号, 则返回此表位号 */
 /*         失败, 返回 -1
 /************************************************************************/
-int ReadComConfig::readMeterNumByComNum(QString comNum)
+int ReadComConfig::getMeterNumByComName(QString comName)
 {
 		ComInfoStruct meterConfigSTR;
 		for (int i=1; i <= METER_QUANTITY; i++)
 		{
 			meterConfigSTR = ReadMeterConfigByNum(i);
-			if (meterConfigSTR.portName == comNum)			
+			if (meterConfigSTR.portName == comName)			
 				return i;			
 		}
 		return -1;

@@ -698,10 +698,10 @@
         </rect>
        </property>
        <property name="text">
-        <string>读取表号</string>
+        <string>读表</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="btnReadMeterData">
+      <widget class="QPushButton" name="btnExit">
        <property name="geometry">
         <rect>
          <x>200</x>
@@ -711,10 +711,10 @@
         </rect>
        </property>
        <property name="text">
-        <string>读表数据</string>
+        <string>退出</string>
        </property>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>1150</x>

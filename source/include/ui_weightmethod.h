@@ -86,8 +86,8 @@ public:
     QLineEdit *lnEditSmallBalance;
     QLabel *label_12;
     QPushButton *btnReadMeterNo;
-    QPushButton *btnReadMeterData;
-    QWidget *widget;
+    QPushButton *btnExit;
+    QWidget *layoutWidget4;
     QVBoxLayout *verticalLayout;
     QPushButton *btnExhaust;
     QPushButton *btnStart;
@@ -434,36 +434,36 @@ public:
         btnReadMeterNo = new QPushButton(tab1);
         btnReadMeterNo->setObjectName(QString::fromUtf8("btnReadMeterNo"));
         btnReadMeterNo->setGeometry(QRect(110, 620, 71, 28));
-        btnReadMeterData = new QPushButton(tab1);
-        btnReadMeterData->setObjectName(QString::fromUtf8("btnReadMeterData"));
-        btnReadMeterData->setGeometry(QRect(200, 620, 71, 28));
-        widget = new QWidget(tab1);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(1150, 620, 95, 181));
-        verticalLayout = new QVBoxLayout(widget);
+        btnExit = new QPushButton(tab1);
+        btnExit->setObjectName(QString::fromUtf8("btnExit"));
+        btnExit->setGeometry(QRect(200, 620, 71, 28));
+        layoutWidget4 = new QWidget(tab1);
+        layoutWidget4->setObjectName(QString::fromUtf8("layoutWidget4"));
+        layoutWidget4->setGeometry(QRect(1150, 620, 95, 181));
+        verticalLayout = new QVBoxLayout(layoutWidget4);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        btnExhaust = new QPushButton(widget);
+        btnExhaust = new QPushButton(layoutWidget4);
         btnExhaust->setObjectName(QString::fromUtf8("btnExhaust"));
 
         verticalLayout->addWidget(btnExhaust);
 
-        btnStart = new QPushButton(widget);
+        btnStart = new QPushButton(layoutWidget4);
         btnStart->setObjectName(QString::fromUtf8("btnStart"));
 
         verticalLayout->addWidget(btnStart);
 
-        btnNext = new QPushButton(widget);
+        btnNext = new QPushButton(layoutWidget4);
         btnNext->setObjectName(QString::fromUtf8("btnNext"));
 
         verticalLayout->addWidget(btnNext);
 
-        btnStop = new QPushButton(widget);
+        btnStop = new QPushButton(layoutWidget4);
         btnStop->setObjectName(QString::fromUtf8("btnStop"));
 
         verticalLayout->addWidget(btnStop);
 
-        btnExport = new QPushButton(widget);
+        btnExport = new QPushButton(layoutWidget4);
         btnExport->setObjectName(QString::fromUtf8("btnExport"));
 
         verticalLayout->addWidget(btnExport);
@@ -572,8 +572,8 @@ public:
         label_10->setText(QApplication::translate("WeightMethodClass", "\345\260\217\345\244\251\345\271\263", 0, QApplication::UnicodeUTF8));
         lnEditSmallBalance->setText(QString());
         label_12->setText(QApplication::translate("WeightMethodClass", "\343\216\217", 0, QApplication::UnicodeUTF8));
-        btnReadMeterNo->setText(QApplication::translate("WeightMethodClass", "\350\257\273\345\217\226\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
-        btnReadMeterData->setText(QApplication::translate("WeightMethodClass", "\350\257\273\350\241\250\346\225\260\346\215\256", 0, QApplication::UnicodeUTF8));
+        btnReadMeterNo->setText(QApplication::translate("WeightMethodClass", "\350\257\273\350\241\250", 0, QApplication::UnicodeUTF8));
+        btnExit->setText(QApplication::translate("WeightMethodClass", "\351\200\200\345\207\272", 0, QApplication::UnicodeUTF8));
         btnExhaust->setText(QApplication::translate("WeightMethodClass", "\346\216\222\346\260\224", 0, QApplication::UnicodeUTF8));
         btnStart->setText(QApplication::translate("WeightMethodClass", "\345\274\200\345\247\213", 0, QApplication::UnicodeUTF8));
         btnNext->setText(QApplication::translate("WeightMethodClass", "\344\270\213\344\270\200\346\255\245", 0, QApplication::UnicodeUTF8));

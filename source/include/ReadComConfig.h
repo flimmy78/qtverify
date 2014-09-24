@@ -20,7 +20,7 @@ public:
 	ComInfoStruct ReadStdTempConfig();
 	ComInfoStruct ReadMeterConfigByNum(QString MeterNum);
 	ComInfoStruct ReadMeterConfigByNum(int MeterNum);
-	int readMeterNumByComNum(QString comNum);//根据端口号返回对应的表位号
+	int getMeterNumByComName(QString comName);//根据串口名返回对应的表位号
 	/***************************************************/
 private:
 	QString ConfigFileName;

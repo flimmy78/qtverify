@@ -227,7 +227,8 @@ public slots:
 	void slotSetValveBtnStatus(const UINT8 &portno, const bool &status); //继电器返回成功对应的槽函数
 	void slotSetRegulateOk();     //调节阀返回成功对应的槽函数
 
- 	void slotSetMeterNumber(const QString& portName, const QString& meterNumber);
+	void slotSetMeterNumber(const QString& comName, const QString& meterNumber);
+	void slotSetMeterData(const QString& comName, const QString& flow, const QString& heat);
 	void setValveBtnBackColor(QToolButton *btn, bool status); //设置阀门按钮背景色
 	void setRegBtnBackColor(QPushButton *btn, bool status);	  //设置调节阀按钮背景色
 
@@ -248,8 +249,9 @@ public slots:
 
 	void freshBigBalaceValue();   //刷新大天平数值 仅用于测试 模拟天平数值变化
 
-	void on_btnReadMeterNo_clicked(); //读取表号按钮
-
+	void on_btnReadMeterNo_clicked();  //读取表号按钮
+	void on_btnExit_clicked();//读取表数据按钮
+	
 // 	void on_btnOpen_clicked();
 // 	void on_btnImport_clicked();
 	void on_btnExport_clicked();

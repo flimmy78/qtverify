@@ -451,11 +451,12 @@ void MeterComObject::openMeterCom(ComInfoStruct *comStruct)
 
 void MeterComObject::readMeterComBuffer()
 {
-	qDebug()<<"readMeterComBuffer MeterComObject thread:"<<QThread::currentThreadId();
+// 	qDebug()<<"readMeterComBuffer MeterComObject thread:"<<QThread::currentThreadId();
 	m_meterTmp.append(m_meterCom->readAll());
 	int num = m_meterTmp.size();
 	if (num < 71) //不含前导符，一帧至少71个字节
 	{
+//		qDebug()<<"串口返回字节个数 ="<<num;
 		return;
 	}
 	if (m_meterTmp.at(num-1) !=  METER_END_CODE) //一帧接收完毕
