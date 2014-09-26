@@ -217,9 +217,13 @@ public slots:
 	UINT8 readMeterComBuffer(QByteArray tmp);
  	UINT8 CountCheck(Meter_Frame_Struct *pFrame);
  	void analyseFrame();
-	void makeSendBuf();
 
-	QByteArray getSendBuf();
+	void makeFrameOfReadMeter();        //读表（广播地址读表）
+	void makeFrameOfSetVerifyStatus();	//设置进入检定状态
+	void makeFrameOfModifyMeterNo();	//修改表号
+	void makeFrameOfModifyFlowPara();	//修改流量参数
+
+	QByteArray getSendFrame();
 	QString getFullMeterNo();
 	QString getFlow();
 	QString getInTemper();

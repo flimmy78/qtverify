@@ -547,6 +547,7 @@ void WeightMethodDlg::slotExaustFinished()
 */
 int WeightMethodDlg::readMeterNumber()
 {
+	on_btnReadMeter_clicked();
 	return true;
 }
 
@@ -1367,13 +1368,18 @@ int WeightMethodDlg::saveAllVerifyRecords()
 	return true;
 }
 
-void WeightMethodDlg::on_btnReadMeterNo_clicked()
+//请求读表（广播地址读表）
+void WeightMethodDlg::on_btnReadMeter_clicked()
 {
 	for (int i=0; i<m_maxMeterNum; i++)
 	{
 		ui.tableWidget->setItem(i, COLUMN_METER_NUMBER, new QTableWidgetItem(QString()));
 		ui.tableWidget->setItem(i, COLUMN_METER_START, new QTableWidgetItem(QString()));
-		m_meterObj[i].writeMeterComBuffer();
+	}
+
+	for (int j=0; j<m_maxMeterNum; j++)
+	{
+		m_meterObj[j].askReadMeter();
 	}
 }
 

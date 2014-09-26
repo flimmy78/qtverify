@@ -249,8 +249,8 @@ public slots:
 
 	void freshBigBalaceValue();   //刷新大天平数值 仅用于测试 模拟天平数值变化
 
-	void on_btnReadMeterNo_clicked();  //读取表号按钮
-	void on_btnExit_clicked();//读取表数据按钮
+	void on_btnReadMeter_clicked(); //读表按钮
+	void on_btnExit_clicked();//退出按钮
 	
 // 	void on_btnOpen_clicked();
 // 	void on_btnImport_clicked();

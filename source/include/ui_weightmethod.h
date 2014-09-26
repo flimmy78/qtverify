@@ -85,7 +85,7 @@ public:
     QLabel *label_10;
     QLineEdit *lnEditSmallBalance;
     QLabel *label_12;
-    QPushButton *btnReadMeterNo;
+    QPushButton *btnReadMeter;
     QPushButton *btnExit;
     QWidget *layoutWidget4;
     QVBoxLayout *verticalLayout;
@@ -431,9 +431,9 @@ public:
 
         gridLayout_3->addWidget(label_12, 1, 2, 1, 1);
 
-        btnReadMeterNo = new QPushButton(tab1);
-        btnReadMeterNo->setObjectName(QString::fromUtf8("btnReadMeterNo"));
-        btnReadMeterNo->setGeometry(QRect(110, 620, 71, 28));
+        btnReadMeter = new QPushButton(tab1);
+        btnReadMeter->setObjectName(QString::fromUtf8("btnReadMeter"));
+        btnReadMeter->setGeometry(QRect(110, 620, 71, 28));
         btnExit = new QPushButton(tab1);
         btnExit->setObjectName(QString::fromUtf8("btnExit"));
         btnExit->setGeometry(QRect(200, 620, 71, 28));
@@ -572,7 +572,7 @@ public:
         label_10->setText(QApplication::translate("WeightMethodClass", "\345\260\217\345\244\251\345\271\263", 0, QApplication::UnicodeUTF8));
         lnEditSmallBalance->setText(QString());
         label_12->setText(QApplication::translate("WeightMethodClass", "\343\216\217", 0, QApplication::UnicodeUTF8));
-        btnReadMeterNo->setText(QApplication::translate("WeightMethodClass", "\350\257\273\350\241\250", 0, QApplication::UnicodeUTF8));
+        btnReadMeter->setText(QApplication::translate("WeightMethodClass", "\350\257\273\350\241\250", 0, QApplication::UnicodeUTF8));
         btnExit->setText(QApplication::translate("WeightMethodClass", "\351\200\200\345\207\272", 0, QApplication::UnicodeUTF8));
         btnExhaust->setText(QApplication::translate("WeightMethodClass", "\346\216\222\346\260\224", 0, QApplication::UnicodeUTF8));
         btnStart->setText(QApplication::translate("WeightMethodClass", "\345\274\200\345\247\213", 0, QApplication::UnicodeUTF8));

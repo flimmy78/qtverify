@@ -298,15 +298,15 @@ void DataTestDlg::initBalanceCom()
 //热量表1串口通讯
 void DataTestDlg::initComOfHeatMeter1()
 {
-	ComInfoStruct comStruct1 = m_readComConfig->ReadMeterConfigByNum("1");
+	ComInfoStruct comStruct1 = m_readComConfig->ReadMeterConfigByNum("3");
 	m_meterObj1 = new MeterComObject();
 	m_meterObj1->moveToThread(&m_meterThread1);
 	m_meterThread1.start();
 	m_meterObj1->openMeterCom(&comStruct1);
 
-	connect(m_meterObj1, SIGNAL(readMeterNoIsOK(const QString &)), this, SLOT(slotFreshMeterNo(const QString &)));
-	connect(m_meterObj1, SIGNAL(readMeterDataIsOK(const QString &, const QString &)), this, \
-		SLOT(slotFreshMeterData(const QString &, const QString &)));
+	connect(m_meterObj1, SIGNAL(readMeterNoIsOK(const QString&, const QString&)), this, SLOT(slotFreshMeterNo(const QString&, const QString&)));
+	connect(m_meterObj1, SIGNAL(readMeterDataIsOK(const QString&, const QString&, const QString&)), this, \
+		SLOT(slotFreshMeterData(const QString&, const QString&, const QString&)));
 }
 
 /*
@@ -566,7 +566,7 @@ void DataTestDlg::on_btnReadMeterData_clicked()
 	ui.lnEditVolumn0->clear();
 	ui.lnEditHeat0->clear();
 	qDebug()<<"读表 开始...";
- 	m_meterObj1->writeMeterComBuffer(); //请求读表
+ 	m_meterObj1->askReadMeter(); //请求读表
 }
 
 //设置检定状态
@@ -575,13 +575,13 @@ void DataTestDlg::on_btnSetVerifyStatus_clicked()
 
 }
 
-void DataTestDlg::slotFreshMeterNo(const QString& meterNo)
+void DataTestDlg::slotFreshMeterNo(const QString& comName, const QString& meterNo)
 {
 	ui.lnEditMeterNo->setText(meterNo);
 	qDebug()<<"读取表号 成功...";
 }
 
-void DataTestDlg::slotFreshMeterData(const QString& flow, const QString& heat)
+void DataTestDlg::slotFreshMeterData(const QString& comName, const QString& flow, const QString& heat)
 {
 	ui.lnEditVolumn0->setText(flow);
 	ui.lnEditHeat0->setText(heat);

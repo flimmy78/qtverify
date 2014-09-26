@@ -604,12 +604,12 @@ MeterProtocol::~MeterProtocol()
 	}
 }
 
-// 组帧
-void MeterProtocol::makeSendBuf()
+// 组帧：广播地址读表
+void MeterProtocol::makeFrameOfReadMeter()
 {
 	m_sendBuf = "";
 
-	int wakeCodeNum = 100;
+	int wakeCodeNum = 200;
 	for (int i=0; i<wakeCodeNum; i++)
 	{
 		m_sendBuf.append(METER_WAKEUP_CODE);//唤醒红外
@@ -637,7 +637,23 @@ void MeterProtocol::makeSendBuf()
 	m_sendBuf.append(METER_END_CODE);//结束符
 }
 
-QByteArray MeterProtocol::getSendBuf()
+// 组帧：设置进入检定状态
+void MeterProtocol::makeFrameOfSetVerifyStatus()
+{
+}
+
+// 组帧：修改表号
+void MeterProtocol::makeFrameOfModifyMeterNo()
+{
+}
+
+// 组帧：修改流量参数
+void MeterProtocol::makeFrameOfModifyFlowPara()
+{
+}
+
+//获取组帧结果
+QByteArray MeterProtocol::getSendFrame()
 {
 	return m_sendBuf;
 }

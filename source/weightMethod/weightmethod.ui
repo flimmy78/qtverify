@@ -688,7 +688,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QPushButton" name="btnReadMeterNo">
+      <widget class="QPushButton" name="btnReadMeter">
        <property name="geometry">
         <rect>
          <x>110</x>

@@ -171,8 +171,12 @@ signals:
 
 public slots:
 	void openMeterCom(ComInfoStruct *comStruct);
-	void readMeterComBuffer();
-	void writeMeterComBuffer();
+	void readMeterComBuffer(); //解析串口返回数据
+
+	void askReadMeter();       //请求读表（广播地址读表）
+	void askSetVerifyStatus(); //请求设置进入检定状态
+	void askModifyMeterNo();   //请求修改表号
+	void askModifyFlowPara();  //请求修改流量参数
 
 };
 

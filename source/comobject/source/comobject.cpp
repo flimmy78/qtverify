@@ -420,6 +420,9 @@ MeterComObject::~MeterComObject()
 
 }
 
+/*
+** 打开串口，初始化串口参数等
+*/
 void MeterComObject::openMeterCom(ComInfoStruct *comStruct)
 {
 	m_portName = comStruct->portName; //获取串口名
@@ -449,6 +452,9 @@ void MeterComObject::openMeterCom(ComInfoStruct *comStruct)
 	}
 }
 
+/*
+** 解析串口返回数据
+*/
 void MeterComObject::readMeterComBuffer()
 {
 // 	qDebug()<<"readMeterComBuffer MeterComObject thread:"<<QThread::currentThreadId();
@@ -490,9 +496,43 @@ void MeterComObject::readMeterComBuffer()
 	}
 }
 
-void MeterComObject::writeMeterComBuffer()
+/*
+** 请求读表（广播地址读表）
+*/
+void MeterComObject::askReadMeter()
 {
-	m_meterProtocol->makeSendBuf();
-	QByteArray buf = m_meterProtocol->getSendBuf();
+	m_meterProtocol->makeFrameOfReadMeter();
+	QByteArray buf = m_meterProtocol->getSendFrame();
 	m_meterCom->write(buf);
 }
+
+/*
+** 请求设置进入检定状态
+*/
+void MeterComObject::askSetVerifyStatus()
+{
+	m_meterProtocol->makeFrameOfSetVerifyStatus();
+	QByteArray buf = m_meterProtocol->getSendFrame();
+	m_meterCom->write(buf);
+}
+
+/*
+** 请求修改表号
+*/
+void MeterComObject::askModifyMeterNo()
+{
+	m_meterProtocol->makeFrameOfModifyMeterNo();
+	QByteArray buf = m_meterProtocol->getSendFrame();
+	m_meterCom->write(buf);
+}
+
+/*
+** 请求修改流量参数
+*/
+void MeterComObject::askModifyFlowPara()
+{
+	m_meterProtocol->makeFrameOfModifyFlowPara();
+	QByteArray buf = m_meterProtocol->getSendFrame();
+	m_meterCom->write(buf);
+}
+
