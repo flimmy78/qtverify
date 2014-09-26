@@ -96,6 +96,7 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	m_meterNum = 0;          //实际检表个数
 	m_exaustSecond = 45;     //默认排气时间45秒
 	m_totalFlag = 0;         //默认分量检定
+	m_manufac = 0;           //制造厂商 默认德鲁
 	m_meterStartValue = NULL;
 	m_meterEndValue = NULL;
 	m_meterTemper = NULL;
@@ -383,7 +384,6 @@ int WeightMethodDlg::readNowParaConfig()
 	}
 
 	m_nowParams = m_paraSetReader->getParams();
-
 	m_continueVerify = m_nowParams->bo_converify; //连续检定
 	m_resetZero = m_nowParams->bo_resetzero; //初值回零
 	m_autopick = m_nowParams->bo_autopick;   //自动采集
@@ -393,7 +393,8 @@ int WeightMethodDlg::readNowParaConfig()
 	m_standard = m_nowParams->m_stand;       //表规格
 	m_model = m_nowParams->m_model;   //表型号
 	m_meterType = m_nowParams->m_type;//表类型
-	m_maxMeterNum = m_nowParams->m_maxMeters;     //不同表规格对应的最大检表数量
+	m_maxMeterNum = m_nowParams->m_maxMeters;//不同表规格对应的最大检表数量
+	m_manufac = m_nowParams->m_manufac; //制造厂商
 
 	setTableRowCount();
 	showNowKeyParaConfig();

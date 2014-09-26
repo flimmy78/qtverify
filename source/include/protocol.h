@@ -165,6 +165,9 @@ private:
 //下位机控制协议 end
 
 //热量表通讯协议 begin
+#define     WAKEUP_CODE_NUM		200     //唤醒码个数
+#define     PREFIX_CODE_NUM		4       //前导字节个数
+
 #define		METER_WAKEUP_CODE	0xFF	//唤醒码
 #define		METER_PREFIX_CODE	0xFE	//前导字节
 #define		METER_START_CODE	0x68	//起始符

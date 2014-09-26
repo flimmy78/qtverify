@@ -26,7 +26,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 
 	ui.setupUi(this);
 
-	dbmysqlobj = new DbMySql();
+	m_mySql = new DbMySql();
 	m_query = NULL;
 	m_alg = new CAlgorithm();
 
@@ -53,10 +53,10 @@ void MainForm::closeEvent( QCloseEvent * event)
 {
 	qDebug()<<"^^^^^MainForm::closeEvent";
 
-	if (dbmysqlobj)
+	if (m_mySql)
 	{
-		delete dbmysqlobj;
-		dbmysqlobj = NULL;
+		delete m_mySql;
+		m_mySql = NULL;
 	}
 
 	if (m_query)
@@ -138,7 +138,7 @@ void MainForm::on_actionPortSet_triggered()
 
 void MainForm::on_actionMySql_triggered()
 {
-	dbmysqlobj->show();
+	m_mySql->show();
 }
 
 void MainForm::on_actionQuery_triggered()

@@ -609,14 +609,12 @@ void MeterProtocol::makeFrameOfReadMeter()
 {
 	m_sendBuf = "";
 
-	int wakeCodeNum = 200;
-	for (int i=0; i<wakeCodeNum; i++)
+	for (int i=0; i<WAKEUP_CODE_NUM; i++)
 	{
 		m_sendBuf.append(METER_WAKEUP_CODE);//唤醒红外
 	}
 
-	int preCodeNum = 4;
-	for (int j=0; j<preCodeNum; j++)
+	for (int j=0; j<PREFIX_CODE_NUM; j++)
 	{
 		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
 	}
@@ -640,6 +638,28 @@ void MeterProtocol::makeFrameOfReadMeter()
 // 组帧：设置进入检定状态
 void MeterProtocol::makeFrameOfSetVerifyStatus()
 {
+	m_sendBuf = "";
+
+	for (int i=0; i<WAKEUP_CODE_NUM; i++)
+	{
+		m_sendBuf.append(METER_WAKEUP_CODE);//唤醒红外
+	}
+
+	for (int j=0; j<PREFIX_CODE_NUM; j++)
+	{
+		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
+	}
+
+	m_sendBuf.append(METER_START_CODE);//起始符
+	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
+	for (int m=0; m<METER_ADDR_LEN; m++)
+	{
+		m_sendBuf.append(METER_ADDR_CODE); //广播地址
+	}
+
+	UINT8 code0 = 0x00;
+	m_sendBuf.append(0x33).append(code0).append(0x61).append(0x16);
+
 }
 
 // 组帧：修改表号

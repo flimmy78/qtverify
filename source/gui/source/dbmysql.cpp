@@ -1,6 +1,7 @@
 #include <QtGui/QMessageBox>
 #include <QtGui/QDateTimeEdit>
 #include <QtGui/QTextEdit>
+#include <QDebug>
 
 #include "dbmysql.h"
 
@@ -15,7 +16,15 @@ DbMySql::DbMySql(QWidget *parent, Qt::WFlags flags)
 
 DbMySql::~DbMySql()
 {
+}
 
+void DbMySql::closeEvent( QCloseEvent * event)
+{
+	qDebug()<<"^^^^^DbMySql::closeEvent";
+	if (m_db.isOpen())
+	{
+		m_db.close();
+	}
 }
 
 void DbMySql::on_btnConnect_clicked()

@@ -124,7 +124,7 @@ public:
 
 	CAlgorithm *m_chkAlg;//检定过程用到的计算方法
 
-	bool m_stopFlag;      //关闭界面后退出
+	bool m_stopFlag;     //关闭界面后退出
 
 	//检定过程相关的控制参数 begin
 	Quality_Params_PTR m_nowParams; //当前检定参数
@@ -137,6 +137,7 @@ public:
 	int m_standard;           //表规格
 	int m_model;              //表型号
 	int m_meterType;          //表类型
+	int m_manufac;			  //制造厂商(德鲁航天, 天罡等)
 
 	int m_tempCount;		  //计算平均温度用的累加计数器
 	int m_maxMeterNum;        //表格的行数（被检表的最大个数）

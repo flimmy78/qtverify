@@ -19,8 +19,9 @@ public:
 
 	QSqlDatabase m_db;
 
-public slots:
+	void closeEvent(QCloseEvent * event);
 
+public slots:
 
 private:
 	Ui::DbMySqlClass ui;

@@ -22,7 +22,7 @@ public:
 	MainForm(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~MainForm();
 
-	DbMySql *dbmysqlobj;
+	DbMySql *m_mySql;
 	QueryResult *m_query;
 	MonsterInterface *m_monster;
 	CAlgorithm *m_alg;
