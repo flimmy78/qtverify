@@ -572,7 +572,16 @@ void DataTestDlg::on_btnReadMeterData_clicked()
 //设置检定状态
 void DataTestDlg::on_btnSetVerifyStatus_clicked()
 {
+	qDebug()<<"设置进入检定状态...";
 	m_meterObj1->askSetVerifyStatus(); //设置进入检定状态
+}
+
+//修改表号
+void DataTestDlg::on_btnModifyMeterNo_clicked()
+{
+	QString oldMeterNo = ui.lnEditMeterNo->text();
+	QString newMeterNo = ui.lnEditNewMeterNo->text();
+	m_meterObj1->askModifyMeterNo(oldMeterNo, newMeterNo); //请求修改表号
 }
 
 void DataTestDlg::slotFreshMeterNo(const QString& comName, const QString& meterNo)

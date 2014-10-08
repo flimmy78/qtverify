@@ -175,7 +175,7 @@ public slots:
 
 	void askReadMeter();       //请求读表（广播地址读表）
 	void askSetVerifyStatus(); //请求设置进入检定状态
-	void askModifyMeterNo();   //请求修改表号
+	void askModifyMeterNo(QString oldMeterNo, QString newMeterNo);   //请求修改表号
 	void askModifyFlowPara();  //请求修改流量参数
 
 };

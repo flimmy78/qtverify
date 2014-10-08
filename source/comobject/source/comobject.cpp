@@ -417,7 +417,6 @@ MeterComObject::~MeterComObject()
 		delete m_meterProtocol;
 		m_meterProtocol = NULL;
 	}
-
 }
 
 /*
@@ -519,10 +518,16 @@ void MeterComObject::askSetVerifyStatus()
 /*
 ** 请求修改表号
 */
-void MeterComObject::askModifyMeterNo()
+void MeterComObject::askModifyMeterNo(QString oldMeterNo, QString newMeterNo)
 {
-	m_meterProtocol->makeFrameOfModifyMeterNo();
+	m_meterProtocol->makeFrameOfModifyMeterNo(oldMeterNo, newMeterNo);
 	QByteArray buf = m_meterProtocol->getSendFrame();
+
+	for (int i=0; i<buf.size(); i++)
+	{
+		qDebug()<<"请求修改表号："<<(UINT8)buf.at(i);
+	}
+	
 	m_meterCom->write(buf);
 }
 

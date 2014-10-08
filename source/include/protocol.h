@@ -223,7 +223,7 @@ public slots:
 
 	void makeFrameOfReadMeter();        //读表（广播地址读表）
 	void makeFrameOfSetVerifyStatus();	//设置进入检定状态
-	void makeFrameOfModifyMeterNo();	//修改表号
+	void makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo);	//修改表号
 	void makeFrameOfModifyFlowPara();	//修改流量参数
 
 	QByteArray getSendFrame();

@@ -233,7 +233,7 @@
      <x>11</x>
      <y>191</y>
      <width>251</width>
-     <height>315</height>
+     <height>321</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -254,188 +254,301 @@
       <property name="title">
        <string>1</string>
       </property>
-      <layout class="QGridLayout" name="gridLayout_12">
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_25">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
-          <string>表号</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1" colspan="4">
-        <widget class="QLineEdit" name="lnEditMeterNo">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_26">
-         <property name="text">
-          <string>V0(L)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2" colspan="3">
-        <widget class="QLineEdit" name="lnEditVolumn0">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_27">
-         <property name="text">
-          <string>V1(L)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="2" colspan="3">
-        <widget class="QLineEdit" name="lnEditVolumn1">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0" colspan="2">
-        <widget class="QLabel" name="label_28">
-         <property name="text">
-          <string>E0(kwh)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="2" colspan="3">
-        <widget class="QLineEdit" name="lnEditHeat0">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0" colspan="2">
-        <widget class="QLabel" name="label_29">
-         <property name="text">
-          <string>E1(kwh)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="2" colspan="3">
-        <widget class="QLineEdit" name="lnEditHeat1">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0">
-        <widget class="QLabel" name="label_31">
-         <property name="text">
-          <string>δv(%)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="2" colspan="3">
-        <widget class="QLineEdit" name="lnEditVolumnError">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="0">
-        <widget class="QLabel" name="label_32">
-         <property name="text">
-          <string>δe(%)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="2" colspan="3">
-        <widget class="QLineEdit" name="lnEditEnergyError">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="0">
-        <widget class="QPushButton" name="btnReadMeterNo">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
-          <string>读取
+      <widget class="QLabel" name="label_25">
+       <property name="geometry">
+        <rect>
+         <x>12</x>
+         <y>27</y>
+         <width>30</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>表号</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lnEditMeterNo">
+       <property name="geometry">
+        <rect>
+         <x>63</x>
+         <y>27</y>
+         <width>152</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_26">
+       <property name="geometry">
+        <rect>
+         <x>12</x>
+         <y>55</y>
+         <width>40</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>V0(L)</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lnEditVolumn0">
+       <property name="geometry">
+        <rect>
+         <x>74</x>
+         <y>55</y>
+         <width>141</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_27">
+       <property name="geometry">
+        <rect>
+         <x>12</x>
+         <y>83</y>
+         <width>40</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>V1(L)</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lnEditVolumn1">
+       <property name="geometry">
+        <rect>
+         <x>74</x>
+         <y>83</y>
+         <width>141</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_28">
+       <property name="geometry">
+        <rect>
+         <x>12</x>
+         <y>111</y>
+         <width>56</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>E0(kwh)</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lnEditHeat0">
+       <property name="geometry">
+        <rect>
+         <x>74</x>
+         <y>111</y>
+         <width>141</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_29">
+       <property name="geometry">
+        <rect>
+         <x>12</x>
+         <y>139</y>
+         <width>56</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>E1(kwh)</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lnEditHeat1">
+       <property name="geometry">
+        <rect>
+         <x>74</x>
+         <y>139</y>
+         <width>141</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_31">
+       <property name="geometry">
+        <rect>
+         <x>12</x>
+         <y>167</y>
+         <width>40</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>δv(%)</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lnEditVolumnError">
+       <property name="geometry">
+        <rect>
+         <x>64</x>
+         <y>167</y>
+         <width>151</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_32">
+       <property name="geometry">
+        <rect>
+         <x>12</x>
+         <y>195</y>
+         <width>44</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>新表号</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lnEditNewMeterNo">
+       <property name="geometry">
+        <rect>
+         <x>64</x>
+         <y>195</y>
+         <width>151</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnReadMeterNo">
+       <property name="geometry">
+        <rect>
+         <x>12</x>
+         <y>223</y>
+         <width>44</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>读取
 表号</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="3">
-        <widget class="QPushButton" name="btnReadMeterData">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
-          <string>读表
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnReadMeterData">
+       <property name="geometry">
+        <rect>
+         <x>121</x>
+         <y>223</y>
+         <width>43</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>读表
 数据</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="4">
-        <widget class="QPushButton" name="pushButton_7">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
-          <string>d</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="1">
-        <widget class="QPushButton" name="btnSetVerifyStatus">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
-          <string>检定
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnModifyMeterNo">
+       <property name="geometry">
+        <rect>
+         <x>171</x>
+         <y>223</y>
+         <width>44</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>修改
+表号</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnSetVerifyStatus">
+       <property name="geometry">
+        <rect>
+         <x>63</x>
+         <y>223</y>
+         <width>44</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>检定
 状态</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+       </property>
+      </widget>
      </widget>
     </item>
    </layout>

@@ -16,6 +16,8 @@
 ***********************************************/
 
 #include <QtCore/QDebug>
+#include <QtCore/QDateTime>
+
 #include <math.h>
 #include "protocol.h"
 
@@ -659,12 +661,68 @@ void MeterProtocol::makeFrameOfSetVerifyStatus()
 
 	UINT8 code0 = 0x00;
 	m_sendBuf.append(0x33).append(code0).append(0x61).append(0x16);
-
 }
 
 // 组帧：修改表号
-void MeterProtocol::makeFrameOfModifyMeterNo()
+void MeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo)
 {
+	m_sendBuf = "";
+
+	for (int i=0; i<WAKEUP_CODE_NUM; i++)
+	{
+		m_sendBuf.append(METER_WAKEUP_CODE);//唤醒红外
+	}
+
+	for (int j=0; j<PREFIX_CODE_NUM; j++)
+	{
+		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
+	}
+
+	m_sendBuf.append(METER_START_CODE);//起始符
+	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
+	UINT8 cs = METER_START_CODE + METER_TYPE_ASK_CODE;
+	UINT8 oldNo;
+	bool ok;
+	for (int m=METER_ADDR_LEN-1; m>=0; m--)
+	{
+		oldNo = oldMeterNo.mid(2*m, 2).toUInt(&ok, 10);
+		m_sendBuf.append(oldNo); //旧表号
+		cs += oldNo;
+	}
+
+	UINT8 code1 = 0x39;
+	UINT8 code2 = 0x11;
+	UINT8 code3 = 0x18;
+	UINT8 code4 = 0xA0;
+	UINT8 code5 = 0xAA;
+	
+	m_sendBuf.append(code1).append(code2).append(code3).append(code4).append(code5);
+	cs += code1 + code2 + code3 + code4 + code5;
+
+	UINT8 newNo;
+	for (int n=METER_ADDR_LEN-1; n>=0; n--)
+	{
+		newNo = newMeterNo.mid(2*n, 2).toUInt(&ok, 10);
+		m_sendBuf.append(newNo); //新表号
+		cs += newNo;
+	}
+
+	UINT8 timeCode;
+	QString currentTime = QDateTime::currentDateTime().toString("ssmmHHddMMyyyy");
+	for (int p=0; p<5; p++)
+	{
+		timeCode = currentTime.mid(2*p, 2).toUInt(&ok, 10);
+		m_sendBuf.append(timeCode); //当前时间
+		cs += timeCode;
+	}
+	for (int q=6; q>=5; q--)
+	{
+		timeCode = currentTime.mid(2*q, 2).toUInt(&ok, 10);
+		m_sendBuf.append(timeCode);
+		cs += timeCode;
+	}
+
+	m_sendBuf.append(cs).append(0x16);
 }
 
 // 组帧：修改流量参数

@@ -107,9 +107,10 @@ public slots:
 	void slotFreshFlow(); //计算流量
 	void slotFreshFlow_total();//计算流量(累计法)
 	void setBalQuantity();//模拟天平读数
-	void on_btnReadMeterNo_clicked(); //读取表号
+	void on_btnReadMeterNo_clicked();   //读取表号
 	void on_btnReadMeterData_clicked(); //读表数据
 	void on_btnSetVerifyStatus_clicked(); //设置检定状态
+	void on_btnModifyMeterNo_clicked(); //修改表号
 
 private:
 	Ui::DataTestDlgClass ui;
