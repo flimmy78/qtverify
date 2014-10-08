@@ -26,7 +26,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 
 	ui.setupUi(this);
 
-	m_mySql = new DbMySql();
+	m_mySql = NULL;
 	m_query = NULL;
 	m_alg = new CAlgorithm();
 
@@ -138,6 +138,10 @@ void MainForm::on_actionPortSet_triggered()
 
 void MainForm::on_actionMySql_triggered()
 {
+	if (NULL == m_mySql)
+	{
+		m_mySql = new DbMySql();
+	}
 	m_mySql->show();
 }
 

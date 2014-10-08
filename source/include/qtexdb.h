@@ -26,6 +26,7 @@
 extern "C" {  // only need to export C interface if	used by C++ source code
 
 QTEXDB_EXPORT int testFunc(int a, int b);
+QTEXDB_EXPORT void hello();
 
 QTEXDB_EXPORT int startdb(); //操作数据库前必须先调用startdb()
 QTEXDB_EXPORT void closedb();//程序退出前，调用closedb()，关闭数据库

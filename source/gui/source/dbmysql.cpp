@@ -2,6 +2,7 @@
 #include <QtGui/QDateTimeEdit>
 #include <QtGui/QTextEdit>
 #include <QDebug>
+#include <QLibrary>
 
 #include "dbmysql.h"
 
@@ -12,6 +13,33 @@ DbMySql::DbMySql(QWidget *parent, Qt::WFlags flags)
 	ui.setupUi(this);
 
 	ui.btnQuery->setEnabled(false);
+
+
+	//Qt显式加载DLL begin
+	typedef void(*FUN1)();  
+	typedef int(*FUN2)(int, int);  
+
+	QLibrary lib("qtexdb.dll");  
+	if (lib.load()) 
+	{  
+		qDebug() << "load dll ok!";  
+
+		FUN1 hello = (FUN1)lib.resolve("hello");  
+		FUN2 add = (FUN2)lib.resolve("testFunc");  
+		if (hello) {  
+			qDebug() << "load hello ok!";  
+			hello();  
+		}  
+		if (add) {  
+			qDebug() << "load add ok!";  
+			qDebug() << add(3, 5);  
+		}  
+	} 
+	else 
+	{  
+		qDebug() << "load error!";  
+	} 
+	//Qt显式加载DLL end
 }
 
 DbMySql::~DbMySql()

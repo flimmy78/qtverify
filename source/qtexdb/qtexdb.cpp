@@ -23,9 +23,15 @@
 
 int testFunc(int a, int b)
 {
-	printf_s("%d + %d = %d\n", a, b, (a+b));
+	qDebug()<<a<<"+"<<b<<"="<<(a+b);
 	return (a + b);
 }
+
+void hello()  
+{  
+	qDebug()<<"hello world!";  
+}  
+
 
 QSqlDatabase g_db;
 
