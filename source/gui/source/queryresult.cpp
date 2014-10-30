@@ -18,11 +18,12 @@
 #include <QtCore/QDebug>
 #include <QtSql/QSqlRecord>
 #include <QtSql/QSqlIndex>
-#include <QtSql/QSqlRelationalTableModel>
 #include <QtSql/QSqlRelationalDelegate>
 #include <QtGui/QFileDialog>
+#include <QAxObject>
 
 #include "queryresult.h"
+#include "qexcel.h"
 
 
 QueryResult::QueryResult(QWidget *parent, Qt::WFlags flags)
@@ -31,6 +32,8 @@ QueryResult::QueryResult(QWidget *parent, Qt::WFlags flags)
 	ui.setupUi(this);
 
 	m_count = 0;
+
+	model = new QSqlRelationalTableModel(this);
 
 	QStringList drivers = QSqlDatabase::drivers();
 	foreach(QString driver, drivers)
@@ -89,10 +92,9 @@ void QueryResult::initUiData()
 //查询检定结果
 void QueryResult::on_btnQuery_clicked()
 {
-	QSqlRelationalTableModel *model = new QSqlRelationalTableModel(this);
 	model->setEditStrategy(QSqlTableModel::OnFieldChange); //属性变化时写入数据库
 	model->setTable("T_Verify_Record");
-
+	
 	QString conStr;
 	conStr = QString("F_TimeStamp>=\'%1\' and F_TimeStamp<=\'%2\'").arg(ui.startDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"))\
 		.arg(ui.endDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz")); //起止时间
@@ -108,42 +110,63 @@ void QueryResult::on_btnQuery_clicked()
 	{
 		conStr.append(QString(" and F_VerifyPerson=%1").arg(ui.cmbVerifyPerson->currentIndex()));
 	}
-	model->setFilter(conStr);
+	model->setFilter(conStr); //设置查询条件
 	
+	//设置外键
 	model->setRelation(19, QSqlRelation("T_Yes_No_Tab","F_ID","F_Desc"));
-	model->setHeaderData(19, Qt::Horizontal, QObject::tr("合格标志"));
 	model->setRelation(21, QSqlRelation("T_Meter_Model","F_ID","F_Name"));
-	model->setHeaderData(21, Qt::Horizontal, QObject::tr("型号"));
-	//将T_Verify_Record表的第22个属性设为T_Meter_Standard表的id属性的外键，并将其显示为t_meter_standard表的name属性的值
+	//将T_Verify_Record表的第22个属性设为T_Meter_Standard表的F_ID属性的外键，并将其显示为T_Meter_Standard表的F_Name属性的值
 	model->setRelation(22, QSqlRelation("T_Meter_Standard","F_ID","F_Name"));
-	model->setHeaderData(22, Qt::Horizontal, QObject::tr("规格"));
 	model->setRelation(23, QSqlRelation("T_Meter_Type","F_ID","F_Desc"));
-	model->setHeaderData(23, Qt::Horizontal, QObject::tr("表类型"));
 	model->setRelation(24, QSqlRelation("T_Manufacture_Dept","F_ID","F_Desc"));
-	model->setHeaderData(24, Qt::Horizontal, QObject::tr("制造单位"));
 	model->setRelation(25, QSqlRelation("T_Verify_Dept","F_ID","F_Desc"));
-	model->setHeaderData(25, Qt::Horizontal, QObject::tr("送检单位"));
 	model->setRelation(27, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));
-	model->setHeaderData(27, Qt::Horizontal, QObject::tr("检定员"));
 	model->setRelation(28, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));
-	model->setHeaderData(28, Qt::Horizontal, QObject::tr("核验员"));
 
+	//设置水平标题
 	model->setHeaderData(1, Qt::Horizontal, QObject::tr("时间"));
 	model->setHeaderData(2, Qt::Horizontal, QObject::tr("表号"));
 	model->setHeaderData(3, Qt::Horizontal, QObject::tr("流量点"));
 	model->setHeaderData(4, Qt::Horizontal, QObject::tr("流量"));
 	model->setHeaderData(5, Qt::Horizontal, QObject::tr("总量检定标志"));
+	model->setHeaderData(6, Qt::Horizontal, QObject::tr("表初值"));
+	model->setHeaderData(7, Qt::Horizontal, QObject::tr("表终值"));
+	model->setHeaderData(8, Qt::Horizontal, QObject::tr("表示值"));
+	model->setHeaderData(9, Qt::Horizontal, QObject::tr("天平初值"));
+	model->setHeaderData(10, Qt::Horizontal, QObject::tr("天平终值"));
+	model->setHeaderData(11, Qt::Horizontal, QObject::tr("天平示值"));
+	model->setHeaderData(12, Qt::Horizontal, QObject::tr("入口温度"));
+	model->setHeaderData(13, Qt::Horizontal, QObject::tr("出口温度"));
+	model->setHeaderData(14, Qt::Horizontal, QObject::tr("管路温度"));
+	model->setHeaderData(15, Qt::Horizontal, QObject::tr("密度"));
+	model->setHeaderData(16, Qt::Horizontal, QObject::tr("标准值"));
 	model->setHeaderData(17, Qt::Horizontal, QObject::tr("误差"));
 	model->setHeaderData(18, Qt::Horizontal, QObject::tr("合格标准"));
+	model->setHeaderData(19, Qt::Horizontal, QObject::tr("合格标志"));
+	model->setHeaderData(20, Qt::Horizontal, QObject::tr("表位号"));
+	model->setHeaderData(21, Qt::Horizontal, QObject::tr("型号"));
+	model->setHeaderData(22, Qt::Horizontal, QObject::tr("规格"));
+	model->setHeaderData(23, Qt::Horizontal, QObject::tr("表类型"));
+	model->setHeaderData(24, Qt::Horizontal, QObject::tr("制造单位"));
+	model->setHeaderData(25, Qt::Horizontal, QObject::tr("送检单位"));
+	model->setHeaderData(26, Qt::Horizontal, QObject::tr("计量等级"));
+	model->setHeaderData(27, Qt::Horizontal, QObject::tr("检定员"));
+	model->setHeaderData(28, Qt::Horizontal, QObject::tr("核验员"));
+	model->setHeaderData(29, Qt::Horizontal, QObject::tr("检定日期"));
+	model->setHeaderData(30, Qt::Horizontal, QObject::tr("环境温度"));
+	model->setHeaderData(31, Qt::Horizontal, QObject::tr("环境湿度"));
+	model->setHeaderData(32, Qt::Horizontal, QObject::tr("气压"));
+	model->setHeaderData(33, Qt::Horizontal, QObject::tr("有效期"));
+	model->setHeaderData(34, Qt::Horizontal, QObject::tr("记录编号"));
 
 	model->select();
 	ui.tableView->setModel(model);
 	ui.tableView->resizeColumnsToContents(); //列宽度自适应
  	ui.tableView->setItemDelegate(new QSqlRelationalDelegate(ui.tableView)); //外键字段只能在已有的数据中编辑
 	ui.tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);  //使其不可编辑
-// 	ui.tableView->hideColumn(0);
-
-/*	QString tbname = model->tableName();
+/*
+ 	ui.tableView->hideColumn(0);
+	QString tbname = model->tableName();
 	QString fdname1 = model->record(0).fieldName(0);
 	QString pkname = model->primaryKey().name();
 	int cnt = model->primaryKey().count();
@@ -151,7 +174,7 @@ void QueryResult::on_btnQuery_clicked()
 	int rowcount = model->rowCount();
 	int pmId = model->primaryKey().value(0).toUInt();
 	int colCount = model->columnCount();
-	*/
+*/
 }
 
 void QueryResult::on_btnInsert_clicked()
@@ -191,3 +214,57 @@ void QueryResult::on_btnStop_clicked()
 	m_count = 1;
 	qDebug()<<"on_btnStop_clicked, m_count ="<<m_count;
 }
+
+void QueryResult::on_btnExport_clicked()
+{
+	if (NULL==model)
+	{
+		QMessageBox::warning(this, "warning", "no data need to be exported!");
+		return;
+	}
+
+	QString defaultPath = QString("%1/dat").arg(getenv("RUNHOME"));
+	QString file = QFileDialog::getSaveFileName(this,tr("Save File"),defaultPath,tr("Microsoft Office 2007 (*.xlsx;*.xls)"));//获取保存路径
+	if (!file.isEmpty())
+	{
+		QAxObject *excel = new QAxObject(this);
+		excel->setControl("Excel.Application");//连接Excel控件
+		excel->dynamicCall("SetVisible (bool Visible)","false");//不显示窗体
+		excel->setProperty("DisplayAlerts", false);//不显示任何警告信息。如果为true那么在关闭时会出现类似“文件已修改，是否保存”的提示
+
+		QAxObject *workbooks = excel->querySubObject("WorkBooks");//获取工作簿集合
+		workbooks->dynamicCall("Add");//新建一个工作簿
+		QAxObject *workbook = excel->querySubObject("ActiveWorkBook");//获取当前工作簿
+		//保存至filepath，注意一定要用QDir::toNativeSeparators将路径中的"/"转换为"\"，不然一定保存不了。
+		workbook->dynamicCall("SaveAs(const QString&)",QDir::toNativeSeparators(file));
+		workbook->dynamicCall("Close()");//关闭工作簿
+		excel->dynamicCall("Quit()");//关闭excel
+		delete excel;
+		excel=NULL;
+
+		QString preStr;
+		QExcel xlsFile(file);	
+		xlsFile.selectSheet(1);//激活一张工作表
+		for (int j=0; j<model->columnCount(); j++)
+		{
+			if (j==1 || j==2) //时间戳和表号列
+			{
+				preStr = "'";
+			}
+			else
+			{
+				preStr = "";
+			}
+			xlsFile.setCellString(1, j+1, model->headerData(j, Qt::Horizontal).toString()); //标题行
+			for(int i=0;i<model->rowCount();i++)
+			{
+				xlsFile.setCellString(i+2, j+1, preStr+model->data(model->index(i,j)).toString());
+			}
+		}
+		xlsFile.save();
+
+		QMessageBox::information(this, "hint", "export excel successful!");
+	}
+}
+
+

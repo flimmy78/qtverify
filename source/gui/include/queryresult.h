@@ -7,6 +7,7 @@
 #include <QtSql/QSqlDriver>
 #include <QtSql/QSqlError>
 #include <QtSql/QSqlTableModel>
+#include <QtSql/QSqlRelationalTableModel>
 
 #include "ui_queryresult.h"
 
@@ -28,11 +29,12 @@ public slots:
 
 private:
 	Ui::QueryResultClass ui;
-
+	QSqlRelationalTableModel *model;
 private slots:
 	void on_btnQuery_clicked();
 	void on_btnInsert_clicked();
 	void on_btnStop_clicked();
+	void on_btnExport_clicked();
 };
 
 #endif // QUERYRESULT_H
