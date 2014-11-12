@@ -58,6 +58,7 @@ public:
 	void setCellTextWrap(const QString& cell, bool isWrap);
 	void setAutoFitRow(int row);
 	void setAutoFitColumn(int column);
+	void setAutoFitColumnAll();
 	void mergeSerialSameCellsInAColumn(int column, int topRow);
 	int getUsedRowsCount();
 	void setCellFontBold(int row, int column, bool isBold);

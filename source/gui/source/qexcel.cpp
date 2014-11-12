@@ -223,13 +223,35 @@ void QExcel::setAutoFitRow(int row)
 
 void QExcel::setAutoFitColumn(int column)
 {
+	if (column <= 0)
+	{
+		return;
+	}
+
+	int divisor = (column-1)/26; 
+	int remainder = (column-1)%26;
+
 	QString columnName;
-	columnName.append(QChar(column - 1 + 'A'));
+	if (divisor >= 1)
+	{
+		columnName.append(QChar(divisor - 1 + 'A'));
+	}
+	columnName.append(QChar(remainder + 'A'));
 	columnName.append(":");
-	columnName.append(QChar(column - 1 + 'A'));
+	if (divisor >= 1)
+	{
+		columnName.append(QChar(divisor - 1 + 'A'));
+	}
+	columnName.append(QChar(remainder + 'A'));
 
 	QAxObject * cols = sheet->querySubObject("Columns(const QString&)", columnName);
 	cols->dynamicCall("AutoFit()");
+}
+
+void QExcel::setAutoFitColumnAll()
+{
+	QAxObject *autoFitRange = sheet->querySubObject("Columns(A:AZ)");
+	autoFitRange->dynamicCall("AutoFit()");
 }
 
 void QExcel::insertSheet(QString sheetName)

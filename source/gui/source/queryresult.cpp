@@ -260,7 +260,9 @@ void QueryResult::on_btnExport_clicked()
 			{
 				xlsFile.setCellString(i+2, j+1, preStr+model->data(model->index(i,j)).toString());
 			}
+// 			xlsFile.setAutoFitColumn(j+1);
 		}
+		xlsFile.setAutoFitColumnAll();
 		xlsFile.save();
 
 		QMessageBox::information(this, "hint", "export excel successful!");
