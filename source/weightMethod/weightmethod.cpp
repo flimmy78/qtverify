@@ -653,6 +653,7 @@ void WeightMethodDlg::clearTableContents()
 void WeightMethodDlg::on_btnStart_clicked()
 {
 	startVerify();
+	ui.btnStart->hide();
 }
 
 //点击"下一步"按钮
@@ -701,7 +702,8 @@ void WeightMethodDlg::startVerify()
 	//判断实际检表的个数(根据获取到的表号个数)
 	if (getValidMeterNum() <= 0)
 	{
-		QMessageBox::warning(this, tr("Warning"), tr("请输入表号！"));
+		QMessageBox::warning(this, tr("Warning"), tr("请输入表号！然后点击'开始'按钮"));
+		ui.btnStart->show();
 		return;
 	}
 

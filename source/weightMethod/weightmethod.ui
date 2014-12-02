@@ -35,9 +35,9 @@
       <widget class="QPushButton" name="btnParaSet">
        <property name="geometry">
         <rect>
-         <x>20</x>
+         <x>30</x>
          <y>620</y>
-         <width>71</width>
+         <width>91</width>
          <height>28</height>
         </rect>
        </property>
@@ -691,9 +691,9 @@
       <widget class="QPushButton" name="btnReadMeter">
        <property name="geometry">
         <rect>
-         <x>110</x>
+         <x>170</x>
          <y>620</y>
-         <width>71</width>
+         <width>91</width>
          <height>28</height>
         </rect>
        </property>
@@ -701,54 +701,48 @@
         <string>读表</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="btnExit">
-       <property name="geometry">
-        <rect>
-         <x>200</x>
-         <y>620</y>
-         <width>71</width>
-         <height>28</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>退出</string>
-       </property>
-      </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="">
        <property name="geometry">
         <rect>
          <x>1150</x>
-         <y>620</y>
+         <y>630</y>
          <width>95</width>
-         <height>181</height>
+         <height>170</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <item>
+       <layout class="QGridLayout" name="gridLayout_6">
+        <item row="0" column="0">
          <widget class="QPushButton" name="btnExhaust">
           <property name="text">
            <string>排气</string>
           </property>
          </widget>
         </item>
-        <item>
+        <item row="1" column="0">
          <widget class="QPushButton" name="btnStart">
           <property name="text">
            <string>开始</string>
           </property>
          </widget>
         </item>
-        <item>
+        <item row="2" column="0">
          <widget class="QPushButton" name="btnNext">
           <property name="text">
            <string>下一步</string>
           </property>
          </widget>
         </item>
-        <item>
+        <item row="3" column="0">
          <widget class="QPushButton" name="btnStop">
           <property name="text">
            <string>终止检测</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QPushButton" name="btnExit">
+          <property name="text">
+           <string>退出</string>
           </property>
          </widget>
         </item>

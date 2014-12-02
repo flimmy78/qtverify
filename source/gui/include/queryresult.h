@@ -35,6 +35,7 @@ private slots:
 	void on_btnInsert_clicked();
 	void on_btnStop_clicked();
 	void on_btnExport_clicked();
+	void on_btnExit_clicked();
 };
 
 #endif // QUERYRESULT_H

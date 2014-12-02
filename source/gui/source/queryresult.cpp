@@ -42,6 +42,10 @@ QueryResult::QueryResult(QWidget *parent, Qt::WFlags flags)
 	}
 
 	initUiData();
+
+	ui.btnInsert->hide();
+	ui.btnStop->hide();
+	ui.spinBoxNums->hide();
 }
 
 QueryResult::~QueryResult()
@@ -242,7 +246,7 @@ void QueryResult::on_btnExport_clicked()
 		delete excel;
 		excel=NULL;
 
-		QString preStr;
+		QString preStr = "";
 		QExcel xlsFile(file);	
 		xlsFile.selectSheet(1);//激活一张工作表
 		for (int j=0; j<model->columnCount(); j++)
@@ -267,6 +271,11 @@ void QueryResult::on_btnExport_clicked()
 
 		QMessageBox::information(this, "hint", "export excel successful!");
 	}
+}
+
+void QueryResult::on_btnExit_clicked()
+{
+	this->close();
 }
 
 
