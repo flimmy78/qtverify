@@ -20,11 +20,9 @@ LIBS += -lqaxserver -lqaxcontainerd
 
 
 # Input
-HEADERS += $$(RUNHOME_INC)/include/qtexdb.h \
-           $$(RUNHOME_INC)/include/excelengine.h
+HEADERS += $$(RUNHOME_INC)/include/qtexdb.h
 					 
-SOURCES += qtexdb.cpp \
-           excelengine.cpp
+SOURCES += qtexdb.cpp 
 
 
 win32{

@@ -93,7 +93,6 @@ public:
     QPushButton *btnStart;
     QPushButton *btnNext;
     QPushButton *btnStop;
-    QPushButton *btnExport;
     QWidget *tab2;
     QWidget *tab3;
     QWidget *tab4;
@@ -463,11 +462,6 @@ public:
 
         verticalLayout->addWidget(btnStop);
 
-        btnExport = new QPushButton(layoutWidget4);
-        btnExport->setObjectName(QString::fromUtf8("btnExport"));
-
-        verticalLayout->addWidget(btnExport);
-
         tabWidget->addTab(tab1, QString());
         tab2 = new QWidget();
         tab2->setObjectName(QString::fromUtf8("tab2"));
@@ -578,7 +572,6 @@ public:
         btnStart->setText(QApplication::translate("WeightMethodClass", "\345\274\200\345\247\213", 0, QApplication::UnicodeUTF8));
         btnNext->setText(QApplication::translate("WeightMethodClass", "\344\270\213\344\270\200\346\255\245", 0, QApplication::UnicodeUTF8));
         btnStop->setText(QApplication::translate("WeightMethodClass", "\347\273\210\346\255\242\346\243\200\346\265\213", 0, QApplication::UnicodeUTF8));
-        btnExport->setText(QApplication::translate("WeightMethodClass", "\345\257\274\345\207\272Excel", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab1), QApplication::translate("WeightMethodClass", "Tab1", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab2), QApplication::translate("WeightMethodClass", "Tab2", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab3), QApplication::translate("WeightMethodClass", "Tab3", 0, QApplication::UnicodeUTF8));

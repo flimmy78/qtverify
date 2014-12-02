@@ -44,7 +44,6 @@
 #include "comobject.h"
 #include "ReadComConfig.h"
 #include "algorithm.h"
-#include "excelengine.h"
 
 
 //ID列，只能输入1－12个数字   
@@ -90,8 +89,6 @@ class WEIGHTMETHOD_EXPORT WeightMethodDlg : public QWidget
 public:
 	WeightMethodDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~WeightMethodDlg();
-
-	ExcelEngine m_excel;
 
 	QDataWidgetMapper *m_mapper;
 
@@ -253,10 +250,6 @@ public slots:
 	void on_btnReadMeter_clicked(); //读表按钮
 	void on_btnExit_clicked();//退出按钮
 	
-// 	void on_btnOpen_clicked();
-// 	void on_btnImport_clicked();
-	void on_btnExport_clicked();
-
 
 private slots:
 
