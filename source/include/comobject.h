@@ -164,6 +164,7 @@ public:
 	MeterProtocol *m_meterProtocol;
 	QByteArray m_meterTmp;
 	QString m_portName;
+	int m_manufact; //热表生产厂家
 
 signals:
 	void readMeterNoIsOK(const QString& portName, const QString& meterNo);
@@ -178,6 +179,7 @@ public slots:
 	void askModifyMeterNo(QString oldMeterNo, QString newMeterNo);   //请求修改表号
 	void askModifyFlowPara();  //请求修改流量参数
 
+	void setManufact(int manufact);
 };
 
 

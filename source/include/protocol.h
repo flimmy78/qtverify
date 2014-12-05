@@ -204,43 +204,84 @@ typedef struct
 	UINT8 data[METER_DATA_LEN];		//数据域
 	UINT8 cs;	    //校验码
 	UINT8 endCode;      //结束符
-}Meter_Frame_Struct;
+}DeluMeter_Frame_Struct;
 
+//热量表通讯协议基类
 class PROTOCOL_EXPORT MeterProtocol : public CProtocol
 {
-
-	QByteArray m_sendBuf;
-	Meter_Frame_Struct *m_meterFrame;
-
 public:
 	MeterProtocol();
 	~MeterProtocol();
 
-public slots:
-	UINT8 readMeterComBuffer(QByteArray tmp);
- 	UINT8 CountCheck(Meter_Frame_Struct *pFrame);
- 	void analyseFrame();
-
-	void makeFrameOfReadMeter();        //读表（广播地址读表）
-	void makeFrameOfSetVerifyStatus();	//设置进入检定状态
-	void makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo);	//修改表号
-	void makeFrameOfModifyFlowPara();	//修改流量参数
-
-	QByteArray getSendFrame();
-	QString getFullMeterNo();
-	QString getFlow();
-	QString getInTemper();
-	QString getOutTemper();
-	QString getHeat();
-
-
-private:
+	QByteArray m_sendBuf;
 	QString m_fullMeterNo;  //完整表号 7个字节
 	QString m_inTemper; //进水温度
 	QString m_outTemper;//回水温度
 	QString m_flow; //流量 
 	QString m_heat; //热量
 	QString m_date; //当前日期
+
+public slots:
+	virtual UINT8 readMeterComBuffer(QByteArray tmp){return 0;};
+	virtual void analyseFrame(){};
+
+	virtual void makeFrameOfReadMeter(){};        //读表（广播地址读表）
+	virtual void makeFrameOfSetVerifyStatus(){};	//设置进入检定状态
+	virtual void makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo){};	//修改表号
+	virtual void makeFrameOfModifyFlowPara(){};	//修改流量参数
+
+	virtual QByteArray getSendFrame();
+	virtual QString getFullMeterNo();
+	virtual QString getFlow();
+	virtual QString getInTemper();
+	virtual QString getOutTemper();
+	virtual QString getHeat();
+
+private:
+
+};
+
+//德鲁热量表通讯协议类
+class PROTOCOL_EXPORT DeluMeterProtocol : public MeterProtocol
+{
+public:
+	DeluMeterProtocol();
+	~DeluMeterProtocol();
+
+public slots:
+	virtual UINT8 CountCheck(DeluMeter_Frame_Struct *pFrame);
+	virtual UINT8 readMeterComBuffer(QByteArray tmp);
+	virtual void analyseFrame();
+
+	virtual void makeFrameOfReadMeter();        //读表（广播地址读表）
+	virtual void makeFrameOfSetVerifyStatus();	//设置进入检定状态
+	virtual void makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo);	//修改表号
+	virtual void makeFrameOfModifyFlowPara();	//修改流量参数
+
+private:
+	DeluMeter_Frame_Struct *m_deluMeterFrame;
+
+};
+
+//天罡热量表通讯协议类
+class PROTOCOL_EXPORT TgMeterProtocol : public MeterProtocol
+{
+public:
+	TgMeterProtocol();
+	~TgMeterProtocol();
+
+public slots:
+	virtual UINT8 CountCheck(DeluMeter_Frame_Struct *pFrame);
+	virtual UINT8 readMeterComBuffer(QByteArray tmp);
+	virtual void analyseFrame();
+
+	virtual void makeFrameOfReadMeter();        //读表（广播地址读表）
+	virtual void makeFrameOfSetVerifyStatus();	//设置进入检定状态
+	virtual void makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo);	//修改表号
+	virtual void makeFrameOfModifyFlowPara();	//修改流量参数
+
+private:
+	DeluMeter_Frame_Struct *m_deluMeterFrame;
 
 };
 //热量表通讯协议 end

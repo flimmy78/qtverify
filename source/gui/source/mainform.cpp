@@ -164,6 +164,11 @@ void MainForm::on_actionExit_triggered()
 	this->close();
 }
 
+void MainForm::on_actionAbout_triggered()
+{
+	QMessageBox::aboutQt(this);
+}
+
 void MainForm::on_btnStart_clicked()
 {
 	m_alg->calc(2.0, 5.6);

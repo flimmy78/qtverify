@@ -155,7 +155,7 @@
      <string>About</string>
     </property>
     <addaction name="actionExit"/>
-    <addaction name="action"/>
+    <addaction name="actionAbout"/>
    </widget>
    <addaction name="menuSystemSet"/>
    <addaction name="menu"/>
@@ -314,7 +314,7 @@
     <string>采集与测试</string>
    </property>
   </action>
-  <action name="action">
+  <action name="actionAbout">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
      <normaloff>:/qtverify/images/about.png</normaloff>:/qtverify/images/about.png</iconset>

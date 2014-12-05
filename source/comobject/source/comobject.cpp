@@ -395,9 +395,11 @@ void BalanceComObject::readBalanceComBuffer()
 MeterComObject::MeterComObject(QObject* parent) : ComObject(parent)
 {
 	m_meterCom = NULL;
-	m_meterProtocol = new MeterProtocol();
+	m_meterProtocol = NULL;                                                                                                                    
 	m_meterTmp="";
 	m_portName = "";
+
+	m_manufact = 0; //默认是德鲁热量表
 }
 
 MeterComObject::~MeterComObject()
@@ -416,6 +418,28 @@ MeterComObject::~MeterComObject()
 	{
 		delete m_meterProtocol;
 		m_meterProtocol = NULL;
+	}
+}
+
+void MeterComObject::setManufact(int manufact)
+{
+	m_manufact = manufact;
+	if (m_meterProtocol != NULL)
+	{
+		delete m_meterProtocol;
+		m_meterProtocol = NULL;
+	}
+	switch (m_manufact)
+	{
+	case 0:	//德鲁热量表
+		m_meterProtocol = new DeluMeterProtocol();
+		break;
+	case 1: //天罡热量表
+		m_meterProtocol = new TgMeterProtocol();
+		break;
+	default: 
+		m_meterProtocol =  new DeluMeterProtocol();
+		break;
 	}
 }
 
