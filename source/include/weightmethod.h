@@ -138,7 +138,7 @@ public:
 
 	int m_tempCount;		  //计算平均温度用的累加计数器
 	int m_maxMeterNum;        //表格的行数（被检表的最大个数）
-	int m_meterNum;           //实际检表的个数
+	int m_validMeterNum;          //实际检表的个数
 	QMap<int, int> m_meterPosMap; //被检表与表位号的映射关系
 	QMap<int, float> m_gradeErr;  //不同等级热表对应的标准误差
 
@@ -164,6 +164,8 @@ public:
 
 	bool m_inputStartValue; //等待输入初值状态
 	bool m_inputEndValue;   //等待输入终值状态
+
+	bool m_startValueFlag;
 
 	ReadComConfig *m_readComConfig; //读串口设置
 	PortSet_Ini_STR m_portsetinfo;  //端口配置

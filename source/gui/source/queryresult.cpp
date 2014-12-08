@@ -228,7 +228,7 @@ void QueryResult::on_btnExport_clicked()
 	}
 
 	QString defaultPath = QString("%1/dat").arg(getenv("RUNHOME"));
-	QString file = QFileDialog::getSaveFileName(this,tr("Save File"),defaultPath,tr("Microsoft Office 2007 (*.xlsx;*.xls)"));//获取保存路径
+	QString file = QFileDialog::getSaveFileName(this,tr("Save File"),defaultPath,tr("Microsoft Excel (*.xlsx;*.xls)"));//获取保存路径
 	if (!file.isEmpty())
 	{
 		QAxObject *excel = new QAxObject(this);

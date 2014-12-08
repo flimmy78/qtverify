@@ -481,6 +481,7 @@ void MeterComObject::openMeterCom(ComInfoStruct *comStruct)
 void MeterComObject::readMeterComBuffer()
 {
 // 	qDebug()<<"readMeterComBuffer MeterComObject thread:"<<QThread::currentThreadId();
+// 	qDebug()<<"Read"<<m_meterCom->bytesAvailable()<<"bytes!";
 	m_meterTmp.append(m_meterCom->readAll());
 	int num = m_meterTmp.size();
 	if (num < 71) //不含前导符，一帧至少71个字节

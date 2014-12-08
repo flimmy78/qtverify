@@ -199,7 +199,7 @@ bool ReadComConfig::OpenConfigFile()
 /*  返回值:int MeterNum, 如果在配置文件中成功查找到表位号, 则返回此表位号 */
 /*         失败, 返回 -1
 /************************************************************************/
-int ReadComConfig::getMeterNumByComName(QString comName)
+int ReadComConfig::getMeterPosByComName(QString comName)
 {
 		ComInfoStruct meterConfigSTR;
 		for (int i=1; i <= METER_QUANTITY; i++)
