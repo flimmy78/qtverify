@@ -209,6 +209,9 @@ void MainForm::on_actionQueryExcel_triggered()
 
 void MainForm::on_btnSave_clicked()
 {
+	int a = ui.comSetWidget->getLcdNumber();
+	QString comname = ui.comSetWidget->ui.comboBox1->currentText();
+	QMessageBox::information(this, "hint", QString("lcdnumber=%1, com=%2").arg(a).arg(comname));
 }
 
 void MainForm::on_btnPara_clicked()
