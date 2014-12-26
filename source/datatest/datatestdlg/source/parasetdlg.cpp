@@ -55,12 +55,6 @@ ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 	lastParams = new ParaSetReader();
 	flowPointVector();
 	installLastParams();//加载上次的配置信息
-
-	ui.lnEdit_Flow1->setStyleSheet("border: 2px solid gray;"
-		"border-radius: 10px;"
-		"padding: 0 8px;"
-		"background: yellow;"
-		"selection-background-color:darkgray;");	
 }
 
 ParaSetDlg::~ParaSetDlg()
