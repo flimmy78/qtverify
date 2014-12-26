@@ -17,6 +17,7 @@
 #include <QtCore/QDebug>
 #include <QtCore/QSettings>
 #include <QtGui/QMessageBox>
+#include <QtCore/QProcess>
 
 #include "qtexdb.h"
 #include "commondefine.h"
@@ -46,20 +47,14 @@ int startdb()
 		g_db = QSqlDatabase::addDatabase("QSQLITE");
 	}
 
-	char dbname[FILENAME_LENGTH];
-	memset(dbname, 0, sizeof(char)*FILENAME_LENGTH);
-	sprintf_s(dbname, "%s/database/mysqlite375.db", getenv("RUNHOME"));
+	QString dbname = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\\database\\mysqlite375.db";
 	g_db.setDatabaseName(dbname);
-	bool ok = g_db.open(); // 尝试连接数据库
-
-	if(ok) // 成功连上数据库
+	if (!g_db.open())// 尝试连接数据库
 	{
-		return true;
-	}
-	else
-	{
+		QMessageBox::critical(0, QObject::tr("Database Error"), g_db.lastError().text());
 		return false;
 	}
+	return true;
 }
 
 void closedb()
