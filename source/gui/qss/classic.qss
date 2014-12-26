@@ -1,0 +1,48 @@
+#QFrame {
+background-color: rgb(200, 0, 200);
+}
+QPushButton{
+border: 2px; 
+border-style: soild;
+border-color: rgb(100, 0, 100);
+background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(112, 0, 112, 255), stop:1 rgba(255, 255, 255, 255));
+border-radius: 5;
+padding: 5px;
+}
+QPushButton:hover {
+background-color: rgb(255, 127, 127);
+border-color: rgb(134, 146, 255);
+}
+#QLineEdit {
+border-style: flat;
+border-color: rgb(100, 100, 100);
+background-color:white;
+border-radius: 5;
+padding: 5px;
+}
+#QPushButton:pressed {
+padding-left: 5px;
+padding-top: 5px;
+background-color: rgb(233, 237, 255,255);
+}
+#QProgressBar{  
+    color : solid gray;  
+    border: 2px solid gray;  
+    border-radius: 5px;  
+    background: transparent;  
+    padding: 0px;  
+    text-align : center ;  
+}  
+#QProgressBar::chunk{  
+    background: #B22222;  
+}
+#QStatusBar{  
+    background-image: url(:/qtverify/images/statusbar2.png);  
+    color:red;  
+    background-color: rgb(100,100,100);
+}   
+#QMenu[private_pile="true"]{  
+    background-color: rgba(43,63,53,200);  
+    border-radius: 1px;  
+    color: white;  
+}   

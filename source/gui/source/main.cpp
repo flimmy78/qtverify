@@ -15,9 +15,14 @@ int main(int argc, char *argv[])
 {
 	QApplication app(argc, argv);
 
+	QFile qss(":/qtverify/qss/default.qss");
+	qss.open(QFile::ReadOnly);
+	app.setStyleSheet(qss.readAll());
+	qss.close();
+
 	QSplashScreen *splash = new QSplashScreen;
-	QString startPic = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "/uif/pixmap/facility.png";;
-	splash->setPixmap(QPixmap(startPic));
+// 	QString startPic = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\\uif\\pixmap\\facility.png";;
+	splash->setPixmap(QPixmap(":/qtverify/images/facility.png"));
 	splash->show();
 
 	QTextCodec::setCodecForTr(QTextCodec::codecForName("GB2312"));
@@ -36,26 +41,26 @@ int main(int argc, char *argv[])
 	
 	Qt::Alignment align = Qt::AlignCenter | Qt::AlignBottom;
 	splash->showMessage(QObject::tr("load translator files ..."), align, Qt::blue);
-	QTest::qSleep(500);
+	QTest::qSleep(200);
 
-	char filename[100];
-	sprintf_s( filename, "%s/uif/i18n/qtverify_zh.qm", getenv("RUNHOME"));
+	char qmfile[100];
+	sprintf_s( qmfile, "%s\\uif\\i18n\\qtverify_zh.qm", getenv("RUNHOME"));
 	QTranslator *translator;
 	translator = new QTranslator();
-	bool loadok = translator->load( filename );
+	bool loadok = translator->load(qmfile);
 	if (!loadok)
 	{
-		 printf_s(" load translator file \"%s\" failed! \n", filename);
+		 printf_s(" load translator file \"%s\" failed! \n", qmfile);
 	}
 	app.installTranslator( translator );
 	qDebug()<<"qtverify main thread:"<<QThread::currentThreadId();
 
 	splash->showMessage(QObject::tr("connect database ..."), align, Qt::blue);
-	QTest::qSleep(500);
+	QTest::qSleep(200);
 	startdb(); //连接数据库
 
 	splash->showMessage(QObject::tr("setting up the mainwindow ..."), align, Qt::blue);
-	QTest::qSleep(500);
+	QTest::qSleep(200);
 	g_mainform = new MainForm;
 
 // 	LoginDialog login;

@@ -298,3 +298,28 @@ void MainForm::on_actionTest_triggered()
 	}
 	m_qualitydlg->show();
 }
+
+void MainForm::on_actionDefault_triggered()
+{
+	QFile qss(":/qtverify/qss/default.qss");
+	qss.open(QFile::ReadOnly);
+	this->setStyleSheet(qss.readAll());
+	qss.close();
+}
+
+void MainForm::on_actionClassic_triggered()
+{
+	QFile qss(":/qtverify/qss/classic.qss");
+	qss.open(QFile::ReadOnly);
+	this->setStyleSheet(qss.readAll());
+	qss.close();
+}
+
+void MainForm::on_actionFashion_triggered()
+{
+	QFile qss(":/qtverify/qss/fashion.qss");
+	qss.open(QFile::ReadOnly);
+	this->setStyleSheet(qss.readAll());
+	qss.close();
+}
+

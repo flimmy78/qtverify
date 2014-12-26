@@ -190,10 +190,19 @@
     <addaction name="actionExit"/>
     <addaction name="actionAbout"/>
    </widget>
+   <widget class="QMenu" name="menuStyle">
+    <property name="title">
+     <string>Style</string>
+    </property>
+    <addaction name="actionDefault"/>
+    <addaction name="actionClassic"/>
+    <addaction name="actionFashion"/>
+   </widget>
    <addaction name="menuSystemSet"/>
    <addaction name="menu"/>
    <addaction name="menuDataQuery"/>
    <addaction name="menuAbout"/>
+   <addaction name="menuStyle"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -354,6 +363,21 @@
    </property>
    <property name="text">
     <string>关于</string>
+   </property>
+  </action>
+  <action name="actionDefault">
+   <property name="text">
+    <string>default</string>
+   </property>
+  </action>
+  <action name="actionClassic">
+   <property name="text">
+    <string>classic</string>
+   </property>
+  </action>
+  <action name="actionFashion">
+   <property name="text">
+    <string>fashion</string>
    </property>
   </action>
  </widget>

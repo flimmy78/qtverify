@@ -49,6 +49,9 @@ public slots:
 	void on_actionAbout_triggered();
 	void on_actionMasterSlaveSet_triggered();
 	void on_actionTest_triggered();
+	void on_actionDefault_triggered();
+	void on_actionClassic_triggered();
+	void on_actionFashion_triggered();
 
 	void on_btnStart_clicked();
 	void on_btnSave_clicked();
