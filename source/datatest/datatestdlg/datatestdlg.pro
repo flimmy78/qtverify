@@ -44,7 +44,8 @@ win32{
 
 	QMAKE_POST_LINK = copy $${MY_DEST_LIB} $$(RUNHOME)\lib \
                   & copy $${MY_DEST_DLL} $$(RUNHOME)\dll \
-                  & copy .\language\datatestdlg_zh.qm $(RUNHOME)\uif\i18n
+                  & copy .\language\datatestdlg_zh.qm $(RUNHOME)\uif\i18n\zh \
+                  & copy .\language\datatestdlg_en.qm $(RUNHOME)\uif\i18n\en 
 }
 
 TRANSLATIONS =  \
