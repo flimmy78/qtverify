@@ -113,7 +113,7 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	m_recPtr = NULL;
 
 	QSqlTableModel *model = new QSqlTableModel(this);  
-	model->setTable(tr("T_Meter_Standard"));  
+	model->setTable("T_Meter_Standard");  
 	model->select();  
 	m_mapper = new QDataWidgetMapper(this);
 	m_mapper->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
@@ -706,7 +706,7 @@ void WeightMethodDlg::startVerify()
 	//判断实际检表的个数(根据获取到的表号个数)
 	if (getValidMeterNum() <= 0)
 	{
-		QMessageBox::warning(this, tr("Warning"), tr("Please input MeterNO., then click \"start\" button!"));//请输入表号！然后点击'开始'按钮
+		QMessageBox::warning(this, tr("Warning"), tr("please input meter number, then click \"start\" button!"));//请输入表号！然后点击'开始'按钮
 		ui.btnStart->show();
 		return;
 	}
