@@ -7,10 +7,9 @@
 #include "dbmysql.h"
 #include "queryresult.h"
 #include "monsterinterface.h" //插件接口
-#include "comsetdlg.h"
-#include "SetComFrm.h"
+#include "setcomFrm.h"
 #include "datatestdlg.h"
-#include "SetPortFrm.h"
+#include "setportfrm.h"
 #include "masterslaveset.h"
 #include "weightmethod.h"
 
@@ -27,7 +26,6 @@ public:
 	MonsterInterface *m_monster;
 	CAlgorithm *m_alg;
 	SetComFrm *m_setcom; //串口参数设置
-	ComSetDlg *m_comdebugger;
 	DataTestDlg *m_qualitydlg; //采集与控制测试程序
 	SetPortFrm *m_portSet; //端口模块设置
 	CMasterSlave *m_masterslave; //主机-从机设置

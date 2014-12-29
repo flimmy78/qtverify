@@ -30,7 +30,6 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_query = NULL;
 	m_alg = new CAlgorithm();
 
-	m_comdebugger = NULL;
 	m_setcom = NULL;
 	m_qualitydlg = NULL;
 	m_portSet = NULL;
@@ -71,12 +70,6 @@ void MainForm::closeEvent( QCloseEvent * event)
 		m_alg = NULL;
 	}
 
-	if (m_comdebugger)
-	{
-		delete m_comdebugger;
-		m_comdebugger = NULL;
-	}
-
 	if (m_setcom)
 	{
 		delete m_setcom;
@@ -111,11 +104,6 @@ void MainForm::closeEvent( QCloseEvent * event)
 
 void MainForm::on_actionComDebuger_triggered()
 {
-	if (NULL == m_comdebugger)
-	{
-		m_comdebugger = new ComSetDlg();
-	}
-	m_comdebugger->show();
 }
 
 void MainForm::on_actionComSet_triggered()

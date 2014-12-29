@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>957</width>
+    <width>1071</width>
     <height>630</height>
    </rect>
   </property>
@@ -19,7 +19,7 @@
      <item row="0" column="0">
       <widget class="QGroupBox" name="gBoxValve">
        <property name="title">
-        <string>阀门控制</string>
+        <string>Valve Control</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_4">
         <item row="0" column="0">
@@ -31,7 +31,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>串口</string>
+           <string>Com</string>
           </property>
          </widget>
         </item>
@@ -142,7 +142,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_4">
           <property name="text">
-           <string>波特率</string>
+           <string>BaudRate</string>
           </property>
          </widget>
         </item>
@@ -188,7 +188,7 @@
         <item row="2" column="0">
          <widget class="QLabel" name="label_5">
           <property name="text">
-           <string>数据位</string>
+           <string>DataBits</string>
           </property>
          </widget>
         </item>
@@ -219,7 +219,7 @@
         <item row="3" column="0">
          <widget class="QLabel" name="label_6">
           <property name="text">
-           <string>校验位</string>
+           <string>Parity</string>
           </property>
          </widget>
         </item>
@@ -227,17 +227,17 @@
          <widget class="QComboBox" name="comboValveChkBit">
           <item>
            <property name="text">
-            <string>无</string>
+            <string>None</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>奇</string>
+            <string>Odd</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>偶</string>
+            <string>Even</string>
            </property>
           </item>
          </widget>
@@ -245,7 +245,7 @@
         <item row="4" column="0">
          <widget class="QLabel" name="label_7">
           <property name="text">
-           <string>停止位</string>
+           <string>StopBits</string>
           </property>
          </widget>
         </item>
@@ -274,7 +274,7 @@
      <item row="0" column="1">
       <widget class="QGroupBox" name="gBoxBalance">
        <property name="title">
-        <string>天平采集</string>
+        <string>Balance</string>
        </property>
        <layout class="QGridLayout" name="gridLayout">
         <item row="0" column="0">
@@ -286,7 +286,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>串口</string>
+           <string>Com</string>
           </property>
          </widget>
         </item>
@@ -397,7 +397,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_10">
           <property name="text">
-           <string>波特率</string>
+           <string>BaudRate</string>
           </property>
          </widget>
         </item>
@@ -443,7 +443,7 @@
         <item row="2" column="0">
          <widget class="QLabel" name="label_8">
           <property name="text">
-           <string>数据位</string>
+           <string>DataBits</string>
           </property>
          </widget>
         </item>
@@ -474,7 +474,7 @@
         <item row="3" column="0">
          <widget class="QLabel" name="label_11">
           <property name="text">
-           <string>校验位</string>
+           <string>Parity</string>
           </property>
          </widget>
         </item>
@@ -482,17 +482,17 @@
          <widget class="QComboBox" name="comboBalChkBit">
           <item>
            <property name="text">
-            <string>无</string>
+            <string>None</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>奇</string>
+            <string>Odd</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>偶</string>
+            <string>Even</string>
            </property>
           </item>
          </widget>
@@ -500,7 +500,7 @@
         <item row="4" column="0">
          <widget class="QLabel" name="label_9">
           <property name="text">
-           <string>停止位</string>
+           <string>StopBits</string>
           </property>
          </widget>
         </item>
@@ -529,7 +529,7 @@
      <item row="0" column="2">
       <widget class="QGroupBox" name="gBoxTempSenor">
        <property name="title">
-        <string>温度采集</string>
+        <string>Temp Acquisition</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="0" column="0">
@@ -541,7 +541,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>串口</string>
+           <string>Com</string>
           </property>
          </widget>
         </item>
@@ -652,7 +652,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_15">
           <property name="text">
-           <string>波特率</string>
+           <string>BaudRate</string>
           </property>
          </widget>
         </item>
@@ -698,7 +698,7 @@
         <item row="2" column="0">
          <widget class="QLabel" name="label_13">
           <property name="text">
-           <string>数据位</string>
+           <string>DataBits</string>
           </property>
          </widget>
         </item>
@@ -729,7 +729,7 @@
         <item row="3" column="0">
          <widget class="QLabel" name="label_16">
           <property name="text">
-           <string>校验位</string>
+           <string>Parity</string>
           </property>
          </widget>
         </item>
@@ -737,17 +737,17 @@
          <widget class="QComboBox" name="comboTempChkBit">
           <item>
            <property name="text">
-            <string>无</string>
+            <string>None</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>奇</string>
+            <string>Odd</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>偶</string>
+            <string>Even</string>
            </property>
           </item>
          </widget>
@@ -755,7 +755,7 @@
         <item row="4" column="0">
          <widget class="QLabel" name="label_14">
           <property name="text">
-           <string>停止位</string>
+           <string>StopBits</string>
           </property>
          </widget>
         </item>
@@ -784,7 +784,7 @@
      <item row="0" column="3">
       <widget class="QGroupBox" name="gBoxStdTmpSensor">
        <property name="title">
-        <string>标准温度</string>
+        <string>Standard Temp</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="0" column="0">
@@ -796,7 +796,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>串口</string>
+           <string>Com</string>
           </property>
          </widget>
         </item>
@@ -907,7 +907,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_20">
           <property name="text">
-           <string>波特率</string>
+           <string>BaudRate</string>
           </property>
          </widget>
         </item>
@@ -953,7 +953,7 @@
         <item row="2" column="0">
          <widget class="QLabel" name="label_18">
           <property name="text">
-           <string>数据位</string>
+           <string>DataBits</string>
           </property>
          </widget>
         </item>
@@ -984,7 +984,7 @@
         <item row="3" column="0">
          <widget class="QLabel" name="label_21">
           <property name="text">
-           <string>校验位</string>
+           <string>Parity</string>
           </property>
          </widget>
         </item>
@@ -992,17 +992,17 @@
          <widget class="QComboBox" name="comboStdTmpChkBit">
           <item>
            <property name="text">
-            <string>无</string>
+            <string>None</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>奇</string>
+            <string>Odd</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>偶</string>
+            <string>Even</string>
            </property>
           </item>
          </widget>
@@ -1010,7 +1010,7 @@
         <item row="4" column="0">
          <widget class="QLabel" name="label_19">
           <property name="text">
-           <string>停止位</string>
+           <string>StopBits</string>
           </property>
          </widget>
         </item>
@@ -1054,13 +1054,13 @@
    <item row="1" column="0">
     <widget class="QGroupBox" name="gBoxMeters">
      <property name="title">
-      <string>被检表</string>
+      <string>Meter</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_17">
       <item row="0" column="0">
        <widget class="QGroupBox" name="gBoxMeter_1">
         <property name="title">
-         <string>1号表</string>
+         <string>1</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_5">
          <item row="0" column="0">
@@ -1072,7 +1072,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>串口</string>
+            <string>Com</string>
            </property>
           </widget>
          </item>
@@ -1183,7 +1183,7 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label_24">
            <property name="text">
-            <string>波特率</string>
+            <string>BaudRate</string>
            </property>
           </widget>
          </item>
@@ -1229,7 +1229,7 @@
          <item row="2" column="0">
           <widget class="QLabel" name="label_25">
            <property name="text">
-            <string>数据位</string>
+            <string>DataBits</string>
            </property>
           </widget>
          </item>
@@ -1260,7 +1260,7 @@
          <item row="3" column="0">
           <widget class="QLabel" name="label_26">
            <property name="text">
-            <string>校验位</string>
+            <string>Parity</string>
            </property>
           </widget>
          </item>
@@ -1268,17 +1268,17 @@
           <widget class="QComboBox" name="comboMeterChkBit_1">
            <item>
             <property name="text">
-             <string>无</string>
+             <string>None</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>奇</string>
+             <string>Odd</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>偶</string>
+             <string>Even</string>
             </property>
            </item>
           </widget>
@@ -1286,7 +1286,7 @@
          <item row="4" column="0">
           <widget class="QLabel" name="label_27">
            <property name="text">
-            <string>停止位</string>
+            <string>StopBits</string>
            </property>
           </widget>
          </item>
@@ -1315,7 +1315,7 @@
       <item row="0" column="1">
        <widget class="QGroupBox" name="gBoxMeter_2">
         <property name="title">
-         <string>2号表</string>
+         <string>2</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_6">
          <item row="0" column="0">
@@ -1327,7 +1327,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>串口</string>
+            <string>Com</string>
            </property>
           </widget>
          </item>
@@ -1438,7 +1438,7 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label_29">
            <property name="text">
-            <string>波特率</string>
+            <string>BaudRate</string>
            </property>
           </widget>
          </item>
@@ -1484,7 +1484,7 @@
          <item row="2" column="0">
           <widget class="QLabel" name="label_30">
            <property name="text">
-            <string>数据位</string>
+            <string>DataBits</string>
            </property>
           </widget>
          </item>
@@ -1515,7 +1515,7 @@
          <item row="3" column="0">
           <widget class="QLabel" name="label_31">
            <property name="text">
-            <string>校验位</string>
+            <string>Parity</string>
            </property>
           </widget>
          </item>
@@ -1523,17 +1523,17 @@
           <widget class="QComboBox" name="comboMeterChkBit_2">
            <item>
             <property name="text">
-             <string>无</string>
+             <string>None</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>奇</string>
+             <string>Odd</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>偶</string>
+             <string>Even</string>
             </property>
            </item>
           </widget>
@@ -1541,7 +1541,7 @@
          <item row="4" column="0">
           <widget class="QLabel" name="label_32">
            <property name="text">
-            <string>停止位</string>
+            <string>StopBits</string>
            </property>
           </widget>
          </item>
@@ -1570,7 +1570,7 @@
       <item row="0" column="2">
        <widget class="QGroupBox" name="gBoxMeter_3">
         <property name="title">
-         <string>3号表</string>
+         <string>3</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_7">
          <item row="0" column="0">
@@ -1582,7 +1582,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>串口</string>
+            <string>Com</string>
            </property>
           </widget>
          </item>
@@ -1693,7 +1693,7 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label_34">
            <property name="text">
-            <string>波特率</string>
+            <string>BaudRate</string>
            </property>
           </widget>
          </item>
@@ -1739,7 +1739,7 @@
          <item row="2" column="0">
           <widget class="QLabel" name="label_35">
            <property name="text">
-            <string>数据位</string>
+            <string>DataBits</string>
            </property>
           </widget>
          </item>
@@ -1770,7 +1770,7 @@
          <item row="3" column="0">
           <widget class="QLabel" name="label_36">
            <property name="text">
-            <string>校验位</string>
+            <string>Parity</string>
            </property>
           </widget>
          </item>
@@ -1778,17 +1778,17 @@
           <widget class="QComboBox" name="comboMeterChkBit_3">
            <item>
             <property name="text">
-             <string>无</string>
+             <string>None</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>奇</string>
+             <string>Odd</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>偶</string>
+             <string>Even</string>
             </property>
            </item>
           </widget>
@@ -1796,7 +1796,7 @@
          <item row="4" column="0">
           <widget class="QLabel" name="label_37">
            <property name="text">
-            <string>停止位</string>
+            <string>StopBits</string>
            </property>
           </widget>
          </item>
@@ -1825,7 +1825,7 @@
       <item row="0" column="3">
        <widget class="QGroupBox" name="gBoxMeter_4">
         <property name="title">
-         <string>4号表</string>
+         <string>4</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_8">
          <item row="0" column="0">
@@ -1837,7 +1837,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>串口</string>
+            <string>Com</string>
            </property>
           </widget>
          </item>
@@ -1948,7 +1948,7 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label_39">
            <property name="text">
-            <string>波特率</string>
+            <string>BaudRate</string>
            </property>
           </widget>
          </item>
@@ -1994,7 +1994,7 @@
          <item row="2" column="0">
           <widget class="QLabel" name="label_40">
            <property name="text">
-            <string>数据位</string>
+            <string>DataBits</string>
            </property>
           </widget>
          </item>
@@ -2025,7 +2025,7 @@
          <item row="3" column="0">
           <widget class="QLabel" name="label_41">
            <property name="text">
-            <string>校验位</string>
+            <string>Parity</string>
            </property>
           </widget>
          </item>
@@ -2033,17 +2033,17 @@
           <widget class="QComboBox" name="comboMeterChkBit_4">
            <item>
             <property name="text">
-             <string>无</string>
+             <string>None</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>奇</string>
+             <string>Odd</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>偶</string>
+             <string>Even</string>
             </property>
            </item>
           </widget>
@@ -2051,7 +2051,7 @@
          <item row="4" column="0">
           <widget class="QLabel" name="label_42">
            <property name="text">
-            <string>停止位</string>
+            <string>StopBits</string>
            </property>
           </widget>
          </item>
@@ -2080,7 +2080,7 @@
       <item row="0" column="4">
        <widget class="QGroupBox" name="gBoxMeter_5">
         <property name="title">
-         <string>5号表</string>
+         <string>5</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_9">
          <item row="0" column="0">
@@ -2092,7 +2092,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>串口</string>
+            <string>Com</string>
            </property>
           </widget>
          </item>
@@ -2203,7 +2203,7 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label_44">
            <property name="text">
-            <string>波特率</string>
+            <string>BaudRate</string>
            </property>
           </widget>
          </item>
@@ -2249,7 +2249,7 @@
          <item row="2" column="0">
           <widget class="QLabel" name="label_45">
            <property name="text">
-            <string>数据位</string>
+            <string>DataBits</string>
            </property>
           </widget>
          </item>
@@ -2280,7 +2280,7 @@
          <item row="3" column="0">
           <widget class="QLabel" name="label_46">
            <property name="text">
-            <string>校验位</string>
+            <string>Parity</string>
            </property>
           </widget>
          </item>
@@ -2288,17 +2288,17 @@
           <widget class="QComboBox" name="comboMeterChkBit_5">
            <item>
             <property name="text">
-             <string>无</string>
+             <string>None</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>奇</string>
+             <string>Odd</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>偶</string>
+             <string>Even</string>
             </property>
            </item>
           </widget>
@@ -2306,7 +2306,7 @@
          <item row="4" column="0">
           <widget class="QLabel" name="label_47">
            <property name="text">
-            <string>停止位</string>
+            <string>StopBits</string>
            </property>
           </widget>
          </item>
@@ -2335,7 +2335,7 @@
       <item row="0" column="5">
        <widget class="QGroupBox" name="gBoxMeter_6">
         <property name="title">
-         <string>6号表</string>
+         <string>6</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_10">
          <item row="0" column="0">
@@ -2347,7 +2347,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>串口</string>
+            <string>Com</string>
            </property>
           </widget>
          </item>
@@ -2458,7 +2458,7 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label_49">
            <property name="text">
-            <string>波特率</string>
+            <string>BaudRate</string>
            </property>
           </widget>
          </item>
@@ -2504,7 +2504,7 @@
          <item row="2" column="0">
           <widget class="QLabel" name="label_50">
            <property name="text">
-            <string>数据位</string>
+            <string>DataBits</string>
            </property>
           </widget>
          </item>
@@ -2535,7 +2535,7 @@
          <item row="3" column="0">
           <widget class="QLabel" name="label_51">
            <property name="text">
-            <string>校验位</string>
+            <string>Parity</string>
            </property>
           </widget>
          </item>
@@ -2543,17 +2543,17 @@
           <widget class="QComboBox" name="comboMeterChkBit_6">
            <item>
             <property name="text">
-             <string>无</string>
+             <string>None</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>奇</string>
+             <string>Odd</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>偶</string>
+             <string>Even</string>
             </property>
            </item>
           </widget>
@@ -2561,7 +2561,7 @@
          <item row="4" column="0">
           <widget class="QLabel" name="label_52">
            <property name="text">
-            <string>停止位</string>
+            <string>StopBits</string>
            </property>
           </widget>
          </item>
@@ -2590,7 +2590,7 @@
       <item row="1" column="0">
        <widget class="QGroupBox" name="gBoxMeter_7">
         <property name="title">
-         <string>7号表</string>
+         <string>7</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_11">
          <item row="0" column="0">
@@ -2602,7 +2602,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>串口</string>
+            <string>Com</string>
            </property>
           </widget>
          </item>
@@ -2713,7 +2713,7 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label_54">
            <property name="text">
-            <string>波特率</string>
+            <string>BaudRate</string>
            </property>
           </widget>
          </item>
@@ -2759,7 +2759,7 @@
          <item row="2" column="0">
           <widget class="QLabel" name="label_55">
            <property name="text">
-            <string>数据位</string>
+            <string>DataBits</string>
            </property>
           </widget>
          </item>
@@ -2790,7 +2790,7 @@
          <item row="3" column="0">
           <widget class="QLabel" name="label_56">
            <property name="text">
-            <string>校验位</string>
+            <string>Parity</string>
            </property>
           </widget>
          </item>
@@ -2798,17 +2798,17 @@
           <widget class="QComboBox" name="comboMeterChkBit_7">
            <item>
             <property name="text">
-             <string>无</string>
+             <string>None</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>奇</string>
+             <string>Odd</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>偶</string>
+             <string>Even</string>
             </property>
            </item>
           </widget>
@@ -2816,7 +2816,7 @@
          <item row="4" column="0">
           <widget class="QLabel" name="label_57">
            <property name="text">
-            <string>停止位</string>
+            <string>StopBits</string>
            </property>
           </widget>
          </item>
@@ -2845,7 +2845,7 @@
       <item row="1" column="1">
        <widget class="QGroupBox" name="gBoxMeter_8">
         <property name="title">
-         <string>8号表</string>
+         <string>8</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_12">
          <item row="0" column="0">
@@ -2857,7 +2857,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>串口</string>
+            <string>Com</string>
            </property>
           </widget>
          </item>
@@ -2968,7 +2968,7 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label_59">
            <property name="text">
-            <string>波特率</string>
+            <string>BaudRate</string>
            </property>
           </widget>
          </item>
@@ -3014,7 +3014,7 @@
          <item row="2" column="0">
           <widget class="QLabel" name="label_60">
            <property name="text">
-            <string>数据位</string>
+            <string>DataBits</string>
            </property>
           </widget>
          </item>
@@ -3045,7 +3045,7 @@
          <item row="3" column="0">
           <widget class="QLabel" name="label_61">
            <property name="text">
-            <string>校验位</string>
+            <string>Parity</string>
            </property>
           </widget>
          </item>
@@ -3053,17 +3053,17 @@
           <widget class="QComboBox" name="comboMeterChkBit_8">
            <item>
             <property name="text">
-             <string>无</string>
+             <string>None</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>奇</string>
+             <string>Odd</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>偶</string>
+             <string>Even</string>
             </property>
            </item>
           </widget>
@@ -3071,7 +3071,7 @@
          <item row="4" column="0">
           <widget class="QLabel" name="label_62">
            <property name="text">
-            <string>停止位</string>
+            <string>StopBits</string>
            </property>
           </widget>
          </item>
@@ -3100,7 +3100,7 @@
       <item row="1" column="2">
        <widget class="QGroupBox" name="gBoxMeter_9">
         <property name="title">
-         <string>9号表</string>
+         <string>9</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_13">
          <item row="0" column="0">
@@ -3112,7 +3112,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>串口</string>
+            <string>Com</string>
            </property>
           </widget>
          </item>
@@ -3223,7 +3223,7 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label_64">
            <property name="text">
-            <string>波特率</string>
+            <string>BaudRate</string>
            </property>
           </widget>
          </item>
@@ -3269,7 +3269,7 @@
          <item row="2" column="0">
           <widget class="QLabel" name="label_65">
            <property name="text">
-            <string>数据位</string>
+            <string>DataBits</string>
            </property>
           </widget>
          </item>
@@ -3300,7 +3300,7 @@
          <item row="3" column="0">
           <widget class="QLabel" name="label_66">
            <property name="text">
-            <string>校验位</string>
+            <string>Parity</string>
            </property>
           </widget>
          </item>
@@ -3308,17 +3308,17 @@
           <widget class="QComboBox" name="comboMeterChkBit_9">
            <item>
             <property name="text">
-             <string>无</string>
+             <string>None</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>奇</string>
+             <string>Odd</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>偶</string>
+             <string>Even</string>
             </property>
            </item>
           </widget>
@@ -3326,7 +3326,7 @@
          <item row="4" column="0">
           <widget class="QLabel" name="label_67">
            <property name="text">
-            <string>停止位</string>
+            <string>StopBits</string>
            </property>
           </widget>
          </item>
@@ -3355,7 +3355,7 @@
       <item row="1" column="3">
        <widget class="QGroupBox" name="gBoxMeter_10">
         <property name="title">
-         <string>10号表</string>
+         <string>10</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_14">
          <item row="0" column="0">
@@ -3367,7 +3367,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>串口</string>
+            <string>Com</string>
            </property>
           </widget>
          </item>
@@ -3478,7 +3478,7 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label_69">
            <property name="text">
-            <string>波特率</string>
+            <string>BaudRate</string>
            </property>
           </widget>
          </item>
@@ -3524,7 +3524,7 @@
          <item row="2" column="0">
           <widget class="QLabel" name="label_70">
            <property name="text">
-            <string>数据位</string>
+            <string>DataBits</string>
            </property>
           </widget>
          </item>
@@ -3555,7 +3555,7 @@
          <item row="3" column="0">
           <widget class="QLabel" name="label_71">
            <property name="text">
-            <string>校验位</string>
+            <string>Parity</string>
            </property>
           </widget>
          </item>
@@ -3563,17 +3563,17 @@
           <widget class="QComboBox" name="comboMeterChkBit_10">
            <item>
             <property name="text">
-             <string>无</string>
+             <string>None</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>奇</string>
+             <string>Odd</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>偶</string>
+             <string>Even</string>
             </property>
            </item>
           </widget>
@@ -3581,7 +3581,7 @@
          <item row="4" column="0">
           <widget class="QLabel" name="label_72">
            <property name="text">
-            <string>停止位</string>
+            <string>StopBits</string>
            </property>
           </widget>
          </item>
@@ -3610,7 +3610,7 @@
       <item row="1" column="4">
        <widget class="QGroupBox" name="gBoxMeter_11">
         <property name="title">
-         <string>11号表</string>
+         <string>11</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_15">
          <item row="0" column="0">
@@ -3622,7 +3622,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>串口</string>
+            <string>Com</string>
            </property>
           </widget>
          </item>
@@ -3733,7 +3733,7 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label_74">
            <property name="text">
-            <string>波特率</string>
+            <string>BaudRate</string>
            </property>
           </widget>
          </item>
@@ -3779,7 +3779,7 @@
          <item row="2" column="0">
           <widget class="QLabel" name="label_75">
            <property name="text">
-            <string>数据位</string>
+            <string>DataBits</string>
            </property>
           </widget>
          </item>
@@ -3810,7 +3810,7 @@
          <item row="3" column="0">
           <widget class="QLabel" name="label_76">
            <property name="text">
-            <string>校验位</string>
+            <string>Parity</string>
            </property>
           </widget>
          </item>
@@ -3818,17 +3818,17 @@
           <widget class="QComboBox" name="comboMeterChkBit_11">
            <item>
             <property name="text">
-             <string>无</string>
+             <string>None</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>奇</string>
+             <string>Odd</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>偶</string>
+             <string>Even</string>
             </property>
            </item>
           </widget>
@@ -3836,7 +3836,7 @@
          <item row="4" column="0">
           <widget class="QLabel" name="label_77">
            <property name="text">
-            <string>停止位</string>
+            <string>StopBits</string>
            </property>
           </widget>
          </item>
@@ -3865,7 +3865,7 @@
       <item row="1" column="5">
        <widget class="QGroupBox" name="gBoxMeter_12">
         <property name="title">
-         <string>12号表</string>
+         <string>12</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_16">
          <item row="0" column="0">
@@ -3877,7 +3877,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>串口</string>
+            <string>Com</string>
            </property>
           </widget>
          </item>
@@ -3988,7 +3988,7 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label_79">
            <property name="text">
-            <string>波特率</string>
+            <string>BaudRate</string>
            </property>
           </widget>
          </item>
@@ -4034,7 +4034,7 @@
          <item row="2" column="0">
           <widget class="QLabel" name="label_80">
            <property name="text">
-            <string>数据位</string>
+            <string>DataBits</string>
            </property>
           </widget>
          </item>
@@ -4065,7 +4065,7 @@
          <item row="3" column="0">
           <widget class="QLabel" name="label_81">
            <property name="text">
-            <string>校验位</string>
+            <string>Parity</string>
            </property>
           </widget>
          </item>
@@ -4073,17 +4073,17 @@
           <widget class="QComboBox" name="comboMeterChkBit_12">
            <item>
             <property name="text">
-             <string>无</string>
+             <string>None</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>奇</string>
+             <string>Odd</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>偶</string>
+             <string>Even</string>
             </property>
            </item>
           </widget>
@@ -4091,7 +4091,7 @@
          <item row="4" column="0">
           <widget class="QLabel" name="label_82">
            <property name="text">
-            <string>停止位</string>
+            <string>StopBits</string>
            </property>
           </widget>
          </item>
@@ -4138,7 +4138,7 @@
      <item>
       <widget class="QPushButton" name="btnSave">
        <property name="text">
-        <string>保存</string>
+        <string>Save</string>
        </property>
       </widget>
      </item>
@@ -4158,7 +4158,7 @@
      <item>
       <widget class="QPushButton" name="btnExit">
        <property name="text">
-        <string>退出</string>
+        <string>Exit</string>
        </property>
       </widget>
      </item>

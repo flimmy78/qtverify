@@ -4,7 +4,7 @@
 #include <QtGui/QWidget>
 #include <QtXml/QtXml>
 
-#include "ui_SetPortFrm.h"
+#include "ui_setportfrm.h"
 #include "comsetdlg_global.h"
 
 class COMSETDLG_EXPORT SetPortFrm : public QWidget

@@ -4,9 +4,9 @@
 #include <QtGui/QWidget>
 #include <QtXml/QtXml>
 
-#include "ui_SetComFrm.h"
+#include "ui_setcomfrm.h"
 #include "comsetdlg_global.h"
-#include "ReadComConfig.h"
+#include "readcomconfig.h"
 
 class COMSETDLG_EXPORT SetComFrm : public QWidget
 {

@@ -20,16 +20,14 @@ INCLUDEPATH  	=    ./      \
 									 $$(RUNHOME_INC)/include \
 									 $$(RUNHOME_INC)/include/qextserial
 
-HEADERS	+= $$(RUNHOME_INC)/include/comsetdlg_global.h \
-           $$(RUNHOME_INC)/include/comsetdlg.h   \
-		   $$(RUNHOME_INC)/include/setcomfrm.h   \
-		   $$(RUNHOME_INC)/include/setportfrm.h  \
-		   $$(RUNHOME_INC)/include/readcomconfig.h \
+
+HEADERS	+= $$(RUNHOME_INC)/include/setcomfrm.h   \
+		   		 $$(RUNHOME_INC)/include/setportfrm.h  \
+		   		 $$(RUNHOME_INC)/include/readcomconfig.h \
         	 $$(RUNHOME_INC)/include/qextserial/qextserialport_global.h  \
         	 $$(RUNHOME_INC)/include/qextserial/qextserialport.h
 	
-SOURCES	+= source/comsetdlg.cpp  \
-					 source/setcomfrm.cpp \
+SOURCES	+= source/setcomfrm.cpp \
 			     source/setportfrm.cpp \
 			     source/readcomconfig.cpp \
 	         $$(RUNHOME_INC)/include/qextserial/qextserialport.cpp
@@ -42,9 +40,8 @@ unix {
      SOURCES += $$(RUNHOME_INC)/include/qextserial/qextserialport_unix.cpp
 }
 					 
-FORMS	+= ui/comsetdlg.ui \
-		   ui/setcomfrm.ui \
-		   ui/setportfrm.ui \
+FORMS	+= ui/setcomfrm.ui \
+		     ui/setportfrm.ui \
 
 win32{
 	MY_DEST_LIB_VAR = $${DESTDIR} $${TARGET}.lib

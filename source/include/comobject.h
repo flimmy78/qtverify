@@ -20,7 +20,7 @@
 #include <QtCore/QObject> 
 
 #include "protocol.h"
-#include "comsetdlg.h"
+#include "comsetdlg_global.h"
 
 
 #define VALVE_OPEN		true	//·§ÃÅ´ò¿ª×´Ì¬

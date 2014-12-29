@@ -17,8 +17,7 @@
 #include <QtXml/QtXml>
 #include <iostream>
 
-#include "ReadComConfig.h"
-#include "comsetdlg.h"
+#include "readcomconfig.h"
 #include "commondefine.h"
 
 ReadComConfig::ReadComConfig()

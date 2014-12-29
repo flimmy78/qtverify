@@ -2,229 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="zh_CN">
 <context>
-    <name>ComSetDlg</name>
-    <message>
-        <location filename="../source/comsetdlg.cpp" line="39"/>
-        <source>9600</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/comsetdlg.cpp" line="41"/>
-        <source>115200</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/comsetdlg.cpp" line="45"/>
-        <source>8</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/comsetdlg.cpp" line="47"/>
-        <source>7</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/comsetdlg.cpp" line="51"/>
-        <location filename="../source/comsetdlg.cpp" line="53"/>
-        <location filename="../source/comsetdlg.cpp" line="55"/>
-        <source>?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/comsetdlg.cpp" line="59"/>
-        <source>1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/comsetdlg.cpp" line="61"/>
-        <source>2</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ComSetDlgClass</name>
-    <message>
-        <location filename="../ui/comsetdlg.ui" line="17"/>
-        <source>ComSetDlg</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/comsetdlg.ui" line="29"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;串口接收到的数据：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/comsetdlg.ui" line="49"/>
-        <source>串口</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/comsetdlg.ui" line="57"/>
-        <source>COM1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/comsetdlg.ui" line="62"/>
-        <source>COM2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/comsetdlg.ui" line="67"/>
-        <source>COM3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/comsetdlg.ui" line="72"/>
-        <source>COM4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/comsetdlg.ui" line="77"/>
-        <source>COM5</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/comsetdlg.ui" line="82"/>
-        <source>COM6</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/comsetdlg.ui" line="87"/>
-        <source>COM7</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/comsetdlg.ui" line="92"/>
-        <source>COM8</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/comsetdlg.ui" line="100"/>
-        <source>波特率</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/comsetdlg.ui" line="108"/>
-        <source>2400</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/comsetdlg.ui" line="113"/>
-        <source>4800</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/comsetdlg.ui" line="118"/>
-        <source>9600</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/comsetdlg.ui" line="123"/>
-        <source>14400</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/comsetdlg.ui" line="128"/>
-        <source>19200</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/comsetdlg.ui" line="133"/>
-        <source>38400</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/comsetdlg.ui" line="138"/>
-        <source>56000</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/comsetdlg.ui" line="146"/>
-        <source>数据位</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/comsetdlg.ui" line="154"/>
-        <source>5</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/comsetdlg.ui" line="159"/>
-        <source>6</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/comsetdlg.ui" line="164"/>
-        <source>7</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/comsetdlg.ui" line="169"/>
-        <source>8</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/comsetdlg.ui" line="177"/>
-        <source>校验位</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/comsetdlg.ui" line="185"/>
-        <source>无</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/comsetdlg.ui" line="190"/>
-        <source>奇</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/comsetdlg.ui" line="195"/>
-        <source>偶</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/comsetdlg.ui" line="203"/>
-        <source>停止位</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/comsetdlg.ui" line="211"/>
-        <source>1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/comsetdlg.ui" line="216"/>
-        <source>2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/comsetdlg.ui" line="236"/>
-        <source>打开串口</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/comsetdlg.ui" line="249"/>
-        <source>关闭串口</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/comsetdlg.ui" line="262"/>
-        <source>清除数据</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/comsetdlg.ui" line="290"/>
-        <source>要发送到串口的数据：</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/comsetdlg.ui" line="308"/>
-        <source>发送数据</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>QextSerialPort</name>
     <message>
         <location filename="../../../include/qextserial/qextserialport.cpp" line="723"/>
@@ -327,14 +104,14 @@
     <message>
         <location filename="../ui/setcomfrm.ui" line="14"/>
         <source>SetCom</source>
-        <translation type="unfinished"></translation>
+        <translation>串口设置</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setcomfrm.ui" line="22"/>
-        <source>阀门控制</source>
-        <translation type="unfinished"></translation>
+        <source>Valve Control</source>
+        <translation>阀门控制</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setcomfrm.ui" line="34"/>
         <location filename="../ui/setcomfrm.ui" line="289"/>
         <location filename="../ui/setcomfrm.ui" line="544"/>
@@ -351,8 +128,8 @@
         <location filename="../ui/setcomfrm.ui" line="3370"/>
         <location filename="../ui/setcomfrm.ui" line="3625"/>
         <location filename="../ui/setcomfrm.ui" line="3880"/>
-        <source>串口</source>
-        <translation type="unfinished"></translation>
+        <source>Com</source>
+        <translation>串口号</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="42"/>
@@ -372,7 +149,7 @@
         <location filename="../ui/setcomfrm.ui" line="3633"/>
         <location filename="../ui/setcomfrm.ui" line="3888"/>
         <source>COM1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="47"/>
@@ -392,7 +169,7 @@
         <location filename="../ui/setcomfrm.ui" line="3638"/>
         <location filename="../ui/setcomfrm.ui" line="3893"/>
         <source>COM2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="52"/>
@@ -412,7 +189,7 @@
         <location filename="../ui/setcomfrm.ui" line="3643"/>
         <location filename="../ui/setcomfrm.ui" line="3898"/>
         <source>COM3</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="57"/>
@@ -432,7 +209,7 @@
         <location filename="../ui/setcomfrm.ui" line="3648"/>
         <location filename="../ui/setcomfrm.ui" line="3903"/>
         <source>COM4</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="62"/>
@@ -452,7 +229,7 @@
         <location filename="../ui/setcomfrm.ui" line="3653"/>
         <location filename="../ui/setcomfrm.ui" line="3908"/>
         <source>COM5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="67"/>
@@ -472,7 +249,7 @@
         <location filename="../ui/setcomfrm.ui" line="3658"/>
         <location filename="../ui/setcomfrm.ui" line="3913"/>
         <source>COM6</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="72"/>
@@ -492,7 +269,7 @@
         <location filename="../ui/setcomfrm.ui" line="3663"/>
         <location filename="../ui/setcomfrm.ui" line="3918"/>
         <source>COM7</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="77"/>
@@ -512,7 +289,7 @@
         <location filename="../ui/setcomfrm.ui" line="3668"/>
         <location filename="../ui/setcomfrm.ui" line="3923"/>
         <source>COM8</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="82"/>
@@ -532,7 +309,7 @@
         <location filename="../ui/setcomfrm.ui" line="3673"/>
         <location filename="../ui/setcomfrm.ui" line="3928"/>
         <source>COM9</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="87"/>
@@ -552,7 +329,7 @@
         <location filename="../ui/setcomfrm.ui" line="3678"/>
         <location filename="../ui/setcomfrm.ui" line="3933"/>
         <source>COM10</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="92"/>
@@ -572,7 +349,7 @@
         <location filename="../ui/setcomfrm.ui" line="3683"/>
         <location filename="../ui/setcomfrm.ui" line="3938"/>
         <source>COM11</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="97"/>
@@ -592,7 +369,7 @@
         <location filename="../ui/setcomfrm.ui" line="3688"/>
         <location filename="../ui/setcomfrm.ui" line="3943"/>
         <source>COM12</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="102"/>
@@ -612,7 +389,7 @@
         <location filename="../ui/setcomfrm.ui" line="3693"/>
         <location filename="../ui/setcomfrm.ui" line="3948"/>
         <source>COM13</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="107"/>
@@ -632,7 +409,7 @@
         <location filename="../ui/setcomfrm.ui" line="3698"/>
         <location filename="../ui/setcomfrm.ui" line="3953"/>
         <source>COM14</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="112"/>
@@ -652,7 +429,7 @@
         <location filename="../ui/setcomfrm.ui" line="3703"/>
         <location filename="../ui/setcomfrm.ui" line="3958"/>
         <source>COM15</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="117"/>
@@ -672,7 +449,7 @@
         <location filename="../ui/setcomfrm.ui" line="3708"/>
         <location filename="../ui/setcomfrm.ui" line="3963"/>
         <source>COM16</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="122"/>
@@ -692,7 +469,7 @@
         <location filename="../ui/setcomfrm.ui" line="3713"/>
         <location filename="../ui/setcomfrm.ui" line="3968"/>
         <source>COM17</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="127"/>
@@ -712,7 +489,7 @@
         <location filename="../ui/setcomfrm.ui" line="3718"/>
         <location filename="../ui/setcomfrm.ui" line="3973"/>
         <source>COM18</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="132"/>
@@ -732,7 +509,7 @@
         <location filename="../ui/setcomfrm.ui" line="3723"/>
         <location filename="../ui/setcomfrm.ui" line="3978"/>
         <source>COM19</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="137"/>
@@ -752,9 +529,9 @@
         <location filename="../ui/setcomfrm.ui" line="3728"/>
         <location filename="../ui/setcomfrm.ui" line="3983"/>
         <source>COM20</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setcomfrm.ui" line="145"/>
         <location filename="../ui/setcomfrm.ui" line="400"/>
         <location filename="../ui/setcomfrm.ui" line="655"/>
@@ -771,8 +548,188 @@
         <location filename="../ui/setcomfrm.ui" line="3481"/>
         <location filename="../ui/setcomfrm.ui" line="3736"/>
         <location filename="../ui/setcomfrm.ui" line="3991"/>
-        <source>波特率</source>
-        <translation type="unfinished"></translation>
+        <source>BaudRate</source>
+        <translation>波特率</translation>
+    </message>
+    <message>
+        <location filename="../ui/setcomfrm.ui" line="191"/>
+        <location filename="../ui/setcomfrm.ui" line="446"/>
+        <location filename="../ui/setcomfrm.ui" line="701"/>
+        <location filename="../ui/setcomfrm.ui" line="956"/>
+        <location filename="../ui/setcomfrm.ui" line="1232"/>
+        <location filename="../ui/setcomfrm.ui" line="1487"/>
+        <location filename="../ui/setcomfrm.ui" line="1742"/>
+        <location filename="../ui/setcomfrm.ui" line="1997"/>
+        <location filename="../ui/setcomfrm.ui" line="2252"/>
+        <location filename="../ui/setcomfrm.ui" line="2507"/>
+        <location filename="../ui/setcomfrm.ui" line="2762"/>
+        <location filename="../ui/setcomfrm.ui" line="3017"/>
+        <location filename="../ui/setcomfrm.ui" line="3272"/>
+        <location filename="../ui/setcomfrm.ui" line="3527"/>
+        <location filename="../ui/setcomfrm.ui" line="3782"/>
+        <location filename="../ui/setcomfrm.ui" line="4037"/>
+        <source>DataBits</source>
+        <translation>数据位</translation>
+    </message>
+    <message>
+        <location filename="../ui/setcomfrm.ui" line="222"/>
+        <location filename="../ui/setcomfrm.ui" line="477"/>
+        <location filename="../ui/setcomfrm.ui" line="732"/>
+        <location filename="../ui/setcomfrm.ui" line="987"/>
+        <location filename="../ui/setcomfrm.ui" line="1263"/>
+        <location filename="../ui/setcomfrm.ui" line="1518"/>
+        <location filename="../ui/setcomfrm.ui" line="1773"/>
+        <location filename="../ui/setcomfrm.ui" line="2028"/>
+        <location filename="../ui/setcomfrm.ui" line="2283"/>
+        <location filename="../ui/setcomfrm.ui" line="2538"/>
+        <location filename="../ui/setcomfrm.ui" line="2793"/>
+        <location filename="../ui/setcomfrm.ui" line="3048"/>
+        <location filename="../ui/setcomfrm.ui" line="3303"/>
+        <location filename="../ui/setcomfrm.ui" line="3558"/>
+        <location filename="../ui/setcomfrm.ui" line="3813"/>
+        <location filename="../ui/setcomfrm.ui" line="4068"/>
+        <source>Parity</source>
+        <translation>校验位</translation>
+    </message>
+    <message>
+        <location filename="../ui/setcomfrm.ui" line="230"/>
+        <location filename="../ui/setcomfrm.ui" line="485"/>
+        <location filename="../ui/setcomfrm.ui" line="740"/>
+        <location filename="../ui/setcomfrm.ui" line="995"/>
+        <location filename="../ui/setcomfrm.ui" line="1271"/>
+        <location filename="../ui/setcomfrm.ui" line="1526"/>
+        <location filename="../ui/setcomfrm.ui" line="1781"/>
+        <location filename="../ui/setcomfrm.ui" line="2036"/>
+        <location filename="../ui/setcomfrm.ui" line="2291"/>
+        <location filename="../ui/setcomfrm.ui" line="2546"/>
+        <location filename="../ui/setcomfrm.ui" line="2801"/>
+        <location filename="../ui/setcomfrm.ui" line="3056"/>
+        <location filename="../ui/setcomfrm.ui" line="3311"/>
+        <location filename="../ui/setcomfrm.ui" line="3566"/>
+        <location filename="../ui/setcomfrm.ui" line="3821"/>
+        <location filename="../ui/setcomfrm.ui" line="4076"/>
+        <source>None</source>
+        <translation>无</translation>
+    </message>
+    <message>
+        <location filename="../ui/setcomfrm.ui" line="235"/>
+        <location filename="../ui/setcomfrm.ui" line="490"/>
+        <location filename="../ui/setcomfrm.ui" line="745"/>
+        <location filename="../ui/setcomfrm.ui" line="1000"/>
+        <location filename="../ui/setcomfrm.ui" line="1276"/>
+        <location filename="../ui/setcomfrm.ui" line="1531"/>
+        <location filename="../ui/setcomfrm.ui" line="1786"/>
+        <location filename="../ui/setcomfrm.ui" line="2041"/>
+        <location filename="../ui/setcomfrm.ui" line="2296"/>
+        <location filename="../ui/setcomfrm.ui" line="2551"/>
+        <location filename="../ui/setcomfrm.ui" line="2806"/>
+        <location filename="../ui/setcomfrm.ui" line="3061"/>
+        <location filename="../ui/setcomfrm.ui" line="3316"/>
+        <location filename="../ui/setcomfrm.ui" line="3571"/>
+        <location filename="../ui/setcomfrm.ui" line="3826"/>
+        <location filename="../ui/setcomfrm.ui" line="4081"/>
+        <source>Odd</source>
+        <translation>奇校验</translation>
+    </message>
+    <message>
+        <location filename="../ui/setcomfrm.ui" line="240"/>
+        <location filename="../ui/setcomfrm.ui" line="495"/>
+        <location filename="../ui/setcomfrm.ui" line="750"/>
+        <location filename="../ui/setcomfrm.ui" line="1005"/>
+        <location filename="../ui/setcomfrm.ui" line="1281"/>
+        <location filename="../ui/setcomfrm.ui" line="1536"/>
+        <location filename="../ui/setcomfrm.ui" line="1791"/>
+        <location filename="../ui/setcomfrm.ui" line="2046"/>
+        <location filename="../ui/setcomfrm.ui" line="2301"/>
+        <location filename="../ui/setcomfrm.ui" line="2556"/>
+        <location filename="../ui/setcomfrm.ui" line="2811"/>
+        <location filename="../ui/setcomfrm.ui" line="3066"/>
+        <location filename="../ui/setcomfrm.ui" line="3321"/>
+        <location filename="../ui/setcomfrm.ui" line="3576"/>
+        <location filename="../ui/setcomfrm.ui" line="3831"/>
+        <location filename="../ui/setcomfrm.ui" line="4086"/>
+        <source>Even</source>
+        <translation>偶校验</translation>
+    </message>
+    <message>
+        <location filename="../ui/setcomfrm.ui" line="248"/>
+        <location filename="../ui/setcomfrm.ui" line="503"/>
+        <location filename="../ui/setcomfrm.ui" line="758"/>
+        <location filename="../ui/setcomfrm.ui" line="1013"/>
+        <location filename="../ui/setcomfrm.ui" line="1289"/>
+        <location filename="../ui/setcomfrm.ui" line="1544"/>
+        <location filename="../ui/setcomfrm.ui" line="1799"/>
+        <location filename="../ui/setcomfrm.ui" line="2054"/>
+        <location filename="../ui/setcomfrm.ui" line="2309"/>
+        <location filename="../ui/setcomfrm.ui" line="2564"/>
+        <location filename="../ui/setcomfrm.ui" line="2819"/>
+        <location filename="../ui/setcomfrm.ui" line="3074"/>
+        <location filename="../ui/setcomfrm.ui" line="3329"/>
+        <location filename="../ui/setcomfrm.ui" line="3584"/>
+        <location filename="../ui/setcomfrm.ui" line="3839"/>
+        <location filename="../ui/setcomfrm.ui" line="4094"/>
+        <source>StopBits</source>
+        <translation>停止位</translation>
+    </message>
+    <message>
+        <location filename="../ui/setcomfrm.ui" line="277"/>
+        <source>Balance</source>
+        <translation>天平</translation>
+    </message>
+    <message>
+        <location filename="../ui/setcomfrm.ui" line="532"/>
+        <source>Temp Acquisition</source>
+        <translation>温度采集</translation>
+    </message>
+    <message>
+        <location filename="../ui/setcomfrm.ui" line="787"/>
+        <source>Standard Temp</source>
+        <translation>标准温度</translation>
+    </message>
+    <message>
+        <location filename="../ui/setcomfrm.ui" line="1057"/>
+        <source>Meter</source>
+        <translation>表</translation>
+    </message>
+    <message>
+        <location filename="../ui/setcomfrm.ui" line="1573"/>
+        <source>3</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../ui/setcomfrm.ui" line="1828"/>
+        <source>4</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../ui/setcomfrm.ui" line="3103"/>
+        <source>9</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../ui/setcomfrm.ui" line="3358"/>
+        <source>10</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../ui/setcomfrm.ui" line="3613"/>
+        <source>11</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../ui/setcomfrm.ui" line="3868"/>
+        <source>12</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../ui/setcomfrm.ui" line="4141"/>
+        <source>Save</source>
+        <translation>保存</translation>
+    </message>
+    <message>
+        <location filename="../ui/setcomfrm.ui" line="4161"/>
+        <source>Exit</source>
+        <translation>退出</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="153"/>
@@ -792,7 +749,7 @@
         <location filename="../ui/setcomfrm.ui" line="3744"/>
         <location filename="../ui/setcomfrm.ui" line="3999"/>
         <source>2400</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="158"/>
@@ -812,7 +769,7 @@
         <location filename="../ui/setcomfrm.ui" line="3749"/>
         <location filename="../ui/setcomfrm.ui" line="4004"/>
         <source>4800</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="163"/>
@@ -832,7 +789,7 @@
         <location filename="../ui/setcomfrm.ui" line="3754"/>
         <location filename="../ui/setcomfrm.ui" line="4009"/>
         <source>9600</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="168"/>
@@ -852,7 +809,7 @@
         <location filename="../ui/setcomfrm.ui" line="3759"/>
         <location filename="../ui/setcomfrm.ui" line="4014"/>
         <source>14400</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="173"/>
@@ -872,7 +829,7 @@
         <location filename="../ui/setcomfrm.ui" line="3764"/>
         <location filename="../ui/setcomfrm.ui" line="4019"/>
         <source>19200</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="178"/>
@@ -892,7 +849,7 @@
         <location filename="../ui/setcomfrm.ui" line="3769"/>
         <location filename="../ui/setcomfrm.ui" line="4024"/>
         <source>38400</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="183"/>
@@ -912,27 +869,7 @@
         <location filename="../ui/setcomfrm.ui" line="3774"/>
         <location filename="../ui/setcomfrm.ui" line="4029"/>
         <source>56000</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="191"/>
-        <location filename="../ui/setcomfrm.ui" line="446"/>
-        <location filename="../ui/setcomfrm.ui" line="701"/>
-        <location filename="../ui/setcomfrm.ui" line="956"/>
-        <location filename="../ui/setcomfrm.ui" line="1232"/>
-        <location filename="../ui/setcomfrm.ui" line="1487"/>
-        <location filename="../ui/setcomfrm.ui" line="1742"/>
-        <location filename="../ui/setcomfrm.ui" line="1997"/>
-        <location filename="../ui/setcomfrm.ui" line="2252"/>
-        <location filename="../ui/setcomfrm.ui" line="2507"/>
-        <location filename="../ui/setcomfrm.ui" line="2762"/>
-        <location filename="../ui/setcomfrm.ui" line="3017"/>
-        <location filename="../ui/setcomfrm.ui" line="3272"/>
-        <location filename="../ui/setcomfrm.ui" line="3527"/>
-        <location filename="../ui/setcomfrm.ui" line="3782"/>
-        <location filename="../ui/setcomfrm.ui" line="4037"/>
-        <source>数据位</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="199"/>
@@ -943,6 +880,7 @@
         <location filename="../ui/setcomfrm.ui" line="1495"/>
         <location filename="../ui/setcomfrm.ui" line="1750"/>
         <location filename="../ui/setcomfrm.ui" line="2005"/>
+        <location filename="../ui/setcomfrm.ui" line="2083"/>
         <location filename="../ui/setcomfrm.ui" line="2260"/>
         <location filename="../ui/setcomfrm.ui" line="2515"/>
         <location filename="../ui/setcomfrm.ui" line="2770"/>
@@ -952,7 +890,7 @@
         <location filename="../ui/setcomfrm.ui" line="3790"/>
         <location filename="../ui/setcomfrm.ui" line="4045"/>
         <source>5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="204"/>
@@ -964,6 +902,7 @@
         <location filename="../ui/setcomfrm.ui" line="1755"/>
         <location filename="../ui/setcomfrm.ui" line="2010"/>
         <location filename="../ui/setcomfrm.ui" line="2265"/>
+        <location filename="../ui/setcomfrm.ui" line="2338"/>
         <location filename="../ui/setcomfrm.ui" line="2520"/>
         <location filename="../ui/setcomfrm.ui" line="2775"/>
         <location filename="../ui/setcomfrm.ui" line="3030"/>
@@ -972,7 +911,7 @@
         <location filename="../ui/setcomfrm.ui" line="3795"/>
         <location filename="../ui/setcomfrm.ui" line="4050"/>
         <source>6</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="209"/>
@@ -985,6 +924,7 @@
         <location filename="../ui/setcomfrm.ui" line="2015"/>
         <location filename="../ui/setcomfrm.ui" line="2270"/>
         <location filename="../ui/setcomfrm.ui" line="2525"/>
+        <location filename="../ui/setcomfrm.ui" line="2593"/>
         <location filename="../ui/setcomfrm.ui" line="2780"/>
         <location filename="../ui/setcomfrm.ui" line="3035"/>
         <location filename="../ui/setcomfrm.ui" line="3290"/>
@@ -992,7 +932,7 @@
         <location filename="../ui/setcomfrm.ui" line="3800"/>
         <location filename="../ui/setcomfrm.ui" line="4055"/>
         <source>7</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="214"/>
@@ -1006,119 +946,21 @@
         <location filename="../ui/setcomfrm.ui" line="2275"/>
         <location filename="../ui/setcomfrm.ui" line="2530"/>
         <location filename="../ui/setcomfrm.ui" line="2785"/>
+        <location filename="../ui/setcomfrm.ui" line="2848"/>
         <location filename="../ui/setcomfrm.ui" line="3040"/>
         <location filename="../ui/setcomfrm.ui" line="3295"/>
         <location filename="../ui/setcomfrm.ui" line="3550"/>
         <location filename="../ui/setcomfrm.ui" line="3805"/>
         <location filename="../ui/setcomfrm.ui" line="4060"/>
         <source>8</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="222"/>
-        <location filename="../ui/setcomfrm.ui" line="477"/>
-        <location filename="../ui/setcomfrm.ui" line="732"/>
-        <location filename="../ui/setcomfrm.ui" line="987"/>
-        <location filename="../ui/setcomfrm.ui" line="1263"/>
-        <location filename="../ui/setcomfrm.ui" line="1518"/>
-        <location filename="../ui/setcomfrm.ui" line="1773"/>
-        <location filename="../ui/setcomfrm.ui" line="2028"/>
-        <location filename="../ui/setcomfrm.ui" line="2283"/>
-        <location filename="../ui/setcomfrm.ui" line="2538"/>
-        <location filename="../ui/setcomfrm.ui" line="2793"/>
-        <location filename="../ui/setcomfrm.ui" line="3048"/>
-        <location filename="../ui/setcomfrm.ui" line="3303"/>
-        <location filename="../ui/setcomfrm.ui" line="3558"/>
-        <location filename="../ui/setcomfrm.ui" line="3813"/>
-        <location filename="../ui/setcomfrm.ui" line="4068"/>
-        <source>校验位</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="230"/>
-        <location filename="../ui/setcomfrm.ui" line="485"/>
-        <location filename="../ui/setcomfrm.ui" line="740"/>
-        <location filename="../ui/setcomfrm.ui" line="995"/>
-        <location filename="../ui/setcomfrm.ui" line="1271"/>
-        <location filename="../ui/setcomfrm.ui" line="1526"/>
-        <location filename="../ui/setcomfrm.ui" line="1781"/>
-        <location filename="../ui/setcomfrm.ui" line="2036"/>
-        <location filename="../ui/setcomfrm.ui" line="2291"/>
-        <location filename="../ui/setcomfrm.ui" line="2546"/>
-        <location filename="../ui/setcomfrm.ui" line="2801"/>
-        <location filename="../ui/setcomfrm.ui" line="3056"/>
-        <location filename="../ui/setcomfrm.ui" line="3311"/>
-        <location filename="../ui/setcomfrm.ui" line="3566"/>
-        <location filename="../ui/setcomfrm.ui" line="3821"/>
-        <location filename="../ui/setcomfrm.ui" line="4076"/>
-        <source>无</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="235"/>
-        <location filename="../ui/setcomfrm.ui" line="490"/>
-        <location filename="../ui/setcomfrm.ui" line="745"/>
-        <location filename="../ui/setcomfrm.ui" line="1000"/>
-        <location filename="../ui/setcomfrm.ui" line="1276"/>
-        <location filename="../ui/setcomfrm.ui" line="1531"/>
-        <location filename="../ui/setcomfrm.ui" line="1786"/>
-        <location filename="../ui/setcomfrm.ui" line="2041"/>
-        <location filename="../ui/setcomfrm.ui" line="2296"/>
-        <location filename="../ui/setcomfrm.ui" line="2551"/>
-        <location filename="../ui/setcomfrm.ui" line="2806"/>
-        <location filename="../ui/setcomfrm.ui" line="3061"/>
-        <location filename="../ui/setcomfrm.ui" line="3316"/>
-        <location filename="../ui/setcomfrm.ui" line="3571"/>
-        <location filename="../ui/setcomfrm.ui" line="3826"/>
-        <location filename="../ui/setcomfrm.ui" line="4081"/>
-        <source>奇</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="240"/>
-        <location filename="../ui/setcomfrm.ui" line="495"/>
-        <location filename="../ui/setcomfrm.ui" line="750"/>
-        <location filename="../ui/setcomfrm.ui" line="1005"/>
-        <location filename="../ui/setcomfrm.ui" line="1281"/>
-        <location filename="../ui/setcomfrm.ui" line="1536"/>
-        <location filename="../ui/setcomfrm.ui" line="1791"/>
-        <location filename="../ui/setcomfrm.ui" line="2046"/>
-        <location filename="../ui/setcomfrm.ui" line="2301"/>
-        <location filename="../ui/setcomfrm.ui" line="2556"/>
-        <location filename="../ui/setcomfrm.ui" line="2811"/>
-        <location filename="../ui/setcomfrm.ui" line="3066"/>
-        <location filename="../ui/setcomfrm.ui" line="3321"/>
-        <location filename="../ui/setcomfrm.ui" line="3576"/>
-        <location filename="../ui/setcomfrm.ui" line="3831"/>
-        <location filename="../ui/setcomfrm.ui" line="4086"/>
-        <source>偶</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="248"/>
-        <location filename="../ui/setcomfrm.ui" line="503"/>
-        <location filename="../ui/setcomfrm.ui" line="758"/>
-        <location filename="../ui/setcomfrm.ui" line="1013"/>
-        <location filename="../ui/setcomfrm.ui" line="1289"/>
-        <location filename="../ui/setcomfrm.ui" line="1544"/>
-        <location filename="../ui/setcomfrm.ui" line="1799"/>
-        <location filename="../ui/setcomfrm.ui" line="2054"/>
-        <location filename="../ui/setcomfrm.ui" line="2309"/>
-        <location filename="../ui/setcomfrm.ui" line="2564"/>
-        <location filename="../ui/setcomfrm.ui" line="2819"/>
-        <location filename="../ui/setcomfrm.ui" line="3074"/>
-        <location filename="../ui/setcomfrm.ui" line="3329"/>
-        <location filename="../ui/setcomfrm.ui" line="3584"/>
-        <location filename="../ui/setcomfrm.ui" line="3839"/>
-        <location filename="../ui/setcomfrm.ui" line="4094"/>
-        <source>停止位</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="256"/>
         <location filename="../ui/setcomfrm.ui" line="511"/>
         <location filename="../ui/setcomfrm.ui" line="766"/>
         <location filename="../ui/setcomfrm.ui" line="1021"/>
+        <location filename="../ui/setcomfrm.ui" line="1063"/>
         <location filename="../ui/setcomfrm.ui" line="1297"/>
         <location filename="../ui/setcomfrm.ui" line="1552"/>
         <location filename="../ui/setcomfrm.ui" line="1807"/>
@@ -1132,7 +974,7 @@
         <location filename="../ui/setcomfrm.ui" line="3847"/>
         <location filename="../ui/setcomfrm.ui" line="4102"/>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="261"/>
@@ -1152,7 +994,7 @@
         <location filename="../ui/setcomfrm.ui" line="3852"/>
         <location filename="../ui/setcomfrm.ui" line="4107"/>
         <source>1.5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="266"/>
@@ -1160,6 +1002,7 @@
         <location filename="../ui/setcomfrm.ui" line="776"/>
         <location filename="../ui/setcomfrm.ui" line="1031"/>
         <location filename="../ui/setcomfrm.ui" line="1307"/>
+        <location filename="../ui/setcomfrm.ui" line="1318"/>
         <location filename="../ui/setcomfrm.ui" line="1562"/>
         <location filename="../ui/setcomfrm.ui" line="1817"/>
         <location filename="../ui/setcomfrm.ui" line="2072"/>
@@ -1172,97 +1015,7 @@
         <location filename="../ui/setcomfrm.ui" line="3857"/>
         <location filename="../ui/setcomfrm.ui" line="4112"/>
         <source>2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="277"/>
-        <source>天平采集</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="532"/>
-        <source>温度采集</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="787"/>
-        <source>标准温度</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="1057"/>
-        <source>被检表</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="1063"/>
-        <source>1号表</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="1318"/>
-        <source>2号表</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="1573"/>
-        <source>3号表</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="1828"/>
-        <source>4号表</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="2083"/>
-        <source>5号表</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="2338"/>
-        <source>6号表</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="2593"/>
-        <source>7号表</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="2848"/>
-        <source>8号表</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="3103"/>
-        <source>9号表</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="3358"/>
-        <source>10号表</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="3613"/>
-        <source>11号表</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="3868"/>
-        <source>12号表</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="4141"/>
-        <source>保存</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/setcomfrm.ui" line="4161"/>
-        <source>退出</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1270,382 +1023,382 @@
     <message>
         <location filename="../ui/setportfrm.ui" line="14"/>
         <source>SetPortFrm</source>
-        <translation type="unfinished"></translation>
+        <translation>端口设置</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="20"/>
-        <source>阀门</source>
-        <translation type="unfinished"></translation>
+        <source>Valve</source>
+        <translation>阀门</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="26"/>
-        <source>进水总阀</source>
-        <translation type="unfinished"></translation>
+        <source>Valve In</source>
+        <translation>入口总阀</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="34"/>
         <location filename="../ui/setportfrm.ui" line="145"/>
         <location filename="../ui/setportfrm.ui" line="256"/>
         <location filename="../ui/setportfrm.ui" line="367"/>
         <location filename="../ui/setportfrm.ui" line="478"/>
         <location filename="../ui/setportfrm.ui" line="589"/>
-        <location filename="../ui/setportfrm.ui" line="709"/>
-        <location filename="../ui/setportfrm.ui" line="820"/>
-        <location filename="../ui/setportfrm.ui" line="931"/>
-        <location filename="../ui/setportfrm.ui" line="1042"/>
-        <location filename="../ui/setportfrm.ui" line="1153"/>
-        <source>端口1</source>
+        <location filename="../ui/setportfrm.ui" line="722"/>
+        <location filename="../ui/setportfrm.ui" line="833"/>
+        <location filename="../ui/setportfrm.ui" line="944"/>
+        <location filename="../ui/setportfrm.ui" line="1055"/>
+        <location filename="../ui/setportfrm.ui" line="1166"/>
+        <source>port1</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="39"/>
         <location filename="../ui/setportfrm.ui" line="150"/>
         <location filename="../ui/setportfrm.ui" line="261"/>
         <location filename="../ui/setportfrm.ui" line="372"/>
         <location filename="../ui/setportfrm.ui" line="483"/>
         <location filename="../ui/setportfrm.ui" line="594"/>
-        <location filename="../ui/setportfrm.ui" line="714"/>
-        <location filename="../ui/setportfrm.ui" line="825"/>
-        <location filename="../ui/setportfrm.ui" line="936"/>
-        <location filename="../ui/setportfrm.ui" line="1047"/>
-        <location filename="../ui/setportfrm.ui" line="1158"/>
-        <source>端口2</source>
+        <location filename="../ui/setportfrm.ui" line="727"/>
+        <location filename="../ui/setportfrm.ui" line="838"/>
+        <location filename="../ui/setportfrm.ui" line="949"/>
+        <location filename="../ui/setportfrm.ui" line="1060"/>
+        <location filename="../ui/setportfrm.ui" line="1171"/>
+        <source>port2</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="44"/>
         <location filename="../ui/setportfrm.ui" line="155"/>
         <location filename="../ui/setportfrm.ui" line="266"/>
         <location filename="../ui/setportfrm.ui" line="377"/>
         <location filename="../ui/setportfrm.ui" line="488"/>
         <location filename="../ui/setportfrm.ui" line="599"/>
-        <location filename="../ui/setportfrm.ui" line="719"/>
-        <location filename="../ui/setportfrm.ui" line="830"/>
-        <location filename="../ui/setportfrm.ui" line="941"/>
-        <location filename="../ui/setportfrm.ui" line="1052"/>
-        <location filename="../ui/setportfrm.ui" line="1163"/>
-        <source>端口3</source>
+        <location filename="../ui/setportfrm.ui" line="732"/>
+        <location filename="../ui/setportfrm.ui" line="843"/>
+        <location filename="../ui/setportfrm.ui" line="954"/>
+        <location filename="../ui/setportfrm.ui" line="1065"/>
+        <location filename="../ui/setportfrm.ui" line="1176"/>
+        <source>port3</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="49"/>
         <location filename="../ui/setportfrm.ui" line="160"/>
         <location filename="../ui/setportfrm.ui" line="271"/>
         <location filename="../ui/setportfrm.ui" line="382"/>
         <location filename="../ui/setportfrm.ui" line="493"/>
         <location filename="../ui/setportfrm.ui" line="604"/>
-        <location filename="../ui/setportfrm.ui" line="724"/>
-        <location filename="../ui/setportfrm.ui" line="835"/>
-        <location filename="../ui/setportfrm.ui" line="946"/>
-        <location filename="../ui/setportfrm.ui" line="1057"/>
-        <location filename="../ui/setportfrm.ui" line="1168"/>
-        <source>端口4</source>
+        <location filename="../ui/setportfrm.ui" line="737"/>
+        <location filename="../ui/setportfrm.ui" line="848"/>
+        <location filename="../ui/setportfrm.ui" line="959"/>
+        <location filename="../ui/setportfrm.ui" line="1070"/>
+        <location filename="../ui/setportfrm.ui" line="1181"/>
+        <source>port4</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="54"/>
         <location filename="../ui/setportfrm.ui" line="165"/>
         <location filename="../ui/setportfrm.ui" line="276"/>
         <location filename="../ui/setportfrm.ui" line="387"/>
         <location filename="../ui/setportfrm.ui" line="498"/>
         <location filename="../ui/setportfrm.ui" line="609"/>
-        <location filename="../ui/setportfrm.ui" line="729"/>
-        <location filename="../ui/setportfrm.ui" line="840"/>
-        <location filename="../ui/setportfrm.ui" line="951"/>
-        <location filename="../ui/setportfrm.ui" line="1062"/>
-        <location filename="../ui/setportfrm.ui" line="1173"/>
-        <source>端口5</source>
+        <location filename="../ui/setportfrm.ui" line="742"/>
+        <location filename="../ui/setportfrm.ui" line="853"/>
+        <location filename="../ui/setportfrm.ui" line="964"/>
+        <location filename="../ui/setportfrm.ui" line="1075"/>
+        <location filename="../ui/setportfrm.ui" line="1186"/>
+        <source>port5</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="59"/>
         <location filename="../ui/setportfrm.ui" line="170"/>
         <location filename="../ui/setportfrm.ui" line="281"/>
         <location filename="../ui/setportfrm.ui" line="392"/>
         <location filename="../ui/setportfrm.ui" line="503"/>
         <location filename="../ui/setportfrm.ui" line="614"/>
-        <location filename="../ui/setportfrm.ui" line="734"/>
-        <location filename="../ui/setportfrm.ui" line="845"/>
-        <location filename="../ui/setportfrm.ui" line="956"/>
-        <location filename="../ui/setportfrm.ui" line="1067"/>
-        <location filename="../ui/setportfrm.ui" line="1178"/>
-        <source>端口6</source>
+        <location filename="../ui/setportfrm.ui" line="747"/>
+        <location filename="../ui/setportfrm.ui" line="858"/>
+        <location filename="../ui/setportfrm.ui" line="969"/>
+        <location filename="../ui/setportfrm.ui" line="1080"/>
+        <location filename="../ui/setportfrm.ui" line="1191"/>
+        <source>port6</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="64"/>
         <location filename="../ui/setportfrm.ui" line="175"/>
         <location filename="../ui/setportfrm.ui" line="286"/>
         <location filename="../ui/setportfrm.ui" line="397"/>
         <location filename="../ui/setportfrm.ui" line="508"/>
         <location filename="../ui/setportfrm.ui" line="619"/>
-        <location filename="../ui/setportfrm.ui" line="739"/>
-        <location filename="../ui/setportfrm.ui" line="850"/>
-        <location filename="../ui/setportfrm.ui" line="961"/>
-        <location filename="../ui/setportfrm.ui" line="1072"/>
-        <location filename="../ui/setportfrm.ui" line="1183"/>
-        <source>端口7</source>
+        <location filename="../ui/setportfrm.ui" line="752"/>
+        <location filename="../ui/setportfrm.ui" line="863"/>
+        <location filename="../ui/setportfrm.ui" line="974"/>
+        <location filename="../ui/setportfrm.ui" line="1085"/>
+        <location filename="../ui/setportfrm.ui" line="1196"/>
+        <source>port7</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="69"/>
         <location filename="../ui/setportfrm.ui" line="180"/>
         <location filename="../ui/setportfrm.ui" line="291"/>
         <location filename="../ui/setportfrm.ui" line="402"/>
         <location filename="../ui/setportfrm.ui" line="513"/>
         <location filename="../ui/setportfrm.ui" line="624"/>
-        <location filename="../ui/setportfrm.ui" line="744"/>
-        <location filename="../ui/setportfrm.ui" line="855"/>
-        <location filename="../ui/setportfrm.ui" line="966"/>
-        <location filename="../ui/setportfrm.ui" line="1077"/>
-        <location filename="../ui/setportfrm.ui" line="1188"/>
-        <source>端口8</source>
+        <location filename="../ui/setportfrm.ui" line="757"/>
+        <location filename="../ui/setportfrm.ui" line="868"/>
+        <location filename="../ui/setportfrm.ui" line="979"/>
+        <location filename="../ui/setportfrm.ui" line="1090"/>
+        <location filename="../ui/setportfrm.ui" line="1201"/>
+        <source>port8</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="74"/>
         <location filename="../ui/setportfrm.ui" line="185"/>
         <location filename="../ui/setportfrm.ui" line="296"/>
         <location filename="../ui/setportfrm.ui" line="407"/>
         <location filename="../ui/setportfrm.ui" line="518"/>
         <location filename="../ui/setportfrm.ui" line="629"/>
-        <location filename="../ui/setportfrm.ui" line="749"/>
-        <location filename="../ui/setportfrm.ui" line="860"/>
-        <location filename="../ui/setportfrm.ui" line="971"/>
-        <location filename="../ui/setportfrm.ui" line="1082"/>
-        <location filename="../ui/setportfrm.ui" line="1193"/>
-        <source>端口9</source>
+        <location filename="../ui/setportfrm.ui" line="762"/>
+        <location filename="../ui/setportfrm.ui" line="873"/>
+        <location filename="../ui/setportfrm.ui" line="984"/>
+        <location filename="../ui/setportfrm.ui" line="1095"/>
+        <location filename="../ui/setportfrm.ui" line="1206"/>
+        <source>port9</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="79"/>
         <location filename="../ui/setportfrm.ui" line="190"/>
         <location filename="../ui/setportfrm.ui" line="301"/>
         <location filename="../ui/setportfrm.ui" line="412"/>
         <location filename="../ui/setportfrm.ui" line="523"/>
         <location filename="../ui/setportfrm.ui" line="634"/>
-        <location filename="../ui/setportfrm.ui" line="754"/>
-        <location filename="../ui/setportfrm.ui" line="865"/>
-        <location filename="../ui/setportfrm.ui" line="976"/>
-        <location filename="../ui/setportfrm.ui" line="1087"/>
-        <location filename="../ui/setportfrm.ui" line="1198"/>
-        <source>端口10</source>
+        <location filename="../ui/setportfrm.ui" line="767"/>
+        <location filename="../ui/setportfrm.ui" line="878"/>
+        <location filename="../ui/setportfrm.ui" line="989"/>
+        <location filename="../ui/setportfrm.ui" line="1100"/>
+        <location filename="../ui/setportfrm.ui" line="1211"/>
+        <source>port10</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="84"/>
         <location filename="../ui/setportfrm.ui" line="195"/>
         <location filename="../ui/setportfrm.ui" line="306"/>
         <location filename="../ui/setportfrm.ui" line="417"/>
         <location filename="../ui/setportfrm.ui" line="528"/>
         <location filename="../ui/setportfrm.ui" line="639"/>
-        <location filename="../ui/setportfrm.ui" line="759"/>
-        <location filename="../ui/setportfrm.ui" line="870"/>
-        <location filename="../ui/setportfrm.ui" line="981"/>
-        <location filename="../ui/setportfrm.ui" line="1092"/>
-        <location filename="../ui/setportfrm.ui" line="1203"/>
-        <source>端口11</source>
+        <location filename="../ui/setportfrm.ui" line="772"/>
+        <location filename="../ui/setportfrm.ui" line="883"/>
+        <location filename="../ui/setportfrm.ui" line="994"/>
+        <location filename="../ui/setportfrm.ui" line="1105"/>
+        <location filename="../ui/setportfrm.ui" line="1216"/>
+        <source>port11</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="89"/>
         <location filename="../ui/setportfrm.ui" line="200"/>
         <location filename="../ui/setportfrm.ui" line="311"/>
         <location filename="../ui/setportfrm.ui" line="422"/>
         <location filename="../ui/setportfrm.ui" line="533"/>
         <location filename="../ui/setportfrm.ui" line="644"/>
-        <location filename="../ui/setportfrm.ui" line="764"/>
-        <location filename="../ui/setportfrm.ui" line="875"/>
-        <location filename="../ui/setportfrm.ui" line="986"/>
-        <location filename="../ui/setportfrm.ui" line="1097"/>
-        <location filename="../ui/setportfrm.ui" line="1208"/>
-        <source>端口12</source>
+        <location filename="../ui/setportfrm.ui" line="777"/>
+        <location filename="../ui/setportfrm.ui" line="888"/>
+        <location filename="../ui/setportfrm.ui" line="999"/>
+        <location filename="../ui/setportfrm.ui" line="1110"/>
+        <location filename="../ui/setportfrm.ui" line="1221"/>
+        <source>port12</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="94"/>
         <location filename="../ui/setportfrm.ui" line="205"/>
         <location filename="../ui/setportfrm.ui" line="316"/>
         <location filename="../ui/setportfrm.ui" line="427"/>
         <location filename="../ui/setportfrm.ui" line="538"/>
         <location filename="../ui/setportfrm.ui" line="649"/>
-        <location filename="../ui/setportfrm.ui" line="769"/>
-        <location filename="../ui/setportfrm.ui" line="880"/>
-        <location filename="../ui/setportfrm.ui" line="991"/>
-        <location filename="../ui/setportfrm.ui" line="1102"/>
-        <location filename="../ui/setportfrm.ui" line="1213"/>
-        <source>端口13</source>
+        <location filename="../ui/setportfrm.ui" line="782"/>
+        <location filename="../ui/setportfrm.ui" line="893"/>
+        <location filename="../ui/setportfrm.ui" line="1004"/>
+        <location filename="../ui/setportfrm.ui" line="1115"/>
+        <location filename="../ui/setportfrm.ui" line="1226"/>
+        <source>port13</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="99"/>
         <location filename="../ui/setportfrm.ui" line="210"/>
         <location filename="../ui/setportfrm.ui" line="321"/>
         <location filename="../ui/setportfrm.ui" line="432"/>
         <location filename="../ui/setportfrm.ui" line="543"/>
         <location filename="../ui/setportfrm.ui" line="654"/>
-        <location filename="../ui/setportfrm.ui" line="774"/>
-        <location filename="../ui/setportfrm.ui" line="885"/>
-        <location filename="../ui/setportfrm.ui" line="996"/>
-        <location filename="../ui/setportfrm.ui" line="1107"/>
-        <location filename="../ui/setportfrm.ui" line="1218"/>
-        <source>端口14</source>
+        <location filename="../ui/setportfrm.ui" line="787"/>
+        <location filename="../ui/setportfrm.ui" line="898"/>
+        <location filename="../ui/setportfrm.ui" line="1009"/>
+        <location filename="../ui/setportfrm.ui" line="1120"/>
+        <location filename="../ui/setportfrm.ui" line="1231"/>
+        <source>port14</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="104"/>
         <location filename="../ui/setportfrm.ui" line="215"/>
         <location filename="../ui/setportfrm.ui" line="326"/>
         <location filename="../ui/setportfrm.ui" line="437"/>
         <location filename="../ui/setportfrm.ui" line="548"/>
         <location filename="../ui/setportfrm.ui" line="659"/>
-        <location filename="../ui/setportfrm.ui" line="779"/>
-        <location filename="../ui/setportfrm.ui" line="890"/>
-        <location filename="../ui/setportfrm.ui" line="1001"/>
-        <location filename="../ui/setportfrm.ui" line="1112"/>
-        <location filename="../ui/setportfrm.ui" line="1223"/>
-        <source>端口15</source>
+        <location filename="../ui/setportfrm.ui" line="792"/>
+        <location filename="../ui/setportfrm.ui" line="903"/>
+        <location filename="../ui/setportfrm.ui" line="1014"/>
+        <location filename="../ui/setportfrm.ui" line="1125"/>
+        <location filename="../ui/setportfrm.ui" line="1236"/>
+        <source>port15</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="109"/>
         <location filename="../ui/setportfrm.ui" line="220"/>
         <location filename="../ui/setportfrm.ui" line="331"/>
         <location filename="../ui/setportfrm.ui" line="442"/>
         <location filename="../ui/setportfrm.ui" line="553"/>
         <location filename="../ui/setportfrm.ui" line="664"/>
-        <location filename="../ui/setportfrm.ui" line="784"/>
-        <location filename="../ui/setportfrm.ui" line="895"/>
-        <location filename="../ui/setportfrm.ui" line="1006"/>
-        <location filename="../ui/setportfrm.ui" line="1117"/>
-        <location filename="../ui/setportfrm.ui" line="1228"/>
-        <source>端口16</source>
+        <location filename="../ui/setportfrm.ui" line="797"/>
+        <location filename="../ui/setportfrm.ui" line="908"/>
+        <location filename="../ui/setportfrm.ui" line="1019"/>
+        <location filename="../ui/setportfrm.ui" line="1130"/>
+        <location filename="../ui/setportfrm.ui" line="1241"/>
+        <source>port16</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="114"/>
         <location filename="../ui/setportfrm.ui" line="225"/>
         <location filename="../ui/setportfrm.ui" line="336"/>
         <location filename="../ui/setportfrm.ui" line="447"/>
         <location filename="../ui/setportfrm.ui" line="558"/>
         <location filename="../ui/setportfrm.ui" line="669"/>
-        <location filename="../ui/setportfrm.ui" line="789"/>
-        <location filename="../ui/setportfrm.ui" line="900"/>
-        <location filename="../ui/setportfrm.ui" line="1011"/>
-        <location filename="../ui/setportfrm.ui" line="1122"/>
-        <location filename="../ui/setportfrm.ui" line="1233"/>
-        <source>端口17</source>
+        <location filename="../ui/setportfrm.ui" line="802"/>
+        <location filename="../ui/setportfrm.ui" line="913"/>
+        <location filename="../ui/setportfrm.ui" line="1024"/>
+        <location filename="../ui/setportfrm.ui" line="1135"/>
+        <location filename="../ui/setportfrm.ui" line="1246"/>
+        <source>port17</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="119"/>
         <location filename="../ui/setportfrm.ui" line="230"/>
         <location filename="../ui/setportfrm.ui" line="341"/>
         <location filename="../ui/setportfrm.ui" line="452"/>
         <location filename="../ui/setportfrm.ui" line="563"/>
         <location filename="../ui/setportfrm.ui" line="674"/>
-        <location filename="../ui/setportfrm.ui" line="794"/>
-        <location filename="../ui/setportfrm.ui" line="905"/>
-        <location filename="../ui/setportfrm.ui" line="1016"/>
-        <location filename="../ui/setportfrm.ui" line="1127"/>
-        <location filename="../ui/setportfrm.ui" line="1238"/>
-        <source>端口18</source>
+        <location filename="../ui/setportfrm.ui" line="807"/>
+        <location filename="../ui/setportfrm.ui" line="918"/>
+        <location filename="../ui/setportfrm.ui" line="1029"/>
+        <location filename="../ui/setportfrm.ui" line="1140"/>
+        <location filename="../ui/setportfrm.ui" line="1251"/>
+        <source>port18</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="124"/>
         <location filename="../ui/setportfrm.ui" line="235"/>
         <location filename="../ui/setportfrm.ui" line="346"/>
         <location filename="../ui/setportfrm.ui" line="457"/>
         <location filename="../ui/setportfrm.ui" line="568"/>
         <location filename="../ui/setportfrm.ui" line="679"/>
-        <location filename="../ui/setportfrm.ui" line="799"/>
-        <location filename="../ui/setportfrm.ui" line="910"/>
-        <location filename="../ui/setportfrm.ui" line="1021"/>
-        <location filename="../ui/setportfrm.ui" line="1132"/>
-        <location filename="../ui/setportfrm.ui" line="1243"/>
-        <source>端口19</source>
+        <location filename="../ui/setportfrm.ui" line="812"/>
+        <location filename="../ui/setportfrm.ui" line="923"/>
+        <location filename="../ui/setportfrm.ui" line="1034"/>
+        <location filename="../ui/setportfrm.ui" line="1145"/>
+        <location filename="../ui/setportfrm.ui" line="1256"/>
+        <source>port19</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="129"/>
         <location filename="../ui/setportfrm.ui" line="240"/>
         <location filename="../ui/setportfrm.ui" line="351"/>
         <location filename="../ui/setportfrm.ui" line="462"/>
         <location filename="../ui/setportfrm.ui" line="573"/>
         <location filename="../ui/setportfrm.ui" line="684"/>
-        <location filename="../ui/setportfrm.ui" line="804"/>
-        <location filename="../ui/setportfrm.ui" line="915"/>
-        <location filename="../ui/setportfrm.ui" line="1026"/>
-        <location filename="../ui/setportfrm.ui" line="1137"/>
-        <location filename="../ui/setportfrm.ui" line="1248"/>
-        <source>端口20</source>
+        <location filename="../ui/setportfrm.ui" line="817"/>
+        <location filename="../ui/setportfrm.ui" line="928"/>
+        <location filename="../ui/setportfrm.ui" line="1039"/>
+        <location filename="../ui/setportfrm.ui" line="1150"/>
+        <location filename="../ui/setportfrm.ui" line="1261"/>
+        <source>port20</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="137"/>
-        <source>放水总阀</source>
-        <translation type="unfinished"></translation>
+        <source>Valve Out</source>
+        <translation>出口总阀</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="248"/>
-        <source>大流量阀</source>
-        <translation type="unfinished"></translation>
+        <source>Valve Big</source>
+        <translation>大流量阀</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="359"/>
-        <source>中二流量阀</source>
-        <translation type="unfinished"></translation>
+        <source>Valve Mid2</source>
+        <translation>中流2阀</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="470"/>
-        <source>中一流量阀</source>
-        <translation type="unfinished"></translation>
+        <source>Valve Mid1</source>
+        <translation>中流1阀</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/setportfrm.ui" line="581"/>
-        <source>小流量阀</source>
-        <translation type="unfinished"></translation>
+        <source>Valve Small</source>
+        <translation>小流量阀</translation>
     </message>
-    <message utf8="true">
-        <location filename="../ui/setportfrm.ui" line="695"/>
-        <source>设备</source>
-        <translation type="unfinished"></translation>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="708"/>
+        <source>Device</source>
+        <translation>设备</translation>
     </message>
-    <message utf8="true">
-        <location filename="../ui/setportfrm.ui" line="701"/>
-        <source>水泵</source>
-        <translation type="unfinished"></translation>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="714"/>
+        <source>Pump</source>
+        <translation>水泵</translation>
     </message>
-    <message utf8="true">
-        <location filename="../ui/setportfrm.ui" line="812"/>
-        <source>调节阀1</source>
-        <translation type="unfinished"></translation>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="825"/>
+        <source>Regulator1</source>
+        <translation>调节阀1</translation>
     </message>
-    <message utf8="true">
-        <location filename="../ui/setportfrm.ui" line="923"/>
-        <source>调节阀2</source>
-        <translation type="unfinished"></translation>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="936"/>
+        <source>Regulator2</source>
+        <translation>调节阀2</translation>
     </message>
-    <message utf8="true">
-        <location filename="../ui/setportfrm.ui" line="1034"/>
-        <source>调节阀3</source>
-        <translation type="unfinished"></translation>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="1047"/>
+        <source>Regulator3</source>
+        <translation>调节阀3</translation>
     </message>
-    <message utf8="true">
-        <location filename="../ui/setportfrm.ui" line="1145"/>
-        <source>调节阀4</source>
-        <translation type="unfinished"></translation>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="1158"/>
+        <source>Regulator4</source>
+        <translation>调节阀4</translation>
     </message>
-    <message utf8="true">
-        <location filename="../ui/setportfrm.ui" line="1287"/>
-        <source>保存</source>
-        <translation type="unfinished"></translation>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="1300"/>
+        <source>Save</source>
+        <translation>保存</translation>
     </message>
-    <message utf8="true">
-        <location filename="../ui/setportfrm.ui" line="1307"/>
-        <source>退出</source>
-        <translation type="unfinished"></translation>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="1320"/>
+        <source>Exit</source>
+        <translation>退出</translation>
     </message>
 </context>
 </TS>

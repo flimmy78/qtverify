@@ -1,5 +1,5 @@
 /********************************************************************************
-** Form generated from reading UI file 'SetPortFrm.ui'
+** Form generated from reading UI file 'setportfrm.ui'
 **
 ** Created by: Qt User Interface Compiler version 4.8.5
 **
@@ -43,6 +43,7 @@ public:
     QComboBox *cBox_Rate_3;
     QLabel *label_6;
     QComboBox *cBox_Rate_4;
+    QSpacerItem *horizontalSpacer_4;
     QGroupBox *gBox_Dev;
     QGridLayout *gridLayout_2;
     QLabel *label_7;
@@ -67,7 +68,7 @@ public:
     {
         if (SetPortFrm->objectName().isEmpty())
             SetPortFrm->setObjectName(QString::fromUtf8("SetPortFrm"));
-        SetPortFrm->resize(399, 260);
+        SetPortFrm->resize(433, 276);
         gridLayout_3 = new QGridLayout(SetPortFrm);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
         gBox_Valve = new QGroupBox(SetPortFrm);
@@ -137,6 +138,10 @@ public:
 
         gridLayout_3->addWidget(gBox_Valve, 0, 0, 2, 1);
 
+        horizontalSpacer_4 = new QSpacerItem(8, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_3->addItem(horizontalSpacer_4, 0, 1, 1, 1);
+
         gBox_Dev = new QGroupBox(SetPortFrm);
         gBox_Dev->setObjectName(QString::fromUtf8("gBox_Dev"));
         gridLayout_2 = new QGridLayout(gBox_Dev);
@@ -192,11 +197,11 @@ public:
         gridLayout_2->addWidget(cBox_Regulate_4, 4, 1, 1, 1);
 
 
-        gridLayout_3->addWidget(gBox_Dev, 0, 1, 1, 1);
+        gridLayout_3->addWidget(gBox_Dev, 0, 2, 1, 1);
 
         verticalSpacer = new QSpacerItem(20, 19, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout_3->addItem(verticalSpacer, 1, 1, 1, 1);
+        gridLayout_3->addItem(verticalSpacer, 1, 2, 1, 1);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
@@ -223,7 +228,7 @@ public:
         horizontalLayout->addItem(horizontalSpacer_3);
 
 
-        gridLayout_3->addLayout(horizontalLayout, 2, 0, 1, 2);
+        gridLayout_3->addLayout(horizontalLayout, 2, 0, 1, 3);
 
 
         retranslateUi(SetPortFrm);
@@ -234,274 +239,274 @@ public:
     void retranslateUi(QWidget *SetPortFrm)
     {
         SetPortFrm->setWindowTitle(QApplication::translate("SetPortFrm", "SetPortFrm", 0, QApplication::UnicodeUTF8));
-        gBox_Valve->setTitle(QApplication::translate("SetPortFrm", "\351\230\200\351\227\250", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("SetPortFrm", "\350\277\233\346\260\264\346\200\273\351\230\200", 0, QApplication::UnicodeUTF8));
+        gBox_Valve->setTitle(QApplication::translate("SetPortFrm", "Valve", 0, QApplication::UnicodeUTF8));
+        label->setText(QApplication::translate("SetPortFrm", "Valve In", 0, QApplication::UnicodeUTF8));
         cBox_Inlet->clear();
         cBox_Inlet->insertItems(0, QStringList()
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2431", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2432", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2433", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2434", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2435", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2436", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2437", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2438", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2439", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24310", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24311", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24312", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24313", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24314", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24315", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24316", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24317", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24318", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24319", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24320", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port2", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port3", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port4", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port5", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port6", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port7", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port8", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port9", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port10", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port11", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port12", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port13", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port14", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port15", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port16", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port17", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port18", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port19", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port20", 0, QApplication::UnicodeUTF8)
         );
-        label_2->setText(QApplication::translate("SetPortFrm", "\346\224\276\346\260\264\346\200\273\351\230\200", 0, QApplication::UnicodeUTF8));
+        label_2->setText(QApplication::translate("SetPortFrm", "Valve Out", 0, QApplication::UnicodeUTF8));
         cBox_Outlet->clear();
         cBox_Outlet->insertItems(0, QStringList()
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2431", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2432", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2433", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2434", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2435", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2436", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2437", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2438", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2439", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24310", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24311", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24312", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24313", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24314", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24315", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24316", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24317", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24318", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24319", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24320", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port2", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port3", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port4", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port5", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port6", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port7", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port8", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port9", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port10", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port11", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port12", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port13", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port14", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port15", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port16", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port17", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port18", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port19", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port20", 0, QApplication::UnicodeUTF8)
         );
-        label_3->setText(QApplication::translate("SetPortFrm", "\345\244\247\346\265\201\351\207\217\351\230\200", 0, QApplication::UnicodeUTF8));
+        label_3->setText(QApplication::translate("SetPortFrm", "Valve Big", 0, QApplication::UnicodeUTF8));
         cBox_Rate_1->clear();
         cBox_Rate_1->insertItems(0, QStringList()
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2431", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2432", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2433", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2434", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2435", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2436", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2437", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2438", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2439", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24310", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24311", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24312", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24313", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24314", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24315", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24316", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24317", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24318", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24319", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24320", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port2", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port3", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port4", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port5", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port6", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port7", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port8", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port9", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port10", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port11", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port12", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port13", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port14", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port15", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port16", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port17", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port18", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port19", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port20", 0, QApplication::UnicodeUTF8)
         );
-        label_4->setText(QApplication::translate("SetPortFrm", "\344\270\255\344\272\214\346\265\201\351\207\217\351\230\200", 0, QApplication::UnicodeUTF8));
+        label_4->setText(QApplication::translate("SetPortFrm", "Valve Mid2", 0, QApplication::UnicodeUTF8));
         cBox_Rate_2->clear();
         cBox_Rate_2->insertItems(0, QStringList()
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2431", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2432", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2433", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2434", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2435", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2436", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2437", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2438", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2439", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24310", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24311", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24312", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24313", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24314", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24315", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24316", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24317", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24318", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24319", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24320", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port2", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port3", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port4", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port5", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port6", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port7", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port8", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port9", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port10", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port11", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port12", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port13", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port14", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port15", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port16", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port17", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port18", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port19", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port20", 0, QApplication::UnicodeUTF8)
         );
-        label_5->setText(QApplication::translate("SetPortFrm", "\344\270\255\344\270\200\346\265\201\351\207\217\351\230\200", 0, QApplication::UnicodeUTF8));
+        label_5->setText(QApplication::translate("SetPortFrm", "Valve Mid1", 0, QApplication::UnicodeUTF8));
         cBox_Rate_3->clear();
         cBox_Rate_3->insertItems(0, QStringList()
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2431", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2432", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2433", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2434", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2435", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2436", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2437", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2438", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2439", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24310", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24311", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24312", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24313", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24314", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24315", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24316", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24317", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24318", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24319", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24320", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port2", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port3", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port4", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port5", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port6", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port7", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port8", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port9", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port10", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port11", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port12", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port13", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port14", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port15", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port16", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port17", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port18", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port19", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port20", 0, QApplication::UnicodeUTF8)
         );
-        label_6->setText(QApplication::translate("SetPortFrm", "\345\260\217\346\265\201\351\207\217\351\230\200", 0, QApplication::UnicodeUTF8));
+        label_6->setText(QApplication::translate("SetPortFrm", "Valve Small", 0, QApplication::UnicodeUTF8));
         cBox_Rate_4->clear();
         cBox_Rate_4->insertItems(0, QStringList()
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2431", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2432", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2433", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2434", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2435", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2436", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2437", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2438", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2439", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24310", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24311", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24312", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24313", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24314", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24315", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24316", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24317", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24318", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24319", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24320", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port2", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port3", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port4", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port5", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port6", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port7", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port8", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port9", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port10", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port11", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port12", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port13", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port14", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port15", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port16", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port17", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port18", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port19", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port20", 0, QApplication::UnicodeUTF8)
         );
-        gBox_Dev->setTitle(QApplication::translate("SetPortFrm", "\350\256\276\345\244\207", 0, QApplication::UnicodeUTF8));
-        label_7->setText(QApplication::translate("SetPortFrm", "\346\260\264\346\263\265", 0, QApplication::UnicodeUTF8));
+        gBox_Dev->setTitle(QApplication::translate("SetPortFrm", "Device", 0, QApplication::UnicodeUTF8));
+        label_7->setText(QApplication::translate("SetPortFrm", "Pump", 0, QApplication::UnicodeUTF8));
         cBox_Pump->clear();
         cBox_Pump->insertItems(0, QStringList()
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2431", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2432", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2433", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2434", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2435", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2436", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2437", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2438", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2439", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24310", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24311", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24312", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24313", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24314", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24315", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24316", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24317", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24318", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24319", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24320", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port2", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port3", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port4", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port5", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port6", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port7", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port8", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port9", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port10", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port11", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port12", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port13", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port14", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port15", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port16", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port17", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port18", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port19", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port20", 0, QApplication::UnicodeUTF8)
         );
-        label_8->setText(QApplication::translate("SetPortFrm", "\350\260\203\350\212\202\351\230\2001", 0, QApplication::UnicodeUTF8));
+        label_8->setText(QApplication::translate("SetPortFrm", "Regulator1", 0, QApplication::UnicodeUTF8));
         cBox_Regulate_1->clear();
         cBox_Regulate_1->insertItems(0, QStringList()
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2431", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2432", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2433", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2434", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2435", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2436", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2437", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2438", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2439", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24310", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24311", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24312", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24313", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24314", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24315", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24316", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24317", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24318", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24319", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24320", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port2", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port3", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port4", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port5", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port6", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port7", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port8", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port9", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port10", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port11", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port12", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port13", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port14", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port15", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port16", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port17", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port18", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port19", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port20", 0, QApplication::UnicodeUTF8)
         );
-        label_9->setText(QApplication::translate("SetPortFrm", "\350\260\203\350\212\202\351\230\2002", 0, QApplication::UnicodeUTF8));
+        label_9->setText(QApplication::translate("SetPortFrm", "Regulator2", 0, QApplication::UnicodeUTF8));
         cBox_Regulate_2->clear();
         cBox_Regulate_2->insertItems(0, QStringList()
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2431", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2432", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2433", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2434", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2435", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2436", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2437", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2438", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2439", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24310", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24311", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24312", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24313", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24314", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24315", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24316", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24317", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24318", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24319", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24320", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port2", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port3", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port4", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port5", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port6", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port7", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port8", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port9", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port10", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port11", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port12", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port13", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port14", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port15", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port16", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port17", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port18", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port19", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port20", 0, QApplication::UnicodeUTF8)
         );
-        label_10->setText(QApplication::translate("SetPortFrm", "\350\260\203\350\212\202\351\230\2003", 0, QApplication::UnicodeUTF8));
+        label_10->setText(QApplication::translate("SetPortFrm", "Regulator3", 0, QApplication::UnicodeUTF8));
         cBox_Regulate_3->clear();
         cBox_Regulate_3->insertItems(0, QStringList()
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2431", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2432", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2433", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2434", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2435", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2436", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2437", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2438", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2439", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24310", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24311", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24312", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24313", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24314", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24315", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24316", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24317", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24318", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24319", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24320", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port2", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port3", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port4", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port5", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port6", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port7", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port8", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port9", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port10", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port11", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port12", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port13", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port14", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port15", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port16", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port17", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port18", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port19", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port20", 0, QApplication::UnicodeUTF8)
         );
-        label_11->setText(QApplication::translate("SetPortFrm", "\350\260\203\350\212\202\351\230\2004", 0, QApplication::UnicodeUTF8));
+        label_11->setText(QApplication::translate("SetPortFrm", "Regulator4", 0, QApplication::UnicodeUTF8));
         cBox_Regulate_4->clear();
         cBox_Regulate_4->insertItems(0, QStringList()
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2431", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2432", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2433", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2434", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2435", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2436", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2437", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2438", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\2439", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24310", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24311", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24312", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24313", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24314", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24315", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24316", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24317", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24318", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24319", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SetPortFrm", "\347\253\257\345\217\24320", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port2", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port3", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port4", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port5", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port6", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port7", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port8", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port9", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port10", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port11", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port12", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port13", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port14", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port15", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port16", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port17", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port18", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port19", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "port20", 0, QApplication::UnicodeUTF8)
         );
-        btn_Save->setText(QApplication::translate("SetPortFrm", "\344\277\235\345\255\230", 0, QApplication::UnicodeUTF8));
-        btn_Exit->setText(QApplication::translate("SetPortFrm", "\351\200\200\345\207\272", 0, QApplication::UnicodeUTF8));
+        btn_Save->setText(QApplication::translate("SetPortFrm", "Save", 0, QApplication::UnicodeUTF8));
+        btn_Exit->setText(QApplication::translate("SetPortFrm", "Exit", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

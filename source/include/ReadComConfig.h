@@ -5,7 +5,6 @@
 
 #include "basedef.h"
 #include "comsetdlg_global.h"
-#include "comsetdlg.h"
 
 class COMSETDLG_EXPORT ReadComConfig
 {

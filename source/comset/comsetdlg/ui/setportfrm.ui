@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>399</width>
-    <height>260</height>
+    <width>433</width>
+    <height>276</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,13 +17,13 @@
    <item row="0" column="0" rowspan="2">
     <widget class="QGroupBox" name="gBox_Valve">
      <property name="title">
-      <string>阀门</string>
+      <string>Valve</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="0">
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>进水总阀</string>
+         <string>Valve In</string>
         </property>
        </widget>
       </item>
@@ -31,102 +31,102 @@
        <widget class="QComboBox" name="cBox_Inlet">
         <item>
          <property name="text">
-          <string>端口1</string>
+          <string>port1</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口2</string>
+          <string>port2</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口3</string>
+          <string>port3</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口4</string>
+          <string>port4</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口5</string>
+          <string>port5</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口6</string>
+          <string>port6</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口7</string>
+          <string>port7</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口8</string>
+          <string>port8</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口9</string>
+          <string>port9</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口10</string>
+          <string>port10</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口11</string>
+          <string>port11</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口12</string>
+          <string>port12</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口13</string>
+          <string>port13</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口14</string>
+          <string>port14</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口15</string>
+          <string>port15</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口16</string>
+          <string>port16</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口17</string>
+          <string>port17</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口18</string>
+          <string>port18</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口19</string>
+          <string>port19</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口20</string>
+          <string>port20</string>
          </property>
         </item>
        </widget>
@@ -134,7 +134,7 @@
       <item row="1" column="0">
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>放水总阀</string>
+         <string>Valve Out</string>
         </property>
        </widget>
       </item>
@@ -142,102 +142,102 @@
        <widget class="QComboBox" name="cBox_Outlet">
         <item>
          <property name="text">
-          <string>端口1</string>
+          <string>port1</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口2</string>
+          <string>port2</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口3</string>
+          <string>port3</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口4</string>
+          <string>port4</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口5</string>
+          <string>port5</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口6</string>
+          <string>port6</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口7</string>
+          <string>port7</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口8</string>
+          <string>port8</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口9</string>
+          <string>port9</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口10</string>
+          <string>port10</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口11</string>
+          <string>port11</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口12</string>
+          <string>port12</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口13</string>
+          <string>port13</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口14</string>
+          <string>port14</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口15</string>
+          <string>port15</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口16</string>
+          <string>port16</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口17</string>
+          <string>port17</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口18</string>
+          <string>port18</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口19</string>
+          <string>port19</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口20</string>
+          <string>port20</string>
          </property>
         </item>
        </widget>
@@ -245,7 +245,7 @@
       <item row="2" column="0">
        <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>大流量阀</string>
+         <string>Valve Big</string>
         </property>
        </widget>
       </item>
@@ -253,102 +253,102 @@
        <widget class="QComboBox" name="cBox_Rate_1">
         <item>
          <property name="text">
-          <string>端口1</string>
+          <string>port1</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口2</string>
+          <string>port2</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口3</string>
+          <string>port3</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口4</string>
+          <string>port4</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口5</string>
+          <string>port5</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口6</string>
+          <string>port6</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口7</string>
+          <string>port7</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口8</string>
+          <string>port8</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口9</string>
+          <string>port9</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口10</string>
+          <string>port10</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口11</string>
+          <string>port11</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口12</string>
+          <string>port12</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口13</string>
+          <string>port13</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口14</string>
+          <string>port14</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口15</string>
+          <string>port15</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口16</string>
+          <string>port16</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口17</string>
+          <string>port17</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口18</string>
+          <string>port18</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口19</string>
+          <string>port19</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口20</string>
+          <string>port20</string>
          </property>
         </item>
        </widget>
@@ -356,7 +356,7 @@
       <item row="3" column="0">
        <widget class="QLabel" name="label_4">
         <property name="text">
-         <string>中二流量阀</string>
+         <string>Valve Mid2</string>
         </property>
        </widget>
       </item>
@@ -364,102 +364,102 @@
        <widget class="QComboBox" name="cBox_Rate_2">
         <item>
          <property name="text">
-          <string>端口1</string>
+          <string>port1</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口2</string>
+          <string>port2</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口3</string>
+          <string>port3</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口4</string>
+          <string>port4</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口5</string>
+          <string>port5</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口6</string>
+          <string>port6</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口7</string>
+          <string>port7</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口8</string>
+          <string>port8</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口9</string>
+          <string>port9</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口10</string>
+          <string>port10</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口11</string>
+          <string>port11</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口12</string>
+          <string>port12</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口13</string>
+          <string>port13</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口14</string>
+          <string>port14</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口15</string>
+          <string>port15</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口16</string>
+          <string>port16</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口17</string>
+          <string>port17</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口18</string>
+          <string>port18</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口19</string>
+          <string>port19</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口20</string>
+          <string>port20</string>
          </property>
         </item>
        </widget>
@@ -467,7 +467,7 @@
       <item row="4" column="0">
        <widget class="QLabel" name="label_5">
         <property name="text">
-         <string>中一流量阀</string>
+         <string>Valve Mid1</string>
         </property>
        </widget>
       </item>
@@ -475,102 +475,102 @@
        <widget class="QComboBox" name="cBox_Rate_3">
         <item>
          <property name="text">
-          <string>端口1</string>
+          <string>port1</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口2</string>
+          <string>port2</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口3</string>
+          <string>port3</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口4</string>
+          <string>port4</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口5</string>
+          <string>port5</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口6</string>
+          <string>port6</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口7</string>
+          <string>port7</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口8</string>
+          <string>port8</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口9</string>
+          <string>port9</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口10</string>
+          <string>port10</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口11</string>
+          <string>port11</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口12</string>
+          <string>port12</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口13</string>
+          <string>port13</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口14</string>
+          <string>port14</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口15</string>
+          <string>port15</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口16</string>
+          <string>port16</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口17</string>
+          <string>port17</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口18</string>
+          <string>port18</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口19</string>
+          <string>port19</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口20</string>
+          <string>port20</string>
          </property>
         </item>
        </widget>
@@ -578,7 +578,7 @@
       <item row="5" column="0">
        <widget class="QLabel" name="label_6">
         <property name="text">
-         <string>小流量阀</string>
+         <string>Valve Small</string>
         </property>
        </widget>
       </item>
@@ -586,102 +586,102 @@
        <widget class="QComboBox" name="cBox_Rate_4">
         <item>
          <property name="text">
-          <string>端口1</string>
+          <string>port1</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口2</string>
+          <string>port2</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口3</string>
+          <string>port3</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口4</string>
+          <string>port4</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口5</string>
+          <string>port5</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口6</string>
+          <string>port6</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口7</string>
+          <string>port7</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口8</string>
+          <string>port8</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口9</string>
+          <string>port9</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口10</string>
+          <string>port10</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口11</string>
+          <string>port11</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口12</string>
+          <string>port12</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口13</string>
+          <string>port13</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口14</string>
+          <string>port14</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口15</string>
+          <string>port15</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口16</string>
+          <string>port16</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口17</string>
+          <string>port17</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口18</string>
+          <string>port18</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口19</string>
+          <string>port19</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口20</string>
+          <string>port20</string>
          </property>
         </item>
        </widget>
@@ -690,15 +690,28 @@
     </widget>
    </item>
    <item row="0" column="1">
+    <spacer name="horizontalSpacer_4">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>8</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="2">
     <widget class="QGroupBox" name="gBox_Dev">
      <property name="title">
-      <string>设备</string>
+      <string>Device</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
        <widget class="QLabel" name="label_7">
         <property name="text">
-         <string>水泵</string>
+         <string>Pump</string>
         </property>
        </widget>
       </item>
@@ -706,102 +719,102 @@
        <widget class="QComboBox" name="cBox_Pump">
         <item>
          <property name="text">
-          <string>端口1</string>
+          <string>port1</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口2</string>
+          <string>port2</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口3</string>
+          <string>port3</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口4</string>
+          <string>port4</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口5</string>
+          <string>port5</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口6</string>
+          <string>port6</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口7</string>
+          <string>port7</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口8</string>
+          <string>port8</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口9</string>
+          <string>port9</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口10</string>
+          <string>port10</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口11</string>
+          <string>port11</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口12</string>
+          <string>port12</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口13</string>
+          <string>port13</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口14</string>
+          <string>port14</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口15</string>
+          <string>port15</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口16</string>
+          <string>port16</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口17</string>
+          <string>port17</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口18</string>
+          <string>port18</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口19</string>
+          <string>port19</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口20</string>
+          <string>port20</string>
          </property>
         </item>
        </widget>
@@ -809,7 +822,7 @@
       <item row="1" column="0">
        <widget class="QLabel" name="label_8">
         <property name="text">
-         <string>调节阀1</string>
+         <string>Regulator1</string>
         </property>
        </widget>
       </item>
@@ -817,102 +830,102 @@
        <widget class="QComboBox" name="cBox_Regulate_1">
         <item>
          <property name="text">
-          <string>端口1</string>
+          <string>port1</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口2</string>
+          <string>port2</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口3</string>
+          <string>port3</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口4</string>
+          <string>port4</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口5</string>
+          <string>port5</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口6</string>
+          <string>port6</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口7</string>
+          <string>port7</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口8</string>
+          <string>port8</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口9</string>
+          <string>port9</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口10</string>
+          <string>port10</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口11</string>
+          <string>port11</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口12</string>
+          <string>port12</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口13</string>
+          <string>port13</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口14</string>
+          <string>port14</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口15</string>
+          <string>port15</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口16</string>
+          <string>port16</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口17</string>
+          <string>port17</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口18</string>
+          <string>port18</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口19</string>
+          <string>port19</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口20</string>
+          <string>port20</string>
          </property>
         </item>
        </widget>
@@ -920,7 +933,7 @@
       <item row="2" column="0">
        <widget class="QLabel" name="label_9">
         <property name="text">
-         <string>调节阀2</string>
+         <string>Regulator2</string>
         </property>
        </widget>
       </item>
@@ -928,102 +941,102 @@
        <widget class="QComboBox" name="cBox_Regulate_2">
         <item>
          <property name="text">
-          <string>端口1</string>
+          <string>port1</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口2</string>
+          <string>port2</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口3</string>
+          <string>port3</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口4</string>
+          <string>port4</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口5</string>
+          <string>port5</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口6</string>
+          <string>port6</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口7</string>
+          <string>port7</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口8</string>
+          <string>port8</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口9</string>
+          <string>port9</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口10</string>
+          <string>port10</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口11</string>
+          <string>port11</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口12</string>
+          <string>port12</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口13</string>
+          <string>port13</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口14</string>
+          <string>port14</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口15</string>
+          <string>port15</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口16</string>
+          <string>port16</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口17</string>
+          <string>port17</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口18</string>
+          <string>port18</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口19</string>
+          <string>port19</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口20</string>
+          <string>port20</string>
          </property>
         </item>
        </widget>
@@ -1031,7 +1044,7 @@
       <item row="3" column="0">
        <widget class="QLabel" name="label_10">
         <property name="text">
-         <string>调节阀3</string>
+         <string>Regulator3</string>
         </property>
        </widget>
       </item>
@@ -1039,102 +1052,102 @@
        <widget class="QComboBox" name="cBox_Regulate_3">
         <item>
          <property name="text">
-          <string>端口1</string>
+          <string>port1</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口2</string>
+          <string>port2</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口3</string>
+          <string>port3</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口4</string>
+          <string>port4</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口5</string>
+          <string>port5</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口6</string>
+          <string>port6</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口7</string>
+          <string>port7</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口8</string>
+          <string>port8</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口9</string>
+          <string>port9</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口10</string>
+          <string>port10</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口11</string>
+          <string>port11</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口12</string>
+          <string>port12</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口13</string>
+          <string>port13</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口14</string>
+          <string>port14</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口15</string>
+          <string>port15</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口16</string>
+          <string>port16</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口17</string>
+          <string>port17</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口18</string>
+          <string>port18</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口19</string>
+          <string>port19</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口20</string>
+          <string>port20</string>
          </property>
         </item>
        </widget>
@@ -1142,7 +1155,7 @@
       <item row="4" column="0">
        <widget class="QLabel" name="label_11">
         <property name="text">
-         <string>调节阀4</string>
+         <string>Regulator4</string>
         </property>
        </widget>
       </item>
@@ -1150,102 +1163,102 @@
        <widget class="QComboBox" name="cBox_Regulate_4">
         <item>
          <property name="text">
-          <string>端口1</string>
+          <string>port1</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口2</string>
+          <string>port2</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口3</string>
+          <string>port3</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口4</string>
+          <string>port4</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口5</string>
+          <string>port5</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口6</string>
+          <string>port6</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口7</string>
+          <string>port7</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口8</string>
+          <string>port8</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口9</string>
+          <string>port9</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口10</string>
+          <string>port10</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口11</string>
+          <string>port11</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口12</string>
+          <string>port12</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口13</string>
+          <string>port13</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口14</string>
+          <string>port14</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口15</string>
+          <string>port15</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口16</string>
+          <string>port16</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口17</string>
+          <string>port17</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口18</string>
+          <string>port18</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口19</string>
+          <string>port19</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>端口20</string>
+          <string>port20</string>
          </property>
         </item>
        </widget>
@@ -1253,7 +1266,7 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="1">
+   <item row="1" column="2">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -1266,7 +1279,7 @@
      </property>
     </spacer>
    </item>
-   <item row="2" column="0" colspan="2">
+   <item row="2" column="0" colspan="3">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <spacer name="horizontalSpacer_2">
@@ -1284,7 +1297,7 @@
      <item>
       <widget class="QPushButton" name="btn_Save">
        <property name="text">
-        <string>保存</string>
+        <string>Save</string>
        </property>
       </widget>
      </item>
@@ -1304,7 +1317,7 @@
      <item>
       <widget class="QPushButton" name="btn_Exit">
        <property name="text">
-        <string>退出</string>
+        <string>Exit</string>
        </property>
       </widget>
      </item>
