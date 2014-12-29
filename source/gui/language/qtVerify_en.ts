@@ -30,7 +30,7 @@
 <context>
     <name>MainForm</name>
     <message>
-        <location filename="../source/mainform.cpp" line="42"/>
+        <location filename="../source/mainform.cpp" line="41"/>
         <source>&lt;a href=&quot;http://www.sdm.com.cn&quot;&gt;Shandong Delu Measurement Co.,Ltd.&lt;/a&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -43,183 +43,183 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/main.cpp" line="58"/>
+        <location filename="../source/main.cpp" line="83"/>
         <source>connect database ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/main.cpp" line="62"/>
+        <location filename="../source/main.cpp" line="87"/>
         <source>setting up the mainwindow ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="131"/>
-        <source>Ê±¼ä</source>
+        <source>time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="132"/>
-        <source>±íºÅ</source>
+        <source>MeterNO.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="133"/>
-        <source>Á÷Á¿µã</source>
+        <source>FlowPoint</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="134"/>
-        <source>Á÷Á¿</source>
+        <source>Flow</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="135"/>
-        <source>×ÜÁ¿¼ì¶¨±êÖ¾</source>
+        <source>TotalFlag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="136"/>
-        <source>±í³õÖµ</source>
+        <source>MeterValue0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="137"/>
-        <source>±íÖÕÖµ</source>
+        <source>MeterValue1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="138"/>
-        <source>±íÊ¾Öµ</source>
+        <source>MeterValue</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="139"/>
-        <source>ÌìÆ½³õÖµ</source>
+        <source>BalValue0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="140"/>
-        <source>ÌìÆ½ÖÕÖµ</source>
+        <source>BalValue1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="141"/>
-        <source>ÌìÆ½Ê¾Öµ</source>
+        <source>BalValue</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="142"/>
-        <source>Èë¿ÚÎÂ¶È</source>
+        <source>InSlotTemp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="143"/>
-        <source>³ö¿ÚÎÂ¶È</source>
+        <source>OutSlotTemp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="144"/>
-        <source>¹ÜÂ·ÎÂ¶È</source>
+        <source>PipeTemp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="145"/>
-        <source>ÃÜ¶È</source>
+        <source>Density</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="146"/>
-        <source>±ê×¼Öµ</source>
+        <source>StdValue</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="147"/>
-        <source>Îó²î</source>
+        <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="148"/>
-        <source>ºÏ¸ñ±ê×¼</source>
+        <source>StdError</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="149"/>
-        <source>ºÏ¸ñ±êÖ¾</source>
+        <source>Result</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="150"/>
-        <source>±íÎ»ºÅ</source>
+        <source>MeterPosNO.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="151"/>
-        <source>ÐÍºÅ</source>
+        <source>Model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="152"/>
-        <source>¹æ¸ñ</source>
+        <source>Standard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="153"/>
-        <source>±íÀàÐÍ</source>
+        <source>MeterType</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="154"/>
-        <source>ÖÆÔìµ¥Î»</source>
+        <source>ManufactDept</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="155"/>
-        <source>ËÍ¼ìµ¥Î»</source>
+        <source>VerifyDept</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="156"/>
-        <source>¼ÆÁ¿µÈ¼¶</source>
+        <source>Grade</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="157"/>
-        <source>¼ì¶¨Ô±</source>
+        <source>VerifyPerson</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="158"/>
-        <source>ºËÑéÔ±</source>
+        <source>CheckPerson</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="159"/>
-        <source>¼ì¶¨ÈÕÆÚ</source>
+        <source>VerifyDate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="160"/>
-        <source>»·¾³ÎÂ¶È</source>
+        <source>EnvTemp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="161"/>
-        <source>»·¾³Êª¶È</source>
+        <source>EnvHumidity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="162"/>
-        <source>ÆøÑ¹</source>
+        <source>AirPressure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="163"/>
-        <source>ÓÐÐ§ÆÚ</source>
+        <source>ValidDate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../source/queryresult.cpp" line="164"/>
-        <source>¼ÇÂ¼±àºÅ</source>
+        <source>RecordNumber</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

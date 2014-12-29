@@ -69,5 +69,6 @@ win32{
 	MY_DEST_EXE = $$join( MY_DEST_EXE_VAR, "\\" )
 
 	QMAKE_POST_LINK = copy $${MY_DEST_EXE} $(RUNHOME)\bin	\
-										& copy .\language\qtverify_zh.qm $(RUNHOME)\uif\i18n
+                  & copy .\language\qtverify_zh.qm $(RUNHOME)\uif\i18n\zh	\
+                  & copy .\language\qtverify_en.qm $(RUNHOME)\uif\i18n\en
 }

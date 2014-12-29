@@ -43,16 +43,41 @@ int main(int argc, char *argv[])
 	splash->showMessage(QObject::tr("load translator files ..."), align, Qt::blue);
 	QTest::qSleep(200);
 
-	char qmfile[100];
-	sprintf_s( qmfile, "%s\\uif\\i18n\\qtverify_zh.qm", getenv("RUNHOME"));
-	QTranslator *translator;
-	translator = new QTranslator();
-	bool loadok = translator->load(qmfile);
-	if (!loadok)
+	QString lang = "zh";
+	if (argc == 1)
 	{
-		 printf_s(" load translator file \"%s\" failed! \n", qmfile);
+		lang = QString::fromLocal8Bit(argv[0]);
 	}
-	app.installTranslator( translator );
+	
+	char file_name[100];
+	sprintf_s( file_name, "%s\\ini\\tr_qtverify.ini", getenv("RUNHOME"));
+	QFile file(file_name );
+	if( !file.open(QIODevice::ReadOnly | QIODevice::Text) ) 
+	{
+		qDebug("no i18n ini file.\n");
+	}
+	QTranslator *translator = NULL;
+	QTextStream text(&file);
+	QString line ;
+	while ( !text.atEnd() ) 
+	{
+		line = text.readLine().simplified();
+		if( line.length() == 0 ) 
+			continue;
+		if( line.at(0) == '#' ) 
+			continue;
+
+		QString i18nName = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\\uif\\i18n\\" + lang + "\\";
+		i18nName.append(line).append(QString("_%1.qm").arg(lang));
+		translator = new QTranslator( 0 );
+		if (!translator->load( i18nName ))
+		{
+			qDebug()<<"load translator file"<<line<<"failed!";
+		}
+		app.installTranslator( translator );
+	}
+	file.close();
+
 	qDebug()<<"qtverify main thread:"<<QThread::currentThreadId();
 
 	splash->showMessage(QObject::tr("connect database ..."), align, Qt::blue);
@@ -63,14 +88,14 @@ int main(int argc, char *argv[])
 	QTest::qSleep(200);
 	g_mainform = new MainForm;
 
-	LoginDialog login;
-	if (login.exec() == QDialog::Accepted)
-	{
+// 	LoginDialog login;
+// 	if (login.exec() == QDialog::Accepted)
+// 	{
 		g_mainform->show();//showMaximized();
 		splash->finish(g_mainform);
 		delete splash;
 		app.exec();
-	}
+// 	}
 
 	closedb();
 	return 0;
