@@ -19,7 +19,7 @@
      <item row="0" column="0">
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>开始时间:</string>
+        <string>Start Time:</string>
        </property>
       </widget>
      </item>
@@ -29,7 +29,7 @@
      <item row="1" column="0">
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>结束时间:</string>
+        <string>End Time:</string>
        </property>
       </widget>
      </item>
@@ -43,7 +43,7 @@
      <item row="0" column="0">
       <widget class="QLabel" name="label_4">
        <property name="text">
-        <string>制造单位:</string>
+        <string>ManuFacturer:</string>
        </property>
       </widget>
      </item>
@@ -60,7 +60,7 @@
      <item row="1" column="0">
       <widget class="QLabel" name="label_5">
        <property name="text">
-        <string>送检单位:</string>
+        <string>VerifyDept:</string>
        </property>
       </widget>
      </item>
@@ -83,7 +83,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>检定员:</string>
+        <string>VerifyPerson:</string>
        </property>
       </widget>
      </item>

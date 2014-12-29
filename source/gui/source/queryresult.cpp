@@ -128,40 +128,40 @@ void QueryResult::on_btnQuery_clicked()
 	model->setRelation(28, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));
 
 	//设置水平标题
-	model->setHeaderData(1, Qt::Horizontal, QObject::tr("时间"));
-	model->setHeaderData(2, Qt::Horizontal, QObject::tr("表号"));
-	model->setHeaderData(3, Qt::Horizontal, QObject::tr("流量点"));
-	model->setHeaderData(4, Qt::Horizontal, QObject::tr("流量"));
-	model->setHeaderData(5, Qt::Horizontal, QObject::tr("总量检定标志"));
-	model->setHeaderData(6, Qt::Horizontal, QObject::tr("表初值"));
-	model->setHeaderData(7, Qt::Horizontal, QObject::tr("表终值"));
-	model->setHeaderData(8, Qt::Horizontal, QObject::tr("表示值"));
-	model->setHeaderData(9, Qt::Horizontal, QObject::tr("天平初值"));
-	model->setHeaderData(10, Qt::Horizontal, QObject::tr("天平终值"));
-	model->setHeaderData(11, Qt::Horizontal, QObject::tr("天平示值"));
-	model->setHeaderData(12, Qt::Horizontal, QObject::tr("入口温度"));
-	model->setHeaderData(13, Qt::Horizontal, QObject::tr("出口温度"));
-	model->setHeaderData(14, Qt::Horizontal, QObject::tr("管路温度"));
-	model->setHeaderData(15, Qt::Horizontal, QObject::tr("密度"));
-	model->setHeaderData(16, Qt::Horizontal, QObject::tr("标准值"));
-	model->setHeaderData(17, Qt::Horizontal, QObject::tr("误差"));
-	model->setHeaderData(18, Qt::Horizontal, QObject::tr("合格标准"));
-	model->setHeaderData(19, Qt::Horizontal, QObject::tr("合格标志"));
-	model->setHeaderData(20, Qt::Horizontal, QObject::tr("表位号"));
-	model->setHeaderData(21, Qt::Horizontal, QObject::tr("型号"));
-	model->setHeaderData(22, Qt::Horizontal, QObject::tr("规格"));
-	model->setHeaderData(23, Qt::Horizontal, QObject::tr("表类型"));
-	model->setHeaderData(24, Qt::Horizontal, QObject::tr("制造单位"));
-	model->setHeaderData(25, Qt::Horizontal, QObject::tr("送检单位"));
-	model->setHeaderData(26, Qt::Horizontal, QObject::tr("计量等级"));
-	model->setHeaderData(27, Qt::Horizontal, QObject::tr("检定员"));
-	model->setHeaderData(28, Qt::Horizontal, QObject::tr("核验员"));
-	model->setHeaderData(29, Qt::Horizontal, QObject::tr("检定日期"));
-	model->setHeaderData(30, Qt::Horizontal, QObject::tr("环境温度"));
-	model->setHeaderData(31, Qt::Horizontal, QObject::tr("环境湿度"));
-	model->setHeaderData(32, Qt::Horizontal, QObject::tr("气压"));
-	model->setHeaderData(33, Qt::Horizontal, QObject::tr("有效期"));
-	model->setHeaderData(34, Qt::Horizontal, QObject::tr("记录编号"));
+	model->setHeaderData(1, Qt::Horizontal, QObject::tr("time"));//时间
+	model->setHeaderData(2, Qt::Horizontal, QObject::tr("MeterNO."));//表号
+	model->setHeaderData(3, Qt::Horizontal, QObject::tr("FlowPoint"));//流量点
+	model->setHeaderData(4, Qt::Horizontal, QObject::tr("Flow"));//流量
+	model->setHeaderData(5, Qt::Horizontal, QObject::tr("TotalFlag"));//总量检定标志
+	model->setHeaderData(6, Qt::Horizontal, QObject::tr("MeterValue0"));//热表初值
+	model->setHeaderData(7, Qt::Horizontal, QObject::tr("MeterValue1"));//热表终值
+	model->setHeaderData(8, Qt::Horizontal, QObject::tr("MeterValue"));//热表示值
+	model->setHeaderData(9, Qt::Horizontal, QObject::tr("BalValue0"));//天平初值
+	model->setHeaderData(10, Qt::Horizontal, QObject::tr("BalValue1"));//天平终值
+	model->setHeaderData(11, Qt::Horizontal, QObject::tr("BalValue"));//天平示值
+	model->setHeaderData(12, Qt::Horizontal, QObject::tr("InSlotTemp"));//入口温度
+	model->setHeaderData(13, Qt::Horizontal, QObject::tr("OutSlotTemp"));//出口温度
+	model->setHeaderData(14, Qt::Horizontal, QObject::tr("PipeTemp"));//管路温度
+	model->setHeaderData(15, Qt::Horizontal, QObject::tr("Density"));//密度
+	model->setHeaderData(16, Qt::Horizontal, QObject::tr("StdValue"));//标准值
+	model->setHeaderData(17, Qt::Horizontal, QObject::tr("Error"));//误差
+	model->setHeaderData(18, Qt::Horizontal, QObject::tr("StdError"));//合格标准
+	model->setHeaderData(19, Qt::Horizontal, QObject::tr("Result"));//合格标志
+	model->setHeaderData(20, Qt::Horizontal, QObject::tr("MeterPosNO."));//表位号
+	model->setHeaderData(21, Qt::Horizontal, QObject::tr("Model"));//型号
+	model->setHeaderData(22, Qt::Horizontal, QObject::tr("Standard"));//规格
+	model->setHeaderData(23, Qt::Horizontal, QObject::tr("MeterType"));//表类型
+	model->setHeaderData(24, Qt::Horizontal, QObject::tr("ManufactDept"));//制造单位
+	model->setHeaderData(25, Qt::Horizontal, QObject::tr("VerifyDept"));//送检单位
+	model->setHeaderData(26, Qt::Horizontal, QObject::tr("Grade"));//计量等级
+	model->setHeaderData(27, Qt::Horizontal, QObject::tr("VerifyPerson"));//检定员
+	model->setHeaderData(28, Qt::Horizontal, QObject::tr("CheckPerson"));//核验员
+	model->setHeaderData(29, Qt::Horizontal, QObject::tr("VerifyDate"));//检定日期
+	model->setHeaderData(30, Qt::Horizontal, QObject::tr("EnvTemp"));//环境温度
+	model->setHeaderData(31, Qt::Horizontal, QObject::tr("EnvHumidity"));//环境湿度
+	model->setHeaderData(32, Qt::Horizontal, QObject::tr("AirPressure"));//气压
+	model->setHeaderData(33, Qt::Horizontal, QObject::tr("ValidDate"));//有效期
+	model->setHeaderData(34, Qt::Horizontal, QObject::tr("RecordNumber"));//记录编号
 
 	model->select();
 	ui.tableView->setModel(model);

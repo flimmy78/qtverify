@@ -39,7 +39,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 
 	QLabel *permanent = new QLabel(this);
 	permanent->setFrameStyle(QFrame::NoFrame | QFrame::Sunken);
-	permanent->setText(tr("<a href=\"http://www.sdm.com.cn\">山东德鲁计量科技有限公司</a>"));
+	permanent->setText(tr("<a href=\"http://www.sdm.com.cn\">Shandong Delu Measurement Co.,Ltd.</a>"));
 	permanent->setTextFormat(Qt::RichText);
 	permanent->setOpenExternalLinks(true);
 	ui.statusBar->addPermanentWidget(permanent);
@@ -187,7 +187,7 @@ void MainForm::on_actionQueryExcel_triggered()
 	}
 	excel->dynamicCall("SetVisible(bool)", false);
 	workbooks = excel->querySubObject("WorkBooks");
-	workbook = workbooks->querySubObject("Open(QString, QVariant)", QString(tr("d:\\test.xlsx")));
+	workbook = workbooks->querySubObject("Open(QString, QVariant)", QString("d:\\test.xlsx"));
 	QAxObject * worksheet = workbook->querySubObject("WorkSheets(int)", 1);//打开第一个sheet
 	QAxObject * usedrange = worksheet->querySubObject("UsedRange");//获取该sheet的使用范围对象
 	QAxObject * rows = usedrange->querySubObject("Rows");

@@ -135,7 +135,7 @@ public:
     {
         if (DataTestDlgClass->objectName().isEmpty())
             DataTestDlgClass->setObjectName(QString::fromUtf8("DataTestDlgClass"));
-        DataTestDlgClass->resize(711, 627);
+        DataTestDlgClass->resize(714, 665);
         groupBox = new QGroupBox(DataTestDlgClass);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         groupBox->setGeometry(QRect(11, 11, 691, 173));
@@ -290,7 +290,7 @@ public:
 
         groupBox_heatmeter = new QGroupBox(DataTestDlgClass);
         groupBox_heatmeter->setObjectName(QString::fromUtf8("groupBox_heatmeter"));
-        groupBox_heatmeter->setGeometry(QRect(11, 191, 251, 321));
+        groupBox_heatmeter->setGeometry(QRect(11, 191, 251, 331));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
@@ -303,7 +303,7 @@ public:
         groupBox_9->setObjectName(QString::fromUtf8("groupBox_9"));
         label_25 = new QLabel(groupBox_9);
         label_25->setObjectName(QString::fromUtf8("label_25"));
-        label_25->setGeometry(QRect(12, 27, 30, 16));
+        label_25->setGeometry(QRect(10, 30, 61, 16));
         QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Preferred);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
@@ -311,7 +311,7 @@ public:
         label_25->setSizePolicy(sizePolicy2);
         lnEditMeterNo = new QLineEdit(groupBox_9);
         lnEditMeterNo->setObjectName(QString::fromUtf8("lnEditMeterNo"));
-        lnEditMeterNo->setGeometry(QRect(63, 27, 152, 21));
+        lnEditMeterNo->setGeometry(QRect(74, 27, 141, 21));
         sizePolicy.setHeightForWidth(lnEditMeterNo->sizePolicy().hasHeightForWidth());
         lnEditMeterNo->setSizePolicy(sizePolicy);
         lnEditMeterNo->setReadOnly(true);
@@ -352,15 +352,15 @@ public:
         label_31->setGeometry(QRect(12, 167, 40, 17));
         lnEditVolumnError = new QLineEdit(groupBox_9);
         lnEditVolumnError->setObjectName(QString::fromUtf8("lnEditVolumnError"));
-        lnEditVolumnError->setGeometry(QRect(64, 167, 151, 21));
+        lnEditVolumnError->setGeometry(QRect(74, 167, 141, 21));
         sizePolicy.setHeightForWidth(lnEditVolumnError->sizePolicy().hasHeightForWidth());
         lnEditVolumnError->setSizePolicy(sizePolicy);
         label_32 = new QLabel(groupBox_9);
         label_32->setObjectName(QString::fromUtf8("label_32"));
-        label_32->setGeometry(QRect(12, 195, 44, 21));
+        label_32->setGeometry(QRect(12, 195, 51, 21));
         lnEditNewMeterNo = new QLineEdit(groupBox_9);
         lnEditNewMeterNo->setObjectName(QString::fromUtf8("lnEditNewMeterNo"));
-        lnEditNewMeterNo->setGeometry(QRect(64, 195, 151, 21));
+        lnEditNewMeterNo->setGeometry(QRect(74, 195, 141, 21));
         sizePolicy.setHeightForWidth(lnEditNewMeterNo->sizePolicy().hasHeightForWidth());
         lnEditNewMeterNo->setSizePolicy(sizePolicy);
         lnEditNewMeterNo->setAutoFillBackground(true);
@@ -392,7 +392,7 @@ public:
 
         groupBox_7 = new QGroupBox(DataTestDlgClass);
         groupBox_7->setObjectName(QString::fromUtf8("groupBox_7"));
-        groupBox_7->setGeometry(QRect(11, 513, 251, 101));
+        groupBox_7->setGeometry(QRect(11, 530, 251, 121));
         QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Expanding);
         sizePolicy4.setHorizontalStretch(0);
         sizePolicy4.setVerticalStretch(0);
@@ -409,7 +409,7 @@ public:
 
         layoutWidget = new QWidget(DataTestDlgClass);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(280, 190, 419, 425));
+        layoutWidget->setGeometry(QRect(280, 190, 419, 461));
         gridLayout_11 = new QGridLayout(layoutWidget);
         gridLayout_11->setObjectName(QString::fromUtf8("gridLayout_11"));
         gridLayout_11->setContentsMargins(0, 0, 0, 0);
@@ -713,90 +713,89 @@ public:
 
     void retranslateUi(QWidget *DataTestDlgClass)
     {
-        DataTestDlgClass->setWindowTitle(QApplication::translate("DataTestDlgClass", "\351\207\207\351\233\206\344\270\216\346\265\213\350\257\225", 0, QApplication::UnicodeUTF8));
-        groupBox->setTitle(QApplication::translate("DataTestDlgClass", "\346\200\273\346\243\200\346\225\260\346\215\256", 0, QApplication::UnicodeUTF8));
-        buttonGroup->setTitle(QApplication::translate("DataTestDlgClass", "\345\256\211\350\243\205\344\275\215\347\275\256", 0, QApplication::UnicodeUTF8));
-        radioButton->setText(QApplication::translate("DataTestDlgClass", "\350\277\233\345\217\243", 0, QApplication::UnicodeUTF8));
-        radioButton_2->setText(QApplication::translate("DataTestDlgClass", "\345\207\272\345\217\243", 0, QApplication::UnicodeUTF8));
-        buttonGroup_2->setTitle(QApplication::translate("DataTestDlgClass", "\347\203\255\351\207\217\345\215\225\344\275\215", 0, QApplication::UnicodeUTF8));
+        DataTestDlgClass->setWindowTitle(QApplication::translate("DataTestDlgClass", "DA and Test", 0, QApplication::UnicodeUTF8));
+        groupBox->setTitle(QApplication::translate("DataTestDlgClass", "Total Verify Data", 0, QApplication::UnicodeUTF8));
+        buttonGroup->setTitle(QApplication::translate("DataTestDlgClass", "Install Position", 0, QApplication::UnicodeUTF8));
+        radioButton->setText(QApplication::translate("DataTestDlgClass", "In", 0, QApplication::UnicodeUTF8));
+        radioButton_2->setText(QApplication::translate("DataTestDlgClass", "Out", 0, QApplication::UnicodeUTF8));
+        buttonGroup_2->setTitle(QApplication::translate("DataTestDlgClass", "Heat Unit", 0, QApplication::UnicodeUTF8));
         radioButton_3->setText(QApplication::translate("DataTestDlgClass", "KWH", 0, QApplication::UnicodeUTF8));
         radioButton_4->setText(QApplication::translate("DataTestDlgClass", "MJ", 0, QApplication::UnicodeUTF8));
-        groupBox_4->setTitle(QApplication::translate("DataTestDlgClass", "\346\234\200\345\260\217\346\270\251\345\267\256", 0, QApplication::UnicodeUTF8));
+        groupBox_4->setTitle(QApplication::translate("DataTestDlgClass", "Min Temp Diff", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("DataTestDlgClass", "K", 0, QApplication::UnicodeUTF8));
-        groupBox_5->setTitle(QApplication::translate("DataTestDlgClass", "\346\240\207\345\207\206\346\270\251\345\272\246\350\256\241", 0, QApplication::UnicodeUTF8));
-        pushButton->setText(QApplication::translate("DataTestDlgClass", "\351\207\207\351\233\206", 0, QApplication::UnicodeUTF8));
-        pushButton_2->setText(QApplication::translate("DataTestDlgClass", "\345\201\234\346\255\242", 0, QApplication::UnicodeUTF8));
-        label_2->setText(QApplication::translate("DataTestDlgClass", "\350\277\233\345\217\243", 0, QApplication::UnicodeUTF8));
+        groupBox_5->setTitle(QApplication::translate("DataTestDlgClass", "Std  Thermometer", 0, QApplication::UnicodeUTF8));
+        pushButton->setText(QApplication::translate("DataTestDlgClass", "Acquisition", 0, QApplication::UnicodeUTF8));
+        pushButton_2->setText(QApplication::translate("DataTestDlgClass", "Stop", 0, QApplication::UnicodeUTF8));
+        label_2->setText(QApplication::translate("DataTestDlgClass", "In", 0, QApplication::UnicodeUTF8));
         label_3->setText(QApplication::translate("DataTestDlgClass", "\316\251", 0, QApplication::UnicodeUTF8));
         label_4->setText(QApplication::translate("DataTestDlgClass", "\342\204\203", 0, QApplication::UnicodeUTF8));
-        label_5->setText(QApplication::translate("DataTestDlgClass", "\345\207\272\345\217\243", 0, QApplication::UnicodeUTF8));
+        label_5->setText(QApplication::translate("DataTestDlgClass", "Out", 0, QApplication::UnicodeUTF8));
         label_6->setText(QApplication::translate("DataTestDlgClass", "\316\251", 0, QApplication::UnicodeUTF8));
         label_7->setText(QApplication::translate("DataTestDlgClass", "\342\204\203", 0, QApplication::UnicodeUTF8));
-        groupBox_heatmeter->setTitle(QApplication::translate("DataTestDlgClass", "\346\243\200\345\256\232\347\203\255\351\207\217\350\241\250", 0, QApplication::UnicodeUTF8));
+        groupBox_heatmeter->setTitle(QApplication::translate("DataTestDlgClass", "Heat Meter", 0, QApplication::UnicodeUTF8));
         groupBox_9->setTitle(QApplication::translate("DataTestDlgClass", "1", 0, QApplication::UnicodeUTF8));
-        label_25->setText(QApplication::translate("DataTestDlgClass", "\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
+        label_25->setText(QApplication::translate("DataTestDlgClass", "MeterNo", 0, QApplication::UnicodeUTF8));
         label_26->setText(QApplication::translate("DataTestDlgClass", "V0(L)", 0, QApplication::UnicodeUTF8));
         label_27->setText(QApplication::translate("DataTestDlgClass", "V1(L)", 0, QApplication::UnicodeUTF8));
         label_28->setText(QApplication::translate("DataTestDlgClass", "E0(kwh)", 0, QApplication::UnicodeUTF8));
         label_29->setText(QApplication::translate("DataTestDlgClass", "E1(kwh)", 0, QApplication::UnicodeUTF8));
         label_31->setText(QApplication::translate("DataTestDlgClass", "\316\264v(%)", 0, QApplication::UnicodeUTF8));
-        label_32->setText(QApplication::translate("DataTestDlgClass", "\346\226\260\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
-        btnReadMeterNo->setText(QApplication::translate("DataTestDlgClass", "\350\257\273\345\217\226\n"
-"\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
-        btnReadMeterData->setText(QApplication::translate("DataTestDlgClass", "\350\257\273\350\241\250\n"
-"\346\225\260\346\215\256", 0, QApplication::UnicodeUTF8));
-        btnModifyMeterNo->setText(QApplication::translate("DataTestDlgClass", "\344\277\256\346\224\271\n"
-"\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
-        btnSetVerifyStatus->setText(QApplication::translate("DataTestDlgClass", "\346\243\200\345\256\232\n"
-"\347\212\266\346\200\201", 0, QApplication::UnicodeUTF8));
-        groupBox_7->setTitle(QApplication::translate("DataTestDlgClass", "\346\265\201\347\250\213\346\217\220\347\244\272", 0, QApplication::UnicodeUTF8));
-        label_24->setText(QApplication::translate("DataTestDlgClass", "\346\265\201\347\250\213\357\274\232", 0, QApplication::UnicodeUTF8));
-        groupBox_2->setTitle(QApplication::translate("DataTestDlgClass", "\351\230\200\351\227\250\347\212\266\346\200\201", 0, QApplication::UnicodeUTF8));
-        btnWaterIn->setText(QApplication::translate("DataTestDlgClass", "\350\277\233\n"
-"\346\260\264\n"
-"\351\230\200", 0, QApplication::UnicodeUTF8));
-        btnValveBig->setText(QApplication::translate("DataTestDlgClass", "\345\244\247\n"
-"\346\265\201\n"
-"\351\207\217\n"
-"\351\230\200", 0, QApplication::UnicodeUTF8));
-        btnValveMiddle1->setText(QApplication::translate("DataTestDlgClass", "\344\270\255\n"
-"\346\265\201\n"
-"\351\207\217\n"
-"\351\230\200\n"
+        label_32->setText(QApplication::translate("DataTestDlgClass", "New NO", 0, QApplication::UnicodeUTF8));
+        btnReadMeterNo->setText(QApplication::translate("DataTestDlgClass", "Read\n"
+"MeterNo", 0, QApplication::UnicodeUTF8));
+        btnReadMeterData->setText(QApplication::translate("DataTestDlgClass", "Read\n"
+"Data", 0, QApplication::UnicodeUTF8));
+        btnModifyMeterNo->setText(QApplication::translate("DataTestDlgClass", "Modify\n"
+"MeterNo", 0, QApplication::UnicodeUTF8));
+        btnSetVerifyStatus->setText(QApplication::translate("DataTestDlgClass", "Verify\n"
+"Status", 0, QApplication::UnicodeUTF8));
+        groupBox_7->setTitle(QApplication::translate("DataTestDlgClass", "Process Hint", 0, QApplication::UnicodeUTF8));
+        label_24->setText(QApplication::translate("DataTestDlgClass", "Process\357\274\232", 0, QApplication::UnicodeUTF8));
+        groupBox_2->setTitle(QApplication::translate("DataTestDlgClass", "Valve Status", 0, QApplication::UnicodeUTF8));
+        btnWaterIn->setText(QApplication::translate("DataTestDlgClass", "i\n"
+"n", 0, QApplication::UnicodeUTF8));
+        btnValveBig->setText(QApplication::translate("DataTestDlgClass", "b\n"
+"i\n"
+"g", 0, QApplication::UnicodeUTF8));
+        btnValveMiddle1->setText(QApplication::translate("DataTestDlgClass", "m\n"
+"i\n"
+"d\n"
 "1", 0, QApplication::UnicodeUTF8));
-        btnValveSmall->setText(QApplication::translate("DataTestDlgClass", "\345\260\217\n"
-"\346\265\201\n"
-"\351\207\217\n"
-"\351\230\200", 0, QApplication::UnicodeUTF8));
-        btnValveMiddle2->setText(QApplication::translate("DataTestDlgClass", "\344\270\255\n"
-"\346\265\201\n"
-"\351\207\217\n"
-"\351\230\200\n"
+        btnValveSmall->setText(QApplication::translate("DataTestDlgClass", "s\n"
+"m\n"
+"a\n"
+"l\n"
+"l", 0, QApplication::UnicodeUTF8));
+        btnValveMiddle2->setText(QApplication::translate("DataTestDlgClass", "m\n"
+"i\n"
+"d\n"
 "2", 0, QApplication::UnicodeUTF8));
-        btnWaterOut->setText(QApplication::translate("DataTestDlgClass", "\346\224\276\n"
-"\346\260\264\n"
-"\351\230\200", 0, QApplication::UnicodeUTF8));
-        btnWaterPump->setText(QApplication::translate("DataTestDlgClass", "\346\260\264\n"
-"\346\263\265", 0, QApplication::UnicodeUTF8));
-        label_18->setText(QApplication::translate("DataTestDlgClass", "\351\242\221\347\216\207", 0, QApplication::UnicodeUTF8));
-        btnRegulate1->setText(QApplication::translate("DataTestDlgClass", "\350\260\203\350\212\202\351\230\2001", 0, QApplication::UnicodeUTF8));
-        btnQueryStatus->setText(QApplication::translate("DataTestDlgClass", "\346\237\245\350\257\242\347\212\266\346\200\201", 0, QApplication::UnicodeUTF8));
-        groupBox_3->setTitle(QApplication::translate("DataTestDlgClass", "\346\225\260\346\215\256\351\207\207\351\233\206", 0, QApplication::UnicodeUTF8));
-        label_8->setText(QApplication::translate("DataTestDlgClass", "\345\244\247\345\244\251\345\271\263  ", 0, QApplication::UnicodeUTF8));
+        btnWaterOut->setText(QApplication::translate("DataTestDlgClass", "o\n"
+"u\n"
+"t", 0, QApplication::UnicodeUTF8));
+        btnWaterPump->setText(QApplication::translate("DataTestDlgClass", "p\n"
+"u\n"
+"m\n"
+"p", 0, QApplication::UnicodeUTF8));
+        label_18->setText(QApplication::translate("DataTestDlgClass", "Freq:", 0, QApplication::UnicodeUTF8));
+        btnRegulate1->setText(QApplication::translate("DataTestDlgClass", "Regulater", 0, QApplication::UnicodeUTF8));
+        btnQueryStatus->setText(QApplication::translate("DataTestDlgClass", "Query Status", 0, QApplication::UnicodeUTF8));
+        groupBox_3->setTitle(QApplication::translate("DataTestDlgClass", "Data Acquisition", 0, QApplication::UnicodeUTF8));
+        label_8->setText(QApplication::translate("DataTestDlgClass", "Big Balance:", 0, QApplication::UnicodeUTF8));
         label_13->setText(QApplication::translate("DataTestDlgClass", "kg", 0, QApplication::UnicodeUTF8));
-        label_9->setText(QApplication::translate("DataTestDlgClass", "\345\260\217\345\244\251\345\271\263  ", 0, QApplication::UnicodeUTF8));
+        label_9->setText(QApplication::translate("DataTestDlgClass", "Small Balance:", 0, QApplication::UnicodeUTF8));
         label_14->setText(QApplication::translate("DataTestDlgClass", "kg", 0, QApplication::UnicodeUTF8));
-        label_10->setText(QApplication::translate("DataTestDlgClass", "\347\236\254\346\227\266\346\265\201\351\207\217", 0, QApplication::UnicodeUTF8));
+        label_10->setText(QApplication::translate("DataTestDlgClass", "Flow:", 0, QApplication::UnicodeUTF8));
         label_15->setText(QApplication::translate("DataTestDlgClass", "m\302\263/h", 0, QApplication::UnicodeUTF8));
-        label_11->setText(QApplication::translate("DataTestDlgClass", "\345\205\245\345\217\243\346\270\251\345\272\246", 0, QApplication::UnicodeUTF8));
+        label_11->setText(QApplication::translate("DataTestDlgClass", "In Temp:", 0, QApplication::UnicodeUTF8));
         label_16->setText(QApplication::translate("DataTestDlgClass", "\342\204\203", 0, QApplication::UnicodeUTF8));
-        label_12->setText(QApplication::translate("DataTestDlgClass", "\345\207\272\345\217\243\346\270\251\345\272\246", 0, QApplication::UnicodeUTF8));
+        label_12->setText(QApplication::translate("DataTestDlgClass", "Out Temp:", 0, QApplication::UnicodeUTF8));
         label_17->setText(QApplication::translate("DataTestDlgClass", "\342\204\203", 0, QApplication::UnicodeUTF8));
-        groupBox_8->setTitle(QApplication::translate("DataTestDlgClass", "\346\223\215\344\275\234\346\255\245\351\252\244", 0, QApplication::UnicodeUTF8));
-        btnParaSet->setText(QApplication::translate("DataTestDlgClass", "\345\217\202\346\225\260", 0, QApplication::UnicodeUTF8));
-        pushButton_4->setText(QApplication::translate("DataTestDlgClass", "\346\216\222\346\260\224", 0, QApplication::UnicodeUTF8));
-        btnStart->setText(QApplication::translate("DataTestDlgClass", "\345\274\200\345\247\213", 0, QApplication::UnicodeUTF8));
-        btnExit->setText(QApplication::translate("DataTestDlgClass", "\351\200\200\345\207\272", 0, QApplication::UnicodeUTF8));
+        groupBox_8->setTitle(QApplication::translate("DataTestDlgClass", "Process", 0, QApplication::UnicodeUTF8));
+        btnParaSet->setText(QApplication::translate("DataTestDlgClass", "ParaSet", 0, QApplication::UnicodeUTF8));
+        pushButton_4->setText(QApplication::translate("DataTestDlgClass", "Exhaust", 0, QApplication::UnicodeUTF8));
+        btnStart->setText(QApplication::translate("DataTestDlgClass", "Start", 0, QApplication::UnicodeUTF8));
+        btnExit->setText(QApplication::translate("DataTestDlgClass", "Exit", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

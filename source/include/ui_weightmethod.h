@@ -51,8 +51,8 @@ public:
     QGroupBox *groupBox_2;
     QGridLayout *gridLayout_4;
     QHBoxLayout *horizontalLayout;
-    QLabel *label_13;
     QSpinBox *spinBoxFrequency;
+    QLabel *label_13;
     QToolButton *btnWaterIn;
     QToolButton *btnWaterOut;
     QToolButton *btnValveBig;
@@ -85,7 +85,7 @@ public:
     QLineEdit *lnEditSmallBalance;
     QLabel *label_12;
     QPushButton *btnReadMeter;
-    QWidget *widget;
+    QWidget *layoutWidget4;
     QGridLayout *gridLayout_6;
     QPushButton *btnExhaust;
     QPushButton *btnStart;
@@ -124,7 +124,7 @@ public:
         groupBox->setGeometry(QRect(20, 670, 261, 121));
         layoutWidget = new QWidget(groupBox);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 20, 121, 23));
+        layoutWidget->setGeometry(QRect(10, 20, 127, 23));
         horizontalLayout_2 = new QHBoxLayout(layoutWidget);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -141,7 +141,7 @@ public:
 
         layoutWidget1 = new QWidget(groupBox);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(11, 61, 191, 51));
+        layoutWidget1->setGeometry(QRect(11, 61, 202, 51));
         gridLayout_5 = new QGridLayout(layoutWidget1);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
         gridLayout_5->setContentsMargins(0, 0, 0, 0);
@@ -175,25 +175,25 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
-        label_13 = new QLabel(groupBox_2);
-        label_13->setObjectName(QString::fromUtf8("label_13"));
-        QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(label_13->sizePolicy().hasHeightForWidth());
-        label_13->setSizePolicy(sizePolicy1);
-
-        horizontalLayout->addWidget(label_13);
-
         spinBoxFrequency = new QSpinBox(groupBox_2);
         spinBoxFrequency->setObjectName(QString::fromUtf8("spinBoxFrequency"));
-        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(spinBoxFrequency->sizePolicy().hasHeightForWidth());
-        spinBoxFrequency->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(spinBoxFrequency->sizePolicy().hasHeightForWidth());
+        spinBoxFrequency->setSizePolicy(sizePolicy1);
 
         horizontalLayout->addWidget(spinBoxFrequency);
+
+        label_13 = new QLabel(groupBox_2);
+        label_13->setObjectName(QString::fromUtf8("label_13"));
+        QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(label_13->sizePolicy().hasHeightForWidth());
+        label_13->setSizePolicy(sizePolicy2);
+
+        horizontalLayout->addWidget(label_13);
 
 
         gridLayout_4->addLayout(horizontalLayout, 0, 0, 1, 1);
@@ -282,7 +282,7 @@ public:
         tableWidget->setHorizontalHeaderItem(9, __qtablewidgetitem9);
         tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
         tableWidget->setGeometry(QRect(20, 20, 1221, 581));
-        tableWidget->setInputMethodHints(Qt::ImhFormattedNumbersOnly);
+        tableWidget->setInputMethodHints(Qt::ImhDigitsOnly|Qt::ImhFormattedNumbersOnly);
         tableWidget->setEditTriggers(QAbstractItemView::CurrentChanged|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed);
         groupBox_3 = new QGroupBox(tab1);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
@@ -393,8 +393,8 @@ public:
 
         lnEditBigBalance = new QLineEdit(layoutWidget3);
         lnEditBigBalance->setObjectName(QString::fromUtf8("lnEditBigBalance"));
-        sizePolicy2.setHeightForWidth(lnEditBigBalance->sizePolicy().hasHeightForWidth());
-        lnEditBigBalance->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(lnEditBigBalance->sizePolicy().hasHeightForWidth());
+        lnEditBigBalance->setSizePolicy(sizePolicy1);
         lnEditBigBalance->setReadOnly(true);
 
         gridLayout_3->addWidget(lnEditBigBalance, 0, 1, 1, 1);
@@ -415,8 +415,8 @@ public:
 
         lnEditSmallBalance = new QLineEdit(layoutWidget3);
         lnEditSmallBalance->setObjectName(QString::fromUtf8("lnEditSmallBalance"));
-        sizePolicy2.setHeightForWidth(lnEditSmallBalance->sizePolicy().hasHeightForWidth());
-        lnEditSmallBalance->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(lnEditSmallBalance->sizePolicy().hasHeightForWidth());
+        lnEditSmallBalance->setSizePolicy(sizePolicy1);
         lnEditSmallBalance->setInputMethodHints(Qt::ImhNone);
         lnEditSmallBalance->setReadOnly(false);
 
@@ -432,33 +432,33 @@ public:
         btnReadMeter = new QPushButton(tab1);
         btnReadMeter->setObjectName(QString::fromUtf8("btnReadMeter"));
         btnReadMeter->setGeometry(QRect(170, 620, 91, 28));
-        widget = new QWidget(tab1);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(1150, 630, 95, 170));
-        gridLayout_6 = new QGridLayout(widget);
+        layoutWidget4 = new QWidget(tab1);
+        layoutWidget4->setObjectName(QString::fromUtf8("layoutWidget4"));
+        layoutWidget4->setGeometry(QRect(1150, 630, 95, 170));
+        gridLayout_6 = new QGridLayout(layoutWidget4);
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
         gridLayout_6->setContentsMargins(0, 0, 0, 0);
-        btnExhaust = new QPushButton(widget);
+        btnExhaust = new QPushButton(layoutWidget4);
         btnExhaust->setObjectName(QString::fromUtf8("btnExhaust"));
 
         gridLayout_6->addWidget(btnExhaust, 0, 0, 1, 1);
 
-        btnStart = new QPushButton(widget);
+        btnStart = new QPushButton(layoutWidget4);
         btnStart->setObjectName(QString::fromUtf8("btnStart"));
 
         gridLayout_6->addWidget(btnStart, 1, 0, 1, 1);
 
-        btnNext = new QPushButton(widget);
+        btnNext = new QPushButton(layoutWidget4);
         btnNext->setObjectName(QString::fromUtf8("btnNext"));
 
         gridLayout_6->addWidget(btnNext, 2, 0, 1, 1);
 
-        btnStop = new QPushButton(widget);
+        btnStop = new QPushButton(layoutWidget4);
         btnStop->setObjectName(QString::fromUtf8("btnStop"));
 
         gridLayout_6->addWidget(btnStop, 3, 0, 1, 1);
 
-        btnExit = new QPushButton(widget);
+        btnExit = new QPushButton(layoutWidget4);
         btnExit->setObjectName(QString::fromUtf8("btnExit"));
 
         gridLayout_6->addWidget(btnExit, 4, 0, 1, 1);
@@ -490,89 +490,95 @@ public:
 
     void retranslateUi(QWidget *WeightMethodClass)
     {
-        WeightMethodClass->setWindowTitle(QApplication::translate("WeightMethodClass", "\350\264\250\351\207\217\346\263\225\346\243\200\345\256\232", 0, QApplication::UnicodeUTF8));
-        btnParaSet->setText(QApplication::translate("WeightMethodClass", "\345\217\202\346\225\260\350\256\276\347\275\256", 0, QApplication::UnicodeUTF8));
-        groupBox->setTitle(QApplication::translate("WeightMethodClass", "\345\275\223\345\211\215\345\217\202\346\225\260(\345\205\263\351\224\256\344\277\241\346\201\257)", 0, QApplication::UnicodeUTF8));
-        labelStandard->setText(QApplication::translate("WeightMethodClass", "\350\247\204\346\240\274\357\274\232", 0, QApplication::UnicodeUTF8));
-        label_14->setText(QApplication::translate("WeightMethodClass", "\351\207\207\351\233\206\346\226\271\345\274\217\357\274\232", 0, QApplication::UnicodeUTF8));
+        WeightMethodClass->setWindowTitle(QApplication::translate("WeightMethodClass", "WeightMethod Verify", 0, QApplication::UnicodeUTF8));
+        btnParaSet->setText(QApplication::translate("WeightMethodClass", "ParaSet", 0, QApplication::UnicodeUTF8));
+        groupBox->setTitle(QApplication::translate("WeightMethodClass", "NowPara(KeyInfo)", 0, QApplication::UnicodeUTF8));
+        labelStandard->setText(QApplication::translate("WeightMethodClass", "Standard:", 0, QApplication::UnicodeUTF8));
+        label_14->setText(QApplication::translate("WeightMethodClass", "DA Mode:", 0, QApplication::UnicodeUTF8));
         cmbAutoPick->clear();
         cmbAutoPick->insertItems(0, QStringList()
-         << QApplication::translate("WeightMethodClass", "\346\211\213\345\212\250\351\207\207\351\233\206", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("WeightMethodClass", "\350\207\252\345\212\250\351\207\207\351\233\206", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WeightMethodClass", "manual", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WeightMethodClass", "auto", 0, QApplication::UnicodeUTF8)
         );
-        label_15->setText(QApplication::translate("WeightMethodClass", "\346\230\257\345\220\246\350\277\236\347\273\255:", 0, QApplication::UnicodeUTF8));
+        label_15->setText(QApplication::translate("WeightMethodClass", "Continuous:", 0, QApplication::UnicodeUTF8));
         cmbContinue->clear();
         cmbContinue->insertItems(0, QStringList()
-         << QApplication::translate("WeightMethodClass", "\351\235\236\350\277\236\347\273\255\346\243\200\345\256\232", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("WeightMethodClass", "\350\277\236\347\273\255\346\243\200\345\256\232", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WeightMethodClass", "Not Cotinuous", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WeightMethodClass", "Continuous", 0, QApplication::UnicodeUTF8)
         );
-        groupBox_2->setTitle(QApplication::translate("WeightMethodClass", "\351\230\200\351\227\250\343\200\201\346\260\264\346\263\265\343\200\201\345\217\230\351\242\221\345\231\250\346\216\247\345\210\266", 0, QApplication::UnicodeUTF8));
-        label_13->setText(QApplication::translate("WeightMethodClass", "\351\242\221\347\216\207", 0, QApplication::UnicodeUTF8));
-        btnWaterIn->setText(QApplication::translate("WeightMethodClass", "\350\277\233\n"
-"\346\260\264\n"
-"\351\230\200", 0, QApplication::UnicodeUTF8));
-        btnWaterOut->setText(QApplication::translate("WeightMethodClass", "\346\224\276\n"
-"\346\260\264\n"
-"\351\230\200", 0, QApplication::UnicodeUTF8));
-        btnValveBig->setText(QApplication::translate("WeightMethodClass", "\345\244\247\n"
-"\346\265\201\n"
-"\351\207\217\n"
-"\351\230\200", 0, QApplication::UnicodeUTF8));
-        btnValveMiddle1->setText(QApplication::translate("WeightMethodClass", "\344\270\255\n"
-"\346\265\201\n"
-"\344\270\200\n"
-"\351\230\200", 0, QApplication::UnicodeUTF8));
-        btnValveMiddle2->setText(QApplication::translate("WeightMethodClass", "\344\270\255\n"
-"\346\265\201\n"
-"\344\272\214\n"
-"\351\230\200", 0, QApplication::UnicodeUTF8));
-        btnValveSmall->setText(QApplication::translate("WeightMethodClass", "\345\260\217\n"
-"\346\265\201\n"
-"\351\207\217\n"
-"\351\230\200", 0, QApplication::UnicodeUTF8));
-        btnWaterPumpStart->setText(QApplication::translate("WeightMethodClass", "\345\220\257\345\212\250\346\260\264\346\263\265", 0, QApplication::UnicodeUTF8));
-        btnWaterPumpStop->setText(QApplication::translate("WeightMethodClass", "\345\205\263\351\227\255\346\260\264\346\263\265", 0, QApplication::UnicodeUTF8));
+        groupBox_2->setTitle(QApplication::translate("WeightMethodClass", "Controller", 0, QApplication::UnicodeUTF8));
+        label_13->setText(QApplication::translate("WeightMethodClass", "Hz", 0, QApplication::UnicodeUTF8));
+        btnWaterIn->setText(QApplication::translate("WeightMethodClass", "i\n"
+"n\n"
+"", 0, QApplication::UnicodeUTF8));
+        btnWaterOut->setText(QApplication::translate("WeightMethodClass", "o\n"
+"u\n"
+"t", 0, QApplication::UnicodeUTF8));
+        btnValveBig->setText(QApplication::translate("WeightMethodClass", "b\n"
+"i\n"
+"g", 0, QApplication::UnicodeUTF8));
+        btnValveMiddle1->setText(QApplication::translate("WeightMethodClass", "m\n"
+"i\n"
+"d\n"
+"d\n"
+"l\n"
+"e\n"
+"1", 0, QApplication::UnicodeUTF8));
+        btnValveMiddle2->setText(QApplication::translate("WeightMethodClass", "m\n"
+"i\n"
+"d\n"
+"d\n"
+"l\n"
+"e\n"
+"2", 0, QApplication::UnicodeUTF8));
+        btnValveSmall->setText(QApplication::translate("WeightMethodClass", "s\n"
+"m\n"
+"a\n"
+"l\n"
+"l", 0, QApplication::UnicodeUTF8));
+        btnWaterPumpStart->setText(QApplication::translate("WeightMethodClass", "Start Pump", 0, QApplication::UnicodeUTF8));
+        btnWaterPumpStop->setText(QApplication::translate("WeightMethodClass", "Stop Pump", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QApplication::translate("WeightMethodClass", "\350\241\250\345\217\267", 0, QApplication::UnicodeUTF8));
+        ___qtablewidgetitem->setText(QApplication::translate("WeightMethodClass", "MeterNo", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QApplication::translate("WeightMethodClass", "\346\265\201\351\207\217\347\202\271(m\302\263/h)", 0, QApplication::UnicodeUTF8));
+        ___qtablewidgetitem1->setText(QApplication::translate("WeightMethodClass", "FlowPoint(m\302\263/h)", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem2 = tableWidget->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QApplication::translate("WeightMethodClass", "\350\241\250\345\210\235\345\200\274(L)", 0, QApplication::UnicodeUTF8));
+        ___qtablewidgetitem2->setText(QApplication::translate("WeightMethodClass", "MeterValue0(L)", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem3 = tableWidget->horizontalHeaderItem(3);
-        ___qtablewidgetitem3->setText(QApplication::translate("WeightMethodClass", "\350\241\250\347\273\210\345\200\274(L)", 0, QApplication::UnicodeUTF8));
+        ___qtablewidgetitem3->setText(QApplication::translate("WeightMethodClass", "MeterValue1(L)", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem4 = tableWidget->horizontalHeaderItem(4);
-        ___qtablewidgetitem4->setText(QApplication::translate("WeightMethodClass", "\345\244\251\345\271\263\345\210\235\345\200\274(kg)", 0, QApplication::UnicodeUTF8));
+        ___qtablewidgetitem4->setText(QApplication::translate("WeightMethodClass", "BalWeight0(kg)", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem5 = tableWidget->horizontalHeaderItem(5);
-        ___qtablewidgetitem5->setText(QApplication::translate("WeightMethodClass", "\345\244\251\345\271\263\347\273\210\345\200\274(kg)", 0, QApplication::UnicodeUTF8));
+        ___qtablewidgetitem5->setText(QApplication::translate("WeightMethodClass", "BalWeight1(kg)", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem6 = tableWidget->horizontalHeaderItem(6);
-        ___qtablewidgetitem6->setText(QApplication::translate("WeightMethodClass", "\346\270\251\345\272\246(\342\204\203)", 0, QApplication::UnicodeUTF8));
+        ___qtablewidgetitem6->setText(QApplication::translate("WeightMethodClass", "Temp(\342\204\203)", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem7 = tableWidget->horizontalHeaderItem(7);
-        ___qtablewidgetitem7->setText(QApplication::translate("WeightMethodClass", "\345\257\206\345\272\246(kg/L)", 0, QApplication::UnicodeUTF8));
+        ___qtablewidgetitem7->setText(QApplication::translate("WeightMethodClass", "Density(kg/L)", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem8 = tableWidget->horizontalHeaderItem(8);
-        ___qtablewidgetitem8->setText(QApplication::translate("WeightMethodClass", "\346\240\207\345\207\206\345\200\274(L)", 0, QApplication::UnicodeUTF8));
+        ___qtablewidgetitem8->setText(QApplication::translate("WeightMethodClass", "StdValue(L)", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem9 = tableWidget->horizontalHeaderItem(9);
-        ___qtablewidgetitem9->setText(QApplication::translate("WeightMethodClass", "\347\244\272\345\200\274\350\257\257\345\267\256(%)", 0, QApplication::UnicodeUTF8));
-        groupBox_3->setTitle(QApplication::translate("WeightMethodClass", "\346\265\201\347\250\213\346\217\220\347\244\272", 0, QApplication::UnicodeUTF8));
-        labelHintInfo->setText(QApplication::translate("WeightMethodClass", "\346\217\220\347\244\272\344\277\241\346\201\257", 0, QApplication::UnicodeUTF8));
+        ___qtablewidgetitem9->setText(QApplication::translate("WeightMethodClass", "DsipError(%)", 0, QApplication::UnicodeUTF8));
+        groupBox_3->setTitle(QApplication::translate("WeightMethodClass", "Process Hint", 0, QApplication::UnicodeUTF8));
+        labelHintInfo->setText(QApplication::translate("WeightMethodClass", "Hint Info", 0, QApplication::UnicodeUTF8));
         labelHint->setText(QString());
-        label_3->setText(QApplication::translate("WeightMethodClass", "\346\265\201\351\207\217", 0, QApplication::UnicodeUTF8));
+        label_3->setText(QApplication::translate("WeightMethodClass", "Flow:", 0, QApplication::UnicodeUTF8));
         label_6->setText(QApplication::translate("WeightMethodClass", "m\302\263/h", 0, QApplication::UnicodeUTF8));
-        label_4->setText(QApplication::translate("WeightMethodClass", "\345\205\245\345\217\243\346\270\251\345\272\246", 0, QApplication::UnicodeUTF8));
+        label_4->setText(QApplication::translate("WeightMethodClass", "In Temp:", 0, QApplication::UnicodeUTF8));
         label_7->setText(QApplication::translate("WeightMethodClass", "\342\204\203", 0, QApplication::UnicodeUTF8));
-        label_5->setText(QApplication::translate("WeightMethodClass", "\345\207\272\345\217\243\346\270\251\345\272\246", 0, QApplication::UnicodeUTF8));
+        label_5->setText(QApplication::translate("WeightMethodClass", "Out Temp:", 0, QApplication::UnicodeUTF8));
         label_8->setText(QApplication::translate("WeightMethodClass", "\342\204\203", 0, QApplication::UnicodeUTF8));
-        label_9->setText(QApplication::translate("WeightMethodClass", "\345\244\247\345\244\251\345\271\263", 0, QApplication::UnicodeUTF8));
+        label_9->setText(QApplication::translate("WeightMethodClass", "Big Balance:", 0, QApplication::UnicodeUTF8));
         lnEditBigBalance->setText(QString());
         label_11->setText(QApplication::translate("WeightMethodClass", "\343\216\217", 0, QApplication::UnicodeUTF8));
-        label_10->setText(QApplication::translate("WeightMethodClass", "\345\260\217\345\244\251\345\271\263", 0, QApplication::UnicodeUTF8));
+        label_10->setText(QApplication::translate("WeightMethodClass", "Small Balance:", 0, QApplication::UnicodeUTF8));
         lnEditSmallBalance->setText(QString());
         label_12->setText(QApplication::translate("WeightMethodClass", "\343\216\217", 0, QApplication::UnicodeUTF8));
-        btnReadMeter->setText(QApplication::translate("WeightMethodClass", "\350\257\273\350\241\250", 0, QApplication::UnicodeUTF8));
-        btnExhaust->setText(QApplication::translate("WeightMethodClass", "\346\216\222\346\260\224", 0, QApplication::UnicodeUTF8));
-        btnStart->setText(QApplication::translate("WeightMethodClass", "\345\274\200\345\247\213", 0, QApplication::UnicodeUTF8));
-        btnNext->setText(QApplication::translate("WeightMethodClass", "\344\270\213\344\270\200\346\255\245", 0, QApplication::UnicodeUTF8));
-        btnStop->setText(QApplication::translate("WeightMethodClass", "\347\273\210\346\255\242\346\243\200\346\265\213", 0, QApplication::UnicodeUTF8));
-        btnExit->setText(QApplication::translate("WeightMethodClass", "\351\200\200\345\207\272", 0, QApplication::UnicodeUTF8));
+        btnReadMeter->setText(QApplication::translate("WeightMethodClass", "ReadMeter", 0, QApplication::UnicodeUTF8));
+        btnExhaust->setText(QApplication::translate("WeightMethodClass", "Exhaust", 0, QApplication::UnicodeUTF8));
+        btnStart->setText(QApplication::translate("WeightMethodClass", "Start", 0, QApplication::UnicodeUTF8));
+        btnNext->setText(QApplication::translate("WeightMethodClass", "Next", 0, QApplication::UnicodeUTF8));
+        btnStop->setText(QApplication::translate("WeightMethodClass", "Stop", 0, QApplication::UnicodeUTF8));
+        btnExit->setText(QApplication::translate("WeightMethodClass", "Exit", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab1), QApplication::translate("WeightMethodClass", "Tab1", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab2), QApplication::translate("WeightMethodClass", "Tab2", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab3), QApplication::translate("WeightMethodClass", "Tab3", 0, QApplication::UnicodeUTF8));

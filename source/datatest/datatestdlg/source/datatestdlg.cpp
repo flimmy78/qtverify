@@ -64,7 +64,7 @@ DataTestDlg::DataTestDlg(QWidget *parent, Qt::WFlags flags)
 	//获取下位机端口配置信息
 	if (!getPortSetIni(&m_portsetinfo))
 	{
-		QMessageBox::warning(this, tr("Warning"), tr("获取下位机端口配置信息失败!请重新设置！"));
+		QMessageBox::warning(this, tr("Warning"), tr("get port set info failed!"));//获取下位机端口配置信息失败!请重新设置！
 	}
 
 	initValveStatus();      //初始化阀门状态
@@ -73,7 +73,7 @@ DataTestDlg::DataTestDlg(QWidget *parent, Qt::WFlags flags)
 	//获取参数设置信息
 	if (!getParaSetIni(&m_parasetinfo))
 	{
-		QMessageBox::warning(this, tr("Warning"), tr("获取质量法参数配置信息失败!请重新设置！"));
+		QMessageBox::warning(this, tr("Warning"), tr("get para set info failed"));//获取质量法参数配置信息失败!请重新设置！
 	}
 	qDebug()<<"metertype:"<<m_parasetinfo.metertype;
 }

@@ -30,7 +30,7 @@
      </sizepolicy>
     </property>
     <property name="title">
-     <string>操作步骤</string>
+     <string>Process</string>
     </property>
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="0">
@@ -151,7 +151,7 @@
     </property>
     <widget class="QMenu" name="menu_2">
      <property name="title">
-      <string>质量法</string>
+      <string>WeightMethod</string>
      </property>
      <property name="icon">
       <iconset resource="../qtverify.qrc">
@@ -162,7 +162,7 @@
     </widget>
     <widget class="QMenu" name="menu_3">
      <property name="title">
-      <string>标准表法</string>
+      <string>StandardMeter</string>
      </property>
      <property name="icon">
       <iconset resource="../qtverify.qrc">
@@ -231,7 +231,7 @@
      <normaloff>:/qtverify/images/comdebugger.png</normaloff>:/qtverify/images/comdebugger.png</iconset>
    </property>
    <property name="text">
-    <string>串口调试工具</string>
+    <string>ComDebugger</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+P</string>
@@ -264,7 +264,7 @@
      <normaloff>:/qtverify/images/queryresult.png</normaloff>:/qtverify/images/queryresult.png</iconset>
    </property>
    <property name="text">
-    <string>查询检定结果</string>
+    <string>QueryResult</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Q</string>
@@ -281,7 +281,7 @@
      <normaloff>:/qtverify/images/qualitycomp.png</normaloff>:/qtverify/images/qualitycomp.png</iconset>
    </property>
    <property name="text">
-    <string>分量检定(质量法)</string>
+    <string>Fen(WT)</string>
    </property>
   </action>
   <action name="actionQualityTotal">
@@ -290,7 +290,7 @@
      <normaloff>:/qtverify/images/qualitytotal.png</normaloff>:/qtverify/images/qualitytotal.png</iconset>
    </property>
    <property name="text">
-    <string>总量检定(质量法)</string>
+    <string>Zong(WT)</string>
    </property>
   </action>
   <action name="actionStandardComp">
@@ -299,7 +299,7 @@
      <normaloff>:/qtverify/images/stdcomp.png</normaloff>:/qtverify/images/stdcomp.png</iconset>
    </property>
    <property name="text">
-    <string>分量检定(标准表法)</string>
+    <string>Fen(Std)</string>
    </property>
   </action>
   <action name="actionStandardTotal">
@@ -308,7 +308,7 @@
      <normaloff>:/qtverify/images/stdtotal.png</normaloff>:/qtverify/images/stdtotal.png</iconset>
    </property>
    <property name="text">
-    <string>总量检定(标准表法)</string>
+    <string>Zong(Std)</string>
    </property>
   </action>
   <action name="actionComSet">
@@ -317,7 +317,7 @@
      <normaloff>:/qtverify/images/comset.png</normaloff>:/qtverify/images/comset.png</iconset>
    </property>
    <property name="text">
-    <string>串口设置</string>
+    <string>ComSet</string>
    </property>
   </action>
   <action name="actionPortSet">
@@ -326,7 +326,7 @@
      <normaloff>:/qtverify/images/portset.png</normaloff>:/qtverify/images/portset.png</iconset>
    </property>
    <property name="text">
-    <string>终端模块端口设置</string>
+    <string>PortSet</string>
    </property>
   </action>
   <action name="actionMasterSlaveSet">
@@ -335,7 +335,7 @@
      <normaloff>:/qtverify/images/hostslaveset.png</normaloff>:/qtverify/images/hostslaveset.png</iconset>
    </property>
    <property name="text">
-    <string>主机-从机设置</string>
+    <string>HostGuestSet</string>
    </property>
   </action>
   <action name="actionExit">
@@ -344,7 +344,7 @@
      <normaloff>:/qtverify/images/exit.png</normaloff>:/qtverify/images/exit.png</iconset>
    </property>
    <property name="text">
-    <string>退出</string>
+    <string>Exit</string>
    </property>
   </action>
   <action name="actionTest">
@@ -353,7 +353,7 @@
      <normaloff>:/qtverify/images/collecttest.png</normaloff>:/qtverify/images/collecttest.png</iconset>
    </property>
    <property name="text">
-    <string>采集与测试</string>
+    <string>datatest</string>
    </property>
   </action>
   <action name="actionAbout">
@@ -362,22 +362,34 @@
      <normaloff>:/qtverify/images/about.png</normaloff>:/qtverify/images/about.png</iconset>
    </property>
    <property name="text">
-    <string>关于</string>
+    <string>About</string>
    </property>
   </action>
   <action name="actionDefault">
+   <property name="icon">
+    <iconset resource="../qtverify.qrc">
+     <normaloff>:/qtverify/images/defaultstyle.png</normaloff>:/qtverify/images/defaultstyle.png</iconset>
+   </property>
    <property name="text">
-    <string>default</string>
+    <string>Default</string>
    </property>
   </action>
   <action name="actionClassic">
+   <property name="icon">
+    <iconset resource="../qtverify.qrc">
+     <normaloff>:/qtverify/images/classicstyle.png</normaloff>:/qtverify/images/classicstyle.png</iconset>
+   </property>
    <property name="text">
-    <string>classic</string>
+    <string>Classic</string>
    </property>
   </action>
   <action name="actionFashion">
+   <property name="icon">
+    <iconset resource="../qtverify.qrc">
+     <normaloff>:/qtverify/images/fashionstyle.png</normaloff>:/qtverify/images/fashionstyle.png</iconset>
+   </property>
    <property name="text">
-    <string>fashion</string>
+    <string>Fashion</string>
    </property>
   </action>
  </widget>

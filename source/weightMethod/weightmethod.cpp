@@ -75,7 +75,7 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 
 	if (!getPortSetIni(&m_portsetinfo)) //获取下位机端口号配置信息
 	{
-		QMessageBox::warning(this, tr("Warning"), tr("获取下位机端口号配置信息失败!请重新设置！"));
+		QMessageBox::warning(this, tr("Warning"), tr("Warning:get port set info failed!"));//获取下位机端口号配置信息失败!请重新设置！
 	}
 
 	initValveStatus();      //映射关系；初始化阀门状态
@@ -414,7 +414,7 @@ void WeightMethodDlg::setTableRowCount()
 	QStringList vLabels;
 	for (int i=1; i<= m_maxMeterNum; i++)
 	{
-		vLabels<<QString("表位号%1").arg(i);
+		vLabels<<QString(QObject::tr("meterPosNo%1").arg(i));
 // 		QSpinBox *box = new QSpinBox(this);
 // 		box->setMinimum(0);
 // 		box->setMaximum(99999999);
@@ -706,7 +706,7 @@ void WeightMethodDlg::startVerify()
 	//判断实际检表的个数(根据获取到的表号个数)
 	if (getValidMeterNum() <= 0)
 	{
-		QMessageBox::warning(this, tr("Warning"), tr("请输入表号！然后点击'开始'按钮"));
+		QMessageBox::warning(this, tr("Warning"), tr("Please input MeterNO., then click \"start\" button!"));//请输入表号！然后点击'开始'按钮
 		ui.btnStart->show();
 		return;
 	}
@@ -855,7 +855,7 @@ int WeightMethodDlg::prepareVerifyFlowPoint(int order)
 	}
 	if (m_validMeterNum <= 0)
 	{
-		QMessageBox::warning(this, tr("Warning"), tr("请输入表号！"));
+		QMessageBox::warning(this, tr("Warning"), tr("please input meter number"));//请输入表号！
 		return false;
 	}
 
@@ -1207,7 +1207,7 @@ void WeightMethodDlg::on_btnWaterPumpStart_clicked()
 {
 	if (ui.spinBoxFrequency->value() <= 0)
 	{
-		QMessageBox::warning(this, tr("Warning"), tr("请设置变频器频率！"));
+		QMessageBox::warning(this, tr("Warning"), tr("please input frequency of transducer"));//请设置变频器频率！
 		ui.spinBoxFrequency->setFocus();
 	}
 	m_controlObj->makeRegulateSendBuf(m_portsetinfo.pumpNo, ui.spinBoxFrequency->value());
@@ -1237,7 +1237,7 @@ int WeightMethodDlg::getMeterStartValue()
 	}
 	else //手动输入
 	{
-		QMessageBox::information(this, tr("Hint"), tr("请输入热量表初值！"));
+		QMessageBox::information(this, tr("Hint"), tr("please input init value of heat meter"));//请输入热量表初值！
 		m_inputStartValue = true; //允许输入初值
 		ui.tableWidget->setCurrentCell(m_meterPosMap[0]-1, COLUMN_METER_START); //定位到第一个需要输入初值的地方
 		return false;
@@ -1272,7 +1272,7 @@ int WeightMethodDlg::getMeterEndValue()
 	}
 	else //手动输入
 	{
-		QMessageBox::information(this, tr("Hint"), tr("请输入热量表终值！"));
+		QMessageBox::information(this, tr("Hint"), tr("please input end value of heat meter"));//请输入热量表终值！
 		m_inputEndValue = true; //允许输入终值
 		ui.tableWidget->setCurrentCell(m_meterPosMap[0]-1, COLUMN_METER_END); //定位到第一个需要输入终值的地方
 		return false;
@@ -1306,7 +1306,7 @@ void WeightMethodDlg::on_tableWidget_cellChanged(int row, int column)
 			m_meterStartValue[idx] = ui.tableWidget->item(row, column)->text().toFloat(&ok);
 			if (!ok)
 			{
-				QMessageBox::warning(this, tr("Warning"), tr("输入错误！请输入数字"));
+				QMessageBox::warning(this, tr("Warning"), tr("Error: please input digits"));//输入错误！请输入数字
 				return;
 			}
 		}
@@ -1334,7 +1334,7 @@ void WeightMethodDlg::on_tableWidget_cellChanged(int row, int column)
 			m_meterEndValue[idx] = ui.tableWidget->item(row, column)->text().toFloat(&ok);
 			if (!ok)
 			{
-				QMessageBox::warning(this, tr("Warning"), tr("输入错误！请输入数字"));
+				QMessageBox::warning(this, tr("Warning"), tr("Error: please input digits"));//输入错误！请输入数字
 				return;
 			}
 			calcMeterError(idx);

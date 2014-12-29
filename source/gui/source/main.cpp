@@ -63,14 +63,14 @@ int main(int argc, char *argv[])
 	QTest::qSleep(200);
 	g_mainform = new MainForm;
 
-// 	LoginDialog login;
-// 	if (login.exec() == QDialog::Accepted)
-// 	{
+	LoginDialog login;
+	if (login.exec() == QDialog::Accepted)
+	{
 		g_mainform->show();//showMaximized();
 		splash->finish(g_mainform);
 		delete splash;
 		app.exec();
-//	}
+	}
 
 	closedb();
 	return 0;

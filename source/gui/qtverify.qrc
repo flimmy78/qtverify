@@ -38,6 +38,9 @@
     <file>images/delu.jpg</file>
     <file>images/smallfacility.png</file>
     <file>images/facility.png</file>
+    <file>images/defaultstyle.png</file>
+    <file>images/classicstyle.png</file>
+    <file>images/fashionstyle.png</file>
     <file>qss/default.qss</file>
     <file>qss/classic.qss</file>
     <file>qss/fashion.qss</file>

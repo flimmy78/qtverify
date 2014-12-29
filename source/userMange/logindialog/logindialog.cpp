@@ -52,9 +52,9 @@ void LoginDialog::initUserComboBox()
 
 void LoginDialog::on_loginButton_clicked()
 {
-	if(ui.passwordEdit->text().isEmpty())
+	if (ui.passwordEdit->text().isEmpty())
 	{
-		QMessageBox::information(this, tr("ÇëÊäÈëÃÜÂë"), tr("ÇëÊäÈëÃÜÂëÔÙµÇÂ¼"));
+		QMessageBox::warning(this, tr("Warning"), tr("please input password!"));
 		ui.passwordEdit->setFocus();
 	}
 	else
@@ -68,7 +68,7 @@ void LoginDialog::on_loginButton_clicked()
 		}
 		else
 		{
-			QMessageBox::warning(this, tr("ÃÜÂë´íÎó"), tr("ÇëÊäÈëÕýÈ·ÃÜÂëºóÔÙµÇÂ¼"));
+			QMessageBox::warning(this, tr("Warning"), tr("password error!"));
 			ui.passwordEdit->clear();
 			ui.passwordEdit->setFocus();
 		}

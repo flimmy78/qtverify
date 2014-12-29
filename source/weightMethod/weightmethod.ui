@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>质量法检定</string>
+   <string>WeightMethod Verify</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
@@ -48,7 +48,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>参数设置</string>
+        <string>ParaSet</string>
        </property>
       </widget>
       <widget class="QGroupBox" name="groupBox">
@@ -61,14 +61,14 @@
         </rect>
        </property>
        <property name="title">
-        <string>当前参数(关键信息)</string>
+        <string>NowPara(KeyInfo)</string>
        </property>
        <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>10</x>
           <y>20</y>
-          <width>121</width>
+          <width>127</width>
           <height>23</height>
          </rect>
         </property>
@@ -76,7 +76,7 @@
          <item>
           <widget class="QLabel" name="labelStandard">
            <property name="text">
-            <string>规格：</string>
+            <string>Standard:</string>
            </property>
           </widget>
          </item>
@@ -94,7 +94,7 @@
          <rect>
           <x>11</x>
           <y>61</y>
-          <width>191</width>
+          <width>202</width>
           <height>51</height>
          </rect>
         </property>
@@ -102,7 +102,7 @@
          <item row="0" column="0">
           <widget class="QLabel" name="label_14">
            <property name="text">
-            <string>采集方式：</string>
+            <string>DA Mode:</string>
            </property>
           </widget>
          </item>
@@ -113,12 +113,12 @@
            </property>
            <item>
             <property name="text">
-             <string>手动采集</string>
+             <string>manual</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>自动采集</string>
+             <string>auto</string>
             </property>
            </item>
           </widget>
@@ -126,7 +126,7 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label_15">
            <property name="text">
-            <string>是否连续:</string>
+            <string>Continuous:</string>
            </property>
           </widget>
          </item>
@@ -137,12 +137,12 @@
            </property>
            <item>
             <property name="text">
-             <string>非连续检定</string>
+             <string>Not Cotinuous</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>连续检定</string>
+             <string>Continuous</string>
             </property>
            </item>
           </widget>
@@ -160,7 +160,7 @@
         </rect>
        </property>
        <property name="title">
-        <string>阀门、水泵、变频器控制</string>
+        <string>Controller</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_4">
         <item row="0" column="0">
@@ -168,6 +168,16 @@
           <property name="sizeConstraint">
            <enum>QLayout::SetDefaultConstraint</enum>
           </property>
+          <item>
+           <widget class="QSpinBox" name="spinBoxFrequency">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+          </item>
           <item>
            <widget class="QLabel" name="label_13">
             <property name="sizePolicy">
@@ -177,17 +187,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>频率</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="spinBoxFrequency">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
+             <string>Hz</string>
             </property>
            </widget>
           </item>
@@ -202,9 +202,9 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>进
-水
-阀</string>
+           <string>i
+n
+</string>
           </property>
          </widget>
         </item>
@@ -217,9 +217,9 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>放
-水
-阀</string>
+           <string>o
+u
+t</string>
           </property>
          </widget>
         </item>
@@ -232,10 +232,9 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>大
-流
-量
-阀</string>
+           <string>b
+i
+g</string>
           </property>
          </widget>
         </item>
@@ -248,10 +247,13 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>中
-流
-一
-阀</string>
+           <string>m
+i
+d
+d
+l
+e
+1</string>
           </property>
          </widget>
         </item>
@@ -264,10 +266,13 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>中
-流
-二
-阀</string>
+           <string>m
+i
+d
+d
+l
+e
+2</string>
           </property>
          </widget>
         </item>
@@ -280,10 +285,11 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>小
-流
-量
-阀</string>
+           <string>s
+m
+a
+l
+l</string>
           </property>
          </widget>
         </item>
@@ -296,7 +302,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>启动水泵</string>
+           <string>Start Pump</string>
           </property>
          </widget>
         </item>
@@ -309,7 +315,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>关闭水泵</string>
+           <string>Stop Pump</string>
           </property>
          </widget>
         </item>
@@ -325,59 +331,59 @@
         </rect>
        </property>
        <property name="inputMethodHints">
-        <set>Qt::ImhFormattedNumbersOnly</set>
+        <set>Qt::ImhDigitsOnly|Qt::ImhFormattedNumbersOnly</set>
        </property>
        <property name="editTriggers">
         <set>QAbstractItemView::CurrentChanged|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed</set>
        </property>
        <column>
         <property name="text">
-         <string>表号</string>
+         <string>MeterNo</string>
         </property>
        </column>
        <column>
         <property name="text">
-         <string>流量点(m³/h)</string>
+         <string>FlowPoint(m³/h)</string>
         </property>
        </column>
        <column>
         <property name="text">
-         <string>表初值(L)</string>
+         <string>MeterValue0(L)</string>
         </property>
        </column>
        <column>
         <property name="text">
-         <string>表终值(L)</string>
+         <string>MeterValue1(L)</string>
         </property>
        </column>
        <column>
         <property name="text">
-         <string>天平初值(kg)</string>
+         <string>BalWeight0(kg)</string>
         </property>
        </column>
        <column>
         <property name="text">
-         <string>天平终值(kg)</string>
+         <string>BalWeight1(kg)</string>
         </property>
        </column>
        <column>
         <property name="text">
-         <string>温度(℃)</string>
+         <string>Temp(℃)</string>
         </property>
        </column>
        <column>
         <property name="text">
-         <string>密度(kg/L)</string>
+         <string>Density(kg/L)</string>
         </property>
        </column>
        <column>
         <property name="text">
-         <string>标准值(L)</string>
+         <string>StdValue(L)</string>
         </property>
        </column>
        <column>
         <property name="text">
-         <string>示值误差(%)</string>
+         <string>DsipError(%)</string>
         </property>
        </column>
       </widget>
@@ -391,7 +397,7 @@
         </rect>
        </property>
        <property name="title">
-        <string>流程提示</string>
+        <string>Process Hint</string>
        </property>
        <widget class="QLabel" name="labelHintInfo">
         <property name="geometry">
@@ -403,7 +409,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>提示信息</string>
+         <string>Hint Info</string>
         </property>
        </widget>
        <widget class="QLabel" name="labelHint">
@@ -439,7 +445,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>流量</string>
+           <string>Flow:</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -478,7 +484,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>入口温度</string>
+           <string>In Temp:</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -557,7 +563,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>出口温度</string>
+           <string>Out Temp:</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -608,7 +614,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>大天平</string>
+           <string>Big Balance:</string>
           </property>
          </widget>
         </item>
@@ -650,7 +656,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>小天平</string>
+           <string>Small Balance:</string>
           </property>
          </widget>
         </item>
@@ -698,10 +704,10 @@
         </rect>
        </property>
        <property name="text">
-        <string>读表</string>
+        <string>ReadMeter</string>
        </property>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>1150</x>
@@ -714,35 +720,35 @@
         <item row="0" column="0">
          <widget class="QPushButton" name="btnExhaust">
           <property name="text">
-           <string>排气</string>
+           <string>Exhaust</string>
           </property>
          </widget>
         </item>
         <item row="1" column="0">
          <widget class="QPushButton" name="btnStart">
           <property name="text">
-           <string>开始</string>
+           <string>Start</string>
           </property>
          </widget>
         </item>
         <item row="2" column="0">
          <widget class="QPushButton" name="btnNext">
           <property name="text">
-           <string>下一步</string>
+           <string>Next</string>
           </property>
          </widget>
         </item>
         <item row="3" column="0">
          <widget class="QPushButton" name="btnStop">
           <property name="text">
-           <string>终止检测</string>
+           <string>Stop</string>
           </property>
          </widget>
         </item>
         <item row="4" column="0">
          <widget class="QPushButton" name="btnExit">
           <property name="text">
-           <string>退出</string>
+           <string>Exit</string>
           </property>
          </widget>
         </item>
