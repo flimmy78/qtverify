@@ -44,9 +44,9 @@ int main(int argc, char *argv[])
 	QTest::qSleep(200);
 
 	QString lang = "zh";
-	if (argc == 1)
+	if (argc == 2)
 	{
-		lang = QString::fromLocal8Bit(argv[0]);
+		lang = QString::fromLocal8Bit(argv[1]);
 	}
 	
 	char file_name[100];

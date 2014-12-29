@@ -81,11 +81,11 @@ public:
 
     void retranslateUi(QDialog *LoginDialogClass)
     {
-        LoginDialogClass->setWindowTitle(QApplication::translate("LoginDialogClass", "Dialog", 0, QApplication::UnicodeUTF8));
-        loginButton->setText(QApplication::translate("LoginDialogClass", "\347\231\273\345\275\225", 0, QApplication::UnicodeUTF8));
-        quitButton->setText(QApplication::translate("LoginDialogClass", "\351\200\200\345\207\272", 0, QApplication::UnicodeUTF8));
-        label_2->setText(QApplication::translate("LoginDialogClass", "\347\224\250\346\210\267\357\274\232", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("LoginDialogClass", "\345\257\206\347\240\201\357\274\232", 0, QApplication::UnicodeUTF8));
+        LoginDialogClass->setWindowTitle(QApplication::translate("LoginDialogClass", "LoginDialog", 0, QApplication::UnicodeUTF8));
+        loginButton->setText(QApplication::translate("LoginDialogClass", "Login", 0, QApplication::UnicodeUTF8));
+        quitButton->setText(QApplication::translate("LoginDialogClass", "Exit", 0, QApplication::UnicodeUTF8));
+        label_2->setText(QApplication::translate("LoginDialogClass", "UserName:", 0, QApplication::UnicodeUTF8));
+        label->setText(QApplication::translate("LoginDialogClass", "Password:", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

@@ -323,24 +323,6 @@ p</source>
     </message>
 </context>
 <context>
-    <name>ParaSetDlg</name>
-    <message>
-        <location filename="../source/parasetdlg.cpp" line="165"/>
-        <source>T_Verify_Dept</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/parasetdlg.cpp" line="176"/>
-        <source>T_User_Def_Tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/parasetdlg.cpp" line="185"/>
-        <source>T_Meter_Model</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ParaSetDlgClass</name>
     <message>
         <location filename="../ui/parasetdlg.ui" line="14"/>
