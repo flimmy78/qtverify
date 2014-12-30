@@ -425,6 +425,7 @@ void WeightMethodDlg::setTableRowCount()
 		ui.tableWidget->setItem(i, COLUMN_METER_END, new QTableWidgetItem(QString()));
 	}
 	ui.tableWidget->setVerticalHeaderLabels(vLabels);
+	ui.tableWidget->resizeColumnsToContents();
 }
 
 //显示当前关键参数设置信息

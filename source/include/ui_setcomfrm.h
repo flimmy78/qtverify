@@ -16,7 +16,6 @@
 #include <QtGui/QComboBox>
 #include <QtGui/QGridLayout>
 #include <QtGui/QGroupBox>
-#include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QPushButton>
@@ -28,7 +27,7 @@ QT_BEGIN_NAMESPACE
 class Ui_SetComFrm
 {
 public:
-    QGridLayout *gridLayout_19;
+    QGridLayout *gridLayout_20;
     QGridLayout *gridLayout_18;
     QGroupBox *gBoxValve;
     QGridLayout *gridLayout_4;
@@ -225,7 +224,7 @@ public:
     QComboBox *comboMeterChkBit_12;
     QLabel *label_82;
     QComboBox *comboMeterEndBit_12;
-    QHBoxLayout *horizontalLayout;
+    QGridLayout *gridLayout_19;
     QSpacerItem *horizontalSpacer_3;
     QPushButton *btnSave;
     QSpacerItem *horizontalSpacer_2;
@@ -237,8 +236,8 @@ public:
         if (SetComFrm->objectName().isEmpty())
             SetComFrm->setObjectName(QString::fromUtf8("SetComFrm"));
         SetComFrm->resize(1071, 630);
-        gridLayout_19 = new QGridLayout(SetComFrm);
-        gridLayout_19->setObjectName(QString::fromUtf8("gridLayout_19"));
+        gridLayout_20 = new QGridLayout(SetComFrm);
+        gridLayout_20->setObjectName(QString::fromUtf8("gridLayout_20"));
         gridLayout_18 = new QGridLayout();
         gridLayout_18->setObjectName(QString::fromUtf8("gridLayout_18"));
         gBoxValve = new QGroupBox(SetComFrm);
@@ -485,7 +484,7 @@ public:
         gridLayout_18->addItem(horizontalSpacer, 0, 4, 1, 1);
 
 
-        gridLayout_19->addLayout(gridLayout_18, 0, 0, 1, 1);
+        gridLayout_20->addLayout(gridLayout_18, 0, 0, 1, 1);
 
         gBoxMeters = new QGroupBox(SetComFrm);
         gBoxMeters->setObjectName(QString::fromUtf8("gBoxMeters"));
@@ -1200,34 +1199,41 @@ public:
         gridLayout_17->addWidget(gBoxMeter_12, 1, 5, 1, 1);
 
 
-        gridLayout_19->addWidget(gBoxMeters, 1, 0, 1, 1);
+        gridLayout_20->addWidget(gBoxMeters, 1, 0, 1, 1);
 
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        gridLayout_19 = new QGridLayout();
+        gridLayout_19->setObjectName(QString::fromUtf8("gridLayout_19"));
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
 
-        horizontalLayout->addItem(horizontalSpacer_3);
+        gridLayout_19->addItem(horizontalSpacer_3, 0, 0, 1, 1);
 
         btnSave = new QPushButton(SetComFrm);
         btnSave->setObjectName(QString::fromUtf8("btnSave"));
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(btnSave->sizePolicy().hasHeightForWidth());
+        btnSave->setSizePolicy(sizePolicy1);
 
-        horizontalLayout->addWidget(btnSave);
+        gridLayout_19->addWidget(btnSave, 0, 1, 1, 1);
 
-        horizontalSpacer_2 = new QSpacerItem(198, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_2 = new QSpacerItem(198, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
 
-        horizontalLayout->addItem(horizontalSpacer_2);
+        gridLayout_19->addItem(horizontalSpacer_2, 0, 2, 1, 1);
 
         btnExit = new QPushButton(SetComFrm);
         btnExit->setObjectName(QString::fromUtf8("btnExit"));
+        sizePolicy1.setHeightForWidth(btnExit->sizePolicy().hasHeightForWidth());
+        btnExit->setSizePolicy(sizePolicy1);
 
-        horizontalLayout->addWidget(btnExit);
+        gridLayout_19->addWidget(btnExit, 0, 3, 1, 1);
 
-        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
 
-        horizontalLayout->addItem(horizontalSpacer_4);
+        gridLayout_19->addItem(horizontalSpacer_4, 0, 4, 1, 1);
 
 
-        gridLayout_19->addLayout(horizontalLayout, 2, 0, 1, 1);
+        gridLayout_20->addLayout(gridLayout_19, 2, 0, 1, 1);
 
         QWidget::setTabOrder(comboValveBaudRate, comboValveBits);
         QWidget::setTabOrder(comboValveBits, comboValveEndBit);

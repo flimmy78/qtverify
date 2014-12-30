@@ -205,25 +205,32 @@ public:
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_2);
 
         btn_Save = new QPushButton(SetPortFrm);
         btn_Save->setObjectName(QString::fromUtf8("btn_Save"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(btn_Save->sizePolicy().hasHeightForWidth());
+        btn_Save->setSizePolicy(sizePolicy);
 
         horizontalLayout->addWidget(btn_Save);
 
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
 
         btn_Exit = new QPushButton(SetPortFrm);
         btn_Exit->setObjectName(QString::fromUtf8("btn_Exit"));
+        sizePolicy.setHeightForWidth(btn_Exit->sizePolicy().hasHeightForWidth());
+        btn_Exit->setSizePolicy(sizePolicy);
 
         horizontalLayout->addWidget(btn_Exit);
 
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_3);
 

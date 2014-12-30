@@ -59,7 +59,7 @@ void QueryResult::initUiData()
 	//制造单位
 	int col_id1 = 0;
 	QSqlRelationalTableModel *model1 = new QSqlRelationalTableModel(this);  
-	model1->setTable(tr("T_Manufacture_Dept"));  
+	model1->setTable("T_Manufacture_Dept");  
 	model1->setRelation(col_id1, QSqlRelation("T_Manufacture_Dept","F_ID","F_Desc"));  
 	QSqlTableModel *relationModel1 = model1->relationModel(col_id1);   
 	ui.cmbManufactDept->setModel(relationModel1);  
@@ -70,7 +70,7 @@ void QueryResult::initUiData()
 	//送检单位
 	int col_id2 = 0;
 	QSqlRelationalTableModel *model2 = new QSqlRelationalTableModel(this);  
-	model2->setTable(tr("T_Verify_Dept"));  
+	model2->setTable("T_Verify_Dept");  
 	model2->setRelation(col_id2, QSqlRelation("T_Verify_Dept","F_ID","F_Desc"));  
 	QSqlTableModel *relationModel2 = model2->relationModel(col_id2);   
 	ui.cmbVerifyDept->setModel(relationModel2);  
@@ -81,7 +81,7 @@ void QueryResult::initUiData()
 	//检定员
 	int col_id3 = 0;
 	QSqlRelationalTableModel *model3 = new QSqlRelationalTableModel(this);  
-	model3->setTable(tr("T_User_Def_Tab"));  
+	model3->setTable("T_User_Def_Tab");  
 	model3->setRelation(col_id3, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));  
 	QSqlTableModel *relationModel3 = model3->relationModel(col_id3);   
 	ui.cmbVerifyPerson->setModel(relationModel3);  
