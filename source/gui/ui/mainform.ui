@@ -149,32 +149,11 @@
     <property name="title">
      <string>VerifyItem</string>
     </property>
-    <widget class="QMenu" name="menu_2">
-     <property name="title">
-      <string>WeightMethod</string>
-     </property>
-     <property name="icon">
-      <iconset resource="../qtverify.qrc">
-       <normaloff>:/qtverify/images/quality.png</normaloff>:/qtverify/images/quality.png</iconset>
-     </property>
-     <addaction name="actionQualityComp"/>
-     <addaction name="actionQualityTotal"/>
-    </widget>
-    <widget class="QMenu" name="menu_3">
-     <property name="title">
-      <string>StandardMeter</string>
-     </property>
-     <property name="icon">
-      <iconset resource="../qtverify.qrc">
-       <normaloff>:/qtverify/images/std.png</normaloff>:/qtverify/images/std.png</iconset>
-     </property>
-     <addaction name="actionStandardComp"/>
-     <addaction name="actionStandardTotal"/>
-    </widget>
-    <addaction name="menu_2"/>
-    <addaction name="menu_3"/>
+    <addaction name="actionWeightComp"/>
+    <addaction name="actionWeightTotal"/>
+    <addaction name="actionStandardComp"/>
+    <addaction name="actionStandardTotal"/>
     <addaction name="actionTest"/>
-    <addaction name="actionPlugin"/>
    </widget>
    <widget class="QMenu" name="menuDataQuery">
     <property name="title">
@@ -215,8 +194,8 @@
    <addaction name="actionPortSet"/>
    <addaction name="actionTest"/>
    <addaction name="separator"/>
-   <addaction name="actionQualityComp"/>
-   <addaction name="actionQualityTotal"/>
+   <addaction name="actionWeightComp"/>
+   <addaction name="actionWeightTotal"/>
    <addaction name="actionStandardComp"/>
    <addaction name="actionStandardTotal"/>
    <addaction name="separator"/>
@@ -270,27 +249,22 @@
     <string>Ctrl+Q</string>
    </property>
   </action>
-  <action name="actionPlugin">
-   <property name="text">
-    <string>plugin</string>
-   </property>
-  </action>
-  <action name="actionQualityComp">
+  <action name="actionWeightComp">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
-     <normaloff>:/qtverify/images/qualitycomp.png</normaloff>:/qtverify/images/qualitycomp.png</iconset>
+     <normaloff>:/qtverify/images/weightcomp.png</normaloff>:/qtverify/images/weightcomp.png</iconset>
    </property>
    <property name="text">
-    <string>Fen(WT)</string>
+    <string>Weight(Comp)</string>
    </property>
   </action>
-  <action name="actionQualityTotal">
+  <action name="actionWeightTotal">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
-     <normaloff>:/qtverify/images/qualitytotal.png</normaloff>:/qtverify/images/qualitytotal.png</iconset>
+     <normaloff>:/qtverify/images/weighttotal.png</normaloff>:/qtverify/images/weighttotal.png</iconset>
    </property>
    <property name="text">
-    <string>Zong(WT)</string>
+    <string>Weight(Total)</string>
    </property>
   </action>
   <action name="actionStandardComp">
@@ -299,7 +273,7 @@
      <normaloff>:/qtverify/images/stdcomp.png</normaloff>:/qtverify/images/stdcomp.png</iconset>
    </property>
    <property name="text">
-    <string>Fen(Std)</string>
+    <string>Standard(Comp)</string>
    </property>
   </action>
   <action name="actionStandardTotal">
@@ -308,7 +282,7 @@
      <normaloff>:/qtverify/images/stdtotal.png</normaloff>:/qtverify/images/stdtotal.png</iconset>
    </property>
    <property name="text">
-    <string>Zong(Std)</string>
+    <string>Standard(Total)</string>
    </property>
   </action>
   <action name="actionComSet">
@@ -353,7 +327,7 @@
      <normaloff>:/qtverify/images/collecttest.png</normaloff>:/qtverify/images/collecttest.png</iconset>
    </property>
    <property name="text">
-    <string>datatest</string>
+    <string>DataTest</string>
    </property>
   </action>
   <action name="actionAbout">

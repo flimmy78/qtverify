@@ -207,7 +207,7 @@ d
         </rect>
        </property>
        <property name="inputMethodHints">
-        <set>Qt::ImhDigitsOnly|Qt::ImhFormattedNumbersOnly</set>
+        <set>Qt::ImhDigitsOnly|Qt::ImhFormattedNumbersOnly|Qt::ImhPreferNumbers</set>
        </property>
        <property name="editTriggers">
         <set>QAbstractItemView::CurrentChanged|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed</set>

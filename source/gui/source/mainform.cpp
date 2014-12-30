@@ -221,27 +221,8 @@ void MainForm::on_btnExit_clicked()
 	this->close();
 }
 
-void MainForm::on_actionPlugin_triggered()
-{
-	QDir pluginsDir("F:/mysoft/trunk/plugindemo/GameSystem/plugins");
-	foreach (QString fileName, pluginsDir.entryList(QDir::Files)) 
-	{
-		QFileInfo pluginFileInfo(fileName);
-		if (pluginFileInfo.completeSuffix() == "dll" || pluginFileInfo.completeSuffix() == "so") 
-		{
-			QPluginLoader *pluginLoader	= new QPluginLoader(pluginsDir.absoluteFilePath(fileName), this);
-			QObject *pluginObject = pluginLoader->instance();
-			if (pluginObject) 
-			{
- 				m_monster = qobject_cast <MonsterInterface *>(pluginObject);
-				qDebug() << m_monster->name();
-			}
-		}
-	}
-}
-
 //质量法-分量检定
-void MainForm::on_actionQualityComp_triggered()
+void MainForm::on_actionWeightComp_triggered()
 {
 	if (NULL == m_weightDlg)
 	{
@@ -257,7 +238,7 @@ void MainForm::on_actionQualityComp_triggered()
 }
 
 //质量法-总量检定
-void MainForm::on_actionQualityTotal_triggered()
+void MainForm::on_actionWeightTotal_triggered()
 {
 }
 

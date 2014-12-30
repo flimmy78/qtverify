@@ -6,8 +6,7 @@
 #include "ui_mainform.h"
 #include "dbmysql.h"
 #include "queryresult.h"
-#include "monsterinterface.h" //插件接口
-#include "setcomFrm.h"
+#include "setcomfrm.h"
 #include "datatestdlg.h"
 #include "setportfrm.h"
 #include "masterslaveset.h"
@@ -23,7 +22,6 @@ public:
 
 	DbMySql *m_mySql;
 	QueryResult *m_query;
-	MonsterInterface *m_monster;
 	CAlgorithm *m_alg;
 	SetComFrm *m_setcom; //串口参数设置
 	DataTestDlg *m_qualitydlg; //采集与控制测试程序
@@ -40,9 +38,8 @@ public slots:
 	void on_actionComSet_triggered();
 	void on_actionPortSet_triggered();
 	void on_actionQueryExcel_triggered();
-	void on_actionPlugin_triggered();
-	void on_actionQualityComp_triggered();
-	void on_actionQualityTotal_triggered();
+	void on_actionWeightComp_triggered();
+	void on_actionWeightTotal_triggered();
 	void on_actionExit_triggered();
 	void on_actionAbout_triggered();
 	void on_actionMasterSlaveSet_triggered();
