@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>HostSlaveSet</string>
+   <string>MasterSlaveSet</string>
   </property>
   <widget class="QPushButton" name="btnExit">
    <property name="geometry">
@@ -66,9 +66,9 @@
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <item>
-     <widget class="QRadioButton" name="hostFlag">
+     <widget class="QRadioButton" name="masterFlag">
       <property name="text">
-       <string>host</string>
+       <string>master</string>
       </property>
      </widget>
     </item>
@@ -251,13 +251,13 @@
     </rect>
    </property>
    <property name="title">
-    <string>Host：</string>
+    <string>Master：</string>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QLabel" name="label_5">
       <property name="text">
-       <string>Host IP:</string>
+       <string>Master IP:</string>
       </property>
      </widget>
     </item>

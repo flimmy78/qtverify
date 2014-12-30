@@ -37,7 +37,7 @@ public:
     QCheckBox *checkBoxNetMode;
     Q3ButtonGroup *btnGrpHostFlag;
     QHBoxLayout *horizontalLayout_2;
-    QRadioButton *hostFlag;
+    QRadioButton *masterFlag;
     QSpacerItem *horizontalSpacer_6;
     QRadioButton *slaveFlag;
     QGroupBox *grpBoxSlave;
@@ -94,10 +94,10 @@ public:
             boxlayout->addLayout(horizontalLayout_2);
         horizontalLayout_2->setAlignment(Qt::AlignTop);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        hostFlag = new QRadioButton(btnGrpHostFlag);
-        hostFlag->setObjectName(QString::fromUtf8("hostFlag"));
+        masterFlag = new QRadioButton(btnGrpHostFlag);
+        masterFlag->setObjectName(QString::fromUtf8("masterFlag"));
 
-        horizontalLayout_2->addWidget(hostFlag);
+        horizontalLayout_2->addWidget(masterFlag);
 
         horizontalSpacer_6 = new QSpacerItem(18, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -246,25 +246,25 @@ public:
 
     void retranslateUi(QWidget *MasterSlaveClass)
     {
-        MasterSlaveClass->setWindowTitle(QApplication::translate("MasterSlaveClass", "\344\270\273\346\234\272-\344\273\216\346\234\272\350\256\276\347\275\256", 0, QApplication::UnicodeUTF8));
-        btnExit->setText(QApplication::translate("MasterSlaveClass", "\351\200\200\345\207\272", 0, QApplication::UnicodeUTF8));
-        btnSave->setText(QApplication::translate("MasterSlaveClass", "\344\277\235\345\255\230", 0, QApplication::UnicodeUTF8));
-        checkBoxNetMode->setText(QApplication::translate("MasterSlaveClass", "\347\275\221\347\273\234\346\250\241\345\274\217", 0, QApplication::UnicodeUTF8));
+        MasterSlaveClass->setWindowTitle(QApplication::translate("MasterSlaveClass", "MasterSlaveSet", 0, QApplication::UnicodeUTF8));
+        btnExit->setText(QApplication::translate("MasterSlaveClass", "Exit", 0, QApplication::UnicodeUTF8));
+        btnSave->setText(QApplication::translate("MasterSlaveClass", "Save", 0, QApplication::UnicodeUTF8));
+        checkBoxNetMode->setText(QApplication::translate("MasterSlaveClass", "NetMode", 0, QApplication::UnicodeUTF8));
         btnGrpHostFlag->setTitle(QString());
-        hostFlag->setText(QApplication::translate("MasterSlaveClass", "\350\256\276\344\270\272\344\273\216\346\234\272", 0, QApplication::UnicodeUTF8));
-        slaveFlag->setText(QApplication::translate("MasterSlaveClass", "\350\256\276\344\270\272\344\270\273\346\234\272", 0, QApplication::UnicodeUTF8));
-        grpBoxSlave->setTitle(QApplication::translate("MasterSlaveClass", "\344\273\216\346\234\272\345\234\260\345\235\200\350\256\276\347\275\256\357\274\232", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("MasterSlaveClass", "\344\273\216\346\234\272\344\270\200 IP:", 0, QApplication::UnicodeUTF8));
-        label_8->setText(QApplication::translate("MasterSlaveClass", "\346\234\272\345\231\250\345\220\215:", 0, QApplication::UnicodeUTF8));
-        label_2->setText(QApplication::translate("MasterSlaveClass", "\344\273\216\346\234\272\344\272\214 IP:", 0, QApplication::UnicodeUTF8));
-        label_9->setText(QApplication::translate("MasterSlaveClass", "\346\234\272\345\231\250\345\220\215\357\274\232", 0, QApplication::UnicodeUTF8));
-        label_3->setText(QApplication::translate("MasterSlaveClass", "\344\273\216\346\234\272\344\270\211 IP:", 0, QApplication::UnicodeUTF8));
-        label_10->setText(QApplication::translate("MasterSlaveClass", "\346\234\272\345\231\250\345\220\215\357\274\232", 0, QApplication::UnicodeUTF8));
-        label_4->setText(QApplication::translate("MasterSlaveClass", "\344\273\216\346\234\272\345\233\233 IP:", 0, QApplication::UnicodeUTF8));
-        label_7->setText(QApplication::translate("MasterSlaveClass", "\346\234\272\345\231\250\345\220\215\357\274\232", 0, QApplication::UnicodeUTF8));
-        grpBoxMaster->setTitle(QApplication::translate("MasterSlaveClass", "\344\270\273\346\234\272\345\234\260\345\235\200\350\256\276\347\275\256\357\274\232", 0, QApplication::UnicodeUTF8));
-        label_5->setText(QApplication::translate("MasterSlaveClass", "\344\270\273\346\234\272 IP:", 0, QApplication::UnicodeUTF8));
-        label_6->setText(QApplication::translate("MasterSlaveClass", "\346\234\272\345\231\250\345\220\215\357\274\232", 0, QApplication::UnicodeUTF8));
+        masterFlag->setText(QApplication::translate("MasterSlaveClass", "master", 0, QApplication::UnicodeUTF8));
+        slaveFlag->setText(QApplication::translate("MasterSlaveClass", "slave", 0, QApplication::UnicodeUTF8));
+        grpBoxSlave->setTitle(QApplication::translate("MasterSlaveClass", "Slave:", 0, QApplication::UnicodeUTF8));
+        label->setText(QApplication::translate("MasterSlaveClass", "Slave1 IP:", 0, QApplication::UnicodeUTF8));
+        label_8->setText(QApplication::translate("MasterSlaveClass", "hostname:", 0, QApplication::UnicodeUTF8));
+        label_2->setText(QApplication::translate("MasterSlaveClass", "Slave2 IP:", 0, QApplication::UnicodeUTF8));
+        label_9->setText(QApplication::translate("MasterSlaveClass", "hostname:", 0, QApplication::UnicodeUTF8));
+        label_3->setText(QApplication::translate("MasterSlaveClass", "Slave3 IP:", 0, QApplication::UnicodeUTF8));
+        label_10->setText(QApplication::translate("MasterSlaveClass", "hostname:", 0, QApplication::UnicodeUTF8));
+        label_4->setText(QApplication::translate("MasterSlaveClass", "Slave4 IP:", 0, QApplication::UnicodeUTF8));
+        label_7->setText(QApplication::translate("MasterSlaveClass", "hostname:", 0, QApplication::UnicodeUTF8));
+        grpBoxMaster->setTitle(QApplication::translate("MasterSlaveClass", "Master\357\274\232", 0, QApplication::UnicodeUTF8));
+        label_5->setText(QApplication::translate("MasterSlaveClass", "Master IP:", 0, QApplication::UnicodeUTF8));
+        label_6->setText(QApplication::translate("MasterSlaveClass", "hostname\357\274\232", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

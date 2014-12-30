@@ -724,7 +724,7 @@ public:
         groupBox_4->setTitle(QApplication::translate("DataTestDlgClass", "Min Temp Diff", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("DataTestDlgClass", "K", 0, QApplication::UnicodeUTF8));
         groupBox_5->setTitle(QApplication::translate("DataTestDlgClass", "Std  Thermometer", 0, QApplication::UnicodeUTF8));
-        pushButton->setText(QApplication::translate("DataTestDlgClass", "Acquisition", 0, QApplication::UnicodeUTF8));
+        pushButton->setText(QApplication::translate("DataTestDlgClass", "Collect", 0, QApplication::UnicodeUTF8));
         pushButton_2->setText(QApplication::translate("DataTestDlgClass", "Stop", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("DataTestDlgClass", "In", 0, QApplication::UnicodeUTF8));
         label_3->setText(QApplication::translate("DataTestDlgClass", "\316\251", 0, QApplication::UnicodeUTF8));

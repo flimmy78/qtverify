@@ -17,11 +17,6 @@
 <context>
     <name>MasterSlaveClass</name>
     <message>
-        <location filename="../ui/masterslaveset.ui" line="14"/>
-        <source>HostSlaveSet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../ui/masterslaveset.ui" line="26"/>
         <source>Exit</source>
         <translation type="unfinished"></translation>
@@ -37,8 +32,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/masterslaveset.ui" line="14"/>
+        <source>MasterSlaveSet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../ui/masterslaveset.ui" line="71"/>
-        <source>host</source>
+        <source>master</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -81,12 +81,12 @@
     </message>
     <message utf8="true">
         <location filename="../ui/masterslaveset.ui" line="254"/>
-        <source>Host：</source>
+        <source>Master：</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/masterslaveset.ui" line="260"/>
-        <source>Host IP:</source>
+        <source>Master IP:</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">

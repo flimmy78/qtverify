@@ -38,6 +38,9 @@ public:
     QWidget *tab1;
     QGroupBox *groupBox_2;
     QGridLayout *gridLayout_6;
+    QToolButton *btnWaterPumpStop;
+    QToolButton *btnWaterPumpStart;
+    QToolButton *btnValveSmall;
     QHBoxLayout *horizontalLayout;
     QSpinBox *spinBoxFrequency;
     QLabel *label_13;
@@ -46,15 +49,12 @@ public:
     QToolButton *btnValveBig;
     QToolButton *btnValveMiddle1;
     QToolButton *btnValveMiddle2;
-    QToolButton *btnValveSmall;
-    QToolButton *btnWaterPumpStart;
-    QToolButton *btnWaterPumpStop;
     QTableWidget *tableWidget;
     QGroupBox *groupBox_3;
     QGridLayout *gridLayout_7;
     QLabel *labelHintInfo;
     QLabel *labelHint;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QGridLayout *gridLayout_5;
     QPushButton *btnParaSet;
     QPushButton *btnReadMeter;
@@ -66,14 +66,14 @@ public:
     QComboBox *cmbAutoPick;
     QLabel *label_15;
     QComboBox *cmbContinue;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QGridLayout *gridLayout_4;
     QPushButton *btnExhaust;
     QPushButton *btnStart;
     QPushButton *btnNext;
     QPushButton *btnStop;
     QPushButton *btnExit;
-    QWidget *widget2;
+    QWidget *layoutWidget2;
     QGridLayout *gridLayout_2;
     QLabel *label_9;
     QLineEdit *lnEditBigBalance;
@@ -114,14 +114,38 @@ public:
         groupBox_2->setGeometry(QRect(270, 640, 451, 171));
         gridLayout_6 = new QGridLayout(groupBox_2);
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
+        btnWaterPumpStop = new QToolButton(groupBox_2);
+        btnWaterPumpStop->setObjectName(QString::fromUtf8("btnWaterPumpStop"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(btnWaterPumpStop->sizePolicy().hasHeightForWidth());
+        btnWaterPumpStop->setSizePolicy(sizePolicy);
+
+        gridLayout_6->addWidget(btnWaterPumpStop, 2, 0, 1, 1);
+
+        btnWaterPumpStart = new QToolButton(groupBox_2);
+        btnWaterPumpStart->setObjectName(QString::fromUtf8("btnWaterPumpStart"));
+        sizePolicy.setHeightForWidth(btnWaterPumpStart->sizePolicy().hasHeightForWidth());
+        btnWaterPumpStart->setSizePolicy(sizePolicy);
+
+        gridLayout_6->addWidget(btnWaterPumpStart, 1, 0, 1, 1);
+
+        btnValveSmall = new QToolButton(groupBox_2);
+        btnValveSmall->setObjectName(QString::fromUtf8("btnValveSmall"));
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(btnValveSmall->sizePolicy().hasHeightForWidth());
+        btnValveSmall->setSizePolicy(sizePolicy1);
+
+        gridLayout_6->addWidget(btnValveSmall, 0, 6, 3, 1);
+
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
         spinBoxFrequency = new QSpinBox(groupBox_2);
         spinBoxFrequency->setObjectName(QString::fromUtf8("spinBoxFrequency"));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(spinBoxFrequency->sizePolicy().hasHeightForWidth());
         spinBoxFrequency->setSizePolicy(sizePolicy);
 
@@ -139,9 +163,6 @@ public:
 
         btnWaterIn = new QToolButton(groupBox_2);
         btnWaterIn->setObjectName(QString::fromUtf8("btnWaterIn"));
-        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(btnWaterIn->sizePolicy().hasHeightForWidth());
         btnWaterIn->setSizePolicy(sizePolicy1);
 
@@ -174,27 +195,6 @@ public:
         btnValveMiddle2->setSizePolicy(sizePolicy1);
 
         gridLayout_6->addWidget(btnValveMiddle2, 0, 5, 3, 1);
-
-        btnValveSmall = new QToolButton(groupBox_2);
-        btnValveSmall->setObjectName(QString::fromUtf8("btnValveSmall"));
-        sizePolicy1.setHeightForWidth(btnValveSmall->sizePolicy().hasHeightForWidth());
-        btnValveSmall->setSizePolicy(sizePolicy1);
-
-        gridLayout_6->addWidget(btnValveSmall, 0, 6, 3, 1);
-
-        btnWaterPumpStart = new QToolButton(groupBox_2);
-        btnWaterPumpStart->setObjectName(QString::fromUtf8("btnWaterPumpStart"));
-        sizePolicy.setHeightForWidth(btnWaterPumpStart->sizePolicy().hasHeightForWidth());
-        btnWaterPumpStart->setSizePolicy(sizePolicy);
-
-        gridLayout_6->addWidget(btnWaterPumpStart, 1, 0, 1, 1);
-
-        btnWaterPumpStop = new QToolButton(groupBox_2);
-        btnWaterPumpStop->setObjectName(QString::fromUtf8("btnWaterPumpStop"));
-        sizePolicy.setHeightForWidth(btnWaterPumpStop->sizePolicy().hasHeightForWidth());
-        btnWaterPumpStop->setSizePolicy(sizePolicy);
-
-        gridLayout_6->addWidget(btnWaterPumpStop, 2, 0, 1, 1);
 
         tableWidget = new QTableWidget(tab1);
         if (tableWidget->columnCount() < 10)
@@ -244,20 +244,20 @@ public:
 
         gridLayout_7->addWidget(labelHint, 1, 0, 1, 1);
 
-        widget = new QWidget(tab1);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(11, 652, 251, 161));
-        gridLayout_5 = new QGridLayout(widget);
+        layoutWidget = new QWidget(tab1);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(11, 652, 254, 161));
+        gridLayout_5 = new QGridLayout(layoutWidget);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
         gridLayout_5->setContentsMargins(0, 0, 0, 0);
-        btnParaSet = new QPushButton(widget);
+        btnParaSet = new QPushButton(layoutWidget);
         btnParaSet->setObjectName(QString::fromUtf8("btnParaSet"));
         sizePolicy.setHeightForWidth(btnParaSet->sizePolicy().hasHeightForWidth());
         btnParaSet->setSizePolicy(sizePolicy);
 
         gridLayout_5->addWidget(btnParaSet, 0, 0, 1, 1);
 
-        btnReadMeter = new QPushButton(widget);
+        btnReadMeter = new QPushButton(layoutWidget);
         btnReadMeter->setObjectName(QString::fromUtf8("btnReadMeter"));
         QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy2.setHorizontalStretch(0);
@@ -267,7 +267,7 @@ public:
 
         gridLayout_5->addWidget(btnReadMeter, 0, 1, 1, 1);
 
-        groupBox = new QGroupBox(widget);
+        groupBox = new QGroupBox(layoutWidget);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         gridLayout_3 = new QGridLayout(groupBox);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
@@ -322,61 +322,61 @@ public:
 
         gridLayout_5->addWidget(groupBox, 1, 0, 1, 2);
 
-        widget1 = new QWidget(tab1);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(1197, 637, 95, 170));
-        gridLayout_4 = new QGridLayout(widget1);
+        layoutWidget1 = new QWidget(tab1);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(1197, 637, 95, 170));
+        gridLayout_4 = new QGridLayout(layoutWidget1);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
         gridLayout_4->setContentsMargins(0, 0, 0, 0);
-        btnExhaust = new QPushButton(widget1);
+        btnExhaust = new QPushButton(layoutWidget1);
         btnExhaust->setObjectName(QString::fromUtf8("btnExhaust"));
         sizePolicy2.setHeightForWidth(btnExhaust->sizePolicy().hasHeightForWidth());
         btnExhaust->setSizePolicy(sizePolicy2);
 
         gridLayout_4->addWidget(btnExhaust, 0, 0, 1, 1);
 
-        btnStart = new QPushButton(widget1);
+        btnStart = new QPushButton(layoutWidget1);
         btnStart->setObjectName(QString::fromUtf8("btnStart"));
         sizePolicy2.setHeightForWidth(btnStart->sizePolicy().hasHeightForWidth());
         btnStart->setSizePolicy(sizePolicy2);
 
         gridLayout_4->addWidget(btnStart, 1, 0, 1, 1);
 
-        btnNext = new QPushButton(widget1);
+        btnNext = new QPushButton(layoutWidget1);
         btnNext->setObjectName(QString::fromUtf8("btnNext"));
         sizePolicy2.setHeightForWidth(btnNext->sizePolicy().hasHeightForWidth());
         btnNext->setSizePolicy(sizePolicy2);
 
         gridLayout_4->addWidget(btnNext, 2, 0, 1, 1);
 
-        btnStop = new QPushButton(widget1);
+        btnStop = new QPushButton(layoutWidget1);
         btnStop->setObjectName(QString::fromUtf8("btnStop"));
         sizePolicy2.setHeightForWidth(btnStop->sizePolicy().hasHeightForWidth());
         btnStop->setSizePolicy(sizePolicy2);
 
         gridLayout_4->addWidget(btnStop, 3, 0, 1, 1);
 
-        btnExit = new QPushButton(widget1);
+        btnExit = new QPushButton(layoutWidget1);
         btnExit->setObjectName(QString::fromUtf8("btnExit"));
         sizePolicy2.setHeightForWidth(btnExit->sizePolicy().hasHeightForWidth());
         btnExit->setSizePolicy(sizePolicy2);
 
         gridLayout_4->addWidget(btnExit, 4, 0, 1, 1);
 
-        widget2 = new QWidget(tab1);
-        widget2->setObjectName(QString::fromUtf8("widget2"));
-        widget2->setGeometry(QRect(730, 640, 231, 171));
-        gridLayout_2 = new QGridLayout(widget2);
+        layoutWidget2 = new QWidget(tab1);
+        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(730, 640, 231, 171));
+        gridLayout_2 = new QGridLayout(layoutWidget2);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         gridLayout_2->setContentsMargins(0, 0, 0, 0);
-        label_9 = new QLabel(widget2);
+        label_9 = new QLabel(layoutWidget2);
         label_9->setObjectName(QString::fromUtf8("label_9"));
         sizePolicy3.setHeightForWidth(label_9->sizePolicy().hasHeightForWidth());
         label_9->setSizePolicy(sizePolicy3);
 
         gridLayout_2->addWidget(label_9, 0, 0, 1, 1);
 
-        lnEditBigBalance = new QLineEdit(widget2);
+        lnEditBigBalance = new QLineEdit(layoutWidget2);
         lnEditBigBalance->setObjectName(QString::fromUtf8("lnEditBigBalance"));
         sizePolicy2.setHeightForWidth(lnEditBigBalance->sizePolicy().hasHeightForWidth());
         lnEditBigBalance->setSizePolicy(sizePolicy2);
@@ -384,21 +384,21 @@ public:
 
         gridLayout_2->addWidget(lnEditBigBalance, 0, 1, 1, 1);
 
-        label_11 = new QLabel(widget2);
+        label_11 = new QLabel(layoutWidget2);
         label_11->setObjectName(QString::fromUtf8("label_11"));
         sizePolicy3.setHeightForWidth(label_11->sizePolicy().hasHeightForWidth());
         label_11->setSizePolicy(sizePolicy3);
 
         gridLayout_2->addWidget(label_11, 0, 2, 1, 1);
 
-        label_10 = new QLabel(widget2);
+        label_10 = new QLabel(layoutWidget2);
         label_10->setObjectName(QString::fromUtf8("label_10"));
         sizePolicy3.setHeightForWidth(label_10->sizePolicy().hasHeightForWidth());
         label_10->setSizePolicy(sizePolicy3);
 
         gridLayout_2->addWidget(label_10, 1, 0, 1, 1);
 
-        lnEditSmallBalance = new QLineEdit(widget2);
+        lnEditSmallBalance = new QLineEdit(layoutWidget2);
         lnEditSmallBalance->setObjectName(QString::fromUtf8("lnEditSmallBalance"));
         sizePolicy2.setHeightForWidth(lnEditSmallBalance->sizePolicy().hasHeightForWidth());
         lnEditSmallBalance->setSizePolicy(sizePolicy2);
@@ -407,14 +407,14 @@ public:
 
         gridLayout_2->addWidget(lnEditSmallBalance, 1, 1, 1, 1);
 
-        label_12 = new QLabel(widget2);
+        label_12 = new QLabel(layoutWidget2);
         label_12->setObjectName(QString::fromUtf8("label_12"));
         sizePolicy3.setHeightForWidth(label_12->sizePolicy().hasHeightForWidth());
         label_12->setSizePolicy(sizePolicy3);
 
         gridLayout_2->addWidget(label_12, 1, 2, 1, 1);
 
-        label_3 = new QLabel(widget2);
+        label_3 = new QLabel(layoutWidget2);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         sizePolicy3.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
         label_3->setSizePolicy(sizePolicy3);
@@ -422,21 +422,21 @@ public:
 
         gridLayout_2->addWidget(label_3, 2, 0, 1, 1);
 
-        lcdNumberFlow = new QLCDNumber(widget2);
+        lcdNumberFlow = new QLCDNumber(layoutWidget2);
         lcdNumberFlow->setObjectName(QString::fromUtf8("lcdNumberFlow"));
         sizePolicy2.setHeightForWidth(lcdNumberFlow->sizePolicy().hasHeightForWidth());
         lcdNumberFlow->setSizePolicy(sizePolicy2);
 
         gridLayout_2->addWidget(lcdNumberFlow, 2, 1, 1, 1);
 
-        label_6 = new QLabel(widget2);
+        label_6 = new QLabel(layoutWidget2);
         label_6->setObjectName(QString::fromUtf8("label_6"));
         sizePolicy3.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
         label_6->setSizePolicy(sizePolicy3);
 
         gridLayout_2->addWidget(label_6, 2, 2, 1, 1);
 
-        label_4 = new QLabel(widget2);
+        label_4 = new QLabel(layoutWidget2);
         label_4->setObjectName(QString::fromUtf8("label_4"));
         sizePolicy3.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
         label_4->setSizePolicy(sizePolicy3);
@@ -444,7 +444,7 @@ public:
 
         gridLayout_2->addWidget(label_4, 3, 0, 1, 1);
 
-        lcdNumberInTemper = new QLCDNumber(widget2);
+        lcdNumberInTemper = new QLCDNumber(layoutWidget2);
         lcdNumberInTemper->setObjectName(QString::fromUtf8("lcdNumberInTemper"));
         sizePolicy2.setHeightForWidth(lcdNumberInTemper->sizePolicy().hasHeightForWidth());
         lcdNumberInTemper->setSizePolicy(sizePolicy2);
@@ -461,14 +461,14 @@ public:
 
         gridLayout_2->addWidget(lcdNumberInTemper, 3, 1, 1, 1);
 
-        label_7 = new QLabel(widget2);
+        label_7 = new QLabel(layoutWidget2);
         label_7->setObjectName(QString::fromUtf8("label_7"));
         sizePolicy3.setHeightForWidth(label_7->sizePolicy().hasHeightForWidth());
         label_7->setSizePolicy(sizePolicy3);
 
         gridLayout_2->addWidget(label_7, 3, 2, 1, 1);
 
-        label_5 = new QLabel(widget2);
+        label_5 = new QLabel(layoutWidget2);
         label_5->setObjectName(QString::fromUtf8("label_5"));
         sizePolicy3.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
         label_5->setSizePolicy(sizePolicy3);
@@ -476,14 +476,14 @@ public:
 
         gridLayout_2->addWidget(label_5, 4, 0, 1, 1);
 
-        lcdNumberOutTemper = new QLCDNumber(widget2);
+        lcdNumberOutTemper = new QLCDNumber(layoutWidget2);
         lcdNumberOutTemper->setObjectName(QString::fromUtf8("lcdNumberOutTemper"));
         sizePolicy2.setHeightForWidth(lcdNumberOutTemper->sizePolicy().hasHeightForWidth());
         lcdNumberOutTemper->setSizePolicy(sizePolicy2);
 
         gridLayout_2->addWidget(lcdNumberOutTemper, 4, 1, 1, 1);
 
-        label_8 = new QLabel(widget2);
+        label_8 = new QLabel(layoutWidget2);
         label_8->setObjectName(QString::fromUtf8("label_8"));
         sizePolicy3.setHeightForWidth(label_8->sizePolicy().hasHeightForWidth());
         label_8->setSizePolicy(sizePolicy3);
@@ -519,6 +519,13 @@ public:
     {
         WeightMethodClass->setWindowTitle(QApplication::translate("WeightMethodClass", "WeightMethod Verify", 0, QApplication::UnicodeUTF8));
         groupBox_2->setTitle(QApplication::translate("WeightMethodClass", "Controller", 0, QApplication::UnicodeUTF8));
+        btnWaterPumpStop->setText(QApplication::translate("WeightMethodClass", "Stop Pump", 0, QApplication::UnicodeUTF8));
+        btnWaterPumpStart->setText(QApplication::translate("WeightMethodClass", "Start Pump", 0, QApplication::UnicodeUTF8));
+        btnValveSmall->setText(QApplication::translate("WeightMethodClass", "s\n"
+"m\n"
+"a\n"
+"l\n"
+"l", 0, QApplication::UnicodeUTF8));
         label_13->setText(QApplication::translate("WeightMethodClass", "Hz", 0, QApplication::UnicodeUTF8));
         btnWaterIn->setText(QApplication::translate("WeightMethodClass", "i\n"
 "n\n"
@@ -532,24 +539,11 @@ public:
         btnValveMiddle1->setText(QApplication::translate("WeightMethodClass", "m\n"
 "i\n"
 "d\n"
-"d\n"
-"l\n"
-"e\n"
 "1", 0, QApplication::UnicodeUTF8));
         btnValveMiddle2->setText(QApplication::translate("WeightMethodClass", "m\n"
 "i\n"
 "d\n"
-"d\n"
-"l\n"
-"e\n"
 "2", 0, QApplication::UnicodeUTF8));
-        btnValveSmall->setText(QApplication::translate("WeightMethodClass", "s\n"
-"m\n"
-"a\n"
-"l\n"
-"l", 0, QApplication::UnicodeUTF8));
-        btnWaterPumpStart->setText(QApplication::translate("WeightMethodClass", "Start Pump", 0, QApplication::UnicodeUTF8));
-        btnWaterPumpStop->setText(QApplication::translate("WeightMethodClass", "Stop Pump", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("WeightMethodClass", "MeterNo", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);

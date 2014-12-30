@@ -7,14 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>700</width>
-    <height>637</height>
+    <height>609</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>ParaSet</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_6">
-   <item row="0" column="0">
+   <item row="0" column="0" colspan="3">
     <widget class="QGroupBox" name="gBox_Head">
      <property name="title">
       <string>Verify Para</string>
@@ -191,116 +191,151 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="0">
+   <item row="1" column="0" colspan="3">
     <widget class="QGroupBox" name="gBox_UpperFlowLmt">
      <property name="title">
       <string>Control Valve Set</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout_8">
+     <layout class="QGridLayout" name="gridLayout_7">
       <item row="0" column="0">
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <item>
-         <widget class="QLabel" name="label_11">
-          <property name="text">
-           <string>Upper Limit of Flow:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="lineEdit_Upper_1"/>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="lineEdit_Upper_2">
-          <property name="palette">
-           <palette>
-            <active>
-             <colorrole role="Button">
-              <brush brushstyle="SolidPattern">
-               <color alpha="255">
-                <red>85</red>
-                <green>85</green>
-                <blue>255</blue>
-               </color>
-              </brush>
-             </colorrole>
-            </active>
-            <inactive>
-             <colorrole role="Button">
-              <brush brushstyle="SolidPattern">
-               <color alpha="255">
-                <red>85</red>
-                <green>85</green>
-                <blue>255</blue>
-               </color>
-              </brush>
-             </colorrole>
-            </inactive>
-            <disabled>
-             <colorrole role="Button">
-              <brush brushstyle="SolidPattern">
-               <color alpha="255">
-                <red>85</red>
-                <green>85</green>
-                <blue>255</blue>
-               </color>
-              </brush>
-             </colorrole>
-            </disabled>
-           </palette>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_4">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>28</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="lineEdit_Upper_3"/>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_5">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="lineEdit_Upper_4"/>
-        </item>
-       </layout>
+       <widget class="QLabel" name="label_11">
+        <property name="text">
+         <string>Flow Limit: </string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEdit_Upper_1">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLineEdit" name="lineEdit_Upper_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="palette">
+         <palette>
+          <active>
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>85</red>
+              <green>85</green>
+              <blue>255</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </active>
+          <inactive>
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>85</red>
+              <green>85</green>
+              <blue>255</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </inactive>
+          <disabled>
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>85</red>
+              <green>85</green>
+              <blue>255</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </disabled>
+         </palette>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <spacer name="horizontalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>28</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="5">
+       <widget class="QLineEdit" name="lineEdit_Upper_3">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="6">
+       <spacer name="horizontalSpacer_5">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="7">
+       <widget class="QLineEdit" name="lineEdit_Upper_4">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
    </item>
-   <item row="2" column="0">
+   <item row="2" column="0" colspan="3">
     <widget class="QGroupBox" name="gBox_FlowPnt">
      <property name="title">
       <string>ParaSet</string>
@@ -311,7 +346,7 @@
         <item row="0" column="0">
          <widget class="QLabel" name="label_12">
           <property name="text">
-           <string>FlowPoint:</string>
+           <string>Flow(m³/h):</string>
           </property>
          </widget>
         </item>
@@ -508,7 +543,7 @@
             </property>
             <item>
              <property name="text">
-              <string>大</string>
+              <string>   大</string>
              </property>
              <property name="icon">
               <iconset>
@@ -517,17 +552,17 @@
             </item>
             <item>
              <property name="text">
-              <string>中一</string>
+              <string>      中一</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>中二</string>
+              <string>      中二</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>小</string>
+              <string>      小</string>
              </property>
             </item>
            </widget>
@@ -581,7 +616,7 @@
             </property>
             <item>
              <property name="text">
-              <string>大</string>
+              <string>   大</string>
              </property>
              <property name="icon">
               <iconset>
@@ -590,17 +625,17 @@
             </item>
             <item>
              <property name="text">
-              <string>中一</string>
+              <string>      中一</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>中二</string>
+              <string>      中二</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>小</string>
+              <string>      小</string>
              </property>
             </item>
            </widget>
@@ -654,7 +689,7 @@
             </property>
             <item>
              <property name="text">
-              <string>大</string>
+              <string>   大</string>
              </property>
              <property name="icon">
               <iconset>
@@ -663,17 +698,17 @@
             </item>
             <item>
              <property name="text">
-              <string>中一</string>
+              <string>      中一</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>中二</string>
+              <string>      中二</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>小</string>
+              <string>      小</string>
              </property>
             </item>
            </widget>
@@ -727,7 +762,7 @@
             </property>
             <item>
              <property name="text">
-              <string>大</string>
+              <string>   大</string>
              </property>
              <property name="icon">
               <iconset>
@@ -736,17 +771,17 @@
             </item>
             <item>
              <property name="text">
-              <string>中一</string>
+              <string>      中一</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>中二</string>
+              <string>      中二</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>小</string>
+              <string>      小</string>
              </property>
             </item>
            </widget>
@@ -860,7 +895,7 @@
             </property>
             <item>
              <property name="text">
-              <string>无</string>
+              <string/>
              </property>
              <property name="icon">
               <iconset>
@@ -869,22 +904,22 @@
             </item>
             <item>
              <property name="text">
-              <string>      1</string>
+              <string>       1</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>      2</string>
+              <string>       2</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>      3</string>
+              <string>       3</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>      4</string>
+              <string>       4</string>
              </property>
             </item>
            </widget>
@@ -915,7 +950,7 @@
             </property>
             <item>
              <property name="text">
-              <string>无</string>
+              <string/>
              </property>
              <property name="icon">
               <iconset>
@@ -924,22 +959,22 @@
             </item>
             <item>
              <property name="text">
-              <string>      1</string>
+              <string>       1</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>      2</string>
+              <string>       2</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>      3</string>
+              <string>       3</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>      4</string>
+              <string>       4</string>
              </property>
             </item>
            </widget>
@@ -970,7 +1005,7 @@
             </property>
             <item>
              <property name="text">
-              <string>无</string>
+              <string/>
              </property>
              <property name="icon">
               <iconset>
@@ -979,22 +1014,22 @@
             </item>
             <item>
              <property name="text">
-              <string>      1</string>
+              <string>       1</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>      2</string>
+              <string>       2</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>      3</string>
+              <string>       3</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>      4</string>
+              <string>       4</string>
              </property>
             </item>
            </widget>
@@ -1014,12 +1049,15 @@
           </item>
           <item row="5" column="6">
            <widget class="QComboBox" name="cBox_seq_4">
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
+            </property>
             <property name="currentIndex">
              <number>0</number>
             </property>
             <item>
              <property name="text">
-              <string>无</string>
+              <string/>
              </property>
              <property name="icon">
               <iconset>
@@ -1028,22 +1066,22 @@
             </item>
             <item>
              <property name="text">
-              <string>      1</string>
+              <string>       1</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>      2</string>
+              <string>       2</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>      3</string>
+              <string>       3</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>      4</string>
+              <string>       4</string>
              </property>
             </item>
            </widget>
@@ -1053,7 +1091,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_13">
           <property name="text">
-           <string>Quantity:</string>
+           <string>Quantity(L):</string>
           </property>
          </widget>
         </item>
@@ -1067,7 +1105,7 @@
         <item row="3" column="0">
          <widget class="QLabel" name="label_18">
           <property name="text">
-           <string>Freq:</string>
+           <string>Frequency:</string>
           </property>
          </widget>
         </item>
@@ -1080,41 +1118,10 @@
         </item>
        </layout>
       </item>
-      <item row="0" column="1">
-       <layout class="QGridLayout" name="gridLayout_12">
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_16">
-          <property name="text">
-           <string>m³/h</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_17">
-          <property name="text">
-           <string>L</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="1" column="1">
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>134</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
      </layout>
     </widget>
    </item>
-   <item row="3" column="0">
+   <item row="3" column="0" colspan="3">
     <layout class="QHBoxLayout" name="horizontalLayout_5">
      <item>
       <widget class="Q3ButtonGroup" name="buttonGroup_2">
@@ -1312,7 +1319,7 @@
      </item>
     </layout>
    </item>
-   <item row="4" column="0">
+   <item row="4" column="0" colspan="3">
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
       <widget class="Q3ButtonGroup" name="buttonGroup_6">
@@ -1376,7 +1383,11 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="lineEdit_sc_flow"/>
+         <widget class="QLineEdit" name="lineEdit_sc_flow">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
         </item>
         <item row="0" column="2">
          <spacer name="horizontalSpacer">
@@ -1399,7 +1410,11 @@
          </widget>
         </item>
         <item row="0" column="4">
-         <widget class="QLineEdit" name="lineEdit_sc_thermal"/>
+         <widget class="QLineEdit" name="lineEdit_sc_thermal">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -1427,7 +1442,11 @@
        </property>
        <layout class="QGridLayout" name="gridLayout_11">
         <item row="0" column="1">
-         <widget class="QLineEdit" name="lineEdit_exTime"/>
+         <widget class="QLineEdit" name="lineEdit_exTime">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
         </item>
         <item row="0" column="2">
          <widget class="QLabel" name="label_19">
@@ -1479,52 +1498,50 @@
     </layout>
    </item>
    <item row="5" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <spacer name="horizontalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>13</width>
-         <height>28</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btnSave">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Save</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btnExit">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Exit</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Preferred</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>279</width>
+       <height>28</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="5" column="1">
+    <widget class="QPushButton" name="btnSave">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Save</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="2">
+    <widget class="QPushButton" name="btnExit">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Exit</string>
+     </property>
+    </widget>
    </item>
   </layout>
+  <zorder>btnSave</zorder>
+  <zorder>btnExit</zorder>
   <zorder>gBox_UpperFlowLmt</zorder>
   <zorder>gBox_FlowPnt</zorder>
   <zorder>gBox_Head</zorder>
