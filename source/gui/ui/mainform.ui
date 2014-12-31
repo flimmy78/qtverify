@@ -141,8 +141,8 @@
     </property>
     <addaction name="actionComSet"/>
     <addaction name="actionPortSet"/>
-    <addaction name="actionMasterSlaveSet"/>
     <addaction name="actionComDebuger"/>
+    <addaction name="actionMasterSlaveSet"/>
     <addaction name="actionMySql"/>
    </widget>
    <widget class="QMenu" name="menu">
@@ -192,6 +192,8 @@
    </attribute>
    <addaction name="actionComSet"/>
    <addaction name="actionPortSet"/>
+   <addaction name="actionComDebuger"/>
+   <addaction name="separator"/>
    <addaction name="actionTest"/>
    <addaction name="separator"/>
    <addaction name="actionWeightComp"/>

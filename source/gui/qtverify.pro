@@ -57,7 +57,6 @@ INCLUDEPATH += 	./include	\
 								$${UI_DIR}	\
 								$$(RUNHOME_INC)/include		\
 								$$(RUNHOME_INC)/include/qextserial \
-								F:\mysoft\trunk\plugindemo\GameSystem \
 								F:/mysoft/trunk/designerplugin/comsetwidget \
 								F:/mysoft/trunk/designerplugin/lalineedit \
 								$$[QT_INSTALL_EXAMPLES]/widgets/analogclock

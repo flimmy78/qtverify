@@ -24,7 +24,7 @@ public:
 	QueryResult *m_query;
 	CAlgorithm *m_alg;
 	SetComFrm *m_setcom; //串口参数设置
-	DataTestDlg *m_qualitydlg; //采集与控制测试程序
+	DataTestDlg *m_datatestdlg; //采集与控制测试程序
 	SetPortFrm *m_portSet; //端口模块设置
 	CMasterSlave *m_masterslave; //主机-从机设置
 	WeightMethodDlg *m_weightDlg; //质量法检定界面

@@ -31,7 +31,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_alg = new CAlgorithm();
 
 	m_setcom = NULL;
-	m_qualitydlg = NULL;
+	m_datatestdlg = NULL;
 	m_portSet = NULL;
 	m_masterslave = NULL;
 	m_weightDlg = NULL;
@@ -82,10 +82,10 @@ void MainForm::closeEvent( QCloseEvent * event)
 		m_portSet = NULL;
 	}
 
-	if (m_qualitydlg)
+	if (m_datatestdlg)
 	{
-		delete m_qualitydlg;
-		m_qualitydlg = NULL;
+		delete m_datatestdlg;
+		m_datatestdlg = NULL;
 	}
 
 	if (m_masterslave)
@@ -104,6 +104,10 @@ void MainForm::closeEvent( QCloseEvent * event)
 
 void MainForm::on_actionComDebuger_triggered()
 {
+	QProcess *myProcess = new QProcess(this);
+	QStringList cmdlist;
+	cmdlist<<"zh";
+	myProcess->start("qcom", cmdlist);
 }
 
 void MainForm::on_actionComSet_triggered()
@@ -165,17 +169,22 @@ void MainForm::on_btnStart_clicked()
 void MainForm::on_actionQueryExcel_triggered()
 {
 	QAxObject *excel = NULL;
-	QAxObject *workbooks = NULL;
-	QAxObject *workbook = NULL;
 	excel = new QAxObject("Excel.Application");
 	if (!excel)
 	{ 
 		QMessageBox::critical(this, "错误信息", "EXCEL对象丢失");
 		return;
 	}
+	QAxObject *workbooks = NULL;
+	QAxObject *workbook = NULL;
 	excel->dynamicCall("SetVisible(bool)", false);
 	workbooks = excel->querySubObject("WorkBooks");
-	workbook = workbooks->querySubObject("Open(QString, QVariant)", QString("d:\\test.xlsx"));
+	QString xlsFile = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\\dat\\test.xlsx";
+	workbook = workbooks->querySubObject("Open(QString, QVariant)", xlsFile);
+	if (NULL==workbook)
+	{
+		return;
+	}
 	QAxObject * worksheet = workbook->querySubObject("WorkSheets(int)", 1);//打开第一个sheet
 	QAxObject * usedrange = worksheet->querySubObject("UsedRange");//获取该sheet的使用范围对象
 	QAxObject * rows = usedrange->querySubObject("Rows");
@@ -255,17 +264,17 @@ void MainForm::on_actionMasterSlaveSet_triggered()
 //采集与控制测试程序
 void MainForm::on_actionTest_triggered()
 {
-	if (NULL == m_qualitydlg)
+	if (NULL == m_datatestdlg)
 	{
-		m_qualitydlg = new DataTestDlg();
+		m_datatestdlg = new DataTestDlg();
 	}
 	else //目的是执行QualityDlg的构造函数
 	{
-		delete m_qualitydlg;
-		m_qualitydlg = NULL;
-		m_qualitydlg = new DataTestDlg();
+		delete m_datatestdlg;
+		m_datatestdlg = NULL;
+		m_datatestdlg = new DataTestDlg();
 	}
-	m_qualitydlg->show();
+	m_datatestdlg->show();
 }
 
 void MainForm::on_actionDefault_triggered()
