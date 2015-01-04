@@ -142,6 +142,7 @@
     <addaction name="actionComSet"/>
     <addaction name="actionPortSet"/>
     <addaction name="actionComDebuger"/>
+    <addaction name="actionTest"/>
     <addaction name="actionMasterSlaveSet"/>
     <addaction name="actionMySql"/>
    </widget>
@@ -149,11 +150,21 @@
     <property name="title">
      <string>VerifyItem</string>
     </property>
+    <widget class="QMenu" name="menuSensor_Comp">
+     <property name="title">
+      <string>Sensor(Comp)</string>
+     </property>
+     <addaction name="actionCompareMethod"/>
+     <addaction name="actionParaMethod"/>
+    </widget>
     <addaction name="actionWeightComp"/>
     <addaction name="actionWeightTotal"/>
     <addaction name="actionStandardComp"/>
     <addaction name="actionStandardTotal"/>
-    <addaction name="actionTest"/>
+    <addaction name="actionCalculator"/>
+    <addaction name="menuSensor_Comp"/>
+    <addaction name="actionCalcSensor"/>
+    <addaction name="actionPressureTight"/>
    </widget>
    <widget class="QMenu" name="menuDataQuery">
     <property name="title">
@@ -366,6 +377,31 @@
    </property>
    <property name="text">
     <string>Fashion</string>
+   </property>
+  </action>
+  <action name="actionCalculator">
+   <property name="text">
+    <string>Calculator(Comp)</string>
+   </property>
+  </action>
+  <action name="actionCompareMethod">
+   <property name="text">
+    <string>CompareMethod</string>
+   </property>
+  </action>
+  <action name="actionParaMethod">
+   <property name="text">
+    <string>ParaMethod</string>
+   </property>
+  </action>
+  <action name="actionCalcSensor">
+   <property name="text">
+    <string>Sensor/Calc</string>
+   </property>
+  </action>
+  <action name="actionPressureTight">
+   <property name="text">
+    <string>Pressure Tight</string>
    </property>
   </action>
  </widget>
