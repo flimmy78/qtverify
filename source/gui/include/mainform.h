@@ -48,12 +48,6 @@ public slots:
 	void on_actionClassic_triggered();
 	void on_actionFashion_triggered();
 
-	void on_btnStart_clicked();
-	void on_btnSave_clicked();
-	void on_btnPara_clicked();
-	void on_btnAirOut_clicked();
-	void on_btnExit_clicked();
-
 private:
 	Ui::qMainFormClass ui;
 };

@@ -22,10 +22,7 @@ LIBS += -lalgorithm -lcomsetdlg -ldatatestdlg -lqaxserver -lmasterslaveset -llog
 HEADERS += include/mainform.h	\
 					 include/dbmysql.h	\
 					 include/queryresult.h \
-					 include/qexcel.h \
-					 F:/mysoft/trunk/designerplugin/comsetwidget/comsetwidget.h \
-					 F:/mysoft/trunk/designerplugin/lalineedit/lalineedit.h \
-					 $$[QT_INSTALL_EXAMPLES]/widgets/analogclock/analogclock.h
+					 include/qexcel.h
 					 
 FORMS += 	ui/mainform.ui	\
 				 	ui/dbmysql.ui		\
@@ -35,10 +32,7 @@ SOURCES += source/main.cpp	\
 					 source/mainform.cpp	\
 					 source/dbmysql.cpp		\
 					 source/queryresult.cpp \
-					 source/qexcel.cpp \
-					 F:/mysoft/trunk/designerplugin/comsetwidget/comsetwidget.cpp \
-					 F:/mysoft/trunk/designerplugin/lalineedit/lalineedit.cpp \
-					 $$[QT_INSTALL_EXAMPLES]/widgets/analogclock/analogclock.cpp
+					 source/qexcel.cpp
 					 
 RESOURCES += qtverify.qrc
 
@@ -57,9 +51,6 @@ INCLUDEPATH += 	./include	\
 								$${UI_DIR}	\
 								$$(RUNHOME_INC)/include		\
 								$$(RUNHOME_INC)/include/qextserial \
-								F:/mysoft/trunk/designerplugin/comsetwidget \
-								F:/mysoft/trunk/designerplugin/lalineedit \
-								$$[QT_INSTALL_EXAMPLES]/widgets/analogclock
 
 TRANSLATIONS += ./language/qtverify_en.ts ./language/qtverify_zh.ts
 

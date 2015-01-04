@@ -161,11 +161,6 @@ void MainForm::on_actionAbout_triggered()
 	QMessageBox::aboutQt(this);
 }
 
-void MainForm::on_btnStart_clicked()
-{
-	m_alg->calc(2.0, 5.6);
-}
-
 void MainForm::on_actionQueryExcel_triggered()
 {
 	QAxObject *excel = NULL;
@@ -202,32 +197,6 @@ void MainForm::on_actionQueryExcel_triggered()
 			qDebug("row %d, col %d, value is %d\n", i, j, range->property("Value").toInt()); //************出问题!!!!!! 
 		} 
 	}
-}
-
-void MainForm::on_btnSave_clicked()
-{
-	int a = ui.comSetWidget->getLcdNumber();
-	QString comname = ui.comSetWidget->ui.comboBox1->currentText();
-	QMessageBox::information(this, "hint", QString("lcdnumber=%1, com=%2").arg(a).arg(comname));
-}
-
-void MainForm::on_btnPara_clicked()
-{
-	QProcess *myProcess = new QProcess(this);
-	QStringList cmdlist;
-	cmdlist<<"/v:"<<"192.168.1.132"<<"/console";
-	myProcess->start("mstsc", cmdlist);
-}
-
-void MainForm::on_btnAirOut_clicked()
-{
-	QProcess *myProcess = new QProcess(this);
-	myProcess->start("calc.exe");
-}
-
-void MainForm::on_btnExit_clicked()
-{
-	this->close();
 }
 
 //质量法-分量检定
