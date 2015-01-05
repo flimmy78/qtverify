@@ -28,6 +28,7 @@ public:
 	SetPortFrm *m_portSet; //端口模块设置
 	CMasterSlave *m_masterslave; //主机-从机设置
 	WeightMethodDlg *m_weightDlg; //质量法检定界面
+	QProcess *m_comProcess;
 
 	void closeEvent(QCloseEvent * event);
 

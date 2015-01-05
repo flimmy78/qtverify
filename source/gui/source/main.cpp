@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
 // 	LoginDialog login;
 // 	if (login.exec() == QDialog::Accepted)
 // 	{
-		g_mainform->show();//showMaximized();
+		g_mainform->showMaximized();
 		splash->finish(g_mainform);
 		delete splash;
 		app.exec();

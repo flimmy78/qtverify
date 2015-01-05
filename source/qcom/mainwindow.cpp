@@ -239,11 +239,11 @@ void MainWindow::readMyCom()
 	if(!temp.isEmpty())
 	{
 		ui->textBrowserRecv->setTextColor(Qt::black);
-		if (ui->ccradioButton->isChecked())
+		if (ui->ccradioButton->isChecked()) //十进制
 		{
 			buf = temp;
 		}
-		else if (ui->chradioButton->isChecked())
+		else if (ui->chradioButton->isChecked()) //十六进制
 		{
 			QString str;
 			for (int i = 0; i < temp.count(); i++)
@@ -289,7 +289,7 @@ void MainWindow::sendMsg()
 		char data;
 		QStringList list;
 		str = ui->textEditSend->toPlainText();
-		list = str.split(" ");
+		list = str.split(" "); //以空格符分割
 		for (int i = 0; i < list.count(); i++)
 		{
 			if (list.at(i) == " ")

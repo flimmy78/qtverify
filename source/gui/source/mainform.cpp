@@ -35,6 +35,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_portSet = NULL;
 	m_masterslave = NULL;
 	m_weightDlg = NULL;
+	m_comProcess = NULL;
 
 	QLabel *permanent = new QLabel(this);
 	permanent->setFrameStyle(QFrame::NoFrame | QFrame::Sunken);
@@ -100,14 +101,26 @@ void MainForm::closeEvent( QCloseEvent * event)
 		m_weightDlg = NULL;
 	}
 
+	if (m_comProcess)
+	{
+		m_comProcess->close();
+	}
+
 }
 
 void MainForm::on_actionComDebuger_triggered()
 {
-	QProcess *myProcess = new QProcess(this);
-	QStringList cmdlist;
-	cmdlist<<"zh";
-	myProcess->start("qcom", cmdlist);
+	if (NULL == m_comProcess)
+	{
+		m_comProcess = new QProcess(this);
+		QStringList cmdlist;
+		cmdlist<<"zh";
+		m_comProcess->start("qcom", cmdlist);
+	}
+	else
+	{
+		QMessageBox::information(this, tr("Hint"), tr("com debugger is running!"));
+	}
 }
 
 void MainForm::on_actionComSet_triggered()

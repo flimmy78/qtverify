@@ -42,7 +42,7 @@
 #include "ui_weightmethod.h"
 #include "parasetdlg.h"
 #include "comobject.h"
-#include "ReadComConfig.h"
+#include "readcomconfig.h"
 #include "algorithm.h"
 
 
