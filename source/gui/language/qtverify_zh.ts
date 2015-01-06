@@ -2,6 +2,19 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="zh_CN">
 <context>
+    <name>DbMySql</name>
+    <message>
+        <location filename="../source/dbmysql.cpp" line="69"/>
+        <source>OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/dbmysql.cpp" line="69"/>
+        <source>connect MySQL database success !</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DbMySqlClass</name>
     <message>
         <location filename="../ui/dbmysql.ui" line="14"/>
@@ -22,8 +35,28 @@
 <context>
     <name>MainForm</name>
     <message>
-        <location filename="../source/mainform.cpp" line="41"/>
+        <location filename="../source/mainform.cpp" line="42"/>
         <source>&lt;a href=&quot;http://www.sdm.com.cn&quot;&gt;Shandong Delu Measurement Co.,Ltd.&lt;/a&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/mainform.cpp" line="122"/>
+        <source>Hint</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/mainform.cpp" line="122"/>
+        <source>com debugger is running!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/mainform.cpp" line="183"/>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/mainform.cpp" line="183"/>
+        <source>Excel object lose!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -218,6 +251,16 @@
 <context>
     <name>QueryResult</name>
     <message>
+        <location filename="../source/queryresult.cpp" line="226"/>
+        <source>Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="226"/>
+        <source>no data need to be exported!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../source/queryresult.cpp" line="231"/>
         <source>Save File</source>
         <translation type="unfinished"></translation>
@@ -225,6 +268,16 @@
     <message>
         <location filename="../source/queryresult.cpp" line="231"/>
         <source>Microsoft Excel (*.xlsx;*.xls)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="272"/>
+        <source>OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="272"/>
+        <source>export excel file successful!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

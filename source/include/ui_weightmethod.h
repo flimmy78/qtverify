@@ -73,7 +73,8 @@ public:
     QPushButton *btnNext;
     QPushButton *btnStop;
     QPushButton *btnExit;
-    QWidget *layoutWidget2;
+    QGroupBox *groupBox_4;
+    QGridLayout *gridLayout_8;
     QGridLayout *gridLayout_2;
     QLabel *label_9;
     QLineEdit *lnEditBigBalance;
@@ -99,7 +100,7 @@ public:
     {
         if (WeightMethodClass->objectName().isEmpty())
             WeightMethodClass->setObjectName(QString::fromUtf8("WeightMethodClass"));
-        WeightMethodClass->resize(1330, 867);
+        WeightMethodClass->resize(1335, 873);
         gridLayout = new QGridLayout(WeightMethodClass);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         tabWidget = new QTabWidget(WeightMethodClass);
@@ -111,7 +112,7 @@ public:
         tab1->setObjectName(QString::fromUtf8("tab1"));
         groupBox_2 = new QGroupBox(tab1);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setGeometry(QRect(270, 640, 451, 171));
+        groupBox_2->setGeometry(QRect(270, 640, 421, 181));
         gridLayout_6 = new QGridLayout(groupBox_2);
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
         btnWaterPumpStop = new QToolButton(groupBox_2);
@@ -225,7 +226,7 @@ public:
         tableWidget->setEditTriggers(QAbstractItemView::CurrentChanged|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed);
         groupBox_3 = new QGroupBox(tab1);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
-        groupBox_3->setGeometry(QRect(968, 630, 221, 181));
+        groupBox_3->setGeometry(QRect(950, 640, 241, 171));
         sizePolicy1.setHeightForWidth(groupBox_3->sizePolicy().hasHeightForWidth());
         groupBox_3->setSizePolicy(sizePolicy1);
         gridLayout_7 = new QGridLayout(groupBox_3);
@@ -246,7 +247,7 @@ public:
 
         layoutWidget = new QWidget(tab1);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(11, 652, 254, 161));
+        layoutWidget->setGeometry(QRect(11, 642, 251, 171));
         gridLayout_5 = new QGridLayout(layoutWidget);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
         gridLayout_5->setContentsMargins(0, 0, 0, 0);
@@ -324,7 +325,7 @@ public:
 
         layoutWidget1 = new QWidget(tab1);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(1197, 637, 95, 170));
+        layoutWidget1->setGeometry(QRect(1200, 640, 95, 170));
         gridLayout_4 = new QGridLayout(layoutWidget1);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
         gridLayout_4->setContentsMargins(0, 0, 0, 0);
@@ -363,20 +364,21 @@ public:
 
         gridLayout_4->addWidget(btnExit, 4, 0, 1, 1);
 
-        layoutWidget2 = new QWidget(tab1);
-        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
-        layoutWidget2->setGeometry(QRect(730, 640, 231, 171));
-        gridLayout_2 = new QGridLayout(layoutWidget2);
+        groupBox_4 = new QGroupBox(tab1);
+        groupBox_4->setObjectName(QString::fromUtf8("groupBox_4"));
+        groupBox_4->setGeometry(QRect(700, 640, 241, 180));
+        gridLayout_8 = new QGridLayout(groupBox_4);
+        gridLayout_8->setObjectName(QString::fromUtf8("gridLayout_8"));
+        gridLayout_2 = new QGridLayout();
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        gridLayout_2->setContentsMargins(0, 0, 0, 0);
-        label_9 = new QLabel(layoutWidget2);
+        label_9 = new QLabel(groupBox_4);
         label_9->setObjectName(QString::fromUtf8("label_9"));
         sizePolicy3.setHeightForWidth(label_9->sizePolicy().hasHeightForWidth());
         label_9->setSizePolicy(sizePolicy3);
 
         gridLayout_2->addWidget(label_9, 0, 0, 1, 1);
 
-        lnEditBigBalance = new QLineEdit(layoutWidget2);
+        lnEditBigBalance = new QLineEdit(groupBox_4);
         lnEditBigBalance->setObjectName(QString::fromUtf8("lnEditBigBalance"));
         sizePolicy2.setHeightForWidth(lnEditBigBalance->sizePolicy().hasHeightForWidth());
         lnEditBigBalance->setSizePolicy(sizePolicy2);
@@ -384,21 +386,21 @@ public:
 
         gridLayout_2->addWidget(lnEditBigBalance, 0, 1, 1, 1);
 
-        label_11 = new QLabel(layoutWidget2);
+        label_11 = new QLabel(groupBox_4);
         label_11->setObjectName(QString::fromUtf8("label_11"));
         sizePolicy3.setHeightForWidth(label_11->sizePolicy().hasHeightForWidth());
         label_11->setSizePolicy(sizePolicy3);
 
         gridLayout_2->addWidget(label_11, 0, 2, 1, 1);
 
-        label_10 = new QLabel(layoutWidget2);
+        label_10 = new QLabel(groupBox_4);
         label_10->setObjectName(QString::fromUtf8("label_10"));
         sizePolicy3.setHeightForWidth(label_10->sizePolicy().hasHeightForWidth());
         label_10->setSizePolicy(sizePolicy3);
 
         gridLayout_2->addWidget(label_10, 1, 0, 1, 1);
 
-        lnEditSmallBalance = new QLineEdit(layoutWidget2);
+        lnEditSmallBalance = new QLineEdit(groupBox_4);
         lnEditSmallBalance->setObjectName(QString::fromUtf8("lnEditSmallBalance"));
         sizePolicy2.setHeightForWidth(lnEditSmallBalance->sizePolicy().hasHeightForWidth());
         lnEditSmallBalance->setSizePolicy(sizePolicy2);
@@ -407,14 +409,14 @@ public:
 
         gridLayout_2->addWidget(lnEditSmallBalance, 1, 1, 1, 1);
 
-        label_12 = new QLabel(layoutWidget2);
+        label_12 = new QLabel(groupBox_4);
         label_12->setObjectName(QString::fromUtf8("label_12"));
         sizePolicy3.setHeightForWidth(label_12->sizePolicy().hasHeightForWidth());
         label_12->setSizePolicy(sizePolicy3);
 
         gridLayout_2->addWidget(label_12, 1, 2, 1, 1);
 
-        label_3 = new QLabel(layoutWidget2);
+        label_3 = new QLabel(groupBox_4);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         sizePolicy3.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
         label_3->setSizePolicy(sizePolicy3);
@@ -422,21 +424,21 @@ public:
 
         gridLayout_2->addWidget(label_3, 2, 0, 1, 1);
 
-        lcdNumberFlow = new QLCDNumber(layoutWidget2);
+        lcdNumberFlow = new QLCDNumber(groupBox_4);
         lcdNumberFlow->setObjectName(QString::fromUtf8("lcdNumberFlow"));
         sizePolicy2.setHeightForWidth(lcdNumberFlow->sizePolicy().hasHeightForWidth());
         lcdNumberFlow->setSizePolicy(sizePolicy2);
 
         gridLayout_2->addWidget(lcdNumberFlow, 2, 1, 1, 1);
 
-        label_6 = new QLabel(layoutWidget2);
+        label_6 = new QLabel(groupBox_4);
         label_6->setObjectName(QString::fromUtf8("label_6"));
         sizePolicy3.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
         label_6->setSizePolicy(sizePolicy3);
 
         gridLayout_2->addWidget(label_6, 2, 2, 1, 1);
 
-        label_4 = new QLabel(layoutWidget2);
+        label_4 = new QLabel(groupBox_4);
         label_4->setObjectName(QString::fromUtf8("label_4"));
         sizePolicy3.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
         label_4->setSizePolicy(sizePolicy3);
@@ -444,7 +446,7 @@ public:
 
         gridLayout_2->addWidget(label_4, 3, 0, 1, 1);
 
-        lcdNumberInTemper = new QLCDNumber(layoutWidget2);
+        lcdNumberInTemper = new QLCDNumber(groupBox_4);
         lcdNumberInTemper->setObjectName(QString::fromUtf8("lcdNumberInTemper"));
         sizePolicy2.setHeightForWidth(lcdNumberInTemper->sizePolicy().hasHeightForWidth());
         lcdNumberInTemper->setSizePolicy(sizePolicy2);
@@ -461,14 +463,14 @@ public:
 
         gridLayout_2->addWidget(lcdNumberInTemper, 3, 1, 1, 1);
 
-        label_7 = new QLabel(layoutWidget2);
+        label_7 = new QLabel(groupBox_4);
         label_7->setObjectName(QString::fromUtf8("label_7"));
         sizePolicy3.setHeightForWidth(label_7->sizePolicy().hasHeightForWidth());
         label_7->setSizePolicy(sizePolicy3);
 
         gridLayout_2->addWidget(label_7, 3, 2, 1, 1);
 
-        label_5 = new QLabel(layoutWidget2);
+        label_5 = new QLabel(groupBox_4);
         label_5->setObjectName(QString::fromUtf8("label_5"));
         sizePolicy3.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
         label_5->setSizePolicy(sizePolicy3);
@@ -476,19 +478,22 @@ public:
 
         gridLayout_2->addWidget(label_5, 4, 0, 1, 1);
 
-        lcdNumberOutTemper = new QLCDNumber(layoutWidget2);
+        lcdNumberOutTemper = new QLCDNumber(groupBox_4);
         lcdNumberOutTemper->setObjectName(QString::fromUtf8("lcdNumberOutTemper"));
         sizePolicy2.setHeightForWidth(lcdNumberOutTemper->sizePolicy().hasHeightForWidth());
         lcdNumberOutTemper->setSizePolicy(sizePolicy2);
 
         gridLayout_2->addWidget(lcdNumberOutTemper, 4, 1, 1, 1);
 
-        label_8 = new QLabel(layoutWidget2);
+        label_8 = new QLabel(groupBox_4);
         label_8->setObjectName(QString::fromUtf8("label_8"));
         sizePolicy3.setHeightForWidth(label_8->sizePolicy().hasHeightForWidth());
         label_8->setSizePolicy(sizePolicy3);
 
         gridLayout_2->addWidget(label_8, 4, 2, 1, 1);
+
+
+        gridLayout_8->addLayout(gridLayout_2, 0, 0, 1, 1);
 
         tabWidget->addTab(tab1, QString());
         tab2 = new QWidget();
@@ -565,8 +570,8 @@ public:
         QTableWidgetItem *___qtablewidgetitem9 = tableWidget->horizontalHeaderItem(9);
         ___qtablewidgetitem9->setText(QApplication::translate("WeightMethodClass", "DsipError(%)", 0, QApplication::UnicodeUTF8));
         groupBox_3->setTitle(QApplication::translate("WeightMethodClass", "Process Hint", 0, QApplication::UnicodeUTF8));
-        labelHintInfo->setText(QApplication::translate("WeightMethodClass", "Hint Info", 0, QApplication::UnicodeUTF8));
-        labelHint->setText(QString());
+        labelHintInfo->setText(QApplication::translate("WeightMethodClass", "Point:", 0, QApplication::UnicodeUTF8));
+        labelHint->setText(QApplication::translate("WeightMethodClass", "Process:", 0, QApplication::UnicodeUTF8));
         btnParaSet->setText(QApplication::translate("WeightMethodClass", "ParaSet", 0, QApplication::UnicodeUTF8));
         btnReadMeter->setText(QApplication::translate("WeightMethodClass", "ReadMeter", 0, QApplication::UnicodeUTF8));
         groupBox->setTitle(QApplication::translate("WeightMethodClass", "NowPara(KeyInfo)", 0, QApplication::UnicodeUTF8));
@@ -588,6 +593,7 @@ public:
         btnNext->setText(QApplication::translate("WeightMethodClass", "Next", 0, QApplication::UnicodeUTF8));
         btnStop->setText(QApplication::translate("WeightMethodClass", "Stop", 0, QApplication::UnicodeUTF8));
         btnExit->setText(QApplication::translate("WeightMethodClass", "Exit", 0, QApplication::UnicodeUTF8));
+        groupBox_4->setTitle(QApplication::translate("WeightMethodClass", "DataAcquisition", 0, QApplication::UnicodeUTF8));
         label_9->setText(QApplication::translate("WeightMethodClass", "Big Bal:", 0, QApplication::UnicodeUTF8));
         lnEditBigBalance->setText(QString());
         label_11->setText(QApplication::translate("WeightMethodClass", "\343\216\217", 0, QApplication::UnicodeUTF8));

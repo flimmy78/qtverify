@@ -223,7 +223,7 @@ void QueryResult::on_btnExport_clicked()
 {
 	if (NULL==model)
 	{
-		QMessageBox::warning(this, "warning", "no data need to be exported!");
+		QMessageBox::warning(this, tr("Warning"), tr("no data need to be exported!"));
 		return;
 	}
 
@@ -269,7 +269,7 @@ void QueryResult::on_btnExport_clicked()
 		xlsFile.setAutoFitColumnAll();
 		xlsFile.save();
 
-		QMessageBox::information(this, "hint", "export excel successful!");
+		QMessageBox::information(this, tr("OK"), tr("export excel file successful!"));
 	}
 }
 

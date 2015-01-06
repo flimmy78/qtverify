@@ -174,7 +174,7 @@ void MainWindow::on_actionOpen_triggered()
 
 	if (myCom->open(QIODevice::ReadWrite))
 	{
-		QMessageBox::information(this, tr("Hint"), tr("open ") + portName + tr(" success!"), QMessageBox::Ok);
+		QMessageBox::information(this, tr("OK"), tr("open ") + portName + tr(" success!"), QMessageBox::Ok);
 		//½çÃæ¿ØÖÆ
 		ui->sendmsgBtn->setEnabled(true);
 		setComboBoxEnabled(false);
@@ -435,7 +435,7 @@ void MainWindow::on_actionSave_triggered()
 {
 	if (ui->textEditSend->toPlainText().isEmpty())
 	{
-		QMessageBox::information(this, "Hint", tr("no data need save! please input data in the sending area"), QMessageBox::Ok);
+		QMessageBox::information(this, tr("Hint"), tr("no data need save! please input data in the sending area"), QMessageBox::Ok);
 		return;
 	}
 

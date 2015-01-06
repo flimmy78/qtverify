@@ -666,7 +666,7 @@ void WeightMethodDlg::on_btnNext_clicked()
 {
 	if (m_nowOrder >= m_flowPointNum)
 	{
-		QMessageBox::warning(this, "warning", "所有流量点已经检定完毕!");
+		QMessageBox::warning(this, tr("Warning"), tr("all flow points has verified!"));
 		return;
 	}
 

@@ -58,7 +58,7 @@ void SetComFrm::on_btnSave_clicked()
 	WriteTempConfig(ReadTempSet());
 	WriteStdTempConfig(ReadStdTempSet());
 	WriteMetersConfig();
-	QMessageBox::about(NULL, "Success", "Successfully Save Settings !");
+	QMessageBox::information(this, tr("OK"), tr("Save Settings Successfully !"));
 }
 
 /***************************************************************************/
@@ -292,7 +292,7 @@ bool SetComFrm::WriteMetersConfig()
 		Configs = ReadMeterSetByNum(meter_num);
 		if (!WriteMeterConfigByNum(meter_num, Configs))
 		{
-			QMessageBox::about(NULL, "False", "False  Save Settings of Meter: " + meter_num +"# !");
+			QMessageBox::warning(this, tr("Warning"), tr("Save Settings of Meter: ") + meter_num + tr("# Error!"));
 			return false;
 		}
 	}
@@ -348,12 +348,12 @@ bool SetComFrm::OpenConfigFile()
 	QFile file( ConfigFileName );
 	if( !file.open( QFile::ReadOnly | QFile::Text  ) )
 	{
-		QMessageBox::critical(NULL, "warning", "Can not open file: " + ConfigFileName, QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+		QMessageBox::critical(this, tr("Error"), tr("Can not open file: ") + ConfigFileName, QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
 		return false;
 	}
 	if( !m_doc.setContent( &file ) )
 	{
-		QMessageBox::critical(NULL, "warning", "Can not setContent file: " + ConfigFileName, QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+		QMessageBox::critical(this, tr("Error"), tr("Can not set Content file: ") + ConfigFileName, QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
 		file.close();
 		return false;
 	}
@@ -367,7 +367,7 @@ bool SetComFrm::WriteConfigFile()
 
 	if( !filexml.open( QFile::WriteOnly | QFile::Truncate) )
 	{
-		QMessageBox::critical(NULL, "warning", "Can not write to file: " + ConfigFileName, QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+		QMessageBox::critical(this, tr("Error"), tr("Can not write to file: ") + ConfigFileName, QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
 		return false;
 	}
 	QTextStream ts(&filexml);

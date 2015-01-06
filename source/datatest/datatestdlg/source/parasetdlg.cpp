@@ -69,7 +69,7 @@ void ParaSetDlg::on_btnExit_clicked()
 
 void ParaSetDlg::showEvent(QShowEvent * event)
 {
-// 	QMessageBox::warning(this, "warning", "showEvent");
+// 	QMessageBox::warning(this, tr("Warning"), tr("showEvent"));
 }
 
 void ParaSetDlg::closeEvent(QCloseEvent * event)
@@ -303,7 +303,7 @@ void ParaSetDlg::on_btnSave_clicked()
 	//先检查选定次序的合法性
 	if (!chkSeq())
 	{
-		QMessageBox::about(NULL, "illegal", "verify sequence is invalid!");
+		QMessageBox::warning(this, tr("Warning"), tr("verify sequence is invalid!"));
 		return;
 	}
 
@@ -324,7 +324,7 @@ void ParaSetDlg::on_btnSave_clicked()
 	SaveFlowPoint();
 	SaveBool();
 	SaveOther();
-	QMessageBox::about(NULL, "OK", "Saving configurations successfully!");
+	QMessageBox::information(this, tr("OK"), tr("Saving configurations successfully!"));
 	emit saveSuccessSignal();
 }
 

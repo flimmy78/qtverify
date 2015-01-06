@@ -66,12 +66,12 @@ void DbMySql::on_btnConnect_clicked()
 // 	m_db.exec("SET NAMES 'GB2312'");
 	if(ok) // 这里用xopens已经成功连上数据库
 	{
-		QMessageBox::information(this, "DbShow", "connect mysql database success !", "Ok", "Cancel");	
+		QMessageBox::information(this, tr("OK"), tr("connect MySQL database success !"));	
 		ui.btnQuery->setEnabled(true);
 	}
 	else
 	{
-		QMessageBox::information(this, "DbShow", "connect mysql database failed !", "Ok", "Cancel");	
+		QMessageBox::warning(this, "Warning", "connect MySQL database failed !");	
 		ui.btnQuery->setEnabled(false);
 	}
 }
@@ -94,7 +94,7 @@ void DbMySql::on_btnQuery_clicked()
 		}
 		QString id, lname, fname, phone; QDateTime dob; 
 		ui.display->append("==========================================="); 
-		ui.display->append(QString::fromLocal8Bit(" id | 姓名 | 生日 | 电话")); 
+		ui.display->append(QString::fromLocal8Bit(" id | name | birthday | telephone")); 
 		ui.display->append("--------------------------------------");
 		while(query.next())// 定位结果到下一条记录
 		{ 

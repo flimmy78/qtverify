@@ -112,7 +112,6 @@
    <addaction name="actionComSet"/>
    <addaction name="actionPortSet"/>
    <addaction name="actionComDebuger"/>
-   <addaction name="separator"/>
    <addaction name="actionTest"/>
    <addaction name="separator"/>
    <addaction name="actionWeightComp"/>
@@ -156,6 +155,9 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+D</string>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
    </property>
   </action>
   <action name="actionQuery">
@@ -213,6 +215,9 @@
    </property>
    <property name="text">
     <string>ComSet</string>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
    </property>
   </action>
   <action name="actionPortSet">

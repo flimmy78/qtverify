@@ -35,7 +35,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_portSet = NULL;
 	m_masterslave = NULL;
 	m_weightDlg = NULL;
-	m_comProcess = NULL;
+	m_comProcess = new QProcess(this);
 
 	QLabel *permanent = new QLabel(this);
 	permanent->setFrameStyle(QFrame::NoFrame | QFrame::Sunken);
@@ -103,24 +103,16 @@ void MainForm::closeEvent( QCloseEvent * event)
 
 	if (m_comProcess)
 	{
-		m_comProcess->close();
+		m_comProcess->kill();
 	}
 
 }
 
 void MainForm::on_actionComDebuger_triggered()
 {
-	if (NULL == m_comProcess)
-	{
-		m_comProcess = new QProcess(this);
-		QStringList cmdlist;
-		cmdlist<<"zh";
-		m_comProcess->start("qcom", cmdlist);
-	}
-	else
-	{
-		QMessageBox::information(this, tr("Hint"), tr("com debugger is running!"));
-	}
+	QStringList cmdlist;
+	cmdlist<<"-zh";
+	m_comProcess->start("qcom", cmdlist);
 }
 
 void MainForm::on_actionComSet_triggered()
@@ -180,7 +172,7 @@ void MainForm::on_actionQueryExcel_triggered()
 	excel = new QAxObject("Excel.Application");
 	if (!excel)
 	{ 
-		QMessageBox::critical(this, "错误信息", "EXCEL对象丢失");
+		QMessageBox::critical(this, tr("Error"), tr("Excel object lose!"));
 		return;
 	}
 	QAxObject *workbooks = NULL;
