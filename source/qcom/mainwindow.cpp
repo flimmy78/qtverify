@@ -50,6 +50,20 @@ QMainWindow(parent),
 
 	ui->statusBar->showMessage(QObject::tr("Welcome Using QCom!"));
 	ui->btnRecv->hide();
+
+	//加载上次保存的串口参数
+	QString path = QProcessEnvironment::systemEnvironment().value("RUNHOME");
+	m_filename = path + "\\ini\\comdebugger.ini";
+	m_comset = new QSettings(m_filename, QSettings::IniFormat);
+	if (m_comset)
+	{
+		ui->portNameComboBox->setCurrentIndex(m_comset->value("ComSettings/ComName").toInt());
+		ui->baudRateComboBox->setCurrentIndex(m_comset->value("ComSettings/BaudRate").toInt());
+		ui->dataBitsComboBox->setCurrentIndex(m_comset->value("ComSettings/DataBit").toInt());
+		ui->parityComboBox->setCurrentIndex(m_comset->value("ComSettings/Parity").toInt());
+		ui->stopBitsComboBox->setCurrentIndex(m_comset->value("ComSettings/StopBit").toInt());
+	}
+	
 }
 
 MainWindow::~MainWindow()
@@ -193,6 +207,7 @@ void MainWindow::on_actionOpen_triggered()
 		return;
 	}
 
+	saveComDefaultConfig();
 	ui->statusBar->showMessage(tr("Open Com Success"));
 }
 
@@ -548,4 +563,17 @@ void MainWindow::on_actionWriteToFile_triggered()
 		write2fileName.clear();
 		ui->actionWriteToFile->setToolTip(tr("write the reading data to file"));
 	}
+}
+
+//保存串口默认参数
+void MainWindow::saveComDefaultConfig()
+{
+	if (m_comset)
+	{
+		m_comset->setValue("ComSettings/ComName", ui->portNameComboBox->currentIndex());
+		m_comset->setValue("ComSettings/BaudRate", ui->baudRateComboBox->currentIndex());
+		m_comset->setValue("ComSettings/DataBit", ui->dataBitsComboBox->currentIndex());
+		m_comset->setValue("ComSettings/Parity", ui->parityComboBox->currentIndex());
+		m_comset->setValue("ComSettings/StopBit", ui->stopBitsComboBox->currentIndex());
+	}	
 }

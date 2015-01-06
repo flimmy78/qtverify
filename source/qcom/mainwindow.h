@@ -49,28 +49,31 @@ private:
 	unsigned int obotimerdly;
 	QString write2fileName;    //写读取的串口数据到该文件
 
-	private slots:
+	QString m_filename;
+	QSettings *m_comset;
 
-		void on_actionWriteToFile_triggered();
-		void on_actionCleanPort_triggered();
-		void on_actionLoadfile_triggered();
-		void on_delayspinBox_valueChanged(int );
-		void on_actionExit_triggered();
-		void on_actionSave_triggered();
-		void on_obocheckBox_clicked();
-		void on_actionClearRecvBytes_triggered();
-		void on_actionClearSendBytes_triggered();
-		void on_actionAbout_triggered();
-		void on_actionClose_triggered();
-		void on_actionOpen_triggered();
-		void on_clearRecvBtn_clicked();
-		void on_clearSendBtn_clicked();
-		void on_btnResetRecvLcd_clicked();
-		void on_btnResetSendLcd_clicked();
-		void on_sendmsgBtn_clicked();
-		void readMyCom();
-		void sendMsg();
-		//end by
+private slots:
+	void on_actionWriteToFile_triggered();
+	void on_actionCleanPort_triggered();
+	void on_actionLoadfile_triggered();
+	void on_delayspinBox_valueChanged(int );
+	void on_actionExit_triggered();
+	void on_actionSave_triggered();
+	void on_obocheckBox_clicked();
+	void on_actionClearRecvBytes_triggered();
+	void on_actionClearSendBytes_triggered();
+	void on_actionAbout_triggered();
+	void on_actionClose_triggered();
+	void on_actionOpen_triggered();
+	void on_clearRecvBtn_clicked();
+	void on_clearSendBtn_clicked();
+	void on_btnResetRecvLcd_clicked();
+	void on_btnResetSendLcd_clicked();
+	void on_sendmsgBtn_clicked();
+	void readMyCom();
+	void sendMsg();
+	void saveComDefaultConfig();
+	//end by
 
 };
 
