@@ -68,6 +68,7 @@ public:
     {
         if (SetPortFrm->objectName().isEmpty())
             SetPortFrm->setObjectName(QString::fromUtf8("SetPortFrm"));
+        SetPortFrm->setWindowModality(Qt::ApplicationModal);
         SetPortFrm->resize(433, 276);
         gridLayout_3 = new QGridLayout(SetPortFrm);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));

@@ -158,6 +158,7 @@ public:
     {
         if (ParaSetDlgClass->objectName().isEmpty())
             ParaSetDlgClass->setObjectName(QString::fromUtf8("ParaSetDlgClass"));
+        ParaSetDlgClass->setWindowModality(Qt::ApplicationModal);
         ParaSetDlgClass->resize(700, 609);
         gridLayout_6 = new QGridLayout(ParaSetDlgClass);
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));

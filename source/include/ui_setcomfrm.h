@@ -235,6 +235,7 @@ public:
     {
         if (SetComFrm->objectName().isEmpty())
             SetComFrm->setObjectName(QString::fromUtf8("SetComFrm"));
+        SetComFrm->setWindowModality(Qt::ApplicationModal);
         SetComFrm->resize(1071, 630);
         gridLayout_20 = new QGridLayout(SetComFrm);
         gridLayout_20->setObjectName(QString::fromUtf8("gridLayout_20"));

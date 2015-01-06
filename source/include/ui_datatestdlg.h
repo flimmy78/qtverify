@@ -135,6 +135,7 @@ public:
     {
         if (DataTestDlgClass->objectName().isEmpty())
             DataTestDlgClass->setObjectName(QString::fromUtf8("DataTestDlgClass"));
+        DataTestDlgClass->setWindowModality(Qt::ApplicationModal);
         DataTestDlgClass->resize(714, 665);
         groupBox = new QGroupBox(DataTestDlgClass);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
