@@ -86,7 +86,7 @@ signals:
 	void temperatureIsReady(const QString& tempStr); //成功获取温度值
 
 public slots:
-	void openTemperatureCom(ComInfoStruct *comStruct);
+	bool openTemperatureCom(ComInfoStruct *comStruct);
 	void writeTemperatureComBuffer();
 	void readTemperatureComBuffer();
 
@@ -116,7 +116,7 @@ signals:
 	void controlGetBalanceValueIsOk(const QString& balValue);
 
 public slots:
-	void openControlCom(ComInfoStruct *comStruct);
+	bool openControlCom(ComInfoStruct *comStruct);
 	void makeRelaySendBuf(UINT8 portno, bool status);
 	void makeRegulateSendBuf(UINT8 portno, int degree);
 	void makeQuerySendBuf();
@@ -144,7 +144,7 @@ signals:
 	void balanceValueIsReady(const QString& tempStr); //成功获取天平数值
 
 public slots:
-	void openBalanceCom(ComInfoStruct *comStruct);
+	bool openBalanceCom(ComInfoStruct *comStruct);
 	void readBalanceComBuffer();
 };
 
@@ -164,14 +164,18 @@ public:
 	MeterProtocol *m_meterProtocol;
 	QByteArray m_meterTmp;
 	QString m_portName;
-	int m_manufact; //热表生产厂家
+	int m_protocolVersion; //热表生产厂家
 
 signals:
-	void readMeterNoIsOK(const QString& portName, const QString& meterNo);
-	void readMeterDataIsOK(const QString& portName, const QString& flow, const QString& heat);
+	void readMeterNoIsOK(const QString& portName, const QString& meterNo); //获取表号成功
+	void readMeterFlowIsOK(const QString& portName, const QString& flow);  //获取表流量成功
+	void readMeterHeatIsOK(const QString& portName, const QString& heat);  //获取表热量成功
+	void readMeterTemperIsOK(const QString& portName, const QString& tempIn, const QString& tempOut);  //获取表进出口温度成功
+	void readMeterDateIsOK(const QString& portName, const QString& date);  //获取表日期成功
 
 public slots:
-	void openMeterCom(ComInfoStruct *comStruct);
+	bool openMeterCom(ComInfoStruct *comStruct);
+	void closeMeterCom();
 	void readMeterComBuffer(); //解析串口返回数据
 
 	void askReadMeter();       //请求读表（广播地址读表）
@@ -179,7 +183,7 @@ public slots:
 	void askModifyMeterNo(QString oldMeterNo, QString newMeterNo);   //请求修改表号
 	void askModifyFlowPara();  //请求修改流量参数
 
-	void setManufact(int manufact);
+	void setProtocolVersion(int manufact);
 };
 
 

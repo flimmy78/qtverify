@@ -96,7 +96,7 @@ TempComObject::~TempComObject()
 
 }
 
-void TempComObject::openTemperatureCom(ComInfoStruct *comStruct)
+bool TempComObject::openTemperatureCom(ComInfoStruct *comStruct)
 {
 	qDebug()<<"openTemperatureCom thread:"<<QThread::currentThreadId();
 
@@ -118,11 +118,12 @@ void TempComObject::openTemperatureCom(ComInfoStruct *comStruct)
 	if(m_tempCom->open(QIODevice::ReadWrite))
 	{
 		qDebug()<<"Open Temperature Com:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
+		return true;
 	}
 	else
 	{
 		qDebug()<<"Open Temperature Com:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
-		return;
+		return false;
 	}
 }
 
@@ -189,7 +190,7 @@ ControlComObject::~ControlComObject()
 	}
 }
 
-void ControlComObject::openControlCom(ComInfoStruct *comStruct)
+bool ControlComObject::openControlCom(ComInfoStruct *comStruct)
 {
 	qDebug()<<"openControlCom thread:"<<QThread::currentThreadId();
 
@@ -211,11 +212,12 @@ void ControlComObject::openControlCom(ComInfoStruct *comStruct)
 	if(m_controlCom->open(QIODevice::ReadWrite))
 	{
 		qDebug()<<"Open Control Com:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
+		return true;
 	}
 	else
 	{
 		qDebug()<<"Open Control Com:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
-		return;
+		return false;
 	}
 }
 
@@ -329,7 +331,7 @@ BalanceComObject::~BalanceComObject()
 	}
 }
 
-void BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
+bool BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
 {
 	qDebug()<<"openBalanceCom thread:"<<QThread::currentThreadId();
 
@@ -351,19 +353,20 @@ void BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
 	if(m_balanceCom->open(QIODevice::ReadWrite)) 
 	{
 		qDebug()<<"Open Balance Com:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
+
+		QByteArray buf;
+		buf.append(0x4E).append(0x20).append(0x20).append(0x20).append(0x20).append(0x20);
+		buf.append(0x2D).append(0x31).append(0x32).append(0x33).append(0x34).append(0x2E).append(0x35).append(0x36).append(0x37).append(0x38);
+		buf.append(0x20).append(0x6B).append(0x67).append(0x20).append(0x0D).append(0x0A);
+		m_balanceCom->write(buf);
+
+		return true;
 	}
 	else
 	{
 		qDebug()<<"Open Balance Com:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
-		return;
+		return false;
 	}
-
-	QByteArray buf;
-	buf.append(0x4E).append(0x20).append(0x20).append(0x20).append(0x20).append(0x20);
-	buf.append(0x2D).append(0x31).append(0x32).append(0x33).append(0x34).append(0x2E).append(0x35).append(0x36).append(0x37).append(0x38);
-	buf.append(0x20).append(0x6B).append(0x67).append(0x20).append(0x0D).append(0x0A);
-	m_balanceCom->write(buf);
-
 }
 
 //读取天平串口数据
@@ -399,7 +402,7 @@ MeterComObject::MeterComObject(QObject* parent) : ComObject(parent)
 	m_meterTmp="";
 	m_portName = "";
 
-	m_manufact = 0; //默认是德鲁热量表
+	m_protocolVersion = 0; //默认是德鲁热量表
 }
 
 MeterComObject::~MeterComObject()
@@ -421,15 +424,15 @@ MeterComObject::~MeterComObject()
 	}
 }
 
-void MeterComObject::setManufact(int manufact)
+void MeterComObject::setProtocolVersion(int version)
 {
-	m_manufact = manufact;
+	m_protocolVersion = version;
 	if (m_meterProtocol != NULL)
 	{
 		delete m_meterProtocol;
 		m_meterProtocol = NULL;
 	}
-	switch (m_manufact)
+	switch (m_protocolVersion)
 	{
 	case 0:	//德鲁热量表
 		m_meterProtocol = new DeluMeterProtocol();
@@ -446,7 +449,7 @@ void MeterComObject::setManufact(int manufact)
 /*
 ** 打开串口，初始化串口参数等
 */
-void MeterComObject::openMeterCom(ComInfoStruct *comStruct)
+bool MeterComObject::openMeterCom(ComInfoStruct *comStruct)
 {
 	m_portName = comStruct->portName; //获取串口名
 // 	qDebug()<<"openMeterCom:"<<m_portName<<"thread:"<<QThread::currentThreadId();
@@ -467,12 +470,19 @@ void MeterComObject::openMeterCom(ComInfoStruct *comStruct)
 	if(m_meterCom->open(QIODevice::ReadWrite)) 
 	{
 		qDebug()<<"Open openMeter Com:"<<m_portName<<"Success!"<<" thread id:"<<QThread::currentThreadId();
+		return true;
 	}
 	else
 	{
 		qDebug()<<"Open Meter Com:"<<m_portName<<"Failed!"<<" thread id:"<<QThread::currentThreadId();
-		return;
+		return false;
 	}
+}
+
+//关闭串口
+void MeterComObject::closeMeterCom()
+{
+	m_meterCom->close();
 }
 
 /*
@@ -502,6 +512,7 @@ void MeterComObject::readMeterComBuffer()
 
 	QString meterNo;
 	QString flow,heat;
+	QString tempIn, tempOut, date;
 	if (ret == 1) //解帧成功
 	{
 		//表号
@@ -513,8 +524,20 @@ void MeterComObject::readMeterComBuffer()
 
 		//流量、热量
 		flow = m_meterProtocol->getFlow();
+		emit readMeterFlowIsOK(m_portName, flow);
+
+		//热量
 		heat = m_meterProtocol->getHeat();
-		emit readMeterDataIsOK(m_portName, flow, heat);
+		emit readMeterHeatIsOK(m_portName, heat);
+
+		//进出水温度
+		tempIn = m_meterProtocol->getInTemper();
+		tempOut = m_meterProtocol->getOutTemper();
+		emit readMeterTemperIsOK(m_portName, tempIn, tempOut);
+
+		//热表日期
+		date = m_meterProtocol->getDate();
+		emit readMeterDateIsOK(m_portName, date);
 
 		qDebug()<<"解析热量表数据，用时"<<usedSec<<"毫秒";
 	}
@@ -547,7 +570,8 @@ void MeterComObject::askModifyMeterNo(QString oldMeterNo, QString newMeterNo)
 {
 	m_meterProtocol->makeFrameOfModifyMeterNo(oldMeterNo, newMeterNo);
 	QByteArray buf = m_meterProtocol->getSendFrame();
-
+	int num = buf.size();
+	qDebug()<<"buf size ="<<num;
 	for (int i=0; i<buf.size(); i++)
 	{
 		qDebug()<<"请求修改表号："<<(UINT8)buf.at(i);
