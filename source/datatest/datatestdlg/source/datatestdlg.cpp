@@ -57,8 +57,8 @@ DataTestDlg::DataTestDlg(QWidget *parent, Qt::WFlags flags)
 	connect(m_flowTimer, SIGNAL(timeout()), this,  SLOT(slotFreshFlow_total()));
 	m_flowTimer->start(TIMEOUT_TEMPER);
 
-	m_meterObj1 = NULL;
- 	initComOfHeatMeter1();	//初始化热量表1串口
+	m_meterObj = NULL;
+ 	initComOfHeatMeter();	//初始化热量表串口
 
 
 	//获取下位机端口配置信息
@@ -122,12 +122,12 @@ void DataTestDlg::closeEvent( QCloseEvent * event)
 		m_balanceThread.exit();
 	}
 	
-	if (m_meterObj1)  //热量表1串口通讯
+	if (m_meterObj)  //热量表串口通讯
 	{
-		delete m_meterObj1;
-		m_meterObj1 = NULL;
+		delete m_meterObj;
+		m_meterObj = NULL;
 
-		m_meterThread1.exit();
+		m_meterThread.exit();
 	}
 
 	if (m_tempTimer) //计时器
@@ -295,18 +295,71 @@ void DataTestDlg::initBalanceCom()
  	connect(m_balanceObj, SIGNAL(balanceValueIsReady(const QString &)), this, SLOT(slotFreshBalanceValue(const QString &)));
 }
 
-//热量表1串口通讯
-void DataTestDlg::initComOfHeatMeter1()
+//热量表串口通讯
+void DataTestDlg::initComOfHeatMeter()
 {
-	ComInfoStruct comStruct1 = m_readComConfig->ReadMeterConfigByNum("3");
-	m_meterObj1 = new MeterComObject();
-	m_meterObj1->moveToThread(&m_meterThread1);
-	m_meterThread1.start();
-	m_meterObj1->openMeterCom(&comStruct1);
+	m_meterObj = new MeterComObject();
+	m_meterObj->setProtocolVersion(0);//设置协议版本号
+	m_meterObj->moveToThread(&m_meterThread);
+	m_meterThread.start();
 
-	connect(m_meterObj1, SIGNAL(readMeterNoIsOK(const QString&, const QString&)), this, SLOT(slotFreshMeterNo(const QString&, const QString&)));
-	connect(m_meterObj1, SIGNAL(readMeterDataIsOK(const QString&, const QString&, const QString&)), this, \
-		SLOT(slotFreshMeterData(const QString&, const QString&, const QString&)));
+	connect(m_meterObj, SIGNAL(readMeterNoIsOK(const QString&, const QString&)), this, SLOT(slotFreshMeterNo(const QString&, const QString&)));
+	connect(m_meterObj, SIGNAL(readMeterFlowIsOK(const QString&, const QString&)), this, SLOT(slotFreshMeterFlow(const QString&, const QString&)));
+	connect(m_meterObj, SIGNAL(readMeterHeatIsOK(const QString&, const QString&)), this, SLOT(slotFreshMeterHeat(const QString&, const QString&)));
+	connect(m_meterObj, SIGNAL(readMeterDateIsOK(const QString&, const QString&)), this, SLOT(slotFreshMeterDate(const QString&, const QString&)));
+	connect(m_meterObj, SIGNAL(readMeterTemperIsOK(const QString&, const QString&, const QString&)), \
+		this, SLOT(slotFreshMeterTemper(const QString&, const QString&, const QString&)));
+
+// 	ComInfoStruct comStruct = m_readComConfig->ReadMeterConfigByNum("1");
+// 	ui.parityComboBox->setCurrentIndex(comStruct.parity);
+// 	ui.stopBitsComboBox->setCurrentIndex(comStruct.stopBit);
+	QStringList cfgList = m_readComConfig->ReadIndexByName("meter1");
+	ui.baudRateComboBox->setCurrentIndex(cfgList.at(1).toInt());
+	ui.dataBitsComboBox->setCurrentIndex(cfgList.at(2).toInt());
+	ui.parityComboBox->setCurrentIndex(cfgList.at(3).toInt());
+	ui.stopBitsComboBox->setCurrentIndex(cfgList.at(4).toInt());
+
+	ui.btnCloseCom->setEnabled(false);
+	ui.btnSetVerifyStatus->setEnabled(false);
+	ui.btnReadMeterData->setEnabled(false);
+	ui.btnModifyMeterNo->setEnabled(false);
+	ui.btnModifyFlowPara->setEnabled(false);
+}
+
+//打开热量表通讯串口
+void DataTestDlg::on_btnOpenCom_clicked()
+{
+	ComInfoStruct comStruct;// = m_readComConfig->ReadMeterConfigByNum("0");
+	comStruct.portName = ui.portNameComboBox->currentText();
+	comStruct.baudRate = ui.baudRateComboBox->currentText().toInt();
+	comStruct.dataBit = ui.dataBitsComboBox->currentText().toInt();
+	comStruct.parity = ui.parityComboBox->currentIndex();
+	comStruct.stopBit = ui.stopBitsComboBox->currentIndex();
+	if (!m_meterObj->openMeterCom(&comStruct))
+	{
+		return; //打开热表通讯串口失败
+	}
+
+	ui.btnCloseCom->setEnabled(true);
+	ui.btnSetVerifyStatus->setEnabled(true);
+	ui.btnReadMeterData->setEnabled(true);
+	ui.btnModifyMeterNo->setEnabled(true);
+	ui.btnModifyFlowPara->setEnabled(true);
+	ui.btnOpenCom->setEnabled(false);
+}
+
+//关闭热量表通讯串口
+void DataTestDlg::on_btnCloseCom_clicked()
+{
+	m_meterObj->closeMeterCom();
+
+	ui.btnCloseCom->setEnabled(false);
+	ui.btnSetVerifyStatus->setEnabled(false);
+	ui.btnReadMeterData->setEnabled(false);
+	ui.btnModifyMeterNo->setEnabled(false);
+	ui.btnModifyFlowPara->setEnabled(false);
+	ui.btnOpenCom->setEnabled(true);
+
 }
 
 /*
@@ -443,7 +496,7 @@ void DataTestDlg::setValveBtnBackColor(QPushButton *btn, bool status)
 		btn->setStyleSheet("background-color:rgb(255,0,0);border:0px;"
 // 			"border-style: outset;"
 // 			"border-width: 2px;"
-			"border-radius: 10px;"
+// 			"border-radius: 10px;"
 // 			"border-color: beige;"
 // 			"font: bold 14px;"
 // 			"min-width: 10em;"
@@ -554,26 +607,25 @@ void DataTestDlg::slotFreshFlow_total()
 	start_quan = end_quan;//将当前值保存, 作为下次运算的初值
 }
 
-//读取表号
-void DataTestDlg::on_btnReadMeterNo_clicked()
+//设置检定状态
+void DataTestDlg::on_btnSetVerifyStatus_clicked()
 {
+	qDebug()<<"设置进入检定状态...";
+	m_meterObj->askSetVerifyStatus(); //设置进入检定状态
 }
 
 //读表数据
 void DataTestDlg::on_btnReadMeterData_clicked()
 {
 	ui.lnEditMeterNo->clear();
-	ui.lnEditVolumn0->clear();
-	ui.lnEditHeat0->clear();
-	qDebug()<<"读表 开始...";
- 	m_meterObj1->askReadMeter(); //请求读表
-}
+	ui.lnEditMeterTempIn->clear();
+	ui.lnEditMeterTempOut->clear();
+	ui.lnEditMeterFlow->clear();
+	ui.lnEditMeterHeat->clear();
+	ui.dateEditMeter->setDate(QDate(2000,1,1));
 
-//设置检定状态
-void DataTestDlg::on_btnSetVerifyStatus_clicked()
-{
-	qDebug()<<"设置进入检定状态...";
-	m_meterObj1->askSetVerifyStatus(); //设置进入检定状态
+	qDebug()<<"读表 开始...";
+ 	m_meterObj->askReadMeter(); //请求读表
 }
 
 //修改表号
@@ -581,18 +633,47 @@ void DataTestDlg::on_btnModifyMeterNo_clicked()
 {
 	QString oldMeterNo = ui.lnEditMeterNo->text();
 	QString newMeterNo = ui.lnEditNewMeterNo->text();
-	m_meterObj1->askModifyMeterNo(oldMeterNo, newMeterNo); //请求修改表号
+	m_meterObj->askModifyMeterNo(oldMeterNo, newMeterNo); //请求修改表号
 }
 
+//修改流量参数
+void DataTestDlg::on_btnModifyFlowPara_clicked()
+{
+}
+
+//响应读取表号成功
 void DataTestDlg::slotFreshMeterNo(const QString& comName, const QString& meterNo)
 {
 	ui.lnEditMeterNo->setText(meterNo);
 	qDebug()<<"读取表号 成功...";
 }
 
-void DataTestDlg::slotFreshMeterData(const QString& comName, const QString& flow, const QString& heat)
+//响应读取表流量成功
+void DataTestDlg::slotFreshMeterFlow(const QString& comName, const QString& flow)
 {
-	ui.lnEditVolumn0->setText(flow);
-	ui.lnEditHeat0->setText(heat);
-	qDebug()<<"读取表数据 成功...";
+	ui.lnEditMeterFlow->setText(flow);
+	qDebug()<<"读取表流量 成功...";
 }
+
+//响应读取表热量成功
+void DataTestDlg::slotFreshMeterHeat(const QString& comName, const QString& heat)
+{
+	ui.lnEditMeterHeat->setText(heat);
+	qDebug()<<"读取表热量 成功...";
+}
+
+//响应读取表日期成功
+void DataTestDlg::slotFreshMeterDate(const QString& comName, const QString& date)
+{
+	ui.dateEditMeter->setDate(QDate::fromString(date, "yyyyMMdd"));
+	qDebug()<<"读取表日期 成功...";
+}
+
+//响应读取表进出水温度成功
+void DataTestDlg::slotFreshMeterTemper(const QString& comName, const QString& tempIn, const QString& tempOut)
+{
+	ui.lnEditMeterTempIn->setText(tempIn);
+	ui.lnEditMeterTempOut->setText(tempOut);
+	qDebug()<<"读取表进出水温度 成功...";
+}
+

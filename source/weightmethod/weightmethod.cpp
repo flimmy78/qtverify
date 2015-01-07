@@ -1395,7 +1395,7 @@ void WeightMethodDlg::on_btnReadMeter_clicked()
 {
 	for (int j=0; j<m_maxMeterNum; j++)
 	{
-		m_meterObj[j].setManufact(m_manufac); //设置热量表厂家
+		m_meterObj[j].setProtocolVersion(m_manufac); //设置热量表厂家
 		m_meterObj[j].askReadMeter();
 	}
 }

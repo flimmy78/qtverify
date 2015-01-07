@@ -50,8 +50,8 @@ public:
 	ComThread m_balanceThread; //天平采集线程
 	BalanceComObject *m_balanceObj;
 
-	ComThread m_meterThread1;  //热量表1线程
-	MeterComObject *m_meterObj1;
+	ComThread m_meterThread;  //热量表线程
+	MeterComObject *m_meterObj;
 
 	uint m_flowcount;  //计算流量时 计数用 , 0~4294967295, 按10微秒计数一次, 可计数497年
 	uint m_totalcount;//累积法计数器
@@ -71,7 +71,7 @@ public:
 	void initTemperatureCom(); //温度采集串口
 	void initBalanceCom();     //天平串口
 	void initControlCom();     //阀门控制串口
-	void initComOfHeatMeter1();  //热量表1串口
+	void initComOfHeatMeter();  //热量表1串口
 
 	void initValveStatus();	   //初始化阀门状态
 	void initRegulateStatus(); //初始化调节阀状态
@@ -95,8 +95,11 @@ public slots:
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
 	void slotFreshBalanceValue(const QString& Str);     //刷新天平数值
 	
-	void slotFreshMeterNo(const QString& comName, const QString& meterNo);      //刷新表号
-	void slotFreshMeterData(const QString& comName, const QString& flow, const QString& heat); //刷新表数据(流量、热量)
+	void slotFreshMeterNo(const QString& comName, const QString& meterNo);//刷新表号
+	void slotFreshMeterFlow(const QString& comName, const QString& flow); //刷新表流量
+	void slotFreshMeterHeat(const QString& comName, const QString& heat); //刷新表热量
+	void slotFreshMeterDate(const QString& comName, const QString& date); //刷新表日期
+	void slotFreshMeterTemper(const QString& comName, const QString& tempIn, const QString& tempOut); //刷新表进出水温度
 
 	void slotSetValveBtnStatus(const UINT8 &portno, const bool &status); //继电器返回成功对应的槽函数
 	void slotSetRegulateOk();
@@ -107,10 +110,14 @@ public slots:
 	void slotFreshFlow(); //计算流量
 	void slotFreshFlow_total();//计算流量(累计法)
 	void setBalQuantity();//模拟天平读数
-	void on_btnReadMeterNo_clicked();   //读取表号
+
+	void on_btnSetVerifyStatus_clicked();//设置检定状态
 	void on_btnReadMeterData_clicked(); //读表数据
-	void on_btnSetVerifyStatus_clicked(); //设置检定状态
 	void on_btnModifyMeterNo_clicked(); //修改表号
+	void on_btnModifyFlowPara_clicked(); //修改流量参数
+
+	void on_btnOpenCom_clicked(); //打开串口
+	void on_btnCloseCom_clicked();//关闭串口
 
 private:
 	Ui::DataTestDlgClass ui;
