@@ -76,6 +76,7 @@ DataTestDlg::DataTestDlg(QWidget *parent, Qt::WFlags flags)
 		QMessageBox::warning(this, tr("Warning"), tr("get para set info failed"));//获取质量法参数配置信息失败!请重新设置！
 	}
 	qDebug()<<"metertype:"<<m_parasetinfo.metertype;
+
 }
 
 DataTestDlg::~DataTestDlg()
@@ -637,7 +638,24 @@ void DataTestDlg::on_btnModifyMeterNo_clicked()
 {
 	QString oldMeterNo = ui.lnEditMeterNo->text();
 	QString newMeterNo = ui.lnEditNewMeterNo->text();
-	m_meterObj->askModifyMeterNo(oldMeterNo, newMeterNo); //请求修改表号
+	if (oldMeterNo.isEmpty())
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("old meter number is empty! please read meter first!"));
+		return;
+	}
+	if (newMeterNo.isEmpty() || newMeterNo.size()!=2*METER_ADDR_LEN)
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("new meter number is error!\nplease input 14 bits meter number!"));
+		ui.lnEditNewMeterNo->setFocus();
+		return;
+	}
+
+	int i=2; //实验发现，需要连续请求两次，才能修改表号成功
+	while (i > 0)
+	{
+		m_meterObj->askModifyMeterNo(oldMeterNo, newMeterNo); //请求修改表号
+		i--;
+	}
 }
 
 //修改流量参数

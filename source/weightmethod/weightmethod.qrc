@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="weightmethod">
     <file>images/delulogo.png</file>
+    <file>images/btncheckoff.png</file>
+    <file>images/btncheckon.png</file>
   </qresource>
 </RCC>

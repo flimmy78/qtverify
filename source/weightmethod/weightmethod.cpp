@@ -1117,12 +1117,12 @@ void WeightMethodDlg::setValveBtnBackColor(QToolButton *btn, bool status)
 	if (status) //阀门打开 绿色
 	{
 		btn->setStyleSheet("background-color:rgb(199,237,204);border:0px;border-radius:10px;");
-// 		btn->setIcon(QIcon(QString("%1/uif/pixmap/btncheckon.png").arg(getenv("RUNHOME"))));
+// 		btn->setStyleSheet("border-image:url(:/weightmethod/images/btncheckon.png)");
 	}
 	else //阀门关闭 红色
 	{
 		btn->setStyleSheet("background-color:rgb(255,200,200);border:0px;border-radius:10px;");
-// 		btn->setIcon(QIcon(QString("%1/uif/pixmap/btncheckoff.png").arg(getenv("RUNHOME"))));
+// 		btn->setStyleSheet("border-image:url(:/weightmethod/images/btncheckoff.png)");
 	}
 }
 

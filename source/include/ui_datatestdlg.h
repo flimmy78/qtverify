@@ -69,7 +69,7 @@ public:
     QPushButton *btnModifyFlowPara;
     QPushButton *btnModifyMeterNo;
     QPushButton *btnSetVerifyStatus;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QGridLayout *gridLayout_10;
     QLabel *label_25;
     QLineEdit *lnEditMeterNo;
@@ -85,7 +85,7 @@ public:
     QDateEdit *dateEditMeter;
     QLabel *label_32;
     QLineEdit *lnEditNewMeterNo;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QGridLayout *gridLayout_13;
     QGridLayout *gridLayout_12;
     QComboBox *parityComboBox;
@@ -100,7 +100,7 @@ public:
     QComboBox *portNameComboBox;
     QPushButton *btnCloseCom;
     QPushButton *btnOpenCom;
-    QWidget *layoutWidget;
+    QWidget *layoutWidget2;
     QGridLayout *gridLayout_11;
     QGroupBox *groupBox_2;
     QGridLayout *gridLayout_9;
@@ -336,13 +336,13 @@ public:
         btnSetVerifyStatus->setGeometry(QRect(10, 230, 44, 51));
         sizePolicy1.setHeightForWidth(btnSetVerifyStatus->sizePolicy().hasHeightForWidth());
         btnSetVerifyStatus->setSizePolicy(sizePolicy1);
-        widget = new QWidget(groupBox_9);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(10, 30, 211, 191));
-        gridLayout_10 = new QGridLayout(widget);
+        layoutWidget = new QWidget(groupBox_9);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(10, 30, 211, 191));
+        gridLayout_10 = new QGridLayout(layoutWidget);
         gridLayout_10->setObjectName(QString::fromUtf8("gridLayout_10"));
         gridLayout_10->setContentsMargins(0, 0, 0, 0);
-        label_25 = new QLabel(widget);
+        label_25 = new QLabel(layoutWidget);
         label_25->setObjectName(QString::fromUtf8("label_25"));
         QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Preferred);
         sizePolicy2.setHorizontalStretch(0);
@@ -352,7 +352,7 @@ public:
 
         gridLayout_10->addWidget(label_25, 0, 0, 1, 1);
 
-        lnEditMeterNo = new QLineEdit(widget);
+        lnEditMeterNo = new QLineEdit(layoutWidget);
         lnEditMeterNo->setObjectName(QString::fromUtf8("lnEditMeterNo"));
         lnEditMeterNo->setEnabled(false);
         sizePolicy.setHeightForWidth(lnEditMeterNo->sizePolicy().hasHeightForWidth());
@@ -361,12 +361,12 @@ public:
 
         gridLayout_10->addWidget(lnEditMeterNo, 0, 1, 1, 1);
 
-        label_26 = new QLabel(widget);
+        label_26 = new QLabel(layoutWidget);
         label_26->setObjectName(QString::fromUtf8("label_26"));
 
         gridLayout_10->addWidget(label_26, 1, 0, 1, 1);
 
-        lnEditMeterTempIn = new QLineEdit(widget);
+        lnEditMeterTempIn = new QLineEdit(layoutWidget);
         lnEditMeterTempIn->setObjectName(QString::fromUtf8("lnEditMeterTempIn"));
         lnEditMeterTempIn->setEnabled(false);
         sizePolicy.setHeightForWidth(lnEditMeterTempIn->sizePolicy().hasHeightForWidth());
@@ -375,12 +375,12 @@ public:
 
         gridLayout_10->addWidget(lnEditMeterTempIn, 1, 1, 1, 1);
 
-        label_27 = new QLabel(widget);
+        label_27 = new QLabel(layoutWidget);
         label_27->setObjectName(QString::fromUtf8("label_27"));
 
         gridLayout_10->addWidget(label_27, 2, 0, 1, 1);
 
-        lnEditMeterTempOut = new QLineEdit(widget);
+        lnEditMeterTempOut = new QLineEdit(layoutWidget);
         lnEditMeterTempOut->setObjectName(QString::fromUtf8("lnEditMeterTempOut"));
         lnEditMeterTempOut->setEnabled(false);
         sizePolicy.setHeightForWidth(lnEditMeterTempOut->sizePolicy().hasHeightForWidth());
@@ -389,12 +389,12 @@ public:
 
         gridLayout_10->addWidget(lnEditMeterTempOut, 2, 1, 1, 1);
 
-        label_28 = new QLabel(widget);
+        label_28 = new QLabel(layoutWidget);
         label_28->setObjectName(QString::fromUtf8("label_28"));
 
         gridLayout_10->addWidget(label_28, 3, 0, 1, 1);
 
-        lnEditMeterFlow = new QLineEdit(widget);
+        lnEditMeterFlow = new QLineEdit(layoutWidget);
         lnEditMeterFlow->setObjectName(QString::fromUtf8("lnEditMeterFlow"));
         lnEditMeterFlow->setEnabled(false);
         sizePolicy.setHeightForWidth(lnEditMeterFlow->sizePolicy().hasHeightForWidth());
@@ -403,12 +403,12 @@ public:
 
         gridLayout_10->addWidget(lnEditMeterFlow, 3, 1, 1, 1);
 
-        label_29 = new QLabel(widget);
+        label_29 = new QLabel(layoutWidget);
         label_29->setObjectName(QString::fromUtf8("label_29"));
 
         gridLayout_10->addWidget(label_29, 4, 0, 1, 1);
 
-        lnEditMeterHeat = new QLineEdit(widget);
+        lnEditMeterHeat = new QLineEdit(layoutWidget);
         lnEditMeterHeat->setObjectName(QString::fromUtf8("lnEditMeterHeat"));
         lnEditMeterHeat->setEnabled(false);
         sizePolicy.setHeightForWidth(lnEditMeterHeat->sizePolicy().hasHeightForWidth());
@@ -417,24 +417,24 @@ public:
 
         gridLayout_10->addWidget(lnEditMeterHeat, 4, 1, 1, 1);
 
-        label_31 = new QLabel(widget);
+        label_31 = new QLabel(layoutWidget);
         label_31->setObjectName(QString::fromUtf8("label_31"));
 
         gridLayout_10->addWidget(label_31, 5, 0, 1, 1);
 
-        dateEditMeter = new QDateEdit(widget);
+        dateEditMeter = new QDateEdit(layoutWidget);
         dateEditMeter->setObjectName(QString::fromUtf8("dateEditMeter"));
         dateEditMeter->setEnabled(false);
         dateEditMeter->setReadOnly(true);
 
         gridLayout_10->addWidget(dateEditMeter, 5, 1, 1, 1);
 
-        label_32 = new QLabel(widget);
+        label_32 = new QLabel(layoutWidget);
         label_32->setObjectName(QString::fromUtf8("label_32"));
 
         gridLayout_10->addWidget(label_32, 6, 0, 1, 1);
 
-        lnEditNewMeterNo = new QLineEdit(widget);
+        lnEditNewMeterNo = new QLineEdit(layoutWidget);
         lnEditNewMeterNo->setObjectName(QString::fromUtf8("lnEditNewMeterNo"));
         sizePolicy.setHeightForWidth(lnEditNewMeterNo->sizePolicy().hasHeightForWidth());
         lnEditNewMeterNo->setSizePolicy(sizePolicy);
@@ -442,70 +442,70 @@ public:
 
         gridLayout_10->addWidget(lnEditNewMeterNo, 6, 1, 1, 1);
 
-        widget1 = new QWidget(groupBox_heatmeter);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(10, 20, 231, 172));
-        gridLayout_13 = new QGridLayout(widget1);
+        layoutWidget1 = new QWidget(groupBox_heatmeter);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(10, 20, 231, 172));
+        gridLayout_13 = new QGridLayout(layoutWidget1);
         gridLayout_13->setObjectName(QString::fromUtf8("gridLayout_13"));
         gridLayout_13->setContentsMargins(0, 0, 0, 0);
         gridLayout_12 = new QGridLayout();
         gridLayout_12->setObjectName(QString::fromUtf8("gridLayout_12"));
-        parityComboBox = new QComboBox(widget1);
+        parityComboBox = new QComboBox(layoutWidget1);
         parityComboBox->setObjectName(QString::fromUtf8("parityComboBox"));
 
         gridLayout_12->addWidget(parityComboBox, 3, 1, 1, 1);
 
-        label_23 = new QLabel(widget1);
+        label_23 = new QLabel(layoutWidget1);
         label_23->setObjectName(QString::fromUtf8("label_23"));
         sizePolicy.setHeightForWidth(label_23->sizePolicy().hasHeightForWidth());
         label_23->setSizePolicy(sizePolicy);
 
         gridLayout_12->addWidget(label_23, 4, 0, 1, 1);
 
-        label_21 = new QLabel(widget1);
+        label_21 = new QLabel(layoutWidget1);
         label_21->setObjectName(QString::fromUtf8("label_21"));
         sizePolicy.setHeightForWidth(label_21->sizePolicy().hasHeightForWidth());
         label_21->setSizePolicy(sizePolicy);
 
         gridLayout_12->addWidget(label_21, 2, 0, 1, 1);
 
-        baudRateComboBox = new QComboBox(widget1);
+        baudRateComboBox = new QComboBox(layoutWidget1);
         baudRateComboBox->setObjectName(QString::fromUtf8("baudRateComboBox"));
 
         gridLayout_12->addWidget(baudRateComboBox, 1, 1, 1, 1);
 
-        dataBitsComboBox = new QComboBox(widget1);
+        dataBitsComboBox = new QComboBox(layoutWidget1);
         dataBitsComboBox->setObjectName(QString::fromUtf8("dataBitsComboBox"));
 
         gridLayout_12->addWidget(dataBitsComboBox, 2, 1, 1, 1);
 
-        stopBitsComboBox = new QComboBox(widget1);
+        stopBitsComboBox = new QComboBox(layoutWidget1);
         stopBitsComboBox->setObjectName(QString::fromUtf8("stopBitsComboBox"));
 
         gridLayout_12->addWidget(stopBitsComboBox, 4, 1, 1, 1);
 
-        label_19 = new QLabel(widget1);
+        label_19 = new QLabel(layoutWidget1);
         label_19->setObjectName(QString::fromUtf8("label_19"));
         sizePolicy.setHeightForWidth(label_19->sizePolicy().hasHeightForWidth());
         label_19->setSizePolicy(sizePolicy);
 
         gridLayout_12->addWidget(label_19, 0, 0, 1, 1);
 
-        label_22 = new QLabel(widget1);
+        label_22 = new QLabel(layoutWidget1);
         label_22->setObjectName(QString::fromUtf8("label_22"));
         sizePolicy.setHeightForWidth(label_22->sizePolicy().hasHeightForWidth());
         label_22->setSizePolicy(sizePolicy);
 
         gridLayout_12->addWidget(label_22, 3, 0, 1, 1);
 
-        label_20 = new QLabel(widget1);
+        label_20 = new QLabel(layoutWidget1);
         label_20->setObjectName(QString::fromUtf8("label_20"));
         sizePolicy.setHeightForWidth(label_20->sizePolicy().hasHeightForWidth());
         label_20->setSizePolicy(sizePolicy);
 
         gridLayout_12->addWidget(label_20, 1, 0, 1, 1);
 
-        portNameComboBox = new QComboBox(widget1);
+        portNameComboBox = new QComboBox(layoutWidget1);
         portNameComboBox->setObjectName(QString::fromUtf8("portNameComboBox"));
 
         gridLayout_12->addWidget(portNameComboBox, 0, 1, 1, 1);
@@ -513,23 +513,23 @@ public:
 
         gridLayout_13->addLayout(gridLayout_12, 0, 0, 1, 2);
 
-        btnCloseCom = new QPushButton(widget1);
+        btnCloseCom = new QPushButton(layoutWidget1);
         btnCloseCom->setObjectName(QString::fromUtf8("btnCloseCom"));
 
         gridLayout_13->addWidget(btnCloseCom, 1, 1, 1, 1);
 
-        btnOpenCom = new QPushButton(widget1);
+        btnOpenCom = new QPushButton(layoutWidget1);
         btnOpenCom->setObjectName(QString::fromUtf8("btnOpenCom"));
 
         gridLayout_13->addWidget(btnOpenCom, 1, 0, 1, 1);
 
-        layoutWidget = new QWidget(DataTestDlgClass);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(280, 200, 419, 501));
-        gridLayout_11 = new QGridLayout(layoutWidget);
+        layoutWidget2 = new QWidget(DataTestDlgClass);
+        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(280, 200, 419, 501));
+        gridLayout_11 = new QGridLayout(layoutWidget2);
         gridLayout_11->setObjectName(QString::fromUtf8("gridLayout_11"));
         gridLayout_11->setContentsMargins(0, 0, 0, 0);
-        groupBox_2 = new QGroupBox(layoutWidget);
+        groupBox_2 = new QGroupBox(layoutWidget2);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
         sizePolicy.setHeightForWidth(groupBox_2->sizePolicy().hasHeightForWidth());
         groupBox_2->setSizePolicy(sizePolicy);
@@ -633,12 +633,12 @@ public:
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        label_18 = new QLabel(layoutWidget);
+        label_18 = new QLabel(layoutWidget2);
         label_18->setObjectName(QString::fromUtf8("label_18"));
 
         horizontalLayout->addWidget(label_18);
 
-        spinBoxFreq = new QSpinBox(layoutWidget);
+        spinBoxFreq = new QSpinBox(layoutWidget2);
         spinBoxFreq->setObjectName(QString::fromUtf8("spinBoxFreq"));
         spinBoxFreq->setMaximum(9999);
 
@@ -651,7 +651,7 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer_3);
 
-        btnRegulate1 = new QPushButton(layoutWidget);
+        btnRegulate1 = new QPushButton(layoutWidget2);
         btnRegulate1->setObjectName(QString::fromUtf8("btnRegulate1"));
         QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy3.setHorizontalStretch(0);
@@ -665,7 +665,7 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer_2);
 
-        btnQueryStatus = new QPushButton(layoutWidget);
+        btnQueryStatus = new QPushButton(layoutWidget2);
         btnQueryStatus->setObjectName(QString::fromUtf8("btnQueryStatus"));
         sizePolicy3.setHeightForWidth(btnQueryStatus->sizePolicy().hasHeightForWidth());
         btnQueryStatus->setSizePolicy(sizePolicy3);
@@ -677,7 +677,7 @@ public:
 
         gridLayout_7 = new QGridLayout();
         gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
-        groupBox_3 = new QGroupBox(layoutWidget);
+        groupBox_3 = new QGroupBox(layoutWidget2);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
         sizePolicy3.setHeightForWidth(groupBox_3->sizePolicy().hasHeightForWidth());
         groupBox_3->setSizePolicy(sizePolicy3);
@@ -780,7 +780,7 @@ public:
 
         gridLayout_7->addItem(verticalSpacer, 0, 1, 1, 1);
 
-        spinBoxTime = new QSpinBox(layoutWidget);
+        spinBoxTime = new QSpinBox(layoutWidget2);
         spinBoxTime->setObjectName(QString::fromUtf8("spinBoxTime"));
         sizePolicy3.setHeightForWidth(spinBoxTime->sizePolicy().hasHeightForWidth());
         spinBoxTime->setSizePolicy(sizePolicy3);
@@ -791,7 +791,7 @@ public:
 
         gridLayout_11->addLayout(gridLayout_7, 2, 0, 1, 1);
 
-        groupBox_8 = new QGroupBox(layoutWidget);
+        groupBox_8 = new QGroupBox(layoutWidget2);
         groupBox_8->setObjectName(QString::fromUtf8("groupBox_8"));
         QSizePolicy sizePolicy4(QSizePolicy::Minimum, QSizePolicy::Fixed);
         sizePolicy4.setHorizontalStretch(0);
@@ -861,6 +861,12 @@ public:
 "Data", 0, QApplication::UnicodeUTF8));
         btnModifyFlowPara->setText(QApplication::translate("DataTestDlgClass", "Modify\n"
 "Para", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        btnModifyMeterNo->setToolTip(QString());
+#endif // QT_NO_TOOLTIP
+#ifndef QT_NO_STATUSTIP
+        btnModifyMeterNo->setStatusTip(QString());
+#endif // QT_NO_STATUSTIP
         btnModifyMeterNo->setText(QApplication::translate("DataTestDlgClass", "Modify\n"
 "MeterNo", 0, QApplication::UnicodeUTF8));
         btnSetVerifyStatus->setText(QApplication::translate("DataTestDlgClass", "Verify\n"

@@ -318,6 +318,12 @@ Para</string>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="toolTip">
+      <string extracomment="heat meter must be in delta temperature status"/>
+     </property>
+     <property name="statusTip">
+      <string/>
+     </property>
      <property name="text">
       <string>Modify
 MeterNo</string>
@@ -343,7 +349,7 @@ MeterNo</string>
 Status</string>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -514,7 +520,7 @@ Status</string>
      </layout>
     </widget>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
