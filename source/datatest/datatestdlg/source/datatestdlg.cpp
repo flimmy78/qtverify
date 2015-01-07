@@ -650,12 +650,7 @@ void DataTestDlg::on_btnModifyMeterNo_clicked()
 		return;
 	}
 
-	int i=2; //实验发现，需要连续请求两次，才能修改表号成功
-	while (i > 0)
-	{
-		m_meterObj->askModifyMeterNo(oldMeterNo, newMeterNo); //请求修改表号
-		i--;
-	}
+	m_meterObj->askModifyMeterNo(oldMeterNo, newMeterNo); //请求修改表号
 }
 
 //修改流量参数
