@@ -919,10 +919,10 @@ void DeluMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString new
 		m_sendBuf.append(METER_WAKEUP_CODE);//唤醒红外
 	}
 
-// 	for (int j=0; j<PREFIX_CODE_NUM; j++)
-// 	{
-// 		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
-//	}
+	for (int j=0; j<PREFIX_CODE_NUM; j++)
+	{
+		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
+	}
 
 	m_sendBuf.append(METER_START_CODE);//起始符
 	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
