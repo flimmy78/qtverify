@@ -919,10 +919,10 @@ void DeluMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString new
 		m_sendBuf.append(METER_WAKEUP_CODE);//唤醒红外
 	}
 
-	for (int j=0; j<PREFIX_CODE_NUM; j++)
-	{
-		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
-	}
+// 	for (int j=0; j<PREFIX_CODE_NUM; j++)
+// 	{
+// 		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
+//	}
 
 	m_sendBuf.append(METER_START_CODE);//起始符
 	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
@@ -931,7 +931,7 @@ void DeluMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString new
 	bool ok;
 	for (int m=METER_ADDR_LEN-1; m>=0; m--)
 	{
-		oldNo = oldMeterNo.mid(2*m, 2).toUInt(&ok, 10);
+		oldNo = oldMeterNo.mid(2*m, 2).toUInt(&ok, 16);
 		m_sendBuf.append(oldNo); //旧表号
 		cs += oldNo;
 	}
@@ -948,23 +948,17 @@ void DeluMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString new
 	UINT8 newNo;
 	for (int n=METER_ADDR_LEN-1; n>=0; n--)
 	{
-		newNo = newMeterNo.mid(2*n, 2).toUInt(&ok, 10);
+		newNo = newMeterNo.mid(2*n, 2).toUInt(&ok, 16);
 		m_sendBuf.append(newNo); //新表号
 		cs += newNo;
 	}
 
 	UINT8 timeCode;
-	QString currentTime = QDateTime::currentDateTime().toString("ssmmHHddMMyyyy");
-	for (int p=0; p<5; p++)
+	QString currentTime = QDateTime::currentDateTime().toString("yyyyMMddHHmmss");//"20150107125930"
+	for (int p=6; p>=0; p--)
 	{
-		timeCode = currentTime.mid(2*p, 2).toUInt(&ok, 10);
+		timeCode = currentTime.mid(2*p, 2).toUInt(&ok, 16);
 		m_sendBuf.append(timeCode); //当前时间
-		cs += timeCode;
-	}
-	for (int q=6; q>=5; q--)
-	{
-		timeCode = currentTime.mid(2*q, 2).toUInt(&ok, 10);
-		m_sendBuf.append(timeCode);
 		cs += timeCode;
 	}
 
