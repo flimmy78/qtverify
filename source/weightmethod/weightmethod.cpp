@@ -303,7 +303,7 @@ void WeightMethodDlg::initMeterCom()
 		m_meterObj[i].openMeterCom(&m_readComConfig->ReadMeterConfigByNum(QString("%1").arg(i+1)));
 		
 		connect(&m_meterObj[i], SIGNAL(readMeterNoIsOK(const QString&, const QString&)), this, SLOT(slotSetMeterNumber(const QString&, const QString&)));
-		connect(&m_meterObj[i], SIGNAL(readMeterDataIsOK(const QString&, const QString&, const QString&)), this, SLOT(slotSetMeterData(const QString&, const QString&, const QString&)));
+		connect(&m_meterObj[i], SIGNAL(readMeterFlowIsOK(const QString&, const QString&)), this, SLOT(slotSetMeterFlow(const QString&, const QString&)));
 	}
 }
 
@@ -1088,8 +1088,8 @@ void WeightMethodDlg::slotSetMeterNumber(const QString& comName, const QString& 
 	ui.tableWidget->setItem(meterPos-1, COLUMN_METER_NUMBER, new QTableWidgetItem(meterNo.right(8))); //表号
 }
 
-//自动读取表数据成功 显示表数据
-void WeightMethodDlg::slotSetMeterData(const QString& comName, const QString& flow, const QString& heat)
+//自动读取表流量成功 显示表流量
+void WeightMethodDlg::slotSetMeterFlow(const QString& comName, const QString& flow)
 {
 	int meterPos = m_readComConfig->getMeterPosByComName(comName);
 	if (meterPos < 1)

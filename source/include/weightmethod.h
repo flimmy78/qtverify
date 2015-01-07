@@ -228,7 +228,7 @@ public slots:
 	void slotSetRegulateOk();     //调节阀返回成功对应的槽函数
 
 	void slotSetMeterNumber(const QString& comName, const QString& meterNumber);
-	void slotSetMeterData(const QString& comName, const QString& flow, const QString& heat);
+	void slotSetMeterFlow(const QString& comName, const QString& flow);
 	void setValveBtnBackColor(QToolButton *btn, bool status); //设置阀门按钮背景色
 	void setRegBtnBackColor(QPushButton *btn, bool status);	  //设置调节阀按钮背景色
 
