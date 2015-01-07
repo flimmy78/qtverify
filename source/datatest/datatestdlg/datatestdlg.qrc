@@ -5,5 +5,7 @@
     <file>images/data_save.png</file>
     <file>images/close.png</file>
     <file>images/open.png</file>
+    <file>images/success.png</file>
+    <file>images/failed.png</file>
   </qresource>
 </RCC>

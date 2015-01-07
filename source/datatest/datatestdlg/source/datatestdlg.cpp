@@ -159,8 +159,7 @@ void DataTestDlg::closeEvent( QCloseEvent * event)
 		delete m_setBalTimer;
 		m_setBalTimer = NULL;
 	}
-
-
+	
 }
 
 void DataTestDlg::showEvent(QShowEvent *event)
@@ -489,20 +488,12 @@ void DataTestDlg::setValveBtnBackColor(QPushButton *btn, bool status)
 	if (status) //阀门打开 绿色
 	{
 		btn->setStyleSheet("background:green;border:0px;"); 
-		btn->setIcon(QIcon("open.png"));
+		btn->setIcon(QIcon(":/datatestdlg/images/open.png"));
 	}
 	else //阀门关闭 红色
 	{
-		btn->setStyleSheet("background-color:rgb(255,0,0);border:0px;"
-// 			"border-style: outset;"
-// 			"border-width: 2px;"
-// 			"border-radius: 10px;"
-// 			"border-color: beige;"
-// 			"font: bold 14px;"
-// 			"min-width: 10em;"
-// 			"padding: 6px;" 
-		);
-		btn->setIcon(QIcon("close.png"));
+		btn->setStyleSheet("background-color:rgb(255,0,0);border:0px;");
+		btn->setIcon(QIcon(":/datatestdlg/images/close.png"));
 	}
 }
 
@@ -515,11 +506,13 @@ void DataTestDlg::setRegBtnBackColor(QPushButton *btn, bool status)
 	}
 	if (status) //调节成功
 	{
-		btn->setStyleSheet("background:rgb(199,237,204);border:0px;");  
+		btn->setStyleSheet("background:rgb(180,255,200);");  
+		btn->setIcon(QIcon(":/datatestdlg/images/success.png"));
 	}
 	else //调节失败
 	{
- 		btn->setStyleSheet("background:rgb(255,200,200);border:0px;");  
+ 		btn->setStyleSheet("background:rgb(255,100,180);");  
+		btn->setIcon(QIcon(":/datatestdlg/images/failed.png"));
 	}
 }
 
