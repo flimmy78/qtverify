@@ -345,6 +345,12 @@ void DataTestDlg::on_btnOpenCom_clicked()
 	ui.btnModifyMeterNo->setEnabled(true);
 	ui.btnModifyFlowPara->setEnabled(true);
 	ui.btnOpenCom->setEnabled(false);
+
+	ui.portNameComboBox->setEnabled(false);
+	ui.baudRateComboBox->setEnabled(false);
+	ui.dataBitsComboBox->setEnabled(false);
+	ui.parityComboBox->setEnabled(false);
+	ui.stopBitsComboBox->setEnabled(false);
 }
 
 //关闭热量表通讯串口
@@ -359,6 +365,11 @@ void DataTestDlg::on_btnCloseCom_clicked()
 	ui.btnModifyFlowPara->setEnabled(false);
 	ui.btnOpenCom->setEnabled(true);
 
+	ui.portNameComboBox->setEnabled(true);
+	ui.baudRateComboBox->setEnabled(true);
+	ui.dataBitsComboBox->setEnabled(true);
+	ui.parityComboBox->setEnabled(true);
+	ui.stopBitsComboBox->setEnabled(true);
 }
 
 /*
