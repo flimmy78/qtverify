@@ -629,6 +629,11 @@ QString MeterProtocol::getHeat()
 	return m_heat;
 }
 
+QString MeterProtocol::getDate()
+{
+	return m_date;;
+}
+
 
 /***********************************************
 类名：DeluMeterProtocol
@@ -837,6 +842,13 @@ void DeluMeterProtocol::analyseFrame()
 	m_outTemper.append(QString("%1%2.%3").arg(m_deluMeterFrame->data[48], 2, 16)\
 		.arg(m_deluMeterFrame->data[47], 2, 16).arg(m_deluMeterFrame->data[46], 2, 16));
 	m_outTemper.replace(' ', '0');
+
+	//日期
+	m_date = "";
+	m_date.append(QString("%1%2%3%4").arg(m_deluMeterFrame->data[52], 2, 16)\
+		.arg(m_deluMeterFrame->data[51], 2, 16).arg(m_deluMeterFrame->data[50], 2, 16).\
+		arg(m_deluMeterFrame->data[49], 2, 16));
+	m_date.replace(' ', '0');
 
 }
 

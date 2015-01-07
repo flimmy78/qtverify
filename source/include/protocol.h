@@ -236,6 +236,7 @@ public slots:
 	virtual QString getInTemper();
 	virtual QString getOutTemper();
 	virtual QString getHeat();
+	virtual QString getDate();
 
 private:
 
