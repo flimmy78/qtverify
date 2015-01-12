@@ -6,7 +6,7 @@
     <message>
         <location filename="../weightmethod.cpp" line="417"/>
         <source>meterPosNo%1</source>
-        <translation>表位号%1</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -14,7 +14,7 @@
     <message>
         <location filename="../weightmethod.ui" line="14"/>
         <source>WeightMethod Verify</source>
-        <translation>质量法检定</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../weightmethod.ui" line="33"/>
@@ -22,105 +22,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="51"/>
-        <source>ParaSet</source>
-        <translation>参数设置</translation>
-    </message>
-    <message>
-        <location filename="../weightmethod.ui" line="64"/>
-        <source>NowPara(KeyInfo)</source>
-        <translation>当前参数(关键信息)</translation>
-    </message>
-    <message>
-        <location filename="../weightmethod.ui" line="79"/>
-        <source>Standard:</source>
-        <translation>规格:</translation>
-    </message>
-    <message>
-        <location filename="../weightmethod.ui" line="105"/>
-        <source>DA Mode:</source>
-        <translation>采集方式:</translation>
-    </message>
-    <message>
-        <location filename="../weightmethod.ui" line="116"/>
-        <source>manual</source>
-        <translation>手动</translation>
-    </message>
-    <message>
-        <location filename="../weightmethod.ui" line="121"/>
-        <source>auto</source>
-        <translation>自动</translation>
-    </message>
-    <message>
-        <location filename="../weightmethod.ui" line="129"/>
-        <source>Continuous:</source>
-        <translation>是否连续:</translation>
-    </message>
-    <message>
-        <location filename="../weightmethod.ui" line="140"/>
-        <source>Not Cotinuous</source>
-        <translation>不连续</translation>
-    </message>
-    <message>
-        <location filename="../weightmethod.ui" line="145"/>
-        <source>Continuous</source>
-        <translation>连续</translation>
-    </message>
-    <message>
-        <location filename="../weightmethod.ui" line="163"/>
+        <location filename="../weightmethod.ui" line="45"/>
         <source>Controller</source>
-        <translation>控制</translation>
-    </message>
-    <message>
-        <location filename="../weightmethod.ui" line="190"/>
-        <source>Hz</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../weightmethod.ui" line="205"/>
-        <source>i
-n
-</source>
-        <translation>入\n口\n阀\n门</translation>
-    </message>
-    <message>
-        <location filename="../weightmethod.ui" line="220"/>
-        <source>o
-u
-t</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="235"/>
-        <source>b
-i
-g</source>
+        <location filename="../weightmethod.ui" line="57"/>
+        <source>Stop Pump</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="250"/>
-        <source>m
-i
-d
-d
-l
-e
-1</source>
+        <location filename="../weightmethod.ui" line="70"/>
+        <source>Start Pump</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="269"/>
-        <source>m
-i
-d
-d
-l
-e
-2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../weightmethod.ui" line="288"/>
+        <location filename="../weightmethod.ui" line="83"/>
         <source>s
 m
 a
@@ -129,164 +46,251 @@ l</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="305"/>
-        <source>Start Pump</source>
+        <location filename="../weightmethod.ui" line="115"/>
+        <source>Hz</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="318"/>
-        <source>Stop Pump</source>
+        <location filename="../weightmethod.ui" line="130"/>
+        <source>i
+n
+</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="341"/>
+        <location filename="../weightmethod.ui" line="145"/>
+        <source>o
+u
+t</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.ui" line="160"/>
+        <source>b
+i
+g</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.ui" line="175"/>
+        <source>m
+i
+d
+1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.ui" line="191"/>
+        <source>m
+i
+d
+2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.ui" line="217"/>
         <source>MeterNo</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="../weightmethod.ui" line="346"/>
+        <location filename="../weightmethod.ui" line="222"/>
         <source>FlowPoint(m³/h)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="351"/>
+        <location filename="../weightmethod.ui" line="227"/>
         <source>MeterValue0(L)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="356"/>
+        <location filename="../weightmethod.ui" line="232"/>
         <source>MeterValue1(L)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="361"/>
+        <location filename="../weightmethod.ui" line="237"/>
         <source>BalWeight0(kg)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="366"/>
+        <location filename="../weightmethod.ui" line="242"/>
         <source>BalWeight1(kg)</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="../weightmethod.ui" line="371"/>
+        <location filename="../weightmethod.ui" line="247"/>
         <source>Temp(℃)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="376"/>
+        <location filename="../weightmethod.ui" line="252"/>
         <source>Density(kg/L)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="381"/>
+        <location filename="../weightmethod.ui" line="257"/>
         <source>StdValue(L)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="386"/>
+        <location filename="../weightmethod.ui" line="262"/>
         <source>DsipError(%)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="400"/>
+        <location filename="../weightmethod.ui" line="282"/>
         <source>Process Hint</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="412"/>
-        <source>Hint Info</source>
+        <location filename="../weightmethod.ui" line="290"/>
+        <source>Point:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="448"/>
-        <source>Flow:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../weightmethod.ui" line="474"/>
-        <source>m³/h</source>
+        <location filename="../weightmethod.ui" line="310"/>
+        <source>Process:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="487"/>
-        <source>In Temp:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../weightmethod.ui" line="553"/>
-        <location filename="../weightmethod.ui" line="592"/>
-        <source>℃</source>
+        <location filename="../weightmethod.ui" line="350"/>
+        <source>ParaSet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="566"/>
-        <source>Out Temp:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../weightmethod.ui" line="617"/>
-        <source>Big Balance:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../weightmethod.ui" line="646"/>
-        <location filename="../weightmethod.ui" line="691"/>
-        <source>㎏</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../weightmethod.ui" line="659"/>
-        <source>Small Balance:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../weightmethod.ui" line="707"/>
+        <location filename="../weightmethod.ui" line="363"/>
         <source>ReadMeter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="723"/>
+        <location filename="../weightmethod.ui" line="370"/>
+        <source>NowPara(KeyInfo)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.ui" line="382"/>
+        <source>Standard:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.ui" line="408"/>
+        <source>DA Mode:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.ui" line="425"/>
+        <source>Manual</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.ui" line="430"/>
+        <source>Auto</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.ui" line="444"/>
+        <source>Continuous:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.ui" line="461"/>
+        <source>Not Cotinuous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.ui" line="466"/>
+        <source>Continuous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.ui" line="495"/>
         <source>Exhaust</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="730"/>
+        <location filename="../weightmethod.ui" line="508"/>
         <source>Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="737"/>
+        <location filename="../weightmethod.ui" line="521"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="744"/>
+        <location filename="../weightmethod.ui" line="534"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="751"/>
+        <location filename="../weightmethod.ui" line="547"/>
         <source>Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="760"/>
+        <location filename="../weightmethod.ui" line="563"/>
+        <source>DataAcquisition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.ui" line="577"/>
+        <source>Big Bal:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../weightmethod.ui" line="606"/>
+        <location filename="../weightmethod.ui" line="651"/>
+        <source>㎏</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.ui" line="619"/>
+        <source>Small Bal:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.ui" line="664"/>
+        <source>Flow:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../weightmethod.ui" line="690"/>
+        <source>m³/h</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.ui" line="703"/>
+        <source>In Temp:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../weightmethod.ui" line="769"/>
+        <location filename="../weightmethod.ui" line="808"/>
+        <source>℃</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.ui" line="782"/>
+        <source>Out Temp:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.ui" line="819"/>
         <source>Tab2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="765"/>
+        <location filename="../weightmethod.ui" line="824"/>
         <source>Tab3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="770"/>
+        <location filename="../weightmethod.ui" line="829"/>
         <source>Tab4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.ui" line="775"/>
+        <location filename="../weightmethod.ui" line="834"/>
         <source>Tab5</source>
         <translation type="unfinished"></translation>
     </message>
@@ -295,55 +299,104 @@ l</source>
     <name>WeightMethodDlg</name>
     <message>
         <location filename="../weightmethod.cpp" line="78"/>
-        <location filename="../weightmethod.cpp" line="709"/>
-        <location filename="../weightmethod.cpp" line="858"/>
-        <location filename="../weightmethod.cpp" line="1210"/>
-        <location filename="../weightmethod.cpp" line="1309"/>
-        <location filename="../weightmethod.cpp" line="1337"/>
+        <location filename="../weightmethod.cpp" line="671"/>
+        <location filename="../weightmethod.cpp" line="712"/>
+        <location filename="../weightmethod.cpp" line="861"/>
+        <location filename="../weightmethod.cpp" line="1213"/>
+        <location filename="../weightmethod.cpp" line="1312"/>
+        <location filename="../weightmethod.cpp" line="1340"/>
         <source>Warning</source>
-        <translation>警告</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../weightmethod.cpp" line="78"/>
         <source>Warning:get port set info failed!</source>
-        <translation>警告：获取端口配置信息失败！</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.cpp" line="709"/>
+        <location filename="../weightmethod.cpp" line="467"/>
+        <location filename="../weightmethod.cpp" line="502"/>
+        <source>Exhaust countdown: %1 second</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.cpp" line="476"/>
+        <source>Please input meter number!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.cpp" line="510"/>
+        <source>Exhaust countdown finished!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.cpp" line="620"/>
+        <location filename="../weightmethod.cpp" line="627"/>
+        <source>NO. %1 flow point: %2 m3/h</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.cpp" line="621"/>
+        <source>Verifying...
+Please wait for about %1 second</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.cpp" line="628"/>
+        <source>Verify Finished!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.cpp" line="631"/>
+        <source>All flow points has verified !</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.cpp" line="671"/>
+        <source>all flow points has verified!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.cpp" line="701"/>
+        <source>Verify has Stoped!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../weightmethod.cpp" line="712"/>
         <source>please input meter number, then click &quot;start&quot; button!</source>
-        <translation>请输入表号，然后点击&quot;开始&quot;按钮!</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.cpp" line="858"/>
+        <location filename="../weightmethod.cpp" line="861"/>
         <source>please input meter number</source>
-        <translation>请输入表号</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.cpp" line="1210"/>
+        <location filename="../weightmethod.cpp" line="1213"/>
         <source>please input frequency of transducer</source>
-        <translation>请输入变频器频率</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.cpp" line="1240"/>
-        <location filename="../weightmethod.cpp" line="1275"/>
+        <location filename="../weightmethod.cpp" line="1243"/>
+        <location filename="../weightmethod.cpp" line="1278"/>
         <source>Hint</source>
-        <translation>提示</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.cpp" line="1240"/>
+        <location filename="../weightmethod.cpp" line="1243"/>
         <source>please input init value of heat meter</source>
-        <translation>请输入热量表初值</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.cpp" line="1275"/>
+        <location filename="../weightmethod.cpp" line="1278"/>
         <source>please input end value of heat meter</source>
-        <translation>请输入热量表终值</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../weightmethod.cpp" line="1309"/>
-        <location filename="../weightmethod.cpp" line="1337"/>
+        <location filename="../weightmethod.cpp" line="1312"/>
+        <location filename="../weightmethod.cpp" line="1340"/>
         <source>Error: please input digits</source>
-        <translation>错误：请输入数字</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

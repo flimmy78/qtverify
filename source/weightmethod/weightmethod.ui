@@ -35,7 +35,7 @@
       <widget class="QGroupBox" name="groupBox_2">
        <property name="geometry">
         <rect>
-         <x>270</x>
+         <x>240</x>
          <y>640</y>
          <width>421</width>
          <height>181</height>
@@ -266,9 +266,9 @@ d
       <widget class="QGroupBox" name="groupBox_3">
        <property name="geometry">
         <rect>
-         <x>950</x>
+         <x>920</x>
          <y>640</y>
-         <width>241</width>
+         <width>271</width>
          <height>171</height>
         </rect>
        </property>
@@ -281,32 +281,50 @@ d
        <property name="title">
         <string>Process Hint</string>
        </property>
-       <layout class="QGridLayout" name="gridLayout_7">
+       <layout class="QGridLayout" name="gridLayout_9">
         <item row="0" column="0">
-         <widget class="QLabel" name="labelHintInfo">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>Point:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="labelHint">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>Process:</string>
-          </property>
-         </widget>
+         <layout class="QGridLayout" name="gridLayout_7">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Point:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" colspan="2">
+           <widget class="QLabel" name="labelHintPoint">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" colspan="2">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Process:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="labelHintProcess">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
@@ -315,7 +333,7 @@ d
         <rect>
          <x>11</x>
          <y>642</y>
-         <width>251</width>
+         <width>221</width>
          <height>171</height>
         </rect>
        </property>
@@ -404,12 +422,12 @@ d
              </property>
              <item>
               <property name="text">
-               <string>manual</string>
+               <string>Manual</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>auto</string>
+               <string>Auto</string>
               </property>
              </item>
             </widget>
@@ -535,7 +553,7 @@ d
       <widget class="QGroupBox" name="groupBox_4">
        <property name="geometry">
         <rect>
-         <x>700</x>
+         <x>670</x>
          <y>640</y>
          <width>241</width>
          <height>180</height>

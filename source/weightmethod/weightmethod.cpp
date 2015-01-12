@@ -464,7 +464,7 @@ void WeightMethodDlg::on_btnExhaust_clicked()
 
 	m_exaustSecond = m_nowParams->ex_time;
 	m_exaustTimer->start(1000);//开始排气倒计时
-	ui.labelHintInfo->setText(QString("排气倒计时：%1 秒").arg(m_exaustSecond));
+	ui.labelHintProcess->setText(tr("Exhaust countdown: %1 second").arg(m_exaustSecond));
 	qDebug()<<"排气倒计时:"<<m_exaustSecond<<"秒";
 
 	if (m_autopick) //自动读表
@@ -473,7 +473,7 @@ void WeightMethodDlg::on_btnExhaust_clicked()
 	}
 	else //手动读表
 	{
-		ui.labelHint->setText("请输入表号!");
+		ui.labelHintProcess->setText(tr("Please input meter number!"));
 	}
 
 	setMeterVerifyStatus();
@@ -499,7 +499,7 @@ int WeightMethodDlg::openAllValuesAndPump()
 void WeightMethodDlg::slotExaustFinished()
 {
 	m_exaustSecond --;
-	ui.labelHintInfo->setText(QString("排气倒计时：%1 秒").arg(m_exaustSecond));
+	ui.labelHintProcess->setText(tr("Exhaust countdown: %1 second").arg(m_exaustSecond));
 	qDebug()<<"排气倒计时:"<<m_exaustSecond<<"秒";
 
 	if (m_exaustSecond > 1)
@@ -507,8 +507,8 @@ void WeightMethodDlg::slotExaustFinished()
 		return;
 	}
 	m_exaustTimer->stop(); //停止排气计时
-	ui.labelHintInfo->setText(QString("排气倒计时 结束！"));
-	ui.labelHint->clear();
+	ui.labelHintProcess->setText(tr("Exhaust countdown finished!"));
+	ui.labelHintProcess->clear();
 	if (!closeAllFlowPointValves()) //关闭所有流量点阀门 失败
 	{
 		if (!closeAllFlowPointValves()) //再尝试关闭一次
@@ -617,16 +617,18 @@ int WeightMethodDlg::judgeBalanceAndCalcTemper(float targetV)
 		m_tempCount++;
 
 		second = 3.6*(targetV - ui.lnEditBigBalance->text().toFloat())/nowFlow;
-		ui.labelHintInfo->setText(QString("第%1流量点: %2 m3/h\n剩余时间 %3 秒").arg(m_nowOrder).arg(nowFlow).arg(second));
+		ui.labelHintPoint->setText(tr("NO. %1 flow point: %2 m3/h").arg(m_nowOrder).arg(nowFlow));
+		ui.labelHintProcess->setText(tr("Verifying...\nPlease wait for about %1 second").arg(second));
 		QTest::qWait(1000);
 	}
 
 	m_pipeInTemper = m_pipeInTemper/m_tempCount;   //入口平均温度
 	m_pipeOutTemper = m_pipeOutTemper/m_tempCount; //出口平均温度
-	ui.labelHintInfo->setText(QString("第%1流量点: %2 m3/h\n检定完毕!").arg(m_nowOrder).arg(nowFlow));
+	ui.labelHintPoint->setText(tr("NO. %1 flow point: %2 m3/h").arg(m_nowOrder).arg(nowFlow));
+	ui.labelHintProcess->setText(tr("Verify Finished!"));
 	if (m_nowOrder == m_flowPointNum)
 	{
-		ui.labelHintInfo->setText("所有流量点已经检定完毕!");
+		ui.labelHintProcess->setText(tr("All flow points has verified !"));
 		ui.btnNext->hide();
 	}
 	return true;
@@ -696,7 +698,7 @@ void WeightMethodDlg::on_btnStop_clicked()
 
 	//停止水泵
 
-	ui.labelHintInfo->setText("已终止检测");
+	ui.labelHintProcess->setText(tr("Verify has Stoped!"));
 }
 
 //开始检定
