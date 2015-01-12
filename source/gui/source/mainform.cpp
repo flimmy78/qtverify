@@ -51,61 +51,69 @@ MainForm::~MainForm()
 
 void MainForm::closeEvent( QCloseEvent * event)
 {
-	qDebug()<<"^^^^^MainForm::closeEvent";
-
-	if (m_mySql)
+	QMessageBox::StandardButton button = QMessageBox::question(this, tr("Question"), tr("Quit Really ?"), QMessageBox::Yes|QMessageBox::No);
+	if (button == QMessageBox::No)
 	{
-		delete m_mySql;
-		m_mySql = NULL;
+		event->ignore();
 	}
-
-	if (m_query)
+	else if (button == QMessageBox::Yes)
 	{
-		delete m_query;
-		m_query = NULL;
-	}
+		event->accept();
+		qDebug()<<"^^^^^MainForm::closeEvent";
 
-	if (m_alg)
-	{
-		delete m_alg;
-		m_alg = NULL;
-	}
+		if (m_mySql)
+		{
+			delete m_mySql;
+			m_mySql = NULL;
+		}
 
-	if (m_setcom)
-	{
-		delete m_setcom;
-		m_setcom = NULL;
-	}
+		if (m_query)
+		{
+			delete m_query;
+			m_query = NULL;
+		}
 
-	if (m_portSet)
-	{
-		delete m_portSet;
-		m_portSet = NULL;
-	}
+		if (m_alg)
+		{
+			delete m_alg;
+			m_alg = NULL;
+		}
 
-	if (m_datatestdlg)
-	{
-		delete m_datatestdlg;
-		m_datatestdlg = NULL;
-	}
+		if (m_setcom)
+		{
+			delete m_setcom;
+			m_setcom = NULL;
+		}
 
-	if (m_masterslave)
-	{
-		delete m_masterslave;
-		m_masterslave = NULL;
-	}
+		if (m_portSet)
+		{
+			delete m_portSet;
+			m_portSet = NULL;
+		}
 
-	if (m_weightDlg)
-	{
-		delete m_weightDlg;
-		m_weightDlg = NULL;
-	}
+		if (m_datatestdlg)
+		{
+			delete m_datatestdlg;
+			m_datatestdlg = NULL;
+		}
 
-	if (m_comProcess)
-	{
-		m_comProcess->kill();
-	}
+		if (m_masterslave)
+		{
+			delete m_masterslave;
+			m_masterslave = NULL;
+		}
 
+		if (m_weightDlg)
+		{
+			delete m_weightDlg;
+			m_weightDlg = NULL;
+		}
+
+		if (m_comProcess)
+		{
+			m_comProcess->kill();
+		}
+	}
 }
 
 void MainForm::on_actionComDebuger_triggered()
@@ -274,7 +282,6 @@ void MainForm::on_actionFashion_triggered()
 	this->setStyleSheet(qss.readAll());
 	qss.close();
 }
-
 
 void MainForm::chaneLanguage(QString lang)
 {

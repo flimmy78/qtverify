@@ -2,6 +2,7 @@
 #define MAINFORM_H
 
 #include <QtGui/QMainWindow>
+#include <QtGui/QCloseEvent>
 
 #include "ui_mainform.h"
 #include "dbmysql.h"

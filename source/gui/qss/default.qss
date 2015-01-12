@@ -36,10 +36,10 @@ background-color: rgb(233, 237, 255,255);
 #QProgressBar::chunk{  
     background: #B22222;  
 }
-#QStatusBar{  
+QStatusBar{  
     background-image: url(:/qtverify/images/statusbar1.png);  
     color:red;  
-    background-color: rgb(66,66,66);
+    background-color: rgb(0,0,166);
 }   
 #QMenu[private_pile="true"]{  
     background-color: rgba(43,63,53,200);  
