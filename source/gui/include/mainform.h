@@ -48,6 +48,7 @@ public slots:
 	void on_actionDefault_triggered();
 	void on_actionClassic_triggered();
 	void on_actionFashion_triggered();
+	void chaneLanguage(QString lang);
 	void on_actionEnglish_triggered();
 	void on_actionChinese_triggered();
 

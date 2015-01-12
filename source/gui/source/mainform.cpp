@@ -275,9 +275,9 @@ void MainForm::on_actionFashion_triggered()
 	qss.close();
 }
 
-void MainForm::on_actionEnglish_triggered()
+
+void MainForm::chaneLanguage(QString lang)
 {
-	QString lang = "en";
 	char file_name[100];
 	sprintf_s( file_name, "%s\\ini\\tr_qtverify.ini", getenv("RUNHOME"));
 	QFile file(file_name );
@@ -312,39 +312,12 @@ void MainForm::on_actionEnglish_triggered()
 	delete []translator;
 }
 
+void MainForm::on_actionEnglish_triggered()
+{
+	chaneLanguage("en");
+}
+
 void MainForm::on_actionChinese_triggered()
 {
-	QString lang = "zh";
-	char file_name[100];
-	sprintf_s( file_name, "%s\\ini\\tr_qtverify.ini", getenv("RUNHOME"));
-	QFile file(file_name );
-	if( !file.open(QIODevice::ReadOnly | QIODevice::Text) ) 
-	{
-		qDebug("no i18n ini file.\n");
-		return;
-	}
-	QTranslator *translator = NULL;
-	QTextStream text(&file);
-	QString line ;
-	while ( !text.atEnd() ) 
-	{
-		line = text.readLine().simplified();
-		if( line.length() == 0 ) 
-			continue;
-		if( line.at(0) == '#' ) 
-			continue;
-
-		QString i18nName = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\\uif\\i18n\\" + lang + "\\";
-		i18nName.append(line).append(QString("_%1.qm").arg(lang));
-		translator = new QTranslator( 0 );
-		if (!translator->load( i18nName ))
-		{
-			qDebug()<<"load translator file"<<line<<"failed!";
-			continue;
-		}
-		qApp->installTranslator( translator );
-		ui.retranslateUi(this);
-	}
-	file.close();
-	delete []translator;
+	chaneLanguage("zh");
 }
