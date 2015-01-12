@@ -51,7 +51,8 @@ MainForm::~MainForm()
 
 void MainForm::closeEvent( QCloseEvent * event)
 {
-	QMessageBox::StandardButton button = QMessageBox::question(this, tr("Question"), tr("Quit Really ?"), QMessageBox::Yes|QMessageBox::No);
+	int button = QMessageBox::question(this, tr("Question"), tr("Quit Really ?"), \
+		QMessageBox::Yes|QMessageBox::Default, QMessageBox::No|QMessageBox::Escape);
 	if (button == QMessageBox::No)
 	{
 		event->ignore();
