@@ -28,7 +28,7 @@ public:
 	SetPortFrm *m_portSet; //端口模块设置
 	CMasterSlave *m_masterslave; //主机-从机设置
 	WeightMethodDlg *m_weightDlg; //质量法检定界面
-	QProcess *m_comProcess;
+	QProcess *m_comProcess; //调用外部串口调试工具
 
 	void closeEvent(QCloseEvent * event);
 
@@ -48,6 +48,8 @@ public slots:
 	void on_actionDefault_triggered();
 	void on_actionClassic_triggered();
 	void on_actionFashion_triggered();
+	void on_actionEnglish_triggered();
+	void on_actionChinese_triggered();
 
 private:
 	Ui::qMainFormClass ui;

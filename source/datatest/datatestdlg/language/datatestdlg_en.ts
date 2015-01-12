@@ -25,17 +25,17 @@
     <message>
         <location filename="../ui/datatestdlg.ui" line="14"/>
         <source>DA and Test</source>
-        <translation type="unfinished"></translation>
+        <translation>DA and Test</translation>
     </message>
     <message>
         <location filename="../ui/datatestdlg.ui" line="32"/>
         <source>Total Verify Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Total Verify Data</translation>
     </message>
     <message>
         <location filename="../ui/datatestdlg.ui" line="38"/>
         <source>Install Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Install Position</translation>
     </message>
     <message>
         <location filename="../ui/datatestdlg.ui" line="44"/>
@@ -106,7 +106,7 @@
     <message>
         <location filename="../ui/datatestdlg.ui" line="246"/>
         <source>Heat Meter</source>
-        <translation type="unfinished"></translation>
+        <translation>Heat Meter</translation>
     </message>
     <message>
         <location filename="../ui/datatestdlg.ui" line="255"/>
@@ -116,7 +116,7 @@
     <message>
         <location filename="../ui/datatestdlg.ui" line="273"/>
         <source>MeterNo</source>
-        <translation type="unfinished"></translation>
+        <translation>Meter No</translation>
     </message>
     <message>
         <location filename="../ui/datatestdlg.ui" line="305"/>
@@ -152,25 +152,29 @@
         <location filename="../ui/datatestdlg.ui" line="488"/>
         <source>Read
 MeterNo</source>
-        <translation type="unfinished"></translation>
+        <translation>Read
+MeterNo</translation>
     </message>
     <message>
         <location filename="../ui/datatestdlg.ui" line="508"/>
         <source>Read
 Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Read
+Data</translation>
     </message>
     <message>
         <location filename="../ui/datatestdlg.ui" line="528"/>
         <source>Modify
 MeterNo</source>
-        <translation type="unfinished"></translation>
+        <translation>Modify
+MeterNo</translation>
     </message>
     <message>
         <location filename="../ui/datatestdlg.ui" line="548"/>
         <source>Verify
 Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Verify
+Status</translation>
     </message>
     <message>
         <location filename="../ui/datatestdlg.ui" line="572"/>
@@ -274,7 +278,7 @@ p</source>
     <message>
         <location filename="../ui/datatestdlg.ui" line="989"/>
         <source>Small Balance:</source>
-        <translation type="unfinished"></translation>
+        <translation>Small Balance:</translation>
     </message>
     <message>
         <location filename="../ui/datatestdlg.ui" line="1016"/>

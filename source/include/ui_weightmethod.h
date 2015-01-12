@@ -51,9 +51,12 @@ public:
     QToolButton *btnValveMiddle2;
     QTableWidget *tableWidget;
     QGroupBox *groupBox_3;
+    QGridLayout *gridLayout_9;
     QGridLayout *gridLayout_7;
-    QLabel *labelHintInfo;
-    QLabel *labelHint;
+    QLabel *label;
+    QLabel *labelHintPoint;
+    QLabel *label_2;
+    QLabel *labelHintProcess;
     QWidget *layoutWidget;
     QGridLayout *gridLayout_5;
     QPushButton *btnParaSet;
@@ -112,7 +115,7 @@ public:
         tab1->setObjectName(QString::fromUtf8("tab1"));
         groupBox_2 = new QGroupBox(tab1);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setGeometry(QRect(270, 640, 421, 181));
+        groupBox_2->setGeometry(QRect(240, 640, 421, 181));
         gridLayout_6 = new QGridLayout(groupBox_2);
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
         btnWaterPumpStop = new QToolButton(groupBox_2);
@@ -226,28 +229,43 @@ public:
         tableWidget->setEditTriggers(QAbstractItemView::CurrentChanged|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed);
         groupBox_3 = new QGroupBox(tab1);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
-        groupBox_3->setGeometry(QRect(950, 640, 241, 171));
+        groupBox_3->setGeometry(QRect(920, 640, 271, 171));
         sizePolicy1.setHeightForWidth(groupBox_3->sizePolicy().hasHeightForWidth());
         groupBox_3->setSizePolicy(sizePolicy1);
-        gridLayout_7 = new QGridLayout(groupBox_3);
+        gridLayout_9 = new QGridLayout(groupBox_3);
+        gridLayout_9->setObjectName(QString::fromUtf8("gridLayout_9"));
+        gridLayout_7 = new QGridLayout();
         gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
-        labelHintInfo = new QLabel(groupBox_3);
-        labelHintInfo->setObjectName(QString::fromUtf8("labelHintInfo"));
-        sizePolicy1.setHeightForWidth(labelHintInfo->sizePolicy().hasHeightForWidth());
-        labelHintInfo->setSizePolicy(sizePolicy1);
+        label = new QLabel(groupBox_3);
+        label->setObjectName(QString::fromUtf8("label"));
 
-        gridLayout_7->addWidget(labelHintInfo, 0, 0, 1, 1);
+        gridLayout_7->addWidget(label, 0, 0, 1, 1);
 
-        labelHint = new QLabel(groupBox_3);
-        labelHint->setObjectName(QString::fromUtf8("labelHint"));
-        sizePolicy1.setHeightForWidth(labelHint->sizePolicy().hasHeightForWidth());
-        labelHint->setSizePolicy(sizePolicy1);
+        labelHintPoint = new QLabel(groupBox_3);
+        labelHintPoint->setObjectName(QString::fromUtf8("labelHintPoint"));
+        sizePolicy1.setHeightForWidth(labelHintPoint->sizePolicy().hasHeightForWidth());
+        labelHintPoint->setSizePolicy(sizePolicy1);
 
-        gridLayout_7->addWidget(labelHint, 1, 0, 1, 1);
+        gridLayout_7->addWidget(labelHintPoint, 0, 1, 1, 2);
+
+        label_2 = new QLabel(groupBox_3);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+
+        gridLayout_7->addWidget(label_2, 1, 0, 1, 2);
+
+        labelHintProcess = new QLabel(groupBox_3);
+        labelHintProcess->setObjectName(QString::fromUtf8("labelHintProcess"));
+        sizePolicy1.setHeightForWidth(labelHintProcess->sizePolicy().hasHeightForWidth());
+        labelHintProcess->setSizePolicy(sizePolicy1);
+
+        gridLayout_7->addWidget(labelHintProcess, 1, 2, 1, 1);
+
+
+        gridLayout_9->addLayout(gridLayout_7, 0, 0, 1, 1);
 
         layoutWidget = new QWidget(tab1);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(11, 642, 251, 171));
+        layoutWidget->setGeometry(QRect(11, 642, 221, 171));
         gridLayout_5 = new QGridLayout(layoutWidget);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
         gridLayout_5->setContentsMargins(0, 0, 0, 0);
@@ -366,7 +384,7 @@ public:
 
         groupBox_4 = new QGroupBox(tab1);
         groupBox_4->setObjectName(QString::fromUtf8("groupBox_4"));
-        groupBox_4->setGeometry(QRect(700, 640, 241, 180));
+        groupBox_4->setGeometry(QRect(670, 640, 241, 180));
         gridLayout_8 = new QGridLayout(groupBox_4);
         gridLayout_8->setObjectName(QString::fromUtf8("gridLayout_8"));
         gridLayout_2 = new QGridLayout();
@@ -570,8 +588,10 @@ public:
         QTableWidgetItem *___qtablewidgetitem9 = tableWidget->horizontalHeaderItem(9);
         ___qtablewidgetitem9->setText(QApplication::translate("WeightMethodClass", "DsipError(%)", 0, QApplication::UnicodeUTF8));
         groupBox_3->setTitle(QApplication::translate("WeightMethodClass", "Process Hint", 0, QApplication::UnicodeUTF8));
-        labelHintInfo->setText(QApplication::translate("WeightMethodClass", "Point:", 0, QApplication::UnicodeUTF8));
-        labelHint->setText(QApplication::translate("WeightMethodClass", "Process:", 0, QApplication::UnicodeUTF8));
+        label->setText(QApplication::translate("WeightMethodClass", "Point:", 0, QApplication::UnicodeUTF8));
+        labelHintPoint->setText(QString());
+        label_2->setText(QApplication::translate("WeightMethodClass", "Process:", 0, QApplication::UnicodeUTF8));
+        labelHintProcess->setText(QString());
         btnParaSet->setText(QApplication::translate("WeightMethodClass", "ParaSet", 0, QApplication::UnicodeUTF8));
         btnReadMeter->setText(QApplication::translate("WeightMethodClass", "ReadMeter", 0, QApplication::UnicodeUTF8));
         groupBox->setTitle(QApplication::translate("WeightMethodClass", "NowPara(KeyInfo)", 0, QApplication::UnicodeUTF8));
@@ -579,8 +599,8 @@ public:
         label_14->setText(QApplication::translate("WeightMethodClass", "DA Mode:", 0, QApplication::UnicodeUTF8));
         cmbAutoPick->clear();
         cmbAutoPick->insertItems(0, QStringList()
-         << QApplication::translate("WeightMethodClass", "manual", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("WeightMethodClass", "auto", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WeightMethodClass", "Manual", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WeightMethodClass", "Auto", 0, QApplication::UnicodeUTF8)
         );
         label_15->setText(QApplication::translate("WeightMethodClass", "Continuous:", 0, QApplication::UnicodeUTF8));
         cmbContinue->clear();

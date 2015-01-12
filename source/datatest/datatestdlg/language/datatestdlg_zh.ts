@@ -25,7 +25,7 @@
     <message>
         <location filename="../ui/datatestdlg.ui" line="14"/>
         <source>DA and Test</source>
-        <translation type="unfinished"></translation>
+        <translation>数据采集与测试</translation>
     </message>
     <message>
         <location filename="../ui/datatestdlg.ui" line="32"/>
@@ -106,7 +106,7 @@
     <message>
         <location filename="../ui/datatestdlg.ui" line="246"/>
         <source>Heat Meter</source>
-        <translation type="unfinished"></translation>
+        <translation>热量表</translation>
     </message>
     <message>
         <location filename="../ui/datatestdlg.ui" line="255"/>
@@ -116,7 +116,7 @@
     <message>
         <location filename="../ui/datatestdlg.ui" line="273"/>
         <source>MeterNo</source>
-        <translation type="unfinished"></translation>
+        <translation>表号</translation>
     </message>
     <message>
         <location filename="../ui/datatestdlg.ui" line="305"/>
@@ -152,25 +152,29 @@
         <location filename="../ui/datatestdlg.ui" line="488"/>
         <source>Read
 MeterNo</source>
-        <translation type="unfinished"></translation>
+        <translation>读取
+表号</translation>
     </message>
     <message>
         <location filename="../ui/datatestdlg.ui" line="508"/>
         <source>Read
 Data</source>
-        <translation type="unfinished"></translation>
+        <translation>读表
+数据</translation>
     </message>
     <message>
         <location filename="../ui/datatestdlg.ui" line="528"/>
         <source>Modify
 MeterNo</source>
-        <translation type="unfinished"></translation>
+        <translation>修改
+表号</translation>
     </message>
     <message>
         <location filename="../ui/datatestdlg.ui" line="548"/>
         <source>Verify
 Status</source>
-        <translation type="unfinished"></translation>
+        <translation>检定
+状态</translation>
     </message>
     <message>
         <location filename="../ui/datatestdlg.ui" line="572"/>
