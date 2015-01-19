@@ -456,6 +456,13 @@ void DataTestDlg::on_btnWaterPump_clicked() //水泵
 	}
 }
 
+
+//设置频率
+void DataTestDlg::on_btnSetFreq_clicked()
+{
+	m_controlObj->askSetDriverFreq(ui.spinBoxFreq->value());
+}
+
 //调节阀
 void DataTestDlg::on_btnRegulate1_clicked() //调节阀1
 {

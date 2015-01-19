@@ -123,6 +123,7 @@ public slots:
 	void askControlRegulate(UINT8 portno, int degree);
 	void askControlQuery();
 	void askControlWaterPump(UINT8 portno, bool status);
+	void askSetDriverFreq(int freq);
 	void readControlComBuffer();
 	void readNewControlComBuffer();
 

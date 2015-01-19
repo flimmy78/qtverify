@@ -284,6 +284,16 @@ void ControlComObject::askControlWaterPump(UINT8 portno, bool status)
 	m_controlCom->write(buf);
 }
 
+//设置变频器频率
+void ControlComObject::askSetDriverFreq(int freq)
+{
+	QByteArray buf;
+	m_controlProtocol->makeFrameOfSetDriverFreq(freq);
+	buf = m_controlProtocol->getSendBuf();
+	m_controlCom->write(buf);
+}
+
+//读取控制板返回数据
 void ControlComObject::readControlComBuffer()
 {
 	qDebug()<<"readControlComBuffer ControlComObject thread:"<<QThread::currentThreadId();

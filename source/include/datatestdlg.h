@@ -85,6 +85,7 @@ public slots:
 	void on_btnValveSmall_clicked(); //小流量阀
 	void on_btnWaterPump_clicked(); //水泵
 
+	void on_btnSetFreq_clicked(); //设置频率
 	void on_btnRegulate1_clicked();
 	void on_btnQueryStatus_clicked();
 

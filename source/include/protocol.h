@@ -159,6 +159,7 @@ public slots:
 	virtual void makeFrameOfCtrlRegulate(UINT8 portno, UINT16 degree) = 0;
 	virtual void makeFrameOfCtrlQuery() = 0;
 	virtual void makeFrameOfCtrlWaterPump(UINT8 portno, bool status) = 0;
+	virtual void makeFrameOfSetDriverFreq(int freq) = 0;
 	virtual UINT8 readCtrlComBuffer(QByteArray tmp) = 0;
 	virtual void analyseFrame() = 0;
 
@@ -184,6 +185,7 @@ public slots:
 	virtual void makeFrameOfCtrlRegulate(UINT8 portno, UINT16 degree);
 	virtual void makeFrameOfCtrlQuery();
 	virtual void makeFrameOfCtrlWaterPump(UINT8 portno, bool status);
+	virtual void makeFrameOfSetDriverFreq(int freq);
 	virtual UINT8 readCtrlComBuffer(QByteArray tmp);
 	virtual void analyseFrame();
 
@@ -210,6 +212,7 @@ public:
 	virtual void makeFrameOfCtrlRegulate(UINT8 portno, UINT16 degree);
 	virtual void makeFrameOfCtrlQuery();
 	virtual void makeFrameOfCtrlWaterPump(UINT8 portno, bool status);
+	virtual void makeFrameOfSetDriverFreq(int freq);
 	virtual UINT8 readCtrlComBuffer(QByteArray tmp);
 	virtual void analyseFrame();
 

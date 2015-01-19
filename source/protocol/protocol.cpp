@@ -394,6 +394,12 @@ void NewCtrlProtocol::makeFrameOfCtrlWaterPump(UINT8 portno, bool status)
 
 }
 
+//设置变频器频率
+void NewCtrlProtocol::makeFrameOfSetDriverFreq(int freq)
+{
+
+}
+
 //解帧
 UINT8 NewCtrlProtocol::readCtrlComBuffer(QByteArray tmp)
 {
@@ -505,7 +511,7 @@ UINT8 NewCtrlProtocol::readCtrlComBuffer(QByteArray tmp)
 				if (ck == m_ctrlFrame->cs) //校验通过
 				{
 					analyseFrame();
-// 					qDebug()<<"check is ok 校验通过";
+					// 					qDebug()<<"check is ok 校验通过";
 					ret = m_ctrlFrame->funcCode; //以功能码返回，便于区分
 				}
 				break;
@@ -517,7 +523,7 @@ UINT8 NewCtrlProtocol::readCtrlComBuffer(QByteArray tmp)
 			}
 		} //END OF switch(state)        
 	} //END OF for (m=0; m<number; m++)
-	
+
 	return ret;
 }
 
@@ -674,6 +680,17 @@ void OldCtrlProtocol::makeFrameOfCtrlWaterPump(UINT8 portno, bool status)
 		m_sendBuf.append(0xFF).append(0xFA).append(zeroCode).append(zeroCode).append(0xFE);
 	}
 }
+
+//设置变频器频率
+void OldCtrlProtocol::makeFrameOfSetDriverFreq(int freq)
+{
+	int data = int(freq*4095/50);//0~50Hz对应0~4095
+	UINT8 dataH = data/256;
+	UINT8 dataL = data%256;
+	m_sendBuf = "";
+	m_sendBuf.append(0xFF).append(0xF8).append(dataH).append(dataL).append(0xFE);
+}
+
 
 //解帧
 UINT8 OldCtrlProtocol::readCtrlComBuffer(QByteArray tmp)

@@ -19,7 +19,6 @@
 #include <QtGui/QDateEdit>
 #include <QtGui/QGridLayout>
 #include <QtGui/QGroupBox>
-#include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
@@ -100,8 +99,6 @@ public:
     QComboBox *portNameComboBox;
     QPushButton *btnCloseCom;
     QPushButton *btnOpenCom;
-    QWidget *layoutWidget2;
-    QGridLayout *gridLayout_11;
     QGroupBox *groupBox_2;
     QGridLayout *gridLayout_9;
     QPushButton *btnWaterIn;
@@ -111,14 +108,17 @@ public:
     QPushButton *btnValveMiddle2;
     QPushButton *btnWaterOut;
     QPushButton *btnWaterPump;
-    QHBoxLayout *horizontalLayout_2;
-    QHBoxLayout *horizontalLayout;
+    QWidget *widget;
+    QGridLayout *gridLayout_15;
+    QGridLayout *gridLayout_11;
     QLabel *label_18;
     QSpinBox *spinBoxFreq;
-    QSpacerItem *horizontalSpacer_3;
-    QPushButton *btnRegulate1;
+    QPushButton *btnSetFreq;
     QSpacerItem *horizontalSpacer_2;
+    QGridLayout *gridLayout_14;
+    QPushButton *btnRegulate1;
     QPushButton *btnQueryStatus;
+    QWidget *widget1;
     QGridLayout *gridLayout_7;
     QGroupBox *groupBox_3;
     QGridLayout *gridLayout_6;
@@ -523,14 +523,9 @@ public:
 
         gridLayout_13->addWidget(btnOpenCom, 1, 0, 1, 1);
 
-        layoutWidget2 = new QWidget(DataTestDlgClass);
-        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
-        layoutWidget2->setGeometry(QRect(280, 200, 419, 501));
-        gridLayout_11 = new QGridLayout(layoutWidget2);
-        gridLayout_11->setObjectName(QString::fromUtf8("gridLayout_11"));
-        gridLayout_11->setContentsMargins(0, 0, 0, 0);
-        groupBox_2 = new QGroupBox(layoutWidget2);
+        groupBox_2 = new QGroupBox(DataTestDlgClass);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
+        groupBox_2->setGeometry(QRect(281, 210, 411, 131));
         sizePolicy.setHeightForWidth(groupBox_2->sizePolicy().hasHeightForWidth());
         groupBox_2->setSizePolicy(sizePolicy);
         gridLayout_9 = new QGridLayout(groupBox_2);
@@ -626,32 +621,46 @@ public:
 
         gridLayout_9->addWidget(btnWaterPump, 0, 6, 1, 1);
 
-
-        gridLayout_11->addWidget(groupBox_2, 0, 0, 1, 1);
-
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        label_18 = new QLabel(layoutWidget2);
+        widget = new QWidget(DataTestDlgClass);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(280, 360, 411, 32));
+        gridLayout_15 = new QGridLayout(widget);
+        gridLayout_15->setObjectName(QString::fromUtf8("gridLayout_15"));
+        gridLayout_15->setContentsMargins(0, 0, 0, 0);
+        gridLayout_11 = new QGridLayout();
+        gridLayout_11->setObjectName(QString::fromUtf8("gridLayout_11"));
+        label_18 = new QLabel(widget);
         label_18->setObjectName(QString::fromUtf8("label_18"));
+        sizePolicy2.setHeightForWidth(label_18->sizePolicy().hasHeightForWidth());
+        label_18->setSizePolicy(sizePolicy2);
 
-        horizontalLayout->addWidget(label_18);
+        gridLayout_11->addWidget(label_18, 0, 0, 1, 1);
 
-        spinBoxFreq = new QSpinBox(layoutWidget2);
+        spinBoxFreq = new QSpinBox(widget);
         spinBoxFreq->setObjectName(QString::fromUtf8("spinBoxFreq"));
+        sizePolicy.setHeightForWidth(spinBoxFreq->sizePolicy().hasHeightForWidth());
+        spinBoxFreq->setSizePolicy(sizePolicy);
         spinBoxFreq->setMaximum(9999);
 
-        horizontalLayout->addWidget(spinBoxFreq);
+        gridLayout_11->addWidget(spinBoxFreq, 0, 1, 1, 1);
+
+        btnSetFreq = new QPushButton(widget);
+        btnSetFreq->setObjectName(QString::fromUtf8("btnSetFreq"));
+        sizePolicy.setHeightForWidth(btnSetFreq->sizePolicy().hasHeightForWidth());
+        btnSetFreq->setSizePolicy(sizePolicy);
+
+        gridLayout_11->addWidget(btnSetFreq, 0, 2, 1, 1);
 
 
-        horizontalLayout_2->addLayout(horizontalLayout);
+        gridLayout_15->addLayout(gridLayout_11, 0, 0, 1, 1);
 
-        horizontalSpacer_3 = new QSpacerItem(17, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_2 = new QSpacerItem(17, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        horizontalLayout_2->addItem(horizontalSpacer_3);
+        gridLayout_15->addItem(horizontalSpacer_2, 0, 1, 1, 1);
 
-        btnRegulate1 = new QPushButton(layoutWidget2);
+        gridLayout_14 = new QGridLayout();
+        gridLayout_14->setObjectName(QString::fromUtf8("gridLayout_14"));
+        btnRegulate1 = new QPushButton(widget);
         btnRegulate1->setObjectName(QString::fromUtf8("btnRegulate1"));
         QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy3.setHorizontalStretch(0);
@@ -659,25 +668,25 @@ public:
         sizePolicy3.setHeightForWidth(btnRegulate1->sizePolicy().hasHeightForWidth());
         btnRegulate1->setSizePolicy(sizePolicy3);
 
-        horizontalLayout_2->addWidget(btnRegulate1);
+        gridLayout_14->addWidget(btnRegulate1, 0, 0, 1, 1);
 
-        horizontalSpacer_2 = new QSpacerItem(17, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_2->addItem(horizontalSpacer_2);
-
-        btnQueryStatus = new QPushButton(layoutWidget2);
+        btnQueryStatus = new QPushButton(widget);
         btnQueryStatus->setObjectName(QString::fromUtf8("btnQueryStatus"));
         sizePolicy3.setHeightForWidth(btnQueryStatus->sizePolicy().hasHeightForWidth());
         btnQueryStatus->setSizePolicy(sizePolicy3);
 
-        horizontalLayout_2->addWidget(btnQueryStatus);
+        gridLayout_14->addWidget(btnQueryStatus, 0, 1, 1, 1);
 
 
-        gridLayout_11->addLayout(horizontalLayout_2, 1, 0, 1, 1);
+        gridLayout_15->addLayout(gridLayout_14, 0, 2, 1, 1);
 
-        gridLayout_7 = new QGridLayout();
+        widget1 = new QWidget(DataTestDlgClass);
+        widget1->setObjectName(QString::fromUtf8("widget1"));
+        widget1->setGeometry(QRect(281, 430, 412, 174));
+        gridLayout_7 = new QGridLayout(widget1);
         gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
-        groupBox_3 = new QGroupBox(layoutWidget2);
+        gridLayout_7->setContentsMargins(0, 0, 0, 0);
+        groupBox_3 = new QGroupBox(widget1);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
         sizePolicy3.setHeightForWidth(groupBox_3->sizePolicy().hasHeightForWidth());
         groupBox_3->setSizePolicy(sizePolicy3);
@@ -780,7 +789,7 @@ public:
 
         gridLayout_7->addItem(verticalSpacer, 0, 1, 1, 1);
 
-        spinBoxTime = new QSpinBox(layoutWidget2);
+        spinBoxTime = new QSpinBox(widget1);
         spinBoxTime->setObjectName(QString::fromUtf8("spinBoxTime"));
         sizePolicy3.setHeightForWidth(spinBoxTime->sizePolicy().hasHeightForWidth());
         spinBoxTime->setSizePolicy(sizePolicy3);
@@ -788,11 +797,9 @@ public:
 
         gridLayout_7->addWidget(spinBoxTime, 1, 1, 1, 1);
 
-
-        gridLayout_11->addLayout(gridLayout_7, 2, 0, 1, 1);
-
-        groupBox_8 = new QGroupBox(layoutWidget2);
+        groupBox_8 = new QGroupBox(DataTestDlgClass);
         groupBox_8->setObjectName(QString::fromUtf8("groupBox_8"));
+        groupBox_8->setGeometry(QRect(281, 633, 417, 67));
         QSizePolicy sizePolicy4(QSizePolicy::Minimum, QSizePolicy::Fixed);
         sizePolicy4.setHorizontalStretch(0);
         sizePolicy4.setVerticalStretch(0);
@@ -820,9 +827,6 @@ public:
         btnExit->setObjectName(QString::fromUtf8("btnExit"));
 
         gridLayout_8->addWidget(btnExit, 0, 3, 1, 1);
-
-
-        gridLayout_11->addWidget(groupBox_8, 3, 0, 1, 1);
 
 
         retranslateUi(DataTestDlgClass);
@@ -964,6 +968,7 @@ public:
 "m\n"
 "p", 0, QApplication::UnicodeUTF8));
         label_18->setText(QApplication::translate("DataTestDlgClass", "Freq:", 0, QApplication::UnicodeUTF8));
+        btnSetFreq->setText(QApplication::translate("DataTestDlgClass", "SetFreq", 0, QApplication::UnicodeUTF8));
         btnRegulate1->setText(QApplication::translate("DataTestDlgClass", "Regulater", 0, QApplication::UnicodeUTF8));
         btnQueryStatus->setText(QApplication::translate("DataTestDlgClass", "Query Status", 0, QApplication::UnicodeUTF8));
         groupBox_3->setTitle(QApplication::translate("DataTestDlgClass", "Data Acquisition", 0, QApplication::UnicodeUTF8));
