@@ -19,6 +19,7 @@
 #include <QtCore/QThread>
 #include <QtCore/QMap>
 
+
 //协议基类
 class  CProtocol
 {
@@ -111,8 +112,8 @@ private:
 
 //下位机控制协议 begin
 #define		CTRL_START_CODE		0x69		//起始码
-#define		CTRL_FUNC_RELAY		0x01		//功能码-继电器控制
 #define		CTRL_END_CODE		0x16		//结束码
+#define		CTRL_FUNC_RELAY		0x01		//功能码-继电器控制
 #define		CTRL_FUNC_REGULATE  0x02		//功能码-调节阀控制
 #define     CTRL_FUNC_QUERY		0x03		//功能码-查询
 #define     CTRL_FUNC_BALANCE	0x04		//功能码-获取天平重量
@@ -135,33 +136,87 @@ typedef struct
 	UINT8 data[DATA_LENGTH];  //数据区
 	UINT8 cs;	    //校验码
 	UINT8 endCode;      //结束码
-}Ctrl_Frame_Struct;
+}NewCtrl_Frame_Struct;
 
-class PROTOCOL_EXPORT ControlProtocol : public CProtocol
+#define NEW_CTRL_VERSION  0  //新控制板协议版本号 有反馈
+#define OLD_CTRL_VERSION  1  //老控制板协议版本号 无反馈
+#define LICH_CTRL_VERSION 2  //力创控制板协议版本号 有反馈
+
+/*
+** 控制协议基类
+*/
+class PROTOCOL_EXPORT CtrlProtocol : public CProtocol
 {
+public:
+	CtrlProtocol();
+	~CtrlProtocol();
 
 	QByteArray m_sendBuf;
-	Ctrl_Frame_Struct *m_ctrlFrame;
-	QString m_balValueStr;
-
-public:
-	ControlProtocol();
-	~ControlProtocol();
-
 
 public slots:
-	void makeRelaySendBuf(UINT8 portno, bool status);
-	void makeRegulateSendBuf(UINT8 portno, UINT16 degree);
-	void makeQuerySendBuf();
-	QByteArray getSendBuf();
-	UINT8 readControlComBuffer(QByteArray tmp);
-	UINT8 CountCheck(Ctrl_Frame_Struct *pFrame);
-	void analyseFrame();
-	Ctrl_Frame_Struct* getConFrame();
-	QString getBalanceValue();
+	//pure virtual
+	virtual void makeFrameOfCtrlRelay(UINT8 portno, bool status) = 0;
+	virtual void makeFrameOfCtrlRegulate(UINT8 portno, UINT16 degree) = 0;
+	virtual void makeFrameOfCtrlQuery() = 0;
+	virtual void makeFrameOfCtrlWaterPump(UINT8 portno, bool status) = 0;
+	virtual UINT8 readCtrlComBuffer(QByteArray tmp) = 0;
+	virtual void analyseFrame() = 0;
+
+	//virtual
+	virtual QByteArray getSendBuf();
 
 private:
 };
+
+//新控制板协议类 对应协议类型 
+class PROTOCOL_EXPORT NewCtrlProtocol : public CtrlProtocol
+{
+	NewCtrl_Frame_Struct *m_ctrlFrame;
+	QString m_balValueStr;
+
+public:
+	NewCtrlProtocol();
+	~NewCtrlProtocol();
+
+public slots:
+	//pure virtual
+	virtual void makeFrameOfCtrlRelay(UINT8 portno, bool status);
+	virtual void makeFrameOfCtrlRegulate(UINT8 portno, UINT16 degree);
+	virtual void makeFrameOfCtrlQuery();
+	virtual void makeFrameOfCtrlWaterPump(UINT8 portno, bool status);
+	virtual UINT8 readCtrlComBuffer(QByteArray tmp);
+	virtual void analyseFrame();
+
+	//virtual
+	virtual UINT8 CountCheck(NewCtrl_Frame_Struct *pFrame);
+	virtual NewCtrl_Frame_Struct* getConFrame();
+	virtual QString getBalanceValue();
+};
+
+
+//老控制板协议类 对应协议类型
+class PROTOCOL_EXPORT OldCtrlProtocol : public CtrlProtocol
+{
+public:
+	OldCtrlProtocol();
+	~OldCtrlProtocol();
+
+	QMap <int, UINT8> portCloseMap; //闭合继电器
+	QMap <int, UINT8> portOpenMap;  //断开继电器
+
+	public slots:
+	//pure virtual
+	virtual void makeFrameOfCtrlRelay(UINT8 portno, bool status);
+	virtual void makeFrameOfCtrlRegulate(UINT8 portno, UINT16 degree);
+	virtual void makeFrameOfCtrlQuery();
+	virtual void makeFrameOfCtrlWaterPump(UINT8 portno, bool status);
+	virtual UINT8 readCtrlComBuffer(QByteArray tmp);
+	virtual void analyseFrame();
+
+	//virtual
+	virtual void makeFrameOfCtrlPressPump(bool status); //打压泵 暂时不用
+};
+
 //下位机控制协议 end
 
 //热量表通讯协议 begin

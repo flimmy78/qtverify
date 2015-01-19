@@ -14,6 +14,7 @@
 ***********************************************/
 
 #include <QSettings>
+#include <QMessageBox>
 
 #include "setportfrm.h"
 #include "commondefine.h"
@@ -51,6 +52,7 @@ void SetPortFrm::on_btn_Exit_clicked()
 void SetPortFrm::on_btn_Save_clicked()
 {
 	WriteIni();
+	QMessageBox::information(this, tr("OK"), tr("Save Successful !"));
 }
 /************************************************************************/
 /* 读取上次的端口配置                                                    */
@@ -69,6 +71,8 @@ void SetPortFrm::InstallIni()
 	gui.cBox_Regulate_2->setCurrentIndex(PortSet->value("Regulate/regflow2No").toInt() - 1);
 	gui.cBox_Regulate_3->setCurrentIndex(PortSet->value("Regulate/regflow3No").toInt() - 1);
 	gui.cBox_Regulate_4->setCurrentIndex(PortSet->value("Regulate/regflow4No").toInt() - 1);
+
+	gui.cBox_Version->setCurrentIndex(PortSet->value("CtrlBoard/version").toInt());
 }
 /************************************************************************/
 /* 保存端口配置                                                                */
@@ -87,4 +91,6 @@ void SetPortFrm::WriteIni()
 	PortSet->setValue("Regulate/regflow2No",gui.cBox_Regulate_2->currentIndex() + 1);
 	PortSet->setValue("Regulate/regflow3No",gui.cBox_Regulate_3->currentIndex() + 1);
 	PortSet->setValue("Regulate/regflow4No",gui.cBox_Regulate_4->currentIndex() + 1);
+	
+	PortSet->setValue("CtrlBoard/version",gui.cBox_Version->currentIndex());
 }

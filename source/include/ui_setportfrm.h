@@ -28,7 +28,7 @@ QT_BEGIN_NAMESPACE
 class Ui_SetPortFrm
 {
 public:
-    QGridLayout *gridLayout_3;
+    QGridLayout *gridLayout_4;
     QGroupBox *gBox_Valve;
     QGridLayout *gridLayout;
     QLabel *label;
@@ -56,7 +56,9 @@ public:
     QComboBox *cBox_Regulate_3;
     QLabel *label_11;
     QComboBox *cBox_Regulate_4;
-    QSpacerItem *verticalSpacer;
+    QGridLayout *gridLayout_3;
+    QLabel *label_12;
+    QComboBox *cBox_Version;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer_2;
     QPushButton *btn_Save;
@@ -69,9 +71,9 @@ public:
         if (SetPortFrm->objectName().isEmpty())
             SetPortFrm->setObjectName(QString::fromUtf8("SetPortFrm"));
         SetPortFrm->setWindowModality(Qt::ApplicationModal);
-        SetPortFrm->resize(433, 276);
-        gridLayout_3 = new QGridLayout(SetPortFrm);
-        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        SetPortFrm->resize(446, 270);
+        gridLayout_4 = new QGridLayout(SetPortFrm);
+        gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
         gBox_Valve = new QGroupBox(SetPortFrm);
         gBox_Valve->setObjectName(QString::fromUtf8("gBox_Valve"));
         gridLayout = new QGridLayout(gBox_Valve);
@@ -137,11 +139,11 @@ public:
         gridLayout->addWidget(cBox_Rate_4, 5, 1, 1, 1);
 
 
-        gridLayout_3->addWidget(gBox_Valve, 0, 0, 2, 1);
+        gridLayout_4->addWidget(gBox_Valve, 0, 0, 2, 1);
 
         horizontalSpacer_4 = new QSpacerItem(8, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout_3->addItem(horizontalSpacer_4, 0, 1, 1, 1);
+        gridLayout_4->addItem(horizontalSpacer_4, 0, 1, 1, 1);
 
         gBox_Dev = new QGroupBox(SetPortFrm);
         gBox_Dev->setObjectName(QString::fromUtf8("gBox_Dev"));
@@ -198,11 +200,22 @@ public:
         gridLayout_2->addWidget(cBox_Regulate_4, 4, 1, 1, 1);
 
 
-        gridLayout_3->addWidget(gBox_Dev, 0, 2, 1, 1);
+        gridLayout_4->addWidget(gBox_Dev, 0, 2, 1, 1);
 
-        verticalSpacer = new QSpacerItem(20, 19, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        gridLayout_3 = new QGridLayout();
+        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        label_12 = new QLabel(SetPortFrm);
+        label_12->setObjectName(QString::fromUtf8("label_12"));
 
-        gridLayout_3->addItem(verticalSpacer, 1, 2, 1, 1);
+        gridLayout_3->addWidget(label_12, 0, 0, 1, 1);
+
+        cBox_Version = new QComboBox(SetPortFrm);
+        cBox_Version->setObjectName(QString::fromUtf8("cBox_Version"));
+
+        gridLayout_3->addWidget(cBox_Version, 0, 1, 1, 1);
+
+
+        gridLayout_4->addLayout(gridLayout_3, 1, 2, 1, 1);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
@@ -236,7 +249,7 @@ public:
         horizontalLayout->addItem(horizontalSpacer_3);
 
 
-        gridLayout_3->addLayout(horizontalLayout, 2, 0, 1, 3);
+        gridLayout_4->addLayout(horizontalLayout, 2, 0, 1, 3);
 
 
         retranslateUi(SetPortFrm);
@@ -512,6 +525,13 @@ public:
          << QApplication::translate("SetPortFrm", "port18", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetPortFrm", "port19", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("SetPortFrm", "port20", 0, QApplication::UnicodeUTF8)
+        );
+        label_12->setText(QApplication::translate("SetPortFrm", "ProtVersion:", 0, QApplication::UnicodeUTF8));
+        cBox_Version->clear();
+        cBox_Version->insertItems(0, QStringList()
+         << QApplication::translate("SetPortFrm", "NewCtrlBoard", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "OldCtrlBoard", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SetPortFrm", "LichCtrlBoard", 0, QApplication::UnicodeUTF8)
         );
         btn_Save->setText(QApplication::translate("SetPortFrm", "Save", 0, QApplication::UnicodeUTF8));
         btn_Exit->setText(QApplication::translate("SetPortFrm", "Exit", 0, QApplication::UnicodeUTF8));

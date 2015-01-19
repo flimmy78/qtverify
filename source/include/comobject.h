@@ -105,10 +105,12 @@ public:
 	~ControlComObject();
 
 	QextSerialPort *m_controlCom;
-	ControlProtocol *m_controlProtocol;   //下位机控制通讯协议类对象
-	Ctrl_Frame_Struct *m_conFrame;
+	CtrlProtocol *m_controlProtocol;   //下位机控制通讯协议类对象
 	QByteArray m_conTmp;
 	QString m_balValue;
+	int m_protocolVersion; //控制板通讯协议版本
+
+	NewCtrl_Frame_Struct *m_conFrame;
 
 signals:
 	void controlRelayIsOk(const UINT8 &portno, const bool &status);
@@ -117,10 +119,15 @@ signals:
 
 public slots:
 	bool openControlCom(ComInfoStruct *comStruct);
-	void makeRelaySendBuf(UINT8 portno, bool status);
-	void makeRegulateSendBuf(UINT8 portno, int degree);
-	void makeQuerySendBuf();
+	void askControlRelay(UINT8 portno, bool status);
+	void askControlRegulate(UINT8 portno, int degree);
+	void askControlQuery();
+	void askControlWaterPump(UINT8 portno, bool status);
 	void readControlComBuffer();
+	void readNewControlComBuffer();
+
+	void setProtocolVersion(int version);
+
 };
 
 
@@ -164,7 +171,7 @@ public:
 	MeterProtocol *m_meterProtocol;
 	QByteArray m_meterTmp;
 	QString m_portName;
-	int m_protocolVersion; //热表生产厂家
+	int m_protocolVersion; //热表协议类型
 
 signals:
 	void readMeterNoIsOK(const QString& portName, const QString& meterNo); //获取表号成功
@@ -183,7 +190,7 @@ public slots:
 	void askModifyMeterNo(QString oldMeterNo, QString newMeterNo);   //请求修改表号
 	void askModifyFlowPara();  //请求修改流量参数
 
-	void setProtocolVersion(int manufact);
+	void setProtocolVersion(int version);
 };
 
 

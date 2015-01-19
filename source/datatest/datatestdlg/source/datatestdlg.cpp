@@ -25,6 +25,22 @@ DataTestDlg::DataTestDlg(QWidget *parent, Qt::WFlags flags)
 	qDebug()<<"QualityDlg thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
 
+	//获取下位机端口配置信息
+	if (!getPortSetIni(&m_portsetinfo))
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("get port set info failed!"));//获取下位机端口配置信息失败!请重新设置！
+	}
+
+	initValveStatus();      //初始化阀门状态
+	initRegulateStatus();   //初始化调节阀状态
+
+	//获取参数设置信息
+	if (!getParaSetIni(&m_parasetinfo))
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("get para set info failed"));//获取质量法参数配置信息失败!请重新设置！
+	}
+	qDebug()<<"metertype:"<<m_parasetinfo.metertype;
+
 	m_paraset = NULL;
 
 	m_readComConfig = NULL;
@@ -59,24 +75,6 @@ DataTestDlg::DataTestDlg(QWidget *parent, Qt::WFlags flags)
 
 	m_meterObj = NULL;
  	initComOfHeatMeter();	//初始化热量表串口
-
-
-	//获取下位机端口配置信息
-	if (!getPortSetIni(&m_portsetinfo))
-	{
-		QMessageBox::warning(this, tr("Warning"), tr("get port set info failed!"));//获取下位机端口配置信息失败!请重新设置！
-	}
-
-	initValveStatus();      //初始化阀门状态
-	initRegulateStatus();   //初始化调节阀状态
-
-	//获取参数设置信息
-	if (!getParaSetIni(&m_parasetinfo))
-	{
-		QMessageBox::warning(this, tr("Warning"), tr("get para set info failed"));//获取质量法参数配置信息失败!请重新设置！
-	}
-	qDebug()<<"metertype:"<<m_parasetinfo.metertype;
-
 }
 
 DataTestDlg::~DataTestDlg()
@@ -226,13 +224,14 @@ void DataTestDlg::initControlCom()
 {
 	ComInfoStruct valveStruct = m_readComConfig->ReadValveConfig();
 	m_controlObj = new ControlComObject();
+	m_controlObj->setProtocolVersion(m_portsetinfo.version); //设置协议版本
 	m_controlObj->moveToThread(&m_valveThread);
 	m_valveThread.start();
 	m_controlObj->openControlCom(&valveStruct);
 
+	//控制板有反馈	
 	connect(m_controlObj, SIGNAL(controlRelayIsOk(const UINT8 &, const bool &)), this, SLOT(slotSetValveBtnStatus(const UINT8 &, const bool &)));
 	connect(m_controlObj, SIGNAL(controlRegulateIsOk()), this, SLOT(slotSetRegulateOk()));
-
 	//天平数值从控制板获取
 	connect(m_controlObj, SIGNAL(controlGetBalanceValueIsOk(const QString&)), this, SLOT(slotFreshBalanceValue(const QString &)));
 }
@@ -379,60 +378,96 @@ void DataTestDlg::on_btnCloseCom_clicked()
 void DataTestDlg::on_btnWaterIn_clicked() //进水阀
 {
 	m_nowPortNo = m_portsetinfo.waterInNo;
-	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	m_controlObj->askControlRelay(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+
+	if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
+	{
+		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	}
 }
 
 void DataTestDlg::on_btnWaterOut_clicked() //出水阀
 {
 	m_nowPortNo = m_portsetinfo.waterOutNo;
-	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	m_controlObj->askControlRelay(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+
+	if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
+	{
+		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	}
 }
 
 void DataTestDlg::on_btnValveBig_clicked() //大流量阀
 {
 	m_nowPortNo = m_portsetinfo.bigNo;
-	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	m_controlObj->askControlRelay(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+
+	if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
+	{
+		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	}
 }
 
 void DataTestDlg::on_btnValveMiddle1_clicked() //中流一阀
 {
 	m_nowPortNo = m_portsetinfo.middle1No;
-	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	m_controlObj->askControlRelay(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+
+	if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
+	{
+		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	}
 }
 
 void DataTestDlg::on_btnValveMiddle2_clicked() //中流二阀
 {
 	m_nowPortNo = m_portsetinfo.middle2No;
-	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	m_controlObj->askControlRelay(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+
+	if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
+	{
+		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	}
 }
 
 void DataTestDlg::on_btnValveSmall_clicked() //小流量阀
 {
 	m_nowPortNo = m_portsetinfo.smallNo;
-	m_controlObj->makeRelaySendBuf(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	m_controlObj->askControlRelay(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+
+	if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
+	{
+		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	}
 }
 
 /*
-**	调节阀开度、水泵(变频器频率)
+**	控制水泵开关
 */
 void DataTestDlg::on_btnWaterPump_clicked() //水泵
 {
 	m_nowRegNo = m_portsetinfo.pumpNo;
-	setRegBtnBackColor(m_regBtn[m_nowRegNo], false); //初始化调节阀背景色
-	m_controlObj->makeRegulateSendBuf(m_nowRegNo, ui.spinBoxFreq->value());
+	m_controlObj->askControlWaterPump(m_nowRegNo, !m_regStatus[m_nowRegNo]);
+
+	if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
+	{
+		m_regStatus[m_nowRegNo] = !m_regStatus[m_nowRegNo]; 
+		setRegBtnBackColor(m_regBtn[m_nowRegNo], m_regStatus[m_nowRegNo]);
+	}
 }
 
+//调节阀
 void DataTestDlg::on_btnRegulate1_clicked() //调节阀1
 {
 	m_nowRegNo = m_portsetinfo.regflow1No;
 	setRegBtnBackColor(m_regBtn[m_nowRegNo], false); //初始化调节阀背景色
-	m_controlObj->makeRegulateSendBuf(m_nowRegNo, ui.spinBoxFreq->value());
+	m_controlObj->askControlRegulate(m_nowRegNo, ui.spinBoxFreq->value());
 }
 
 //查询从机(控制板)状态
 void DataTestDlg::on_btnQueryStatus_clicked()
 {
-	m_controlObj->makeQuerySendBuf();
+	m_controlObj->askControlQuery();
 }
 
 //参数设置

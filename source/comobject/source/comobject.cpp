@@ -161,14 +161,15 @@ ControlComObject::ControlComObject(QObject* parent) : ComObject(parent)
 	m_controlCom = NULL;
 
 	m_controlProtocol = NULL;
-	m_controlProtocol = new ControlProtocol();
 
 	m_conFrame = NULL;
-	m_conFrame = new Ctrl_Frame_Struct();
-	memset(m_conFrame, 0, sizeof(Ctrl_Frame_Struct));
+	m_conFrame = new NewCtrl_Frame_Struct();
+	memset(m_conFrame, 0, sizeof(NewCtrl_Frame_Struct));
 
 	m_conTmp = "";
 	m_balValue = "";
+
+	setProtocolVersion(NEW_CTRL_VERSION); //默认新控制板协议
 }
 
 ControlComObject::~ControlComObject()
@@ -188,6 +189,30 @@ ControlComObject::~ControlComObject()
 		delete m_controlProtocol;
 		m_controlProtocol = NULL;
 	}
+}
+
+
+void ControlComObject::setProtocolVersion(int version)
+{
+	m_protocolVersion = version;
+	if (m_controlProtocol != NULL)
+	{
+		delete m_controlProtocol;
+		m_controlProtocol = NULL;
+	}
+	switch (m_protocolVersion)
+	{
+	case NEW_CTRL_VERSION: //新控制板协议
+		m_controlProtocol = new NewCtrlProtocol();
+		break;
+	case OLD_CTRL_VERSION: //老控制板协议
+		m_controlProtocol = new OldCtrlProtocol();
+		break;
+	default: 
+		m_controlProtocol =  new NewCtrlProtocol();
+		break;
+	}
+
 }
 
 bool ControlComObject::openControlCom(ComInfoStruct *comStruct)
@@ -222,38 +247,64 @@ bool ControlComObject::openControlCom(ComInfoStruct *comStruct)
 }
 
 //继电器控制
-void ControlComObject::makeRelaySendBuf(UINT8 portno, bool status)
+void ControlComObject::askControlRelay(UINT8 portno, bool status)
 {
-	qDebug()<<"makeRelaySendBuf thread:"<<QThread::currentThreadId();
+	qDebug()<<"askControlRelay thread:"<<QThread::currentThreadId();
 	
 	QByteArray buf;
-	m_controlProtocol->makeRelaySendBuf(portno, status);
+	m_controlProtocol->makeFrameOfCtrlRelay(portno, status);
 	buf = m_controlProtocol->getSendBuf();
 	m_controlCom->write(buf);
 }
 
 //调节阀开度
-void ControlComObject::makeRegulateSendBuf(UINT8 portno, int degree)
+void ControlComObject::askControlRegulate(UINT8 portno, int degree)
 {
 	QByteArray buf;
-	m_controlProtocol->makeRegulateSendBuf(portno, degree);
+	m_controlProtocol->makeFrameOfCtrlRegulate(portno, degree);
 	buf = m_controlProtocol->getSendBuf();
 	m_controlCom->write(buf);
 }
 
 //查询从机状态
-void ControlComObject::makeQuerySendBuf()
+void ControlComObject::askControlQuery()
 {
 	QByteArray buf;
-	m_controlProtocol->makeQuerySendBuf();
+	m_controlProtocol->makeFrameOfCtrlQuery();
+	buf = m_controlProtocol->getSendBuf();
+	m_controlCom->write(buf);
+}
+
+//控制水泵
+void ControlComObject::askControlWaterPump(UINT8 portno, bool status)
+{
+	QByteArray buf;
+	m_controlProtocol->makeFrameOfCtrlWaterPump(portno, status);
 	buf = m_controlProtocol->getSendBuf();
 	m_controlCom->write(buf);
 }
 
 void ControlComObject::readControlComBuffer()
 {
-// 	qDebug()<<"readControlComBuffer ControlComObject thread:"<<QThread::currentThreadId();
-	QDateTime begintime = QDateTime::currentDateTime();
+	qDebug()<<"readControlComBuffer ControlComObject thread:"<<QThread::currentThreadId();
+	
+	switch (m_protocolVersion)
+	{
+	case NEW_CTRL_VERSION: //新控制板协议
+		readNewControlComBuffer();
+		break;
+	case OLD_CTRL_VERSION: //老控制板协议
+		
+		break;
+	default: 
+		
+		break;
+	}
+}
+
+void ControlComObject::readNewControlComBuffer()
+{
+	qDebug()<<"readNewControlComBuffer ControlComObject thread:"<<QThread::currentThreadId();
 	m_conTmp.append(m_controlCom->readAll());
 	int num = m_conTmp.size();
 	if (num <= 0)
@@ -264,9 +315,11 @@ void ControlComObject::readControlComBuffer()
 	{
 		return;
 	}
-	
+	QDateTime begintime = QDateTime::currentDateTime();
+
 	UINT8 ret = 0x00;
-	ret = m_controlProtocol->readControlComBuffer(m_conTmp);
+	NewCtrlProtocol * protocolObj = (NewCtrlProtocol *)m_controlProtocol;
+	ret = protocolObj->readCtrlComBuffer(m_conTmp);
 	m_conTmp.clear(); //清零
 
 	UINT8 portno;
@@ -274,8 +327,8 @@ void ControlComObject::readControlComBuffer()
 	bool status;
 	if (ret == CTRL_FUNC_RELAY) //继电器
 	{
-		portno = m_controlProtocol->getConFrame()->data[1];
-		st = m_controlProtocol->getConFrame()->data[(portno-1)/8 + 2];
+		portno = protocolObj->getConFrame()->data[1];
+		st = protocolObj->getConFrame()->data[(portno-1)/8 + 2];
 		status = st ? VALVE_OPEN : VALVE_CLOSE;
 		emit controlRelayIsOk(portno, status);
 		qDebug()<<"controlRelayIsOk"<<"\n";
@@ -287,16 +340,17 @@ void ControlComObject::readControlComBuffer()
 	}
 	else if (ret == CTRL_FUNC_QUERY) //查询
 	{
-		m_conFrame = m_controlProtocol->getConFrame();
+		m_conFrame = protocolObj->getConFrame();
 	}
 	else if (ret == CTRL_FUNC_BALANCE) //天平
 	{
-		m_balValue = m_controlProtocol->getBalanceValue();
+		m_balValue = protocolObj->getBalanceValue();
 		emit controlGetBalanceValueIsOk(m_balValue);
 		QDateTime endtime = QDateTime::currentDateTime();
 		UINT32 usedSec = begintime.msecsTo(endtime);
 // 		qDebug()<<"读取天平数据，用时"<<usedSec<<"毫秒";
 	}
+	
 }
 
 /*********************************************************
@@ -402,7 +456,7 @@ MeterComObject::MeterComObject(QObject* parent) : ComObject(parent)
 	m_meterTmp="";
 	m_portName = "";
 
-	m_protocolVersion = 0; //默认是德鲁热量表
+	setProtocolVersion(0); //默认是德鲁热量表
 }
 
 MeterComObject::~MeterComObject()

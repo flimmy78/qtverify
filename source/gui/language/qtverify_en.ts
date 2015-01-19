@@ -40,12 +40,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="175"/>
+        <location filename="../source/mainform.cpp" line="54"/>
+        <source>Question</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/mainform.cpp" line="54"/>
+        <source>Quit Really ?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/mainform.cpp" line="184"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="175"/>
+        <location filename="../source/mainform.cpp" line="184"/>
         <source>Excel object lose!</source>
         <translation type="unfinished"></translation>
     </message>

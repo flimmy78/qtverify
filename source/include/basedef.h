@@ -48,6 +48,7 @@ public:
 	int		regflow2No;
 	int		regflow3No;
 	int     pumpNo;
+	int     version;
 };
 typedef PortSet_Ini_STR* PortSet_Ini_PTR;
 

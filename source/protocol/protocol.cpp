@@ -286,32 +286,48 @@ QString BalanceProtocol::getBalanceValue()
 
 /***********************************************
 类名：ControlProtocol
-功能：下位机控制协议
+功能：下位机控制协议基类
 ************************************************/
-ControlProtocol::ControlProtocol()
+CtrlProtocol::CtrlProtocol()
 {
 	m_sendBuf = "";
-
-	m_ctrlFrame = new Ctrl_Frame_Struct();
-	memset(m_ctrlFrame, 0, sizeof(Ctrl_Frame_Struct));
-
-	m_balValueStr = "";
 }
 
-ControlProtocol::~ControlProtocol()
+CtrlProtocol::~CtrlProtocol()
+{
+}
+
+QByteArray CtrlProtocol::getSendBuf()
+{
+	return m_sendBuf;
+}
+
+/***********************************************
+类名：NewCtrlProtocol
+功能：下位机控制协议-新控制板
+************************************************/
+NewCtrlProtocol::NewCtrlProtocol()
+{
+	m_ctrlFrame = new NewCtrl_Frame_Struct();
+	memset(m_ctrlFrame, 0, sizeof(NewCtrl_Frame_Struct));
+
+	m_balValueStr = "";
+};
+
+NewCtrlProtocol::~NewCtrlProtocol()
 {
 	if (m_ctrlFrame)
 	{
 		delete m_ctrlFrame;
 		m_ctrlFrame = NULL;
 	}
-}
+};
 
 /************************************************************************
 	新控制板协议：继电器控制 同时只控制1路                                       
 	status: true(阀门打开)；false(阀门关闭)
 ************************************************************************/
-void ControlProtocol::makeRelaySendBuf(UINT8 portno, bool status)
+void NewCtrlProtocol::makeFrameOfCtrlRelay(UINT8 portno, bool status)
 {
 	m_sendBuf = "";
 	m_sendBuf.append(CTRL_START_CODE).append(CTRL_FUNC_RELAY);
@@ -342,9 +358,8 @@ void ControlProtocol::makeRelaySendBuf(UINT8 portno, bool status)
 	m_sendBuf.append(cs).append(CTRL_END_CODE);
 }
 
-
 //控制调节阀 同时只控制一路
-void ControlProtocol::makeRegulateSendBuf(UINT8 portno, UINT16 degree)
+void NewCtrlProtocol::makeFrameOfCtrlRegulate(UINT8 portno, UINT16 degree)
 {
 	m_sendBuf = "";
 	m_sendBuf.append(CTRL_START_CODE).append(CTRL_FUNC_REGULATE);
@@ -363,7 +378,7 @@ void ControlProtocol::makeRegulateSendBuf(UINT8 portno, UINT16 degree)
 }
 
 //查询从机状态
-void ControlProtocol::makeQuerySendBuf()
+void NewCtrlProtocol::makeFrameOfCtrlQuery()
 {
 	m_sendBuf = "";
 	m_sendBuf.append(CTRL_START_CODE).append(CTRL_FUNC_QUERY);
@@ -373,15 +388,14 @@ void ControlProtocol::makeQuerySendBuf()
 	m_sendBuf.append(cs).append(CTRL_END_CODE);
 }
 
-
-QByteArray ControlProtocol::getSendBuf()
+//控制水泵
+void NewCtrlProtocol::makeFrameOfCtrlWaterPump(UINT8 portno, bool status)
 {
-	return m_sendBuf;
+
 }
 
-
 //解帧
-UINT8 ControlProtocol::readControlComBuffer(QByteArray tmp)
+UINT8 NewCtrlProtocol::readCtrlComBuffer(QByteArray tmp)
 {
 // 	qDebug()<<"readControlComBuffer ControlProtocol thread:"<<QThread::currentThreadId();
 	UINT8 ret = 0x00;
@@ -507,7 +521,7 @@ UINT8 ControlProtocol::readControlComBuffer(QByteArray tmp)
 	return ret;
 }
 
-UINT8 ControlProtocol::CountCheck(Ctrl_Frame_Struct *pFrame)
+UINT8 NewCtrlProtocol::CountCheck(NewCtrl_Frame_Struct *pFrame)
 {
 	if (NULL == pFrame)
 	{
@@ -548,7 +562,7 @@ UINT8 ControlProtocol::CountCheck(Ctrl_Frame_Struct *pFrame)
 	return cs;
 }
 
-void ControlProtocol::analyseFrame()
+void NewCtrlProtocol::analyseFrame()
 {
 	if (NULL==m_ctrlFrame)
 	{
@@ -574,15 +588,118 @@ void ControlProtocol::analyseFrame()
 	}
 }
 
-Ctrl_Frame_Struct * ControlProtocol::getConFrame()
+NewCtrl_Frame_Struct * NewCtrlProtocol::getConFrame()
 {
 	return m_ctrlFrame;
 }
 
-QString ControlProtocol::getBalanceValue()
+QString NewCtrlProtocol::getBalanceValue()
 {
 	return m_balValueStr;
 }
+
+/***********************************************
+类名：OldCtrlProtocol
+功能：下位机控制协议-老控制板
+************************************************/
+OldCtrlProtocol::OldCtrlProtocol()
+{
+	portCloseMap.insert(1, 0xE1);
+	portCloseMap.insert(2, 0xE3);
+	portCloseMap.insert(3, 0xE5);
+	portCloseMap.insert(4, 0xE7);
+	portCloseMap.insert(5, 0xE9);
+	portCloseMap.insert(6, 0xEB);
+	portCloseMap.insert(7, 0xED);
+	portCloseMap.insert(8, 0xEF);
+
+	portOpenMap.insert(1, 0xE0);
+	portOpenMap.insert(2, 0xE2);
+	portOpenMap.insert(3, 0xE4);
+	portOpenMap.insert(4, 0xE6);
+	portOpenMap.insert(5, 0xE8);
+	portOpenMap.insert(6, 0xEA);
+	portOpenMap.insert(7, 0xEC);
+	portOpenMap.insert(8, 0xEE);
+}
+
+OldCtrlProtocol::~OldCtrlProtocol()
+{
+
+}
+
+/************************************************************************
+	老控制板协议：继电器控制 同时只控制1路                                       
+	status: true(阀门打开,闭合继电器)；false(阀门关闭，断开继电器)
+************************************************************************/
+void OldCtrlProtocol::makeFrameOfCtrlRelay(UINT8 portno, bool status)
+{
+	qDebug()<<"OldCtrlProtocol::makeFrameOfCtrlRelay";
+	UINT8 zeroCode = 0x00;
+	m_sendBuf = "";
+	if (status) //true(阀门打开,闭合继电器)
+	{
+		m_sendBuf.append(0xFF).append(portCloseMap[portno]).append(zeroCode)\
+			.append(zeroCode).append(0xFE);
+	}
+	else //false(阀门关闭，断开继电器)
+	{
+		m_sendBuf.append(0xFF).append(portOpenMap[portno]).append(zeroCode)\
+			.append(zeroCode).append(0xFE);
+	}
+}
+
+//控制调节阀 同时只控制一路
+void OldCtrlProtocol::makeFrameOfCtrlRegulate(UINT8 portno, UINT16 degree)
+{
+
+}
+
+//查询从机状态
+void OldCtrlProtocol::makeFrameOfCtrlQuery()
+{
+}
+
+//控制水泵开关
+void OldCtrlProtocol::makeFrameOfCtrlWaterPump(UINT8 portno, bool status)
+{
+	UINT8 zeroCode = 0x00;
+	m_sendBuf = "";
+	if (status) //true 开水泵
+	{
+		m_sendBuf.append(0xFF).append(0xF9).append(zeroCode).append(zeroCode).append(0xFE);
+	}
+	else //false 关水泵
+	{
+		m_sendBuf.append(0xFF).append(0xFA).append(zeroCode).append(zeroCode).append(0xFE);
+	}
+}
+
+//解帧
+UINT8 OldCtrlProtocol::readCtrlComBuffer(QByteArray tmp)
+{
+	return 0;
+}
+
+void OldCtrlProtocol::analyseFrame()
+{
+}
+
+//控制打压泵开关
+void OldCtrlProtocol::makeFrameOfCtrlPressPump(bool status)
+{
+	UINT8 zeroCode = 0x00;
+	m_sendBuf = "";
+	if (status) //开打压泵
+	{
+		m_sendBuf.append(0xFF).append(0xFB).append(zeroCode).append(zeroCode).append(0xFE);
+	}
+	else //false 关打压泵
+	{
+		m_sendBuf.append(0xFF).append(0xFC).append(zeroCode).append(zeroCode).append(0xFE);
+	}
+}
+
 
 /***********************************************
 类名：MeterProtocol
