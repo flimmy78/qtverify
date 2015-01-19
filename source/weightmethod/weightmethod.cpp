@@ -49,6 +49,11 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	}
 */
 
+	if (!getPortSetIni(&m_portsetinfo)) //获取下位机端口号配置信息
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("Warning:get port set info failed!"));//获取下位机端口号配置信息失败!请重新设置！
+	}
+
 /*********************************************************/
 	m_balTimer = new QTimer(this);
 	connect(m_balTimer, SIGNAL(timeout()), this, SLOT(freshBigBalaceValue()));
@@ -72,11 +77,6 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 
 
 	m_chkAlg = new CAlgorithm();//计算类接口
-
-	if (!getPortSetIni(&m_portsetinfo)) //获取下位机端口号配置信息
-	{
-		QMessageBox::warning(this, tr("Warning"), tr("Warning:get port set info failed!"));//获取下位机端口号配置信息失败!请重新设置！
-	}
 
 	initValveStatus();      //映射关系；初始化阀门状态
 
@@ -273,13 +273,13 @@ void WeightMethodDlg::initControlCom()
 {
 	ComInfoStruct valveStruct = m_readComConfig->ReadValveConfig();
 	m_controlObj = new ControlComObject();
+	m_controlObj->setProtocolVersion(m_portsetinfo.version);
 	m_controlObj->moveToThread(&m_valveThread);
 	m_valveThread.start();
 	m_controlObj->openControlCom(&valveStruct);
 
 	connect(m_controlObj, SIGNAL(controlRelayIsOk(const UINT8 &, const bool &)), this, SLOT(slotSetValveBtnStatus(const UINT8 &, const bool &)));
 	connect(m_controlObj, SIGNAL(controlRegulateIsOk()), this, SLOT(slotSetRegulateOk()));
-
 	//天平数值从控制板获取
 // 	connect(m_controlObj, SIGNAL(controlGetBalanceValueIsOk(const QString&)), this, SLOT(slotFreshBalanceValue(const QString &)));
 }
@@ -299,6 +299,7 @@ void WeightMethodDlg::initMeterCom()
 	for (i=0; i<m_maxMeterNum; i++)
 	{
 		m_meterObj[i].moveToThread(&m_meterThread[i]);
+		m_meterObj[i].setProtocolVersion(m_manufac); //设置表协议类型
 		m_meterThread[i].start();
 		m_meterObj[i].openMeterCom(&m_readComConfig->ReadMeterConfigByNum(QString("%1").arg(i+1)));
 		
@@ -1208,12 +1209,13 @@ void WeightMethodDlg::on_btnValveSmall_clicked() //小流量阀
 */
 void WeightMethodDlg::on_btnWaterPumpStart_clicked()
 {
-	if (ui.spinBoxFrequency->value() <= 0)
+/*	if (ui.spinBoxFrequency->value() <= 0)
 	{
 		QMessageBox::warning(this, tr("Warning"), tr("please input frequency of transducer"));//请设置变频器频率！
 		ui.spinBoxFrequency->setFocus();
 	}
-	m_controlObj->askControlRegulate(m_portsetinfo.pumpNo, ui.spinBoxFrequency->value());
+ 	m_controlObj->askControlRegulate(m_portsetinfo.pumpNo, ui.spinBoxFrequency->value());*/
+	m_controlObj->askControlWaterPump(m_portsetinfo.pumpNo, true);
 }
 
 /*
@@ -1221,7 +1223,8 @@ void WeightMethodDlg::on_btnWaterPumpStart_clicked()
 */
 void WeightMethodDlg::on_btnWaterPumpStop_clicked()
 {
-	m_controlObj->askControlRegulate(m_portsetinfo.pumpNo, 0);
+// 	m_controlObj->askControlRegulate(m_portsetinfo.pumpNo, 0);
+	m_controlObj->askControlWaterPump(m_portsetinfo.pumpNo, false);
 }
 
 //获取表初值
