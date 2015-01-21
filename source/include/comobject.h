@@ -18,6 +18,7 @@
 
 #include <QtCore/QThread>  
 #include <QtCore/QObject> 
+#include <QtCore/QTimer>
 
 #include "protocol.h"
 #include "comsetdlg_global.h"
@@ -146,7 +147,7 @@ public:
 
 	QextSerialPort *m_balanceCom;
 	BalanceProtocol *m_balanceProtocol;   //天平通讯协议类对象
-	QByteArray m_balTmp;
+	QTimer *m_balTimer; //定时器 (轮询天平数据)
 
 signals:
 	void balanceValueIsReady(const QString& tempStr); //成功获取天平数值
