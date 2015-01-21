@@ -256,13 +256,29 @@ bool BalanceProtocol::readBalanceComBuffer(QByteArray tmp)
 	m_balValue = "";
 	bool ret = false;
 	int num = tmp.size();
-	if (num < 16) //一帧通常是22字节；
+	if (num < 22) //一帧通常是22字节；
 	{
 		return ret;
 	}
 	int m=0;
 	char ch;
 	UINT8 ch1, ch2;
+
+	for (int i=num; i>0; i--)
+	{
+		ch1 = (UINT8)tmp.at(i-1);
+		if (ch1==ASCII_LF && i>=16) //0x0A换行（表示一帧结束）
+		{
+			for (m=i-16; m<i-6; m++)
+			{
+				ch = tmp.at(m);
+				m_balValue += ch;
+			}
+			ret = true;
+			break;
+		}
+	}
+/*
 	ch1 = (UINT8)tmp.at(num-1);
 	ch2 = (UINT8)tmp.at(num-2);
 	if (ch1==ASCII_LF && ch2==ASCII_CR) //0x0A换行; 0x0D回车（表示一帧结束）
@@ -274,7 +290,7 @@ bool BalanceProtocol::readBalanceComBuffer(QByteArray tmp)
 		}
 		ret = true;
 	}
-
+*/	
 	return ret;
 }
 
