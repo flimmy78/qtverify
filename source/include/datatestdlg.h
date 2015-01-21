@@ -7,11 +7,13 @@
 #include "ui_datatestdlg.h"
 #include "parasetdlg.h"
 #include "comobject.h"
-#include "ReadComConfig.h"
+#include "readcomconfig.h"
 #include "algorithm.h"
 
-#define TIMEOUT_TEMPER		500 //每0.5秒钟请求一次温度值
-#define CALC_FLOW_COUNT		2   //计算流量频率（实际计算频率 = CALC_FLOW_COUNT * TIMEOUT_TEMPER）
+#define TIMEOUT_TEMPER		1000 //每1秒钟请求一次温度值
+
+#define FLOW_SAMPLE_NUM		10    //计算流量 采样点个数
+#define TIMEOUT_FLOW_SAMPLE	1000  //计算流量 每1秒采样一次天平数值
 
 
 /*
@@ -32,9 +34,8 @@ public:
 
 	ComThread m_tempThread;  //温度采集线程
 	TempComObject *m_tempObj;
-	QTimer *m_tempTimer;
-	QTimer *m_flowTimer;//流量计时器
-	QTimer *m_setBalTimer;//设定天平读数计时器
+	QTimer *m_tempTimer;  //计时器:用于请求管路温度
+	QTimer *m_flowTimer;  //计时器:用于计算流量
 
 	ComThread m_valveThread;   //阀门控制线程
 	ControlComObject *m_controlObj;
@@ -53,14 +54,11 @@ public:
 	ComThread m_meterThread;  //热量表线程
 	MeterComObject *m_meterObj;
 
-	uint m_flowcount;  //计算流量时 计数用 , 0~4294967295, 按10微秒计数一次, 可计数497年
-	uint m_totalcount;//累积法计数器
-	float m_flow1;//天平初值
-	float m_flow2;//天平终值
-	float start_quan;//累积法天平初值
-	float end_quan;//累积法天平终值
-	float total_quantity;//累积质量(从读数开始, 到读数结束一共的累积量)
-	float bal_quan;//天平读数模拟量
+	//计算流量用
+	uint m_totalcount;  //计数器
+	float m_startWeight;//天平初值
+	float m_endWeight;  //天平终值
+	float m_deltaWeight[FLOW_SAMPLE_NUM];
 	
 
 	PortSet_Ini_STR m_portsetinfo; //端口配置
@@ -108,9 +106,7 @@ public slots:
 	void setValveBtnBackColor(QPushButton *btn, bool status); //设置阀门按钮背景色
 	void setRegBtnBackColor(QPushButton *btn, bool status);	//设置调节阀按钮背景色
 
-	void slotFreshFlow(); //计算流量
 	void slotFreshFlow_total();//计算流量(累计法)
-	void setBalQuantity();//模拟天平读数
 
 	void on_btnSetVerifyStatus_clicked();//设置检定状态
 	void on_btnReadMeterData_clicked(); //读表数据
