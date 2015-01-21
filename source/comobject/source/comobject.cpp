@@ -373,7 +373,7 @@ BalanceComObject::BalanceComObject(QObject* parent) : ComObject(parent)
 
 	m_balanceProtocol = new BalanceProtocol;
 
-	m_balTmp = "";
+	m_balTimer = new QTimer();
 }
 
 BalanceComObject::~BalanceComObject()
@@ -393,6 +393,17 @@ BalanceComObject::~BalanceComObject()
 		delete m_balanceProtocol;
 		m_balanceProtocol = NULL;
 	}
+
+	if (m_balTimer) 
+	{
+		if (m_balTimer->isActive())
+		{
+			m_balTimer->stop();
+		}
+		delete m_balTimer;
+		m_balTimer = NULL;
+	}
+
 }
 
 bool BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
@@ -403,9 +414,10 @@ bool BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
 #ifdef Q_OS_LINUX
 	m_balanceCom = new QextSerialPort("/dev/" + portName);
 #elif defined (Q_OS_WIN)
-	m_balanceCom = new QextSerialPort(portName, QextSerialPort::EventDriven);
+	m_balanceCom = new QextSerialPort(portName, QextSerialPort::Polling); //改为查询方式
 #endif
-	connect(m_balanceCom, SIGNAL(readyRead()), this, SLOT(readBalanceComBuffer()));
+// 	connect(m_balanceCom, SIGNAL(readyRead()), this, SLOT(readBalanceComBuffer()));
+	connect(m_balTimer, SIGNAL(timeout()), this, SLOT(readBalanceComBuffer()));
 
 	m_balanceCom->setBaudRate((BaudRateType)comStruct->baudRate);// BAUD9600); //设置波特率  
 	m_balanceCom->setDataBits((DataBitsType)comStruct->dataBit);//DATA_8);   //设置数据位
@@ -417,13 +429,14 @@ bool BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
 	if(m_balanceCom->open(QIODevice::ReadWrite)) 
 	{
 		qDebug()<<"Open Balance Com:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
-
+/*
 		QByteArray buf;
 		buf.append(0x4E).append(0x20).append(0x20).append(0x20).append(0x20).append(0x20);
 		buf.append(0x2D).append(0x31).append(0x32).append(0x33).append(0x34).append(0x2E).append(0x35).append(0x36).append(0x37).append(0x38);
 		buf.append(0x20).append(0x6B).append(0x67).append(0x20).append(0x0D).append(0x0A);
 		m_balanceCom->write(buf);
-
+*/
+		m_balTimer->start(200); //每200毫秒查询一次天平数据
 		return true;
 	}
 	else
@@ -436,21 +449,16 @@ bool BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
 //读取天平串口数据
 void BalanceComObject::readBalanceComBuffer()
 {
-	m_balTmp.append(m_balanceCom->readAll());
-	int num = m_balTmp.size();
+	QByteArray balBuffer = m_balanceCom->readAll();
+// 	qDebug()<<"balBuffer.size() ="<<balBuffer.size();
+//  qDebug()<<"readBalanceComBuffer thread:"<<QThread::currentThreadId()<<", Read data is:"<<balBuffer;
 
-	if ( num>=BAL_DATA_LENGTH && m_balTmp.at(num-1)==ASCII_LF && m_balTmp.at(num-2)==ASCII_CR ) //最后两个字节是回车符和换行符
+	bool ret = false;
+	ret = m_balanceProtocol->readBalanceComBuffer(balBuffer);//通讯协议接口
+	if (ret)
 	{
- 		qDebug()<<"readBalanceComBuffer thread:"<<QThread::currentThreadId()<<", Read data is:"<<m_balTmp;
-
-		bool ret = false;
-		ret = m_balanceProtocol->readBalanceComBuffer(m_balTmp.right(BAL_DATA_LENGTH)); //通讯协议接口
-		m_balTmp.clear();
-		if (ret)
-		{
-			QString balStr = m_balanceProtocol->getBalanceValue();
-			emit balanceValueIsReady(balStr);
-		}
+		QString balStr = m_balanceProtocol->getBalanceValue();
+		emit balanceValueIsReady(balStr);
 	}
 }
 
