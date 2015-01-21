@@ -517,7 +517,7 @@ void DataTestDlg::setRegBtnBackColor(QPushButton *btn, bool status)
 
 
 /************************************************************************/
-/* 计算瞬时流量(累积水量法, 参考老程序的算法)                           */
+/* 计算瞬时流量(每1秒采样一次天平变化值，计算前10秒的平均流量)          */
 /************************************************************************/
 void DataTestDlg::slotFreshFlow_total()
 {
@@ -540,19 +540,16 @@ void DataTestDlg::slotFreshFlow_total()
 	m_endWeight = ui.lnEditBigBalance->text().replace(" ", 0).toFloat();//取当前天平值, 作为当前运算的终值
 	float delta_weight = m_endWeight - m_startWeight;
 	m_deltaWeight[m_totalcount%FLOW_SAMPLE_NUM] = delta_weight;
-	qWarning()<<"m_totalcount ="<<m_totalcount;
-// 	if (m_totalcount%FLOW_SAMPLE_NUM == 0) //计算FLOW_SAMPLE_NUM个采样点的平均值
-// 	{
-		for (int i=0; i<FLOW_SAMPLE_NUM; i++)
-		{
-			totalWeight += m_deltaWeight[i];
-			qWarning()<<"totalWeight ="<<totalWeight<<", m_deltaWeight["<<i<<"] ="<<m_deltaWeight[i];
-		}
-		flowValue = 3.6*(totalWeight)*1000/(FLOW_SAMPLE_NUM*TIMEOUT_FLOW_SAMPLE);//总累积水量/总时间  (吨/小时, t/h)
-//		flowValue = (totalWeight)*1000/(FLOW_SAMPLE_NUM*TIMEOUT_FLOW_SAMPLE);// kg/s
-		qDebug()<<"flowValue ="<<flowValue;
-		ui.lnEditFlow->setText(QString::number(flowValue, 'f', 3)); //在ui.lnEditFlow中显示流量
-// 	}
+// 	qWarning()<<"m_totalcount ="<<m_totalcount;
+	for (int i=0; i<FLOW_SAMPLE_NUM; i++)
+	{
+		totalWeight += m_deltaWeight[i];
+// 		qWarning()<<"totalWeight ="<<totalWeight<<", m_deltaWeight["<<i<<"] ="<<m_deltaWeight[i];
+	}
+	flowValue = 3.6*(totalWeight)*1000/(FLOW_SAMPLE_NUM*TIMEOUT_FLOW_SAMPLE);//总累积水量/总时间  (吨/小时, t/h, m3/h)
+//	flowValue = (totalWeight)*1000/(FLOW_SAMPLE_NUM*TIMEOUT_FLOW_SAMPLE);// kg/s
+// 	qDebug()<<"flowValue ="<<flowValue;
+	ui.lnEditFlow->setText(QString::number(flowValue, 'f', 3)); //在ui.lnEditFlow中显示流量
 	m_totalcount ++;//计数器累加
 	m_startWeight = m_endWeight;//将当前值保存, 作为下次运算的初值
 }
