@@ -461,10 +461,20 @@ void DataTestDlg::slotFreshComTempValue(const QString& tempStr)
 void DataTestDlg::slotFreshBalanceValue(const QString& Str)
 {
 	ui.lnEditBigBalance->setText(Str);
-	if (Str.toFloat() > 100); //防止天平溢出 暂设天平容量为100kg
+	
+	int num = Str.size();
+	bool ok;
+	float balWeight = fabs(Str.right(num-1).toFloat(&ok));
+	if (balWeight > 100) //防止天平溢出 暂设天平容量为100kg
 	{
-		// 打开放水阀
-		// 关闭进水阀
+		m_controlObj->askControlRelay(m_portsetinfo.waterOutNo, VALVE_OPEN);// 打开放水阀	
+		m_controlObj->askControlRelay(m_portsetinfo.waterInNo, VALVE_CLOSE);// 关闭进水阀
+		if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
+		{
+			slotSetValveBtnStatus(m_portsetinfo.waterOutNo, VALVE_OPEN);
+			slotSetValveBtnStatus(m_portsetinfo.waterInNo, VALVE_CLOSE);
+		}
+
 	}
 }
 
@@ -517,7 +527,7 @@ void DataTestDlg::setRegBtnBackColor(QPushButton *btn, bool status)
 
 
 /************************************************************************/
-/* 计算瞬时流量(每1秒采样一次天平变化值，计算前10秒的平均流量)          */
+/* 计算流速(每1秒采样一次天平变化值，计算前10秒的平均流速)              */
 /************************************************************************/
 void DataTestDlg::slotFreshFlow_total()
 {
@@ -549,7 +559,7 @@ void DataTestDlg::slotFreshFlow_total()
 	flowValue = 3.6*(totalWeight)*1000/(FLOW_SAMPLE_NUM*TIMEOUT_FLOW_SAMPLE);//总累积水量/总时间  (吨/小时, t/h, m3/h)
 //	flowValue = (totalWeight)*1000/(FLOW_SAMPLE_NUM*TIMEOUT_FLOW_SAMPLE);// kg/s
 // 	qDebug()<<"flowValue ="<<flowValue;
-	ui.lnEditFlow->setText(QString::number(flowValue, 'f', 3)); //在ui.lnEditFlow中显示流量
+	ui.lnEditFlowRate->setText(QString::number(flowValue, 'f', 3)); //在ui.lnEditFlowRate中显示流速
 	m_totalcount ++;//计数器累加
 	m_startWeight = m_endWeight;//将当前值保存, 作为下次运算的初值
 }
@@ -567,7 +577,7 @@ void DataTestDlg::on_btnReadMeterData_clicked()
 	ui.lnEditMeterNo->clear();
 	ui.lnEditMeterTempIn->clear();
 	ui.lnEditMeterTempOut->clear();
-	ui.lnEditMeterFlow->clear();
+	ui.lnEditMeterTotalFlow->clear();
 	ui.lnEditMeterHeat->clear();
 	ui.dateEditMeter->setDate(QDate(2000,1,1));
 
@@ -610,7 +620,7 @@ void DataTestDlg::slotFreshMeterNo(const QString& comName, const QString& meterN
 //响应读取表流量成功
 void DataTestDlg::slotFreshMeterFlow(const QString& comName, const QString& flow)
 {
-	ui.lnEditMeterFlow->setText(flow);
+	ui.lnEditMeterTotalFlow->setText(flow);
 	qDebug()<<"读取表流量 成功...";
 }
 

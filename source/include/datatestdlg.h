@@ -106,7 +106,7 @@ public slots:
 	void setValveBtnBackColor(QPushButton *btn, bool status); //设置阀门按钮背景色
 	void setRegBtnBackColor(QPushButton *btn, bool status);	//设置调节阀按钮背景色
 
-	void slotFreshFlow_total();//计算流量(累计法)
+	void slotFreshFlow_total();//计算流速
 
 	void on_btnSetVerifyStatus_clicked();//设置检定状态
 	void on_btnReadMeterData_clicked(); //读表数据

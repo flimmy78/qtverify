@@ -77,7 +77,7 @@ public:
     QLabel *label_27;
     QLineEdit *lnEditMeterTempOut;
     QLabel *label_28;
-    QLineEdit *lnEditMeterFlow;
+    QLineEdit *lnEditMeterTotalFlow;
     QLabel *label_29;
     QLineEdit *lnEditMeterHeat;
     QLabel *label_31;
@@ -108,7 +108,7 @@ public:
     QPushButton *btnValveMiddle2;
     QPushButton *btnWaterOut;
     QPushButton *btnWaterPump;
-    QWidget *widget;
+    QWidget *layoutWidget2;
     QGridLayout *gridLayout_15;
     QGridLayout *gridLayout_11;
     QLabel *label_18;
@@ -118,7 +118,7 @@ public:
     QGridLayout *gridLayout_14;
     QPushButton *btnRegulate1;
     QPushButton *btnQueryStatus;
-    QWidget *widget1;
+    QWidget *layoutWidget3;
     QGridLayout *gridLayout_7;
     QGroupBox *groupBox_3;
     QGridLayout *gridLayout_6;
@@ -129,7 +129,7 @@ public:
     QLineEdit *lnEditSmallBalance;
     QLabel *label_14;
     QLabel *label_10;
-    QLineEdit *lnEditFlow;
+    QLineEdit *lnEditFlowRate;
     QLabel *label_15;
     QLabel *label_11;
     QLineEdit *lnEditTempIn;
@@ -137,8 +137,6 @@ public:
     QLabel *label_12;
     QLineEdit *lnEditTempOut;
     QLabel *label_17;
-    QSpacerItem *verticalSpacer;
-    QSpinBox *spinBoxTime;
     QGroupBox *groupBox_8;
     QGridLayout *gridLayout_8;
     QPushButton *btnParaSet;
@@ -394,14 +392,14 @@ public:
 
         gridLayout_10->addWidget(label_28, 3, 0, 1, 1);
 
-        lnEditMeterFlow = new QLineEdit(layoutWidget);
-        lnEditMeterFlow->setObjectName(QString::fromUtf8("lnEditMeterFlow"));
-        lnEditMeterFlow->setEnabled(false);
-        sizePolicy.setHeightForWidth(lnEditMeterFlow->sizePolicy().hasHeightForWidth());
-        lnEditMeterFlow->setSizePolicy(sizePolicy);
-        lnEditMeterFlow->setReadOnly(true);
+        lnEditMeterTotalFlow = new QLineEdit(layoutWidget);
+        lnEditMeterTotalFlow->setObjectName(QString::fromUtf8("lnEditMeterTotalFlow"));
+        lnEditMeterTotalFlow->setEnabled(false);
+        sizePolicy.setHeightForWidth(lnEditMeterTotalFlow->sizePolicy().hasHeightForWidth());
+        lnEditMeterTotalFlow->setSizePolicy(sizePolicy);
+        lnEditMeterTotalFlow->setReadOnly(true);
 
-        gridLayout_10->addWidget(lnEditMeterFlow, 3, 1, 1, 1);
+        gridLayout_10->addWidget(lnEditMeterTotalFlow, 3, 1, 1, 1);
 
         label_29 = new QLabel(layoutWidget);
         label_29->setObjectName(QString::fromUtf8("label_29"));
@@ -621,22 +619,22 @@ public:
 
         gridLayout_9->addWidget(btnWaterPump, 0, 6, 1, 1);
 
-        widget = new QWidget(DataTestDlgClass);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(280, 360, 411, 32));
-        gridLayout_15 = new QGridLayout(widget);
+        layoutWidget2 = new QWidget(DataTestDlgClass);
+        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(280, 360, 422, 32));
+        gridLayout_15 = new QGridLayout(layoutWidget2);
         gridLayout_15->setObjectName(QString::fromUtf8("gridLayout_15"));
         gridLayout_15->setContentsMargins(0, 0, 0, 0);
         gridLayout_11 = new QGridLayout();
         gridLayout_11->setObjectName(QString::fromUtf8("gridLayout_11"));
-        label_18 = new QLabel(widget);
+        label_18 = new QLabel(layoutWidget2);
         label_18->setObjectName(QString::fromUtf8("label_18"));
         sizePolicy2.setHeightForWidth(label_18->sizePolicy().hasHeightForWidth());
         label_18->setSizePolicy(sizePolicy2);
 
         gridLayout_11->addWidget(label_18, 0, 0, 1, 1);
 
-        spinBoxFreq = new QSpinBox(widget);
+        spinBoxFreq = new QSpinBox(layoutWidget2);
         spinBoxFreq->setObjectName(QString::fromUtf8("spinBoxFreq"));
         sizePolicy.setHeightForWidth(spinBoxFreq->sizePolicy().hasHeightForWidth());
         spinBoxFreq->setSizePolicy(sizePolicy);
@@ -644,7 +642,7 @@ public:
 
         gridLayout_11->addWidget(spinBoxFreq, 0, 1, 1, 1);
 
-        btnSetFreq = new QPushButton(widget);
+        btnSetFreq = new QPushButton(layoutWidget2);
         btnSetFreq->setObjectName(QString::fromUtf8("btnSetFreq"));
         sizePolicy.setHeightForWidth(btnSetFreq->sizePolicy().hasHeightForWidth());
         btnSetFreq->setSizePolicy(sizePolicy);
@@ -660,7 +658,7 @@ public:
 
         gridLayout_14 = new QGridLayout();
         gridLayout_14->setObjectName(QString::fromUtf8("gridLayout_14"));
-        btnRegulate1 = new QPushButton(widget);
+        btnRegulate1 = new QPushButton(layoutWidget2);
         btnRegulate1->setObjectName(QString::fromUtf8("btnRegulate1"));
         QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy3.setHorizontalStretch(0);
@@ -670,7 +668,7 @@ public:
 
         gridLayout_14->addWidget(btnRegulate1, 0, 0, 1, 1);
 
-        btnQueryStatus = new QPushButton(widget);
+        btnQueryStatus = new QPushButton(layoutWidget2);
         btnQueryStatus->setObjectName(QString::fromUtf8("btnQueryStatus"));
         sizePolicy3.setHeightForWidth(btnQueryStatus->sizePolicy().hasHeightForWidth());
         btnQueryStatus->setSizePolicy(sizePolicy3);
@@ -680,13 +678,13 @@ public:
 
         gridLayout_15->addLayout(gridLayout_14, 0, 2, 1, 1);
 
-        widget1 = new QWidget(DataTestDlgClass);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(281, 430, 412, 174));
-        gridLayout_7 = new QGridLayout(widget1);
+        layoutWidget3 = new QWidget(DataTestDlgClass);
+        layoutWidget3->setObjectName(QString::fromUtf8("layoutWidget3"));
+        layoutWidget3->setGeometry(QRect(281, 430, 412, 174));
+        gridLayout_7 = new QGridLayout(layoutWidget3);
         gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
         gridLayout_7->setContentsMargins(0, 0, 0, 0);
-        groupBox_3 = new QGroupBox(widget1);
+        groupBox_3 = new QGroupBox(layoutWidget3);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
         sizePolicy3.setHeightForWidth(groupBox_3->sizePolicy().hasHeightForWidth());
         groupBox_3->setSizePolicy(sizePolicy3);
@@ -733,13 +731,13 @@ public:
 
         gridLayout_6->addWidget(label_10, 2, 0, 1, 1);
 
-        lnEditFlow = new QLineEdit(groupBox_3);
-        lnEditFlow->setObjectName(QString::fromUtf8("lnEditFlow"));
-        sizePolicy.setHeightForWidth(lnEditFlow->sizePolicy().hasHeightForWidth());
-        lnEditFlow->setSizePolicy(sizePolicy);
-        lnEditFlow->setReadOnly(true);
+        lnEditFlowRate = new QLineEdit(groupBox_3);
+        lnEditFlowRate->setObjectName(QString::fromUtf8("lnEditFlowRate"));
+        sizePolicy.setHeightForWidth(lnEditFlowRate->sizePolicy().hasHeightForWidth());
+        lnEditFlowRate->setSizePolicy(sizePolicy);
+        lnEditFlowRate->setReadOnly(true);
 
-        gridLayout_6->addWidget(lnEditFlow, 2, 1, 1, 1);
+        gridLayout_6->addWidget(lnEditFlowRate, 2, 1, 1, 1);
 
         label_15 = new QLabel(groupBox_3);
         label_15->setObjectName(QString::fromUtf8("label_15"));
@@ -784,18 +782,6 @@ public:
 
 
         gridLayout_7->addWidget(groupBox_3, 0, 0, 2, 1);
-
-        verticalSpacer = new QSpacerItem(20, 118, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout_7->addItem(verticalSpacer, 0, 1, 1, 1);
-
-        spinBoxTime = new QSpinBox(widget1);
-        spinBoxTime->setObjectName(QString::fromUtf8("spinBoxTime"));
-        sizePolicy3.setHeightForWidth(spinBoxTime->sizePolicy().hasHeightForWidth());
-        spinBoxTime->setSizePolicy(sizePolicy3);
-        spinBoxTime->setValue(45);
-
-        gridLayout_7->addWidget(spinBoxTime, 1, 1, 1, 1);
 
         groupBox_8 = new QGroupBox(DataTestDlgClass);
         groupBox_8->setObjectName(QString::fromUtf8("groupBox_8"));
@@ -976,7 +962,7 @@ public:
         label_13->setText(QApplication::translate("DataTestDlgClass", "kg", 0, QApplication::UnicodeUTF8));
         label_9->setText(QApplication::translate("DataTestDlgClass", "Small Balance:", 0, QApplication::UnicodeUTF8));
         label_14->setText(QApplication::translate("DataTestDlgClass", "kg", 0, QApplication::UnicodeUTF8));
-        label_10->setText(QApplication::translate("DataTestDlgClass", "Flow:", 0, QApplication::UnicodeUTF8));
+        label_10->setText(QApplication::translate("DataTestDlgClass", "Flow Rate:", 0, QApplication::UnicodeUTF8));
         label_15->setText(QApplication::translate("DataTestDlgClass", "m\302\263/h", 0, QApplication::UnicodeUTF8));
         label_11->setText(QApplication::translate("DataTestDlgClass", "In Temp:", 0, QApplication::UnicodeUTF8));
         label_16->setText(QApplication::translate("DataTestDlgClass", "\342\204\203", 0, QApplication::UnicodeUTF8));

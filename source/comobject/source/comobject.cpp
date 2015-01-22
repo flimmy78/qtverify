@@ -246,7 +246,12 @@ bool ControlComObject::openControlCom(ComInfoStruct *comStruct)
 	}
 }
 
-//继电器控制
+/*
+	功能：控制继电器断开、闭合（即控制气动阀开、合）
+	输入参数：
+		portno:继电器编号
+		status: false(关闭阀门)；true(打开阀门)
+*/
 void ControlComObject::askControlRelay(UINT8 portno, bool status)
 {
 	qDebug()<<"askControlRelay thread:"<<QThread::currentThreadId();
