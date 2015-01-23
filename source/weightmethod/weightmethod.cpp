@@ -54,13 +54,6 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 		QMessageBox::warning(this, tr("Warning"), tr("Warning:get port set info failed!"));//获取下位机端口号配置信息失败!请重新设置！
 	}
 
-/*********************************************************/
-	m_balTimer = new QTimer(this);
-	connect(m_balTimer, SIGNAL(timeout()), this, SLOT(freshBigBalaceValue()));
-	m_balTimer->start(200); //模拟天平每200毫秒更新一次
-	m_balValue = 0.0;
-	m_tempValue = 20.0;
-/*********************************************************/
 	m_stopFlag = false; //退出界面后，不再检查天平容量
 
 	m_readComConfig = new ReadComConfig(); //读串口设置接口
@@ -75,6 +68,14 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	m_controlObj = NULL;
 	initControlCom();		//初始化控制串口
 
+	//计算流速用
+	m_totalcount = 0;
+	m_startWeight = 0.0;
+	m_endWeight = 0.0;
+	memset(m_deltaWeight, 0, sizeof(float)*FLOW_SAMPLE_NUM);
+	m_flowRateTimer = new QTimer();
+	connect(m_flowRateTimer, SIGNAL(timeout()), this, SLOT(slotFreshFlowRate()));
+	m_flowRateTimer->start(TIMEOUT_FLOW_SAMPLE);
 
 	m_chkAlg = new CAlgorithm();//计算类接口
 
@@ -263,7 +264,6 @@ void WeightMethodDlg::initTemperatureCom()
 
 	m_tempTimer = new QTimer();
 	connect(m_tempTimer, SIGNAL(timeout()), m_tempObj, SLOT(writeTemperatureComBuffer()));
-// 	connect(m_tempTimer, SIGNAL(timeout()), this, SLOT(slotFreshFlow())); //计算流量
 	
 	m_tempTimer->start(TIMEOUT_TEMPER); //周期请求温度
 }
@@ -323,6 +323,7 @@ void WeightMethodDlg::initValveStatus()
 	m_valveBtn[m_portsetinfo.middle2No] = ui.btnValveMiddle2;
 	m_valveBtn[m_portsetinfo.waterInNo] = ui.btnWaterIn;
 	m_valveBtn[m_portsetinfo.waterOutNo] = ui.btnWaterOut;
+	m_valveBtn[m_portsetinfo.pumpNo] = ui.btnWaterPump; //水泵
 
 	//初始化 全部阀门状态为关闭
 	m_valveStatus[m_portsetinfo.bigNo] = VALVE_CLOSE;
@@ -331,6 +332,7 @@ void WeightMethodDlg::initValveStatus()
 	m_valveStatus[m_portsetinfo.middle2No] = VALVE_CLOSE;
 	m_valveStatus[m_portsetinfo.waterInNo] = VALVE_CLOSE;
 	m_valveStatus[m_portsetinfo.waterOutNo] = VALVE_CLOSE;
+	m_valveStatus[m_portsetinfo.pumpNo] = VALVE_CLOSE; //水泵
 
 	setValveBtnBackColor(m_valveBtn[m_portsetinfo.bigNo], m_valveStatus[m_portsetinfo.bigNo]);
 	setValveBtnBackColor(m_valveBtn[m_portsetinfo.smallNo], m_valveStatus[m_portsetinfo.smallNo]);
@@ -338,6 +340,7 @@ void WeightMethodDlg::initValveStatus()
 	setValveBtnBackColor(m_valveBtn[m_portsetinfo.middle2No], m_valveStatus[m_portsetinfo.middle2No]);
 	setValveBtnBackColor(m_valveBtn[m_portsetinfo.waterInNo], m_valveStatus[m_portsetinfo.waterInNo]);
 	setValveBtnBackColor(m_valveBtn[m_portsetinfo.waterOutNo], m_valveStatus[m_portsetinfo.waterOutNo]);
+	setValveBtnBackColor(m_valveBtn[m_portsetinfo.pumpNo], m_valveStatus[m_portsetinfo.pumpNo]);
 }
 
 
@@ -346,22 +349,66 @@ void WeightMethodDlg::initValveStatus()
 void WeightMethodDlg::slotFreshBalanceValue(const QString& Str)
 {
 	ui.lnEditBigBalance->setText(Str);
+
+	int num = Str.size();
+	bool ok;
+	float balWeight = fabs(Str.right(num-1).toFloat(&ok));
+	if (balWeight > 100) //防止天平溢出 暂设天平容量为100kg
+	{
+		m_controlObj->askControlRelay(m_portsetinfo.waterOutNo, VALVE_OPEN);// 打开放水阀	
+		m_controlObj->askControlRelay(m_portsetinfo.waterInNo, VALVE_CLOSE);// 关闭进水阀
+		if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
+		{
+			slotSetValveBtnStatus(m_portsetinfo.waterOutNo, VALVE_OPEN);
+			slotSetValveBtnStatus(m_portsetinfo.waterInNo, VALVE_CLOSE);
+		}
+	}
 }
 
 //在界面刷新入口温度和出口温度值
 void WeightMethodDlg::slotFreshComTempValue(const QString& tempStr)
 {
-	ui.lcdNumberInTemper->display(tempStr.left(DATA_WIDTH).toFloat());   //入口温度 PV
-	ui.lcdNumberOutTemper->display(tempStr.right(DATA_WIDTH).toFloat()); //出口温度 SV
+	ui.lcdNumberInTemper->display(tempStr.left(DATA_WIDTH));   //入口温度 PV
+	ui.lcdNumberOutTemper->display(tempStr.right(DATA_WIDTH)); //出口温度 SV
 }
 
 /*
-** 计算瞬时流量(待改进、需要实验验证)
+** 计算流速
 */
-void WeightMethodDlg::slotFreshFlow()
+void WeightMethodDlg::slotFreshFlowRate()
 {
- 	qDebug()<<"slotFreshFlow thread:"<<QThread::currentThreadId(); //
+// 	qDebug()<<"WeightMethodDlg::slotFreshFlow thread:"<<QThread::currentThreadId();
+	if (m_totalcount > 4294967290) //防止m_totalcount溢出 32位无符号整数范围0~4294967295
+	{
+		m_totalcount = 0;
+		m_startWeight = 0.0;
+		m_endWeight = 0.0;
+		memset(m_deltaWeight, 0, sizeof(float)*FLOW_SAMPLE_NUM);
+	}
+	if (m_totalcount == 0) //记录天平初始重量
+	{
+		m_startWeight = ui.lnEditBigBalance->text().replace(" ", 0).toFloat();
+		m_totalcount ++;
+		return;
+	}
 
+	float flowValue = 0.0;
+	float totalWeight = 0.0;
+	m_endWeight = ui.lnEditBigBalance->text().replace(" ", 0).toFloat();//取当前天平值, 作为当前运算的终值
+	float delta_weight = m_endWeight - m_startWeight;
+	m_deltaWeight[m_totalcount%FLOW_SAMPLE_NUM] = delta_weight;
+// 	qWarning()<<"m_totalcount ="<<m_totalcount;
+	for (int i=0; i<FLOW_SAMPLE_NUM; i++)
+	{
+		totalWeight += m_deltaWeight[i];
+// 		qWarning()<<"totalWeight ="<<totalWeight<<", m_deltaWeight["<<i<<"] ="<<m_deltaWeight[i];
+	}
+	flowValue = 3.6*(totalWeight)*1000/(FLOW_SAMPLE_NUM*TIMEOUT_FLOW_SAMPLE);//总累积水量/总时间  (吨/小时, t/h, m3/h)
+//	flowValue = (totalWeight)*1000/(FLOW_SAMPLE_NUM*TIMEOUT_FLOW_SAMPLE);// kg/s
+// 	qDebug()<<"flowValue ="<<flowValue;
+	ui.lcdNumberFlowRate->display(QString::number(flowValue, 'f', 3)); //在ui.lnEditFlowRate中显示流速
+	m_totalcount ++;//计数器累加
+	m_startWeight = m_endWeight;//将当前值保存, 作为下次运算的初值
 }
 
 //检测串口、端口设置是否正确
@@ -454,7 +501,7 @@ void WeightMethodDlg::on_btnExhaust_clicked()
 		return;
 	}
 
-	if (!openAllValuesAndPump())
+	if (!openAllValveAndPump())
 	{
 		qWarning()<<"打开所有阀门和水泵 失败!";
 		return;
@@ -489,8 +536,9 @@ int WeightMethodDlg::isDataCollectNormal()
 }
 
 //打开所有阀门和水泵
-int WeightMethodDlg::openAllValuesAndPump()
+int WeightMethodDlg::openAllValveAndPump()
 {
+	
 	return true;
 }
 
@@ -561,6 +609,11 @@ int WeightMethodDlg::readMeterNumber()
 //设置热量表进入检定状态
 int WeightMethodDlg::setMeterVerifyStatus()
 {
+	for (int i=0; i<m_maxMeterNum; i++)
+	{
+		m_meterObj[i].askSetVerifyStatus();
+	}
+
 	return true;
 }
 
@@ -807,26 +860,6 @@ int WeightMethodDlg::getValidMeterNum()
 		m_validMeterNum++;
 	}
 	return m_validMeterNum;
-}
-
-//刷新天平、温度数值 仅测试用
-void WeightMethodDlg::freshBigBalaceValue()
-{
-// 	if (m_balValue > 100)
-// 	{
-// 		m_balValue = 0;
-// 	}
-	m_balValue += 0.2;
-	ui.lnEditBigBalance->setText(QString("%1").arg(m_balValue));
-
-	if (m_tempValue > 90)
-	{
-		m_tempValue = 20;
-	}
-	m_tempValue += 0.2;
-	ui.lcdNumberInTemper->display(m_tempValue);
-	ui.lcdNumberOutTemper->display(m_tempValue+0.12);
-
 }
 
 /*
@@ -1119,12 +1152,12 @@ void WeightMethodDlg::setValveBtnBackColor(QToolButton *btn, bool status)
 	}
 	if (status) //阀门打开 绿色
 	{
-		btn->setStyleSheet("background-color:rgb(199,237,204);border:0px;border-radius:10px;");
+		btn->setStyleSheet("background-color:rgb(0,255,0);border:0px;border-radius:10px;");
 // 		btn->setStyleSheet("border-image:url(:/weightmethod/images/btncheckon.png)");
 	}
 	else //阀门关闭 红色
 	{
-		btn->setStyleSheet("background-color:rgb(255,200,200);border:0px;border-radius:10px;");
+		btn->setStyleSheet("background-color:rgb(255,0,0);border:0px;border-radius:10px;");
 // 		btn->setStyleSheet("border-image:url(:/weightmethod/images/btncheckoff.png)");
 	}
 }
@@ -1169,45 +1202,66 @@ void WeightMethodDlg::on_btnWaterIn_clicked() //进水阀
 {
 	m_nowPortNo = m_portsetinfo.waterInNo;
 	m_controlObj->askControlRelay(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
+	{
+		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	}
 }
 
 void WeightMethodDlg::on_btnWaterOut_clicked() //出水阀
 {
 	m_nowPortNo = m_portsetinfo.waterOutNo;
 	m_controlObj->askControlRelay(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
+	{
+		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	}
 }
 
 void WeightMethodDlg::on_btnValveBig_clicked() //大流量阀
 {
 	m_nowPortNo = m_portsetinfo.bigNo;
 	m_controlObj->askControlRelay(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
-	slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]); //临时测试用
+	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
+	{
+		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	}
 }
 
 void WeightMethodDlg::on_btnValveMiddle1_clicked() //中流一阀
 {
 	m_nowPortNo = m_portsetinfo.middle1No;
 	m_controlObj->askControlRelay(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
-
+	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
+	{
+		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	}
 }
 
 void WeightMethodDlg::on_btnValveMiddle2_clicked() //中流二阀
 {
 	m_nowPortNo = m_portsetinfo.middle2No;
 	m_controlObj->askControlRelay(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
+	{
+		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	}
 }
 
 void WeightMethodDlg::on_btnValveSmall_clicked() //小流量阀
 {
 	m_nowPortNo = m_portsetinfo.smallNo;
 	m_controlObj->askControlRelay(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
+	{
+		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	}
 }
 
-
 /*
-** 启动水泵
+** 控制水泵开关
 */
-void WeightMethodDlg::on_btnWaterPumpStart_clicked()
+void WeightMethodDlg::on_btnWaterPump_clicked()
 {
 /*	if (ui.spinBoxFrequency->value() <= 0)
 	{
@@ -1215,16 +1269,21 @@ void WeightMethodDlg::on_btnWaterPumpStart_clicked()
 		ui.spinBoxFrequency->setFocus();
 	}
  	m_controlObj->askControlRegulate(m_portsetinfo.pumpNo, ui.spinBoxFrequency->value());*/
-	m_controlObj->askControlWaterPump(m_portsetinfo.pumpNo, true);
+
+	m_nowPortNo = m_portsetinfo.pumpNo;
+	m_controlObj->askControlWaterPump(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
+	{
+		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	}
 }
 
 /*
-** 停止水泵
+** 设置变频器频率
 */
-void WeightMethodDlg::on_btnWaterPumpStop_clicked()
+void WeightMethodDlg::on_btnSetFreq_clicked()
 {
-// 	m_controlObj->askControlRegulate(m_portsetinfo.pumpNo, 0);
-	m_controlObj->askControlWaterPump(m_portsetinfo.pumpNo, false);
+	m_controlObj->askSetDriverFreq(ui.spinBoxFreq->value());
 }
 
 //获取表初值

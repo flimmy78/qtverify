@@ -151,7 +151,7 @@ void MainForm::on_actionMySql_triggered()
 	m_mySql->show();
 }
 
-void MainForm::on_actionQuery_triggered()
+void MainForm::on_actionFlowResult_triggered()
 {
 	if (NULL == m_query)
 	{

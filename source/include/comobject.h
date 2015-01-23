@@ -20,6 +20,7 @@
 #include <QtCore/QObject> 
 #include <QtCore/QTimer>
 
+#include "basedef.h"
 #include "protocol.h"
 #include "comsetdlg_global.h"
 

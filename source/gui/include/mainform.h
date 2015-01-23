@@ -36,7 +36,7 @@ public:
 public slots:
 	void on_actionComDebuger_triggered();
 	void on_actionMySql_triggered();
-	void on_actionQuery_triggered();
+	void on_actionFlowResult_triggered();
 	void on_actionComSet_triggered();
 	void on_actionPortSet_triggered();
 	void on_actionQueryExcel_triggered();

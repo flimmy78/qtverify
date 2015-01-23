@@ -10,11 +10,6 @@
 #include "readcomconfig.h"
 #include "algorithm.h"
 
-#define TIMEOUT_TEMPER		1000 //每1秒钟请求一次温度值
-
-#define FLOW_SAMPLE_NUM		10    //计算流量 采样点个数
-#define TIMEOUT_FLOW_SAMPLE	1000  //计算流量 每1秒采样一次天平数值
-
 
 /*
 **	类名：DataTestDlg
@@ -35,7 +30,6 @@ public:
 	ComThread m_tempThread;  //温度采集线程
 	TempComObject *m_tempObj;
 	QTimer *m_tempTimer;  //计时器:用于请求管路温度
-	QTimer *m_flowTimer;  //计时器:用于计算流量
 
 	ComThread m_valveThread;   //阀门控制线程
 	ControlComObject *m_controlObj;
@@ -54,11 +48,12 @@ public:
 	ComThread m_meterThread;  //热量表线程
 	MeterComObject *m_meterObj;
 
-	//计算流量用
+	//计算流速用
 	uint m_totalcount;  //计数器
 	float m_startWeight;//天平初值
 	float m_endWeight;  //天平终值
 	float m_deltaWeight[FLOW_SAMPLE_NUM];
+	QTimer *m_flowRateTimer;  //计时器:用于计算流速
 	
 
 	PortSet_Ini_STR m_portsetinfo; //端口配置
@@ -106,7 +101,7 @@ public slots:
 	void setValveBtnBackColor(QPushButton *btn, bool status); //设置阀门按钮背景色
 	void setRegBtnBackColor(QPushButton *btn, bool status);	//设置调节阀按钮背景色
 
-	void slotFreshFlow_total();//计算流速
+	void slotFreshFlowRate();//计算流速
 
 	void on_btnSetVerifyStatus_clicked();//设置检定状态
 	void on_btnReadMeterData_clicked(); //读表数据

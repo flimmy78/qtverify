@@ -49,29 +49,36 @@
    </widget>
    <widget class="QMenu" name="menu">
     <property name="title">
-     <string>VerifyItem</string>
+     <string>CompVerify</string>
     </property>
     <widget class="QMenu" name="menuSensor_Comp">
      <property name="title">
-      <string>Sensor(Comp)</string>
+      <string>Temper</string>
      </property>
      <addaction name="actionCompareMethod"/>
      <addaction name="actionParaMethod"/>
     </widget>
-    <addaction name="actionWeightComp"/>
-    <addaction name="actionWeightTotal"/>
-    <addaction name="actionStandardComp"/>
-    <addaction name="actionStandardTotal"/>
-    <addaction name="actionCalculator"/>
+    <widget class="QMenu" name="menuFlow">
+     <property name="title">
+      <string>Flow</string>
+     </property>
+     <addaction name="actionWeightComp"/>
+     <addaction name="actionStandardComp"/>
+    </widget>
+    <addaction name="menuFlow"/>
     <addaction name="menuSensor_Comp"/>
-    <addaction name="actionCalcSensor"/>
-    <addaction name="actionPressureTight"/>
+    <addaction name="actionCalculator"/>
+    <addaction name="actionTemperCalc"/>
    </widget>
    <widget class="QMenu" name="menuDataQuery">
     <property name="title">
      <string>DataQuery</string>
     </property>
-    <addaction name="actionQuery"/>
+    <addaction name="actionTotalResult"/>
+    <addaction name="actionFlowResult"/>
+    <addaction name="actionTemperResult"/>
+    <addaction name="actionCalcResult"/>
+    <addaction name="actionTemperCalcResult"/>
     <addaction name="actionQueryExcel"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
@@ -96,8 +103,16 @@
     <addaction name="actionChinese"/>
     <addaction name="actionEnglish"/>
    </widget>
+   <widget class="QMenu" name="menuComponent">
+    <property name="title">
+     <string>TotalVerify</string>
+    </property>
+    <addaction name="actionWeightTotal"/>
+    <addaction name="actionStandardTotal"/>
+   </widget>
    <addaction name="menuSystemSet"/>
    <addaction name="menu"/>
+   <addaction name="menuComponent"/>
    <addaction name="menuDataQuery"/>
    <addaction name="menuAbout"/>
    <addaction name="menuStyle"/>
@@ -120,7 +135,7 @@
    <addaction name="actionStandardComp"/>
    <addaction name="actionStandardTotal"/>
    <addaction name="separator"/>
-   <addaction name="actionQuery"/>
+   <addaction name="actionFlowResult"/>
    <addaction name="separator"/>
    <addaction name="actionExit"/>
   </widget>
@@ -132,9 +147,6 @@
    </property>
    <property name="text">
     <string>ComDebugger</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+P</string>
    </property>
   </action>
   <action name="actionQueryExcel">
@@ -154,23 +166,17 @@
    <property name="text">
     <string>MySql</string>
    </property>
-   <property name="shortcut">
-    <string>Ctrl+D</string>
-   </property>
    <property name="visible">
     <bool>false</bool>
    </property>
   </action>
-  <action name="actionQuery">
+  <action name="actionFlowResult">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
      <normaloff>:/qtverify/images/queryresult.png</normaloff>:/qtverify/images/queryresult.png</iconset>
    </property>
    <property name="text">
-    <string>QueryResult</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Q</string>
+    <string>FlowResult</string>
    </property>
   </action>
   <action name="actionWeightComp">
@@ -295,7 +301,7 @@
   </action>
   <action name="actionCalculator">
    <property name="text">
-    <string>Calculator(Comp)</string>
+    <string>Calculator</string>
    </property>
   </action>
   <action name="actionCompareMethod">
@@ -308,9 +314,9 @@
     <string>ParaMethod</string>
    </property>
   </action>
-  <action name="actionCalcSensor">
+  <action name="actionTemperCalc">
    <property name="text">
-    <string>Sensor/Calc</string>
+    <string>Temper/Calc</string>
    </property>
   </action>
   <action name="actionPressureTight">
@@ -326,6 +332,26 @@
   <action name="actionChinese">
    <property name="text">
     <string>Chinese</string>
+   </property>
+  </action>
+  <action name="actionTemperResult">
+   <property name="text">
+    <string>TemperResult</string>
+   </property>
+  </action>
+  <action name="actionCalcResult">
+   <property name="text">
+    <string>CalcResult</string>
+   </property>
+  </action>
+  <action name="actionTemperCalcResult">
+   <property name="text">
+    <string>TemperCalcResult</string>
+   </property>
+  </action>
+  <action name="actionTotalResult">
+   <property name="text">
+    <string>TotalResult</string>
    </property>
   </action>
  </widget>

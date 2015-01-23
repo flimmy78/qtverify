@@ -954,8 +954,8 @@ d
       </property>
      </widget>
     </item>
-    <item row="0" column="3">
-     <widget class="QPushButton" name="btnValveSmall">
+    <item row="0" column="6">
+     <widget class="QPushButton" name="btnWaterOut">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
         <horstretch>0</horstretch>
@@ -975,11 +975,46 @@ d
        <bool>false</bool>
       </property>
       <property name="text">
-       <string>s
+       <string>o
+u
+t</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="7">
+     <widget class="QPushButton" name="btnWaterPump">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>40</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>p
+u
 m
-a
-l
-l</string>
+p</string>
       </property>
       <property name="autoDefault">
        <bool>false</bool>
@@ -1030,7 +1065,7 @@ d
      </widget>
     </item>
     <item row="0" column="5">
-     <widget class="QPushButton" name="btnWaterOut">
+     <widget class="QPushButton" name="btnValveSmall">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
         <horstretch>0</horstretch>
@@ -1050,46 +1085,11 @@ d
        <bool>false</bool>
       </property>
       <property name="text">
-       <string>o
-u
-t</string>
-      </property>
-      <property name="autoDefault">
-       <bool>false</bool>
-      </property>
-      <property name="default">
-       <bool>false</bool>
-      </property>
-      <property name="flat">
-       <bool>false</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="6">
-     <widget class="QPushButton" name="btnWaterPump">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>40</width>
-        <height>100</height>
-       </size>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::LeftToRight</enum>
-      </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
-      <property name="text">
-       <string>p
-u
+       <string>s
 m
-p</string>
+a
+l
+l</string>
       </property>
       <property name="autoDefault">
        <bool>false</bool>

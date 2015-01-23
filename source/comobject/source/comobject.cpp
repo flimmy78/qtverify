@@ -441,7 +441,7 @@ bool BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
 		buf.append(0x20).append(0x6B).append(0x67).append(0x20).append(0x0D).append(0x0A);
 		m_balanceCom->write(buf);
 */
-		m_balTimer->start(200); //每200毫秒查询一次天平数据
+		m_balTimer->start(TIMEOUT_BALANCE); //每200毫秒查询一次天平数据
 		return true;
 	}
 	else

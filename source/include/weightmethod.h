@@ -18,8 +18,6 @@
 #define VALID_YEAR	2 //检表有效期 2年
 #define BALANCE_START_VALUE		2 //天平初值
 
-#define TIMEOUT_TEMPER		500 //每0.5秒钟请求一次温度值
-
 /*
 ** 表格列
 */
@@ -95,12 +93,7 @@ public:
 	ParaSetReader *m_paraSetReader;
 	ParaSetDlg *m_paraSetDlg;
 
-
 	QTimer *m_exaustTimer; //排气定时器
-
-	QTimer *m_balTimer; //模拟天平定时刷新用 仅用于测试
-	float m_balValue;   //模拟天平值
-	float m_tempValue;  //模拟温度值
 
 	ComThread m_balanceThread; //天平采集线程
 	BalanceComObject *m_balanceObj;
@@ -117,7 +110,6 @@ public:
 
 	ComThread *m_meterThread;	//热量表通讯线程
 	MeterComObject *m_meterObj;	//
-
 
 	CAlgorithm *m_chkAlg;//检定过程用到的计算方法
 
@@ -170,6 +162,14 @@ public:
 	ReadComConfig *m_readComConfig; //读串口设置
 	PortSet_Ini_STR m_portsetinfo;  //端口配置
 
+	//计算流速用
+	uint m_totalcount;  //计数器
+	float m_startWeight;//天平初值
+	float m_endWeight;  //天平终值
+	float m_deltaWeight[FLOW_SAMPLE_NUM];
+	QTimer *m_flowRateTimer;  //计时器:用于计算流速
+
+
 	void initBalanceCom();     //天平串口
 	void initTemperatureCom(); //温度采集串口
 	void initControlCom();     //阀门控制串口
@@ -195,7 +195,7 @@ public slots:
 	void on_btnStart_clicked();   //点击"开始"按钮
 	void on_btnNext_clicked();    //点击"下一步"按钮
 	void on_btnStop_clicked();    //点击"终止检测"按钮
-	int openAllValuesAndPump();   //打开所有阀门和水泵
+	int openAllValveAndPump();   //打开所有阀门和水泵
 	void slotExaustFinished();    //排气时间结束
 	int readMeterNumber();        //读取表号
 	int setMeterVerifyStatus();   //设置热量表进入检定状态
@@ -222,7 +222,7 @@ public slots:
 
 	void slotFreshBalanceValue(const QString& Str);     //刷新天平数值
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
-	void slotFreshFlow(); //计算流量
+	void slotFreshFlowRate(); //计算流速
 
 	void slotSetValveBtnStatus(const UINT8 &portno, const bool &status); //继电器返回成功对应的槽函数
 	void slotSetRegulateOk();     //调节阀返回成功对应的槽函数
@@ -240,14 +240,12 @@ public slots:
 	void on_btnValveMiddle2_clicked(); //中流二
 	void on_btnValveSmall_clicked();   //小流量阀
 
-	void on_btnWaterPumpStart_clicked(); //启动水泵
-	void on_btnWaterPumpStop_clicked();  //停止水泵
+	void on_btnWaterPump_clicked(); //水泵
+	void on_btnSetFreq_clicked();   //设置变频器频率
 
 	void on_tableWidget_cellChanged(int row, int column);
 	int saveAllVerifyRecords(); //保存所有被检表的检定记录
 	void clearTableContents();
-
-	void freshBigBalaceValue();   //刷新大天平数值 仅用于测试 模拟天平数值变化
 
 	void on_btnReadMeter_clicked(); //读表按钮
 	void on_btnExit_clicked();//退出按钮

@@ -38,17 +38,17 @@ public:
     QWidget *tab1;
     QGroupBox *groupBox_2;
     QGridLayout *gridLayout_6;
-    QToolButton *btnWaterPumpStop;
-    QToolButton *btnWaterPumpStart;
+    QToolButton *btnSetFreq;
     QToolButton *btnValveSmall;
     QHBoxLayout *horizontalLayout;
-    QSpinBox *spinBoxFrequency;
+    QSpinBox *spinBoxFreq;
     QLabel *label_13;
     QToolButton *btnWaterIn;
-    QToolButton *btnWaterOut;
     QToolButton *btnValveBig;
     QToolButton *btnValveMiddle1;
     QToolButton *btnValveMiddle2;
+    QToolButton *btnWaterPump;
+    QToolButton *btnWaterOut;
     QTableWidget *tableWidget;
     QGroupBox *groupBox_3;
     QGridLayout *gridLayout_9;
@@ -86,7 +86,7 @@ public:
     QLineEdit *lnEditSmallBalance;
     QLabel *label_12;
     QLabel *label_3;
-    QLCDNumber *lcdNumberFlow;
+    QLCDNumber *lcdNumberFlowRate;
     QLabel *label_6;
     QLabel *label_4;
     QLCDNumber *lcdNumberInTemper;
@@ -103,7 +103,7 @@ public:
     {
         if (WeightMethodClass->objectName().isEmpty())
             WeightMethodClass->setObjectName(QString::fromUtf8("WeightMethodClass"));
-        WeightMethodClass->resize(1335, 873);
+        WeightMethodClass->resize(1332, 873);
         gridLayout = new QGridLayout(WeightMethodClass);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         tabWidget = new QTabWidget(WeightMethodClass);
@@ -115,25 +115,18 @@ public:
         tab1->setObjectName(QString::fromUtf8("tab1"));
         groupBox_2 = new QGroupBox(tab1);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setGeometry(QRect(240, 640, 421, 181));
+        groupBox_2->setGeometry(QRect(250, 640, 421, 181));
         gridLayout_6 = new QGridLayout(groupBox_2);
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
-        btnWaterPumpStop = new QToolButton(groupBox_2);
-        btnWaterPumpStop->setObjectName(QString::fromUtf8("btnWaterPumpStop"));
+        btnSetFreq = new QToolButton(groupBox_2);
+        btnSetFreq->setObjectName(QString::fromUtf8("btnSetFreq"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(btnWaterPumpStop->sizePolicy().hasHeightForWidth());
-        btnWaterPumpStop->setSizePolicy(sizePolicy);
+        sizePolicy.setHeightForWidth(btnSetFreq->sizePolicy().hasHeightForWidth());
+        btnSetFreq->setSizePolicy(sizePolicy);
 
-        gridLayout_6->addWidget(btnWaterPumpStop, 2, 0, 1, 1);
-
-        btnWaterPumpStart = new QToolButton(groupBox_2);
-        btnWaterPumpStart->setObjectName(QString::fromUtf8("btnWaterPumpStart"));
-        sizePolicy.setHeightForWidth(btnWaterPumpStart->sizePolicy().hasHeightForWidth());
-        btnWaterPumpStart->setSizePolicy(sizePolicy);
-
-        gridLayout_6->addWidget(btnWaterPumpStart, 1, 0, 1, 1);
+        gridLayout_6->addWidget(btnSetFreq, 1, 0, 1, 1);
 
         btnValveSmall = new QToolButton(groupBox_2);
         btnValveSmall->setObjectName(QString::fromUtf8("btnValveSmall"));
@@ -148,12 +141,12 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
-        spinBoxFrequency = new QSpinBox(groupBox_2);
-        spinBoxFrequency->setObjectName(QString::fromUtf8("spinBoxFrequency"));
-        sizePolicy.setHeightForWidth(spinBoxFrequency->sizePolicy().hasHeightForWidth());
-        spinBoxFrequency->setSizePolicy(sizePolicy);
+        spinBoxFreq = new QSpinBox(groupBox_2);
+        spinBoxFreq->setObjectName(QString::fromUtf8("spinBoxFreq"));
+        sizePolicy.setHeightForWidth(spinBoxFreq->sizePolicy().hasHeightForWidth());
+        spinBoxFreq->setSizePolicy(sizePolicy);
 
-        horizontalLayout->addWidget(spinBoxFrequency);
+        horizontalLayout->addWidget(spinBoxFreq);
 
         label_13 = new QLabel(groupBox_2);
         label_13->setObjectName(QString::fromUtf8("label_13"));
@@ -171,13 +164,6 @@ public:
         btnWaterIn->setSizePolicy(sizePolicy1);
 
         gridLayout_6->addWidget(btnWaterIn, 0, 1, 3, 1);
-
-        btnWaterOut = new QToolButton(groupBox_2);
-        btnWaterOut->setObjectName(QString::fromUtf8("btnWaterOut"));
-        sizePolicy1.setHeightForWidth(btnWaterOut->sizePolicy().hasHeightForWidth());
-        btnWaterOut->setSizePolicy(sizePolicy1);
-
-        gridLayout_6->addWidget(btnWaterOut, 0, 2, 3, 1);
 
         btnValveBig = new QToolButton(groupBox_2);
         btnValveBig->setObjectName(QString::fromUtf8("btnValveBig"));
@@ -199,6 +185,20 @@ public:
         btnValveMiddle2->setSizePolicy(sizePolicy1);
 
         gridLayout_6->addWidget(btnValveMiddle2, 0, 5, 3, 1);
+
+        btnWaterPump = new QToolButton(groupBox_2);
+        btnWaterPump->setObjectName(QString::fromUtf8("btnWaterPump"));
+        sizePolicy.setHeightForWidth(btnWaterPump->sizePolicy().hasHeightForWidth());
+        btnWaterPump->setSizePolicy(sizePolicy);
+
+        gridLayout_6->addWidget(btnWaterPump, 2, 0, 1, 1);
+
+        btnWaterOut = new QToolButton(groupBox_2);
+        btnWaterOut->setObjectName(QString::fromUtf8("btnWaterOut"));
+        sizePolicy1.setHeightForWidth(btnWaterOut->sizePolicy().hasHeightForWidth());
+        btnWaterOut->setSizePolicy(sizePolicy1);
+
+        gridLayout_6->addWidget(btnWaterOut, 0, 7, 3, 1);
 
         tableWidget = new QTableWidget(tab1);
         if (tableWidget->columnCount() < 10)
@@ -229,7 +229,7 @@ public:
         tableWidget->setEditTriggers(QAbstractItemView::CurrentChanged|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed);
         groupBox_3 = new QGroupBox(tab1);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
-        groupBox_3->setGeometry(QRect(920, 640, 271, 171));
+        groupBox_3->setGeometry(QRect(930, 640, 261, 171));
         sizePolicy1.setHeightForWidth(groupBox_3->sizePolicy().hasHeightForWidth());
         groupBox_3->setSizePolicy(sizePolicy1);
         gridLayout_9 = new QGridLayout(groupBox_3);
@@ -265,7 +265,7 @@ public:
 
         layoutWidget = new QWidget(tab1);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(11, 642, 221, 171));
+        layoutWidget->setGeometry(QRect(11, 642, 231, 171));
         gridLayout_5 = new QGridLayout(layoutWidget);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
         gridLayout_5->setContentsMargins(0, 0, 0, 0);
@@ -384,7 +384,7 @@ public:
 
         groupBox_4 = new QGroupBox(tab1);
         groupBox_4->setObjectName(QString::fromUtf8("groupBox_4"));
-        groupBox_4->setGeometry(QRect(670, 640, 241, 180));
+        groupBox_4->setGeometry(QRect(680, 640, 241, 180));
         gridLayout_8 = new QGridLayout(groupBox_4);
         gridLayout_8->setObjectName(QString::fromUtf8("gridLayout_8"));
         gridLayout_2 = new QGridLayout();
@@ -442,12 +442,13 @@ public:
 
         gridLayout_2->addWidget(label_3, 2, 0, 1, 1);
 
-        lcdNumberFlow = new QLCDNumber(groupBox_4);
-        lcdNumberFlow->setObjectName(QString::fromUtf8("lcdNumberFlow"));
-        sizePolicy2.setHeightForWidth(lcdNumberFlow->sizePolicy().hasHeightForWidth());
-        lcdNumberFlow->setSizePolicy(sizePolicy2);
+        lcdNumberFlowRate = new QLCDNumber(groupBox_4);
+        lcdNumberFlowRate->setObjectName(QString::fromUtf8("lcdNumberFlowRate"));
+        sizePolicy2.setHeightForWidth(lcdNumberFlowRate->sizePolicy().hasHeightForWidth());
+        lcdNumberFlowRate->setSizePolicy(sizePolicy2);
+        lcdNumberFlowRate->setSegmentStyle(QLCDNumber::Flat);
 
-        gridLayout_2->addWidget(lcdNumberFlow, 2, 1, 1, 1);
+        gridLayout_2->addWidget(lcdNumberFlowRate, 2, 1, 1, 1);
 
         label_6 = new QLabel(groupBox_4);
         label_6->setObjectName(QString::fromUtf8("label_6"));
@@ -471,13 +472,26 @@ public:
         QPalette palette;
         QBrush brush(QColor(255, 0, 0, 255));
         brush.setStyle(Qt::SolidPattern);
-        palette.setBrush(QPalette::Active, QPalette::Text, brush);
-        palette.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush1(QColor(120, 120, 120, 255));
+        palette.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        QBrush brush1(QColor(100, 10, 0, 255));
         brush1.setStyle(Qt::SolidPattern);
-        palette.setBrush(QPalette::Disabled, QPalette::Text, brush1);
+        palette.setBrush(QPalette::Active, QPalette::Button, brush1);
+        palette.setBrush(QPalette::Active, QPalette::Base, brush1);
+        palette.setBrush(QPalette::Active, QPalette::Window, brush1);
+        palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Button, brush1);
+        palette.setBrush(QPalette::Inactive, QPalette::Base, brush1);
+        palette.setBrush(QPalette::Inactive, QPalette::Window, brush1);
+        QBrush brush2(QColor(120, 120, 120, 255));
+        brush2.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
+        palette.setBrush(QPalette::Disabled, QPalette::Button, brush1);
+        palette.setBrush(QPalette::Disabled, QPalette::Base, brush1);
+        palette.setBrush(QPalette::Disabled, QPalette::Window, brush1);
         lcdNumberInTemper->setPalette(palette);
+        lcdNumberInTemper->setStyleSheet(QString::fromUtf8("background-color: rgb(100, 10, 0);"));
         lcdNumberInTemper->setNumDigits(5);
+        lcdNumberInTemper->setSegmentStyle(QLCDNumber::Flat);
 
         gridLayout_2->addWidget(lcdNumberInTemper, 3, 1, 1, 1);
 
@@ -500,6 +514,25 @@ public:
         lcdNumberOutTemper->setObjectName(QString::fromUtf8("lcdNumberOutTemper"));
         sizePolicy2.setHeightForWidth(lcdNumberOutTemper->sizePolicy().hasHeightForWidth());
         lcdNumberOutTemper->setSizePolicy(sizePolicy2);
+        QPalette palette1;
+        QBrush brush3(QColor(0, 255, 0, 255));
+        brush3.setStyle(Qt::SolidPattern);
+        palette1.setBrush(QPalette::Active, QPalette::WindowText, brush3);
+        palette1.setBrush(QPalette::Active, QPalette::Button, brush1);
+        palette1.setBrush(QPalette::Active, QPalette::Base, brush1);
+        palette1.setBrush(QPalette::Active, QPalette::Window, brush1);
+        palette1.setBrush(QPalette::Inactive, QPalette::WindowText, brush3);
+        palette1.setBrush(QPalette::Inactive, QPalette::Button, brush1);
+        palette1.setBrush(QPalette::Inactive, QPalette::Base, brush1);
+        palette1.setBrush(QPalette::Inactive, QPalette::Window, brush1);
+        palette1.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
+        palette1.setBrush(QPalette::Disabled, QPalette::Button, brush1);
+        palette1.setBrush(QPalette::Disabled, QPalette::Base, brush1);
+        palette1.setBrush(QPalette::Disabled, QPalette::Window, brush1);
+        lcdNumberOutTemper->setPalette(palette1);
+        lcdNumberOutTemper->setStyleSheet(QString::fromUtf8("background-color: rgb(100, 10, 0);"));
+        lcdNumberOutTemper->setSmallDecimalPoint(false);
+        lcdNumberOutTemper->setSegmentStyle(QLCDNumber::Flat);
 
         gridLayout_2->addWidget(lcdNumberOutTemper, 4, 1, 1, 1);
 
@@ -542,8 +575,7 @@ public:
     {
         WeightMethodClass->setWindowTitle(QApplication::translate("WeightMethodClass", "WeightMethod Verify", 0, QApplication::UnicodeUTF8));
         groupBox_2->setTitle(QApplication::translate("WeightMethodClass", "Controller", 0, QApplication::UnicodeUTF8));
-        btnWaterPumpStop->setText(QApplication::translate("WeightMethodClass", "Stop Pump", 0, QApplication::UnicodeUTF8));
-        btnWaterPumpStart->setText(QApplication::translate("WeightMethodClass", "Start Pump", 0, QApplication::UnicodeUTF8));
+        btnSetFreq->setText(QApplication::translate("WeightMethodClass", "Set Freq", 0, QApplication::UnicodeUTF8));
         btnValveSmall->setText(QApplication::translate("WeightMethodClass", "s\n"
 "m\n"
 "a\n"
@@ -553,9 +585,6 @@ public:
         btnWaterIn->setText(QApplication::translate("WeightMethodClass", "i\n"
 "n\n"
 "", 0, QApplication::UnicodeUTF8));
-        btnWaterOut->setText(QApplication::translate("WeightMethodClass", "o\n"
-"u\n"
-"t", 0, QApplication::UnicodeUTF8));
         btnValveBig->setText(QApplication::translate("WeightMethodClass", "b\n"
 "i\n"
 "g", 0, QApplication::UnicodeUTF8));
@@ -567,6 +596,10 @@ public:
 "i\n"
 "d\n"
 "2", 0, QApplication::UnicodeUTF8));
+        btnWaterPump->setText(QApplication::translate("WeightMethodClass", "Start Pump", 0, QApplication::UnicodeUTF8));
+        btnWaterOut->setText(QApplication::translate("WeightMethodClass", "o\n"
+"u\n"
+"t", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("WeightMethodClass", "MeterNo", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
@@ -620,7 +653,7 @@ public:
         label_10->setText(QApplication::translate("WeightMethodClass", "Small Bal:", 0, QApplication::UnicodeUTF8));
         lnEditSmallBalance->setText(QString());
         label_12->setText(QApplication::translate("WeightMethodClass", "\343\216\217", 0, QApplication::UnicodeUTF8));
-        label_3->setText(QApplication::translate("WeightMethodClass", "Flow:", 0, QApplication::UnicodeUTF8));
+        label_3->setText(QApplication::translate("WeightMethodClass", "FlowRate:", 0, QApplication::UnicodeUTF8));
         label_6->setText(QApplication::translate("WeightMethodClass", "m\302\263/h", 0, QApplication::UnicodeUTF8));
         label_4->setText(QApplication::translate("WeightMethodClass", "In Temp:", 0, QApplication::UnicodeUTF8));
         label_7->setText(QApplication::translate("WeightMethodClass", "\342\204\203", 0, QApplication::UnicodeUTF8));

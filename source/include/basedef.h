@@ -15,13 +15,22 @@
 #define NUMPREFIX_LEN		6		//"表号"的前缀长度。6位前缀
 
 #define METER_QUANTITY		20	   //本检定台可以检表的最大数量
+
 #ifndef VERIFY_POINTS
-#define VERIFY_POINTS	4  //检定流量点的数量, 一般为4个(大, 中一, 中二, 小), 但客户也可能需要更多
+#define VERIFY_POINTS		4  //检定流量点的数量, 一般为4个(大, 中一, 中二, 小), 但客户也可能需要更多
 #endif
 
 #ifndef SEP
 #define SEP "#SEP#"//分隔符
 #endif
+
+#define TIMEOUT_TEMPER		1000 //每1秒钟请求一次温度值
+
+#define FLOW_SAMPLE_NUM		10    //计算流速 采样点个数
+#define TIMEOUT_FLOW_SAMPLE	1000  //计算流速 每1秒采样一次天平数值
+
+#define TIMEOUT_BALANCE		200	//每200毫秒读一次天平数据
+
 
 /***********************************/
 /* 被检表类型枚举              */
@@ -175,9 +184,6 @@ public:
 	INT32	recordNumber;	//检定记录证书编号
 };
 typedef Record_Quality_STR* Record_Quality_PTR;
-
-
-
 
 
 /*

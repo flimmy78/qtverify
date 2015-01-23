@@ -55,17 +55,17 @@ DataTestDlg::DataTestDlg(QWidget *parent, Qt::WFlags flags)
 	m_balanceObj = NULL;
 	initBalanceCom();		//初始化天平串口
 
-	//计算流量用
+	m_meterObj = NULL;
+ 	initComOfHeatMeter();	//初始化热量表串口
+
+	//计算流速用
 	m_totalcount = 0;
 	m_startWeight = 0.0;
 	m_endWeight = 0.0;
 	memset(m_deltaWeight, 0, sizeof(float)*FLOW_SAMPLE_NUM);
-	m_flowTimer = new QTimer();
-	connect(m_flowTimer, SIGNAL(timeout()), this, SLOT(slotFreshFlow_total()));
-	m_flowTimer->start(TIMEOUT_FLOW_SAMPLE);
-
-	m_meterObj = NULL;
- 	initComOfHeatMeter();	//初始化热量表串口
+	m_flowRateTimer = new QTimer();
+	connect(m_flowRateTimer, SIGNAL(timeout()), this, SLOT(slotFreshFlowRate()));
+	m_flowRateTimer->start(TIMEOUT_FLOW_SAMPLE);
 }
 
 DataTestDlg::~DataTestDlg()
@@ -130,14 +130,14 @@ void DataTestDlg::closeEvent( QCloseEvent * event)
 		m_tempTimer = NULL;
 	}
 
-	if (m_flowTimer) //计算流量计时器
+	if (m_flowRateTimer) //计算流量计时器
 	{
-		if (m_flowTimer->isActive())
+		if (m_flowRateTimer->isActive())
 		{
-			m_flowTimer->stop();
+			m_flowRateTimer->stop();
 		}
-		delete m_flowTimer;
-		m_flowTimer = NULL;
+		delete m_flowRateTimer;
+		m_flowRateTimer = NULL;
 	}
 }
 
@@ -196,7 +196,6 @@ void DataTestDlg::initValveStatus()
 	m_valveBtn[m_portsetinfo.waterInNo] = ui.btnWaterIn;
 	m_valveBtn[m_portsetinfo.waterOutNo] = ui.btnWaterOut;
 	m_valveBtn[m_portsetinfo.pumpNo] = ui.btnWaterPump; //水泵
-
 
 	//端口号-阀门状态 全部阀门状态为关闭
 	m_valveStatus[m_portsetinfo.bigNo] = VALVE_CLOSE;
@@ -474,7 +473,6 @@ void DataTestDlg::slotFreshBalanceValue(const QString& Str)
 			slotSetValveBtnStatus(m_portsetinfo.waterOutNo, VALVE_OPEN);
 			slotSetValveBtnStatus(m_portsetinfo.waterInNo, VALVE_CLOSE);
 		}
-
 	}
 }
 
@@ -529,7 +527,7 @@ void DataTestDlg::setRegBtnBackColor(QPushButton *btn, bool status)
 /************************************************************************/
 /* 计算流速(每1秒采样一次天平变化值，计算前10秒的平均流速)              */
 /************************************************************************/
-void DataTestDlg::slotFreshFlow_total()
+void DataTestDlg::slotFreshFlowRate()
 {
 	if (m_totalcount > 4294967290) //防止m_totalcount溢出 32位无符号整数范围0~4294967295
 	{
