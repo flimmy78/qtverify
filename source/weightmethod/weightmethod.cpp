@@ -538,7 +538,21 @@ int WeightMethodDlg::isDataCollectNormal()
 //打开所有阀门和水泵
 int WeightMethodDlg::openAllValveAndPump()
 {
-	
+	//打开阀门
+	openValve(m_portsetinfo.waterOutNo);
+	openValve(m_portsetinfo.bigNo);
+	openValve(m_portsetinfo.middle1No);
+	openValve(m_portsetinfo.middle2No);
+	openValve(m_portsetinfo.smallNo);
+	openValve(m_portsetinfo.waterInNo);
+
+	//打开水泵
+	m_controlObj->askControlWaterPump(m_portsetinfo.pumpNo, VALVE_OPEN);
+	if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
+	{
+		slotSetValveBtnStatus(m_portsetinfo.pumpNo, VALVE_OPEN);
+	}
+
 	return true;
 }
 
@@ -620,30 +634,39 @@ int WeightMethodDlg::setMeterVerifyStatus()
 //关闭所有流量点阀门
 int WeightMethodDlg::closeAllFlowPointValves()
 {
+	closeValve(m_portsetinfo.bigNo);
+	closeValve(m_portsetinfo.middle1No);
+	closeValve(m_portsetinfo.middle2No);
+	closeValve(m_portsetinfo.smallNo);
+
 	return true;
 }
 
 //关闭放水阀门
 int WeightMethodDlg::closeWaterOutValve()
 {
+	closeValve(m_portsetinfo.waterOutNo);
 	return true;
 }
 
 //打开放水阀门
 int WeightMethodDlg::openWaterOutValve()
 {
+	openValve(m_portsetinfo.waterOutNo);
 	return true;
 }
 
 //打开大流量点阀门
 int WeightMethodDlg::openBigFlowValve()
 {
+	openValve(m_portsetinfo.bigNo);
 	return true;
 }
 
 //关闭大流量点阀门
 int WeightMethodDlg::closeBigFlowValve()
 {
+	closeValve(m_portsetinfo.bigNo);
 	return true;
 }
 
@@ -1089,6 +1112,10 @@ int WeightMethodDlg::calcMeterError(int idx)
 int WeightMethodDlg::openValve(UINT8 portno)
 {
 	m_controlObj->askControlRelay(portno, VALVE_OPEN);
+	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
+	{
+		slotSetValveBtnStatus(portno, VALVE_OPEN);
+	}
 	return true;
 }
 
@@ -1096,6 +1123,24 @@ int WeightMethodDlg::openValve(UINT8 portno)
 int WeightMethodDlg::closeValve(UINT8 portno)
 {
 	m_controlObj->askControlRelay(portno, VALVE_CLOSE);
+	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
+	{
+		slotSetValveBtnStatus(portno, VALVE_CLOSE);
+	}
+	return true;
+}
+
+//操作阀门：打开或者关闭
+int WeightMethodDlg::operateValve(UINT8 portno)
+{
+	if (m_valveStatus[portno]==VALVE_OPEN) //阀门原来是打开状态
+	{
+		closeValve(portno);
+	}
+	else //阀门原来是关闭状态
+	{
+		openValve(portno);
+	}
 	return true;
 }
 
@@ -1201,61 +1246,37 @@ void WeightMethodDlg::on_btnParaSet_clicked()
 void WeightMethodDlg::on_btnWaterIn_clicked() //进水阀
 {
 	m_nowPortNo = m_portsetinfo.waterInNo;
-	m_controlObj->askControlRelay(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
-	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
-	{
-		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
-	}
+	operateValve(m_nowPortNo);
 }
 
 void WeightMethodDlg::on_btnWaterOut_clicked() //出水阀
 {
 	m_nowPortNo = m_portsetinfo.waterOutNo;
-	m_controlObj->askControlRelay(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
-	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
-	{
-		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
-	}
+	operateValve(m_nowPortNo);
 }
 
 void WeightMethodDlg::on_btnValveBig_clicked() //大流量阀
 {
 	m_nowPortNo = m_portsetinfo.bigNo;
-	m_controlObj->askControlRelay(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
-	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
-	{
-		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
-	}
+	operateValve(m_nowPortNo);
 }
 
 void WeightMethodDlg::on_btnValveMiddle1_clicked() //中流一阀
 {
 	m_nowPortNo = m_portsetinfo.middle1No;
-	m_controlObj->askControlRelay(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
-	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
-	{
-		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
-	}
+	operateValve(m_nowPortNo);
 }
 
 void WeightMethodDlg::on_btnValveMiddle2_clicked() //中流二阀
 {
 	m_nowPortNo = m_portsetinfo.middle2No;
-	m_controlObj->askControlRelay(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
-	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
-	{
-		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
-	}
+	operateValve(m_nowPortNo);
 }
 
 void WeightMethodDlg::on_btnValveSmall_clicked() //小流量阀
 {
 	m_nowPortNo = m_portsetinfo.smallNo;
-	m_controlObj->askControlRelay(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
-	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
-	{
-		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
-	}
+	operateValve(m_nowPortNo);
 }
 
 /*
@@ -1268,8 +1289,8 @@ void WeightMethodDlg::on_btnWaterPump_clicked()
 		QMessageBox::warning(this, tr("Warning"), tr("please input frequency of transducer"));//请设置变频器频率！
 		ui.spinBoxFrequency->setFocus();
 	}
- 	m_controlObj->askControlRegulate(m_portsetinfo.pumpNo, ui.spinBoxFrequency->value());*/
-
+ 	m_controlObj->askControlRegulate(m_portsetinfo.pumpNo, ui.spinBoxFrequency->value());
+*/
 	m_nowPortNo = m_portsetinfo.pumpNo;
 	m_controlObj->askControlWaterPump(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
 	if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈

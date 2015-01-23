@@ -214,6 +214,7 @@ public slots:
 	int startVerifyFlowPoint(int order);       //开始单个流量点的检定
 	int openValve(UINT8 portno);    //打开控制阀
 	int closeValve(UINT8 portno);   //关闭控制阀
+	int operateValve(UINT8 portno); //操作控制阀：打开或者关闭
 	int getMeterStartValue();     //获取表初值
 	void makeStartValueByLastEndValue(); //上一次的终值作为本次的初值
 	int getMeterEndValue();       //获取表终值
