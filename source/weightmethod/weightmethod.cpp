@@ -348,15 +348,15 @@ void WeightMethodDlg::initValveStatus()
 //在界面刷新天平数值
 void WeightMethodDlg::slotFreshBalanceValue(const QString& Str)
 {
-	ui.lnEditBigBalance->setText(Str);
+	QString balStr = Str;
+	float weight = balStr.replace(" ", 0).toFloat();
+	QString wht = QString::number(weight, 'f', 3);
+	ui.lcdBigBalance->display(wht);
 
-	int num = Str.size();
-	bool ok;
-	float balWeight = fabs(Str.right(num-1).toFloat(&ok));
-	if (balWeight > 100) //防止天平溢出 暂设天平容量为100kg
+	if (weight > 100) //防止天平溢出 暂设天平容量为100kg
 	{
-		m_controlObj->askControlRelay(m_portsetinfo.waterOutNo, VALVE_OPEN);// 打开放水阀	
 		m_controlObj->askControlRelay(m_portsetinfo.waterInNo, VALVE_CLOSE);// 关闭进水阀
+		m_controlObj->askControlRelay(m_portsetinfo.waterOutNo, VALVE_OPEN);// 打开放水阀	
 		if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
 		{
 			slotSetValveBtnStatus(m_portsetinfo.waterOutNo, VALVE_OPEN);
@@ -368,8 +368,8 @@ void WeightMethodDlg::slotFreshBalanceValue(const QString& Str)
 //在界面刷新入口温度和出口温度值
 void WeightMethodDlg::slotFreshComTempValue(const QString& tempStr)
 {
-	ui.lcdNumberInTemper->display(tempStr.left(DATA_WIDTH));   //入口温度 PV
-	ui.lcdNumberOutTemper->display(tempStr.right(DATA_WIDTH)); //出口温度 SV
+	ui.lcdInTemper->display(tempStr.left(DATA_WIDTH));   //入口温度 PV
+	ui.lcdOutTemper->display(tempStr.right(DATA_WIDTH)); //出口温度 SV
 }
 
 /*
@@ -387,14 +387,14 @@ void WeightMethodDlg::slotFreshFlowRate()
 	}
 	if (m_totalcount == 0) //记录天平初始重量
 	{
-		m_startWeight = ui.lnEditBigBalance->text().replace(" ", 0).toFloat();
+		m_startWeight = ui.lcdBigBalance->value();
 		m_totalcount ++;
 		return;
 	}
 
 	float flowValue = 0.0;
 	float totalWeight = 0.0;
-	m_endWeight = ui.lnEditBigBalance->text().replace(" ", 0).toFloat();//取当前天平值, 作为当前运算的终值
+	m_endWeight = ui.lcdBigBalance->value();//取当前天平值, 作为当前运算的终值
 	float delta_weight = m_endWeight - m_startWeight;
 	m_deltaWeight[m_totalcount%FLOW_SAMPLE_NUM] = delta_weight;
 // 	qWarning()<<"m_totalcount ="<<m_totalcount;
@@ -406,7 +406,7 @@ void WeightMethodDlg::slotFreshFlowRate()
 	flowValue = 3.6*(totalWeight)*1000/(FLOW_SAMPLE_NUM*TIMEOUT_FLOW_SAMPLE);//总累积水量/总时间  (吨/小时, t/h, m3/h)
 //	flowValue = (totalWeight)*1000/(FLOW_SAMPLE_NUM*TIMEOUT_FLOW_SAMPLE);// kg/s
 // 	qDebug()<<"flowValue ="<<flowValue;
-	ui.lcdNumberFlowRate->display(QString::number(flowValue, 'f', 3)); //在ui.lnEditFlowRate中显示流速
+	ui.lcdFlowRate->display(QString::number(flowValue, 'f', 3)); //在ui.lcdFlowRate中显示流速
 	m_totalcount ++;//计数器累加
 	m_startWeight = m_endWeight;//将当前值保存, 作为下次运算的初值
 }
@@ -673,9 +673,9 @@ int WeightMethodDlg::closeBigFlowValve()
 //响应处理天平质量的变化
 int WeightMethodDlg::judgeBalanceInitValue(float v)
 {
-	while (!m_stopFlag && (ui.lnEditBigBalance->text().toFloat() < v))
+	while (!m_stopFlag && (ui.lcdBigBalance->value() < v))
 	{
-		qDebug()<<"天平重量 ="<<ui.lnEditBigBalance->text().toFloat()<<", 小于要求的重量 "<<v;
+		qDebug()<<"天平重量 ="<<ui.lcdBigBalance->value()<<", 小于要求的重量 "<<v;
 		QTest::qWait(1000);
 	}
 
@@ -686,14 +686,14 @@ int WeightMethodDlg::judgeBalanceAndCalcTemper(float targetV)
 {
 	int second;
 	float nowFlow =m_paraSetReader->getFpBySeq(m_nowOrder).fp_verify;;
-	while (!m_stopFlag && (ui.lnEditBigBalance->text().toFloat() < targetV))
+	while (!m_stopFlag && (ui.lcdBigBalance->value() < targetV))
 	{
-		qDebug()<<"天平重量 ="<<ui.lnEditBigBalance->text().toFloat()<<", 小于要求的重量 "<<targetV;
-		m_pipeInTemper += ui.lcdNumberInTemper->value();
-		m_pipeOutTemper += ui.lcdNumberOutTemper->value();
+		qDebug()<<"天平重量 ="<<ui.lcdBigBalance->value()<<", 小于要求的重量 "<<targetV;
+		m_pipeInTemper += ui.lcdInTemper->value();
+		m_pipeOutTemper += ui.lcdOutTemper->value();
 		m_tempCount++;
 
-		second = 3.6*(targetV - ui.lnEditBigBalance->text().toFloat())/nowFlow;
+		second = 3.6*(targetV - ui.lcdBigBalance->value())/nowFlow;
 		ui.labelHintPoint->setText(tr("NO. %1 flow point: %2 m3/h").arg(m_nowOrder).arg(nowFlow));
 		ui.labelHintProcess->setText(tr("Verifying...\nPlease wait for about %1 second").arg(second));
 		QTest::qWait(1000);
@@ -966,9 +966,9 @@ int WeightMethodDlg::prepareVerifyFlowPoint(int order)
 //进行单个流量点的检定
 int WeightMethodDlg::startVerifyFlowPoint(int order)
 {
-	m_balStartV = ui.lnEditBigBalance->text().toFloat(); //记录天平初值
-	m_pipeInTemper = ui.lcdNumberInTemper->value();
-	m_pipeOutTemper = ui.lcdNumberOutTemper->value();
+	m_balStartV = ui.lcdBigBalance->value(); //记录天平初值
+	m_pipeInTemper = ui.lcdInTemper->value();
+	m_pipeOutTemper = ui.lcdOutTemper->value();
 
 	m_flowPoint = m_paraSetReader->getFpBySeq(order).fp_verify;//order对应的流量点
 	int portNo = m_paraSetReader->getFpBySeq(order).fp_valve;  //order对应的阀门端口号
@@ -978,7 +978,7 @@ int WeightMethodDlg::startVerifyFlowPoint(int order)
 		if (judgeBalanceAndCalcTemper(m_balStartV + verifyQuantity)) //跑完检定量并计算次过程的平均温度
 		{
 			closeValve(portNo); //关闭order对应的阀门
-			m_balEndV = ui.lnEditBigBalance->text().toFloat(); //记录天平终值
+			m_balEndV = ui.lcdBigBalance->value(); //记录天平终值
 
 			for (int m=0; m<m_validMeterNum; m++) //
 			{
