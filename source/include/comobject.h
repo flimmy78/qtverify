@@ -151,7 +151,7 @@ public:
 	QTimer *m_balTimer; //定时器 (轮询天平数据)
 
 signals:
-	void balanceValueIsReady(const QString& balStr); //成功获取天平数值
+	void balanceValueIsReady(const float& balValue); //成功获取天平数值
 
 public slots:
 	bool openBalanceCom(ComInfoStruct *comStruct);

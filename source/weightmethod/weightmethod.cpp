@@ -68,6 +68,8 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	m_controlObj = NULL;
 	initControlCom();		//初始化控制串口
 
+	m_balLastValue = 0.0;
+
 	//计算流速用
 	m_totalcount = 0;
 	m_startWeight = 0.0;
@@ -245,7 +247,7 @@ void WeightMethodDlg::initBalanceCom()
 	m_balanceObj->openBalanceCom(&balanceStruct);
 
 	//天平数值由上位机直接通过天平串口采集
-	connect(m_balanceObj, SIGNAL(balanceValueIsReady(const QString &)), this, SLOT(slotFreshBalanceValue(const QString &)));
+	connect(m_balanceObj, SIGNAL(balanceValueIsReady(const float &)), this, SLOT(slotFreshBalanceValue(const float &)));
 }
 
 
@@ -346,14 +348,17 @@ void WeightMethodDlg::initValveStatus()
 
 
 //在界面刷新天平数值
-void WeightMethodDlg::slotFreshBalanceValue(const QString& Str)
+void WeightMethodDlg::slotFreshBalanceValue(const float& balValue)
 {
-	QString balStr = Str;
-	float weight = balStr.replace(" ", 0).toFloat();
-	QString wht = QString::number(weight, 'f', 3);
+	if (fabs(m_balLastValue - balValue) > 1) //天平每次变化不可能大于1kg
+	{
+		m_balLastValue = balValue;
+		return;
+	}
+	QString wht = QString::number(balValue, 'f', 3);
 	ui.lcdBigBalance->display(wht);
-
-	if (weight > 100) //防止天平溢出 暂设天平容量为100kg
+	m_balLastValue = balValue;
+	if (balValue > 100) //防止天平溢出 暂设天平容量为100kg
 	{
 		m_controlObj->askControlRelay(m_portsetinfo.waterInNo, VALVE_CLOSE);// 关闭进水阀
 		m_controlObj->askControlRelay(m_portsetinfo.waterOutNo, VALVE_OPEN);// 打开放水阀	

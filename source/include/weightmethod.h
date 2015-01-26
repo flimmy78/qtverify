@@ -162,6 +162,8 @@ public:
 	ReadComConfig *m_readComConfig; //读串口设置
 	PortSet_Ini_STR m_portsetinfo;  //端口配置
 
+	float m_balLastValue; //天平上一次读数，用来判断天平数值是否发生突变，防错用
+
 	//计算流速用
 	uint m_totalcount;  //计数器
 	float m_startWeight;//天平初值
@@ -221,7 +223,7 @@ public slots:
 	int calcAllMeterError();//计算所有被检表的误差
 	int calcMeterError(int idx); //计算某个表的误差
 
-	void slotFreshBalanceValue(const QString& Str);     //刷新天平数值
+	void slotFreshBalanceValue(const float& balValue);     //刷新天平数值
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
 	void slotFreshFlowRate(); //计算流速
 

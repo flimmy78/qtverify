@@ -243,7 +243,7 @@ QByteArray TempProtocol::getSendBuf()
 ************************************************/
 BalanceProtocol::BalanceProtocol()
 {
-	m_balValue = "";
+	m_balValue = 0.0;
 }
 
 BalanceProtocol::~BalanceProtocol()
@@ -253,13 +253,15 @@ BalanceProtocol::~BalanceProtocol()
 //解析赛多利斯天平串口数据
 bool BalanceProtocol::readBalanceComBuffer(QByteArray tmp)
 {
-	m_balValue = "";
+	QByteArray whtArray;
+	m_balValue = 0.0;
 	bool ret = false;
 	int num = tmp.size();
-	if (num < 22) //一帧通常是22字节；
+	if (num < BAL_DATA_LENGTH) //一帧通常是22字节；
 	{
 		return ret;
 	}
+
 	int m=0;
 	char ch;
 	UINT8 ch1, ch2;
@@ -272,29 +274,17 @@ bool BalanceProtocol::readBalanceComBuffer(QByteArray tmp)
 			for (m=i-16; m<i-6; m++)
 			{
 				ch = tmp.at(m);
-				m_balValue += ch;
+				whtArray.append(ch);
 			}
+			m_balValue = whtArray.replace(" ", 0).toFloat();
 			ret = true;
 			break;
 		}
 	}
-/*
-	ch1 = (UINT8)tmp.at(num-1);
-	ch2 = (UINT8)tmp.at(num-2);
-	if (ch1==ASCII_LF && ch2==ASCII_CR) //0x0A换行; 0x0D回车（表示一帧结束）
-	{
-		for (m=num-16; m<num-6; m++)
-		{
-			ch = tmp.at(m);
-			m_balValue += ch;
-		}
-		ret = true;
-	}
-*/	
 	return ret;
 }
 
-QString BalanceProtocol::getBalanceValue()
+float BalanceProtocol::getBalanceValue()
 {
 	return m_balValue;
 }

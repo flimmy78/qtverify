@@ -462,8 +462,8 @@ void BalanceComObject::readBalanceComBuffer()
 	ret = m_balanceProtocol->readBalanceComBuffer(balBuffer);//通讯协议接口
 	if (ret)
 	{
-		QString balStr = m_balanceProtocol->getBalanceValue();
-		emit balanceValueIsReady(balStr);
+		float balValue = m_balanceProtocol->getBalanceValue();
+		emit balanceValueIsReady(balValue);
 	}
 }
 
