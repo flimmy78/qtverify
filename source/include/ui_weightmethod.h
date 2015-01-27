@@ -116,7 +116,7 @@ public:
         tab1->setObjectName(QString::fromUtf8("tab1"));
         groupBox_2 = new QGroupBox(tab1);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setGeometry(QRect(280, 640, 421, 181));
+        groupBox_2->setGeometry(QRect(280, 630, 421, 181));
         gridLayout_6 = new QGridLayout(groupBox_2);
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
         btnSetFreq = new QToolButton(groupBox_2);
@@ -225,12 +225,12 @@ public:
         QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(9, __qtablewidgetitem9);
         tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
-        tableWidget->setGeometry(QRect(11, 11, 1321, 611));
+        tableWidget->setGeometry(QRect(11, 11, 1321, 601));
         tableWidget->setInputMethodHints(Qt::ImhDigitsOnly|Qt::ImhFormattedNumbersOnly|Qt::ImhPreferNumbers);
         tableWidget->setEditTriggers(QAbstractItemView::CurrentChanged|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed);
         groupBox_3 = new QGroupBox(tab1);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
-        groupBox_3->setGeometry(QRect(970, 640, 261, 171));
+        groupBox_3->setGeometry(QRect(970, 630, 261, 181));
         sizePolicy1.setHeightForWidth(groupBox_3->sizePolicy().hasHeightForWidth());
         groupBox_3->setSizePolicy(sizePolicy1);
         gridLayout_9 = new QGridLayout(groupBox_3);
@@ -239,6 +239,7 @@ public:
         gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
         label = new QLabel(groupBox_3);
         label->setObjectName(QString::fromUtf8("label"));
+        label->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
 
         gridLayout_7->addWidget(label, 0, 0, 1, 1);
 
@@ -246,27 +247,32 @@ public:
         labelHintPoint->setObjectName(QString::fromUtf8("labelHintPoint"));
         sizePolicy1.setHeightForWidth(labelHintPoint->sizePolicy().hasHeightForWidth());
         labelHintPoint->setSizePolicy(sizePolicy1);
+        labelHintPoint->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+        labelHintPoint->setWordWrap(true);
 
-        gridLayout_7->addWidget(labelHintPoint, 0, 1, 1, 2);
+        gridLayout_7->addWidget(labelHintPoint, 0, 1, 1, 1);
 
         label_2 = new QLabel(groupBox_3);
         label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
 
-        gridLayout_7->addWidget(label_2, 1, 0, 1, 2);
+        gridLayout_7->addWidget(label_2, 1, 0, 1, 1);
 
         labelHintProcess = new QLabel(groupBox_3);
         labelHintProcess->setObjectName(QString::fromUtf8("labelHintProcess"));
         sizePolicy1.setHeightForWidth(labelHintProcess->sizePolicy().hasHeightForWidth());
         labelHintProcess->setSizePolicy(sizePolicy1);
+        labelHintProcess->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+        labelHintProcess->setWordWrap(true);
 
-        gridLayout_7->addWidget(labelHintProcess, 1, 2, 1, 1);
+        gridLayout_7->addWidget(labelHintProcess, 1, 1, 1, 1);
 
 
         gridLayout_9->addLayout(gridLayout_7, 0, 0, 1, 1);
 
         layoutWidget = new QWidget(tab1);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(11, 642, 254, 171));
+        layoutWidget->setGeometry(QRect(11, 630, 254, 181));
         gridLayout_5 = new QGridLayout(layoutWidget);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
         gridLayout_5->setContentsMargins(0, 0, 0, 0);
@@ -344,7 +350,7 @@ public:
 
         layoutWidget1 = new QWidget(tab1);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(1240, 640, 95, 170));
+        layoutWidget1->setGeometry(QRect(1240, 620, 95, 201));
         gridLayout_4 = new QGridLayout(layoutWidget1);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
         gridLayout_4->setContentsMargins(0, 0, 0, 0);
@@ -385,7 +391,7 @@ public:
 
         groupBox_4 = new QGroupBox(tab1);
         groupBox_4->setObjectName(QString::fromUtf8("groupBox_4"));
-        groupBox_4->setGeometry(QRect(710, 640, 251, 186));
+        groupBox_4->setGeometry(QRect(710, 630, 251, 181));
         gridLayout_10 = new QGridLayout(groupBox_4);
         gridLayout_10->setObjectName(QString::fromUtf8("gridLayout_10"));
         gridLayout_2 = new QGridLayout();
@@ -627,7 +633,7 @@ public:
         QTableWidgetItem *___qtablewidgetitem9 = tableWidget->horizontalHeaderItem(9);
         ___qtablewidgetitem9->setText(QApplication::translate("WeightMethodClass", "DsipError(%)", 0, QApplication::UnicodeUTF8));
         groupBox_3->setTitle(QApplication::translate("WeightMethodClass", "Process Hint", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("WeightMethodClass", "Point:", 0, QApplication::UnicodeUTF8));
+        label->setText(QApplication::translate("WeightMethodClass", "FlowPnt:", 0, QApplication::UnicodeUTF8));
         labelHintPoint->setText(QString());
         label_2->setText(QApplication::translate("WeightMethodClass", "Process:", 0, QApplication::UnicodeUTF8));
         labelHintProcess->setText(QString());

@@ -109,7 +109,7 @@ public:
 	QextSerialPort *m_controlCom;
 	CtrlProtocol *m_controlProtocol;   //下位机控制通讯协议类对象
 	QByteArray m_conTmp;
-	QString m_balValue;
+	float m_balValue;
 	int m_protocolVersion; //控制板通讯协议版本
 
 	NewCtrl_Frame_Struct *m_conFrame;
@@ -117,7 +117,7 @@ public:
 signals:
 	void controlRelayIsOk(const UINT8 &portno, const bool &status);
 	void controlRegulateIsOk();
-	void controlGetBalanceValueIsOk(const QString& balValue);
+	void controlGetBalanceValueIsOk(const float& balValue);
 
 public slots:
 	bool openControlCom(ComInfoStruct *comStruct);

@@ -167,7 +167,7 @@ ControlComObject::ControlComObject(QObject* parent) : ComObject(parent)
 	memset(m_conFrame, 0, sizeof(NewCtrl_Frame_Struct));
 
 	m_conTmp = "";
-	m_balValue = "";
+	m_balValue = 0.0;
 
 	setProtocolVersion(NEW_CTRL_VERSION); //默认新控制板协议
 }

@@ -317,7 +317,7 @@ NewCtrlProtocol::NewCtrlProtocol()
 	m_ctrlFrame = new NewCtrl_Frame_Struct();
 	memset(m_ctrlFrame, 0, sizeof(NewCtrl_Frame_Struct));
 
-	m_balValueStr = "";
+	m_balValue = 0.0;
 };
 
 NewCtrlProtocol::~NewCtrlProtocol()
@@ -517,7 +517,7 @@ UINT8 NewCtrlProtocol::readCtrlComBuffer(QByteArray tmp)
 				if (ck == m_ctrlFrame->cs) //校验通过
 				{
 					analyseFrame();
-					// 					qDebug()<<"check is ok 校验通过";
+// 					qDebug()<<"check is ok 校验通过";
 					ret = m_ctrlFrame->funcCode; //以功能码返回，便于区分
 				}
 				break;
@@ -583,7 +583,8 @@ void NewCtrlProtocol::analyseFrame()
 
 	if (m_ctrlFrame->funcCode == CTRL_FUNC_BALANCE) //天平采集
 	{
-		m_balValueStr = ""; //先清零
+		QByteArray whtArray;
+		m_balValue = 0.0; //先清零
 		char ch;
 		UINT8 ch1, ch2;
 		ch1 = m_ctrlFrame->data[BAL_DATA_LENGTH-1];
@@ -593,9 +594,9 @@ void NewCtrlProtocol::analyseFrame()
 			for (int i=6; i<16; i++)
 			{
 				ch = m_ctrlFrame->data[i];
-				m_balValueStr += ch;
+				whtArray.append(ch);
 			}
-// 			m_balValueStr.replace(" ", "0");
+ 			m_balValue = whtArray.replace(" ", "0").toFloat();
 		}
 	}
 }
@@ -605,9 +606,9 @@ NewCtrl_Frame_Struct * NewCtrlProtocol::getConFrame()
 	return m_ctrlFrame;
 }
 
-QString NewCtrlProtocol::getBalanceValue()
+float NewCtrlProtocol::getBalanceValue()
 {
-	return m_balValueStr;
+	return m_balValue;
 }
 
 /***********************************************

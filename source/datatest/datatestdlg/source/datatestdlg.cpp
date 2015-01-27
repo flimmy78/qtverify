@@ -180,7 +180,7 @@ void DataTestDlg::initControlCom()
 	connect(m_controlObj, SIGNAL(controlRelayIsOk(const UINT8 &, const bool &)), this, SLOT(slotSetValveBtnStatus(const UINT8 &, const bool &)));
 	connect(m_controlObj, SIGNAL(controlRegulateIsOk()), this, SLOT(slotSetRegulateOk()));
 	//天平数值从控制板获取
-	connect(m_controlObj, SIGNAL(controlGetBalanceValueIsOk(const QString&)), this, SLOT(slotFreshBalanceValue(const QString &)));
+	connect(m_controlObj, SIGNAL(controlGetBalanceValueIsOk(const float&)), this, SLOT(slotFreshBalanceValue(const float &)));
 }
 
 //初始化阀门状态
@@ -240,7 +240,7 @@ void DataTestDlg::initBalanceCom()
 	m_balanceObj->openBalanceCom(&balanceStruct);
 
 	//天平数值由上位机直接通过天平串口采集
- 	connect(m_balanceObj, SIGNAL(balanceValueIsReady(const QString &)), this, SLOT(slotFreshBalanceValue(const QString &)));
+ 	connect(m_balanceObj, SIGNAL(balanceValueIsReady(const float &)), this, SLOT(slotFreshBalanceValue(const float &)));
 }
 
 //热量表串口通讯
@@ -457,14 +457,11 @@ void DataTestDlg::slotFreshComTempValue(const QString& tempStr)
 }
 
 //刷新天平数值
-void DataTestDlg::slotFreshBalanceValue(const QString& Str)
+void DataTestDlg::slotFreshBalanceValue(const float& balValue)
 {
-	ui.lnEditBigBalance->setText(Str);
+	ui.lnEditBigBalance->setText(QString::number(balValue, 'f', 3));
 	
-	int num = Str.size();
-	bool ok;
-	float balWeight = fabs(Str.right(num-1).toFloat(&ok));
-	if (balWeight > 100) //防止天平溢出 暂设天平容量为100kg
+	if (balValue > 100) //防止天平溢出 暂设天平容量为100kg
 	{
 		m_controlObj->askControlRelay(m_portsetinfo.waterOutNo, VALVE_OPEN);// 打开放水阀	
 		m_controlObj->askControlRelay(m_portsetinfo.waterInNo, VALVE_CLOSE);// 关闭进水阀

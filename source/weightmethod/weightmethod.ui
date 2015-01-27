@@ -36,7 +36,7 @@
        <property name="geometry">
         <rect>
          <x>280</x>
-         <y>640</y>
+         <y>630</y>
          <width>421</width>
          <height>181</height>
         </rect>
@@ -203,7 +203,7 @@ t</string>
          <x>11</x>
          <y>11</y>
          <width>1321</width>
-         <height>611</height>
+         <height>601</height>
         </rect>
        </property>
        <property name="inputMethodHints">
@@ -267,9 +267,9 @@ t</string>
        <property name="geometry">
         <rect>
          <x>970</x>
-         <y>640</y>
+         <y>630</y>
          <width>261</width>
-         <height>171</height>
+         <height>181</height>
         </rect>
        </property>
        <property name="sizePolicy">
@@ -287,11 +287,14 @@ t</string>
           <item row="0" column="0">
            <widget class="QLabel" name="label">
             <property name="text">
-             <string>Point:</string>
+             <string>FlowPnt:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
             </property>
            </widget>
           </item>
-          <item row="0" column="1" colspan="2">
+          <item row="0" column="1">
            <widget class="QLabel" name="labelHintPoint">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -302,16 +305,25 @@ t</string>
             <property name="text">
              <string/>
             </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
            </widget>
           </item>
-          <item row="1" column="0" colspan="2">
+          <item row="1" column="0">
            <widget class="QLabel" name="label_2">
             <property name="text">
              <string>Process:</string>
             </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+            </property>
            </widget>
           </item>
-          <item row="1" column="2">
+          <item row="1" column="1">
            <widget class="QLabel" name="labelHintProcess">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -321,6 +333,12 @@ t</string>
             </property>
             <property name="text">
              <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -332,9 +350,9 @@ t</string>
        <property name="geometry">
         <rect>
          <x>11</x>
-         <y>642</y>
+         <y>630</y>
          <width>254</width>
-         <height>171</height>
+         <height>181</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_5">
@@ -477,9 +495,9 @@ t</string>
        <property name="geometry">
         <rect>
          <x>1240</x>
-         <y>640</y>
+         <y>620</y>
          <width>95</width>
-         <height>170</height>
+         <height>201</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_4">
@@ -554,9 +572,9 @@ t</string>
        <property name="geometry">
         <rect>
          <x>710</x>
-         <y>640</y>
+         <y>630</y>
          <width>251</width>
-         <height>186</height>
+         <height>181</height>
         </rect>
        </property>
        <property name="title">

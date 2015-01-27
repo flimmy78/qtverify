@@ -87,7 +87,7 @@ public slots:
 	void on_btnExit_clicked();
 
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
-	void slotFreshBalanceValue(const QString& Str);     //刷新天平数值
+	void slotFreshBalanceValue(const float& balValue);     //刷新天平数值
 	
 	void slotFreshMeterNo(const QString& comName, const QString& meterNo);//刷新表号
 	void slotFreshMeterFlow(const QString& comName, const QString& flow); //刷新表流量

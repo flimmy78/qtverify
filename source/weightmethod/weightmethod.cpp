@@ -283,7 +283,7 @@ void WeightMethodDlg::initControlCom()
 	connect(m_controlObj, SIGNAL(controlRelayIsOk(const UINT8 &, const bool &)), this, SLOT(slotSetValveBtnStatus(const UINT8 &, const bool &)));
 	connect(m_controlObj, SIGNAL(controlRegulateIsOk()), this, SLOT(slotSetRegulateOk()));
 	//天平数值从控制板获取
-// 	connect(m_controlObj, SIGNAL(controlGetBalanceValueIsOk(const QString&)), this, SLOT(slotFreshBalanceValue(const QString &)));
+// 	connect(m_controlObj, SIGNAL(controlGetBalanceValueIsOk(const float&)), this, SLOT(slotFreshBalanceValue(const float &)));
 }
 
 //热量表通讯串口
@@ -347,7 +347,7 @@ void WeightMethodDlg::initValveStatus()
 
 
 
-//在界面刷新天平数值
+//在界面刷新天平数值,并过滤突变数值
 void WeightMethodDlg::slotFreshBalanceValue(const float& balValue)
 {
 	if (fabs(m_balLastValue - balValue) > 1) //天平每次变化不可能大于1kg

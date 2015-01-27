@@ -173,7 +173,7 @@ private:
 class PROTOCOL_EXPORT NewCtrlProtocol : public CtrlProtocol
 {
 	NewCtrl_Frame_Struct *m_ctrlFrame;
-	QString m_balValueStr;
+	float m_balValue;
 
 public:
 	NewCtrlProtocol();
@@ -192,7 +192,7 @@ public slots:
 	//virtual
 	virtual UINT8 CountCheck(NewCtrl_Frame_Struct *pFrame);
 	virtual NewCtrl_Frame_Struct* getConFrame();
-	virtual QString getBalanceValue();
+	virtual float getBalanceValue();
 };
 
 
