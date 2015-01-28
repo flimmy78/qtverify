@@ -23,6 +23,7 @@
 
 #include "parasetdlg.h"
 #include "commondefine.h"
+#include "qtexdb.h"
 
 /*************************************************************************
 ************************ParaSetDlg Start******************************

@@ -20,7 +20,6 @@
 #include <QtGui/QWidget>
 
 #include "ui_logindialog.h"
-#include "qtexdb.h"
 
 class LOGINDIALOG_EXPORT LoginDialog : public QDialog
 {

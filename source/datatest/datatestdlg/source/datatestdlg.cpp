@@ -18,6 +18,9 @@
 
 #include "datatestdlg.h"
 #include "commondefine.h"
+#include "parasetdlg.h"
+#include "readcomconfig.h"
+#include "algorithm.h"
 
 DataTestDlg::DataTestDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)

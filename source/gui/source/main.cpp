@@ -4,10 +4,12 @@
 #include <QtCore/QDebug>
 #include <QtGui/QSplashScreen>
 #include <QtTest/QTest>
+#include <QtCore/QThread>
 
 #include "mainform.h"
 #include "logger.h"
 #include "logindialog.h"
+#include "qtexdb.h"
 
 MainForm *g_mainform;
 

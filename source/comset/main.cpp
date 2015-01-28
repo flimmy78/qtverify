@@ -5,7 +5,6 @@
 
 #include "setportfrm.h"
 #include "setcomfrm.h"
-#include "readcomconfig.h"
 
 int main( int argc, char ** argv )
 {

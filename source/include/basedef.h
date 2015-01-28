@@ -31,7 +31,6 @@
 
 #define TIMEOUT_BALANCE		200	//每200毫秒读一次天平数据
 
-
 /***********************************/
 /* 被检表类型枚举              */
 /***********************************/
@@ -142,6 +141,7 @@ public:
 	int seq;//检测序列号
 };
 typedef DftDbInfo_STR* DftDbInfo_PTR;
+
 /*
 **      FUNCTION -- 检定结果记录表（质量法）
 */
@@ -184,7 +184,6 @@ public:
 	INT32	recordNumber;	//检定记录证书编号
 };
 typedef Record_Quality_STR* Record_Quality_PTR;
-
 
 /*
 * 检定流量点信息; fp为flow point的头字母
@@ -240,5 +239,15 @@ public:
 	int ex_time;//排气时间
 };
 typedef Quality_Params_STR* Quality_Params_PTR;
+
+typedef struct ComInfo_Struct
+{
+	QString portName; //串口名
+	int     baudRate; //波特率
+	int     dataBit;  //数据位
+	int     parity;   //奇偶校验
+	int     stopBit;  //停止位
+}ComInfoStruct;
+
 
 #endif	//BASEDEF_H

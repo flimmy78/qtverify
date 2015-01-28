@@ -6,7 +6,8 @@
 
 #include "ui_setcomfrm.h"
 #include "comsetdlg_global.h"
-#include "readcomconfig.h"
+
+class ReadComConfig;
 
 class COMSETDLG_EXPORT SetComFrm : public QWidget
 {

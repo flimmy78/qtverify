@@ -16,9 +16,11 @@
 #include <QtCore/QTranslator>
 #include <QtCore/QThread>
 #include <QtCore/QDebug>
+#include <QtCore/QTextCodec>
 
-#include "datatestdlg.h"
+#include "qtexdb.h"
 #include "logger.h"
+#include "datatestdlg.h"
 
 int main( int argc, char ** argv )
 {

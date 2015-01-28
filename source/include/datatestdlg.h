@@ -5,11 +5,10 @@
 
 #include "datatestdlg_global.h"
 #include "ui_datatestdlg.h"
-#include "parasetdlg.h"
 #include "comobject.h"
-#include "readcomconfig.h"
-#include "algorithm.h"
 
+class ParaSetDlg;
+class ReadComConfig;
 
 /*
 **	ÀàÃû£ºDataTestDlg

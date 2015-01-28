@@ -18,8 +18,9 @@
 
 #include <QtGui/QWidget>
 #include <QtCore/QSettings>
+
 #include "ui_masterslaveset.h"
-#include "algorithm.h"
+#include "basedef.h"
 
 class MASTERSLAVE_EXPORT CMasterSlave : public QWidget
 {

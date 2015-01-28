@@ -15,14 +15,13 @@
 #  endif
 #endif
 
-
 #include <QtCore/QThread>  
 #include <QtCore/QObject> 
 #include <QtCore/QTimer>
 
 #include "basedef.h"
 #include "protocol.h"
-#include "comsetdlg_global.h"
+#include "qextserialport.h"
 
 
 #define VALVE_OPEN		true	//阀门打开状态
@@ -31,6 +30,7 @@
 #define REG_SUCCESS	 true	//调节阀调节成功
 #define REG_FAILED	 false  //调节阀调节失败
 
+#define TIME_OUT	10		//延时，TIME_OUT是串口读写的延时
 
 class COMOBJECT_EXPORT ComThread : public QThread 
 {      
@@ -47,11 +47,6 @@ protected:
 	virtual void run();     
 };  
 
-
-#include "qextserialport.h"
-#include "datatestdlg_global.h"
-
-#define TIME_OUT	10		//延时，TIME_OUT是串口读写的延时
 
 class COMOBJECT_EXPORT ComObject : public QObject 
 {       

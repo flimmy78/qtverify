@@ -3,15 +3,18 @@
 
 #include <QtGui/QMainWindow>
 #include <QtGui/QCloseEvent>
+#include <QtCore/QProcess>
 
 #include "ui_mainform.h"
-#include "dbmysql.h"
-#include "queryresult.h"
-#include "setcomfrm.h"
-#include "datatestdlg.h"
-#include "setportfrm.h"
-#include "masterslaveset.h"
-#include "weightmethod.h"
+
+class DbMySql;
+class QueryResult;
+class SetComFrm;
+class DataTestDlg;
+class SetPortFrm;
+class CMasterSlave;
+class WeightMethodDlg;
+class CAlgorithm;
 
 class MainForm : public QMainWindow
 {

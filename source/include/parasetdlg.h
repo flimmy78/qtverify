@@ -6,7 +6,6 @@
 #include <QDateTime>
 
 #include "ui_parasetdlg.h"
-#include "qtexdb.h"
 #include "parasetdlg_global.h"
 #include "basedef.h"
 

@@ -18,6 +18,14 @@
 #include <QtCore>
 
 #include "mainform.h"
+#include "dbmysql.h"
+#include "queryresult.h"
+#include "setcomfrm.h"
+#include "datatestdlg.h"
+#include "setportfrm.h"
+#include "masterslaveset.h"
+#include "weightmethod.h"
+#include "algorithm.h"
 
 MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)

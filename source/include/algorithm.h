@@ -17,10 +17,10 @@
 
 #include "basedef.h"
 
-
 ALGORITHM_EXPORT int getPortSetIni(PortSet_Ini_PTR info); //获取控制板的端口号配置信息
 ALGORITHM_EXPORT int getParaSetIni(ParaSet_Ini_PTR info); //获取参数设置(质量法-分量检测)
 ALGORITHM_EXPORT int getMasterSlaveIni(MasterSlave_Ini_PTR info); //获取主机-从机设置信息
+
 const float density[150] = {
 	1000.2,
 	1000.2,
@@ -173,6 +173,7 @@ const float density[150] = {
 	918.02,
 	917.08
 };//水温-密度表, (下标的索引值 + 1) 即为(整数温度值), 密度单位(千克/立方米, kg/m3)
+
 class ALGORITHM_EXPORT CAlgorithm
 {
 public:
