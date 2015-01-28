@@ -20,14 +20,12 @@
 #include <QtGui/QMessageBox>
 #include <QtSql/QSqlTableModel>
 #include <QtSql/QSqlRelationalTableModel>
+#include <QtCore/QProcessEnvironment>
 
 #include "parasetdlg.h"
 #include "commondefine.h"
 #include "qtexdb.h"
 
-/*************************************************************************
-************************ParaSetDlg Start******************************
-**************************************************************************/
 ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
@@ -35,7 +33,6 @@ ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 	ui.setupUi(this);
 	cBoxData_inited = false;
 	
-/**************************初始化数据库*****************************************/
 	m_meterStdNum = 0;
 	m_meterStdPtr = NULL;
 	m_meterTypeNum = 0;
@@ -43,16 +40,17 @@ ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 	m_manuFacNum = 0;
 	m_manuFacPtr = NULL;
 	initUiData();//以数据库中的数据, 初始化comboBox的值
-/**************************初始化settings*****************************************/
-	char filename[255];//配置文件的文件名
+
+	QString filename;//配置文件的文件名
+	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
 #ifdef __unix
-	sprintf_s( filename, "%s/ini/qualityParaSet.ini", getenv( "RUNHOME" ) );
+	filename = runhome + "\/ini\/qualityParaSet.ini";
 #else
-	sprintf_s( filename, "%s\\ini\\qualityParaSet.ini", getenv( "RUNHOME" ) );
+	filename = runhome + "\\ini\\qualityParaSet.ini";
 #endif
 	settings = new QSettings(filename, QSettings::IniFormat);
 	settings->setIniCodec("GB2312");//解决向ini文件中写汉字乱码
-/**************************初始化lastParams*************************************/
+
 	lastParams = new ParaSetReader();
 	flowPointVector();
 	installLastParams();//加载上次的配置信息
@@ -189,7 +187,6 @@ void ParaSetDlg::initUiData()
 	ui.cmbModel->setModel(relationModel2);  
 	ui.cmbModel->setModelColumn(relationModel2->fieldIndex("F_Desc")); 
 
-
 	cBoxData_inited = true;//下拉条已初始化完毕
 }
 
@@ -261,9 +258,10 @@ void ParaSetDlg::installOther()
 	ui.lineEdit_exTime->setText(QString::number(lastParams->m_params->ex_time));
 }
 
-/*将各流量点中, 相似功能的控件加入数组, 便于使用; 
-**这就好比界面上的一组控件代表一个关系表(关系型数据库)中的一条记录, 
-**而每个控件代表记录中的不同的域
+/*
+** 将各流量点中, 相似功能的控件加入数组, 便于使用; 
+   这就好比界面上的一组控件代表一个关系表(关系型数据库)中的一条记录, 
+   而每个控件代表记录中的不同的域
 */
 void ParaSetDlg::flowPointVector()
 {
@@ -330,15 +328,15 @@ void ParaSetDlg::on_btnSave_clicked()
 }
 
 /*
-* 检查被用户选定的检定序列号是否合法
-* 检定序列里必须要有1, 
-* 且是以1起始, 中间不间断的自然数序列
-* 比如: [1]; [1, 2]; [1, 2, 3]; 依此类推.
-* 假设有一正整数序列
-* 设n为其最大元素值
-* 若此序列无重复项,
-* 且n与序列的元素个数相等
-* 那么这个序列一定是以1起始,以n终止的自然数列
+** 检查被用户选定的检定序列号是否合法
+   检定序列里必须要有1, 
+   且是以1起始, 中间不间断的自然数序列
+   比如: [1]; [1, 2]; [1, 2, 3]; 依此类推.
+   假设有一正整数序列
+   设n为其最大元素值
+   若此序列无重复项,
+   且n与序列的元素个数相等
+   那么这个序列一定是以1起始,以n终止的自然数列
 */
 bool ParaSetDlg::chkSeq()
 {
@@ -396,8 +394,8 @@ void ParaSetDlg::SaveHead()
 }
 
 /*
-* 保存第i流量点参数
-* i: 界面上的第i个流量点, 而不是检定顺序 
+** 保存第i流量点参数
+** i: 界面上的第i个流量点, 而不是检定顺序 
 */
 void ParaSetDlg::SaveFlowPoint()
 {
@@ -441,9 +439,6 @@ void ParaSetDlg::SaveOther()
 	settings->setValue("exhausttime", ui.lineEdit_exTime->text());//排气时间
 	settings->endGroup();
 }
-/*************************************************************************
-************************ParaSetDlg End*******************************
-**************************************************************************/
 
 /*************************************************************************
 ************************ParaSetReader Start*************************
@@ -473,23 +468,23 @@ ParaSetReader::~ParaSetReader()
 
 int ParaSetReader::readIniFile()
 {
-	char filename[255];
-	char* runhome = getenv( "RUNHOME" );
+	QString filename;
+	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
 
 	//检定前的参数文件
 #ifdef __unix
-	sprintf_s( filename, "%s/ini/qualityParaSet.ini", runhome );
+	filename = runhome + "\/ini\/qualityParaSet.ini";
 #else
-	sprintf_s( filename, "%s\\ini\\qualityParaSet.ini", runhome );
+	filename = runhome + "\\ini\\qualityParaSet.ini";
 #endif
 	m_settings = new QSettings(filename, QSettings::IniFormat);
 	m_settings->setIniCodec("GB2312");//解决向ini文件中写汉字乱码
 
 	//端口号的配置文件
 #ifdef __unix
-	sprintf_s( filename, "%s/ini/portset.ini", runhome );
+	filename = runhome + "\/ini\/portset.ini";
 #else
-	sprintf_s( filename, "%s\\ini\\portset.ini", runhome );
+	filename = runhome + "\\ini\\portset.ini";
 #endif
 	m_portInfo = new QSettings(filename, QSettings::IniFormat);
 	m_portInfo->setIniCodec("GB2312");
@@ -505,8 +500,8 @@ Quality_Params_PTR ParaSetReader::getParams()
 }
 
 /*
-* 将配置文件保存的comboBox索引号与
-* 端口字段对应
+** 将配置文件保存的comboBox索引号与
+** 端口字段对应
 */
 void ParaSetReader::initValveMap()
 {
@@ -517,7 +512,7 @@ void ParaSetReader::initValveMap()
 }
 
 /*
-* 读取配置文件的信息
+** 读取配置文件的信息
 */
 void ParaSetReader::readParamValues()
 {
@@ -606,9 +601,9 @@ void ParaSetReader::readOther()
 }
 
 /*
-* 得到检测序列号为i的流量点信息,i从1开始,
-* 以m_params->total_fp结束
-* 异常: i 不在[1...m_params->total_fp]之间
+** 得到检测序列号为i的流量点信息,i从1开始,
+** 以m_params->total_fp结束
+** 异常: i 不在[1...m_params->total_fp]之间
 */
 Flow_Point_Info ParaSetReader::getFpBySeq(int i)
 {
@@ -623,6 +618,3 @@ Flow_Point_Info ParaSetReader::getFpBySeq(int i)
 	
 	throw i;//如果遍历各有效流量点后没有匹配的检定次序,那么此检定次序不存在
 }
-/*************************************************************************
-************************ParaSetReader End**************************
-**************************************************************************/

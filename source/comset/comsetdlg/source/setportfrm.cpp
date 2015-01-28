@@ -24,11 +24,11 @@ SetPortFrm::SetPortFrm(QWidget *parent, Qt::WFlags flags)
 {
 	gui.setupUi(this);
 
-	QString path = QProcessEnvironment::systemEnvironment().value("RUNHOME");
+	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
 #ifdef Q_OS_LINUX
-		IniPath = path + "\/ini\/portset.ini";
+		IniPath = runhome + "\/ini\/portset.ini";
 #elif defined (Q_OS_WIN)
-		IniPath = path + "\\ini\\portset.ini";
+		IniPath = runhome + "\\ini\\portset.ini";
 #endif
 	PortSet = new QSettings(IniPath, QSettings::IniFormat);
 
@@ -54,9 +54,9 @@ void SetPortFrm::on_btn_Save_clicked()
 	WriteIni();
 	QMessageBox::information(this, tr("OK"), tr("Save Successful !"));
 }
-/************************************************************************/
-/* 读取上次的端口配置                                                    */
-/************************************************************************/
+/*
+** 读取上次的端口配置
+*/
 void SetPortFrm::InstallIni()
 {
 	gui.cBox_Inlet->setCurrentIndex(PortSet->value("Relay/waterInNo").toInt() - 1);
@@ -74,9 +74,10 @@ void SetPortFrm::InstallIni()
 
 	gui.cBox_Version->setCurrentIndex(PortSet->value("CtrlBoard/version").toInt());
 }
-/************************************************************************/
-/* 保存端口配置                                                                */
-/************************************************************************/
+
+/*
+** 保存端口配置
+*/
 void SetPortFrm::WriteIni()
 {
 	PortSet->setValue("Relay/waterInNo",gui.cBox_Inlet->currentIndex() + 1);

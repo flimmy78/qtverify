@@ -19,10 +19,10 @@
 #include "comobject.h"
 #include "commondefine.h"
 
-/************************************************
-类名：ComThread
-功能：线程管理类；开辟新线程
-*************************************************/
+/*
+** 类名：ComThread
+** 功能：线程管理类；开辟新线程
+*/
 ComThread::ComThread(QObject* parent) : QThread(parent)
 {
 }   
@@ -43,10 +43,10 @@ void ComThread::run()
 }   
 
 
-/************************************************
-类名：ComObject
-功能：串口操作基类
-*************************************************/
+/*
+** 类名：ComObject
+** 功能：串口操作基类
+*/
 ComObject::ComObject(QObject* parent) : QObject(parent)
 {
 }
@@ -56,10 +56,10 @@ ComObject::~ComObject()
 }
 
 
-/************************************************
-类名：TempComObject
-功能：温度串口类- 打开串口；设置串口参数；关闭串口；
-*************************************************/
+/*
+** 类名：TempComObject
+** 功能：温度串口类- 打开串口；设置串口参数；关闭串口；
+*/
 TempComObject::TempComObject(QObject* parent) : ComObject(parent)
 {
 	m_tempCom = NULL;
@@ -152,10 +152,10 @@ void TempComObject::readTemperatureComBuffer()
 }
 
 
-/*********************************************************
-类名：ControlComObject
-功能：控制串口类- 打开串口；设置串口参数；关闭串口；
-**********************************************************/
+/*
+** 类名：ControlComObject
+** 功能：控制串口类- 打开串口；设置串口参数；关闭串口；
+*/
 ControlComObject::ControlComObject(QObject* parent) : ComObject(parent)
 {
 	m_controlCom = NULL;
@@ -247,8 +247,8 @@ bool ControlComObject::openControlCom(ComInfoStruct *comStruct)
 }
 
 /*
-	功能：控制继电器断开、闭合（即控制气动阀开、合）
-	输入参数：
+**	功能：控制继电器断开、闭合（即控制气动阀开、合）
+**	输入参数：
 		portno:继电器编号
 		status: false(关闭阀门)；true(打开阀门)
 */
@@ -362,16 +362,16 @@ void ControlComObject::readNewControlComBuffer()
 		m_balValue = protocolObj->getBalanceValue();
 		emit controlGetBalanceValueIsOk(m_balValue);
 		QDateTime endtime = QDateTime::currentDateTime();
-		UINT32 usedSec = begintime.msecsTo(endtime);
+// 		UINT32 usedSec = begintime.msecsTo(endtime);
 // 		qDebug()<<"读取天平数据，用时"<<usedSec<<"毫秒";
 	}
 	
 }
 
-/*********************************************************
-类名：BalanceComObject
-功能：天平串口类- 打开串口；设置串口参数；关闭串口；
-**********************************************************/
+/*
+** 类名：BalanceComObject
+** 功能：天平串口类- 打开串口；设置串口参数；关闭串口；
+*/
 BalanceComObject::BalanceComObject(QObject* parent) : ComObject(parent)
 {
 	m_balanceCom = NULL;
@@ -468,10 +468,10 @@ void BalanceComObject::readBalanceComBuffer()
 }
 
 
-/*********************************************************
-类名：MeterComObject
-功能：热量表串口类- 打开串口；设置串口参数；关闭串口；
-**********************************************************/
+/*
+** 类名：MeterComObject
+** 功能：热量表串口类- 打开串口；设置串口参数；关闭串口；
+*/
 MeterComObject::MeterComObject(QObject* parent) : ComObject(parent)
 {
 	m_meterCom = NULL;

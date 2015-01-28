@@ -63,10 +63,10 @@ public slots:
 
 };    
 
-/***************************************
-类名：TempComObject
-功能：温度串口类- 打开串口；设置串口参数；关闭串口；
-****************************************/
+/*
+** 类名：TempComObject
+** 功能：温度串口类- 打开串口；设置串口参数；关闭串口；
+*/
 class COMOBJECT_EXPORT TempComObject : public ComObject
 {
 	Q_OBJECT  
@@ -89,10 +89,10 @@ public slots:
 
 };
 
-/***************************************
-类名：ValveComObject
-功能：阀门控制串口类- 打开串口；设置串口参数；关闭串口；
-****************************************/
+/*
+** 类名：ValveComObject
+** 功能：阀门控制串口类- 打开串口；设置串口参数；关闭串口；
+*/
 class COMOBJECT_EXPORT ControlComObject : public ComObject
 {
 	Q_OBJECT  
@@ -129,10 +129,10 @@ public slots:
 };
 
 
-/***************************************
-类名：BalanceComObject
-功能：天平串口类- 打开串口；设置串口参数；关闭串口；
-****************************************/
+/*
+** 类名：BalanceComObject
+** 功能：天平串口类- 打开串口；设置串口参数；关闭串口；
+*/
 class COMOBJECT_EXPORT BalanceComObject : public ComObject
 {
 	Q_OBJECT  
@@ -153,10 +153,10 @@ public slots:
 	void readBalanceComBuffer();
 };
 
-/***************************************
-类名：MeterComObject
-功能：热量表串口类- 打开串口；设置串口参数；关闭串口；
-****************************************/
+/*
+** 类名：MeterComObject
+** 功能：热量表串口类- 打开串口；设置串口参数；关闭串口；
+*/
 class COMOBJECT_EXPORT MeterComObject : public ComObject
 {
 	Q_OBJECT  

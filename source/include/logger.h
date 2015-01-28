@@ -21,6 +21,7 @@
 #include <QtCore/QMutex>
 #include <QtGui/QDateTimeEdit>
 #include <QtCore/QFile>
+#include <QtCore/QProcessEnvironment>
 
 #include "commondefine.h"
 
@@ -59,10 +60,10 @@ void myMessageOutput(QtMsgType type, const char *msg)
 	QString message = QString("%1 %2").arg(current_date_time).arg(text);
 	QString current_day = QDateTime::currentDateTime().toString("yyyy-MM-dd");
 
-	char filename[100];
-	memset(filename, 0, sizeof(char)*100);
-	sprintf_s(filename, "%s/log/log_%s.txt", getenv("RUNHOME"), current_day.toStdString().c_str());
-	QFile file(QString("%1").arg(filename));
+	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
+	QString filename;
+	filename = runhome + "\\log\\log_" + current_day + ".txt";
+	QFile file(filename);
 	if (file.open(QIODevice::WriteOnly | QIODevice::Append))
 	{
 		QTextStream text_stream(&file);
@@ -73,8 +74,6 @@ void myMessageOutput(QtMsgType type, const char *msg)
 
 	mutex.unlock();
 }
-
-
 
 class LOGGER_EXPORT CLogger
 {

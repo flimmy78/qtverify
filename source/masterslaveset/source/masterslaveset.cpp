@@ -16,13 +16,13 @@ CMasterSlave::CMasterSlave(QWidget *parent, Qt::WFlags flags)
 		initSettingsInfo();
 	}
 
-	QString path = QProcessEnvironment::systemEnvironment().value("RUNHOME");
+	QString filename = QProcessEnvironment::systemEnvironment().value("RUNHOME");
 #ifdef Q_OS_LINUX
-	path += "\/ini\/masterslaveset.ini";
+	filename += "\/ini\/masterslaveset.ini";
 #elif defined (Q_OS_WIN)
-	path += "\\ini\\masterslaveset.ini";
+	filename += "\\ini\\masterslaveset.ini";
 #endif
-	m_settings = new QSettings(path, QSettings::IniFormat);
+	m_settings = new QSettings(filename, QSettings::IniFormat);
 }
 
 CMasterSlave::~CMasterSlave()

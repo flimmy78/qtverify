@@ -10,11 +10,11 @@
 
 CLogger::CLogger()
 {
-	QString path = QProcessEnvironment::systemEnvironment().value("RUNHOME");
+	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
 #ifdef Q_OS_LINUX
-	logfile = path + "\/log\/log.txt";
+	logfile = runhome + "\/log\/log.txt";
 #elif defined (Q_OS_WIN)
-	logfile = path + "\\log\\log.txt";
+	logfile = runhome + "\\log\\log.txt";
 #endif
 }
 

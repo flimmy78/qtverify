@@ -11,8 +11,8 @@ class ParaSetDlg;
 class ReadComConfig;
 
 /*
-**	类名：DataTestDlg
-**	功能：数据采集与测试
+** 类名：DataTestDlg
+** 功能：数据采集与测试
 */
 class DATATESTDLG_EXPORT DataTestDlg : public QWidget
 {

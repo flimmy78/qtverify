@@ -294,8 +294,8 @@ void MainForm::on_actionFashion_triggered()
 
 void MainForm::chaneLanguage(QString lang)
 {
-	char file_name[100];
-	sprintf_s( file_name, "%s\\ini\\tr_qtverify.ini", getenv("RUNHOME"));
+	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
+	QString file_name = runhome + "\\ini\\tr_qtverify.ini";
 	QFile file(file_name );
 	if( !file.open(QIODevice::ReadOnly | QIODevice::Text) ) 
 	{

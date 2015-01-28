@@ -3,9 +3,9 @@
 
 #include <intsafe.h>
 
-/************************************************************************/
-/* 变量长度宏定义                                                       */
-/************************************************************************/
+/*
+** 变量长度宏定义                                                       
+*/
 #define FILENAME_LENGTH		100		//文件名(全路径)长度
 #define ASCNAME_LEN			24		//数据库表中代码域的长度
 #define DESC_LEN			60		//数据库表中描述域的长度
@@ -31,9 +31,9 @@
 
 #define TIMEOUT_BALANCE		200	//每200毫秒读一次天平数据
 
-/***********************************/
-/* 被检表类型枚举              */
-/***********************************/
+/*
+** 被检表类型枚举            
+*/
 enum metertype
 {
 	DN15=0,
@@ -42,7 +42,7 @@ enum metertype
 };
 
 /*
-**      FUNCTION -- 获取下位机端口设置信息(portset.ini文件)
+** FUNCTION -- 获取下位机端口设置信息(portset.ini文件)
 */
 class PortSet_Ini_STR{
 public:
@@ -61,7 +61,7 @@ public:
 typedef PortSet_Ini_STR* PortSet_Ini_PTR;
 
 /*
-**      FUNCTION -- 获取质量法参数设置信息(qualityParaSet.ini文件)
+** FUNCTION -- 获取质量法参数设置信息(qualityParaSet.ini文件)
 */
 class ParaSet_Ini_STR{
 public:
@@ -71,7 +71,7 @@ public:
 typedef ParaSet_Ini_STR* ParaSet_Ini_PTR;
 
 /*
-**      FUNCTION -- 获取主机-从机设置信息(masterslaveset.ini文件)
+** FUNCTION -- 获取主机-从机设置信息(masterslaveset.ini文件)
 */
 class MasterSlave_Ini_STR{
 public:
@@ -91,7 +91,7 @@ public:
 typedef MasterSlave_Ini_STR* MasterSlave_Ini_PTR;
 
 /*
-**      FUNCTION -- 热量表规格(DN15,DN20,DN25等) 
+** FUNCTION -- 热量表规格(DN15,DN20,DN25等) 
 */
 class MeterStandard_STR{
 public:
@@ -102,7 +102,7 @@ public:
 typedef MeterStandard_STR* MeterStandard_PTR;
 
 /*
-**      FUNCTION -- 热量表类型(机械表、超声波表等)
+** FUNCTION -- 热量表类型(机械表、超声波表等)
 */
 class MeterType_STR{
 public:
@@ -113,7 +113,7 @@ public:
 typedef MeterType_STR* MeterType_PTR;
 
 /*
-**      FUNCTION -- 制造单位()
+** FUNCTION -- 制造单位()
 */
 class Manufacture_STR{
 public:
@@ -125,7 +125,7 @@ public:
 typedef Manufacture_STR* Manufacture_PTR;
 
 /*
-**      FUNCTION -- 各规格热表的默认检定参数()
+** FUNCTION -- 各规格热表的默认检定参数()
 */
 class DftDbInfo_STR
 {
@@ -143,7 +143,7 @@ public:
 typedef DftDbInfo_STR* DftDbInfo_PTR;
 
 /*
-**      FUNCTION -- 检定结果记录表（质量法）
+** FUNCTION -- 检定结果记录表（质量法）
 */
 class Record_Quality_STR{
 public:
@@ -186,8 +186,8 @@ public:
 typedef Record_Quality_STR* Record_Quality_PTR;
 
 /*
-* 检定流量点信息; fp为flow point的头字母
-* i 是界面上预先定义的控件顺序
+** 检定流量点信息; fp为flow point的头字母
+** i 是界面上预先定义的控件顺序
 */
 struct Flow_Point_Info_STR
 {
@@ -202,7 +202,7 @@ struct Flow_Point_Info_STR
 typedef struct Flow_Point_Info_STR Flow_Point_Info;
 
 /*
-**      质量检定法用到的相关参数值
+** 质量检定法用到的相关参数值
 */
 class Quality_Params_STR
 {
@@ -248,6 +248,5 @@ typedef struct ComInfo_Struct
 	int     parity;   //奇偶校验
 	int     stopBit;  //停止位
 }ComInfoStruct;
-
 
 #endif	//BASEDEF_H

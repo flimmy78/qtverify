@@ -12,6 +12,7 @@
 **  说明:
 **  更新记录:
 ***********************************************/
+
 #include <QtGui/QMessageBox>
 #include <QtCore/QDebug>
 #include <QFile>
@@ -28,11 +29,11 @@ SetComFrm::SetComFrm(QWidget *parent, Qt::WFlags flags)
 	gui.setupUi(this);
 	m_config = new ReadComConfig();
 	InstallConfigs();
-	QString path = QProcessEnvironment::systemEnvironment().value("RUNHOME");
+	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
 #ifdef Q_OS_LINUX
-	ConfigFileName = path + "\/ini\/comconfig.xml";
+	ConfigFileName = runhome + "\/ini\/comconfig.xml";
 	#elif defined (Q_OS_WIN)
-	ConfigFileName = path + "\\ini\\comconfig.xml";
+	ConfigFileName = runhome + "\\ini\\comconfig.xml";
 #endif
 
 }
@@ -62,7 +63,6 @@ void SetComFrm::on_btnSave_clicked()
 	QMessageBox::information(this, tr("OK"), tr("Save Settings Successfully !"));
 }
 
-/***************************************************************************/
 void SetComFrm::InstallConfigs()
 {
 	InstallValeConfig();
@@ -161,32 +161,36 @@ void SetComFrm::InstallMeterConfigByNum(QGroupBox *gBox)
 		}
 	}
 }
-/***************************************************************************/
-/*读取界面上阀门控制的配置*/
+
+//读取界面上阀门控制的配置
 QVector<QString> SetComFrm::ReadValeSet()
 {
 	QVector<QString> Configs = ReadGBoxSet(gui.gBoxValve);
 	return Configs;
 }
-/*读取界面上天平的配置*/
+
+//读取界面上天平的配置
 QVector<QString> SetComFrm::ReadBalanceSet()
 {
 	QVector<QString> Configs = ReadGBoxSet(gui.gBoxBalance);
 	return Configs;
 }
-/*读取界面上温度采集的配置*/
+
+//读取界面上温度采集的配置
 QVector<QString> SetComFrm::ReadTempSet()
 {
 	QVector<QString> Configs = ReadGBoxSet(gui.gBoxTempSenor);
 	return Configs;
 }
-/*读取界面上标准温度的配置*/
+
+//读取界面上标准温度的配置
 QVector<QString> SetComFrm::ReadStdTempSet()
 {
 	QVector<QString> Configs = ReadGBoxSet(gui.gBoxStdTmpSensor);
 	return Configs;
 }
-/*按照表号读取界面上被检表的配置*/
+
+//按照表号读取界面上被检表的配置
 QVector<QString> SetComFrm::ReadMeterSetByNum(QString MeterNum)
 {
 	QVector<QString> meter_configs;
@@ -211,10 +215,10 @@ QVector<QString> SetComFrm::ReadMeterSetByNum(QString MeterNum)
 	return meter_configs;
 }
 
-/*************************************************************************************************************
-由于每个GroupBox的结构都相同，所以设计一个通用函数，读取当前GBox的设置值.
-这个函数只适用于控件按规则: (控件名类名+设备名+设置项), 命名的情况
-*************************************************************************************************************/
+/*
+** 由于每个GroupBox的结构都相同，所以设计一个通用函数，读取当前GBox的设置值.
+   这个函数只适用于控件按规则: (控件名类名+设备名+设置项), 命名的情况
+*/
 QVector<QString>  SetComFrm::ReadGBoxSet(QGroupBox *gBox)
 {
 	QString com_num ;
@@ -262,27 +266,32 @@ QVector<QString>  SetComFrm::ReadGBoxSet(QGroupBox *gBox)
 	strArray.append(end_bit);
 	return strArray;
 }
-/*写入阀门设置*/
+
+//写入阀门设置
 bool  SetComFrm::WriteValveConfig(QVector<QString> ValveConfigs)
 {
 	return WriteConfigById("valve", ValveConfigs);
 }
-/*写入天平设置*/
+
+//写入天平设置
 bool  SetComFrm::WriteBalanceConfig(QVector<QString> BalanceConfigs)
 {
 	return WriteConfigById("balance", BalanceConfigs);
 }
-/*写入温度采集设置*/
+
+//写入温度采集设置
 bool  SetComFrm::WriteTempConfig(QVector<QString> TempConfigs)
 {
 	return WriteConfigById("temp", TempConfigs);
 }
-/*写入标准温度计设置*/
+
+//写入标准温度计设置
 bool  SetComFrm::WriteStdTempConfig(QVector<QString> StdTempConfigs)
 {
 	return WriteConfigById("stdtemp", StdTempConfigs);
 }
-/*写入被检表设置*/
+
+//写入被检表设置
 bool SetComFrm::WriteMetersConfig()
 {
 	QVector<QString> Configs;//相应表号的界面配置
@@ -299,14 +308,16 @@ bool SetComFrm::WriteMetersConfig()
 	}
 	return true;
 }
-/*按表号写入设置*/
+
+//按表号写入设置
 bool SetComFrm::WriteMeterConfigByNum(QString MeterNum, QVector<QString> MeterConfigs)
 {
 	QString ConfigId = "meter" + MeterNum;
 
 	return WriteConfigById(ConfigId, MeterConfigs);
 }
-/*按xml中的标签id写入设置*/
+
+//按xml中的标签id写入设置
 bool  SetComFrm::WriteConfigById(QString ConfigId, QVector<QString> Configs)
 {
 	if (!OpenConfigFile())
@@ -343,7 +354,8 @@ bool  SetComFrm::WriteConfigById(QString ConfigId, QVector<QString> Configs)
 	
 	return WriteConfigFile();
 }
-/*打开测试*/
+
+//打开测试
 bool SetComFrm::OpenConfigFile()
 {
 	QFile file( ConfigFileName );
@@ -361,7 +373,8 @@ bool SetComFrm::OpenConfigFile()
 	file.close();
 	return true;
 }
-/*设置字符编码*/
+
+//设置字符编码
 bool SetComFrm::WriteConfigFile()
 {
 	QFile filexml(ConfigFileName);

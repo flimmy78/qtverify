@@ -20,6 +20,7 @@
 #include <QtSql/QSqlIndex>
 #include <QtSql/QSqlRelationalDelegate>
 #include <QtGui/QFileDialog>
+#include <QtCore/QProcessEnvironment>
 #include <QAxObject>
 
 #include "queryresult.h"
@@ -53,7 +54,6 @@ QueryResult::~QueryResult()
 
 }
 
-//
 void QueryResult::initUiData()
 {
 	//制造单位
@@ -227,8 +227,8 @@ void QueryResult::on_btnExport_clicked()
 		return;
 	}
 
-	QString defaultPath = QString("%1/dat").arg(getenv("RUNHOME"));
-	QString file = QFileDialog::getSaveFileName(this,tr("Save File"),defaultPath,tr("Microsoft Excel (*.xlsx;*.xls)"));//获取保存路径
+	QString defaultPath = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "//dat";
+	QString file = QFileDialog::getSaveFileName(this, tr("Save File"), defaultPath, tr("Microsoft Excel (*.xlsx;*.xls)"));//获取保存路径
 	if (!file.isEmpty())
 	{
 		QAxObject *excel = new QAxObject(this);

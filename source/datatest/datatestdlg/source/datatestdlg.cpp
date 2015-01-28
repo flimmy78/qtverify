@@ -149,10 +149,9 @@ void DataTestDlg::showEvent(QShowEvent *event)
 	m_totalcount = 0;
 }
 
-/***************************************
-	温度采集
-	周期请求
-****************************************/
+/*
+** 开辟一个新线程，打开温度采集串口
+*/
 void DataTestDlg::initTemperatureCom()
 {
 	ComInfoStruct tempStruct = m_readComConfig->ReadTempConfig();
@@ -169,7 +168,9 @@ void DataTestDlg::initTemperatureCom()
 	m_tempTimer->start(TIMEOUT_TEMPER); //周期请求温度
 }
 
-//控制板通讯串口
+/*
+** 开辟一个新线程，打开控制板通讯串口
+*/
 void DataTestDlg::initControlCom()
 {
 	ComInfoStruct valveStruct = m_readComConfig->ReadValveConfig();
@@ -325,7 +326,7 @@ void DataTestDlg::on_btnCloseCom_clicked()
 }
 
 /*
-**	控制继电器开断
+** 控制继电器开断
 */
 void DataTestDlg::on_btnWaterIn_clicked() //进水阀
 {
@@ -394,7 +395,7 @@ void DataTestDlg::on_btnValveSmall_clicked() //小流量阀
 }
 
 /*
-**	控制水泵开关
+** 控制水泵开关
 */
 void DataTestDlg::on_btnWaterPump_clicked() //水泵
 {
@@ -406,7 +407,6 @@ void DataTestDlg::on_btnWaterPump_clicked() //水泵
 		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
 	}
 }
-
 
 //设置频率
 void DataTestDlg::on_btnSetFreq_clicked()
@@ -524,9 +524,9 @@ void DataTestDlg::setRegBtnBackColor(QPushButton *btn, bool status)
 }
 
 
-/************************************************************************/
-/* 计算流速(每1秒采样一次天平变化值，计算前10秒的平均流速)              */
-/************************************************************************/
+/*
+** 计算流速(每1秒采样一次天平变化值，计算前10秒的平均流速)
+*/
 void DataTestDlg::slotFreshFlowRate()
 {
 	if (m_totalcount > 4294967290) //防止m_totalcount溢出 32位无符号整数范围0~4294967295

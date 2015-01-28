@@ -22,11 +22,11 @@
 
 ReadComConfig::ReadComConfig()
 {
-	QString path = QProcessEnvironment::systemEnvironment().value("RUNHOME");
+	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
 #ifdef Q_OS_LINUX
-	ConfigFileName = path + "\/ini\/comconfig.xml";
+	ConfigFileName = runhome + "\/ini\/comconfig.xml";
 #elif defined (Q_OS_WIN)
-	ConfigFileName = path + "\\ini\\comconfig.xml";
+	ConfigFileName = runhome + "\\ini\\comconfig.xml";
 #endif
 }
 
@@ -34,27 +34,32 @@ ReadComConfig::~ReadComConfig()
 {
 
 }
-/*读取阀门设置*/
+
+//读取阀门设置
 ComInfoStruct ReadComConfig::ReadValveConfig()
 {
 	return ReadConfigByName("valve");
 }
-/*读取天平设置*/
+
+//读取天平设置
 ComInfoStruct ReadComConfig::ReadBalanceConfig()
 {
 	return ReadConfigByName("balance");
 }
-/*读取温度采集设置*/
+
+//读取温度采集设置
 ComInfoStruct ReadComConfig::ReadTempConfig()
 {
 	return ReadConfigByName("temp");
 }
-/*读取标准温度计设置*/
+
+//读取标准温度计设置
 ComInfoStruct ReadComConfig::ReadStdTempConfig()
 {
 	return ReadConfigByName("stdtemp");
 }
-/*读取被检表设置*/
+
+//读取被检表设置
 ComInfoStruct ReadComConfig::ReadMeterConfigByNum(QString MeterNum)
 {
 	QRegExp rx("[0-9]{1,2}");
@@ -70,7 +75,7 @@ ComInfoStruct ReadComConfig::ReadMeterConfigByNum(int MeterNum)
 	return ReadMeterConfigByNum(QString::number(MeterNum));
 }
 
-/*按xml中的id读取设置*/
+//按xml中的id读取设置
 ComInfoStruct ReadComConfig::ReadConfigByName(QString ConfigId)
 {
 	QMap<QString, QString> configs;
@@ -120,7 +125,6 @@ ComInfoStruct ReadComConfig::ReadConfigByName(QString ConfigId)
 	com_info.stopBit = configs["endbit"].split(SEP)[0].toInt();
 	return com_info;
 }
-
 
 
 QStringList ReadComConfig::ReadIndexByName(QString ConfigId)
@@ -173,7 +177,7 @@ QStringList ReadComConfig::ReadIndexByName(QString ConfigId)
 	return com_info;
 }
 
-/*打开文件测试*/
+//打开文件测试
 bool ReadComConfig::OpenConfigFile()
 {
 	QFile file( ConfigFileName );
@@ -192,12 +196,11 @@ bool ReadComConfig::OpenConfigFile()
 	return true;
 }
 
-/********************************************************************** */
-/*  根据端口号返回对应的表位号                                          */
-/*  参数: QString comName, 端口名称,例如"COM1"                          */
-/*  返回值:int MeterNum, 如果在配置文件中成功查找到表位号, 则返回此表位号 */
-/*         失败, 返回 -1
-/************************************************************************/
+/*
+**  根据端口号返回对应的表位号
+**  参数: QString comName, 端口名称,例如"COM1"
+**  返回值:如果在配置文件中成功查找到表位号, 则返回该表位号;如果查找此表位号失败,则返回-1
+*/
 int ReadComConfig::getMeterPosByComName(QString comName)
 {
 		ComInfoStruct meterConfigSTR;

@@ -11,7 +11,6 @@
 
 #include "ui_queryresult.h"
 
-
 class QueryResult : public QWidget
 {
 	Q_OBJECT

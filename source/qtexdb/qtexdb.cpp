@@ -82,7 +82,7 @@ int getMeterStandard(int& num, MeterStandard_PTR &ptr)
 		while(query.next())
 		{
 			ptr[i].id = query.value(0).toInt();
-			strcpy(ptr[i].name, query.value(1).toString().toAscii());
+			strcpy_s(ptr[i].name, query.value(1).toString().toAscii());
 			ptr[i].quantity = query.value(2).toInt();
 			i++;
 		}
@@ -97,9 +97,9 @@ int getMeterStandard(int& num, MeterStandard_PTR &ptr)
 	return true;
 }
 
-/************************************************************************/
-/* 按主键获取对应表规格的最大检定数量                       */
-/************************************************************************/
+/*
+** 按主键获取对应表规格的最大检定数量
+*/
 int getMaxMeterByIdx(int idx)
 {
 	QSqlQuery query; // 新建一个查询的实例
@@ -115,8 +115,8 @@ int getMaxMeterByIdx(int idx)
 	{
 		QSqlError error = query.lastError();
 		qWarning()<<error.text();
-		return -1;
 	}
+	return -1;
 }
 
 //获取所有的表类型
@@ -124,7 +124,7 @@ int getMeterType(int& num, MeterType_PTR &ptr)
 {
 	int i = 0;
 	QSqlQuery query; // 新建一个查询的实例
-	bool a = query.driver()->hasFeature(QSqlDriver::QuerySize); //是否支持QuerySize特性
+// 	bool a = query.driver()->hasFeature(QSqlDriver::QuerySize); //是否支持QuerySize特性
 	if(query.exec("select count(*) from t_meter_type")) // t_meter_type 表的记录数
 	{
 		// 本次查询成功
@@ -139,8 +139,8 @@ int getMeterType(int& num, MeterType_PTR &ptr)
 		while(query.next())
 		{
 			ptr[i].id = query.value(0).toInt();
-			strcpy(ptr[i].name, query.value(1).toString().toAscii());
-			strcpy(ptr[i].desc, query.value(2).toString().toLocal8Bit()); //汉字编码
+			strcpy_s(ptr[i].name, query.value(1).toString().toAscii());
+			strcpy_s(ptr[i].desc, query.value(2).toString().toLocal8Bit()); //汉字编码
 			qDebug()<<ptr[i].desc<<"::"<<query.value(1).toString().toLocal8Bit();
 			i++;
 		}
@@ -175,9 +175,9 @@ int getManufacture(int& num, Manufacture_PTR &ptr)
 		while(query.next())
 		{
 			ptr[i].id = query.value(0).toInt();
-			strcpy(ptr[i].name, query.value(1).toString().toAscii());
-			strcpy(ptr[i].desc, query.value(2).toString().toLocal8Bit()); //汉字编码
-			strcpy(ptr[i].numprefix, query.value(3).toString().toLocal8Bit());
+			strcpy_s(ptr[i].name, query.value(1).toString().toAscii());
+			strcpy_s(ptr[i].desc, query.value(2).toString().toLocal8Bit()); //汉字编码
+			strcpy_s(ptr[i].numprefix, query.value(3).toString().toLocal8Bit());
 			i++;
 		}
 	}
@@ -191,36 +191,12 @@ int getManufacture(int& num, Manufacture_PTR &ptr)
 	return true;
 }
 
-QString getNumPrefixOfManufac(int idx)
-{
-	if (idx < 0)
-	{
-		return "";
-	}
-
-	QString str, sqlstr;
-	sqlstr = QString("select f_id,f_numprefix from t_manufacture_dept where f_id=%1").arg(idx);
-	QSqlQuery query; // 新建一个查询的实例
-	if(query.exec(sqlstr))
-	{
-		query.next();
-		str = query.value(1).toString();
-		return str;
-	}
-	else  // 如果查询失败，用下面的方法得到具体数据库返回的原因
-	{
-		QSqlError error = query.lastError();
-		qWarning()<<error.text();
-		return "";
-	}
-}
-
 /*
- *  获取各规格热表的默认检定参数
- *  num: 查询结果的记录数
- *  ptr: 与数据表t_meter_default_params对应的结构
- *  stand_id: 表规格的主键值, 用于索引界面上的comboBox
- */
+**  获取各规格热表的默认检定参数
+**  num: 查询结果的记录数
+**  ptr: 与数据表t_meter_default_params对应的结构
+**  stand_id: 表规格的主键值, 用于索引界面上的comboBox
+*/
 int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id)
 {
 	int i = 0;
@@ -358,11 +334,35 @@ int insertVerifyRec(Record_Quality_PTR ptr, int num)
 	return true;
 }
 
-/******************************************************
-* 获取表的定义语句                                  *
-* tbl_name: 表的名称                                 *
-* 异常: 表名不存在                                    *
-/******************************************************/
+QString getNumPrefixOfManufac(int idx)
+{
+	if (idx < 0)
+	{
+		return "";
+	}
+
+	QString str, sqlstr;
+	sqlstr = QString("select f_id,f_numprefix from t_manufacture_dept where f_id=%1").arg(idx);
+	QSqlQuery query; // 新建一个查询的实例
+	if(query.exec(sqlstr))
+	{
+		query.next();
+		str = query.value(1).toString();
+		return str;
+	}
+	else  // 如果查询失败，用下面的方法得到具体数据库返回的原因
+	{
+		QSqlError error = query.lastError();
+		qWarning()<<error.text();
+		return "";
+	}
+}
+
+/*
+** 获取表的定义语句
+** tbl_name: 表的名称
+** 异常: 表名不存在
+*/
 QString getTblDdl(QString tbl_name)
 {
 	QString sql = QString("SELECT sql FROM sqlite_master WHERE upper(tbl_name) = upper('%1') AND type = 'table'").arg(tbl_name);//查询语句
@@ -389,14 +389,13 @@ QString getTblDdl(QString tbl_name)
 	return ddl;
 }
 
-/************************************************************************/
-/* 去掉sql语句中的注释                                                    */
-/* s: sql语句, 可以带注释, 也可以不带注释                      */
-/************************************************************************/
+/*
+** 去掉sql语句中的注释
+** s: sql语句, 可以带注释, 也可以不带注释
+*/
 QString removeComment(QString s)
 {
 	QString t;
-	bool starts=false, ends=false;
 	for(int i = 0; i < s.length() - 1; i++)
 	{
 		//注释以"--"开始, 以'\n'结束
@@ -425,10 +424,10 @@ QString removeComment(QString s)
 	return t;
 }
 
-/************************************************************************/
-/* 得到QMap<字段名, 字段类型>键值                                       */
-/* tbl_name: 表的名称                                                   */
-/************************************************************************/
+/*
+** 得到QMap<字段名, 字段类型>键值
+** tbl_name: 表的名称
+*/
 QMap<QString, QString> getColInfo(QString tbl_name)
 {
 	//获取建表的sql语句

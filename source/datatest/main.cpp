@@ -25,6 +25,11 @@
 int main( int argc, char ** argv )
 {
 	QApplication app( argc, argv );
+	QString lang = "zh";//默认显示中文
+	if (argc == 2)
+	{
+		lang = QString::fromAscii(argv[1]);
+	}
 
 	QTextCodec::setCodecForTr(QTextCodec::codecForName("GB2312"));
 	QTextCodec::setCodecForLocale(QTextCodec::codecForName("GB2312"));
@@ -34,12 +39,10 @@ int main( int argc, char ** argv )
 	qInstallMsgHandler(myMessageOutput);
 
 	QTranslator translator(0);
-	char *path = getenv("RUNHOME");
-	if (NULL != path) 
+	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
+	if (!runhome.isEmpty()) 
 	{
-		char filename[100];
-		memset( filename, 0, sizeof(char)*100 );
-		sprintf( filename, "%s\\uif\\i18n\\zh\\datatestdlg_zh.qm", path );
+		QString filename = runhome + "\\uif\\i18n\\" + lang + "\\datatestdlg_" + lang + ".qm";
 		bool loadok = translator.load(filename, "");
 		if (!loadok)
 		{

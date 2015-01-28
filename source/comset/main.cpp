@@ -9,18 +9,21 @@
 int main( int argc, char ** argv )
 {
 	QApplication app( argc, argv );
-
-	QTranslator translator(0);
-	char *path = getenv("RUNHOME");
-	if (NULL != path) 
+	QString lang = "zh";//默认显示中文
+	if (argc == 2)
 	{
-		char filename[100];
-		memset( filename, 0, sizeof(char)*100 );
-		sprintf_s( filename, "%s\\uif\\i18n\\comsetdlg_zh.qm", path );
+		lang = QString::fromAscii(argv[1]);
+	}
+	QTranslator translator(0);
+	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
+	if (!runhome.isEmpty()) 
+	{
+		QString filename;
+		filename = runhome + "\\uif\\i18n\\" + lang + "\\comsetdlg_" + lang + ".qm";
 		bool loadok = translator.load(filename, "");
 		if (!loadok)
 		{
-			printf_s(" load translator file \"%s\" failed! \n", filename);
+			qDebug()<<"load translator file \""<<filename<<"\" failed!\n";
 		}
 		app.installTranslator(&translator);
 	}
