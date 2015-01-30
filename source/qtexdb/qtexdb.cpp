@@ -175,9 +175,9 @@ int getManufacture(int& num, Manufacture_PTR &ptr)
 		while(query.next())
 		{
 			ptr[i].id = query.value(0).toInt();
-			strcpy_s(ptr[i].name, query.value(1).toString().toAscii());
-			strcpy_s(ptr[i].desc, query.value(2).toString().toLocal8Bit()); //ºº×Ö±àÂë
-			strcpy_s(ptr[i].numprefix, query.value(3).toString().toLocal8Bit());
+			strncpy_s(ptr[i].name, query.value(1).toString().toAscii(), ASCNAME_LEN);
+			strncpy_s(ptr[i].desc, query.value(2).toString().toLocal8Bit(), DESC_LEN); //ºº×Ö±àÂë
+			strncpy(ptr[i].numprefix, query.value(3).toString().toLocal8Bit(), NUMPREFIX_LEN);
 			i++;
 		}
 	}

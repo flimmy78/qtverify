@@ -24,13 +24,14 @@
 #define SEP "#SEP#"//分隔符
 #endif
 
-#define TIMEOUT_TEMPER		1000 //每1秒钟请求一次温度值
+#define TIMEOUT_TEMPER		1000  //每1秒钟请求一次温度值
 
 #define FLOW_SAMPLE_NUM		10    //计算流速 采样点个数
 #define TIMEOUT_FLOW_SAMPLE	1000  //计算流速 每1秒采样一次天平数值
 
-#define TIMEOUT_BALANCE		200	//每200毫秒读一次天平数据
+#define TIMEOUT_BALANCE		200	  //每200毫秒读一次天平数据
 
+#define RESET_ZERO_TIME		20    //等待热表初值回零的时间，单位：秒
 /*
 ** 被检表类型枚举            
 */
