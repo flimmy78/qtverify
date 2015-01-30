@@ -265,7 +265,7 @@ bool BalanceProtocol::readBalanceComBuffer(QByteArray tmp)
 	int m=0;
 	char ch;
 	UINT8 ch1, ch2;
-
+	bool ok;
 	for (int i=num; i>0; i--)
 	{
 		ch1 = (UINT8)tmp.at(i-1);
@@ -276,9 +276,12 @@ bool BalanceProtocol::readBalanceComBuffer(QByteArray tmp)
 				ch = tmp.at(m);
 				whtArray.append(ch);
 			}
-			m_balValue = whtArray.replace(" ", 0).toFloat();
-			ret = true;
-			break;
+			m_balValue = whtArray.replace(" ", 0).toFloat(&ok);
+			if (ok) 
+			{
+				ret = true;
+				break;
+			}
 		}
 	}
 	return ret;
