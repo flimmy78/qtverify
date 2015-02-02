@@ -16,7 +16,7 @@
 #endif
 
 #define VALID_YEAR	2 //检表有效期 2年
-#define BALANCE_START_VALUE		2 //天平初值
+#define BALANCE_START_VALUE		5 //天平初值
 
 /*
 ** 表格列
@@ -133,7 +133,7 @@ public:
 	int m_tempCount;		  //计算平均温度用的累加计数器
 	int m_maxMeterNum;        //表格的行数（被检表的最大个数）
 	int m_validMeterNum;          //实际检表的个数
-	QMap<int, int> m_meterPosMap; //被检表与表位号的映射关系
+	QMap<int, int> m_meterPosMap; //被检表下标与表位号的映射关系
 	QMap<int, float> m_gradeErr;  //不同等级热表对应的标准误差
 
 	float *m_meterStartValue; //被检表的初值
@@ -182,7 +182,7 @@ public:
 	int isComAndPortNormal();   //串口、端口设置是否正常
 	int isWaterOutValveOpen();  //检查放水阀门是否打开
 	int isDataCollectNormal();	//检查数据采集是否正常（天平、温度、电磁流量计等）
-	int isMeterPosValid(int row);   //判断表位号是否有效(该表位是否需要检表)
+	int isMeterPosValid(int meterPos); //判断表位号是否有效(该表位是否需要检表)
 
 
 public slots:
@@ -199,7 +199,7 @@ public slots:
 	void on_btnStop_clicked();    //点击"终止检测"按钮
 	void slotExaustFinished();    //排气时间结束
 	int openAllValveAndPump();    //打开所有阀门和水泵
-	int readMeterNumber();        //读取表号
+	int readMeter();          //读取热表
 	int setMeterVerifyStatus();   //设置热量表进入检定状态
 	int closeAllFlowPointValves();//关闭所有流量点阀门
 	int closeWaterOutValve();     //关闭放水阀
@@ -231,7 +231,7 @@ public slots:
 	void slotSetRegulateOk();     //调节阀返回成功对应的槽函数
 
 	void slotSetMeterNumber(const QString& comName, const QString& meterNumber);
-	void slotSetMeterFlow(const QString& comName, const QString& flow);
+	void slotSetMeterFlow(const QString& comName, const float& flow);
 	void setValveBtnBackColor(QToolButton *btn, bool status); //设置阀门按钮背景色
 	void setRegBtnBackColor(QPushButton *btn, bool status);	  //设置调节阀按钮背景色
 
