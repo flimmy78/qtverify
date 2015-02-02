@@ -587,8 +587,10 @@ void MeterComObject::readMeterComBuffer()
 	QDateTime begintime = QDateTime::currentDateTime();
 	qDebug()<<"begintime:"<<begintime.toString("yyyy-MM-dd HH:mm:ss.zzz");
 
+	bool ok;
 	QString meterNo;
-	QString flow,heat;
+	float flow;
+	QString heat;
 	QString tempIn, tempOut, date;
 	if (ret == 1) //解帧成功
 	{
@@ -600,8 +602,12 @@ void MeterComObject::readMeterComBuffer()
 		UINT32 usedSec = begintime.msecsTo(endtime);
 
 		//流量、热量
-		flow = m_meterProtocol->getFlow();
-		emit readMeterFlowIsOK(m_portName, flow);
+		flow = m_meterProtocol->getFlow().toFloat(&ok);
+		if (ok)
+		{
+			flow *= 1000; //单位转换 m3->L
+			emit readMeterFlowIsOK(m_portName, flow);
+		}
 
 		//热量
 		heat = m_meterProtocol->getHeat();

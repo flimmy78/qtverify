@@ -173,7 +173,7 @@ public:
 
 signals:
 	void readMeterNoIsOK(const QString& portName, const QString& meterNo); //获取表号成功
-	void readMeterFlowIsOK(const QString& portName, const QString& flow);  //获取表流量成功
+	void readMeterFlowIsOK(const QString& portName, const float& flow);  //获取表流量成功
 	void readMeterHeatIsOK(const QString& portName, const QString& heat);  //获取表热量成功
 	void readMeterTemperIsOK(const QString& portName, const QString& tempIn, const QString& tempOut);  //获取表进出口温度成功
 	void readMeterDateIsOK(const QString& portName, const QString& date);  //获取表日期成功

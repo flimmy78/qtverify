@@ -31,7 +31,7 @@
 
 #define TIMEOUT_BALANCE		200	  //每200毫秒读一次天平数据
 
-#define RESET_ZERO_TIME		20    //等待热表初值回零的时间，单位：秒
+#define RESET_ZERO_TIME		22    //等待热表初值回零的时间，单位：秒
 /*
 ** 被检表类型枚举            
 */
