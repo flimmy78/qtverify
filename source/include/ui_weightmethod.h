@@ -661,7 +661,7 @@ public:
         groupBox_4->setTitle(QApplication::translate("WeightMethodClass", "DataAcquisition", 0, QApplication::UnicodeUTF8));
         label_9->setText(QApplication::translate("WeightMethodClass", "Big Bal:", 0, QApplication::UnicodeUTF8));
         label_11->setText(QApplication::translate("WeightMethodClass", "\343\216\217", 0, QApplication::UnicodeUTF8));
-        label_10->setText(QApplication::translate("WeightMethodClass", "Smal Bal:", 0, QApplication::UnicodeUTF8));
+        label_10->setText(QApplication::translate("WeightMethodClass", "Small Bal:", 0, QApplication::UnicodeUTF8));
         label_12->setText(QApplication::translate("WeightMethodClass", "\343\216\217", 0, QApplication::UnicodeUTF8));
         label_3->setText(QApplication::translate("WeightMethodClass", "FlowRate:", 0, QApplication::UnicodeUTF8));
         label_6->setText(QApplication::translate("WeightMethodClass", "m\302\263/h", 0, QApplication::UnicodeUTF8));

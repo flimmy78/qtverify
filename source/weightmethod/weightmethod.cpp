@@ -980,6 +980,7 @@ int WeightMethodDlg::startVerifyFlowPoint(int order)
 	m_balStartV = ui.lcdBigBalance->value(); //记录天平初值
 	m_pipeInTemper = ui.lcdInTemper->value();
 	m_pipeOutTemper = ui.lcdOutTemper->value();
+	m_tempCount = 1;
 
 	m_flowPoint = m_paraSetReader->getFpBySeq(order).fp_verify;//order对应的流量点
 	int portNo = m_paraSetReader->getFpBySeq(order).fp_valve;  //order对应的阀门端口号

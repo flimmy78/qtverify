@@ -634,7 +634,7 @@ t</string>
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Smal Bal:</string>
+             <string>Small Bal:</string>
             </property>
            </widget>
           </item>
