@@ -483,6 +483,7 @@ void WeightMethodDlg::showNowKeyParaConfig()
 
 	ui.cmbAutoPick->setCurrentIndex(m_nowParams->bo_autopick);
 	ui.cmbContinue->setCurrentIndex(m_nowParams->bo_converify);
+	ui.cmbResetZero->setCurrentIndex(m_nowParams->bo_resetzero);
 	m_meterStdMapper->setCurrentIndex(m_nowParams->m_stand);
 }
 

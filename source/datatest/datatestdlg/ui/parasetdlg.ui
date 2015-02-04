@@ -1297,7 +1297,7 @@
      <item>
       <widget class="Q3ButtonGroup" name="buttonGroup_8">
        <property name="title">
-        <string>Back to Zero</string>
+        <string>Reset Zero</string>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_10">
         <item>

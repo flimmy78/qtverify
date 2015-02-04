@@ -1024,7 +1024,7 @@ public:
         buttonGroup_5->setTitle(QApplication::translate("ParaSetDlgClass", "Write MeterNo", 0, QApplication::UnicodeUTF8));
         tBtn_writeNum_true->setText(QApplication::translate("ParaSetDlgClass", "Yes", 0, QApplication::UnicodeUTF8));
         tBtn_writeNum_false->setText(QApplication::translate("ParaSetDlgClass", "NO", 0, QApplication::UnicodeUTF8));
-        buttonGroup_8->setTitle(QApplication::translate("ParaSetDlgClass", "Back to Zero", 0, QApplication::UnicodeUTF8));
+        buttonGroup_8->setTitle(QApplication::translate("ParaSetDlgClass", "Reset Zero", 0, QApplication::UnicodeUTF8));
         tBtn_resetzero_true->setText(QApplication::translate("ParaSetDlgClass", "Yes", 0, QApplication::UnicodeUTF8));
         tBtn_resetzero_false->setText(QApplication::translate("ParaSetDlgClass", "No", 0, QApplication::UnicodeUTF8));
         buttonGroup_6->setTitle(QApplication::translate("ParaSetDlgClass", "Process of Verify", 0, QApplication::UnicodeUTF8));

@@ -67,6 +67,8 @@ public:
     QLineEdit *lnEditStandard;
     QLabel *label_14;
     QComboBox *cmbAutoPick;
+    QLabel *label_16;
+    QComboBox *cmbResetZero;
     QLabel *label_15;
     QComboBox *cmbContinue;
     QWidget *layoutWidget1;
@@ -272,7 +274,7 @@ public:
 
         layoutWidget = new QWidget(tab1);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(11, 630, 254, 181));
+        layoutWidget->setGeometry(QRect(11, 630, 261, 181));
         gridLayout_5 = new QGridLayout(layoutWidget);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
         gridLayout_5->setContentsMargins(0, 0, 0, 0);
@@ -330,12 +332,27 @@ public:
 
         gridLayout_3->addWidget(cmbAutoPick, 1, 1, 1, 1);
 
+        label_16 = new QLabel(groupBox);
+        label_16->setObjectName(QString::fromUtf8("label_16"));
+        sizePolicy3.setHeightForWidth(label_16->sizePolicy().hasHeightForWidth());
+        label_16->setSizePolicy(sizePolicy3);
+
+        gridLayout_3->addWidget(label_16, 2, 0, 1, 1);
+
+        cmbResetZero = new QComboBox(groupBox);
+        cmbResetZero->setObjectName(QString::fromUtf8("cmbResetZero"));
+        cmbResetZero->setEnabled(false);
+        sizePolicy2.setHeightForWidth(cmbResetZero->sizePolicy().hasHeightForWidth());
+        cmbResetZero->setSizePolicy(sizePolicy2);
+
+        gridLayout_3->addWidget(cmbResetZero, 2, 1, 1, 1);
+
         label_15 = new QLabel(groupBox);
         label_15->setObjectName(QString::fromUtf8("label_15"));
         sizePolicy3.setHeightForWidth(label_15->sizePolicy().hasHeightForWidth());
         label_15->setSizePolicy(sizePolicy3);
 
-        gridLayout_3->addWidget(label_15, 2, 0, 1, 1);
+        gridLayout_3->addWidget(label_15, 3, 0, 1, 1);
 
         cmbContinue = new QComboBox(groupBox);
         cmbContinue->setObjectName(QString::fromUtf8("cmbContinue"));
@@ -343,7 +360,7 @@ public:
         sizePolicy2.setHeightForWidth(cmbContinue->sizePolicy().hasHeightForWidth());
         cmbContinue->setSizePolicy(sizePolicy2);
 
-        gridLayout_3->addWidget(cmbContinue, 2, 1, 1, 1);
+        gridLayout_3->addWidget(cmbContinue, 3, 1, 1, 1);
 
 
         gridLayout_5->addWidget(groupBox, 1, 0, 1, 2);
@@ -646,6 +663,12 @@ public:
         cmbAutoPick->insertItems(0, QStringList()
          << QApplication::translate("WeightMethodClass", "Manual", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("WeightMethodClass", "Auto", 0, QApplication::UnicodeUTF8)
+        );
+        label_16->setText(QApplication::translate("WeightMethodClass", "ResetZero:", 0, QApplication::UnicodeUTF8));
+        cmbResetZero->clear();
+        cmbResetZero->insertItems(0, QStringList()
+         << QApplication::translate("WeightMethodClass", "No", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WeightMethodClass", "Yes", 0, QApplication::UnicodeUTF8)
         );
         label_15->setText(QApplication::translate("WeightMethodClass", "Continuous:", 0, QApplication::UnicodeUTF8));
         cmbContinue->clear();
