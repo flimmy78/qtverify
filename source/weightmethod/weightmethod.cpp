@@ -38,10 +38,10 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	m_inputStartValue = false;
 	m_inputEndValue = false;
 
-	//不同等级的热量表对应的标准误差
-	m_gradeErr[1] = 0.01f;
-	m_gradeErr[2] = 0.02f;
-	m_gradeErr[3] = 0.03f;
+	//不同等级的热量表对应的标准误差,单位%
+	m_gradeErr[1] = 1.00f;
+	m_gradeErr[2] = 2.00f;
+	m_gradeErr[3] = 3.00f;
 /*	
 	ui.tabWidget->setTabsClosable(true);
 	connect(ui.tabWidget,SIGNAL(tabCloseRequested(int)),this,SLOT(removeSubTab(int)));
@@ -1030,8 +1030,8 @@ int WeightMethodDlg::calcAllMeterError()
 {
 	for (int m=0; m<m_validMeterNum; m++)
 	{
-		m_meterError[m] = (m_meterEndValue[m] - m_meterStartValue[m] - m_meterStdValue[m])/m_meterStdValue[m];//计算每个表的误差
-		ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_ERROR, new QTableWidgetItem(QString::number(m_meterError[m], 'f', 6))); //误差
+		m_meterError[m] = 100*(m_meterEndValue[m] - m_meterStartValue[m] - m_meterStdValue[m])/m_meterStdValue[m];//计算每个表的误差,单位%
+		ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_ERROR, new QTableWidgetItem(QString::number(m_meterError[m], 'f', 4))); //误差
 	}
 
 	QString meterNoPrefix = getNumPrefixOfManufac(m_nowParams->m_manufac);
@@ -1081,8 +1081,8 @@ int WeightMethodDlg::calcAllMeterError()
 */
 int WeightMethodDlg::calcMeterError(int idx)
 {
-	m_meterError[idx] = (m_meterEndValue[idx] - m_meterStartValue[idx] - m_meterStdValue[idx])/m_meterStdValue[idx];//计算某个表的误差
-	ui.tableWidget->setItem(m_meterPosMap[idx]-1, COLUMN_ERROR, new QTableWidgetItem(QString::number(m_meterError[idx], 'f', 6))); //误差
+	m_meterError[idx] = 100*(m_meterEndValue[idx] - m_meterStartValue[idx] - m_meterStdValue[idx])/m_meterStdValue[idx];//计算某个表的误差
+	ui.tableWidget->setItem(m_meterPosMap[idx]-1, COLUMN_ERROR, new QTableWidgetItem(QString::number(m_meterError[idx], 'f', 4))); //误差
 
 	QString meterNoPrefix = getNumPrefixOfManufac(m_nowParams->m_manufac);
 	QString meterNoStr;
