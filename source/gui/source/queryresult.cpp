@@ -114,6 +114,11 @@ void QueryResult::on_btnQuery_clicked()
 	{
 		conStr.append(QString(" and F_VerifyPerson=%1").arg(ui.cmbVerifyPerson->currentIndex()));
 	}
+	if (!ui.lnEditMeterNO->text().isEmpty())//表号
+	{
+		conStr.append(QString(" and F_MeterNo like \"\%%1\%\"").arg(ui.lnEditMeterNO->text()));
+	}
+
 	model->setFilter(conStr); //设置查询条件
 	
 	//设置外键
