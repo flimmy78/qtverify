@@ -1,41 +1,63 @@
 <RCC>
   <qresource prefix="qtverify">
     <file>images/about.png</file>
-    <file>images/comdebugger.png</file>
+    <file>images/calculator.png</file>
     <file>images/comset.png</file>
-    <file>images/data_export.png</file>
-    <file>images/data_import.png</file>
-    <file>images/data_save.png</file>
     <file>images/date.png</file>
     <file>images/delulogo.png</file>
     <file>images/exit.png</file>
     <file>images/help.png</file>
-    <file>images/his_day_access.png</file>
-    <file>images/his_export.png</file>
-    <file>images/his_import.png</file>
-    <file>images/hostslaveset.png</file>
-    <file>images/ldf_savecurdata.png</file>
-    <file>images/collecttest.png</file>
     <file>images/mysql.png</file>
-    <file>images/modifypara.png</file>
     <file>images/portset.png</file>
-    <file>images/weight.png</file>
-    <file>images/weightcomp.png</file>
-    <file>images/weighttotal.png</file>
     <file>images/queryexcel.png</file>
     <file>images/queryresult.png</file>
-    <file>images/readdata.png</file>
-    <file>images/sampledata.png</file>
     <file>images/save.png</file>
     <file>images/setting.png</file>
     <file>images/std.png</file>
     <file>images/stdcomp.png</file>
     <file>images/stdtotal.png</file>
-    <file>images/tree_leaf_close.png</file>
-    <file>images/tree_leaf_open.png</file>
-    <file>images/tree_node_close.png</file>
-    <file>images/tree_node_open.png</file>
     <file>images/delu.jpg</file>
+    <file>images/about.png</file>
+    <file>images/calculator.png</file>
+    <file>images/calculatorresult.png</file>
+    <file>images/chinese.png</file>
+    <file>images/classicstyle.png</file>
+    <file>images/combine.png</file>
+    <file>images/combineresult.png</file>
+    <file>images/comdebugger.png</file>
+    <file>images/comset.png</file>
+    <file>images/datatest.png</file>
+    <file>images/date.png</file>
+    <file>images/defaultstyle.png</file>
+    <file>images/delu.jpg</file>
+    <file>images/delulogo.png</file>
+    <file>images/english.png</file>
+    <file>images/exit.png</file>
+    <file>images/facility.png</file>
+    <file>images/fashionstyle.png</file>
+    <file>images/flow.png</file>
+    <file>images/flowresult.png</file>
+    <file>images/flowstandard.png</file>
+    <file>images/flowweight.png</file>
+    <file>images/help.png</file>
+    <file>images/masterslaveset.png</file>
+    <file>images/mysql.png</file>
+    <file>images/portset.png</file>
+    <file>images/queryexcel.png</file>
+    <file>images/queryresult.png</file>
+    <file>images/save.png</file>
+    <file>images/setting.png</file>
+    <file>images/smallfacility.png</file>
+    <file>images/std.png</file>
+    <file>images/stdcomp.png</file>
+    <file>images/stdtotal.png</file>
+    <file>images/temper.png</file>
+    <file>images/tempercompare.png</file>
+    <file>images/temperpara.png</file>
+    <file>images/temperresult.png</file>
+    <file>images/totalresult.png</file>
+    <file>images/totalstandard.png</file>
+    <file>images/totalweight.png</file>
     <file>images/smallfacility.png</file>
     <file>images/facility.png</file>
     <file>images/defaultstyle.png</file>

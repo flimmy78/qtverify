@@ -37,21 +37,44 @@ public:
 	void closeEvent(QCloseEvent * event);
 
 public slots:
-	void on_actionComDebuger_triggered();
-	void on_actionMySql_triggered();
-	void on_actionFlowResult_triggered();
+	//SystemSet
 	void on_actionComSet_triggered();
 	void on_actionPortSet_triggered();
+	void on_actionComDebuger_triggered();
+	void on_actionDataTest_triggered();
+	void on_actionMasterSlaveSet_triggered();
+	void on_actionMySql_triggered();
+
+	//Component Verify
+	void on_actionFlowWeight_triggered();
+	void on_actionFlowStandard_triggered();
+	void on_actionTemperCompare_triggered();
+	void on_actionTemperPara_triggered();
+	void on_actionCalculator_triggered();
+	void on_actionCombine_triggered();
+
+	//Total Verify
+	void on_actionTotalWeight_triggered();
+	void on_actionTotalStandard_triggered();
+
+	//Data Query
+	void on_actionFlowResult_triggered();
+	void on_actionTotalResult_triggered();
+	void on_actionTemperResult_triggered();
+	void on_actionCalculatorResult_triggered();
+	void on_actionCombineResult_triggered();
 	void on_actionQueryExcel_triggered();
-	void on_actionWeightComp_triggered();
-	void on_actionWeightTotal_triggered();
+
+	//About
 	void on_actionExit_triggered();
 	void on_actionAbout_triggered();
-	void on_actionMasterSlaveSet_triggered();
-	void on_actionTest_triggered();
+
+	//Style
 	void on_actionDefault_triggered();
 	void on_actionClassic_triggered();
 	void on_actionFashion_triggered();
+
+	//Language
 	void chaneLanguage(QString lang);
 	void on_actionEnglish_triggered();
 	void on_actionChinese_triggered();

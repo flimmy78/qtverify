@@ -673,7 +673,7 @@ public:
         label_15->setText(QApplication::translate("WeightMethodClass", "Continuous:", 0, QApplication::UnicodeUTF8));
         cmbContinue->clear();
         cmbContinue->insertItems(0, QStringList()
-         << QApplication::translate("WeightMethodClass", "Not Cotinuous", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WeightMethodClass", "Independent", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("WeightMethodClass", "Continuous", 0, QApplication::UnicodeUTF8)
         );
         btnExhaust->setText(QApplication::translate("WeightMethodClass", "Exhaust", 0, QApplication::UnicodeUTF8));

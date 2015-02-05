@@ -125,13 +125,6 @@ void MainForm::closeEvent( QCloseEvent * event)
 	}
 }
 
-void MainForm::on_actionComDebuger_triggered()
-{
-	QStringList cmdlist;
-	cmdlist<<"-zh";
-	m_comProcess->start("qcom", cmdlist);
-}
-
 void MainForm::on_actionComSet_triggered()
 {
 	if (NULL == m_setcom)
@@ -150,6 +143,40 @@ void MainForm::on_actionPortSet_triggered()
 	m_portSet->show();
 }
 
+//采集与控制测试程序
+void MainForm::on_actionDataTest_triggered()
+{
+	if (NULL == m_datatestdlg)
+	{
+		m_datatestdlg = new DataTestDlg();
+	}
+	else //目的是执行QualityDlg的构造函数
+	{
+		delete m_datatestdlg;
+		m_datatestdlg = NULL;
+		m_datatestdlg = new DataTestDlg();
+	}
+	m_datatestdlg->show();
+}
+
+//调用串口调试工具
+void MainForm::on_actionComDebuger_triggered()
+{
+	QStringList cmdlist;
+	cmdlist<<"-zh";
+	m_comProcess->start("qcom", cmdlist);
+}
+
+//主机-从机设置
+void MainForm::on_actionMasterSlaveSet_triggered()
+{
+	if (NULL == m_masterslave)
+	{
+		m_masterslave = new CMasterSlave();
+	}
+	m_masterslave->show();
+}
+
 void MainForm::on_actionMySql_triggered()
 {
 	if (NULL == m_mySql)
@@ -159,6 +186,59 @@ void MainForm::on_actionMySql_triggered()
 	m_mySql->show();
 }
 
+
+//流量检定(质量法)
+void MainForm::on_actionFlowWeight_triggered()
+{
+	if (NULL == m_weightDlg)
+	{
+		m_weightDlg = new WeightMethodDlg();
+	}
+	else //目的是执行WeightMethodDlg的构造函数
+	{
+		delete m_weightDlg;
+		m_weightDlg = NULL;
+		m_weightDlg = new WeightMethodDlg();
+	}
+	m_weightDlg->show();
+}
+
+//流量检定(标准表法)
+void MainForm::on_actionFlowStandard_triggered()
+{
+}
+
+//温度检定(比较法)
+void MainForm::on_actionTemperCompare_triggered()
+{
+}
+
+//温度检定(参数法)
+void MainForm::on_actionTemperPara_triggered()
+{
+}
+
+//计算器检定
+void MainForm::on_actionCalculator_triggered()
+{
+}
+
+//温度/计算器组合检定
+void MainForm::on_actionCombine_triggered()
+{
+}
+
+//总量检定（质量法）
+void MainForm::on_actionTotalWeight_triggered()
+{
+}
+
+//总量检定（标准表法）
+void MainForm::on_actionTotalStandard_triggered()
+{
+}
+
+//查询流量检定结果（包括质量法和标准表法）
 void MainForm::on_actionFlowResult_triggered()
 {
 	if (NULL == m_query)
@@ -173,14 +253,24 @@ void MainForm::on_actionFlowResult_triggered()
 	m_query->show();
 }
 
-void MainForm::on_actionExit_triggered()
+//查询总量检定结果（包括质量法和标准表法）
+void MainForm::on_actionTotalResult_triggered()
 {
-	this->close();
 }
 
-void MainForm::on_actionAbout_triggered()
+//查询温度传感器检定结果
+void MainForm::on_actionTemperResult_triggered()
 {
-	QMessageBox::aboutQt(this);
+}
+
+//查询计算器检定结果
+void MainForm::on_actionCalculatorResult_triggered()
+{
+}
+
+//查询温度/计算器组合检定结果
+void MainForm::on_actionCombineResult_triggered()
+{
 }
 
 void MainForm::on_actionQueryExcel_triggered()
@@ -221,53 +311,18 @@ void MainForm::on_actionQueryExcel_triggered()
 	}
 }
 
-//质量法-分量检定
-void MainForm::on_actionWeightComp_triggered()
+//退出
+void MainForm::on_actionExit_triggered()
 {
-	if (NULL == m_weightDlg)
-	{
-		m_weightDlg = new WeightMethodDlg();
-	}
-	else //目的是执行WeightMethodDlg的构造函数
-	{
-		delete m_weightDlg;
-		m_weightDlg = NULL;
-		m_weightDlg = new WeightMethodDlg();
-	}
-	m_weightDlg->show();
+	this->close();
 }
 
-//质量法-总量检定
-void MainForm::on_actionWeightTotal_triggered()
+void MainForm::on_actionAbout_triggered()
 {
+	QMessageBox::aboutQt(this);
 }
 
-//主机-从机设置
-void MainForm::on_actionMasterSlaveSet_triggered()
-{
-	if (NULL == m_masterslave)
-	{
-		m_masterslave = new CMasterSlave();
-	}
-	m_masterslave->show();
-}
-
-//采集与控制测试程序
-void MainForm::on_actionTest_triggered()
-{
-	if (NULL == m_datatestdlg)
-	{
-		m_datatestdlg = new DataTestDlg();
-	}
-	else //目的是执行QualityDlg的构造函数
-	{
-		delete m_datatestdlg;
-		m_datatestdlg = NULL;
-		m_datatestdlg = new DataTestDlg();
-	}
-	m_datatestdlg->show();
-}
-
+//显示风格
 void MainForm::on_actionDefault_triggered()
 {
 	QFile qss(":/qtverify/qss/default.qss");

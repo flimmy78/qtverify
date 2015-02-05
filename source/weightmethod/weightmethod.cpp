@@ -309,7 +309,7 @@ void WeightMethodDlg::initMeterCom()
 }
 
 /*
-** 端口号-阀门映射关系；初始化阀门状态
+** 端口号-阀门映射关系；初始化阀门状态（默认阀门初始状态全部为关闭,水泵初始状态为关闭）
 ** 需要改进得更加灵活
 */
 void WeightMethodDlg::initValveStatus()

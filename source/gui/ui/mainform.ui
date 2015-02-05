@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>890</width>
+    <width>875</width>
     <height>570</height>
    </rect>
   </property>
@@ -32,7 +32,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>890</width>
+     <width>875</width>
      <height>26</height>
     </rect>
    </property>
@@ -43,7 +43,7 @@
     <addaction name="actionComSet"/>
     <addaction name="actionPortSet"/>
     <addaction name="actionComDebuger"/>
-    <addaction name="actionTest"/>
+    <addaction name="actionDataTest"/>
     <addaction name="actionMasterSlaveSet"/>
     <addaction name="actionMySql"/>
    </widget>
@@ -51,34 +51,42 @@
     <property name="title">
      <string>CompVerify</string>
     </property>
-    <widget class="QMenu" name="menuSensor_Comp">
+    <widget class="QMenu" name="menuTemper">
      <property name="title">
       <string>Temper</string>
      </property>
-     <addaction name="actionCompareMethod"/>
-     <addaction name="actionParaMethod"/>
+     <property name="icon">
+      <iconset resource="../qtverify.qrc">
+       <normaloff>:/qtverify/images/temper.png</normaloff>:/qtverify/images/temper.png</iconset>
+     </property>
+     <addaction name="actionTemperCompare"/>
+     <addaction name="actionTemperPara"/>
     </widget>
     <widget class="QMenu" name="menuFlow">
      <property name="title">
       <string>Flow</string>
      </property>
-     <addaction name="actionWeightComp"/>
-     <addaction name="actionStandardComp"/>
+     <property name="icon">
+      <iconset resource="../qtverify.qrc">
+       <normaloff>:/qtverify/images/flow.png</normaloff>:/qtverify/images/flow.png</iconset>
+     </property>
+     <addaction name="actionFlowWeight"/>
+     <addaction name="actionFlowStandard"/>
     </widget>
     <addaction name="menuFlow"/>
-    <addaction name="menuSensor_Comp"/>
+    <addaction name="menuTemper"/>
     <addaction name="actionCalculator"/>
-    <addaction name="actionTemperCalc"/>
+    <addaction name="actionCombine"/>
    </widget>
    <widget class="QMenu" name="menuDataQuery">
     <property name="title">
      <string>DataQuery</string>
     </property>
-    <addaction name="actionTotalResult"/>
     <addaction name="actionFlowResult"/>
+    <addaction name="actionTotalResult"/>
     <addaction name="actionTemperResult"/>
-    <addaction name="actionCalcResult"/>
-    <addaction name="actionTemperCalcResult"/>
+    <addaction name="actionCalculatorResult"/>
+    <addaction name="actionCombineResult"/>
     <addaction name="actionQueryExcel"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
@@ -107,16 +115,16 @@
     <property name="title">
      <string>TotalVerify</string>
     </property>
-    <addaction name="actionWeightTotal"/>
-    <addaction name="actionStandardTotal"/>
+    <addaction name="actionTotalWeight"/>
+    <addaction name="actionTotalStandard"/>
    </widget>
    <addaction name="menuSystemSet"/>
    <addaction name="menu"/>
    <addaction name="menuComponent"/>
    <addaction name="menuDataQuery"/>
-   <addaction name="menuAbout"/>
-   <addaction name="menuStyle"/>
    <addaction name="menuLanguage"/>
+   <addaction name="menuStyle"/>
+   <addaction name="menuAbout"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -128,16 +136,28 @@
    <addaction name="actionComSet"/>
    <addaction name="actionPortSet"/>
    <addaction name="actionComDebuger"/>
-   <addaction name="actionTest"/>
+   <addaction name="actionDataTest"/>
    <addaction name="separator"/>
-   <addaction name="actionWeightComp"/>
-   <addaction name="actionWeightTotal"/>
-   <addaction name="actionStandardComp"/>
-   <addaction name="actionStandardTotal"/>
+   <addaction name="actionFlowWeight"/>
+   <addaction name="actionFlowStandard"/>
+   <addaction name="actionTotalWeight"/>
+   <addaction name="actionTotalStandard"/>
+   <addaction name="actionTemperCompare"/>
+   <addaction name="actionTemperPara"/>
+   <addaction name="actionCalculator"/>
+   <addaction name="actionCombine"/>
    <addaction name="separator"/>
    <addaction name="actionFlowResult"/>
+   <addaction name="actionTotalResult"/>
+   <addaction name="actionTemperResult"/>
+   <addaction name="actionCalculatorResult"/>
+   <addaction name="actionCombineResult"/>
+   <addaction name="separator"/>
+   <addaction name="actionEnglish"/>
+   <addaction name="actionChinese"/>
    <addaction name="separator"/>
    <addaction name="actionExit"/>
+   <addaction name="separator"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionComDebuger">
@@ -179,40 +199,52 @@
     <string>FlowResult</string>
    </property>
   </action>
-  <action name="actionWeightComp">
+  <action name="actionFlowWeight">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
-     <normaloff>:/qtverify/images/weightcomp.png</normaloff>:/qtverify/images/weightcomp.png</iconset>
+     <normaloff>:/qtverify/images/flowweight.png</normaloff>:/qtverify/images/flowweight.png</iconset>
    </property>
    <property name="text">
-    <string>Weight(Comp)</string>
+    <string>FlowWeight</string>
+   </property>
+   <property name="toolTip">
+    <string>FlowWeight</string>
    </property>
   </action>
-  <action name="actionWeightTotal">
+  <action name="actionTotalWeight">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
-     <normaloff>:/qtverify/images/weighttotal.png</normaloff>:/qtverify/images/weighttotal.png</iconset>
+     <normaloff>:/qtverify/images/totalweight.png</normaloff>:/qtverify/images/totalweight.png</iconset>
    </property>
    <property name="text">
-    <string>Weight(Total)</string>
+    <string>TotalWeight</string>
+   </property>
+   <property name="toolTip">
+    <string>TotalWeight</string>
    </property>
   </action>
-  <action name="actionStandardComp">
+  <action name="actionFlowStandard">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
      <normaloff>:/qtverify/images/stdcomp.png</normaloff>:/qtverify/images/stdcomp.png</iconset>
    </property>
    <property name="text">
-    <string>Standard(Comp)</string>
+    <string>FlowStandard</string>
+   </property>
+   <property name="toolTip">
+    <string>FlowStandard</string>
    </property>
   </action>
-  <action name="actionStandardTotal">
+  <action name="actionTotalStandard">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
      <normaloff>:/qtverify/images/stdtotal.png</normaloff>:/qtverify/images/stdtotal.png</iconset>
    </property>
    <property name="text">
-    <string>Standard(Total)</string>
+    <string>TotalStandard</string>
+   </property>
+   <property name="toolTip">
+    <string>TotalStandard</string>
    </property>
   </action>
   <action name="actionComSet">
@@ -239,10 +271,13 @@
   <action name="actionMasterSlaveSet">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
-     <normaloff>:/qtverify/images/hostslaveset.png</normaloff>:/qtverify/images/hostslaveset.png</iconset>
+     <normaloff>:/qtverify/images/masterslaveset.png</normaloff>:/qtverify/images/masterslaveset.png</iconset>
    </property>
    <property name="text">
-    <string>HostGuestSet</string>
+    <string>MasterSlaveSet</string>
+   </property>
+   <property name="toolTip">
+    <string>MasterSlaveSet</string>
    </property>
   </action>
   <action name="actionExit">
@@ -254,10 +289,10 @@
     <string>Exit</string>
    </property>
   </action>
-  <action name="actionTest">
+  <action name="actionDataTest">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
-     <normaloff>:/qtverify/images/collecttest.png</normaloff>:/qtverify/images/collecttest.png</iconset>
+     <normaloff>:/qtverify/images/datatest.png</normaloff>:/qtverify/images/datatest.png</iconset>
    </property>
    <property name="text">
     <string>DataTest</string>
@@ -300,23 +335,48 @@
    </property>
   </action>
   <action name="actionCalculator">
+   <property name="icon">
+    <iconset resource="../qtverify.qrc">
+     <normaloff>:/qtverify/images/calculator.png</normaloff>:/qtverify/images/calculator.png</iconset>
+   </property>
    <property name="text">
     <string>Calculator</string>
    </property>
   </action>
-  <action name="actionCompareMethod">
+  <action name="actionTemperCompare">
+   <property name="icon">
+    <iconset resource="../qtverify.qrc">
+     <normaloff>:/qtverify/images/tempercompare.png</normaloff>:/qtverify/images/tempercompare.png</iconset>
+   </property>
    <property name="text">
-    <string>CompareMethod</string>
+    <string>TemperCompare</string>
+   </property>
+   <property name="toolTip">
+    <string>TemperCompare</string>
    </property>
   </action>
-  <action name="actionParaMethod">
+  <action name="actionTemperPara">
+   <property name="icon">
+    <iconset resource="../qtverify.qrc">
+     <normaloff>:/qtverify/images/temperpara.png</normaloff>:/qtverify/images/temperpara.png</iconset>
+   </property>
    <property name="text">
-    <string>ParaMethod</string>
+    <string>TemperPara</string>
+   </property>
+   <property name="toolTip">
+    <string>TemperPara</string>
    </property>
   </action>
-  <action name="actionTemperCalc">
+  <action name="actionCombine">
+   <property name="icon">
+    <iconset resource="../qtverify.qrc">
+     <normaloff>:/qtverify/images/combine.png</normaloff>:/qtverify/images/combine.png</iconset>
+   </property>
    <property name="text">
-    <string>Temper/Calc</string>
+    <string>Combine</string>
+   </property>
+   <property name="toolTip">
+    <string>Combine</string>
    </property>
   </action>
   <action name="actionPressureTight">
@@ -325,31 +385,61 @@
    </property>
   </action>
   <action name="actionEnglish">
+   <property name="icon">
+    <iconset resource="../qtverify.qrc">
+     <normaloff>:/qtverify/images/english.png</normaloff>:/qtverify/images/english.png</iconset>
+   </property>
    <property name="text">
     <string>English</string>
    </property>
   </action>
   <action name="actionChinese">
+   <property name="icon">
+    <iconset resource="../qtverify.qrc">
+     <normaloff>:/qtverify/images/chinese.png</normaloff>:/qtverify/images/chinese.png</iconset>
+   </property>
    <property name="text">
     <string>Chinese</string>
    </property>
   </action>
   <action name="actionTemperResult">
+   <property name="icon">
+    <iconset resource="../qtverify.qrc">
+     <normaloff>:/qtverify/images/temperresult.png</normaloff>:/qtverify/images/temperresult.png</iconset>
+   </property>
    <property name="text">
     <string>TemperResult</string>
    </property>
   </action>
-  <action name="actionCalcResult">
+  <action name="actionCalculatorResult">
+   <property name="icon">
+    <iconset resource="../qtverify.qrc">
+     <normaloff>:/qtverify/images/calculatorresult.png</normaloff>:/qtverify/images/calculatorresult.png</iconset>
+   </property>
    <property name="text">
-    <string>CalcResult</string>
+    <string>CalculatorResult</string>
+   </property>
+   <property name="toolTip">
+    <string>CalculatorResult</string>
    </property>
   </action>
-  <action name="actionTemperCalcResult">
+  <action name="actionCombineResult">
+   <property name="icon">
+    <iconset resource="../qtverify.qrc">
+     <normaloff>:/qtverify/images/combineresult.png</normaloff>:/qtverify/images/combineresult.png</iconset>
+   </property>
    <property name="text">
-    <string>TemperCalcResult</string>
+    <string>CombineResult</string>
+   </property>
+   <property name="toolTip">
+    <string>CombineResult</string>
    </property>
   </action>
   <action name="actionTotalResult">
+   <property name="icon">
+    <iconset resource="../qtverify.qrc">
+     <normaloff>:/qtverify/images/totalresult.png</normaloff>:/qtverify/images/totalresult.png</iconset>
+   </property>
    <property name="text">
     <string>TotalResult</string>
    </property>
