@@ -44,9 +44,9 @@ ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 	QString filename;//配置文件的文件名
 	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
 #ifdef __unix
-	filename = runhome + "\/ini\/qualityParaSet.ini";
+	filename = runhome + "\/ini\/verifyparaset.ini";
 #else
-	filename = runhome + "\\ini\\qualityParaSet.ini";
+	filename = runhome + "\\ini\\verifyparaset.ini";
 #endif
 	settings = new QSettings(filename, QSettings::IniFormat);
 	settings->setIniCodec("GB2312");//解决向ini文件中写汉字乱码
@@ -234,9 +234,6 @@ void ParaSetDlg::installBool()
 	//自动采集
 	 ui.tBtn_autoPick_true->setChecked(lastParams->m_params->bo_autopick) ;
 	 ui.tBtn_autoPick_false->setChecked(!(lastParams->m_params->bo_autopick)) ;
-	 //总量检定
-	 ui.tBtn_totalverify_true->setChecked(lastParams->m_params->bo_total) ;
-	 ui.tBtn_totalverify_false->setChecked(!(lastParams->m_params->bo_total)) ;
 	 //调整误差
 	 ui.tBtn_adjustError_true->setChecked(lastParams->m_params->bo_adjerror) ;
 	 ui.tBtn_adjustError_false->setChecked(!(lastParams->m_params->bo_adjerror)) ;
@@ -422,7 +419,6 @@ void ParaSetDlg::SaveBool()
 	settings->beginGroup("Bool");
 	settings->setValue("timestamp",timestamp);
 	settings->setValue("autopick", ui.tBtn_autoPick_true->isChecked() );//是否自动采集
-	settings->setValue("Tqualitycheck", ui.tBtn_totalverify_true->isChecked() );//是否总量检定
 	settings->setValue("adjusterror", ui.tBtn_adjustError_true->isChecked() );//是否修正误差
 	settings->setValue("writemeternumber", ui.tBtn_writeNum_true->isChecked() );//是否写表号
 	settings->setValue("continuouscheck", ui.tBtn_continuous_true->isChecked() );//是否连续检定
@@ -447,8 +443,8 @@ ParaSetReader::ParaSetReader()
 {
 	initValveMap();
 	readIniFile();
-	m_params =new Quality_Params_STR;
-	memset(m_params, 0, sizeof(Quality_Params_PTR));
+	m_params =new Verify_Params_STR;
+	memset(m_params, 0, sizeof(Verify_Params_PTR));
 	readParamValues();
 }
 
@@ -473,9 +469,9 @@ int ParaSetReader::readIniFile()
 
 	//检定前的参数文件
 #ifdef __unix
-	filename = runhome + "\/ini\/qualityParaSet.ini";
+	filename = runhome + "\/ini\/verifyparaset.ini";
 #else
-	filename = runhome + "\\ini\\qualityParaSet.ini";
+	filename = runhome + "\\ini\\verifyparaset.ini";
 #endif
 	m_settings = new QSettings(filename, QSettings::IniFormat);
 	m_settings->setIniCodec("GB2312");//解决向ini文件中写汉字乱码
@@ -492,7 +488,7 @@ int ParaSetReader::readIniFile()
 	return true;
 }
 
-Quality_Params_PTR ParaSetReader::getParams()
+Verify_Params_PTR ParaSetReader::getParams()
 {
 	readIniFile();
 	readParamValues();
@@ -583,7 +579,6 @@ void ParaSetReader::readBool()
 		m_params->bo_adjerror	= m_settings->value("Bool/adjusterror").toBool();
 		m_params->bo_autopick = m_settings->value("Bool/autopick").toBool();
 		m_params->bo_converify = m_settings->value("Bool/continuouscheck").toBool();
-		m_params->bo_total = m_settings->value("Bool/Tqualitycheck").toBool();
 		m_params->bo_writenum = m_settings->value("Bool/writemeternumber").toBool();
 		m_params->bo_resetzero = m_settings->value("Bool/resetzero").toBool();
 	}

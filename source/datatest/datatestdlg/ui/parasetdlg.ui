@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>700</width>
-    <height>609</height>
+    <height>622</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -199,26 +199,40 @@
      <property name="title">
       <string>Control Valve Set</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout_7">
+     <layout class="QGridLayout" name="gridLayout_15">
       <item row="0" column="0">
        <widget class="QLabel" name="label_11">
         <property name="text">
-         <string>Flow Limit: </string>
+         <string>UpLimit(m³/h): </string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLineEdit" name="lineEdit_Upper_1">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
+       <layout class="QGridLayout" name="gridLayout_7">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_16">
+          <property name="text">
+           <string>Big</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLineEdit" name="lineEdit_Upper_1">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item row="0" column="2">
        <spacer name="horizontalSpacer_3">
@@ -234,54 +248,68 @@
        </spacer>
       </item>
       <item row="0" column="3">
-       <widget class="QLineEdit" name="lineEdit_Upper_2">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="palette">
-         <palette>
-          <active>
-           <colorrole role="Button">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>85</red>
-              <green>85</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </active>
-          <inactive>
-           <colorrole role="Button">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>85</red>
-              <green>85</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </inactive>
-          <disabled>
-           <colorrole role="Button">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>85</red>
-              <green>85</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </disabled>
-         </palette>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
+       <layout class="QGridLayout" name="gridLayout_8">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_17">
+          <property name="text">
+           <string>Middle1</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLineEdit" name="lineEdit_Upper_2">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="palette">
+           <palette>
+            <active>
+             <colorrole role="Button">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>85</red>
+                <green>85</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </active>
+            <inactive>
+             <colorrole role="Button">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>85</red>
+                <green>85</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </inactive>
+            <disabled>
+             <colorrole role="Button">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>85</red>
+                <green>85</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </disabled>
+           </palette>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item row="0" column="4">
        <spacer name="horizontalSpacer_4">
@@ -297,17 +325,31 @@
        </spacer>
       </item>
       <item row="0" column="5">
-       <widget class="QLineEdit" name="lineEdit_Upper_3">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
+       <layout class="QGridLayout" name="gridLayout_12">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_20">
+          <property name="text">
+           <string>Middle2</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLineEdit" name="lineEdit_Upper_3">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item row="0" column="6">
        <spacer name="horizontalSpacer_5">
@@ -323,17 +365,31 @@
        </spacer>
       </item>
       <item row="0" column="7">
-       <widget class="QLineEdit" name="lineEdit_Upper_4">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
+       <layout class="QGridLayout" name="gridLayout_14">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_21">
+          <property name="text">
+           <string>Small</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLineEdit" name="lineEdit_Upper_4">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
      </layout>
     </widget>
@@ -546,7 +602,7 @@
             </property>
             <item>
              <property name="text">
-              <string>   大</string>
+              <string>   Big</string>
              </property>
              <property name="icon">
               <iconset>
@@ -555,17 +611,17 @@
             </item>
             <item>
              <property name="text">
-              <string>      中一</string>
+              <string>   Middle1</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>      中二</string>
+              <string>   Middle2</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>      小</string>
+              <string>   Small</string>
              </property>
             </item>
            </widget>
@@ -612,14 +668,14 @@
              <bool>false</bool>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>0</number>
             </property>
             <property name="frame">
              <bool>true</bool>
             </property>
             <item>
              <property name="text">
-              <string>   大</string>
+              <string>   Big</string>
              </property>
              <property name="icon">
               <iconset>
@@ -628,17 +684,17 @@
             </item>
             <item>
              <property name="text">
-              <string>      中一</string>
+              <string>   Middle1</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>      中二</string>
+              <string>   Middle2</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>      小</string>
+              <string>   Small</string>
              </property>
             </item>
            </widget>
@@ -685,14 +741,14 @@
              <bool>false</bool>
             </property>
             <property name="currentIndex">
-             <number>2</number>
+             <number>0</number>
             </property>
             <property name="frame">
              <bool>true</bool>
             </property>
             <item>
              <property name="text">
-              <string>   大</string>
+              <string>   Big</string>
              </property>
              <property name="icon">
               <iconset>
@@ -701,17 +757,17 @@
             </item>
             <item>
              <property name="text">
-              <string>      中一</string>
+              <string>   Middle1</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>      中二</string>
+              <string>   Middle2</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>      小</string>
+              <string>   Small</string>
              </property>
             </item>
            </widget>
@@ -758,14 +814,14 @@
              <bool>false</bool>
             </property>
             <property name="currentIndex">
-             <number>3</number>
+             <number>0</number>
             </property>
             <property name="frame">
              <bool>true</bool>
             </property>
             <item>
              <property name="text">
-              <string>   大</string>
+              <string>   Big</string>
              </property>
              <property name="icon">
               <iconset>
@@ -774,17 +830,17 @@
             </item>
             <item>
              <property name="text">
-              <string>      中一</string>
+              <string>   Middle1</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>      中二</string>
+              <string>   Middle2</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>      小</string>
+              <string>   Small</string>
              </property>
             </item>
            </widget>
@@ -1144,48 +1200,6 @@
         </item>
         <item>
          <widget class="QRadioButton" name="tBtn_autoPick_false">
-          <property name="text">
-           <string>No</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_22">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Preferred</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>28</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="Q3ButtonGroup" name="buttonGroup">
-       <property name="title">
-        <string>Total Verify</string>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_6">
-        <item>
-         <widget class="QRadioButton" name="tBtn_totalverify_true">
-          <property name="text">
-           <string>Yes</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="tBtn_totalverify_false">
           <property name="text">
            <string>No</string>
           </property>

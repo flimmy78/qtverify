@@ -32,6 +32,7 @@
 #define TIMEOUT_BALANCE		200	  //每200毫秒读一次天平数据
 
 #define RESET_ZERO_TIME		22    //等待热表初值回零的时间，单位：秒
+
 /*
 ** 被检表类型枚举            
 */
@@ -47,12 +48,12 @@ enum metertype
 */
 class PortSet_Ini_STR{
 public:
-    int     waterInNo;                   //
-    int     bigNo;					 //
-    int     middle1No;                     //
-    int     middle2No;                     //
-    int     smallNo;                     //
-    int     waterOutNo;                  //
+    int     waterInNo;  //
+    int     bigNo;      //
+    int     middle1No;  //
+    int     middle2No;  //
+    int     smallNo;    //
+    int     waterOutNo; //
 	int		regflow1No;
 	int		regflow2No;
 	int		regflow3No;
@@ -62,7 +63,7 @@ public:
 typedef PortSet_Ini_STR* PortSet_Ini_PTR;
 
 /*
-** FUNCTION -- 获取质量法参数设置信息(qualityParaSet.ini文件)
+** FUNCTION -- 获取检定参数设置信息(verifyparaset.ini文件)
 */
 class ParaSet_Ini_STR{
 public:
@@ -96,8 +97,8 @@ typedef MasterSlave_Ini_STR* MasterSlave_Ini_PTR;
 */
 class MeterStandard_STR{
 public:
-    int       id;                   //主键
-    char   name[ASCNAME_LEN];		//规格
+    int    id;                   //主键
+    char   name[ASCNAME_LEN];	 //规格
 	UINT16 quantity;//被检表的最大数量
 };
 typedef MeterStandard_STR* MeterStandard_PTR;
@@ -118,9 +119,9 @@ typedef MeterType_STR* MeterType_PTR;
 */
 class Manufacture_STR{
 public:
-    int     id;                   //
+    int     id;                       //
 	char    name[ASCNAME_LEN];
-    char    desc[DESC_LEN];				//
+    char    desc[DESC_LEN];			  //
 	char    numprefix[NUMPREFIX_LEN]; //该厂家的表号前缀
 };
 typedef Manufacture_STR* Manufacture_PTR;
@@ -134,9 +135,9 @@ public:
 	int id;//主键
 	int stand_id;//外键,表规格的id
 	float n_flow;//常用流量点
-	float upper_flow;//检定流量点
-	float v_flow;//检定量
-	float v_quan;//水泵频率
+	float upper_flow;//上限流量
+	float v_flow;//检定流量
+	float v_quan;//检定量
 	float pump_freq;//水泵频率
 	int vale_num;//阀门编号
 	int seq;//检测序列号
@@ -169,14 +170,14 @@ public:
 	float	stdError;		//要求误差(合格标准)
 	INT16   result;			//检定结果(1:合格  0:不合格)
 	INT16	meterPosNo;		//表位号
-	int	model;			    //表型号
-	int	standard;		    //表规格
-	int	meterType;		    //表类型
-	int	manufactDept;	    //制造单位
-	int	verifyDept;		    //送检单位
+	int	    model;			//表型号
+	int  	standard;		//表规格
+	int	    meterType;		//表类型
+	int	    manufactDept;	//制造单位
+	int	    verifyDept;		//送检单位
 	INT16	grade;	        //计量等级
-	int	verifyPerson;	    //检定员
-	int	checkPerson;	    //核验员
+	int	    verifyPerson;	//检定员
+	int	    checkPerson;	//核验员
 	char	date[DATE_LEN];	//检定日期（'2014-07-25'）
 	float	envTemper;		//环境温度
 	float	envHumidity;	//环境湿度
@@ -203,9 +204,10 @@ struct Flow_Point_Info_STR
 typedef struct Flow_Point_Info_STR Flow_Point_Info;
 
 /*
-** 质量检定法用到的相关参数值
+** 检定用到的相关参数
+** 包括质量法流量检定、标准表法流量检定、质量法总量检定、标准表法总量检定，共用该结构
 */
-class Quality_Params_STR
+class Verify_Params_STR
 {
 public:
 	qint64 file_timestamp;//配置文件的时间戳
@@ -228,7 +230,6 @@ public:
 	//检定时的控制参数, 全部为布尔型参数, 故前缀以bo_开头
 	qint64 bo_timestamp;//布尔值时间戳
 	bool bo_autopick;//是否自动采集
-	bool bo_total;//是否总量检定
 	bool bo_adjerror;//是否调整误差
 	bool bo_writenum;//是否写表号
 	bool bo_converify;//是否连续检定
@@ -239,7 +240,7 @@ public:
 	float sc_thermal;//热量安全系数
 	int ex_time;//排气时间
 };
-typedef Quality_Params_STR* Quality_Params_PTR;
+typedef Verify_Params_STR* Verify_Params_PTR;
 
 typedef struct ComInfo_Struct
 {

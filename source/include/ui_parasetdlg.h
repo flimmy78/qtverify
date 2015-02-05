@@ -54,14 +54,22 @@ public:
     QLabel *label_10;
     QComboBox *cmbVerifyCompany;
     QGroupBox *gBox_UpperFlowLmt;
-    QGridLayout *gridLayout_7;
+    QGridLayout *gridLayout_15;
     QLabel *label_11;
+    QGridLayout *gridLayout_7;
+    QLabel *label_16;
     QLineEdit *lineEdit_Upper_1;
     QSpacerItem *horizontalSpacer_3;
+    QGridLayout *gridLayout_8;
+    QLabel *label_17;
     QLineEdit *lineEdit_Upper_2;
     QSpacerItem *horizontalSpacer_4;
+    QGridLayout *gridLayout_12;
+    QLabel *label_20;
     QLineEdit *lineEdit_Upper_3;
     QSpacerItem *horizontalSpacer_5;
+    QGridLayout *gridLayout_14;
+    QLabel *label_21;
     QLineEdit *lineEdit_Upper_4;
     QGroupBox *gBox_FlowPnt;
     QGridLayout *gridLayout_13;
@@ -112,11 +120,6 @@ public:
     QHBoxLayout *horizontalLayout;
     QRadioButton *tBtn_autoPick_true;
     QRadioButton *tBtn_autoPick_false;
-    QSpacerItem *horizontalSpacer_22;
-    Q3ButtonGroup *buttonGroup;
-    QHBoxLayout *horizontalLayout_6;
-    QRadioButton *tBtn_totalverify_true;
-    QRadioButton *tBtn_totalverify_false;
     QSpacerItem *horizontalSpacer_23;
     Q3ButtonGroup *buttonGroup_4;
     QHBoxLayout *horizontalLayout_8;
@@ -159,7 +162,7 @@ public:
         if (ParaSetDlgClass->objectName().isEmpty())
             ParaSetDlgClass->setObjectName(QString::fromUtf8("ParaSetDlgClass"));
         ParaSetDlgClass->setWindowModality(Qt::ApplicationModal);
-        ParaSetDlgClass->resize(700, 609);
+        ParaSetDlgClass->resize(700, 622);
         gridLayout_6 = new QGridLayout(ParaSetDlgClass);
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
         gBox_Head = new QGroupBox(ParaSetDlgClass);
@@ -280,12 +283,20 @@ public:
 
         gBox_UpperFlowLmt = new QGroupBox(ParaSetDlgClass);
         gBox_UpperFlowLmt->setObjectName(QString::fromUtf8("gBox_UpperFlowLmt"));
-        gridLayout_7 = new QGridLayout(gBox_UpperFlowLmt);
-        gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
+        gridLayout_15 = new QGridLayout(gBox_UpperFlowLmt);
+        gridLayout_15->setObjectName(QString::fromUtf8("gridLayout_15"));
         label_11 = new QLabel(gBox_UpperFlowLmt);
         label_11->setObjectName(QString::fromUtf8("label_11"));
 
-        gridLayout_7->addWidget(label_11, 0, 0, 1, 1);
+        gridLayout_15->addWidget(label_11, 0, 0, 1, 1);
+
+        gridLayout_7 = new QGridLayout();
+        gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
+        label_16 = new QLabel(gBox_UpperFlowLmt);
+        label_16->setObjectName(QString::fromUtf8("label_16"));
+        label_16->setAlignment(Qt::AlignCenter);
+
+        gridLayout_7->addWidget(label_16, 0, 0, 1, 1);
 
         lineEdit_Upper_1 = new QLineEdit(gBox_UpperFlowLmt);
         lineEdit_Upper_1->setObjectName(QString::fromUtf8("lineEdit_Upper_1"));
@@ -296,11 +307,22 @@ public:
         lineEdit_Upper_1->setSizePolicy(sizePolicy1);
         lineEdit_Upper_1->setAlignment(Qt::AlignCenter);
 
-        gridLayout_7->addWidget(lineEdit_Upper_1, 0, 1, 1, 1);
+        gridLayout_7->addWidget(lineEdit_Upper_1, 1, 0, 1, 1);
+
+
+        gridLayout_15->addLayout(gridLayout_7, 0, 1, 1, 1);
 
         horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout_7->addItem(horizontalSpacer_3, 0, 2, 1, 1);
+        gridLayout_15->addItem(horizontalSpacer_3, 0, 2, 1, 1);
+
+        gridLayout_8 = new QGridLayout();
+        gridLayout_8->setObjectName(QString::fromUtf8("gridLayout_8"));
+        label_17 = new QLabel(gBox_UpperFlowLmt);
+        label_17->setObjectName(QString::fromUtf8("label_17"));
+        label_17->setAlignment(Qt::AlignCenter);
+
+        gridLayout_8->addWidget(label_17, 0, 0, 1, 1);
 
         lineEdit_Upper_2 = new QLineEdit(gBox_UpperFlowLmt);
         lineEdit_Upper_2->setObjectName(QString::fromUtf8("lineEdit_Upper_2"));
@@ -315,11 +337,22 @@ public:
         lineEdit_Upper_2->setPalette(palette);
         lineEdit_Upper_2->setAlignment(Qt::AlignCenter);
 
-        gridLayout_7->addWidget(lineEdit_Upper_2, 0, 3, 1, 1);
+        gridLayout_8->addWidget(lineEdit_Upper_2, 1, 0, 1, 1);
+
+
+        gridLayout_15->addLayout(gridLayout_8, 0, 3, 1, 1);
 
         horizontalSpacer_4 = new QSpacerItem(28, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout_7->addItem(horizontalSpacer_4, 0, 4, 1, 1);
+        gridLayout_15->addItem(horizontalSpacer_4, 0, 4, 1, 1);
+
+        gridLayout_12 = new QGridLayout();
+        gridLayout_12->setObjectName(QString::fromUtf8("gridLayout_12"));
+        label_20 = new QLabel(gBox_UpperFlowLmt);
+        label_20->setObjectName(QString::fromUtf8("label_20"));
+        label_20->setAlignment(Qt::AlignCenter);
+
+        gridLayout_12->addWidget(label_20, 0, 0, 1, 1);
 
         lineEdit_Upper_3 = new QLineEdit(gBox_UpperFlowLmt);
         lineEdit_Upper_3->setObjectName(QString::fromUtf8("lineEdit_Upper_3"));
@@ -327,11 +360,22 @@ public:
         lineEdit_Upper_3->setSizePolicy(sizePolicy1);
         lineEdit_Upper_3->setAlignment(Qt::AlignCenter);
 
-        gridLayout_7->addWidget(lineEdit_Upper_3, 0, 5, 1, 1);
+        gridLayout_12->addWidget(lineEdit_Upper_3, 1, 0, 1, 1);
+
+
+        gridLayout_15->addLayout(gridLayout_12, 0, 5, 1, 1);
 
         horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout_7->addItem(horizontalSpacer_5, 0, 6, 1, 1);
+        gridLayout_15->addItem(horizontalSpacer_5, 0, 6, 1, 1);
+
+        gridLayout_14 = new QGridLayout();
+        gridLayout_14->setObjectName(QString::fromUtf8("gridLayout_14"));
+        label_21 = new QLabel(gBox_UpperFlowLmt);
+        label_21->setObjectName(QString::fromUtf8("label_21"));
+        label_21->setAlignment(Qt::AlignCenter);
+
+        gridLayout_14->addWidget(label_21, 0, 0, 1, 1);
 
         lineEdit_Upper_4 = new QLineEdit(gBox_UpperFlowLmt);
         lineEdit_Upper_4->setObjectName(QString::fromUtf8("lineEdit_Upper_4"));
@@ -339,7 +383,10 @@ public:
         lineEdit_Upper_4->setSizePolicy(sizePolicy1);
         lineEdit_Upper_4->setAlignment(Qt::AlignCenter);
 
-        gridLayout_7->addWidget(lineEdit_Upper_4, 0, 7, 1, 1);
+        gridLayout_14->addWidget(lineEdit_Upper_4, 1, 0, 1, 1);
+
+
+        gridLayout_15->addLayout(gridLayout_14, 0, 7, 1, 1);
 
 
         gridLayout_6->addWidget(gBox_UpperFlowLmt, 1, 0, 1, 3);
@@ -673,33 +720,6 @@ public:
 
         horizontalLayout_5->addWidget(buttonGroup_2);
 
-        horizontalSpacer_22 = new QSpacerItem(28, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
-
-        horizontalLayout_5->addItem(horizontalSpacer_22);
-
-        buttonGroup = new Q3ButtonGroup(ParaSetDlgClass);
-        buttonGroup->setObjectName(QString::fromUtf8("buttonGroup"));
-        buttonGroup->setColumnLayout(0, Qt::Vertical);
-        horizontalLayout_6 = new QHBoxLayout();
-        QBoxLayout *boxlayout1 = qobject_cast<QBoxLayout *>(buttonGroup->layout());
-        if (boxlayout1)
-            boxlayout1->addLayout(horizontalLayout_6);
-        horizontalLayout_6->setAlignment(Qt::AlignTop);
-        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
-        tBtn_totalverify_true = new QRadioButton(buttonGroup);
-        tBtn_totalverify_true->setObjectName(QString::fromUtf8("tBtn_totalverify_true"));
-        tBtn_totalverify_true->setChecked(true);
-
-        horizontalLayout_6->addWidget(tBtn_totalverify_true);
-
-        tBtn_totalverify_false = new QRadioButton(buttonGroup);
-        tBtn_totalverify_false->setObjectName(QString::fromUtf8("tBtn_totalverify_false"));
-
-        horizontalLayout_6->addWidget(tBtn_totalverify_false);
-
-
-        horizontalLayout_5->addWidget(buttonGroup);
-
         horizontalSpacer_23 = new QSpacerItem(28, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
 
         horizontalLayout_5->addItem(horizontalSpacer_23);
@@ -708,9 +728,9 @@ public:
         buttonGroup_4->setObjectName(QString::fromUtf8("buttonGroup_4"));
         buttonGroup_4->setColumnLayout(0, Qt::Vertical);
         horizontalLayout_8 = new QHBoxLayout();
-        QBoxLayout *boxlayout2 = qobject_cast<QBoxLayout *>(buttonGroup_4->layout());
-        if (boxlayout2)
-            boxlayout2->addLayout(horizontalLayout_8);
+        QBoxLayout *boxlayout1 = qobject_cast<QBoxLayout *>(buttonGroup_4->layout());
+        if (boxlayout1)
+            boxlayout1->addLayout(horizontalLayout_8);
         horizontalLayout_8->setAlignment(Qt::AlignTop);
         horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
         tBtn_adjustError_true = new QRadioButton(buttonGroup_4);
@@ -735,9 +755,9 @@ public:
         buttonGroup_5->setObjectName(QString::fromUtf8("buttonGroup_5"));
         buttonGroup_5->setColumnLayout(0, Qt::Vertical);
         horizontalLayout_7 = new QHBoxLayout();
-        QBoxLayout *boxlayout3 = qobject_cast<QBoxLayout *>(buttonGroup_5->layout());
-        if (boxlayout3)
-            boxlayout3->addLayout(horizontalLayout_7);
+        QBoxLayout *boxlayout2 = qobject_cast<QBoxLayout *>(buttonGroup_5->layout());
+        if (boxlayout2)
+            boxlayout2->addLayout(horizontalLayout_7);
         horizontalLayout_7->setAlignment(Qt::AlignTop);
         horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
         tBtn_writeNum_true = new QRadioButton(buttonGroup_5);
@@ -762,9 +782,9 @@ public:
         buttonGroup_8->setObjectName(QString::fromUtf8("buttonGroup_8"));
         buttonGroup_8->setColumnLayout(0, Qt::Vertical);
         horizontalLayout_10 = new QHBoxLayout();
-        QBoxLayout *boxlayout4 = qobject_cast<QBoxLayout *>(buttonGroup_8->layout());
-        if (boxlayout4)
-            boxlayout4->addLayout(horizontalLayout_10);
+        QBoxLayout *boxlayout3 = qobject_cast<QBoxLayout *>(buttonGroup_8->layout());
+        if (boxlayout3)
+            boxlayout3->addLayout(horizontalLayout_10);
         horizontalLayout_10->setAlignment(Qt::AlignTop);
         horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
         tBtn_resetzero_true = new QRadioButton(buttonGroup_8);
@@ -790,9 +810,9 @@ public:
         buttonGroup_6->setObjectName(QString::fromUtf8("buttonGroup_6"));
         buttonGroup_6->setColumnLayout(0, Qt::Vertical);
         gridLayout = new QGridLayout();
-        QBoxLayout *boxlayout5 = qobject_cast<QBoxLayout *>(buttonGroup_6->layout());
-        if (boxlayout5)
-            boxlayout5->addLayout(gridLayout);
+        QBoxLayout *boxlayout4 = qobject_cast<QBoxLayout *>(buttonGroup_6->layout());
+        if (boxlayout4)
+            boxlayout4->addLayout(gridLayout);
         gridLayout->setAlignment(Qt::AlignTop);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         tBtn_continuous_true = new QRadioButton(buttonGroup_6);
@@ -856,9 +876,9 @@ public:
         buttonGroup_7->setObjectName(QString::fromUtf8("buttonGroup_7"));
         buttonGroup_7->setColumnLayout(0, Qt::Vertical);
         gridLayout_11 = new QGridLayout();
-        QBoxLayout *boxlayout6 = qobject_cast<QBoxLayout *>(buttonGroup_7->layout());
-        if (boxlayout6)
-            boxlayout6->addLayout(gridLayout_11);
+        QBoxLayout *boxlayout5 = qobject_cast<QBoxLayout *>(buttonGroup_7->layout());
+        if (boxlayout5)
+            boxlayout5->addLayout(gridLayout_11);
         gridLayout_11->setAlignment(Qt::AlignTop);
         gridLayout_11->setObjectName(QString::fromUtf8("gridLayout_11"));
         lineEdit_exTime = new QLineEdit(buttonGroup_7);
@@ -913,9 +933,9 @@ public:
 
         retranslateUi(ParaSetDlgClass);
 
-        cBox_Valve_2->setCurrentIndex(1);
-        cBox_Valve_3->setCurrentIndex(2);
-        cBox_Valve_4->setCurrentIndex(3);
+        cBox_Valve_2->setCurrentIndex(0);
+        cBox_Valve_3->setCurrentIndex(0);
+        cBox_Valve_4->setCurrentIndex(0);
         cBox_seq_2->setCurrentIndex(0);
         cBox_seq_3->setCurrentIndex(0);
         cBox_seq_4->setCurrentIndex(0);
@@ -949,7 +969,11 @@ public:
         label_9->setText(QApplication::translate("ParaSetDlgClass", "ManuFact:", 0, QApplication::UnicodeUTF8));
         label_10->setText(QApplication::translate("ParaSetDlgClass", "VerifyDept:", 0, QApplication::UnicodeUTF8));
         gBox_UpperFlowLmt->setTitle(QApplication::translate("ParaSetDlgClass", "Control Valve Set", 0, QApplication::UnicodeUTF8));
-        label_11->setText(QApplication::translate("ParaSetDlgClass", "Flow Limit: ", 0, QApplication::UnicodeUTF8));
+        label_11->setText(QApplication::translate("ParaSetDlgClass", "UpLimit(m\302\263/h): ", 0, QApplication::UnicodeUTF8));
+        label_16->setText(QApplication::translate("ParaSetDlgClass", "Big", 0, QApplication::UnicodeUTF8));
+        label_17->setText(QApplication::translate("ParaSetDlgClass", "Middle1", 0, QApplication::UnicodeUTF8));
+        label_20->setText(QApplication::translate("ParaSetDlgClass", "Middle2", 0, QApplication::UnicodeUTF8));
+        label_21->setText(QApplication::translate("ParaSetDlgClass", "Small", 0, QApplication::UnicodeUTF8));
         gBox_FlowPnt->setTitle(QApplication::translate("ParaSetDlgClass", "ParaSet", 0, QApplication::UnicodeUTF8));
         label_12->setText(QApplication::translate("ParaSetDlgClass", "Flow(m\302\263/h):", 0, QApplication::UnicodeUTF8));
         lnEdit_Flow1->setText(QApplication::translate("ParaSetDlgClass", "2.5", 0, QApplication::UnicodeUTF8));
@@ -960,25 +984,25 @@ public:
         lineEdit_Quantity_2->setText(QApplication::translate("ParaSetDlgClass", "20", 0, QApplication::UnicodeUTF8));
         lineEdit_Quantity_3->setText(QApplication::translate("ParaSetDlgClass", "10", 0, QApplication::UnicodeUTF8));
         lineEdit_Quantity_4->setText(QApplication::translate("ParaSetDlgClass", "5", 0, QApplication::UnicodeUTF8));
-        cBox_Valve_1->setItemText(0, QApplication::translate("ParaSetDlgClass", "   \345\244\247", 0, QApplication::UnicodeUTF8));
-        cBox_Valve_1->setItemText(1, QApplication::translate("ParaSetDlgClass", "      \344\270\255\344\270\200", 0, QApplication::UnicodeUTF8));
-        cBox_Valve_1->setItemText(2, QApplication::translate("ParaSetDlgClass", "      \344\270\255\344\272\214", 0, QApplication::UnicodeUTF8));
-        cBox_Valve_1->setItemText(3, QApplication::translate("ParaSetDlgClass", "      \345\260\217", 0, QApplication::UnicodeUTF8));
+        cBox_Valve_1->setItemText(0, QApplication::translate("ParaSetDlgClass", "   Big", 0, QApplication::UnicodeUTF8));
+        cBox_Valve_1->setItemText(1, QApplication::translate("ParaSetDlgClass", "   Middle1", 0, QApplication::UnicodeUTF8));
+        cBox_Valve_1->setItemText(2, QApplication::translate("ParaSetDlgClass", "   Middle2", 0, QApplication::UnicodeUTF8));
+        cBox_Valve_1->setItemText(3, QApplication::translate("ParaSetDlgClass", "   Small", 0, QApplication::UnicodeUTF8));
 
-        cBox_Valve_2->setItemText(0, QApplication::translate("ParaSetDlgClass", "   \345\244\247", 0, QApplication::UnicodeUTF8));
-        cBox_Valve_2->setItemText(1, QApplication::translate("ParaSetDlgClass", "      \344\270\255\344\270\200", 0, QApplication::UnicodeUTF8));
-        cBox_Valve_2->setItemText(2, QApplication::translate("ParaSetDlgClass", "      \344\270\255\344\272\214", 0, QApplication::UnicodeUTF8));
-        cBox_Valve_2->setItemText(3, QApplication::translate("ParaSetDlgClass", "      \345\260\217", 0, QApplication::UnicodeUTF8));
+        cBox_Valve_2->setItemText(0, QApplication::translate("ParaSetDlgClass", "   Big", 0, QApplication::UnicodeUTF8));
+        cBox_Valve_2->setItemText(1, QApplication::translate("ParaSetDlgClass", "   Middle1", 0, QApplication::UnicodeUTF8));
+        cBox_Valve_2->setItemText(2, QApplication::translate("ParaSetDlgClass", "   Middle2", 0, QApplication::UnicodeUTF8));
+        cBox_Valve_2->setItemText(3, QApplication::translate("ParaSetDlgClass", "   Small", 0, QApplication::UnicodeUTF8));
 
-        cBox_Valve_3->setItemText(0, QApplication::translate("ParaSetDlgClass", "   \345\244\247", 0, QApplication::UnicodeUTF8));
-        cBox_Valve_3->setItemText(1, QApplication::translate("ParaSetDlgClass", "      \344\270\255\344\270\200", 0, QApplication::UnicodeUTF8));
-        cBox_Valve_3->setItemText(2, QApplication::translate("ParaSetDlgClass", "      \344\270\255\344\272\214", 0, QApplication::UnicodeUTF8));
-        cBox_Valve_3->setItemText(3, QApplication::translate("ParaSetDlgClass", "      \345\260\217", 0, QApplication::UnicodeUTF8));
+        cBox_Valve_3->setItemText(0, QApplication::translate("ParaSetDlgClass", "   Big", 0, QApplication::UnicodeUTF8));
+        cBox_Valve_3->setItemText(1, QApplication::translate("ParaSetDlgClass", "   Middle1", 0, QApplication::UnicodeUTF8));
+        cBox_Valve_3->setItemText(2, QApplication::translate("ParaSetDlgClass", "   Middle2", 0, QApplication::UnicodeUTF8));
+        cBox_Valve_3->setItemText(3, QApplication::translate("ParaSetDlgClass", "   Small", 0, QApplication::UnicodeUTF8));
 
-        cBox_Valve_4->setItemText(0, QApplication::translate("ParaSetDlgClass", "   \345\244\247", 0, QApplication::UnicodeUTF8));
-        cBox_Valve_4->setItemText(1, QApplication::translate("ParaSetDlgClass", "      \344\270\255\344\270\200", 0, QApplication::UnicodeUTF8));
-        cBox_Valve_4->setItemText(2, QApplication::translate("ParaSetDlgClass", "      \344\270\255\344\272\214", 0, QApplication::UnicodeUTF8));
-        cBox_Valve_4->setItemText(3, QApplication::translate("ParaSetDlgClass", "      \345\260\217", 0, QApplication::UnicodeUTF8));
+        cBox_Valve_4->setItemText(0, QApplication::translate("ParaSetDlgClass", "   Big", 0, QApplication::UnicodeUTF8));
+        cBox_Valve_4->setItemText(1, QApplication::translate("ParaSetDlgClass", "   Middle1", 0, QApplication::UnicodeUTF8));
+        cBox_Valve_4->setItemText(2, QApplication::translate("ParaSetDlgClass", "   Middle2", 0, QApplication::UnicodeUTF8));
+        cBox_Valve_4->setItemText(3, QApplication::translate("ParaSetDlgClass", "   Small", 0, QApplication::UnicodeUTF8));
 
         lineEdit_freq_1->setText(QApplication::translate("ParaSetDlgClass", "35", 0, QApplication::UnicodeUTF8));
         lineEdit_freq_2->setText(QApplication::translate("ParaSetDlgClass", "33", 0, QApplication::UnicodeUTF8));
@@ -1015,9 +1039,6 @@ public:
         buttonGroup_2->setTitle(QApplication::translate("ParaSetDlgClass", "Auto DA", 0, QApplication::UnicodeUTF8));
         tBtn_autoPick_true->setText(QApplication::translate("ParaSetDlgClass", "Yes", 0, QApplication::UnicodeUTF8));
         tBtn_autoPick_false->setText(QApplication::translate("ParaSetDlgClass", "No", 0, QApplication::UnicodeUTF8));
-        buttonGroup->setTitle(QApplication::translate("ParaSetDlgClass", "Total Verify", 0, QApplication::UnicodeUTF8));
-        tBtn_totalverify_true->setText(QApplication::translate("ParaSetDlgClass", "Yes", 0, QApplication::UnicodeUTF8));
-        tBtn_totalverify_false->setText(QApplication::translate("ParaSetDlgClass", "No", 0, QApplication::UnicodeUTF8));
         buttonGroup_4->setTitle(QApplication::translate("ParaSetDlgClass", "Adjust Error", 0, QApplication::UnicodeUTF8));
         tBtn_adjustError_true->setText(QApplication::translate("ParaSetDlgClass", "Yes", 0, QApplication::UnicodeUTF8));
         tBtn_adjustError_false->setText(QApplication::translate("ParaSetDlgClass", "NO", 0, QApplication::UnicodeUTF8));

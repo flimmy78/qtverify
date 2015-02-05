@@ -64,9 +64,9 @@ int getParaSetIni(ParaSet_Ini_PTR info)
 		return false;
 	}
 #ifdef __unix
-	filename = runhome + "\/ini\/qualityParaSet.ini";
+	filename = runhome + "\/ini\/verifyparaset.ini";
 #else
-	filename = runhome + "\\ini\\qualityParaSet.ini";
+	filename = runhome + "\\ini\\verifyparaset.ini";
 #endif
 
 	QSettings settings(filename, QSettings::IniFormat);
@@ -156,9 +156,9 @@ float CAlgorithm::getMeterTempByPos(float inlet, float oulet, int num)
 	//2.1* 获取被检表的规格
 	QString paraPath;
 #ifdef Q_OS_LINUX
-	paraPath = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\/ini\/qualityParaSet.ini";
+	paraPath = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\/ini\/verifyparaset.ini";
 #elif defined (Q_OS_WIN)
-	paraPath = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\\ini\\qualityParaSet.ini";
+	paraPath = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\\ini\\verifyparaset.ini";
 #endif
 	QSettings *ParaSet = new QSettings(paraPath, QSettings::IniFormat);//参数配置文件
 	int meterType = ParaSet->value("head/standard").toInt();//被检表规格

@@ -117,13 +117,12 @@ public:
 	bool m_stopFlag;     //关闭界面后退出
 
 	//检定过程相关的控制参数 begin
-	Quality_Params_PTR m_nowParams; //当前检定参数
+	Verify_Params_PTR m_nowParams; //当前检定参数
 	bool m_continueVerify;    //是否连续检定
 	bool m_resetZero;         //是否初值回零
 	bool m_autopick;          //是否自动采集
 	int m_flowPointNum;       //流量点的个数
 	int m_exaustSecond;		  //排气时间
-	INT16 m_totalFlag;        //1:总量检定；2:分量检定
 	int m_standard;           //表规格
 	int m_model;              //表型号
 	int m_meterType;          //表类型

@@ -20,8 +20,8 @@ public:
 	ParaSetReader();
 	~ParaSetReader();
 
-	Quality_Params_PTR getParams();
-	Quality_Params_PTR m_params;
+	Verify_Params_PTR getParams();
+	Verify_Params_PTR m_params;
 	int readIniFile();
 	Flow_Point_Info getFpBySeq(int i);//取出检定次序为i的流量点信息
 
@@ -75,7 +75,7 @@ private:
 	bool cBoxData_inited;//标记, 界面的下拉条已经从数据库中读取了数据
 	
 	QSettings *settings;//配置文件
-	Quality_Params_PTR params;//本次的配置参数
+	Verify_Params_PTR params;//本次的配置参数
 	ParaSetReader *lastParams;//上次的配置参数
 	qint64 timestamp;//时间戳
 

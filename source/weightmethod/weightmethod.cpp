@@ -91,8 +91,8 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	m_tempCount = 1; //计算平均温度用的累加计数器
 	m_nowOrder = 0;  //当前进行的检定序号
 
-	m_nowParams = new Quality_Params_STR;
-	memset(m_nowParams, 0, sizeof(Quality_Params_STR));
+	m_nowParams = new Verify_Params_STR;
+	memset(m_nowParams, 0, sizeof(Verify_Params_STR));
 	m_continueVerify = true; //连续检定
 	m_resetZero = false;     //初值回零
 	m_autopick = false;      //自动采集
@@ -100,7 +100,6 @@ WeightMethodDlg::WeightMethodDlg(QWidget *parent, Qt::WFlags flags)
 	m_maxMeterNum = 0;       //某规格表最多支持的检表个数
 	m_validMeterNum = 0;     //实际检表个数
 	m_exaustSecond = 45;     //默认排气时间45秒
-	m_totalFlag = 0;         //默认分量检定
 	m_manufac = 0;           //制造厂商 默认德鲁
 	m_meterStartValue = NULL;
 	m_meterEndValue = NULL;
@@ -438,7 +437,6 @@ int WeightMethodDlg::readNowParaConfig()
 	m_autopick = m_nowParams->bo_autopick;   //自动采集
 	m_flowPointNum = m_nowParams->total_fp;  //有效流量点的个数 
 	m_exaustSecond = m_nowParams->ex_time;   //排气时间
-	m_totalFlag = m_nowParams->bo_total;	 //总量检定标志(1:总量检定  0:分量检定)
 	m_standard = m_nowParams->m_stand;       //表规格
 	m_model = m_nowParams->m_model;   //表型号
 	m_meterType = m_nowParams->m_type;//表类型
@@ -1044,7 +1042,7 @@ int WeightMethodDlg::calcAllMeterError()
 		meterNoStr = meterNoPrefix + QString("%1").arg(ui.tableWidget->item(m_meterPosMap[i]-1, 0)->text(), 8, '0');
 		strcpy_s(m_recPtr[i].meterNo, meterNoStr.toAscii());
 		m_recPtr[i].flowPointIdx = m_nowOrder;
-		m_recPtr[i].totalFlag = m_totalFlag;
+		m_recPtr[i].totalFlag = 0;
 		m_recPtr[i].meterValue0 = m_meterStartValue[i];
 		m_recPtr[i].meterValue1 = m_meterEndValue[i];
 		m_recPtr[i].meterDeltaV = m_recPtr[i].meterValue1 - m_recPtr[i].meterValue0;
@@ -1092,7 +1090,7 @@ int WeightMethodDlg::calcMeterError(int idx)
 	meterNoStr = meterNoPrefix + QString("%1").arg(ui.tableWidget->item(m_meterPosMap[idx]-1, 0)->text(), 8, '0');
 	strcpy_s(m_recPtr[idx].meterNo, meterNoStr.toAscii());
 	m_recPtr[idx].flowPointIdx = m_nowOrder; //
-	m_recPtr[idx].totalFlag = m_totalFlag;
+	m_recPtr[idx].totalFlag = 0;
 	m_recPtr[idx].meterValue0 = m_meterStartValue[idx];
 	m_recPtr[idx].meterValue1 = m_meterEndValue[idx];
 	m_recPtr[idx].meterDeltaV = m_recPtr[idx].meterValue1 - m_recPtr[idx].meterValue0;
