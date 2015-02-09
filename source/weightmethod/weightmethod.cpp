@@ -342,7 +342,12 @@ void WeightMethodDlg::initValveStatus()
 	setValveBtnBackColor(m_valveBtn[m_portsetinfo.pumpNo], m_valveStatus[m_portsetinfo.pumpNo]);
 }
 
-//在界面刷新天平数值,并过滤突变数值
+/*
+** 函数功能：
+	在界面刷新天平数值
+	过滤突变数值
+	防止天平溢出
+*/
 void WeightMethodDlg::slotFreshBalanceValue(const float& balValue)
 {
 	if (fabs(m_balLastValue - balValue) > 1) //天平每次变化不可能大于1kg
@@ -353,7 +358,7 @@ void WeightMethodDlg::slotFreshBalanceValue(const float& balValue)
 	QString wht = QString::number(balValue, 'f', 3);
 	ui.lcdBigBalance->display(wht);
 	m_balLastValue = balValue;
-	if (balValue > 100) //防止天平溢出 暂设天平容量为100kg
+	if (balValue > BALANCE_CAPACITY) //防止天平溢出 暂设天平容量为100kg
 	{
 		m_controlObj->askControlRelay(m_portsetinfo.waterInNo, VALVE_CLOSE);// 关闭进水阀
 		m_controlObj->askControlRelay(m_portsetinfo.waterOutNo, VALVE_OPEN);// 打开放水阀	
@@ -886,7 +891,7 @@ bool WeightMethodDlg::judgeBalanceCapacity()
 	{
 		totalQuantity += m_paraSetReader->getParams()->fp_info[i].fp_quantity;
 	}
-	ret = (ui.lcdBigBalance->value() + totalQuantity) < 100; //假设天平容量为100kg
+	ret = (ui.lcdBigBalance->value() + totalQuantity) < BALANCE_CAPACITY; //假设天平容量为100kg
 	return ret;
 }
 

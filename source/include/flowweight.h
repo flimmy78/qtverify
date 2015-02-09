@@ -100,10 +100,10 @@ public:
 	float m_flowPoint;
 	int m_nowOrder;				//当前检定次序
 
-	bool m_inputStartValue; //等待输入初值状态
-	bool m_inputEndValue;   //等待输入终值状态
+	bool m_inputStartValue; //手动采集时，等待输入初值状态
+	bool m_inputEndValue;   //手动采集时，等待输入终值状态
 
-	bool m_startValueFlag;
+	bool m_startValueFlag;  //自动采集时，区分是热表初值还是终值
 
 	ReadComConfig *m_readComConfig; //读串口设置
 	PortSet_Ini_STR m_portsetinfo;  //端口配置
@@ -135,7 +135,7 @@ public slots:
 
 	int readNowParaConfig();	 //获取当前检定参数
 	void showNowKeyParaConfig(); //显示当前关键参数设置信息
-	void setTableRowCount();     //设置表格行数
+	void initTableWidget();     //设置表格行数
 
 	void on_btnExhaust_clicked(); //点击"排气"按钮
 	void on_btnStart_clicked();   //点击"开始"按钮

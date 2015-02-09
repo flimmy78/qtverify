@@ -329,7 +329,12 @@ void FlowWeightDlg::initValveStatus()
 	setValveBtnBackColor(m_valveBtn[m_portsetinfo.pumpNo], m_valveStatus[m_portsetinfo.pumpNo]);
 }
 
-//在界面刷新天平数值,并过滤突变数值
+/*
+** 函数功能：
+	在界面刷新天平数值
+	过滤突变数值
+	防止天平溢出
+*/
 void FlowWeightDlg::slotFreshBalanceValue(const float& balValue)
 {
 	if (fabs(m_balLastValue - balValue) > 1) //天平每次变化不可能大于1kg
@@ -340,7 +345,7 @@ void FlowWeightDlg::slotFreshBalanceValue(const float& balValue)
 	QString wht = QString::number(balValue, 'f', 3);
 	ui.lcdBigBalance->display(wht);
 	m_balLastValue = balValue;
-	if (balValue > 100) //防止天平溢出 暂设天平容量为100kg
+	if (balValue > BALANCE_CAPACITY) //防止天平溢出 暂设天平容量为100kg
 	{
 		m_controlObj->askControlRelay(m_portsetinfo.waterInNo, VALVE_CLOSE);// 关闭进水阀
 		m_controlObj->askControlRelay(m_portsetinfo.waterOutNo, VALVE_OPEN);// 打开放水阀	
@@ -430,24 +435,24 @@ int FlowWeightDlg::readNowParaConfig()
 	m_maxMeterNum = m_nowParams->m_maxMeters;//不同表规格对应的最大检表数量
 	m_manufac = m_nowParams->m_manufac; //制造厂商
 
-	setTableRowCount();
+	initTableWidget();
 	showNowKeyParaConfig();
 
 	return true;
 }
 
-//设置表格行数
-void FlowWeightDlg::setTableRowCount()
+//初始化表格控件
+void FlowWeightDlg::initTableWidget()
 {
 	if (m_maxMeterNum <= 0)
 	{
 		return;
 	}
+	ui.tableWidget->setRowCount(m_maxMeterNum); //设置表格行数
 
 	QSignalMapper *m_signalMapper1 = new QSignalMapper();
 	QSignalMapper *m_signalMapper2 = new QSignalMapper();
 
-	ui.tableWidget->setRowCount(m_maxMeterNum); //设置表格行数
 	QStringList vLabels;
 	for (int i=0; i< m_maxMeterNum; i++)
 	{
@@ -708,6 +713,7 @@ int FlowWeightDlg::judgeBalanceAndCalcAvgTemper(float targetV)
 	return true;
 }
 
+//清空表格，第一列除外("表号"列)
 void FlowWeightDlg::clearTableContents()
 {
 	for (int i=0; i<m_maxMeterNum; i++)
@@ -721,7 +727,7 @@ void FlowWeightDlg::clearTableContents()
 			ui.tableWidget->item(i,j)->setText("");
 		}
 	}
-// 	ui.tableWidget->clearContents();
+// 	ui.tableWidget->clearContents(); //清空表格
 }
 
 //点击"开始"按钮
@@ -889,7 +895,7 @@ bool FlowWeightDlg::judgeBalanceCapacity()
 	{
 		totalQuantity += m_paraSetReader->getParams()->fp_info[i].fp_quantity;
 	}
-	ret = (ui.lcdBigBalance->value() + totalQuantity) < 100; //假设天平容量为100kg
+	ret = (ui.lcdBigBalance->value() + totalQuantity) < BALANCE_CAPACITY; //假设天平容量为100kg
 	return ret;
 }
 
@@ -1184,7 +1190,9 @@ void FlowWeightDlg::slotSetMeterNumber(const QString& comName, const QString& me
 	ui.tableWidget->setItem(meterPos-1, COLUMN_METER_NUMBER, new QTableWidgetItem(meterNo.right(8))); //表号
 }
 
-//自动读取表流量成功 显示表流量
+/*
+** 自动读取表流量成功 显示表流量
+*/
 void FlowWeightDlg::slotSetMeterFlow(const QString& comName, const float& flow)
 {
 	int meterPos = m_readComConfig->getMeterPosByComName(comName);
