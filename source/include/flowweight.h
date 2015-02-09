@@ -1,26 +1,24 @@
-#ifndef WEIGHTMETHOD_H
-#define WEIGHTMETHOD_H
+#ifndef FLOWWEIGHT_H
+#define FLOWWEIGHT_H
 
-#ifdef WEIGHTMETHOD_DLL
+#ifdef FLOWWEIGHT_DLL
 #  ifdef WIN32
-#  define WEIGHTMETHOD_EXPORT __declspec(dllexport)
+#  define FLOWWEIGHT_EXPORT __declspec(dllexport)
 #  else
-#  define WEIGHTMETHOD_EXPORT
+#  define FLOWWEIGHT_EXPORT
 #  endif
 #else
 #  ifdef WIN32
-#  define WEIGHTMETHOD_EXPORT __declspec(dllimport)
+#  define FLOWWEIGHT_EXPORT __declspec(dllimport)
 #  else
-#  define WEIGHTMETHOD_EXPORT
+#  define FLOWWEIGHT_EXPORT
 #  endif
 #endif
 
-
 #include <QtGui/QWidget>
 #include <QtGui/QDataWidgetMapper>
-#include <QtGui/QItemDelegate>
 
-#include "ui_weightmethod.h"
+#include "ui_flowweight.h"
 #include "comobject.h"
 
 class CAlgorithm;
@@ -28,49 +26,14 @@ class ParaSetDlg;
 class ParaSetReader;
 class ReadComConfig;
 
-//ID列，只能输入1－12个数字   
-//利用QLineEdit委托和正则表达式对输入进行限制   
-class UserIDDelegate : public QItemDelegate  
-{  
-	Q_OBJECT  
-public:  
-	UserIDDelegate(QObject *parent = 0): QItemDelegate(parent) { }  
-	QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option,  
-		const QModelIndex &index) const  
-	{  
-		QLineEdit *editor = new QLineEdit(parent);  
-		QRegExp regExp("[0-9]{0,10}");  
-		editor->setValidator(new QRegExpValidator(regExp, parent));  
-		return editor;  
-	}  
-	void setEditorData(QWidget *editor, const QModelIndex &index) const  
-	{  
-		QString text = index.model()->data(index, Qt::EditRole).toString();  
-		QLineEdit *lineEdit = static_cast<QLineEdit*>(editor);  
-		lineEdit->setText(text);  
-	}  
-	void setModelData(QWidget *editor, QAbstractItemModel *model,  
-		const QModelIndex &index) const  
-	{  
-		QLineEdit *lineEdit = static_cast<QLineEdit*>(editor);  
-		QString text = lineEdit->text();  
-		model->setData(index, text, Qt::EditRole);  
-	}  
-	void updateEditorGeometry(QWidget *editor,  
-		const QStyleOptionViewItem &option, const QModelIndex &index) const  
-	{  
-		editor->setGeometry(option.rect);  
-	}  
-};  
 
-
-class WEIGHTMETHOD_EXPORT WeightMethodDlg : public QWidget
+class FLOWWEIGHT_EXPORT FlowWeightDlg : public QWidget
 {
 	Q_OBJECT
 
 public:
-	WeightMethodDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
-	~WeightMethodDlg();
+	FlowWeightDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
+	~FlowWeightDlg();
 
 	QDataWidgetMapper *m_meterStdMapper;
 
@@ -169,7 +132,6 @@ public:
 
 public slots:
 	void closeEvent(QCloseEvent * event);
-	void removeSubTab(int index);
 
 	int readNowParaConfig();	 //获取当前检定参数
 	void showNowKeyParaConfig(); //显示当前关键参数设置信息
@@ -235,14 +197,16 @@ public slots:
 	void on_btnReadMeter_clicked(); //读表按钮
 	void on_btnExit_clicked();//退出按钮
 	
+	void slotModifyMeterNo(const int &row); //修改表号
+	void slotAdjustError(const int &row); //调整误差
 
 private slots:
 
 signals:
 
 private:
-	Ui::WeightMethodClass ui;
+	Ui::FlowWeightClass ui;
 
 };
 
-#endif //WEIGHTMETHOD_H
+#endif //FLOWWEIGHT_H

@@ -26,6 +26,7 @@
 #include "masterslaveset.h"
 #include "weightmethod.h"
 #include "algorithm.h"
+#include "flowweight.h"
 
 MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
@@ -43,6 +44,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_portSet = NULL;
 	m_masterslave = NULL;
 	m_weightDlg = NULL;
+	m_flowWeightDlg = NULL;
 	m_comProcess = new QProcess(this);
 
 	QLabel *permanent = new QLabel(this);
@@ -118,6 +120,12 @@ void MainForm::closeEvent( QCloseEvent * event)
 			m_weightDlg = NULL;
 		}
 
+		if (m_flowWeightDlg)
+		{
+			delete m_flowWeightDlg;
+			m_flowWeightDlg = NULL;
+		}
+
 		if (m_comProcess)
 		{
 			m_comProcess->kill();
@@ -190,7 +198,7 @@ void MainForm::on_actionMySql_triggered()
 //流量检定(质量法)
 void MainForm::on_actionFlowWeight_triggered()
 {
-	if (NULL == m_weightDlg)
+/*	if (NULL == m_weightDlg)
 	{
 		m_weightDlg = new WeightMethodDlg();
 	}
@@ -200,7 +208,20 @@ void MainForm::on_actionFlowWeight_triggered()
 		m_weightDlg = NULL;
 		m_weightDlg = new WeightMethodDlg();
 	}
-	m_weightDlg->show();
+	m_weightDlg->show();*/
+
+	if (NULL == m_flowWeightDlg)
+	{
+		m_flowWeightDlg = new FlowWeightDlg();
+	}
+	else //目的是执行FlowWeightDlg的构造函数
+	{
+		delete m_flowWeightDlg;
+		m_flowWeightDlg = NULL;
+		m_flowWeightDlg = new FlowWeightDlg();
+	}
+	m_flowWeightDlg->show();
+
 }
 
 //流量检定(标准表法)

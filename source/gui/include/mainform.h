@@ -14,6 +14,7 @@ class DataTestDlg;
 class SetPortFrm;
 class CMasterSlave;
 class WeightMethodDlg;
+class FlowWeightDlg;
 class CAlgorithm;
 
 class MainForm : public QMainWindow
@@ -32,6 +33,7 @@ public:
 	SetPortFrm *m_portSet; //端口模块设置
 	CMasterSlave *m_masterslave; //主机-从机设置
 	WeightMethodDlg *m_weightDlg; //质量法检定界面
+	FlowWeightDlg *m_flowWeightDlg; //流量检定(质量法)界面
 	QProcess *m_comProcess; //调用外部串口调试工具
 
 	void closeEvent(QCloseEvent * event);
