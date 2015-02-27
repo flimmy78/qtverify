@@ -248,6 +248,10 @@ public:
 	int m_vperson;//检定员(张三)
 	int m_pickcode;//采集代码
 	int m_nflowpnt;//被检表的常用流量
+	QString m_version;//当前版本号
+	QString m_temper;//当前温度  单位摄氏度
+	QString m_humidity;//当前湿度 单位百分比
+	QString m_airpress;//当前大气压力	单位Pa
 
 	Flow_Point_Info fp_info[VERIFY_POINTS];//第i流量点信息
 	int total_fp;//有效流量点的数目

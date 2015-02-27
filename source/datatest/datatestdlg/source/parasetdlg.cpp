@@ -208,6 +208,12 @@ void ParaSetDlg::installHead()
 	ui.cmbVerifyCompany->setCurrentIndex(lastParams->m_params->m_vcomp);
 	ui.cmbVerifyPerson->setCurrentIndex(lastParams->m_params->m_vperson);
 	ui.cmbFlow->setCurrentIndex(lastParams->m_params->m_nflowpnt);
+	/********新增参数项***************************************************/
+	ui.lnEditVersion->setText(lastParams->m_params->m_version);
+	ui.lnEditVersion_2->setText(lastParams->m_params->m_temper);
+	ui.lnEditVersion_3->setText(lastParams->m_params->m_humidity);
+	ui.lnEditVersion_4->setText(lastParams->m_params->m_airpress);
+	/********************************************************************/
 }
 
 void ParaSetDlg::installFlowPoint()
@@ -387,6 +393,13 @@ void ParaSetDlg::SaveHead()
 	settings->setValue("verifyperson", ui.cmbVerifyPerson->currentIndex());
 	settings->setValue("pickcode", ui.cmbCollectCode->currentIndex());
 	settings->setValue("nflowpoint", ui.cmbFlow->currentIndex());
+	
+	/********新增参数项***************************************************/
+	settings->setValue("version",ui.lnEditVersion->text());
+	settings->setValue("temper",ui.lnEditVersion_2->text());
+	settings->setValue("humidity",ui.lnEditVersion_3->text());
+	settings->setValue("airpress",ui.lnEditVersion_4->text());
+	/********************************************************************/
 	settings->endGroup();
 }
 
@@ -539,6 +552,12 @@ void ParaSetReader::readHead()
 		m_params->m_pickcode = m_settings->value("head/pickcode").toInt();
 		m_params->m_grade = m_settings->value("head/grade").toInt();
 		m_params->m_nflowpnt = m_settings->value("head/nflowpoint").toInt();
+		/******************新增参数项****************************************/
+		m_params->m_version = m_settings->value("head/version").toString();
+		m_params->m_temper = m_settings->value("head/temper").toString();
+		m_params->m_humidity = m_settings->value("head/humidity").toString();
+		m_params->m_airpress = m_settings->value("head/airpress").toString();
+		/************************************************************************/
 	}
 }
 
