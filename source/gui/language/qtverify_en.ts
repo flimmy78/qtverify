@@ -6,12 +6,12 @@
     <message>
         <location filename="../source/dbmysql.cpp" line="69"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../source/dbmysql.cpp" line="69"/>
         <source>connect MySQL database success !</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -19,266 +19,101 @@
     <message>
         <location filename="../ui/dbmysql.ui" line="14"/>
         <source>DbMySql</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/dbmysql.ui" line="25"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/dbmysql.ui" line="45"/>
         <source>Query</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../ui/dbmysql.ui" line="54"/>
+        <source>{6bf52a52-394a-11d3-b153-00c04f79faa6}</source>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>MainForm</name>
     <message>
-        <location filename="../source/mainform.cpp" line="42"/>
+        <location filename="../source/mainform.cpp" line="52"/>
         <source>&lt;a href=&quot;http://www.sdm.com.cn&quot;&gt;Shandong Delu Measurement Co.,Ltd.&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="54"/>
+        <location filename="../source/mainform.cpp" line="64"/>
         <source>Question</source>
-        <translation type="unfinished"></translation>
+        <translation>Question</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="54"/>
+        <location filename="../source/mainform.cpp" line="64"/>
         <source>Quit Really ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Quit Really ?</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="184"/>
+        <location filename="../source/mainform.cpp" line="303"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Error</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="184"/>
+        <location filename="../source/mainform.cpp" line="303"/>
         <source>Excel object lose!</source>
-        <translation type="unfinished"></translation>
+        <translation>Excel object lose!</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../source/main.cpp" line="43"/>
+        <location filename="../source/main.cpp" line="44"/>
         <source>load translator files ...</source>
-        <translation type="unfinished"></translation>
+        <translation>load translator files ...</translation>
     </message>
     <message>
-        <location filename="../source/main.cpp" line="85"/>
+        <location filename="../source/main.cpp" line="86"/>
         <source>connect database ...</source>
-        <translation type="unfinished"></translation>
+        <translation>connect database ...</translation>
     </message>
     <message>
-        <location filename="../source/main.cpp" line="89"/>
+        <location filename="../source/main.cpp" line="90"/>
         <source>setting up the mainwindow ...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="131"/>
-        <source>time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="132"/>
-        <source>MeterNO.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="133"/>
-        <source>FlowPoint</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="134"/>
-        <source>Flow</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="135"/>
-        <source>TotalFlag</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="136"/>
-        <source>MeterValue0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="137"/>
-        <source>MeterValue1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="138"/>
-        <source>MeterValue</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="139"/>
-        <source>BalValue0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="140"/>
-        <source>BalValue1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="141"/>
-        <source>BalValue</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="142"/>
-        <source>InSlotTemp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="143"/>
-        <source>OutSlotTemp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="144"/>
-        <source>PipeTemp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="145"/>
-        <source>Density</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="146"/>
-        <source>StdValue</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="147"/>
-        <source>Error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="148"/>
-        <source>StdError</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="149"/>
-        <source>Result</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="150"/>
-        <source>MeterPosNO.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="151"/>
-        <source>Model</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="152"/>
-        <source>Standard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="153"/>
-        <source>MeterType</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="154"/>
-        <source>ManufactDept</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="155"/>
-        <source>VerifyDept</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="156"/>
-        <source>Grade</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="157"/>
-        <source>VerifyPerson</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="158"/>
-        <source>CheckPerson</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="159"/>
-        <source>VerifyDate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="160"/>
-        <source>EnvTemp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="161"/>
-        <source>EnvHumidity</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="162"/>
-        <source>AirPressure</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="163"/>
-        <source>ValidDate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="164"/>
-        <source>RecordNumber</source>
-        <translation type="unfinished"></translation>
+        <translation>setting up the mainwindow ...</translation>
     </message>
 </context>
 <context>
     <name>QueryResult</name>
     <message>
-        <location filename="../source/queryresult.cpp" line="226"/>
+        <location filename="../source/queryresult.cpp" line="231"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="226"/>
+        <location filename="../source/queryresult.cpp" line="231"/>
         <source>no data need to be exported!</source>
-        <translation type="unfinished"></translation>
+        <translation>no data need to be exported!</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="231"/>
+        <location filename="../source/queryresult.cpp" line="236"/>
         <source>Save File</source>
-        <translation type="unfinished"></translation>
+        <translation>Save File</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="231"/>
+        <location filename="../source/queryresult.cpp" line="236"/>
         <source>Microsoft Excel (*.xlsx;*.xls)</source>
-        <translation type="unfinished"></translation>
+        <translation>Microsoft Excel (*.xlsx;*.xls)</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="272"/>
+        <location filename="../source/queryresult.cpp" line="277"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>OK</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="272"/>
+        <location filename="../source/queryresult.cpp" line="277"/>
         <source>export excel file successful!</source>
-        <translation type="unfinished"></translation>
+        <translation>export excel file successful!</translation>
     </message>
 </context>
 <context>
@@ -286,57 +121,62 @@
     <message>
         <location filename="../ui/queryresult.ui" line="14"/>
         <source>QueryResult</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../ui/queryresult.ui" line="22"/>
+        <location filename="../ui/queryresult.ui" line="28"/>
         <source>Start Time:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../ui/queryresult.ui" line="32"/>
+        <location filename="../ui/queryresult.ui" line="44"/>
         <source>End Time:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../ui/queryresult.ui" line="46"/>
+        <location filename="../ui/queryresult.ui" line="64"/>
         <source>ManuFacturer:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../ui/queryresult.ui" line="63"/>
+        <location filename="../ui/queryresult.ui" line="87"/>
         <source>VerifyDept:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../ui/queryresult.ui" line="86"/>
+        <location filename="../ui/queryresult.ui" line="110"/>
         <source>VerifyPerson:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../ui/queryresult.ui" line="124"/>
+        <location filename="../ui/queryresult.ui" line="137"/>
+        <source>MeterNO:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../ui/queryresult.ui" line="162"/>
         <source>Query</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../ui/queryresult.ui" line="131"/>
+        <location filename="../ui/queryresult.ui" line="169"/>
         <source>Export Excel</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../ui/queryresult.ui" line="150"/>
+        <location filename="../ui/queryresult.ui" line="188"/>
         <source>Insert</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../ui/queryresult.ui" line="157"/>
+        <location filename="../ui/queryresult.ui" line="195"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../ui/queryresult.ui" line="185"/>
+        <location filename="../ui/queryresult.ui" line="223"/>
         <source>Exit</source>
-        <translation type="unfinished">Exit</translation>
+        <translation>Exit</translation>
     </message>
 </context>
 <context>
@@ -347,9 +187,109 @@
         <translation>Verificaiton</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="248"/>
+        <location filename="../ui/mainform.ui" line="51"/>
+        <source>CompVerify</source>
+        <translation>CompVerify</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainform.ui" line="55"/>
+        <source>Temper</source>
+        <translation>Temper</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainform.ui" line="66"/>
+        <source>Flow</source>
+        <translation>Flow</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainform.ui" line="115"/>
+        <source>TotalVerify</source>
+        <translation>TotalVerify</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainform.ui" line="198"/>
+        <source>FlowResult</source>
+        <translation>FlowResult</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainform.ui" line="207"/>
+        <location filename="../ui/mainform.ui" line="210"/>
+        <source>FlowWeight</source>
+        <translation>FlowWeight</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainform.ui" line="219"/>
+        <location filename="../ui/mainform.ui" line="222"/>
+        <source>TotalWeight</source>
+        <translation>TotalWeight</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainform.ui" line="231"/>
+        <location filename="../ui/mainform.ui" line="234"/>
+        <source>FlowStandard</source>
+        <translation>FlowStandard</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainform.ui" line="243"/>
+        <location filename="../ui/mainform.ui" line="246"/>
+        <source>TotalStandard</source>
+        <translation>TotalStandard</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainform.ui" line="276"/>
+        <location filename="../ui/mainform.ui" line="279"/>
+        <source>MasterSlaveSet</source>
+        <translation>MasterSlaveSet</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainform.ui" line="288"/>
         <source>Exit</source>
         <translation>Exit</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainform.ui" line="342"/>
+        <source>Calculator</source>
+        <translation>Calculator</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainform.ui" line="351"/>
+        <location filename="../ui/mainform.ui" line="354"/>
+        <source>TemperCompare</source>
+        <translation>TemperCompare</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainform.ui" line="363"/>
+        <location filename="../ui/mainform.ui" line="366"/>
+        <source>TemperPara</source>
+        <translation>TemperPara</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainform.ui" line="375"/>
+        <location filename="../ui/mainform.ui" line="378"/>
+        <source>Combine</source>
+        <translation>Combine</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainform.ui" line="410"/>
+        <source>TemperResult</source>
+        <translation>TemperResult</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainform.ui" line="419"/>
+        <location filename="../ui/mainform.ui" line="422"/>
+        <source>CalculatorResult</source>
+        <translation>CalculatorResult</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainform.ui" line="431"/>
+        <location filename="../ui/mainform.ui" line="434"/>
+        <source>CombineResult</source>
+        <translation>CombineResult</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainform.ui" line="443"/>
+        <source>TotalResult</source>
+        <translation>TotalResult</translation>
     </message>
     <message>
         <location filename="../ui/mainform.ui" line="41"/>
@@ -357,160 +297,89 @@
         <translation>SystemSet(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="52"/>
         <source>VerifyItem</source>
-        <translation>VerifyItem</translation>
+        <translation type="obsolete">VerifyItem</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="56"/>
-        <source>Sensor(Comp)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/mainform.ui" line="72"/>
+        <location filename="../ui/mainform.ui" line="82"/>
         <source>DataQuery</source>
         <translation>DataQuery</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="79"/>
-        <location filename="../ui/mainform.ui" line="266"/>
+        <location filename="../ui/mainform.ui" line="93"/>
+        <location filename="../ui/mainform.ui" line="306"/>
         <source>About</source>
         <translation>About</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="86"/>
+        <location filename="../ui/mainform.ui" line="100"/>
         <source>Style</source>
         <translation>Style</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="94"/>
+        <location filename="../ui/mainform.ui" line="108"/>
         <source>Language</source>
         <translation>Language</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="134"/>
+        <location filename="../ui/mainform.ui" line="168"/>
         <source>ComDebugger</source>
         <translation>ComDebugger</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="137"/>
-        <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/mainform.ui" line="146"/>
+        <location filename="../ui/mainform.ui" line="177"/>
         <source>Query Excel</source>
-        <translation type="unfinished"></translation>
+        <translation>Query Excel</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="155"/>
+        <location filename="../ui/mainform.ui" line="186"/>
         <source>MySql</source>
-        <translation type="unfinished"></translation>
+        <translation>MySql</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="158"/>
-        <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/mainform.ui" line="170"/>
-        <source>QueryResult</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/mainform.ui" line="173"/>
-        <source>Ctrl+Q</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/mainform.ui" line="182"/>
-        <source>Weight(Comp)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/mainform.ui" line="191"/>
-        <source>Weight(Total)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/mainform.ui" line="200"/>
-        <source>Standard(Comp)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/mainform.ui" line="209"/>
-        <source>Standard(Total)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/mainform.ui" line="257"/>
+        <location filename="../ui/mainform.ui" line="297"/>
         <source>DataTest</source>
-        <translation type="unfinished"></translation>
+        <translation>DataTest</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="298"/>
-        <source>Calculator(Comp)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/mainform.ui" line="303"/>
-        <source>CompareMethod</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/mainform.ui" line="308"/>
-        <source>ParaMethod</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/mainform.ui" line="313"/>
-        <source>Sensor/Calc</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/mainform.ui" line="318"/>
+        <location filename="../ui/mainform.ui" line="383"/>
         <source>Pressure Tight</source>
-        <translation type="unfinished"></translation>
+        <translation>Pressure Tight</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="323"/>
+        <location filename="../ui/mainform.ui" line="392"/>
         <source>English</source>
-        <translation type="unfinished"></translation>
+        <translation>English</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="328"/>
+        <location filename="../ui/mainform.ui" line="401"/>
         <source>Chinese</source>
-        <translation type="unfinished"></translation>
+        <translation>Chinese</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="218"/>
+        <location filename="../ui/mainform.ui" line="255"/>
         <source>ComSet</source>
-        <translation type="unfinished"></translation>
+        <translation>ComSet</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="230"/>
+        <location filename="../ui/mainform.ui" line="267"/>
         <source>PortSet</source>
-        <translation type="unfinished"></translation>
+        <translation>PortSet</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="239"/>
-        <source>HostGuestSet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/mainform.ui" line="275"/>
+        <location filename="../ui/mainform.ui" line="315"/>
         <source>Default</source>
-        <translation type="unfinished"></translation>
+        <translation>Default</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="284"/>
+        <location filename="../ui/mainform.ui" line="324"/>
         <source>Classic</source>
-        <translation type="unfinished"></translation>
+        <translation>Classic</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="293"/>
+        <location filename="../ui/mainform.ui" line="333"/>
         <source>Fashion</source>
-        <translation type="unfinished"></translation>
+        <translation>Fashion</translation>
     </message>
 </context>
 </TS>
