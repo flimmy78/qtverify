@@ -97,7 +97,7 @@ public:
     {
         if (FlowWeightClass->objectName().isEmpty())
             FlowWeightClass->setObjectName(QString::fromUtf8("FlowWeightClass"));
-        FlowWeightClass->resize(1343, 856);
+        FlowWeightClass->resize(1325, 856);
         gridLayout_6 = new QGridLayout(FlowWeightClass);
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
         tableWidget = new QTableWidget(FlowWeightClass);

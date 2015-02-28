@@ -73,45 +73,210 @@
         <translation>load translator files ...</translation>
     </message>
     <message>
-        <location filename="../source/main.cpp" line="86"/>
+        <location filename="../source/main.cpp" line="87"/>
         <source>connect database ...</source>
         <translation>connect database ...</translation>
     </message>
     <message>
-        <location filename="../source/main.cpp" line="90"/>
+        <location filename="../source/main.cpp" line="91"/>
         <source>setting up the mainwindow ...</source>
         <translation>setting up the mainwindow ...</translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="136"/>
+        <source>time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="137"/>
+        <source>MeterNO.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="138"/>
+        <source>FlowPoint</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="139"/>
+        <source>Flow</source>
+        <translation type="unfinished">Flow</translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="140"/>
+        <source>Method</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="141"/>
+        <source>MeterValue0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="142"/>
+        <source>MeterValue1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="143"/>
+        <source>BalValue0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="144"/>
+        <source>BalValue1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="145"/>
+        <source>F_StdMeterV0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="146"/>
+        <source>F_StdMeterV1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="147"/>
+        <source>PipeTemp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="148"/>
+        <source>Density</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="149"/>
+        <source>StdValue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="150"/>
+        <source>Error</source>
+        <translation type="unfinished">Error</translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="151"/>
+        <source>StdError</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="152"/>
+        <source>Result</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="153"/>
+        <source>MeterPosNO.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="154"/>
+        <source>Model</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="155"/>
+        <source>Standard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="156"/>
+        <source>MeterType</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="157"/>
+        <source>ManufactDept</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="158"/>
+        <source>VerifyDept</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="159"/>
+        <source>Grade</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="160"/>
+        <source>VerifyPerson</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="161"/>
+        <source>CheckPerson</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="162"/>
+        <source>DeviceInfoId</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="163"/>
+        <source>VerifyDate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="164"/>
+        <source>ValidDate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="165"/>
+        <source>EnvTemp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="166"/>
+        <source>EnvHumidity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="167"/>
+        <source>AirPressure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/queryresult.cpp" line="168"/>
+        <source>CertNO</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>QueryResult</name>
     <message>
-        <location filename="../source/queryresult.cpp" line="231"/>
+        <location filename="../source/queryresult.cpp" line="230"/>
         <source>Warning</source>
         <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="231"/>
+        <location filename="../source/queryresult.cpp" line="230"/>
         <source>no data need to be exported!</source>
         <translation>no data need to be exported!</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="236"/>
+        <location filename="../source/queryresult.cpp" line="235"/>
         <source>Save File</source>
         <translation>Save File</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="236"/>
+        <location filename="../source/queryresult.cpp" line="235"/>
         <source>Microsoft Excel (*.xlsx;*.xls)</source>
         <translation>Microsoft Excel (*.xlsx;*.xls)</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="277"/>
+        <location filename="../source/queryresult.cpp" line="276"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="277"/>
+        <location filename="../source/queryresult.cpp" line="276"/>
         <source>export excel file successful!</source>
         <translation>export excel file successful!</translation>
     </message>
