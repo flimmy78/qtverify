@@ -6,7 +6,7 @@
     <message>
         <location filename="../../../include/qextserial/qextserialport.cpp" line="723"/>
         <source>No Error has occurred</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../../include/qextserial/qextserialport.cpp" line="725"/>
@@ -102,1303 +102,1380 @@
 <context>
     <name>SetComFrm</name>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="14"/>
+        <location filename="../ui/setcomfrm.ui" line="17"/>
         <source>SetCom</source>
-        <translation type="unfinished"></translation>
+        <translation>SetCom</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="22"/>
+        <location filename="../ui/setcomfrm.ui" line="25"/>
         <source>Valve Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Valve Control</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="34"/>
-        <location filename="../ui/setcomfrm.ui" line="289"/>
-        <location filename="../ui/setcomfrm.ui" line="544"/>
-        <location filename="../ui/setcomfrm.ui" line="799"/>
-        <location filename="../ui/setcomfrm.ui" line="1075"/>
-        <location filename="../ui/setcomfrm.ui" line="1330"/>
-        <location filename="../ui/setcomfrm.ui" line="1585"/>
-        <location filename="../ui/setcomfrm.ui" line="1840"/>
-        <location filename="../ui/setcomfrm.ui" line="2095"/>
-        <location filename="../ui/setcomfrm.ui" line="2350"/>
-        <location filename="../ui/setcomfrm.ui" line="2605"/>
-        <location filename="../ui/setcomfrm.ui" line="2860"/>
-        <location filename="../ui/setcomfrm.ui" line="3115"/>
-        <location filename="../ui/setcomfrm.ui" line="3370"/>
-        <location filename="../ui/setcomfrm.ui" line="3625"/>
-        <location filename="../ui/setcomfrm.ui" line="3880"/>
+        <location filename="../ui/setcomfrm.ui" line="37"/>
+        <location filename="../ui/setcomfrm.ui" line="292"/>
+        <location filename="../ui/setcomfrm.ui" line="547"/>
+        <location filename="../ui/setcomfrm.ui" line="802"/>
+        <location filename="../ui/setcomfrm.ui" line="1078"/>
+        <location filename="../ui/setcomfrm.ui" line="1333"/>
+        <location filename="../ui/setcomfrm.ui" line="1588"/>
+        <location filename="../ui/setcomfrm.ui" line="1843"/>
+        <location filename="../ui/setcomfrm.ui" line="2098"/>
+        <location filename="../ui/setcomfrm.ui" line="2353"/>
+        <location filename="../ui/setcomfrm.ui" line="2608"/>
+        <location filename="../ui/setcomfrm.ui" line="2863"/>
+        <location filename="../ui/setcomfrm.ui" line="3118"/>
+        <location filename="../ui/setcomfrm.ui" line="3373"/>
+        <location filename="../ui/setcomfrm.ui" line="3628"/>
+        <location filename="../ui/setcomfrm.ui" line="3883"/>
         <source>Com</source>
-        <translation type="unfinished"></translation>
+        <translation>Com</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="42"/>
-        <location filename="../ui/setcomfrm.ui" line="297"/>
-        <location filename="../ui/setcomfrm.ui" line="552"/>
-        <location filename="../ui/setcomfrm.ui" line="807"/>
-        <location filename="../ui/setcomfrm.ui" line="1083"/>
-        <location filename="../ui/setcomfrm.ui" line="1338"/>
-        <location filename="../ui/setcomfrm.ui" line="1593"/>
-        <location filename="../ui/setcomfrm.ui" line="1848"/>
-        <location filename="../ui/setcomfrm.ui" line="2103"/>
-        <location filename="../ui/setcomfrm.ui" line="2358"/>
-        <location filename="../ui/setcomfrm.ui" line="2613"/>
-        <location filename="../ui/setcomfrm.ui" line="2868"/>
-        <location filename="../ui/setcomfrm.ui" line="3123"/>
-        <location filename="../ui/setcomfrm.ui" line="3378"/>
-        <location filename="../ui/setcomfrm.ui" line="3633"/>
-        <location filename="../ui/setcomfrm.ui" line="3888"/>
+        <location filename="../ui/setcomfrm.ui" line="45"/>
+        <location filename="../ui/setcomfrm.ui" line="300"/>
+        <location filename="../ui/setcomfrm.ui" line="555"/>
+        <location filename="../ui/setcomfrm.ui" line="810"/>
+        <location filename="../ui/setcomfrm.ui" line="1086"/>
+        <location filename="../ui/setcomfrm.ui" line="1341"/>
+        <location filename="../ui/setcomfrm.ui" line="1596"/>
+        <location filename="../ui/setcomfrm.ui" line="1851"/>
+        <location filename="../ui/setcomfrm.ui" line="2106"/>
+        <location filename="../ui/setcomfrm.ui" line="2361"/>
+        <location filename="../ui/setcomfrm.ui" line="2616"/>
+        <location filename="../ui/setcomfrm.ui" line="2871"/>
+        <location filename="../ui/setcomfrm.ui" line="3126"/>
+        <location filename="../ui/setcomfrm.ui" line="3381"/>
+        <location filename="../ui/setcomfrm.ui" line="3636"/>
+        <location filename="../ui/setcomfrm.ui" line="3891"/>
         <source>COM1</source>
-        <translation type="unfinished"></translation>
+        <translation>COM1</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="47"/>
-        <location filename="../ui/setcomfrm.ui" line="302"/>
-        <location filename="../ui/setcomfrm.ui" line="557"/>
-        <location filename="../ui/setcomfrm.ui" line="812"/>
-        <location filename="../ui/setcomfrm.ui" line="1088"/>
-        <location filename="../ui/setcomfrm.ui" line="1343"/>
-        <location filename="../ui/setcomfrm.ui" line="1598"/>
-        <location filename="../ui/setcomfrm.ui" line="1853"/>
-        <location filename="../ui/setcomfrm.ui" line="2108"/>
-        <location filename="../ui/setcomfrm.ui" line="2363"/>
-        <location filename="../ui/setcomfrm.ui" line="2618"/>
-        <location filename="../ui/setcomfrm.ui" line="2873"/>
-        <location filename="../ui/setcomfrm.ui" line="3128"/>
-        <location filename="../ui/setcomfrm.ui" line="3383"/>
-        <location filename="../ui/setcomfrm.ui" line="3638"/>
-        <location filename="../ui/setcomfrm.ui" line="3893"/>
+        <location filename="../ui/setcomfrm.ui" line="50"/>
+        <location filename="../ui/setcomfrm.ui" line="305"/>
+        <location filename="../ui/setcomfrm.ui" line="560"/>
+        <location filename="../ui/setcomfrm.ui" line="815"/>
+        <location filename="../ui/setcomfrm.ui" line="1091"/>
+        <location filename="../ui/setcomfrm.ui" line="1346"/>
+        <location filename="../ui/setcomfrm.ui" line="1601"/>
+        <location filename="../ui/setcomfrm.ui" line="1856"/>
+        <location filename="../ui/setcomfrm.ui" line="2111"/>
+        <location filename="../ui/setcomfrm.ui" line="2366"/>
+        <location filename="../ui/setcomfrm.ui" line="2621"/>
+        <location filename="../ui/setcomfrm.ui" line="2876"/>
+        <location filename="../ui/setcomfrm.ui" line="3131"/>
+        <location filename="../ui/setcomfrm.ui" line="3386"/>
+        <location filename="../ui/setcomfrm.ui" line="3641"/>
+        <location filename="../ui/setcomfrm.ui" line="3896"/>
         <source>COM2</source>
-        <translation type="unfinished"></translation>
+        <translation>COM2</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="52"/>
-        <location filename="../ui/setcomfrm.ui" line="307"/>
-        <location filename="../ui/setcomfrm.ui" line="562"/>
-        <location filename="../ui/setcomfrm.ui" line="817"/>
-        <location filename="../ui/setcomfrm.ui" line="1093"/>
-        <location filename="../ui/setcomfrm.ui" line="1348"/>
-        <location filename="../ui/setcomfrm.ui" line="1603"/>
-        <location filename="../ui/setcomfrm.ui" line="1858"/>
-        <location filename="../ui/setcomfrm.ui" line="2113"/>
-        <location filename="../ui/setcomfrm.ui" line="2368"/>
-        <location filename="../ui/setcomfrm.ui" line="2623"/>
-        <location filename="../ui/setcomfrm.ui" line="2878"/>
-        <location filename="../ui/setcomfrm.ui" line="3133"/>
-        <location filename="../ui/setcomfrm.ui" line="3388"/>
-        <location filename="../ui/setcomfrm.ui" line="3643"/>
-        <location filename="../ui/setcomfrm.ui" line="3898"/>
+        <location filename="../ui/setcomfrm.ui" line="55"/>
+        <location filename="../ui/setcomfrm.ui" line="310"/>
+        <location filename="../ui/setcomfrm.ui" line="565"/>
+        <location filename="../ui/setcomfrm.ui" line="820"/>
+        <location filename="../ui/setcomfrm.ui" line="1096"/>
+        <location filename="../ui/setcomfrm.ui" line="1351"/>
+        <location filename="../ui/setcomfrm.ui" line="1606"/>
+        <location filename="../ui/setcomfrm.ui" line="1861"/>
+        <location filename="../ui/setcomfrm.ui" line="2116"/>
+        <location filename="../ui/setcomfrm.ui" line="2371"/>
+        <location filename="../ui/setcomfrm.ui" line="2626"/>
+        <location filename="../ui/setcomfrm.ui" line="2881"/>
+        <location filename="../ui/setcomfrm.ui" line="3136"/>
+        <location filename="../ui/setcomfrm.ui" line="3391"/>
+        <location filename="../ui/setcomfrm.ui" line="3646"/>
+        <location filename="../ui/setcomfrm.ui" line="3901"/>
         <source>COM3</source>
-        <translation type="unfinished"></translation>
+        <translation>COM3</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="57"/>
-        <location filename="../ui/setcomfrm.ui" line="312"/>
-        <location filename="../ui/setcomfrm.ui" line="567"/>
-        <location filename="../ui/setcomfrm.ui" line="822"/>
-        <location filename="../ui/setcomfrm.ui" line="1098"/>
-        <location filename="../ui/setcomfrm.ui" line="1353"/>
-        <location filename="../ui/setcomfrm.ui" line="1608"/>
-        <location filename="../ui/setcomfrm.ui" line="1863"/>
-        <location filename="../ui/setcomfrm.ui" line="2118"/>
-        <location filename="../ui/setcomfrm.ui" line="2373"/>
-        <location filename="../ui/setcomfrm.ui" line="2628"/>
-        <location filename="../ui/setcomfrm.ui" line="2883"/>
-        <location filename="../ui/setcomfrm.ui" line="3138"/>
-        <location filename="../ui/setcomfrm.ui" line="3393"/>
-        <location filename="../ui/setcomfrm.ui" line="3648"/>
-        <location filename="../ui/setcomfrm.ui" line="3903"/>
+        <location filename="../ui/setcomfrm.ui" line="60"/>
+        <location filename="../ui/setcomfrm.ui" line="315"/>
+        <location filename="../ui/setcomfrm.ui" line="570"/>
+        <location filename="../ui/setcomfrm.ui" line="825"/>
+        <location filename="../ui/setcomfrm.ui" line="1101"/>
+        <location filename="../ui/setcomfrm.ui" line="1356"/>
+        <location filename="../ui/setcomfrm.ui" line="1611"/>
+        <location filename="../ui/setcomfrm.ui" line="1866"/>
+        <location filename="../ui/setcomfrm.ui" line="2121"/>
+        <location filename="../ui/setcomfrm.ui" line="2376"/>
+        <location filename="../ui/setcomfrm.ui" line="2631"/>
+        <location filename="../ui/setcomfrm.ui" line="2886"/>
+        <location filename="../ui/setcomfrm.ui" line="3141"/>
+        <location filename="../ui/setcomfrm.ui" line="3396"/>
+        <location filename="../ui/setcomfrm.ui" line="3651"/>
+        <location filename="../ui/setcomfrm.ui" line="3906"/>
         <source>COM4</source>
-        <translation type="unfinished"></translation>
+        <translation>COM4</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="62"/>
-        <location filename="../ui/setcomfrm.ui" line="317"/>
-        <location filename="../ui/setcomfrm.ui" line="572"/>
-        <location filename="../ui/setcomfrm.ui" line="827"/>
-        <location filename="../ui/setcomfrm.ui" line="1103"/>
-        <location filename="../ui/setcomfrm.ui" line="1358"/>
-        <location filename="../ui/setcomfrm.ui" line="1613"/>
-        <location filename="../ui/setcomfrm.ui" line="1868"/>
-        <location filename="../ui/setcomfrm.ui" line="2123"/>
-        <location filename="../ui/setcomfrm.ui" line="2378"/>
-        <location filename="../ui/setcomfrm.ui" line="2633"/>
-        <location filename="../ui/setcomfrm.ui" line="2888"/>
-        <location filename="../ui/setcomfrm.ui" line="3143"/>
-        <location filename="../ui/setcomfrm.ui" line="3398"/>
-        <location filename="../ui/setcomfrm.ui" line="3653"/>
-        <location filename="../ui/setcomfrm.ui" line="3908"/>
+        <location filename="../ui/setcomfrm.ui" line="65"/>
+        <location filename="../ui/setcomfrm.ui" line="320"/>
+        <location filename="../ui/setcomfrm.ui" line="575"/>
+        <location filename="../ui/setcomfrm.ui" line="830"/>
+        <location filename="../ui/setcomfrm.ui" line="1106"/>
+        <location filename="../ui/setcomfrm.ui" line="1361"/>
+        <location filename="../ui/setcomfrm.ui" line="1616"/>
+        <location filename="../ui/setcomfrm.ui" line="1871"/>
+        <location filename="../ui/setcomfrm.ui" line="2126"/>
+        <location filename="../ui/setcomfrm.ui" line="2381"/>
+        <location filename="../ui/setcomfrm.ui" line="2636"/>
+        <location filename="../ui/setcomfrm.ui" line="2891"/>
+        <location filename="../ui/setcomfrm.ui" line="3146"/>
+        <location filename="../ui/setcomfrm.ui" line="3401"/>
+        <location filename="../ui/setcomfrm.ui" line="3656"/>
+        <location filename="../ui/setcomfrm.ui" line="3911"/>
         <source>COM5</source>
-        <translation type="unfinished"></translation>
+        <translation>COM5</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="67"/>
-        <location filename="../ui/setcomfrm.ui" line="322"/>
-        <location filename="../ui/setcomfrm.ui" line="577"/>
-        <location filename="../ui/setcomfrm.ui" line="832"/>
-        <location filename="../ui/setcomfrm.ui" line="1108"/>
-        <location filename="../ui/setcomfrm.ui" line="1363"/>
-        <location filename="../ui/setcomfrm.ui" line="1618"/>
-        <location filename="../ui/setcomfrm.ui" line="1873"/>
-        <location filename="../ui/setcomfrm.ui" line="2128"/>
-        <location filename="../ui/setcomfrm.ui" line="2383"/>
-        <location filename="../ui/setcomfrm.ui" line="2638"/>
-        <location filename="../ui/setcomfrm.ui" line="2893"/>
-        <location filename="../ui/setcomfrm.ui" line="3148"/>
-        <location filename="../ui/setcomfrm.ui" line="3403"/>
-        <location filename="../ui/setcomfrm.ui" line="3658"/>
-        <location filename="../ui/setcomfrm.ui" line="3913"/>
+        <location filename="../ui/setcomfrm.ui" line="70"/>
+        <location filename="../ui/setcomfrm.ui" line="325"/>
+        <location filename="../ui/setcomfrm.ui" line="580"/>
+        <location filename="../ui/setcomfrm.ui" line="835"/>
+        <location filename="../ui/setcomfrm.ui" line="1111"/>
+        <location filename="../ui/setcomfrm.ui" line="1366"/>
+        <location filename="../ui/setcomfrm.ui" line="1621"/>
+        <location filename="../ui/setcomfrm.ui" line="1876"/>
+        <location filename="../ui/setcomfrm.ui" line="2131"/>
+        <location filename="../ui/setcomfrm.ui" line="2386"/>
+        <location filename="../ui/setcomfrm.ui" line="2641"/>
+        <location filename="../ui/setcomfrm.ui" line="2896"/>
+        <location filename="../ui/setcomfrm.ui" line="3151"/>
+        <location filename="../ui/setcomfrm.ui" line="3406"/>
+        <location filename="../ui/setcomfrm.ui" line="3661"/>
+        <location filename="../ui/setcomfrm.ui" line="3916"/>
         <source>COM6</source>
-        <translation type="unfinished"></translation>
+        <translation>COM6</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="72"/>
-        <location filename="../ui/setcomfrm.ui" line="327"/>
-        <location filename="../ui/setcomfrm.ui" line="582"/>
-        <location filename="../ui/setcomfrm.ui" line="837"/>
-        <location filename="../ui/setcomfrm.ui" line="1113"/>
-        <location filename="../ui/setcomfrm.ui" line="1368"/>
-        <location filename="../ui/setcomfrm.ui" line="1623"/>
-        <location filename="../ui/setcomfrm.ui" line="1878"/>
-        <location filename="../ui/setcomfrm.ui" line="2133"/>
-        <location filename="../ui/setcomfrm.ui" line="2388"/>
-        <location filename="../ui/setcomfrm.ui" line="2643"/>
-        <location filename="../ui/setcomfrm.ui" line="2898"/>
-        <location filename="../ui/setcomfrm.ui" line="3153"/>
-        <location filename="../ui/setcomfrm.ui" line="3408"/>
-        <location filename="../ui/setcomfrm.ui" line="3663"/>
-        <location filename="../ui/setcomfrm.ui" line="3918"/>
+        <location filename="../ui/setcomfrm.ui" line="75"/>
+        <location filename="../ui/setcomfrm.ui" line="330"/>
+        <location filename="../ui/setcomfrm.ui" line="585"/>
+        <location filename="../ui/setcomfrm.ui" line="840"/>
+        <location filename="../ui/setcomfrm.ui" line="1116"/>
+        <location filename="../ui/setcomfrm.ui" line="1371"/>
+        <location filename="../ui/setcomfrm.ui" line="1626"/>
+        <location filename="../ui/setcomfrm.ui" line="1881"/>
+        <location filename="../ui/setcomfrm.ui" line="2136"/>
+        <location filename="../ui/setcomfrm.ui" line="2391"/>
+        <location filename="../ui/setcomfrm.ui" line="2646"/>
+        <location filename="../ui/setcomfrm.ui" line="2901"/>
+        <location filename="../ui/setcomfrm.ui" line="3156"/>
+        <location filename="../ui/setcomfrm.ui" line="3411"/>
+        <location filename="../ui/setcomfrm.ui" line="3666"/>
+        <location filename="../ui/setcomfrm.ui" line="3921"/>
         <source>COM7</source>
-        <translation type="unfinished"></translation>
+        <translation>COM7</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="77"/>
-        <location filename="../ui/setcomfrm.ui" line="332"/>
-        <location filename="../ui/setcomfrm.ui" line="587"/>
-        <location filename="../ui/setcomfrm.ui" line="842"/>
-        <location filename="../ui/setcomfrm.ui" line="1118"/>
-        <location filename="../ui/setcomfrm.ui" line="1373"/>
-        <location filename="../ui/setcomfrm.ui" line="1628"/>
-        <location filename="../ui/setcomfrm.ui" line="1883"/>
-        <location filename="../ui/setcomfrm.ui" line="2138"/>
-        <location filename="../ui/setcomfrm.ui" line="2393"/>
-        <location filename="../ui/setcomfrm.ui" line="2648"/>
-        <location filename="../ui/setcomfrm.ui" line="2903"/>
-        <location filename="../ui/setcomfrm.ui" line="3158"/>
-        <location filename="../ui/setcomfrm.ui" line="3413"/>
-        <location filename="../ui/setcomfrm.ui" line="3668"/>
-        <location filename="../ui/setcomfrm.ui" line="3923"/>
+        <location filename="../ui/setcomfrm.ui" line="80"/>
+        <location filename="../ui/setcomfrm.ui" line="335"/>
+        <location filename="../ui/setcomfrm.ui" line="590"/>
+        <location filename="../ui/setcomfrm.ui" line="845"/>
+        <location filename="../ui/setcomfrm.ui" line="1121"/>
+        <location filename="../ui/setcomfrm.ui" line="1376"/>
+        <location filename="../ui/setcomfrm.ui" line="1631"/>
+        <location filename="../ui/setcomfrm.ui" line="1886"/>
+        <location filename="../ui/setcomfrm.ui" line="2141"/>
+        <location filename="../ui/setcomfrm.ui" line="2396"/>
+        <location filename="../ui/setcomfrm.ui" line="2651"/>
+        <location filename="../ui/setcomfrm.ui" line="2906"/>
+        <location filename="../ui/setcomfrm.ui" line="3161"/>
+        <location filename="../ui/setcomfrm.ui" line="3416"/>
+        <location filename="../ui/setcomfrm.ui" line="3671"/>
+        <location filename="../ui/setcomfrm.ui" line="3926"/>
         <source>COM8</source>
-        <translation type="unfinished"></translation>
+        <translation>COM8</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="82"/>
-        <location filename="../ui/setcomfrm.ui" line="337"/>
-        <location filename="../ui/setcomfrm.ui" line="592"/>
-        <location filename="../ui/setcomfrm.ui" line="847"/>
-        <location filename="../ui/setcomfrm.ui" line="1123"/>
-        <location filename="../ui/setcomfrm.ui" line="1378"/>
-        <location filename="../ui/setcomfrm.ui" line="1633"/>
-        <location filename="../ui/setcomfrm.ui" line="1888"/>
-        <location filename="../ui/setcomfrm.ui" line="2143"/>
-        <location filename="../ui/setcomfrm.ui" line="2398"/>
-        <location filename="../ui/setcomfrm.ui" line="2653"/>
-        <location filename="../ui/setcomfrm.ui" line="2908"/>
-        <location filename="../ui/setcomfrm.ui" line="3163"/>
-        <location filename="../ui/setcomfrm.ui" line="3418"/>
-        <location filename="../ui/setcomfrm.ui" line="3673"/>
-        <location filename="../ui/setcomfrm.ui" line="3928"/>
+        <location filename="../ui/setcomfrm.ui" line="85"/>
+        <location filename="../ui/setcomfrm.ui" line="340"/>
+        <location filename="../ui/setcomfrm.ui" line="595"/>
+        <location filename="../ui/setcomfrm.ui" line="850"/>
+        <location filename="../ui/setcomfrm.ui" line="1126"/>
+        <location filename="../ui/setcomfrm.ui" line="1381"/>
+        <location filename="../ui/setcomfrm.ui" line="1636"/>
+        <location filename="../ui/setcomfrm.ui" line="1891"/>
+        <location filename="../ui/setcomfrm.ui" line="2146"/>
+        <location filename="../ui/setcomfrm.ui" line="2401"/>
+        <location filename="../ui/setcomfrm.ui" line="2656"/>
+        <location filename="../ui/setcomfrm.ui" line="2911"/>
+        <location filename="../ui/setcomfrm.ui" line="3166"/>
+        <location filename="../ui/setcomfrm.ui" line="3421"/>
+        <location filename="../ui/setcomfrm.ui" line="3676"/>
+        <location filename="../ui/setcomfrm.ui" line="3931"/>
         <source>COM9</source>
-        <translation type="unfinished"></translation>
+        <translation>COM9</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="87"/>
-        <location filename="../ui/setcomfrm.ui" line="342"/>
-        <location filename="../ui/setcomfrm.ui" line="597"/>
-        <location filename="../ui/setcomfrm.ui" line="852"/>
-        <location filename="../ui/setcomfrm.ui" line="1128"/>
-        <location filename="../ui/setcomfrm.ui" line="1383"/>
-        <location filename="../ui/setcomfrm.ui" line="1638"/>
-        <location filename="../ui/setcomfrm.ui" line="1893"/>
-        <location filename="../ui/setcomfrm.ui" line="2148"/>
-        <location filename="../ui/setcomfrm.ui" line="2403"/>
-        <location filename="../ui/setcomfrm.ui" line="2658"/>
-        <location filename="../ui/setcomfrm.ui" line="2913"/>
-        <location filename="../ui/setcomfrm.ui" line="3168"/>
-        <location filename="../ui/setcomfrm.ui" line="3423"/>
-        <location filename="../ui/setcomfrm.ui" line="3678"/>
-        <location filename="../ui/setcomfrm.ui" line="3933"/>
+        <location filename="../ui/setcomfrm.ui" line="90"/>
+        <location filename="../ui/setcomfrm.ui" line="345"/>
+        <location filename="../ui/setcomfrm.ui" line="600"/>
+        <location filename="../ui/setcomfrm.ui" line="855"/>
+        <location filename="../ui/setcomfrm.ui" line="1131"/>
+        <location filename="../ui/setcomfrm.ui" line="1386"/>
+        <location filename="../ui/setcomfrm.ui" line="1641"/>
+        <location filename="../ui/setcomfrm.ui" line="1896"/>
+        <location filename="../ui/setcomfrm.ui" line="2151"/>
+        <location filename="../ui/setcomfrm.ui" line="2406"/>
+        <location filename="../ui/setcomfrm.ui" line="2661"/>
+        <location filename="../ui/setcomfrm.ui" line="2916"/>
+        <location filename="../ui/setcomfrm.ui" line="3171"/>
+        <location filename="../ui/setcomfrm.ui" line="3426"/>
+        <location filename="../ui/setcomfrm.ui" line="3681"/>
+        <location filename="../ui/setcomfrm.ui" line="3936"/>
         <source>COM10</source>
-        <translation type="unfinished"></translation>
+        <translation>COM10</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="92"/>
-        <location filename="../ui/setcomfrm.ui" line="347"/>
-        <location filename="../ui/setcomfrm.ui" line="602"/>
-        <location filename="../ui/setcomfrm.ui" line="857"/>
-        <location filename="../ui/setcomfrm.ui" line="1133"/>
-        <location filename="../ui/setcomfrm.ui" line="1388"/>
-        <location filename="../ui/setcomfrm.ui" line="1643"/>
-        <location filename="../ui/setcomfrm.ui" line="1898"/>
-        <location filename="../ui/setcomfrm.ui" line="2153"/>
-        <location filename="../ui/setcomfrm.ui" line="2408"/>
-        <location filename="../ui/setcomfrm.ui" line="2663"/>
-        <location filename="../ui/setcomfrm.ui" line="2918"/>
-        <location filename="../ui/setcomfrm.ui" line="3173"/>
-        <location filename="../ui/setcomfrm.ui" line="3428"/>
-        <location filename="../ui/setcomfrm.ui" line="3683"/>
-        <location filename="../ui/setcomfrm.ui" line="3938"/>
+        <location filename="../ui/setcomfrm.ui" line="95"/>
+        <location filename="../ui/setcomfrm.ui" line="350"/>
+        <location filename="../ui/setcomfrm.ui" line="605"/>
+        <location filename="../ui/setcomfrm.ui" line="860"/>
+        <location filename="../ui/setcomfrm.ui" line="1136"/>
+        <location filename="../ui/setcomfrm.ui" line="1391"/>
+        <location filename="../ui/setcomfrm.ui" line="1646"/>
+        <location filename="../ui/setcomfrm.ui" line="1901"/>
+        <location filename="../ui/setcomfrm.ui" line="2156"/>
+        <location filename="../ui/setcomfrm.ui" line="2411"/>
+        <location filename="../ui/setcomfrm.ui" line="2666"/>
+        <location filename="../ui/setcomfrm.ui" line="2921"/>
+        <location filename="../ui/setcomfrm.ui" line="3176"/>
+        <location filename="../ui/setcomfrm.ui" line="3431"/>
+        <location filename="../ui/setcomfrm.ui" line="3686"/>
+        <location filename="../ui/setcomfrm.ui" line="3941"/>
         <source>COM11</source>
-        <translation type="unfinished"></translation>
+        <translation>COM11</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="97"/>
-        <location filename="../ui/setcomfrm.ui" line="352"/>
-        <location filename="../ui/setcomfrm.ui" line="607"/>
-        <location filename="../ui/setcomfrm.ui" line="862"/>
-        <location filename="../ui/setcomfrm.ui" line="1138"/>
-        <location filename="../ui/setcomfrm.ui" line="1393"/>
-        <location filename="../ui/setcomfrm.ui" line="1648"/>
-        <location filename="../ui/setcomfrm.ui" line="1903"/>
-        <location filename="../ui/setcomfrm.ui" line="2158"/>
-        <location filename="../ui/setcomfrm.ui" line="2413"/>
-        <location filename="../ui/setcomfrm.ui" line="2668"/>
-        <location filename="../ui/setcomfrm.ui" line="2923"/>
-        <location filename="../ui/setcomfrm.ui" line="3178"/>
-        <location filename="../ui/setcomfrm.ui" line="3433"/>
-        <location filename="../ui/setcomfrm.ui" line="3688"/>
-        <location filename="../ui/setcomfrm.ui" line="3943"/>
+        <location filename="../ui/setcomfrm.ui" line="100"/>
+        <location filename="../ui/setcomfrm.ui" line="355"/>
+        <location filename="../ui/setcomfrm.ui" line="610"/>
+        <location filename="../ui/setcomfrm.ui" line="865"/>
+        <location filename="../ui/setcomfrm.ui" line="1141"/>
+        <location filename="../ui/setcomfrm.ui" line="1396"/>
+        <location filename="../ui/setcomfrm.ui" line="1651"/>
+        <location filename="../ui/setcomfrm.ui" line="1906"/>
+        <location filename="../ui/setcomfrm.ui" line="2161"/>
+        <location filename="../ui/setcomfrm.ui" line="2416"/>
+        <location filename="../ui/setcomfrm.ui" line="2671"/>
+        <location filename="../ui/setcomfrm.ui" line="2926"/>
+        <location filename="../ui/setcomfrm.ui" line="3181"/>
+        <location filename="../ui/setcomfrm.ui" line="3436"/>
+        <location filename="../ui/setcomfrm.ui" line="3691"/>
+        <location filename="../ui/setcomfrm.ui" line="3946"/>
         <source>COM12</source>
-        <translation type="unfinished"></translation>
+        <translation>COM12</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="102"/>
-        <location filename="../ui/setcomfrm.ui" line="357"/>
-        <location filename="../ui/setcomfrm.ui" line="612"/>
-        <location filename="../ui/setcomfrm.ui" line="867"/>
-        <location filename="../ui/setcomfrm.ui" line="1143"/>
-        <location filename="../ui/setcomfrm.ui" line="1398"/>
-        <location filename="../ui/setcomfrm.ui" line="1653"/>
-        <location filename="../ui/setcomfrm.ui" line="1908"/>
-        <location filename="../ui/setcomfrm.ui" line="2163"/>
-        <location filename="../ui/setcomfrm.ui" line="2418"/>
-        <location filename="../ui/setcomfrm.ui" line="2673"/>
-        <location filename="../ui/setcomfrm.ui" line="2928"/>
-        <location filename="../ui/setcomfrm.ui" line="3183"/>
-        <location filename="../ui/setcomfrm.ui" line="3438"/>
-        <location filename="../ui/setcomfrm.ui" line="3693"/>
-        <location filename="../ui/setcomfrm.ui" line="3948"/>
+        <location filename="../ui/setcomfrm.ui" line="105"/>
+        <location filename="../ui/setcomfrm.ui" line="360"/>
+        <location filename="../ui/setcomfrm.ui" line="615"/>
+        <location filename="../ui/setcomfrm.ui" line="870"/>
+        <location filename="../ui/setcomfrm.ui" line="1146"/>
+        <location filename="../ui/setcomfrm.ui" line="1401"/>
+        <location filename="../ui/setcomfrm.ui" line="1656"/>
+        <location filename="../ui/setcomfrm.ui" line="1911"/>
+        <location filename="../ui/setcomfrm.ui" line="2166"/>
+        <location filename="../ui/setcomfrm.ui" line="2421"/>
+        <location filename="../ui/setcomfrm.ui" line="2676"/>
+        <location filename="../ui/setcomfrm.ui" line="2931"/>
+        <location filename="../ui/setcomfrm.ui" line="3186"/>
+        <location filename="../ui/setcomfrm.ui" line="3441"/>
+        <location filename="../ui/setcomfrm.ui" line="3696"/>
+        <location filename="../ui/setcomfrm.ui" line="3951"/>
         <source>COM13</source>
-        <translation type="unfinished"></translation>
+        <translation>COM13</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="107"/>
-        <location filename="../ui/setcomfrm.ui" line="362"/>
-        <location filename="../ui/setcomfrm.ui" line="617"/>
-        <location filename="../ui/setcomfrm.ui" line="872"/>
-        <location filename="../ui/setcomfrm.ui" line="1148"/>
-        <location filename="../ui/setcomfrm.ui" line="1403"/>
-        <location filename="../ui/setcomfrm.ui" line="1658"/>
-        <location filename="../ui/setcomfrm.ui" line="1913"/>
-        <location filename="../ui/setcomfrm.ui" line="2168"/>
-        <location filename="../ui/setcomfrm.ui" line="2423"/>
-        <location filename="../ui/setcomfrm.ui" line="2678"/>
-        <location filename="../ui/setcomfrm.ui" line="2933"/>
-        <location filename="../ui/setcomfrm.ui" line="3188"/>
-        <location filename="../ui/setcomfrm.ui" line="3443"/>
-        <location filename="../ui/setcomfrm.ui" line="3698"/>
-        <location filename="../ui/setcomfrm.ui" line="3953"/>
+        <location filename="../ui/setcomfrm.ui" line="110"/>
+        <location filename="../ui/setcomfrm.ui" line="365"/>
+        <location filename="../ui/setcomfrm.ui" line="620"/>
+        <location filename="../ui/setcomfrm.ui" line="875"/>
+        <location filename="../ui/setcomfrm.ui" line="1151"/>
+        <location filename="../ui/setcomfrm.ui" line="1406"/>
+        <location filename="../ui/setcomfrm.ui" line="1661"/>
+        <location filename="../ui/setcomfrm.ui" line="1916"/>
+        <location filename="../ui/setcomfrm.ui" line="2171"/>
+        <location filename="../ui/setcomfrm.ui" line="2426"/>
+        <location filename="../ui/setcomfrm.ui" line="2681"/>
+        <location filename="../ui/setcomfrm.ui" line="2936"/>
+        <location filename="../ui/setcomfrm.ui" line="3191"/>
+        <location filename="../ui/setcomfrm.ui" line="3446"/>
+        <location filename="../ui/setcomfrm.ui" line="3701"/>
+        <location filename="../ui/setcomfrm.ui" line="3956"/>
         <source>COM14</source>
-        <translation type="unfinished"></translation>
+        <translation>COM14</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="112"/>
-        <location filename="../ui/setcomfrm.ui" line="367"/>
-        <location filename="../ui/setcomfrm.ui" line="622"/>
-        <location filename="../ui/setcomfrm.ui" line="877"/>
-        <location filename="../ui/setcomfrm.ui" line="1153"/>
-        <location filename="../ui/setcomfrm.ui" line="1408"/>
-        <location filename="../ui/setcomfrm.ui" line="1663"/>
-        <location filename="../ui/setcomfrm.ui" line="1918"/>
-        <location filename="../ui/setcomfrm.ui" line="2173"/>
-        <location filename="../ui/setcomfrm.ui" line="2428"/>
-        <location filename="../ui/setcomfrm.ui" line="2683"/>
-        <location filename="../ui/setcomfrm.ui" line="2938"/>
-        <location filename="../ui/setcomfrm.ui" line="3193"/>
-        <location filename="../ui/setcomfrm.ui" line="3448"/>
-        <location filename="../ui/setcomfrm.ui" line="3703"/>
-        <location filename="../ui/setcomfrm.ui" line="3958"/>
+        <location filename="../ui/setcomfrm.ui" line="115"/>
+        <location filename="../ui/setcomfrm.ui" line="370"/>
+        <location filename="../ui/setcomfrm.ui" line="625"/>
+        <location filename="../ui/setcomfrm.ui" line="880"/>
+        <location filename="../ui/setcomfrm.ui" line="1156"/>
+        <location filename="../ui/setcomfrm.ui" line="1411"/>
+        <location filename="../ui/setcomfrm.ui" line="1666"/>
+        <location filename="../ui/setcomfrm.ui" line="1921"/>
+        <location filename="../ui/setcomfrm.ui" line="2176"/>
+        <location filename="../ui/setcomfrm.ui" line="2431"/>
+        <location filename="../ui/setcomfrm.ui" line="2686"/>
+        <location filename="../ui/setcomfrm.ui" line="2941"/>
+        <location filename="../ui/setcomfrm.ui" line="3196"/>
+        <location filename="../ui/setcomfrm.ui" line="3451"/>
+        <location filename="../ui/setcomfrm.ui" line="3706"/>
+        <location filename="../ui/setcomfrm.ui" line="3961"/>
         <source>COM15</source>
-        <translation type="unfinished"></translation>
+        <translation>COM15</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="117"/>
-        <location filename="../ui/setcomfrm.ui" line="372"/>
-        <location filename="../ui/setcomfrm.ui" line="627"/>
-        <location filename="../ui/setcomfrm.ui" line="882"/>
-        <location filename="../ui/setcomfrm.ui" line="1158"/>
-        <location filename="../ui/setcomfrm.ui" line="1413"/>
-        <location filename="../ui/setcomfrm.ui" line="1668"/>
-        <location filename="../ui/setcomfrm.ui" line="1923"/>
-        <location filename="../ui/setcomfrm.ui" line="2178"/>
-        <location filename="../ui/setcomfrm.ui" line="2433"/>
-        <location filename="../ui/setcomfrm.ui" line="2688"/>
-        <location filename="../ui/setcomfrm.ui" line="2943"/>
-        <location filename="../ui/setcomfrm.ui" line="3198"/>
-        <location filename="../ui/setcomfrm.ui" line="3453"/>
-        <location filename="../ui/setcomfrm.ui" line="3708"/>
-        <location filename="../ui/setcomfrm.ui" line="3963"/>
+        <location filename="../ui/setcomfrm.ui" line="120"/>
+        <location filename="../ui/setcomfrm.ui" line="375"/>
+        <location filename="../ui/setcomfrm.ui" line="630"/>
+        <location filename="../ui/setcomfrm.ui" line="885"/>
+        <location filename="../ui/setcomfrm.ui" line="1161"/>
+        <location filename="../ui/setcomfrm.ui" line="1416"/>
+        <location filename="../ui/setcomfrm.ui" line="1671"/>
+        <location filename="../ui/setcomfrm.ui" line="1926"/>
+        <location filename="../ui/setcomfrm.ui" line="2181"/>
+        <location filename="../ui/setcomfrm.ui" line="2436"/>
+        <location filename="../ui/setcomfrm.ui" line="2691"/>
+        <location filename="../ui/setcomfrm.ui" line="2946"/>
+        <location filename="../ui/setcomfrm.ui" line="3201"/>
+        <location filename="../ui/setcomfrm.ui" line="3456"/>
+        <location filename="../ui/setcomfrm.ui" line="3711"/>
+        <location filename="../ui/setcomfrm.ui" line="3966"/>
         <source>COM16</source>
-        <translation type="unfinished"></translation>
+        <translation>COM16</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="122"/>
-        <location filename="../ui/setcomfrm.ui" line="377"/>
-        <location filename="../ui/setcomfrm.ui" line="632"/>
-        <location filename="../ui/setcomfrm.ui" line="887"/>
-        <location filename="../ui/setcomfrm.ui" line="1163"/>
-        <location filename="../ui/setcomfrm.ui" line="1418"/>
-        <location filename="../ui/setcomfrm.ui" line="1673"/>
-        <location filename="../ui/setcomfrm.ui" line="1928"/>
-        <location filename="../ui/setcomfrm.ui" line="2183"/>
-        <location filename="../ui/setcomfrm.ui" line="2438"/>
-        <location filename="../ui/setcomfrm.ui" line="2693"/>
-        <location filename="../ui/setcomfrm.ui" line="2948"/>
-        <location filename="../ui/setcomfrm.ui" line="3203"/>
-        <location filename="../ui/setcomfrm.ui" line="3458"/>
-        <location filename="../ui/setcomfrm.ui" line="3713"/>
-        <location filename="../ui/setcomfrm.ui" line="3968"/>
+        <location filename="../ui/setcomfrm.ui" line="125"/>
+        <location filename="../ui/setcomfrm.ui" line="380"/>
+        <location filename="../ui/setcomfrm.ui" line="635"/>
+        <location filename="../ui/setcomfrm.ui" line="890"/>
+        <location filename="../ui/setcomfrm.ui" line="1166"/>
+        <location filename="../ui/setcomfrm.ui" line="1421"/>
+        <location filename="../ui/setcomfrm.ui" line="1676"/>
+        <location filename="../ui/setcomfrm.ui" line="1931"/>
+        <location filename="../ui/setcomfrm.ui" line="2186"/>
+        <location filename="../ui/setcomfrm.ui" line="2441"/>
+        <location filename="../ui/setcomfrm.ui" line="2696"/>
+        <location filename="../ui/setcomfrm.ui" line="2951"/>
+        <location filename="../ui/setcomfrm.ui" line="3206"/>
+        <location filename="../ui/setcomfrm.ui" line="3461"/>
+        <location filename="../ui/setcomfrm.ui" line="3716"/>
+        <location filename="../ui/setcomfrm.ui" line="3971"/>
         <source>COM17</source>
-        <translation type="unfinished"></translation>
+        <translation>COM17</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="127"/>
-        <location filename="../ui/setcomfrm.ui" line="382"/>
-        <location filename="../ui/setcomfrm.ui" line="637"/>
-        <location filename="../ui/setcomfrm.ui" line="892"/>
-        <location filename="../ui/setcomfrm.ui" line="1168"/>
-        <location filename="../ui/setcomfrm.ui" line="1423"/>
-        <location filename="../ui/setcomfrm.ui" line="1678"/>
-        <location filename="../ui/setcomfrm.ui" line="1933"/>
-        <location filename="../ui/setcomfrm.ui" line="2188"/>
-        <location filename="../ui/setcomfrm.ui" line="2443"/>
-        <location filename="../ui/setcomfrm.ui" line="2698"/>
-        <location filename="../ui/setcomfrm.ui" line="2953"/>
-        <location filename="../ui/setcomfrm.ui" line="3208"/>
-        <location filename="../ui/setcomfrm.ui" line="3463"/>
-        <location filename="../ui/setcomfrm.ui" line="3718"/>
-        <location filename="../ui/setcomfrm.ui" line="3973"/>
+        <location filename="../ui/setcomfrm.ui" line="130"/>
+        <location filename="../ui/setcomfrm.ui" line="385"/>
+        <location filename="../ui/setcomfrm.ui" line="640"/>
+        <location filename="../ui/setcomfrm.ui" line="895"/>
+        <location filename="../ui/setcomfrm.ui" line="1171"/>
+        <location filename="../ui/setcomfrm.ui" line="1426"/>
+        <location filename="../ui/setcomfrm.ui" line="1681"/>
+        <location filename="../ui/setcomfrm.ui" line="1936"/>
+        <location filename="../ui/setcomfrm.ui" line="2191"/>
+        <location filename="../ui/setcomfrm.ui" line="2446"/>
+        <location filename="../ui/setcomfrm.ui" line="2701"/>
+        <location filename="../ui/setcomfrm.ui" line="2956"/>
+        <location filename="../ui/setcomfrm.ui" line="3211"/>
+        <location filename="../ui/setcomfrm.ui" line="3466"/>
+        <location filename="../ui/setcomfrm.ui" line="3721"/>
+        <location filename="../ui/setcomfrm.ui" line="3976"/>
         <source>COM18</source>
-        <translation type="unfinished"></translation>
+        <translation>COM18</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="132"/>
-        <location filename="../ui/setcomfrm.ui" line="387"/>
-        <location filename="../ui/setcomfrm.ui" line="642"/>
-        <location filename="../ui/setcomfrm.ui" line="897"/>
-        <location filename="../ui/setcomfrm.ui" line="1173"/>
-        <location filename="../ui/setcomfrm.ui" line="1428"/>
-        <location filename="../ui/setcomfrm.ui" line="1683"/>
-        <location filename="../ui/setcomfrm.ui" line="1938"/>
-        <location filename="../ui/setcomfrm.ui" line="2193"/>
-        <location filename="../ui/setcomfrm.ui" line="2448"/>
-        <location filename="../ui/setcomfrm.ui" line="2703"/>
-        <location filename="../ui/setcomfrm.ui" line="2958"/>
-        <location filename="../ui/setcomfrm.ui" line="3213"/>
-        <location filename="../ui/setcomfrm.ui" line="3468"/>
-        <location filename="../ui/setcomfrm.ui" line="3723"/>
-        <location filename="../ui/setcomfrm.ui" line="3978"/>
+        <location filename="../ui/setcomfrm.ui" line="135"/>
+        <location filename="../ui/setcomfrm.ui" line="390"/>
+        <location filename="../ui/setcomfrm.ui" line="645"/>
+        <location filename="../ui/setcomfrm.ui" line="900"/>
+        <location filename="../ui/setcomfrm.ui" line="1176"/>
+        <location filename="../ui/setcomfrm.ui" line="1431"/>
+        <location filename="../ui/setcomfrm.ui" line="1686"/>
+        <location filename="../ui/setcomfrm.ui" line="1941"/>
+        <location filename="../ui/setcomfrm.ui" line="2196"/>
+        <location filename="../ui/setcomfrm.ui" line="2451"/>
+        <location filename="../ui/setcomfrm.ui" line="2706"/>
+        <location filename="../ui/setcomfrm.ui" line="2961"/>
+        <location filename="../ui/setcomfrm.ui" line="3216"/>
+        <location filename="../ui/setcomfrm.ui" line="3471"/>
+        <location filename="../ui/setcomfrm.ui" line="3726"/>
+        <location filename="../ui/setcomfrm.ui" line="3981"/>
         <source>COM19</source>
-        <translation type="unfinished"></translation>
+        <translation>COM19</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="137"/>
-        <location filename="../ui/setcomfrm.ui" line="392"/>
-        <location filename="../ui/setcomfrm.ui" line="647"/>
-        <location filename="../ui/setcomfrm.ui" line="902"/>
-        <location filename="../ui/setcomfrm.ui" line="1178"/>
-        <location filename="../ui/setcomfrm.ui" line="1433"/>
-        <location filename="../ui/setcomfrm.ui" line="1688"/>
-        <location filename="../ui/setcomfrm.ui" line="1943"/>
-        <location filename="../ui/setcomfrm.ui" line="2198"/>
-        <location filename="../ui/setcomfrm.ui" line="2453"/>
-        <location filename="../ui/setcomfrm.ui" line="2708"/>
-        <location filename="../ui/setcomfrm.ui" line="2963"/>
-        <location filename="../ui/setcomfrm.ui" line="3218"/>
-        <location filename="../ui/setcomfrm.ui" line="3473"/>
-        <location filename="../ui/setcomfrm.ui" line="3728"/>
-        <location filename="../ui/setcomfrm.ui" line="3983"/>
+        <location filename="../ui/setcomfrm.ui" line="140"/>
+        <location filename="../ui/setcomfrm.ui" line="395"/>
+        <location filename="../ui/setcomfrm.ui" line="650"/>
+        <location filename="../ui/setcomfrm.ui" line="905"/>
+        <location filename="../ui/setcomfrm.ui" line="1181"/>
+        <location filename="../ui/setcomfrm.ui" line="1436"/>
+        <location filename="../ui/setcomfrm.ui" line="1691"/>
+        <location filename="../ui/setcomfrm.ui" line="1946"/>
+        <location filename="../ui/setcomfrm.ui" line="2201"/>
+        <location filename="../ui/setcomfrm.ui" line="2456"/>
+        <location filename="../ui/setcomfrm.ui" line="2711"/>
+        <location filename="../ui/setcomfrm.ui" line="2966"/>
+        <location filename="../ui/setcomfrm.ui" line="3221"/>
+        <location filename="../ui/setcomfrm.ui" line="3476"/>
+        <location filename="../ui/setcomfrm.ui" line="3731"/>
+        <location filename="../ui/setcomfrm.ui" line="3986"/>
         <source>COM20</source>
-        <translation type="unfinished"></translation>
+        <translation>COM20</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="145"/>
-        <location filename="../ui/setcomfrm.ui" line="400"/>
-        <location filename="../ui/setcomfrm.ui" line="655"/>
-        <location filename="../ui/setcomfrm.ui" line="910"/>
-        <location filename="../ui/setcomfrm.ui" line="1186"/>
-        <location filename="../ui/setcomfrm.ui" line="1441"/>
-        <location filename="../ui/setcomfrm.ui" line="1696"/>
-        <location filename="../ui/setcomfrm.ui" line="1951"/>
-        <location filename="../ui/setcomfrm.ui" line="2206"/>
-        <location filename="../ui/setcomfrm.ui" line="2461"/>
-        <location filename="../ui/setcomfrm.ui" line="2716"/>
-        <location filename="../ui/setcomfrm.ui" line="2971"/>
-        <location filename="../ui/setcomfrm.ui" line="3226"/>
-        <location filename="../ui/setcomfrm.ui" line="3481"/>
-        <location filename="../ui/setcomfrm.ui" line="3736"/>
-        <location filename="../ui/setcomfrm.ui" line="3991"/>
+        <location filename="../ui/setcomfrm.ui" line="148"/>
+        <location filename="../ui/setcomfrm.ui" line="403"/>
+        <location filename="../ui/setcomfrm.ui" line="658"/>
+        <location filename="../ui/setcomfrm.ui" line="913"/>
+        <location filename="../ui/setcomfrm.ui" line="1189"/>
+        <location filename="../ui/setcomfrm.ui" line="1444"/>
+        <location filename="../ui/setcomfrm.ui" line="1699"/>
+        <location filename="../ui/setcomfrm.ui" line="1954"/>
+        <location filename="../ui/setcomfrm.ui" line="2209"/>
+        <location filename="../ui/setcomfrm.ui" line="2464"/>
+        <location filename="../ui/setcomfrm.ui" line="2719"/>
+        <location filename="../ui/setcomfrm.ui" line="2974"/>
+        <location filename="../ui/setcomfrm.ui" line="3229"/>
+        <location filename="../ui/setcomfrm.ui" line="3484"/>
+        <location filename="../ui/setcomfrm.ui" line="3739"/>
+        <location filename="../ui/setcomfrm.ui" line="3994"/>
         <source>BaudRate</source>
-        <translation type="unfinished"></translation>
+        <translation>BaudRate</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="191"/>
-        <location filename="../ui/setcomfrm.ui" line="446"/>
-        <location filename="../ui/setcomfrm.ui" line="701"/>
-        <location filename="../ui/setcomfrm.ui" line="956"/>
-        <location filename="../ui/setcomfrm.ui" line="1232"/>
-        <location filename="../ui/setcomfrm.ui" line="1487"/>
-        <location filename="../ui/setcomfrm.ui" line="1742"/>
-        <location filename="../ui/setcomfrm.ui" line="1997"/>
-        <location filename="../ui/setcomfrm.ui" line="2252"/>
-        <location filename="../ui/setcomfrm.ui" line="2507"/>
-        <location filename="../ui/setcomfrm.ui" line="2762"/>
-        <location filename="../ui/setcomfrm.ui" line="3017"/>
-        <location filename="../ui/setcomfrm.ui" line="3272"/>
-        <location filename="../ui/setcomfrm.ui" line="3527"/>
-        <location filename="../ui/setcomfrm.ui" line="3782"/>
-        <location filename="../ui/setcomfrm.ui" line="4037"/>
+        <location filename="../ui/setcomfrm.ui" line="194"/>
+        <location filename="../ui/setcomfrm.ui" line="449"/>
+        <location filename="../ui/setcomfrm.ui" line="704"/>
+        <location filename="../ui/setcomfrm.ui" line="959"/>
+        <location filename="../ui/setcomfrm.ui" line="1235"/>
+        <location filename="../ui/setcomfrm.ui" line="1490"/>
+        <location filename="../ui/setcomfrm.ui" line="1745"/>
+        <location filename="../ui/setcomfrm.ui" line="2000"/>
+        <location filename="../ui/setcomfrm.ui" line="2255"/>
+        <location filename="../ui/setcomfrm.ui" line="2510"/>
+        <location filename="../ui/setcomfrm.ui" line="2765"/>
+        <location filename="../ui/setcomfrm.ui" line="3020"/>
+        <location filename="../ui/setcomfrm.ui" line="3275"/>
+        <location filename="../ui/setcomfrm.ui" line="3530"/>
+        <location filename="../ui/setcomfrm.ui" line="3785"/>
+        <location filename="../ui/setcomfrm.ui" line="4040"/>
         <source>DataBits</source>
-        <translation type="unfinished"></translation>
+        <translation>DataBits</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="222"/>
-        <location filename="../ui/setcomfrm.ui" line="477"/>
-        <location filename="../ui/setcomfrm.ui" line="732"/>
-        <location filename="../ui/setcomfrm.ui" line="987"/>
-        <location filename="../ui/setcomfrm.ui" line="1263"/>
-        <location filename="../ui/setcomfrm.ui" line="1518"/>
-        <location filename="../ui/setcomfrm.ui" line="1773"/>
-        <location filename="../ui/setcomfrm.ui" line="2028"/>
-        <location filename="../ui/setcomfrm.ui" line="2283"/>
-        <location filename="../ui/setcomfrm.ui" line="2538"/>
-        <location filename="../ui/setcomfrm.ui" line="2793"/>
-        <location filename="../ui/setcomfrm.ui" line="3048"/>
-        <location filename="../ui/setcomfrm.ui" line="3303"/>
-        <location filename="../ui/setcomfrm.ui" line="3558"/>
-        <location filename="../ui/setcomfrm.ui" line="3813"/>
-        <location filename="../ui/setcomfrm.ui" line="4068"/>
+        <location filename="../ui/setcomfrm.ui" line="225"/>
+        <location filename="../ui/setcomfrm.ui" line="480"/>
+        <location filename="../ui/setcomfrm.ui" line="735"/>
+        <location filename="../ui/setcomfrm.ui" line="990"/>
+        <location filename="../ui/setcomfrm.ui" line="1266"/>
+        <location filename="../ui/setcomfrm.ui" line="1521"/>
+        <location filename="../ui/setcomfrm.ui" line="1776"/>
+        <location filename="../ui/setcomfrm.ui" line="2031"/>
+        <location filename="../ui/setcomfrm.ui" line="2286"/>
+        <location filename="../ui/setcomfrm.ui" line="2541"/>
+        <location filename="../ui/setcomfrm.ui" line="2796"/>
+        <location filename="../ui/setcomfrm.ui" line="3051"/>
+        <location filename="../ui/setcomfrm.ui" line="3306"/>
+        <location filename="../ui/setcomfrm.ui" line="3561"/>
+        <location filename="../ui/setcomfrm.ui" line="3816"/>
+        <location filename="../ui/setcomfrm.ui" line="4071"/>
         <source>Parity</source>
-        <translation type="unfinished"></translation>
+        <translation>Parity</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="230"/>
-        <location filename="../ui/setcomfrm.ui" line="485"/>
-        <location filename="../ui/setcomfrm.ui" line="740"/>
-        <location filename="../ui/setcomfrm.ui" line="995"/>
-        <location filename="../ui/setcomfrm.ui" line="1271"/>
-        <location filename="../ui/setcomfrm.ui" line="1526"/>
-        <location filename="../ui/setcomfrm.ui" line="1781"/>
-        <location filename="../ui/setcomfrm.ui" line="2036"/>
-        <location filename="../ui/setcomfrm.ui" line="2291"/>
-        <location filename="../ui/setcomfrm.ui" line="2546"/>
-        <location filename="../ui/setcomfrm.ui" line="2801"/>
-        <location filename="../ui/setcomfrm.ui" line="3056"/>
-        <location filename="../ui/setcomfrm.ui" line="3311"/>
-        <location filename="../ui/setcomfrm.ui" line="3566"/>
-        <location filename="../ui/setcomfrm.ui" line="3821"/>
-        <location filename="../ui/setcomfrm.ui" line="4076"/>
+        <location filename="../ui/setcomfrm.ui" line="233"/>
+        <location filename="../ui/setcomfrm.ui" line="488"/>
+        <location filename="../ui/setcomfrm.ui" line="743"/>
+        <location filename="../ui/setcomfrm.ui" line="998"/>
+        <location filename="../ui/setcomfrm.ui" line="1274"/>
+        <location filename="../ui/setcomfrm.ui" line="1529"/>
+        <location filename="../ui/setcomfrm.ui" line="1784"/>
+        <location filename="../ui/setcomfrm.ui" line="2039"/>
+        <location filename="../ui/setcomfrm.ui" line="2294"/>
+        <location filename="../ui/setcomfrm.ui" line="2549"/>
+        <location filename="../ui/setcomfrm.ui" line="2804"/>
+        <location filename="../ui/setcomfrm.ui" line="3059"/>
+        <location filename="../ui/setcomfrm.ui" line="3314"/>
+        <location filename="../ui/setcomfrm.ui" line="3569"/>
+        <location filename="../ui/setcomfrm.ui" line="3824"/>
+        <location filename="../ui/setcomfrm.ui" line="4079"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>None</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="235"/>
-        <location filename="../ui/setcomfrm.ui" line="490"/>
-        <location filename="../ui/setcomfrm.ui" line="745"/>
-        <location filename="../ui/setcomfrm.ui" line="1000"/>
-        <location filename="../ui/setcomfrm.ui" line="1276"/>
-        <location filename="../ui/setcomfrm.ui" line="1531"/>
-        <location filename="../ui/setcomfrm.ui" line="1786"/>
-        <location filename="../ui/setcomfrm.ui" line="2041"/>
-        <location filename="../ui/setcomfrm.ui" line="2296"/>
-        <location filename="../ui/setcomfrm.ui" line="2551"/>
-        <location filename="../ui/setcomfrm.ui" line="2806"/>
-        <location filename="../ui/setcomfrm.ui" line="3061"/>
-        <location filename="../ui/setcomfrm.ui" line="3316"/>
-        <location filename="../ui/setcomfrm.ui" line="3571"/>
-        <location filename="../ui/setcomfrm.ui" line="3826"/>
-        <location filename="../ui/setcomfrm.ui" line="4081"/>
+        <location filename="../ui/setcomfrm.ui" line="238"/>
+        <location filename="../ui/setcomfrm.ui" line="493"/>
+        <location filename="../ui/setcomfrm.ui" line="748"/>
+        <location filename="../ui/setcomfrm.ui" line="1003"/>
+        <location filename="../ui/setcomfrm.ui" line="1279"/>
+        <location filename="../ui/setcomfrm.ui" line="1534"/>
+        <location filename="../ui/setcomfrm.ui" line="1789"/>
+        <location filename="../ui/setcomfrm.ui" line="2044"/>
+        <location filename="../ui/setcomfrm.ui" line="2299"/>
+        <location filename="../ui/setcomfrm.ui" line="2554"/>
+        <location filename="../ui/setcomfrm.ui" line="2809"/>
+        <location filename="../ui/setcomfrm.ui" line="3064"/>
+        <location filename="../ui/setcomfrm.ui" line="3319"/>
+        <location filename="../ui/setcomfrm.ui" line="3574"/>
+        <location filename="../ui/setcomfrm.ui" line="3829"/>
+        <location filename="../ui/setcomfrm.ui" line="4084"/>
         <source>Odd</source>
-        <translation type="unfinished"></translation>
+        <translation>Odd</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="240"/>
-        <location filename="../ui/setcomfrm.ui" line="495"/>
-        <location filename="../ui/setcomfrm.ui" line="750"/>
-        <location filename="../ui/setcomfrm.ui" line="1005"/>
-        <location filename="../ui/setcomfrm.ui" line="1281"/>
-        <location filename="../ui/setcomfrm.ui" line="1536"/>
-        <location filename="../ui/setcomfrm.ui" line="1791"/>
-        <location filename="../ui/setcomfrm.ui" line="2046"/>
-        <location filename="../ui/setcomfrm.ui" line="2301"/>
-        <location filename="../ui/setcomfrm.ui" line="2556"/>
-        <location filename="../ui/setcomfrm.ui" line="2811"/>
-        <location filename="../ui/setcomfrm.ui" line="3066"/>
-        <location filename="../ui/setcomfrm.ui" line="3321"/>
-        <location filename="../ui/setcomfrm.ui" line="3576"/>
-        <location filename="../ui/setcomfrm.ui" line="3831"/>
-        <location filename="../ui/setcomfrm.ui" line="4086"/>
+        <location filename="../ui/setcomfrm.ui" line="243"/>
+        <location filename="../ui/setcomfrm.ui" line="498"/>
+        <location filename="../ui/setcomfrm.ui" line="753"/>
+        <location filename="../ui/setcomfrm.ui" line="1008"/>
+        <location filename="../ui/setcomfrm.ui" line="1284"/>
+        <location filename="../ui/setcomfrm.ui" line="1539"/>
+        <location filename="../ui/setcomfrm.ui" line="1794"/>
+        <location filename="../ui/setcomfrm.ui" line="2049"/>
+        <location filename="../ui/setcomfrm.ui" line="2304"/>
+        <location filename="../ui/setcomfrm.ui" line="2559"/>
+        <location filename="../ui/setcomfrm.ui" line="2814"/>
+        <location filename="../ui/setcomfrm.ui" line="3069"/>
+        <location filename="../ui/setcomfrm.ui" line="3324"/>
+        <location filename="../ui/setcomfrm.ui" line="3579"/>
+        <location filename="../ui/setcomfrm.ui" line="3834"/>
+        <location filename="../ui/setcomfrm.ui" line="4089"/>
         <source>Even</source>
-        <translation type="unfinished"></translation>
+        <translation>Even</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="248"/>
-        <location filename="../ui/setcomfrm.ui" line="503"/>
-        <location filename="../ui/setcomfrm.ui" line="758"/>
-        <location filename="../ui/setcomfrm.ui" line="1013"/>
-        <location filename="../ui/setcomfrm.ui" line="1289"/>
-        <location filename="../ui/setcomfrm.ui" line="1544"/>
-        <location filename="../ui/setcomfrm.ui" line="1799"/>
-        <location filename="../ui/setcomfrm.ui" line="2054"/>
-        <location filename="../ui/setcomfrm.ui" line="2309"/>
-        <location filename="../ui/setcomfrm.ui" line="2564"/>
-        <location filename="../ui/setcomfrm.ui" line="2819"/>
-        <location filename="../ui/setcomfrm.ui" line="3074"/>
-        <location filename="../ui/setcomfrm.ui" line="3329"/>
-        <location filename="../ui/setcomfrm.ui" line="3584"/>
-        <location filename="../ui/setcomfrm.ui" line="3839"/>
-        <location filename="../ui/setcomfrm.ui" line="4094"/>
+        <location filename="../ui/setcomfrm.ui" line="251"/>
+        <location filename="../ui/setcomfrm.ui" line="506"/>
+        <location filename="../ui/setcomfrm.ui" line="761"/>
+        <location filename="../ui/setcomfrm.ui" line="1016"/>
+        <location filename="../ui/setcomfrm.ui" line="1292"/>
+        <location filename="../ui/setcomfrm.ui" line="1547"/>
+        <location filename="../ui/setcomfrm.ui" line="1802"/>
+        <location filename="../ui/setcomfrm.ui" line="2057"/>
+        <location filename="../ui/setcomfrm.ui" line="2312"/>
+        <location filename="../ui/setcomfrm.ui" line="2567"/>
+        <location filename="../ui/setcomfrm.ui" line="2822"/>
+        <location filename="../ui/setcomfrm.ui" line="3077"/>
+        <location filename="../ui/setcomfrm.ui" line="3332"/>
+        <location filename="../ui/setcomfrm.ui" line="3587"/>
+        <location filename="../ui/setcomfrm.ui" line="3842"/>
+        <location filename="../ui/setcomfrm.ui" line="4097"/>
         <source>StopBits</source>
-        <translation type="unfinished"></translation>
+        <translation>StopBits</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="277"/>
+        <location filename="../ui/setcomfrm.ui" line="280"/>
         <source>Balance</source>
-        <translation type="unfinished"></translation>
+        <translation>Balance</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="532"/>
+        <location filename="../ui/setcomfrm.ui" line="535"/>
         <source>Temp Acquisition</source>
-        <translation type="unfinished"></translation>
+        <translation>Temp Acquisition</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="787"/>
+        <location filename="../ui/setcomfrm.ui" line="790"/>
         <source>Standard Temp</source>
-        <translation type="unfinished"></translation>
+        <translation>Standard Temp</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="1057"/>
+        <location filename="../ui/setcomfrm.ui" line="1060"/>
         <source>Meter</source>
-        <translation type="unfinished"></translation>
+        <translation>Meter</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="1573"/>
+        <location filename="../ui/setcomfrm.ui" line="1576"/>
         <source>3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="1828"/>
+        <location filename="../ui/setcomfrm.ui" line="1831"/>
         <source>4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="3103"/>
+        <location filename="../ui/setcomfrm.ui" line="3106"/>
         <source>9</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="3358"/>
+        <location filename="../ui/setcomfrm.ui" line="3361"/>
         <source>10</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="3613"/>
+        <location filename="../ui/setcomfrm.ui" line="3616"/>
         <source>11</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="3868"/>
+        <location filename="../ui/setcomfrm.ui" line="3871"/>
         <source>12</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="4141"/>
+        <location filename="../ui/setcomfrm.ui" line="4153"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Save</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="4161"/>
+        <location filename="../ui/setcomfrm.ui" line="4182"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Exit</translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="153"/>
-        <location filename="../ui/setcomfrm.ui" line="408"/>
-        <location filename="../ui/setcomfrm.ui" line="663"/>
-        <location filename="../ui/setcomfrm.ui" line="918"/>
-        <location filename="../ui/setcomfrm.ui" line="1194"/>
-        <location filename="../ui/setcomfrm.ui" line="1449"/>
-        <location filename="../ui/setcomfrm.ui" line="1704"/>
-        <location filename="../ui/setcomfrm.ui" line="1959"/>
-        <location filename="../ui/setcomfrm.ui" line="2214"/>
-        <location filename="../ui/setcomfrm.ui" line="2469"/>
-        <location filename="../ui/setcomfrm.ui" line="2724"/>
-        <location filename="../ui/setcomfrm.ui" line="2979"/>
-        <location filename="../ui/setcomfrm.ui" line="3234"/>
-        <location filename="../ui/setcomfrm.ui" line="3489"/>
-        <location filename="../ui/setcomfrm.ui" line="3744"/>
-        <location filename="../ui/setcomfrm.ui" line="3999"/>
+        <location filename="../ui/setcomfrm.ui" line="156"/>
+        <location filename="../ui/setcomfrm.ui" line="411"/>
+        <location filename="../ui/setcomfrm.ui" line="666"/>
+        <location filename="../ui/setcomfrm.ui" line="921"/>
+        <location filename="../ui/setcomfrm.ui" line="1197"/>
+        <location filename="../ui/setcomfrm.ui" line="1452"/>
+        <location filename="../ui/setcomfrm.ui" line="1707"/>
+        <location filename="../ui/setcomfrm.ui" line="1962"/>
+        <location filename="../ui/setcomfrm.ui" line="2217"/>
+        <location filename="../ui/setcomfrm.ui" line="2472"/>
+        <location filename="../ui/setcomfrm.ui" line="2727"/>
+        <location filename="../ui/setcomfrm.ui" line="2982"/>
+        <location filename="../ui/setcomfrm.ui" line="3237"/>
+        <location filename="../ui/setcomfrm.ui" line="3492"/>
+        <location filename="../ui/setcomfrm.ui" line="3747"/>
+        <location filename="../ui/setcomfrm.ui" line="4002"/>
         <source>2400</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="158"/>
-        <location filename="../ui/setcomfrm.ui" line="413"/>
-        <location filename="../ui/setcomfrm.ui" line="668"/>
-        <location filename="../ui/setcomfrm.ui" line="923"/>
-        <location filename="../ui/setcomfrm.ui" line="1199"/>
-        <location filename="../ui/setcomfrm.ui" line="1454"/>
-        <location filename="../ui/setcomfrm.ui" line="1709"/>
-        <location filename="../ui/setcomfrm.ui" line="1964"/>
-        <location filename="../ui/setcomfrm.ui" line="2219"/>
-        <location filename="../ui/setcomfrm.ui" line="2474"/>
-        <location filename="../ui/setcomfrm.ui" line="2729"/>
-        <location filename="../ui/setcomfrm.ui" line="2984"/>
-        <location filename="../ui/setcomfrm.ui" line="3239"/>
-        <location filename="../ui/setcomfrm.ui" line="3494"/>
-        <location filename="../ui/setcomfrm.ui" line="3749"/>
-        <location filename="../ui/setcomfrm.ui" line="4004"/>
+        <location filename="../ui/setcomfrm.ui" line="161"/>
+        <location filename="../ui/setcomfrm.ui" line="416"/>
+        <location filename="../ui/setcomfrm.ui" line="671"/>
+        <location filename="../ui/setcomfrm.ui" line="926"/>
+        <location filename="../ui/setcomfrm.ui" line="1202"/>
+        <location filename="../ui/setcomfrm.ui" line="1457"/>
+        <location filename="../ui/setcomfrm.ui" line="1712"/>
+        <location filename="../ui/setcomfrm.ui" line="1967"/>
+        <location filename="../ui/setcomfrm.ui" line="2222"/>
+        <location filename="../ui/setcomfrm.ui" line="2477"/>
+        <location filename="../ui/setcomfrm.ui" line="2732"/>
+        <location filename="../ui/setcomfrm.ui" line="2987"/>
+        <location filename="../ui/setcomfrm.ui" line="3242"/>
+        <location filename="../ui/setcomfrm.ui" line="3497"/>
+        <location filename="../ui/setcomfrm.ui" line="3752"/>
+        <location filename="../ui/setcomfrm.ui" line="4007"/>
         <source>4800</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="163"/>
-        <location filename="../ui/setcomfrm.ui" line="418"/>
-        <location filename="../ui/setcomfrm.ui" line="673"/>
-        <location filename="../ui/setcomfrm.ui" line="928"/>
-        <location filename="../ui/setcomfrm.ui" line="1204"/>
-        <location filename="../ui/setcomfrm.ui" line="1459"/>
-        <location filename="../ui/setcomfrm.ui" line="1714"/>
-        <location filename="../ui/setcomfrm.ui" line="1969"/>
-        <location filename="../ui/setcomfrm.ui" line="2224"/>
-        <location filename="../ui/setcomfrm.ui" line="2479"/>
-        <location filename="../ui/setcomfrm.ui" line="2734"/>
-        <location filename="../ui/setcomfrm.ui" line="2989"/>
-        <location filename="../ui/setcomfrm.ui" line="3244"/>
-        <location filename="../ui/setcomfrm.ui" line="3499"/>
-        <location filename="../ui/setcomfrm.ui" line="3754"/>
-        <location filename="../ui/setcomfrm.ui" line="4009"/>
+        <location filename="../ui/setcomfrm.ui" line="166"/>
+        <location filename="../ui/setcomfrm.ui" line="421"/>
+        <location filename="../ui/setcomfrm.ui" line="676"/>
+        <location filename="../ui/setcomfrm.ui" line="931"/>
+        <location filename="../ui/setcomfrm.ui" line="1207"/>
+        <location filename="../ui/setcomfrm.ui" line="1462"/>
+        <location filename="../ui/setcomfrm.ui" line="1717"/>
+        <location filename="../ui/setcomfrm.ui" line="1972"/>
+        <location filename="../ui/setcomfrm.ui" line="2227"/>
+        <location filename="../ui/setcomfrm.ui" line="2482"/>
+        <location filename="../ui/setcomfrm.ui" line="2737"/>
+        <location filename="../ui/setcomfrm.ui" line="2992"/>
+        <location filename="../ui/setcomfrm.ui" line="3247"/>
+        <location filename="../ui/setcomfrm.ui" line="3502"/>
+        <location filename="../ui/setcomfrm.ui" line="3757"/>
+        <location filename="../ui/setcomfrm.ui" line="4012"/>
         <source>9600</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="168"/>
-        <location filename="../ui/setcomfrm.ui" line="423"/>
-        <location filename="../ui/setcomfrm.ui" line="678"/>
-        <location filename="../ui/setcomfrm.ui" line="933"/>
-        <location filename="../ui/setcomfrm.ui" line="1209"/>
-        <location filename="../ui/setcomfrm.ui" line="1464"/>
-        <location filename="../ui/setcomfrm.ui" line="1719"/>
-        <location filename="../ui/setcomfrm.ui" line="1974"/>
-        <location filename="../ui/setcomfrm.ui" line="2229"/>
-        <location filename="../ui/setcomfrm.ui" line="2484"/>
-        <location filename="../ui/setcomfrm.ui" line="2739"/>
-        <location filename="../ui/setcomfrm.ui" line="2994"/>
-        <location filename="../ui/setcomfrm.ui" line="3249"/>
-        <location filename="../ui/setcomfrm.ui" line="3504"/>
-        <location filename="../ui/setcomfrm.ui" line="3759"/>
-        <location filename="../ui/setcomfrm.ui" line="4014"/>
+        <location filename="../ui/setcomfrm.ui" line="171"/>
+        <location filename="../ui/setcomfrm.ui" line="426"/>
+        <location filename="../ui/setcomfrm.ui" line="681"/>
+        <location filename="../ui/setcomfrm.ui" line="936"/>
+        <location filename="../ui/setcomfrm.ui" line="1212"/>
+        <location filename="../ui/setcomfrm.ui" line="1467"/>
+        <location filename="../ui/setcomfrm.ui" line="1722"/>
+        <location filename="../ui/setcomfrm.ui" line="1977"/>
+        <location filename="../ui/setcomfrm.ui" line="2232"/>
+        <location filename="../ui/setcomfrm.ui" line="2487"/>
+        <location filename="../ui/setcomfrm.ui" line="2742"/>
+        <location filename="../ui/setcomfrm.ui" line="2997"/>
+        <location filename="../ui/setcomfrm.ui" line="3252"/>
+        <location filename="../ui/setcomfrm.ui" line="3507"/>
+        <location filename="../ui/setcomfrm.ui" line="3762"/>
+        <location filename="../ui/setcomfrm.ui" line="4017"/>
         <source>14400</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="173"/>
-        <location filename="../ui/setcomfrm.ui" line="428"/>
-        <location filename="../ui/setcomfrm.ui" line="683"/>
-        <location filename="../ui/setcomfrm.ui" line="938"/>
-        <location filename="../ui/setcomfrm.ui" line="1214"/>
-        <location filename="../ui/setcomfrm.ui" line="1469"/>
-        <location filename="../ui/setcomfrm.ui" line="1724"/>
-        <location filename="../ui/setcomfrm.ui" line="1979"/>
-        <location filename="../ui/setcomfrm.ui" line="2234"/>
-        <location filename="../ui/setcomfrm.ui" line="2489"/>
-        <location filename="../ui/setcomfrm.ui" line="2744"/>
-        <location filename="../ui/setcomfrm.ui" line="2999"/>
-        <location filename="../ui/setcomfrm.ui" line="3254"/>
-        <location filename="../ui/setcomfrm.ui" line="3509"/>
-        <location filename="../ui/setcomfrm.ui" line="3764"/>
-        <location filename="../ui/setcomfrm.ui" line="4019"/>
+        <location filename="../ui/setcomfrm.ui" line="176"/>
+        <location filename="../ui/setcomfrm.ui" line="431"/>
+        <location filename="../ui/setcomfrm.ui" line="686"/>
+        <location filename="../ui/setcomfrm.ui" line="941"/>
+        <location filename="../ui/setcomfrm.ui" line="1217"/>
+        <location filename="../ui/setcomfrm.ui" line="1472"/>
+        <location filename="../ui/setcomfrm.ui" line="1727"/>
+        <location filename="../ui/setcomfrm.ui" line="1982"/>
+        <location filename="../ui/setcomfrm.ui" line="2237"/>
+        <location filename="../ui/setcomfrm.ui" line="2492"/>
+        <location filename="../ui/setcomfrm.ui" line="2747"/>
+        <location filename="../ui/setcomfrm.ui" line="3002"/>
+        <location filename="../ui/setcomfrm.ui" line="3257"/>
+        <location filename="../ui/setcomfrm.ui" line="3512"/>
+        <location filename="../ui/setcomfrm.ui" line="3767"/>
+        <location filename="../ui/setcomfrm.ui" line="4022"/>
         <source>19200</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="178"/>
-        <location filename="../ui/setcomfrm.ui" line="433"/>
-        <location filename="../ui/setcomfrm.ui" line="688"/>
-        <location filename="../ui/setcomfrm.ui" line="943"/>
-        <location filename="../ui/setcomfrm.ui" line="1219"/>
-        <location filename="../ui/setcomfrm.ui" line="1474"/>
-        <location filename="../ui/setcomfrm.ui" line="1729"/>
-        <location filename="../ui/setcomfrm.ui" line="1984"/>
-        <location filename="../ui/setcomfrm.ui" line="2239"/>
-        <location filename="../ui/setcomfrm.ui" line="2494"/>
-        <location filename="../ui/setcomfrm.ui" line="2749"/>
-        <location filename="../ui/setcomfrm.ui" line="3004"/>
-        <location filename="../ui/setcomfrm.ui" line="3259"/>
-        <location filename="../ui/setcomfrm.ui" line="3514"/>
-        <location filename="../ui/setcomfrm.ui" line="3769"/>
-        <location filename="../ui/setcomfrm.ui" line="4024"/>
+        <location filename="../ui/setcomfrm.ui" line="181"/>
+        <location filename="../ui/setcomfrm.ui" line="436"/>
+        <location filename="../ui/setcomfrm.ui" line="691"/>
+        <location filename="../ui/setcomfrm.ui" line="946"/>
+        <location filename="../ui/setcomfrm.ui" line="1222"/>
+        <location filename="../ui/setcomfrm.ui" line="1477"/>
+        <location filename="../ui/setcomfrm.ui" line="1732"/>
+        <location filename="../ui/setcomfrm.ui" line="1987"/>
+        <location filename="../ui/setcomfrm.ui" line="2242"/>
+        <location filename="../ui/setcomfrm.ui" line="2497"/>
+        <location filename="../ui/setcomfrm.ui" line="2752"/>
+        <location filename="../ui/setcomfrm.ui" line="3007"/>
+        <location filename="../ui/setcomfrm.ui" line="3262"/>
+        <location filename="../ui/setcomfrm.ui" line="3517"/>
+        <location filename="../ui/setcomfrm.ui" line="3772"/>
+        <location filename="../ui/setcomfrm.ui" line="4027"/>
         <source>38400</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="183"/>
-        <location filename="../ui/setcomfrm.ui" line="438"/>
-        <location filename="../ui/setcomfrm.ui" line="693"/>
-        <location filename="../ui/setcomfrm.ui" line="948"/>
-        <location filename="../ui/setcomfrm.ui" line="1224"/>
-        <location filename="../ui/setcomfrm.ui" line="1479"/>
-        <location filename="../ui/setcomfrm.ui" line="1734"/>
-        <location filename="../ui/setcomfrm.ui" line="1989"/>
-        <location filename="../ui/setcomfrm.ui" line="2244"/>
-        <location filename="../ui/setcomfrm.ui" line="2499"/>
-        <location filename="../ui/setcomfrm.ui" line="2754"/>
-        <location filename="../ui/setcomfrm.ui" line="3009"/>
-        <location filename="../ui/setcomfrm.ui" line="3264"/>
-        <location filename="../ui/setcomfrm.ui" line="3519"/>
-        <location filename="../ui/setcomfrm.ui" line="3774"/>
-        <location filename="../ui/setcomfrm.ui" line="4029"/>
+        <location filename="../ui/setcomfrm.ui" line="186"/>
+        <location filename="../ui/setcomfrm.ui" line="441"/>
+        <location filename="../ui/setcomfrm.ui" line="696"/>
+        <location filename="../ui/setcomfrm.ui" line="951"/>
+        <location filename="../ui/setcomfrm.ui" line="1227"/>
+        <location filename="../ui/setcomfrm.ui" line="1482"/>
+        <location filename="../ui/setcomfrm.ui" line="1737"/>
+        <location filename="../ui/setcomfrm.ui" line="1992"/>
+        <location filename="../ui/setcomfrm.ui" line="2247"/>
+        <location filename="../ui/setcomfrm.ui" line="2502"/>
+        <location filename="../ui/setcomfrm.ui" line="2757"/>
+        <location filename="../ui/setcomfrm.ui" line="3012"/>
+        <location filename="../ui/setcomfrm.ui" line="3267"/>
+        <location filename="../ui/setcomfrm.ui" line="3522"/>
+        <location filename="../ui/setcomfrm.ui" line="3777"/>
+        <location filename="../ui/setcomfrm.ui" line="4032"/>
         <source>56000</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="199"/>
-        <location filename="../ui/setcomfrm.ui" line="454"/>
-        <location filename="../ui/setcomfrm.ui" line="709"/>
-        <location filename="../ui/setcomfrm.ui" line="964"/>
-        <location filename="../ui/setcomfrm.ui" line="1240"/>
-        <location filename="../ui/setcomfrm.ui" line="1495"/>
-        <location filename="../ui/setcomfrm.ui" line="1750"/>
-        <location filename="../ui/setcomfrm.ui" line="2005"/>
-        <location filename="../ui/setcomfrm.ui" line="2083"/>
-        <location filename="../ui/setcomfrm.ui" line="2260"/>
-        <location filename="../ui/setcomfrm.ui" line="2515"/>
-        <location filename="../ui/setcomfrm.ui" line="2770"/>
-        <location filename="../ui/setcomfrm.ui" line="3025"/>
-        <location filename="../ui/setcomfrm.ui" line="3280"/>
-        <location filename="../ui/setcomfrm.ui" line="3535"/>
-        <location filename="../ui/setcomfrm.ui" line="3790"/>
-        <location filename="../ui/setcomfrm.ui" line="4045"/>
+        <location filename="../ui/setcomfrm.ui" line="202"/>
+        <location filename="../ui/setcomfrm.ui" line="457"/>
+        <location filename="../ui/setcomfrm.ui" line="712"/>
+        <location filename="../ui/setcomfrm.ui" line="967"/>
+        <location filename="../ui/setcomfrm.ui" line="1243"/>
+        <location filename="../ui/setcomfrm.ui" line="1498"/>
+        <location filename="../ui/setcomfrm.ui" line="1753"/>
+        <location filename="../ui/setcomfrm.ui" line="2008"/>
+        <location filename="../ui/setcomfrm.ui" line="2086"/>
+        <location filename="../ui/setcomfrm.ui" line="2263"/>
+        <location filename="../ui/setcomfrm.ui" line="2518"/>
+        <location filename="../ui/setcomfrm.ui" line="2773"/>
+        <location filename="../ui/setcomfrm.ui" line="3028"/>
+        <location filename="../ui/setcomfrm.ui" line="3283"/>
+        <location filename="../ui/setcomfrm.ui" line="3538"/>
+        <location filename="../ui/setcomfrm.ui" line="3793"/>
+        <location filename="../ui/setcomfrm.ui" line="4048"/>
         <source>5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="204"/>
-        <location filename="../ui/setcomfrm.ui" line="459"/>
-        <location filename="../ui/setcomfrm.ui" line="714"/>
-        <location filename="../ui/setcomfrm.ui" line="969"/>
-        <location filename="../ui/setcomfrm.ui" line="1245"/>
-        <location filename="../ui/setcomfrm.ui" line="1500"/>
-        <location filename="../ui/setcomfrm.ui" line="1755"/>
-        <location filename="../ui/setcomfrm.ui" line="2010"/>
-        <location filename="../ui/setcomfrm.ui" line="2265"/>
-        <location filename="../ui/setcomfrm.ui" line="2338"/>
-        <location filename="../ui/setcomfrm.ui" line="2520"/>
-        <location filename="../ui/setcomfrm.ui" line="2775"/>
-        <location filename="../ui/setcomfrm.ui" line="3030"/>
-        <location filename="../ui/setcomfrm.ui" line="3285"/>
-        <location filename="../ui/setcomfrm.ui" line="3540"/>
-        <location filename="../ui/setcomfrm.ui" line="3795"/>
-        <location filename="../ui/setcomfrm.ui" line="4050"/>
+        <location filename="../ui/setcomfrm.ui" line="207"/>
+        <location filename="../ui/setcomfrm.ui" line="462"/>
+        <location filename="../ui/setcomfrm.ui" line="717"/>
+        <location filename="../ui/setcomfrm.ui" line="972"/>
+        <location filename="../ui/setcomfrm.ui" line="1248"/>
+        <location filename="../ui/setcomfrm.ui" line="1503"/>
+        <location filename="../ui/setcomfrm.ui" line="1758"/>
+        <location filename="../ui/setcomfrm.ui" line="2013"/>
+        <location filename="../ui/setcomfrm.ui" line="2268"/>
+        <location filename="../ui/setcomfrm.ui" line="2341"/>
+        <location filename="../ui/setcomfrm.ui" line="2523"/>
+        <location filename="../ui/setcomfrm.ui" line="2778"/>
+        <location filename="../ui/setcomfrm.ui" line="3033"/>
+        <location filename="../ui/setcomfrm.ui" line="3288"/>
+        <location filename="../ui/setcomfrm.ui" line="3543"/>
+        <location filename="../ui/setcomfrm.ui" line="3798"/>
+        <location filename="../ui/setcomfrm.ui" line="4053"/>
         <source>6</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="209"/>
-        <location filename="../ui/setcomfrm.ui" line="464"/>
-        <location filename="../ui/setcomfrm.ui" line="719"/>
-        <location filename="../ui/setcomfrm.ui" line="974"/>
-        <location filename="../ui/setcomfrm.ui" line="1250"/>
-        <location filename="../ui/setcomfrm.ui" line="1505"/>
-        <location filename="../ui/setcomfrm.ui" line="1760"/>
-        <location filename="../ui/setcomfrm.ui" line="2015"/>
-        <location filename="../ui/setcomfrm.ui" line="2270"/>
-        <location filename="../ui/setcomfrm.ui" line="2525"/>
-        <location filename="../ui/setcomfrm.ui" line="2593"/>
-        <location filename="../ui/setcomfrm.ui" line="2780"/>
-        <location filename="../ui/setcomfrm.ui" line="3035"/>
-        <location filename="../ui/setcomfrm.ui" line="3290"/>
-        <location filename="../ui/setcomfrm.ui" line="3545"/>
-        <location filename="../ui/setcomfrm.ui" line="3800"/>
-        <location filename="../ui/setcomfrm.ui" line="4055"/>
+        <location filename="../ui/setcomfrm.ui" line="212"/>
+        <location filename="../ui/setcomfrm.ui" line="467"/>
+        <location filename="../ui/setcomfrm.ui" line="722"/>
+        <location filename="../ui/setcomfrm.ui" line="977"/>
+        <location filename="../ui/setcomfrm.ui" line="1253"/>
+        <location filename="../ui/setcomfrm.ui" line="1508"/>
+        <location filename="../ui/setcomfrm.ui" line="1763"/>
+        <location filename="../ui/setcomfrm.ui" line="2018"/>
+        <location filename="../ui/setcomfrm.ui" line="2273"/>
+        <location filename="../ui/setcomfrm.ui" line="2528"/>
+        <location filename="../ui/setcomfrm.ui" line="2596"/>
+        <location filename="../ui/setcomfrm.ui" line="2783"/>
+        <location filename="../ui/setcomfrm.ui" line="3038"/>
+        <location filename="../ui/setcomfrm.ui" line="3293"/>
+        <location filename="../ui/setcomfrm.ui" line="3548"/>
+        <location filename="../ui/setcomfrm.ui" line="3803"/>
+        <location filename="../ui/setcomfrm.ui" line="4058"/>
         <source>7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="214"/>
-        <location filename="../ui/setcomfrm.ui" line="469"/>
-        <location filename="../ui/setcomfrm.ui" line="724"/>
-        <location filename="../ui/setcomfrm.ui" line="979"/>
-        <location filename="../ui/setcomfrm.ui" line="1255"/>
-        <location filename="../ui/setcomfrm.ui" line="1510"/>
-        <location filename="../ui/setcomfrm.ui" line="1765"/>
-        <location filename="../ui/setcomfrm.ui" line="2020"/>
-        <location filename="../ui/setcomfrm.ui" line="2275"/>
-        <location filename="../ui/setcomfrm.ui" line="2530"/>
-        <location filename="../ui/setcomfrm.ui" line="2785"/>
-        <location filename="../ui/setcomfrm.ui" line="2848"/>
-        <location filename="../ui/setcomfrm.ui" line="3040"/>
-        <location filename="../ui/setcomfrm.ui" line="3295"/>
-        <location filename="../ui/setcomfrm.ui" line="3550"/>
-        <location filename="../ui/setcomfrm.ui" line="3805"/>
-        <location filename="../ui/setcomfrm.ui" line="4060"/>
+        <location filename="../ui/setcomfrm.ui" line="217"/>
+        <location filename="../ui/setcomfrm.ui" line="472"/>
+        <location filename="../ui/setcomfrm.ui" line="727"/>
+        <location filename="../ui/setcomfrm.ui" line="982"/>
+        <location filename="../ui/setcomfrm.ui" line="1258"/>
+        <location filename="../ui/setcomfrm.ui" line="1513"/>
+        <location filename="../ui/setcomfrm.ui" line="1768"/>
+        <location filename="../ui/setcomfrm.ui" line="2023"/>
+        <location filename="../ui/setcomfrm.ui" line="2278"/>
+        <location filename="../ui/setcomfrm.ui" line="2533"/>
+        <location filename="../ui/setcomfrm.ui" line="2788"/>
+        <location filename="../ui/setcomfrm.ui" line="2851"/>
+        <location filename="../ui/setcomfrm.ui" line="3043"/>
+        <location filename="../ui/setcomfrm.ui" line="3298"/>
+        <location filename="../ui/setcomfrm.ui" line="3553"/>
+        <location filename="../ui/setcomfrm.ui" line="3808"/>
+        <location filename="../ui/setcomfrm.ui" line="4063"/>
         <source>8</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="256"/>
-        <location filename="../ui/setcomfrm.ui" line="511"/>
-        <location filename="../ui/setcomfrm.ui" line="766"/>
-        <location filename="../ui/setcomfrm.ui" line="1021"/>
-        <location filename="../ui/setcomfrm.ui" line="1063"/>
-        <location filename="../ui/setcomfrm.ui" line="1297"/>
-        <location filename="../ui/setcomfrm.ui" line="1552"/>
-        <location filename="../ui/setcomfrm.ui" line="1807"/>
-        <location filename="../ui/setcomfrm.ui" line="2062"/>
-        <location filename="../ui/setcomfrm.ui" line="2317"/>
-        <location filename="../ui/setcomfrm.ui" line="2572"/>
-        <location filename="../ui/setcomfrm.ui" line="2827"/>
-        <location filename="../ui/setcomfrm.ui" line="3082"/>
-        <location filename="../ui/setcomfrm.ui" line="3337"/>
-        <location filename="../ui/setcomfrm.ui" line="3592"/>
-        <location filename="../ui/setcomfrm.ui" line="3847"/>
-        <location filename="../ui/setcomfrm.ui" line="4102"/>
+        <location filename="../ui/setcomfrm.ui" line="259"/>
+        <location filename="../ui/setcomfrm.ui" line="514"/>
+        <location filename="../ui/setcomfrm.ui" line="769"/>
+        <location filename="../ui/setcomfrm.ui" line="1024"/>
+        <location filename="../ui/setcomfrm.ui" line="1066"/>
+        <location filename="../ui/setcomfrm.ui" line="1300"/>
+        <location filename="../ui/setcomfrm.ui" line="1555"/>
+        <location filename="../ui/setcomfrm.ui" line="1810"/>
+        <location filename="../ui/setcomfrm.ui" line="2065"/>
+        <location filename="../ui/setcomfrm.ui" line="2320"/>
+        <location filename="../ui/setcomfrm.ui" line="2575"/>
+        <location filename="../ui/setcomfrm.ui" line="2830"/>
+        <location filename="../ui/setcomfrm.ui" line="3085"/>
+        <location filename="../ui/setcomfrm.ui" line="3340"/>
+        <location filename="../ui/setcomfrm.ui" line="3595"/>
+        <location filename="../ui/setcomfrm.ui" line="3850"/>
+        <location filename="../ui/setcomfrm.ui" line="4105"/>
         <source>1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="261"/>
-        <location filename="../ui/setcomfrm.ui" line="516"/>
-        <location filename="../ui/setcomfrm.ui" line="771"/>
-        <location filename="../ui/setcomfrm.ui" line="1026"/>
-        <location filename="../ui/setcomfrm.ui" line="1302"/>
-        <location filename="../ui/setcomfrm.ui" line="1557"/>
-        <location filename="../ui/setcomfrm.ui" line="1812"/>
-        <location filename="../ui/setcomfrm.ui" line="2067"/>
-        <location filename="../ui/setcomfrm.ui" line="2322"/>
-        <location filename="../ui/setcomfrm.ui" line="2577"/>
-        <location filename="../ui/setcomfrm.ui" line="2832"/>
-        <location filename="../ui/setcomfrm.ui" line="3087"/>
-        <location filename="../ui/setcomfrm.ui" line="3342"/>
-        <location filename="../ui/setcomfrm.ui" line="3597"/>
-        <location filename="../ui/setcomfrm.ui" line="3852"/>
-        <location filename="../ui/setcomfrm.ui" line="4107"/>
+        <location filename="../ui/setcomfrm.ui" line="264"/>
+        <location filename="../ui/setcomfrm.ui" line="519"/>
+        <location filename="../ui/setcomfrm.ui" line="774"/>
+        <location filename="../ui/setcomfrm.ui" line="1029"/>
+        <location filename="../ui/setcomfrm.ui" line="1305"/>
+        <location filename="../ui/setcomfrm.ui" line="1560"/>
+        <location filename="../ui/setcomfrm.ui" line="1815"/>
+        <location filename="../ui/setcomfrm.ui" line="2070"/>
+        <location filename="../ui/setcomfrm.ui" line="2325"/>
+        <location filename="../ui/setcomfrm.ui" line="2580"/>
+        <location filename="../ui/setcomfrm.ui" line="2835"/>
+        <location filename="../ui/setcomfrm.ui" line="3090"/>
+        <location filename="../ui/setcomfrm.ui" line="3345"/>
+        <location filename="../ui/setcomfrm.ui" line="3600"/>
+        <location filename="../ui/setcomfrm.ui" line="3855"/>
+        <location filename="../ui/setcomfrm.ui" line="4110"/>
         <source>1.5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/setcomfrm.ui" line="266"/>
-        <location filename="../ui/setcomfrm.ui" line="521"/>
-        <location filename="../ui/setcomfrm.ui" line="776"/>
-        <location filename="../ui/setcomfrm.ui" line="1031"/>
-        <location filename="../ui/setcomfrm.ui" line="1307"/>
-        <location filename="../ui/setcomfrm.ui" line="1318"/>
-        <location filename="../ui/setcomfrm.ui" line="1562"/>
-        <location filename="../ui/setcomfrm.ui" line="1817"/>
-        <location filename="../ui/setcomfrm.ui" line="2072"/>
-        <location filename="../ui/setcomfrm.ui" line="2327"/>
-        <location filename="../ui/setcomfrm.ui" line="2582"/>
-        <location filename="../ui/setcomfrm.ui" line="2837"/>
-        <location filename="../ui/setcomfrm.ui" line="3092"/>
-        <location filename="../ui/setcomfrm.ui" line="3347"/>
-        <location filename="../ui/setcomfrm.ui" line="3602"/>
-        <location filename="../ui/setcomfrm.ui" line="3857"/>
-        <location filename="../ui/setcomfrm.ui" line="4112"/>
+        <location filename="../ui/setcomfrm.ui" line="269"/>
+        <location filename="../ui/setcomfrm.ui" line="524"/>
+        <location filename="../ui/setcomfrm.ui" line="779"/>
+        <location filename="../ui/setcomfrm.ui" line="1034"/>
+        <location filename="../ui/setcomfrm.ui" line="1310"/>
+        <location filename="../ui/setcomfrm.ui" line="1321"/>
+        <location filename="../ui/setcomfrm.ui" line="1565"/>
+        <location filename="../ui/setcomfrm.ui" line="1820"/>
+        <location filename="../ui/setcomfrm.ui" line="2075"/>
+        <location filename="../ui/setcomfrm.ui" line="2330"/>
+        <location filename="../ui/setcomfrm.ui" line="2585"/>
+        <location filename="../ui/setcomfrm.ui" line="2840"/>
+        <location filename="../ui/setcomfrm.ui" line="3095"/>
+        <location filename="../ui/setcomfrm.ui" line="3350"/>
+        <location filename="../ui/setcomfrm.ui" line="3605"/>
+        <location filename="../ui/setcomfrm.ui" line="3860"/>
+        <location filename="../ui/setcomfrm.ui" line="4115"/>
         <source>2</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../source/setcomfrm.cpp" line="63"/>
+        <source>OK</source>
+        <translation>OK</translation>
+    </message>
+    <message>
+        <location filename="../source/setcomfrm.cpp" line="63"/>
+        <source>Save Settings Successfully !</source>
+        <translation>Save Settings Successfully !</translation>
+    </message>
+    <message>
+        <location filename="../source/setcomfrm.cpp" line="305"/>
+        <source>Warning</source>
+        <translation>Warning</translation>
+    </message>
+    <message>
+        <location filename="../source/setcomfrm.cpp" line="305"/>
+        <source>Save Settings of Meter: </source>
+        <translation>Save Settings of Meter:</translation>
+    </message>
+    <message>
+        <location filename="../source/setcomfrm.cpp" line="305"/>
+        <source># Error!</source>
+        <translation># Error!</translation>
+    </message>
+    <message>
+        <location filename="../source/setcomfrm.cpp" line="364"/>
+        <location filename="../source/setcomfrm.cpp" line="369"/>
+        <location filename="../source/setcomfrm.cpp" line="384"/>
+        <source>Error</source>
+        <translation>Error</translation>
+    </message>
+    <message>
+        <location filename="../source/setcomfrm.cpp" line="364"/>
+        <source>Can not open file: </source>
+        <translation>Can not open file:</translation>
+    </message>
+    <message>
+        <location filename="../source/setcomfrm.cpp" line="369"/>
+        <source>Can not set Content file: </source>
+        <translation>Can not set Content file:</translation>
+    </message>
+    <message>
+        <location filename="../source/setcomfrm.cpp" line="384"/>
+        <source>Can not write to file: </source>
+        <translation>Can not write to file:</translation>
     </message>
 </context>
 <context>
     <name>SetPortFrm</name>
     <message>
-        <location filename="../ui/setportfrm.ui" line="14"/>
+        <location filename="../ui/setportfrm.ui" line="17"/>
         <source>SetPortFrm</source>
-        <translation type="unfinished"></translation>
+        <translation>SetPortFrm</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="20"/>
+        <location filename="../ui/setportfrm.ui" line="23"/>
         <source>Valve</source>
-        <translation type="unfinished"></translation>
+        <translation>Valve</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="26"/>
+        <location filename="../ui/setportfrm.ui" line="29"/>
         <source>Valve In</source>
-        <translation type="unfinished"></translation>
+        <translation>Valve In</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="34"/>
-        <location filename="../ui/setportfrm.ui" line="145"/>
-        <location filename="../ui/setportfrm.ui" line="256"/>
-        <location filename="../ui/setportfrm.ui" line="367"/>
-        <location filename="../ui/setportfrm.ui" line="478"/>
-        <location filename="../ui/setportfrm.ui" line="589"/>
-        <location filename="../ui/setportfrm.ui" line="722"/>
-        <location filename="../ui/setportfrm.ui" line="833"/>
-        <location filename="../ui/setportfrm.ui" line="944"/>
-        <location filename="../ui/setportfrm.ui" line="1055"/>
-        <location filename="../ui/setportfrm.ui" line="1166"/>
+        <location filename="../ui/setportfrm.ui" line="37"/>
+        <location filename="../ui/setportfrm.ui" line="148"/>
+        <location filename="../ui/setportfrm.ui" line="259"/>
+        <location filename="../ui/setportfrm.ui" line="370"/>
+        <location filename="../ui/setportfrm.ui" line="481"/>
+        <location filename="../ui/setportfrm.ui" line="592"/>
+        <location filename="../ui/setportfrm.ui" line="725"/>
+        <location filename="../ui/setportfrm.ui" line="836"/>
+        <location filename="../ui/setportfrm.ui" line="947"/>
+        <location filename="../ui/setportfrm.ui" line="1058"/>
+        <location filename="../ui/setportfrm.ui" line="1169"/>
         <source>port1</source>
-        <translation type="unfinished"></translation>
+        <translation>port1</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="39"/>
-        <location filename="../ui/setportfrm.ui" line="150"/>
-        <location filename="../ui/setportfrm.ui" line="261"/>
-        <location filename="../ui/setportfrm.ui" line="372"/>
-        <location filename="../ui/setportfrm.ui" line="483"/>
-        <location filename="../ui/setportfrm.ui" line="594"/>
-        <location filename="../ui/setportfrm.ui" line="727"/>
-        <location filename="../ui/setportfrm.ui" line="838"/>
-        <location filename="../ui/setportfrm.ui" line="949"/>
-        <location filename="../ui/setportfrm.ui" line="1060"/>
-        <location filename="../ui/setportfrm.ui" line="1171"/>
+        <location filename="../ui/setportfrm.ui" line="42"/>
+        <location filename="../ui/setportfrm.ui" line="153"/>
+        <location filename="../ui/setportfrm.ui" line="264"/>
+        <location filename="../ui/setportfrm.ui" line="375"/>
+        <location filename="../ui/setportfrm.ui" line="486"/>
+        <location filename="../ui/setportfrm.ui" line="597"/>
+        <location filename="../ui/setportfrm.ui" line="730"/>
+        <location filename="../ui/setportfrm.ui" line="841"/>
+        <location filename="../ui/setportfrm.ui" line="952"/>
+        <location filename="../ui/setportfrm.ui" line="1063"/>
+        <location filename="../ui/setportfrm.ui" line="1174"/>
         <source>port2</source>
-        <translation type="unfinished"></translation>
+        <translation>port2</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="44"/>
-        <location filename="../ui/setportfrm.ui" line="155"/>
-        <location filename="../ui/setportfrm.ui" line="266"/>
-        <location filename="../ui/setportfrm.ui" line="377"/>
-        <location filename="../ui/setportfrm.ui" line="488"/>
-        <location filename="../ui/setportfrm.ui" line="599"/>
-        <location filename="../ui/setportfrm.ui" line="732"/>
-        <location filename="../ui/setportfrm.ui" line="843"/>
-        <location filename="../ui/setportfrm.ui" line="954"/>
-        <location filename="../ui/setportfrm.ui" line="1065"/>
-        <location filename="../ui/setportfrm.ui" line="1176"/>
+        <location filename="../ui/setportfrm.ui" line="47"/>
+        <location filename="../ui/setportfrm.ui" line="158"/>
+        <location filename="../ui/setportfrm.ui" line="269"/>
+        <location filename="../ui/setportfrm.ui" line="380"/>
+        <location filename="../ui/setportfrm.ui" line="491"/>
+        <location filename="../ui/setportfrm.ui" line="602"/>
+        <location filename="../ui/setportfrm.ui" line="735"/>
+        <location filename="../ui/setportfrm.ui" line="846"/>
+        <location filename="../ui/setportfrm.ui" line="957"/>
+        <location filename="../ui/setportfrm.ui" line="1068"/>
+        <location filename="../ui/setportfrm.ui" line="1179"/>
         <source>port3</source>
-        <translation type="unfinished"></translation>
+        <translation>port3</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="49"/>
-        <location filename="../ui/setportfrm.ui" line="160"/>
-        <location filename="../ui/setportfrm.ui" line="271"/>
-        <location filename="../ui/setportfrm.ui" line="382"/>
-        <location filename="../ui/setportfrm.ui" line="493"/>
-        <location filename="../ui/setportfrm.ui" line="604"/>
-        <location filename="../ui/setportfrm.ui" line="737"/>
-        <location filename="../ui/setportfrm.ui" line="848"/>
-        <location filename="../ui/setportfrm.ui" line="959"/>
-        <location filename="../ui/setportfrm.ui" line="1070"/>
-        <location filename="../ui/setportfrm.ui" line="1181"/>
+        <location filename="../ui/setportfrm.ui" line="52"/>
+        <location filename="../ui/setportfrm.ui" line="163"/>
+        <location filename="../ui/setportfrm.ui" line="274"/>
+        <location filename="../ui/setportfrm.ui" line="385"/>
+        <location filename="../ui/setportfrm.ui" line="496"/>
+        <location filename="../ui/setportfrm.ui" line="607"/>
+        <location filename="../ui/setportfrm.ui" line="740"/>
+        <location filename="../ui/setportfrm.ui" line="851"/>
+        <location filename="../ui/setportfrm.ui" line="962"/>
+        <location filename="../ui/setportfrm.ui" line="1073"/>
+        <location filename="../ui/setportfrm.ui" line="1184"/>
         <source>port4</source>
-        <translation type="unfinished"></translation>
+        <translation>port4</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="54"/>
-        <location filename="../ui/setportfrm.ui" line="165"/>
-        <location filename="../ui/setportfrm.ui" line="276"/>
-        <location filename="../ui/setportfrm.ui" line="387"/>
-        <location filename="../ui/setportfrm.ui" line="498"/>
-        <location filename="../ui/setportfrm.ui" line="609"/>
-        <location filename="../ui/setportfrm.ui" line="742"/>
-        <location filename="../ui/setportfrm.ui" line="853"/>
-        <location filename="../ui/setportfrm.ui" line="964"/>
-        <location filename="../ui/setportfrm.ui" line="1075"/>
-        <location filename="../ui/setportfrm.ui" line="1186"/>
+        <location filename="../ui/setportfrm.ui" line="57"/>
+        <location filename="../ui/setportfrm.ui" line="168"/>
+        <location filename="../ui/setportfrm.ui" line="279"/>
+        <location filename="../ui/setportfrm.ui" line="390"/>
+        <location filename="../ui/setportfrm.ui" line="501"/>
+        <location filename="../ui/setportfrm.ui" line="612"/>
+        <location filename="../ui/setportfrm.ui" line="745"/>
+        <location filename="../ui/setportfrm.ui" line="856"/>
+        <location filename="../ui/setportfrm.ui" line="967"/>
+        <location filename="../ui/setportfrm.ui" line="1078"/>
+        <location filename="../ui/setportfrm.ui" line="1189"/>
         <source>port5</source>
-        <translation type="unfinished"></translation>
+        <translation>port5</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="59"/>
-        <location filename="../ui/setportfrm.ui" line="170"/>
-        <location filename="../ui/setportfrm.ui" line="281"/>
-        <location filename="../ui/setportfrm.ui" line="392"/>
-        <location filename="../ui/setportfrm.ui" line="503"/>
-        <location filename="../ui/setportfrm.ui" line="614"/>
-        <location filename="../ui/setportfrm.ui" line="747"/>
-        <location filename="../ui/setportfrm.ui" line="858"/>
-        <location filename="../ui/setportfrm.ui" line="969"/>
-        <location filename="../ui/setportfrm.ui" line="1080"/>
-        <location filename="../ui/setportfrm.ui" line="1191"/>
+        <location filename="../ui/setportfrm.ui" line="62"/>
+        <location filename="../ui/setportfrm.ui" line="173"/>
+        <location filename="../ui/setportfrm.ui" line="284"/>
+        <location filename="../ui/setportfrm.ui" line="395"/>
+        <location filename="../ui/setportfrm.ui" line="506"/>
+        <location filename="../ui/setportfrm.ui" line="617"/>
+        <location filename="../ui/setportfrm.ui" line="750"/>
+        <location filename="../ui/setportfrm.ui" line="861"/>
+        <location filename="../ui/setportfrm.ui" line="972"/>
+        <location filename="../ui/setportfrm.ui" line="1083"/>
+        <location filename="../ui/setportfrm.ui" line="1194"/>
         <source>port6</source>
-        <translation type="unfinished"></translation>
+        <translation>port6</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="64"/>
-        <location filename="../ui/setportfrm.ui" line="175"/>
-        <location filename="../ui/setportfrm.ui" line="286"/>
-        <location filename="../ui/setportfrm.ui" line="397"/>
-        <location filename="../ui/setportfrm.ui" line="508"/>
-        <location filename="../ui/setportfrm.ui" line="619"/>
-        <location filename="../ui/setportfrm.ui" line="752"/>
-        <location filename="../ui/setportfrm.ui" line="863"/>
-        <location filename="../ui/setportfrm.ui" line="974"/>
-        <location filename="../ui/setportfrm.ui" line="1085"/>
-        <location filename="../ui/setportfrm.ui" line="1196"/>
+        <location filename="../ui/setportfrm.ui" line="67"/>
+        <location filename="../ui/setportfrm.ui" line="178"/>
+        <location filename="../ui/setportfrm.ui" line="289"/>
+        <location filename="../ui/setportfrm.ui" line="400"/>
+        <location filename="../ui/setportfrm.ui" line="511"/>
+        <location filename="../ui/setportfrm.ui" line="622"/>
+        <location filename="../ui/setportfrm.ui" line="755"/>
+        <location filename="../ui/setportfrm.ui" line="866"/>
+        <location filename="../ui/setportfrm.ui" line="977"/>
+        <location filename="../ui/setportfrm.ui" line="1088"/>
+        <location filename="../ui/setportfrm.ui" line="1199"/>
         <source>port7</source>
-        <translation type="unfinished"></translation>
+        <translation>port7</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="69"/>
-        <location filename="../ui/setportfrm.ui" line="180"/>
-        <location filename="../ui/setportfrm.ui" line="291"/>
-        <location filename="../ui/setportfrm.ui" line="402"/>
-        <location filename="../ui/setportfrm.ui" line="513"/>
-        <location filename="../ui/setportfrm.ui" line="624"/>
-        <location filename="../ui/setportfrm.ui" line="757"/>
-        <location filename="../ui/setportfrm.ui" line="868"/>
-        <location filename="../ui/setportfrm.ui" line="979"/>
-        <location filename="../ui/setportfrm.ui" line="1090"/>
-        <location filename="../ui/setportfrm.ui" line="1201"/>
+        <location filename="../ui/setportfrm.ui" line="72"/>
+        <location filename="../ui/setportfrm.ui" line="183"/>
+        <location filename="../ui/setportfrm.ui" line="294"/>
+        <location filename="../ui/setportfrm.ui" line="405"/>
+        <location filename="../ui/setportfrm.ui" line="516"/>
+        <location filename="../ui/setportfrm.ui" line="627"/>
+        <location filename="../ui/setportfrm.ui" line="760"/>
+        <location filename="../ui/setportfrm.ui" line="871"/>
+        <location filename="../ui/setportfrm.ui" line="982"/>
+        <location filename="../ui/setportfrm.ui" line="1093"/>
+        <location filename="../ui/setportfrm.ui" line="1204"/>
         <source>port8</source>
-        <translation type="unfinished"></translation>
+        <translation>port8</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="74"/>
-        <location filename="../ui/setportfrm.ui" line="185"/>
-        <location filename="../ui/setportfrm.ui" line="296"/>
-        <location filename="../ui/setportfrm.ui" line="407"/>
-        <location filename="../ui/setportfrm.ui" line="518"/>
-        <location filename="../ui/setportfrm.ui" line="629"/>
-        <location filename="../ui/setportfrm.ui" line="762"/>
-        <location filename="../ui/setportfrm.ui" line="873"/>
-        <location filename="../ui/setportfrm.ui" line="984"/>
-        <location filename="../ui/setportfrm.ui" line="1095"/>
-        <location filename="../ui/setportfrm.ui" line="1206"/>
+        <location filename="../ui/setportfrm.ui" line="77"/>
+        <location filename="../ui/setportfrm.ui" line="188"/>
+        <location filename="../ui/setportfrm.ui" line="299"/>
+        <location filename="../ui/setportfrm.ui" line="410"/>
+        <location filename="../ui/setportfrm.ui" line="521"/>
+        <location filename="../ui/setportfrm.ui" line="632"/>
+        <location filename="../ui/setportfrm.ui" line="765"/>
+        <location filename="../ui/setportfrm.ui" line="876"/>
+        <location filename="../ui/setportfrm.ui" line="987"/>
+        <location filename="../ui/setportfrm.ui" line="1098"/>
+        <location filename="../ui/setportfrm.ui" line="1209"/>
         <source>port9</source>
-        <translation type="unfinished"></translation>
+        <translation>port9</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="79"/>
-        <location filename="../ui/setportfrm.ui" line="190"/>
-        <location filename="../ui/setportfrm.ui" line="301"/>
-        <location filename="../ui/setportfrm.ui" line="412"/>
-        <location filename="../ui/setportfrm.ui" line="523"/>
-        <location filename="../ui/setportfrm.ui" line="634"/>
-        <location filename="../ui/setportfrm.ui" line="767"/>
-        <location filename="../ui/setportfrm.ui" line="878"/>
-        <location filename="../ui/setportfrm.ui" line="989"/>
-        <location filename="../ui/setportfrm.ui" line="1100"/>
-        <location filename="../ui/setportfrm.ui" line="1211"/>
+        <location filename="../ui/setportfrm.ui" line="82"/>
+        <location filename="../ui/setportfrm.ui" line="193"/>
+        <location filename="../ui/setportfrm.ui" line="304"/>
+        <location filename="../ui/setportfrm.ui" line="415"/>
+        <location filename="../ui/setportfrm.ui" line="526"/>
+        <location filename="../ui/setportfrm.ui" line="637"/>
+        <location filename="../ui/setportfrm.ui" line="770"/>
+        <location filename="../ui/setportfrm.ui" line="881"/>
+        <location filename="../ui/setportfrm.ui" line="992"/>
+        <location filename="../ui/setportfrm.ui" line="1103"/>
+        <location filename="../ui/setportfrm.ui" line="1214"/>
         <source>port10</source>
-        <translation type="unfinished"></translation>
+        <translation>port10</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="84"/>
-        <location filename="../ui/setportfrm.ui" line="195"/>
-        <location filename="../ui/setportfrm.ui" line="306"/>
-        <location filename="../ui/setportfrm.ui" line="417"/>
-        <location filename="../ui/setportfrm.ui" line="528"/>
-        <location filename="../ui/setportfrm.ui" line="639"/>
-        <location filename="../ui/setportfrm.ui" line="772"/>
-        <location filename="../ui/setportfrm.ui" line="883"/>
-        <location filename="../ui/setportfrm.ui" line="994"/>
-        <location filename="../ui/setportfrm.ui" line="1105"/>
-        <location filename="../ui/setportfrm.ui" line="1216"/>
+        <location filename="../ui/setportfrm.ui" line="87"/>
+        <location filename="../ui/setportfrm.ui" line="198"/>
+        <location filename="../ui/setportfrm.ui" line="309"/>
+        <location filename="../ui/setportfrm.ui" line="420"/>
+        <location filename="../ui/setportfrm.ui" line="531"/>
+        <location filename="../ui/setportfrm.ui" line="642"/>
+        <location filename="../ui/setportfrm.ui" line="775"/>
+        <location filename="../ui/setportfrm.ui" line="886"/>
+        <location filename="../ui/setportfrm.ui" line="997"/>
+        <location filename="../ui/setportfrm.ui" line="1108"/>
+        <location filename="../ui/setportfrm.ui" line="1219"/>
         <source>port11</source>
-        <translation type="unfinished"></translation>
+        <translation>port11</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="89"/>
-        <location filename="../ui/setportfrm.ui" line="200"/>
-        <location filename="../ui/setportfrm.ui" line="311"/>
-        <location filename="../ui/setportfrm.ui" line="422"/>
-        <location filename="../ui/setportfrm.ui" line="533"/>
-        <location filename="../ui/setportfrm.ui" line="644"/>
-        <location filename="../ui/setportfrm.ui" line="777"/>
-        <location filename="../ui/setportfrm.ui" line="888"/>
-        <location filename="../ui/setportfrm.ui" line="999"/>
-        <location filename="../ui/setportfrm.ui" line="1110"/>
-        <location filename="../ui/setportfrm.ui" line="1221"/>
+        <location filename="../ui/setportfrm.ui" line="92"/>
+        <location filename="../ui/setportfrm.ui" line="203"/>
+        <location filename="../ui/setportfrm.ui" line="314"/>
+        <location filename="../ui/setportfrm.ui" line="425"/>
+        <location filename="../ui/setportfrm.ui" line="536"/>
+        <location filename="../ui/setportfrm.ui" line="647"/>
+        <location filename="../ui/setportfrm.ui" line="780"/>
+        <location filename="../ui/setportfrm.ui" line="891"/>
+        <location filename="../ui/setportfrm.ui" line="1002"/>
+        <location filename="../ui/setportfrm.ui" line="1113"/>
+        <location filename="../ui/setportfrm.ui" line="1224"/>
         <source>port12</source>
-        <translation type="unfinished"></translation>
+        <translation>port12</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="94"/>
-        <location filename="../ui/setportfrm.ui" line="205"/>
-        <location filename="../ui/setportfrm.ui" line="316"/>
-        <location filename="../ui/setportfrm.ui" line="427"/>
-        <location filename="../ui/setportfrm.ui" line="538"/>
-        <location filename="../ui/setportfrm.ui" line="649"/>
-        <location filename="../ui/setportfrm.ui" line="782"/>
-        <location filename="../ui/setportfrm.ui" line="893"/>
-        <location filename="../ui/setportfrm.ui" line="1004"/>
-        <location filename="../ui/setportfrm.ui" line="1115"/>
-        <location filename="../ui/setportfrm.ui" line="1226"/>
+        <location filename="../ui/setportfrm.ui" line="97"/>
+        <location filename="../ui/setportfrm.ui" line="208"/>
+        <location filename="../ui/setportfrm.ui" line="319"/>
+        <location filename="../ui/setportfrm.ui" line="430"/>
+        <location filename="../ui/setportfrm.ui" line="541"/>
+        <location filename="../ui/setportfrm.ui" line="652"/>
+        <location filename="../ui/setportfrm.ui" line="785"/>
+        <location filename="../ui/setportfrm.ui" line="896"/>
+        <location filename="../ui/setportfrm.ui" line="1007"/>
+        <location filename="../ui/setportfrm.ui" line="1118"/>
+        <location filename="../ui/setportfrm.ui" line="1229"/>
         <source>port13</source>
-        <translation type="unfinished"></translation>
+        <translation>port13</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="99"/>
-        <location filename="../ui/setportfrm.ui" line="210"/>
-        <location filename="../ui/setportfrm.ui" line="321"/>
-        <location filename="../ui/setportfrm.ui" line="432"/>
-        <location filename="../ui/setportfrm.ui" line="543"/>
-        <location filename="../ui/setportfrm.ui" line="654"/>
-        <location filename="../ui/setportfrm.ui" line="787"/>
-        <location filename="../ui/setportfrm.ui" line="898"/>
-        <location filename="../ui/setportfrm.ui" line="1009"/>
-        <location filename="../ui/setportfrm.ui" line="1120"/>
-        <location filename="../ui/setportfrm.ui" line="1231"/>
+        <location filename="../ui/setportfrm.ui" line="102"/>
+        <location filename="../ui/setportfrm.ui" line="213"/>
+        <location filename="../ui/setportfrm.ui" line="324"/>
+        <location filename="../ui/setportfrm.ui" line="435"/>
+        <location filename="../ui/setportfrm.ui" line="546"/>
+        <location filename="../ui/setportfrm.ui" line="657"/>
+        <location filename="../ui/setportfrm.ui" line="790"/>
+        <location filename="../ui/setportfrm.ui" line="901"/>
+        <location filename="../ui/setportfrm.ui" line="1012"/>
+        <location filename="../ui/setportfrm.ui" line="1123"/>
+        <location filename="../ui/setportfrm.ui" line="1234"/>
         <source>port14</source>
-        <translation type="unfinished"></translation>
+        <translation>port14</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="104"/>
-        <location filename="../ui/setportfrm.ui" line="215"/>
-        <location filename="../ui/setportfrm.ui" line="326"/>
-        <location filename="../ui/setportfrm.ui" line="437"/>
-        <location filename="../ui/setportfrm.ui" line="548"/>
-        <location filename="../ui/setportfrm.ui" line="659"/>
-        <location filename="../ui/setportfrm.ui" line="792"/>
-        <location filename="../ui/setportfrm.ui" line="903"/>
-        <location filename="../ui/setportfrm.ui" line="1014"/>
-        <location filename="../ui/setportfrm.ui" line="1125"/>
-        <location filename="../ui/setportfrm.ui" line="1236"/>
+        <location filename="../ui/setportfrm.ui" line="107"/>
+        <location filename="../ui/setportfrm.ui" line="218"/>
+        <location filename="../ui/setportfrm.ui" line="329"/>
+        <location filename="../ui/setportfrm.ui" line="440"/>
+        <location filename="../ui/setportfrm.ui" line="551"/>
+        <location filename="../ui/setportfrm.ui" line="662"/>
+        <location filename="../ui/setportfrm.ui" line="795"/>
+        <location filename="../ui/setportfrm.ui" line="906"/>
+        <location filename="../ui/setportfrm.ui" line="1017"/>
+        <location filename="../ui/setportfrm.ui" line="1128"/>
+        <location filename="../ui/setportfrm.ui" line="1239"/>
         <source>port15</source>
-        <translation type="unfinished"></translation>
+        <translation>port15</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="109"/>
-        <location filename="../ui/setportfrm.ui" line="220"/>
-        <location filename="../ui/setportfrm.ui" line="331"/>
-        <location filename="../ui/setportfrm.ui" line="442"/>
-        <location filename="../ui/setportfrm.ui" line="553"/>
-        <location filename="../ui/setportfrm.ui" line="664"/>
-        <location filename="../ui/setportfrm.ui" line="797"/>
-        <location filename="../ui/setportfrm.ui" line="908"/>
-        <location filename="../ui/setportfrm.ui" line="1019"/>
-        <location filename="../ui/setportfrm.ui" line="1130"/>
-        <location filename="../ui/setportfrm.ui" line="1241"/>
+        <location filename="../ui/setportfrm.ui" line="112"/>
+        <location filename="../ui/setportfrm.ui" line="223"/>
+        <location filename="../ui/setportfrm.ui" line="334"/>
+        <location filename="../ui/setportfrm.ui" line="445"/>
+        <location filename="../ui/setportfrm.ui" line="556"/>
+        <location filename="../ui/setportfrm.ui" line="667"/>
+        <location filename="../ui/setportfrm.ui" line="800"/>
+        <location filename="../ui/setportfrm.ui" line="911"/>
+        <location filename="../ui/setportfrm.ui" line="1022"/>
+        <location filename="../ui/setportfrm.ui" line="1133"/>
+        <location filename="../ui/setportfrm.ui" line="1244"/>
         <source>port16</source>
-        <translation type="unfinished"></translation>
+        <translation>port16</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="114"/>
-        <location filename="../ui/setportfrm.ui" line="225"/>
-        <location filename="../ui/setportfrm.ui" line="336"/>
-        <location filename="../ui/setportfrm.ui" line="447"/>
-        <location filename="../ui/setportfrm.ui" line="558"/>
-        <location filename="../ui/setportfrm.ui" line="669"/>
-        <location filename="../ui/setportfrm.ui" line="802"/>
-        <location filename="../ui/setportfrm.ui" line="913"/>
-        <location filename="../ui/setportfrm.ui" line="1024"/>
-        <location filename="../ui/setportfrm.ui" line="1135"/>
-        <location filename="../ui/setportfrm.ui" line="1246"/>
+        <location filename="../ui/setportfrm.ui" line="117"/>
+        <location filename="../ui/setportfrm.ui" line="228"/>
+        <location filename="../ui/setportfrm.ui" line="339"/>
+        <location filename="../ui/setportfrm.ui" line="450"/>
+        <location filename="../ui/setportfrm.ui" line="561"/>
+        <location filename="../ui/setportfrm.ui" line="672"/>
+        <location filename="../ui/setportfrm.ui" line="805"/>
+        <location filename="../ui/setportfrm.ui" line="916"/>
+        <location filename="../ui/setportfrm.ui" line="1027"/>
+        <location filename="../ui/setportfrm.ui" line="1138"/>
+        <location filename="../ui/setportfrm.ui" line="1249"/>
         <source>port17</source>
-        <translation type="unfinished"></translation>
+        <translation>port17</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="119"/>
-        <location filename="../ui/setportfrm.ui" line="230"/>
-        <location filename="../ui/setportfrm.ui" line="341"/>
-        <location filename="../ui/setportfrm.ui" line="452"/>
-        <location filename="../ui/setportfrm.ui" line="563"/>
-        <location filename="../ui/setportfrm.ui" line="674"/>
-        <location filename="../ui/setportfrm.ui" line="807"/>
-        <location filename="../ui/setportfrm.ui" line="918"/>
-        <location filename="../ui/setportfrm.ui" line="1029"/>
-        <location filename="../ui/setportfrm.ui" line="1140"/>
-        <location filename="../ui/setportfrm.ui" line="1251"/>
+        <location filename="../ui/setportfrm.ui" line="122"/>
+        <location filename="../ui/setportfrm.ui" line="233"/>
+        <location filename="../ui/setportfrm.ui" line="344"/>
+        <location filename="../ui/setportfrm.ui" line="455"/>
+        <location filename="../ui/setportfrm.ui" line="566"/>
+        <location filename="../ui/setportfrm.ui" line="677"/>
+        <location filename="../ui/setportfrm.ui" line="810"/>
+        <location filename="../ui/setportfrm.ui" line="921"/>
+        <location filename="../ui/setportfrm.ui" line="1032"/>
+        <location filename="../ui/setportfrm.ui" line="1143"/>
+        <location filename="../ui/setportfrm.ui" line="1254"/>
         <source>port18</source>
-        <translation type="unfinished"></translation>
+        <translation>port18</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="124"/>
-        <location filename="../ui/setportfrm.ui" line="235"/>
-        <location filename="../ui/setportfrm.ui" line="346"/>
-        <location filename="../ui/setportfrm.ui" line="457"/>
-        <location filename="../ui/setportfrm.ui" line="568"/>
-        <location filename="../ui/setportfrm.ui" line="679"/>
-        <location filename="../ui/setportfrm.ui" line="812"/>
-        <location filename="../ui/setportfrm.ui" line="923"/>
-        <location filename="../ui/setportfrm.ui" line="1034"/>
-        <location filename="../ui/setportfrm.ui" line="1145"/>
-        <location filename="../ui/setportfrm.ui" line="1256"/>
+        <location filename="../ui/setportfrm.ui" line="127"/>
+        <location filename="../ui/setportfrm.ui" line="238"/>
+        <location filename="../ui/setportfrm.ui" line="349"/>
+        <location filename="../ui/setportfrm.ui" line="460"/>
+        <location filename="../ui/setportfrm.ui" line="571"/>
+        <location filename="../ui/setportfrm.ui" line="682"/>
+        <location filename="../ui/setportfrm.ui" line="815"/>
+        <location filename="../ui/setportfrm.ui" line="926"/>
+        <location filename="../ui/setportfrm.ui" line="1037"/>
+        <location filename="../ui/setportfrm.ui" line="1148"/>
+        <location filename="../ui/setportfrm.ui" line="1259"/>
         <source>port19</source>
-        <translation type="unfinished"></translation>
+        <translation>port19</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="129"/>
-        <location filename="../ui/setportfrm.ui" line="240"/>
-        <location filename="../ui/setportfrm.ui" line="351"/>
-        <location filename="../ui/setportfrm.ui" line="462"/>
-        <location filename="../ui/setportfrm.ui" line="573"/>
-        <location filename="../ui/setportfrm.ui" line="684"/>
-        <location filename="../ui/setportfrm.ui" line="817"/>
-        <location filename="../ui/setportfrm.ui" line="928"/>
-        <location filename="../ui/setportfrm.ui" line="1039"/>
-        <location filename="../ui/setportfrm.ui" line="1150"/>
-        <location filename="../ui/setportfrm.ui" line="1261"/>
+        <location filename="../ui/setportfrm.ui" line="132"/>
+        <location filename="../ui/setportfrm.ui" line="243"/>
+        <location filename="../ui/setportfrm.ui" line="354"/>
+        <location filename="../ui/setportfrm.ui" line="465"/>
+        <location filename="../ui/setportfrm.ui" line="576"/>
+        <location filename="../ui/setportfrm.ui" line="687"/>
+        <location filename="../ui/setportfrm.ui" line="820"/>
+        <location filename="../ui/setportfrm.ui" line="931"/>
+        <location filename="../ui/setportfrm.ui" line="1042"/>
+        <location filename="../ui/setportfrm.ui" line="1153"/>
+        <location filename="../ui/setportfrm.ui" line="1264"/>
         <source>port20</source>
-        <translation type="unfinished"></translation>
+        <translation>port20</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="137"/>
+        <location filename="../ui/setportfrm.ui" line="140"/>
         <source>Valve Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Valve Out</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="248"/>
+        <location filename="../ui/setportfrm.ui" line="251"/>
         <source>Valve Big</source>
-        <translation type="unfinished"></translation>
+        <translation>Valve Big</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="359"/>
+        <location filename="../ui/setportfrm.ui" line="362"/>
         <source>Valve Mid2</source>
-        <translation type="unfinished"></translation>
+        <translation>Valve Mid2</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="470"/>
+        <location filename="../ui/setportfrm.ui" line="473"/>
         <source>Valve Mid1</source>
-        <translation type="unfinished"></translation>
+        <translation>Valve Mid1</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="581"/>
+        <location filename="../ui/setportfrm.ui" line="584"/>
         <source>Valve Small</source>
-        <translation type="unfinished"></translation>
+        <translation>Valve Small</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="708"/>
+        <location filename="../ui/setportfrm.ui" line="711"/>
         <source>Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Device</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="714"/>
+        <location filename="../ui/setportfrm.ui" line="717"/>
         <source>Pump</source>
-        <translation type="unfinished"></translation>
+        <translation>Pump</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="825"/>
+        <location filename="../ui/setportfrm.ui" line="828"/>
         <source>Regulator1</source>
-        <translation type="unfinished"></translation>
+        <translation>Regulator1</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="936"/>
+        <location filename="../ui/setportfrm.ui" line="939"/>
         <source>Regulator2</source>
-        <translation type="unfinished"></translation>
+        <translation>Regulator2</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="1047"/>
+        <location filename="../ui/setportfrm.ui" line="1050"/>
         <source>Regulator3</source>
-        <translation type="unfinished"></translation>
+        <translation>Regulator3</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="1158"/>
+        <location filename="../ui/setportfrm.ui" line="1161"/>
         <source>Regulator4</source>
-        <translation type="unfinished"></translation>
+        <translation>Regulator3</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="1300"/>
+        <location filename="../ui/setportfrm.ui" line="1277"/>
+        <source>ProtVersion:</source>
+        <translation>ProtVersion:</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="1285"/>
+        <source>NewCtrlBoard</source>
+        <translation>NewCtrlBoard</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="1290"/>
+        <source>OldCtrlBoard</source>
+        <translation>OldCtrlBoard</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="1295"/>
+        <source>LichCtrlBoard</source>
+        <translation>LichCtrlBoard</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="1329"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Save</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="1320"/>
+        <location filename="../ui/setportfrm.ui" line="1358"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Exit</translation>
+    </message>
+    <message>
+        <location filename="../source/setportfrm.cpp" line="55"/>
+        <source>OK</source>
+        <translation>OK</translation>
+    </message>
+    <message>
+        <location filename="../source/setportfrm.cpp" line="55"/>
+        <source>Save Successful !</source>
+        <translation>Save Successful !</translation>
     </message>
 </context>
 </TS>

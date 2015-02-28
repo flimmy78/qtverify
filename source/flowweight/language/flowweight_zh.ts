@@ -4,398 +4,434 @@
 <context>
     <name>FlowWeightClass</name>
     <message>
-        <location filename="../flowweight.ui" line="14"/>
-        <source>WeightMethod Verify</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../flowweight.ui" line="27"/>
         <source>MeterNo</source>
-        <translation type="unfinished"></translation>
+        <translation>表号</translation>
     </message>
     <message utf8="true">
         <location filename="../flowweight.ui" line="32"/>
         <source>FlowPoint(m³/h)</source>
-        <translation type="unfinished"></translation>
+        <translation>流量点(m³/h)</translation>
     </message>
     <message>
         <location filename="../flowweight.ui" line="37"/>
         <source>MeterValue0(L)</source>
-        <translation type="unfinished"></translation>
+        <translation>表初值(L)</translation>
     </message>
     <message>
         <location filename="../flowweight.ui" line="42"/>
         <source>MeterValue1(L)</source>
-        <translation type="unfinished"></translation>
+        <translation>表终值(L)</translation>
     </message>
     <message>
         <location filename="../flowweight.ui" line="47"/>
         <source>BalWeight0(kg)</source>
-        <translation type="unfinished"></translation>
+        <translation>天平初值(kg)</translation>
     </message>
     <message>
         <location filename="../flowweight.ui" line="52"/>
         <source>BalWeight1(kg)</source>
-        <translation type="unfinished"></translation>
+        <translation>天平终值(kg)</translation>
     </message>
     <message utf8="true">
         <location filename="../flowweight.ui" line="57"/>
         <source>Temp(℃)</source>
-        <translation type="unfinished"></translation>
+        <translation>温度(℃)</translation>
     </message>
     <message>
         <location filename="../flowweight.ui" line="62"/>
         <source>Density(kg/L)</source>
-        <translation type="unfinished"></translation>
+        <translation>密度(kg/L)</translation>
     </message>
     <message>
         <location filename="../flowweight.ui" line="67"/>
         <source>StdValue(L)</source>
-        <translation type="unfinished"></translation>
+        <translation>标准值(L)</translation>
     </message>
     <message>
         <location filename="../flowweight.ui" line="72"/>
         <source>DsipError(%)</source>
-        <translation type="unfinished"></translation>
+        <translation>示值误差(%)</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="88"/>
+        <location filename="../flowweight.ui" line="77"/>
+        <source>ModifyNO.</source>
+        <translation>修改表号</translation>
+    </message>
+    <message>
+        <location filename="../flowweight.ui" line="82"/>
+        <source>AdjustError</source>
+        <translation>调整误差</translation>
+    </message>
+    <message>
+        <location filename="../flowweight.ui" line="98"/>
         <source>ParaSet</source>
-        <translation type="unfinished"></translation>
+        <translation>参数设置</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="101"/>
+        <location filename="../flowweight.ui" line="111"/>
         <source>ReadMeter</source>
-        <translation type="unfinished"></translation>
+        <translation>读取表号</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="108"/>
+        <location filename="../flowweight.ui" line="118"/>
         <source>NowPara(KeyInfo)</source>
-        <translation type="unfinished"></translation>
+        <translation>当前参数(关键信息)</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="120"/>
+        <location filename="../flowweight.ui" line="130"/>
         <source>Standard:</source>
-        <translation type="unfinished"></translation>
+        <translation>规格:</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="146"/>
+        <location filename="../flowweight.ui" line="156"/>
         <source>DA Mode:</source>
-        <translation type="unfinished"></translation>
+        <translation>采集方式:</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="163"/>
+        <location filename="../flowweight.ui" line="173"/>
         <source>Manual</source>
-        <translation type="unfinished"></translation>
+        <translation>手动</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="168"/>
+        <location filename="../flowweight.ui" line="178"/>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>自动</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="182"/>
+        <location filename="../flowweight.ui" line="192"/>
         <source>ResetZero:</source>
-        <translation type="unfinished"></translation>
+        <translation>初值回零:</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="199"/>
+        <location filename="../flowweight.ui" line="209"/>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>否</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="204"/>
+        <location filename="../flowweight.ui" line="214"/>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>是</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="218"/>
+        <location filename="../flowweight.ui" line="228"/>
         <source>Continuous:</source>
-        <translation type="unfinished"></translation>
+        <translation>是否连续:</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="235"/>
+        <location filename="../flowweight.ui" line="245"/>
         <source>Independent</source>
-        <translation type="unfinished"></translation>
+        <translation>独立</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="240"/>
+        <location filename="../flowweight.ui" line="250"/>
         <source>Continuous</source>
-        <translation type="unfinished"></translation>
+        <translation>连续</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="259"/>
+        <location filename="../flowweight.ui" line="906"/>
         <source>Process Hint</source>
-        <translation type="unfinished"></translation>
+        <translation>过程提示</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="267"/>
+        <location filename="../flowweight.ui" line="920"/>
         <source>FlowPnt:</source>
-        <translation type="unfinished"></translation>
+        <translation>流量点:</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="296"/>
+        <location filename="../flowweight.ui" line="955"/>
         <source>Process:</source>
-        <translation type="unfinished"></translation>
+        <translation>过程:</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="330"/>
+        <location filename="../flowweight.ui" line="428"/>
         <source>DataAcquisition</source>
-        <translation type="unfinished"></translation>
+        <translation>数据采集</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="344"/>
+        <location filename="../flowweight.ui" line="14"/>
+        <source>Flow Verify(Weight Method)</source>
+        <translation>流量检定(质量法)</translation>
+    </message>
+    <message>
+        <location filename="../flowweight.ui" line="442"/>
         <source>Big Bal:</source>
-        <translation type="unfinished"></translation>
+        <translation>大天平:</translation>
     </message>
     <message utf8="true">
-        <location filename="../flowweight.ui" line="373"/>
-        <location filename="../flowweight.ui" line="415"/>
+        <location filename="../flowweight.ui" line="471"/>
+        <location filename="../flowweight.ui" line="513"/>
         <source>㎏</source>
-        <translation type="unfinished"></translation>
+        <translation>kg</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="386"/>
+        <location filename="../flowweight.ui" line="484"/>
         <source>Small Bal:</source>
-        <translation type="unfinished"></translation>
+        <translation>小天平:</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="432"/>
+        <location filename="../flowweight.ui" line="530"/>
         <source>FlowRate:</source>
-        <translation type="unfinished"></translation>
+        <translation>流速:</translation>
     </message>
     <message utf8="true">
-        <location filename="../flowweight.ui" line="464"/>
+        <location filename="../flowweight.ui" line="562"/>
         <source>m³/h</source>
-        <translation type="unfinished"></translation>
+        <translation>m³/h</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="477"/>
+        <location filename="../flowweight.ui" line="575"/>
         <source>In Temp:</source>
-        <translation type="unfinished"></translation>
+        <translation>进水温度:</translation>
     </message>
     <message utf8="true">
-        <location filename="../flowweight.ui" line="627"/>
-        <location filename="../flowweight.ui" line="790"/>
+        <location filename="../flowweight.ui" line="725"/>
+        <location filename="../flowweight.ui" line="888"/>
         <source>℃</source>
-        <translation type="unfinished"></translation>
+        <translation>℃</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="640"/>
+        <location filename="../flowweight.ui" line="738"/>
         <source>Out Temp:</source>
-        <translation type="unfinished"></translation>
+        <translation>出水温度:</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="810"/>
+        <location filename="../flowweight.ui" line="997"/>
         <source>Exhaust</source>
-        <translation type="unfinished"></translation>
+        <translation>排气</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="823"/>
+        <location filename="../flowweight.ui" line="1010"/>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>开始</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="836"/>
+        <location filename="../flowweight.ui" line="1023"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>下一步</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="849"/>
+        <location filename="../flowweight.ui" line="1036"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>停止</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="862"/>
+        <location filename="../flowweight.ui" line="1049"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>退出</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="871"/>
+        <location filename="../flowweight.ui" line="269"/>
         <source>Controller</source>
-        <translation type="unfinished"></translation>
+        <translation>控制</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="883"/>
+        <location filename="../flowweight.ui" line="405"/>
         <source>Set Freq</source>
-        <translation type="unfinished"></translation>
+        <translation>设置频率</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="896"/>
+        <location filename="../flowweight.ui" line="373"/>
         <source>s
 m
 a
 l
 l</source>
-        <translation type="unfinished"></translation>
+        <translation>小
+流
+量</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="928"/>
+        <location filename="../flowweight.ui" line="296"/>
         <source>Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="943"/>
+        <location filename="../flowweight.ui" line="311"/>
         <source>i
 n
 </source>
-        <translation type="unfinished"></translation>
+        <translation>进
+水
+阀</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="958"/>
+        <location filename="../flowweight.ui" line="326"/>
         <source>b
 i
 g</source>
-        <translation type="unfinished"></translation>
+        <translation>大
+流
+量
+阀</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="973"/>
+        <location filename="../flowweight.ui" line="341"/>
         <source>m
 i
 d
 1</source>
-        <translation type="unfinished"></translation>
+        <translation>中
+流
+一
+阀</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="989"/>
+        <location filename="../flowweight.ui" line="357"/>
         <source>m
 i
 d
 2</source>
-        <translation type="unfinished"></translation>
+        <translation>中
+流
+二
+阀</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="1005"/>
+        <location filename="../flowweight.ui" line="418"/>
         <source>Start Pump</source>
-        <translation type="unfinished"></translation>
+        <translation>启动水泵</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="1018"/>
+        <location filename="../flowweight.ui" line="390"/>
         <source>o
 u
 t</source>
-        <translation type="unfinished"></translation>
+        <translation>放
+水
+阀</translation>
     </message>
 </context>
 <context>
     <name>FlowWeightDlg</name>
     <message>
-        <location filename="../flowweight.cpp" line="48"/>
-        <location filename="../flowweight.cpp" line="722"/>
-        <location filename="../flowweight.cpp" line="763"/>
-        <location filename="../flowweight.cpp" line="900"/>
-        <location filename="../flowweight.cpp" line="1397"/>
-        <location filename="../flowweight.cpp" line="1417"/>
+        <location filename="../flowweight.cpp" line="49"/>
+        <location filename="../flowweight.cpp" line="745"/>
+        <location filename="../flowweight.cpp" line="786"/>
+        <location filename="../flowweight.cpp" line="923"/>
+        <location filename="../flowweight.cpp" line="1414"/>
+        <location filename="../flowweight.cpp" line="1434"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>警告</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="48"/>
+        <location filename="../flowweight.cpp" line="49"/>
         <source>Warning:get port set info failed!</source>
-        <translation type="unfinished"></translation>
+        <translation>警告:获取端口设置信息失败!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="496"/>
-        <location filename="../flowweight.cpp" line="544"/>
+        <location filename="../flowweight.cpp" line="465"/>
+        <source>Modify NO.</source>
+        <translation>修改表号</translation>
+    </message>
+    <message>
+        <location filename="../flowweight.cpp" line="470"/>
+        <source>Adjust Err</source>
+        <translation>调整误差</translation>
+    </message>
+    <message>
+        <location filename="../flowweight.cpp" line="518"/>
+        <location filename="../flowweight.cpp" line="566"/>
         <source>Exhaust countdown: %1 second</source>
-        <translation type="unfinished"></translation>
+        <translation>排气倒计时: %1 秒</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="505"/>
+        <location filename="../flowweight.cpp" line="527"/>
         <source>Please input meter number!</source>
-        <translation type="unfinished"></translation>
+        <translation>请输入表号!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="552"/>
+        <location filename="../flowweight.cpp" line="574"/>
         <source>Exhaust countdown finished!</source>
-        <translation type="unfinished"></translation>
+        <translation>排气倒计时结束!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="563"/>
+        <location filename="../flowweight.cpp" line="585"/>
         <source>prepare balance ...</source>
-        <translation type="unfinished"></translation>
+        <translation>准备天平...</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="677"/>
-        <location filename="../flowweight.cpp" line="684"/>
+        <location filename="../flowweight.cpp" line="699"/>
+        <location filename="../flowweight.cpp" line="706"/>
         <source>NO. %1 flow point: %2 m3/h</source>
-        <translation type="unfinished"></translation>
+        <translation>第 %1 流量点: %2 m³/h</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="678"/>
+        <location filename="../flowweight.cpp" line="700"/>
         <source>Verifying...
 Please wait for about %1 second</source>
-        <translation type="unfinished"></translation>
+        <translation>正在通水检定...
+请等待约 %1 秒</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="685"/>
+        <location filename="../flowweight.cpp" line="707"/>
         <source>Verify Finished!</source>
-        <translation type="unfinished"></translation>
+        <translation>检定结束!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="688"/>
+        <location filename="../flowweight.cpp" line="710"/>
         <source>All flow points has verified !</source>
-        <translation type="unfinished"></translation>
+        <translation>所有流量点检定完毕!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="722"/>
+        <location filename="../flowweight.cpp" line="745"/>
         <source>all flow points has verified!</source>
-        <translation type="unfinished"></translation>
+        <translation>所有流量点检定完毕!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="752"/>
+        <location filename="../flowweight.cpp" line="775"/>
         <source>Verify has Stoped!</source>
-        <translation type="unfinished"></translation>
+        <translation>检定过程停止!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="763"/>
+        <location filename="../flowweight.cpp" line="786"/>
         <source>please input meter number, then click &quot;start&quot; button!</source>
-        <translation type="unfinished"></translation>
+        <translation>请输入表号，然后点击&quot;开始&quot;按钮!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="900"/>
+        <location filename="../flowweight.cpp" line="923"/>
         <source>please input meter number</source>
-        <translation type="unfinished"></translation>
+        <translation>请输入表号</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="924"/>
+        <location filename="../flowweight.cpp" line="947"/>
         <source>Reset Zero</source>
-        <translation type="unfinished"></translation>
+        <translation>初值回零</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="927"/>
+        <location filename="../flowweight.cpp" line="950"/>
         <source>please wait %1 seconds for reset zero</source>
-        <translation type="unfinished"></translation>
+        <translation>初值回零...请等待 %1 秒</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1329"/>
-        <location filename="../flowweight.cpp" line="1360"/>
+        <location filename="../flowweight.cpp" line="1346"/>
+        <location filename="../flowweight.cpp" line="1377"/>
         <source>Hint</source>
-        <translation type="unfinished"></translation>
+        <translation>提示</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1329"/>
+        <location filename="../flowweight.cpp" line="1346"/>
         <source>please input init value of heat meter</source>
-        <translation type="unfinished"></translation>
+        <translation>请输入热量表初值</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1360"/>
+        <location filename="../flowweight.cpp" line="1377"/>
         <source>please input end value of heat meter</source>
-        <translation type="unfinished"></translation>
+        <translation>请输入热量表终值</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1397"/>
-        <location filename="../flowweight.cpp" line="1417"/>
+        <location filename="../flowweight.cpp" line="1414"/>
+        <location filename="../flowweight.cpp" line="1434"/>
         <source>Error: please input digits</source>
-        <translation type="unfinished"></translation>
+        <translation>错误:请输入数字</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../flowweight.cpp" line="450"/>
+        <location filename="../flowweight.cpp" line="459"/>
         <source>meterPosNo%1</source>
-        <translation type="unfinished"></translation>
+        <translation>表位号%1</translation>
     </message>
 </context>
 </TS>
