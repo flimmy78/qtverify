@@ -390,7 +390,8 @@ void MainForm::chaneLanguage(QString lang)
 			continue;
 
 		QString i18nName = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\\uif\\i18n\\" + lang + "\\";
-		i18nName.append(line).append(QString("_%1.qm").arg(lang));
+		line = line + "_" + lang + ".qm";
+		i18nName.append(line);//.append(QString("_%1.qm").arg(lang));
 		translator = new QTranslator( 0 );
 		if (!translator->load( i18nName ))
 		{

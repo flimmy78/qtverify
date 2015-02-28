@@ -23,7 +23,6 @@ int main(int argc, char *argv[])
 	qss.close();
 
 	QSplashScreen *splash = new QSplashScreen;
-// 	QString startPic = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\\uif\\pixmap\\facility.png";;
 	splash->setPixmap(QPixmap(":/qtverify/images/facility.png"));
 	splash->show();
 
@@ -67,7 +66,8 @@ int main(int argc, char *argv[])
 				continue;
 
 			QString i18nName = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\\uif\\i18n\\" + lang + "\\";
-			i18nName.append(line).append(QString("_%1.qm").arg(lang));
+			line = line + "_" + lang + ".qm";
+			i18nName.append(line);//.append(QString("_%1.qm").arg(lang));
 			translator = new QTranslator( 0 );
 			if (!translator->load( i18nName ))
 			{
@@ -92,14 +92,14 @@ int main(int argc, char *argv[])
 	QTest::qSleep(200);
 	g_mainform = new MainForm;
 
-// 	LoginDialog login;
-// 	if (login.exec() == QDialog::Accepted)
-// 	{
+	LoginDialog login;
+	if (login.exec() == QDialog::Accepted)
+	{
 		g_mainform->showMaximized();
 		splash->finish(g_mainform);
 		delete splash;
 		app.exec();
-// 	}
+	}
 
 	closedb();
 	return 0;
