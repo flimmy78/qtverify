@@ -92,7 +92,7 @@ public:
 	double m_pipeInTemper;    //入口温度
 	double m_pipeOutTemper;   //出口温度
 
-	Record_Quality_PTR m_recPtr; //有效的检定记录
+	Flow_Verify_Record_PTR m_recPtr; //有效的检定记录
 	QString m_timeStamp; //时间戳 秒数
 	QString m_nowDate;  
 	QString m_validDate;

@@ -462,12 +462,12 @@ void FlowWeightDlg::initTableWidget()
 		ui.tableWidget->setItem(i, COLUMN_METER_START, new QTableWidgetItem(QString()));
 		ui.tableWidget->setItem(i, COLUMN_METER_END, new QTableWidgetItem(QString()));
 
-		QPushButton *btnModNo = new QPushButton(tr("Modify MeterNo"));
+		QPushButton *btnModNo = new QPushButton(tr("Modify NO."));
 		ui.tableWidget->setCellWidget(i, COLUMN_MODIFY_METERNO, btnModNo);
 		m_signalMapper1->setMapping(btnModNo, i);
 		connect(btnModNo, SIGNAL(clicked()), m_signalMapper1, SLOT(map()));
 
-		QPushButton *btnAdjErr = new QPushButton(tr("Adjust Error"));
+		QPushButton *btnAdjErr = new QPushButton(tr("Adjust Err"));
 		ui.tableWidget->setCellWidget(i, COLUMN_ADJUST_ERROR, btnAdjErr);
 		m_signalMapper2->setMapping(btnAdjErr, i);
 		connect(btnAdjErr, SIGNAL(clicked()), m_signalMapper2, SLOT(map()));
@@ -476,7 +476,7 @@ void FlowWeightDlg::initTableWidget()
 	connect(m_signalMapper2, SIGNAL(mapped(const int &)),this, SLOT(slotAdjustError(const int &)));
 
 	ui.tableWidget->setVerticalHeaderLabels(vLabels);
-	ui.tableWidget->resizeColumnsToContents();
+// 	ui.tableWidget->resizeColumnsToContents();
 }
 
 //显示当前关键参数设置信息
@@ -793,8 +793,8 @@ void FlowWeightDlg::startVerify()
 		delete []m_recPtr;
 		m_recPtr = NULL;
 	}
-	m_recPtr = new Record_Quality_STR[m_validMeterNum];
-	memset(m_recPtr, 0, sizeof(Record_Quality_STR)*m_validMeterNum);
+	m_recPtr = new Flow_Verify_Record_STR[m_validMeterNum];
+	memset(m_recPtr, 0, sizeof(Flow_Verify_Record_STR)*m_validMeterNum);
 
 	m_flowPoint = m_paraSetReader->getFpBySeq(1).fp_verify;//第一个流量点
 	for (int m=0; m<m_validMeterNum; m++) //
@@ -1051,15 +1051,11 @@ int FlowWeightDlg::calcAllMeterError()
 		meterNoStr = meterNoPrefix + QString("%1").arg(ui.tableWidget->item(m_meterPosMap[i]-1, 0)->text(), 8, '0');
 		strcpy_s(m_recPtr[i].meterNo, meterNoStr.toAscii());
 		m_recPtr[i].flowPointIdx = m_nowOrder;
-		m_recPtr[i].totalFlag = 0;
+		m_recPtr[i].methodFlag = WEIGHT_METHOD; //质量法
 		m_recPtr[i].meterValue0 = m_meterStartValue[i];
 		m_recPtr[i].meterValue1 = m_meterEndValue[i];
-		m_recPtr[i].meterDeltaV = m_recPtr[i].meterValue1 - m_recPtr[i].meterValue0;
 		m_recPtr[i].balWeight0 = m_balStartV;
 		m_recPtr[i].balWeight1 = m_balEndV;
-		m_recPtr[i].balDeltaW = m_recPtr[i].balWeight1 - m_recPtr[i].balWeight0;
-		m_recPtr[i].inSlotTemper = m_pipeInTemper;
-		m_recPtr[i].outSlotTemper = m_pipeOutTemper;
 		m_recPtr[i].pipeTemper = m_meterTemper[i]; 
 		m_recPtr[i].density = m_meterDensity[i];
 		m_recPtr[i].stdValue = m_meterStdValue[i];
@@ -1074,7 +1070,7 @@ int FlowWeightDlg::calcAllMeterError()
 		m_recPtr[i].manufactDept = m_nowParams->m_manufac;
 		m_recPtr[i].verifyDept = m_nowParams->m_vcomp;
 		m_recPtr[i].verifyPerson = m_nowParams->m_vperson;
-		strncpy_s(m_recPtr[i].date, m_nowDate.toAscii(), DATE_LEN);
+		strncpy_s(m_recPtr[i].verifyDate, m_nowDate.toAscii(), DATE_LEN);
 		strncpy_s(m_recPtr[i].validDate, m_validDate.toAscii(), DATE_LEN);
 	}
 
@@ -1099,15 +1095,11 @@ int FlowWeightDlg::calcMeterError(int idx)
 	meterNoStr = meterNoPrefix + QString("%1").arg(ui.tableWidget->item(m_meterPosMap[idx]-1, 0)->text(), 8, '0');
 	strcpy_s(m_recPtr[idx].meterNo, meterNoStr.toAscii());
 	m_recPtr[idx].flowPointIdx = m_nowOrder; //
-	m_recPtr[idx].totalFlag = 0;
+	m_recPtr[idx].methodFlag = WEIGHT_METHOD; //质量法
 	m_recPtr[idx].meterValue0 = m_meterStartValue[idx];
 	m_recPtr[idx].meterValue1 = m_meterEndValue[idx];
-	m_recPtr[idx].meterDeltaV = m_recPtr[idx].meterValue1 - m_recPtr[idx].meterValue0;
 	m_recPtr[idx].balWeight0 = m_balStartV;
 	m_recPtr[idx].balWeight1 = m_balEndV;
-	m_recPtr[idx].balDeltaW = m_recPtr[idx].balWeight1 - m_recPtr[idx].balWeight0;
-	m_recPtr[idx].inSlotTemper = m_pipeInTemper;
-	m_recPtr[idx].outSlotTemper = m_pipeOutTemper;
 	m_recPtr[idx].pipeTemper = m_meterTemper[idx]; 
 	m_recPtr[idx].density = m_meterDensity[idx];
 	m_recPtr[idx].stdValue = m_meterStdValue[idx];
@@ -1122,7 +1114,7 @@ int FlowWeightDlg::calcMeterError(int idx)
 	m_recPtr[idx].manufactDept = m_nowParams->m_manufac;
 	m_recPtr[idx].verifyDept = m_nowParams->m_vcomp;
 	m_recPtr[idx].verifyPerson = m_nowParams->m_vperson;
-	strncpy_s(m_recPtr[idx].date, m_nowDate.toAscii(), DATE_LEN);
+	strncpy_s(m_recPtr[idx].verifyDate, m_nowDate.toAscii(), DATE_LEN);
 	strncpy_s(m_recPtr[idx].validDate, m_validDate.toAscii(), DATE_LEN);
 
 	return true; 
@@ -1443,7 +1435,7 @@ void FlowWeightDlg::on_tableWidget_cellChanged(int row, int column)
 			return;
 		}
 		calcMeterError(idx);
-		insertVerifyRec(&m_recPtr[idx], 1);
+		insertFlowVerifyRec(&m_recPtr[idx], 1);
 
 		if (meterPos == m_meterPosMap[m_validMeterNum-1]) //输入最后一个表终值
 		{
@@ -1489,7 +1481,7 @@ int FlowWeightDlg::isMeterPosValid(int meterPos)
 */
 int FlowWeightDlg::saveAllVerifyRecords()
 {
- 	insertVerifyRec(m_recPtr, m_validMeterNum);
+ 	insertFlowVerifyRec(m_recPtr, m_validMeterNum);
 	return true;
 }
 

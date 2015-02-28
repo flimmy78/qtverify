@@ -16,12 +16,15 @@
 #  endif
 #endif
 
+
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQuery>
 #include <QtSql/QSqlDriver>
 #include <QtSql/QSqlError>
 
 #include "basedef.h"
+
+QString g_dbname = "mysqlite.db";
 
 extern "C" {  // only need to export C interface if	used by C++ source code
 
@@ -38,6 +41,7 @@ QTEXDB_EXPORT	int getManufacture(int& num, Manufacture_PTR &ptr);
 
 QTEXDB_EXPORT	int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id);
 QTEXDB_EXPORT	int insertVerifyRec(Record_Quality_PTR ptr, int num);
+QTEXDB_EXPORT	int insertFlowVerifyRec(Flow_Verify_Record_PTR ptr, int num);
 
 } //end of extern "C"
 

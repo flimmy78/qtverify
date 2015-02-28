@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1483</width>
+    <width>1325</width>
     <height>856</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>WeightMethod Verify</string>
+   <string>Flow Verify(Weight Method)</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_6">
    <item row="0" column="0" colspan="5">
@@ -74,7 +74,7 @@
      </column>
      <column>
       <property name="text">
-       <string>ModifyMeterNo</string>
+       <string>ModifyNO.</string>
       </property>
      </column>
      <column>

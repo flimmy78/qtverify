@@ -97,7 +97,7 @@ public:
     {
         if (FlowWeightClass->objectName().isEmpty())
             FlowWeightClass->setObjectName(QString::fromUtf8("FlowWeightClass"));
-        FlowWeightClass->resize(1483, 856);
+        FlowWeightClass->resize(1343, 856);
         gridLayout_6 = new QGridLayout(FlowWeightClass);
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
         tableWidget = new QTableWidget(FlowWeightClass);
@@ -586,7 +586,7 @@ public:
 
     void retranslateUi(QWidget *FlowWeightClass)
     {
-        FlowWeightClass->setWindowTitle(QApplication::translate("FlowWeightClass", "WeightMethod Verify", 0, QApplication::UnicodeUTF8));
+        FlowWeightClass->setWindowTitle(QApplication::translate("FlowWeightClass", "Flow Verify(Weight Method)", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("FlowWeightClass", "MeterNo", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
@@ -608,7 +608,7 @@ public:
         QTableWidgetItem *___qtablewidgetitem9 = tableWidget->horizontalHeaderItem(9);
         ___qtablewidgetitem9->setText(QApplication::translate("FlowWeightClass", "DsipError(%)", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem10 = tableWidget->horizontalHeaderItem(10);
-        ___qtablewidgetitem10->setText(QApplication::translate("FlowWeightClass", "ModifyMeterNo", 0, QApplication::UnicodeUTF8));
+        ___qtablewidgetitem10->setText(QApplication::translate("FlowWeightClass", "ModifyNO.", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem11 = tableWidget->horizontalHeaderItem(11);
         ___qtablewidgetitem11->setText(QApplication::translate("FlowWeightClass", "AdjustError", 0, QApplication::UnicodeUTF8));
         btnParaSet->setText(QApplication::translate("FlowWeightClass", "ParaSet", 0, QApplication::UnicodeUTF8));

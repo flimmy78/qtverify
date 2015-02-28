@@ -653,13 +653,14 @@ void MeterComObject::askModifyMeterNo(QString oldMeterNo, QString newMeterNo)
 {
 	m_meterProtocol->makeFrameOfModifyMeterNo(oldMeterNo, newMeterNo);
 	QByteArray buf = m_meterProtocol->getSendFrame();
+/*
 	int num = buf.size();
 	qDebug()<<"buf size ="<<num;
 	for (int i=0; i<buf.size(); i++)
 	{
 		qDebug()<<"ÇëÇóÐÞ¸Ä±íºÅ£º"<<(UINT8)buf.at(i);
 	}
-	
+*/	
 	m_meterCom->write(buf);
 }
 
