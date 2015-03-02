@@ -32,7 +32,7 @@
    <enum>Qt::NoContextMenu</enum>
   </property>
   <property name="windowTitle">
-   <string>QCom Debugger V1.0</string>
+   <string>DeluCom Debugger V1.0</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QDialog{background:rgb(229, 255, 239)}

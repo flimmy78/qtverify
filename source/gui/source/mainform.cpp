@@ -24,9 +24,9 @@
 #include "datatestdlg.h"
 #include "setportfrm.h"
 #include "masterslaveset.h"
-#include "weightmethod.h"
 #include "algorithm.h"
 #include "flowweight.h"
+#include "flowstandard.h"
 
 MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
@@ -43,9 +43,9 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_datatestdlg = NULL;
 	m_portSet = NULL;
 	m_masterslave = NULL;
-	m_weightDlg = NULL;
-	m_flowWeightDlg = NULL;
 	m_comProcess = new QProcess(this);
+	m_flowWeightDlg = NULL;
+	m_flowStandardDlg = NULL;
 
 	QLabel *permanent = new QLabel(this);
 	permanent->setFrameStyle(QFrame::NoFrame | QFrame::Sunken);
@@ -114,10 +114,9 @@ void MainForm::closeEvent( QCloseEvent * event)
 			m_masterslave = NULL;
 		}
 
-		if (m_weightDlg)
+		if (m_comProcess)
 		{
-			delete m_weightDlg;
-			m_weightDlg = NULL;
+			m_comProcess->kill();
 		}
 
 		if (m_flowWeightDlg)
@@ -126,9 +125,10 @@ void MainForm::closeEvent( QCloseEvent * event)
 			m_flowWeightDlg = NULL;
 		}
 
-		if (m_comProcess)
+		if (m_flowStandardDlg)
 		{
-			m_comProcess->kill();
+			delete m_flowStandardDlg;
+			m_flowStandardDlg = NULL;
 		}
 	}
 }
@@ -198,18 +198,6 @@ void MainForm::on_actionMySql_triggered()
 //流量检定(质量法)
 void MainForm::on_actionFlowWeight_triggered()
 {
-/*	if (NULL == m_weightDlg)
-	{
-		m_weightDlg = new WeightMethodDlg();
-	}
-	else //目的是执行WeightMethodDlg的构造函数
-	{
-		delete m_weightDlg;
-		m_weightDlg = NULL;
-		m_weightDlg = new WeightMethodDlg();
-	}
-	m_weightDlg->show();*/
-
 	if (NULL == m_flowWeightDlg)
 	{
 		m_flowWeightDlg = new FlowWeightDlg();
@@ -221,12 +209,22 @@ void MainForm::on_actionFlowWeight_triggered()
 		m_flowWeightDlg = new FlowWeightDlg();
 	}
 	m_flowWeightDlg->show();
-
 }
 
 //流量检定(标准表法)
 void MainForm::on_actionFlowStandard_triggered()
 {
+	if (NULL == m_flowStandardDlg)
+	{
+		m_flowStandardDlg = new FlowStandardDlg();
+	}
+	else //目的是执行FlowStandardDlg的构造函数
+	{
+		delete m_flowStandardDlg;
+		m_flowStandardDlg = NULL;
+		m_flowStandardDlg = new FlowStandardDlg();
+	}
+	m_flowStandardDlg->show();
 }
 
 //温度检定(比较法)
