@@ -27,6 +27,7 @@
 #include "algorithm.h"
 #include "flowweight.h"
 #include "flowstandard.h"
+#include "totalweight.h"
 #include "totalstandard.h"
 
 MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
@@ -47,6 +48,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_comProcess = new QProcess(this);
 	m_flowWeightDlg = NULL;
 	m_flowStandardDlg = NULL;
+	m_totalWeightDlg = NULL;
 	m_totalStandardDlg = NULL;
 
 	QLabel *permanent = new QLabel(this);
@@ -131,6 +133,12 @@ void MainForm::closeEvent( QCloseEvent * event)
 		{
 			delete m_flowStandardDlg;
 			m_flowStandardDlg = NULL;
+		}
+
+		if (m_totalWeightDlg)
+		{
+			delete m_totalWeightDlg;
+			m_totalWeightDlg = NULL;
 		}
 
 		if (m_totalStandardDlg)
@@ -258,6 +266,17 @@ void MainForm::on_actionCombine_triggered()
 //总量检定（质量法）
 void MainForm::on_actionTotalWeight_triggered()
 {
+	if (NULL == m_totalWeightDlg)
+	{
+		m_totalWeightDlg = new TotalWeightDlg();
+	}
+	else //目的是执行TotalWeightDlg的构造函数
+	{
+		delete m_totalWeightDlg;
+		m_totalWeightDlg = NULL;
+		m_totalWeightDlg = new TotalWeightDlg();
+	}
+	m_totalWeightDlg->show();
 }
 
 //总量检定（标准表法）

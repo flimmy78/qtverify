@@ -16,6 +16,7 @@ class CMasterSlave;
 class CAlgorithm;
 class FlowWeightDlg;
 class FlowStandardDlg;
+class TotalWeightDlg;
 class TotalStandardDlg;
 
 class MainForm : public QMainWindow
@@ -34,9 +35,10 @@ public:
 	SetPortFrm *m_portSet; //端口模块设置
 	CMasterSlave *m_masterslave; //主机-从机设置
 	QProcess *m_comProcess; //调用外部串口调试工具
-	FlowWeightDlg *m_flowWeightDlg; //流量检定(质量法)
-	FlowStandardDlg *m_flowStandardDlg; //流量检定(标准表法)
-	TotalStandardDlg *m_totalStandardDlg; //总量检定(标准表法)
+	FlowWeightDlg *m_flowWeightDlg;      //流量检定(质量法)
+	FlowStandardDlg *m_flowStandardDlg;  //流量检定(标准表法)
+	TotalWeightDlg *m_totalWeightDlg;    //总量检定(标准表法)
+	TotalStandardDlg *m_totalStandardDlg;//总量检定(标准表法)
 
 	void closeEvent(QCloseEvent * event);
 
