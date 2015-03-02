@@ -1,5 +1,5 @@
-#ifndef QUERYRESULT_H
-#define QUERYRESULT_H
+#ifndef FLOWRESULT_H
+#define FLOWRESULT_H
 
 #include <QtGui/QWidget>
 #include <QtSql/QSqlDatabase>
@@ -9,15 +9,15 @@
 #include <QtSql/QSqlTableModel>
 #include <QtSql/QSqlRelationalTableModel>
 
-#include "ui_queryresult.h"
+#include "ui_flowresult.h"
 
-class QueryResult : public QWidget
+class FlowResultDlg : public QWidget
 {
 	Q_OBJECT
 
 public:
-	QueryResult(QWidget *parent = 0, Qt::WFlags flags = 0);
-	~QueryResult();
+	FlowResultDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
+	~FlowResultDlg();
 
 	uint m_count;
 
@@ -27,7 +27,7 @@ public slots:
 
 
 private:
-	Ui::QueryResultClass ui;
+	Ui::FlowResultClass ui;
 	QSqlRelationalTableModel *model;
 private slots:
 	void on_btnQuery_clicked();
@@ -37,4 +37,4 @@ private slots:
 	void on_btnExit_clicked();
 };
 
-#endif // QUERYRESULT_H
+#endif // FLOWRESULT_H

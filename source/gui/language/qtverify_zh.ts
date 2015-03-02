@@ -38,29 +38,140 @@
     </message>
 </context>
 <context>
+    <name>FlowResultClass</name>
+    <message>
+        <location filename="../ui/flowresult.ui" line="14"/>
+        <source>Flow Verify Result</source>
+        <translation>流量检定结果查询</translation>
+    </message>
+    <message>
+        <location filename="../ui/flowresult.ui" line="28"/>
+        <source>Start Time:</source>
+        <translation>开始时间:</translation>
+    </message>
+    <message>
+        <location filename="../ui/flowresult.ui" line="44"/>
+        <source>End Time:</source>
+        <translation>结束时间:</translation>
+    </message>
+    <message>
+        <location filename="../ui/flowresult.ui" line="64"/>
+        <source>ManuFacturer:</source>
+        <translation>制造商:</translation>
+    </message>
+    <message>
+        <location filename="../ui/flowresult.ui" line="87"/>
+        <source>VerifyDept:</source>
+        <translation>送检单位:</translation>
+    </message>
+    <message>
+        <location filename="../ui/flowresult.ui" line="110"/>
+        <source>VerifyPerson:</source>
+        <translation>检定员:</translation>
+    </message>
+    <message>
+        <location filename="../ui/flowresult.ui" line="137"/>
+        <source>MeterNO:</source>
+        <translation>表号:</translation>
+    </message>
+    <message>
+        <location filename="../ui/flowresult.ui" line="160"/>
+        <source>Method:</source>
+        <translation>检测方法:</translation>
+    </message>
+    <message>
+        <location filename="../ui/flowresult.ui" line="168"/>
+        <source>Weight</source>
+        <translation>质量法</translation>
+    </message>
+    <message>
+        <location filename="../ui/flowresult.ui" line="173"/>
+        <source>StdMeter</source>
+        <translation>标准表法</translation>
+    </message>
+    <message>
+        <location filename="../ui/flowresult.ui" line="189"/>
+        <source>Query</source>
+        <translation>查询</translation>
+    </message>
+    <message>
+        <location filename="../ui/flowresult.ui" line="196"/>
+        <source>Export Excel</source>
+        <translation>导出Excel</translation>
+    </message>
+    <message>
+        <location filename="../ui/flowresult.ui" line="231"/>
+        <source>Insert</source>
+        <translation>插入</translation>
+    </message>
+    <message>
+        <location filename="../ui/flowresult.ui" line="238"/>
+        <source>Stop</source>
+        <translation>停止</translation>
+    </message>
+    <message>
+        <location filename="../ui/flowresult.ui" line="266"/>
+        <source>Exit</source>
+        <translation>退出</translation>
+    </message>
+</context>
+<context>
+    <name>FlowResultDlg</name>
+    <message>
+        <location filename="../source/flowresult.cpp" line="230"/>
+        <source>Warning</source>
+        <translation>警告</translation>
+    </message>
+    <message>
+        <location filename="../source/flowresult.cpp" line="230"/>
+        <source>no data need to be exported!</source>
+        <translation>没有数据需要导出！</translation>
+    </message>
+    <message>
+        <location filename="../source/flowresult.cpp" line="235"/>
+        <source>Save File</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../source/flowresult.cpp" line="235"/>
+        <source>Microsoft Excel (*.xlsx;*.xls)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../source/flowresult.cpp" line="276"/>
+        <source>OK</source>
+        <translation>OK</translation>
+    </message>
+    <message>
+        <location filename="../source/flowresult.cpp" line="276"/>
+        <source>export excel file successful!</source>
+        <translation>导出Excel文件成功!</translation>
+    </message>
+</context>
+<context>
     <name>MainForm</name>
     <message>
-        <location filename="../source/mainform.cpp" line="52"/>
+        <location filename="../source/mainform.cpp" line="56"/>
         <source>&lt;a href=&quot;http://www.sdm.com.cn&quot;&gt;Shandong Delu Measurement Co.,Ltd.&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;http://www.sdm.com.cn&quot;&gt;山东德鲁计量科技有限公司&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="64"/>
+        <location filename="../source/mainform.cpp" line="68"/>
         <source>Question</source>
         <translation>询问</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="64"/>
+        <location filename="../source/mainform.cpp" line="68"/>
         <source>Quit Really ?</source>
         <translation>确认退出吗?</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="303"/>
+        <location filename="../source/mainform.cpp" line="339"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="303"/>
+        <location filename="../source/mainform.cpp" line="339"/>
         <source>Excel object lose!</source>
         <translation></translation>
     </message>
@@ -83,167 +194,167 @@
         <translation>主程序启动...</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="136"/>
+        <location filename="../source/flowresult.cpp" line="136"/>
         <source>time</source>
         <translation>时间</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="137"/>
+        <location filename="../source/flowresult.cpp" line="137"/>
         <source>MeterNO.</source>
         <translation>表号</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="138"/>
+        <location filename="../source/flowresult.cpp" line="138"/>
         <source>FlowPoint</source>
         <translation>流量点</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="139"/>
+        <location filename="../source/flowresult.cpp" line="139"/>
         <source>Flow</source>
         <translation>流量检定</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="140"/>
+        <location filename="../source/flowresult.cpp" line="140"/>
         <source>Method</source>
         <translation>检定方法</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="141"/>
+        <location filename="../source/flowresult.cpp" line="141"/>
         <source>MeterValue0</source>
         <translation>表初值</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="142"/>
+        <location filename="../source/flowresult.cpp" line="142"/>
         <source>MeterValue1</source>
         <translation>表终值</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="143"/>
+        <location filename="../source/flowresult.cpp" line="143"/>
         <source>BalValue0</source>
         <translation>天平初值</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="144"/>
+        <location filename="../source/flowresult.cpp" line="144"/>
         <source>BalValue1</source>
         <translation>天平终值</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="145"/>
+        <location filename="../source/flowresult.cpp" line="145"/>
         <source>F_StdMeterV0</source>
         <translation>标准表初值</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="146"/>
+        <location filename="../source/flowresult.cpp" line="146"/>
         <source>F_StdMeterV1</source>
         <translation>标准表终值</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="147"/>
+        <location filename="../source/flowresult.cpp" line="147"/>
         <source>PipeTemp</source>
         <translation>温度</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="148"/>
+        <location filename="../source/flowresult.cpp" line="148"/>
         <source>Density</source>
         <translation>密度</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="149"/>
+        <location filename="../source/flowresult.cpp" line="149"/>
         <source>StdValue</source>
         <translation>标准值</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="150"/>
+        <location filename="../source/flowresult.cpp" line="150"/>
         <source>Error</source>
         <translation>误差</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="151"/>
+        <location filename="../source/flowresult.cpp" line="151"/>
         <source>StdError</source>
         <translation>标准值</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="152"/>
+        <location filename="../source/flowresult.cpp" line="152"/>
         <source>Result</source>
         <translation>结果</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="153"/>
+        <location filename="../source/flowresult.cpp" line="153"/>
         <source>MeterPosNO.</source>
         <translation>表位号</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="154"/>
+        <location filename="../source/flowresult.cpp" line="154"/>
         <source>Model</source>
         <translation>型号</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="155"/>
+        <location filename="../source/flowresult.cpp" line="155"/>
         <source>Standard</source>
         <translation>规格</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="156"/>
+        <location filename="../source/flowresult.cpp" line="156"/>
         <source>MeterType</source>
         <translation>表类型</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="157"/>
+        <location filename="../source/flowresult.cpp" line="157"/>
         <source>ManufactDept</source>
         <translation>制造单位</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="158"/>
+        <location filename="../source/flowresult.cpp" line="158"/>
         <source>VerifyDept</source>
         <translation>送检单位</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="159"/>
+        <location filename="../source/flowresult.cpp" line="159"/>
         <source>Grade</source>
         <translation>等级</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="160"/>
+        <location filename="../source/flowresult.cpp" line="160"/>
         <source>VerifyPerson</source>
         <translation>检定员</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="161"/>
+        <location filename="../source/flowresult.cpp" line="161"/>
         <source>CheckPerson</source>
         <translation>核验员</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="162"/>
+        <location filename="../source/flowresult.cpp" line="162"/>
         <source>DeviceInfoId</source>
         <translation>装置信息ID</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="163"/>
+        <location filename="../source/flowresult.cpp" line="163"/>
         <source>VerifyDate</source>
         <translation>检定日期</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="164"/>
+        <location filename="../source/flowresult.cpp" line="164"/>
         <source>ValidDate</source>
         <translation>有效期</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="165"/>
+        <location filename="../source/flowresult.cpp" line="165"/>
         <source>EnvTemp</source>
         <translation>环境温度</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="166"/>
+        <location filename="../source/flowresult.cpp" line="166"/>
         <source>EnvHumidity</source>
         <translation>环境湿度</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="167"/>
+        <location filename="../source/flowresult.cpp" line="167"/>
         <source>AirPressure</source>
         <translation>气压</translation>
     </message>
     <message>
-        <location filename="../source/queryresult.cpp" line="168"/>
+        <location filename="../source/flowresult.cpp" line="168"/>
         <source>CertNO</source>
         <translation>检定证书编号</translation>
     </message>
@@ -251,97 +362,59 @@
 <context>
     <name>QueryResult</name>
     <message>
-        <location filename="../source/queryresult.cpp" line="230"/>
         <source>Warning</source>
-        <translation>警告</translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="230"/>
-        <source>no data need to be exported!</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="235"/>
-        <source>Save File</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="235"/>
-        <source>Microsoft Excel (*.xlsx;*.xls)</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="276"/>
-        <source>OK</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../source/queryresult.cpp" line="276"/>
-        <source>export excel file successful!</source>
-        <translation></translation>
+        <translation type="obsolete">警告</translation>
     </message>
 </context>
 <context>
     <name>QueryResultClass</name>
     <message>
-        <location filename="../ui/queryresult.ui" line="14"/>
         <source>QueryResult</source>
-        <translation>查询结果</translation>
+        <translation type="obsolete">查询结果</translation>
     </message>
     <message>
-        <location filename="../ui/queryresult.ui" line="28"/>
         <source>Start Time:</source>
-        <translation>开始时间:</translation>
+        <translation type="obsolete">开始时间:</translation>
     </message>
     <message>
-        <location filename="../ui/queryresult.ui" line="44"/>
         <source>End Time:</source>
-        <translation>结束时间:</translation>
+        <translation type="obsolete">结束时间:</translation>
     </message>
     <message>
-        <location filename="../ui/queryresult.ui" line="64"/>
         <source>ManuFacturer:</source>
-        <translation>制造商:</translation>
+        <translation type="obsolete">制造商:</translation>
     </message>
     <message>
-        <location filename="../ui/queryresult.ui" line="87"/>
         <source>VerifyDept:</source>
-        <translation>送检单位:</translation>
+        <translation type="obsolete">送检单位:</translation>
     </message>
     <message>
-        <location filename="../ui/queryresult.ui" line="110"/>
         <source>VerifyPerson:</source>
-        <translation>检定员:</translation>
+        <translation type="obsolete">检定员:</translation>
     </message>
     <message>
-        <location filename="../ui/queryresult.ui" line="137"/>
         <source>MeterNO:</source>
-        <translation>表号:</translation>
+        <translation type="obsolete">表号:</translation>
     </message>
     <message>
-        <location filename="../ui/queryresult.ui" line="162"/>
         <source>Query</source>
-        <translation>查询</translation>
+        <translation type="obsolete">查询</translation>
     </message>
     <message>
-        <location filename="../ui/queryresult.ui" line="169"/>
         <source>Export Excel</source>
-        <translation>导出Excel</translation>
+        <translation type="obsolete">导出Excel</translation>
     </message>
     <message>
-        <location filename="../ui/queryresult.ui" line="188"/>
         <source>Insert</source>
-        <translation>插入</translation>
+        <translation type="obsolete">插入</translation>
     </message>
     <message>
-        <location filename="../ui/queryresult.ui" line="195"/>
         <source>Stop</source>
-        <translation>停止</translation>
+        <translation type="obsolete">停止</translation>
     </message>
     <message>
-        <location filename="../ui/queryresult.ui" line="223"/>
         <source>Exit</source>
-        <translation>退出</translation>
+        <translation type="obsolete">退出</translation>
     </message>
 </context>
 <context>
@@ -499,7 +572,7 @@
     <message>
         <location filename="../ui/mainform.ui" line="186"/>
         <source>MySql</source>
-        <translation type="unfinished"></translation>
+        <translation>MySql</translation>
     </message>
     <message>
         <location filename="../ui/mainform.ui" line="297"/>

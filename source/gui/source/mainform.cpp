@@ -19,7 +19,7 @@
 
 #include "mainform.h"
 #include "dbmysql.h"
-#include "queryresult.h"
+#include "flowresult.h"
 #include "setcomfrm.h"
 #include "datatestdlg.h"
 #include "setportfrm.h"
@@ -38,7 +38,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	ui.setupUi(this);
 
 	m_mySql = NULL;
-	m_query = NULL;
+	m_flowResultDlg = NULL;
 	m_alg = new CAlgorithm();
 
 	m_setcom = NULL;
@@ -82,10 +82,10 @@ void MainForm::closeEvent( QCloseEvent * event)
 			m_mySql = NULL;
 		}
 
-		if (m_query)
+		if (m_flowResultDlg)
 		{
-			delete m_query;
-			m_query = NULL;
+			delete m_flowResultDlg;
+			m_flowResultDlg = NULL;
 		}
 
 		if (m_alg)
@@ -298,16 +298,16 @@ void MainForm::on_actionTotalStandard_triggered()
 //查询流量检定结果（包括质量法和标准表法）
 void MainForm::on_actionFlowResult_triggered()
 {
-	if (NULL == m_query)
+	if (NULL == m_flowResultDlg)
 	{
-		m_query = new QueryResult();
+		m_flowResultDlg = new FlowResultDlg();
 	}
 	else
 	{
-		delete m_query;
-		m_query = new QueryResult();
+		delete m_flowResultDlg;
+		m_flowResultDlg = new FlowResultDlg();
 	}
-	m_query->show();
+	m_flowResultDlg->show();
 }
 
 //查询总量检定结果（包括质量法和标准表法）

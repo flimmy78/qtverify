@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>QueryResultClass</class>
- <widget class="QWidget" name="QueryResultClass">
+ <class>FlowResultClass</class>
+ <widget class="QWidget" name="FlowResultClass">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>890</width>
+    <width>786</width>
     <height>698</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>QueryResult</string>
+   <string>Flow Verify Result</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_4">
    <item row="0" column="0" colspan="2">
@@ -123,7 +123,7 @@
      </item>
     </layout>
    </item>
-   <item row="0" column="3">
+   <item row="0" column="3" colspan="2">
     <layout class="QGridLayout" name="gridLayout_3">
      <item row="0" column="0">
       <widget class="QLabel" name="label_6">
@@ -148,6 +148,33 @@
        </property>
       </widget>
      </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Method:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="cmbMethod">
+       <item>
+        <property name="text">
+         <string>Weight</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>StdMeter</string>
+        </property>
+       </item>
+      </widget>
+     </item>
     </layout>
    </item>
    <item row="1" column="0">
@@ -169,6 +196,22 @@
       <string>Export Excel</string>
      </property>
     </widget>
+   </item>
+   <item row="1" column="3">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Preferred</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>25</height>
+      </size>
+     </property>
+    </spacer>
    </item>
    <item row="2" column="0" colspan="5">
     <widget class="QTableView" name="tableView"/>

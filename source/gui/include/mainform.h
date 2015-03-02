@@ -8,7 +8,7 @@
 #include "ui_mainform.h"
 
 class DbMySql;
-class QueryResult;
+class FlowResultDlg;
 class SetComFrm;
 class DataTestDlg;
 class SetPortFrm;
@@ -28,7 +28,7 @@ public:
 	~MainForm();
 
 	DbMySql *m_mySql;
-	QueryResult *m_query;
+	FlowResultDlg *m_flowResultDlg;
 	CAlgorithm *m_alg;
 	SetComFrm *m_setcom; //串口参数设置
 	DataTestDlg *m_datatestdlg; //采集与控制测试程序

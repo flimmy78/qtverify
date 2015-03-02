@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
 	QTest::qSleep(200);
 
 	QString lang = "zh"; //默认显示中文
-	if (argc == 2)
+	if (argc == 2) 
 	{
 		lang = QString::fromLocal8Bit(argv[1]);
 	}

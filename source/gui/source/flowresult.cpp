@@ -1,12 +1,12 @@
 /***********************************************
-**  文件名:     queryresult.cpp
-**  功能:       查询检定结果(SQLITE3)
+**  文件名:     flowresult.cpp
+**  功能:       查询流量检定结果(SQLITE3)
 **  操作系统:   基于Trolltech Qt4.8.5的跨平台系统
-**  生成时间:   2014/8/8
+**  生成时间:   2015/3/2
 **  专业组:     德鲁计量软件组
 **  程序设计者: YS
 **  程序员:     YS
-**  版本历史:   2014/08 第一版
+**  版本历史:   2015/03 第一版
 **  内容包含:
 **  说明:
 **  更新记录:  
@@ -23,11 +23,11 @@
 #include <QtCore/QProcessEnvironment>
 #include <QAxObject>
 
-#include "queryresult.h"
+#include "flowresult.h"
 #include "qexcel.h"
 
 
-QueryResult::QueryResult(QWidget *parent, Qt::WFlags flags)
+FlowResultDlg::FlowResultDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
 	ui.setupUi(this);
@@ -49,12 +49,12 @@ QueryResult::QueryResult(QWidget *parent, Qt::WFlags flags)
 	ui.spinBoxNums->hide();
 }
 
-QueryResult::~QueryResult()
+FlowResultDlg::~FlowResultDlg()
 {
 
 }
 
-void QueryResult::initUiData()
+void FlowResultDlg::initUiData()
 {
 	//制造单位
 	int col_id1 = 0;
@@ -94,7 +94,7 @@ void QueryResult::initUiData()
 }
 
 //查询检定结果
-void QueryResult::on_btnQuery_clicked()
+void FlowResultDlg::on_btnQuery_clicked()
 {
 	model->setEditStrategy(QSqlTableModel::OnFieldChange); //属性变化时写入数据库
 	model->setTable("T_Flow_Verify_Record");
@@ -185,7 +185,7 @@ void QueryResult::on_btnQuery_clicked()
 */
 }
 
-void QueryResult::on_btnInsert_clicked()
+void FlowResultDlg::on_btnInsert_clicked()
 {
 	QDateTime statTime = QDateTime::currentDateTime();
 	qDebug()<<"start time is:"<<statTime.toString("yyMMddhhmmss");
@@ -217,13 +217,13 @@ void QueryResult::on_btnInsert_clicked()
 	qDebug()<<"Insert"<<ui.spinBoxNums->value()<<"record。"<<"used time is:"<<usedSec<<"micro seconds\n";
 }
 
-void QueryResult::on_btnStop_clicked()
+void FlowResultDlg::on_btnStop_clicked()
 {
 	m_count = 1;
 	qDebug()<<"on_btnStop_clicked, m_count ="<<m_count;
 }
 
-void QueryResult::on_btnExport_clicked()
+void FlowResultDlg::on_btnExport_clicked()
 {
 	if (NULL==model)
 	{
@@ -277,7 +277,7 @@ void QueryResult::on_btnExport_clicked()
 	}
 }
 
-void QueryResult::on_btnExit_clicked()
+void FlowResultDlg::on_btnExit_clicked()
 {
 	this->close();
 }
