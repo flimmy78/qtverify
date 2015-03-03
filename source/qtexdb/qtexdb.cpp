@@ -343,7 +343,7 @@ int insertFlowVerifyRec(Flow_Verify_Record_PTR ptr, int num)
 	{
 		QSqlQuery query(g_db); // 新建一个查询的实例
 		QString sql = "insert into T_Flow_Verify_Record";
-		sql.append("(");
+		sql.append(" (");
 		sql.append("F_TimeStamp,");
 		sql.append("F_MeterNo,");
 		sql.append("F_FlowPointIdx,");
@@ -381,7 +381,7 @@ int insertFlowVerifyRec(Flow_Verify_Record_PTR ptr, int num)
 		sql.append("F_Bak2,");
 		sql.append("F_Bak3,");
 		sql.append("F_Bak4");
-		sql.append(")");
+		sql.append(") ");
 		sql.append("values");
 		sql.append("(");//start
 		sql.append(QString("\'%1\', ").arg(ptr[i].timestamp, 0, 10));//F_TimeStamp
@@ -416,11 +416,11 @@ int insertFlowVerifyRec(Flow_Verify_Record_PTR ptr, int num)
 		sql.append(QString("%1, ").arg(ptr[i].envTemper, 6, 'g', 6));//F_EnvTemper
 		sql.append(QString("%1, ").arg(ptr[i].envHumidity, 6, 'g', 6));//F_EnvHumidity
 		sql.append(QString("%1, ").arg(ptr[i].airPress, 6, 'g', 6));//F_AirPressure
-		sql.append(QString("%1").arg(ptr[i].certNo, 0, 10));//F_CertNO
-		sql.append(QString("%1").arg(ptr[i].bak1, 0, 10));//F_Bak1
-		sql.append(QString("%1").arg(ptr[i].bak2, 0, 10));//F_Bak2
-		sql.append(QString("%1").arg(ptr[i].bak3, 0, 10));//F_Bak3
-		sql.append(QString("%1").arg(ptr[i].bak4, 0, 10));//F_Bak4
+		sql.append(QString("\'%1\', ").arg(ptr[i].certNo, 0, 10));//F_CertNO
+		sql.append(QString("\'%1\', ").arg(ptr[i].bak1, 0, 10));//F_Bak1
+		sql.append(QString("\'%1\', ").arg(ptr[i].bak2, 0, 10));//F_Bak2
+		sql.append(QString("\'%1\', ").arg(ptr[i].bak3, 0, 10));//F_Bak3
+		sql.append(QString("\'%1\'").arg(ptr[i].bak4, 0, 10));//F_Bak4
 		sql.append(")");//end
 		if (query.exec(sql))
 		{

@@ -22,6 +22,7 @@
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
 #include <QtGui/QPushButton>
+#include <QtGui/QRadioButton>
 #include <QtGui/QSpinBox>
 #include <QtGui/QTableWidget>
 #include <QtGui/QToolButton>
@@ -32,7 +33,37 @@ QT_BEGIN_NAMESPACE
 class Ui_TotalWeightClass
 {
 public:
+    QGridLayout *gridLayout_12;
+    QGroupBox *groupBox_5;
+    QGridLayout *gridLayout_17;
+    QGroupBox *groupBox_6;
     QGridLayout *gridLayout_6;
+    QRadioButton *radioButton;
+    QRadioButton *radioButton_2;
+    QGroupBox *groupBox_7;
+    QGridLayout *gridLayout_11;
+    QRadioButton *radioButton_3;
+    QRadioButton *radioButton_4;
+    QGroupBox *groupBox_8;
+    QGridLayout *gridLayout_13;
+    QLineEdit *lineEdit;
+    QLabel *label_17;
+    QGroupBox *groupBox_9;
+    QGridLayout *gridLayout_16;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
+    QGridLayout *gridLayout_14;
+    QLabel *label_18;
+    QLineEdit *lineEdit_2;
+    QLabel *label_20;
+    QLineEdit *lineEdit_3;
+    QLabel *label_21;
+    QGridLayout *gridLayout_15;
+    QLabel *label_19;
+    QLineEdit *lineEdit_4;
+    QLabel *label_22;
+    QLineEdit *lineEdit_5;
+    QLabel *label_23;
     QTableWidget *tableWidget;
     QGridLayout *gridLayout_5;
     QPushButton *btnParaSet;
@@ -92,14 +123,154 @@ public:
     QPushButton *btnNext;
     QPushButton *btnStop;
     QPushButton *btnExit;
+    QButtonGroup *buttonGroup;
 
     void setupUi(QWidget *TotalWeightClass)
     {
         if (TotalWeightClass->objectName().isEmpty())
             TotalWeightClass->setObjectName(QString::fromUtf8("TotalWeightClass"));
-        TotalWeightClass->resize(1325, 856);
-        gridLayout_6 = new QGridLayout(TotalWeightClass);
+        TotalWeightClass->resize(1240, 856);
+        gridLayout_12 = new QGridLayout(TotalWeightClass);
+        gridLayout_12->setObjectName(QString::fromUtf8("gridLayout_12"));
+        groupBox_5 = new QGroupBox(TotalWeightClass);
+        groupBox_5->setObjectName(QString::fromUtf8("groupBox_5"));
+        gridLayout_17 = new QGridLayout(groupBox_5);
+        gridLayout_17->setObjectName(QString::fromUtf8("gridLayout_17"));
+        groupBox_6 = new QGroupBox(groupBox_5);
+        groupBox_6->setObjectName(QString::fromUtf8("groupBox_6"));
+        gridLayout_6 = new QGridLayout(groupBox_6);
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
+        radioButton = new QRadioButton(groupBox_6);
+        buttonGroup = new QButtonGroup(TotalWeightClass);
+        buttonGroup->setObjectName(QString::fromUtf8("buttonGroup"));
+        buttonGroup->addButton(radioButton);
+        radioButton->setObjectName(QString::fromUtf8("radioButton"));
+
+        gridLayout_6->addWidget(radioButton, 0, 0, 1, 1);
+
+        radioButton_2 = new QRadioButton(groupBox_6);
+        buttonGroup->addButton(radioButton_2);
+        radioButton_2->setObjectName(QString::fromUtf8("radioButton_2"));
+
+        gridLayout_6->addWidget(radioButton_2, 0, 1, 1, 1);
+
+
+        gridLayout_17->addWidget(groupBox_6, 0, 0, 1, 1);
+
+        groupBox_7 = new QGroupBox(groupBox_5);
+        groupBox_7->setObjectName(QString::fromUtf8("groupBox_7"));
+        gridLayout_11 = new QGridLayout(groupBox_7);
+        gridLayout_11->setObjectName(QString::fromUtf8("gridLayout_11"));
+        radioButton_3 = new QRadioButton(groupBox_7);
+        radioButton_3->setObjectName(QString::fromUtf8("radioButton_3"));
+
+        gridLayout_11->addWidget(radioButton_3, 0, 0, 1, 1);
+
+        radioButton_4 = new QRadioButton(groupBox_7);
+        radioButton_4->setObjectName(QString::fromUtf8("radioButton_4"));
+
+        gridLayout_11->addWidget(radioButton_4, 0, 1, 1, 1);
+
+
+        gridLayout_17->addWidget(groupBox_7, 0, 1, 1, 1);
+
+        groupBox_8 = new QGroupBox(groupBox_5);
+        groupBox_8->setObjectName(QString::fromUtf8("groupBox_8"));
+        gridLayout_13 = new QGridLayout(groupBox_8);
+        gridLayout_13->setObjectName(QString::fromUtf8("gridLayout_13"));
+        lineEdit = new QLineEdit(groupBox_8);
+        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+
+        gridLayout_13->addWidget(lineEdit, 0, 0, 1, 1);
+
+        label_17 = new QLabel(groupBox_8);
+        label_17->setObjectName(QString::fromUtf8("label_17"));
+
+        gridLayout_13->addWidget(label_17, 0, 1, 1, 1);
+
+
+        gridLayout_17->addWidget(groupBox_8, 0, 2, 1, 1);
+
+        groupBox_9 = new QGroupBox(groupBox_5);
+        groupBox_9->setObjectName(QString::fromUtf8("groupBox_9"));
+        gridLayout_16 = new QGridLayout(groupBox_9);
+        gridLayout_16->setObjectName(QString::fromUtf8("gridLayout_16"));
+        pushButton = new QPushButton(groupBox_9);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+
+        gridLayout_16->addWidget(pushButton, 0, 0, 1, 1);
+
+        pushButton_2 = new QPushButton(groupBox_9);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+
+        gridLayout_16->addWidget(pushButton_2, 0, 1, 1, 1);
+
+        gridLayout_14 = new QGridLayout();
+        gridLayout_14->setObjectName(QString::fromUtf8("gridLayout_14"));
+        label_18 = new QLabel(groupBox_9);
+        label_18->setObjectName(QString::fromUtf8("label_18"));
+
+        gridLayout_14->addWidget(label_18, 0, 0, 1, 1);
+
+        lineEdit_2 = new QLineEdit(groupBox_9);
+        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
+
+        gridLayout_14->addWidget(lineEdit_2, 0, 1, 1, 1);
+
+        label_20 = new QLabel(groupBox_9);
+        label_20->setObjectName(QString::fromUtf8("label_20"));
+
+        gridLayout_14->addWidget(label_20, 0, 2, 1, 1);
+
+        lineEdit_3 = new QLineEdit(groupBox_9);
+        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
+
+        gridLayout_14->addWidget(lineEdit_3, 0, 3, 1, 1);
+
+        label_21 = new QLabel(groupBox_9);
+        label_21->setObjectName(QString::fromUtf8("label_21"));
+
+        gridLayout_14->addWidget(label_21, 0, 4, 1, 1);
+
+
+        gridLayout_16->addLayout(gridLayout_14, 0, 2, 1, 1);
+
+        gridLayout_15 = new QGridLayout();
+        gridLayout_15->setObjectName(QString::fromUtf8("gridLayout_15"));
+        label_19 = new QLabel(groupBox_9);
+        label_19->setObjectName(QString::fromUtf8("label_19"));
+
+        gridLayout_15->addWidget(label_19, 0, 0, 1, 1);
+
+        lineEdit_4 = new QLineEdit(groupBox_9);
+        lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
+
+        gridLayout_15->addWidget(lineEdit_4, 0, 1, 1, 1);
+
+        label_22 = new QLabel(groupBox_9);
+        label_22->setObjectName(QString::fromUtf8("label_22"));
+
+        gridLayout_15->addWidget(label_22, 0, 2, 1, 1);
+
+        lineEdit_5 = new QLineEdit(groupBox_9);
+        lineEdit_5->setObjectName(QString::fromUtf8("lineEdit_5"));
+
+        gridLayout_15->addWidget(lineEdit_5, 0, 3, 1, 1);
+
+        label_23 = new QLabel(groupBox_9);
+        label_23->setObjectName(QString::fromUtf8("label_23"));
+
+        gridLayout_15->addWidget(label_23, 0, 4, 1, 1);
+
+
+        gridLayout_16->addLayout(gridLayout_15, 0, 3, 1, 1);
+
+
+        gridLayout_17->addWidget(groupBox_9, 0, 3, 1, 1);
+
+
+        gridLayout_12->addWidget(groupBox_5, 0, 0, 1, 5);
+
         tableWidget = new QTableWidget(TotalWeightClass);
         if (tableWidget->columnCount() < 12)
             tableWidget->setColumnCount(12);
@@ -131,7 +302,7 @@ public:
         tableWidget->setInputMethodHints(Qt::ImhDigitsOnly|Qt::ImhFormattedNumbersOnly|Qt::ImhPreferNumbers);
         tableWidget->setEditTriggers(QAbstractItemView::CurrentChanged|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed);
 
-        gridLayout_6->addWidget(tableWidget, 0, 0, 1, 5);
+        gridLayout_12->addWidget(tableWidget, 1, 0, 1, 5);
 
         gridLayout_5 = new QGridLayout();
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
@@ -226,7 +397,7 @@ public:
         gridLayout_5->addWidget(groupBox, 1, 0, 1, 2);
 
 
-        gridLayout_6->addLayout(gridLayout_5, 1, 0, 1, 1);
+        gridLayout_12->addLayout(gridLayout_5, 2, 0, 1, 1);
 
         groupBox_2 = new QGroupBox(TotalWeightClass);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
@@ -317,7 +488,7 @@ public:
         gridLayout->addWidget(btnWaterPump, 2, 0, 1, 1);
 
 
-        gridLayout_6->addWidget(groupBox_2, 1, 1, 1, 1);
+        gridLayout_12->addWidget(groupBox_2, 2, 1, 1, 1);
 
         groupBox_4 = new QGroupBox(TotalWeightClass);
         groupBox_4->setObjectName(QString::fromUtf8("groupBox_4"));
@@ -334,8 +505,11 @@ public:
 
         lcdBigBalance = new QLCDNumber(groupBox_4);
         lcdBigBalance->setObjectName(QString::fromUtf8("lcdBigBalance"));
-        sizePolicy2.setHeightForWidth(lcdBigBalance->sizePolicy().hasHeightForWidth());
-        lcdBigBalance->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy5(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(lcdBigBalance->sizePolicy().hasHeightForWidth());
+        lcdBigBalance->setSizePolicy(sizePolicy5);
         lcdBigBalance->setNumDigits(10);
         lcdBigBalance->setSegmentStyle(QLCDNumber::Flat);
 
@@ -488,7 +662,7 @@ public:
         gridLayout_10->addLayout(gridLayout_8, 1, 0, 1, 1);
 
 
-        gridLayout_6->addWidget(groupBox_4, 1, 2, 1, 1);
+        gridLayout_12->addWidget(groupBox_4, 2, 2, 1, 1);
 
         groupBox_3 = new QGroupBox(TotalWeightClass);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
@@ -536,7 +710,7 @@ public:
         gridLayout_9->addLayout(gridLayout_7, 0, 0, 1, 1);
 
 
-        gridLayout_6->addWidget(groupBox_3, 1, 3, 1, 1);
+        gridLayout_12->addWidget(groupBox_3, 2, 3, 1, 1);
 
         gridLayout_4 = new QGridLayout();
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
@@ -576,7 +750,7 @@ public:
         gridLayout_4->addWidget(btnExit, 4, 0, 1, 1);
 
 
-        gridLayout_6->addLayout(gridLayout_4, 1, 4, 1, 1);
+        gridLayout_12->addLayout(gridLayout_4, 2, 4, 1, 1);
 
 
         retranslateUi(TotalWeightClass);
@@ -587,6 +761,24 @@ public:
     void retranslateUi(QWidget *TotalWeightClass)
     {
         TotalWeightClass->setWindowTitle(QApplication::translate("TotalWeightClass", "Total Verify(Weight Method)", 0, QApplication::UnicodeUTF8));
+        groupBox_5->setTitle(QApplication::translate("TotalWeightClass", "Total Verify Data", 0, QApplication::UnicodeUTF8));
+        groupBox_6->setTitle(QApplication::translate("TotalWeightClass", "Position", 0, QApplication::UnicodeUTF8));
+        radioButton->setText(QApplication::translate("TotalWeightClass", "In", 0, QApplication::UnicodeUTF8));
+        radioButton_2->setText(QApplication::translate("TotalWeightClass", "Out", 0, QApplication::UnicodeUTF8));
+        groupBox_7->setTitle(QApplication::translate("TotalWeightClass", "Heat Unit", 0, QApplication::UnicodeUTF8));
+        radioButton_3->setText(QApplication::translate("TotalWeightClass", "kwh", 0, QApplication::UnicodeUTF8));
+        radioButton_4->setText(QApplication::translate("TotalWeightClass", "MJ", 0, QApplication::UnicodeUTF8));
+        groupBox_8->setTitle(QApplication::translate("TotalWeightClass", "Min \316\224T", 0, QApplication::UnicodeUTF8));
+        label_17->setText(QApplication::translate("TotalWeightClass", "K", 0, QApplication::UnicodeUTF8));
+        groupBox_9->setTitle(QApplication::translate("TotalWeightClass", "Std Temper", 0, QApplication::UnicodeUTF8));
+        pushButton->setText(QApplication::translate("TotalWeightClass", "Acquisite", 0, QApplication::UnicodeUTF8));
+        pushButton_2->setText(QApplication::translate("TotalWeightClass", "Stop", 0, QApplication::UnicodeUTF8));
+        label_18->setText(QApplication::translate("TotalWeightClass", "In:", 0, QApplication::UnicodeUTF8));
+        label_20->setText(QApplication::translate("TotalWeightClass", "\316\251", 0, QApplication::UnicodeUTF8));
+        label_21->setText(QApplication::translate("TotalWeightClass", "\342\204\203", 0, QApplication::UnicodeUTF8));
+        label_19->setText(QApplication::translate("TotalWeightClass", "Out:", 0, QApplication::UnicodeUTF8));
+        label_22->setText(QApplication::translate("TotalWeightClass", "\316\251", 0, QApplication::UnicodeUTF8));
+        label_23->setText(QApplication::translate("TotalWeightClass", "\342\204\203", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("TotalWeightClass", "MeterNo", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
