@@ -6,13 +6,13 @@
 #include <QDateTime>
 
 #include "ui_parasetdlg.h"
-#include "comsetdlg_global.h"
+#include "systemsetdlg_global.h"
 #include "basedef.h"
 
 /*
 ** 将配置文件中的所有字面信息保存至结构QParams_PTR中
 */
-class COMSETDLG_EXPORT ParaSetReader
+class SYSTEMSETDLG_EXPORT ParaSetReader
 {
 public:
 		
@@ -40,7 +40,7 @@ private:
 };
 
 
-class COMSETDLG_EXPORT ParaSetDlg : public QWidget
+class SYSTEMSETDLG_EXPORT ParaSetDlg : public QWidget
 {
 	Q_OBJECT
 

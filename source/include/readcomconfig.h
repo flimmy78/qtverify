@@ -4,9 +4,9 @@
 #include <QtXml/QtXml>
 
 #include "basedef.h"
-#include "comsetdlg_global.h"
+#include "systemsetdlg_global.h"
 
-class COMSETDLG_EXPORT ReadComConfig
+class SYSTEMSETDLG_EXPORT ReadComConfig
 {
 public:
 	ReadComConfig();

@@ -5,11 +5,11 @@
 #include <QtXml/QtXml>
 
 #include "ui_setcomfrm.h"
-#include "comsetdlg_global.h"
+#include "systemsetdlg_global.h"
 
 class ReadComConfig;
 
-class COMSETDLG_EXPORT SetComFrm : public QWidget
+class SYSTEMSETDLG_EXPORT SetComFrm : public QWidget
 {
 	Q_OBJECT
 

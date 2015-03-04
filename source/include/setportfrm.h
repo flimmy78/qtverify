@@ -5,9 +5,9 @@
 #include <QtXml/QtXml>
 
 #include "ui_setportfrm.h"
-#include "comsetdlg_global.h"
+#include "systemsetdlg_global.h"
 
-class COMSETDLG_EXPORT SetPortFrm : public QWidget
+class SYSTEMSETDLG_EXPORT SetPortFrm : public QWidget
 {
 	Q_OBJECT
 
