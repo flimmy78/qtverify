@@ -22,6 +22,7 @@
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
 #include <QtGui/QPushButton>
+#include <QtGui/QRadioButton>
 #include <QtGui/QSpinBox>
 #include <QtGui/QTableWidget>
 #include <QtGui/QToolButton>
@@ -32,7 +33,38 @@ QT_BEGIN_NAMESPACE
 class Ui_TotalStandardClass
 {
 public:
+    QGridLayout *gridLayout_8;
+    QGroupBox *groupBox_5;
+    QGridLayout *gridLayout_15;
+    QGroupBox *groupBox_6;
     QGridLayout *gridLayout_6;
+    QRadioButton *radioButton;
+    QRadioButton *radioButton_2;
+    QGroupBox *groupBox_7;
+    QGridLayout *gridLayout_10;
+    QRadioButton *radioButton_3;
+    QRadioButton *radioButton_4;
+    QGroupBox *groupBox_8;
+    QGridLayout *gridLayout_11;
+    QLabel *label_10;
+    QLineEdit *lineEdit;
+    QLabel *label_12;
+    QGroupBox *groupBox_9;
+    QGridLayout *gridLayout_14;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
+    QGridLayout *gridLayout_12;
+    QLabel *label_17;
+    QLineEdit *lineEdit_2;
+    QLabel *label_18;
+    QLineEdit *lineEdit_3;
+    QLabel *label_19;
+    QGridLayout *gridLayout_13;
+    QLabel *label_20;
+    QLineEdit *lineEdit_4;
+    QLabel *label_21;
+    QLineEdit *lineEdit_5;
+    QLabel *label_22;
     QTableWidget *tableWidget;
     QGridLayout *gridLayout_5;
     QPushButton *btnParaSet;
@@ -61,7 +93,6 @@ public:
     QToolButton *btnSetFreq;
     QToolButton *btnWaterPump;
     QGroupBox *groupBox_4;
-    QGridLayout *gridLayout_8;
     QGridLayout *gridLayout_2;
     QLabel *label_9;
     QLCDNumber *lcdBigBalance;
@@ -84,18 +115,158 @@ public:
     QLabel *labelHintProcess;
     QGridLayout *gridLayout_4;
     QPushButton *btnExhaust;
-    QPushButton *btnStart;
     QPushButton *btnNext;
     QPushButton *btnStop;
+    QPushButton *btnStart;
     QPushButton *btnExit;
 
     void setupUi(QWidget *TotalStandardClass)
     {
         if (TotalStandardClass->objectName().isEmpty())
             TotalStandardClass->setObjectName(QString::fromUtf8("TotalStandardClass"));
-        TotalStandardClass->resize(1379, 856);
-        gridLayout_6 = new QGridLayout(TotalStandardClass);
+        TotalStandardClass->resize(1320, 856);
+        gridLayout_8 = new QGridLayout(TotalStandardClass);
+        gridLayout_8->setObjectName(QString::fromUtf8("gridLayout_8"));
+        groupBox_5 = new QGroupBox(TotalStandardClass);
+        groupBox_5->setObjectName(QString::fromUtf8("groupBox_5"));
+        gridLayout_15 = new QGridLayout(groupBox_5);
+        gridLayout_15->setObjectName(QString::fromUtf8("gridLayout_15"));
+        groupBox_6 = new QGroupBox(groupBox_5);
+        groupBox_6->setObjectName(QString::fromUtf8("groupBox_6"));
+        gridLayout_6 = new QGridLayout(groupBox_6);
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
+        radioButton = new QRadioButton(groupBox_6);
+        radioButton->setObjectName(QString::fromUtf8("radioButton"));
+
+        gridLayout_6->addWidget(radioButton, 0, 0, 1, 1);
+
+        radioButton_2 = new QRadioButton(groupBox_6);
+        radioButton_2->setObjectName(QString::fromUtf8("radioButton_2"));
+
+        gridLayout_6->addWidget(radioButton_2, 0, 1, 1, 1);
+
+
+        gridLayout_15->addWidget(groupBox_6, 0, 0, 1, 1);
+
+        groupBox_7 = new QGroupBox(groupBox_5);
+        groupBox_7->setObjectName(QString::fromUtf8("groupBox_7"));
+        gridLayout_10 = new QGridLayout(groupBox_7);
+        gridLayout_10->setObjectName(QString::fromUtf8("gridLayout_10"));
+        radioButton_3 = new QRadioButton(groupBox_7);
+        radioButton_3->setObjectName(QString::fromUtf8("radioButton_3"));
+
+        gridLayout_10->addWidget(radioButton_3, 0, 0, 1, 1);
+
+        radioButton_4 = new QRadioButton(groupBox_7);
+        radioButton_4->setObjectName(QString::fromUtf8("radioButton_4"));
+
+        gridLayout_10->addWidget(radioButton_4, 0, 1, 1, 1);
+
+
+        gridLayout_15->addWidget(groupBox_7, 0, 1, 1, 1);
+
+        groupBox_8 = new QGroupBox(groupBox_5);
+        groupBox_8->setObjectName(QString::fromUtf8("groupBox_8"));
+        gridLayout_11 = new QGridLayout(groupBox_8);
+        gridLayout_11->setObjectName(QString::fromUtf8("gridLayout_11"));
+        label_10 = new QLabel(groupBox_8);
+        label_10->setObjectName(QString::fromUtf8("label_10"));
+
+        gridLayout_11->addWidget(label_10, 0, 0, 1, 1);
+
+        lineEdit = new QLineEdit(groupBox_8);
+        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+
+        gridLayout_11->addWidget(lineEdit, 0, 1, 1, 1);
+
+        label_12 = new QLabel(groupBox_8);
+        label_12->setObjectName(QString::fromUtf8("label_12"));
+
+        gridLayout_11->addWidget(label_12, 0, 2, 1, 1);
+
+
+        gridLayout_15->addWidget(groupBox_8, 0, 2, 1, 1);
+
+        groupBox_9 = new QGroupBox(groupBox_5);
+        groupBox_9->setObjectName(QString::fromUtf8("groupBox_9"));
+        gridLayout_14 = new QGridLayout(groupBox_9);
+        gridLayout_14->setObjectName(QString::fromUtf8("gridLayout_14"));
+        pushButton = new QPushButton(groupBox_9);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+
+        gridLayout_14->addWidget(pushButton, 0, 0, 1, 1);
+
+        pushButton_2 = new QPushButton(groupBox_9);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+
+        gridLayout_14->addWidget(pushButton_2, 0, 1, 1, 1);
+
+        gridLayout_12 = new QGridLayout();
+        gridLayout_12->setObjectName(QString::fromUtf8("gridLayout_12"));
+        label_17 = new QLabel(groupBox_9);
+        label_17->setObjectName(QString::fromUtf8("label_17"));
+
+        gridLayout_12->addWidget(label_17, 0, 0, 1, 1);
+
+        lineEdit_2 = new QLineEdit(groupBox_9);
+        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
+
+        gridLayout_12->addWidget(lineEdit_2, 0, 1, 1, 1);
+
+        label_18 = new QLabel(groupBox_9);
+        label_18->setObjectName(QString::fromUtf8("label_18"));
+
+        gridLayout_12->addWidget(label_18, 0, 2, 1, 1);
+
+        lineEdit_3 = new QLineEdit(groupBox_9);
+        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
+
+        gridLayout_12->addWidget(lineEdit_3, 0, 3, 1, 1);
+
+        label_19 = new QLabel(groupBox_9);
+        label_19->setObjectName(QString::fromUtf8("label_19"));
+
+        gridLayout_12->addWidget(label_19, 0, 4, 1, 1);
+
+
+        gridLayout_14->addLayout(gridLayout_12, 0, 2, 1, 1);
+
+        gridLayout_13 = new QGridLayout();
+        gridLayout_13->setObjectName(QString::fromUtf8("gridLayout_13"));
+        label_20 = new QLabel(groupBox_9);
+        label_20->setObjectName(QString::fromUtf8("label_20"));
+
+        gridLayout_13->addWidget(label_20, 0, 0, 1, 1);
+
+        lineEdit_4 = new QLineEdit(groupBox_9);
+        lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
+
+        gridLayout_13->addWidget(lineEdit_4, 0, 1, 1, 1);
+
+        label_21 = new QLabel(groupBox_9);
+        label_21->setObjectName(QString::fromUtf8("label_21"));
+
+        gridLayout_13->addWidget(label_21, 0, 2, 1, 1);
+
+        lineEdit_5 = new QLineEdit(groupBox_9);
+        lineEdit_5->setObjectName(QString::fromUtf8("lineEdit_5"));
+
+        gridLayout_13->addWidget(lineEdit_5, 0, 3, 1, 1);
+
+        label_22 = new QLabel(groupBox_9);
+        label_22->setObjectName(QString::fromUtf8("label_22"));
+
+        gridLayout_13->addWidget(label_22, 0, 4, 1, 1);
+
+
+        gridLayout_14->addLayout(gridLayout_13, 0, 3, 1, 1);
+
+
+        gridLayout_15->addWidget(groupBox_9, 0, 3, 1, 1);
+
+
+        gridLayout_8->addWidget(groupBox_5, 0, 0, 1, 5);
+
         tableWidget = new QTableWidget(TotalStandardClass);
         if (tableWidget->columnCount() < 12)
             tableWidget->setColumnCount(12);
@@ -127,7 +298,7 @@ public:
         tableWidget->setInputMethodHints(Qt::ImhDigitsOnly|Qt::ImhFormattedNumbersOnly|Qt::ImhPreferNumbers);
         tableWidget->setEditTriggers(QAbstractItemView::CurrentChanged|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed);
 
-        gridLayout_6->addWidget(tableWidget, 0, 0, 1, 5);
+        gridLayout_8->addWidget(tableWidget, 1, 0, 1, 5);
 
         gridLayout_5 = new QGridLayout();
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
@@ -222,7 +393,7 @@ public:
         gridLayout_5->addWidget(groupBox, 1, 0, 1, 2);
 
 
-        gridLayout_6->addLayout(gridLayout_5, 1, 0, 1, 1);
+        gridLayout_8->addLayout(gridLayout_5, 2, 0, 1, 1);
 
         groupBox_2 = new QGroupBox(TotalStandardClass);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
@@ -313,13 +484,13 @@ public:
         gridLayout->addWidget(btnWaterPump, 2, 0, 1, 1);
 
 
-        gridLayout_6->addWidget(groupBox_2, 1, 1, 1, 1);
+        gridLayout_8->addWidget(groupBox_2, 2, 1, 1, 1);
 
         groupBox_4 = new QGroupBox(TotalStandardClass);
         groupBox_4->setObjectName(QString::fromUtf8("groupBox_4"));
-        gridLayout_8 = new QGridLayout(groupBox_4);
-        gridLayout_8->setObjectName(QString::fromUtf8("gridLayout_8"));
-        gridLayout_2 = new QGridLayout();
+        sizePolicy3.setHeightForWidth(groupBox_4->sizePolicy().hasHeightForWidth());
+        groupBox_4->setSizePolicy(sizePolicy3);
+        gridLayout_2 = new QGridLayout(groupBox_4);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         label_9 = new QLabel(groupBox_4);
         label_9->setObjectName(QString::fromUtf8("label_9"));
@@ -332,6 +503,9 @@ public:
         lcdBigBalance->setObjectName(QString::fromUtf8("lcdBigBalance"));
         sizePolicy2.setHeightForWidth(lcdBigBalance->sizePolicy().hasHeightForWidth());
         lcdBigBalance->setSizePolicy(sizePolicy2);
+        QFont font;
+        font.setPointSize(9);
+        lcdBigBalance->setFont(font);
         lcdBigBalance->setNumDigits(7);
         lcdBigBalance->setSegmentStyle(QLCDNumber::Flat);
 
@@ -453,10 +627,7 @@ public:
         gridLayout_2->addWidget(label_8, 3, 2, 1, 1);
 
 
-        gridLayout_8->addLayout(gridLayout_2, 0, 0, 1, 1);
-
-
-        gridLayout_6->addWidget(groupBox_4, 1, 2, 1, 1);
+        gridLayout_8->addWidget(groupBox_4, 2, 2, 1, 1);
 
         groupBox_3 = new QGroupBox(TotalStandardClass);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
@@ -504,47 +675,47 @@ public:
         gridLayout_9->addLayout(gridLayout_7, 0, 0, 1, 1);
 
 
-        gridLayout_6->addWidget(groupBox_3, 1, 3, 1, 1);
+        gridLayout_8->addWidget(groupBox_3, 2, 3, 1, 1);
 
         gridLayout_4 = new QGridLayout();
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
         btnExhaust = new QPushButton(TotalStandardClass);
         btnExhaust->setObjectName(QString::fromUtf8("btnExhaust"));
-        sizePolicy2.setHeightForWidth(btnExhaust->sizePolicy().hasHeightForWidth());
-        btnExhaust->setSizePolicy(sizePolicy2);
+        sizePolicy.setHeightForWidth(btnExhaust->sizePolicy().hasHeightForWidth());
+        btnExhaust->setSizePolicy(sizePolicy);
 
         gridLayout_4->addWidget(btnExhaust, 0, 0, 1, 1);
 
-        btnStart = new QPushButton(TotalStandardClass);
-        btnStart->setObjectName(QString::fromUtf8("btnStart"));
-        sizePolicy2.setHeightForWidth(btnStart->sizePolicy().hasHeightForWidth());
-        btnStart->setSizePolicy(sizePolicy2);
-
-        gridLayout_4->addWidget(btnStart, 1, 0, 1, 1);
-
         btnNext = new QPushButton(TotalStandardClass);
         btnNext->setObjectName(QString::fromUtf8("btnNext"));
-        sizePolicy2.setHeightForWidth(btnNext->sizePolicy().hasHeightForWidth());
-        btnNext->setSizePolicy(sizePolicy2);
+        sizePolicy.setHeightForWidth(btnNext->sizePolicy().hasHeightForWidth());
+        btnNext->setSizePolicy(sizePolicy);
 
         gridLayout_4->addWidget(btnNext, 2, 0, 1, 1);
 
         btnStop = new QPushButton(TotalStandardClass);
         btnStop->setObjectName(QString::fromUtf8("btnStop"));
-        sizePolicy2.setHeightForWidth(btnStop->sizePolicy().hasHeightForWidth());
-        btnStop->setSizePolicy(sizePolicy2);
+        sizePolicy.setHeightForWidth(btnStop->sizePolicy().hasHeightForWidth());
+        btnStop->setSizePolicy(sizePolicy);
 
         gridLayout_4->addWidget(btnStop, 3, 0, 1, 1);
 
+        btnStart = new QPushButton(TotalStandardClass);
+        btnStart->setObjectName(QString::fromUtf8("btnStart"));
+        sizePolicy.setHeightForWidth(btnStart->sizePolicy().hasHeightForWidth());
+        btnStart->setSizePolicy(sizePolicy);
+
+        gridLayout_4->addWidget(btnStart, 1, 0, 1, 1);
+
         btnExit = new QPushButton(TotalStandardClass);
         btnExit->setObjectName(QString::fromUtf8("btnExit"));
-        sizePolicy2.setHeightForWidth(btnExit->sizePolicy().hasHeightForWidth());
-        btnExit->setSizePolicy(sizePolicy2);
+        sizePolicy.setHeightForWidth(btnExit->sizePolicy().hasHeightForWidth());
+        btnExit->setSizePolicy(sizePolicy);
 
         gridLayout_4->addWidget(btnExit, 4, 0, 1, 1);
 
 
-        gridLayout_6->addLayout(gridLayout_4, 1, 4, 1, 1);
+        gridLayout_8->addLayout(gridLayout_4, 2, 4, 1, 1);
 
 
         retranslateUi(TotalStandardClass);
@@ -555,6 +726,25 @@ public:
     void retranslateUi(QWidget *TotalStandardClass)
     {
         TotalStandardClass->setWindowTitle(QApplication::translate("TotalStandardClass", "Total Verify(Standard Meter Method)", 0, QApplication::UnicodeUTF8));
+        groupBox_5->setTitle(QApplication::translate("TotalStandardClass", "Total Verify Data", 0, QApplication::UnicodeUTF8));
+        groupBox_6->setTitle(QApplication::translate("TotalStandardClass", "Position", 0, QApplication::UnicodeUTF8));
+        radioButton->setText(QApplication::translate("TotalStandardClass", "In", 0, QApplication::UnicodeUTF8));
+        radioButton_2->setText(QApplication::translate("TotalStandardClass", "Out", 0, QApplication::UnicodeUTF8));
+        groupBox_7->setTitle(QApplication::translate("TotalStandardClass", "Heat Unit", 0, QApplication::UnicodeUTF8));
+        radioButton_3->setText(QApplication::translate("TotalStandardClass", "kwh", 0, QApplication::UnicodeUTF8));
+        radioButton_4->setText(QApplication::translate("TotalStandardClass", "MJ", 0, QApplication::UnicodeUTF8));
+        groupBox_8->setTitle(QApplication::translate("TotalStandardClass", "Min \316\224T", 0, QApplication::UnicodeUTF8));
+        label_10->setText(QApplication::translate("TotalStandardClass", "\316\224\316\270min", 0, QApplication::UnicodeUTF8));
+        label_12->setText(QApplication::translate("TotalStandardClass", "K", 0, QApplication::UnicodeUTF8));
+        groupBox_9->setTitle(QApplication::translate("TotalStandardClass", "Std Temper", 0, QApplication::UnicodeUTF8));
+        pushButton->setText(QApplication::translate("TotalStandardClass", "Acquisite", 0, QApplication::UnicodeUTF8));
+        pushButton_2->setText(QApplication::translate("TotalStandardClass", "Stop", 0, QApplication::UnicodeUTF8));
+        label_17->setText(QApplication::translate("TotalStandardClass", "In:", 0, QApplication::UnicodeUTF8));
+        label_18->setText(QApplication::translate("TotalStandardClass", "\316\251", 0, QApplication::UnicodeUTF8));
+        label_19->setText(QApplication::translate("TotalStandardClass", "\342\204\203", 0, QApplication::UnicodeUTF8));
+        label_20->setText(QApplication::translate("TotalStandardClass", "Out:", 0, QApplication::UnicodeUTF8));
+        label_21->setText(QApplication::translate("TotalStandardClass", "\316\251", 0, QApplication::UnicodeUTF8));
+        label_22->setText(QApplication::translate("TotalStandardClass", "\342\204\203", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("TotalStandardClass", "MeterNo", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
@@ -642,9 +832,9 @@ public:
         label_2->setText(QApplication::translate("TotalStandardClass", "Process:", 0, QApplication::UnicodeUTF8));
         labelHintProcess->setText(QString());
         btnExhaust->setText(QApplication::translate("TotalStandardClass", "Exhaust", 0, QApplication::UnicodeUTF8));
-        btnStart->setText(QApplication::translate("TotalStandardClass", "Start", 0, QApplication::UnicodeUTF8));
         btnNext->setText(QApplication::translate("TotalStandardClass", "Next", 0, QApplication::UnicodeUTF8));
         btnStop->setText(QApplication::translate("TotalStandardClass", "Stop", 0, QApplication::UnicodeUTF8));
+        btnStart->setText(QApplication::translate("TotalStandardClass", "Start", 0, QApplication::UnicodeUTF8));
         btnExit->setText(QApplication::translate("TotalStandardClass", "Exit", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

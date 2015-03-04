@@ -51,6 +51,8 @@ public slots:
 	void on_actionPortSet_triggered();
 	void on_actionComDebuger_triggered();
 	void on_actionDataTest_triggered();
+	void on_actionStdMeterParaSet_triggered();
+	void on_actionStdMeterCoeCorrect_triggered();
 	void on_actionMasterSlaveSet_triggered();
 	void on_actionMySql_triggered();
 

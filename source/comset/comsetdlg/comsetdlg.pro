@@ -1,6 +1,6 @@
 
 TEMPLATE	= lib
-QT         += xml
+QT         += xml sql
 TARGET    = comsetdlg
 CONFIG += qt dll debug
 
@@ -8,7 +8,9 @@ DEFINES	+= COMSETDLG_DLL
 
 QMAKE_LIBDIR +=  ./           \
         	     $(RUNHOME)/lib \
-	             $(RUNHOME)/bin \
+	             $(RUNHOME)/bin
+	             
+LIBS += -lQt3Supportd4 -lQt3Support4 -lqtexdb -lalgorithm	           
 
 DESTDIR = $(RUNHOME)\tmp\comset\comsetdlg\obj
 #MOC_DIR = $(RUNHOME)/tmp/comset/comsetdlg/moc
@@ -21,16 +23,21 @@ INCLUDEPATH  	=    ./      \
 									 $$(RUNHOME_INC)/include/qextserial
 
 
-HEADERS	+= $$(RUNHOME_INC)/include/setcomfrm.h   \
+HEADERS	+= $$(RUNHOME_INC)/include/qextserial/qextserialport_global.h  \
+        	 $$(RUNHOME_INC)/include/qextserial/qextserialport.h \
+					 $$(RUNHOME_INC)/include/comsetdlg_global.h   \
+					 $$(RUNHOME_INC)/include/setcomfrm.h   \
 		   		 $$(RUNHOME_INC)/include/setportfrm.h  \
 		   		 $$(RUNHOME_INC)/include/readcomconfig.h \
-        	 $$(RUNHOME_INC)/include/qextserial/qextserialport_global.h  \
-        	 $$(RUNHOME_INC)/include/qextserial/qextserialport.h
+           $$(RUNHOME_INC)/include/parasetdlg.h
+
 	
-SOURCES	+= source/setcomfrm.cpp \
+SOURCES	+= $$(RUNHOME_INC)/include/qextserial/qextserialport.cpp \
+					 source/setcomfrm.cpp \
 			     source/setportfrm.cpp \
 			     source/readcomconfig.cpp \
-	         $$(RUNHOME_INC)/include/qextserial/qextserialport.cpp
+      		 source/parasetdlg.cpp
+
 
 win32 {
      SOURCES += $$(RUNHOME_INC)/include/qextserial/qextserialport_win.cpp
@@ -40,8 +47,10 @@ unix {
      SOURCES += $$(RUNHOME_INC)/include/qextserial/qextserialport_unix.cpp
 }
 					 
-FORMS	+= ui/setcomfrm.ui \
+FORMS	+= ui/setcomfrm.ui  \
 		     ui/setportfrm.ui \
+         ui/parasetdlg.ui
+
 
 win32{
 	MY_DEST_LIB_VAR = $${DESTDIR} $${TARGET}.lib

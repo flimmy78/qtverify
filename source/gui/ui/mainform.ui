@@ -44,7 +44,8 @@
     <addaction name="actionPortSet"/>
     <addaction name="actionComDebuger"/>
     <addaction name="actionDataTest"/>
-    <addaction name="actionMasterSlaveSet"/>
+    <addaction name="actionStdMeterParaSet"/>
+    <addaction name="actionStdMeterCoeCorrect"/>
    </widget>
    <widget class="QMenu" name="menu">
     <property name="title">
@@ -441,6 +442,30 @@
    </property>
    <property name="text">
     <string>TotalResult</string>
+   </property>
+  </action>
+  <action name="actionStdMeterParaSet">
+   <property name="icon">
+    <iconset resource="../qtverify.qrc">
+     <normaloff>:/qtverify/images/stdmeterparaset.png</normaloff>:/qtverify/images/stdmeterparaset.png</iconset>
+   </property>
+   <property name="text">
+    <string>StdMeterParaSet</string>
+   </property>
+   <property name="toolTip">
+    <string>StdMeterParaSet</string>
+   </property>
+  </action>
+  <action name="actionStdMeterCoeCorrect">
+   <property name="icon">
+    <iconset resource="../qtverify.qrc">
+     <normaloff>:/qtverify/images/stdmetercoeset.png</normaloff>:/qtverify/images/stdmetercoeset.png</iconset>
+   </property>
+   <property name="text">
+    <string>StdMeterCoeCorrect</string>
+   </property>
+   <property name="toolTip">
+    <string>StdMeterCoeCorrect</string>
    </property>
   </action>
  </widget>

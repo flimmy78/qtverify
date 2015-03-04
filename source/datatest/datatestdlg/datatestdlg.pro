@@ -2,7 +2,6 @@
 TEMPLATE	= lib
 TARGET    = datatestdlg
 CONFIG += qt dll debug qtestlib thread
-QT += sql
 
 DEFINES	+= DATATESTDLG_DLL QT_THREAD_SUPPORT
 
@@ -10,7 +9,7 @@ QMAKE_LIBDIR +=  ./           \
         	     $(RUNHOME)/lib \
 	             $(RUNHOME)/bin 
 	            
-LIBS +=	-lQt3Supportd4 -lQt3Support4 -lprotocol -lcomsetdlg -lcomobject -lqtexdb -lalgorithm
+LIBS +=	 -lQt3Supportd4 -lQt3Support4 -lcomsetdlg -lprotocol -lcomobject -lalgorithm
 
 DESTDIR = $(RUNHOME)\tmp\datatest\datatestdlg\obj
 #MOC_DIR = $(RUNHOME)/tmp/datatest/datatestdlg/moc
@@ -22,17 +21,12 @@ INCLUDEPATH  	=    ./      \
 									 $$(RUNHOME_INC)/include	\
 									 $$(RUNHOME_INC)/include/qextserial
 
-HEADERS	+= $$(RUNHOME_INC)/include/datatestdlg_global.h \
-		       $$(RUNHOME_INC)/include/parasetdlg_global.h \
-           $$(RUNHOME_INC)/include/datatestdlg.h \
-           $$(RUNHOME_INC)/include/parasetdlg.h \ 
+HEADERS	+= $$(RUNHOME_INC)/include/datatestdlg.h \
 	
-SOURCES	+= source/datatestdlg.cpp  \
-			source/parasetdlg.cpp  \
+SOURCES	+= source/datatestdlg.cpp
 
 					 
-FORMS	+= ui/datatestdlg.ui \
-         ui/parasetdlg.ui
+FORMS	+= ui/datatestdlg.ui
      
 RESOURCES += datatestdlg.qrc     
          

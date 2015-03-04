@@ -1,9 +1,22 @@
 #ifndef DATATESTDLG_H
 #define DATATESTDLG_H
 
+#ifdef DATATESTDLG_DLL
+#  ifdef WIN32
+#  define DATATESTDLG_EXPORT __declspec(dllexport)
+#  else
+#  define DATATESTDLG_EXPORT
+#  endif
+#else
+#  ifdef WIN32
+#  define DATATESTDLG_EXPORT __declspec(dllimport)
+#  else
+#  define DATATESTDLG_EXPORT
+#  endif
+#endif
+
 #include <QtGui/QWidget>
 
-#include "datatestdlg_global.h"
 #include "ui_datatestdlg.h"
 #include "comobject.h"
 

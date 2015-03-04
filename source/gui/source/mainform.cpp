@@ -199,6 +199,17 @@ void MainForm::on_actionComDebuger_triggered()
 	m_comProcess->start("qcom", cmdlist);
 }
 
+//标准表参数设定
+void MainForm::on_actionStdMeterParaSet_triggered()
+{
+
+}
+
+//标准表系数修正
+void MainForm::on_actionStdMeterCoeCorrect_triggered()
+{
+}
+
 //主机-从机设置
 void MainForm::on_actionMasterSlaveSet_triggered()
 {
