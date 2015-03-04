@@ -17,156 +17,227 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="27"/>
-        <source>MeterNo</source>
+        <location filename="../totalstandard.ui" line="20"/>
+        <source>Total Verify Data</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
+        <location filename="../totalstandard.ui" line="26"/>
+        <source>Position</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../totalstandard.ui" line="32"/>
-        <source>FlowPoint(m³/h)</source>
+        <source>In</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="37"/>
-        <source>MeterValue0(kwh)</source>
+        <location filename="../totalstandard.ui" line="39"/>
+        <source>Out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="42"/>
-        <source>MeterValue1(kwh)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../totalstandard.ui" line="47"/>
-        <source>StdValue0(kwh)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../totalstandard.ui" line="52"/>
-        <source>StdValue1(kwh)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../totalstandard.ui" line="57"/>
-        <source>Temp(℃)</source>
+        <location filename="../totalstandard.ui" line="49"/>
+        <source>Heat Unit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../totalstandard.ui" line="62"/>
-        <source>Density(kg/L)</source>
+        <source>MJ</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../totalstandard.ui" line="67"/>
-        <source>StdValue(kwh)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
+    <message utf8="true">
         <location filename="../totalstandard.ui" line="72"/>
-        <source>DsipError(%)</source>
+        <source>Min ΔT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../totalstandard.ui" line="78"/>
+        <source>Δθmin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="77"/>
-        <source>ModifyNO.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../totalstandard.ui" line="82"/>
-        <source>AdjustError</source>
+        <location filename="../totalstandard.ui" line="88"/>
+        <source>K</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../totalstandard.ui" line="98"/>
-        <source>ParaSet</source>
+        <source>Std Temper</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="111"/>
-        <source>ReadMeter</source>
+        <location filename="../totalstandard.ui" line="104"/>
+        <source>Acquisite</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="118"/>
-        <source>NowPara(KeyInfo)</source>
+        <location filename="../totalstandard.ui" line="120"/>
+        <source>In:</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message utf8="true">
         <location filename="../totalstandard.ui" line="130"/>
-        <source>Standard:</source>
+        <location filename="../totalstandard.ui" line="161"/>
+        <source>Ω</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="156"/>
-        <source>DA Mode:</source>
+        <location filename="../totalstandard.ui" line="151"/>
+        <source>Out:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="173"/>
-        <source>Manual</source>
+        <location filename="../totalstandard.ui" line="193"/>
+        <source>MeterNo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../totalstandard.ui" line="198"/>
+        <source>FlowPoint(m³/h)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="178"/>
-        <source>Auto</source>
+        <location filename="../totalstandard.ui" line="203"/>
+        <source>MeterValue0(kwh)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="192"/>
-        <source>ResetZero:</source>
+        <location filename="../totalstandard.ui" line="208"/>
+        <source>MeterValue1(kwh)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="209"/>
-        <source>No</source>
+        <location filename="../totalstandard.ui" line="213"/>
+        <source>StdValue0(kwh)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="214"/>
-        <source>Yes</source>
+        <location filename="../totalstandard.ui" line="218"/>
+        <source>StdValue1(kwh)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../totalstandard.ui" line="223"/>
+        <source>Temp(℃)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../totalstandard.ui" line="228"/>
-        <source>Continuous:</source>
+        <source>Density(kg/L)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="245"/>
-        <source>Independent</source>
+        <location filename="../totalstandard.ui" line="233"/>
+        <source>StdValue(kwh)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="250"/>
-        <source>Continuous</source>
+        <location filename="../totalstandard.ui" line="238"/>
+        <source>DsipError(%)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="269"/>
-        <source>Controller</source>
+        <location filename="../totalstandard.ui" line="243"/>
+        <source>ModifyNO.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../totalstandard.ui" line="248"/>
+        <source>AdjustError</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../totalstandard.ui" line="264"/>
+        <source>ParaSet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../totalstandard.ui" line="277"/>
+        <source>ReadMeter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../totalstandard.ui" line="284"/>
+        <source>NowPara(KeyInfo)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../totalstandard.ui" line="296"/>
+        <source>Standard:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../totalstandard.ui" line="322"/>
+        <source>DA Mode:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../totalstandard.ui" line="339"/>
+        <source>Manual</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../totalstandard.ui" line="344"/>
+        <source>Auto</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../totalstandard.ui" line="358"/>
+        <source>ResetZero:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../totalstandard.ui" line="375"/>
+        <source>No</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../totalstandard.ui" line="380"/>
+        <source>Yes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../totalstandard.ui" line="394"/>
+        <source>Continuous:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../totalstandard.ui" line="411"/>
+        <source>Independent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../totalstandard.ui" line="416"/>
+        <source>Continuous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../totalstandard.ui" line="435"/>
+        <source>Controller</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../totalstandard.ui" line="462"/>
         <source>Hz</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="311"/>
+        <location filename="../totalstandard.ui" line="477"/>
         <source>i
 n
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="326"/>
+        <location filename="../totalstandard.ui" line="492"/>
         <source>b
 i
 g</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="341"/>
+        <location filename="../totalstandard.ui" line="507"/>
         <source>m
 i
 d
@@ -174,7 +245,7 @@ d
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="357"/>
+        <location filename="../totalstandard.ui" line="523"/>
         <source>m
 i
 d
@@ -182,7 +253,7 @@ d
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="373"/>
+        <location filename="../totalstandard.ui" line="539"/>
         <source>s
 m
 a
@@ -191,100 +262,104 @@ l</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="390"/>
+        <location filename="../totalstandard.ui" line="556"/>
         <source>o
 u
 t</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="405"/>
+        <location filename="../totalstandard.ui" line="571"/>
         <source>Set Freq</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="418"/>
+        <location filename="../totalstandard.ui" line="584"/>
         <source>Start Pump</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="428"/>
+        <location filename="../totalstandard.ui" line="600"/>
         <source>DataAcquisition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="442"/>
+        <location filename="../totalstandard.ui" line="612"/>
         <source>Std Meter:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="471"/>
+        <location filename="../totalstandard.ui" line="55"/>
+        <location filename="../totalstandard.ui" line="646"/>
         <source>kwh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="484"/>
+        <location filename="../totalstandard.ui" line="659"/>
         <source>FlowRate:</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="../totalstandard.ui" line="516"/>
+        <location filename="../totalstandard.ui" line="691"/>
         <source>m³/h</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="529"/>
+        <location filename="../totalstandard.ui" line="704"/>
         <source>In Temp:</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="../totalstandard.ui" line="679"/>
-        <location filename="../totalstandard.ui" line="842"/>
+        <location filename="../totalstandard.ui" line="140"/>
+        <location filename="../totalstandard.ui" line="171"/>
+        <location filename="../totalstandard.ui" line="854"/>
+        <location filename="../totalstandard.ui" line="1017"/>
         <source>℃</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="692"/>
+        <location filename="../totalstandard.ui" line="867"/>
         <source>Out Temp:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="860"/>
+        <location filename="../totalstandard.ui" line="1033"/>
         <source>Process Hint</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="874"/>
+        <location filename="../totalstandard.ui" line="1047"/>
         <source>FlowPnt:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="909"/>
+        <location filename="../totalstandard.ui" line="1082"/>
         <source>Process:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="951"/>
+        <location filename="../totalstandard.ui" line="1124"/>
         <source>Exhaust</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="964"/>
+        <location filename="../totalstandard.ui" line="1163"/>
         <source>Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="977"/>
+        <location filename="../totalstandard.ui" line="1137"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="990"/>
+        <location filename="../totalstandard.ui" line="111"/>
+        <location filename="../totalstandard.ui" line="1150"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1003"/>
+        <location filename="../totalstandard.ui" line="1176"/>
         <source>Exit</source>
         <translation type="unfinished"></translation>
     </message>
