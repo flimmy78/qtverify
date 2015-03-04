@@ -18,6 +18,7 @@ class FlowWeightDlg;
 class FlowStandardDlg;
 class TotalWeightDlg;
 class TotalStandardDlg;
+class CalcDlg;
 
 class MainForm : public QMainWindow
 {
@@ -39,6 +40,8 @@ public:
 	FlowStandardDlg *m_flowStandardDlg;  //流量检定(标准表法)
 	TotalWeightDlg *m_totalWeightDlg;    //总量检定(标准表法)
 	TotalStandardDlg *m_totalStandardDlg;//总量检定(标准表法)
+
+	CalcDlg *m_calcDlg; //计算器检定
 
 	void closeEvent(QCloseEvent * event);
 

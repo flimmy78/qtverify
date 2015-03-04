@@ -29,6 +29,7 @@
 #include "flowstandard.h"
 #include "totalweight.h"
 #include "totalstandard.h"
+#include "calcverify.h"
 
 MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
@@ -50,6 +51,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_flowStandardDlg = NULL;
 	m_totalWeightDlg = NULL;
 	m_totalStandardDlg = NULL;
+	m_calcDlg = NULL;
 
 	QLabel *permanent = new QLabel(this);
 	permanent->setFrameStyle(QFrame::NoFrame | QFrame::Sunken);
@@ -145,6 +147,12 @@ void MainForm::closeEvent( QCloseEvent * event)
 		{
 			delete m_totalStandardDlg;
 			m_totalStandardDlg = NULL;
+		}
+
+		if (m_calcDlg)
+		{
+			delete m_calcDlg;
+			m_calcDlg = NULL;
 		}
 	}
 }
@@ -256,6 +264,17 @@ void MainForm::on_actionTemperPara_triggered()
 //计算器检定
 void MainForm::on_actionCalculator_triggered()
 {
+	if (NULL == m_calcDlg)
+	{
+		m_calcDlg = new CalcDlg();
+	}
+	else //目的是执行CalcDlg的构造函数
+	{
+		delete m_calcDlg;
+		m_calcDlg = NULL;
+		m_calcDlg = new CalcDlg();
+	}
+	m_calcDlg->show();
 }
 
 //温度/计算器组合检定
