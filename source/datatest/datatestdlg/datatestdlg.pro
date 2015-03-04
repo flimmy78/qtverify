@@ -9,7 +9,7 @@ QMAKE_LIBDIR +=  ./           \
         	     $(RUNHOME)/lib \
 	             $(RUNHOME)/bin 
 	            
-LIBS +=	 -lQt3Supportd4 -lQt3Support4 -lcomsetdlg -lprotocol -lcomobject -lalgorithm
+LIBS +=	 -lQt3Supportd4 -lQt3Support4 -lsystemsetdlg -lprotocol -lcomobject -lalgorithm
 
 DESTDIR = $(RUNHOME)\tmp\datatest\datatestdlg\obj
 #MOC_DIR = $(RUNHOME)/tmp/datatest/datatestdlg/moc

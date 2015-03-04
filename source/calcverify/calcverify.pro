@@ -10,7 +10,7 @@ QMAKE_LIBDIR +=  ./           \
         	     $(RUNHOME)/lib \
 	             $(RUNHOME)/bin 
 	            
-LIBS +=	-lQt3Supportd4 -lQt3Support4 -lprotocol -lcomsetdlg -lcomobject -lqtexdb -lalgorithm	\
+LIBS +=	-lQt3Supportd4 -lQt3Support4 -lprotocol -lsystemsetdlg -lcomobject -lqtexdb -lalgorithm	\
 			  -ldatatestdlg
 
 DESTDIR = $(RUNHOME)\tmp\calcverify

@@ -15,7 +15,7 @@ QMAKE_LIBDIR = 	$(RUNHOME)/lib \
                 $(RUNHOME)/bin \
 
 								
-LIBS += -lalgorithm -lcomsetdlg -ldatatestdlg -lqaxserver -lmasterslaveset -llogindialog \
+LIBS += -lalgorithm -lsystemsetdlg -ldatatestdlg -lqaxserver -lmasterslaveset -llogindialog \
 				-lweightmethod -lqtexdb -lflowweight -lflowstandard -ltotalweight -ltotalstandard \
 				-lcalcverify
 
