@@ -1,6 +1,6 @@
 /***********************************************
-**  文件名:     stdparaset.cpp
-**  功能:       标准表参数设定
+**  文件名:     stdcoecorrect.cpp
+**  功能:       标准表系数标定
 **  操作系统:   基于Trolltech Qt4.8.5的跨平台系统
 **  生成时间:   2015/3/5
 **  专业组:     德鲁计量软件组
@@ -20,21 +20,21 @@
 #include <QtGui/QMessageBox>
 #include <QtCore/QProcessEnvironment>
 
-#include "stdparaset.h"
+#include "stdcoecorrect.h"
 
-StdParaSet::StdParaSet(QWidget *parent, Qt::WFlags flags)
+StdCoeCorrect::StdCoeCorrect(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
-	qDebug()<<"StdParaSet thread:"<<QThread::currentThreadId();
+	qDebug()<<"StdCoeCorrect thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
 }
 
-StdParaSet::~StdParaSet()
+StdCoeCorrect::~StdCoeCorrect()
 {
-	qDebug()<<"!!! StdParaSet destructor";
+	qDebug()<<"!!! StdCoeCorrect destructor";
 }
 
-void StdParaSet::on_btnExit_clicked()
+void StdCoeCorrect::on_btnExit_clicked()
 {
 	this->close();
 }

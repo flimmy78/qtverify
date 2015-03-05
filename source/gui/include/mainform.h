@@ -19,6 +19,8 @@ class FlowStandardDlg;
 class TotalWeightDlg;
 class TotalStandardDlg;
 class CalcDlg;
+class StdParaSet;
+class StdCoeCorrect;
 
 class MainForm : public QMainWindow
 {
@@ -42,6 +44,8 @@ public:
 	TotalStandardDlg *m_totalStandardDlg;//总量检定(标准表法)
 
 	CalcDlg *m_calcDlg; //计算器检定
+	StdParaSet *m_stdParaSet; //标准表参数设定
+	StdCoeCorrect *m_stdCoeCorrect; //标准表系数标定
 
 	void closeEvent(QCloseEvent * event);
 
@@ -51,8 +55,8 @@ public slots:
 	void on_actionPortSet_triggered();
 	void on_actionComDebuger_triggered();
 	void on_actionDataTest_triggered();
-	void on_actionStdMeterParaSet_triggered();
-	void on_actionStdMeterCoeCorrect_triggered();
+	void on_actionStdParaSet_triggered();
+	void on_actionStdCoeCorrect_triggered();
 	void on_actionMasterSlaveSet_triggered();
 	void on_actionMySql_triggered();
 

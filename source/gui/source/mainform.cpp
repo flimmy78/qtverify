@@ -30,6 +30,8 @@
 #include "totalweight.h"
 #include "totalstandard.h"
 #include "calcverify.h"
+#include "stdparaset.h"
+#include "stdcoecorrect.h"
 
 MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
@@ -52,6 +54,8 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_totalWeightDlg = NULL;
 	m_totalStandardDlg = NULL;
 	m_calcDlg = NULL;
+	m_stdParaSet = NULL;
+	m_stdCoeCorrect = NULL;
 
 	QLabel *permanent = new QLabel(this);
 	permanent->setFrameStyle(QFrame::NoFrame | QFrame::Sunken);
@@ -154,6 +158,18 @@ void MainForm::closeEvent( QCloseEvent * event)
 			delete m_calcDlg;
 			m_calcDlg = NULL;
 		}
+
+		if (m_stdParaSet)
+		{
+			delete m_stdParaSet;
+			m_stdParaSet = NULL;
+		}
+
+		if (m_stdCoeCorrect)
+		{
+			delete m_stdCoeCorrect;
+			m_stdCoeCorrect = NULL;
+		}
 	}
 }
 
@@ -200,14 +216,35 @@ void MainForm::on_actionComDebuger_triggered()
 }
 
 //标准表参数设定
-void MainForm::on_actionStdMeterParaSet_triggered()
+void MainForm::on_actionStdParaSet_triggered()
 {
-
+	if (NULL == m_stdParaSet)
+	{
+		m_stdParaSet = new StdParaSet();
+	}
+	else //目的是执行StdParaSet的构造函数
+	{
+		delete m_stdParaSet;
+		m_stdParaSet = NULL;
+		m_stdParaSet = new StdParaSet();
+	}
+	m_stdParaSet->show();
 }
 
 //标准表系数修正
-void MainForm::on_actionStdMeterCoeCorrect_triggered()
+void MainForm::on_actionStdCoeCorrect_triggered()
 {
+	if (NULL == m_stdCoeCorrect)
+	{
+		m_stdCoeCorrect = new StdCoeCorrect();
+	}
+	else //目的是执行StdCoeCorrect的构造函数
+	{
+		delete m_stdCoeCorrect;
+		m_stdCoeCorrect = NULL;
+		m_stdCoeCorrect = new StdCoeCorrect();
+	}
+	m_stdCoeCorrect->show();
 }
 
 //主机-从机设置

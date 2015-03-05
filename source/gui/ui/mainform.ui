@@ -44,8 +44,8 @@
     <addaction name="actionPortSet"/>
     <addaction name="actionComDebuger"/>
     <addaction name="actionDataTest"/>
-    <addaction name="actionStdMeterParaSet"/>
-    <addaction name="actionStdMeterCoeCorrect"/>
+    <addaction name="actionStdParaSet"/>
+    <addaction name="actionStdCoeCorrect"/>
    </widget>
    <widget class="QMenu" name="menu">
     <property name="title">
@@ -137,8 +137,8 @@
    <addaction name="actionPortSet"/>
    <addaction name="actionComDebuger"/>
    <addaction name="actionDataTest"/>
-   <addaction name="actionStdMeterParaSet"/>
-   <addaction name="actionStdMeterCoeCorrect"/>
+   <addaction name="actionStdParaSet"/>
+   <addaction name="actionStdCoeCorrect"/>
    <addaction name="separator"/>
    <addaction name="actionFlowWeight"/>
    <addaction name="actionFlowStandard"/>
@@ -446,28 +446,28 @@
     <string>TotalResult</string>
    </property>
   </action>
-  <action name="actionStdMeterParaSet">
+  <action name="actionStdParaSet">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
      <normaloff>:/qtverify/images/stdmeterparaset.png</normaloff>:/qtverify/images/stdmeterparaset.png</iconset>
    </property>
    <property name="text">
-    <string>StdMeterParaSet</string>
+    <string>StdParaSet</string>
    </property>
    <property name="toolTip">
-    <string>StdMeterParaSet</string>
+    <string>StdParaSet</string>
    </property>
   </action>
-  <action name="actionStdMeterCoeCorrect">
+  <action name="actionStdCoeCorrect">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
      <normaloff>:/qtverify/images/stdmetercoeset.png</normaloff>:/qtverify/images/stdmetercoeset.png</iconset>
    </property>
    <property name="text">
-    <string>StdMeterCoeCorrect</string>
+    <string>StdCoeCorrect</string>
    </property>
    <property name="toolTip">
-    <string>StdMeterCoeCorrect</string>
+    <string>StdCoeCorrect</string>
    </property>
   </action>
  </widget>

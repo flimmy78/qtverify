@@ -20,6 +20,7 @@ public:
 signals:
 
 public slots:
+	void on_btnExit_clicked();
 
 private:
 	Ui::StdParaSetClass ui;

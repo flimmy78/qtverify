@@ -1873,4 +1873,77 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
+<context>
+    <name>StdParaSetClass</name>
+    <message utf8="true">
+        <location filename="../ui/stdparaset.ui" line="17"/>
+        <source>标准表参数设定</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdparaset.ui" line="60"/>
+        <source>DN10表体积仪表系数</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdparaset.ui" line="109"/>
+        <location filename="../ui/stdparaset.ui" line="362"/>
+        <source>流量点(m³/h)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdparaset.ui" line="159"/>
+        <location filename="../ui/stdparaset.ui" line="412"/>
+        <source>K系数</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdparaset.ui" line="263"/>
+        <location filename="../ui/stdparaset.ui" line="516"/>
+        <source>脉冲当量(升/脉冲):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdparaset.ui" line="313"/>
+        <source>DN25表体积仪表系数</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdparaset.ui" line="529"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;注:流量从小到大输入，最大流量可与上限流量相同。两个流量点之间不能有空格！&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;K系数为：标准值/显示值&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdparaset.ui" line="573"/>
+        <source>DN10表流速参数</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdparaset.ui" line="616"/>
+        <location filename="../ui/stdparaset.ui" line="756"/>
+        <source>上限流量(m³/h)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdparaset.ui" line="660"/>
+        <location filename="../ui/stdparaset.ui" line="800"/>
+        <source>修正系数</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdparaset.ui" line="713"/>
+        <source>DN25表流速参数</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdparaset.ui" line="816"/>
+        <source>保存</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdparaset.ui" line="823"/>
+        <source>退出</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>
