@@ -20,7 +20,6 @@
 #include <QtGui/QLineEdit>
 #include <QtGui/QPushButton>
 #include <QtGui/QRadioButton>
-#include <QtGui/QSpacerItem>
 #include <QtGui/QTableWidget>
 #include <QtGui/QToolButton>
 #include <QtGui/QWidget>
@@ -32,21 +31,23 @@ class Ui_StdCoeCorrectClass
 public:
     QLabel *label;
     QGroupBox *groupBox_2;
-    QGridLayout *gridLayout_6;
+    QPushButton *pushButton_3;
+    QPushButton *pushButton_4;
+    QWidget *widget;
     QGridLayout *gridLayout_2;
     QLabel *label_5;
     QLineEdit *lineEdit;
     QLabel *label_8;
+    QWidget *widget1;
     QGridLayout *gridLayout_4;
     QLabel *label_6;
     QLineEdit *lineEdit_2;
     QLabel *label_9;
+    QWidget *widget2;
     QGridLayout *gridLayout_5;
     QLabel *label_7;
     QLineEdit *lineEdit_3;
     QLabel *label_10;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton_4;
     QGroupBox *groupBox_3;
     QGridLayout *gridLayout_3;
     QRadioButton *radioButton_4;
@@ -58,26 +59,23 @@ public:
     QTableWidget *tableWidget;
     QWidget *layoutWidget;
     QGridLayout *gridLayout_7;
-    QSpacerItem *horizontalSpacer_2;
     QToolButton *toolButton;
     QToolButton *toolButton_2;
     QToolButton *toolButton_3;
-    QSpacerItem *horizontalSpacer;
     QToolButton *btnExit;
-    QSpacerItem *horizontalSpacer_3;
 
     void setupUi(QWidget *StdCoeCorrectClass)
     {
         if (StdCoeCorrectClass->objectName().isEmpty())
             StdCoeCorrectClass->setObjectName(QString::fromUtf8("StdCoeCorrectClass"));
         StdCoeCorrectClass->setWindowModality(Qt::ApplicationModal);
-        StdCoeCorrectClass->resize(1049, 743);
+        StdCoeCorrectClass->resize(1057, 768);
         label = new QLabel(StdCoeCorrectClass);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(270, 585, 531, 51));
+        label->setGeometry(QRect(178, 699, 360, 46));
         groupBox_2 = new QGroupBox(StdCoeCorrectClass);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setGeometry(QRect(270, 10, 771, 67));
+        groupBox_2->setGeometry(QRect(178, 11, 868, 67));
         QPalette palette;
         QBrush brush(QColor(0, 85, 255, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -87,11 +85,26 @@ public:
         brush1.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
         groupBox_2->setPalette(palette);
-        gridLayout_6 = new QGridLayout(groupBox_2);
-        gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
-        gridLayout_2 = new QGridLayout();
+        pushButton_3 = new QPushButton(groupBox_2);
+        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        pushButton_3->setGeometry(QRect(580, 27, 141, 28));
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
+        pushButton_3->setSizePolicy(sizePolicy);
+        pushButton_4 = new QPushButton(groupBox_2);
+        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
+        pushButton_4->setGeometry(QRect(725, 27, 131, 28));
+        sizePolicy.setHeightForWidth(pushButton_4->sizePolicy().hasHeightForWidth());
+        pushButton_4->setSizePolicy(sizePolicy);
+        widget = new QWidget(groupBox_2);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(12, 27, 171, 28));
+        gridLayout_2 = new QGridLayout(widget);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        label_5 = new QLabel(groupBox_2);
+        gridLayout_2->setContentsMargins(0, 0, 0, 0);
+        label_5 = new QLabel(widget);
         label_5->setObjectName(QString::fromUtf8("label_5"));
         QPalette palette1;
         QBrush brush2(QColor(0, 0, 0, 255));
@@ -103,12 +116,17 @@ public:
 
         gridLayout_2->addWidget(label_5, 0, 0, 1, 1);
 
-        lineEdit = new QLineEdit(groupBox_2);
+        lineEdit = new QLineEdit(widget);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(lineEdit->sizePolicy().hasHeightForWidth());
+        lineEdit->setSizePolicy(sizePolicy1);
 
         gridLayout_2->addWidget(lineEdit, 0, 1, 1, 1);
 
-        label_8 = new QLabel(groupBox_2);
+        label_8 = new QLabel(widget);
         label_8->setObjectName(QString::fromUtf8("label_8"));
         QPalette palette2;
         palette2.setBrush(QPalette::Active, QPalette::WindowText, brush2);
@@ -118,12 +136,13 @@ public:
 
         gridLayout_2->addWidget(label_8, 0, 2, 1, 1);
 
-
-        gridLayout_6->addLayout(gridLayout_2, 0, 0, 1, 1);
-
-        gridLayout_4 = new QGridLayout();
+        widget1 = new QWidget(groupBox_2);
+        widget1->setObjectName(QString::fromUtf8("widget1"));
+        widget1->setGeometry(QRect(200, 27, 171, 28));
+        gridLayout_4 = new QGridLayout(widget1);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
-        label_6 = new QLabel(groupBox_2);
+        gridLayout_4->setContentsMargins(0, 0, 0, 0);
+        label_6 = new QLabel(widget1);
         label_6->setObjectName(QString::fromUtf8("label_6"));
         QPalette palette3;
         palette3.setBrush(QPalette::Active, QPalette::WindowText, brush2);
@@ -133,12 +152,14 @@ public:
 
         gridLayout_4->addWidget(label_6, 0, 0, 1, 1);
 
-        lineEdit_2 = new QLineEdit(groupBox_2);
+        lineEdit_2 = new QLineEdit(widget1);
         lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
+        sizePolicy1.setHeightForWidth(lineEdit_2->sizePolicy().hasHeightForWidth());
+        lineEdit_2->setSizePolicy(sizePolicy1);
 
         gridLayout_4->addWidget(lineEdit_2, 0, 1, 1, 1);
 
-        label_9 = new QLabel(groupBox_2);
+        label_9 = new QLabel(widget1);
         label_9->setObjectName(QString::fromUtf8("label_9"));
         QPalette palette4;
         palette4.setBrush(QPalette::Active, QPalette::WindowText, brush2);
@@ -148,12 +169,13 @@ public:
 
         gridLayout_4->addWidget(label_9, 0, 2, 1, 1);
 
-
-        gridLayout_6->addLayout(gridLayout_4, 0, 1, 1, 1);
-
-        gridLayout_5 = new QGridLayout();
+        widget2 = new QWidget(groupBox_2);
+        widget2->setObjectName(QString::fromUtf8("widget2"));
+        widget2->setGeometry(QRect(390, 27, 181, 28));
+        gridLayout_5 = new QGridLayout(widget2);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
-        label_7 = new QLabel(groupBox_2);
+        gridLayout_5->setContentsMargins(0, 0, 0, 0);
+        label_7 = new QLabel(widget2);
         label_7->setObjectName(QString::fromUtf8("label_7"));
         QPalette palette5;
         palette5.setBrush(QPalette::Active, QPalette::WindowText, brush2);
@@ -163,12 +185,14 @@ public:
 
         gridLayout_5->addWidget(label_7, 0, 0, 1, 1);
 
-        lineEdit_3 = new QLineEdit(groupBox_2);
+        lineEdit_3 = new QLineEdit(widget2);
         lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
+        sizePolicy1.setHeightForWidth(lineEdit_3->sizePolicy().hasHeightForWidth());
+        lineEdit_3->setSizePolicy(sizePolicy1);
 
         gridLayout_5->addWidget(lineEdit_3, 0, 1, 1, 1);
 
-        label_10 = new QLabel(groupBox_2);
+        label_10 = new QLabel(widget2);
         label_10->setObjectName(QString::fromUtf8("label_10"));
         QPalette palette6;
         palette6.setBrush(QPalette::Active, QPalette::WindowText, brush2);
@@ -178,22 +202,9 @@ public:
 
         gridLayout_5->addWidget(label_10, 0, 2, 1, 1);
 
-
-        gridLayout_6->addLayout(gridLayout_5, 0, 2, 1, 1);
-
-        pushButton_3 = new QPushButton(groupBox_2);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-
-        gridLayout_6->addWidget(pushButton_3, 0, 3, 1, 1);
-
-        pushButton_4 = new QPushButton(groupBox_2);
-        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
-
-        gridLayout_6->addWidget(pushButton_4, 0, 4, 1, 1);
-
         groupBox_3 = new QGroupBox(StdCoeCorrectClass);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
-        groupBox_3->setGeometry(QRect(10, 580, 241, 58));
+        groupBox_3->setGeometry(QRect(11, 699, 160, 58));
         QPalette palette7;
         palette7.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette7.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
@@ -223,16 +234,31 @@ public:
 
         groupBox = new QGroupBox(StdCoeCorrectClass);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(20, 7, 211, 71));
+        groupBox->setGeometry(QRect(11, 11, 149, 58));
+        QPalette palette10;
+        palette10.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette10.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette10.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        groupBox->setPalette(palette10);
         gridLayout = new QGridLayout(groupBox);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         radioButton = new QRadioButton(groupBox);
         radioButton->setObjectName(QString::fromUtf8("radioButton"));
+        QPalette palette11;
+        palette11.setBrush(QPalette::Active, QPalette::WindowText, brush2);
+        palette11.setBrush(QPalette::Inactive, QPalette::WindowText, brush2);
+        palette11.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        radioButton->setPalette(palette11);
 
         gridLayout->addWidget(radioButton, 0, 0, 1, 1);
 
         radioButton_2 = new QRadioButton(groupBox);
         radioButton_2->setObjectName(QString::fromUtf8("radioButton_2"));
+        QPalette palette12;
+        palette12.setBrush(QPalette::Active, QPalette::WindowText, brush2);
+        palette12.setBrush(QPalette::Inactive, QPalette::WindowText, brush2);
+        palette12.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        radioButton_2->setPalette(palette12);
 
         gridLayout->addWidget(radioButton_2, 0, 1, 1, 1);
 
@@ -259,78 +285,49 @@ public:
         tableWidget->setHorizontalHeaderItem(8, __qtablewidgetitem8);
         QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(9, __qtablewidgetitem9);
-        if (tableWidget->rowCount() < 10)
-            tableWidget->setRowCount(10);
-        QTableWidgetItem *__qtablewidgetitem10 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(0, __qtablewidgetitem10);
-        QTableWidgetItem *__qtablewidgetitem11 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(1, __qtablewidgetitem11);
-        QTableWidgetItem *__qtablewidgetitem12 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(2, __qtablewidgetitem12);
-        QTableWidgetItem *__qtablewidgetitem13 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(3, __qtablewidgetitem13);
-        QTableWidgetItem *__qtablewidgetitem14 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(4, __qtablewidgetitem14);
-        QTableWidgetItem *__qtablewidgetitem15 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(5, __qtablewidgetitem15);
-        QTableWidgetItem *__qtablewidgetitem16 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(6, __qtablewidgetitem16);
-        QTableWidgetItem *__qtablewidgetitem17 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(7, __qtablewidgetitem17);
-        QTableWidgetItem *__qtablewidgetitem18 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(8, __qtablewidgetitem18);
-        QTableWidgetItem *__qtablewidgetitem19 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(9, __qtablewidgetitem19);
+        if (tableWidget->rowCount() < 18)
+            tableWidget->setRowCount(18);
         tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
-        tableWidget->setGeometry(QRect(20, 90, 1021, 471));
+        tableWidget->setGeometry(QRect(11, 85, 1041, 601));
+        tableWidget->setLineWidth(1);
+        tableWidget->setAutoScrollMargin(10);
+        tableWidget->setRowCount(18);
         layoutWidget = new QWidget(StdCoeCorrectClass);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(11, 660, 1031, 71));
+        layoutWidget->setGeometry(QRect(615, 699, 431, 51));
         gridLayout_7 = new QGridLayout(layoutWidget);
         gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
         gridLayout_7->setContentsMargins(0, 0, 0, 0);
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_7->addItem(horizontalSpacer_2, 0, 0, 1, 1);
-
         toolButton = new QToolButton(layoutWidget);
         toolButton->setObjectName(QString::fromUtf8("toolButton"));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(toolButton->sizePolicy().hasHeightForWidth());
-        toolButton->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(toolButton->sizePolicy().hasHeightForWidth());
+        toolButton->setSizePolicy(sizePolicy2);
 
-        gridLayout_7->addWidget(toolButton, 0, 1, 1, 1);
+        gridLayout_7->addWidget(toolButton, 0, 0, 1, 1);
 
         toolButton_2 = new QToolButton(layoutWidget);
         toolButton_2->setObjectName(QString::fromUtf8("toolButton_2"));
-        sizePolicy.setHeightForWidth(toolButton_2->sizePolicy().hasHeightForWidth());
-        toolButton_2->setSizePolicy(sizePolicy);
+        sizePolicy2.setHeightForWidth(toolButton_2->sizePolicy().hasHeightForWidth());
+        toolButton_2->setSizePolicy(sizePolicy2);
 
-        gridLayout_7->addWidget(toolButton_2, 0, 2, 1, 1);
+        gridLayout_7->addWidget(toolButton_2, 0, 1, 1, 1);
 
         toolButton_3 = new QToolButton(layoutWidget);
         toolButton_3->setObjectName(QString::fromUtf8("toolButton_3"));
-        sizePolicy.setHeightForWidth(toolButton_3->sizePolicy().hasHeightForWidth());
-        toolButton_3->setSizePolicy(sizePolicy);
+        sizePolicy2.setHeightForWidth(toolButton_3->sizePolicy().hasHeightForWidth());
+        toolButton_3->setSizePolicy(sizePolicy2);
 
-        gridLayout_7->addWidget(toolButton_3, 0, 3, 1, 1);
-
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_7->addItem(horizontalSpacer, 0, 4, 1, 1);
+        gridLayout_7->addWidget(toolButton_3, 0, 2, 1, 1);
 
         btnExit = new QToolButton(layoutWidget);
         btnExit->setObjectName(QString::fromUtf8("btnExit"));
-        sizePolicy.setHeightForWidth(btnExit->sizePolicy().hasHeightForWidth());
-        btnExit->setSizePolicy(sizePolicy);
+        sizePolicy2.setHeightForWidth(btnExit->sizePolicy().hasHeightForWidth());
+        btnExit->setSizePolicy(sizePolicy2);
 
-        gridLayout_7->addWidget(btnExit, 0, 5, 1, 1);
-
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_7->addItem(horizontalSpacer_3, 0, 6, 1, 1);
+        gridLayout_7->addWidget(btnExit, 0, 3, 1, 1);
 
         layoutWidget->raise();
         label->raise();
@@ -349,14 +346,14 @@ public:
         StdCoeCorrectClass->setWindowTitle(QApplication::translate("StdCoeCorrectClass", "\346\240\207\345\207\206\350\241\250\347\263\273\346\225\260\346\240\207\345\256\232", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("StdCoeCorrectClass", "<html><head/><body><p><span style=\" color:#ff0000;\">\346\217\220\347\244\272\357\274\232\345\246\202\346\236\234\350\246\201\350\277\233\350\241\214K\347\263\273\346\225\260\346\240\207\345\256\232\357\274\214\350\257\267\351\200\211\346\213\251\346\227\240\344\277\256\346\255\243\347\212\266\346\200\201\357\274\233</span></p><p><span style=\" color:#ff0000;\">\345\246\202\346\236\234\350\246\201\351\252\214\350\257\201\346\240\207\345\207\206\350\241\250\344\277\256\346\255\243\345\220\216\347\244\272\345\200\274\345\207\206\347\241\256\345\272\246\357\274\214\350\257\267\351\200\211\346\213\251\344\277\256\346\255\243\347\212\266\346\200\201</span></p></body></html>", 0, QApplication::UnicodeUTF8));
         groupBox_2->setTitle(QApplication::translate("StdCoeCorrectClass", "\346\240\207\345\207\206\350\241\250\346\230\276\347\244\272\345\200\274\350\256\241\347\256\227", 0, QApplication::UnicodeUTF8));
+        pushButton_3->setText(QApplication::translate("StdCoeCorrectClass", "\345\210\235\345\200\274", 0, QApplication::UnicodeUTF8));
+        pushButton_4->setText(QApplication::translate("StdCoeCorrectClass", "\346\234\253\345\200\274", 0, QApplication::UnicodeUTF8));
         label_5->setText(QApplication::translate("StdCoeCorrectClass", "\345\210\235\345\200\274", 0, QApplication::UnicodeUTF8));
         label_8->setText(QApplication::translate("StdCoeCorrectClass", "L", 0, QApplication::UnicodeUTF8));
         label_6->setText(QApplication::translate("StdCoeCorrectClass", "\346\234\253\345\200\274", 0, QApplication::UnicodeUTF8));
         label_9->setText(QApplication::translate("StdCoeCorrectClass", "L", 0, QApplication::UnicodeUTF8));
         label_7->setText(QApplication::translate("StdCoeCorrectClass", "\347\244\272\345\200\274", 0, QApplication::UnicodeUTF8));
         label_10->setText(QApplication::translate("StdCoeCorrectClass", "L", 0, QApplication::UnicodeUTF8));
-        pushButton_3->setText(QApplication::translate("StdCoeCorrectClass", "\345\210\235\345\200\274", 0, QApplication::UnicodeUTF8));
-        pushButton_4->setText(QApplication::translate("StdCoeCorrectClass", "\346\234\253\345\200\274", 0, QApplication::UnicodeUTF8));
         groupBox_3->setTitle(QApplication::translate("StdCoeCorrectClass", "\347\212\266\346\200\201\351\200\211\346\213\251", 0, QApplication::UnicodeUTF8));
         radioButton_4->setText(QApplication::translate("StdCoeCorrectClass", "\344\277\256\346\255\243", 0, QApplication::UnicodeUTF8));
         radioButton_3->setText(QApplication::translate("StdCoeCorrectClass", "\346\227\240\344\277\256\346\255\243", 0, QApplication::UnicodeUTF8));
