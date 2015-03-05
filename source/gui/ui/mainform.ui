@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>875</width>
+    <width>963</width>
     <height>570</height>
    </rect>
   </property>
@@ -32,7 +32,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>875</width>
+     <width>963</width>
      <height>26</height>
     </rect>
    </property>
@@ -44,8 +44,10 @@
     <addaction name="actionPortSet"/>
     <addaction name="actionComDebuger"/>
     <addaction name="actionDataTest"/>
-    <addaction name="actionStdParaSet"/>
-    <addaction name="actionStdCoeCorrect"/>
+    <addaction name="actionStdMtrParaSet"/>
+    <addaction name="actionStdMtrCoeCorrect"/>
+    <addaction name="actionStdPtParaSet"/>
+    <addaction name="actionPtparaset"/>
    </widget>
    <widget class="QMenu" name="menu">
     <property name="title">
@@ -137,8 +139,10 @@
    <addaction name="actionPortSet"/>
    <addaction name="actionComDebuger"/>
    <addaction name="actionDataTest"/>
-   <addaction name="actionStdParaSet"/>
-   <addaction name="actionStdCoeCorrect"/>
+   <addaction name="actionStdMtrParaSet"/>
+   <addaction name="actionStdMtrCoeCorrect"/>
+   <addaction name="actionStdPtParaSet"/>
+   <addaction name="actionPtparaset"/>
    <addaction name="separator"/>
    <addaction name="actionFlowWeight"/>
    <addaction name="actionFlowStandard"/>
@@ -446,28 +450,52 @@
     <string>TotalResult</string>
    </property>
   </action>
-  <action name="actionStdParaSet">
+  <action name="actionStdMtrParaSet">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
      <normaloff>:/qtverify/images/stdmeterparaset.png</normaloff>:/qtverify/images/stdmeterparaset.png</iconset>
    </property>
    <property name="text">
-    <string>StdParaSet</string>
+    <string>StdMtrParaSet</string>
    </property>
    <property name="toolTip">
-    <string>StdParaSet</string>
+    <string>StdMtrParaSet</string>
    </property>
   </action>
-  <action name="actionStdCoeCorrect">
+  <action name="actionStdMtrCoeCorrect">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
      <normaloff>:/qtverify/images/stdmetercoeset.png</normaloff>:/qtverify/images/stdmetercoeset.png</iconset>
    </property>
    <property name="text">
-    <string>StdCoeCorrect</string>
+    <string>StdMtrCoeCorrect</string>
    </property>
    <property name="toolTip">
-    <string>StdCoeCorrect</string>
+    <string>StdMtrCoeCorrect</string>
+   </property>
+  </action>
+  <action name="actionStdPtParaSet">
+   <property name="icon">
+    <iconset resource="../qtverify.qrc">
+     <normaloff>:/qtverify/images/stdptparaset.png</normaloff>:/qtverify/images/stdptparaset.png</iconset>
+   </property>
+   <property name="text">
+    <string>StdPtParaSet</string>
+   </property>
+   <property name="toolTip">
+    <string>StdPtParaSet</string>
+   </property>
+  </action>
+  <action name="actionPtparaset">
+   <property name="icon">
+    <iconset resource="../qtverify.qrc">
+     <normaloff>:/qtverify/images/ptparaset.png</normaloff>:/qtverify/images/ptparaset.png</iconset>
+   </property>
+   <property name="text">
+    <string>PtParaSet</string>
+   </property>
+   <property name="toolTip">
+    <string>PtParaSet</string>
    </property>
   </action>
  </widget>

@@ -40,9 +40,13 @@
 <context>
     <name>FlowResultClass</name>
     <message>
-        <location filename="../ui/flowresult.ui" line="14"/>
         <source>Flow Verify Result</source>
-        <translation>流量检定结果查询</translation>
+        <translation type="obsolete">流量检定结果查询</translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/flowresult.ui" line="14"/>
+        <source>总量检定结果查询</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="28"/>
@@ -151,27 +155,27 @@
 <context>
     <name>MainForm</name>
     <message>
-        <location filename="../source/mainform.cpp" line="58"/>
+        <location filename="../source/mainform.cpp" line="62"/>
         <source>&lt;a href=&quot;http://www.sdm.com.cn&quot;&gt;Shandong Delu Measurement Co.,Ltd.&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;http://www.sdm.com.cn&quot;&gt;山东德鲁计量科技有限公司&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="70"/>
+        <location filename="../source/mainform.cpp" line="74"/>
         <source>Question</source>
         <translation>询问</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="70"/>
+        <location filename="../source/mainform.cpp" line="74"/>
         <source>Quit Really ?</source>
         <translation>确认退出吗?</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="368"/>
+        <location filename="../source/mainform.cpp" line="406"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="368"/>
+        <location filename="../source/mainform.cpp" line="406"/>
         <source>Excel object lose!</source>
         <translation></translation>
     </message>
@@ -425,121 +429,141 @@
         <translation>热量表检定装置</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="53"/>
+        <location filename="../ui/mainform.ui" line="54"/>
         <source>CompVerify</source>
         <translation>分量检定</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="57"/>
+        <location filename="../ui/mainform.ui" line="58"/>
         <source>Temper</source>
         <translation>温度检定</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="68"/>
+        <location filename="../ui/mainform.ui" line="69"/>
         <source>Flow</source>
         <translation>流量检定</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="117"/>
+        <location filename="../ui/mainform.ui" line="118"/>
         <source>TotalVerify</source>
         <translation>总量检定</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="200"/>
+        <location filename="../ui/mainform.ui" line="203"/>
         <source>FlowResult</source>
         <translation>流量检定结果</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="209"/>
         <location filename="../ui/mainform.ui" line="212"/>
+        <location filename="../ui/mainform.ui" line="215"/>
         <source>FlowWeight</source>
         <translation>流量检定(质量法)</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="221"/>
         <location filename="../ui/mainform.ui" line="224"/>
+        <location filename="../ui/mainform.ui" line="227"/>
         <source>TotalWeight</source>
         <translation>总量检定(质量法)</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="233"/>
         <location filename="../ui/mainform.ui" line="236"/>
+        <location filename="../ui/mainform.ui" line="239"/>
         <source>FlowStandard</source>
         <translation>流量检定(标准表法)</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="245"/>
         <location filename="../ui/mainform.ui" line="248"/>
+        <location filename="../ui/mainform.ui" line="251"/>
         <source>TotalStandard</source>
         <translation>总量检定(标准表法)</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="278"/>
         <location filename="../ui/mainform.ui" line="281"/>
+        <location filename="../ui/mainform.ui" line="284"/>
         <source>MasterSlaveSet</source>
         <translation>主机从机设置</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="290"/>
+        <location filename="../ui/mainform.ui" line="293"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="344"/>
+        <location filename="../ui/mainform.ui" line="347"/>
         <source>Calculator</source>
         <translation>计算器检定</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="353"/>
         <location filename="../ui/mainform.ui" line="356"/>
+        <location filename="../ui/mainform.ui" line="359"/>
         <source>TemperCompare</source>
         <translation>温度检定(比较法)</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="365"/>
         <location filename="../ui/mainform.ui" line="368"/>
+        <location filename="../ui/mainform.ui" line="371"/>
         <source>TemperPara</source>
         <translation>温度检定(参数法)</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="377"/>
         <location filename="../ui/mainform.ui" line="380"/>
+        <location filename="../ui/mainform.ui" line="383"/>
         <source>Combine</source>
         <translation>组合检定</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="412"/>
+        <location filename="../ui/mainform.ui" line="415"/>
         <source>TemperResult</source>
         <translation>温度检定结果</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="421"/>
         <location filename="../ui/mainform.ui" line="424"/>
+        <location filename="../ui/mainform.ui" line="427"/>
         <source>CalculatorResult</source>
         <translation>计算器检定结果</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="433"/>
         <location filename="../ui/mainform.ui" line="436"/>
+        <location filename="../ui/mainform.ui" line="439"/>
         <source>CombineResult</source>
         <translation>组合检定结果</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="445"/>
+        <location filename="../ui/mainform.ui" line="448"/>
         <source>TotalResult</source>
         <translation>总量检定结果</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="454"/>
         <location filename="../ui/mainform.ui" line="457"/>
-        <source>StdMeterParaSet</source>
+        <location filename="../ui/mainform.ui" line="460"/>
+        <source>StdMtrParaSet</source>
         <translation>标准表参数设定</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="466"/>
         <location filename="../ui/mainform.ui" line="469"/>
-        <source>StdMeterCoeCorrect</source>
+        <location filename="../ui/mainform.ui" line="472"/>
+        <source>StdMtrCoeCorrect</source>
         <translation>标准表系数标定</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainform.ui" line="481"/>
+        <location filename="../ui/mainform.ui" line="484"/>
+        <source>StdPtParaSet</source>
+        <translation>标准铂电阻参数</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainform.ui" line="493"/>
+        <location filename="../ui/mainform.ui" line="496"/>
+        <source>PtParaSet</source>
+        <translation>被检铂电阻参数</translation>
+    </message>
+    <message>
+        <source>StdMeterParaSet</source>
+        <translation type="obsolete">标准表参数设定</translation>
+    </message>
+    <message>
+        <source>StdMeterCoeCorrect</source>
+        <translation type="obsolete">标准表系数标定</translation>
     </message>
     <message>
         <location filename="../ui/mainform.ui" line="41"/>
@@ -551,83 +575,83 @@
         <translation type="obsolete">检测项目</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="84"/>
+        <location filename="../ui/mainform.ui" line="85"/>
         <source>DataQuery</source>
         <translation>数据查询</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="95"/>
-        <location filename="../ui/mainform.ui" line="308"/>
+        <location filename="../ui/mainform.ui" line="96"/>
+        <location filename="../ui/mainform.ui" line="311"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="102"/>
+        <location filename="../ui/mainform.ui" line="103"/>
         <source>Style</source>
         <translation>风格</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="110"/>
+        <location filename="../ui/mainform.ui" line="111"/>
         <source>Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="170"/>
+        <location filename="../ui/mainform.ui" line="173"/>
         <source>ComDebugger</source>
         <translation>串口调试工具</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="179"/>
+        <location filename="../ui/mainform.ui" line="182"/>
         <source>Query Excel</source>
         <translation>查询Excel</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="188"/>
+        <location filename="../ui/mainform.ui" line="191"/>
         <source>MySql</source>
         <translation>MySql</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="299"/>
+        <location filename="../ui/mainform.ui" line="302"/>
         <source>DataTest</source>
         <translation>数据采集与测试</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="385"/>
+        <location filename="../ui/mainform.ui" line="388"/>
         <source>Pressure Tight</source>
         <translation>耐压实验</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="394"/>
+        <location filename="../ui/mainform.ui" line="397"/>
         <source>English</source>
         <translation>英文</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="403"/>
+        <location filename="../ui/mainform.ui" line="406"/>
         <source>Chinese</source>
         <translation>中文</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="257"/>
+        <location filename="../ui/mainform.ui" line="260"/>
         <source>ComSet</source>
         <translation>串口参数设置</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="269"/>
+        <location filename="../ui/mainform.ui" line="272"/>
         <source>PortSet</source>
         <translation>端口设置</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="317"/>
+        <location filename="../ui/mainform.ui" line="320"/>
         <source>Default</source>
         <translation>默认风格</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="326"/>
+        <location filename="../ui/mainform.ui" line="329"/>
         <source>Classic</source>
         <translation>经典风格</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="335"/>
+        <location filename="../ui/mainform.ui" line="338"/>
         <source>Fashion</source>
         <translation>时尚风格</translation>
     </message>
