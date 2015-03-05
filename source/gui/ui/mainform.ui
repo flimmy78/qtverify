@@ -137,6 +137,8 @@
    <addaction name="actionPortSet"/>
    <addaction name="actionComDebuger"/>
    <addaction name="actionDataTest"/>
+   <addaction name="actionStdMeterParaSet"/>
+   <addaction name="actionStdMeterCoeCorrect"/>
    <addaction name="separator"/>
    <addaction name="actionFlowWeight"/>
    <addaction name="actionFlowStandard"/>

@@ -12,9 +12,9 @@ QMAKE_LIBDIR +=  ./           \
 	             
 LIBS += -lQt3Supportd4 -lQt3Support4 -lqtexdb -lalgorithm	           
 
-DESTDIR = $(RUNHOME)\tmp\comset\systemsetdlg\obj
-#MOC_DIR = $(RUNHOME)/tmp/comset/systemsetdlg/moc
-OBJECTS_DIR = $(RUNHOME)/tmp/comset/systemsetdlg/obj
+DESTDIR = $(RUNHOME)/tmp/systemset/systemsetdlg/obj
+#MOC_DIR = $(RUNHOME)/tmp/systemset/systemsetdlg/moc
+OBJECTS_DIR = $(RUNHOME)/tmp/systemset/systemsetdlg/obj
 UI_DIR = $(RUNHOME_INC)/include
 
 INCLUDEPATH  	=    ./      \
@@ -29,14 +29,16 @@ HEADERS	+= $$(RUNHOME_INC)/include/qextserial/qextserialport_global.h  \
 					 $$(RUNHOME_INC)/include/setcomfrm.h   \
 		   		 $$(RUNHOME_INC)/include/setportfrm.h  \
 		   		 $$(RUNHOME_INC)/include/readcomconfig.h \
-           $$(RUNHOME_INC)/include/parasetdlg.h
+           $$(RUNHOME_INC)/include/parasetdlg.h \
+           $$(RUNHOME_INC)/include/stdparaset.h
 
 	
 SOURCES	+= $$(RUNHOME_INC)/include/qextserial/qextserialport.cpp \
 					 source/setcomfrm.cpp \
 			     source/setportfrm.cpp \
 			     source/readcomconfig.cpp \
-      		 source/parasetdlg.cpp
+      		 source/parasetdlg.cpp \
+      		 source/stdparaset.cpp
 
 
 win32 {
@@ -49,7 +51,8 @@ unix {
 					 
 FORMS	+= ui/setcomfrm.ui  \
 		     ui/setportfrm.ui \
-         ui/parasetdlg.ui
+         ui/parasetdlg.ui \
+         ui/stdparaset.ui
 
 
 win32{
@@ -60,8 +63,8 @@ win32{
 
 	QMAKE_POST_LINK = copy $${MY_DEST_LIB} $$(RUNHOME)\lib \
                   & copy $${MY_DEST_DLL} $$(RUNHOME)\dll \
-                  & copy .\language\systemsetdlg_zh.qm $(RUNHOME)\uif\i18n\zh	\
-                  & copy .\language\systemsetdlg_en.qm $(RUNHOME)\uif\i18n\en
+                  & copy ./language/systemsetdlg_zh.qm $(RUNHOME)/uif/i18n/zh	\
+                  & copy ./language/systemsetdlg_en.qm $(RUNHOME)/uif/i18n/en
 }
 
 TRANSLATIONS =  \
