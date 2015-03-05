@@ -1,9 +1,8 @@
-DEFINES += QEXCEL_DLL
+DEFINES += REPORT_DLL
 QT       += core
 QT       -= gui
 TEMPLATE = lib
-TARGET = qexcel
-CONFIG += qaxcontainer
+TARGET = report
 CONFIG += dll console debug
 
 DEPENDPATH += .
@@ -11,10 +10,10 @@ INCLUDEPATH += ./		\
                $$(RUNHOME_INC)/include
 
 HEADERS += \
-	$$(RUNHOME_INC)/include/qexcel.h
+	$$(RUNHOME_INC)/include/report.h
 
 SOURCES += \
-	qexcel.cpp
+	report.cpp
 	
 QMAKE_LIBDIR +=  ./             \
         	  		 $(RUNHOME)/lib \
@@ -23,7 +22,7 @@ QMAKE_LIBDIR +=  ./             \
 win32{
 DEFINES += WIN32 _AFXDLL
 DEFINES -= _USRDLL
-DESTDIR = $(RUNHOME)\tmp\qexcel\obj
+DESTDIR = $(RUNHOME)\tmp\report\obj
 }
 
 win32{
