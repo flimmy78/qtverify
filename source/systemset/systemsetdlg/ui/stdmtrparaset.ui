@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>StdParaSetClass</class>
- <widget class="QWidget" name="StdParaSetClass">
+ <class>StdMtrParaSetClass</class>
+ <widget class="QWidget" name="StdMtrParaSetClass">
   <property name="windowModality">
    <enum>Qt::ApplicationModal</enum>
   </property>

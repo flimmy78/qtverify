@@ -20,9 +20,9 @@
 #include <QtGui/QMessageBox>
 #include <QtCore/QProcessEnvironment>
 
-#include "stdcoecorrect.h"
+#include "stdmtrcoecorrect.h"
 
-StdCoeCorrect::StdCoeCorrect(QWidget *parent, Qt::WFlags flags)
+StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
 	qDebug()<<"StdCoeCorrect thread:"<<QThread::currentThreadId();
@@ -39,12 +39,12 @@ StdCoeCorrect::StdCoeCorrect(QWidget *parent, Qt::WFlags flags)
 	
 }
 
-StdCoeCorrect::~StdCoeCorrect()
+StdMtrCoeCorrect::~StdMtrCoeCorrect()
 {
 	qDebug()<<"!!! StdCoeCorrect destructor";
 }
 
-void StdCoeCorrect::on_btnExit_clicked()
+void StdMtrCoeCorrect::on_btnExit_clicked()
 {
 	this->close();
 }

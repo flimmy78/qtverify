@@ -5,17 +5,17 @@
 #include <QSettings>
 #include <QDateTime>
 
-#include "ui_stdparaset.h"
+#include "ui_stdmtrparaset.h"
 #include "systemsetdlg_global.h"
 #include "basedef.h"
 
-class SYSTEMSETDLG_EXPORT StdParaSet : public QWidget
+class SYSTEMSETDLG_EXPORT StdMtrParaSet : public QWidget
 {
 	Q_OBJECT
 
 public:
-	StdParaSet(QWidget *parent = 0, Qt::WFlags flags = 0);
-	~StdParaSet();
+	StdMtrParaSet(QWidget *parent = 0, Qt::WFlags flags = 0);
+	~StdMtrParaSet();
 
 signals:
 
@@ -23,7 +23,7 @@ public slots:
 	void on_btnExit_clicked();
 
 private:
-	Ui::StdParaSetClass ui;
+	Ui::StdMtrParaSetClass ui;
 private slots:
 
 };

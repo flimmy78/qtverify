@@ -9,7 +9,7 @@ QMAKE_LIBDIR +=  ./           \
         	     $(RUNHOME)/lib \
 	             $(RUNHOME)/bin 
 	            
-LIBS +=	-lQt3Supportd4 -lQt3Support4 -lprotocol -lcomsetdlg
+LIBS +=	-lQt3Supportd4 -lQt3Support4 -lprotocol -lsystemsetdlg
 
 DESTDIR = $(RUNHOME)\tmp\comobject\obj
 #MOC_DIR = $(RUNHOME)/tmp/comobject/moc

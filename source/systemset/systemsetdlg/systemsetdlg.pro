@@ -29,8 +29,8 @@ HEADERS	+= $$(RUNHOME_INC)/include/qextserial/qextserialport_global.h  \
 					 $$(RUNHOME_INC)/include/setcomfrm.h   \
 		   		 $$(RUNHOME_INC)/include/setportfrm.h  \
 		   		 $$(RUNHOME_INC)/include/readcomconfig.h \
-           $$(RUNHOME_INC)/include/stdparaset.h \
-           $$(RUNHOME_INC)/include/stdcoecorrect.h \
+           $$(RUNHOME_INC)/include/stdmtrparaset.h \
+           $$(RUNHOME_INC)/include/stdmtrcoecorrect.h \
            $$(RUNHOME_INC)/include/parasetdlg.h
 
 	
@@ -38,8 +38,8 @@ SOURCES	+= $$(RUNHOME_INC)/include/qextserial/qextserialport.cpp \
 					 source/setcomfrm.cpp \
 			     source/setportfrm.cpp \
 			     source/readcomconfig.cpp \
-      		 source/stdparaset.cpp \
-      		 source/stdcoecorrect.cpp \
+      		 source/stdmtrparaset.cpp \
+      		 source/stdmtrcoecorrect.cpp \
       		 source/parasetdlg.cpp
 
 
@@ -53,8 +53,8 @@ unix {
 					 
 FORMS	+= ui/setcomfrm.ui  \
 		     ui/setportfrm.ui \
-         ui/stdparaset.ui \
-         ui/stdcoecorrect.ui \
+         ui/stdmtrparaset.ui \
+         ui/stdmtrcoecorrect.ui \
          ui/parasetdlg.ui 
 
 

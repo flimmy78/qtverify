@@ -5,17 +5,17 @@
 #include <QSettings>
 #include <QDateTime>
 
-#include "ui_stdcoecorrect.h"
+#include "ui_stdmtrcoecorrect.h"
 #include "systemsetdlg_global.h"
 #include "basedef.h"
 
-class SYSTEMSETDLG_EXPORT StdCoeCorrect : public QWidget
+class SYSTEMSETDLG_EXPORT StdMtrCoeCorrect : public QWidget
 {
 	Q_OBJECT
 
 public:
-	StdCoeCorrect(QWidget *parent = 0, Qt::WFlags flags = 0);
-	~StdCoeCorrect();
+	StdMtrCoeCorrect(QWidget *parent = 0, Qt::WFlags flags = 0);
+	~StdMtrCoeCorrect();
 
 signals:
 
@@ -24,7 +24,7 @@ public slots:
 
 
 private:
-	Ui::StdCoeCorrectClass ui;
+	Ui::StdMtrCoeCorrectClass ui;
 private slots:
 
 };

@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'stdparaset.ui'
+** Form generated from reading UI file 'stdmtrparaset.ui'
 **
 ** Created by: Qt User Interface Compiler version 4.8.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_STDPARASET_H
-#define UI_STDPARASET_H
+#ifndef UI_STDMTRPARASET_H
+#define UI_STDMTRPARASET_H
 
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
@@ -23,7 +23,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_StdParaSetClass
+class Ui_StdMtrParaSetClass
 {
 public:
     QGridLayout *gridLayout_5;
@@ -95,15 +95,15 @@ public:
     QPushButton *pushButton;
     QPushButton *btnExit;
 
-    void setupUi(QWidget *StdParaSetClass)
+    void setupUi(QWidget *StdMtrParaSetClass)
     {
-        if (StdParaSetClass->objectName().isEmpty())
-            StdParaSetClass->setObjectName(QString::fromUtf8("StdParaSetClass"));
-        StdParaSetClass->setWindowModality(Qt::ApplicationModal);
-        StdParaSetClass->resize(570, 591);
-        gridLayout_5 = new QGridLayout(StdParaSetClass);
+        if (StdMtrParaSetClass->objectName().isEmpty())
+            StdMtrParaSetClass->setObjectName(QString::fromUtf8("StdMtrParaSetClass"));
+        StdMtrParaSetClass->setWindowModality(Qt::ApplicationModal);
+        StdMtrParaSetClass->resize(570, 591);
+        gridLayout_5 = new QGridLayout(StdMtrParaSetClass);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
-        groupBox = new QGroupBox(StdParaSetClass);
+        groupBox = new QGroupBox(StdMtrParaSetClass);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         QPalette palette;
         QBrush brush(QColor(0, 85, 255, 255));
@@ -263,7 +263,7 @@ public:
 
         gridLayout_5->addWidget(groupBox, 0, 0, 1, 1);
 
-        groupBox_4 = new QGroupBox(StdParaSetClass);
+        groupBox_4 = new QGroupBox(StdMtrParaSetClass);
         groupBox_4->setObjectName(QString::fromUtf8("groupBox_4"));
         QPalette palette4;
         palette4.setBrush(QPalette::Active, QPalette::WindowText, brush);
@@ -414,12 +414,12 @@ public:
 
         gridLayout_5->addWidget(groupBox_4, 0, 1, 1, 1);
 
-        label = new QLabel(StdParaSetClass);
+        label = new QLabel(StdMtrParaSetClass);
         label->setObjectName(QString::fromUtf8("label"));
 
         gridLayout_5->addWidget(label, 1, 0, 1, 2);
 
-        groupBox_2 = new QGroupBox(StdParaSetClass);
+        groupBox_2 = new QGroupBox(StdMtrParaSetClass);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
         QPalette palette8;
         palette8.setBrush(QPalette::Active, QPalette::WindowText, brush);
@@ -461,7 +461,7 @@ public:
 
         gridLayout_5->addWidget(groupBox_2, 2, 0, 1, 1);
 
-        groupBox_3 = new QGroupBox(StdParaSetClass);
+        groupBox_3 = new QGroupBox(StdMtrParaSetClass);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
         QPalette palette11;
         palette11.setBrush(QPalette::Active, QPalette::WindowText, brush);
@@ -503,50 +503,50 @@ public:
 
         gridLayout_5->addWidget(groupBox_3, 2, 1, 1, 1);
 
-        pushButton = new QPushButton(StdParaSetClass);
+        pushButton = new QPushButton(StdMtrParaSetClass);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
 
         gridLayout_5->addWidget(pushButton, 3, 0, 1, 1);
 
-        btnExit = new QPushButton(StdParaSetClass);
+        btnExit = new QPushButton(StdMtrParaSetClass);
         btnExit->setObjectName(QString::fromUtf8("btnExit"));
 
         gridLayout_5->addWidget(btnExit, 3, 1, 1, 1);
 
 
-        retranslateUi(StdParaSetClass);
+        retranslateUi(StdMtrParaSetClass);
 
-        QMetaObject::connectSlotsByName(StdParaSetClass);
+        QMetaObject::connectSlotsByName(StdMtrParaSetClass);
     } // setupUi
 
-    void retranslateUi(QWidget *StdParaSetClass)
+    void retranslateUi(QWidget *StdMtrParaSetClass)
     {
-        StdParaSetClass->setWindowTitle(QApplication::translate("StdParaSetClass", "\346\240\207\345\207\206\350\241\250\345\217\202\346\225\260\350\256\276\345\256\232", 0, QApplication::UnicodeUTF8));
-        groupBox->setTitle(QApplication::translate("StdParaSetClass", "DN10\350\241\250\344\275\223\347\247\257\344\273\252\350\241\250\347\263\273\346\225\260", 0, QApplication::UnicodeUTF8));
-        label_2->setText(QApplication::translate("StdParaSetClass", "\346\265\201\351\207\217\347\202\271(m\302\263/h)", 0, QApplication::UnicodeUTF8));
-        label_3->setText(QApplication::translate("StdParaSetClass", "K\347\263\273\346\225\260", 0, QApplication::UnicodeUTF8));
-        label_4->setText(QApplication::translate("StdParaSetClass", "\350\204\211\345\206\262\345\275\223\351\207\217(\345\215\207/\350\204\211\345\206\262):", 0, QApplication::UnicodeUTF8));
-        groupBox_4->setTitle(QApplication::translate("StdParaSetClass", "DN25\350\241\250\344\275\223\347\247\257\344\273\252\350\241\250\347\263\273\346\225\260", 0, QApplication::UnicodeUTF8));
-        label_9->setText(QApplication::translate("StdParaSetClass", "\346\265\201\351\207\217\347\202\271(m\302\263/h)", 0, QApplication::UnicodeUTF8));
-        label_10->setText(QApplication::translate("StdParaSetClass", "K\347\263\273\346\225\260", 0, QApplication::UnicodeUTF8));
-        label_11->setText(QApplication::translate("StdParaSetClass", "\350\204\211\345\206\262\345\275\223\351\207\217(\345\215\207/\350\204\211\345\206\262):", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("StdParaSetClass", "<html><head/><body><p><span style=\" color:#ff0000;\">\346\263\250:\346\265\201\351\207\217\344\273\216\345\260\217\345\210\260\345\244\247\350\276\223\345\205\245\357\274\214\346\234\200\345\244\247\346\265\201\351\207\217\345\217\257\344\270\216\344\270\212\351\231\220\346\265\201\351\207\217\347\233\270\345\220\214\343\200\202\344\270\244\344\270\252\346\265\201\351\207\217\347\202\271\344\271\213\351\227\264\344\270\215\350\203\275\346\234\211\347\251\272\346\240\274\357\274\201</span></p><p><span style=\" color:#ff0000;\">K\347\263\273\346\225\260\344\270\272\357\274\232\346\240\207\345\207\206\345\200\274/\346\230\276\347\244\272\345\200\274</span></p></body></html>", 0, QApplication::UnicodeUTF8));
-        groupBox_2->setTitle(QApplication::translate("StdParaSetClass", "DN10\350\241\250\346\265\201\351\200\237\345\217\202\346\225\260", 0, QApplication::UnicodeUTF8));
-        label_5->setText(QApplication::translate("StdParaSetClass", "\344\270\212\351\231\220\346\265\201\351\207\217(m\302\263/h)", 0, QApplication::UnicodeUTF8));
-        label_6->setText(QApplication::translate("StdParaSetClass", "\344\277\256\346\255\243\347\263\273\346\225\260", 0, QApplication::UnicodeUTF8));
-        groupBox_3->setTitle(QApplication::translate("StdParaSetClass", "DN25\350\241\250\346\265\201\351\200\237\345\217\202\346\225\260", 0, QApplication::UnicodeUTF8));
-        label_7->setText(QApplication::translate("StdParaSetClass", "\344\270\212\351\231\220\346\265\201\351\207\217(m\302\263/h)", 0, QApplication::UnicodeUTF8));
-        label_8->setText(QApplication::translate("StdParaSetClass", "\344\277\256\346\255\243\347\263\273\346\225\260", 0, QApplication::UnicodeUTF8));
-        pushButton->setText(QApplication::translate("StdParaSetClass", "\344\277\235\345\255\230", 0, QApplication::UnicodeUTF8));
-        btnExit->setText(QApplication::translate("StdParaSetClass", "\351\200\200\345\207\272", 0, QApplication::UnicodeUTF8));
+        StdMtrParaSetClass->setWindowTitle(QApplication::translate("StdMtrParaSetClass", "\346\240\207\345\207\206\350\241\250\345\217\202\346\225\260\350\256\276\345\256\232", 0, QApplication::UnicodeUTF8));
+        groupBox->setTitle(QApplication::translate("StdMtrParaSetClass", "DN10\350\241\250\344\275\223\347\247\257\344\273\252\350\241\250\347\263\273\346\225\260", 0, QApplication::UnicodeUTF8));
+        label_2->setText(QApplication::translate("StdMtrParaSetClass", "\346\265\201\351\207\217\347\202\271(m\302\263/h)", 0, QApplication::UnicodeUTF8));
+        label_3->setText(QApplication::translate("StdMtrParaSetClass", "K\347\263\273\346\225\260", 0, QApplication::UnicodeUTF8));
+        label_4->setText(QApplication::translate("StdMtrParaSetClass", "\350\204\211\345\206\262\345\275\223\351\207\217(\345\215\207/\350\204\211\345\206\262):", 0, QApplication::UnicodeUTF8));
+        groupBox_4->setTitle(QApplication::translate("StdMtrParaSetClass", "DN25\350\241\250\344\275\223\347\247\257\344\273\252\350\241\250\347\263\273\346\225\260", 0, QApplication::UnicodeUTF8));
+        label_9->setText(QApplication::translate("StdMtrParaSetClass", "\346\265\201\351\207\217\347\202\271(m\302\263/h)", 0, QApplication::UnicodeUTF8));
+        label_10->setText(QApplication::translate("StdMtrParaSetClass", "K\347\263\273\346\225\260", 0, QApplication::UnicodeUTF8));
+        label_11->setText(QApplication::translate("StdMtrParaSetClass", "\350\204\211\345\206\262\345\275\223\351\207\217(\345\215\207/\350\204\211\345\206\262):", 0, QApplication::UnicodeUTF8));
+        label->setText(QApplication::translate("StdMtrParaSetClass", "<html><head/><body><p><span style=\" color:#ff0000;\">\346\263\250:\346\265\201\351\207\217\344\273\216\345\260\217\345\210\260\345\244\247\350\276\223\345\205\245\357\274\214\346\234\200\345\244\247\346\265\201\351\207\217\345\217\257\344\270\216\344\270\212\351\231\220\346\265\201\351\207\217\347\233\270\345\220\214\343\200\202\344\270\244\344\270\252\346\265\201\351\207\217\347\202\271\344\271\213\351\227\264\344\270\215\350\203\275\346\234\211\347\251\272\346\240\274\357\274\201</span></p><p><span style=\" color:#ff0000;\">K\347\263\273\346\225\260\344\270\272\357\274\232\346\240\207\345\207\206\345\200\274/\346\230\276\347\244\272\345\200\274</span></p></body></html>", 0, QApplication::UnicodeUTF8));
+        groupBox_2->setTitle(QApplication::translate("StdMtrParaSetClass", "DN10\350\241\250\346\265\201\351\200\237\345\217\202\346\225\260", 0, QApplication::UnicodeUTF8));
+        label_5->setText(QApplication::translate("StdMtrParaSetClass", "\344\270\212\351\231\220\346\265\201\351\207\217(m\302\263/h)", 0, QApplication::UnicodeUTF8));
+        label_6->setText(QApplication::translate("StdMtrParaSetClass", "\344\277\256\346\255\243\347\263\273\346\225\260", 0, QApplication::UnicodeUTF8));
+        groupBox_3->setTitle(QApplication::translate("StdMtrParaSetClass", "DN25\350\241\250\346\265\201\351\200\237\345\217\202\346\225\260", 0, QApplication::UnicodeUTF8));
+        label_7->setText(QApplication::translate("StdMtrParaSetClass", "\344\270\212\351\231\220\346\265\201\351\207\217(m\302\263/h)", 0, QApplication::UnicodeUTF8));
+        label_8->setText(QApplication::translate("StdMtrParaSetClass", "\344\277\256\346\255\243\347\263\273\346\225\260", 0, QApplication::UnicodeUTF8));
+        pushButton->setText(QApplication::translate("StdMtrParaSetClass", "\344\277\235\345\255\230", 0, QApplication::UnicodeUTF8));
+        btnExit->setText(QApplication::translate("StdMtrParaSetClass", "\351\200\200\345\207\272", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class StdParaSetClass: public Ui_StdParaSetClass {};
+    class StdMtrParaSetClass: public Ui_StdMtrParaSetClass {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_STDPARASET_H
+#endif // UI_STDMTRPARASET_H

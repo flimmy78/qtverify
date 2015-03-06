@@ -20,21 +20,21 @@
 #include <QtGui/QMessageBox>
 #include <QtCore/QProcessEnvironment>
 
-#include "stdparaset.h"
+#include "stdmtrparaset.h"
 
-StdParaSet::StdParaSet(QWidget *parent, Qt::WFlags flags)
+StdMtrParaSet::StdMtrParaSet(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
 	qDebug()<<"StdParaSet thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
 }
 
-StdParaSet::~StdParaSet()
+StdMtrParaSet::~StdMtrParaSet()
 {
 	qDebug()<<"!!! StdParaSet destructor";
 }
 
-void StdParaSet::on_btnExit_clicked()
+void StdMtrParaSet::on_btnExit_clicked()
 {
 	this->close();
 }
