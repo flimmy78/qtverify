@@ -328,7 +328,7 @@ public:
 	float	envHumidity;	//环境湿度
 	float	airPress;		//大气压力
 	char	certNo[16];		//检定证书编号
-	char	bak1[24];		//备用域1
+	float	flowcoe;		//流量系数
 	char	bak2[24];		//备用域2
 	char	bak3[24];		//备用域3
 	char	bak4[24];		//备用域4
