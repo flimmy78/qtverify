@@ -1035,45 +1035,10 @@ int FlowWeightDlg::startVerifyFlowPoint(int order)
 */
 int FlowWeightDlg::calcAllMeterError()
 {
-	for (int m=0; m<m_validMeterNum; m++)
-	{
-		m_meterError[m] = 100*(m_meterEndValue[m] - m_meterStartValue[m] - m_meterStdValue[m])/m_meterStdValue[m];//计算每个表的误差,单位%
-		ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_ERROR, new QTableWidgetItem(QString::number(m_meterError[m], 'f', 4))); //误差
-	}
-
-	QString meterNoPrefix = getNumPrefixOfManufac(m_nowParams->m_manufac);
-	QString meterNoStr;
-
 	for (int i=0; i<m_validMeterNum; i++)
 	{
-		strncpy_s(m_recPtr[i].timestamp, m_timeStamp.toAscii(), TIMESTAMP_LEN);
-		m_recPtr[i].flowPoint = m_flowPoint;
-		meterNoStr = meterNoPrefix + QString("%1").arg(ui.tableWidget->item(m_meterPosMap[i]-1, 0)->text(), 8, '0');
-		strcpy_s(m_recPtr[i].meterNo, meterNoStr.toAscii());
-		m_recPtr[i].flowPointIdx = m_nowOrder;
-		m_recPtr[i].methodFlag = WEIGHT_METHOD; //质量法
-		m_recPtr[i].meterValue0 = m_meterStartValue[i];
-		m_recPtr[i].meterValue1 = m_meterEndValue[i];
-		m_recPtr[i].balWeight0 = m_balStartV;
-		m_recPtr[i].balWeight1 = m_balEndV;
-		m_recPtr[i].pipeTemper = m_meterTemper[i]; 
-		m_recPtr[i].density = m_meterDensity[i];
-		m_recPtr[i].stdValue = m_meterStdValue[i];
-		m_recPtr[i].dispError = m_meterError[i];
-		m_recPtr[i].grade = m_nowParams->m_grade;
-		m_recPtr[i].stdError = m_gradeErr[m_nowParams->m_grade]; //二级表 标准误差
-		m_recPtr[i].result = (fabs(m_recPtr[i].dispError) <= fabs(m_recPtr[i].stdError)) ? 1 : 0;
-		m_recPtr[i].meterPosNo = m_meterPosMap[i];
-		m_recPtr[i].standard = m_standard;
-		m_recPtr[i].model = m_model;
-		m_recPtr[i].meterType = m_meterType; //表类型
-		m_recPtr[i].manufactDept = m_nowParams->m_manufac;
-		m_recPtr[i].verifyDept = m_nowParams->m_vcomp;
-		m_recPtr[i].verifyPerson = m_nowParams->m_vperson;
-		strncpy_s(m_recPtr[i].verifyDate, m_nowDate.toAscii(), DATE_LEN);
-		strncpy_s(m_recPtr[i].validDate, m_validDate.toAscii(), DATE_LEN);
+		calcMeterError(i);
 	}
-
 	return true; 
 }
 
@@ -1088,11 +1053,10 @@ int FlowWeightDlg::calcMeterError(int idx)
 	ui.tableWidget->setItem(m_meterPosMap[idx]-1, COLUMN_ERROR, new QTableWidgetItem(QString::number(m_meterError[idx], 'f', 4))); //误差
 
 	QString meterNoPrefix = getNumPrefixOfManufac(m_nowParams->m_manufac);
-	QString meterNoStr;
+	QString meterNoStr = meterNoPrefix + QString("%1").arg(ui.tableWidget->item(m_meterPosMap[idx]-1, 0)->text(), 8, '0');
 
 	strncpy_s(m_recPtr[idx].timestamp, m_timeStamp.toAscii(), TIMESTAMP_LEN);
 	m_recPtr[idx].flowPoint = m_flowPoint;
-	meterNoStr = meterNoPrefix + QString("%1").arg(ui.tableWidget->item(m_meterPosMap[idx]-1, 0)->text(), 8, '0');
 	strcpy_s(m_recPtr[idx].meterNo, meterNoStr.toAscii());
 	m_recPtr[idx].flowPointIdx = m_nowOrder; //
 	m_recPtr[idx].methodFlag = WEIGHT_METHOD; //质量法
@@ -1116,9 +1080,11 @@ int FlowWeightDlg::calcMeterError(int idx)
 	m_recPtr[idx].verifyPerson = m_nowParams->m_vperson;
 	strncpy_s(m_recPtr[idx].verifyDate, m_nowDate.toAscii(), DATE_LEN);
 	strncpy_s(m_recPtr[idx].validDate, m_validDate.toAscii(), DATE_LEN);
+	m_recPtr[idx].airPress = m_nowParams->m_airpress.toFloat();
+	m_recPtr[idx].envTemper = m_nowParams->m_temper.toFloat();
+	m_recPtr[idx].envHumidity = m_nowParams->m_humidity.toFloat();
 
 	return true; 
-
 }
 
 //打开阀门
@@ -1435,13 +1401,11 @@ void FlowWeightDlg::on_tableWidget_cellChanged(int row, int column)
 			return;
 		}
 		calcMeterError(idx);
-		insertFlowVerifyRec(&m_recPtr[idx], 1);
 
 		if (meterPos == m_meterPosMap[m_validMeterNum-1]) //输入最后一个表终值
 		{
 			m_inputEndValue = false;
-// 			calcAllMeterError();
-// 			saveAllVerifyRecords();
+			saveAllVerifyRecords();
 
 			if (m_autopick) //自动采集
 			{
