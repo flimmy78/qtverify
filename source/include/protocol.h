@@ -101,6 +101,8 @@ public:
 	~BalanceProtocol();
 
 	float m_balValue;
+	float m_lastValue;
+	unsigned int m_count;
 
 public slots:
 	bool readBalanceComBuffer(QByteArray tmp);

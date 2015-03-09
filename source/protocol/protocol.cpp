@@ -244,6 +244,8 @@ QByteArray TempProtocol::getSendBuf()
 BalanceProtocol::BalanceProtocol()
 {
 	m_balValue = 0.0;
+	m_lastValue = 0.0;
+	m_count = 0;
 }
 
 BalanceProtocol::~BalanceProtocol()
@@ -253,6 +255,10 @@ BalanceProtocol::~BalanceProtocol()
 //解析赛多利斯天平串口数据
 bool BalanceProtocol::readBalanceComBuffer(QByteArray tmp)
 {
+	if (m_count>=10000)
+	{
+		m_count = 1;
+	}
 	QByteArray whtArray;
 	m_balValue = 0.0;
 	bool ret = false;
@@ -277,10 +283,21 @@ bool BalanceProtocol::readBalanceComBuffer(QByteArray tmp)
 				whtArray.append(ch);
 			}
 			m_balValue = whtArray.replace(" ", 0).toFloat(&ok);
-			if (ok) 
+			if (ok)  //数字转换成功
 			{
-				ret = true;
-				break;
+				m_count++;
+				if (m_count<=1)
+				{
+					m_lastValue = m_balValue;
+					ret = true;
+					break;
+				}
+				if (fabs(m_balValue-m_lastValue) <= 2.0) //过滤突变数据
+				{
+					m_lastValue = m_balValue;
+					ret = true;
+					break;
+				}
 			}
 		}
 	}

@@ -419,7 +419,8 @@ bool BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
 #ifdef Q_OS_LINUX
 	m_balanceCom = new QextSerialPort("/dev/" + portName);
 #elif defined (Q_OS_WIN)
-	m_balanceCom = new QextSerialPort(portName, QextSerialPort::Polling); //改为查询方式
+// 	m_balanceCom = new QextSerialPort(portName, QextSerialPort::EventDriven); //事件驱动方式
+	m_balanceCom = new QextSerialPort(portName, QextSerialPort::Polling); //查询方式
 #endif
 // 	connect(m_balanceCom, SIGNAL(readyRead()), this, SLOT(readBalanceComBuffer()));
 	connect(m_balTimer, SIGNAL(timeout()), this, SLOT(readBalanceComBuffer()));
