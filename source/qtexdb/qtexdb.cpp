@@ -220,7 +220,7 @@ int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id)
 			ptr[i].stand_id = query.value(1).toInt();
 			ptr[i].n_flow = query.value(2).toFloat();
 			ptr[i].upper_flow = query.value(3).toFloat();
-			ptr[i].v_flow = query.value(6).toFloat();
+			ptr[i].v_flow = query.value(4).toFloat();
 			ptr[i].v_quan = query.value(5).toFloat();
 			ptr[i].pump_freq = query.value(6).toFloat();
 			ptr[i].vale_num = query.value(7).toInt();
