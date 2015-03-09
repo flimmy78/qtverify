@@ -707,7 +707,7 @@ int TotalStandardDlg::judgeBalanceAndCalcAvgTemper(float targetV)
 	ui.labelHintProcess->setText(tr("Verify Finished!"));
 	if (m_nowOrder == m_flowPointNum)
 	{
-		ui.labelHintProcess->setText(tr("All flow points has verified !"));
+		ui.labelHintProcess->setText(tr("All flow points has verified!"));
 		ui.btnNext->hide();
 	}
 	return true;
@@ -742,7 +742,7 @@ void TotalStandardDlg::on_btnNext_clicked()
 {
 	if (m_nowOrder >= m_flowPointNum)
 	{
-		QMessageBox::warning(this, tr("Warning"), tr("all flow points has verified!"));
+		QMessageBox::warning(this, tr("Warning"), tr("All flow points has verified!"));
 		return;
 	}
 

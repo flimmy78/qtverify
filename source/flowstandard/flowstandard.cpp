@@ -742,7 +742,7 @@ void FlowStandardDlg::on_btnNext_clicked()
 {
 	if (m_nowOrder >= m_flowPointNum)
 	{
-		QMessageBox::warning(this, tr("Warning"), tr("all flow points has verified!"));
+		QMessageBox::warning(this, tr("Warning"), tr("All flow points has verified!"));
 		return;
 	}
 

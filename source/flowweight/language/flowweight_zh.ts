@@ -172,7 +172,7 @@
     <message>
         <location filename="../flowweight.ui" line="530"/>
         <source>FlowRate:</source>
-        <translation>流速:</translation>
+        <translation>瞬时流量:</translation>
     </message>
     <message utf8="true">
         <location filename="../flowweight.ui" line="562"/>
@@ -196,27 +196,27 @@
         <translation>出水温度:</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="997"/>
+        <location filename="../flowweight.ui" line="1003"/>
         <source>Exhaust</source>
         <translation>排气</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="1010"/>
+        <location filename="../flowweight.ui" line="1079"/>
         <source>Start</source>
         <translation>开始</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="1023"/>
+        <location filename="../flowweight.ui" line="1022"/>
         <source>Next</source>
         <translation>下一步</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="1036"/>
+        <location filename="../flowweight.ui" line="1041"/>
         <source>Stop</source>
         <translation>停止</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="1049"/>
+        <location filename="../flowweight.ui" line="1060"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
@@ -306,11 +306,11 @@ t</source>
     <name>FlowWeightDlg</name>
     <message>
         <location filename="../flowweight.cpp" line="49"/>
-        <location filename="../flowweight.cpp" line="745"/>
-        <location filename="../flowweight.cpp" line="786"/>
-        <location filename="../flowweight.cpp" line="923"/>
-        <location filename="../flowweight.cpp" line="1414"/>
-        <location filename="../flowweight.cpp" line="1434"/>
+        <location filename="../flowweight.cpp" line="747"/>
+        <location filename="../flowweight.cpp" line="788"/>
+        <location filename="../flowweight.cpp" line="925"/>
+        <location filename="../flowweight.cpp" line="1382"/>
+        <location filename="../flowweight.cpp" line="1402"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
@@ -320,108 +320,112 @@ t</source>
         <translation>警告:获取端口设置信息失败!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="465"/>
+        <location filename="../flowweight.cpp" line="467"/>
         <source>Modify NO.</source>
         <translation>修改表号</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="470"/>
+        <location filename="../flowweight.cpp" line="472"/>
         <source>Adjust Err</source>
         <translation>调整误差</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="518"/>
-        <location filename="../flowweight.cpp" line="566"/>
+        <location filename="../flowweight.cpp" line="520"/>
+        <location filename="../flowweight.cpp" line="568"/>
         <source>Exhaust countdown: %1 second</source>
         <translation>排气倒计时: %1 秒</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="527"/>
+        <location filename="../flowweight.cpp" line="529"/>
         <source>Please input meter number!</source>
         <translation>请输入表号!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="574"/>
+        <location filename="../flowweight.cpp" line="576"/>
         <source>Exhaust countdown finished!</source>
         <translation>排气倒计时结束!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="585"/>
+        <location filename="../flowweight.cpp" line="587"/>
         <source>prepare balance ...</source>
         <translation>准备天平...</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="699"/>
-        <location filename="../flowweight.cpp" line="706"/>
+        <location filename="../flowweight.cpp" line="701"/>
+        <location filename="../flowweight.cpp" line="708"/>
         <source>NO. %1 flow point: %2 m3/h</source>
         <translation>第 %1 流量点: %2 m³/h</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="700"/>
+        <location filename="../flowweight.cpp" line="702"/>
         <source>Verifying...
 Please wait for about %1 second</source>
         <translation>正在通水检定...
 请等待约 %1 秒</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="707"/>
+        <location filename="../flowweight.cpp" line="709"/>
         <source>Verify Finished!</source>
         <translation>检定结束!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="710"/>
         <source>All flow points has verified !</source>
+        <translation type="obsolete">所有流量点检定完毕!</translation>
+    </message>
+    <message>
+        <location filename="../flowweight.cpp" line="712"/>
+        <location filename="../flowweight.cpp" line="747"/>
+        <source>All flow points has verified!</source>
         <translation>所有流量点检定完毕!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="745"/>
         <source>all flow points has verified!</source>
-        <translation>所有流量点检定完毕!</translation>
+        <translation type="obsolete">所有流量点检定完毕!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="775"/>
+        <location filename="../flowweight.cpp" line="777"/>
         <source>Verify has Stoped!</source>
         <translation>检定过程停止!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="786"/>
+        <location filename="../flowweight.cpp" line="788"/>
         <source>please input meter number, then click &quot;start&quot; button!</source>
         <translation>请输入表号，然后点击&quot;开始&quot;按钮!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="923"/>
+        <location filename="../flowweight.cpp" line="925"/>
         <source>please input meter number</source>
         <translation>请输入表号</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="947"/>
+        <location filename="../flowweight.cpp" line="949"/>
         <source>Reset Zero</source>
         <translation>初值回零</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="950"/>
+        <location filename="../flowweight.cpp" line="952"/>
         <source>please wait %1 seconds for reset zero</source>
         <translation>初值回零...请等待 %1 秒</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1346"/>
-        <location filename="../flowweight.cpp" line="1377"/>
+        <location filename="../flowweight.cpp" line="1314"/>
+        <location filename="../flowweight.cpp" line="1345"/>
         <source>Hint</source>
         <translation>提示</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1346"/>
+        <location filename="../flowweight.cpp" line="1314"/>
         <source>please input init value of heat meter</source>
         <translation>请输入热量表初值</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1377"/>
+        <location filename="../flowweight.cpp" line="1345"/>
         <source>please input end value of heat meter</source>
         <translation>请输入热量表终值</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1414"/>
-        <location filename="../flowweight.cpp" line="1434"/>
+        <location filename="../flowweight.cpp" line="1382"/>
+        <location filename="../flowweight.cpp" line="1402"/>
         <source>Error: please input digits</source>
         <translation>错误:请输入数字</translation>
     </message>
@@ -429,9 +433,9 @@ Please wait for about %1 second</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../flowweight.cpp" line="459"/>
+        <location filename="../flowweight.cpp" line="461"/>
         <source>meterPosNo%1</source>
-        <translation>表位号%1</translation>
+        <translation>表位%1</translation>
     </message>
 </context>
 </TS>

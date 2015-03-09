@@ -88,10 +88,10 @@ public:
     QLabel *labelHintProcess;
     QGridLayout *gridLayout_4;
     QPushButton *btnExhaust;
-    QPushButton *btnStart;
     QPushButton *btnNext;
     QPushButton *btnStop;
     QPushButton *btnExit;
+    QPushButton *btnStart;
 
     void setupUi(QWidget *FlowWeightClass)
     {
@@ -542,38 +542,43 @@ public:
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
         btnExhaust = new QPushButton(FlowWeightClass);
         btnExhaust->setObjectName(QString::fromUtf8("btnExhaust"));
-        sizePolicy2.setHeightForWidth(btnExhaust->sizePolicy().hasHeightForWidth());
-        btnExhaust->setSizePolicy(sizePolicy2);
+        sizePolicy.setHeightForWidth(btnExhaust->sizePolicy().hasHeightForWidth());
+        btnExhaust->setSizePolicy(sizePolicy);
+        btnExhaust->setMinimumSize(QSize(100, 0));
 
-        gridLayout_4->addWidget(btnExhaust, 0, 0, 1, 1);
-
-        btnStart = new QPushButton(FlowWeightClass);
-        btnStart->setObjectName(QString::fromUtf8("btnStart"));
-        sizePolicy2.setHeightForWidth(btnStart->sizePolicy().hasHeightForWidth());
-        btnStart->setSizePolicy(sizePolicy2);
-
-        gridLayout_4->addWidget(btnStart, 1, 0, 1, 1);
+        gridLayout_4->addWidget(btnExhaust, 1, 0, 1, 1);
 
         btnNext = new QPushButton(FlowWeightClass);
         btnNext->setObjectName(QString::fromUtf8("btnNext"));
-        sizePolicy2.setHeightForWidth(btnNext->sizePolicy().hasHeightForWidth());
-        btnNext->setSizePolicy(sizePolicy2);
+        sizePolicy.setHeightForWidth(btnNext->sizePolicy().hasHeightForWidth());
+        btnNext->setSizePolicy(sizePolicy);
+        btnNext->setMinimumSize(QSize(100, 0));
 
-        gridLayout_4->addWidget(btnNext, 2, 0, 1, 1);
+        gridLayout_4->addWidget(btnNext, 3, 0, 1, 1);
 
         btnStop = new QPushButton(FlowWeightClass);
         btnStop->setObjectName(QString::fromUtf8("btnStop"));
-        sizePolicy2.setHeightForWidth(btnStop->sizePolicy().hasHeightForWidth());
-        btnStop->setSizePolicy(sizePolicy2);
+        sizePolicy.setHeightForWidth(btnStop->sizePolicy().hasHeightForWidth());
+        btnStop->setSizePolicy(sizePolicy);
+        btnStop->setMinimumSize(QSize(100, 0));
 
-        gridLayout_4->addWidget(btnStop, 3, 0, 1, 1);
+        gridLayout_4->addWidget(btnStop, 4, 0, 1, 1);
 
         btnExit = new QPushButton(FlowWeightClass);
         btnExit->setObjectName(QString::fromUtf8("btnExit"));
-        sizePolicy2.setHeightForWidth(btnExit->sizePolicy().hasHeightForWidth());
-        btnExit->setSizePolicy(sizePolicy2);
+        sizePolicy.setHeightForWidth(btnExit->sizePolicy().hasHeightForWidth());
+        btnExit->setSizePolicy(sizePolicy);
+        btnExit->setMinimumSize(QSize(100, 0));
 
-        gridLayout_4->addWidget(btnExit, 4, 0, 1, 1);
+        gridLayout_4->addWidget(btnExit, 5, 0, 1, 1);
+
+        btnStart = new QPushButton(FlowWeightClass);
+        btnStart->setObjectName(QString::fromUtf8("btnStart"));
+        sizePolicy.setHeightForWidth(btnStart->sizePolicy().hasHeightForWidth());
+        btnStart->setSizePolicy(sizePolicy);
+        btnStart->setMinimumSize(QSize(100, 0));
+
+        gridLayout_4->addWidget(btnStart, 0, 0, 1, 1);
 
 
         gridLayout_6->addLayout(gridLayout_4, 1, 4, 1, 1);
@@ -676,10 +681,10 @@ public:
         label_2->setText(QApplication::translate("FlowWeightClass", "Process:", 0, QApplication::UnicodeUTF8));
         labelHintProcess->setText(QString());
         btnExhaust->setText(QApplication::translate("FlowWeightClass", "Exhaust", 0, QApplication::UnicodeUTF8));
-        btnStart->setText(QApplication::translate("FlowWeightClass", "Start", 0, QApplication::UnicodeUTF8));
         btnNext->setText(QApplication::translate("FlowWeightClass", "Next", 0, QApplication::UnicodeUTF8));
         btnStop->setText(QApplication::translate("FlowWeightClass", "Stop", 0, QApplication::UnicodeUTF8));
         btnExit->setText(QApplication::translate("FlowWeightClass", "Exit", 0, QApplication::UnicodeUTF8));
+        btnStart->setText(QApplication::translate("FlowWeightClass", "Start", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
