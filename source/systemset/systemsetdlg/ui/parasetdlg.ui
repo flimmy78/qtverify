@@ -278,7 +278,7 @@
         <item row="3" column="2">
          <widget class="QLabel" name="label_28">
           <property name="text">
-           <string>Pa</string>
+           <string>kPa</string>
           </property>
          </widget>
         </item>
@@ -1726,8 +1726,6 @@
     </layout>
    </item>
   </layout>
-  <zorder>btnSave</zorder>
-  <zorder>btnExit</zorder>
   <zorder>gBox_UpperFlowLmt</zorder>
   <zorder>gBox_FlowPnt</zorder>
   <zorder>gBox_Head</zorder>

@@ -6,7 +6,7 @@
     <message>
         <location filename="../totalstandard.cpp" line="459"/>
         <source>meterPosNo%1</source>
-        <translation>表位号%1</translation>
+        <translation type="unfinished">表位%1</translation>
     </message>
 </context>
 <context>

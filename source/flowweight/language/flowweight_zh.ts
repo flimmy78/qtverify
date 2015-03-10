@@ -121,7 +121,7 @@
     <message>
         <location filename="../flowweight.ui" line="245"/>
         <source>Independent</source>
-        <translation>独立</translation>
+        <translation>不连续</translation>
     </message>
     <message>
         <location filename="../flowweight.ui" line="250"/>

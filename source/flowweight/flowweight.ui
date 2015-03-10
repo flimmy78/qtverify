@@ -71,6 +71,13 @@
       <property name="text">
        <string>DsipError(%)</string>
       </property>
+      <property name="background">
+       <color>
+        <red>128</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </property>
      </column>
      <column>
       <property name="text">
@@ -917,7 +924,7 @@ t</string>
            </sizepolicy>
           </property>
           <property name="text">
-           <string>FlowPnt:</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>

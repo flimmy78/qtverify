@@ -425,7 +425,7 @@ Please wait for about %1 second</source>
     <message>
         <location filename="../flowstandard.cpp" line="459"/>
         <source>meterPosNo%1</source>
-        <translation>表位号%1</translation>
+        <translation type="unfinished">表位%1</translation>
     </message>
 </context>
 </TS>

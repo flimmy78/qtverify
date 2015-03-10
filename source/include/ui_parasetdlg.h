@@ -1035,8 +1035,6 @@ public:
 
         gridLayout_17->addLayout(gridLayout_6, 5, 0, 1, 1);
 
-        btnSave->raise();
-        btnExit->raise();
         gBox_UpperFlowLmt->raise();
         gBox_FlowPnt->raise();
         gBox_Head->raise();
@@ -1084,7 +1082,7 @@ public:
         label_24->setText(QApplication::translate("ParaSetDlgClass", "Humidity:", 0, QApplication::UnicodeUTF8));
         label_27->setText(QApplication::translate("ParaSetDlgClass", "%", 0, QApplication::UnicodeUTF8));
         label_25->setText(QApplication::translate("ParaSetDlgClass", "AirPress:", 0, QApplication::UnicodeUTF8));
-        label_28->setText(QApplication::translate("ParaSetDlgClass", "Pa", 0, QApplication::UnicodeUTF8));
+        label_28->setText(QApplication::translate("ParaSetDlgClass", "kPa", 0, QApplication::UnicodeUTF8));
         gBox_UpperFlowLmt->setTitle(QApplication::translate("ParaSetDlgClass", "Control Valve Set", 0, QApplication::UnicodeUTF8));
         label_11->setText(QApplication::translate("ParaSetDlgClass", "UpLimit(m\302\263/h): ", 0, QApplication::UnicodeUTF8));
         label_16->setText(QApplication::translate("ParaSetDlgClass", "Big", 0, QApplication::UnicodeUTF8));

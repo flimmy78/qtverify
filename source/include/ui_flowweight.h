@@ -122,6 +122,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(8, __qtablewidgetitem8);
         QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
+        __qtablewidgetitem9->setBackground(QColor(128, 0, 0));
         tableWidget->setHorizontalHeaderItem(9, __qtablewidgetitem9);
         QTableWidgetItem *__qtablewidgetitem10 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(10, __qtablewidgetitem10);
@@ -676,7 +677,7 @@ public:
         label_5->setText(QApplication::translate("FlowWeightClass", "Out Temp:", 0, QApplication::UnicodeUTF8));
         label_8->setText(QApplication::translate("FlowWeightClass", "\342\204\203", 0, QApplication::UnicodeUTF8));
         groupBox_3->setTitle(QApplication::translate("FlowWeightClass", "Process Hint", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("FlowWeightClass", "FlowPnt:", 0, QApplication::UnicodeUTF8));
+        label->setText(QString());
         labelHintPoint->setText(QString());
         label_2->setText(QApplication::translate("FlowWeightClass", "Process:", 0, QApplication::UnicodeUTF8));
         labelHintProcess->setText(QString());

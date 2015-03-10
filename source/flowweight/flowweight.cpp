@@ -35,7 +35,7 @@ FlowWeightDlg::FlowWeightDlg(QWidget *parent, Qt::WFlags flags)
 	qDebug()<<"FlowWeightDlg thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
  	ui.btnNext->hide(); //隐藏"下一步"按钮
-	ui.btnStart->hide();
+	ui.btnExhaust->hide(); //隐藏"排气"按钮
 	m_inputStartValue = false;
 	m_inputEndValue = false;
 
@@ -735,8 +735,7 @@ void FlowWeightDlg::clearTableContents()
 //点击"开始"按钮
 void FlowWeightDlg::on_btnStart_clicked()
 {
-	startVerify();
-	ui.btnStart->hide();
+	on_btnExhaust_clicked();
 }
 
 //点击"下一步"按钮
@@ -1053,7 +1052,10 @@ int FlowWeightDlg::calcMeterError(int idx)
 {
 	m_meterError[idx] = 100*(m_meterEndValue[idx] - m_meterStartValue[idx] - m_meterStdValue[idx])/m_meterStdValue[idx];//计算某个表的误差
 	ui.tableWidget->setItem(m_meterPosMap[idx]-1, COLUMN_ERROR, new QTableWidgetItem(QString::number(m_meterError[idx], 'f', 4))); //误差
-
+	if (m_meterError[idx] > m_gradeErr[2])
+	{
+		ui.tableWidget->item(m_meterPosMap[idx]-1, COLUMN_ERROR)->setForeground(QBrush(Qt::red));
+	}
 	QString meterNoPrefix = getNumPrefixOfManufac(m_nowParams->m_manufac);
 	QString meterNoStr = meterNoPrefix + QString("%1").arg(ui.tableWidget->item(m_meterPosMap[idx]-1, 0)->text(), 8, '0');
 
