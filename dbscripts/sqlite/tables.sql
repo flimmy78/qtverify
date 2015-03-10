@@ -22,7 +22,7 @@ F_Density float,                    --分配到每个表位的密度，单位kg/L
 F_StandValue float,                 --经过修正的标准值，单位L
 F_DispError float,                  --示值误差，单位%
 F_StdError float,                   --要求误差(合格标准),单位%
-F_Result smallint,               	  --检定结果（1：合格，0：不合格）
+F_Result smallint,               	  --检定结果(1：合格，0：不合格)
 F_MeterPosNo smallint,              --表位号
 F_Model integer,                    --表型号，外键(T_Meter_Model.F_ID)
 F_Standard integer,                 --表规格(DN15/DN20/DN25)，外键(T_Meter_Standard.F_ID)

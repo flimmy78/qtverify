@@ -39,7 +39,7 @@ F_EnvTemper float,                  --环境温度，单位℃
 F_EnvHumidity float,                --环境湿度
 F_AirPressure float,                --大气压力
 F_ValidDate date,                   --检表结果有效期(生产型不需要)('2014-08-07')
-F_RecordNumber interger,            --检定记录证书编号(每块表每次检定（多个流量点共用）形成一个编号)
+F_RecordNumber interger,            --检定记录证书编号(每块表多次检定（多个流量点共用）形成一个编号)
 constraint F_Model_fk foreign key(F_Model) references T_Meter_Model(F_ID),
 constraint F_Standard_fk foreign key(F_Standard) references T_Meter_Standard(F_ID),
 constraint F_MeterType_fk foreign key(F_MeterType) references T_Meter_Type(F_ID),
@@ -160,6 +160,7 @@ create table T_User_Def_Tab
 (
 F_ID integer not null primary key autoincrement,
 F_Name varchar(24),
+F_Name_zh varchar(60),--中文名
 F_Desc varchar(60),
 F_Password varchar(24),
 F_RoleID smallint          --角色ID，外键(T_Role_Def_Tab)

@@ -6,72 +6,89 @@ drop view if exists "V_Flow_Verify_Record"
 ;
 create view V_Flow_Verify_Record as
 select 
-  r.F_ID,
-  r.F_TimeStamp,
-  r.F_MeterNo,
-  r.F_FlowPointIdx,
-  r.F_FlowPoint,
-  r.F_MethodFlag,
-  r.F_MeterValue0,
-  r.F_MeterValue1,                
-  r.F_BalWeight0,                 
-  r.F_BalWeight1,                 
-  r.F_StdMeterV0,                 
-  r.F_StdMeterV1,                 
-  r.F_PipeTemper,                 
-  r.F_Density,                    
-  r.F_StandValue,                 
-  r.F_DispError,                  
-  r.F_StdError,                   
-  r.F_Result,                   
-  r.F_MeterPosNo,              
-  r.F_Model,                    
-  r.F_Standard,                 
-  r.F_MeterType,                
-  r.F_ManufactDept,             
-  r.F_VerifyDept,               
-  r.F_Grade,                   
-  r.F_VerifyPerson,             
-  r.F_CheckPerson,              
-  r.F_DeviceInfoID,        
-  r.F_VerifyDate,                 
-  r.F_ValidDate,                   
-  r.F_EnvTemper,                  
-  r.F_EnvHumidity,                
-  r.F_AirPressure,                
-  r.F_CertNO,
-  m.F_Name model_name,
-  s.F_Name stand_name,
-  t.F_Name type_name,
-  ma.F_Name manu_name,
-  vde.F_Name verify_dept,
-  u.F_Name user_name,
-  dev.F_DeviceName,   
-  dev.F_DeviceNo,
-  dev.F_DeviceModel,
-  dev.F_Manufact,
-  dev.F_DeviceGrade,
-  dev.F_MeasureRange,
-  dev.F_CertNo,
-  dev.F_VerifyRule,
-  dev.F_DeviceValidDate,
-  dev.F_CertValidDate,
-  dev.F_RuleValidDate 
+  rec.F_ID,
+  rec.F_TimeStamp,
+  rec.F_MeterNo,
+  rec.F_FlowPointIdx,
+  rec.F_FlowPoint,
+  rec.F_MethodFlag,
+  rec.F_MeterValue0,
+  rec.F_MeterValue1,                
+  rec.F_BalWeight0,                 
+  rec.F_BalWeight1,                 
+  rec.F_StdMeterV0,                 
+  rec.F_StdMeterV1,                 
+  rec.F_PipeTemper,                 
+  rec.F_Density,                    
+  rec.F_StandValue,                 
+  rec.F_DispError,                  
+  rec.F_StdError,                   
+  rec.F_Result,                   
+  rec.F_MeterPosNo,              
+  rec.F_Model,
+  mod.[F_Name] F_Model_en,
+  mod.[F_Desc] F_Model_zh,                    
+  std.f_name F_Standard,                  
+  tp.[F_Name] F_MeterType_en,
+  tp.[F_Desc] F_MeterType_zh,                
+  manu.[F_Name] F_ManufactDept_en,
+  manu.[F_Desc] F_ManufactDept_zh,              
+  vdpt.[F_Name] F_VerifyDept_en,
+  vdpt.[F_Desc] F_VerifyDept_zh,               
+  rec.F_Grade,                   
+  (select f_name_zh from T_User_Def_Tab u where u.F_id = rec.[F_VerifyPerson])  F_VerifyPerson,           
+  (select f_name_zh from T_User_Def_Tab u where u.F_id = rec.[F_CheckPerson])  F_CheckPerson,            
+  rec.F_DeviceInfoID,        
+  rec.F_VerifyDate,                 
+  rec.F_ValidDate,                   
+  rec.F_EnvTemper,                  
+  rec.F_EnvHumidity,                
+  rec.F_AirPressure,                
+  rec.F_CertNO,
+  rec.F_FlowCoe,
+  rec.F_DeviceName,   
+  rec.F_DeviceNo,
+  rec.F_DeviceModel,
+  rec.F_Manufact,
+  rec.F_DeviceGrade,
+  rec.F_MeasureRange,
+  rec.F_CertNo,
+  rec.F_VerifyRule,
+  rec.F_DeviceValidDate,
+  rec.F_CertValidDate,
+  rec.F_RuleValidDate   
 from
-   T_Flow_Verify_Record r, 
-   T_Meter_Model m, 
-   T_Meter_Standard s, 
-   T_Meter_Type t, 
-   T_Manufacture_Dept ma, 
-   T_Verify_Dept vde, 
-   T_User_Def_Tab u, 
-   T_Verify_Device_Info dev 
+   (
+		select 
+		  recj.*, 
+		  d.[F_CertNo], 
+		  d.[F_CertValidDate], 
+		  d.[F_DeviceGrade], 
+		  d.[F_DeviceModel], 
+		  d.[F_DeviceName], 
+		  d.[F_DeviceNo],
+		  d.[F_DeviceValidDate],
+		  d.[F_Manufact],
+		  d.[F_MeasureRange],
+		  d.[F_RuleValidDate],
+		  d.[F_VerifyRule]
+		from 
+			T_Flow_Verify_Record recj 
+		 left join 
+			T_Verify_Device_Info d 
+		 on   
+			recj.F_DeviceInfoID=d.[F_ID]
+    ) rec, 
+   T_Meter_Model mod,
+   T_meter_standard std,   
+   T_Meter_Type tp,   
+   T_manufacture_dept manu,   
+   T_verify_dept vdpt
 where
-   r.[F_Model]=m.[F_ID] and   
-   r.[F_Standard]=s.[F_ID] and   
-   r.[F_MeterType]=t.[F_ID] and   
-   r.[F_ManufactDept]=ma.[F_ID] and   
-   r.[F_VerifyDept]=vde.[F_ID] and   
-   r.[F_VerifyPerson]=u.[F_ID] and   
-   r.[F_CheckPerson]=u.[F_ID]
- order by r.f_meterno, r.f_timestamp;
+   rec.[F_Standard]=std.[F_ID] and
+   rec.[F_MeterType]=tp.[F_ID] and
+   rec.[F_ManufactDept]=manu.[F_ID] and
+   rec.[F_VerifyDept]=vdpt.[F_ID] and   
+   rec.[F_Model]=mod.[F_ID]
+ order by rec.f_meterno, rec.f_timestamp
+ ; 
