@@ -1126,9 +1126,67 @@ void DeluMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString new
 	m_sendBuf.append(cs).append(0x16);
 }
 
-// 组帧：修改流量参数
-void DeluMeterProtocol::makeFrameOfModifyFlowPara()
+/*
+** 组帧：修改流量系数
+** 输入参数：
+	meterNO:表号，14位
+	bigErr:大流量点误差，单位%
+	mid2Err:中流二误差，单位%
+	mid1Err:中流一误差，单位%
+	smallErr:小流量点误差，单位%
+*/
+void DeluMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr)
 {
+	m_sendBuf = "";
+
+	for (int i=0; i<WAKEUP_CODE_NUM; i++)
+	{
+		m_sendBuf.append(METER_WAKEUP_CODE);//唤醒红外
+	}
+
+	for (int j=0; j<PREFIX_CODE_NUM; j++)
+	{
+		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
+	}
+
+	m_sendBuf.append(METER_START_CODE);//起始符
+	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
+	UINT8 cs = METER_START_CODE + METER_TYPE_ASK_CODE;
+	UINT8 oldNo;
+	bool ok;
+	for (int m=METER_ADDR_LEN-1; m>=0; m--)
+	{
+		oldNo = meterNO.mid(2*m, 2).toUInt(&ok, 16);
+		m_sendBuf.append(oldNo); //表号
+		cs += oldNo;
+	}
+
+	UINT8 code1 = 0x36;
+	UINT8 code2 = 0x0C;
+	UINT8 code3 = 0xA0;
+	UINT8 code4 = 0x19;
+	UINT8 code5 = 0x06;
+	UINT8 code6 = 0x00;
+	m_sendBuf.append(code1).append(code2).append(code3).append(code4).append(code5).append(code6);
+	cs += code1 + code2 + code3 + code4 + code5 + code6;
+
+	QString bigCoe = QString::number(1/(1+bigErr/100), 'g', 3).replace(".", "").leftJustified(4,'0');
+	QString mid2Coe = QString::number(1/(1+mid2Err/100), 'g', 3).replace(".", "").leftJustified(4,'0');
+	QString mid1Coe = QString::number(1/(1+mid1Err/100), 'g', 3).replace(".", "").leftJustified(4,'0');
+	QString smallCoe = QString::number(1/(1+smallErr/100), 'g', 3).replace(".", "").leftJustified(4,'0');
+
+	UINT8 A7 = bigCoe.right(2).toUInt();
+	UINT8 A6 = bigCoe.left(2).toUInt();
+	UINT8 A5 = mid2Coe.right(2).toUInt();
+	UINT8 A4 = mid2Coe.left(2).toUInt();
+	UINT8 A3 = mid1Coe.right(2).toUInt();
+	UINT8 A2 = mid1Coe.left(2).toUInt();
+	UINT8 A1 = smallCoe.right(2).toUInt();
+	UINT8 A0 = smallCoe.left(2).toUInt();
+	m_sendBuf.append(A7).append(A6).append(A5).append(A4).append(A3).append(A2).append(A1).append(A0);
+	cs += A7 + A6 + A5 + A4 + A3 + A2 + A1 + A0;
+
+	m_sendBuf.append(cs).append(0x16);
 }
 
 /***********************************************
@@ -1173,7 +1231,7 @@ void TgMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMe
 
 }
 
-void TgMeterProtocol::makeFrameOfModifyFlowPara()
+void TgMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr)
 {
 
 }

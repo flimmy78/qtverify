@@ -275,7 +275,7 @@ void DataTestDlg::initComOfHeatMeter()
 	ui.btnSetVerifyStatus->setEnabled(false);
 	ui.btnReadMeterData->setEnabled(false);
 	ui.btnModifyMeterNo->setEnabled(false);
-	ui.btnModifyFlowPara->setEnabled(false);
+	ui.btnModifyFlowCoe->setEnabled(false);
 }
 
 //打开热量表通讯串口
@@ -296,7 +296,7 @@ void DataTestDlg::on_btnOpenCom_clicked()
 	ui.btnSetVerifyStatus->setEnabled(true);
 	ui.btnReadMeterData->setEnabled(true);
 	ui.btnModifyMeterNo->setEnabled(true);
-	ui.btnModifyFlowPara->setEnabled(true);
+	ui.btnModifyFlowCoe->setEnabled(true);
 	ui.btnOpenCom->setEnabled(false);
 
 	ui.portNameComboBox->setEnabled(false);
@@ -315,7 +315,7 @@ void DataTestDlg::on_btnCloseCom_clicked()
 	ui.btnSetVerifyStatus->setEnabled(false);
 	ui.btnReadMeterData->setEnabled(false);
 	ui.btnModifyMeterNo->setEnabled(false);
-	ui.btnModifyFlowPara->setEnabled(false);
+	ui.btnModifyFlowCoe->setEnabled(false);
 	ui.btnOpenCom->setEnabled(true);
 
 	ui.portNameComboBox->setEnabled(true);
@@ -603,9 +603,11 @@ void DataTestDlg::on_btnModifyMeterNo_clicked()
 	m_meterObj->askModifyMeterNo(oldMeterNo, newMeterNo); //请求修改表号
 }
 
-//修改流量参数
-void DataTestDlg::on_btnModifyFlowPara_clicked()
+//修改流量系数
+void DataTestDlg::on_btnModifyFlowCoe_clicked()
 {
+	QString meterNO = ui.lnEditMeterNo->text();
+	m_meterObj->askModifyFlowCoe(meterNO, 4, 3, 2, 1);
 }
 
 //响应读取表号成功

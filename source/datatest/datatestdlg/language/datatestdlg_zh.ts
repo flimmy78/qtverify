@@ -492,7 +492,8 @@ t</source>
 u
 m
 p</source>
-        <translation>水泵</translation>
+        <translation>水
+泵</translation>
     </message>
     <message>
         <location filename="../ui/datatestdlg.ui" line="1128"/>

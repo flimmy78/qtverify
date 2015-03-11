@@ -118,7 +118,7 @@ public slots:
 	void on_btnSetVerifyStatus_clicked();//设置检定状态
 	void on_btnReadMeterData_clicked(); //读表数据
 	void on_btnModifyMeterNo_clicked(); //修改表号
-	void on_btnModifyFlowPara_clicked(); //修改流量参数
+	void on_btnModifyFlowCoe_clicked(); //修改流量系数
 
 	void on_btnOpenCom_clicked(); //打开串口
 	void on_btnCloseCom_clicked();//关闭串口

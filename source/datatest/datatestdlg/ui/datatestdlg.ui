@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>708</width>
-    <height>712</height>
+    <width>722</width>
+    <height>730</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,7 +21,7 @@
     <rect>
      <x>11</x>
      <y>11</y>
-     <width>691</width>
+     <width>701</width>
      <height>173</height>
     </rect>
    </property>
@@ -235,8 +235,8 @@
     <rect>
      <x>11</x>
      <y>191</y>
-     <width>251</width>
-     <height>511</height>
+     <width>271</width>
+     <height>531</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -256,8 +256,8 @@
      <rect>
       <x>8</x>
       <y>210</y>
-      <width>231</width>
-      <height>291</height>
+      <width>251</width>
+      <height>311</height>
      </rect>
     </property>
     <property name="title">
@@ -267,8 +267,8 @@
      <property name="geometry">
       <rect>
        <x>70</x>
-       <y>230</y>
-       <width>44</width>
+       <y>250</y>
+       <width>51</width>
        <height>51</height>
       </rect>
      </property>
@@ -283,12 +283,12 @@
 Data</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="btnModifyFlowPara">
+    <widget class="QPushButton" name="btnModifyFlowCoe">
      <property name="geometry">
       <rect>
-       <x>180</x>
-       <y>230</y>
-       <width>43</width>
+       <x>190</x>
+       <y>250</y>
+       <width>51</width>
        <height>51</height>
       </rect>
      </property>
@@ -300,15 +300,15 @@ Data</string>
      </property>
      <property name="text">
       <string>Modify
-Para</string>
+Coe</string>
      </property>
     </widget>
     <widget class="QPushButton" name="btnModifyMeterNo">
      <property name="geometry">
       <rect>
        <x>130</x>
-       <y>230</y>
-       <width>44</width>
+       <y>250</y>
+       <width>51</width>
        <height>51</height>
       </rect>
      </property>
@@ -333,8 +333,8 @@ MeterNo</string>
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>230</y>
-       <width>44</width>
+       <y>250</y>
+       <width>51</width>
        <height>51</height>
       </rect>
      </property>
@@ -353,12 +353,12 @@ Status</string>
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>30</y>
-       <width>211</width>
-       <height>191</height>
+       <y>20</y>
+       <width>231</width>
+       <height>221</height>
       </rect>
      </property>
-     <layout class="QGridLayout" name="gridLayout_10">
+     <layout class="QGridLayout" name="gridLayout_7">
       <item row="0" column="0">
        <widget class="QLabel" name="label_25">
         <property name="sizePolicy">
@@ -517,6 +517,26 @@ Status</string>
         </property>
        </widget>
       </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_33">
+        <property name="text">
+         <string>Error(%)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QLineEdit" name="lnEditError">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="autoFillBackground">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </widget>
@@ -525,7 +545,7 @@ Status</string>
      <rect>
       <x>10</x>
       <y>20</y>
-      <width>231</width>
+      <width>251</width>
       <height>172</height>
      </rect>
     </property>
@@ -830,9 +850,9 @@ Status</string>
   <widget class="QGroupBox" name="groupBox_2">
    <property name="geometry">
     <rect>
-     <x>281</x>
+     <x>290</x>
      <y>210</y>
-     <width>411</width>
+     <width>421</width>
      <height>131</height>
     </rect>
    </property>
@@ -1107,7 +1127,7 @@ l</string>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>290</x>
      <y>360</y>
      <width>422</width>
      <height>32</height>
@@ -1202,174 +1222,12 @@ l</string>
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>281</x>
-     <y>430</y>
-     <width>412</width>
-     <height>174</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" name="gridLayout_7">
-    <item row="0" column="0" rowspan="2">
-     <widget class="QGroupBox" name="groupBox_3">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="title">
-       <string>Data Acquisition</string>
-      </property>
-      <layout class="QGridLayout" name="gridLayout_6">
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_8">
-         <property name="text">
-          <string>Big Balance:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="lnEditBigBalance">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QLabel" name="label_13">
-         <property name="text">
-          <string>kg</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_9">
-         <property name="text">
-          <string>Small Balance:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="lnEditSmallBalance">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QLabel" name="label_14">
-         <property name="text">
-          <string>kg</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_10">
-         <property name="text">
-          <string>Flow Rate:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QLineEdit" name="lnEditFlowRate">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="2">
-        <widget class="QLabel" name="label_15">
-         <property name="text">
-          <string>m³/h</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_11">
-         <property name="text">
-          <string>In Temp:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QLineEdit" name="lnEditTempIn">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="2">
-        <widget class="QLabel" name="label_16">
-         <property name="text">
-          <string>℃</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="label_12">
-         <property name="text">
-          <string>Out Temp:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QLineEdit" name="lnEditTempOut">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="2">
-        <widget class="QLabel" name="label_17">
-         <property name="text">
-          <string>℃</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-   </layout>
-  </widget>
   <widget class="QGroupBox" name="groupBox_8">
    <property name="geometry">
     <rect>
-     <x>281</x>
-     <y>633</y>
-     <width>417</width>
+     <x>311</x>
+     <y>640</y>
+     <width>381</width>
      <height>67</height>
     </rect>
    </property>
@@ -1411,6 +1269,162 @@ l</string>
      <widget class="QPushButton" name="btnExit">
       <property name="text">
        <string>Exit</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_3">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>423</y>
+     <width>381</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="title">
+    <string>Data Acquisition</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_6">
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_8">
+      <property name="text">
+       <string>Big Balance:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="lnEditBigBalance">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QLabel" name="label_13">
+      <property name="text">
+       <string>kg</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_9">
+      <property name="text">
+       <string>Small Balance:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="lnEditSmallBalance">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QLabel" name="label_14">
+      <property name="text">
+       <string>kg</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_10">
+      <property name="text">
+       <string>Flow Rate:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="lnEditFlowRate">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QLabel" name="label_15">
+      <property name="text">
+       <string>m³/h</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_11">
+      <property name="text">
+       <string>In Temp:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="lnEditTempIn">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="2">
+     <widget class="QLabel" name="label_16">
+      <property name="text">
+       <string>℃</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_12">
+      <property name="text">
+       <string>Out Temp:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="lnEditTempOut">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="2">
+     <widget class="QLabel" name="label_17">
+      <property name="text">
+       <string>℃</string>
       </property>
      </widget>
     </item>

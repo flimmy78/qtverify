@@ -668,9 +668,9 @@ void MeterComObject::askModifyMeterNo(QString oldMeterNo, QString newMeterNo)
 /*
 ** 请求修改流量参数
 */
-void MeterComObject::askModifyFlowPara()
+void MeterComObject::askModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr)
 {
-	m_meterProtocol->makeFrameOfModifyFlowPara();
+	m_meterProtocol->makeFrameOfModifyFlowCoe(meterNO, bigErr, mid2Err, mid1Err, smallErr);
 	QByteArray buf = m_meterProtocol->getSendFrame();
 	m_meterCom->write(buf);
 }
