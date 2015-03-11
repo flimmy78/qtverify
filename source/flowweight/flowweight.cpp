@@ -400,7 +400,10 @@ void FlowWeightDlg::slotFreshFlowRate()
 	flowValue = 3.6*(totalWeight)*1000/(FLOW_SAMPLE_NUM*TIMEOUT_FLOW_SAMPLE);//总累积水量/总时间  (吨/小时, t/h, m3/h)
 //	flowValue = (totalWeight)*1000/(FLOW_SAMPLE_NUM*TIMEOUT_FLOW_SAMPLE);// kg/s
 // 	qDebug()<<"flowValue ="<<flowValue;
-	ui.lcdFlowRate->display(QString::number(flowValue, 'f', 3)); //在ui.lcdFlowRate中显示流速
+	if (m_totalcount >= FLOW_SAMPLE_NUM)
+	{
+		ui.lcdFlowRate->display(QString::number(flowValue, 'f', 3)); //在ui.lcdFlowRate中显示流速
+	}
 	m_totalcount ++;//计数器累加
 	m_startWeight = m_endWeight;//将当前值保存, 作为下次运算的初值
 }
@@ -688,8 +691,8 @@ int FlowWeightDlg::judgeBalanceInitValue(float v)
 
 int FlowWeightDlg::judgeBalanceAndCalcAvgTemper(float targetV)
 {
-	int second;
-	float nowFlow =m_paraSetReader->getFpBySeq(m_nowOrder).fp_verify;;
+	int second = 0;
+	float nowFlow = m_paraSetReader->getFpBySeq(m_nowOrder).fp_verify;
 	while (!m_stopFlag && (ui.lcdBigBalance->value() < targetV))
 	{
 		qDebug()<<"天平重量 ="<<ui.lcdBigBalance->value()<<", 小于要求的重量 "<<targetV;
@@ -1052,7 +1055,7 @@ int FlowWeightDlg::calcMeterError(int idx)
 {
 	m_meterError[idx] = 100*(m_meterEndValue[idx] - m_meterStartValue[idx] - m_meterStdValue[idx])/m_meterStdValue[idx];//计算某个表的误差
 	ui.tableWidget->setItem(m_meterPosMap[idx]-1, COLUMN_ERROR, new QTableWidgetItem(QString::number(m_meterError[idx], 'f', 4))); //误差
-	if (m_meterError[idx] > m_gradeErr[2])
+	if (fabs(m_meterError[idx]) > m_gradeErr[2])
 	{
 		ui.tableWidget->item(m_meterPosMap[idx]-1, COLUMN_ERROR)->setForeground(QBrush(Qt::red));
 	}
