@@ -35,7 +35,21 @@ CReport::~CReport()
 		delete m_rpt_config;
 		m_rpt_config = NULL;
 	}
-	
+	if (m_query)
+	{
+		delete m_query;
+		m_query = NULL;
+	}
+	if (m_book)
+	{
+		delete m_book;
+		m_book = NULL;
+	}
+	if (m_sheet)
+	{
+		delete m_sheet;
+		m_sheet = NULL;
+	}
 	qDebug()<<"destructing report";
 }
 
