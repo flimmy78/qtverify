@@ -1,6 +1,7 @@
 DEFINES += REPORT_DLL
 QT       += core
 QT       -= gui
+QT		 += sql
 TEMPLATE = lib
 TARGET = report
 CONFIG += dll console debug
@@ -19,6 +20,8 @@ QMAKE_LIBDIR +=  ./             \
         	  		 $(RUNHOME)/lib \
 	          		 $(RUNHOME)/bin \
 					 
+LIBS += -lqexcel -llibxl -lqtexdb
+ 					 
 win32{
 DEFINES += WIN32 _AFXDLL
 DEFINES -= _USRDLL

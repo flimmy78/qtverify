@@ -73,9 +73,9 @@ from
 		  d.[F_RuleValidDate],
 		  d.[F_VerifyRule]
 		from 
-			T_Flow_Verify_Record recj 
-		 left join 
-			T_Verify_Device_Info d 
+				T_Flow_Verify_Record recj 
+			 left join 
+				T_Verify_Device_Info d 
 		 on   
 			recj.F_DeviceInfoID=d.[F_ID]
     ) rec, 

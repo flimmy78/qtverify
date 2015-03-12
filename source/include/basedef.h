@@ -36,6 +36,8 @@
 #define DATE_LEN            12      //数据库中date类型对应的字符串长度'2014-08-08'
 #define METERNO_LEN			16      //"表号"的字符串长度
 #define NUMPREFIX_LEN		6		//"表号"的前缀长度。6位前缀
+#define EN_NAME_LEN			24      //英文名字长度
+#define ZH_NAME_LEN			50      //中文名字长度
 
 #define METER_QUANTITY		20	   //本检定台可以检表的最大数量
 
@@ -334,5 +336,35 @@ public:
 	char	bak4[24];		//备用域4
 };
 typedef Flow_Verify_Record_STR* Flow_Verify_Record_PTR;
+
+/*************************************************************************/
+/* V_Flow_Verify_Record, 对应视图V_Flow_Verify_Record的结构               */
+/*************************************************************************/
+class V_Flow_Verify_Record_STR : public Flow_Verify_Record_STR
+{
+	char m_model_en[EN_NAME_LEN];				//表型号英文
+	char m_Model_zh[ZH_NAME_LEN];				//表型号中文                   
+	char m_standard[ASCNAME_LEN];				//表规格DN15,DN20等                  
+	char m_type_en[EN_NAME_LEN];				//表种类机械表，超声波表的英文名
+	char m_type_zh[ZH_NAME_LEN];				//表种类机械表，超声波表的中文名             
+	char m_manufacturer_en[EN_NAME_LEN];		//制造厂商，英文名
+	char m_manufacturer_zh[ZH_NAME_LEN];		//制造厂商，中文名         
+	char m_vfy_dept_en[EN_NAME_LEN];			//检验单位，英文名
+	char m_vfy_dept_zh[ZH_NAME_LEN];			//检验单位，中文名                 
+	char m_vfy_person[ZH_NAME_LEN];				//检验员的中文名  
+	char m_chk_person[ZH_NAME_LEN];				//核检员的中文名  
+	char m_device_name[ZH_NAME_LEN];			//检定装置名称，中文
+	char m_device_no[EN_NAME_LEN];				//检定装置序列号
+	char m_device_model[EN_NAME_LEN];			//检定装置型号编码
+	char m_dev_manufacturer[ZH_NAME_LEN];		//检定装置生产商，中文
+	char m_device_grade[EN_NAME_LEN];			//检定装置准确度等级
+	char m_measure_range[EN_NAME_LEN];			//检定装置的测量范围
+	char m_cert_no[EN_NAME_LEN];				//检定装置的证书编号
+	char m_verify_rule[EN_NAME_LEN];			//检定规程编号("JJG225-2001")
+	char m_device_valid_date[DATE_LEN];			//标准装置有效期('2014-08-07')
+	char m_cert_valid_date[DATE_LEN];			//证书有效期('2014-08-07')
+	char m_rule_valid_date[DATE_LEN]; 			//计量标准考核证书有效期('2014-08-07')
+};
+typedef V_Flow_Verify_Record_STR* V_Flow_Verify_Record_PTR;
 
 #endif	//BASEDEF_H
