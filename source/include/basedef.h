@@ -56,7 +56,7 @@
 
 #define RESET_ZERO_TIME		22    //等待热表初值回零的时间，单位：秒
 
-#define BALANCE_CAPACITY	95	  //天平容量，单位kg
+#define BALANCE_CAPACITY	100	  //天平容量，单位kg
 
 /*
 ** 被检表类型枚举            

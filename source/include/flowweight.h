@@ -161,6 +161,9 @@ public slots:
 	int openValve(UINT8 portno);    //打开控制阀
 	int closeValve(UINT8 portno);   //关闭控制阀
 	int operateValve(UINT8 portno); //操作控制阀：打开或者关闭
+	int openWaterPump();			//打开水泵
+	int closeWaterPump();			//关闭水泵
+	int operateWaterPump();			//操作水泵：打开或者关闭
 	int getMeterStartValue();     //获取表初值
 	int getMeterEndValue();       //获取表终值
 	void makeStartValueByLastEndValue(); //上一次的终值作为本次的初值

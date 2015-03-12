@@ -664,7 +664,7 @@ public:
 "u\n"
 "t", 0, QApplication::UnicodeUTF8));
         btnSetFreq->setText(QApplication::translate("FlowWeightClass", "Set Freq", 0, QApplication::UnicodeUTF8));
-        btnWaterPump->setText(QApplication::translate("FlowWeightClass", "Start Pump", 0, QApplication::UnicodeUTF8));
+        btnWaterPump->setText(QApplication::translate("FlowWeightClass", "Pump", 0, QApplication::UnicodeUTF8));
         groupBox_4->setTitle(QApplication::translate("FlowWeightClass", "DataAcquisition", 0, QApplication::UnicodeUTF8));
         label_9->setText(QApplication::translate("FlowWeightClass", "Big Bal:", 0, QApplication::UnicodeUTF8));
         label_11->setText(QApplication::translate("FlowWeightClass", "\343\216\217", 0, QApplication::UnicodeUTF8));

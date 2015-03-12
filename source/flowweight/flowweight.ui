@@ -422,7 +422,7 @@ t</string>
          </sizepolicy>
         </property>
         <property name="text">
-         <string>Start Pump</string>
+         <string>Pump</string>
         </property>
        </widget>
       </item>

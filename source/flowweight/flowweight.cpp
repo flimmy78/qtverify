@@ -151,6 +151,7 @@ void FlowWeightDlg::closeEvent( QCloseEvent * event)
 	m_stopFlag = true;
 
 	openWaterOutValve(); //退出时打开放水阀
+	closeWaterPump(); //退出时关闭水泵
 
 	if (m_paraSetReader) //读检定参数
 	{
@@ -339,7 +340,7 @@ void FlowWeightDlg::initValveStatus()
 */
 void FlowWeightDlg::slotFreshBalanceValue(const float& balValue)
 {
-	if (fabs(m_balLastValue - balValue) > 1) //天平每次变化不可能大于1kg
+	if (fabs(m_balLastValue - balValue) > 2) //天平每次变化不可能大于2kg
 	{
 		m_balLastValue = balValue;
 		return;
@@ -349,13 +350,9 @@ void FlowWeightDlg::slotFreshBalanceValue(const float& balValue)
 	m_balLastValue = balValue;
 	if (balValue > BALANCE_CAPACITY) //防止天平溢出 暂设天平容量为100kg
 	{
-		m_controlObj->askControlRelay(m_portsetinfo.waterInNo, VALVE_CLOSE);// 关闭进水阀
-		m_controlObj->askControlRelay(m_portsetinfo.waterOutNo, VALVE_OPEN);// 打开放水阀	
-		if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
-		{
-			slotSetValveBtnStatus(m_portsetinfo.waterOutNo, VALVE_OPEN);
-			slotSetValveBtnStatus(m_portsetinfo.waterInNo, VALVE_CLOSE);
-		}
+		closeValve(m_portsetinfo.waterInNo); //关闭进水阀
+		openValve(m_portsetinfo.waterOutNo); //打开放水阀
+		closeWaterPump(); //关闭水泵
 	}
 }
 
@@ -553,11 +550,7 @@ int FlowWeightDlg::openAllValveAndPump()
 	openValve(m_portsetinfo.waterInNo);
 
 	//打开水泵
-	m_controlObj->askControlWaterPump(m_portsetinfo.pumpNo, VALVE_OPEN);
-	if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
-	{
-		slotSetValveBtnStatus(m_portsetinfo.pumpNo, VALVE_OPEN);
-	}
+	openWaterPump();
 
 	return true;
 }
@@ -1130,6 +1123,44 @@ int FlowWeightDlg::operateValve(UINT8 portno)
 	return true;
 }
 
+//打开水泵
+int FlowWeightDlg::openWaterPump()
+{
+	m_nowPortNo = m_portsetinfo.pumpNo;
+	m_controlObj->askControlWaterPump(m_nowPortNo, VALVE_OPEN);
+	if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
+	{
+		slotSetValveBtnStatus(m_nowPortNo, VALVE_OPEN);
+	}
+	return true;
+}
+
+//关闭水泵
+int FlowWeightDlg::closeWaterPump()
+{
+	m_nowPortNo = m_portsetinfo.pumpNo;
+	m_controlObj->askControlWaterPump(m_nowPortNo, VALVE_CLOSE);
+	if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
+	{
+		slotSetValveBtnStatus(m_nowPortNo, VALVE_CLOSE);
+	}
+	return true;
+}
+
+//操作水泵 打开或者关闭
+int FlowWeightDlg::operateWaterPump()
+{
+	if (m_valveStatus[m_portsetinfo.pumpNo]==VALVE_OPEN) //水泵原来是打开状态
+	{
+		closeWaterPump();
+	}
+	else //水泵原来是关闭状态
+	{
+		openWaterPump();
+	}
+	return true;
+}
+
 //响应阀门状态设置成功
 void FlowWeightDlg::slotSetValveBtnStatus(const UINT8 &portno, const bool &status)
 {
@@ -1288,11 +1319,7 @@ void FlowWeightDlg::on_btnWaterPump_clicked()
  	m_controlObj->askControlRegulate(m_portsetinfo.pumpNo, ui.spinBoxFrequency->value());
 */
 	m_nowPortNo = m_portsetinfo.pumpNo;
-	m_controlObj->askControlWaterPump(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
-	if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
-	{
-		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
-	}
+	operateWaterPump();
 }
 
 /*
