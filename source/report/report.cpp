@@ -5,17 +5,17 @@ CReport::CReport(const QString& condition)
 {
 	    m_temp_file = QProcessEnvironment::systemEnvironment().value("TEMP");
 	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
-	QString current_time = QDateTime::currentDateTime().toString("yyyy-mm-dd hh-MM-ss");
+	QString current_time = QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss");
 #ifdef Q_OS_LINUX
 	m_rpt_config_file = runhome + "\/ini\/rptconfig_common.ini";
 	m_template_file   = runhome + "\/doc\/rpt-template.xls";
-	m_temp_file		  = m_temp_file+"\/temp.xls";
-	m_rpt_file        = runhome + "\/report\/report.xls" + current_time + ".xls";
+	m_temp_file		  = m_temp_file+"\/" + current_time + ".xls";
+	m_rpt_file        = runhome + "\/report\/report-" + current_time + ".xls";
 #elif defined (Q_OS_WIN)
 	m_rpt_config_file = runhome + "\\ini\\rptconfig_common.ini";
 	m_template_file   = runhome + "\\doc\\rpt-template.xls";
-	m_temp_file		  = m_temp_file+"\\temp.xls";
-	m_rpt_file        = runhome + "\\report\\report" + current_time + ".xls";
+	m_temp_file		  = m_temp_file+"\\" + current_time + ".xls";
+	m_rpt_file        = runhome + "\\report\\report-" + current_time + ".xls";
 #endif
 	m_rpt_config = new QSettings(m_rpt_config_file, QSettings::IniFormat);
 
@@ -84,7 +84,7 @@ void CReport::writeHead()
 	for (int i=0; i < m_headList.count(); i++)
 	{
 		field_name = m_headList[i];
-		coordinates = (QStringList)m_rpt_config->value("tablehead/" + field_name).toStringList();
+		coordinates = m_rpt_config->value("tablehead/" + field_name).toStringList();
 		x = coordinates[0].toInt();
 		y = coordinates[1].toInt();
 
@@ -97,7 +97,10 @@ void CReport::writeHead()
 
 void CReport::writeBody()
 {
-
+	/************************************************************************/
+	/* 1. write record value line by line
+	/* 2. merge similar cells
+	/************************************************************************/
 }
 
 void CReport::readConfigTHead()
@@ -110,7 +113,7 @@ void CReport::readConfigTHead()
 void CReport::readConfigTBody()
 {
 	m_rpt_config->beginGroup("tablebody");
-	QStringList m_bodyList = m_rpt_config->allKeys();
+	m_bodyList = m_rpt_config->allKeys();
 	m_rpt_config->endGroup();
 }
 
@@ -141,6 +144,9 @@ void CReport::getDbData()
 
 void CReport::deleteLog()
 {
+	//保存临时报表
+	m_book->save(m_temp_file.toStdString().data());
+	m_book->release();
 	//删除版权信息
 	QExcel j(m_temp_file);
 	j.selectSheet("Sheet1");
@@ -151,8 +157,7 @@ void CReport::deleteLog()
 	}
 	j.save();
 	j.close();
-	//保存报表到指定文件夹
-	m_book->save(m_temp_file.toStdString().data());
-	m_book->release();
+	//保存临时报表到指定文件夹
 	QFile::copy(m_temp_file, m_rpt_file);
+	QFile::remove(m_temp_file);
 }

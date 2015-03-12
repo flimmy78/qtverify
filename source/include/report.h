@@ -54,7 +54,6 @@ private:
 	QSqlQuery*	m_query;//查询
 	Book* m_book;//报表
 	Sheet* m_sheet;//表单
-	V_Flow_Verify_Record_PTR m_rec_set;//查询结果表
 	
 	void writeHead();//写表头
 	void writeBody();//写表体
