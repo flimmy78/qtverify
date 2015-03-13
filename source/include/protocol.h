@@ -280,6 +280,10 @@ public:
 	QString m_flow; //流量 
 	QString m_heat; //热量
 	QString m_date; //当前日期
+	QString m_bigCoe; //大流量点流量系数
+	QString m_mid2Coe; //中流二流量系数
+	QString m_mid1Coe; //中流一流量系数
+	QString m_smallCoe; //小流量点流量系数
 
 public slots:
 	virtual UINT8 readMeterComBuffer(QByteArray tmp){return 0;};
@@ -297,6 +301,10 @@ public slots:
 	virtual QString getOutTemper();
 	virtual QString getHeat();
 	virtual QString getDate();
+	virtual QString getBigCoe();
+	virtual QString getMid2Coe();
+	virtual QString getMid1Coe();
+	virtual QString getSmallCoe();
 
 private:
 

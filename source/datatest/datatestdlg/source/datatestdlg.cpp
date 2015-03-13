@@ -261,6 +261,14 @@ void DataTestDlg::initComOfHeatMeter()
 	connect(m_meterObj, SIGNAL(readMeterDateIsOK(const QString&, const QString&)), this, SLOT(slotFreshMeterDate(const QString&, const QString&)));
 	connect(m_meterObj, SIGNAL(readMeterTemperIsOK(const QString&, const QString&, const QString&)), \
 		this, SLOT(slotFreshMeterTemper(const QString&, const QString&, const QString&)));
+	connect(m_meterObj, SIGNAL(readMeterBigCoeIsOK(const QString&, const QString&)), \
+		this, SLOT(slotFreshBigCoe(const QString&, const QString&)));
+	connect(m_meterObj, SIGNAL(readMeterMid2CoeIsOK(const QString&, const QString&)), \
+		this, SLOT(slotFreshMid2Coe(const QString&, const QString&)));
+	connect(m_meterObj, SIGNAL(readMeterMid1CoeIsOK(const QString&, const QString&)), \
+		this, SLOT(slotFreshMid1Coe(const QString&, const QString&)));
+	connect(m_meterObj, SIGNAL(readMeterSmallCoeIsOK(const QString&, const QString&)), \
+		this, SLOT(slotFreshSmallCoe(const QString&, const QString&)));
 
 // 	ComInfoStruct comStruct = m_readComConfig->ReadMeterConfigByNum("1");
 // 	ui.parityComboBox->setCurrentIndex(comStruct.parity);
@@ -443,10 +451,6 @@ void DataTestDlg::on_btnParaSet_clicked()
 	m_paraset->show();
 }
 
-void DataTestDlg::on_btnStart_clicked()
-{
-}
-
 void DataTestDlg::on_btnExit_clicked()
 {
 	this->close();
@@ -578,6 +582,14 @@ void DataTestDlg::on_btnReadMeterData_clicked()
 	ui.lnEditMeterTotalFlow->clear();
 	ui.lnEditMeterHeat->clear();
 	ui.dateEditMeter->setDate(QDate(2000,1,1));
+	ui.lnEditBigOldError->clear();
+	ui.lnEditBigOldCoe->clear();
+	ui.lnEditMid2OldError->clear();
+	ui.lnEditMid2OldCoe->clear();
+	ui.lnEditMid1OldError->clear();
+	ui.lnEditMid1OldCoe->clear();
+	ui.lnEditSmallOldError->clear();
+	ui.lnEditSmallOldCoe->clear();
 
 	qDebug()<<"读表 开始...";
  	m_meterObj->askReadMeter(); //请求读表
@@ -607,7 +619,11 @@ void DataTestDlg::on_btnModifyMeterNo_clicked()
 void DataTestDlg::on_btnModifyFlowCoe_clicked()
 {
 	QString meterNO = ui.lnEditMeterNo->text();
-	m_meterObj->askModifyFlowCoe(meterNO, 4, 3, 2, 1);
+	float bigErr = ui.lnEditBigNewError->text().toFloat();
+	float mid2Err = ui.lnEditMid2NewError->text().toFloat();
+	float mid1Err = ui.lnEditMid1NewError->text().toFloat();
+	float smallErr = ui.lnEditSmallNewError->text().toFloat();
+	m_meterObj->askModifyFlowCoe(meterNO, bigErr, mid2Err, mid1Err, smallErr);
 }
 
 //响应读取表号成功
@@ -644,5 +660,49 @@ void DataTestDlg::slotFreshMeterTemper(const QString& comName, const QString& te
 	ui.lnEditMeterTempIn->setText(tempIn);
 	ui.lnEditMeterTempOut->setText(tempOut);
 	qDebug()<<"读取表进出水温度 成功...";
+}
+
+void DataTestDlg::slotFreshBigCoe(const QString& comName, const QString& bigCoe)
+{
+	bool ok;
+	float dec = bigCoe.right(3).toInt(&ok, 16)/4096.0;
+	float coeV = bigCoe.left(1).toFloat() + dec; 
+	float bigErr = 100/coeV - 100;
+	ui.lnEditBigOldError->setText(QString::number(bigErr, 'f', ERR_PRECISION));
+	ui.lnEditBigOldCoe->setText(bigCoe);
+	qDebug()<<"读取大流量系数 成功...";
+}
+
+void DataTestDlg::slotFreshMid2Coe(const QString& comName, const QString& mid2Coe)
+{
+	bool ok;
+	float dec = mid2Coe.right(3).toInt(&ok, 16)/4096.0;
+	float coeV = mid2Coe.left(1).toFloat() + dec; 
+	float mid2Err = 100/coeV - 100;
+	ui.lnEditMid2OldError->setText(QString::number(mid2Err, 'f', ERR_PRECISION));
+	ui.lnEditMid2OldCoe->setText(mid2Coe);
+	qDebug()<<"读取中流2流量系数 成功...";
+}
+
+void DataTestDlg::slotFreshMid1Coe(const QString& comName, const QString& mid1Coe)
+{
+	bool ok;
+	float dec = mid1Coe.right(3).toInt(&ok, 16)/4096.0;
+	float coeV = mid1Coe.left(1).toFloat() + dec; 
+	float mid1Err = 100/coeV - 100;
+	ui.lnEditMid1OldError->setText(QString::number(mid1Err, 'f', ERR_PRECISION));
+	ui.lnEditMid1OldCoe->setText(mid1Coe);
+	qDebug()<<"读取中流1流量系数 成功...";
+}
+
+void DataTestDlg::slotFreshSmallCoe(const QString& comName, const QString& smallCoe)
+{
+	bool ok;
+	float dec = smallCoe.right(3).toInt(&ok, 16)/4096.0;
+	float coeV = smallCoe.left(1).toFloat() + dec; 
+	float smallErr = 100/coeV - 100;
+	ui.lnEditSmallOldError->setText(QString::number(smallErr, 'f', ERR_PRECISION));
+	ui.lnEditSmallOldCoe->setText(smallCoe);
+	qDebug()<<"读取小流量系数 成功...";
 }
 

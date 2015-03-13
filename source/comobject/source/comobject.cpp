@@ -593,6 +593,7 @@ void MeterComObject::readMeterComBuffer()
 	float flow;
 	QString heat;
 	QString tempIn, tempOut, date;
+	QString bigCoe,mid2Coe,mid1Coe,smallCoe;
 	if (ret == 1) //解帧成功
 	{
 		//表号
@@ -622,6 +623,22 @@ void MeterComObject::readMeterComBuffer()
 		//热表日期
 		date = m_meterProtocol->getDate();
 		emit readMeterDateIsOK(m_portName, date);
+
+		//大流量系数
+		bigCoe = m_meterProtocol->getBigCoe();
+		emit readMeterBigCoeIsOK(m_portName, bigCoe);
+
+		//中流2流量系数
+		mid2Coe = m_meterProtocol->getMid2Coe();
+		emit readMeterMid2CoeIsOK(m_portName, mid2Coe);
+
+		//中流1流量系数
+		mid1Coe = m_meterProtocol->getMid1Coe();
+		emit readMeterMid1CoeIsOK(m_portName, mid1Coe);
+
+		//小流量系数
+		smallCoe = m_meterProtocol->getSmallCoe();
+		emit readMeterSmallCoeIsOK(m_portName, smallCoe);
 
 		qDebug()<<"解析热量表数据，用时"<<usedSec<<"毫秒";
 	}

@@ -177,6 +177,10 @@ signals:
 	void readMeterHeatIsOK(const QString& portName, const QString& heat);  //获取表热量成功
 	void readMeterTemperIsOK(const QString& portName, const QString& tempIn, const QString& tempOut);  //获取表进出口温度成功
 	void readMeterDateIsOK(const QString& portName, const QString& date);  //获取表日期成功
+	void readMeterBigCoeIsOK(const QString& portName, const QString& bigCoe); //获取大流量系数成功
+	void readMeterMid2CoeIsOK(const QString& portName, const QString& mid2Coe); //获取中流2流量系数成功
+	void readMeterMid1CoeIsOK(const QString& portName, const QString& mid1Coe); //获取中流1流量系数成功
+	void readMeterSmallCoeIsOK(const QString& portName, const QString& smallCoe); //获取小流量系数成功
 
 public slots:
 	bool openMeterCom(ComInfoStruct *comStruct);

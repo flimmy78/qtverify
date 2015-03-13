@@ -792,7 +792,27 @@ QString MeterProtocol::getHeat()
 
 QString MeterProtocol::getDate()
 {
-	return m_date;;
+	return m_date;
+}
+
+QString MeterProtocol::getBigCoe()
+{
+	return m_bigCoe;
+}
+
+QString MeterProtocol::getMid2Coe()
+{
+	return m_mid2Coe;
+}
+
+QString MeterProtocol::getMid1Coe()
+{
+	return m_mid1Coe;
+}
+
+QString MeterProtocol::getSmallCoe()
+{
+	return m_smallCoe;
 }
 
 
@@ -998,6 +1018,30 @@ void DeluMeterProtocol::analyseFrame()
 		.arg(m_deluMeterFrame->data[11], 2, 16));
 	m_heat.replace(' ', '0');
 
+	//大流量点流量系数
+	m_bigCoe = "";
+	m_bigCoe.append(QString("%1%2").arg(m_deluMeterFrame->data[33], 2, 16)\
+		.arg(m_deluMeterFrame->data[32], 2, 16));
+	m_bigCoe.replace(' ', '0');
+
+	//中流二流量系数
+	m_mid2Coe = "";
+	m_mid2Coe.append(QString("%1%2").arg(m_deluMeterFrame->data[35], 2, 16)\
+		.arg(m_deluMeterFrame->data[34], 2, 16));
+	m_mid2Coe.replace(' ', '0');
+
+	//中流一流量系数
+	m_mid1Coe = "";
+	m_mid1Coe.append(QString("%1%2").arg(m_deluMeterFrame->data[37], 2, 16)\
+		.arg(m_deluMeterFrame->data[36], 2, 16));
+	m_mid1Coe.replace(' ', '0');
+
+	//小流量点流量系数
+	m_smallCoe = "";
+	m_smallCoe.append(QString("%1%2").arg(m_deluMeterFrame->data[39], 2, 16)\
+		.arg(m_deluMeterFrame->data[38], 2, 16));
+	m_smallCoe.replace(' ', '0');
+
 	//回水温度
 	m_outTemper = "";
 	m_outTemper.append(QString("%1%2.%3").arg(m_deluMeterFrame->data[48], 2, 16)\
@@ -1170,19 +1214,29 @@ void DeluMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, 
 	m_sendBuf.append(code1).append(code2).append(code3).append(code4).append(code5).append(code6);
 	cs += code1 + code2 + code3 + code4 + code5 + code6;
 
-	QString bigCoe = QString::number(1/(1+bigErr/100), 'g', 3).replace(".", "").leftJustified(4,'0');
-	QString mid2Coe = QString::number(1/(1+mid2Err/100), 'g', 3).replace(".", "").leftJustified(4,'0');
-	QString mid1Coe = QString::number(1/(1+mid1Err/100), 'g', 3).replace(".", "").leftJustified(4,'0');
-	QString smallCoe = QString::number(1/(1+smallErr/100), 'g', 3).replace(".", "").leftJustified(4,'0');
+	QString bigCoe = QString::number(1/(1+bigErr/100), 'f', 3);
+	QString mid2Coe = QString::number(1/(1+mid2Err/100), 'f', 3);
+	QString mid1Coe = QString::number(1/(1+mid1Err/100), 'f', 3);
+	QString smallCoe = QString::number(1/(1+smallErr/100), 'f', 3);
 
-	UINT8 A7 = bigCoe.right(2).toUInt();
-	UINT8 A6 = bigCoe.left(2).toUInt();
-	UINT8 A5 = mid2Coe.right(2).toUInt();
-	UINT8 A4 = mid2Coe.left(2).toUInt();
-	UINT8 A3 = mid1Coe.right(2).toUInt();
-	UINT8 A2 = mid1Coe.left(2).toUInt();
-	UINT8 A1 = smallCoe.right(2).toUInt();
-	UINT8 A0 = smallCoe.left(2).toUInt();
+	int bigDec = bigCoe.section(".", 1).toUInt()*4096.0/1000.0;
+	int mid2Dec = mid2Coe.section(".", 1).toUInt()*4096.0/1000.0;
+	int mid1Dec = mid1Coe.section(".", 1).toUInt()*4096.0/1000.0;
+	int smallDec = smallCoe.section(".", 1).toUInt()*4096.0/1000.0;
+
+	QString big = QString::number(bigDec, 16).rightJustified(3, '0');
+	QString mid2 = QString::number(mid2Dec, 16).rightJustified(3, '0');
+	QString mid1 = QString::number(mid1Dec, 16).rightJustified(3, '0');
+	QString small = QString::number(smallDec, 16).rightJustified(3, '0');
+	UINT8 A7 = big.right(2).toUInt(&ok, 16);
+	UINT8 A6 = (bigCoe.left(1) + big.left(1)).toUInt(&ok, 16);
+	UINT8 A5 = mid2.right(2).toUInt(&ok, 16);
+	UINT8 A4 = (mid2Coe.left(1) + mid2.left(1)).toUInt(&ok, 16);
+	UINT8 A3 = mid1.right(2).toUInt(&ok, 16);
+	UINT8 A2 = (mid1Coe.left(1) + mid1.left(1)).toUInt(&ok, 16);
+	UINT8 A1 = small.right(2).toUInt(&ok, 16);
+	UINT8 A0 = (smallCoe.left(1) + small.left(1)).toUInt(&ok, 16);
+
 	m_sendBuf.append(A7).append(A6).append(A5).append(A4).append(A3).append(A2).append(A1).append(A0);
 	cs += A7 + A6 + A5 + A4 + A3 + A2 + A1 + A0;
 

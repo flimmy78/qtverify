@@ -95,7 +95,6 @@ public slots:
 	void on_btnQueryStatus_clicked();
 
 	void on_btnParaSet_clicked();
-	void on_btnStart_clicked();
 	void on_btnExit_clicked();
 
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
@@ -106,6 +105,11 @@ public slots:
 	void slotFreshMeterHeat(const QString& comName, const QString& heat); //刷新表热量
 	void slotFreshMeterDate(const QString& comName, const QString& date); //刷新表日期
 	void slotFreshMeterTemper(const QString& comName, const QString& tempIn, const QString& tempOut); //刷新表进出水温度
+	void slotFreshBigCoe(const QString& comName, const QString& bigCoe); //刷新大流量系数
+	void slotFreshMid2Coe(const QString& comName, const QString& mid2Coe); //刷新中流2流量系数
+	void slotFreshMid1Coe(const QString& comName, const QString& mid1Coe); //刷新中流1流量系数
+	void slotFreshSmallCoe(const QString& comName, const QString& smallCoe); //刷新小流量系数
+
 
 	void slotSetValveBtnStatus(const UINT8 &portno, const bool &status); //继电器返回成功对应的槽函数
 	void slotSetRegulateOk();
