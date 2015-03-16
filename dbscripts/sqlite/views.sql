@@ -2,10 +2,10 @@
 -----------------------------------------------------------------
 --                    检定结果视图                           ----
 -----------------------------------------------------------------
-drop view if exists "V_Flow_Verify_Record"
-;
-create view V_Flow_Verify_Record as
+drop VIEW if exists "V_Flow_Verify_Record";
+CREATE VIEW V_Flow_Verify_Record as
 select 
+  rid.[rowid],
   rec.F_ID,
   rec.F_TimeStamp,
   rec.F_MeterNo,
@@ -22,7 +22,10 @@ select
   rec.F_Density,                    
   rec.F_StandValue,                 
   rec.F_DispError,                  
-  rec.F_StdError,                   
+  rec.F_StdError,
+  (case when (F_DispError<F_StdError) then '合格'
+        else '不合格'
+   end) valid,                   
   rec.F_Result,                   
   rec.F_MeterPosNo,              
   rec.F_Model,
@@ -73,9 +76,9 @@ from
 		  d.[F_RuleValidDate],
 		  d.[F_VerifyRule]
 		from 
-				T_Flow_Verify_Record recj 
-			 left join 
-				T_Verify_Device_Info d 
+			T_Flow_Verify_Record recj 
+		 left join 
+			T_Verify_Device_Info d 
 		 on   
 			recj.F_DeviceInfoID=d.[F_ID]
     ) rec, 
@@ -83,12 +86,30 @@ from
    T_meter_standard std,   
    T_Meter_Type tp,   
    T_manufacture_dept manu,   
-   T_verify_dept vdpt
+   T_verify_dept vdpt,   
+   v_flow_verify_meterno_rowid rid
 where
    rec.[F_Standard]=std.[F_ID] and
    rec.[F_MeterType]=tp.[F_ID] and
    rec.[F_ManufactDept]=manu.[F_ID] and
    rec.[F_VerifyDept]=vdpt.[F_ID] and   
-   rec.[F_Model]=mod.[F_ID]
+   rec.[F_Model]=mod.[F_ID] and   
+   rec.[f_meterno]=rid.[F_MeterNo]
  order by rec.f_meterno, rec.f_timestamp
- ; 
+ ;
+ 
+ -----------------------------------------------------------------
+--                    检定结果视图中的rowID                   ----
+------------------------------------------------------------------
+drop view if exists "v_flow_verify_meterno_rowid";
+create view v_flow_verify_meterno_rowid as
+select 
+distinct (
+           select 
+                  count(distinct f_meterno) 
+           from v_flow_verify_record v1 
+           where v1.[f_meterno] < v2.[F_MeterNo] 
+         ) rowid, 
+           v2.f_meterno  
+from 
+v_flow_verify_record v2
