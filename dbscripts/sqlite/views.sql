@@ -106,7 +106,7 @@ create view v_flow_verify_meterno_rowid as
 select 
 distinct (
            select 
-                  count(distinct f_meterno) 
+                  count(distinct f_meterno) + 1
            from v_flow_verify_record v1 
            where v1.[f_meterno] < v2.[F_MeterNo] 
          ) rowid, 
