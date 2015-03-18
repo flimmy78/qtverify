@@ -7,7 +7,7 @@
 ** 热表检定相关宏定义
 */
 #define VALID_YEAR				2 //检表有效期 2年
-#define BALANCE_START_VALUE		5 //天平初值
+#define BALANCE_INIT_VALUE		5 //天平初值
 #define ERR_PRECISION			3 //各流量点流量系数(误差)显示到小数点后3位
 
 /*

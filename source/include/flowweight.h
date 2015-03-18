@@ -108,8 +108,6 @@ public:
 	ReadComConfig *m_readComConfig; //读串口设置
 	PortSet_Ini_STR m_portsetinfo;  //端口配置
 
-	float m_balLastValue; //天平上一次读数，用来判断天平数值是否发生突变，防错用
-
 	//计算流速用
 	uint m_totalcount;  //计数器
 	float m_startWeight;//天平初值
@@ -125,7 +123,6 @@ public:
 	void initValveStatus();	   //初始化阀门状态
 
 	int isComAndPortNormal();   //串口、端口设置是否正常
-	int isWaterOutValveOpen();  //检查放水阀门是否打开
 	int isDataCollectNormal();	//检查数据采集是否正常（天平、温度、电磁流量计等）
 	int isMeterPosValid(int meterPos); //判断表位号是否有效(该表位是否需要检表)
 
@@ -142,6 +139,7 @@ public slots:
 	void on_btnNext_clicked();    //点击"下一步"按钮
 	void on_btnStop_clicked();    //点击"终止检测"按钮
 	void slotExaustFinished();    //排气时间结束
+	int prepareInitBalance();         //开始检定前，准备天平初始重量
 	int openAllValveAndPump();    //打开所有阀门和水泵
 	int readMeter();          //读取热表
 	int setMeterVerifyStatus();   //设置热量表进入检定状态
@@ -150,7 +148,7 @@ public slots:
 	int openWaterOutValve();      //打开放水阀
 	int openBigFlowValve();       //打开大流量点阀门
 	int closeBigFlowValve();      //关闭大流量点阀门
-	int judgeBalanceInitValue(float v);    //判断天平质量
+	int judgeBalanceValue(float targetV, bool flg=true);    //判断天平质量,flg: true-要求大于目标重量(默认)；false-要求小于目标重量
 	int judgeBalanceAndCalcAvgTemper(float targetV); //判断天平质量，并累加进出口温度，每秒累加一次，用于计算进出口平均温度
 	void startVerify();           //开始检定
 	int getValidMeterNum();       //获取有效的检表个数()

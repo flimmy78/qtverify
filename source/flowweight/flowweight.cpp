@@ -63,8 +63,6 @@ FlowWeightDlg::FlowWeightDlg(QWidget *parent, Qt::WFlags flags)
 	m_controlObj = NULL;
 	initControlCom();		//初始化控制串口
 
-	m_balLastValue = 0.0;   //用于判断天平值是否发生突变
-
 	//计算流速用
 	m_totalcount = 0;
 	m_startWeight = 0.0;
@@ -133,11 +131,6 @@ FlowWeightDlg::FlowWeightDlg(QWidget *parent, Qt::WFlags flags)
 	m_meterObj = NULL;
 	initMeterCom(); //初始化热量表通讯串口
 
-	if (!isWaterOutValveOpen())
-	{
-		qDebug()<<"放水阀门未打开";
-		openWaterOutValve();
-	}
 }
 
 FlowWeightDlg::~FlowWeightDlg()
@@ -151,7 +144,7 @@ void FlowWeightDlg::closeEvent( QCloseEvent * event)
 	m_stopFlag = true;
 
 	openWaterOutValve(); //退出时打开放水阀
-	closeWaterPump(); //退出时关闭水泵
+	closeWaterPump();    //退出时关闭水泵
 
 	if (m_paraSetReader) //读检定参数
 	{
@@ -314,13 +307,13 @@ void FlowWeightDlg::initValveStatus()
 	m_valveBtn[m_portsetinfo.waterOutNo] = ui.btnWaterOut;
 	m_valveBtn[m_portsetinfo.pumpNo] = ui.btnWaterPump; //水泵
 
-	//初始化 全部阀门状态为关闭
+	//初始化：放水阀为打开，其他阀门为关闭状态
 	m_valveStatus[m_portsetinfo.bigNo] = VALVE_CLOSE;
 	m_valveStatus[m_portsetinfo.smallNo] = VALVE_CLOSE;
 	m_valveStatus[m_portsetinfo.middle1No] = VALVE_CLOSE;
 	m_valveStatus[m_portsetinfo.middle2No] = VALVE_CLOSE;
 	m_valveStatus[m_portsetinfo.waterInNo] = VALVE_CLOSE;
-	m_valveStatus[m_portsetinfo.waterOutNo] = VALVE_CLOSE;
+	m_valveStatus[m_portsetinfo.waterOutNo] = VALVE_OPEN;
 	m_valveStatus[m_portsetinfo.pumpNo] = VALVE_CLOSE; //水泵
 
 	setValveBtnBackColor(m_valveBtn[m_portsetinfo.bigNo], m_valveStatus[m_portsetinfo.bigNo]);
@@ -340,18 +333,13 @@ void FlowWeightDlg::initValveStatus()
 */
 void FlowWeightDlg::slotFreshBalanceValue(const float& balValue)
 {
-	if (fabs(m_balLastValue - balValue) > 2) //天平每次变化不可能大于2kg
-	{
-		m_balLastValue = balValue;
-		return;
-	}
 	QString wht = QString::number(balValue, 'f', 3);
 	ui.lcdBigBalance->display(wht);
-	m_balLastValue = balValue;
 	if (balValue > BALANCE_CAPACITY) //防止天平溢出 暂设天平容量为100kg
 	{
 		closeValve(m_portsetinfo.waterInNo); //关闭进水阀
-		openValve(m_portsetinfo.waterOutNo); //打开放水阀
+		closeAllFlowPointValves(); //关闭所有流量点阀门
+		openWaterOutValve(); //打开放水阀
 		closeWaterPump(); //关闭水泵
 	}
 }
@@ -368,7 +356,7 @@ void FlowWeightDlg::slotFreshComTempValue(const QString& tempStr)
 */
 void FlowWeightDlg::slotFreshFlowRate()
 {
-// 	qDebug()<<"FlowWeightDlg::slotFreshFlow thread:"<<QThread::currentThreadId();
+// 	qDebug()<<"FlowWeightDlg::slotFreshFlowRate thread:"<<QThread::currentThreadId();
 	if (m_totalcount > 4294967290) //防止m_totalcount溢出 32位无符号整数范围0~4294967295
 	{
 		m_totalcount = 0;
@@ -407,12 +395,6 @@ void FlowWeightDlg::slotFreshFlowRate()
 
 //检测串口、端口设置是否正确
 int FlowWeightDlg::isComAndPortNormal()
-{
-	return true;
-}
-
-//检查放水阀门是否打开 打开:true，关闭:false
-int FlowWeightDlg::isWaterOutValveOpen()
 {
 	return true;
 }
@@ -580,35 +562,46 @@ void FlowWeightDlg::slotExaustFinished()
 		}
 	}
 
-	ui.labelHintPoint->setText(tr("prepare balance ..."));
-
-	//判断天平重量,如果小于要求的初始重量(5kg)，则关闭放水阀，打开大流量阀
-	if (ui.lcdBigBalance->value() < BALANCE_START_VALUE)
-	{
-		if (!closeWaterOutValve()) 
-		{
-			qWarning()<<"关闭放水阀失败";
-		}
-
-		if (!openBigFlowValve())
-		{
-			qWarning()<<"打开大流量阀失败";
-		}
-	}
-
-	//判断并等待天平重量，大于初始重量(5kg)
-	if (judgeBalanceInitValue(BALANCE_START_VALUE))
-	{
-		if (!closeBigFlowValve())
-		{
-			qWarning()<<"关闭大流量阀失败";
-		}
-	}
+	ui.labelHintPoint->setText(tr("prepare balance ...")); //准备天平
+	prepareInitBalance();//准备天平初始重量
 
 	if (setMeterVerifyStatus()) //设置检定状态成功
 	{
 		startVerify();
 	}
+}
+
+/*
+** 排气结束后、开始检定前，准备天平,达到要求的初始重量
+*/
+int FlowWeightDlg::prepareInitBalance()
+{
+	//判断天平重量,如果小于要求的初始重量(5kg)，则关闭放水阀，打开大流量阀
+	if (ui.lcdBigBalance->value() < BALANCE_INIT_VALUE)
+	{
+		if (!closeWaterOutValve()) 
+		{
+			qWarning()<<"关闭放水阀失败";
+		}
+		if (!openBigFlowValve())
+		{
+			qWarning()<<"打开大流量阀失败";
+		}
+		//判断并等待天平重量，大于初始重量(5kg)
+		if (judgeBalanceValue(BALANCE_INIT_VALUE, true))
+		{
+			if (!closeBigFlowValve())
+			{
+				qWarning()<<"关闭大流量阀失败";
+			}
+		}
+	}
+	else
+	{
+		
+	}
+
+	return true;
 }
 
 /*
@@ -670,13 +663,29 @@ int FlowWeightDlg::closeBigFlowValve()
 	return true;
 }
 
-//响应处理天平质量的变化
-int FlowWeightDlg::judgeBalanceInitValue(float v)
+/*
+** 响应处理天平质量的变化
+** 输入参数：
+	targetV: 目标重量
+	flg: true-要求大于目标重量(默认)；false-要求小于目标重量
+*/
+int FlowWeightDlg::judgeBalanceValue(float targetV, bool flg)
 {
-	while (!m_stopFlag && (ui.lcdBigBalance->value() < v))
+	if (flg) //要求大于目标重量
 	{
-		qDebug()<<"天平重量 ="<<ui.lcdBigBalance->value()<<", 小于要求的重量 "<<v;
-		QTest::qWait(1000);
+		while (!m_stopFlag && (ui.lcdBigBalance->value() < targetV))
+		{
+			qDebug()<<"天平重量 ="<<ui.lcdBigBalance->value()<<", 小于要求的重量 "<<targetV;
+			QTest::qWait(1000);
+		}
+	}
+	else //要求小于目标重量
+	{
+		while (!m_stopFlag && (ui.lcdBigBalance->value() > targetV))
+		{
+			qDebug()<<"天平重量 ="<<ui.lcdBigBalance->value()<<", 大于要求的重量 "<<targetV;
+			QTest::qWait(1000);
+		}
 	}
 
 	return true;
@@ -763,11 +772,10 @@ void FlowWeightDlg::on_btnStop_clicked()
 	
 	m_exaustTimer->stop();//停止排气定时器
 
-	//关闭进水阀、所有流量点阀门
-
-	//打开放水阀
-
-	//停止水泵
+	closeValve(m_portsetinfo.waterInNo);//关闭进水阀
+	closeAllFlowPointValves();//关闭所有流量点阀门
+	//openWaterOutValve();//打开放水阀
+	closeWaterPump();//关闭水泵
 
 	ui.labelHintProcess->setText(tr("Verify has Stoped!"));
 }
@@ -892,7 +900,7 @@ bool FlowWeightDlg::judgeBalanceCapacity()
 	{
 		totalQuantity += m_paraSetReader->getParams()->fp_info[i].fp_quantity;
 	}
-	ret = (ui.lcdBigBalance->value() + totalQuantity) < BALANCE_CAPACITY; //假设天平容量为100kg
+	ret = (ui.lcdBigBalance->value() + totalQuantity) < (BALANCE_CAPACITY-3); //假设天平容量为100kg
 	return ret;
 }
 

@@ -585,7 +585,7 @@ void TotalStandardDlg::slotExaustFinished()
 	ui.labelHintPoint->setText(tr("prepare balance ..."));
 
 	//判断天平重量,如果小于要求的初始重量(5kg)，则关闭放水阀，打开大流量阀
-	if (ui.lcdBigBalance->value() < BALANCE_START_VALUE)
+	if (ui.lcdBigBalance->value() < BALANCE_INIT_VALUE)
 	{
 		if (!closeWaterOutValve()) 
 		{
@@ -599,7 +599,7 @@ void TotalStandardDlg::slotExaustFinished()
 	}
 
 	//判断并等待天平重量，大于初始重量(5kg)
-	if (judgeBalanceInitValue(BALANCE_START_VALUE))
+	if (judgeBalanceInitValue(BALANCE_INIT_VALUE))
 	{
 		if (!closeBigFlowValve())
 		{
