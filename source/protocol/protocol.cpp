@@ -82,13 +82,14 @@ void TempProtocol::makeSendBuf()
 //解帧 获取温度值
 bool TempProtocol::readTemperComBuffer(QByteArray tmp)
 {
+	int number = tmp.size();
+	Q_ASSERT(number > 0);
 	memset(m_tempFrame, 0, sizeof(Temp_Frame_Struct));
 	bool ret = false;
 	int state = PV_STATE;
 
 	UINT8 uch = 0; //无符号8位数字
 	INT8  ch = 0;  //有符号8位数字
-	int number = tmp.size();
 	int m=0;
 	int pv_i=0, sv_i=0, para_i=0, check_i=0;
  	INT16 ck=0; //程序计算的检验码
@@ -217,6 +218,10 @@ INT16 TempProtocol::CountCheck(Temp_Frame_Struct *pFrame)
 
 void TempProtocol::analyseFrame()
 {
+	if (NULL == m_tempFrame)
+	{
+		return;
+	}
 	float PV = ((float)m_tempFrame->pv)/10;
 	float SV = ((float)m_tempFrame->sv)/10;
 	QString pvStr = QString("%1").arg(PV, DATA_WIDTH, 'f', DATA_PRECISION);
@@ -255,24 +260,25 @@ BalanceProtocol::~BalanceProtocol()
 //解析赛多利斯天平串口数据
 bool BalanceProtocol::readBalanceComBuffer(QByteArray tmp)
 {
+	bool ret = false;
+	int number = tmp.size();
+	if (number < BAL_DATA_LENGTH) //一帧通常是22字节；
+	{
+		return ret;
+	}
+
 	if (m_count>=10000)
 	{
 		m_count = 1;
 	}
 	QByteArray whtArray;
 	m_balValue = 0.0;
-	bool ret = false;
-	int num = tmp.size();
-	if (num < BAL_DATA_LENGTH) //一帧通常是22字节；
-	{
-		return ret;
-	}
 
 	int m=0;
 	char ch;
 	UINT8 ch1, ch2;
 	bool ok;
-	for (int i=num; i>0; i--)
+	for (int i=number; i>0; i--)
 	{
 		ch1 = (UINT8)tmp.at(i-1);
 		if (ch1==ASCII_LF && i>=16) //0x0A换行（表示一帧结束）
@@ -292,7 +298,7 @@ bool BalanceProtocol::readBalanceComBuffer(QByteArray tmp)
 					ret = true;
 					break;
 				}
-				if (fabs(m_balValue-m_lastValue) <= 2.0) //过滤突变数据
+				if (fabs(m_balValue-m_lastValue) <= 5.0) //过滤突变数据
 				{
 					m_lastValue = m_balValue;
 					ret = true;
@@ -355,6 +361,7 @@ NewCtrlProtocol::~NewCtrlProtocol()
 ************************************************************************/
 void NewCtrlProtocol::makeFrameOfCtrlRelay(UINT8 portno, bool status)
 {
+	Q_ASSERT(portno >= 0);
 	m_sendBuf = "";
 	m_sendBuf.append(CTRL_START_CODE).append(CTRL_FUNC_RELAY);
 	UINT8 relay_num = 0x01; //控制的继电器数量 1路
@@ -387,6 +394,7 @@ void NewCtrlProtocol::makeFrameOfCtrlRelay(UINT8 portno, bool status)
 //控制调节阀 同时只控制一路
 void NewCtrlProtocol::makeFrameOfCtrlRegulate(UINT8 portno, UINT16 degree)
 {
+	Q_ASSERT(portno >= 0);
 	m_sendBuf = "";
 	m_sendBuf.append(CTRL_START_CODE).append(CTRL_FUNC_REGULATE);
 	float a = 2;
@@ -1214,12 +1222,12 @@ void DeluMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, 
 	m_sendBuf.append(code1).append(code2).append(code3).append(code4).append(code5).append(code6);
 	cs += code1 + code2 + code3 + code4 + code5 + code6;
 
-	QString bigCoe = QString::number(1/(1+bigErr/100), 'f', 3);
+	QString bigCoe = QString::number(1/(1+bigErr/100), 'f', 3); //保留3位小数，四舍五入
 	QString mid2Coe = QString::number(1/(1+mid2Err/100), 'f', 3);
 	QString mid1Coe = QString::number(1/(1+mid1Err/100), 'f', 3);
 	QString smallCoe = QString::number(1/(1+smallErr/100), 'f', 3);
 
-	int bigDec = bigCoe.section(".", 1).toUInt()*4096.0/1000.0;
+	int bigDec = bigCoe.section(".", 1).toUInt()*4096.0/1000.0; //只取整数部分，不再进行四舍五入
 	int mid2Dec = mid2Coe.section(".", 1).toUInt()*4096.0/1000.0;
 	int mid1Dec = mid1Coe.section(".", 1).toUInt()*4096.0/1000.0;
 	int smallDec = smallCoe.section(".", 1).toUInt()*4096.0/1000.0;
