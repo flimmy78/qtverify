@@ -766,6 +766,13 @@ void FlowWeightDlg::on_btnNext_clicked()
 //点击"终止检测"按钮
 void FlowWeightDlg::on_btnStop_clicked()
 {
+	int button = QMessageBox::question(this, tr("Question"), tr("Stop Really ?"), \
+		QMessageBox::Yes|QMessageBox::Default, QMessageBox::No|QMessageBox::Escape);
+	if (button == QMessageBox::No)
+	{
+		return;
+	}
+
 	m_stopFlag = true; //不再检查天平质量
 	m_inputStartValue = false;
 	m_inputEndValue = false;
@@ -919,7 +926,7 @@ int FlowWeightDlg::judgeBalanceCapacitySingle(int order)
 */
 int FlowWeightDlg::prepareVerifyFlowPoint(int order)
 {
-	if (order < 1)
+	if (order < 1 || m_stopFlag)
 	{
 		return false;
 	}
@@ -950,7 +957,7 @@ int FlowWeightDlg::prepareVerifyFlowPoint(int order)
 		if (m_autopick || order==1 ) //自动采集或者是第一个检定点,需要等待热表初值回零
 		{
 			ui.labelHintPoint->setText(tr("Reset Zero"));
-			while (i < RESET_ZERO_TIME) //等待被检表初值回零
+			while (i < RESET_ZERO_TIME && !m_stopFlag) //等待被检表初值回零
 			{
 				ui.labelHintProcess->setText(tr("please wait %1 seconds for reset zero").arg(RESET_ZERO_TIME-i));
 				i++;
@@ -990,6 +997,10 @@ int FlowWeightDlg::prepareVerifyFlowPoint(int order)
 //进行单个流量点的检定
 int FlowWeightDlg::startVerifyFlowPoint(int order)
 {
+	if (m_stopFlag)
+	{
+		return false;
+	}
 	m_balStartV = ui.lcdBigBalance->value(); //记录天平初值
 	m_pipeInTemper = ui.lcdInTemper->value();
 	m_pipeOutTemper = ui.lcdOutTemper->value();
@@ -1025,7 +1036,7 @@ int FlowWeightDlg::startVerifyFlowPoint(int order)
 				return false;
 			}
 
-			if (m_autopick) //自动采集
+			if (m_autopick && !m_stopFlag) //自动采集
 			{
 				calcAllMeterError();
 				saveAllVerifyRecords();
@@ -1372,6 +1383,11 @@ void FlowWeightDlg::makeStartValueByLastEndValue()
 //获取表终值
 int FlowWeightDlg::getMeterEndValue()
 {
+	if (m_stopFlag)
+	{
+		return false;
+	}
+
 	if (m_autopick) //自动采集
 	{
 		m_startValueFlag = false;
