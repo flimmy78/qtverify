@@ -181,48 +181,6 @@ public:
 };
 typedef DftDbInfo_STR* DftDbInfo_PTR;
 
-/*
-** FUNCTION -- 检定结果记录表（质量法）
-*/
-class Record_Quality_STR{
-public:
-    int     id;                   
-	char	timestamp[TIMESTAMP_LEN];
-	char    meterNo[METERNO_LEN];
-	INT16   flowPointIdx;
-	float   flowPoint;         //流量(m3/h)
-	INT16   totalFlag;         //总量检定标志(1:总量检定  0:分量检定)
-	float	meterValue0;
-	float	meterValue1;
-	float	meterDeltaV;
-	float	balWeight0;
-	float   balWeight1;
-	float   balDeltaW;
-	float	inSlotTemper;	//恒温槽入口温度
-	float	outSlotTemper;	//恒温槽出口温度
-	float	pipeTemper;		//管路温度
-	float	density;		//密度(kg/L)
-	float	stdValue;		//经过修正的标准值
-	float	dispError;		//示值误差
-	float	stdError;		//要求误差(合格标准)
-	INT16   result;			//检定结果(1:合格  0:不合格)
-	INT16	meterPosNo;		//表位号
-	int	    model;			//表型号
-	int  	standard;		//表规格
-	int	    meterType;		//表类型
-	int	    manufactDept;	//制造单位
-	int	    verifyDept;		//送检单位
-	INT16	grade;	        //计量等级
-	int	    verifyPerson;	//检定员
-	int	    checkPerson;	//核验员
-	char	date[DATE_LEN];	//检定日期（'2014-07-25'）
-	float	envTemper;		//环境温度
-	float	envHumidity;	//环境湿度
-	float	airPress;		//大气压力
-	char	validDate[DATE_LEN];	//检定结果有效期('2015-07-25')
-	INT32	recordNumber;	//检定记录证书编号
-};
-typedef Record_Quality_STR* Record_Quality_PTR;
 
 /*
 ** 检定流量点信息; fp为flow point的头字母
