@@ -283,7 +283,7 @@ F_VerifyDept integer,               --送检单位，外键(T_Verify_Dept.F_ID)
 F_Grade smallint,                   --计量等级（1,2,3）
 F_VerifyPerson integer,             --检定员，外键(T_User_Def_Tab.F_ID)
 F_CheckPerson integer,              --核验员，外键(T_User_Def_Tab.F_ID)
-F_DeviceInfoID smallint,            --检定装置设备信息ID，外键(T_Verify_Device_Info.F_ID)
+F_DeviceInfoID integer,             --检定装置设备信息ID，外键(T_Verify_Device_Info.F_ID)
 F_VerifyDate date,             	    --检定日期('2014-05-22')
 F_ValidDate date,                   --检表结果有效期(生产型不需要)('2014-08-07')
 F_EnvTemper float,                  --环境温度，单位℃
