@@ -21,6 +21,7 @@
 
 #include "qtexdb.h"
 #include "commondefine.h"
+#include "algorithm.h"
 
 int testFunc(int a, int b)
 {
@@ -38,30 +39,32 @@ QSqlDatabase g_db;
 
 int startdb()
 {
-	QString dbname;
 	if (QSqlDatabase::contains("qt_sql_default_connection"))
 	{
 		g_db = QSqlDatabase::database("qt_sql_default_connection");
 	}
 	else
 	{
-		switch (DB_TYPE)
+		QString dbname;
+		DatabasePara_STR dbpara;
+		getDatabaseParaIni(&dbpara);
+		switch (dbpara.type)
 		{
 		case T_MYSQL:
 			g_db = QSqlDatabase::addDatabase("QMYSQL"); // 使用mysql数据库驱动 
-			g_db.setHostName("localhost");
-			g_db.setDatabaseName("dbs1"); // 我们之前建立的数据库
-			g_db.setUserName("xopens"); // 我们创建的 xopens 用户名
-			g_db.setPassword("ytdf000"); // xopens 用户的密码
+			g_db.setHostName(dbpara.hostname);   //数据库服务器主机名或IP地址
+			g_db.setDatabaseName(dbpara.dbname); // 我们之前建立的数据库
+			g_db.setUserName(dbpara.username);   // 我们创建的 xopens 用户名
+			g_db.setPassword(dbpara.password);   // xopens 用户的密码
 			break;
 		case T_SQLITE:
 			g_db = QSqlDatabase::addDatabase("QSQLITE");
-			dbname = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\\database\\dbs1.db";
+			dbname = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\\database\\" + QString::fromAscii(dbpara.dbname) + ".db";
 			g_db.setDatabaseName(dbname);
 			break;
 		default:
 			g_db = QSqlDatabase::addDatabase("QSQLITE");
-			dbname = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\\database\\dbs1.db";
+			dbname = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\\database\\" + QString::fromAscii(dbpara.dbname) + ".db";
 			g_db.setDatabaseName(dbname);
 			break;
 		}
@@ -474,4 +477,31 @@ QMap<QString, QString> getColInfo(QString tbl_name)
 		colInfo[col[0]] = col[1];//存储键-值
 	}
 	return colInfo;
+}
+
+//获取数据库配置信息
+int getDatabaseParaIni(DatabasePara_PTR info)
+{
+	QString filename;
+	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
+	if (runhome.isEmpty())
+	{
+		qWarning()<<"Get $(RUNHOME) Failed!";
+		return false;
+	}
+#ifdef __unix
+	filename = runhome + "\/ini\/databasepara.ini";
+#else
+	filename = runhome + "\\ini\\databasepara.ini";
+#endif
+
+	QSettings settings(filename, QSettings::IniFormat);
+
+	info->type = settings.value("type").toInt();
+	strcpy_s(info->hostname, settings.value("hostname").toString().toAscii());
+	strcpy_s(info->dbname, settings.value("dbname").toString().toAscii());
+	strcpy_s(info->username, settings.value("username").toString().toAscii());
+	strcpy_s(info->password, settings.value("password").toString().toAscii());
+
+	return true;
 }

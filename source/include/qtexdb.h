@@ -54,6 +54,7 @@ QTEXDB_EXPORT   QString getNumPrefixOfManufac(int idx); //获取某制造厂家的表号前
 QTEXDB_EXPORT	QString getTblDdl(QString tbl_name);
 QTEXDB_EXPORT	QString removeComment(QString s);
 QTEXDB_EXPORT	QMap<QString, QString> getColInfo(QString ddl);
+QTEXDB_EXPORT   int getDatabaseParaIni(DatabasePara_PTR info); //获取数据库配置信息
 
 
 

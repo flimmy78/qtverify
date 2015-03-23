@@ -326,4 +326,17 @@ class V_Flow_Verify_Record_STR : public Flow_Verify_Record_STR
 };
 typedef V_Flow_Verify_Record_STR* V_Flow_Verify_Record_PTR;
 
+/*
+** FUNCTION -- 获取数据库配置信息(databasepara.ini文件)
+*/
+class DatabasePara_STR{
+public:
+    int     type;               //数据库类型
+    char    hostname[24];    	  //主机名/ip地址
+	char    dbname[24];           //数据库名,如dbs1
+	char    username[24];         //用户名
+	char    password[24];         //密码
+};
+typedef DatabasePara_STR* DatabasePara_PTR;
+
 #endif	//BASEDEF_H
