@@ -37,7 +37,7 @@ public:
 	~CReport();
 public:
 	void writeRpt();//写报表
-
+	void saveTo(QString);//保存报表到指定文件夹
 private:
 	QSettings* m_rpt_config;//报表配置
 	QString m_template_file;//模板文件路径
@@ -54,9 +54,13 @@ private:
 	QSqlQuery*	m_query;//查询
 	Book* m_book;//报表
 	Sheet* m_sheet;//表单
-	
+	Format* m_format;//单元格格式
+	Font* m_font;//单元格字体
+private:
 	void writeHead();//写表头
 	void writeBody();//写表体
+	void mergeCells(int start_row, int end_row, int start_col, int end_col);//从start_row到end_row， 将值相等的单元格合并
+	void writeBool(int start_with_row, int end_with_row, int start_with_col, int end_with_col);//从start_with_row到end_with_row， 将bool值的单元格合并
 	void readTblName();//读表或视图名
 	void readConfigTHead();//取出配置文件的配置头
 	void readConfigTBody();//取出配置文件的配置体
