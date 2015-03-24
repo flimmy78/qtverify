@@ -25,7 +25,8 @@
 
 #include "flowresult.h"
 #include "qexcel.h"
-
+#include "qtexdb.h"
+#include "report.h"
 
 FlowResultDlg::FlowResultDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
@@ -98,28 +99,27 @@ void FlowResultDlg::on_btnQuery_clicked()
 {
 	model->setEditStrategy(QSqlTableModel::OnFieldChange); //属性变化时写入数据库
 	model->setTable("T_Flow_Verify_Record");
-	
-	QString conStr;
-	conStr = QString("F_TimeStamp>=\'%1\' and F_TimeStamp<=\'%2\'").arg(ui.startDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"))\
+	m_conStr.clear();
+	m_conStr = QString("F_TimeStamp>=\'%1\' and F_TimeStamp<=\'%2\'").arg(ui.startDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"))\
 		.arg(ui.endDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz")); //起止时间
 	if (ui.cmbManufactDept->currentIndex() != (ui.cmbManufactDept->count()-1))//制造单位
 	{
-		conStr.append(QString(" and F_ManufactDept=%1").arg(ui.cmbManufactDept->currentIndex()));
+		m_conStr.append(QString(" and F_ManufactDept=%1").arg(ui.cmbManufactDept->currentIndex()));
 	}
 	if (ui.cmbVerifyDept->currentIndex() != (ui.cmbVerifyDept->count()-1))//送检单位
 	{
-		conStr.append(QString(" and F_VerifyDept=%1").arg(ui.cmbVerifyDept->currentIndex()));
+		m_conStr.append(QString(" and F_VerifyDept=%1").arg(ui.cmbVerifyDept->currentIndex()));
 	}
 	if (ui.cmbVerifyPerson->currentIndex() != (ui.cmbVerifyPerson->count()-1))//检定员
 	{
-		conStr.append(QString(" and F_VerifyPerson=%1").arg(ui.cmbVerifyPerson->currentIndex()));
+		m_conStr.append(QString(" and F_VerifyPerson=%1").arg(ui.cmbVerifyPerson->currentIndex()));
 	}
 	if (!ui.lnEditMeterNO->text().isEmpty())//表号
 	{
-		conStr.append(QString(" and F_MeterNo like \"\%%1\%\"").arg(ui.lnEditMeterNO->text()));
+		m_conStr.append(QString(" and F_MeterNo like \"\%%1\%\"").arg(ui.lnEditMeterNO->text()));
 	}
 
-	model->setFilter(conStr); //设置查询条件
+	model->setFilter(m_conStr); //设置查询条件
 	
 	//设置外键
 	model->setRelation(17, QSqlRelation("T_Yes_No_Tab","F_ID","F_Desc"));
@@ -272,8 +272,16 @@ void FlowResultDlg::on_btnExport_clicked()
 		}
 		xlsFile.setAutoFitColumnAll();
 		xlsFile.save();
-
-		QMessageBox::information(this, tr("OK"), tr("export excel file successful!"));
+		if (m_conStr.length())
+		{
+			startdb();
+			CReport* rpt = new CReport(m_conStr);
+			rpt->writeRpt();
+			closedb();
+			QMessageBox::information(this, tr("OK"), tr("export excel file successful!"));
+		}
+		else
+			QMessageBox::information(this, tr("Critical"), tr("export excel file failed!"));
 	}
 }
 

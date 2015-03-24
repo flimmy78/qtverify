@@ -29,6 +29,7 @@ public slots:
 private:
 	Ui::FlowResultClass ui;
 	QSqlRelationalTableModel *model;
+	QString m_conStr;//²éÑ¯Ìõ¼þ
 private slots:
 	void on_btnQuery_clicked();
 	void on_btnInsert_clicked();
