@@ -301,6 +301,7 @@ typedef Flow_Verify_Record_STR* Flow_Verify_Record_PTR;
 /*************************************************************************/
 class V_Flow_Verify_Record_STR : public Flow_Verify_Record_STR
 {
+public:
 	char m_model_en[EN_NAME_LEN];				//表型号英文
 	char m_Model_zh[ZH_NAME_LEN];				//表型号中文                   
 	char m_standard[ASCNAME_LEN];				//表规格DN15,DN20等                  
