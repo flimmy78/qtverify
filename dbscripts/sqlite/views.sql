@@ -23,7 +23,7 @@ select
   rec.F_StandValue,                 
   rec.F_DispError,                  
   rec.F_StdError,
-  (case when (F_DispError<F_StdError) then '合格'
+  (case when (F_DispError<F_StdError and F_DispError>-F_StdError) then '合格'
         else '不合格'
    end) valid,                   
   rec.F_Result,                   
