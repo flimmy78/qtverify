@@ -33,7 +33,7 @@ using namespace libxl;
 class REPORT_EXPORT CReport
 {
 public:
-	CReport(const QString& condition);
+	CReport(const QString& condition);// condition, 以" where "开头的合法的sql查询条件
 	~CReport();
 public:
 	void writeRpt();//写报表

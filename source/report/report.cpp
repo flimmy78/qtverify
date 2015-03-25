@@ -32,6 +32,8 @@ CReport::CReport(const QString& condition)
 
 CReport::~CReport()
 {
+	qDebug()<<"destructing report";
+
 	if (m_rpt_config)
 	{
 		delete m_rpt_config;
@@ -44,25 +46,10 @@ CReport::~CReport()
 	}
 	if (m_book)
 	{
-		delete m_book;
+		m_book->release();//release all resources including sheet, format and font
 		m_book = NULL;
 	}
-	if (m_sheet)
-	{
-		delete m_sheet;
-		m_sheet = NULL;
-	}
-	if (m_format)
-	{
-		delete m_format;
-		m_format = NULL;
-	}
-	if (m_font)
-	{
-		delete m_font;
-		m_font = NULL;
-	}
-	qDebug()<<"destructing report";
+	
 }
 
 void CReport::writeRpt()
@@ -172,15 +159,6 @@ void CReport::writeBody()
 		{
 			if (need_merge[i].toLower() == "valid")
 			{
-				/************************************************************************/
-				/* scan while(not end of ref range_rows)
-				/*	if current cell is invalid
-				/*		found_invalid = true
-				/* end scan
-				/* value = found_invalid ? "合格":"不合格"
-				/* writeStr(start_row, start_col, value);
-				/* setMerge(range_rows, range_cols);
-				/************************************************************************/
 				int range_idx;
 
 				QString ref_col_name = cur_merge_info[1];
@@ -228,16 +206,32 @@ void CReport::writeBool(int start_with_row, int end_with_row, int start_with_col
 {
 	QString value;
 	bool found_invalid;
+	//Font* invalid_font = m_book->addFont();
 	for (int rowidx=start_with_row; rowidx<=end_with_row;rowidx++)
 	{
 		value = m_sheet->readStr(rowidx, start_with_col);
 		if (value == "不合格")
 		{
+			//invalid_font->setColor(COLOR_RED);
 			break;
 		}
 	}
+	//Format* invalid_format = m_book->addFormat();
+	//invalid_font->setSize(10);
+	//invalid_font->setName("宋体");
+	//invalid_format->setFont(invalid_font);
 	m_sheet->writeStr(start_with_row, start_with_col, value.toStdString().data());
 	m_sheet->setMerge(start_with_row, end_with_row, start_with_col, end_with_col);
+	//if (invalid_format)
+	//{
+	//	delete invalid_format;
+	//	invalid_format = NULL;
+	//}
+	//if (invalid_font)
+	//{
+	//	delete invalid_font;
+	//	invalid_font = NULL;
+	//}
 }
 
 void CReport::readConfigTHead()
@@ -283,7 +277,7 @@ void CReport::deleteLog()
 {
 	//保存临时报表
 	m_book->save(m_temp_file.toStdString().data());
-	m_book->release();
+	//m_book->release();
 	//删除版权信息
 	QExcel j(m_temp_file);
 	j.selectSheet("Sheet1");
