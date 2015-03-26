@@ -49,7 +49,18 @@ CReport::~CReport()
 		m_book->release();//release all resources including sheet, format and font
 		m_book = NULL;
 	}
-	
+	if (m_sheet)
+	{
+		m_sheet = NULL;
+	}
+	if (m_format)
+	{
+		m_format = NULL;
+	}
+	if (m_font)
+	{
+		m_font = NULL;
+	}
 }
 
 void CReport::writeRpt()
@@ -205,33 +216,28 @@ void CReport::mergeCells(int start_with_row, int end_with_row, int start_with_co
 void CReport::writeBool(int start_with_row, int end_with_row, int start_with_col, int end_with_col)
 {
 	QString value;
-	bool found_invalid;
-	//Font* invalid_font = m_book->addFont();
+	Font* invalid_font = m_book->addFont();
 	for (int rowidx=start_with_row; rowidx<=end_with_row;rowidx++)
 	{
 		value = m_sheet->readStr(rowidx, start_with_col);
+		invalid_font->setColor(COLOR_GREEN);
 		if (value == "不合格")
 		{
-			//invalid_font->setColor(COLOR_RED);
+			invalid_font->setColor(COLOR_RED);
 			break;
 		}
 	}
-	//Format* invalid_format = m_book->addFormat();
-	//invalid_font->setSize(10);
-	//invalid_font->setName("宋体");
-	//invalid_format->setFont(invalid_font);
-	m_sheet->writeStr(start_with_row, start_with_col, value.toStdString().data());
+
+	Format* bool_format = m_book->addFormat();
+	bool_format->setAlignH(ALIGNH_CENTER);
+	bool_format->setAlignV(ALIGNV_CENTER);
+	bool_format->setBorder(BORDERSTYLE_THIN);
+	invalid_font->setSize(10);
+	invalid_font->setName("宋体");
+
+	bool_format->setFont(invalid_font);
+	m_sheet->writeStr(start_with_row, start_with_col, value.toStdString().data(), bool_format);
 	m_sheet->setMerge(start_with_row, end_with_row, start_with_col, end_with_col);
-	//if (invalid_format)
-	//{
-	//	delete invalid_format;
-	//	invalid_format = NULL;
-	//}
-	//if (invalid_font)
-	//{
-	//	delete invalid_font;
-	//	invalid_font = NULL;
-	//}
 }
 
 void CReport::readConfigTHead()
@@ -289,11 +295,12 @@ void CReport::deleteLog()
 	j.save();
 	j.close();
 	//保存临时报表到指定文件夹
-	QFile::copy(m_temp_file, m_rpt_file);
-	QFile::remove(m_temp_file);
+	//QFile::copy(m_temp_file, m_rpt_file);
 }
 
 void CReport::saveTo(QString file_path)
 {
-	QFile::copy(m_rpt_file, file_path);
+	QFile::copy(m_temp_file, file_path);
+	QFile::remove(m_temp_file);
+
 }

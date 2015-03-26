@@ -1,7 +1,7 @@
 #ifndef REPORT_H
 #define REPORT_H
 
-#ifdef QEXCEL_DLL
+#ifdef REPORT_DLL
 #  ifdef WIN32
 #  define REPORT_EXPORT __declspec(dllexport)
 #  else
