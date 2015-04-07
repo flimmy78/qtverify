@@ -107,9 +107,9 @@ select
 distinct (
            select 
                   count(distinct f_meterno) + 1
-           from v_flow_verify_record v1 
+           from t_flow_verify_record v1 
            where v1.[f_meterno] < v2.[F_MeterNo] 
          ) rowid, 
            v2.f_meterno  
 from 
-v_flow_verify_record v2
+t_flow_verify_record v2
