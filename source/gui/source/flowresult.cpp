@@ -99,26 +99,7 @@ void FlowResultDlg::on_btnQuery_clicked()
 {
 	model->setEditStrategy(QSqlTableModel::OnFieldChange); //属性变化时写入数据库
 	model->setTable("T_Flow_Verify_Record");
-	m_conStr.clear();
-	m_conStr = QString("F_TimeStamp>=\'%1\' and F_TimeStamp<=\'%2\'").arg(ui.startDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"))\
-		.arg(ui.endDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz")); //起止时间
-	if (ui.cmbManufactDept->currentIndex() != (ui.cmbManufactDept->count()-1))//制造单位
-	{
-		m_conStr.append(QString(" and F_ManufactDept=%1").arg(ui.cmbManufactDept->currentIndex()));
-	}
-	if (ui.cmbVerifyDept->currentIndex() != (ui.cmbVerifyDept->count()-1))//送检单位
-	{
-		m_conStr.append(QString(" and F_VerifyDept=%1").arg(ui.cmbVerifyDept->currentIndex()));
-	}
-	if (ui.cmbVerifyPerson->currentIndex() != (ui.cmbVerifyPerson->count()-1))//检定员
-	{
-		m_conStr.append(QString(" and F_VerifyPerson=%1").arg(ui.cmbVerifyPerson->currentIndex()));
-	}
-	if (!ui.lnEditMeterNO->text().isEmpty())//表号
-	{
-		m_conStr.append(QString(" and F_MeterNo like \"\%%1\%\"").arg(ui.lnEditMeterNO->text()));
-	}
-
+	getConditon();
 	model->setFilter(m_conStr); //设置查询条件
 	
 	//设置外键
@@ -185,6 +166,36 @@ void FlowResultDlg::on_btnQuery_clicked()
 */
 }
 
+void FlowResultDlg::getConditon()
+{
+	m_conStr.clear();
+	m_conStr = QString("F_TimeStamp>=\'%1\' and F_TimeStamp<=\'%2\'").arg(ui.startDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"))\
+		.arg(ui.endDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz")); //起止时间
+	int idx, count;
+	idx = ui.cmbManufactDept->currentIndex();
+	count = ui.cmbManufactDept->count();
+	if (idx != (count-1) && idx != 0xffffffff)//制造单位
+	{
+		m_conStr.append(QString(" and F_ManufactDept=%1").arg(ui.cmbManufactDept->currentIndex()));
+	}
+	idx = ui.cmbVerifyDept->currentIndex();
+	count = ui.cmbVerifyDept->count();
+	if (idx != (count-1) && idx != 0xffffffff)//送检单位
+	{
+		m_conStr.append(QString(" and F_VerifyDept=%1").arg(ui.cmbVerifyDept->currentIndex()));
+	}
+	idx = ui.cmbVerifyPerson->currentIndex();
+	count = ui.cmbVerifyPerson->count();
+	if (idx != (count-1) && idx != 0xffffffff)//检定员
+	{
+		m_conStr.append(QString(" and F_VerifyPerson=%1").arg(ui.cmbVerifyPerson->currentIndex()));
+	}
+	if (!ui.lnEditMeterNO->text().isEmpty())//表号
+	{
+		m_conStr.append(QString(" and F_MeterNo like \"\%%1\%\"").arg(ui.lnEditMeterNO->text()));
+	}
+}
+
 void FlowResultDlg::on_btnInsert_clicked()
 {
 	QDateTime statTime = QDateTime::currentDateTime();
@@ -231,57 +242,54 @@ void FlowResultDlg::on_btnExport_clicked()
 		return;
 	}
 
-	QString defaultPath = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "//dat";
-	QString file = QFileDialog::getSaveFileName(this, tr("Save File"), defaultPath, tr("Microsoft Excel (*.xlsx;*.xls)"));//获取保存路径
+	QString defaultPath = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "//report//" + QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss");
+	QString file = QFileDialog::getSaveFileName(this, tr("Save File"), defaultPath, tr("Microsoft Excel (*.xls)"));//获取保存路径
 	if (!file.isEmpty())
 	{
-		QAxObject *excel = new QAxObject(this);
-		excel->setControl("Excel.Application");//连接Excel控件
-		excel->dynamicCall("SetVisible (bool Visible)","false");//不显示窗体
-		excel->setProperty("DisplayAlerts", false);//不显示任何警告信息。如果为true那么在关闭时会出现类似“文件已修改，是否保存”的提示
-
-		QAxObject *workbooks = excel->querySubObject("WorkBooks");//获取工作簿集合
-		workbooks->dynamicCall("Add");//新建一个工作簿
-		QAxObject *workbook = excel->querySubObject("ActiveWorkBook");//获取当前工作簿
-		//保存至filepath，注意一定要用QDir::toNativeSeparators将路径中的"/"转换为"\"，不然一定保存不了。
-		workbook->dynamicCall("SaveAs(const QString&)",QDir::toNativeSeparators(file));
-		workbook->dynamicCall("Close()");//关闭工作簿
-		excel->dynamicCall("Quit()");//关闭excel
-		delete excel;
-		excel=NULL;
-
-		QString preStr = "";
-		QExcel xlsFile(file);	
-		xlsFile.selectSheet(1);//激活一张工作表
-		for (int j=0; j<model->columnCount(); j++)
-		{
-			if (j==1 || j==2) //时间戳和表号列
-			{
-				preStr = "'";
-			}
-			else
-			{
-				preStr = "";
-			}
-			xlsFile.setCellString(1, j+1, model->headerData(j, Qt::Horizontal).toString()); //标题行
-			for(int i=0;i<model->rowCount();i++)
-			{
-				xlsFile.setCellString(i+2, j+1, preStr+model->data(model->index(i,j)).toString());
-			}
-// 			xlsFile.setAutoFitColumn(j+1);
-		}
-		xlsFile.setAutoFitColumnAll();
-		xlsFile.save();
-		if (m_conStr.length())
-		{
-			startdb();
-			CReport* rpt = new CReport(m_conStr);
-			rpt->writeRpt();
-			closedb();
-			QMessageBox::information(this, tr("OK"), tr("export excel file successful!"));
-		}
-		else
-			QMessageBox::information(this, tr("Critical"), tr("export excel file failed!"));
+//		QAxObject *excel = new QAxObject(this);
+//		excel->setControl("Excel.Application");//连接Excel控件
+//		excel->dynamicCall("SetVisible (bool Visible)","false");//不显示窗体
+//		excel->setProperty("DisplayAlerts", false);//不显示任何警告信息。如果为true那么在关闭时会出现类似“文件已修改，是否保存”的提示
+//
+//		QAxObject *workbooks = excel->querySubObject("WorkBooks");//获取工作簿集合
+//		workbooks->dynamicCall("Add");//新建一个工作簿
+//		QAxObject *workbook = excel->querySubObject("ActiveWorkBook");//获取当前工作簿
+//		//保存至filepath，注意一定要用QDir::toNativeSeparators将路径中的"/"转换为"\"，不然一定保存不了。
+//		workbook->dynamicCall("SaveAs(const QString&)",QDir::toNativeSeparators(file));
+//		workbook->dynamicCall("Close()");//关闭工作簿
+//		excel->dynamicCall("Quit()");//关闭excel
+//		delete excel;
+//		excel=NULL;
+//
+//		QString preStr = "";
+//		QExcel xlsFile(file);	
+//		xlsFile.selectSheet(1);//激活一张工作表
+//		for (int j=0; j<model->columnCount(); j++)
+//		{
+//			if (j==1 || j==2) //时间戳和表号列
+//			{
+//				preStr = "'";
+//			}
+//			else
+//			{
+//				preStr = "";
+//			}
+//			xlsFile.setCellString(1, j+1, model->headerData(j, Qt::Horizontal).toString()); //标题行
+//			for(int i=0;i<model->rowCount();i++)
+//			{
+//				xlsFile.setCellString(i+2, j+1, preStr+model->data(model->index(i,j)).toString());
+//			}
+//// 			xlsFile.setAutoFitColumn(j+1);
+//		}
+//		xlsFile.setAutoFitColumnAll();
+//		xlsFile.save();
+		getConditon();
+		startdb();
+		CReport rpt(" where " + m_conStr);
+		rpt.writeRpt();
+		rpt.saveTo(file);
+		closedb();
+		QMessageBox::information(this, tr("OK"), tr("export excel file successful!"));
 	}
 }
 
