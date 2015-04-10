@@ -30,7 +30,7 @@ StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 
 	ui.tableWidget->setRowCount(18);
 	ui.tableWidget->verticalHeader()->setVisible(false);
-	for (int i=0; i<ui.tableWidget->rowCount(); i++)
+	for (int i=0; i<ui.tableWidget->rowCount(); i+=3)
 	{
 		ui.tableWidget->setSpan(i,0,3,1);
 		ui.tableWidget->setSpan(i,8,3,1);
