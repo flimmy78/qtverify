@@ -1,10 +1,8 @@
-
-TEMPLATE	= lib
-TARGET    = tvercomp
+DEFINES	+= TVERCOMP_DLL
+TEMPLATE = lib
+TARGET   = tvercomp
 CONFIG += qt dll debug thread qtestlib
 QT += sql
-
-DEFINES	+= TVERCOMP_DLL QT_THREAD_SUPPORT
 
 QMAKE_LIBDIR +=  ./           \
         	     $(RUNHOME)/lib \
