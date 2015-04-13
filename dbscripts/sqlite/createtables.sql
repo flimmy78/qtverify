@@ -304,3 +304,45 @@ constraint F_CheckPerson_fk foreign key(F_CheckPerson) references T_User_Def_Tab
 constraint F_DeviceInfoID_fk foreign key(F_DeviceInfoID) references T_Verify_Device_Info(F_ID)
 );
 create unique index uk_T_Total_Verify_Record on T_Total_Verify_Record (F_MeterNo, F_TimeStamp, F_FlowPointIdx);
+
+
+---------------------------------
+--铂电阻检定结果记录表
+---------------------------------
+drop table if exists "T_Platinium_Verify_Record"
+;
+create table T_Platinium_Verify_Record
+(
+	F_ID	integer not null primary key autoincrement,
+	F_TimeStamp timestamp not null,     --时间戳（'yyyy-MM-dd HH:mm:ss.zzz')
+	F_CompOrParam						--比较法或参数法, 0-比较法, 1-参数法
+	F_PlaManufactDept integer,          --被检铂电阻制造单位，外键(T_Manufacture_Dept.F_ID)
+	F_Standard integer,                 --表规格(DN15/DN20/DN25)，外键(T_Meter_Standard.F_ID)
+	F_Model integer,                    --表型号，外键(T_Meter_Model.F_ID)
+	F_ManufactDept integer,             --热量表制造单位，外键(T_Manufacture_Dept.F_ID)
+	F_VerifyDept integer,               --送检单位，外键(T_Verify_Dept.F_ID)
+	F_VerifyPerson integer,             --检定员，外键(T_User_Def_Tab.F_ID)
+	F_CheckPerson integer,              --核验员，外键(T_User_Def_Tab.F_ID)
+	F_MinTmpDiff float,					--最小温差, 参数
+	F_TmpDiff float,					--检测温差
+	F_StdInRresis float,				--标准温度计进口电阻值
+	F_StdOutRresis float,				--标准温度计出口电阻值
+	F_StdInTmp float,					--标准温度计进口电温度
+	F_StdOutTmp float,					--标准温度计出口电温度
+	F_PlaSerial integer,				--被检铂电阻序列号
+	F_PlaInRresis float,				--被检铂电阻进口电阻值
+	F_PlaOutRresis float,				--被检铂电阻出口电阻值
+	F_PlaParamR0 float,					--被检铂电阻0℃电阻值
+	F_PlaCoeA float,					--被检铂电阻系数A
+	F_PlaCoeB float,					--被检铂电阻系数B
+	F_PlaCoeC float,					--被检铂电阻系数C
+	F_InErr	float,						--被检铂电阻进口误差限(℃ %)
+	F_OutErr	float,					--被检铂电阻进口误差限(℃ %)
+	F_MaxErrPoint float,				--最大误差点
+	constraint F_Model_fk foreign key(F_Model) references T_Meter_Model(F_ID),
+	constraint F_Standard_fk foreign key(F_Standard) references T_Meter_Standard(F_ID),
+	constraint F_ManufactDept_fk foreign key(F_ManufactDept) references T_Manufacture_Dept(F_ID),
+	constraint F_VerifyDept_fk foreign key(F_VerifyDept) references T_Verify_Dept(F_ID),
+	constraint F_VerifyPerson_fk foreign key(F_VerifyPerson) references T_User_Def_Tab(F_ID),
+	constraint F_CheckPerson_fk foreign key(F_CheckPerson) references T_User_Def_Tab(F_ID)
+);
