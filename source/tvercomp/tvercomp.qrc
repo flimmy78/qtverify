@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="flowweight">
+    <file>img/excel.png</file>
+    <file>img/exit.png</file>
+    <file>img/param.png</file>
+	<file>img/save.png</file>
+  </qresource>
+</RCC>
