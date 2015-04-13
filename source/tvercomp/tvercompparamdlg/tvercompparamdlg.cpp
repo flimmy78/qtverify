@@ -1,14 +1,25 @@
 #include <QSqlTableModel>
 #include <QDebug>
 #include <QSqlRelationalTableModel>
+#include <QProcessEnvironment>
 #include "tvercompparamdlg.h"
 
 tvercompparamDlg::tvercompparamDlg(QWidget *parent /* = 0 */, Qt::WFlags flags /* = 0 */)
 	: QWidget(parent, flags)
 {
+	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
+	QString config_file;
+#ifdef Q_OS_LINUX
+	config_file = runhome + "\/ini\/tvercompconfig.ini";
+#elif defined (Q_OS_WIN)
+	config_file = runhome + "\\ini\\tvercompconfig.ini";
+#endif
+	m_config = new QSettings(config_file, QSettings::IniFormat);
+
 	ui.setupUi(this);
 
 	initCmbBox();
+	readConfig();//读取上次设置参数
 }
 
 tvercompparamDlg::~tvercompparamDlg()
@@ -16,6 +27,10 @@ tvercompparamDlg::~tvercompparamDlg()
 
 }
 
+void tvercompparamDlg::on_btn_save_clicked()
+{
+	saveConfig();
+}
 
 void tvercompparamDlg::on_btn_exit_clicked()
 {
@@ -85,7 +100,11 @@ void tvercompparamDlg::initCmbBox()
 
 void tvercompparamDlg::closeEvent(QCloseEvent * event)
 {
-
+	if (m_config)
+	{
+		delete m_config;
+		m_config = NULL;
+	}
 }
 
 void tvercompparamDlg::readConfig()
@@ -93,12 +112,30 @@ void tvercompparamDlg::readConfig()
 	if (cBoxData_inited)
 	{
 		//read last configuration
+		ui.cBox_stand->setCurrentIndex(m_config->value("chkinfo/stand").toInt());
+		ui.cBox_model->setCurrentIndex(m_config->value("chkinfo/model").toInt());
+		ui.cBox_manu->setCurrentIndex(m_config->value("chkinfo/manufac").toInt());
+		ui.cBox_inst->setCurrentIndex(m_config->value("chkinfo/inst").toInt());
+		ui.cBox_chk->setCurrentIndex(m_config->value("chkinfo/chker").toInt());
+		ui.cBox_verify->setCurrentIndex(m_config->value("chkinfo/verifyer").toInt());
 
+		ui.lineEdit_tempe->setText(m_config->value("theoinfo/mintmphead").toString());
 	}
 }
 
 void tvercompparamDlg::saveConfig()
 {
-	//save configuration to config file
+	//save configuration to config file'
+	m_config->beginGroup("chkinfo");
+	m_config->setValue("stand", ui.cBox_stand->currentIndex());
+	m_config->setValue("model", ui.cBox_model->currentIndex());
+	m_config->setValue("manufac", ui.cBox_manu->currentIndex());
+	m_config->setValue("inst", ui.cBox_inst->currentIndex());
+	m_config->setValue("chker", ui.cBox_chk->currentIndex());
+	m_config->setValue("verifyer", ui.cBox_verify->currentIndex());
+	m_config->endGroup();
 
+	m_config->beginGroup("theoinfo");
+	m_config->setValue("mintmphead", ui.lineEdit_tempe->text());
+	m_config->endGroup();
 }

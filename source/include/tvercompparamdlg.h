@@ -32,6 +32,7 @@ public:
 	public slots:
 		void closeEvent(QCloseEvent * event);
 
+		void on_btn_save_clicked();
 		void on_btn_exit_clicked();
 private:
 	Ui::PlaCompParamDlgClass ui;
