@@ -14,7 +14,7 @@
 
 #include <QtCore/QDebug>
 #include <QtCore/QSettings>
- #include <QProcessEnvironment>
+#include <QProcessEnvironment>
 
 #include "algorithm.h"
 #include "commondefine.h"
@@ -111,6 +111,55 @@ int getMasterSlaveIni(MasterSlave_Ini_PTR info)
 	return true;
 }
 
+QString getIniFileName(QString ini)
+{
+	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
+	if (runhome.isEmpty())
+	{
+		qWarning()<<"Get $(RUNHOME) Failed! Please set up this system variable.";
+		return "";
+	}
+	QString filename;
+#ifdef __unix
+	filename = runhome + "\/ini\/" + ini;
+#else
+	filename = runhome + "\\ini\\" + ini;
+#endif
+	return filename;
+}
+
+float detA(float a00, float a01, float a10, float a11)
+{
+	return a00*a11 - a01*a10;
+}
+
+/************************************************************************/
+/* 一般只需三组温度-阻值即可计算出此铂电阻的温度系数和0℃温度                 */
+/************************************************************************/
+plaParam_PTR getPlaParam(pla_T_R_PTR pla_p, int num)
+{
+	plaParam_PTR p_param;
+	p_param = new plaParam_STR;
+	float coe[2][3];//方程系数, coe[i,j]前两列对应于线性方程组的第i个方程第j个未知数的系数, 第三列是常数项
+	coe[0][0] = detA(pla_p[0].resis, pla_p[0].tmp, pla_p[1].resis, pla_p[1].tmp);
+	coe[0][1] = detA(pla_p[0].resis, pla_p[0].tmp*pla_p[0].tmp, pla_p[1].resis, pla_p[1].tmp*pla_p[1].tmp);
+	coe[0][2] = pla_p[1].resis - pla_p[0].resis;
+	coe[1][0] = detA(pla_p[0].resis, pla_p[0].tmp, pla_p[2].resis, pla_p[2].tmp);
+	coe[1][1] = detA(pla_p[0].resis, pla_p[0].tmp*pla_p[0].tmp, pla_p[2].resis, pla_p[2].tmp*pla_p[2].tmp);
+	coe[1][2] = pla_p[2].resis - pla_p[0].resis;
+
+	float M;//克莱姆法则系数方阵的行列式的值
+	float A;//第一未知数a的值
+	float B;//第二未知数b的值
+	M = detA(coe[0][0], coe[0][1], coe[1][0], coe[1][1]);
+	A = detA(coe[0][2], coe[0][1], coe[1][2], coe[1][1]);
+	B = detA(coe[0][0], coe[0][2], coe[1][0], coe[1][2]);
+	p_param->a = A/M;
+	p_param->b = B/M;
+	p_param->r0 = pla_p[0].resis/(1 + p_param->a*pla_p[0].tmp + p_param->b*pla_p[0].tmp*pla_p[0].tmp);
+	p_param->c;//参数c一般不做计算，只有0℃以下才用到
+	return p_param;
+}
 
 /**********************************************************
 类名：CAlgorithm

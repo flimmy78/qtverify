@@ -1,4 +1,4 @@
-
+DEFINES	+= SYSTEMSETDLG_DLL
 TEMPLATE	= lib
 QT         += xml sql
 TARGET    = systemsetdlg
@@ -31,7 +31,9 @@ HEADERS	+= $$(RUNHOME_INC)/include/qextserial/qextserialport_global.h  \
 		   		 $$(RUNHOME_INC)/include/readcomconfig.h \
            $$(RUNHOME_INC)/include/stdmtrparaset.h \
            $$(RUNHOME_INC)/include/stdmtrcoecorrect.h \
-           $$(RUNHOME_INC)/include/parasetdlg.h
+           $$(RUNHOME_INC)/include/parasetdlg.h \
+		   $$(RUNHOME_INC)/include/stdplasensor.h \
+		   $$(RUNHOME_INC)/include/chkplasensor.h 
 
 	
 SOURCES	+= $$(RUNHOME_INC)/include/qextserial/qextserialport.cpp \
@@ -40,8 +42,10 @@ SOURCES	+= $$(RUNHOME_INC)/include/qextserial/qextserialport.cpp \
 			     source/readcomconfig.cpp \
       		 source/stdmtrparaset.cpp \
       		 source/stdmtrcoecorrect.cpp \
-      		 source/parasetdlg.cpp
-
+      		 source/parasetdlg.cpp \
+			 source/stdplasensor.cpp \
+			 source/chkplasensor.cpp 
+			 
 
 win32 {
      SOURCES += $$(RUNHOME_INC)/include/qextserial/qextserialport_win.cpp
@@ -55,7 +59,9 @@ FORMS	+= ui/setcomfrm.ui  \
 		     ui/setportfrm.ui \
          ui/stdmtrparaset.ui \
          ui/stdmtrcoecorrect.ui \
-         ui/parasetdlg.ui 
+         ui/parasetdlg.ui \
+		 ui/stdplasensor.ui \
+		 ui/chkplasensor.ui
 
 
 win32{
