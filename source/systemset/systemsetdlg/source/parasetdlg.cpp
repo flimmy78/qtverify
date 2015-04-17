@@ -151,43 +151,66 @@ void ParaSetDlg::initUiData()
 	}	
 
 	//制造单位
-	getManufacture(m_manuFacNum, m_manuFacPtr);
-	for (int m=0; m<m_manuFacNum; m++)
-	{
-		qDebug()<<"id:"<<m_manuFacPtr[m].id<<",desc:"<<QString::fromLocal8Bit(m_manuFacPtr[m].desc);
-		ui.cmbManufacture->insertItem(m, QString::fromLocal8Bit(m_manuFacPtr[m].desc)); //汉字编码
-	}
+	mapManuDeptModel();
 
 	//送检单位
-	int col_id = 0;
+	mapVfDeptModel();
+
+	//检测员
+	mapUserModel();
+
+	//型号
+	mapMeterModelModel();
+
+	cBoxData_inited = true;//下拉条已初始化完毕
+}
+
+//映射制造单位
+void ParaSetDlg::mapManuDeptModel()
+{
+	m_manuDeptModel = new QSqlTableModel(this);  
+	m_manuDeptModel->setTable("T_Manufacture_Dept");  
+	m_manuDeptModel->select();
+	ui.cmbManufacture->setModel(m_manuDeptModel);  
+	ui.cmbManufacture->setModelColumn(m_manuDeptModel->fieldIndex("F_Desc")); // 使用字段名得到正确的标题索引,以使组合框显示部门名  
+	m_manuDeptModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
+}
+
+//映射送检单位
+void ParaSetDlg::mapVfDeptModel()
+{
 	QSqlRelationalTableModel *model = new QSqlRelationalTableModel(this);  
 	model->setTable("T_Verify_Dept");  
+	int col_id = model->fieldIndex("F_ID");
 	model->setRelation(col_id, QSqlRelation("T_Verify_Dept","F_ID","F_Desc"));  
 	//QComboBox与QListWidget很相拟,因为它有一个内部模型去保存它的数据条目,所以我们用自己建的模型代替那个自带的模型。
 	//给出QSqlRelationalTableModel使用的关系模型，这个模型有两列,必须指出组合框应该显示哪一列   
-	QSqlTableModel *relationModel = model->relationModel(col_id); // 部门ID   
-	ui.cmbVerifyCompany->setModel(relationModel);  
-	ui.cmbVerifyCompany->setModelColumn(relationModel->fieldIndex("F_Desc")); // 使用字段名得到正确的标题索引,以使组合框显示部门名  
+	m_vfDeptModel = model->relationModel(col_id); // 部门ID   
+	ui.cmbVerifyCompany->setModel(m_vfDeptModel);  
+	ui.cmbVerifyCompany->setModelColumn(m_vfDeptModel->fieldIndex("F_Desc")); // 使用字段名得到正确的标题索引,以使组合框显示部门名  
+	m_vfDeptModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
+}
 
-	//检测员
-	int col_id1 = 0;
-	QSqlRelationalTableModel *model1 = new QSqlRelationalTableModel(this);  
-	model1->setTable("T_User_Def_Tab");  
-	model1->setRelation(col_id1, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));  
-	QSqlTableModel *relationModel1 = model1->relationModel(col_id1);   
-	ui.cmbVerifyPerson->setModel(relationModel1);  
-	ui.cmbVerifyPerson->setModelColumn(relationModel1->fieldIndex("F_Desc"));
+//映射送检员
+void ParaSetDlg::mapUserModel()
+{
+	m_userModel = new QSqlTableModel(this);  
+	m_userModel->setTable("T_User_Def_Tab");  
+	m_userModel->select();  
+	ui.cmbVerifyPerson->setModel(m_userModel);  
+	ui.cmbVerifyPerson->setModelColumn(m_userModel->fieldIndex("F_Desc"));
+	m_userModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
+}
 
-	//型号
-	int col_id2 = 0;
-	QSqlRelationalTableModel *model2 = new QSqlRelationalTableModel(this);  
-	model2->setTable("T_Meter_Model");  
-	model2->setRelation(col_id2, QSqlRelation("T_Meter_Model","F_ID","F_Desc"));  
-	QSqlTableModel *relationModel2 = model2->relationModel(col_id2);   
-	ui.cmbModel->setModel(relationModel2);  
-	ui.cmbModel->setModelColumn(relationModel2->fieldIndex("F_Desc")); 
-
-	cBoxData_inited = true;//下拉条已初始化完毕
+//映射表型号
+void ParaSetDlg::mapMeterModelModel()
+{
+	m_modelModel = new QSqlTableModel(this);  
+	m_modelModel->setTable("T_Meter_Model");  
+	m_modelModel->select();
+	ui.cmbModel->setModel(m_modelModel);  
+	ui.cmbModel->setModelColumn(m_modelModel->fieldIndex("F_Desc")); 
+	m_modelModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
 }
 
 void ParaSetDlg::installLastParams()
@@ -326,6 +349,20 @@ void ParaSetDlg::on_btnSave_clicked()
 	SaveFlowPoint();
 	SaveBool();
 	SaveOther();
+
+ 	m_vfDeptModel->submitAll();
+	ui.cmbVerifyCompany->setCurrentIndex(m_curVfDeptIdx);
+
+	m_manuDeptModel->submitAll();
+	ui.cmbManufacture->setCurrentIndex(m_curManuDeptIdx);
+
+	m_userModel->submitAll();
+	ui.cmbVerifyPerson->setCurrentIndex(m_curUserIdx);
+
+	m_modelModel->submitAll();
+	ui.cmbModel->setCurrentIndex(m_curModelIdx);
+
+
 	QMessageBox::information(this, tr("OK"), tr("Saving configurations successfully!"));
 	emit saveSuccessSignal();
 }
@@ -387,10 +424,14 @@ void ParaSetDlg::SaveHead()
 	settings->setValue("standard", ui.cmbStandard->currentIndex());
 	settings->setValue("metertype", ui.cmbCollectCode->currentIndex());
 	settings->setValue("manufacture", ui.cmbManufacture->currentIndex());
+	m_curManuDeptIdx = ui.cmbManufacture->currentIndex();
 	settings->setValue("grade", ui.cmbGrade->currentIndex()+1);
 	settings->setValue("model", ui.cmbModel->currentIndex());
+	m_curModelIdx = ui.cmbModel->currentIndex();
 	settings->setValue("verifycompany", ui.cmbVerifyCompany->currentIndex());
+	m_curVfDeptIdx = ui.cmbVerifyCompany->currentIndex();
 	settings->setValue("verifyperson", ui.cmbVerifyPerson->currentIndex());
+	m_curUserIdx = ui.cmbVerifyPerson->currentIndex();
 	settings->setValue("pickcode", ui.cmbCollectCode->currentIndex());
 	settings->setValue("nflowpoint", ui.cmbFlow->currentIndex());
 	

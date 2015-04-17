@@ -39,7 +39,11 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QComboBox" name="cmbStandard"/>
+         <widget class="QComboBox" name="cmbStandard">
+          <property name="editable">
+           <bool>false</bool>
+          </property>
+         </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="label_4">
@@ -55,7 +59,11 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QComboBox" name="cmbModel"/>
+         <widget class="QComboBox" name="cmbModel">
+          <property name="editable">
+           <bool>true</bool>
+          </property>
+         </widget>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="label_7">
@@ -103,7 +111,11 @@
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QComboBox" name="cmbVerifyPerson"/>
+         <widget class="QComboBox" name="cmbVerifyPerson">
+          <property name="editable">
+           <bool>true</bool>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -171,7 +183,11 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QComboBox" name="cmbManufacture"/>
+         <widget class="QComboBox" name="cmbManufacture">
+          <property name="editable">
+           <bool>true</bool>
+          </property>
+         </widget>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="label_10">
@@ -187,7 +203,11 @@
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QComboBox" name="cmbVerifyCompany"/>
+         <widget class="QComboBox" name="cmbVerifyCompany">
+          <property name="editable">
+           <bool>true</bool>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>

@@ -9,6 +9,8 @@
 #include "systemsetdlg_global.h"
 #include "basedef.h"
 
+class QSqlTableModel;
+
 /*
 ** 将配置文件中的所有字面信息保存至结构QParams_PTR中
 */
@@ -58,6 +60,23 @@ public:
 	Manufacture_PTR m_manuFacPtr;
 
 	void initUiData(); //从数据库读取记录，填充combox等
+
+	void mapVfDeptModel(); //送检单位模型
+	QSqlTableModel *m_vfDeptModel;
+	int m_curVfDeptIdx; //当前送检单位的索引
+
+	void mapManuDeptModel(); //制造单位模型
+	QSqlTableModel *m_manuDeptModel;
+	int m_curManuDeptIdx; //当前制造单位的索引
+
+	void mapUserModel(); //检测员模型
+	QSqlTableModel *m_userModel;
+	int m_curUserIdx; //当前检测员的索引
+
+	void mapMeterModelModel(); //表型号模型
+	QSqlTableModel *m_modelModel;
+	int m_curModelIdx; //当前表型号的索引
+
 	void closeEvent(QCloseEvent * event);
 //  void showEvent(QShowEvent *event);
 

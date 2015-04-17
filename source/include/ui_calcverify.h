@@ -15,83 +15,123 @@
 #include <QtGui/QButtonGroup>
 #include <QtGui/QDialog>
 #include <QtGui/QFrame>
+#include <QtGui/QGridLayout>
 #include <QtGui/QGroupBox>
+#include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
 #include <QtGui/QPushButton>
 #include <QtGui/QRadioButton>
+#include <QtGui/QSpacerItem>
 #include <QtGui/QTableWidget>
+#include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_CalcDlgClass
 {
 public:
-    QGroupBox *groupBox_2;
-    QRadioButton *radioButton;
-    QRadioButton *radioButton_2;
-    QGroupBox *groupBox_3;
-    QRadioButton *radioButton_3;
-    QRadioButton *radioButton_4;
-    QGroupBox *groupBox_4;
-    QLineEdit *lineEdit;
-    QLabel *label;
     QGroupBox *groupBox_5;
-    QTableWidget *tableWidget;
-    QLabel *label_2;
+    QGridLayout *gridLayout_6;
     QFrame *line_3;
+    QFrame *line_7;
+    QFrame *line_6;
     QFrame *line_4;
     QFrame *line_5;
+    QLabel *label_2;
     QLabel *label_3;
     QLabel *label_4;
-    QFrame *line_6;
-    QFrame *line_7;
+    QTableWidget *tableWidget;
     QGroupBox *groupBox_6;
+    QGridLayout *gridLayout_5;
     QTableWidget *tableWidget_2;
     QGroupBox *groupBox_7;
+    QGridLayout *gridLayout_4;
     QTableWidget *tableWidget_3;
     QPushButton *pushButton_4;
     QPushButton *pushButton_5;
     QPushButton *pushButton_6;
     QPushButton *pushButton_7;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout;
+    QGroupBox *groupBox_2;
+    QGridLayout *gridLayout;
+    QRadioButton *radioButton;
+    QRadioButton *radioButton_2;
+    QSpacerItem *horizontalSpacer;
+    QGroupBox *groupBox_3;
+    QGridLayout *gridLayout_2;
+    QRadioButton *radioButton_3;
+    QRadioButton *radioButton_4;
+    QSpacerItem *horizontalSpacer_2;
+    QGroupBox *groupBox_4;
+    QGridLayout *gridLayout_3;
+    QLabel *label;
+    QLineEdit *lineEdit;
+    QSpacerItem *horizontalSpacer_3;
 
     void setupUi(QDialog *CalcDlgClass)
     {
         if (CalcDlgClass->objectName().isEmpty())
             CalcDlgClass->setObjectName(QString::fromUtf8("CalcDlgClass"));
-        CalcDlgClass->resize(1273, 738);
-        groupBox_2 = new QGroupBox(CalcDlgClass);
-        groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setGeometry(QRect(20, 10, 131, 51));
-        radioButton = new QRadioButton(groupBox_2);
-        radioButton->setObjectName(QString::fromUtf8("radioButton"));
-        radioButton->setGeometry(QRect(10, 30, 51, 16));
-        radioButton_2 = new QRadioButton(groupBox_2);
-        radioButton_2->setObjectName(QString::fromUtf8("radioButton_2"));
-        radioButton_2->setGeometry(QRect(80, 30, 51, 16));
-        groupBox_3 = new QGroupBox(CalcDlgClass);
-        groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
-        groupBox_3->setGeometry(QRect(280, 10, 131, 51));
-        radioButton_3 = new QRadioButton(groupBox_3);
-        radioButton_3->setObjectName(QString::fromUtf8("radioButton_3"));
-        radioButton_3->setGeometry(QRect(10, 30, 51, 16));
-        radioButton_4 = new QRadioButton(groupBox_3);
-        radioButton_4->setObjectName(QString::fromUtf8("radioButton_4"));
-        radioButton_4->setGeometry(QRect(80, 30, 51, 16));
-        groupBox_4 = new QGroupBox(CalcDlgClass);
-        groupBox_4->setObjectName(QString::fromUtf8("groupBox_4"));
-        groupBox_4->setGeometry(QRect(530, 10, 131, 51));
-        lineEdit = new QLineEdit(groupBox_4);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        lineEdit->setGeometry(QRect(70, 20, 51, 20));
-        label = new QLabel(groupBox_4);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(20, 20, 31, 16));
+        CalcDlgClass->resize(1314, 829);
         groupBox_5 = new QGroupBox(CalcDlgClass);
         groupBox_5->setObjectName(QString::fromUtf8("groupBox_5"));
-        groupBox_5->setGeometry(QRect(20, 90, 1241, 251));
+        groupBox_5->setGeometry(QRect(10, 90, 1291, 251));
         groupBox_5->setProperty("toolTipDuration", QVariant(0));
+        gridLayout_6 = new QGridLayout(groupBox_5);
+        gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
+        line_3 = new QFrame(groupBox_5);
+        line_3->setObjectName(QString::fromUtf8("line_3"));
+        line_3->setFrameShape(QFrame::HLine);
+        line_3->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_6->addWidget(line_3, 0, 1, 3, 7);
+
+        line_7 = new QFrame(groupBox_5);
+        line_7->setObjectName(QString::fromUtf8("line_7"));
+        line_7->setFrameShape(QFrame::VLine);
+        line_7->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_6->addWidget(line_7, 1, 0, 2, 1);
+
+        line_6 = new QFrame(groupBox_5);
+        line_6->setObjectName(QString::fromUtf8("line_6"));
+        line_6->setFrameShape(QFrame::VLine);
+        line_6->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_6->addWidget(line_6, 1, 3, 2, 1);
+
+        line_4 = new QFrame(groupBox_5);
+        line_4->setObjectName(QString::fromUtf8("line_4"));
+        line_4->setFrameShape(QFrame::VLine);
+        line_4->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_6->addWidget(line_4, 1, 5, 2, 1);
+
+        line_5 = new QFrame(groupBox_5);
+        line_5->setObjectName(QString::fromUtf8("line_5"));
+        line_5->setFrameShape(QFrame::VLine);
+        line_5->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_6->addWidget(line_5, 1, 7, 2, 1);
+
+        label_2 = new QLabel(groupBox_5);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+
+        gridLayout_6->addWidget(label_2, 2, 2, 1, 1);
+
+        label_3 = new QLabel(groupBox_5);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+
+        gridLayout_6->addWidget(label_3, 2, 4, 1, 1);
+
+        label_4 = new QLabel(groupBox_5);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+
+        gridLayout_6->addWidget(label_4, 2, 6, 1, 1);
+
         tableWidget = new QTableWidget(groupBox_5);
         if (tableWidget->columnCount() < 13)
             tableWidget->setColumnCount(13);
@@ -132,50 +172,20 @@ public:
         QTableWidgetItem *__qtablewidgetitem16 = new QTableWidgetItem();
         tableWidget->setVerticalHeaderItem(3, __qtablewidgetitem16);
         tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
-        tableWidget->setGeometry(QRect(10, 60, 1221, 181));
         QFont font;
         font.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
         font.setPointSize(7);
         tableWidget->setFont(font);
         tableWidget->horizontalHeader()->setDefaultSectionSize(90);
-        label_2 = new QLabel(groupBox_5);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(220, 40, 54, 12));
-        line_3 = new QFrame(groupBox_5);
-        line_3->setObjectName(QString::fromUtf8("line_3"));
-        line_3->setGeometry(QRect(60, 10, 1171, 41));
-        line_3->setFrameShape(QFrame::HLine);
-        line_3->setFrameShadow(QFrame::Sunken);
-        line_4 = new QFrame(groupBox_5);
-        line_4->setObjectName(QString::fromUtf8("line_4"));
-        line_4->setGeometry(QRect(760, 30, 20, 31));
-        line_4->setFrameShape(QFrame::VLine);
-        line_4->setFrameShadow(QFrame::Sunken);
-        line_5 = new QFrame(groupBox_5);
-        line_5->setObjectName(QString::fromUtf8("line_5"));
-        line_5->setGeometry(QRect(1220, 30, 16, 31));
-        line_5->setFrameShape(QFrame::VLine);
-        line_5->setFrameShadow(QFrame::Sunken);
-        label_3 = new QLabel(groupBox_5);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(570, 40, 54, 12));
-        label_4 = new QLabel(groupBox_5);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(970, 40, 71, 20));
-        line_6 = new QFrame(groupBox_5);
-        line_6->setObjectName(QString::fromUtf8("line_6"));
-        line_6->setGeometry(QRect(400, 30, 16, 31));
-        line_6->setFrameShape(QFrame::VLine);
-        line_6->setFrameShadow(QFrame::Sunken);
-        line_7 = new QFrame(groupBox_5);
-        line_7->setObjectName(QString::fromUtf8("line_7"));
-        line_7->setGeometry(QRect(50, 30, 16, 31));
-        line_7->setFrameShape(QFrame::VLine);
-        line_7->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_6->addWidget(tableWidget, 3, 0, 1, 8);
+
         groupBox_6 = new QGroupBox(CalcDlgClass);
         groupBox_6->setObjectName(QString::fromUtf8("groupBox_6"));
-        groupBox_6->setGeometry(QRect(20, 340, 1241, 161));
+        groupBox_6->setGeometry(QRect(10, 350, 1291, 211));
         groupBox_6->setProperty("toolTipDuration", QVariant(0));
+        gridLayout_5 = new QGridLayout(groupBox_6);
+        gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
         tableWidget_2 = new QTableWidget(groupBox_6);
         if (tableWidget_2->columnCount() < 15)
             tableWidget_2->setColumnCount(15);
@@ -218,13 +228,17 @@ public:
         QTableWidgetItem *__qtablewidgetitem34 = new QTableWidgetItem();
         tableWidget_2->setVerticalHeaderItem(2, __qtablewidgetitem34);
         tableWidget_2->setObjectName(QString::fromUtf8("tableWidget_2"));
-        tableWidget_2->setGeometry(QRect(10, 20, 1221, 121));
         tableWidget_2->setFont(font);
         tableWidget_2->horizontalHeader()->setDefaultSectionSize(80);
+
+        gridLayout_5->addWidget(tableWidget_2, 0, 0, 1, 1);
+
         groupBox_7 = new QGroupBox(CalcDlgClass);
         groupBox_7->setObjectName(QString::fromUtf8("groupBox_7"));
-        groupBox_7->setGeometry(QRect(20, 500, 1241, 171));
+        groupBox_7->setGeometry(QRect(10, 570, 1291, 191));
         groupBox_7->setProperty("toolTipDuration", QVariant(0));
+        gridLayout_4 = new QGridLayout(groupBox_7);
+        gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
         tableWidget_3 = new QTableWidget(groupBox_7);
         if (tableWidget_3->columnCount() < 15)
             tableWidget_3->setColumnCount(15);
@@ -267,33 +281,115 @@ public:
         QTableWidgetItem *__qtablewidgetitem52 = new QTableWidgetItem();
         tableWidget_3->setVerticalHeaderItem(2, __qtablewidgetitem52);
         tableWidget_3->setObjectName(QString::fromUtf8("tableWidget_3"));
-        tableWidget_3->setGeometry(QRect(10, 20, 1221, 141));
         tableWidget_3->setFont(font);
         tableWidget_3->horizontalHeader()->setDefaultSectionSize(80);
+
+        gridLayout_4->addWidget(tableWidget_3, 0, 0, 1, 1);
+
         pushButton_4 = new QPushButton(CalcDlgClass);
         pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
-        pushButton_4->setGeometry(QRect(730, 690, 75, 41));
+        pushButton_4->setGeometry(QRect(740, 770, 75, 41));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(pushButton_4->sizePolicy().hasHeightForWidth());
+        pushButton_4->setSizePolicy(sizePolicy);
         QIcon icon;
         icon.addFile(QString::fromUtf8("../source/gui/images/calculatorresult.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_4->setIcon(icon);
         pushButton_5 = new QPushButton(CalcDlgClass);
         pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
-        pushButton_5->setGeometry(QRect(880, 690, 75, 41));
+        pushButton_5->setGeometry(QRect(890, 770, 75, 41));
+        sizePolicy.setHeightForWidth(pushButton_5->sizePolicy().hasHeightForWidth());
+        pushButton_5->setSizePolicy(sizePolicy);
         QIcon icon1;
         icon1.addFile(QString::fromUtf8("../source/gui/images/excel.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_5->setIcon(icon1);
         pushButton_6 = new QPushButton(CalcDlgClass);
         pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
-        pushButton_6->setGeometry(QRect(1020, 690, 75, 41));
+        pushButton_6->setGeometry(QRect(1030, 770, 75, 41));
+        sizePolicy.setHeightForWidth(pushButton_6->sizePolicy().hasHeightForWidth());
+        pushButton_6->setSizePolicy(sizePolicy);
         QIcon icon2;
         icon2.addFile(QString::fromUtf8("../source/gui/images/save.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_6->setIcon(icon2);
         pushButton_7 = new QPushButton(CalcDlgClass);
         pushButton_7->setObjectName(QString::fromUtf8("pushButton_7"));
-        pushButton_7->setGeometry(QRect(1160, 690, 75, 41));
+        pushButton_7->setGeometry(QRect(1170, 770, 75, 41));
+        sizePolicy.setHeightForWidth(pushButton_7->sizePolicy().hasHeightForWidth());
+        pushButton_7->setSizePolicy(sizePolicy);
         QIcon icon3;
         icon3.addFile(QString::fromUtf8("../../exit.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_7->setIcon(icon3);
+        widget = new QWidget(CalcDlgClass);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(20, 10, 1281, 62));
+        horizontalLayout = new QHBoxLayout(widget);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        groupBox_2 = new QGroupBox(widget);
+        groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
+        gridLayout = new QGridLayout(groupBox_2);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        radioButton = new QRadioButton(groupBox_2);
+        radioButton->setObjectName(QString::fromUtf8("radioButton"));
+
+        gridLayout->addWidget(radioButton, 0, 0, 1, 1);
+
+        radioButton_2 = new QRadioButton(groupBox_2);
+        radioButton_2->setObjectName(QString::fromUtf8("radioButton_2"));
+
+        gridLayout->addWidget(radioButton_2, 0, 1, 1, 1);
+
+
+        horizontalLayout->addWidget(groupBox_2);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+        groupBox_3 = new QGroupBox(widget);
+        groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
+        gridLayout_2 = new QGridLayout(groupBox_3);
+        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        radioButton_3 = new QRadioButton(groupBox_3);
+        radioButton_3->setObjectName(QString::fromUtf8("radioButton_3"));
+
+        gridLayout_2->addWidget(radioButton_3, 0, 0, 1, 1);
+
+        radioButton_4 = new QRadioButton(groupBox_3);
+        radioButton_4->setObjectName(QString::fromUtf8("radioButton_4"));
+
+        gridLayout_2->addWidget(radioButton_4, 0, 1, 1, 1);
+
+
+        horizontalLayout->addWidget(groupBox_3);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_2);
+
+        groupBox_4 = new QGroupBox(widget);
+        groupBox_4->setObjectName(QString::fromUtf8("groupBox_4"));
+        gridLayout_3 = new QGridLayout(groupBox_4);
+        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        label = new QLabel(groupBox_4);
+        label->setObjectName(QString::fromUtf8("label"));
+
+        gridLayout_3->addWidget(label, 0, 0, 1, 1);
+
+        lineEdit = new QLineEdit(groupBox_4);
+        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+
+        gridLayout_3->addWidget(lineEdit, 0, 1, 1, 1);
+
+
+        horizontalLayout->addWidget(groupBox_4);
+
+        horizontalSpacer_3 = new QSpacerItem(488, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_3);
+
 
         retranslateUi(CalcDlgClass);
 
@@ -303,15 +399,10 @@ public:
     void retranslateUi(QDialog *CalcDlgClass)
     {
         CalcDlgClass->setWindowTitle(QApplication::translate("CalcDlgClass", "\350\256\241\347\256\227\345\231\250\346\243\200\346\265\213", 0, QApplication::UnicodeUTF8));
-        groupBox_2->setTitle(QApplication::translate("CalcDlgClass", "\345\256\211\350\243\205\344\275\215\347\275\256", 0, QApplication::UnicodeUTF8));
-        radioButton->setText(QApplication::translate("CalcDlgClass", "\350\277\233\345\217\243", 0, QApplication::UnicodeUTF8));
-        radioButton_2->setText(QApplication::translate("CalcDlgClass", "\345\207\272\345\217\243", 0, QApplication::UnicodeUTF8));
-        groupBox_3->setTitle(QApplication::translate("CalcDlgClass", "\347\203\255\351\207\217\345\215\225\344\275\215", 0, QApplication::UnicodeUTF8));
-        radioButton_3->setText(QApplication::translate("CalcDlgClass", "MJ", 0, QApplication::UnicodeUTF8));
-        radioButton_4->setText(QApplication::translate("CalcDlgClass", "kWh", 0, QApplication::UnicodeUTF8));
-        groupBox_4->setTitle(QApplication::translate("CalcDlgClass", "\346\234\200\345\260\217\346\270\251\345\267\256", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("CalcDlgClass", "\316\224\316\270min", 0, QApplication::UnicodeUTF8));
         groupBox_5->setTitle(QApplication::translate("CalcDlgClass", "\345\207\272\345\217\243\346\270\251\345\272\246: \316\270min\342\211\244\316\270d\342\211\244\316\270min+5", 0, QApplication::UnicodeUTF8));
+        label_2->setText(QApplication::translate("CalcDlgClass", "\346\250\241\346\213\237\350\276\223\345\205\245", 0, QApplication::UnicodeUTF8));
+        label_3->setText(QApplication::translate("CalcDlgClass", "\346\240\207\345\207\206\345\200\274", 0, QApplication::UnicodeUTF8));
+        label_4->setText(QApplication::translate("CalcDlgClass", "\347\244\272\345\200\274\345\217\212\350\257\257\345\267\256", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("CalcDlgClass", "\350\277\233\345\217\243\347\224\265\351\230\273\n"
 "(\316\251)", 0, QApplication::UnicodeUTF8));
@@ -358,13 +449,10 @@ public:
         QTableWidgetItem *___qtablewidgetitem15 = tableWidget->verticalHeaderItem(2);
         ___qtablewidgetitem15->setText(QApplication::translate("CalcDlgClass", "20", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem16 = tableWidget->verticalHeaderItem(3);
-        ___qtablewidgetitem16->setText(QApplication::translate("CalcDlgClass", "\316\224\316\270ref", 0, QApplication::UnicodeUTF8));
-        label_2->setText(QApplication::translate("CalcDlgClass", "\346\250\241\346\213\237\350\276\223\345\205\245", 0, QApplication::UnicodeUTF8));
-        label_3->setText(QApplication::translate("CalcDlgClass", "\346\240\207\345\207\206\345\200\274", 0, QApplication::UnicodeUTF8));
-        label_4->setText(QApplication::translate("CalcDlgClass", "\347\244\272\345\200\274\345\217\212\350\257\257\345\267\256", 0, QApplication::UnicodeUTF8));
+        ___qtablewidgetitem16->setText(QApplication::translate("CalcDlgClass", "\316\224\316\270ref    ", 0, QApplication::UnicodeUTF8));
         groupBox_6->setTitle(QApplication::translate("CalcDlgClass", "\345\207\272\345\217\243\346\270\251\345\272\246: \316\270d = \316\270ref\302\2615", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem17 = tableWidget_2->verticalHeaderItem(0);
-        ___qtablewidgetitem17->setText(QApplication::translate("CalcDlgClass", "\316\224\316\270min", 0, QApplication::UnicodeUTF8));
+        ___qtablewidgetitem17->setText(QApplication::translate("CalcDlgClass", "\316\224\316\270min   ", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem18 = tableWidget_2->verticalHeaderItem(1);
         ___qtablewidgetitem18->setText(QApplication::translate("CalcDlgClass", "5", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem19 = tableWidget_2->verticalHeaderItem(2);
@@ -380,6 +468,14 @@ public:
         pushButton_5->setText(QApplication::translate("CalcDlgClass", "\347\224\237\346\210\220\350\241\250\346\240\274", 0, QApplication::UnicodeUTF8));
         pushButton_6->setText(QApplication::translate("CalcDlgClass", "\344\277\235\345\255\230\350\256\260\345\275\225", 0, QApplication::UnicodeUTF8));
         pushButton_7->setText(QApplication::translate("CalcDlgClass", "\351\200\200\345\207\272\347\263\273\347\273\237", 0, QApplication::UnicodeUTF8));
+        groupBox_2->setTitle(QApplication::translate("CalcDlgClass", "\345\256\211\350\243\205\344\275\215\347\275\256", 0, QApplication::UnicodeUTF8));
+        radioButton->setText(QApplication::translate("CalcDlgClass", "\350\277\233\345\217\243", 0, QApplication::UnicodeUTF8));
+        radioButton_2->setText(QApplication::translate("CalcDlgClass", "\345\207\272\345\217\243", 0, QApplication::UnicodeUTF8));
+        groupBox_3->setTitle(QApplication::translate("CalcDlgClass", "\347\203\255\351\207\217\345\215\225\344\275\215", 0, QApplication::UnicodeUTF8));
+        radioButton_3->setText(QApplication::translate("CalcDlgClass", "MJ", 0, QApplication::UnicodeUTF8));
+        radioButton_4->setText(QApplication::translate("CalcDlgClass", "kWh", 0, QApplication::UnicodeUTF8));
+        groupBox_4->setTitle(QApplication::translate("CalcDlgClass", "\346\234\200\345\260\217\346\270\251\345\267\256", 0, QApplication::UnicodeUTF8));
+        label->setText(QApplication::translate("CalcDlgClass", "\316\224\316\270min", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

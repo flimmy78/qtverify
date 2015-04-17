@@ -196,6 +196,7 @@ public:
 
         cmbStandard = new QComboBox(gBox_Head);
         cmbStandard->setObjectName(QString::fromUtf8("cmbStandard"));
+        cmbStandard->setEditable(false);
 
         gridLayout_3->addWidget(cmbStandard, 0, 1, 1, 1);
 
@@ -208,6 +209,7 @@ public:
 
         cmbModel = new QComboBox(gBox_Head);
         cmbModel->setObjectName(QString::fromUtf8("cmbModel"));
+        cmbModel->setEditable(true);
 
         gridLayout_3->addWidget(cmbModel, 1, 1, 1, 1);
 
@@ -232,6 +234,7 @@ public:
 
         cmbVerifyPerson = new QComboBox(gBox_Head);
         cmbVerifyPerson->setObjectName(QString::fromUtf8("cmbVerifyPerson"));
+        cmbVerifyPerson->setEditable(true);
 
         gridLayout_3->addWidget(cmbVerifyPerson, 3, 1, 1, 1);
 
@@ -273,6 +276,7 @@ public:
 
         cmbManufacture = new QComboBox(gBox_Head);
         cmbManufacture->setObjectName(QString::fromUtf8("cmbManufacture"));
+        cmbManufacture->setEditable(true);
 
         gridLayout_4->addWidget(cmbManufacture, 2, 1, 1, 1);
 
@@ -285,6 +289,7 @@ public:
 
         cmbVerifyCompany = new QComboBox(gBox_Head);
         cmbVerifyCompany->setObjectName(QString::fromUtf8("cmbVerifyCompany"));
+        cmbVerifyCompany->setEditable(true);
 
         gridLayout_4->addWidget(cmbVerifyCompany, 3, 1, 1, 1);
 
