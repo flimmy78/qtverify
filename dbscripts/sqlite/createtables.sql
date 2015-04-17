@@ -21,7 +21,7 @@ drop table if exists "T_Meter_Model"
 ;
 create table T_Meter_Model
 (
-F_ID integer not null primary key,  --型号ID
+F_ID integer not null primary key autoincrement,  --型号ID
 F_Name varchar(24),
 F_Desc varchar(60)
 );
@@ -370,10 +370,10 @@ F_DeltaTempMax float,               --最大温差(K)
 F_DeltaTempMin float,               --最小温差(K)
 F_InstallPos integer,               --安装位置(0:进口；1:出口)
 F_HeatUnit integer,                 --热量单位(0:MJ; 1:kWh)
-F_TempIn float,                     --入口温度(℃)
-F_TempOut float,                    --出口温度(℃)
-F_ResistanceIn float,               --入口电阻(Ω)
-F_ResistanceOut float,              --出口电阻(Ω)
+F_StdTempIn float,                  --入口温度-标准温度计(℃)
+F_StdTempOut float,                 --出口温度-标准温度计(℃)
+F_StdResistIn float,                --入口电阻-标准温度计(Ω)
+F_StdResistOut float,               --出口电阻-标准温度计(Ω)
 F_ProposedVolume float,             --建议体积(L)
 F_SimulateVolume float,             --模拟体积(L)
 F_Kcoe float,                       --K系数
@@ -393,4 +393,50 @@ constraint F_VerifyDept_fk foreign key(F_VerifyDept) references T_Verify_Dept(F_
 constraint F_VerifyPerson_fk foreign key(F_VerifyPerson) references T_User_Def_Tab(F_ID)
 );
 create unique index uk_T_Calc_Verify_Record on T_Calc_Verify_Record (F_MeterNo, F_TimeStamp);
+
+
+---------------------------------
+--计算器和铂电阻组合检定结果记录表
+---------------------------------
+drop table if exists "T_Combined_Verify_Record"
+;
+create table T_Combined_Verify_Record
+(
+F_ID integer not null primary key autoincrement,
+F_TimeStamp timestamp not null,     --时间戳（'yyyy-MM-dd HH:mm:ss.zzz')
+F_MeterNo varchar(16) not null,     --表号(14位数字: 6 + 8)
+F_Standard integer,                 --表规格(DN15/DN20/DN25)，外键(T_Meter_Standard.F_ID)
+F_Model integer,                    --表型号，外键(T_Meter_Model.F_ID)
+F_Grade smallint,                   --计量等级（1,2,3）
+F_ManufactDept integer,             --制造单位，外键(T_Manufacture_Dept.F_ID)
+F_VerifyDept integer,               --送检单位，外键(T_Verify_Dept.F_ID)
+F_VerifyPerson integer,             --检定员，外键(T_User_Def_Tab.F_ID)
+F_DeltaTemp float,                  --温差(K)
+F_VerifyVolume float,               --检定量(L)
+F_DeltaTempMin float,               --最小温差(K)
+F_InstallPos integer,               --安装位置(0:进口；1:出口)
+F_HeatUnit integer,                 --热量单位(0:MJ; 1:kWh)
+F_StdTempIn float,                  --入口温度-标准温度计(℃)
+F_StdTempOut float,                 --出口温度-标准温度计(℃)
+F_StdResistIn float,                --入口电阻-标准温度计(Ω)
+F_StdResistOut float,               --出口电阻-标准温度计(Ω)
+F_Kcoe float,                       --K系数
+F_StdValue float,                   --理论值(热量，kwh)
+F_MeterV0 float,                    --热量表初值(体积)，单位L
+F_MeterV1 float,                    --热量表终值(体积)，单位L
+F_MeterE0 float,                    --热量表初值(热量)，单位kWh
+F_MeterE1 float,                    --热量表终值(热量)，单位kWh
+F_DispError float,                  --示值误差，单位%
+F_StdError float,                   --要求误差(合格标准),单位%
+F_Result smallint,                  --检定结果(1：合格，0：不合格)
+F_Bak2 varchar(24),                 --备用域2
+F_Bak3 varchar(24),                 --备用域3
+F_Bak4 varchar(24),                 --备用域4
+constraint F_Model_fk foreign key(F_Model) references T_Meter_Model(F_ID),
+constraint F_Standard_fk foreign key(F_Standard) references T_Meter_Standard(F_ID),
+constraint F_ManufactDept_fk foreign key(F_ManufactDept) references T_Manufacture_Dept(F_ID),
+constraint F_VerifyDept_fk foreign key(F_VerifyDept) references T_Verify_Dept(F_ID),
+constraint F_VerifyPerson_fk foreign key(F_VerifyPerson) references T_User_Def_Tab(F_ID)
+);
+create unique index uk_T_Combined_Verify_Record on T_Combined_Verify_Record (F_MeterNo, F_TimeStamp);
 
