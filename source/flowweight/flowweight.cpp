@@ -34,10 +34,8 @@ FlowWeightDlg::FlowWeightDlg(QWidget *parent, Qt::WFlags flags)
 {
 	qDebug()<<"FlowWeightDlg thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
- 	ui.btnNext->hide(); //隐藏"下一步"按钮
-	ui.btnExhaust->hide(); //隐藏"排气"按钮
-	m_inputStartValue = false;
-	m_inputEndValue = false;
+ 	ui.btnNext->hide();   //隐藏"下一步"按钮
+	ui.btnExhaust->hide();//隐藏"排气"按钮
 
 	//不同等级的热量表对应的标准误差,单位%
 	m_gradeErr[1] = 1.00f;
@@ -46,12 +44,10 @@ FlowWeightDlg::FlowWeightDlg(QWidget *parent, Qt::WFlags flags)
 
 	if (!getPortSetIni(&m_portsetinfo)) //获取下位机端口号配置信息
 	{
-		QMessageBox::warning(this, tr("Warning"), tr("Warning:get port set info failed!"));//获取下位机端口号配置信息失败!请重新设置！
+		QMessageBox::warning(this, tr("Warning"), tr("Warning:get port set info failed!"));
 	}
 
-	m_stopFlag = false; //退出界面后，不再检查天平容量
-
-	m_readComConfig = new ReadComConfig(); //读串口设置接口
+	m_readComConfig = new ReadComConfig(); //读串口设置接口（必须在initBalanceCom前调用）
 
 	m_balanceObj = NULL;
 	initBalanceCom();		//初始化天平串口
@@ -63,6 +59,9 @@ FlowWeightDlg::FlowWeightDlg(QWidget *parent, Qt::WFlags flags)
 	m_controlObj = NULL;
 	initControlCom();		//初始化控制串口
 
+	m_meterObj = NULL;      //热量表通讯
+	m_recPtr = NULL;        //流量检测结果
+
 	//计算流速用
 	m_totalcount = 0;
 	m_startWeight = 0.0;
@@ -72,12 +71,18 @@ FlowWeightDlg::FlowWeightDlg(QWidget *parent, Qt::WFlags flags)
 	connect(m_flowRateTimer, SIGNAL(timeout()), this, SLOT(slotFreshFlowRate()));
 	m_flowRateTimer->start(TIMEOUT_FLOW_SAMPLE);
 
-	m_chkAlg = new CAlgorithm();//计算类接口
+	//计算类接口
+	m_chkAlg = new CAlgorithm();
 
-	initValveStatus();      //映射关系；初始化阀门状态
+	//映射关系；初始化阀门状态	
+	initValveStatus();      
 
 	m_exaustTimer = new QTimer(this); //排气定时器
 	connect(m_exaustTimer, SIGNAL(timeout()), this, SLOT(slotExaustFinished()));
+
+	m_inputStartValue = false; 
+	m_inputEndValue = false;
+	m_stopFlag = false; //停止检测标志（退出界面后，不再检查天平容量）
 
 	m_tempCount = 1; //计算平均温度用的累加计数器
 	m_nowOrder = 0;  //当前进行的检定序号
@@ -89,6 +94,7 @@ FlowWeightDlg::FlowWeightDlg(QWidget *parent, Qt::WFlags flags)
 	m_autopick = false;      //自动采集
 	m_flowPointNum = 0;      //流量点个数
 	m_maxMeterNum = 0;       //某规格表最多支持的检表个数
+	m_oldMaxMeterNum = 0;
 	m_validMeterNum = 0;     //实际检表个数
 	m_exaustSecond = 45;     //默认排气时间45秒
 	m_manufac = 0;           //制造厂商 默认德鲁
@@ -104,8 +110,6 @@ FlowWeightDlg::FlowWeightDlg(QWidget *parent, Qt::WFlags flags)
 	m_nowDate = "";
 	m_validDate = "";
 	m_flowPoint = 0;          //流量(m3/h)
-
-	m_recPtr = NULL;
 
 	QSqlTableModel *model = new QSqlTableModel(this);  
 	model->setTable("T_Meter_Standard");  
@@ -126,11 +130,6 @@ FlowWeightDlg::FlowWeightDlg(QWidget *parent, Qt::WFlags flags)
 	{
 		qWarning()<<"串口、端口设置错误!";
 	}
-
-	m_meterThread = NULL;
-	m_meterObj = NULL;
-	initMeterCom(); //初始化热量表通讯串口
-
 }
 
 FlowWeightDlg::~FlowWeightDlg()
@@ -216,6 +215,7 @@ void FlowWeightDlg::closeEvent( QCloseEvent * event)
 		}
 	}
 
+	m_exaustTimer->stop();
 }
 
 //天平采集串口 上位机直接采集
@@ -269,11 +269,22 @@ void FlowWeightDlg::initControlCom()
 //热量表通讯串口
 void FlowWeightDlg::initMeterCom()
 {
+	if (m_meterObj)
+	{
+		delete []m_meterObj;
+		m_meterObj = NULL;
+
+		for (int i=0; i<m_oldMaxMeterNum; i++)
+		{
+			m_meterThread[i].exit();
+		}
+	}
 	if (m_maxMeterNum <= 0)
 	{
 		return;
 	}
 
+	m_oldMaxMeterNum = m_maxMeterNum;
 	m_meterThread = new ComThread[m_maxMeterNum];
 
 	m_meterObj = new MeterComObject[m_maxMeterNum];
@@ -421,6 +432,7 @@ int FlowWeightDlg::readNowParaConfig()
 
 	initTableWidget();
 	showNowKeyParaConfig();
+	initMeterCom();
 
 	return true;
 }

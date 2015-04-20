@@ -77,6 +77,7 @@ public:
 
 	int m_tempCount;		  //计算平均温度用的累加计数器
 	int m_maxMeterNum;        //表格的行数（被检表的最大个数）
+	int m_oldMaxMeterNum;     //上次被检表的最大个数
 	int m_validMeterNum;          //实际检表的个数
 	QMap<int, int> m_meterPosMap; //被检表下标与表位号的映射关系
 	QMap<int, float> m_gradeErr;  //不同等级热表对应的标准误差
