@@ -52,13 +52,13 @@ void LoginDialog::initUserComboBox()
 
 void LoginDialog::on_loginButton_clicked()
 {
-	if (ui.passwordEdit->text().isEmpty())
-	{
-		QMessageBox::warning(this, tr("Warning"), tr("please input password!"));
-		ui.passwordEdit->setFocus();
-	}
-	else
-	{
+// 	if (ui.passwordEdit->text().isEmpty())
+// 	{
+// 		QMessageBox::warning(this, tr("Warning"), tr("please input password!"));
+// 		ui.passwordEdit->setFocus();
+// 	}
+// 	else
+// 	{
 		QSqlQuery query;
 		query.exec(QString("select F_Password from T_User_Def_Tab where F_ID=%1").arg(ui.userComboBox->currentIndex()));
 		query.next();
@@ -72,7 +72,7 @@ void LoginDialog::on_loginButton_clicked()
 			ui.passwordEdit->clear();
 			ui.passwordEdit->setFocus();
 		}
-	}
+// 	}
 }
 
 void LoginDialog::on_quitButton_clicked()
