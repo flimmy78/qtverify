@@ -102,7 +102,7 @@
    </column>
    <column>
     <property name="text">
-     <string>ModifyNO.</string>
+     <string>ModifyNO</string>
     </property>
    </column>
   </widget>
@@ -958,7 +958,7 @@ t</string>
     </sizepolicy>
    </property>
    <property name="text">
-    <string>ModifyNO.</string>
+    <string>ModifyNO</string>
    </property>
   </widget>
   <widget class="QWidget" name="layoutWidget">

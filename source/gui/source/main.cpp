@@ -41,8 +41,6 @@ int main(int argc, char *argv[])
 // 	qFatal("This is a fatal message");
 	
 	Qt::Alignment align = Qt::AlignCenter | Qt::AlignBottom;
-	splash->showMessage(QObject::tr("load translator files ..."), align, Qt::blue);
-	QTest::qSleep(200);
 
 	QString lang = "zh"; //默认显示中文
 	if (argc == 2) 
@@ -76,9 +74,14 @@ int main(int argc, char *argv[])
 			app.installTranslator( translator );
 		}
 		file.close();
+
+		splash->showMessage(QObject::tr("load translator files ..."), align, Qt::blue);
+		QTest::qSleep(200);
 	}
 	else
 	{
+		splash->showMessage(QObject::tr("no translator files ..."), align, Qt::blue);
+		QTest::qSleep(200);
 		qDebug("no i18n ini file.\n");
 	}
 

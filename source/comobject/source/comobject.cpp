@@ -174,9 +174,9 @@ ControlComObject::ControlComObject(QObject* parent) : ComObject(parent)
 
 ControlComObject::~ControlComObject()
 {
-	if(m_controlCom != NULL)
+	if (m_controlCom != NULL)
 	{
-		if(m_controlCom->isOpen())
+		if (m_controlCom->isOpen())
 		{
 			m_controlCom->close();
 			qDebug()<<"m_controlCom closed";

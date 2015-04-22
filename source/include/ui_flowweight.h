@@ -604,7 +604,7 @@ public:
         QTableWidgetItem *___qtablewidgetitem12 = tableWidget->horizontalHeaderItem(12);
         ___qtablewidgetitem12->setText(QApplication::translate("FlowWeightClass", "AdjustErr", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem13 = tableWidget->horizontalHeaderItem(13);
-        ___qtablewidgetitem13->setText(QApplication::translate("FlowWeightClass", "ModifyNO.", 0, QApplication::UnicodeUTF8));
+        ___qtablewidgetitem13->setText(QApplication::translate("FlowWeightClass", "ModifyNO", 0, QApplication::UnicodeUTF8));
         groupBox_2->setTitle(QApplication::translate("FlowWeightClass", "Controller", 0, QApplication::UnicodeUTF8));
         btnWaterIn->setText(QApplication::translate("FlowWeightClass", "i\n"
 "n\n"
@@ -649,7 +649,7 @@ public:
         labelHintProcess->setText(QString());
         btnAllAdjError->setText(QApplication::translate("FlowWeightClass", "AdjustErr", 0, QApplication::UnicodeUTF8));
         btnAllVerifyStatus->setText(QApplication::translate("FlowWeightClass", "VerifySt", 0, QApplication::UnicodeUTF8));
-        btnAllModifyNO->setText(QApplication::translate("FlowWeightClass", "ModifyNO.", 0, QApplication::UnicodeUTF8));
+        btnAllModifyNO->setText(QApplication::translate("FlowWeightClass", "ModifyNO", 0, QApplication::UnicodeUTF8));
         btnExhaust->setText(QApplication::translate("FlowWeightClass", "Exhaust", 0, QApplication::UnicodeUTF8));
         btnNext->setText(QApplication::translate("FlowWeightClass", "Next", 0, QApplication::UnicodeUTF8));
         btnStop->setText(QApplication::translate("FlowWeightClass", "Stop", 0, QApplication::UnicodeUTF8));

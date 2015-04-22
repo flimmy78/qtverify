@@ -590,7 +590,10 @@ void FlowWeightDlg::slotExaustFinished()
 	}
 
 	ui.labelHintPoint->setText(tr("prepare balance ...")); //准备天平
-	prepareInitBalance();//准备天平初始重量
+	if (!prepareInitBalance())//准备天平初始重量
+	{
+		return;
+	}
 
 	if (setAllMeterVerifyStatus()) //设置检定状态成功
 	{
@@ -603,6 +606,7 @@ void FlowWeightDlg::slotExaustFinished()
 */
 int FlowWeightDlg::prepareInitBalance()
 {
+	int ret = 0;
 	//判断天平重量,如果小于要求的初始重量(5kg)，则关闭放水阀，打开大流量阀
 	if (ui.lcdBigBalance->value() < BALANCE_INIT_VALUE)
 	{
@@ -621,6 +625,7 @@ int FlowWeightDlg::prepareInitBalance()
 			{
 				qWarning()<<"关闭大流量阀失败";
 			}
+			ret = 1;
 		}
 	}
 	else
@@ -628,7 +633,7 @@ int FlowWeightDlg::prepareInitBalance()
 		
 	}
 
-	return true;
+	return ret;
 }
 
 /*
@@ -694,6 +699,7 @@ int FlowWeightDlg::closeBigFlowValve()
 */
 int FlowWeightDlg::judgeBalanceValue(float targetV, bool flg)
 {
+	int ret = 0;
 	if (flg) //要求大于目标重量
 	{
 		while (!m_stopFlag && (ui.lcdBigBalance->value() < targetV))
@@ -701,6 +707,7 @@ int FlowWeightDlg::judgeBalanceValue(float targetV, bool flg)
 			qDebug()<<"天平重量 ="<<ui.lcdBigBalance->value()<<", 小于要求的重量 "<<targetV;
 			QTest::qWait(1000);
 		}
+		ret = !m_stopFlag && (ui.lcdBigBalance->value() >= targetV);
 	}
 	else //要求小于目标重量
 	{
@@ -709,9 +716,10 @@ int FlowWeightDlg::judgeBalanceValue(float targetV, bool flg)
 			qDebug()<<"天平重量 ="<<ui.lcdBigBalance->value()<<", 大于要求的重量 "<<targetV;
 			QTest::qWait(1000);
 		}
+		ret = !m_stopFlag && (ui.lcdBigBalance->value() <= targetV);
 	}
 
-	return true;
+	return ret;
 }
 
 int FlowWeightDlg::judgeBalanceAndCalcAvgTemper(float targetV)
@@ -740,7 +748,8 @@ int FlowWeightDlg::judgeBalanceAndCalcAvgTemper(float targetV)
 		ui.labelHintProcess->setText(tr("All flow points has verified!"));
 		ui.btnNext->hide();
 	}
-	return true;
+	int ret = !m_stopFlag && (ui.lcdBigBalance->value() >= targetV);
+	return ret;
 }
 
 //清空表格，第一列除外("表号"列)
