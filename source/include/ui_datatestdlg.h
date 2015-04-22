@@ -956,7 +956,7 @@ public:
         label_25->setText(QApplication::translate("DataTestDlgClass", "MeterNO.", 0, QApplication::UnicodeUTF8));
         label_26->setText(QApplication::translate("DataTestDlgClass", "T In(\342\204\203)", 0, QApplication::UnicodeUTF8));
         label_27->setText(QApplication::translate("DataTestDlgClass", "T Out(\342\204\203)", 0, QApplication::UnicodeUTF8));
-        label_28->setText(QApplication::translate("DataTestDlgClass", "Flow(m\302\263)", 0, QApplication::UnicodeUTF8));
+        label_28->setText(QApplication::translate("DataTestDlgClass", "Flow(L)", 0, QApplication::UnicodeUTF8));
         label_29->setText(QApplication::translate("DataTestDlgClass", "Heat(kwh)", 0, QApplication::UnicodeUTF8));
         label_31->setText(QApplication::translate("DataTestDlgClass", "Date", 0, QApplication::UnicodeUTF8));
         label_32->setText(QApplication::translate("DataTestDlgClass", "New NO.", 0, QApplication::UnicodeUTF8));

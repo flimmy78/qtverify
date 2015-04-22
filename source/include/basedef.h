@@ -23,8 +23,10 @@
 #define COLUMN_DENSITY		      7 //密度列
 #define COLUMN_STD_VALUE	      8 //标准值
 #define COLUMN_ERROR		      9 //示值误差列
-#define COLUMN_MODIFY_METERNO	  10//修改表号列
-#define COLUMN_ADJUST_ERROR		  11//调整误差列
+#define COLUMN_READ_METER		  10 //读表数据列
+#define COLUMN_VERIFY_STATUS	  11 //设置检定状态列
+#define COLUMN_ADJUST_ERROR		  12 //调整误差列
+#define COLUMN_MODIFY_METERNO	  13 //修改表号列
 
 
 /*

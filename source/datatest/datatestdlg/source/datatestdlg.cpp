@@ -612,7 +612,7 @@ void DataTestDlg::on_btnModifyMeterNo_clicked()
 		return;
 	}
 
-	m_meterObj->askModifyMeterNo(oldMeterNo, newMeterNo); //请求修改表号
+	m_meterObj->askModifyMeterNO(oldMeterNo, newMeterNo); //请求修改表号
 }
 
 //修改流量系数

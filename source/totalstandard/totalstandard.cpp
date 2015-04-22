@@ -1503,7 +1503,7 @@ void TotalStandardDlg::on_btnReadMeter_clicked()
 void TotalStandardDlg::slotModifyMeterNo(const int &row)
 {
 	qDebug()<<"row ="<<row;
-	m_meterObj[row].askModifyMeterNo("12345678", ui.tableWidget->item(row, COLUMN_METER_NUMBER)->text());
+	m_meterObj[row].askModifyMeterNO("12345678", ui.tableWidget->item(row, COLUMN_METER_NUMBER)->text());
 }
 
 /*

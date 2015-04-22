@@ -667,7 +667,7 @@ void MeterComObject::askSetVerifyStatus()
 /*
 ** ÇëÇóÐÞ¸Ä±íºÅ
 */
-void MeterComObject::askModifyMeterNo(QString oldMeterNo, QString newMeterNo)
+void MeterComObject::askModifyMeterNO(QString oldMeterNo, QString newMeterNo)
 {
 	m_meterProtocol->makeFrameOfModifyMeterNo(oldMeterNo, newMeterNo);
 	QByteArray buf = m_meterProtocol->getSendFrame();

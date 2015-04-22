@@ -140,10 +140,10 @@ public slots:
 	void on_btnNext_clicked();    //点击"下一步"按钮
 	void on_btnStop_clicked();    //点击"终止检测"按钮
 	void slotExaustFinished();    //排气时间结束
-	int prepareInitBalance();         //开始检定前，准备天平初始重量
+	int prepareInitBalance();     //开始检定前，准备天平初始重量
 	int openAllValveAndPump();    //打开所有阀门和水泵
-	int readMeter();          //读取热表
-	int setMeterVerifyStatus();   //设置热量表进入检定状态
+	int readAllMeter();           //读取所有被检表
+	int setAllMeterVerifyStatus();   //设置热量表进入检定状态
 	int closeAllFlowPointValves();//关闭所有流量点阀门
 	int closeWaterOutValve();     //关闭放水阀
 	int openWaterOutValve();      //打开放水阀
@@ -196,11 +196,17 @@ public slots:
 	int saveAllVerifyRecords(); //保存所有被检表的检定记录
 	void clearTableContents();
 
-	void on_btnReadMeter_clicked(); //读表按钮
+	void on_btnAllReadMeter_clicked();   //读表(所有表）
+	void on_btnAllVerifyStatus_clicked();//设置检定状态(所有表）
+	void on_btnAllAdjError_clicked(); //调整误差(所有表)
+	void on_btnAllModifyNO_clicked(); //修改表号(所有表）
+
 	void on_btnExit_clicked();//退出按钮
 	
-	void slotModifyMeterNo(const int &row); //修改表号
-	void slotAdjustError(const int &row); //调整误差
+	void slotModifyMeterNO(const int &row); //修改表号
+	void slotAdjustError(const int &row);   //调整误差
+	void slotReadMeter(const int &row);     //读表(单个表)
+	void slotVerifyStatus(const int &row);  //检定状态
 
 private slots:
 

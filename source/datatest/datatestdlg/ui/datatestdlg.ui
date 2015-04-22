@@ -342,7 +342,7 @@
      <item row="3" column="0">
       <widget class="QLabel" name="label_28">
        <property name="text">
-        <string>Flow(m³)</string>
+        <string>Flow(L)</string>
        </property>
       </widget>
      </item>

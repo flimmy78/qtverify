@@ -448,6 +448,8 @@ void FlowWeightDlg::initTableWidget()
 
 	QSignalMapper *m_signalMapper1 = new QSignalMapper();
 	QSignalMapper *m_signalMapper2 = new QSignalMapper();
+	QSignalMapper *m_signalMapper3 = new QSignalMapper();
+	QSignalMapper *m_signalMapper4 = new QSignalMapper();
 
 	QStringList vLabels;
 	for (int i=0; i< m_maxMeterNum; i++)
@@ -458,18 +460,31 @@ void FlowWeightDlg::initTableWidget()
 		ui.tableWidget->setItem(i, COLUMN_METER_START, new QTableWidgetItem(QString()));
 		ui.tableWidget->setItem(i, COLUMN_METER_END, new QTableWidgetItem(QString()));
 
-		QPushButton *btnModNo = new QPushButton(tr("Modify NO."));
+		QPushButton *btnModNo = new QPushButton(tr("ModifyNO"));
 		ui.tableWidget->setCellWidget(i, COLUMN_MODIFY_METERNO, btnModNo);
 		m_signalMapper1->setMapping(btnModNo, i);
 		connect(btnModNo, SIGNAL(clicked()), m_signalMapper1, SLOT(map()));
 
-		QPushButton *btnAdjErr = new QPushButton(tr("Adjust Err"));
+		QPushButton *btnAdjErr = new QPushButton(tr("AdjustErr"));
 		ui.tableWidget->setCellWidget(i, COLUMN_ADJUST_ERROR, btnAdjErr);
 		m_signalMapper2->setMapping(btnAdjErr, i);
 		connect(btnAdjErr, SIGNAL(clicked()), m_signalMapper2, SLOT(map()));
+
+		QPushButton *btnReadMeter = new QPushButton(tr("ReadMeter"));
+		ui.tableWidget->setCellWidget(i, COLUMN_READ_METER, btnReadMeter);
+		m_signalMapper3->setMapping(btnReadMeter, i);
+		connect(btnReadMeter, SIGNAL(clicked()), m_signalMapper3, SLOT(map()));
+
+		QPushButton *btnVerifySt = new QPushButton(tr("VerifySt"));
+		ui.tableWidget->setCellWidget(i, COLUMN_VERIFY_STATUS, btnVerifySt);
+		m_signalMapper4->setMapping(btnVerifySt, i);
+		connect(btnVerifySt, SIGNAL(clicked()), m_signalMapper4, SLOT(map()));
+
 	}
-	connect(m_signalMapper1, SIGNAL(mapped(const int &)),this, SLOT(slotModifyMeterNo(const int &)));
+	connect(m_signalMapper1, SIGNAL(mapped(const int &)),this, SLOT(slotModifyMeterNO(const int &)));
 	connect(m_signalMapper2, SIGNAL(mapped(const int &)),this, SLOT(slotAdjustError(const int &)));
+	connect(m_signalMapper3, SIGNAL(mapped(const int &)),this, SLOT(slotReadMeter(const int &)));
+	connect(m_signalMapper4, SIGNAL(mapped(const int &)),this, SLOT(slotVerifyStatus(const int &)));
 
 	ui.tableWidget->setVerticalHeaderLabels(vLabels);
 // 	ui.tableWidget->resizeColumnsToContents();
@@ -516,7 +531,7 @@ void FlowWeightDlg::on_btnExhaust_clicked()
 
 	if (m_autopick) //自动读表
 	{
-		readMeter();
+		readAllMeter();
 	}
 	else //手动读表
 	{
@@ -577,7 +592,7 @@ void FlowWeightDlg::slotExaustFinished()
 	ui.labelHintPoint->setText(tr("prepare balance ...")); //准备天平
 	prepareInitBalance();//准备天平初始重量
 
-	if (setMeterVerifyStatus()) //设置检定状态成功
+	if (setAllMeterVerifyStatus()) //设置检定状态成功
 	{
 		startVerify();
 	}
@@ -619,20 +634,16 @@ int FlowWeightDlg::prepareInitBalance()
 /*
 ** 读取热表
 */
-int FlowWeightDlg::readMeter()
+int FlowWeightDlg::readAllMeter()
 {
-	on_btnReadMeter_clicked();
+	on_btnAllReadMeter_clicked();
 	return true;
 }
 
-//设置热量表进入检定状态
-int FlowWeightDlg::setMeterVerifyStatus()
+//设置所有热量表进入检定状态
+int FlowWeightDlg::setAllMeterVerifyStatus()
 {
-	for (int i=0; i<m_maxMeterNum; i++)
-	{
-		m_meterObj[i].askSetVerifyStatus();
-	}
-
+	on_btnAllVerifyStatus_clicked();
 	return true;
 }
 
@@ -1367,7 +1378,7 @@ int FlowWeightDlg::getMeterStartValue()
 	if (m_autopick) //自动采集
 	{
 		m_startValueFlag = true;
-		readMeter();
+		readAllMeter();
 		QTest::qWait(2000); //等待串口返回数据
 		return true;
 	}
@@ -1403,7 +1414,7 @@ int FlowWeightDlg::getMeterEndValue()
 	if (m_autopick) //自动采集
 	{
 		m_startValueFlag = false;
-		readMeter();
+		readAllMeter();
 		QTest::qWait(2000); //等待串口返回数据
 		return true;
 	}
@@ -1519,14 +1530,34 @@ int FlowWeightDlg::saveAllVerifyRecords()
 	return true;
 }
 
-//请求读表（广播地址读表）
-void FlowWeightDlg::on_btnReadMeter_clicked()
+//请求读表（所有表、广播地址读表）
+void FlowWeightDlg::on_btnAllReadMeter_clicked()
 {
 	for (int j=0; j<m_maxMeterNum; j++)
 	{
-		m_meterObj[j].setProtocolVersion(m_manufac); //设置热量表厂家
 		m_meterObj[j].askReadMeter();
 	}
+}
+
+//设置检定状态（所有表）
+void FlowWeightDlg::on_btnAllVerifyStatus_clicked()
+{
+	for (int i=0; i<m_maxMeterNum; i++)
+	{
+		m_meterObj[i].askSetVerifyStatus();
+	}
+}
+
+//调整误差（所有表）
+void FlowWeightDlg::on_btnAllAdjError_clicked()
+{
+
+}
+
+//修改表号（所有表）
+void FlowWeightDlg::on_btnAllModifyNO_clicked()
+{
+
 }
 
 /*
@@ -1534,10 +1565,10 @@ void FlowWeightDlg::on_btnReadMeter_clicked()
 ** 输入参数：
 	row:行号，由row可以知道当前热表对应的串口、表号、误差等等
 */
-void FlowWeightDlg::slotModifyMeterNo(const int &row)
+void FlowWeightDlg::slotModifyMeterNO(const int &row)
 {
-	qDebug()<<"row ="<<row;
-	m_meterObj[row].askModifyMeterNo("12345678", ui.tableWidget->item(row, COLUMN_METER_NUMBER)->text());
+	qDebug()<<"slotModifyMeterNO row ="<<row;
+	m_meterObj[row].askModifyMeterNO("12345678", ui.tableWidget->item(row, COLUMN_METER_NUMBER)->text());
 }
 
 /*
@@ -1547,7 +1578,35 @@ void FlowWeightDlg::slotModifyMeterNo(const int &row)
 */
 void FlowWeightDlg::slotAdjustError(const int &row)
 {
-	qDebug()<<"adj row ="<<row;
+	qDebug()<<"slotAdjustError row ="<<row;
+// 	QString meterNO = ui.tableWidget->item(row, COLUMN_METER_NUMBER)->text();
+// 	float bigErr = ui.lnEditBigNewError->text().toFloat();
+// 	float mid2Err = ui.lnEditMid2NewError->text().toFloat();
+// 	float mid1Err = ui.lnEditMid1NewError->text().toFloat();
+// 	float smallErr = ui.lnEditSmallNewError->text().toFloat();
+// 	m_meterObj->askModifyFlowCoe(meterNO, bigErr, mid2Err, mid1Err, smallErr);
+}
+
+/*
+** 读取表号
+** 输入参数：
+	row:行号，由row可以知道当前热表对应的串口、表号、误差等等
+*/
+void FlowWeightDlg::slotReadMeter(const int &row)
+{
+	qDebug()<<"slotReadMeter row ="<<row;
+	m_meterObj[row].askReadMeter();
+}
+
+/*
+** 检定状态
+** 输入参数：
+	row:行号，由row可以知道当前热表对应的串口、表号、误差等等
+*/
+void FlowWeightDlg::slotVerifyStatus(const int &row)
+{
+	qDebug()<<"slotVerifyStatus row ="<<row;
+	m_meterObj[row].askSetVerifyStatus();
 }
 
 void FlowWeightDlg::on_btnExit_clicked()
