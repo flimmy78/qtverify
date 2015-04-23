@@ -69,6 +69,8 @@ signals:
 		void on_btn_exit_clicked();
 
 		void setTblStd1(const QString& tempStr);
+		void setTblStd2(const QString& tempStr);
+		void setTblStd3(const QString& tempStr);
 		void sendCommands();
 		void clearComObjs();
 		void insertData();

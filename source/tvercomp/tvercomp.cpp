@@ -95,7 +95,6 @@ void tvercompDlg::on_btn_read_1_clicked()
 	m_readCommand = sti1062aT1;
 	connect(m_sendTimer, SIGNAL(timeout()), this, SLOT(sendCommands()));
 	connect(this, SIGNAL(commandSendComplete()), m_sendTimer, SLOT(stop()));
-	//connect(this, SIGNAL(commandSendComplete()), this, SLOT(clearComObjs()));
 	m_sendTimer->start(READ_STI1062A_TIMEOUT);
 }
 
@@ -130,12 +129,100 @@ void tvercompDlg::setTblStd1(const QString &tempStr)
 
 void tvercompDlg::on_btn_read_2_clicked()
 {
+	ComInfoStruct tempStruct = m_readComConfig->ReadStdTempConfig();
 
+	if (m_sendTimer == NULL)
+	{
+		m_sendTimer = new QTimer();
+	}
+	if (m_sendTimer->isActive())
+	{
+		m_sendTimer->stop();
+	}
+	if (m_tempObj == NULL)
+	{
+		m_tempObj = new Sti1062aComObject();
+		m_tempObj->openTemperatureCom(&tempStruct);
+		connect(m_tempObj,SIGNAL(temperatureIsReady(const QString&)), this, SLOT(setTblStd2(const QString&)));
+	}
+
+	m_readCommand = sti1062aT1;
+	connect(m_sendTimer, SIGNAL(timeout()), this, SLOT(sendCommands()));
+	connect(this, SIGNAL(commandSendComplete()), m_sendTimer, SLOT(stop()));
+	m_sendTimer->start(READ_STI1062A_TIMEOUT);
+}
+
+void tvercompDlg::setTblStd2(const QString &tempStr)
+{
+	switch(m_readCommand)
+	{
+	case sti1062aT1:
+		ui.tbl_std_2->item(1, 0)->setText(tempStr);
+		m_readCommand = sti1062aT2;
+		break;
+	case sti1062aT2:
+		ui.tbl_std_2->item(1, 1)->setText(tempStr);
+		m_readCommand = sti1062aR1;
+		break;
+	case sti1062aR1:
+		ui.tbl_std_2->item(0, 0)->setText(tempStr);
+		m_readCommand = sti1062aR2;
+		break;
+	case sti1062aR2:
+		ui.tbl_std_2->item(0, 1)->setText(tempStr);
+		m_readCommand = sti1062aT1;
+		emit commandSendComplete();
+		break;
+	}
 }
 
 void tvercompDlg::on_btn_read_3_clicked()
 {
+	ComInfoStruct tempStruct = m_readComConfig->ReadStdTempConfig();
 
+	if (m_sendTimer == NULL)
+	{
+		m_sendTimer = new QTimer();
+	}
+	if (m_sendTimer->isActive())
+	{
+		m_sendTimer->stop();
+	}
+	if (m_tempObj == NULL)
+	{
+		m_tempObj = new Sti1062aComObject();
+		m_tempObj->openTemperatureCom(&tempStruct);
+		connect(m_tempObj,SIGNAL(temperatureIsReady(const QString&)), this, SLOT(setTblStd3(const QString&)));
+	}
+
+	m_readCommand = sti1062aT1;
+	connect(m_sendTimer, SIGNAL(timeout()), this, SLOT(sendCommands()));
+	connect(this, SIGNAL(commandSendComplete()), m_sendTimer, SLOT(stop()));
+	m_sendTimer->start(READ_STI1062A_TIMEOUT);
+}
+
+void tvercompDlg::setTblStd3(const QString &tempStr)
+{
+	switch(m_readCommand)
+	{
+	case sti1062aT1:
+		ui.tbl_std_3->item(1, 0)->setText(tempStr);
+		m_readCommand = sti1062aT2;
+		break;
+	case sti1062aT2:
+		ui.tbl_std_3->item(1, 1)->setText(tempStr);
+		m_readCommand = sti1062aR1;
+		break;
+	case sti1062aR1:
+		ui.tbl_std_3->item(0, 0)->setText(tempStr);
+		m_readCommand = sti1062aR2;
+		break;
+	case sti1062aR2:
+		ui.tbl_std_3->item(0, 1)->setText(tempStr);
+		m_readCommand = sti1062aT1;
+		emit commandSendComplete();
+		break;
+	}
 }
 
 void tvercompDlg::on_btn_clear_1_clicked()
@@ -170,12 +257,20 @@ void tvercompDlg::clearComObjs()
 
 void tvercompDlg::on_btn_clear_2_clicked()
 {
-
+	ui.tbl_std_2->item(0, 0)->setText("");
+	ui.tbl_std_2->item(0, 1)->setText("");
+	ui.tbl_std_2->item(1, 0)->setText("");
+	ui.tbl_std_2->item(1, 1)->setText("");
+	clearComObjs();
 }
 
 void tvercompDlg::on_btn_clear_3_clicked()
 {
-
+	ui.tbl_std_3->item(0, 0)->setText("");
+	ui.tbl_std_3->item(0, 1)->setText("");
+	ui.tbl_std_3->item(1, 0)->setText("");
+	ui.tbl_std_3->item(1, 1)->setText("");
+	clearComObjs();
 }
 
 void tvercompDlg::on_tbl_std_1_cellChanged(int i, int j)
@@ -183,12 +278,12 @@ void tvercompDlg::on_tbl_std_1_cellChanged(int i, int j)
 	
 }
 
-void tvercompDlg::on_tbl_std_2_cellChanged(int, int)
+void tvercompDlg::on_tbl_std_2_cellChanged(int i, int j)
 {
 
 }
 
-void tvercompDlg::on_tbl_std_3_cellChanged(int, int)
+void tvercompDlg::on_tbl_std_3_cellChanged(int i, int j)
 {
 
 }
@@ -255,17 +350,137 @@ void tvercompDlg::on_tbl_in_1_cellChanged(int i, int j)
 			err = delta/delta_std - 1;//误差
 			ui.tbl_chkerror_1->item(i, 2)->setText(QString::number(err*100));//误差%
 		}
-	}	
+	}
 }
 
-void tvercompDlg::on_tbl_in_2_cellChanged(int, int)
+void tvercompDlg::on_tbl_in_2_cellChanged(int i, int j)
 {
+	if (ui.tbl_in_2->item(i, j)->text().isEmpty())
+	{
+		return;
+	}
 
+	float pla_a, pla_b, pla_r0;//被检铂电阻的电气参数
+	pla_a	= m_chk_pla_config->value("setting/a").toFloat();
+	pla_b	= m_chk_pla_config->value("setting/b").toFloat();
+	pla_r0	= m_chk_pla_config->value("setting/r0").toFloat();
+
+	float std_in_t, std_out_t, std_in_r, std_out_r;//标准温度计的进出口温度值，阻值
+	float in_t, out_t, in_r, out_r;//被检铂电阻的进出口温度值，阻值
+	float delta;//被检铂电阻与标准温度计的温度差
+	float delta_std;//标准温度计与标准温度计的温度差
+	float err;//被检铂电阻进出口温度差与标准温度计进出口温差的误差
+	if (j==1)//温度计进口阻值
+	{
+		std_in_t = ui.tbl_std_2->item(1, 0)->text().trimmed().toFloat();
+		in_r = ui.tbl_in_2->item(i, j)->text().trimmed().toFloat();
+		in_t = getPlaTr(pla_r0, pla_a, pla_b, in_r);
+		delta = in_t - std_in_t;
+		ui.tbl_chkerror_2->item(i, j-1)->setText(QString::number(delta));//写入计算出的与标准温度计的温度差
+		if (!ui.tbl_in_2->item(i, j+1)->text().trimmed().isEmpty())//写入误差
+		{
+			std_in_t = ui.tbl_std_2->item(1, 0)->text().trimmed().toFloat();
+			std_out_t = ui.tbl_std_2->item(1, 1)->text().trimmed().toFloat();
+			delta_std = std_in_t - std_out_t;//标准温度计温差
+
+			in_r = ui.tbl_in_2->item(i, j)->text().trimmed().toFloat();//进口阻值
+			out_r = ui.tbl_in_2->item(i, j+1)->text().trimmed().toFloat();//出口阻值
+			in_t = getPlaTr(pla_r0, pla_a, pla_b, in_r);//进口温度值
+			out_t = getPlaTr(pla_r0, pla_a, pla_b, out_r);//出口温度值
+			delta = in_t - out_t;//被检铂电阻温差
+
+			err = delta/delta_std - 1;//误差 = (被检铂电阻温差/标准温度计温差) - 1
+			ui.tbl_chkerror_2->item(i, 2)->setText(QString::number(err*100));//误差%
+		}
+	}
+	else if (j==2)//温度计出口阻值
+	{
+		std_out_t = ui.tbl_std_2->item(1,1)->text().trimmed().toFloat();
+		out_r = ui.tbl_in_2->item(i, j)->text().trimmed().toFloat();
+		out_t = getPlaTr(pla_r0, pla_a, pla_b, out_r);
+		delta = out_t - std_out_t;
+		ui.tbl_chkerror_2->item(i, j-1)->setText(QString::number(delta));//写入计算出的与标准温度计的温度差
+		if (!ui.tbl_in_2->item(i, j-1)->text().trimmed().isEmpty())//写入误差
+		{
+			std_in_t = ui.tbl_std_2->item(1, 0)->text().trimmed().toFloat();
+			std_out_t = ui.tbl_std_2->item(1, 1)->text().trimmed().toFloat();
+			delta_std = std_in_t - std_out_t;//标准温度计温差
+
+			in_r = ui.tbl_in_2->item(i, j-1)->text().trimmed().toFloat();//进口阻值
+			out_r = ui.tbl_in_2->item(i, j)->text().trimmed().toFloat();//出口阻值
+			in_t = getPlaTr(pla_r0, pla_a, pla_b, in_r);//进口温度值
+			out_t = getPlaTr(pla_r0, pla_a, pla_b, out_r);//出口温度值
+			delta = in_t - out_t;//被检铂电阻温差
+
+			err = delta/delta_std - 1;//误差
+			ui.tbl_chkerror_2->item(i, 2)->setText(QString::number(err*100));//误差%
+		}
+	}
 }
 
-void tvercompDlg::on_tbl_in_3_cellChanged(int, int)
+void tvercompDlg::on_tbl_in_3_cellChanged(int i, int j)
 {
+	if (ui.tbl_in_3->item(i, j)->text().isEmpty())
+	{
+		return;
+	}
 
+	float pla_a, pla_b, pla_r0;//被检铂电阻的电气参数
+	pla_a	= m_chk_pla_config->value("setting/a").toFloat();
+	pla_b	= m_chk_pla_config->value("setting/b").toFloat();
+	pla_r0	= m_chk_pla_config->value("setting/r0").toFloat();
+
+	float std_in_t, std_out_t, std_in_r, std_out_r;//标准温度计的进出口温度值，阻值
+	float in_t, out_t, in_r, out_r;//被检铂电阻的进出口温度值，阻值
+	float delta;//被检铂电阻与标准温度计的温度差
+	float delta_std;//标准温度计与标准温度计的温度差
+	float err;//被检铂电阻进出口温度差与标准温度计进出口温差的误差
+	if (j==1)//温度计进口阻值
+	{
+		std_in_t = ui.tbl_std_3->item(1, 0)->text().trimmed().toFloat();
+		in_r = ui.tbl_in_3->item(i, j)->text().trimmed().toFloat();
+		in_t = getPlaTr(pla_r0, pla_a, pla_b, in_r);
+		delta = in_t - std_in_t;
+		ui.tbl_chkerror_3->item(i, j-1)->setText(QString::number(delta));//写入计算出的与标准温度计的温度差
+		if (!ui.tbl_in_3->item(i, j+1)->text().trimmed().isEmpty())//写入误差
+		{
+			std_in_t = ui.tbl_std_3->item(1, 0)->text().trimmed().toFloat();
+			std_out_t = ui.tbl_std_3->item(1, 1)->text().trimmed().toFloat();
+			delta_std = std_in_t - std_out_t;//标准温度计温差
+
+			in_r = ui.tbl_in_3->item(i, j)->text().trimmed().toFloat();//进口阻值
+			out_r = ui.tbl_in_3->item(i, j+1)->text().trimmed().toFloat();//出口阻值
+			in_t = getPlaTr(pla_r0, pla_a, pla_b, in_r);//进口温度值
+			out_t = getPlaTr(pla_r0, pla_a, pla_b, out_r);//出口温度值
+			delta = in_t - out_t;//被检铂电阻温差
+
+			err = delta/delta_std - 1;//误差 = (被检铂电阻温差/标准温度计温差) - 1
+			ui.tbl_chkerror_3->item(i, 2)->setText(QString::number(err*100));//误差%
+		}
+	}
+	else if (j==2)//温度计出口阻值
+	{
+		std_out_t = ui.tbl_std_3->item(1,1)->text().trimmed().toFloat();
+		out_r = ui.tbl_in_3->item(i, j)->text().trimmed().toFloat();
+		out_t = getPlaTr(pla_r0, pla_a, pla_b, out_r);
+		delta = out_t - std_out_t;
+		ui.tbl_chkerror_3->item(i, j-1)->setText(QString::number(delta));//写入计算出的与标准温度计的温度差
+		if (!ui.tbl_in_3->item(i, j-1)->text().trimmed().isEmpty())//写入误差
+		{
+			std_in_t = ui.tbl_std_3->item(1, 0)->text().trimmed().toFloat();
+			std_out_t = ui.tbl_std_3->item(1, 1)->text().trimmed().toFloat();
+			delta_std = std_in_t - std_out_t;//标准温度计温差
+
+			in_r = ui.tbl_in_3->item(i, j-1)->text().trimmed().toFloat();//进口阻值
+			out_r = ui.tbl_in_3->item(i, j)->text().trimmed().toFloat();//出口阻值
+			in_t = getPlaTr(pla_r0, pla_a, pla_b, in_r);//进口温度值
+			out_t = getPlaTr(pla_r0, pla_a, pla_b, out_r);//出口温度值
+			delta = in_t - out_t;//被检铂电阻温差
+
+			err = delta/delta_std - 1;//误差
+			ui.tbl_chkerror_3->item(i, 2)->setText(QString::number(err*100));//误差%
+		}
+	}
 }
 
 void tvercompDlg::on_btn_excel_clicked()
