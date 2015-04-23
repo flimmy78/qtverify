@@ -317,9 +317,9 @@ public:
 };
 typedef Flow_Verify_Record_STR* Flow_Verify_Record_PTR;
 
-/*************************************************************************/
-/* V_Flow_Verify_Record, 对应视图V_Flow_Verify_Record的结构               */
-/*************************************************************************/
+/*
+** FUNCTION -- V_Flow_Verify_Record, 对应视图V_Flow_Verify_Record的结构
+*/
 class V_Flow_Verify_Record_STR : public Flow_Verify_Record_STR
 {
 public:
@@ -361,4 +361,38 @@ public:
 };
 typedef DatabasePara_STR* DatabasePara_PTR;
 
+/*
+** FUNCTION -- 铂电阻检定结果记录, 对应T_Platinium_Verify_Record
+*/
+class T_Platinium_Verify_Record_STR
+{
+public:
+		int F_ID;							//id
+		char timestamp[TIMESTAMP_LEN];		//时间戳（'yyyy-MM-dd HH:mm:ss.zzz')
+		int F_CompOrParam;					//比较法或参数法, 0-比较法, 1-参数法
+		int F_PlaManufactDept;				//被检铂电阻制造单位，外键(T_Manufacture_Dept.F_ID)
+		int F_Standard;						//表规格(DN15/DN20/DN25)，外键(T_Meter_Standard.F_ID)
+		int F_Model;						//表型号，外键(T_Meter_Model.F_ID)
+		int F_ManufactDept;					//热量表制造单位，外键(T_Manufacture_Dept.F_ID)
+		int F_VerifyDept;					//送检单位，外键(T_Verify_Dept.F_ID)
+		int F_VerifyPerson;					//检定员，外键(T_User_Def_Tab.F_ID)
+		int F_CheckPerson;					//核验员，外键(T_User_Def_Tab.F_ID)
+		float F_MinTmpDiff;					//最小温差, 参数
+		float F_TmpDiff;					//检测温差
+		float F_StdInRresis;				//标准温度计进口电阻值
+		float F_StdOutRresis;				//标准温度计出口电阻值
+		float F_StdInTmp;					//标准温度计进口电温度
+		float F_StdOutTmp;					//标准温度计出口电温度
+		float F_PlaSerial;					//被检铂电阻序列号
+		float F_PlaInRresis;				//被检铂电阻进口电阻值
+		float F_PlaOutRresis;				//被检铂电阻出口电阻值
+		float F_PlaParamR0;					//被检铂电阻0℃电阻值
+		float F_PlaCoeA;					//被检铂电阻系数A
+		float F_PlaCoeB;					//被检铂电阻系数B
+		float F_PlaCoeC;					//被检铂电阻系数C
+		float F_InErr;						//被检铂电阻进口误差限(℃ %)
+		float F_OutErr;						//被检铂电阻进口误差限(℃ %)
+		float F_MaxErrPoint;				//最大误差点
+};
+typedef T_Platinium_Verify_Record_STR* T_Platinium_Verify_Record_PTR;
 #endif	//BASEDEF_H

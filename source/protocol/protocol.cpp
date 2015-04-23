@@ -17,6 +17,7 @@
 
 #include <QtCore/QDebug>
 #include <QtCore/QDateTime>
+#include <QStringList>
 
 #include <math.h>
 #include "protocol.h"
@@ -1296,4 +1297,106 @@ void TgMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMe
 void TgMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr)
 {
 
+}
+
+/************************************************************************/
+/*   标准温度计-STI-1062A串口协议类                                       */
+/************************************************************************/
+sti1062ATempProtocol::sti1062ATempProtocol()
+{
+	m_state = DATA_STATE;
+}
+
+sti1062ATempProtocol::~sti1062ATempProtocol()
+{
+
+}
+
+void sti1062ATempProtocol::makeSendBuf(sti1062Acommand command)
+{
+	switch(command)
+	{
+		case sti1062aT12:
+			m_sendBuf = CHNT12;
+			break;
+		case sti1062aR12:
+			m_sendBuf = CHNR12;
+			break;
+		case sti1062aT1:
+			m_sendBuf = CHNT1;
+			break;
+		case sti1062aT2:
+			m_sendBuf = CHNT2;
+			break;
+		case sti1062aR1:
+			m_sendBuf = CHNR1;
+			break;
+		case sti1062aR2:
+			m_sendBuf = CHNR2;
+			break;
+		default:
+			m_sendBuf = CHNT12;
+			break;
+	}
+}
+
+QByteArray sti1062ATempProtocol::getSendBuf()
+{
+	return m_sendBuf;
+}
+
+bool sti1062ATempProtocol::readTemperComBuffer(QByteArray tmp)
+{
+	int number = tmp.size();
+	//Q_ASSERT(number > 0);
+	
+	bool ret = false;
+	char b = '\0';
+	for (int i=0; i < number; i++)
+	{
+		b = tmp[i];
+		switch(m_state)
+		{
+			case DATA_STATE:
+				switch(b)
+				{
+					case ASCII_CR:
+							m_state = END_STATE;
+						break;
+					default:
+						ret = false;
+						m_readBuf.append(b);
+						break;
+				}
+				break;
+			case END_STATE:
+				switch(b)
+				{
+					case ASCII_LF:
+						m_readBuf.append(b);
+						ret = true;
+						break;
+					default:
+						m_state = DATA_STATE;
+						ret = false;
+						m_readBuf.append(b);
+						break;
+				}
+				break;
+			default:
+				break;
+		}
+	}
+
+	if (ret)
+	{
+		m_valueStr = m_readBuf;
+		m_readBuf.clear();
+	}
+	return ret;
+}
+
+QString sti1062ATempProtocol::getReadStr()
+{
+	return m_valueStr;
 }

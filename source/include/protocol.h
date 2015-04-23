@@ -355,4 +355,43 @@ private:
 };
 //热量表通讯协议 end
 
+//标准温度计-STI-1062A串口协议类
+#define CHNT12	QString("FETC?").toLatin1().append(ASCII_CR).append(ASCII_LF)//读取通道1，2的温度值
+#define CHNR12	QString("FETC?R").toLatin1().append(ASCII_CR).append(ASCII_LF)//读取通道1，2的电阻值
+#define CHNT1	QString("FETC? (@1)").toLatin1().append(ASCII_CR).append(ASCII_LF)//读取通道1的温度值
+#define CHNR1	QString("FETC?R (@1)").toLatin1().append(ASCII_CR).append(ASCII_LF)//读取通道1的电阻值
+#define CHNT2	QString("FETC? (@2)").toLatin1().append(ASCII_CR).append(ASCII_LF)//读取通道2的温度值
+#define CHNR2	QString("FETC?R (@2)").toLatin1().append(ASCII_CR).append(ASCII_LF)//读取通道2的电阻值
+
+#define DATA_STATE	0x00
+#define END_STATE	0x01
+enum sti1062Acommand
+{
+	sti1062aT12=0,
+	sti1062aR12,
+	sti1062aT1,
+	sti1062aT2,
+	sti1062aR1,
+	sti1062aR2
+};
+
+class PROTOCOL_EXPORT sti1062ATempProtocol : public CProtocol
+{
+	QByteArray m_sendBuf;//发送命令
+	QByteArray m_readBuf;//接收到的数据
+	QString m_valueStr;//读到的数值
+	int m_state;
+public:
+	sti1062ATempProtocol();
+	~sti1062ATempProtocol();
+
+	public slots:
+		bool readTemperComBuffer(QByteArray tmp);
+		void makeSendBuf(sti1062Acommand);
+		QByteArray getSendBuf();
+		QString getReadStr();
+private:
+
+};
+
 #endif // PROTOCOL_H
