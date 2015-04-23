@@ -692,3 +692,95 @@ void MeterComObject::askModifyFlowCoe(QString meterNO, float bigErr, float mid2E
 	m_meterCom->write(buf);
 }
 
+/*
+** 类名：Sti1062aComObject
+** 功能：Sti1062a温度串口类-打开串口;设置串口参数；关闭串口；
+*/
+Sti1062aComObject::Sti1062aComObject(QObject* parent) : ComObject(parent)
+{
+	m_tempCom = NULL;
+	m_sti1062aProtocol = new sti1062ATempProtocol();
+}
+
+Sti1062aComObject::~Sti1062aComObject()
+{
+	if(m_tempCom != NULL)
+	{
+		if(m_tempCom->isOpen())
+		{
+			m_tempCom->close();
+			qDebug()<<"m_tempCom closed";
+		}
+		delete m_tempCom;
+	}
+
+	if (m_sti1062aProtocol != NULL)
+	{
+		delete m_sti1062aProtocol;
+		m_sti1062aProtocol = NULL;
+	}
+
+}
+
+bool Sti1062aComObject::openTemperatureCom(ComInfoStruct *comStruct)
+{
+	qDebug()<<"open Sti1062aTemperatureCom thread:"<<QThread::currentThreadId();
+
+	QString portName = comStruct->portName;// "COM2";//获取串口名
+#ifdef Q_OS_LINUX
+	m_tempCom = new QextSerialPort("/dev/" + portName);
+#elif defined (Q_OS_WIN)
+	m_tempCom = new QextSerialPort(portName, QextSerialPort::EventDriven);
+#endif
+	connect(m_tempCom, SIGNAL(readyRead()), this, SLOT(readTemperatureComBuffer()));
+	m_tempCom->setBaudRate((BaudRateType)comStruct->baudRate);// BAUD9600); //设置波特率  
+	m_tempCom->setDataBits((DataBitsType)comStruct->dataBit); //DATA_8);    //设置数据位
+	m_tempCom->setParity((ParityType)comStruct->parity);	  //PAR_EVEN);  //设置校验位
+	m_tempCom->setStopBits((StopBitsType)comStruct->stopBit); //STOP_1);    //设置停止位
+	m_tempCom->setFlowControl(FLOW_OFF); //设置数据流控制  
+	m_tempCom->setTimeout(TIME_OUT);     //设置延时
+
+	if(m_tempCom->open(QIODevice::ReadWrite))
+	{
+		qDebug()<<"Open Temperature Com:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
+		return true;
+	}
+	else
+	{
+		qDebug()<<"Open Temperature Com:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
+		return false;
+	}
+}
+
+//请求温度
+void Sti1062aComObject::writeTemperatureComBuffer(sti1062Acommand command)
+{
+	m_sti1062aProtocol->makeSendBuf(command);
+	m_tempCom->write(m_sti1062aProtocol->getSendBuf());
+}
+
+//读温度串口缓冲区
+void Sti1062aComObject::readTemperatureComBuffer()
+{
+	QByteArray tmp = m_tempCom->readAll();
+
+	bool ret = false;
+	ret = m_sti1062aProtocol->readTemperComBuffer(tmp); //通讯协议接口
+	if (ret)
+	{
+		m_tempCom->flush();
+		tmp = m_tempCom->readAll();
+		QString tempStr = m_sti1062aProtocol->getReadStr();
+		emit temperatureIsReady(tempStr);
+	}
+	//if (m_sti1062aProtocol->readTemperComBuffer(m_tempCom->readAll()))
+	//{
+	//	m_tempCom->flush();
+	//	emit temperatureIsReady(m_sti1062aProtocol->getReadStr());
+	//}
+}
+
+void Sti1062aComObject::close()
+{
+	m_tempCom->close();
+}

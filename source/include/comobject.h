@@ -195,5 +195,27 @@ public slots:
 	void setProtocolVersion(int version);
 };
 
+/*
+** 类名：Sti1062aComObject
+** 功能：Sti1062a温度串口类-打开串口;设置串口参数；关闭串口；
+*/
+class COMOBJECT_EXPORT Sti1062aComObject : public ComObject
+{
+	Q_OBJECT  
 
+public: 
+	Sti1062aComObject(QObject* parent=0);
+	~Sti1062aComObject();
+
+	QextSerialPort *m_tempCom;      //温度采集串口
+	sti1062ATempProtocol *m_sti1062aProtocol;   //温度采集通讯协议类对象
+signals:
+	void temperatureIsReady(const QString &tempStr); //成功获取仪器返回值
+
+	public slots:
+		bool openTemperatureCom(ComInfoStruct *comStruct);
+		void writeTemperatureComBuffer(sti1062Acommand);
+		void readTemperatureComBuffer();
+		void close();
+};
 #endif //COMOBJECT_H
