@@ -321,10 +321,11 @@ create table T_Platinium_Verify_Record
 	F_Model integer,                    --表型号，外键(T_Meter_Model.F_ID)
 	F_ManufactDept integer,             --热量表制造单位，外键(T_Manufacture_Dept.F_ID)
 	F_VerifyDept integer,               --送检单位，外键(T_Verify_Dept.F_ID)
-	F_VerifyPerson integer,             --检定员，外键(T_User_Def_Tab.F_ID)
-	F_CheckPerson integer,              --核验员，外键(T_User_Def_Tab.F_ID)
+	F_CheckPerson integer,             	--检定员，外键(T_User_Def_Tab.F_ID)
+	F_VerifyPerson integer,             --核验员，外键(T_User_Def_Tab.F_ID)
 	F_MinTmpDiff float,					--最小温差, 参数
 	F_TmpDiff float,					--检测温差
+	F_StdModel varchar(50),				--标准温度计型号
 	F_StdInRresis float,				--标准温度计进口电阻值
 	F_StdOutRresis float,				--标准温度计出口电阻值
 	F_StdInTmp float,					--标准温度计进口电温度
@@ -337,7 +338,7 @@ create table T_Platinium_Verify_Record
 	F_PlaCoeB float,					--被检铂电阻系数B
 	F_PlaCoeC float,					--被检铂电阻系数C
 	F_InErr	float,						--被检铂电阻进口误差限(℃ %)
-	F_OutErr	float,					--被检铂电阻进口误差限(℃ %)
+	F_OutErr	float,					--被检铂电阻出口误差限(℃ %)
 	F_MaxErrPoint float,				--最大误差点
 	constraint F_Model_fk foreign key(F_Model) references T_Meter_Model(F_ID),
 	constraint F_Standard_fk foreign key(F_Standard) references T_Meter_Standard(F_ID),

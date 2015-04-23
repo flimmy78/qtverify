@@ -537,7 +537,8 @@ int insertPlatiniumVerifyRec(T_Platinium_Verify_Record_PTR ptr, int num)
 		sql.append("F_PlaCoeC,");
 		sql.append("F_InErr,");
 		sql.append("F_OutErr,");
-		sql.append("F_MaxErrPoint");
+		sql.append("F_MaxErrPoint,");
+		sql.append("F_StdModel");
 		sql.append(") ");
 		sql.append("values");
 		sql.append("(");//start
@@ -565,7 +566,8 @@ int insertPlatiniumVerifyRec(T_Platinium_Verify_Record_PTR ptr, int num)
 		sql.append(QString("%1, ").arg(ptr[i].F_PlaCoeC, 6, 'g', 6));
 		sql.append(QString("%1, ").arg(ptr[i].F_InErr, 6, 'g', 6));
 		sql.append(QString("%1, ").arg(ptr[i].F_OutErr, 6, 'g', 6));
-		sql.append(QString("%1").arg(ptr[i].F_MaxErrPoint, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_MaxErrPoint, 6, 'g', 6));
+		sql.append(QString("%1").arg(ptr[i].F_StdModel, 0, 10));
 		sql.append(")");//end
 		if (query.exec(sql))
 		{

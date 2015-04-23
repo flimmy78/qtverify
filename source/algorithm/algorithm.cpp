@@ -15,6 +15,7 @@
 #include <QtCore/QDebug>
 #include <QtCore/QSettings>
 #include <QProcessEnvironment>
+#include <qmath.h>
 
 #include "algorithm.h"
 #include "commondefine.h"
@@ -161,6 +162,15 @@ plaParam_PTR getPlaParam(pla_T_R_PTR pla_p, int num)
 	return p_param;
 }
 
+float getPlaRt(float r0, float a, float b, float tmp)
+{
+	return r0*(1+a*tmp+b*tmp*tmp);
+}
+
+float getPlaTr(float r0, float a, float b, float resis)
+{
+	return (qSqrt(a*a + 4*b*(resis/r0 - 1)) - a)/(2*b);
+}
 /**********************************************************
 类名：CAlgorithm
 功能：检定算法类

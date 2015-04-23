@@ -25,6 +25,7 @@
 #include "tvercompparamdlg.h"
 
 #define READ_STI1062A_TIMEOUT	200//定时器间隔
+#define TMP_DIFF_NUMBER			3//温差点个数
 #define VERIFY_NUMBER			12//被检铂电阻个数
 
 class TVERCOMP_EXPORT tvercompDlg : public QWidget
@@ -78,13 +79,17 @@ private:
 	QTimer* m_sendTimer;//定时发送命令
 	sti1062Acommand m_readCommand;
 	QSettings* m_tvercomp_config;//温度计比较法参数设置
+	QSettings* m_std_pla_config;//标准温度计参数
 	QSettings* m_chk_pla_config;//被检温度计参数
 	ReadComConfig* m_readComConfig;//串口设置
 	Sti1062aComObject* m_tempObj;//标准温度计串口对象
 
 	T_Platinium_Verify_Record_PTR m_PlaVerifyRecPtr;//检测结果记录
+	int m_rec_num;//需要保存的记录个数
+
 private:
 	void readConfig();//读取标准温度计、被检铂电阻、检测参数等
+	void readChkResult();//读取被检铂电阻检测结果
 };
 
 #endif//TCHKCOMP_H

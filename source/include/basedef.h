@@ -375,8 +375,8 @@ public:
 		int F_Model;						//表型号，外键(T_Meter_Model.F_ID)
 		int F_ManufactDept;					//热量表制造单位，外键(T_Manufacture_Dept.F_ID)
 		int F_VerifyDept;					//送检单位，外键(T_Verify_Dept.F_ID)
-		int F_VerifyPerson;					//检定员，外键(T_User_Def_Tab.F_ID)
-		int F_CheckPerson;					//核验员，外键(T_User_Def_Tab.F_ID)
+		int F_CheckPerson;					//检定员，外键(T_User_Def_Tab.F_ID)
+		int F_VerifyPerson;					//核验员，外键(T_User_Def_Tab.F_ID)
 		float F_MinTmpDiff;					//最小温差, 参数
 		float F_TmpDiff;					//检测温差
 		float F_StdInRresis;				//标准温度计进口电阻值
@@ -393,6 +393,7 @@ public:
 		float F_InErr;						//被检铂电阻进口误差限(℃ %)
 		float F_OutErr;						//被检铂电阻进口误差限(℃ %)
 		float F_MaxErrPoint;				//最大误差点
+		char  F_StdModel[ZH_NAME_LEN];		//标准铂电阻型号(唯力，华仪等)
 };
 typedef T_Platinium_Verify_Record_STR* T_Platinium_Verify_Record_PTR;
 #endif	//BASEDEF_H

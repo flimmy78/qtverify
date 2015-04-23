@@ -23,7 +23,9 @@ ALGORITHM_EXPORT int getParaSetIni(ParaSet_Ini_PTR info); //获取参数设置(质量法-
 ALGORITHM_EXPORT int getMasterSlaveIni(MasterSlave_Ini_PTR info); //获取主机-从机设置信息
 ALGORITHM_EXPORT QString getIniFileName(QString ini);//获取配置文件int的完整路径
 ALGORITHM_EXPORT float detA(float a00, float a01, float a10, float a11);//计算2阶行列式的值， aij表示第i行 第j列的元素
-ALGORITHM_EXPORT plaParam_PTR getPlaParam(pla_T_R_PTR pla_p, int num=3);//计算铂电阻的计算系数
+ALGORITHM_EXPORT plaParam_PTR getPlaParam(pla_T_R_PTR pla_p, int num=3);//计算铂电阻的电气系数
+ALGORITHM_EXPORT float getPlaRt(float r0, float a, float b, float tmp);//计算铂电阻在温度tmp(tmp>0℃)时的电阻值
+ALGORITHM_EXPORT float getPlaTr(float r0, float a, float b, float resis);//计算铂电阻在电阻值resis(resis>r0)时的温度值
 const float density[150] = {
 	1000.2f,
 	1000.2f,

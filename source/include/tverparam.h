@@ -19,7 +19,6 @@
 #include <QtGui/QDataWidgetMapper>
 #include "ui_tverparam.h"
 #include "tverparamparamdlg.h"
-#include "protocol.h"
 
 class TVERPARAM_EXPORT tverparamDlg : public QWidget
 {
@@ -30,15 +29,13 @@ public:
 	~tverparamDlg();
 
 public:
-	float readStdTmp();//
 	public slots:
 		void closeEvent(QCloseEvent * event);
 
-
-		void on_btn_param_clicked();
+		void on_btn_param_clicked();//设置参数
 		void on_btn_excel_clicked();//保存至Excel
 		void on_btn_save_clicked();//保存至数据库
-		void on_btn_exit_clicked();
+		void on_btn_exit_clicked();//退出
 private:
 	Ui::PlaParamDlgClass ui;
 	tverparamparamDlg *m_PlaCompParamDlg;
