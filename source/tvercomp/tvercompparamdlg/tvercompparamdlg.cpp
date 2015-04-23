@@ -3,18 +3,12 @@
 #include <QSqlRelationalTableModel>
 #include <QProcessEnvironment>
 #include "tvercompparamdlg.h"
+#include "algorithm.h"
 
 tvercompparamDlg::tvercompparamDlg(QWidget *parent /* = 0 */, Qt::WFlags flags /* = 0 */)
 	: QWidget(parent, flags)
 {
-	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
-	QString config_file;
-#ifdef Q_OS_LINUX
-	config_file = runhome + "\/ini\/tvercompconfig.ini";
-#elif defined (Q_OS_WIN)
-	config_file = runhome + "\\ini\\tvercompconfig.ini";
-#endif
-	m_config = new QSettings(config_file, QSettings::IniFormat);
+	m_config = new QSettings(getIniFileName("tvercompconfig.ini"), QSettings::IniFormat);
 
 	ui.setupUi(this);
 

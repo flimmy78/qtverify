@@ -16,10 +16,16 @@
 #endif
 
 #include <QtGui/QWidget>
-#include <QtGui/QDataWidgetMapper>
+#include <QSettings>
+#include <QTimer>
+#include "protocol.h"
+#include "readcomconfig.h"
+#include "comobject.h"
 #include "ui_tvercomp.h"
 #include "tvercompparamdlg.h"
-#include "protocol.h"
+
+#define READ_STI1062A_TIMEOUT	200//定时器间隔
+#define VERIFY_NUMBER			12//被检铂电阻个数
 
 class TVERCOMP_EXPORT tvercompDlg : public QWidget
 {
@@ -31,6 +37,8 @@ public:
 
 public:
 	float readStdTmp();//
+signals:
+	void commandSendComplete(void);//读取温度命令已发送完毕
 	public slots:
 		void closeEvent(QCloseEvent * event);
 
@@ -44,25 +52,39 @@ public:
 		void on_btn_clear_2_clicked();
 		void on_btn_clear_3_clicked();
 
-		/******被检铂电阻阻值*********/
+		/******标准温度计数值*********/
 		void on_tbl_std_1_cellChanged(int, int);
 		void on_tbl_std_2_cellChanged(int, int);
 		void on_tbl_std_3_cellChanged(int, int);
 
-		/******被检铂电阻误差*********/
-		void on_tbl_chkerror_1_cellChanged(int, int);
-		void on_tbl_chkerror_2_cellChanged(int, int);
-		void on_tbl_chkerror_3_cellChanged(int, int);
+		/******被检铂电阻数值*********/
+		void on_tbl_in_1_cellChanged(int, int);
+		void on_tbl_in_2_cellChanged(int, int);
+		void on_tbl_in_3_cellChanged(int, int);
 
 		void on_btn_param_clicked();
 		void on_btn_excel_clicked();//保存至Excel
 		void on_btn_save_clicked();//保存至数据库
 		void on_btn_exit_clicked();
+
+		void setTblStd1(const QString& tempStr);
+		void sendCommands();
+		void clearComObjs();
+		void insertData();
 private:
 	Ui::PlaCompDlgClass ui;
 	tvercompparamDlg *m_PlaCompParamDlg;
+
+	QTimer* m_sendTimer;//定时发送命令
+	sti1062Acommand m_readCommand;
+	QSettings* m_tvercomp_config;//温度计比较法参数设置
+	QSettings* m_chk_pla_config;//被检温度计参数
+	ReadComConfig* m_readComConfig;//串口设置
+	Sti1062aComObject* m_tempObj;//标准温度计串口对象
+
+	T_Platinium_Verify_Record_PTR m_PlaVerifyRecPtr;//检测结果记录
 private:
-	void readConfig();
+	void readConfig();//读取标准温度计、被检铂电阻、检测参数等
 };
 
 #endif//TCHKCOMP_H

@@ -50,7 +50,7 @@ public:
     {
         if (PlaCompParamDlgClass->objectName().isEmpty())
             PlaCompParamDlgClass->setObjectName(QString::fromUtf8("PlaCompParamDlgClass"));
-        PlaCompParamDlgClass->resize(411, 263);
+        PlaCompParamDlgClass->resize(411, 250);
         groupBox = new QGroupBox(PlaCompParamDlgClass);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         groupBox->setGeometry(QRect(10, 10, 391, 141));

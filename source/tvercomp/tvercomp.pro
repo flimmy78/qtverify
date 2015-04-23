@@ -8,7 +8,7 @@ QMAKE_LIBDIR +=  ./           \
         	     $(RUNHOME)/lib \
 	             $(RUNHOME)/bin 
 	            
-LIBS +=	-lQt3Supportd4 -lQt3Support4 -lprotocol -lsystemsetdlg -lcomobject -lqtexdb -lalgorithm -ltvercompparamDlg
+LIBS +=	-lQt3Supportd4 -lQt3Support4 -lprotocol -lsystemsetdlg -lcomobject -lqtexdb -lalgorithm -ltvercompparamDlg -lqtexdb
 
 DESTDIR = $(RUNHOME)\tmp\tvercomp
 #MOC_DIR = $(RUNHOME)/tmp/tvercomp/moc

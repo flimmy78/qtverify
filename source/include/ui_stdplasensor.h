@@ -240,6 +240,8 @@ public:
         rbtn_weili = new QRadioButton(gBox_model);
         rbtn_weili->setObjectName(QString::fromUtf8("rbtn_weili"));
         rbtn_weili->setGeometry(QRect(200, 20, 89, 16));
+        rbtn_weili->setCheckable(true);
+        rbtn_weili->setChecked(true);
         rbtn_huayi = new QRadioButton(gBox_model);
         rbtn_huayi->setObjectName(QString::fromUtf8("rbtn_huayi"));
         rbtn_huayi->setGeometry(QRect(330, 20, 89, 16));
