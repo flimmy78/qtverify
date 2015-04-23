@@ -47,7 +47,7 @@ QTEXDB_EXPORT	int getManufacture(int& num, Manufacture_PTR &ptr);
 
 QTEXDB_EXPORT	int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id);
 QTEXDB_EXPORT	int insertFlowVerifyRec(Flow_Verify_Record_PTR ptr, int num);
-
+QTEXDB_EXPORT	int insertPlatiniumVerifyRec(T_Platinium_Verify_Record_PTR, int num);
 } //end of extern "C"
 
 QTEXDB_EXPORT   QString getNumPrefixOfManufac(int idx); //获取某制造厂家的表号前缀

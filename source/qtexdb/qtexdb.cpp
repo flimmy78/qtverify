@@ -505,3 +505,78 @@ int getDatabaseParaIni(DatabasePara_PTR info)
 
 	return true;
 }
+
+int insertPlatiniumVerifyRec(T_Platinium_Verify_Record_PTR ptr, int num)
+{
+	for (int i=0; i<num; i++)
+	{
+		QSqlQuery query(g_db); // 新建一个查询的实例
+		QString sql = "insert into T_Flow_Verify_Record";
+		sql.append(" (");
+		sql.append("F_TimeStamp,");
+		sql.append("F_CompOrParam,");
+		sql.append("F_PlaManufactDept,");
+		sql.append("F_Standard,");
+		sql.append("F_Model,");
+		sql.append("F_ManufactDept,");
+		sql.append("F_VerifyDept,");
+		sql.append("F_VerifyPerson,");
+		sql.append("F_CheckPerson,");
+		sql.append("F_MinTmpDiff,");
+		sql.append("F_TmpDiff,");
+		sql.append("F_StdInRresis,");
+		sql.append("F_StdOutRresis,");
+		sql.append("F_StdInTmp,");
+		sql.append("F_StdOutTmp,");
+		sql.append("F_PlaSerial,");
+		sql.append("F_PlaInRresis,");
+		sql.append("F_PlaOutRresis,");
+		sql.append("F_PlaParamR0,");
+		sql.append("F_PlaCoeA ,");
+		sql.append("F_PlaCoeB,");
+		sql.append("F_PlaCoeC,");
+		sql.append("F_InErr,");
+		sql.append("F_OutErr,");
+		sql.append("F_MaxErrPoint");
+		sql.append(") ");
+		sql.append("values");
+		sql.append("(");//start
+		sql.append(QString("\'%1\', ").arg(ptr[i].timestamp, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].F_CompOrParam,0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].F_PlaManufactDept, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].F_Standard, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].F_Model, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].F_ManufactDept, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].F_VerifyDept, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].F_VerifyPerson, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].F_CheckPerson, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].F_MinTmpDiff, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_TmpDiff, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_StdInRresis, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_StdOutRresis, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_StdInTmp, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_StdOutTmp, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_PlaSerial, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_PlaInRresis, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_PlaOutRresis, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_PlaParamR0, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_PlaCoeA, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_PlaCoeB, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_PlaCoeC, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_InErr, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_OutErr, 6, 'g', 6));
+		sql.append(QString("%1").arg(ptr[i].F_MaxErrPoint, 6, 'g', 6));
+		sql.append(")");//end
+		if (query.exec(sql))
+		{
+			qDebug()<<"insert succeed";
+		}
+		else
+		{
+			QSqlError error = query.lastError();
+			qWarning()<<error.text();
+		}
+	}
+
+	return true;
+}
