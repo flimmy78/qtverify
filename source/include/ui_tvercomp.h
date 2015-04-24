@@ -413,7 +413,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem117 = new QTableWidgetItem();
         tbl_in_2->setItem(11, 2, __qtablewidgetitem117);
         tbl_in_2->setObjectName(QString::fromUtf8("tbl_in_2"));
-        tbl_in_2->setGeometry(QRect(20, 210, 171, 391));
+        tbl_in_2->setGeometry(QRect(10, 210, 171, 391));
         tbl_in_2->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_in_2->horizontalHeader()->setDefaultSectionSize(50);
         tbl_in_2->horizontalHeader()->setMinimumSectionSize(10);
@@ -1085,30 +1085,6 @@ public:
 
         const bool __sortingEnabled1 = tbl_in_1->isSortingEnabled();
         tbl_in_1->setSortingEnabled(false);
-        QTableWidgetItem *___qtablewidgetitem7 = tbl_in_1->item(0, 0);
-        ___qtablewidgetitem7->setText(QApplication::translate("PlaCompDlgClass", "d01", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem8 = tbl_in_1->item(1, 0);
-        ___qtablewidgetitem8->setText(QApplication::translate("PlaCompDlgClass", "d02", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem9 = tbl_in_1->item(2, 0);
-        ___qtablewidgetitem9->setText(QApplication::translate("PlaCompDlgClass", "d03", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem10 = tbl_in_1->item(3, 0);
-        ___qtablewidgetitem10->setText(QApplication::translate("PlaCompDlgClass", "d04", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem11 = tbl_in_1->item(4, 0);
-        ___qtablewidgetitem11->setText(QApplication::translate("PlaCompDlgClass", "d05", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem12 = tbl_in_1->item(5, 0);
-        ___qtablewidgetitem12->setText(QApplication::translate("PlaCompDlgClass", "d06", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem13 = tbl_in_1->item(6, 0);
-        ___qtablewidgetitem13->setText(QApplication::translate("PlaCompDlgClass", "d07", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem14 = tbl_in_1->item(7, 0);
-        ___qtablewidgetitem14->setText(QApplication::translate("PlaCompDlgClass", "d08", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem15 = tbl_in_1->item(8, 0);
-        ___qtablewidgetitem15->setText(QApplication::translate("PlaCompDlgClass", "d09", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem16 = tbl_in_1->item(9, 0);
-        ___qtablewidgetitem16->setText(QApplication::translate("PlaCompDlgClass", "d10", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem17 = tbl_in_1->item(10, 0);
-        ___qtablewidgetitem17->setText(QApplication::translate("PlaCompDlgClass", "d11", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem18 = tbl_in_1->item(11, 0);
-        ___qtablewidgetitem18->setText(QApplication::translate("PlaCompDlgClass", "d12", 0, QApplication::UnicodeUTF8));
         tbl_in_1->setSortingEnabled(__sortingEnabled1);
 
         label_4->setText(QApplication::translate("PlaCompDlgClass", "<html><head/><body><p>(Input R value \316\251)</p></body></html>", 0, QApplication::UnicodeUTF8));
@@ -1120,52 +1096,28 @@ public:
         label_8->setText(QApplication::translate("PlaCompDlgClass", "<html><head/><body><p>(Input R value \316\251)</p></body></html>", 0, QApplication::UnicodeUTF8));
         btn_clear_2->setText(QApplication::translate("PlaCompDlgClass", "Clear", 0, QApplication::UnicodeUTF8));
         btn_read_2->setText(QApplication::translate("PlaCompDlgClass", "Read", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem19 = tbl_std_2->horizontalHeaderItem(0);
-        ___qtablewidgetitem19->setText(QApplication::translate("PlaCompDlgClass", "In", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem20 = tbl_std_2->horizontalHeaderItem(1);
-        ___qtablewidgetitem20->setText(QApplication::translate("PlaCompDlgClass", "Out", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem21 = tbl_std_2->verticalHeaderItem(0);
-        ___qtablewidgetitem21->setText(QApplication::translate("PlaCompDlgClass", "R (\316\251)", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem22 = tbl_std_2->verticalHeaderItem(1);
-        ___qtablewidgetitem22->setText(QApplication::translate("PlaCompDlgClass", "T (\342\204\203)", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem7 = tbl_std_2->horizontalHeaderItem(0);
+        ___qtablewidgetitem7->setText(QApplication::translate("PlaCompDlgClass", "In", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem8 = tbl_std_2->horizontalHeaderItem(1);
+        ___qtablewidgetitem8->setText(QApplication::translate("PlaCompDlgClass", "Out", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem9 = tbl_std_2->verticalHeaderItem(0);
+        ___qtablewidgetitem9->setText(QApplication::translate("PlaCompDlgClass", "R (\316\251)", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem10 = tbl_std_2->verticalHeaderItem(1);
+        ___qtablewidgetitem10->setText(QApplication::translate("PlaCompDlgClass", "T (\342\204\203)", 0, QApplication::UnicodeUTF8));
 
         const bool __sortingEnabled2 = tbl_std_2->isSortingEnabled();
         tbl_std_2->setSortingEnabled(false);
         tbl_std_2->setSortingEnabled(__sortingEnabled2);
 
-        QTableWidgetItem *___qtablewidgetitem23 = tbl_in_2->horizontalHeaderItem(0);
-        ___qtablewidgetitem23->setText(QApplication::translate("PlaCompDlgClass", "Serial", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem24 = tbl_in_2->horizontalHeaderItem(1);
-        ___qtablewidgetitem24->setText(QApplication::translate("PlaCompDlgClass", "In", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem25 = tbl_in_2->horizontalHeaderItem(2);
-        ___qtablewidgetitem25->setText(QApplication::translate("PlaCompDlgClass", "Out", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem11 = tbl_in_2->horizontalHeaderItem(0);
+        ___qtablewidgetitem11->setText(QApplication::translate("PlaCompDlgClass", "Serial", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem12 = tbl_in_2->horizontalHeaderItem(1);
+        ___qtablewidgetitem12->setText(QApplication::translate("PlaCompDlgClass", "In", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem13 = tbl_in_2->horizontalHeaderItem(2);
+        ___qtablewidgetitem13->setText(QApplication::translate("PlaCompDlgClass", "Out", 0, QApplication::UnicodeUTF8));
 
         const bool __sortingEnabled3 = tbl_in_2->isSortingEnabled();
         tbl_in_2->setSortingEnabled(false);
-        QTableWidgetItem *___qtablewidgetitem26 = tbl_in_2->item(0, 0);
-        ___qtablewidgetitem26->setText(QApplication::translate("PlaCompDlgClass", "d01", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem27 = tbl_in_2->item(1, 0);
-        ___qtablewidgetitem27->setText(QApplication::translate("PlaCompDlgClass", "d02", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem28 = tbl_in_2->item(2, 0);
-        ___qtablewidgetitem28->setText(QApplication::translate("PlaCompDlgClass", "d03", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem29 = tbl_in_2->item(3, 0);
-        ___qtablewidgetitem29->setText(QApplication::translate("PlaCompDlgClass", "d04", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem30 = tbl_in_2->item(4, 0);
-        ___qtablewidgetitem30->setText(QApplication::translate("PlaCompDlgClass", "d05", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem31 = tbl_in_2->item(5, 0);
-        ___qtablewidgetitem31->setText(QApplication::translate("PlaCompDlgClass", "d06", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem32 = tbl_in_2->item(6, 0);
-        ___qtablewidgetitem32->setText(QApplication::translate("PlaCompDlgClass", "d07", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem33 = tbl_in_2->item(7, 0);
-        ___qtablewidgetitem33->setText(QApplication::translate("PlaCompDlgClass", "d08", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem34 = tbl_in_2->item(8, 0);
-        ___qtablewidgetitem34->setText(QApplication::translate("PlaCompDlgClass", "d09", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem35 = tbl_in_2->item(9, 0);
-        ___qtablewidgetitem35->setText(QApplication::translate("PlaCompDlgClass", "d10", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem36 = tbl_in_2->item(10, 0);
-        ___qtablewidgetitem36->setText(QApplication::translate("PlaCompDlgClass", "d11", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem37 = tbl_in_2->item(11, 0);
-        ___qtablewidgetitem37->setText(QApplication::translate("PlaCompDlgClass", "d12", 0, QApplication::UnicodeUTF8));
         tbl_in_2->setSortingEnabled(__sortingEnabled3);
 
         gBox_inthird->setTitle(QApplication::translate("PlaCompDlgClass", "Third temperature difference", 0, QApplication::UnicodeUTF8));
@@ -1174,78 +1126,54 @@ public:
         label_9->setText(QApplication::translate("PlaCompDlgClass", "<html><head/><body><p>(Input R value \316\251)</p></body></html>", 0, QApplication::UnicodeUTF8));
         btn_read_3->setText(QApplication::translate("PlaCompDlgClass", "Read", 0, QApplication::UnicodeUTF8));
         btn_clear_3->setText(QApplication::translate("PlaCompDlgClass", "Clear", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem38 = tbl_std_3->horizontalHeaderItem(0);
-        ___qtablewidgetitem38->setText(QApplication::translate("PlaCompDlgClass", "In", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem39 = tbl_std_3->horizontalHeaderItem(1);
-        ___qtablewidgetitem39->setText(QApplication::translate("PlaCompDlgClass", "Out", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem40 = tbl_std_3->verticalHeaderItem(0);
-        ___qtablewidgetitem40->setText(QApplication::translate("PlaCompDlgClass", "R (\316\251)", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem41 = tbl_std_3->verticalHeaderItem(1);
-        ___qtablewidgetitem41->setText(QApplication::translate("PlaCompDlgClass", "T (\342\204\203)", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem14 = tbl_std_3->horizontalHeaderItem(0);
+        ___qtablewidgetitem14->setText(QApplication::translate("PlaCompDlgClass", "In", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem15 = tbl_std_3->horizontalHeaderItem(1);
+        ___qtablewidgetitem15->setText(QApplication::translate("PlaCompDlgClass", "Out", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem16 = tbl_std_3->verticalHeaderItem(0);
+        ___qtablewidgetitem16->setText(QApplication::translate("PlaCompDlgClass", "R (\316\251)", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem17 = tbl_std_3->verticalHeaderItem(1);
+        ___qtablewidgetitem17->setText(QApplication::translate("PlaCompDlgClass", "T (\342\204\203)", 0, QApplication::UnicodeUTF8));
 
         const bool __sortingEnabled4 = tbl_std_3->isSortingEnabled();
         tbl_std_3->setSortingEnabled(false);
         tbl_std_3->setSortingEnabled(__sortingEnabled4);
 
-        QTableWidgetItem *___qtablewidgetitem42 = tbl_in_3->horizontalHeaderItem(0);
-        ___qtablewidgetitem42->setText(QApplication::translate("PlaCompDlgClass", "Serial", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem43 = tbl_in_3->horizontalHeaderItem(1);
-        ___qtablewidgetitem43->setText(QApplication::translate("PlaCompDlgClass", "In", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem44 = tbl_in_3->horizontalHeaderItem(2);
-        ___qtablewidgetitem44->setText(QApplication::translate("PlaCompDlgClass", "Out", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem18 = tbl_in_3->horizontalHeaderItem(0);
+        ___qtablewidgetitem18->setText(QApplication::translate("PlaCompDlgClass", "Serial", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem19 = tbl_in_3->horizontalHeaderItem(1);
+        ___qtablewidgetitem19->setText(QApplication::translate("PlaCompDlgClass", "In", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem20 = tbl_in_3->horizontalHeaderItem(2);
+        ___qtablewidgetitem20->setText(QApplication::translate("PlaCompDlgClass", "Out", 0, QApplication::UnicodeUTF8));
 
         const bool __sortingEnabled5 = tbl_in_3->isSortingEnabled();
         tbl_in_3->setSortingEnabled(false);
-        QTableWidgetItem *___qtablewidgetitem45 = tbl_in_3->item(0, 0);
-        ___qtablewidgetitem45->setText(QApplication::translate("PlaCompDlgClass", "d01", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem46 = tbl_in_3->item(1, 0);
-        ___qtablewidgetitem46->setText(QApplication::translate("PlaCompDlgClass", "d02", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem47 = tbl_in_3->item(2, 0);
-        ___qtablewidgetitem47->setText(QApplication::translate("PlaCompDlgClass", "d03", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem48 = tbl_in_3->item(3, 0);
-        ___qtablewidgetitem48->setText(QApplication::translate("PlaCompDlgClass", "d04", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem49 = tbl_in_3->item(4, 0);
-        ___qtablewidgetitem49->setText(QApplication::translate("PlaCompDlgClass", "d05", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem50 = tbl_in_3->item(5, 0);
-        ___qtablewidgetitem50->setText(QApplication::translate("PlaCompDlgClass", "d06", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem51 = tbl_in_3->item(6, 0);
-        ___qtablewidgetitem51->setText(QApplication::translate("PlaCompDlgClass", "d07", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem52 = tbl_in_3->item(7, 0);
-        ___qtablewidgetitem52->setText(QApplication::translate("PlaCompDlgClass", "d08", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem53 = tbl_in_3->item(8, 0);
-        ___qtablewidgetitem53->setText(QApplication::translate("PlaCompDlgClass", "d09", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem54 = tbl_in_3->item(9, 0);
-        ___qtablewidgetitem54->setText(QApplication::translate("PlaCompDlgClass", "d10", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem55 = tbl_in_3->item(10, 0);
-        ___qtablewidgetitem55->setText(QApplication::translate("PlaCompDlgClass", "d11", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem56 = tbl_in_3->item(11, 0);
-        ___qtablewidgetitem56->setText(QApplication::translate("PlaCompDlgClass", "d12", 0, QApplication::UnicodeUTF8));
         tbl_in_3->setSortingEnabled(__sortingEnabled5);
 
         label_27->setText(QApplication::translate("PlaCompDlgClass", "<html><head/><body><p><span style=\" color:#0000ff;\">Step:1.Configure parameter first 2.Input data 3.Generate Excel 4.Save data 5.Exit</span></p></body></html>", 0, QApplication::UnicodeUTF8));
         label_23->setText(QApplication::translate("PlaCompDlgClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:11pt; font-weight:600;\">Result</span></p></body></html>", 0, QApplication::UnicodeUTF8));
         groupBox_8->setTitle(QApplication::translate("PlaCompDlgClass", "First temperature difference", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem57 = tbl_stderror_1->horizontalHeaderItem(0);
-        ___qtablewidgetitem57->setText(QApplication::translate("PlaCompDlgClass", "In", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem58 = tbl_stderror_1->horizontalHeaderItem(1);
-        ___qtablewidgetitem58->setText(QApplication::translate("PlaCompDlgClass", "Out", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem59 = tbl_stderror_1->horizontalHeaderItem(2);
-        ___qtablewidgetitem59->setText(QApplication::translate("PlaCompDlgClass", "\316\224T", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem21 = tbl_stderror_1->horizontalHeaderItem(0);
+        ___qtablewidgetitem21->setText(QApplication::translate("PlaCompDlgClass", "In", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem22 = tbl_stderror_1->horizontalHeaderItem(1);
+        ___qtablewidgetitem22->setText(QApplication::translate("PlaCompDlgClass", "Out", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem23 = tbl_stderror_1->horizontalHeaderItem(2);
+        ___qtablewidgetitem23->setText(QApplication::translate("PlaCompDlgClass", "\316\224T", 0, QApplication::UnicodeUTF8));
 
         const bool __sortingEnabled6 = tbl_stderror_1->isSortingEnabled();
         tbl_stderror_1->setSortingEnabled(false);
         tbl_stderror_1->setSortingEnabled(__sortingEnabled6);
 
-        QTableWidgetItem *___qtablewidgetitem60 = tbl_chkerror_1->horizontalHeaderItem(0);
-        ___qtablewidgetitem60->setText(QApplication::translate("PlaCompDlgClass", "In\n"
+        QTableWidgetItem *___qtablewidgetitem24 = tbl_chkerror_1->horizontalHeaderItem(0);
+        ___qtablewidgetitem24->setText(QApplication::translate("PlaCompDlgClass", "In\n"
 "T\n"
 "(\342\204\203)", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem61 = tbl_chkerror_1->horizontalHeaderItem(1);
-        ___qtablewidgetitem61->setText(QApplication::translate("PlaCompDlgClass", "Out\n"
+        QTableWidgetItem *___qtablewidgetitem25 = tbl_chkerror_1->horizontalHeaderItem(1);
+        ___qtablewidgetitem25->setText(QApplication::translate("PlaCompDlgClass", "Out\n"
 "T\n"
 "(\342\204\203)", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem62 = tbl_chkerror_1->horizontalHeaderItem(2);
-        ___qtablewidgetitem62->setText(QApplication::translate("PlaCompDlgClass", "Error\n"
+        QTableWidgetItem *___qtablewidgetitem26 = tbl_chkerror_1->horizontalHeaderItem(2);
+        ___qtablewidgetitem26->setText(QApplication::translate("PlaCompDlgClass", "Error\n"
 "(%)", 0, QApplication::UnicodeUTF8));
 
         const bool __sortingEnabled7 = tbl_chkerror_1->isSortingEnabled();
@@ -1255,27 +1183,27 @@ public:
         label_24->setText(QApplication::translate("PlaCompDlgClass", "Limit of error \342\204\203/%", 0, QApplication::UnicodeUTF8));
         groupBox_9->setTitle(QApplication::translate("PlaCompDlgClass", "Second temperature difference", 0, QApplication::UnicodeUTF8));
         label_25->setText(QApplication::translate("PlaCompDlgClass", "Limit of error \342\204\203/%", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem63 = tbl_stderror_2->horizontalHeaderItem(0);
-        ___qtablewidgetitem63->setText(QApplication::translate("PlaCompDlgClass", "In", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem64 = tbl_stderror_2->horizontalHeaderItem(1);
-        ___qtablewidgetitem64->setText(QApplication::translate("PlaCompDlgClass", "Out", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem65 = tbl_stderror_2->horizontalHeaderItem(2);
-        ___qtablewidgetitem65->setText(QApplication::translate("PlaCompDlgClass", "\316\224T", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem27 = tbl_stderror_2->horizontalHeaderItem(0);
+        ___qtablewidgetitem27->setText(QApplication::translate("PlaCompDlgClass", "In", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem28 = tbl_stderror_2->horizontalHeaderItem(1);
+        ___qtablewidgetitem28->setText(QApplication::translate("PlaCompDlgClass", "Out", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem29 = tbl_stderror_2->horizontalHeaderItem(2);
+        ___qtablewidgetitem29->setText(QApplication::translate("PlaCompDlgClass", "\316\224T", 0, QApplication::UnicodeUTF8));
 
         const bool __sortingEnabled8 = tbl_stderror_2->isSortingEnabled();
         tbl_stderror_2->setSortingEnabled(false);
         tbl_stderror_2->setSortingEnabled(__sortingEnabled8);
 
-        QTableWidgetItem *___qtablewidgetitem66 = tbl_chkerror_2->horizontalHeaderItem(0);
-        ___qtablewidgetitem66->setText(QApplication::translate("PlaCompDlgClass", "In\n"
+        QTableWidgetItem *___qtablewidgetitem30 = tbl_chkerror_2->horizontalHeaderItem(0);
+        ___qtablewidgetitem30->setText(QApplication::translate("PlaCompDlgClass", "In\n"
 "T\n"
 "(\342\204\203)", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem67 = tbl_chkerror_2->horizontalHeaderItem(1);
-        ___qtablewidgetitem67->setText(QApplication::translate("PlaCompDlgClass", "Out\n"
+        QTableWidgetItem *___qtablewidgetitem31 = tbl_chkerror_2->horizontalHeaderItem(1);
+        ___qtablewidgetitem31->setText(QApplication::translate("PlaCompDlgClass", "Out\n"
 "T\n"
 "(\342\204\203)", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem68 = tbl_chkerror_2->horizontalHeaderItem(2);
-        ___qtablewidgetitem68->setText(QApplication::translate("PlaCompDlgClass", "Error\n"
+        QTableWidgetItem *___qtablewidgetitem32 = tbl_chkerror_2->horizontalHeaderItem(2);
+        ___qtablewidgetitem32->setText(QApplication::translate("PlaCompDlgClass", "Error\n"
 "(%)", 0, QApplication::UnicodeUTF8));
 
         const bool __sortingEnabled9 = tbl_chkerror_2->isSortingEnabled();
@@ -1284,27 +1212,27 @@ public:
 
         groupBox_10->setTitle(QApplication::translate("PlaCompDlgClass", "Third temperature difference", 0, QApplication::UnicodeUTF8));
         label_26->setText(QApplication::translate("PlaCompDlgClass", "Limit of error \342\204\203/%", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem69 = tbl_stderror_3->horizontalHeaderItem(0);
-        ___qtablewidgetitem69->setText(QApplication::translate("PlaCompDlgClass", "In", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem70 = tbl_stderror_3->horizontalHeaderItem(1);
-        ___qtablewidgetitem70->setText(QApplication::translate("PlaCompDlgClass", "Out", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem71 = tbl_stderror_3->horizontalHeaderItem(2);
-        ___qtablewidgetitem71->setText(QApplication::translate("PlaCompDlgClass", "\316\224T", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem33 = tbl_stderror_3->horizontalHeaderItem(0);
+        ___qtablewidgetitem33->setText(QApplication::translate("PlaCompDlgClass", "In", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem34 = tbl_stderror_3->horizontalHeaderItem(1);
+        ___qtablewidgetitem34->setText(QApplication::translate("PlaCompDlgClass", "Out", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem35 = tbl_stderror_3->horizontalHeaderItem(2);
+        ___qtablewidgetitem35->setText(QApplication::translate("PlaCompDlgClass", "\316\224T", 0, QApplication::UnicodeUTF8));
 
         const bool __sortingEnabled10 = tbl_stderror_3->isSortingEnabled();
         tbl_stderror_3->setSortingEnabled(false);
         tbl_stderror_3->setSortingEnabled(__sortingEnabled10);
 
-        QTableWidgetItem *___qtablewidgetitem72 = tbl_chkerror_3->horizontalHeaderItem(0);
-        ___qtablewidgetitem72->setText(QApplication::translate("PlaCompDlgClass", "In\n"
+        QTableWidgetItem *___qtablewidgetitem36 = tbl_chkerror_3->horizontalHeaderItem(0);
+        ___qtablewidgetitem36->setText(QApplication::translate("PlaCompDlgClass", "In\n"
 "T\n"
 "(\342\204\203)", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem73 = tbl_chkerror_3->horizontalHeaderItem(1);
-        ___qtablewidgetitem73->setText(QApplication::translate("PlaCompDlgClass", "Out\n"
+        QTableWidgetItem *___qtablewidgetitem37 = tbl_chkerror_3->horizontalHeaderItem(1);
+        ___qtablewidgetitem37->setText(QApplication::translate("PlaCompDlgClass", "Out\n"
 "T\n"
 "(\342\204\203)", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem74 = tbl_chkerror_3->horizontalHeaderItem(2);
-        ___qtablewidgetitem74->setText(QApplication::translate("PlaCompDlgClass", "Error\n"
+        QTableWidgetItem *___qtablewidgetitem38 = tbl_chkerror_3->horizontalHeaderItem(2);
+        ___qtablewidgetitem38->setText(QApplication::translate("PlaCompDlgClass", "Error\n"
 "(%)", 0, QApplication::UnicodeUTF8));
 
         const bool __sortingEnabled11 = tbl_chkerror_3->isSortingEnabled();
