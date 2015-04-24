@@ -89,7 +89,8 @@ private:
 	ReadComConfig* m_readComConfig;//串口设置
 	Sti1062aComObject* m_tempObj;//标准温度计串口对象
 
-	T_Platinium_Verify_Record_PTR m_PlaVerifyRecPtr;//检测结果记录
+	T_Platinum_Verify_Record_PTR m_PlaVerifyRecPtr;//检测结果记录
+	QString m_timeStamp; //时间戳
 	int m_rec_num;//需要保存的记录个数
 
 	float m_min_delta_tmp;//最小温差δΘmin

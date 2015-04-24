@@ -506,12 +506,12 @@ int getDatabaseParaIni(DatabasePara_PTR info)
 	return true;
 }
 
-int insertPlatiniumVerifyRec(T_Platinium_Verify_Record_PTR ptr, int num)
+int insertPlatiniumVerifyRec(T_Platinum_Verify_Record_PTR ptr, int num)
 {
 	for (int i=0; i<num; i++)
 	{
 		QSqlQuery query(g_db); // 新建一个查询的实例
-		QString sql = "insert into T_Flow_Verify_Record";
+		QString sql = "insert into T_Platinum_Verify_Record";
 		sql.append(" (");
 		sql.append("F_TimeStamp,");
 		sql.append("F_CompOrParam,");
@@ -531,6 +531,9 @@ int insertPlatiniumVerifyRec(T_Platinium_Verify_Record_PTR ptr, int num)
 		sql.append("F_PlaSerial,");
 		sql.append("F_PlaInRresis,");
 		sql.append("F_PlaOutRresis,");
+		sql.append("F_PlaInTmp,");
+		sql.append("F_PlaOutTmp,");
+		sql.append("F_PlaTmpDiffErr,");
 		sql.append("F_PlaParamR0,");
 		sql.append("F_PlaCoeA ,");
 		sql.append("F_PlaCoeB,");
@@ -560,6 +563,9 @@ int insertPlatiniumVerifyRec(T_Platinium_Verify_Record_PTR ptr, int num)
 		sql.append(QString("%1, ").arg(ptr[i].F_PlaSerial, 6, 'g', 6));
 		sql.append(QString("%1, ").arg(ptr[i].F_PlaInRresis, 6, 'g', 6));
 		sql.append(QString("%1, ").arg(ptr[i].F_PlaOutRresis, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_PlaInTmp, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_PlaOutTmp, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_PlaTmpDiffErr, 6, 'g', 6));
 		sql.append(QString("%1, ").arg(ptr[i].F_PlaParamR0, 6, 'g', 6));
 		sql.append(QString("%1, ").arg(ptr[i].F_PlaCoeA, 6, 'g', 6));
 		sql.append(QString("%1, ").arg(ptr[i].F_PlaCoeB, 6, 'g', 6));
@@ -567,7 +573,7 @@ int insertPlatiniumVerifyRec(T_Platinium_Verify_Record_PTR ptr, int num)
 		sql.append(QString("%1, ").arg(ptr[i].F_InErr, 6, 'g', 6));
 		sql.append(QString("%1, ").arg(ptr[i].F_OutErr, 6, 'g', 6));
 		sql.append(QString("%1, ").arg(ptr[i].F_MaxErrPoint, 6, 'g', 6));
-		sql.append(QString("%1").arg(ptr[i].F_StdModel, 0, 10));
+		sql.append(QString("\'%1\'").arg(ptr[i].F_StdModel, 0, 10));
 		sql.append(")");//end
 		if (query.exec(sql))
 		{

@@ -386,6 +386,9 @@ public:
 		float F_PlaSerial;					//被检铂电阻序列号
 		float F_PlaInRresis;				//被检铂电阻进口电阻值
 		float F_PlaOutRresis;				//被检铂电阻出口电阻值
+		float F_PlaInTmp;					//被检铂电阻进口温度值
+		float F_PlaOutTmp;					//被检铂电阻出口温度值
+		float F_PlaTmpDiffErr;				//被检铂电阻进出口温差的误差
 		float F_PlaParamR0;					//被检铂电阻0℃电阻值
 		float F_PlaCoeA;					//被检铂电阻系数A
 		float F_PlaCoeB;					//被检铂电阻系数B
@@ -395,5 +398,5 @@ public:
 		float F_MaxErrPoint;				//最大误差点
 		char  F_StdModel[ZH_NAME_LEN];		//标准铂电阻型号(唯力，华仪等)
 };
-typedef T_Platinium_Verify_Record_STR* T_Platinium_Verify_Record_PTR;
+typedef T_Platinium_Verify_Record_STR* T_Platinum_Verify_Record_PTR;
 #endif	//BASEDEF_H

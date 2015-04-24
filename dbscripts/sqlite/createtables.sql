@@ -309,13 +309,13 @@ create unique index uk_T_Total_Verify_Record on T_Total_Verify_Record (F_MeterNo
 ---------------------------------
 --铂电阻检定结果记录表
 ---------------------------------
-drop table if exists "T_Platinium_Verify_Record"
+drop table if exists "T_Platinum_Verify_Record"
 ;
-create table T_Platinium_Verify_Record
+create table T_Platinum_Verify_Record
 (
 	F_ID	integer not null primary key autoincrement,
 	F_TimeStamp timestamp not null,     --时间戳（'yyyy-MM-dd HH:mm:ss.zzz')
-	F_CompOrParam						--比较法或参数法, 0-比较法, 1-参数法
+	F_CompOrParam,						--比较法或参数法, 0-比较法, 1-参数法
 	F_PlaManufactDept integer,          --被检铂电阻制造单位，外键(T_Manufacture_Dept.F_ID)
 	F_Standard integer,                 --表规格(DN15/DN20/DN25)，外键(T_Meter_Standard.F_ID)
 	F_Model integer,                    --表型号，外键(T_Meter_Model.F_ID)
@@ -333,6 +333,9 @@ create table T_Platinium_Verify_Record
 	F_PlaSerial integer,				--被检铂电阻序列号
 	F_PlaInRresis float,				--被检铂电阻进口电阻值
 	F_PlaOutRresis float,				--被检铂电阻出口电阻值
+	F_PlaInTmp float,					--被检铂电阻进口温度值
+	F_PlaOutTmp float,					--被检铂电阻出口温度值
+	F_PlaTmpDiffErr float,				--被检铂电阻进出口温差的误差	
 	F_PlaParamR0 float,					--被检铂电阻0℃电阻值
 	F_PlaCoeA float,					--被检铂电阻系数A
 	F_PlaCoeB float,					--被检铂电阻系数B

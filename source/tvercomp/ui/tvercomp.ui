@@ -272,6 +272,11 @@
        <string>Out</string>
       </property>
      </column>
+     <item row="0" column="0">
+      <property name="text">
+       <string>d01</string>
+      </property>
+     </item>
      <item row="0" column="1">
       <property name="text">
        <string/>
@@ -284,7 +289,7 @@
      </item>
      <item row="1" column="0">
       <property name="text">
-       <string/>
+       <string>d02</string>
       </property>
      </item>
      <item row="1" column="1">
@@ -299,7 +304,7 @@
      </item>
      <item row="2" column="0">
       <property name="text">
-       <string/>
+       <string>d03</string>
       </property>
      </item>
      <item row="2" column="1">
@@ -314,7 +319,7 @@
      </item>
      <item row="3" column="0">
       <property name="text">
-       <string/>
+       <string>d04</string>
       </property>
      </item>
      <item row="3" column="1">
@@ -329,7 +334,7 @@
      </item>
      <item row="4" column="0">
       <property name="text">
-       <string/>
+       <string>d05</string>
       </property>
      </item>
      <item row="4" column="1">
@@ -344,7 +349,7 @@
      </item>
      <item row="5" column="0">
       <property name="text">
-       <string/>
+       <string>d06</string>
       </property>
      </item>
      <item row="5" column="1">
@@ -359,7 +364,7 @@
      </item>
      <item row="6" column="0">
       <property name="text">
-       <string/>
+       <string>d07</string>
       </property>
      </item>
      <item row="6" column="1">
@@ -374,7 +379,7 @@
      </item>
      <item row="7" column="0">
       <property name="text">
-       <string/>
+       <string>d08</string>
       </property>
      </item>
      <item row="7" column="1">
@@ -389,7 +394,7 @@
      </item>
      <item row="8" column="0">
       <property name="text">
-       <string/>
+       <string>d09</string>
       </property>
      </item>
      <item row="8" column="1">
@@ -404,7 +409,7 @@
      </item>
      <item row="9" column="0">
       <property name="text">
-       <string/>
+       <string>d10</string>
       </property>
      </item>
      <item row="9" column="1">
@@ -419,7 +424,7 @@
      </item>
      <item row="10" column="0">
       <property name="text">
-       <string/>
+       <string>d11</string>
       </property>
      </item>
      <item row="10" column="1">
@@ -434,7 +439,7 @@
      </item>
      <item row="11" column="0">
       <property name="text">
-       <string/>
+       <string>d12</string>
       </property>
      </item>
      <item row="11" column="1">
@@ -743,7 +748,7 @@
      </column>
      <item row="0" column="0">
       <property name="text">
-       <string/>
+       <string>d01</string>
       </property>
      </item>
      <item row="0" column="1">
@@ -758,7 +763,7 @@
      </item>
      <item row="1" column="0">
       <property name="text">
-       <string/>
+       <string>d02</string>
       </property>
      </item>
      <item row="1" column="1">
@@ -773,7 +778,7 @@
      </item>
      <item row="2" column="0">
       <property name="text">
-       <string/>
+       <string>d03</string>
       </property>
      </item>
      <item row="2" column="1">
@@ -788,7 +793,7 @@
      </item>
      <item row="3" column="0">
       <property name="text">
-       <string/>
+       <string>d04</string>
       </property>
      </item>
      <item row="3" column="1">
@@ -803,7 +808,7 @@
      </item>
      <item row="4" column="0">
       <property name="text">
-       <string/>
+       <string>d05</string>
       </property>
      </item>
      <item row="4" column="1">
@@ -818,7 +823,7 @@
      </item>
      <item row="5" column="0">
       <property name="text">
-       <string/>
+       <string>d06</string>
       </property>
      </item>
      <item row="5" column="1">
@@ -833,7 +838,7 @@
      </item>
      <item row="6" column="0">
       <property name="text">
-       <string/>
+       <string>d07</string>
       </property>
      </item>
      <item row="6" column="1">
@@ -848,7 +853,7 @@
      </item>
      <item row="7" column="0">
       <property name="text">
-       <string/>
+       <string>d08</string>
       </property>
      </item>
      <item row="7" column="1">
@@ -863,7 +868,7 @@
      </item>
      <item row="8" column="0">
       <property name="text">
-       <string/>
+       <string>d09</string>
       </property>
      </item>
      <item row="8" column="1">
@@ -878,7 +883,7 @@
      </item>
      <item row="9" column="0">
       <property name="text">
-       <string/>
+       <string>d10</string>
       </property>
      </item>
      <item row="9" column="1">
@@ -893,7 +898,7 @@
      </item>
      <item row="10" column="0">
       <property name="text">
-       <string/>
+       <string>d11</string>
       </property>
      </item>
      <item row="10" column="1">
@@ -908,7 +913,7 @@
      </item>
      <item row="11" column="0">
       <property name="text">
-       <string/>
+       <string>d12</string>
       </property>
      </item>
      <item row="11" column="1">
@@ -1178,7 +1183,7 @@
      </column>
      <item row="0" column="0">
       <property name="text">
-       <string/>
+       <string>d01</string>
       </property>
      </item>
      <item row="0" column="1">
@@ -1193,7 +1198,7 @@
      </item>
      <item row="1" column="0">
       <property name="text">
-       <string/>
+       <string>d02</string>
       </property>
      </item>
      <item row="1" column="1">
@@ -1208,7 +1213,7 @@
      </item>
      <item row="2" column="0">
       <property name="text">
-       <string/>
+       <string>d03</string>
       </property>
      </item>
      <item row="2" column="1">
@@ -1223,7 +1228,7 @@
      </item>
      <item row="3" column="0">
       <property name="text">
-       <string/>
+       <string>d04</string>
       </property>
      </item>
      <item row="3" column="1">
@@ -1238,7 +1243,7 @@
      </item>
      <item row="4" column="0">
       <property name="text">
-       <string/>
+       <string>d05</string>
       </property>
      </item>
      <item row="4" column="1">
@@ -1253,7 +1258,7 @@
      </item>
      <item row="5" column="0">
       <property name="text">
-       <string/>
+       <string>d06</string>
       </property>
      </item>
      <item row="5" column="1">
@@ -1268,7 +1273,7 @@
      </item>
      <item row="6" column="0">
       <property name="text">
-       <string/>
+       <string>d07</string>
       </property>
      </item>
      <item row="6" column="1">
@@ -1283,7 +1288,7 @@
      </item>
      <item row="7" column="0">
       <property name="text">
-       <string/>
+       <string>d08</string>
       </property>
      </item>
      <item row="7" column="1">
@@ -1298,7 +1303,7 @@
      </item>
      <item row="8" column="0">
       <property name="text">
-       <string/>
+       <string>d09</string>
       </property>
      </item>
      <item row="8" column="1">
@@ -1313,7 +1318,7 @@
      </item>
      <item row="9" column="0">
       <property name="text">
-       <string/>
+       <string>d10</string>
       </property>
      </item>
      <item row="9" column="1">
@@ -1328,7 +1333,7 @@
      </item>
      <item row="10" column="0">
       <property name="text">
-       <string/>
+       <string>d11</string>
       </property>
      </item>
      <item row="10" column="1">
@@ -1343,7 +1348,7 @@
      </item>
      <item row="11" column="0">
       <property name="text">
-       <string/>
+       <string>d12</string>
       </property>
      </item>
      <item row="11" column="1">
@@ -1875,7 +1880,7 @@ T
     <widget class="QTableWidget" name="tbl_chkerror_2">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>10</x>
        <y>120</y>
        <width>171</width>
        <height>471</height>

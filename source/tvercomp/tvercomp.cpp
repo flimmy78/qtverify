@@ -18,6 +18,7 @@ tvercompDlg::tvercompDlg(QWidget *parent /* = 0 */, Qt::WFlags flags /* = 0 */)
 	m_readComConfig = new ReadComConfig();
 
 	m_min_delta_tmp = m_tvercomp_config->value("theoinfo/mintmphead").toFloat();
+	m_timeStamp = "";
 }
 
 tvercompDlg::~tvercompDlg()
@@ -79,21 +80,12 @@ void tvercompDlg::on_btn_read_1_clicked()
 {
 	ComInfoStruct tempStruct = m_readComConfig->ReadStdTempConfig();
 
-	if (m_sendTimer == NULL)
-	{
-		m_sendTimer = new QTimer();
-	}
-	if (m_sendTimer->isActive())
-	{
-		m_sendTimer->stop();
-	}
-	if (m_tempObj == NULL)
-	{
-		m_tempObj = new Sti1062aComObject();
-		m_tempObj->openTemperatureCom(&tempStruct);
-		connect(m_tempObj,SIGNAL(temperatureIsReady(const QString&)), this, SLOT(setTblStd1(const QString&)));
-	}
-
+	clearComObjs();
+	m_sendTimer = new QTimer();
+	m_tempObj = new Sti1062aComObject();
+	m_tempObj->openTemperatureCom(&tempStruct);
+	connect(m_tempObj,SIGNAL(temperatureIsReady(const QString&)), this, SLOT(setTblStd1(const QString&)));
+	
 	m_readCommand = sti1062aT1;
 	connect(m_sendTimer, SIGNAL(timeout()), this, SLOT(sendCommands()));
 	connect(this, SIGNAL(commandSendComplete()), m_sendTimer, SLOT(stop()));
@@ -133,20 +125,11 @@ void tvercompDlg::on_btn_read_2_clicked()
 {
 	ComInfoStruct tempStruct = m_readComConfig->ReadStdTempConfig();
 
-	if (m_sendTimer == NULL)
-	{
-		m_sendTimer = new QTimer();
-	}
-	if (m_sendTimer->isActive())
-	{
-		m_sendTimer->stop();
-	}
-	if (m_tempObj == NULL)
-	{
-		m_tempObj = new Sti1062aComObject();
-		m_tempObj->openTemperatureCom(&tempStruct);
-		connect(m_tempObj,SIGNAL(temperatureIsReady(const QString&)), this, SLOT(setTblStd2(const QString&)));
-	}
+	clearComObjs();
+	m_sendTimer = new QTimer();
+	m_tempObj = new Sti1062aComObject();
+	m_tempObj->openTemperatureCom(&tempStruct);
+	connect(m_tempObj,SIGNAL(temperatureIsReady(const QString&)), this, SLOT(setTblStd2(const QString&)));
 
 	m_readCommand = sti1062aT1;
 	connect(m_sendTimer, SIGNAL(timeout()), this, SLOT(sendCommands()));
@@ -182,20 +165,11 @@ void tvercompDlg::on_btn_read_3_clicked()
 {
 	ComInfoStruct tempStruct = m_readComConfig->ReadStdTempConfig();
 
-	if (m_sendTimer == NULL)
-	{
-		m_sendTimer = new QTimer();
-	}
-	if (m_sendTimer->isActive())
-	{
-		m_sendTimer->stop();
-	}
-	if (m_tempObj == NULL)
-	{
-		m_tempObj = new Sti1062aComObject();
-		m_tempObj->openTemperatureCom(&tempStruct);
-		connect(m_tempObj,SIGNAL(temperatureIsReady(const QString&)), this, SLOT(setTblStd3(const QString&)));
-	}
+	clearComObjs();
+	m_sendTimer = new QTimer();
+	m_tempObj = new Sti1062aComObject();
+	m_tempObj->openTemperatureCom(&tempStruct);
+	connect(m_tempObj,SIGNAL(temperatureIsReady(const QString&)), this, SLOT(setTblStd3(const QString&)));
 
 	m_readCommand = sti1062aT1;
 	connect(m_sendTimer, SIGNAL(timeout()), this, SLOT(sendCommands()));
@@ -614,6 +588,7 @@ void tvercompDlg::on_tbl_chkerror_3_cellChanged(int i, int j)
 
 void tvercompDlg::on_btn_save_clicked()
 {
+	m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
 	insertData();
 }
 
@@ -662,7 +637,7 @@ void tvercompDlg::readConfig()
 		m_PlaVerifyRecPtr[i].F_PlaCoeA		= pla_a;
 		m_PlaVerifyRecPtr[i].F_PlaCoeB		= pla_b;
 		m_PlaVerifyRecPtr[i].F_PlaParamR0	= pla_r0;
-
+		strcpy_s(m_PlaVerifyRecPtr[i].timestamp, m_timeStamp.toAscii());
 		strcpy_s(m_PlaVerifyRecPtr[i].F_StdModel, std_model.toAscii());
 	}
 }
@@ -670,8 +645,9 @@ void tvercompDlg::readConfig()
 void tvercompDlg::readChkResult()
 {
 	float std_in_t, std_out_t, std_in_r, std_out_r;//标准温度计的进出口温度值，阻值
-	QTableWidget* std_tbl_wdg = NULL;//当前用到的标准温度计表格
-	QTableWidget* chk_tbl_wdg = NULL;//当前用到的被检铂电阻表格
+	QTableWidget* std_tbl_wdg	  = NULL;//当前用到的标准温度计表格
+	QTableWidget* chk_tbl_wdg	  = NULL;//当前用到的被检铂电阻表格
+	QTableWidget* chk_err_tbl_wdg = NULL;//当前用到的被检铂电阻误差表格
 	for (int i=0; i<TMP_DIFF_NUMBER; i++)//温差点个数
 	{
 		switch(i)
@@ -679,14 +655,17 @@ void tvercompDlg::readChkResult()
 			case 0://第一温差点
 				std_tbl_wdg = ui.tbl_std_1;
 				chk_tbl_wdg = ui.tbl_in_1;
+				chk_err_tbl_wdg = ui.tbl_chkerror_1;
 				break;
 			case 1://第二温差点
 				std_tbl_wdg = ui.tbl_std_2;
 				chk_tbl_wdg = ui.tbl_in_2;
+				chk_err_tbl_wdg = ui.tbl_chkerror_2;
 				break;
 			case 2://第三温差点
 				std_tbl_wdg = ui.tbl_std_3;
 				chk_tbl_wdg = ui.tbl_in_3;
+				chk_err_tbl_wdg = ui.tbl_chkerror_3;
 				break;
 		}
 
@@ -705,6 +684,10 @@ void tvercompDlg::readChkResult()
 			m_PlaVerifyRecPtr[idx].F_PlaSerial		= chk_tbl_wdg->item(j, 0)->text().trimmed().toFloat();
 			m_PlaVerifyRecPtr[idx].F_PlaInRresis	= chk_tbl_wdg->item(j, 1)->text().trimmed().toFloat();
 			m_PlaVerifyRecPtr[idx].F_PlaOutRresis	= chk_tbl_wdg->item(j, 2)->text().trimmed().toFloat();
+
+			m_PlaVerifyRecPtr[idx].F_PlaInTmp		= chk_err_tbl_wdg->item(j, 0)->text().trimmed().toFloat();
+			m_PlaVerifyRecPtr[idx].F_PlaOutTmp		= chk_err_tbl_wdg->item(j, 1)->text().trimmed().toFloat();
+			m_PlaVerifyRecPtr[idx].F_PlaTmpDiffErr	= chk_err_tbl_wdg->item(j, 2)->text().trimmed().toFloat();
 		}
 	}
 	std_tbl_wdg = NULL;
