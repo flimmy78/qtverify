@@ -169,7 +169,18 @@ float getPlaRt(float r0, float a, float b, float tmp)
 
 float getPlaTr(float r0, float a, float b, float resis)
 {
-	return (qSqrt(a*a + 4*b*(resis/r0 - 1)) - a)/(2*b);
+	float ret = (qSqrt(a*a + 4*b*(resis/r0 - 1)) - a)/(2*b);
+	return ret;
+}
+
+float getDeltaTmpErr(float std_delta_t, float min_delta_t)
+{
+	return qAbs(0.5 + 3*min_delta_t/std_delta_t);
+}
+
+float getSingleTmpErr(float std_delta_t)
+{
+	return (0.3 + 0.005*qAbs(std_delta_t));
 }
 /**********************************************************
 ÀàÃû£ºCAlgorithm

@@ -63,8 +63,11 @@ signals:
 		void on_tbl_in_2_cellChanged(int, int);
 		void on_tbl_in_3_cellChanged(int, int);
 
+		void on_tbl_chkerror_1_cellChanged(int, int);
+		void on_tbl_chkerror_2_cellChanged(int, int);
+		void on_tbl_chkerror_3_cellChanged(int, int);
+
 		void on_btn_param_clicked();
-		void on_btn_excel_clicked();//保存至Excel
 		void on_btn_save_clicked();//保存至数据库
 		void on_btn_exit_clicked();
 
@@ -89,6 +92,7 @@ private:
 	T_Platinium_Verify_Record_PTR m_PlaVerifyRecPtr;//检测结果记录
 	int m_rec_num;//需要保存的记录个数
 
+	float m_min_delta_tmp;//最小温差δΘmin
 private:
 	void readConfig();//读取标准温度计、被检铂电阻、检测参数等
 	void readChkResult();//读取被检铂电阻检测结果
