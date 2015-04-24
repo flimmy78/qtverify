@@ -97,9 +97,10 @@ void FlowResultDlg::initUiData()
 //查询检定结果
 void FlowResultDlg::on_btnQuery_clicked()
 {
+	getConditon();
 	model->setEditStrategy(QSqlTableModel::OnFieldChange); //属性变化时写入数据库
 	model->setTable("T_Flow_Verify_Record");
-	getConditon();
+	//getConditon();
 	model->setFilter(m_conStr); //设置查询条件
 	
 	//设置外键
