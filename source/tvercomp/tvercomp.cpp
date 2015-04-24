@@ -275,17 +275,38 @@ void tvercompDlg::on_btn_clear_3_clicked()
 
 void tvercompDlg::on_tbl_std_1_cellChanged(int i, int j)
 {
-	
+	if (ui.tbl_std_1->item(1,0)->text().isEmpty() || ui.tbl_std_1->item(1,1)->text().isEmpty())
+	{
+		return;
+	}
+	ui.tbl_stderror_1->item(0,0)->setText(ui.tbl_std_1->item(1,0)->text());
+	ui.tbl_stderror_1->item(0,1)->setText(ui.tbl_std_1->item(1,1)->text());
+	float delta = ui.tbl_std_1->item(1,0)->text().trimmed().toFloat() - ui.tbl_std_1->item(1,1)->text().trimmed().toFloat();
+	ui.tbl_stderror_1->item(0,2)->setText(QString::number(delta));
 }
 
 void tvercompDlg::on_tbl_std_2_cellChanged(int i, int j)
 {
-
+	if (ui.tbl_std_2->item(1,0)->text().isEmpty() || ui.tbl_std_2->item(1,1)->text().isEmpty())
+	{
+		return;
+	}
+	ui.tbl_stderror_2->item(0,0)->setText(ui.tbl_std_2->item(1,0)->text());
+	ui.tbl_stderror_2->item(0,1)->setText(ui.tbl_std_2->item(1,1)->text());
+	float delta = ui.tbl_std_2->item(1,0)->text().trimmed().toFloat() - ui.tbl_std_2->item(1,1)->text().trimmed().toFloat();
+	ui.tbl_stderror_2->item(0,2)->setText(QString::number(delta));
 }
 
 void tvercompDlg::on_tbl_std_3_cellChanged(int i, int j)
 {
-
+	if (ui.tbl_std_3->item(1,0)->text().isEmpty() || ui.tbl_std_3->item(1,1)->text().isEmpty())
+	{
+		return;
+	}
+	ui.tbl_stderror_3->item(0,0)->setText(ui.tbl_std_3->item(1,0)->text());
+	ui.tbl_stderror_3->item(0,1)->setText(ui.tbl_std_3->item(1,1)->text());
+	float delta = ui.tbl_std_3->item(1,0)->text().trimmed().toFloat() - ui.tbl_std_3->item(1,1)->text().trimmed().toFloat();
+	ui.tbl_stderror_3->item(0,2)->setText(QString::number(delta));
 }
 
 void tvercompDlg::on_tbl_in_1_cellChanged(int i, int j)
