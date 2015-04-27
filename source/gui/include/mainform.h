@@ -21,6 +21,7 @@ class TotalStandardDlg;
 class CalcDlg;
 class StdMtrParaSet;
 class StdMtrCoeCorrect;
+class tvercompDlg;
 
 class MainForm : public QMainWindow
 {
@@ -44,6 +45,8 @@ public:
 	TotalStandardDlg *m_totalStandardDlg;//总量检定(标准表法)
 
 	CalcDlg *m_calcDlg; //计算器检定
+	tvercompDlg *m_tvercompDlg; //温度检定(比较法)
+
 	StdMtrParaSet *m_stdParaSet; //标准表参数设定
 	StdMtrCoeCorrect *m_stdCoeCorrect; //标准表系数标定
 

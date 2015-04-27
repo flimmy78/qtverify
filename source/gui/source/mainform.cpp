@@ -32,6 +32,7 @@
 #include "calcverify.h"
 #include "stdmtrparaset.h"
 #include "stdmtrcoecorrect.h"
+#include "tvercomp.h"
 
 MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
@@ -56,7 +57,8 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_flowStandardDlg = NULL;
 	m_totalWeightDlg = NULL;
 	m_totalStandardDlg = NULL;
-	m_calcDlg = NULL;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+	m_calcDlg = NULL;        
+	m_tvercompDlg = NULL;
 	m_stdParaSet = NULL;
 	m_stdCoeCorrect = NULL;
 
@@ -161,6 +163,12 @@ void MainForm::closeEvent( QCloseEvent * event)
 			delete m_calcDlg;
 			m_calcDlg = NULL;
 		}
+
+		if (m_tvercompDlg)
+		{
+			delete m_tvercompDlg;
+			m_tvercompDlg = NULL;
+		}	
 
 		if (m_stdParaSet)
 		{
@@ -305,6 +313,17 @@ void MainForm::on_actionFlowStandard_triggered()
 //温度检定(比较法)
 void MainForm::on_actionTemperCompare_triggered()
 {
+	if (NULL == m_tvercompDlg)
+	{
+		m_tvercompDlg = new tvercompDlg();
+	}
+	else //目的是执行tvercompDlg的构造函数
+	{
+		delete m_tvercompDlg;
+		m_tvercompDlg = NULL;
+		m_tvercompDlg = new tvercompDlg();
+	}
+	m_tvercompDlg->show();
 }
 
 //温度检定(参数法)
