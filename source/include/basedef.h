@@ -393,8 +393,11 @@ public:
 		float F_PlaCoeA;					//被检铂电阻系数A
 		float F_PlaCoeB;					//被检铂电阻系数B
 		float F_PlaCoeC;					//被检铂电阻系数C
-		float F_InErr;						//被检铂电阻进口误差限(℃ %)
-		float F_OutErr;						//被检铂电阻进口误差限(℃ %)
+		float F_InErr;						//被检铂电阻进口误差(℃)
+		float F_OutErr;						//被检铂电阻进口误差(℃)
+		float F_InErrLimit;					//被检铂电阻进口误差限(℃)
+		float F_OutErrLimit;				//被检铂电阻进口误差限(℃)
+		float F_DeltaErrLimit;				//被检铂电阻进出口温差的误差限(%)
 		float F_MaxErrPoint;				//最大误差点
 		char  F_StdModel[ZH_NAME_LEN];		//标准铂电阻型号(唯力，华仪等)
 };

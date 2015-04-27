@@ -645,8 +645,10 @@ void tvercompDlg::readConfig()
 void tvercompDlg::readChkResult()
 {
 	float std_in_t, std_out_t, std_in_r, std_out_r;//标准温度计的进出口温度值，阻值
+	float lmt_in_err, lmt_out_err, lmt_delta_err;//标准的温度误差限, 温差误差限
 	QTableWidget* std_tbl_wdg	  = NULL;//当前用到的标准温度计表格
 	QTableWidget* chk_tbl_wdg	  = NULL;//当前用到的被检铂电阻表格
+	QTableWidget* std_err_wdg	  = NULL;//当前用到的被检铂电阻标准误差限表格
 	QTableWidget* chk_err_tbl_wdg = NULL;//当前用到的被检铂电阻误差表格
 	for (int i=0; i<TMP_DIFF_NUMBER; i++)//温差点个数
 	{
@@ -655,16 +657,19 @@ void tvercompDlg::readChkResult()
 			case 0://第一温差点
 				std_tbl_wdg = ui.tbl_std_1;
 				chk_tbl_wdg = ui.tbl_in_1;
+				std_err_wdg = ui.tbl_stderror_1;
 				chk_err_tbl_wdg = ui.tbl_chkerror_1;
 				break;
 			case 1://第二温差点
 				std_tbl_wdg = ui.tbl_std_2;
 				chk_tbl_wdg = ui.tbl_in_2;
+				std_err_wdg = ui.tbl_stderror_2;
 				chk_err_tbl_wdg = ui.tbl_chkerror_2;
 				break;
 			case 2://第三温差点
 				std_tbl_wdg = ui.tbl_std_3;
 				chk_tbl_wdg = ui.tbl_in_3;
+				std_err_wdg = ui.tbl_stderror_3;
 				chk_err_tbl_wdg = ui.tbl_chkerror_3;
 				break;
 		}
@@ -673,6 +678,11 @@ void tvercompDlg::readChkResult()
 		std_out_t = std_tbl_wdg->item(1,1)->text().trimmed().toFloat();
 		std_in_r  = std_tbl_wdg->item(0,0)->text().trimmed().toFloat();
 		std_out_r = std_tbl_wdg->item(0,1)->text().trimmed().toFloat();
+
+		lmt_in_err	  = std_err_wdg->item(0,0)->text().trimmed().toFloat();
+		lmt_out_err	  = std_err_wdg->item(0,1)->text().trimmed().toFloat();
+		lmt_delta_err =	std_err_wdg->item(0,2)->text().trimmed().toFloat();
+
 		for (int j=0; j<VERIFY_NUMBER; j++)//被检铂电阻个数
 		{
 			int idx = i*VERIFY_NUMBER + j;
@@ -688,6 +698,13 @@ void tvercompDlg::readChkResult()
 			m_PlaVerifyRecPtr[idx].F_PlaInTmp		= chk_err_tbl_wdg->item(j, 0)->text().trimmed().toFloat();
 			m_PlaVerifyRecPtr[idx].F_PlaOutTmp		= chk_err_tbl_wdg->item(j, 1)->text().trimmed().toFloat();
 			m_PlaVerifyRecPtr[idx].F_PlaTmpDiffErr	= chk_err_tbl_wdg->item(j, 2)->text().trimmed().toFloat();
+
+			m_PlaVerifyRecPtr[idx].F_InErrLimit		= lmt_in_err;
+			m_PlaVerifyRecPtr[idx].F_OutErrLimit	= lmt_out_err;
+			m_PlaVerifyRecPtr[idx].F_DeltaErrLimit	= lmt_delta_err;
+
+			m_PlaVerifyRecPtr[idx].F_InErr			= m_PlaVerifyRecPtr[idx].F_PlaInTmp - std_in_t;
+			m_PlaVerifyRecPtr[idx].F_OutErr			= m_PlaVerifyRecPtr[idx].F_PlaOutTmp - std_out_t;;
 		}
 	}
 	std_tbl_wdg = NULL;

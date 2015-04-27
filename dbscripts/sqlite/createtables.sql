@@ -340,8 +340,12 @@ create table T_Platinum_Verify_Record
 	F_PlaCoeA float,					--被检铂电阻系数A
 	F_PlaCoeB float,					--被检铂电阻系数B
 	F_PlaCoeC float,					--被检铂电阻系数C
-	F_InErr	float,						--被检铂电阻进口误差限(℃ %)
-	F_OutErr	float,					--被检铂电阻出口误差限(℃ %)
+	F_InErr	float,						--被检铂电阻进口误差(℃)
+	F_OutErr float,						--被检铂电阻出口误差(℃)
+	F_DeltaErrLimit float,				--被检铂电阻进出口温差的误差限(%)
+	F_InErrLimit float,					--被检铂电阻进口误差限(℃)
+	F_OutErrLimit float,				--被检铂电阻出口误差限(℃)
+	
 	F_MaxErrPoint float,				--最大误差点
 	constraint F_Model_fk foreign key(F_Model) references T_Meter_Model(F_ID),
 	constraint F_Standard_fk foreign key(F_Standard) references T_Meter_Standard(F_ID),
