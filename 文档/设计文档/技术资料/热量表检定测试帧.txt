@@ -20,3 +20,13 @@ FE FE FE FE FE FE FE FE FE FE FE FE FE
 ED 10 00 00 00 00 00 04 66 24 00 29 08 
 14 20 00 00 66 16 
 
+
+修改表号：旧表号11110031160569，新表号11110012345678，时间20140106131016，以16进制发送
+68 20 69 05 16 31 00 11 11 39 11 18 A0 AA 78 56 34 12 00 11 11 16 10 13 06 01 14 20 B5 16
+68 20 78 56 34 12 00 11 11 39 11 18 A0 AA 69 05 16 31 00 11 11 16 10 13 06 01 14 20 B5 16
+带红外唤醒的修改表号帧：
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff fe fe fe fe 68 20 78 56 34 12 00 11 11 39 11 18 A0 AA 69 05 16 31 00 11 11 16 10 13 06 01 14 20 B5 16 
+
+
+设置检定状态
+FE FE FE FE 68 20 AA AA AA AA AA AA AA 33 00 61 16
