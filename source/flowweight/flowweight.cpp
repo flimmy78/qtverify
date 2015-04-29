@@ -527,6 +527,7 @@ void FlowWeightDlg::on_btnExhaust_clicked()
 	m_exaustSecond = m_nowParams->ex_time;
 	m_exaustTimer->start(1000);//开始排气倒计时
 	ui.labelHintProcess->setText(tr("Exhaust countdown: %1 second").arg(m_exaustSecond));
+	ui.labelHintPoint->clear();
 	qDebug()<<"排气倒计时:"<<m_exaustSecond<<"秒";
 
 	if (m_autopick) //自动读表
