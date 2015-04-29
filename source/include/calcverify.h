@@ -23,6 +23,20 @@
 
 class CalcParaDlg;
 
+#define COLUMN_IN_RESIST	1 //进口电阻
+#define COLUMN_OUT_RESIST	2 //出口电阻
+#define COLUMN_RECOM_V		3 //建议流量(L)
+#define COLUMN_ANALOG_V		4 //模拟流量(L)
+#define COLUMN_IN_TEMPER	5 //进口温度
+#define COLUMN_OUT_TEMPER	6 //出口温度
+#define COLUMN_K_COE		7 //K系数
+#define COLUMN_THEORY_E		8 //理论热量
+#define COLUMN_E0			9 //E0
+#define COLUMN_E1			10 //E1
+#define COLUMN_DISP_E		11 //热量示值
+#define COLUMN_DISP_ERROR	12 //示值误差
+#define COLUMN_STD_ERROR	13 //技术要求
+
 class CALCVERIFY_EXPORT CalcDlg : public QDialog
 {
 	Q_OBJECT
@@ -40,11 +54,16 @@ public:
 	float m_refDeltaT;
 
 	void initUi();
+	float calcTemperByResist(float resist); //根据电阻计算温度
+	float getKCoeByTemper(float inT, float outT); //根据进口温度和出口温度获取K系数
+	float calcRecomVolume(); //计算推荐体积
+	float calcTheoryEnergy(); //计算理论热量
 
 public slots:
 	void closeEvent(QCloseEvent * event);
 
 	void on_btnPara_clicked();
+	void on_btnSave_clicked();
 	void on_btnExit_clicked();
 
 	void freshCalcPara();

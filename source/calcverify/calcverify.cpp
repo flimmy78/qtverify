@@ -69,6 +69,11 @@ void CalcDlg::on_btnPara_clicked()
 	m_calcParaDlg->show();
 }
 
+void CalcDlg::on_btnSave_clicked()
+{
+
+}
+
 void CalcDlg::on_btnExit_clicked()
 {
 	this->close();
@@ -112,13 +117,13 @@ void CalcDlg::initUi()
 	ui.tableWidget->item(1, 6)->setTextAlignment(Qt::AlignCenter);
 	ui.tableWidget->setItem(1, 7, new QTableWidgetItem(QString(tr("KCoe"))));
 	ui.tableWidget->item(1, 7)->setTextAlignment(Qt::AlignCenter);
-	ui.tableWidget->setItem(1, 8, new QTableWidgetItem(QString(tr("StdHeat(kwh)"))));
+	ui.tableWidget->setItem(1, 8, new QTableWidgetItem(QString(tr("StdEnergy(kwh)"))));
 	ui.tableWidget->item(1, 8)->setTextAlignment(Qt::AlignCenter);
 	ui.tableWidget->setItem(1, 9, new QTableWidgetItem(QString(tr("E0(kwh)"))));
 	ui.tableWidget->item(1, 9)->setTextAlignment(Qt::AlignCenter);
 	ui.tableWidget->setItem(1, 10, new QTableWidgetItem(QString(tr("E1(kwh)"))));
 	ui.tableWidget->item(1, 10)->setTextAlignment(Qt::AlignCenter);
-	ui.tableWidget->setItem(1, 11, new QTableWidgetItem(QString(tr("DispHeat(kwh)"))));
+	ui.tableWidget->setItem(1, 11, new QTableWidgetItem(QString(tr("DispEnergy(kwh)"))));
 	ui.tableWidget->item(1, 11)->setTextAlignment(Qt::AlignCenter);
 	ui.tableWidget->setItem(1, 12, new QTableWidgetItem(QString(tr("DispError(%)"))));
 	ui.tableWidget->item(1, 12)->setTextAlignment(Qt::AlignCenter);
@@ -157,7 +162,7 @@ void CalcDlg::initUi()
 	ui.tableWidget->item(10, 0)->setTextColor(Qt::red);
 
 	ui.tableWidget->setSpan(11, 0, 1, 14);
-	ui.tableWidget->setItem(11, 0, new QTableWidgetItem(QString(tr("TemperIn:  θmax-5≤θd ≤ θmax"))));
+	ui.tableWidget->setItem(11, 0, new QTableWidgetItem(QString(tr("TemperIn:  θmax-5≤θe ≤ θmax"))));
 	ui.tableWidget->item(11, 0)->setTextAlignment(Qt::AlignLeft|Qt::AlignVCenter);
 	ui.tableWidget->item(11, 0)->setTextColor(Qt::blue);
 	ui.tableWidget->setItem(12, 0, new QTableWidgetItem(QString(tr("20"))));
@@ -171,7 +176,6 @@ void CalcDlg::initUi()
 	ui.tableWidget->item(14, 0)->setTextColor(Qt::red);
 
 // 	ui.tableWidget->resizeColumnsToContents();
-
 }
 
 void CalcDlg::freshCalcPara()
@@ -188,7 +192,6 @@ void CalcDlg::freshCalcPara()
 	ui.tableWidget->setItem(2, 0, new QTableWidgetItem(QString(tr("TemperOut: %1 - %2 ℃")).arg(m_minT).arg(m_minT+5)));
 	ui.tableWidget->item(2, 0)->setTextAlignment(Qt::AlignLeft|Qt::AlignVCenter);
 	ui.tableWidget->item(2, 0)->setTextColor(Qt::blue);
-	ui.tableWidget->item(2, 0)->setFlags(Qt::NoItemFlags);
 	ui.tableWidget->setItem(3, 0, new QTableWidgetItem(QString(tr("%1")).arg(m_minDeltaT)));
 	ui.tableWidget->item(3, 0)->setTextAlignment(Qt::AlignCenter);
 	ui.tableWidget->item(3, 0)->setTextColor(Qt::red);
@@ -220,4 +223,88 @@ void CalcDlg::on_tableWidget_cellChanged(int row, int column)
 		return;
 	}
 	qDebug()<<"row ="<<row<<", column ="<<column;
+	bool ok;
+	float inR = 0.0;
+	float outR = 0.0;
+	float Volume = 0.0;
+	float inTemper = 0.0;
+	float outTemper = 0.0;
+	float KCoe = 0.0;
+	float recomV = 0.0;
+	float theoryEnergy = 0.0;
+	float E0 = 0.0;
+	float E1 = 0.0;
+	float dispEnergy = 0.0;
+	float dispError = 0.0;
+	float stdError = 0.0;
+
+	switch (column)
+	{
+	case COLUMN_IN_RESIST: //进口电阻
+		inR = ui.tableWidget->item(row, column)->text().toFloat(&ok);
+		if (!ok)
+		{
+			return;
+		}
+		inTemper = calcTemperByResist(inR); //计算进口温度
+		ui.tableWidget->setItem(row, COLUMN_IN_TEMPER, new QTableWidgetItem(QString("%1").arg(inTemper)));
+		ui.tableWidget->setCurrentCell(row, COLUMN_OUT_RESIST);
+		break;
+	case COLUMN_OUT_RESIST: //出口电阻
+		outR = ui.tableWidget->item(row, column)->text().toFloat(&ok);
+		if (!ok)
+		{
+			return;
+		}
+		outTemper = calcTemperByResist(outR); //计算出口温度
+		ui.tableWidget->setItem(row, COLUMN_OUT_TEMPER, new QTableWidgetItem(QString("%1").arg(outTemper)));
+		KCoe = getKCoeByTemper(inTemper, outTemper); //获取K系数
+		ui.tableWidget->setItem(row, COLUMN_K_COE, new QTableWidgetItem(QString("%1").arg(KCoe)));
+		recomV = calcRecomVolume(); //计算建议体积
+		ui.tableWidget->setItem(row, COLUMN_RECOM_V, new QTableWidgetItem(QString("%1").arg(recomV)));
+		stdError = (0.5 + m_minDeltaT/(outTemper-inTemper)); //标准误差
+		ui.tableWidget->setItem(row, COLUMN_STD_ERROR, new QTableWidgetItem(QString("%1").arg(stdError)));
+		ui.tableWidget->setCurrentCell(row, COLUMN_ANALOG_V); 
+		break;
+	case COLUMN_ANALOG_V: //模拟流量
+		theoryEnergy = calcTheoryEnergy(); //计算理论热量
+		ui.tableWidget->setItem(row, COLUMN_THEORY_E, new QTableWidgetItem(QString("%1").arg(theoryEnergy)));
+		ui.tableWidget->setCurrentCell(row, COLUMN_E0); 
+		break;
+	case COLUMN_E0: //E0
+		ui.tableWidget->setCurrentCell(row, COLUMN_E1); 
+		break;
+	case COLUMN_E1: //E1
+		E0 = ui.tableWidget->item(row, COLUMN_E0)->text().toFloat(&ok);
+		E1 = ui.tableWidget->item(row, COLUMN_E1)->text().toFloat(&ok);
+		dispEnergy = E1 - E0; //热量示值
+		ui.tableWidget->setItem(row, COLUMN_DISP_E, new QTableWidgetItem(QString("%1").arg(dispEnergy)));
+		theoryEnergy = calcTheoryEnergy(); //计算理论热量
+		dispError = 100*(dispEnergy - theoryEnergy)/theoryEnergy; //计算示值误差
+		ui.tableWidget->setItem(row, COLUMN_DISP_ERROR, new QTableWidgetItem(QString("%1").arg(dispError)));
+		break;
+	default:
+		qDebug()<<"no need input";
+		break;
+	}
+}
+
+float CalcDlg::calcTemperByResist(float resist)
+{
+	return resist*2;
+}
+
+float CalcDlg::getKCoeByTemper(float inT, float outT)
+{
+	return 1.22;
+}
+
+float CalcDlg::calcRecomVolume()
+{
+	return 100.123;
+}
+
+float CalcDlg::calcTheoryEnergy()
+{
+	return 5.678;
 }
