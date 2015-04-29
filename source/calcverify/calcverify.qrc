@@ -1,5 +1,5 @@
 <RCC>
-  <qresource prefix="flowweight">
+  <qresource prefix="calcverify">
     <file>images/delulogo.png</file>
     <file>images/btncheckoff.png</file>
     <file>images/btncheckon.png</file>

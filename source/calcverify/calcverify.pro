@@ -23,12 +23,15 @@ INCLUDEPATH  	=    ./      \
 									 $$(RUNHOME_INC)/include	\
 									 $$(RUNHOME_INC)/include/qextserial
 
-HEADERS	+= $$(RUNHOME_INC)/include/calcverify.h 
+HEADERS	+= $$(RUNHOME_INC)/include/calcverify.h \
+           $$(RUNHOME_INC)/include/calcpara.h 
 	
-SOURCES	+= calcverify.cpp  
+SOURCES	+= calcverify.cpp \
+           calcpara.cpp 
 
 					 
-FORMS	+= calcverify.ui
+FORMS	+= calcverify.ui \
+         calcpara.ui
      
 RESOURCES += calcverify.qrc     
          

@@ -21,7 +21,7 @@
 #include "ui_calcverify.h"
 #include "comobject.h"
 
-
+class CalcParaDlg;
 
 class CALCVERIFY_EXPORT CalcDlg : public QDialog
 {
@@ -31,10 +31,24 @@ public:
 	CalcDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~CalcDlg();
 
+	CalcParaDlg *m_calcParaDlg;
+	float m_maxT;
+	float m_minT;
+	float m_maxDeltaT;
+	float m_minDeltaT;
+	float m_refT;
+	float m_refDeltaT;
+
+	void initUi();
 
 public slots:
 	void closeEvent(QCloseEvent * event);
 
+	void on_btnPara_clicked();
+	void on_btnExit_clicked();
+
+	void freshCalcPara();
+	void on_tableWidget_cellChanged(int row, int column);
 private slots:
 
 signals:
