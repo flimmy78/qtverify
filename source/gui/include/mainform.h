@@ -19,6 +19,7 @@ class FlowStandardDlg;
 class TotalWeightDlg;
 class TotalStandardDlg;
 class CalcDlg;
+class CmbVerifyDlg;
 class StdMtrParaSet;
 class StdMtrCoeCorrect;
 class tvercompDlg;
@@ -45,6 +46,7 @@ public:
 	TotalStandardDlg *m_totalStandardDlg;//总量检定(标准表法)
 
 	CalcDlg *m_calcDlg; //计算器检定
+	CmbVerifyDlg *m_cmbVerifyDlg; //组合检定
 	tvercompDlg *m_tvercompDlg; //温度检定(比较法)
 
 	StdMtrParaSet *m_stdParaSet; //标准表参数设定

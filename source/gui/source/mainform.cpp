@@ -30,6 +30,7 @@
 #include "totalweight.h"
 #include "totalstandard.h"
 #include "calcverify.h"
+#include "cmbverify.h"
 #include "stdmtrparaset.h"
 #include "stdmtrcoecorrect.h"
 #include "tvercomp.h"
@@ -57,7 +58,8 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_flowStandardDlg = NULL;
 	m_totalWeightDlg = NULL;
 	m_totalStandardDlg = NULL;
-	m_calcDlg = NULL;        
+	m_calcDlg = NULL;  
+	m_cmbVerifyDlg = NULL;
 	m_tvercompDlg = NULL;
 	m_stdParaSet = NULL;
 	m_stdCoeCorrect = NULL;
@@ -162,6 +164,12 @@ void MainForm::closeEvent( QCloseEvent * event)
 		{
 			delete m_calcDlg;
 			m_calcDlg = NULL;
+		}
+
+		if (m_cmbVerifyDlg)
+		{
+			delete m_cmbVerifyDlg;
+			m_cmbVerifyDlg = NULL;
 		}
 
 		if (m_tvercompDlg)
@@ -350,6 +358,17 @@ void MainForm::on_actionCalculator_triggered()
 //温度/计算器组合检定
 void MainForm::on_actionCombine_triggered()
 {
+	if (NULL == m_cmbVerifyDlg)
+	{
+		m_cmbVerifyDlg = new CmbVerifyDlg();
+	}
+	else //目的是执行CalcDlg的构造函数
+	{
+		delete m_cmbVerifyDlg;
+		m_cmbVerifyDlg = NULL;
+		m_cmbVerifyDlg = new CmbVerifyDlg();
+	}
+	m_cmbVerifyDlg->show();
 }
 
 //总量检定（质量法）
