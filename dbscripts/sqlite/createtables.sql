@@ -366,26 +366,28 @@ create table T_Calc_Verify_Record
 F_ID integer not null primary key autoincrement,
 F_TimeStamp timestamp not null,     --时间戳（'yyyy-MM-dd HH:mm:ss.zzz')
 F_MeterNo varchar(16) not null,     --表号(14位数字: 6 + 8)
+F_DeltaTIdx smallint not null,      --流量点索引，例如1,2,3,4...
 F_Standard integer,                 --表规格(DN15/DN20/DN25)，外键(T_Meter_Standard.F_ID)
 F_Model integer,                    --表型号，外键(T_Meter_Model.F_ID)
 F_Grade smallint,                   --计量等级（1,2,3）
 F_ManufactDept integer,             --制造单位，外键(T_Manufacture_Dept.F_ID)
 F_VerifyDept integer,               --送检单位，外键(T_Verify_Dept.F_ID)
 F_VerifyPerson integer,             --检定员，外键(T_User_Def_Tab.F_ID)
-F_TempMax float,                    --最高温度(℃)
-F_TempMin float,                    --最小温度(℃)
-F_DeltaTempMax float,               --最大温差(K)
-F_DeltaTempMin float,               --最小温差(K)
+F_MaxT float,                       --最高温度(℃)
+F_MinT float,                       --最小温度(℃)
+F_MaxDeltaT float,                  --最大温差(K)
+F_MinDeltaT float,                  --最小温差(K)
+F_Algorithm integer,                --算法(0:焓差法； 1:K系数法)
 F_InstallPos integer,               --安装位置(0:进口；1:出口)
-F_HeatUnit integer,                 --热量单位(0:MJ; 1:kWh)
+F_EnergyUnit integer,               --热量单位(0:MJ; 1:kWh)
 F_StdTempIn float,                  --入口温度-标准温度计(℃)
 F_StdTempOut float,                 --出口温度-标准温度计(℃)
 F_StdResistIn float,                --入口电阻-标准温度计(Ω)
 F_StdResistOut float,               --出口电阻-标准温度计(Ω)
-F_ProposedVolume float,             --建议体积(L)
-F_SimulateVolume float,             --模拟体积(L)
+F_RecomVolume float,                --建议体积(L)
+F_AnalogVolume float,               --模拟体积(L)
 F_Kcoe float,                       --K系数
-F_StdValue float,                   --理论值(热量，kwh)
+F_StdEnergy float,                  --理论值(热量，kwh)
 F_MeterE0 float,                    --热量表初值(热量)，单位kWh
 F_MeterE1 float,                    --热量表终值(热量)，单位kWh
 F_DispError float,                  --示值误差，单位%
@@ -400,7 +402,7 @@ constraint F_ManufactDept_fk foreign key(F_ManufactDept) references T_Manufactur
 constraint F_VerifyDept_fk foreign key(F_VerifyDept) references T_Verify_Dept(F_ID),
 constraint F_VerifyPerson_fk foreign key(F_VerifyPerson) references T_User_Def_Tab(F_ID)
 );
-create unique index uk_T_Calc_Verify_Record on T_Calc_Verify_Record (F_MeterNo, F_TimeStamp);
+create unique index uk_T_Calc_Verify_Record on T_Calc_Verify_Record (F_MeterNo, F_TimeStamp, F_DeltaTIdx);
 
 
 ---------------------------------
