@@ -9,6 +9,8 @@
 #ifndef UI_CALCVERIFY_H
 #define UI_CALCVERIFY_H
 
+#include <Qt3Support/Q3ButtonGroup>
+#include <Qt3Support/Q3GroupBox>
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
@@ -41,22 +43,23 @@ public:
     QGridLayout *gridLayout_5;
     QGroupBox *grpBoxAlgorithm;
     QGridLayout *gridLayout_3;
-    QRadioButton *radioButton_5;
-    QRadioButton *radioButton_6;
-    QGroupBox *grpBoxHeatUnit;
+    QRadioButton *radioButtonEnthalpy;
+    QRadioButton *radioButtonKCoe;
+    QGroupBox *grpBoxEnergyUnit;
     QGridLayout *gridLayout_2;
-    QRadioButton *radioButton_3;
-    QRadioButton *radioButton_4;
+    QRadioButton *radioButtonMJ;
+    QRadioButton *radioButtonKwh;
     QGroupBox *grpBoxInstallPos;
     QGridLayout *gridLayout;
-    QRadioButton *radioButton;
-    QRadioButton *radioButton_2;
+    QRadioButton *radioButtonPosIn;
+    QRadioButton *radioButtonPosOut;
     QGroupBox *grpBoxMinDeltaT;
     QGridLayout *gridLayout_6;
     QLabel *label;
     QLineEdit *lnEditMinDeltaT;
     QSpacerItem *horizontalSpacer_2;
     QSpacerItem *horizontalSpacer;
+    Q3ButtonGroup *buttonGroup;
 
     void setupUi(QDialog *CalcDlgClass)
     {
@@ -251,52 +254,52 @@ public:
         grpBoxAlgorithm->setObjectName(QString::fromUtf8("grpBoxAlgorithm"));
         gridLayout_3 = new QGridLayout(grpBoxAlgorithm);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
-        radioButton_5 = new QRadioButton(grpBoxAlgorithm);
-        radioButton_5->setObjectName(QString::fromUtf8("radioButton_5"));
+        radioButtonEnthalpy = new QRadioButton(grpBoxAlgorithm);
+        radioButtonEnthalpy->setObjectName(QString::fromUtf8("radioButtonEnthalpy"));
 
-        gridLayout_3->addWidget(radioButton_5, 0, 0, 1, 1);
+        gridLayout_3->addWidget(radioButtonEnthalpy, 0, 0, 1, 1);
 
-        radioButton_6 = new QRadioButton(grpBoxAlgorithm);
-        radioButton_6->setObjectName(QString::fromUtf8("radioButton_6"));
-        radioButton_6->setChecked(true);
+        radioButtonKCoe = new QRadioButton(grpBoxAlgorithm);
+        radioButtonKCoe->setObjectName(QString::fromUtf8("radioButtonKCoe"));
+        radioButtonKCoe->setChecked(true);
 
-        gridLayout_3->addWidget(radioButton_6, 0, 1, 1, 1);
+        gridLayout_3->addWidget(radioButtonKCoe, 0, 1, 1, 1);
 
 
         gridLayout_5->addWidget(grpBoxAlgorithm, 0, 5, 1, 1);
 
-        grpBoxHeatUnit = new QGroupBox(layoutWidget);
-        grpBoxHeatUnit->setObjectName(QString::fromUtf8("grpBoxHeatUnit"));
-        gridLayout_2 = new QGridLayout(grpBoxHeatUnit);
+        grpBoxEnergyUnit = new QGroupBox(layoutWidget);
+        grpBoxEnergyUnit->setObjectName(QString::fromUtf8("grpBoxEnergyUnit"));
+        gridLayout_2 = new QGridLayout(grpBoxEnergyUnit);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        radioButton_3 = new QRadioButton(grpBoxHeatUnit);
-        radioButton_3->setObjectName(QString::fromUtf8("radioButton_3"));
+        radioButtonMJ = new QRadioButton(grpBoxEnergyUnit);
+        radioButtonMJ->setObjectName(QString::fromUtf8("radioButtonMJ"));
 
-        gridLayout_2->addWidget(radioButton_3, 0, 0, 1, 1);
+        gridLayout_2->addWidget(radioButtonMJ, 0, 0, 1, 1);
 
-        radioButton_4 = new QRadioButton(grpBoxHeatUnit);
-        radioButton_4->setObjectName(QString::fromUtf8("radioButton_4"));
-        radioButton_4->setChecked(true);
+        radioButtonKwh = new QRadioButton(grpBoxEnergyUnit);
+        radioButtonKwh->setObjectName(QString::fromUtf8("radioButtonKwh"));
+        radioButtonKwh->setChecked(true);
 
-        gridLayout_2->addWidget(radioButton_4, 0, 1, 1, 1);
+        gridLayout_2->addWidget(radioButtonKwh, 0, 1, 1, 1);
 
 
-        gridLayout_5->addWidget(grpBoxHeatUnit, 0, 2, 1, 1);
+        gridLayout_5->addWidget(grpBoxEnergyUnit, 0, 2, 1, 1);
 
         grpBoxInstallPos = new QGroupBox(layoutWidget);
         grpBoxInstallPos->setObjectName(QString::fromUtf8("grpBoxInstallPos"));
         gridLayout = new QGridLayout(grpBoxInstallPos);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        radioButton = new QRadioButton(grpBoxInstallPos);
-        radioButton->setObjectName(QString::fromUtf8("radioButton"));
-        radioButton->setChecked(true);
+        radioButtonPosIn = new QRadioButton(grpBoxInstallPos);
+        radioButtonPosIn->setObjectName(QString::fromUtf8("radioButtonPosIn"));
+        radioButtonPosIn->setChecked(true);
 
-        gridLayout->addWidget(radioButton, 0, 0, 1, 1);
+        gridLayout->addWidget(radioButtonPosIn, 0, 0, 1, 1);
 
-        radioButton_2 = new QRadioButton(grpBoxInstallPos);
-        radioButton_2->setObjectName(QString::fromUtf8("radioButton_2"));
+        radioButtonPosOut = new QRadioButton(grpBoxInstallPos);
+        radioButtonPosOut->setObjectName(QString::fromUtf8("radioButtonPosOut"));
 
-        gridLayout->addWidget(radioButton_2, 0, 1, 1, 1);
+        gridLayout->addWidget(radioButtonPosOut, 0, 1, 1, 1);
 
 
         gridLayout_5->addWidget(grpBoxInstallPos, 0, 0, 1, 1);
@@ -315,6 +318,7 @@ public:
         sizePolicy.setHeightForWidth(lnEditMinDeltaT->sizePolicy().hasHeightForWidth());
         lnEditMinDeltaT->setSizePolicy(sizePolicy);
         lnEditMinDeltaT->setAlignment(Qt::AlignCenter);
+        lnEditMinDeltaT->setReadOnly(true);
 
         gridLayout_6->addWidget(lnEditMinDeltaT, 0, 1, 1, 1);
 
@@ -329,6 +333,20 @@ public:
 
         gridLayout_5->addItem(horizontalSpacer, 0, 1, 1, 1);
 
+        buttonGroup = new Q3ButtonGroup(CalcDlgClass);
+        buttonGroup->setObjectName(QString::fromUtf8("buttonGroup"));
+        buttonGroup->setGeometry(QRect(210, 800, 331, 51));
+        QWidget::setTabOrder(radioButtonPosIn, radioButtonPosOut);
+        QWidget::setTabOrder(radioButtonPosOut, radioButtonMJ);
+        QWidget::setTabOrder(radioButtonMJ, radioButtonKwh);
+        QWidget::setTabOrder(radioButtonKwh, lnEditMinDeltaT);
+        QWidget::setTabOrder(lnEditMinDeltaT, radioButtonEnthalpy);
+        QWidget::setTabOrder(radioButtonEnthalpy, radioButtonKCoe);
+        QWidget::setTabOrder(radioButtonKCoe, tableWidget);
+        QWidget::setTabOrder(tableWidget, btnPara);
+        QWidget::setTabOrder(btnPara, btnStart);
+        QWidget::setTabOrder(btnStart, btnSave);
+        QWidget::setTabOrder(btnSave, btnExit);
 
         retranslateUi(CalcDlgClass);
 
@@ -343,7 +361,7 @@ public:
         btnPara->setText(QApplication::translate("CalcDlgClass", "Para", 0, QApplication::UnicodeUTF8));
         btnStart->setText(QApplication::translate("CalcDlgClass", "Start", 0, QApplication::UnicodeUTF8));
         btnSave->setText(QApplication::translate("CalcDlgClass", "Save", 0, QApplication::UnicodeUTF8));
-        btnExit->setText(QApplication::translate("CalcDlgClass", "exit", 0, QApplication::UnicodeUTF8));
+        btnExit->setText(QApplication::translate("CalcDlgClass", "Exit", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->verticalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("CalcDlgClass", "1", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->verticalHeaderItem(1);
@@ -376,14 +394,14 @@ public:
         tableWidget->setSortingEnabled(__sortingEnabled);
 
         grpBoxAlgorithm->setTitle(QApplication::translate("CalcDlgClass", "Algorithm", 0, QApplication::UnicodeUTF8));
-        radioButton_5->setText(QApplication::translate("CalcDlgClass", "EnthalpyDiff", 0, QApplication::UnicodeUTF8));
-        radioButton_6->setText(QApplication::translate("CalcDlgClass", "KCoe", 0, QApplication::UnicodeUTF8));
-        grpBoxHeatUnit->setTitle(QApplication::translate("CalcDlgClass", "EnergyUnit", 0, QApplication::UnicodeUTF8));
-        radioButton_3->setText(QApplication::translate("CalcDlgClass", "MJ", 0, QApplication::UnicodeUTF8));
-        radioButton_4->setText(QApplication::translate("CalcDlgClass", "kWh", 0, QApplication::UnicodeUTF8));
+        radioButtonEnthalpy->setText(QApplication::translate("CalcDlgClass", "EnthalpyDiff", 0, QApplication::UnicodeUTF8));
+        radioButtonKCoe->setText(QApplication::translate("CalcDlgClass", "KCoe", 0, QApplication::UnicodeUTF8));
+        grpBoxEnergyUnit->setTitle(QApplication::translate("CalcDlgClass", "EnergyUnit", 0, QApplication::UnicodeUTF8));
+        radioButtonMJ->setText(QApplication::translate("CalcDlgClass", "MJ", 0, QApplication::UnicodeUTF8));
+        radioButtonKwh->setText(QApplication::translate("CalcDlgClass", "kWh", 0, QApplication::UnicodeUTF8));
         grpBoxInstallPos->setTitle(QApplication::translate("CalcDlgClass", "InstallPos", 0, QApplication::UnicodeUTF8));
-        radioButton->setText(QApplication::translate("CalcDlgClass", "In", 0, QApplication::UnicodeUTF8));
-        radioButton_2->setText(QApplication::translate("CalcDlgClass", "Out", 0, QApplication::UnicodeUTF8));
+        radioButtonPosIn->setText(QApplication::translate("CalcDlgClass", "In", 0, QApplication::UnicodeUTF8));
+        radioButtonPosOut->setText(QApplication::translate("CalcDlgClass", "Out", 0, QApplication::UnicodeUTF8));
         grpBoxMinDeltaT->setTitle(QApplication::translate("CalcDlgClass", "MinDeltaT", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("CalcDlgClass", "\316\224\316\270min(K)", 0, QApplication::UnicodeUTF8));
     } // retranslateUi

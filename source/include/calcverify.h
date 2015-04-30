@@ -46,6 +46,14 @@ public:
 	~CalcDlg();
 
 	CalcParaDlg *m_calcParaDlg;
+
+	QString m_meterNO;
+	int m_standard;
+	int m_model;
+	int m_grade;
+	int m_manufact;
+	int m_verifydept;
+	int m_verifyperson;
 	float m_maxT;
 	float m_minT;
 	float m_maxDeltaT;
@@ -53,16 +61,22 @@ public:
 	float m_refT;
 	float m_refDeltaT;
 
+	Calc_Verify_Record_PTR m_recPtr; //有效的检定记录
+	QString m_timeStamp; //记录时间戳
+
 	void initUi();
 	float calcTemperByResist(float resist); //根据电阻计算温度
 	float getKCoeByTemper(float inT, float outT); //根据进口温度和出口温度获取K系数
 	float calcRecomVolume(); //计算推荐体积
 	float calcTheoryEnergy(); //计算理论热量
 
+	int saveVerifyRecords(); //统计有效的检定结果数量
+
 public slots:
 	void closeEvent(QCloseEvent * event);
 
 	void on_btnPara_clicked();
+	void on_btnStart_clicked();
 	void on_btnSave_clicked();
 	void on_btnExit_clicked();
 

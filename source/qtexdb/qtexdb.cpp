@@ -261,7 +261,7 @@ int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id)
 
 
 /*
-** 向数据库插入一条流量检定结果。调用者负责提前打开数据库startdb()
+** 向数据库插入流量检定结果。调用者负责提前打开数据库startdb()
 */
 int insertFlowVerifyRec(Flow_Verify_Record_PTR ptr, int num)
 {
@@ -508,6 +508,7 @@ int getDatabaseParaIni(DatabasePara_PTR info)
 
 int insertPlatiniumVerifyRec(T_Platinum_Verify_Record_PTR ptr, int num)
 {
+	int ret = 0;
 	for (int i=0; i<num; i++)
 	{
 		QSqlQuery query(g_db); // 新建一个查询的实例
@@ -593,4 +594,98 @@ int insertPlatiniumVerifyRec(T_Platinum_Verify_Record_PTR ptr, int num)
 	}
 
 	return true;
+}
+
+/*
+** 向数据库插入计算器检定结果。调用者负责提前打开数据库startdb()
+*/
+int insertCalcVerifyRec(Calc_Verify_Record_PTR ptr, int num)
+{
+	int ret = 1;
+	for (int i=0; i<num; i++)
+	{
+		QSqlQuery query(g_db); // 新建一个查询的实例
+		QString sql = "insert into T_Calc_Verify_Record";
+		sql.append(" (");
+		sql.append("F_TimeStamp,");
+		sql.append("F_MeterNo,");
+		sql.append("F_DeltaTIdx,");
+		sql.append("F_Standard,");
+		sql.append("F_Model,");
+		sql.append("F_Grade,");
+		sql.append("F_ManufactDept,");
+		sql.append("F_VerifyDept,");
+		sql.append("F_VerifyPerson,");
+		sql.append("F_MaxT,");
+		sql.append("F_MinT,");
+		sql.append("F_MaxDeltaT,");
+		sql.append("F_MinDeltaT,");
+		sql.append("F_Algorithm,");
+		sql.append("F_InstallPos,");
+		sql.append("F_EnergyUnit,");
+		sql.append("F_StdTempIn,");
+		sql.append("F_StdTempOut,");
+		sql.append("F_StdResistIn,");
+		sql.append("F_StdResistOut,");
+		sql.append("F_RecomVolume,");
+		sql.append("F_AnalogVolume,");
+		sql.append("F_Kcoe,");
+		sql.append("F_StdEnergy,");
+		sql.append("F_MeterE0,");
+		sql.append("F_MeterE1,");
+		sql.append("F_DispError,");
+		sql.append("F_StdError,");
+		sql.append("F_Result,");
+		sql.append("F_Bak2,");
+		sql.append("F_Bak3,");
+		sql.append("F_Bak4");
+		sql.append(") ");
+		sql.append("values");
+		sql.append("(");//start
+		sql.append(QString("\'%1\', ").arg(ptr[i].timestamp, 0, 10));//F_TimeStamp
+		sql.append(QString("%1, ").arg(ptr[i].meterNo,0, 10));//F_MeterNo
+		sql.append(QString("%1, ").arg(ptr[i].deltaTidx, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].standard, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].model, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].grade, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].manufactDept, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].verifyDept, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].verifyPerson, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].maxT, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].minT, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].maxDeltaT, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].minDeltaT, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].algorithm, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].installPos, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].energyUnit, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].inTemper, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].outTemper, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].inR, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].outR, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].recomVolume, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].analogVolume, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].kCoe, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].stdEnergy, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].meterE0,  6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].meterE1, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].dispError, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].stdError, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].result, 0, 10));
+		sql.append(QString("\'%1\', ").arg(ptr[i].bak2, 0, 10));//F_Bak2
+		sql.append(QString("\'%1\', ").arg(ptr[i].bak3, 0, 10));//F_Bak3
+		sql.append(QString("\'%1\'").arg(ptr[i].bak4, 0, 10));//F_Bak4
+		sql.append(")");//end
+		if (query.exec(sql))
+		{
+			qDebug()<<"insert succeed";
+		}
+		else
+		{
+ 			QSqlError error = query.lastError();
+			qWarning()<<error.text();
+			ret = 0;
+		}
+	}
+	
+	return ret;
 }

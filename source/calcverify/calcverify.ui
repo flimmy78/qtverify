@@ -130,7 +130,7 @@
     </sizepolicy>
    </property>
    <property name="text">
-    <string>exit</string>
+    <string>Exit</string>
    </property>
    <property name="icon">
     <iconset>
@@ -488,14 +488,14 @@
       </property>
       <layout class="QGridLayout" name="gridLayout_3">
        <item row="0" column="0">
-        <widget class="QRadioButton" name="radioButton_5">
+        <widget class="QRadioButton" name="radioButtonEnthalpy">
          <property name="text">
           <string>EnthalpyDiff</string>
          </property>
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QRadioButton" name="radioButton_6">
+        <widget class="QRadioButton" name="radioButtonKCoe">
          <property name="text">
           <string>KCoe</string>
          </property>
@@ -508,20 +508,20 @@
      </widget>
     </item>
     <item row="0" column="2">
-     <widget class="QGroupBox" name="grpBoxHeatUnit">
+     <widget class="QGroupBox" name="grpBoxEnergyUnit">
       <property name="title">
        <string>EnergyUnit</string>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="0" column="0">
-        <widget class="QRadioButton" name="radioButton_3">
+        <widget class="QRadioButton" name="radioButtonMJ">
          <property name="text">
           <string>MJ</string>
          </property>
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QRadioButton" name="radioButton_4">
+        <widget class="QRadioButton" name="radioButtonKwh">
          <property name="text">
           <string>kWh</string>
          </property>
@@ -540,7 +540,7 @@
       </property>
       <layout class="QGridLayout" name="gridLayout">
        <item row="0" column="0">
-        <widget class="QRadioButton" name="radioButton">
+        <widget class="QRadioButton" name="radioButtonPosIn">
          <property name="text">
           <string>In</string>
          </property>
@@ -550,7 +550,7 @@
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QRadioButton" name="radioButton_2">
+        <widget class="QRadioButton" name="radioButtonPosOut">
          <property name="text">
           <string>Out</string>
          </property>
@@ -582,6 +582,9 @@
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -622,7 +625,45 @@
     </item>
    </layout>
   </widget>
+  <widget class="Q3ButtonGroup" name="buttonGroup">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>800</y>
+     <width>331</width>
+     <height>51</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Q3GroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>Qt3Support/Q3GroupBox</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Q3ButtonGroup</class>
+   <extends>Q3GroupBox</extends>
+   <header>Qt3Support/Q3ButtonGroup</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>radioButtonPosIn</tabstop>
+  <tabstop>radioButtonPosOut</tabstop>
+  <tabstop>radioButtonMJ</tabstop>
+  <tabstop>radioButtonKwh</tabstop>
+  <tabstop>lnEditMinDeltaT</tabstop>
+  <tabstop>radioButtonEnthalpy</tabstop>
+  <tabstop>radioButtonKCoe</tabstop>
+  <tabstop>tableWidget</tabstop>
+  <tabstop>btnPara</tabstop>
+  <tabstop>btnStart</tabstop>
+  <tabstop>btnSave</tabstop>
+  <tabstop>btnExit</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

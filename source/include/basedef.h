@@ -402,4 +402,47 @@ public:
 		char  F_StdModel[ZH_NAME_LEN];		//标准铂电阻型号(唯力，华仪等)
 };
 typedef T_Platinium_Verify_Record_STR* T_Platinum_Verify_Record_PTR;
+
+
+/*
+** FUNCTION -- 计算器检定结果记录, 对应T_Calc_Verify_Record
+*/
+class Calc_Verify_Record_STR{
+public:
+    int     id;                   
+	char	timestamp[TIMESTAMP_LEN];
+	char    meterNo[METERNO_LEN];
+	INT16   deltaTidx;      //温差点索引
+	int  	standard;		//表规格
+	int	    model;			//表型号
+	INT16	grade;	        //计量等级
+	int	    manufactDept;	//制造单位
+	int	    verifyDept;		//送检单位
+	int	    verifyPerson;	//检定员
+	float   maxT;			//最高温度
+	float   minT;
+	float   maxDeltaT;
+	float   minDeltaT;
+	int     algorithm;      //算法(0:焓差法；1:K系数法)
+	int     installPos;     //安装位置(0:进口； 1:出口)
+	int     energyUnit;     //热量单位(0:MJ；1:kwh)
+	float   inTemper;
+	float   outTemper;
+	float   inR;
+	float   outR;
+	float   recomVolume;
+	float   analogVolume;
+	float   kCoe;
+	float   stdEnergy;
+	float   meterE0;
+	float   meterE1;
+	float   dispError;
+	float   stdError;
+	int     result;         //检定结果(1:合格  0:不合格)
+	char	bak2[24];		//备用域2
+	char	bak3[24];		//备用域3
+	char	bak4[24];		//备用域4
+};
+typedef Calc_Verify_Record_STR* Calc_Verify_Record_PTR;
+
 #endif	//BASEDEF_H

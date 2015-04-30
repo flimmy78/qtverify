@@ -29,6 +29,13 @@ public:
 	void readSettings();
 	void writeSettings();
 
+	QString getMeterNO();
+	int getStandard();
+	int getModel();
+	int getGrade();
+	int getManuFact();
+	int getVerifyDept();
+	int getVerifyPerson();
 	float getMaxT();
 	float getMinT();
 	float getMaxDeltaT();
@@ -47,6 +54,13 @@ signals:
 
 private:
 	Ui::CalcParaClass ui;
+	QString m_meterNO;
+	int m_standard;
+	int m_model;
+	int m_grade;
+	int m_manufact;
+	int m_verifydept;
+	int m_verifyperson;
 	float m_maxT;
 	float m_minT;
 	float m_maxDeltaT;
