@@ -66,10 +66,10 @@ public:
 	QString m_timeStamp; //记录时间戳
 
 	void initUi();
-	float calcTemperByResist(float resist); //根据电阻计算温度
+	float calcTemperByResist(int port, float resist); //根据电阻计算温度
 	float getKCoeByTemper(float inT, float outT); //根据进口温度和出口温度获取K系数
-	float calcRecomVolume(); //计算推荐体积
-	float calcTheoryEnergy(); //计算理论热量
+	float calcRecomVolume(float stdErr, float inTemper, float outTemper, float kCoe); //计算推荐体积
+	float calcTheoryEnergy(float kCoe, float analogV, float inTemper, float outTemper); //计算理论热量
 
 	int saveVerifyRecords(); //统计有效的检定结果数量
 

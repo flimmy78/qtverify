@@ -20,11 +20,13 @@
 #include <QtSql/QSqlTableModel>
 #include <QtGui/QFileDialog>
 #include <QtCore/QSignalMapper>
+#include <QtCore/QSettings>
 #include <math.h>
 
 #include "calcverify.h"
 #include "calcpara.h"
 #include "qtexdb.h"
+#include "algorithm.h"
 
 CalcDlg::CalcDlg(QWidget *parent, Qt::WFlags flags)
 	: QDialog(parent, flags)
@@ -300,50 +302,40 @@ void CalcDlg::on_tableWidget_cellChanged(int row, int column)
 	}
 	qDebug()<<"row ="<<row<<", column ="<<column;
 	bool ok;
-	float inR = 0.0;
-	float outR = 0.0;
-	float Volume = 0.0;
-	float inTemper = 0.0;
-	float outTemper = 0.0;
-	float KCoe = 0.0;
-	float recomV = 0.0;
-	float theoryEnergy = 0.0;
-	float E0 = 0.0;
-	float E1 = 0.0;
-	float dispEnergy = 0.0;
-	float dispError = 0.0;
-	float stdError = 0.0;
+	float inR = ui.tableWidget->item(row, COLUMN_IN_RESIST)->text().toFloat(&ok);
+	float outR = ui.tableWidget->item(row, COLUMN_OUT_RESIST)->text().toFloat(&ok);
+	float analogV = ui.tableWidget->item(row, COLUMN_ANALOG_V)->text().toFloat(&ok);
+	float inTemper = ui.tableWidget->item(row, COLUMN_IN_TEMPER)->text().toFloat(&ok);
+	float outTemper = ui.tableWidget->item(row, COLUMN_OUT_TEMPER)->text().toFloat(&ok);
+	float KCoe = ui.tableWidget->item(row, COLUMN_K_COE)->text().toFloat(&ok);
+	float recomV = ui.tableWidget->item(row, COLUMN_RECOM_V)->text().toFloat(&ok);
+	float theoryEnergy = ui.tableWidget->item(row, COLUMN_THEORY_E)->text().toFloat(&ok);
+	float E0 = ui.tableWidget->item(row, COLUMN_E0)->text().toFloat(&ok);
+	float E1 = ui.tableWidget->item(row, COLUMN_E1)->text().toFloat(&ok);
+	float dispEnergy = ui.tableWidget->item(row, COLUMN_DISP_E)->text().toFloat(&ok);
+	float dispError = ui.tableWidget->item(row, COLUMN_DISP_ERROR)->text().toFloat(&ok);
+	float stdError = ui.tableWidget->item(row, COLUMN_STD_ERROR)->text().toFloat(&ok);
 
 	switch (column)
 	{
 	case COLUMN_IN_RESIST: //进口电阻
-		inR = ui.tableWidget->item(row, column)->text().toFloat(&ok);
-		if (!ok)
-		{
-			return;
-		}
-		inTemper = calcTemperByResist(inR); //计算进口温度
+		inTemper = calcTemperByResist(1, inR); //计算进口温度
 		ui.tableWidget->item(row, COLUMN_IN_TEMPER)->setText(QString("%1").arg(inTemper));
 		ui.tableWidget->setCurrentCell(row, COLUMN_OUT_RESIST);
 		break;
 	case COLUMN_OUT_RESIST: //出口电阻
-		outR = ui.tableWidget->item(row, column)->text().toFloat(&ok);
-		if (!ok)
-		{
-			return;
-		}
-		outTemper = calcTemperByResist(outR); //计算出口温度
+		outTemper = calcTemperByResist(0, outR); //计算出口温度
 		ui.tableWidget->item(row, COLUMN_OUT_TEMPER)->setText(QString("%1").arg(outTemper));
 		KCoe = getKCoeByTemper(inTemper, outTemper); //获取K系数
 		ui.tableWidget->item(row, COLUMN_K_COE)->setText(QString("%1").arg(KCoe));
-		recomV = calcRecomVolume(); //计算建议体积
-		ui.tableWidget->item(row, COLUMN_RECOM_V)->setText(QString("%1").arg(recomV));
-		stdError = (0.5 + m_minDeltaT/(outTemper-inTemper)); //标准误差
+		stdError = (0.5 + m_minDeltaT/(inTemper-outTemper)); //标准误差
 		ui.tableWidget->item(row, COLUMN_STD_ERROR)->setText(QString("%1").arg(stdError));
+		recomV = calcRecomVolume(stdError, inTemper, outTemper, KCoe); //计算建议体积
+		ui.tableWidget->item(row, COLUMN_RECOM_V)->setText(QString("%1").arg(recomV));
 		ui.tableWidget->setCurrentCell(row, COLUMN_ANALOG_V); 
 		break;
 	case COLUMN_ANALOG_V: //模拟流量
-		theoryEnergy = calcTheoryEnergy(); //计算理论热量
+		theoryEnergy = calcTheoryEnergy(KCoe, analogV/1000, inTemper, outTemper); //计算理论热量
 		ui.tableWidget->item(row, COLUMN_THEORY_E)->setText(QString("%1").arg(theoryEnergy));
 		ui.tableWidget->setCurrentCell(row, COLUMN_E0); 
 		break;
@@ -351,9 +343,6 @@ void CalcDlg::on_tableWidget_cellChanged(int row, int column)
 		ui.tableWidget->setCurrentCell(row, COLUMN_E1); 
 		break;
 	case COLUMN_E1: //E1
-		theoryEnergy = calcTheoryEnergy(); //计算理论热量
-		E0 = ui.tableWidget->item(row, COLUMN_E0)->text().toFloat(&ok);
-		E1 = ui.tableWidget->item(row, COLUMN_E1)->text().toFloat(&ok);
 		dispEnergy = E1 - E0; //热量示值
 		ui.tableWidget->item(row, COLUMN_DISP_E)->setText(QString("%1").arg(dispEnergy));
 		dispError = 100*(dispEnergy - theoryEnergy)/theoryEnergy; //计算示值误差
@@ -365,24 +354,62 @@ void CalcDlg::on_tableWidget_cellChanged(int row, int column)
 	}
 }
 
-float CalcDlg::calcTemperByResist(float resist)
+/*
+**
+**	port: 1:入口；0:出口
+*/
+float CalcDlg::calcTemperByResist(int port, float resist)
 {
-	return resist*2;
+	QString filename = getFullIniFileName("stdplasensor.ini");//配置文件的文件名
+	QSettings *settings = new QSettings(filename, QSettings::IniFormat);
+	settings->setIniCodec("GB2312");//解决向ini文件中写汉字乱码
+	
+	float in_r0 = settings->value("pt100/in_rtp").toFloat();
+	float in_a = settings->value("pt100/in_a").toFloat();
+	float in_b = settings->value("pt100/in_b").toFloat();
+	float inTemper = getPlaTr(in_r0, in_a, in_b, resist);
+
+	float out_r0 = settings->value("pt100/out_rtp").toFloat();
+	float out_a = settings->value("pt100/out_a").toFloat();
+	float out_b = settings->value("pt100/out_b").toFloat();
+	float outTemper = getPlaTr(out_r0, out_a, out_b, resist);
+
+	float retT = 0.0;
+	if (port) //入口
+	{
+		retT = inTemper;
+	}
+	else
+	{
+		retT = outTemper;
+	}
+	return retT;
 }
 
 float CalcDlg::getKCoeByTemper(float inT, float outT)
 {
-	return 1.22;
+	return 1.23;
 }
 
-float CalcDlg::calcRecomVolume()
+float CalcDlg::calcRecomVolume(float stdErr, float inTemper, float outTemper, float kCoe)
 {
-	return 100.123;
+	float recomV = 0.0;
+//	Text44(txt_idx) = Int(3000 / (Val(Text21(txt_idx).Text) * (Text11(txt_idx).Text - Text12(txt_idx).Text) * Text14(txt_idx).Text) / 10) * 10
+	recomV = int(3000 / (stdErr * (inTemper - outTemper) * kCoe) / 10) * 10;
+
+	return recomV;
 }
 
-float CalcDlg::calcTheoryEnergy()
+/*
+** analogV:单位m3
+   inTemper:单位℃
+   outTemper:单位℃
+*/
+float CalcDlg::calcTheoryEnergy(float kCoe, float analogV, float inTemper, float outTemper)
 {
-	return 5.678;
+	float energy = 0.0;
+	energy = kCoe*analogV*(inTemper - outTemper);
+	return energy;
 }
 
 int CalcDlg::saveVerifyRecords()
