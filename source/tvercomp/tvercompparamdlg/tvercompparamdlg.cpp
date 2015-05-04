@@ -8,7 +8,7 @@
 tvercompparamDlg::tvercompparamDlg(QWidget *parent /* = 0 */, Qt::WFlags flags /* = 0 */)
 	: QWidget(parent, flags)
 {
-	m_config = new QSettings(getIniFileName("tvercompconfig.ini"), QSettings::IniFormat);
+	m_config = new QSettings(getFullIniFileName("tvercompconfig.ini"), QSettings::IniFormat);
 
 	ui.setupUi(this);
 

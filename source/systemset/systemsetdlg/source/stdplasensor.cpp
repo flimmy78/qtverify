@@ -6,7 +6,7 @@ stdplasensorDlg::stdplasensorDlg(QWidget *parent, Qt::WFlags flags)
 {
 	ui.setupUi(this);
 
-	m_config = new QSettings(getIniFileName("stdplasensor.ini"), QSettings::IniFormat);
+	m_config = new QSettings(getFullIniFileName("stdplasensor.ini"), QSettings::IniFormat);
 
 	readInUse();
 	readmodelconfig();

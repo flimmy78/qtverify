@@ -21,14 +21,14 @@
 ALGORITHM_EXPORT int getPortSetIni(PortSet_Ini_PTR info); //获取控制板的端口号配置信息
 ALGORITHM_EXPORT int getParaSetIni(ParaSet_Ini_PTR info); //获取参数设置(质量法-分量检测)
 ALGORITHM_EXPORT int getMasterSlaveIni(MasterSlave_Ini_PTR info); //获取主机-从机设置信息
-ALGORITHM_EXPORT QString getIniFileName(QString ini);//获取配置文件int的完整路径
+ALGORITHM_EXPORT QString getFullIniFileName(QString filename);//获取配置文件filename的完整路径
 ALGORITHM_EXPORT float detA(float a00, float a01, float a10, float a11);//计算2阶行列式的值， aij表示第i行 第j列的元素
 ALGORITHM_EXPORT plaParam_PTR getPlaParam(pla_T_R_PTR pla_p, int num=3);//计算铂电阻的电气系数
 ALGORITHM_EXPORT float getPlaRt(float r0, float a, float b, float tmp);//计算铂电阻在温度tmp(tmp>0℃)时的电阻值
 ALGORITHM_EXPORT float getPlaTr(float r0, float a, float b, float resis);//计算铂电阻在电阻值resis(resis>r0)时的温度值
 ALGORITHM_EXPORT float getDeltaTmpErr(float std_delta_t, float min_delta_t);//根据jjg225-2001计算温差误差限, 以浮点数返回
 ALGORITHM_EXPORT float getSingleTmpErr(float std_delta_t);//根据jjg225-2001计算单支铂电阻温度误差
-const float density[150] = {
+const float density[150] = { //压力<=0.6MPa
 	1000.2f,
 	1000.2f,
 	1000.2f,
@@ -181,6 +181,12 @@ const float density[150] = {
 	917.08f
 };//水温-密度表, (下标的索引值 + 1) 即为(整数温度值), 密度单位(千克/立方米, kg/m3)
 
+const float g_KCoe[46][90] = 
+{
+	{1.125f, 1.126f, 1.127f},
+	{0.000f, 1.126f, 1.127f}
+};
+
 class ALGORITHM_EXPORT CAlgorithm
 {
 public:
@@ -193,8 +199,8 @@ public:
 	double getDensityByFit(float temp);//根据水的温度值计算密度值(拟合法)
 	double getDensityByQuery(float temp);//根据水的温度值查找密度值(查表法)
 	double getStdVolByPos(float mass, float inlet, float outlet, int num);//获取对应表位的标准体积流量
+
 private:
-	
 	int getInt(float p);
 	float getDecimal(float p);
 

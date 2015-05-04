@@ -112,7 +112,7 @@ int getMasterSlaveIni(MasterSlave_Ini_PTR info)
 	return true;
 }
 
-QString getIniFileName(QString ini)
+QString getFullIniFileName(QString filename)
 {
 	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
 	if (runhome.isEmpty())
@@ -120,13 +120,13 @@ QString getIniFileName(QString ini)
 		qWarning()<<"Get $(RUNHOME) Failed! Please set up this system variable.";
 		return "";
 	}
-	QString filename;
+	QString fullname;
 #ifdef __unix
-	filename = runhome + "\/ini\/" + ini;
+	fullname = runhome + "\/ini\/" + filename;
 #else
-	filename = runhome + "\\ini\\" + ini;
+	fullname = runhome + "\\ini\\" + filename;
 #endif
-	return filename;
+	return fullname;
 }
 
 float detA(float a00, float a01, float a10, float a11)
@@ -169,7 +169,14 @@ float getPlaRt(float r0, float a, float b, float tmp)
 
 float getPlaTr(float r0, float a, float b, float resis)
 {
-	float ret = (qSqrt(a*a + 4*b*(resis/r0 - 1)) - a)/(2*b);
+	if (resis < r0)
+	{
+		return -1;
+	}
+// 	float ret = (qSqrt(a*a + 4*b*(resis/r0 - 1)) - a)/(2*b);
+	float v1 = qSqrt(resis/r0/b - 1/b + a*a/(4*b*b));
+	float v2 = fabs(a/(2*b));
+	float ret = fabs(v1 - v2);
 	return ret;
 }
 

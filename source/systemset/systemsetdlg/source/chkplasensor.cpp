@@ -6,7 +6,7 @@ chkplasensorDlg::chkplasensorDlg(QWidget *parent, Qt::WFlags flags)
 {
 	ui.setupUi(this);
 
-	m_config = new QSettings(getIniFileName("chkplasensor.ini"), QSettings::IniFormat);
+	m_config = new QSettings(getFullIniFileName("chkplasensor.ini"), QSettings::IniFormat);
 	readConfig();
 }
 

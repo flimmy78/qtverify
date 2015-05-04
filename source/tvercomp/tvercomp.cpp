@@ -12,9 +12,9 @@ tvercompDlg::tvercompDlg(QWidget *parent /* = 0 */, Qt::WFlags flags /* = 0 */)
 	m_PlaVerifyRecPtr = NULL;
 
 	m_rec_num = TMP_DIFF_NUMBER*VERIFY_NUMBER;
-	m_tvercomp_config = new QSettings(getIniFileName("tvercompconfig.ini"), QSettings::IniFormat);
-	m_std_pla_config = new QSettings(getIniFileName("stdplasensor.ini"), QSettings::IniFormat);
-	m_chk_pla_config = new QSettings(getIniFileName("chkplasensor.ini"), QSettings::IniFormat);
+	m_tvercomp_config = new QSettings(getFullIniFileName("tvercompconfig.ini"), QSettings::IniFormat);
+	m_std_pla_config = new QSettings(getFullIniFileName("stdplasensor.ini"), QSettings::IniFormat);
+	m_chk_pla_config = new QSettings(getFullIniFileName("chkplasensor.ini"), QSettings::IniFormat);
 	m_readComConfig = new ReadComConfig();
 
 	m_min_delta_tmp = m_tvercomp_config->value("theoinfo/mintmphead").toFloat();
