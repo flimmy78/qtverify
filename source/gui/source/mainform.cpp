@@ -34,6 +34,7 @@
 #include "stdmtrparaset.h"
 #include "stdmtrcoecorrect.h"
 #include "tvercomp.h"
+#include "stdplasensor.h"
 
 MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
@@ -63,6 +64,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_tvercompDlg = NULL;
 	m_stdParaSet = NULL;
 	m_stdCoeCorrect = NULL;
+	m_stdPtParaDlg = NULL;
 
 	QLabel *permanent = new QLabel(this);
 	permanent->setFrameStyle(QFrame::NoFrame | QFrame::Sunken);
@@ -189,6 +191,12 @@ void MainForm::closeEvent( QCloseEvent * event)
 			delete m_stdCoeCorrect;
 			m_stdCoeCorrect = NULL;
 		}
+
+		if (m_stdPtParaDlg)
+		{
+			delete m_stdPtParaDlg;
+			m_stdPtParaDlg = NULL;
+		}
 	}
 }
 
@@ -264,6 +272,22 @@ void MainForm::on_actionStdMtrCoeCorrect_triggered()
 		m_stdCoeCorrect = new StdMtrCoeCorrect();
 	}
 	m_stdCoeCorrect->show();
+}
+
+//标准铂电阻参数设定
+void MainForm::on_actionStdPtParaSet_triggered()
+{
+	if (NULL == m_stdPtParaDlg)
+	{
+		m_stdPtParaDlg = new stdplasensorDlg();
+	}
+	else //目的是执行stdplasensorDlg的构造函数
+	{
+		delete m_stdPtParaDlg;
+		m_stdPtParaDlg = NULL;
+		m_stdPtParaDlg = new stdplasensorDlg();
+	}
+	m_stdPtParaDlg->show();
 }
 
 //主机-从机设置

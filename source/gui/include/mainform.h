@@ -23,6 +23,7 @@ class CmbVerifyDlg;
 class StdMtrParaSet;
 class StdMtrCoeCorrect;
 class tvercompDlg;
+class stdplasensorDlg;
 
 class MainForm : public QMainWindow
 {
@@ -51,6 +52,7 @@ public:
 
 	StdMtrParaSet *m_stdParaSet; //标准表参数设定
 	StdMtrCoeCorrect *m_stdCoeCorrect; //标准表系数标定
+	stdplasensorDlg *m_stdPtParaDlg; //标准铂电阻参数设定
 
 	void closeEvent(QCloseEvent * event);
 
@@ -62,6 +64,7 @@ public slots:
 	void on_actionDataTest_triggered();
 	void on_actionStdMtrParaSet_triggered();
 	void on_actionStdMtrCoeCorrect_triggered();
+	void on_actionStdPtParaSet_triggered();
 	void on_actionMasterSlaveSet_triggered();
 	void on_actionMySql_triggered();
 
