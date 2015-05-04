@@ -49,6 +49,17 @@ CalcDlg::CalcDlg(QWidget *parent, Qt::WFlags flags)
 	m_refT = 0.0;
 	m_refDeltaT = 0.0;
 	m_recPtr = NULL;
+
+	mapIdx[3] = 1;
+	mapIdx[4] = 2;
+	mapIdx[5] = 3;
+	mapIdx[6] = 4;
+	mapIdx[8] = 5;
+	mapIdx[9] = 6;
+	mapIdx[10] = 7;
+	mapIdx[12] = 8;
+	mapIdx[13] = 9;
+	mapIdx[14] = 10;
 }
 
 CalcDlg::~CalcDlg()
@@ -381,7 +392,6 @@ int CalcDlg::saveVerifyRecords()
 	float dispErr;
 	int rowNum = ui.tableWidget->rowCount();
 	int columnNum = ui.tableWidget->columnCount();
-	int idx = 0;
 	for (int i=3; i<rowNum; i++)
 	{
 		if (ui.tableWidget->item(i, COLUMN_DISP_ERROR)->text().isEmpty())
@@ -395,7 +405,7 @@ int CalcDlg::saveVerifyRecords()
 			memset(m_recPtr, 0, sizeof(Calc_Verify_Record_STR));
 			strncpy_s(m_recPtr->timestamp, m_timeStamp.toAscii(), TIMESTAMP_LEN);
 			strcpy_s(m_recPtr->meterNo, m_meterNO.toAscii());
-			m_recPtr->deltaTidx = idx++;
+			m_recPtr->deltaTidx = mapIdx[i];
 			m_recPtr->standard = m_standard;
 			m_recPtr->model = m_model;
 			m_recPtr->grade = m_grade;

@@ -60,6 +60,7 @@ public:
 	float m_minDeltaT;
 	float m_refT;
 	float m_refDeltaT;
+	QMap<int, int> mapIdx;
 
 	Calc_Verify_Record_PTR m_recPtr; //有效的检定记录
 	QString m_timeStamp; //记录时间戳
