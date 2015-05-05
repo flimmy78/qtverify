@@ -383,7 +383,7 @@ public:
 		float F_StdOutRresis;				//标准温度计出口电阻值
 		float F_StdInTmp;					//标准温度计进口电温度
 		float F_StdOutTmp;					//标准温度计出口电温度
-		float F_PlaSerial;					//被检铂电阻序列号
+		char F_PlaSerial[ZH_NAME_LEN];		//被检铂电阻序列号
 		float F_PlaInRresis;				//被检铂电阻进口电阻值
 		float F_PlaOutRresis;				//被检铂电阻出口电阻值
 		float F_PlaInTmp;					//被检铂电阻进口温度值
@@ -400,6 +400,8 @@ public:
 		float F_DeltaErrLimit;				//被检铂电阻进出口温差的误差限(%)
 		float F_MaxErrPoint;				//最大误差点
 		char  F_StdModel[ZH_NAME_LEN];		//标准铂电阻型号(唯力，华仪等)
+		int F_verify_seq;					//第几次检定
+		int	F_TmpIndex;						//温差点/温差点索引
 };
 typedef T_Platinium_Verify_Record_STR* T_Platinum_Verify_Record_PTR;
 

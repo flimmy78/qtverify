@@ -335,7 +335,7 @@ void tvercompDlg::on_tbl_in_1_cellChanged(int i, int j)
 	float std_in_t, std_out_t, std_in_r, std_out_r;//标准温度计的进出口温度值，阻值
 	float in_t, out_t, in_r, out_r;//被检铂电阻的进出口温度值，阻值
 	float delta;//被检铂电阻与标准温度计的温度差
-	float delta_std;//标准温度计与标准温度计的温度差
+	float delta_std;//标准温度计的进出口温度差
 	float err;//被检铂电阻进出口温度差与标准温度计进出口温差的误差
 
 	if (j==0)
@@ -350,7 +350,7 @@ void tvercompDlg::on_tbl_in_1_cellChanged(int i, int j)
 		std_in_t = ui.tbl_std_1->item(1, 0)->text().trimmed().toFloat();
 		in_r = ui.tbl_in_1->item(i, j)->text().trimmed().toFloat();
 		in_t = getPlaTr(pla_r0, pla_a, pla_b, in_r);
-		ui.tbl_chkerror_1->item(i, j-1)->setText(QString::number(in_t));//写入计算出的与标准温度计的温度差
+		ui.tbl_chkerror_1->item(i, j-1)->setText(QString::number(in_t));//写入计算出的被检铂电阻的温度值
 		if (!ui.tbl_in_1->item(i, j+1)->text().trimmed().isEmpty())//写入误差
 		{
 			std_in_t = ui.tbl_std_1->item(1, 0)->text().trimmed().toFloat();
@@ -372,7 +372,7 @@ void tvercompDlg::on_tbl_in_1_cellChanged(int i, int j)
 		std_out_t = ui.tbl_std_1->item(1,1)->text().trimmed().toFloat();
 		out_r = ui.tbl_in_1->item(i, j)->text().trimmed().toFloat();
 		out_t = getPlaTr(pla_r0, pla_a, pla_b, out_r);
-		ui.tbl_chkerror_1->item(i, j-1)->setText(QString::number(out_t));//写入计算出的与标准温度计的温度差
+		ui.tbl_chkerror_1->item(i, j-1)->setText(QString::number(out_t));//写入计算出的被检铂电阻的温度值
 		if (!ui.tbl_in_1->item(i, j-1)->text().trimmed().isEmpty())//写入误差
 		{
 			std_in_t = ui.tbl_std_1->item(1, 0)->text().trimmed().toFloat();
@@ -420,7 +420,7 @@ void tvercompDlg::on_tbl_in_2_cellChanged(int i, int j)
 		std_in_t = ui.tbl_std_2->item(1, 0)->text().trimmed().toFloat();
 		in_r = ui.tbl_in_2->item(i, j)->text().trimmed().toFloat();
 		in_t = getPlaTr(pla_r0, pla_a, pla_b, in_r);
-		ui.tbl_chkerror_2->item(i, j-1)->setText(QString::number(in_t));//写入计算出的与标准温度计的温度差
+		ui.tbl_chkerror_2->item(i, j-1)->setText(QString::number(in_t));//写入计算出的被检铂电阻的温度值
 		if (!ui.tbl_in_2->item(i, j+1)->text().trimmed().isEmpty())//写入误差
 		{
 			std_in_t = ui.tbl_std_2->item(1, 0)->text().trimmed().toFloat();
@@ -442,7 +442,7 @@ void tvercompDlg::on_tbl_in_2_cellChanged(int i, int j)
 		std_out_t = ui.tbl_std_2->item(1,1)->text().trimmed().toFloat();
 		out_r = ui.tbl_in_2->item(i, j)->text().trimmed().toFloat();
 		out_t = getPlaTr(pla_r0, pla_a, pla_b, out_r);
-		ui.tbl_chkerror_2->item(i, j-1)->setText(QString::number(out_t));//写入计算出的与标准温度计的温度差
+		ui.tbl_chkerror_2->item(i, j-1)->setText(QString::number(out_t));//写入计算出的被检铂电阻的温度值
 		if (!ui.tbl_in_2->item(i, j-1)->text().trimmed().isEmpty())//写入误差
 		{
 			std_in_t = ui.tbl_std_2->item(1, 0)->text().trimmed().toFloat();
@@ -490,7 +490,7 @@ void tvercompDlg::on_tbl_in_3_cellChanged(int i, int j)
 		std_in_t = ui.tbl_std_3->item(1, 0)->text().trimmed().toFloat();
 		in_r = ui.tbl_in_3->item(i, j)->text().trimmed().toFloat();
 		in_t = getPlaTr(pla_r0, pla_a, pla_b, in_r);
-		ui.tbl_chkerror_3->item(i, j-1)->setText(QString::number(in_t));//写入计算出的与标准温度计的温度差
+		ui.tbl_chkerror_3->item(i, j-1)->setText(QString::number(in_t));//写入计算出的被检铂电阻的温度值
 		if (!ui.tbl_in_3->item(i, j+1)->text().trimmed().isEmpty())//写入误差
 		{
 			std_in_t = ui.tbl_std_3->item(1, 0)->text().trimmed().toFloat();
@@ -512,7 +512,7 @@ void tvercompDlg::on_tbl_in_3_cellChanged(int i, int j)
 		std_out_t = ui.tbl_std_3->item(1,1)->text().trimmed().toFloat();
 		out_r = ui.tbl_in_3->item(i, j)->text().trimmed().toFloat();
 		out_t = getPlaTr(pla_r0, pla_a, pla_b, out_r);
-		ui.tbl_chkerror_3->item(i, j-1)->setText(QString::number(out_t));//写入计算出的与标准温度计的温度差
+		ui.tbl_chkerror_3->item(i, j-1)->setText(QString::number(out_t));//写入计算出的被检铂电阻的温度值
 		if (!ui.tbl_in_3->item(i, j-1)->text().trimmed().isEmpty())//写入误差
 		{
 			std_in_t = ui.tbl_std_3->item(1, 0)->text().trimmed().toFloat();
@@ -603,7 +603,7 @@ void tvercompDlg::insertData()
 	readConfig();
 	readChkResult();
 	startdb();
-	insertPlatiniumVerifyRec(m_PlaVerifyRecPtr, m_rec_num);
+	insertPlatinumVerifyRec(m_PlaVerifyRecPtr, m_rec_num);
 	closedb();
 }
 
@@ -691,7 +691,8 @@ void tvercompDlg::readChkResult()
 			m_PlaVerifyRecPtr[idx].F_StdOutRresis	= std_out_r;
 			m_PlaVerifyRecPtr[idx].F_StdInTmp		= std_in_t;
 			m_PlaVerifyRecPtr[idx].F_StdOutTmp		= std_out_t;
-			m_PlaVerifyRecPtr[idx].F_PlaSerial		= chk_tbl_wdg->item(j, 0)->text().trimmed().toFloat();
+			//m_PlaVerifyRecPtr[idx].F_PlaSerial		= chk_tbl_wdg->item(j, 0)->text().trimmed().toFloat();
+			strcpy_s(m_PlaVerifyRecPtr[idx].F_PlaSerial, chk_tbl_wdg->item(j, 0)->text().toAscii());
 			m_PlaVerifyRecPtr[idx].F_PlaInRresis	= chk_tbl_wdg->item(j, 1)->text().trimmed().toFloat();
 			m_PlaVerifyRecPtr[idx].F_PlaOutRresis	= chk_tbl_wdg->item(j, 2)->text().trimmed().toFloat();
 
@@ -707,8 +708,10 @@ void tvercompDlg::readChkResult()
 			m_PlaVerifyRecPtr[idx].F_OutErr			= m_PlaVerifyRecPtr[idx].F_PlaOutTmp - std_out_t;;
 		}
 	}
-	std_tbl_wdg = NULL;
-	chk_tbl_wdg = NULL;
+	std_tbl_wdg		= NULL;
+	chk_tbl_wdg		= NULL;
+	std_err_wdg		= NULL;
+	chk_err_tbl_wdg = NULL;
 }
 
 void tvercompDlg::on_btn_exit_clicked()

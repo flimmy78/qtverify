@@ -17,7 +17,6 @@
 #include <QtGui/QGroupBox>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
-#include <QtGui/QLineEdit>
 #include <QtGui/QPushButton>
 #include <QtGui/QWidget>
 
@@ -39,10 +38,8 @@ public:
     QLabel *label_5;
     QComboBox *cBox_verify;
     QLabel *label_6;
-    QGroupBox *groupBox_2;
     QLabel *label_7;
-    QLineEdit *lineEdit_tempe;
-    QLabel *label_8;
+    QComboBox *cBox_chanel;
     QPushButton *btn_save;
     QPushButton *btn_exit;
 
@@ -50,10 +47,10 @@ public:
     {
         if (PlaParamParamDlgClass->objectName().isEmpty())
             PlaParamParamDlgClass->setObjectName(QString::fromUtf8("PlaParamParamDlgClass"));
-        PlaParamParamDlgClass->resize(411, 263);
+        PlaParamParamDlgClass->resize(411, 233);
         groupBox = new QGroupBox(PlaParamParamDlgClass);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(10, 10, 391, 141));
+        groupBox->setGeometry(QRect(10, 10, 391, 171));
         cBox_stand = new QComboBox(groupBox);
         cBox_stand->setObjectName(QString::fromUtf8("cBox_stand"));
         cBox_stand->setGeometry(QRect(100, 20, 69, 22));
@@ -90,24 +87,18 @@ public:
         label_6 = new QLabel(groupBox);
         label_6->setObjectName(QString::fromUtf8("label_6"));
         label_6->setGeometry(QRect(210, 100, 54, 16));
-        groupBox_2 = new QGroupBox(PlaParamParamDlgClass);
-        groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setGeometry(QRect(10, 160, 391, 51));
-        label_7 = new QLabel(groupBox_2);
+        label_7 = new QLabel(groupBox);
         label_7->setObjectName(QString::fromUtf8("label_7"));
-        label_7->setGeometry(QRect(10, 20, 251, 20));
-        lineEdit_tempe = new QLineEdit(groupBox_2);
-        lineEdit_tempe->setObjectName(QString::fromUtf8("lineEdit_tempe"));
-        lineEdit_tempe->setGeometry(QRect(270, 20, 31, 20));
-        label_8 = new QLabel(groupBox_2);
-        label_8->setObjectName(QString::fromUtf8("label_8"));
-        label_8->setGeometry(QRect(310, 20, 16, 16));
+        label_7->setGeometry(QRect(10, 140, 71, 20));
+        cBox_chanel = new QComboBox(groupBox);
+        cBox_chanel->setObjectName(QString::fromUtf8("cBox_chanel"));
+        cBox_chanel->setGeometry(QRect(100, 140, 69, 22));
         btn_save = new QPushButton(PlaParamParamDlgClass);
         btn_save->setObjectName(QString::fromUtf8("btn_save"));
-        btn_save->setGeometry(QRect(60, 220, 75, 23));
+        btn_save->setGeometry(QRect(60, 200, 75, 23));
         btn_exit = new QPushButton(PlaParamParamDlgClass);
         btn_exit->setObjectName(QString::fromUtf8("btn_exit"));
-        btn_exit->setGeometry(QRect(270, 220, 75, 23));
+        btn_exit->setGeometry(QRect(270, 200, 75, 23));
 
         retranslateUi(PlaParamParamDlgClass);
 
@@ -124,10 +115,12 @@ public:
         label_4->setText(QApplication::translate("PlaParamParamDlgClass", "<html><head/><body><p align=\"right\">Model</p></body></html>", 0, QApplication::UnicodeUTF8));
         label_5->setText(QApplication::translate("PlaParamParamDlgClass", "<html><head/><body><p align=\"right\">Institution</p></body></html>", 0, QApplication::UnicodeUTF8));
         label_6->setText(QApplication::translate("PlaParamParamDlgClass", "<html><head/><body><p align=\"right\">Verify</p></body></html>", 0, QApplication::UnicodeUTF8));
-        groupBox_2->setTitle(QString());
-        label_7->setText(QApplication::translate("PlaParamParamDlgClass", "<html><head/><body><p align=\"right\">Minimum difference in temperature: \316\224\316\270min</p></body></html>", 0, QApplication::UnicodeUTF8));
-        lineEdit_tempe->setText(QApplication::translate("PlaParamParamDlgClass", "3", 0, QApplication::UnicodeUTF8));
-        label_8->setText(QApplication::translate("PlaParamParamDlgClass", "<html><head/><body><p>K</p></body></html>", 0, QApplication::UnicodeUTF8));
+        label_7->setText(QApplication::translate("PlaParamParamDlgClass", "<html><head/><body><p align=\"right\">Chanel Used</p></body></html>", 0, QApplication::UnicodeUTF8));
+        cBox_chanel->clear();
+        cBox_chanel->insertItems(0, QStringList()
+         << QApplication::translate("PlaParamParamDlgClass", "1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("PlaParamParamDlgClass", "2", 0, QApplication::UnicodeUTF8)
+        );
         btn_save->setText(QApplication::translate("PlaParamParamDlgClass", "Save", 0, QApplication::UnicodeUTF8));
         btn_exit->setText(QApplication::translate("PlaParamParamDlgClass", "Exit", 0, QApplication::UnicodeUTF8));
     } // retranslateUi

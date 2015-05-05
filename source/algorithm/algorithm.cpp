@@ -112,7 +112,7 @@ int getMasterSlaveIni(MasterSlave_Ini_PTR info)
 	return true;
 }
 
-QString getFullIniFileName(QString filename)
+QString getIniFileName(QString ini)
 {
 	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
 	if (runhome.isEmpty())
@@ -120,13 +120,13 @@ QString getFullIniFileName(QString filename)
 		qWarning()<<"Get $(RUNHOME) Failed! Please set up this system variable.";
 		return "";
 	}
-	QString fullname;
+	QString filename;
 #ifdef __unix
-	fullname = runhome + "\/ini\/" + filename;
+	filename = runhome + "\/ini\/" + ini;
 #else
-	fullname = runhome + "\\ini\\" + filename;
+	filename = runhome + "\\ini\\" + ini;
 #endif
-	return fullname;
+	return filename;
 }
 
 float detA(float a00, float a01, float a10, float a11)
@@ -169,14 +169,16 @@ float getPlaRt(float r0, float a, float b, float tmp)
 
 float getPlaTr(float r0, float a, float b, float resis)
 {
-	if (resis < r0)
+	if (b==0.0 && a != 0.0)
+	{
+		return (resis/r0 - 1)/a;
+	}
+	else if (b==0.0 && a == 0.0)
 	{
 		return -1;
 	}
-// 	float ret = (qSqrt(a*a + 4*b*(resis/r0 - 1)) - a)/(2*b);
-	float v1 = qSqrt(resis/r0/b - 1/b + a*a/(4*b*b));
-	float v2 = fabs(a/(2*b));
-	float ret = fabs(v1 - v2);
+
+	float ret = (qSqrt(a*a + 4*b*(resis/r0 - 1)) - a)/(2*b);
 	return ret;
 }
 
@@ -213,31 +215,19 @@ float CAlgorithm::calc(float a, float b)
 /*********************************************************************************************
 * 按表位号计算其温度(距离均布法)                                      
 * inlet: 进水口温度值                                                              
-* oulet: 出水口温度值																						   
+* outlet: 出水口温度值																						   
 * num: 表位号(从1开始至最大检表数量), 以此计算此热表离进口的距离        
 /********************************************************************************************/
-float CAlgorithm::getMeterTempByPos(float inlet, float oulet, int num)
+float CAlgorithm::getMeterTempByPos(float inlet, float outlet, int num)
 {
 	//1, 根据meterType读取 {管路-表位号} 的配置参数, 取出管路总长度t_length
 	//1.1* 获取配置文件
-	QString IniPath;
-#ifdef Q_OS_LINUX
-	IniPath = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\/ini\/meterposition.ini";
-#elif defined (Q_OS_WIN)
-	IniPath = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\\ini\\meterposition.ini";
-#endif
-	QSettings *PortSet = new QSettings(IniPath, QSettings::IniFormat);
+	QSettings *PortSet = new QSettings(getIniFileName("meterposition.ini"), QSettings::IniFormat);
 	//1.2* 读取管路总长度t_length
 	float t_length = PortSet->value("total/length").toFloat();
 	//2, 根据取得的配置参数和num计算被检热表离进水口的距离d_length;
 	//2.1* 获取被检表的规格
-	QString paraPath;
-#ifdef Q_OS_LINUX
-	paraPath = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\/ini\/verifyparaset.ini";
-#elif defined (Q_OS_WIN)
-	paraPath = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\\ini\\verifyparaset.ini";
-#endif
-	QSettings *ParaSet = new QSettings(paraPath, QSettings::IniFormat);//参数配置文件
+	QSettings *ParaSet = new QSettings(getIniFileName("verifyparaset.ini"), QSettings::IniFormat);//参数配置文件
 	int meterType = ParaSet->value("head/standard").toInt();//被检表规格
 	float d_length = PortSet->value(QString::number(meterType) + "/" + QString::number(num)).toFloat();
 	//2.2* 释放内存
@@ -248,7 +238,7 @@ float CAlgorithm::getMeterTempByPos(float inlet, float oulet, int num)
 	//3, 根据 被检热表离进水口的距离和管路总长度计算温度系数 coeff = d_length / t_length
 	float coeff = d_length / t_length;
 	//4, 计算温度差值 delta = (oulet - inlet)
-	float delta = oulet - inlet;
+	float delta = outlet - inlet;
 	//5, 根据温度差值和温度系数最终得出被检热表的温度值 t = (inlet + coeff * delta)
 	return (inlet + coeff * delta);
 }

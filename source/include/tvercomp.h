@@ -26,7 +26,7 @@
 
 #define READ_STI1062A_TIMEOUT	200//定时器间隔
 #define TMP_DIFF_NUMBER			3//温差点个数
-#define VERIFY_NUMBER			12//被检铂电阻个数
+#define VERIFY_NUMBER			12//被检铂电阻对数
 
 class TVERCOMP_EXPORT tvercompDlg : public QWidget
 {
@@ -36,8 +36,6 @@ public:
 	tvercompDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~tvercompDlg();
 
-public:
-	float readStdTmp();//
 signals:
 	void commandSendComplete(void);//读取温度命令已发送完毕
 	public slots:
@@ -83,6 +81,7 @@ private:
 
 	QTimer* m_sendTimer;//定时发送命令
 	sti1062Acommand m_readCommand;
+
 	QSettings* m_tvercomp_config;//温度计比较法参数设置
 	QSettings* m_std_pla_config;//标准温度计参数
 	QSettings* m_chk_pla_config;//被检温度计参数

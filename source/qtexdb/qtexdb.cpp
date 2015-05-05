@@ -506,7 +506,7 @@ int getDatabaseParaIni(DatabasePara_PTR info)
 	return true;
 }
 
-int insertPlatiniumVerifyRec(T_Platinum_Verify_Record_PTR ptr, int num)
+int insertPlatinumVerifyRec(T_Platinum_Verify_Record_PTR ptr, int num)
 {
 	int ret = 0;
 	for (int i=0; i<num; i++)
@@ -545,6 +545,8 @@ int insertPlatiniumVerifyRec(T_Platinum_Verify_Record_PTR ptr, int num)
 		sql.append("F_InErrLimit, ");
 		sql.append("F_OutErrLimit, ");
 		sql.append("F_DeltaErrLimit, ");
+		sql.append("F_verify_seq, ");
+		sql.append("F_TmpIndex, ");
 		sql.append("F_StdModel");
 		sql.append(") ");
 		sql.append("values");
@@ -564,7 +566,7 @@ int insertPlatiniumVerifyRec(T_Platinum_Verify_Record_PTR ptr, int num)
 		sql.append(QString("%1, ").arg(ptr[i].F_StdOutRresis, 6, 'g', 6));
 		sql.append(QString("%1, ").arg(ptr[i].F_StdInTmp, 6, 'g', 6));
 		sql.append(QString("%1, ").arg(ptr[i].F_StdOutTmp, 6, 'g', 6));
-		sql.append(QString("%1, ").arg(ptr[i].F_PlaSerial, 6, 'g', 6));
+		sql.append(QString("\'%1\', ").arg(ptr[i].F_PlaSerial,0, 10));
 		sql.append(QString("%1, ").arg(ptr[i].F_PlaInRresis, 6, 'g', 6));
 		sql.append(QString("%1, ").arg(ptr[i].F_PlaOutRresis, 6, 'g', 6));
 		sql.append(QString("%1, ").arg(ptr[i].F_PlaInTmp, 6, 'g', 6));
@@ -580,6 +582,8 @@ int insertPlatiniumVerifyRec(T_Platinum_Verify_Record_PTR ptr, int num)
 		sql.append(QString("%1, ").arg(ptr[i].F_InErrLimit, 6, 'g', 6));
 		sql.append(QString("%1, ").arg(ptr[i].F_OutErrLimit, 6, 'g', 6));
 		sql.append(QString("%1, ").arg(ptr[i].F_DeltaErrLimit, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_verify_seq,0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].F_TmpIndex,0, 10));
 		sql.append(QString("\'%1\'").arg(ptr[i].F_StdModel, 0, 10));
 		sql.append(")");//end
 		if (query.exec(sql))
