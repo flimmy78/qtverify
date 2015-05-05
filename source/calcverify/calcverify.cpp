@@ -101,11 +101,17 @@ void CalcDlg::on_btnPara_clicked()
 
 void CalcDlg::on_btnStart_clicked()
 {
+	ui.tableWidget->setEditTriggers(QAbstractItemView::AnyKeyPressed|QAbstractItemView::CurrentChanged|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed);
+// 	ui.tableWidget->setEnabled(true);
+	m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
+
+	ui.btnSave->setEnabled(true);
+	ui.hintLabel->setText(tr("verifying: please input verify data!"));
 }
 
 void CalcDlg::on_btnSave_clicked()
 {
-	m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
+// 	m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
 	if (saveVerifyRecords())
 	{
 		QMessageBox::information(this, tr("Hint"), tr("save database successful !"));
@@ -246,6 +252,13 @@ void CalcDlg::initUi()
 	ui.tableWidget->item(14, 0)->setTextColor(Qt::red);
 
 // 	ui.tableWidget->resizeColumnsToContents();
+
+	//设置表格不可编辑
+	ui.tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+// 	ui.tableWidget->setEnabled(false);
+
+	ui.btnStart->setEnabled(false);
+	ui.btnSave->setEnabled(false);
 }
 
 void CalcDlg::freshCalcPara()
@@ -292,6 +305,8 @@ void CalcDlg::freshCalcPara()
 	ui.tableWidget->item(14, 0)->setTextAlignment(Qt::AlignCenter);
 	ui.tableWidget->item(14, 0)->setTextColor(Qt::red);
 
+	ui.hintLabel->setText(tr("please click \"start\" button to start verify!"));
+	ui.btnStart->setEnabled(true);
 }
 
 void CalcDlg::on_tableWidget_cellChanged(int row, int column)
@@ -328,7 +343,8 @@ void CalcDlg::on_tableWidget_cellChanged(int row, int column)
 		ui.tableWidget->item(row, COLUMN_OUT_TEMPER)->setText(QString("%1").arg(outTemper));
 		KCoe = getKCoeByTemper(inTemper, outTemper); //获取K系数
 		ui.tableWidget->item(row, COLUMN_K_COE)->setText(QString("%1").arg(KCoe));
-		stdError = (0.5 + m_minDeltaT/(inTemper-outTemper)); //标准误差
+// 		stdError = (0.5 + m_minDeltaT/(inTemper-outTemper)); //标准误差
+		stdError = 0.5 + m_minDeltaT/ui.tableWidget->item(row,0)->text().toFloat(); //标准误差
 		ui.tableWidget->item(row, COLUMN_STD_ERROR)->setText(QString("%1").arg(stdError));
 		recomV = calcRecomVolume(stdError, inTemper, outTemper, KCoe); //计算建议体积
 		ui.tableWidget->item(row, COLUMN_RECOM_V)->setText(QString("%1").arg(recomV));
@@ -347,6 +363,10 @@ void CalcDlg::on_tableWidget_cellChanged(int row, int column)
 		ui.tableWidget->item(row, COLUMN_DISP_E)->setText(QString("%1").arg(dispEnergy));
 		dispError = 100*(dispEnergy - theoryEnergy)/theoryEnergy; //计算示值误差
 		ui.tableWidget->item(row, COLUMN_DISP_ERROR)->setText(QString("%1").arg(dispError));
+		if (dispError > stdError)
+		{
+			ui.tableWidget->item(row, COLUMN_DISP_ERROR)->setTextColor(QColor(Qt::red));
+		}
 		break;
 	default:
 		qDebug()<<"no need input";

@@ -37,7 +37,7 @@ public:
     QPushButton *btnSave;
     QPushButton *btnExit;
     QTableWidget *tableWidget;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QGridLayout *gridLayout_5;
     QGroupBox *grpBoxInstallPos;
     QGridLayout *gridLayout;
@@ -243,13 +243,13 @@ public:
         tableWidget->setSelectionBehavior(QAbstractItemView::SelectItems);
         tableWidget->setTextElideMode(Qt::ElideMiddle);
         tableWidget->horizontalHeader()->setDefaultSectionSize(90);
-        widget = new QWidget(CalcDlgClass);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(12, 10, 1341, 62));
-        gridLayout_5 = new QGridLayout(widget);
+        layoutWidget = new QWidget(CalcDlgClass);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(12, 10, 1341, 62));
+        gridLayout_5 = new QGridLayout(layoutWidget);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
         gridLayout_5->setContentsMargins(0, 0, 0, 0);
-        grpBoxInstallPos = new QGroupBox(widget);
+        grpBoxInstallPos = new QGroupBox(layoutWidget);
         grpBoxInstallPos->setObjectName(QString::fromUtf8("grpBoxInstallPos"));
         gridLayout = new QGridLayout(grpBoxInstallPos);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
@@ -271,7 +271,7 @@ public:
 
         gridLayout_5->addItem(horizontalSpacer, 0, 1, 1, 1);
 
-        grpBoxEnergyUnit = new QGroupBox(widget);
+        grpBoxEnergyUnit = new QGroupBox(layoutWidget);
         grpBoxEnergyUnit->setObjectName(QString::fromUtf8("grpBoxEnergyUnit"));
         gridLayout_2 = new QGridLayout(grpBoxEnergyUnit);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
@@ -293,7 +293,7 @@ public:
 
         gridLayout_5->addItem(horizontalSpacer_2, 0, 3, 1, 1);
 
-        grpBoxAlgorithm = new QGroupBox(widget);
+        grpBoxAlgorithm = new QGroupBox(layoutWidget);
         grpBoxAlgorithm->setObjectName(QString::fromUtf8("grpBoxAlgorithm"));
         gridLayout_3 = new QGridLayout(grpBoxAlgorithm);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
@@ -315,7 +315,7 @@ public:
 
         gridLayout_5->addItem(horizontalSpacer_3, 0, 5, 1, 1);
 
-        grpBoxMinDeltaT = new QGroupBox(widget);
+        grpBoxMinDeltaT = new QGroupBox(layoutWidget);
         grpBoxMinDeltaT->setObjectName(QString::fromUtf8("grpBoxMinDeltaT"));
         gridLayout_4 = new QGridLayout(grpBoxMinDeltaT);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
