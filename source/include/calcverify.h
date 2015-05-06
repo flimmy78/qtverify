@@ -25,19 +25,28 @@
 class CalcParaDlg;
 class CAlgorithm;
 
-#define COLUMN_IN_RESIST	1 //进口电阻
-#define COLUMN_OUT_RESIST	2 //出口电阻
-#define COLUMN_RECOM_V		3 //建议流量(L)
-#define COLUMN_ANALOG_V		4 //模拟流量(L)
-#define COLUMN_IN_TEMPER	5 //进口温度
-#define COLUMN_OUT_TEMPER	6 //出口温度
-#define COLUMN_K_COE		7 //K系数或者焓差
-#define COLUMN_THEORY_ENERGY		8 //理论热量
-#define COLUMN_E0			9 //E0
-#define COLUMN_E1			10 //E1
-#define COLUMN_DISP_ENERGY	11 //热量示值
-#define COLUMN_DISP_ERROR	12 //示值误差
-#define COLUMN_STD_ERROR	13 //技术要求
+#define COLUMN_IN_RESIST		1 //进口电阻
+#define COLUMN_OUT_RESIST		2 //出口电阻
+#define COLUMN_RECOM_V			3 //建议流量(L)
+#define COLUMN_ANALOG_V			4 //模拟流量(L)
+#define COLUMN_IN_TEMPER		5 //进口温度
+#define COLUMN_OUT_TEMPER		6 //出口温度
+#define COLUMN_K_COE			7 //K系数或者焓差
+#define COLUMN_THEORY_ENERGY	8 //理论热量
+#define COLUMN_E0				9 //E0
+#define COLUMN_E1				10 //E1
+#define COLUMN_DISP_ENERGY		11 //热量示值
+#define COLUMN_DISP_ERROR		12 //示值误差
+#define COLUMN_STD_ERROR		13 //技术要求
+
+#define ALGO_ENTHALPY		0 //焓差法
+#define ALGO_KCOE			1 //K系数法
+
+#define UNIT_MJ		0 //能量单位 MJ
+#define UNIT_KWH	1 //能量单位 kWh
+
+#define INSTALLPOS_IN	0 //安装位置 入口
+#define INSTALLPOS_OUT	1 //安装位置 出口 
 
 
 class CALCVERIFY_EXPORT CalcDlg : public QDialog

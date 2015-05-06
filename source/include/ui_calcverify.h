@@ -70,7 +70,7 @@ public:
     {
         if (CalcDlgClass->objectName().isEmpty())
             CalcDlgClass->setObjectName(QString::fromUtf8("CalcDlgClass"));
-        CalcDlgClass->resize(1363, 836);
+        CalcDlgClass->resize(1350, 728);
         gridLayout_8 = new QGridLayout(CalcDlgClass);
         gridLayout_8->setObjectName(QString::fromUtf8("gridLayout_8"));
         gridLayout_5 = new QGridLayout();
@@ -314,11 +314,18 @@ public:
 
         groupBox_5 = new QGroupBox(CalcDlgClass);
         groupBox_5->setObjectName(QString::fromUtf8("groupBox_5"));
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(groupBox_5->sizePolicy().hasHeightForWidth());
+        groupBox_5->setSizePolicy(sizePolicy1);
         groupBox_5->setProperty("toolTipDuration", QVariant(0));
         gridLayout_7 = new QGridLayout(groupBox_5);
         gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
         hintLabel = new QLabel(groupBox_5);
         hintLabel->setObjectName(QString::fromUtf8("hintLabel"));
+        sizePolicy1.setHeightForWidth(hintLabel->sizePolicy().hasHeightForWidth());
+        hintLabel->setSizePolicy(sizePolicy1);
         hintLabel->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
 
         gridLayout_7->addWidget(hintLabel, 0, 0, 1, 1);
@@ -334,8 +341,8 @@ public:
 
         btnPara = new QPushButton(CalcDlgClass);
         btnPara->setObjectName(QString::fromUtf8("btnPara"));
-        sizePolicy.setHeightForWidth(btnPara->sizePolicy().hasHeightForWidth());
-        btnPara->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(btnPara->sizePolicy().hasHeightForWidth());
+        btnPara->setSizePolicy(sizePolicy1);
         QIcon icon;
         icon.addFile(QString::fromUtf8("../source/gui/images/calculatorresult.png"), QSize(), QIcon::Normal, QIcon::Off);
         btnPara->setIcon(icon);
@@ -348,8 +355,8 @@ public:
 
         btnStart = new QPushButton(CalcDlgClass);
         btnStart->setObjectName(QString::fromUtf8("btnStart"));
-        sizePolicy.setHeightForWidth(btnStart->sizePolicy().hasHeightForWidth());
-        btnStart->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(btnStart->sizePolicy().hasHeightForWidth());
+        btnStart->setSizePolicy(sizePolicy1);
         QIcon icon1;
         icon1.addFile(QString::fromUtf8("../source/gui/images/excel.png"), QSize(), QIcon::Normal, QIcon::Off);
         btnStart->setIcon(icon1);
@@ -362,8 +369,8 @@ public:
 
         btnSave = new QPushButton(CalcDlgClass);
         btnSave->setObjectName(QString::fromUtf8("btnSave"));
-        sizePolicy.setHeightForWidth(btnSave->sizePolicy().hasHeightForWidth());
-        btnSave->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(btnSave->sizePolicy().hasHeightForWidth());
+        btnSave->setSizePolicy(sizePolicy1);
         QIcon icon2;
         icon2.addFile(QString::fromUtf8("../source/gui/images/save.png"), QSize(), QIcon::Normal, QIcon::Off);
         btnSave->setIcon(icon2);
@@ -376,8 +383,8 @@ public:
 
         btnExit = new QPushButton(CalcDlgClass);
         btnExit->setObjectName(QString::fromUtf8("btnExit"));
-        sizePolicy.setHeightForWidth(btnExit->sizePolicy().hasHeightForWidth());
-        btnExit->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(btnExit->sizePolicy().hasHeightForWidth());
+        btnExit->setSizePolicy(sizePolicy1);
         QIcon icon3;
         icon3.addFile(QString::fromUtf8("../../exit.png"), QSize(), QIcon::Normal, QIcon::Off);
         btnExit->setIcon(icon3);

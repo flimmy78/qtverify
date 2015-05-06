@@ -74,7 +74,7 @@ CalcDlg::CalcDlg(QWidget *parent, Qt::WFlags flags)
 	mapIdx[13] = 9;
 	mapIdx[14] = 10;
 
-
+	ui.tableWidget->resizeRowToContents(1);
 }
 
 CalcDlg::~CalcDlg()
@@ -219,31 +219,31 @@ void CalcDlg::initUi()
 	ui.tableWidget->item(0, 9)->setTextAlignment(Qt::AlignCenter);
 	ui.tableWidget->item(0, 9)->setTextColor(Qt::darkGreen);
 
-	ui.tableWidget->item(1, COLUMN_IN_RESIST)->setText(QString(tr("ResistIn(Ω)")));
+	ui.tableWidget->item(1, COLUMN_IN_RESIST)->setText(QString(tr("ResistIn\n(Ω)")));
 	ui.tableWidget->item(1, COLUMN_IN_RESIST)->setTextAlignment(Qt::AlignCenter);
-	ui.tableWidget->item(1, COLUMN_OUT_RESIST)->setText(QString(tr("ResistOut(Ω)")));
+	ui.tableWidget->item(1, COLUMN_OUT_RESIST)->setText(QString(tr("ResistOut\n(Ω)")));
 	ui.tableWidget->item(1, COLUMN_OUT_RESIST)->setTextAlignment(Qt::AlignCenter);
-	ui.tableWidget->item(1, COLUMN_RECOM_V)->setText(QString(tr("RecomValue(L)")));
+	ui.tableWidget->item(1, COLUMN_RECOM_V)->setText(QString(tr("RecomValue\n(L)")));
 	ui.tableWidget->item(1, COLUMN_RECOM_V)->setTextAlignment(Qt::AlignCenter);
-	ui.tableWidget->item(1, COLUMN_ANALOG_V)->setText(QString(tr("Flow(L)")));
+	ui.tableWidget->item(1, COLUMN_ANALOG_V)->setText(QString(tr("Flow\n(L)")));
 	ui.tableWidget->item(1, COLUMN_ANALOG_V)->setTextAlignment(Qt::AlignCenter);
-	ui.tableWidget->item(1, COLUMN_IN_TEMPER)->setText(QString(tr("TemperIn(℃)")));
+	ui.tableWidget->item(1, COLUMN_IN_TEMPER)->setText(QString(tr("TemperIn\n(℃)")));
 	ui.tableWidget->item(1, COLUMN_IN_TEMPER)->setTextAlignment(Qt::AlignCenter);
-	ui.tableWidget->item(1, COLUMN_OUT_TEMPER)->setText(QString(tr("TemperOut(℃)")));
+	ui.tableWidget->item(1, COLUMN_OUT_TEMPER)->setText(QString(tr("TemperOut\n(℃)")));
 	ui.tableWidget->item(1, COLUMN_OUT_TEMPER)->setTextAlignment(Qt::AlignCenter);
 	ui.tableWidget->item(1, COLUMN_K_COE)->setText(KStr[algo][unit]);//QString(tr("KCoe(kWh/m3℃)")));
 	ui.tableWidget->item(1, COLUMN_K_COE)->setTextAlignment(Qt::AlignCenter);
-	ui.tableWidget->item(1, COLUMN_THEORY_ENERGY)->setText(tr("StdEnergy(\n") + unitStr[unit] + ")");//QString(tr("StdEnergy(kWh)")));
+	ui.tableWidget->item(1, COLUMN_THEORY_ENERGY)->setText(tr("StdEnergy\n(") + unitStr[unit] + ")");//QString(tr("StdEnergy(kWh)")));
 	ui.tableWidget->item(1, COLUMN_THEORY_ENERGY)->setTextAlignment(Qt::AlignCenter);
-	ui.tableWidget->item(1, COLUMN_E0)->setText(tr("E0(\n") + unitStr[unit] + ")");
+	ui.tableWidget->item(1, COLUMN_E0)->setText(tr("E0\n(") + unitStr[unit] + ")");
 	ui.tableWidget->item(1, COLUMN_E0)->setTextAlignment(Qt::AlignCenter);
-	ui.tableWidget->item(1, COLUMN_E1)->setText(tr("E1(\n") + unitStr[unit] + ")");
+	ui.tableWidget->item(1, COLUMN_E1)->setText(tr("E1\n(") + unitStr[unit] + ")");
 	ui.tableWidget->item(1, COLUMN_E1)->setTextAlignment(Qt::AlignCenter);
-	ui.tableWidget->item(1, COLUMN_DISP_ENERGY)->setText(tr("DispEnergy(\n") + unitStr[unit] + ")");
+	ui.tableWidget->item(1, COLUMN_DISP_ENERGY)->setText(tr("DispEnergy\n(") + unitStr[unit] + ")");
 	ui.tableWidget->item(1, COLUMN_DISP_ENERGY)->setTextAlignment(Qt::AlignCenter);
-	ui.tableWidget->item(1, COLUMN_DISP_ERROR)->setText(QString(tr("DispError(%)")));
+	ui.tableWidget->item(1, COLUMN_DISP_ERROR)->setText(QString(tr("DispError\n(%)")));
 	ui.tableWidget->item(1, COLUMN_DISP_ERROR)->setTextAlignment(Qt::AlignCenter);
-	ui.tableWidget->item(1, COLUMN_STD_ERROR)->setText(QString(tr("StdError(%)")));
+	ui.tableWidget->item(1, COLUMN_STD_ERROR)->setText(QString(tr("StdError\n(%)")));
 	ui.tableWidget->item(1, COLUMN_STD_ERROR)->setTextAlignment(Qt::AlignCenter);
 
 	ui.tableWidget->setSpan(2, 0, 1, 14);
@@ -292,6 +292,7 @@ void CalcDlg::initUi()
 	ui.tableWidget->item(14, 0)->setTextColor(Qt::red);
 
 // 	ui.tableWidget->resizeColumnsToContents();
+// 	ui.tableWidget->resizeRowsToContents();
 
 	//设置表格不可编辑
 	ui.tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -384,31 +385,31 @@ void CalcDlg::on_tableWidget_cellChanged(int row, int column)
 // 		Text21(txt_idx) = Format(0.5 + Abs(Val(Twcd.Text) / (Text11(txt_idx).Text - Text12(txt_idx).Text)), "0.0")    '示值误差技术要求
 		stdError = (0.5 + m_minDeltaT/(inTemper-outTemper)); //标准误差
 		ui.tableWidget->item(row, COLUMN_STD_ERROR)->setText(QString("%1").arg(stdError, 0, 'g', 1)); //标准误差显示1位小数
-		if (btnGroupAlgorithm->checkedId()==1) //K系数法
+		if (btnGroupAlgorithm->checkedId()==ALGO_KCOE) //K系数法
 		{
 			KCoe = getKCoeByTemper(inTemper, outTemper); //获取K系数
-			recomV = calcRecomVolumeByKCoe(stdError, inTemper, outTemper, KCoe); //计算建议体积
+			recomV = calcRecomVolumeByKCoe(ui.tableWidget->item(row, COLUMN_STD_ERROR)->text().toFloat()/*stdError*/, inTemper, outTemper, KCoe); //计算建议体积
 		}
-		else if (btnGroupAlgorithm->checkedId()==0) //焓差法
+		else if (btnGroupAlgorithm->checkedId()==ALGO_ENTHALPY) //焓差法
 		{
 			KCoe = getEnthalpyDiffByTemper(inTemper, outTemper);
-			recomV = calcRecomVolumeByEnthalpy(stdError, inTemper, outTemper, KCoe);
+			recomV = calcRecomVolumeByEnthalpy(ui.tableWidget->item(row, COLUMN_STD_ERROR)->text().toFloat()/*stdError*/, inTemper, outTemper, KCoe);
 		}
 		ui.tableWidget->item(row, COLUMN_K_COE)->setText(QString("%1").arg(KCoe));
 		ui.tableWidget->item(row, COLUMN_RECOM_V)->setText(QString("%1").arg(recomV));
 		ui.tableWidget->setCurrentCell(row, COLUMN_ANALOG_V); 
 		break;
 	case COLUMN_ANALOG_V: //模拟流量
-		if (btnGroupAlgorithm->checkedId()==1) //K系数法
+		if (btnGroupAlgorithm->checkedId()==ALGO_KCOE) //K系数法
 		{
 			theoryEnergy = calcTheoryEnergyByKCoe(KCoe, analogV/1000, inTemper, outTemper); //计算理论热量
 		}
-		else if (btnGroupAlgorithm->checkedId()==0) //焓差法
+		else if (btnGroupAlgorithm->checkedId()==ALGO_ENTHALPY) //焓差法
 		{
 			theoryEnergy = calcTheoryEnergyByEnthalpy(analogV/1000, inTemper, outTemper); //计算理论热量
 		}
 
-		if (btnGroupEnergyUnit->checkedId()==0) //单位MJ
+		if (btnGroupEnergyUnit->checkedId()==UNIT_MJ) //单位MJ
 		{
 			theoryEnergy *= 3.6;
 		}
@@ -495,12 +496,12 @@ float CalcDlg::calcRecomVolumeByKCoe(float stdErr, float inTemper, float outTemp
 float CalcDlg::calcRecomVolumeByEnthalpy(float stdErr, float inTemper, float outTemper, float enthalpyDiff)
 {
 	float recomV = 0.0;
-	if (btnGroupInstallPos->checkedId()==0) //安装位置 入口
+	if (btnGroupInstallPos->checkedId()==INSTALLPOS_IN) //安装位置 入口
 	{
 // 		Text44(txt_idx) = Int(3000 / (Val(Text21(txt_idx).Text) * MiDu(Val(Text11(txt_idx).Text)) * Text14(txt_idx).Text) * 3.6 / 10) * 10
 		recomV = int(3000 / (stdErr * m_algo->getDensityByQuery(inTemper) * enthalpyDiff) * 3.6 / 10) * 10;
 	}
-	if (btnGroupInstallPos->checkedId()==1) //安装位置 出口
+	else if (btnGroupInstallPos->checkedId()==INSTALLPOS_OUT) //安装位置 出口
 	{
 //		Text44(txt_idx) = Int(3000 / (Val(Text21(txt_idx).Text) * MiDu(Val(Text12(txt_idx).Text)) * Text14(txt_idx).Text) * 3.6 / 10) * 10
 		recomV = int(3000 / (stdErr * m_algo->getDensityByQuery(outTemper) * enthalpyDiff) * 3.6 / 10) * 10;
@@ -539,11 +540,11 @@ float CalcDlg::calcTheoryEnergyByEnthalpy(float analogV, float inTemper, float o
 	float inEnthalpy = m_algo->getEnthalpyByQuery(inTemper); //焓值，单位kJ/kg
 	float outEnthalpy = m_algo->getEnthalpyByQuery(outTemper);
 	float diffEnthalpy = inEnthalpy - outEnthalpy; //焓差
-	if (ui.radioButtonPosIn->isChecked()) //安装位置：进口
+	if (btnGroupInstallPos->checkedId()==INSTALLPOS_IN) //安装位置：进口
 	{
 		density = 1000*m_algo->getDensityByQuery(inTemper);
 	}
-	else //安装位置：出口
+	else if (btnGroupInstallPos->checkedId()==INSTALLPOS_OUT) //安装位置：出口
 	{
 		density = 1000*m_algo->getDensityByQuery(outTemper);
 	}
@@ -621,10 +622,10 @@ void CalcDlg::slot_btnGroupEnergyUnit_clicked(int id)
 	int algo = btnGroupAlgorithm->checkedId();
 
 	ui.tableWidget->item(1, COLUMN_K_COE)->setText(KStr[algo][unit]);
-	ui.tableWidget->item(1, COLUMN_THEORY_ENERGY)->setText(tr("StdEnergy(\n") + unitStr[unit] + ")");
-	ui.tableWidget->item(1, COLUMN_E0)->setText(tr("E0(\n") + unitStr[unit] + ")");
-	ui.tableWidget->item(1, COLUMN_E1)->setText(tr("E1(\n") + unitStr[unit] + ")");
-	ui.tableWidget->item(1, COLUMN_DISP_ENERGY)->setText(tr("DispEnergy(\n") + unitStr[unit] + ")");
+	ui.tableWidget->item(1, COLUMN_THEORY_ENERGY)->setText(tr("StdEnergy\n(") + unitStr[unit] + ")");
+	ui.tableWidget->item(1, COLUMN_E0)->setText(tr("E0\n(") + unitStr[unit] + ")");
+	ui.tableWidget->item(1, COLUMN_E1)->setText(tr("E1\n(") + unitStr[unit] + ")");
+	ui.tableWidget->item(1, COLUMN_DISP_ENERGY)->setText(tr("DispEnergy\n(") + unitStr[unit] + ")");
 }
 
 void CalcDlg::slot_btnGroupAlgorithm_clicked(int id)
