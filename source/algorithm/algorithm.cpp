@@ -112,7 +112,7 @@ int getMasterSlaveIni(MasterSlave_Ini_PTR info)
 	return true;
 }
 
-QString getIniFileName(QString ini)
+QString getFullIniFileName(QString filename)
 {
 	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
 	if (runhome.isEmpty())
@@ -120,13 +120,13 @@ QString getIniFileName(QString ini)
 		qWarning()<<"Get $(RUNHOME) Failed! Please set up this system variable.";
 		return "";
 	}
-	QString filename;
+	QString fullname;
 #ifdef __unix
-	filename = runhome + "\/ini\/" + ini;
+	fullname = runhome + "\/ini\/" + filename;
 #else
-	filename = runhome + "\\ini\\" + ini;
+	fullname = runhome + "\\ini\\" + filename;
 #endif
-	return filename;
+	return fullname;
 }
 
 float detA(float a00, float a01, float a10, float a11)
@@ -222,12 +222,12 @@ float CAlgorithm::getMeterTempByPos(float inlet, float outlet, int num)
 {
 	//1, 根据meterType读取 {管路-表位号} 的配置参数, 取出管路总长度t_length
 	//1.1* 获取配置文件
-	QSettings *PortSet = new QSettings(getIniFileName("meterposition.ini"), QSettings::IniFormat);
+	QSettings *PortSet = new QSettings(getFullIniFileName("meterposition.ini"), QSettings::IniFormat);
 	//1.2* 读取管路总长度t_length
 	float t_length = PortSet->value("total/length").toFloat();
 	//2, 根据取得的配置参数和num计算被检热表离进水口的距离d_length;
 	//2.1* 获取被检表的规格
-	QSettings *ParaSet = new QSettings(getIniFileName("verifyparaset.ini"), QSettings::IniFormat);//参数配置文件
+	QSettings *ParaSet = new QSettings(getFullIniFileName("verifyparaset.ini"), QSettings::IniFormat);//参数配置文件
 	int meterType = ParaSet->value("head/standard").toInt();//被检表规格
 	float d_length = PortSet->value(QString::number(meterType) + "/" + QString::number(num)).toFloat();
 	//2.2* 释放内存
