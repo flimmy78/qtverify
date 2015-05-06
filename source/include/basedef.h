@@ -435,7 +435,7 @@ public:
 	float   recomVolume;
 	float   analogVolume;
 	float   kCoe;
-	float   stdEnergy;
+	float   theoryEnergy;
 	float   meterE0;
 	float   meterE1;
 	float   dispError;

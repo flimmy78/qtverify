@@ -669,7 +669,7 @@ int insertCalcVerifyRec(Calc_Verify_Record_PTR ptr, int num)
 		sql.append(QString("%1, ").arg(ptr[i].recomVolume, 6, 'g', 6));
 		sql.append(QString("%1, ").arg(ptr[i].analogVolume, 6, 'g', 6));
 		sql.append(QString("%1, ").arg(ptr[i].kCoe, 6, 'g', 6));
-		sql.append(QString("%1, ").arg(ptr[i].stdEnergy, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].theoryEnergy, 6, 'g', 6));
 		sql.append(QString("%1, ").arg(ptr[i].meterE0,  6, 'g', 6));
 		sql.append(QString("%1, ").arg(ptr[i].meterE1, 6, 'g', 6));
 		sql.append(QString("%1, ").arg(ptr[i].dispError, 6, 'g', 6));

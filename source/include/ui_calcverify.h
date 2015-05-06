@@ -23,34 +23,26 @@
 #include <QtGui/QRadioButton>
 #include <QtGui/QSpacerItem>
 #include <QtGui/QTableWidget>
-#include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_CalcDlgClass
 {
 public:
-    QGroupBox *groupBox_5;
-    QLabel *hintLabel;
-    QPushButton *btnPara;
-    QPushButton *btnStart;
-    QPushButton *btnSave;
-    QPushButton *btnExit;
-    QTableWidget *tableWidget;
-    QWidget *layoutWidget;
+    QGridLayout *gridLayout_8;
     QGridLayout *gridLayout_5;
-    QGroupBox *grpBoxInstallPos;
-    QGridLayout *gridLayout;
+    QGroupBox *groupBoxInstallPos;
+    QGridLayout *gridLayout_3;
     QRadioButton *radioButtonPosIn;
     QRadioButton *radioButtonPosOut;
     QSpacerItem *horizontalSpacer;
-    QGroupBox *grpBoxEnergyUnit;
-    QGridLayout *gridLayout_2;
+    QGroupBox *groupBoxEnergyUnit;
+    QGridLayout *gridLayout;
     QRadioButton *radioButtonMJ;
     QRadioButton *radioButtonKwh;
     QSpacerItem *horizontalSpacer_2;
-    QGroupBox *grpBoxAlgorithm;
-    QGridLayout *gridLayout_3;
+    QGroupBox *groupBoxAlgorithm;
+    QGridLayout *gridLayout_2;
     QRadioButton *radioButtonEnthalpy;
     QRadioButton *radioButtonKCoe;
     QSpacerItem *horizontalSpacer_3;
@@ -59,55 +51,130 @@ public:
     QLabel *label;
     QLineEdit *lnEditMinDeltaT;
     QLabel *label_2;
+    QTableWidget *tableWidget;
+    QGroupBox *groupBox_5;
+    QGridLayout *gridLayout_7;
+    QLabel *hintLabel;
+    QGridLayout *gridLayout_6;
+    QSpacerItem *horizontalSpacer_8;
+    QPushButton *btnPara;
+    QSpacerItem *horizontalSpacer_4;
+    QPushButton *btnStart;
+    QSpacerItem *horizontalSpacer_5;
+    QPushButton *btnSave;
+    QSpacerItem *horizontalSpacer_6;
+    QPushButton *btnExit;
+    QSpacerItem *horizontalSpacer_7;
 
     void setupUi(QDialog *CalcDlgClass)
     {
         if (CalcDlgClass->objectName().isEmpty())
             CalcDlgClass->setObjectName(QString::fromUtf8("CalcDlgClass"));
-        CalcDlgClass->resize(1365, 858);
-        groupBox_5 = new QGroupBox(CalcDlgClass);
-        groupBox_5->setObjectName(QString::fromUtf8("groupBox_5"));
-        groupBox_5->setGeometry(QRect(10, 700, 1341, 91));
-        groupBox_5->setProperty("toolTipDuration", QVariant(0));
-        hintLabel = new QLabel(groupBox_5);
-        hintLabel->setObjectName(QString::fromUtf8("hintLabel"));
-        hintLabel->setGeometry(QRect(30, 36, 441, 20));
-        hintLabel->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
-        btnPara = new QPushButton(CalcDlgClass);
-        btnPara->setObjectName(QString::fromUtf8("btnPara"));
-        btnPara->setGeometry(QRect(740, 810, 75, 41));
+        CalcDlgClass->resize(1363, 836);
+        gridLayout_8 = new QGridLayout(CalcDlgClass);
+        gridLayout_8->setObjectName(QString::fromUtf8("gridLayout_8"));
+        gridLayout_5 = new QGridLayout();
+        gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
+        groupBoxInstallPos = new QGroupBox(CalcDlgClass);
+        groupBoxInstallPos->setObjectName(QString::fromUtf8("groupBoxInstallPos"));
+        gridLayout_3 = new QGridLayout(groupBoxInstallPos);
+        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        radioButtonPosIn = new QRadioButton(groupBoxInstallPos);
+        radioButtonPosIn->setObjectName(QString::fromUtf8("radioButtonPosIn"));
+        radioButtonPosIn->setChecked(false);
+
+        gridLayout_3->addWidget(radioButtonPosIn, 0, 0, 1, 1);
+
+        radioButtonPosOut = new QRadioButton(groupBoxInstallPos);
+        radioButtonPosOut->setObjectName(QString::fromUtf8("radioButtonPosOut"));
+        radioButtonPosOut->setChecked(true);
+
+        gridLayout_3->addWidget(radioButtonPosOut, 0, 1, 1, 1);
+
+
+        gridLayout_5->addWidget(groupBoxInstallPos, 0, 0, 1, 1);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+
+        gridLayout_5->addItem(horizontalSpacer, 0, 1, 1, 1);
+
+        groupBoxEnergyUnit = new QGroupBox(CalcDlgClass);
+        groupBoxEnergyUnit->setObjectName(QString::fromUtf8("groupBoxEnergyUnit"));
+        gridLayout = new QGridLayout(groupBoxEnergyUnit);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        radioButtonMJ = new QRadioButton(groupBoxEnergyUnit);
+        radioButtonMJ->setObjectName(QString::fromUtf8("radioButtonMJ"));
+
+        gridLayout->addWidget(radioButtonMJ, 0, 0, 1, 1);
+
+        radioButtonKwh = new QRadioButton(groupBoxEnergyUnit);
+        radioButtonKwh->setObjectName(QString::fromUtf8("radioButtonKwh"));
+        radioButtonKwh->setChecked(true);
+
+        gridLayout->addWidget(radioButtonKwh, 0, 1, 1, 1);
+
+
+        gridLayout_5->addWidget(groupBoxEnergyUnit, 0, 2, 1, 1);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+
+        gridLayout_5->addItem(horizontalSpacer_2, 0, 3, 1, 1);
+
+        groupBoxAlgorithm = new QGroupBox(CalcDlgClass);
+        groupBoxAlgorithm->setObjectName(QString::fromUtf8("groupBoxAlgorithm"));
+        gridLayout_2 = new QGridLayout(groupBoxAlgorithm);
+        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        radioButtonEnthalpy = new QRadioButton(groupBoxAlgorithm);
+        radioButtonEnthalpy->setObjectName(QString::fromUtf8("radioButtonEnthalpy"));
+
+        gridLayout_2->addWidget(radioButtonEnthalpy, 0, 0, 1, 1);
+
+        radioButtonKCoe = new QRadioButton(groupBoxAlgorithm);
+        radioButtonKCoe->setObjectName(QString::fromUtf8("radioButtonKCoe"));
+        radioButtonKCoe->setChecked(true);
+
+        gridLayout_2->addWidget(radioButtonKCoe, 0, 1, 1, 1);
+
+
+        gridLayout_5->addWidget(groupBoxAlgorithm, 0, 4, 1, 1);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+
+        gridLayout_5->addItem(horizontalSpacer_3, 0, 5, 1, 1);
+
+        grpBoxMinDeltaT = new QGroupBox(CalcDlgClass);
+        grpBoxMinDeltaT->setObjectName(QString::fromUtf8("grpBoxMinDeltaT"));
+        gridLayout_4 = new QGridLayout(grpBoxMinDeltaT);
+        gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
+        label = new QLabel(grpBoxMinDeltaT);
+        label->setObjectName(QString::fromUtf8("label"));
+
+        gridLayout_4->addWidget(label, 0, 0, 1, 1);
+
+        lnEditMinDeltaT = new QLineEdit(grpBoxMinDeltaT);
+        lnEditMinDeltaT->setObjectName(QString::fromUtf8("lnEditMinDeltaT"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(btnPara->sizePolicy().hasHeightForWidth());
-        btnPara->setSizePolicy(sizePolicy);
-        QIcon icon;
-        icon.addFile(QString::fromUtf8("../source/gui/images/calculatorresult.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btnPara->setIcon(icon);
-        btnStart = new QPushButton(CalcDlgClass);
-        btnStart->setObjectName(QString::fromUtf8("btnStart"));
-        btnStart->setGeometry(QRect(890, 810, 75, 41));
-        sizePolicy.setHeightForWidth(btnStart->sizePolicy().hasHeightForWidth());
-        btnStart->setSizePolicy(sizePolicy);
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8("../source/gui/images/excel.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btnStart->setIcon(icon1);
-        btnSave = new QPushButton(CalcDlgClass);
-        btnSave->setObjectName(QString::fromUtf8("btnSave"));
-        btnSave->setGeometry(QRect(1030, 810, 75, 41));
-        sizePolicy.setHeightForWidth(btnSave->sizePolicy().hasHeightForWidth());
-        btnSave->setSizePolicy(sizePolicy);
-        QIcon icon2;
-        icon2.addFile(QString::fromUtf8("../source/gui/images/save.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btnSave->setIcon(icon2);
-        btnExit = new QPushButton(CalcDlgClass);
-        btnExit->setObjectName(QString::fromUtf8("btnExit"));
-        btnExit->setGeometry(QRect(1170, 810, 75, 41));
-        sizePolicy.setHeightForWidth(btnExit->sizePolicy().hasHeightForWidth());
-        btnExit->setSizePolicy(sizePolicy);
-        QIcon icon3;
-        icon3.addFile(QString::fromUtf8("../../exit.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btnExit->setIcon(icon3);
+        sizePolicy.setHeightForWidth(lnEditMinDeltaT->sizePolicy().hasHeightForWidth());
+        lnEditMinDeltaT->setSizePolicy(sizePolicy);
+        lnEditMinDeltaT->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 231, 201);"));
+        lnEditMinDeltaT->setAlignment(Qt::AlignCenter);
+        lnEditMinDeltaT->setReadOnly(true);
+
+        gridLayout_4->addWidget(lnEditMinDeltaT, 0, 1, 1, 1);
+
+        label_2 = new QLabel(grpBoxMinDeltaT);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+
+        gridLayout_4->addWidget(label_2, 0, 2, 1, 1);
+
+
+        gridLayout_5->addWidget(grpBoxMinDeltaT, 0, 6, 1, 1);
+
+
+        gridLayout_8->addLayout(gridLayout_5, 0, 0, 1, 1);
+
         tableWidget = new QTableWidget(CalcDlgClass);
         if (tableWidget->columnCount() < 14)
             tableWidget->setColumnCount(14);
@@ -232,7 +299,6 @@ public:
         QTableWidgetItem *__qtablewidgetitem53 = new QTableWidgetItem();
         tableWidget->setItem(14, 2, __qtablewidgetitem53);
         tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
-        tableWidget->setGeometry(QRect(10, 110, 1341, 581));
         QFont font;
         font.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
         font.setPointSize(7);
@@ -243,112 +309,89 @@ public:
         tableWidget->setSelectionBehavior(QAbstractItemView::SelectItems);
         tableWidget->setTextElideMode(Qt::ElideMiddle);
         tableWidget->horizontalHeader()->setDefaultSectionSize(90);
-        layoutWidget = new QWidget(CalcDlgClass);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(12, 10, 1341, 62));
-        gridLayout_5 = new QGridLayout(layoutWidget);
-        gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
-        gridLayout_5->setContentsMargins(0, 0, 0, 0);
-        grpBoxInstallPos = new QGroupBox(layoutWidget);
-        grpBoxInstallPos->setObjectName(QString::fromUtf8("grpBoxInstallPos"));
-        gridLayout = new QGridLayout(grpBoxInstallPos);
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        radioButtonPosIn = new QRadioButton(grpBoxInstallPos);
-        radioButtonPosIn->setObjectName(QString::fromUtf8("radioButtonPosIn"));
-        radioButtonPosIn->setChecked(true);
 
-        gridLayout->addWidget(radioButtonPosIn, 0, 0, 1, 1);
+        gridLayout_8->addWidget(tableWidget, 1, 0, 1, 1);
 
-        radioButtonPosOut = new QRadioButton(grpBoxInstallPos);
-        radioButtonPosOut->setObjectName(QString::fromUtf8("radioButtonPosOut"));
+        groupBox_5 = new QGroupBox(CalcDlgClass);
+        groupBox_5->setObjectName(QString::fromUtf8("groupBox_5"));
+        groupBox_5->setProperty("toolTipDuration", QVariant(0));
+        gridLayout_7 = new QGridLayout(groupBox_5);
+        gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
+        hintLabel = new QLabel(groupBox_5);
+        hintLabel->setObjectName(QString::fromUtf8("hintLabel"));
+        hintLabel->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
 
-        gridLayout->addWidget(radioButtonPosOut, 0, 1, 1, 1);
+        gridLayout_7->addWidget(hintLabel, 0, 0, 1, 1);
 
 
-        gridLayout_5->addWidget(grpBoxInstallPos, 0, 0, 1, 1);
+        gridLayout_8->addWidget(groupBox_5, 2, 0, 1, 1);
 
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+        gridLayout_6 = new QGridLayout();
+        gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
+        horizontalSpacer_8 = new QSpacerItem(718, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout_5->addItem(horizontalSpacer, 0, 1, 1, 1);
+        gridLayout_6->addItem(horizontalSpacer_8, 0, 0, 1, 1);
 
-        grpBoxEnergyUnit = new QGroupBox(layoutWidget);
-        grpBoxEnergyUnit->setObjectName(QString::fromUtf8("grpBoxEnergyUnit"));
-        gridLayout_2 = new QGridLayout(grpBoxEnergyUnit);
-        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        radioButtonMJ = new QRadioButton(grpBoxEnergyUnit);
-        radioButtonMJ->setObjectName(QString::fromUtf8("radioButtonMJ"));
+        btnPara = new QPushButton(CalcDlgClass);
+        btnPara->setObjectName(QString::fromUtf8("btnPara"));
+        sizePolicy.setHeightForWidth(btnPara->sizePolicy().hasHeightForWidth());
+        btnPara->setSizePolicy(sizePolicy);
+        QIcon icon;
+        icon.addFile(QString::fromUtf8("../source/gui/images/calculatorresult.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btnPara->setIcon(icon);
 
-        gridLayout_2->addWidget(radioButtonMJ, 0, 0, 1, 1);
+        gridLayout_6->addWidget(btnPara, 0, 1, 1, 1);
 
-        radioButtonKwh = new QRadioButton(grpBoxEnergyUnit);
-        radioButtonKwh->setObjectName(QString::fromUtf8("radioButtonKwh"));
-        radioButtonKwh->setChecked(true);
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout_2->addWidget(radioButtonKwh, 0, 1, 1, 1);
+        gridLayout_6->addItem(horizontalSpacer_4, 0, 2, 1, 1);
 
+        btnStart = new QPushButton(CalcDlgClass);
+        btnStart->setObjectName(QString::fromUtf8("btnStart"));
+        sizePolicy.setHeightForWidth(btnStart->sizePolicy().hasHeightForWidth());
+        btnStart->setSizePolicy(sizePolicy);
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8("../source/gui/images/excel.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btnStart->setIcon(icon1);
 
-        gridLayout_5->addWidget(grpBoxEnergyUnit, 0, 2, 1, 1);
+        gridLayout_6->addWidget(btnStart, 0, 3, 1, 1);
 
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout_5->addItem(horizontalSpacer_2, 0, 3, 1, 1);
+        gridLayout_6->addItem(horizontalSpacer_5, 0, 4, 1, 1);
 
-        grpBoxAlgorithm = new QGroupBox(layoutWidget);
-        grpBoxAlgorithm->setObjectName(QString::fromUtf8("grpBoxAlgorithm"));
-        gridLayout_3 = new QGridLayout(grpBoxAlgorithm);
-        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
-        radioButtonEnthalpy = new QRadioButton(grpBoxAlgorithm);
-        radioButtonEnthalpy->setObjectName(QString::fromUtf8("radioButtonEnthalpy"));
+        btnSave = new QPushButton(CalcDlgClass);
+        btnSave->setObjectName(QString::fromUtf8("btnSave"));
+        sizePolicy.setHeightForWidth(btnSave->sizePolicy().hasHeightForWidth());
+        btnSave->setSizePolicy(sizePolicy);
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8("../source/gui/images/save.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btnSave->setIcon(icon2);
 
-        gridLayout_3->addWidget(radioButtonEnthalpy, 0, 0, 1, 1);
+        gridLayout_6->addWidget(btnSave, 0, 5, 1, 1);
 
-        radioButtonKCoe = new QRadioButton(grpBoxAlgorithm);
-        radioButtonKCoe->setObjectName(QString::fromUtf8("radioButtonKCoe"));
-        radioButtonKCoe->setChecked(true);
+        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout_3->addWidget(radioButtonKCoe, 0, 1, 1, 1);
+        gridLayout_6->addItem(horizontalSpacer_6, 0, 6, 1, 1);
 
+        btnExit = new QPushButton(CalcDlgClass);
+        btnExit->setObjectName(QString::fromUtf8("btnExit"));
+        sizePolicy.setHeightForWidth(btnExit->sizePolicy().hasHeightForWidth());
+        btnExit->setSizePolicy(sizePolicy);
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8("../../exit.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btnExit->setIcon(icon3);
 
-        gridLayout_5->addWidget(grpBoxAlgorithm, 0, 4, 1, 1);
+        gridLayout_6->addWidget(btnExit, 0, 7, 1, 1);
 
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+        horizontalSpacer_7 = new QSpacerItem(88, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout_5->addItem(horizontalSpacer_3, 0, 5, 1, 1);
-
-        grpBoxMinDeltaT = new QGroupBox(layoutWidget);
-        grpBoxMinDeltaT->setObjectName(QString::fromUtf8("grpBoxMinDeltaT"));
-        gridLayout_4 = new QGridLayout(grpBoxMinDeltaT);
-        gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
-        label = new QLabel(grpBoxMinDeltaT);
-        label->setObjectName(QString::fromUtf8("label"));
-
-        gridLayout_4->addWidget(label, 0, 0, 1, 1);
-
-        lnEditMinDeltaT = new QLineEdit(grpBoxMinDeltaT);
-        lnEditMinDeltaT->setObjectName(QString::fromUtf8("lnEditMinDeltaT"));
-        sizePolicy.setHeightForWidth(lnEditMinDeltaT->sizePolicy().hasHeightForWidth());
-        lnEditMinDeltaT->setSizePolicy(sizePolicy);
-        lnEditMinDeltaT->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 231, 201);"));
-        lnEditMinDeltaT->setAlignment(Qt::AlignCenter);
-        lnEditMinDeltaT->setReadOnly(true);
-
-        gridLayout_4->addWidget(lnEditMinDeltaT, 0, 1, 1, 1);
-
-        label_2 = new QLabel(grpBoxMinDeltaT);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-
-        gridLayout_4->addWidget(label_2, 0, 2, 1, 1);
+        gridLayout_6->addItem(horizontalSpacer_7, 0, 8, 1, 1);
 
 
-        gridLayout_5->addWidget(grpBoxMinDeltaT, 0, 6, 1, 1);
+        gridLayout_8->addLayout(gridLayout_6, 3, 0, 1, 1);
 
-        QWidget::setTabOrder(radioButtonPosIn, radioButtonPosOut);
-        QWidget::setTabOrder(radioButtonPosOut, radioButtonMJ);
-        QWidget::setTabOrder(radioButtonMJ, radioButtonKwh);
-        QWidget::setTabOrder(radioButtonKwh, lnEditMinDeltaT);
-        QWidget::setTabOrder(lnEditMinDeltaT, radioButtonEnthalpy);
-        QWidget::setTabOrder(radioButtonEnthalpy, radioButtonKCoe);
-        QWidget::setTabOrder(radioButtonKCoe, tableWidget);
+        QWidget::setTabOrder(lnEditMinDeltaT, tableWidget);
         QWidget::setTabOrder(tableWidget, btnPara);
         QWidget::setTabOrder(btnPara, btnStart);
         QWidget::setTabOrder(btnStart, btnSave);
@@ -362,12 +405,18 @@ public:
     void retranslateUi(QDialog *CalcDlgClass)
     {
         CalcDlgClass->setWindowTitle(QApplication::translate("CalcDlgClass", "\350\256\241\347\256\227\345\231\250\346\243\200\346\265\213", 0, QApplication::UnicodeUTF8));
-        groupBox_5->setTitle(QApplication::translate("CalcDlgClass", "HintInfo", 0, QApplication::UnicodeUTF8));
-        hintLabel->setText(QApplication::translate("CalcDlgClass", "Hint: Please set para first!", 0, QApplication::UnicodeUTF8));
-        btnPara->setText(QApplication::translate("CalcDlgClass", "Para", 0, QApplication::UnicodeUTF8));
-        btnStart->setText(QApplication::translate("CalcDlgClass", "Start", 0, QApplication::UnicodeUTF8));
-        btnSave->setText(QApplication::translate("CalcDlgClass", "Save", 0, QApplication::UnicodeUTF8));
-        btnExit->setText(QApplication::translate("CalcDlgClass", "Exit", 0, QApplication::UnicodeUTF8));
+        groupBoxInstallPos->setTitle(QApplication::translate("CalcDlgClass", "InstallPos", 0, QApplication::UnicodeUTF8));
+        radioButtonPosIn->setText(QApplication::translate("CalcDlgClass", "In", 0, QApplication::UnicodeUTF8));
+        radioButtonPosOut->setText(QApplication::translate("CalcDlgClass", "Out", 0, QApplication::UnicodeUTF8));
+        groupBoxEnergyUnit->setTitle(QApplication::translate("CalcDlgClass", "EnergyUnit", 0, QApplication::UnicodeUTF8));
+        radioButtonMJ->setText(QApplication::translate("CalcDlgClass", "MJ", 0, QApplication::UnicodeUTF8));
+        radioButtonKwh->setText(QApplication::translate("CalcDlgClass", "kWh", 0, QApplication::UnicodeUTF8));
+        groupBoxAlgorithm->setTitle(QApplication::translate("CalcDlgClass", "Algorithm", 0, QApplication::UnicodeUTF8));
+        radioButtonEnthalpy->setText(QApplication::translate("CalcDlgClass", "EnthalpyDiff", 0, QApplication::UnicodeUTF8));
+        radioButtonKCoe->setText(QApplication::translate("CalcDlgClass", "KCoe", 0, QApplication::UnicodeUTF8));
+        grpBoxMinDeltaT->setTitle(QApplication::translate("CalcDlgClass", "MinDeltaT", 0, QApplication::UnicodeUTF8));
+        label->setText(QApplication::translate("CalcDlgClass", "\316\224\316\270min:", 0, QApplication::UnicodeUTF8));
+        label_2->setText(QApplication::translate("CalcDlgClass", "K", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->verticalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("CalcDlgClass", "1", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->verticalHeaderItem(1);
@@ -399,18 +448,12 @@ public:
         tableWidget->setSortingEnabled(false);
         tableWidget->setSortingEnabled(__sortingEnabled);
 
-        grpBoxInstallPos->setTitle(QApplication::translate("CalcDlgClass", "InstallPos", 0, QApplication::UnicodeUTF8));
-        radioButtonPosIn->setText(QApplication::translate("CalcDlgClass", "In", 0, QApplication::UnicodeUTF8));
-        radioButtonPosOut->setText(QApplication::translate("CalcDlgClass", "Out", 0, QApplication::UnicodeUTF8));
-        grpBoxEnergyUnit->setTitle(QApplication::translate("CalcDlgClass", "EnergyUnit", 0, QApplication::UnicodeUTF8));
-        radioButtonMJ->setText(QApplication::translate("CalcDlgClass", "MJ", 0, QApplication::UnicodeUTF8));
-        radioButtonKwh->setText(QApplication::translate("CalcDlgClass", "kWh", 0, QApplication::UnicodeUTF8));
-        grpBoxAlgorithm->setTitle(QApplication::translate("CalcDlgClass", "Algorithm", 0, QApplication::UnicodeUTF8));
-        radioButtonEnthalpy->setText(QApplication::translate("CalcDlgClass", "EnthalpyDiff", 0, QApplication::UnicodeUTF8));
-        radioButtonKCoe->setText(QApplication::translate("CalcDlgClass", "KCoe", 0, QApplication::UnicodeUTF8));
-        grpBoxMinDeltaT->setTitle(QApplication::translate("CalcDlgClass", "MinDeltaT", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("CalcDlgClass", "\316\224\316\270min:", 0, QApplication::UnicodeUTF8));
-        label_2->setText(QApplication::translate("CalcDlgClass", "K", 0, QApplication::UnicodeUTF8));
+        groupBox_5->setTitle(QApplication::translate("CalcDlgClass", "HintInfo", 0, QApplication::UnicodeUTF8));
+        hintLabel->setText(QApplication::translate("CalcDlgClass", "Hint: Please set para first!", 0, QApplication::UnicodeUTF8));
+        btnPara->setText(QApplication::translate("CalcDlgClass", "Para", 0, QApplication::UnicodeUTF8));
+        btnStart->setText(QApplication::translate("CalcDlgClass", "Start", 0, QApplication::UnicodeUTF8));
+        btnSave->setText(QApplication::translate("CalcDlgClass", "Save", 0, QApplication::UnicodeUTF8));
+        btnExit->setText(QApplication::translate("CalcDlgClass", "Exit", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
