@@ -381,33 +381,34 @@ void CalcDlg::on_tableWidget_cellChanged(int row, int column)
 	case COLUMN_OUT_RESIST: //出口电阻
 		outTemper = calcTemperByResist(0, outR); //计算出口温度
 		ui.tableWidget->item(row, COLUMN_OUT_TEMPER)->setText(QString("%1").arg(outTemper));
-		if (ui.radioButtonKCoe->isChecked()) //K系数法
+// 		stdError = (0.5 + m_minDeltaT/(inTemper-outTemper)); //标准误差
+		stdError = 0.5;// + m_minDeltaT/ui.tableWidget->item(row,0)->text().toFloat(); //标准误差
+		ui.tableWidget->item(row, COLUMN_STD_ERROR)->setText(QString("%1").arg(stdError));
+		if (btnGroupAlgorithm->checkedId()==1) //K系数法
 		{
 			KCoe = getKCoeByTemper(inTemper, outTemper); //获取K系数
+			recomV = calcRecomVolumeByKCoe(stdError, inTemper, outTemper, KCoe); //计算建议体积
 		}
-		else if (ui.radioButtonEnthalpy->isChecked()) //焓差法
+		else if (btnGroupAlgorithm->checkedId()==0) //焓差法
 		{
 			KCoe = getEnthalpyDiffByTemper(inTemper, outTemper);
+			recomV = calcRecomVolumeByEnthalpy(stdError, inTemper, outTemper, KCoe);
 		}
 		ui.tableWidget->item(row, COLUMN_K_COE)->setText(QString("%1").arg(KCoe));
-// 		stdError = (0.5 + m_minDeltaT/(inTemper-outTemper)); //标准误差
-		stdError = 0.5 + m_minDeltaT/ui.tableWidget->item(row,0)->text().toFloat(); //标准误差
-		ui.tableWidget->item(row, COLUMN_STD_ERROR)->setText(QString("%1").arg(stdError));
-		recomV = calcRecomVolume(stdError, inTemper, outTemper, KCoe); //计算建议体积
 		ui.tableWidget->item(row, COLUMN_RECOM_V)->setText(QString("%1").arg(recomV));
 		ui.tableWidget->setCurrentCell(row, COLUMN_ANALOG_V); 
 		break;
 	case COLUMN_ANALOG_V: //模拟流量
-		if (ui.radioButtonKCoe->isChecked()) //K系数法
+		if (btnGroupAlgorithm->checkedId()==1) //K系数法
 		{
 			theoryEnergy = calcTheoryEnergyByKCoe(KCoe, analogV/1000, inTemper, outTemper); //计算理论热量
 		}
-		else if (ui.radioButtonEnthalpy->isChecked()) //焓差法
+		else if (btnGroupAlgorithm->checkedId()==0) //焓差法
 		{
 			theoryEnergy = calcTheoryEnergyByEnthalpy(analogV/1000, inTemper, outTemper); //计算理论热量
 		}
 
-		if (ui.radioButtonMJ->isChecked()) //单位MJ
+		if (btnGroupEnergyUnit->checkedId()==0) //单位MJ
 		{
 			theoryEnergy *= 3.6;
 		}
@@ -480,12 +481,30 @@ float CalcDlg::getEnthalpyDiffByTemper(float inTemper, float outTemper)
 	return ret;
 }
 
-float CalcDlg::calcRecomVolume(float stdErr, float inTemper, float outTemper, float kCoe)
+//计算推荐体积（K系数法）
+float CalcDlg::calcRecomVolumeByKCoe(float stdErr, float inTemper, float outTemper, float kCoe)
 {
 	float recomV = 0.0;
 //	Text44(txt_idx) = Int(3000 / (Val(Text21(txt_idx).Text) * (Text11(txt_idx).Text - Text12(txt_idx).Text) * Text14(txt_idx).Text) / 10) * 10
 	recomV = int(3000 / (stdErr * (inTemper - outTemper) * kCoe) / 10) * 10;
 
+	return recomV;
+}
+
+//计算推荐体积（焓差法）
+float CalcDlg::calcRecomVolumeByEnthalpy(float stdErr, float inTemper, float outTemper, float kCoe)
+{
+	float recomV = 0.0;
+	if (btnGroupInstallPos->checkedId()==0) //安装位置 入口
+	{
+// 		Text44(txt_idx) = Int(3000 / (Val(Text21(txt_idx).Text) * MiDu(Val(Text11(txt_idx).Text)) * Text14(txt_idx).Text) * 3.6 / 10) * 10
+		recomV = int(3000 / (stdErr * m_algo->getDensityByQuery(inTemper) * kCoe) * 3.6 / 10) * 10;
+	}
+	if (btnGroupInstallPos->checkedId()==1) //安装位置 出口
+	{
+//		Text44(txt_idx) = Int(3000 / (Val(Text21(txt_idx).Text) * MiDu(Val(Text12(txt_idx).Text)) * Text14(txt_idx).Text) * 3.6 / 10) * 10
+		recomV = int(3000 / (stdErr * m_algo->getDensityByQuery(outTemper) * kCoe) * 3.6 / 10) * 10;
+	}
 	return recomV;
 }
 
