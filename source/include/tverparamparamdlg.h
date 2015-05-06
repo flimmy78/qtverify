@@ -28,7 +28,8 @@ class TVERPARAMPARAMDLG_EXPORT tverparamparamDlg : public QWidget
 public:
 	tverparamparamDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~tverparamparamDlg();
-
+signals:
+	void configureOk(void);//设置参数完毕
 	public slots:
 		void closeEvent(QCloseEvent * event);
 

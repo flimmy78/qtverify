@@ -54,6 +54,9 @@
      <string>Result for single sensor</string>
     </property>
     <widget class="QTableWidget" name="tbl_result">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -1021,6 +1024,9 @@
       </property>
      </widget>
      <widget class="QLineEdit" name="lineEdit_1">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>70</x>
@@ -1060,6 +1066,9 @@
       <enum>QFrame::Raised</enum>
      </property>
      <widget class="QLineEdit" name="lineEdit_2">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>70</x>
@@ -1112,6 +1121,9 @@
       <enum>QFrame::Raised</enum>
      </property>
      <widget class="QLineEdit" name="lineEdit_3">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>70</x>
@@ -1153,19 +1165,22 @@
     <property name="geometry">
      <rect>
       <x>510</x>
-      <y>30</y>
+      <y>190</y>
       <width>141</width>
-      <height>611</height>
+      <height>451</height>
      </rect>
     </property>
     <property name="title">
-     <string>Result</string>
+     <string>Basic Error</string>
     </property>
     <widget class="QTableWidget" name="tbl_maxerr">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>180</y>
+       <y>20</y>
        <width>121</width>
        <height>421</height>
       </rect>
@@ -1378,19 +1393,6 @@
       </property>
      </item>
     </widget>
-    <widget class="QLabel" name="label_32">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>110</y>
-       <width>101</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;basic Error&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
    </widget>
   </widget>
   <widget class="QFrame" name="frame">
@@ -1447,6 +1449,9 @@
      </property>
     </widget>
     <widget class="QTableWidget" name="tbl_std_1">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -1516,6 +1521,9 @@
      </property>
     </widget>
     <widget class="QTableWidget" name="tbl_in_1">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -1809,6 +1817,9 @@
      </property>
     </widget>
     <widget class="QPushButton" name="btn_read_1">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>120</x>
@@ -1822,6 +1833,9 @@
      </property>
     </widget>
     <widget class="QPushButton" name="btn_clear_1">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>120</x>
@@ -1887,6 +1901,9 @@
      </property>
     </widget>
     <widget class="QTableWidget" name="tbl_std_2">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -1937,6 +1954,9 @@
      </item>
     </widget>
     <widget class="QPushButton" name="btn_read_2">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>130</x>
@@ -1950,6 +1970,9 @@
      </property>
     </widget>
     <widget class="QPushButton" name="btn_clear_2">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>130</x>
@@ -1963,6 +1986,9 @@
      </property>
     </widget>
     <widget class="QTableWidget" name="tbl_in_2">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -2295,6 +2321,9 @@
      </property>
     </widget>
     <widget class="QTableWidget" name="tbl_std_3">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -2345,6 +2374,9 @@
      </item>
     </widget>
     <widget class="QPushButton" name="btn_read_3">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>130</x>
@@ -2358,6 +2390,9 @@
      </property>
     </widget>
     <widget class="QPushButton" name="btn_clear_3">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>130</x>
@@ -2371,6 +2406,9 @@
      </property>
     </widget>
     <widget class="QTableWidget" name="tbl_in_3">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -2653,6 +2691,9 @@
    </widget>
   </widget>
   <widget class="QPushButton" name="btn_save">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>1070</x>
@@ -2670,6 +2711,9 @@
    </property>
   </widget>
   <widget class="QPushButton" name="btn_param">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>900</x>

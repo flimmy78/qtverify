@@ -45,7 +45,6 @@ public:
     QLabel *label_30;
     QGroupBox *groupBox_9;
     QTableWidget *tbl_maxerr;
-    QLabel *label_32;
     QFrame *frame;
     QLabel *label;
     QGroupBox *groupBox;
@@ -452,6 +451,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem167 = new QTableWidgetItem();
         tbl_result->setItem(11, 11, __qtablewidgetitem167);
         tbl_result->setObjectName(QString::fromUtf8("tbl_result"));
+        tbl_result->setEnabled(false);
         tbl_result->setGeometry(QRect(10, 200, 471, 401));
         tbl_result->horizontalHeader()->setVisible(true);
         tbl_result->horizontalHeader()->setCascadingSectionResizes(false);
@@ -469,6 +469,7 @@ public:
         label_24->setGeometry(QRect(0, 0, 161, 20));
         lineEdit_1 = new QLineEdit(frame_3);
         lineEdit_1->setObjectName(QString::fromUtf8("lineEdit_1"));
+        lineEdit_1->setEnabled(false);
         lineEdit_1->setGeometry(QRect(70, 20, 61, 20));
         label_26 = new QLabel(frame_3);
         label_26->setObjectName(QString::fromUtf8("label_26"));
@@ -480,6 +481,7 @@ public:
         frame_5->setFrameShadow(QFrame::Raised);
         lineEdit_2 = new QLineEdit(frame_5);
         lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
+        lineEdit_2->setEnabled(false);
         lineEdit_2->setGeometry(QRect(70, 20, 61, 20));
         label_29 = new QLabel(frame_5);
         label_29->setObjectName(QString::fromUtf8("label_29"));
@@ -494,6 +496,7 @@ public:
         frame_6->setFrameShadow(QFrame::Raised);
         lineEdit_3 = new QLineEdit(frame_6);
         lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
+        lineEdit_3->setEnabled(false);
         lineEdit_3->setGeometry(QRect(70, 20, 61, 20));
         label_31 = new QLabel(frame_6);
         label_31->setObjectName(QString::fromUtf8("label_31"));
@@ -503,7 +506,7 @@ public:
         label_30->setGeometry(QRect(0, 0, 151, 20));
         groupBox_9 = new QGroupBox(frame_2);
         groupBox_9->setObjectName(QString::fromUtf8("groupBox_9"));
-        groupBox_9->setGeometry(QRect(510, 30, 141, 611));
+        groupBox_9->setGeometry(QRect(510, 190, 141, 451));
         tbl_maxerr = new QTableWidget(groupBox_9);
         if (tbl_maxerr->columnCount() < 2)
             tbl_maxerr->setColumnCount(2);
@@ -586,15 +589,13 @@ public:
         QTableWidgetItem *__qtablewidgetitem205 = new QTableWidgetItem();
         tbl_maxerr->setItem(11, 1, __qtablewidgetitem205);
         tbl_maxerr->setObjectName(QString::fromUtf8("tbl_maxerr"));
-        tbl_maxerr->setGeometry(QRect(10, 180, 121, 421));
+        tbl_maxerr->setEnabled(false);
+        tbl_maxerr->setGeometry(QRect(10, 20, 121, 421));
         tbl_maxerr->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_maxerr->horizontalHeader()->setDefaultSectionSize(50);
         tbl_maxerr->horizontalHeader()->setMinimumSectionSize(10);
         tbl_maxerr->verticalHeader()->setCascadingSectionResizes(true);
         tbl_maxerr->verticalHeader()->setMinimumSectionSize(10);
-        label_32 = new QLabel(groupBox_9);
-        label_32->setObjectName(QString::fromUtf8("label_32"));
-        label_32->setGeometry(QRect(20, 110, 101, 20));
         frame = new QFrame(PlaParamDlgClass);
         frame->setObjectName(QString::fromUtf8("frame"));
         frame->setGeometry(QRect(10, 10, 641, 651));
@@ -627,6 +628,7 @@ public:
         __qtablewidgetitem210->setFlags(Qt::ItemIsSelectable|Qt::ItemIsDragEnabled|Qt::ItemIsUserCheckable);
         tbl_std_1->setItem(1, 0, __qtablewidgetitem210);
         tbl_std_1->setObjectName(QString::fromUtf8("tbl_std_1"));
+        tbl_std_1->setEnabled(false);
         tbl_std_1->setGeometry(QRect(10, 50, 101, 91));
         tbl_std_1->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_std_1->horizontalHeader()->setDefaultSectionSize(50);
@@ -744,6 +746,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem261 = new QTableWidgetItem();
         tbl_in_1->setItem(11, 2, __qtablewidgetitem261);
         tbl_in_1->setObjectName(QString::fromUtf8("tbl_in_1"));
+        tbl_in_1->setEnabled(true);
         tbl_in_1->setGeometry(QRect(10, 200, 171, 401));
         tbl_in_1->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_in_1->horizontalHeader()->setDefaultSectionSize(50);
@@ -755,9 +758,11 @@ public:
         label_4->setGeometry(QRect(20, 170, 141, 16));
         btn_read_1 = new QPushButton(groupBox);
         btn_read_1->setObjectName(QString::fromUtf8("btn_read_1"));
+        btn_read_1->setEnabled(true);
         btn_read_1->setGeometry(QRect(120, 70, 51, 23));
         btn_clear_1 = new QPushButton(groupBox);
         btn_clear_1->setObjectName(QString::fromUtf8("btn_clear_1"));
+        btn_clear_1->setEnabled(true);
         btn_clear_1->setGeometry(QRect(120, 110, 51, 23));
         groupBox_2 = new QGroupBox(frame);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
@@ -787,6 +792,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem266 = new QTableWidgetItem();
         tbl_std_2->setItem(1, 0, __qtablewidgetitem266);
         tbl_std_2->setObjectName(QString::fromUtf8("tbl_std_2"));
+        tbl_std_2->setEnabled(false);
         tbl_std_2->setGeometry(QRect(20, 50, 101, 91));
         tbl_std_2->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_std_2->horizontalHeader()->setDefaultSectionSize(50);
@@ -795,9 +801,11 @@ public:
         tbl_std_2->verticalHeader()->setMinimumSectionSize(10);
         btn_read_2 = new QPushButton(groupBox_2);
         btn_read_2->setObjectName(QString::fromUtf8("btn_read_2"));
+        btn_read_2->setEnabled(false);
         btn_read_2->setGeometry(QRect(130, 70, 51, 23));
         btn_clear_2 = new QPushButton(groupBox_2);
         btn_clear_2->setObjectName(QString::fromUtf8("btn_clear_2"));
+        btn_clear_2->setEnabled(false);
         btn_clear_2->setGeometry(QRect(130, 110, 51, 23));
         tbl_in_2 = new QTableWidget(groupBox_2);
         if (tbl_in_2->columnCount() < 3)
@@ -907,6 +915,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem317 = new QTableWidgetItem();
         tbl_in_2->setItem(11, 2, __qtablewidgetitem317);
         tbl_in_2->setObjectName(QString::fromUtf8("tbl_in_2"));
+        tbl_in_2->setEnabled(false);
         tbl_in_2->setGeometry(QRect(0, 200, 171, 401));
         tbl_in_2->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_in_2->horizontalHeader()->setDefaultSectionSize(50);
@@ -941,6 +950,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem322 = new QTableWidgetItem();
         tbl_std_3->setItem(1, 0, __qtablewidgetitem322);
         tbl_std_3->setObjectName(QString::fromUtf8("tbl_std_3"));
+        tbl_std_3->setEnabled(false);
         tbl_std_3->setGeometry(QRect(20, 50, 101, 91));
         tbl_std_3->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_std_3->horizontalHeader()->setDefaultSectionSize(50);
@@ -949,9 +959,11 @@ public:
         tbl_std_3->verticalHeader()->setMinimumSectionSize(10);
         btn_read_3 = new QPushButton(groupBox_7);
         btn_read_3->setObjectName(QString::fromUtf8("btn_read_3"));
+        btn_read_3->setEnabled(false);
         btn_read_3->setGeometry(QRect(130, 70, 51, 23));
         btn_clear_3 = new QPushButton(groupBox_7);
         btn_clear_3->setObjectName(QString::fromUtf8("btn_clear_3"));
+        btn_clear_3->setEnabled(false);
         btn_clear_3->setGeometry(QRect(130, 110, 51, 23));
         tbl_in_3 = new QTableWidget(groupBox_7);
         if (tbl_in_3->columnCount() < 3)
@@ -1061,6 +1073,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem373 = new QTableWidgetItem();
         tbl_in_3->setItem(11, 2, __qtablewidgetitem373);
         tbl_in_3->setObjectName(QString::fromUtf8("tbl_in_3"));
+        tbl_in_3->setEnabled(false);
         tbl_in_3->setGeometry(QRect(10, 200, 171, 401));
         tbl_in_3->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_in_3->horizontalHeader()->setDefaultSectionSize(50);
@@ -1069,12 +1082,14 @@ public:
         tbl_in_3->verticalHeader()->setMinimumSectionSize(10);
         btn_save = new QPushButton(PlaParamDlgClass);
         btn_save->setObjectName(QString::fromUtf8("btn_save"));
+        btn_save->setEnabled(true);
         btn_save->setGeometry(QRect(1070, 680, 75, 41));
         QIcon icon;
         icon.addFile(QString::fromUtf8("../img/save.png"), QSize(), QIcon::Normal, QIcon::Off);
         btn_save->setIcon(icon);
         btn_param = new QPushButton(PlaParamDlgClass);
         btn_param->setObjectName(QString::fromUtf8("btn_param"));
+        btn_param->setEnabled(true);
         btn_param->setGeometry(QRect(900, 680, 75, 41));
         QIcon icon1;
         icon1.addFile(QString::fromUtf8("../img/param.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -1134,7 +1149,7 @@ public:
         label_28->setText(QApplication::translate("PlaParamDlgClass", "2nd temperature diff", 0, QApplication::UnicodeUTF8));
         label_31->setText(QApplication::translate("PlaParamDlgClass", "Err Lim(\342\204\203)", 0, QApplication::UnicodeUTF8));
         label_30->setText(QApplication::translate("PlaParamDlgClass", "3rd temperature diff", 0, QApplication::UnicodeUTF8));
-        groupBox_9->setTitle(QApplication::translate("PlaParamDlgClass", "Result", 0, QApplication::UnicodeUTF8));
+        groupBox_9->setTitle(QApplication::translate("PlaParamDlgClass", "Basic Error", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem12 = tbl_maxerr->horizontalHeaderItem(0);
         ___qtablewidgetitem12->setText(QApplication::translate("PlaParamDlgClass", "In\n"
 "(\342\204\203)", 0, QApplication::UnicodeUTF8));
@@ -1146,7 +1161,6 @@ public:
         tbl_maxerr->setSortingEnabled(false);
         tbl_maxerr->setSortingEnabled(__sortingEnabled1);
 
-        label_32->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">basic Error</span></p></body></html>", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Data Input</span></p></body></html>", 0, QApplication::UnicodeUTF8));
         groupBox->setTitle(QApplication::translate("PlaParamDlgClass", "1st temperature head", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p><span style=\" font-weight:600;\">Stand temperature</span></p></body></html>", 0, QApplication::UnicodeUTF8));

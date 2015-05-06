@@ -8,7 +8,11 @@ tverparamDlg::tverparamDlg(QWidget *parent /* = 0 */, Qt::WFlags flags /* = 0 */
 {
 	ui.setupUi(this);
 	m_PlaParamParamDlg = NULL;
-
+	connect(m_PlaParamParamDlg, SIGNAL(configureOk()), this,SLOT(disableConfigBtn()));
+	connect(this, SIGNAL(firstTmpVerOk()), this, SLOT(firstTmpVerOk_slot()));
+	connect(this, SIGNAL(secondTmpVerOk()), this, SLOT(secondTmpVerOk_slot()));
+	connect(this, SIGNAL(thirdTmpVerOk()), this, SLOT(thirdTmpVerOk_slot()));
+	connect(this, SIGNAL(allTmpVerOk()), this, SLOT(calcBasicErr()));
 	m_tempObj = NULL;
 	m_sendTimer = NULL;
 	m_PlaVerifyRecPtr = NULL;
@@ -22,6 +26,7 @@ tverparamDlg::tverparamDlg(QWidget *parent /* = 0 */, Qt::WFlags flags /* = 0 */
 	m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
 
 	m_tbl_inited = false;
+
 	m_saved_times = 0;
 	m_temp_index = 0;
 	//initTbls();
@@ -102,6 +107,58 @@ void tverparamDlg::closeEvent(QCloseEvent * event)
 
 	clearComObjs();
 }
+void tverparamDlg::disableConfigBtn()
+{
+	ui.btn_param->setEnabled(false);
+}
+
+void tverparamDlg::disableAllWdg()
+{
+	disable1stWdg();
+	disable2ndWdg();
+	disable3rdWdg();
+}
+
+void tverparamDlg::disable1stWdg()
+{
+	ui.btn_read_1->setEnabled(false);
+	ui.btn_clear_1->setEnabled(false);
+	ui.tbl_in_1->setEnabled(false);
+}
+void tverparamDlg::disable2ndWdg()
+{
+	ui.btn_read_2->setEnabled(false);
+	ui.btn_clear_2->setEnabled(false);
+	ui.tbl_in_2->setEnabled(false);
+}
+
+void tverparamDlg::disable3rdWdg()
+{
+	ui.btn_read_3->setEnabled(false);
+	ui.btn_clear_3->setEnabled(false);
+	ui.tbl_in_3->setEnabled(false);
+}
+
+void tverparamDlg::enable1stWdg()
+{
+	ui.btn_read_1->setEnabled(true);
+	ui.btn_clear_1->setEnabled(true);
+	ui.tbl_in_1->setEnabled(true);
+}
+
+void tverparamDlg::enable2ndWdg()
+{
+	ui.btn_read_2->setEnabled(true);
+	ui.btn_clear_2->setEnabled(true);
+	ui.tbl_in_2->setEnabled(true);
+}
+
+void tverparamDlg::enable3rdWdg()
+{
+	ui.btn_read_3->setEnabled(true);
+	ui.btn_clear_3->setEnabled(true);
+	ui.tbl_in_3->setEnabled(true);
+}
 
 void tverparamDlg::on_btn_read_1_clicked()
 {
@@ -117,7 +174,7 @@ void tverparamDlg::on_btn_read_1_clicked()
 	m_chanel = m_tverparam_config->value("chkinfo/chanel").toInt();
 	m_readCommand = (m_chanel ==0) ? sti1062aT1:sti1062aT2;
 	connect(m_sendTimer, SIGNAL(timeout()), this, SLOT(sendCommands()));
-	connect(this, SIGNAL(commandSendComplete()), m_sendTimer, SLOT(stop()));
+	//connect(this, SIGNAL(commandSendComplete()), m_sendTimer, SLOT(stop()));
 	m_sendTimer->start(READ_STI1062A_TIMEOUT);
 }
 
@@ -140,10 +197,12 @@ void tverparamDlg::setTblStd1(const QString &tempStr)
 		break;
 	case sti1062aR1:
 		ui.tbl_std_1->item(0, 0)->setText(tempStr);
+		m_readCommand = sti1062aT1;
 		emit commandSendComplete();
 		break;
 	case sti1062aR2:
 		ui.tbl_std_1->item(0, 0)->setText(tempStr);
+		m_readCommand = sti1062aT2;
 		emit commandSendComplete();
 		break;
 	}
@@ -184,7 +243,7 @@ void tverparamDlg::on_btn_read_2_clicked()
 	m_chanel = m_tverparam_config->value("chkinfo/chanel").toInt();
 	m_readCommand = (m_chanel ==0) ? sti1062aT1:sti1062aT2;
 	connect(m_sendTimer, SIGNAL(timeout()), this, SLOT(sendCommands()));
-	connect(this, SIGNAL(commandSendComplete()), m_sendTimer, SLOT(stop()));
+	//connect(this, SIGNAL(commandSendComplete()), m_sendTimer, SLOT(stop()));
 	m_sendTimer->start(READ_STI1062A_TIMEOUT);
 }
 
@@ -202,10 +261,12 @@ void tverparamDlg::setTblStd2(const QString& tempStr)
 		break;
 	case sti1062aR1:
 		ui.tbl_std_2->item(0, 0)->setText(tempStr);
+		m_readCommand = sti1062aT1;
 		emit commandSendComplete();
 		break;
 	case sti1062aR2:
 		ui.tbl_std_2->item(0, 0)->setText(tempStr);
+		m_readCommand = sti1062aT2;
 		emit commandSendComplete();
 		break;
 	}
@@ -225,7 +286,7 @@ void tverparamDlg::on_btn_read_3_clicked()
 	m_chanel = m_tverparam_config->value("chkinfo/chanel").toInt();
 	m_readCommand = (m_chanel ==0) ? sti1062aT1:sti1062aT2;
 	connect(m_sendTimer, SIGNAL(timeout()), this, SLOT(sendCommands()));
-	connect(this, SIGNAL(commandSendComplete()), m_sendTimer, SLOT(stop()));
+	//connect(this, SIGNAL(commandSendComplete()), m_sendTimer, SLOT(stop()));
 	m_sendTimer->start(READ_STI1062A_TIMEOUT);
 }
 
@@ -243,10 +304,12 @@ void tverparamDlg::setTblStd3(const QString& tempStr)
 		break;
 	case sti1062aR1:
 		ui.tbl_std_3->item(0, 0)->setText(tempStr);
+		m_readCommand = sti1062aT1;
 		emit commandSendComplete();
 		break;
 	case sti1062aR2:
 		ui.tbl_std_3->item(0, 0)->setText(tempStr);
+		m_readCommand = sti1062aT2;
 		emit commandSendComplete();
 		break;
 	}
@@ -535,19 +598,26 @@ void tverparamDlg::on_btn_param_clicked()
 
 void tverparamDlg::on_btn_save_clicked()
 {
-	//如果检定次数达到预设的或规程规定的次数，计算铂电阻的基本误差
-	//铂电阻的基本误差 = max(三个温度点(或多个温度点)的基本误差)
-	//每个温度点的基本误差 = 单个温度点的多次检测误差的平均值
-	
-	if (m_saved_times < 3)
+	if (m_saved_times < VERIFY_TIMES)
 	{
 		m_saved_times++;
 		insertData();
 	}
-	
-	if( (m_temp_index == 2) && (m_saved_times == VERIFY_TIMES))
+
+	if (m_saved_times == VERIFY_TIMES)
 	{
-		calcBasicErr();
+		switch(m_temp_index)
+		{
+			case 0:
+				emit firstTmpVerOk();
+				break;
+			case 1:
+				emit secondTmpVerOk();
+				break;
+			case 2:
+				emit thirdTmpVerOk();
+				break;
+		}
 	}
 }
 
@@ -705,4 +775,23 @@ void tverparamDlg::readChkResult()
 			m_PlaVerifyRecPtr[j].F_TmpIndex		= m_temp_index;
 		}
 	//}
+}
+
+void tverparamDlg::firstTmpVerOk_slot()
+{
+	disable1stWdg();
+	enable2ndWdg();
+}
+
+void tverparamDlg::secondTmpVerOk_slot()
+{
+	disable2ndWdg();
+	enable3rdWdg();
+}
+
+void tverparamDlg::thirdTmpVerOk_slot()
+{
+	disable3rdWdg();
+	ui.btn_save->setEnabled(false);
+	emit allTmpVerOk();
 }

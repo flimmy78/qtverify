@@ -28,9 +28,10 @@
 #include "tverparamparamdlg.h"
 
 #define READ_STI1062A_TIMEOUT	200//定时器间隔
-#define TMP_DIFF_NUMBER			3//温差点个数
+#define TMP_DIFF_NUMBER			3//温度点个数
 #define VERIFY_NUMBER			12//被检铂电阻对数
 #define VERIFY_TIMES			3//每对铂电阻重复检定次数
+
 class TVERPARAM_EXPORT tverparamDlg : public QWidget
 {
 	Q_OBJECT
@@ -43,8 +44,13 @@ public:
 
 signals:
 	void commandSendComplete(void);//读取温度命令已发送完毕
-	void singleTmpVerOk(void);//单独的温度点检测完毕
+
+	void firstTmpVerOk(void);//第一温度点检测完毕
+	void secondTmpVerOk(void);//第二温度点检测完毕
+	void thirdTmpVerOk(void);//第三温度点检测完毕
+
 	void allTmpVerOk(void);//所有的温度点都检测完毕
+
 	public slots:
 		void closeEvent(QCloseEvent * event);
 
@@ -78,12 +84,26 @@ signals:
 		void on_btn_save_clicked();//保存至数据库
 		void on_btn_exit_clicked();//退出
 
+		void disableConfigBtn();
+		void disableAllWdg();//禁用所有温度点相关部件
+		void disable1stWdg();//禁用第一温度点相关部件
+		void disable2ndWdg();//禁用第二温度点相关部件
+		void disable3rdWdg();//禁用第三温度点相关部件
+		void enable1stWdg();//启用第一温度点相关部件
+		void enable2ndWdg();//启用第二温度点相关部件
+		void enable3rdWdg();//启用第三温度点相关部件
+
+		void firstTmpVerOk_slot();
+		void secondTmpVerOk_slot();
+		void thirdTmpVerOk_slot();
+
 		void setTblStd1(const QString& tempStr);
 		void setTblStd2(const QString& tempStr);
 		void setTblStd3(const QString& tempStr);
 		void sendCommands();
 		void clearComObjs();
 
+		void calcBasicErr();//计算全部表的铂电阻的基本误差
 private:
 	Ui::PlaParamDlgClass ui;
 	tverparamparamDlg *m_PlaParamParamDlg;
@@ -104,6 +124,10 @@ private:
 	int m_chanel;//使用的标准温度计的通道号
 	int m_saved_times;//存数据库次数, 作为检测次数的索引
 	int m_temp_index;//检测温度点的索引
+
+	int m_current_temp_seq;//当前温度点
+	int m_current_chk_seq;//当前检测点
+
 	bool m_tbl_inited;//表格初始化完毕
 private:
 	//void initTbls();
@@ -113,7 +137,7 @@ private:
 	void readConfig();//读取标准温度计、被检铂电阻、检测参数等
 	void readChkResult();//读取被检铂电阻检测结果
 
-	void calcBasicErr();//计算全部表的铂电阻的基本误差
+	
 	void calcBasicErrPerMeter(int);//计算但支热表的进出口铂电阻的基本误差
 	float* getTmpPntBasicErr(int, QString);
 };
