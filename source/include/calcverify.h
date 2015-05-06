@@ -82,7 +82,7 @@ public:
 	float getKCoeByTemper(float inT, float outT); //根据进口温度和出口温度获取K系数
 	float getEnthalpyDiffByTemper(float inT, float outT); //根据进口温度和出口温度获取焓差
 	float calcRecomVolumeByKCoe(float stdErr, float inTemper, float outTemper, float kCoe); //计算推荐体积(K系数法)
-	float calcRecomVolumeByEnthalpy(float stdErr, float inTemper, float outTemper, float kCoe); //计算推荐体积(焓差法)
+	float calcRecomVolumeByEnthalpy(float stdErr, float inTemper, float outTemper, float enthalpyDiff); //计算推荐体积(焓差法)
 	float calcTheoryEnergyByKCoe(float kCoe, float analogV, float inTemper, float outTemper); //K系数法计算理论热量
 	float calcTheoryEnergyByEnthalpy(float analogV, float inTemper, float outTemper);//焓差法计算理论热量
 

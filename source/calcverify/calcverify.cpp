@@ -381,9 +381,9 @@ void CalcDlg::on_tableWidget_cellChanged(int row, int column)
 	case COLUMN_OUT_RESIST: //出口电阻
 		outTemper = calcTemperByResist(0, outR); //计算出口温度
 		ui.tableWidget->item(row, COLUMN_OUT_TEMPER)->setText(QString("%1").arg(outTemper));
-// 		stdError = (0.5 + m_minDeltaT/(inTemper-outTemper)); //标准误差
-		stdError = 0.5;// + m_minDeltaT/ui.tableWidget->item(row,0)->text().toFloat(); //标准误差
-		ui.tableWidget->item(row, COLUMN_STD_ERROR)->setText(QString("%1").arg(stdError));
+// 		Text21(txt_idx) = Format(0.5 + Abs(Val(Twcd.Text) / (Text11(txt_idx).Text - Text12(txt_idx).Text)), "0.0")    '示值误差技术要求
+		stdError = (0.5 + m_minDeltaT/(inTemper-outTemper)); //标准误差
+		ui.tableWidget->item(row, COLUMN_STD_ERROR)->setText(QString("%1").arg(stdError, 0, 'g', 1)); //标准误差显示1位小数
 		if (btnGroupAlgorithm->checkedId()==1) //K系数法
 		{
 			KCoe = getKCoeByTemper(inTemper, outTemper); //获取K系数
@@ -492,18 +492,18 @@ float CalcDlg::calcRecomVolumeByKCoe(float stdErr, float inTemper, float outTemp
 }
 
 //计算推荐体积（焓差法）
-float CalcDlg::calcRecomVolumeByEnthalpy(float stdErr, float inTemper, float outTemper, float kCoe)
+float CalcDlg::calcRecomVolumeByEnthalpy(float stdErr, float inTemper, float outTemper, float enthalpyDiff)
 {
 	float recomV = 0.0;
 	if (btnGroupInstallPos->checkedId()==0) //安装位置 入口
 	{
 // 		Text44(txt_idx) = Int(3000 / (Val(Text21(txt_idx).Text) * MiDu(Val(Text11(txt_idx).Text)) * Text14(txt_idx).Text) * 3.6 / 10) * 10
-		recomV = int(3000 / (stdErr * m_algo->getDensityByQuery(inTemper) * kCoe) * 3.6 / 10) * 10;
+		recomV = int(3000 / (stdErr * m_algo->getDensityByQuery(inTemper) * enthalpyDiff) * 3.6 / 10) * 10;
 	}
 	if (btnGroupInstallPos->checkedId()==1) //安装位置 出口
 	{
 //		Text44(txt_idx) = Int(3000 / (Val(Text21(txt_idx).Text) * MiDu(Val(Text12(txt_idx).Text)) * Text14(txt_idx).Text) * 3.6 / 10) * 10
-		recomV = int(3000 / (stdErr * m_algo->getDensityByQuery(outTemper) * kCoe) * 3.6 / 10) * 10;
+		recomV = int(3000 / (stdErr * m_algo->getDensityByQuery(outTemper) * enthalpyDiff) * 3.6 / 10) * 10;
 	}
 	return recomV;
 }
