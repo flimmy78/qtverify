@@ -291,6 +291,13 @@ double CAlgorithm::getDensityByQuery(float temp)
 	return (density[low -1] +  getDecimal(temp) * (density[low] - density[low - 1])) / 1000.0;
 }
 
+double CAlgorithm::getEnthalpyByQuery(float temp)
+{
+	int low = getInt(temp);
+	float ret = enthalpy[low -1] +  getDecimal(temp) * (enthalpy[low] - enthalpy[low - 1]);
+	return ret;
+}
+
 /************************************************************************
 * 计算浮点数的整数部分           
 /************************************************************************/
