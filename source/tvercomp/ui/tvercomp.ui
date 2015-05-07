@@ -545,6 +545,9 @@
      </property>
     </widget>
     <widget class="QPushButton" name="btn_clear_2">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>130</x>
@@ -558,6 +561,9 @@
      </property>
     </widget>
     <widget class="QPushButton" name="btn_read_2">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -571,6 +577,9 @@
      </property>
     </widget>
     <widget class="QTableWidget" name="tbl_std_2">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -648,6 +657,9 @@
      </item>
     </widget>
     <widget class="QTableWidget" name="tbl_in_2">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -980,6 +992,9 @@
      </property>
     </widget>
     <widget class="QPushButton" name="btn_read_3">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -993,6 +1008,9 @@
      </property>
     </widget>
     <widget class="QPushButton" name="btn_clear_3">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>120</x>
@@ -1006,6 +1024,9 @@
      </property>
     </widget>
     <widget class="QTableWidget" name="tbl_std_3">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -1083,6 +1104,9 @@
      </item>
     </widget>
     <widget class="QTableWidget" name="tbl_in_3">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -1418,6 +1442,9 @@
      <string>First temperature difference</string>
     </property>
     <widget class="QTableWidget" name="tbl_stderror_1">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -1478,6 +1505,9 @@
      </item>
     </widget>
     <widget class="QTableWidget" name="tbl_chkerror_1">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -1818,6 +1848,9 @@ T
      </property>
     </widget>
     <widget class="QTableWidget" name="tbl_stderror_2">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -1878,6 +1911,9 @@ T
      </item>
     </widget>
     <widget class="QTableWidget" name="tbl_chkerror_2">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -2189,6 +2225,9 @@ T
      </property>
     </widget>
     <widget class="QTableWidget" name="tbl_stderror_3">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -2249,6 +2288,9 @@ T
      </item>
     </widget>
     <widget class="QTableWidget" name="tbl_chkerror_3">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>10</x>

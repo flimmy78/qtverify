@@ -8,11 +8,7 @@ tverparamDlg::tverparamDlg(QWidget *parent /* = 0 */, Qt::WFlags flags /* = 0 */
 {
 	ui.setupUi(this);
 	m_PlaParamParamDlg = NULL;
-	connect(m_PlaParamParamDlg, SIGNAL(configureOk()), this,SLOT(disableConfigBtn()));
-	connect(this, SIGNAL(firstTmpVerOk()), this, SLOT(firstTmpVerOk_slot()));
-	connect(this, SIGNAL(secondTmpVerOk()), this, SLOT(secondTmpVerOk_slot()));
-	connect(this, SIGNAL(thirdTmpVerOk()), this, SLOT(thirdTmpVerOk_slot()));
-	connect(this, SIGNAL(allTmpVerOk()), this, SLOT(calcBasicErr()));
+	
 	m_tempObj = NULL;
 	m_sendTimer = NULL;
 	m_PlaVerifyRecPtr = NULL;
@@ -29,49 +25,17 @@ tverparamDlg::tverparamDlg(QWidget *parent /* = 0 */, Qt::WFlags flags /* = 0 */
 
 	m_saved_times = 0;
 	m_temp_index = 0;
-	//initTbls();
+
+	connect(this, SIGNAL(firstTmpVerOk()), this, SLOT(firstTmpVerOk_slot()));
+	connect(this, SIGNAL(secondTmpVerOk()), this, SLOT(secondTmpVerOk_slot()));
+	connect(this, SIGNAL(thirdTmpVerOk()), this, SLOT(thirdTmpVerOk_slot()));
+	connect(this, SIGNAL(allTmpVerOk()), this, SLOT(calcBasicErr()));
 }
 
 tverparamDlg::~tverparamDlg()
 {
 
 }
-
-//void tverparamDlg::initTbls()
-//{
-//	initTbl(ui.tbl_in_1);
-//	initTbl(ui.tbl_in_2);
-//	initTbl(ui.tbl_in_3);
-//	m_tbl_inited = true;
-//}
-//
-//void tverparamDlg::initTbl(QTreeWidget* tbl)
-//{
-//
-//	QTreeWidgetItem* topItem = NULL;
-//	topItem = tbl->takeTopLevelItem(0);
-//	int k = topItem->columnCount();
-//	//topItem->setText(0, "init");
-//	//topItem = ui.tbl_in_2->takeTopLevelItem(9);
-//	//topItem->setText(0, "init");
-//	//topItem = ui.tbl_in_3->takeTopLevelItem(9);
-//
-//
-//	//int k = ui.tbl_in_2->topLevelItemCount();
-//	for (int i=0; i<VERIFY_NUMBER;i++)
-//	{
-//		QTreeWidgetItem *top_item = new QTreeWidgetItem(tbl);
-//		top_item->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEditable|Qt::ItemIsDragEnabled|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled);
-//		//int col = top_item->columnCount();
-//		//top_item->setText(0, "serial");
-//		for(int j=0;j<VERIFY_TIMES;j++)
-//		{
-//			QTreeWidgetItem *button_item = new QTreeWidgetItem(top_item);
-//			button_item->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEditable|Qt::ItemIsDragEnabled|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled);
-//			//button_item->setText(0, "serial");
-//		}
-//	}
-//}
 
 void tverparamDlg::closeEvent(QCloseEvent * event)
 {
@@ -583,16 +547,13 @@ void tverparamDlg::on_tbl_result_cellChanged(int i, int j)
 
 void tverparamDlg::on_btn_param_clicked()
 {
-	if ( NULL == m_PlaParamParamDlg)
-	{
-		m_PlaParamParamDlg = new tverparamparamDlg;
-	}
-	else
+	if ( NULL != m_PlaParamParamDlg)
 	{
 		delete m_PlaParamParamDlg;
-		m_PlaParamParamDlg = new tverparamparamDlg;
 	}
+	m_PlaParamParamDlg = new tverparamparamDlg;
 
+	connect(m_PlaParamParamDlg, SIGNAL(configureOk()), this,SLOT(disableConfigBtn()));
 	m_PlaParamParamDlg->show();
 }
 
