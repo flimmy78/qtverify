@@ -17,7 +17,7 @@ QMAKE_LIBDIR = 	$(RUNHOME)/lib \
 								
 LIBS += -lalgorithm -lsystemsetdlg -ldatatestdlg -lqaxserver -lmasterslaveset -llogindialog \
 				-lqtexdb -lflowweight -lflowstandard -ltotalweight -ltotalstandard -lcalcverify \
-				-lreport -ltvercomp -lcmbverify
+				-lreport -ltvercomp -ltverparam -lcmbverify 
 
 # Input
 HEADERS += include/mainform.h	\

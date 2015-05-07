@@ -47,7 +47,7 @@
     <addaction name="actionStdMtrParaSet"/>
     <addaction name="actionStdMtrCoeCorrect"/>
     <addaction name="actionStdPtParaSet"/>
-    <addaction name="actionPtparaset"/>
+    <addaction name="actionPtParaSet"/>
    </widget>
    <widget class="QMenu" name="menu">
     <property name="title">
@@ -142,7 +142,7 @@
    <addaction name="actionStdMtrParaSet"/>
    <addaction name="actionStdMtrCoeCorrect"/>
    <addaction name="actionStdPtParaSet"/>
-   <addaction name="actionPtparaset"/>
+   <addaction name="actionPtParaSet"/>
    <addaction name="separator"/>
    <addaction name="actionFlowWeight"/>
    <addaction name="actionFlowStandard"/>
@@ -490,7 +490,7 @@
     <string>StdPtParaSet</string>
    </property>
   </action>
-  <action name="actionPtparaset">
+  <action name="actionPtParaSet">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
      <normaloff>:/qtverify/images/ptparaset.png</normaloff>:/qtverify/images/ptparaset.png</iconset>

@@ -34,7 +34,9 @@
 #include "stdmtrparaset.h"
 #include "stdmtrcoecorrect.h"
 #include "tvercomp.h"
+#include "tverparam.h"
 #include "stdplasensor.h"
+#include "chkplasensor.h"
 
 MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
@@ -62,9 +64,11 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_calcDlg = NULL;  
 	m_cmbVerifyDlg = NULL;
 	m_tvercompDlg = NULL;
+	m_tverparaDlg = NULL;
 	m_stdParaSet = NULL;
 	m_stdCoeCorrect = NULL;
 	m_stdPtParaDlg = NULL;
+	m_chkPtParaDlg = NULL;
 
 	QLabel *permanent = new QLabel(this);
 	permanent->setFrameStyle(QFrame::NoFrame | QFrame::Sunken);
@@ -180,6 +184,12 @@ void MainForm::closeEvent( QCloseEvent * event)
 			m_tvercompDlg = NULL;
 		}	
 
+		if (m_tverparaDlg)
+		{
+			delete m_tverparaDlg;
+			m_tverparaDlg = NULL;
+		}	
+
 		if (m_stdParaSet)
 		{
 			delete m_stdParaSet;
@@ -196,6 +206,12 @@ void MainForm::closeEvent( QCloseEvent * event)
 		{
 			delete m_stdPtParaDlg;
 			m_stdPtParaDlg = NULL;
+		}
+
+		if (m_chkPtParaDlg)
+		{
+			delete m_chkPtParaDlg;
+			m_chkPtParaDlg = NULL;
 		}
 	}
 }
@@ -290,6 +306,22 @@ void MainForm::on_actionStdPtParaSet_triggered()
 	m_stdPtParaDlg->show();
 }
 
+//被检铂电阻参数设定
+void MainForm::on_actionPtParaSet_triggered()
+{
+	if (NULL == m_chkPtParaDlg)
+	{
+		m_chkPtParaDlg = new chkplasensorDlg();
+	}
+	else //目的是执行chkplasensorDlg的构造函数
+	{
+		delete m_chkPtParaDlg;
+		m_chkPtParaDlg = NULL;
+		m_chkPtParaDlg = new chkplasensorDlg();
+	}
+	m_chkPtParaDlg->show();
+}
+
 //主机-从机设置
 void MainForm::on_actionMasterSlaveSet_triggered()
 {
@@ -361,6 +393,17 @@ void MainForm::on_actionTemperCompare_triggered()
 //温度检定(参数法)
 void MainForm::on_actionTemperPara_triggered()
 {
+	if (NULL == m_tverparaDlg)
+	{
+		m_tverparaDlg = new tverparamDlg();
+	}
+	else //目的是执行tverparamDlg的构造函数
+	{
+		delete m_tverparaDlg;
+		m_tverparaDlg = NULL;
+		m_tverparaDlg = new tverparamDlg();
+	}
+	m_tverparaDlg->show();
 }
 
 //计算器检定

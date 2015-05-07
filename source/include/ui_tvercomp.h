@@ -269,9 +269,11 @@ public:
         label_8->setGeometry(QRect(30, 190, 111, 16));
         btn_clear_2 = new QPushButton(gBox_insec);
         btn_clear_2->setObjectName(QString::fromUtf8("btn_clear_2"));
+        btn_clear_2->setEnabled(false);
         btn_clear_2->setGeometry(QRect(130, 40, 41, 23));
         btn_read_2 = new QPushButton(gBox_insec);
         btn_read_2->setObjectName(QString::fromUtf8("btn_read_2"));
+        btn_read_2->setEnabled(false);
         btn_read_2->setGeometry(QRect(30, 40, 41, 23));
         tbl_std_2 = new QTableWidget(gBox_insec);
         if (tbl_std_2->columnCount() < 2)
@@ -299,6 +301,7 @@ public:
         __qtablewidgetitem66->setFlags(Qt::ItemIsSelectable|Qt::ItemIsDragEnabled|Qt::ItemIsUserCheckable);
         tbl_std_2->setItem(1, 1, __qtablewidgetitem66);
         tbl_std_2->setObjectName(QString::fromUtf8("tbl_std_2"));
+        tbl_std_2->setEnabled(false);
         tbl_std_2->setGeometry(QRect(10, 70, 171, 91));
         tbl_std_2->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_std_2->horizontalHeader()->setDefaultSectionSize(50);
@@ -413,6 +416,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem117 = new QTableWidgetItem();
         tbl_in_2->setItem(11, 2, __qtablewidgetitem117);
         tbl_in_2->setObjectName(QString::fromUtf8("tbl_in_2"));
+        tbl_in_2->setEnabled(false);
         tbl_in_2->setGeometry(QRect(10, 210, 171, 391));
         tbl_in_2->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_in_2->horizontalHeader()->setDefaultSectionSize(50);
@@ -433,9 +437,11 @@ public:
         label_9->setGeometry(QRect(30, 190, 111, 16));
         btn_read_3 = new QPushButton(gBox_inthird);
         btn_read_3->setObjectName(QString::fromUtf8("btn_read_3"));
+        btn_read_3->setEnabled(false);
         btn_read_3->setGeometry(QRect(20, 40, 41, 23));
         btn_clear_3 = new QPushButton(gBox_inthird);
         btn_clear_3->setObjectName(QString::fromUtf8("btn_clear_3"));
+        btn_clear_3->setEnabled(false);
         btn_clear_3->setGeometry(QRect(120, 40, 41, 23));
         tbl_std_3 = new QTableWidget(gBox_inthird);
         if (tbl_std_3->columnCount() < 2)
@@ -463,6 +469,7 @@ public:
         __qtablewidgetitem125->setFlags(Qt::ItemIsSelectable|Qt::ItemIsDragEnabled|Qt::ItemIsUserCheckable);
         tbl_std_3->setItem(1, 1, __qtablewidgetitem125);
         tbl_std_3->setObjectName(QString::fromUtf8("tbl_std_3"));
+        tbl_std_3->setEnabled(false);
         tbl_std_3->setGeometry(QRect(20, 70, 171, 91));
         tbl_std_3->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_std_3->horizontalHeader()->setDefaultSectionSize(50);
@@ -577,6 +584,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem176 = new QTableWidgetItem();
         tbl_in_3->setItem(11, 2, __qtablewidgetitem176);
         tbl_in_3->setObjectName(QString::fromUtf8("tbl_in_3"));
+        tbl_in_3->setEnabled(false);
         tbl_in_3->setGeometry(QRect(20, 210, 171, 391));
         tbl_in_3->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_in_3->horizontalHeader()->setDefaultSectionSize(50);
@@ -617,6 +625,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem183 = new QTableWidgetItem();
         tbl_stderror_1->setItem(0, 2, __qtablewidgetitem183);
         tbl_stderror_1->setObjectName(QString::fromUtf8("tbl_stderror_1"));
+        tbl_stderror_1->setEnabled(false);
         tbl_stderror_1->setGeometry(QRect(10, 50, 171, 61));
         tbl_stderror_1->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_stderror_1->horizontalHeader()->setDefaultSectionSize(50);
@@ -731,6 +740,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem234 = new QTableWidgetItem();
         tbl_chkerror_1->setItem(11, 2, __qtablewidgetitem234);
         tbl_chkerror_1->setObjectName(QString::fromUtf8("tbl_chkerror_1"));
+        tbl_chkerror_1->setEnabled(false);
         tbl_chkerror_1->setGeometry(QRect(10, 120, 171, 471));
         tbl_chkerror_1->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_chkerror_1->horizontalHeader()->setDefaultSectionSize(50);
@@ -771,6 +781,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem241 = new QTableWidgetItem();
         tbl_stderror_2->setItem(0, 2, __qtablewidgetitem241);
         tbl_stderror_2->setObjectName(QString::fromUtf8("tbl_stderror_2"));
+        tbl_stderror_2->setEnabled(false);
         tbl_stderror_2->setGeometry(QRect(10, 50, 171, 61));
         tbl_stderror_2->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_stderror_2->horizontalHeader()->setDefaultSectionSize(50);
@@ -885,6 +896,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem292 = new QTableWidgetItem();
         tbl_chkerror_2->setItem(11, 2, __qtablewidgetitem292);
         tbl_chkerror_2->setObjectName(QString::fromUtf8("tbl_chkerror_2"));
+        tbl_chkerror_2->setEnabled(false);
         tbl_chkerror_2->setGeometry(QRect(10, 120, 171, 471));
         tbl_chkerror_2->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_chkerror_2->horizontalHeader()->setDefaultSectionSize(50);
@@ -917,6 +929,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem299 = new QTableWidgetItem();
         tbl_stderror_3->setItem(0, 2, __qtablewidgetitem299);
         tbl_stderror_3->setObjectName(QString::fromUtf8("tbl_stderror_3"));
+        tbl_stderror_3->setEnabled(false);
         tbl_stderror_3->setGeometry(QRect(10, 50, 171, 61));
         tbl_stderror_3->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_stderror_3->horizontalHeader()->setDefaultSectionSize(50);
@@ -1031,6 +1044,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem350 = new QTableWidgetItem();
         tbl_chkerror_3->setItem(11, 2, __qtablewidgetitem350);
         tbl_chkerror_3->setObjectName(QString::fromUtf8("tbl_chkerror_3"));
+        tbl_chkerror_3->setEnabled(false);
         tbl_chkerror_3->setGeometry(QRect(10, 120, 171, 471));
         tbl_chkerror_3->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_chkerror_3->horizontalHeader()->setDefaultSectionSize(50);
