@@ -43,5 +43,4 @@ win32{
 
 TRANSLATIONS =  \
 		language/tvercomp_zh.ts language/tvercomp_en.ts \
-		language/tvercomp_param_zh.ts language/tvercomp_param_en.ts \
 		

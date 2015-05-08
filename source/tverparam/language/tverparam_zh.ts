@@ -3,186 +3,187 @@
 <TS version="2.0" language="zh_CN">
 <context>
     <name>PlaParamDlgClass</name>
-    <message utf8="true">
-        <location filename="../ui/tverparam.ui" line="14"/>
-        <source>铂电阻参数法检测</source>
-        <translation type="unfinished"></translation>
+    <message>
+        <location filename="../ui/tverparam.ui" line="26"/>
+        <source>Parameter method of platinum resistance checking</source>
+        <translation>铂电阻检测参数法</translation>
     </message>
     <message>
-        <location filename="../ui/tverparam.ui" line="41"/>
+        <location filename="../ui/tverparam.ui" line="59"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;Calculation&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;计算&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/tverparam.ui" line="54"/>
+        <location filename="../ui/tverparam.ui" line="72"/>
         <source>Result for single sensor</source>
-        <translation type="unfinished"></translation>
+        <translation>单支检定结果</translation>
     </message>
     <message>
-        <location filename="../ui/tverparam.ui" line="165"/>
-        <location filename="../ui/tverparam.ui" line="208"/>
-        <location filename="../ui/tverparam.ui" line="252"/>
-        <location filename="../ui/tverparam.ui" line="495"/>
-        <location filename="../ui/tverparam.ui" line="865"/>
-        <location filename="../ui/tverparam.ui" line="1080"/>
-        <location filename="../ui/tverparam.ui" line="1282"/>
+        <location filename="../ui/tverparam.ui" line="166"/>
+        <location filename="../ui/tverparam.ui" line="209"/>
+        <location filename="../ui/tverparam.ui" line="253"/>
+        <location filename="../ui/tverparam.ui" line="1705"/>
+        <location filename="../ui/tverparam.ui" line="2135"/>
+        <location filename="../ui/tverparam.ui" line="2565"/>
         <source>In</source>
-        <translation type="unfinished"></translation>
+        <translation>进口</translation>
     </message>
     <message>
-        <location filename="../ui/tverparam.ui" line="175"/>
-        <location filename="../ui/tverparam.ui" line="197"/>
-        <location filename="../ui/tverparam.ui" line="219"/>
-        <location filename="../ui/tverparam.ui" line="241"/>
-        <location filename="../ui/tverparam.ui" line="263"/>
-        <location filename="../ui/tverparam.ui" line="285"/>
+        <location filename="../ui/tverparam.ui" line="176"/>
+        <location filename="../ui/tverparam.ui" line="198"/>
+        <location filename="../ui/tverparam.ui" line="220"/>
+        <location filename="../ui/tverparam.ui" line="242"/>
+        <location filename="../ui/tverparam.ui" line="264"/>
+        <location filename="../ui/tverparam.ui" line="286"/>
         <source>Err</source>
-        <translation type="unfinished"></translation>
+        <translation>误差</translation>
     </message>
     <message>
-        <location filename="../ui/tverparam.ui" line="186"/>
-        <location filename="../ui/tverparam.ui" line="230"/>
-        <location filename="../ui/tverparam.ui" line="274"/>
-        <location filename="../ui/tverparam.ui" line="500"/>
-        <location filename="../ui/tverparam.ui" line="870"/>
-        <location filename="../ui/tverparam.ui" line="1085"/>
-        <location filename="../ui/tverparam.ui" line="1287"/>
+        <location filename="../ui/tverparam.ui" line="187"/>
+        <location filename="../ui/tverparam.ui" line="231"/>
+        <location filename="../ui/tverparam.ui" line="275"/>
+        <location filename="../ui/tverparam.ui" line="1710"/>
+        <location filename="../ui/tverparam.ui" line="2140"/>
+        <location filename="../ui/tverparam.ui" line="2570"/>
         <source>Out</source>
-        <translation type="unfinished"></translation>
+        <translation>出口</translation>
     </message>
     <message>
-        <location filename="../ui/tverparam.ui" line="320"/>
-        <location filename="../ui/tverparam.ui" line="701"/>
-        <source>1st temperature head</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/tverparam.ui" line="343"/>
-        <location filename="../ui/tverparam.ui" line="382"/>
-        <location filename="../ui/tverparam.ui" line="434"/>
-        <source>Err Lim(%)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/tverparam.ui" line="395"/>
-        <source>2nd temperature head</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/tverparam.ui" line="447"/>
-        <location filename="../ui/tverparam.ui" line="1105"/>
-        <source>3rd temperature head</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/tverparam.ui" line="462"/>
-        <source>Result</source>
-        <translation type="unfinished"></translation>
+        <location filename="../ui/tverparam.ui" line="1047"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;1st temperature point&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;第一温度点&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/tverparam.ui" line="505"/>
-        <source>δT</source>
-        <translation type="unfinished"></translation>
+        <location filename="../ui/tverparam.ui" line="1056"/>
+        <location filename="../ui/tverparam.ui" line="1109"/>
+        <location filename="../ui/tverparam.ui" line="1162"/>
+        <source>Err Lim(℃)</source>
+        <translation>误差限(℃)</translation>
+    </message>
+    <message>
+        <location filename="../ui/tverparam.ui" line="1100"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;2nd temperature point&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;第二温差点&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/tverparam.ui" line="1153"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;3rd temperature point&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;第三温差点&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/tverparam.ui" line="1198"/>
+        <source>Basic Error</source>
+        <translation>基本误差</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/tverparam.ui" line="610"/>
+        <location filename="../ui/tverparam.ui" line="1289"/>
         <source>In
 (℃)</source>
-        <translation type="unfinished"></translation>
+        <translation>进口
+(℃)</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/tverparam.ui" line="616"/>
+        <location filename="../ui/tverparam.ui" line="1295"/>
         <source>Out
 (℃)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/tverparam.ui" line="622"/>
-        <source>δT
-(%)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/tverparam.ui" line="657"/>
-        <source>Err Lim℃/%</source>
-        <translation type="unfinished"></translation>
+        <translation>出口
+(℃)</translation>
     </message>
     <message>
-        <location filename="../ui/tverparam.ui" line="688"/>
+        <location filename="../ui/tverparam.ui" line="1453"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;Data Input&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;数值输入&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/tverparam.ui" line="713"/>
-        <location filename="../ui/tverparam.ui" line="915"/>
-        <location filename="../ui/tverparam.ui" line="1117"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Stand temperature&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <location filename="../ui/tverparam.ui" line="1466"/>
+        <source>1st temperature point</source>
+        <translation>第一温度点</translation>
+    </message>
+    <message>
+        <location filename="../ui/tverparam.ui" line="1478"/>
+        <location filename="../ui/tverparam.ui" line="1920"/>
+        <location filename="../ui/tverparam.ui" line="2350"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Stand temperature&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;标准温度计&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/tverparam.ui" line="742"/>
-        <location filename="../ui/tverparam.ui" line="970"/>
-        <location filename="../ui/tverparam.ui" line="1172"/>
+        <location filename="../ui/tverparam.ui" line="1516"/>
+        <location filename="../ui/tverparam.ui" line="1952"/>
+        <location filename="../ui/tverparam.ui" line="2382"/>
         <source>R(Ω)</source>
-        <translation type="unfinished"></translation>
+        <translation>电阻(Ω)</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/tverparam.ui" line="747"/>
-        <location filename="../ui/tverparam.ui" line="975"/>
-        <location filename="../ui/tverparam.ui" line="1177"/>
+        <location filename="../ui/tverparam.ui" line="1521"/>
+        <location filename="../ui/tverparam.ui" line="1957"/>
+        <location filename="../ui/tverparam.ui" line="2387"/>
         <source>T(℃)</source>
-        <translation type="unfinished"></translation>
+        <translation>温度(℃)</translation>
     </message>
     <message>
-        <location filename="../ui/tverparam.ui" line="771"/>
-        <location filename="../ui/tverparam.ui" line="928"/>
-        <location filename="../ui/tverparam.ui" line="1130"/>
+        <location filename="../ui/tverparam.ui" line="1562"/>
+        <location filename="../ui/tverparam.ui" line="1992"/>
+        <location filename="../ui/tverparam.ui" line="2422"/>
+        <source>read</source>
+        <translation>读取</translation>
+    </message>
+    <message>
+        <location filename="../ui/tverparam.ui" line="1588"/>
+        <location filename="../ui/tverparam.ui" line="2018"/>
+        <location filename="../ui/tverparam.ui" line="2448"/>
+        <source>clear</source>
+        <translation>清除</translation>
+    </message>
+    <message>
+        <location filename="../ui/tverparam.ui" line="1607"/>
+        <location filename="../ui/tverparam.ui" line="2037"/>
+        <location filename="../ui/tverparam.ui" line="2467"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Checked Sensor&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/tverparam.ui" line="860"/>
-        <location filename="../ui/tverparam.ui" line="1075"/>
-        <location filename="../ui/tverparam.ui" line="1277"/>
-        <source>Serial</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;被检铂电阻&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/tverparam.ui" line="889"/>
-        <location filename="../ui/tverparam.ui" line="941"/>
-        <location filename="../ui/tverparam.ui" line="1143"/>
+        <location filename="../ui/tverparam.ui" line="1614"/>
+        <location filename="../ui/tverparam.ui" line="2044"/>
+        <location filename="../ui/tverparam.ui" line="2474"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(Input R following Ω)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(以下输入电阻值 Ω)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/tverparam.ui" line="903"/>
-        <source>2ndt temperature head</source>
-        <translation type="unfinished"></translation>
+        <location filename="../ui/tverparam.ui" line="1700"/>
+        <location filename="../ui/tverparam.ui" line="2130"/>
+        <location filename="../ui/tverparam.ui" line="2560"/>
+        <source>Serial</source>
+        <translation>序列号</translation>
     </message>
     <message>
-        <location filename="../ui/tverparam.ui" line="1308"/>
-        <source>Save</source>
-        <translation type="unfinished"></translation>
+        <location filename="../ui/tverparam.ui" line="1908"/>
+        <source>2ndt temperature point</source>
+        <translation>第二温度点</translation>
     </message>
     <message>
-        <location filename="../ui/tverparam.ui" line="1325"/>
-        <source>Config</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/tverparam.ui" line="1342"/>
-        <source>Excel</source>
-        <translation type="unfinished"></translation>
+        <location filename="../ui/tverparam.ui" line="2338"/>
+        <source>3rd temperature point</source>
+        <translation>第三温度点</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/tverparam.ui" line="1359"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0000ff;&quot;&gt;Step：1.Configurate 2.Input Data 3.Out to excel 4.Save Data 5.Exit&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <location filename="../ui/tverparam.ui" line="2794"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0000ff;&quot;&gt;Step：1.Configurate 2.Input Data 3.Save Data 4.Exit&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0000ff;&quot;&gt;Step：1.设置参数 2.输入数值 3.保存 4.退出&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/tverparam.ui" line="1372"/>
+        <location filename="../ui/tverparam.ui" line="2817"/>
+        <source>Config</source>
+        <translation>参数设置</translation>
+    </message>
+    <message>
+        <location filename="../ui/tverparam.ui" line="2847"/>
+        <source>Save</source>
+        <translation>保存</translation>
+    </message>
+    <message>
+        <location filename="../ui/tverparam.ui" line="2874"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>退出</translation>
     </message>
 </context>
 </TS>

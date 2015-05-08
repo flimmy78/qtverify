@@ -2,398 +2,471 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="en_US">
 <context>
+    <name>ChkPlaSensorClass</name>
+    <message>
+        <location filename="../ui/chkplasensor.ui" line="26"/>
+        <source>Checked Platinum Sensor</source>
+        <translation>Checked Platinum Sensor</translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/chkplasensor.ui" line="42"/>
+        <source>T(℃)</source>
+        <translation>T(℃)</translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/chkplasensor.ui" line="47"/>
+        <source>R(Ω)</source>
+        <translation>R(Ω)</translation>
+    </message>
+    <message>
+        <location filename="../ui/chkplasensor.ui" line="52"/>
+        <source>1st</source>
+        <translation>1st</translation>
+    </message>
+    <message>
+        <location filename="../ui/chkplasensor.ui" line="57"/>
+        <source>2nd</source>
+        <translation>2nd</translation>
+    </message>
+    <message>
+        <location filename="../ui/chkplasensor.ui" line="62"/>
+        <source>3rd</source>
+        <translation>3rd</translation>
+    </message>
+    <message>
+        <location filename="../ui/chkplasensor.ui" line="81"/>
+        <source>Platinum Param</source>
+        <translation>Platinum Param</translation>
+    </message>
+    <message>
+        <location filename="../ui/chkplasensor.ui" line="129"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;R&lt;span style=&quot; vertical-align:sub;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;R&lt;span style=&quot; vertical-align:sub;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/chkplasensor.ui" line="142"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ax10&lt;span style=&quot; vertical-align:super;&quot;&gt;-3&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ax10&lt;span style=&quot; vertical-align:super;&quot;&gt;-3&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/chkplasensor.ui" line="155"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;bx10&lt;span style=&quot; vertical-align:super;&quot;&gt;-7&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;bx10&lt;span style=&quot; vertical-align:super;&quot;&gt;-7&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/chkplasensor.ui" line="172"/>
+        <source>Calc</source>
+        <translation>Calc</translation>
+    </message>
+    <message>
+        <location filename="../ui/chkplasensor.ui" line="192"/>
+        <source>Save</source>
+        <translation>Save</translation>
+    </message>
+    <message>
+        <location filename="../ui/chkplasensor.ui" line="212"/>
+        <source>Default</source>
+        <translation>Default</translation>
+    </message>
+    <message>
+        <location filename="../ui/chkplasensor.ui" line="232"/>
+        <source>Exit</source>
+        <translation>Exit</translation>
+    </message>
+</context>
+<context>
     <name>ParaSetDlg</name>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="308"/>
+        <location filename="../source/parasetdlg.cpp" line="331"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="308"/>
+        <location filename="../source/parasetdlg.cpp" line="331"/>
         <source>verify sequence is invalid!</source>
-        <translation type="unfinished"></translation>
+        <translation>verify sequence is invalid!</translation>
     </message>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="329"/>
+        <location filename="../source/parasetdlg.cpp" line="366"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>OK</translation>
     </message>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="329"/>
+        <location filename="../source/parasetdlg.cpp" line="366"/>
         <source>Saving configurations successfully!</source>
-        <translation type="unfinished"></translation>
+        <translation>Saving configurations successfully!</translation>
     </message>
 </context>
 <context>
     <name>ParaSetDlgClass</name>
     <message>
         <location filename="../ui/parasetdlg.ui" line="17"/>
-        <location filename="../ui/parasetdlg.ui" line="529"/>
+        <location filename="../ui/parasetdlg.ui" line="549"/>
         <source>ParaSet</source>
-        <translation type="unfinished"></translation>
+        <translation>ParaSet</translation>
     </message>
     <message>
         <location filename="../ui/parasetdlg.ui" line="23"/>
         <source>Verify Para</source>
-        <translation type="unfinished"></translation>
+        <translation>Verify Para</translation>
     </message>
     <message>
         <location filename="../ui/parasetdlg.ui" line="37"/>
         <source>Standard:</source>
-        <translation type="unfinished"></translation>
+        <translation>Standard:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="53"/>
+        <location filename="../ui/parasetdlg.ui" line="57"/>
         <source>Model:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="69"/>
-        <source>Grade:</source>
-        <translation type="unfinished"></translation>
+        <translation>Model:</translation>
     </message>
     <message>
         <location filename="../ui/parasetdlg.ui" line="77"/>
+        <source>Grade:</source>
+        <translation>Grade:</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="85"/>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation>1</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="82"/>
+        <location filename="../ui/parasetdlg.ui" line="90"/>
         <source>2</source>
-        <translation type="unfinished"></translation>
+        <translation>2</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="87"/>
+        <location filename="../ui/parasetdlg.ui" line="95"/>
         <source>3</source>
-        <translation type="unfinished"></translation>
+        <translation>3</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="101"/>
+        <location filename="../ui/parasetdlg.ui" line="109"/>
         <source>VerifyPerson:</source>
-        <translation type="unfinished"></translation>
+        <translation>VerifyPerson:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="121"/>
-        <location filename="../ui/parasetdlg.ui" line="1557"/>
+        <location filename="../ui/parasetdlg.ui" line="133"/>
+        <location filename="../ui/parasetdlg.ui" line="1577"/>
         <source>Flow:</source>
-        <translation type="unfinished"></translation>
+        <translation>Flow:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="129"/>
+        <location filename="../ui/parasetdlg.ui" line="141"/>
         <source>1.5</source>
-        <translation type="unfinished"></translation>
+        <translation>1.5</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="134"/>
-        <location filename="../ui/parasetdlg.ui" line="546"/>
+        <location filename="../ui/parasetdlg.ui" line="146"/>
+        <location filename="../ui/parasetdlg.ui" line="566"/>
         <source>2.5</source>
-        <translation type="unfinished"></translation>
+        <translation>2.5</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="139"/>
+        <location filename="../ui/parasetdlg.ui" line="151"/>
         <source>3.5</source>
-        <translation type="unfinished"></translation>
+        <translation>3.5</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="153"/>
+        <location filename="../ui/parasetdlg.ui" line="165"/>
         <source>ColCode:</source>
-        <translation type="unfinished"></translation>
+        <translation>ColCode:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="169"/>
+        <location filename="../ui/parasetdlg.ui" line="181"/>
         <source>ManuFact:</source>
-        <translation type="unfinished"></translation>
+        <translation>ManuFact:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="185"/>
+        <location filename="../ui/parasetdlg.ui" line="201"/>
         <source>VerifyDept:</source>
-        <translation type="unfinished"></translation>
+        <translation>VerifyDept:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="199"/>
+        <location filename="../ui/parasetdlg.ui" line="219"/>
         <source>Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Version:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="216"/>
+        <location filename="../ui/parasetdlg.ui" line="236"/>
         <source>Temper:</source>
-        <translation type="unfinished"></translation>
+        <translation>Temper:</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/parasetdlg.ui" line="233"/>
+        <location filename="../ui/parasetdlg.ui" line="253"/>
         <source>℃</source>
-        <translation type="unfinished"></translation>
+        <translation>℃</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="240"/>
+        <location filename="../ui/parasetdlg.ui" line="260"/>
         <source>Humidity:</source>
-        <translation type="unfinished"></translation>
+        <translation>Humidity:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="257"/>
+        <location filename="../ui/parasetdlg.ui" line="277"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation>%</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="264"/>
+        <location filename="../ui/parasetdlg.ui" line="284"/>
         <source>AirPress:</source>
-        <translation type="unfinished"></translation>
+        <translation>AirPress:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="281"/>
-        <source>Pa</source>
-        <translation type="unfinished"></translation>
+        <location filename="../ui/parasetdlg.ui" line="301"/>
+        <source>kPa</source>
+        <translation>kPa</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="299"/>
+        <location filename="../ui/parasetdlg.ui" line="319"/>
         <source>Control Valve Set</source>
-        <translation type="unfinished"></translation>
+        <translation>Control Valve Set</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/parasetdlg.ui" line="311"/>
+        <location filename="../ui/parasetdlg.ui" line="331"/>
         <source>UpLimit(m³/h): </source>
-        <translation type="unfinished"></translation>
+        <translation>UpLimit(m³/h):</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="326"/>
+        <location filename="../ui/parasetdlg.ui" line="346"/>
         <source>Big</source>
-        <translation type="unfinished"></translation>
+        <translation>Big</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="372"/>
+        <location filename="../ui/parasetdlg.ui" line="392"/>
         <source>Middle1</source>
-        <translation type="unfinished"></translation>
+        <translation>Middle1</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="455"/>
+        <location filename="../ui/parasetdlg.ui" line="475"/>
         <source>Middle2</source>
-        <translation type="unfinished"></translation>
+        <translation>Middle2</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="501"/>
+        <location filename="../ui/parasetdlg.ui" line="521"/>
         <source>Small</source>
-        <translation type="unfinished"></translation>
+        <translation>Small</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/parasetdlg.ui" line="537"/>
+        <location filename="../ui/parasetdlg.ui" line="557"/>
         <source>Flow(m³/h):</source>
-        <translation type="unfinished"></translation>
+        <translation>Flow(m³/h):</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="569"/>
+        <location filename="../ui/parasetdlg.ui" line="589"/>
         <source>0.75</source>
-        <translation type="unfinished"></translation>
+        <translation>0.75</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="592"/>
+        <location filename="../ui/parasetdlg.ui" line="612"/>
         <source>0.25</source>
-        <translation type="unfinished"></translation>
+        <translation>0.25</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="615"/>
+        <location filename="../ui/parasetdlg.ui" line="635"/>
         <source>0.05</source>
-        <translation type="unfinished"></translation>
+        <translation>0.05</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="625"/>
+        <location filename="../ui/parasetdlg.ui" line="645"/>
         <source>50</source>
-        <translation type="unfinished"></translation>
+        <translation>50</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="648"/>
+        <location filename="../ui/parasetdlg.ui" line="668"/>
         <source>20</source>
-        <translation type="unfinished"></translation>
+        <translation>20</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="671"/>
+        <location filename="../ui/parasetdlg.ui" line="691"/>
         <source>10</source>
-        <translation type="unfinished"></translation>
+        <translation>10</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="694"/>
+        <location filename="../ui/parasetdlg.ui" line="714"/>
         <source>5</source>
-        <translation type="unfinished"></translation>
+        <translation>5</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="734"/>
-        <location filename="../ui/parasetdlg.ui" line="807"/>
-        <location filename="../ui/parasetdlg.ui" line="880"/>
-        <location filename="../ui/parasetdlg.ui" line="953"/>
+        <location filename="../ui/parasetdlg.ui" line="754"/>
+        <location filename="../ui/parasetdlg.ui" line="827"/>
+        <location filename="../ui/parasetdlg.ui" line="900"/>
+        <location filename="../ui/parasetdlg.ui" line="973"/>
         <source>   Big</source>
-        <translation type="unfinished"></translation>
+        <translation>   Big</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="743"/>
-        <location filename="../ui/parasetdlg.ui" line="816"/>
-        <location filename="../ui/parasetdlg.ui" line="889"/>
-        <location filename="../ui/parasetdlg.ui" line="962"/>
+        <location filename="../ui/parasetdlg.ui" line="763"/>
+        <location filename="../ui/parasetdlg.ui" line="836"/>
+        <location filename="../ui/parasetdlg.ui" line="909"/>
+        <location filename="../ui/parasetdlg.ui" line="982"/>
         <source>   Middle1</source>
-        <translation type="unfinished"></translation>
+        <translation>   Middle1</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="748"/>
-        <location filename="../ui/parasetdlg.ui" line="821"/>
-        <location filename="../ui/parasetdlg.ui" line="894"/>
-        <location filename="../ui/parasetdlg.ui" line="967"/>
+        <location filename="../ui/parasetdlg.ui" line="768"/>
+        <location filename="../ui/parasetdlg.ui" line="841"/>
+        <location filename="../ui/parasetdlg.ui" line="914"/>
+        <location filename="../ui/parasetdlg.ui" line="987"/>
         <source>   Middle2</source>
-        <translation type="unfinished"></translation>
+        <translation>   Middle2</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="753"/>
-        <location filename="../ui/parasetdlg.ui" line="826"/>
-        <location filename="../ui/parasetdlg.ui" line="899"/>
-        <location filename="../ui/parasetdlg.ui" line="972"/>
+        <location filename="../ui/parasetdlg.ui" line="773"/>
+        <location filename="../ui/parasetdlg.ui" line="846"/>
+        <location filename="../ui/parasetdlg.ui" line="919"/>
+        <location filename="../ui/parasetdlg.ui" line="992"/>
         <source>   Small</source>
-        <translation type="unfinished"></translation>
+        <translation>  Small</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="993"/>
+        <location filename="../ui/parasetdlg.ui" line="1013"/>
         <source>35</source>
-        <translation type="unfinished"></translation>
+        <translation>35</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1016"/>
-        <location filename="../ui/parasetdlg.ui" line="1039"/>
-        <location filename="../ui/parasetdlg.ui" line="1049"/>
+        <location filename="../ui/parasetdlg.ui" line="1036"/>
+        <location filename="../ui/parasetdlg.ui" line="1059"/>
+        <location filename="../ui/parasetdlg.ui" line="1069"/>
         <source>33</source>
-        <translation type="unfinished"></translation>
+        <translation>33</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1095"/>
-        <location filename="../ui/parasetdlg.ui" line="1150"/>
-        <location filename="../ui/parasetdlg.ui" line="1205"/>
-        <location filename="../ui/parasetdlg.ui" line="1257"/>
+        <location filename="../ui/parasetdlg.ui" line="1115"/>
+        <location filename="../ui/parasetdlg.ui" line="1170"/>
+        <location filename="../ui/parasetdlg.ui" line="1225"/>
+        <location filename="../ui/parasetdlg.ui" line="1277"/>
         <source>       1</source>
-        <translation type="unfinished"></translation>
+        <translation>       1</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1100"/>
-        <location filename="../ui/parasetdlg.ui" line="1155"/>
-        <location filename="../ui/parasetdlg.ui" line="1210"/>
-        <location filename="../ui/parasetdlg.ui" line="1262"/>
-        <source>       2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1105"/>
-        <location filename="../ui/parasetdlg.ui" line="1160"/>
-        <location filename="../ui/parasetdlg.ui" line="1215"/>
-        <location filename="../ui/parasetdlg.ui" line="1267"/>
-        <source>       3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1110"/>
-        <location filename="../ui/parasetdlg.ui" line="1165"/>
-        <location filename="../ui/parasetdlg.ui" line="1220"/>
-        <location filename="../ui/parasetdlg.ui" line="1272"/>
-        <source>       4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
+        <location filename="../ui/parasetdlg.ui" line="1120"/>
+        <location filename="../ui/parasetdlg.ui" line="1175"/>
+        <location filename="../ui/parasetdlg.ui" line="1230"/>
         <location filename="../ui/parasetdlg.ui" line="1282"/>
+        <source>       2</source>
+        <translation>       2</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="1125"/>
+        <location filename="../ui/parasetdlg.ui" line="1180"/>
+        <location filename="../ui/parasetdlg.ui" line="1235"/>
+        <location filename="../ui/parasetdlg.ui" line="1287"/>
+        <source>       3</source>
+        <translation>       3</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="1130"/>
+        <location filename="../ui/parasetdlg.ui" line="1185"/>
+        <location filename="../ui/parasetdlg.ui" line="1240"/>
+        <location filename="../ui/parasetdlg.ui" line="1292"/>
+        <source>       4</source>
+        <translation>       4</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="1302"/>
         <source>Quantity(L):</source>
-        <translation type="unfinished"></translation>
+        <translation>Quantity(L):</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1289"/>
+        <location filename="../ui/parasetdlg.ui" line="1309"/>
         <source>Valve:</source>
-        <translation type="unfinished"></translation>
+        <translation>Valve:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1296"/>
+        <location filename="../ui/parasetdlg.ui" line="1316"/>
         <source>Frequency:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1303"/>
-        <source>Order:</source>
-        <translation type="unfinished"></translation>
+        <translation>Frequency:</translation>
     </message>
     <message>
         <location filename="../ui/parasetdlg.ui" line="1323"/>
+        <source>Order:</source>
+        <translation>Frequency:</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="1343"/>
         <source>Auto DA</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto DA</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1329"/>
-        <location filename="../ui/parasetdlg.ui" line="1377"/>
-        <location filename="../ui/parasetdlg.ui" line="1425"/>
-        <location filename="../ui/parasetdlg.ui" line="1473"/>
+        <location filename="../ui/parasetdlg.ui" line="1349"/>
+        <location filename="../ui/parasetdlg.ui" line="1397"/>
+        <location filename="../ui/parasetdlg.ui" line="1445"/>
+        <location filename="../ui/parasetdlg.ui" line="1493"/>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>Yes</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1339"/>
-        <location filename="../ui/parasetdlg.ui" line="1483"/>
-        <source>No</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1371"/>
-        <source>Adjust Error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1387"/>
-        <location filename="../ui/parasetdlg.ui" line="1435"/>
-        <source>NO</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1419"/>
-        <source>Write MeterNo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1467"/>
-        <source>Reset Zero</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
+        <location filename="../ui/parasetdlg.ui" line="1359"/>
         <location filename="../ui/parasetdlg.ui" line="1503"/>
+        <source>No</source>
+        <translation>No</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="1391"/>
+        <source>Adjust Error</source>
+        <translation>Adjust Error</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="1407"/>
+        <location filename="../ui/parasetdlg.ui" line="1455"/>
+        <source>NO</source>
+        <translation>NO</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="1439"/>
+        <source>Write MeterNo</source>
+        <translation>Write MeterNo</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="1487"/>
+        <source>Reset Zero</source>
+        <translation>Reset Zero</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="1523"/>
         <source>Process of Verify</source>
-        <translation type="unfinished"></translation>
+        <translation>Process of Verify</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1509"/>
+        <location filename="../ui/parasetdlg.ui" line="1529"/>
         <source>Continuous</source>
-        <translation type="unfinished"></translation>
+        <translation>Continuous</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1519"/>
+        <location filename="../ui/parasetdlg.ui" line="1539"/>
         <source>Independent</source>
-        <translation type="unfinished"></translation>
+        <translation>Independent</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1551"/>
+        <location filename="../ui/parasetdlg.ui" line="1571"/>
         <source>Coefficient of Safety</source>
-        <translation type="unfinished"></translation>
+        <translation>Coefficient of Safety</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1584"/>
+        <location filename="../ui/parasetdlg.ui" line="1604"/>
         <source>Total:</source>
-        <translation type="unfinished"></translation>
+        <translation>Total:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1623"/>
+        <location filename="../ui/parasetdlg.ui" line="1643"/>
         <source>Exhaust Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Exhaust Time</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1673"/>
+        <location filename="../ui/parasetdlg.ui" line="1693"/>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation>s</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1709"/>
+        <location filename="../ui/parasetdlg.ui" line="1729"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Save</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1722"/>
+        <location filename="../ui/parasetdlg.ui" line="1742"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Exit</translation>
     </message>
 </context>
 <context>
@@ -401,97 +474,97 @@
     <message>
         <location filename="../../../include/qextserial/qextserialport.cpp" line="723"/>
         <source>No Error has occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>No Error has occurred</translation>
     </message>
     <message>
         <location filename="../../../include/qextserial/qextserialport.cpp" line="725"/>
         <source>Invalid file descriptor (port was not opened correctly)</source>
-        <translation type="unfinished"></translation>
+        <translation>Invalid file descriptor (port was not opened correctly)</translation>
     </message>
     <message>
         <location filename="../../../include/qextserial/qextserialport.cpp" line="727"/>
         <source>Unable to allocate memory tables (POSIX)</source>
-        <translation type="unfinished"></translation>
+        <translation>Unable to allocate memory tables (POSIX)</translation>
     </message>
     <message>
         <location filename="../../../include/qextserial/qextserialport.cpp" line="729"/>
         <source>Caught a non-blocked signal (POSIX)</source>
-        <translation type="unfinished"></translation>
+        <translation>Caught a non-blocked signal (POSIX)</translation>
     </message>
     <message>
         <location filename="../../../include/qextserial/qextserialport.cpp" line="731"/>
         <source>Operation timed out (POSIX)</source>
-        <translation type="unfinished"></translation>
+        <translation>Operation timed out (POSIX)</translation>
     </message>
     <message>
         <location filename="../../../include/qextserial/qextserialport.cpp" line="733"/>
         <source>The file opened by the port is not a valid device</source>
-        <translation type="unfinished"></translation>
+        <translation>The file opened by the port is not a valid devic</translation>
     </message>
     <message>
         <location filename="../../../include/qextserial/qextserialport.cpp" line="735"/>
         <source>The port detected a break condition</source>
-        <translation type="unfinished"></translation>
+        <translation>The port detected a break condition</translation>
     </message>
     <message>
         <location filename="../../../include/qextserial/qextserialport.cpp" line="737"/>
         <source>The port detected a framing error (usually caused by incorrect baud rate settings)</source>
-        <translation type="unfinished"></translation>
+        <translation>The port detected a framing error (usually caused by incorrect baud rate settings)</translation>
     </message>
     <message>
         <location filename="../../../include/qextserial/qextserialport.cpp" line="739"/>
         <source>There was an I/O error while communicating with the port</source>
-        <translation type="unfinished"></translation>
+        <translation>There was an I/O error while communicating with the port</translation>
     </message>
     <message>
         <location filename="../../../include/qextserial/qextserialport.cpp" line="741"/>
         <source>Character buffer overrun</source>
-        <translation type="unfinished"></translation>
+        <translation>Character buffer overrun</translation>
     </message>
     <message>
         <location filename="../../../include/qextserial/qextserialport.cpp" line="743"/>
         <source>Receive buffer overflow</source>
-        <translation type="unfinished"></translation>
+        <translation>Receive buffer overflow</translation>
     </message>
     <message>
         <location filename="../../../include/qextserial/qextserialport.cpp" line="745"/>
         <source>The port detected a parity error in the received data</source>
-        <translation type="unfinished"></translation>
+        <translation>The port detected a parity error in the received data</translation>
     </message>
     <message>
         <location filename="../../../include/qextserial/qextserialport.cpp" line="747"/>
         <source>Transmit buffer overflow</source>
-        <translation type="unfinished"></translation>
+        <translation>Transmit buffer overflow</translation>
     </message>
     <message>
         <location filename="../../../include/qextserial/qextserialport.cpp" line="749"/>
         <source>General read operation failure</source>
-        <translation type="unfinished"></translation>
+        <translation>General read operation failure</translation>
     </message>
     <message>
         <location filename="../../../include/qextserial/qextserialport.cpp" line="751"/>
         <source>General write operation failure</source>
-        <translation type="unfinished"></translation>
+        <translation>General write operation failure</translation>
     </message>
     <message>
         <location filename="../../../include/qextserial/qextserialport.cpp" line="753"/>
         <source>The %1 file doesn&apos;t exists</source>
-        <translation type="unfinished"></translation>
+        <translation>The %1 file doesn&apos;t exists</translation>
     </message>
     <message>
         <location filename="../../../include/qextserial/qextserialport.cpp" line="755"/>
         <source>Permission denied</source>
-        <translation type="unfinished"></translation>
+        <translation>Permission denied</translation>
     </message>
     <message>
         <location filename="../../../include/qextserial/qextserialport.cpp" line="757"/>
         <source>Device is already locked</source>
-        <translation type="unfinished"></translation>
+        <translation>Device is already locked</translation>
     </message>
     <message>
         <location filename="../../../include/qextserial/qextserialport.cpp" line="759"/>
         <source>Unknown error: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Unknown error: %1</translation>
     </message>
 </context>
 <context>
@@ -499,12 +572,12 @@
     <message>
         <location filename="../ui/setcomfrm.ui" line="17"/>
         <source>SetCom</source>
-        <translation type="unfinished"></translation>
+        <translation>SetCom</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="25"/>
         <source>Valve Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Valve Control</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="37"/>
@@ -524,7 +597,7 @@
         <location filename="../ui/setcomfrm.ui" line="3628"/>
         <location filename="../ui/setcomfrm.ui" line="3883"/>
         <source>Com</source>
-        <translation type="unfinished"></translation>
+        <translation>Com</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="45"/>
@@ -544,7 +617,7 @@
         <location filename="../ui/setcomfrm.ui" line="3636"/>
         <location filename="../ui/setcomfrm.ui" line="3891"/>
         <source>COM1</source>
-        <translation type="unfinished"></translation>
+        <translation>COM1</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="50"/>
@@ -564,7 +637,7 @@
         <location filename="../ui/setcomfrm.ui" line="3641"/>
         <location filename="../ui/setcomfrm.ui" line="3896"/>
         <source>COM2</source>
-        <translation type="unfinished"></translation>
+        <translation>COM2</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="55"/>
@@ -584,7 +657,7 @@
         <location filename="../ui/setcomfrm.ui" line="3646"/>
         <location filename="../ui/setcomfrm.ui" line="3901"/>
         <source>COM3</source>
-        <translation type="unfinished"></translation>
+        <translation>COM3</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="60"/>
@@ -604,7 +677,7 @@
         <location filename="../ui/setcomfrm.ui" line="3651"/>
         <location filename="../ui/setcomfrm.ui" line="3906"/>
         <source>COM4</source>
-        <translation type="unfinished"></translation>
+        <translation>COM4</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="65"/>
@@ -624,7 +697,7 @@
         <location filename="../ui/setcomfrm.ui" line="3656"/>
         <location filename="../ui/setcomfrm.ui" line="3911"/>
         <source>COM5</source>
-        <translation type="unfinished"></translation>
+        <translation>COM5</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="70"/>
@@ -644,7 +717,7 @@
         <location filename="../ui/setcomfrm.ui" line="3661"/>
         <location filename="../ui/setcomfrm.ui" line="3916"/>
         <source>COM6</source>
-        <translation type="unfinished"></translation>
+        <translation>COM6</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="75"/>
@@ -664,7 +737,7 @@
         <location filename="../ui/setcomfrm.ui" line="3666"/>
         <location filename="../ui/setcomfrm.ui" line="3921"/>
         <source>COM7</source>
-        <translation type="unfinished"></translation>
+        <translation>COM7</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="80"/>
@@ -684,7 +757,7 @@
         <location filename="../ui/setcomfrm.ui" line="3671"/>
         <location filename="../ui/setcomfrm.ui" line="3926"/>
         <source>COM8</source>
-        <translation type="unfinished"></translation>
+        <translation>COM8</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="85"/>
@@ -704,7 +777,7 @@
         <location filename="../ui/setcomfrm.ui" line="3676"/>
         <location filename="../ui/setcomfrm.ui" line="3931"/>
         <source>COM9</source>
-        <translation type="unfinished"></translation>
+        <translation>COM9</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="90"/>
@@ -724,7 +797,7 @@
         <location filename="../ui/setcomfrm.ui" line="3681"/>
         <location filename="../ui/setcomfrm.ui" line="3936"/>
         <source>COM10</source>
-        <translation type="unfinished"></translation>
+        <translation>COM10</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="95"/>
@@ -744,7 +817,7 @@
         <location filename="../ui/setcomfrm.ui" line="3686"/>
         <location filename="../ui/setcomfrm.ui" line="3941"/>
         <source>COM11</source>
-        <translation type="unfinished"></translation>
+        <translation>COM11</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="100"/>
@@ -764,7 +837,7 @@
         <location filename="../ui/setcomfrm.ui" line="3691"/>
         <location filename="../ui/setcomfrm.ui" line="3946"/>
         <source>COM12</source>
-        <translation type="unfinished"></translation>
+        <translation>COM12</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="105"/>
@@ -784,7 +857,7 @@
         <location filename="../ui/setcomfrm.ui" line="3696"/>
         <location filename="../ui/setcomfrm.ui" line="3951"/>
         <source>COM13</source>
-        <translation type="unfinished"></translation>
+        <translation>COM13</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="110"/>
@@ -804,7 +877,7 @@
         <location filename="../ui/setcomfrm.ui" line="3701"/>
         <location filename="../ui/setcomfrm.ui" line="3956"/>
         <source>COM14</source>
-        <translation type="unfinished"></translation>
+        <translation>COM14</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="115"/>
@@ -824,7 +897,7 @@
         <location filename="../ui/setcomfrm.ui" line="3706"/>
         <location filename="../ui/setcomfrm.ui" line="3961"/>
         <source>COM15</source>
-        <translation type="unfinished"></translation>
+        <translation>COM15</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="120"/>
@@ -844,7 +917,7 @@
         <location filename="../ui/setcomfrm.ui" line="3711"/>
         <location filename="../ui/setcomfrm.ui" line="3966"/>
         <source>COM16</source>
-        <translation type="unfinished"></translation>
+        <translation>COM16</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="125"/>
@@ -864,7 +937,7 @@
         <location filename="../ui/setcomfrm.ui" line="3716"/>
         <location filename="../ui/setcomfrm.ui" line="3971"/>
         <source>COM17</source>
-        <translation type="unfinished"></translation>
+        <translation>COM17</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="130"/>
@@ -884,7 +957,7 @@
         <location filename="../ui/setcomfrm.ui" line="3721"/>
         <location filename="../ui/setcomfrm.ui" line="3976"/>
         <source>COM18</source>
-        <translation type="unfinished"></translation>
+        <translation>COM18</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="135"/>
@@ -904,7 +977,7 @@
         <location filename="../ui/setcomfrm.ui" line="3726"/>
         <location filename="../ui/setcomfrm.ui" line="3981"/>
         <source>COM19</source>
-        <translation type="unfinished"></translation>
+        <translation>COM19</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="140"/>
@@ -924,7 +997,7 @@
         <location filename="../ui/setcomfrm.ui" line="3731"/>
         <location filename="../ui/setcomfrm.ui" line="3986"/>
         <source>COM20</source>
-        <translation type="unfinished"></translation>
+        <translation>COM20</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="148"/>
@@ -944,7 +1017,7 @@
         <location filename="../ui/setcomfrm.ui" line="3739"/>
         <location filename="../ui/setcomfrm.ui" line="3994"/>
         <source>BaudRate</source>
-        <translation type="unfinished"></translation>
+        <translation>BaudRate</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="156"/>
@@ -964,7 +1037,7 @@
         <location filename="../ui/setcomfrm.ui" line="3747"/>
         <location filename="../ui/setcomfrm.ui" line="4002"/>
         <source>2400</source>
-        <translation type="unfinished"></translation>
+        <translation>2400</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="161"/>
@@ -984,7 +1057,7 @@
         <location filename="../ui/setcomfrm.ui" line="3752"/>
         <location filename="../ui/setcomfrm.ui" line="4007"/>
         <source>4800</source>
-        <translation type="unfinished"></translation>
+        <translation>4800</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="166"/>
@@ -1004,7 +1077,7 @@
         <location filename="../ui/setcomfrm.ui" line="3757"/>
         <location filename="../ui/setcomfrm.ui" line="4012"/>
         <source>9600</source>
-        <translation type="unfinished"></translation>
+        <translation>9600</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="171"/>
@@ -1024,7 +1097,7 @@
         <location filename="../ui/setcomfrm.ui" line="3762"/>
         <location filename="../ui/setcomfrm.ui" line="4017"/>
         <source>14400</source>
-        <translation type="unfinished"></translation>
+        <translation>14400</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="176"/>
@@ -1044,7 +1117,7 @@
         <location filename="../ui/setcomfrm.ui" line="3767"/>
         <location filename="../ui/setcomfrm.ui" line="4022"/>
         <source>19200</source>
-        <translation type="unfinished"></translation>
+        <translation>19200</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="181"/>
@@ -1064,7 +1137,7 @@
         <location filename="../ui/setcomfrm.ui" line="3772"/>
         <location filename="../ui/setcomfrm.ui" line="4027"/>
         <source>38400</source>
-        <translation type="unfinished"></translation>
+        <translation>38400</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="186"/>
@@ -1084,7 +1157,7 @@
         <location filename="../ui/setcomfrm.ui" line="3777"/>
         <location filename="../ui/setcomfrm.ui" line="4032"/>
         <source>56000</source>
-        <translation type="unfinished"></translation>
+        <translation>56000</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="194"/>
@@ -1104,7 +1177,7 @@
         <location filename="../ui/setcomfrm.ui" line="3785"/>
         <location filename="../ui/setcomfrm.ui" line="4040"/>
         <source>DataBits</source>
-        <translation type="unfinished"></translation>
+        <translation>DataBits</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="202"/>
@@ -1125,7 +1198,7 @@
         <location filename="../ui/setcomfrm.ui" line="3793"/>
         <location filename="../ui/setcomfrm.ui" line="4048"/>
         <source>5</source>
-        <translation type="unfinished"></translation>
+        <translation>5</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="207"/>
@@ -1146,7 +1219,7 @@
         <location filename="../ui/setcomfrm.ui" line="3798"/>
         <location filename="../ui/setcomfrm.ui" line="4053"/>
         <source>6</source>
-        <translation type="unfinished"></translation>
+        <translation>6</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="212"/>
@@ -1167,7 +1240,7 @@
         <location filename="../ui/setcomfrm.ui" line="3803"/>
         <location filename="../ui/setcomfrm.ui" line="4058"/>
         <source>7</source>
-        <translation type="unfinished"></translation>
+        <translation>7</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="217"/>
@@ -1188,7 +1261,7 @@
         <location filename="../ui/setcomfrm.ui" line="3808"/>
         <location filename="../ui/setcomfrm.ui" line="4063"/>
         <source>8</source>
-        <translation type="unfinished"></translation>
+        <translation>8</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="225"/>
@@ -1208,7 +1281,7 @@
         <location filename="../ui/setcomfrm.ui" line="3816"/>
         <location filename="../ui/setcomfrm.ui" line="4071"/>
         <source>Parity</source>
-        <translation type="unfinished"></translation>
+        <translation>Parity</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="233"/>
@@ -1228,7 +1301,7 @@
         <location filename="../ui/setcomfrm.ui" line="3824"/>
         <location filename="../ui/setcomfrm.ui" line="4079"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>None</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="238"/>
@@ -1248,7 +1321,7 @@
         <location filename="../ui/setcomfrm.ui" line="3829"/>
         <location filename="../ui/setcomfrm.ui" line="4084"/>
         <source>Odd</source>
-        <translation type="unfinished"></translation>
+        <translation>Odd</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="243"/>
@@ -1268,7 +1341,7 @@
         <location filename="../ui/setcomfrm.ui" line="3834"/>
         <location filename="../ui/setcomfrm.ui" line="4089"/>
         <source>Even</source>
-        <translation type="unfinished"></translation>
+        <translation>Even</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="251"/>
@@ -1288,7 +1361,7 @@
         <location filename="../ui/setcomfrm.ui" line="3842"/>
         <location filename="../ui/setcomfrm.ui" line="4097"/>
         <source>StopBits</source>
-        <translation type="unfinished"></translation>
+        <translation>StopBits</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="259"/>
@@ -1309,7 +1382,7 @@
         <location filename="../ui/setcomfrm.ui" line="3850"/>
         <location filename="../ui/setcomfrm.ui" line="4105"/>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation>1</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="264"/>
@@ -1329,7 +1402,7 @@
         <location filename="../ui/setcomfrm.ui" line="3855"/>
         <location filename="../ui/setcomfrm.ui" line="4110"/>
         <source>1.5</source>
-        <translation type="unfinished"></translation>
+        <translation>1.5</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="269"/>
@@ -1350,114 +1423,114 @@
         <location filename="../ui/setcomfrm.ui" line="3860"/>
         <location filename="../ui/setcomfrm.ui" line="4115"/>
         <source>2</source>
-        <translation type="unfinished"></translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="280"/>
         <source>Balance</source>
-        <translation type="unfinished"></translation>
+        <translation>Balance</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="535"/>
         <source>Temp Acquisition</source>
-        <translation type="unfinished"></translation>
+        <translation>Temp Acquisition</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="790"/>
         <source>Standard Temp</source>
-        <translation type="unfinished"></translation>
+        <translation>Standard Temp</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="1060"/>
         <source>Meter</source>
-        <translation type="unfinished"></translation>
+        <translation>Meter</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="1576"/>
         <source>3</source>
-        <translation type="unfinished"></translation>
+        <translation>3</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="1831"/>
         <source>4</source>
-        <translation type="unfinished"></translation>
+        <translation>4</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="3106"/>
         <source>9</source>
-        <translation type="unfinished"></translation>
+        <translation>9</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="3361"/>
         <source>10</source>
-        <translation type="unfinished"></translation>
+        <translation>10</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="3616"/>
         <source>11</source>
-        <translation type="unfinished"></translation>
+        <translation>11</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="3871"/>
         <source>12</source>
-        <translation type="unfinished"></translation>
+        <translation>12</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="4153"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Save</translation>
     </message>
     <message>
         <location filename="../ui/setcomfrm.ui" line="4182"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Exit</translation>
     </message>
     <message>
         <location filename="../source/setcomfrm.cpp" line="63"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../source/setcomfrm.cpp" line="63"/>
         <source>Save Settings Successfully !</source>
-        <translation type="unfinished"></translation>
+        <translation>Save Settings Successfully !</translation>
     </message>
     <message>
         <location filename="../source/setcomfrm.cpp" line="305"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Warning</translation>
     </message>
     <message>
         <location filename="../source/setcomfrm.cpp" line="305"/>
         <source>Save Settings of Meter: </source>
-        <translation type="unfinished"></translation>
+        <translation>Save Settings of Meter: </translation>
     </message>
     <message>
         <location filename="../source/setcomfrm.cpp" line="305"/>
         <source># Error!</source>
-        <translation type="unfinished"></translation>
+        <translation># Error!</translation>
     </message>
     <message>
         <location filename="../source/setcomfrm.cpp" line="364"/>
         <location filename="../source/setcomfrm.cpp" line="369"/>
         <location filename="../source/setcomfrm.cpp" line="384"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="../source/setcomfrm.cpp" line="364"/>
         <source>Can not open file: </source>
-        <translation type="unfinished"></translation>
+        <translation>Can not open file: </translation>
     </message>
     <message>
         <location filename="../source/setcomfrm.cpp" line="369"/>
         <source>Can not set Content file: </source>
-        <translation type="unfinished"></translation>
+        <translation>Can not set Content file: </translation>
     </message>
     <message>
         <location filename="../source/setcomfrm.cpp" line="384"/>
         <source>Can not write to file: </source>
-        <translation type="unfinished"></translation>
+        <translation>Can not write to file: </translation>
     </message>
 </context>
 <context>
@@ -1465,17 +1538,17 @@
     <message>
         <location filename="../ui/setportfrm.ui" line="17"/>
         <source>SetPortFrm</source>
-        <translation type="unfinished"></translation>
+        <translation>SetPortFrm</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="23"/>
         <source>Valve</source>
-        <translation type="unfinished"></translation>
+        <translation>Valve</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="29"/>
         <source>Valve In</source>
-        <translation type="unfinished"></translation>
+        <translation>Valve In</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="37"/>
@@ -1490,7 +1563,7 @@
         <location filename="../ui/setportfrm.ui" line="1058"/>
         <location filename="../ui/setportfrm.ui" line="1169"/>
         <source>port1</source>
-        <translation type="unfinished"></translation>
+        <translation>port1</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="42"/>
@@ -1505,7 +1578,7 @@
         <location filename="../ui/setportfrm.ui" line="1063"/>
         <location filename="../ui/setportfrm.ui" line="1174"/>
         <source>port2</source>
-        <translation type="unfinished"></translation>
+        <translation>port2</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="47"/>
@@ -1520,7 +1593,7 @@
         <location filename="../ui/setportfrm.ui" line="1068"/>
         <location filename="../ui/setportfrm.ui" line="1179"/>
         <source>port3</source>
-        <translation type="unfinished"></translation>
+        <translation>port3</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="52"/>
@@ -1535,7 +1608,7 @@
         <location filename="../ui/setportfrm.ui" line="1073"/>
         <location filename="../ui/setportfrm.ui" line="1184"/>
         <source>port4</source>
-        <translation type="unfinished"></translation>
+        <translation>port4</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="57"/>
@@ -1550,7 +1623,7 @@
         <location filename="../ui/setportfrm.ui" line="1078"/>
         <location filename="../ui/setportfrm.ui" line="1189"/>
         <source>port5</source>
-        <translation type="unfinished"></translation>
+        <translation>port5</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="62"/>
@@ -1565,7 +1638,7 @@
         <location filename="../ui/setportfrm.ui" line="1083"/>
         <location filename="../ui/setportfrm.ui" line="1194"/>
         <source>port6</source>
-        <translation type="unfinished"></translation>
+        <translation>port6</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="67"/>
@@ -1580,7 +1653,7 @@
         <location filename="../ui/setportfrm.ui" line="1088"/>
         <location filename="../ui/setportfrm.ui" line="1199"/>
         <source>port7</source>
-        <translation type="unfinished"></translation>
+        <translation>port7</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="72"/>
@@ -1595,7 +1668,7 @@
         <location filename="../ui/setportfrm.ui" line="1093"/>
         <location filename="../ui/setportfrm.ui" line="1204"/>
         <source>port8</source>
-        <translation type="unfinished"></translation>
+        <translation>port8</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="77"/>
@@ -1610,7 +1683,7 @@
         <location filename="../ui/setportfrm.ui" line="1098"/>
         <location filename="../ui/setportfrm.ui" line="1209"/>
         <source>port9</source>
-        <translation type="unfinished"></translation>
+        <translation>port9</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="82"/>
@@ -1625,7 +1698,7 @@
         <location filename="../ui/setportfrm.ui" line="1103"/>
         <location filename="../ui/setportfrm.ui" line="1214"/>
         <source>port10</source>
-        <translation type="unfinished"></translation>
+        <translation>port10</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="87"/>
@@ -1640,7 +1713,7 @@
         <location filename="../ui/setportfrm.ui" line="1108"/>
         <location filename="../ui/setportfrm.ui" line="1219"/>
         <source>port11</source>
-        <translation type="unfinished"></translation>
+        <translation>port11</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="92"/>
@@ -1655,7 +1728,7 @@
         <location filename="../ui/setportfrm.ui" line="1113"/>
         <location filename="../ui/setportfrm.ui" line="1224"/>
         <source>port12</source>
-        <translation type="unfinished"></translation>
+        <translation>port12</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="97"/>
@@ -1670,7 +1743,7 @@
         <location filename="../ui/setportfrm.ui" line="1118"/>
         <location filename="../ui/setportfrm.ui" line="1229"/>
         <source>port13</source>
-        <translation type="unfinished"></translation>
+        <translation>port13</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="102"/>
@@ -1685,7 +1758,7 @@
         <location filename="../ui/setportfrm.ui" line="1123"/>
         <location filename="../ui/setportfrm.ui" line="1234"/>
         <source>port14</source>
-        <translation type="unfinished"></translation>
+        <translation>port14</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="107"/>
@@ -1700,7 +1773,7 @@
         <location filename="../ui/setportfrm.ui" line="1128"/>
         <location filename="../ui/setportfrm.ui" line="1239"/>
         <source>port15</source>
-        <translation type="unfinished"></translation>
+        <translation>port15</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="112"/>
@@ -1715,7 +1788,7 @@
         <location filename="../ui/setportfrm.ui" line="1133"/>
         <location filename="../ui/setportfrm.ui" line="1244"/>
         <source>port16</source>
-        <translation type="unfinished"></translation>
+        <translation>port16</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="117"/>
@@ -1730,7 +1803,7 @@
         <location filename="../ui/setportfrm.ui" line="1138"/>
         <location filename="../ui/setportfrm.ui" line="1249"/>
         <source>port17</source>
-        <translation type="unfinished"></translation>
+        <translation>port17</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="122"/>
@@ -1745,7 +1818,7 @@
         <location filename="../ui/setportfrm.ui" line="1143"/>
         <location filename="../ui/setportfrm.ui" line="1254"/>
         <source>port18</source>
-        <translation type="unfinished"></translation>
+        <translation>port18</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="127"/>
@@ -1760,7 +1833,7 @@
         <location filename="../ui/setportfrm.ui" line="1148"/>
         <location filename="../ui/setportfrm.ui" line="1259"/>
         <source>port19</source>
-        <translation type="unfinished"></translation>
+        <translation>port19</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="132"/>
@@ -1775,175 +1848,457 @@
         <location filename="../ui/setportfrm.ui" line="1153"/>
         <location filename="../ui/setportfrm.ui" line="1264"/>
         <source>port20</source>
-        <translation type="unfinished"></translation>
+        <translation>port20</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="140"/>
         <source>Valve Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Valve Out</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="251"/>
         <source>Valve Big</source>
-        <translation type="unfinished"></translation>
+        <translation>Valve Big</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="362"/>
         <source>Valve Mid2</source>
-        <translation type="unfinished"></translation>
+        <translation>Valve Mid2</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="473"/>
         <source>Valve Mid1</source>
-        <translation type="unfinished"></translation>
+        <translation>Valve Mid1</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="584"/>
         <source>Valve Small</source>
-        <translation type="unfinished"></translation>
+        <translation>Valve Small</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="711"/>
         <source>Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Device</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="717"/>
         <source>Pump</source>
-        <translation type="unfinished"></translation>
+        <translation>Pump</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="828"/>
         <source>Regulator1</source>
-        <translation type="unfinished"></translation>
+        <translation>Regulator1</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="939"/>
         <source>Regulator2</source>
-        <translation type="unfinished"></translation>
+        <translation>Regulator2</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="1050"/>
         <source>Regulator3</source>
-        <translation type="unfinished"></translation>
+        <translation>Regulator3</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="1161"/>
         <source>Regulator4</source>
-        <translation type="unfinished"></translation>
+        <translation>Regulator4</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="1277"/>
         <source>ProtVersion:</source>
-        <translation type="unfinished"></translation>
+        <translation>ProtVersion:</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="1285"/>
         <source>NewCtrlBoard</source>
-        <translation type="unfinished"></translation>
+        <translation>NewCtrlBoard</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="1290"/>
         <source>OldCtrlBoard</source>
-        <translation type="unfinished"></translation>
+        <translation>OldCtrlBoard</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="1295"/>
         <source>LichCtrlBoard</source>
-        <translation type="unfinished"></translation>
+        <translation>LichCtrlBoard</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="1329"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Save</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="1358"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Exit</translation>
     </message>
     <message>
         <location filename="../source/setportfrm.cpp" line="55"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../source/setportfrm.cpp" line="55"/>
         <source>Save Successful !</source>
-        <translation type="unfinished"></translation>
+        <translation>Save Successful !</translation>
     </message>
 </context>
 <context>
-    <name>StdParaSetClass</name>
+    <name>StdMtrCoeCorrectClass</name>
     <message utf8="true">
-        <location filename="../ui/stdparaset.ui" line="17"/>
-        <source>标准表参数设定</source>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="17"/>
+        <source>标准表系数标定</source>
+        <translation>stand meter coe set  </translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrcoecorrect.ui" line="29"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;提示：如果要进行K系数标定，请选择无修正状态；&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;如果要验证标准表修正后示值准确度，请选择修正状态&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;hint：if set K Coe，please select &apos;Don&apos;t Amend State&apos;；&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;如果要验证标准表修正后示值准确度，请选择修正状态&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrcoecorrect.ui" line="79"/>
+        <source>标准表显示值计算</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdparaset.ui" line="60"/>
-        <source>DN10表体积仪表系数</source>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="97"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="169"/>
+        <source>初值</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdparaset.ui" line="109"/>
-        <location filename="../ui/stdparaset.ui" line="362"/>
-        <source>流量点(m³/h)</source>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="116"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="279"/>
+        <source>末值</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="223"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="333"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="443"/>
+        <source>L</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdparaset.ui" line="159"/>
-        <location filename="../ui/stdparaset.ui" line="412"/>
-        <source>K系数</source>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="389"/>
+        <source>示值</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdparaset.ui" line="263"/>
-        <location filename="../ui/stdparaset.ui" line="516"/>
-        <source>脉冲当量(升/脉冲):</source>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="497"/>
+        <source>状态选择</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdparaset.ui" line="313"/>
-        <source>DN25表体积仪表系数</source>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="540"/>
+        <source>修正</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdparaset.ui" line="529"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;注:流量从小到大输入，最大流量可与上限流量相同。两个流量点之间不能有空格！&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;K系数为：标准值/显示值&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="584"/>
+        <source>无修正</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdparaset.ui" line="573"/>
-        <source>DN10表流速参数</source>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="637"/>
+        <source>标准表选择</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="680"/>
+        <source>DN10</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="724"/>
+        <source>DN25</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdparaset.ui" line="616"/>
-        <location filename="../ui/stdparaset.ui" line="756"/>
-        <source>上限流量(m³/h)</source>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="768"/>
+        <source>流量点
+ (kg)</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdparaset.ui" line="660"/>
-        <location filename="../ui/stdparaset.ui" line="800"/>
-        <source>修正系数</source>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="774"/>
+        <source>天平初值
+ (kg)</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdparaset.ui" line="713"/>
-        <source>DN25表流速参数</source>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="780"/>
+        <source>天平末值
+（kg)</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdparaset.ui" line="816"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="786"/>
+        <source>天平示值
+ (kg)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrcoecorrect.ui" line="792"/>
+        <source>密度值
+(kg/L)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrcoecorrect.ui" line="798"/>
+        <source>实际值
+ (L)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrcoecorrect.ui" line="804"/>
+        <source>标准表值
+ （L)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrcoecorrect.ui" line="810"/>
+        <source>仪表系数</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrcoecorrect.ui" line="815"/>
+        <source>平均仪表系数</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrcoecorrect.ui" line="820"/>
+        <source>重复性
+ (%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrcoecorrect.ui" line="844"/>
+        <source>清零</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrcoecorrect.ui" line="857"/>
+        <source>生成表格</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrcoecorrect.ui" line="870"/>
         <source>保存</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdparaset.ui" line="823"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="883"/>
         <source>退出</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StdMtrParaSetClass</name>
+    <message utf8="true">
+        <location filename="../ui/stdmtrparaset.ui" line="17"/>
+        <source>标准表参数设定</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrparaset.ui" line="60"/>
+        <source>DN10表体积仪表系数</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrparaset.ui" line="109"/>
+        <location filename="../ui/stdmtrparaset.ui" line="362"/>
+        <source>流量点(m³/h)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrparaset.ui" line="159"/>
+        <location filename="../ui/stdmtrparaset.ui" line="412"/>
+        <source>K系数</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrparaset.ui" line="263"/>
+        <location filename="../ui/stdmtrparaset.ui" line="516"/>
+        <source>脉冲当量(升/脉冲):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrparaset.ui" line="313"/>
+        <source>DN25表体积仪表系数</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrparaset.ui" line="529"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;注:流量从小到大输入，最大流量可与上限流量相同。两个流量点之间不能有空格！&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;K系数为：标准值/显示值&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrparaset.ui" line="573"/>
+        <source>DN10表流速参数</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrparaset.ui" line="616"/>
+        <location filename="../ui/stdmtrparaset.ui" line="756"/>
+        <source>上限流量(m³/h)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrparaset.ui" line="660"/>
+        <location filename="../ui/stdmtrparaset.ui" line="800"/>
+        <source>修正系数</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrparaset.ui" line="713"/>
+        <source>DN25表流速参数</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrparaset.ui" line="816"/>
+        <source>保存</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrparaset.ui" line="823"/>
+        <source>退出</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StdPlaSensorDlgClass</name>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="26"/>
+        <source>Standard Platinium Sensor</source>
+        <translation>Standard Platinium Sensor</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="38"/>
+        <source>Pt25 standard Platinum Resistance</source>
+        <translation>Pt25 standard Platinum Resistance</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="53"/>
+        <location filename="../ui/stdplasensor.ui" line="290"/>
+        <source>In Sensor Param</source>
+        <translation>In Sensor Param</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="110"/>
+        <location filename="../ui/stdplasensor.ui" line="192"/>
+        <location filename="../ui/stdplasensor.ui" line="335"/>
+        <location filename="../ui/stdplasensor.ui" line="417"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Rtp&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Rtp&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="123"/>
+        <location filename="../ui/stdplasensor.ui" line="205"/>
+        <location filename="../ui/stdplasensor.ui" line="348"/>
+        <location filename="../ui/stdplasensor.ui" line="430"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;a8x10&lt;span style=&quot; vertical-align:super;&quot;&gt;-5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;a8x10&lt;span style=&quot; vertical-align:super;&quot;&gt;-5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="136"/>
+        <location filename="../ui/stdplasensor.ui" line="218"/>
+        <location filename="../ui/stdplasensor.ui" line="361"/>
+        <location filename="../ui/stdplasensor.ui" line="443"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;b8x10&lt;span style=&quot; vertical-align:super;&quot;&gt;-5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;b8x10&lt;span style=&quot; vertical-align:super;&quot;&gt;-5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="150"/>
+        <location filename="../ui/stdplasensor.ui" line="375"/>
+        <source>Out Sensor Param</source>
+        <translation>Out Sensor Param</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="235"/>
+        <location filename="../ui/stdplasensor.ui" line="457"/>
+        <location filename="../ui/stdplasensor.ui" line="668"/>
+        <source>Save</source>
+        <translation>Save</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="255"/>
+        <location filename="../ui/stdplasensor.ui" line="470"/>
+        <source>Exit</source>
+        <translation>Exit</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="272"/>
+        <source>Pt100 standard Platinum Resistance</source>
+        <translation>Pt100 standard Platinum Resistance</translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdplasensor.ui" line="493"/>
+        <location filename="../ui/stdplasensor.ui" line="563"/>
+        <source>T(℃)</source>
+        <translation>T(℃)</translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdplasensor.ui" line="498"/>
+        <location filename="../ui/stdplasensor.ui" line="568"/>
+        <source>R(Ω)</source>
+        <translation>R(Ω)</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="503"/>
+        <location filename="../ui/stdplasensor.ui" line="573"/>
+        <source>1st</source>
+        <translation>1st</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="508"/>
+        <location filename="../ui/stdplasensor.ui" line="578"/>
+        <source>2nd</source>
+        <translation>2nd</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="513"/>
+        <location filename="../ui/stdplasensor.ui" line="583"/>
+        <source>3rd</source>
+        <translation>3rd</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="527"/>
+        <source>In</source>
+        <translation>In</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="540"/>
+        <source>Out</source>
+        <translation>Out</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="597"/>
+        <source>Calc</source>
+        <translation>Calc</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="611"/>
+        <source>Model</source>
+        <translation>Model</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="623"/>
+        <source>Institute of Metrology</source>
+        <translation>Institute of Metrology</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="636"/>
+        <source>WeiLi</source>
+        <translation>WeiLi</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="655"/>
+        <source>HuaYi</source>
+        <translation>HuaYi</translation>
     </message>
 </context>
 </TS>
