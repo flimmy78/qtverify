@@ -291,11 +291,59 @@ double CAlgorithm::getDensityByQuery(float temp)
 	return (density[low -1] +  getDecimal(temp) * (density[low] - density[low - 1])) / 1000.0;
 }
 
+/*
+** 查表求对应水温的焓值(单位 kJ/kg)
+*/
 double CAlgorithm::getEnthalpyByQuery(float temp)
 {
 	int low = getInt(temp);
 	float ret = enthalpy[low -1] +  getDecimal(temp) * (enthalpy[low] - enthalpy[low - 1]);
 	return ret;
+}
+
+/*
+** 根据欧标EN1434《热能表》计算水的K系数
+** 默认K系数单位MJ/m3℃
+*/
+double CAlgorithm::CalcKCoeOfWater(float inTemper, float outTemper, int installPos, float pressure)
+{
+	float kCoe = 0.0;
+	float vIn = 0.0, vOut = 0.0;
+	float tao = 0.0;
+	float hIn = getEnthalpyByQuery(inTemper);
+	float hOut = getEnthalpyByQuery(outTemper);
+ 	float pai = pressure/16.53;
+	float kIn = inTemper + 273.13;
+	float kOut = outTemper + 273.13;
+	float R = 461.526;
+	float lanmuda = 0.0;
+	int i = 0;
+	float tmp;
+
+	if (installPos==INSTALLPOS_IN) //安装位置 入口
+	{
+		tao = 1386/kIn;
+		for (i=0; i<34; i++)
+		{
+			tmp = -n[i]*I[i]*pow(7.1-pai, I[i]-1)*pow(tao-1.222, J[i]);
+			lanmuda += tmp;
+		}
+		vIn = pai*lanmuda*R*kIn/pressure/1000;
+		kCoe = (hIn - hOut)/(inTemper - outTemper)/vIn;
+	}
+	else if (installPos==INSTALLPOS_OUT)	//安装位置 出口
+	{
+		tao = 1386/kOut;
+		for (i=0; i<34; i++)
+		{
+			tmp = -n[i]*I[i]*pow(7.1-pai, I[i]-1)*pow(tao-1.222, J[i]);
+			lanmuda += tmp;
+		}
+		vOut = pai*lanmuda*R*kOut/pressure/1000;
+		kCoe = (hIn - hOut)/(inTemper - outTemper)/vOut;
+	}
+
+	return kCoe;
 }
 
 /************************************************************************

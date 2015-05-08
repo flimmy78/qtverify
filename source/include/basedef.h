@@ -82,6 +82,17 @@ enum Verify_Method
 	STANDARD_METHOD    //标准表法
 };
 
+
+#define ALGO_ENTHALPY		0 //焓差法
+#define ALGO_KCOE			1 //K系数法
+
+#define UNIT_MJ		0 //能量单位 MJ
+#define UNIT_KWH	1 //能量单位 kWh
+
+#define INSTALLPOS_IN	0 //安装位置 入口
+#define INSTALLPOS_OUT	1 //安装位置 出口 
+
+
 /*
 ** FUNCTION -- 获取下位机端口设置信息(portset.ini文件)
 */
