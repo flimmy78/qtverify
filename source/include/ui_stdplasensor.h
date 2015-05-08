@@ -14,11 +14,13 @@
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
 #include <QtGui/QGroupBox>
+#include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
 #include <QtGui/QPushButton>
 #include <QtGui/QRadioButton>
+#include <QtGui/QSpacerItem>
 #include <QtGui/QTableWidget>
 #include <QtGui/QWidget>
 
@@ -42,7 +44,10 @@ public:
     QLabel *label_4;
     QLabel *label_5;
     QLabel *label_6;
+    QWidget *layoutWidget;
+    QHBoxLayout *horizontalLayout_2;
     QPushButton *btn_pt25_save;
+    QSpacerItem *horizontalSpacer_4;
     QPushButton *btn_pt25_exit;
     QGroupBox *gBox_pt100;
     QGroupBox *groupBox_6;
@@ -76,7 +81,9 @@ public:
     {
         if (StdPlaSensorDlgClass->objectName().isEmpty())
             StdPlaSensorDlgClass->setObjectName(QString::fromUtf8("StdPlaSensorDlgClass"));
-        StdPlaSensorDlgClass->resize(563, 479);
+        StdPlaSensorDlgClass->resize(551, 480);
+        StdPlaSensorDlgClass->setMinimumSize(QSize(551, 480));
+        StdPlaSensorDlgClass->setMaximumSize(QSize(551, 480));
         gBox_pt25 = new QGroupBox(StdPlaSensorDlgClass);
         gBox_pt25->setObjectName(QString::fromUtf8("gBox_pt25"));
         gBox_pt25->setGeometry(QRect(10, 10, 551, 131));
@@ -88,6 +95,8 @@ public:
         lineEdit_pt25_in_rtp = new QLineEdit(groupBox_2);
         lineEdit_pt25_in_rtp->setObjectName(QString::fromUtf8("lineEdit_pt25_in_rtp"));
         lineEdit_pt25_in_rtp->setGeometry(QRect(10, 40, 71, 20));
+        lineEdit_pt25_in_rtp->setMinimumSize(QSize(71, 20));
+        lineEdit_pt25_in_rtp->setMaximumSize(QSize(71, 20));
         lineEdit_pt25_in_a = new QLineEdit(groupBox_2);
         lineEdit_pt25_in_a->setObjectName(QString::fromUtf8("lineEdit_pt25_in_a"));
         lineEdit_pt25_in_a->setGeometry(QRect(90, 40, 71, 20));
@@ -124,12 +133,26 @@ public:
         label_6 = new QLabel(groupBox_3);
         label_6->setObjectName(QString::fromUtf8("label_6"));
         label_6->setGeometry(QRect(180, 20, 51, 20));
-        btn_pt25_save = new QPushButton(gBox_pt25);
+        layoutWidget = new QWidget(gBox_pt25);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(30, 100, 491, 25));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+        btn_pt25_save = new QPushButton(layoutWidget);
         btn_pt25_save->setObjectName(QString::fromUtf8("btn_pt25_save"));
-        btn_pt25_save->setGeometry(QRect(60, 100, 75, 23));
-        btn_pt25_exit = new QPushButton(gBox_pt25);
+
+        horizontalLayout_2->addWidget(btn_pt25_save);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_4);
+
+        btn_pt25_exit = new QPushButton(layoutWidget);
         btn_pt25_exit->setObjectName(QString::fromUtf8("btn_pt25_exit"));
-        btn_pt25_exit->setGeometry(QRect(420, 100, 75, 23));
+
+        horizontalLayout_2->addWidget(btn_pt25_exit);
+
         gBox_pt100 = new QGroupBox(StdPlaSensorDlgClass);
         gBox_pt100->setObjectName(QString::fromUtf8("gBox_pt100"));
         gBox_pt100->setGeometry(QRect(10, 150, 551, 261));
@@ -180,10 +203,10 @@ public:
         label_12->setGeometry(QRect(180, 20, 51, 20));
         btn_pt100_save = new QPushButton(gBox_pt100);
         btn_pt100_save->setObjectName(QString::fromUtf8("btn_pt100_save"));
-        btn_pt100_save->setGeometry(QRect(350, 210, 75, 23));
+        btn_pt100_save->setGeometry(QRect(390, 210, 51, 23));
         btn_pt100_exit = new QPushButton(gBox_pt100);
         btn_pt100_exit->setObjectName(QString::fromUtf8("btn_pt100_exit"));
-        btn_pt100_exit->setGeometry(QRect(440, 210, 75, 23));
+        btn_pt100_exit->setGeometry(QRect(470, 210, 51, 23));
         tbl_pt100_in = new QTableWidget(gBox_pt100);
         if (tbl_pt100_in->columnCount() < 3)
             tbl_pt100_in->setColumnCount(3);
@@ -200,8 +223,9 @@ public:
         QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
         tbl_pt100_in->setVerticalHeaderItem(1, __qtablewidgetitem4);
         tbl_pt100_in->setObjectName(QString::fromUtf8("tbl_pt100_in"));
-        tbl_pt100_in->setGeometry(QRect(30, 50, 191, 91));
-        tbl_pt100_in->horizontalHeader()->setDefaultSectionSize(50);
+        tbl_pt100_in->setEnabled(true);
+        tbl_pt100_in->setGeometry(QRect(30, 50, 231, 91));
+        tbl_pt100_in->horizontalHeader()->setDefaultSectionSize(60);
         tbl_pt100_in->horizontalHeader()->setMinimumSectionSize(10);
         label_13 = new QLabel(gBox_pt100);
         label_13->setObjectName(QString::fromUtf8("label_13"));
@@ -225,29 +249,30 @@ public:
         QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
         tbl_pt100_out->setVerticalHeaderItem(1, __qtablewidgetitem9);
         tbl_pt100_out->setObjectName(QString::fromUtf8("tbl_pt100_out"));
-        tbl_pt100_out->setGeometry(QRect(30, 160, 191, 91));
-        tbl_pt100_out->horizontalHeader()->setDefaultSectionSize(50);
+        tbl_pt100_out->setEnabled(true);
+        tbl_pt100_out->setGeometry(QRect(30, 160, 231, 91));
+        tbl_pt100_out->horizontalHeader()->setDefaultSectionSize(60);
         tbl_pt100_out->horizontalHeader()->setMinimumSectionSize(10);
         btn_pt100_calc = new QPushButton(gBox_pt100);
         btn_pt100_calc->setObjectName(QString::fromUtf8("btn_pt100_calc"));
-        btn_pt100_calc->setGeometry(QRect(260, 210, 75, 23));
+        btn_pt100_calc->setGeometry(QRect(310, 210, 51, 23));
         gBox_model = new QGroupBox(StdPlaSensorDlgClass);
         gBox_model->setObjectName(QString::fromUtf8("gBox_model"));
         gBox_model->setGeometry(QRect(20, 420, 531, 51));
         rbtn_inst = new QRadioButton(gBox_model);
         rbtn_inst->setObjectName(QString::fromUtf8("rbtn_inst"));
-        rbtn_inst->setGeometry(QRect(20, 20, 161, 16));
+        rbtn_inst->setGeometry(QRect(21, 24, 155, 16));
         rbtn_weili = new QRadioButton(gBox_model);
         rbtn_weili->setObjectName(QString::fromUtf8("rbtn_weili"));
-        rbtn_weili->setGeometry(QRect(200, 20, 89, 16));
+        rbtn_weili->setGeometry(QRect(228, 24, 53, 16));
         rbtn_weili->setCheckable(true);
         rbtn_weili->setChecked(true);
         rbtn_huayi = new QRadioButton(gBox_model);
         rbtn_huayi->setObjectName(QString::fromUtf8("rbtn_huayi"));
-        rbtn_huayi->setGeometry(QRect(330, 20, 89, 16));
+        rbtn_huayi->setGeometry(QRect(333, 24, 53, 16));
         btn_model_save = new QPushButton(gBox_model);
         btn_model_save->setObjectName(QString::fromUtf8("btn_model_save"));
-        btn_model_save->setGeometry(QRect(430, 20, 75, 23));
+        btn_model_save->setGeometry(QRect(438, 21, 75, 23));
 
         retranslateUi(StdPlaSensorDlgClass);
 
@@ -259,24 +284,24 @@ public:
         StdPlaSensorDlgClass->setWindowTitle(QApplication::translate("StdPlaSensorDlgClass", "Standard Platinium Sensor", 0, QApplication::UnicodeUTF8));
         gBox_pt25->setTitle(QApplication::translate("StdPlaSensorDlgClass", "Pt25 standard Platinum Resistance", 0, QApplication::UnicodeUTF8));
         groupBox_2->setTitle(QApplication::translate("StdPlaSensorDlgClass", "In Sensor Param", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("StdPlaSensorDlgClass", "Rtp", 0, QApplication::UnicodeUTF8));
-        label_2->setText(QApplication::translate("StdPlaSensorDlgClass", "<html><head/><body><p>a8x10<span style=\" vertical-align:super;\">-5</span></p></body></html>", 0, QApplication::UnicodeUTF8));
-        label_3->setText(QApplication::translate("StdPlaSensorDlgClass", "<html><head/><body><p>b8x10<span style=\" vertical-align:super;\">-5</span></p></body></html>", 0, QApplication::UnicodeUTF8));
+        label->setText(QApplication::translate("StdPlaSensorDlgClass", "<html><head/><body><p align=\"center\">Rtp</p></body></html>", 0, QApplication::UnicodeUTF8));
+        label_2->setText(QApplication::translate("StdPlaSensorDlgClass", "<html><head/><body><p align=\"center\">a8x10<span style=\" vertical-align:super;\">-5</span></p></body></html>", 0, QApplication::UnicodeUTF8));
+        label_3->setText(QApplication::translate("StdPlaSensorDlgClass", "<html><head/><body><p align=\"center\">b8x10<span style=\" vertical-align:super;\">-5</span></p></body></html>", 0, QApplication::UnicodeUTF8));
         groupBox_3->setTitle(QApplication::translate("StdPlaSensorDlgClass", "Out Sensor Param", 0, QApplication::UnicodeUTF8));
-        label_4->setText(QApplication::translate("StdPlaSensorDlgClass", "Rtp", 0, QApplication::UnicodeUTF8));
-        label_5->setText(QApplication::translate("StdPlaSensorDlgClass", "<html><head/><body><p>a8x10<span style=\" vertical-align:super;\">-5</span></p></body></html>", 0, QApplication::UnicodeUTF8));
-        label_6->setText(QApplication::translate("StdPlaSensorDlgClass", "<html><head/><body><p>b8x10<span style=\" vertical-align:super;\">-5</span></p></body></html>", 0, QApplication::UnicodeUTF8));
+        label_4->setText(QApplication::translate("StdPlaSensorDlgClass", "<html><head/><body><p align=\"center\">Rtp</p></body></html>", 0, QApplication::UnicodeUTF8));
+        label_5->setText(QApplication::translate("StdPlaSensorDlgClass", "<html><head/><body><p align=\"center\">a8x10<span style=\" vertical-align:super;\">-5</span></p></body></html>", 0, QApplication::UnicodeUTF8));
+        label_6->setText(QApplication::translate("StdPlaSensorDlgClass", "<html><head/><body><p align=\"center\">b8x10<span style=\" vertical-align:super;\">-5</span></p></body></html>", 0, QApplication::UnicodeUTF8));
         btn_pt25_save->setText(QApplication::translate("StdPlaSensorDlgClass", "Save", 0, QApplication::UnicodeUTF8));
         btn_pt25_exit->setText(QApplication::translate("StdPlaSensorDlgClass", "Exit", 0, QApplication::UnicodeUTF8));
         gBox_pt100->setTitle(QApplication::translate("StdPlaSensorDlgClass", "Pt100 standard Platinum Resistance", 0, QApplication::UnicodeUTF8));
         groupBox_6->setTitle(QApplication::translate("StdPlaSensorDlgClass", "In Sensor Param", 0, QApplication::UnicodeUTF8));
-        label_7->setText(QApplication::translate("StdPlaSensorDlgClass", "Rtp", 0, QApplication::UnicodeUTF8));
-        label_8->setText(QApplication::translate("StdPlaSensorDlgClass", "<html><head/><body><p>a8x10<span style=\" vertical-align:super;\">-5</span></p></body></html>", 0, QApplication::UnicodeUTF8));
-        label_9->setText(QApplication::translate("StdPlaSensorDlgClass", "<html><head/><body><p>b8x10<span style=\" vertical-align:super;\">-5</span></p></body></html>", 0, QApplication::UnicodeUTF8));
+        label_7->setText(QApplication::translate("StdPlaSensorDlgClass", "<html><head/><body><p align=\"center\">Rtp</p></body></html>", 0, QApplication::UnicodeUTF8));
+        label_8->setText(QApplication::translate("StdPlaSensorDlgClass", "<html><head/><body><p align=\"center\">a8x10<span style=\" vertical-align:super;\">-5</span></p></body></html>", 0, QApplication::UnicodeUTF8));
+        label_9->setText(QApplication::translate("StdPlaSensorDlgClass", "<html><head/><body><p align=\"center\">b8x10<span style=\" vertical-align:super;\">-5</span></p></body></html>", 0, QApplication::UnicodeUTF8));
         groupBox_7->setTitle(QApplication::translate("StdPlaSensorDlgClass", "Out Sensor Param", 0, QApplication::UnicodeUTF8));
-        label_10->setText(QApplication::translate("StdPlaSensorDlgClass", "Rtp", 0, QApplication::UnicodeUTF8));
-        label_11->setText(QApplication::translate("StdPlaSensorDlgClass", "<html><head/><body><p>a8x10<span style=\" vertical-align:super;\">-5</span></p></body></html>", 0, QApplication::UnicodeUTF8));
-        label_12->setText(QApplication::translate("StdPlaSensorDlgClass", "<html><head/><body><p>b8x10<span style=\" vertical-align:super;\">-5</span></p></body></html>", 0, QApplication::UnicodeUTF8));
+        label_10->setText(QApplication::translate("StdPlaSensorDlgClass", "<html><head/><body><p align=\"center\">Rtp</p></body></html>", 0, QApplication::UnicodeUTF8));
+        label_11->setText(QApplication::translate("StdPlaSensorDlgClass", "<html><head/><body><p align=\"center\">a8x10<span style=\" vertical-align:super;\">-5</span></p></body></html>", 0, QApplication::UnicodeUTF8));
+        label_12->setText(QApplication::translate("StdPlaSensorDlgClass", "<html><head/><body><p align=\"center\">b8x10<span style=\" vertical-align:super;\">-5</span></p></body></html>", 0, QApplication::UnicodeUTF8));
         btn_pt100_save->setText(QApplication::translate("StdPlaSensorDlgClass", "Save", 0, QApplication::UnicodeUTF8));
         btn_pt100_exit->setText(QApplication::translate("StdPlaSensorDlgClass", "Exit", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = tbl_pt100_in->horizontalHeaderItem(0);

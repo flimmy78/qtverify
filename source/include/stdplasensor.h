@@ -16,6 +16,7 @@ public:
 
 	public slots:
 		void closeEvent(QCloseEvent * event);
+		void showEvent(QShowEvent *);
 
 		void on_btn_pt25_save_clicked();
 		void on_btn_pt25_exit_clicked();
@@ -30,6 +31,10 @@ signals:
 private:
 	Ui::StdPlaSensorDlgClass ui;
 	QSettings* m_config;//标准温度计参数
+	bool m_tbls_inited;//所有表格初始化完毕
+
+	void initTbls();//初始化表格
+	void initPt100tbl(QTableWidget *tbl);
 
 	void readpt25config();
 	void readpt100config();
@@ -38,5 +43,7 @@ private:
 
 	void calcPt100In();
 	void calcPt100Out();
+
+	bool tblFilled(QTableWidget*);//表格是否填充数据
 };
 #endif//STDPLASENSOR_H

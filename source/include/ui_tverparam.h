@@ -14,12 +14,16 @@
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
 #include <QtGui/QFrame>
+#include <QtGui/QGridLayout>
 #include <QtGui/QGroupBox>
+#include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
 #include <QtGui/QPushButton>
+#include <QtGui/QSpacerItem>
 #include <QtGui/QTableWidget>
+#include <QtGui/QVBoxLayout>
 #include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -31,18 +35,29 @@ public:
     QLabel *label_23;
     QGroupBox *groupBox_8;
     QTableWidget *tbl_result;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout_6;
     QFrame *frame_3;
+    QWidget *widget1;
+    QVBoxLayout *verticalLayout_5;
     QLabel *label_24;
-    QLineEdit *lineEdit_1;
+    QHBoxLayout *horizontalLayout_2;
     QLabel *label_26;
+    QLineEdit *lineEdit_1;
     QFrame *frame_5;
-    QLineEdit *lineEdit_2;
-    QLabel *label_29;
+    QWidget *widget2;
+    QVBoxLayout *verticalLayout_6;
     QLabel *label_28;
+    QHBoxLayout *horizontalLayout_3;
+    QLabel *label_29;
+    QLineEdit *lineEdit_2;
     QFrame *frame_6;
-    QLineEdit *lineEdit_3;
-    QLabel *label_31;
+    QWidget *widget3;
+    QVBoxLayout *verticalLayout_7;
     QLabel *label_30;
+    QHBoxLayout *horizontalLayout_4;
+    QLabel *label_31;
+    QLineEdit *lineEdit_3;
     QGroupBox *groupBox_9;
     QTableWidget *tbl_maxerr;
     QFrame *frame;
@@ -50,40 +65,71 @@ public:
     QGroupBox *groupBox;
     QLabel *label_2;
     QTableWidget *tbl_std_1;
-    QLabel *label_3;
-    QTableWidget *tbl_in_1;
-    QLabel *label_4;
+    QWidget *widget4;
+    QVBoxLayout *verticalLayout;
     QPushButton *btn_read_1;
+    QSpacerItem *verticalSpacer;
     QPushButton *btn_clear_1;
+    QWidget *widget5;
+    QVBoxLayout *verticalLayout_2;
+    QLabel *label_3;
+    QLabel *label_4;
+    QTableWidget *tbl_in_1;
     QGroupBox *groupBox_2;
     QLabel *label_5;
+    QTableWidget *tbl_std_2;
+    QWidget *layoutWidget;
+    QVBoxLayout *verticalLayout_8;
+    QPushButton *btn_read_2;
+    QSpacerItem *verticalSpacer_2;
+    QPushButton *btn_clear_2;
+    QWidget *widget6;
+    QVBoxLayout *verticalLayout_3;
     QLabel *label_11;
     QLabel *label_12;
-    QTableWidget *tbl_std_2;
-    QPushButton *btn_read_2;
-    QPushButton *btn_clear_2;
     QTableWidget *tbl_in_2;
     QGroupBox *groupBox_7;
     QLabel *label_20;
+    QTableWidget *tbl_std_3;
+    QWidget *layoutWidget_2;
+    QVBoxLayout *verticalLayout_9;
+    QPushButton *btn_read_3;
+    QSpacerItem *verticalSpacer_3;
+    QPushButton *btn_clear_3;
+    QWidget *widget7;
+    QVBoxLayout *verticalLayout_4;
     QLabel *label_21;
     QLabel *label_22;
-    QTableWidget *tbl_std_3;
-    QPushButton *btn_read_3;
-    QPushButton *btn_clear_3;
     QTableWidget *tbl_in_3;
-    QPushButton *btn_save;
-    QPushButton *btn_param;
+    QWidget *widget8;
+    QHBoxLayout *horizontalLayout_5;
+    QWidget *widget9;
+    QGridLayout *gridLayout;
+    QWidget *widget10;
+    QHBoxLayout *horizontalLayout;
     QLabel *label_27;
+    QSpacerItem *horizontalSpacer;
+    QPushButton *btn_param;
+    QSpacerItem *horizontalSpacer_2;
+    QPushButton *btn_save;
+    QSpacerItem *horizontalSpacer_3;
     QPushButton *btn_exit;
 
     void setupUi(QWidget *PlaParamDlgClass)
     {
         if (PlaParamDlgClass->objectName().isEmpty())
             PlaParamDlgClass->setObjectName(QString::fromUtf8("PlaParamDlgClass"));
-        PlaParamDlgClass->resize(1341, 731);
+        PlaParamDlgClass->resize(1320, 715);
+        PlaParamDlgClass->setMinimumSize(QSize(1320, 715));
+        PlaParamDlgClass->setMaximumSize(QSize(1320, 715));
         frame_2 = new QFrame(PlaParamDlgClass);
         frame_2->setObjectName(QString::fromUtf8("frame_2"));
-        frame_2->setGeometry(QRect(660, 10, 671, 651));
+        frame_2->setGeometry(QRect(650, 10, 661, 651));
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(frame_2->sizePolicy().hasHeightForWidth());
+        frame_2->setSizePolicy(sizePolicy);
         frame_2->setFrameShape(QFrame::StyledPanel);
         frame_2->setFrameShadow(QFrame::Raised);
         label_23 = new QLabel(frame_2);
@@ -91,7 +137,7 @@ public:
         label_23->setGeometry(QRect(290, 0, 101, 16));
         groupBox_8 = new QGroupBox(frame_2);
         groupBox_8->setObjectName(QString::fromUtf8("groupBox_8"));
-        groupBox_8->setGeometry(QRect(10, 30, 491, 611));
+        groupBox_8->setGeometry(QRect(10, 130, 491, 511));
         tbl_result = new QTableWidget(groupBox_8);
         if (tbl_result->columnCount() < 12)
             tbl_result->setColumnCount(12);
@@ -452,58 +498,127 @@ public:
         tbl_result->setItem(11, 11, __qtablewidgetitem167);
         tbl_result->setObjectName(QString::fromUtf8("tbl_result"));
         tbl_result->setEnabled(false);
-        tbl_result->setGeometry(QRect(10, 200, 471, 401));
+        tbl_result->setGeometry(QRect(10, 100, 471, 401));
         tbl_result->horizontalHeader()->setVisible(true);
         tbl_result->horizontalHeader()->setCascadingSectionResizes(false);
         tbl_result->horizontalHeader()->setDefaultSectionSize(38);
         tbl_result->horizontalHeader()->setMinimumSectionSize(10);
         tbl_result->verticalHeader()->setCascadingSectionResizes(true);
         tbl_result->verticalHeader()->setMinimumSectionSize(10);
-        frame_3 = new QFrame(groupBox_8);
+        widget = new QWidget(groupBox_8);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(20, 30, 451, 51));
+        horizontalLayout_6 = new QHBoxLayout(widget);
+        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
+        horizontalLayout_6->setContentsMargins(0, 0, 0, 0);
+        frame_3 = new QFrame(widget);
         frame_3->setObjectName(QString::fromUtf8("frame_3"));
-        frame_3->setGeometry(QRect(20, 80, 141, 51));
         frame_3->setFrameShape(QFrame::StyledPanel);
         frame_3->setFrameShadow(QFrame::Raised);
-        label_24 = new QLabel(frame_3);
+        widget1 = new QWidget(frame_3);
+        widget1->setObjectName(QString::fromUtf8("widget1"));
+        widget1->setGeometry(QRect(0, 0, 141, 43));
+        verticalLayout_5 = new QVBoxLayout(widget1);
+        verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
+        verticalLayout_5->setContentsMargins(0, 0, 0, 0);
+        label_24 = new QLabel(widget1);
         label_24->setObjectName(QString::fromUtf8("label_24"));
-        label_24->setGeometry(QRect(0, 0, 161, 20));
-        lineEdit_1 = new QLineEdit(frame_3);
+
+        verticalLayout_5->addWidget(label_24);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        label_26 = new QLabel(widget1);
+        label_26->setObjectName(QString::fromUtf8("label_26"));
+
+        horizontalLayout_2->addWidget(label_26);
+
+        lineEdit_1 = new QLineEdit(widget1);
         lineEdit_1->setObjectName(QString::fromUtf8("lineEdit_1"));
         lineEdit_1->setEnabled(false);
-        lineEdit_1->setGeometry(QRect(70, 20, 61, 20));
-        label_26 = new QLabel(frame_3);
-        label_26->setObjectName(QString::fromUtf8("label_26"));
-        label_26->setGeometry(QRect(0, 20, 71, 20));
-        frame_5 = new QFrame(groupBox_8);
+        sizePolicy.setHeightForWidth(lineEdit_1->sizePolicy().hasHeightForWidth());
+        lineEdit_1->setSizePolicy(sizePolicy);
+
+        horizontalLayout_2->addWidget(lineEdit_1);
+
+
+        verticalLayout_5->addLayout(horizontalLayout_2);
+
+
+        horizontalLayout_6->addWidget(frame_3);
+
+        frame_5 = new QFrame(widget);
         frame_5->setObjectName(QString::fromUtf8("frame_5"));
-        frame_5->setGeometry(QRect(170, 80, 141, 51));
         frame_5->setFrameShape(QFrame::StyledPanel);
         frame_5->setFrameShadow(QFrame::Raised);
-        lineEdit_2 = new QLineEdit(frame_5);
+        widget2 = new QWidget(frame_5);
+        widget2->setObjectName(QString::fromUtf8("widget2"));
+        widget2->setGeometry(QRect(0, 0, 141, 41));
+        verticalLayout_6 = new QVBoxLayout(widget2);
+        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
+        verticalLayout_6->setContentsMargins(0, 0, 0, 0);
+        label_28 = new QLabel(widget2);
+        label_28->setObjectName(QString::fromUtf8("label_28"));
+
+        verticalLayout_6->addWidget(label_28);
+
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        label_29 = new QLabel(widget2);
+        label_29->setObjectName(QString::fromUtf8("label_29"));
+
+        horizontalLayout_3->addWidget(label_29);
+
+        lineEdit_2 = new QLineEdit(widget2);
         lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
         lineEdit_2->setEnabled(false);
-        lineEdit_2->setGeometry(QRect(70, 20, 61, 20));
-        label_29 = new QLabel(frame_5);
-        label_29->setObjectName(QString::fromUtf8("label_29"));
-        label_29->setGeometry(QRect(0, 20, 71, 20));
-        label_28 = new QLabel(frame_5);
-        label_28->setObjectName(QString::fromUtf8("label_28"));
-        label_28->setGeometry(QRect(10, 0, 131, 20));
-        frame_6 = new QFrame(groupBox_8);
+        sizePolicy.setHeightForWidth(lineEdit_2->sizePolicy().hasHeightForWidth());
+        lineEdit_2->setSizePolicy(sizePolicy);
+
+        horizontalLayout_3->addWidget(lineEdit_2);
+
+
+        verticalLayout_6->addLayout(horizontalLayout_3);
+
+
+        horizontalLayout_6->addWidget(frame_5);
+
+        frame_6 = new QFrame(widget);
         frame_6->setObjectName(QString::fromUtf8("frame_6"));
-        frame_6->setGeometry(QRect(320, 80, 141, 51));
         frame_6->setFrameShape(QFrame::StyledPanel);
         frame_6->setFrameShadow(QFrame::Raised);
-        lineEdit_3 = new QLineEdit(frame_6);
+        widget3 = new QWidget(frame_6);
+        widget3->setObjectName(QString::fromUtf8("widget3"));
+        widget3->setGeometry(QRect(0, 0, 141, 41));
+        verticalLayout_7 = new QVBoxLayout(widget3);
+        verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
+        verticalLayout_7->setContentsMargins(0, 0, 0, 0);
+        label_30 = new QLabel(widget3);
+        label_30->setObjectName(QString::fromUtf8("label_30"));
+
+        verticalLayout_7->addWidget(label_30);
+
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        label_31 = new QLabel(widget3);
+        label_31->setObjectName(QString::fromUtf8("label_31"));
+
+        horizontalLayout_4->addWidget(label_31);
+
+        lineEdit_3 = new QLineEdit(widget3);
         lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
         lineEdit_3->setEnabled(false);
-        lineEdit_3->setGeometry(QRect(70, 20, 61, 20));
-        label_31 = new QLabel(frame_6);
-        label_31->setObjectName(QString::fromUtf8("label_31"));
-        label_31->setGeometry(QRect(0, 20, 71, 20));
-        label_30 = new QLabel(frame_6);
-        label_30->setObjectName(QString::fromUtf8("label_30"));
-        label_30->setGeometry(QRect(0, 0, 151, 20));
+        sizePolicy.setHeightForWidth(lineEdit_3->sizePolicy().hasHeightForWidth());
+        lineEdit_3->setSizePolicy(sizePolicy);
+
+        horizontalLayout_4->addWidget(lineEdit_3);
+
+
+        verticalLayout_7->addLayout(horizontalLayout_4);
+
+
+        horizontalLayout_6->addWidget(frame_6);
+
         groupBox_9 = new QGroupBox(frame_2);
         groupBox_9->setObjectName(QString::fromUtf8("groupBox_9"));
         groupBox_9->setGeometry(QRect(510, 190, 141, 451));
@@ -598,7 +713,9 @@ public:
         tbl_maxerr->verticalHeader()->setMinimumSectionSize(10);
         frame = new QFrame(PlaParamDlgClass);
         frame->setObjectName(QString::fromUtf8("frame"));
-        frame->setGeometry(QRect(10, 10, 641, 651));
+        frame->setGeometry(QRect(10, 10, 631, 651));
+        sizePolicy.setHeightForWidth(frame->sizePolicy().hasHeightForWidth());
+        frame->setSizePolicy(sizePolicy);
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
         label = new QLabel(frame);
@@ -606,10 +723,10 @@ public:
         label->setGeometry(QRect(290, 0, 101, 16));
         groupBox = new QGroupBox(frame);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(20, 30, 191, 611));
+        groupBox->setGeometry(QRect(10, 30, 191, 611));
         label_2 = new QLabel(groupBox);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(20, 20, 121, 16));
+        label_2->setGeometry(QRect(30, 20, 121, 16));
         tbl_std_1 = new QTableWidget(groupBox);
         if (tbl_std_1->columnCount() < 1)
             tbl_std_1->setColumnCount(1);
@@ -629,16 +746,56 @@ public:
         tbl_std_1->setItem(1, 0, __qtablewidgetitem210);
         tbl_std_1->setObjectName(QString::fromUtf8("tbl_std_1"));
         tbl_std_1->setEnabled(false);
-        tbl_std_1->setGeometry(QRect(10, 50, 101, 91));
+        tbl_std_1->setGeometry(QRect(10, 50, 91, 91));
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Expanding);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(tbl_std_1->sizePolicy().hasHeightForWidth());
+        tbl_std_1->setSizePolicy(sizePolicy1);
         tbl_std_1->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_std_1->horizontalHeader()->setDefaultSectionSize(50);
         tbl_std_1->horizontalHeader()->setMinimumSectionSize(10);
         tbl_std_1->verticalHeader()->setCascadingSectionResizes(true);
         tbl_std_1->verticalHeader()->setMinimumSectionSize(10);
-        label_3 = new QLabel(groupBox);
+        widget4 = new QWidget(groupBox);
+        widget4->setObjectName(QString::fromUtf8("widget4"));
+        widget4->setGeometry(QRect(120, 50, 51, 91));
+        verticalLayout = new QVBoxLayout(widget4);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        btn_read_1 = new QPushButton(widget4);
+        btn_read_1->setObjectName(QString::fromUtf8("btn_read_1"));
+        btn_read_1->setEnabled(true);
+
+        verticalLayout->addWidget(btn_read_1);
+
+        verticalSpacer = new QSpacerItem(10, 5, QSizePolicy::Minimum, QSizePolicy::Preferred);
+
+        verticalLayout->addItem(verticalSpacer);
+
+        btn_clear_1 = new QPushButton(widget4);
+        btn_clear_1->setObjectName(QString::fromUtf8("btn_clear_1"));
+        btn_clear_1->setEnabled(true);
+
+        verticalLayout->addWidget(btn_clear_1);
+
+        widget5 = new QWidget(groupBox);
+        widget5->setObjectName(QString::fromUtf8("widget5"));
+        widget5->setGeometry(QRect(10, 150, 171, 461));
+        verticalLayout_2 = new QVBoxLayout(widget5);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        label_3 = new QLabel(widget5);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(20, 150, 101, 16));
-        tbl_in_1 = new QTableWidget(groupBox);
+
+        verticalLayout_2->addWidget(label_3);
+
+        label_4 = new QLabel(widget5);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+
+        verticalLayout_2->addWidget(label_4);
+
+        tbl_in_1 = new QTableWidget(widget5);
         if (tbl_in_1->columnCount() < 3)
             tbl_in_1->setColumnCount(3);
         QTableWidgetItem *__qtablewidgetitem211 = new QTableWidgetItem();
@@ -747,35 +904,20 @@ public:
         tbl_in_1->setItem(11, 2, __qtablewidgetitem261);
         tbl_in_1->setObjectName(QString::fromUtf8("tbl_in_1"));
         tbl_in_1->setEnabled(true);
-        tbl_in_1->setGeometry(QRect(10, 200, 171, 401));
         tbl_in_1->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_in_1->horizontalHeader()->setDefaultSectionSize(50);
         tbl_in_1->horizontalHeader()->setMinimumSectionSize(10);
         tbl_in_1->verticalHeader()->setCascadingSectionResizes(true);
         tbl_in_1->verticalHeader()->setMinimumSectionSize(10);
-        label_4 = new QLabel(groupBox);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(20, 170, 141, 16));
-        btn_read_1 = new QPushButton(groupBox);
-        btn_read_1->setObjectName(QString::fromUtf8("btn_read_1"));
-        btn_read_1->setEnabled(true);
-        btn_read_1->setGeometry(QRect(120, 70, 51, 23));
-        btn_clear_1 = new QPushButton(groupBox);
-        btn_clear_1->setObjectName(QString::fromUtf8("btn_clear_1"));
-        btn_clear_1->setEnabled(true);
-        btn_clear_1->setGeometry(QRect(120, 110, 51, 23));
+
+        verticalLayout_2->addWidget(tbl_in_1);
+
         groupBox_2 = new QGroupBox(frame);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setGeometry(QRect(230, 30, 191, 611));
+        groupBox_2->setGeometry(QRect(220, 30, 191, 611));
         label_5 = new QLabel(groupBox_2);
         label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setGeometry(QRect(20, 20, 121, 16));
-        label_11 = new QLabel(groupBox_2);
-        label_11->setObjectName(QString::fromUtf8("label_11"));
-        label_11->setGeometry(QRect(20, 150, 101, 16));
-        label_12 = new QLabel(groupBox_2);
-        label_12->setObjectName(QString::fromUtf8("label_12"));
-        label_12->setGeometry(QRect(20, 170, 131, 16));
+        label_5->setGeometry(QRect(30, 20, 121, 16));
         tbl_std_2 = new QTableWidget(groupBox_2);
         if (tbl_std_2->columnCount() < 1)
             tbl_std_2->setColumnCount(1);
@@ -793,21 +935,51 @@ public:
         tbl_std_2->setItem(1, 0, __qtablewidgetitem266);
         tbl_std_2->setObjectName(QString::fromUtf8("tbl_std_2"));
         tbl_std_2->setEnabled(false);
-        tbl_std_2->setGeometry(QRect(20, 50, 101, 91));
+        tbl_std_2->setGeometry(QRect(20, 50, 91, 91));
         tbl_std_2->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_std_2->horizontalHeader()->setDefaultSectionSize(50);
         tbl_std_2->horizontalHeader()->setMinimumSectionSize(10);
         tbl_std_2->verticalHeader()->setCascadingSectionResizes(true);
         tbl_std_2->verticalHeader()->setMinimumSectionSize(10);
-        btn_read_2 = new QPushButton(groupBox_2);
+        layoutWidget = new QWidget(groupBox_2);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(120, 50, 51, 91));
+        verticalLayout_8 = new QVBoxLayout(layoutWidget);
+        verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
+        verticalLayout_8->setContentsMargins(0, 0, 0, 0);
+        btn_read_2 = new QPushButton(layoutWidget);
         btn_read_2->setObjectName(QString::fromUtf8("btn_read_2"));
         btn_read_2->setEnabled(false);
-        btn_read_2->setGeometry(QRect(130, 70, 51, 23));
-        btn_clear_2 = new QPushButton(groupBox_2);
+
+        verticalLayout_8->addWidget(btn_read_2);
+
+        verticalSpacer_2 = new QSpacerItem(10, 5, QSizePolicy::Minimum, QSizePolicy::Preferred);
+
+        verticalLayout_8->addItem(verticalSpacer_2);
+
+        btn_clear_2 = new QPushButton(layoutWidget);
         btn_clear_2->setObjectName(QString::fromUtf8("btn_clear_2"));
         btn_clear_2->setEnabled(false);
-        btn_clear_2->setGeometry(QRect(130, 110, 51, 23));
-        tbl_in_2 = new QTableWidget(groupBox_2);
+
+        verticalLayout_8->addWidget(btn_clear_2);
+
+        widget6 = new QWidget(groupBox_2);
+        widget6->setObjectName(QString::fromUtf8("widget6"));
+        widget6->setGeometry(QRect(0, 150, 171, 461));
+        verticalLayout_3 = new QVBoxLayout(widget6);
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
+        label_11 = new QLabel(widget6);
+        label_11->setObjectName(QString::fromUtf8("label_11"));
+
+        verticalLayout_3->addWidget(label_11);
+
+        label_12 = new QLabel(widget6);
+        label_12->setObjectName(QString::fromUtf8("label_12"));
+
+        verticalLayout_3->addWidget(label_12);
+
+        tbl_in_2 = new QTableWidget(widget6);
         if (tbl_in_2->columnCount() < 3)
             tbl_in_2->setColumnCount(3);
         QTableWidgetItem *__qtablewidgetitem267 = new QTableWidgetItem();
@@ -916,24 +1088,20 @@ public:
         tbl_in_2->setItem(11, 2, __qtablewidgetitem317);
         tbl_in_2->setObjectName(QString::fromUtf8("tbl_in_2"));
         tbl_in_2->setEnabled(false);
-        tbl_in_2->setGeometry(QRect(0, 200, 171, 401));
         tbl_in_2->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_in_2->horizontalHeader()->setDefaultSectionSize(50);
         tbl_in_2->horizontalHeader()->setMinimumSectionSize(10);
         tbl_in_2->verticalHeader()->setCascadingSectionResizes(true);
         tbl_in_2->verticalHeader()->setMinimumSectionSize(10);
+
+        verticalLayout_3->addWidget(tbl_in_2);
+
         groupBox_7 = new QGroupBox(frame);
         groupBox_7->setObjectName(QString::fromUtf8("groupBox_7"));
-        groupBox_7->setGeometry(QRect(440, 30, 191, 611));
+        groupBox_7->setGeometry(QRect(430, 30, 191, 611));
         label_20 = new QLabel(groupBox_7);
         label_20->setObjectName(QString::fromUtf8("label_20"));
-        label_20->setGeometry(QRect(20, 20, 121, 16));
-        label_21 = new QLabel(groupBox_7);
-        label_21->setObjectName(QString::fromUtf8("label_21"));
-        label_21->setGeometry(QRect(20, 150, 101, 16));
-        label_22 = new QLabel(groupBox_7);
-        label_22->setObjectName(QString::fromUtf8("label_22"));
-        label_22->setGeometry(QRect(20, 170, 141, 16));
+        label_20->setGeometry(QRect(40, 20, 121, 16));
         tbl_std_3 = new QTableWidget(groupBox_7);
         if (tbl_std_3->columnCount() < 1)
             tbl_std_3->setColumnCount(1);
@@ -951,21 +1119,51 @@ public:
         tbl_std_3->setItem(1, 0, __qtablewidgetitem322);
         tbl_std_3->setObjectName(QString::fromUtf8("tbl_std_3"));
         tbl_std_3->setEnabled(false);
-        tbl_std_3->setGeometry(QRect(20, 50, 101, 91));
+        tbl_std_3->setGeometry(QRect(20, 50, 91, 91));
         tbl_std_3->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_std_3->horizontalHeader()->setDefaultSectionSize(50);
         tbl_std_3->horizontalHeader()->setMinimumSectionSize(10);
         tbl_std_3->verticalHeader()->setCascadingSectionResizes(true);
         tbl_std_3->verticalHeader()->setMinimumSectionSize(10);
-        btn_read_3 = new QPushButton(groupBox_7);
+        layoutWidget_2 = new QWidget(groupBox_7);
+        layoutWidget_2->setObjectName(QString::fromUtf8("layoutWidget_2"));
+        layoutWidget_2->setGeometry(QRect(120, 50, 61, 91));
+        verticalLayout_9 = new QVBoxLayout(layoutWidget_2);
+        verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
+        verticalLayout_9->setContentsMargins(0, 0, 0, 0);
+        btn_read_3 = new QPushButton(layoutWidget_2);
         btn_read_3->setObjectName(QString::fromUtf8("btn_read_3"));
         btn_read_3->setEnabled(false);
-        btn_read_3->setGeometry(QRect(130, 70, 51, 23));
-        btn_clear_3 = new QPushButton(groupBox_7);
+
+        verticalLayout_9->addWidget(btn_read_3);
+
+        verticalSpacer_3 = new QSpacerItem(10, 5, QSizePolicy::Minimum, QSizePolicy::Preferred);
+
+        verticalLayout_9->addItem(verticalSpacer_3);
+
+        btn_clear_3 = new QPushButton(layoutWidget_2);
         btn_clear_3->setObjectName(QString::fromUtf8("btn_clear_3"));
         btn_clear_3->setEnabled(false);
-        btn_clear_3->setGeometry(QRect(130, 110, 51, 23));
-        tbl_in_3 = new QTableWidget(groupBox_7);
+
+        verticalLayout_9->addWidget(btn_clear_3);
+
+        widget7 = new QWidget(groupBox_7);
+        widget7->setObjectName(QString::fromUtf8("widget7"));
+        widget7->setGeometry(QRect(20, 150, 171, 461));
+        verticalLayout_4 = new QVBoxLayout(widget7);
+        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
+        verticalLayout_4->setContentsMargins(0, 0, 0, 0);
+        label_21 = new QLabel(widget7);
+        label_21->setObjectName(QString::fromUtf8("label_21"));
+
+        verticalLayout_4->addWidget(label_21);
+
+        label_22 = new QLabel(widget7);
+        label_22->setObjectName(QString::fromUtf8("label_22"));
+
+        verticalLayout_4->addWidget(label_22);
+
+        tbl_in_3 = new QTableWidget(widget7);
         if (tbl_in_3->columnCount() < 3)
             tbl_in_3->setColumnCount(3);
         QTableWidgetItem *__qtablewidgetitem323 = new QTableWidgetItem();
@@ -1074,35 +1272,75 @@ public:
         tbl_in_3->setItem(11, 2, __qtablewidgetitem373);
         tbl_in_3->setObjectName(QString::fromUtf8("tbl_in_3"));
         tbl_in_3->setEnabled(false);
-        tbl_in_3->setGeometry(QRect(10, 200, 171, 401));
         tbl_in_3->horizontalHeader()->setCascadingSectionResizes(true);
         tbl_in_3->horizontalHeader()->setDefaultSectionSize(50);
         tbl_in_3->horizontalHeader()->setMinimumSectionSize(10);
         tbl_in_3->verticalHeader()->setCascadingSectionResizes(true);
         tbl_in_3->verticalHeader()->setMinimumSectionSize(10);
-        btn_save = new QPushButton(PlaParamDlgClass);
-        btn_save->setObjectName(QString::fromUtf8("btn_save"));
-        btn_save->setEnabled(true);
-        btn_save->setGeometry(QRect(1070, 680, 75, 41));
-        QIcon icon;
-        icon.addFile(QString::fromUtf8("../img/save.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_save->setIcon(icon);
-        btn_param = new QPushButton(PlaParamDlgClass);
+
+        verticalLayout_4->addWidget(tbl_in_3);
+
+        widget8 = new QWidget(PlaParamDlgClass);
+        widget8->setObjectName(QString::fromUtf8("widget8"));
+        widget8->setGeometry(QRect(0, 0, 2, 2));
+        horizontalLayout_5 = new QHBoxLayout(widget8);
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
+        widget9 = new QWidget(PlaParamDlgClass);
+        widget9->setObjectName(QString::fromUtf8("widget9"));
+        widget9->setGeometry(QRect(0, 0, 2, 2));
+        gridLayout = new QGridLayout(widget9);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        gridLayout->setContentsMargins(0, 0, 0, 0);
+        widget10 = new QWidget(PlaParamDlgClass);
+        widget10->setObjectName(QString::fromUtf8("widget10"));
+        widget10->setGeometry(QRect(30, 680, 1261, 26));
+        horizontalLayout = new QHBoxLayout(widget10);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        label_27 = new QLabel(widget10);
+        label_27->setObjectName(QString::fromUtf8("label_27"));
+
+        horizontalLayout->addWidget(label_27);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+        btn_param = new QPushButton(widget10);
         btn_param->setObjectName(QString::fromUtf8("btn_param"));
         btn_param->setEnabled(true);
-        btn_param->setGeometry(QRect(900, 680, 75, 41));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8("../img/param.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_param->setIcon(icon);
+
+        horizontalLayout->addWidget(btn_param);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_2);
+
+        btn_save = new QPushButton(widget10);
+        btn_save->setObjectName(QString::fromUtf8("btn_save"));
+        btn_save->setEnabled(true);
         QIcon icon1;
-        icon1.addFile(QString::fromUtf8("../img/param.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_param->setIcon(icon1);
-        label_27 = new QLabel(PlaParamDlgClass);
-        label_27->setObjectName(QString::fromUtf8("label_27"));
-        label_27->setGeometry(QRect(50, 690, 311, 16));
-        btn_exit = new QPushButton(PlaParamDlgClass);
+        icon1.addFile(QString::fromUtf8("../img/save.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_save->setIcon(icon1);
+
+        horizontalLayout->addWidget(btn_save);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_3);
+
+        btn_exit = new QPushButton(widget10);
         btn_exit->setObjectName(QString::fromUtf8("btn_exit"));
-        btn_exit->setGeometry(QRect(1230, 680, 75, 41));
         QIcon icon2;
         icon2.addFile(QString::fromUtf8("../img/exit.png"), QSize(), QIcon::Normal, QIcon::Off);
         btn_exit->setIcon(icon2);
+
+        horizontalLayout->addWidget(btn_exit);
+
 
         retranslateUi(PlaParamDlgClass);
 
@@ -1143,12 +1381,12 @@ public:
         tbl_result->setSortingEnabled(false);
         tbl_result->setSortingEnabled(__sortingEnabled);
 
-        label_24->setText(QApplication::translate("PlaParamDlgClass", "1st temperature diff", 0, QApplication::UnicodeUTF8));
+        label_24->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p><span style=\" font-size:8pt;\">1st temperature point</span></p></body></html>", 0, QApplication::UnicodeUTF8));
         label_26->setText(QApplication::translate("PlaParamDlgClass", "Err Lim(\342\204\203)", 0, QApplication::UnicodeUTF8));
+        label_28->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p><span style=\" font-size:8pt;\">2nd temperature point</span></p></body></html>", 0, QApplication::UnicodeUTF8));
         label_29->setText(QApplication::translate("PlaParamDlgClass", "Err Lim(\342\204\203)", 0, QApplication::UnicodeUTF8));
-        label_28->setText(QApplication::translate("PlaParamDlgClass", "2nd temperature diff", 0, QApplication::UnicodeUTF8));
+        label_30->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p><span style=\" font-size:8pt;\">3rd temperature point</span></p></body></html>", 0, QApplication::UnicodeUTF8));
         label_31->setText(QApplication::translate("PlaParamDlgClass", "Err Lim(\342\204\203)", 0, QApplication::UnicodeUTF8));
-        label_30->setText(QApplication::translate("PlaParamDlgClass", "3rd temperature diff", 0, QApplication::UnicodeUTF8));
         groupBox_9->setTitle(QApplication::translate("PlaParamDlgClass", "Basic Error", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem12 = tbl_maxerr->horizontalHeaderItem(0);
         ___qtablewidgetitem12->setText(QApplication::translate("PlaParamDlgClass", "In\n"
@@ -1162,8 +1400,8 @@ public:
         tbl_maxerr->setSortingEnabled(__sortingEnabled1);
 
         label->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Data Input</span></p></body></html>", 0, QApplication::UnicodeUTF8));
-        groupBox->setTitle(QApplication::translate("PlaParamDlgClass", "1st temperature head", 0, QApplication::UnicodeUTF8));
-        label_2->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p><span style=\" font-weight:600;\">Stand temperature</span></p></body></html>", 0, QApplication::UnicodeUTF8));
+        groupBox->setTitle(QApplication::translate("PlaParamDlgClass", "1st temperature point", 0, QApplication::UnicodeUTF8));
+        label_2->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">Stand temperature</span></p></body></html>", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem14 = tbl_std_1->verticalHeaderItem(0);
         ___qtablewidgetitem14->setText(QApplication::translate("PlaParamDlgClass", "R(\316\251)", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem15 = tbl_std_1->verticalHeaderItem(1);
@@ -1173,7 +1411,10 @@ public:
         tbl_std_1->setSortingEnabled(false);
         tbl_std_1->setSortingEnabled(__sortingEnabled2);
 
+        btn_read_1->setText(QApplication::translate("PlaParamDlgClass", "read", 0, QApplication::UnicodeUTF8));
+        btn_clear_1->setText(QApplication::translate("PlaParamDlgClass", "clear", 0, QApplication::UnicodeUTF8));
         label_3->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p><span style=\" font-weight:600;\">Checked Sensor</span></p></body></html>", 0, QApplication::UnicodeUTF8));
+        label_4->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p>(Input R following \316\251)</p></body></html>", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem16 = tbl_in_1->horizontalHeaderItem(0);
         ___qtablewidgetitem16->setText(QApplication::translate("PlaParamDlgClass", "Serial", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem17 = tbl_in_1->horizontalHeaderItem(1);
@@ -1183,91 +1424,14 @@ public:
 
         const bool __sortingEnabled3 = tbl_in_1->isSortingEnabled();
         tbl_in_1->setSortingEnabled(false);
-        QTableWidgetItem *___qtablewidgetitem19 = tbl_in_1->item(0, 0);
-        ___qtablewidgetitem19->setText(QApplication::translate("PlaParamDlgClass", "d01", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem20 = tbl_in_1->item(0, 1);
-        ___qtablewidgetitem20->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem21 = tbl_in_1->item(0, 2);
-        ___qtablewidgetitem21->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem22 = tbl_in_1->item(1, 0);
-        ___qtablewidgetitem22->setText(QApplication::translate("PlaParamDlgClass", "d02", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem23 = tbl_in_1->item(1, 1);
-        ___qtablewidgetitem23->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem24 = tbl_in_1->item(1, 2);
-        ___qtablewidgetitem24->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem25 = tbl_in_1->item(2, 0);
-        ___qtablewidgetitem25->setText(QApplication::translate("PlaParamDlgClass", "d03", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem26 = tbl_in_1->item(2, 1);
-        ___qtablewidgetitem26->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem27 = tbl_in_1->item(2, 2);
-        ___qtablewidgetitem27->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem28 = tbl_in_1->item(3, 0);
-        ___qtablewidgetitem28->setText(QApplication::translate("PlaParamDlgClass", "d04", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem29 = tbl_in_1->item(3, 1);
-        ___qtablewidgetitem29->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem30 = tbl_in_1->item(3, 2);
-        ___qtablewidgetitem30->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem31 = tbl_in_1->item(4, 0);
-        ___qtablewidgetitem31->setText(QApplication::translate("PlaParamDlgClass", "d05", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem32 = tbl_in_1->item(4, 1);
-        ___qtablewidgetitem32->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem33 = tbl_in_1->item(4, 2);
-        ___qtablewidgetitem33->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem34 = tbl_in_1->item(5, 0);
-        ___qtablewidgetitem34->setText(QApplication::translate("PlaParamDlgClass", "d06", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem35 = tbl_in_1->item(5, 1);
-        ___qtablewidgetitem35->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem36 = tbl_in_1->item(5, 2);
-        ___qtablewidgetitem36->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem37 = tbl_in_1->item(6, 0);
-        ___qtablewidgetitem37->setText(QApplication::translate("PlaParamDlgClass", "d07", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem38 = tbl_in_1->item(6, 1);
-        ___qtablewidgetitem38->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem39 = tbl_in_1->item(6, 2);
-        ___qtablewidgetitem39->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem40 = tbl_in_1->item(7, 0);
-        ___qtablewidgetitem40->setText(QApplication::translate("PlaParamDlgClass", "d08", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem41 = tbl_in_1->item(7, 1);
-        ___qtablewidgetitem41->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem42 = tbl_in_1->item(7, 2);
-        ___qtablewidgetitem42->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem43 = tbl_in_1->item(8, 0);
-        ___qtablewidgetitem43->setText(QApplication::translate("PlaParamDlgClass", "d09", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem44 = tbl_in_1->item(8, 1);
-        ___qtablewidgetitem44->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem45 = tbl_in_1->item(8, 2);
-        ___qtablewidgetitem45->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem46 = tbl_in_1->item(9, 0);
-        ___qtablewidgetitem46->setText(QApplication::translate("PlaParamDlgClass", "d10", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem47 = tbl_in_1->item(9, 1);
-        ___qtablewidgetitem47->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem48 = tbl_in_1->item(9, 2);
-        ___qtablewidgetitem48->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem49 = tbl_in_1->item(10, 0);
-        ___qtablewidgetitem49->setText(QApplication::translate("PlaParamDlgClass", "d11", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem50 = tbl_in_1->item(10, 1);
-        ___qtablewidgetitem50->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem51 = tbl_in_1->item(10, 2);
-        ___qtablewidgetitem51->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem52 = tbl_in_1->item(11, 0);
-        ___qtablewidgetitem52->setText(QApplication::translate("PlaParamDlgClass", "d12", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem53 = tbl_in_1->item(11, 1);
-        ___qtablewidgetitem53->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem54 = tbl_in_1->item(11, 2);
-        ___qtablewidgetitem54->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
         tbl_in_1->setSortingEnabled(__sortingEnabled3);
 
-        label_4->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p>(Input R following \316\251)</p></body></html>", 0, QApplication::UnicodeUTF8));
-        btn_read_1->setText(QApplication::translate("PlaParamDlgClass", "read", 0, QApplication::UnicodeUTF8));
-        btn_clear_1->setText(QApplication::translate("PlaParamDlgClass", "clear", 0, QApplication::UnicodeUTF8));
-        groupBox_2->setTitle(QApplication::translate("PlaParamDlgClass", "2ndt temperature head", 0, QApplication::UnicodeUTF8));
-        label_5->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p><span style=\" font-weight:600;\">Stand temperature</span></p></body></html>", 0, QApplication::UnicodeUTF8));
-        label_11->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p><span style=\" font-weight:600;\">Checked Sensor</span></p></body></html>", 0, QApplication::UnicodeUTF8));
-        label_12->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p>(Input R following \316\251)</p></body></html>", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem55 = tbl_std_2->verticalHeaderItem(0);
-        ___qtablewidgetitem55->setText(QApplication::translate("PlaParamDlgClass", "R(\316\251)", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem56 = tbl_std_2->verticalHeaderItem(1);
-        ___qtablewidgetitem56->setText(QApplication::translate("PlaParamDlgClass", "T(\342\204\203)", 0, QApplication::UnicodeUTF8));
+        groupBox_2->setTitle(QApplication::translate("PlaParamDlgClass", "2ndt temperature point", 0, QApplication::UnicodeUTF8));
+        label_5->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">Stand temperature</span></p></body></html>", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem19 = tbl_std_2->verticalHeaderItem(0);
+        ___qtablewidgetitem19->setText(QApplication::translate("PlaParamDlgClass", "R(\316\251)", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem20 = tbl_std_2->verticalHeaderItem(1);
+        ___qtablewidgetitem20->setText(QApplication::translate("PlaParamDlgClass", "T(\342\204\203)", 0, QApplication::UnicodeUTF8));
 
         const bool __sortingEnabled4 = tbl_std_2->isSortingEnabled();
         tbl_std_2->setSortingEnabled(false);
@@ -1275,97 +1439,25 @@ public:
 
         btn_read_2->setText(QApplication::translate("PlaParamDlgClass", "read", 0, QApplication::UnicodeUTF8));
         btn_clear_2->setText(QApplication::translate("PlaParamDlgClass", "clear", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem57 = tbl_in_2->horizontalHeaderItem(0);
-        ___qtablewidgetitem57->setText(QApplication::translate("PlaParamDlgClass", "Serial", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem58 = tbl_in_2->horizontalHeaderItem(1);
-        ___qtablewidgetitem58->setText(QApplication::translate("PlaParamDlgClass", "In", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem59 = tbl_in_2->horizontalHeaderItem(2);
-        ___qtablewidgetitem59->setText(QApplication::translate("PlaParamDlgClass", "Out", 0, QApplication::UnicodeUTF8));
+        label_11->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p><span style=\" font-weight:600;\">Checked Sensor</span></p></body></html>", 0, QApplication::UnicodeUTF8));
+        label_12->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p>(Input R following \316\251)</p></body></html>", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem21 = tbl_in_2->horizontalHeaderItem(0);
+        ___qtablewidgetitem21->setText(QApplication::translate("PlaParamDlgClass", "Serial", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem22 = tbl_in_2->horizontalHeaderItem(1);
+        ___qtablewidgetitem22->setText(QApplication::translate("PlaParamDlgClass", "In", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem23 = tbl_in_2->horizontalHeaderItem(2);
+        ___qtablewidgetitem23->setText(QApplication::translate("PlaParamDlgClass", "Out", 0, QApplication::UnicodeUTF8));
 
         const bool __sortingEnabled5 = tbl_in_2->isSortingEnabled();
         tbl_in_2->setSortingEnabled(false);
-        QTableWidgetItem *___qtablewidgetitem60 = tbl_in_2->item(0, 0);
-        ___qtablewidgetitem60->setText(QApplication::translate("PlaParamDlgClass", "d01", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem61 = tbl_in_2->item(0, 1);
-        ___qtablewidgetitem61->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem62 = tbl_in_2->item(0, 2);
-        ___qtablewidgetitem62->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem63 = tbl_in_2->item(1, 0);
-        ___qtablewidgetitem63->setText(QApplication::translate("PlaParamDlgClass", "d02", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem64 = tbl_in_2->item(1, 1);
-        ___qtablewidgetitem64->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem65 = tbl_in_2->item(1, 2);
-        ___qtablewidgetitem65->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem66 = tbl_in_2->item(2, 0);
-        ___qtablewidgetitem66->setText(QApplication::translate("PlaParamDlgClass", "d03", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem67 = tbl_in_2->item(2, 1);
-        ___qtablewidgetitem67->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem68 = tbl_in_2->item(2, 2);
-        ___qtablewidgetitem68->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem69 = tbl_in_2->item(3, 0);
-        ___qtablewidgetitem69->setText(QApplication::translate("PlaParamDlgClass", "d04", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem70 = tbl_in_2->item(3, 1);
-        ___qtablewidgetitem70->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem71 = tbl_in_2->item(3, 2);
-        ___qtablewidgetitem71->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem72 = tbl_in_2->item(4, 0);
-        ___qtablewidgetitem72->setText(QApplication::translate("PlaParamDlgClass", "d05", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem73 = tbl_in_2->item(4, 1);
-        ___qtablewidgetitem73->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem74 = tbl_in_2->item(4, 2);
-        ___qtablewidgetitem74->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem75 = tbl_in_2->item(5, 0);
-        ___qtablewidgetitem75->setText(QApplication::translate("PlaParamDlgClass", "d06", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem76 = tbl_in_2->item(5, 1);
-        ___qtablewidgetitem76->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem77 = tbl_in_2->item(5, 2);
-        ___qtablewidgetitem77->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem78 = tbl_in_2->item(6, 0);
-        ___qtablewidgetitem78->setText(QApplication::translate("PlaParamDlgClass", "d07", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem79 = tbl_in_2->item(6, 1);
-        ___qtablewidgetitem79->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem80 = tbl_in_2->item(6, 2);
-        ___qtablewidgetitem80->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem81 = tbl_in_2->item(7, 0);
-        ___qtablewidgetitem81->setText(QApplication::translate("PlaParamDlgClass", "d08", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem82 = tbl_in_2->item(7, 1);
-        ___qtablewidgetitem82->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem83 = tbl_in_2->item(7, 2);
-        ___qtablewidgetitem83->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem84 = tbl_in_2->item(8, 0);
-        ___qtablewidgetitem84->setText(QApplication::translate("PlaParamDlgClass", "d09", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem85 = tbl_in_2->item(8, 1);
-        ___qtablewidgetitem85->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem86 = tbl_in_2->item(8, 2);
-        ___qtablewidgetitem86->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem87 = tbl_in_2->item(9, 0);
-        ___qtablewidgetitem87->setText(QApplication::translate("PlaParamDlgClass", "d10", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem88 = tbl_in_2->item(9, 1);
-        ___qtablewidgetitem88->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem89 = tbl_in_2->item(9, 2);
-        ___qtablewidgetitem89->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem90 = tbl_in_2->item(10, 0);
-        ___qtablewidgetitem90->setText(QApplication::translate("PlaParamDlgClass", "d11", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem91 = tbl_in_2->item(10, 1);
-        ___qtablewidgetitem91->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem92 = tbl_in_2->item(10, 2);
-        ___qtablewidgetitem92->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem93 = tbl_in_2->item(11, 0);
-        ___qtablewidgetitem93->setText(QApplication::translate("PlaParamDlgClass", "d12", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem94 = tbl_in_2->item(11, 1);
-        ___qtablewidgetitem94->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem95 = tbl_in_2->item(11, 2);
-        ___qtablewidgetitem95->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
         tbl_in_2->setSortingEnabled(__sortingEnabled5);
 
-        groupBox_7->setTitle(QApplication::translate("PlaParamDlgClass", "3rd temperature head", 0, QApplication::UnicodeUTF8));
-        label_20->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p><span style=\" font-weight:600;\">Stand temperature</span></p></body></html>", 0, QApplication::UnicodeUTF8));
-        label_21->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p><span style=\" font-weight:600;\">Checked Sensor</span></p></body></html>", 0, QApplication::UnicodeUTF8));
-        label_22->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p>(Input R following \316\251)</p></body></html>", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem96 = tbl_std_3->verticalHeaderItem(0);
-        ___qtablewidgetitem96->setText(QApplication::translate("PlaParamDlgClass", "R(\316\251)", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem97 = tbl_std_3->verticalHeaderItem(1);
-        ___qtablewidgetitem97->setText(QApplication::translate("PlaParamDlgClass", "T(\342\204\203)", 0, QApplication::UnicodeUTF8));
+        groupBox_7->setTitle(QApplication::translate("PlaParamDlgClass", "3rd temperature point", 0, QApplication::UnicodeUTF8));
+        label_20->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">Stand temperature</span></p></body></html>", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem24 = tbl_std_3->verticalHeaderItem(0);
+        ___qtablewidgetitem24->setText(QApplication::translate("PlaParamDlgClass", "R(\316\251)", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem25 = tbl_std_3->verticalHeaderItem(1);
+        ___qtablewidgetitem25->setText(QApplication::translate("PlaParamDlgClass", "T(\342\204\203)", 0, QApplication::UnicodeUTF8));
 
         const bool __sortingEnabled6 = tbl_std_3->isSortingEnabled();
         tbl_std_3->setSortingEnabled(false);
@@ -1373,92 +1465,22 @@ public:
 
         btn_read_3->setText(QApplication::translate("PlaParamDlgClass", "read", 0, QApplication::UnicodeUTF8));
         btn_clear_3->setText(QApplication::translate("PlaParamDlgClass", "clear", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem98 = tbl_in_3->horizontalHeaderItem(0);
-        ___qtablewidgetitem98->setText(QApplication::translate("PlaParamDlgClass", "Serial", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem99 = tbl_in_3->horizontalHeaderItem(1);
-        ___qtablewidgetitem99->setText(QApplication::translate("PlaParamDlgClass", "In", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem100 = tbl_in_3->horizontalHeaderItem(2);
-        ___qtablewidgetitem100->setText(QApplication::translate("PlaParamDlgClass", "Out", 0, QApplication::UnicodeUTF8));
+        label_21->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p><span style=\" font-weight:600;\">Checked Sensor</span></p></body></html>", 0, QApplication::UnicodeUTF8));
+        label_22->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p>(Input R following \316\251)</p></body></html>", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem26 = tbl_in_3->horizontalHeaderItem(0);
+        ___qtablewidgetitem26->setText(QApplication::translate("PlaParamDlgClass", "Serial", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem27 = tbl_in_3->horizontalHeaderItem(1);
+        ___qtablewidgetitem27->setText(QApplication::translate("PlaParamDlgClass", "In", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem28 = tbl_in_3->horizontalHeaderItem(2);
+        ___qtablewidgetitem28->setText(QApplication::translate("PlaParamDlgClass", "Out", 0, QApplication::UnicodeUTF8));
 
         const bool __sortingEnabled7 = tbl_in_3->isSortingEnabled();
         tbl_in_3->setSortingEnabled(false);
-        QTableWidgetItem *___qtablewidgetitem101 = tbl_in_3->item(0, 0);
-        ___qtablewidgetitem101->setText(QApplication::translate("PlaParamDlgClass", "d01", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem102 = tbl_in_3->item(0, 1);
-        ___qtablewidgetitem102->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem103 = tbl_in_3->item(0, 2);
-        ___qtablewidgetitem103->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem104 = tbl_in_3->item(1, 0);
-        ___qtablewidgetitem104->setText(QApplication::translate("PlaParamDlgClass", "d02", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem105 = tbl_in_3->item(1, 1);
-        ___qtablewidgetitem105->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem106 = tbl_in_3->item(1, 2);
-        ___qtablewidgetitem106->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem107 = tbl_in_3->item(2, 0);
-        ___qtablewidgetitem107->setText(QApplication::translate("PlaParamDlgClass", "d03", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem108 = tbl_in_3->item(2, 1);
-        ___qtablewidgetitem108->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem109 = tbl_in_3->item(2, 2);
-        ___qtablewidgetitem109->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem110 = tbl_in_3->item(3, 0);
-        ___qtablewidgetitem110->setText(QApplication::translate("PlaParamDlgClass", "d04", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem111 = tbl_in_3->item(3, 1);
-        ___qtablewidgetitem111->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem112 = tbl_in_3->item(3, 2);
-        ___qtablewidgetitem112->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem113 = tbl_in_3->item(4, 0);
-        ___qtablewidgetitem113->setText(QApplication::translate("PlaParamDlgClass", "d05", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem114 = tbl_in_3->item(4, 1);
-        ___qtablewidgetitem114->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem115 = tbl_in_3->item(4, 2);
-        ___qtablewidgetitem115->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem116 = tbl_in_3->item(5, 0);
-        ___qtablewidgetitem116->setText(QApplication::translate("PlaParamDlgClass", "d06", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem117 = tbl_in_3->item(5, 1);
-        ___qtablewidgetitem117->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem118 = tbl_in_3->item(5, 2);
-        ___qtablewidgetitem118->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem119 = tbl_in_3->item(6, 0);
-        ___qtablewidgetitem119->setText(QApplication::translate("PlaParamDlgClass", "d07", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem120 = tbl_in_3->item(6, 1);
-        ___qtablewidgetitem120->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem121 = tbl_in_3->item(6, 2);
-        ___qtablewidgetitem121->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem122 = tbl_in_3->item(7, 0);
-        ___qtablewidgetitem122->setText(QApplication::translate("PlaParamDlgClass", "d08", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem123 = tbl_in_3->item(7, 1);
-        ___qtablewidgetitem123->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem124 = tbl_in_3->item(7, 2);
-        ___qtablewidgetitem124->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem125 = tbl_in_3->item(8, 0);
-        ___qtablewidgetitem125->setText(QApplication::translate("PlaParamDlgClass", "d09", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem126 = tbl_in_3->item(8, 1);
-        ___qtablewidgetitem126->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem127 = tbl_in_3->item(8, 2);
-        ___qtablewidgetitem127->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem128 = tbl_in_3->item(9, 0);
-        ___qtablewidgetitem128->setText(QApplication::translate("PlaParamDlgClass", "d10", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem129 = tbl_in_3->item(9, 1);
-        ___qtablewidgetitem129->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem130 = tbl_in_3->item(9, 2);
-        ___qtablewidgetitem130->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem131 = tbl_in_3->item(10, 0);
-        ___qtablewidgetitem131->setText(QApplication::translate("PlaParamDlgClass", "d11", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem132 = tbl_in_3->item(10, 1);
-        ___qtablewidgetitem132->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem133 = tbl_in_3->item(10, 2);
-        ___qtablewidgetitem133->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem134 = tbl_in_3->item(11, 0);
-        ___qtablewidgetitem134->setText(QApplication::translate("PlaParamDlgClass", "d12", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem135 = tbl_in_3->item(11, 1);
-        ___qtablewidgetitem135->setText(QApplication::translate("PlaParamDlgClass", "1096", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem136 = tbl_in_3->item(11, 2);
-        ___qtablewidgetitem136->setText(QApplication::translate("PlaParamDlgClass", "1095.3", 0, QApplication::UnicodeUTF8));
         tbl_in_3->setSortingEnabled(__sortingEnabled7);
 
-        btn_save->setText(QApplication::translate("PlaParamDlgClass", "Save", 0, QApplication::UnicodeUTF8));
-        btn_param->setText(QApplication::translate("PlaParamDlgClass", "Config", 0, QApplication::UnicodeUTF8));
         label_27->setText(QApplication::translate("PlaParamDlgClass", "<html><head/><body><p><span style=\" color:#0000ff;\">Step\357\274\2321.Configurate 2.Input Data 3.Save Data 4.Exit</span></p></body></html>", 0, QApplication::UnicodeUTF8));
+        btn_param->setText(QApplication::translate("PlaParamDlgClass", "Config", 0, QApplication::UnicodeUTF8));
+        btn_save->setText(QApplication::translate("PlaParamDlgClass", "Save", 0, QApplication::UnicodeUTF8));
         btn_exit->setText(QApplication::translate("PlaParamDlgClass", "Exit", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

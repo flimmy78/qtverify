@@ -6,15 +6,41 @@ stdplasensorDlg::stdplasensorDlg(QWidget *parent, Qt::WFlags flags)
 {
 	ui.setupUi(this);
 
-	m_config = new QSettings(getFullIniFileName("stdplasensor.ini"), QSettings::IniFormat);
-
-	readInUse();
-	readmodelconfig();
 }
 
 stdplasensorDlg::~stdplasensorDlg()
 {
 
+}
+
+void stdplasensorDlg::showEvent(QShowEvent *)
+{
+	m_config = new QSettings(getFullIniFileName("stdplasensor.ini"), QSettings::IniFormat);
+
+	readInUse();
+	readmodelconfig();
+	m_tbls_inited = false;
+	initTbls();
+}
+
+void stdplasensorDlg::initTbls()
+{
+	initPt100tbl(ui.tbl_pt100_in);
+	initPt100tbl(ui.tbl_pt100_out);
+	m_tbls_inited = true;
+}
+
+void stdplasensorDlg::initPt100tbl(QTableWidget *tbl)
+{
+	for (int i=0; i<tbl->rowCount();i++)
+	{
+		for (int j=0;j<tbl->columnCount();j++)
+		{
+			QTableWidgetItem* new_tbl_item = new QTableWidgetItem();
+			//new_tbl_item->setFlags(Qt::ItemIsSelectable|Qt::ItemIsDragEnabled|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled);
+			tbl->setItem(i, j, new_tbl_item);
+		}
+	}
 }
 
 void stdplasensorDlg::closeEvent(QCloseEvent * event)
@@ -45,8 +71,30 @@ void stdplasensorDlg::on_btn_pt25_exit_clicked()
 
 void stdplasensorDlg::on_btn_pt100_calc_clicked()
 {
-	calcPt100In();
-	calcPt100Out();
+	if (m_tbls_inited)
+	{
+		if (tblFilled(ui.tbl_pt100_in))
+			calcPt100In();
+
+		if (tblFilled(ui.tbl_pt100_out))
+			calcPt100Out();
+	}
+}
+
+bool stdplasensorDlg::tblFilled(QTableWidget* tbl)
+{
+	int row = tbl->rowCount();
+	int col = tbl->columnCount();
+	for (int i=0; i<row;i++)
+	{
+		for (int j=0;j<col;j++)
+		{
+			if (tbl->item(i, j)->text().isEmpty()||tbl->item(i, j)->text().isNull())
+				return false;
+		}
+	}
+	
+	return true;
 }
 
 void stdplasensorDlg::on_btn_pt100_save_clicked()
@@ -79,6 +127,7 @@ void stdplasensorDlg::on_btn_model_save_clicked()
 				m_config->beginGroup("in_use");
 				m_config->setValue("model", ((QRadioButton*)obj)->text());
 				m_config->endGroup();
+				return;
 			}
 		}
 	}
@@ -133,6 +182,7 @@ void stdplasensorDlg::readmodelconfig()
 			if (((QRadioButton*)obj)->text() == m_config->value("in_use/model").toString())
 			{
 				((QRadioButton*)obj)->setChecked(true);
+				return;
 			}			
 		}
 	}

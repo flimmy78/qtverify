@@ -7,8 +7,17 @@ tverparamDlg::tverparamDlg(QWidget *parent /* = 0 */, Qt::WFlags flags /* = 0 */
 	: QWidget(parent, flags)
 {
 	ui.setupUi(this);
+}
+
+tverparamDlg::~tverparamDlg()
+{
+
+}
+
+void tverparamDlg::showEvent(QShowEvent * event)
+{
 	m_PlaParamParamDlg = NULL;
-	
+
 	m_tempObj = NULL;
 	m_sendTimer = NULL;
 	m_PlaVerifyRecPtr = NULL;
@@ -30,11 +39,6 @@ tverparamDlg::tverparamDlg(QWidget *parent /* = 0 */, Qt::WFlags flags /* = 0 */
 	connect(this, SIGNAL(secondTmpVerOk()), this, SLOT(secondTmpVerOk_slot()));
 	connect(this, SIGNAL(thirdTmpVerOk()), this, SLOT(thirdTmpVerOk_slot()));
 	connect(this, SIGNAL(allTmpVerOk()), this, SLOT(calcBasicErr()));
-}
-
-tverparamDlg::~tverparamDlg()
-{
-
 }
 
 void tverparamDlg::closeEvent(QCloseEvent * event)
@@ -553,7 +557,6 @@ void tverparamDlg::on_btn_param_clicked()
 	}
 	m_PlaParamParamDlg = new tverparamparamDlg;
 
-	connect(m_PlaParamParamDlg, SIGNAL(configureOk()), this,SLOT(disableConfigBtn()));
 	m_PlaParamParamDlg->show();
 }
 

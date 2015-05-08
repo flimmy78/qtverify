@@ -14,10 +14,12 @@
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
 #include <QtGui/QGroupBox>
+#include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
 #include <QtGui/QPushButton>
+#include <QtGui/QSpacerItem>
 #include <QtGui/QTableWidget>
 #include <QtGui/QWidget>
 
@@ -34,9 +36,14 @@ public:
     QLabel *label_7;
     QLabel *label_8;
     QLabel *label_9;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout;
     QPushButton *btn_calc;
+    QSpacerItem *horizontalSpacer;
     QPushButton *btn_save;
+    QSpacerItem *horizontalSpacer_2;
     QPushButton *btn_default;
+    QSpacerItem *horizontalSpacer_3;
     QPushButton *btn_exit;
 
     void setupUi(QWidget *ChkPlaSensorClass)
@@ -44,6 +51,8 @@ public:
         if (ChkPlaSensorClass->objectName().isEmpty())
             ChkPlaSensorClass->setObjectName(QString::fromUtf8("ChkPlaSensorClass"));
         ChkPlaSensorClass->resize(505, 179);
+        ChkPlaSensorClass->setMinimumSize(QSize(505, 179));
+        ChkPlaSensorClass->setMaximumSize(QSize(16777215, 179));
         tbl_t_r = new QTableWidget(ChkPlaSensorClass);
         if (tbl_t_r->columnCount() < 3)
             tbl_t_r->setColumnCount(3);
@@ -62,8 +71,8 @@ public:
         QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
         tbl_t_r->setItem(0, 0, __qtablewidgetitem5);
         tbl_t_r->setObjectName(QString::fromUtf8("tbl_t_r"));
-        tbl_t_r->setGeometry(QRect(20, 20, 191, 91));
-        tbl_t_r->horizontalHeader()->setDefaultSectionSize(50);
+        tbl_t_r->setGeometry(QRect(10, 20, 221, 91));
+        tbl_t_r->horizontalHeader()->setDefaultSectionSize(60);
         groupBox_6 = new QGroupBox(ChkPlaSensorClass);
         groupBox_6->setObjectName(QString::fromUtf8("groupBox_6"));
         groupBox_6->setGeometry(QRect(240, 20, 251, 61));
@@ -86,18 +95,44 @@ public:
         label_9 = new QLabel(groupBox_6);
         label_9->setObjectName(QString::fromUtf8("label_9"));
         label_9->setGeometry(QRect(180, 20, 51, 20));
-        btn_calc = new QPushButton(ChkPlaSensorClass);
+        widget = new QWidget(ChkPlaSensorClass);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(19, 140, 471, 25));
+        horizontalLayout = new QHBoxLayout(widget);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        btn_calc = new QPushButton(widget);
         btn_calc->setObjectName(QString::fromUtf8("btn_calc"));
-        btn_calc->setGeometry(QRect(80, 140, 75, 23));
-        btn_save = new QPushButton(ChkPlaSensorClass);
+
+        horizontalLayout->addWidget(btn_calc);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+        btn_save = new QPushButton(widget);
         btn_save->setObjectName(QString::fromUtf8("btn_save"));
-        btn_save->setGeometry(QRect(170, 140, 75, 23));
-        btn_default = new QPushButton(ChkPlaSensorClass);
+
+        horizontalLayout->addWidget(btn_save);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_2);
+
+        btn_default = new QPushButton(widget);
         btn_default->setObjectName(QString::fromUtf8("btn_default"));
-        btn_default->setGeometry(QRect(260, 140, 75, 23));
-        btn_exit = new QPushButton(ChkPlaSensorClass);
+
+        horizontalLayout->addWidget(btn_default);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_3);
+
+        btn_exit = new QPushButton(widget);
         btn_exit->setObjectName(QString::fromUtf8("btn_exit"));
-        btn_exit->setGeometry(QRect(350, 140, 75, 23));
+
+        horizontalLayout->addWidget(btn_exit);
+
 
         retranslateUi(ChkPlaSensorClass);
 

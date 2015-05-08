@@ -14,11 +14,14 @@
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
 #include <QtGui/QComboBox>
+#include <QtGui/QGridLayout>
 #include <QtGui/QGroupBox>
+#include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
 #include <QtGui/QPushButton>
+#include <QtGui/QSpacerItem>
 #include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -26,88 +29,205 @@ QT_BEGIN_NAMESPACE
 class Ui_PlaCompParamDlgClass
 {
 public:
+    QGridLayout *gridLayout_2;
     QGroupBox *groupBox;
-    QComboBox *cBox_stand;
+    QGridLayout *gridLayout;
+    QHBoxLayout *horizontalLayout;
     QLabel *label;
-    QLabel *label_2;
-    QComboBox *cBox_manu;
-    QComboBox *cBox_chk;
-    QLabel *label_3;
-    QComboBox *cBox_model;
+    QSpacerItem *horizontalSpacer;
+    QComboBox *cBox_stand;
+    QHBoxLayout *horizontalLayout_4;
     QLabel *label_4;
-    QComboBox *cBox_inst;
+    QSpacerItem *horizontalSpacer_4;
+    QComboBox *cBox_model;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *label_2;
+    QSpacerItem *horizontalSpacer_2;
+    QComboBox *cBox_manu;
+    QHBoxLayout *horizontalLayout_5;
     QLabel *label_5;
-    QComboBox *cBox_verify;
+    QSpacerItem *horizontalSpacer_5;
+    QComboBox *cBox_inst;
+    QHBoxLayout *horizontalLayout_3;
+    QLabel *label_3;
+    QSpacerItem *horizontalSpacer_3;
+    QComboBox *cBox_chk;
+    QHBoxLayout *horizontalLayout_6;
     QLabel *label_6;
+    QSpacerItem *horizontalSpacer_6;
+    QComboBox *cBox_verify;
     QGroupBox *groupBox_2;
     QLabel *label_7;
     QLineEdit *lineEdit_tempe;
     QLabel *label_8;
+    QHBoxLayout *horizontalLayout_7;
     QPushButton *btn_save;
+    QSpacerItem *horizontalSpacer_7;
     QPushButton *btn_exit;
 
     void setupUi(QWidget *PlaCompParamDlgClass)
     {
         if (PlaCompParamDlgClass->objectName().isEmpty())
             PlaCompParamDlgClass->setObjectName(QString::fromUtf8("PlaCompParamDlgClass"));
-        PlaCompParamDlgClass->resize(411, 250);
+        PlaCompParamDlgClass->resize(411, 190);
+        PlaCompParamDlgClass->setMinimumSize(QSize(411, 190));
+        PlaCompParamDlgClass->setMaximumSize(QSize(16777215, 190));
+        gridLayout_2 = new QGridLayout(PlaCompParamDlgClass);
+        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         groupBox = new QGroupBox(PlaCompParamDlgClass);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(10, 10, 391, 141));
-        cBox_stand = new QComboBox(groupBox);
-        cBox_stand->setObjectName(QString::fromUtf8("cBox_stand"));
-        cBox_stand->setGeometry(QRect(100, 20, 69, 22));
+        gridLayout = new QGridLayout(groupBox);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         label = new QLabel(groupBox);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(20, 20, 61, 20));
-        label_2 = new QLabel(groupBox);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(10, 60, 71, 20));
-        cBox_manu = new QComboBox(groupBox);
-        cBox_manu->setObjectName(QString::fromUtf8("cBox_manu"));
-        cBox_manu->setGeometry(QRect(100, 60, 69, 22));
-        cBox_chk = new QComboBox(groupBox);
-        cBox_chk->setObjectName(QString::fromUtf8("cBox_chk"));
-        cBox_chk->setGeometry(QRect(100, 100, 69, 22));
-        label_3 = new QLabel(groupBox);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(20, 100, 54, 12));
-        cBox_model = new QComboBox(groupBox);
-        cBox_model->setObjectName(QString::fromUtf8("cBox_model"));
-        cBox_model->setGeometry(QRect(290, 20, 69, 22));
+
+        horizontalLayout->addWidget(label);
+
+        horizontalSpacer = new QSpacerItem(50, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+        cBox_stand = new QComboBox(groupBox);
+        cBox_stand->setObjectName(QString::fromUtf8("cBox_stand"));
+
+        horizontalLayout->addWidget(cBox_stand);
+
+
+        gridLayout->addLayout(horizontalLayout, 0, 0, 1, 1);
+
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
         label_4 = new QLabel(groupBox);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(220, 20, 54, 12));
-        cBox_inst = new QComboBox(groupBox);
-        cBox_inst->setObjectName(QString::fromUtf8("cBox_inst"));
-        cBox_inst->setGeometry(QRect(290, 60, 69, 22));
+
+        horizontalLayout_4->addWidget(label_4);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_4);
+
+        cBox_model = new QComboBox(groupBox);
+        cBox_model->setObjectName(QString::fromUtf8("cBox_model"));
+
+        horizontalLayout_4->addWidget(cBox_model);
+
+
+        gridLayout->addLayout(horizontalLayout_4, 0, 1, 1, 1);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        label_2 = new QLabel(groupBox);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+
+        horizontalLayout_2->addWidget(label_2);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_2);
+
+        cBox_manu = new QComboBox(groupBox);
+        cBox_manu->setObjectName(QString::fromUtf8("cBox_manu"));
+
+        horizontalLayout_2->addWidget(cBox_manu);
+
+
+        gridLayout->addLayout(horizontalLayout_2, 1, 0, 1, 1);
+
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
         label_5 = new QLabel(groupBox);
         label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setGeometry(QRect(200, 60, 71, 16));
-        cBox_verify = new QComboBox(groupBox);
-        cBox_verify->setObjectName(QString::fromUtf8("cBox_verify"));
-        cBox_verify->setGeometry(QRect(290, 100, 69, 22));
+
+        horizontalLayout_5->addWidget(label_5);
+
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_5->addItem(horizontalSpacer_5);
+
+        cBox_inst = new QComboBox(groupBox);
+        cBox_inst->setObjectName(QString::fromUtf8("cBox_inst"));
+
+        horizontalLayout_5->addWidget(cBox_inst);
+
+
+        gridLayout->addLayout(horizontalLayout_5, 1, 1, 1, 1);
+
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        label_3 = new QLabel(groupBox);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+
+        horizontalLayout_3->addWidget(label_3);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_3);
+
+        cBox_chk = new QComboBox(groupBox);
+        cBox_chk->setObjectName(QString::fromUtf8("cBox_chk"));
+
+        horizontalLayout_3->addWidget(cBox_chk);
+
+
+        gridLayout->addLayout(horizontalLayout_3, 2, 0, 1, 1);
+
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
         label_6 = new QLabel(groupBox);
         label_6->setObjectName(QString::fromUtf8("label_6"));
-        label_6->setGeometry(QRect(210, 100, 54, 16));
+
+        horizontalLayout_6->addWidget(label_6);
+
+        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_6->addItem(horizontalSpacer_6);
+
+        cBox_verify = new QComboBox(groupBox);
+        cBox_verify->setObjectName(QString::fromUtf8("cBox_verify"));
+
+        horizontalLayout_6->addWidget(cBox_verify);
+
+
+        gridLayout->addLayout(horizontalLayout_6, 2, 1, 1, 1);
+
+
+        gridLayout_2->addWidget(groupBox, 0, 0, 1, 1);
+
         groupBox_2 = new QGroupBox(PlaCompParamDlgClass);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setGeometry(QRect(10, 160, 391, 51));
         label_7 = new QLabel(groupBox_2);
         label_7->setObjectName(QString::fromUtf8("label_7"));
-        label_7->setGeometry(QRect(10, 20, 251, 20));
+        label_7->setGeometry(QRect(10, 20, 191, 20));
         lineEdit_tempe = new QLineEdit(groupBox_2);
         lineEdit_tempe->setObjectName(QString::fromUtf8("lineEdit_tempe"));
-        lineEdit_tempe->setGeometry(QRect(270, 20, 31, 20));
+        lineEdit_tempe->setGeometry(QRect(210, 20, 31, 20));
         label_8 = new QLabel(groupBox_2);
         label_8->setObjectName(QString::fromUtf8("label_8"));
-        label_8->setGeometry(QRect(310, 20, 16, 16));
+        label_8->setGeometry(QRect(250, 20, 16, 16));
+
+        gridLayout_2->addWidget(groupBox_2, 1, 0, 1, 1);
+
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
         btn_save = new QPushButton(PlaCompParamDlgClass);
         btn_save->setObjectName(QString::fromUtf8("btn_save"));
-        btn_save->setGeometry(QRect(60, 220, 75, 23));
+
+        horizontalLayout_7->addWidget(btn_save);
+
+        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_7->addItem(horizontalSpacer_7);
+
         btn_exit = new QPushButton(PlaCompParamDlgClass);
         btn_exit->setObjectName(QString::fromUtf8("btn_exit"));
-        btn_exit->setGeometry(QRect(270, 220, 75, 23));
+
+        horizontalLayout_7->addWidget(btn_exit);
+
+
+        gridLayout_2->addLayout(horizontalLayout_7, 2, 0, 1, 1);
+
 
         retranslateUi(PlaCompParamDlgClass);
 
@@ -119,13 +239,13 @@ public:
         PlaCompParamDlgClass->setWindowTitle(QApplication::translate("PlaCompParamDlgClass", "Parameter", 0, QApplication::UnicodeUTF8));
         groupBox->setTitle(QString());
         label->setText(QApplication::translate("PlaCompParamDlgClass", "<html><head/><body><p align=\"right\">Standard</p></body></html>", 0, QApplication::UnicodeUTF8));
+        label_4->setText(QApplication::translate("PlaCompParamDlgClass", "<html><head/><body><p>Model</p></body></html>", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("PlaCompParamDlgClass", "<html><head/><body><p align=\"right\">Manufactory</p></body></html>", 0, QApplication::UnicodeUTF8));
-        label_3->setText(QApplication::translate("PlaCompParamDlgClass", "<html><head/><body><p align=\"right\">Checker</p></body></html>", 0, QApplication::UnicodeUTF8));
-        label_4->setText(QApplication::translate("PlaCompParamDlgClass", "<html><head/><body><p align=\"right\">Model</p></body></html>", 0, QApplication::UnicodeUTF8));
-        label_5->setText(QApplication::translate("PlaCompParamDlgClass", "<html><head/><body><p align=\"right\">Institution</p></body></html>", 0, QApplication::UnicodeUTF8));
-        label_6->setText(QApplication::translate("PlaCompParamDlgClass", "<html><head/><body><p align=\"right\">Verify</p></body></html>", 0, QApplication::UnicodeUTF8));
+        label_5->setText(QApplication::translate("PlaCompParamDlgClass", "<html><head/><body><p>Institution</p></body></html>", 0, QApplication::UnicodeUTF8));
+        label_3->setText(QApplication::translate("PlaCompParamDlgClass", "<html><head/><body><p>Checker</p></body></html>", 0, QApplication::UnicodeUTF8));
+        label_6->setText(QApplication::translate("PlaCompParamDlgClass", "<html><head/><body><p>Verify</p></body></html>", 0, QApplication::UnicodeUTF8));
         groupBox_2->setTitle(QString());
-        label_7->setText(QApplication::translate("PlaCompParamDlgClass", "<html><head/><body><p align=\"right\">Minimum difference in temperature: \316\224\316\270min</p></body></html>", 0, QApplication::UnicodeUTF8));
+        label_7->setText(QApplication::translate("PlaCompParamDlgClass", "<html><head/><body><p>Minimum temperature head: \316\224\316\270min</p></body></html>", 0, QApplication::UnicodeUTF8));
         lineEdit_tempe->setText(QApplication::translate("PlaCompParamDlgClass", "3", 0, QApplication::UnicodeUTF8));
         label_8->setText(QApplication::translate("PlaCompParamDlgClass", "<html><head/><body><p>K</p></body></html>", 0, QApplication::UnicodeUTF8));
         btn_save->setText(QApplication::translate("PlaCompParamDlgClass", "Save", 0, QApplication::UnicodeUTF8));

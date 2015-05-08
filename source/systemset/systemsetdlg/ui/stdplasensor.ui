@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>563</width>
-    <height>479</height>
+    <width>551</width>
+    <height>480</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>551</width>
+    <height>480</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>551</width>
+    <height>480</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Standard Platinium Sensor</string>
@@ -52,6 +64,18 @@
        <height>20</height>
       </rect>
      </property>
+     <property name="minimumSize">
+      <size>
+       <width>71</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>71</width>
+       <height>20</height>
+      </size>
+     </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_pt25_in_a">
      <property name="geometry">
@@ -83,7 +107,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Rtp</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Rtp&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_2">
@@ -96,7 +120,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;a8x10&lt;span style=&quot; vertical-align:super;&quot;&gt;-5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;a8x10&lt;span style=&quot; vertical-align:super;&quot;&gt;-5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_3">
@@ -109,7 +133,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;b8x10&lt;span style=&quot; vertical-align:super;&quot;&gt;-5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;b8x10&lt;span style=&quot; vertical-align:super;&quot;&gt;-5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </widget>
@@ -165,7 +189,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Rtp</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Rtp&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_5">
@@ -178,7 +202,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;a8x10&lt;span style=&quot; vertical-align:super;&quot;&gt;-5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;a8x10&lt;span style=&quot; vertical-align:super;&quot;&gt;-5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_6">
@@ -191,35 +215,48 @@
       </rect>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;b8x10&lt;span style=&quot; vertical-align:super;&quot;&gt;-5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;b8x10&lt;span style=&quot; vertical-align:super;&quot;&gt;-5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </widget>
-   <widget class="QPushButton" name="btn_pt25_save">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>60</x>
+      <x>30</x>
       <y>100</y>
-      <width>75</width>
-      <height>23</height>
+      <width>491</width>
+      <height>25</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Save</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_pt25_exit">
-    <property name="geometry">
-     <rect>
-      <x>420</x>
-      <y>100</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Exit</string>
-    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QPushButton" name="btn_pt25_save">
+       <property name="text">
+        <string>Save</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_4">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_pt25_exit">
+       <property name="text">
+        <string>Exit</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QGroupBox" name="gBox_pt100">
@@ -295,7 +332,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Rtp</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Rtp&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_8">
@@ -308,7 +345,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;a8x10&lt;span style=&quot; vertical-align:super;&quot;&gt;-5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;a8x10&lt;span style=&quot; vertical-align:super;&quot;&gt;-5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_9">
@@ -321,7 +358,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;b8x10&lt;span style=&quot; vertical-align:super;&quot;&gt;-5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;b8x10&lt;span style=&quot; vertical-align:super;&quot;&gt;-5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </widget>
@@ -377,7 +414,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Rtp</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Rtp&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_11">
@@ -390,7 +427,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;a8x10&lt;span style=&quot; vertical-align:super;&quot;&gt;-5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;a8x10&lt;span style=&quot; vertical-align:super;&quot;&gt;-5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_12">
@@ -403,16 +440,16 @@
       </rect>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;b8x10&lt;span style=&quot; vertical-align:super;&quot;&gt;-5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;b8x10&lt;span style=&quot; vertical-align:super;&quot;&gt;-5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </widget>
    <widget class="QPushButton" name="btn_pt100_save">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>390</x>
       <y>210</y>
-      <width>75</width>
+      <width>51</width>
       <height>23</height>
      </rect>
     </property>
@@ -423,9 +460,9 @@
    <widget class="QPushButton" name="btn_pt100_exit">
     <property name="geometry">
      <rect>
-      <x>440</x>
+      <x>470</x>
       <y>210</y>
-      <width>75</width>
+      <width>51</width>
       <height>23</height>
      </rect>
     </property>
@@ -434,16 +471,19 @@
     </property>
    </widget>
    <widget class="QTableWidget" name="tbl_pt100_in">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>30</x>
       <y>50</y>
-      <width>191</width>
+      <width>231</width>
       <height>91</height>
      </rect>
     </property>
     <attribute name="horizontalHeaderDefaultSectionSize">
-     <number>50</number>
+     <number>60</number>
     </attribute>
     <attribute name="horizontalHeaderMinimumSectionSize">
      <number>10</number>
@@ -501,16 +541,19 @@
     </property>
    </widget>
    <widget class="QTableWidget" name="tbl_pt100_out">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>30</x>
       <y>160</y>
-      <width>191</width>
+      <width>231</width>
       <height>91</height>
      </rect>
     </property>
     <attribute name="horizontalHeaderDefaultSectionSize">
-     <number>50</number>
+     <number>60</number>
     </attribute>
     <attribute name="horizontalHeaderMinimumSectionSize">
      <number>10</number>
@@ -544,9 +587,9 @@
    <widget class="QPushButton" name="btn_pt100_calc">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>310</x>
       <y>210</y>
-      <width>75</width>
+      <width>51</width>
       <height>23</height>
      </rect>
     </property>
@@ -570,9 +613,9 @@
    <widget class="QRadioButton" name="rbtn_inst">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>161</width>
+      <x>21</x>
+      <y>24</y>
+      <width>155</width>
       <height>16</height>
      </rect>
     </property>
@@ -583,9 +626,9 @@
    <widget class="QRadioButton" name="rbtn_weili">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>20</y>
-      <width>89</width>
+      <x>228</x>
+      <y>24</y>
+      <width>53</width>
       <height>16</height>
      </rect>
     </property>
@@ -602,9 +645,9 @@
    <widget class="QRadioButton" name="rbtn_huayi">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>20</y>
-      <width>89</width>
+      <x>333</x>
+      <y>24</y>
+      <width>53</width>
       <height>16</height>
      </rect>
     </property>
@@ -615,8 +658,8 @@
    <widget class="QPushButton" name="btn_model_save">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>20</y>
+      <x>438</x>
+      <y>21</y>
       <width>75</width>
       <height>23</height>
      </rect>

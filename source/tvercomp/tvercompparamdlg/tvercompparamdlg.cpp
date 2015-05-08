@@ -8,12 +8,9 @@
 tvercompparamDlg::tvercompparamDlg(QWidget *parent /* = 0 */, Qt::WFlags flags /* = 0 */)
 	: QWidget(parent, flags)
 {
-	m_config = new QSettings(getFullIniFileName("tvercompconfig.ini"), QSettings::IniFormat);
 
 	ui.setupUi(this);
-
-	initCmbBox();
-	readConfig();//读取上次设置参数
+	
 }
 
 tvercompparamDlg::~tvercompparamDlg()
@@ -91,7 +88,12 @@ void tvercompparamDlg::initCmbBox()
 	closedb();
 	cBoxData_inited = true;//下拉条已初始化完毕
 }
-
+void tvercompparamDlg::showEvent(QShowEvent * event)
+{
+	m_config = new QSettings(getFullIniFileName("tvercompconfig.ini"), QSettings::IniFormat);
+	initCmbBox();
+	readConfig();//读取上次设置参数
+}
 void tvercompparamDlg::closeEvent(QCloseEvent * event)
 {
 	if (m_config)

@@ -8,10 +8,6 @@ tverparamparamDlg::tverparamparamDlg(QWidget *parent /* = 0 */, Qt::WFlags flags
 	: QWidget(parent, flags)
 {
 	ui.setupUi(this);
-
-	m_config = new QSettings(getFullIniFileName("tverparamconfig.ini"), QSettings::IniFormat);
-	initCmbBox();
-	readConfig();//读取上次设置参数
 }
 
 tverparamparamDlg::~tverparamparamDlg()
@@ -90,6 +86,13 @@ void tverparamparamDlg::initCmbBox()
 	cBoxData_inited = true;//下拉条已初始化完毕
 }
 
+void tverparamparamDlg::showEvent(QShowEvent * event)
+{
+	m_config = new QSettings(getFullIniFileName("tverparamconfig.ini"), QSettings::IniFormat);
+	initCmbBox();
+	readConfig();//读取上次设置参数
+}
+
 void tverparamparamDlg::closeEvent(QCloseEvent * event)
 {
 	if (m_config)
@@ -97,7 +100,6 @@ void tverparamparamDlg::closeEvent(QCloseEvent * event)
 		delete m_config;
 		m_config = NULL;
 	}
-	emit configureOk();
 }
 
 void tverparamparamDlg::readConfig()

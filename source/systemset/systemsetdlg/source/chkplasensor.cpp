@@ -6,13 +6,30 @@ chkplasensorDlg::chkplasensorDlg(QWidget *parent, Qt::WFlags flags)
 {
 	ui.setupUi(this);
 
-	m_config = new QSettings(getFullIniFileName("chkplasensor.ini"), QSettings::IniFormat);
-	readConfig();
 }
 
 chkplasensorDlg::~chkplasensorDlg()
 {
 
+}
+
+void chkplasensorDlg::showEvent(QShowEvent *)
+{
+	m_config = new QSettings(getFullIniFileName("chkplasensor.ini"), QSettings::IniFormat);
+	readConfig();
+	initTbl(ui.tbl_t_r);
+}
+
+void chkplasensorDlg::initTbl(QTableWidget *tbl)
+{
+	for (int i=0; i<tbl->rowCount();i++)
+	{
+		for (int j=0;j<tbl->columnCount();j++)
+		{
+			QTableWidgetItem* new_tbl_item = new QTableWidgetItem();
+			tbl->setItem(i, j, new_tbl_item);
+		}
+	}
 }
 
 void chkplasensorDlg::closeEvent(QCloseEvent *event)
@@ -22,12 +39,15 @@ void chkplasensorDlg::closeEvent(QCloseEvent *event)
 		delete m_config;
 		m_config = NULL;
 	}
-
-
 }
 
 void chkplasensorDlg::on_btn_calc_clicked()
 {
+	if (!tblFilled(ui.tbl_t_r))
+	{
+		return;
+	}
+
 	pla_T_R_PTR prt = new pla_T_R_STR[3];
 	prt[0].tmp = ui.tbl_t_r->item(0,0)->text().toFloat();
 	prt[1].tmp = ui.tbl_t_r->item(0,1)->text().toFloat();
@@ -53,6 +73,22 @@ void chkplasensorDlg::on_btn_calc_clicked()
 		delete m_pla_param;
 		m_pla_param = NULL;
 	}
+}
+
+bool chkplasensorDlg::tblFilled(QTableWidget* tbl)
+{
+	int row = tbl->rowCount();
+	int col = tbl->columnCount();
+	for (int i=0; i<row;i++)
+	{
+		for (int j=0;j<col;j++)
+		{
+			if (tbl->item(i, j)->text().isEmpty()||tbl->item(i, j)->text().isNull())
+				return false;
+		}
+	}
+
+	return true;
 }
 
 void chkplasensorDlg::on_btn_default_clicked()

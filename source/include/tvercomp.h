@@ -40,7 +40,7 @@ signals:
 	void commandSendComplete(void);//读取温度命令已发送完毕
 	public slots:
 		void closeEvent(QCloseEvent * event);
-
+		void showEvent(QShowEvent * event);
 		/******采集标准温度计数值*********/
 		void on_btn_read_1_clicked();
 		void on_btn_read_2_clicked();

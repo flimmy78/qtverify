@@ -6,6 +6,15 @@ tvercompDlg::tvercompDlg(QWidget *parent /* = 0 */, Qt::WFlags flags /* = 0 */)
 	: QWidget(parent, flags)
 {
 	ui.setupUi(this);
+}
+
+tvercompDlg::~tvercompDlg()
+{
+
+}
+
+void tvercompDlg::showEvent(QShowEvent * event)
+{
 	m_PlaCompParamDlg = NULL;
 	m_tempObj = NULL;
 	m_sendTimer = NULL;
@@ -19,11 +28,6 @@ tvercompDlg::tvercompDlg(QWidget *parent /* = 0 */, Qt::WFlags flags /* = 0 */)
 
 	m_min_delta_tmp = m_tvercomp_config->value("theoinfo/mintmphead").toFloat();
 	m_timeStamp = "";
-}
-
-tvercompDlg::~tvercompDlg()
-{
-
 }
 
 void tvercompDlg::closeEvent(QCloseEvent * event)
@@ -63,16 +67,11 @@ void tvercompDlg::closeEvent(QCloseEvent * event)
 
 void tvercompDlg::on_btn_param_clicked()
 {
-	if ( NULL == m_PlaCompParamDlg)
-	{
-		m_PlaCompParamDlg = new tvercompparamDlg;
-	}
-	else
+	if ( NULL != m_PlaCompParamDlg)
 	{
 		delete m_PlaCompParamDlg;
-		m_PlaCompParamDlg = new tvercompparamDlg;
 	}
-
+	m_PlaCompParamDlg = new tvercompparamDlg;
 	m_PlaCompParamDlg->show();
 }
 
@@ -88,7 +87,7 @@ void tvercompDlg::on_btn_read_1_clicked()
 	
 	m_readCommand = sti1062aT1;
 	connect(m_sendTimer, SIGNAL(timeout()), this, SLOT(sendCommands()));
-	connect(this, SIGNAL(commandSendComplete()), m_sendTimer, SLOT(stop()));
+	//connect(this, SIGNAL(commandSendComplete()), m_sendTimer, SLOT(stop()));
 	m_sendTimer->start(READ_STI1062A_TIMEOUT);
 }
 
@@ -133,7 +132,7 @@ void tvercompDlg::on_btn_read_2_clicked()
 
 	m_readCommand = sti1062aT1;
 	connect(m_sendTimer, SIGNAL(timeout()), this, SLOT(sendCommands()));
-	connect(this, SIGNAL(commandSendComplete()), m_sendTimer, SLOT(stop()));
+	//connect(this, SIGNAL(commandSendComplete()), m_sendTimer, SLOT(stop()));
 	m_sendTimer->start(READ_STI1062A_TIMEOUT);
 }
 
@@ -173,7 +172,7 @@ void tvercompDlg::on_btn_read_3_clicked()
 
 	m_readCommand = sti1062aT1;
 	connect(m_sendTimer, SIGNAL(timeout()), this, SLOT(sendCommands()));
-	connect(this, SIGNAL(commandSendComplete()), m_sendTimer, SLOT(stop()));
+	//connect(this, SIGNAL(commandSendComplete()), m_sendTimer, SLOT(stop()));
 	m_sendTimer->start(READ_STI1062A_TIMEOUT);
 }
 
