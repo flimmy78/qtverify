@@ -553,7 +553,7 @@ QLCDNumber{background:url(:/images/lcd.bmp)}
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="images.qrc">:/images/delu.png</pixmap>
+       <pixmap resource="images.qrc">:/images/adelogo.png</pixmap>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
