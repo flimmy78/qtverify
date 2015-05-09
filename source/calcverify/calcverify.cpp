@@ -402,17 +402,17 @@ void CalcDlg::on_tableWidget_cellChanged(int row, int column)
 	case COLUMN_ANALOG_V: //模拟流量
 		if (btnGroupAlgorithm->checkedId()==ALGO_KCOE) //K系数法
 		{
-			theoryEnergy = calcTheoryEnergyByKCoe(KCoe, analogV/1000, inTemper, outTemper); //计算理论热量
+			theoryEnergy = calcTheoryEnergyByKCoe(KCoe, analogV/1000, inTemper, outTemper); //计算理论热量，单位与K系数单位对应
 		}
 		else if (btnGroupAlgorithm->checkedId()==ALGO_ENTHALPY) //焓差法
 		{
 			theoryEnergy = calcTheoryEnergyByEnthalpy(analogV/1000, inTemper, outTemper); //计算理论热量
+			if (btnGroupEnergyUnit->checkedId()==UNIT_MJ) //单位MJ
+			{
+				theoryEnergy *= 3.6;
+			}
 		}
 
-		if (btnGroupEnergyUnit->checkedId()==UNIT_MJ) //单位MJ
-		{
-			theoryEnergy *= 3.6;
-		}
 		ui.tableWidget->item(row, COLUMN_THEORY_ENERGY)->setText(QString("%1").arg(theoryEnergy));
 		ui.tableWidget->setCurrentCell(row, COLUMN_E0); 
 		break;
@@ -427,6 +427,10 @@ void CalcDlg::on_tableWidget_cellChanged(int row, int column)
 		if (dispError > stdError)
 		{
 			ui.tableWidget->item(row, COLUMN_DISP_ERROR)->setTextColor(QColor(Qt::red));
+		}
+		else
+		{
+			ui.tableWidget->item(row, COLUMN_DISP_ERROR)->setTextColor(QColor(Qt::black));
 		}
 		break;
 	default:
@@ -468,11 +472,19 @@ float CalcDlg::calcTemperByResist(int port, float resist)
 }
 
 /*
-** 需要考虑安装位置和能量单位
+** 考虑能量单位，返回值单位：kWh/m3℃
+** 
 */
-float CalcDlg::getKCoeByTemper(float inT, float outT)
+float CalcDlg::getKCoeByTemper(float inTemper, float outTemper)
 {
-	return 1.143;
+	float installPos = btnGroupInstallPos->checkedId();
+	float kCoe = m_algo->CalcKCoeOfWater(inTemper, outTemper, installPos, 0.6); //默认K系数单位MJ/m3℃
+	if (btnGroupEnergyUnit->checkedId()==UNIT_KWH) //单位 kWh
+	{
+		kCoe /= 3.6; //由MJ/m3℃转换单位kWh/m3℃
+	}
+
+	return kCoe;
 }
 
 //根据进出口温度获取焓差，单位kJ/kg
@@ -511,11 +523,11 @@ float CalcDlg::calcRecomVolumeByEnthalpy(float stdErr, float inTemper, float out
 
 /*
 ** 功能：K系数法计算热量
-** 输入参数：kCoe:K系数，单位kwh/m3.℃
+** 输入参数：kCoe:K系数，单位kwh/m3.℃或者MJ/m3.℃
 			 analogV:体积，单位m3
 		     inTemper:入口温度，单位℃
 			 outTemper:出口温度，单位℃
-   返回值:热量，单位kwh
+   返回值:热量，单位kWh或者MJ(与K系数单位相对应)
 */
 float CalcDlg::calcTheoryEnergyByKCoe(float kCoe, float analogV, float inTemper, float outTemper)
 {

@@ -39,15 +39,6 @@ class CAlgorithm;
 #define COLUMN_DISP_ERROR		12 //示值误差
 #define COLUMN_STD_ERROR		13 //技术要求
 
-#define ALGO_ENTHALPY		0 //焓差法
-#define ALGO_KCOE			1 //K系数法
-
-#define UNIT_MJ		0 //能量单位 MJ
-#define UNIT_KWH	1 //能量单位 kWh
-
-#define INSTALLPOS_IN	0 //安装位置 入口
-#define INSTALLPOS_OUT	1 //安装位置 出口 
-
 
 class CALCVERIFY_EXPORT CalcDlg : public QDialog
 {
