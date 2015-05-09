@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1354</width>
+    <width>1570</width>
     <height>764</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1354</width>
+    <width>1570</width>
     <height>764</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1354</width>
+    <width>1570</width>
     <height>764</height>
    </size>
   </property>
@@ -28,9 +28,9 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>20</x>
      <y>710</y>
-     <width>1331</width>
+     <width>1531</width>
      <height>43</height>
     </rect>
    </property>
@@ -169,1687 +169,504 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_4"/>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QFrame" name="frame_input">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>1331</width>
-     <height>691</height>
+     <x>11</x>
+     <y>11</y>
+     <width>851</width>
+     <height>701</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_4">
-    <item>
-     <widget class="QFrame" name="frame_input">
-      <property name="minimumSize">
+   <property name="minimumSize">
+    <size>
+     <width>600</width>
+     <height>500</height>
+    </size>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_4">
+    <item row="0" column="0">
+     <spacer name="horizontalSpacer_13">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
        <size>
-        <width>600</width>
-        <height>500</height>
+        <width>362</width>
+        <height>20</height>
        </size>
       </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+     </spacer>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLabel" name="label">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>16</height>
+       </size>
       </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16</height>
+       </size>
       </property>
-      <widget class="QLabel" name="label">
-       <property name="geometry">
-        <rect>
-         <x>290</x>
-         <y>0</y>
-         <width>101</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;Input Data&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-      <widget class="QWidget" name="layoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>30</y>
-         <width>602</width>
-         <height>641</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QGroupBox" name="gBox_infirst">
-          <property name="title">
-           <string>First temperature difference</string>
-          </property>
-          <widget class="QWidget" name="layoutWidget">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>20</y>
-             <width>171</width>
-             <height>141</height>
-            </rect>
-           </property>
-           <layout class="QGridLayout" name="gridLayout">
-            <item row="1" column="0">
-             <widget class="QPushButton" name="btn_read_1">
-              <property name="text">
-               <string>Read</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0" colspan="2">
-             <widget class="QTableWidget" name="tbl_std_1">
-              <attribute name="horizontalHeaderCascadingSectionResizes">
-               <bool>true</bool>
-              </attribute>
-              <attribute name="horizontalHeaderDefaultSectionSize">
-               <number>50</number>
-              </attribute>
-              <attribute name="horizontalHeaderMinimumSectionSize">
-               <number>10</number>
-              </attribute>
-              <attribute name="verticalHeaderCascadingSectionResizes">
-               <bool>true</bool>
-              </attribute>
-              <attribute name="verticalHeaderMinimumSectionSize">
-               <number>10</number>
-              </attribute>
-              <row>
-               <property name="text">
-                <string>R (Ω)</string>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string>T (℃)</string>
-               </property>
-              </row>
-              <column>
-               <property name="text">
-                <string>In</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Out</string>
-               </property>
-              </column>
-              <item row="0" column="0">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="flags">
-                <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
-               </property>
-              </item>
-              <item row="0" column="1">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="flags">
-                <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
-               </property>
-              </item>
-              <item row="1" column="0">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="flags">
-                <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
-               </property>
-              </item>
-              <item row="1" column="1">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="flags">
-                <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QPushButton" name="btn_clear_1">
-              <property name="text">
-               <string>Clear</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="0" colspan="2">
-             <widget class="QLabel" name="label_2">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;std temperature&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="layoutWidget">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>170</y>
-             <width>171</width>
-             <height>461</height>
-            </rect>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_2">
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_3">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;sensor to be checked&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="label_4">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;(Input R value Ω)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QTableWidget" name="tbl_in_1">
-              <attribute name="horizontalHeaderCascadingSectionResizes">
-               <bool>true</bool>
-              </attribute>
-              <attribute name="horizontalHeaderDefaultSectionSize">
-               <number>50</number>
-              </attribute>
-              <attribute name="horizontalHeaderMinimumSectionSize">
-               <number>10</number>
-              </attribute>
-              <attribute name="verticalHeaderCascadingSectionResizes">
-               <bool>true</bool>
-              </attribute>
-              <attribute name="verticalHeaderMinimumSectionSize">
-               <number>10</number>
-              </attribute>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <column>
-               <property name="text">
-                <string>Serial</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>In</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Out</string>
-               </property>
-              </column>
-              <item row="0" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="0" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="0" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="1" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="1" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="1" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="2" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="2" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="2" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="3" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="3" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="3" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="4" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="4" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="4" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="5" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="5" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="5" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="6" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="6" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="6" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="7" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="7" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="7" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="8" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="8" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="8" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="9" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="9" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="9" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="10" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="10" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="10" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="11" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="11" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="11" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QGroupBox" name="gBox_insec">
-          <property name="title">
-           <string>Second temperature difference</string>
-          </property>
-          <widget class="QWidget" name="layoutWidget">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>20</y>
-             <width>171</width>
-             <height>141</height>
-            </rect>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_3">
-            <item row="0" column="0" colspan="2">
-             <widget class="QLabel" name="label_5">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;std temperature&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QPushButton" name="btn_read_2">
-              <property name="enabled">
-               <bool>true</bool>
-              </property>
-              <property name="text">
-               <string>Read</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QPushButton" name="btn_clear_2">
-              <property name="enabled">
-               <bool>true</bool>
-              </property>
-              <property name="text">
-               <string>Clear</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0" colspan="2">
-             <widget class="QTableWidget" name="tbl_std_2">
-              <property name="enabled">
-               <bool>true</bool>
-              </property>
-              <attribute name="horizontalHeaderCascadingSectionResizes">
-               <bool>true</bool>
-              </attribute>
-              <attribute name="horizontalHeaderDefaultSectionSize">
-               <number>50</number>
-              </attribute>
-              <attribute name="horizontalHeaderMinimumSectionSize">
-               <number>10</number>
-              </attribute>
-              <attribute name="verticalHeaderCascadingSectionResizes">
-               <bool>true</bool>
-              </attribute>
-              <attribute name="verticalHeaderMinimumSectionSize">
-               <number>10</number>
-              </attribute>
-              <row>
-               <property name="text">
-                <string>R (Ω)</string>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string>T (℃)</string>
-               </property>
-              </row>
-              <column>
-               <property name="text">
-                <string>In</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Out</string>
-               </property>
-              </column>
-              <item row="0" column="0">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="flags">
-                <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
-               </property>
-              </item>
-              <item row="0" column="1">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="flags">
-                <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
-               </property>
-              </item>
-              <item row="1" column="0">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="flags">
-                <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
-               </property>
-              </item>
-              <item row="1" column="1">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="flags">
-                <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
-               </property>
-              </item>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="layoutWidget">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>170</y>
-             <width>171</width>
-             <height>461</height>
-            </rect>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_4">
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_6">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;sensor to be checked&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="label_8">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;(Input R value Ω)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QTableWidget" name="tbl_in_2">
-              <property name="enabled">
-               <bool>true</bool>
-              </property>
-              <attribute name="horizontalHeaderCascadingSectionResizes">
-               <bool>true</bool>
-              </attribute>
-              <attribute name="horizontalHeaderDefaultSectionSize">
-               <number>50</number>
-              </attribute>
-              <attribute name="horizontalHeaderMinimumSectionSize">
-               <number>10</number>
-              </attribute>
-              <attribute name="verticalHeaderCascadingSectionResizes">
-               <bool>true</bool>
-              </attribute>
-              <attribute name="verticalHeaderMinimumSectionSize">
-               <number>10</number>
-              </attribute>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <column>
-               <property name="text">
-                <string>Serial</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>In</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Out</string>
-               </property>
-              </column>
-              <item row="0" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="0" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="0" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="1" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="1" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="1" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="2" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="2" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="2" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="3" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="3" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="3" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="4" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="4" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="4" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="5" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="5" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="5" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="6" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="6" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="6" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="7" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="7" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="7" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="8" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="8" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="8" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="9" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="9" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="9" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="10" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="10" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="10" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="11" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="11" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="11" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QGroupBox" name="gBox_inthird">
-          <property name="title">
-           <string>Third temperature difference</string>
-          </property>
-          <widget class="QWidget" name="layoutWidget">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>20</y>
-             <width>171</width>
-             <height>141</height>
-            </rect>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_5">
-            <item row="0" column="0" colspan="2">
-             <widget class="QLabel" name="label_20">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;std temperature&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QPushButton" name="btn_read_3">
-              <property name="enabled">
-               <bool>true</bool>
-              </property>
-              <property name="text">
-               <string>Read</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QPushButton" name="btn_clear_3">
-              <property name="enabled">
-               <bool>true</bool>
-              </property>
-              <property name="text">
-               <string>Clear</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0" colspan="2">
-             <widget class="QTableWidget" name="tbl_std_3">
-              <property name="enabled">
-               <bool>true</bool>
-              </property>
-              <attribute name="horizontalHeaderCascadingSectionResizes">
-               <bool>true</bool>
-              </attribute>
-              <attribute name="horizontalHeaderDefaultSectionSize">
-               <number>50</number>
-              </attribute>
-              <attribute name="horizontalHeaderMinimumSectionSize">
-               <number>10</number>
-              </attribute>
-              <attribute name="verticalHeaderCascadingSectionResizes">
-               <bool>true</bool>
-              </attribute>
-              <attribute name="verticalHeaderMinimumSectionSize">
-               <number>10</number>
-              </attribute>
-              <row>
-               <property name="text">
-                <string>R (Ω)</string>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string>T (℃)</string>
-               </property>
-              </row>
-              <column>
-               <property name="text">
-                <string>In</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Out</string>
-               </property>
-              </column>
-              <item row="0" column="0">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="flags">
-                <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
-               </property>
-              </item>
-              <item row="0" column="1">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="flags">
-                <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
-               </property>
-              </item>
-              <item row="1" column="0">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="flags">
-                <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
-               </property>
-              </item>
-              <item row="1" column="1">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="flags">
-                <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
-               </property>
-              </item>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="layoutWidget">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>170</y>
-             <width>171</width>
-             <height>461</height>
-            </rect>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_6">
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_7">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;sensor to be checked&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="label_9">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;(Input R value Ω)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QTableWidget" name="tbl_in_3">
-              <property name="enabled">
-               <bool>true</bool>
-              </property>
-              <attribute name="horizontalHeaderCascadingSectionResizes">
-               <bool>true</bool>
-              </attribute>
-              <attribute name="horizontalHeaderDefaultSectionSize">
-               <number>50</number>
-              </attribute>
-              <attribute name="horizontalHeaderMinimumSectionSize">
-               <number>10</number>
-              </attribute>
-              <attribute name="verticalHeaderCascadingSectionResizes">
-               <bool>true</bool>
-              </attribute>
-              <attribute name="verticalHeaderMinimumSectionSize">
-               <number>10</number>
-              </attribute>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string/>
-               </property>
-              </row>
-              <column>
-               <property name="text">
-                <string>Serial</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>In</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Out</string>
-               </property>
-              </column>
-              <item row="0" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="0" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="0" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="1" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="1" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="1" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="2" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="2" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="2" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="3" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="3" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="3" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="4" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="4" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="4" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="5" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="5" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="5" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="6" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="6" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="6" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="7" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="7" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="7" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="8" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="8" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="8" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="9" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="9" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="9" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="10" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="10" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="10" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="11" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="11" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="11" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </widget>
-        </item>
-       </layout>
-      </widget>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;Input Data&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
      </widget>
     </item>
-    <item>
-     <widget class="QFrame" name="frame_result">
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+    <item row="0" column="2">
+     <spacer name="horizontalSpacer_14">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>362</width>
+        <height>20</height>
+       </size>
       </property>
-      <widget class="QLabel" name="label_23">
-       <property name="geometry">
-        <rect>
-         <x>290</x>
-         <y>40</y>
-         <width>101</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;Result&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-      <widget class="QWidget" name="layoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>90</y>
-         <width>590</width>
-         <height>581</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <item>
-         <widget class="QGroupBox" name="groupBox_8">
-          <property name="title">
-           <string>First temperature difference</string>
-          </property>
-          <widget class="QTableWidget" name="tbl_chkerror_1">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="geometry">
-            <rect>
-             <x>11</x>
-             <y>119</y>
-             <width>171</width>
-             <height>441</height>
-            </rect>
-           </property>
+     </spacer>
+    </item>
+    <item row="1" column="0" colspan="3">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QGroupBox" name="gBox_infirst">
+        <property name="title">
+         <string>1st temperature head</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="3" column="0" colspan="5">
+          <layout class="QVBoxLayout" name="verticalLayout_7">
+           <item>
+            <widget class="QLabel" name="label_3">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;sensor to be checked&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_4">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;(Input R value Ω)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="tbl_in_1">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <attribute name="horizontalHeaderCascadingSectionResizes">
+              <bool>true</bool>
+             </attribute>
+             <attribute name="horizontalHeaderDefaultSectionSize">
+              <number>80</number>
+             </attribute>
+             <attribute name="horizontalHeaderMinimumSectionSize">
+              <number>80</number>
+             </attribute>
+             <attribute name="verticalHeaderCascadingSectionResizes">
+              <bool>true</bool>
+             </attribute>
+             <attribute name="verticalHeaderMinimumSectionSize">
+              <number>50</number>
+             </attribute>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <column>
+              <property name="text">
+               <string>Serial</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>In</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Out</string>
+              </property>
+             </column>
+             <item row="0" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="0" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="0" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="1" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="1" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="1" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="2" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="2" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="2" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="3" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="3" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="3" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="4" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="4" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="4" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="5" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="5" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="5" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="6" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="6" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="6" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="7" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="7" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="7" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="8" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="8" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="8" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="9" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="9" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="9" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="10" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="10" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="10" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="11" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="11" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="11" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="3">
+          <widget class="QPushButton" name="btn_clear_1">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <attribute name="horizontalHeaderCascadingSectionResizes">
-            <bool>true</bool>
-           </attribute>
-           <attribute name="horizontalHeaderDefaultSectionSize">
-            <number>50</number>
-           </attribute>
-           <attribute name="horizontalHeaderMinimumSectionSize">
-            <number>10</number>
-           </attribute>
-           <attribute name="verticalHeaderCascadingSectionResizes">
-            <bool>true</bool>
-           </attribute>
-           <attribute name="verticalHeaderMinimumSectionSize">
-            <number>10</number>
-           </attribute>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <column>
-            <property name="text">
-             <string>In
-T
-(℃)</string>
-            </property>
-           </column>
-           <column>
-            <property name="text">
-             <string>Out
-T
-(℃)</string>
-            </property>
-           </column>
-           <column>
-            <property name="text">
-             <string>Error
-(%)</string>
-            </property>
-           </column>
-           <item row="0" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="0" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="0" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="1" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="1" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="1" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="2" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="2" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="2" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="3" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="3" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="3" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="4" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="4" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="4" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="5" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="5" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="5" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="6" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="6" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="6" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="7" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="7" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="7" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="8" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="8" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="8" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="9" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="9" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="9" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="10" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="10" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="10" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="11" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="11" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="11" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>60</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Clear</string>
+           </property>
           </widget>
-          <widget class="QTableWidget" name="tbl_stderror_1">
-           <property name="enabled">
-            <bool>false</bool>
+         </item>
+         <item row="0" column="1" colspan="3">
+          <widget class="QLabel" name="label_2">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>23</height>
+            </size>
            </property>
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>50</y>
-             <width>171</width>
-             <height>61</height>
-            </rect>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>23</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;std temperature&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <spacer name="horizontalSpacer_6">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>34</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="1" column="1">
+          <widget class="QPushButton" name="btn_read_1">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>26</width>
+             <height>23</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Read</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0" colspan="5">
+          <widget class="QTableWidget" name="tbl_std_1">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>99</height>
+            </size>
            </property>
            <attribute name="horizontalHeaderCascadingSectionResizes">
             <bool>true</bool>
            </attribute>
            <attribute name="horizontalHeaderDefaultSectionSize">
-            <number>50</number>
+            <number>80</number>
            </attribute>
            <attribute name="horizontalHeaderMinimumSectionSize">
             <number>10</number>
@@ -1862,7 +679,12 @@ T
            </attribute>
            <row>
             <property name="text">
-             <string/>
+             <string>R (Ω)</string>
+            </property>
+           </row>
+           <row>
+            <property name="text">
+             <string>T (℃)</string>
             </property>
            </row>
            <column>
@@ -1875,789 +697,2342 @@ T
              <string>Out</string>
             </property>
            </column>
-           <column>
-            <property name="text">
-             <string>ΔT</string>
-            </property>
-           </column>
            <item row="0" column="0">
             <property name="text">
              <string/>
+            </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
             </property>
            </item>
            <item row="0" column="1">
             <property name="text">
              <string/>
             </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
+            </property>
            </item>
-           <item row="0" column="2">
+           <item row="1" column="0">
             <property name="text">
              <string/>
             </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
+            </property>
+           </item>
+           <item row="1" column="1">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
+            </property>
            </item>
           </widget>
-          <widget class="QLabel" name="label_28">
-           <property name="geometry">
-            <rect>
-             <x>30</x>
-             <y>30</y>
-             <width>121</width>
+         </item>
+         <item row="1" column="2">
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>35</width>
              <height>20</height>
-            </rect>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="1" column="4">
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>34</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="gBox_infirst_2">
+        <property name="title">
+         <string>2nd temperature head</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="0" column="1" colspan="3">
+          <widget class="QLabel" name="label_5">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>23</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>23</height>
+            </size>
            </property>
            <property name="text">
-            <string>Limit of error ℃/%</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;std temperature&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
+         </item>
+         <item row="1" column="0">
+          <spacer name="horizontalSpacer_7">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>39</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="1" column="1">
+          <widget class="QPushButton" name="btn_read_2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>60</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Read</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <spacer name="horizontalSpacer_8">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="1" column="3">
+          <widget class="QPushButton" name="btn_clear_2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>60</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Clear</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="4">
+          <spacer name="horizontalSpacer_9">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>39</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="2" column="0" colspan="5">
+          <widget class="QTableWidget" name="tbl_std_2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>99</height>
+            </size>
+           </property>
+           <attribute name="horizontalHeaderCascadingSectionResizes">
+            <bool>true</bool>
+           </attribute>
+           <attribute name="horizontalHeaderDefaultSectionSize">
+            <number>80</number>
+           </attribute>
+           <attribute name="horizontalHeaderMinimumSectionSize">
+            <number>10</number>
+           </attribute>
+           <attribute name="verticalHeaderCascadingSectionResizes">
+            <bool>true</bool>
+           </attribute>
+           <attribute name="verticalHeaderMinimumSectionSize">
+            <number>10</number>
+           </attribute>
+           <row>
+            <property name="text">
+             <string>R (Ω)</string>
+            </property>
+           </row>
+           <row>
+            <property name="text">
+             <string>T (℃)</string>
+            </property>
+           </row>
+           <column>
+            <property name="text">
+             <string>In</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Out</string>
+            </property>
+           </column>
+           <item row="0" column="0">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
+            </property>
+           </item>
+           <item row="0" column="1">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
+            </property>
+           </item>
+           <item row="1" column="0">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
+            </property>
+           </item>
+           <item row="1" column="1">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="3" column="0" colspan="5">
+          <layout class="QVBoxLayout" name="verticalLayout_8">
+           <item>
+            <widget class="QLabel" name="label_6">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;sensor to be checked&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_7">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;(Input R value Ω)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="tbl_in_2">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <attribute name="horizontalHeaderCascadingSectionResizes">
+              <bool>true</bool>
+             </attribute>
+             <attribute name="horizontalHeaderDefaultSectionSize">
+              <number>80</number>
+             </attribute>
+             <attribute name="horizontalHeaderMinimumSectionSize">
+              <number>80</number>
+             </attribute>
+             <attribute name="verticalHeaderCascadingSectionResizes">
+              <bool>true</bool>
+             </attribute>
+             <attribute name="verticalHeaderMinimumSectionSize">
+              <number>50</number>
+             </attribute>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <column>
+              <property name="text">
+               <string>Serial</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>In</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Out</string>
+              </property>
+             </column>
+             <item row="0" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="0" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="0" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="1" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="1" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="1" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="2" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="2" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="2" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="3" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="3" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="3" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="4" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="4" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="4" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="5" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="5" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="5" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="6" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="6" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="6" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="7" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="7" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="7" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="8" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="8" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="8" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="9" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="9" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="9" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="10" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="10" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="10" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="11" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="11" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="11" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="gBox_infirst_3">
+        <property name="title">
+         <string>3rd temperature head</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="0" column="1" colspan="3">
+          <widget class="QLabel" name="label_8">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>23</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>23</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;std temperature&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <spacer name="horizontalSpacer_10">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>39</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="1" column="1">
+          <widget class="QPushButton" name="btn_read_3">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>60</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Read</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <spacer name="horizontalSpacer_11">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="1" column="3">
+          <widget class="QPushButton" name="btn_clear_3">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>60</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Clear</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="4">
+          <spacer name="horizontalSpacer_12">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>39</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="2" column="0" colspan="5">
+          <widget class="QTableWidget" name="tbl_std_3">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>99</height>
+            </size>
+           </property>
+           <attribute name="horizontalHeaderCascadingSectionResizes">
+            <bool>true</bool>
+           </attribute>
+           <attribute name="horizontalHeaderDefaultSectionSize">
+            <number>80</number>
+           </attribute>
+           <attribute name="horizontalHeaderMinimumSectionSize">
+            <number>10</number>
+           </attribute>
+           <attribute name="verticalHeaderCascadingSectionResizes">
+            <bool>true</bool>
+           </attribute>
+           <attribute name="verticalHeaderMinimumSectionSize">
+            <number>10</number>
+           </attribute>
+           <row>
+            <property name="text">
+             <string>R (Ω)</string>
+            </property>
+           </row>
+           <row>
+            <property name="text">
+             <string>T (℃)</string>
+            </property>
+           </row>
+           <column>
+            <property name="text">
+             <string>In</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Out</string>
+            </property>
+           </column>
+           <item row="0" column="0">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
+            </property>
+           </item>
+           <item row="0" column="1">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
+            </property>
+           </item>
+           <item row="1" column="0">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
+            </property>
+           </item>
+           <item row="1" column="1">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="3" column="0" colspan="5">
+          <layout class="QVBoxLayout" name="verticalLayout_9">
+           <item>
+            <widget class="QLabel" name="label_9">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;sensor to be checked&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_10">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;(Input R value Ω)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="tbl_in_3">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <attribute name="horizontalHeaderCascadingSectionResizes">
+              <bool>true</bool>
+             </attribute>
+             <attribute name="horizontalHeaderDefaultSectionSize">
+              <number>80</number>
+             </attribute>
+             <attribute name="horizontalHeaderMinimumSectionSize">
+              <number>80</number>
+             </attribute>
+             <attribute name="verticalHeaderCascadingSectionResizes">
+              <bool>true</bool>
+             </attribute>
+             <attribute name="verticalHeaderMinimumSectionSize">
+              <number>50</number>
+             </attribute>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string/>
+              </property>
+             </row>
+             <column>
+              <property name="text">
+               <string>Serial</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>In</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Out</string>
+              </property>
+             </column>
+             <item row="0" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="0" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="0" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="1" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="1" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="1" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="2" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="2" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="2" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="3" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="3" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="3" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="4" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="4" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="4" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="5" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="5" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="5" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="6" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="6" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="6" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="7" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="7" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="7" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="8" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="8" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="8" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="9" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="9" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="9" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="10" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="10" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="10" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="11" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="11" column="1">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="11" column="2">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QFrame" name="frame_result">
+   <property name="geometry">
+    <rect>
+     <x>870</x>
+     <y>10</y>
+     <width>691</width>
+     <height>691</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="label_23">
+    <property name="geometry">
+     <rect>
+      <x>273</x>
+      <y>40</y>
+      <width>111</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>26</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>26</height>
+     </size>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;Result&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>110</y>
+      <width>671</width>
+      <height>571</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QGroupBox" name="groupBox_8">
+       <property name="title">
+        <string>1st temperature head</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QLabel" name="label_28">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Limit of error ℃/%&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
          </widget>
         </item>
         <item>
-         <widget class="QGroupBox" name="groupBox_9">
-          <property name="title">
-           <string>Second temperature difference</string>
+         <widget class="QTableWidget" name="tbl_stderror_1">
+          <property name="enabled">
+           <bool>false</bool>
           </property>
-          <widget class="QLabel" name="label_25">
-           <property name="geometry">
-            <rect>
-             <x>30</x>
-             <y>30</y>
-             <width>121</width>
-             <height>20</height>
-            </rect>
-           </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>70</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>70</height>
+           </size>
+          </property>
+          <attribute name="horizontalHeaderCascadingSectionResizes">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>63</number>
+          </attribute>
+          <attribute name="horizontalHeaderMinimumSectionSize">
+           <number>10</number>
+          </attribute>
+          <attribute name="verticalHeaderCascadingSectionResizes">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>10</number>
+          </attribute>
+          <row>
            <property name="text">
-            <string>Limit of error ℃/%</string>
+            <string/>
            </property>
-          </widget>
-          <widget class="QTableWidget" name="tbl_stderror_2">
-           <property name="enabled">
-            <bool>false</bool>
+          </row>
+          <column>
+           <property name="text">
+            <string>In</string>
            </property>
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>50</y>
-             <width>171</width>
-             <height>61</height>
-            </rect>
+          </column>
+          <column>
+           <property name="text">
+            <string>Out</string>
            </property>
-           <attribute name="horizontalHeaderCascadingSectionResizes">
-            <bool>true</bool>
-           </attribute>
-           <attribute name="horizontalHeaderDefaultSectionSize">
-            <number>50</number>
-           </attribute>
-           <attribute name="horizontalHeaderMinimumSectionSize">
-            <number>10</number>
-           </attribute>
-           <attribute name="verticalHeaderCascadingSectionResizes">
-            <bool>true</bool>
-           </attribute>
-           <attribute name="verticalHeaderMinimumSectionSize">
-            <number>10</number>
-           </attribute>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <column>
-            <property name="text">
-             <string>In</string>
-            </property>
-           </column>
-           <column>
-            <property name="text">
-             <string>Out</string>
-            </property>
-           </column>
-           <column>
-            <property name="text">
-             <string>ΔT</string>
-            </property>
-           </column>
-           <item row="0" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="0" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="0" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-          </widget>
-          <widget class="QTableWidget" name="tbl_chkerror_2">
-           <property name="enabled">
-            <bool>false</bool>
+          </column>
+          <column>
+           <property name="text">
+            <string>ΔT</string>
            </property>
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>120</y>
-             <width>171</width>
-             <height>441</height>
-            </rect>
+          </column>
+          <item row="0" column="0">
+           <property name="text">
+            <string/>
            </property>
-           <attribute name="horizontalHeaderCascadingSectionResizes">
-            <bool>true</bool>
-           </attribute>
-           <attribute name="horizontalHeaderDefaultSectionSize">
-            <number>50</number>
-           </attribute>
-           <attribute name="horizontalHeaderMinimumSectionSize">
-            <number>10</number>
-           </attribute>
-           <attribute name="verticalHeaderCascadingSectionResizes">
-            <bool>true</bool>
-           </attribute>
-           <attribute name="verticalHeaderMinimumSectionSize">
-            <number>10</number>
-           </attribute>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <column>
-            <property name="text">
-             <string>In
-T
-(℃)</string>
-            </property>
-           </column>
-           <column>
-            <property name="text">
-             <string>Out
-T
-(℃)</string>
-            </property>
-           </column>
-           <column>
-            <property name="text">
-             <string>Error
-(%)</string>
-            </property>
-           </column>
-           <item row="0" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="0" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="0" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="1" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="1" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="1" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="2" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="2" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="2" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="3" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="3" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="3" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="4" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="4" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="4" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="5" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="5" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="5" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="6" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="6" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="6" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="7" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="7" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="7" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="8" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="8" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="8" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="9" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="9" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="9" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="10" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="10" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="10" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="11" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="11" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="11" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-          </widget>
+          </item>
+          <item row="0" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="0" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
          </widget>
         </item>
         <item>
-         <widget class="QGroupBox" name="groupBox_10">
-          <property name="title">
-           <string>Third temperature difference</string>
+         <widget class="QTableWidget" name="tbl_chkerror_1">
+          <property name="enabled">
+           <bool>false</bool>
           </property>
-          <widget class="QLabel" name="label_26">
-           <property name="geometry">
-            <rect>
-             <x>40</x>
-             <y>30</y>
-             <width>121</width>
-             <height>20</height>
-            </rect>
-           </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <attribute name="horizontalHeaderCascadingSectionResizes">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>63</number>
+          </attribute>
+          <attribute name="horizontalHeaderMinimumSectionSize">
+           <number>10</number>
+          </attribute>
+          <attribute name="verticalHeaderCascadingSectionResizes">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>10</number>
+          </attribute>
+          <row>
            <property name="text">
-            <string>Limit of error ℃/%</string>
+            <string/>
            </property>
-          </widget>
-          <widget class="QTableWidget" name="tbl_stderror_3">
-           <property name="enabled">
-            <bool>false</bool>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
            </property>
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>50</y>
-             <width>171</width>
-             <height>61</height>
-            </rect>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
            </property>
-           <attribute name="horizontalHeaderCascadingSectionResizes">
-            <bool>true</bool>
-           </attribute>
-           <attribute name="horizontalHeaderDefaultSectionSize">
-            <number>50</number>
-           </attribute>
-           <attribute name="horizontalHeaderMinimumSectionSize">
-            <number>10</number>
-           </attribute>
-           <attribute name="verticalHeaderCascadingSectionResizes">
-            <bool>true</bool>
-           </attribute>
-           <attribute name="verticalHeaderMinimumSectionSize">
-            <number>10</number>
-           </attribute>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <column>
-            <property name="text">
-             <string>In</string>
-            </property>
-           </column>
-           <column>
-            <property name="text">
-             <string>Out</string>
-            </property>
-           </column>
-           <column>
-            <property name="text">
-             <string>ΔT</string>
-            </property>
-           </column>
-           <item row="0" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="0" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="0" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-          </widget>
-          <widget class="QTableWidget" name="tbl_chkerror_3">
-           <property name="enabled">
-            <bool>false</bool>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
            </property>
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>120</y>
-             <width>171</width>
-             <height>441</height>
-            </rect>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
            </property>
-           <attribute name="horizontalHeaderCascadingSectionResizes">
-            <bool>true</bool>
-           </attribute>
-           <attribute name="horizontalHeaderDefaultSectionSize">
-            <number>50</number>
-           </attribute>
-           <attribute name="horizontalHeaderMinimumSectionSize">
-            <number>10</number>
-           </attribute>
-           <attribute name="verticalHeaderCascadingSectionResizes">
-            <bool>true</bool>
-           </attribute>
-           <attribute name="verticalHeaderMinimumSectionSize">
-            <number>10</number>
-           </attribute>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <row>
-            <property name="text">
-             <string/>
-            </property>
-           </row>
-           <column>
-            <property name="text">
-             <string>In
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <column>
+           <property name="text">
+            <string>In
 T
 (℃)</string>
-            </property>
-           </column>
-           <column>
-            <property name="text">
-             <string>Out
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Out
 T
 (℃)</string>
-            </property>
-           </column>
-           <column>
-            <property name="text">
-             <string>Error
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Error
 (%)</string>
-            </property>
-           </column>
-           <item row="0" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="0" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="0" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="1" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="1" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="1" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="2" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="2" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="2" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="3" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="3" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="3" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="4" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="4" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="4" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="5" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="5" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="5" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="6" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="6" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="6" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="7" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="7" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="7" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="8" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="8" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="8" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="9" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="9" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="9" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="10" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="10" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="10" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="11" column="0">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="11" column="1">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item row="11" column="2">
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-          </widget>
+           </property>
+          </column>
+          <item row="0" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="0" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="0" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="1" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="1" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="1" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="2" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="2" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="2" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="3" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="3" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="3" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="4" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="4" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="4" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="5" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="5" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="5" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="6" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="6" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="6" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="7" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="7" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="7" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="8" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="8" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="8" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="9" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="9" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="9" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="10" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="10" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="10" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="11" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="11" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="11" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
          </widget>
         </item>
        </layout>
       </widget>
-     </widget>
-    </item>
-   </layout>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox_9">
+       <property name="title">
+        <string>2nd temperature head</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_6">
+        <item>
+         <widget class="QLabel" name="label_29">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Limit of error ℃/%&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="tbl_stderror_2">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>70</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>70</height>
+           </size>
+          </property>
+          <attribute name="horizontalHeaderCascadingSectionResizes">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>63</number>
+          </attribute>
+          <attribute name="horizontalHeaderMinimumSectionSize">
+           <number>10</number>
+          </attribute>
+          <attribute name="verticalHeaderCascadingSectionResizes">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>10</number>
+          </attribute>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <column>
+           <property name="text">
+            <string>In</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Out</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>ΔT</string>
+           </property>
+          </column>
+          <item row="0" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="0" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="0" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="tbl_chkerror_2">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <attribute name="horizontalHeaderCascadingSectionResizes">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>63</number>
+          </attribute>
+          <attribute name="horizontalHeaderMinimumSectionSize">
+           <number>10</number>
+          </attribute>
+          <attribute name="verticalHeaderCascadingSectionResizes">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>10</number>
+          </attribute>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <column>
+           <property name="text">
+            <string>In
+T
+(℃)</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Out
+T
+(℃)</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Error
+(%)</string>
+           </property>
+          </column>
+          <item row="0" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="0" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="0" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="1" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="1" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="1" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="2" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="2" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="2" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="3" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="3" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="3" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="4" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="4" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="4" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="5" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="5" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="5" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="6" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="6" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="6" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="7" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="7" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="7" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="8" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="8" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="8" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="9" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="9" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="9" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="10" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="10" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="10" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="11" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="11" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="11" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox_10">
+       <property name="title">
+        <string>3rd temperature head</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_10">
+        <item>
+         <widget class="QLabel" name="label_30">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Limit of error ℃/%&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="tbl_stderror_3">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>70</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>70</height>
+           </size>
+          </property>
+          <attribute name="horizontalHeaderCascadingSectionResizes">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>63</number>
+          </attribute>
+          <attribute name="horizontalHeaderMinimumSectionSize">
+           <number>10</number>
+          </attribute>
+          <attribute name="verticalHeaderCascadingSectionResizes">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>10</number>
+          </attribute>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <column>
+           <property name="text">
+            <string>In</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Out</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>ΔT</string>
+           </property>
+          </column>
+          <item row="0" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="0" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="0" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="tbl_chkerror_3">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <attribute name="horizontalHeaderCascadingSectionResizes">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>63</number>
+          </attribute>
+          <attribute name="horizontalHeaderMinimumSectionSize">
+           <number>10</number>
+          </attribute>
+          <attribute name="verticalHeaderCascadingSectionResizes">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>10</number>
+          </attribute>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string/>
+           </property>
+          </row>
+          <column>
+           <property name="text">
+            <string>In
+T
+(℃)</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Out
+T
+(℃)</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Error
+(%)</string>
+           </property>
+          </column>
+          <item row="0" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="0" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="0" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="1" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="1" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="1" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="2" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="2" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="2" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="3" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="3" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="3" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="4" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="4" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="4" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="5" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="5" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="5" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="6" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="6" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="6" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="7" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="7" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="7" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="8" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="8" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="8" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="9" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="9" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="9" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="10" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="10" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="10" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="11" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="11" column="1">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="11" column="2">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
  </widget>
  <resources/>

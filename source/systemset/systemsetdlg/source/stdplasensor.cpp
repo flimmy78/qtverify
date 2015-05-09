@@ -21,6 +21,8 @@ void stdplasensorDlg::showEvent(QShowEvent *)
 	readmodelconfig();
 	m_tbls_inited = false;
 	initTbls();
+	ui.tbl_pt100_in->setEnabled(true);
+	ui.tbl_pt100_out->setEnabled(true);
 }
 
 void stdplasensorDlg::initTbls()
@@ -147,6 +149,8 @@ void stdplasensorDlg::on_gBox_pt100_clicked()
 	if (ui.gBox_pt100->isChecked())
 	{
 		ui.gBox_pt25->setChecked(false);
+		ui.tbl_pt100_in->setEnabled(true);
+		ui.tbl_pt100_out->setEnabled(true);
 		readpt100config();
 	}
 }

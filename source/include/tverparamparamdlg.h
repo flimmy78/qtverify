@@ -43,9 +43,6 @@ private:
 	int m_meterStdNum;	//热量表规格
 	MeterStandard_PTR m_meterStdPtr;//热量表规格
 
-	int m_meterTypeNum;	//热量表类型
-	MeterType_PTR m_meterTypePtr;//热量表类型数量
-
 	int m_manuFacNum;	//制造单位
 	Manufacture_PTR m_manuFacPtr;//制造单位数量
 

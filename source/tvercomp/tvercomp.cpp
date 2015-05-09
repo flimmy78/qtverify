@@ -71,6 +71,7 @@ void tvercompDlg::on_btn_param_clicked()
 	{
 		delete m_PlaCompParamDlg;
 	}
+	
 	m_PlaCompParamDlg = new tvercompparamDlg;
 	m_PlaCompParamDlg->show();
 }

@@ -175,19 +175,23 @@ void FlowResultDlg::getConditon()
 	int idx, count;
 	idx = ui.cmbManufactDept->currentIndex();
 	count = ui.cmbManufactDept->count();
-	if (idx != (count-1) && idx != 0xffffffff)//制造单位
+
+	int not_select;
+	not_select = not_select ^ not_select;
+	not_select = ~not_select;
+	if (idx != (count-1) && idx != not_select)//制造单位
 	{
 		m_conStr.append(QString(" and F_ManufactDept=%1").arg(ui.cmbManufactDept->currentIndex()));
 	}
 	idx = ui.cmbVerifyDept->currentIndex();
 	count = ui.cmbVerifyDept->count();
-	if (idx != (count-1) && idx != 0xffffffff)//送检单位
+	if (idx != (count-1) && idx != not_select)//送检单位
 	{
 		m_conStr.append(QString(" and F_VerifyDept=%1").arg(ui.cmbVerifyDept->currentIndex()));
 	}
 	idx = ui.cmbVerifyPerson->currentIndex();
 	count = ui.cmbVerifyPerson->count();
-	if (idx != (count-1) && idx != 0xffffffff)//检定员
+	if (idx != (count-1) && idx != not_select)//检定员
 	{
 		m_conStr.append(QString(" and F_VerifyPerson=%1").arg(ui.cmbVerifyPerson->currentIndex()));
 	}
