@@ -35,10 +35,32 @@ void tverparamDlg::showEvent(QShowEvent * event)
 	m_saved_times = 0;
 	m_temp_index = 0;
 
+	initTbls();
+
 	connect(this, SIGNAL(firstTmpVerOk()), this, SLOT(firstTmpVerOk_slot()));
 	connect(this, SIGNAL(secondTmpVerOk()), this, SLOT(secondTmpVerOk_slot()));
 	connect(this, SIGNAL(thirdTmpVerOk()), this, SLOT(thirdTmpVerOk_slot()));
 	connect(this, SIGNAL(allTmpVerOk()), this, SLOT(calcBasicErr()));
+}
+
+void tverparamDlg::initTbls()
+{
+	initTbl(ui.tbl_result);
+}
+
+void tverparamDlg::initTbl(QTableWidget* tbl)
+{
+	int row = tbl->rowCount();
+	int col = tbl->columnCount();
+	QTableWidgetItem *tbl_wdg_tem;
+	for (int i=0; i < row; i++)
+	{
+		for (int j=0; j < col; j++)
+		{
+			tbl_wdg_tem = tbl->item(i, j);
+			tbl_wdg_tem->setFlags(Qt::ItemIsSelectable|Qt::ItemIsDragEnabled|Qt::ItemIsUserCheckable);
+		}
+	}
 }
 
 void tverparamDlg::closeEvent(QCloseEvent * event)

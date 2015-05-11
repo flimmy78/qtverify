@@ -131,6 +131,8 @@ private:
 
 	bool m_tbl_inited;//表格初始化完毕
 private:
+	void initTbls();
+	void initTbl(QTableWidget*);//初始化表格
 	void insertData();
 	void readConfig();//读取标准温度计、被检铂电阻、检测参数等
 	void readChkResult();//读取被检铂电阻检测结果
