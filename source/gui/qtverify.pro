@@ -17,7 +17,7 @@ QMAKE_LIBDIR = 	$(RUNHOME)/lib \
 								
 LIBS += -lalgorithm -lsystemsetdlg -ldatatestdlg -lqaxserver -lmasterslaveset -llogindialog \
 				-lqtexdb -lflowweight -lflowstandard -ltotalweight -ltotalstandard -lcalcverify \
-				-lreport -ltvercomp -ltverparam -lcmbverify 
+				-lreport -ltvercomp -ltverparam -lcmbverify -lresultquerydlg
 
 # Input
 HEADERS += include/mainform.h	\
@@ -45,7 +45,7 @@ DESTDIR = $(RUNHOME)\tmp\qtverify\obj
 
 MOC_DIR = $(RUNHOME)/tmp/qtverify/moc
 OBJECTS_DIR = $(RUNHOME)/tmp/qtverify/obj
-UI_DIR = $(RUNHOME)/tmp/qtverify/ui
+UI_DIR = $(RUNHOME_INC)/include
 
 
 INCLUDEPATH += 	./include	\

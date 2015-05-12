@@ -26,6 +26,8 @@ class tvercompDlg;
 class tverparamDlg;
 class stdplasensorDlg;
 class chkplasensorDlg;
+class FlowWeightResultDlg;
+class PLaCompareResultDlg;
 
 class MainForm : public QMainWindow
 {
@@ -36,7 +38,7 @@ public:
 	~MainForm();
 
 	DbMySql *m_mySql;
-	FlowResultDlg *m_flowResultDlg;
+	
 	CAlgorithm *m_alg;
 	SetComFrm *m_setcom; //串口参数设置
 	DataTestDlg *m_datatestdlg; //采集与控制测试程序
@@ -57,6 +59,15 @@ public:
 	StdMtrCoeCorrect *m_stdCoeCorrect; //标准表系数标定
 	stdplasensorDlg *m_stdPtParaDlg; //标准铂电阻参数设定
 	chkplasensorDlg *m_chkPtParaDlg; //被检铂电阻参数设置
+
+	///////////////////////////////////////////////
+	////              检定结果              ////////
+	///////////////////////////////////////////////
+	//FlowResultDlg *m_flowResultDlg;
+	FlowWeightResultDlg* m_flowResultDlg;
+	PLaCompareResultDlg* m_PlaVerify_Compare_result;
+
+
 
 	void closeEvent(QCloseEvent * event);
 
@@ -108,6 +119,9 @@ public slots:
 	void on_actionEnglish_triggered();
 	void on_actionChinese_triggered();
 
+	//Platinum Result
+	void on_actionPlaVerify_Compare_triggered();
+	void on_actionPlaVerify_Parameter_triggered();
 private:
 	Ui::qMainFormClass ui;
 };

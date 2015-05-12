@@ -37,6 +37,8 @@
 #include "tverparam.h"
 #include "stdplasensor.h"
 #include "chkplasensor.h"
+#include "flowweight_result.h"
+#include "placompare_result.h"
 
 MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
@@ -69,6 +71,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_stdCoeCorrect = NULL;
 	m_stdPtParaDlg = NULL;
 	m_chkPtParaDlg = NULL;
+	m_PlaVerify_Compare_result = NULL;
 
 	QLabel *permanent = new QLabel(this);
 	permanent->setFrameStyle(QFrame::NoFrame | QFrame::Sunken);
@@ -212,6 +215,12 @@ void MainForm::closeEvent( QCloseEvent * event)
 		{
 			delete m_chkPtParaDlg;
 			m_chkPtParaDlg = NULL;
+		}
+
+		if (m_PlaVerify_Compare_result)
+		{
+			delete m_PlaVerify_Compare_result;
+			m_PlaVerify_Compare_result = NULL;
 		}
 	}
 }
@@ -475,12 +484,12 @@ void MainForm::on_actionFlowResult_triggered()
 {
 	if (NULL == m_flowResultDlg)
 	{
-		m_flowResultDlg = new FlowResultDlg();
+		m_flowResultDlg = new FlowWeightResultDlg();
 	}
 	else
 	{
 		delete m_flowResultDlg;
-		m_flowResultDlg = new FlowResultDlg();
+		m_flowResultDlg = new FlowWeightResultDlg();
 	}
 	m_flowResultDlg->show();
 }
@@ -577,6 +586,34 @@ void MainForm::on_actionFashion_triggered()
 	qss.open(QFile::ReadOnly);
 	this->setStyleSheet(qss.readAll());
 	qss.close();
+}
+
+//²¬µç×è¼ì²â½á¹û
+void MainForm::on_actionPlaVerify_Compare_triggered()
+{
+	if (NULL == m_PlaVerify_Compare_result)
+	{
+		m_PlaVerify_Compare_result = new PLaCompareResultDlg();
+	}
+	else if (NULL != m_PlaVerify_Compare_result)
+	{
+	
+		delete m_PlaVerify_Compare_result;
+		m_PlaVerify_Compare_result = NULL;
+		m_PlaVerify_Compare_result = new PLaCompareResultDlg();
+	}
+	
+	m_PlaVerify_Compare_result->show();
+}
+
+void MainForm::on_actionPlaVerify_Parameter_triggered()
+{
+	/*if (NULL != m_PlaVerify_Parameter_result)
+	{
+	delete m_PlaVerify_Parameter_result;
+	}
+	m_PlaVerify_Parameter_result = new FlowResultDlg();
+	m_PlaVerify_Parameter_result->show();*/
 }
 
 void MainForm::chaneLanguage(QString lang)
