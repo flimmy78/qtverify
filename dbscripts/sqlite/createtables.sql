@@ -315,7 +315,7 @@ create table T_Platinum_Verify_Record
 (
 	F_ID	integer not null primary key autoincrement,
 	F_TimeStamp timestamp not null,     --时间戳（'yyyy-MM-dd HH:mm:ss.zzz')
-	F_CompOrParam,						--比较法或参数法, 0-比较法, 1-参数法
+	F_CompOrParam integer,				--比较法或参数法, 0-比较法, 1-参数法
 	F_PlaManufactDept integer,          --被检铂电阻制造单位，外键(T_Manufacture_Dept.F_ID)
 	F_Standard integer,                 --表规格(DN15/DN20/DN25)，外键(T_Meter_Standard.F_ID)
 	F_Model integer,                    --表型号，外键(T_Meter_Model.F_ID)

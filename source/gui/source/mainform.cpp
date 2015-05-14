@@ -39,6 +39,7 @@
 #include "chkplasensor.h"
 #include "flowweight_result.h"
 #include "placompare_result.h"
+#include "plaparam_result.h"
 
 MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
@@ -71,7 +72,8 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_stdCoeCorrect = NULL;
 	m_stdPtParaDlg = NULL;
 	m_chkPtParaDlg = NULL;
-	m_PlaVerify_Compare_result = NULL;
+	m_PlaVerify_Compare_resultDlg = NULL;
+	m_PlaVerify_Param_resultDlg = NULL;
 
 	QLabel *permanent = new QLabel(this);
 	permanent->setFrameStyle(QFrame::NoFrame | QFrame::Sunken);
@@ -217,10 +219,16 @@ void MainForm::closeEvent( QCloseEvent * event)
 			m_chkPtParaDlg = NULL;
 		}
 
-		if (m_PlaVerify_Compare_result)
+		if (m_PlaVerify_Compare_resultDlg)
 		{
-			delete m_PlaVerify_Compare_result;
-			m_PlaVerify_Compare_result = NULL;
+			delete m_PlaVerify_Compare_resultDlg;
+			m_PlaVerify_Compare_resultDlg = NULL;
+		}
+
+		if (m_PlaVerify_Param_resultDlg)
+		{
+			delete m_PlaVerify_Param_resultDlg;
+			m_PlaVerify_Param_resultDlg = NULL;
 		}
 	}
 }
@@ -591,29 +599,34 @@ void MainForm::on_actionFashion_triggered()
 //²¬µç×è¼ì²â½á¹û
 void MainForm::on_actionPlaVerify_Compare_triggered()
 {
-	if (NULL == m_PlaVerify_Compare_result)
+	if (NULL == m_PlaVerify_Compare_resultDlg)
 	{
-		m_PlaVerify_Compare_result = new PLaCompareResultDlg();
+		m_PlaVerify_Compare_resultDlg = new PLaCompareResultDlg();
 	}
-	else if (NULL != m_PlaVerify_Compare_result)
-	{
-	
-		delete m_PlaVerify_Compare_result;
-		m_PlaVerify_Compare_result = NULL;
-		m_PlaVerify_Compare_result = new PLaCompareResultDlg();
+	else if (NULL != m_PlaVerify_Compare_resultDlg)
+	{	
+		delete m_PlaVerify_Compare_resultDlg;
+		m_PlaVerify_Compare_resultDlg = NULL;
+		m_PlaVerify_Compare_resultDlg = new PLaCompareResultDlg();
 	}
 	
-	m_PlaVerify_Compare_result->show();
+	m_PlaVerify_Compare_resultDlg->show();
 }
 
 void MainForm::on_actionPlaVerify_Parameter_triggered()
 {
-	/*if (NULL != m_PlaVerify_Parameter_result)
+	if (NULL == m_PlaVerify_Param_resultDlg)
 	{
-	delete m_PlaVerify_Parameter_result;
+		m_PlaVerify_Param_resultDlg = new PLaParamResultDlg();
 	}
-	m_PlaVerify_Parameter_result = new FlowResultDlg();
-	m_PlaVerify_Parameter_result->show();*/
+	else if (NULL != m_PlaVerify_Param_resultDlg)
+	{
+		delete m_PlaVerify_Param_resultDlg;
+		m_PlaVerify_Param_resultDlg = NULL;
+		m_PlaVerify_Param_resultDlg = new PLaParamResultDlg();
+	}
+	
+	m_PlaVerify_Param_resultDlg->show();
 }
 
 void MainForm::chaneLanguage(QString lang)

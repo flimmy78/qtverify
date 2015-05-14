@@ -28,6 +28,7 @@ class stdplasensorDlg;
 class chkplasensorDlg;
 class FlowWeightResultDlg;
 class PLaCompareResultDlg;
+class PLaParamResultDlg;
 
 class MainForm : public QMainWindow
 {
@@ -65,8 +66,8 @@ public:
 	///////////////////////////////////////////////
 	//FlowResultDlg *m_flowResultDlg;
 	FlowWeightResultDlg* m_flowResultDlg;
-	PLaCompareResultDlg* m_PlaVerify_Compare_result;
-
+	PLaCompareResultDlg* m_PlaVerify_Compare_resultDlg;
+	PLaParamResultDlg* m_PlaVerify_Param_resultDlg;
 
 
 	void closeEvent(QCloseEvent * event);
