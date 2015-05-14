@@ -1,10 +1,8 @@
-
+DEFINES	+= CMBVERIFY_DLL QT_THREAD_SUPPORT
 TEMPLATE	= lib
 TARGET    = cmbverify
 CONFIG += qt dll debug thread qtestlib
 QT += sql
-
-DEFINES	+= CMBVERIFY_DLL QT_THREAD_SUPPORT
 
 QMAKE_LIBDIR +=  ./           \
         	     $(RUNHOME)/lib \
