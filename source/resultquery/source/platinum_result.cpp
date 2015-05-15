@@ -1,30 +1,37 @@
 #include <QtSql/QSqlRelationalDelegate>
-#include "plaparam_result.h"
+#include <QtCore/QDebug>
+#include "platinum_result.h"
 
-PLaParamResultDlg::PLaParamResultDlg(QWidget *parent, Qt::WFlags flags)
+PlaResultDlg::PlaResultDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
 	ui.setupUi(this);
 	model = new QSqlRelationalTableModel(this);
+
+	QStringList drivers = QSqlDatabase::drivers();
+	foreach(QString driver, drivers)
+	{
+		qDebug()<<driver;
+	}
 }
 
-PLaParamResultDlg::~PLaParamResultDlg()
+PlaResultDlg::~PlaResultDlg()
 {
 
 }
 
-void PLaParamResultDlg::showEvent(QShowEvent *)
+void PlaResultDlg::showEvent(QShowEvent *)
 {
 	initCmb();
 	m_conStr = "select * from T_Platinum_Verify_Record";
 }
 
-void PLaParamResultDlg::closeEvent(QCloseEvent *)
+void PlaResultDlg::closeEvent(QCloseEvent *)
 {
 
 }
 
-void PLaParamResultDlg::initCmb()
+void PlaResultDlg::initCmb()
 {
 	//制造单位
 	int col_id1 = 0;
@@ -63,23 +70,24 @@ void PLaParamResultDlg::initCmb()
 	ui.endDateTime->setDateTime(QDateTime::currentDateTime());
 }
 
-void PLaParamResultDlg::on_btnQuery_clicked()
+void PlaResultDlg::on_btnQuery_clicked()
 {
 	getCondition();
 	queryData();
 }
 
-void PLaParamResultDlg::getCondition()
+void PlaResultDlg::getCondition()
 {
 	m_conStr.clear();
-	m_conStr.append( QString("F_CompOrParam = 1 and F_TimeStamp>=\'%1\' and F_TimeStamp<=\'%2\'").arg(ui.startDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"))\
+	int method = ui.cmbMethod->currentIndex();
+	m_conStr.append(QString("F_CompOrParam = %1 ").arg(QString::number(method)));
+	m_conStr.append( QString(" and F_TimeStamp>=\'%1\' and F_TimeStamp<=\'%2\'").arg(ui.startDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"))\
 		.arg(ui.endDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"))); //起止时间
 	int idx, count;
 	idx = ui.cmbManufactDept->currentIndex();
 	count = ui.cmbManufactDept->count();
 
-	int not_select;
-	not_select = not_select ^ not_select;
+	int not_select = 0;
 	not_select = ~not_select;
 	if (idx != (count-1) && idx != not_select)//制造单位
 	{
@@ -103,7 +111,7 @@ void PLaParamResultDlg::getCondition()
 	}
 }
 
-void PLaParamResultDlg::queryData()
+void PlaResultDlg::queryData()
 {
 	model->setEditStrategy(QSqlTableModel::OnFieldChange); //属性变化时写入数据库
 	model->setTable("T_Platinum_Verify_Record");
@@ -150,6 +158,7 @@ void PLaParamResultDlg::queryData()
 	model->setHeaderData(32, Qt::Horizontal, QObject::tr("verify_seq"));//第几次检定
 	model->setHeaderData(33, Qt::Horizontal, QObject::tr("TmpIndex"));//温差点索引
 
+
 	model->select();
 	ui.tableView->setModel(model);
 	ui.tableView->resizeColumnsToContents(); //列宽度自适应
@@ -161,7 +170,7 @@ void PLaParamResultDlg::queryData()
 	ui.tableView->hideColumn(2);
 }
 
-void PLaParamResultDlg::on_btnExit_clicked()
+void PlaResultDlg::on_btnExit_clicked()
 {
 	this->close();
 }

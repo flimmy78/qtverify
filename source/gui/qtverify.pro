@@ -22,17 +22,14 @@ LIBS += -lalgorithm -lsystemsetdlg -ldatatestdlg -lqaxserver -lmasterslaveset -l
 # Input
 HEADERS += include/mainform.h	\
 					 include/dbmysql.h	\
-					 include/flowresult.h \
 					 include/qexcel.h
 					 
 FORMS += 	ui/mainform.ui	\
 				 	ui/dbmysql.ui		\
-				 	ui/flowresult.ui	
 				 
 SOURCES += source/main.cpp	\
 					 source/mainform.cpp	\
 					 source/dbmysql.cpp		\
-					 source/flowresult.cpp \
 					 source/qexcel.cpp 
 					 
 RESOURCES += qtverify.qrc

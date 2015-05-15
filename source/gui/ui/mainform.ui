@@ -33,7 +33,7 @@
      <x>0</x>
      <y>0</y>
      <width>1108</width>
-     <height>23</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuSystemSet">
@@ -90,8 +90,6 @@
     <addaction name="actionCalculatorResult"/>
     <addaction name="actionCombineResult"/>
     <addaction name="actionQueryExcel"/>
-    <addaction name="actionPlaVerify_Compare"/>
-    <addaction name="actionPlaVerify_Parameter"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
@@ -504,9 +502,9 @@
     <string>PtParaSet</string>
    </property>
   </action>
-  <action name="actionPlaVerify_Compare">
+  <action name="actionPlaVerifyResult">
    <property name="text">
-    <string>PlaVerify-Compare</string>
+    <string>PlaVerifyResult</string>
    </property>
   </action>
   <action name="actionPlaVerify_Parameter">

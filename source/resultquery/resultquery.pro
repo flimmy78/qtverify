@@ -19,17 +19,14 @@ INCLUDEPATH  	=    ./      \
 									 $$(RUNHOME_INC)/include \
 
 HEADERS	+= $$(RUNHOME_INC)/include/resultquery_globlal.h   \
-		   $$(RUNHOME_INC)/include/flowweight_result.h   \
-		   $$(RUNHOME_INC)/include/placompare_result.h  \
-		   $$(RUNHOME_INC)/include/plaparam_result.h \
+		   $$(RUNHOME_INC)/include/flow_result.h   \
+		   $$(RUNHOME_INC)/include/platinum_result.h  \
 
-SOURCES	+= source/flowweight_result.cpp \
-		   source/placompare_result.cpp \
-		   source/plaparam_result.cpp \
+SOURCES	+= source/flow_result.cpp \
+		   source/platinum_result.cpp \
 
 FORMS	+= ui/flowresult.ui  \
-		 ui/placompare_result.ui \
-         ui/plaparam_result.ui \
+		 ui/platinum_result.ui \
 
 win32{
 	MY_DEST_LIB_VAR = $${DESTDIR} $${TARGET}.lib

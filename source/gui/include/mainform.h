@@ -26,9 +26,7 @@ class tvercompDlg;
 class tverparamDlg;
 class stdplasensorDlg;
 class chkplasensorDlg;
-class FlowWeightResultDlg;
-class PLaCompareResultDlg;
-class PLaParamResultDlg;
+class PlaResultDlg;
 
 class MainForm : public QMainWindow
 {
@@ -64,11 +62,8 @@ public:
 	///////////////////////////////////////////////
 	////              ¼ì¶¨½á¹û              ////////
 	///////////////////////////////////////////////
-	//FlowResultDlg *m_flowResultDlg;
-	FlowWeightResultDlg* m_flowResultDlg;
-	PLaCompareResultDlg* m_PlaVerify_Compare_resultDlg;
-	PLaParamResultDlg* m_PlaVerify_Param_resultDlg;
-
+	FlowResultDlg *m_flowResultDlg;
+	PlaResultDlg* m_PlaResultDlg;
 
 	void closeEvent(QCloseEvent * event);
 
@@ -120,9 +115,6 @@ public slots:
 	void on_actionEnglish_triggered();
 	void on_actionChinese_triggered();
 
-	//Platinum Result
-	void on_actionPlaVerify_Compare_triggered();
-	void on_actionPlaVerify_Parameter_triggered();
 private:
 	Ui::qMainFormClass ui;
 };

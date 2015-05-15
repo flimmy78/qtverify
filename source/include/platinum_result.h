@@ -1,5 +1,5 @@
-#ifndef PLACOMPARE_RESULT_H
-#define PLACOMPARE_RESULT_H
+#ifndef PLATINUM_RESULT_H
+#define PLATINUM_RESULT_H
 
 #include <QtGui/QWidget>
 #include <QtSql/QSqlDatabase>
@@ -9,15 +9,15 @@
 #include <QtSql/QSqlTableModel>
 #include <QtSql/QSqlRelationalTableModel>
 #include "resultquery_globlal.h"
-#include "ui_placompare_result.h"
+#include "ui_platinum_result.h"
 
-class RESULTQUERYDLG_EXPORT PLaCompareResultDlg : public QWidget
+class RESULTQUERYDLG_EXPORT PlaResultDlg : public QWidget
 {
 	Q_OBJECT
 
 public:
-	PLaCompareResultDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
-	~PLaCompareResultDlg();
+	PlaResultDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
+	~PlaResultDlg();
 
 public slots:
 	void showEvent(QShowEvent *);
@@ -26,7 +26,7 @@ public slots:
 	void on_btnQuery_clicked();
 	void on_btnExit_clicked();
 private:
-	Ui::PlaCompResultClass ui;
+	Ui::PlaResultClass ui;
 	QSqlRelationalTableModel *model;
 	QString m_conStr;//²éÑ¯Ìõ¼þ
 
@@ -37,4 +37,4 @@ private:
 
 };
 
-#endif//PLACOMPARE_RESULT_H
+#endif//PLATINUM_RESULT_H

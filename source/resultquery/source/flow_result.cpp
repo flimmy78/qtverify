@@ -23,7 +23,7 @@
 #include <QtCore/QProcessEnvironment>
 #include <QAxObject>
 
-#include "flowresult.h"
+#include "flow_result.h"
 #include "qexcel.h"
 #include "qtexdb.h"
 #include "report.h"
@@ -172,6 +172,10 @@ void FlowResultDlg::getConditon()
 	m_conStr.clear();
 	m_conStr = QString("F_TimeStamp>=\'%1\' and F_TimeStamp<=\'%2\'").arg(ui.startDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"))\
 		.arg(ui.endDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz")); //起止时间
+
+	int method = ui.cmbMethod->currentIndex();
+	m_conStr.append(QString(" and F_MethodFlag = %1").arg(method));
+
 	int idx, count;
 	idx = ui.cmbManufactDept->currentIndex();
 	count = ui.cmbManufactDept->count();
@@ -251,43 +255,6 @@ void FlowResultDlg::on_btnExport_clicked()
 	QString file = QFileDialog::getSaveFileName(this, tr("Save File"), defaultPath, tr("Microsoft Excel (*.xls)"));//获取保存路径
 	if (!file.isEmpty())
 	{
-//		QAxObject *excel = new QAxObject(this);
-//		excel->setControl("Excel.Application");//连接Excel控件
-//		excel->dynamicCall("SetVisible (bool Visible)","false");//不显示窗体
-//		excel->setProperty("DisplayAlerts", false);//不显示任何警告信息。如果为true那么在关闭时会出现类似“文件已修改，是否保存”的提示
-//
-//		QAxObject *workbooks = excel->querySubObject("WorkBooks");//获取工作簿集合
-//		workbooks->dynamicCall("Add");//新建一个工作簿
-//		QAxObject *workbook = excel->querySubObject("ActiveWorkBook");//获取当前工作簿
-//		//保存至filepath，注意一定要用QDir::toNativeSeparators将路径中的"/"转换为"\"，不然一定保存不了。
-//		workbook->dynamicCall("SaveAs(const QString&)",QDir::toNativeSeparators(file));
-//		workbook->dynamicCall("Close()");//关闭工作簿
-//		excel->dynamicCall("Quit()");//关闭excel
-//		delete excel;
-//		excel=NULL;
-//
-//		QString preStr = "";
-//		QExcel xlsFile(file);	
-//		xlsFile.selectSheet(1);//激活一张工作表
-//		for (int j=0; j<model->columnCount(); j++)
-//		{
-//			if (j==1 || j==2) //时间戳和表号列
-//			{
-//				preStr = "'";
-//			}
-//			else
-//			{
-//				preStr = "";
-//			}
-//			xlsFile.setCellString(1, j+1, model->headerData(j, Qt::Horizontal).toString()); //标题行
-//			for(int i=0;i<model->rowCount();i++)
-//			{
-//				xlsFile.setCellString(i+2, j+1, preStr+model->data(model->index(i,j)).toString());
-//			}
-//// 			xlsFile.setAutoFitColumn(j+1);
-//		}
-//		xlsFile.setAutoFitColumnAll();
-//		xlsFile.save();
 		getConditon();
 		startdb();
 		CReport rpt(" where " + m_conStr);

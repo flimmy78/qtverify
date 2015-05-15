@@ -19,7 +19,7 @@
 
 #include "mainform.h"
 #include "dbmysql.h"
-#include "flowresult.h"
+//#include "flowresult.h"
 #include "setcomfrm.h"
 #include "datatestdlg.h"
 #include "setportfrm.h"
@@ -37,9 +37,8 @@
 #include "tverparam.h"
 #include "stdplasensor.h"
 #include "chkplasensor.h"
-#include "flowweight_result.h"
-#include "placompare_result.h"
-#include "plaparam_result.h"
+#include "flow_result.h"
+#include "platinum_result.h"
 
 MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
@@ -72,8 +71,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_stdCoeCorrect = NULL;
 	m_stdPtParaDlg = NULL;
 	m_chkPtParaDlg = NULL;
-	m_PlaVerify_Compare_resultDlg = NULL;
-	m_PlaVerify_Param_resultDlg = NULL;
+	m_PlaResultDlg = NULL;
 
 	QLabel *permanent = new QLabel(this);
 	permanent->setFrameStyle(QFrame::NoFrame | QFrame::Sunken);
@@ -219,16 +217,10 @@ void MainForm::closeEvent( QCloseEvent * event)
 			m_chkPtParaDlg = NULL;
 		}
 
-		if (m_PlaVerify_Compare_resultDlg)
+		if (m_PlaResultDlg)
 		{
-			delete m_PlaVerify_Compare_resultDlg;
-			m_PlaVerify_Compare_resultDlg = NULL;
-		}
-
-		if (m_PlaVerify_Param_resultDlg)
-		{
-			delete m_PlaVerify_Param_resultDlg;
-			m_PlaVerify_Param_resultDlg = NULL;
+			delete m_PlaResultDlg;
+			m_PlaResultDlg = NULL;
 		}
 	}
 }
@@ -492,12 +484,12 @@ void MainForm::on_actionFlowResult_triggered()
 {
 	if (NULL == m_flowResultDlg)
 	{
-		m_flowResultDlg = new FlowWeightResultDlg();
+		m_flowResultDlg = new FlowResultDlg();
 	}
 	else
 	{
 		delete m_flowResultDlg;
-		m_flowResultDlg = new FlowWeightResultDlg();
+		m_flowResultDlg = new FlowResultDlg();
 	}
 	m_flowResultDlg->show();
 }
@@ -510,6 +502,18 @@ void MainForm::on_actionTotalResult_triggered()
 //查询温度传感器检定结果
 void MainForm::on_actionTemperResult_triggered()
 {
+	if (NULL == m_PlaResultDlg)
+	{
+		m_PlaResultDlg = new PlaResultDlg();
+	}
+	else if (NULL != m_PlaResultDlg)
+	{	
+		delete m_PlaResultDlg;
+		m_PlaResultDlg = NULL;
+		m_PlaResultDlg = new PlaResultDlg();
+	}
+
+	m_PlaResultDlg->show();
 }
 
 //查询计算器检定结果
@@ -594,39 +598,6 @@ void MainForm::on_actionFashion_triggered()
 	qss.open(QFile::ReadOnly);
 	this->setStyleSheet(qss.readAll());
 	qss.close();
-}
-
-//铂电阻检测结果
-void MainForm::on_actionPlaVerify_Compare_triggered()
-{
-	if (NULL == m_PlaVerify_Compare_resultDlg)
-	{
-		m_PlaVerify_Compare_resultDlg = new PLaCompareResultDlg();
-	}
-	else if (NULL != m_PlaVerify_Compare_resultDlg)
-	{	
-		delete m_PlaVerify_Compare_resultDlg;
-		m_PlaVerify_Compare_resultDlg = NULL;
-		m_PlaVerify_Compare_resultDlg = new PLaCompareResultDlg();
-	}
-	
-	m_PlaVerify_Compare_resultDlg->show();
-}
-
-void MainForm::on_actionPlaVerify_Parameter_triggered()
-{
-	if (NULL == m_PlaVerify_Param_resultDlg)
-	{
-		m_PlaVerify_Param_resultDlg = new PLaParamResultDlg();
-	}
-	else if (NULL != m_PlaVerify_Param_resultDlg)
-	{
-		delete m_PlaVerify_Param_resultDlg;
-		m_PlaVerify_Param_resultDlg = NULL;
-		m_PlaVerify_Param_resultDlg = new PLaParamResultDlg();
-	}
-	
-	m_PlaVerify_Param_resultDlg->show();
 }
 
 void MainForm::chaneLanguage(QString lang)

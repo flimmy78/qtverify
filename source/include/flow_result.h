@@ -1,5 +1,5 @@
-#ifndef FLOWRESULT_H
-#define FLOWRESULT_H
+#ifndef FLOW_RESULT_H
+#define FLOW_RESULT_H
 
 #include <QtGui/QWidget>
 #include <QtSql/QSqlDatabase>
@@ -8,10 +8,10 @@
 #include <QtSql/QSqlError>
 #include <QtSql/QSqlTableModel>
 #include <QtSql/QSqlRelationalTableModel>
-
+#include "resultquery_globlal.h"
 #include "ui_flowresult.h"
 
-class FlowResultDlg : public QWidget
+class RESULTQUERYDLG_EXPORT FlowResultDlg : public QWidget
 {
 	Q_OBJECT
 
@@ -40,4 +40,4 @@ private:
 	void getConditon();
 };
 
-#endif // FLOWRESULT_H
+#endif // FLOW_RESULT_H
