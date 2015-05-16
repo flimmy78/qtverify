@@ -1,8 +1,8 @@
 #include <QtSql/QSqlRelationalDelegate>
 #include <QtCore/QDebug>
-#include "platinum_result.h"
+#include "calculator_result.h"
 
-PlaResultDlg::PlaResultDlg(QWidget *parent, Qt::WFlags flags)
+CalcResultDlg::CalcResultDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
 	ui.setupUi(this);
@@ -15,22 +15,22 @@ PlaResultDlg::PlaResultDlg(QWidget *parent, Qt::WFlags flags)
 	}
 }
 
-PlaResultDlg::~PlaResultDlg()
+CalcResultDlg::~CalcResultDlg()
 {
 
 }
 
-void PlaResultDlg::showEvent(QShowEvent *)
+void CalcResultDlg::showEvent(QShowEvent *)
 {
 	initCmb();
 }
 
-void PlaResultDlg::closeEvent(QCloseEvent *)
+void CalcResultDlg::closeEvent(QCloseEvent *)
 {
 
 }
 
-void PlaResultDlg::initCmb()
+void CalcResultDlg::initCmb()
 {
 	//制造单位
 	int col_id1 = 0;
@@ -69,18 +69,16 @@ void PlaResultDlg::initCmb()
 	ui.endDateTime->setDateTime(QDateTime::currentDateTime());
 }
 
-void PlaResultDlg::on_btnQuery_clicked()
+void CalcResultDlg::on_btnQuery_clicked()
 {
 	getCondition();
 	queryData();
 }
 
-void PlaResultDlg::getCondition()
+void CalcResultDlg::getCondition()
 {
 	m_conStr.clear();
-	int method = ui.cmbMethod->currentIndex();
-	m_conStr.append(QString("F_CompOrParam = %1 ").arg(QString::number(method)));
-	m_conStr.append( QString(" and F_TimeStamp>=\'%1\' and F_TimeStamp<=\'%2\'").arg(ui.startDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"))\
+	m_conStr.append( QString("F_TimeStamp>=\'%1\' and F_TimeStamp<=\'%2\'").arg(ui.startDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"))\
 		.arg(ui.endDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"))); //起止时间
 	int idx, count;
 	idx = ui.cmbManufactDept->currentIndex();
@@ -110,53 +108,46 @@ void PlaResultDlg::getCondition()
 	}
 }
 
-void PlaResultDlg::queryData()
+void CalcResultDlg::queryData()
 {
 	model->setEditStrategy(QSqlTableModel::OnFieldChange); //属性变化时写入数据库
-	model->setTable("T_Platinum_Verify_Record");
+	model->setTable("T_Calc_Verify_Record");
 	model->setFilter(m_conStr); //设置查询条件
 
 	//设置外键
-	model->setRelation(4, QSqlRelation("T_Meter_Standard","F_ID","F_Name"));
-	model->setRelation(5, QSqlRelation("T_Meter_Model","F_ID","F_Name"));
+	model->setRelation(3, QSqlRelation("T_Meter_Standard","F_ID","F_Name"));
+	model->setRelation(4, QSqlRelation("T_Meter_Model","F_ID","F_Name"));
 	model->setRelation(6, QSqlRelation("T_Manufacture_Dept","F_ID","F_Desc"));
 	model->setRelation(7, QSqlRelation("T_Verify_Dept","F_ID","F_Desc"));
 	model->setRelation(8, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));
-	model->setRelation(9, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));
 
 	//设置水平标题
-	model->setHeaderData(3, Qt::Horizontal, QObject::tr("PlaManufactDept"));//铂电阻生产商
-	model->setHeaderData(4, Qt::Horizontal, QObject::tr("Standard"));//表规格
-	model->setHeaderData(5, Qt::Horizontal, QObject::tr("Model"));//表型号
-	model->setHeaderData(6, Qt::Horizontal, QObject::tr("ManufactDept"));//表厂商
-	model->setHeaderData(7, Qt::Horizontal, QObject::tr("VerifyDept"));//送检机构
-	model->setHeaderData(8, Qt::Horizontal, QObject::tr("CheckPerson"));//检验员
-	model->setHeaderData(9, Qt::Horizontal, QObject::tr("VerifyPerson"));//复检员
-	model->setHeaderData(10, Qt::Horizontal, QObject::tr("MinTmpDiff"));//最小温差
-	model->setHeaderData(11, Qt::Horizontal, QObject::tr("TmpDiff"));//检测温差值
-	model->setHeaderData(12, Qt::Horizontal, QObject::tr("StdModel"));//标准温度计型号
-	model->setHeaderData(13, Qt::Horizontal, QObject::tr("StdInRresis"));//标准温度计进口电阻值
-	model->setHeaderData(14, Qt::Horizontal, QObject::tr("StdOutRresis"));//标准温度计出口电阻值
-	model->setHeaderData(15, Qt::Horizontal, QObject::tr("StdInTmp"));//标准温度计进口温度值
-	model->setHeaderData(16, Qt::Horizontal, QObject::tr("StdOutTmp"));//标准温度计出口温度值
-	model->setHeaderData(17, Qt::Horizontal, QObject::tr("PlaSerial"));//表号
-	model->setHeaderData(18, Qt::Horizontal, QObject::tr("PlaInRresis"));//被检铂电阻进口电阻值
-	model->setHeaderData(19, Qt::Horizontal, QObject::tr("PlaOutRresis"));//被检铂电阻出口电阻值
-	model->setHeaderData(20, Qt::Horizontal, QObject::tr("PlaInTmp"));//被检铂电阻进口温度值
-	model->setHeaderData(21, Qt::Horizontal, QObject::tr("PlaOutTmp"));//被检铂电阻出口温度值
-	model->setHeaderData(22, Qt::Horizontal, QObject::tr("PlaTmpDiffErr"));//被检铂电阻进出口温度差的误差值
-	model->setHeaderData(23, Qt::Horizontal, QObject::tr("PlaParamR0"));//被检铂电阻0℃电阻值
-	model->setHeaderData(24, Qt::Horizontal, QObject::tr("PlaCoeA"));//被检铂电阻系数A
-	model->setHeaderData(25, Qt::Horizontal, QObject::tr("PlaCoeB"));//被检铂电阻系数B
-	model->setHeaderData(26, Qt::Horizontal, QObject::tr("PlaCoeC"));//被检铂电阻系数C
-	model->setHeaderData(27, Qt::Horizontal, QObject::tr("InErr"));//被检铂电阻进口误差(℃)
-	model->setHeaderData(28, Qt::Horizontal, QObject::tr("OutErr"));//被检铂电阻出口误差(℃)
-	model->setHeaderData(29, Qt::Horizontal, QObject::tr("DeltaErrLimit"));//被检铂电阻进出口温差的误差限(%)
-	model->setHeaderData(30, Qt::Horizontal, QObject::tr("InErrLimit"));//被检铂电阻进口误差限(℃)
-	model->setHeaderData(31, Qt::Horizontal, QObject::tr("OutErrLimit"));//被检铂电阻出口误差限(℃)
-	model->setHeaderData(32, Qt::Horizontal, QObject::tr("verify_seq"));//第几次检定
-	model->setHeaderData(33, Qt::Horizontal, QObject::tr("TmpIndex"));//温差点索引
-
+	model->setHeaderData(2, Qt::Horizontal, QObject::tr("MeterNo"));
+	model->setHeaderData(3, Qt::Horizontal, QObject::tr("Standard"));
+	model->setHeaderData(4, Qt::Horizontal, QObject::tr("Model"));
+	model->setHeaderData(5, Qt::Horizontal, QObject::tr("Grade"));
+	model->setHeaderData(6, Qt::Horizontal, QObject::tr("ManufactDept"));
+	model->setHeaderData(7, Qt::Horizontal, QObject::tr("VerifyDept"));
+	model->setHeaderData(8, Qt::Horizontal, QObject::tr("VerifyPerson"));
+	model->setHeaderData(9, Qt::Horizontal, QObject::tr("TempMax"));
+	model->setHeaderData(10, Qt::Horizontal, QObject::tr("TempMin"));
+	model->setHeaderData(11, Qt::Horizontal, QObject::tr("DeltaTempMax"));
+	model->setHeaderData(12, Qt::Horizontal, QObject::tr("DeltaTempMin"));
+	model->setHeaderData(13, Qt::Horizontal, QObject::tr("InstallPos"));
+	model->setHeaderData(14, Qt::Horizontal, QObject::tr("HeatUnit"));
+	model->setHeaderData(15, Qt::Horizontal, QObject::tr("StdTempIn"));
+	model->setHeaderData(16, Qt::Horizontal, QObject::tr("StdTempOut"));
+	model->setHeaderData(17, Qt::Horizontal, QObject::tr("StdResistIn"));
+	model->setHeaderData(18, Qt::Horizontal, QObject::tr("StdResistOut"));
+	model->setHeaderData(19, Qt::Horizontal, QObject::tr("ProposedVolume"));
+	model->setHeaderData(20, Qt::Horizontal, QObject::tr("SimulateVolume"));
+	model->setHeaderData(21, Qt::Horizontal, QObject::tr("Kcoe"));
+	model->setHeaderData(22, Qt::Horizontal, QObject::tr("StdValue"));
+	model->setHeaderData(23, Qt::Horizontal, QObject::tr("MeterE0"));
+	model->setHeaderData(24, Qt::Horizontal, QObject::tr("MeterE1"));
+	model->setHeaderData(25, Qt::Horizontal, QObject::tr("DispError"));
+	model->setHeaderData(26, Qt::Horizontal, QObject::tr("StdError"));
+	model->setHeaderData(27, Qt::Horizontal, QObject::tr("Result"));
 
 	model->select();
 	ui.tableView->setModel(model);
@@ -166,10 +157,9 @@ void PlaResultDlg::queryData()
 
 	ui.tableView->hideColumn(0);
 	ui.tableView->hideColumn(1);
-	ui.tableView->hideColumn(2);
 }
 
-void PlaResultDlg::on_btnExit_clicked()
+void CalcResultDlg::on_btnExit_clicked()
 {
 	this->close();
 }

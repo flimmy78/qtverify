@@ -39,6 +39,7 @@
 #include "chkplasensor.h"
 #include "flow_result.h"
 #include "platinum_result.h"
+#include "calculator_result.h"
 
 MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
@@ -72,6 +73,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_stdPtParaDlg = NULL;
 	m_chkPtParaDlg = NULL;
 	m_PlaResultDlg = NULL;
+	m_CalcResultDlg = NULL;
 
 	QLabel *permanent = new QLabel(this);
 	permanent->setFrameStyle(QFrame::NoFrame | QFrame::Sunken);
@@ -221,6 +223,12 @@ void MainForm::closeEvent( QCloseEvent * event)
 		{
 			delete m_PlaResultDlg;
 			m_PlaResultDlg = NULL;
+		}
+
+		if (m_CalcResultDlg)
+		{
+			delete m_CalcResultDlg;
+			m_CalcResultDlg = NULL;
 		}
 	}
 }
@@ -519,6 +527,18 @@ void MainForm::on_actionTemperResult_triggered()
 //查询计算器检定结果
 void MainForm::on_actionCalculatorResult_triggered()
 {
+	if (NULL == m_CalcResultDlg)
+	{
+		m_CalcResultDlg = new CalcResultDlg();
+	}
+	else if (NULL != m_CalcResultDlg)
+	{	
+		delete m_CalcResultDlg;
+		m_CalcResultDlg = NULL;
+		m_CalcResultDlg = new CalcResultDlg();
+	}
+
+	m_CalcResultDlg->show();
 }
 
 //查询温度/计算器组合检定结果

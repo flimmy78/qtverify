@@ -26,7 +26,7 @@ public slots:
 	void on_btnQuery_clicked();
 	void on_btnExit_clicked();
 private:
-	Ui::PlaResultClass ui;
+	Ui::PlaResultDlgClass ui;
 	QSqlRelationalTableModel *model;
 	QString m_conStr;//²éÑ¯Ìõ¼þ
 
