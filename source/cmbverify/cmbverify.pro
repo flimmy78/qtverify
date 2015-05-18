@@ -20,12 +20,15 @@ INCLUDEPATH  	=    ./      \
 									 $$(RUNHOME_INC)/include	\
 									 $$(RUNHOME_INC)/include/qextserial
 
-HEADERS	+= $$(RUNHOME_INC)/include/cmbverify.h 
+HEADERS	+= $$(RUNHOME_INC)/include/cmbverify.h \
+			$$(RUNHOME_INC)/include/cmbparam.h 
 	
-SOURCES	+= cmbverify.cpp  
+SOURCES	+= cmbverify.cpp  \
+			cmbparam.cpp
 
 					 
-FORMS	+= cmbverify.ui
+FORMS	+= cmbverify.ui\
+			cmbparam.ui
      
 RESOURCES += cmbverify.qrc     
          

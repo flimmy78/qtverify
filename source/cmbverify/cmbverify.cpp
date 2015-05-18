@@ -34,23 +34,52 @@ CmbVerifyDlg::~CmbVerifyDlg()
 {
 }
 
+void CmbVerifyDlg::showEvent(QShowEvent *)
+{
+	m_CmbParamDlg = NULL;
+	m_param_config = new QSettings(getFullIniFileName("cmbparam.ini"), QSettings::IniFormat);
+	m_algo = new CAlgorithm;
+}
+
 void CmbVerifyDlg::closeEvent( QCloseEvent * event)
 {
+	if(NULL != m_CmbParamDlg)
+	{
+		delete m_CmbParamDlg;
+		m_CmbParamDlg = NULL;
+	}
+
+	if (NULL != m_param_config)
+	{
+		delete m_param_config;
+		m_param_config = NULL;
+	}
+
+	if (NULL != m_algo)
+	{
+		delete m_algo;
+		m_algo = NULL;
+	}
 }
 
 void CmbVerifyDlg::on_btnPara_clicked()
 {
-// 	if (NULL == m_calcParaDlg)
-// 	{
-// 		m_calcParaDlg = new CalcParaDlg();
-// 	}
-// 	else
-// 	{
-// 		delete m_calcParaDlg;
-// 		m_calcParaDlg = new CalcParaDlg();
-// 	}
-// 	connect(m_calcParaDlg, SIGNAL(saveSuccessSignal()), this, SLOT(freshCalcPara()));
-// 	m_calcParaDlg->show();
+	if (NULL == m_CmbParamDlg)
+	{
+		m_CmbParamDlg = new CmbParamDlg();
+	}
+	else
+	{
+		delete m_CmbParamDlg;
+		m_CmbParamDlg = new CmbParamDlg();
+	}
+	connect(m_CmbParamDlg, SIGNAL(saveSuccessfully()), this, SLOT(freshCmbParam()));
+	m_CmbParamDlg->show();
+}
+
+void CmbVerifyDlg::freshCmbParam(void)
+{
+
 }
 
 void CmbVerifyDlg::on_btnExit_clicked()

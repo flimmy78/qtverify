@@ -20,6 +20,8 @@
 
 #include "ui_cmbverify.h"
 #include "comobject.h"
+#include "algorithm.h"
+#include "cmbparam.h"
 
 
 
@@ -34,17 +36,21 @@ public:
 
 public slots:
 	void closeEvent(QCloseEvent * event);
+	void showEvent(QShowEvent *);
 
 	void on_btnPara_clicked();
 	void on_btnExit_clicked();
 
 private slots:
-
+	void freshCmbParam(void);
 signals:
 
 private:
 	Ui::CmbVerifyClass ui;
+	CmbParamDlg* m_CmbParamDlg;
+	CAlgorithm* m_algo;
 
+	QSettings* m_param_config;
 };
 
 #endif //CMBVERIFY_H
