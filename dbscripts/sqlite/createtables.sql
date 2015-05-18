@@ -31,7 +31,7 @@ insert into T_Meter_Model(F_ID, F_Name, F_Desc) values(2, 'E-UWZ3', '型号3');
 
 
 ---------------------------------
---表类型
+--表类型/采集代码
 ---------------------------------
 drop table if exists "T_Meter_Type"
 ;
@@ -43,6 +43,12 @@ F_Desc varchar(60)
 );
 insert into T_Meter_Type(F_ID, F_Name, F_Desc) values(0, 'machine', '机械表');
 insert into T_Meter_Type(F_ID, F_Name, F_Desc) values(1, 'supersonic', '超声波表');
+insert into T_Meter_Type(F_ID, F_Name, F_Desc) values(2, 'delu supersonic', '德鲁超声波表');
+insert into T_Meter_Type(F_ID, F_Name, F_Desc) values(3, 'delu machinery', '德鲁机械表');
+insert into T_Meter_Type(F_ID, F_Name, F_Desc) values(4, 'tiangang supersonic', '天罡超声波表');
+insert into T_Meter_Type(F_ID, F_Name, F_Desc) values(5, 'tiangang machinery', '天罡机械表');
+insert into T_Meter_Type(F_ID, F_Name, F_Desc) values(6, 'lichuang supersonic', '力创超声波表');
+insert into T_Meter_Type(F_ID, F_Name, F_Desc) values(7, 'huizhong supersonic', '汇中超声波表');
 
 
 ---------------------------------
