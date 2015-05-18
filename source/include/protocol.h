@@ -385,11 +385,11 @@ public:
 	sti1062ATempProtocol();
 	~sti1062ATempProtocol();
 
-	public slots:
-		bool readTemperComBuffer(QByteArray tmp);
-		void makeSendBuf(sti1062Acommand);
-		QByteArray getSendBuf();
-		QString getReadStr();
+public slots:
+	bool readTemperComBuffer(QByteArray tmp);
+	void makeSendBuf(sti1062Acommand);
+	QByteArray getSendBuf();
+	QString getReadStr();
 private:
 
 };

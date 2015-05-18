@@ -70,6 +70,7 @@ void tvercompDlg::on_btn_param_clicked()
 	if ( NULL != m_PlaCompParamDlg)
 	{
 		delete m_PlaCompParamDlg;
+		m_PlaCompParamDlg = NULL;
 	}
 	
 	m_PlaCompParamDlg = new tvercompparamDlg;

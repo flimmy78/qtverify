@@ -36,13 +36,13 @@ FlowResultDlg::FlowResultDlg(QWidget *parent, Qt::WFlags flags)
 	m_count = 0;
 
 	model = new QSqlRelationalTableModel(this);
-
+/*
 	QStringList drivers = QSqlDatabase::drivers();
 	foreach(QString driver, drivers)
 	{
 		qDebug()<<driver;
 	}
-
+*/
 	initUiData();
 
 	ui.btnInsert->hide();
