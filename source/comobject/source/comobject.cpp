@@ -68,6 +68,8 @@ TempComObject::TempComObject(QObject* parent) : ComObject(parent)
 	memset(m_tempFrame, 0, sizeof(Temp_Frame_Struct));
 
 	m_tempProtocol = new TempProtocol();
+
+	m_buf.clear();
 }
 
 TempComObject::~TempComObject()
@@ -130,7 +132,7 @@ bool TempComObject::openTemperatureCom(ComInfoStruct *comStruct)
 //请求温度
 void TempComObject::writeTemperatureComBuffer()
 {
-// 	qDebug()<<"TempComObject::writeTemperatureComBuffer thread:"<<QThread::currentThreadId();
+	qDebug()<<"TempComObject::writeTemperatureComBuffer thread:"<<QThread::currentThreadId();
 	m_tempProtocol->makeSendBuf();
 	QByteArray buf = m_tempProtocol->getSendBuf();
 	m_tempCom->write(buf);
@@ -139,14 +141,19 @@ void TempComObject::writeTemperatureComBuffer()
 //读温度串口缓冲区
 void TempComObject::readTemperatureComBuffer()
 {
-	QByteArray tmp = m_tempCom->readAll();
+	m_buf += m_tempCom->readAll();
 // 	qDebug()<<"read TemperatureComBuffer thread:"<<QThread::currentThreadId();
-
+	int num = m_buf.size();
+	if (num < 10)
+	{
+		return;
+	}
 	bool ret = false;
-	ret = m_tempProtocol->readTemperComBuffer(tmp); //通讯协议接口
+	ret = m_tempProtocol->readTemperComBuffer(m_buf); //通讯协议接口
 	if (ret)
 	{
 		QString tempStr = m_tempProtocol->getTempStr();
+		m_buf.clear();
 		emit temperatureIsReady(tempStr);
 	}
 }

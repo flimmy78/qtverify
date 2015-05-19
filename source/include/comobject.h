@@ -78,7 +78,7 @@ public:
 	QextSerialPort *m_tempCom;      //温度采集串口
 	Temp_Frame_Struct *m_tempFrame; //温度采集通讯帧结构
 	TempProtocol *m_tempProtocol;   //温度采集通讯协议类对象
-
+	QByteArray m_buf; //串口缓冲区数据
 signals:
 	void temperatureIsReady(const QString& tempStr); //成功获取温度值
 
