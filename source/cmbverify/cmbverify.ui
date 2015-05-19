@@ -37,7 +37,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QGroupBox" name="groupBox">
+       <widget class="QGroupBox" name="gbox_install_pos">
         <property name="title">
          <string>Install Pos</string>
         </property>
@@ -60,7 +60,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QGroupBox" name="groupBox_2">
+       <widget class="QGroupBox" name="gbox_unit">
         <property name="title">
          <string>Unit</string>
         </property>
@@ -154,6 +154,9 @@
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
           <widget class="QPushButton" name="btn_collection">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>collect</string>
            </property>
@@ -161,6 +164,9 @@
          </item>
          <item>
           <widget class="QPushButton" name="btn_stop">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>stop</string>
            </property>
@@ -174,7 +180,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_std_in_r"/>
+          <widget class="QLineEdit" name="lineEdit_std_in_r">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_5">
@@ -184,7 +194,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_std_in_t"/>
+          <widget class="QLineEdit" name="lineEdit_std_in_t">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_6">
@@ -201,7 +215,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_std_out_r"/>
+          <widget class="QLineEdit" name="lineEdit_std_out_r">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_8">
@@ -211,7 +229,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_std_out_t"/>
+          <widget class="QLineEdit" name="lineEdit_std_out_t">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_7">
@@ -243,36 +265,9 @@
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <widget class="QTableWidget" name="tableWidget">
-        <row>
-         <property name="text">
-          <string/>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string/>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string/>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string/>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string/>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string/>
-         </property>
-        </row>
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <row>
          <property name="text">
           <string/>
@@ -295,17 +290,12 @@
         </column>
         <column>
          <property name="text">
-          <string>E1(kWH)</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
           <string>V1(L)</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>Err(%)</string>
+          <string>E1(kWH)</string>
          </property>
         </column>
         <column>
@@ -318,6 +308,96 @@
           <string>Out T (℃)</string>
          </property>
         </column>
+        <column>
+         <property name="text">
+          <string>ΔE(kWH)</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>ΔV(L)</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>StdE(kWH)</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Err(%)</string>
+         </property>
+        </column>
+        <item row="0" column="0">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item row="0" column="1">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item row="0" column="2">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item row="0" column="3">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item row="0" column="4">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item row="0" column="5">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="6">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="7">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="8">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="9">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="10">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
        </widget>
       </item>
      </layout>
@@ -344,7 +424,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_5">
+      <widget class="QPushButton" name="btnStart">
        <property name="enabled">
         <bool>false</bool>
        </property>
@@ -358,7 +438,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_6">
+      <widget class="QPushButton" name="btnSave">
        <property name="enabled">
         <bool>false</bool>
        </property>

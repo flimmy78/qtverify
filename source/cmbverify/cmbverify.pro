@@ -8,7 +8,7 @@ QMAKE_LIBDIR +=  ./           \
         	     $(RUNHOME)/lib \
 	             $(RUNHOME)/bin 
 	            
-LIBS +=	-lQt3Supportd4 -lQt3Support4 -lprotocol -lcomobject -lqtexdb -lalgorithm
+LIBS +=	-lQt3Supportd4 -lQt3Support4 -lprotocol -lcomobject -lqtexdb -lalgorithm -lsystemsetdlg
 
 DESTDIR = $(RUNHOME)\tmp\cmbverify
 #MOC_DIR = $(RUNHOME)/tmp/cmbverify/moc
