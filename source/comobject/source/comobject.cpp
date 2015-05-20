@@ -79,7 +79,7 @@ TempComObject::~TempComObject()
 		if(m_tempCom->isOpen())
 		{
 			m_tempCom->close();
-			qDebug()<<"m_tempCom closed";
+			qDebug()<<"m_tempCom :"<<m_tempCom->portName()<<" closed";
 		}
 		delete m_tempCom;
 	}
@@ -132,7 +132,7 @@ bool TempComObject::openTemperatureCom(ComInfoStruct *comStruct)
 //ÇëÇóÎÂ¶È
 void TempComObject::writeTemperatureComBuffer()
 {
-	qDebug()<<"TempComObject::writeTemperatureComBuffer thread:"<<QThread::currentThreadId();
+// 	qDebug()<<"TempComObject::writeTemperatureComBuffer thread:"<<QThread::currentThreadId();
 	m_tempProtocol->makeSendBuf();
 	QByteArray buf = m_tempProtocol->getSendBuf();
 	m_tempCom->write(buf);
@@ -186,7 +186,7 @@ ControlComObject::~ControlComObject()
 		if (m_controlCom->isOpen())
 		{
 			m_controlCom->close();
-			qDebug()<<"m_controlCom closed";
+			qDebug()<<"m_controlCom :"<<m_controlCom->portName()<<" closed";
 		}
 		delete m_controlCom;
 	}
@@ -395,7 +395,7 @@ BalanceComObject::~BalanceComObject()
 		if(m_balanceCom->isOpen())
 		{
 			m_balanceCom->close();
-			qDebug()<<"m_balanceCom closed";
+			qDebug()<<"m_balanceCom :"<<m_balanceCom->portName()<<" closed";
 		}
 		delete m_balanceCom;
 	}
@@ -497,7 +497,7 @@ MeterComObject::~MeterComObject()
 		if(m_meterCom->isOpen())
 		{
 			m_meterCom->close();
-			qDebug()<<"m_meterCom closed";
+			qDebug()<<"m_meterCom :"<<m_meterCom->portName()<<" closed";
 		}
 		delete m_meterCom;
 	}

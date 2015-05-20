@@ -65,26 +65,26 @@ TempProtocol::~TempProtocol()
 void TempProtocol::makeSendBuf()
 {
 	m_sendBuf = "";
-	printf("111111 file %s, line %d\n", __FILE__, __LINE__);
+// 	printf("111111 file %s, line %d\n", __FILE__, __LINE__);
 	m_sendBuf.append(ADDR_CODE_FIRST).append(ADDR_CODE_FIRST);//地址代号
-	printf("222222 file %s, line %d\n", __FILE__, __LINE__);
+// 	printf("222222 file %s, line %d\n", __FILE__, __LINE__);
 	m_sendBuf.append(READ_CODE); //标准读代码
-	printf("333333 file %s, line %d\n", __FILE__, __LINE__);
+// 	printf("333333 file %s, line %d\n", __FILE__, __LINE__);
 	UINT8 paracode = 0x00; //参数代号
 	m_sendBuf.append(paracode); 
-	printf("444444 file %s, line %d\n", __FILE__, __LINE__);
+// 	printf("444444 file %s, line %d\n", __FILE__, __LINE__);
 	UINT8 datacode = 0x00;
 	m_sendBuf.append(datacode).append(datacode);
-	printf("555555 file %s, line %d\n", __FILE__, __LINE__);
+// 	printf("555555 file %s, line %d\n", __FILE__, __LINE__);
 	UINT16 checkcode = paracode*256 + READ_CODE + ADDR_FIRST;
 	QString checkstr;
 	checkstr = QString("%1").arg(checkcode, 4, 16).replace(" ", "0");
 	bool ok;
 	UINT8 lownum = checkstr.right(2).toUInt(&ok, 16);
 	UINT8 hightnum = checkstr.left(2).toUInt(&ok, 16);
-	printf("666666 file %s, line %d\n", __FILE__, __LINE__);
+// 	printf("666666 file %s, line %d\n", __FILE__, __LINE__);
 	m_sendBuf.append(lownum).append(hightnum);
-	printf("777777 file %s, line %d\n", __FILE__, __LINE__);
+// 	printf("777777 file %s, line %d\n", __FILE__, __LINE__);
 }
 
 //解帧 获取温度值
