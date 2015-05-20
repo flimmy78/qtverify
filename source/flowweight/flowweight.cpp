@@ -209,7 +209,7 @@ void FlowWeightDlg::closeEvent( QCloseEvent * event)
 		delete []m_meterObj;
 		m_meterObj = NULL;
 
-		for (int i=0; i<m_maxMeterNum; i++)
+		for (int i=0; i<m_oldMaxMeterNum; i++)
 		{
 			m_meterThread[i].exit();
 		}
@@ -590,7 +590,6 @@ void FlowWeightDlg::slotExaustFinished()
 		}
 	}
 
-	ui.labelHintPoint->setText(tr("prepare balance ...")); //准备天平
 	if (!prepareInitBalance())//准备天平初始重量
 	{
 		return;
@@ -607,6 +606,7 @@ void FlowWeightDlg::slotExaustFinished()
 */
 int FlowWeightDlg::prepareInitBalance()
 {
+	ui.labelHintPoint->setText(tr("prepare balance ...")); //准备天平
 	int ret = 0;
 	//判断天平重量,如果小于要求的初始重量(5kg)，则关闭放水阀，打开大流量阀
 	if (ui.lcdBigBalance->value() < BALANCE_INIT_VALUE)
@@ -620,7 +620,7 @@ int FlowWeightDlg::prepareInitBalance()
 			qWarning()<<"打开大流量阀失败";
 		}
 		//判断并等待天平重量，大于初始重量(5kg)
-		if (judgeBalanceValue(BALANCE_INIT_VALUE, true))
+		if (isBalanceValueBigger(BALANCE_INIT_VALUE, true))
 		{
 			if (!closeBigFlowValve())
 			{
@@ -631,7 +631,8 @@ int FlowWeightDlg::prepareInitBalance()
 	}
 	else
 	{
-		
+		closeWaterOutValve(); //关闭放水阀
+		ret = 1;
 	}
 
 	return ret;
@@ -698,7 +699,7 @@ int FlowWeightDlg::closeBigFlowValve()
 	targetV: 目标重量
 	flg: true-要求大于目标重量(默认)；false-要求小于目标重量
 */
-int FlowWeightDlg::judgeBalanceValue(float targetV, bool flg)
+int FlowWeightDlg::isBalanceValueBigger(float targetV, bool flg)
 {
 	int ret = 0;
 	if (flg) //要求大于目标重量

@@ -149,7 +149,7 @@ public slots:
 	int openWaterOutValve();      //打开放水阀
 	int openBigFlowValve();       //打开大流量点阀门
 	int closeBigFlowValve();      //关闭大流量点阀门
-	int judgeBalanceValue(float targetV, bool flg=true);    //判断天平质量,flg: true-要求大于目标重量(默认)；false-要求小于目标重量
+	int isBalanceValueBigger(float targetV, bool flg=true);    //判断天平质量,flg: true-要求大于目标重量(默认)；false-要求小于目标重量
 	int judgeBalanceAndCalcAvgTemper(float targetV); //判断天平质量，并累加进出口温度，每秒累加一次，用于计算进出口平均温度
 	void startVerify();           //开始检定
 	int getValidMeterNum();       //获取有效的检表个数()
