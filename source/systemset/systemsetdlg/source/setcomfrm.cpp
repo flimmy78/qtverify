@@ -296,7 +296,7 @@ bool SetComFrm::WriteMetersConfig()
 {
 	QVector<QString> Configs;//相应表号的界面配置
 	QString meter_num;//表号
-	for (int i=1; i< 13; i++)
+	for (int i=1; i<= MAX_METER_NUM; i++)
 	{
 		meter_num = QString::number(i, 10); 
 		Configs = ReadMeterSetByNum(meter_num);

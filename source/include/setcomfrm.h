@@ -7,6 +7,8 @@
 #include "ui_setcomfrm.h"
 #include "systemsetdlg_global.h"
 
+#define MAX_METER_NUM 24
+
 class ReadComConfig;
 
 class SYSTEMSETDLG_EXPORT SetComFrm : public QWidget

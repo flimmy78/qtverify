@@ -9,17 +9,17 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1071</width>
-    <height>630</height>
+    <width>1840</width>
+    <height>908</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>SetCom</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_20">
-   <item row="0" column="0">
-    <layout class="QGridLayout" name="gridLayout_18">
-     <item row="0" column="0">
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
       <widget class="QGroupBox" name="gBoxValve">
        <property name="title">
         <string>Valve Control</string>
@@ -138,6 +138,56 @@
           <item>
            <property name="text">
             <string>COM20</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM21</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM22</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM23</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM24</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM25</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM26</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM27</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM28</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM29</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM30</string>
            </property>
           </item>
          </widget>
@@ -274,7 +324,7 @@
        </layout>
       </widget>
      </item>
-     <item row="0" column="1">
+     <item>
       <widget class="QGroupBox" name="gBoxBalance">
        <property name="title">
         <string>Balance</string>
@@ -393,6 +443,56 @@
           <item>
            <property name="text">
             <string>COM20</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM21</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM22</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM23</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM24</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM25</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM26</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM27</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM28</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM29</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM30</string>
            </property>
           </item>
          </widget>
@@ -529,7 +629,7 @@
        </layout>
       </widget>
      </item>
-     <item row="0" column="2">
+     <item>
       <widget class="QGroupBox" name="gBoxTempSenor">
        <property name="title">
         <string>Temp Acquisition</string>
@@ -648,6 +748,56 @@
           <item>
            <property name="text">
             <string>COM20</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM21</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM22</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM23</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM24</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM25</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM26</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM27</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM28</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM29</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM30</string>
            </property>
           </item>
          </widget>
@@ -784,7 +934,7 @@
        </layout>
       </widget>
      </item>
-     <item row="0" column="3">
+     <item>
       <widget class="QGroupBox" name="gBoxStdTmpSensor">
        <property name="title">
         <string>Standard Temp</string>
@@ -903,6 +1053,56 @@
           <item>
            <property name="text">
             <string>COM20</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM21</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM22</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM23</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM24</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM25</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM26</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM27</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM28</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM29</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>COM30</string>
            </property>
           </item>
          </widget>
@@ -1039,7 +1239,7 @@
        </layout>
       </widget>
      </item>
-     <item row="0" column="4">
+     <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -1054,14 +1254,20 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="0">
+   <item>
     <widget class="QGroupBox" name="gBoxMeters">
      <property name="title">
       <string>Meter</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout_17">
+     <layout class="QGridLayout" name="gridLayout_30">
       <item row="0" column="0">
        <widget class="QGroupBox" name="gBoxMeter_1">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
         <property name="title">
          <string>1</string>
         </property>
@@ -1179,6 +1385,56 @@
            <item>
             <property name="text">
              <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
             </property>
            </item>
           </widget>
@@ -1317,6 +1573,12 @@
       </item>
       <item row="0" column="1">
        <widget class="QGroupBox" name="gBoxMeter_2">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
         <property name="title">
          <string>2</string>
         </property>
@@ -1434,6 +1696,56 @@
            <item>
             <property name="text">
              <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
             </property>
            </item>
           </widget>
@@ -1572,6 +1884,12 @@
       </item>
       <item row="0" column="2">
        <widget class="QGroupBox" name="gBoxMeter_3">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
         <property name="title">
          <string>3</string>
         </property>
@@ -1689,6 +2007,56 @@
            <item>
             <property name="text">
              <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
             </property>
            </item>
           </widget>
@@ -1827,6 +2195,12 @@
       </item>
       <item row="0" column="3">
        <widget class="QGroupBox" name="gBoxMeter_4">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
         <property name="title">
          <string>4</string>
         </property>
@@ -1944,6 +2318,56 @@
            <item>
             <property name="text">
              <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
             </property>
            </item>
           </widget>
@@ -2082,6 +2506,12 @@
       </item>
       <item row="0" column="4">
        <widget class="QGroupBox" name="gBoxMeter_5">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
         <property name="title">
          <string>5</string>
         </property>
@@ -2199,6 +2629,56 @@
            <item>
             <property name="text">
              <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
             </property>
            </item>
           </widget>
@@ -2337,6 +2817,12 @@
       </item>
       <item row="0" column="5">
        <widget class="QGroupBox" name="gBoxMeter_6">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
         <property name="title">
          <string>6</string>
         </property>
@@ -2454,6 +2940,56 @@
            <item>
             <property name="text">
              <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
             </property>
            </item>
           </widget>
@@ -2590,8 +3126,14 @@
         </layout>
        </widget>
       </item>
-      <item row="1" column="0">
+      <item row="0" column="6">
        <widget class="QGroupBox" name="gBoxMeter_7">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
         <property name="title">
          <string>7</string>
         </property>
@@ -2709,6 +3251,56 @@
            <item>
             <property name="text">
              <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
             </property>
            </item>
           </widget>
@@ -2845,8 +3437,14 @@
         </layout>
        </widget>
       </item>
-      <item row="1" column="1">
+      <item row="0" column="7">
        <widget class="QGroupBox" name="gBoxMeter_8">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
         <property name="title">
          <string>8</string>
         </property>
@@ -2964,6 +3562,56 @@
            <item>
             <property name="text">
              <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
             </property>
            </item>
           </widget>
@@ -3100,8 +3748,14 @@
         </layout>
        </widget>
       </item>
-      <item row="1" column="2">
+      <item row="1" column="0">
        <widget class="QGroupBox" name="gBoxMeter_9">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
         <property name="title">
          <string>9</string>
         </property>
@@ -3219,6 +3873,56 @@
            <item>
             <property name="text">
              <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
             </property>
            </item>
           </widget>
@@ -3355,8 +4059,14 @@
         </layout>
        </widget>
       </item>
-      <item row="1" column="3">
+      <item row="1" column="1">
        <widget class="QGroupBox" name="gBoxMeter_10">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
         <property name="title">
          <string>10</string>
         </property>
@@ -3474,6 +4184,56 @@
            <item>
             <property name="text">
              <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
             </property>
            </item>
           </widget>
@@ -3610,8 +4370,14 @@
         </layout>
        </widget>
       </item>
-      <item row="1" column="4">
+      <item row="1" column="2">
        <widget class="QGroupBox" name="gBoxMeter_11">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
         <property name="title">
          <string>11</string>
         </property>
@@ -3729,6 +4495,56 @@
            <item>
             <property name="text">
              <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
             </property>
            </item>
           </widget>
@@ -3865,8 +4681,14 @@
         </layout>
        </widget>
       </item>
-      <item row="1" column="5">
+      <item row="1" column="3">
        <widget class="QGroupBox" name="gBoxMeter_12">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
         <property name="title">
          <string>12</string>
         </property>
@@ -3984,6 +4806,56 @@
            <item>
             <property name="text">
              <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
             </property>
            </item>
           </widget>
@@ -4120,10 +4992,3742 @@
         </layout>
        </widget>
       </item>
+      <item row="1" column="4">
+       <widget class="QGroupBox" name="gBoxMeter_13">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
+        <property name="title">
+         <string>13</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_17">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_83">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Com</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboMeterSerialNum_13">
+           <item>
+            <property name="text">
+             <string>COM1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM8</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM9</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM10</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM11</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM12</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM13</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM14</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM15</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM16</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM17</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM18</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM19</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_84">
+           <property name="text">
+            <string>BaudRate</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QComboBox" name="comboMeterBaudRate_13">
+           <item>
+            <property name="text">
+             <string>2400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>4800</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>9600</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>14400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>19200</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>38400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>56000</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_85">
+           <property name="text">
+            <string>DataBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QComboBox" name="comboMeterBits_13">
+           <item>
+            <property name="text">
+             <string>5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>8</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_86">
+           <property name="text">
+            <string>Parity</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QComboBox" name="comboMeterChkBit_13">
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Odd</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Even</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_87">
+           <property name="text">
+            <string>StopBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QComboBox" name="comboMeterEndBit_13">
+           <item>
+            <property name="text">
+             <string>1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>1.5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>2</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="1" column="5">
+       <widget class="QGroupBox" name="gBoxMeter_14">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
+        <property name="title">
+         <string>14</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_18">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_88">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Com</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboMeterSerialNum_14">
+           <item>
+            <property name="text">
+             <string>COM1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM8</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM9</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM10</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM11</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM12</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM13</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM14</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM15</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM16</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM17</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM18</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM19</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_89">
+           <property name="text">
+            <string>BaudRate</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QComboBox" name="comboMeterBaudRate_14">
+           <item>
+            <property name="text">
+             <string>2400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>4800</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>9600</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>14400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>19200</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>38400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>56000</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_90">
+           <property name="text">
+            <string>DataBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QComboBox" name="comboMeterBits_14">
+           <item>
+            <property name="text">
+             <string>5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>8</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_91">
+           <property name="text">
+            <string>Parity</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QComboBox" name="comboMeterChkBit_14">
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Odd</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Even</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_92">
+           <property name="text">
+            <string>StopBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QComboBox" name="comboMeterEndBit_14">
+           <item>
+            <property name="text">
+             <string>1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>1.5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>2</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="1" column="6">
+       <widget class="QGroupBox" name="gBoxMeter_15">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
+        <property name="title">
+         <string>15</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_20">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_93">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Com</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboMeterSerialNum_15">
+           <item>
+            <property name="text">
+             <string>COM1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM8</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM9</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM10</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM11</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM12</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM13</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM14</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM15</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM16</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM17</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM18</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM19</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_94">
+           <property name="text">
+            <string>BaudRate</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QComboBox" name="comboMeterBaudRate_15">
+           <item>
+            <property name="text">
+             <string>2400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>4800</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>9600</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>14400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>19200</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>38400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>56000</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_95">
+           <property name="text">
+            <string>DataBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QComboBox" name="comboMeterBits_15">
+           <item>
+            <property name="text">
+             <string>5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>8</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_96">
+           <property name="text">
+            <string>Parity</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QComboBox" name="comboMeterChkBit_15">
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Odd</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Even</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_97">
+           <property name="text">
+            <string>StopBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QComboBox" name="comboMeterEndBit_15">
+           <item>
+            <property name="text">
+             <string>1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>1.5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>2</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="1" column="7">
+       <widget class="QGroupBox" name="gBoxMeter_16">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
+        <property name="title">
+         <string>16</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_21">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_98">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Com</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboMeterSerialNum_16">
+           <item>
+            <property name="text">
+             <string>COM1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM8</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM9</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM10</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM11</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM12</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM13</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM14</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM15</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM16</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM17</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM18</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM19</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_99">
+           <property name="text">
+            <string>BaudRate</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QComboBox" name="comboMeterBaudRate_16">
+           <item>
+            <property name="text">
+             <string>2400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>4800</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>9600</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>14400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>19200</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>38400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>56000</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_100">
+           <property name="text">
+            <string>DataBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QComboBox" name="comboMeterBits_16">
+           <item>
+            <property name="text">
+             <string>5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>8</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_101">
+           <property name="text">
+            <string>Parity</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QComboBox" name="comboMeterChkBit_16">
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Odd</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Even</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_102">
+           <property name="text">
+            <string>StopBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QComboBox" name="comboMeterEndBit_16">
+           <item>
+            <property name="text">
+             <string>1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>1.5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>2</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QGroupBox" name="gBoxMeter_17">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
+        <property name="title">
+         <string>17</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_22">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_103">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Com</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboMeterSerialNum_17">
+           <item>
+            <property name="text">
+             <string>COM1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM8</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM9</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM10</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM11</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM12</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM13</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM14</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM15</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM16</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM17</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM18</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM19</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_104">
+           <property name="text">
+            <string>BaudRate</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QComboBox" name="comboMeterBaudRate_17">
+           <item>
+            <property name="text">
+             <string>2400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>4800</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>9600</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>14400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>19200</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>38400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>56000</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_105">
+           <property name="text">
+            <string>DataBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QComboBox" name="comboMeterBits_17">
+           <item>
+            <property name="text">
+             <string>5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>8</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_106">
+           <property name="text">
+            <string>Parity</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QComboBox" name="comboMeterChkBit_17">
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Odd</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Even</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_107">
+           <property name="text">
+            <string>StopBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QComboBox" name="comboMeterEndBit_17">
+           <item>
+            <property name="text">
+             <string>1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>1.5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>2</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QGroupBox" name="gBoxMeter_18">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
+        <property name="title">
+         <string>18</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_23">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_108">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Com</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboMeterSerialNum_18">
+           <item>
+            <property name="text">
+             <string>COM1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM8</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM9</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM10</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM11</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM12</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM13</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM14</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM15</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM16</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM17</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM18</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM19</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_109">
+           <property name="text">
+            <string>BaudRate</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QComboBox" name="comboMeterBaudRate_18">
+           <item>
+            <property name="text">
+             <string>2400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>4800</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>9600</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>14400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>19200</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>38400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>56000</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_110">
+           <property name="text">
+            <string>DataBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QComboBox" name="comboMeterBits_18">
+           <item>
+            <property name="text">
+             <string>5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>8</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_111">
+           <property name="text">
+            <string>Parity</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QComboBox" name="comboMeterChkBit_18">
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Odd</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Even</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_112">
+           <property name="text">
+            <string>StopBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QComboBox" name="comboMeterEndBit_18">
+           <item>
+            <property name="text">
+             <string>1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>1.5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>2</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QGroupBox" name="gBoxMeter_19">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
+        <property name="title">
+         <string>19</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_24">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_113">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Com</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboMeterSerialNum_19">
+           <item>
+            <property name="text">
+             <string>COM1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM8</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM9</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM10</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM11</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM12</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM13</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM14</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM15</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM16</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM17</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM18</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM19</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_114">
+           <property name="text">
+            <string>BaudRate</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QComboBox" name="comboMeterBaudRate_19">
+           <item>
+            <property name="text">
+             <string>2400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>4800</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>9600</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>14400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>19200</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>38400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>56000</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_115">
+           <property name="text">
+            <string>DataBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QComboBox" name="comboMeterBits_19">
+           <item>
+            <property name="text">
+             <string>5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>8</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_116">
+           <property name="text">
+            <string>Parity</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QComboBox" name="comboMeterChkBit_19">
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Odd</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Even</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_117">
+           <property name="text">
+            <string>StopBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QComboBox" name="comboMeterEndBit_19">
+           <item>
+            <property name="text">
+             <string>1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>1.5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>2</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QGroupBox" name="gBoxMeter_20">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
+        <property name="title">
+         <string>20</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_25">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_118">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Com</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboMeterSerialNum_20">
+           <item>
+            <property name="text">
+             <string>COM1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM8</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM9</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM10</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM11</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM12</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM13</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM14</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM15</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM16</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM17</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM18</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM19</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_119">
+           <property name="text">
+            <string>BaudRate</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QComboBox" name="comboMeterBaudRate_20">
+           <item>
+            <property name="text">
+             <string>2400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>4800</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>9600</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>14400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>19200</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>38400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>56000</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_120">
+           <property name="text">
+            <string>DataBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QComboBox" name="comboMeterBits_20">
+           <item>
+            <property name="text">
+             <string>5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>8</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_121">
+           <property name="text">
+            <string>Parity</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QComboBox" name="comboMeterChkBit_20">
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Odd</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Even</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_122">
+           <property name="text">
+            <string>StopBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QComboBox" name="comboMeterEndBit_20">
+           <item>
+            <property name="text">
+             <string>1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>1.5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>2</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="2" column="4">
+       <widget class="QGroupBox" name="gBoxMeter_21">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
+        <property name="title">
+         <string>21</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_26">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_123">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Com</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboMeterSerialNum_21">
+           <item>
+            <property name="text">
+             <string>COM1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM8</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM9</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM10</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM11</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM12</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM13</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM14</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM15</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM16</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM17</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM18</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM19</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_124">
+           <property name="text">
+            <string>BaudRate</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QComboBox" name="comboMeterBaudRate_21">
+           <item>
+            <property name="text">
+             <string>2400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>4800</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>9600</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>14400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>19200</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>38400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>56000</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_125">
+           <property name="text">
+            <string>DataBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QComboBox" name="comboMeterBits_21">
+           <item>
+            <property name="text">
+             <string>5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>8</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_126">
+           <property name="text">
+            <string>Parity</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QComboBox" name="comboMeterChkBit_21">
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Odd</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Even</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_127">
+           <property name="text">
+            <string>StopBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QComboBox" name="comboMeterEndBit_21">
+           <item>
+            <property name="text">
+             <string>1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>1.5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>2</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="2" column="5">
+       <widget class="QGroupBox" name="gBoxMeter_22">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
+        <property name="title">
+         <string>22</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_27">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_128">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Com</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboMeterSerialNum_22">
+           <item>
+            <property name="text">
+             <string>COM1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM8</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM9</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM10</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM11</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM12</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM13</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM14</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM15</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM16</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM17</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM18</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM19</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_129">
+           <property name="text">
+            <string>BaudRate</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QComboBox" name="comboMeterBaudRate_22">
+           <item>
+            <property name="text">
+             <string>2400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>4800</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>9600</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>14400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>19200</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>38400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>56000</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_130">
+           <property name="text">
+            <string>DataBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QComboBox" name="comboMeterBits_22">
+           <item>
+            <property name="text">
+             <string>5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>8</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_131">
+           <property name="text">
+            <string>Parity</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QComboBox" name="comboMeterChkBit_22">
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Odd</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Even</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_132">
+           <property name="text">
+            <string>StopBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QComboBox" name="comboMeterEndBit_22">
+           <item>
+            <property name="text">
+             <string>1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>1.5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>2</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="2" column="6">
+       <widget class="QGroupBox" name="gBoxMeter_23">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
+        <property name="title">
+         <string>23</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_28">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_133">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Com</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboMeterSerialNum_23">
+           <item>
+            <property name="text">
+             <string>COM1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM8</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM9</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM10</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM11</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM12</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM13</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM14</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM15</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM16</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM17</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM18</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM19</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_134">
+           <property name="text">
+            <string>BaudRate</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QComboBox" name="comboMeterBaudRate_23">
+           <item>
+            <property name="text">
+             <string>2400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>4800</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>9600</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>14400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>19200</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>38400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>56000</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_135">
+           <property name="text">
+            <string>DataBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QComboBox" name="comboMeterBits_23">
+           <item>
+            <property name="text">
+             <string>5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>8</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_136">
+           <property name="text">
+            <string>Parity</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QComboBox" name="comboMeterChkBit_23">
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Odd</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Even</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_137">
+           <property name="text">
+            <string>StopBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QComboBox" name="comboMeterEndBit_23">
+           <item>
+            <property name="text">
+             <string>1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>1.5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>2</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="2" column="7">
+       <widget class="QGroupBox" name="gBoxMeter_24">
+        <property name="minimumSize">
+         <size>
+          <width>171</width>
+          <height>171</height>
+         </size>
+        </property>
+        <property name="title">
+         <string>24</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_29">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_138">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Com</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboMeterSerialNum_24">
+           <item>
+            <property name="text">
+             <string>COM1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM8</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM9</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM10</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM11</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM12</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM13</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM14</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM15</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM16</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM17</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM18</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM19</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>COM30</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_139">
+           <property name="text">
+            <string>BaudRate</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QComboBox" name="comboMeterBaudRate_24">
+           <item>
+            <property name="text">
+             <string>2400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>4800</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>9600</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>14400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>19200</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>38400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>56000</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_140">
+           <property name="text">
+            <string>DataBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QComboBox" name="comboMeterBits_24">
+           <item>
+            <property name="text">
+             <string>5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>8</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_141">
+           <property name="text">
+            <string>Parity</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QComboBox" name="comboMeterChkBit_24">
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Odd</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Even</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_142">
+           <property name="text">
+            <string>StopBits</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QComboBox" name="comboMeterEndBit_24">
+           <item>
+            <property name="text">
+             <string>1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>1.5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>2</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
-   <item row="2" column="0">
+   <item>
     <layout class="QGridLayout" name="gridLayout_19">
      <item row="0" column="0">
       <spacer name="horizontalSpacer_3">
