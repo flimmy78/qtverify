@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configs>
     <config id="valve">
-        <com>COM8#SEP#7</com>
+        <com>COM1#SEP#0</com>
         <baud>9600#SEP#2</baud>
         <bits>8#SEP#3</bits>
         <chkbit>0#SEP#0</chkbit>
@@ -15,14 +15,14 @@
         <endbit>0#SEP#0</endbit>
     </config>
     <config id="temp">
-        <com>COM1#SEP#0</com>
+        <com>COM2#SEP#1</com>
         <baud>9600#SEP#2</baud>
         <bits>8#SEP#3</bits>
         <chkbit>0#SEP#0</chkbit>
         <endbit>2#SEP#2</endbit>
     </config>
     <config id="stdtemp">
-        <com>COM1#SEP#0</com>
+        <com>COM4#SEP#3</com>
         <baud>9600#SEP#2</baud>
         <bits>8#SEP#3</bits>
         <chkbit>0#SEP#0</chkbit>
@@ -30,168 +30,168 @@
     </config>
     <config id="meters">
         <config id="meter1">
-            <com>COM2#SEP#1</com>
+            <com>COM20#SEP#19</com>
             <baud>2400#SEP#0</baud>
             <bits>8#SEP#3</bits>
             <chkbit>2#SEP#2</chkbit>
             <endbit>0#SEP#0</endbit>
         </config>
         <config id="meter2">
-            <com>COM3#SEP#2</com>
+            <com>COM20#SEP#19</com>
             <baud>2400#SEP#0</baud>
             <bits>8#SEP#3</bits>
             <chkbit>2#SEP#2</chkbit>
             <endbit>0#SEP#0</endbit>
         </config>
         <config id="meter3">
-            <com>COM4#SEP#3</com>
-            <baud>2400#SEP#0</baud>
-            <bits>8#SEP#3</bits>
-            <chkbit>2#SEP#2</chkbit>
-            <endbit>0#SEP#0</endbit>
-        </config>
-        <config id="meter4">
-            <com>COM5#SEP#4</com>
-            <baud>2400#SEP#0</baud>
-            <bits>8#SEP#3</bits>
-            <chkbit>2#SEP#2</chkbit>
-            <endbit>0#SEP#0</endbit>
-        </config>
-        <config id="meter5">
-            <com>COM6#SEP#5</com>
-            <baud>2400#SEP#0</baud>
-            <bits>8#SEP#3</bits>
-            <chkbit>2#SEP#2</chkbit>
-            <endbit>0#SEP#0</endbit>
-        </config>
-        <config id="meter6">
-            <com>COM7#SEP#6</com>
-            <baud>2400#SEP#0</baud>
-            <bits>8#SEP#3</bits>
-            <chkbit>2#SEP#2</chkbit>
-            <endbit>0#SEP#0</endbit>
-        </config>
-        <config id="meter7">
-            <com>COM8#SEP#7</com>
-            <baud>2400#SEP#0</baud>
-            <bits>8#SEP#3</bits>
-            <chkbit>2#SEP#2</chkbit>
-            <endbit>0#SEP#0</endbit>
-        </config>
-        <config id="meter8">
-            <com>COM9#SEP#8</com>
-            <baud>2400#SEP#0</baud>
-            <bits>8#SEP#3</bits>
-            <chkbit>2#SEP#2</chkbit>
-            <endbit>0#SEP#0</endbit>
-        </config>
-        <config id="meter9">
-            <com>COM10#SEP#9</com>
-            <baud>2400#SEP#0</baud>
-            <bits>8#SEP#3</bits>
-            <chkbit>2#SEP#2</chkbit>
-            <endbit>0#SEP#0</endbit>
-        </config>
-        <config id="meter10">
-            <com>COM11#SEP#10</com>
-            <baud>2400#SEP#0</baud>
-            <bits>8#SEP#3</bits>
-            <chkbit>2#SEP#2</chkbit>
-            <endbit>0#SEP#0</endbit>
-        </config>
-        <config id="meter11">
-            <com>COM12#SEP#11</com>
-            <baud>2400#SEP#0</baud>
-            <bits>8#SEP#3</bits>
-            <chkbit>2#SEP#2</chkbit>
-            <endbit>0#SEP#0</endbit>
-        </config>
-        <config id="meter12">
-            <com>COM13#SEP#12</com>
-            <baud>2400#SEP#0</baud>
-            <bits>8#SEP#3</bits>
-            <chkbit>2#SEP#2</chkbit>
-            <endbit>0#SEP#0</endbit>
-        </config>
-        <config id="meter13">
-            <com>COM17#SEP#16</com>
-            <baud>2400#SEP#0</baud>
-            <bits>8#SEP#3</bits>
-            <chkbit>2#SEP#2</chkbit>
-            <endbit>0#SEP#0</endbit>
-        </config>
-        <config id="meter14">
-            <com>COM14#SEP#13</com>
-            <baud>2400#SEP#0</baud>
-            <bits>8#SEP#3</bits>
-            <chkbit>2#SEP#2</chkbit>
-            <endbit>0#SEP#0</endbit>
-        </config>
-        <config id="meter15">
             <com>COM15#SEP#14</com>
             <baud>2400#SEP#0</baud>
             <bits>8#SEP#3</bits>
             <chkbit>2#SEP#2</chkbit>
             <endbit>0#SEP#0</endbit>
         </config>
-        <config id="meter16">
+        <config id="meter4">
+            <com>COM17#SEP#16</com>
+            <baud>2400#SEP#0</baud>
+            <bits>8#SEP#3</bits>
+            <chkbit>2#SEP#2</chkbit>
+            <endbit>0#SEP#0</endbit>
+        </config>
+        <config id="meter5">
+            <com>COM13#SEP#12</com>
+            <baud>2400#SEP#0</baud>
+            <bits>8#SEP#3</bits>
+            <chkbit>2#SEP#2</chkbit>
+            <endbit>0#SEP#0</endbit>
+        </config>
+        <config id="meter6">
             <com>COM16#SEP#15</com>
             <baud>2400#SEP#0</baud>
             <bits>8#SEP#3</bits>
             <chkbit>2#SEP#2</chkbit>
             <endbit>0#SEP#0</endbit>
         </config>
+        <config id="meter7">
+            <com>COM14#SEP#13</com>
+            <baud>2400#SEP#0</baud>
+            <bits>8#SEP#3</bits>
+            <chkbit>2#SEP#2</chkbit>
+            <endbit>0#SEP#0</endbit>
+        </config>
+        <config id="meter8">
+            <com>COM18#SEP#17</com>
+            <baud>2400#SEP#0</baud>
+            <bits>8#SEP#3</bits>
+            <chkbit>2#SEP#2</chkbit>
+            <endbit>0#SEP#0</endbit>
+        </config>
+        <config id="meter9">
+            <com>COM20#SEP#19</com>
+            <baud>2400#SEP#0</baud>
+            <bits>8#SEP#3</bits>
+            <chkbit>2#SEP#2</chkbit>
+            <endbit>0#SEP#0</endbit>
+        </config>
+        <config id="meter10">
+            <com>COM20#SEP#19</com>
+            <baud>2400#SEP#0</baud>
+            <bits>8#SEP#3</bits>
+            <chkbit>2#SEP#2</chkbit>
+            <endbit>0#SEP#0</endbit>
+        </config>
+        <config id="meter11">
+            <com>COM20#SEP#19</com>
+            <baud>2400#SEP#0</baud>
+            <bits>8#SEP#3</bits>
+            <chkbit>2#SEP#2</chkbit>
+            <endbit>0#SEP#0</endbit>
+        </config>
+        <config id="meter12">
+            <com>COM20#SEP#19</com>
+            <baud>2400#SEP#0</baud>
+            <bits>8#SEP#3</bits>
+            <chkbit>2#SEP#2</chkbit>
+            <endbit>0#SEP#0</endbit>
+        </config>
+        <config id="meter13">
+            <com>COM20#SEP#19</com>
+            <baud>2400#SEP#0</baud>
+            <bits>8#SEP#3</bits>
+            <chkbit>2#SEP#2</chkbit>
+            <endbit>0#SEP#0</endbit>
+        </config>
+        <config id="meter14">
+            <com>COM20#SEP#19</com>
+            <baud>2400#SEP#0</baud>
+            <bits>8#SEP#3</bits>
+            <chkbit>2#SEP#2</chkbit>
+            <endbit>0#SEP#0</endbit>
+        </config>
+        <config id="meter15">
+            <com>COM20#SEP#19</com>
+            <baud>2400#SEP#0</baud>
+            <bits>8#SEP#3</bits>
+            <chkbit>2#SEP#2</chkbit>
+            <endbit>0#SEP#0</endbit>
+        </config>
+        <config id="meter16">
+            <com>COM20#SEP#19</com>
+            <baud>2400#SEP#0</baud>
+            <bits>8#SEP#3</bits>
+            <chkbit>2#SEP#2</chkbit>
+            <endbit>0#SEP#0</endbit>
+        </config>
         <config id="meter17">
-            <com>COM12#SEP#11</com>
+            <com>COM20#SEP#19</com>
             <baud>2400#SEP#0</baud>
             <bits>8#SEP#3</bits>
             <chkbit>2#SEP#2</chkbit>
             <endbit>0#SEP#0</endbit>
         </config>
         <config id="meter18">
-            <com>COM12#SEP#11</com>
+            <com>COM20#SEP#19</com>
             <baud>2400#SEP#0</baud>
             <bits>8#SEP#3</bits>
             <chkbit>2#SEP#2</chkbit>
             <endbit>0#SEP#0</endbit>
         </config>
         <config id="meter19">
-            <com>COM12#SEP#11</com>
+            <com>COM20#SEP#19</com>
             <baud>2400#SEP#0</baud>
             <bits>8#SEP#3</bits>
             <chkbit>2#SEP#2</chkbit>
             <endbit>0#SEP#0</endbit>
         </config>
         <config id="meter20">
-            <com>COM12#SEP#11</com>
+            <com>COM20#SEP#19</com>
             <baud>2400#SEP#0</baud>
             <bits>8#SEP#3</bits>
             <chkbit>2#SEP#2</chkbit>
             <endbit>0#SEP#0</endbit>
         </config>
         <config id="meter21">
-            <com>COM12#SEP#11</com>
+            <com>COM20#SEP#19</com>
             <baud>2400#SEP#0</baud>
             <bits>8#SEP#3</bits>
             <chkbit>2#SEP#2</chkbit>
             <endbit>0#SEP#0</endbit>
         </config>
         <config id="meter22">
-            <com>COM12#SEP#11</com>
+            <com>COM20#SEP#19</com>
             <baud>2400#SEP#0</baud>
             <bits>8#SEP#3</bits>
             <chkbit>2#SEP#2</chkbit>
             <endbit>0#SEP#0</endbit>
         </config>
         <config id="meter23">
-            <com>COM29#SEP#28</com>
+            <com>COM20#SEP#19</com>
             <baud>2400#SEP#0</baud>
             <bits>8#SEP#3</bits>
             <chkbit>2#SEP#2</chkbit>
             <endbit>0#SEP#0</endbit>
         </config>
         <config id="meter24">
-            <com>COM30#SEP#29</com>
+            <com>COM20#SEP#19</com>
             <baud>2400#SEP#0</baud>
             <bits>8#SEP#3</bits>
             <chkbit>2#SEP#2</chkbit>
