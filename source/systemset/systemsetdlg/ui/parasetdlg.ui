@@ -389,7 +389,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>Middle1</string>
+           <string>Middle2</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -472,7 +472,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>Middle2</string>
+           <string>Middle1</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -760,12 +760,12 @@
             </item>
             <item>
              <property name="text">
-              <string>   Middle1</string>
+              <string>   Middle2</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>   Middle2</string>
+              <string>   Middle1</string>
              </property>
             </item>
             <item>
@@ -817,7 +817,7 @@
              <bool>false</bool>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
             <property name="frame">
              <bool>true</bool>
@@ -833,12 +833,12 @@
             </item>
             <item>
              <property name="text">
-              <string>   Middle1</string>
+              <string>   Middle2</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>   Middle2</string>
+              <string>   Middle1</string>
              </property>
             </item>
             <item>
@@ -890,7 +890,7 @@
              <bool>false</bool>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>2</number>
             </property>
             <property name="frame">
              <bool>true</bool>
@@ -906,12 +906,12 @@
             </item>
             <item>
              <property name="text">
-              <string>   Middle1</string>
+              <string>   Middle2</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>   Middle2</string>
+              <string>   Middle1</string>
              </property>
             </item>
             <item>
@@ -963,7 +963,7 @@
              <bool>false</bool>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>3</number>
             </property>
             <property name="frame">
              <bool>true</bool>
@@ -979,12 +979,12 @@
             </item>
             <item>
              <property name="text">
-              <string>   Middle1</string>
+              <string>   Middle2</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>   Middle2</string>
+              <string>   Middle1</string>
              </property>
             </item>
             <item>
