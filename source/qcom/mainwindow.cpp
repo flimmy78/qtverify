@@ -45,7 +45,16 @@ QMainWindow(parent),
 	ui->portNameComboBox->addItem("COM18");
 	ui->portNameComboBox->addItem("COM19");
 	ui->portNameComboBox->addItem("COM20");
-
+	ui->portNameComboBox->addItem("COM21");
+	ui->portNameComboBox->addItem("COM22");
+	ui->portNameComboBox->addItem("COM23");
+	ui->portNameComboBox->addItem("COM24");
+	ui->portNameComboBox->addItem("COM25");
+	ui->portNameComboBox->addItem("COM26");
+	ui->portNameComboBox->addItem("COM27");
+	ui->portNameComboBox->addItem("COM28");
+	ui->portNameComboBox->addItem("COM29");
+	ui->portNameComboBox->addItem("COM30");
 #endif
 
 	ui->statusBar->showMessage(QObject::tr("Welcome Using QCom!"));
