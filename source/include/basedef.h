@@ -228,12 +228,12 @@ typedef pla_T_R_STR* pla_T_R_PTR;
 */
 struct Flow_Point_Info_STR
 {
-	qint64 fp_timestamp;//第i流量点的时间戳
 	float fp_upperlmt;//第i流量点的上限流量值(2.7m³/h)
 	float fp_verify;//第i流量点的检定流量值(2.5m³/h)
 	float fp_quantity;//第i流量点的检定水量(50L)
 	float fp_freq;//第i流量点的水泵频率(35Hz)
-	int fp_valve;//第i流量点的控制阀(大)
+	int fp_valve_idx;//第i流量点的控制阀(大)对应的combbox索引
+	int fp_valve;//第i流量点的控制阀(大)对应的端口号
 	int fp_seq;//第i流量点的检定次序(3)
 };
 typedef struct Flow_Point_Info_STR Flow_Point_Info;
@@ -245,9 +245,7 @@ typedef struct Flow_Point_Info_STR Flow_Point_Info;
 class Verify_Params_STR
 {
 public:
-	qint64 file_timestamp;//配置文件的时间戳
 	//被检热量表的基本信息; m为meter的头字母
-	qint64 m_timestamp;//基本信息时间戳
 	int m_stand;//被检表规格(DN15,DN20,DN25等) 
 	int m_maxMeters;//被检表的最大数量
 	int m_type;//被检表类型(机械表、超声波表等)
@@ -267,14 +265,12 @@ public:
 	int total_fp;//有效流量点的数目
 
 	//检定时的控制参数, 全部为布尔型参数, 故前缀以bo_开头
-	qint64 bo_timestamp;//布尔值时间戳
 	bool bo_autopick;//是否自动采集
 	bool bo_adjerror;//是否调整误差
 	bool bo_writenum;//是否写表号
 	bool bo_converify;//是否连续检定
 	bool bo_resetzero;//是否初值回零
 	//其他参数
-	qint64 oth_timestamp;//其他参数时间戳
 	float sc_flow;//流量安全系数,sc为safe coefficient头字母
 	float sc_thermal;//热量安全系数
 	int ex_time;//排气时间

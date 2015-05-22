@@ -25,6 +25,7 @@
 #include "parasetdlg.h"
 #include "commondefine.h"
 #include "qtexdb.h"
+#include "algorithm.h"
 
 ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
@@ -244,17 +245,12 @@ void ParaSetDlg::installFlowPoint()
 	// 第i流量点
 	for (int i=0; i<VERIFY_POINTS; i++)
 	{
-		QString head = "FlowPoint_" + QString::number(i);
-		//如果检定次序号大于0, 则此流量点参与检测
-		if (lastParams->m_params->fp_info[i].fp_seq > 0)
-		{
-				lineEdit_uppers[i]->setText(QString::number(lastParams->m_params->fp_info[i].fp_upperlmt));
-				lineEdit_flows[i]->setText(QString::number(lastParams->m_params->fp_info[i].fp_verify));
-				lineEdit_quantites[i]->setText(QString::number(lastParams->m_params->fp_info[i].fp_quantity));
-				cBox_valves[i]->setCurrentIndex(settings->value(head + "/valve_"  + QString::number(i)).toInt());
-				lineEdit_freqs[i]->setText(QString::number(lastParams->m_params->fp_info[i].fp_freq));
-				cBox_seqs[i]->setCurrentIndex(lastParams->m_params->fp_info[i].fp_seq);
-		}
+		lineEdit_uppers[i]->setText(QString::number(lastParams->m_params->fp_info[i].fp_upperlmt));
+		lineEdit_flows[i]->setText(QString::number(lastParams->m_params->fp_info[i].fp_verify));
+		lineEdit_quantites[i]->setText(QString::number(lastParams->m_params->fp_info[i].fp_quantity));
+		cBox_valves[i]->setCurrentIndex(lastParams->m_params->fp_info[i].fp_valve_idx);
+		lineEdit_freqs[i]->setText(QString::number(lastParams->m_params->fp_info[i].fp_freq));
+		cBox_seqs[i]->setCurrentIndex(lastParams->m_params->fp_info[i].fp_seq);
 	}
 }
 
@@ -332,19 +328,6 @@ void ParaSetDlg::on_btnSave_clicked()
 		return;
 	}
 
-	QStringList heads = settings->childGroups();
-	timestamp = QDateTime::currentMSecsSinceEpoch();
-	if (heads.contains("Timestamp"))
-	{
-		settings->setValue("Timestamp/timestamp",timestamp);
-	} 
-	else
-	{
-		settings->beginGroup("Timestamp");
-		settings->setValue("Timestamp/timestamp",timestamp);
-		settings->endGroup();
-	}
-
 	SaveHead();
 	SaveFlowPoint();
 	SaveBool();
@@ -419,8 +402,7 @@ bool ParaSetDlg::chkSeq()
 
 void ParaSetDlg::SaveHead()
 {
-	settings->beginGroup("head");
-	settings->setValue("timestamp",timestamp);
+	settings->beginGroup("Head");
 	settings->setValue("standard", ui.cmbStandard->currentIndex());
 	settings->setValue("metertype", ui.cmbCollectCode->currentIndex());
 	settings->setValue("manufacture", ui.cmbManufacture->currentIndex());
@@ -450,28 +432,23 @@ void ParaSetDlg::SaveHead()
 */
 void ParaSetDlg::SaveFlowPoint()
 {
-	for (int i=0; i < VERIFY_POINTS; i++)
+	settings->beginWriteArray("FlowPoints");
+	for (int i = 0; i < VERIFY_POINTS; i++) 
 	{
-		//只保存检定顺序 > 1 的流量点
-		if(cBox_seqs[i]->currentIndex() > 0)
-		{
-			settings->beginGroup("FlowPoint_" +  QString::number(i, 10));
-			settings->setValue("timestamp",timestamp);
-			settings->setValue("upperflow_" +  QString::number(i, 10), lineEdit_uppers[i]->text());//上限流量值
-			settings->setValue("verifyflow_" +  QString::number(i, 10), lineEdit_flows[i]->text());//流量点
-			settings->setValue("flowquantity_" +  QString::number(i, 10), lineEdit_quantites[i]->text());//检定水量
-			settings->setValue("pumpfrequencey_" +  QString::number(i, 10), lineEdit_freqs[i]->text());//变频器频率
-			settings->setValue("valve_" +  QString::number(i, 10), cBox_valves[i]->currentIndex());//对应的阀门
-			settings->setValue("seq_" +  QString::number(i, 10), cBox_seqs[i]->currentIndex());//检定顺序
-			settings->endGroup();
-		}
+		settings->setArrayIndex(i);
+		settings->setValue("upperflow", lineEdit_uppers[i]->text());//上限流量值
+		settings->setValue("verifyflow", lineEdit_flows[i]->text());//流量点
+		settings->setValue("flowquantity", lineEdit_quantites[i]->text());//检定水量
+		settings->setValue("pumpfrequencey", lineEdit_freqs[i]->text());//变频器频率
+		settings->setValue("valve", cBox_valves[i]->currentIndex());//对应的阀门
+		settings->setValue("seq", cBox_seqs[i]->currentIndex());//检定顺序
 	}
+	settings->endArray();
 }
 
 void ParaSetDlg::SaveBool()
 {
 	settings->beginGroup("Bool");
-	settings->setValue("timestamp",timestamp);
 	settings->setValue("autopick", ui.tBtn_autoPick_true->isChecked() );//是否自动采集
 	settings->setValue("adjusterror", ui.tBtn_adjustError_true->isChecked() );//是否修正误差
 	settings->setValue("writemeternumber", ui.tBtn_writeNum_true->isChecked() );//是否写表号
@@ -483,7 +460,6 @@ void ParaSetDlg::SaveBool()
 void ParaSetDlg::SaveOther()
 {
 	settings->beginGroup("Other");
-	settings->setValue("timestamp",timestamp);
 	settings->setValue("flowsafecoefficient", ui.lineEdit_sc_flow->text());//流量安全系数
 	settings->setValue("thermalsafecoefficient", ui.lineEdit_sc_thermal->text());//热量安全系数
 	settings->setValue("exhausttime", ui.lineEdit_exTime->text());//排气时间
@@ -518,26 +494,13 @@ ParaSetReader::~ParaSetReader()
 
 int ParaSetReader::readIniFile()
 {
-	QString filename;
-	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
-
 	//检定前的参数文件
-#ifdef __unix
-	filename = runhome + "\/ini\/verifyparaset.ini";
-#else
-	filename = runhome + "\\ini\\verifyparaset.ini";
-#endif
-	m_settings = new QSettings(filename, QSettings::IniFormat);
+	m_settings = new QSettings(getFullIniFileName("verifyparaset.ini"), QSettings::IniFormat);
 	m_settings->setIniCodec("GB2312");//解决向ini文件中写汉字乱码
 
 	//端口号的配置文件
-#ifdef __unix
-	filename = runhome + "\/ini\/portset.ini";
-#else
-	filename = runhome + "\\ini\\portset.ini";
-#endif
-	m_portInfo = new QSettings(filename, QSettings::IniFormat);
-	m_portInfo->setIniCodec("GB2312");
+	m_port_config = new QSettings(getFullIniFileName("portset.ini"), QSettings::IniFormat);
+	m_port_config->setIniCodec("GB2312");
 
 	return true;
 }
@@ -567,7 +530,6 @@ void ParaSetReader::initValveMap()
 void ParaSetReader::readParamValues()
 {
 	//读取文件时间戳
-	m_params->file_timestamp = m_settings->value("Timestamp/timestamp").toString().toLongLong();
 	readHead();
 	readBool();
 	readOther();
@@ -576,30 +538,25 @@ void ParaSetReader::readParamValues()
 
 void ParaSetReader::readHead()
 {
-	if (m_params->file_timestamp ==  m_settings->value("head/timestamp").toString().toLongLong())
-	{
-		//读取基本信息
-		m_params->m_timestamp=m_settings->value("head/timestamp").toLongLong();
-		m_params->m_stand = m_settings->value("head/standard").toInt();
-		/////////////////////读取最大检表数/////////////////////////
-		m_params->m_maxMeters = getMaxMeterByIdx(m_params->m_stand);
+	m_params->m_stand = m_settings->value("head/standard").toInt();
+	/////////////////////读取最大检表数/////////////////////////
+	m_params->m_maxMeters = getMaxMeterByIdx(m_params->m_stand);
 
-		///////////////////////////////////////////////////////////////////
-		m_params->m_type = m_settings->value("head/metertype").toInt();
-		m_params->m_manufac = m_settings->value("head/manufacture").toInt();	
-		m_params->m_model = m_settings->value("head/model").toInt();
-		m_params->m_vcomp = m_settings->value("head/verifycompany").toInt();
-		m_params->m_vperson = m_settings->value("head/verifyperson").toInt();
-		m_params->m_pickcode = m_settings->value("head/pickcode").toInt();
-		m_params->m_grade = m_settings->value("head/grade").toInt();
-		m_params->m_nflowpnt = m_settings->value("head/nflowpoint").toInt();
-		/******************新增参数项****************************************/
-		m_params->m_version = m_settings->value("head/version").toString();
-		m_params->m_temper = m_settings->value("head/temper").toString();
-		m_params->m_humidity = m_settings->value("head/humidity").toString();
-		m_params->m_airpress = m_settings->value("head/airpress").toString();
-		/************************************************************************/
-	}
+	///////////////////////////////////////////////////////////////////
+	m_params->m_type = m_settings->value("head/metertype").toInt();
+	m_params->m_manufac = m_settings->value("head/manufacture").toInt();	
+	m_params->m_model = m_settings->value("head/model").toInt();
+	m_params->m_vcomp = m_settings->value("head/verifycompany").toInt();
+	m_params->m_vperson = m_settings->value("head/verifyperson").toInt();
+	m_params->m_pickcode = m_settings->value("head/pickcode").toInt();
+	m_params->m_grade = m_settings->value("head/grade").toInt();
+	m_params->m_nflowpnt = m_settings->value("head/nflowpoint").toInt();
+	/******************新增参数项****************************************/
+	m_params->m_version = m_settings->value("head/version").toString();
+	m_params->m_temper = m_settings->value("head/temper").toString();
+	m_params->m_humidity = m_settings->value("head/humidity").toString();
+	m_params->m_airpress = m_settings->value("head/airpress").toString();
+	/************************************************************************/
 }
 
 void ParaSetReader::readFlowPoints()
@@ -607,52 +564,40 @@ void ParaSetReader::readFlowPoints()
 	m_params->total_fp = 0;//将流量点数目置为零
 	QStringList heads = m_settings->childGroups();//配置文件中的组名
 	// 第i流量点
-	for (int i=0; i<VERIFY_POINTS; i++)
-	{
-		QString head = "FlowPoint_" + QString::number(i);//当前流量点的名字
-		//如果组名中有当前检测的流量点, 则读取它的其他信息
-		if (heads.contains(head))
+	m_settings->beginReadArray("FlowPoints");
+	for (int i = 0; i < VERIFY_POINTS; i++) {
+		m_settings->setArrayIndex(i);
+		m_params->fp_info[i].fp_freq =  m_settings->value("pumpfrequencey").toFloat();
+		m_params->fp_info[i].fp_upperlmt =  m_settings->value("upperflow").toFloat();
+		m_params->fp_info[i].fp_verify =  m_settings->value("verifyflow").toFloat();
+		m_params->fp_info[i].fp_quantity =  m_settings->value("flowquantity").toFloat();
+		m_params->fp_info[i].fp_valve_idx =  m_settings->value("valve").toInt();
+		m_params->fp_info[i].fp_valve =  m_port_config->value("Relay/" + m_valvePortMap[m_params->fp_info[i].fp_valve_idx]).toInt();
+
+		m_params->fp_info[i].fp_seq =  m_settings->value("seq").toInt();
+		if (m_params->fp_info[i].fp_seq)
 		{
-			//如果当前流量点的时间戳与文件保存时的时间戳一样, 那么它就是上次被保存过的信息
-			//反之则不是上次保存的(可能是失效的配置), 将其丢弃
-			if (m_params->file_timestamp ==  m_settings->value(head + "/timestamp").toLongLong())
-			{
-				m_params->total_fp++;
-				m_params->fp_info[i].fp_timestamp = m_params->file_timestamp;
-				m_params->fp_info[i].fp_freq =  m_settings->value(head + "/pumpfrequencey_"  + QString::number(i)).toFloat();
-				m_params->fp_info[i].fp_upperlmt =  m_settings->value(head + "/upperflow_"  + QString::number(i)).toFloat();
-				m_params->fp_info[i].fp_verify =  m_settings->value(head + "/verifyflow_"  + QString::number(i)).toFloat();
-				m_params->fp_info[i].fp_quantity =  m_settings->value(head + "/flowquantity_"  + QString::number(i)).toFloat();
-				int idx=m_settings->value(head + "/valve_"  + QString::number(i)).toInt();//获取参数配置文件中保存的阀门comboBox的索引
-				m_params->fp_info[i].fp_valve =  m_portInfo->value("Relay/" + m_valvePortMap[idx]).toInt();//获取阀门端口号
-				m_params->fp_info[i].fp_seq =  m_settings->value(head + "/seq_"  + QString::number(i)).toInt();
-			}
+			m_params->total_fp++;
 		}
 	}
+	m_settings->endArray();
 }
 
 void ParaSetReader::readBool()
 {
-	if (m_params->file_timestamp ==  m_settings->value("Bool/timestamp").toString().toLongLong())
-	{
-		m_params->bo_timestamp = m_settings->value("Bool/timestamp").toLongLong();
-		m_params->bo_adjerror	= m_settings->value("Bool/adjusterror").toBool();
-		m_params->bo_autopick = m_settings->value("Bool/autopick").toBool();
-		m_params->bo_converify = m_settings->value("Bool/continuouscheck").toBool();
-		m_params->bo_writenum = m_settings->value("Bool/writemeternumber").toBool();
-		m_params->bo_resetzero = m_settings->value("Bool/resetzero").toBool();
-	}
+	m_params->bo_adjerror	= m_settings->value("Bool/adjusterror").toBool();
+	m_params->bo_autopick = m_settings->value("Bool/autopick").toBool();
+	m_params->bo_converify = m_settings->value("Bool/continuouscheck").toBool();
+	m_params->bo_writenum = m_settings->value("Bool/writemeternumber").toBool();
+	m_params->bo_resetzero = m_settings->value("Bool/resetzero").toBool();
+	
 }
 
 void ParaSetReader::readOther()
 {
-	if (m_params->file_timestamp ==  m_settings->value("Other/timestamp").toString().toLongLong())
-	{
-		m_params->oth_timestamp = m_settings->value("Other/timestamp").toLongLong();
-		m_params->sc_flow =  m_settings->value("Other/flowsafecoefficient").toFloat();
-		m_params->sc_thermal =  m_settings->value("Other/thermalsafecoefficient").toFloat();
-		m_params->ex_time =  m_settings->value("Other/exhausttime").toFloat();
-	}
+	m_params->sc_flow =  m_settings->value("Other/flowsafecoefficient").toFloat();
+	m_params->sc_thermal =  m_settings->value("Other/thermalsafecoefficient").toFloat();
+	m_params->ex_time =  m_settings->value("Other/exhausttime").toFloat();
 }
 
 /*

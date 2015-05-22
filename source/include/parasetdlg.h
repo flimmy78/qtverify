@@ -24,19 +24,20 @@ public:
 
 	Verify_Params_PTR getParams();
 	Verify_Params_PTR m_params;
+	
 	int readIniFile();
 	Flow_Point_Info getFpBySeq(int i);//取出检定次序为i的流量点信息
 
 private:
 	QSettings *m_settings;
-	QSettings *m_portInfo;//阀门端口配置文件
+	QSettings *m_port_config;//阀门端口配置文件
 
 
 	void initValveMap();
 	void readParamValues();//读取配置文件所有的信息
 
 	void readHead();//读取配置文件的[head]组的信息
-	void readFlowPoints();//读取配置文件的[FlowPoint_i]组的信息
+	void readFlowPoints();//读取配置文件的[FlowPoints]组的信息
 	void readBool();//读取配置文件的[Bool]组的信息
 	void readOther();//读取配置文件的[Other]组的信息
 };
