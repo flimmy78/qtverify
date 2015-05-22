@@ -135,7 +135,7 @@ public slots:
 	void showNowKeyParaConfig(); //显示当前关键参数设置信息
 	void initTableWidget();     //设置表格行数
 
-	void on_btnExhaust_clicked(); //点击"排气"按钮
+	int on_btnExhaust_clicked();  //点击"排气"按钮
 	void on_btnStart_clicked();   //点击"开始"按钮
 	void on_btnNext_clicked();    //点击"下一步"按钮
 	void on_btnStop_clicked();    //点击"终止检测"按钮

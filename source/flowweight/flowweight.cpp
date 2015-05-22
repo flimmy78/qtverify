@@ -35,7 +35,6 @@ FlowWeightDlg::FlowWeightDlg(QWidget *parent, Qt::WFlags flags)
 	qDebug()<<"FlowWeightDlg thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
  	ui.btnNext->hide();   //隐藏"下一步"按钮
-	ui.btnExhaust->hide();//隐藏"排气"按钮
 
 	//不同等级的热量表对应的标准误差,单位%
 	m_gradeErr[1] = 1.00f;
@@ -736,25 +735,11 @@ void FlowWeightDlg::clearTableContents()
 //点击"开始"按钮
 void FlowWeightDlg::on_btnStart_clicked()
 {
-	on_btnExhaust_clicked();
-}
-
-/*
-** 点击"排气按钮"，开始检定
-*/
-void FlowWeightDlg::on_btnExhaust_clicked()
-{
-	if (!isDataCollectNormal())
+	if (!on_btnExhaust_clicked())
 	{
-		qWarning()<<"数据采集不正常，请检查";
 		return;
 	}
 
-	if (!openAllValveAndPump())
-	{
-		qWarning()<<"打开所有阀门和水泵 失败!";
-		return;
-	}
 	m_stopFlag = false;
 	clearTableContents();
 	m_validMeterNum = 0;
@@ -775,6 +760,28 @@ void FlowWeightDlg::on_btnExhaust_clicked()
 	}
 
 	return;
+}
+
+/*
+** 点击"排气按钮"，开始检定
+*/
+int FlowWeightDlg::on_btnExhaust_clicked()
+{
+	if (!isDataCollectNormal())
+	{
+		qWarning()<<"数据采集错误，请检查";
+		QMessageBox::warning(this, tr("Warning"), tr("data acquisition error, please check!"));
+		return false;
+	}
+
+	if (!openAllValveAndPump())
+	{
+		qWarning()<<"打开所有阀门和水泵 失败!";
+		QMessageBox::warning(this, tr("Warning"), tr("exhaust air failed!"));
+		return false;
+	}
+
+	return true;
 }
 
 //点击"下一步"按钮
