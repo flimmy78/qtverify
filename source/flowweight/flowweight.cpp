@@ -504,44 +504,6 @@ void FlowWeightDlg::showNowKeyParaConfig()
 	m_meterStdMapper->setCurrentIndex(m_nowParams->m_stand);
 }
 
-/*
-** 点击"排气按钮"，开始检定
-*/
-void FlowWeightDlg::on_btnExhaust_clicked()
-{
-	if (!isDataCollectNormal())
-	{
-		qWarning()<<"数据采集不正常，请检查";
-		return;
-	}
-
-	if (!openAllValveAndPump())
-	{
-		qWarning()<<"打开所有阀门和水泵 失败!";
-		return;
-	}
-	m_stopFlag = false;
-	clearTableContents();
-	m_validMeterNum = 0;
-
-	m_exaustSecond = m_nowParams->ex_time;
-	m_exaustTimer->start(1000);//开始排气倒计时
-	ui.labelHintProcess->setText(tr("Exhaust countdown: %1 second").arg(m_exaustSecond));
-	ui.labelHintPoint->clear();
-	qDebug()<<"排气倒计时:"<<m_exaustSecond<<"秒";
-
-	if (m_autopick) //自动读表
-	{
-		readAllMeter();
-	}
-	else //手动读表
-	{
-		ui.labelHintPoint->setText(tr("Please input meter number!"));
-	}
-	
-	return;
-}
-
 //检查数据采集是否正常，包括天平、温度、电磁流量计
 int FlowWeightDlg::isDataCollectNormal()
 {
@@ -777,6 +739,44 @@ void FlowWeightDlg::on_btnStart_clicked()
 	on_btnExhaust_clicked();
 }
 
+/*
+** 点击"排气按钮"，开始检定
+*/
+void FlowWeightDlg::on_btnExhaust_clicked()
+{
+	if (!isDataCollectNormal())
+	{
+		qWarning()<<"数据采集不正常，请检查";
+		return;
+	}
+
+	if (!openAllValveAndPump())
+	{
+		qWarning()<<"打开所有阀门和水泵 失败!";
+		return;
+	}
+	m_stopFlag = false;
+	clearTableContents();
+	m_validMeterNum = 0;
+
+	m_exaustSecond = m_nowParams->ex_time;
+	m_exaustTimer->start(1000);//开始排气倒计时
+	ui.labelHintProcess->setText(tr("Exhaust countdown: %1 second").arg(m_exaustSecond));
+	ui.labelHintPoint->clear();
+	qDebug()<<"排气倒计时:"<<m_exaustSecond<<"秒";
+
+	if (m_autopick) //自动读表
+	{
+		readAllMeter();
+	}
+	else //手动读表
+	{
+		ui.labelHintPoint->setText(tr("Please input meter number!"));
+	}
+
+	return;
+}
+
 //点击"下一步"按钮
 void FlowWeightDlg::on_btnNext_clicked()
 {
@@ -820,6 +820,12 @@ void FlowWeightDlg::on_btnStop_clicked()
 
 	ui.labelHintProcess->setText(tr("Verify has Stoped!"));
 }
+
+void FlowWeightDlg::on_btnExit_clicked()
+{
+	this->close();
+}
+
 
 //开始检定
 void FlowWeightDlg::startVerify()
@@ -1619,9 +1625,3 @@ void FlowWeightDlg::slotVerifyStatus(const int &row)
 	qDebug()<<"slotVerifyStatus row ="<<row;
 	m_meterObj[row].askSetVerifyStatus();
 }
-
-void FlowWeightDlg::on_btnExit_clicked()
-{
-	this->close();
-}
-

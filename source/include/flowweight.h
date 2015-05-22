@@ -139,6 +139,7 @@ public slots:
 	void on_btnStart_clicked();   //点击"开始"按钮
 	void on_btnNext_clicked();    //点击"下一步"按钮
 	void on_btnStop_clicked();    //点击"终止检测"按钮
+	void on_btnExit_clicked();    //退出按钮
 	void slotExaustFinished();    //排气时间结束
 	int prepareInitBalance();     //开始检定前，准备天平初始重量
 	int openAllValveAndPump();    //打开所有阀门和水泵
@@ -201,8 +202,6 @@ public slots:
 	void on_btnAllAdjError_clicked(); //调整误差(所有表)
 	void on_btnAllModifyNO_clicked(); //修改表号(所有表）
 
-	void on_btnExit_clicked();//退出按钮
-	
 	void slotModifyMeterNO(const int &row); //修改表号
 	void slotAdjustError(const int &row);   //调整误差
 	void slotReadMeter(const int &row);     //读表(单个表)
