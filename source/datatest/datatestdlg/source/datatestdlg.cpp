@@ -430,12 +430,6 @@ void DataTestDlg::on_btnRegulate1_clicked() //调节阀1
 	m_controlObj->askControlRegulate(m_nowRegNo, ui.spinBoxFreq->value());
 }
 
-//查询从机(控制板)状态
-void DataTestDlg::on_btnQueryStatus_clicked()
-{
-	m_controlObj->askControlQuery();
-}
-
 //参数设置
 void DataTestDlg::on_btnParaSet_clicked()
 {

@@ -92,7 +92,6 @@ public slots:
 
 	void on_btnSetFreq_clicked(); //…Ë÷√∆µ¬ 
 	void on_btnRegulate1_clicked();
-	void on_btnQueryStatus_clicked();
 
 	void on_btnParaSet_clicked();
 	void on_btnExit_clicked();
