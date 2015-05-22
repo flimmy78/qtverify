@@ -1593,7 +1593,7 @@
         <location filename="../ui/setportfrm.ui" line="1068"/>
         <location filename="../ui/setportfrm.ui" line="1179"/>
         <source>port3</source>
-        <translation>端口2</translation>
+        <translation type="unfinished">端口3</translation>
     </message>
     <message>
         <location filename="../ui/setportfrm.ui" line="52"/>
