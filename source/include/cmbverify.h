@@ -108,6 +108,8 @@ private:
 	bool m_min_tempdiff_set;//最小温差已设置
 
 	bool m_delta_temp_achieved;//当前恒温槽达到检定温差
+
+	float m_stdErrLmtByGrade;//根据表的等级得出的示值误差限
 	/*----------计算中用到的关键参数end--------*/
 	Cmb_Verify_Record_PTR m_recPtr; //有效的检定记录
 	QString m_timeStamp; //记录时间戳
@@ -135,7 +137,9 @@ private:
 	MeterComObject *m_meterObj;
 	ComThread *m_meterThread;	//热量表通讯线程
 	void initMeterCom();       //热量表串口
-	bool m_val0_is_read[MAX_METER_NUM];//初值已被读取
+	bool m_vol0_is_read[MAX_METER_NUM];//流量初值已被读取
+	bool m_eng0_is_read[MAX_METER_NUM];//热量初值已被读取
+
 	/*--------------------------------*/
 
 	//void addNewTblRow(QSignalMapper *);//添加一个表位

@@ -56,7 +56,8 @@ void CmbVerifyDlg::showEvent(QShowEvent *)
 	m_meterObj = NULL;
 	for (int i=0;i<MAX_METER_NUM;i++)
 	{
-		m_val0_is_read[i] = false;
+		m_vol0_is_read[i] = false;
+		m_eng0_is_read[i] = false;
 	}
 	initMeterCom();
 }
@@ -155,7 +156,7 @@ void CmbVerifyDlg::initTbl()
 
 	connect(m_signalMapper, SIGNAL(mapped(const int &)), this, SLOT(slotReadData(const int &)));
 
-	ui.tableWidget->resizeColumnsToContents();
+	//ui.tableWidget->resizeColumnsToContents();
 }
 
 void CmbVerifyDlg::slotReadData(const int &row)
@@ -181,7 +182,7 @@ void CmbVerifyDlg::slotSetMeterFlow(const QString& comName, const float& flow)
 	{
 		return;
 	}
-	if (!m_val0_is_read[meterPos-1]) //初值
+	if (!m_vol0_is_read[meterPos-1]) //初值
 	{
 		ui.tableWidget->setItem(meterPos - 1, COL_V0, new QTableWidgetItem(QString::number(flow)));
 	}
@@ -199,7 +200,7 @@ void CmbVerifyDlg::slotSetMeterHeat(const QString& portName, const QString& heat
 		return;
 	}
 
-	if (!m_val0_is_read[meterPos-1]) //初值
+	if (!m_eng0_is_read[meterPos-1]) //初值
 	{
 		ui.tableWidget->setItem(meterPos - 1, COL_E0, new QTableWidgetItem(heat));
 	}
@@ -266,30 +267,32 @@ void CmbVerifyDlg::on_tableWidget_cellChanged(int row, int col)
 	ui.tableWidget->setCurrentCell(row, col+1);
 	QString sn;
 	float v0, v1, e0, e1, stdE, deltaE, err, vol, energy;
+	bool deltaE_OK = false;
+	bool stdE_OK = false;
 	switch(col)
 	{
 		case COL_SN:
 
-			ui.tableWidget->setCurrentCell(row+1, COL_SN);
+			//ui.tableWidget->setCurrentCell(row+1, COL_SN);
 			break;
 		case COL_E0:
-			m_val0_is_read[row] = true;
-			ui.tableWidget->setCurrentCell(row, COL_V0);
+			m_eng0_is_read[row] = true;
+			//ui.tableWidget->setCurrentCell(row, COL_V0);
 			break;
 		case COL_V0:
-			m_val0_is_read[row] = true;
+			m_vol0_is_read[row] = true;
 			sn = ui.tableWidget->item(row+1, COL_SN)->text();
-			if (row < ui.tableWidget->rowCount() && !sn.isEmpty() && !sn.isNull())
-			{
-				ui.tableWidget->setCurrentCell(row+1, COL_V1);
-			}
+			//if (row < ui.tableWidget->rowCount() && !sn.isEmpty() && !sn.isNull())
+			//{
+			//	//ui.tableWidget->setCurrentCell(row+1, COL_V1);
+			//}
 			break;
 		case COL_V1:
 			//calcDeltaV
 			v0 = ui.tableWidget->item(row, COL_V0)->text().trimmed().toFloat();
 			v1 = ui.tableWidget->item(row, COL_V1)->text().trimmed().toFloat();
 			ui.tableWidget->item(row, COL_DELTA_V)->setText(QString::number(v1-v0));
-			ui.tableWidget->setCurrentCell(row, COL_E1);
+			//ui.tableWidget->setCurrentCell(row, COL_E1);
 			break;
 		case COL_E1:
 			//calcDeltaE
@@ -299,7 +302,11 @@ void CmbVerifyDlg::on_tableWidget_cellChanged(int row, int col)
 			break;
 		case COL_DELTA_E:
 			//calcErr
-			stdE   = ui.tableWidget->item(row, COL_STD_E)->text().trimmed().toFloat();
+			stdE   = ui.tableWidget->item(row, COL_STD_E)->text().trimmed().toFloat(&stdE_OK);
+			if (!stdE_OK)
+			{
+				return;
+			}
 			deltaE = ui.tableWidget->item(row, COL_DELTA_E)->text().trimmed().toFloat();
 			err = qAbs(deltaE - stdE)/stdE;
 			ui.tableWidget->item(row, COL_ERR)->setText(QString::number(err*100));
@@ -311,8 +318,20 @@ void CmbVerifyDlg::on_tableWidget_cellChanged(int row, int col)
 			ui.tableWidget->item(row, COL_STD_E)->setText(QString::number(energy));
 			break;
 		case COL_STD_E:
+			//calcErr
+			deltaE = ui.tableWidget->item(row, COL_DELTA_E)->text().trimmed().toFloat(&deltaE_OK);
+			if (!deltaE_OK)
+			{
+				return;
+			}
+			stdE = ui.tableWidget->item(row, COL_STD_E)->text().trimmed().toFloat();
+			err = qAbs(deltaE - stdE)/stdE;
+			ui.tableWidget->item(row, COL_ERR)->setText(QString::number(err*100));
 			break;
-		default:
+		case COL_ERR:
+			float disp_err = ui.tableWidget->item(row, COL_ERR)->text().toFloat();
+			bool is_valid = disp_err <= m_stdErrLmtByGrade;
+			ui.tableWidget->item(row, COL_ERR)->setTextColor(is_valid ? QColor(250,0,0) : QColor(0,0,0));
 			break;
 	}
 }
@@ -408,6 +427,13 @@ void CmbVerifyDlg::on_btnStart_clicked()
 	ui.btn_collection->setEnabled(true);
 	ui.btn_stop->setEnabled(true);
 	ui.btnSave->setEnabled(true);
+
+	int grade = m_param_config->value("common/grade").toInt();
+	float min_temp_diff = ui.lineEdit_min_theta->text().toFloat();
+	float set_tem_diff = m_param_config->value("diff/temp_deff").toFloat();
+	float flow_rate = IMITATION_FLOW_RATE;
+	float dn_flow_rate = m_param_config->value("common/dnflow").toFloat();
+	m_stdErrLmtByGrade = getMeterGradeErrLmt(grade, min_temp_diff, set_tem_diff, dn_flow_rate, flow_rate);
 }
 
 void CmbVerifyDlg::on_btnSave_clicked()
@@ -431,9 +457,7 @@ int CmbVerifyDlg::saveVerifyRecords()
 	float dispErr;
 	int rowNum = ui.tableWidget->rowCount();
 	int columnNum = ui.tableWidget->columnCount();
-	int grade = m_param_config->value("common/grade").toInt();
-	float flow_rate = IMITATION_FLOW_RATE;
-	float dn_flow_rate = m_param_config->value("common/dnflow").toFloat();
+	
 	for (int i=0; i < rowNum; i++)
 	{
 		if (ui.tableWidget->item(i, COL_ERR)->text().isEmpty())
@@ -472,7 +496,7 @@ int CmbVerifyDlg::saveVerifyRecords()
 			m_recPtr->F_MeterE0 = ui.tableWidget->item(i, COL_E0)->text().toFloat();
 			m_recPtr->F_MeterE1 = ui.tableWidget->item(i, COL_E1)->text().toFloat();
 			m_recPtr->F_DispError = ui.tableWidget->item(i, COL_ERR)->text().toFloat();
-			m_recPtr->F_StdError = getMeterGradeErrLmt(grade, m_min_tempdiff, m_recPtr->F_DeltaTemp, dn_flow_rate, flow_rate);
+			m_recPtr->F_StdError = m_stdErrLmtByGrade;
 			m_recPtr->F_Result = m_recPtr->F_StdError <= m_recPtr->F_DispError ? 1 : 0;
 
 			ret += insertCmbVerifyRec(m_recPtr, 1);
