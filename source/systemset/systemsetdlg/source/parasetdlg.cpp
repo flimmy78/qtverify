@@ -519,8 +519,8 @@ Verify_Params_PTR ParaSetReader::getParams()
 void ParaSetReader::initValveMap()
 {
 	m_valvePortMap.insert(0,"bigNo");
-	m_valvePortMap.insert(1,"middle1No");
-	m_valvePortMap.insert(2,"middle2No");
+	m_valvePortMap.insert(1,"middle2No");
+	m_valvePortMap.insert(2,"middle1No");	
 	m_valvePortMap.insert(3,"smallNo");
 }
 
