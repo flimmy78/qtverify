@@ -22,7 +22,7 @@ public:
 	~SetComFrm();
 
 private:
-	Ui::SetComFrm gui;
+	Ui::SetComDlgClass gui;
 	QString ConfigFileName;
 	QDomDocument m_doc;
 	ReadComConfig *m_config;//∂¡»°≈‰÷√–≈œ¢

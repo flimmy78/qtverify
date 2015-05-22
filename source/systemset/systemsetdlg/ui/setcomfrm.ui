@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SetComFrm</class>
- <widget class="QWidget" name="SetComFrm">
+ <class>SetComDlgClass</class>
+ <widget class="QWidget" name="SetComDlgClass">
   <property name="windowModality">
    <enum>Qt::ApplicationModal</enum>
   </property>
