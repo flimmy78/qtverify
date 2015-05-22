@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1266</width>
-    <height>786</height>
+    <width>1801</width>
+    <height>857</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -268,11 +268,18 @@
         <property name="enabled">
          <bool>false</bool>
         </property>
-        <row>
-         <property name="text">
-          <string/>
-         </property>
-        </row>
+        <property name="minimumSize">
+         <size>
+          <width>1755</width>
+          <height>0</height>
+         </size>
+        </property>
+        <attribute name="horizontalHeaderCascadingSectionResizes">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="horizontalHeaderDefaultSectionSize">
+         <number>120</number>
+        </attribute>
         <column>
          <property name="text">
           <string>Serial</string>
@@ -328,79 +335,47 @@
           <string>Err(%)</string>
          </property>
         </column>
-        <item row="0" column="0">
+        <column>
          <property name="text">
-          <string/>
+          <string>Read Serial</string>
          </property>
-         <property name="flags">
-          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
-         </property>
-        </item>
-        <item row="0" column="1">
+        </column>
+        <column>
          <property name="text">
-          <string/>
+          <string>Read Data</string>
          </property>
-         <property name="flags">
-          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
-         </property>
-        </item>
-        <item row="0" column="2">
+        </column>
+        <column>
          <property name="text">
-          <string/>
+          <string>Read Temp</string>
          </property>
-         <property name="flags">
-          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
-         </property>
-        </item>
-        <item row="0" column="3">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="flags">
-          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
-         </property>
-        </item>
-        <item row="0" column="4">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="flags">
-          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
-         </property>
-        </item>
-        <item row="0" column="5">
-         <property name="text">
-          <string/>
-         </property>
-        </item>
-        <item row="0" column="6">
-         <property name="text">
-          <string/>
-         </property>
-        </item>
-        <item row="0" column="7">
-         <property name="text">
-          <string/>
-         </property>
-        </item>
-        <item row="0" column="8">
-         <property name="text">
-          <string/>
-         </property>
-        </item>
-        <item row="0" column="9">
-         <property name="text">
-          <string/>
-         </property>
-        </item>
-        <item row="0" column="10">
-         <property name="text">
-          <string/>
-         </property>
-        </item>
+        </column>
        </widget>
       </item>
      </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="frame_3">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QLabel" name="label_hint">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>10</y>
+        <width>672</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0000ff;&quot;&gt;Please select the Unit, Install position and minimum temperature difference corectly&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
     </widget>
    </item>
    <item>

@@ -92,6 +92,14 @@ enum Verify_Method
 #define INSTALLPOS_IN	0 //安装位置 入口
 #define INSTALLPOS_OUT	1 //安装位置 出口 
 
+#define NORMAL_PRESSURE 0.6//普通压力, MPa
+#define HIGH_PRESSURE 1.6//高压力, MPa
+
+#define GRADE_ONE	0//1级表
+#define GRADE_TWO	1//2级表
+#define GRADE_THREE	2//3级表
+
+#define IMITATION_FLOW_RATE 2.88//模拟流量时的流速, m3/h
 
 /*
 ** FUNCTION -- 获取下位机端口设置信息(portset.ini文件)
@@ -458,4 +466,38 @@ public:
 };
 typedef Calc_Verify_Record_STR* Calc_Verify_Record_PTR;
 
+class Cmb_Verify_Record_STR{
+public:
+	int F_ID;
+	char F_TimeStamp[TIMESTAMP_LEN];//时间戳（'yyyy-MM-dd HH:mm:ss.zzz')
+	char F_MeterNo[METERNO_LEN];//表号(14位数字: 6 + 8)
+	int F_Standard;//表规格(DN15/DN20/DN25)，外键(T_Meter_Standard.F_ID)
+	int F_Model;//表型号，外键(T_Meter_Model.F_ID)
+	int F_Grade;//计量等级（1,2,3）
+	int F_ManufactDept;//制造单位，外键(T_Manufacture_Dept.F_ID)
+	int F_VerifyDept;//送检单位，外键(T_Verify_Dept.F_ID)
+	int F_VerifyPerson;//检定员，外键(T_User_Def_Tab.F_ID)
+	float F_DeltaTemp;//温差(K)
+	float F_VerifyVolume;//检定量(L)
+	float F_DeltaTempMin;//最小温差(K)
+	int F_InstallPos;//安装位置(0:进口；1:出口)
+	int F_HeatUnit;//热量单位(1:kWh; 0:MJ)
+	float F_StdTempIn;//入口温度-标准温度计(℃)
+	float F_StdTempOut;//出口温度-标准温度计(℃)
+	float F_StdResistIn;//入口电阻-标准温度计(Ω)
+	float F_StdResistOut;//出口电阻-标准温度计(Ω)
+	float F_Kcoe;//K系数
+	float F_StdValue;//理论值(热量，kwh)
+	float F_MeterV0;//热量表初值(体积)，单位L
+	float F_MeterV1;//热量表终值(体积)，单位L
+	float F_MeterE0;//热量表初值(热量)，单位kWh
+	float F_MeterE1;//热量表终值(热量)，单位kWh
+	float F_DispError;//示值误差，单位%
+	float F_StdError;//要求误差(合格标准),单位%
+	int F_Result;//检定结果(1：合格，0：不合格)
+	char F_Bak2[ASCNAME_LEN];//备用域2
+	char F_Bak3[ASCNAME_LEN];//备用域3
+	char F_Bak4[ASCNAME_LEN];//备用域4
+};
+typedef Cmb_Verify_Record_STR* Cmb_Verify_Record_PTR;
 #endif	//BASEDEF_H

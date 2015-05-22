@@ -693,3 +693,92 @@ int insertCalcVerifyRec(Calc_Verify_Record_PTR ptr, int num)
 	
 	return ret;
 }
+
+/*
+** 向数据库插入组合检定结果。调用者负责提前打开数据库startdb()
+*/
+int insertCmbVerifyRec(Cmb_Verify_Record_PTR ptr, int num)
+{
+	int ret = 1;
+	for (int i=0; i<num; i++)
+	{
+		QSqlQuery query(g_db); // 新建一个查询的实例
+		QString sql = "insert into T_Combined_Verify_Record";
+		sql.append(" (");
+		sql.append("F_TimeStamp,");
+		sql.append("F_MeterNo,");
+		//sql.append("F_DeltaTIdx,");
+		sql.append("F_Standard,");
+		sql.append("F_Model,");
+		sql.append("F_Grade,");
+		sql.append("F_ManufactDept,");
+		sql.append("F_VerifyDept,");
+		sql.append("F_VerifyPerson,");
+		sql.append("F_DeltaTemp,");
+		sql.append("F_VerifyVolume,");
+		sql.append("F_DeltaTempMin,");
+		sql.append("F_InstallPos,");
+		sql.append("F_HeatUnit,");
+		sql.append("F_StdTempIn,");
+		sql.append("F_StdTempOut,");
+		sql.append("F_StdResistIn,");
+		sql.append("F_StdResistOut,");
+		sql.append("F_Kcoe,");
+		sql.append("F_StdValue,");
+		sql.append("F_MeterV0,");
+		sql.append("F_MeterV1,");
+		sql.append("F_MeterE0,");
+		sql.append("F_MeterE1,");
+		sql.append("F_DispError,");
+		sql.append("F_StdError,");
+		sql.append("F_Result,");
+		sql.append("F_Bak2,");
+		sql.append("F_Bak3,");
+		sql.append("F_Bak4");
+		sql.append(") ");
+		sql.append("values");
+		sql.append("(");//start
+		sql.append(QString("\'%1\', ").arg(ptr[i].F_TimeStamp, 0, 10));//F_TimeStamp
+		sql.append(QString("\'%1\', ").arg(ptr[i].F_MeterNo,0, 10));//F_MeterNo
+		sql.append(QString("%1, ").arg(ptr[i].F_Standard, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].F_Model, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].F_Grade, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].F_ManufactDept, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].F_VerifyDept, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].F_VerifyPerson, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].F_DeltaTemp, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_VerifyVolume, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_DeltaTempMin, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_InstallPos, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].F_HeatUnit, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].F_StdTempIn, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_StdTempOut, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_StdResistIn, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_StdResistOut, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_Kcoe, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_StdValue, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_MeterV0, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_MeterV1, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_MeterE0, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_MeterE1, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_DispError, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_StdError,  6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].F_Result, 0, 10));
+		sql.append(QString("\'%1\', ").arg(ptr[i].F_Bak2, 0, 10));//F_Bak2
+		sql.append(QString("\'%1\', ").arg(ptr[i].F_Bak3, 0, 10));//F_Bak3
+		sql.append(QString("\'%1\'").arg(ptr[i].F_Bak4, 0, 10));//F_Bak4
+		sql.append(")");//end
+		if (query.exec(sql))
+		{
+			qDebug()<<"insert succeed";
+		}
+		else
+		{
+			QSqlError error = query.lastError();
+			qWarning()<<error.text();
+			ret = 0;
+		}
+	}
+
+	return ret;
+}

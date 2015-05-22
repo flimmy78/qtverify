@@ -26,8 +26,9 @@ ALGORITHM_EXPORT float detA(float a00, float a01, float a10, float a11);//¼ÆËã2½
 ALGORITHM_EXPORT plaParam_PTR getPlaParam(pla_T_R_PTR pla_p, int num=3);//¼ÆËã²¬µç×èµÄµçÆøÏµÊı
 ALGORITHM_EXPORT float getPlaRt(float r0, float a, float b, float tmp);//¼ÆËã²¬µç×èÔÚÎÂ¶Ètmp(tmp>0¡æ)Ê±µÄµç×èÖµ
 ALGORITHM_EXPORT float getPlaTr(float r0, float a, float b, float resis);//¼ÆËã²¬µç×èÔÚµç×èÖµresis(resis>r0)Ê±µÄÎÂ¶ÈÖµ
-ALGORITHM_EXPORT float getDeltaTmpErr(float std_delta_t, float min_delta_t);//¸ù¾İjjg225-2001¼ÆËãÎÂ²îÎó²îÏŞ, ÒÔ¸¡µãÊı·µ»Ø
-ALGORITHM_EXPORT float getSingleTmpErr(float std_delta_t);//¸ù¾İjjg225-2001¼ÆËãµ¥Ö§²¬µç×èÎÂ¶ÈÎó²î
+ALGORITHM_EXPORT float getDeltaTmpErr(float std_delta_t, float min_delta_t);//¸ù¾İjjg225-2001¼ÆËãÎÂ²îÎó²îÏŞÏŞ(%), ÒÔ¸¡µãÊı·µ»Ø
+ALGORITHM_EXPORT float getSingleTmpErr(float std_delta_t);//¸ù¾İjjg225-2001¼ÆËãµ¥Ö§²¬µç×èÎÂ¶ÈÎó²îÏŞ(%), ÒÔ¸¡µãÊı·µ»Ø
+ALGORITHM_EXPORT float getMeterGradeErrLmt(int grade, float delta_t_min, float delta_t, float dn_flow_rate, float flow_rate);//¸ù¾İ±íµÄµÈ¼¶, ¼ÆËã±íµÄÊ¾ÖµÎó²îÏŞ(%), ÒÔ¸¡µãÊı·µ»Ø
 
 const float density[150] = { //Ñ¹Á¦<=0.6MPa
 	1000.2f,
