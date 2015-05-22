@@ -18,7 +18,7 @@ public:
 	~SetPortFrm();
 
 private:
-	Ui::SetPortFrm gui;
+	Ui::SetPortDlgClass gui;
 	QString IniPath;
 	QSettings *PortSet;
 	void InstallIni();
