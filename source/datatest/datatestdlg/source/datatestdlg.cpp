@@ -289,7 +289,7 @@ void DataTestDlg::initComOfHeatMeter()
 // 	ComInfoStruct comStruct = m_readComConfig->ReadMeterConfigByNum("1");
 // 	ui.parityComboBox->setCurrentIndex(comStruct.parity);
 // 	ui.stopBitsComboBox->setCurrentIndex(comStruct.stopBit);
-	QStringList cfgList = m_readComConfig->ReadIndexByName("meter1");
+	QStringList cfgList = m_readComConfig->ReadIndexByName(meter(1));
 	ui.baudRateComboBox->setCurrentIndex(cfgList.at(1).toInt());
 	ui.dataBitsComboBox->setCurrentIndex(cfgList.at(2).toInt());
 	ui.parityComboBox->setCurrentIndex(cfgList.at(3).toInt());

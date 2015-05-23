@@ -97,7 +97,7 @@ ComInfoStruct ReadComConfig::ReadConfigByName(QString ConfigId)
 	com_info.parity   = m_com_settings->value("chkbit").toString().split(SEP)[0].toInt();
 	com_info.stopBit  = m_com_settings->value("endbit").toString().split(SEP)[0].toInt();
 
-	if (ConfigId.contains("meter"))
+	if (ConfigId.contains("Meter"))
 		m_com_settings->endArray();
 	else
 		m_com_settings->endGroup();

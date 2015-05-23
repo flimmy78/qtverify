@@ -6,6 +6,9 @@
 #include "basedef.h"
 #include "systemsetdlg_global.h"
 
+#define METER_STR	"Meter"
+#define meter(a) "Meter_"#a
+
 class SYSTEMSETDLG_EXPORT ReadComConfig
 {
 public:
