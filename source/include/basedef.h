@@ -42,7 +42,7 @@
 #define EN_NAME_LEN			24      //英文名字长度
 #define ZH_NAME_LEN			50      //中文名字长度
 
-#define METER_QUANTITY		20	   //本检定台可以检表的最大数量
+#define METER_QUANTITY		24	   //本检定台可以检表的最大数量
 
 #ifndef VERIFY_POINTS
 #define VERIFY_POINTS		4  //检定流量点的数量, 一般为4个(大, 中一, 中二, 小), 但客户也可能需要更多

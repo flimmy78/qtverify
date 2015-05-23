@@ -19,8 +19,7 @@
 
 #include "mainform.h"
 #include "dbmysql.h"
-//#include "flowresult.h"
-#include "setcomfrm.h"
+#include "setcomDlg.h"
 #include "datatestdlg.h"
 #include "setportfrm.h"
 #include "masterslaveset.h"
@@ -237,7 +236,7 @@ void MainForm::on_actionComSet_triggered()
 {
 	if (NULL == m_setcom)
 	{
-		m_setcom = new SetComFrm();
+		m_setcom = new SetComDlg();
 	}
 	m_setcom->show();
 }

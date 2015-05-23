@@ -9,7 +9,7 @@
 
 class DbMySql;
 class FlowResultDlg;
-class SetComFrm;
+class SetComDlg;
 class DataTestDlg;
 class SetPortFrm;
 class CMasterSlave;
@@ -40,7 +40,7 @@ public:
 	DbMySql *m_mySql;
 	
 	CAlgorithm *m_alg;
-	SetComFrm *m_setcom; //串口参数设置
+	SetComDlg *m_setcom; //串口参数设置
 	DataTestDlg *m_datatestdlg; //采集与控制测试程序
 	SetPortFrm *m_portSet; //端口模块设置
 	CMasterSlave *m_masterslave; //主机-从机设置

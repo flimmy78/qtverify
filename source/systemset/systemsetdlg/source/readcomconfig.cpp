@@ -18,45 +18,45 @@
 #include <iostream>
 
 #include "readcomconfig.h"
+#include "algorithm.h"
 #include "commondefine.h"
 
 ReadComConfig::ReadComConfig()
 {
-	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
-#ifdef Q_OS_LINUX
-	ConfigFileName = runhome + "\/ini\/comconfig.xml";
-#elif defined (Q_OS_WIN)
-	ConfigFileName = runhome + "\\ini\\comconfig.xml";
-#endif
+	m_com_settings = new QSettings(getFullIniFileName("comconfig.ini"), QSettings::IniFormat);
 }
 
 ReadComConfig::~ReadComConfig()
 {
-
+	if (NULL != m_com_settings)
+	{
+		delete m_com_settings;
+		m_com_settings = NULL;
+	}
 }
 
 //读取阀门设置
 ComInfoStruct ReadComConfig::ReadValveConfig()
 {
-	return ReadConfigByName("valve");
+	return ReadConfigByName("Valve");
 }
 
 //读取天平设置
 ComInfoStruct ReadComConfig::ReadBalanceConfig()
 {
-	return ReadConfigByName("balance");
+	return ReadConfigByName("Balance");
 }
 
 //读取温度采集设置
 ComInfoStruct ReadComConfig::ReadTempConfig()
 {
-	return ReadConfigByName("temp");
+	return ReadConfigByName("TempSenor");
 }
 
 //读取标准温度计设置
 ComInfoStruct ReadComConfig::ReadStdTempConfig()
 {
-	return ReadConfigByName("stdtemp");
+	return ReadConfigByName("StdTmpSensor");
 }
 
 //读取被检表设置
@@ -67,7 +67,7 @@ ComInfoStruct ReadComConfig::ReadMeterConfigByNum(QString MeterNum)
 	{
 		throw QString("Please input an integer!");
 	}
-	return ReadConfigByName("meter" + MeterNum);
+	return ReadConfigByName("Meter_" + MeterNum);
 }
 
 ComInfoStruct ReadComConfig::ReadMeterConfigByNum(int MeterNum)
@@ -78,122 +78,59 @@ ComInfoStruct ReadComConfig::ReadMeterConfigByNum(int MeterNum)
 //按xml中的id读取设置
 ComInfoStruct ReadComConfig::ReadConfigByName(QString ConfigId)
 {
-	QMap<QString, QString> configs;
 	ComInfoStruct com_info;
-	try
-	{
-		OpenConfigFile();
-	}
-	catch(QString e)
-	{
-		throw e;
-	}
 
-	QDomElement root = m_doc.documentElement();
-	if(root.tagName()!= "configs")
-		throw "file format is invalid";
-
-	QDomNode n;
+	int meterNum;
 	//判断是否读取被检表配置
-	if (ConfigId.contains("meter"))
-		n = root.lastChild().firstChild();
-	else
-		n = root.firstChild();
-
-	while ( !n.isNull() )
+	if (ConfigId.contains("Meter"))
 	{
-		QDomElement e = n.toElement();
-		if( !e.isNull())
-		{
-			if( e.tagName() == "config" && e.attribute("id") == ConfigId)//查找id号
-			{
-				QDomNodeList list = e.childNodes(); //获得元素e的所有子节点的列表(com号、波特率、校验位等)
-				for(int i=0; i<list.count(); i++) //遍历该列表
-				{
-					QDomNode node = list.at(i);
-					configs[node.nodeName()] = node.firstChild().nodeValue();
-				}
-			}      
-		}
-		n = n.nextSibling();
+		m_com_settings->beginReadArray("Meters");
+		meterNum = ConfigId.split('_')[1].toInt();
+		m_com_settings->setArrayIndex(meterNum-1);
 	}
-	//QString sep="#SEP#";
-	com_info.portName = configs["com"].split(SEP)[0];
-	com_info.baudRate = configs["baud"].split(SEP)[0].toInt();
-	com_info.dataBit = configs["bits"].split(SEP)[0].toInt();
-	com_info.parity = configs["chkbit"].split(SEP)[0].toInt();
-	com_info.stopBit = configs["endbit"].split(SEP)[0].toInt();
+	else
+		m_com_settings->beginGroup(ConfigId);
+
+	com_info.portName = m_com_settings->value("com_name").toString().split(SEP)[0];
+	com_info.baudRate = m_com_settings->value("baud").toString().split(SEP)[0].toInt();
+	com_info.dataBit  = m_com_settings->value("bits").toString().split(SEP)[0].toInt();
+	com_info.parity   = m_com_settings->value("chkbit").toString().split(SEP)[0].toInt();
+	com_info.stopBit  = m_com_settings->value("endbit").toString().split(SEP)[0].toInt();
+
+	if (ConfigId.contains("meter"))
+		m_com_settings->endArray();
+	else
+		m_com_settings->endGroup();
+
 	return com_info;
 }
-
 
 QStringList ReadComConfig::ReadIndexByName(QString ConfigId)
 {
-	QMap<QString, QString> configs;
 	QStringList com_info;
-	try
-	{
-		OpenConfigFile();
-	}
-	catch(QString e)
-	{
-		throw e;
-	}
-
-	QDomElement root = m_doc.documentElement();
-	if(root.tagName()!= "configs")
-		throw "file format is invalid";
-
-	QDomNode n;
+	int meterNum;
 	//判断是否读取被检表配置
-	if (ConfigId.contains("meter"))
-		n = root.lastChild().firstChild();
+	if (ConfigId.contains("Meter"))
+	{
+		m_com_settings->beginReadArray("Meters");
+		meterNum = ConfigId.split('_')[1].toInt();
+		m_com_settings->setArrayIndex(meterNum-1);
+	}
 	else
-		n = root.firstChild();
+		m_com_settings->beginGroup(ConfigId);
 
-	while ( !n.isNull() )
-	{
-		QDomElement e = n.toElement();
-		if( !e.isNull())
-		{
-			if( e.tagName() == "config" && e.attribute("id") == ConfigId)//查找id号
-			{
-				QDomNodeList list = e.childNodes(); //获得元素e的所有子节点的列表(com号、波特率、校验位等)
-				for(int i=0; i<list.count(); i++) //遍历该列表
-				{
-					QDomNode node = list.at(i);
-					configs[node.nodeName()] = node.firstChild().nodeValue();
-				}
-			}      
-		}
-		n = n.nextSibling();
-	}
-	//QString sep="#SEP#";
-	com_info.append(configs["com"].split(SEP)[1]);
-	com_info.append(configs["baud"].split(SEP)[1]);
-	com_info.append(configs["bits"].split(SEP)[1]);
-	com_info.append(configs["chkbit"].split(SEP)[1]);
-	com_info.append(configs["endbit"].split(SEP)[1]);
+	com_info.append(m_com_settings->value("com_name").toString().split(SEP)[1]);
+	com_info.append(m_com_settings->value("baud").toString().split(SEP)[1]);
+	com_info.append(m_com_settings->value("bits").toString().split(SEP)[1]);
+	com_info.append(m_com_settings->value("chkbit").toString().split(SEP)[1]);
+	com_info.append(m_com_settings->value("endbit").toString().split(SEP)[1]);
+
+	if (ConfigId.contains("meter"))
+		m_com_settings->endArray();
+	else
+		m_com_settings->endGroup();
+
 	return com_info;
-}
-
-//打开文件测试
-bool ReadComConfig::OpenConfigFile()
-{
-	QFile file( ConfigFileName );
-	if( !file.open( QFile::ReadOnly | QFile::Text  ) )
-	{
-		throw QString("Can not open file: " + ConfigFileName);
-		return false;
-	}
-	if( !m_doc.setContent( &file ) )
-	{
-		throw QString("Can not setContent file: " + ConfigFileName);
-		file.close();
-		return false;
-	}
-	file.close();
-	return true;
 }
 
 /*

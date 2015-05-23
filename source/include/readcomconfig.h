@@ -2,7 +2,7 @@
 #define READCOMCONFIG_H
 
 #include <QtXml/QtXml>
-
+#include <QSettings>
 #include "basedef.h"
 #include "systemsetdlg_global.h"
 
@@ -22,10 +22,8 @@ public:
 	int getMeterPosByComName(QString comName);//根据串口名返回对应的表位号
 	/***************************************************/
 private:
-	QString ConfigFileName;
-	QDomDocument m_doc;
+	QSettings* m_com_settings;
 	ComInfoStruct ReadConfigByName(QString ConfigId);
-	bool OpenConfigFile();
 };
 
 #endif // READCOMCONFIG_H

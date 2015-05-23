@@ -26,7 +26,7 @@ INCLUDEPATH  	=    ./      \
 HEADERS	+= $$(RUNHOME_INC)/include/qextserial/qextserialport_global.h  \
         	 $$(RUNHOME_INC)/include/qextserial/qextserialport.h \
 					 $$(RUNHOME_INC)/include/systemsetdlg_global.h   \
-					 $$(RUNHOME_INC)/include/setcomfrm.h   \
+					 $$(RUNHOME_INC)/include/setcomDlg.h   \
 		   		 $$(RUNHOME_INC)/include/setportfrm.h  \
 		   		 $$(RUNHOME_INC)/include/readcomconfig.h \
            $$(RUNHOME_INC)/include/stdmtrparaset.h \
@@ -37,7 +37,7 @@ HEADERS	+= $$(RUNHOME_INC)/include/qextserial/qextserialport_global.h  \
 
 	
 SOURCES	+= $$(RUNHOME_INC)/include/qextserial/qextserialport.cpp \
-					 source/setcomfrm.cpp \
+					 source/setcomDlg.cpp \
 			     source/setportfrm.cpp \
 			     source/readcomconfig.cpp \
       		 source/stdmtrparaset.cpp \
@@ -55,7 +55,7 @@ unix {
      SOURCES += $$(RUNHOME_INC)/include/qextserial/qextserialport_unix.cpp
 }
 					 
-FORMS	+= ui/setcomfrm.ui  \
+FORMS	+= ui/setcomDlg.ui  \
 		     ui/setportfrm.ui \
          ui/stdmtrparaset.ui \
          ui/stdmtrcoecorrect.ui \
