@@ -611,11 +611,11 @@ void DataTestDlg::setRegBtnBackColor(QPushButton *btn, bool status)
 	}
 	if (status) //调节成功
 	{
-		btn->setStyleSheet("background:rgb(0,255,0);border-image: url(:/datatestdlg/images/success.png);");
+// 		btn->setStyleSheet("background:rgb(0,255,0);border-image: url(:/datatestdlg/images/success.png);");
 	}
 	else //调节失败
 	{
- 		btn->setStyleSheet("background:rgb(255,0,0);border-image: url(:/datatestdlg/images/failed.png);");
+// 		btn->setStyleSheet("background:rgb(255,0,0);border-image: url(:/datatestdlg/images/failed.png);");
 	}
 }
 
