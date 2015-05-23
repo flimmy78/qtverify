@@ -760,7 +760,7 @@ bool Sti1062aComObject::openTemperatureCom(ComInfoStruct *comStruct)
 }
 
 //ÇëÇóÎÂ¶È
-void Sti1062aComObject::writeTemperatureComBuffer(sti1062Acommand command)
+void Sti1062aComObject::writeStdTempComBuffer(sti1062Acommand command)
 {
 	m_sti1062aProtocol->makeSendBuf(command);
 	m_tempCom->write(m_sti1062aProtocol->getSendBuf());

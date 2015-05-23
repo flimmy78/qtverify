@@ -95,7 +95,7 @@ void tvercompDlg::on_btn_read_1_clicked()
 
 void tvercompDlg::sendCommands()
 {
-	m_tempObj->writeTemperatureComBuffer(m_readCommand);
+	m_tempObj->writeStdTempComBuffer(m_readCommand);
 }
 
 void tvercompDlg::setTblStd1(const QString &tempStr)

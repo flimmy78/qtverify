@@ -52,7 +52,8 @@
 #define SEP "#SEP#"//分隔符
 #endif
 
-#define TIMEOUT_TEMPER		1000  //每1秒钟请求一次温度值
+#define TIMEOUT_TEMPER		1000  //每1秒钟请求一次管理温度值
+#define READ_STI1062A_TIMEOUT	200//读标准温度定时器间隔
 
 #define FLOW_SAMPLE_NUM		10    //计算流速 采样点个数
 #define TIMEOUT_FLOW_SAMPLE	1000  //计算流速 每1秒采样一次天平数值

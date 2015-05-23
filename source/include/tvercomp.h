@@ -24,7 +24,6 @@
 #include "ui_tvercomp.h"
 #include "tvercompparamdlg.h"
 
-#define READ_STI1062A_TIMEOUT	200//定时器间隔
 #define TMP_DIFF_NUMBER			3//温差点个数
 #define VERIFY_NUMBER			12//被检铂电阻对数
 

@@ -27,7 +27,6 @@
 #include "readcomconfig.h"
 #include "tverparamparamdlg.h"
 
-#define READ_STI1062A_TIMEOUT	200//定时器间隔
 #define TMP_DIFF_NUMBER			3//温度点个数
 #define VERIFY_NUMBER			12//被检铂电阻对数
 #define VERIFY_TIMES			3//每对铂电阻重复检定次数

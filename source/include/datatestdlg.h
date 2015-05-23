@@ -43,6 +43,11 @@ public:
 	TempComObject *m_tempObj;
 	QTimer *m_tempTimer;  //计时器:用于请求管路温度
 
+	ComThread m_stdTempThread;  //标准温度采集线程
+	Sti1062aComObject *m_stdTempObj;
+	QTimer *m_stdTempTimer;  //计时器:用于请求标准温度
+	sti1062Acommand m_stdTempCommand;
+
 	ComThread m_valveThread;   //阀门控制线程
 	ControlComObject *m_controlObj;
 
@@ -74,6 +79,7 @@ public:
 	void closeEvent(QCloseEvent * event);
 	void showEvent(QShowEvent *event);
 	void initTemperatureCom(); //温度采集串口
+	void initStdTemperatureCom(); //标准温度采集串口
 	void initBalanceCom();     //天平串口
 	void initControlCom();     //阀门控制串口
 	void initComOfHeatMeter();  //热量表1串口
@@ -97,6 +103,7 @@ public slots:
 	void on_btnExit_clicked();
 
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
+	void slotFreshStdTempValue(const QString& stdTempStr); //刷新标准温度值
 	void slotFreshBalanceValue(const float& balValue);     //刷新天平数值
 	
 	void slotFreshMeterNo(const QString& comName, const QString& meterNo);//刷新表号
@@ -125,6 +132,11 @@ public slots:
 
 	void on_btnOpenCom_clicked(); //打开串口
 	void on_btnCloseCom_clicked();//关闭串口
+
+	void on_btnStdTempCollect_clicked(); //采集标准温度
+	void on_btnStdTempStop_clicked(); //停止采集标准温度
+
+	void slotAskStdTemperature();
 
 private:
 	Ui::DataTestDlgClass ui;

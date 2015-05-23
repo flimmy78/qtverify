@@ -367,7 +367,7 @@ private:
 #define END_STATE	0x01
 enum sti1062Acommand
 {
-	sti1062aT12=0,
+	sti1062aT12=0, //请求通道1、2两路温度。返回值根据回车+换行符区分通道1、2
 	sti1062aR12,
 	sti1062aT1,
 	sti1062aT2,

@@ -170,7 +170,7 @@ void tverparamDlg::on_btn_read_1_clicked()
 
 void tverparamDlg::sendCommands()
 {
-	m_tempObj->writeTemperatureComBuffer(m_readCommand);
+	m_tempObj->writeStdTempComBuffer(m_readCommand);
 }
 
 void tverparamDlg::setTblStd1(const QString &tempStr)

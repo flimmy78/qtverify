@@ -580,7 +580,7 @@ void CmbVerifyDlg::on_btn_stop_clicked()
 
 void CmbVerifyDlg::sendCommands()
 {
-	m_tempObj->writeTemperatureComBuffer(m_StdCommand);
+	m_tempObj->writeStdTempComBuffer(m_StdCommand);
 }
 
 void CmbVerifyDlg::setStdTempUi(const QString &tempStr)

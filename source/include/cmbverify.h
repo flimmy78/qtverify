@@ -25,8 +25,6 @@
 #include "algorithm.h"
 #include "cmbparam.h"
 
-#define READ_STI1062A_TIMEOUT	200//定时器间隔
-
 #define COL_NUM			12//列数量
 #define COL_BTN_NUM		3//读取表数据的按钮数量
 #define COL_SN			0//热表序列号

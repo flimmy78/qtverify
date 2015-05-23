@@ -214,7 +214,7 @@ signals:
 
 	public slots:
 		bool openTemperatureCom(ComInfoStruct *comStruct);
-		void writeTemperatureComBuffer(sti1062Acommand);
+		void writeStdTempComBuffer(sti1062Acommand);
 		void readTemperatureComBuffer();
 		void close();
 };

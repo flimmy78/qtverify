@@ -148,7 +148,7 @@
         </property>
         <layout class="QGridLayout" name="gridLayout_4">
          <item row="0" column="0">
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="btnStdTempCollect">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -173,7 +173,7 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QPushButton" name="pushButton_2">
+          <widget class="QPushButton" name="btnStdTempStop">
            <property name="minimumSize">
             <size>
              <width>120</width>
@@ -199,7 +199,7 @@
           </widget>
          </item>
          <item row="0" column="3">
-          <widget class="QLineEdit" name="lineEdit_2">
+          <widget class="QLineEdit" name="lnEditInStdResist">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -217,6 +217,9 @@
              <width>16777215</width>
              <height>30</height>
             </size>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -228,7 +231,7 @@
           </widget>
          </item>
          <item row="0" column="5">
-          <widget class="QLineEdit" name="lineEdit_3">
+          <widget class="QLineEdit" name="lnEditInStdTemp">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -246,6 +249,9 @@
              <width>16777215</width>
              <height>30</height>
             </size>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -264,7 +270,7 @@
           </widget>
          </item>
          <item row="0" column="8">
-          <widget class="QLineEdit" name="lineEdit_4">
+          <widget class="QLineEdit" name="lnEditOutStdResist">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -282,6 +288,9 @@
              <width>16777215</width>
              <height>30</height>
             </size>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -293,7 +302,7 @@
           </widget>
          </item>
          <item row="0" column="10">
-          <widget class="QLineEdit" name="lineEdit_5">
+          <widget class="QLineEdit" name="lnEditOutStdTemp">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -311,6 +320,9 @@
              <width>16777215</width>
              <height>30</height>
             </size>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
            </property>
           </widget>
          </item>

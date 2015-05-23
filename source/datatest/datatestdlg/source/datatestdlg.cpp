@@ -50,7 +50,11 @@ DataTestDlg::DataTestDlg(QWidget *parent, Qt::WFlags flags)
 
 	m_tempObj = NULL;
 	m_tempTimer = NULL;
-	initTemperatureCom();	//初始化温度采集串口
+	initTemperatureCom();	 //初始化管路温度采集串口
+
+	m_stdTempObj = NULL;
+	m_stdTempTimer = NULL;
+	initStdTemperatureCom(); //初始化标准温度采集串口
 
 	m_controlObj = NULL;
 	initControlCom();		//初始化控制串口
@@ -99,6 +103,14 @@ void DataTestDlg::closeEvent( QCloseEvent * event)
 		m_tempThread.exit(); //否则日志中会有警告"QThread: Destroyed while thread is still running"
 	}
 
+	if (m_stdTempObj)  // 标准温度采集
+	{
+		delete m_stdTempObj;
+		m_stdTempObj = NULL;
+
+		m_stdTempThread.exit();
+	}
+
 	if (m_controlObj)  //阀门控制
 	{
 		delete m_controlObj;
@@ -133,6 +145,16 @@ void DataTestDlg::closeEvent( QCloseEvent * event)
 		m_tempTimer = NULL;
 	}
 
+	if (m_stdTempTimer) //读标准温度计时器
+	{
+		if (m_stdTempTimer->isActive())
+		{
+			m_stdTempTimer->stop();
+		}
+		delete m_stdTempTimer;
+		m_stdTempTimer = NULL;
+	}
+
 	if (m_flowRateTimer) //计算流量计时器
 	{
 		if (m_flowRateTimer->isActive())
@@ -163,9 +185,64 @@ void DataTestDlg::initTemperatureCom()
 
 	m_tempTimer = new QTimer();
 	connect(m_tempTimer, SIGNAL(timeout()), m_tempObj, SLOT(writeTemperatureComBuffer()));
-	//connect(m_tempTimer, SIGNAL(timeout()), this, SLOT(slotFreshFlow()));
+// 	connect(m_tempTimer, SIGNAL(timeout()), this, SLOT(slotFreshFlow()));
 	
 	m_tempTimer->start(TIMEOUT_TEMPER); //周期请求温度
+}
+
+/*
+** 开辟一个新线程，打开标准温度采集串口
+*/
+void DataTestDlg::initStdTemperatureCom()
+{
+	ComInfoStruct tempStruct = m_readComConfig->ReadStdTempConfig();
+	m_stdTempObj = new Sti1062aComObject();
+	m_stdTempObj->moveToThread(&m_stdTempThread);
+	m_stdTempThread.start();
+	m_stdTempObj->openTemperatureCom(&tempStruct);
+	connect(m_stdTempObj, SIGNAL(temperatureIsReady(const QString &)), this, SLOT(slotFreshStdTempValue(const QString &)));
+
+	m_stdTempCommand = sti1062aT1;
+	m_stdTempTimer = new QTimer();
+	connect(m_stdTempTimer, SIGNAL(timeout()), this, SLOT(slotAskStdTemperature()));
+	
+ 	m_stdTempTimer->start(READ_STI1062A_TIMEOUT);
+}
+
+void DataTestDlg::slotAskStdTemperature()
+{
+	m_stdTempObj->writeStdTempComBuffer(m_stdTempCommand);
+	switch (m_stdTempCommand)
+	{
+	case sti1062aT1:
+		m_stdTempCommand = sti1062aT2;
+		break;
+	case sti1062aT2:
+		m_stdTempCommand = sti1062aR1;
+		break;
+	case sti1062aR1:
+		m_stdTempCommand = sti1062aR2;
+		break;
+	case sti1062aR2:
+		m_stdTempCommand = sti1062aT1;
+		break;
+	default:
+		m_stdTempCommand = sti1062aT1;
+		break;
+	}
+}
+
+//天平采集串口 上位机直接采集
+void DataTestDlg::initBalanceCom()
+{
+	ComInfoStruct balanceStruct = m_readComConfig->ReadBalanceConfig();
+	m_balanceObj = new BalanceComObject();
+	m_balanceObj->moveToThread(&m_balanceThread);
+	m_balanceThread.start();
+	m_balanceObj->openBalanceCom(&balanceStruct);
+
+	//天平数值由上位机直接通过天平串口采集
+	connect(m_balanceObj, SIGNAL(balanceValueIsReady(const float &)), this, SLOT(slotFreshBalanceValue(const float &)));
 }
 
 /*
@@ -180,11 +257,49 @@ void DataTestDlg::initControlCom()
 	m_valveThread.start();
 	m_controlObj->openControlCom(&valveStruct);
 
-	//控制板有反馈	
 	connect(m_controlObj, SIGNAL(controlRelayIsOk(const UINT8 &, const bool &)), this, SLOT(slotSetValveBtnStatus(const UINT8 &, const bool &)));
 	connect(m_controlObj, SIGNAL(controlRegulateIsOk()), this, SLOT(slotSetRegulateOk()));
 	//天平数值从控制板获取
-	connect(m_controlObj, SIGNAL(controlGetBalanceValueIsOk(const float&)), this, SLOT(slotFreshBalanceValue(const float &)));
+// 	connect(m_controlObj, SIGNAL(controlGetBalanceValueIsOk(const float&)), this, SLOT(slotFreshBalanceValue(const float &)));
+}
+
+//热量表串口通讯
+void DataTestDlg::initComOfHeatMeter()
+{
+	m_meterObj = new MeterComObject();
+	m_meterObj->setProtocolVersion(0);//设置协议版本号
+	m_meterObj->moveToThread(&m_meterThread);
+	m_meterThread.start();
+
+	connect(m_meterObj, SIGNAL(readMeterNoIsOK(const QString&, const QString&)), this, SLOT(slotFreshMeterNo(const QString&, const QString&)));
+	connect(m_meterObj, SIGNAL(readMeterFlowIsOK(const QString&, const float&)), this, SLOT(slotFreshMeterFlow(const QString&, const float&)));
+	connect(m_meterObj, SIGNAL(readMeterHeatIsOK(const QString&, const QString&)), this, SLOT(slotFreshMeterHeat(const QString&, const QString&)));
+	connect(m_meterObj, SIGNAL(readMeterDateIsOK(const QString&, const QString&)), this, SLOT(slotFreshMeterDate(const QString&, const QString&)));
+	connect(m_meterObj, SIGNAL(readMeterTemperIsOK(const QString&, const QString&, const QString&)), \
+		this, SLOT(slotFreshMeterTemper(const QString&, const QString&, const QString&)));
+	connect(m_meterObj, SIGNAL(readMeterBigCoeIsOK(const QString&, const QString&)), \
+		this, SLOT(slotFreshBigCoe(const QString&, const QString&)));
+	connect(m_meterObj, SIGNAL(readMeterMid2CoeIsOK(const QString&, const QString&)), \
+		this, SLOT(slotFreshMid2Coe(const QString&, const QString&)));
+	connect(m_meterObj, SIGNAL(readMeterMid1CoeIsOK(const QString&, const QString&)), \
+		this, SLOT(slotFreshMid1Coe(const QString&, const QString&)));
+	connect(m_meterObj, SIGNAL(readMeterSmallCoeIsOK(const QString&, const QString&)), \
+		this, SLOT(slotFreshSmallCoe(const QString&, const QString&)));
+
+// 	ComInfoStruct comStruct = m_readComConfig->ReadMeterConfigByNum("1");
+// 	ui.parityComboBox->setCurrentIndex(comStruct.parity);
+// 	ui.stopBitsComboBox->setCurrentIndex(comStruct.stopBit);
+	QStringList cfgList = m_readComConfig->ReadIndexByName("meter1");
+	ui.baudRateComboBox->setCurrentIndex(cfgList.at(1).toInt());
+	ui.dataBitsComboBox->setCurrentIndex(cfgList.at(2).toInt());
+	ui.parityComboBox->setCurrentIndex(cfgList.at(3).toInt());
+	ui.stopBitsComboBox->setCurrentIndex(cfgList.at(4).toInt());
+
+	ui.btnCloseCom->setEnabled(false);
+	ui.btnSetVerifyStatus->setEnabled(false);
+	ui.btnReadMeterData->setEnabled(false);
+	ui.btnModifyMeterNo->setEnabled(false);
+	ui.btnModifyFlowCoe->setEnabled(false);
 }
 
 //初始化阀门状态
@@ -232,58 +347,6 @@ void DataTestDlg::initRegulateStatus()
 	m_regStatus[m_portsetinfo.regflow1No] = REG_SUCCESS;
 
 	setRegBtnBackColor(m_regBtn[m_portsetinfo.regflow1No], m_regStatus[m_portsetinfo.regflow1No]);
-}
-
-//天平采集串口 上位机直接采集
-void DataTestDlg::initBalanceCom()
-{
-	ComInfoStruct balanceStruct = m_readComConfig->ReadBalanceConfig();
-	m_balanceObj = new BalanceComObject();
-	m_balanceObj->moveToThread(&m_balanceThread);
-	m_balanceThread.start();
-	m_balanceObj->openBalanceCom(&balanceStruct);
-
-	//天平数值由上位机直接通过天平串口采集
- 	connect(m_balanceObj, SIGNAL(balanceValueIsReady(const float &)), this, SLOT(slotFreshBalanceValue(const float &)));
-}
-
-//热量表串口通讯
-void DataTestDlg::initComOfHeatMeter()
-{
-	m_meterObj = new MeterComObject();
-	m_meterObj->setProtocolVersion(0);//设置协议版本号
-	m_meterObj->moveToThread(&m_meterThread);
-	m_meterThread.start();
-
-	connect(m_meterObj, SIGNAL(readMeterNoIsOK(const QString&, const QString&)), this, SLOT(slotFreshMeterNo(const QString&, const QString&)));
-	connect(m_meterObj, SIGNAL(readMeterFlowIsOK(const QString&, const float&)), this, SLOT(slotFreshMeterFlow(const QString&, const float&)));
-	connect(m_meterObj, SIGNAL(readMeterHeatIsOK(const QString&, const QString&)), this, SLOT(slotFreshMeterHeat(const QString&, const QString&)));
-	connect(m_meterObj, SIGNAL(readMeterDateIsOK(const QString&, const QString&)), this, SLOT(slotFreshMeterDate(const QString&, const QString&)));
-	connect(m_meterObj, SIGNAL(readMeterTemperIsOK(const QString&, const QString&, const QString&)), \
-		this, SLOT(slotFreshMeterTemper(const QString&, const QString&, const QString&)));
-	connect(m_meterObj, SIGNAL(readMeterBigCoeIsOK(const QString&, const QString&)), \
-		this, SLOT(slotFreshBigCoe(const QString&, const QString&)));
-	connect(m_meterObj, SIGNAL(readMeterMid2CoeIsOK(const QString&, const QString&)), \
-		this, SLOT(slotFreshMid2Coe(const QString&, const QString&)));
-	connect(m_meterObj, SIGNAL(readMeterMid1CoeIsOK(const QString&, const QString&)), \
-		this, SLOT(slotFreshMid1Coe(const QString&, const QString&)));
-	connect(m_meterObj, SIGNAL(readMeterSmallCoeIsOK(const QString&, const QString&)), \
-		this, SLOT(slotFreshSmallCoe(const QString&, const QString&)));
-
-// 	ComInfoStruct comStruct = m_readComConfig->ReadMeterConfigByNum("1");
-// 	ui.parityComboBox->setCurrentIndex(comStruct.parity);
-// 	ui.stopBitsComboBox->setCurrentIndex(comStruct.stopBit);
-	QStringList cfgList = m_readComConfig->ReadIndexByName("meter1");
-	ui.baudRateComboBox->setCurrentIndex(cfgList.at(1).toInt());
-	ui.dataBitsComboBox->setCurrentIndex(cfgList.at(2).toInt());
-	ui.parityComboBox->setCurrentIndex(cfgList.at(3).toInt());
-	ui.stopBitsComboBox->setCurrentIndex(cfgList.at(4).toInt());
-
-	ui.btnCloseCom->setEnabled(false);
-	ui.btnSetVerifyStatus->setEnabled(false);
-	ui.btnReadMeterData->setEnabled(false);
-	ui.btnModifyMeterNo->setEnabled(false);
-	ui.btnModifyFlowCoe->setEnabled(false);
 }
 
 //打开热量表通讯串口
@@ -450,11 +513,46 @@ void DataTestDlg::on_btnExit_clicked()
 	this->close();
 }
 
+//采集标准温度
+void DataTestDlg::on_btnStdTempCollect_clicked()
+{
+	m_stdTempTimer->start(READ_STI1062A_TIMEOUT);
+}
+
+//停止采集标准温度
+void DataTestDlg::on_btnStdTempStop_clicked()
+{
+	m_stdTempTimer->stop();
+}
+
 //刷新温度
 void DataTestDlg::slotFreshComTempValue(const QString& tempStr)
 {
 	ui.lnEditTempIn->setText(tempStr.left(DATA_WIDTH));   //入口温度 PV
 	ui.lnEditTempOut->setText(tempStr.right(DATA_WIDTH)); //出口温度 SV
+}
+
+//刷新标准温度
+void DataTestDlg::slotFreshStdTempValue(const QString& stdTempStr)
+{
+// 	qDebug()<<"stdTempStr ="<<stdTempStr<<"; m_stdTempCommand ="<<m_stdTempCommand;
+	switch (m_stdTempCommand)
+	{
+	case sti1062aT1: 
+		ui.lnEditOutStdResist->setText(stdTempStr);
+		break;
+	case sti1062aT2: 
+		ui.lnEditInStdTemp->setText(stdTempStr);
+		break;
+	case sti1062aR1: 
+		ui.lnEditOutStdTemp->setText(stdTempStr);
+		break;
+	case sti1062aR2: 
+		ui.lnEditInStdResist->setText(stdTempStr);
+		break;
+	default:
+		break;
+	}
 }
 
 //刷新天平数值
