@@ -82,7 +82,7 @@ ComInfoStruct ReadComConfig::ReadConfigByName(QString ConfigId)
 
 	int meterNum;
 	//ÅÐ¶ÏÊÇ·ñ¶ÁÈ¡±»¼ì±íÅäÖÃ
-	if (ConfigId.contains("Meter"))
+	if (ConfigId.contains(METER_STR))
 	{
 		m_com_settings->beginReadArray("Meters");
 		meterNum = ConfigId.split('_')[1].toInt();
@@ -97,7 +97,7 @@ ComInfoStruct ReadComConfig::ReadConfigByName(QString ConfigId)
 	com_info.parity   = m_com_settings->value("chkbit").toString().split(SEP)[0].toInt();
 	com_info.stopBit  = m_com_settings->value("endbit").toString().split(SEP)[0].toInt();
 
-	if (ConfigId.contains("Meter"))
+	if (ConfigId.contains(METER_STR))
 		m_com_settings->endArray();
 	else
 		m_com_settings->endGroup();
@@ -110,7 +110,7 @@ QStringList ReadComConfig::ReadIndexByName(QString ConfigId)
 	QStringList com_info;
 	int meterNum;
 	//ÅÐ¶ÏÊÇ·ñ¶ÁÈ¡±»¼ì±íÅäÖÃ
-	if (ConfigId.contains("Meter"))
+	if (ConfigId.contains(METER_STR))
 	{
 		m_com_settings->beginReadArray("Meters");
 		meterNum = ConfigId.split('_')[1].toInt();
@@ -125,7 +125,7 @@ QStringList ReadComConfig::ReadIndexByName(QString ConfigId)
 	com_info.append(m_com_settings->value("chkbit").toString().split(SEP)[1]);
 	com_info.append(m_com_settings->value("endbit").toString().split(SEP)[1]);
 
-	if (ConfigId.contains("meter"))
+	if (ConfigId.contains(METER_STR))
 		m_com_settings->endArray();
 	else
 		m_com_settings->endGroup();
