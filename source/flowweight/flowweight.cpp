@@ -1054,6 +1054,8 @@ int FlowWeightDlg::startVerifyFlowPoint(int order)
 	m_flowPoint = m_paraSetReader->getFpBySeq(order).fp_verify;//order对应的流量点
 	int portNo = m_paraSetReader->getFpBySeq(order).fp_valve;  //order对应的阀门端口号
 	float verifyQuantity = m_paraSetReader->getFpBySeq(order).fp_quantity; //第order次检定对应的检定量
+	float frequence = m_paraSetReader->getFpBySeq(order).fp_freq; //order对应的频率
+	m_controlObj->askSetDriverFreq(frequence);
 	if (openValve(portNo)) //打开阀门，开始跑流量
 	{
 		if (judgeBalanceAndCalcAvgTemper(m_balStartV + verifyQuantity)) //跑完检定量并计算此过程的平均温度
