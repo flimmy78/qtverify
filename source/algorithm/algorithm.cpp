@@ -403,6 +403,8 @@ double CAlgorithm::getGamaTao(float pai, float tao)
 /*
 ** 根据欧标EN1434《热能表》Part-1 计算水的比焓值
 ** 单位KJ/kg
+** temp 温度, ℃
+** pressure 压强, MPa
 */
 double CAlgorithm::CalcEnthalpy(float temp, float pressure)
 {
@@ -414,6 +416,47 @@ double CAlgorithm::CalcEnthalpy(float temp, float pressure)
 	float H = tao*gamaTao*ENTHALPY_R*T;
 
 	return H/1000.0;
+}
+
+/*
+** 根据欧标EN1434《热能表》Part-1 计算水的比焓值
+** 单位(kWh/MJ)
+** inTemper 进口温度, ℃
+** outTemper 出口温度, ℃
+** volum 体积, L
+** installPos 安装位置, 进口/出口
+** unit 使用的热值单位, kWh/MJ
+** pressure 压强, MPa
+*/
+double CAlgorithm::getEnergyByEnthalpy(float inTemper, float outTemper, float volum,  int installPos, int unit, float pressure=NORMAL_PRESSURE)
+{
+	float inEnthalpy, outEnthalpy;
+	float density;
+	float mass;
+	float energy;
+
+	inEnthalpy = CalcEnthalpy(inTemper, pressure);//KJ/kg
+	outEnthalpy = CalcEnthalpy(outTemper, pressure);//KJ/kg
+	if (installPos == INSTALLPOS_IN)
+	{
+		density = getDensityByQuery(inTemper);//kg/L
+	}
+	else if (installPos == INSTALLPOS_OUT)
+	{
+		density = getDensityByQuery(outTemper);//kg/L
+	}
+	
+	mass = density*volum;//kg
+	energy = mass*(inEnthalpy-outEnthalpy);//KJ
+	if (unit == UNIT_KWH)
+	{
+		energy /= 3600.0;
+	}
+	else if (unit == UNIT_MJ)
+	{
+		energy /= 1000.0;
+	}
+	return energy;
 }
 
 /************************************************************************

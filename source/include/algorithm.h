@@ -19,7 +19,7 @@
 #include "basedef.h"
 
 #define NORMAL_PRESSURE 0.6//常用供热压力, 单位MPa
-#define NORMAL_PRESSURE 1.6//高压供热压力, 单位MPa
+#define HIGH_PRESSURE 1.6//高压供热压力, 单位MPa
 #define ENTHALPY_R	461.526//水的比焓常数, 个人理解为单位质量的水, 其温度变化1K, 所交换的热值(见IAPWS-IF97-Re 水和水蒸气特性v.pdf P5 及http://en.wikipedia.org/wiki/Gas_constant)
 
 ALGORITHM_EXPORT int getPortSetIni(PortSet_Ini_PTR info); //获取控制板的端口号配置信息
@@ -415,6 +415,7 @@ public:
 	double getGamaPai(float pai, float tao);//用于水的热量K系数计算的γ
 	double getGamaTao(float pai, float tao);//用于水的比焓值计算的γ
 	double CalcEnthalpy(float temp, float pressure);//计算水的比焓值, 温度范围0℃~350℃
+	double getEnergyByEnthalpy(float inTemper, float outTemper, float vol,  int installPos, int unit, float pressure=NORMAL_PRESSURE);//焓差法计算热值
 private:
 	int getInt(float p);
 	float getDecimal(float p);
