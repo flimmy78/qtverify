@@ -574,14 +574,14 @@ int FlowWeightDlg::prepareInitBalance()
 		{
 			qWarning()<<"关闭放水阀失败";
 		}
-		if (!openBigFlowValve())
+		if (!openValve(m_portsetinfo.bigNo))
 		{
 			qWarning()<<"打开大流量阀失败";
 		}
 		//判断并等待天平重量，大于初始重量(5kg)
 		if (isBalanceValueBigger(BALANCE_INIT_VALUE, true))
 		{
-			if (!closeBigFlowValve())
+			if (!closeValve(m_portsetinfo.bigNo))
 			{
 				qWarning()<<"关闭大流量阀失败";
 			}
@@ -635,20 +635,6 @@ int FlowWeightDlg::closeWaterOutValve()
 int FlowWeightDlg::openWaterOutValve()
 {
 	openValve(m_portsetinfo.waterOutNo);
-	return true;
-}
-
-//打开大流量点阀门
-int FlowWeightDlg::openBigFlowValve()
-{
-	openValve(m_portsetinfo.bigNo);
-	return true;
-}
-
-//关闭大流量点阀门
-int FlowWeightDlg::closeBigFlowValve()
-{
-	closeValve(m_portsetinfo.bigNo);
 	return true;
 }
 
