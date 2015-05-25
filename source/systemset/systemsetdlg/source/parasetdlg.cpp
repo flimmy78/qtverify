@@ -43,11 +43,11 @@ ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 	initUiData();//以数据库中的数据, 初始化comboBox的值
 
 	QString filename;//配置文件的文件名
-	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
+	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
 #ifdef __unix
-	filename = runhome + "\/ini\/verifyparaset.ini";
+	filename = adehome + "\/ini\/verifyparaset.ini";
 #else
-	filename = runhome + "\\ini\\verifyparaset.ini";
+	filename = adehome + "\\ini\\verifyparaset.ini";
 #endif
 	settings = new QSettings(filename, QSettings::IniFormat);
 	settings->setIniCodec("GB2312");//解决向ini文件中写汉字乱码

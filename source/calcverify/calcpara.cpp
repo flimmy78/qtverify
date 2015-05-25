@@ -120,11 +120,11 @@ void CalcParaDlg::mapMeterStandardModel()
 void CalcParaDlg::initSettings()
 {
 	QString filename;//配置文件的文件名
-	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
+	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
 #ifdef __unix
-	filename = runhome + "\/ini\/calcpara.ini";
+	filename = adehome + "\/ini\/calcpara.ini";
 #else
-	filename = runhome + "\\ini\\calcpara.ini";
+	filename = adehome + "\\ini\\calcpara.ini";
 #endif
 	settings = new QSettings(filename, QSettings::IniFormat);
 	settings->setIniCodec("GB2312");//解决向ini文件中写汉字乱码

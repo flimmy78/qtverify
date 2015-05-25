@@ -59,12 +59,12 @@ int startdb()
 			break;
 		case T_SQLITE:
 			g_db = QSqlDatabase::addDatabase("QSQLITE");
-			dbname = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\\database\\" + QString::fromAscii(dbpara.dbname) + ".db";
+			dbname = QProcessEnvironment::systemEnvironment().value("ADEHOME") + "\\database\\" + QString::fromAscii(dbpara.dbname) + ".db";
 			g_db.setDatabaseName(dbname);
 			break;
 		default:
 			g_db = QSqlDatabase::addDatabase("QSQLITE");
-			dbname = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\\database\\" + QString::fromAscii(dbpara.dbname) + ".db";
+			dbname = QProcessEnvironment::systemEnvironment().value("ADEHOME") + "\\database\\" + QString::fromAscii(dbpara.dbname) + ".db";
 			g_db.setDatabaseName(dbname);
 			break;
 		}
@@ -483,16 +483,16 @@ QMap<QString, QString> getColInfo(QString tbl_name)
 int getDatabaseParaIni(DatabasePara_PTR info)
 {
 	QString filename;
-	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
-	if (runhome.isEmpty())
+	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
+	if (adehome.isEmpty())
 	{
-		qWarning()<<"Get $(RUNHOME) Failed!";
+		qWarning()<<"Get $(ADEHOME) Failed!";
 		return false;
 	}
 #ifdef __unix
-	filename = runhome + "\/ini\/databasepara.ini";
+	filename = adehome + "\/ini\/databasepara.ini";
 #else
-	filename = runhome + "\\ini\\databasepara.ini";
+	filename = adehome + "\\ini\\databasepara.ini";
 #endif
 
 	QSettings settings(filename, QSettings::IniFormat);

@@ -4,18 +4,18 @@
 CReport::CReport(const QString& condition)
 {
 	    m_temp_file = QProcessEnvironment::systemEnvironment().value("TEMP");
-	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
+	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
 	QString current_time = QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss");
 #ifdef Q_OS_LINUX
-	m_rpt_config_file = runhome + "\/ini\/rptconfig_common.ini";
-	m_template_file   = runhome + "\/doc\/rpt-template.xls";
+	m_rpt_config_file = adehome + "\/ini\/rptconfig_common.ini";
+	m_template_file   = adehome + "\/doc\/rpt-template.xls";
 	m_temp_file		  = m_temp_file+"\/" + current_time + ".xls";
-	m_rpt_file        = runhome + "\/report\/report-" + current_time + ".xls";
+	m_rpt_file        = adehome + "\/report\/report-" + current_time + ".xls";
 #elif defined (Q_OS_WIN)
-	m_rpt_config_file = runhome + "\\ini\\rptconfig_common.ini";
-	m_template_file   = runhome + "\\doc\\rpt-template.xls";
+	m_rpt_config_file = adehome + "\\ini\\rptconfig_common.ini";
+	m_template_file   = adehome + "\\doc\\rpt-template.xls";
 	m_temp_file		  = m_temp_file+"\\" + current_time + ".xls";
-	m_rpt_file        = runhome + "\\report\\report-" + current_time + ".xls";
+	m_rpt_file        = adehome + "\\report\\report-" + current_time + ".xls";
 #endif
 	m_rpt_config = new QSettings(m_rpt_config_file, QSettings::IniFormat);
 

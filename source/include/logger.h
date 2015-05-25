@@ -60,9 +60,9 @@ void myMessageOutput(QtMsgType type, const char *msg)
 	QString message = QString("%1 %2").arg(current_date_time).arg(text);
 	QString current_day = QDateTime::currentDateTime().toString("yyyy-MM-dd");
 
-	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
+	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
 	QString filename;
-	filename = runhome + "\\log\\log_" + current_day + ".txt";
+	filename = adehome + "\\log\\log_" + current_day + ".txt";
 	QFile file(filename);
 	if (file.open(QIODevice::WriteOnly | QIODevice::Append))
 	{

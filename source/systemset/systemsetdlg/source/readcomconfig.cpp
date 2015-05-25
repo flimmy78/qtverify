@@ -1,6 +1,6 @@
 /***********************************************
 **  文件名:     ReadComConfig.cpp
-**  功能:       读取 $RUNHOME/ini/comconfig.xml文件的串口配置
+**  功能:       读取 $ADEHOME/ini/comconfig.xml文件的串口配置
 **  操作系统:   基于Trolltech Qt4.8.5的跨平台系统
 **  生成时间:   2014/6/16
 **  专业组:     德鲁计量软件组

@@ -251,7 +251,7 @@ void FlowResultDlg::on_btnExport_clicked()
 		return;
 	}
 
-	QString defaultPath = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "//report//" + QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss");
+	QString defaultPath = QProcessEnvironment::systemEnvironment().value("ADEHOME") + "//report//" + QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss");
 	QString file = QFileDialog::getSaveFileName(this, tr("Save File"), defaultPath, tr("Microsoft Excel (*.xls)"));//获取保存路径
 	if (!file.isEmpty())
 	{

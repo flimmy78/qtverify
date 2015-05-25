@@ -24,16 +24,16 @@
 int getPortSetIni(PortSet_Ini_PTR info)
 {
 	QString filename;
-	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
-	if (runhome.isEmpty())
+	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
+	if (adehome.isEmpty())
 	{
-		qWarning()<<"Get $(RUNHOME) Failed!";
+		qWarning()<<"Get $(ADEHOME) Failed!";
 		return false;
 	}
 #ifdef __unix
-	filename = runhome + "\/ini\/portset.ini";
+	filename = adehome + "\/ini\/portset.ini";
 #else
-	filename = runhome + "\\ini\\portset.ini";
+	filename = adehome + "\\ini\\portset.ini";
 #endif
 
 	QSettings settings(filename, QSettings::IniFormat);
@@ -58,16 +58,16 @@ int getPortSetIni(PortSet_Ini_PTR info)
 int getParaSetIni(ParaSet_Ini_PTR info)
 {
 	QString filename;
-	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
-	if (runhome.isEmpty())
+	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
+	if (adehome.isEmpty())
 	{
-		qWarning()<<"Get $(RUNHOME) Failed!";
+		qWarning()<<"Get $(ADEHOME) Failed!";
 		return false;
 	}
 #ifdef __unix
-	filename = runhome + "\/ini\/verifyparaset.ini";
+	filename = adehome + "\/ini\/verifyparaset.ini";
 #else
-	filename = runhome + "\\ini\\verifyparaset.ini";
+	filename = adehome + "\\ini\\verifyparaset.ini";
 #endif
 
 	QSettings settings(filename, QSettings::IniFormat);
@@ -82,16 +82,16 @@ int getParaSetIni(ParaSet_Ini_PTR info)
 int getMasterSlaveIni(MasterSlave_Ini_PTR info)
 {
 	QString filename;
-	QString runhome;
-	if (runhome.isEmpty())
+	QString adehome;
+	if (adehome.isEmpty())
 	{
-		qWarning()<<"Get $(RUNHOME) Failed!";
+		qWarning()<<"Get $(ADEHOME) Failed!";
 		return false;
 	}
 #ifdef __unix
-	filename = runhome + "\/ini\/masterslaveset.ini";
+	filename = adehome + "\/ini\/masterslaveset.ini";
 #else
-	filename = runhome + "\\ini\\masterslaveset.ini";
+	filename = adehome + "\\ini\\masterslaveset.ini";
 #endif
 
 	QSettings settings(filename, QSettings::IniFormat);
@@ -114,17 +114,17 @@ int getMasterSlaveIni(MasterSlave_Ini_PTR info)
 
 QString getFullIniFileName(QString filename)
 {
-	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
-	if (runhome.isEmpty())
+	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
+	if (adehome.isEmpty())
 	{
-		qWarning()<<"Get $(RUNHOME) Failed! Please set up this system variable.";
+		qWarning()<<"Get $(ADEHOME) Failed! Please set up this system variable.";
 		return "";
 	}
 	QString fullname;
 #ifdef __unix
-	fullname = runhome + "\/ini\/" + filename;
+	fullname = adehome + "\/ini\/" + filename;
 #else
-	fullname = runhome + "\\ini\\" + filename;
+	fullname = adehome + "\\ini\\" + filename;
 #endif
 	return fullname;
 }

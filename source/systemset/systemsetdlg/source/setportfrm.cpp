@@ -1,6 +1,6 @@
 /***********************************************
 **  文件名:     SetPortFrm.cpp
-**  功能:       将用户对各个设备的串口设置保存到 $RUNHOME/ini/comconfig.xml文件中;
+**  功能:       将用户对各个设备的串口设置保存到 $ADEHOME/ini/comconfig.xml文件中;
 					并在窗口加载时，将配置文件中的相应配置装载到窗口中
 **  操作系统:   基于Trolltech Qt4.8.5的跨平台系统
 **  生成时间:   2014/6/15
@@ -24,11 +24,11 @@ SetPortFrm::SetPortFrm(QWidget *parent, Qt::WFlags flags)
 {
 	gui.setupUi(this);
 
-	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
+	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
 #ifdef Q_OS_LINUX
-		IniPath = runhome + "\/ini\/portset.ini";
+		IniPath = adehome + "\/ini\/portset.ini";
 #elif defined (Q_OS_WIN)
-		IniPath = runhome + "\\ini\\portset.ini";
+		IniPath = adehome + "\\ini\\portset.ini";
 #endif
 	PortSet = new QSettings(IniPath, QSettings::IniFormat);
 

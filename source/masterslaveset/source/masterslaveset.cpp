@@ -16,7 +16,7 @@ CMasterSlave::CMasterSlave(QWidget *parent, Qt::WFlags flags)
 		initSettingsInfo();
 	}
 
-	QString filename = QProcessEnvironment::systemEnvironment().value("RUNHOME");
+	QString filename = QProcessEnvironment::systemEnvironment().value("ADEHOME");
 #ifdef Q_OS_LINUX
 	filename += "\/ini\/masterslaveset.ini";
 #elif defined (Q_OS_WIN)

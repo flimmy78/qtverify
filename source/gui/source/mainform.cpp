@@ -46,8 +46,8 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	qDebug()<<"MainForm thread:"<<QThread::currentThreadId();
 
 	ui.setupUi(this);
-	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
-	QString logofile = runhome.replace("\\", "/") + "\/uif\/pixmap\/adelogo.jpg";
+	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
+	QString logofile = adehome.replace("\\", "/") + "\/uif\/pixmap\/adelogo.jpg";
 	ui.label->setStyleSheet(QString::fromUtf8("border-image: url(%1);").arg(logofile));
 
 	m_mySql = NULL;
@@ -558,7 +558,7 @@ void MainForm::on_actionQueryExcel_triggered()
 	QAxObject *workbook = NULL;
 	excel->dynamicCall("SetVisible(bool)", false);
 	workbooks = excel->querySubObject("WorkBooks");
-	QString xlsFile = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\\dat\\test.xlsx";
+	QString xlsFile = QProcessEnvironment::systemEnvironment().value("ADEHOME") + "\\dat\\test.xlsx";
 	workbook = workbooks->querySubObject("Open(QString, QVariant)", xlsFile);
 	if (NULL==workbook)
 	{
@@ -621,8 +621,8 @@ void MainForm::on_actionFashion_triggered()
 
 void MainForm::chaneLanguage(QString lang)
 {
-	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
-	QString file_name = runhome + "\\ini\\tr_qtverify.ini";
+	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
+	QString file_name = adehome + "\\ini\\tr_qtverify.ini";
 	QFile file(file_name );
 	if( !file.open(QIODevice::ReadOnly | QIODevice::Text) ) 
 	{
@@ -640,7 +640,7 @@ void MainForm::chaneLanguage(QString lang)
 		if( line.at(0) == '#' ) 
 			continue;
 
-		QString i18nName = QProcessEnvironment::systemEnvironment().value("RUNHOME") + "\\uif\\i18n\\" + lang + "\\";
+		QString i18nName = QProcessEnvironment::systemEnvironment().value("ADEHOME") + "\\uif\\i18n\\" + lang + "\\";
 		line = line + "_" + lang + ".qm";
 		i18nName.append(line);//.append(QString("_%1.qm").arg(lang));
 		translator = new QTranslator( 0 );

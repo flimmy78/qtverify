@@ -61,8 +61,8 @@ QMainWindow(parent),
 	ui->btnRecv->hide();
 
 	//加载上次保存的串口参数
-	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
-	m_filename = runhome + "\\ini\\comdebugger.ini";
+	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
+	m_filename = adehome + "\\ini\\comdebugger.ini";
 	m_comset = new QSettings(m_filename, QSettings::IniFormat);
 	if (m_comset)
 	{
