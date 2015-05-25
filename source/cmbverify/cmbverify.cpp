@@ -267,6 +267,7 @@ void CmbVerifyDlg::on_tableWidget_cellChanged(int row, int col)
 	ui.tableWidget->setCurrentCell(row, col+1);
 	QString sn;
 	float v0, v1, e0, e1, stdE, deltaE, err, vol, energy;
+	float in_t, out_t;
 	bool deltaE_OK = false;
 	bool stdE_OK = false;
 	switch(col)
@@ -329,9 +330,9 @@ void CmbVerifyDlg::on_tableWidget_cellChanged(int row, int col)
 			ui.tableWidget->item(row, COL_ERR)->setText(QString::number(err*100));
 			break;
 		case COL_ERR:
-			float disp_err = ui.tableWidget->item(row, COL_ERR)->text().toFloat();
-			bool is_valid = disp_err <= m_stdErrLmtByGrade;
-			ui.tableWidget->item(row, COL_ERR)->setTextColor(is_valid ? QColor(250,0,0) : QColor(0,0,0));
+			float disp_err = qAbs(ui.tableWidget->item(row, COL_ERR)->text().toFloat());
+			bool is_valid = disp_err <= m_stdErrLmtByGrade;//检测合格
+			ui.tableWidget->item(row, COL_ERR)->setTextColor(is_valid ? QColor(0,0,0) : QColor(250,0,0));//合格显示黑色，不合格显示红色
 			break;
 	}
 }
@@ -433,7 +434,7 @@ void CmbVerifyDlg::on_btnStart_clicked()
 	float set_tem_diff = m_param_config->value("diff/temp_deff").toFloat();
 	float flow_rate = IMITATION_FLOW_RATE;
 	float dn_flow_rate = m_param_config->value("common/dnflow").toFloat();
-	m_stdErrLmtByGrade = getMeterGradeErrLmt(grade, min_temp_diff, set_tem_diff, dn_flow_rate, flow_rate);
+	m_stdErrLmtByGrade = qAbs(getMeterGradeErrLmt(grade, min_temp_diff, set_tem_diff, dn_flow_rate, flow_rate));
 }
 
 void CmbVerifyDlg::on_btnSave_clicked()
@@ -640,44 +641,7 @@ float CmbVerifyDlg::getStdEnergy(float analogV)
 		QMessageBox::information(this, tr("Hint"), tr("current temperature different is less than min Δθ!"));
 		return -1;
 	}
-	return getEnergyByEnthalpy(analogV, in_t, out_t);
-}
-
-float CmbVerifyDlg::getEnergyByEnthalpy(float analogV, float inTemper, float outTemper)
-{
-	float energy = 0.0;
-	float density = 0.0;
-
-	float diffEnthalpy = getEnthalpyDiffByTemper(inTemper, outTemper);
-	if (m_current_pos==INSTALLPOS_IN) //安装位置：进口
-	{
-		density = m_algo->getDensityByQuery(inTemper);
-	}
-	else if (m_current_pos==INSTALLPOS_OUT) //安装位置：出口
-	{
-		density = m_algo->getDensityByQuery(outTemper);
-	}
-
-	float mass = analogV*density;//物体质量, kg
-	energy = mass*diffEnthalpy;//kJ
-
-	if (m_current_unit == UNIT_KWH)
-	{
-		energy = energy/3600;//单位转换，kJ->kwh
-	}
-	else if (m_current_unit == UNIT_MJ)
-	{
-		energy = energy/1000;
-	}
-	return energy;
-}
-
-float CmbVerifyDlg::getEnthalpyDiffByTemper(float inT, float outT)
-{
-	float inEnthalpy = m_algo->getEnthalpyByQuery(inT); //焓值，单位kJ/kg
-	float outEnthalpy = m_algo->getEnthalpyByQuery(outT);
-
-	return inEnthalpy-outEnthalpy;
+	return m_algo->getEnergyByEnthalpy(in_t, out_t, analogV, m_current_pos, m_current_unit);
 }
 
 /*

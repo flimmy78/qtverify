@@ -119,8 +119,6 @@ private:
 	void initTbl();
 	void chkIfCanStartVerify();//检测是否可以开始检测
 	void stdTempChanged();//标准温度计读数变化
-	float getEnthalpyDiffByTemper(float inT, float outT); //根据进口温度和出口温度获取焓差
-	float getEnergyByEnthalpy(float analogV, float inTemper, float outTemper);//焓差法计算理论热量
 	float getStdEnergy(float analogV);//根据标准温度计计算热量
 	float getKCoeByTemper(float inTemper, float outTemper);//计算K系数
 	/*----------读取标准温度计-----------*/
