@@ -40,6 +40,15 @@
 #define COL_ERR			10//示值误差
 #define COL_READ_DATA	11//读表数据
 
+#define HEAHER_E0_KWH	"E0(kWh)"
+#define HEAHER_E1_KWH	"E1(kWh)"
+#define HEAHER_DELTAE_KWH	"\316\224E(kWh)"
+#define HEAHER_STDE_KWH	"E0(kWh)"
+
+#define HEAHER_E0_MJ	"E0(MJ)"
+#define HEAHER_E1_MJ	"E1(MJ)"
+#define HEAHER_DELTAE_MJ	"\316\224E(MJ)"
+#define HEAHER_STDE_MJ	"E0(MJ)"
 
 #define MAX_METER_NUM	20//最大检表数
 

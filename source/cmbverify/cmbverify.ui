@@ -279,7 +279,7 @@
       <item>
        <widget class="QTableWidget" name="tableWidget">
         <property name="enabled">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
         <property name="minimumSize">
          <size>
@@ -309,7 +309,7 @@
         </column>
         <column>
          <property name="text">
-          <string>E0(kWH)</string>
+          <string>E0(kWh)</string>
          </property>
         </column>
         <column>
@@ -324,7 +324,7 @@
         </column>
         <column>
          <property name="text">
-          <string>E1(kWH)</string>
+          <string>E1(kWh)</string>
          </property>
         </column>
         <column>
@@ -339,7 +339,7 @@
         </column>
         <column>
          <property name="text">
-          <string>ΔE(kWH)</string>
+          <string>ΔE(kWh)</string>
          </property>
         </column>
         <column>
@@ -349,7 +349,7 @@
         </column>
         <column>
          <property name="text">
-          <string>StdE(kWH)</string>
+          <string>StdE(kWh)</string>
          </property>
         </column>
         <column>
@@ -413,7 +413,7 @@
      <item>
       <widget class="QPushButton" name="btnStart">
        <property name="enabled">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
        <property name="text">
         <string>Start</string>

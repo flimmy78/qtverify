@@ -326,7 +326,7 @@ void CmbVerifyDlg::on_tableWidget_cellChanged(int row, int col)
 				return;
 			}
 			stdE = ui.tableWidget->item(row, COL_STD_E)->text().trimmed().toFloat();
-			err = qAbs(deltaE - stdE)/stdE;
+			err = (deltaE - stdE)/stdE;
 			ui.tableWidget->item(row, COL_ERR)->setText(QString::number(err*100));
 			break;
 		case COL_ERR:
@@ -392,6 +392,22 @@ void CmbVerifyDlg::on_btnGroup_unit_clicked(int id)
 {
 	m_current_unit = id;
 	m_unit_selected = true;
+	QTableWidgetItem *item;
+	if (m_current_unit == UNIT_KWH)
+	{
+		ui.tableWidget->horizontalHeaderItem(COL_E0)->setText(tr(HEAHER_E0_KWH));
+		ui.tableWidget->horizontalHeaderItem(COL_E1)->setText(tr(HEAHER_E1_KWH));
+		ui.tableWidget->horizontalHeaderItem(COL_DELTA_E)->setText(QApplication::translate("CmbVerifyClass", HEAHER_DELTAE_KWH, 0, QApplication::UnicodeUTF8));
+		ui.tableWidget->horizontalHeaderItem(COL_STD_E)->setText(tr(HEAHER_STDE_KWH));
+	}
+	else if (m_current_unit == UNIT_MJ)
+	{
+		ui.tableWidget->horizontalHeaderItem(COL_E0)->setText(tr(HEAHER_E0_MJ));
+		ui.tableWidget->horizontalHeaderItem(COL_E1)->setText(tr(HEAHER_E1_MJ));
+		ui.tableWidget->horizontalHeaderItem(COL_DELTA_E)->setText(QApplication::translate("CmbVerifyClass", HEAHER_DELTAE_MJ, 0, QApplication::UnicodeUTF8));
+		ui.tableWidget->horizontalHeaderItem(COL_STD_E)->setText(tr(HEAHER_STDE_MJ));
+	}
+	
 	chkIfCanStartVerify();
 }
 
@@ -472,7 +488,6 @@ int CmbVerifyDlg::saveVerifyRecords()
 			memset(m_recPtr, 0, sizeof(Calc_Verify_Record_STR));
 			strncpy_s(m_recPtr->F_TimeStamp, m_timeStamp.toAscii(), TIMESTAMP_LEN);
 			strcpy_s(m_recPtr->F_MeterNo, ui.tableWidget->item(i, COL_SN)->text().trimmed().toAscii());
-			//m_recPtr->deltaTidx = mapIdx[i];
 			m_recPtr->F_Standard = m_param_config->value("common/stand").toInt();
 			m_recPtr->F_Model = m_param_config->value("common/model").toInt();
 			m_recPtr->F_Grade = m_param_config->value("common/grade").toInt();
