@@ -428,7 +428,7 @@ double CAlgorithm::CalcEnthalpy(float temp, float pressure)
 ** unit 使用的热值单位, kWh/MJ
 ** pressure 压强, MPa
 */
-double CAlgorithm::getEnergyByEnthalpy(float inTemper, float outTemper, float volum,  int installPos, int unit, float pressure=NORMAL_PRESSURE)
+double CAlgorithm::getEnergyByEnthalpy(float inTemper, float outTemper, float volum,  int installPos, int unit, float pressure)
 {
 	float inEnthalpy, outEnthalpy;
 	float density;
