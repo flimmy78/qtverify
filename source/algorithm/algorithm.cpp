@@ -382,6 +382,40 @@ double CAlgorithm::CalcKCoeOfWater(float inTemper, float outTemper, int installP
 	return kCoe;
 }
 
+double CAlgorithm::getGamaPai(float pai, float tao)
+{
+	float gama = 0.0;
+	for (int i=0; i<34; i++)
+		gama += (-1)*n[i]*I[i]*pow(7.1-pai, I[i]-1)*pow(tao-1.222, J[i]);
+
+	return gama;
+}
+
+double CAlgorithm::getGamaTao(float pai, float tao)
+{
+	float gama = 0.0;
+	for (int i=0; i<34; i++)
+		gama += n[i]*pow(7.1-pai, I[i])*J[i]*pow(tao - 1.222, J[i] - 1);
+
+	return gama;
+}
+
+/*
+** 根据欧标EN1434《热能表》Part-1 计算水的比焓值
+** 单位KJ/kg
+*/
+double CAlgorithm::CalcEnthalpy(float temp, float pressure)
+{
+	float T = temp + 273.15;//开尔文温度标
+	float tao = 1386/T;
+	float pai = pressure/16.53;
+	float gamaTao = getGamaTao(pai, tao);
+
+	float H = tao*gamaTao*ENTHALPY_R*T;
+
+	return H/1000.0;
+}
+
 /************************************************************************
 * 计算浮点数的整数部分           
 /************************************************************************/
