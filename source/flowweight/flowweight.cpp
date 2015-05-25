@@ -627,24 +627,14 @@ int FlowWeightDlg::closeAllFlowPointValves()
 //关闭放水阀门
 int FlowWeightDlg::closeWaterOutValve()
 {
-	m_controlObj->askControlRelay(m_portsetinfo.waterOutNo, VALVE_OPEN); //放水阀的气管接反了，导致开、关动作与其他阀门相反
-	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
-	{
-		slotSetValveBtnStatus(m_portsetinfo.waterOutNo, VALVE_CLOSE);
-	}
-
+	closeValve(m_portsetinfo.waterOutNo);
 	return true;
 }
 
 //打开放水阀门
 int FlowWeightDlg::openWaterOutValve()
 {
-	m_controlObj->askControlRelay(m_portsetinfo.waterOutNo, VALVE_CLOSE); //放水阀的气管接反了，导致开、关动作与其他阀门相反
-	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
-	{
-		slotSetValveBtnStatus(m_portsetinfo.waterOutNo, VALVE_OPEN);
-	}
-
+	openValve(m_portsetinfo.waterOutNo);
 	return true;
 }
 
@@ -1341,15 +1331,7 @@ void FlowWeightDlg::on_btnWaterIn_clicked() //进水阀
 void FlowWeightDlg::on_btnWaterOut_clicked() //放水阀
 {
 	m_nowPortNo = m_portsetinfo.waterOutNo;
-	if (m_valveStatus[m_nowPortNo]==VALVE_OPEN) //阀门原来是打开状态
-	{
-		closeWaterOutValve();
-	}
-	else //阀门原来是关闭状态
-	{
-		openWaterOutValve();
-	}
-
+	operateValve(m_nowPortNo);
 }
 
 void FlowWeightDlg::on_btnValveBig_clicked() //大流量阀
