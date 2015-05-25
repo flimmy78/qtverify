@@ -93,8 +93,10 @@ enum Verify_Method
 #define INSTALLPOS_IN	0 //安装位置 入口
 #define INSTALLPOS_OUT	1 //安装位置 出口 
 
-#define NORMAL_PRESSURE 0.6//普通压力, MPa
-#define HIGH_PRESSURE 1.6//高压力, MPa
+#define NORMAL_PRESSURE 0.6//常用供热压力, 单位MPa
+#define HIGH_PRESSURE 1.6//高压供热压力, 单位MPa
+
+#define ENTHALPY_R	461.526//水的比焓常数, 个人理解为单位质量的水, 其温度变化1K, 所交换的热值(见IAPWS-IF97-Re 水和水蒸气特性v.pdf P5 及http://en.wikipedia.org/wiki/Gas_constant)
 
 #define GRADE_ONE	0//1级表
 #define GRADE_TWO	1//2级表

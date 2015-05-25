@@ -18,10 +18,6 @@
 #include <QString>
 #include "basedef.h"
 
-#define NORMAL_PRESSURE 0.6//常用供热压力, 单位MPa
-#define HIGH_PRESSURE 1.6//高压供热压力, 单位MPa
-#define ENTHALPY_R	461.526//水的比焓常数, 个人理解为单位质量的水, 其温度变化1K, 所交换的热值(见IAPWS-IF97-Re 水和水蒸气特性v.pdf P5 及http://en.wikipedia.org/wiki/Gas_constant)
-
 ALGORITHM_EXPORT int getPortSetIni(PortSet_Ini_PTR info); //获取控制板的端口号配置信息
 ALGORITHM_EXPORT int getParaSetIni(ParaSet_Ini_PTR info); //获取参数设置(质量法-分量检测)
 ALGORITHM_EXPORT int getMasterSlaveIni(MasterSlave_Ini_PTR info); //获取主机-从机设置信息
