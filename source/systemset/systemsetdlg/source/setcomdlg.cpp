@@ -21,7 +21,7 @@
 
 #include "basedef.h"
 #include "algorithm.h"
-#include "setcomDlg.h"
+#include "setcomdlg.h"
 #include "commondefine.h"
 #include "readcomconfig.h"
 

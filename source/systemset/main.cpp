@@ -4,7 +4,7 @@
 #include <QtCore/QPoint>
 
 #include "setportfrm.h"
-#include "setcomfrm.h"
+#include "setcomdlg.h"
 
 int main( int argc, char ** argv )
 {
@@ -27,7 +27,7 @@ int main( int argc, char ** argv )
 		}
 		app.installTranslator(&translator);
 	}
-	SetComFrm w;
+	SetComDlg w;
 	w.show();
 	 
 	return app.exec();
