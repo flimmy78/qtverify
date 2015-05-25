@@ -8,22 +8,22 @@ CONFIG += dll console debug
 
 DEPENDPATH += .
 INCLUDEPATH += ./		\
-               $$(RUNHOME_INC)/include
+               $$(ADEHOME_INC)/include
 
 HEADERS += \
-	$$(RUNHOME_INC)/include/qexcel.h
+	$$(ADEHOME_INC)/include/qexcel.h
 
 SOURCES += \
 	qexcel.cpp
 	
 QMAKE_LIBDIR +=  ./             \
-        	  		 $(RUNHOME)/lib \
-	          		 $(RUNHOME)/bin \
+        	  		 $(ADEHOME)/lib \
+	          		 $(ADEHOME)/bin \
 					 
 win32{
 DEFINES += WIN32 _AFXDLL
 DEFINES -= _USRDLL
-DESTDIR = $(RUNHOME)\tmp\qexcel\obj
+DESTDIR = $(ADEHOME)\tmp\qexcel\obj
 }
 
 win32{
@@ -32,6 +32,6 @@ win32{
 	MY_DEST_DLL_VAR = $${DESTDIR} $${TARGET}.dll
 	MY_DEST_DLL = $$join( MY_DEST_DLL_VAR, "\\" )
 
-	QMAKE_POST_LINK = copy $${MY_DEST_LIB} $(RUNHOME)\lib \
-                  & copy $${MY_DEST_DLL} $(RUNHOME)\dll
+	QMAKE_POST_LINK = copy $${MY_DEST_LIB} $(ADEHOME)\lib \
+                  & copy $${MY_DEST_DLL} $(ADEHOME)\dll
 }

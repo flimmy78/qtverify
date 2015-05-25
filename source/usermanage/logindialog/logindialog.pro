@@ -7,27 +7,27 @@ QT += sql
 DEPENDPATH += .
 INCLUDEPATH  	+=    ./      \
 									 include \ 
-									 $$(RUNHOME_INC)/include
+									 $$(ADEHOME_INC)/include
 									 
 DEFINES	+= LOGINDIALOG_DLL
 
 QMAKE_LIBDIR +=  ./             \
-        	  		 $(RUNHOME)/lib \
-	          		 $(RUNHOME)/bin 
+        	  		 $(ADEHOME)/lib \
+	          		 $(ADEHOME)/bin 
 	          		 
 LIBS += -lqtexdb	          		 
 
-UI_DIR = $(RUNHOME_INC)/include
+UI_DIR = $(ADEHOME_INC)/include
 
 # Input
-HEADERS += $$(RUNHOME_INC)/include/logindialog.h
+HEADERS += $$(ADEHOME_INC)/include/logindialog.h
 SOURCES += logindialog.cpp
 FORMS += logindialog.ui
 
 win32{
 DEFINES += WIN32 _AFXDLL
 DEFINES -= _USRDLL
-DESTDIR = $(RUNHOME)\tmp\logindialog\obj
+DESTDIR = $(ADEHOME)\tmp\logindialog\obj
 }
 
 win32{
@@ -36,10 +36,10 @@ win32{
 	MY_DEST_DLL_VAR = $${DESTDIR} $${TARGET}.dll
 	MY_DEST_DLL = $$join( MY_DEST_DLL_VAR, "\\" )
 
-	QMAKE_POST_LINK = copy $${MY_DEST_LIB} $(RUNHOME)\lib \
-                  & copy $${MY_DEST_DLL} $(RUNHOME)\dll \
-                  & copy .\language\logindialog_zh.qm $(RUNHOME)\uif\i18n\zh \
-                  & copy .\language\logindialog_en.qm $(RUNHOME)\uif\i18n\en 
+	QMAKE_POST_LINK = copy $${MY_DEST_LIB} $(ADEHOME)\lib \
+                  & copy $${MY_DEST_DLL} $(ADEHOME)\dll \
+                  & copy .\language\logindialog_zh.qm $(ADEHOME)\uif\i18n\zh \
+                  & copy .\language\logindialog_en.qm $(ADEHOME)\uif\i18n\en 
 }
 
 TRANSLATIONS =  \

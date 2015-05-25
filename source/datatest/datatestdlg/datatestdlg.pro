@@ -6,22 +6,22 @@ CONFIG += qt dll debug qtestlib thread
 DEFINES	+= DATATESTDLG_DLL QT_THREAD_SUPPORT
 
 QMAKE_LIBDIR +=  ./           \
-        	     $(RUNHOME)/lib \
-	             $(RUNHOME)/bin 
+        	     $(ADEHOME)/lib \
+	             $(ADEHOME)/bin 
 	            
 LIBS += -lsystemsetdlg -lprotocol -lcomobject -lalgorithm
 
-DESTDIR = $(RUNHOME)\tmp\datatest\datatestdlg\obj
-#MOC_DIR = $(RUNHOME)/tmp/datatest/datatestdlg/moc
-OBJECTS_DIR = $(RUNHOME)/tmp/datatest/datatestdlg/obj
-UI_DIR = $(RUNHOME_INC)/include
+DESTDIR = $(ADEHOME)\tmp\datatest\datatestdlg\obj
+#MOC_DIR = $(ADEHOME)/tmp/datatest/datatestdlg/moc
+OBJECTS_DIR = $(ADEHOME)/tmp/datatest/datatestdlg/obj
+UI_DIR = $(ADEHOME_INC)/include
 
 INCLUDEPATH  	=    ./      \
 									 include \ 
-									 $$(RUNHOME_INC)/include	\
-									 $$(RUNHOME_INC)/include/qextserial
+									 $$(ADEHOME_INC)/include	\
+									 $$(ADEHOME_INC)/include/qextserial
 
-HEADERS	+= $$(RUNHOME_INC)/include/datatestdlg.h \
+HEADERS	+= $$(ADEHOME_INC)/include/datatestdlg.h \
 	
 SOURCES	+= source/datatestdlg.cpp
 
@@ -36,10 +36,10 @@ win32{
 	MY_DEST_DLL_VAR = $${DESTDIR} $${TARGET}.dll
 	MY_DEST_DLL = $$join( MY_DEST_DLL_VAR, "\\" )
 
-	QMAKE_POST_LINK = copy $${MY_DEST_LIB} $$(RUNHOME)\lib \
-                  & copy $${MY_DEST_DLL} $$(RUNHOME)\dll \
-                  & copy .\language\datatestdlg_zh.qm $(RUNHOME)\uif\i18n\zh \
-                  & copy .\language\datatestdlg_en.qm $(RUNHOME)\uif\i18n\en 
+	QMAKE_POST_LINK = copy $${MY_DEST_LIB} $$(ADEHOME)\lib \
+                  & copy $${MY_DEST_DLL} $$(ADEHOME)\dll \
+                  & copy .\language\datatestdlg_zh.qm $(ADEHOME)\uif\i18n\zh \
+                  & copy .\language\datatestdlg_en.qm $(ADEHOME)\uif\i18n\en 
 }
 
 TRANSLATIONS =  \

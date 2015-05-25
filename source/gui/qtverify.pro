@@ -11,8 +11,8 @@ QT += sql
 
 DEPENDPATH += . GeneratedFiles							 
 
-QMAKE_LIBDIR = 	$(RUNHOME)/lib \
-                $(RUNHOME)/bin \
+QMAKE_LIBDIR = 	$(ADEHOME)/lib \
+                $(ADEHOME)/bin \
 
 								
 LIBS += -lalgorithm -lsystemsetdlg -ldatatestdlg -lqaxserver -lmasterslaveset -llogindialog \
@@ -37,18 +37,18 @@ RESOURCES += qtverify.qrc
 win32{
 DEFINES += WIN32 _AFXDLL
 DEFINES -= _USRDLL
-DESTDIR = $(RUNHOME)\tmp\qtverify\obj
+DESTDIR = $(ADEHOME)\tmp\qtverify\obj
 }
 
-MOC_DIR = $(RUNHOME)/tmp/qtverify/moc
-OBJECTS_DIR = $(RUNHOME)/tmp/qtverify/obj
-UI_DIR = $(RUNHOME_INC)/include
+MOC_DIR = $(ADEHOME)/tmp/qtverify/moc
+OBJECTS_DIR = $(ADEHOME)/tmp/qtverify/obj
+UI_DIR = $(ADEHOME_INC)/include
 
 
 INCLUDEPATH += 	./include	\
 								$${UI_DIR}	\
-								$$(RUNHOME_INC)/include		\
-								$$(RUNHOME_INC)/include/qextserial \
+								$$(ADEHOME_INC)/include		\
+								$$(ADEHOME_INC)/include/qextserial \
 
 TRANSLATIONS += ./language/qtverify_en.ts ./language/qtverify_zh.ts
 
@@ -56,7 +56,7 @@ win32{
 	MY_DEST_EXE_VAR = $${DESTDIR} $${TARGET}.exe
 	MY_DEST_EXE = $$join( MY_DEST_EXE_VAR, "\\" )
 
-	QMAKE_POST_LINK = copy $${MY_DEST_EXE} $(RUNHOME)\bin	\
-                  & copy .\language\qtverify_zh.qm $(RUNHOME)\uif\i18n\zh	\
-                  & copy .\language\qtverify_en.qm $(RUNHOME)\uif\i18n\en
+	QMAKE_POST_LINK = copy $${MY_DEST_EXE} $(ADEHOME)\bin	\
+                  & copy .\language\qtverify_zh.qm $(ADEHOME)\uif\i18n\zh	\
+                  & copy .\language\qtverify_en.qm $(ADEHOME)\uif\i18n\en
 }

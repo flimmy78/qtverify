@@ -15,11 +15,11 @@ int main( int argc, char ** argv )
 		lang = QString::fromAscii(argv[1]);
 	}
 	QTranslator translator(0);
-	QString runhome = QProcessEnvironment::systemEnvironment().value("RUNHOME");
-	if (!runhome.isEmpty()) 
+	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
+	if (!adehome.isEmpty()) 
 	{
 		QString filename;
-		filename = runhome + "\\uif\\i18n\\" + lang + "\\comsetdlg_" + lang + ".qm";
+		filename = adehome + "\\uif\\i18n\\" + lang + "\\comsetdlg_" + lang + ".qm";
 		bool loadok = translator.load(filename, "");
 		if (!loadok)
 		{

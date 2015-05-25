@@ -5,22 +5,22 @@ CONFIG += qt dll debug thread
 QT += sql
 
 QMAKE_LIBDIR +=  ./           \
-        	     $(RUNHOME)/lib \
-	             $(RUNHOME)/bin 
+        	     $(ADEHOME)/lib \
+	             $(ADEHOME)/bin 
 
 LIBS +=	-lQt3Supportd4 -lQt3Support4 -lqtexdb -lalgorithm
 
-DESTDIR = $(RUNHOME)\tmp\tverparamparamdlg
+DESTDIR = $(ADEHOME)\tmp\tverparamparamdlg
 
-OBJECTS_DIR = $(RUNHOME)/tmp/tverparamparamdlg/obj
-UI_DIR = $(RUNHOME_INC)/include
+OBJECTS_DIR = $(ADEHOME)/tmp/tverparamparamdlg/obj
+UI_DIR = $(ADEHOME_INC)/include
 
 INCLUDEPATH  	=    ./      \
 									 include \ 
-									 $$(RUNHOME_INC)/include	\
-									 $$(RUNHOME_INC)/include/qextserial
+									 $$(ADEHOME_INC)/include	\
+									 $$(ADEHOME_INC)/include/qextserial
 
-HEADERS	+= $$(RUNHOME_INC)/include/tverparamparamdlg.h
+HEADERS	+= $$(ADEHOME_INC)/include/tverparamparamdlg.h
 
 SOURCES	+= tverparamparamdlg.cpp
 
@@ -32,10 +32,10 @@ win32{
 	MY_DEST_DLL_VAR = $${DESTDIR} $${TARGET}.dll
 	MY_DEST_DLL = $$join( MY_DEST_DLL_VAR, "\\" )
 
-	QMAKE_POST_LINK = copy $${MY_DEST_LIB} $$(RUNHOME)\lib \
-                  & copy $${MY_DEST_DLL} $$(RUNHOME)\dll \
-				  & copy .\language\tverparam_param_zh.qm $(RUNHOME)\uif\i18n\zh \
-                  & copy .\language\tverparam_param_en.qm $(RUNHOME)\uif\i18n\en 
+	QMAKE_POST_LINK = copy $${MY_DEST_LIB} $$(ADEHOME)\lib \
+                  & copy $${MY_DEST_DLL} $$(ADEHOME)\dll \
+				  & copy .\language\tverparam_param_zh.qm $(ADEHOME)\uif\i18n\zh \
+                  & copy .\language\tverparam_param_en.qm $(ADEHOME)\uif\i18n\en 
 }
 
 TRANSLATIONS =  \

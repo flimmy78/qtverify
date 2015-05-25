@@ -7,23 +7,23 @@ QT += sql
 DEFINES	+= TOTALWEIGHT_DLL QT_THREAD_SUPPORT
 
 QMAKE_LIBDIR +=  ./           \
-        	     $(RUNHOME)/lib \
-	             $(RUNHOME)/bin 
+        	     $(ADEHOME)/lib \
+	             $(ADEHOME)/bin 
 	            
 LIBS +=	-lQt3Supportd4 -lQt3Support4 -lprotocol -lsystemsetdlg -lcomobject -lqtexdb -lalgorithm	\
 			  -ldatatestdlg
 
-DESTDIR = $(RUNHOME)\tmp\totalweight
-#MOC_DIR = $(RUNHOME)/tmp/totalweight/moc
-OBJECTS_DIR = $(RUNHOME)/tmp/totalweight/obj
-UI_DIR = $(RUNHOME_INC)/include
+DESTDIR = $(ADEHOME)\tmp\totalweight
+#MOC_DIR = $(ADEHOME)/tmp/totalweight/moc
+OBJECTS_DIR = $(ADEHOME)/tmp/totalweight/obj
+UI_DIR = $(ADEHOME_INC)/include
 
 INCLUDEPATH  	=    ./      \
 									 include \ 
-									 $$(RUNHOME_INC)/include	\
-									 $$(RUNHOME_INC)/include/qextserial
+									 $$(ADEHOME_INC)/include	\
+									 $$(ADEHOME_INC)/include/qextserial
 
-HEADERS	+= $$(RUNHOME_INC)/include/totalweight.h 
+HEADERS	+= $$(ADEHOME_INC)/include/totalweight.h 
 	
 SOURCES	+= totalweight.cpp  
 
@@ -38,10 +38,10 @@ win32{
 	MY_DEST_DLL_VAR = $${DESTDIR} $${TARGET}.dll
 	MY_DEST_DLL = $$join( MY_DEST_DLL_VAR, "\\" )
 
-	QMAKE_POST_LINK = copy $${MY_DEST_LIB} $$(RUNHOME)\lib \
-                  & copy $${MY_DEST_DLL} $$(RUNHOME)\dll \
-                  & copy .\language\totalweight_zh.qm $(RUNHOME)\uif\i18n\zh \
-                  & copy .\language\totalweight_en.qm $(RUNHOME)\uif\i18n\en 
+	QMAKE_POST_LINK = copy $${MY_DEST_LIB} $$(ADEHOME)\lib \
+                  & copy $${MY_DEST_DLL} $$(ADEHOME)\dll \
+                  & copy .\language\totalweight_zh.qm $(ADEHOME)\uif\i18n\zh \
+                  & copy .\language\totalweight_en.qm $(ADEHOME)\uif\i18n\en 
 
 }
 
