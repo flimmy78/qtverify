@@ -4,15 +4,13 @@
 <context>
     <name>LoginDialog</name>
     <message>
-        <location filename="../logindialog.cpp" line="57"/>
         <location filename="../logindialog.cpp" line="71"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../logindialog.cpp" line="57"/>
         <source>please input password!</source>
-        <translation>请输入密码!</translation>
+        <translation type="obsolete">请输入密码!</translation>
     </message>
     <message>
         <location filename="../logindialog.cpp" line="71"/>
