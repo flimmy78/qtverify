@@ -130,7 +130,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>Flow:</string>
+           <string>DN Flow:</string>
           </property>
          </widget>
         </item>
