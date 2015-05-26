@@ -120,7 +120,6 @@ public:
 	QString m_nowDate;  
 	QString m_validDate;
 
-	float m_flowPoint;
 	int m_nowOrder;				//当前检定次序
 
 	bool m_inputStartValue; //手动采集时，等待输入初值状态

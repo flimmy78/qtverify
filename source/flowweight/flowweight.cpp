@@ -117,7 +117,6 @@ FlowWeightDlg::FlowWeightDlg(QWidget *parent, Qt::WFlags flags)
 	m_timeStamp = "";
 	m_nowDate = "";
 	m_validDate = "";
-	m_flowPoint = 0;          //流量(m3/h)
 
 	QSqlTableModel *model = new QSqlTableModel(this);  
 	model->setTable("T_Meter_Standard");  
@@ -153,6 +152,7 @@ void FlowWeightDlg::closeEvent( QCloseEvent * event)
 	openWaterOutValve(); //退出时打开放水阀
 	closeWaterPump();    //退出时关闭水泵
 	openValve(m_portsetinfo.bigNo); //打开大流量点阀门，释放管路压力
+	ui.labelHintPoint->clear();
 	ui.labelHintProcess->setText(tr("release pipe pressure..."));
 	QTest::qWait(2000);
 	closeValve(m_portsetinfo.bigNo);
@@ -868,12 +868,6 @@ void FlowWeightDlg::startVerify()
 	m_recPtr = new Flow_Verify_Record_STR[m_validMeterNum];
 	memset(m_recPtr, 0, sizeof(Flow_Verify_Record_STR)*m_validMeterNum);
 
-	m_flowPoint = m_paraSetReader->getFpBySeq(1).fp_verify;//第一个流量点
-	for (int m=0; m<m_validMeterNum; m++) //
-	{
-		ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_FLOW_POINT, new QTableWidgetItem(QString::number(m_flowPoint, 'f', 2)));//流量点
-	}
-
 	m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
 	m_nowDate = QDateTime::currentDateTime().toString("yyyy-MM-dd"); //当前日期'2014-08-07'
 	m_validDate = QDateTime::currentDateTime().addYears(VALID_YEAR).addDays(-1).toString("yyyy-MM-dd"); //有效期
@@ -1067,7 +1061,6 @@ int FlowWeightDlg::startVerifyFlowPoint(int order)
 	m_realFlow = ui.lcdFlowRate->value();
 	m_avgTFCount = 1;
 
-	m_flowPoint = m_paraSetReader->getFpBySeq(order).fp_verify;//order对应的流量点
 	int portNo = m_paraSetReader->getFpBySeq(order).fp_valve;  //order对应的阀门端口号
 	float verifyQuantity = m_paraSetReader->getFpBySeq(order).fp_quantity; //第order次检定对应的检定量
 	float frequence = m_paraSetReader->getFpBySeq(order).fp_freq; //order对应的频率
@@ -1086,7 +1079,7 @@ int FlowWeightDlg::startVerifyFlowPoint(int order)
 				m_meterDensity[m] = m_chkAlg->getDensityByQuery(m_meterTemper[m]);//计算每个被检表的密度
 				m_meterStdValue[m] = m_chkAlg->getStdVolByPos((m_balEndV-m_balStartV), m_pipeInTemper, m_pipeOutTemper, m_meterPosMap[m]); //计算每个被检表的体积标准值
 
-				ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_FLOW_POINT, new QTableWidgetItem(QString::number(m_flowPoint, 'f', 2)));//流量点
+				ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_FLOW_POINT, new QTableWidgetItem(QString::number(m_realFlow, 'f', 2)));//流量点
 				ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_BAL_START, new QTableWidgetItem(QString::number(m_balStartV, 'f', 3)));//天平初值
 				ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_BAL_END, new QTableWidgetItem(QString::number(m_balEndV, 'f', 3)));    //天平终值
 				ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_TEMPER, new QTableWidgetItem(QString::number(m_meterTemper[m], 'f', 2)));  //温度
