@@ -20,7 +20,7 @@ QMAKE_LIBDIR +=  ./             \
         	  		 $(ADEHOME)/lib \
 	          		 $(ADEHOME)/bin \
 					 
-LIBS += -lqexcel -llibxl -lqtexdb
+LIBS += -lqexcel -llibxl -lqtexdb -lalgorithm
  					 
 win32{
 DEFINES += WIN32 _AFXDLL

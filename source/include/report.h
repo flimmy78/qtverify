@@ -42,7 +42,6 @@ private:
 	QSettings* m_rpt_config;//报表配置
 	QString m_template_file;//模板文件路径
 	QString m_rpt_file;//报告文件路径
-	QString m_rpt_config_file;//报告的配置文件路径
 	QString m_temp_file;//临时文件路径
 	QString m_query_Sql;//查询数据的sql语句
 	QString m_query_condition;//sql语句的查询条件
