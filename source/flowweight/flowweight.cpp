@@ -37,9 +37,17 @@ FlowWeightDlg::FlowWeightDlg(QWidget *parent, Qt::WFlags flags)
  	ui.btnNext->hide();   //隐藏"下一步"按钮
 
 	//不同等级的热量表对应的标准误差,单位%
-	m_gradeErr[1] = 1.00f;
-	m_gradeErr[2] = 2.00f;
-	m_gradeErr[3] = 3.00f;
+	m_gradeErrA[1] = 1.00f;
+	m_gradeErrA[2] = 2.00f;
+	m_gradeErrA[3] = 3.00f;
+
+	m_gradeErrB[1] = 0.01f;
+	m_gradeErrB[2] = 0.02f;
+	m_gradeErrB[3] = 0.05f;
+
+	m_mapNormalFlow[0] = 1.5f; //DN15常用流量 1.5
+	m_mapNormalFlow[1] = 2.5f; //DN20常用流量 2.5
+	m_mapNormalFlow[2] = 3.5f; //DN25常用流量 3.5
 
 	if (!getPortSetIni(&m_portsetinfo)) //获取下位机端口号配置信息
 	{
@@ -83,7 +91,7 @@ FlowWeightDlg::FlowWeightDlg(QWidget *parent, Qt::WFlags flags)
 	m_inputEndValue = false;
 	m_stopFlag = false; //停止检测标志（退出界面后，不再检查天平容量）
 
-	m_tempCount = 1; //计算平均温度用的累加计数器
+	m_avgTFCount = 1; //计算平均温度用的累加计数器
 	m_nowOrder = 0;  //当前进行的检定序号
 
 	m_nowParams = new Verify_Params_STR;
@@ -97,6 +105,7 @@ FlowWeightDlg::FlowWeightDlg(QWidget *parent, Qt::WFlags flags)
 	m_validMeterNum = 0;     //实际检表个数
 	m_exaustSecond = 45;     //默认排气时间45秒
 	m_manufac = 0;           //制造厂商 默认德鲁
+	m_flowSC = 1.0;			 //流量安全系数，默认1.0
 	m_meterStartValue = NULL;
 	m_meterEndValue = NULL;
 	m_meterTemper = NULL;
@@ -426,6 +435,7 @@ int FlowWeightDlg::readNowParaConfig()
 	m_meterType = m_nowParams->m_type;//表类型
 	m_maxMeterNum = m_nowParams->m_maxMeters;//不同表规格对应的最大检表数量
 	m_manufac = m_nowParams->m_manufac; //制造厂商
+	m_flowSC = m_nowParams->sc_flow; //流量安全系数
 
 	initTableWidget();
 	showNowKeyParaConfig();
@@ -669,31 +679,44 @@ int FlowWeightDlg::isBalanceValueBigger(float targetV, bool flg)
 	return ret;
 }
 
-int FlowWeightDlg::judgeBalanceAndCalcAvgTemper(float targetV)
+/*
+** 功能：判断天平重量是否达到要求的检定量；计算检定过程的平均温度和平均流量(m3/h)
+*/
+int FlowWeightDlg::judgeBalanceAndCalcAvgTemperAndFlow(float targetV)
 {
 	int second = 0;
 	float nowFlow = m_paraSetReader->getFpBySeq(m_nowOrder).fp_verify;
 	while (!m_stopFlag && (ui.lcdBigBalance->value() < targetV))
 	{
 		qDebug()<<"天平重量 ="<<ui.lcdBigBalance->value()<<", 小于要求的重量 "<<targetV;
+		m_avgTFCount++;
 		m_pipeInTemper += ui.lcdInTemper->value();
 		m_pipeOutTemper += ui.lcdOutTemper->value();
-		m_tempCount++;
-
+		if (m_avgTFCount > FLOW_SAMPLE_NUM*2)
+		{
+			m_realFlow += ui.lcdFlowRate->value();
+		}
 		second = 3.6*(targetV - ui.lcdBigBalance->value())/nowFlow;
 		ui.labelHintPoint->setText(tr("NO. %1 flow point: %2 m3/h").arg(m_nowOrder).arg(nowFlow));
 		ui.labelHintProcess->setText(tr("Verifying...\nPlease wait for about %1 second").arg(second));
 		QTest::qWait(1000);
 	}
 
-	m_pipeInTemper = m_pipeInTemper/m_tempCount;   //入口平均温度
-	m_pipeOutTemper = m_pipeOutTemper/m_tempCount; //出口平均温度
+	m_pipeInTemper = m_pipeInTemper/m_avgTFCount;   //入口平均温度
+	m_pipeOutTemper = m_pipeOutTemper/m_avgTFCount; //出口平均温度
+	if (m_avgTFCount > FLOW_SAMPLE_NUM*2)
+	{
+		m_realFlow = m_realFlow/(m_avgTFCount-FLOW_SAMPLE_NUM*2+1); //平均流量
+	}
 	ui.labelHintPoint->setText(tr("NO. %1 flow point: %2 m3/h").arg(m_nowOrder).arg(nowFlow));
 	ui.labelHintProcess->setText(tr("Verify Finished!"));
 	if (m_nowOrder == m_flowPointNum)
 	{
 		ui.labelHintProcess->setText(tr("All flow points has verified!"));
 		ui.btnNext->hide();
+		closeValve(m_portsetinfo.waterInNo);//关闭进水阀
+		closeWaterPump();//关闭水泵
+		openWaterOutValve();//打开放水阀
 	}
 	int ret = !m_stopFlag && (ui.lcdBigBalance->value() >= targetV);
 	return ret;
@@ -1035,7 +1058,8 @@ int FlowWeightDlg::startVerifyFlowPoint(int order)
 	m_balStartV = ui.lcdBigBalance->value(); //记录天平初值
 	m_pipeInTemper = ui.lcdInTemper->value();
 	m_pipeOutTemper = ui.lcdOutTemper->value();
-	m_tempCount = 1;
+	m_realFlow = ui.lcdFlowRate->value();
+	m_avgTFCount = 1;
 
 	m_flowPoint = m_paraSetReader->getFpBySeq(order).fp_verify;//order对应的流量点
 	int portNo = m_paraSetReader->getFpBySeq(order).fp_valve;  //order对应的阀门端口号
@@ -1044,7 +1068,7 @@ int FlowWeightDlg::startVerifyFlowPoint(int order)
 	m_controlObj->askSetDriverFreq(frequence);
 	if (openValve(portNo)) //打开阀门，开始跑流量
 	{
-		if (judgeBalanceAndCalcAvgTemper(m_balStartV + verifyQuantity)) //跑完检定量并计算此过程的平均温度
+		if (judgeBalanceAndCalcAvgTemperAndFlow(m_balStartV + verifyQuantity)) //跑完检定量并计算此过程的平均温度和平均流量
 		{
 			closeValve(portNo); //关闭order对应的阀门
 			QTest::qWait(3000); //等待3秒钟，让天平数值稳定
@@ -1100,7 +1124,8 @@ int FlowWeightDlg::calcMeterError(int idx)
 {
 	m_meterError[idx] = 100*(m_meterEndValue[idx] - m_meterStartValue[idx] - m_meterStdValue[idx])/m_meterStdValue[idx];//计算某个表的误差
 	ui.tableWidget->setItem(m_meterPosMap[idx]-1, COLUMN_ERROR, new QTableWidgetItem(QString::number(m_meterError[idx], 'f', 4))); //误差
-	if (fabs(m_meterError[idx]) > m_gradeErr[2])
+	float stdError = m_flowSC*(m_gradeErrA[m_nowParams->m_grade] + m_gradeErrB[m_nowParams->m_grade]*m_mapNormalFlow[m_standard]/m_realFlow); //标准误差=规程要求误差*流量安全系数
+	if (fabs(m_meterError[idx]) > stdError)
 	{
 		ui.tableWidget->item(m_meterPosMap[idx]-1, COLUMN_ERROR)->setForeground(QBrush(Qt::red));
 	}
@@ -1108,7 +1133,7 @@ int FlowWeightDlg::calcMeterError(int idx)
 	QString meterNoStr = meterNoPrefix + QString("%1").arg(ui.tableWidget->item(m_meterPosMap[idx]-1, 0)->text(), 8, '0');
 
 	strncpy_s(m_recPtr[idx].timestamp, m_timeStamp.toAscii(), TIMESTAMP_LEN);
-	m_recPtr[idx].flowPoint = m_flowPoint;
+	m_recPtr[idx].flowPoint = m_realFlow;
 	strcpy_s(m_recPtr[idx].meterNo, meterNoStr.toAscii());
 	m_recPtr[idx].flowPointIdx = m_nowOrder; //
 	m_recPtr[idx].methodFlag = WEIGHT_METHOD; //质量法
@@ -1121,7 +1146,7 @@ int FlowWeightDlg::calcMeterError(int idx)
 	m_recPtr[idx].stdValue = m_meterStdValue[idx];
 	m_recPtr[idx].dispError = m_meterError[idx];
 	m_recPtr[idx].grade = m_nowParams->m_grade;
-	m_recPtr[idx].stdError = m_gradeErr[m_nowParams->m_grade]; //二级表 标准误差
+	m_recPtr[idx].stdError = stdError; //表的标准误差
 	m_recPtr[idx].result = (fabs(m_recPtr[idx].dispError) <= fabs(m_recPtr[idx].stdError)) ? 1 : 0;
 	m_recPtr[idx].meterPosNo = m_meterPosMap[idx];
 	m_recPtr[idx].standard = m_standard;

@@ -26,6 +26,24 @@ class ParaSetDlg;
 class ParaSetReader;
 class ReadComConfig;
 
+/*
+** 表格列
+*/
+#define COLUMN_METER_NUMBER       0 //表号列
+#define COLUMN_FLOW_POINT	      1 //流量点
+#define COLUMN_METER_START	      2 //表初值列
+#define COLUMN_METER_END	      3 //表终值列
+#define COLUMN_BAL_START	      4 //天平初值
+#define COLUMN_BAL_END		      5 //天平终值
+#define COLUMN_TEMPER		      6 //温度列
+#define COLUMN_DENSITY		      7 //密度列
+#define COLUMN_STD_VALUE	      8 //标准值
+#define COLUMN_ERROR		      9 //示值误差列
+#define COLUMN_READ_METER		  10 //读表数据列
+#define COLUMN_VERIFY_STATUS	  11 //设置检定状态列
+#define COLUMN_ADJUST_ERROR		  12 //调整误差列
+#define COLUMN_MODIFY_METERNO	  13 //修改表号列
+
 
 class FLOWWEIGHT_EXPORT FlowWeightDlg : public QWidget
 {
@@ -73,14 +91,17 @@ public:
 	int m_model;              //表型号
 	int m_meterType;          //表类型
 	int m_manufac;			  //制造厂商(德鲁航天, 天罡等)
+	float m_flowSC;           //流量检定安全系数
 	//检定过程相关的控制参数 end
 
-	int m_tempCount;		  //计算平均温度用的累加计数器
+	int m_avgTFCount;		  //计算平均温度和平均流量用的累加计数器
 	int m_maxMeterNum;        //表格的行数（被检表的最大个数）
 	int m_oldMaxMeterNum;     //上次被检表的最大个数
 	int m_validMeterNum;          //实际检表的个数
 	QMap<int, int> m_meterPosMap; //被检表下标与表位号的映射关系
-	QMap<int, float> m_gradeErr;  //不同等级热表对应的标准误差
+	QMap<int, float> m_gradeErrA;  //不同等级热表对应的标准误差参数A
+	QMap<int, float> m_gradeErrB;  //不同等级热表对应的标准误差参数B
+	QMap<int, float> m_mapNormalFlow;  //不同规格热表对应的常用流量
 
 	float *m_meterStartValue; //被检表的初值
 	float *m_meterEndValue;   //被检表的终值
@@ -90,8 +111,9 @@ public:
 	float *m_meterError;	  //被检表的误差
 	float m_balStartV;        //天平初值
 	float m_balEndV;          //天平终值
-	double m_pipeInTemper;    //入口温度
-	double m_pipeOutTemper;   //出口温度
+	float m_pipeInTemper;     //入口温度
+	float m_pipeOutTemper;    //出口温度
+	float m_realFlow;		  //流速(m3/h）
 
 	Flow_Verify_Record_PTR m_recPtr; //有效的检定记录
 	QString m_timeStamp; //时间戳 秒数
@@ -149,7 +171,7 @@ public slots:
 	int closeWaterOutValve();     //关闭放水阀
 	int openWaterOutValve();      //打开放水阀
 	int isBalanceValueBigger(float targetV, bool flg=true);    //判断天平质量,flg: true-要求大于目标重量(默认)；false-要求小于目标重量
-	int judgeBalanceAndCalcAvgTemper(float targetV); //判断天平质量，并累加进出口温度，每秒累加一次，用于计算进出口平均温度
+	int judgeBalanceAndCalcAvgTemperAndFlow(float targetV); //判断天平质量，并累加进出口温度，每秒累加一次，用于计算进出口平均温度
 	void startVerify();           //开始检定
 	int getValidMeterNum();       //获取有效的检表个数()
 	bool judgeBalanceCapacity();   //判断天平容量是否能够满足检定用量 连续检定
