@@ -6,7 +6,7 @@
     <message>
         <location filename="../totalstandard.cpp" line="459"/>
         <source>meterPosNo%1</source>
-        <translation type="unfinished">表位%1</translation>
+        <translation>表位%1</translation>
     </message>
 </context>
 <context>
@@ -251,7 +251,7 @@ t</source>
     <message utf8="true">
         <location filename="../totalstandard.ui" line="691"/>
         <source>m³/h</source>
-        <translation></translation>
+        <translation>m³/h</translation>
     </message>
     <message>
         <location filename="../totalstandard.ui" line="704"/>
@@ -330,7 +330,7 @@ t</source>
         <location filename="../totalstandard.ui" line="130"/>
         <location filename="../totalstandard.ui" line="161"/>
         <source>Ω</source>
-        <translation></translation>
+        <translation>Ω</translation>
     </message>
     <message>
         <location filename="../totalstandard.ui" line="151"/>
@@ -452,13 +452,17 @@ Please wait for about %1 second</source>
     </message>
     <message>
         <location filename="../totalstandard.cpp" line="710"/>
-        <source>All flow points has verified !</source>
-        <translation>所有流量点检定完毕！</translation>
+        <location filename="../totalstandard.cpp" line="745"/>
+        <source>All flow points has verified!</source>
+        <translation>所有流量点已检定完毕!</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="745"/>
+        <source>All flow points has verified !</source>
+        <translation type="obsolete">所有流量点检定完毕！</translation>
+    </message>
+    <message>
         <source>all flow points has verified!</source>
-        <translation>所有流量点检定完毕!</translation>
+        <translation type="obsolete">所有流量点检定完毕!</translation>
     </message>
     <message>
         <location filename="../totalstandard.cpp" line="775"/>
