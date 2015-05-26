@@ -307,12 +307,12 @@ t</source>
         <location filename="../flowstandard.cpp" line="1414"/>
         <location filename="../flowstandard.cpp" line="1434"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>警告</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="49"/>
         <source>Warning:get port set info failed!</source>
-        <translation type="unfinished"></translation>
+        <translation>警告: 端口信息获取失败!</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="465"/>
@@ -349,75 +349,76 @@ t</source>
         <location filename="../flowstandard.cpp" line="699"/>
         <location filename="../flowstandard.cpp" line="706"/>
         <source>NO. %1 flow point: %2 m3/h</source>
-        <translation type="unfinished"></translation>
+        <translation>次序: %1 流量点: %2 m3/h</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="700"/>
         <source>Verifying...
 Please wait for about %1 second</source>
-        <translation type="unfinished"></translation>
+        <translation>检测中...
+请等待约 %1 秒</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="707"/>
         <source>Verify Finished!</source>
-        <translation type="unfinished"></translation>
+        <translation>检测结束!</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="710"/>
         <source>All flow points has verified !</source>
-        <translation type="unfinished"></translation>
+        <translation>所有检定点检定完毕!</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="745"/>
-        <source>all flow points has verified!</source>
-        <translation type="unfinished"></translation>
+        <source>All flow points has verified!</source>
+        <translation>所有检定点检定完毕!</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="775"/>
         <source>Verify has Stoped!</source>
-        <translation type="unfinished"></translation>
+        <translation>检定过程被打断!</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="786"/>
         <source>please input meter number, then click &quot;start&quot; button!</source>
-        <translation type="unfinished"></translation>
+        <translation>请输入表号, 再点击&quot;开始&quot;按钮!</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="923"/>
         <source>please input meter number</source>
-        <translation type="unfinished"></translation>
+        <translation>请输入表号</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="947"/>
         <source>Reset Zero</source>
-        <translation type="unfinished"></translation>
+        <translation>初值回零</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="950"/>
         <source>please wait %1 seconds for reset zero</source>
-        <translation type="unfinished"></translation>
+        <translation>初值归零,请等待 %1 秒</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="1346"/>
         <location filename="../flowstandard.cpp" line="1377"/>
         <source>Hint</source>
-        <translation type="unfinished"></translation>
+        <translation>提示</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="1346"/>
         <source>please input init value of heat meter</source>
-        <translation type="unfinished"></translation>
+        <translation>请输入被检表初始热值</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="1377"/>
         <source>please input end value of heat meter</source>
-        <translation type="unfinished"></translation>
+        <translation>请输入被检表终止热值</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="1414"/>
         <location filename="../flowstandard.cpp" line="1434"/>
         <source>Error: please input digits</source>
-        <translation type="unfinished"></translation>
+        <translation>错误: 请输入数字</translation>
     </message>
 </context>
 <context>
@@ -425,7 +426,7 @@ Please wait for about %1 second</source>
     <message>
         <location filename="../flowstandard.cpp" line="459"/>
         <source>meterPosNo%1</source>
-        <translation type="unfinished">表位%1</translation>
+        <translation>表位%1</translation>
     </message>
 </context>
 </TS>

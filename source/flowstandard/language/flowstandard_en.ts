@@ -6,156 +6,160 @@
     <message>
         <location filename="../flowstandard.ui" line="14"/>
         <source>Flow Verify(Standard Meter Method)</source>
-        <translation type="unfinished"></translation>
+        <translation>Flow Verify(Standard Meter Method)</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="27"/>
         <source>MeterNo</source>
-        <translation type="unfinished"></translation>
+        <translation>MeterNo</translation>
     </message>
     <message utf8="true">
         <location filename="../flowstandard.ui" line="32"/>
         <source>FlowPoint(m³/h)</source>
-        <translation type="unfinished"></translation>
+        <translation>FlowPoint(m³/h)</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="37"/>
         <source>MeterValue0(L)</source>
-        <translation type="unfinished"></translation>
+        <translation>MeterValue0(L)</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="42"/>
         <source>MeterValue1(L)</source>
-        <translation type="unfinished"></translation>
+        <translation>MeterValue1(L)</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="47"/>
         <source>StdValue0(L)</source>
-        <translation type="unfinished"></translation>
+        <translation>StdValue0(L)</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="52"/>
         <source>StdValue1(L)</source>
-        <translation type="unfinished"></translation>
+        <translation>StdValue1(L)</translation>
     </message>
     <message utf8="true">
         <location filename="../flowstandard.ui" line="57"/>
         <source>Temp(℃)</source>
-        <translation type="unfinished"></translation>
+        <translation>Temp(℃)</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="62"/>
         <source>Density(kg/L)</source>
-        <translation type="unfinished"></translation>
+        <translation>Density(kg/L)</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="67"/>
         <source>StdValue(L)</source>
-        <translation type="unfinished"></translation>
+        <translation>StdValue(L)</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="72"/>
         <source>DsipError(%)</source>
-        <translation type="unfinished"></translation>
+        <translation>DsipError(%)</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="77"/>
         <source>ModifyNO.</source>
-        <translation type="unfinished"></translation>
+        <translation>ModifyNO.</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="82"/>
         <source>AdjustError</source>
-        <translation type="unfinished"></translation>
+        <translation>AdjustError</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="98"/>
         <source>ParaSet</source>
-        <translation type="unfinished"></translation>
+        <translation>ParaSet</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="111"/>
         <source>ReadMeter</source>
-        <translation type="unfinished"></translation>
+        <translation>ReadMeter</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="118"/>
         <source>NowPara(KeyInfo)</source>
-        <translation type="unfinished"></translation>
+        <translation>NowPara(KeyInfo)</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="130"/>
         <source>Standard:</source>
-        <translation type="unfinished"></translation>
+        <translation>Standard:</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="156"/>
         <source>DA Mode:</source>
-        <translation type="unfinished"></translation>
+        <translation>DA Mode:</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="173"/>
         <source>Manual</source>
-        <translation type="unfinished"></translation>
+        <translation>Manual</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="178"/>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="192"/>
         <source>ResetZero:</source>
-        <translation type="unfinished"></translation>
+        <translation>ResetZero:</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="209"/>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>No</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="214"/>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>Yes</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="228"/>
         <source>Continuous:</source>
-        <translation type="unfinished"></translation>
+        <translation>Continuous:</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="245"/>
         <source>Independent</source>
-        <translation type="unfinished"></translation>
+        <translation>Independent</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="250"/>
         <source>Continuous</source>
-        <translation type="unfinished"></translation>
+        <translation>Continuous</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="269"/>
         <source>Controller</source>
-        <translation type="unfinished"></translation>
+        <translation>Controller</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="296"/>
         <source>Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="311"/>
         <source>i
 n
 </source>
-        <translation type="unfinished"></translation>
+        <translation>i
+n
+</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="326"/>
         <source>b
 i
 g</source>
-        <translation type="unfinished"></translation>
+        <translation>b
+i
+g</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="341"/>
@@ -163,7 +167,10 @@ g</source>
 i
 d
 1</source>
-        <translation type="unfinished"></translation>
+        <translation>m
+i
+d
+1</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="357"/>
@@ -171,7 +178,10 @@ d
 i
 d
 2</source>
-        <translation type="unfinished"></translation>
+        <translation>m
+i
+d
+2</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="373"/>
@@ -180,105 +190,111 @@ m
 a
 l
 l</source>
-        <translation type="unfinished"></translation>
+        <translation>s
+m
+a
+l
+l</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="390"/>
         <source>o
 u
 t</source>
-        <translation type="unfinished"></translation>
+        <translation>o
+u
+t</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="405"/>
         <source>Set Freq</source>
-        <translation type="unfinished"></translation>
+        <translation>Set Freq</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="418"/>
         <source>Start Pump</source>
-        <translation type="unfinished"></translation>
+        <translation>Start Pump</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="428"/>
         <source>DataAcquisition</source>
-        <translation type="unfinished"></translation>
+        <translation>DataAcquisition</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="442"/>
         <source>Std Meter:</source>
-        <translation type="unfinished"></translation>
+        <translation>Std Meter:</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="471"/>
         <source>L</source>
-        <translation type="unfinished"></translation>
+        <translation>L</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="484"/>
         <source>FlowRate:</source>
-        <translation type="unfinished"></translation>
+        <translation>FlowRate:</translation>
     </message>
     <message utf8="true">
         <location filename="../flowstandard.ui" line="516"/>
         <source>m³/h</source>
-        <translation type="unfinished"></translation>
+        <translation>m³/h</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="529"/>
         <source>In Temp:</source>
-        <translation type="unfinished"></translation>
+        <translation>In Temp:</translation>
     </message>
     <message utf8="true">
         <location filename="../flowstandard.ui" line="679"/>
         <location filename="../flowstandard.ui" line="842"/>
         <source>℃</source>
-        <translation type="unfinished"></translation>
+        <translation>℃</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="692"/>
         <source>Out Temp:</source>
-        <translation type="unfinished"></translation>
+        <translation>Out Temp:</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="860"/>
         <source>Process Hint</source>
-        <translation type="unfinished"></translation>
+        <translation>Process Hint</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="874"/>
         <source>FlowPnt:</source>
-        <translation type="unfinished"></translation>
+        <translation>FlowPnt:</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="909"/>
         <source>Process:</source>
-        <translation type="unfinished"></translation>
+        <translation>Process:</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="951"/>
         <source>Exhaust</source>
-        <translation type="unfinished"></translation>
+        <translation>Exhaust</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="964"/>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Start</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="977"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Next</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="990"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="1003"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Exit</translation>
     </message>
 </context>
 <context>
@@ -291,7 +307,7 @@ t</source>
         <location filename="../flowstandard.cpp" line="1414"/>
         <location filename="../flowstandard.cpp" line="1434"/>
         <source>Warning</source>
-        <translation>警告</translation>
+        <translation>Warning</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="49"/>
@@ -301,7 +317,7 @@ t</source>
     <message>
         <location filename="../flowstandard.cpp" line="465"/>
         <source>Modify NO.</source>
-        <translation>修改表号</translation>
+        <translation>Modify NO.</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="470"/>
@@ -350,59 +366,59 @@ Please wait for about %1 second</source>
     <message>
         <location filename="../flowstandard.cpp" line="710"/>
         <source>All flow points has verified !</source>
-        <translation type="unfinished"></translation>
+        <translation>All flow points has verified !</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="745"/>
-        <source>all flow points has verified!</source>
-        <translation type="unfinished"></translation>
+        <source>All flow points has verified!</source>
+        <translation>All flow points has verified!</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="775"/>
         <source>Verify has Stoped!</source>
-        <translation type="unfinished"></translation>
+        <translation>Verify has Stoped!</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="786"/>
         <source>please input meter number, then click &quot;start&quot; button!</source>
-        <translation type="unfinished"></translation>
+        <translation>please input meter number, then click &quot;start&quot; button!</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="923"/>
         <source>please input meter number</source>
-        <translation type="unfinished"></translation>
+        <translation>please input meter number</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="947"/>
         <source>Reset Zero</source>
-        <translation type="unfinished"></translation>
+        <translation>Reset Zero</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="950"/>
         <source>please wait %1 seconds for reset zero</source>
-        <translation type="unfinished"></translation>
+        <translation>please wait %1 seconds for reset zero</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="1346"/>
         <location filename="../flowstandard.cpp" line="1377"/>
         <source>Hint</source>
-        <translation type="unfinished"></translation>
+        <translation>Hint</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="1346"/>
         <source>please input init value of heat meter</source>
-        <translation type="unfinished"></translation>
+        <translation>please input init value of heat meter</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="1377"/>
         <source>please input end value of heat meter</source>
-        <translation type="unfinished"></translation>
+        <translation>please input end value of heat meter</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="1414"/>
         <location filename="../flowstandard.cpp" line="1434"/>
         <source>Error: please input digits</source>
-        <translation type="unfinished"></translation>
+        <translation>Error: please input digits</translation>
     </message>
 </context>
 <context>
@@ -410,7 +426,7 @@ Please wait for about %1 second</source>
     <message>
         <location filename="../flowstandard.cpp" line="459"/>
         <source>meterPosNo%1</source>
-        <translation type="unfinished"></translation>
+        <translation>meterPosNo%1</translation>
     </message>
 </context>
 </TS>
