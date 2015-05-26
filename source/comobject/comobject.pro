@@ -43,7 +43,9 @@ win32{
 	MY_DEST_DLL = $$join( MY_DEST_DLL_VAR, "\\" )
 
 	QMAKE_POST_LINK = copy $${MY_DEST_LIB} $$(ADEHOME)\lib \
-                  & copy $${MY_DEST_DLL} $$(ADEHOME)\dll
+                  & copy $${MY_DEST_DLL} $$(ADEHOME)\dll \
+				  & copy .\language\comobject_zh.qm $(ADEHOME)\uif\i18n\zh \
+                  & copy .\language\comobject_en.qm $(ADEHOME)\uif\i18n\en 
 }
 
 TRANSLATIONS =  \
