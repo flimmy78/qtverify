@@ -278,7 +278,7 @@
     <message>
         <location filename="../source/flow_result.cpp" line="126"/>
         <source>BalValue1</source>
-        <translation>天真终值</translation>
+        <translation>天平终值</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="127"/>
