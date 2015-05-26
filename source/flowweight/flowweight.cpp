@@ -152,6 +152,11 @@ void FlowWeightDlg::closeEvent( QCloseEvent * event)
 
 	openWaterOutValve(); //退出时打开放水阀
 	closeWaterPump();    //退出时关闭水泵
+	openValve(m_portsetinfo.bigNo); //打开大流量点阀门，释放管路压力
+	ui.labelHintProcess->setText(tr("release pipe pressure..."));
+	QTest::qWait(2000);
+	closeValve(m_portsetinfo.bigNo);
+
 
 	if (m_paraSetReader) //读检定参数
 	{
