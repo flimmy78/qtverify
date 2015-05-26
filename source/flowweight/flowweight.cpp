@@ -684,6 +684,7 @@ int FlowWeightDlg::isBalanceValueBigger(float targetV, bool flg)
 */
 int FlowWeightDlg::judgeBalanceAndCalcAvgTemperAndFlow(float targetV)
 {
+	QDateTime startTime = QDateTime::currentDateTime();
 	int second = 0;
 	float nowFlow = m_paraSetReader->getFpBySeq(m_nowOrder).fp_verify;
 	while (!m_stopFlag && (ui.lcdBigBalance->value() < targetV))
@@ -692,10 +693,10 @@ int FlowWeightDlg::judgeBalanceAndCalcAvgTemperAndFlow(float targetV)
 		m_avgTFCount++;
 		m_pipeInTemper += ui.lcdInTemper->value();
 		m_pipeOutTemper += ui.lcdOutTemper->value();
-		if (m_avgTFCount > FLOW_SAMPLE_NUM*2)
-		{
-			m_realFlow += ui.lcdFlowRate->value();
-		}
+// 		if (m_avgTFCount > FLOW_SAMPLE_NUM*2) //前20秒的瞬时流速不准，不参与计算
+// 		{
+// 			m_realFlow += ui.lcdFlowRate->value();
+// 		}
 		second = 3.6*(targetV - ui.lcdBigBalance->value())/nowFlow;
 		ui.labelHintPoint->setText(tr("NO. %1 flow point: %2 m3/h").arg(m_nowOrder).arg(nowFlow));
 		ui.labelHintProcess->setText(tr("Verifying...\nPlease wait for about %1 second").arg(second));
@@ -704,19 +705,19 @@ int FlowWeightDlg::judgeBalanceAndCalcAvgTemperAndFlow(float targetV)
 
 	m_pipeInTemper = m_pipeInTemper/m_avgTFCount;   //入口平均温度
 	m_pipeOutTemper = m_pipeOutTemper/m_avgTFCount; //出口平均温度
-	if (m_avgTFCount > FLOW_SAMPLE_NUM*2)
-	{
-		m_realFlow = m_realFlow/(m_avgTFCount-FLOW_SAMPLE_NUM*2+1); //平均流量
-	}
+// 	if (m_avgTFCount > FLOW_SAMPLE_NUM*2)
+// 	{
+// 		m_realFlow = m_realFlow/(m_avgTFCount-FLOW_SAMPLE_NUM*2+1); //平均流速
+// 	}
+	QDateTime endTime = QDateTime::currentDateTime();
+	int tt = startTime.secsTo(endTime);
+	m_realFlow = 3.6*(m_paraSetReader->getFpBySeq(m_nowOrder).fp_quantity + ui.lcdBigBalance->value() - targetV)/tt;
 	ui.labelHintPoint->setText(tr("NO. %1 flow point: %2 m3/h").arg(m_nowOrder).arg(nowFlow));
 	ui.labelHintProcess->setText(tr("Verify Finished!"));
 	if (m_nowOrder == m_flowPointNum)
 	{
 		ui.labelHintProcess->setText(tr("All flow points has verified!"));
 		ui.btnNext->hide();
-		closeValve(m_portsetinfo.waterInNo);//关闭进水阀
-		closeWaterPump();//关闭水泵
-		openWaterOutValve();//打开放水阀
 	}
 	int ret = !m_stopFlag && (ui.lcdBigBalance->value() >= targetV);
 	return ret;
@@ -1099,6 +1100,13 @@ int FlowWeightDlg::startVerifyFlowPoint(int order)
 				saveAllVerifyRecords();
 			}
 		}
+	}
+
+	if (order==m_flowPointNum) //最后一个流量点
+	{
+		closeValve(m_portsetinfo.waterInNo);//关闭进水阀
+		closeWaterPump();//关闭水泵
+		openWaterOutValve();//打开放水阀
 	}
 	return true;
 }
