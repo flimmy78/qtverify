@@ -6,31 +6,32 @@
     <message>
         <location filename="../source/datatestdlg.cpp" line="34"/>
         <location filename="../source/datatestdlg.cpp" line="43"/>
-        <location filename="../source/datatestdlg.cpp" line="593"/>
-        <location filename="../source/datatestdlg.cpp" line="598"/>
+        <location filename="../source/datatestdlg.cpp" line="697"/>
+        <location filename="../source/datatestdlg.cpp" line="702"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Warning</translation>
     </message>
     <message>
         <location filename="../source/datatestdlg.cpp" line="34"/>
         <source>get port set info failed!</source>
-        <translation type="unfinished"></translation>
+        <translation>get port set info failed!</translation>
     </message>
     <message>
         <location filename="../source/datatestdlg.cpp" line="43"/>
         <source>get para set info failed</source>
-        <translation type="unfinished"></translation>
+        <translation>get para set info failed</translation>
     </message>
     <message>
-        <location filename="../source/datatestdlg.cpp" line="593"/>
+        <location filename="../source/datatestdlg.cpp" line="697"/>
         <source>old meter number is empty! please read meter first!</source>
-        <translation type="unfinished"></translation>
+        <translation>old meter number is empty! please read meter first!</translation>
     </message>
     <message>
-        <location filename="../source/datatestdlg.cpp" line="598"/>
+        <location filename="../source/datatestdlg.cpp" line="702"/>
         <source>new meter number is error!
 please input 14 bits meter number!</source>
-        <translation type="unfinished"></translation>
+        <translation>new meter number is error!
+please input 14 bits meter number!</translation>
     </message>
 </context>
 <context>
@@ -41,85 +42,80 @@ please input 14 bits meter number!</source>
         <translation>DA and Test</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="35"/>
+        <location filename="../ui/datatestdlg.ui" line="29"/>
         <source>Total Verify Data</source>
         <translation>Total Verify Data</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="41"/>
+        <location filename="../ui/datatestdlg.ui" line="35"/>
         <source>Install Position</source>
         <translation>Install Position</translation>
     </message>
     <message>
         <location filename="../ui/datatestdlg.ui" line="47"/>
-        <location filename="../ui/datatestdlg.ui" line="149"/>
+        <location filename="../ui/datatestdlg.ui" line="197"/>
         <source>In</source>
-        <translation type="unfinished"></translation>
+        <translation>In</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="54"/>
-        <location filename="../ui/datatestdlg.ui" line="190"/>
+        <location filename="../ui/datatestdlg.ui" line="60"/>
+        <location filename="../ui/datatestdlg.ui" line="268"/>
         <source>Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Out</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="64"/>
-        <source>Heat Unit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/datatestdlg.ui" line="70"/>
+        <location filename="../ui/datatestdlg.ui" line="95"/>
         <source>KWH</source>
-        <translation type="unfinished"></translation>
+        <translation>KWH</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="77"/>
+        <location filename="../ui/datatestdlg.ui" line="82"/>
         <source>MJ</source>
-        <translation type="unfinished"></translation>
+        <translation>MJ</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="87"/>
+        <location filename="../ui/datatestdlg.ui" line="105"/>
         <source>Min Temp Diff</source>
-        <translation type="unfinished"></translation>
+        <translation>Min Temp Diff</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="103"/>
+        <location filename="../ui/datatestdlg.ui" line="121"/>
         <source>K</source>
-        <translation type="unfinished"></translation>
+        <translation>K</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="129"/>
+        <location filename="../ui/datatestdlg.ui" line="147"/>
         <source>Std  Thermometer</source>
-        <translation type="unfinished"></translation>
+        <translation>Std  Thermometer</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="142"/>
+        <location filename="../ui/datatestdlg.ui" line="190"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Stop</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/datatestdlg.ui" line="166"/>
-        <location filename="../ui/datatestdlg.ui" line="207"/>
+        <location filename="../ui/datatestdlg.ui" line="229"/>
+        <location filename="../ui/datatestdlg.ui" line="300"/>
         <source>Ω</source>
-        <translation type="unfinished"></translation>
+        <translation>Ω</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/datatestdlg.ui" line="183"/>
-        <location filename="../ui/datatestdlg.ui" line="224"/>
-        <location filename="../ui/datatestdlg.ui" line="1331"/>
-        <location filename="../ui/datatestdlg.ui" line="1358"/>
+        <location filename="../ui/datatestdlg.ui" line="261"/>
+        <location filename="../ui/datatestdlg.ui" line="332"/>
+        <location filename="../ui/datatestdlg.ui" line="905"/>
+        <location filename="../ui/datatestdlg.ui" line="932"/>
         <source>℃</source>
-        <translation type="unfinished"></translation>
+        <translation>℃</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="249"/>
+        <location filename="../ui/datatestdlg.ui" line="948"/>
         <source>Heat Meter</source>
         <translation>Heat Meter</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="653"/>
+        <location filename="../ui/datatestdlg.ui" line="1357"/>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation>1</translation>
     </message>
     <message>
         <source>MeterNo</source>
@@ -132,830 +128,524 @@ MeterNo</source>
 MeterNo</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="282"/>
+        <location filename="../ui/datatestdlg.ui" line="1907"/>
         <source>Read
 Data</source>
         <translation>Read
 Data</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="328"/>
+        <location filename="../ui/datatestdlg.ui" line="1939"/>
         <source>Modify
 MeterNo</source>
         <translation>Modify
 MeterNo</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="348"/>
+        <location filename="../ui/datatestdlg.ui" line="1881"/>
         <source>Verify
 Status</source>
         <translation>Verify
 Status</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="870"/>
+        <location filename="../ui/datatestdlg.ui" line="468"/>
         <source>i
 n</source>
-        <translation type="unfinished"></translation>
+        <translation>i
+n</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="905"/>
+        <location filename="../ui/datatestdlg.ui" line="639"/>
         <source>b
 i
 g</source>
-        <translation type="unfinished"></translation>
+        <translation>b
+i
+g</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="941"/>
+        <location filename="../ui/datatestdlg.ui" line="509"/>
         <source>m
 i
 d
 1</source>
-        <translation type="unfinished"></translation>
+        <translation>m
+i
+d
+1</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1088"/>
+        <location filename="../ui/datatestdlg.ui" line="595"/>
         <source>s
 m
 a
 l
 l</source>
-        <translation type="unfinished"></translation>
+        <translation>s
+m
+a
+l
+l</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1051"/>
+        <location filename="../ui/datatestdlg.ui" line="552"/>
         <source>m
 i
 d
 2</source>
-        <translation type="unfinished"></translation>
+        <translation>m
+i
+d
+2</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="135"/>
+        <location filename="../ui/datatestdlg.ui" line="171"/>
         <source>Collect</source>
-        <translation type="unfinished"></translation>
+        <translation>Collect</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="264"/>
+        <location filename="../ui/datatestdlg.ui" line="1427"/>
         <source>MeterInfo:</source>
-        <translation type="unfinished"></translation>
+        <translation>MeterInfo:</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="302"/>
-        <source>Modify
-Para</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/datatestdlg.ui" line="371"/>
+        <location filename="../ui/datatestdlg.ui" line="1439"/>
         <source>MeterNO.</source>
-        <translation type="unfinished"></translation>
+        <translation>MeterNO.</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/datatestdlg.ui" line="394"/>
+        <location filename="../ui/datatestdlg.ui" line="1462"/>
         <source>T In(℃)</source>
-        <translation type="unfinished"></translation>
+        <translation>T In(℃)</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/datatestdlg.ui" line="417"/>
+        <location filename="../ui/datatestdlg.ui" line="1485"/>
         <source>T Out(℃)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/datatestdlg.ui" line="440"/>
-        <source>Flow(m³)</source>
-        <translation type="unfinished"></translation>
+        <translation>T Out(℃)</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="463"/>
+        <location filename="../ui/datatestdlg.ui" line="1531"/>
         <source>Heat(kwh)</source>
-        <translation type="unfinished"></translation>
+        <translation>Heat(kwh)</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="486"/>
+        <location filename="../ui/datatestdlg.ui" line="1554"/>
         <source>Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Date</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="503"/>
+        <location filename="../ui/datatestdlg.ui" line="1571"/>
         <source>New NO.</source>
-        <translation type="unfinished"></translation>
+        <translation>New NO.</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="539"/>
+        <location filename="../ui/datatestdlg.ui" line="1307"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>None</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="544"/>
+        <location filename="../ui/datatestdlg.ui" line="1312"/>
         <source>Odd</source>
-        <translation type="unfinished"></translation>
+        <translation>Odd</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="549"/>
+        <location filename="../ui/datatestdlg.ui" line="1317"/>
         <source>Even</source>
-        <translation type="unfinished"></translation>
+        <translation>Even</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="563"/>
+        <location filename="../ui/datatestdlg.ui" line="1331"/>
         <source>StopBits:</source>
-        <translation type="unfinished"></translation>
+        <translation>StopBits:</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="576"/>
+        <location filename="../ui/datatestdlg.ui" line="1223"/>
         <source>DataBits:</source>
-        <translation type="unfinished"></translation>
+        <translation>DataBits:</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="587"/>
+        <location filename="../ui/datatestdlg.ui" line="1179"/>
         <source>2400</source>
-        <translation type="unfinished"></translation>
+        <translation>2400</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="592"/>
+        <location filename="../ui/datatestdlg.ui" line="1184"/>
         <source>4800</source>
-        <translation type="unfinished"></translation>
+        <translation>4800</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="597"/>
+        <location filename="../ui/datatestdlg.ui" line="1189"/>
         <source>9600</source>
-        <translation type="unfinished"></translation>
+        <translation>9600</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="602"/>
+        <location filename="../ui/datatestdlg.ui" line="1194"/>
         <source>14400</source>
-        <translation type="unfinished"></translation>
+        <translation>14400</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="607"/>
+        <location filename="../ui/datatestdlg.ui" line="1199"/>
         <source>19200</source>
-        <translation type="unfinished"></translation>
+        <translation>19200</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="612"/>
+        <location filename="../ui/datatestdlg.ui" line="1204"/>
         <source>38400</source>
-        <translation type="unfinished"></translation>
+        <translation>38400</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="617"/>
+        <location filename="../ui/datatestdlg.ui" line="1209"/>
         <source>56000</source>
-        <translation type="unfinished"></translation>
+        <translation>56000</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="629"/>
+        <location filename="../ui/datatestdlg.ui" line="1252"/>
         <source>5</source>
-        <translation type="unfinished"></translation>
+        <translation>5</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="634"/>
+        <location filename="../ui/datatestdlg.ui" line="1257"/>
         <source>6</source>
-        <translation type="unfinished"></translation>
+        <translation>6</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="639"/>
+        <location filename="../ui/datatestdlg.ui" line="1262"/>
         <source>7</source>
-        <translation type="unfinished"></translation>
+        <translation>7</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="644"/>
+        <location filename="../ui/datatestdlg.ui" line="1267"/>
         <source>8</source>
-        <translation type="unfinished"></translation>
+        <translation>8</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="658"/>
+        <location filename="../ui/datatestdlg.ui" line="1362"/>
         <source>1.5</source>
-        <translation type="unfinished"></translation>
+        <translation>1.5</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="663"/>
+        <location filename="../ui/datatestdlg.ui" line="1367"/>
         <source>2</source>
-        <translation type="unfinished"></translation>
+        <translation>2</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="677"/>
+        <location filename="../ui/datatestdlg.ui" line="965"/>
         <source>Com:</source>
-        <translation type="unfinished"></translation>
+        <translation>Com:</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="690"/>
+        <location filename="../ui/datatestdlg.ui" line="1281"/>
         <source>Parity:</source>
-        <translation type="unfinished"></translation>
+        <translation>Parity:</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="703"/>
+        <location filename="../ui/datatestdlg.ui" line="1150"/>
         <source>BaudRate:</source>
-        <translation type="unfinished"></translation>
+        <translation>BaudRate:</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="711"/>
+        <location filename="../ui/datatestdlg.ui" line="70"/>
+        <source>HeatUnit</source>
+        <translation>HeatUnit</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="768"/>
+        <source>Regulate1</source>
+        <translation>Regulate1</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="991"/>
         <source>COM1</source>
-        <translation type="unfinished"></translation>
+        <translation>COM1</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="716"/>
+        <location filename="../ui/datatestdlg.ui" line="996"/>
         <source>COM2</source>
-        <translation type="unfinished"></translation>
+        <translation>COM2</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="721"/>
+        <location filename="../ui/datatestdlg.ui" line="1001"/>
         <source>COM3</source>
-        <translation type="unfinished"></translation>
+        <translation>COM3</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="726"/>
+        <location filename="../ui/datatestdlg.ui" line="1006"/>
         <source>COM4</source>
-        <translation type="unfinished"></translation>
+        <translation>COM4</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="731"/>
+        <location filename="../ui/datatestdlg.ui" line="1011"/>
         <source>COM5</source>
-        <translation type="unfinished"></translation>
+        <translation>COM5</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="736"/>
+        <location filename="../ui/datatestdlg.ui" line="1016"/>
         <source>COM6</source>
-        <translation type="unfinished"></translation>
+        <translation>COM6</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="741"/>
+        <location filename="../ui/datatestdlg.ui" line="1021"/>
         <source>COM7</source>
-        <translation type="unfinished"></translation>
+        <translation>COM7</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="746"/>
+        <location filename="../ui/datatestdlg.ui" line="1026"/>
         <source>COM8</source>
-        <translation type="unfinished"></translation>
+        <translation>COM8</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="751"/>
+        <location filename="../ui/datatestdlg.ui" line="1031"/>
         <source>COM9</source>
-        <translation type="unfinished"></translation>
+        <translation>COM9</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="756"/>
+        <location filename="../ui/datatestdlg.ui" line="1036"/>
         <source>COM10</source>
-        <translation type="unfinished"></translation>
+        <translation>COM10</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="761"/>
+        <location filename="../ui/datatestdlg.ui" line="1041"/>
         <source>COM11</source>
-        <translation type="unfinished"></translation>
+        <translation>COM11</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="766"/>
+        <location filename="../ui/datatestdlg.ui" line="1046"/>
         <source>COM12</source>
-        <translation type="unfinished"></translation>
+        <translation>COM12</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="771"/>
+        <location filename="../ui/datatestdlg.ui" line="1051"/>
         <source>COM13</source>
-        <translation type="unfinished"></translation>
+        <translation>COM13</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="776"/>
+        <location filename="../ui/datatestdlg.ui" line="1056"/>
         <source>COM14</source>
-        <translation type="unfinished"></translation>
+        <translation>COM14</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="781"/>
+        <location filename="../ui/datatestdlg.ui" line="1061"/>
         <source>COM15</source>
-        <translation type="unfinished"></translation>
+        <translation>COM15</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="786"/>
+        <location filename="../ui/datatestdlg.ui" line="1066"/>
         <source>COM16</source>
-        <translation type="unfinished"></translation>
+        <translation>COM16</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="791"/>
+        <location filename="../ui/datatestdlg.ui" line="1071"/>
         <source>COM17</source>
-        <translation type="unfinished"></translation>
+        <translation>COM17</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="796"/>
+        <location filename="../ui/datatestdlg.ui" line="1076"/>
         <source>COM18</source>
-        <translation type="unfinished"></translation>
+        <translation>COM18</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="801"/>
+        <location filename="../ui/datatestdlg.ui" line="1081"/>
         <source>COM19</source>
-        <translation type="unfinished"></translation>
+        <translation>COM19</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="806"/>
+        <location filename="../ui/datatestdlg.ui" line="1086"/>
         <source>COM20</source>
-        <translation type="unfinished"></translation>
+        <translation>COM20</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="816"/>
+        <location filename="../ui/datatestdlg.ui" line="1091"/>
+        <source>COM21</source>
+        <translation>COM21</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1096"/>
+        <source>COM22</source>
+        <translation>COM22</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1101"/>
+        <source>COM23</source>
+        <translation>COM23</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1106"/>
+        <source>COM24</source>
+        <translation>COM24</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1111"/>
+        <source>COM25</source>
+        <translation>COM25</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1116"/>
+        <source>COM26</source>
+        <translation>COM26</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1121"/>
+        <source>COM27</source>
+        <translation>COM27</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1126"/>
+        <source>COM28</source>
+        <translation>COM28</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1131"/>
+        <source>COM29</source>
+        <translation>COM29</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1136"/>
+        <source>COM30</source>
+        <translation>COM30</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1418"/>
         <source>CloseCom</source>
-        <translation type="unfinished"></translation>
+        <translation>CloseCom</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="823"/>
+        <location filename="../ui/datatestdlg.ui" line="1508"/>
+        <source>Flow(L)</source>
+        <translation>Flow(L)</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1602"/>
+        <source>err(%)</source>
+        <translation>err(%)</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1615"/>
+        <source>olderr(%)</source>
+        <translation>olderr(%)</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1628"/>
+        <source>oldCoe(%)</source>
+        <translation>oldCoe(%)</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1635"/>
+        <source>big</source>
+        <translation>big</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1687"/>
+        <source>mid2</source>
+        <translation>mid2</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1748"/>
+        <source>mid1</source>
+        <translation>mid1</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1800"/>
+        <source>small</source>
+        <translation>small</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1965"/>
+        <source>Modify
+Coe</source>
+        <translation>Modify
+Coe</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1393"/>
         <source>OpenCom</source>
-        <translation type="unfinished"></translation>
+        <translation>OpenCom</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="846"/>
+        <location filename="../ui/datatestdlg.ui" line="353"/>
         <source>Valve Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Valve Control</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="978"/>
+        <location filename="../ui/datatestdlg.ui" line="426"/>
         <source>o
 u
 t</source>
-        <translation type="unfinished"></translation>
+        <translation>o
+u
+t</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1014"/>
+        <location filename="../ui/datatestdlg.ui" line="383"/>
         <source>p
 u
 m
 p</source>
-        <translation type="unfinished"></translation>
+        <translation>p
+u
+m
+p</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1128"/>
+        <location filename="../ui/datatestdlg.ui" line="680"/>
         <source>Freq:</source>
-        <translation type="unfinished"></translation>
+        <translation>Freq:</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1154"/>
+        <location filename="../ui/datatestdlg.ui" line="730"/>
         <source>SetFreq</source>
-        <translation type="unfinished"></translation>
+        <translation>SetFreq</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1184"/>
-        <source>Regulater</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/datatestdlg.ui" line="1197"/>
-        <source>Query Status</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/datatestdlg.ui" line="1224"/>
+        <location filename="../ui/datatestdlg.ui" line="798"/>
         <source>Data Acquisition</source>
-        <translation type="unfinished"></translation>
+        <translation>Data Acquisition</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1230"/>
+        <location filename="../ui/datatestdlg.ui" line="804"/>
         <source>Big Balance:</source>
-        <translation type="unfinished"></translation>
+        <translation>Big Balance:</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1250"/>
-        <location filename="../ui/datatestdlg.ui" line="1277"/>
+        <location filename="../ui/datatestdlg.ui" line="824"/>
+        <location filename="../ui/datatestdlg.ui" line="851"/>
         <source>kg</source>
-        <translation type="unfinished"></translation>
+        <translation>kg</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1257"/>
+        <location filename="../ui/datatestdlg.ui" line="831"/>
         <source>Small Balance:</source>
         <translation>Small Balance:</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1284"/>
+        <location filename="../ui/datatestdlg.ui" line="858"/>
         <source>Flow Rate:</source>
-        <translation type="unfinished"></translation>
+        <translation>Flow Rate:</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/datatestdlg.ui" line="1304"/>
+        <location filename="../ui/datatestdlg.ui" line="878"/>
         <source>m³/h</source>
-        <translation type="unfinished"></translation>
+        <translation>m³/h</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1311"/>
+        <location filename="../ui/datatestdlg.ui" line="885"/>
         <source>In Temp:</source>
-        <translation type="unfinished"></translation>
+        <translation>In Temp:</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1338"/>
+        <location filename="../ui/datatestdlg.ui" line="912"/>
         <source>Out Temp:</source>
-        <translation type="unfinished"></translation>
+        <translation>Out Temp:</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1383"/>
-        <source>Process</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/datatestdlg.ui" line="1392"/>
+        <location filename="../ui/datatestdlg.ui" line="2012"/>
         <source>ParaSet</source>
-        <translation type="unfinished"></translation>
+        <translation>ParaSet</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1399"/>
-        <source>Exhaust</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/datatestdlg.ui" line="1406"/>
-        <source>Start</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/datatestdlg.ui" line="1413"/>
+        <location filename="../ui/datatestdlg.ui" line="2037"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ParaSetDlg</name>
-    <message>
-        <location filename="../source/parasetdlg.cpp" line="302"/>
-        <source>Warning</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/parasetdlg.cpp" line="302"/>
-        <source>verify sequence is invalid!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/parasetdlg.cpp" line="323"/>
-        <source>OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/parasetdlg.cpp" line="323"/>
-        <source>Saving configurations successfully!</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ParaSetDlgClass</name>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="17"/>
-        <location filename="../ui/parasetdlg.ui" line="529"/>
-        <source>ParaSet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="23"/>
-        <source>Verify Para</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="37"/>
-        <source>Standard:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="53"/>
-        <source>Model:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="69"/>
-        <source>Grade:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="77"/>
-        <source>1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="82"/>
-        <source>2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="87"/>
-        <source>3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="101"/>
-        <source>VerifyPerson:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="121"/>
-        <location filename="../ui/parasetdlg.ui" line="1557"/>
-        <source>Flow:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="129"/>
-        <source>1.5</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="134"/>
-        <location filename="../ui/parasetdlg.ui" line="546"/>
-        <source>2.5</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="139"/>
-        <source>3.5</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="153"/>
-        <source>ColCode:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="169"/>
-        <source>ManuFact:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="185"/>
-        <source>VerifyDept:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="199"/>
-        <source>Version:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="216"/>
-        <source>Temper:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/parasetdlg.ui" line="233"/>
-        <source>℃</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="240"/>
-        <source>Humidity:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="257"/>
-        <source>%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="264"/>
-        <source>AirPress:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="281"/>
-        <source>Pa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="299"/>
-        <source>Control Valve Set</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/parasetdlg.ui" line="311"/>
-        <source>UpLimit(m³/h): </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="326"/>
-        <source>Big</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="372"/>
-        <source>Middle1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="455"/>
-        <source>Middle2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="501"/>
-        <source>Small</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/parasetdlg.ui" line="537"/>
-        <source>Flow(m³/h):</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="734"/>
-        <location filename="../ui/parasetdlg.ui" line="807"/>
-        <location filename="../ui/parasetdlg.ui" line="880"/>
-        <location filename="../ui/parasetdlg.ui" line="953"/>
-        <source>   Big</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="743"/>
-        <location filename="../ui/parasetdlg.ui" line="816"/>
-        <location filename="../ui/parasetdlg.ui" line="889"/>
-        <location filename="../ui/parasetdlg.ui" line="962"/>
-        <source>   Middle1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="748"/>
-        <location filename="../ui/parasetdlg.ui" line="821"/>
-        <location filename="../ui/parasetdlg.ui" line="894"/>
-        <location filename="../ui/parasetdlg.ui" line="967"/>
-        <source>   Middle2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="753"/>
-        <location filename="../ui/parasetdlg.ui" line="826"/>
-        <location filename="../ui/parasetdlg.ui" line="899"/>
-        <location filename="../ui/parasetdlg.ui" line="972"/>
-        <source>   Small</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1095"/>
-        <location filename="../ui/parasetdlg.ui" line="1150"/>
-        <location filename="../ui/parasetdlg.ui" line="1205"/>
-        <location filename="../ui/parasetdlg.ui" line="1257"/>
-        <source>       1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1100"/>
-        <location filename="../ui/parasetdlg.ui" line="1155"/>
-        <location filename="../ui/parasetdlg.ui" line="1210"/>
-        <location filename="../ui/parasetdlg.ui" line="1262"/>
-        <source>       2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1105"/>
-        <location filename="../ui/parasetdlg.ui" line="1160"/>
-        <location filename="../ui/parasetdlg.ui" line="1215"/>
-        <location filename="../ui/parasetdlg.ui" line="1267"/>
-        <source>       3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1110"/>
-        <location filename="../ui/parasetdlg.ui" line="1165"/>
-        <location filename="../ui/parasetdlg.ui" line="1220"/>
-        <location filename="../ui/parasetdlg.ui" line="1272"/>
-        <source>       4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1282"/>
-        <source>Quantity(L):</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1296"/>
-        <source>Frequency:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1467"/>
-        <source>Reset Zero</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="569"/>
-        <source>0.75</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="592"/>
-        <source>0.25</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="615"/>
-        <source>0.05</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="625"/>
-        <source>50</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="648"/>
-        <source>20</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="671"/>
-        <source>10</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="694"/>
-        <source>5</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="993"/>
-        <source>35</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1016"/>
-        <location filename="../ui/parasetdlg.ui" line="1039"/>
-        <location filename="../ui/parasetdlg.ui" line="1049"/>
-        <source>33</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1289"/>
-        <source>Valve:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1303"/>
-        <source>Order:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1323"/>
-        <source>Auto DA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1329"/>
-        <location filename="../ui/parasetdlg.ui" line="1377"/>
-        <location filename="../ui/parasetdlg.ui" line="1425"/>
-        <location filename="../ui/parasetdlg.ui" line="1473"/>
-        <source>Yes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1339"/>
-        <location filename="../ui/parasetdlg.ui" line="1483"/>
-        <source>No</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1371"/>
-        <source>Adjust Error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1387"/>
-        <location filename="../ui/parasetdlg.ui" line="1435"/>
-        <source>NO</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1419"/>
-        <source>Write MeterNo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1503"/>
-        <source>Process of Verify</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1509"/>
-        <source>Continuous</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1519"/>
-        <source>Independent</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1551"/>
-        <source>Coefficient of Safety</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1584"/>
-        <source>Total:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1623"/>
-        <source>Exhaust Time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1673"/>
-        <source>s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1709"/>
-        <source>Save</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/parasetdlg.ui" line="1722"/>
-        <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Exit</translation>
     </message>
 </context>
 </TS>
