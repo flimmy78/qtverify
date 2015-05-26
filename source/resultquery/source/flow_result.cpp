@@ -148,7 +148,10 @@ void FlowResultDlg::on_btnQuery_clicked()
 	model->setHeaderData(31, Qt::Horizontal, QObject::tr("EnvHumidity"));//环境湿度
 	model->setHeaderData(32, Qt::Horizontal, QObject::tr("AirPressure"));//气压
 	model->setHeaderData(33, Qt::Horizontal, QObject::tr("CertNO"));//检定证书编号
-
+	model->setHeaderData(34, Qt::Horizontal, QObject::tr("FlowCoe"));//流量系数
+	model->setHeaderData(35, Qt::Horizontal, QObject::tr("Bak1"));//备用域1
+	model->setHeaderData(36, Qt::Horizontal, QObject::tr("Bak2"));//备用域2
+	model->setHeaderData(37, Qt::Horizontal, QObject::tr("Bak3"));//备用域3
 	model->select();
 	ui.tableView->setModel(model);
 	ui.tableView->resizeColumnsToContents(); //列宽度自适应
@@ -156,6 +159,9 @@ void FlowResultDlg::on_btnQuery_clicked()
 	ui.tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);  //使其不可编辑
 
  	ui.tableView->hideColumn(0);
+	ui.tableView->hideColumn(35);
+	ui.tableView->hideColumn(36);
+	ui.tableView->hideColumn(37);
 /*	QString tbname = model->tableName();
 	QString fdname1 = model->record(0).fieldName(0);
 	QString pkname = model->primaryKey().name();
