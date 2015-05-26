@@ -200,6 +200,9 @@ void ParaSetDlg::mapUserModel()
 	m_userModel->select();  
 	ui.cmbVerifyPerson->setModel(m_userModel);  
 	ui.cmbVerifyPerson->setModelColumn(m_userModel->fieldIndex("F_Desc"));
+
+	ui.cmbChkPerson->setModel(m_userModel);
+	ui.cmbChkPerson->setModelColumn(m_userModel->fieldIndex("F_Desc"));
 	m_userModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
 }
 
@@ -233,7 +236,7 @@ void ParaSetDlg::installHead()
 	ui.cmbVerifyPerson->setCurrentIndex(lastParams->m_params->m_vperson);
 	ui.cmbFlow->setCurrentIndex(lastParams->m_params->m_nflowpnt);
 	/********新增参数项***************************************************/
-	ui.lnEditVersion->setText(lastParams->m_params->m_version);
+	ui.cmbChkPerson->setCurrentIndex(lastParams->m_params->m_cperson);
 	ui.lnEditVersion_2->setText(lastParams->m_params->m_temper);
 	ui.lnEditVersion_3->setText(lastParams->m_params->m_humidity);
 	ui.lnEditVersion_4->setText(lastParams->m_params->m_airpress);
@@ -418,7 +421,7 @@ void ParaSetDlg::SaveHead()
 	settings->setValue("nflowpoint", ui.cmbFlow->currentIndex());
 	
 	/********新增参数项***************************************************/
-	settings->setValue("version",ui.lnEditVersion->text());
+	settings->setValue("chkperson",ui.cmbChkPerson->currentIndex());
 	settings->setValue("temper",ui.lnEditVersion_2->text());
 	settings->setValue("humidity",ui.lnEditVersion_3->text());
 	settings->setValue("airpress",ui.lnEditVersion_4->text());
@@ -552,7 +555,7 @@ void ParaSetReader::readHead()
 	m_params->m_grade = m_settings->value("head/grade").toInt();
 	m_params->m_nflowpnt = m_settings->value("head/nflowpoint").toInt();
 	/******************新增参数项****************************************/
-	m_params->m_version = m_settings->value("head/version").toString();
+	m_params->m_cperson = m_settings->value("head/chkperson").toInt();
 	m_params->m_temper = m_settings->value("head/temper").toString();
 	m_params->m_humidity = m_settings->value("head/humidity").toString();
 	m_params->m_airpress = m_settings->value("head/airpress").toString();

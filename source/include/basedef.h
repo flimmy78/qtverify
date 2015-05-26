@@ -238,9 +238,10 @@ public:
 	int m_model;//被检表型号(DELU-14.17W, SHARKY-475等)
 	int m_vcomp;//检定机构(山东省计量院)
 	int m_vperson;//检定员(张三)
+	int m_cperson;//核检员(张三)
 	int m_pickcode;//采集代码
 	int m_nflowpnt;//被检表的常用流量
-	QString m_version;//当前版本号
+	//QString m_version;//当前版本号
 	QString m_temper;//当前温度  单位摄氏度
 	QString m_humidity;//当前湿度 单位百分比
 	QString m_airpress;//当前大气压力	单位Pa

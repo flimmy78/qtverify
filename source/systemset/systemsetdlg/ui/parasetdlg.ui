@@ -216,17 +216,7 @@
         <item row="0" column="0">
          <widget class="QLabel" name="label_22">
           <property name="text">
-           <string>Version:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1" colspan="2">
-         <widget class="QLineEdit" name="lnEditVersion">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
+           <string>CheckPerson:</string>
           </property>
          </widget>
         </item>
@@ -299,6 +289,13 @@
          <widget class="QLabel" name="label_28">
           <property name="text">
            <string>kPa</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="cmbChkPerson">
+          <property name="editable">
+           <bool>true</bool>
           </property>
          </widget>
         </item>

@@ -85,22 +85,22 @@
 <context>
     <name>ParaSetDlg</name>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="327"/>
+        <location filename="../source/parasetdlg.cpp" line="330"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="327"/>
+        <location filename="../source/parasetdlg.cpp" line="330"/>
         <source>verify sequence is invalid!</source>
         <translation>检定顺序设置有误！</translation>
     </message>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="349"/>
+        <location filename="../source/parasetdlg.cpp" line="352"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="349"/>
+        <location filename="../source/parasetdlg.cpp" line="352"/>
         <source>Saving configurations successfully!</source>
         <translation>保存设置成功！</translation>
     </message>
@@ -109,7 +109,7 @@
     <name>ParaSetDlgClass</name>
     <message>
         <location filename="../ui/parasetdlg.ui" line="17"/>
-        <location filename="../ui/parasetdlg.ui" line="549"/>
+        <location filename="../ui/parasetdlg.ui" line="546"/>
         <source>ParaSet</source>
         <translation>参数设定</translation>
     </message>
@@ -154,7 +154,7 @@
         <translation>检定员:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1577"/>
+        <location filename="../ui/parasetdlg.ui" line="1574"/>
         <source>Flow:</source>
         <translation>流量:</translation>
     </message>
@@ -165,7 +165,7 @@
     </message>
     <message>
         <location filename="../ui/parasetdlg.ui" line="146"/>
-        <location filename="../ui/parasetdlg.ui" line="566"/>
+        <location filename="../ui/parasetdlg.ui" line="563"/>
         <source>2.5</source>
         <translation>2.5</translation>
     </message>
@@ -190,131 +190,130 @@
         <translation>送检机构:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="219"/>
         <source>Version:</source>
-        <translation>版本:</translation>
+        <translation type="obsolete">版本:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="236"/>
+        <location filename="../ui/parasetdlg.ui" line="226"/>
         <source>Temper:</source>
         <translation>温度:</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/parasetdlg.ui" line="253"/>
+        <location filename="../ui/parasetdlg.ui" line="243"/>
         <source>℃</source>
         <translation>℃</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="260"/>
+        <location filename="../ui/parasetdlg.ui" line="250"/>
         <source>Humidity:</source>
         <translation>湿度:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="277"/>
+        <location filename="../ui/parasetdlg.ui" line="267"/>
         <source>%</source>
         <translation>%</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="284"/>
+        <location filename="../ui/parasetdlg.ui" line="274"/>
         <source>AirPress:</source>
         <translation>大气压力:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="301"/>
+        <location filename="../ui/parasetdlg.ui" line="291"/>
         <source>kPa</source>
         <translation>kPa</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="319"/>
+        <location filename="../ui/parasetdlg.ui" line="316"/>
         <source>Control Valve Set</source>
         <translation>控制阀设置</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/parasetdlg.ui" line="331"/>
+        <location filename="../ui/parasetdlg.ui" line="328"/>
         <source>UpLimit(m³/h): </source>
         <translation>上限流量(m³/h): </translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="346"/>
+        <location filename="../ui/parasetdlg.ui" line="343"/>
         <source>Big</source>
         <translation>大</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="475"/>
+        <location filename="../ui/parasetdlg.ui" line="472"/>
         <source>Middle1</source>
         <translation>中一</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="392"/>
+        <location filename="../ui/parasetdlg.ui" line="389"/>
         <source>Middle2</source>
         <translation>中二</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="521"/>
+        <location filename="../ui/parasetdlg.ui" line="518"/>
         <source>Small</source>
         <translation>小</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/parasetdlg.ui" line="557"/>
+        <location filename="../ui/parasetdlg.ui" line="554"/>
         <source>Flow(m³/h):</source>
         <translation>流量(m³/h):</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="589"/>
+        <location filename="../ui/parasetdlg.ui" line="586"/>
         <source>0.75</source>
         <translation>0.75</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="612"/>
+        <location filename="../ui/parasetdlg.ui" line="609"/>
         <source>0.25</source>
         <translation>0.25</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="635"/>
+        <location filename="../ui/parasetdlg.ui" line="632"/>
         <source>0.05</source>
         <translation>0.05</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="645"/>
+        <location filename="../ui/parasetdlg.ui" line="642"/>
         <source>50</source>
         <translation>50</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="668"/>
+        <location filename="../ui/parasetdlg.ui" line="665"/>
         <source>20</source>
         <translation>20</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="691"/>
+        <location filename="../ui/parasetdlg.ui" line="688"/>
         <source>10</source>
         <translation>10</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="714"/>
+        <location filename="../ui/parasetdlg.ui" line="711"/>
         <source>5</source>
         <translation>5</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="754"/>
-        <location filename="../ui/parasetdlg.ui" line="827"/>
-        <location filename="../ui/parasetdlg.ui" line="900"/>
-        <location filename="../ui/parasetdlg.ui" line="973"/>
+        <location filename="../ui/parasetdlg.ui" line="751"/>
+        <location filename="../ui/parasetdlg.ui" line="824"/>
+        <location filename="../ui/parasetdlg.ui" line="897"/>
+        <location filename="../ui/parasetdlg.ui" line="970"/>
         <source>   Big</source>
         <translation>   大</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="768"/>
-        <location filename="../ui/parasetdlg.ui" line="841"/>
-        <location filename="../ui/parasetdlg.ui" line="914"/>
-        <location filename="../ui/parasetdlg.ui" line="987"/>
+        <location filename="../ui/parasetdlg.ui" line="765"/>
+        <location filename="../ui/parasetdlg.ui" line="838"/>
+        <location filename="../ui/parasetdlg.ui" line="911"/>
+        <location filename="../ui/parasetdlg.ui" line="984"/>
         <source>   Middle1</source>
         <translation>   中一</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="763"/>
-        <location filename="../ui/parasetdlg.ui" line="836"/>
-        <location filename="../ui/parasetdlg.ui" line="909"/>
-        <location filename="../ui/parasetdlg.ui" line="982"/>
+        <location filename="../ui/parasetdlg.ui" line="760"/>
+        <location filename="../ui/parasetdlg.ui" line="833"/>
+        <location filename="../ui/parasetdlg.ui" line="906"/>
+        <location filename="../ui/parasetdlg.ui" line="979"/>
         <source>   Middle2</source>
         <translation>   中二</translation>
     </message>
@@ -324,159 +323,164 @@
         <translation>常用流量:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="773"/>
-        <location filename="../ui/parasetdlg.ui" line="846"/>
-        <location filename="../ui/parasetdlg.ui" line="919"/>
-        <location filename="../ui/parasetdlg.ui" line="992"/>
+        <location filename="../ui/parasetdlg.ui" line="219"/>
+        <source>CheckPerson:</source>
+        <translation>核检员:</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="770"/>
+        <location filename="../ui/parasetdlg.ui" line="843"/>
+        <location filename="../ui/parasetdlg.ui" line="916"/>
+        <location filename="../ui/parasetdlg.ui" line="989"/>
         <source>   Small</source>
         <translation>   小</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1013"/>
+        <location filename="../ui/parasetdlg.ui" line="1010"/>
         <source>35</source>
         <translation>35</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1036"/>
-        <location filename="../ui/parasetdlg.ui" line="1059"/>
-        <location filename="../ui/parasetdlg.ui" line="1069"/>
+        <location filename="../ui/parasetdlg.ui" line="1033"/>
+        <location filename="../ui/parasetdlg.ui" line="1056"/>
+        <location filename="../ui/parasetdlg.ui" line="1066"/>
         <source>33</source>
         <translation>33</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1115"/>
-        <location filename="../ui/parasetdlg.ui" line="1170"/>
-        <location filename="../ui/parasetdlg.ui" line="1225"/>
-        <location filename="../ui/parasetdlg.ui" line="1277"/>
+        <location filename="../ui/parasetdlg.ui" line="1112"/>
+        <location filename="../ui/parasetdlg.ui" line="1167"/>
+        <location filename="../ui/parasetdlg.ui" line="1222"/>
+        <location filename="../ui/parasetdlg.ui" line="1274"/>
         <source>       1</source>
         <translation>       1</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1120"/>
-        <location filename="../ui/parasetdlg.ui" line="1175"/>
-        <location filename="../ui/parasetdlg.ui" line="1230"/>
-        <location filename="../ui/parasetdlg.ui" line="1282"/>
+        <location filename="../ui/parasetdlg.ui" line="1117"/>
+        <location filename="../ui/parasetdlg.ui" line="1172"/>
+        <location filename="../ui/parasetdlg.ui" line="1227"/>
+        <location filename="../ui/parasetdlg.ui" line="1279"/>
         <source>       2</source>
         <translation>       2</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1125"/>
-        <location filename="../ui/parasetdlg.ui" line="1180"/>
-        <location filename="../ui/parasetdlg.ui" line="1235"/>
-        <location filename="../ui/parasetdlg.ui" line="1287"/>
+        <location filename="../ui/parasetdlg.ui" line="1122"/>
+        <location filename="../ui/parasetdlg.ui" line="1177"/>
+        <location filename="../ui/parasetdlg.ui" line="1232"/>
+        <location filename="../ui/parasetdlg.ui" line="1284"/>
         <source>       3</source>
         <translation>       3</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1130"/>
-        <location filename="../ui/parasetdlg.ui" line="1185"/>
-        <location filename="../ui/parasetdlg.ui" line="1240"/>
-        <location filename="../ui/parasetdlg.ui" line="1292"/>
+        <location filename="../ui/parasetdlg.ui" line="1127"/>
+        <location filename="../ui/parasetdlg.ui" line="1182"/>
+        <location filename="../ui/parasetdlg.ui" line="1237"/>
+        <location filename="../ui/parasetdlg.ui" line="1289"/>
         <source>       4</source>
         <translation>       4</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1302"/>
+        <location filename="../ui/parasetdlg.ui" line="1299"/>
         <source>Quantity(L):</source>
         <translation>总流量(L):</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1309"/>
+        <location filename="../ui/parasetdlg.ui" line="1306"/>
         <source>Valve:</source>
         <translation>阀门:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1316"/>
+        <location filename="../ui/parasetdlg.ui" line="1313"/>
         <source>Frequency:</source>
         <translation>频率:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1323"/>
+        <location filename="../ui/parasetdlg.ui" line="1320"/>
         <source>Order:</source>
         <translation>顺序:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1343"/>
+        <location filename="../ui/parasetdlg.ui" line="1340"/>
         <source>Auto DA</source>
         <translation>自动读表</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1349"/>
-        <location filename="../ui/parasetdlg.ui" line="1397"/>
-        <location filename="../ui/parasetdlg.ui" line="1445"/>
-        <location filename="../ui/parasetdlg.ui" line="1493"/>
+        <location filename="../ui/parasetdlg.ui" line="1346"/>
+        <location filename="../ui/parasetdlg.ui" line="1394"/>
+        <location filename="../ui/parasetdlg.ui" line="1442"/>
+        <location filename="../ui/parasetdlg.ui" line="1490"/>
         <source>Yes</source>
         <translation>是</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1359"/>
-        <location filename="../ui/parasetdlg.ui" line="1503"/>
+        <location filename="../ui/parasetdlg.ui" line="1356"/>
+        <location filename="../ui/parasetdlg.ui" line="1500"/>
         <source>No</source>
         <translation>否</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1391"/>
+        <location filename="../ui/parasetdlg.ui" line="1388"/>
         <source>Adjust Error</source>
         <translation>修正误差</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1407"/>
-        <location filename="../ui/parasetdlg.ui" line="1455"/>
+        <location filename="../ui/parasetdlg.ui" line="1404"/>
+        <location filename="../ui/parasetdlg.ui" line="1452"/>
         <source>NO</source>
         <translation>否</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1439"/>
+        <location filename="../ui/parasetdlg.ui" line="1436"/>
         <source>Write MeterNo</source>
         <translation>写表号</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1487"/>
+        <location filename="../ui/parasetdlg.ui" line="1484"/>
         <source>Reset Zero</source>
         <translation>初值归零</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1523"/>
+        <location filename="../ui/parasetdlg.ui" line="1520"/>
         <source>Process of Verify</source>
         <translation>检定过程</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1529"/>
+        <location filename="../ui/parasetdlg.ui" line="1526"/>
         <source>Continuous</source>
         <translation>连续检定</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1539"/>
+        <location filename="../ui/parasetdlg.ui" line="1536"/>
         <source>Independent</source>
         <translation>各点独立</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1571"/>
+        <location filename="../ui/parasetdlg.ui" line="1568"/>
         <source>Coefficient of Safety</source>
         <translation>安全系数</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1604"/>
+        <location filename="../ui/parasetdlg.ui" line="1601"/>
         <source>Total:</source>
         <translation>总量:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1643"/>
+        <location filename="../ui/parasetdlg.ui" line="1640"/>
         <source>Exhaust Time</source>
         <translation>排气时间</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1693"/>
+        <location filename="../ui/parasetdlg.ui" line="1690"/>
         <source>s</source>
         <translation>s</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1729"/>
+        <location filename="../ui/parasetdlg.ui" line="1726"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1742"/>
+        <location filename="../ui/parasetdlg.ui" line="1739"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
