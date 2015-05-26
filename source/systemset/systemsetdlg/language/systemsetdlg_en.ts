@@ -154,7 +154,6 @@
         <translation>VerifyPerson:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="133"/>
         <location filename="../ui/parasetdlg.ui" line="1577"/>
         <source>Flow:</source>
         <translation>Flow:</translation>
@@ -318,6 +317,11 @@
         <location filename="../ui/parasetdlg.ui" line="982"/>
         <source>   Middle2</source>
         <translation>   Middle2</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="133"/>
+        <source>DN Flow:</source>
+        <translation>Normal Flow:</translation>
     </message>
     <message>
         <location filename="../ui/parasetdlg.ui" line="773"/>

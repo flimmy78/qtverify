@@ -154,10 +154,9 @@
         <translation>检定员:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="133"/>
         <location filename="../ui/parasetdlg.ui" line="1577"/>
         <source>Flow:</source>
-        <translation>标称流量:</translation>
+        <translation>流量:</translation>
     </message>
     <message>
         <location filename="../ui/parasetdlg.ui" line="141"/>
@@ -320,6 +319,11 @@
         <translation>   中二</translation>
     </message>
     <message>
+        <location filename="../ui/parasetdlg.ui" line="133"/>
+        <source>DN Flow:</source>
+        <translation>常用流量:</translation>
+    </message>
+    <message>
         <location filename="../ui/parasetdlg.ui" line="773"/>
         <location filename="../ui/parasetdlg.ui" line="846"/>
         <location filename="../ui/parasetdlg.ui" line="919"/>
@@ -454,7 +458,7 @@
     <message>
         <location filename="../ui/parasetdlg.ui" line="1604"/>
         <source>Total:</source>
-        <translation>总水量:</translation>
+        <translation>总量:</translation>
     </message>
     <message>
         <location filename="../ui/parasetdlg.ui" line="1643"/>
