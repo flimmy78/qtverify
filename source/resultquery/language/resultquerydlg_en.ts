@@ -140,32 +140,32 @@
 <context>
     <name>FlowResultDlg</name>
     <message>
-        <location filename="../source/flow_result.cpp" line="250"/>
+        <location filename="../source/flow_result.cpp" line="256"/>
         <source>Warning</source>
         <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="250"/>
+        <location filename="../source/flow_result.cpp" line="256"/>
         <source>no data need to be exported!</source>
         <translation>no data need to be exported!</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="255"/>
+        <location filename="../source/flow_result.cpp" line="261"/>
         <source>Save File</source>
         <translation>Save File</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="255"/>
+        <location filename="../source/flow_result.cpp" line="261"/>
         <source>Microsoft Excel (*.xls)</source>
         <translation>Microsoft Excel (*.xls)</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="264"/>
+        <location filename="../source/flow_result.cpp" line="270"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="264"/>
+        <location filename="../source/flow_result.cpp" line="270"/>
         <source>export excel file successful!</source>
         <translation>export excel file successful!</translation>
     </message>
@@ -299,6 +299,26 @@
         <location filename="../source/flow_result.cpp" line="130"/>
         <source>Density</source>
         <translation>Density</translation>
+    </message>
+    <message>
+        <location filename="../source/flow_result.cpp" line="151"/>
+        <source>FlowCoe</source>
+        <translation>FlowCoe</translation>
+    </message>
+    <message>
+        <location filename="../source/flow_result.cpp" line="152"/>
+        <source>Bak1</source>
+        <translation>Bak1</translation>
+    </message>
+    <message>
+        <location filename="../source/flow_result.cpp" line="153"/>
+        <source>Bak2</source>
+        <translation>Bak2</translation>
+    </message>
+    <message>
+        <location filename="../source/flow_result.cpp" line="154"/>
+        <source>Bak3</source>
+        <translation>Bak3</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="145"/>

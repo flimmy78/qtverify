@@ -140,32 +140,32 @@
 <context>
     <name>FlowResultDlg</name>
     <message>
-        <location filename="../source/flow_result.cpp" line="250"/>
+        <location filename="../source/flow_result.cpp" line="256"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="250"/>
+        <location filename="../source/flow_result.cpp" line="256"/>
         <source>no data need to be exported!</source>
         <translation>无数据导出!</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="255"/>
+        <location filename="../source/flow_result.cpp" line="261"/>
         <source>Save File</source>
         <translation>保存文件</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="255"/>
+        <location filename="../source/flow_result.cpp" line="261"/>
         <source>Microsoft Excel (*.xls)</source>
         <translation>Microsoft Excel (*.xls)</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="264"/>
+        <location filename="../source/flow_result.cpp" line="270"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="264"/>
+        <location filename="../source/flow_result.cpp" line="270"/>
         <source>export excel file successful!</source>
         <translation>导出报告成功!</translation>
     </message>
@@ -299,6 +299,26 @@
         <location filename="../source/flow_result.cpp" line="130"/>
         <source>Density</source>
         <translation>水的密度</translation>
+    </message>
+    <message>
+        <location filename="../source/flow_result.cpp" line="151"/>
+        <source>FlowCoe</source>
+        <translation>流量系数</translation>
+    </message>
+    <message>
+        <location filename="../source/flow_result.cpp" line="152"/>
+        <source>Bak1</source>
+        <translation>备用域1</translation>
+    </message>
+    <message>
+        <location filename="../source/flow_result.cpp" line="153"/>
+        <source>Bak2</source>
+        <translation>备用域2</translation>
+    </message>
+    <message>
+        <location filename="../source/flow_result.cpp" line="154"/>
+        <source>Bak3</source>
+        <translation>备用域3</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="145"/>
