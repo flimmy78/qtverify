@@ -84,18 +84,35 @@ void CalcResultDlg::getCondition()
 	{
 		m_conStr.append(QString(" and F_ManufactDept=%1").arg(ui.cmbManufactDept->currentIndex()));
 	}
-	idx = ui.cmbVerifyDept->currentIndex();
+
+	idx = ui.cmbVerifyDept->currentIndex();//送检单位
 	count = ui.cmbVerifyDept->count();
-	if (idx != (count-1) && idx != not_select)//送检单位
+	if (idx != (count-1) && idx != not_select)
 	{
 		m_conStr.append(QString(" and F_VerifyDept=%1").arg(ui.cmbVerifyDept->currentIndex()));
 	}
-	idx = ui.cmbVerifyPerson->currentIndex();
+
+	idx = ui.cmbVerifyPerson->currentIndex();//检定员
 	count = ui.cmbVerifyPerson->count();
-	if (idx != (count-1) && idx != not_select)//检定员
+	if (idx != (count-1) && idx != not_select)
 	{
 		m_conStr.append(QString(" and F_VerifyPerson=%1").arg(ui.cmbVerifyPerson->currentIndex()));
 	}
+
+	idx = ui.cmbAlgorithm->currentIndex();//算法
+	count = ui.cmbAlgorithm->count();
+	if (idx != (count-1) && idx != not_select)
+	{
+		m_conStr.append(QString(" and F_Algorithm=%1").arg(ui.cmbAlgorithm->currentIndex()));
+	}
+
+	idx = ui.cmbInstallPos->currentIndex();//安装位置
+	count = ui.cmbInstallPos->count();
+	if (idx != (count-1) && idx != not_select)
+	{
+		m_conStr.append(QString(" and F_InstallPos=%1").arg(ui.cmbInstallPos->currentIndex()));
+	}
+
 	if (!ui.lnEditMeterNO->text().isEmpty())//表号
 	{
 		m_conStr.append(QString(" and F_MeterNo like \"\%%1\%\"").arg(ui.lnEditMeterNO->text()));
@@ -153,6 +170,9 @@ void CalcResultDlg::queryData()
 	ui.tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);  //使其不可编辑
 
 	ui.tableView->hideColumn(0);
+	ui.tableView->hideColumn(30);
+	ui.tableView->hideColumn(31);
+	ui.tableView->hideColumn(32);
 }
 
 void CalcResultDlg::on_btnExit_clicked()

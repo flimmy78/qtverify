@@ -9,39 +9,69 @@
         <translation>计算器检定结果</translation>
     </message>
     <message>
-        <location filename="../ui/calculator_result.ui" line="32"/>
+        <location filename="../ui/calculator_result.ui" line="30"/>
         <source>Start Time:</source>
         <translation>开始时间:</translation>
     </message>
     <message>
-        <location filename="../ui/calculator_result.ui" line="48"/>
+        <location filename="../ui/calculator_result.ui" line="46"/>
         <source>End Time:</source>
         <translation>结束时间:</translation>
     </message>
     <message>
-        <location filename="../ui/calculator_result.ui" line="66"/>
+        <location filename="../ui/calculator_result.ui" line="64"/>
         <source>Query</source>
         <translation>查询</translation>
     </message>
     <message>
-        <location filename="../ui/calculator_result.ui" line="83"/>
+        <location filename="../ui/calculator_result.ui" line="81"/>
         <source>ManuFacturer:</source>
         <translation>制造厂商:</translation>
     </message>
     <message>
-        <location filename="../ui/calculator_result.ui" line="106"/>
+        <location filename="../ui/calculator_result.ui" line="104"/>
         <source>VerifyDept:</source>
         <translation>检定单位:</translation>
     </message>
     <message>
-        <location filename="../ui/calculator_result.ui" line="129"/>
+        <location filename="../ui/calculator_result.ui" line="127"/>
         <source>VerifyPerson:</source>
         <translation>检定员:</translation>
     </message>
     <message>
-        <location filename="../ui/calculator_result.ui" line="158"/>
+        <location filename="../ui/calculator_result.ui" line="154"/>
         <source>MeterNO:</source>
         <translation>表号:</translation>
+    </message>
+    <message>
+        <location filename="../ui/calculator_result.ui" line="177"/>
+        <source>Algorithm:</source>
+        <translation>算法:</translation>
+    </message>
+    <message>
+        <location filename="../ui/calculator_result.ui" line="194"/>
+        <source>EnthalpyDiff</source>
+        <translation>焓差法</translation>
+    </message>
+    <message>
+        <location filename="../ui/calculator_result.ui" line="199"/>
+        <source>KCoe</source>
+        <translation>K系数法</translation>
+    </message>
+    <message>
+        <location filename="../ui/calculator_result.ui" line="218"/>
+        <source>InstallPos:</source>
+        <translation>安装位置:</translation>
+    </message>
+    <message>
+        <location filename="../ui/calculator_result.ui" line="235"/>
+        <source>In</source>
+        <translation>入口</translation>
+    </message>
+    <message>
+        <location filename="../ui/calculator_result.ui" line="240"/>
+        <source>Out</source>
+        <translation>出口</translation>
     </message>
     <message>
         <source>Insert</source>
@@ -52,7 +82,7 @@
         <translation type="obsolete">停止</translation>
     </message>
     <message>
-        <location filename="../ui/calculator_result.ui" line="224"/>
+        <location filename="../ui/calculator_result.ui" line="282"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
@@ -329,13 +359,13 @@
         <translation>示值误差</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="146"/>
+        <location filename="../source/calculator_result.cpp" line="163"/>
         <location filename="../source/flow_result.cpp" line="133"/>
         <source>StdError</source>
         <translation>标准误差</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="147"/>
+        <location filename="../source/calculator_result.cpp" line="164"/>
         <location filename="../source/flow_result.cpp" line="134"/>
         <source>Result</source>
         <translation>检定结果</translation>
@@ -346,14 +376,14 @@
         <translation>表位号</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="123"/>
+        <location filename="../source/calculator_result.cpp" line="140"/>
         <location filename="../source/flow_result.cpp" line="136"/>
         <location filename="../source/platinum_result.cpp" line="130"/>
         <source>Model</source>
         <translation>型号</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="122"/>
+        <location filename="../source/calculator_result.cpp" line="139"/>
         <location filename="../source/flow_result.cpp" line="137"/>
         <location filename="../source/platinum_result.cpp" line="129"/>
         <source>Standard</source>
@@ -365,104 +395,104 @@
         <translation>类型</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="125"/>
+        <location filename="../source/calculator_result.cpp" line="142"/>
         <location filename="../source/flow_result.cpp" line="139"/>
         <location filename="../source/platinum_result.cpp" line="131"/>
         <source>ManufactDept</source>
         <translation>制造厂商</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="126"/>
+        <location filename="../source/calculator_result.cpp" line="143"/>
         <location filename="../source/flow_result.cpp" line="140"/>
         <location filename="../source/platinum_result.cpp" line="132"/>
         <source>VerifyDept</source>
         <translation>送检机构</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="124"/>
+        <location filename="../source/calculator_result.cpp" line="141"/>
         <location filename="../source/flow_result.cpp" line="141"/>
         <source>Grade</source>
         <translation>等级</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="119"/>
+        <location filename="../source/calculator_result.cpp" line="136"/>
         <source>timestamp</source>
-        <translation>时间戳</translation>
+        <translation>时间</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="120"/>
+        <location filename="../source/calculator_result.cpp" line="137"/>
         <source>MeterNo</source>
         <translation>表号</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="121"/>
+        <location filename="../source/calculator_result.cpp" line="138"/>
         <source>deltaTIdx</source>
         <translation>温差点索引</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="127"/>
+        <location filename="../source/calculator_result.cpp" line="144"/>
         <location filename="../source/flow_result.cpp" line="142"/>
         <location filename="../source/platinum_result.cpp" line="134"/>
         <source>VerifyPerson</source>
         <translation>检定员</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="128"/>
+        <location filename="../source/calculator_result.cpp" line="145"/>
         <source>TempMax</source>
         <translation>最大温度</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="129"/>
+        <location filename="../source/calculator_result.cpp" line="146"/>
         <source>TempMin</source>
         <translation>最小温度</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="130"/>
+        <location filename="../source/calculator_result.cpp" line="147"/>
         <source>DeltaTempMax</source>
         <translation>最大温差</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="131"/>
+        <location filename="../source/calculator_result.cpp" line="148"/>
         <source>DeltaTempMin</source>
         <translation>最小温差</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="132"/>
+        <location filename="../source/calculator_result.cpp" line="149"/>
         <source>algorithm</source>
         <translation>算法</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="133"/>
+        <location filename="../source/calculator_result.cpp" line="150"/>
         <source>InstallPos</source>
         <translation>安装位置</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="134"/>
+        <location filename="../source/calculator_result.cpp" line="151"/>
         <source>HeatUnit</source>
         <translation>热值单位</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="135"/>
+        <location filename="../source/calculator_result.cpp" line="152"/>
         <source>StdTempIn</source>
         <translation>进口标准温度</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="136"/>
+        <location filename="../source/calculator_result.cpp" line="153"/>
         <source>StdTempOut</source>
         <translation>出口标准温度</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="137"/>
+        <location filename="../source/calculator_result.cpp" line="154"/>
         <source>StdResistIn</source>
         <translation>进口标准电阻</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="138"/>
+        <location filename="../source/calculator_result.cpp" line="155"/>
         <source>StdResistOut</source>
         <translation>出口标准电阻</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="139"/>
+        <location filename="../source/calculator_result.cpp" line="156"/>
         <source>RecomVolume</source>
         <translation>推荐流量</translation>
     </message>
@@ -471,32 +501,32 @@
         <translation type="obsolete">设定流量</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="140"/>
+        <location filename="../source/calculator_result.cpp" line="157"/>
         <source>SimulateVolume</source>
         <translation>模拟流量</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="141"/>
+        <location filename="../source/calculator_result.cpp" line="158"/>
         <source>Kcoe</source>
         <translation>K系数</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="142"/>
+        <location filename="../source/calculator_result.cpp" line="159"/>
         <source>StdEnergy</source>
         <translation>标准热值</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="143"/>
+        <location filename="../source/calculator_result.cpp" line="160"/>
         <source>MeterE0</source>
         <translation>热表初值</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="144"/>
+        <location filename="../source/calculator_result.cpp" line="161"/>
         <source>MeterE1</source>
         <translation>热表终值</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="145"/>
+        <location filename="../source/calculator_result.cpp" line="162"/>
         <source>DispError</source>
         <translation>示值误差</translation>
     </message>

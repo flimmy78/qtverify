@@ -9,39 +9,69 @@
         <translation>Calculator Verify Result</translation>
     </message>
     <message>
-        <location filename="../ui/calculator_result.ui" line="32"/>
+        <location filename="../ui/calculator_result.ui" line="30"/>
         <source>Start Time:</source>
         <translation>Start Time:</translation>
     </message>
     <message>
-        <location filename="../ui/calculator_result.ui" line="48"/>
+        <location filename="../ui/calculator_result.ui" line="46"/>
         <source>End Time:</source>
         <translation>End Time:</translation>
     </message>
     <message>
-        <location filename="../ui/calculator_result.ui" line="66"/>
+        <location filename="../ui/calculator_result.ui" line="64"/>
         <source>Query</source>
         <translation>Query</translation>
     </message>
     <message>
-        <location filename="../ui/calculator_result.ui" line="83"/>
+        <location filename="../ui/calculator_result.ui" line="81"/>
         <source>ManuFacturer:</source>
         <translation>ManuFacturer:</translation>
     </message>
     <message>
-        <location filename="../ui/calculator_result.ui" line="106"/>
+        <location filename="../ui/calculator_result.ui" line="104"/>
         <source>VerifyDept:</source>
         <translation>VerifyDept:</translation>
     </message>
     <message>
-        <location filename="../ui/calculator_result.ui" line="129"/>
+        <location filename="../ui/calculator_result.ui" line="127"/>
         <source>VerifyPerson:</source>
         <translation>VerifyPerson:</translation>
     </message>
     <message>
-        <location filename="../ui/calculator_result.ui" line="158"/>
+        <location filename="../ui/calculator_result.ui" line="154"/>
         <source>MeterNO:</source>
         <translation>MeterNO:</translation>
+    </message>
+    <message>
+        <location filename="../ui/calculator_result.ui" line="177"/>
+        <source>Algorithm:</source>
+        <translation>Algorithm:</translation>
+    </message>
+    <message>
+        <location filename="../ui/calculator_result.ui" line="194"/>
+        <source>EnthalpyDiff</source>
+        <translation>EnthalpyDiff</translation>
+    </message>
+    <message>
+        <location filename="../ui/calculator_result.ui" line="199"/>
+        <source>KCoe</source>
+        <translation>KCoe</translation>
+    </message>
+    <message>
+        <location filename="../ui/calculator_result.ui" line="218"/>
+        <source>InstallPos:</source>
+        <translation>InstallPos:</translation>
+    </message>
+    <message>
+        <location filename="../ui/calculator_result.ui" line="235"/>
+        <source>In</source>
+        <translation>In</translation>
+    </message>
+    <message>
+        <location filename="../ui/calculator_result.ui" line="240"/>
+        <source>Out</source>
+        <translation>Out</translation>
     </message>
     <message>
         <source>Insert</source>
@@ -52,7 +82,7 @@
         <translation type="obsolete">Stop</translation>
     </message>
     <message>
-        <location filename="../ui/calculator_result.ui" line="224"/>
+        <location filename="../ui/calculator_result.ui" line="282"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
@@ -329,13 +359,13 @@
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="146"/>
+        <location filename="../source/calculator_result.cpp" line="163"/>
         <location filename="../source/flow_result.cpp" line="133"/>
         <source>StdError</source>
         <translation>StdError</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="147"/>
+        <location filename="../source/calculator_result.cpp" line="164"/>
         <location filename="../source/flow_result.cpp" line="134"/>
         <source>Result</source>
         <translation>Result</translation>
@@ -346,14 +376,14 @@
         <translation>MeterPosNO.</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="123"/>
+        <location filename="../source/calculator_result.cpp" line="140"/>
         <location filename="../source/flow_result.cpp" line="136"/>
         <location filename="../source/platinum_result.cpp" line="130"/>
         <source>Model</source>
         <translation>Model</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="122"/>
+        <location filename="../source/calculator_result.cpp" line="139"/>
         <location filename="../source/flow_result.cpp" line="137"/>
         <location filename="../source/platinum_result.cpp" line="129"/>
         <source>Standard</source>
@@ -365,138 +395,138 @@
         <translation>MeterType</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="125"/>
+        <location filename="../source/calculator_result.cpp" line="142"/>
         <location filename="../source/flow_result.cpp" line="139"/>
         <location filename="../source/platinum_result.cpp" line="131"/>
         <source>ManufactDept</source>
         <translation>ManufactDept</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="126"/>
+        <location filename="../source/calculator_result.cpp" line="143"/>
         <location filename="../source/flow_result.cpp" line="140"/>
         <location filename="../source/platinum_result.cpp" line="132"/>
         <source>VerifyDept</source>
         <translation>VerifyDept</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="124"/>
+        <location filename="../source/calculator_result.cpp" line="141"/>
         <location filename="../source/flow_result.cpp" line="141"/>
         <source>Grade</source>
         <translation>Grade</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="119"/>
+        <location filename="../source/calculator_result.cpp" line="136"/>
         <source>timestamp</source>
-        <translation type="unfinished"></translation>
+        <translation>timestamp</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="120"/>
+        <location filename="../source/calculator_result.cpp" line="137"/>
         <source>MeterNo</source>
         <translation>MeterNo</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="121"/>
+        <location filename="../source/calculator_result.cpp" line="138"/>
         <source>deltaTIdx</source>
-        <translation type="unfinished"></translation>
+        <translation>deltaTIdx</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="127"/>
+        <location filename="../source/calculator_result.cpp" line="144"/>
         <location filename="../source/flow_result.cpp" line="142"/>
         <location filename="../source/platinum_result.cpp" line="134"/>
         <source>VerifyPerson</source>
         <translation>VerifyPerson</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="128"/>
+        <location filename="../source/calculator_result.cpp" line="145"/>
         <source>TempMax</source>
         <translation>TempMax</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="129"/>
+        <location filename="../source/calculator_result.cpp" line="146"/>
         <source>TempMin</source>
         <translation>TempMin</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="130"/>
+        <location filename="../source/calculator_result.cpp" line="147"/>
         <source>DeltaTempMax</source>
         <translation>DeltaTempMax</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="131"/>
+        <location filename="../source/calculator_result.cpp" line="148"/>
         <source>DeltaTempMin</source>
         <translation>DeltaTempMin</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="132"/>
+        <location filename="../source/calculator_result.cpp" line="149"/>
         <source>algorithm</source>
-        <translation type="unfinished"></translation>
+        <translation>algorithm</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="133"/>
+        <location filename="../source/calculator_result.cpp" line="150"/>
         <source>InstallPos</source>
         <translation>InstallPos</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="134"/>
+        <location filename="../source/calculator_result.cpp" line="151"/>
         <source>HeatUnit</source>
         <translation>HeatUnit</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="135"/>
+        <location filename="../source/calculator_result.cpp" line="152"/>
         <source>StdTempIn</source>
         <translation>StdTempIn</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="136"/>
+        <location filename="../source/calculator_result.cpp" line="153"/>
         <source>StdTempOut</source>
         <translation>StdTempOut</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="137"/>
+        <location filename="../source/calculator_result.cpp" line="154"/>
         <source>StdResistIn</source>
         <translation>StdResistIn</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="138"/>
+        <location filename="../source/calculator_result.cpp" line="155"/>
         <source>StdResistOut</source>
         <translation>StdResistOut</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="139"/>
+        <location filename="../source/calculator_result.cpp" line="156"/>
         <source>RecomVolume</source>
-        <translation type="unfinished"></translation>
+        <translation>RecomVolume</translation>
     </message>
     <message>
         <source>ProposedVolume</source>
         <translation type="obsolete">ProposedVolume</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="140"/>
+        <location filename="../source/calculator_result.cpp" line="157"/>
         <source>SimulateVolume</source>
         <translation>SimulateVolume</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="141"/>
+        <location filename="../source/calculator_result.cpp" line="158"/>
         <source>Kcoe</source>
         <translation>Kcoe</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="142"/>
+        <location filename="../source/calculator_result.cpp" line="159"/>
         <source>StdEnergy</source>
-        <translation type="unfinished"></translation>
+        <translation>StdEnergy</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="143"/>
+        <location filename="../source/calculator_result.cpp" line="160"/>
         <source>MeterE0</source>
         <translation>MeterE0</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="144"/>
+        <location filename="../source/calculator_result.cpp" line="161"/>
         <source>MeterE1</source>
         <translation>MeterE1</translation>
     </message>
     <message>
-        <location filename="../source/calculator_result.cpp" line="145"/>
+        <location filename="../source/calculator_result.cpp" line="162"/>
         <source>DispError</source>
         <translation>DispError</translation>
     </message>
