@@ -70,9 +70,10 @@ public:
 	QSqlTableModel *m_manuDeptModel;
 	int m_curManuDeptIdx; //当前制造单位的索引
 
-	void mapUserModel(); //检测员模型
+	void mapUserModel(); //送检员和核验员模型
 	QSqlTableModel *m_userModel;
-	int m_curUserIdx; //当前检测员的索引
+	int m_curVerifyPersonIdx; //当前送检员的索引
+	int m_curCheckPersonIdx;  //当前核验员的索引
 
 	void mapMeterModelModel(); //表型号模型
 	QSqlTableModel *m_modelModel;

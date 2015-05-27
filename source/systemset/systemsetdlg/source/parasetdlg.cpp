@@ -192,7 +192,7 @@ void ParaSetDlg::mapVfDeptModel()
 	m_vfDeptModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
 }
 
-//映射送检员
+//映射送检员和核验员
 void ParaSetDlg::mapUserModel()
 {
 	m_userModel = new QSqlTableModel(this);  
@@ -343,7 +343,8 @@ void ParaSetDlg::on_btnSave_clicked()
 	ui.cmbManufacture->setCurrentIndex(m_curManuDeptIdx);
 
 	m_userModel->submitAll();
-	ui.cmbVerifyPerson->setCurrentIndex(m_curUserIdx);
+	ui.cmbVerifyPerson->setCurrentIndex(m_curVerifyPersonIdx);
+	ui.cmbChkPerson->setCurrentIndex(m_curCheckPersonIdx);
 
 	m_modelModel->submitAll();
 	ui.cmbModel->setCurrentIndex(m_curModelIdx);
@@ -415,12 +416,13 @@ void ParaSetDlg::SaveHead()
 	settings->setValue("verifycompany", ui.cmbVerifyCompany->currentIndex());
 	m_curVfDeptIdx = ui.cmbVerifyCompany->currentIndex();
 	settings->setValue("verifyperson", ui.cmbVerifyPerson->currentIndex());
-	m_curUserIdx = ui.cmbVerifyPerson->currentIndex();
+	m_curVerifyPersonIdx = ui.cmbVerifyPerson->currentIndex();
 	settings->setValue("pickcode", ui.cmbCollectCode->currentIndex());
 	settings->setValue("nflowpoint", ui.cmbFlow->currentIndex());
 	
 	/********新增参数项***************************************************/
 	settings->setValue("chkperson",ui.cmbChkPerson->currentIndex());
+	m_curCheckPersonIdx = ui.cmbChkPerson->currentIndex();
 	settings->setValue("temper",ui.lnEditVersion_2->text());
 	settings->setValue("humidity",ui.lnEditVersion_3->text());
 	settings->setValue("airpress",ui.lnEditVersion_4->text());
