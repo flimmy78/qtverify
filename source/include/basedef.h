@@ -33,11 +33,11 @@
 #define SEP "#SEP#"//分隔符
 #endif
 
-#define TIMEOUT_TEMPER		1000  //每1秒钟请求一次管理温度值
-#define READ_STI1062A_TIMEOUT	200//读标准温度定时器间隔
+#define TIMEOUT_PIPE_TEMPER    1000    //请求管路温度周期(毫秒)
+#define TIMEOUT_STD_TEMPER	   200     //请求标准温度周期
 
-#define FLOW_SAMPLE_NUM		10    //计算流速 采样点个数
-#define TIMEOUT_FLOW_SAMPLE	1000  //计算流速 每1秒采样一次天平数值
+#define FLOW_SAMPLE_NUM		    10     //计算流速 采样点个数
+#define TIMEOUT_FLOW_SAMPLE	    1000   //计算流速 每1秒采样一次天平数值
 
 #define TIMEOUT_BALANCE		200	  //每200毫秒读一次天平数据
 
@@ -74,16 +74,16 @@ enum Verify_Method
 #define INSTALLPOS_IN	0 //安装位置 入口
 #define INSTALLPOS_OUT	1 //安装位置 出口 
 
-#define NORMAL_PRESSURE 0.6//常用供热压力, 单位MPa
-#define HIGH_PRESSURE 1.6//高压供热压力, 单位MPa
+#define NORMAL_PRESSURE 0.6 //常用供热压力, 单位MPa
+#define HIGH_PRESSURE   1.6 //高压供热压力, 单位MPa
 
-#define ENTHALPY_R	461.526//水的比焓常数, 个人理解为单位质量的水, 其温度变化1K, 所交换的热值(见IAPWS-IF97-Re 水和水蒸气特性v.pdf P5 及http://en.wikipedia.org/wiki/Gas_constant)
+#define ENTHALPY_R	461.526 //水的比焓常数, 个人理解为单位质量的水, 其温度变化1K, 所交换的热值(见IAPWS-IF97-Re 水和水蒸气特性v.pdf P5 及http://en.wikipedia.org/wiki/Gas_constant)
 
-#define GRADE_ONE	0//1级表
-#define GRADE_TWO	1//2级表
-#define GRADE_THREE	2//3级表
+#define GRADE_ONE	0 //1级表
+#define GRADE_TWO	1 //2级表
+#define GRADE_THREE	2 //3级表
 
-#define IMITATION_FLOW_RATE 2.88//模拟流量时的流速, m3/h
+#define IMITATION_FLOW_RATE 2.88 //模拟流量时的流速, m3/h
 
 /*
 ** FUNCTION -- 获取下位机端口设置信息(portset.ini文件)
@@ -353,7 +353,7 @@ typedef V_Flow_Verify_Record_STR* V_Flow_Verify_Record_PTR;
 */
 class DatabasePara_STR{
 public:
-    int     type;               //数据库类型
+    int     type;                 //数据库类型
     char    hostname[24];    	  //主机名/ip地址
 	char    dbname[24];           //数据库名,如dbs1
 	char    username[24];         //用户名

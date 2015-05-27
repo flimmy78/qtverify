@@ -104,7 +104,7 @@ FlowWeightDlg::FlowWeightDlg(QWidget *parent, Qt::WFlags flags)
 	m_oldMaxMeterNum = 0;
 	m_validMeterNum = 0;     //实际检表个数
 	m_exaustSecond = 45;     //默认排气时间45秒
-	m_manufac = 0;           //制造厂商 默认德鲁
+	m_pickcode = 0;          //采集代码 默认德鲁
 	m_flowSC = 1.0;			 //流量安全系数，默认1.0
 	m_meterStartValue = NULL;
 	m_meterEndValue = NULL;
@@ -260,7 +260,7 @@ void FlowWeightDlg::initTemperatureCom()
 	m_tempTimer = new QTimer();
 	connect(m_tempTimer, SIGNAL(timeout()), m_tempObj, SLOT(writeTemperatureComBuffer()));
 	
-	m_tempTimer->start(TIMEOUT_TEMPER); //周期请求温度
+	m_tempTimer->start(TIMEOUT_PIPE_TEMPER); //周期请求温度
 }
 
 //控制板通讯串口
@@ -303,7 +303,7 @@ void FlowWeightDlg::initMeterCom()
 	for (i=0; i<m_maxMeterNum; i++)
 	{
 		m_meterObj[i].moveToThread(&m_meterThread[i]);
-		m_meterObj[i].setProtocolVersion(m_manufac); //设置表协议类型
+		m_meterObj[i].setProtocolVersion(m_pickcode); //设置表协议类型
 		m_meterThread[i].start();
 		m_meterObj[i].openMeterCom(&m_readComConfig->ReadMeterConfigByNum(QString("%1").arg(i+1)));
 		
@@ -439,7 +439,7 @@ int FlowWeightDlg::readNowParaConfig()
 	m_model = m_nowParams->m_model;   //表型号
 	m_meterType = m_nowParams->m_type;//表类型
 	m_maxMeterNum = m_nowParams->m_maxMeters;//不同表规格对应的最大检表数量
-	m_manufac = m_nowParams->m_manufac; //制造厂商
+	m_pickcode = m_nowParams->m_pickcode; //采集代码
 	m_flowSC = m_nowParams->sc_flow; //流量安全系数
 
 	initTableWidget();
@@ -1161,6 +1161,7 @@ int FlowWeightDlg::calcMeterError(int idx)
 	m_recPtr[idx].manufactDept = m_nowParams->m_manufac;
 	m_recPtr[idx].verifyDept = m_nowParams->m_vcomp;
 	m_recPtr[idx].verifyPerson = m_nowParams->m_vperson;
+	m_recPtr[idx].checkPerson = m_nowParams->m_cperson;
 	strncpy_s(m_recPtr[idx].verifyDate, m_nowDate.toAscii(), DATE_LEN);
 	strncpy_s(m_recPtr[idx].validDate, m_validDate.toAscii(), DATE_LEN);
 	m_recPtr[idx].airPress = m_nowParams->m_airpress.toFloat();
@@ -1605,11 +1606,12 @@ void FlowWeightDlg::on_btnAllModifyNO_clicked()
 ** 修改表号
 ** 输入参数：
 	row:行号，由row可以知道当前热表对应的串口、表号、误差等等
+   注意：表号为14位
 */
 void FlowWeightDlg::slotModifyMeterNO(const int &row)
 {
 	qDebug()<<"slotModifyMeterNO row ="<<row;
-	m_meterObj[row].askModifyMeterNO("12345678", ui.tableWidget->item(row, COLUMN_METER_NUMBER)->text());
+	m_meterObj[row].askModifyMeterNO("11110000000000", ui.tableWidget->item(row, COLUMN_METER_NUMBER)->text());
 }
 
 /*

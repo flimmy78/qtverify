@@ -44,7 +44,9 @@ DataTestDlg::DataTestDlg(QWidget *parent, Qt::WFlags flags)
 	}
 	qDebug()<<"metertype:"<<m_parasetinfo.metertype;
 
-	m_paraset = NULL;
+	m_paraSetDlg = NULL;
+	m_paraSetReader = new ParaSetReader(); //读参数设置接口
+
 	m_readComConfig = NULL;
 	m_readComConfig = new ReadComConfig();
 
@@ -83,10 +85,16 @@ void DataTestDlg::closeEvent( QCloseEvent * event)
 {
 	qDebug()<<"^^^^^DataTestDlg::closeEvent";
 
-	if (m_paraset) //参数设置
+	if (m_paraSetReader) //读检定参数
 	{
-		delete m_paraset;
-		m_paraset = NULL;
+		delete m_paraSetReader;
+		m_paraSetReader = NULL;
+	}
+
+	if (m_paraSetDlg) //参数设置对话框
+	{
+		delete m_paraSetDlg;
+		m_paraSetDlg = NULL;
 	}
 
 	if (m_readComConfig)  //读串口设置
@@ -187,7 +195,7 @@ void DataTestDlg::initTemperatureCom()
 	connect(m_tempTimer, SIGNAL(timeout()), m_tempObj, SLOT(writeTemperatureComBuffer()));
 // 	connect(m_tempTimer, SIGNAL(timeout()), this, SLOT(slotFreshFlow()));
 	
-	m_tempTimer->start(TIMEOUT_TEMPER); //周期请求温度
+	m_tempTimer->start(TIMEOUT_PIPE_TEMPER); //周期请求温度
 }
 
 /*
@@ -206,7 +214,7 @@ void DataTestDlg::initStdTemperatureCom()
 	m_stdTempTimer = new QTimer();
 	connect(m_stdTempTimer, SIGNAL(timeout()), this, SLOT(slotAskStdTemperature()));
 	
- 	m_stdTempTimer->start(READ_STI1062A_TIMEOUT);
+ 	m_stdTempTimer->start(TIMEOUT_STD_TEMPER);
 }
 
 void DataTestDlg::slotAskStdTemperature()
@@ -267,7 +275,8 @@ void DataTestDlg::initControlCom()
 void DataTestDlg::initComOfHeatMeter()
 {
 	m_meterObj = new MeterComObject();
-	m_meterObj->setProtocolVersion(0);//设置协议版本号
+	int version = m_paraSetReader->getParams()->m_pickcode;
+	m_meterObj->setProtocolVersion(version);//设置协议版本号
 	m_meterObj->moveToThread(&m_meterThread);
 	m_meterThread.start();
 
@@ -496,16 +505,16 @@ void DataTestDlg::on_btnRegulate1_clicked() //调节阀1
 //参数设置
 void DataTestDlg::on_btnParaSet_clicked()
 {
-	if (NULL == m_paraset)
+	if (NULL == m_paraSetDlg)
 	{
-		m_paraset = new ParaSetDlg();
+		m_paraSetDlg = new ParaSetDlg();
 	}
 	else
 	{
-		delete m_paraset;
-		m_paraset = new ParaSetDlg();
+		delete m_paraSetDlg;
+		m_paraSetDlg = new ParaSetDlg();
 	}
-	m_paraset->show();
+	m_paraSetDlg->show();
 }
 
 void DataTestDlg::on_btnExit_clicked()
@@ -516,7 +525,7 @@ void DataTestDlg::on_btnExit_clicked()
 //采集标准温度
 void DataTestDlg::on_btnStdTempCollect_clicked()
 {
-	m_stdTempTimer->start(READ_STI1062A_TIMEOUT);
+	m_stdTempTimer->start(TIMEOUT_STD_TEMPER);
 }
 
 //停止采集标准温度

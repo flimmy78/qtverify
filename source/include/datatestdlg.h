@@ -20,6 +20,7 @@
 #include "ui_datatestdlg.h"
 #include "comobject.h"
 
+class ParaSetReader;
 class ParaSetDlg;
 class ReadComConfig;
 
@@ -35,7 +36,8 @@ public:
 	DataTestDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~DataTestDlg();
 
-	ParaSetDlg *m_paraset;
+	ParaSetReader *m_paraSetReader;
+	ParaSetDlg *m_paraSetDlg;
 
 	ReadComConfig *m_readComConfig; //¶Á´®¿ÚÉèÖÃ
 

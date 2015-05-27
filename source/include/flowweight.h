@@ -90,7 +90,7 @@ public:
 	int m_standard;           //表规格
 	int m_model;              //表型号
 	int m_meterType;          //表类型
-	int m_manufac;			  //制造厂商(德鲁航天, 天罡等)
+	int m_pickcode;			  //采集代码(热表通讯协议版本号)
 	float m_flowSC;           //流量检定安全系数
 	//检定过程相关的控制参数 end
 

@@ -182,12 +182,12 @@
     <message>
         <location filename="../ui/parasetdlg.ui" line="181"/>
         <source>ManuFact:</source>
-        <translation>厂商:</translation>
+        <translation>制造单位:</translation>
     </message>
     <message>
         <location filename="../ui/parasetdlg.ui" line="201"/>
         <source>VerifyDept:</source>
-        <translation>送检机构:</translation>
+        <translation>送检单位:</translation>
     </message>
     <message>
         <source>Version:</source>

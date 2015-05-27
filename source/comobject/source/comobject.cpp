@@ -672,7 +672,7 @@ void MeterComObject::askSetVerifyStatus()
 }
 
 /*
-** 请求修改表号
+** 请求修改表号(14位表号)
 */
 void MeterComObject::askModifyMeterNO(QString oldMeterNo, QString newMeterNo)
 {

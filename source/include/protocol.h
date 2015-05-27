@@ -324,7 +324,7 @@ public slots:
 
 	virtual void makeFrameOfReadMeter();        //读表（广播地址读表）
 	virtual void makeFrameOfSetVerifyStatus();	//设置进入检定状态
-	virtual void makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo);	//修改表号
+	virtual void makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo);	//修改表号(14位表号)
 	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr);	//修改流量参数
 
 private:

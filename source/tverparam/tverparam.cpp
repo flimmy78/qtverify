@@ -165,7 +165,7 @@ void tverparamDlg::on_btn_read_1_clicked()
 	m_readCommand = (m_chanel ==0) ? sti1062aT1:sti1062aT2;
 	connect(m_sendTimer, SIGNAL(timeout()), this, SLOT(sendCommands()));
 	//connect(this, SIGNAL(commandSendComplete()), m_sendTimer, SLOT(stop()));
-	m_sendTimer->start(READ_STI1062A_TIMEOUT);
+	m_sendTimer->start(TIMEOUT_STD_TEMPER);
 }
 
 void tverparamDlg::sendCommands()
@@ -234,7 +234,7 @@ void tverparamDlg::on_btn_read_2_clicked()
 	m_readCommand = (m_chanel ==0) ? sti1062aT1:sti1062aT2;
 	connect(m_sendTimer, SIGNAL(timeout()), this, SLOT(sendCommands()));
 	//connect(this, SIGNAL(commandSendComplete()), m_sendTimer, SLOT(stop()));
-	m_sendTimer->start(READ_STI1062A_TIMEOUT);
+	m_sendTimer->start(TIMEOUT_STD_TEMPER);
 }
 
 void tverparamDlg::setTblStd2(const QString& tempStr)
@@ -277,7 +277,7 @@ void tverparamDlg::on_btn_read_3_clicked()
 	m_readCommand = (m_chanel ==0) ? sti1062aT1:sti1062aT2;
 	connect(m_sendTimer, SIGNAL(timeout()), this, SLOT(sendCommands()));
 	//connect(this, SIGNAL(commandSendComplete()), m_sendTimer, SLOT(stop()));
-	m_sendTimer->start(READ_STI1062A_TIMEOUT);
+	m_sendTimer->start(TIMEOUT_STD_TEMPER);
 }
 
 void tverparamDlg::setTblStd3(const QString& tempStr)

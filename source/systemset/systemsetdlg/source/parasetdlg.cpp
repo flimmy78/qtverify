@@ -407,7 +407,6 @@ void ParaSetDlg::SaveHead()
 {
 	settings->beginGroup("Head");
 	settings->setValue("standard", ui.cmbStandard->currentIndex());
-	settings->setValue("metertype", ui.cmbCollectCode->currentIndex());
 	settings->setValue("manufacture", ui.cmbManufacture->currentIndex());
 	m_curManuDeptIdx = ui.cmbManufacture->currentIndex();
 	settings->setValue("grade", ui.cmbGrade->currentIndex()+1);

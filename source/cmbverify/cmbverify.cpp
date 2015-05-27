@@ -582,7 +582,7 @@ void CmbVerifyDlg::on_btn_collection_clicked()
 
 	m_StdCommand = sti1062aT1;
 	connect(m_sendTimer, SIGNAL(timeout()), this, SLOT(sendCommands()));
-	m_sendTimer->start(READ_STI1062A_TIMEOUT);
+	m_sendTimer->start(TIMEOUT_STD_TEMPER);
 }
 
 void CmbVerifyDlg::on_btn_stop_clicked()
