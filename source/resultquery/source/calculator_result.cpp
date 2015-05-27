@@ -7,12 +7,6 @@ CalcResultDlg::CalcResultDlg(QWidget *parent, Qt::WFlags flags)
 {
 	ui.setupUi(this);
 	model = new QSqlRelationalTableModel(this);
-
-	QStringList drivers = QSqlDatabase::drivers();
-	foreach(QString driver, drivers)
-	{
-		qDebug()<<driver;
-	}
 }
 
 CalcResultDlg::~CalcResultDlg()
@@ -115,39 +109,42 @@ void CalcResultDlg::queryData()
 	model->setFilter(m_conStr); //设置查询条件
 
 	//设置外键
-	model->setRelation(3, QSqlRelation("T_Meter_Standard","F_ID","F_Name"));
-	model->setRelation(4, QSqlRelation("T_Meter_Model","F_ID","F_Name"));
-	model->setRelation(6, QSqlRelation("T_Manufacture_Dept","F_ID","F_Desc"));
-	model->setRelation(7, QSqlRelation("T_Verify_Dept","F_ID","F_Desc"));
-	model->setRelation(8, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));
+	model->setRelation(4, QSqlRelation("T_Meter_Standard","F_ID","F_Name"));
+	model->setRelation(5, QSqlRelation("T_Meter_Model","F_ID","F_Name"));
+	model->setRelation(7, QSqlRelation("T_Manufacture_Dept","F_ID","F_Desc"));
+	model->setRelation(8, QSqlRelation("T_Verify_Dept","F_ID","F_Desc"));
+	model->setRelation(9, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));
 
 	//设置水平标题
+	model->setHeaderData(1, Qt::Horizontal, QObject::tr("timestamp"));
 	model->setHeaderData(2, Qt::Horizontal, QObject::tr("MeterNo"));
-	model->setHeaderData(3, Qt::Horizontal, QObject::tr("Standard"));
-	model->setHeaderData(4, Qt::Horizontal, QObject::tr("Model"));
-	model->setHeaderData(5, Qt::Horizontal, QObject::tr("Grade"));
-	model->setHeaderData(6, Qt::Horizontal, QObject::tr("ManufactDept"));
-	model->setHeaderData(7, Qt::Horizontal, QObject::tr("VerifyDept"));
-	model->setHeaderData(8, Qt::Horizontal, QObject::tr("VerifyPerson"));
-	model->setHeaderData(9, Qt::Horizontal, QObject::tr("TempMax"));
-	model->setHeaderData(10, Qt::Horizontal, QObject::tr("TempMin"));
-	model->setHeaderData(11, Qt::Horizontal, QObject::tr("DeltaTempMax"));
-	model->setHeaderData(12, Qt::Horizontal, QObject::tr("DeltaTempMin"));
-	model->setHeaderData(13, Qt::Horizontal, QObject::tr("InstallPos"));
-	model->setHeaderData(14, Qt::Horizontal, QObject::tr("HeatUnit"));
-	model->setHeaderData(15, Qt::Horizontal, QObject::tr("StdTempIn"));
-	model->setHeaderData(16, Qt::Horizontal, QObject::tr("StdTempOut"));
-	model->setHeaderData(17, Qt::Horizontal, QObject::tr("StdResistIn"));
-	model->setHeaderData(18, Qt::Horizontal, QObject::tr("StdResistOut"));
-	model->setHeaderData(19, Qt::Horizontal, QObject::tr("ProposedVolume"));
-	model->setHeaderData(20, Qt::Horizontal, QObject::tr("SimulateVolume"));
-	model->setHeaderData(21, Qt::Horizontal, QObject::tr("Kcoe"));
-	model->setHeaderData(22, Qt::Horizontal, QObject::tr("StdValue"));
-	model->setHeaderData(23, Qt::Horizontal, QObject::tr("MeterE0"));
-	model->setHeaderData(24, Qt::Horizontal, QObject::tr("MeterE1"));
-	model->setHeaderData(25, Qt::Horizontal, QObject::tr("DispError"));
-	model->setHeaderData(26, Qt::Horizontal, QObject::tr("StdError"));
-	model->setHeaderData(27, Qt::Horizontal, QObject::tr("Result"));
+	model->setHeaderData(3, Qt::Horizontal, QObject::tr("deltaTIdx")); //温差点索引
+	model->setHeaderData(4, Qt::Horizontal, QObject::tr("Standard"));
+	model->setHeaderData(5, Qt::Horizontal, QObject::tr("Model"));
+	model->setHeaderData(6, Qt::Horizontal, QObject::tr("Grade"));
+	model->setHeaderData(7, Qt::Horizontal, QObject::tr("ManufactDept"));
+	model->setHeaderData(8, Qt::Horizontal, QObject::tr("VerifyDept"));
+	model->setHeaderData(9, Qt::Horizontal, QObject::tr("VerifyPerson"));
+	model->setHeaderData(10, Qt::Horizontal, QObject::tr("TempMax"));
+	model->setHeaderData(11, Qt::Horizontal, QObject::tr("TempMin"));
+	model->setHeaderData(12, Qt::Horizontal, QObject::tr("DeltaTempMax"));
+	model->setHeaderData(13, Qt::Horizontal, QObject::tr("DeltaTempMin"));
+	model->setHeaderData(14, Qt::Horizontal, QObject::tr("algorithm"));
+	model->setHeaderData(15, Qt::Horizontal, QObject::tr("InstallPos"));
+	model->setHeaderData(16, Qt::Horizontal, QObject::tr("HeatUnit"));
+	model->setHeaderData(17, Qt::Horizontal, QObject::tr("StdTempIn"));
+	model->setHeaderData(18, Qt::Horizontal, QObject::tr("StdTempOut"));
+	model->setHeaderData(19, Qt::Horizontal, QObject::tr("StdResistIn"));
+	model->setHeaderData(20, Qt::Horizontal, QObject::tr("StdResistOut"));
+	model->setHeaderData(21, Qt::Horizontal, QObject::tr("RecomVolume"));
+	model->setHeaderData(22, Qt::Horizontal, QObject::tr("SimulateVolume"));
+	model->setHeaderData(23, Qt::Horizontal, QObject::tr("Kcoe"));
+	model->setHeaderData(24, Qt::Horizontal, QObject::tr("StdEnergy"));
+	model->setHeaderData(25, Qt::Horizontal, QObject::tr("MeterE0"));
+	model->setHeaderData(26, Qt::Horizontal, QObject::tr("MeterE1"));
+	model->setHeaderData(27, Qt::Horizontal, QObject::tr("DispError"));
+	model->setHeaderData(28, Qt::Horizontal, QObject::tr("StdError"));
+	model->setHeaderData(29, Qt::Horizontal, QObject::tr("Result"));
 
 	model->select();
 	ui.tableView->setModel(model);
@@ -156,7 +153,6 @@ void CalcResultDlg::queryData()
 	ui.tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);  //使其不可编辑
 
 	ui.tableView->hideColumn(0);
-	ui.tableView->hideColumn(1);
 }
 
 void CalcResultDlg::on_btnExit_clicked()
