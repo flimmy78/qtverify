@@ -49,15 +49,63 @@
     <message>
         <location filename="../calcverify.cpp" line="222"/>
         <source>ResistIn
-(¦¸)</source>
+</source>
         <translation>进口电阻
-(¦¸)</translation>
+</translation>
     </message>
     <message>
         <location filename="../calcverify.cpp" line="224"/>
         <source>ResistOut
-(¦¸)</source>
+</source>
         <translation>出口电阻
+</translation>
+    </message>
+    <message>
+        <location filename="../calcverify.cpp" line="230"/>
+        <source>TemperIn
+</source>
+        <translation>进口温度
+</translation>
+    </message>
+    <message>
+        <location filename="../calcverify.cpp" line="232"/>
+        <source>TemperOut
+</source>
+        <translation>出口温度
+</translation>
+    </message>
+    <message>
+        <location filename="../calcverify.cpp" line="250"/>
+        <location filename="../calcverify.cpp" line="267"/>
+        <source>TemperOut</source>
+        <translation>出口温度</translation>
+    </message>
+    <message>
+        <location filename="../calcverify.cpp" line="281"/>
+        <source>TemperIn</source>
+        <translation>进口温度</translation>
+    </message>
+    <message>
+        <location filename="../calcverify.cpp" line="324"/>
+        <location filename="../calcverify.cpp" line="333"/>
+        <source>TemperOut: %1 - %2</source>
+        <translation>出口温度: %1 - %2</translation>
+    </message>
+    <message>
+        <location filename="../calcverify.cpp" line="339"/>
+        <source>TemperIn: %1 - %2</source>
+        <translation>进口温度: %1 - %2</translation>
+    </message>
+    <message>
+        <source>ResistIn
+(¦¸)</source>
+        <translation type="obsolete">进口电阻
+(¦¸)</translation>
+    </message>
+    <message>
+        <source>ResistOut
+(¦¸)</source>
+        <translation type="obsolete">出口电阻
 (¦¸)</translation>
     </message>
     <message>
@@ -75,17 +123,15 @@
 (L)</translation>
     </message>
     <message>
-        <location filename="../calcverify.cpp" line="230"/>
         <source>TemperIn
 (¡æ)</source>
-        <translation>进口温度
+        <translation type="obsolete">进口温度
 (¡æ)</translation>
     </message>
     <message>
-        <location filename="../calcverify.cpp" line="232"/>
         <source>TemperOut
 (¡æ)</source>
-        <translation>出口温度
+        <translation type="obsolete">出口温度
 (¡æ)</translation>
     </message>
     <message>
@@ -135,15 +181,12 @@
 (%)</translation>
     </message>
     <message>
-        <location filename="../calcverify.cpp" line="250"/>
         <source>TemperOut: ¦Èmin¡Ü¦Èd¡Ü¦Èmin+5</source>
-        <translation>出口温度: ¦Èmin¡Ü¦Èd¡Ü¦Èmin+5</translation>
+        <translation type="obsolete">出口温度: ¦Èmin¡Ü¦Èd¡Ü¦Èmin+5</translation>
     </message>
     <message>
-        <location filename="../calcverify.cpp" line="253"/>
-        <location filename="../calcverify.cpp" line="270"/>
         <source>¦¤¦Èmin</source>
-        <translation>¦¤¦Èmin</translation>
+        <translation type="obsolete">¦¤¦Èmin</translation>
     </message>
     <message>
         <location filename="../calcverify.cpp" line="256"/>
@@ -159,31 +202,24 @@
         <translation>20</translation>
     </message>
     <message>
-        <location filename="../calcverify.cpp" line="262"/>
-        <location filename="../calcverify.cpp" line="287"/>
         <source>¦¤¦Èref</source>
-        <translation>¦¤¦Èref</translation>
+        <translation type="obsolete">¦¤¦Èref</translation>
     </message>
     <message>
-        <location filename="../calcverify.cpp" line="267"/>
         <source>TemperOut: ¦Èd = ¦Èref¡À5</source>
-        <translation>出口温度: ¦Èd = ¦Èref¡À5</translation>
+        <translation type="obsolete">出口温度: ¦Èd = ¦Èref¡À5</translation>
     </message>
     <message>
-        <location filename="../calcverify.cpp" line="281"/>
         <source>TemperIn:  ¦Èmax-5¡Ü¦Èe ¡Ü ¦Èmax</source>
-        <translation>进口温度:  ¦Èmax-5¡Ü¦Èe ¡Ü ¦Èmax</translation>
+        <translation type="obsolete">进口温度:  ¦Èmax-5¡Ü¦Èe ¡Ü ¦Èmax</translation>
     </message>
     <message>
-        <location filename="../calcverify.cpp" line="290"/>
         <source>¦¤¦Èmax-5</source>
-        <translation>¦¤¦Èmax-5</translation>
+        <translation type="obsolete">¦¤¦Èmax-5</translation>
     </message>
     <message>
-        <location filename="../calcverify.cpp" line="324"/>
-        <location filename="../calcverify.cpp" line="333"/>
         <source>TemperOut: %1 - %2 ¡æ</source>
-        <translation>TemperOut: %1 - %2 ¡æ</translation>
+        <translation type="obsolete">TemperOut: %1 - %2 ¡æ</translation>
     </message>
     <message>
         <location filename="../calcverify.cpp" line="327"/>
@@ -195,9 +231,8 @@
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../calcverify.cpp" line="339"/>
         <source>TemperIn: %1 - %2 ¡æ</source>
-        <translation>进口温度: %1 - %2 ¡æ</translation>
+        <translation type="obsolete">进口温度: %1 - %2 ¡æ</translation>
     </message>
     <message>
         <location filename="../calcverify.cpp" line="349"/>
@@ -208,9 +243,8 @@
 <context>
     <name>CalcDlgClass</name>
     <message utf8="true">
-        <location filename="../calcverify.ui" line="14"/>
         <source>计算器检测</source>
-        <translation>计算器检测</translation>
+        <translation type="obsolete">计算器检测</translation>
     </message>
     <message>
         <location filename="../calcverify.ui" line="73"/>
@@ -232,6 +266,11 @@
         <location filename="../calcverify.ui" line="22"/>
         <source>InstallPos</source>
         <translation>安装位置</translation>
+    </message>
+    <message>
+        <location filename="../calcverify.ui" line="14"/>
+        <source>Calculator Verify</source>
+        <translation>计算器检测</translation>
     </message>
     <message>
         <location filename="../calcverify.ui" line="28"/>
@@ -355,102 +394,107 @@
 <context>
     <name>CalcParaClass</name>
     <message>
-        <location filename="../calcpara.ui" line="20"/>
+        <location filename="../calcpara.ui" line="17"/>
+        <source>ParaSet</source>
+        <translation>参数设置</translation>
+    </message>
+    <message>
+        <location filename="../calcpara.ui" line="23"/>
         <source>Verify Para</source>
         <translation>检定参数</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="28"/>
+        <location filename="../calcpara.ui" line="31"/>
         <source>MeterNO(14bit):</source>
         <translation>表号(14位):</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="38"/>
+        <location filename="../calcpara.ui" line="41"/>
         <source>Model:</source>
         <translation>型号:</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="52"/>
+        <location filename="../calcpara.ui" line="55"/>
         <source>ManuFact:</source>
         <translation>制造厂商:</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="66"/>
+        <location filename="../calcpara.ui" line="69"/>
         <source>VerifyDept:</source>
         <translation>送检单位:</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="84"/>
+        <location filename="../calcpara.ui" line="87"/>
         <source>Standard:</source>
         <translation>规格:</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="94"/>
+        <location filename="../calcpara.ui" line="97"/>
         <source>Grade:</source>
         <translation>等级:</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="102"/>
+        <location filename="../calcpara.ui" line="105"/>
         <source>1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="107"/>
+        <location filename="../calcpara.ui" line="110"/>
         <source>2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="112"/>
+        <location filename="../calcpara.ui" line="115"/>
         <source>3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="120"/>
+        <location filename="../calcpara.ui" line="123"/>
         <source>VerifyPerson:</source>
         <translation>检定员:</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="154"/>
+        <location filename="../calcpara.ui" line="157"/>
         <source>Heat Para</source>
         <translation>热量参数</translation>
     </message>
     <message utf8="true">
-        <location filename="../calcpara.ui" line="162"/>
+        <location filename="../calcpara.ui" line="165"/>
         <source>θmax</source>
         <translation>θmax</translation>
     </message>
     <message utf8="true">
-        <location filename="../calcpara.ui" line="176"/>
+        <location filename="../calcpara.ui" line="179"/>
         <source>θmin</source>
         <translation>θmin</translation>
     </message>
     <message utf8="true">
-        <location filename="../calcpara.ui" line="190"/>
+        <location filename="../calcpara.ui" line="193"/>
         <source>℃</source>
         <translation>℃</translation>
     </message>
     <message utf8="true">
-        <location filename="../calcpara.ui" line="197"/>
+        <location filename="../calcpara.ui" line="200"/>
         <source>Δθmax</source>
         <translation>Δθmax</translation>
     </message>
     <message utf8="true">
-        <location filename="../calcpara.ui" line="211"/>
+        <location filename="../calcpara.ui" line="214"/>
         <source>Δθmin</source>
         <translation>Δθmin</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="225"/>
+        <location filename="../calcpara.ui" line="228"/>
         <source>K</source>
         <translation>K</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="239"/>
+        <location filename="../calcpara.ui" line="242"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="246"/>
+        <location filename="../calcpara.ui" line="249"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>

@@ -219,17 +219,17 @@ void CalcDlg::initUi()
 	ui.tableWidget->item(0, 9)->setTextAlignment(Qt::AlignCenter);
 	ui.tableWidget->item(0, 9)->setTextColor(Qt::darkGreen);
 
-	ui.tableWidget->item(1, COLUMN_IN_RESIST)->setText(QString(tr("ResistIn\n(¦¸)")));
+	ui.tableWidget->item(1, COLUMN_IN_RESIST)->setText(QString(tr("ResistIn\n"))+"(¦¸)");
 	ui.tableWidget->item(1, COLUMN_IN_RESIST)->setTextAlignment(Qt::AlignCenter);
-	ui.tableWidget->item(1, COLUMN_OUT_RESIST)->setText(QString(tr("ResistOut\n(¦¸)")));
+	ui.tableWidget->item(1, COLUMN_OUT_RESIST)->setText(QString(tr("ResistOut\n"))+"(¦¸)");
 	ui.tableWidget->item(1, COLUMN_OUT_RESIST)->setTextAlignment(Qt::AlignCenter);
 	ui.tableWidget->item(1, COLUMN_RECOM_V)->setText(QString(tr("RecomValue\n(L)")));
 	ui.tableWidget->item(1, COLUMN_RECOM_V)->setTextAlignment(Qt::AlignCenter);
 	ui.tableWidget->item(1, COLUMN_ANALOG_V)->setText(QString(tr("Flow\n(L)")));
 	ui.tableWidget->item(1, COLUMN_ANALOG_V)->setTextAlignment(Qt::AlignCenter);
-	ui.tableWidget->item(1, COLUMN_IN_TEMPER)->setText(QString(tr("TemperIn\n(¡æ)")));
+	ui.tableWidget->item(1, COLUMN_IN_TEMPER)->setText(QString(tr("TemperIn\n")+"(¡æ)"));
 	ui.tableWidget->item(1, COLUMN_IN_TEMPER)->setTextAlignment(Qt::AlignCenter);
-	ui.tableWidget->item(1, COLUMN_OUT_TEMPER)->setText(QString(tr("TemperOut\n(¡æ)")));
+	ui.tableWidget->item(1, COLUMN_OUT_TEMPER)->setText(QString(tr("TemperOut\n")+"(¡æ)"));
 	ui.tableWidget->item(1, COLUMN_OUT_TEMPER)->setTextAlignment(Qt::AlignCenter);
 	ui.tableWidget->item(1, COLUMN_K_COE)->setText(KStr[algo][unit]);//QString(tr("KCoe(kWh/m3¡æ)")));
 	ui.tableWidget->item(1, COLUMN_K_COE)->setTextAlignment(Qt::AlignCenter);
@@ -247,10 +247,10 @@ void CalcDlg::initUi()
 	ui.tableWidget->item(1, COLUMN_STD_ERROR)->setTextAlignment(Qt::AlignCenter);
 
 	ui.tableWidget->setSpan(2, 0, 1, 14);
-	ui.tableWidget->item(2, 0)->setText(QString(tr("TemperOut: ¦Èmin¡Ü¦Èd¡Ü¦Èmin+5")));
+	ui.tableWidget->item(2, 0)->setText(QString(tr("TemperOut")+": ¦Èmin¡Ü¦Èd¡Ü¦Èmin+5"));
 	ui.tableWidget->item(2, 0)->setTextAlignment(Qt::AlignLeft|Qt::AlignVCenter);
 	ui.tableWidget->item(2, 0)->setTextColor(Qt::blue);
-	ui.tableWidget->item(3, 0)->setText(QString(tr("¦¤¦Èmin")));
+	ui.tableWidget->item(3, 0)->setText("¦¤¦Èmin");
 	ui.tableWidget->item(3, 0)->setTextAlignment(Qt::AlignCenter);
 	ui.tableWidget->item(3, 0)->setTextColor(Qt::red);
 	ui.tableWidget->item(4, 0)->setText(QString(tr("5")));
@@ -259,15 +259,15 @@ void CalcDlg::initUi()
 	ui.tableWidget->item(5, 0)->setText(QString(tr("20")));
 	ui.tableWidget->item(5, 0)->setTextAlignment(Qt::AlignCenter);
 	ui.tableWidget->item(5, 0)->setTextColor(Qt::red);
-	ui.tableWidget->item(6, 0)->setText(QString(tr("¦¤¦Èref")));
+	ui.tableWidget->item(6, 0)->setText("¦¤¦Èref");
 	ui.tableWidget->item(6, 0)->setTextAlignment(Qt::AlignCenter);
 	ui.tableWidget->item(6, 0)->setTextColor(Qt::red);
 
 	ui.tableWidget->setSpan(7, 0, 1, 14);
-	ui.tableWidget->item(7, 0)->setText(QString(tr("TemperOut: ¦Èd = ¦Èref¡À5")));
+	ui.tableWidget->item(7, 0)->setText(QString(tr("TemperOut")+": ¦Èd = ¦Èref¡À5"));
 	ui.tableWidget->item(7, 0)->setTextAlignment(Qt::AlignLeft|Qt::AlignVCenter);
 	ui.tableWidget->item(7, 0)->setTextColor(Qt::blue);
-	ui.tableWidget->item(8, 0)->setText(QString(tr("¦¤¦Èmin")));
+	ui.tableWidget->item(8, 0)->setText("¦¤¦Èmin");
 	ui.tableWidget->item(8, 0)->setTextAlignment(Qt::AlignCenter);
 	ui.tableWidget->item(8, 0)->setTextColor(Qt::red);
 	ui.tableWidget->item(9, 0)->setText(QString(tr("5")));
@@ -278,16 +278,16 @@ void CalcDlg::initUi()
 	ui.tableWidget->item(10, 0)->setTextColor(Qt::red);
 
 	ui.tableWidget->setSpan(11, 0, 1, 14);
-	ui.tableWidget->item(11, 0)->setText(QString(tr("TemperIn:  ¦Èmax-5¡Ü¦Èe ¡Ü ¦Èmax")));
+	ui.tableWidget->item(11, 0)->setText(QString(tr("TemperIn")+": ¦Èmax-5¡Ü¦Èe ¡Ü ¦Èmax"));
 	ui.tableWidget->item(11, 0)->setTextAlignment(Qt::AlignLeft|Qt::AlignVCenter);
 	ui.tableWidget->item(11, 0)->setTextColor(Qt::blue);
 	ui.tableWidget->item(12, 0)->setText(QString(tr("20")));
 	ui.tableWidget->item(12, 0)->setTextAlignment(Qt::AlignCenter);
 	ui.tableWidget->item(12, 0)->setTextColor(Qt::red);
-	ui.tableWidget->item(13, 0)->setText(QString(tr("¦¤¦Èref")));
+	ui.tableWidget->item(13, 0)->setText("¦¤¦Èref");
 	ui.tableWidget->item(13, 0)->setTextAlignment(Qt::AlignCenter);
 	ui.tableWidget->item(13, 0)->setTextColor(Qt::red);
-	ui.tableWidget->item(14, 0)->setText(QString(tr("¦¤¦Èmax-5")));
+	ui.tableWidget->item(14, 0)->setText("¦¤¦Èmax-5");
 	ui.tableWidget->item(14, 0)->setTextAlignment(Qt::AlignCenter);
 	ui.tableWidget->item(14, 0)->setTextColor(Qt::red);
 
@@ -321,7 +321,7 @@ void CalcDlg::freshCalcPara()
 
 	ui.lnEditMinDeltaT->setText(QString("%1").arg(m_minDeltaT));
 
-	ui.tableWidget->item(2, 0)->setText(QString(tr("TemperOut: %1 - %2 ¡æ")).arg(m_minT).arg(m_minT+5));
+	ui.tableWidget->item(2, 0)->setText(QString(tr("TemperOut: %1 - %2")).arg(m_minT).arg(m_minT+5)+" ¡æ");
 	ui.tableWidget->item(2, 0)->setTextAlignment(Qt::AlignLeft|Qt::AlignVCenter);
 	ui.tableWidget->item(2, 0)->setTextColor(Qt::blue);
 	ui.tableWidget->item(3, 0)->setText(QString(tr("%1")).arg(m_minDeltaT));
@@ -330,13 +330,13 @@ void CalcDlg::freshCalcPara()
 	ui.tableWidget->item(6, 0)->setText(QString(tr("%1")).arg(m_refDeltaT));
 	ui.tableWidget->item(6, 0)->setTextAlignment(Qt::AlignCenter);
 	ui.tableWidget->item(6, 0)->setTextColor(Qt::red);
-	ui.tableWidget->item(7, 0)->setText(QString(tr("TemperOut: %1 - %2 ¡æ")).arg(m_refT-5).arg(m_refT+5));
+	ui.tableWidget->item(7, 0)->setText(QString(tr("TemperOut: %1 - %2")).arg(m_refT-5).arg(m_refT+5)+" ¡æ");
 	ui.tableWidget->item(7, 0)->setTextAlignment(Qt::AlignLeft|Qt::AlignVCenter);
 	ui.tableWidget->item(7, 0)->setTextColor(Qt::blue);
 	ui.tableWidget->item(8, 0)->setText(QString(tr("%1")).arg(m_minDeltaT));
 	ui.tableWidget->item(8, 0)->setTextAlignment(Qt::AlignCenter);
 	ui.tableWidget->item(8, 0)->setTextColor(Qt::red);
-	ui.tableWidget->item(11, 0)->setText(QString(tr("TemperIn: %1 - %2 ¡æ")).arg(m_maxT-5).arg(m_maxT));
+	ui.tableWidget->item(11, 0)->setText(QString(tr("TemperIn: %1 - %2")).arg(m_maxT-5).arg(m_maxT)+" ¡æ");
 	ui.tableWidget->item(11, 0)->setTextAlignment(Qt::AlignLeft|Qt::AlignVCenter);
 	ui.tableWidget->item(11, 0)->setTextColor(Qt::blue);
 	ui.tableWidget->item(13, 0)->setText(QString(tr("%1")).arg(m_refDeltaT));
