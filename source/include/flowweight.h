@@ -136,6 +136,9 @@ public:
 	float m_deltaWeight[FLOW_SAMPLE_NUM];
 	QTimer *m_flowRateTimer;  //计时器:用于计算流速
 
+	//天平最大容量和回水底量
+	float m_balMaxWht;
+	float m_balBottomWht;
 
 	void initBalanceCom();     //天平串口
 	void initTemperatureCom(); //温度采集串口

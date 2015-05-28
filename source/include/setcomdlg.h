@@ -25,13 +25,14 @@ public:
 private:
 	Ui::SetComDlgClass gui;
 	QSettings *m_com_settings;
-
+	QButtonGroup *btnGroupBalanceType; //天平类型
 	ReadComConfig *m_config;//读取配置信息
 
 	/**************读取配置文件*****************/
 	void InstallConfigs();
 	void InstallValeConfig();
 	void InstallBalanceConfig();
+	void InstallBalanceTypeConfig();
 	void InstallTempConfig();
 	void InstallStdtmpConfig();
 	void InstallMetersConfig();
@@ -41,6 +42,7 @@ private:
 	/**************写入配置文件*****************/
 	void WriteValveConfig();//写入阀门配置
 	void WriteBalanceConfig();//写入天平配置
+	void WriteBalanceTypeConfig();//写入天平类型配置
 	void WriteTempConfig();//写入温度采集配置
 	void WriteStdTempConfig();//写入标准温度计配置
 	void WriteMetersConfig();//写入被检表配置

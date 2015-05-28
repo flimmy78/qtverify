@@ -7,7 +7,6 @@
 ** 热表检定相关宏定义
 */
 #define VALID_YEAR				2 //检表有效期 2年
-#define BALANCE_INIT_VALUE		5 //天平初值
 #define ERR_PRECISION			3 //各流量点流量系数(误差)显示到小数点后3位
 
 /*
@@ -43,7 +42,6 @@
 
 #define RESET_ZERO_TIME		22    //等待热表初值回零的时间，单位：秒
 
-#define BALANCE_CAPACITY	100	  //天平容量，单位kg
 
 /*
 ** 被检表类型枚举            

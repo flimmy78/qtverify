@@ -10,7 +10,7 @@
 **  版本历史:   2014/06 第一版
 **  内容包含:
 **  说明:
-**  更新记录:
+**  更新记录:   2015-5增加设置天平类型、天平容量、天平底量(杨深)
 ***********************************************/
 
 #include <QtGui/QMessageBox>
@@ -29,6 +29,12 @@ SetComDlg::SetComDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
 	gui.setupUi(this);
+	btnGroupBalanceType = new QButtonGroup(gui.grpBoxBalanceType); //天平类型
+	btnGroupBalanceType->addButton(gui.radioBtnSatorius, 0);
+	btnGroupBalanceType->addButton(gui.radioBtnSatoriusH, 1);
+	btnGroupBalanceType->addButton(gui.radioBtnBizerba, 2);
+	btnGroupBalanceType->addButton(gui.radioBtnMettler, 3);
+
 }
 
 SetComDlg::~SetComDlg()
@@ -39,8 +45,8 @@ SetComDlg::~SetComDlg()
 void SetComDlg::showEvent(QShowEvent *)
 {
 	m_config = new ReadComConfig();
-	InstallConfigs();
 	m_com_settings = new QSettings(getFullIniFileName("comconfig.ini"), QSettings::IniFormat);
+	InstallConfigs();
 }
 
 void SetComDlg::closeEvent(QCloseEvent *)
@@ -67,6 +73,7 @@ void SetComDlg::on_btnSave_clicked()
 {
 	WriteValveConfig();
 	WriteBalanceConfig();
+	WriteBalanceTypeConfig();
 	WriteTempConfig();
 	WriteStdTempConfig();
 	WriteMetersConfig();
@@ -77,6 +84,7 @@ void SetComDlg::InstallConfigs()
 {
 	InstallValeConfig();
 	InstallBalanceConfig();
+	InstallBalanceTypeConfig();
 	InstallTempConfig();
 	InstallStdtmpConfig();
 	InstallMetersConfig();
@@ -100,6 +108,34 @@ void SetComDlg::InstallBalanceConfig()
 	gui.comboBalBits->setCurrentIndex(valve_index[2].toInt());
 	gui.comboBalChkBit->setCurrentIndex(valve_index[3].toInt());
 	gui.comboBalEndBit->setCurrentIndex(valve_index[4].toInt());
+}
+
+void SetComDlg::InstallBalanceTypeConfig()
+{
+	int type = m_com_settings->value("BalanceType/type").toInt();
+	QString maxWht = m_com_settings->value("BalanceType/maxweight").toString();
+	QString bottomWht = m_com_settings->value("BalanceType/bottomwht").toString();
+
+	switch (type)
+	{
+	case 0:
+		gui.radioBtnSatorius->setChecked(true);
+		break;
+	case 1:
+		gui.radioBtnSatoriusH->setChecked(true);
+		break;
+	case 2:
+		gui.radioBtnBizerba->setChecked(true);
+		break;
+	case 3:
+		gui.radioBtnMettler->setChecked(true);
+		break;
+	default:
+		gui.radioBtnSatorius->setChecked(true);
+		break;
+	}
+	gui.lnEditMaxWht->setText(maxWht);
+	gui.lnEditBottomWht->setText(bottomWht);
 }
 
 void SetComDlg::InstallTempConfig()
@@ -185,6 +221,18 @@ void  SetComDlg::WriteBalanceConfig()
 	m_com_settings->beginGroup(gui.gBoxBalance->objectName().split("gBox")[1]);
 	WriteConfigById(gui.gBoxBalance);
 	m_com_settings->endGroup();
+}
+
+//写入天平类型设置
+void  SetComDlg::WriteBalanceTypeConfig()
+{
+	int type = btnGroupBalanceType->checkedId();
+	QString maxWht = gui.lnEditMaxWht->text();
+	QString bottomWht = gui.lnEditBottomWht->text();
+
+	m_com_settings->setValue("BalanceType/type", type);
+	m_com_settings->setValue("BalanceType/maxweight", maxWht);
+	m_com_settings->setValue("BalanceType/bottomwht", bottomWht);
 }
 
 //写入温度采集设置

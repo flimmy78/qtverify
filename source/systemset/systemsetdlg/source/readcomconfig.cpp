@@ -149,3 +149,15 @@ int ReadComConfig::getMeterPosByComName(QString comName)
 		}
 		return -1;
 }
+
+/*
+** 获取天平参数
+** 出口参数：
+    maxWht: 天平最大称量 （kg）
+	bottomWht：天平回水底量 (kg）
+*/
+void ReadComConfig::getBalancePara(float &maxWht, float &bottomWht)
+{
+	maxWht = m_com_settings->value("BalanceType/maxweight").toFloat();
+	bottomWht = m_com_settings->value("BalanceType/bottomwht").toFloat();
+}

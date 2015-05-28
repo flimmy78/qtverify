@@ -55,6 +55,7 @@ FlowWeightDlg::FlowWeightDlg(QWidget *parent, Qt::WFlags flags)
 	}
 
 	m_readComConfig = new ReadComConfig(); //读串口设置接口（必须在initBalanceCom前调用）
+	m_readComConfig->getBalancePara(m_balMaxWht, m_balBottomWht); //获取天平最大容量和回水底量
 
 	m_balanceObj = NULL;
 	initBalanceCom();		//初始化天平串口
@@ -357,7 +358,7 @@ void FlowWeightDlg::slotFreshBalanceValue(const float& balValue)
 {
 	QString wht = QString::number(balValue, 'f', 3);
 	ui.lcdBigBalance->display(wht);
-	if (balValue > BALANCE_CAPACITY) //防止天平溢出 暂设天平容量为100kg
+	if (balValue > m_balMaxWht) //防止天平溢出
 	{
 		closeValve(m_portsetinfo.waterInNo); //关闭进水阀
 		closeAllFlowPointValves(); //关闭所有流量点阀门
@@ -581,8 +582,8 @@ int FlowWeightDlg::prepareInitBalance()
 {
 	ui.labelHintPoint->setText(tr("prepare balance ...")); //准备天平
 	int ret = 0;
-	//判断天平重量,如果小于要求的初始重量(5kg)，则关闭放水阀，打开大流量阀
-	if (ui.lcdBigBalance->value() < BALANCE_INIT_VALUE)
+	//判断天平重量,如果小于要求的回水底量(5kg)，则关闭放水阀，打开大流量阀
+	if (ui.lcdBigBalance->value() < m_balBottomWht)
 	{
 		if (!closeWaterOutValve()) 
 		{
@@ -592,8 +593,8 @@ int FlowWeightDlg::prepareInitBalance()
 		{
 			qWarning()<<"打开大流量阀失败";
 		}
-		//判断并等待天平重量，大于初始重量(5kg)
-		if (isBalanceValueBigger(BALANCE_INIT_VALUE, true))
+		//判断并等待天平重量，大于回水底量(5kg)
+		if (isBalanceValueBigger(m_balBottomWht, true))
 		{
 			if (!closeValve(m_portsetinfo.bigNo))
 			{
@@ -960,7 +961,7 @@ bool FlowWeightDlg::judgeBalanceCapacity()
 	{
 		totalQuantity += m_paraSetReader->getParams()->fp_info[i].fp_quantity;
 	}
-	ret = (ui.lcdBigBalance->value() + totalQuantity) < (BALANCE_CAPACITY-3); //假设天平容量为100kg
+	ret = (ui.lcdBigBalance->value() + totalQuantity) < (m_balMaxWht - 2);
 	return ret;
 }
 
