@@ -143,13 +143,12 @@ void ParaSetDlg::initUiData()
 		ui.cmbStandard->insertItem(i, m_meterStdPtr[i].name);
 	}
 
-	//表类型
-	getMeterType(m_meterTypeNum, m_meterTypePtr);
-	for (int j=0; j<m_meterTypeNum; j++)
+	//采集代码
+	QStringList strlist = getPickCodeStringList();
+	for (int m=0; m<strlist.count(); m++)
 	{
-		qDebug()<<"id:"<<m_meterTypePtr[j].id<<",desc:"<<QString::fromLocal8Bit(m_meterTypePtr[j].desc);
-		ui.cmbCollectCode->insertItem(j, QString::fromLocal8Bit(m_meterTypePtr[j].desc)); //汉字编码
-	}	
+		ui.cmbCollectCode->insertItem(m, strlist.at(m));
+	}
 
 	//制造单位
 	mapManuDeptModel();
