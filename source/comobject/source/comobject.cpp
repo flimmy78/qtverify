@@ -487,7 +487,7 @@ MeterComObject::MeterComObject(QObject* parent) : ComObject(parent)
 	m_meterTmp="";
 	m_portName = "";
 
-	setProtocolVersion(0); //默认是德鲁热量表
+	setProtocolVersion(PROTOCOL_VER_DELU); //默认是德鲁热量表
 }
 
 MeterComObject::~MeterComObject()
@@ -519,10 +519,10 @@ void MeterComObject::setProtocolVersion(int version)
 	}
 	switch (m_protocolVersion)
 	{
-	case 0:	//德鲁热量表
+	case PROTOCOL_VER_DELU:	//德鲁热量表
 		m_meterProtocol = new DeluMeterProtocol();
 		break;
-	case 1: //天罡热量表
+	case PROTOCOL_VER_TIANGANG: //天罡热量表
 		m_meterProtocol = new TgMeterProtocol();
 		break;
 	default: 

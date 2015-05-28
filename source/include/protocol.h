@@ -225,17 +225,17 @@ public:
 //下位机控制协议 end
 
 //热量表通讯协议 begin
-#define     WAKEUP_CODE_NUM		200     //唤醒码个数
-#define     PREFIX_CODE_NUM		4       //前导字节个数
+#define     METER_WAKEUP_CODE_NUM		200     //唤醒码个数
+#define     METER_PREFIX_CODE_NUM		4       //前导字节个数
 
-#define		METER_WAKEUP_CODE	0xFF	//唤醒码
-#define		METER_PREFIX_CODE	0xFE	//前导字节
-#define		METER_START_CODE	0x68	//起始符
-#define		METER_TYPE_ASK_CODE		0x20	//仪表类型 超声表 请求
-#define		METER_TYPE_ANSWER_CODE	0x25	//仪表类型 超声表 响应
-#define     METER_ADDR_CODE		0xAA	//广播地址
-#define     METER_CTRL_CODE		0x01	//控制码
-#define     METER_END_CODE		0x16	//结束符
+#define		METER_WAKEUP_CODE	        0xFF	//唤醒码
+#define		METER_PREFIX_CODE	        0xFE	//前导字节
+#define		METER_START_CODE	        0x68	//起始符
+#define		METER_TYPE_ASK_CODE		    0x20	//仪表类型 超声表 请求
+#define		METER_TYPE_ANSWER_CODE	    0x25	//仪表类型 超声表 响应
+#define     METER_ADDR_CODE		        0xAA	//广播地址
+#define     METER_CTRL_CODE		        0x01	//控制码
+#define     METER_END_CODE		        0x16	//结束符
 
 #define		METER_START_STATE		0x00
 #define		METER_TYPE_STATE		0x01
@@ -248,9 +248,9 @@ public:
 #define		METER_CS_STATE			0x08
 #define		METER_END_STATE			0x09
 
-#define METER_ADDR_LEN		7
-#define METER_DATAID_LEN	2
-#define METER_DATA_LEN		55
+#define     METER_ADDR_LEN		7
+#define     METER_DATAID_LEN	2
+#define     METER_DATA_LEN		55
 
 typedef struct  
 {

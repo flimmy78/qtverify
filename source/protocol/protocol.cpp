@@ -1079,12 +1079,12 @@ void DeluMeterProtocol::makeFrameOfReadMeter()
 {
 	m_sendBuf = "";
 
-	for (int i=0; i<WAKEUP_CODE_NUM; i++)
+	for (int i=0; i<METER_WAKEUP_CODE_NUM; i++)
 	{
 		m_sendBuf.append(METER_WAKEUP_CODE);//唤醒红外
 	}
 
-	for (int j=0; j<PREFIX_CODE_NUM; j++)
+	for (int j=0; j<METER_PREFIX_CODE_NUM; j++)
 	{
 		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
 	}
@@ -1110,12 +1110,12 @@ void DeluMeterProtocol::makeFrameOfSetVerifyStatus()
 {
 	m_sendBuf = "";
 
-	for (int i=0; i<WAKEUP_CODE_NUM; i++)
+	for (int i=0; i<METER_WAKEUP_CODE_NUM; i++)
 	{
 		m_sendBuf.append(METER_WAKEUP_CODE);//唤醒红外
 	}
 
-	for (int j=0; j<PREFIX_CODE_NUM; j++)
+	for (int j=0; j<METER_PREFIX_CODE_NUM; j++)
 	{
 		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
 	}
@@ -1136,12 +1136,12 @@ void DeluMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString new
 {
 	m_sendBuf = "";
 
-	for (int i=0; i<WAKEUP_CODE_NUM; i++)
+	for (int i=0; i<METER_WAKEUP_CODE_NUM; i++)
 	{
 		m_sendBuf.append(METER_WAKEUP_CODE);//唤醒红外
 	}
 
-	for (int j=0; j<PREFIX_CODE_NUM; j++)
+	for (int j=0; j<METER_PREFIX_CODE_NUM; j++)
 	{
 		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
 	}
@@ -1200,12 +1200,12 @@ void DeluMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, 
 {
 	m_sendBuf = "";
 
-	for (int i=0; i<WAKEUP_CODE_NUM; i++)
+	for (int i=0; i<METER_WAKEUP_CODE_NUM; i++)
 	{
 		m_sendBuf.append(METER_WAKEUP_CODE);//唤醒红外
 	}
 
-	for (int j=0; j<PREFIX_CODE_NUM; j++)
+	for (int j=0; j<METER_PREFIX_CODE_NUM; j++)
 	{
 		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
 	}
