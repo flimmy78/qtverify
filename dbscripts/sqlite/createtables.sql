@@ -33,22 +33,23 @@ insert into T_Meter_Model(F_ID, F_Name, F_Desc) values(2, 'E-UWZ3', '型号3');
 ---------------------------------
 --表类型/采集代码
 ---------------------------------
-drop table if exists "T_Meter_Type"
+drop table if exists "T_Meter_PickCode"
 ;
-create table T_Meter_Type
+create table T_Meter_PickCode
 (
 F_ID integer not null primary key,
-F_Name varchar(24),
 F_Desc varchar(60)
 );
-insert into T_Meter_Type(F_ID, F_Name, F_Desc) values(0, 'machine', '机械表');
-insert into T_Meter_Type(F_ID, F_Name, F_Desc) values(1, 'supersonic', '超声波表');
-insert into T_Meter_Type(F_ID, F_Name, F_Desc) values(2, 'delu supersonic', '德鲁超声波表');
-insert into T_Meter_Type(F_ID, F_Name, F_Desc) values(3, 'delu machinery', '德鲁机械表');
-insert into T_Meter_Type(F_ID, F_Name, F_Desc) values(4, 'tiangang supersonic', '天罡超声波表');
-insert into T_Meter_Type(F_ID, F_Name, F_Desc) values(5, 'tiangang machinery', '天罡机械表');
-insert into T_Meter_Type(F_ID, F_Name, F_Desc) values(6, 'lichuang supersonic', '力创超声波表');
-insert into T_Meter_Type(F_ID, F_Name, F_Desc) values(7, 'huizhong supersonic', '汇中超声波表');
+insert into T_Meter_PickCode(F_ID, F_Desc) values(0, '通用');
+insert into T_Meter_PickCode(F_ID, F_Desc) values(1, '德鲁超声波表');
+insert into T_Meter_PickCode(F_ID, F_Desc) values(2, '天罡超声波表');
+insert into T_Meter_PickCode(F_ID, F_Desc) values(3, '力创超声波表');
+insert into T_Meter_PickCode(F_ID, F_Desc) values(4, '力创机械表');
+insert into T_Meter_PickCode(F_ID, F_Desc) values(5, '汇中超声波表');
+insert into T_Meter_PickCode(F_ID, F_Desc) values(6, '迈拓超声波表');
+insert into T_Meter_PickCode(F_ID, F_Desc) values(7, '瑞纳超声波表');
+insert into T_Meter_PickCode(F_ID, F_Desc) values(8, '光大');
+insert into T_Meter_PickCode(F_ID, F_Desc) values(9, '荷德鲁美特');
 
 
 ---------------------------------
@@ -224,7 +225,7 @@ F_Result smallint,                  --检定结果(1：合格，0：不合格)
 F_MeterPosNo smallint,              --表位号
 F_Model integer,                    --表型号，外键(T_Meter_Model.F_ID)
 F_Standard integer,                 --表规格(DN15/DN20/DN25)，外键(T_Meter_Standard.F_ID)
-F_MeterType integer,                --表类型()，外键(T_Meter_Type.F_ID)
+F_PickCode integer,                 --表类型(采集代码)，外键(T_Meter_PickCode.F_ID)
 F_ManufactDept integer,             --制造单位，外键(T_Manufacture_Dept.F_ID)
 F_VerifyDept integer,               --送检单位，外键(T_Verify_Dept.F_ID)
 F_Grade smallint,                   --计量等级（1,2,3）
@@ -243,7 +244,7 @@ F_Bak3 varchar(24),                 --备用域3
 F_Bak4 varchar(24),                 --备用域4
 constraint F_Model_fk foreign key(F_Model) references T_Meter_Model(F_ID),
 constraint F_Standard_fk foreign key(F_Standard) references T_Meter_Standard(F_ID),
-constraint F_MeterType_fk foreign key(F_MeterType) references T_Meter_Type(F_ID),
+constraint F_PickCode_fk foreign key(F_PickCode) references T_Meter_PickCode(F_ID),
 constraint F_ManufactDept_fk foreign key(F_ManufactDept) references T_Manufacture_Dept(F_ID),
 constraint F_VerifyDept_fk foreign key(F_VerifyDept) references T_Verify_Dept(F_ID),
 constraint F_VerifyPerson_fk foreign key(F_VerifyPerson) references T_User_Def_Tab(F_ID),
@@ -283,7 +284,7 @@ F_Result smallint,                  --检定结果（1：合格，0：不合格�
 F_MeterPosNo smallint,              --表位号
 F_Model integer,                    --表型号，外键(T_Meter_Model.F_ID)
 F_Standard integer,                 --表规格(DN15/DN20/DN25)，外键(T_Meter_Standard.F_ID)
-F_MeterType integer,                --表类型()，外键(T_Meter_Type.F_ID)
+F_PickCode integer,                 --表类型(采集代码)，外键(T_Meter_PickCode.F_ID)
 F_ManufactDept integer,             --制造单位，外键(T_Manufacture_Dept.F_ID)
 F_VerifyDept integer,               --送检单位，外键(T_Verify_Dept.F_ID)
 F_Grade smallint,                   --计量等级（1,2,3）
@@ -302,7 +303,7 @@ F_Bak3 varchar(24),                 --备用域3
 F_Bak4 varchar(24),                 --备用域4
 constraint F_Model_fk foreign key(F_Model) references T_Meter_Model(F_ID),
 constraint F_Standard_fk foreign key(F_Standard) references T_Meter_Standard(F_ID),
-constraint F_MeterType_fk foreign key(F_MeterType) references T_Meter_Type(F_ID),
+constraint F_PickCode_fk foreign key(F_PickCode) references T_Meter_PickCode(F_ID),
 constraint F_ManufactDept_fk foreign key(F_ManufactDept) references T_Manufacture_Dept(F_ID),
 constraint F_VerifyDept_fk foreign key(F_VerifyDept) references T_Verify_Dept(F_ID),
 constraint F_VerifyPerson_fk foreign key(F_VerifyPerson) references T_User_Def_Tab(F_ID),
@@ -374,7 +375,7 @@ create table T_Calc_Verify_Record
 F_ID integer not null primary key autoincrement,
 F_TimeStamp timestamp not null,     --时间戳（'yyyy-MM-dd HH:mm:ss.zzz')
 F_MeterNo varchar(16) not null,     --表号(14位数字: 6 + 8)
-F_DeltaTIdx smallint not null,      --流量点索引，例如1,2,3,4...
+F_DeltaTIdx smallint not null,      --温差点索引，例如1,2,3,4...
 F_Standard integer,                 --表规格(DN15/DN20/DN25)，外键(T_Meter_Standard.F_ID)
 F_Model integer,                    --表型号，外键(T_Meter_Model.F_ID)
 F_Grade smallint,                   --计量等级（1,2,3）

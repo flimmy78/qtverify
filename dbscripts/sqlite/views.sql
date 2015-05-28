@@ -32,8 +32,7 @@ select
   mod.[F_Name] F_Model_en,
   mod.[F_Desc] F_Model_zh,                    
   std.f_name F_Standard,                  
-  tp.[F_Name] F_MeterType_en,
-  tp.[F_Desc] F_MeterType_zh,                
+  tp.[F_Desc] F_PickCode_zh,                
   manu.[F_Name] F_ManufactDept_en,
   manu.[F_Desc] F_ManufactDept_zh,              
   vdpt.[F_Name] F_VerifyDept_en,
@@ -84,13 +83,13 @@ from
     ) rec, 
    T_Meter_Model mod,
    T_meter_standard std,   
-   T_Meter_Type tp,   
+   T_Meter_PickCode tp,   
    T_manufacture_dept manu,   
    T_verify_dept vdpt,   
    v_flow_verify_meterno_rowid rid
 where
    rec.[F_Standard]=std.[F_ID] and
-   rec.[F_MeterType]=tp.[F_ID] and
+   rec.[F_PickCode]=tp.[F_ID] and
    rec.[F_ManufactDept]=manu.[F_ID] and
    rec.[F_VerifyDept]=vdpt.[F_ID] and   
    rec.[F_Model]=mod.[F_ID] and   
