@@ -108,7 +108,7 @@ void FlowResultDlg::on_btnQuery_clicked()
 	model->setRelation(19, QSqlRelation("T_Meter_Model","F_ID","F_Name"));
 	//将T_Verify_Record表的第20个属性设为T_Meter_Standard表的F_ID属性的外键，并将其显示为T_Meter_Standard表的F_Name属性的值
 	model->setRelation(20, QSqlRelation("T_Meter_Standard","F_ID","F_Name"));
-	model->setRelation(21, QSqlRelation("T_Meter_Type","F_ID","F_Desc"));
+	model->setRelation(21, QSqlRelation("T_Meter_PickCode","F_ID","F_Desc"));
 	model->setRelation(22, QSqlRelation("T_Manufacture_Dept","F_ID","F_Desc"));
 	model->setRelation(23, QSqlRelation("T_Verify_Dept","F_ID","F_Desc"));
 	model->setRelation(25, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));
@@ -135,7 +135,7 @@ void FlowResultDlg::on_btnQuery_clicked()
 	model->setHeaderData(18, Qt::Horizontal, QObject::tr("MeterPosNO."));//表位号
 	model->setHeaderData(19, Qt::Horizontal, QObject::tr("Model"));//型号
 	model->setHeaderData(20, Qt::Horizontal, QObject::tr("Standard"));//规格
-	model->setHeaderData(21, Qt::Horizontal, QObject::tr("MeterType"));//表类型
+	model->setHeaderData(21, Qt::Horizontal, QObject::tr("PickCode"));//采集代码
 	model->setHeaderData(22, Qt::Horizontal, QObject::tr("ManufactDept"));//制造单位
 	model->setHeaderData(23, Qt::Horizontal, QObject::tr("VerifyDept"));//送检单位
 	model->setHeaderData(24, Qt::Horizontal, QObject::tr("Grade"));//计量等级

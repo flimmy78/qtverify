@@ -54,13 +54,14 @@ public:
 	int m_meterStdNum;	//热量表规格
 	MeterStandard_PTR m_meterStdPtr;
 
-	int m_meterTypeNum;	//热量表类型
-	MeterType_PTR m_meterTypePtr;
-
 	int m_manuFacNum;	//制造单位
 	Manufacture_PTR m_manuFacPtr;
 
 	void initUiData(); //从数据库读取记录，填充combox等
+
+	void mapPickCodeModel(); //采集代码模型
+	QSqlTableModel *m_pickCodeModel;
+	int m_curPickCodeIdx; //当前采集代码的索引
 
 	void mapVfDeptModel(); //送检单位模型
 	QSqlTableModel *m_vfDeptModel;

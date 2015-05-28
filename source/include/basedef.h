@@ -146,17 +146,6 @@ public:
 typedef MeterStandard_STR* MeterStandard_PTR;
 
 /*
-** FUNCTION -- 热量表类型(机械表、超声波表等)
-*/
-class MeterType_STR{
-public:
-    int    id;                   //
-	char   name[ASCNAME_LEN];	 //
-	char   desc[DESC_LEN];	     //
-};
-typedef MeterType_STR* MeterType_PTR;
-
-/*
 ** FUNCTION -- 制造单位()
 */
 class Manufacture_STR{
@@ -232,7 +221,6 @@ public:
 	//被检热量表的基本信息; m为meter的头字母
 	int m_stand;//被检表规格(DN15,DN20,DN25等) 
 	int m_maxMeters;//被检表的最大数量
-	int m_type;//被检表类型(机械表、超声波表等)
 	int m_manufac;//制造厂商(德鲁航天, 天罡等)
 	int m_grade;//被检表等级(一级,二级,三级等)
 	int m_model;//被检表型号(DELU-14.17W, SHARKY-475等)
@@ -297,7 +285,7 @@ public:
 	INT16	meterPosNo;		//表位号
 	int	    model;			//表型号
 	int  	standard;		//表规格
-	int	    meterType;		//表类型
+	int	    pickcode;		//采集代码
 	int	    manufactDept;	//制造单位
 	int	    verifyDept;		//送检单位
 	INT16	grade;	        //计量等级

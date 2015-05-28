@@ -42,7 +42,6 @@ QTEXDB_EXPORT void closedb();//程序退出前，调用closedb()，关闭数据库
 
 QTEXDB_EXPORT	int getMeterStandard(int& num, MeterStandard_PTR &ptr);
 QTEXDB_EXPORT	int getMaxMeterByIdx(int idx);
-QTEXDB_EXPORT	int getMeterType(int& num, MeterType_PTR &ptr);
 QTEXDB_EXPORT	int getManufacture(int& num, Manufacture_PTR &ptr);
 
 QTEXDB_EXPORT	int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id);

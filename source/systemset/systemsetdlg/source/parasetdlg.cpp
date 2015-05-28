@@ -36,8 +36,6 @@ ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 	
 	m_meterStdNum = 0;
 	m_meterStdPtr = NULL;
-	m_meterTypeNum = 0;
-	m_meterTypePtr = NULL;
 	m_manuFacNum = 0;
 	m_manuFacPtr = NULL;
 	initUiData();//以数据库中的数据, 初始化comboBox的值
@@ -72,12 +70,6 @@ void ParaSetDlg::closeEvent(QCloseEvent * event)
 	{
 		delete []m_meterStdPtr;
 		m_meterStdPtr = NULL;
-	}
-
-	if (m_meterTypePtr)
-	{
-		delete []m_meterTypePtr;
-		m_meterTypePtr = NULL;
 	}
 
 	if (m_manuFacPtr)
@@ -137,12 +129,14 @@ void ParaSetDlg::initUiData()
 		ui.cmbStandard->insertItem(i, m_meterStdPtr[i].name);
 	}
 
+	//采集代码 从配置文件pickcode.ini获取
+// 	QStringList strlist = getPickCodeStringList();
+// 	for (int m=0; m<strlist.count(); m++)
+// 	{
+// 		ui.cmbCollectCode->insertItem(m, strlist.at(m));
+// 	}
 	//采集代码
-	QStringList strlist = getPickCodeStringList();
-	for (int m=0; m<strlist.count(); m++)
-	{
-		ui.cmbCollectCode->insertItem(m, strlist.at(m));
-	}
+	mapPickCodeModel();
 
 	//制造单位
 	mapManuDeptModel();
@@ -157,6 +151,17 @@ void ParaSetDlg::initUiData()
 	mapMeterModelModel();
 
 	cBoxData_inited = true;//下拉条已初始化完毕
+}
+
+//映射采集代码
+void ParaSetDlg::mapPickCodeModel()
+{
+	m_pickCodeModel = new QSqlTableModel(this);  
+	m_pickCodeModel->setTable("T_Meter_PickCode");  
+	m_pickCodeModel->select();
+	ui.cmbPickCode->setModel(m_pickCodeModel);  
+	ui.cmbPickCode->setModelColumn(m_pickCodeModel->fieldIndex("F_Desc")); // 使用字段名得到正确的标题索引,以使组合框显示中文描述  
+	m_pickCodeModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
 }
 
 //映射制造单位
@@ -221,7 +226,7 @@ void ParaSetDlg::installLastParams()
 void ParaSetDlg::installHead()
 {
 	ui.cmbStandard->setCurrentIndex(lastParams->m_params->m_stand);
-	ui.cmbCollectCode->setCurrentIndex(lastParams->m_params->m_pickcode);
+	ui.cmbPickCode->setCurrentIndex(lastParams->m_params->m_pickcode);
 	ui.cmbManufacture->setCurrentIndex(lastParams->m_params->m_manufac);
 	ui.cmbGrade->setCurrentIndex(lastParams->m_params->m_grade-1);
 	ui.cmbModel->setCurrentIndex(lastParams->m_params->m_model);
@@ -342,6 +347,8 @@ void ParaSetDlg::on_btnSave_clicked()
 	m_modelModel->submitAll();
 	ui.cmbModel->setCurrentIndex(m_curModelIdx);
 
+	m_pickCodeModel->submitAll();
+	ui.cmbPickCode->setCurrentIndex(m_curPickCodeIdx);
 
 	QMessageBox::information(this, tr("OK"), tr("Saving configurations successfully!"));
 	emit saveSuccessSignal();
@@ -410,7 +417,8 @@ void ParaSetDlg::SaveHead()
 	m_curVfDeptIdx = ui.cmbVerifyCompany->currentIndex();
 	settings->setValue("verifyperson", ui.cmbVerifyPerson->currentIndex());
 	m_curVerifyPersonIdx = ui.cmbVerifyPerson->currentIndex();
-	settings->setValue("pickcode", ui.cmbCollectCode->currentIndex());
+	settings->setValue("pickcode", ui.cmbPickCode->currentIndex());
+	m_curPickCodeIdx = ui.cmbPickCode->currentIndex(); 
 	settings->setValue("nflowpoint", ui.cmbFlow->currentIndex());
 	
 	/********新增参数项***************************************************/
@@ -540,7 +548,6 @@ void ParaSetReader::readHead()
 	m_params->m_maxMeters = getMaxMeterByIdx(m_params->m_stand);
 
 	///////////////////////////////////////////////////////////////////
-	m_params->m_type = m_settings->value("head/metertype").toInt();
 	m_params->m_manufac = m_settings->value("head/manufacture").toInt();	
 	m_params->m_model = m_settings->value("head/model").toInt();
 	m_params->m_vcomp = m_settings->value("head/verifycompany").toInt();

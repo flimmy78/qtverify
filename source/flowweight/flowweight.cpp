@@ -437,7 +437,6 @@ int FlowWeightDlg::readNowParaConfig()
 	m_exaustSecond = m_nowParams->ex_time;   //排气时间
 	m_standard = m_nowParams->m_stand;       //表规格
 	m_model = m_nowParams->m_model;   //表型号
-	m_meterType = m_nowParams->m_type;//表类型
 	m_maxMeterNum = m_nowParams->m_maxMeters;//不同表规格对应的最大检表数量
 	m_pickcode = m_nowParams->m_pickcode; //采集代码
 	m_flowSC = m_nowParams->sc_flow; //流量安全系数
@@ -1157,7 +1156,7 @@ int FlowWeightDlg::calcMeterError(int idx)
 	m_recPtr[idx].meterPosNo = m_meterPosMap[idx];
 	m_recPtr[idx].standard = m_standard;
 	m_recPtr[idx].model = m_model;
-	m_recPtr[idx].meterType = m_meterType; //表类型
+	m_recPtr[idx].pickcode = m_pickcode; //采集代码
 	m_recPtr[idx].manufactDept = m_nowParams->m_manufac;
 	m_recPtr[idx].verifyDept = m_nowParams->m_vcomp;
 	m_recPtr[idx].verifyPerson = m_nowParams->m_vperson;

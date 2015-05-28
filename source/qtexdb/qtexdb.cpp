@@ -140,42 +140,6 @@ int getMaxMeterByIdx(int idx)
 	return -1;
 }
 
-//获取所有的表类型
-int getMeterType(int& num, MeterType_PTR &ptr)
-{
-	int i = 0;
-	QSqlQuery query; // 新建一个查询的实例
-// 	bool a = query.driver()->hasFeature(QSqlDriver::QuerySize); //是否支持QuerySize特性
-	if(query.exec("select count(*) from t_meter_type")) // t_meter_type 表的记录数
-	{
-		// 本次查询成功
-		query.first(); //第一条记录
-		num = query.value(0).toInt();
-		ptr = new MeterType_STR[num];
-		memset(ptr, 0, sizeof(MeterType_STR)*num);
-	}
-
-	if(query.exec("select f_id,f_name,f_desc from t_meter_type order by f_id"))
-	{
-		while(query.next())
-		{
-			ptr[i].id = query.value(0).toInt();
-			strcpy_s(ptr[i].name, query.value(1).toString().toAscii());
-			strcpy_s(ptr[i].desc, query.value(2).toString().toLocal8Bit()); //汉字编码
-			qDebug()<<ptr[i].desc<<"::"<<query.value(1).toString().toLocal8Bit();
-			i++;
-		}
-	}
-	else  // 如果查询失败，用下面的方法得到具体数据库返回的原因
-	{
-		QSqlError error = query.lastError();
-		qWarning()<<error.text();
-		return false;
-	}
-
-	return true;
-}
-
 
 //获取所有的制造单位
 int getManufacture(int& num, Manufacture_PTR &ptr)
@@ -290,7 +254,7 @@ int insertFlowVerifyRec(Flow_Verify_Record_PTR ptr, int num)
 		sql.append("F_MeterPosNo,");
 		sql.append("F_Model,");
 		sql.append("F_Standard ,");
-		sql.append("F_MeterType,");
+		sql.append("F_PickCode,");
 		sql.append("F_ManufactDept,");
 		sql.append("F_VerifyDept,");
 		sql.append("F_Grade,");
@@ -330,7 +294,7 @@ int insertFlowVerifyRec(Flow_Verify_Record_PTR ptr, int num)
 		sql.append(QString("%1, ").arg(ptr[i].meterPosNo, 0, 10));//F_MeterPosNo
 		sql.append(QString("%1, ").arg(ptr[i].model, 0, 10));//F_Model
 		sql.append(QString("%1, ").arg(ptr[i].standard, 0, 10));//F_Standard
-		sql.append(QString("%1, ").arg(ptr[i].meterType, 0, 10));//F_MeterType
+		sql.append(QString("%1, ").arg(ptr[i].pickcode, 0, 10));//F_PickCode
 		sql.append(QString("%1, ").arg(ptr[i].manufactDept, 0, 10));//F_ManufactDept
 		sql.append(QString("%1, ").arg(ptr[i].verifyDept, 0, 10));//F_VerifyDept
 		sql.append(QString("%1, ").arg(ptr[i].grade, 0, 10));//F_Grade
