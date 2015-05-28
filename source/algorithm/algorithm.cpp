@@ -54,30 +54,6 @@ int getPortSetIni(PortSet_Ini_PTR info)
 	return true;
 }
 
-//获取参数设置(质量法-分量检测)
-int getParaSetIni(ParaSet_Ini_PTR info)
-{
-	QString filename;
-	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
-	if (adehome.isEmpty())
-	{
-		qWarning()<<"Get $(ADEHOME) Failed!";
-		return false;
-	}
-#ifdef __unix
-	filename = adehome + "\/ini\/verifyparaset.ini";
-#else
-	filename = adehome + "\\ini\\verifyparaset.ini";
-#endif
-
-	QSettings settings(filename, QSettings::IniFormat);
-	settings.setIniCodec("GB2312"); //解决ini文件读中文乱码
-	strcpy_s(info->meterstandard, settings.value("head/standard").toString().toAscii());
-	strcpy_s(info->metertype, settings.value("head/metertype").toString().toAscii());
-
-	return true;
-}
-
 //获取主机-从机设置信息
 int getMasterSlaveIni(MasterSlave_Ini_PTR info)
 {

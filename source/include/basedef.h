@@ -64,7 +64,6 @@ enum Verify_Method
 	STANDARD_METHOD    //标准表法
 };
 
-
 #define ALGO_ENTHALPY		0 //焓差法
 #define ALGO_KCOE			1 //K系数法
 
@@ -79,9 +78,9 @@ enum Verify_Method
 
 #define ENTHALPY_R	461.526 //水的比焓常数, 个人理解为单位质量的水, 其温度变化1K, 所交换的热值(见IAPWS-IF97-Re 水和水蒸气特性v.pdf P5 及http://en.wikipedia.org/wiki/Gas_constant)
 
-#define GRADE_ONE	0 //1级表
-#define GRADE_TWO	1 //2级表
-#define GRADE_THREE	2 //3级表
+#define GRADE_ONE	    0  //1级表
+#define GRADE_TWO	    1  //2级表
+#define GRADE_THREE 	2  //3级表
 
 #define IMITATION_FLOW_RATE 2.88 //模拟流量时的流速, m3/h
 
@@ -114,16 +113,6 @@ public:
 	int     version;
 };
 typedef PortSet_Ini_STR* PortSet_Ini_PTR;
-
-/*
-** FUNCTION -- 获取检定参数设置信息(verifyparaset.ini文件)
-*/
-class ParaSet_Ini_STR{
-public:
-    char     meterstandard[8];               //表规格
-    char     metertype[24];					 //表类型
-};
-typedef ParaSet_Ini_STR* ParaSet_Ini_PTR;
 
 /*
 ** FUNCTION -- 获取主机-从机设置信息(masterslaveset.ini文件)

@@ -73,10 +73,8 @@ public:
 	float m_endWeight;  //天平终值
 	float m_deltaWeight[FLOW_SAMPLE_NUM];
 	QTimer *m_flowRateTimer;  //计时器:用于计算流速
-	
 
 	PortSet_Ini_STR m_portsetinfo; //端口配置
-	ParaSet_Ini_STR m_parasetinfo; //参数设置(质量法-分量检测)
 
 	void closeEvent(QCloseEvent * event);
 	void showEvent(QShowEvent *event);

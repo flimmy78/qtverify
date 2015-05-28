@@ -37,12 +37,6 @@ DataTestDlg::DataTestDlg(QWidget *parent, Qt::WFlags flags)
 	initValveStatus();      //初始化阀门状态
 	initRegulateStatus();   //初始化调节阀状态
 
-	//获取参数设置信息
-	if (!getParaSetIni(&m_parasetinfo))
-	{
-		QMessageBox::warning(this, tr("Warning"), tr("get para set info failed"));//获取质量法参数配置信息失败!请重新设置！
-	}
-	qDebug()<<"metertype:"<<m_parasetinfo.metertype;
 
 	m_paraSetDlg = NULL;
 	m_paraSetReader = new ParaSetReader(); //读参数设置接口
