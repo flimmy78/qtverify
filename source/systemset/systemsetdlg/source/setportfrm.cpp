@@ -18,19 +18,15 @@
 
 #include "setportfrm.h"
 #include "commondefine.h"
+#include "algorithm.h"
 
 SetPortFrm::SetPortFrm(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
 	gui.setupUi(this);
 
-	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
-#ifdef Q_OS_LINUX
-		IniPath = adehome + "\/ini\/portset.ini";
-#elif defined (Q_OS_WIN)
-		IniPath = adehome + "\\ini\\portset.ini";
-#endif
-	PortSet = new QSettings(IniPath, QSettings::IniFormat);
+	QString filename = getFullIniFileName("portset.ini");
+	PortSet = new QSettings(filename, QSettings::IniFormat);
 
 	InstallIni();
 }

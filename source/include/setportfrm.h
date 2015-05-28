@@ -19,7 +19,6 @@ public:
 
 private:
 	Ui::SetPortDlgClass gui;
-	QString IniPath;
 	QSettings *PortSet;
 	void InstallIni();
 	void WriteIni();

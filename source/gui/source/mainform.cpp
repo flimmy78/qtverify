@@ -621,8 +621,7 @@ void MainForm::on_actionFashion_triggered()
 
 void MainForm::chaneLanguage(QString lang)
 {
-	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
-	QString file_name = adehome + "\\ini\\tr_qtverify.ini";
+	QString file_name = getFullIniFileName("tr_qtverify.ini");
 	QFile file(file_name );
 	if( !file.open(QIODevice::ReadOnly | QIODevice::Text) ) 
 	{
@@ -635,11 +634,10 @@ void MainForm::chaneLanguage(QString lang)
 	while ( !text.atEnd() ) 
 	{
 		line = text.readLine().simplified();
-		if( line.length() == 0 ) 
+		if ( line.isEmpty() || line.startsWith("#") ) 
+		{
 			continue;
-		if( line.at(0) == '#' ) 
-			continue;
-
+		}
 		QString i18nName = QProcessEnvironment::systemEnvironment().value("ADEHOME") + "\\uif\\i18n\\" + lang + "\\";
 		line = line + "_" + lang + ".qm";
 		i18nName.append(line);//.append(QString("_%1.qm").arg(lang));

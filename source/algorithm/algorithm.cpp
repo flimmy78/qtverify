@@ -24,19 +24,7 @@
 //获取控制板的端口号配置信息
 int getPortSetIni(PortSet_Ini_PTR info)
 {
-	QString filename;
-	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
-	if (adehome.isEmpty())
-	{
-		qWarning()<<"Get $(ADEHOME) Failed!";
-		return false;
-	}
-#ifdef __unix
-	filename = adehome + "\/ini\/portset.ini";
-#else
-	filename = adehome + "\\ini\\portset.ini";
-#endif
-
+	QString filename = getFullIniFileName("portset.ini");
 	QSettings settings(filename, QSettings::IniFormat);
 
 	info->waterInNo = settings.value("Relay/waterInNo").toInt();
@@ -58,19 +46,7 @@ int getPortSetIni(PortSet_Ini_PTR info)
 //获取主机-从机设置信息
 int getMasterSlaveIni(MasterSlave_Ini_PTR info)
 {
-	QString filename;
-	QString adehome;
-	if (adehome.isEmpty())
-	{
-		qWarning()<<"Get $(ADEHOME) Failed!";
-		return false;
-	}
-#ifdef __unix
-	filename = adehome + "\/ini\/masterslaveset.ini";
-#else
-	filename = adehome + "\\ini\\masterslaveset.ini";
-#endif
-
+	QString filename = getFullIniFileName("masterslaveset.ini");
 	QSettings settings(filename, QSettings::IniFormat);
 
 	info->netmode = settings.value("localhost/netmode").toInt();

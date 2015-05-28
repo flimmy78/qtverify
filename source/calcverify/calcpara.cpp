@@ -26,6 +26,7 @@
 #include <math.h>
 
 #include "calcpara.h"
+#include "algorithm.h"
 
 CalcParaDlg::CalcParaDlg(QWidget *parent, Qt::WFlags flags)
 	: QDialog(parent, flags)
@@ -119,13 +120,7 @@ void CalcParaDlg::mapMeterStandardModel()
 
 void CalcParaDlg::initSettings()
 {
-	QString filename;//配置文件的文件名
-	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
-#ifdef __unix
-	filename = adehome + "\/ini\/calcpara.ini";
-#else
-	filename = adehome + "\\ini\\calcpara.ini";
-#endif
+	QString filename = getFullIniFileName("calcpara.ini");//配置文件的文件名
 	settings = new QSettings(filename, QSettings::IniFormat);
 	settings->setIniCodec("GB2312");//解决向ini文件中写汉字乱码
 }

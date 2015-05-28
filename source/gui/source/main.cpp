@@ -10,6 +10,7 @@
 #include "logger.h"
 #include "logindialog.h"
 #include "qtexdb.h"
+#include "algorithm.h"
 
 MainForm *g_mainform;
 
@@ -47,8 +48,7 @@ int main(int argc, char *argv[])
 	{
 		lang = QString::fromLocal8Bit(argv[1]);
 	}
-	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
-	QString file_name = adehome + "\\ini\\tr_qtverify.ini";
+	QString file_name = getFullIniFileName("tr_qtverify.ini");
 	QFile file(file_name );
 	if( file.open(QIODevice::ReadOnly | QIODevice::Text) ) 
 	{
@@ -58,11 +58,10 @@ int main(int argc, char *argv[])
 		while ( !text.atEnd() ) 
 		{
 			line = text.readLine().simplified();
-			if( line.length() == 0 ) 
+			if ( line.isEmpty() || line.startsWith("#") ) 
+			{
 				continue;
-			if( line.at(0) == '#' ) 
-				continue;
-
+			}
 			QString i18nName = QProcessEnvironment::systemEnvironment().value("ADEHOME") + "\\uif\\i18n\\" + lang + "\\";
 			line = line + "_" + lang + ".qm";
 			i18nName.append(line);//.append(QString("_%1.qm").arg(lang));
