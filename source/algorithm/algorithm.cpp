@@ -14,6 +14,7 @@
 
 #include <QtCore/QDebug>
 #include <QtCore/QSettings>
+#include <QtCore/QFile>
 #include <QProcessEnvironment>
 #include <qmath.h>
 
@@ -103,6 +104,29 @@ QString getFullIniFileName(QString filename)
 	fullname = adehome + "\\ini\\" + filename;
 #endif
 	return fullname;
+}
+
+//获取所有采集代码对应的中文名称
+QStringList getPickCodeStringList()
+{
+	QString filename = getFullIniFileName("pickcode.ini");
+	QString str;
+	QStringList strlist;
+	QFile file(filename);
+	if (file.open(QIODevice::ReadOnly))
+	{
+		QTextStream stream(&file);
+		while (!stream.atEnd())
+		{
+			str = stream.readLine().simplified(); //去除首尾空格
+			if (str.isEmpty() || str.startsWith("#"))
+			{
+				continue;
+			}
+			strlist += str.section("=", 1);
+		}
+	}
+	return strlist;
 }
 
 float detA(float a00, float a01, float a10, float a11)

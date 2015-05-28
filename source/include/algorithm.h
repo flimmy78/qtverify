@@ -21,6 +21,7 @@
 ALGORITHM_EXPORT int getPortSetIni(PortSet_Ini_PTR info); //获取控制板的端口号配置信息
 ALGORITHM_EXPORT int getMasterSlaveIni(MasterSlave_Ini_PTR info); //获取主机-从机设置信息
 ALGORITHM_EXPORT QString getFullIniFileName(QString filename);//获取配置文件filename的完整路径
+ALGORITHM_EXPORT QStringList getPickCodeStringList();//获取所有采集代码对应的中文名称
 ALGORITHM_EXPORT float detA(float a00, float a01, float a10, float a11);//计算2阶行列式的值， aij表示第i行 第j列的元素
 ALGORITHM_EXPORT plaParam_PTR getPlaParam(pla_T_R_PTR pla_p, int num=3);//计算铂电阻的电气系数
 ALGORITHM_EXPORT float getPlaRt(float r0, float a, float b, float tmp);//计算铂电阻在温度tmp(tmp>0℃)时的电阻值
