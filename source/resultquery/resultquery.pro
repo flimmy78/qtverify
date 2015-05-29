@@ -8,7 +8,7 @@ QMAKE_LIBDIR +=  ./           \
         	     $(ADEHOME)/lib \
 	             $(ADEHOME)/bin
 
-LIBS += -lQt3Supportd4 -lQt3Support4 -lqtexdb -lalgorithm -lreport	           
+LIBS += -lqtexdb -lalgorithm -lreport	           
 
 DESTDIR = $(ADEHOME)\tmp\resultquerydlg\obj
 OBJECTS_DIR = $(ADEHOME)/tmp/resultquerydlg/obj

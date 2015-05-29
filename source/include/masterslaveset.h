@@ -18,6 +18,7 @@
 
 #include <QtGui/QWidget>
 #include <QtCore/QSettings>
+#include <QtGui/QButtonGroup>
 
 #include "ui_masterslaveset.h"
 #include "basedef.h"
@@ -32,6 +33,7 @@ public:
 
 	MasterSlave_Ini_STR m_masterslaveIni; //主机-从机配置
 	QSettings *m_settings;
+	QButtonGroup *btnGrpHostFlag;
 
 public slots:
 

@@ -10,8 +10,7 @@ QMAKE_LIBDIR +=  ./           \
         	     $(ADEHOME)/lib \
 	             $(ADEHOME)/bin 
 	            
-LIBS +=	-lQt3Supportd4 -lQt3Support4 -lprotocol -lsystemsetdlg -lcomobject -lqtexdb -lalgorithm	\
-			  -ldatatestdlg
+LIBS += -lprotocol -lsystemsetdlg -lcomobject -lqtexdb -lalgorithm -ldatatestdlg
 
 DESTDIR = $(ADEHOME)\tmp\flowweight
 #MOC_DIR = $(ADEHOME)/tmp/flowweight/moc

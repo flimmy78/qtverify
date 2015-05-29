@@ -9,7 +9,7 @@ QMAKE_LIBDIR +=  ./           \
         	     $(ADEHOME)/lib \
 	             $(ADEHOME)/bin 
 
-LIBS +=	-lQt3Supportd4 -lQt3Support4 -lprotocol -lsystemsetdlg -lcomobject -lqtexdb -lalgorithm -ltverparamparamdlg
+LIBS +=	-lprotocol -lsystemsetdlg -lcomobject -lqtexdb -lalgorithm -ltverparamparamdlg
 
 DESTDIR = $(ADEHOME)\tmp\tverparam
 OBJECTS_DIR = $(ADEHOME)/tmp/tverparam/obj

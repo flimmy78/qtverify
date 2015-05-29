@@ -9,7 +9,7 @@ QMAKE_LIBDIR +=  ./           \
         	     $(ADEHOME)/lib \
 	             $(ADEHOME)/bin 
 	            
-LIBS +=	-lQt3Supportd4 -lQt3Support4 -lprotocol -lsystemsetdlg
+LIBS +=	-lprotocol
 
 DESTDIR = $(ADEHOME)\tmp\comobject\obj
 #MOC_DIR = $(ADEHOME)/tmp/comobject/moc

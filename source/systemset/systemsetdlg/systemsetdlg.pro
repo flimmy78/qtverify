@@ -10,7 +10,7 @@ QMAKE_LIBDIR +=  ./           \
         	     $(ADEHOME)/lib \
 	             $(ADEHOME)/bin
 	             
-LIBS += -lQt3Supportd4 -lQt3Support4 -lqtexdb -lalgorithm	           
+LIBS += -lqtexdb -lalgorithm	           
 
 DESTDIR = $(ADEHOME)\tmp\systemset\systemsetdlg\obj
 #MOC_DIR = $(ADEHOME)/tmp/systemset/systemsetdlg/moc

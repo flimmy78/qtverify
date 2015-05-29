@@ -9,7 +9,7 @@ QMAKE_LIBDIR +=  ./           \
         	     $(ADEHOME)/lib \
 	             $(ADEHOME)/bin
 
-LIBS += -lQt3Supportd4 -lalgorithm
+LIBS += -lalgorithm
 
 DESTDIR = $(ADEHOME)\tmp\masterslaveset\obj
 #MOC_DIR = $(ADEHOME)/tmp/masterslaveset/moc
@@ -17,8 +17,8 @@ OBJECTS_DIR = $(ADEHOME)/tmp/masterslaveset/obj
 UI_DIR = $(ADEHOME_INC)/include
 
 INCLUDEPATH  	=    ./      \
-									 include \ 
-									 $$(ADEHOME_INC)/include
+					include  \ 
+					$$(ADEHOME_INC)/include
 
 HEADERS	+= $$(ADEHOME_INC)/include/masterslaveset.h
 	

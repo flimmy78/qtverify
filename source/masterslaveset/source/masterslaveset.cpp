@@ -10,6 +10,10 @@ CMasterSlave::CMasterSlave(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
 	ui.setupUi(this);
+	
+	btnGrpHostFlag = new QButtonGroup(ui.grpBoxHostFlag);
+	btnGrpHostFlag->addButton(ui.masterFlag);
+	btnGrpHostFlag->addButton(ui.slaveFlag);
 
 	if ( getMasterSlaveIni(&m_masterslaveIni) )
 	{
@@ -34,19 +38,27 @@ void CMasterSlave::initSettingsInfo()
 	if (m_masterslaveIni.netmode) //网络模式
 	{
 		ui.checkBoxNetMode->setCheckState(Qt::Checked);
-		ui.btnGrpHostFlag->setEnabled(true);
+		ui.grpBoxHostFlag->setEnabled(true);
 		ui.grpBoxMaster->setEnabled(true);
 		ui.grpBoxSlave->setEnabled(true);
 	}
 	else //本地模式
 	{
 		ui.checkBoxNetMode->setCheckState(Qt::Unchecked);
-		ui.btnGrpHostFlag->setEnabled(false);
+		ui.grpBoxHostFlag->setEnabled(false);
 		ui.grpBoxMaster->setEnabled(false);
 		ui.grpBoxSlave->setEnabled(false);
 	}
 // 	ui.checkBoxNetMode->setCheckState((m_masterslaveIni.netmode ? Qt::Checked : Qt::Unchecked));
-	ui.btnGrpHostFlag->setButton(m_masterslaveIni.hostflag);
+	int hostflag = m_masterslaveIni.hostflag;
+	if (hostflag)
+	{
+		ui.masterFlag->setChecked(true);
+	}
+	else
+	{
+		ui.slaveFlag->setChecked(true);
+	}
 	
 	ui.lnEditIpSlave1->setText(m_masterslaveIni.slave1IP);
 	ui.lnEditHostnameSlave1->setText(QString::fromLocal8Bit(m_masterslaveIni.slave1name));//汉字编码
@@ -65,7 +77,7 @@ void CMasterSlave::on_btnSave_clicked()
 	m_settings->setIniCodec("GB2312"); //解决向ini文件中写汉字乱码
 
 	m_settings->setValue("localhost/netmode",(ui.checkBoxNetMode->isChecked()?1:0));
-	m_settings->setValue("localhost/hostflag",ui.btnGrpHostFlag->selectedId());
+	m_settings->setValue("localhost/hostflag",btnGrpHostFlag->checkedId());
 
 	m_settings->setValue("master/hostname",ui.lnEditHostnameMaster->text());
 	m_settings->setValue("master/ip",ui.lnEditIpMaster->text());
@@ -90,13 +102,13 @@ void CMasterSlave::on_checkBoxNetMode_stateChanged(int state)
 {
 	if (state==Qt::Checked)
 	{
-		ui.btnGrpHostFlag->setEnabled(true);
+		ui.grpBoxHostFlag->setEnabled(true);
 		ui.grpBoxMaster->setEnabled(true);
 		ui.grpBoxSlave->setEnabled(true);
 	}
 	else
 	{
-		ui.btnGrpHostFlag->setEnabled(false);
+		ui.grpBoxHostFlag->setEnabled(false);
 		ui.grpBoxMaster->setEnabled(false);
 		ui.grpBoxSlave->setEnabled(false);
 	}
