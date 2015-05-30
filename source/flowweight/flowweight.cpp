@@ -105,7 +105,7 @@ FlowWeightDlg::FlowWeightDlg(QWidget *parent, Qt::WFlags flags)
 	m_oldMaxMeterNum = 0;
 	m_validMeterNum = 0;     //实际检表个数
 	m_exaustSecond = 45;     //默认排气时间45秒
-	m_pickcode = 0;          //采集代码 默认德鲁
+	m_pickcode = PROTOCOL_VER_DELU; //采集代码 默认德鲁
 	m_flowSC = 1.0;			 //流量安全系数，默认1.0
 	m_meterStartValue = NULL;
 	m_meterEndValue = NULL;
@@ -422,7 +422,7 @@ int FlowWeightDlg::isComAndPortNormal()
 	return true;
 }
 
-//获取当前检定参数
+//获取当前检定参数;初始化表格控件；显示关键参数；初始化热量表通讯串口
 int FlowWeightDlg::readNowParaConfig()
 {
 	if (NULL == m_paraSetReader)
@@ -562,6 +562,11 @@ void FlowWeightDlg::slotExaustFinished()
 			qWarning()<<"关闭所有流量点阀门失败，检定结束";
 			return;
 		}
+	}
+
+	if (m_stopFlag)
+	{
+		return;
 	}
 
 	if (!prepareInitBalance())//准备天平初始重量
@@ -757,12 +762,6 @@ void FlowWeightDlg::on_btnStart_clicked()
 	clearTableContents();
 	m_validMeterNum = 0;
 
-	m_exaustSecond = m_nowParams->ex_time;
-	m_exaustTimer->start(1000);//开始排气倒计时
-	ui.labelHintProcess->setText(tr("Exhaust countdown: %1 second").arg(m_exaustSecond));
-	ui.labelHintPoint->clear();
-	qDebug()<<"排气倒计时:"<<m_exaustSecond<<"秒";
-
 	if (m_autopick) //自动读表
 	{
 		readAllMeter();
@@ -776,7 +775,7 @@ void FlowWeightDlg::on_btnStart_clicked()
 }
 
 /*
-** 点击"排气按钮"，开始检定
+** 点击"排气"按钮
 */
 int FlowWeightDlg::on_btnExhaust_clicked()
 {
@@ -793,8 +792,20 @@ int FlowWeightDlg::on_btnExhaust_clicked()
 		QMessageBox::warning(this, tr("Warning"), tr("exhaust air failed!"));
 		return false;
 	}
+	m_stopFlag = true;
+	m_exaustSecond = m_nowParams->ex_time;
+	m_exaustTimer->start(1000);//开始排气倒计时
+	ui.labelHintProcess->setText(tr("Exhaust countdown: %1 second").arg(m_exaustSecond));
+	ui.labelHintPoint->clear();
+	qDebug()<<"排气倒计时:"<<m_exaustSecond<<"秒";
 
 	return true;
+}
+
+//点击"继续"按钮
+void FlowWeightDlg::on_btnGoOn_clicked()
+{
+	startVerify();
 }
 
 //点击"下一步"按钮
@@ -853,11 +864,14 @@ void FlowWeightDlg::startVerify()
 	m_nowOrder = 1;
 
 	//判断实际检表的个数(根据获取到的表号个数)
-	if (getValidMeterNum() <= 0)
+	if (getValidMeterNum() != m_maxMeterNum)
 	{
-		QMessageBox::warning(this, tr("Warning"), tr("please input meter number, then click \"start\" button!"));//请输入表号！然后点击'开始'按钮
-		ui.btnStart->show();
-		return;
+		int button = QMessageBox::question(this, tr("Question"), tr("meter num is right?\nclick \'yes\' to continue;or click \'No\',then read meter NO. again"), \
+			QMessageBox::Yes|QMessageBox::Default, QMessageBox::No|QMessageBox::Escape);
+		if (button == QMessageBox::No)
+		{
+			return;
+		}
 	}
 
 	if (m_recPtr != NULL)
@@ -1599,7 +1613,10 @@ void FlowWeightDlg::on_btnAllAdjError_clicked()
 //修改表号（所有表）
 void FlowWeightDlg::on_btnAllModifyNO_clicked()
 {
-
+	for (int i=0; i<m_maxMeterNum; i++)
+	{
+		m_meterObj[i].askModifyMeterNO("11110000000000", ui.tableWidget->item(i, COLUMN_METER_NUMBER)->text());
+	}
 }
 
 /*

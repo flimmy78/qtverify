@@ -230,7 +230,7 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="2" rowspan="5">
+   <item row="1" column="2" rowspan="6">
     <widget class="QGroupBox" name="groupBox_4">
      <property name="title">
       <string>DataAcquisition</string>
@@ -702,7 +702,7 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="3" rowspan="5">
+   <item row="1" column="3" rowspan="6">
     <widget class="QGroupBox" name="groupBox_3">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -801,14 +801,14 @@
      </property>
      <property name="minimumSize">
       <size>
-       <width>110</width>
-       <height>35</height>
+       <width>100</width>
+       <height>30</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>110</width>
-       <height>35</height>
+       <width>100</width>
+       <height>30</height>
       </size>
      </property>
      <property name="text">
@@ -816,7 +816,7 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="0" rowspan="4">
+   <item row="2" column="0" rowspan="5">
     <widget class="QGroupBox" name="groupBox">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -977,7 +977,7 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="1" rowspan="4">
+   <item row="2" column="1" rowspan="5">
     <widget class="QGroupBox" name="groupBox_2">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -1272,14 +1272,14 @@ t</string>
      </property>
      <property name="minimumSize">
       <size>
-       <width>110</width>
-       <height>35</height>
+       <width>100</width>
+       <height>30</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>110</width>
-       <height>35</height>
+       <width>100</width>
+       <height>30</height>
       </size>
      </property>
      <property name="text">
@@ -1288,6 +1288,31 @@ t</string>
     </widget>
    </item>
    <item row="3" column="4">
+    <widget class="QPushButton" name="btnGoOn">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>100</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>100</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>GoOn</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="4">
     <widget class="QPushButton" name="btnNext">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -1297,14 +1322,14 @@ t</string>
      </property>
      <property name="minimumSize">
       <size>
-       <width>110</width>
-       <height>35</height>
+       <width>100</width>
+       <height>30</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>110</width>
-       <height>35</height>
+       <width>100</width>
+       <height>30</height>
       </size>
      </property>
      <property name="text">
@@ -1312,7 +1337,7 @@ t</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="4">
+   <item row="5" column="4">
     <widget class="QPushButton" name="btnStop">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -1322,14 +1347,14 @@ t</string>
      </property>
      <property name="minimumSize">
       <size>
-       <width>110</width>
-       <height>35</height>
+       <width>100</width>
+       <height>30</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>110</width>
-       <height>35</height>
+       <width>100</width>
+       <height>30</height>
       </size>
      </property>
      <property name="text">
@@ -1337,7 +1362,7 @@ t</string>
      </property>
     </widget>
    </item>
-   <item row="5" column="4">
+   <item row="6" column="4">
     <widget class="QPushButton" name="btnExit">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -1347,14 +1372,14 @@ t</string>
      </property>
      <property name="minimumSize">
       <size>
-       <width>110</width>
-       <height>35</height>
+       <width>100</width>
+       <height>30</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>110</width>
-       <height>35</height>
+       <width>100</width>
+       <height>30</height>
       </size>
      </property>
      <property name="text">

@@ -55,9 +55,6 @@ public:
 
 	QDataWidgetMapper *m_meterStdMapper;
 
-	ParaSetReader *m_paraSetReader;
-	ParaSetDlg *m_paraSetDlg;
-
 	QTimer *m_exaustTimer; //排气定时器
 
 	ComThread m_balanceThread; //天平采集线程
@@ -81,6 +78,8 @@ public:
 	bool m_stopFlag;     //关闭界面后退出
 
 	//检定过程相关的控制参数 begin
+	ParaSetReader *m_paraSetReader;
+	ParaSetDlg *m_paraSetDlg;
 	Verify_Params_PTR m_nowParams; //当前检定参数
 	bool m_continueVerify;    //是否连续检定
 	bool m_resetZero;         //是否初值回零
@@ -160,6 +159,7 @@ public slots:
 
 	int on_btnExhaust_clicked();  //点击"排气"按钮
 	void on_btnStart_clicked();   //点击"开始"按钮
+	void on_btnGoOn_clicked();    //点击"继续"按钮
 	void on_btnNext_clicked();    //点击"下一步"按钮
 	void on_btnStop_clicked();    //点击"终止检测"按钮
 	void on_btnExit_clicked();    //退出按钮
