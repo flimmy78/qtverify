@@ -5,6 +5,7 @@
 #include <QtGui/QSplashScreen>
 #include <QtTest/QTest>
 #include <QtCore/QThread>
+#include <QtGui/QDesktopWidget>
 
 #include "mainform.h"
 #include "logger.h"
@@ -93,11 +94,13 @@ int main(int argc, char *argv[])
 	splash->showMessage(QObject::tr("setting up the mainwindow ..."), align, Qt::blue);
 	QTest::qSleep(200);
 	g_mainform = new MainForm;
-
+	
 // 	LoginDialog login;
 // 	if (login.exec() == QDialog::Accepted)
 // 	{
-		g_mainform->showMaximized();
+		g_mainform->resize(1280, 800);  
+		g_mainform->move((app.desktop()->width()-g_mainform->width())/2, (app.desktop()->height()-g_mainform->height())/2);  
+		g_mainform->show();
 		splash->finish(g_mainform);
 		delete splash;
 		app.exec();
