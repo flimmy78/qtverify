@@ -88,8 +88,6 @@ FlowWeightDlg::FlowWeightDlg(QWidget *parent, Qt::WFlags flags)
 	m_exaustTimer = new QTimer(this); //排气定时器
 	connect(m_exaustTimer, SIGNAL(timeout()), this, SLOT(slotExaustFinished()));
 
-	m_inputStartValue = false; 
-	m_inputEndValue = false;
 	m_stopFlag = false; //停止检测标志（退出界面后，不再检查天平容量）
 
 	m_avgTFCount = 1; //计算平均温度用的累加计数器
@@ -499,6 +497,14 @@ void FlowWeightDlg::initTableWidget()
 	connect(m_signalMapper4, SIGNAL(mapped(const int &)),this, SLOT(slotVerifyStatus(const int &)));
 
 	ui.tableWidget->setVerticalHeaderLabels(vLabels);
+
+	for (int m=0; m<ui.tableWidget->rowCount(); m++)
+	{
+		for (int n=0; n<ui.tableWidget->columnCount(); n++)
+		{
+			ui.tableWidget->setItem(m, n, new QTableWidgetItem(QString("")));
+		}
+	}
 // 	ui.tableWidget->resizeColumnsToContents();
 }
 
@@ -839,8 +845,6 @@ void FlowWeightDlg::on_btnStop_clicked()
 	}
 
 	m_stopFlag = true; //不再检查天平质量
-	m_inputStartValue = false;
-	m_inputEndValue = false;
 	
 	m_exaustTimer->stop();//停止排气定时器
 
@@ -943,6 +947,7 @@ void FlowWeightDlg::startVerify()
 //获取有效检表个数,并生成映射关系（被检表下标-表位号）
 int FlowWeightDlg::getValidMeterNum()
 {
+	m_validMeterNum = 0; //先清零
 	bool ok;
 	for (int i=0; i<m_maxMeterNum; i++)
 	{
@@ -960,6 +965,23 @@ int FlowWeightDlg::getValidMeterNum()
 		m_validMeterNum++;
 	}
 	return m_validMeterNum;
+}
+
+/*
+** 判断表位号是否有效(该表位是否需要检表)
+输入:meterPos(表位号)，从1开始
+返回:被检表下标，从0开始
+*/
+int FlowWeightDlg::isMeterPosValid(int meterPos)
+{
+	for (int i=0; i<m_validMeterNum; i++)
+	{
+		if (m_meterPosMap[i] == meterPos)
+		{
+			return i;
+		}
+	}
+	return -1;
 }
 
 /*
@@ -1101,6 +1123,13 @@ int FlowWeightDlg::startVerifyFlowPoint(int order)
 				ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_STD_VALUE, new QTableWidgetItem(QString::number(m_meterStdValue[m], 'f', 3)));//标准值
 			}
 
+			if (order==m_flowPointNum) //最后一个流量点
+			{
+				closeValve(m_portsetinfo.waterInNo);//关闭进水阀
+				closeWaterPump();//关闭水泵
+				openWaterOutValve();//打开放水阀
+			}
+
 			if (!getMeterEndValue()) //获取表终值
 			{
 				return false;
@@ -1114,12 +1143,6 @@ int FlowWeightDlg::startVerifyFlowPoint(int order)
 		}
 	}
 
-	if (order==m_flowPointNum) //最后一个流量点
-	{
-		closeValve(m_portsetinfo.waterInNo);//关闭进水阀
-		closeWaterPump();//关闭水泵
-		openWaterOutValve();//打开放水阀
-	}
 	return true;
 }
 
@@ -1431,16 +1454,21 @@ void FlowWeightDlg::on_btnSetFreq_clicked()
 //获取表初值
 int FlowWeightDlg::getMeterStartValue()
 {
+	if (m_stopFlag)
+	{
+		return false;
+	}
+
+	m_startValueFlag = true;
+
 	if (m_autopick) //自动采集
 	{
-		m_startValueFlag = true;
 		readAllMeter();
 		QTest::qWait(2000); //等待串口返回数据
 		return true;
 	}
 	else //手动输入
 	{
-		m_inputStartValue = true; //允许输入初值
 		QMessageBox::information(this, tr("Hint"), tr("please input init value of heat meter"));//请输入热量表初值！
 		ui.tableWidget->setCurrentCell(m_meterPosMap[0]-1, COLUMN_METER_START); //定位到第一个需要输入初值的地方
 		return false;
@@ -1466,19 +1494,19 @@ int FlowWeightDlg::getMeterEndValue()
 	{
 		return false;
 	}
+		
+	m_startValueFlag = false;
 
 	if (m_autopick) //自动采集
 	{
-		m_startValueFlag = false;
 		readAllMeter();
 		QTest::qWait(2000); //等待串口返回数据
 		return true;
 	}
 	else //手动输入
 	{
-		m_inputEndValue = true; //允许输入终值
 		QMessageBox::information(this, tr("Hint"), tr("please input end value of heat meter"));//请输入热量表终值！
-		ui.tableWidget->setCurrentCell(m_meterPosMap[0]-1, COLUMN_METER_END); //定位到第一个需要输入终值的地方
+// 		ui.tableWidget->setCurrentCell(m_meterPosMap[0]-1, COLUMN_METER_END); //定位到第一个需要输入终值的地方
 		return false;
 	}
 }
@@ -1496,7 +1524,7 @@ void FlowWeightDlg::on_tableWidget_cellChanged(int row, int column)
 		return;
 	}
 
-	if (NULL == ui.tableWidget->item(row,  column))
+	if (NULL==ui.tableWidget->item(row,  column) || NULL==m_meterStartValue || NULL==m_meterEndValue)
 	{
 		return;
 	}
@@ -1509,7 +1537,7 @@ void FlowWeightDlg::on_tableWidget_cellChanged(int row, int column)
 		return;
 	}
 	bool ok;
-	if (column==COLUMN_METER_START && m_inputStartValue) //表初值列 且 允许输入初值
+	if (column==COLUMN_METER_START && m_startValueFlag) //表初值列 且 允许输入初值
 	{
 		m_meterStartValue[idx] = ui.tableWidget->item(row, column)->text().toFloat(&ok);
 		if (!ok)
@@ -1520,7 +1548,7 @@ void FlowWeightDlg::on_tableWidget_cellChanged(int row, int column)
 
 		if (meterPos == m_meterPosMap[m_validMeterNum-1]) //输入最后一个表初值
 		{
-			m_inputStartValue = false;
+			m_startValueFlag = false;
 			startVerifyFlowPoint(m_nowOrder);
 		}
 		else //不是最后一个表初值,自动定位到下一个
@@ -1529,7 +1557,7 @@ void FlowWeightDlg::on_tableWidget_cellChanged(int row, int column)
 		}
 	}
 
-	if (column==COLUMN_METER_END && m_inputEndValue) //表终值列 且 允许输入终值
+	if (column==COLUMN_METER_END && !m_startValueFlag) //表终值列 且 允许输入终值
 	{
 		m_meterEndValue[idx] = ui.tableWidget->item(row, column)->text().toFloat(&ok);
 		if (!ok)
@@ -1541,7 +1569,6 @@ void FlowWeightDlg::on_tableWidget_cellChanged(int row, int column)
 
 		if (meterPos == m_meterPosMap[m_validMeterNum-1]) //输入最后一个表终值
 		{
-			m_inputEndValue = false;
 			saveAllVerifyRecords();
 
 			if (m_autopick) //自动采集
@@ -1558,23 +1585,6 @@ void FlowWeightDlg::on_tableWidget_cellChanged(int row, int column)
 			ui.tableWidget->setCurrentCell(m_meterPosMap[idx+1]-1, column);
 		}
 	}
-}
-
-/*
-** 判断表位号是否有效(该表位是否需要检表)
-   输入:meterPos(表位号)，从1开始
-   返回:被检表下标，从0开始
-*/
-int FlowWeightDlg::isMeterPosValid(int meterPos)
-{
-	for (int i=0; i<m_validMeterNum; i++)
-	{
-		if (m_meterPosMap[i] == meterPos)
-		{
-			return i;
-		}
-	}
-	return -1;
 }
 
 /*

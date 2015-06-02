@@ -20,8 +20,7 @@
 #include <QtCore/QSettings>
 #include "ui_cmbparam.h"
 
-#define NOT_USE	0//温度点没有使用标志
-#define VERIFY_POINTS 3//温差点数量
+#define NOT_USE  0  //温度点没有使用标志
 
 class CMBVERIFY_EXPORT CmbParamDlg : public QWidget
 {

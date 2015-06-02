@@ -120,10 +120,7 @@ public:
 
 	int m_nowOrder;				//当前检定次序
 
-	bool m_inputStartValue; //手动采集时，等待输入初值状态
-	bool m_inputEndValue;   //手动采集时，等待输入终值状态
-
-	bool m_startValueFlag;  //自动采集时，区分是热表初值还是终值
+	bool m_startValueFlag;  //区分当前热表数值是初值还是终值(true:初值；false:终值)
 
 	ReadComConfig *m_readComConfig; //读串口设置
 	PortSet_Ini_STR m_portsetinfo;  //端口配置
@@ -148,6 +145,7 @@ public:
 	int isComAndPortNormal();   //串口、端口设置是否正常
 	int isDataCollectNormal();	//检查数据采集是否正常（天平、温度、电磁流量计等）
 	int isMeterPosValid(int meterPos); //判断表位号是否有效(该表位是否需要检表)
+	int getValidMeterNum();       //获取有效的检表个数()
 
 
 public slots:
@@ -174,7 +172,6 @@ public slots:
 	int isBalanceValueBigger(float targetV, bool flg=true);    //判断天平质量,flg: true-要求大于目标重量(默认)；false-要求小于目标重量
 	int judgeBalanceAndCalcAvgTemperAndFlow(float targetV); //判断天平质量，并累加进出口温度，每秒累加一次，用于计算进出口平均温度
 	void startVerify();           //开始检定
-	int getValidMeterNum();       //获取有效的检表个数()
 	bool judgeBalanceCapacity();   //判断天平容量是否能够满足检定用量 连续检定
 	int judgeBalanceCapacitySingle(int order); //判断天平容量是否能够满足检定用量 不连续检定
 	int prepareVerifyFlowPoint(int order);     //准备单个流量点的检定
