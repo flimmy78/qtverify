@@ -428,6 +428,8 @@ int FlowWeightDlg::readNowParaConfig()
 		return false;
 	}
 
+	m_state = STATE_INIT;
+
 	m_nowParams = m_paraSetReader->getParams();
 	m_continueVerify = m_nowParams->bo_converify; //连续检定
 	m_resetZero = m_nowParams->bo_resetzero; //初值回零
@@ -765,6 +767,7 @@ void FlowWeightDlg::on_btnStart_clicked()
 	}
 
 	m_stopFlag = false;
+	m_state = STATE_INIT;
 	clearTableContents();
 	m_validMeterNum = 0;
 
@@ -890,7 +893,7 @@ void FlowWeightDlg::startVerify()
 	m_nowDate = QDateTime::currentDateTime().toString("yyyy-MM-dd"); //当前日期'2014-08-07'
 	m_validDate = QDateTime::currentDateTime().addYears(VALID_YEAR).addDays(-1).toString("yyyy-MM-dd"); //有效期
 
-	m_startValueFlag = true; //默认是初值
+	m_state = STATE_INIT; //初始状态
 
 	m_meterStartValue = new float[m_validMeterNum]; //表初值 
 	memset(m_meterStartValue, 0, sizeof(float)*m_validMeterNum);
@@ -1318,7 +1321,7 @@ void FlowWeightDlg::slotSetMeterFlow(const QString& comName, const float& flow)
 		return;
 	}
 	int idx = isMeterPosValid(meterPos);
-	if (m_startValueFlag) //初值
+	if (m_state == STATE_START_VALUE) //初值
 	{
 		ui.tableWidget->setItem(meterPos - 1, COLUMN_METER_START, new QTableWidgetItem(QString::number(flow)));
 		if (idx>=0 && m_meterStartValue!=NULL)
@@ -1326,7 +1329,7 @@ void FlowWeightDlg::slotSetMeterFlow(const QString& comName, const float& flow)
 			m_meterStartValue[idx] = flow;
 		}
 	}
-	else //终值
+	else if (m_state == STATE_END_VALUE) //终值
 	{
 		ui.tableWidget->setItem(meterPos - 1, COLUMN_METER_END, new QTableWidgetItem(QString::number(flow)));
 		if (idx>=0 && m_meterEndValue!=NULL)
@@ -1459,7 +1462,7 @@ int FlowWeightDlg::getMeterStartValue()
 		return false;
 	}
 
-	m_startValueFlag = true;
+	m_state = STATE_START_VALUE;
 
 	if (m_autopick) //自动采集
 	{
@@ -1495,7 +1498,7 @@ int FlowWeightDlg::getMeterEndValue()
 		return false;
 	}
 		
-	m_startValueFlag = false;
+	m_state = STATE_END_VALUE;
 
 	if (m_autopick) //自动采集
 	{
@@ -1537,7 +1540,7 @@ void FlowWeightDlg::on_tableWidget_cellChanged(int row, int column)
 		return;
 	}
 	bool ok;
-	if (column==COLUMN_METER_START && m_startValueFlag) //表初值列 且 允许输入初值
+	if (column==COLUMN_METER_START && m_state==STATE_START_VALUE) //表初值列 且 允许输入初值
 	{
 		m_meterStartValue[idx] = ui.tableWidget->item(row, column)->text().toFloat(&ok);
 		if (!ok)
@@ -1548,7 +1551,7 @@ void FlowWeightDlg::on_tableWidget_cellChanged(int row, int column)
 
 		if (meterPos == m_meterPosMap[m_validMeterNum-1]) //输入最后一个表初值
 		{
-			m_startValueFlag = false;
+			m_state = STATE_END_VALUE;
 			startVerifyFlowPoint(m_nowOrder);
 		}
 		else //不是最后一个表初值,自动定位到下一个
@@ -1557,7 +1560,7 @@ void FlowWeightDlg::on_tableWidget_cellChanged(int row, int column)
 		}
 	}
 
-	if (column==COLUMN_METER_END && !m_startValueFlag) //表终值列 且 允许输入终值
+	if (column==COLUMN_METER_END && m_state==STATE_END_VALUE) //表终值列 且 允许输入终值
 	{
 		m_meterEndValue[idx] = ui.tableWidget->item(row, column)->text().toFloat(&ok);
 		if (!ok)

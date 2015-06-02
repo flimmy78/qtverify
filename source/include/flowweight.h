@@ -44,6 +44,8 @@ class ReadComConfig;
 #define COLUMN_ADJUST_ERROR		  12 //调整误差列
 #define COLUMN_MODIFY_METERNO	  13 //修改表号列
 
+enum now_state{STATE_INIT=1, STATE_START_VALUE, STATE_END_VALUE};
+
 
 class FLOWWEIGHT_EXPORT FlowWeightDlg : public QWidget
 {
@@ -120,7 +122,7 @@ public:
 
 	int m_nowOrder;				//当前检定次序
 
-	bool m_startValueFlag;  //区分当前热表数值是初值还是终值(true:初值；false:终值)
+	now_state m_state; //当前运行状态（初始态、读初值态、读终值态）
 
 	ReadComConfig *m_readComConfig; //读串口设置
 	PortSet_Ini_STR m_portsetinfo;  //端口配置
