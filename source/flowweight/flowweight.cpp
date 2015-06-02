@@ -34,6 +34,7 @@ FlowWeightDlg::FlowWeightDlg(QWidget *parent, Qt::WFlags flags)
 {
 	qDebug()<<"FlowWeightDlg thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
+	ui.btnGoOn->hide();
  	ui.btnNext->hide();   //隐藏"下一步"按钮
 
 	//不同等级的热量表对应的标准误差,单位%
@@ -593,7 +594,7 @@ void FlowWeightDlg::slotExaustFinished()
 */
 int FlowWeightDlg::prepareInitBalance()
 {
-	ui.labelHintPoint->setText(tr("prepare balance ...")); //准备天平
+	ui.labelHintPoint->setText(tr("prepare balance init weight ...")); //准备天平初始重量(回水底量)
 	int ret = 0;
 	//判断天平重量,如果小于要求的回水底量(5kg)，则关闭放水阀，打开大流量阀
 	if (ui.lcdBigBalance->value() < m_balBottomWht)
@@ -766,6 +767,11 @@ void FlowWeightDlg::on_btnStart_clicked()
 		return;
 	}
 
+	ui.btnStart->setEnabled(false);
+	ui.btnExhaust->setEnabled(false);
+	ui.btnGoOn->hide();
+	ui.btnNext->hide();
+
 	m_stopFlag = false;
 	m_state = STATE_INIT;
 	clearTableContents();
@@ -814,6 +820,7 @@ int FlowWeightDlg::on_btnExhaust_clicked()
 //点击"继续"按钮
 void FlowWeightDlg::on_btnGoOn_clicked()
 {
+	ui.btnGoOn->hide();
 	startVerify();
 }
 
@@ -848,15 +855,7 @@ void FlowWeightDlg::on_btnStop_clicked()
 	}
 
 	m_stopFlag = true; //不再检查天平质量
-	
-	m_exaustTimer->stop();//停止排气定时器
-
-	closeValve(m_portsetinfo.waterInNo);//关闭进水阀
-	closeAllFlowPointValves();//关闭所有流量点阀门
-	//openWaterOutValve();//打开放水阀
-	closeWaterPump();//关闭水泵
-
-	ui.labelHintProcess->setText(tr("Verify has Stoped!"));
+	stopVerify();
 }
 
 void FlowWeightDlg::on_btnExit_clicked()
@@ -864,6 +863,18 @@ void FlowWeightDlg::on_btnExit_clicked()
 	this->close();
 }
 
+//停止检定
+void FlowWeightDlg::stopVerify()
+{
+	m_exaustTimer->stop();//停止排气定时器
+	closeAllFlowPointValves();//关闭所有流量点阀门
+	closeValve(m_portsetinfo.waterInNo);//关闭进水阀
+	closeWaterPump();//关闭水泵
+	openWaterOutValve();//打开放水阀
+	ui.labelHintProcess->setText(tr("Verify has Stoped!"));
+	ui.btnStart->setEnabled(true);
+	ui.btnExhaust->setEnabled(true);
+}
 
 //开始检定
 void FlowWeightDlg::startVerify()
@@ -873,10 +884,12 @@ void FlowWeightDlg::startVerify()
 	//判断实际检表的个数(根据获取到的表号个数)
 	if (getValidMeterNum() != m_maxMeterNum)
 	{
-		int button = QMessageBox::question(this, tr("Question"), tr("meter num is right?\nclick \'yes\' to continue;or click \'No\',then read meter NO. again"), \
+		ui.labelHintPoint->clear();
+		int button = QMessageBox::question(this, tr("Question"), tr("meter number is right?\nclick \'yes\' to continue;or click \'No\',then read meter number again and click \'GoOn\' to go on"), \
 			QMessageBox::Yes|QMessageBox::Default, QMessageBox::No|QMessageBox::Escape);
 		if (button == QMessageBox::No)
 		{
+			ui.btnGoOn->show();
 			return;
 		}
 	}
@@ -917,6 +930,7 @@ void FlowWeightDlg::startVerify()
 	{
 		if (!judgeBalanceCapacity()) //判断天平容量是否能够满足检定用量
 		{
+			ui.labelHintPoint->setText(tr("prepare balance capacity ..."));
 			openWaterOutValve();
 			while (!judgeBalanceCapacity())
 			{ 
@@ -1007,10 +1021,19 @@ bool FlowWeightDlg::judgeBalanceCapacity()
 /*
 ** 判断天平容量是否满足检定用量
 ** 不连续检定时：满足单次检定用量
+** 注意：order从1开始
 */
 int FlowWeightDlg::judgeBalanceCapacitySingle(int order)
 {
-	return true;
+	if (order < 1 || order > VERIFY_POINTS)
+	{
+		return false;
+	}
+	bool ret = false;
+	float quantity = 0;
+	quantity += m_paraSetReader->getParams()->fp_info[order-1].fp_quantity;
+	ret = (ui.lcdBigBalance->value() + quantity) < (m_balMaxWht - 2);
+	return ret;
 }
 
 /*
@@ -1033,8 +1056,8 @@ int FlowWeightDlg::prepareVerifyFlowPoint(int order)
 	{
 		if (!judgeBalanceCapacitySingle(order)) //天平容量不满足本次检定用量
 		{
+			ui.labelHintPoint->setText(tr("prepare balance capacity ..."));
 			openWaterOutValve(); //打开放水阀，天平放水
-
 			while (!judgeBalanceCapacitySingle(order)) //等待天平放水，直至满足本次检定用量
 			{ 
 				QTest::qWait(1000);
@@ -1128,9 +1151,7 @@ int FlowWeightDlg::startVerifyFlowPoint(int order)
 
 			if (order==m_flowPointNum) //最后一个流量点
 			{
-				closeValve(m_portsetinfo.waterInNo);//关闭进水阀
-				closeWaterPump();//关闭水泵
-				openWaterOutValve();//打开放水阀
+				stopVerify(); //停止检定
 			}
 
 			if (!getMeterEndValue()) //获取表终值
@@ -1509,7 +1530,7 @@ int FlowWeightDlg::getMeterEndValue()
 	else //手动输入
 	{
 		QMessageBox::information(this, tr("Hint"), tr("please input end value of heat meter"));//请输入热量表终值！
-// 		ui.tableWidget->setCurrentCell(m_meterPosMap[0]-1, COLUMN_METER_END); //定位到第一个需要输入终值的地方
+		ui.tableWidget->setCurrentCell(m_meterPosMap[0]-1, COLUMN_METER_END); //定位到第一个需要输入终值的地方
 		return false;
 	}
 }

@@ -173,6 +173,7 @@ public slots:
 	int openWaterOutValve();      //打开放水阀
 	int isBalanceValueBigger(float targetV, bool flg=true);    //判断天平质量,flg: true-要求大于目标重量(默认)；false-要求小于目标重量
 	int judgeBalanceAndCalcAvgTemperAndFlow(float targetV); //判断天平质量，并累加进出口温度，每秒累加一次，用于计算进出口平均温度
+	void stopVerify();            //停止检定
 	void startVerify();           //开始检定
 	bool judgeBalanceCapacity();   //判断天平容量是否能够满足检定用量 连续检定
 	int judgeBalanceCapacitySingle(int order); //判断天平容量是否能够满足检定用量 不连续检定
