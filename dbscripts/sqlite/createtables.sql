@@ -297,7 +297,7 @@ F_EnvTemper float,                  --环境温度，单位℃
 F_EnvHumidity float,                --环境湿度
 F_AirPressure float,                --大气压力
 F_CertNO varchar(16),               --检定证书编号(检表过程不写编号，留给用户以后填写)
-F_Bak1 varchar(24),                 --备用域1
+F_TotalCoe varchar(24),             --总量系数
 F_Bak2 varchar(24),                 --备用域2
 F_Bak3 varchar(24),                 --备用域3
 F_Bak4 varchar(24),                 --备用域4
