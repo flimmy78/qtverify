@@ -124,6 +124,8 @@ public:
 
 	now_state m_state; //当前运行状态（初始态、读初值态、读终值态）
 
+	QTimer *m_waitTimer;
+
 	ReadComConfig *m_readComConfig; //读串口设置
 	PortSet_Ini_STR m_portsetinfo;  //端口配置
 

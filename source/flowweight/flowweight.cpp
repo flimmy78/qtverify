@@ -91,6 +91,8 @@ FlowWeightDlg::FlowWeightDlg(QWidget *parent, Qt::WFlags flags)
 
 	m_stopFlag = false; //停止检测标志（退出界面后，不再检查天平容量）
 
+	m_waitTimer = new QTimer(this); //等待用户确认定时器
+
 	m_avgTFCount = 1; //计算平均温度用的累加计数器
 	m_nowOrder = 0;  //当前进行的检定序号
 
@@ -184,7 +186,7 @@ void FlowWeightDlg::closeEvent( QCloseEvent * event)
 		m_tempThread.exit(); //否则日志中会有警告"QThread: Destroyed while thread is still running"
 	}
 
-	if (m_tempTimer) //计时器
+	if (m_tempTimer) //采集温度计时器
 	{
 		if (m_tempTimer->isActive())
 		{
@@ -228,7 +230,25 @@ void FlowWeightDlg::closeEvent( QCloseEvent * event)
 		}
 	}
 
-	m_exaustTimer->stop();
+	if (m_exaustTimer) //排气计时器
+	{
+		if (m_exaustTimer->isActive())
+		{
+			m_exaustTimer->stop();
+		}
+		delete m_exaustTimer;
+		m_exaustTimer = NULL;
+	}
+
+	if (m_waitTimer) //等待用户确认计时器
+	{
+		if (m_waitTimer->isActive())
+		{
+			m_waitTimer->stop();
+		}
+		delete m_waitTimer;
+		m_waitTimer = NULL;
+	}
 }
 
 //天平采集串口 上位机直接采集
@@ -871,6 +891,7 @@ void FlowWeightDlg::stopVerify()
 	closeValve(m_portsetinfo.waterInNo);//关闭进水阀
 	closeWaterPump();//关闭水泵
 	openWaterOutValve();//打开放水阀
+	ui.labelHintPoint->clear();
 	ui.labelHintProcess->setText(tr("Verify has Stoped!"));
 	ui.btnStart->setEnabled(true);
 	ui.btnExhaust->setEnabled(true);
@@ -885,13 +906,21 @@ void FlowWeightDlg::startVerify()
 	if (getValidMeterNum() != m_maxMeterNum)
 	{
 		ui.labelHintPoint->clear();
-		int button = QMessageBox::question(this, tr("Question"), tr("meter number is right?\nclick \'yes\' to continue;or click \'No\',then read meter number again and click \'GoOn\' to go on"), \
-			QMessageBox::Yes|QMessageBox::Default, QMessageBox::No|QMessageBox::Escape);
-		if (button == QMessageBox::No)
+		QMessageBox *messageBox = new QMessageBox(QMessageBox::Question, tr("Question"), \
+			tr("meter count maybe error ! read meter number again?\nclick \'Yes\' to read meter again;or click \'No\' to continue verify"), \
+			QMessageBox::Yes|QMessageBox::No, this);
+		messageBox->setDefaultButton(QMessageBox::Yes);
+		connect(m_waitTimer, SIGNAL(timeout()), messageBox, SLOT(close()));
+		m_waitTimer->start(5000);
+		if (messageBox->exec()==QMessageBox::Yes)
 		{
 			ui.btnGoOn->show();
 			return;
 		}
+	}
+	if (m_waitTimer->isActive())
+	{
+		m_waitTimer->stop();
 	}
 
 	if (m_recPtr != NULL)
