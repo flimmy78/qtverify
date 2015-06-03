@@ -887,6 +887,7 @@ void FlowWeightDlg::stopVerify()
 	ui.labelHintProcess->setText(tr("Verify has Stoped!"));
 	ui.btnStart->setEnabled(true);
 	ui.btnExhaust->setEnabled(true);
+	ui.btnNext->hide();
 }
 
 //开始检定
@@ -1590,7 +1591,6 @@ void FlowWeightDlg::on_tableWidget_cellChanged(int row, int column)
 
 		if (meterPos == m_meterPosMap[m_validMeterNum-1]) //输入最后一个表初值
 		{
-			m_state = STATE_END_VALUE;
 			startVerifyFlowPoint(m_nowOrder);
 		}
 		else //不是最后一个表初值,自动定位到下一个
@@ -1612,15 +1612,6 @@ void FlowWeightDlg::on_tableWidget_cellChanged(int row, int column)
 		if (meterPos == m_meterPosMap[m_validMeterNum-1]) //输入最后一个表终值
 		{
 			saveAllVerifyRecords();
-
-			if (m_autopick) //自动采集
-			{
-				ui.btnNext->hide();
-			}
-			else if ( !m_autopick && (m_nowOrder != m_flowPointNum) )//手动采集并且不是最后一个检定点 
-			{
-				ui.btnNext->show();
-			}
 		}
 		else //不是最后一个表终值,自动定位到下一个
 		{
