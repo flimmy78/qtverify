@@ -1017,8 +1017,8 @@ void TotalWeightDlg::startVerify()
 		delete []m_recPtr;
 		m_recPtr = NULL;
 	}
-	m_recPtr = new Flow_Verify_Record_STR[m_validMeterNum];
-	memset(m_recPtr, 0, sizeof(Flow_Verify_Record_STR)*m_validMeterNum);
+	m_recPtr = new Total_Verify_Record_STR[m_validMeterNum];
+	memset(m_recPtr, 0, sizeof(Total_Verify_Record_STR)*m_validMeterNum);
 
 	m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
 	m_nowDate = QDateTime::currentDateTime().toString("yyyy-MM-dd"); //当前日期'2014-08-07'
@@ -1346,6 +1346,9 @@ int TotalWeightDlg::calcMeterError(int idx)
 	m_recPtr[idx].airPress = m_nowParams->m_airpress.toFloat();
 	m_recPtr[idx].envTemper = m_nowParams->m_temper.toFloat();
 	m_recPtr[idx].envHumidity = m_nowParams->m_humidity.toFloat();
+	m_recPtr[idx].totalcoe = m_nowParams->sc_thermal;
+	m_recPtr[idx].inSlotTemper = ui.lnEditInStdTemp->text().toFloat();
+	m_recPtr[idx].outSlotTemper = ui.lnEditOutStdTemp->text().toFloat();
 
 	return true; 
 }
@@ -1724,7 +1727,7 @@ void TotalWeightDlg::on_tableWidget_cellChanged(int row, int column)
 */
 int TotalWeightDlg::saveAllVerifyRecords()
 {
- 	insertFlowVerifyRec(m_recPtr, m_validMeterNum);
+ 	insertTotalVerifyRec(m_recPtr, m_validMeterNum);
 	return true;
 }
 

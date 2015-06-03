@@ -314,6 +314,54 @@ public:
 typedef Flow_Verify_Record_STR* Flow_Verify_Record_PTR;
 
 /*
+** FUNCTION -- 总量检定结果记录表（包括质量法和标准表法）
+*/
+class Total_Verify_Record_STR{
+public:
+    int     id;                   
+	char	timestamp[TIMESTAMP_LEN];
+	char    meterNo[METERNO_LEN];
+	INT16   flowPointIdx;
+	float   flowPoint;      //流量(m3/h)
+	INT16   methodFlag;     //检定方法标志(0:质量法 1:标准表法)
+	float	meterValue0;	//热量表初值(热量)，单位kwh
+	float	meterValue1;	//热量表终值(体积)，单位kwh
+	float	balWeight0;		//天平初值(重量)，单位kg，质量法使用
+	float   balWeight1;		//天平终值(重量)，单位kg，质量法使用
+	float	stdMeterV0;		//标准表初值(热量)，单位kwh，标准表法使用
+	float   stdMeterV1;		//标准表终值(热量)，单位kwh，标准表法使用
+	float	inSlotTemper;	//入口标准温度
+	float	outSlotTemper;	//出口标准温度
+	float	pipeTemper;		//分配到每个表位的温度
+	float	density;		//密度(kg/L)
+	float	stdValue;		//经过修正的标准值
+	float	dispError;		//示值误差
+	float	stdError;		//要求误差(合格标准)
+	INT16   result;			//检定结果(1:合格  0:不合格)
+	INT16	meterPosNo;		//表位号
+	int	    model;			//表型号
+	int  	standard;		//表规格
+	int	    pickcode;		//采集代码
+	int	    manufactDept;	//制造单位
+	int	    verifyDept;		//送检单位
+	INT16	grade;	        //计量等级
+	int	    verifyPerson;	//检定员
+	int	    checkPerson;	//核验员
+	int	    deviceInfoId;	//检定装置设备信息ID
+	char	verifyDate[DATE_LEN];	//检定日期（'2014-07-25'）
+	char	validDate[DATE_LEN];	//检表结果有效期（'2014-07-25'）
+	float	envTemper;		//环境温度
+	float	envHumidity;	//环境湿度
+	float	airPress;		//大气压力
+	char	certNo[16];		//检定证书编号
+	float	totalcoe;		//总量系数
+	char	bak2[24];		//备用域2
+	char	bak3[24];		//备用域3
+	char	bak4[24];		//备用域4
+};
+typedef Total_Verify_Record_STR* Total_Verify_Record_PTR;
+
+/*
 ** FUNCTION -- V_Flow_Verify_Record, 对应视图V_Flow_Verify_Record的结构
 */
 class V_Flow_Verify_Record_STR : public Flow_Verify_Record_STR

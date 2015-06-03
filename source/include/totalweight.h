@@ -118,7 +118,7 @@ public:
 	float m_pipeOutTemper;    //出口温度
 	float m_realFlow;		  //流速(m3/h）
 
-	Flow_Verify_Record_PTR m_recPtr; //有效的检定记录
+	Total_Verify_Record_PTR m_recPtr; //有效的检定记录
 	QString m_timeStamp; //时间戳 秒数
 	QString m_nowDate;  
 	QString m_validDate;
