@@ -54,6 +54,16 @@ enum metertype
 };
 
 /*
+** 当前运行状态枚举类型
+*/
+enum now_state
+{
+	STATE_INIT=1,       //初始状态
+	STATE_START_VALUE,  //等待输入初值状态
+	STATE_END_VALUE     //等待输入终值状态
+};
+
+/*
 ** 检定方法类型枚举
 */
 enum Verify_Method

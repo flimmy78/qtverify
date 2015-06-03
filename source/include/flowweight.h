@@ -44,8 +44,6 @@ class ReadComConfig;
 #define COLUMN_ADJUST_ERROR		  12 //调整误差列
 #define COLUMN_MODIFY_METERNO	  13 //修改表号列
 
-enum now_state{STATE_INIT=1, STATE_START_VALUE, STATE_END_VALUE};
-
 
 class FLOWWEIGHT_EXPORT FlowWeightDlg : public QWidget
 {

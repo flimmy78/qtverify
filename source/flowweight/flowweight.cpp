@@ -1682,12 +1682,15 @@ void FlowWeightDlg::slotModifyMeterNO(const int &row)
 void FlowWeightDlg::slotAdjustError(const int &row)
 {
 	qDebug()<<"slotAdjustError row ="<<row;
-// 	QString meterNO = ui.tableWidget->item(row, COLUMN_METER_NUMBER)->text();
+	QString meterNO = ui.tableWidget->item(row, COLUMN_METER_NUMBER)->text();
 // 	float bigErr = ui.lnEditBigNewError->text().toFloat();
 // 	float mid2Err = ui.lnEditMid2NewError->text().toFloat();
 // 	float mid1Err = ui.lnEditMid1NewError->text().toFloat();
 // 	float smallErr = ui.lnEditSmallNewError->text().toFloat();
 // 	m_meterObj->askModifyFlowCoe(meterNO, bigErr, mid2Err, mid1Err, smallErr);
+
+	int nowValveIdx = m_paraSetReader->getFpBySeq(m_nowOrder).fp_valve_idx; //0:大 1:中二 2:中一 3:小
+
 }
 
 /*
