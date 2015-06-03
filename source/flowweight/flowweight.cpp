@@ -91,8 +91,6 @@ FlowWeightDlg::FlowWeightDlg(QWidget *parent, Qt::WFlags flags)
 
 	m_stopFlag = false; //停止检测标志（退出界面后，不再检查天平容量）
 
-	m_waitTimer = new QTimer(this); //等待用户确认定时器
-
 	m_avgTFCount = 1; //计算平均温度用的累加计数器
 	m_nowOrder = 0;  //当前进行的检定序号
 
@@ -238,16 +236,6 @@ void FlowWeightDlg::closeEvent( QCloseEvent * event)
 		}
 		delete m_exaustTimer;
 		m_exaustTimer = NULL;
-	}
-
-	if (m_waitTimer) //等待用户确认计时器
-	{
-		if (m_waitTimer->isActive())
-		{
-			m_waitTimer->stop();
-		}
-		delete m_waitTimer;
-		m_waitTimer = NULL;
 	}
 }
 
@@ -794,6 +782,10 @@ void FlowWeightDlg::on_btnStart_clicked()
 
 	m_stopFlag = false;
 	m_state = STATE_INIT;
+	for (int i=0; i<ui.tableWidget->rowCount(); i++)
+	{
+		ui.tableWidget->item(i,COLUMN_METER_NUMBER)->setText("");
+	}
 	clearTableContents();
 	m_validMeterNum = 0;
 
@@ -852,7 +844,7 @@ void FlowWeightDlg::on_btnNext_clicked()
 		QMessageBox::warning(this, tr("Warning"), tr("All flow points has verified!"));
 		return;
 	}
-
+	m_state = STATE_INIT;
 	clearTableContents();
 
 	m_nowOrder ++;
@@ -910,17 +902,14 @@ void FlowWeightDlg::startVerify()
 			tr("meter count maybe error ! read meter number again?\nclick \'Yes\' to read meter again;or click \'No\' to continue verify"), \
 			QMessageBox::Yes|QMessageBox::No, this);
 		messageBox->setDefaultButton(QMessageBox::Yes);
-		connect(m_waitTimer, SIGNAL(timeout()), messageBox, SLOT(close()));
-		m_waitTimer->start(5000);
+		QTimer timer;
+		connect(&timer, SIGNAL(timeout()), messageBox, SLOT(close()));
+		timer.start(5000);
 		if (messageBox->exec()==QMessageBox::Yes)
 		{
 			ui.btnGoOn->show();
 			return;
 		}
-	}
-	if (m_waitTimer->isActive())
-	{
-		m_waitTimer->stop();
 	}
 
 	if (m_recPtr != NULL)
@@ -1572,10 +1561,10 @@ int FlowWeightDlg::getMeterEndValue()
 */
 void FlowWeightDlg::on_tableWidget_cellChanged(int row, int column)
 {
-	if (m_autopick) //自动采集
-	{
-		return;
-	}
+// 	if (m_autopick) //自动采集
+// 	{
+// 		return;
+// 	}
 
 	if (NULL==ui.tableWidget->item(row,  column) || NULL==m_meterStartValue || NULL==m_meterEndValue)
 	{
