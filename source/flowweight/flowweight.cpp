@@ -1247,6 +1247,7 @@ int FlowWeightDlg::calcMeterError(int idx)
 	m_recPtr[idx].airPress = m_nowParams->m_airpress.toFloat();
 	m_recPtr[idx].envTemper = m_nowParams->m_temper.toFloat();
 	m_recPtr[idx].envHumidity = m_nowParams->m_humidity.toFloat();
+	m_recPtr[idx].flowcoe = m_nowParams->sc_flow;
 
 	return true; 
 }
