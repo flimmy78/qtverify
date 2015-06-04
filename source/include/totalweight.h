@@ -117,6 +117,10 @@ public:
 	float m_pipeInTemper;     //入口温度
 	float m_pipeOutTemper;    //出口温度
 	float m_realFlow;		  //流速(m3/h）
+	float m_stdInTemper;      //标准入口温度
+	float m_stdOutTemper;     //标准出口温度
+	int m_unit;                       //能量单位(0:MJ； 1:kWh)
+	QButtonGroup *btnGroupEnergyUnit; //能量单位 0:MJ;1:kwh
 
 	Total_Verify_Record_PTR m_recPtr; //有效的检定记录
 	QString m_timeStamp; //时间戳 秒数
@@ -204,7 +208,7 @@ public slots:
 	void slotSetRegulateOk();     //调节阀返回成功对应的槽函数
 
 	void slotSetMeterNumber(const QString& comName, const QString& meterNumber);
-	void slotSetMeterFlow(const QString& comName, const float& flow);
+	void slotSetMeterEnergy(const QString& comName, const QString& energy);
 	void setValveBtnBackColor(QToolButton *btn, bool status); //设置阀门按钮背景色
 	void setRegBtnBackColor(QPushButton *btn, bool status);	  //设置调节阀按钮背景色
 
@@ -235,6 +239,7 @@ public slots:
 
 	void on_btnStdTempCollect_clicked(); //采集标准温度
 	void on_btnStdTempStop_clicked(); //停止采集标准温度
+	void slot_btnGroupEnergyUnit_clicked(int id);
 
 	void slotAskStdTemperature();
 

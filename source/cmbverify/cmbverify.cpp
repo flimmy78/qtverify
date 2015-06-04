@@ -656,7 +656,7 @@ float CmbVerifyDlg::getStdEnergy(float analogV)
 		QMessageBox::information(this, tr("Hint"), tr("current temperature different is less than min Δθ!"));
 		return -1;
 	}
-	return m_algo->getEnergyByEnthalpy(in_t, out_t, analogV, m_current_pos, m_current_unit);
+	return m_algo->calcEnergyByEnthalpy(in_t, out_t, analogV, m_current_pos, m_current_unit);
 }
 
 /*
@@ -665,7 +665,7 @@ float CmbVerifyDlg::getStdEnergy(float analogV)
 */
 float CmbVerifyDlg::getKCoeByTemper(float inTemper, float outTemper)
 {
-	float kCoe = m_algo->CalcKCoeOfWater(inTemper, outTemper, m_current_pos, NORMAL_PRESSURE); //默认K系数单位MJ/m3℃
+	float kCoe = m_algo->calcKCoeOfWater(inTemper, outTemper, m_current_pos, NORMAL_PRESSURE); //默认K系数单位MJ/m3℃
 	if (m_current_unit==UNIT_KWH) //单位 kWh
 	{
 		kCoe /= 3.6; //由MJ/m3℃转换单位kWh/m3℃

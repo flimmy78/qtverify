@@ -478,7 +478,7 @@ float CalcDlg::calcTemperByResist(int port, float resist)
 float CalcDlg::getKCoeByTemper(float inTemper, float outTemper)
 {
 	float installPos = btnGroupInstallPos->checkedId();
-	float kCoe = m_algo->CalcKCoeOfWater(inTemper, outTemper, installPos, 0.6); //默认K系数单位MJ/m3℃
+	float kCoe = m_algo->calcKCoeOfWater(inTemper, outTemper, installPos, 0.6); //默认K系数单位MJ/m3℃
 	if (btnGroupEnergyUnit->checkedId()==UNIT_KWH) //单位 kWh
 	{
 		kCoe /= 3.6; //由MJ/m3℃转换单位kWh/m3℃

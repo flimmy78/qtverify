@@ -75,6 +75,13 @@ TotalWeightDlg::TotalWeightDlg(QWidget *parent, Qt::WFlags flags)
 	m_meterObj = NULL;      //热量表通讯
 	m_recPtr = NULL;        //流量检测结果
 
+	btnGroupEnergyUnit = new QButtonGroup(ui.groupBoxEnergyUnit); //能量单位
+	btnGroupEnergyUnit->addButton(ui.radioButtonMJ, 0);
+	btnGroupEnergyUnit->addButton(ui.radioButtonKwh, 1);
+	connect(btnGroupEnergyUnit, SIGNAL(buttonClicked(int)), this, SLOT(slot_btnGroupEnergyUnit_clicked(int)));
+	ui.radioButtonKwh->setChecked(true); //默认单位:kWh
+	m_unit = UNIT_KWH;
+
 	//计算流速用
 	m_totalcount = 0;
 	m_startWeight = 0.0;
@@ -380,7 +387,7 @@ void TotalWeightDlg::initMeterCom()
 		m_meterObj[i].openMeterCom(&m_readComConfig->ReadMeterConfigByNum(QString("%1").arg(i+1)));
 		
 		connect(&m_meterObj[i], SIGNAL(readMeterNoIsOK(const QString&, const QString&)), this, SLOT(slotSetMeterNumber(const QString&, const QString&)));
-		connect(&m_meterObj[i], SIGNAL(readMeterFlowIsOK(const QString&, const float&)), this, SLOT(slotSetMeterFlow(const QString&, const float&)));
+		connect(&m_meterObj[i], SIGNAL(readMeterHeatIsOK(const QString&, const QString&)), this, SLOT(slotSetMeterEnergy(const QString&, const QString&)));
 	}
 }
 
@@ -478,6 +485,11 @@ void TotalWeightDlg::on_btnStdTempCollect_clicked()
 void TotalWeightDlg::on_btnStdTempStop_clicked()
 {
 	m_stdTempTimer->stop();
+}
+
+void TotalWeightDlg::slot_btnGroupEnergyUnit_clicked(int id)
+{
+	m_unit = btnGroupEnergyUnit->checkedId();
 }
 
 /*
@@ -819,6 +831,8 @@ int TotalWeightDlg::judgeBalanceAndCalcAvgTemperAndFlow(float targetV)
 		m_avgTFCount++;
 		m_pipeInTemper += ui.lcdInTemper->value();
 		m_pipeOutTemper += ui.lcdOutTemper->value();
+		m_stdInTemper += ui.lnEditInStdTemp->text().toFloat();
+		m_stdOutTemper += ui.lnEditOutStdTemp->text().toFloat();
 // 		if (m_avgTFCount > FLOW_SAMPLE_NUM*2) //前20秒的瞬时流速不准，不参与计算
 // 		{
 // 			m_realFlow += ui.lcdFlowRate->value();
@@ -831,6 +845,9 @@ int TotalWeightDlg::judgeBalanceAndCalcAvgTemperAndFlow(float targetV)
 
 	m_pipeInTemper = m_pipeInTemper/m_avgTFCount;   //入口平均温度
 	m_pipeOutTemper = m_pipeOutTemper/m_avgTFCount; //出口平均温度
+	m_stdInTemper = m_stdInTemper/m_avgTFCount;     //入口标准温度平均值
+	m_stdOutTemper = m_stdOutTemper/m_avgTFCount;   //出口标准温度平均值
+
 // 	if (m_avgTFCount > FLOW_SAMPLE_NUM*2)
 // 	{
 // 		m_realFlow = m_realFlow/(m_avgTFCount-FLOW_SAMPLE_NUM*2+1); //平均流速
@@ -1240,6 +1257,8 @@ int TotalWeightDlg::startVerifyFlowPoint(int order)
 	m_pipeOutTemper = ui.lcdOutTemper->value();
 	m_realFlow = ui.lcdFlowRate->value();
 	m_avgTFCount = 1;
+	m_stdInTemper = ui.lnEditInStdTemp->text().toFloat();
+	m_stdOutTemper = ui.lnEditOutStdTemp->text().toFloat();
 
 	int portNo = m_paraSetReader->getFpBySeq(order).fp_valve;  //order对应的阀门端口号
 	float verifyQuantity = m_paraSetReader->getFpBySeq(order).fp_quantity; //第order次检定对应的检定量
@@ -1257,7 +1276,9 @@ int TotalWeightDlg::startVerifyFlowPoint(int order)
 			{
 				m_meterTemper[m] = m_chkAlg->getMeterTempByPos(m_pipeInTemper, m_pipeOutTemper, m_meterPosMap[m]);//计算每个被检表的温度
 				m_meterDensity[m] = m_chkAlg->getDensityByQuery(m_meterTemper[m]);//计算每个被检表的密度
-				m_meterStdValue[m] = m_chkAlg->getStdVolByPos((m_balEndV-m_balStartV), m_pipeInTemper, m_pipeOutTemper, m_meterPosMap[m]); //计算每个被检表的体积标准值
+// 				m_meterStdValue[m] = m_chkAlg->getStdVolByPos((m_balEndV-m_balStartV), m_pipeInTemper, m_pipeOutTemper, m_meterPosMap[m]); //计算每个被检表的体积标准值
+				m_meterStdValue[m] = m_chkAlg->calcStdEnergyByEnthalpy(m_stdInTemper, m_stdOutTemper, (m_balEndV-m_balStartV), m_unit);
+
 
 				ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_FLOW_POINT, new QTableWidgetItem(QString::number(m_realFlow, 'f', 2)));//流量点
 				ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_BAL_START, new QTableWidgetItem(QString::number(m_balStartV, 'f', 3)));//天平初值
@@ -1453,9 +1474,9 @@ void TotalWeightDlg::slotSetMeterNumber(const QString& comName, const QString& m
 }
 
 /*
-** 自动读取表流量成功 显示表流量
+** 自动读取表热量成功 显示表热量
 */
-void TotalWeightDlg::slotSetMeterFlow(const QString& comName, const float& flow)
+void TotalWeightDlg::slotSetMeterEnergy(const QString& comName, const QString& energy)
 {
 	int meterPos = m_readComConfig->getMeterPosByComName(comName);
 	if (meterPos < 1)
@@ -1463,20 +1484,22 @@ void TotalWeightDlg::slotSetMeterFlow(const QString& comName, const float& flow)
 		return;
 	}
 	int idx = isMeterPosValid(meterPos);
+	bool ok;
+	float heat = energy.toFloat(&ok);
 	if (m_state == STATE_START_VALUE) //初值
 	{
-		ui.tableWidget->setItem(meterPos - 1, COLUMN_METER_START, new QTableWidgetItem(QString::number(flow)));
+		ui.tableWidget->setItem(meterPos - 1, COLUMN_METER_START, new QTableWidgetItem(energy));
 		if (idx>=0 && m_meterStartValue!=NULL)
 		{
-			m_meterStartValue[idx] = flow;
+			m_meterStartValue[idx] = heat;
 		}
 	}
 	else if (m_state == STATE_END_VALUE) //终值
 	{
-		ui.tableWidget->setItem(meterPos - 1, COLUMN_METER_END, new QTableWidgetItem(QString::number(flow)));
+		ui.tableWidget->setItem(meterPos - 1, COLUMN_METER_END, new QTableWidgetItem(energy));
 		if (idx>=0 && m_meterEndValue!=NULL)
 		{
-			m_meterEndValue[idx] = flow;
+			m_meterEndValue[idx] = heat;
 		}
 	}
 }

@@ -407,11 +407,12 @@ public:
 	double getDensityByQuery(float temp);//根据水的温度值查找密度值(查表法)
 	double getStdVolByPos(float mass, float inlet, float outlet, int num);//获取对应表位的标准体积流量
 	double getEnthalpyByQuery(float temp);//根据水的温度值查找焓值(查表法)
-	double CalcKCoeOfWater(float inTemper, float outTemper,  int installPos, float pressure=0.6); //根据进水温度、出水温度、安装位置计算K系数
+	double calcKCoeOfWater(float inTemper, float outTemper,  int installPos, float pressure=0.6); //根据进水温度、出水温度、安装位置计算K系数
 	double getGamaPai(float pai, float tao);//用于水的热量K系数计算的γ
 	double getGamaTao(float pai, float tao);//用于水的比焓值计算的γ
-	double CalcEnthalpy(float temp, float pressure);//计算水的比焓值, 温度范围0℃~350℃
-	double getEnergyByEnthalpy(float inTemper, float outTemper, float vol,  int installPos, int unit, float pressure=NORMAL_PRESSURE);//焓差法计算热值
+	double calcEnthalpyOfWater(float temp, float pressure);//计算水的比焓值, 温度范围0℃~350℃
+	double calcEnergyByEnthalpy(float inTemper, float outTemper, float vol,  int installPos, int unit, float pressure=NORMAL_PRESSURE);//焓差法计算热值（组合检定）
+	double calcStdEnergyByEnthalpy(float inTemper, float outTemper, float mass, int unit, float pressure=NORMAL_PRESSURE); //焓差法计算热值(质量法总量检定)
 private:
 	int getInt(float p);
 	float getDecimal(float p);

@@ -298,12 +298,12 @@
      </column>
      <column>
       <property name="text">
-       <string>MeterValue0(L)</string>
+       <string>MeterValue0(kWh)</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>MeterValue1(L)</string>
+       <string>MeterValue1(kWh)</string>
       </property>
      </column>
      <column>
@@ -328,7 +328,7 @@
      </column>
      <column>
       <property name="text">
-       <string>StdValue(L)</string>
+       <string>StdValue(kWh)</string>
       </property>
      </column>
      <column>

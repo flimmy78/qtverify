@@ -317,7 +317,7 @@ double CAlgorithm::getEnthalpyByQuery(float temp)
 ** 根据欧标EN1434《热能表》计算水的K系数
 ** 默认K系数单位MJ/m3℃
 */
-double CAlgorithm::CalcKCoeOfWater(float inTemper, float outTemper, int installPos, float pressure)
+double CAlgorithm::calcKCoeOfWater(float inTemper, float outTemper, int installPos, float pressure)
 {
 	float kCoe = 0.0;
 	float vIn = 0.0, vOut = 0.0;
@@ -358,6 +358,24 @@ double CAlgorithm::CalcKCoeOfWater(float inTemper, float outTemper, int installP
 	return kCoe;
 }
 
+/*
+** 根据欧标EN1434《热能表》Part-1 计算水的比焓值
+** 单位KJ/kg
+** temp 温度, ℃
+** pressure 压强, MPa
+*/
+double CAlgorithm::calcEnthalpyOfWater(float temp, float pressure)
+{
+	float T = temp + 273.15;//开尔文温度标
+	float tao = 1386/T;
+	float pai = pressure/16.53;
+	float gamaTao = getGamaTao(pai, tao);
+
+	float H = tao*gamaTao*ENTHALPY_R*T;
+
+	return H/1000.0;
+}
+
 double CAlgorithm::getGamaPai(float pai, float tao)
 {
 	float gama = 0.0;
@@ -378,24 +396,6 @@ double CAlgorithm::getGamaTao(float pai, float tao)
 
 /*
 ** 根据欧标EN1434《热能表》Part-1 计算水的比焓值
-** 单位KJ/kg
-** temp 温度, ℃
-** pressure 压强, MPa
-*/
-double CAlgorithm::CalcEnthalpy(float temp, float pressure)
-{
-	float T = temp + 273.15;//开尔文温度标
-	float tao = 1386/T;
-	float pai = pressure/16.53;
-	float gamaTao = getGamaTao(pai, tao);
-
-	float H = tao*gamaTao*ENTHALPY_R*T;
-
-	return H/1000.0;
-}
-
-/*
-** 根据欧标EN1434《热能表》Part-1 计算水的比焓值
 ** 单位(kWh/MJ)
 ** inTemper 进口温度, ℃
 ** outTemper 出口温度, ℃
@@ -404,15 +404,15 @@ double CAlgorithm::CalcEnthalpy(float temp, float pressure)
 ** unit 使用的热值单位, kWh/MJ
 ** pressure 压强, MPa
 */
-double CAlgorithm::getEnergyByEnthalpy(float inTemper, float outTemper, float volum,  int installPos, int unit, float pressure)
+double CAlgorithm::calcEnergyByEnthalpy(float inTemper, float outTemper, float volum,  int installPos, int unit, float pressure)
 {
 	float inEnthalpy, outEnthalpy;
 	float density;
 	float mass;
 	float energy;
 
-	inEnthalpy = CalcEnthalpy(inTemper, pressure);//KJ/kg
-	outEnthalpy = CalcEnthalpy(outTemper, pressure);//KJ/kg
+	inEnthalpy = calcEnthalpyOfWater(inTemper, pressure);//KJ/kg
+	outEnthalpy = calcEnthalpyOfWater(outTemper, pressure);//KJ/kg
 	if (installPos == INSTALLPOS_IN)
 	{
 		density = getDensityByQuery(inTemper);//kg/L
@@ -479,3 +479,32 @@ double CAlgorithm::getStdVolByPos(float mass, float inlet, float outlet, int num
 
 	return (mass / den);//返回标准体积
 }
+
+/*
+** 根据焓差计算标准热量（JJG-2001)
+** 单位(kWh或MJ)
+** inTemper 进口标准温度, ℃
+** outTemper 出口标准温度, ℃
+** mass 质量, kg
+** unit 使用的热值单位, 0:MJ ; 1:kWh
+*/
+double CAlgorithm::calcStdEnergyByEnthalpy(float inTemper, float outTemper, float mass, int unit, float pressure)
+{
+	float inEnthalpy, outEnthalpy, energy;
+
+// 	inEnthalpy = calcEnthalpyOfWater(inTemper, pressure);//KJ/kg
+// 	outEnthalpy = calcEnthalpyOfWater(outTemper, pressure);//KJ/kg
+	inEnthalpy = getEnthalpyByQuery(inTemper);//KJ/kg
+	outEnthalpy = getEnthalpyByQuery(outTemper);//KJ/kg
+	energy = mass*(inEnthalpy-outEnthalpy);//KJ
+	if (unit == UNIT_KWH)
+	{
+		energy /= 3600.0;
+	}
+	else if (unit == UNIT_MJ)
+	{
+		energy /= 1000.0;
+	}
+	return energy;
+}
+
