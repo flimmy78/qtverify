@@ -960,14 +960,10 @@ void TotalWeightDlg::on_btnNext_clicked()
 		QMessageBox::warning(this, tr("Warning"), tr("All flow points has verified!"));
 		return;
 	}
+	ui.btnNext->hide();
 	m_state = STATE_INIT;
 	clearTableContents();
-
 	m_nowOrder ++;
-	if (m_nowOrder == m_flowPointNum)
-	{
-		ui.btnNext->hide();
-	}
 	prepareVerifyFlowPoint(m_nowOrder); // 开始进行下一次流量点的检定
 
 }
@@ -1003,7 +999,6 @@ void TotalWeightDlg::stopVerify()
 	ui.labelHintProcess->setText(tr("Verify has Stoped!"));
 	ui.btnStart->setEnabled(true);
 	ui.btnExhaust->setEnabled(true);
-	ui.btnNext->hide();
 }
 
 //开始检定
@@ -1087,11 +1082,7 @@ void TotalWeightDlg::startVerify()
 	}
 	else //手动采集
 	{
-		if (prepareVerifyFlowPoint(1)) //第一个流量点检定
-		{
-			ui.btnNext->show();
-			ui.btnNext->setFocus();
-		}
+		prepareVerifyFlowPoint(1); //第一个流量点检定
 	}
 	//检测结束
 }
@@ -1177,7 +1168,7 @@ int TotalWeightDlg::judgeBalanceCapacitySingle(int order)
 */
 int TotalWeightDlg::prepareVerifyFlowPoint(int order)
 {
-	if (order < 1 || m_stopFlag)
+	if (order < 1 || order > m_flowPointNum || m_stopFlag)
 	{
 		return false;
 	}
@@ -1291,6 +1282,11 @@ int TotalWeightDlg::startVerifyFlowPoint(int order)
 			if (order==m_flowPointNum) //最后一个流量点
 			{
 				stopVerify(); //停止检定
+			}
+
+			if (order < m_flowPointNum && !m_autopick)
+			{
+				ui.btnNext->show();
 			}
 
 			if (!getMeterEndValue()) //获取表终值
