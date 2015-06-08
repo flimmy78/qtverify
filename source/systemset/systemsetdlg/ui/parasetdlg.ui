@@ -9,14 +9,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>675</width>
+    <width>618</width>
     <height>554</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>ParaSet</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_24">
+  <layout class="QGridLayout" name="gridLayout_23">
    <item row="0" column="0">
     <widget class="QGroupBox" name="gBox_Head">
      <property name="title">
@@ -1331,7 +1331,7 @@
     </widget>
    </item>
    <item row="3" column="0">
-    <layout class="QGridLayout" name="gridLayout_23">
+    <layout class="QGridLayout" name="gridLayout_21">
      <item row="0" column="0">
       <widget class="QGroupBox" name="groupBox_7">
        <property name="title">
@@ -1459,13 +1459,13 @@
       </spacer>
      </item>
      <item row="0" column="6">
-      <widget class="QGroupBox" name="groupBox_8">
+      <widget class="QGroupBox" name="groupBox_5">
        <property name="title">
-        <string>Total Verify</string>
+        <string>Adjust Error</string>
        </property>
-       <layout class="QGridLayout" name="gridLayout_21">
+       <layout class="QGridLayout" name="gridLayout_18">
         <item row="0" column="0">
-         <widget class="QRadioButton" name="tBtn_TotalVerify_True">
+         <widget class="QRadioButton" name="tBtn_adjustError_true">
           <property name="text">
            <string>Yes</string>
           </property>
@@ -1475,9 +1475,9 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QRadioButton" name="tBtn_TotalVerify_False">
+         <widget class="QRadioButton" name="tBtn_adjustError_false">
           <property name="text">
-           <string>No</string>
+           <string>NO</string>
           </property>
          </widget>
         </item>
@@ -1511,11 +1511,21 @@
           </property>
          </widget>
         </item>
+        <item row="0" column="2">
+         <widget class="QLineEdit" name="lineEdit">
+          <property name="minimumSize">
+           <size>
+            <width>140</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
      </item>
      <item row="0" column="1">
-      <spacer name="horizontalSpacer_22">
+      <spacer name="horizontalSpacer_18">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -1531,25 +1541,67 @@
       </spacer>
      </item>
      <item row="0" column="2">
-      <widget class="QGroupBox" name="groupBox_5">
-       <property name="title">
-        <string>Adjust Error</string>
+      <widget class="QGroupBox" name="groupBox_4">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
-       <layout class="QGridLayout" name="gridLayout_18">
+       <property name="title">
+        <string>Coefficient of Safety</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_2">
         <item row="0" column="0">
-         <widget class="QRadioButton" name="tBtn_adjustError_true">
+         <widget class="QLabel" name="label">
           <property name="text">
-           <string>Yes</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
+           <string>Flow:</string>
           </property>
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QRadioButton" name="tBtn_adjustError_false">
+         <widget class="QLineEdit" name="lineEdit_sc_flow">
+          <property name="minimumSize">
+           <size>
+            <width>30</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>18</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="3">
+         <widget class="QLabel" name="label_2">
           <property name="text">
-           <string>NO</string>
+           <string>Total:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="4">
+         <widget class="QLineEdit" name="lineEdit_sc_thermal">
+          <property name="minimumSize">
+           <size>
+            <width>30</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -1557,22 +1609,6 @@
       </widget>
      </item>
      <item row="0" column="3">
-      <spacer name="horizontalSpacer_18">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Preferred</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>17</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="0" column="5">
       <spacer name="horizontalSpacer_19">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -1588,7 +1624,7 @@
        </property>
       </spacer>
      </item>
-     <item row="0" column="6">
+     <item row="0" column="4">
       <widget class="QGroupBox" name="groupBox">
        <property name="title">
         <string>Exhaust Time</string>
@@ -1654,74 +1690,6 @@
           </property>
           <property name="text">
            <string>s</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item row="0" column="4">
-      <widget class="QGroupBox" name="groupBox_4">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="title">
-        <string>Coefficient of Safety</string>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="0">
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>Flow:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="lineEdit_sc_flow">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2">
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>18</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="0" column="3">
-         <widget class="QLabel" name="label_2">
-          <property name="text">
-           <string>Total:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="4">
-         <widget class="QLineEdit" name="lineEdit_sc_thermal">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
