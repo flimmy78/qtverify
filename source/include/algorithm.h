@@ -29,6 +29,7 @@ ALGORITHM_EXPORT float getPlaTr(float r0, float a, float b, float resis);//¼ÆËã²
 ALGORITHM_EXPORT float getDeltaTmpErr(float std_delta_t, float min_delta_t);//¸ù¾İjjg225-2001¼ÆËãÎÂ²îÎó²îÏŞÏŞ(%), ÒÔ¸¡µãÊı·µ»Ø
 ALGORITHM_EXPORT float getSingleTmpErr(float std_delta_t);//¸ù¾İjjg225-2001¼ÆËãµ¥Ö§²¬µç×èÎÂ¶ÈÎó²îÏŞ(%), ÒÔ¸¡µãÊı·µ»Ø
 ALGORITHM_EXPORT float getMeterGradeErrLmt(int grade, float delta_t_min, float delta_t, float dn_flow_rate, float flow_rate);//¸ù¾İ±íµÄµÈ¼¶, ¼ÆËã±íµÄÊ¾ÖµÎó²îÏŞ(%), ÒÔ¸¡µãÊı·µ»Ø
+ALGORITHM_EXPORT float calcFloatValueOfCoe(QString coe);//¸ù¾İÈÈÁ¿±íÍ¨Ñ¶·µ»ØµÄÁ½×Ö½ÚÊı¾İ£¬¼ÆËã³öÏàÓ¦µÄÎó²îÖµ
 
 const float density[150] = { //Ñ¹Á¦<=0.6MPa
 	1000.2f,

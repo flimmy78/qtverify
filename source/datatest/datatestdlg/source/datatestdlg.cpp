@@ -759,10 +759,7 @@ void DataTestDlg::slotFreshMeterTemper(const QString& comName, const QString& te
 
 void DataTestDlg::slotFreshBigCoe(const QString& comName, const QString& bigCoe)
 {
-	bool ok;
-	float dec = bigCoe.right(3).toInt(&ok, 16)/4096.0;
-	float coeV = bigCoe.left(1).toFloat() + dec; 
-	float bigErr = 100/coeV - 100;
+	float bigErr = calcFloatValueOfCoe(bigCoe);
 	ui.lnEditBigOldError->setText(QString::number(bigErr, 'f', ERR_PRECISION));
 	ui.lnEditBigOldCoe->setText(bigCoe);
 	qDebug()<<"读取大流量系数 成功...";
@@ -770,10 +767,7 @@ void DataTestDlg::slotFreshBigCoe(const QString& comName, const QString& bigCoe)
 
 void DataTestDlg::slotFreshMid2Coe(const QString& comName, const QString& mid2Coe)
 {
-	bool ok;
-	float dec = mid2Coe.right(3).toInt(&ok, 16)/4096.0;
-	float coeV = mid2Coe.left(1).toFloat() + dec; 
-	float mid2Err = 100/coeV - 100;
+	float mid2Err = calcFloatValueOfCoe(mid2Coe);
 	ui.lnEditMid2OldError->setText(QString::number(mid2Err, 'f', ERR_PRECISION));
 	ui.lnEditMid2OldCoe->setText(mid2Coe);
 	qDebug()<<"读取中流2流量系数 成功...";
@@ -781,10 +775,7 @@ void DataTestDlg::slotFreshMid2Coe(const QString& comName, const QString& mid2Co
 
 void DataTestDlg::slotFreshMid1Coe(const QString& comName, const QString& mid1Coe)
 {
-	bool ok;
-	float dec = mid1Coe.right(3).toInt(&ok, 16)/4096.0;
-	float coeV = mid1Coe.left(1).toFloat() + dec; 
-	float mid1Err = 100/coeV - 100;
+	float mid1Err = calcFloatValueOfCoe(mid1Coe);
 	ui.lnEditMid1OldError->setText(QString::number(mid1Err, 'f', ERR_PRECISION));
 	ui.lnEditMid1OldCoe->setText(mid1Coe);
 	qDebug()<<"读取中流1流量系数 成功...";
@@ -792,10 +783,7 @@ void DataTestDlg::slotFreshMid1Coe(const QString& comName, const QString& mid1Co
 
 void DataTestDlg::slotFreshSmallCoe(const QString& comName, const QString& smallCoe)
 {
-	bool ok;
-	float dec = smallCoe.right(3).toInt(&ok, 16)/4096.0;
-	float coeV = smallCoe.left(1).toFloat() + dec; 
-	float smallErr = 100/coeV - 100;
+	float smallErr = calcFloatValueOfCoe(smallCoe);
 	ui.lnEditSmallOldError->setText(QString::number(smallErr, 'f', ERR_PRECISION));
 	ui.lnEditSmallOldCoe->setText(smallCoe);
 	qDebug()<<"读取小流量系数 成功...";

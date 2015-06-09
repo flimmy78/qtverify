@@ -203,6 +203,17 @@ float getMeterGradeErrLmt(int grade, float delta_t_min, float delta_t, float dn_
 	ret = qAbs(coe_a + coe_b*(delta_t_min/delta_t) + coe_c*(dn_flow_rate/flow_rate));
 	return ret;
 }
+
+float calcFloatValueOfCoe(QString coe)
+{
+	bool ok;
+	float dec = coe.right(3).toInt(&ok, 16)/4096.0;
+	float coeV = coe.left(1).toFloat() + dec; 
+	float fValue = 100/coeV - 100;
+
+	return fValue;
+}
+
 /**********************************************************
 类名：CAlgorithm
 功能：检定算法类
