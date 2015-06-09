@@ -90,6 +90,7 @@ public:
 	int m_model;              //表型号
 	int m_pickcode;			  //采集代码(热表通讯协议版本号)
 	float m_flowSC;           //流量检定安全系数
+	bool m_adjErr;            //是否调整误差
 	//检定过程相关的控制参数 end
 
 	int m_avgTFCount;		  //计算平均温度和平均流量用的累加计数器
@@ -106,12 +107,13 @@ public:
 	float *m_meterTemper;	  //被检表的温度
 	float *m_meterDensity;    //被检表的密度
 	float *m_meterStdValue;   //被检表的标准值
-	float *m_meterError;	  //被检表的误差
+	float *m_meterError;	  //被检表的误差(当前流量点不同表位的误差)
 	float m_balStartV;        //天平初值
 	float m_balEndV;          //天平终值
 	float m_pipeInTemper;     //入口温度
 	float m_pipeOutTemper;    //出口温度
 	float m_realFlow;		  //流速(m3/h）
+	float **m_meterErr;       //被检表的误差(不同表位、不同流量点的误差)
 
 	Flow_Verify_Record_PTR m_recPtr; //有效的检定记录
 	QString m_timeStamp; //时间戳 秒数

@@ -106,12 +106,14 @@ FlowWeightDlg::FlowWeightDlg(QWidget *parent, Qt::WFlags flags)
 	m_exaustSecond = 45;     //默认排气时间45秒
 	m_pickcode = PROTOCOL_VER_DELU; //采集代码 默认德鲁
 	m_flowSC = 1.0;			 //流量安全系数，默认1.0
+	m_adjErr = false;        //默认不调整误差
 	m_meterStartValue = NULL;
 	m_meterEndValue = NULL;
 	m_meterTemper = NULL;
 	m_meterDensity = NULL;
 	m_meterStdValue = NULL;
 	m_meterError = NULL;
+	m_meterErr = NULL;
 	m_balStartV = 0;
 	m_balEndV = 0;
 	m_timeStamp = "";
@@ -450,6 +452,7 @@ int FlowWeightDlg::readNowParaConfig()
 	m_maxMeterNum = m_nowParams->m_maxMeters;//不同表规格对应的最大检表数量
 	m_pickcode = m_nowParams->m_pickcode; //采集代码
 	m_flowSC = m_nowParams->sc_flow; //流量安全系数
+	m_adjErr = m_nowParams->bo_adjerror; //是否调整误差
 
 	initTableWidget();
 	showNowKeyParaConfig();
@@ -485,11 +488,13 @@ void FlowWeightDlg::initTableWidget()
 		ui.tableWidget->setCellWidget(i, COLUMN_MODIFY_METERNO, btnModNo);
 		m_signalMapper1->setMapping(btnModNo, i);
 		connect(btnModNo, SIGNAL(clicked()), m_signalMapper1, SLOT(map()));
+		btnModNo->setEnabled(false);
 
 		QPushButton *btnAdjErr = new QPushButton(tr("AdjustErr"));
 		ui.tableWidget->setCellWidget(i, COLUMN_ADJUST_ERROR, btnAdjErr);
 		m_signalMapper2->setMapping(btnAdjErr, i);
 		connect(btnAdjErr, SIGNAL(clicked()), m_signalMapper2, SLOT(map()));
+		btnAdjErr->setEnabled(false);
 
 		QPushButton *btnReadMeter = new QPushButton(tr("ReadMeter"));
 		ui.tableWidget->setCellWidget(i, COLUMN_READ_METER, btnReadMeter);
@@ -785,6 +790,7 @@ void FlowWeightDlg::on_btnStart_clicked()
 	for (int i=0; i<ui.tableWidget->rowCount(); i++)
 	{
 		ui.tableWidget->item(i,COLUMN_METER_NUMBER)->setText("");
+		ui.tableWidget->cellWidget(i, COLUMN_ADJUST_ERROR)->setEnabled(false);
 	}
 	clearTableContents();
 	m_validMeterNum = 0;
@@ -921,24 +927,77 @@ void FlowWeightDlg::startVerify()
 
 	m_state = STATE_INIT; //初始状态
 
-	m_meterStartValue = new float[m_validMeterNum]; //表初值 
+	//表初值
+	if (m_meterStartValue != NULL)
+	{
+		delete []m_meterStartValue;
+		m_meterStartValue = NULL;
+	}
+	m_meterStartValue = new float[m_validMeterNum];
 	memset(m_meterStartValue, 0, sizeof(float)*m_validMeterNum);
 
-	m_meterEndValue = new float[m_validMeterNum];   //表终值
+	//表终值
+	if (m_meterEndValue != NULL)
+	{
+		delete []m_meterEndValue;
+		m_meterEndValue = NULL;
+	}
+	m_meterEndValue = new float[m_validMeterNum];   
 	memset(m_meterEndValue, 0, sizeof(float)*m_validMeterNum);
-
-	m_meterTemper = new float[m_validMeterNum];     //表温度
+	
+	//表温度
+	if (m_meterTemper != NULL)
+	{
+		delete []m_meterTemper;
+		m_meterTemper = NULL;
+	}
+	m_meterTemper = new float[m_validMeterNum];     
 	memset(m_meterTemper, 0, sizeof(float)*m_validMeterNum);
 
-	m_meterDensity = new float[m_validMeterNum];    //表密度
+	//表密度	
+	if (m_meterDensity != NULL)
+	{
+		delete []m_meterDensity;
+		m_meterDensity = NULL;
+	}
+	m_meterDensity = new float[m_validMeterNum];    
 	memset(m_meterDensity, 0, sizeof(float)*m_validMeterNum);
 
-	m_meterStdValue = new float[m_validMeterNum];   //被检表的标准值
+	//被检表的标准值
+	if (m_meterStdValue != NULL)
+	{
+		delete []m_meterStdValue;
+		m_meterStdValue = NULL;
+	}
+	m_meterStdValue = new float[m_validMeterNum];   
 	memset(m_meterStdValue, 0, sizeof(float)*m_validMeterNum);
 
-	m_meterError = new float[m_validMeterNum];      //被检表的误差
+    //被检表的误差(当前流量点、不同表位)	
+	if (m_meterError != NULL)
+	{
+		delete []m_meterError;
+		m_meterError = NULL;
+	}
+	m_meterError = new float[m_validMeterNum];      
 	memset(m_meterError, 0, sizeof(float)*m_validMeterNum);
-	
+
+	//被检表的误差(不同流量点、不同表位)
+	if (m_meterErr != NULL)
+	{
+		for (int m=0; m<m_validMeterNum; m++)
+		{
+			delete []m_meterErr[m];
+		}
+		delete []m_meterErr;
+		m_meterErr = NULL;
+	}
+	m_meterErr = new float*[m_validMeterNum];    
+	for (int i=0; i<m_validMeterNum; i++)
+	{
+		m_meterErr[i] = new float[VERIFY_POINTS];
+		memset(m_meterErr[i], 0, sizeof(float)*VERIFY_POINTS);
+	}
+
 	if (m_continueVerify) //连续检定
 	{
 		if (!judgeBalanceCapacity()) //判断天平容量是否能够满足检定用量
@@ -1161,6 +1220,13 @@ int FlowWeightDlg::startVerifyFlowPoint(int order)
 			if (order==m_flowPointNum) //最后一个流量点
 			{
 				stopVerify(); //停止检定
+				if (m_adjErr)
+				{
+					for (int i=0; i<m_validMeterNum; i++)
+					{
+						ui.tableWidget->cellWidget(m_meterPosMap[i]-1, COLUMN_ADJUST_ERROR)->setEnabled(true);
+					}
+				}
 			}
 
 			if (order < m_flowPointNum && !m_autopick)
@@ -1204,6 +1270,8 @@ int FlowWeightDlg::calcAllMeterError()
 int FlowWeightDlg::calcMeterError(int idx)
 {
 	m_meterError[idx] = 100*(m_meterEndValue[idx] - m_meterStartValue[idx] - m_meterStdValue[idx])/m_meterStdValue[idx];//计算某个表的误差
+	int valveIdx = m_paraSetReader->getFpBySeq(m_nowOrder).fp_valve_idx; //0:大 1:中二 2:中一 3:小
+	m_meterErr[idx][valveIdx] = m_meterError[idx];
 	ui.tableWidget->setItem(m_meterPosMap[idx]-1, COLUMN_ERROR, new QTableWidgetItem(QString::number(m_meterError[idx], 'f', 4))); //误差
 	float stdError = m_flowSC*(m_gradeErrA[m_nowParams->m_grade] + m_gradeErrB[m_nowParams->m_grade]*m_mapNormalFlow[m_standard]/m_realFlow); //标准误差=规程要求误差*流量安全系数
 	if (fabs(m_meterError[idx]) > stdError)
@@ -1558,10 +1626,10 @@ int FlowWeightDlg::getMeterEndValue()
 */
 void FlowWeightDlg::on_tableWidget_cellChanged(int row, int column)
 {
-// 	if (m_autopick) //自动采集
-// 	{
-// 		return;
-// 	}
+	if (m_autopick) //自动采集
+	{
+		return;
+	}
 
 	if (NULL==ui.tableWidget->item(row,  column) || NULL==m_meterStartValue || NULL==m_meterEndValue)
 	{
@@ -1684,9 +1752,13 @@ void FlowWeightDlg::slotAdjustError(const int &row)
 // 	float mid1Err = ui.lnEditMid1NewError->text().toFloat();
 // 	float smallErr = ui.lnEditSmallNewError->text().toFloat();
 // 	m_meterObj->askModifyFlowCoe(meterNO, bigErr, mid2Err, mid1Err, smallErr);
-
-	int nowValveIdx = m_paraSetReader->getFpBySeq(m_nowOrder).fp_valve_idx; //0:大 1:中二 2:中一 3:小
-
+// 	int nowValveIdx = m_paraSetReader->getFpBySeq(m_nowOrder).fp_valve_idx; //0:大 1:中二 2:中一 3:小
+	int idx = isMeterPosValid(row+1);
+	if (idx < 0)
+	{
+		return;
+	}
+	m_meterObj->askModifyFlowCoe(meterNO, m_meterErr[idx][0], m_meterErr[idx][1], m_meterErr[idx][2], m_meterErr[idx][3]);
 }
 
 /*
