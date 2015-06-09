@@ -200,6 +200,10 @@ public slots:
 
 	void slotSetMeterNumber(const QString& comName, const QString& meterNumber);
 	void slotSetMeterFlow(const QString& comName, const float& flow);
+	void slotFreshBigCoe(const QString& comName, const QString& bigCoe); //刷新大流量系数
+	void slotFreshMid2Coe(const QString& comName, const QString& mid2Coe); //刷新中流2流量系数
+	void slotFreshMid1Coe(const QString& comName, const QString& mid1Coe); //刷新中流1流量系数
+	void slotFreshSmallCoe(const QString& comName, const QString& smallCoe); //刷新小流量系数
 	void setValveBtnBackColor(QToolButton *btn, bool status); //设置阀门按钮背景色
 	void setRegBtnBackColor(QPushButton *btn, bool status);	  //设置调节阀按钮背景色
 

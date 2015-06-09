@@ -60,7 +60,8 @@ enum now_state
 {
 	STATE_INIT=1,       //初始状态
 	STATE_START_VALUE,  //等待输入初值状态
-	STATE_END_VALUE     //等待输入终值状态
+	STATE_END_VALUE,    //等待输入终值状态
+	STATE_READ_COE      //读取流量点系数状态
 };
 
 /*
