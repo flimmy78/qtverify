@@ -256,6 +256,7 @@ public:
 	float sc_flow;//流量安全系数,sc为safe coefficient头字母
 	float sc_thermal;//热量安全系数
 	int ex_time;//排气时间
+	UINT32 meterNo;//起始表号
 };
 typedef Verify_Params_STR* Verify_Params_PTR;
 

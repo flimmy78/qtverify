@@ -279,6 +279,7 @@ void ParaSetDlg::installOther()
 	ui.lineEdit_sc_flow->setText(QString::number(lastParams->m_params->sc_flow));
 	ui.lineEdit_sc_thermal->setText(QString::number(lastParams->m_params->sc_thermal));
 	ui.lineEdit_exTime->setText(QString::number(lastParams->m_params->ex_time));
+	ui.lineEditMeterNO->setText(QString::number(lastParams->m_params->meterNo));
 }
 
 /*
@@ -468,6 +469,7 @@ void ParaSetDlg::SaveOther()
 	settings->setValue("flowsafecoefficient", ui.lineEdit_sc_flow->text());//流量安全系数
 	settings->setValue("thermalsafecoefficient", ui.lineEdit_sc_thermal->text());//热量安全系数
 	settings->setValue("exhausttime", ui.lineEdit_exTime->text());//排气时间
+	settings->setValue("meternumber", ui.lineEditMeterNO->text());//起始表号
 	settings->endGroup();
 }
 
@@ -602,6 +604,7 @@ void ParaSetReader::readOther()
 	m_params->sc_flow =  m_settings->value("Other/flowsafecoefficient").toFloat();
 	m_params->sc_thermal =  m_settings->value("Other/thermalsafecoefficient").toFloat();
 	m_params->ex_time =  m_settings->value("Other/exhausttime").toFloat();
+	m_params->meterNo =  m_settings->value("Other/meternumber").toUInt();
 }
 
 /*
