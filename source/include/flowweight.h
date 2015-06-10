@@ -91,12 +91,13 @@ public:
 	int m_pickcode;			  //采集代码(热表通讯协议版本号)
 	float m_flowSC;           //流量检定安全系数
 	bool m_adjErr;            //是否调整误差
+	bool m_writeNO;          //是否修改表号
 	//检定过程相关的控制参数 end
 
 	int m_avgTFCount;		  //计算平均温度和平均流量用的累加计数器
-	int m_maxMeterNum;        //表格的行数（被检表的最大个数）
+	int m_maxMeterNum;        //被检表的最大个数
 	int m_oldMaxMeterNum;     //上次被检表的最大个数
-	int m_validMeterNum;          //实际检表的个数
+	int m_validMeterNum;          //实际被检表的个数
 	QMap<int, int> m_meterPosMap; //被检表下标与表位号的映射关系
 	QMap<int, float> m_gradeErrA;  //不同等级热表对应的标准误差参数A
 	QMap<int, float> m_gradeErrB;  //不同等级热表对应的标准误差参数B
@@ -114,11 +115,13 @@ public:
 	float m_pipeOutTemper;    //出口温度
 	float m_realFlow;		  //流速(m3/h）
 	float **m_meterErr;       //被检表的误差(不同表位、不同流量点的误差)
+	int *m_meterResult;       //检表结果 1:合格；0:不合格
 
 	Flow_Verify_Record_PTR m_recPtr; //有效的检定记录
 	QString m_timeStamp; //时间戳 秒数
 	QString m_nowDate;  
 	QString m_validDate;
+	UINT32 m_newMeterNO;   //新表号
 
 	int m_nowOrder;				//当前检定次序
 
@@ -231,6 +234,8 @@ public slots:
 	void slotAdjustError(const int &row);   //调整误差
 	void slotReadMeter(const int &row);     //读表(单个表)
 	void slotVerifyStatus(const int &row);  //检定状态
+
+	void saveStartMeterNO(); //保存起始表号
 
 private slots:
 
