@@ -76,6 +76,7 @@ public:
 	CAlgorithm *m_chkAlg;//检定过程用到的计算方法
 
 	bool m_stopFlag;     //关闭界面后退出
+	bool m_conFlag;      //自动检表时，遇到读表数据失败的，等待重新读表的标识。1:等待  0:不等待
 
 	//检定过程相关的控制参数 begin
 	ParaSetReader *m_paraSetReader;
@@ -229,6 +230,7 @@ public slots:
 	void on_btnAllVerifyStatus_clicked();//设置检定状态(所有表）
 	void on_btnAllAdjError_clicked(); //调整误差(所有表)
 	void on_btnAllModifyNO_clicked(); //修改表号(所有表）
+	void on_btnContinue_clicked(); 
 
 	void slotModifyMeterNO(const int &row); //修改表号
 	void slotAdjustError(const int &row);   //调整误差
