@@ -230,7 +230,7 @@ public slots:
 	void on_btnAllVerifyStatus_clicked();//设置检定状态(所有表）
 	void on_btnAllAdjError_clicked(); //调整误差(所有表)
 	void on_btnAllModifyNO_clicked(); //修改表号(所有表）
-	void on_btnContinue_clicked(); 
+	void on_btnReCalc_clicked(); 
 
 	void slotModifyMeterNO(const int &row); //修改表号
 	void slotAdjustError(const int &row);   //调整误差
