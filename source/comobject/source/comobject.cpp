@@ -694,6 +694,7 @@ void MeterComObject::askModifyMeterNO(QString oldMeterNo, QString newMeterNo)
 */
 void MeterComObject::askModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr)
 {
+	qDebug()<<"askModifyFlowCoe"<<meterNO<<bigErr<<mid2Err<<mid1Err<<smallErr;
 	m_meterProtocol->makeFrameOfModifyFlowCoe(meterNO, bigErr, mid2Err, mid1Err, smallErr);
 	QByteArray buf = m_meterProtocol->getSendFrame();
 	m_meterCom->write(buf);
