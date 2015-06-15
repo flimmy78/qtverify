@@ -21,15 +21,18 @@ INCLUDEPATH  	=    ./      \
 HEADERS	+= $$(ADEHOME_INC)/include/resultquery_globlal.h   \
 		   $$(ADEHOME_INC)/include/flow_result.h   \
 		   $$(ADEHOME_INC)/include/platinum_result.h  \
-		   $$(ADEHOME_INC)/include/calculator_result.h
+		   $$(ADEHOME_INC)/include/calculator_result.h \
+		   $$(ADEHOME_INC)/include/cmb_result.h
 
 SOURCES	+= source/flow_result.cpp \
 		   source/platinum_result.cpp \
-		   source/calculator_result.cpp 
+		   source/calculator_result.cpp \
+		   source/cmb_result.cpp 
 
 FORMS	+= ui/flowresult.ui  \
 		 ui/platinum_result.ui \
-		 ui/calculator_result.ui 
+		 ui/calculator_result.ui \
+		 ui/cmb_result.ui 
 
 win32{
 	MY_DEST_LIB_VAR = $${DESTDIR} $${TARGET}.lib

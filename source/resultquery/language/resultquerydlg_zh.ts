@@ -88,6 +88,84 @@
     </message>
 </context>
 <context>
+    <name>CmbResultClass</name>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="14"/>
+        <source>Combine Verify Result</source>
+        <translation>组合检定结果查询</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="28"/>
+        <source>Start Time:</source>
+        <translation>开始时间:</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="44"/>
+        <source>End Time:</source>
+        <translation>结束时间:</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="64"/>
+        <source>ManuFacturer:</source>
+        <translation>制造厂商:</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="87"/>
+        <source>VerifyDept:</source>
+        <translation>检定单位:</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="110"/>
+        <source>VerifyPerson:</source>
+        <translation>检定员:</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="137"/>
+        <source>MeterNO:</source>
+        <translation>表号:</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="160"/>
+        <source>Method:</source>
+        <translation>检定方法:</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="168"/>
+        <source>Weight</source>
+        <translation>质量法</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="173"/>
+        <source>StdMeter</source>
+        <translation>标准表法</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="189"/>
+        <source>Query</source>
+        <translation>查询</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="196"/>
+        <source>Export Excel</source>
+        <translation>导出报告</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="231"/>
+        <source>Insert</source>
+        <translation>插入</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="238"/>
+        <source>Stop</source>
+        <translation>停止</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="266"/>
+        <source>Exit</source>
+        <translation>退出</translation>
+    </message>
+</context>
+<context>
     <name>FlowResultClass</name>
     <message>
         <location filename="../ui/flowresult.ui" line="14"/>
@@ -329,6 +407,11 @@
         <translation>水的密度</translation>
     </message>
     <message>
+        <location filename="../source/flow_result.cpp" line="138"/>
+        <source>PickCode</source>
+        <translation>采集代码</translation>
+    </message>
+    <message>
         <location filename="../source/flow_result.cpp" line="151"/>
         <source>FlowCoe</source>
         <translation>流量系数</translation>
@@ -349,9 +432,40 @@
         <translation>备用域3</translation>
     </message>
     <message>
+        <location filename="../source/cmb_result.cpp" line="126"/>
+        <source>TimeStamp</source>
+        <translation>时间戳</translation>
+    </message>
+    <message>
+        <location filename="../source/cmb_result.cpp" line="134"/>
+        <source>DeltaTemp </source>
+        <translation>温差</translation>
+    </message>
+    <message>
+        <location filename="../source/cmb_result.cpp" line="135"/>
+        <source>VerifyVolume </source>
+        <translation>检定量</translation>
+    </message>
+    <message>
+        <location filename="../source/cmb_result.cpp" line="136"/>
+        <source>DeltaTempMin </source>
+        <translation>最小温差</translation>
+    </message>
+    <message>
+        <location filename="../source/cmb_result.cpp" line="144"/>
         <location filename="../source/flow_result.cpp" line="131"/>
         <source>StdValue</source>
         <translation>标准值</translation>
+    </message>
+    <message>
+        <location filename="../source/cmb_result.cpp" line="145"/>
+        <source>MeterV0</source>
+        <translation>初始体积</translation>
+    </message>
+    <message>
+        <location filename="../source/cmb_result.cpp" line="146"/>
+        <source>MeterV1</source>
+        <translation>终止体积</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="132"/>
@@ -360,12 +474,14 @@
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="163"/>
+        <location filename="../source/cmb_result.cpp" line="150"/>
         <location filename="../source/flow_result.cpp" line="133"/>
         <source>StdError</source>
         <translation>标准误差</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="164"/>
+        <location filename="../source/cmb_result.cpp" line="151"/>
         <location filename="../source/flow_result.cpp" line="134"/>
         <source>Result</source>
         <translation>检定结果</translation>
@@ -377,6 +493,7 @@
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="140"/>
+        <location filename="../source/cmb_result.cpp" line="129"/>
         <location filename="../source/flow_result.cpp" line="136"/>
         <location filename="../source/platinum_result.cpp" line="130"/>
         <source>Model</source>
@@ -384,18 +501,19 @@
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="139"/>
+        <location filename="../source/cmb_result.cpp" line="128"/>
         <location filename="../source/flow_result.cpp" line="137"/>
         <location filename="../source/platinum_result.cpp" line="129"/>
         <source>Standard</source>
         <translation>规格</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="138"/>
         <source>MeterType</source>
-        <translation>类型</translation>
+        <translation type="obsolete">类型</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="142"/>
+        <location filename="../source/cmb_result.cpp" line="131"/>
         <location filename="../source/flow_result.cpp" line="139"/>
         <location filename="../source/platinum_result.cpp" line="131"/>
         <source>ManufactDept</source>
@@ -403,6 +521,7 @@
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="143"/>
+        <location filename="../source/cmb_result.cpp" line="132"/>
         <location filename="../source/flow_result.cpp" line="140"/>
         <location filename="../source/platinum_result.cpp" line="132"/>
         <source>VerifyDept</source>
@@ -410,6 +529,7 @@
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="141"/>
+        <location filename="../source/cmb_result.cpp" line="130"/>
         <location filename="../source/flow_result.cpp" line="141"/>
         <source>Grade</source>
         <translation>等级</translation>
@@ -421,6 +541,7 @@
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="137"/>
+        <location filename="../source/cmb_result.cpp" line="127"/>
         <source>MeterNo</source>
         <translation>表号</translation>
     </message>
@@ -431,6 +552,7 @@
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="144"/>
+        <location filename="../source/cmb_result.cpp" line="133"/>
         <location filename="../source/flow_result.cpp" line="142"/>
         <location filename="../source/platinum_result.cpp" line="134"/>
         <source>VerifyPerson</source>
@@ -463,31 +585,37 @@
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="150"/>
+        <location filename="../source/cmb_result.cpp" line="137"/>
         <source>InstallPos</source>
         <translation>安装位置</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="151"/>
+        <location filename="../source/cmb_result.cpp" line="138"/>
         <source>HeatUnit</source>
         <translation>热值单位</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="152"/>
+        <location filename="../source/cmb_result.cpp" line="139"/>
         <source>StdTempIn</source>
         <translation>进口标准温度</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="153"/>
+        <location filename="../source/cmb_result.cpp" line="140"/>
         <source>StdTempOut</source>
         <translation>出口标准温度</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="154"/>
+        <location filename="../source/cmb_result.cpp" line="141"/>
         <source>StdResistIn</source>
         <translation>进口标准电阻</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="155"/>
+        <location filename="../source/cmb_result.cpp" line="142"/>
         <source>StdResistOut</source>
         <translation>出口标准电阻</translation>
     </message>
@@ -507,6 +635,7 @@
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="158"/>
+        <location filename="../source/cmb_result.cpp" line="143"/>
         <source>Kcoe</source>
         <translation>K系数</translation>
     </message>
@@ -517,16 +646,19 @@
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="160"/>
+        <location filename="../source/cmb_result.cpp" line="147"/>
         <source>MeterE0</source>
         <translation>热表初值</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="161"/>
+        <location filename="../source/cmb_result.cpp" line="148"/>
         <source>MeterE1</source>
         <translation>热表终值</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="162"/>
+        <location filename="../source/cmb_result.cpp" line="149"/>
         <source>DispError</source>
         <translation>示值误差</translation>
     </message>

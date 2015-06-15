@@ -28,6 +28,7 @@ class stdplasensorDlg;
 class chkplasensorDlg;
 class PlaResultDlg;
 class CalcResultDlg;
+class CmbResultDlg;
 
 class MainForm : public QMainWindow
 {
@@ -66,6 +67,7 @@ public:
 	FlowResultDlg *m_flowResultDlg;
 	PlaResultDlg* m_PlaResultDlg;
 	CalcResultDlg* m_CalcResultDlg;
+	CmbResultDlg* m_CmbResultDlg;
 
 	void closeEvent(QCloseEvent * event);
 

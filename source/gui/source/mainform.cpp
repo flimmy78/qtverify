@@ -39,6 +39,7 @@
 #include "flow_result.h"
 #include "platinum_result.h"
 #include "calculator_result.h"
+#include "cmb_result.h"
 
 MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
@@ -73,6 +74,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_chkPtParaDlg = NULL;
 	m_PlaResultDlg = NULL;
 	m_CalcResultDlg = NULL;
+	m_CmbResultDlg = NULL;
 
 	QLabel *permanent = new QLabel(this);
 	permanent->setFrameStyle(QFrame::NoFrame | QFrame::Sunken);
@@ -228,6 +230,12 @@ void MainForm::closeEvent( QCloseEvent * event)
 		{
 			delete m_CalcResultDlg;
 			m_CalcResultDlg = NULL;
+		}
+
+		if (m_CmbResultDlg)
+		{
+			delete m_CmbResultDlg;
+			m_CmbResultDlg = NULL;
 		}
 	}
 }
@@ -543,6 +551,13 @@ void MainForm::on_actionCalculatorResult_triggered()
 //查询温度/计算器组合检定结果
 void MainForm::on_actionCombineResult_triggered()
 {
+	if (NULL != m_CmbResultDlg)
+	{	
+		delete m_CmbResultDlg;
+		m_CmbResultDlg = NULL;
+	}
+	m_CmbResultDlg = new CmbResultDlg();
+	m_CmbResultDlg->show();
 }
 
 void MainForm::on_actionQueryExcel_triggered()

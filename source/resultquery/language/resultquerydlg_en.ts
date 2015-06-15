@@ -88,6 +88,84 @@
     </message>
 </context>
 <context>
+    <name>CmbResultClass</name>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="14"/>
+        <source>Combine Verify Result</source>
+        <translation>Combine Verify Result</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="28"/>
+        <source>Start Time:</source>
+        <translation>Start Time:</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="44"/>
+        <source>End Time:</source>
+        <translation>End Time:</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="64"/>
+        <source>ManuFacturer:</source>
+        <translation>ManuFacturer:</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="87"/>
+        <source>VerifyDept:</source>
+        <translation>VerifyDept:</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="110"/>
+        <source>VerifyPerson:</source>
+        <translation>VerifyPerson:</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="137"/>
+        <source>MeterNO:</source>
+        <translation>MeterNO:</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="160"/>
+        <source>Method:</source>
+        <translation>Method:</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="168"/>
+        <source>Weight</source>
+        <translation>Weight</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="173"/>
+        <source>StdMeter</source>
+        <translation>StdMeter</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="189"/>
+        <source>Query</source>
+        <translation>Query</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="196"/>
+        <source>Export Excel</source>
+        <translation>Export Excel</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="231"/>
+        <source>Insert</source>
+        <translation>Insert</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="238"/>
+        <source>Stop</source>
+        <translation>Stop</translation>
+    </message>
+    <message>
+        <location filename="../ui/cmb_result.ui" line="266"/>
+        <source>Exit</source>
+        <translation>Exit</translation>
+    </message>
+</context>
+<context>
     <name>FlowResultClass</name>
     <message>
         <location filename="../ui/flowresult.ui" line="14"/>
@@ -329,6 +407,11 @@
         <translation>Density</translation>
     </message>
     <message>
+        <location filename="../source/flow_result.cpp" line="138"/>
+        <source>PickCode</source>
+        <translation>PickCode</translation>
+    </message>
+    <message>
         <location filename="../source/flow_result.cpp" line="151"/>
         <source>FlowCoe</source>
         <translation>FlowCoe</translation>
@@ -349,9 +432,40 @@
         <translation>Bak3</translation>
     </message>
     <message>
+        <location filename="../source/cmb_result.cpp" line="126"/>
+        <source>TimeStamp</source>
+        <translation>TimeStamp</translation>
+    </message>
+    <message>
+        <location filename="../source/cmb_result.cpp" line="134"/>
+        <source>DeltaTemp </source>
+        <translation>DeltaTemp </translation>
+    </message>
+    <message>
+        <location filename="../source/cmb_result.cpp" line="135"/>
+        <source>VerifyVolume </source>
+        <translation>VerifyVolume </translation>
+    </message>
+    <message>
+        <location filename="../source/cmb_result.cpp" line="136"/>
+        <source>DeltaTempMin </source>
+        <translation>DeltaTempMin </translation>
+    </message>
+    <message>
+        <location filename="../source/cmb_result.cpp" line="144"/>
         <location filename="../source/flow_result.cpp" line="131"/>
         <source>StdValue</source>
         <translation>StdValue</translation>
+    </message>
+    <message>
+        <location filename="../source/cmb_result.cpp" line="145"/>
+        <source>MeterV0</source>
+        <translation>MeterV0</translation>
+    </message>
+    <message>
+        <location filename="../source/cmb_result.cpp" line="146"/>
+        <source>MeterV1</source>
+        <translation>MeterV1</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="132"/>
@@ -360,12 +474,14 @@
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="163"/>
+        <location filename="../source/cmb_result.cpp" line="150"/>
         <location filename="../source/flow_result.cpp" line="133"/>
         <source>StdError</source>
         <translation>StdError</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="164"/>
+        <location filename="../source/cmb_result.cpp" line="151"/>
         <location filename="../source/flow_result.cpp" line="134"/>
         <source>Result</source>
         <translation>Result</translation>
@@ -377,6 +493,7 @@
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="140"/>
+        <location filename="../source/cmb_result.cpp" line="129"/>
         <location filename="../source/flow_result.cpp" line="136"/>
         <location filename="../source/platinum_result.cpp" line="130"/>
         <source>Model</source>
@@ -384,18 +501,19 @@
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="139"/>
+        <location filename="../source/cmb_result.cpp" line="128"/>
         <location filename="../source/flow_result.cpp" line="137"/>
         <location filename="../source/platinum_result.cpp" line="129"/>
         <source>Standard</source>
         <translation>Standard</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="138"/>
         <source>MeterType</source>
-        <translation>MeterType</translation>
+        <translation type="obsolete">MeterType</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="142"/>
+        <location filename="../source/cmb_result.cpp" line="131"/>
         <location filename="../source/flow_result.cpp" line="139"/>
         <location filename="../source/platinum_result.cpp" line="131"/>
         <source>ManufactDept</source>
@@ -403,6 +521,7 @@
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="143"/>
+        <location filename="../source/cmb_result.cpp" line="132"/>
         <location filename="../source/flow_result.cpp" line="140"/>
         <location filename="../source/platinum_result.cpp" line="132"/>
         <source>VerifyDept</source>
@@ -410,6 +529,7 @@
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="141"/>
+        <location filename="../source/cmb_result.cpp" line="130"/>
         <location filename="../source/flow_result.cpp" line="141"/>
         <source>Grade</source>
         <translation>Grade</translation>
@@ -421,6 +541,7 @@
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="137"/>
+        <location filename="../source/cmb_result.cpp" line="127"/>
         <source>MeterNo</source>
         <translation>MeterNo</translation>
     </message>
@@ -431,6 +552,7 @@
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="144"/>
+        <location filename="../source/cmb_result.cpp" line="133"/>
         <location filename="../source/flow_result.cpp" line="142"/>
         <location filename="../source/platinum_result.cpp" line="134"/>
         <source>VerifyPerson</source>
@@ -463,31 +585,37 @@
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="150"/>
+        <location filename="../source/cmb_result.cpp" line="137"/>
         <source>InstallPos</source>
         <translation>InstallPos</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="151"/>
+        <location filename="../source/cmb_result.cpp" line="138"/>
         <source>HeatUnit</source>
         <translation>HeatUnit</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="152"/>
+        <location filename="../source/cmb_result.cpp" line="139"/>
         <source>StdTempIn</source>
         <translation>StdTempIn</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="153"/>
+        <location filename="../source/cmb_result.cpp" line="140"/>
         <source>StdTempOut</source>
         <translation>StdTempOut</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="154"/>
+        <location filename="../source/cmb_result.cpp" line="141"/>
         <source>StdResistIn</source>
         <translation>StdResistIn</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="155"/>
+        <location filename="../source/cmb_result.cpp" line="142"/>
         <source>StdResistOut</source>
         <translation>StdResistOut</translation>
     </message>
@@ -507,6 +635,7 @@
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="158"/>
+        <location filename="../source/cmb_result.cpp" line="143"/>
         <source>Kcoe</source>
         <translation>Kcoe</translation>
     </message>
@@ -517,16 +646,19 @@
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="160"/>
+        <location filename="../source/cmb_result.cpp" line="147"/>
         <source>MeterE0</source>
         <translation>MeterE0</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="161"/>
+        <location filename="../source/cmb_result.cpp" line="148"/>
         <source>MeterE1</source>
         <translation>MeterE1</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="162"/>
+        <location filename="../source/cmb_result.cpp" line="149"/>
         <source>DispError</source>
         <translation>DispError</translation>
     </message>
