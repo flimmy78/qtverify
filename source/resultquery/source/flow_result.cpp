@@ -90,6 +90,38 @@ void FlowResultDlg::initUiData()
 	ui.cmbVerifyPerson->insertItem(ui.cmbVerifyPerson->count(), "");
 	ui.cmbVerifyPerson->setCurrentIndex(ui.cmbVerifyPerson->count()-1);
 
+	//表型号
+	int col_id4 = 0;
+	QSqlRelationalTableModel *model4 = new QSqlRelationalTableModel(this);  
+	model4->setTable("T_Meter_Model");  
+	model4->setRelation(col_id4, QSqlRelation("T_Meter_Model","F_ID","F_Desc"));  
+	QSqlTableModel *relationModel4 = model4->relationModel(col_id4);   
+	ui.cmbModel->setModel(relationModel4);  
+	ui.cmbModel->setModelColumn(relationModel4->fieldIndex("F_Desc")); 
+	ui.cmbModel->insertItem(ui.cmbModel->count(), "");
+	ui.cmbModel->setCurrentIndex(ui.cmbModel->count()-1);
+
+	//表规格
+	int col_id5 = 0;
+	QSqlRelationalTableModel *model5 = new QSqlRelationalTableModel(this);  
+	model5->setTable("T_Meter_Standard");  
+	model5->setRelation(col_id5, QSqlRelation("T_Meter_Standard","F_ID","F_Name"));  
+	QSqlTableModel *relationModel5 = model5->relationModel(col_id5);   
+	ui.cmbStandard->setModel(relationModel5);  
+	ui.cmbStandard->setModelColumn(relationModel5->fieldIndex("F_Name")); 
+	ui.cmbStandard->insertItem(ui.cmbStandard->count(), "");
+	ui.cmbStandard->setCurrentIndex(ui.cmbStandard->count()-1);
+
+	//表等级
+	ui.cmbGrade->insertItem(ui.cmbGrade->count(), "1");
+	ui.cmbGrade->insertItem(ui.cmbGrade->count(), "2");
+	ui.cmbGrade->insertItem(ui.cmbGrade->count(), "3");
+	ui.cmbGrade->insertItem(ui.cmbGrade->count(), "");
+	ui.cmbGrade->setCurrentIndex(ui.cmbGrade->count()-1);
+
+	//是否合格
+	ui.cmbIsValid->setCurrentIndex(ui.cmbIsValid->count()-1);
+
 	ui.startDateTime->setDateTime(QDateTime::currentDateTime().addDays(-7));//过去一周
 	ui.endDateTime->setDateTime(QDateTime::currentDateTime());
 }
@@ -98,70 +130,7 @@ void FlowResultDlg::initUiData()
 void FlowResultDlg::on_btnQuery_clicked()
 {
 	getConditon();
-	model->setEditStrategy(QSqlTableModel::OnFieldChange); //属性变化时写入数据库
-	model->setTable("T_Flow_Verify_Record");
-	//getConditon();
-	model->setFilter(m_conStr); //设置查询条件
-	
-	//设置外键
-	model->setRelation(17, QSqlRelation("T_Yes_No_Tab","F_ID","F_Desc"));
-	model->setRelation(19, QSqlRelation("T_Meter_Model","F_ID","F_Name"));
-	//将T_Verify_Record表的第20个属性设为T_Meter_Standard表的F_ID属性的外键，并将其显示为T_Meter_Standard表的F_Name属性的值
-	model->setRelation(20, QSqlRelation("T_Meter_Standard","F_ID","F_Name"));
-	model->setRelation(21, QSqlRelation("T_Meter_PickCode","F_ID","F_Desc"));
-	model->setRelation(22, QSqlRelation("T_Manufacture_Dept","F_ID","F_Desc"));
-	model->setRelation(23, QSqlRelation("T_Verify_Dept","F_ID","F_Desc"));
-	model->setRelation(25, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));
-	model->setRelation(26, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));
-
-	//设置水平标题
-	model->setHeaderData(1, Qt::Horizontal, QObject::tr("time"));//时间
-	model->setHeaderData(2, Qt::Horizontal, QObject::tr("MeterNO."));//表号
-	model->setHeaderData(3, Qt::Horizontal, QObject::tr("FlowPoint"));//流量点
-	model->setHeaderData(4, Qt::Horizontal, QObject::tr("Flow"));//流量
-	model->setHeaderData(5, Qt::Horizontal, QObject::tr("Method"));//检定方法 0:质量法；1:标准表法
-	model->setHeaderData(6, Qt::Horizontal, QObject::tr("MeterValue0"));//热表初值
-	model->setHeaderData(7, Qt::Horizontal, QObject::tr("MeterValue1"));//热表终值
-	model->setHeaderData(8, Qt::Horizontal, QObject::tr("BalValue0"));//天平初值
-	model->setHeaderData(9, Qt::Horizontal, QObject::tr("BalValue1"));//天平终值
-	model->setHeaderData(10, Qt::Horizontal, QObject::tr("F_StdMeterV0"));//标准表初值
-	model->setHeaderData(11, Qt::Horizontal, QObject::tr("F_StdMeterV1"));//标准表终值
-	model->setHeaderData(12, Qt::Horizontal, QObject::tr("PipeTemp"));//管路温度
-	model->setHeaderData(13, Qt::Horizontal, QObject::tr("Density"));//密度
-	model->setHeaderData(14, Qt::Horizontal, QObject::tr("StdValue"));//标准值
-	model->setHeaderData(15, Qt::Horizontal, QObject::tr("Error"));//误差
-	model->setHeaderData(16, Qt::Horizontal, QObject::tr("StdError"));//合格标准
-	model->setHeaderData(17, Qt::Horizontal, QObject::tr("Result"));//合格标志
-	model->setHeaderData(18, Qt::Horizontal, QObject::tr("MeterPosNO."));//表位号
-	model->setHeaderData(19, Qt::Horizontal, QObject::tr("Model"));//型号
-	model->setHeaderData(20, Qt::Horizontal, QObject::tr("Standard"));//规格
-	model->setHeaderData(21, Qt::Horizontal, QObject::tr("PickCode"));//采集代码
-	model->setHeaderData(22, Qt::Horizontal, QObject::tr("ManufactDept"));//制造单位
-	model->setHeaderData(23, Qt::Horizontal, QObject::tr("VerifyDept"));//送检单位
-	model->setHeaderData(24, Qt::Horizontal, QObject::tr("Grade"));//计量等级
-	model->setHeaderData(25, Qt::Horizontal, QObject::tr("VerifyPerson"));//检定员
-	model->setHeaderData(26, Qt::Horizontal, QObject::tr("CheckPerson"));//核验员
-	model->setHeaderData(27, Qt::Horizontal, QObject::tr("DeviceInfoId"));//设备信息ID
-	model->setHeaderData(28, Qt::Horizontal, QObject::tr("VerifyDate"));//检定日期
-	model->setHeaderData(29, Qt::Horizontal, QObject::tr("ValidDate"));//有效期
-	model->setHeaderData(30, Qt::Horizontal, QObject::tr("EnvTemp"));//环境温度
-	model->setHeaderData(31, Qt::Horizontal, QObject::tr("EnvHumidity"));//环境湿度
-	model->setHeaderData(32, Qt::Horizontal, QObject::tr("AirPressure"));//气压
-	model->setHeaderData(33, Qt::Horizontal, QObject::tr("CertNO"));//检定证书编号
-	model->setHeaderData(34, Qt::Horizontal, QObject::tr("FlowCoe"));//流量系数
-	model->setHeaderData(35, Qt::Horizontal, QObject::tr("Bak1"));//备用域1
-	model->setHeaderData(36, Qt::Horizontal, QObject::tr("Bak2"));//备用域2
-	model->setHeaderData(37, Qt::Horizontal, QObject::tr("Bak3"));//备用域3
-	model->select();
-	ui.tableView->setModel(model);
-	ui.tableView->resizeColumnsToContents(); //列宽度自适应
- 	ui.tableView->setItemDelegate(new QSqlRelationalDelegate(ui.tableView)); //外键字段只能在已有的数据中编辑
-	ui.tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);  //使其不可编辑
-
- 	ui.tableView->hideColumn(0);
-	ui.tableView->hideColumn(35);
-	ui.tableView->hideColumn(36);
-	ui.tableView->hideColumn(37);
+	queryData();
 /*	QString tbname = model->tableName();
 	QString fdname1 = model->record(0).fieldName(0);
 	QString pkname = model->primaryKey().name();
@@ -186,8 +155,7 @@ void FlowResultDlg::getConditon()
 	idx = ui.cmbManufactDept->currentIndex();
 	count = ui.cmbManufactDept->count();
 
-	int not_select;
-	not_select = not_select ^ not_select;
+	int not_select = 0;
 	not_select = ~not_select;
 	if (idx != (count-1) && idx != not_select)//制造单位
 	{
@@ -205,10 +173,112 @@ void FlowResultDlg::getConditon()
 	{
 		m_conStr.append(QString(" and F_VerifyPerson=%1").arg(ui.cmbVerifyPerson->currentIndex()));
 	}
+	
+	idx = ui.cmbFlowPointIdx->currentIndex();
+	if (idx > 0)//流量点
+	{
+		m_conStr.append(QString(" and F_FlowPointIdx=%1").arg(ui.cmbFlowPointIdx->currentIndex()));
+	}
+
+	idx = ui.cmbModel->currentIndex();
+	count = ui.cmbModel->count();
+	if (idx != (count-1) && idx != not_select)//表型号
+	{
+		m_conStr.append(QString(" and F_Model=%1").arg(ui.cmbModel->currentIndex()));
+	}
+
+	idx = ui.cmbStandard->currentIndex();
+	count = ui.cmbStandard->count();
+	if (idx != (count-1) && idx != not_select)//表规格
+	{
+		m_conStr.append(QString(" and F_Standard=%1").arg(ui.cmbStandard->currentIndex()));
+	}
+
+	idx = ui.cmbGrade->currentIndex();
+	count = ui.cmbGrade->count();
+	if (idx != (count-1) && idx != not_select)//表等级
+	{
+		m_conStr.append(QString(" and F_Grade=%1").arg(ui.cmbGrade->currentIndex()+1));
+	}
+
+	idx = ui.cmbIsValid->currentIndex();
+	count = ui.cmbIsValid->count();
+	if (idx != (count-1))//是否合格
+	{
+		m_conStr.append(QString(" and F_Result=%1").arg(ui.cmbIsValid->currentIndex()));
+	}
+
 	if (!ui.lnEditMeterNO->text().isEmpty())//表号
 	{
 		m_conStr.append(QString(" and F_MeterNo like \"\%%1\%\"").arg(ui.lnEditMeterNO->text()));
 	}
+}
+
+void FlowResultDlg::queryData()
+{
+	QSqlRelationalTableModel *model1 = new QSqlRelationalTableModel(this);
+	model1->setEditStrategy(QSqlTableModel::OnFieldChange); //属性变化时写入数据库
+	model1->setTable("T_Flow_Verify_Record");
+	model1->setFilter(m_conStr); //设置查询条件
+
+	//设置外键
+	model->setRelation(17, QSqlRelation("T_Yes_No_Tab","F_ID","F_Desc"));
+	model->setRelation(19, QSqlRelation("T_Meter_Model","F_ID","F_Name"));
+	model1->setRelation(20, QSqlRelation("T_Meter_Standard","F_ID","F_Name"));
+	model1->setRelation(21, QSqlRelation("T_Meter_PickCode","F_ID","F_Desc"));
+	model1->setRelation(22, QSqlRelation("T_Manufacture_Dept","F_ID","F_Desc"));
+	model1->setRelation(23, QSqlRelation("T_Verify_Dept","F_ID","F_Desc"));
+	model1->setRelation(25, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));
+	model1->setRelation(26, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));
+
+	//设置水平标题
+	model1->setHeaderData(1, Qt::Horizontal, QObject::tr("time"));//时间
+	model1->setHeaderData(2, Qt::Horizontal, QObject::tr("MeterNO."));//表号
+	model1->setHeaderData(3, Qt::Horizontal, QObject::tr("FlowPoint"));//流量点
+	model1->setHeaderData(4, Qt::Horizontal, QObject::tr("Flow"));//流量
+	model1->setHeaderData(5, Qt::Horizontal, QObject::tr("Method"));//检定方法 0:质量法；1:标准表法
+	model1->setHeaderData(6, Qt::Horizontal, QObject::tr("MeterValue0"));//热表初值
+	model1->setHeaderData(7, Qt::Horizontal, QObject::tr("MeterValue1"));//热表终值
+	model1->setHeaderData(8, Qt::Horizontal, QObject::tr("BalValue0"));//天平初值
+	model1->setHeaderData(9, Qt::Horizontal, QObject::tr("BalValue1"));//天平终值
+	model1->setHeaderData(10, Qt::Horizontal, QObject::tr("F_StdMeterV0"));//标准表初值
+	model1->setHeaderData(11, Qt::Horizontal, QObject::tr("F_StdMeterV1"));//标准表终值
+	model1->setHeaderData(12, Qt::Horizontal, QObject::tr("PipeTemp"));//管路温度
+	model1->setHeaderData(13, Qt::Horizontal, QObject::tr("Density"));//密度
+	model1->setHeaderData(14, Qt::Horizontal, QObject::tr("StdValue"));//标准值
+	model1->setHeaderData(15, Qt::Horizontal, QObject::tr("Error"));//误差
+	model1->setHeaderData(16, Qt::Horizontal, QObject::tr("StdError"));//合格标准
+	model1->setHeaderData(17, Qt::Horizontal, QObject::tr("Result"));//合格标志
+	model1->setHeaderData(18, Qt::Horizontal, QObject::tr("MeterPosNO."));//表位号
+	model1->setHeaderData(19, Qt::Horizontal, QObject::tr("Model"));//型号
+	model1->setHeaderData(20, Qt::Horizontal, QObject::tr("Standard"));//规格
+	model1->setHeaderData(21, Qt::Horizontal, QObject::tr("PickCode"));//采集代码
+	model1->setHeaderData(22, Qt::Horizontal, QObject::tr("ManufactDept"));//制造单位
+	model1->setHeaderData(23, Qt::Horizontal, QObject::tr("VerifyDept"));//送检单位
+	model1->setHeaderData(24, Qt::Horizontal, QObject::tr("Grade"));//计量等级
+	model1->setHeaderData(25, Qt::Horizontal, QObject::tr("VerifyPerson"));//检定员
+	model1->setHeaderData(26, Qt::Horizontal, QObject::tr("CheckPerson"));//核验员
+	model1->setHeaderData(27, Qt::Horizontal, QObject::tr("DeviceInfoId"));//设备信息ID
+	model1->setHeaderData(28, Qt::Horizontal, QObject::tr("VerifyDate"));//检定日期
+	model1->setHeaderData(29, Qt::Horizontal, QObject::tr("ValidDate"));//有效期
+	model1->setHeaderData(30, Qt::Horizontal, QObject::tr("EnvTemp"));//环境温度
+	model1->setHeaderData(31, Qt::Horizontal, QObject::tr("EnvHumidity"));//环境湿度
+	model1->setHeaderData(32, Qt::Horizontal, QObject::tr("AirPressure"));//气压
+	model1->setHeaderData(33, Qt::Horizontal, QObject::tr("CertNO"));//检定证书编号
+	model1->setHeaderData(34, Qt::Horizontal, QObject::tr("FlowCoe"));//流量系数
+	//model1->setHeaderData(35, Qt::Horizontal, QObject::tr("Bak1"));//备用域1
+	//model1->setHeaderData(36, Qt::Horizontal, QObject::tr("Bak2"));//备用域2
+	//model1->setHeaderData(37, Qt::Horizontal, QObject::tr("Bak3"));//备用域3
+	model1->select();
+	ui.tableView->setModel(model1);
+	ui.tableView->resizeColumnsToContents(); //列宽度自适应
+	ui.tableView->setItemDelegate(new QSqlRelationalDelegate(ui.tableView)); //外键字段只能在已有的数据中编辑
+	ui.tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);  //使其不可编辑
+
+	ui.tableView->hideColumn(0);
+	ui.tableView->hideColumn(35);
+	ui.tableView->hideColumn(36);
+	ui.tableView->hideColumn(37);
 }
 
 void FlowResultDlg::on_btnInsert_clicked()

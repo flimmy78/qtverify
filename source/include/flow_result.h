@@ -38,6 +38,7 @@ private slots:
 	void on_btnExit_clicked();
 private:
 	void getConditon();
+	void queryData();
 };
 
 #endif // FLOW_RESULT_H
