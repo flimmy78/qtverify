@@ -238,11 +238,11 @@ void ParaSetDlg::on_btnGroup_autopick_clicked(int id)
 	{
 		//µ÷ÕûÎó²î
 		ui.tBtn_adjustError_true->setChecked(false);
-		ui.tBtn_adjustError_false->setChecked(false);
+		ui.tBtn_adjustError_false->setChecked(true);
 
 		//Ð´±íºÅ
 		ui.tBtn_writeNum_true->setChecked(false);
-		ui.tBtn_writeNum_false->setChecked(false);
+		ui.tBtn_writeNum_false->setChecked(true);
 	}
 	
 }
