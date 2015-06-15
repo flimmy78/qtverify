@@ -94,10 +94,10 @@ void FlowResultDlg::initUiData()
 	int col_id4 = 0;
 	QSqlRelationalTableModel *model4 = new QSqlRelationalTableModel(this);  
 	model4->setTable("T_Meter_Model");  
-	model4->setRelation(col_id4, QSqlRelation("T_Meter_Model","F_ID","F_Desc"));  
+	model4->setRelation(col_id4, QSqlRelation("T_Meter_Model","F_ID","F_Name"));  
 	QSqlTableModel *relationModel4 = model4->relationModel(col_id4);   
 	ui.cmbModel->setModel(relationModel4);  
-	ui.cmbModel->setModelColumn(relationModel4->fieldIndex("F_Desc")); 
+	ui.cmbModel->setModelColumn(relationModel4->fieldIndex("F_Name")); 
 	ui.cmbModel->insertItem(ui.cmbModel->count(), "");
 	ui.cmbModel->setCurrentIndex(ui.cmbModel->count()-1);
 
@@ -220,10 +220,10 @@ void FlowResultDlg::queryData()
 	model1->setEditStrategy(QSqlTableModel::OnFieldChange); //属性变化时写入数据库
 	model1->setTable("T_Flow_Verify_Record");
 	model1->setFilter(m_conStr); //设置查询条件
-
+	
 	//设置外键
-	model->setRelation(17, QSqlRelation("T_Yes_No_Tab","F_ID","F_Desc"));
-	model->setRelation(19, QSqlRelation("T_Meter_Model","F_ID","F_Name"));
+	model1->setRelation(17, QSqlRelation("T_Yes_No_Tab","F_ID","F_Desc"));
+	model1->setRelation(19, QSqlRelation("T_Meter_Model","F_ID","F_Name"));
 	model1->setRelation(20, QSqlRelation("T_Meter_Standard","F_ID","F_Name"));
 	model1->setRelation(21, QSqlRelation("T_Meter_PickCode","F_ID","F_Desc"));
 	model1->setRelation(22, QSqlRelation("T_Manufacture_Dept","F_ID","F_Desc"));
