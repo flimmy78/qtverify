@@ -151,6 +151,8 @@ void ParaSetDlg::initUiData()
 	mapMeterModelModel();
 
 	cBoxData_inited = true;//下拉条已初始化完毕
+
+	initBtnGroup();
 }
 
 //映射采集代码
@@ -215,6 +217,36 @@ void ParaSetDlg::mapMeterModelModel()
 	m_modelModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
 }
 
+void ParaSetDlg::initBtnGroup()
+{
+	m_btnGroup_autopick = new QButtonGroup(ui.gBox_autopick); //计量单位
+	m_btnGroup_autopick->addButton(ui.tBtn_autoPick_true, true);
+	m_btnGroup_autopick->addButton(ui.tBtn_autoPick_false, false);
+	connect(m_btnGroup_autopick, SIGNAL(buttonClicked(int)), this, SLOT(on_btnGroup_autopick_clicked(int)));
+}
+
+void ParaSetDlg::on_btnGroup_autopick_clicked(int id)
+{
+
+	ui.tBtn_adjustError_true->setEnabled(id);
+	ui.tBtn_adjustError_false->setEnabled(id);
+
+	ui.tBtn_writeNum_true->setEnabled(id);
+	ui.tBtn_writeNum_false->setEnabled(id);
+	
+	if (!id)
+	{
+		//调整误差
+		ui.tBtn_adjustError_true->setChecked(false);
+		ui.tBtn_adjustError_false->setChecked(false);
+
+		//写表号
+		ui.tBtn_writeNum_true->setChecked(false);
+		ui.tBtn_writeNum_false->setChecked(false);
+	}
+	
+}
+
 void ParaSetDlg::installLastParams()
 {
 	installHead();
@@ -258,20 +290,34 @@ void ParaSetDlg::installFlowPoint()
 void ParaSetDlg::installBool()
 {
 	//自动采集
-	 ui.tBtn_autoPick_true->setChecked(lastParams->m_params->bo_autopick) ;
-	 ui.tBtn_autoPick_false->setChecked(!(lastParams->m_params->bo_autopick)) ;
-	 //调整误差
-	 ui.tBtn_adjustError_true->setChecked(lastParams->m_params->bo_adjerror) ;
-	 ui.tBtn_adjustError_false->setChecked(!(lastParams->m_params->bo_adjerror)) ;
-	 //写表号
-	 ui.tBtn_writeNum_true->setChecked(lastParams->m_params->bo_writenum) ;
-	 ui.tBtn_writeNum_false->setChecked(!(lastParams->m_params->bo_writenum)) ;
-	 //连续检定
-	 ui.tBtn_continuous_true->setChecked(lastParams->m_params->bo_converify) ;
-	 ui.tBtn_continuous_false->setChecked(!(lastParams->m_params->bo_converify)) ;
-	 //初值回零
-	 ui.tBtn_resetzero_true->setChecked(lastParams->m_params->bo_resetzero);
-	 ui.tBtn_resetzero_false->setChecked(!(lastParams->m_params->bo_resetzero));
+	ui.tBtn_autoPick_true->setChecked(lastParams->m_params->bo_autopick) ;
+	ui.tBtn_autoPick_false->setChecked(!(lastParams->m_params->bo_autopick)) ;
+	 
+	 
+	//调整误差
+	ui.tBtn_adjustError_true->setChecked(lastParams->m_params->bo_adjerror) ;
+	ui.tBtn_adjustError_false->setChecked(!(lastParams->m_params->bo_adjerror)) ;
+	//写表号
+	ui.tBtn_writeNum_true->setChecked(lastParams->m_params->bo_writenum) ;
+	ui.tBtn_writeNum_false->setChecked(!(lastParams->m_params->bo_writenum)) ;
+	 
+	if (!lastParams->m_params->bo_autopick)
+	{
+		//调整误差
+		ui.tBtn_adjustError_true->setEnabled(false);
+		ui.tBtn_adjustError_false->setEnabled(false);
+		 
+		//写表号
+		ui.tBtn_writeNum_true->setEnabled(false);
+		ui.tBtn_writeNum_false->setEnabled(false);
+	}
+
+	//连续检定
+	ui.tBtn_continuous_true->setChecked(lastParams->m_params->bo_converify) ;
+	ui.tBtn_continuous_false->setChecked(!(lastParams->m_params->bo_converify)) ;
+	//初值回零
+	ui.tBtn_resetzero_true->setChecked(lastParams->m_params->bo_resetzero);
+	ui.tBtn_resetzero_false->setChecked(!(lastParams->m_params->bo_resetzero));
 }
 
 void ParaSetDlg::installOther()

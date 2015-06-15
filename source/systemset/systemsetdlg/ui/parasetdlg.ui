@@ -1333,7 +1333,7 @@
    <item row="3" column="0">
     <layout class="QGridLayout" name="gridLayout_21">
      <item row="0" column="0">
-      <widget class="QGroupBox" name="groupBox_7">
+      <widget class="QGroupBox" name="gBox_resetzero">
        <property name="title">
         <string>Reset Zero</string>
        </property>
@@ -1375,7 +1375,7 @@
       </spacer>
      </item>
      <item row="0" column="2">
-      <widget class="QGroupBox" name="groupBox_3">
+      <widget class="QGroupBox" name="gBox_autopick">
        <property name="title">
         <string>Auto DA</string>
        </property>
@@ -1417,7 +1417,7 @@
       </spacer>
      </item>
      <item row="0" column="4">
-      <widget class="QGroupBox" name="groupBox_2">
+      <widget class="QGroupBox" name="gBox_continuous">
        <property name="title">
         <string>Continuous Verify</string>
        </property>
@@ -1459,7 +1459,7 @@
       </spacer>
      </item>
      <item row="0" column="6">
-      <widget class="QGroupBox" name="groupBox_5">
+      <widget class="QGroupBox" name="gBox_adjusterror">
        <property name="title">
         <string>Adjust Error</string>
        </property>
@@ -1489,7 +1489,7 @@
    <item row="4" column="0">
     <layout class="QGridLayout" name="gridLayout_22">
      <item row="0" column="0">
-      <widget class="QGroupBox" name="groupBox_6">
+      <widget class="QGroupBox" name="gBox_writenum">
        <property name="title">
         <string>Write MeterNo</string>
        </property>
@@ -1541,7 +1541,7 @@
       </spacer>
      </item>
      <item row="0" column="2">
-      <widget class="QGroupBox" name="groupBox_4">
+      <widget class="QGroupBox" name="gBox_safetycoe">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -1625,7 +1625,7 @@
       </spacer>
      </item>
      <item row="0" column="4">
-      <widget class="QGroupBox" name="groupBox">
+      <widget class="QGroupBox" name="gBox_exhausttime">
        <property name="title">
         <string>Exhaust Time</string>
        </property>

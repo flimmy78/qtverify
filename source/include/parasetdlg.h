@@ -58,6 +58,7 @@ public:
 	Manufacture_PTR m_manuFacPtr;
 
 	void initUiData(); //从数据库读取记录，填充combox等
+	void initBtnGroup();//初始化ButtonGroup
 
 	void mapPickCodeModel(); //采集代码模型
 	QSqlTableModel *m_pickCodeModel;
@@ -91,7 +92,7 @@ public slots:
 	void on_btnSave_clicked();
 	void on_cmbStandard_currentIndexChanged();
 	void showEvent(QShowEvent * event);
-
+	void on_btnGroup_autopick_clicked(int);
 private:
 	Ui::ParaSetDlgClass ui;
 	bool cBoxData_inited;//标记, 界面的下拉条已经从数据库中读取了数据
@@ -107,6 +108,10 @@ private:
 	QVector<QComboBox*> cBox_valves;//流量点对应的阀门控件数组
 	QVector<QLineEdit*> lineEdit_freqs;//水泵频率控件数组
 	QVector<QComboBox*> cBox_seqs;//检定次序控件数组
+
+	QButtonGroup *m_btnGroup_autopick; //自动采集
+	QButtonGroup *m_btnGroup_adjustError; //修正误差
+	QButtonGroup *m_btnGroup_writeNum; //修正误差
 
 	void flowPointVector();//将各流量点中, 相似功能的控件加入数组, 便于使用
 	void installLastParams();//装载上次的参数配置
