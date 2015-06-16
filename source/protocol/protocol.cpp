@@ -884,7 +884,7 @@ UINT8 DeluMeterProtocol::CountCheck(DeluMeter_Frame_Struct *pFrame)
 //Ω‚÷°
 UINT8 DeluMeterProtocol::readMeterComBuffer(QByteArray tmp)
 {
-	qDebug()<<"readMeterComBuffer MeterProtocol thread:"<<QThread::currentThreadId();
+	qDebug()<<"readMeterComBuffer DeluMeterProtocol thread:"<<QThread::currentThreadId();
 
 	UINT8 ret = 0x00;
 	int state = METER_START_STATE;

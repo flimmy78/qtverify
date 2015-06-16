@@ -579,7 +579,7 @@ void MeterComObject::readMeterComBuffer()
 // 	qDebug()<<"Read"<<m_meterCom->bytesAvailable()<<"bytes!";
 	m_meterTmp.append(m_meterCom->readAll());
 	int num = m_meterTmp.size();
-	if (num < 71) //不含前导符，一帧至少71个字节
+	if (num < 84) //一帧84个字节
 	{
 //		qDebug()<<"串口返回字节个数 ="<<num;
 		return;
@@ -589,11 +589,11 @@ void MeterComObject::readMeterComBuffer()
 		return;
 	}
 
+	QDateTime begintime = QDateTime::currentDateTime();
+	qDebug()<<"begintime:"<<begintime.toString("yyyy-MM-dd HH:mm:ss.zzz");
 	UINT8 ret = 0x00;
 	ret = m_meterProtocol->readMeterComBuffer(m_meterTmp);
 	m_meterTmp.clear(); //清零
-	QDateTime begintime = QDateTime::currentDateTime();
-	qDebug()<<"begintime:"<<begintime.toString("yyyy-MM-dd HH:mm:ss.zzz");
 
 	bool ok;
 	QString meterNo;
@@ -606,9 +606,6 @@ void MeterComObject::readMeterComBuffer()
 		//表号
 		meterNo = m_meterProtocol->getFullMeterNo();
 		emit readMeterNoIsOK(m_portName, meterNo);
-		QDateTime endtime = QDateTime::currentDateTime();
-		qDebug()<<"endtime:  "<<endtime.toString("yyyy-MM-dd HH:mm:ss.zzz");
-		UINT32 usedSec = begintime.msecsTo(endtime);
 
 		//流量、热量
 		flow = m_meterProtocol->getFlow().toFloat(&ok);
@@ -647,6 +644,9 @@ void MeterComObject::readMeterComBuffer()
 		smallCoe = m_meterProtocol->getSmallCoe();
 		emit readMeterSmallCoeIsOK(m_portName, smallCoe);
 
+		QDateTime endtime = QDateTime::currentDateTime();
+		qDebug()<<"endtime:  "<<endtime.toString("yyyy-MM-dd HH:mm:ss.zzz");
+		UINT32 usedSec = begintime.msecsTo(endtime);
 		qDebug()<<"解析热量表数据，用时"<<usedSec<<"毫秒";
 	}
 }

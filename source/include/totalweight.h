@@ -81,6 +81,7 @@ public:
 	CAlgorithm *m_chkAlg;//检定过程用到的计算方法
 
 	bool m_stopFlag;     //关闭界面后退出
+	bool m_conFlag;      //自动检表时，遇到读表数据失败的，等待重新读表的标识。1:等待  0:不等待
 
 	//检定过程相关的控制参数 begin
 	ParaSetReader *m_paraSetReader;
@@ -95,12 +96,14 @@ public:
 	int m_model;              //表型号
 	int m_pickcode;			  //采集代码(热表通讯协议版本号)
 	float m_flowSC;           //流量检定安全系数
+	bool m_adjErr;            //是否调整误差
+	bool m_writeNO;           //是否修改表号
 	//检定过程相关的控制参数 end
 
 	int m_avgTFCount;		  //计算平均温度和平均流量用的累加计数器
-	int m_maxMeterNum;        //表格的行数（被检表的最大个数）
+	int m_maxMeterNum;        //被检表的最大个数
 	int m_oldMaxMeterNum;     //上次被检表的最大个数
-	int m_validMeterNum;          //实际检表的个数
+	int m_validMeterNum;          //实际被检表的个数
 	QMap<int, int> m_meterPosMap; //被检表下标与表位号的映射关系
 	QMap<int, float> m_gradeErrA;  //不同等级热表对应的标准误差参数A
 	QMap<int, float> m_gradeErrB;  //不同等级热表对应的标准误差参数B
@@ -111,12 +114,14 @@ public:
 	float *m_meterTemper;	  //被检表的温度
 	float *m_meterDensity;    //被检表的密度
 	float *m_meterStdValue;   //被检表的标准值
-	float *m_meterError;	  //被检表的误差
+	float *m_meterError;	  //被检表的误差(当前流量点不同表位的误差)
 	float m_balStartV;        //天平初值
 	float m_balEndV;          //天平终值
 	float m_pipeInTemper;     //入口温度
 	float m_pipeOutTemper;    //出口温度
 	float m_realFlow;		  //流速(m3/h）
+	float **m_meterErr;       //被检表的误差(不同表位、不同流量点的误差)
+	int *m_meterResult;       //检表结果 1:合格；0:不合格
 	float m_stdInTemper;      //标准入口温度
 	float m_stdOutTemper;     //标准出口温度
 	int m_unit;                       //能量单位(0:MJ； 1:kWh)
@@ -126,6 +131,7 @@ public:
 	QString m_timeStamp; //时间戳 秒数
 	QString m_nowDate;  
 	QString m_validDate;
+	UINT32 m_newMeterNO;   //新表号
 
 	int m_nowOrder;				//当前检定次序
 
@@ -231,11 +237,14 @@ public slots:
 	void on_btnAllVerifyStatus_clicked();//设置检定状态(所有表）
 	void on_btnAllAdjError_clicked(); //调整误差(所有表)
 	void on_btnAllModifyNO_clicked(); //修改表号(所有表）
+	void on_btnReCalc_clicked(); 
 
 	void slotModifyMeterNO(const int &row); //修改表号
 	void slotAdjustError(const int &row);   //调整误差
 	void slotReadMeter(const int &row);     //读表(单个表)
 	void slotVerifyStatus(const int &row);  //检定状态
+
+	void saveStartMeterNO(); //保存起始表号
 
 	void on_btnStdTempCollect_clicked(); //采集标准温度
 	void on_btnStdTempStop_clicked(); //停止采集标准温度

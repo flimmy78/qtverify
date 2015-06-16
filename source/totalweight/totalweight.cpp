@@ -35,7 +35,8 @@ TotalWeightDlg::TotalWeightDlg(QWidget *parent, Qt::WFlags flags)
 	qDebug()<<"TotalWeightDlg thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
 	ui.btnGoOn->hide();
- 	ui.btnNext->hide();   //隐藏"下一步"按钮
+	ui.btnNext->hide();   //隐藏"下一步"按钮
+	ui.btnReCalc->hide();
 
 	//不同等级的热量表对应的标准误差,单位%
 	m_gradeErrA[1] = 1.00f;
@@ -117,12 +118,16 @@ TotalWeightDlg::TotalWeightDlg(QWidget *parent, Qt::WFlags flags)
 	m_exaustSecond = 45;     //默认排气时间45秒
 	m_pickcode = PROTOCOL_VER_DELU; //采集代码 默认德鲁
 	m_flowSC = 1.0;			 //流量安全系数，默认1.0
+	m_adjErr = false;        //默认不调整误差
+	m_writeNO = false;       //默认不写表号
 	m_meterStartValue = NULL;
 	m_meterEndValue = NULL;
 	m_meterTemper = NULL;
 	m_meterDensity = NULL;
 	m_meterStdValue = NULL;
 	m_meterError = NULL;
+	m_meterErr = NULL;
+	m_meterResult = NULL;
 	m_balStartV = 0;
 	m_balEndV = 0;
 	m_timeStamp = "";
@@ -561,6 +566,9 @@ int TotalWeightDlg::readNowParaConfig()
 	m_maxMeterNum = m_nowParams->m_maxMeters;//不同表规格对应的最大检表数量
 	m_pickcode = m_nowParams->m_pickcode; //采集代码
 	m_flowSC = m_nowParams->sc_flow; //流量安全系数
+	m_adjErr = m_nowParams->bo_adjerror; //是否调整误差
+	m_writeNO = m_nowParams->bo_writenum;//是否写表号
+	m_newMeterNO = m_nowParams->meterNo;
 
 	initTableWidget();
 	showNowKeyParaConfig();
@@ -596,11 +604,13 @@ void TotalWeightDlg::initTableWidget()
 		ui.tableWidget->setCellWidget(i, COLUMN_MODIFY_METERNO, btnModNo);
 		m_signalMapper1->setMapping(btnModNo, i);
 		connect(btnModNo, SIGNAL(clicked()), m_signalMapper1, SLOT(map()));
+// 		btnModNo->setEnabled(false);
 
 		QPushButton *btnAdjErr = new QPushButton(tr("AdjustErr"));
 		ui.tableWidget->setCellWidget(i, COLUMN_ADJUST_ERROR, btnAdjErr);
 		m_signalMapper2->setMapping(btnAdjErr, i);
 		connect(btnAdjErr, SIGNAL(clicked()), m_signalMapper2, SLOT(map()));
+		btnAdjErr->setEnabled(false);
 
 		QPushButton *btnReadMeter = new QPushButton(tr("ReadMeter"));
 		ui.tableWidget->setCellWidget(i, COLUMN_READ_METER, btnReadMeter);
@@ -856,7 +866,7 @@ int TotalWeightDlg::judgeBalanceAndCalcAvgTemperAndFlow(float targetV)
 	int tt = startTime.secsTo(endTime);
 	m_realFlow = 3.6*(m_paraSetReader->getFpBySeq(m_nowOrder).fp_quantity + ui.lcdBigBalance->value() - targetV)/tt;
 	ui.labelHintPoint->setText(tr("NO. %1 flow point: %2 m3/h").arg(m_nowOrder).arg(nowFlow));
-	ui.labelHintProcess->setText(tr("Verify Finished!"));
+	ui.labelHintProcess->setText(tr("NO. %1 flow point: Verify Finished!").arg(m_nowOrder));
 	if (m_nowOrder == m_flowPointNum)
 	{
 		ui.labelHintProcess->setText(tr("All flow points has verified!"));
@@ -901,6 +911,8 @@ void TotalWeightDlg::on_btnStart_clicked()
 	for (int i=0; i<ui.tableWidget->rowCount(); i++)
 	{
 		ui.tableWidget->item(i,COLUMN_METER_NUMBER)->setText("");
+		ui.tableWidget->cellWidget(i, COLUMN_ADJUST_ERROR)->setEnabled(false);
+		ui.tableWidget->cellWidget(i, COLUMN_ADJUST_ERROR)->setStyleSheet(";");
 	}
 	clearTableContents();
 	m_validMeterNum = 0;
@@ -928,7 +940,7 @@ int TotalWeightDlg::on_btnExhaust_clicked()
 		QMessageBox::warning(this, tr("Warning"), tr("data acquisition error, please check!"));
 		return false;
 	}
-
+	m_controlObj->askSetDriverFreq(m_nowParams->fp_info[0].fp_freq);
 	if (!openAllValveAndPump())
 	{
 		qWarning()<<"打开所有阀门和水泵 失败!";
@@ -1006,6 +1018,17 @@ void TotalWeightDlg::startVerify()
 {
 	m_nowOrder = 1;
 
+	//释放内存
+	if (m_meterErr != NULL)
+	{
+		for (int m=0; m<m_validMeterNum; m++)
+		{
+			delete []m_meterErr[m];
+		}
+		delete []m_meterErr;
+		m_meterErr = NULL;
+	}
+
 	//判断实际检表的个数(根据获取到的表号个数)
 	if (getValidMeterNum() != m_maxMeterNum)
 	{
@@ -1013,7 +1036,7 @@ void TotalWeightDlg::startVerify()
 		QMessageBox *messageBox = new QMessageBox(QMessageBox::Question, tr("Question"), \
 			tr("meter count maybe error ! read meter number again?\nclick \'Yes\' to read meter again;or click \'No\' to continue verify"), \
 			QMessageBox::Yes|QMessageBox::No, this);
-		messageBox->setDefaultButton(QMessageBox::Yes);
+		messageBox->setDefaultButton(QMessageBox::No); //默认继续检定
 		QTimer timer;
 		connect(&timer, SIGNAL(timeout()), messageBox, SLOT(close()));
 		timer.start(5000);
@@ -1038,24 +1061,98 @@ void TotalWeightDlg::startVerify()
 
 	m_state = STATE_INIT; //初始状态
 
-	m_meterStartValue = new float[m_validMeterNum]; //表初值 
+	//表初值
+	if (m_meterStartValue != NULL)
+	{
+		delete []m_meterStartValue;
+		m_meterStartValue = NULL;
+	}
+	m_meterStartValue = new float[m_validMeterNum];
 	memset(m_meterStartValue, 0, sizeof(float)*m_validMeterNum);
 
-	m_meterEndValue = new float[m_validMeterNum];   //表终值
+	//表终值
+	if (m_meterEndValue != NULL)
+	{
+		delete []m_meterEndValue;
+		m_meterEndValue = NULL;
+	}
+	m_meterEndValue = new float[m_validMeterNum];   
 	memset(m_meterEndValue, 0, sizeof(float)*m_validMeterNum);
-
-	m_meterTemper = new float[m_validMeterNum];     //表温度
+	
+	//表温度
+	if (m_meterTemper != NULL)
+	{
+		delete []m_meterTemper;
+		m_meterTemper = NULL;
+	}
+	m_meterTemper = new float[m_validMeterNum];     
 	memset(m_meterTemper, 0, sizeof(float)*m_validMeterNum);
 
-	m_meterDensity = new float[m_validMeterNum];    //表密度
+	//表密度	
+	if (m_meterDensity != NULL)
+	{
+		delete []m_meterDensity;
+		m_meterDensity = NULL;
+	}
+	m_meterDensity = new float[m_validMeterNum];    
 	memset(m_meterDensity, 0, sizeof(float)*m_validMeterNum);
 
-	m_meterStdValue = new float[m_validMeterNum];   //被检表的标准值
+	//被检表的标准值
+	if (m_meterStdValue != NULL)
+	{
+		delete []m_meterStdValue;
+		m_meterStdValue = NULL;
+	}
+	m_meterStdValue = new float[m_validMeterNum];   
 	memset(m_meterStdValue, 0, sizeof(float)*m_validMeterNum);
 
-	m_meterError = new float[m_validMeterNum];      //被检表的误差
+    //被检表的误差(当前流量点、不同表位)	
+	if (m_meterError != NULL)
+	{
+		delete []m_meterError;
+		m_meterError = NULL;
+	}
+	m_meterError = new float[m_validMeterNum];      
 	memset(m_meterError, 0, sizeof(float)*m_validMeterNum);
-	
+
+	//被检表的误差(不同流量点、不同表位)
+// 	if (m_meterErr != NULL)
+// 	{
+// 		for (int m=0; m<m_validMeterNum; m++)
+// 		{
+// 			delete []m_meterErr[m];
+// 		}
+// 		delete []m_meterErr;
+// 		m_meterErr = NULL;
+// 	}
+	m_meterErr = new float*[m_validMeterNum];    
+	for (int i=0; i<m_validMeterNum; i++)
+	{
+		m_meterErr[i] = new float[VERIFY_POINTS];
+		memset(m_meterErr[i], 0, sizeof(float)*VERIFY_POINTS);
+	}
+
+	//所有流量点是否都合格
+	if (m_meterResult != NULL)
+	{
+		delete []m_meterResult;
+		m_meterResult = NULL;
+	}
+	m_meterResult = new int[m_validMeterNum];
+	for (int n=0; n<m_validMeterNum; n++)
+	{
+		m_meterResult[n] = 1;
+	}
+
+
+	if (m_adjErr)
+	{
+		m_state = STATE_READ_COE;
+		readAllMeter(); //读取原来的流量点系数
+		QTest::qWait(3000);
+		m_state = STATE_INIT;
+	}
+
 	if (m_continueVerify) //连续检定
 	{
 		if (!judgeBalanceCapacity()) //判断天平容量是否能够满足检定用量
@@ -1207,9 +1304,9 @@ int TotalWeightDlg::prepareVerifyFlowPoint(int order)
 			}
 		}
 		memset(m_meterStartValue, 0, sizeof(float)*m_validMeterNum);
-		for (int i=0; i<m_validMeterNum; i++)
+		for (int j=0; j<m_validMeterNum; j++)
 		{
-			ui.tableWidget->item(m_meterPosMap[i]-1, COLUMN_METER_START)->setText(QString("%1").arg(m_meterStartValue[i]));
+			ui.tableWidget->item(m_meterPosMap[j]-1, COLUMN_METER_START)->setText(QString("%1").arg(m_meterStartValue[j]));
 		}
 	}
 	else //初值不回零
@@ -1243,6 +1340,8 @@ int TotalWeightDlg::startVerifyFlowPoint(int order)
 	{
 		return false;
 	}
+	int ret = 0;
+
 	m_balStartV = ui.lcdBigBalance->value(); //记录天平初值
 	m_pipeInTemper = ui.lcdInTemper->value();
 	m_pipeOutTemper = ui.lcdOutTemper->value();
@@ -1282,6 +1381,13 @@ int TotalWeightDlg::startVerifyFlowPoint(int order)
 			if (order==m_flowPointNum) //最后一个流量点
 			{
 				stopVerify(); //停止检定
+				if (m_adjErr)
+				{
+					for (int i=0; i<m_validMeterNum; i++)
+					{
+						ui.tableWidget->cellWidget(m_meterPosMap[i]-1, COLUMN_ADJUST_ERROR)->setEnabled(true);
+					}
+				}
 			}
 
 			if (order < m_flowPointNum && !m_autopick)
@@ -1296,8 +1402,38 @@ int TotalWeightDlg::startVerifyFlowPoint(int order)
 
 			if (m_autopick && !m_stopFlag) //自动采集
 			{
-				calcAllMeterError();
-				saveAllVerifyRecords();
+				ret = calcAllMeterError();
+				if (ret) //读表流量都成功
+				{
+					ui.btnReCalc->hide();
+					saveAllVerifyRecords();
+					ui.labelHintProcess->setText(tr("save database successfully!"));
+					if (order==m_flowPointNum && m_writeNO) //最后一个流量点 并且 选择写表号
+					{
+						//如果不是新表，请将热量表调至"温差"状态！
+						QMessageBox::information(this, tr("Hint"), tr("if it isn't new meter , please change meter to \"deltaT\" status !"));
+						for (int j=0; j<m_validMeterNum; j++)
+						{
+							if (m_meterResult[j]) //所有流量点都合格才修改表号
+							{
+								slotModifyMeterNO(m_meterPosMap[j]-1);
+								m_newMeterNO++;
+							}
+						}
+						saveStartMeterNO();
+					}
+				}
+				else //有读表流量失败的
+				{
+					m_conFlag = true;
+					ui.btnReCalc->show();
+					ui.labelHintProcess->setText(tr("please read meter data, then click \"ReCalc\" button"));
+					qDebug()<<"please read meter data, then click \"ReCalc\" button";
+					while(m_conFlag)
+					{
+						QTest::qWait(1000);
+					}
+				}
 			}
 		}
 	}
@@ -1310,11 +1446,17 @@ int TotalWeightDlg::startVerifyFlowPoint(int order)
 */
 int TotalWeightDlg::calcAllMeterError()
 {
+	for (int j=0; j<m_maxMeterNum; j++)
+	{
+		ui.tableWidget->item(j, COLUMN_ERROR)->setText("");
+	}
+
+	int ret = 1;
 	for (int i=0; i<m_validMeterNum; i++)
 	{
-		calcMeterError(i);
+		ret *= calcMeterError(i);
 	}
-	return true; 
+	return ret; 
 }
 
 /*
@@ -1324,12 +1466,20 @@ int TotalWeightDlg::calcAllMeterError()
 */
 int TotalWeightDlg::calcMeterError(int idx)
 {
+	if (m_meterEndValue[idx] <= 0)
+	{
+		return 0;
+	}
 	m_meterError[idx] = 100*(m_meterEndValue[idx] - m_meterStartValue[idx] - m_meterStdValue[idx])/m_meterStdValue[idx];//计算某个表的误差
+	int valveIdx = m_paraSetReader->getFpBySeq(m_nowOrder).fp_valve_idx; //0:大 1:中二 2:中一 3:小
+	m_meterErr[idx][valveIdx] = m_meterError[idx];
 	ui.tableWidget->setItem(m_meterPosMap[idx]-1, COLUMN_ERROR, new QTableWidgetItem(QString::number(m_meterError[idx], 'f', 4))); //误差
 	float stdError = m_flowSC*(m_gradeErrA[m_nowParams->m_grade] + m_gradeErrB[m_nowParams->m_grade]*m_mapNormalFlow[m_standard]/m_realFlow); //标准误差=规程要求误差*流量安全系数
 	if (fabs(m_meterError[idx]) > stdError)
 	{
 		ui.tableWidget->item(m_meterPosMap[idx]-1, COLUMN_ERROR)->setForeground(QBrush(Qt::red));
+		ui.tableWidget->item(m_meterPosMap[idx]-1, COLUMN_METER_NUMBER)->setForeground(QBrush(Qt::red));
+		ui.tableWidget->cellWidget(m_meterPosMap[idx]-1, COLUMN_ADJUST_ERROR)->setStyleSheet("color: rgb(255, 0, 0);");
 	}
 	QString meterNoPrefix = getNumPrefixOfManufac(m_nowParams->m_manufac);
 	QString meterNoStr = meterNoPrefix + QString("%1").arg(ui.tableWidget->item(m_meterPosMap[idx]-1, 0)->text(), 8, '0');
@@ -1350,6 +1500,7 @@ int TotalWeightDlg::calcMeterError(int idx)
 	m_recPtr[idx].grade = m_nowParams->m_grade;
 	m_recPtr[idx].stdError = stdError; //表的标准误差
 	m_recPtr[idx].result = (fabs(m_recPtr[idx].dispError) <= fabs(m_recPtr[idx].stdError)) ? 1 : 0;
+	m_meterResult[idx] *= m_recPtr[idx].result;
 	m_recPtr[idx].meterPosNo = m_meterPosMap[idx];
 	m_recPtr[idx].standard = m_standard;
 	m_recPtr[idx].model = m_model;
@@ -1466,7 +1617,10 @@ void TotalWeightDlg::slotSetMeterNumber(const QString& comName, const QString& m
 	{
 		return;
 	}
-	ui.tableWidget->setItem(meterPos-1, COLUMN_METER_NUMBER, new QTableWidgetItem(meterNo.right(8))); //表号
+	if (m_state == STATE_INIT)
+	{
+		ui.tableWidget->setItem(meterPos-1, COLUMN_METER_NUMBER, new QTableWidgetItem(meterNo.right(8))); //表号
+	}
 }
 
 /*
@@ -1480,6 +1634,10 @@ void TotalWeightDlg::slotSetMeterEnergy(const QString& comName, const QString& e
 		return;
 	}
 	int idx = isMeterPosValid(meterPos);
+  if (idx < 0) //该表位不检表，当然也不需要读表数据
+	{
+		return;
+	}
 	bool ok;
 	float heat = energy.toFloat(&ok);
 	if (m_state == STATE_START_VALUE) //初值
@@ -1706,7 +1864,7 @@ void TotalWeightDlg::on_tableWidget_cellChanged(int row, int column)
 		m_meterStartValue[idx] = ui.tableWidget->item(row, column)->text().toFloat(&ok);
 		if (!ok)
 		{
-			QMessageBox::warning(this, tr("Warning"), tr("Error: please input digits"));//输入错误！请输入数字
+//			QMessageBox::warning(this, tr("Warning"), tr("Error: please input digits"));//输入错误！请输入数字
 			return;
 		}
 
@@ -1725,14 +1883,18 @@ void TotalWeightDlg::on_tableWidget_cellChanged(int row, int column)
 		m_meterEndValue[idx] = ui.tableWidget->item(row, column)->text().toFloat(&ok);
 		if (!ok)
 		{
-			QMessageBox::warning(this, tr("Warning"), tr("Error: please input digits"));//输入错误！请输入数字
+// 			QMessageBox::warning(this, tr("Warning"), tr("Error: please input digits"));//输入错误！请输入数字
 			return;
 		}
 		calcMeterError(idx);
 
-		if (meterPos == m_meterPosMap[m_validMeterNum-1]) //输入最后一个表终值
+		if (meterPos==m_meterPosMap[m_validMeterNum-1] && !m_autopick) //输入最后一个表终值 并且 是手动采集
 		{
 			saveAllVerifyRecords();
+			if (m_nowOrder < m_flowPointNum) //不是最后一个流量点
+			{
+				ui.labelHintProcess->setText(tr("please click \"Next\" button to verify next flow point"));
+			}
 		}
 		else //不是最后一个表终值,自动定位到下一个
 		{
@@ -1753,8 +1915,27 @@ int TotalWeightDlg::saveAllVerifyRecords()
 //请求读表（所有表、广播地址读表）
 void TotalWeightDlg::on_btnAllReadMeter_clicked()
 {
+	int idx = -1;
 	for (int j=0; j<m_maxMeterNum; j++)
 	{
+		idx = isMeterPosValid(j+1);
+		if (m_state == STATE_START_VALUE)
+		{
+			ui.tableWidget->item(j, COLUMN_METER_START)->setText("");
+			if (idx >= 0)
+			{
+				m_meterStartValue[idx] = 0;
+			}
+		}
+		else if (m_state == STATE_END_VALUE)
+		{
+			ui.tableWidget->item(j, COLUMN_METER_END)->setText("");
+			if (idx >= 0)
+			{
+				m_meterEndValue[idx] = 0;
+			}
+		}
+
 		m_meterObj[j].askReadMeter();
 	}
 }
@@ -1771,7 +1952,10 @@ void TotalWeightDlg::on_btnAllVerifyStatus_clicked()
 //调整误差（所有表）
 void TotalWeightDlg::on_btnAllAdjError_clicked()
 {
-
+	for (int i=0; i<m_maxMeterNum; i++)
+	{
+		slotAdjustError(i);
+	}
 }
 
 //修改表号（所有表）
@@ -1779,8 +1963,43 @@ void TotalWeightDlg::on_btnAllModifyNO_clicked()
 {
 	for (int i=0; i<m_maxMeterNum; i++)
 	{
-		m_meterObj[i].askModifyMeterNO("11110000000000", ui.tableWidget->item(i, COLUMN_METER_NUMBER)->text());
+		slotModifyMeterNO(i);
 	}
+}
+
+void TotalWeightDlg::on_btnReCalc_clicked()
+{
+	int ret = 0;
+	ret = calcAllMeterError();
+	
+	if (ret) //读表流量都成功
+	{
+		m_conFlag = false;
+		ui.btnReCalc->hide();
+		saveAllVerifyRecords();
+		ui.labelHintProcess->setText(tr("save database successfully!"));
+		if (m_nowOrder==m_flowPointNum && m_writeNO) //最后一个流量点 并且 选择写表号
+		{
+			//如果不是新表，请将热量表调至"温差"状态！
+			QMessageBox::information(this, tr("Hint"), tr("if it isn't new meter , please change meter to \"deltaT\" status !"));
+			for (int j=0; j<m_validMeterNum; j++)
+			{
+				if (m_meterResult[j]) //所有流量点都合格才修改表号
+				{
+					slotModifyMeterNO(m_meterPosMap[j]-1);
+					m_newMeterNO++;
+				}
+			}
+			saveStartMeterNO();
+		}
+	}
+	else //有读表流量失败的
+	{
+		m_conFlag = true;
+		ui.btnReCalc->show();
+		ui.labelHintProcess->setText(tr("please read meter data, then click \"ReCalc\" button"));
+	}
+
 }
 
 /*
@@ -1792,7 +2011,20 @@ void TotalWeightDlg::on_btnAllModifyNO_clicked()
 void TotalWeightDlg::slotModifyMeterNO(const int &row)
 {
 	qDebug()<<"slotModifyMeterNO row ="<<row;
-	m_meterObj[row].askModifyMeterNO("11110000000000", ui.tableWidget->item(row, COLUMN_METER_NUMBER)->text());
+	int meterPos = row + 1; //表位号
+	int idx = -1;
+	idx = isMeterPosValid(meterPos);
+	qDebug()<<"slotModifyMeterNO idx ="<<idx;
+	if (idx < 0)
+	{
+		return;
+	}
+
+	QString meterNo = m_recPtr[idx].meterNo;
+	QString meterNoPrefix = getNumPrefixOfManufac(m_nowParams->m_manufac);
+	QString newMeterNo = meterNoPrefix + QString("%1").arg(m_newMeterNO);
+	m_meterObj[row].askModifyMeterNO(meterNo, newMeterNo);
+	qDebug()<<"slotModifyMeterNO: "<<meterNo<<", "<<newMeterNo;
 }
 
 /*
@@ -1809,9 +2041,13 @@ void TotalWeightDlg::slotAdjustError(const int &row)
 // 	float mid1Err = ui.lnEditMid1NewError->text().toFloat();
 // 	float smallErr = ui.lnEditSmallNewError->text().toFloat();
 // 	m_meterObj->askModifyFlowCoe(meterNO, bigErr, mid2Err, mid1Err, smallErr);
-
-	int nowValveIdx = m_paraSetReader->getFpBySeq(m_nowOrder).fp_valve_idx; //0:大 1:中二 2:中一 3:小
-
+// 	int nowValveIdx = m_paraSetReader->getFpBySeq(m_nowOrder).fp_valve_idx; //0:大 1:中二 2:中一 3:小
+	int idx = isMeterPosValid(row+1);
+	if (idx < 0)
+	{
+		return;
+	}
+	m_meterObj->askModifyFlowCoe(meterNO, m_meterErr[idx][0], m_meterErr[idx][1], m_meterErr[idx][2], m_meterErr[idx][3]);
 }
 
 /*
@@ -1836,4 +2072,13 @@ void TotalWeightDlg::slotVerifyStatus(const int &row)
 	m_meterObj[row].askSetVerifyStatus();
 }
 
-
+/*
+** 保存起始表号
+*/
+void TotalWeightDlg::saveStartMeterNO()
+{
+	QString filename = getFullIniFileName("verifyparaset.ini");//配置文件的文件名
+	QSettings settings(filename, QSettings::IniFormat);
+	settings.setIniCodec("GB2312");//解决向ini文件中写汉字乱码
+	settings.setValue("Other/meternumber", m_newMeterNO);
+}
