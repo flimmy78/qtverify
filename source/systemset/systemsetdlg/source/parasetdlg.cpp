@@ -92,7 +92,7 @@ void ParaSetDlg::closeEvent(QCloseEvent * event)
 
 void ParaSetDlg::on_cmbStandard_currentIndexChanged()
 {
-	qDebug()<<"on_cmbStandard_currentIndexChanged is called; currentIndex is :"<< ui.cmbStandard->currentIndex();
+// 	qDebug()<<"on_cmbStandard_currentIndexChanged is called; currentIndex is :"<< ui.cmbStandard->currentIndex();
 	if (cBoxData_inited)
 	{
 		installDftDBinfo();
@@ -125,7 +125,7 @@ void ParaSetDlg::initUiData()
 	getMeterStandard(m_meterStdNum, m_meterStdPtr);
 	for (int i=0; i<m_meterStdNum; i++)
 	{
-		qDebug()<<"id:"<<m_meterStdPtr[i].id<<",name:"<<m_meterStdPtr[i].name;
+// 		qDebug()<<"id:"<<m_meterStdPtr[i].id<<",name:"<<m_meterStdPtr[i].name;
 		ui.cmbStandard->insertItem(i, m_meterStdPtr[i].name);
 	}
 
@@ -222,10 +222,10 @@ void ParaSetDlg::initBtnGroup()
 	m_btnGroup_autopick = new QButtonGroup(ui.gBox_autopick); //计量单位
 	m_btnGroup_autopick->addButton(ui.tBtn_autoPick_true, true);
 	m_btnGroup_autopick->addButton(ui.tBtn_autoPick_false, false);
-	connect(m_btnGroup_autopick, SIGNAL(buttonClicked(int)), this, SLOT(on_btnGroup_autopick_clicked(int)));
+	connect(m_btnGroup_autopick, SIGNAL(buttonClicked(int)), this, SLOT(slot_autopick_clicked(int)));
 }
 
-void ParaSetDlg::on_btnGroup_autopick_clicked(int id)
+void ParaSetDlg::slot_autopick_clicked(int id)
 {
 
 	ui.tBtn_adjustError_true->setEnabled(id);

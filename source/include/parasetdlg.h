@@ -92,7 +92,8 @@ public slots:
 	void on_btnSave_clicked();
 	void on_cmbStandard_currentIndexChanged();
 	void showEvent(QShowEvent * event);
-	void on_btnGroup_autopick_clicked(int);
+	void slot_autopick_clicked(int);
+
 private:
 	Ui::ParaSetDlgClass ui;
 	bool cBoxData_inited;//标记, 界面的下拉条已经从数据库中读取了数据
