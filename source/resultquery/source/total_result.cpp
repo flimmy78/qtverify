@@ -65,6 +65,39 @@ void TotalResultDlg::initCmb()
 	ui.cmbVerifyPerson->insertItem(ui.cmbVerifyPerson->count(), "");
 	ui.cmbVerifyPerson->setCurrentIndex(ui.cmbVerifyPerson->count()-1);
 
+	//表型号
+	int col_id4 = 0;
+	QSqlRelationalTableModel *model4 = new QSqlRelationalTableModel(this);  
+	model4->setTable("T_Meter_Model");  
+	model4->setRelation(col_id4, QSqlRelation("T_Meter_Model","F_ID","F_Name"));  
+	QSqlTableModel *relationModel4 = model4->relationModel(col_id4);   
+	ui.cmbModel->setModel(relationModel4);  
+	ui.cmbModel->setModelColumn(relationModel4->fieldIndex("F_Name")); 
+	ui.cmbModel->insertItem(ui.cmbModel->count(), "");
+	ui.cmbModel->setCurrentIndex(ui.cmbModel->count()-1);
+
+	//表规格
+	int col_id5 = 0;
+	QSqlRelationalTableModel *model5 = new QSqlRelationalTableModel(this);  
+	model5->setTable("T_Meter_Standard");  
+	model5->setRelation(col_id5, QSqlRelation("T_Meter_Standard","F_ID","F_Name"));  
+	QSqlTableModel *relationModel5 = model5->relationModel(col_id5);   
+	ui.cmbStandard->setModel(relationModel5);  
+	ui.cmbStandard->setModelColumn(relationModel5->fieldIndex("F_Name")); 
+	ui.cmbStandard->insertItem(ui.cmbStandard->count(), "");
+	ui.cmbStandard->setCurrentIndex(ui.cmbStandard->count()-1);
+
+	//表等级
+	ui.cmbGrade->insertItem(ui.cmbGrade->count(), "1");
+	ui.cmbGrade->insertItem(ui.cmbGrade->count(), "2");
+	ui.cmbGrade->insertItem(ui.cmbGrade->count(), "3");
+	ui.cmbGrade->insertItem(ui.cmbGrade->count(), "");
+	ui.cmbGrade->setCurrentIndex(ui.cmbGrade->count()-1);
+
+	//是否合格
+	ui.cmbIsValid->setCurrentIndex(ui.cmbIsValid->count()-1);
+
+	//检定时间
 	ui.startDateTime->setDateTime(QDateTime::currentDateTime().addDays(-7));//过去一周
 	ui.endDateTime->setDateTime(QDateTime::currentDateTime());
 }
@@ -81,28 +114,69 @@ void TotalResultDlg::getCondition()
 
 	m_conStr.append( QString(" F_TimeStamp>=\'%1\' and F_TimeStamp<=\'%2\'").arg(ui.startDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"))\
 		.arg(ui.endDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"))); //起止时间
-	int idx, count;
-	idx = ui.cmbManufactDept->currentIndex();
-	count = ui.cmbManufactDept->count();
 
+	int method = ui.cmbMethod->currentIndex();//质量法还是标准表法
+	m_conStr.append(QString(" and F_MethodFlag = %1").arg(method));
+
+	int idx, count;
 	int not_select = 0;
 	not_select = ~not_select;
-	if (idx != (count-1) && idx != not_select)//制造单位
+
+	idx = ui.cmbManufactDept->currentIndex();
+	count = ui.cmbManufactDept->count();
+	if (idx != (count-1))//制造单位
 	{
 		m_conStr.append(QString(" and F_ManufactDept=%1").arg(ui.cmbManufactDept->currentIndex()));
 	}
+
 	idx = ui.cmbVerifyDept->currentIndex();
 	count = ui.cmbVerifyDept->count();
-	if (idx != (count-1) && idx != not_select)//送检单位
+	if (idx != (count-1))//送检单位
 	{
 		m_conStr.append(QString(" and F_VerifyDept=%1").arg(ui.cmbVerifyDept->currentIndex()));
 	}
+
 	idx = ui.cmbVerifyPerson->currentIndex();
 	count = ui.cmbVerifyPerson->count();
-	if (idx != (count-1) && idx != not_select)//检定员
+	if (idx != (count-1))//检定员
 	{
 		m_conStr.append(QString(" and F_VerifyPerson=%1").arg(ui.cmbVerifyPerson->currentIndex()));
 	}
+
+	idx = ui.cmbFlowPointIdx->currentIndex();
+	if (idx > 0)//流量点
+	{
+		m_conStr.append(QString(" and F_FlowPointIdx=%1").arg(ui.cmbFlowPointIdx->currentIndex()));
+	}
+
+	idx = ui.cmbModel->currentIndex();
+	count = ui.cmbModel->count();
+	if (idx != (count-1))//表型号
+	{
+		m_conStr.append(QString(" and F_Model=%1").arg(ui.cmbModel->currentIndex()));
+	}
+
+	idx = ui.cmbStandard->currentIndex();
+	count = ui.cmbStandard->count();
+	if (idx != (count-1))//表规格
+	{
+		m_conStr.append(QString(" and F_Standard=%1").arg(ui.cmbStandard->currentIndex()));
+	}
+
+	idx = ui.cmbGrade->currentIndex();
+	count = ui.cmbGrade->count();
+	if (idx != (count-1))//表等级
+	{
+		m_conStr.append(QString(" and F_Grade=%1").arg(ui.cmbGrade->currentIndex()+1));
+	}
+
+	idx = ui.cmbIsValid->currentIndex();
+	count = ui.cmbIsValid->count();
+	if (idx != (count-1))//是否合格
+	{
+		m_conStr.append(QString(" and F_Result=%1").arg(ui.cmbIsValid->currentIndex()));
+	}
+
 	if (!ui.lnEditMeterNO->text().isEmpty())//表号
 	{
 		m_conStr.append(QString(" and F_MeterNo like \"\%%1\%\"").arg(ui.lnEditMeterNO->text()));
@@ -173,6 +247,18 @@ void TotalResultDlg::queryData()
 
 	ui.tableView->hideColumn(0);
 	ui.tableView->hideColumn(5);
+
+	int method = ui.cmbMethod->currentIndex();
+	if (method)
+	{
+		ui.tableView->showColumn(10);
+		ui.tableView->showColumn(11);
+	}
+	else
+	{
+		ui.tableView->hideColumn(10);
+		ui.tableView->hideColumn(11);
+	}
 	ui.tableView->hideColumn(37);
 	ui.tableView->hideColumn(38);
 	ui.tableView->hideColumn(39);
