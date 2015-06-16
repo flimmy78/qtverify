@@ -73,7 +73,7 @@ void CmbParamDlg::initModel()
 void CmbParamDlg::initCollCode()
 {
 	QSqlTableModel *model = new QSqlTableModel(this);  
-	model->setTable("T_Meter_Type");
+	model->setTable("T_Meter_PickCode");
 	model->select();
 	ui.cBox_collcode->setModel(model);  
 	ui.cBox_collcode->setModelColumn(model->fieldIndex("F_Desc")); 
