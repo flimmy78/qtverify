@@ -83,24 +83,24 @@ void PlaResultDlg::getCondition()
 	m_conStr.append( QString(" and F_TimeStamp>=\'%1\' and F_TimeStamp<=\'%2\'").arg(ui.startDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"))\
 		.arg(ui.endDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"))); //起止时间
 	int idx, count;
-	idx = ui.cmbManufactDept->currentIndex();
-	count = ui.cmbManufactDept->count();
-
 	int not_select = 0;
 	not_select = ~not_select;
-	if (idx != (count-1) && idx != not_select)//制造单位
+
+	idx = ui.cmbManufactDept->currentIndex();
+	count = ui.cmbManufactDept->count();
+	if (idx != (count-1))//制造单位
 	{
 		m_conStr.append(QString(" and F_ManufactDept=%1").arg(ui.cmbManufactDept->currentIndex()));
 	}
 	idx = ui.cmbVerifyDept->currentIndex();
 	count = ui.cmbVerifyDept->count();
-	if (idx != (count-1) && idx != not_select)//送检单位
+	if (idx != (count-1))//送检单位
 	{
 		m_conStr.append(QString(" and F_VerifyDept=%1").arg(ui.cmbVerifyDept->currentIndex()));
 	}
 	idx = ui.cmbVerifyPerson->currentIndex();
 	count = ui.cmbVerifyPerson->count();
-	if (idx != (count-1) && idx != not_select)//检定员
+	if (idx != (count-1))//检定员
 	{
 		m_conStr.append(QString(" and F_VerifyPerson=%1").arg(ui.cmbVerifyPerson->currentIndex()));
 	}
