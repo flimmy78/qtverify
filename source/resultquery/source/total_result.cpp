@@ -190,7 +190,6 @@ void TotalResultDlg::queryData()
 	model->setFilter(m_conStr); //设置查询条件
 
 	//设置外键	
-	model->setRelation(8, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));
 	model->setRelation(19, QSqlRelation("T_Yes_No_Tab","F_ID","F_Desc"));	
 	model->setRelation(21, QSqlRelation("T_Meter_Model","F_ID","F_Name"));
 	model->setRelation(22, QSqlRelation("T_Meter_Standard","F_ID","F_Name"));
@@ -199,7 +198,7 @@ void TotalResultDlg::queryData()
 	model->setRelation(25, QSqlRelation("T_Verify_Dept","F_ID","F_Desc"));
 	model->setRelation(27, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));
 	model->setRelation(28, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));
-	model->setRelation(28, QSqlRelation("T_Verify_Device_Info","F_ID","F_DeviceNo"));
+	//model->setRelation(29, QSqlRelation("T_Verify_Device_Info","F_ID","F_DeviceNo"));
 
 	//设置水平标题
 	model->setHeaderData(1, Qt::Horizontal, QObject::tr("Time"));//时间戳（'yyyy-MM-dd HH:mm:ss.zzz')
