@@ -40,6 +40,7 @@
 #include "platinum_result.h"
 #include "calculator_result.h"
 #include "cmb_result.h"
+#include "total_result.h"
 
 MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
@@ -75,6 +76,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_PlaResultDlg = NULL;
 	m_CalcResultDlg = NULL;
 	m_CmbResultDlg = NULL;
+	m_TotalResultDlg = NULL;
 
 	QLabel *permanent = new QLabel(this);
 	permanent->setFrameStyle(QFrame::NoFrame | QFrame::Sunken);
@@ -236,6 +238,12 @@ void MainForm::closeEvent( QCloseEvent * event)
 		{
 			delete m_CmbResultDlg;
 			m_CmbResultDlg = NULL;
+		}
+
+		if (m_TotalResultDlg)
+		{
+			delete m_TotalResultDlg;
+			m_TotalResultDlg = NULL;
 		}
 	}
 }
@@ -512,6 +520,13 @@ void MainForm::on_actionFlowResult_triggered()
 //查询总量检定结果（包括质量法和标准表法）
 void MainForm::on_actionTotalResult_triggered()
 {
+	if (NULL != m_TotalResultDlg)
+	{	
+		delete m_TotalResultDlg;
+		m_TotalResultDlg = NULL;
+	}
+	m_TotalResultDlg = new TotalResultDlg();
+	m_TotalResultDlg->show();
 }
 
 //查询温度传感器检定结果
