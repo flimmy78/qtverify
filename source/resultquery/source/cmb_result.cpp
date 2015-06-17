@@ -7,12 +7,6 @@ CmbResultDlg::CmbResultDlg(QWidget *parent, Qt::WFlags flags)
 {
 	ui.setupUi(this);
 	model = new QSqlRelationalTableModel(this);
-
-	QStringList drivers = QSqlDatabase::drivers();
-	foreach(QString driver, drivers)
-	{
-		qDebug()<<driver;
-	}
 }
 
 CmbResultDlg::~CmbResultDlg()
