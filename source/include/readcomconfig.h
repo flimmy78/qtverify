@@ -7,7 +7,7 @@
 #include "systemsetdlg_global.h"
 
 #define METER_STR	"Meter"
-#define meter(a) "Meter_"#a
+#define meter(a) QString(METER_STR).append("_").append(QString::number(a))
 
 class SYSTEMSETDLG_EXPORT ReadComConfig
 {
@@ -20,8 +20,8 @@ public:
 	ComInfoStruct ReadBalanceConfig();
 	ComInfoStruct ReadTempConfig();
 	ComInfoStruct ReadStdTempConfig();
-	ComInfoStruct ReadMeterConfigByNum(QString MeterNum);
 	ComInfoStruct ReadMeterConfigByNum(int MeterNum);
+	ComInfoStruct ReadMeterConfigByNum(QString MeterNum);
 	int getMeterPosByComName(QString comName);//根据串口名返回对应的表位号
 	void getBalancePara(float &maxWht, float &bottomWht);
 	/***************************************************/

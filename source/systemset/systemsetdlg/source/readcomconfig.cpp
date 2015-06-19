@@ -59,7 +59,7 @@ ComInfoStruct ReadComConfig::ReadStdTempConfig()
 	return ReadConfigByName("StdTmpSensor");
 }
 
-//读取被检表设置
+//标准表模块还在使用, 待标准表模块可以正确编译, 即可删除此函数
 ComInfoStruct ReadComConfig::ReadMeterConfigByNum(QString MeterNum)
 {
 	QRegExp rx("[0-9]{1,2}");
@@ -67,12 +67,12 @@ ComInfoStruct ReadComConfig::ReadMeterConfigByNum(QString MeterNum)
 	{
 		throw QString("Please input an integer!");
 	}
-	return ReadConfigByName("Meter_" + MeterNum);
+	return ReadMeterConfigByNum(MeterNum.toInt());
 }
 
 ComInfoStruct ReadComConfig::ReadMeterConfigByNum(int MeterNum)
 {
-	return ReadMeterConfigByNum(QString::number(MeterNum));
+	return ReadConfigByName(meter(MeterNum));
 }
 
 //按xml中的id读取设置
