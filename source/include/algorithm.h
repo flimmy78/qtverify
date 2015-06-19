@@ -30,7 +30,7 @@ ALGORITHM_EXPORT float getDeltaTmpErr(float std_delta_t, float min_delta_t);//根
 ALGORITHM_EXPORT float getSingleTmpErr(float std_delta_t);//根据jjg225-2001计算单支铂电阻温度误差限(%), 以浮点数返回
 ALGORITHM_EXPORT float getMeterGradeErrLmt(int grade, float delta_t_min, float delta_t, float dn_flow_rate, float flow_rate);//根据表的等级, 计算表的示值误差限(%), 以浮点数返回
 ALGORITHM_EXPORT float calcFloatValueOfCoe(QString coe);//根据热量表通讯返回的两字节数据，计算出相应的误差值
-
+ALGORITHM_EXPORT UINT16 calcModRtuCRC(uchar *, int);//计算modbus-RTU协议的CRC校验值
 const float density[150] = { //压力<=0.6MPa
 	1000.2f,
 	1000.2f,
