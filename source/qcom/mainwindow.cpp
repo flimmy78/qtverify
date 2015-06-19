@@ -273,7 +273,7 @@ void MainWindow::readMyCom()
 			for (int i = 0; i < temp.count(); i++)
 			{
 				QString s;
-				s.sprintf("0x%02x, ", (unsigned char)temp.at(i));
+				s.sprintf("0x%02X ", (unsigned char)temp.at(i));
 				buf += s;
 			}
 		}
@@ -292,7 +292,7 @@ void MainWindow::readMyCom()
 			file.close();
 		}
 
-		ui->textBrowserRecv->setText(ui->textBrowserRecv->document()->toPlainText() + buf);
+		ui->textBrowserRecv->setText(ui->textBrowserRecv->document()->toPlainText() + buf +"\n");
 		QTextCursor cursor = ui->textBrowserRecv->textCursor();
 		cursor.movePosition(QTextCursor::End);
 		ui->textBrowserRecv->setTextCursor(cursor);
@@ -386,6 +386,7 @@ void MainWindow::on_clearRecvBtn_clicked()
 {
 	ui->textBrowserRecv->clear();
 	ui->statusBar->showMessage(tr("receive record is cleared"));
+	on_btnResetRecvLcd_clicked();
 }
 
 //Çå¿Õ·¢ËÍ¼ÇÂ¼
