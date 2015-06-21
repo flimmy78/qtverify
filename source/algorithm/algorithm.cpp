@@ -215,6 +215,7 @@ float calcFloatValueOfCoe(QString coe)
 }
 
 /* 计算ModBus-RTU传输协议的CRC校验值
+ * ref: http://www.ccontrolsys.com/w/How_to_Compute_the_Modbus_RTU_Message_CRC
  * 生成多项式为0xA001
  * data, 指向消息头的指针;
  * len, 消息体的长度
@@ -226,17 +227,16 @@ UINT16 calcModRtuCRC(uchar *buf, int len)
 	for (int pos = 0; pos < len; pos++) {
 		crc ^= (UINT16)buf[pos];          // XOR byte into least sig. byte of crc
 
-		for (int i = 8; i != 0; i--) {    // Loop over each bit
+		for (int i = 8; i > 0; i--) {    // Loop over each bit
 			if ((crc & 0x0001) != 0) {      // If the LSB is set
 				crc >>= 1;                    // Shift right and XOR 0xA001
-				crc ^= 0xA001;
+				crc ^= POLY;
 			}
 			else                            // Else LSB is not set
 				crc >>= 1;                    // Just shift right
 		}
 	}
-	// Note, this number has low and high bytes swapped, so use it accordingly (or swap bytes)
-	return crc;
+	return ((crc<<8) | (crc>>8));//交换计算结果的高低位
 }
 /**********************************************************
 类名：CAlgorithm

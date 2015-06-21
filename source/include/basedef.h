@@ -105,6 +105,7 @@ enum Verify_Method
 #define PROTOCOL_VER_HDLMT  	9   //荷德鲁美特
 
 #define POLY	0xA001//CRC16校验中的生成多项式
+#define WORDLEN 8
 
 /*
 ** FUNCTION -- 获取下位机端口设置信息(portset.ini文件)
