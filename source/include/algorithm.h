@@ -16,6 +16,7 @@
 #endif
 
 #include <QString>
+#include <QByteArray>
 #include "basedef.h"
 
 ALGORITHM_EXPORT int getPortSetIni(PortSet_Ini_PTR info); //»ñÈ¡¿ØÖÆ°åµÄ¶Ë¿ÚºÅÅäÖÃĞÅÏ¢
@@ -31,6 +32,7 @@ ALGORITHM_EXPORT float getSingleTmpErr(float std_delta_t);//¸ù¾İjjg225-2001¼ÆËãµ
 ALGORITHM_EXPORT float getMeterGradeErrLmt(int grade, float delta_t_min, float delta_t, float dn_flow_rate, float flow_rate);//¸ù¾İ±íµÄµÈ¼¶, ¼ÆËã±íµÄÊ¾ÖµÎó²îÏŞ(%), ÒÔ¸¡µãÊı·µ»Ø
 ALGORITHM_EXPORT float calcFloatValueOfCoe(QString coe);//¸ù¾İÈÈÁ¿±íÍ¨Ñ¶·µ»ØµÄÁ½×Ö½ÚÊı¾İ£¬¼ÆËã³öÏàÓ¦µÄÎó²îÖµ
 ALGORITHM_EXPORT UINT16 calcModRtuCRC(uchar *, int);//¼ÆËãmodbus-RTUĞ­ÒéµÄCRCĞ£ÑéÖµ
+ALGORITHM_EXPORT QByteArray getCRCArray(UINT16);//½«CRC¼ÆËã½á¹û×ª»»ÎªQByteArray
 const float density[150] = { //Ñ¹Á¦<=0.6MPa
 	1000.2f,
 	1000.2f,

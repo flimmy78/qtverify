@@ -236,7 +236,21 @@ UINT16 calcModRtuCRC(uchar *buf, int len)
 				crc >>= 1;                    // Just shift right
 		}
 	}
-	return ((crc<<8) | (crc>>8));//交换计算结果的高低位
+	return crc;
+}
+
+
+/* 将CRC计算结果转换为QByteArray
+ * 返回值QByteArray sendbuf;
+ * sendbuf.at(0) 是低位;  sendbuf.at(1) 是高位
+ * crc, 计算得到的校验值, 高位在前, 低位在后
+ */
+QByteArray getCRCArray(UINT16 crc)
+{
+	QByteArray sendbuf;
+	sendbuf.append((char)crc);
+	sendbuf.append((char)(crc>>WORDLEN));
+	return sendbuf;
 }
 /**********************************************************
 类名：CAlgorithm
