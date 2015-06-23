@@ -114,7 +114,7 @@ F_ID integer not null primary key,
 F_Name varchar(24),
 F_Desc varchar(60),
 F_Password varchar(24),
-F_RoleID smallint          --角色ID，外键(T_Role_Def_Tab)
+F_RoleID integer          --角色ID，外键(T_Role_Def_Tab)
 );
 insert into T_User_Def_Tab(F_ID, F_Name, F_Desc, F_Password, F_RoleID) values(0, 'admin', '管理员', 'admin', 1);
 insert into T_User_Def_Tab(F_ID, F_Name, F_Desc, F_Password, F_RoleID) values(1, 'oper', '操作员', '1234', 2);
@@ -322,40 +322,39 @@ create table T_Platinum_Verify_Record
 (
 	F_ID	integer not null primary key autoincrement,
 	F_TimeStamp timestamp not null,     --时间戳（'yyyy-MM-dd HH:mm:ss.zzz')
-	F_CompOrParam integer,				--比较法或参数法, 0-比较法, 1-参数法
+	F_CompOrParam integer,              --比较法或参数法, 0-比较法, 1-参数法
 	F_PlaManufactDept integer,          --被检铂电阻制造单位，外键(T_Manufacture_Dept.F_ID)
 	F_Standard integer,                 --表规格(DN15/DN20/DN25)，外键(T_Meter_Standard.F_ID)
 	F_Model integer,                    --表型号，外键(T_Meter_Model.F_ID)
 	F_ManufactDept integer,             --热量表制造单位，外键(T_Manufacture_Dept.F_ID)
 	F_VerifyDept integer,               --送检单位，外键(T_Verify_Dept.F_ID)
-	F_CheckPerson integer,             	--检定员，外键(T_User_Def_Tab.F_ID)
+	F_CheckPerson integer,              --检定员，外键(T_User_Def_Tab.F_ID)
 	F_VerifyPerson integer,             --核验员，外键(T_User_Def_Tab.F_ID)
-	F_MinTmpDiff float,					--最小温差, 参数
-	F_TmpDiff float,					--检测温差(比较法)/检测温度点(参数法)
-	F_StdModel varchar(50),				--标准温度计型号
-	F_StdInRresis float,				--标准温度计进口电阻值
-	F_StdOutRresis float,				--标准温度计出口电阻值
-	F_StdInTmp float,					--标准温度计进口电温度
-	F_StdOutTmp float,					--标准温度计出口电温度
-	F_PlaSerial varchar(50),			--被检铂电阻序列号
-	F_PlaInRresis float,				--被检铂电阻进口电阻值
-	F_PlaOutRresis float,				--被检铂电阻出口电阻值
-	F_PlaInTmp float,					--被检铂电阻进口温度值
-	F_PlaOutTmp float,					--被检铂电阻出口温度值
-	F_PlaTmpDiffErr float,				--被检铂电阻进出口温差的误差	
-	F_PlaParamR0 float,					--被检铂电阻0℃电阻值
-	F_PlaCoeA float,					--被检铂电阻系数A
-	F_PlaCoeB float,					--被检铂电阻系数B
-	F_PlaCoeC float,					--被检铂电阻系数C
-	F_InErr	float,						--被检铂电阻进口误差(℃)
-	F_OutErr float,						--被检铂电阻出口误差(℃)
-	F_DeltaErrLimit float,				--被检铂电阻进出口温差的误差限(%)
-	F_InErrLimit float,					--被检铂电阻进口误差限(℃)
-	F_OutErrLimit float,				--被检铂电阻出口误差限(℃)
-	
-	F_verify_seq integer,				--第几次检定
-	F_TmpIndex integer,					--温差点索引(比较法)/温度点索引(参数法)
-	F_MaxErrPoint float,				--最大误差点
+	F_MinTmpDiff float,                 --最小温差, 参数
+	F_TmpDiff float,                    --检测温差(比较法)/检测温度点(参数法)
+	F_StdModel varchar(50),             --标准温度计型号
+	F_StdInRresis float,                --标准温度计进口电阻值
+	F_StdOutRresis float,               --标准温度计出口电阻值
+	F_StdInTmp float,                   --标准温度计进口电温度
+	F_StdOutTmp float,                  --标准温度计出口电温度
+	F_PlaSerial varchar(50),            --被检铂电阻序列号
+	F_PlaInRresis float,                --被检铂电阻进口电阻值
+	F_PlaOutRresis float,               --被检铂电阻出口电阻值
+	F_PlaInTmp float,                   --被检铂电阻进口温度值
+	F_PlaOutTmp float,                  --被检铂电阻出口温度值
+	F_PlaTmpDiffErr float,              --被检铂电阻进出口温差的误差	
+	F_PlaParamR0 float,                 --被检铂电阻0℃电阻值
+	F_PlaCoeA float,                    --被检铂电阻系数A
+	F_PlaCoeB float,                    --被检铂电阻系数B
+	F_PlaCoeC float,                    --被检铂电阻系数C
+	F_InErr	float,                      --被检铂电阻进口误差(℃)
+	F_OutErr float,                     --被检铂电阻出口误差(℃)
+	F_DeltaErrLimit float,              --被检铂电阻进出口温差的误差限(%)
+	F_InErrLimit float,                 --被检铂电阻进口误差限(℃)
+	F_OutErrLimit float,                --被检铂电阻出口误差限(℃)
+	F_verify_seq integer,               --第几次检定
+	F_TmpIndex integer,                 --温差点索引(比较法)/温度点索引(参数法)
+	F_MaxErrPoint float,                --最大误差点
 	constraint F_Model_fk foreign key(F_Model) references T_Meter_Model(F_ID),
 	constraint F_Standard_fk foreign key(F_Standard) references T_Meter_Standard(F_ID),
 	constraint F_ManufactDept_fk foreign key(F_ManufactDept) references T_Manufacture_Dept(F_ID),
