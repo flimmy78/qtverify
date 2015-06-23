@@ -17,20 +17,23 @@ QMAKE_LIBDIR = 	$(ADEHOME)/lib \
 								
 LIBS += -lalgorithm -lsystemsetdlg -ldatatestdlg -lqaxserver -lmasterslaveset -llogindialog \
 				-lqtexdb -lflowweight -lflowstandard -ltotalweight -ltotalstandard -lcalcverify \
-				-lreport -ltvercomp -ltverparam -lcmbverify -lresultquerydlg
+				-lreport -ltvercomp -ltverparam -lcmbverify -lresultquerydlg -lmd5encode
 
 # Input
 HEADERS += include/mainform.h	\
 					 include/dbmysql.h	\
-					 include/qexcel.h
+					 include/qexcel.h   \
+					 include/register.h
 					 
 FORMS += 	ui/mainform.ui	\
 				 	ui/dbmysql.ui		\
+				 	ui/register.ui
 				 
 SOURCES += source/main.cpp	\
 					 source/mainform.cpp	\
 					 source/dbmysql.cpp		\
-					 source/qexcel.cpp 
+					 source/qexcel.cpp    \
+					 source/register.cpp
 					 
 RESOURCES += qtverify.qrc
 

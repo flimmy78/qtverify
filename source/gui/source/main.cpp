@@ -12,6 +12,8 @@
 #include "logindialog.h"
 #include "qtexdb.h"
 #include "algorithm.h"
+#include "md5encode.h"
+#include "register.h"
 
 MainForm *g_mainform;
 
@@ -19,6 +21,22 @@ int main(int argc, char *argv[])
 {
 	QApplication app(argc, argv);
 
+	//判断是否授权用户
+	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
+	QFile license(adehome + "\\bin\\license");
+	license.open(QIODevice::ReadOnly | QIODevice::Text);
+	QTextStream in(&license);
+	QString code = in.readLine();
+	license.close();
+	if (!isLicenseOK(code))
+	{
+		RegisterDlg *reg = new RegisterDlg(qGetVolumeInfo());
+		reg->show();
+		qDebug()<<"please register first";
+		return app.exec();
+	}
+
+	//加载样式表
 	QFile qss(":/qtverify/qss/default.qss");
 	qss.open(QFile::ReadOnly);
 	app.setStyleSheet(qss.readAll());
@@ -44,6 +62,7 @@ int main(int argc, char *argv[])
 	
 	Qt::Alignment align = Qt::AlignCenter | Qt::AlignBottom;
 
+	//加载翻译文件
 	QString lang = "zh"; //默认显示中文
 	if (argc == 2) 
 	{
@@ -63,7 +82,7 @@ int main(int argc, char *argv[])
 			{
 				continue;
 			}
-			QString i18nName = QProcessEnvironment::systemEnvironment().value("ADEHOME") + "\\uif\\i18n\\" + lang + "\\";
+			QString i18nName = adehome + "\\uif\\i18n\\" + lang + "\\";
 			line = line + "_" + lang + ".qm";
 			i18nName.append(line);//.append(QString("_%1.qm").arg(lang));
 			translator = new QTranslator( 0 );
