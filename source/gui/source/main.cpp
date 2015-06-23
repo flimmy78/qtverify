@@ -20,47 +20,7 @@ MainForm *g_mainform;
 int main(int argc, char *argv[])
 {
 	QApplication app(argc, argv);
-
-	//判断是否授权用户
 	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
-	QFile license(adehome + "\\bin\\license");
-	license.open(QIODevice::ReadOnly | QIODevice::Text);
-	QTextStream in(&license);
-	QString code = in.readLine();
-	license.close();
-	if (!isLicenseOK(code))
-	{
-		RegisterDlg *reg = new RegisterDlg(qGetVolumeInfo());
-		reg->show();
-		qDebug()<<"please register first";
-		return app.exec();
-	}
-
-	//加载样式表
-	QFile qss(":/qtverify/qss/default.qss");
-	qss.open(QFile::ReadOnly);
-	app.setStyleSheet(qss.readAll());
-	qss.close();
-
-	QSplashScreen *splash = new QSplashScreen;
-	splash->setPixmap(QPixmap(":/qtverify/images/facility.png"));
-	splash->show();
-
-	QTextCodec::setCodecForTr(QTextCodec::codecForName("GB2312"));
-	QTextCodec::setCodecForLocale(QTextCodec::codecForName("GB2312"));
-	QTextCodec::setCodecForCStrings( QTextCodec::codecForName("GB2312"));
-
-	//注册MessageHandler
-	qInstallMsgHandler(myMessageOutput);
-
-	//打印日志到文件中
-// 	qDebug()<<"This is a debug message";
-// 	qWarning()<<"This is a warning message";
-// 	qCritical()<<"This is a critical message";
-// 	qFatal("file< %s >, line< %d >, This is a fatal message", __FILE__, __LINE__);
-// 	qFatal("This is a fatal message");
-	
-	Qt::Alignment align = Qt::AlignCenter | Qt::AlignBottom;
 
 	//加载翻译文件
 	QString lang = "zh"; //默认显示中文
@@ -93,17 +53,53 @@ int main(int argc, char *argv[])
 			app.installTranslator( translator );
 		}
 		file.close();
-
-		splash->showMessage(QObject::tr("load translator files ..."), align, Qt::blue);
-		QTest::qSleep(200);
 	}
 	else
 	{
-		splash->showMessage(QObject::tr("no translator files ..."), align, Qt::blue);
-		QTest::qSleep(200);
 		qDebug("no i18n ini file.\n");
 	}
 
+	//判断是否授权用户
+	QFile license(adehome + "\\bin\\license");
+	license.open(QIODevice::ReadOnly | QIODevice::Text);
+	QTextStream in(&license);
+	QString code = in.readLine();
+	license.close();
+	if (!isLicenseOK(code))
+	{
+		RegisterDlg *reg = new RegisterDlg(qGetVolumeInfo());
+		reg->show();
+		qDebug()<<"please register first";
+		return app.exec();
+	}
+
+	//加载样式表
+	QFile qss(":/qtverify/qss/default.qss");
+	qss.open(QFile::ReadOnly);
+	app.setStyleSheet(qss.readAll());
+	qss.close();
+
+	//QSplashScreen
+	Qt::Alignment align = Qt::AlignCenter | Qt::AlignBottom;
+	QSplashScreen *splash = new QSplashScreen;
+	splash->setPixmap(QPixmap(":/qtverify/images/facility.png"));
+	splash->show();
+
+	//字符集编码
+	QTextCodec::setCodecForTr(QTextCodec::codecForName("GB2312"));
+	QTextCodec::setCodecForLocale(QTextCodec::codecForName("GB2312"));
+	QTextCodec::setCodecForCStrings( QTextCodec::codecForName("GB2312"));
+
+	//注册MessageHandler
+	qInstallMsgHandler(myMessageOutput);
+
+	//打印日志到文件中
+// 	qDebug()<<"This is a debug message";
+// 	qWarning()<<"This is a warning message";
+// 	qCritical()<<"This is a critical message";
+// 	qFatal("file< %s >, line< %d >, This is a fatal message", __FILE__, __LINE__);
+// 	qFatal("This is a fatal message");
+	
 	qDebug()<<"qtverify main thread:"<<QThread::currentThreadId();
 
 	splash->showMessage(QObject::tr("connect database ..."), align, Qt::blue);

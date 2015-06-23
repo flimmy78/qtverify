@@ -126,27 +126,27 @@
         <translation type="obsolete">&lt;a href=&quot;http://www.sdm.com.cn&quot;&gt;山东德鲁计量科技有限公司&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="79"/>
+        <location filename="../source/mainform.cpp" line="83"/>
         <source>&lt;a href=&quot;http://www.sdm.com.cn&quot;&gt;Yantai Aerospace Delu Energy-saving technology Co.,Ltd&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;http://www.sdm.com.cn&quot;&gt;烟台航天德鲁节能科技有限公司&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="91"/>
+        <location filename="../source/mainform.cpp" line="95"/>
         <source>Question</source>
         <translation>询问</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="91"/>
+        <location filename="../source/mainform.cpp" line="95"/>
         <source>Quit Really ?</source>
         <translation>确认退出吗?</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="554"/>
+        <location filename="../source/mainform.cpp" line="584"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="554"/>
+        <location filename="../source/mainform.cpp" line="584"/>
         <source>Excel object lose!</source>
         <translation>找不到Excel组件!</translation>
     </message>
@@ -154,22 +154,22 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../source/main.cpp" line="78"/>
+        <location filename="../source/main.cpp" line="97"/>
         <source>load translator files ...</source>
         <translation>加载翻译文件...</translation>
     </message>
     <message>
-        <location filename="../source/main.cpp" line="83"/>
+        <location filename="../source/main.cpp" line="102"/>
         <source>no translator files ...</source>
         <translation>未找到翻译文件...</translation>
     </message>
     <message>
-        <location filename="../source/main.cpp" line="90"/>
+        <location filename="../source/main.cpp" line="109"/>
         <source>connect database ...</source>
         <translation>连接数据库...</translation>
     </message>
     <message>
-        <location filename="../source/main.cpp" line="94"/>
+        <location filename="../source/main.cpp" line="113"/>
         <source>setting up the mainwindow ...</source>
         <translation>主程序启动...</translation>
     </message>
@@ -362,6 +362,58 @@
     <message>
         <source>Exit</source>
         <translation type="obsolete">退出</translation>
+    </message>
+</context>
+<context>
+    <name>RegisterDlg</name>
+    <message>
+        <location filename="../source/register.cpp" line="43"/>
+        <source>OK</source>
+        <translation>OK</translation>
+    </message>
+    <message>
+        <location filename="../source/register.cpp" line="43"/>
+        <source>Register successfully!</source>
+        <translation>注册成功!</translation>
+    </message>
+    <message>
+        <location filename="../source/register.cpp" line="47"/>
+        <source>Warn</source>
+        <translation>警告</translation>
+    </message>
+    <message>
+        <location filename="../source/register.cpp" line="47"/>
+        <source>Register failed!</source>
+        <translation>注册失败!</translation>
+    </message>
+</context>
+<context>
+    <name>RegisterDlgClass</name>
+    <message>
+        <location filename="../ui/register.ui" line="14"/>
+        <location filename="../ui/register.ui" line="102"/>
+        <source>Register</source>
+        <translation>注册</translation>
+    </message>
+    <message>
+        <location filename="../ui/register.ui" line="20"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Please send &amp;quot;Code&amp;quot; to &lt;span style=&quot; font-weight:600;&quot;&gt;Author&lt;/span&gt; to get the license !&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Author&lt;/span&gt; QQ:&lt;span style=&quot; color:#ff557f;&quot;&gt;157764165 &lt;/span&gt;Tel:&lt;span style=&quot; color:#ff5500;&quot;&gt;15065761605&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;请将 &amp;quot;识别码&amp;quot; 发送给 &lt;span style=&quot; font-weight:600;&quot;&gt;作者&lt;/span&gt; 来获取注册码!&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;作者&lt;/span&gt; QQ:&lt;span style=&quot; color:#ff557f;&quot;&gt;157764165 &lt;/span&gt;Tel:&lt;span style=&quot; color:#ff5500;&quot;&gt;15065761605&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/register.ui" line="45"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Code:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;识别码:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/register.ui" line="55"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;License:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;注册码:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/register.ui" line="122"/>
+        <source>Exit</source>
+        <translation>退出</translation>
     </message>
 </context>
 <context>
