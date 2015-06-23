@@ -1307,9 +1307,10 @@ void TgMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, fl
 
 }
 
-/************************************************************************/
-/*   标准温度计-STI-1062A串口协议类                                       */
-/************************************************************************/
+/***********************************************
+类名：sti1062ATempProtocol
+功能：标准温度计-STI-1062A串口协议
+************************************************/
 sti1062ATempProtocol::sti1062ATempProtocol()
 {
 	m_state = DATA_STATE;
@@ -1408,3 +1409,52 @@ QString sti1062ATempProtocol::getReadStr()
 {
 	return m_valueStr;
 }
+/***********************************************
+类名：sti1062ATempProtocol END
+************************************************/
+
+/***********************************************
+类名：lcModbusRTUFunc
+功能：力创EDA9150A/9017产品, ModbusRTU通讯协议类
+************************************************/
+lcModbusRTUProtocol::lcModbusRTUProtocol()
+{
+
+}
+
+lcModbusRTUProtocol::~lcModbusRTUProtocol()
+{
+
+}
+
+void lcModbusRTUProtocol::makeSendBuf(uchar addres, lcModbusRTUFunc func, UINT16 start, UINT16 regCount)
+{
+	m_sendBuf.clear();
+	m_sendBuf.append(addres);
+	m_sendBuf.append((uchar)func);
+	m_sendBuf.append((uchar)(start>>WORDLEN));
+	m_sendBuf.append((uchar)start);
+	m_sendBuf.append((uchar)(regCount>>WORDLEN));
+	m_sendBuf.append((uchar)regCount);
+	m_sendBuf.append(getCRCArray(calcModRtuCRC((uchar *)m_sendBuf.data(), m_sendBuf.length())));
+}
+
+//读取标准表脉冲数
+bool lcModbusRTUProtocol::readMeterComBuffer(QByteArray tmp)
+{
+	bool ret=false;
+	return ret;
+}
+
+QByteArray lcModbusRTUProtocol::getSendBuf()
+{
+	return m_sendBuf;
+}
+
+QString lcModbusRTUProtocol::getReadStr()
+{
+	return m_valueStr;
+}
+/***********************************************
+类名：lcModbusRTUFunc END
+************************************************/

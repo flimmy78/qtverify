@@ -18,7 +18,7 @@
 #include <intsafe.h>
 #include <QtCore/QThread>
 #include <QtCore/QMap>
-
+#include "algorithm.h"
 
 //协议基类
 class  CProtocol
@@ -392,6 +392,37 @@ public slots:
 	QString getReadStr();
 private:
 
+};//sti1062ATempProtocol END
+
+//力创EDA9150A/9017产品, ModbusRTU通讯协议
+//主要用于读取西门子电磁流量计的脉冲数
+#define EDA_9150A_START_REG	0x0004//EDA9150A模块第一路通讯寄存器的地址
+#define EDA_9017_START_REG	0x0002//EDA9017模块第一路通讯寄存器的地址
+
+enum lcModbusRTUFunc//力创ModbusRTU, 功能码
+{
+	read_multi_switch_out = 0x01,//读 1 路或多路开关量输出状态
+	read_multi_switch_in = 0x02,//读 1 路或多路开关量输入状态 DI
+	read_multi_reg = 0x03//读多路寄存器
 };
+
+class PROTOCOL_EXPORT lcModbusRTUProtocol : public CProtocol
+{	
+public:
+	lcModbusRTUProtocol();
+	~lcModbusRTUProtocol();
+
+public slots:
+	bool readMeterComBuffer(QByteArray tmp);//读取标准表脉冲数
+	void makeSendBuf(uchar addres, lcModbusRTUFunc func, UINT16 start, UINT16 regCount);
+	QByteArray getSendBuf();
+	QString getReadStr();
+private:
+	QByteArray m_sendBuf;//发送命令
+	QByteArray m_readBuf;//接收到的数据
+	UINT16 m_dataLength;//根据发送命令, 预计的返回数据长度
+	QString m_valueStr;//读到的数值
+	int m_state;
+};//lcModbusRTUProtocol END
 
 #endif // PROTOCOL_H

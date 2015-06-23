@@ -10,7 +10,7 @@ QMAKE_LIBDIR +=  ./             \
         	  		 $(ADEHOME)/lib \
 	          		 $(ADEHOME)/bin \
 
-
+LIBS += -lalgorithm
 # Input
 HEADERS += $$(ADEHOME_INC)/include/protocol.h
 
