@@ -216,8 +216,10 @@ float calcFloatValueOfCoe(QString coe)
 
 /* 计算ModBus-RTU传输协议的CRC校验值
  * ref: http://www.ccontrolsys.com/w/How_to_Compute_the_Modbus_RTU_Message_CRC
- * 生成多项式为0xA001
- * data, 指向消息头的指针;
+ * 生成多项式为 x^16+x^15+x^2+x^0, 即系数字串为 (1 1000 0000 0000 0101),
+ * 舍弃16次幂的系数后为 (1000 0000 0000 0101, 即0x8005),
+ * 再反序得到 (1010 0000 0000 0001, 即0xA001)
+ * buf, 指向消息头的指针;
  * len, 消息体的长度
  */
 UINT16 calcModRtuCRC(uchar *buf, int len)
@@ -228,12 +230,12 @@ UINT16 calcModRtuCRC(uchar *buf, int len)
 		crc ^= (UINT16)buf[pos];          // XOR byte into least sig. byte of crc
 
 		for (int i = 8; i > 0; i--) {    // Loop over each bit
-			if ((crc & 0x0001) != 0) {      // If the LSB is set
-				crc >>= 1;                    // Shift right and XOR 0xA001
-				crc ^= POLY;
+			if ((crc & 0x0001) != 0) {      // If the LSB is set, that is the LSB is 1
+				crc >>= 1;                  // Shift right, ignore LSB(LSB is the MSB before reverse)
+				crc ^= POLY;				//and XOR 0xA001
 			}
-			else                            // Else LSB is not set
-				crc >>= 1;                    // Just shift right
+			else                            // Else LSB is not set, that is the LSB is 0
+				crc >>= 1;                  // Just shift right
 		}
 	}
 	return crc;
@@ -248,8 +250,8 @@ UINT16 calcModRtuCRC(uchar *buf, int len)
 QByteArray getCRCArray(UINT16 crc)
 {
 	QByteArray sendbuf;
-	sendbuf.append((char)crc);
-	sendbuf.append((char)(crc>>WORDLEN));
+	sendbuf.append((char)crc);//低位
+	sendbuf.append((char)(crc>>WORDLEN));//高位
 	return sendbuf;
 }
 /**********************************************************
