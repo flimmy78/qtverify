@@ -398,6 +398,9 @@ private:
 //主要用于读取西门子电磁流量计的脉冲数
 #define EDA_9150A_START_REG	0x0004//EDA9150A模块第一路通讯寄存器的地址
 #define EDA_9017_START_REG	0x0002//EDA9017模块第一路通讯寄存器的地址
+#define MOD_ADDRESS_LEN 0x01//回应的地址位的字节数
+#define MOD_FUNC_LEN	0x01//回应的功能码位的字节数
+#define MOD_DATALEN_LEN 0x01//回应的数据长度信息位的字节数
 
 enum lcModbusRTUFunc//力创ModbusRTU, 功能码
 {
@@ -406,23 +409,48 @@ enum lcModbusRTUFunc//力创ModbusRTU, 功能码
 	read_multi_reg = 0x03//读多路寄存器
 };
 
+enum lcModAnswerState
+{
+	init_state = 0x00,
+	address_state = 0x01,
+	func_state = 0x02,
+	length_state = 0x03,
+	data_state = 0x04,
+	crc_state = 0x05
+};
+
+struct lcModSendCmd
+{
+	uchar address;
+	lcModbusRTUFunc func; 
+	UINT16 start;
+	UINT16 regCount;
+};
+
 class PROTOCOL_EXPORT lcModbusRTUProtocol : public CProtocol
 {	
 public:
 	lcModbusRTUProtocol();
 	~lcModbusRTUProtocol();
-
 public slots:
 	bool readMeterComBuffer(QByteArray tmp);//读取标准表脉冲数
-	void makeSendBuf(uchar addres, lcModbusRTUFunc func, UINT16 start, UINT16 regCount);
+	void makeSendBuf(uchar address, lcModbusRTUFunc func, UINT16 start, UINT16 regCount);
+	void makeSendBuf(lcModSendCmd);
 	QByteArray getSendBuf();
-	QString getReadStr();
+	QByteArray getReadVale();//读取全部获取的数值
+	QByteArray getData(int i);//读取第i个寄存器的值, 高位在0, 低位在1
+
 private:
 	QByteArray m_sendBuf;//发送命令
-	QByteArray m_readBuf;//接收到的数据
-	UINT16 m_dataLength;//根据发送命令, 预计的返回数据长度
-	QString m_valueStr;//读到的数值
-	int m_state;
+	QByteArray m_readBuf;//接收到的数据(除了crc校验值外的所有数据)
+	UINT16 m_readDataLength;//接收到的各个寄存器数据长度
+	
+	QByteArray m_valueArray;//读到的各个寄存器数值
+	QByteArray m_crcValue;//读到的crc值
+
+	UINT16 m_calcDataLength;//根据发送命令, 预计的返回数据长度
+	
+	lcModAnswerState m_state;
 };//lcModbusRTUProtocol END
 
 #endif // PROTOCOL_H

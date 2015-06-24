@@ -218,4 +218,41 @@ signals:
 		void readTemperatureComBuffer();
 		void close();
 };
+
+/*
+** 类名：lcModRtuComObject
+** 功能：力创ModRtu通讯串口类, 用于读取西门子电磁
+** 流量计脉冲数
+*/
+
+struct lcModComCommandstr
+{
+	uchar address;
+	lcModbusRTUFunc func;
+	UINT16 start;
+	UINT16 regCount;
+};
+
+class COMOBJECT_EXPORT lcModRtuComObject : public ComObject
+{
+	Q_OBJECT  
+
+public: 
+	lcModRtuComObject(QObject* parent=0);
+	~lcModRtuComObject();
+
+	QextSerialPort *m_lcModCom;      //电磁流量计采集串口
+	lcModbusRTUProtocol *m_lcModProtocol;   //电磁流量计采集通讯协议类对象
+signals:
+	void lcModValueIsReady(const QByteArray &valueArray); //成功获取仪器返回值
+
+	public slots:
+		bool openLcModCom(ComInfoStruct *comStruct);
+		void writeLcModComBuffer(lcModComCommandstr);
+		void readLcModComBuffer();
+		void close();
+private:
+	bool m_haveReadCom;//是否读取过串口
+};
+
 #endif //COMOBJECT_H

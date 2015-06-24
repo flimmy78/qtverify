@@ -1419,7 +1419,9 @@ QString sti1062ATempProtocol::getReadStr()
 ************************************************/
 lcModbusRTUProtocol::lcModbusRTUProtocol()
 {
-
+	m_state = init_state;
+	m_calcDataLength = 0x0000;
+	m_readDataLength = 0;
 }
 
 lcModbusRTUProtocol::~lcModbusRTUProtocol()
@@ -1427,22 +1429,118 @@ lcModbusRTUProtocol::~lcModbusRTUProtocol()
 
 }
 
-void lcModbusRTUProtocol::makeSendBuf(uchar addres, lcModbusRTUFunc func, UINT16 start, UINT16 regCount)
+void lcModbusRTUProtocol::makeSendBuf(uchar address, lcModbusRTUFunc func, UINT16 start, UINT16 regCount)
 {
 	m_sendBuf.clear();
-	m_sendBuf.append(addres);
-	m_sendBuf.append((uchar)func);
+	m_sendBuf.append(address);
+	m_sendBuf.append((uchar)(func));
 	m_sendBuf.append((uchar)(start>>WORDLEN));
-	m_sendBuf.append((uchar)start);
+	m_sendBuf.append((uchar)(start));
 	m_sendBuf.append((uchar)(regCount>>WORDLEN));
-	m_sendBuf.append((uchar)regCount);
+	m_sendBuf.append((uchar)(regCount));
 	m_sendBuf.append(getCRCArray(calcModRtuCRC((uchar *)m_sendBuf.data(), m_sendBuf.length())));
+	m_calcDataLength = regCount<<1;//预计回应的数据区字节数
+}
+
+void lcModbusRTUProtocol::makeSendBuf(lcModSendCmd command)
+{
+	makeSendBuf(command.address, command.func, command.start, command.regCount);	
 }
 
 //读取标准表脉冲数
 bool lcModbusRTUProtocol::readMeterComBuffer(QByteArray tmp)
 {
-	bool ret=false;
+	int number = tmp.size();
+	//Q_ASSERT(number > 0);
+	UINT16 dataLenInfo;//用于检验返回的数据长度信息是否正确
+	UINT16 crc;//用于检验返回的crc校验值
+
+	bool ret = false;
+	char b = '\0';
+	for (int i=0; i < number; i++)
+	{
+		b = tmp[i];
+		switch(m_state)
+		{
+		case init_state:
+			if(b == m_sendBuf.at(0))//发送的设备地址
+			{
+				m_readBuf.append(b);//加入设备地址
+				m_state = address_state;
+			}
+			else//回应的地址位出错, 终止解析
+			{
+				return false;
+			}
+			break;
+		case address_state:
+			if(b == m_sendBuf.at(1))//发送的功能码
+			{
+				m_readBuf.append(b);//加入功能码
+				m_state = func_state;
+			}
+			else//回应的功能码出错, 终止解析
+			{
+				return false;
+			}
+			break;
+		case func_state:
+			if (m_readBuf.length() == (MOD_ADDRESS_LEN+MOD_FUNC_LEN))
+			{
+				m_readBuf.append(b);//加入数据长度信息域的高位
+				m_state = length_state;
+
+				//检验数据长度信息是否正确
+				if (b != m_calcDataLength)//数据长度信息错误, 终止解析
+				{
+					return false;
+				}
+			}
+			break;
+		case length_state:
+			if (m_readBuf.length() == (MOD_ADDRESS_LEN+MOD_FUNC_LEN+MOD_DATALEN_LEN))//读取数据长度信息域完毕
+			{
+				//开始读取数据域
+				m_readBuf.append(b);
+				m_valueArray.append(b);
+				m_readDataLength++;
+				m_state = data_state;
+			}			
+			break;
+		case data_state:
+			if(m_readDataLength==m_calcDataLength)
+			{
+				m_crcValue.append(b);//读取crc校验值的低位
+				m_state = crc_state;
+			}
+			else
+			{
+				m_readBuf.append(b);
+				m_valueArray.append(b);
+				m_readDataLength++;
+			}
+			break;
+		case crc_state:
+			m_crcValue.append(b);//crc校验值的高位
+			crc  = ( (m_crcValue.at(1)<<WORDLEN) | m_crcValue.at(0) );
+			if (crc == calcModRtuCRC((uchar *)m_readBuf.data(), m_readBuf.length()))//crc校验通过
+			{
+				ret = true;
+			}
+			else////crc校验错误
+			{
+				return false;
+			}
+			break;
+		default:
+			break;
+		}
+	}
+
+	if (ret)
+	{
+		m_readBuf.clear();
+	}
 	return ret;
 }
 
@@ -1451,10 +1549,23 @@ QByteArray lcModbusRTUProtocol::getSendBuf()
 	return m_sendBuf;
 }
 
-QString lcModbusRTUProtocol::getReadStr()
+QByteArray lcModbusRTUProtocol::getReadVale()
 {
-	return m_valueStr;
+	return m_valueArray;
 }
+
+/*
+** i, 是以m_sendbuf.start为开始地址的偏移量; i的索引从0开始
+** 返回值中高位在前, 低位在后
+*/
+QByteArray lcModbusRTUProtocol::getData(int i)
+{
+	QByteArray data;
+	data.append(m_valueArray.at(2*i+1));
+	data.append(m_valueArray.at(2*i+2));
+	return data;
+}
+
 /***********************************************
 类名：lcModbusRTUFunc END
 ************************************************/

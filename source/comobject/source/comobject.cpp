@@ -734,7 +734,7 @@ bool Sti1062aComObject::openTemperatureCom(ComInfoStruct *comStruct)
 {
 	qDebug()<<"open Sti1062aTemperatureCom thread:"<<QThread::currentThreadId();
 
-	QString portName = comStruct->portName;// "COM2";//获取串口名
+	QString portName = comStruct->portName;// "COM2", 获取串口名
 #ifdef Q_OS_LINUX
 	m_tempCom = new QextSerialPort("/dev/" + portName);
 #elif defined (Q_OS_WIN)
@@ -777,7 +777,6 @@ void Sti1062aComObject::readTemperatureComBuffer()
 	if (ret)
 	{
 		m_tempCom->flush();
-		tmp = m_tempCom->readAll();
 		QString tempStr = m_sti1062aProtocol->getReadStr();
 		emit temperatureIsReady(tempStr);
 	}
@@ -792,3 +791,100 @@ void Sti1062aComObject::close()
 {
 	m_tempCom->close();
 }
+/*
+** Sti1062aComObject END
+*/
+
+/*
+** 类名：lcModRtuComObject
+** 功能：力创ModRtu通讯串口类, 用于读取西门子电磁
+** 流量计脉冲数
+*/
+lcModRtuComObject::lcModRtuComObject(QObject* parent) : ComObject(parent)
+{
+	m_haveReadCom = false;
+	m_lcModCom = NULL;
+	m_lcModProtocol = new lcModbusRTUProtocol();
+}
+
+lcModRtuComObject::~lcModRtuComObject()
+{
+	if (m_lcModCom != NULL)
+	{
+		if(m_lcModCom->isOpen())
+		{
+			m_lcModCom->close();
+			qDebug()<<"m_lcModCom closed";
+		}
+		delete m_lcModCom;
+	}
+
+	if (m_lcModProtocol != NULL)
+	{
+		delete m_lcModProtocol;
+		m_lcModProtocol = NULL;
+	}
+}
+
+bool lcModRtuComObject::openLcModCom(ComInfoStruct *comStruct)
+{
+	qDebug()<<"open lcModRtu thread:"<<QThread::currentThreadId();
+
+	QString portName = comStruct->portName;// "COM2", 获取串口名
+#ifdef Q_OS_LINUX
+	m_lcModCom = new QextSerialPort("/dev/" + portName);
+#elif defined (Q_OS_WIN)
+	m_lcModCom = new QextSerialPort(portName, QextSerialPort::EventDriven);
+#endif
+	connect(m_lcModCom, SIGNAL(readyRead()), this, SLOT(readLcModComBuffer()));
+	m_lcModCom->setBaudRate((BaudRateType)comStruct->baudRate);// BAUD9600); //设置波特率  
+	m_lcModCom->setDataBits((DataBitsType)comStruct->dataBit); //DATA_8);    //设置数据位
+	m_lcModCom->setParity((ParityType)comStruct->parity);	  //PAR_EVEN);  //设置校验位
+	m_lcModCom->setStopBits((StopBitsType)comStruct->stopBit); //STOP_1);    //设置停止位
+	m_lcModCom->setFlowControl(FLOW_OFF); //设置数据流控制  
+	m_lcModCom->setTimeout(TIME_OUT);     //设置延时
+
+	if(m_lcModCom->open(QIODevice::ReadWrite))
+	{
+		qDebug()<<"Open lcModRtu Com:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
+		return true;
+	}
+	else
+	{
+		qDebug()<<"Open lcModRtu Com:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
+		return false;
+	}
+}
+
+void lcModRtuComObject::writeLcModComBuffer(lcModComCommandstr command)
+{
+	m_lcModProtocol->makeSendBuf(command.address, command.func, command.start, command.regCount);
+	m_lcModCom->write(m_lcModProtocol->getSendBuf());
+}
+
+void lcModRtuComObject::readLcModComBuffer()
+{
+	QByteArray tmp = m_lcModCom->readAll();
+
+	bool ret = m_lcModProtocol->readMeterComBuffer(tmp); //通讯协议接口
+	if (ret)
+	{
+		m_lcModCom->flush();
+		QByteArray valueArray = m_lcModProtocol->getReadVale();
+		qDebug()<< "read data start:\n";
+		for (int i=0;i<valueArray.length();i++)
+		{
+			printf("%d: 0x%02X\n", i, valueArray.at(i));
+		}
+		qDebug()<< "\nread data end:\n";
+		emit lcModValueIsReady(valueArray);
+	}
+}
+
+void lcModRtuComObject::close()
+{
+	m_lcModCom->close();
+}
+/*
+** lcModRtuComObject END
+*/
