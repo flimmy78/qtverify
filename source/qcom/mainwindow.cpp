@@ -270,6 +270,7 @@ void MainWindow::readMyCom()
 		else if (ui->chradioButton->isChecked()) //Ê®Áù½øÖÆ
 		{
 			QString str;
+			int length = temp.count();
 			for (int i = 0; i < temp.count(); i++)
 			{
 				QString s;
