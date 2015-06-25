@@ -225,14 +225,6 @@ signals:
 ** 流量计脉冲数
 */
 
-struct lcModComCommandstr
-{
-	uchar address;
-	lcModbusRTUFunc func;
-	UINT16 start;
-	UINT16 regCount;
-};
-
 class COMOBJECT_EXPORT lcModRtuComObject : public ComObject
 {
 	Q_OBJECT  
@@ -240,19 +232,26 @@ class COMOBJECT_EXPORT lcModRtuComObject : public ComObject
 public: 
 	lcModRtuComObject(QObject* parent=0);
 	~lcModRtuComObject();
-
-	QextSerialPort *m_lcModCom;      //电磁流量计采集串口
-	lcModbusRTUProtocol *m_lcModProtocol;   //电磁流量计采集通讯协议类对象
+	
 signals:
 	void lcModValueIsReady(const QByteArray &valueArray); //成功获取仪器返回值
 
 	public slots:
 		bool openLcModCom(ComInfoStruct *comStruct);
-		void writeLcModComBuffer(lcModComCommandstr);
+		void writeLcModComBuffer(lcModSendCmd);
+		void ask9150A16RoutesCmd(uchar address);//同时请求16路通道的数值
+		void ask9150ARouteI(int i, uchar address);//请求第i个通道的数值
+		void ask9150ARouteL(UINT16 len, uchar address);
 		void readLcModComBuffer();
 		void close();
+
+		void sendCmd();
 private:
-	bool m_haveReadCom;//是否读取过串口
+	QextSerialPort *m_lcModCom;      //电磁流量计采集串口
+	lcModbusRTUProtocol *m_lcModProtocol;   //电磁流量计采集通讯协议类对象
+
+	int m_int;
+	QTimer m_timer;
 };
 
 #endif //COMOBJECT_H

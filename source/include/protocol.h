@@ -396,8 +396,8 @@ private:
 
 //力创EDA9150A/9017产品, ModbusRTU通讯协议
 //主要用于读取西门子电磁流量计的脉冲数
-#define EDA_9150A_START_REG	0x0004//EDA9150A模块第一路通讯寄存器的地址
-#define EDA_9017_START_REG	0x0002//EDA9017模块第一路通讯寄存器的地址
+#define EDA_9150A_START_REG	0x0010//EDA9150A模块第一路寄存器的地址, 共16路
+#define EDA_9017_START_REG	0x0003//EDA9017模块第一路寄存器的地址, 共12路
 #define MOD_ADDRESS_LEN 0x01//回应的地址位的字节数
 #define MOD_FUNC_LEN	0x01//回应的功能码位的字节数
 #define MOD_DATALEN_LEN 0x01//回应的数据长度信息位的字节数
@@ -439,8 +439,10 @@ public slots:
 	QByteArray getSendBuf();
 	QByteArray getReadVale();//读取全部获取的数值
 	QByteArray getData(int i);//读取第i个寄存器的值, 高位在0, 低位在1
-
+	int getIntData(int i);//读取第i个通道的值, 比如DI0就是0通道; DI6就是6通道
 private:
+	void initParams();//初始化参数
+
 	QByteArray m_sendBuf;//发送命令
 	QByteArray m_readBuf;//接收到的数据(除了crc校验值外的所有数据)
 	UINT16 m_readDataLength;//接收到的各个寄存器数据长度
