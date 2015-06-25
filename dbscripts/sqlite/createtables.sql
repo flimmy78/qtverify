@@ -347,6 +347,7 @@ insert into T_Meter_PickCode(F_ID, F_Desc) values(6, '迈拓超声波表');
 insert into T_Meter_PickCode(F_ID, F_Desc) values(7, '瑞纳超声波表');
 insert into T_Meter_PickCode(F_ID, F_Desc) values(8, '光大');
 insert into T_Meter_PickCode(F_ID, F_Desc) values(9, '荷德鲁美特');
+insert into T_Meter_PickCode(F_ID, F_Desc) values(10, '航天德鲁热量表');
 
 
 ---------------------------------
