@@ -1,203 +1,4 @@
 ﻿---------------------------------
---表规格
----------------------------------
-drop table if exists "T_Meter_Standard"
-;
-create table T_Meter_Standard
-(
-F_ID integer not null primary key,  --规格ID
-F_Name varchar(24),                 --规格代码
-F_Meter_Quantity smallint           -- 被检表的数量(2014.07.31 修改By Song baoshan)
-);
-insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(0, 'DN15', 16);
-insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(1, 'DN20', 16);
-insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(2, 'DN25', 12);
-
-
----------------------------------
---表型号
----------------------------------
-drop table if exists "T_Meter_Model"
-;
-create table T_Meter_Model
-(
-F_ID integer not null primary key autoincrement,  --型号ID
-F_Name varchar(24),
-F_Desc varchar(60)
-);
-insert into T_Meter_Model(F_ID, F_Name, F_Desc) values(0, 'E-UWZ1', '型号1');
-insert into T_Meter_Model(F_ID, F_Name, F_Desc) values(1, 'E-UWZ2', '型号2');
-insert into T_Meter_Model(F_ID, F_Name, F_Desc) values(2, 'E-UWZ3', '型号3');
-
-
----------------------------------
---表类型/采集代码
----------------------------------
-drop table if exists "T_Meter_PickCode"
-;
-create table T_Meter_PickCode
-(
-F_ID integer not null primary key,
-F_Desc varchar(60)
-);
-insert into T_Meter_PickCode(F_ID, F_Desc) values(0, '通用');
-insert into T_Meter_PickCode(F_ID, F_Desc) values(1, '德鲁超声波表');
-insert into T_Meter_PickCode(F_ID, F_Desc) values(2, '天罡超声波表');
-insert into T_Meter_PickCode(F_ID, F_Desc) values(3, '力创超声波表');
-insert into T_Meter_PickCode(F_ID, F_Desc) values(4, '力创机械表');
-insert into T_Meter_PickCode(F_ID, F_Desc) values(5, '汇中超声波表');
-insert into T_Meter_PickCode(F_ID, F_Desc) values(6, '迈拓超声波表');
-insert into T_Meter_PickCode(F_ID, F_Desc) values(7, '瑞纳超声波表');
-insert into T_Meter_PickCode(F_ID, F_Desc) values(8, '光大');
-insert into T_Meter_PickCode(F_ID, F_Desc) values(9, '荷德鲁美特');
-
-
----------------------------------
---制造单位
----------------------------------
-drop table if exists "T_Manufacture_Dept"
-;
-create table T_Manufacture_Dept
-(
-F_ID integer not null primary key,
-F_Name varchar(24),
-F_Desc varchar(60),
-F_NumPrefix varchar(6)
-);
-insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc,F_NumPrefix) values(0, 'SDM', '山东德鲁','111100');
-insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc,F_NumPrefix) values(1, 'SDJG', '烟台晶格','111111');
-insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc,F_NumPrefix) values(2, 'HYLY', '华仪乐业','222222');
-
-
----------------------------------
---送检单位
----------------------------------
-drop table if exists "T_Verify_Dept"
-;
-create table T_Verify_Dept
-(
-F_ID integer not null primary key,
-F_Name varchar(24),
-F_Desc varchar(60)
-);
-insert into T_Verify_Dept(F_ID, F_Name, F_Desc) values(0, 'SDJL', '山东计量院');
-insert into T_Verify_Dept(F_ID, F_Name, F_Desc) values(1, 'QDJL', '青岛计量所');
-insert into T_Verify_Dept(F_ID, F_Name, F_Desc) values(2, 'YTJL', '烟台计量所');
-
-
----------------------------------
---角色定义表
----------------------------------
-drop table if exists "T_Role_Def_Tab"
-;
-create table T_Role_Def_Tab
-(
-F_ID integer not null primary key,
-F_Name varchar(24),
-F_Desc varchar(60),
-F_Func1 smallint,
-F_Func2 smallint,
-F_Func3 smallint
-);
-insert into T_Role_Def_Tab(F_ID, F_Name, F_Desc) values(0, 'root', '超级用户');
-insert into T_Role_Def_Tab(F_ID, F_Name, F_Desc) values(1, 'common', '普通用户');
-
-
----------------------------------
---用户定义表
----------------------------------
-drop table if exists "T_User_Def_Tab"
-;
-create table T_User_Def_Tab
-(
-F_ID integer not null primary key,
-F_Name varchar(24),
-F_Desc varchar(60),
-F_Password varchar(24),
-F_RoleID integer          --角色ID，外键(T_Role_Def_Tab)
-);
-insert into T_User_Def_Tab(F_ID, F_Name, F_Desc, F_Password, F_RoleID) values(0, 'admin', '管理员', 'admin', 1);
-insert into T_User_Def_Tab(F_ID, F_Name, F_Desc, F_Password, F_RoleID) values(1, 'oper', '操作员', '1234', 2);
-
-
----------------------------------
---是否表
----------------------------------
-drop table if exists "T_Yes_No_Tab"
-;
-create table T_Yes_No_Tab
-(
-F_ID integer not null primary key,
-F_Name varchar(8),
-F_Desc varchar(12)
-);
-insert into T_Yes_No_Tab(F_ID, F_Name, F_Desc) values(0, 'No', '不合格');
-insert into T_Yes_No_Tab(F_ID, F_Name, F_Desc) values(1, 'Yes', '合格');
-
-
----------------------------------
---热表各规格的默认参数表
----------------------------------
-drop table if exists "T_Meter_Default_Params"
-;
-create table T_Meter_Default_Params
-(
-	F_ID integer not null primary key,      -- 参数id
-	F_StandardID integer,                   -- 外键,表规格id(T_Meter_Standard.F_ID)
-	F_NormalFlow float,                     -- 常用流量点
-	F_UpperFlow float,                      -- 上限流量点		
-	F_VerifyFlow float,                     -- 检定流量点
-	F_FlowQuantity float,                   -- 检定量
-	F_PumpFrequencey float,                 -- 水泵频率
-	F_Valve_i smallint,                     -- 阀门编号	
-	F_Seq_i smallint,                       -- 检测序列号
-  constraint F_StandardID_fk foreign key(F_StandardID) references T_Meter_Standard(F_ID)
-);
----------------------------------
---热表各规格的默认参数表
----------------------------------
-insert into T_Meter_Default_Params values(0, 0, 1.5, 1.6, 1.5, 40, 34, 0, 1);
-insert into T_Meter_Default_Params values(1, 0, 1.5, 0.5, 0.45, 20, 33, 1, 2);
-insert into T_Meter_Default_Params values(2, 0, 1.5, 0.16, 0.15, 10, 33, 2, 3);
-insert into T_Meter_Default_Params values(3, 0, 1.5, 0.035, 0.03, 5, 33, 3, 4);
-insert into T_Meter_Default_Params values(4, 1, 2.5, 2.6, 2.5, 50, 34, 0, 1);
-insert into T_Meter_Default_Params values(5, 1, 2.5, 0.8, 0.75, 20, 33, 1, 2);
-insert into T_Meter_Default_Params values(6, 1, 2.5, 0.3, 0.25, 10, 33, 2, 3);
-insert into T_Meter_Default_Params values(7, 1, 2.5, 0.06, 0.05, 5, 33, 3, 4);
-insert into T_Meter_Default_Params values(8, 2, 3.5, 3.6, 3.5, 50, 34, 0, 1);
-insert into T_Meter_Default_Params values(9, 2, 3.5, 1.1, 1.05, 20, 33, 1, 2);
-insert into T_Meter_Default_Params values(10, 2, 3.5, 0.4, 0.35, 10, 33, 2, 3);
-insert into T_Meter_Default_Params values(11, 2, 3.5, 0.08, 0.07, 5, 33, 3, 4);
-
-
----------------------------------
---检定装置信息表
----------------------------------
-drop table if exists "T_Verify_Device_Info"
-;
-create table T_Verify_Device_Info
-(
-F_ID integer not null primary key,
-F_DeviceName varchar(24) not null,     --标准装置名称（热量表检定装置）
-F_DeviceNo varchar(24) not null,       --标准装置编号（SDM201280037)
-F_DeviceModel varchar(20),             --装置型号("RJZ32/80Z/B")
-F_Manufact varchar(24),                --制造厂商("德鲁计量")
-F_DeviceGrade varchar(24),             --装置的准确度等级("0.1% k=2")
-F_MeasureRange varchar(24),            --装置的测量范围("0.12-40.0(m3/h)")
-F_CertNo smallint not null,            --标准装置证书编号
-F_VerifyRule varchar(20),              --检定规程("JJG225-2001")
-F_DeviceValidDate date,                --标准装置有效期('2014-08-07')
-F_CertValidDate date,                  --证书有效期('2014-08-07')
-F_RuleValidDate date,                  --计量标准考核证书有效期('2014-08-07')
-F_Bak1 varchar(24),                    --备用域1
-F_Bak2 varchar(24),                    --备用域2
-F_Bak3 varchar(24),                    --备用域3
-F_Bak4 varchar(24)                     --备用域4
-);
-create unique index uk_T_Verify_Device_Info on T_Verify_Device_Info (F_DeviceNo);
-
-
----------------------------------
 --流量检定结果记录表（包括质量法和标准表法）
 ---------------------------------
 drop table if exists "T_Flow_Verify_Record"
@@ -458,3 +259,322 @@ constraint F_VerifyPerson_fk foreign key(F_VerifyPerson) references T_User_Def_T
 );
 create unique index uk_T_Combined_Verify_Record on T_Combined_Verify_Record (F_MeterNo, F_TimeStamp);
 
+
+---------------------------------
+--热表各规格的默认参数表
+---------------------------------
+drop table if exists "T_Meter_Default_Params"
+;
+create table T_Meter_Default_Params
+(
+	F_ID integer not null primary key,      -- 参数id
+	F_StandardID integer,                   -- 外键,表规格id(T_Meter_Standard.F_ID)
+	F_NormalFlow float,                     -- 常用流量点
+	F_UpperFlow float,                      -- 上限流量点		
+	F_VerifyFlow float,                     -- 检定流量点
+	F_FlowQuantity float,                   -- 检定量
+	F_PumpFrequencey float,                 -- 水泵频率
+	F_Valve_i smallint,                     -- 阀门编号	
+	F_Seq_i smallint,                       -- 检测序列号
+  constraint F_StandardID_fk foreign key(F_StandardID) references T_Meter_Standard(F_ID)
+);
+
+---------------------------------
+--表规格
+---------------------------------
+drop table if exists "T_Meter_Standard"
+;
+create table T_Meter_Standard
+(
+F_ID integer not null primary key,  --规格ID
+F_Name varchar(24),                 --规格代码
+F_Meter_Quantity smallint           -- 被检表的数量(2014.07.31 修改By Song baoshan)
+);
+insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(0, 'DN15', 16);
+insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(1, 'DN20', 16);
+insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(2, 'DN25', 12);
+
+---------------------------------
+--热表各规格的默认参数表
+---------------------------------
+insert into T_Meter_Default_Params values(0, 0, 1.5, 1.6, 1.5, 40, 34, 0, 1);
+insert into T_Meter_Default_Params values(1, 0, 1.5, 0.5, 0.45, 20, 33, 1, 2);
+insert into T_Meter_Default_Params values(2, 0, 1.5, 0.16, 0.15, 10, 33, 2, 3);
+insert into T_Meter_Default_Params values(3, 0, 1.5, 0.035, 0.03, 5, 33, 3, 4);
+insert into T_Meter_Default_Params values(4, 1, 2.5, 2.6, 2.5, 50, 34, 0, 1);
+insert into T_Meter_Default_Params values(5, 1, 2.5, 0.8, 0.75, 20, 33, 1, 2);
+insert into T_Meter_Default_Params values(6, 1, 2.5, 0.3, 0.25, 10, 33, 2, 3);
+insert into T_Meter_Default_Params values(7, 1, 2.5, 0.06, 0.05, 5, 33, 3, 4);
+insert into T_Meter_Default_Params values(8, 2, 3.5, 3.6, 3.5, 50, 34, 0, 1);
+insert into T_Meter_Default_Params values(9, 2, 3.5, 1.1, 1.05, 20, 33, 1, 2);
+insert into T_Meter_Default_Params values(10, 2, 3.5, 0.4, 0.35, 10, 33, 2, 3);
+insert into T_Meter_Default_Params values(11, 2, 3.5, 0.08, 0.07, 5, 33, 3, 4);
+
+
+---------------------------------
+--表型号
+---------------------------------
+drop table if exists "T_Meter_Model"
+;
+create table T_Meter_Model
+(
+F_ID integer not null primary key autoincrement,  --型号ID
+F_Name varchar(24),
+F_Desc varchar(60)
+);
+insert into T_Meter_Model(F_ID, F_Name, F_Desc) values(0, 'E-UWZ1', '型号1');
+insert into T_Meter_Model(F_ID, F_Name, F_Desc) values(1, 'E-UWZ2', '型号2');
+insert into T_Meter_Model(F_ID, F_Name, F_Desc) values(2, 'E-UWZ3', '型号3');
+
+
+---------------------------------
+--表类型/采集代码
+---------------------------------
+drop table if exists "T_Meter_PickCode"
+;
+create table T_Meter_PickCode
+(
+F_ID integer not null primary key,
+F_Desc varchar(60)
+);
+insert into T_Meter_PickCode(F_ID, F_Desc) values(0, '通用');
+insert into T_Meter_PickCode(F_ID, F_Desc) values(1, '德鲁超声波表');
+insert into T_Meter_PickCode(F_ID, F_Desc) values(2, '天罡超声波表');
+insert into T_Meter_PickCode(F_ID, F_Desc) values(3, '力创超声波表');
+insert into T_Meter_PickCode(F_ID, F_Desc) values(4, '力创机械表');
+insert into T_Meter_PickCode(F_ID, F_Desc) values(5, '汇中超声波表');
+insert into T_Meter_PickCode(F_ID, F_Desc) values(6, '迈拓超声波表');
+insert into T_Meter_PickCode(F_ID, F_Desc) values(7, '瑞纳超声波表');
+insert into T_Meter_PickCode(F_ID, F_Desc) values(8, '光大');
+insert into T_Meter_PickCode(F_ID, F_Desc) values(9, '荷德鲁美特');
+
+
+---------------------------------
+--制造单位
+---------------------------------
+drop table if exists "T_Manufacture_Dept"
+;
+create table T_Manufacture_Dept
+(
+F_ID integer not null primary key,
+F_Name varchar(24),
+F_Desc varchar(60),
+F_NumPrefix varchar(6)
+);
+insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc,F_NumPrefix) values(0, 'SDM', '山东德鲁','111100');
+insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc,F_NumPrefix) values(1, 'SDJG', '烟台晶格','111111');
+insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc,F_NumPrefix) values(2, 'HYLY', '华仪乐业','222222');
+
+
+---------------------------------
+--送检单位
+---------------------------------
+drop table if exists "T_Verify_Dept"
+;
+create table T_Verify_Dept
+(
+F_ID integer not null primary key,
+F_Name varchar(24),
+F_Desc varchar(60)
+);
+insert into T_Verify_Dept(F_ID, F_Name, F_Desc) values(0, 'SDJL', '山东计量院');
+insert into T_Verify_Dept(F_ID, F_Name, F_Desc) values(1, 'QDJL', '青岛计量所');
+insert into T_Verify_Dept(F_ID, F_Name, F_Desc) values(2, 'YTJL', '烟台计量所');
+
+
+---------------------------------
+--角色定义表
+---------------------------------
+drop table if exists "T_Role_Def_Tab"
+;
+create table T_Role_Def_Tab
+(
+F_ID integer not null primary key,
+F_Name varchar(24),
+F_Desc varchar(60),
+F_Func1 smallint,
+F_Func2 smallint,
+F_Func3 smallint
+);
+insert into T_Role_Def_Tab(F_ID, F_Name, F_Desc) values(0, 'root', '超级用户');
+insert into T_Role_Def_Tab(F_ID, F_Name, F_Desc) values(1, 'common', '普通用户');
+
+
+---------------------------------
+--用户定义表
+---------------------------------
+drop table if exists "T_User_Def_Tab"
+;
+create table T_User_Def_Tab
+(
+F_ID integer not null primary key,
+F_Name varchar(24),
+F_Desc varchar(60),
+F_Password varchar(24),
+F_RoleID integer          --角色ID，外键(T_Role_Def_Tab)
+);
+insert into T_User_Def_Tab(F_ID, F_Name, F_Desc, F_Password, F_RoleID) values(0, 'admin', '管理员', 'admin', 1);
+insert into T_User_Def_Tab(F_ID, F_Name, F_Desc, F_Password, F_RoleID) values(1, 'oper', '操作员', '1234', 2);
+
+
+---------------------------------
+--是否表
+---------------------------------
+drop table if exists "T_Yes_No_Tab"
+;
+create table T_Yes_No_Tab
+(
+F_ID integer not null primary key,
+F_Name varchar(8),
+F_Desc varchar(12)
+);
+insert into T_Yes_No_Tab(F_ID, F_Name, F_Desc) values(0, 'No', '不合格');
+insert into T_Yes_No_Tab(F_ID, F_Name, F_Desc) values(1, 'Yes', '合格');
+
+
+
+---------------------------------
+--检定装置信息表
+---------------------------------
+drop table if exists "T_Verify_Device_Info"
+;
+create table T_Verify_Device_Info
+(
+F_ID integer not null primary key,
+F_DeviceName varchar(24) not null,     --标准装置名称（热量表检定装置）
+F_DeviceNo varchar(24) not null,       --标准装置编号（SDM201280037)
+F_DeviceModel varchar(20),             --装置型号("RJZ32/80Z/B")
+F_Manufact varchar(24),                --制造厂商("德鲁计量")
+F_DeviceGrade varchar(24),             --装置的准确度等级("0.1% k=2")
+F_MeasureRange varchar(24),            --装置的测量范围("0.12-40.0(m3/h)")
+F_CertNo smallint not null,            --标准装置证书编号
+F_VerifyRule varchar(20),              --检定规程("JJG225-2001")
+F_DeviceValidDate date,                --标准装置有效期('2014-08-07')
+F_CertValidDate date,                  --证书有效期('2014-08-07')
+F_RuleValidDate date,                  --计量标准考核证书有效期('2014-08-07')
+F_Bak1 varchar(24),                    --备用域1
+F_Bak2 varchar(24),                    --备用域2
+F_Bak3 varchar(24),                    --备用域3
+F_Bak4 varchar(24)                     --备用域4
+);
+create unique index uk_T_Verify_Device_Info on T_Verify_Device_Info (F_DeviceNo);
+insert into T_Verify_Device_Info values(0, '航天德鲁检定装置', 'ADE201580037', 'RJZ15-25Z/B', '航天德鲁', '0.1% k=2', '0.12-40.0(m3/h)', 1234567890, 'JJG225-2001', '2020-7-1', '2020-7-1', '2020-7-1', '', '', '', '');
+
+
+
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+-----------------------------------------------------------------
+--                    检定结果视图中的rowID                   ----
+------------------------------------------------------------------
+drop view if exists "v_flow_verify_meterno_rowid";
+create view v_flow_verify_meterno_rowid as
+select 
+distinct (
+           select 
+                  count(distinct f_meterno) + 1
+           from t_flow_verify_record v1 
+           where v1.[f_meterno] < v2.[F_MeterNo] 
+         ) rowid, 
+           v2.f_meterno  
+from t_flow_verify_record v2;
+
+
+-----------------------------------------------------------------
+--                    检定结果视图                           ----
+-----------------------------------------------------------------
+drop VIEW if exists "V_Flow_Verify_Record";
+CREATE VIEW V_Flow_Verify_Record as
+select 
+  rid.[rowid],
+  rec.F_ID,
+  rec.F_TimeStamp,
+  rec.F_MeterNo,
+  rec.F_FlowPointIdx,
+  rec.F_FlowPoint,
+  rec.F_MethodFlag,
+  rec.F_MeterValue0,
+  rec.F_MeterValue1,                
+  rec.F_BalWeight0,                 
+  rec.F_BalWeight1,                 
+  rec.F_StdMeterV0,                 
+  rec.F_StdMeterV1,                 
+  rec.F_PipeTemper,                 
+  rec.F_Density,                    
+  rec.F_StandValue,                 
+  rec.F_DispError,                  
+  rec.F_StdError,
+  (case when (F_DispError<F_StdError and F_DispError>-F_StdError) then '合格'
+        else '不合格'
+   end) valid,                   
+  rec.F_Result,                   
+  rec.F_MeterPosNo,              
+  rec.F_Model,
+  mod.[F_Name] F_Model_en,
+  mod.[F_Desc] F_Model_zh,                    
+  std.f_name F_Standard,                  
+  tp.[F_Desc] F_PickCode_zh,                
+  manu.[F_Name] F_ManufactDept_en,
+  manu.[F_Desc] F_ManufactDept_zh,              
+  vdpt.[F_Name] F_VerifyDept_en,
+  vdpt.[F_Desc] F_VerifyDept_zh,               
+  rec.F_Grade,                   
+  (select F_Desc from T_User_Def_Tab u where u.F_id = rec.[F_VerifyPerson])  F_VerifyPerson,           
+  (select F_Desc from T_User_Def_Tab u where u.F_id = rec.[F_CheckPerson])  F_CheckPerson,            
+  rec.F_DeviceInfoID,        
+  rec.F_VerifyDate,                 
+  rec.F_ValidDate,                   
+  rec.F_EnvTemper,                  
+  rec.F_EnvHumidity,                
+  rec.F_AirPressure,                
+  rec.F_CertNO,
+  rec.F_FlowCoe,
+  rec.F_DeviceName,   
+  rec.F_DeviceNo,
+  rec.F_DeviceModel,
+  rec.F_Manufact,
+  rec.F_DeviceGrade,
+  rec.F_MeasureRange,
+  rec.F_CertNo,
+  rec.F_VerifyRule,
+  rec.F_DeviceValidDate,
+  rec.F_CertValidDate,
+  rec.F_RuleValidDate   
+from
+   (
+		select 
+		  recj.*, 
+		  d.[F_CertNo], 
+		  d.[F_CertValidDate], 
+		  d.[F_DeviceGrade], 
+		  d.[F_DeviceModel], 
+		  d.[F_DeviceName], 
+		  d.[F_DeviceNo],
+		  d.[F_DeviceValidDate],
+		  d.[F_Manufact],
+		  d.[F_MeasureRange],
+		  d.[F_RuleValidDate],
+		  d.[F_VerifyRule]
+		from 
+			T_Flow_Verify_Record recj 
+		 left join 
+			T_Verify_Device_Info d 
+		 on   
+			recj.F_DeviceInfoID=d.[F_ID]
+    ) rec, 
+   T_Meter_Model mod,
+   T_meter_standard std,   
+   T_Meter_PickCode tp,   
+   T_manufacture_dept manu,   
+   T_verify_dept vdpt,   
+   v_flow_verify_meterno_rowid rid
+where
+   rec.[F_Standard]=std.[F_ID] and
+   rec.[F_PickCode]=tp.[F_ID] and
+   rec.[F_ManufactDept]=manu.[F_ID] and
+   rec.[F_VerifyDept]=vdpt.[F_ID] and   
+   rec.[F_Model]=mod.[F_ID] and   
+   rec.[f_meterno]=rid.[F_MeterNo]
+ order by rec.f_meterno, rec.f_timestamp
+ ;
