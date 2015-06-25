@@ -290,9 +290,9 @@ F_ID integer not null primary key,  --规格ID
 F_Name varchar(24),                 --规格代码
 F_Meter_Quantity smallint           -- 被检表的数量(2014.07.31 修改By Song baoshan)
 );
-insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(0, 'DN15', 16);
-insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(1, 'DN20', 16);
-insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(2, 'DN25', 12);
+insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(0, 'DN15', 12);
+insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(1, 'DN20', 12);
+insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(2, 'DN25', 10);
 
 ---------------------------------
 --热表各规格的默认参数表
@@ -447,7 +447,7 @@ F_DeviceModel varchar(20),             --装置型号("RJZ32/80Z/B")
 F_Manufact varchar(24),                --制造厂商("德鲁计量")
 F_DeviceGrade varchar(24),             --装置的准确度等级("0.1% k=2")
 F_MeasureRange varchar(24),            --装置的测量范围("0.12-40.0(m3/h)")
-F_CertNo smallint not null,            --标准装置证书编号
+F_CertNo integer not null,             --标准装置证书编号
 F_VerifyRule varchar(20),              --检定规程("JJG225-2001")
 F_DeviceValidDate date,                --标准装置有效期('2014-08-07')
 F_CertValidDate date,                  --证书有效期('2014-08-07')
@@ -484,8 +484,8 @@ from t_flow_verify_record v2;
 -----------------------------------------------------------------
 --                    检定结果视图                           ----
 -----------------------------------------------------------------
-drop VIEW if exists "V_Flow_Verify_Record";
-CREATE VIEW V_Flow_Verify_Record as
+drop view if exists "V_Flow_Verify_Record";
+CREATE view V_Flow_Verify_Record as
 select 
   rid.[rowid],
   rec.F_ID,

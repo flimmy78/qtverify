@@ -1,7 +1,7 @@
 --------------------------------------
 --йсм╪
 --------------------------------------
-drop VIEW if exists "V_Flow_Verify_Record";
+drop view if exists "V_Flow_Verify_Record";
 
 drop view if exists "v_flow_verify_meterno_rowid";
 
