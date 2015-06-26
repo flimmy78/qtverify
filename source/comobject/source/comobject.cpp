@@ -838,8 +838,8 @@ bool lcModRtuComObject::openLcModCom(ComInfoStruct *comStruct)
 	m_lcModCom = new QextSerialPort(portName, QextSerialPort::EventDriven);
 #endif
 	connect(m_lcModCom, SIGNAL(readyRead()), this, SLOT(readLcModComBuffer()));
-	connect(&m_timer, SIGNAL(timeout()), this, SLOT(sendCmd()));
-	m_timer.start(1000);
+	//connect(&m_timer, SIGNAL(timeout()), this, SLOT(sendCmd()));
+	//m_timer.start(1000);
 
 	m_lcModCom->setBaudRate((BaudRateType)comStruct->baudRate);// BAUD9600); //设置波特率  
 	m_lcModCom->setDataBits((DataBitsType)comStruct->dataBit); //DATA_8);    //设置数据位
@@ -900,27 +900,27 @@ void lcModRtuComObject::ask9150ARouteL(UINT16 len, uchar address)
 void lcModRtuComObject::readLcModComBuffer()
 {
 	QByteArray tmp = m_lcModCom->readAll();
-	for (int i=0;i<tmp.length();i++)
-	{
-		printf("0x%02X ", (uchar)tmp.at(i));
-	}
+	//for (int i=0;i<tmp.length();i++)
+	//{
+	//	printf("0x%02X ", (uchar)tmp.at(i));
+	//}
 
 	bool ret = m_lcModProtocol->readMeterComBuffer(tmp); //通讯协议接口
 	if (ret)
 	{
 		m_lcModCom->flush();
 		QByteArray valueArray = m_lcModProtocol->getReadVale();
-		qDebug()<< "\nread data start:\n";
-		for (int i=0;i<valueArray.length();i++)
-		{
-			printf("%d: 0x%02X\n", i, valueArray.at(i));
-		}
-		int valueLen = valueArray.length();
-		for (int i=0; i < (valueLen/4); i++)
-		{
-			printf("%d: %d\n", i, m_lcModProtocol->getIntData(i));
-		}
-		qDebug()<< "\nread data end:\n";
+		//qDebug()<< "\nread data start:\n";
+		//for (int i=0;i<valueArray.length();i++)
+		//{
+		//	printf("%d: 0x%02X\n", i, valueArray.at(i));
+		//}
+		//int valueLen = valueArray.length();
+		//for (int i=0; i < (valueLen/4); i++)
+		//{
+		//	printf("%d: %d\n", i, m_lcModProtocol->getIntData(i));
+		//}
+		//qDebug()<< "\nread data end:\n";
 		emit lcModValueIsReady(valueArray);
 	}
 }

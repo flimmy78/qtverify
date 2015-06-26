@@ -398,9 +398,9 @@ private:
 //主要用于读取西门子电磁流量计的脉冲数
 #define EDA_9150A_START_REG	0x0010//EDA9150A模块第一路寄存器的地址, 共16路
 #define EDA_9017_START_REG	0x0003//EDA9017模块第一路寄存器的地址, 共12路
-#define MOD_ADDRESS_LEN 0x01//回应的地址位的字节数
-#define MOD_FUNC_LEN	0x01//回应的功能码位的字节数
-#define MOD_DATALEN_LEN 0x01//回应的数据长度信息位的字节数
+#define MOD_ADDRESS_LEN		0x01//回应的地址位的字节数
+#define MOD_FUNC_LEN		0x01//回应的功能码位的字节数
+#define MOD_DATALEN_LEN		0x01//回应的数据长度信息位的字节数
 
 enum lcModbusRTUFunc//力创ModbusRTU, 功能码
 {

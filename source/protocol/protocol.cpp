@@ -1553,6 +1553,7 @@ bool lcModbusRTUProtocol::readMeterComBuffer(QByteArray tmp)
 			else//crc校验错误
 			{
 				initParams();
+				m_valueArray.clear();
 				qDebug() << "crc check error!!!!!!!";
 				return false;
 			}
@@ -1564,7 +1565,7 @@ bool lcModbusRTUProtocol::readMeterComBuffer(QByteArray tmp)
 
 	if (ret)//初始化所有参数, 以便下一次接收
 	{
-		initParams();
+		initParams();//m_valueArray留作后用, 不能清空
 	}
 	return ret;
 }
@@ -1585,14 +1586,14 @@ QByteArray lcModbusRTUProtocol::getReadVale()
 */
 QByteArray lcModbusRTUProtocol::getData(int i)
 {
-	//if ( (2*i) > m_calcDataLength)//i不能超过被读取的寄存器数量
-	//{
-	//	throw i;
-	//}
+	if ( (LC_ROUTE_BYTES*i) > m_valueArray.length())//i不能超过被读取的通道数量
+	{
+		return QByteArray();
+	}
 
 	QByteArray data;
-	for (int k=0;k<4;k++)
-		data.append(m_valueArray.at(4*i+k));
+	for (int k=0;k<LC_ROUTE_BYTES;k++)
+		data.append(m_valueArray.at(LC_ROUTE_BYTES*i+k));
 	
 	return data;
 }
@@ -1604,9 +1605,13 @@ QByteArray lcModbusRTUProtocol::getData(int i)
 int lcModbusRTUProtocol::getIntData(int i)
 {
 	QByteArray data = getData(i);
-	int value = 0;
-	int len = data.length();
-	for (int k=0;k<4;k++)
+	if (data.isNull())//如果取数据失败, 返回-1
+	{
+		return -1;
+	}
+
+	int value = 0;	
+	for (int k=0;k<LC_ROUTE_BYTES;k++)
 	{
 		value |= ( ((uchar)data.at(k)) << ((3-k)*WORDLEN) );
 	}
