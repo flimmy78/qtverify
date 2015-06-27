@@ -19,7 +19,7 @@
 
 #include "mainform.h"
 #include "dbmysql.h"
-#include "setcomDlg.h"
+#include "setcomdlg.h"
 #include "datatestdlg.h"
 #include "setportfrm.h"
 #include "masterslaveset.h"
