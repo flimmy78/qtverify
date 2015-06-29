@@ -1450,6 +1450,13 @@ void lcModbusRTUProtocol::makeSendBuf(uchar address, lcModbusRTUFunc func, UINT1
 	m_sendBuf.append((uchar)(regCount>>WORDLEN));
 	m_sendBuf.append((uchar)(regCount));
 	m_sendBuf.append(getCRCArray(calcModRtuCRC((uchar *)m_sendBuf.data(), m_sendBuf.length())));
+
+	printf("\nsendbuf:\n");
+	for (int i=0;i<m_sendBuf.length();i++)
+	{
+		printf("%02X ", (uchar)m_sendBuf.at(i));
+	}
+	printf("\nsendbuf end:\n");
 }
 
 void lcModbusRTUProtocol::makeSendBuf(lcModSendCmd command)
@@ -1586,14 +1593,14 @@ QByteArray lcModbusRTUProtocol::getReadVale()
 */
 QByteArray lcModbusRTUProtocol::getData(int i)
 {
-	if ( (LC_ROUTE_BYTES*i) > m_valueArray.length())//i不能超过被读取的通道数量
+	if ( (EDA9150A_ROUTE_BYTES*i) > m_valueArray.length())//i不能超过被读取的通道数量
 	{
 		return QByteArray();
 	}
 
 	QByteArray data;
-	for (int k=0;k<LC_ROUTE_BYTES;k++)
-		data.append(m_valueArray.at(LC_ROUTE_BYTES*i+k));
+	for (int k=0;k<EDA9150A_ROUTE_BYTES;k++)
+		data.append(m_valueArray.at(EDA9150A_ROUTE_BYTES*i+k));
 	
 	return data;
 }
@@ -1611,9 +1618,9 @@ int lcModbusRTUProtocol::getIntData(int i)
 	}
 
 	int value = 0;	
-	for (int k=0;k<LC_ROUTE_BYTES;k++)
+	for (int k=0;k<EDA9150A_ROUTE_BYTES;k++)
 	{
-		value |= ( ((uchar)data.at(k)) << ((3-k)*WORDLEN) );
+		value |= ( ((uchar)data.at(k)) << ((EDA9150A_ROUTE_BYTES-1-k)*WORDLEN) );
 	}
 	return value;
 }

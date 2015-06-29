@@ -16,6 +16,7 @@
 #endif
 
 #include <QtGui/QWidget>
+#include <QByteArray>
 #include <QtGui/QDataWidgetMapper>
 
 #include "ui_flowstandard.h"
@@ -26,6 +27,26 @@ class ParaSetDlg;
 class ParaSetReader;
 class ReadComConfig;
 
+
+/*
+** 表格列
+*/
+#define COLUMN_METER_NUMBER       0 //表号列
+#define COLUMN_FLOW_POINT	      1 //流量点
+#define COLUMN_METER_START	      2 //表初值列
+#define COLUMN_METER_END	      3 //表终值列
+#define COLUMN_BAL_START	      4 //天平初值
+#define COLUMN_BAL_END		      5 //天平终值
+#define COLUMN_TEMPER		      6 //温度列
+#define COLUMN_DENSITY		      7 //密度列
+#define COLUMN_STD_VALUE	      8 //标准值
+#define COLUMN_ERROR		      9 //示值误差列
+//#define COLUMN_READ_METER		  10 //读表数据列
+//#define COLUMN_VERIFY_STATUS	  11 //设置检定状态列
+#define COLUMN_ADJUST_ERROR		  10 //调整误差列
+#define COLUMN_MODIFY_METERNO	  11 //修改表号列
+
+#define TIMEOUT_TEMPER			  500//请求温度周期
 
 class FLOWSTANDARD_EXPORT FlowStandardDlg : public QWidget
 {
@@ -43,7 +64,7 @@ public:
 	QTimer *m_exaustTimer; //排气定时器
 
 	ComThread m_balanceThread; //天平采集线程
-	BalanceComObject *m_balanceObj;
+	//BalanceComObject *m_balanceObj;
 
 	ComThread m_tempThread;  //温度采集线程
 	TempComObject *m_tempObj;
@@ -118,7 +139,7 @@ public:
 	QTimer *m_flowRateTimer;  //计时器:用于计算流速
 
 
-	void initBalanceCom();     //天平串口
+	void initStdMeterCom();     //天平串口
 	void initTemperatureCom(); //温度采集串口
 	void initControlCom();     //阀门控制串口
 	void initMeterCom();       //热量表串口
@@ -201,12 +222,17 @@ public slots:
 	void slotAdjustError(const int &row); //调整误差
 
 private slots:
+	void slot_getStdMeterPulse(const QByteArray &);
 
 signals:
 
 private:
 	Ui::FlowStandardClass ui;
 
+	lcModRtuComObject *m_lcModRtuComObject;
+	ComThread m_lcModRTUThread;
+	QTimer* m_lcModRtuTimer;
+	QByteArray m_stdPulse;
 };
 
 #endif //FLOWSTANDARD_H

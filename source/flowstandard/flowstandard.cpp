@@ -53,8 +53,9 @@ FlowStandardDlg::FlowStandardDlg(QWidget *parent, Qt::WFlags flags)
 
 	m_readComConfig = new ReadComConfig(); //读串口设置接口
 
-	m_balanceObj = NULL;
-	initBalanceCom();		//初始化天平串口
+	//m_balanceObj = NULL;
+	m_lcModRtuComObject = NULL;
+	initStdMeterCom();		//初始化天平串口
 
 	m_tempObj = NULL;
 	m_tempTimer = NULL;
@@ -186,13 +187,13 @@ void FlowStandardDlg::closeEvent( QCloseEvent * event)
 		m_tempTimer = NULL;
 	}
 
-	if (m_balanceObj)  //天平采集
-	{
-		delete m_balanceObj;
-		m_balanceObj = NULL;
+	//if (m_balanceObj)  //天平采集
+	//{
+	//	delete m_balanceObj;
+	//	m_balanceObj = NULL;
 
-		m_balanceThread.exit();
-	}
+	//	m_balanceThread.exit();
+	//}
 
 	if (m_controlObj)  //阀门控制
 	{
@@ -220,19 +221,35 @@ void FlowStandardDlg::closeEvent( QCloseEvent * event)
 		}
 	}
 
+	//标准表串口
+	if (m_lcModRtuComObject)
+	{
+		delete m_lcModRtuComObject;
+		m_lcModRtuComObject = NULL;
+	}
+
 }
 
 //天平采集串口 上位机直接采集
-void FlowStandardDlg::initBalanceCom()
+void FlowStandardDlg::initStdMeterCom()
 {
-	ComInfoStruct balanceStruct = m_readComConfig->ReadBalanceConfig();
-	m_balanceObj = new BalanceComObject();
-	m_balanceObj->moveToThread(&m_balanceThread);
-	m_balanceThread.start();
-	m_balanceObj->openBalanceCom(&balanceStruct);
+	ComInfoStruct info;
+	info.baudRate=BAUD9600;
+	info.dataBit=DATA_8;
+	info.parity=PAR_NONE;
+	info.stopBit=STOP_1;
+	info.portName="COM1";
 
-	//天平数值由上位机直接通过天平串口采集
-	connect(m_balanceObj, SIGNAL(balanceValueIsReady(const float &)), this, SLOT(slotFreshBalanceValue(const float &)));
+	m_lcModRtuComObject = new lcModRtuComObject();
+	m_lcModRtuComObject->moveToThread(&m_lcModRTUThread);
+	m_lcModRTUThread.start();
+	m_lcModRtuComObject->openLcModCom(&info);
+	connect(m_lcModRtuComObject, SIGNAL(lcModValueIsReady(const QByteArray&)), this, SLOT(slot_getStdMeterPulse(const QByteArray&)));
+	m_lcModRtuTimer = new QTimer();
+	connect(m_lcModRtuTimer, SIGNAL(timeout()), this, SLOT(on_btnExit_clicked()));
+	//m_lcModRtuTimer->start(TIMEOUT_TEMPER); //周期请求温度
+	m_lcModRtuTimer->start(2000);
+	/****************************/
 }
 
 /*
@@ -287,7 +304,7 @@ void FlowStandardDlg::initMeterCom()
 		m_meterObj[i].moveToThread(&m_meterThread[i]);
 		m_meterObj[i].setProtocolVersion(m_manufac); //设置表协议类型
 		m_meterThread[i].start();
-		m_meterObj[i].openMeterCom(&m_readComConfig->ReadMeterConfigByNum(QString("%1").arg(i+1)));
+		m_meterObj[i].openMeterCom(&m_readComConfig->ReadMeterConfigByNum(i+1));
 		
 		connect(&m_meterObj[i], SIGNAL(readMeterNoIsOK(const QString&, const QString&)), this, SLOT(slotSetMeterNumber(const QString&, const QString&)));
 		connect(&m_meterObj[i], SIGNAL(readMeterFlowIsOK(const QString&, const float&)), this, SLOT(slotSetMeterFlow(const QString&, const float&)));
@@ -345,16 +362,18 @@ void FlowStandardDlg::slotFreshBalanceValue(const float& balValue)
 	QString wht = QString::number(balValue, 'f', 3);
 	ui.lcdBigBalance->display(wht);
 	m_balLastValue = balValue;
-	if (balValue > BALANCE_CAPACITY) //防止天平溢出 暂设天平容量为100kg
-	{
-		m_controlObj->askControlRelay(m_portsetinfo.waterInNo, VALVE_CLOSE);// 关闭进水阀
-		m_controlObj->askControlRelay(m_portsetinfo.waterOutNo, VALVE_OPEN);// 打开放水阀	
-		if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
-		{
-			slotSetValveBtnStatus(m_portsetinfo.waterOutNo, VALVE_OPEN);
-			slotSetValveBtnStatus(m_portsetinfo.waterInNo, VALVE_CLOSE);
-		}
-	}
+
+	//标准表无需设置警戒容量
+	//if (balValue > BALANCE_CAPACITY) //防止天平溢出 暂设天平容量为100kg
+	//{
+	//	m_controlObj->askControlRelay(m_portsetinfo.waterInNo, VALVE_CLOSE);// 关闭进水阀
+	//	m_controlObj->askControlRelay(m_portsetinfo.waterOutNo, VALVE_OPEN);// 打开放水阀	
+	//	if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
+	//	{
+	//		slotSetValveBtnStatus(m_portsetinfo.waterOutNo, VALVE_OPEN);
+	//		slotSetValveBtnStatus(m_portsetinfo.waterInNo, VALVE_CLOSE);
+	//	}
+	//}
 }
 
 //在界面刷新入口温度和出口温度值
@@ -431,7 +450,8 @@ int FlowStandardDlg::readNowParaConfig()
 	m_exaustSecond = m_nowParams->ex_time;   //排气时间
 	m_standard = m_nowParams->m_stand;       //表规格
 	m_model = m_nowParams->m_model;   //表型号
-	m_meterType = m_nowParams->m_type;//表类型
+	//m_meterType = m_nowParams->m_type;//表类型
+	m_meterType = m_nowParams->m_pickcode;//表类型
 	m_maxMeterNum = m_nowParams->m_maxMeters;//不同表规格对应的最大检表数量
 	m_manufac = m_nowParams->m_manufac; //制造厂商
 
@@ -584,28 +604,30 @@ void FlowStandardDlg::slotExaustFinished()
 
 	ui.labelHintPoint->setText(tr("prepare balance ..."));
 
+	//标准表无需判断
 	//判断天平重量,如果小于要求的初始重量(5kg)，则关闭放水阀，打开大流量阀
-	if (ui.lcdBigBalance->value() < BALANCE_INIT_VALUE)
-	{
-		if (!closeWaterOutValve()) 
-		{
-			qWarning()<<"关闭放水阀失败";
-		}
+	//if (ui.lcdBigBalance->value() < BALANCE_INIT_VALUE)
+	//{
+	//	if (!closeWaterOutValve()) 
+	//	{
+	//		qWarning()<<"关闭放水阀失败";
+	//	}
 
-		if (!openBigFlowValve())
-		{
-			qWarning()<<"打开大流量阀失败";
-		}
-	}
+	//	if (!openBigFlowValve())
+	//	{
+	//		qWarning()<<"打开大流量阀失败";
+	//	}
+	//}
 
+	//标准表无需判断
 	//判断并等待天平重量，大于初始重量(5kg)
-	if (judgeBalanceInitValue(BALANCE_INIT_VALUE))
-	{
-		if (!closeBigFlowValve())
-		{
-			qWarning()<<"关闭大流量阀失败";
-		}
-	}
+	//if (judgeBalanceInitValue(BALANCE_INIT_VALUE))
+	//{
+	//	if (!closeBigFlowValve())
+	//	{
+	//		qWarning()<<"关闭大流量阀失败";
+	//	}
+	//}
 
 	if (setMeterVerifyStatus()) //设置检定状态成功
 	{
@@ -895,8 +917,9 @@ bool FlowStandardDlg::judgeBalanceCapacity()
 	{
 		totalQuantity += m_paraSetReader->getParams()->fp_info[i].fp_quantity;
 	}
-	ret = (ui.lcdBigBalance->value() + totalQuantity) < BALANCE_CAPACITY; //假设天平容量为100kg
-	return ret;
+	//ret = (ui.lcdBigBalance->value() + totalQuantity) < BALANCE_CAPACITY; //假设天平容量为100kg
+	//return ret;
+	return true;
 }
 
 /*
@@ -1066,7 +1089,8 @@ int FlowStandardDlg::calcAllMeterError()
 		m_recPtr[i].meterPosNo = m_meterPosMap[i];
 		m_recPtr[i].standard = m_standard;
 		m_recPtr[i].model = m_model;
-		m_recPtr[i].meterType = m_meterType; //表类型
+		//m_recPtr[i].meterType = m_meterType; //表类型
+		m_recPtr[i].pickcode = m_meterType; //表类型
 		m_recPtr[i].manufactDept = m_nowParams->m_manufac;
 		m_recPtr[i].verifyDept = m_nowParams->m_vcomp;
 		m_recPtr[i].verifyPerson = m_nowParams->m_vperson;
@@ -1110,7 +1134,8 @@ int FlowStandardDlg::calcMeterError(int idx)
 	m_recPtr[idx].meterPosNo = m_meterPosMap[idx];
 	m_recPtr[idx].standard = m_standard;
 	m_recPtr[idx].model = m_model;
-	m_recPtr[idx].meterType = m_meterType; //表类型
+	//m_recPtr[idx].meterType = m_meterType; //表类型
+	m_recPtr[idx].pickcode = m_meterType; //表类型
 	m_recPtr[idx].manufactDept = m_nowParams->m_manufac;
 	m_recPtr[idx].verifyDept = m_nowParams->m_vcomp;
 	m_recPtr[idx].verifyPerson = m_nowParams->m_vperson;
@@ -1518,6 +1543,25 @@ void FlowStandardDlg::slotAdjustError(const int &row)
 
 void FlowStandardDlg::on_btnExit_clicked()
 {
-	this->close();
+	//this->close();
+	
+	m_lcModRtuComObject->ask901712RoutesCmd(0x01);
 }
 
+void FlowStandardDlg::slot_getStdMeterPulse(const QByteArray& valueArray)
+{
+	//m_stdPulse = valueArray;
+	//qDebug()<< "\nread data start:\n";
+	//for (int i=0;i<valueArray.length();i++)
+	//{
+	//	printf("flowstand %d: 0x%02X\n", i, (uchar)valueArray.at(i));
+	//}
+	//int valueLen = valueArray.length();
+	//for (int i=0; i < (valueLen/EDA9017_ROUTE_BYTES); i++)
+	//{
+	//	printf("flowstand %d: %d\n", i, get9017RouteI(i, valueArray));
+	//	
+	//}
+	//qDebug()<< "\nread data end:\n";
+	ui.lcdBigBalance->display(get9017RouteI(0, valueArray));
+}

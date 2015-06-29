@@ -9,7 +9,7 @@ QMAKE_LIBDIR +=  ./           \
         	     $(ADEHOME)/lib \
 	             $(ADEHOME)/bin 
 	            
-LIBS +=	-lprotocol
+LIBS +=	-lprotocol -lalgorithm
 
 DESTDIR = $(ADEHOME)\tmp\comobject\obj
 #MOC_DIR = $(ADEHOME)/tmp/comobject/moc

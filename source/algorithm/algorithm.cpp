@@ -255,21 +255,40 @@ QByteArray getCRCArray(UINT16 crc)
 	return sendbuf;
 }
 
-int getRouteI(int i, QByteArray valueArray)
+int get9150ARouteI(int i, QByteArray valueArray)
 {
-	if ( (LC_ROUTE_BYTES*i) > valueArray.length())//i不能超过被读取的通道数量
+	if ( (EDA9150A_ROUTE_BYTES*i) > valueArray.length())//i不能超过被读取的通道数量
 	{
 		return -1;
 	}
 
 	QByteArray data;
-	for (int k=0;k<LC_ROUTE_BYTES;k++)
-		data.append(valueArray.at(LC_ROUTE_BYTES*i+k));
+	for (int k=0;k<EDA9150A_ROUTE_BYTES;k++)
+		data.append(valueArray.at(EDA9150A_ROUTE_BYTES*i+k));
 
 	int value = 0;	
-	for (int k=0;k<LC_ROUTE_BYTES;k++)
+	for (int k=0;k<EDA9150A_ROUTE_BYTES;k++)
 	{
-		value |= ( ((uchar)data.at(k)) << ((3-k)*WORDLEN) );
+		value |= ( ((uchar)data.at(k)) << ((EDA9150A_ROUTE_BYTES-1-k)*WORDLEN) );
+	}
+	return value;
+}
+
+int get9017RouteI(int i, QByteArray valueArray)
+{
+	if ( (EDA9017_ROUTE_BYTES*i) > valueArray.length())//i不能超过被读取的通道数量
+	{
+		return -1;
+	}
+
+	QByteArray data;
+	for (int k=0;k<EDA9017_ROUTE_BYTES;k++)
+		data.append(valueArray.at(EDA9017_ROUTE_BYTES*i+k));
+
+	int value = 0;	
+	for (int k=0;k<EDA9017_ROUTE_BYTES;k++)
+	{
+		value |= ( ((uchar)data.at(k)) << ((EDA9017_ROUTE_BYTES-1-k)*WORDLEN) );
 	}
 	return value;
 }

@@ -33,7 +33,8 @@ ALGORITHM_EXPORT float getMeterGradeErrLmt(int grade, float delta_t_min, float d
 ALGORITHM_EXPORT float calcFloatValueOfCoe(QString coe);//根据热量表通讯返回的两字节数据，计算出相应的误差值
 ALGORITHM_EXPORT UINT16 calcModRtuCRC(uchar *, int);//计算modbus-RTU协议的CRC校验值
 ALGORITHM_EXPORT QByteArray getCRCArray(UINT16);//将CRC计算结果转换为QByteArray
-ALGORITHM_EXPORT int getRouteI(int i, QByteArray valueArray);//获取力创模块中通道i的脉冲值
+ALGORITHM_EXPORT int get9150ARouteI(int i, QByteArray valueArray);//获取力创模块中通道i的脉冲值
+ALGORITHM_EXPORT int get9017RouteI(int i, QByteArray valueArray);//获取力创模块中通道i的脉冲值
 const float density[150] = { //压力<=0.6MPa
 	1000.2f,
 	1000.2f,

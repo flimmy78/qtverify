@@ -106,7 +106,9 @@ enum Verify_Method
 
 #define POLY	0xA001//CRC16校验中的生成多项式
 #define WORDLEN 8
-#define LC_ROUTE_BYTES			4//力创模块中, 每个通道对应的字节数
+#define LC_EDA_REG_BYTES		2//力创EDA9150A和EDA9017模块中, 每个寄存器的字节数
+#define EDA9150A_ROUTE_BYTES	4//力创EDA9150A模块中, 每个通道对应的字节数
+#define EDA9017_ROUTE_BYTES		2//力创EDA9017模块中, 每个通道对应的字节数
 
 /*
 ** FUNCTION -- 获取下位机端口设置信息(portset.ini文件)

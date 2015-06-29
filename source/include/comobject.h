@@ -239,7 +239,8 @@ signals:
 	public slots:
 		bool openLcModCom(ComInfoStruct *comStruct);
 		void writeLcModComBuffer(lcModSendCmd);
-		void ask9150A16RoutesCmd(uchar address);//同时请求16路通道的数值
+		void ask9150A16RoutesCmd(uchar address);//同时请求9510A模块16路通道的数值
+		void ask901712RoutesCmd(uchar address);//同时请求9017模块12路通道的数值
 		void ask9150ARouteI(int i, uchar address);//请求第i个通道的数值
 		void ask9150ARouteL(UINT16 len, uchar address);
 		void readLcModComBuffer();
