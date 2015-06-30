@@ -76,6 +76,8 @@ void SetComDlg::on_btnSave_clicked()
 	WriteBalanceTypeConfig();
 	WriteTempConfig();
 	WriteStdTempConfig();
+	WriteInstStdConfig();
+	WriteAccumStdConfig();
 	WriteMetersConfig();
 	QMessageBox::information(this, tr("OK"), tr("Save Settings Successfully !"));
 }
@@ -87,6 +89,8 @@ void SetComDlg::InstallConfigs()
 	InstallBalanceTypeConfig();
 	InstallTempConfig();
 	InstallStdtmpConfig();
+	InstallInstStdConfig();
+	InstallAccumStdConfig();
 	InstallMetersConfig();
 }
 
@@ -156,6 +160,26 @@ void SetComDlg::InstallStdtmpConfig()
 	gui.comboStdTmpBits->setCurrentIndex(valve_index[2].toInt());
 	gui.comboStdTmpChkBit->setCurrentIndex(valve_index[3].toInt());
 	gui.comboStdTmpEndBit->setCurrentIndex(valve_index[4].toInt());
+}
+
+void SetComDlg::InstallInstStdConfig()
+{
+	QStringList valve_index = m_config->ReadIndexByName("InstStd");
+	gui.comboInstStdSerialNum->setCurrentIndex(valve_index[0].toInt());
+	gui.comboInstStdBaudRate->setCurrentIndex(valve_index[1].toInt());
+	gui.comboInstStdBits->setCurrentIndex(valve_index[2].toInt());
+	gui.comboInstStdChkBit->setCurrentIndex(valve_index[3].toInt());
+	gui.comboInstStdEndBit->setCurrentIndex(valve_index[4].toInt());
+}
+
+void SetComDlg::InstallAccumStdConfig()
+{
+	QStringList valve_index = m_config->ReadIndexByName("AccumStd");
+	gui.comboAccumStdSerialNum->setCurrentIndex(valve_index[0].toInt());
+	gui.comboAccumStdBaudRate->setCurrentIndex(valve_index[1].toInt());
+	gui.comboAccumStdBits->setCurrentIndex(valve_index[2].toInt());
+	gui.comboAccumStdChkBit->setCurrentIndex(valve_index[3].toInt());
+	gui.comboAccumStdEndBit->setCurrentIndex(valve_index[4].toInt());
 }
 
 void SetComDlg::InstallMetersConfig()
@@ -251,6 +275,22 @@ void  SetComDlg::WriteStdTempConfig()
 	m_com_settings->endGroup();
 }
 
+//写入采集瞬时流量模块配置
+void SetComDlg::WriteInstStdConfig()
+{
+	m_com_settings->beginGroup(gui.gBoxInstStd->objectName().split("gBox")[1]);
+	WriteConfigById(gui.gBoxInstStd);
+	m_com_settings->endGroup();
+}
+
+//写入采集累积流量模块配置
+void SetComDlg::WriteAccumStdConfig()
+{
+	m_com_settings->beginGroup(gui.gBoxAccumStd->objectName().split("gBox")[1]);
+	WriteConfigById(gui.gBoxAccumStd);
+	m_com_settings->endGroup();
+}
+
 //写入被检表设置
 void SetComDlg::WriteMetersConfig()
 {
@@ -302,23 +342,23 @@ void SetComDlg::WriteConfigById(QGroupBox *gBox)
 			QComboBox *CBox=(QComboBox*)obj;
 			QString object_name = CBox->objectName();
 
-			if (bool occur = object_name .contains("SerialNum",Qt::CaseSensitive))
+			if (bool occur = object_name.contains("SerialNum",Qt::CaseSensitive))
 			{
 				com_name = CBox->currentText() + sep + QString::number(CBox->currentIndex(), 10);
 			}
-			else if (occur = object_name .contains("BaudRate",Qt::CaseSensitive))
+			else if (occur = object_name.contains("BaudRate",Qt::CaseSensitive))
 			{
 				baud_rate = CBox->currentText()+ sep + QString::number(CBox->currentIndex(), 10);
 			}
-			else if (occur = object_name .contains("Bits",Qt::CaseSensitive))
+			else if (occur = object_name.contains("Bits",Qt::CaseSensitive))
 			{
 				data_bits = CBox->currentText()+ sep + QString::number(CBox->currentIndex(), 10);
 			}
-			else if (occur = object_name .contains("ChkBit",Qt::CaseSensitive))
+			else if (occur = object_name.contains("ChkBit",Qt::CaseSensitive))
 			{
 				chk_bit = QString::number(CBox->currentIndex(), 10)+ sep + QString::number(CBox->currentIndex(), 10);
 			}
-			else if (occur = object_name .contains("EndBit",Qt::CaseSensitive))
+			else if (occur = object_name.contains("EndBit",Qt::CaseSensitive))
 			{
 				stop_bit = QString::number(CBox->currentIndex(), 10)+ sep + QString::number(CBox->currentIndex(), 10);
 			}

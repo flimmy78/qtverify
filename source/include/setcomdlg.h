@@ -35,6 +35,8 @@ private:
 	void InstallBalanceTypeConfig();
 	void InstallTempConfig();
 	void InstallStdtmpConfig();
+	void InstallInstStdConfig();
+	void InstallAccumStdConfig();
 	void InstallMetersConfig();
 	void InstallMeterConfigByNum(QGroupBox *gbox);
 	/********************************************/
@@ -45,6 +47,8 @@ private:
 	void WriteBalanceTypeConfig();//写入天平类型配置
 	void WriteTempConfig();//写入温度采集配置
 	void WriteStdTempConfig();//写入标准温度计配置
+	void WriteInstStdConfig();//写入采集瞬时流量模块配置
+	void WriteAccumStdConfig();//写入采集累积流量模块配置
 	void WriteMetersConfig();//写入被检表配置
 	void WriteMeterConfigByNum(int MeterNum);//按表号写入被检表配置
 	void WriteConfigById(QGroupBox*);//写入配置

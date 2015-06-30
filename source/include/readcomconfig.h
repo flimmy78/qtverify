@@ -20,6 +20,8 @@ public:
 	ComInfoStruct ReadBalanceConfig();
 	ComInfoStruct ReadTempConfig();
 	ComInfoStruct ReadStdTempConfig();
+	ComInfoStruct ReadInstStdConfig();
+	ComInfoStruct ReadAccumStdConfig();
 	ComInfoStruct ReadMeterConfigByNum(int MeterNum);
 	ComInfoStruct ReadMeterConfigByNum(QString MeterNum);
 	int getMeterPosByComName(QString comName);//根据串口名返回对应的表位号

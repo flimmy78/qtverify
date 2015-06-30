@@ -59,6 +59,18 @@ ComInfoStruct ReadComConfig::ReadStdTempConfig()
 	return ReadConfigByName("StdTmpSensor");
 }
 
+//读取瞬时流量标准表设置
+ComInfoStruct ReadComConfig::ReadInstStdConfig()
+{
+	return ReadConfigByName("InstStd");
+}
+
+//读取累积流量标准表设置
+ComInfoStruct ReadComConfig::ReadAccumStdConfig()
+{
+	return ReadConfigByName("AccumStd");
+}
+
 //标准表模块还在使用, 待标准表模块可以正确编译, 即可删除此函数
 ComInfoStruct ReadComConfig::ReadMeterConfigByNum(QString MeterNum)
 {

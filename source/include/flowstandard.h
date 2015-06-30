@@ -139,11 +139,11 @@ public:
 	float m_startWeight;//天平初值
 	float m_endWeight;  //天平终值
 	float m_deltaWeight[FLOW_SAMPLE_NUM];
-	QTimer *m_flowRateTimer;  //计时器:用于计算流速
+	//QTimer *m_flowRateTimer;  //计时器:用于计算流速
 
 	//天平最大容量和回水底量
-	float m_balMaxWht;
-	float m_balBottomWht;
+	//float m_balMaxWht;
+	//float m_balBottomWht;
 
 	//void initBalanceCom();     //天平串口
 	void initInstStdCom();//瞬时流量串口
@@ -173,7 +173,7 @@ public:
 		void on_btnStop_clicked();    //点击"终止检测"按钮
 		void on_btnExit_clicked();    //退出按钮
 		void slotExaustFinished();    //排气时间结束
-		int prepareInitBalance();     //开始检定前，准备天平初始重量
+		//int prepareInitBalance();     //开始检定前，准备天平初始重量
 		int openAllValveAndPump();    //打开所有阀门和水泵
 		int readAllMeter();           //读取所有被检表
 		int setAllMeterVerifyStatus();   //设置热量表进入检定状态
@@ -184,8 +184,8 @@ public:
 		int judgeBalanceAndCalcAvgTemperAndFlow(float targetV); //判断天平质量，并累加进出口温度，每秒累加一次，用于计算进出口平均温度
 		void stopVerify();            //停止检定
 		void startVerify();           //开始检定
-		bool judgeBalanceCapacity();   //判断天平容量是否能够满足检定用量 连续检定
-		int judgeBalanceCapacitySingle(int order); //判断天平容量是否能够满足检定用量 不连续检定
+		//bool judgeBalanceCapacity();   //判断天平容量是否能够满足检定用量 连续检定
+		//int judgeBalanceCapacitySingle(int order); //判断天平容量是否能够满足检定用量 不连续检定
 		int prepareVerifyFlowPoint(int order);     //准备单个流量点的检定
 		int startVerifyFlowPoint(int order);       //开始单个流量点的检定
 		int openValve(UINT8 portno);    //打开控制阀
@@ -200,9 +200,9 @@ public:
 		int calcAllMeterError();//计算所有被检表的误差
 		int calcMeterError(int idx); //计算某个表的误差
 
-		void slotFreshBalanceValue(const float& balValue);  //刷新天平数值
+		//void slotFreshBalanceValue(const float& balValue);  //刷新天平数值
 		void slotFreshComTempValue(const QString& tempStr); //刷新温度值
-		void slotFreshFlowRate(); //计算流速
+		//void slotFreshFlowRate(); //计算流速
 
 		void slotSetValveBtnStatus(const UINT8 &portno, const bool &status); //继电器返回成功对应的槽函数
 		void slotSetRegulateOk();     //调节阀返回成功对应的槽函数

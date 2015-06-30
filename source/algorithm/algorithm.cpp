@@ -232,10 +232,10 @@ UINT16 calcModRtuCRC(uchar *buf, int len)
 		for (int i = 8; i > 0; i--) {    // Loop over each bit
 			if ((crc & 0x0001) != 0) {      // If the LSB is set, that is the LSB is 1
 				crc >>= 1;                  // Shift right, ignore LSB(LSB is the MSB before reverse)
-				crc ^= POLY;				//and XOR 0xA001
+				crc ^= POLY;				// and XOR 0xA001
 			}
 			else                            // Else LSB is not set, that is the LSB is 0
-				crc >>= 1;                  // Just shift right
+				crc >>= 1;                  // Just shift right, a XOR 0 = a, so not need to do XOR
 		}
 	}
 	return crc;
