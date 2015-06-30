@@ -11,6 +11,7 @@ QMAKE_LIBDIR +=  ./             \
         	  		 $(ADEHOME)/lib \
 	          		 $(ADEHOME)/bin \
 
+LIBS += -lqtexdb
 
 # Input
 HEADERS += $$(ADEHOME_INC)/include/algorithm.h	\

@@ -20,6 +20,7 @@
 
 #include "algorithm.h"
 #include "commondefine.h"
+#include "qtexdb.h"
 
 //获取控制板的端口号配置信息
 int getPortSetIni(PortSet_Ini_PTR info)
@@ -322,27 +323,13 @@ float CAlgorithm::calc(float a, float b)
 /********************************************************************************************/
 float CAlgorithm::getMeterTempByPos(float inlet, float outlet, int num)
 {
-	//1, 根据meterType读取 {管路-表位号} 的配置参数, 取出管路总长度t_length
-	//1.1* 获取配置文件
-	QSettings *PortSet = new QSettings(getFullIniFileName("meterposition.ini"), QSettings::IniFormat);
-	//1.2* 读取管路总长度t_length
-	float t_length = PortSet->value("total/length").toFloat();
-	//2, 根据取得的配置参数和num计算被检热表离进水口的距离d_length;
-	//2.1* 获取被检表的规格
+	//获取被检表的规格
 	QSettings *ParaSet = new QSettings(getFullIniFileName("verifyparaset.ini"), QSettings::IniFormat);//参数配置文件
-	int meterType = ParaSet->value("head/standard").toInt();//被检表规格
-	float d_length = PortSet->value(QString::number(meterType) + "/" + QString::number(num)).toFloat();
-	//2.2* 释放内存
-	delete ParaSet;
-	ParaSet = NULL;
-	delete PortSet;
-	PortSet = NULL;
-	//3, 根据 被检热表离进水口的距离和管路总长度计算温度系数 coeff = d_length / t_length
-	float coeff = d_length / t_length;
-	//4, 计算温度差值 delta = (oulet - inlet)
-	float delta = outlet - inlet;
-	//5, 根据温度差值和温度系数最终得出被检热表的温度值 t = (inlet + coeff * delta)
-	return (inlet + coeff * delta);
+	int standard = ParaSet->value("head/standard").toInt();//被检表规格
+    int totalCount = getMaxMeterByIdx(standard)	;
+	float delta = (inlet - outlet)/(totalCount + 1); //双管路设计，假设拐弯处有一块热量表
+	float temper = inlet - (num + 2*num/(totalCount+1))*delta;
+	return temper;
 }
 
 /************************************************************************
@@ -567,7 +554,7 @@ double CAlgorithm::getStdVolByPos(float mass, float inlet, float outlet, int num
 	float den = getDensityByQuery(temp);//获取密度
 #endif
 
-	return (mass / den);//返回标准体积
+	return (mass*0.997 / den);//返回标准体积(考虑负千分之三的浮力修正)
 }
 
 /*
