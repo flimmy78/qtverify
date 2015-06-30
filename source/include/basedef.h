@@ -223,6 +223,8 @@ struct Flow_Point_Info_STR
 	int fp_valve_idx;//第i流量点的控制阀(大)对应的combbox索引
 	int fp_valve;//第i流量点的控制阀(大)对应的端口号
 	int fp_seq;//第i流量点的检定次序(3)
+	int fp_instStdRoute;//第i流量点的瞬时采集设备的通道号
+	int fp_accumStdRoute;//第i流量点的累积采集设备的通道号
 };
 typedef struct Flow_Point_Info_STR Flow_Point_Info;
 
@@ -248,7 +250,8 @@ public:
 	QString m_temper;//当前温度  单位摄氏度
 	QString m_humidity;//当前湿度 单位百分比
 	QString m_airpress;//当前大气压力	单位Pa
-
+	QString m_instStdDevNo;//瞬时流量采集设备的地址
+	QString m_accumStdDevNo;//累积流量采集设备的地址
 	Flow_Point_Info fp_info[VERIFY_POINTS];//第i流量点信息
 	int total_fp;//有效流量点的数目
 

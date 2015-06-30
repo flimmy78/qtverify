@@ -1451,12 +1451,12 @@ void lcModbusRTUProtocol::makeSendBuf(uchar address, lcModbusRTUFunc func, UINT1
 	m_sendBuf.append((uchar)(regCount));
 	m_sendBuf.append(getCRCArray(calcModRtuCRC((uchar *)m_sendBuf.data(), m_sendBuf.length())));
 
-	printf("\nsendbuf:\n");
-	for (int i=0;i<m_sendBuf.length();i++)
-	{
-		printf("%02X ", (uchar)m_sendBuf.at(i));
-	}
-	printf("\nsendbuf end:\n");
+	//printf("\nsendbuf:\n");
+	//for (int i=0;i<m_sendBuf.length();i++)
+	//{
+	//	printf("%02X ", (uchar)m_sendBuf.at(i));
+	//}
+	//printf("\nsendbuf end:\n");
 }
 
 void lcModbusRTUProtocol::makeSendBuf(lcModSendCmd command)
@@ -1495,7 +1495,7 @@ bool lcModbusRTUProtocol::readMeterComBuffer(QByteArray tmp)
 			}
 			break;
 		case address_state:
-			printf("\naddress is: 0x%02X", m_sendBuf.at(3));
+			//printf("\naddress is: 0x%02X", m_sendBuf.at(3));
 			if(b == m_sendBuf.at(1))//发送的功能码
 			{
 				m_readBuf.append(b);//加入功能码

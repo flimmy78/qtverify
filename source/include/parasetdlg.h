@@ -37,6 +37,7 @@ private:
 	void readParamValues();//读取配置文件所有的信息
 
 	void readHead();//读取配置文件的[head]组的信息
+	void readStdDevNo();//读取配置文件的[lcModDevNo]组信息
 	void readFlowPoints();//读取配置文件的[FlowPoints]组的信息
 	void readBool();//读取配置文件的[Bool]组的信息
 	void readOther();//读取配置文件的[Other]组的信息
@@ -93,7 +94,9 @@ public slots:
 	void on_cmbStandard_currentIndexChanged();
 	void showEvent(QShowEvent * event);
 	void slot_autopick_clicked(int);
+	void slot_setStandWdg();//设置标准表相关设置是否可见
 
+	void setStandMethod(bool);
 private:
 	Ui::ParaSetDlgClass ui;
 	bool cBoxData_inited;//标记, 界面的下拉条已经从数据库中读取了数据
@@ -110,6 +113,9 @@ private:
 	QVector<QLineEdit*> lineEdit_freqs;//水泵频率控件数组
 	QVector<QComboBox*> cBox_seqs;//检定次序控件数组
 
+	QVector<QComboBox*> cBox_instRoutes;//瞬时标准表通道号控件数组
+	QVector<QComboBox*> cBox_accumRoutes;//累积检定次序控件数组
+
 	QButtonGroup *m_btnGroup_autopick; //自动采集
 	QButtonGroup *m_btnGroup_adjustError; //修正误差
 	QButtonGroup *m_btnGroup_writeNum; //修正误差
@@ -117,6 +123,7 @@ private:
 	void flowPointVector();//将各流量点中, 相似功能的控件加入数组, 便于使用
 	void installLastParams();//装载上次的参数配置
 	void installHead();//加载配置文件的[head]组的信息
+	void installStdDevNo();//读取配置文件的[lcModDevNo]组信息
 	void installFlowPoint();//加载配置文件的[FlowPoint_i]组的信息
 	void installBool();//加载配置文件的[Bool]组的信息
 	void installOther();//加载配置文件的[Other]组的信息
@@ -125,10 +132,12 @@ private:
 
 	bool chkSeq();//检查选定的检定次序是否满足要求
 	void SaveHead();//保存基本信息
+	void SaveStdMeter();//保存力创标准表模块信息
 	void SaveFlowPoint();//保存流量点信息
 	void SaveBool();//保存布尔值
 	void SaveOther();//保存其他信息
 
+	bool m_standVerify;//标记, 是否是标准表法检测; true, 是; false, 不是
 private slots:
 
 };
