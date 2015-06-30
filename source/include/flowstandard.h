@@ -60,8 +60,8 @@ public:
 
 	QTimer *m_exaustTimer; //排气定时器
 
-	ComThread m_balanceThread; //天平采集线程
-	BalanceComObject *m_balanceObj;
+	//ComThread m_balanceThread; //天平采集线程
+	//BalanceComObject *m_balanceObj;
 
 	ComThread m_tempThread;  //温度采集线程
 	TempComObject *m_tempObj;
@@ -254,6 +254,8 @@ signals:
 private:
 	Ui::FlowStandardClass ui;
 
+	uchar m_accumDevAddress;//当前累积流量采集所使用的力创模块设备地址, 默认为0x01
+	uchar m_instDevAddress;//当前瞬时流量采集所使用的力创模块设备地址, 默认为0x01
 	lcModRtuComObject *m_instantFlowCom;//瞬时流量串口对象
 	ComThread m_instantFlowThread;//瞬时流量采集线程
 	QTimer* m_lcModRtuTimer;//瞬时流量计时器
