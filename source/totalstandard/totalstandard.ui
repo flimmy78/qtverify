@@ -14,8 +14,8 @@
    <string>Total Verify(Standard Meter Method)</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../gui/images/totalstandard.png</normaloff>../gui/images/totalstandard.png</iconset>
+   <iconset resource="totalstandard.qrc">
+    <normaloff>:/flowweight/images/totalstandard.png</normaloff>:/flowweight/images/totalstandard.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_8">
    <item row="0" column="0" colspan="5">
@@ -1185,6 +1185,8 @@ t</string>
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="totalstandard.qrc"/>
+ </resources>
  <connections/>
 </ui>

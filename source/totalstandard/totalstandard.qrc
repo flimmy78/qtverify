@@ -3,5 +3,6 @@
     <file>images/delulogo.png</file>
     <file>images/btncheckoff.png</file>
     <file>images/btncheckon.png</file>
+    <file>images/totalstandard.png</file>
   </qresource>
 </RCC>

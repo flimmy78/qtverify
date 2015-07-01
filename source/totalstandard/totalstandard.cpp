@@ -251,7 +251,7 @@ void TotalStandardDlg::initTemperatureCom()
 	m_tempTimer = new QTimer();
 	connect(m_tempTimer, SIGNAL(timeout()), m_tempObj, SLOT(writeTemperatureComBuffer()));
 	
-	m_tempTimer->start(TIMEOUT_TEMPER); //周期请求温度
+	m_tempTimer->start(TIMEOUT_PIPE_TEMPER); //周期请求温度
 }
 
 //控制板通讯串口
@@ -337,7 +337,7 @@ void TotalStandardDlg::initValveStatus()
 */
 void TotalStandardDlg::slotFreshBalanceValue(const float& balValue)
 {
-	if (fabs(m_balLastValue - balValue) > 1) //天平每次变化不可能大于1kg
+/*	if (fabs(m_balLastValue - balValue) > 1) //天平每次变化不可能大于1kg
 	{
 		m_balLastValue = balValue;
 		return;
@@ -354,7 +354,7 @@ void TotalStandardDlg::slotFreshBalanceValue(const float& balValue)
 			slotSetValveBtnStatus(m_portsetinfo.waterOutNo, VALVE_OPEN);
 			slotSetValveBtnStatus(m_portsetinfo.waterInNo, VALVE_CLOSE);
 		}
-	}
+	}*/
 }
 
 //在界面刷新入口温度和出口温度值
@@ -431,7 +431,7 @@ int TotalStandardDlg::readNowParaConfig()
 	m_exaustSecond = m_nowParams->ex_time;   //排气时间
 	m_standard = m_nowParams->m_stand;       //表规格
 	m_model = m_nowParams->m_model;   //表型号
-	m_meterType = m_nowParams->m_type;//表类型
+	m_meterType = m_nowParams->m_pickcode;//表类型
 	m_maxMeterNum = m_nowParams->m_maxMeters;//不同表规格对应的最大检表数量
 	m_manufac = m_nowParams->m_manufac; //制造厂商
 
@@ -585,7 +585,7 @@ void TotalStandardDlg::slotExaustFinished()
 	ui.labelHintPoint->setText(tr("prepare balance ..."));
 
 	//判断天平重量,如果小于要求的初始重量(5kg)，则关闭放水阀，打开大流量阀
-	if (ui.lcdBigBalance->value() < BALANCE_INIT_VALUE)
+	if (ui.lcdBigBalance->value() < 5/*BALANCE_INIT_VALUE*/)
 	{
 		if (!closeWaterOutValve()) 
 		{
@@ -599,7 +599,7 @@ void TotalStandardDlg::slotExaustFinished()
 	}
 
 	//判断并等待天平重量，大于初始重量(5kg)
-	if (judgeBalanceInitValue(BALANCE_INIT_VALUE))
+	if (judgeBalanceInitValue(5/*BALANCE_INIT_VALUE*/))
 	{
 		if (!closeBigFlowValve())
 		{
@@ -895,7 +895,7 @@ bool TotalStandardDlg::judgeBalanceCapacity()
 	{
 		totalQuantity += m_paraSetReader->getParams()->fp_info[i].fp_quantity;
 	}
-	ret = (ui.lcdBigBalance->value() + totalQuantity) < BALANCE_CAPACITY; //假设天平容量为100kg
+	ret = (ui.lcdBigBalance->value() + totalQuantity) < 100;/*BALANCE_CAPACITY*/; //假设天平容量为100kg
 	return ret;
 }
 
@@ -1066,7 +1066,7 @@ int TotalStandardDlg::calcAllMeterError()
 		m_recPtr[i].meterPosNo = m_meterPosMap[i];
 		m_recPtr[i].standard = m_standard;
 		m_recPtr[i].model = m_model;
-		m_recPtr[i].meterType = m_meterType; //表类型
+		m_recPtr[i].pickcode = m_meterType; //表类型
 		m_recPtr[i].manufactDept = m_nowParams->m_manufac;
 		m_recPtr[i].verifyDept = m_nowParams->m_vcomp;
 		m_recPtr[i].verifyPerson = m_nowParams->m_vperson;
@@ -1110,7 +1110,7 @@ int TotalStandardDlg::calcMeterError(int idx)
 	m_recPtr[idx].meterPosNo = m_meterPosMap[idx];
 	m_recPtr[idx].standard = m_standard;
 	m_recPtr[idx].model = m_model;
-	m_recPtr[idx].meterType = m_meterType; //表类型
+	m_recPtr[idx].pickcode = m_meterType; //表类型
 	m_recPtr[idx].manufactDept = m_nowParams->m_manufac;
 	m_recPtr[idx].verifyDept = m_nowParams->m_vcomp;
 	m_recPtr[idx].verifyPerson = m_nowParams->m_vperson;
