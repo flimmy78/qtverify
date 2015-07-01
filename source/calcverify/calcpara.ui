@@ -9,12 +9,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>433</width>
-    <height>253</height>
+    <width>486</width>
+    <height>272</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>ParaSet</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="calcverify.qrc">
+    <normaloff>:/calcverify/images/calculator.png</normaloff>:/calcverify/images/calculator.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_7">
    <item row="0" column="0">
@@ -336,6 +340,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="calcverify.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -14,8 +14,8 @@
    <string>Combine Verify</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../gui/images/combine.png</normaloff>../gui/images/combine.png</iconset>
+   <iconset resource="cmbverify.qrc">
+    <normaloff>:/cmbverify/images/combine.png</normaloff>:/cmbverify/images/combine.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
@@ -450,6 +450,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="cmbverify.qrc"/>
+ </resources>
  <connections/>
 </ui>

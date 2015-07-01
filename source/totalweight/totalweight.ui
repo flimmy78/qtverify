@@ -14,8 +14,8 @@
    <string>Total Verify(Weight Method)</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../gui/images/totalweight.png</normaloff>../gui/images/totalweight.png</iconset>
+   <iconset resource="totalweight.qrc">
+    <normaloff>:/flowweight/images/totalweight.png</normaloff>:/flowweight/images/totalweight.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_16">
    <item row="0" column="0" colspan="5">
@@ -1706,7 +1706,9 @@ t</string>
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="totalweight.qrc"/>
+ </resources>
  <connections/>
  <buttongroups>
   <buttongroup name="buttonGroup"/>

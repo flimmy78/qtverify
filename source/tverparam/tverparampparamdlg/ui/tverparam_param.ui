@@ -30,7 +30,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../tverparamparamdlg.qrc">
-    <normaloff>:/tverparampparamdlg/images/tverparampparamdlg.png</normaloff>:/tverparampparamdlg/images/tverparampparamdlg.png</iconset>
+    <normaloff>:/tverparampparamdlg/images/tverparamp_paramdlg.png</normaloff>:/tverparampparamdlg/images/tverparamp_paramdlg.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>

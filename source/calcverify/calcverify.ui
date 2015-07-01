@@ -14,8 +14,8 @@
    <string>Calculator Verify</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../gui/images/calculator.png</normaloff>../gui/images/calculator.png</iconset>
+   <iconset resource="calcverify.qrc">
+    <normaloff>:/calcverify/images/calculator.png</normaloff>:/calcverify/images/calculator.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_8">
    <item row="0" column="0">
@@ -702,6 +702,8 @@
   <tabstop>btnSave</tabstop>
   <tabstop>btnExit</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="calcverify.qrc"/>
+ </resources>
  <connections/>
 </ui>

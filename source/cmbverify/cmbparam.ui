@@ -28,6 +28,10 @@
   <property name="windowTitle">
    <string>Parameter</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="cmbverify.qrc">
+    <normaloff>:/cmbverify/images/combine.png</normaloff>:/cmbverify/images/combine.png</iconset>
+  </property>
   <layout class="QGridLayout" name="gridLayout_4">
    <item row="0" column="0" colspan="2">
     <widget class="QFrame" name="frame_2">
@@ -306,6 +310,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="cmbverify.qrc"/>
+ </resources>
  <connections/>
 </ui>

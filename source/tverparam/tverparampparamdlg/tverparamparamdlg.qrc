@@ -1,5 +1,5 @@
 <RCC>
   <qresource prefix="tverparampparamdlg">
-  	  <file>images/tverparampparamdlg.png</file>
+  	  <file>images/tverparamp_paramdlg.png</file>
   </qresource>
 </RCC>
