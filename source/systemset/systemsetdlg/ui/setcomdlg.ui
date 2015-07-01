@@ -3,7 +3,7 @@
  <class>SetComDlgClass</class>
  <widget class="QWidget" name="SetComDlgClass">
   <property name="windowModality">
-   <enum>Qt::NonModal</enum>
+   <enum>Qt::ApplicationModal</enum>
   </property>
   <property name="geometry">
    <rect>

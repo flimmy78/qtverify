@@ -3,7 +3,7 @@
  <class>ParaSetDlgClass</class>
  <widget class="QWidget" name="ParaSetDlgClass">
   <property name="windowModality">
-   <enum>Qt::NonModal</enum>
+   <enum>Qt::ApplicationModal</enum>
   </property>
   <property name="geometry">
    <rect>

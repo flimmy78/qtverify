@@ -7,5 +7,6 @@
     <file>images/open.png</file>
     <file>images/success.png</file>
     <file>images/failed.png</file>
+    <file>images/datatest.png</file>
   </qresource>
 </RCC>

@@ -3,13 +3,13 @@
  <class>DataTestDlgClass</class>
  <widget class="QWidget" name="DataTestDlgClass">
   <property name="windowModality">
-   <enum>Qt::ApplicationModal</enum>
+   <enum>Qt::NonModal</enum>
   </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>895</width>
+    <width>904</width>
     <height>722</height>
    </rect>
   </property>
@@ -17,8 +17,8 @@
    <string>DA and Test</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../../../gui/images/datatest.png</normaloff>../../../gui/images/datatest.png</iconset>
+   <iconset resource="../datatestdlg.qrc">
+    <normaloff>:/datatestdlg/images/datatest.png</normaloff>:/datatestdlg/images/datatest.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_14">
    <item row="0" column="0" colspan="4">
@@ -1999,13 +1999,13 @@ Coe</string>
        </property>
        <property name="minimumSize">
         <size>
-         <width>150</width>
+         <width>180</width>
          <height>35</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>150</width>
+         <width>180</width>
          <height>35</height>
         </size>
        </property>
@@ -2027,13 +2027,13 @@ Coe</string>
        </property>
        <property name="minimumSize">
         <size>
-         <width>150</width>
+         <width>180</width>
          <height>35</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>150</width>
+         <width>180</width>
          <height>35</height>
         </size>
        </property>

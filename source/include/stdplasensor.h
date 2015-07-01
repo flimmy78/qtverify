@@ -19,7 +19,6 @@ public:
 		void showEvent(QShowEvent *);
 
 		void on_btn_pt25_save_clicked();
-		void on_btn_pt25_exit_clicked();
 		void on_btn_pt100_calc_clicked();
 		void on_btn_pt100_save_clicked();
 		void on_btn_pt100_exit_clicked();
