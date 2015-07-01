@@ -57,7 +57,13 @@ QMainWindow(parent),
 	ui->portNameComboBox->addItem("COM30");
 #endif
 
-	ui->statusBar->showMessage(QObject::tr("Welcome Using QCom!"));
+	ui->statusBar->showMessage(QObject::tr("Welcome Using DeluCom!"));
+	QLabel *permanent = new QLabel(this);
+	permanent->setFrameStyle(QFrame::NoFrame | QFrame::Sunken);
+	permanent->setText(tr("Author:bmeyang QQ:157764165"));
+	permanent->setTextFormat(Qt::RichText);
+	permanent->setOpenExternalLinks(true);
+	ui->statusBar->addPermanentWidget(permanent);
 	ui->btnRecv->hide();
 
 	//加载上次保存的串口参数
@@ -197,7 +203,7 @@ void MainWindow::on_actionOpen_triggered()
 
 	if (myCom->open(QIODevice::ReadWrite))
 	{
-		QMessageBox::information(this, tr("OK"), tr("open ") + portName + tr(" success!"), QMessageBox::Ok);
+//		QMessageBox::information(this, tr("OK"), tr("open ") + portName + tr(" success!"), QMessageBox::Ok);
 		//界面控制
 		ui->sendmsgBtn->setEnabled(true);
 		setComboBoxEnabled(false);
@@ -251,7 +257,7 @@ void MainWindow::on_actionAbout_triggered()
 	int x =this->x() + (this->width() - aboutdlg.width()) / 2;
 	int y =this->y() + (this->height() - aboutdlg.height()) / 2;
 	aboutdlg.move(x, y);
-	ui->statusBar->showMessage(tr("About QCom"));
+	ui->statusBar->showMessage(tr("About DeluCom"));
 }
 
 //读取数据
@@ -387,7 +393,7 @@ void MainWindow::on_clearRecvBtn_clicked()
 {
 	ui->textBrowserRecv->clear();
 	ui->statusBar->showMessage(tr("receive record is cleared"));
-	on_btnResetRecvLcd_clicked();
+//	on_btnResetRecvLcd_clicked();
 }
 
 //清空发送记录
@@ -514,7 +520,7 @@ void MainWindow::on_actionLoadfile_triggered()
 	if (!file.open(QFile::ReadOnly | QIODevice::Text))
 	{
 		QMessageBox::warning(this, tr("Open Failed"),
-			tr("Sorry! QCom can't open this file, maybe no right. you can try chmod to modify right."),
+			tr("Sorry! DeluCom can't open this file, maybe no right. you can try chmod to modify right."),
 			QMessageBox::Ok);
 		return;
 	}

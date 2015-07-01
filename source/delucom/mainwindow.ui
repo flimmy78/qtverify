@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>922</width>
-    <height>621</height>
+    <width>1002</width>
+    <height>627</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -721,7 +721,7 @@ QLCDNumber{background:url(:/images/lcd.bmp)}
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>922</width>
+     <width>1002</width>
      <height>26</height>
     </rect>
    </property>
@@ -816,6 +816,7 @@ QLCDNumber{background:url(:/images/lcd.bmp)}
    <addaction name="actionClearRecvBytes"/>
    <addaction name="actionCleanPort"/>
    <addaction name="actionClearSendBytes"/>
+   <addaction name="actionExit"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionOpen">
