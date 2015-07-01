@@ -26,8 +26,8 @@
    <string>Parameter method of platinum resistance checking</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../../gui/images/temperpara.png</normaloff>../../gui/images/temperpara.png</iconset>
+   <iconset resource="../tverparam.qrc">
+    <normaloff>:/tverparam/images/temperpara.png</normaloff>:/tverparam/images/temperpara.png</iconset>
   </property>
   <widget class="QFrame" name="frame_2">
    <property name="geometry">
@@ -2998,6 +2998,8 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../tverparam.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>PlaParamParamDlgClass</class>
  <widget class="QWidget" name="PlaParamParamDlgClass">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -24,6 +27,10 @@
   </property>
   <property name="windowTitle">
    <string>Parameter</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../tverparamparamdlg.qrc">
+    <normaloff>:/tverparampparamdlg/images/tverparampparamdlg.png</normaloff>:/tverparampparamdlg/images/tverparampparamdlg.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -177,6 +184,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../tverparamparamdlg.qrc"/>
+ </resources>
  <connections/>
 </ui>
