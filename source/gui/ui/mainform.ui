@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1108</width>
+    <width>1182</width>
     <height>592</height>
    </rect>
   </property>
@@ -32,13 +32,13 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1108</width>
+     <width>1182</width>
      <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuSystemSet">
     <property name="title">
-     <string>SystemSet(&amp;S)</string>
+     <string>SystemSet</string>
     </property>
     <addaction name="actionComSet"/>
     <addaction name="actionPortSet"/>
@@ -95,8 +95,9 @@
     <property name="title">
      <string>About</string>
     </property>
-    <addaction name="actionExit"/>
+    <addaction name="actionContacts"/>
     <addaction name="actionAbout"/>
+    <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuStyle">
     <property name="title">
@@ -159,13 +160,15 @@
    <addaction name="actionCalculatorResult"/>
    <addaction name="actionCombineResult"/>
    <addaction name="separator"/>
-   <addaction name="actionEnglish"/>
    <addaction name="actionChinese"/>
+   <addaction name="actionEnglish"/>
    <addaction name="separator"/>
    <addaction name="actionDefault"/>
    <addaction name="actionClassic"/>
    <addaction name="actionFashion"/>
    <addaction name="separator"/>
+   <addaction name="actionContacts"/>
+   <addaction name="actionAbout"/>
    <addaction name="actionExit"/>
    <addaction name="separator"/>
   </widget>
@@ -236,7 +239,7 @@
   <action name="actionFlowStandard">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
-     <normaloff>:/qtverify/images/stdcomp.png</normaloff>:/qtverify/images/stdcomp.png</iconset>
+     <normaloff>:/qtverify/images/flowstandard.png</normaloff>:/qtverify/images/flowstandard.png</iconset>
    </property>
    <property name="text">
     <string>FlowStandard</string>
@@ -248,7 +251,7 @@
   <action name="actionTotalStandard">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
-     <normaloff>:/qtverify/images/stdtotal.png</normaloff>:/qtverify/images/stdtotal.png</iconset>
+     <normaloff>:/qtverify/images/totalstandard.png</normaloff>:/qtverify/images/totalstandard.png</iconset>
    </property>
    <property name="text">
     <string>TotalStandard</string>
@@ -510,6 +513,18 @@
   <action name="actionPlaVerify_Parameter">
    <property name="text">
     <string>PlaVerify-Parameter</string>
+   </property>
+  </action>
+  <action name="actionContacts">
+   <property name="icon">
+    <iconset resource="../qtverify.qrc">
+     <normaloff>:/qtverify/images/contactus.png</normaloff>:/qtverify/images/contactus.png</iconset>
+   </property>
+   <property name="text">
+    <string>Contacts</string>
+   </property>
+   <property name="toolTip">
+    <string>Contact Us</string>
    </property>
   </action>
  </widget>
