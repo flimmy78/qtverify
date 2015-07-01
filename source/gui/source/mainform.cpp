@@ -286,8 +286,8 @@ void MainForm::on_actionDataTest_triggered()
 void MainForm::on_actionComDebuger_triggered()
 {
 	QStringList cmdlist;
-	cmdlist<<"-zh";
-	m_comProcess->start("qcom", cmdlist);
+	cmdlist<<"zh";
+	m_comProcess->start("delucom", cmdlist);
 }
 
 //标准表参数设定

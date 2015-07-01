@@ -5,17 +5,17 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../aboutdialog.ui" line="26"/>
-        <source>About QCom V1.0</source>
+        <source>About DeluCom V1.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <location filename="../aboutdialog.ui" line="53"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;QCom Debugger（Version: 1.0）&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; color:#8daa94;&quot;&gt;Author: bmeyang&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; color:#8daa94;&quot;&gt;QQ: 157764165&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;DeluCom Debugger（Version: 1.0）       &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; color:#8daa94;&quot;&gt;Author: bmeyang&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; color:#8daa94;&quot;&gt;QQ: 157764165&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="81"/>
-        <source>Close(C)</source>
+        <source>Close(&amp;C)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -262,6 +262,10 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="872"/>
+        <source>About DeluCom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../mainwindow.ui" line="875"/>
         <location filename="../mainwindow.cpp" line="254"/>
         <source>About QCom</source>

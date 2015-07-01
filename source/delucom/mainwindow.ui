@@ -722,7 +722,7 @@ QLCDNumber{background:url(:/images/lcd.bmp)}
      <x>0</x>
      <y>0</y>
      <width>922</width>
-     <height>23</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -869,7 +869,7 @@ QLCDNumber{background:url(:/images/lcd.bmp)}
      <normaloff>:/images/mesage.png</normaloff>:/images/mesage.png</iconset>
    </property>
    <property name="text">
-    <string>About QCom</string>
+    <string>About DeluCom</string>
    </property>
    <property name="toolTip">
     <string>About QCom</string>
