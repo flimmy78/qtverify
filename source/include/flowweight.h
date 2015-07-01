@@ -242,6 +242,7 @@ public slots:
 private slots:
 
 signals:
+	void signalClosed();
 
 private:
 	Ui::FlowWeightClass ui;

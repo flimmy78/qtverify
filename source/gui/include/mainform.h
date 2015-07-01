@@ -121,6 +121,9 @@ public slots:
 	void on_actionEnglish_triggered();
 	void on_actionChinese_triggered();
 
+	//
+	void slotFlowWeightClosed();
+
 private:
 	Ui::qMainFormClass ui;
 };

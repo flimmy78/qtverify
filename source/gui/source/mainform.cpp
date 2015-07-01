@@ -388,6 +388,8 @@ void MainForm::on_actionFlowWeight_triggered()
 		m_flowWeightDlg = new FlowWeightDlg();
 	}
 	m_flowWeightDlg->show();
+	
+	connect(m_flowWeightDlg, SIGNAL(signalClosed()), this, SLOT(slotFlowWeightClosed()));
 }
 
 //流量检定(标准表法)
@@ -692,4 +694,10 @@ void MainForm::on_actionEnglish_triggered()
 void MainForm::on_actionChinese_triggered()
 {
 	chaneLanguage("zh");
+}
+
+void MainForm::slotFlowWeightClosed()
+{
+// 	QMessageBox::information(this, tr("Hint"), tr("Flow Weight Dialog Closed !"));
+	qDebug()<<"Flow Weight Dialog Closed !";
 }
