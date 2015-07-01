@@ -1,8 +1,9 @@
 <RCC>
-  <qresource prefix="flowweight">
-    <file>img/excel.png</file>
-    <file>img/exit.png</file>
-    <file>img/param.png</file>
-	<file>img/save.png</file>
+  <qresource prefix="tvercomp">
+    <file>images/excel.png</file>
+    <file>images/exit.png</file>
+    <file>images/param.png</file>
+	  <file>images/save.png</file>
+	  <file>images/tempercompare.png</file>
   </qresource>
 </RCC>

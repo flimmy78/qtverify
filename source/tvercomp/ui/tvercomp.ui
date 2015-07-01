@@ -26,8 +26,8 @@
    <string>Comparing method of platinum resistance checking</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../../gui/images/tempercompare.png</normaloff>../../gui/images/tempercompare.png</iconset>
+   <iconset resource="../tvercomp.qrc">
+    <normaloff>:/tvercomp/images/tempercompare.png</normaloff>:/tvercomp/images/tempercompare.png</iconset>
   </property>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
@@ -3081,6 +3081,8 @@ T
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../tvercomp.qrc"/>
+ </resources>
  <connections/>
 </ui>

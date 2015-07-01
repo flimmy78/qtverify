@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>PlaCompParamDlgClass</class>
  <widget class="QWidget" name="PlaCompParamDlgClass">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -24,6 +27,10 @@
   </property>
   <property name="windowTitle">
    <string>Parameter</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../tvercompparamdlg.qrc">
+    <normaloff>:/tvercompparamdlg/images/tvercompparamdlg.png</normaloff>:/tvercompparamdlg/images/tvercompparamdlg.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -225,6 +232,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../tvercompparamdlg.qrc"/>
+ </resources>
  <connections/>
 </ui>

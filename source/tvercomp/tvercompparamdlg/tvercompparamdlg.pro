@@ -27,7 +27,7 @@ SOURCES	+= tvercompparamdlg.cpp
 
 FORMS	+= ui/tvercomp_param.ui
 
-#RESOURCES += tvercompparamdlg.qrc   
+RESOURCES += tvercompparamdlg.qrc   
 
 win32{
 	MY_DEST_LIB_VAR = $${DESTDIR} $${TARGET}.lib
