@@ -3,7 +3,7 @@
  <class>SetComDlgClass</class>
  <widget class="QWidget" name="SetComDlgClass">
   <property name="windowModality">
-   <enum>Qt::ApplicationModal</enum>
+   <enum>Qt::NonModal</enum>
   </property>
   <property name="geometry">
    <rect>
@@ -17,8 +17,8 @@
    <string>SetCom</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../../../gui/images/comset.png</normaloff>../../../gui/images/comset.png</iconset>
+   <iconset resource="../systemsetdlg.qrc">
+    <normaloff>:/systemsetdlg/images/comset.png</normaloff>:/systemsetdlg/images/comset.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_32">
    <item row="0" column="0">
@@ -9562,6 +9562,8 @@
   <tabstop>btnSave</tabstop>
   <tabstop>btnExit</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../systemsetdlg.qrc"/>
+ </resources>
  <connections/>
 </ui>

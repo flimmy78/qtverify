@@ -26,8 +26,8 @@
    <string>Standard Platinium Sensor</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../../../gui/images/stdptparaset.png</normaloff>../../../gui/images/stdptparaset.png</iconset>
+   <iconset resource="../systemsetdlg.qrc">
+    <normaloff>:/systemsetdlg/images/stdptparaset.png</normaloff>:/systemsetdlg/images/stdptparaset.png</iconset>
   </property>
   <widget class="QGroupBox" name="gBox_pt25">
    <property name="geometry">
@@ -610,6 +610,8 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../systemsetdlg.qrc"/>
+ </resources>
  <connections/>
 </ui>

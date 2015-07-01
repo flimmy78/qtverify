@@ -66,11 +66,6 @@ void stdplasensorDlg::on_btn_pt25_save_clicked()
 	m_config->endGroup();
 }
 
-void stdplasensorDlg::on_btn_pt25_exit_clicked()
-{
-	this->close();
-}
-
 void stdplasensorDlg::on_btn_pt100_calc_clicked()
 {
 	if (m_tbls_inited)

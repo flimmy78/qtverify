@@ -3,7 +3,7 @@
  <class>SetPortDlgClass</class>
  <widget class="QWidget" name="SetPortDlgClass">
   <property name="windowModality">
-   <enum>Qt::ApplicationModal</enum>
+   <enum>Qt::NonModal</enum>
   </property>
   <property name="geometry">
    <rect>
@@ -17,8 +17,8 @@
    <string>SetPortFrm</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../../../gui/images/portset.png</normaloff>../../../gui/images/portset.png</iconset>
+   <iconset resource="../systemsetdlg.qrc">
+    <normaloff>:/systemsetdlg/images/portset.png</normaloff>:/systemsetdlg/images/portset.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_4">
    <item row="0" column="0" rowspan="2">
@@ -1383,6 +1383,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../systemsetdlg.qrc"/>
+ </resources>
  <connections/>
 </ui>

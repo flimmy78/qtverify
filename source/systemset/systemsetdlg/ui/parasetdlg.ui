@@ -3,7 +3,7 @@
  <class>ParaSetDlgClass</class>
  <widget class="QWidget" name="ParaSetDlgClass">
   <property name="windowModality">
-   <enum>Qt::ApplicationModal</enum>
+   <enum>Qt::NonModal</enum>
   </property>
   <property name="geometry">
    <rect>
@@ -17,8 +17,8 @@
    <string>ParaSet</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../../../gui/images/setting.png</normaloff>../../../gui/images/setting.png</iconset>
+   <iconset resource="../systemsetdlg.qrc">
+    <normaloff>:/systemsetdlg/images/setting.png</normaloff>:/systemsetdlg/images/setting.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
@@ -2794,6 +2794,8 @@
   <zorder>gBox_Head</zorder>
   <zorder>gBox_lcModDevNo</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="../systemsetdlg.qrc"/>
+ </resources>
  <connections/>
 </ui>

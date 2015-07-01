@@ -45,7 +45,8 @@ SOURCES	+= $$(ADEHOME_INC)/include/qextserial/qextserialport.cpp \
       		 source/parasetdlg.cpp \
 			 source/stdplasensor.cpp \
 			 source/chkplasensor.cpp 
-			 
+		
+RESOURCES += systemsetdlg.qrc			 
 
 win32 {
      SOURCES += $$(ADEHOME_INC)/include/qextserial/qextserialport_win.cpp

@@ -17,8 +17,8 @@
    <string>标准表系数标定</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../../../gui/images/stdmetercoeset.png</normaloff>../../../gui/images/stdmetercoeset.png</iconset>
+   <iconset resource="../systemsetdlg.qrc">
+    <normaloff>:/systemsetdlg/images/stdmetercoeset.png</normaloff>:/systemsetdlg/images/stdmetercoeset.png</iconset>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -897,6 +897,8 @@
   <zorder>groupBox</zorder>
   <zorder>tableWidget</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="../systemsetdlg.qrc"/>
+ </resources>
  <connections/>
 </ui>

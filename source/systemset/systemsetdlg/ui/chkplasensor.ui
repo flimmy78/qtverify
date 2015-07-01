@@ -26,8 +26,8 @@
    <string>Checked Platinum Sensor</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../../../gui/images/ptparaset.png</normaloff>../../../gui/images/ptparaset.png</iconset>
+   <iconset resource="../systemsetdlg.qrc">
+    <normaloff>:/systemsetdlg/images/ptparaset.png</normaloff>:/systemsetdlg/images/ptparaset.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
@@ -312,6 +312,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../systemsetdlg.qrc"/>
+ </resources>
  <connections/>
 </ui>

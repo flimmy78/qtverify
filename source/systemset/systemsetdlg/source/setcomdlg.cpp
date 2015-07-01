@@ -34,7 +34,6 @@ SetComDlg::SetComDlg(QWidget *parent, Qt::WFlags flags)
 	btnGroupBalanceType->addButton(gui.radioBtnSatoriusH, 1);
 	btnGroupBalanceType->addButton(gui.radioBtnBizerba, 2);
 	btnGroupBalanceType->addButton(gui.radioBtnMettler, 3);
-
 }
 
 SetComDlg::~SetComDlg()

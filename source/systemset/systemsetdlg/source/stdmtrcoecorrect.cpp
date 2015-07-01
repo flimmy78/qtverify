@@ -36,7 +36,6 @@ StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 		ui.tableWidget->setSpan(i,8,3,1);
 		ui.tableWidget->setSpan(i,9,3,1);
 	}
-	
 }
 
 StdMtrCoeCorrect::~StdMtrCoeCorrect()
