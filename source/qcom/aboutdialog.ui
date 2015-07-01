@@ -50,7 +50,7 @@
     <string notr="true">font: 16pt &quot;Arial Black&quot;;</string>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;QCom Debugger（Version: 1.0）&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; color:#8daa94;&quot;&gt;designer:bmeyang&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;QCom Debugger（Version: 1.0）&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; color:#8daa94;&quot;&gt;Author: bmeyang&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; color:#8daa94;&quot;&gt;QQ: 157764165&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -78,7 +78,7 @@
     </size>
    </property>
    <property name="text">
-    <string>Close(C)</string>
+    <string>Close(&amp;C)</string>
    </property>
   </widget>
  </widget>
