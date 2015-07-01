@@ -19,7 +19,7 @@ int main( int argc, char ** argv )
 	if (!adehome.isEmpty()) 
 	{
 		QString filename;
-		filename = adehome + "\\uif\\i18n\\" + lang + "\\comsetdlg_" + lang + ".qm";
+		filename = adehome + "\\uif\\i18n\\" + lang + "\\systemsetdlg_" + lang + ".qm";
 		bool loadok = translator.load(filename, "");
 		if (!loadok)
 		{
