@@ -9,12 +9,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1451</width>
-    <height>784</height>
+    <width>1463</width>
+    <height>824</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>SetCom</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../gui/images/comset.png</normaloff>../../../gui/images/comset.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_32">
    <item row="0" column="0">

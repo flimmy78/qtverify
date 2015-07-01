@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Combine Verify Result</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../gui/images/combineresult.png</normaloff>../../gui/images/combineresult.png</iconset>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">

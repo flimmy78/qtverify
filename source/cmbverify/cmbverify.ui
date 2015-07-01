@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Combine Verify</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../gui/images/combine.png</normaloff>../gui/images/combine.png</iconset>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QFrame" name="frame">

@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Calculator Verify Result</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../gui/images/calculatorresult.png</normaloff>../../gui/images/calculatorresult.png</iconset>
+  </property>
   <layout class="QGridLayout" name="gridLayout_4">
    <item row="0" column="0">
     <layout class="QVBoxLayout" name="verticalLayout">

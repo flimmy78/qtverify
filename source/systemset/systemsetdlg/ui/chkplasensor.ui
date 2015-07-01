@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Checked Platinum Sensor</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../gui/images/ptparaset.png</normaloff>../../../gui/images/ptparaset.png</iconset>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QTableWidget" name="tbl_t_r">

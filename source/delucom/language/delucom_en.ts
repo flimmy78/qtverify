@@ -445,9 +445,9 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="63"/>
-        <source>Author:bmeyang QQ:157764165</source>
-        <translation type="unfinished"></translation>
+        <location filename="../mainwindow.cpp" line="62"/>
+        <source>&lt;u&gt;Author:bmeyang QQ:157764165&lt;/u&gt;</source>
+        <translation>&lt;u&gt;Author:bmeyang QQ:157764165&lt;/u&gt;</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="221"/>
@@ -614,7 +614,7 @@ device is occupied or isn&apos;t exist!</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../mainwindow.cpp" line="60"/>
+        <location filename="../mainwindow.cpp" line="66"/>
         <source>Welcome Using DeluCom!</source>
         <translation type="unfinished"></translation>
     </message>

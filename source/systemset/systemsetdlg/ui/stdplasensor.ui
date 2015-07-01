@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Standard Platinium Sensor</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../gui/images/stdptparaset.png</normaloff>../../../gui/images/stdptparaset.png</iconset>
+  </property>
   <widget class="QGroupBox" name="gBox_pt25">
    <property name="geometry">
     <rect>
@@ -567,7 +571,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>12</x>

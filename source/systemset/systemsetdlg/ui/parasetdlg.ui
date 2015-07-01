@@ -9,12 +9,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>556</width>
-    <height>662</height>
+    <width>667</width>
+    <height>756</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>ParaSet</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../gui/images/setting.png</normaloff>../../../gui/images/setting.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>

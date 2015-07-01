@@ -9,12 +9,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>446</width>
+    <width>473</width>
     <height>270</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>SetPortFrm</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../gui/images/portset.png</normaloff>../../../gui/images/portset.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_4">
    <item row="0" column="0" rowspan="2">

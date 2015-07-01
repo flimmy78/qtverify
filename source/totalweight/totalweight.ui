@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Total Verify(Weight Method)</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../gui/images/totalweight.png</normaloff>../gui/images/totalweight.png</iconset>
+  </property>
   <layout class="QGridLayout" name="gridLayout_16">
    <item row="0" column="0" colspan="5">
     <widget class="QGroupBox" name="groupBox_5">

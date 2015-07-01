@@ -57,13 +57,13 @@ QMainWindow(parent),
 	ui->portNameComboBox->addItem("COM30");
 #endif
 
-	ui->statusBar->showMessage(QObject::tr("Welcome Using DeluCom!"));
 	QLabel *permanent = new QLabel(this);
-	permanent->setFrameStyle(QFrame::NoFrame | QFrame::Sunken);
-	permanent->setText(tr("Author:bmeyang QQ:157764165"));
-	permanent->setTextFormat(Qt::RichText);
-	permanent->setOpenExternalLinks(true);
+//	permanent->setFrameStyle(QFrame::NoFrame | QFrame::Sunken);
+	permanent->setText(tr("<u>Author:bmeyang QQ:157764165</u>"));
+// 	permanent->setTextFormat(Qt::RichText);
+// 	permanent->setOpenExternalLinks(true);
 	ui->statusBar->addPermanentWidget(permanent);
+	ui->statusBar->showMessage(QObject::tr("Welcome Using DeluCom!"));
 	ui->btnRecv->hide();
 
 	//加载上次保存的串口参数

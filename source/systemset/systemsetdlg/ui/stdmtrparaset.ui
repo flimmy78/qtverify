@@ -16,6 +16,10 @@
   <property name="windowTitle">
    <string>标准表参数设定</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../gui/images/stdmeterparaset.png</normaloff>../../../gui/images/stdmeterparaset.png</iconset>
+  </property>
   <layout class="QGridLayout" name="gridLayout_5">
    <item row="0" column="0">
     <widget class="QGroupBox" name="groupBox">

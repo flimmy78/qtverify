@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Platinum Verify Result</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../gui/images/temperresult.png</normaloff>../../gui/images/temperresult.png</iconset>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_4">

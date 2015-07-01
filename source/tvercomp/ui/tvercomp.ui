@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Comparing method of platinum resistance checking</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../gui/images/tempercompare.png</normaloff>../../gui/images/tempercompare.png</iconset>
+  </property>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
