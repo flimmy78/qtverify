@@ -14,8 +14,8 @@
    <string>Combine Verify Result</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../../gui/images/combineresult.png</normaloff>../../gui/images/combineresult.png</iconset>
+   <iconset resource="../resultquery.qrc">
+    <normaloff>:/resultquery/images/combineresult.png</normaloff>:/resultquery/images/combineresult.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -377,6 +377,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../resultquery.qrc"/>
+ </resources>
  <connections/>
 </ui>

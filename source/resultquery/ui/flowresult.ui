@@ -14,8 +14,8 @@
    <string>Flow Verify Result</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../../gui/images/flowresult.png</normaloff>../../gui/images/flowresult.png</iconset>
+   <iconset resource="../resultquery.qrc">
+    <normaloff>:/resultquery/images/flowresult.png</normaloff>:/resultquery/images/flowresult.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_5">
    <item row="0" column="0">
@@ -449,6 +449,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../resultquery.qrc"/>
+ </resources>
  <connections/>
 </ui>

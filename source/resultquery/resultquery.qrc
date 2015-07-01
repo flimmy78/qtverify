@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="resultquery">
+    <file>images/calculatorresult.png</file>
+    <file>images/combineresult.png</file>
+    <file>images/flowresult.png</file>
+    <file>images/temperresult.png</file>
+    <file>images/totalresult.png</file>
+    <file>images/queryresult.png</file>
+    <file>images/queryexcel.png</file>
+  </qresource>
+</RCC>

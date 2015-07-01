@@ -14,8 +14,8 @@
    <string>Total Verify Result</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../../gui/images/totalresult.png</normaloff>../../gui/images/totalresult.png</iconset>
+   <iconset resource="../resultquery.qrc">
+    <normaloff>:/resultquery/images/totalresult.png</normaloff>:/resultquery/images/totalresult.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_7">
    <item row="0" column="0">
@@ -520,6 +520,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../resultquery.qrc"/>
+ </resources>
  <connections/>
 </ui>

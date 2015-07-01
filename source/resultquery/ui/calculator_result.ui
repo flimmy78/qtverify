@@ -14,8 +14,8 @@
    <string>Calculator Verify Result</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../../gui/images/calculatorresult.png</normaloff>../../gui/images/calculatorresult.png</iconset>
+   <iconset resource="../resultquery.qrc">
+    <normaloff>:/resultquery/images/calculatorresult.png</normaloff>:/resultquery/images/calculatorresult.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_4">
    <item row="0" column="0">
@@ -297,6 +297,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../resultquery.qrc"/>
+ </resources>
  <connections/>
 </ui>

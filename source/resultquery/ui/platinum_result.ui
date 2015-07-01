@@ -14,8 +14,8 @@
    <string>Platinum Verify Result</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../../gui/images/temperresult.png</normaloff>../../gui/images/temperresult.png</iconset>
+   <iconset resource="../resultquery.qrc">
+    <normaloff>:/resultquery/images/temperresult.png</normaloff>:/resultquery/images/temperresult.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
@@ -270,6 +270,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../resultquery.qrc"/>
+ </resources>
  <connections/>
 </ui>
