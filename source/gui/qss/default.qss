@@ -81,10 +81,10 @@ QComboBox{
 		min-width:6em;
 		background-color: rgb(199,237,204);
 }
-QComboBox::down-arrow {
-		image: url(:/qtverify/images/arrow-down2.png);
+#QComboBox::down-arrow {
+		image: url(:/qtverify/images/arrow-down.png);
 }
-QComboBox::drop-down {
+#QComboBox::drop-down {
 		subcontrol-origin: padding;
 		subcontrol-position: top right;
 		width:15px;
