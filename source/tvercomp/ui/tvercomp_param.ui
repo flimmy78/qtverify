@@ -29,8 +29,8 @@
    <string>Parameter</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../tvercompparamdlg.qrc">
-    <normaloff>:/tvercompparamdlg/images/tvercompparamdlg.png</normaloff>:/tvercompparamdlg/images/tvercompparamdlg.png</iconset>
+   <iconset resource="../tvercomp.qrc">
+    <normaloff>:/tvercomp/images/tvercompparamdlg.png</normaloff>:/tvercomp/images/tvercompparamdlg.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -233,7 +233,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../tvercompparamdlg.qrc"/>
+  <include location="../tvercomp.qrc"/>
  </resources>
  <connections/>
 </ui>

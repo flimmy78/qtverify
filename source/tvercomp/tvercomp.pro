@@ -8,7 +8,7 @@ QMAKE_LIBDIR +=  ./           \
         	     $(ADEHOME)/lib \
 	             $(ADEHOME)/bin 
 	            
-LIBS +=	-lprotocol -lsystemsetdlg -lcomobject -lqtexdb -lalgorithm -ltvercompparamDlg -lqtexdb
+LIBS +=	-lprotocol -lsystemsetdlg -lcomobject -lqtexdb -lalgorithm -lqtexdb
 
 DESTDIR = $(ADEHOME)\tmp\tvercomp
 #MOC_DIR = $(ADEHOME)/tmp/tvercomp/moc
@@ -20,11 +20,14 @@ INCLUDEPATH  	=    ./      \
 									 $$(ADEHOME_INC)/include	\
 									 $$(ADEHOME_INC)/include/qextserial
 
-HEADERS	+= $$(ADEHOME_INC)/include/tvercomp.h 
+HEADERS	+= $$(ADEHOME_INC)/include/tvercomp.h \
+           $$(ADEHOME_INC)/include/tvercompparamdlg.h 
 
-SOURCES	+= tvercomp.cpp
+SOURCES	+= tvercomp.cpp \
+           tvercompparamdlg.cpp     
 
 FORMS	+= ui/tvercomp.ui \
+         ui/tvercomp_param.ui
      
 RESOURCES += tvercomp.qrc     
          

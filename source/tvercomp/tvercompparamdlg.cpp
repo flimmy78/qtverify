@@ -8,9 +8,7 @@
 tvercompparamDlg::tvercompparamDlg(QWidget *parent /* = 0 */, Qt::WFlags flags /* = 0 */)
 	: QWidget(parent, flags)
 {
-
 	ui.setupUi(this);
-	
 }
 
 tvercompparamDlg::~tvercompparamDlg()
@@ -30,7 +28,6 @@ void tvercompparamDlg::on_btn_exit_clicked()
 
 void tvercompparamDlg::initCmbBox()
 {
-	
 	startdb();
 	//±í¹æ¸ñ
 	getMeterStandard(m_meterStdNum, m_meterStdPtr);

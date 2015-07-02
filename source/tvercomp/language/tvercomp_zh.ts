@@ -9,139 +9,139 @@
         <translation>铂电阻检测比较法</translation>
     </message>
     <message>
-        <location filename="../ui/tvercomp.ui" line="44"/>
+        <location filename="../ui/tvercomp.ui" line="48"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0000ff;&quot;&gt;Step:1.Configure parameter first 2.Input data 3.Save data 4.Exit&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0000ff;&quot;&gt;步骤:1.首先设置参数 2.输入数值 3.保存数据 4.退出&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/tvercomp.ui" line="64"/>
+        <location filename="../ui/tvercomp.ui" line="68"/>
         <source>Parameter</source>
         <translation>设置参数</translation>
     </message>
     <message>
-        <location filename="../ui/tvercomp.ui" line="91"/>
+        <location filename="../ui/tvercomp.ui" line="95"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../ui/tvercomp.ui" line="118"/>
+        <location filename="../ui/tvercomp.ui" line="122"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../ui/tvercomp.ui" line="222"/>
+        <location filename="../ui/tvercomp.ui" line="226"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;Input Data&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;输入数据&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/tvercomp.ui" line="244"/>
-        <location filename="../ui/tvercomp.ui" line="2675"/>
+        <location filename="../ui/tvercomp.ui" line="248"/>
+        <location filename="../ui/tvercomp.ui" line="1865"/>
+        <location filename="../ui/tvercomp.ui" line="2274"/>
+        <location filename="../ui/tvercomp.ui" line="2683"/>
         <source>1st temperature head</source>
         <translation>第一温差点</translation>
     </message>
     <message>
-        <location filename="../ui/tvercomp.ui" line="264"/>
-        <location filename="../ui/tvercomp.ui" line="977"/>
-        <location filename="../ui/tvercomp.ui" line="1499"/>
+        <location filename="../ui/tvercomp.ui" line="459"/>
+        <location filename="../ui/tvercomp.ui" line="981"/>
+        <location filename="../ui/tvercomp.ui" line="1503"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;sensor to be checked&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;被检铂电阻&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/tvercomp.ui" line="283"/>
-        <location filename="../ui/tvercomp.ui" line="996"/>
-        <location filename="../ui/tvercomp.ui" line="1518"/>
+        <location filename="../ui/tvercomp.ui" line="478"/>
+        <location filename="../ui/tvercomp.ui" line="1000"/>
+        <location filename="../ui/tvercomp.ui" line="1522"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;(Input R value Ω)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;(输入电阻值 Ω)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/tvercomp.ui" line="372"/>
-        <location filename="../ui/tvercomp.ui" line="1085"/>
-        <location filename="../ui/tvercomp.ui" line="1607"/>
+        <location filename="../ui/tvercomp.ui" line="567"/>
+        <location filename="../ui/tvercomp.ui" line="1089"/>
+        <location filename="../ui/tvercomp.ui" line="1611"/>
         <source>Serial</source>
         <translation>序列号</translation>
     </message>
     <message>
-        <location filename="../ui/tvercomp.ui" line="377"/>
-        <location filename="../ui/tvercomp.ui" line="692"/>
-        <location filename="../ui/tvercomp.ui" line="918"/>
-        <location filename="../ui/tvercomp.ui" line="1090"/>
-        <location filename="../ui/tvercomp.ui" line="1440"/>
-        <location filename="../ui/tvercomp.ui" line="1612"/>
-        <location filename="../ui/tvercomp.ui" line="2225"/>
-        <location filename="../ui/tvercomp.ui" line="2632"/>
-        <location filename="../ui/tvercomp.ui" line="3039"/>
+        <location filename="../ui/tvercomp.ui" line="400"/>
+        <location filename="../ui/tvercomp.ui" line="572"/>
+        <location filename="../ui/tvercomp.ui" line="922"/>
+        <location filename="../ui/tvercomp.ui" line="1094"/>
+        <location filename="../ui/tvercomp.ui" line="1444"/>
+        <location filename="../ui/tvercomp.ui" line="1616"/>
+        <location filename="../ui/tvercomp.ui" line="1932"/>
+        <location filename="../ui/tvercomp.ui" line="2341"/>
+        <location filename="../ui/tvercomp.ui" line="2750"/>
         <source>In</source>
         <translation>进口</translation>
     </message>
     <message>
-        <location filename="../ui/tvercomp.ui" line="382"/>
-        <location filename="../ui/tvercomp.ui" line="697"/>
-        <location filename="../ui/tvercomp.ui" line="923"/>
-        <location filename="../ui/tvercomp.ui" line="1095"/>
-        <location filename="../ui/tvercomp.ui" line="1445"/>
-        <location filename="../ui/tvercomp.ui" line="1617"/>
-        <location filename="../ui/tvercomp.ui" line="2230"/>
-        <location filename="../ui/tvercomp.ui" line="2637"/>
-        <location filename="../ui/tvercomp.ui" line="3044"/>
+        <location filename="../ui/tvercomp.ui" line="405"/>
+        <location filename="../ui/tvercomp.ui" line="577"/>
+        <location filename="../ui/tvercomp.ui" line="927"/>
+        <location filename="../ui/tvercomp.ui" line="1099"/>
+        <location filename="../ui/tvercomp.ui" line="1449"/>
+        <location filename="../ui/tvercomp.ui" line="1621"/>
+        <location filename="../ui/tvercomp.ui" line="1937"/>
+        <location filename="../ui/tvercomp.ui" line="2346"/>
+        <location filename="../ui/tvercomp.ui" line="2755"/>
         <source>Out</source>
         <translation>出口</translation>
     </message>
     <message>
-        <location filename="../ui/tvercomp.ui" line="590"/>
-        <location filename="../ui/tvercomp.ui" line="860"/>
-        <location filename="../ui/tvercomp.ui" line="1382"/>
+        <location filename="../ui/tvercomp.ui" line="342"/>
+        <location filename="../ui/tvercomp.ui" line="864"/>
+        <location filename="../ui/tvercomp.ui" line="1386"/>
         <source>Clear</source>
         <translation>清除</translation>
     </message>
     <message>
-        <location filename="../ui/tvercomp.ui" line="609"/>
-        <location filename="../ui/tvercomp.ui" line="784"/>
-        <location filename="../ui/tvercomp.ui" line="1306"/>
+        <location filename="../ui/tvercomp.ui" line="266"/>
+        <location filename="../ui/tvercomp.ui" line="788"/>
+        <location filename="../ui/tvercomp.ui" line="1310"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;std temperature&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;标准温度计&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/tvercomp.ui" line="647"/>
-        <location filename="../ui/tvercomp.ui" line="822"/>
-        <location filename="../ui/tvercomp.ui" line="1344"/>
+        <location filename="../ui/tvercomp.ui" line="304"/>
+        <location filename="../ui/tvercomp.ui" line="826"/>
+        <location filename="../ui/tvercomp.ui" line="1348"/>
         <source>Read</source>
         <translation>读取</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/tvercomp.ui" line="682"/>
-        <location filename="../ui/tvercomp.ui" line="908"/>
-        <location filename="../ui/tvercomp.ui" line="1430"/>
+        <location filename="../ui/tvercomp.ui" line="390"/>
+        <location filename="../ui/tvercomp.ui" line="912"/>
+        <location filename="../ui/tvercomp.ui" line="1434"/>
         <source>R (Ω)</source>
         <translation>电阻 (Ω)</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/tvercomp.ui" line="687"/>
-        <location filename="../ui/tvercomp.ui" line="913"/>
-        <location filename="../ui/tvercomp.ui" line="1435"/>
+        <location filename="../ui/tvercomp.ui" line="395"/>
+        <location filename="../ui/tvercomp.ui" line="917"/>
+        <location filename="../ui/tvercomp.ui" line="1439"/>
         <source>T (℃)</source>
         <translation>温度 (℃)</translation>
     </message>
     <message>
-        <location filename="../ui/tvercomp.ui" line="766"/>
-        <location filename="../ui/tvercomp.ui" line="1861"/>
+        <location filename="../ui/tvercomp.ui" line="770"/>
         <source>2nd temperature head</source>
         <translation>第二温差点</translation>
     </message>
     <message>
-        <location filename="../ui/tvercomp.ui" line="1288"/>
-        <location filename="../ui/tvercomp.ui" line="2268"/>
+        <location filename="../ui/tvercomp.ui" line="1292"/>
         <source>3rd temperature head</source>
         <translation>第三温差点</translation>
     </message>
     <message>
-        <location filename="../ui/tvercomp.ui" line="1848"/>
+        <location filename="../ui/tvercomp.ui" line="1852"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;Result&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;检测结果&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/tvercomp.ui" line="1958"/>
-        <location filename="../ui/tvercomp.ui" line="2365"/>
-        <location filename="../ui/tvercomp.ui" line="2772"/>
+        <location filename="../ui/tvercomp.ui" line="2062"/>
+        <location filename="../ui/tvercomp.ui" line="2471"/>
+        <location filename="../ui/tvercomp.ui" line="2880"/>
         <source>In
 T
 (℃)</source>
@@ -150,9 +150,9 @@ T
 (℃)</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/tvercomp.ui" line="1965"/>
-        <location filename="../ui/tvercomp.ui" line="2372"/>
-        <location filename="../ui/tvercomp.ui" line="2779"/>
+        <location filename="../ui/tvercomp.ui" line="2069"/>
+        <location filename="../ui/tvercomp.ui" line="2478"/>
+        <location filename="../ui/tvercomp.ui" line="2887"/>
         <source>Out
 T
 (℃)</source>
@@ -161,27 +161,90 @@ T
 (℃)</translation>
     </message>
     <message>
-        <location filename="../ui/tvercomp.ui" line="1972"/>
-        <location filename="../ui/tvercomp.ui" line="2379"/>
-        <location filename="../ui/tvercomp.ui" line="2786"/>
+        <location filename="../ui/tvercomp.ui" line="2076"/>
+        <location filename="../ui/tvercomp.ui" line="2485"/>
+        <location filename="../ui/tvercomp.ui" line="2894"/>
         <source>Error
 (%)</source>
         <translation>误差
 (%)</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/tvercomp.ui" line="2182"/>
-        <location filename="../ui/tvercomp.ui" line="2589"/>
-        <location filename="../ui/tvercomp.ui" line="2996"/>
+        <location filename="../ui/tvercomp.ui" line="1883"/>
+        <location filename="../ui/tvercomp.ui" line="2292"/>
+        <location filename="../ui/tvercomp.ui" line="2701"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Limit of error ℃/%&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;误差限 ℃/%&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/tvercomp.ui" line="2235"/>
-        <location filename="../ui/tvercomp.ui" line="2642"/>
-        <location filename="../ui/tvercomp.ui" line="3049"/>
+        <location filename="../ui/tvercomp.ui" line="1942"/>
+        <location filename="../ui/tvercomp.ui" line="2351"/>
+        <location filename="../ui/tvercomp.ui" line="2760"/>
         <source>ΔT</source>
         <translation>ΔT</translation>
+    </message>
+</context>
+<context>
+    <name>PlaCompParamDlgClass</name>
+    <message>
+        <location filename="../ui/tvercomp_param.ui" line="29"/>
+        <source>Parameter</source>
+        <translation>设置参数</translation>
+    </message>
+    <message>
+        <location filename="../ui/tvercomp_param.ui" line="47"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Standard&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;规格&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/tvercomp_param.ui" line="61"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Model&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;型号&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/tvercomp_param.ui" line="75"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Manufactory&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;制造单位&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/tvercomp_param.ui" line="89"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Institution&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;检测机构&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/tvercomp_param.ui" line="103"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Checker&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;检测员&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/tvercomp_param.ui" line="117"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Verify&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;核验员&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/tvercomp_param.ui" line="144"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Minimum temperature head: Δθmin&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;最小温差: Δθmin&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/tvercomp_param.ui" line="169"/>
+        <source>3</source>
+        <translation>3</translation>
+    </message>
+    <message>
+        <location filename="../ui/tvercomp_param.ui" line="182"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;K&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;K&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/tvercomp_param.ui" line="207"/>
+        <source>Save</source>
+        <translation>保存</translation>
+    </message>
+    <message>
+        <location filename="../ui/tvercomp_param.ui" line="227"/>
+        <source>Exit</source>
+        <translation>退出</translation>
     </message>
 </context>
 </TS>
