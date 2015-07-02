@@ -9,7 +9,7 @@ QMAKE_LIBDIR +=  ./           \
         	     $(ADEHOME)/lib \
 	             $(ADEHOME)/bin 
 
-LIBS +=	-lprotocol -lsystemsetdlg -lcomobject -lqtexdb -lalgorithm -ltverparamparamdlg
+LIBS +=	-lprotocol -lsystemsetdlg -lcomobject -lqtexdb -lalgorithm
 
 DESTDIR = $(ADEHOME)\tmp\tverparam
 OBJECTS_DIR = $(ADEHOME)/tmp/tverparam/obj
@@ -20,11 +20,14 @@ INCLUDEPATH  	=    ./      \
 									 $$(ADEHOME_INC)/include	\
 									 $$(ADEHOME_INC)/include/qextserial
 
-HEADERS	+= $$(ADEHOME_INC)/include/tverparam.h 
+HEADERS	+= $$(ADEHOME_INC)/include/tverparam.h \
+           $$(ADEHOME_INC)/include/tverparamparamdlg.h
 
-SOURCES	+= tverparam.cpp
+SOURCES	+= tverparam.cpp \
+           tverparamparamdlg.cpp
 
 FORMS	+= ui/tverparam.ui \
+         ui/tverparam_param.ui
 
 RESOURCES += tverparam.qrc     
          

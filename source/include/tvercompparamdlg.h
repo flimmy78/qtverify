@@ -1,17 +1,17 @@
 #ifndef TVERCOMPPARAMDLG_H
 #define TVERCOMPPARAMDLG_H
 
-#ifdef TVERCOMPPARAMDLG_DLL
+#ifdef TVERCOMP_DLL
 #  ifdef WIN32
-#  define TVERCOMPPARAMDLG_EXPORT __declspec(dllexport)
+#  define TVERCOMP_EXPORT __declspec(dllexport)
 #  else
-#  define TVERCOMPPARAMDLG_EXPORT
+#  define TVERCOMP_EXPORT
 #  endif
 #else
 #  ifdef WIN32
-#  define TVERCOMPPARAMDLG_EXPORT __declspec(dllimport)
+#  define TVERCOMP_EXPORT __declspec(dllimport)
 #  else
-#  define TVERCOMPPARAMDLG_EXPORT
+#  define TVERCOMP_EXPORT
 #  endif
 #endif
 
@@ -21,7 +21,7 @@
 #include "qtexdb.h"
 #include "basedef.h"
 
-class TVERCOMPPARAMDLG_EXPORT tvercompparamDlg : public QWidget
+class TVERCOMP_EXPORT tvercompparamDlg : public QWidget
 {
 	Q_OBJECT
 
@@ -29,11 +29,12 @@ public:
 	tvercompparamDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~tvercompparamDlg();
 
-	public slots:
-		void closeEvent(QCloseEvent * event);
-		void showEvent(QShowEvent * event);
-		void on_btn_save_clicked();
-		void on_btn_exit_clicked();
+public slots:
+	void closeEvent(QCloseEvent * event);
+	void showEvent(QShowEvent * event);
+	void on_btn_save_clicked();
+	void on_btn_exit_clicked();
+
 private:
 	Ui::PlaCompParamDlgClass ui;
 

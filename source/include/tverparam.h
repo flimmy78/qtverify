@@ -1,20 +1,6 @@
 #ifndef TVERPARAM_H
 #define TVERPARAM_H
 
-#ifdef TVERPARAM_DLL
-#  ifdef WIN32
-#  define TVERPARAM_EXPORT __declspec(dllexport)
-#  else
-#  define TVERPARAM_EXPORT
-#  endif
-#else
-#  ifdef WIN32
-#  define TVERPARAM_EXPORT __declspec(dllimport)
-#  else
-#  define TVERPARAM_EXPORT
-#  endif
-#endif
-
 #include <QtGui/QWidget>
 #include <QtGui/QDataWidgetMapper>
 #include <QSettings>

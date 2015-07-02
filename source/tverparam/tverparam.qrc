@@ -5,5 +5,7 @@
     <file>images/param.png</file>
 	  <file>images/save.png</file>
 	  <file>images/temperpara.png</file>
+	  <file>images/tverparamp_paramdlg.png</file>
+  	<file>images/tverparampparamdlg.png</file>
   </qresource>
 </RCC>

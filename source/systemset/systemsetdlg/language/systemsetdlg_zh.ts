@@ -151,7 +151,7 @@
     <message>
         <location filename="../ui/parasetdlg.ui" line="109"/>
         <source>VerifyPerson:</source>
-        <translation>检定员:</translation>
+        <translation>检测员:</translation>
     </message>
     <message>
         <location filename="../ui/parasetdlg.ui" line="1422"/>
@@ -335,7 +335,7 @@
     <message>
         <location filename="../ui/parasetdlg.ui" line="223"/>
         <source>CheckPerson:</source>
-        <translation>核检员:</translation>
+        <translation>核验员:</translation>
     </message>
     <message>
         <location filename="../ui/parasetdlg.ui" line="774"/>

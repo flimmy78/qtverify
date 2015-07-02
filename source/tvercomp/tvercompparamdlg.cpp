@@ -56,7 +56,7 @@ void tvercompparamDlg::initCmbBox()
 	ui.cBox_inst->setModel(relationModel);  
 	ui.cBox_inst->setModelColumn(relationModel->fieldIndex("F_Desc")); // 使用字段名得到正确的标题索引,以使组合框显示部门名  
 
-	//检测员
+	//核验员
 	int col_id1 = 0;
 	QSqlRelationalTableModel *model1 = new QSqlRelationalTableModel(this);  
 	model1->setTable("T_User_Def_Tab");  
@@ -65,14 +65,14 @@ void tvercompparamDlg::initCmbBox()
 	ui.cBox_chk->setModel(relationModel1);  
 	ui.cBox_chk->setModelColumn(relationModel1->fieldIndex("F_Desc"));
 
-	//复检员
+	//检测员
 	int col_id2 = 0;
 	QSqlRelationalTableModel *model3 = new QSqlRelationalTableModel(this);  
 	model3->setTable("T_User_Def_Tab");  
 	model3->setRelation(col_id2, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));  
 	QSqlTableModel *relationModel2 = model3->relationModel(col_id2);   
-	ui.cBox_verify->setModel(relationModel2);  
-	ui.cBox_verify->setModelColumn(relationModel2->fieldIndex("F_Desc"));
+	ui.cBox_verifier->setModel(relationModel2);  
+	ui.cBox_verifier->setModelColumn(relationModel2->fieldIndex("F_Desc"));
 
 	//型号
 	int col_id3 = 0;
@@ -110,7 +110,7 @@ void tvercompparamDlg::readConfig()
 		ui.cBox_manu->setCurrentIndex(m_config->value("chkinfo/manufac").toInt());
 		ui.cBox_inst->setCurrentIndex(m_config->value("chkinfo/inst").toInt());
 		ui.cBox_chk->setCurrentIndex(m_config->value("chkinfo/chker").toInt());
-		ui.cBox_verify->setCurrentIndex(m_config->value("chkinfo/verifyer").toInt());
+		ui.cBox_verifier->setCurrentIndex(m_config->value("chkinfo/verifyer").toInt());
 
 		ui.lineEdit_tempe->setText(m_config->value("theoinfo/mintmphead").toString());
 	}
@@ -125,7 +125,7 @@ void tvercompparamDlg::saveConfig()
 	m_config->setValue("manufac", ui.cBox_manu->currentIndex());
 	m_config->setValue("inst", ui.cBox_inst->currentIndex());
 	m_config->setValue("chker", ui.cBox_chk->currentIndex());
-	m_config->setValue("verifyer", ui.cBox_verify->currentIndex());
+	m_config->setValue("verifyer", ui.cBox_verifier->currentIndex());
 	m_config->endGroup();
 
 	m_config->beginGroup("theoinfo");

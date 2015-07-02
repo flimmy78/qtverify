@@ -1,19 +1,20 @@
 #ifndef TVERPARAMPARAMDLG_H
 #define TVERPARAMPARAMDLG_H
 
-#ifdef TVERPARAMPARAMDLG_DLL
+#ifdef TVERPARAM_DLL
 #  ifdef WIN32
-#  define TVERPARAMPARAMDLG_EXPORT __declspec(dllexport)
+#  define TVERPARAM_EXPORT __declspec(dllexport)
 #  else
-#  define TVERPARAMPARAMDLG_EXPORT
+#  define TVERPARAM_EXPORT
 #  endif
 #else
 #  ifdef WIN32
-#  define TVERPARAMPARAMDLG_EXPORT __declspec(dllimport)
+#  define TVERPARAM_EXPORT __declspec(dllimport)
 #  else
-#  define TVERPARAMPARAMDLG_EXPORT
+#  define TVERPARAM_EXPORT
 #  endif
 #endif
+
 
 #include <QtGui/QWidget>
 #include <QSettings>
@@ -21,7 +22,7 @@
 #include "qtexdb.h"
 #include "basedef.h"
 
-class TVERPARAMPARAMDLG_EXPORT tverparamparamDlg : public QWidget
+class TVERPARAM_EXPORT tverparamparamDlg : public QWidget
 {
 	Q_OBJECT
 
