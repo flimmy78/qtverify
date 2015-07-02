@@ -123,6 +123,7 @@ public slots:
 
 	//
 	void slotFlowWeightClosed();
+	void processError(QProcess::ProcessError error);
 
 private:
 	Ui::qMainFormClass ui;

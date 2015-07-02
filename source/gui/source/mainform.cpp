@@ -60,7 +60,6 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_datatestdlg = NULL;
 	m_portSet = NULL;
 	m_masterslave = NULL;
-	m_comProcess = new QProcess(this);
 	m_flowWeightDlg = NULL;
 	m_flowStandardDlg = NULL;
 	m_totalWeightDlg = NULL;
@@ -77,6 +76,9 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_CalcResultDlg = NULL;
 	m_CmbResultDlg = NULL;
 	m_TotalResultDlg = NULL;
+
+	m_comProcess = new QProcess(this);
+	QObject::connect(m_comProcess, SIGNAL(error(QProcess::ProcessError)), this, SLOT(processError(QProcess::ProcessError)));
 
 	QLabel *permanent = new QLabel(this);
 	permanent->setFrameStyle(QFrame::NoFrame | QFrame::Sunken);
@@ -148,6 +150,8 @@ void MainForm::closeEvent( QCloseEvent * event)
 		if (m_comProcess)
 		{
 			m_comProcess->kill();
+			delete m_comProcess;
+			m_comProcess = NULL;
 		}
 
 		if (m_flowWeightDlg)
@@ -700,4 +704,32 @@ void MainForm::slotFlowWeightClosed()
 {
 // 	QMessageBox::information(this, tr("Hint"), tr("Flow Weight Dialog Closed !"));
 	qDebug()<<"Flow Weight Dialog Closed !";
+}
+
+void MainForm::processError(QProcess::ProcessError error)
+{
+	switch(error)
+	{
+	case QProcess::FailedToStart:
+		QMessageBox::information(0, tr("Hint"), tr("Failed To Start"));
+		break;
+	case QProcess::Crashed:
+		QMessageBox::information(0, tr("Hint"), tr("Crashed"));
+		break;
+	case QProcess::Timedout:
+		QMessageBox::information(0, tr("Hint"), tr("Failed To Start"));
+		break;
+	case QProcess::WriteError:
+		QMessageBox::information(0, tr("Hint"), tr("Timed out"));
+		break;
+	case QProcess::ReadError:
+		QMessageBox::information(0, tr("Hint"), tr("Read Error"));
+		break;
+	case QProcess::UnknownError:
+		QMessageBox::information(0, tr("Hint"), tr("Unknown Error"));
+		break;
+	default:
+		QMessageBox::information(0, tr("default"), tr("default"));
+		break;
+	}
 }
