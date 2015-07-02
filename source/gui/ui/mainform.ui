@@ -95,8 +95,6 @@
     <property name="title">
      <string>About</string>
     </property>
-    <addaction name="actionContacts"/>
-    <addaction name="actionAbout"/>
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuStyle">
@@ -145,6 +143,7 @@
    <addaction name="actionStdPtParaSet"/>
    <addaction name="actionPtParaSet"/>
    <addaction name="separator"/>
+   <addaction name="separator"/>
    <addaction name="actionFlowWeight"/>
    <addaction name="actionFlowStandard"/>
    <addaction name="actionTotalWeight"/>
@@ -154,21 +153,23 @@
    <addaction name="actionCalculator"/>
    <addaction name="actionCombine"/>
    <addaction name="separator"/>
+   <addaction name="separator"/>
    <addaction name="actionFlowResult"/>
    <addaction name="actionTotalResult"/>
    <addaction name="actionTemperResult"/>
    <addaction name="actionCalculatorResult"/>
    <addaction name="actionCombineResult"/>
    <addaction name="separator"/>
+   <addaction name="separator"/>
    <addaction name="actionChinese"/>
    <addaction name="actionEnglish"/>
+   <addaction name="separator"/>
    <addaction name="separator"/>
    <addaction name="actionDefault"/>
    <addaction name="actionClassic"/>
    <addaction name="actionFashion"/>
    <addaction name="separator"/>
-   <addaction name="actionContacts"/>
-   <addaction name="actionAbout"/>
+   <addaction name="separator"/>
    <addaction name="actionExit"/>
    <addaction name="separator"/>
   </widget>
@@ -294,6 +295,9 @@
    </property>
   </action>
   <action name="actionExit">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset resource="../qtverify.qrc">
      <normaloff>:/qtverify/images/exit.png</normaloff>:/qtverify/images/exit.png</iconset>
