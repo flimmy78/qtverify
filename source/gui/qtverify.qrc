@@ -1,6 +1,7 @@
 <RCC>
   <qresource prefix="qtverify">
     <file>images/about.png</file>
+    <file>images/arrow-down.png</file>
     <file>images/contactus.png</file>
     <file>images/calculator.png</file>
     <file>images/calculatorresult.png</file>

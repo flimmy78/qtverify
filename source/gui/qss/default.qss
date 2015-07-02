@@ -12,10 +12,10 @@ background-color: rgb(127, 255, 127);
 border-color: rgb(134, 146, 255);
 }
 
-#QLineEdit {
+QLineEdit {
 border-style: flat;
 border-color: rgb(100, 100, 100);
-background-color:white;
+background-color: rgb(199,237,204);
 border-radius: 5;
 padding: 5px;
 }
@@ -40,7 +40,7 @@ background-color: rgb(233, 237, 255,255);
 }
 
 QStatusBar{  
-    background-image: url(:/qtverify/images/statusbar3.png);  
+    background-image: url(:/qtverify/images/adelogo.png);  
     color:red;  
     background-color: rgb(0,166,0);
 } 
@@ -73,3 +73,26 @@ QHeaderView::section{
 		border:1px solid #6c6c6c;
 		background: skyblue;
 }
+
+QComboBox{
+		border:1px solid gray;
+		border-radius:3px;
+		padding:1px18px1px3px;
+		min-width:6em;
+		background-color: rgb(199,237,204);
+}
+QComboBox::down-arrow {
+		image: url(:/qtverify/images/arrow-down2.png);
+}
+QComboBox::drop-down {
+		subcontrol-origin: padding;
+		subcontrol-position: top right;
+		width:15px;
+		border-left-width:1px;
+		border-left-color: darkgray;
+		border-top-right-radius:3px;/* same radius as the QComboBox */
+		border-bottom-right-radius:3px;
+}
+
+
+
