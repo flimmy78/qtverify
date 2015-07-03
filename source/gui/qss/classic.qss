@@ -42,3 +42,94 @@ QStatusBar{
     border-radius: 1px;  
     color: white;  
 }   
+
+QTableWidget{
+    background-color: rgb(199,237,204);
+    alternate-background-color:rgb(48,251,55);
+    /*selection-background-color:qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(255,255,255),stop:1 rgb(255,128,66));*/
+}
+
+QTableView{
+		/*selection-background-color: qlineargradient(x1:0, y1:0, x2:0.5, y2:0.5, stop:0#FF92BB, stop: 1 dark);*/
+		padding-left:1px;
+		background-color: rgb(199,237,204);
+}
+
+
+QHeaderView::section{
+		background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+		stop:0#616161, stop: 0.5 #505050,
+		stop:0.6#434343, stop:1 #656565);
+		color: dark;
+		padding-left:1px;
+		border:1px solid #6c6c6c;
+		background: skyblue;
+}
+
+QComboBox{
+		border:1px solid gray;
+		border-radius:3px;
+		padding:1px18px1px3px;
+		min-width:6em;
+		background-color: rgb(199,237,204);
+}
+#QComboBox::down-arrow {
+		image: url(:/qtverify/images/arrow-down.png);
+}
+#QComboBox::drop-down {
+		subcontrol-origin: padding;
+		subcontrol-position: top right;
+		width:15px;
+		border-left-width:1px;
+		border-left-color: darkgray;
+		border-top-right-radius:3px;/* same radius as the QComboBox */
+		border-bottom-right-radius:3px;
+}
+
+QMainWindow{
+		background: skyblue;
+		width:10px;/* when vertical */
+ 		height:10px;/* when horizontal */
+}
+
+QMainWindow::separator:hover {
+		background: red;
+}
+
+QMenuBar{
+		background-color: skyblue;
+		spacing:2px;/* spacing between menu bar items */
+}
+
+QMenuBar::item {
+		background: skyblue;
+		/*padding:19px40px;*/
+		/*border-radius:40px;*/
+}
+
+QMenuBar::item:selected {/* when selected using mouse or keyboard */
+		background:#a8a8a8;
+}
+
+QMenuBar::item:pressed {
+		background:#888888;
+}
+
+QMenuBar::separator{
+		background-color:red;
+}
+
+QToolBar{
+		background: lightgreen;
+		spacing:2px;/* spacing between items in the tool bar */
+}
+
+QToolBar::item:hover {/* when selected using mouse or keyboard */
+		background-color:#a8a8a8;
+}
+
+QToolBar::separator{
+		width: 2px;
+    background: skyblue;
+    margin: 3px 3px;
+}
