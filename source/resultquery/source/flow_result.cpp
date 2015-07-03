@@ -180,6 +180,12 @@ void FlowResultDlg::getConditon()
 		m_conStr.append(QString(" and F_FlowPointIdx=%1").arg(ui.cmbFlowPointIdx->currentIndex()));
 	}
 
+	idx = ui.cmbMeterPos->currentIndex();
+	if (idx > 0)//表位号
+	{
+		m_conStr.append(QString(" and F_MeterPosNo=%1").arg(ui.cmbMeterPos->currentIndex()));
+	}
+
 	idx = ui.cmbModel->currentIndex();
 	count = ui.cmbModel->count();
 	if (idx != (count-1))//表型号
