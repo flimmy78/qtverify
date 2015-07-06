@@ -326,9 +326,9 @@ float CAlgorithm::getMeterTempByPos(float inlet, float outlet, int num)
 	//获取被检表的规格
 	QSettings *ParaSet = new QSettings(getFullIniFileName("verifyparaset.ini"), QSettings::IniFormat);//参数配置文件
 	int standard = ParaSet->value("head/standard").toInt();//被检表规格
-    int totalCount = getMaxMeterByIdx(standard)	;
-	float delta = (inlet - outlet)/(totalCount + 1); //双管路设计，假设拐弯处有一块热量表
-	float temper = inlet - (num + 2*num/(totalCount+1))*delta;
+    int totalCount = getMaxMeterByIdx(standard); //该规格热表对应的最大检表数量
+	float delta = (inlet - outlet)/(totalCount + 2); //双管路设计，假设入口前、拐弯处、出口后各有一块热量表
+	float temper = inlet - (num + (int)(2*(num-1)/totalCount))*delta;
 	return temper;
 }
 
