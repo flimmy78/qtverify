@@ -24,8 +24,7 @@ INCLUDEPATH  	=    ./      \
 HEADERS	+= $$(ADEHOME_INC)/include/datatestdlg.h \
 	
 SOURCES	+= source/datatestdlg.cpp
-
-					 
+			 
 FORMS	+= ui/datatestdlg.ui
      
 RESOURCES += datatestdlg.qrc     

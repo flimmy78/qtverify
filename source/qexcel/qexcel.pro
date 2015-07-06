@@ -4,7 +4,7 @@ QT       -= gui
 TEMPLATE = lib
 TARGET = qexcel
 CONFIG += qaxcontainer
-CONFIG += dll console debug
+CONFIG += dll debug
 
 DEPENDPATH += .
 INCLUDEPATH += ./		\

@@ -1,5 +1,5 @@
 TEMPLATE = lib
-CONFIG += dll console debug
+CONFIG += dll debug
 DEFINES += PROTOCOL_DLL
 TARGET = protocol
 DEPENDPATH += .
@@ -15,7 +15,6 @@ LIBS += -lalgorithm
 HEADERS += $$(ADEHOME_INC)/include/protocol.h
 
 SOURCES += protocol.cpp
-
 
 win32{
 DEFINES += WIN32 _AFXDLL

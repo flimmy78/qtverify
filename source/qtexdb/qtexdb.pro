@@ -3,7 +3,7 @@
 ######################################################################
 
 TEMPLATE = lib
-CONFIG += dll console debug axcontainer
+CONFIG += dll debug axcontainer
 TARGET = qtexdb
 DEFINES	+= QTEXDB_DLL
 QT += sql

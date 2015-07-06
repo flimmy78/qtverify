@@ -149,7 +149,7 @@ void MainForm::closeEvent( QCloseEvent * event)
 
 		if (m_comProcess)
 		{
-			m_comProcess->kill();
+			m_comProcess->close();
 			delete m_comProcess;
 			m_comProcess = NULL;
 		}
@@ -713,14 +713,14 @@ void MainForm::processError(QProcess::ProcessError error)
 	case QProcess::FailedToStart:
 		QMessageBox::information(0, tr("Hint"), tr("Failed To Start"));
 		break;
-	case QProcess::Crashed:
-		QMessageBox::information(0, tr("Hint"), tr("Crashed"));
-		break;
+// 	case QProcess::Crashed:
+// 		QMessageBox::information(0, tr("Hint"), tr("Crashed"));
+// 		break;
 	case QProcess::Timedout:
-		QMessageBox::information(0, tr("Hint"), tr("Failed To Start"));
+		QMessageBox::information(0, tr("Hint"), tr("Timed Out"));
 		break;
 	case QProcess::WriteError:
-		QMessageBox::information(0, tr("Hint"), tr("Timed out"));
+		QMessageBox::information(0, tr("Hint"), tr("Write Error"));
 		break;
 	case QProcess::ReadError:
 		QMessageBox::information(0, tr("Hint"), tr("Read Error"));
@@ -729,7 +729,7 @@ void MainForm::processError(QProcess::ProcessError error)
 		QMessageBox::information(0, tr("Hint"), tr("Unknown Error"));
 		break;
 	default:
-		QMessageBox::information(0, tr("default"), tr("default"));
+// 		QMessageBox::information(0, tr("default"), tr("default"));
 		break;
 	}
 }

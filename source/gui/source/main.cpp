@@ -63,9 +63,9 @@ int main(int argc, char *argv[])
 	QFile license(adehome + "\\bin\\license");
 	license.open(QIODevice::ReadOnly | QIODevice::Text);
 	QTextStream in(&license);
-	QString code = in.readLine();
+	QString regCode = in.readLine();
 	license.close();
-	if (!isLicenseOK(code))
+	if (!isLicenseOK(regCode))
 	{
 		RegisterDlg *reg = new RegisterDlg(qGetVolumeInfo());
 		reg->show();
@@ -86,9 +86,10 @@ int main(int argc, char *argv[])
 	splash->show();
 
 	//×Ö·û¼¯±àÂë
-	QTextCodec::setCodecForTr(QTextCodec::codecForName("GB2312"));
-	QTextCodec::setCodecForLocale(QTextCodec::codecForName("GB2312"));
-	QTextCodec::setCodecForCStrings( QTextCodec::codecForName("GB2312"));
+	QTextCodec *codec = QTextCodec::codecForName("system");
+	QTextCodec::setCodecForTr(codec);
+	QTextCodec::setCodecForLocale(codec);
+	QTextCodec::setCodecForCStrings(codec);
 
 	//×¢²áMessageHandler
 	qInstallMsgHandler(myMessageOutput);

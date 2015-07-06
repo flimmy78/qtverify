@@ -3,7 +3,7 @@
 ######################################################################
 
 TEMPLATE = app
-CONFIG  += qt warn_on debug console qaxcontainer qtestlib
+CONFIG  += qt warn_on debug qaxcontainer qtestlib
 TARGET = qtverify
 RC_FILE = qtverify.rc
 
@@ -36,6 +36,10 @@ SOURCES += source/main.cpp	\
 					 source/register.cpp
 					 
 RESOURCES += qtverify.qrc
+
+win32:debug{
+	CONFIG += console
+}
 
 win32{
 DEFINES += WIN32 _AFXDLL

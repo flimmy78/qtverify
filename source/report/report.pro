@@ -4,7 +4,7 @@ QT       -= gui
 QT		 += sql
 TEMPLATE = lib
 TARGET = report
-CONFIG += dll console debug
+CONFIG += dll debug
 
 DEPENDPATH += .
 INCLUDEPATH += ./		\

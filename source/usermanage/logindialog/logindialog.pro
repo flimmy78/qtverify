@@ -1,5 +1,5 @@
 TEMPLATE = lib
-CONFIG += dll console debug
+CONFIG += dll debug
 TARGET = logindialog
 
 QT += sql

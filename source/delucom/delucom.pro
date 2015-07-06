@@ -6,7 +6,7 @@ QT += core gui
 
 TARGET = delucom
 TEMPLATE = app
-CONFIG  += qt warn_on debug console
+CONFIG  += qt warn_on debug
 
 INCLUDEPATH += $$(ADEHOME_INC)/include/qextserial
 
@@ -19,6 +19,10 @@ HEADERS += mainwindow.h \
         aboutdialog.h \
         $$(ADEHOME_INC)/include/qextserial/qextserialport_global.h \
         $$(ADEHOME_INC)/include/qextserial/qextserialport.h
+
+win32:debug{
+	CONFIG += console
+}
 
 win32 {
      SOURCES += $$(ADEHOME_INC)/include/qextserial/qextserialport_win.cpp
