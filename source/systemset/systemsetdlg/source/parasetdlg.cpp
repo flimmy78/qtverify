@@ -47,7 +47,7 @@ ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 	lastParams = new ParaSetReader();
 	flowPointVector();
 	installLastParams();//加载上次的配置信息
-	m_standVerify = false;//默认不使用标准表检测法
+	//m_standVerify = false;//默认不使用标准表检测法
 }
 
 ParaSetDlg::~ParaSetDlg()
@@ -63,30 +63,30 @@ void ParaSetDlg::on_btnExit_clicked()
 void ParaSetDlg::showEvent(QShowEvent * event)
 {
 // 	QMessageBox::warning(this, tr("Warning"), tr("showEvent"));
-	slot_setStandWdg();
+	//slot_setStandWdg();
 }
 
-void ParaSetDlg::slot_setStandWdg()
-{
-	ui.gBox_lcModDevNo->setVisible(m_standVerify);
+//void ParaSetDlg::slot_setStandWdg()
+//{
+//	ui.gBox_lcModDevNo->setVisible(m_standVerify);
+//
+//	ui.label_instRoute->setEnabled(m_standVerify);
+//	ui.cBox_instroute_1->setEnabled(m_standVerify);
+//	ui.cBox_instroute_2->setEnabled(m_standVerify);
+//	ui.cBox_instroute_3->setEnabled(m_standVerify);
+//	ui.cBox_instroute_4->setEnabled(m_standVerify);
+//
+//	ui.label_accumRoute->setEnabled(m_standVerify);
+//	ui.cBox_accumroute_1->setEnabled(m_standVerify);
+//	ui.cBox_accumroute_2->setEnabled(m_standVerify);
+//	ui.cBox_accumroute_3->setEnabled(m_standVerify);
+//	ui.cBox_accumroute_4->setEnabled(m_standVerify);
+//}
 
-	ui.label_instRoute->setEnabled(m_standVerify);
-	ui.cBox_instroute_1->setEnabled(m_standVerify);
-	ui.cBox_instroute_2->setEnabled(m_standVerify);
-	ui.cBox_instroute_3->setEnabled(m_standVerify);
-	ui.cBox_instroute_4->setEnabled(m_standVerify);
-
-	ui.label_accumRoute->setEnabled(m_standVerify);
-	ui.cBox_accumroute_1->setEnabled(m_standVerify);
-	ui.cBox_accumroute_2->setEnabled(m_standVerify);
-	ui.cBox_accumroute_3->setEnabled(m_standVerify);
-	ui.cBox_accumroute_4->setEnabled(m_standVerify);
-}
-
-void ParaSetDlg::setStandMethod(bool method)
-{
-	m_standVerify = method;
-}
+//void ParaSetDlg::setStandMethod(bool method)
+//{
+//	m_standVerify = method;
+//}
 
 void ParaSetDlg::closeEvent(QCloseEvent * event)
 {
@@ -274,7 +274,7 @@ void ParaSetDlg::slot_autopick_clicked(int id)
 void ParaSetDlg::installLastParams()
 {
 	installHead();
-	installStdDevNo();
+	//installStdDevNo();
 	installFlowPoint();
 	installBool();
 	installOther();
@@ -298,11 +298,11 @@ void ParaSetDlg::installHead()
 	/********************************************************************/
 }
 
-void ParaSetDlg::installStdDevNo()
-{
-	ui.lineEdit_instDevNo->setText(lastParams->m_params->m_instStdDevNo);
-	ui.lineEdit_accumDevNo->setText(lastParams->m_params->m_accumStdDevNo);
-}
+//void ParaSetDlg::installStdDevNo()
+//{
+//	ui.lineEdit_instDevNo->setText(lastParams->m_params->m_instStdDevNo);
+//	ui.lineEdit_accumDevNo->setText(lastParams->m_params->m_accumStdDevNo);
+//}
 
 void ParaSetDlg::installFlowPoint()
 {
@@ -316,8 +316,8 @@ void ParaSetDlg::installFlowPoint()
 		lineEdit_freqs[i]->setText(QString::number(lastParams->m_params->fp_info[i].fp_freq));
 		cBox_seqs[i]->setCurrentIndex(lastParams->m_params->fp_info[i].fp_seq);
 
-		cBox_instRoutes[i]->setCurrentIndex(lastParams->m_params->fp_info[i].fp_instStdRoute+1);
-		cBox_accumRoutes[i]->setCurrentIndex(lastParams->m_params->fp_info[i].fp_accumStdRoute+1);
+		//cBox_instRoutes[i]->setCurrentIndex(lastParams->m_params->fp_info[i].fp_instStdRoute+1);
+		//cBox_accumRoutes[i]->setCurrentIndex(lastParams->m_params->fp_info[i].fp_accumStdRoute+1);
 	}
 }
 
@@ -400,15 +400,15 @@ void ParaSetDlg::flowPointVector()
 	cBox_seqs.append((ui.cBox_seq_3));
 	cBox_seqs.append((ui.cBox_seq_4));
 	//瞬时标准表通道号控件数组.
-	cBox_instRoutes.append(ui.cBox_instroute_1);
-	cBox_instRoutes.append(ui.cBox_instroute_2);
-	cBox_instRoutes.append(ui.cBox_instroute_3);
-	cBox_instRoutes.append(ui.cBox_instroute_4);
+	//cBox_instRoutes.append(ui.cBox_instroute_1);
+	//cBox_instRoutes.append(ui.cBox_instroute_2);
+	//cBox_instRoutes.append(ui.cBox_instroute_3);
+	//cBox_instRoutes.append(ui.cBox_instroute_4);
 	//累积检定次序控件数组.
-	cBox_accumRoutes.append(ui.cBox_accumroute_1);
-	cBox_accumRoutes.append(ui.cBox_accumroute_2);
-	cBox_accumRoutes.append(ui.cBox_accumroute_3);
-	cBox_accumRoutes.append(ui.cBox_accumroute_4);
+	//cBox_accumRoutes.append(ui.cBox_accumroute_1);
+	//cBox_accumRoutes.append(ui.cBox_accumroute_2);
+	//cBox_accumRoutes.append(ui.cBox_accumroute_3);
+	//cBox_accumRoutes.append(ui.cBox_accumroute_4);
 }
 
 void ParaSetDlg::on_btnSave_clicked()
@@ -421,10 +421,10 @@ void ParaSetDlg::on_btnSave_clicked()
 	}
 
 	SaveHead();
-	if (m_standVerify)
-	{
-		SaveStdMeter();
-	}
+	//if (m_standVerify)
+	//{
+	//	SaveStdMeter();
+	//}
 	SaveFlowPoint();
 	SaveBool();
 	SaveOther();
@@ -526,13 +526,13 @@ void ParaSetDlg::SaveHead()
 	settings->endGroup();
 }
 
-void ParaSetDlg::SaveStdMeter()
-{
-	settings->beginGroup("lcModDevNo");
-	settings->setValue("InstStdDevNo",ui.lineEdit_instDevNo->text());
-	settings->setValue("AccumStdDevNo",ui.lineEdit_accumDevNo->text());
-	settings->endGroup();
-}
+//void ParaSetDlg::SaveStdMeter()
+//{
+//	settings->beginGroup("lcModDevNo");
+//	settings->setValue("InstStdDevNo",ui.lineEdit_instDevNo->text());
+//	settings->setValue("AccumStdDevNo",ui.lineEdit_accumDevNo->text());
+//	settings->endGroup();
+//}
 
 /*
 ** 保存第i流量点参数
@@ -551,8 +551,8 @@ void ParaSetDlg::SaveFlowPoint()
 		settings->setValue("valve", cBox_valves[i]->currentIndex());//对应的阀门
 		settings->setValue("seq", cBox_seqs[i]->currentIndex());//检定顺序
 
-		settings->setValue("instStdRoute", cBox_instRoutes[i]->currentIndex()-1);//瞬时流量采集通道
-		settings->setValue("accumStdRoute", cBox_accumRoutes[i]->currentIndex()-1);//累积流量采集通道
+		//settings->setValue("instStdRoute", cBox_instRoutes[i]->currentIndex()-1);//瞬时流量采集通道
+		//settings->setValue("accumStdRoute", cBox_accumRoutes[i]->currentIndex()-1);//累积流量采集通道
 	}
 	settings->endArray();
 }
@@ -642,7 +642,7 @@ void ParaSetReader::initValveMap()
 void ParaSetReader::readParamValues()
 {
 	readHead();
-	readStdDevNo();
+	//readStdDevNo();
 	readBool();
 	readOther();
 	readFlowPoints();
@@ -670,11 +670,11 @@ void ParaSetReader::readHead()
 	/************************************************************************/
 }
 
-void ParaSetReader::readStdDevNo()
-{
-	m_params->m_instStdDevNo = m_settings->value("lcModDevNo/InstStdDevNo").toString();
-	m_params->m_accumStdDevNo = m_settings->value("lcModDevNo/AccumStdDevNo").toString();
-}
+//void ParaSetReader::readStdDevNo()
+//{
+//	m_params->m_instStdDevNo = m_settings->value("lcModDevNo/InstStdDevNo").toString();
+//	m_params->m_accumStdDevNo = m_settings->value("lcModDevNo/AccumStdDevNo").toString();
+//}
 
 void ParaSetReader::readFlowPoints()
 {
@@ -697,8 +697,8 @@ void ParaSetReader::readFlowPoints()
 			m_params->total_fp++;
 		}
 
-		m_params->fp_info[i].fp_instStdRoute = m_settings->value("instStdRoute").toInt();
-		m_params->fp_info[i].fp_accumStdRoute = m_settings->value("accumStdRoute").toInt();
+		//m_params->fp_info[i].fp_instStdRoute = m_settings->value("instStdRoute").toInt();
+		//m_params->fp_info[i].fp_accumStdRoute = m_settings->value("accumStdRoute").toInt();
 	}
 	m_settings->endArray();
 }
@@ -737,6 +737,20 @@ Flow_Point_Info ParaSetReader::getFpBySeq(int i)
 		}
 	}
 	
-	return m_params->fp_info[0];
-	//throw i;//如果遍历各有效流量点后没有匹配的检定次序,那么此检定次序不存在
+	//return m_params->fp_info[0];
+	throw i;//如果遍历各有效流量点后没有匹配的检定次序,那么此检定次序不存在
+}
+
+int ParaSetReader::getBigSmallBySeq(int i)
+{
+	//遍历各有效流量点; 如果当前流量点的检定次序为i, 则返回此流量点界面索引
+	for (int j=0; j < VERIFY_POINTS; j++)
+	{
+		if (m_params->fp_info[j].fp_seq == i)
+		{
+			return j;
+		}
+	}
+
+	return 0;//默认返回大流量
 }

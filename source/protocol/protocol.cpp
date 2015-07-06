@@ -1451,12 +1451,12 @@ void lcModbusRTUProtocol::makeSendBuf(uchar address, lcModbusRTUFunc func, UINT1
 	m_sendBuf.append((uchar)(regCount));
 	m_sendBuf.append(getCRCArray(calcModRtuCRC((uchar *)m_sendBuf.data(), m_sendBuf.length())));
 
-	//printf("\nsendbuf:\n");
-	//for (int i=0;i<m_sendBuf.length();i++)
-	//{
-	//	printf("%02X ", (uchar)m_sendBuf.at(i));
-	//}
-	//printf("\nsendbuf end:\n");
+	printf("\nsendbuf:\n");
+	for (int i=0;i<m_sendBuf.length();i++)
+	{
+		printf("%02X ", (uchar)m_sendBuf.at(i));
+	}
+	printf("\nsendbuf end:\n");
 }
 
 void lcModbusRTUProtocol::makeSendBuf(lcModSendCmd command)

@@ -65,6 +65,17 @@ enum now_state
 };
 
 /*
+** 控件索引号所对应的流量点枚举类型
+*/
+enum flow_rate_wdg
+{
+	FLOW_RATE_BIG=0,    //大流量
+	FLOW_RATE_MID_2,	//中二流量
+	FLOW_RATE_MID_1,    //中一流量
+	FLOW_RATE_SMALL     //小流量
+};
+
+/*
 ** 检定方法类型枚举
 */
 enum Verify_Method
@@ -223,8 +234,8 @@ struct Flow_Point_Info_STR
 	int fp_valve_idx;//第i流量点的控制阀(大)对应的combbox索引
 	int fp_valve;//第i流量点的控制阀(大)对应的端口号
 	int fp_seq;//第i流量点的检定次序(3)
-	int fp_instStdRoute;//第i流量点的瞬时采集设备的通道号
-	int fp_accumStdRoute;//第i流量点的累积采集设备的通道号
+	//int fp_instStdRoute;//第i流量点的瞬时采集设备的通道号
+	//int fp_accumStdRoute;//第i流量点的累积采集设备的通道号
 };
 typedef struct Flow_Point_Info_STR Flow_Point_Info;
 
@@ -250,8 +261,8 @@ public:
 	QString m_temper;//当前温度  单位摄氏度
 	QString m_humidity;//当前湿度 单位百分比
 	QString m_airpress;//当前大气压力	单位Pa
-	QString m_instStdDevNo;//瞬时流量采集设备的地址
-	QString m_accumStdDevNo;//累积流量采集设备的地址
+	//QString m_instStdDevNo;//瞬时流量采集设备的地址
+	//QString m_accumStdDevNo;//累积流量采集设备的地址
 	Flow_Point_Info fp_info[VERIFY_POINTS];//第i流量点信息
 	int total_fp;//有效流量点的数目
 

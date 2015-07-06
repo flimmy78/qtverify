@@ -17,6 +17,7 @@
 
 #include <QtGui/QWidget>
 #include <QByteArray>
+#include <QSettings>
 #include <QtGui/QDataWidgetMapper>
 
 #include "ui_flowstandard.h"
@@ -268,6 +269,8 @@ private:
 	ComThread m_accumFlowThread;//累积流量采集线程
 	QTimer* m_accumSTDMeterTimer;//累积流量计时器
 	QByteArray m_accumStdPulse;//16路累积流量脉冲值, 需二次加工
+
+	QSettings *m_stdParam;//读取标准表设置
 };
 
 #endif //FLOWSTANDARD_H

@@ -915,7 +915,7 @@ void lcModRtuComObject::readLcModComBuffer()
 	{
 		m_lcModCom->flush();
 		QByteArray valueArray = m_lcModProtocol->getReadVale();
-		/*qDebug()<< "\nread data start:\n";
+		qDebug()<< "\nread data start:\n";
 		for (int i=0;i<valueArray.length();i++)
 		{
 			printf("%d: 0x%02X\n", i, (uchar)valueArray.at(i));
@@ -925,7 +925,7 @@ void lcModRtuComObject::readLcModComBuffer()
 		{
 			printf("%d: %d\n", i, get9017RouteI(i, valueArray));
 		}
-		qDebug()<< "\nread data end:\n";*/
+		qDebug()<< "\nread data end:\n";
 		emit lcModValueIsReady(valueArray);
 	}
 }
