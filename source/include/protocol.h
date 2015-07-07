@@ -266,6 +266,16 @@ typedef struct
 	UINT8 endCode;      //结束符
 }DeluMeter_Frame_Struct;
 
+//四个流量点的系数结构
+struct MeterCoe_STR
+{
+	float bigCoe;
+	float mid2Coe;
+	float mid1Coe;
+	float smallCoe;
+};
+typedef MeterCoe_STR* MeterCoe_PTR;
+
 //热量表通讯协议基类
 class PROTOCOL_EXPORT MeterProtocol : public CProtocol
 {
@@ -293,6 +303,7 @@ public slots:
 	virtual void makeFrameOfSetVerifyStatus(){};	//设置进入检定状态
 	virtual void makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo){};	//修改表号
 	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr){};	//修改流量参数
+	virtual void makeFrameOfModifyFlowCoe(QString meterNO, MeterCoe_PTR oldCoe, MeterCoe_PTR newCoe){};	//修改流量参数
 
 	virtual QByteArray getSendFrame();
 	virtual QString getFullMeterNo();
@@ -326,6 +337,7 @@ public slots:
 	virtual void makeFrameOfSetVerifyStatus();	//设置进入检定状态
 	virtual void makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo);	//修改表号(14位表号)
 	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr);	//修改流量参数
+	virtual void makeFrameOfModifyFlowCoe(QString meterNO, MeterCoe_PTR oldCoe, MeterCoe_PTR newCoe);	//修改流量参数
 
 private:
 	DeluMeter_Frame_Struct *m_deluMeterFrame;
@@ -348,6 +360,7 @@ public slots:
 	virtual void makeFrameOfSetVerifyStatus();	//设置进入检定状态
 	virtual void makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo);	//修改表号
 	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr);	//修改流量参数
+	virtual void makeFrameOfModifyFlowCoe(QString meterNO, MeterCoe_PTR oldCoe, MeterCoe_PTR newCoe);	//修改流量参数
 
 private:
 	DeluMeter_Frame_Struct *m_deluMeterFrame;

@@ -1260,6 +1260,77 @@ void DeluMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, 
 	m_sendBuf.append(cs).append(0x16);
 }
 
+/*
+** 组帧：修改流量系数
+** 输入参数：
+	meterNO:表号，14位
+	oldCoe:热量表原来的各流量点系数，无单位%
+	newCoe:热量表新的各流量点误差，单位%
+*/
+void DeluMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, MeterCoe_PTR oldCoe, MeterCoe_PTR newCoe)
+{
+	m_sendBuf = "";
+
+	for (int i=0; i<METER_WAKEUP_CODE_NUM; i++)
+	{
+		m_sendBuf.append(METER_WAKEUP_CODE);//唤醒红外
+	}
+
+	for (int j=0; j<METER_PREFIX_CODE_NUM; j++)
+	{
+		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
+	}
+
+	m_sendBuf.append(METER_START_CODE);//起始符
+	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
+	UINT8 cs = METER_START_CODE + METER_TYPE_ASK_CODE;
+	UINT8 oldNo;
+	bool ok;
+	for (int m=METER_ADDR_LEN-1; m>=0; m--)
+	{
+		oldNo = meterNO.mid(2*m, 2).toUInt(&ok, 16);
+		m_sendBuf.append(oldNo); //表号
+		cs += oldNo;
+	}
+
+	UINT8 code1 = 0x36;
+	UINT8 code2 = 0x0C;
+	UINT8 code3 = 0xA0;
+	UINT8 code4 = 0x19;
+	UINT8 code5 = 0x06;
+	UINT8 code6 = 0x00;
+	m_sendBuf.append(code1).append(code2).append(code3).append(code4).append(code5).append(code6);
+	cs += code1 + code2 + code3 + code4 + code5 + code6;
+
+	QString bigCoe = QString::number(oldCoe->bigCoe/(1+newCoe->bigCoe/100), 'f', 3); //保留3位小数，四舍五入
+	QString mid2Coe = QString::number(oldCoe->mid2Coe/(1+newCoe->mid2Coe/100), 'f', 3);
+	QString mid1Coe = QString::number(oldCoe->mid1Coe/(1+newCoe->mid1Coe/100), 'f', 3);
+	QString smallCoe = QString::number(oldCoe->smallCoe/(1+newCoe->smallCoe/100), 'f', 3);
+
+	int bigDec = bigCoe.section(".", 1).toUInt()*4096.0/1000.0; //只取整数部分，不再进行四舍五入
+	int mid2Dec = mid2Coe.section(".", 1).toUInt()*4096.0/1000.0;
+	int mid1Dec = mid1Coe.section(".", 1).toUInt()*4096.0/1000.0;
+	int smallDec = smallCoe.section(".", 1).toUInt()*4096.0/1000.0;
+
+	QString big = QString::number(bigDec, 16).rightJustified(3, '0');
+	QString mid2 = QString::number(mid2Dec, 16).rightJustified(3, '0');
+	QString mid1 = QString::number(mid1Dec, 16).rightJustified(3, '0');
+	QString small = QString::number(smallDec, 16).rightJustified(3, '0');
+	UINT8 A7 = big.right(2).toUInt(&ok, 16);
+	UINT8 A6 = (bigCoe.left(1) + big.left(1)).toUInt(&ok, 16);
+	UINT8 A5 = mid2.right(2).toUInt(&ok, 16);
+	UINT8 A4 = (mid2Coe.left(1) + mid2.left(1)).toUInt(&ok, 16);
+	UINT8 A3 = mid1.right(2).toUInt(&ok, 16);
+	UINT8 A2 = (mid1Coe.left(1) + mid1.left(1)).toUInt(&ok, 16);
+	UINT8 A1 = small.right(2).toUInt(&ok, 16);
+	UINT8 A0 = (smallCoe.left(1) + small.left(1)).toUInt(&ok, 16);
+
+	m_sendBuf.append(A7).append(A6).append(A5).append(A4).append(A3).append(A2).append(A1).append(A0);
+	cs += A7 + A6 + A5 + A4 + A3 + A2 + A1 + A0;
+
+	m_sendBuf.append(cs).append(0x16);
+}
+
 /***********************************************
 类名：TgMeterProtocol
 功能：热量表通讯协议-天罡热量表
@@ -1303,6 +1374,11 @@ void TgMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMe
 }
 
 void TgMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr)
+{
+
+}
+
+void TgMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, MeterCoe_PTR oldCoe, MeterCoe_PTR newCoe)
 {
 
 }

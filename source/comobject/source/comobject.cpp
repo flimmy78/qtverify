@@ -701,6 +701,18 @@ void MeterComObject::askModifyFlowCoe(QString meterNO, float bigErr, float mid2E
 }
 
 /*
+** 请求修改流量参数
+*/
+void MeterComObject::askModifyFlowCoe(QString meterNO, MeterCoe_PTR oldCoe, MeterCoe_PTR newCoe)
+{
+	qDebug()<<"askModifyFlowCoe"<<meterNO<<oldCoe->bigCoe<<oldCoe->mid2Coe<<oldCoe->mid1Coe<<oldCoe->smallCoe;
+	qDebug()<<"askModifyFlowCoe"<<meterNO<<newCoe->bigCoe<<newCoe->mid2Coe<<newCoe->mid1Coe<<newCoe->smallCoe;
+	m_meterProtocol->makeFrameOfModifyFlowCoe(meterNO, oldCoe, newCoe);
+	QByteArray buf = m_meterProtocol->getSendFrame();
+	m_meterCom->write(buf);
+}
+
+/*
 ** 类名：Sti1062aComObject
 ** 功能：Sti1062a温度串口类-打开串口;设置串口参数；关闭串口；
 */
