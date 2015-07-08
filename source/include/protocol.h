@@ -303,7 +303,7 @@ public slots:
 	virtual void makeFrameOfSetVerifyStatus(){};	//设置进入检定状态
 	virtual void makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo){};	//修改表号
 	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr){};	//修改流量参数
-	virtual void makeFrameOfModifyFlowCoe(QString meterNO, MeterCoe_PTR oldCoe, MeterCoe_PTR newCoe){};	//修改流量参数
+	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe){};	//修改流量参数
 
 	virtual QByteArray getSendFrame();
 	virtual QString getFullMeterNo();
@@ -337,7 +337,7 @@ public slots:
 	virtual void makeFrameOfSetVerifyStatus();	//设置进入检定状态
 	virtual void makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo);	//修改表号(14位表号)
 	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr);	//修改流量参数
-	virtual void makeFrameOfModifyFlowCoe(QString meterNO, MeterCoe_PTR oldCoe, MeterCoe_PTR newCoe);	//修改流量参数
+	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe);	//修改流量参数
 
 private:
 	DeluMeter_Frame_Struct *m_deluMeterFrame;
@@ -360,7 +360,7 @@ public slots:
 	virtual void makeFrameOfSetVerifyStatus();	//设置进入检定状态
 	virtual void makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo);	//修改表号
 	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr);	//修改流量参数
-	virtual void makeFrameOfModifyFlowCoe(QString meterNO, MeterCoe_PTR oldCoe, MeterCoe_PTR newCoe);	//修改流量参数
+	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe);	//修改流量参数
 
 private:
 	DeluMeter_Frame_Struct *m_deluMeterFrame;

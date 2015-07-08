@@ -191,7 +191,7 @@ public slots:
 	void askSetVerifyStatus(); //请求设置进入检定状态
 	void askModifyMeterNO(QString oldMeterNo, QString newMeterNo);   //请求修改表号(14位表号)
 	void askModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr);  //请求修改流量系数
-	void askModifyFlowCoe(QString meterNO, MeterCoe_PTR oldCoe, MeterCoe_PTR newCoe);
+	void askModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe);
 
 	void setProtocolVersion(int version);
 };

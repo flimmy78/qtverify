@@ -1267,7 +1267,7 @@ void DeluMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, 
 	oldCoe:热量表原来的各流量点系数，无单位%
 	newCoe:热量表新的各流量点误差，单位%
 */
-void DeluMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, MeterCoe_PTR oldCoe, MeterCoe_PTR newCoe)
+void DeluMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe)
 {
 	m_sendBuf = "";
 
@@ -1302,10 +1302,10 @@ void DeluMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, MeterCoe_PTR o
 	m_sendBuf.append(code1).append(code2).append(code3).append(code4).append(code5).append(code6);
 	cs += code1 + code2 + code3 + code4 + code5 + code6;
 
-	QString bigCoe = QString::number(oldCoe->bigCoe/(1+newCoe->bigCoe/100), 'f', 3); //保留3位小数，四舍五入
-	QString mid2Coe = QString::number(oldCoe->mid2Coe/(1+newCoe->mid2Coe/100), 'f', 3);
-	QString mid1Coe = QString::number(oldCoe->mid1Coe/(1+newCoe->mid1Coe/100), 'f', 3);
-	QString smallCoe = QString::number(oldCoe->smallCoe/(1+newCoe->smallCoe/100), 'f', 3);
+	QString bigCoe = QString::number(oldCoe->bigCoe/(1+bigErr/100), 'f', 3); //保留3位小数，四舍五入
+	QString mid2Coe = QString::number(oldCoe->mid2Coe/(1+mid2Err/100), 'f', 3);
+	QString mid1Coe = QString::number(oldCoe->mid1Coe/(1+mid1Err/100), 'f', 3);
+	QString smallCoe = QString::number(oldCoe->smallCoe/(1+smallErr/100), 'f', 3);
 
 	int bigDec = bigCoe.section(".", 1).toUInt()*4096.0/1000.0; //只取整数部分，不再进行四舍五入
 	int mid2Dec = mid2Coe.section(".", 1).toUInt()*4096.0/1000.0;
@@ -1378,7 +1378,7 @@ void TgMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, fl
 
 }
 
-void TgMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, MeterCoe_PTR oldCoe, MeterCoe_PTR newCoe)
+void TgMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe)
 {
 
 }

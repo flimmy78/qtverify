@@ -703,11 +703,11 @@ void MeterComObject::askModifyFlowCoe(QString meterNO, float bigErr, float mid2E
 /*
 ** 请求修改流量参数
 */
-void MeterComObject::askModifyFlowCoe(QString meterNO, MeterCoe_PTR oldCoe, MeterCoe_PTR newCoe)
+void MeterComObject::askModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe)
 {
+	qDebug()<<"askModifyFlowCoe"<<meterNO<<bigErr<<mid2Err<<mid1Err<<smallErr;
 	qDebug()<<"askModifyFlowCoe"<<meterNO<<oldCoe->bigCoe<<oldCoe->mid2Coe<<oldCoe->mid1Coe<<oldCoe->smallCoe;
-	qDebug()<<"askModifyFlowCoe"<<meterNO<<newCoe->bigCoe<<newCoe->mid2Coe<<newCoe->mid1Coe<<newCoe->smallCoe;
-	m_meterProtocol->makeFrameOfModifyFlowCoe(meterNO, oldCoe, newCoe);
+	m_meterProtocol->makeFrameOfModifyFlowCoe(meterNO, bigErr, mid2Err, mid1Err, smallErr, oldCoe);
 	QByteArray buf = m_meterProtocol->getSendFrame();
 	m_meterCom->write(buf);
 }
