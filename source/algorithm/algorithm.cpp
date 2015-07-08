@@ -205,14 +205,23 @@ float getMeterGradeErrLmt(int grade, float delta_t_min, float delta_t, float dn_
 	return ret;
 }
 
+//根据热量表通讯返回的两字节数据，计算出对应的浮点型数值
 float calcFloatValueOfCoe(QString coe)
 {
 	bool ok;
 	float dec = coe.right(3).toInt(&ok, 16)/4096.0;
 	float coeV = coe.left(1).toFloat() + dec; 
-	float fValue = 100/coeV - 100;
 
-	return fValue;
+	return coeV;
+}
+
+//根据热量表通讯返回的两字节数据，计算出对应的误差值
+float calcErrorValueOfCoe(QString coe)
+{
+	float coeV = calcFloatValueOfCoe(coe); 
+	float errV = 100/coeV - 100;
+
+	return errV;
 }
 
 /* 计算ModBus-RTU传输协议的CRC校验值
