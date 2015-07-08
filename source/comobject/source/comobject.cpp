@@ -817,7 +817,7 @@ lcModRtuComObject::lcModRtuComObject(QObject* parent) : ComObject(parent)
 	m_lcModCom = NULL;
 	m_lcModProtocol = new lcModbusRTUProtocol();
 
-	m_int=0;
+	//m_int=0;
 }
 
 lcModRtuComObject::~lcModRtuComObject()
@@ -827,7 +827,7 @@ lcModRtuComObject::~lcModRtuComObject()
 		if(m_lcModCom->isOpen())
 		{
 			m_lcModCom->close();
-			qDebug()<<"m_lcModCom closed";
+			qDebug()<<m_lcModCom->portName()<<" m_lcModCom closed";
 		}
 		delete m_lcModCom;
 	}
@@ -850,8 +850,6 @@ bool lcModRtuComObject::openLcModCom(ComInfoStruct *comStruct)
 	m_lcModCom = new QextSerialPort(portName, QextSerialPort::EventDriven);
 #endif
 	connect(m_lcModCom, SIGNAL(readyRead()), this, SLOT(readLcModComBuffer()));
-	//connect(&m_timer, SIGNAL(timeout()), this, SLOT(sendCmd()));
-	//m_timer.start(1000);
 
 	m_lcModCom->setBaudRate((BaudRateType)comStruct->baudRate);// BAUD9600); //设置波特率  
 	m_lcModCom->setDataBits((DataBitsType)comStruct->dataBit); //DATA_8);    //设置数据位
@@ -942,12 +940,12 @@ void lcModRtuComObject::readLcModComBuffer()
 	}
 }
 
-void lcModRtuComObject::sendCmd()
-{
-	int len = m_int%EDA_9150A_ROUTE_CNT;
-	ask9150ARouteL(len+1, 0x01);
-	m_int++;
-}
+//void lcModRtuComObject::sendCmd()
+//{
+//	int len = m_int%EDA_9150A_ROUTE_CNT;
+//	ask9150ARouteL(len+1, 0x01);
+//	m_int++;
+//}
 
 void lcModRtuComObject::close()
 {

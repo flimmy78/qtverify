@@ -247,13 +247,12 @@ signals:
 		void readLcModComBuffer();
 		void close();
 
-		void sendCmd();
+		//void sendCmd();
 private:
 	QextSerialPort *m_lcModCom;      //电磁流量计采集串口
 	lcModbusRTUProtocol *m_lcModProtocol;   //电磁流量计采集通讯协议类对象
 
-	int m_int;
-	QTimer m_timer;
+	//int m_int;
 };
 
 #endif //COMOBJECT_H
