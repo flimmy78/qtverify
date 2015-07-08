@@ -50,6 +50,9 @@ qmake -t vclib
 cd ../flowweight
 qmake -t vclib
 
+cd ../masterslaveset
+qmake -t vclib
+
 cd ../flowstandard
 qmake -t vclib
 
