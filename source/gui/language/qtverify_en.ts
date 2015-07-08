@@ -104,44 +104,37 @@
     </message>
     <message>
         <location filename="../source/mainform.cpp" line="714"/>
-        <location filename="../source/mainform.cpp" line="717"/>
         <location filename="../source/mainform.cpp" line="720"/>
         <location filename="../source/mainform.cpp" line="723"/>
         <location filename="../source/mainform.cpp" line="726"/>
         <location filename="../source/mainform.cpp" line="729"/>
         <source>Hint</source>
-        <translation type="unfinished"></translation>
+        <translation>Hint</translation>
     </message>
     <message>
         <location filename="../source/mainform.cpp" line="714"/>
-        <location filename="../source/mainform.cpp" line="720"/>
         <source>Failed To Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Failed To Start</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="717"/>
-        <source>Crashed</source>
-        <translation type="unfinished"></translation>
+        <location filename="../source/mainform.cpp" line="720"/>
+        <source>Timed Out</source>
+        <translation>Timed Out</translation>
     </message>
     <message>
         <location filename="../source/mainform.cpp" line="723"/>
-        <source>Timed out</source>
-        <translation type="unfinished"></translation>
+        <source>Write Error</source>
+        <translation>Write Error</translation>
     </message>
     <message>
         <location filename="../source/mainform.cpp" line="726"/>
         <source>Read Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Read Error</translation>
     </message>
     <message>
         <location filename="../source/mainform.cpp" line="729"/>
         <source>Unknown Error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainform.cpp" line="732"/>
-        <source>default</source>
-        <translation type="unfinished"></translation>
+        <translation>Unknown Error</translation>
     </message>
 </context>
 <context>
@@ -155,12 +148,12 @@
         <translation type="obsolete">no translator files ...</translation>
     </message>
     <message>
-        <location filename="../source/main.cpp" line="105"/>
+        <location filename="../source/main.cpp" line="106"/>
         <source>connect database ...</source>
         <translation>connect database ...</translation>
     </message>
     <message>
-        <location filename="../source/main.cpp" line="109"/>
+        <location filename="../source/main.cpp" line="110"/>
         <source>setting up the mainwindow ...</source>
         <translation>setting up the mainwindow ...</translation>
     </message>

@@ -49,7 +49,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 
 	ui.setupUi(this);
 	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
-	QString logofile = adehome.replace("\\", "/") + "\/uif\/pixmap\/adelogo.png";
+	QString logofile = adehome.replace("\\", "\/") + "\/uif\/pixmap\/adelogo.png";
 	ui.label->setStyleSheet(QString::fromUtf8("border-image: url(%1);").arg(logofile));
 
 	m_mySql = NULL;
