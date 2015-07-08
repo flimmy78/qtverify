@@ -759,33 +759,37 @@ void DataTestDlg::slotFreshMeterTemper(const QString& comName, const QString& te
 
 void DataTestDlg::slotFreshBigCoe(const QString& comName, const QString& bigCoe)
 {
-	float bigErr = calcFloatValueOfCoe(bigCoe);
+	float bigErr = calcErrorValueOfCoe(bigCoe);
 	ui.lnEditBigOldError->setText(QString::number(bigErr, 'f', ERR_PRECISION));
-	ui.lnEditBigOldCoe->setText(bigCoe);
+	float bigCoeV = calcFloatValueOfCoe(bigCoe);
+	ui.lnEditBigOldCoe->setText(bigCoe + "(" + QString::number(bigCoeV, 'f', ERR_PRECISION) + ")");
 	qDebug()<<"读取大流量系数 成功...";
 }
 
 void DataTestDlg::slotFreshMid2Coe(const QString& comName, const QString& mid2Coe)
 {
-	float mid2Err = calcFloatValueOfCoe(mid2Coe);
+	float mid2Err = calcErrorValueOfCoe(mid2Coe);
 	ui.lnEditMid2OldError->setText(QString::number(mid2Err, 'f', ERR_PRECISION));
-	ui.lnEditMid2OldCoe->setText(mid2Coe);
+	float mid2CoeV = calcFloatValueOfCoe(mid2Coe);
+	ui.lnEditMid2OldCoe->setText(mid2Coe + "(" + QString::number(mid2CoeV, 'f', ERR_PRECISION) + ")");
 	qDebug()<<"读取中流2流量系数 成功...";
 }
 
 void DataTestDlg::slotFreshMid1Coe(const QString& comName, const QString& mid1Coe)
 {
-	float mid1Err = calcFloatValueOfCoe(mid1Coe);
+	float mid1Err = calcErrorValueOfCoe(mid1Coe);
 	ui.lnEditMid1OldError->setText(QString::number(mid1Err, 'f', ERR_PRECISION));
-	ui.lnEditMid1OldCoe->setText(mid1Coe);
+	float mid1CoeV = calcFloatValueOfCoe(mid1Coe);
+	ui.lnEditMid1OldCoe->setText(mid1Coe + "(" + QString::number(mid1CoeV, 'f', ERR_PRECISION) + ")");
 	qDebug()<<"读取中流1流量系数 成功...";
 }
 
 void DataTestDlg::slotFreshSmallCoe(const QString& comName, const QString& smallCoe)
 {
-	float smallErr = calcFloatValueOfCoe(smallCoe);
+	float smallErr = calcErrorValueOfCoe(smallCoe);
+	float smallCoeV = calcFloatValueOfCoe(smallCoe);
 	ui.lnEditSmallOldError->setText(QString::number(smallErr, 'f', ERR_PRECISION));
-	ui.lnEditSmallOldCoe->setText(smallCoe);
+	ui.lnEditSmallOldCoe->setText(smallCoe + "(" + QString::number(smallCoeV, 'f', ERR_PRECISION) + ")");
 	qDebug()<<"读取小流量系数 成功...";
 }
 
