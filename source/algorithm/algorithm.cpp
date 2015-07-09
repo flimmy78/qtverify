@@ -303,6 +303,17 @@ int get9017RouteI(int i, QByteArray valueArray)
 	return value;
 }
 
+float getInstStdValue(float elecValue, float upperValue)
+{
+	if (elecValue<=ELEC_ZERO)
+	{
+		return 0.0f;
+	}
+
+	float deltaStd = ELEC_UPPER - ELEC_ZERO;
+	float deltaCur = elecValue - ELEC_ZERO;
+	return (deltaCur/deltaStd)*upperValue;
+}
 /**********************************************************
 类名：CAlgorithm
 功能：检定算法类

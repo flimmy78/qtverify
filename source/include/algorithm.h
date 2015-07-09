@@ -36,6 +36,7 @@ ALGORITHM_EXPORT UINT16 calcModRtuCRC(uchar *, int);//¼ÆËãmodbus-RTUĞ­ÒéµÄCRCĞ£Ñ
 ALGORITHM_EXPORT QByteArray getCRCArray(UINT16);//½«CRC¼ÆËã½á¹û×ª»»ÎªQByteArray
 ALGORITHM_EXPORT int get9150ARouteI(int i, QByteArray valueArray);//»ñÈ¡Á¦´´Ä£¿éÖĞÍ¨µÀiµÄÂö³åÖµ
 ALGORITHM_EXPORT int get9017RouteI(int i, QByteArray valueArray);//»ñÈ¡Á¦´´Ä£¿éÖĞÍ¨µÀiµÄÂö³åÖµ
+ALGORITHM_EXPORT float getInstStdValue(float, float);//¼ÆËãµ±Ç°µçÁ÷Öµ¶ÔÓ¦µÄ±ê×¼±íË²Ê±Á÷ËÙ
 const float density[150] = { //Ñ¹Á¦<=0.6MPa
 	1000.2f,
 	1000.2f,

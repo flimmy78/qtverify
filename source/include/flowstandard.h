@@ -122,12 +122,14 @@ public:
 	float m_realFlow;		  //流速(m3/h）
 	float **m_meterErr;       //被检表的误差(不同表位、不同流量点的误差)
 	int *m_meterResult;       //检表结果 1:合格；0:不合格
+	MeterCoe_PTR *m_oldMeterCoe; //热量表原来的各流量点系数
 
 	Flow_Verify_Record_PTR m_recPtr; //有效的检定记录
 	QString m_timeStamp; //时间戳 秒数
 	QString m_nowDate;  
 	QString m_validDate;
 	UINT32 m_newMeterNO;   //新表号
+	QMap<int, UINT32> m_mapMeterPosAndNewNO; //检表结果合格的表位与新表号映射关系
 
 	int m_nowOrder;				//当前检定次序
 
