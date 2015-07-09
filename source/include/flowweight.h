@@ -163,12 +163,13 @@ public slots:
 	void showNowKeyParaConfig(); //显示当前关键参数设置信息
 	void initTableWidget();     //设置表格行数
 
-	int on_btnExhaust_clicked();  //点击"排气"按钮
+	void on_btnExhaust_clicked(); //点击"排气"按钮
 	void on_btnStart_clicked();   //点击"开始"按钮
 	void on_btnGoOn_clicked();    //点击"继续"按钮
 	void on_btnNext_clicked();    //点击"下一步"按钮
 	void on_btnStop_clicked();    //点击"终止检测"按钮
-	void on_btnExit_clicked();    //退出按钮
+	void on_btnExit_clicked();    //点击"退出"按钮
+	int startExhaustCountDown();  //开始排气倒计时
 	void slotExaustFinished();    //排气时间结束
 	int prepareInitBalance();     //开始检定前，准备天平初始重量
 	int openAllValveAndPump();    //打开所有阀门和水泵

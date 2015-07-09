@@ -95,7 +95,6 @@ TempComObject::~TempComObject()
 		delete m_tempProtocol;
 		m_tempProtocol = NULL;
 	}
-
 }
 
 bool TempComObject::openTemperatureCom(ComInfoStruct *comStruct)
@@ -132,6 +131,10 @@ bool TempComObject::openTemperatureCom(ComInfoStruct *comStruct)
 //请求温度
 void TempComObject::writeTemperatureComBuffer()
 {
+	if (NULL==m_tempProtocol)
+	{
+		return;
+	}
 // 	qDebug()<<"TempComObject::writeTemperatureComBuffer thread:"<<QThread::currentThreadId();
 	m_tempProtocol->makeSendBuf();
 	QByteArray buf = m_tempProtocol->getSendBuf();
@@ -141,6 +144,10 @@ void TempComObject::writeTemperatureComBuffer()
 //读温度串口缓冲区
 void TempComObject::readTemperatureComBuffer()
 {
+	if (NULL==m_tempCom)
+	{
+		return;
+	}
 	m_buf += m_tempCom->readAll();
 // 	qDebug()<<"read TemperatureComBuffer thread:"<<QThread::currentThreadId();
 	int num = m_buf.size();
@@ -157,7 +164,6 @@ void TempComObject::readTemperatureComBuffer()
 		emit temperatureIsReady(tempStr);
 	}
 }
-
 
 /*
 ** 类名：ControlComObject
@@ -198,7 +204,7 @@ ControlComObject::~ControlComObject()
 	}
 }
 
-
+//设置协议版本号
 void ControlComObject::setProtocolVersion(int version)
 {
 	m_protocolVersion = version;
@@ -261,6 +267,10 @@ bool ControlComObject::openControlCom(ComInfoStruct *comStruct)
 */
 void ControlComObject::askControlRelay(UINT8 portno, bool status)
 {
+	if (NULL==m_controlProtocol)
+	{
+		return;
+	}
 	qDebug()<<"askControlRelay thread:"<<QThread::currentThreadId();
 	
 	QByteArray buf;
@@ -272,6 +282,10 @@ void ControlComObject::askControlRelay(UINT8 portno, bool status)
 //调节阀开度
 void ControlComObject::askControlRegulate(UINT8 portno, int degree)
 {
+	if (NULL==m_controlProtocol)
+	{
+		return;
+	}
 	QByteArray buf;
 	m_controlProtocol->makeFrameOfCtrlRegulate(portno, degree);
 	buf = m_controlProtocol->getSendBuf();
@@ -281,6 +295,10 @@ void ControlComObject::askControlRegulate(UINT8 portno, int degree)
 //查询从机状态
 void ControlComObject::askControlQuery()
 {
+	if (NULL==m_controlProtocol)
+	{
+		return;
+	}
 	QByteArray buf;
 	m_controlProtocol->makeFrameOfCtrlQuery();
 	buf = m_controlProtocol->getSendBuf();
@@ -290,6 +308,10 @@ void ControlComObject::askControlQuery()
 //控制水泵
 void ControlComObject::askControlWaterPump(UINT8 portno, bool status)
 {
+	if (NULL==m_controlProtocol)
+	{
+		return;
+	}
 	QByteArray buf;
 	m_controlProtocol->makeFrameOfCtrlWaterPump(portno, status);
 	buf = m_controlProtocol->getSendBuf();
@@ -299,6 +321,10 @@ void ControlComObject::askControlWaterPump(UINT8 portno, bool status)
 //设置变频器频率
 void ControlComObject::askSetDriverFreq(int freq)
 {
+	if (NULL==m_controlProtocol)
+	{
+		return;
+	}
 	QByteArray buf;
 	m_controlProtocol->makeFrameOfSetDriverFreq(freq);
 	buf = m_controlProtocol->getSendBuf();
@@ -372,7 +398,6 @@ void ControlComObject::readNewControlComBuffer()
 // 		UINT32 usedSec = begintime.msecsTo(endtime);
 // 		qDebug()<<"读取天平数据，用时"<<usedSec<<"毫秒";
 	}
-	
 }
 
 /*
@@ -415,7 +440,6 @@ BalanceComObject::~BalanceComObject()
 		delete m_balTimer;
 		m_balTimer = NULL;
 	}
-
 }
 
 bool BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
@@ -462,6 +486,10 @@ bool BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
 //读取天平串口数据
 void BalanceComObject::readBalanceComBuffer()
 {
+	if (NULL==m_balanceCom)
+	{
+		return;
+	}
 	QByteArray balBuffer = m_balanceCom->readAll();
 // 	qDebug()<<"balBuffer.size() ="<<balBuffer.size();
 //  qDebug()<<"readBalanceComBuffer thread:"<<QThread::currentThreadId()<<", Read data is:"<<balBuffer;
@@ -575,6 +603,10 @@ void MeterComObject::closeMeterCom()
 */
 void MeterComObject::readMeterComBuffer()
 {
+	if (NULL==m_meterCom)
+	{
+		return;
+	}
 // 	qDebug()<<"readMeterComBuffer MeterComObject thread:"<<QThread::currentThreadId();
 // 	qDebug()<<"Read"<<m_meterCom->bytesAvailable()<<"bytes!";
 	m_meterTmp.append(m_meterCom->readAll());
@@ -592,6 +624,10 @@ void MeterComObject::readMeterComBuffer()
 	QDateTime begintime = QDateTime::currentDateTime();
 	qDebug()<<"begintime:"<<begintime.toString("yyyy-MM-dd HH:mm:ss.zzz");
 	UINT8 ret = 0x00;
+	if (NULL==m_meterProtocol)
+	{
+		return;
+	}
 	ret = m_meterProtocol->readMeterComBuffer(m_meterTmp);
 	m_meterTmp.clear(); //清零
 
@@ -656,6 +692,10 @@ void MeterComObject::readMeterComBuffer()
 */
 void MeterComObject::askReadMeter()
 {
+	if (NULL==m_meterProtocol)
+	{
+		return;
+	}
 	m_meterProtocol->makeFrameOfReadMeter();
 	QByteArray buf = m_meterProtocol->getSendFrame();
 	m_meterCom->write(buf);
@@ -666,6 +706,10 @@ void MeterComObject::askReadMeter()
 */
 void MeterComObject::askSetVerifyStatus()
 {
+	if (NULL==m_meterProtocol)
+	{
+		return;
+	}
 	m_meterProtocol->makeFrameOfSetVerifyStatus();
 	QByteArray buf = m_meterProtocol->getSendFrame();
 	m_meterCom->write(buf);
@@ -676,6 +720,10 @@ void MeterComObject::askSetVerifyStatus()
 */
 void MeterComObject::askModifyMeterNO(QString oldMeterNo, QString newMeterNo)
 {
+	if (NULL==m_meterProtocol)
+	{
+		return;
+	}
 	m_meterProtocol->makeFrameOfModifyMeterNo(oldMeterNo, newMeterNo);
 	QByteArray buf = m_meterProtocol->getSendFrame();
 /*
@@ -694,6 +742,10 @@ void MeterComObject::askModifyMeterNO(QString oldMeterNo, QString newMeterNo)
 */
 void MeterComObject::askModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr)
 {
+	if (NULL==m_meterProtocol)
+	{
+		return;
+	}
 	qDebug()<<"askModifyFlowCoe"<<meterNO<<bigErr<<mid2Err<<mid1Err<<smallErr;
 	m_meterProtocol->makeFrameOfModifyFlowCoe(meterNO, bigErr, mid2Err, mid1Err, smallErr);
 	QByteArray buf = m_meterProtocol->getSendFrame();
@@ -705,8 +757,12 @@ void MeterComObject::askModifyFlowCoe(QString meterNO, float bigErr, float mid2E
 */
 void MeterComObject::askModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe)
 {
-	qDebug()<<"askModifyFlowCoe"<<meterNO<<bigErr<<mid2Err<<mid1Err<<smallErr;
-	qDebug()<<"askModifyFlowCoe"<<meterNO<<oldCoe->bigCoe<<oldCoe->mid2Coe<<oldCoe->mid1Coe<<oldCoe->smallCoe;
+	if (NULL==m_meterProtocol)
+	{
+		return;
+	}
+	qDebug()<<"askModifyFlowCoe newErr:"<<meterNO<<bigErr<<mid2Err<<mid1Err<<smallErr;
+	qDebug()<<"askModifyFlowCoe oldCoe:"<<meterNO<<oldCoe->bigCoe<<oldCoe->mid2Coe<<oldCoe->mid1Coe<<oldCoe->smallCoe;
 	m_meterProtocol->makeFrameOfModifyFlowCoe(meterNO, bigErr, mid2Err, mid1Err, smallErr, oldCoe);
 	QByteArray buf = m_meterProtocol->getSendFrame();
 	m_meterCom->write(buf);
@@ -739,7 +795,6 @@ Sti1062aComObject::~Sti1062aComObject()
 		delete m_sti1062aProtocol;
 		m_sti1062aProtocol = NULL;
 	}
-
 }
 
 bool Sti1062aComObject::openTemperatureCom(ComInfoStruct *comStruct)
