@@ -271,6 +271,8 @@ private:
 	QByteArray m_accumStdPulse;//16路累积流量脉冲值, 需二次加工
 
 	QSettings *m_stdParam;//读取标准表设置
+
+	float getFlowValueByRoute(flow_rate_wdg, flow_type);//根据流量点的部件号查找流量值
 };
 
 #endif //FLOWSTANDARD_H

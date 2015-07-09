@@ -81,6 +81,15 @@ enum flow_rate_wdg
 };
 
 /*
+** 流量的类型
+*/
+enum flow_type
+{
+	INST_FLOW_VALUE = 0,
+	ACCUM_FLOW_VALUE
+};
+
+/*
 ** 检定方法类型枚举
 */
 enum Verify_Method
