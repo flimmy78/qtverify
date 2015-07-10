@@ -274,7 +274,10 @@ private:
 
 	QSettings *m_stdParam;//读取标准表设置
 
-	float getFlowValueByRoute(flow_rate_wdg, flow_type);//根据流量点的部件号查找流量值
+	float getFlowValueByValve(flow_rate_wdg, flow_type);//根据流量点的部件号查找流量值
+	int getRouteByWdg(flow_rate_wdg, flow_type);//根据部件号读取标准表的通道号
+	float getStdUpperFlow(flow_rate_wdg wdgIdx);
+	float getStdPulse(flow_rate_wdg wdgIdx);
 };
 
 #endif //FLOWSTANDARD_H
