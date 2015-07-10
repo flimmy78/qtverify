@@ -46,6 +46,16 @@ void SetComDlg::showEvent(QShowEvent *)
 	m_config = new ReadComConfig();
 	m_com_settings = new QSettings(getFullIniFileName("comconfig.ini"), QSettings::IniFormat);
 	InstallConfigs();
+
+	m_model = new QSqlTableModel(this);
+	m_model->setTable("T_Meter_Standard");
+	m_model->setEditStrategy(QSqlTableModel::OnFieldChange);
+	m_model->setHeaderData(1, Qt::Horizontal, QObject::tr("Standard"));
+	m_model->setHeaderData(2, Qt::Horizontal, QObject::tr("Quantity"));
+	m_model->select();
+	gui.tableView->setModel(m_model);
+	gui.tableView->setEditTriggers(QAbstractItemView::DoubleClicked);
+	gui.tableView->hideColumn(0);
 }
 
 void SetComDlg::closeEvent(QCloseEvent *)

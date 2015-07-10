@@ -4,6 +4,7 @@
 #include <QtGui/QWidget>
 #include <QtXml/QtXml>
 #include <QSettings>
+#include <QtSql/QSqlTableModel>
 
 #include "ui_setcomDlg.h"
 #include "systemsetdlg_global.h"
@@ -27,6 +28,7 @@ private:
 	QSettings *m_com_settings;
 	QButtonGroup *btnGroupBalanceType; //天平类型
 	ReadComConfig *m_config;//读取配置信息
+	QSqlTableModel *m_model;
 
 	/**************读取配置文件*****************/
 	void InstallConfigs();
