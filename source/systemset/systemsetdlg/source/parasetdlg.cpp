@@ -251,7 +251,6 @@ void ParaSetDlg::initBtnGroup()
 
 void ParaSetDlg::slot_autopick_clicked(int id)
 {
-
 	ui.tBtn_adjustError_true->setEnabled(id);
 	ui.tBtn_adjustError_false->setEnabled(id);
 
@@ -267,8 +266,7 @@ void ParaSetDlg::slot_autopick_clicked(int id)
 		//Ð´±íºÅ
 		ui.tBtn_writeNum_true->setChecked(false);
 		ui.tBtn_writeNum_false->setChecked(true);
-	}
-	
+	}	
 }
 
 void ParaSetDlg::installLastParams()

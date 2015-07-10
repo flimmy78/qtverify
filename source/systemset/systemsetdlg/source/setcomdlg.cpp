@@ -38,7 +38,12 @@ SetComDlg::SetComDlg(QWidget *parent, Qt::WFlags flags)
 
 SetComDlg::~SetComDlg()
 {
-	
+	qDebug()<<"SetComDlg ~ destructor ";
+	if (btnGroupBalanceType)
+	{
+		delete btnGroupBalanceType;
+		btnGroupBalanceType = NULL;
+	}
 }
 
 void SetComDlg::showEvent(QShowEvent *)
@@ -70,6 +75,12 @@ void SetComDlg::closeEvent(QCloseEvent *)
 	{
 		delete m_com_settings;
 		m_com_settings = NULL;
+	}
+
+	if (m_model)
+	{
+		delete m_model;
+		m_model = NULL;
 	}
 }
 

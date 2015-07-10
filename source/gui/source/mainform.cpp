@@ -277,7 +277,7 @@ void MainForm::on_actionDataTest_triggered()
 	{
 		m_datatestdlg = new DataTestDlg();
 	}
-	else //目的是执行QualityDlg的构造函数
+	else //目的是执行DataTestDlg的构造函数
 	{
 		delete m_datatestdlg;
 		m_datatestdlg = NULL;
@@ -383,12 +383,6 @@ void MainForm::on_actionFlowWeight_triggered()
 {
 	if (NULL == m_flowWeightDlg)
 	{
-		m_flowWeightDlg = new FlowWeightDlg();
-	}
-	else //目的是执行FlowWeightDlg的构造函数
-	{
-		delete m_flowWeightDlg;
-		m_flowWeightDlg = NULL;
 		m_flowWeightDlg = new FlowWeightDlg();
 	}
 	m_flowWeightDlg->show();

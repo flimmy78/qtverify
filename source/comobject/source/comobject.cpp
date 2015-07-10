@@ -202,6 +202,12 @@ ControlComObject::~ControlComObject()
 		delete m_controlProtocol;
 		m_controlProtocol = NULL;
 	}
+
+	if (m_conFrame)
+	{
+		delete m_conFrame;
+		m_conFrame = NULL;
+	}
 }
 
 //设置协议版本号

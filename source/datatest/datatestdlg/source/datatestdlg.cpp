@@ -37,7 +37,6 @@ DataTestDlg::DataTestDlg(QWidget *parent, Qt::WFlags flags)
 	initValveStatus();      //初始化阀门状态
 	initRegulateStatus();   //初始化调节阀状态
 
-
 	m_paraSetDlg = NULL;
 	m_paraSetReader = new ParaSetReader(); //读参数设置接口
 

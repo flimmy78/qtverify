@@ -84,21 +84,20 @@ public:
 	QSqlTableModel *m_modelModel;
 	int m_curModelIdx; //当前表型号的索引
 
-	void closeEvent(QCloseEvent * event);
-//  void showEvent(QShowEvent *event);
 
 signals:
 	void saveSuccessSignal();
 
 public slots:
+	void showEvent(QShowEvent * event);
+	void closeEvent(QCloseEvent * event);
 	void on_btnExit_clicked();
 	void on_btnSave_clicked();
 	void on_cmbStandard_currentIndexChanged();
-	void showEvent(QShowEvent * event);
 	void slot_autopick_clicked(int);
 	//void slot_setStandWdg();//设置标准表相关设置是否可见
-
 	//void setStandMethod(bool);
+
 private:
 	Ui::ParaSetDlgClass ui;
 	bool cBoxData_inited;//标记, 界面的下拉条已经从数据库中读取了数据

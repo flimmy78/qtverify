@@ -155,9 +155,10 @@ public:
 	int isMeterPosValid(int meterPos); //判断表位号是否有效(该表位是否需要检表)
 	int getValidMeterNum();       //获取有效的检表个数()
 
+	void showEvent(QShowEvent * event);
+	void closeEvent(QCloseEvent * event);
 
 public slots:
-	void closeEvent(QCloseEvent * event);
 
 	int readNowParaConfig();	 //获取当前检定参数
 	void showNowKeyParaConfig(); //显示当前关键参数设置信息
