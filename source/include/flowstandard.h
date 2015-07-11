@@ -113,8 +113,8 @@ public:
 	float *m_meterDensity;    //被检表的密度
 	float *m_meterStdValue;   //被检表的标准值
 	float *m_meterError;	  //被检表的误差(当前流量点不同表位的误差)
-	float m_StdStartV;        //天平初值
-	float m_StdEndV;          //天平终值
+	float m_StdStartV;        //标准表初值
+	float m_StdEndV;          //标准表终值
 	float m_pipeInTemper;     //入口温度
 	float m_pipeOutTemper;    //出口温度
 	float m_realFlow;		  //流速(m3/h）
@@ -255,12 +255,14 @@ private:
 	QTimer* m_accumSTDMeterTimer;//累积流量计时器
 	QByteArray m_accumStdPulse;//16路累积流量脉冲值, 需二次加工
 
+	QList<int> m_instRouteIsRead;//瞬时流量的通道号是否被采集过
+	QList<int> m_accumRouteIsRead;//累积流量的通道号是否被采集过
 	QSettings *m_stdParam;//读取标准表设置
 
 	float getFlowValueByValve(flow_rate_wdg, flow_type);//根据流量点的部件号查找流量值
 	int getRouteByWdg(flow_rate_wdg, flow_type);//根据部件号读取标准表的通道号
-	float getStdUpperFlow(flow_rate_wdg wdgIdx);
-	float getStdPulse(flow_rate_wdg wdgIdx);
+	float getStdUpperFlow(flow_rate_wdg wdgIdx);//根据部件号读取相应标准表的上限流量值
+	float getStdPulse(flow_rate_wdg wdgIdx);//根据部件号读取相应标准表的脉冲值
 };
 
 #endif //FLOWSTANDARD_H

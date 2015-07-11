@@ -267,6 +267,9 @@ QByteArray getCRCArray(UINT16 crc)
 
 int get9150ARouteI(int i, QByteArray valueArray)
 {
+	if(valueArray.length() < EDA9150A_ROUTE_BYTES)
+		return -1;
+
 	if ( (EDA9150A_ROUTE_BYTES*i) > valueArray.length())//i不能超过被读取的通道数量
 	{
 		return -1;
@@ -286,6 +289,9 @@ int get9150ARouteI(int i, QByteArray valueArray)
 
 int get9017RouteI(int i, QByteArray valueArray)
 {
+	if(valueArray.length() < EDA9017_ROUTE_BYTES)
+		return -1;
+
 	if ( (EDA9017_ROUTE_BYTES*i) > valueArray.length())//i不能超过被读取的通道数量
 	{
 		return -1;
