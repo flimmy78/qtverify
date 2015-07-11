@@ -62,8 +62,6 @@ public:
 
 	QTimer *m_exaustTimer; //排气定时器
 
-	//ComThread m_balanceThread; //天平采集线程
-	//BalanceComObject *m_balanceObj;
 
 	ComThread m_tempThread;  //温度采集线程
 	TempComObject *m_tempObj;
@@ -115,8 +113,8 @@ public:
 	float *m_meterDensity;    //被检表的密度
 	float *m_meterStdValue;   //被检表的标准值
 	float *m_meterError;	  //被检表的误差(当前流量点不同表位的误差)
-	float m_balStartV;        //天平初值
-	float m_balEndV;          //天平终值
+	float m_StdStartV;        //天平初值
+	float m_StdEndV;          //天平终值
 	float m_pipeInTemper;     //入口温度
 	float m_pipeOutTemper;    //出口温度
 	float m_realFlow;		  //流速(m3/h）
@@ -138,18 +136,6 @@ public:
 	ReadComConfig *m_readComConfig; //读串口设置
 	PortSet_Ini_STR m_portsetinfo;  //端口配置
 
-	//计算流速用
-	uint m_totalcount;  //计数器
-	float m_startWeight;//天平初值
-	float m_endWeight;  //天平终值
-	float m_deltaWeight[FLOW_SAMPLE_NUM];
-	//QTimer *m_flowRateTimer;  //计时器:用于计算流速
-
-	//天平最大容量和回水底量
-	//float m_balMaxWht;
-	//float m_balBottomWht;
-
-	//void initBalanceCom();     //天平串口
 	void initInstStdCom();//瞬时流量串口初始化
 	void initAccumStdCom();//累积流量串口初始化
 
@@ -161,10 +147,11 @@ public:
 	int isComAndPortNormal();   //串口、端口设置是否正常
 	int isDataCollectNormal();	//检查数据采集是否正常（天平、温度、电磁流量计等）
 	int isMeterPosValid(int meterPos); //判断表位号是否有效(该表位是否需要检表)
-	int getValidMeterNum();       //获取有效的检表个数()
+	int getValidMeterNum();//获取有效的检表个数()
 
 
 	public slots:
+		void showEvent(QShowEvent * event);
 		void closeEvent(QCloseEvent * event);
 
 		int readNowParaConfig();	 //获取当前检定参数
@@ -177,20 +164,17 @@ public:
 		void on_btnNext_clicked();    //点击"下一步"按钮
 		void on_btnStop_clicked();    //点击"终止检测"按钮
 		void on_btnExit_clicked();    //退出按钮
+		int startExhaustCountDown();  //开始排气倒计时
 		void slotExaustFinished();    //排气时间结束
-		//int prepareInitBalance();     //开始检定前，准备天平初始重量
 		int openAllValveAndPump();    //打开所有阀门和水泵
 		int readAllMeter();           //读取所有被检表
 		int setAllMeterVerifyStatus();   //设置热量表进入检定状态
 		int closeAllFlowPointValves();//关闭所有流量点阀门
 		int closeWaterOutValve();     //关闭放水阀
 		int openWaterOutValve();      //打开放水阀
-		int isBalanceValueBigger(float targetV, bool flg=true);    //判断天平质量,flg: true-要求大于目标重量(默认)；false-要求小于目标重量
-		int judgeBalanceAndCalcAvgTemperAndFlow(float targetV); //判断天平质量，并累加进出口温度，每秒累加一次，用于计算进出口平均温度
+		int judgeTartgetVolAndCalcAvgTemperAndFlow(float targetV); //判断是否完成检定量检定量，并累加进出口温度，每秒累加一次，用于计算进出口平均温度
 		void stopVerify();            //停止检定
 		void startVerify();           //开始检定
-		//bool judgeBalanceCapacity();   //判断天平容量是否能够满足检定用量 连续检定
-		//int judgeBalanceCapacitySingle(int order); //判断天平容量是否能够满足检定用量 不连续检定
 		int prepareVerifyFlowPoint(int order);     //准备单个流量点的检定
 		int startVerifyFlowPoint(int order);       //开始单个流量点的检定
 		int openValve(UINT8 portno);    //打开控制阀
@@ -205,9 +189,7 @@ public:
 		int calcAllMeterError();//计算所有被检表的误差
 		int calcMeterError(int idx); //计算某个表的误差
 
-		//void slotFreshBalanceValue(const float& balValue);  //刷新天平数值
 		void slotFreshComTempValue(const QString& tempStr); //刷新温度值
-		//void slotFreshFlowRate(); //计算流速
 
 		void slotSetValveBtnStatus(const UINT8 &portno, const bool &status); //继电器返回成功对应的槽函数
 		void slotSetRegulateOk();     //调节阀返回成功对应的槽函数
@@ -256,6 +238,7 @@ private slots:
 	void slotGetInstStdMeterPulse(const QByteArray &);//瞬时流量槽函数
 	void slotGetAccumStdMeterPulse(const QByteArray &);//累积流量槽函数
 signals:
+	void signalClosed();
 
 private:
 	Ui::FlowStandardClass ui;
