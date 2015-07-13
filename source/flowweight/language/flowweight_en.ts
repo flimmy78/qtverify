@@ -367,18 +367,18 @@ t</translation>
         <translation type="obsolete">&lt;font color=red size=4&gt;&lt;b&gt;Please input meter number, then click &quot;GoOn&quot; button!&lt;/b&gt;&lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1231"/>
+        <location filename="../flowweight.cpp" line="1232"/>
         <source>please wait &lt;font color=DarkGreen size=4&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; seconds for reset zero</source>
         <translation>please wait &lt;font color=DarkGreen size=4&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; seconds for reset zero</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1267"/>
-        <location filename="../flowweight.cpp" line="1848"/>
+        <location filename="../flowweight.cpp" line="1268"/>
+        <location filename="../flowweight.cpp" line="1849"/>
         <source>please input start value of heat meter</source>
         <translation>please input start value of heat meter</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1840"/>
+        <location filename="../flowweight.cpp" line="1841"/>
         <source>read start value of heat meter...</source>
         <translation>read start value of heat meter...</translation>
     </message>
@@ -432,8 +432,13 @@ click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue ve
 click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue verify</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1107"/>
-        <location filename="../flowweight.cpp" line="1212"/>
+        <location filename="../flowweight.cpp" line="1097"/>
+        <source>read meter now coe ...</source>
+        <translation>read meter now coe ...</translation>
+    </message>
+    <message>
+        <location filename="../flowweight.cpp" line="1108"/>
+        <location filename="../flowweight.cpp" line="1213"/>
         <source>prepare balance capacity ...</source>
         <translation>prepare balance capacity ...</translation>
     </message>
@@ -457,7 +462,7 @@ click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue ve
     <message>
         <location filename="../flowweight.cpp" line="806"/>
         <location filename="../flowweight.cpp" line="824"/>
-        <location filename="../flowweight.cpp" line="1824"/>
+        <location filename="../flowweight.cpp" line="1825"/>
         <source>NO. %1 flow point: %2 m3/h</source>
         <translation>NO. %1 flow point: %2 m3/h</translation>
     </message>
@@ -515,7 +520,7 @@ Please wait for about %1 second</translation>
         <translation type="obsolete">please input meter number</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1228"/>
+        <location filename="../flowweight.cpp" line="1229"/>
         <source>Reset Zero</source>
         <translation>Reset Zero</translation>
     </message>
@@ -524,17 +529,17 @@ Please wait for about %1 second</translation>
         <translation type="obsolete">please wait %1 seconds for reset zero</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1401"/>
+        <location filename="../flowweight.cpp" line="1402"/>
         <source>save database successfully!</source>
         <translation>save database successfully!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1421"/>
+        <location filename="../flowweight.cpp" line="1422"/>
         <source>Hint</source>
         <translation>Hint</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1421"/>
+        <location filename="../flowweight.cpp" line="1422"/>
         <source>if it isn&apos;t new meter , please change meter to &quot;deltaT&quot; status !</source>
         <translation>if it isn&apos;t new meter , please change meter to &quot;deltaT&quot; status !</translation>
     </message>
@@ -543,8 +548,8 @@ Please wait for about %1 second</translation>
         <translation type="obsolete">please input init value of heat meter</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1441"/>
-        <location filename="../flowweight.cpp" line="1879"/>
+        <location filename="../flowweight.cpp" line="1442"/>
+        <location filename="../flowweight.cpp" line="1880"/>
         <source>please input end value of heat meter</source>
         <translation>please input end value of heat meter</translation>
     </message>
