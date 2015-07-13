@@ -164,12 +164,12 @@ public slots:
 	void showNowKeyParaConfig(); //显示当前关键参数设置信息
 	void initTableWidget();     //设置表格行数
 
-	void on_btnExhaust_clicked(); //点击"排气"按钮
 	void on_btnStart_clicked();   //点击"开始"按钮
+	void on_btnExhaust_clicked(); //点击"排气"按钮
 	void on_btnGoOn_clicked();    //点击"继续"按钮
-	void on_btnNext_clicked();    //点击"下一步"按钮
 	void on_btnStop_clicked();    //点击"终止检测"按钮
 	void on_btnExit_clicked();    //点击"退出"按钮
+	void on_btnReCalc_clicked();  //点击"重新计算"按钮
 	int startExhaustCountDown();  //开始排气倒计时
 	void slotExaustFinished();    //排气时间结束
 	int prepareInitBalance();     //开始检定前，准备天平初始重量
@@ -195,8 +195,10 @@ public slots:
 	int operateWaterPump();			//操作水泵：打开或者关闭
 	int getMeterStartValue();     //获取表初值
 	int getMeterEndValue();       //获取表终值
+	void makeStartValueByLastEndValue(); //将上一次检定后的终值作为本次的初值
 	int calcAllMeterError();      //计算所有被检表的误差
 	int calcMeterError(int idx);  //计算某个表的误差
+	int calcVerifyResult();       //计算检定结果
 
 	void slotFreshBalanceValue(const float& balValue);  //刷新天平数值
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
@@ -233,7 +235,6 @@ public slots:
 	void on_btnAllVerifyStatus_clicked();//设置检定状态(所有表）
 	void on_btnAllAdjError_clicked(); //调整误差(所有表)
 	void on_btnAllModifyNO_clicked(); //修改表号(所有表）
-	void on_btnReCalc_clicked(); 
 
 	void slotModifyMeterNO(const int &row); //修改表号
 	void slotAdjustError(const int &row);   //调整误差
