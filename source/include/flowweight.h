@@ -76,7 +76,7 @@ public:
 	CAlgorithm *m_chkAlg;//检定过程用到的计算方法
 
 	bool m_stopFlag;     //关闭界面后退出
-	bool m_conFlag;      //自动检表时，遇到读表数据失败的，等待重新读表的标识。1:等待  0:不等待
+	bool m_reReadFlag;   //自动检表时，遇到读表数据失败的，等待重新读表的标识。1:等待  0:不等待
 
 	//检定过程相关的控制参数 begin
 	ParaSetReader *m_paraSetReader;
@@ -195,9 +195,8 @@ public slots:
 	int operateWaterPump();			//操作水泵：打开或者关闭
 	int getMeterStartValue();     //获取表初值
 	int getMeterEndValue();       //获取表终值
-	void makeStartValueByLastEndValue(); //上一次的终值作为本次的初值
-	int calcAllMeterError();//计算所有被检表的误差
-	int calcMeterError(int idx); //计算某个表的误差
+	int calcAllMeterError();      //计算所有被检表的误差
+	int calcMeterError(int idx);  //计算某个表的误差
 
 	void slotFreshBalanceValue(const float& balValue);  //刷新天平数值
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
