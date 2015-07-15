@@ -309,6 +309,7 @@ void DataTestDlg::initComOfHeatMeter()
 	ui.btnReadMeterData->setEnabled(false);
 	ui.btnModifyMeterNo->setEnabled(false);
 	ui.btnModifyFlowCoe->setEnabled(false);
+	ui.btn2ModifyFlowCoe->setEnabled(false);
 }
 
 //初始化阀门状态
@@ -377,6 +378,7 @@ void DataTestDlg::on_btnOpenCom_clicked()
 	ui.btnReadMeterData->setEnabled(true);
 	ui.btnModifyMeterNo->setEnabled(true);
 	ui.btnModifyFlowCoe->setEnabled(true);
+	ui.btn2ModifyFlowCoe->setEnabled(true);
 	ui.btnOpenCom->setEnabled(false);
 
 	ui.portNameComboBox->setEnabled(false);
@@ -396,6 +398,7 @@ void DataTestDlg::on_btnCloseCom_clicked()
 	ui.btnReadMeterData->setEnabled(false);
 	ui.btnModifyMeterNo->setEnabled(false);
 	ui.btnModifyFlowCoe->setEnabled(false);
+	ui.btn2ModifyFlowCoe->setEnabled(false);
 	ui.btnOpenCom->setEnabled(true);
 
 	ui.portNameComboBox->setEnabled(true);
@@ -685,12 +688,16 @@ void DataTestDlg::on_btnReadMeterData_clicked()
 	ui.dateEditMeter->setDate(QDate(2000,1,1));
 	ui.lnEditBigOldError->clear();
 	ui.lnEditBigOldCoe->clear();
+	ui.lnEditBigOrgCoe->clear();
 	ui.lnEditMid2OldError->clear();
 	ui.lnEditMid2OldCoe->clear();
+	ui.lnEditMid2OrgCoe->clear();
 	ui.lnEditMid1OldError->clear();
 	ui.lnEditMid1OldCoe->clear();
+	ui.lnEditMid1OrgCoe->clear();
 	ui.lnEditSmallOldError->clear();
 	ui.lnEditSmallOldCoe->clear();
+	ui.lnEditSmallOrgCoe->clear();
 
 	qDebug()<<"读表 开始...";
  	m_meterObj->askReadMeter(); //请求读表
