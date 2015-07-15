@@ -5,8 +5,22 @@
     <name>DataTestDlg</name>
     <message>
         <location filename="../source/datatestdlg.cpp" line="34"/>
-        <location filename="../source/datatestdlg.cpp" line="700"/>
-        <location filename="../source/datatestdlg.cpp" line="705"/>
+        <location filename="../source/datatestdlg.cpp" line="702"/>
+        <location filename="../source/datatestdlg.cpp" line="707"/>
+        <location filename="../source/datatestdlg.cpp" line="721"/>
+        <location filename="../source/datatestdlg.cpp" line="728"/>
+        <location filename="../source/datatestdlg.cpp" line="734"/>
+        <location filename="../source/datatestdlg.cpp" line="740"/>
+        <location filename="../source/datatestdlg.cpp" line="746"/>
+        <location filename="../source/datatestdlg.cpp" line="758"/>
+        <location filename="../source/datatestdlg.cpp" line="765"/>
+        <location filename="../source/datatestdlg.cpp" line="771"/>
+        <location filename="../source/datatestdlg.cpp" line="777"/>
+        <location filename="../source/datatestdlg.cpp" line="783"/>
+        <location filename="../source/datatestdlg.cpp" line="790"/>
+        <location filename="../source/datatestdlg.cpp" line="796"/>
+        <location filename="../source/datatestdlg.cpp" line="802"/>
+        <location filename="../source/datatestdlg.cpp" line="808"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
@@ -16,19 +30,63 @@
         <translation>获取端口设置信息失败!</translation>
     </message>
     <message>
+        <location filename="../source/datatestdlg.cpp" line="702"/>
+        <location filename="../source/datatestdlg.cpp" line="721"/>
+        <location filename="../source/datatestdlg.cpp" line="758"/>
+        <source>MeterNO. is empty! please read meter first!</source>
+        <translation>表号为空！请先读表数据！</translation>
+    </message>
+    <message>
+        <location filename="../source/datatestdlg.cpp" line="707"/>
+        <source>new NO. is error!
+please input 14 bits meter number!</source>
+        <translation>新表号错误！请输入14位新表号！</translation>
+    </message>
+    <message>
+        <location filename="../source/datatestdlg.cpp" line="728"/>
+        <location filename="../source/datatestdlg.cpp" line="734"/>
+        <location filename="../source/datatestdlg.cpp" line="740"/>
+        <location filename="../source/datatestdlg.cpp" line="746"/>
+        <location filename="../source/datatestdlg.cpp" line="765"/>
+        <location filename="../source/datatestdlg.cpp" line="771"/>
+        <location filename="../source/datatestdlg.cpp" line="777"/>
+        <location filename="../source/datatestdlg.cpp" line="783"/>
+        <source>err is error! please input err first!</source>
+        <translatorcomment>误差输入有误！请先输入误差！</translatorcomment>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../source/datatestdlg.cpp" line="790"/>
+        <location filename="../source/datatestdlg.cpp" line="796"/>
+        <location filename="../source/datatestdlg.cpp" line="802"/>
+        <location filename="../source/datatestdlg.cpp" line="808"/>
+        <source>olderr is error! please read meter first!</source>
+        <translation>原误差为空！请先读表数据！</translation>
+    </message>
+    <message>
+        <source>now meter number is empty! please read meter first!</source>
+        <translation type="obsolete">当前表号为空！请先读表！</translation>
+    </message>
+    <message>
+        <source>new coe is error! please input new coe first!</source>
+        <translation type="obsolete">新系数有误！请输入新系数！</translation>
+    </message>
+    <message>
+        <source>old coe is error! please read meter first!</source>
+        <translation type="obsolete">老系数有误！请先读表！</translation>
+    </message>
+    <message>
         <source>get para set info failed</source>
         <translation type="obsolete">获取参数设置信息失败</translation>
     </message>
     <message>
-        <location filename="../source/datatestdlg.cpp" line="700"/>
         <source>old meter number is empty! please read meter first!</source>
-        <translation>原表号为空!请先输入原表号!</translation>
+        <translation type="obsolete">原表号为空!请先输入原表号!</translation>
     </message>
     <message>
-        <location filename="../source/datatestdlg.cpp" line="705"/>
         <source>new meter number is error!
 please input 14 bits meter number!</source>
-        <translation>新表号输入错误!
+        <translation type="obsolete">新表号输入错误!
 请输入14位新表号!</translation>
     </message>
 </context>
@@ -130,7 +188,7 @@ MeterNo</source>
 表号</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1911"/>
+        <location filename="../ui/datatestdlg.ui" line="1885"/>
         <source>Read
 Data</source>
         <translation>读表
@@ -144,7 +202,7 @@ MeterNo</source>
 表号</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1885"/>
+        <location filename="../ui/datatestdlg.ui" line="1911"/>
         <source>Verify
 Status</source>
         <translation>检定
@@ -543,6 +601,13 @@ Para</source>
         <translation>原系数</translation>
     </message>
     <message>
+        <location filename="../ui/datatestdlg.ui" line="1995"/>
+        <source>2Modify
+Coe</source>
+        <translation>二次
+修改</translation>
+    </message>
+    <message>
         <source>oldCoe(%)</source>
         <translation type="obsolete">误差系数(%)</translation>
     </message>
@@ -570,7 +635,7 @@ Para</source>
         <location filename="../ui/datatestdlg.ui" line="1969"/>
         <source>Modify
 Coe</source>
-        <translation>调整
+        <translation>修改
 系数</translation>
     </message>
     <message>
@@ -665,7 +730,7 @@ p</source>
         <translation type="obsolete">进程</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="2016"/>
+        <location filename="../ui/datatestdlg.ui" line="2042"/>
         <source>ParaSet</source>
         <translation>参数设置</translation>
     </message>
@@ -678,7 +743,7 @@ p</source>
         <translation type="obsolete">开始</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="2041"/>
+        <location filename="../ui/datatestdlg.ui" line="2067"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>

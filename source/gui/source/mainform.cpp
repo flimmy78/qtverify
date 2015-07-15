@@ -277,12 +277,6 @@ void MainForm::on_actionDataTest_triggered()
 	{
 		m_datatestdlg = new DataTestDlg();
 	}
-	else //目的是执行DataTestDlg的构造函数
-	{
-		delete m_datatestdlg;
-		m_datatestdlg = NULL;
-		m_datatestdlg = new DataTestDlg();
-	}
 	m_datatestdlg->show();
 }
 

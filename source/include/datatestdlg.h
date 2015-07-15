@@ -76,6 +76,8 @@ public:
 
 	PortSet_Ini_STR m_portsetinfo; //端口配置
 
+	MeterCoe_PTR m_oldCoe; //热表当前流量点系数
+
 	void closeEvent(QCloseEvent * event);
 	void showEvent(QShowEvent *event);
 	void initTemperatureCom(); //温度采集串口
@@ -129,6 +131,8 @@ public slots:
 	void on_btnReadMeterData_clicked(); //读表数据
 	void on_btnModifyMeterNo_clicked(); //修改表号
 	void on_btnModifyFlowCoe_clicked(); //修改流量系数
+	void on_btn2ModifyFlowCoe_clicked();//二次修改流量系数
+	
 
 	void on_btnOpenCom_clicked(); //打开串口
 	void on_btnCloseCom_clicked();//关闭串口

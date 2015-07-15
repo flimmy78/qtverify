@@ -1264,8 +1264,11 @@ void DeluMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, 
 ** 组帧：修改流量系数
 ** 输入参数：
 	meterNO:表号，14位
-	oldCoe:热量表原来的各流量点系数，无单位%
-	newCoe:热量表新的各流量点误差，单位%
+	bigErr:大流量点误差，单位%
+	mid2Err:中流二误差，单位%
+	mid1Err:中流一误差，单位%
+	smallErr:小流量点误差，单位%
+	oldCoe:热量表各流量点的原系数，无单位
 */
 void DeluMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe)
 {

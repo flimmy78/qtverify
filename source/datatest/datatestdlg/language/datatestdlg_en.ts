@@ -5,8 +5,22 @@
     <name>DataTestDlg</name>
     <message>
         <location filename="../source/datatestdlg.cpp" line="34"/>
-        <location filename="../source/datatestdlg.cpp" line="700"/>
-        <location filename="../source/datatestdlg.cpp" line="705"/>
+        <location filename="../source/datatestdlg.cpp" line="702"/>
+        <location filename="../source/datatestdlg.cpp" line="707"/>
+        <location filename="../source/datatestdlg.cpp" line="721"/>
+        <location filename="../source/datatestdlg.cpp" line="728"/>
+        <location filename="../source/datatestdlg.cpp" line="734"/>
+        <location filename="../source/datatestdlg.cpp" line="740"/>
+        <location filename="../source/datatestdlg.cpp" line="746"/>
+        <location filename="../source/datatestdlg.cpp" line="758"/>
+        <location filename="../source/datatestdlg.cpp" line="765"/>
+        <location filename="../source/datatestdlg.cpp" line="771"/>
+        <location filename="../source/datatestdlg.cpp" line="777"/>
+        <location filename="../source/datatestdlg.cpp" line="783"/>
+        <location filename="../source/datatestdlg.cpp" line="790"/>
+        <location filename="../source/datatestdlg.cpp" line="796"/>
+        <location filename="../source/datatestdlg.cpp" line="802"/>
+        <location filename="../source/datatestdlg.cpp" line="808"/>
         <source>Warning</source>
         <translation>Warning</translation>
     </message>
@@ -16,19 +30,51 @@
         <translation>get port set info failed!</translation>
     </message>
     <message>
+        <location filename="../source/datatestdlg.cpp" line="702"/>
+        <location filename="../source/datatestdlg.cpp" line="721"/>
+        <location filename="../source/datatestdlg.cpp" line="758"/>
+        <source>MeterNO. is empty! please read meter first!</source>
+        <translation>MeterNO. is empty! please read meter first!</translation>
+    </message>
+    <message>
+        <location filename="../source/datatestdlg.cpp" line="707"/>
+        <source>new NO. is error!
+please input 14 bits meter number!</source>
+        <translation>new NO. is error!
+please input 14 bits meter number!</translation>
+    </message>
+    <message>
+        <location filename="../source/datatestdlg.cpp" line="728"/>
+        <location filename="../source/datatestdlg.cpp" line="734"/>
+        <location filename="../source/datatestdlg.cpp" line="740"/>
+        <location filename="../source/datatestdlg.cpp" line="746"/>
+        <location filename="../source/datatestdlg.cpp" line="765"/>
+        <location filename="../source/datatestdlg.cpp" line="771"/>
+        <location filename="../source/datatestdlg.cpp" line="777"/>
+        <location filename="../source/datatestdlg.cpp" line="783"/>
+        <source>err is error! please input err first!</source>
+        <translation>err is error! please input err first!</translation>
+    </message>
+    <message>
+        <location filename="../source/datatestdlg.cpp" line="790"/>
+        <location filename="../source/datatestdlg.cpp" line="796"/>
+        <location filename="../source/datatestdlg.cpp" line="802"/>
+        <location filename="../source/datatestdlg.cpp" line="808"/>
+        <source>olderr is error! please read meter first!</source>
+        <translation>olderr is error! please read meter first!</translation>
+    </message>
+    <message>
         <source>get para set info failed</source>
         <translation type="obsolete">get para set info failed</translation>
     </message>
     <message>
-        <location filename="../source/datatestdlg.cpp" line="700"/>
         <source>old meter number is empty! please read meter first!</source>
-        <translation>old meter number is empty! please read meter first!</translation>
+        <translation type="obsolete">old meter number is empty! please read meter first!</translation>
     </message>
     <message>
-        <location filename="../source/datatestdlg.cpp" line="705"/>
         <source>new meter number is error!
 please input 14 bits meter number!</source>
-        <translation>new meter number is error!
+        <translation type="obsolete">new meter number is error!
 please input 14 bits meter number!</translation>
     </message>
 </context>
@@ -126,7 +172,7 @@ MeterNo</source>
 MeterNo</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1911"/>
+        <location filename="../ui/datatestdlg.ui" line="1885"/>
         <source>Read
 Data</source>
         <translation>Read
@@ -140,7 +186,7 @@ MeterNo</source>
 MeterNo</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1885"/>
+        <location filename="../ui/datatestdlg.ui" line="1911"/>
         <source>Verify
 Status</source>
         <translation>Verify
@@ -640,12 +686,19 @@ p</translation>
         <translation>oldCoe</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="2016"/>
+        <location filename="../ui/datatestdlg.ui" line="1995"/>
+        <source>2Modify
+Coe</source>
+        <translation>2Modify
+Coe</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="2042"/>
         <source>ParaSet</source>
         <translation>ParaSet</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="2041"/>
+        <location filename="../ui/datatestdlg.ui" line="2067"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>

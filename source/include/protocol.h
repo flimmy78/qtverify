@@ -269,7 +269,7 @@ typedef struct
 //四个流量点的系数结构
 struct MeterCoe_STR
 {
-	float bigCoe;
+	float bigCoe; //无单位
 	float mid2Coe;
 	float mid1Coe;
 	float smallCoe;

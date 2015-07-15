@@ -25,49 +25,7 @@
 DataTestDlg::DataTestDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
-	qDebug()<<"DataTestDlg thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
-
-	//获取下位机端口配置信息
-	if (!getPortSetIni(&m_portsetinfo))
-	{
-		QMessageBox::warning(this, tr("Warning"), tr("get port set info failed!"));//获取下位机端口配置信息失败!请重新设置！
-	}
-
-	initValveStatus();      //初始化阀门状态
-	initRegulateStatus();   //初始化调节阀状态
-
-	m_paraSetDlg = NULL;
-	m_paraSetReader = new ParaSetReader(); //读参数设置接口
-
-	m_readComConfig = NULL;
-	m_readComConfig = new ReadComConfig();
-
-	m_tempObj = NULL;
-	m_tempTimer = NULL;
-	initTemperatureCom();	 //初始化管路温度采集串口
-
-	m_stdTempObj = NULL;
-	m_stdTempTimer = NULL;
-	initStdTemperatureCom(); //初始化标准温度采集串口
-
-	m_controlObj = NULL;
-	initControlCom();		//初始化控制串口
-
-	m_balanceObj = NULL;
-	initBalanceCom();		//初始化天平串口
-
-	m_meterObj = NULL;
- 	initComOfHeatMeter();	//初始化热量表串口
-
-	//计算流速用
-	m_totalcount = 0;
-	m_startWeight = 0.0;
-	m_endWeight = 0.0;
-	memset(m_deltaWeight, 0, sizeof(float)*FLOW_SAMPLE_NUM);
-	m_flowRateTimer = new QTimer();
-	connect(m_flowRateTimer, SIGNAL(timeout()), this, SLOT(slotFreshFlowRate()));
-	m_flowRateTimer->start(TIMEOUT_FLOW_SAMPLE);
 }
 
 DataTestDlg::~DataTestDlg()
@@ -165,11 +123,60 @@ void DataTestDlg::closeEvent( QCloseEvent * event)
 		delete m_flowRateTimer;
 		m_flowRateTimer = NULL;
 	}
+
+	if (m_oldCoe)
+	{
+		delete m_oldCoe;
+		m_oldCoe = NULL;
+	}
 }
 
 void DataTestDlg::showEvent(QShowEvent *event)
 {
+	qDebug()<<"DataTestDlg showEvent thread:"<<QThread::currentThreadId();
+	//获取下位机端口配置信息
+	if (!getPortSetIni(&m_portsetinfo))
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("get port set info failed!"));//获取下位机端口配置信息失败!请重新设置！
+	}
+
+	initValveStatus();      //初始化阀门状态
+	initRegulateStatus();   //初始化调节阀状态
+
+	m_paraSetDlg = NULL;
+	m_paraSetReader = new ParaSetReader(); //读参数设置接口
+
+	m_readComConfig = NULL;
+	m_readComConfig = new ReadComConfig();
+
+	m_tempObj = NULL;
+	m_tempTimer = NULL;
+	initTemperatureCom();	 //初始化管路温度采集串口
+
+	m_stdTempObj = NULL;
+	m_stdTempTimer = NULL;
+	initStdTemperatureCom(); //初始化标准温度采集串口
+
+	m_controlObj = NULL;
+	initControlCom();		//初始化控制串口
+
+	m_balanceObj = NULL;
+	initBalanceCom();		//初始化天平串口
+
+	m_meterObj = NULL;
+	initComOfHeatMeter();	//初始化热量表串口
+
+	//计算流速用
 	m_totalcount = 0;
+	m_startWeight = 0.0;
+	m_endWeight = 0.0;
+	memset(m_deltaWeight, 0, sizeof(float)*FLOW_SAMPLE_NUM);
+	m_flowRateTimer = new QTimer();
+	connect(m_flowRateTimer, SIGNAL(timeout()), this, SLOT(slotFreshFlowRate()));
+	m_flowRateTimer->start(TIMEOUT_FLOW_SAMPLE);
+
+	m_oldCoe = new MeterCoe_STR;
+	memset(m_oldCoe, 0, sizeof(MeterCoe_STR));
 }
 
 /*
@@ -696,12 +703,12 @@ void DataTestDlg::on_btnModifyMeterNo_clicked()
 	QString newMeterNo = ui.lnEditNewMeterNo->text();
 	if (oldMeterNo.isEmpty())
 	{
-		QMessageBox::warning(this, tr("Warning"), tr("old meter number is empty! please read meter first!"));
+		QMessageBox::warning(this, tr("Warning"), tr("MeterNO. is empty! please read meter first!"));
 		return;
 	}
 	if (newMeterNo.isEmpty() || newMeterNo.size()!=2*METER_ADDR_LEN)
 	{
-		QMessageBox::warning(this, tr("Warning"), tr("new meter number is error!\nplease input 14 bits meter number!"));
+		QMessageBox::warning(this, tr("Warning"), tr("new NO. is error!\nplease input 14 bits meter number!"));
 		ui.lnEditNewMeterNo->setFocus();
 		return;
 	}
@@ -713,11 +720,99 @@ void DataTestDlg::on_btnModifyMeterNo_clicked()
 void DataTestDlg::on_btnModifyFlowCoe_clicked()
 {
 	QString meterNO = ui.lnEditMeterNo->text();
-	float bigErr = ui.lnEditBigNewError->text().toFloat();
+	if (meterNO.isEmpty())
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("MeterNO. is empty! please read meter first!"));
+		return;
+	}
+	bool ok;
+	float bigErr = ui.lnEditBigNewError->text().toFloat(&ok);
+	if (!ok || ui.lnEditBigNewError->text().isEmpty())
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("err is error! please input err first!"));
+		return;
+	}
 	float mid2Err = ui.lnEditMid2NewError->text().toFloat();
+	if (!ok || ui.lnEditMid2NewError->text().isEmpty())
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("err is error! please input err first!"));
+		return;
+	}
 	float mid1Err = ui.lnEditMid1NewError->text().toFloat();
+	if (!ok || ui.lnEditMid1NewError->text().isEmpty())
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("err is error! please input err first!"));
+		return;
+	}
 	float smallErr = ui.lnEditSmallNewError->text().toFloat();
+	if (!ok || ui.lnEditSmallNewError->text().isEmpty())
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("err is error! please input err first!"));
+		return;
+	}
 	m_meterObj->askModifyFlowCoe(meterNO, bigErr, mid2Err, mid1Err, smallErr);
+}
+
+//二次修改流量系数
+void DataTestDlg::on_btn2ModifyFlowCoe_clicked()
+{
+	QString meterNO = ui.lnEditMeterNo->text();
+	if (meterNO.isEmpty())
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("MeterNO. is empty! please read meter first!"));
+		return;
+	}
+	bool ok;
+	float bigErr = ui.lnEditBigNewError->text().toFloat(&ok);
+	if (!ok || ui.lnEditBigNewError->text().isEmpty())
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("err is error! please input err first!"));
+		return;
+	}
+	float mid2Err = ui.lnEditMid2NewError->text().toFloat(&ok);
+	if (!ok || ui.lnEditMid2NewError->text().isEmpty())
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("err is error! please input err first!"));
+		return;
+	}
+	float mid1Err = ui.lnEditMid1NewError->text().toFloat(&ok);
+	if (!ok || ui.lnEditMid1NewError->text().isEmpty())
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("err is error! please input err first!"));
+		return;
+	}
+	float smallErr = ui.lnEditSmallNewError->text().toFloat(&ok);
+	if (!ok || ui.lnEditSmallNewError->text().isEmpty())
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("err is error! please input err first!"));
+		return;
+	}
+
+	m_oldCoe->bigCoe = ui.lnEditBigOldCoe->text().toFloat(&ok);
+	if (!ok || ui.lnEditBigOldCoe->text().isEmpty())
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("oldCoe is empty! please read meter first!"));
+		return;
+	}
+	m_oldCoe->mid2Coe = ui.lnEditMid2OldCoe->text().toFloat(&ok);
+	if (!ok || ui.lnEditMid2OldCoe->text().isEmpty())
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("oldCoe is empty! please read meter first!"));
+		return;
+	}
+	m_oldCoe->mid1Coe = ui.lnEditMid1OldCoe->text().toFloat(&ok);
+	if (!ok || ui.lnEditMid1OldCoe->text().isEmpty())
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("oldCoe is empty! please read meter first!"));
+		return;
+	}
+	m_oldCoe->smallCoe = ui.lnEditSmallOldCoe->text().toFloat(&ok);
+	if (!ok || ui.lnEditSmallOldCoe->text().isEmpty())
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("oldCoe is empty! please read meter first!"));
+		return;
+	}
+	m_meterObj->askModifyFlowCoe(meterNO, bigErr, mid2Err, mid1Err, smallErr, m_oldCoe);
 }
 
 //响应读取表号成功
@@ -758,37 +853,41 @@ void DataTestDlg::slotFreshMeterTemper(const QString& comName, const QString& te
 
 void DataTestDlg::slotFreshBigCoe(const QString& comName, const QString& bigCoe)
 {
+	ui.lnEditBigOrgCoe->setText(bigCoe);
+	float bigCoeV = calcFloatValueOfCoe(bigCoe);
+	ui.lnEditBigOldCoe->setText(QString::number(bigCoeV, 'f', ERR_PRECISION));
 	float bigErr = calcErrorValueOfCoe(bigCoe);
 	ui.lnEditBigOldError->setText(QString::number(bigErr, 'f', ERR_PRECISION));
-	float bigCoeV = calcFloatValueOfCoe(bigCoe);
-	ui.lnEditBigOldCoe->setText(bigCoe + "(" + QString::number(bigCoeV, 'f', ERR_PRECISION) + ")");
 	qDebug()<<"读取大流量系数 成功...";
 }
 
 void DataTestDlg::slotFreshMid2Coe(const QString& comName, const QString& mid2Coe)
 {
+	ui.lnEditMid2OrgCoe->setText(mid2Coe);
+	float mid2CoeV = calcFloatValueOfCoe(mid2Coe);
+	ui.lnEditMid2OldCoe->setText(QString::number(mid2CoeV, 'f', ERR_PRECISION));
 	float mid2Err = calcErrorValueOfCoe(mid2Coe);
 	ui.lnEditMid2OldError->setText(QString::number(mid2Err, 'f', ERR_PRECISION));
-	float mid2CoeV = calcFloatValueOfCoe(mid2Coe);
-	ui.lnEditMid2OldCoe->setText(mid2Coe + "(" + QString::number(mid2CoeV, 'f', ERR_PRECISION) + ")");
 	qDebug()<<"读取中流2流量系数 成功...";
 }
 
 void DataTestDlg::slotFreshMid1Coe(const QString& comName, const QString& mid1Coe)
 {
+	ui.lnEditMid1OrgCoe->setText(mid1Coe);
+	float mid1CoeV = calcFloatValueOfCoe(mid1Coe);
+	ui.lnEditMid1OldCoe->setText(QString::number(mid1CoeV, 'f', ERR_PRECISION));
 	float mid1Err = calcErrorValueOfCoe(mid1Coe);
 	ui.lnEditMid1OldError->setText(QString::number(mid1Err, 'f', ERR_PRECISION));
-	float mid1CoeV = calcFloatValueOfCoe(mid1Coe);
-	ui.lnEditMid1OldCoe->setText(mid1Coe + "(" + QString::number(mid1CoeV, 'f', ERR_PRECISION) + ")");
 	qDebug()<<"读取中流1流量系数 成功...";
 }
 
 void DataTestDlg::slotFreshSmallCoe(const QString& comName, const QString& smallCoe)
 {
-	float smallErr = calcErrorValueOfCoe(smallCoe);
+	ui.lnEditSmallOrgCoe->setText(smallCoe);
 	float smallCoeV = calcFloatValueOfCoe(smallCoe);
+	ui.lnEditSmallOldCoe->setText(QString::number(smallCoeV, 'f', ERR_PRECISION));
+	float smallErr = calcErrorValueOfCoe(smallCoe);
 	ui.lnEditSmallOldError->setText(QString::number(smallErr, 'f', ERR_PRECISION));
-	ui.lnEditSmallOldCoe->setText(smallCoe + "(" + QString::number(smallCoeV, 'f', ERR_PRECISION) + ")");
 	qDebug()<<"读取小流量系数 成功...";
 }
 
