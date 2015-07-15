@@ -401,6 +401,10 @@ double CAlgorithm::getDensityByFit(float temp)
 /****************************************************************************/
 double CAlgorithm::getDensityByQuery(float temp)
 {
+	if (temp<1 || temp>149)
+	{
+		return -1;
+	}
 	int low = getInt(temp);
 
 	return (density[low -1] +  getDecimal(temp) * (density[low] - density[low - 1])) / 1000.0;

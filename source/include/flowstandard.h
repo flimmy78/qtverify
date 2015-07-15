@@ -267,6 +267,8 @@ private:
 	int getRouteByWdg(flow_rate_wdg, flow_type);//根据部件号读取标准表的通道号
 	float getStdUpperFlow(flow_rate_wdg wdgIdx);//根据部件号读取相应标准表的上限流量值
 	float getStdPulse(flow_rate_wdg wdgIdx);//根据部件号读取相应标准表的脉冲值
+
+	void inputMeterData();//手动检表时, 需要输入表的初值和终值
 };
 
 #endif //FLOWSTANDARD_H
