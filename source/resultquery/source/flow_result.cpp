@@ -122,7 +122,7 @@ void FlowResultDlg::initUiData()
 	//是否合格
 	ui.cmbIsValid->setCurrentIndex(ui.cmbIsValid->count()-1);
 
-	ui.startDateTime->setDateTime(QDateTime::currentDateTime().addDays(-7));//过去一周
+	ui.startDateTime->setDateTime(QDateTime::currentDateTime().addSecs(-3600) );//过去一小时
 	ui.endDateTime->setDateTime(QDateTime::currentDateTime());
 }
 
