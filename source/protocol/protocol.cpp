@@ -1510,14 +1510,17 @@ void lcModbusRTUProtocol::initParams()
 {
 	m_calcDataLength = 0x0000;
 	m_readDataLength = 0;
-	//m_valueArray.clear();
 	m_crcValue.clear();
 	m_readBuf.clear();
 	m_state = init_state;
 }
 
 /*
-** 每个通道对应两个寄存器, 即4个字节 
+** 读取力创模块9150A和9017的命令
+** address, 力创模块的设备地址, 通常为0x01
+** func, 功能码
+** start, 欲读取的模块内部只读寄存器的开始地址
+** regCount, 读取的集群器个数
 */
 void lcModbusRTUProtocol::makeSendBuf(uchar address, lcModbusRTUFunc func, UINT16 start, UINT16 regCount)
 {
@@ -1543,7 +1546,35 @@ void lcModbusRTUProtocol::makeSendBuf(lcModSendCmd command)
 	makeSendBuf(command.address, command.func, command.start, command.regCount);	
 }
 
-//读取标准表脉冲数
+//不能一次性修改16路的数值, 模块不返回数据, 只能分两次, 每次8路
+void lcModbusRTUProtocol::makeWriteBuf(lcMod9150AWriteCmd cmd)
+{
+	m_writeBuf.clear();
+	m_writeBuf.append(cmd.address);
+	m_writeBuf.append((uchar)(cmd.func));
+	m_writeBuf.append((uchar)(cmd.start>>WORDLEN));
+	m_writeBuf.append((uchar)(cmd.start));
+	m_writeBuf.append((uchar)(cmd.regCount>>WORDLEN));
+	m_writeBuf.append((uchar)(cmd.regCount));
+	m_writeBuf.append((uchar)(cmd.ByteCount));
+	for(int i=0;i<EDA_9150A_ROUTE_CNT/2;i++)
+	{
+		int diValue = cmd.pData[i];//通道号; 从DI[0]~DI[7], DI[8]~DI[15]
+		for (int j=EDA9150A_ROUTE_BYTES-1;j>=0;j--)
+		{			
+			uchar b= (uchar)(diValue>>(j*WORDLEN));
+			m_writeBuf.append(b);
+		}
+	}
+	m_writeBuf.append(getCRCArray(calcModRtuCRC((uchar *)m_writeBuf.data(), m_writeBuf.length())));
+}
+
+QByteArray lcModbusRTUProtocol::getWriteBuf()
+{
+	return m_writeBuf;
+}
+
+//读取标准表脉冲数; 只能检测读取命令(0x03)的返回值, 不能检测其他命令的返回值
 bool lcModbusRTUProtocol::readMeterComBuffer(QByteArray tmp)
 {
 	int number = tmp.size();
@@ -1639,7 +1670,6 @@ bool lcModbusRTUProtocol::readMeterComBuffer(QByteArray tmp)
 			else//crc校验错误
 			{
 				initParams();
-				m_valueArray.clear();
 				qDebug() << "crc check error!!!!!!!";
 				return false;
 			}

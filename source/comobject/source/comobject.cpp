@@ -937,6 +937,12 @@ void lcModRtuComObject::writeLcModComBuffer(lcModSendCmd command)
 	m_lcModCom->write(m_lcModProtocol->getSendBuf());
 }
 
+void lcModRtuComObject::modify9150ACombuf(lcMod9150AWriteCmd cmd)
+{
+	m_lcModProtocol->makeWriteBuf(cmd);
+	m_lcModCom->write(m_lcModProtocol->getWriteBuf());
+}
+
 //address: 力创模块的设备地址
 void lcModRtuComObject::ask9150A16RoutesCmd(uchar address)
 {

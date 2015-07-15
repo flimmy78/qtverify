@@ -419,9 +419,10 @@ private:
 
 enum lcModbusRTUFunc//力创ModbusRTU, 功能码
 {
-	read_multi_switch_out = 0x01,//读 1 路或多路开关量输出状态
+	read_multi_switch_out = 0x01,//读 1 路或多路开关量输入状态 DI
 	read_multi_switch_in = 0x02,//读 1 路或多路开关量输入状态 DI
-	read_multi_reg = 0x03//读多路寄存器
+	read_multi_reg = 0x03,//读多路寄存器
+	write_multi_switch = 0x10//写多路寄存器的数值; 
 };
 
 enum lcModAnswerState
@@ -442,6 +443,14 @@ struct lcModSendCmd
 	UINT16 regCount;
 };
 
+struct lcMod9150AWriteCmd : public lcModSendCmd
+{
+	uchar ByteCount;
+	int *pData;
+	uchar crc_low;
+	uchar crc_high;
+};
+
 class PROTOCOL_EXPORT lcModbusRTUProtocol : public CProtocol
 {	
 public:
@@ -451,13 +460,17 @@ public slots:
 	bool readMeterComBuffer(QByteArray tmp);//读取标准表脉冲数
 	void makeSendBuf(uchar address, lcModbusRTUFunc func, UINT16 start, UINT16 regCount);
 	void makeSendBuf(lcModSendCmd);
+
+	void makeWriteBuf(lcMod9150AWriteCmd);//组帧, 改写脉冲数命令. 应答暂时没做
+	QByteArray getWriteBuf();
+
 	QByteArray getSendBuf();
 	QByteArray getReadVale();//读取全部获取的数值
 	QByteArray getData(int i);//读取第i个寄存器的值, 高位在0, 低位在1
 	int getIntData(int i);//读取第i个通道的值, 比如DI0就是0通道; DI6就是6通道
 private:
 	void initParams();//初始化参数
-
+	QByteArray m_writeBuf;//改写力创模块脉冲寄存器数据的命令帧
 	QByteArray m_sendBuf;//发送命令
 	QByteArray m_readBuf;//接收到的数据(除了crc校验值外的所有数据)
 	UINT16 m_readDataLength;//接收到的各个寄存器数据长度

@@ -49,6 +49,7 @@ class ReadComConfig;
 
 #define TIMEOUT_STD_INST			500//请求标准表瞬时流量周期
 #define TIMEOUT_STD_ACCUM			500//请求标准表累积流量周期
+#define TIMEOUT_MODIFY_STD_ACCUM	2000//修改累积脉冲数周期
 
 class FLOWSTANDARD_EXPORT FlowStandardDlg : public QWidget
 {
@@ -232,8 +233,9 @@ public:
 		void saveStartMeterNO(); //保存起始表号
 
 private slots:
-	void slotAskInstPulse();
-	void slotAskAccumPulse();
+	void slotAskInstPulse();//请求瞬时流量
+	void slotAskAccumPulse();//请求累积流量
+	void slotModifyAccumPulse();//修改累积流量, 以模拟标准表采集环境
 
 	void slotGetInstStdMeterPulse(const QByteArray &);//瞬时流量槽函数
 	void slotGetAccumStdMeterPulse(const QByteArray &);//累积流量槽函数
@@ -253,6 +255,8 @@ private:
 	lcModRtuComObject *m_accumulateFlowCom;//累积流量串口对象
 	ComThread m_accumFlowThread;//累积流量采集线程
 	QTimer* m_accumSTDMeterTimer;//累积流量计时器
+	QTimer* m_accumModifyStdMeterTimer;//修改累积流量脉冲数计时器
+	int m_writeAccumCnt;//写累积流量的累加计数器
 	QByteArray m_accumStdPulse;//16路累积流量脉冲值, 需二次加工
 
 	QList<int> m_instRouteIsRead;//瞬时流量的通道号是否被采集过
