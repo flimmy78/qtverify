@@ -327,6 +327,31 @@ int insertFlowVerifyRec(Flow_Verify_Record_PTR ptr, int num)
 }
 
 /*
+** 修改数据库中流量检定结果的表号。调用者负责提前打开数据库startdb()
+*/
+int modifyFlowVerifyRec_MeterNO(QString newMeterNO, QString timeStamp, int meterPos)
+{
+	QSqlQuery query(g_db); // 新建一个查询的实例
+	QString sql = "update T_Flow_Verify_Record set F_MeterNo=";
+	sql.append(newMeterNO);
+	sql.append(" where F_TimeStamp=\"");
+	sql.append(timeStamp.toAscii());
+	sql.append("\" and F_MeterPosNo=");
+	sql.append(QString("%1").arg(meterPos, 0, 10));
+	if (query.exec(sql))
+	{
+		qDebug()<<"update succeed"<<timeStamp<<meterPos<<newMeterNO;
+	}
+	else
+	{
+		QSqlError error = query.lastError();
+		qWarning()<<error.text();
+	}
+
+	return true;
+}
+
+/*
 ** 向数据库插入总量检定结果。调用者负责提前打开数据库startdb()
 */
 int insertTotalVerifyRec(Total_Verify_Record_PTR ptr, int num)

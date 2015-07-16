@@ -40,7 +40,7 @@
 
 #define TIMEOUT_BALANCE		200	  //每200毫秒读一次天平数据
 
-#define RESET_ZERO_TIME		22    //等待热表初值回零的时间，单位：秒
+#define RESET_ZERO_TIME		24    //等待热表初值回零的时间，单位：秒
 
 #define BALANCE_STABLE_TIME    3000   //等待天平数值稳定时间(水流稳定)，单位：毫秒
 #define WAIT_COM_TIME          3000   //热量表串口通讯,等待串口数据的时间，单位：毫秒

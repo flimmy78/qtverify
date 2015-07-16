@@ -46,6 +46,7 @@ QTEXDB_EXPORT	int getManufacture(int& num, Manufacture_PTR &ptr);
 
 QTEXDB_EXPORT	int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id);
 QTEXDB_EXPORT	int insertFlowVerifyRec(Flow_Verify_Record_PTR ptr, int num);
+QTEXDB_EXPORT	int modifyFlowVerifyRec_MeterNO(QString newMeterNO, QString timeStamp, int meterPos);
 QTEXDB_EXPORT	int insertTotalVerifyRec(Total_Verify_Record_PTR ptr, int num);
 QTEXDB_EXPORT	int insertPlatinumVerifyRec(T_Platinum_Verify_Record_PTR ptr, int num);
 QTEXDB_EXPORT	int insertCalcVerifyRec(Calc_Verify_Record_PTR ptr, int num);
