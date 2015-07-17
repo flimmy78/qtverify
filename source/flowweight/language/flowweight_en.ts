@@ -358,6 +358,7 @@ t</translation>
     </message>
     <message>
         <location filename="../flowweight.cpp" line="976"/>
+        <location filename="../flowweight.cpp" line="994"/>
         <source>Please input meter number!
  then click &quot;GoOn&quot; button!</source>
         <translation>Please input meter number!
@@ -382,12 +383,12 @@ t</translation>
     </message>
     <message>
         <location filename="../flowweight.cpp" line="1273"/>
-        <location filename="../flowweight.cpp" line="1858"/>
+        <location filename="../flowweight.cpp" line="1859"/>
         <source>please input start value of heat meter</source>
         <translation>please input start value of heat meter</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1850"/>
+        <location filename="../flowweight.cpp" line="1851"/>
         <source>read start value of heat meter...</source>
         <translation>read start value of heat meter...</translation>
     </message>
@@ -414,9 +415,8 @@ t</translation>
         <translation>Please input meter number!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="994"/>
         <source>Please input meter number, then click &quot;GoOn&quot; button!</source>
-        <translation>Please input meter number, then click &quot;GoOn&quot; button!</translation>
+        <translation type="obsolete">Please input meter number, then click &quot;GoOn&quot; button!</translation>
     </message>
     <message>
         <location filename="../flowweight.cpp" line="977"/>
@@ -513,7 +513,7 @@ Please wait for about %1 second</translation>
     <message>
         <location filename="../flowweight.cpp" line="809"/>
         <location filename="../flowweight.cpp" line="828"/>
-        <location filename="../flowweight.cpp" line="1832"/>
+        <location filename="../flowweight.cpp" line="1833"/>
         <source>NO. &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; flow point: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; m3/h</source>
         <translation>NO. &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; flow point: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; m3/h</translation>
     </message>
@@ -574,8 +574,8 @@ Please wait for about %1 second</translation>
         <translation type="obsolete">please input init value of heat meter</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1449"/>
-        <location filename="../flowweight.cpp" line="1890"/>
+        <location filename="../flowweight.cpp" line="1450"/>
+        <location filename="../flowweight.cpp" line="1891"/>
         <source>please input end value of heat meter</source>
         <translation>please input end value of heat meter</translation>
     </message>
@@ -590,6 +590,14 @@ Please wait for about %1 second</translation>
         <location filename="../flowweight.cpp" line="527"/>
         <source>meterPosNo%1</source>
         <translation>meterPosNo%1</translation>
+    </message>
+    <message>
+        <location filename="../flowweight.cpp" line="544"/>
+        <location filename="../flowweight.cpp" line="550"/>
+        <location filename="../flowweight.cpp" line="556"/>
+        <location filename="../flowweight.cpp" line="561"/>
+        <source>(%1)</source>
+        <translation>(%1)</translation>
     </message>
 </context>
 </TS>

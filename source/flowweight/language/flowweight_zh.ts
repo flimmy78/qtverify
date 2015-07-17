@@ -505,7 +505,7 @@ Error</source>
     <message>
         <location filename="../flowweight.cpp" line="809"/>
         <location filename="../flowweight.cpp" line="828"/>
-        <location filename="../flowweight.cpp" line="1832"/>
+        <location filename="../flowweight.cpp" line="1833"/>
         <source>NO. &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; flow point: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; m3/h</source>
         <translation>第 &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; 流量点: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; m3/h</translation>
     </message>
@@ -531,6 +531,7 @@ Error</source>
     </message>
     <message>
         <location filename="../flowweight.cpp" line="976"/>
+        <location filename="../flowweight.cpp" line="994"/>
         <source>Please input meter number!
  then click &quot;GoOn&quot; button!</source>
         <translation>请输入表号！
@@ -546,9 +547,8 @@ Error</source>
         <translation type="obsolete">&lt;font color=red size=4&gt;&lt;b&gt;请输入表号, 然后点击 &quot;继续&quot; 按钮!&lt;/b&gt;&lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="994"/>
         <source>Please input meter number, then click &quot;GoOn&quot; button!</source>
-        <translation>请输入表号，然后点击&quot;继续&quot;按钮!</translation>
+        <translation type="obsolete">请输入表号，然后点击&quot;继续&quot;按钮!</translation>
     </message>
     <message>
         <location filename="../flowweight.cpp" line="977"/>
@@ -586,12 +586,12 @@ click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue ve
     </message>
     <message>
         <location filename="../flowweight.cpp" line="1273"/>
-        <location filename="../flowweight.cpp" line="1858"/>
+        <location filename="../flowweight.cpp" line="1859"/>
         <source>please input start value of heat meter</source>
         <translation>请输入热量表初值</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1850"/>
+        <location filename="../flowweight.cpp" line="1851"/>
         <source>read start value of heat meter...</source>
         <translation>正在读取热量表初值...</translation>
     </message>
@@ -644,8 +644,8 @@ click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue ve
         <translation type="obsolete">请输入热量表初值</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1449"/>
-        <location filename="../flowweight.cpp" line="1890"/>
+        <location filename="../flowweight.cpp" line="1450"/>
+        <location filename="../flowweight.cpp" line="1891"/>
         <source>please input end value of heat meter</source>
         <translation>请输入热量表终值</translation>
     </message>
@@ -660,6 +660,14 @@ click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue ve
         <location filename="../flowweight.cpp" line="527"/>
         <source>meterPosNo%1</source>
         <translation>表位%1</translation>
+    </message>
+    <message>
+        <location filename="../flowweight.cpp" line="544"/>
+        <location filename="../flowweight.cpp" line="550"/>
+        <location filename="../flowweight.cpp" line="556"/>
+        <location filename="../flowweight.cpp" line="561"/>
+        <source>(%1)</source>
+        <translation>(%1)</translation>
     </message>
 </context>
 </TS>
