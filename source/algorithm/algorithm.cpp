@@ -311,14 +311,14 @@ int get9017RouteI(int i, QByteArray valueArray)
 
 float getInstStdValue(float elecValue, float upperValue)
 {
-	if (elecValue<=ELEC_ZERO)
+	if (ELEC_ZERO<=elecValue && elecValue <= ELEC_UPPER)
 	{
-		return 0.0f;
+		float deltaStd = ELEC_UPPER - ELEC_ZERO;
+		float deltaCur = elecValue - ELEC_ZERO;
+		return (deltaCur/deltaStd)*upperValue;
 	}
 
-	float deltaStd = ELEC_UPPER - ELEC_ZERO;
-	float deltaCur = elecValue - ELEC_ZERO;
-	return (deltaCur/deltaStd)*upperValue;
+	return 0.0f;	
 }
 /**********************************************************
 ÀàÃû£ºCAlgorithm

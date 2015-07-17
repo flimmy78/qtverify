@@ -80,7 +80,7 @@ public:
 	CAlgorithm *m_chkAlg;//检定过程用到的计算方法
 
 	bool m_stopFlag;     //关闭界面后退出
-	bool m_conFlag;      //自动检表时，遇到读表数据失败的，等待重新读表的标识。1:等待  0:不等待
+	bool m_reReadFlag;      //自动检表时，遇到读表数据失败的，等待重新读表的标识。1:等待  0:不等待
 
 	//检定过程相关的控制参数 begin
 	ParaSetReader *m_paraSetReader;
@@ -159,12 +159,14 @@ public:
 		void showNowKeyParaConfig(); //显示当前关键参数设置信息
 		void initTableWidget();     //设置表格行数
 
-		int on_btnExhaust_clicked();  //点击"排气"按钮
+
 		void on_btnStart_clicked();   //点击"开始"按钮
+		void on_btnExhaust_clicked();  //点击"排气"按钮
 		void on_btnGoOn_clicked();    //点击"继续"按钮
-		void on_btnNext_clicked();    //点击"下一步"按钮
+		
 		void on_btnStop_clicked();    //点击"终止检测"按钮
 		void on_btnExit_clicked();    //退出按钮
+		void on_btnReCalc_clicked();  //点击"重新计算"按钮
 		int startExhaustCountDown();  //开始排气倒计时
 		void slotExaustFinished();    //排气时间结束
 		int openAllValveAndPump();    //打开所有阀门和水泵
@@ -189,6 +191,7 @@ public:
 		void makeStartValueByLastEndValue(); //上一次的终值作为本次的初值
 		int calcAllMeterError();//计算所有被检表的误差
 		int calcMeterError(int idx); //计算某个表的误差
+		int calcVerifyResult();       //计算检定结果
 
 		void slotFreshComTempValue(const QString& tempStr); //刷新温度值
 
@@ -223,7 +226,6 @@ public:
 		void on_btnAllVerifyStatus_clicked();//设置检定状态(所有表）
 		void on_btnAllAdjError_clicked(); //调整误差(所有表)
 		void on_btnAllModifyNO_clicked(); //修改表号(所有表）
-		void on_btnReCalc_clicked(); 
 
 		void slotModifyMeterNO(const int &row); //修改表号
 		void slotAdjustError(const int &row);   //调整误差

@@ -48,8 +48,8 @@
 #define RELEASE_PRESS_TIME     2000   //释放管路压力的时间，单位：毫秒
 #define CYCLE_TIME             1000   //周期循环时间，单位：毫秒
 
-#define ELEC_ZERO			   4//标准表瞬时流量为0时的电流, mA
-#define ELEC_UPPER			   20//标准表瞬时流量为最大时的电流, mA
+#define ELEC_ZERO			   4000//标准表瞬时流量为0时的电流, mA
+#define ELEC_UPPER			   20000//标准表瞬时流量为最大时的电流, mA
 
 /*
 ** 被检表类型枚举            
