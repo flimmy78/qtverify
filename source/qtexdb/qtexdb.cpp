@@ -80,7 +80,10 @@ int startdb()
 
 void closedb()
 {
-	g_db.close();
+	if (g_db.isOpen())
+	{
+		g_db.close();
+	}
 }
 
 //获取所有的表规格
