@@ -287,7 +287,7 @@ void TotalStandardDlg::initMeterCom()
 		m_meterObj[i].moveToThread(&m_meterThread[i]);
 		m_meterObj[i].setProtocolVersion(m_manufac); //设置表协议类型
 		m_meterThread[i].start();
-		m_meterObj[i].openMeterCom(&m_readComConfig->ReadMeterConfigByNum(QString("%1").arg(i+1)));
+		m_meterObj[i].openMeterCom(&m_readComConfig->ReadMeterConfigByNum(i+1));
 		
 		connect(&m_meterObj[i], SIGNAL(readMeterNoIsOK(const QString&, const QString&)), this, SLOT(slotSetMeterNumber(const QString&, const QString&)));
 		connect(&m_meterObj[i], SIGNAL(readMeterFlowIsOK(const QString&, const float&)), this, SLOT(slotSetMeterFlow(const QString&, const float&)));

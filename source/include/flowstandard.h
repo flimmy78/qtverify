@@ -175,7 +175,7 @@ public:
 		int closeAllFlowPointValves();//关闭所有流量点阀门
 		int closeWaterOutValve();     //关闭放水阀
 		int openWaterOutValve();      //打开放水阀
-		int judgeTartgetVolAndCalcAvgTemperAndFlow(float targetV); //判断是否完成检定量检定量，并累加进出口温度，每秒累加一次，用于计算进出口平均温度
+		int judgeTartgetVolAndCalcAvgTemperAndFlow(float initV, float verifyV); //判断是否完成检定量, 并累加进出口温度，每秒累加一次，用于计算进出口平均温度
 		void stopVerify();            //停止检定
 		void startVerify();           //开始检定
 		int prepareVerifyFlowPoint(int order);     //准备单个流量点的检定
