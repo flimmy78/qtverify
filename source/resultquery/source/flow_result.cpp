@@ -347,11 +347,11 @@ void FlowResultDlg::on_btnExport_clicked()
 	if (!file.isEmpty())
 	{
 		getConditon();
-		startdb();
+		//startdb();
 		CReport rpt(" where " + m_conStr);
 		rpt.writeRpt();
 		rpt.saveTo(file);
-		closedb();
+		//closedb();
 		QMessageBox::information(this, tr("OK"), tr("export excel file successful!"));
 	}
 }

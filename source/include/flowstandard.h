@@ -175,7 +175,7 @@ public:
 		int closeAllFlowPointValves();//关闭所有流量点阀门
 		int closeWaterOutValve();     //关闭放水阀
 		int openWaterOutValve();      //打开放水阀
-		int judgeTartgetVolAndCalcAvgTemperAndFlow(float initV, float verifyV); //判断是否完成检定量, 并累加进出口温度，每秒累加一次，用于计算进出口平均温度
+		int judgeTartgetVolAndCalcAvgTemperAndFlow(float initV, float verifyV, flow_rate_wdg wdgIdx); //判断是否完成检定量检定量，并累加进出口温度，每秒累加一次，用于计算进出口平均温度
 		void stopVerify();            //停止检定
 		void startVerify();           //开始检定
 		int prepareVerifyFlowPoint(int order);     //准备单个流量点的检定
@@ -270,7 +270,8 @@ private:
 	float getStdUpperFlow(flow_rate_wdg wdgIdx);//根据部件号读取相应标准表的上限流量值
 	float getStdPulse(flow_rate_wdg wdgIdx);//根据部件号读取相应标准表的脉冲值
 
-	void inputMeterData();//手动检表时, 需要输入表的初值和终值
+	void freshInstStdMeter();//刷新瞬时读数
+	void freshAccumStdMeter();//刷新累积读数
 };
 
 #endif //FLOWSTANDARD_H

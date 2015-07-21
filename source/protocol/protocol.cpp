@@ -1533,12 +1533,12 @@ void lcModbusRTUProtocol::makeSendBuf(uchar address, lcModbusRTUFunc func, UINT1
 	m_sendBuf.append((uchar)(regCount));
 	m_sendBuf.append(getCRCArray(calcModRtuCRC((uchar *)m_sendBuf.data(), m_sendBuf.length())));
 
-	printf("\nsendbuf:\n");
-	for (int i=0;i<m_sendBuf.length();i++)
-	{
-		printf("%02X ", (uchar)m_sendBuf.at(i));
-	}
-	printf("\nsendbuf end:\n");
+	//printf("\nsendbuf:\n");
+	//for (int i=0;i<m_sendBuf.length();i++)
+	//{
+	//	printf("%02X ", (uchar)m_sendBuf.at(i));
+	//}
+	//printf("\nsendbuf end:\n");
 }
 
 void lcModbusRTUProtocol::makeSendBuf(lcModSendCmd command)
@@ -1585,6 +1585,7 @@ bool lcModbusRTUProtocol::readMeterComBuffer(QByteArray tmp)
 
 	bool ret = false;
 	char b = '\0';
+	QString s;
 	for (int i=0; i < number; i++)
 	{
 		b = tmp[i];
@@ -1599,8 +1600,32 @@ bool lcModbusRTUProtocol::readMeterComBuffer(QByteArray tmp)
 			}
 			else//回应的地址位出错, 终止解析
 			{
+				qCritical() << "!!!!!!!address error!!!!!!!";
+				qCritical() << "!!!!!!!m_sendBuf buf is :!!!!!!!";
+				for (int idx=0;idx<m_sendBuf.length();idx++)
+				{
+					qCritical() << s.sprintf("%02X", (uchar)m_sendBuf.at(idx));
+				}
+				qCritical() << "!!!!!!!m_sendBuf buf end :!!!!!!!";
+
+				qCritical() << "!!!!!!!tmp buf is :!!!!!!!";
+				for (int idx=0;idx<tmp.length();idx++)
+				{
+					qCritical() << s.sprintf("%02X", (uchar)tmp.at(idx));
+				}
+				qCritical() << "!!!!!!!tmp buf end :!!!!!!!";
+
+				qCritical() << "!!!!!!!address is :!!!!!!!";
+				qCritical() << s.sprintf("%02X", (uchar)b);
+				qCritical() << "!!!!!!!address end :!!!!!!!";
+
+				qCritical() << "!!!!!!!m_readBuf buf is :!!!!!!!";
+				for (int idx=0;idx<m_readBuf.length();idx++)
+				{
+					qCritical() << s.sprintf("%02X", (uchar)m_readBuf.at(idx));
+				}
+				qCritical() << "!!!!!!!m_readBuf buf end :!!!!!!!";
 				initParams();
-				qDebug() << "address error!!!!!!!";
 				return false;
 			}
 			break;
@@ -1613,8 +1638,32 @@ bool lcModbusRTUProtocol::readMeterComBuffer(QByteArray tmp)
 			}
 			else//回应的功能码出错, 终止解析
 			{
+				qCritical() << "!!!!!!!func error!!!!!!!";
+				qCritical() << "!!!!!!!m_sendBuf buf is :!!!!!!!";
+				for (int idx=0;idx<m_sendBuf.length();idx++)
+				{
+					qCritical() << s.sprintf("%02X", m_sendBuf.at(idx));
+				}
+				qCritical() << "!!!!!!!m_sendBuf buf end :!!!!!!!";
+
+				qCritical() << "!!!!!!!tmp buf is :!!!!!!!";
+				for (int idx=0;idx<tmp.length();idx++)
+				{
+					qCritical() << s.sprintf("%02X", tmp.at(idx));
+				}
+				qCritical() << "!!!!!!!tmp buf end :!!!!!!!";
+
+				qCritical() << "!!!!!!!func is :!!!!!!!";
+				qCritical() << s.sprintf("%02X", (uchar)b);
+				qCritical() << "!!!!!!!func end :!!!!!!!";
+
+				qCritical() << "!!!!!!!m_readBuf buf is :!!!!!!!";
+				for (int idx=0;idx<m_readBuf.length();idx++)
+				{
+					qCritical() << s.sprintf("%02X", m_readBuf.at(idx));
+				}
+				qCritical() << "!!!!!!!m_readBuf buf end :!!!!!!!";
 				initParams();
-				qDebug() << "func error!!!!!!!";
 				return false;
 			}
 			break;
@@ -1629,8 +1678,22 @@ bool lcModbusRTUProtocol::readMeterComBuffer(QByteArray tmp)
 
 				if (b != m_calcDataLength)//数据长度信息错误, 终止解析
 				{
+					qCritical() << "dataLength error!!!!!!!";
+					qCritical() << "!!!!!!!dataLength check error!!!!!!!";
+					qCritical() << "!!!!!!!send buf is :!!!!!!!";
+					for (int idx=0;idx<m_sendBuf.length();idx++)
+					{
+						qCritical() << s.sprintf("%02X", m_sendBuf.at(idx));
+					}
+					qCritical() << "!!!!!!!send buf end :!!!!!!!";
+
+					qCritical() << "!!!!!!!tmp buf is :!!!!!!!";
+					for (int idx=0;idx<tmp.length();idx++)
+					{
+						qCritical() << s.sprintf("%02X", tmp.at(idx));
+					}
+					qCritical() << "!!!!!!!tmp buf end :!!!!!!!";
 					initParams();
-					qDebug() << "dataLength error!!!!!!!";
 					return false;
 				}
 			}
@@ -1669,8 +1732,36 @@ bool lcModbusRTUProtocol::readMeterComBuffer(QByteArray tmp)
 			}
 			else//crc校验错误
 			{
+				qCritical() << "!!!!!!!crc check error!!!!!!!";
+				qCritical() << "!!!!!!!m_sendBuf buf is :!!!!!!!";
+				for (int idx=0;idx<m_sendBuf.length();idx++)
+				{
+					qCritical() << s.sprintf("%02X", m_sendBuf.at(idx));
+				}
+				qCritical() << "!!!!!!!m_sendBuf buf end :!!!!!!!";
+
+				qCritical() << "!!!!!!!tmp buf is :!!!!!!!";
+				for (int idx=0;idx<tmp.length();idx++)
+				{
+					qCritical() << s.sprintf("%02X", tmp.at(idx));
+				}
+				qCritical() << "!!!!!!!tmp buf end :!!!!!!!";
+
+				qCritical() << "!!!!!!!m_readBuf buf is :!!!!!!!";
+				for (int idx=0;idx<m_readBuf.length();idx++)
+				{
+					qCritical() << s.sprintf("%02X", m_readBuf.at(idx));
+				}
+				qCritical() << "!!!!!!!m_readBuf buf end :!!!!!!!";
+
+				qCritical() << "!!!!!!!m_crcValue buf is :!!!!!!!";
+				for (int idx=0;idx<m_crcValue.length();idx++)
+				{
+					qCritical() << s.sprintf("%02X", m_crcValue.at(idx));
+				}
+				qCritical() << "!!!!!!!m_crcValue buf end :!!!!!!!";
+				
 				initParams();
-				qDebug() << "crc check error!!!!!!!";
 				return false;
 			}
 			break;
