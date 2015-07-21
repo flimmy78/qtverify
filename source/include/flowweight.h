@@ -173,9 +173,10 @@ public slots:
 	int startExhaustCountDown();  //开始排气倒计时
 	void slotExaustFinished();    //排气时间结束
 	int prepareInitBalance();     //开始检定前，准备天平初始重量
-	int openAllValveAndPump();    //打开所有阀门和水泵
 	int readAllMeter();           //读取所有被检表
-	int setAllMeterVerifyStatus();   //设置热量表进入检定状态
+	int setAllMeterVerifyStatus();//设置热量表进入检定状态
+	int openAllValveAndPump();    //打开所有阀门和水泵
+	int closeAllValveAndPumpOpenOutValve(); //关闭所有阀门和水泵、打开防水阀
 	int closeAllFlowPointValves();//关闭所有流量点阀门
 	int closeWaterOutValve();     //关闭放水阀
 	int openWaterOutValve();      //打开放水阀
