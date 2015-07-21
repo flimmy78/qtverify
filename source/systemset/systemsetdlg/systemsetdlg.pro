@@ -2,7 +2,7 @@ DEFINES	+= SYSTEMSETDLG_DLL
 TEMPLATE	= lib
 QT         += xml sql
 TARGET    = systemsetdlg
-CONFIG += qt dll debug
+CONFIG += qt dll debug qtestlib
 
 DEFINES	+= SYSTEMSETDLG_DLL
 
