@@ -141,6 +141,9 @@ public slots:
 	void on_btnStdTempStop_clicked(); //停止采集标准温度
 
 	void slotAskStdTemperature();
+	void clearMeterDispInfo();
+	void setMeterComboxEnabled(bool flag);
+	void setMeterOperBtnEnabled(bool flag);
 
 private:
 	Ui::DataTestDlgClass ui;

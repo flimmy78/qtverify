@@ -304,12 +304,11 @@ void DataTestDlg::initComOfHeatMeter()
 	ui.parityComboBox->setCurrentIndex(cfgList.at(3).toInt());
 	ui.stopBitsComboBox->setCurrentIndex(cfgList.at(4).toInt());
 
+	ui.btnOpenCom->setEnabled(true);
 	ui.btnCloseCom->setEnabled(false);
-	ui.btnSetVerifyStatus->setEnabled(false);
-	ui.btnReadMeterData->setEnabled(false);
-	ui.btnModifyMeterNo->setEnabled(false);
-	ui.btnModifyFlowCoe->setEnabled(false);
-	ui.btn2ModifyFlowCoe->setEnabled(false);
+	setMeterComboxEnabled(true);
+	setMeterOperBtnEnabled(false);
+	clearMeterDispInfo();
 }
 
 //初始化阀门状态
@@ -373,19 +372,10 @@ void DataTestDlg::on_btnOpenCom_clicked()
 		return; //打开热表通讯串口失败
 	}
 
-	ui.btnCloseCom->setEnabled(true);
-	ui.btnSetVerifyStatus->setEnabled(true);
-	ui.btnReadMeterData->setEnabled(true);
-	ui.btnModifyMeterNo->setEnabled(true);
-	ui.btnModifyFlowCoe->setEnabled(true);
-	ui.btn2ModifyFlowCoe->setEnabled(true);
 	ui.btnOpenCom->setEnabled(false);
-
-	ui.portNameComboBox->setEnabled(false);
-	ui.baudRateComboBox->setEnabled(false);
-	ui.dataBitsComboBox->setEnabled(false);
-	ui.parityComboBox->setEnabled(false);
-	ui.stopBitsComboBox->setEnabled(false);
+	ui.btnCloseCom->setEnabled(true);
+	setMeterOperBtnEnabled(true);
+	setMeterComboxEnabled(false);
 }
 
 //关闭热量表通讯串口
@@ -393,19 +383,10 @@ void DataTestDlg::on_btnCloseCom_clicked()
 {
 	m_meterObj->closeMeterCom();
 
-	ui.btnCloseCom->setEnabled(false);
-	ui.btnSetVerifyStatus->setEnabled(false);
-	ui.btnReadMeterData->setEnabled(false);
-	ui.btnModifyMeterNo->setEnabled(false);
-	ui.btnModifyFlowCoe->setEnabled(false);
-	ui.btn2ModifyFlowCoe->setEnabled(false);
 	ui.btnOpenCom->setEnabled(true);
-
-	ui.portNameComboBox->setEnabled(true);
-	ui.baudRateComboBox->setEnabled(true);
-	ui.dataBitsComboBox->setEnabled(true);
-	ui.parityComboBox->setEnabled(true);
-	ui.stopBitsComboBox->setEnabled(true);
+	ui.btnCloseCom->setEnabled(false);
+	setMeterOperBtnEnabled(false);
+	setMeterComboxEnabled(true);
 }
 
 /*
@@ -670,15 +651,7 @@ void DataTestDlg::slotFreshFlowRate()
 	m_startWeight = m_endWeight;//将当前值保存, 作为下次运算的初值
 }
 
-//设置检定状态
-void DataTestDlg::on_btnSetVerifyStatus_clicked()
-{
-	qDebug()<<"设置进入检定状态...";
-	m_meterObj->askSetVerifyStatus(); //设置进入检定状态
-}
-
-//读表数据
-void DataTestDlg::on_btnReadMeterData_clicked()
+void DataTestDlg::clearMeterDispInfo()
 {
 	ui.lnEditMeterNo->clear();
 	ui.lnEditMeterTempIn->clear();
@@ -698,7 +671,19 @@ void DataTestDlg::on_btnReadMeterData_clicked()
 	ui.lnEditSmallOldError->clear();
 	ui.lnEditSmallOldCoe->clear();
 	ui.lnEditSmallOrgCoe->clear();
+}
 
+//设置检定状态
+void DataTestDlg::on_btnSetVerifyStatus_clicked()
+{
+	qDebug()<<"设置进入检定状态...";
+	m_meterObj->askSetVerifyStatus(); //设置进入检定状态
+}
+
+//读表数据
+void DataTestDlg::on_btnReadMeterData_clicked()
+{
+	clearMeterDispInfo();
 	qDebug()<<"读表 开始...";
  	m_meterObj->askReadMeter(); //请求读表
 }
@@ -898,3 +883,20 @@ void DataTestDlg::slotFreshSmallCoe(const QString& comName, const QString& small
 	qDebug()<<"读取小流量系数 成功...";
 }
 
+void DataTestDlg::setMeterComboxEnabled(bool flag)
+{
+	ui.portNameComboBox->setEnabled(flag);
+	ui.baudRateComboBox->setEnabled(flag);
+	ui.dataBitsComboBox->setEnabled(flag);
+	ui.parityComboBox->setEnabled(flag);
+	ui.stopBitsComboBox->setEnabled(flag);
+}
+
+void DataTestDlg::setMeterOperBtnEnabled(bool flag)
+{
+	ui.btnSetVerifyStatus->setEnabled(flag);
+	ui.btnReadMeterData->setEnabled(flag);
+	ui.btnModifyMeterNo->setEnabled(flag);
+	ui.btnModifyFlowCoe->setEnabled(flag);
+	ui.btn2ModifyFlowCoe->setEnabled(flag);
+}
