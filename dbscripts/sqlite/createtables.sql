@@ -487,8 +487,7 @@ from t_flow_verify_record v2;
 -----------------------------------------------------------------
 drop view if exists "V_Flow_Verify_Record";
 CREATE view V_Flow_Verify_Record as
-select 
-  rid.[rowid],
+select
   rec.F_ID,
   rec.F_TimeStamp,
   rec.F_MeterNo,
@@ -496,7 +495,8 @@ select
   rec.F_FlowPoint,
   rec.F_MethodFlag,
   rec.F_MeterValue0,
-  rec.F_MeterValue1,                
+  rec.F_MeterValue1,
+  (rec.F_MeterValue1 - rec.F_MeterValue0) F_MeterDispValue,
   rec.F_BalWeight0,                 
   rec.F_BalWeight1,                 
   rec.F_StdMeterV0,                 
@@ -506,7 +506,7 @@ select
   rec.F_StandValue,                 
   rec.F_DispError,                  
   rec.F_StdError,
-  (case when (F_DispError<F_StdError and F_DispError>-F_StdError) then '合格'
+  (case when F_Result=1 then '合格'
         else '不合格'
    end) valid,                   
   rec.F_Result,                   
@@ -528,54 +528,35 @@ select
   rec.F_ValidDate,                   
   rec.F_EnvTemper,                  
   rec.F_EnvHumidity,                
-  rec.F_AirPressure,                
-  rec.F_CertNO,
-  rec.F_FlowCoe,
-  rec.F_DeviceName,   
-  rec.F_DeviceNo,
-  rec.F_DeviceModel,
-  rec.F_Manufact,
-  rec.F_DeviceGrade,
-  rec.F_MeasureRange,
-  rec.F_CertNo,
-  rec.F_VerifyRule,
-  rec.F_DeviceValidDate,
-  rec.F_CertValidDate,
-  rec.F_RuleValidDate   
-from
-   (
-		select 
-		  recj.*, 
-		  d.[F_CertNo], 
-		  d.[F_CertValidDate], 
-		  d.[F_DeviceGrade], 
-		  d.[F_DeviceModel], 
-		  d.[F_DeviceName], 
-		  d.[F_DeviceNo],
-		  d.[F_DeviceValidDate],
-		  d.[F_Manufact],
-		  d.[F_MeasureRange],
-		  d.[F_RuleValidDate],
-		  d.[F_VerifyRule]
+  rec.F_AirPressure,  
+  rec.F_FlowCoe,              
+  d.F_CertNO,
+  d.F_DeviceName,   
+  d.F_DeviceNo,
+  d.F_DeviceModel,
+  d.F_Manufact,
+  d.F_DeviceGrade,
+  d.F_MeasureRange,
+  d.F_CertNo,
+  d.F_VerifyRule,
+  d.F_DeviceValidDate,
+  d.F_CertValidDate,
+  d.F_RuleValidDate   
 		from 
-			T_Flow_Verify_Record recj 
+			T_Flow_Verify_Record rec 
 		 left join 
-			T_Verify_Device_Info d 
+			T_Verify_Device_Info d,
+      T_Meter_Model mod,
+       T_meter_standard std,   
+       T_Meter_PickCode tp,   
+       T_manufacture_dept manu,   
+       T_verify_dept vdpt
 		 on   
-			recj.F_DeviceInfoID=d.[F_ID]
-    ) rec, 
-   T_Meter_Model mod,
-   T_meter_standard std,   
-   T_Meter_PickCode tp,   
-   T_manufacture_dept manu,   
-   T_verify_dept vdpt,   
-   v_flow_verify_meterno_rowid rid
-where
-   rec.[F_Standard]=std.[F_ID] and
-   rec.[F_PickCode]=tp.[F_ID] and
-   rec.[F_ManufactDept]=manu.[F_ID] and
-   rec.[F_VerifyDept]=vdpt.[F_ID] and   
-   rec.[F_Model]=mod.[F_ID] and   
-   rec.[f_meterno]=rid.[F_MeterNo]
+		 rec.F_DeviceInfoID=d.[F_ID] and
+     rec.[F_Standard]=std.[F_ID] and
+     rec.[F_PickCode]=tp.[F_ID] and
+     rec.[F_ManufactDept]=manu.[F_ID] and
+     rec.[F_VerifyDept]=vdpt.[F_ID] and   
+     rec.[F_Model]=mod.[F_ID]
  order by rec.f_meterno, rec.f_timestamp
  ;
