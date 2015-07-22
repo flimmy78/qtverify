@@ -29,20 +29,24 @@ class ReadComConfig;
 /*
 ** 表格列
 */
-#define COLUMN_METER_NUMBER       0 //表号列
-#define COLUMN_FLOW_POINT	      1 //流量点
-#define COLUMN_METER_START	      2 //表初值列
-#define COLUMN_METER_END	      3 //表终值列
-#define COLUMN_BAL_START	      4 //天平初值
-#define COLUMN_BAL_END		      5 //天平终值
-#define COLUMN_TEMPER		      6 //温度列
-#define COLUMN_DENSITY		      7 //密度列
-#define COLUMN_STD_VALUE	      8 //标准值
-#define COLUMN_ERROR		      9 //示值误差列
-#define COLUMN_READ_METER		  10 //读表数据列
-#define COLUMN_VERIFY_STATUS	  11 //设置检定状态列
-#define COLUMN_ADJUST_ERROR		  12 //调整误差列
-#define COLUMN_MODIFY_METERNO	  13 //修改表号列
+enum table_columns
+{
+	COLUMN_METER_NUMBER = 0, //表号列
+	COLUMN_FLOW_POINT,	    //流量点
+	COLUMN_METER_START,    //表初值列
+	COLUMN_METER_END,	    //表终值列
+	COLUMN_BAL_START,	    //天平初值
+	COLUMN_BAL_END,		    //天平终值
+	COLUMN_TEMPER,		    //温度列
+	COLUMN_DENSITY,		    //密度列
+	COLUMN_STD_VALUE,	    //标准值
+	COLUMN_ERROR,		    //示值误差列
+	COLUMN_READ_METER,		//读表数据列
+	COLUMN_VERIFY_STATUS,	//设置检定状态列
+	COLUMN_ADJUST_ERROR,	//调整误差列
+	COLUMN_MODIFY_METERNO,	//修改表号列
+	COLUMN_NUMS             //表格的列数         
+};
 
 
 class FLOWWEIGHT_EXPORT FlowWeightDlg : public QWidget
@@ -157,6 +161,7 @@ public:
 
 	void showEvent(QShowEvent * event);
 	void closeEvent(QCloseEvent * event);
+	void resizeEvent(QResizeEvent * event);
 
 public slots:
 
