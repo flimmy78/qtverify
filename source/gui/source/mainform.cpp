@@ -379,7 +379,7 @@ void MainForm::on_actionFlowWeight_triggered()
 	{
 		m_flowWeightDlg = new FlowWeightDlg();
 	}
-	m_flowWeightDlg->show();
+	m_flowWeightDlg->showMaximized();
 	
 	connect(m_flowWeightDlg, SIGNAL(signalClosed()), this, SLOT(slotFlowWeightClosed()));
 }
@@ -397,7 +397,7 @@ void MainForm::on_actionFlowStandard_triggered()
 		m_flowStandardDlg = NULL;
 		m_flowStandardDlg = new FlowStandardDlg();
 	}
-	m_flowStandardDlg->show();
+	m_flowStandardDlg->showMaximized();
 }
 
 //温度检定(比较法)
@@ -477,7 +477,7 @@ void MainForm::on_actionTotalWeight_triggered()
 		m_totalWeightDlg = NULL;
 		m_totalWeightDlg = new TotalWeightDlg();
 	}
-	m_totalWeightDlg->show();
+	m_totalWeightDlg->showMaximized();
 }
 
 //总量检定（标准表法）
@@ -493,7 +493,7 @@ void MainForm::on_actionTotalStandard_triggered()
 		m_totalStandardDlg = NULL;
 		m_totalStandardDlg = new TotalStandardDlg();
 	}
-	m_totalStandardDlg->show();
+	m_totalStandardDlg->showMaximized();
 }
 
 //查询流量检定结果（包括质量法和标准表法）
