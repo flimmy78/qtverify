@@ -45,7 +45,7 @@ enum table_columns
 	COLUMN_VERIFY_STATUS,	//设置检定状态列
 	COLUMN_ADJUST_ERROR,	//调整误差列
 	COLUMN_MODIFY_METERNO,	//修改表号列
-	COLUMN_NUMS             //表格的列数         
+	COLUMN_COUNT            //表格的列数         
 };
 
 
