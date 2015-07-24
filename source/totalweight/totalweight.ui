@@ -320,13 +320,8 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
-          <property name="font">
-           <font>
-            <family>Aharoni</family>
-            <pointsize>12</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
+          <property name="styleSheet">
+           <string notr="true">font: 75 12pt &quot;Aharoni&quot;;</string>
           </property>
           <property name="text">
            <string/>
@@ -363,12 +358,8 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
+          <property name="styleSheet">
+           <string notr="true">font: 75 12pt &quot;Aharoni&quot;;</string>
           </property>
           <property name="text">
            <string/>

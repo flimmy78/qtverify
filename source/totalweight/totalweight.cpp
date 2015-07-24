@@ -307,8 +307,8 @@ void TotalWeightDlg::resizeEvent(QResizeEvent * event)
 
 	int th = ui.tableWidget->size().height();
 	int tw = ui.tableWidget->size().width();
-	int hh = ui.tableWidget->horizontalHeader()->size().height();
-	int vw = ui.tableWidget->verticalHeader()->size().width();
+	int hh = 20;// ui.tableWidget->horizontalHeader()->size().height();
+	int vw = 50;//ui.tableWidget->verticalHeader()->size().width();
 	int vSize = (int)((th-hh-10)/(m_maxMeterNum<=0 ? 12 : m_maxMeterNum));
 	int hSize = (int)((tw-vw-20)/COLUMN_TOTAL_COUNT);
 	ui.tableWidget->verticalHeader()->setDefaultSectionSize(vSize);
@@ -669,18 +669,9 @@ void TotalWeightDlg::initTableWidget()
 	connect(signalMapper4, SIGNAL(mapped(const int &)),this, SLOT(slotVerifyStatus(const int &)));
 
 	ui.tableWidget->setVerticalHeaderLabels(vLabels);
-// 	ui.tableWidget->resizeColumnsToContents();
 	ui.tableWidget->setFont(QFont("Times", 15, QFont::DemiBold, true));
-	int th = ui.tableWidget->size().height();
-	int tw = ui.tableWidget->size().width();
-	int hh = ui.tableWidget->horizontalHeader()->size().height();
-// 	int vw = ui.tableWidget->verticalHeader()->size().width();
-	int vw = 51;
-	int vSize = (int)((th-hh-10)/m_maxMeterNum);
-	int hSize = (int)((tw-vw-20)/COLUMN_TOTAL_COUNT);
-	ui.tableWidget->verticalHeader()->setDefaultSectionSize(vSize);
-	ui.tableWidget->horizontalHeader()->setDefaultSectionSize(hSize);
-	ui.tableWidget->setColumnWidth(COLUMN_METER_NUMBER, 125);
+// 	ui.tableWidget->resizeColumnsToContents();
+// 	ui.tableWidget->setColumnWidth(COLUMN_METER_NUMBER, 125);
 }
 
 //显示当前关键参数设置信息
@@ -736,6 +727,11 @@ int TotalWeightDlg::startExhaustCountDown()
 */
 void TotalWeightDlg::slotExaustFinished()
 {
+	if (m_stopFlag)
+	{
+		return;
+	}
+
 	m_exaustSecond --;
 	ui.labelHintProcess->setText(tr("Exhaust countdown: <font color=DarkGreen size=6><b>%1</b></font> second").arg(m_exaustSecond));
 	qDebug()<<"排气倒计时:"<<m_exaustSecond<<"秒";
@@ -754,11 +750,6 @@ void TotalWeightDlg::slotExaustFinished()
 			qWarning()<<"关闭所有流量点阀门失败，检定结束";
 			return;
 		}
-	}
-
-	if (m_stopFlag)
-	{
-		return;
 	}
 
 	if (!prepareInitBalance())//准备天平初始重量
@@ -1500,7 +1491,6 @@ int TotalWeightDlg::calcMeterError(int idx)
 	m_recPtr[idx].inSlotTemper = ui.lnEditInStdTemp->text().toFloat();
 	m_recPtr[idx].outSlotTemper = ui.lnEditOutStdTemp->text().toFloat();
 
-	return true; 
 	return 1; 
 }
 
@@ -1644,6 +1634,7 @@ void TotalWeightDlg::slotSetMeterEnergy(const QString& comName, const QString& e
 	{
 		return;
 	}
+
 	int idx = isMeterPosValid(meterPos);
   if (idx < 0) //该表位不检表，当然也不需要读表数据
 	{
@@ -1653,7 +1644,7 @@ void TotalWeightDlg::slotSetMeterEnergy(const QString& comName, const QString& e
 	float heat = energy.toFloat(&ok);
 	if (m_state == STATE_START_VALUE) //初值
 	{
-		if (idx>=0 && m_meterStartValue!=NULL)
+		if (m_meterStartValue!=NULL)
 		{
 			m_meterStartValue[idx] = heat;
 		}		
@@ -1661,7 +1652,7 @@ void TotalWeightDlg::slotSetMeterEnergy(const QString& comName, const QString& e
 	}
 	else if (m_state == STATE_END_VALUE) //终值
 	{
-		if (idx>=0 && m_meterEndValue!=NULL)
+		if (m_meterEndValue!=NULL)
 		{
 			m_meterEndValue[idx] = heat;
 		}	
@@ -1938,6 +1929,7 @@ int TotalWeightDlg::saveAllVerifyRecords()
 //请求读表（所有表、广播地址读表）
 void TotalWeightDlg::on_btnAllReadMeter_clicked()
 {
+	qDebug()<<"on_btnAllReadMeter_clicked...";
 	int idx = -1;
 	for (int j=0; j<m_maxMeterNum; j++)
 	{

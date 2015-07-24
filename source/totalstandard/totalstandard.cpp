@@ -1026,7 +1026,7 @@ int TotalStandardDlg::calcAllMeterError()
 	for (int m=0; m<m_validMeterNum; m++)
 	{
 		m_meterError[m] = 100*(m_meterEndValue[m] - m_meterStartValue[m] - m_meterStdValue[m])/m_meterStdValue[m];//计算每个表的误差,单位%
-		ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_ERROR, new QTableWidgetItem(QString::number(m_meterError[m], 'f', 4))); //误差
+		ui.tableWidget->setItem(m_meterPosMap[m]-1, COLUMN_DISP_ERROR, new QTableWidgetItem(QString::number(m_meterError[m], 'f', 4))); //误差
 	}
 
 	QString meterNoPrefix = getNumPrefixOfManufac(m_nowParams->m_manufac);
@@ -1073,7 +1073,7 @@ int TotalStandardDlg::calcAllMeterError()
 int TotalStandardDlg::calcMeterError(int idx)
 {
 	m_meterError[idx] = 100*(m_meterEndValue[idx] - m_meterStartValue[idx] - m_meterStdValue[idx])/m_meterStdValue[idx];//计算某个表的误差
-	ui.tableWidget->setItem(m_meterPosMap[idx]-1, COLUMN_ERROR, new QTableWidgetItem(QString::number(m_meterError[idx], 'f', 4))); //误差
+	ui.tableWidget->setItem(m_meterPosMap[idx]-1, COLUMN_DISP_ERROR, new QTableWidgetItem(QString::number(m_meterError[idx], 'f', 4))); //误差
 
 	QString meterNoPrefix = getNumPrefixOfManufac(m_nowParams->m_manufac);
 	QString meterNoStr;
