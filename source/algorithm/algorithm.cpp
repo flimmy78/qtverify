@@ -16,11 +16,20 @@
 #include <QtCore/QSettings>
 #include <QtCore/QFile>
 #include <QProcessEnvironment>
+#include <QCoreApplication>
+#include <QTime>
 #include <qmath.h>
 
 #include "algorithm.h"
 #include "commondefine.h"
 #include "qtexdb.h"
+
+void sleep(unsigned int msec)
+{
+	QTime dieTime = QTime::currentTime().addMSecs(msec);
+	while( QTime::currentTime() < dieTime )
+		QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+}
 
 //获取控制板的端口号配置信息
 int getPortSetIni(PortSet_Ini_PTR info)

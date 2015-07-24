@@ -181,7 +181,7 @@ void TotalWeightDlg::closeEvent(QCloseEvent * event)
 		closeAllValveAndPumpOpenOutValve();
 	 	QTest::qWait(CYCLE_TIME);
 	}
-
+	openWaterOutValve();
 	ui.labelHintPoint->clear();
 	ui.labelHintProcess->setText(tr("release pipe pressure..."));
 	openValve(m_portsetinfo.bigNo); //打开大流量点阀门，释放管路压力

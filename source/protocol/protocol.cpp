@@ -64,6 +64,7 @@ TempProtocol::~TempProtocol()
 //请求温度值 组帧
 void TempProtocol::makeSendBuf()
 {
+// 	qDebug()<<"TempProtocol::makeSendBuf thread:"<<QThread::currentThreadId();
 	m_sendBuf = "";
 // 	printf("111111 file %s, line %d\n", __FILE__, __LINE__);
 	m_sendBuf.append(ADDR_CODE_FIRST).append(ADDR_CODE_FIRST);//地址代号
@@ -90,6 +91,7 @@ void TempProtocol::makeSendBuf()
 //解帧 获取温度值
 bool TempProtocol::readTemperComBuffer(QByteArray tmp)
 {
+// 	qDebug()<<"TempProtocol::readTemperComBuffer thread:"<<QThread::currentThreadId();
 	int number = tmp.size();
 	Q_ASSERT(number > 0);
 	memset(m_tempFrame, 0, sizeof(Temp_Frame_Struct));
@@ -269,6 +271,7 @@ BalanceProtocol::~BalanceProtocol()
 //解析赛多利斯天平串口数据
 bool BalanceProtocol::readBalanceComBuffer(QByteArray tmp)
 {
+// 	qDebug()<<"BalanceProtocol::readBalanceComBuffer thread:"<<QThread::currentThreadId();
 	bool ret = false;
 	int number = tmp.size();
 	if (number < BAL_DATA_LENGTH) //一帧通常是22字节；
@@ -370,6 +373,7 @@ NewCtrlProtocol::~NewCtrlProtocol()
 ************************************************************************/
 void NewCtrlProtocol::makeFrameOfCtrlRelay(UINT8 portno, bool status)
 {
+	qDebug()<<"NewCtrlProtocol::makeFrameOfCtrlRelay thread:"<<QThread::currentThreadId();
 	Q_ASSERT(portno >= 0);
 	m_sendBuf = "";
 	m_sendBuf.append(CTRL_START_CODE).append(CTRL_FUNC_RELAY);
@@ -684,7 +688,7 @@ OldCtrlProtocol::~OldCtrlProtocol()
 ************************************************************************/
 void OldCtrlProtocol::makeFrameOfCtrlRelay(UINT8 portno, bool status)
 {
-	qDebug()<<"OldCtrlProtocol::makeFrameOfCtrlRelay";
+	qDebug()<<"OldCtrlProtocol::makeFrameOfCtrlRelay thread:"<<QThread::currentThreadId();
 	UINT8 zeroCode = 0x00;
 	m_sendBuf = "";
 	if (status) //true(阀门打开,闭合继电器)
@@ -884,7 +888,7 @@ UINT8 DeluMeterProtocol::CountCheck(DeluMeter_Frame_Struct *pFrame)
 //解帧
 UINT8 DeluMeterProtocol::readMeterComBuffer(QByteArray tmp)
 {
-	qDebug()<<"readMeterComBuffer DeluMeterProtocol thread:"<<QThread::currentThreadId();
+	qDebug()<<"DeluMeterProtocol::readMeterComBuffer thread:"<<QThread::currentThreadId();
 
 	UINT8 ret = 0x00;
 	int state = METER_START_STATE;
@@ -1077,6 +1081,8 @@ void DeluMeterProtocol::analyseFrame()
 // 组帧：广播地址读表
 void DeluMeterProtocol::makeFrameOfReadMeter()
 {
+	qDebug()<<"DeluMeterProtocol::makeFrameOfReadMeter thread:"<<QThread::currentThreadId();
+
 	m_sendBuf = "";
 
 	for (int i=0; i<METER_WAKEUP_CODE_NUM; i++)
@@ -1108,6 +1114,8 @@ void DeluMeterProtocol::makeFrameOfReadMeter()
 // 组帧：设置进入检定状态
 void DeluMeterProtocol::makeFrameOfSetVerifyStatus()
 {
+	qDebug()<<"DeluMeterProtocol::makeFrameOfSetVerifyStatus thread:"<<QThread::currentThreadId();
+
 	m_sendBuf = "";
 
 	for (int i=0; i<METER_WAKEUP_CODE_NUM; i++)

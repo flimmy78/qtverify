@@ -99,8 +99,7 @@ TempComObject::~TempComObject()
 
 bool TempComObject::openTemperatureCom(ComInfoStruct *comStruct)
 {
-	qDebug()<<"openTemperatureCom thread:"<<QThread::currentThreadId();
-
+// 	qDebug()<<"### openTemperatureCom thread:"<<QThread::currentThreadId();
 	QString portName = comStruct->portName;// "COM2";//获取串口名
 #ifdef Q_OS_LINUX
 	m_tempCom = new QextSerialPort("/dev/" + portName);
@@ -118,12 +117,12 @@ bool TempComObject::openTemperatureCom(ComInfoStruct *comStruct)
 
 	if(m_tempCom->open(QIODevice::ReadWrite))
 	{
-		qDebug()<<"Open Temperature Com:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
+		qDebug()<<"### OpenTemperatureCom:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
 		return true;
 	}
 	else
 	{
-		qDebug()<<"Open Temperature Com:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
+		qDebug()<<"### OpenTemperatureCom:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
 		return false;
 	}
 }
@@ -131,11 +130,11 @@ bool TempComObject::openTemperatureCom(ComInfoStruct *comStruct)
 //请求温度
 void TempComObject::writeTemperatureComBuffer()
 {
+// 	qDebug()<<"TempComObject::writeTemperatureComBuffer thread:"<<QThread::currentThreadId();
 	if (NULL==m_tempProtocol)
 	{
 		return;
 	}
-// 	qDebug()<<"TempComObject::writeTemperatureComBuffer thread:"<<QThread::currentThreadId();
 	m_tempProtocol->makeSendBuf();
 	QByteArray buf = m_tempProtocol->getSendBuf();
 	m_tempCom->write(buf);
@@ -144,12 +143,12 @@ void TempComObject::writeTemperatureComBuffer()
 //读温度串口缓冲区
 void TempComObject::readTemperatureComBuffer()
 {
+// 	qDebug()<<"TempComObject::readTemperatureComBuffer thread:"<<QThread::currentThreadId();
 	if (NULL==m_tempCom)
 	{
 		return;
 	}
 	m_buf += m_tempCom->readAll();
-// 	qDebug()<<"read TemperatureComBuffer thread:"<<QThread::currentThreadId();
 	int num = m_buf.size();
 	if (num < 10)
 	{
@@ -236,8 +235,7 @@ void ControlComObject::setProtocolVersion(int version)
 
 bool ControlComObject::openControlCom(ComInfoStruct *comStruct)
 {
-	qDebug()<<"openControlCom thread:"<<QThread::currentThreadId();
-
+//	qDebug()<<"*** openControlCom thread:"<<QThread::currentThreadId();
 	QString portName = comStruct->portName; //获取串口名
 #ifdef Q_OS_LINUX
 	m_controlCom = new QextSerialPort("/dev/" + portName);
@@ -255,12 +253,12 @@ bool ControlComObject::openControlCom(ComInfoStruct *comStruct)
 
 	if(m_controlCom->open(QIODevice::ReadWrite))
 	{
-		qDebug()<<"Open Control Com:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
+		qDebug()<<"*** OpenControlCom:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
 		return true;
 	}
 	else
 	{
-		qDebug()<<"Open Control Com:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
+		qDebug()<<"*** OpenControlCom:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
 		return false;
 	}
 }
@@ -273,11 +271,11 @@ bool ControlComObject::openControlCom(ComInfoStruct *comStruct)
 */
 void ControlComObject::askControlRelay(UINT8 portno, bool status)
 {
+	qDebug()<<"ControlComObject::askControlRelay thread:"<<QThread::currentThreadId();
 	if (NULL==m_controlProtocol)
 	{
 		return;
 	}
-	qDebug()<<"askControlRelay thread:"<<QThread::currentThreadId();
 	
 	QByteArray buf;
 	m_controlProtocol->makeFrameOfCtrlRelay(portno, status);
@@ -450,8 +448,7 @@ BalanceComObject::~BalanceComObject()
 
 bool BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
 {
-	qDebug()<<"openBalanceCom thread:"<<QThread::currentThreadId();
-
+// 	qDebug()<<"$$$ openBalanceCom thread:"<<QThread::currentThreadId();
 	QString portName = comStruct->portName;// "COM2";//获取串口名
 #ifdef Q_OS_LINUX
 	m_balanceCom = new QextSerialPort("/dev/" + portName);
@@ -471,7 +468,7 @@ bool BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
 
 	if(m_balanceCom->open(QIODevice::ReadWrite)) 
 	{
-		qDebug()<<"Open Balance Com:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
+		qDebug()<<"$$$ OpenBalanceCom:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
 /*
 		QByteArray buf;
 		buf.append(0x4E).append(0x20).append(0x20).append(0x20).append(0x20).append(0x20);
@@ -484,7 +481,7 @@ bool BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
 	}
 	else
 	{
-		qDebug()<<"Open Balance Com:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
+		qDebug()<<"$$$ OpenBalanceCom:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
 		return false;
 	}
 }
@@ -492,13 +489,14 @@ bool BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
 //读取天平串口数据
 void BalanceComObject::readBalanceComBuffer()
 {
+// 	qDebug()<<"BalanceComObject::readBalanceComBuffer thread:"<<QThread::currentThreadId();
 	if (NULL==m_balanceCom)
 	{
 		return;
 	}
 	QByteArray balBuffer = m_balanceCom->readAll();
 // 	qDebug()<<"balBuffer.size() ="<<balBuffer.size();
-//  qDebug()<<"readBalanceComBuffer thread:"<<QThread::currentThreadId()<<", Read data is:"<<balBuffer;
+// 	qDebug()<<"read data is:"<<balBuffer;
 
 	bool ret = false;
 	ret = m_balanceProtocol->readBalanceComBuffer(balBuffer);//通讯协议接口
@@ -570,8 +568,8 @@ void MeterComObject::setProtocolVersion(int version)
 */
 bool MeterComObject::openMeterCom(ComInfoStruct *comStruct)
 {
+// 	qDebug()<<"!!! openMeterCom:"<<m_portName<<"thread:"<<QThread::currentThreadId();
 	m_portName = comStruct->portName; //获取串口名
-// 	qDebug()<<"openMeterCom:"<<m_portName<<"thread:"<<QThread::currentThreadId();
 #ifdef Q_OS_LINUX
 	m_meterCom = new QextSerialPort("/dev/" + m_portName);
 #elif defined (Q_OS_WIN)
@@ -588,12 +586,12 @@ bool MeterComObject::openMeterCom(ComInfoStruct *comStruct)
 
 	if(m_meterCom->open(QIODevice::ReadWrite)) 
 	{
-		qDebug()<<"Open openMeter Com:"<<m_portName<<"Success!"<<" thread id:"<<QThread::currentThreadId();
+		qDebug()<<"!!! openMeterCom:"<<m_portName<<"Success!"<<" thread id:"<<QThread::currentThreadId();
 		return true;
 	}
 	else
 	{
-		qDebug()<<"Open Meter Com:"<<m_portName<<"Failed!"<<" thread id:"<<QThread::currentThreadId();
+		qDebug()<<"!!! openMeterCom:"<<m_portName<<"Failed!"<<" thread id:"<<QThread::currentThreadId();
 		return false;
 	}
 }
@@ -613,7 +611,6 @@ void MeterComObject::readMeterComBuffer()
 	{
 		return;
 	}
-// 	qDebug()<<"readMeterComBuffer MeterComObject thread:"<<QThread::currentThreadId();
 // 	qDebug()<<"Read"<<m_meterCom->bytesAvailable()<<"bytes!";
 	m_meterTmp.append(m_meterCom->readAll());
 	int num = m_meterTmp.size();
@@ -627,6 +624,8 @@ void MeterComObject::readMeterComBuffer()
 		return;
 	}
 
+	qDebug()<<m_meterCom->portName()<<"readMeterComBuffer MeterComObject thread:"<<QThread::currentThreadId();
+	qDebug()<<m_meterCom->portName()<<"read"<<m_meterTmp.size()<<"bytes!";
 	QDateTime begintime = QDateTime::currentDateTime();
 	qDebug()<<"begintime:"<<begintime.toString("yyyy-MM-dd HH:mm:ss.zzz");
 	UINT8 ret = 0x00;
@@ -698,6 +697,7 @@ void MeterComObject::readMeterComBuffer()
 */
 void MeterComObject::askReadMeter()
 {
+	qDebug()<<"111 MeterComObject askReadMeter thread:"<<QThread::currentThreadId();
 	if (NULL==m_meterProtocol)
 	{
 		return;
@@ -712,6 +712,7 @@ void MeterComObject::askReadMeter()
 */
 void MeterComObject::askSetVerifyStatus()
 {
+	qDebug()<<"111 MeterComObject askSetVerifyStatus thread:"<<QThread::currentThreadId();
 	if (NULL==m_meterProtocol)
 	{
 		return;
@@ -726,6 +727,7 @@ void MeterComObject::askSetVerifyStatus()
 */
 void MeterComObject::askModifyMeterNO(QString oldMeterNo, QString newMeterNo)
 {
+	qDebug()<<"111 MeterComObject askModifyMeterNO thread:"<<QThread::currentThreadId();
 	if (NULL==m_meterProtocol)
 	{
 		return;
@@ -748,6 +750,7 @@ void MeterComObject::askModifyMeterNO(QString oldMeterNo, QString newMeterNo)
 */
 void MeterComObject::askModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr)
 {
+	qDebug()<<"111 MeterComObject askModifyFlowCoe thread:"<<QThread::currentThreadId();
 	if (NULL==m_meterProtocol)
 	{
 		return;
@@ -763,6 +766,7 @@ void MeterComObject::askModifyFlowCoe(QString meterNO, float bigErr, float mid2E
 */
 void MeterComObject::askModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe)
 {
+	qDebug()<<"222 MeterComObject askModifyFlowCoe thread:"<<QThread::currentThreadId();
 	if (NULL==m_meterProtocol)
 	{
 		return;
@@ -805,8 +809,7 @@ Sti1062aComObject::~Sti1062aComObject()
 
 bool Sti1062aComObject::openTemperatureCom(ComInfoStruct *comStruct)
 {
-	qDebug()<<"open Sti1062aTemperatureCom thread:"<<QThread::currentThreadId();
-
+// 	qDebug()<<"&&& open Sti1062aTemperatureCom thread:"<<QThread::currentThreadId();
 	QString portName = comStruct->portName;// "COM2", 获取串口名
 #ifdef Q_OS_LINUX
 	m_tempCom = new QextSerialPort("/dev/" + portName);
@@ -823,12 +826,12 @@ bool Sti1062aComObject::openTemperatureCom(ComInfoStruct *comStruct)
 
 	if(m_tempCom->open(QIODevice::ReadWrite))
 	{
-		qDebug()<<"Open Temperature Com:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
+		qDebug()<<"&&& Open Sti1062aTemperatureCom:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
 		return true;
 	}
 	else
 	{
-		qDebug()<<"Open Temperature Com:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
+		qDebug()<<"&&& Open Sti1062aTemperatureCom:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
 		return false;
 	}
 }

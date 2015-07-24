@@ -19,6 +19,7 @@
 #include <QByteArray>
 #include "basedef.h"
 
+ALGORITHM_EXPORT void sleep(unsigned int msec);
 ALGORITHM_EXPORT int getPortSetIni(PortSet_Ini_PTR info); //获取控制板的端口号配置信息
 ALGORITHM_EXPORT int getMasterSlaveIni(MasterSlave_Ini_PTR info); //获取主机-从机设置信息
 ALGORITHM_EXPORT QString getFullIniFileName(QString filename);//获取配置文件filename的完整路径
