@@ -461,19 +461,7 @@ void TotalStandardDlg::initTableWidget()
 		ui.tableWidget->setItem(i, COLUMN_METER_NUMBER, new QTableWidgetItem(QString()));
 		ui.tableWidget->setItem(i, COLUMN_METER_START, new QTableWidgetItem(QString()));
 		ui.tableWidget->setItem(i, COLUMN_METER_END, new QTableWidgetItem(QString()));
-
-		QPushButton *btnModNo = new QPushButton(tr("Modify NO."));
-		ui.tableWidget->setCellWidget(i, COLUMN_MODIFY_METERNO, btnModNo);
-		m_signalMapper1->setMapping(btnModNo, i);
-		connect(btnModNo, SIGNAL(clicked()), m_signalMapper1, SLOT(map()));
-
-		QPushButton *btnAdjErr = new QPushButton(tr("Adjust Err"));
-		ui.tableWidget->setCellWidget(i, COLUMN_ADJUST_ERROR, btnAdjErr);
-		m_signalMapper2->setMapping(btnAdjErr, i);
-		connect(btnAdjErr, SIGNAL(clicked()), m_signalMapper2, SLOT(map()));
 	}
-	connect(m_signalMapper1, SIGNAL(mapped(const int &)),this, SLOT(slotModifyMeterNo(const int &)));
-	connect(m_signalMapper2, SIGNAL(mapped(const int &)),this, SLOT(slotAdjustError(const int &)));
 
 	ui.tableWidget->setVerticalHeaderLabels(vLabels);
 // 	ui.tableWidget->resizeColumnsToContents();

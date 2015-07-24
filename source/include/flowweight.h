@@ -26,28 +26,6 @@ class ParaSetDlg;
 class ParaSetReader;
 class ReadComConfig;
 
-/*
-** 表格列
-*/
-enum table_columns
-{
-	COLUMN_METER_NUMBER = 0, //表号列
-	COLUMN_FLOW_POINT,	    //流量点
-	COLUMN_METER_START,    //表初值列
-	COLUMN_METER_END,	    //表终值列
-	COLUMN_BAL_START,	    //天平初值
-	COLUMN_BAL_END,		    //天平终值
-	COLUMN_TEMPER,		    //温度列
-	COLUMN_DENSITY,		    //密度列
-	COLUMN_STD_VALUE,	    //标准值
-	COLUMN_ERROR,		    //示值误差列
-	COLUMN_READ_METER,		//读表数据列
-	COLUMN_VERIFY_STATUS,	//设置检定状态列
-	COLUMN_ADJUST_ERROR,	//调整误差列
-	COLUMN_MODIFY_METERNO,	//修改表号列
-	COLUMN_COUNT            //表格的列数         
-};
-
 
 class FLOWWEIGHT_EXPORT FlowWeightDlg : public QWidget
 {
@@ -80,7 +58,6 @@ public:
 	CAlgorithm *m_chkAlg;//检定过程用到的计算方法
 
 	bool m_stopFlag;     //关闭界面后退出
-	bool m_reReadFlag;   //自动检表时，遇到读表数据失败的，等待重新读表的标识。1:等待  0:不等待
 
 	//检定过程相关的控制参数 begin
 	ParaSetReader *m_paraSetReader;

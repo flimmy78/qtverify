@@ -26,24 +26,6 @@ class ParaSetDlg;
 class ParaSetReader;
 class ReadComConfig;
 
-/*
-** 表格列
-*/
-#define COLUMN_METER_NUMBER       0 //表号列
-#define COLUMN_FLOW_POINT	      1 //流量点
-#define COLUMN_METER_START	      2 //表初值列
-#define COLUMN_METER_END	      3 //表终值列
-#define COLUMN_BAL_START	      4 //天平初值
-#define COLUMN_BAL_END		      5 //天平终值
-#define COLUMN_TEMPER		      6 //温度列
-#define COLUMN_DENSITY		      7 //密度列
-#define COLUMN_STD_VALUE	      8 //标准值
-#define COLUMN_ERROR		      9 //示值误差列
-#define COLUMN_READ_METER		  10 //读表数据列
-#define COLUMN_VERIFY_STATUS	  11 //设置检定状态列
-#define COLUMN_ADJUST_ERROR		  12 //调整误差列
-#define COLUMN_MODIFY_METERNO	  13 //修改表号列
-
 
 class TOTALWEIGHT_EXPORT TotalWeightDlg : public QWidget
 {
@@ -81,7 +63,6 @@ public:
 	CAlgorithm *m_chkAlg;//检定过程用到的计算方法
 
 	bool m_stopFlag;     //关闭界面后退出
-	bool m_conFlag;      //自动检表时，遇到读表数据失败的，等待重新读表的标识。1:等待  0:不等待
 
 	//检定过程相关的控制参数 begin
 	ParaSetReader *m_paraSetReader;
@@ -95,9 +76,7 @@ public:
 	int m_standard;           //表规格
 	int m_model;              //表型号
 	int m_pickcode;			  //采集代码(热表通讯协议版本号)
-	float m_flowSC;           //流量检定安全系数
-	bool m_adjErr;            //是否调整误差
-	bool m_writeNO;           //是否修改表号
+	float m_totalSC;          //总量检定安全系数
 	//检定过程相关的控制参数 end
 
 	int m_avgTFCount;		  //计算平均温度和平均流量用的累加计数器
@@ -163,25 +142,29 @@ public:
 	int isMeterPosValid(int meterPos); //判断表位号是否有效(该表位是否需要检表)
 	int getValidMeterNum();       //获取有效的检表个数()
 
+	void showEvent(QShowEvent * event);
+	void closeEvent(QCloseEvent * event);
+	void resizeEvent(QResizeEvent * event);
 
 public slots:
-	void closeEvent(QCloseEvent * event);
 
 	int readNowParaConfig();	 //获取当前检定参数
 	void showNowKeyParaConfig(); //显示当前关键参数设置信息
 	void initTableWidget();     //设置表格行数
 
-	int on_btnExhaust_clicked();  //点击"排气"按钮
 	void on_btnStart_clicked();   //点击"开始"按钮
+	void on_btnExhaust_clicked(); //点击"排气"按钮
 	void on_btnGoOn_clicked();    //点击"继续"按钮
-	void on_btnNext_clicked();    //点击"下一步"按钮
 	void on_btnStop_clicked();    //点击"终止检测"按钮
-	void on_btnExit_clicked();    //退出按钮
+	void on_btnExit_clicked();    //点击"退出"按钮
+	void on_btnReCalc_clicked();  //点击"重新计算"按钮
+	int startExhaustCountDown();  //开始排气倒计时
 	void slotExaustFinished();    //排气时间结束
 	int prepareInitBalance();     //开始检定前，准备天平初始重量
-	int openAllValveAndPump();    //打开所有阀门和水泵
 	int readAllMeter();           //读取所有被检表
-	int setAllMeterVerifyStatus();   //设置热量表进入检定状态
+	int setAllMeterVerifyStatus();//设置热量表进入检定状态
+	int openAllValveAndPump();    //打开所有阀门和水泵
+	int closeAllValveAndPumpOpenOutValve(); //关闭所有阀门和水泵、打开防水阀
 	int closeAllFlowPointValves();//关闭所有流量点阀门
 	int closeWaterOutValve();     //关闭放水阀
 	int openWaterOutValve();      //打开放水阀
@@ -201,9 +184,10 @@ public slots:
 	int operateWaterPump();			//操作水泵：打开或者关闭
 	int getMeterStartValue();     //获取表初值
 	int getMeterEndValue();       //获取表终值
-	void makeStartValueByLastEndValue(); //上一次的终值作为本次的初值
-	int calcAllMeterError();//计算所有被检表的误差
-	int calcMeterError(int idx); //计算某个表的误差
+	void makeStartValueByLastEndValue(); //将上一次检定后的终值作为本次的初值
+	int calcAllMeterError();      //计算所有被检表的误差
+	int calcMeterError(int idx);  //计算某个表的误差
+	int calcVerifyResult();       //计算检定结果
 
 	void slotFreshBalanceValue(const float& balValue);  //刷新天平数值
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
@@ -235,16 +219,9 @@ public slots:
 
 	void on_btnAllReadMeter_clicked();   //读表(所有表）
 	void on_btnAllVerifyStatus_clicked();//设置检定状态(所有表）
-	void on_btnAllAdjError_clicked(); //调整误差(所有表)
-	void on_btnAllModifyNO_clicked(); //修改表号(所有表）
-	void on_btnReCalc_clicked(); 
 
-	void slotModifyMeterNO(const int &row); //修改表号
-	void slotAdjustError(const int &row);   //调整误差
 	void slotReadMeter(const int &row);     //读表(单个表)
 	void slotVerifyStatus(const int &row);  //检定状态
-
-	void saveStartMeterNO(); //保存起始表号
 
 	void on_btnStdTempCollect_clicked(); //采集标准温度
 	void on_btnStdTempStop_clicked(); //停止采集标准温度
@@ -255,6 +232,7 @@ public slots:
 private slots:
 
 signals:
+	void signalClosed();
 
 private:
 	Ui::TotalWeightClass ui;

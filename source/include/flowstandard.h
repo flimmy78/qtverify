@@ -29,24 +29,6 @@ class ParaSetReader;
 class ReadComConfig;
 
 
-/*
-** 表格列
-*/
-#define COLUMN_METER_NUMBER			0 //表号列
-#define COLUMN_FLOW_POINT			1 //流量点
-#define COLUMN_METER_START			2 //表初值列
-#define COLUMN_METER_END			3 //表终值列
-#define COLUMN_BAL_START			4 //天平初值
-#define COLUMN_BAL_END				5 //天平终值
-#define COLUMN_TEMPER				6 //温度列
-#define COLUMN_DENSITY				7 //密度列
-#define COLUMN_STD_VALUE			8 //标准值
-#define COLUMN_ERROR				9 //示值误差列
-#define COLUMN_READ_METER			10 //读表数据列
-#define COLUMN_VERIFY_STATUS		11 //设置检定状态列
-#define COLUMN_ADJUST_ERROR			12 //调整误差列
-#define COLUMN_MODIFY_METERNO		13 //修改表号列
-
 #define TIMEOUT_STD_INST			500//请求标准表瞬时流量周期
 #define TIMEOUT_STD_ACCUM			500//请求标准表累积流量周期
 #define TIMEOUT_MODIFY_STD_ACCUM	2000//修改累积脉冲数周期
