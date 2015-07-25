@@ -32,7 +32,6 @@ private:
 	QString m_conStr;//²éÑ¯Ìõ¼þ
 private slots:
 	void on_btnQuery_clicked();
-	void on_btnInsert_clicked();
 	void on_btnStop_clicked();
 	void on_btnExport_clicked();
 	void on_btnExit_clicked();

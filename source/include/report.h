@@ -28,6 +28,10 @@
 #include "qtexdb.h"
 #include "qexcel.h"
 
+#define TEMP_QUERY_VIEW_NAME	QString("V_Temp_Query_Result")//临时查询结果视图
+#define DROP_VIEW_STMT			QString("drop view if exists ").append(TEMP_QUERY_VIEW_NAME).append(";")
+#define CREATE_TEMP_VIEW_STMT	QString("\nCREATE view V_Temp_Query_Result as ").append(m_query_Sql).append(";")
+
 using namespace libxl;
 
 class REPORT_EXPORT CReport
@@ -37,8 +41,10 @@ public:
 	~CReport();
 public:
 	void writeRpt();//写报表
+	void setIniName(QString);//设置报表配置文件名
 	void saveTo(QString);//保存报表到指定文件夹
 private:
+	QString m_rptIniName;//报表的配置文件名
 	QSettings* m_rpt_config;//报表配置
 	QString m_template_file;//模板文件路径
 	QString m_rpt_file;//报告文件路径
@@ -58,6 +64,7 @@ private:
 private:
 	void writeHead();//写表头
 	void writeBody();//写表体
+	void mergeBody();//写入合并
 	void mergeCells(int start_row, int end_row, int start_col, int end_col);//从start_row到end_row， 将值相等的单元格合并
 	void writeBool(int start_with_row, int end_with_row, int start_with_col, int end_with_col);//从start_with_row到end_with_row， 将bool值的单元格合并
 	void readTblName();//读表或视图名

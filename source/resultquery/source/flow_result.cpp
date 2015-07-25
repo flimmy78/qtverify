@@ -222,7 +222,7 @@ void FlowResultDlg::getConditon()
 
 void FlowResultDlg::queryData()
 {
-	model->setEditStrategy(QSqlTableModel::OnFieldChange); //属性变化时写入数据库
+	//model->setEditStrategy(QSqlTableModel::OnFieldChange); //属性变化时写入数据库
 	model->setTable("T_Flow_Verify_Record");
 	model->setFilter(m_conStr); //设置查询条件
 	
@@ -296,38 +296,6 @@ void FlowResultDlg::queryData()
 	ui.tableView->hideColumn(37);
 }
 
-void FlowResultDlg::on_btnInsert_clicked()
-{
-	QDateTime statTime = QDateTime::currentDateTime();
-	qDebug()<<"start time is:"<<statTime.toString("yyMMddhhmmss");
-	QDateTime endTime;
-	m_count = ui.spinBoxNums->value();
-    QSqlDatabase db = QSqlDatabase::database("qt_sql_default_connection");
-	db.transaction(); //开启事务处理
-	QSqlQuery q;
-	q.prepare("insert into T_Meter_Standard(F_ID,F_Name) values(?, ?)");
-	QVariantList ints;
-	QVariantList names;
-	while (m_count)
-	{
-		ints << m_count;
-		names << QString("DN-%1").arg(m_count);
-		m_count--;
-	}	
-	q.addBindValue(ints);
-	q.addBindValue(names);
-	if (!q.execBatch())
-	{
-		qDebug() << q.lastError();
-		return;
-	}
-    db.commit(); //提交事务，此时才真正打开文件执行SQL语句
-	endTime = QDateTime::currentDateTime();
-	qDebug()<<"  end time is:"<<endTime.toString("yyMMddhhmmss");
-	int usedSec = statTime.msecsTo(endTime);
-	qDebug()<<"Insert"<<ui.spinBoxNums->value()<<"record。"<<"used time is:"<<usedSec<<"micro seconds\n";
-}
-
 void FlowResultDlg::on_btnStop_clicked()
 {
 	m_count = 1;
@@ -347,11 +315,10 @@ void FlowResultDlg::on_btnExport_clicked()
 	if (!file.isEmpty())
 	{
 		getConditon();
-		//startdb();
 		CReport rpt(" where " + m_conStr);
+		rpt.setIniName("rptconfig_common.ini");
 		rpt.writeRpt();
 		rpt.saveTo(file);
-		//closedb();
 		QMessageBox::information(this, tr("OK"), tr("export excel file successful!"));
 	}
 }

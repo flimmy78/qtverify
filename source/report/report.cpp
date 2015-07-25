@@ -16,7 +16,8 @@ CReport::CReport(const QString& condition)
 	m_temp_file		  = m_temp_file+"\\" + current_time + ".xls";
 	m_rpt_file        = adehome + "\\report\\report-" + current_time + ".xls";
 #endif
-	m_rpt_config = new QSettings(getFullIniFileName("rptconfig_common.ini"), QSettings::IniFormat);
+
+	m_rpt_config= NULL;
 
 	m_query = new QSqlQuery();
 
@@ -62,6 +63,15 @@ CReport::~CReport()
 	}
 }
 
+void CReport::setIniName(QString ini)
+{
+	if (m_rpt_config)
+	{
+		delete m_rpt_config;
+	}
+	m_rpt_config = new QSettings(getFullIniFileName(ini), QSettings::IniFormat);
+}
+
 void CReport::writeRpt()
 {
 	readConfigTHead();
@@ -71,18 +81,21 @@ void CReport::writeRpt()
 	getDbData();
 	writeHead();
 	writeBody();
-	deleteLog();
+	//保存临时报表
+	m_book->save(m_temp_file.toStdString().data());
+	//deleteLog();
 }
 
 void CReport::writeHead()
 {
-	m_query->first();
 	QStringList coordinates;//coordinates of current_field, QStringList
 	int x, y;//coordinates of current_field
 	int idx;//current field's column index
 	QString field_name;//current field's name
 	QString field_value;//current field's value
-	 
+
+	m_query->first();
+	QSqlRecord rec = m_query->record();
 	for (int i=0; i < m_headList.count(); i++)
 	{
 		field_name = m_headList[i];
@@ -90,7 +103,7 @@ void CReport::writeHead()
 		x = coordinates[0].toInt();
 		y = coordinates[1].toInt();
 
-		idx = m_query->record().indexOf(field_name);
+		idx = rec.indexOf(field_name);
 		field_value = m_query->value(idx).toString().toLocal8Bit();
 
 		m_sheet->writeStr(x,y,field_value.toStdString().data());
@@ -101,7 +114,6 @@ void CReport::writeBody()
 {
 	//read fundamental info
 	int start_with = m_rpt_config->value("otherbodyInfo/startwith").toInt();
-	QStringList need_merge = m_rpt_config->value("mergeInfo/needMerge").toStringList();
 
 	//set cell format
 	m_format->setBorder(BORDERSTYLE_THIN);
@@ -119,16 +131,18 @@ void CReport::writeBody()
 	
 	//write cells value
 	m_query->seek(0);
+	QSqlRecord rec = m_query->record();
 	int offset = 0;
 	while (true)
 	{
 		rowidx = start_with + offset;
+		rec = m_query->record();
 		for (int i=0; i < m_bodyList.count(); i++)
 		{
 			field_name = m_bodyList[i];
 			colidx = m_rpt_config->value("tablebody/" + field_name).toInt();
 
-			idx = m_query->record().indexOf(field_name);
+			idx = rec.indexOf(field_name);
 			field_value = m_query->value(idx).toString().toLocal8Bit();
 
 			m_sheet->writeStr(rowidx,colidx,field_value.toStdString().data(), m_format);
@@ -139,8 +153,16 @@ void CReport::writeBody()
 		}
 		offset++;
 	}
+	return;
+	mergeBody();	
+}
 
+void CReport::mergeBody()
+{
 	//merge cells; need_merge[i]: current column's name
+	QStringList need_merge = m_rpt_config->value("mergeInfo/needMerge").toStringList();
+	int start_with = m_rpt_config->value("otherbodyInfo/startwith").toInt();
+	int offset = 0;
 	int total_row = start_with + offset;
 	for (int i=0; i < need_merge.count(); i++)
 	{
@@ -150,9 +172,10 @@ void CReport::writeBody()
 		QStringList cur_merge_info = m_rpt_config->value("mergeInfo/" + need_merge[i]).toStringList();
 		if (cur_merge_info[0].toLower() == "this")
 		{
+			
 			mergeCells(start_with, total_row, start_col, end_col);
 		}
-		else if (cur_merge_info[0].toLower() == "ref")
+		else if (cur_merge_info[0].toLower() == "father")
 		{
 			int range_idx;
 
@@ -178,7 +201,7 @@ void CReport::writeBody()
 				{
 					m_sheet->getMerge(range_idx, ref_start_col, &ref_start_row, &ref_end_row, &ref_start_col, &ref_end_col);
 					writeBool(ref_start_row, ref_end_row, start_col, end_col);
-				}	
+				}
 			}
 		}
 	}
@@ -275,14 +298,18 @@ void CReport::getRptSQL()
 
 void CReport::getDbData()
 {
-	m_query->exec(m_query_Sql);
+	//QString dropSql = "drop view if exists V_Temp_Query_Result;";
+	QSqlQuery query;
+	bool success = query.exec(DROP_VIEW_STMT);
+	QString createViewSql = "\nCREATE view V_Temp_Query_Result as "+ m_query_Sql+ ";";
+	success = query.exec(createViewSql);
+	QString selectCol = "select distinct f_meterno from V_Temp_Query_Result order by f_meterno";
+	success = query.exec(selectCol);
+	success = m_query->exec(m_query_Sql);
 }
 
 void CReport::deleteLog()
 {
-	//保存临时报表
-	m_book->save(m_temp_file.toStdString().data());
-	//m_book->release();
 	//删除版权信息
 	QExcel j(m_temp_file);
 	j.selectSheet("Sheet1");
@@ -301,5 +328,4 @@ void CReport::saveTo(QString file_path)
 {
 	QFile::copy(m_temp_file, file_path);
 	QFile::remove(m_temp_file);
-
 }
