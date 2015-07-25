@@ -31,7 +31,6 @@ class ReadComConfig;
 
 #define TIMEOUT_STD_INST			500//请求标准表瞬时流量周期
 #define TIMEOUT_STD_ACCUM			500//请求标准表累积流量周期
-#define TIMEOUT_MODIFY_STD_ACCUM	2000//修改累积脉冲数周期
 
 class FLOWSTANDARD_EXPORT FlowStandardDlg : public QWidget
 {
@@ -62,7 +61,6 @@ public:
 	CAlgorithm *m_chkAlg;//检定过程用到的计算方法
 
 	bool m_stopFlag;     //关闭界面后退出
-	bool m_reReadFlag;      //自动检表时，遇到读表数据失败的，等待重新读表的标识。1:等待  0:不等待
 
 	//检定过程相关的控制参数 begin
 	ParaSetReader *m_paraSetReader;
@@ -96,8 +94,10 @@ public:
 	float *m_meterDensity;    //被检表的密度
 	float *m_meterStdValue;   //被检表的标准值
 	float *m_meterError;	  //被检表的误差(当前流量点不同表位的误差)
-	float m_StdStartV;        //标准表初值
-	float m_StdEndV;          //标准表终值
+	float m_stdStartVol;	  //标准表体积初值
+	float m_stdEndVol;		  //标准表体积终值
+	float m_StdStartMass;     //经温度修正的标准表质量初值
+	float m_StdEndMass;       //经温度修正的标准表质量终值
 	float m_pipeInTemper;     //入口温度
 	float m_pipeOutTemper;    //出口温度
 	float m_realFlow;		  //流速(m3/h）
@@ -136,6 +136,7 @@ public:
 	public slots:
 		void showEvent(QShowEvent * event);
 		void closeEvent(QCloseEvent * event);
+		void resizeEvent(QResizeEvent * event);
 
 		int readNowParaConfig();	 //获取当前检定参数
 		void showNowKeyParaConfig(); //显示当前关键参数设置信息
@@ -151,13 +152,14 @@ public:
 		void on_btnReCalc_clicked();  //点击"重新计算"按钮
 		int startExhaustCountDown();  //开始排气倒计时
 		void slotExaustFinished();    //排气时间结束
-		int openAllValveAndPump();    //打开所有阀门和水泵
 		int readAllMeter();           //读取所有被检表
 		int setAllMeterVerifyStatus();   //设置热量表进入检定状态
+		int openAllValveAndPump();    //打开所有阀门和水泵
+		int closeAllValveAndPumpOpenOutValve(); //关闭所有阀门和水泵、打开防水阀
 		int closeAllFlowPointValves();//关闭所有流量点阀门
 		int closeWaterOutValve();     //关闭放水阀
 		int openWaterOutValve();      //打开放水阀
-		int judgeTartgetVolAndCalcAvgTemperAndFlow(float initV, float verifyV, flow_rate_wdg wdgIdx); //判断是否完成检定量检定量，并累加进出口温度，每秒累加一次，用于计算进出口平均温度
+		int judgeTartgetVolAndCalcAvgTemperAndFlow(float initV, float verifyV); //判断是否完成检定量检定量，并累加进出口温度，每秒累加一次，用于计算进出口平均温度
 		void stopVerify();            //停止检定
 		void startVerify();           //开始检定
 		int prepareVerifyFlowPoint(int order);     //准备单个流量点的检定
@@ -219,7 +221,6 @@ public:
 private slots:
 	void slotAskInstPulse();//请求瞬时流量
 	void slotAskAccumPulse();//请求累积流量
-	void slotModifyAccumPulse();//修改累积流量, 以模拟标准表采集环境
 
 	void slotGetInstStdMeterPulse(const QByteArray &);//瞬时流量槽函数
 	void slotGetAccumStdMeterPulse(const QByteArray &);//累积流量槽函数
