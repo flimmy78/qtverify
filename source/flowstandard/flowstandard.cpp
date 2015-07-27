@@ -532,10 +532,10 @@ void FlowStandardDlg::initTableWidget()
 	}
 	ui.tableWidget->setRowCount(m_maxMeterNum); //设置表格行数
 
-	QSignalMapper *m_signalMapper1 = new QSignalMapper();
-	QSignalMapper *m_signalMapper2 = new QSignalMapper();
-	QSignalMapper *m_signalMapper3 = new QSignalMapper();
-	QSignalMapper *m_signalMapper4 = new QSignalMapper();
+	QSignalMapper *signalMapper1 = new QSignalMapper();
+	QSignalMapper *signalMapper2 = new QSignalMapper();
+	QSignalMapper *signalMapper3 = new QSignalMapper();
+	QSignalMapper *signalMapper4 = new QSignalMapper();
 
 	QStringList vLabels;
 	for (int i=0; i< ui.tableWidget->rowCount(); i++)
@@ -560,30 +560,30 @@ void FlowStandardDlg::initTableWidget()
 		//设置按钮
 		QPushButton *btnModNo = new QPushButton(QObject::tr("(%1)").arg(i+1) + tr("ModifyNO"));
 		ui.tableWidget->setCellWidget(i, COLUMN_MODIFY_METERNO, btnModNo);
-		m_signalMapper1->setMapping(btnModNo, i);
-		connect(btnModNo, SIGNAL(clicked()), m_signalMapper1, SLOT(map()));
+		signalMapper1->setMapping(btnModNo, i);
+		connect(btnModNo, SIGNAL(clicked()), signalMapper1, SLOT(map()));
 		btnModNo->setEnabled(false);
 
 		QPushButton *btnAdjErr = new QPushButton(QObject::tr("(%1)").arg(i+1) + tr("AdjustErr"));
 		ui.tableWidget->setCellWidget(i, COLUMN_ADJUST_ERROR, btnAdjErr);
-		m_signalMapper2->setMapping(btnAdjErr, i);
-		connect(btnAdjErr, SIGNAL(clicked()), m_signalMapper2, SLOT(map()));
+		signalMapper2->setMapping(btnAdjErr, i);
+		connect(btnAdjErr, SIGNAL(clicked()), signalMapper2, SLOT(map()));
 		btnAdjErr->setEnabled(false);
 
 		QPushButton *btnReadMeter = new QPushButton(QObject::tr("(%1)").arg(i+1) + tr("ReadMeter"));
 		ui.tableWidget->setCellWidget(i, COLUMN_READ_METER, btnReadMeter);
-		m_signalMapper3->setMapping(btnReadMeter, i);
-		connect(btnReadMeter, SIGNAL(clicked()), m_signalMapper3, SLOT(map()));
+		signalMapper3->setMapping(btnReadMeter, i);
+		connect(btnReadMeter, SIGNAL(clicked()), signalMapper3, SLOT(map()));
 
 		QPushButton *btnVerifySt = new QPushButton(QObject::tr("(%1)").arg(i+1) + tr("VerifySt"));
 		ui.tableWidget->setCellWidget(i, COLUMN_VERIFY_STATUS, btnVerifySt);
-		m_signalMapper4->setMapping(btnVerifySt, i);
-		connect(btnVerifySt, SIGNAL(clicked()), m_signalMapper4, SLOT(map()));
+		signalMapper4->setMapping(btnVerifySt, i);
+		connect(btnVerifySt, SIGNAL(clicked()), signalMapper4, SLOT(map()));
 	}
-	connect(m_signalMapper1, SIGNAL(mapped(const int &)),this, SLOT(slotModifyMeterNO(const int &)));
-	connect(m_signalMapper2, SIGNAL(mapped(const int &)),this, SLOT(slotAdjustError(const int &)));
-	connect(m_signalMapper3, SIGNAL(mapped(const int &)),this, SLOT(slotReadMeter(const int &)));
-	connect(m_signalMapper4, SIGNAL(mapped(const int &)),this, SLOT(slotVerifyStatus(const int &)));
+	connect(signalMapper1, SIGNAL(mapped(const int &)),this, SLOT(slotModifyMeterNO(const int &)));
+	connect(signalMapper2, SIGNAL(mapped(const int &)),this, SLOT(slotAdjustError(const int &)));
+	connect(signalMapper3, SIGNAL(mapped(const int &)),this, SLOT(slotReadMeter(const int &)));
+	connect(signalMapper4, SIGNAL(mapped(const int &)),this, SLOT(slotVerifyStatus(const int &)));
 
 	ui.tableWidget->setVerticalHeaderLabels(vLabels);
 	ui.tableWidget->setFont(QFont("Times", 15, QFont::DemiBold, true));

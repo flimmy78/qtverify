@@ -81,6 +81,7 @@ void CReport::writeRpt()
 	getDbData();
 	writeHead();
 	writeBody();
+	mergeBody();
 	//保存临时报表
 	m_book->save(m_temp_file.toStdString().data());
 	//deleteLog();
@@ -153,13 +154,11 @@ void CReport::writeBody()
 		}
 		offset++;
 	}
-	return;
-	mergeBody();	
 }
 
 void CReport::mergeBody()
 {
-	//merge cells; need_merge[i]: current column's name
+	//cols need merged
 	QStringList need_merge = m_rpt_config->value("mergeInfo/needMerge").toStringList();
 	int start_with = m_rpt_config->value("otherbodyInfo/startwith").toInt();
 	int offset = 0;

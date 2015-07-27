@@ -30,7 +30,7 @@ class ReadComConfig;
 
 
 #define TIMEOUT_STD_INST			500//请求标准表瞬时流量周期
-#define TIMEOUT_STD_ACCUM			500//请求标准表累积流量周期
+#define TIMEOUT_STD_ACCUM			200//请求标准表累积流量周期
 
 class FLOWSTANDARD_EXPORT FlowStandardDlg : public QWidget
 {
