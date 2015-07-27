@@ -171,6 +171,9 @@ public:
 	QString m_portName;
 	int m_protocolVersion; //热表协议类型
 
+	void readMeter();
+	void setVerifyStatus();
+
 signals:
 	void readMeterNoIsOK(const QString& portName, const QString& meterNo); //获取表号成功
 	void readMeterFlowIsOK(const QString& portName, const float& flow);  //获取表流量成功
@@ -181,6 +184,9 @@ signals:
 	void readMeterMid2CoeIsOK(const QString& portName, const QString& mid2Coe); //获取中流2流量系数成功
 	void readMeterMid1CoeIsOK(const QString& portName, const QString& mid1Coe); //获取中流1流量系数成功
 	void readMeterSmallCoeIsOK(const QString& portName, const QString& smallCoe); //获取小流量系数成功
+
+	void signalReadMeter();
+	void signalSetVerifyStatus();
 
 public slots:
 	bool openMeterCom(ComInfoStruct *comStruct);

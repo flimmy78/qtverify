@@ -25,6 +25,7 @@
 */
 ComThread::ComThread(QObject* parent) : QThread(parent)
 {
+	qDebug()<<"ComThread constructor thread:"<<currentThreadId();
 }   
 
 ComThread::~ComThread()
@@ -519,6 +520,9 @@ MeterComObject::MeterComObject(QObject* parent) : ComObject(parent)
 	m_meterTmp="";
 	m_portName = "";
 
+	connect(this, SIGNAL(signalReadMeter()), this, SLOT(askReadMeter()));
+	connect(this, SIGNAL(signalSetVerifyStatus()), this, SLOT(askSetVerifyStatus()));
+
 	setProtocolVersion(PROTOCOL_VER_DELU); //默认是德鲁热量表
 }
 
@@ -539,6 +543,16 @@ MeterComObject::~MeterComObject()
 		delete m_meterProtocol;
 		m_meterProtocol = NULL;
 	}
+}
+
+void MeterComObject::readMeter()
+{
+	emit signalReadMeter();
+}
+
+void MeterComObject::setVerifyStatus()
+{
+	emit signalSetVerifyStatus();
 }
 
 void MeterComObject::setProtocolVersion(int version)
