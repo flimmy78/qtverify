@@ -1,7 +1,7 @@
 
 TEMPLATE	= lib
 TARGET    = totalweight
-CONFIG += qt dll debug thread qtestlib
+CONFIG += qt dll debug thread
 QT += sql
 
 DEFINES	+= TOTALWEIGHT_DLL QT_THREAD_SUPPORT
