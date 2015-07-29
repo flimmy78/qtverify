@@ -44,29 +44,31 @@ public:
 	void setIniName(QString);//设置报表配置文件名
 	void saveTo(QString);//保存报表到指定文件夹
 private:
-	QString m_rptIniName;//报表的配置文件名
-	QSettings* m_rpt_config;//报表配置
-	QString m_template_file;//模板文件路径
-	QString m_rpt_file;//报告文件路径
-	QString m_temp_file;//临时文件路径
-	QString m_query_Sql;//查询数据的sql语句
-	QString m_query_condition;//sql语句的查询条件
+	QString		m_rptIniName;//报表的配置文件名
+	QSettings*	m_rpt_config;//报表配置
+	QString		m_template_file;//模板文件路径
+	QString		m_rpt_file;//报告文件路径
+	QString		m_temp_file;//临时文件路径
+	QString		m_query_Sql;//查询数据的sql语句
+	QString		m_query_condition;//sql语句的查询条件
 
 	QStringList m_headList;//表头字段列表
 	QStringList m_bodyList;//表体字段列表
 	QString		m_table_name;//报表对应的表名或视图名
 	QString		m_condition;//报表查询条件
+	int			m_totalRecords;//查询到的记录数
 	QSqlQuery*	m_query;//查询
-	Book* m_book;//报表
-	Sheet* m_sheet;//表单
-	Format* m_format;//单元格格式
-	Font* m_font;//单元格字体
+	Book*		m_book;//报表
+	Sheet*		m_sheet;//表单
+	Format*		m_format;//单元格格式
+	Font*		m_font;//单元格字体
 private:
 	void writeHead();//写表头
 	void writeBody();//写表体
 	void mergeBody();//写入合并
-	void mergeCells(int start_row, int end_row, int start_col, int end_col);//从start_row到end_row， 将值相等的单元格合并
-	void writeBool(int start_with_row, int end_with_row, int start_with_col, int end_with_col);//从start_with_row到end_with_row， 将bool值的单元格合并
+	void mergeSingleCol(QString colName);//合并列中的相似值
+	void mergeSingleCol(QString colName, int colNum);//合并列中的相似值
+	void mergeBool(QString colName, QString father);//合并合格与不合格
 	void readTblName();//读表或视图名
 	void readConfigTHead();//取出配置文件的配置头
 	void readConfigTBody();//取出配置文件的配置体

@@ -160,105 +160,103 @@ void CReport::mergeBody()
 {
 	//cols need merged
 	QStringList need_merge = m_rpt_config->value("mergeInfo/needMerge").toStringList();
-	int start_with = m_rpt_config->value("otherbodyInfo/startwith").toInt();
-	int offset = 0;
-	int total_row = start_with + offset;
+
 	for (int i=0; i < need_merge.count(); i++)
 	{
 		int start_col, end_col;
 		start_col = end_col = m_rpt_config->value("tablebody/" + need_merge[i]).toInt();
 
 		QStringList cur_merge_info = m_rpt_config->value("mergeInfo/" + need_merge[i]).toStringList();
-		if (cur_merge_info[0].toLower() == "this")
-		{
-			
-			mergeCells(start_with, total_row, start_col, end_col);
-		}
-		else if (cur_merge_info[0].toLower() == "father")
-		{
-			int range_idx;
 
-			QString ref_col_name = cur_merge_info[1];
-			int ref_start_row, ref_end_row, ref_start_col, ref_end_col;
-			ref_start_col = ref_end_col = m_rpt_config->value("tablebody/" + ref_col_name).toInt();			
-			for (range_idx = start_with; range_idx <= total_row; range_idx = ref_end_row + 1)
-			{
-				m_sheet->getMerge(range_idx, ref_start_col, &ref_start_row, &ref_end_row, &ref_start_col, &ref_end_col);
-				mergeCells(ref_start_row, ref_end_row, start_col, end_col);
-			}			
-		}
-		else if (cur_merge_info[0].toLower() == "equal")
+		if (need_merge[i].toLower() == "valid")
 		{
-			if (need_merge[i].toLower() == "valid")
-			{
-				int range_idx;
+			mergeBool(need_merge[i], cur_merge_info[1]);
+		}
+		else if (need_merge[i].toLower() == "rowid")
+		{
 
-				QString ref_col_name = cur_merge_info[1];
-				int ref_start_row, ref_end_row, ref_start_col, ref_end_col;
-				ref_start_col = ref_end_col = m_rpt_config->value("tablebody/" + ref_col_name).toInt();			
-				for (range_idx = start_with; range_idx <= total_row; range_idx = ref_end_row + 1)
-				{
-					m_sheet->getMerge(range_idx, ref_start_col, &ref_start_row, &ref_end_row, &ref_start_col, &ref_end_col);
-					writeBool(ref_start_row, ref_end_row, start_col, end_col);
-				}
-			}
+		}
+		else if (cur_merge_info[0].toLower() == "this")//"this", 只在本列查找相关合并信息即可
+		{
+			mergeSingleCol(need_merge[i]);
 		}
 	}
 }
 
-void CReport::mergeCells(int start_with_row, int end_with_row, int start_with_col, int end_with_col)
+void CReport::mergeSingleCol(QString colName, int colNum)
 {
-	int start_row, end_row, start_col, end_col;
-	int current_row;
-	start_row = end_row = start_with_row;
-	start_col = end_col = start_with_col;
-	QString current_value, pre_value;//current cell value and previous cell value
-	current_value = pre_value = m_sheet->readStr(start_row, start_col);//init value
-	for (current_row = start_with_row; current_row <= end_with_row; current_row++)
+	int start_with = m_rpt_config->value("otherbodyInfo/startwith").toInt();//表体开始行号
+
+	int start_row, end_row;//合并时的开始结束行号
+	start_row = end_row = start_with;
+	int current_row_num;//表体的当前行号
+	int end_with_row = start_with + m_totalRecords-1;//表体的结束行号
+	QString current_value, pre_value;//当前值和先前值
+	QString sql = QString("select %1 from %2").arg(colName).arg(TEMP_QUERY_VIEW_NAME);
+
+	m_query->exec(sql);
+	m_query->seek(0);
+
+	current_value = pre_value = m_query->value(0).toString().toLocal8Bit();
+	current_row_num = start_with;
+	do 
 	{
-		current_value = m_sheet->readStr(current_row, start_col);
-		
+		current_value = m_query->value(0).toString().toLocal8Bit();
 		if (current_value != pre_value)
 		{
-			end_row = current_row -1;
-			m_sheet->setMerge(start_row, end_row, start_col, end_col);
-			start_row = current_row;
+			end_row = current_row_num-1;
+			m_sheet->setMerge(start_row, end_row, colNum, colNum);
+			start_row = current_row_num;
 			pre_value = current_value;
 		}
-
-		if (current_row == end_with_row)
-		{
-			end_row = current_row;
-			m_sheet->setMerge(start_row, end_row, start_col, end_col);
-		}
-	}
+		current_row_num++;
+	} while (m_query->next());
+	m_sheet->setMerge(start_row, end_with_row, colNum, colNum);//合并最后一个值
 }
 
-void CReport::writeBool(int start_with_row, int end_with_row, int start_with_col, int end_with_col)
+void CReport::mergeSingleCol(QString colName)
 {
-	QString value;
-	Font* invalid_font = m_book->addFont();
-	for (int rowidx=start_with_row; rowidx<=end_with_row;rowidx++)
+	int colNum = m_rpt_config->value(QString("tablebody/%1").arg(colName)).toInt();//当前列的列号
+	mergeSingleCol(colName, colNum);
+}
+
+void CReport::mergeBool(QString colName, QString father)
+{
+	int colNum = m_rpt_config->value(QString("tablebody/%1").arg(colName)).toInt();//当前列的列号
+
+	int start_with = m_rpt_config->value("otherbodyInfo/startwith").toInt();//表体开始行号
+
+	int start_row, end_row;//合并时的开始结束行号
+	start_row = end_row = start_with;
+	int current_row_num;//表体的当前行号
+	int end_with_row = start_with + m_totalRecords-1;//表体的结束行号
+	QString current_value, pre_value;//当前值和先前值
+	bool invalid_value;
+	QString sql = QString("select %1, %2 from %3").arg(father).arg(colName).arg(TEMP_QUERY_VIEW_NAME);
+
+	m_query->exec(sql);
+	m_query->seek(0);
+
+	current_value = pre_value = m_query->value(0).toString().toLocal8Bit();
+	invalid_value = (m_query->value(1).toString().toLocal8Bit().toLower() == "valid");
+	current_row_num = start_with;
+	do 
 	{
-		value = m_sheet->readStr(rowidx, start_with_col);
-		invalid_font->setColor(COLOR_GREEN);
-		if (value == "不合格")
+		current_value = m_query->value(0).toString().toLocal8Bit();
+		invalid_value = (invalid_value && (m_query->value(1).toString().toLocal8Bit().toLower() == "valid"));
+		if (current_value != pre_value)
 		{
-			invalid_font->setColor(COLOR_RED);
-			break;
+			end_row = current_row_num-1;
+			m_sheet->writeStr(start_row, colNum, QString(invalid_value?"合格":"不合格").toStdString().data(), m_format);
+			m_sheet->setMerge(start_row, end_row, colNum, colNum);
+			start_row = current_row_num;
+			pre_value = current_value;
+			invalid_value = true;
 		}
-	}
-
-	Format* bool_format = m_book->addFormat();
-	bool_format->setAlignH(ALIGNH_CENTER);
-	bool_format->setAlignV(ALIGNV_CENTER);
-	bool_format->setBorder(BORDERSTYLE_THIN);
-	invalid_font->setSize(10);
-	invalid_font->setName("宋体");
-
-	bool_format->setFont(invalid_font);
-	m_sheet->writeStr(start_with_row, start_with_col, value.toStdString().data(), bool_format);
-	m_sheet->setMerge(start_with_row, end_with_row, start_with_col, end_with_col);
+		current_row_num++;
+	} while (m_query->next());
+	m_sheet->writeStr(start_row, colNum, QString(invalid_value?"合格":"不合格").toStdString().data(), m_format);//读取最后一个bool值
+	m_sheet->setMerge(start_row, end_with_row, colNum, colNum);//合并最后一个值
 }
 
 void CReport::readConfigTHead()
@@ -297,14 +295,14 @@ void CReport::getRptSQL()
 
 void CReport::getDbData()
 {
-	//QString dropSql = "drop view if exists V_Temp_Query_Result;";
-	QSqlQuery query;
-	bool success = query.exec(DROP_VIEW_STMT);
-	QString createViewSql = "\nCREATE view V_Temp_Query_Result as "+ m_query_Sql+ ";";
-	success = query.exec(createViewSql);
-	QString selectCol = "select distinct f_meterno from V_Temp_Query_Result order by f_meterno";
-	success = query.exec(selectCol);
-	success = m_query->exec(m_query_Sql);
+	m_query->exec(DROP_VIEW_STMT);
+	QString createViewSql = QString("CREATE view %1 as %2 ;").arg(TEMP_QUERY_VIEW_NAME).arg(m_query_Sql);
+	m_query->exec(createViewSql);
+
+	m_query->exec(QString("select count(*) from %1").arg(TEMP_QUERY_VIEW_NAME));
+	m_query->seek(0);
+	m_totalRecords = m_query->value(0).toInt();
+	m_query->exec(m_query_Sql);
 }
 
 void CReport::deleteLog()
