@@ -27,6 +27,16 @@ CReport::CReport(const QString& condition)
 	m_sheet = m_book->getSheet(0);
 	m_format = m_book->addFormat();
 	m_font = m_book->addFont();
+
+	//set cell format
+	m_format->setBorder(BORDERSTYLE_THIN);
+	m_font->setSize(10);
+	m_font->setColor(COLOR_BLACK);
+	m_font->setName("宋体");
+	m_format->setFont(m_font);
+	m_format->setAlignH(ALIGNH_CENTER);
+	m_format->setAlignV(ALIGNV_CENTER);
+
 	m_condition = condition;
 }
 
@@ -82,7 +92,6 @@ void CReport::writeRpt()
 	writeHead();
 	writeBody();
 	mergeBody();
-	//保存临时报表
 	m_book->save(m_temp_file.toStdString().data());
 	//deleteLog();
 }
@@ -115,14 +124,6 @@ void CReport::writeBody()
 {
 	//read fundamental info
 	int start_with = m_rpt_config->value("otherbodyInfo/startwith").toInt();
-
-	//set cell format
-	m_format->setBorder(BORDERSTYLE_THIN);
-	m_font->setSize(10);
-	m_font->setName("宋体");
-	m_format->setFont(m_font);
-	m_format->setAlignH(ALIGNH_CENTER);
-	m_format->setAlignV(ALIGNV_CENTER);
 
 	//declare some variables
 	int rowidx, colidx;//coordinates of current_field
@@ -174,7 +175,7 @@ void CReport::mergeBody()
 		}
 		else if (need_merge[i].toLower() == "rowid")
 		{
-
+			mergeRowId(need_merge[i], cur_merge_info[1]);
 		}
 		else if (cur_merge_info[0].toLower() == "this")//"this", 只在本列查找相关合并信息即可
 		{
@@ -223,9 +224,7 @@ void CReport::mergeSingleCol(QString colName)
 void CReport::mergeBool(QString colName, QString father)
 {
 	int colNum = m_rpt_config->value(QString("tablebody/%1").arg(colName)).toInt();//当前列的列号
-
 	int start_with = m_rpt_config->value("otherbodyInfo/startwith").toInt();//表体开始行号
-
 	int start_row, end_row;//合并时的开始结束行号
 	start_row = end_row = start_with;
 	int current_row_num;//表体的当前行号
@@ -233,6 +232,16 @@ void CReport::mergeBool(QString colName, QString father)
 	QString current_value, pre_value;//当前值和先前值
 	bool invalid_value;
 	QString sql = QString("select %1, %2 from %3").arg(father).arg(colName).arg(TEMP_QUERY_VIEW_NAME);
+
+	//设置字体, 用到的资源会在m_book->release()时被销毁
+	Font *bool_font = m_book->addFont();
+	Format* bool_format = m_book->addFormat();
+	bool_format->setAlignH(ALIGNH_CENTER);
+	bool_format->setAlignV(ALIGNV_CENTER);
+	bool_format->setBorder(BORDERSTYLE_THIN);
+	bool_font->setSize(10);
+	bool_font->setName("宋体");
+	bool_format->setFont(bool_font);
 
 	m_query->exec(sql);
 	m_query->seek(0);
@@ -247,7 +256,8 @@ void CReport::mergeBool(QString colName, QString father)
 		if (current_value != pre_value)
 		{
 			end_row = current_row_num-1;
-			m_sheet->writeStr(start_row, colNum, QString(invalid_value?"合格":"不合格").toStdString().data(), m_format);
+			invalid_value ? bool_font->setColor(COLOR_GREEN):bool_font->setColor(COLOR_RED);		
+			m_sheet->writeStr(start_row, colNum, QString(invalid_value?"合格":"不合格").toStdString().data(), bool_format);
 			m_sheet->setMerge(start_row, end_row, colNum, colNum);
 			start_row = current_row_num;
 			pre_value = current_value;
@@ -255,7 +265,43 @@ void CReport::mergeBool(QString colName, QString father)
 		}
 		current_row_num++;
 	} while (m_query->next());
-	m_sheet->writeStr(start_row, colNum, QString(invalid_value?"合格":"不合格").toStdString().data(), m_format);//读取最后一个bool值
+	m_sheet->writeStr(start_row, colNum, QString(invalid_value?"合格":"不合格").toStdString().data(), bool_format);//设置最后一个bool值
+	m_sheet->setMerge(start_row, end_with_row, colNum, colNum);//合并最后一个值
+}
+
+void CReport::mergeRowId(QString colName, QString father)
+{
+	int colNum = m_rpt_config->value(QString("tablebody/%1").arg(colName)).toInt();//当前列的列号
+	int start_with = m_rpt_config->value("otherbodyInfo/startwith").toInt();//表体开始行号
+	int start_row, end_row;//合并时的开始结束行号
+	start_row = end_row = start_with;
+	int current_row_num;//表体的当前行号
+	int end_with_row = start_with + m_totalRecords-1;//表体的结束行号
+	QString current_value, pre_value;//当前值和先前值
+	int seq;//序号
+	QString sql = QString("select %1, %2 from %3").arg(father).arg(colName).arg(TEMP_QUERY_VIEW_NAME);
+
+	m_query->exec(sql);
+	m_query->seek(0);
+
+	current_value = pre_value = m_query->value(0).toString().toLocal8Bit();
+	seq = 1;
+	current_row_num = start_with;
+	do 
+	{
+		current_value = m_query->value(0).toString().toLocal8Bit();
+		if (current_value != pre_value)
+		{
+			end_row = current_row_num-1;
+			m_sheet->writeStr(start_row, colNum, QString::number(seq).toStdString().data(), m_format);
+			m_sheet->setMerge(start_row, end_row, colNum, colNum);
+			start_row = current_row_num;
+			pre_value = current_value;
+			seq++;//父列的值变化, 序号增1
+		}
+		current_row_num++;
+	} while (m_query->next());
+	m_sheet->writeStr(start_row, colNum, QString::number(seq).toStdString().data(), m_format);//设置最后一个序号
 	m_sheet->setMerge(start_row, end_with_row, colNum, colNum);//合并最后一个值
 }
 

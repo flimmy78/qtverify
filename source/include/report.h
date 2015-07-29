@@ -69,6 +69,7 @@ private:
 	void mergeSingleCol(QString colName);//合并列中的相似值
 	void mergeSingleCol(QString colName, int colNum);//合并列中的相似值
 	void mergeBool(QString colName, QString father);//合并合格与不合格
+	void mergeRowId(QString colName, QString father);//合并序号
 	void readTblName();//读表或视图名
 	void readConfigTHead();//取出配置文件的配置头
 	void readConfigTBody();//取出配置文件的配置体
