@@ -497,41 +497,44 @@ select
   rec.F_MeterValue0,
   rec.F_MeterValue1,
   (rec.F_MeterValue1 - rec.F_MeterValue0) F_MeterDispValue,
-  rec.F_BalWeight0,                 
-  rec.F_BalWeight1,                 
-  rec.F_StdMeterV0,                 
-  rec.F_StdMeterV1,                 
-  rec.F_PipeTemper,                 
-  rec.F_Density,                    
-  rec.F_StandValue,                 
-  rec.F_DispError,                  
+  rec.F_BalWeight0,
+  rec.F_BalWeight1,
+  rec.F_StdMeterV0,
+  rec.F_StdMeterV1,
+  rec.F_PipeTemper,
+  rec.F_Density,
+  rec.F_StandValue,
+  rec.F_DispError,
   rec.F_StdError,
   (case when F_Result=1 then '合格'
         else '不合格'
-   end) valid,                   
-  rec.F_Result,                   
-  rec.F_MeterPosNo,              
+   end) valid,
+  (case when F_Result=1 then 'valid'
+        else 'invalid'
+   end) valid_en,
+  rec.F_Result,
+  rec.F_MeterPosNo,
   rec.F_Model,
   mod.[F_Name] F_Model_en,
-  mod.[F_Desc] F_Model_zh,                    
-  std.f_name F_Standard,                  
-  tp.[F_Desc] F_PickCode_zh,                
+  mod.[F_Desc] F_Model_zh,
+  std.f_name F_Standard,
+  tp.[F_Desc] F_PickCode_zh,
   manu.[F_Name] F_ManufactDept_en,
-  manu.[F_Desc] F_ManufactDept_zh,              
+  manu.[F_Desc] F_ManufactDept_zh,
   vdpt.[F_Name] F_VerifyDept_en,
-  vdpt.[F_Desc] F_VerifyDept_zh,               
-  rec.F_Grade,                   
-  (select F_Desc from T_User_Def_Tab u where u.F_id = rec.[F_VerifyPerson])  F_VerifyPerson,           
-  (select F_Desc from T_User_Def_Tab u where u.F_id = rec.[F_CheckPerson])  F_CheckPerson,            
-  rec.F_DeviceInfoID,        
-  rec.F_VerifyDate,                 
-  rec.F_ValidDate,                   
-  rec.F_EnvTemper,                  
-  rec.F_EnvHumidity,                
-  rec.F_AirPressure,  
-  rec.F_FlowCoe,              
+  vdpt.[F_Desc] F_VerifyDept_zh,
+  rec.F_Grade,
+  (select F_Desc from T_User_Def_Tab u where u.F_id = rec.[F_VerifyPerson])  F_VerifyPerson,
+  (select F_Desc from T_User_Def_Tab u where u.F_id = rec.[F_CheckPerson])  F_CheckPerson,
+  rec.F_DeviceInfoID,
+  rec.F_VerifyDate,
+  rec.F_ValidDate,
+  rec.F_EnvTemper,
+  rec.F_EnvHumidity,
+  rec.F_AirPressure,
+  rec.F_FlowCoe,
   d.F_CertNO,
-  d.F_DeviceName,   
+  d.F_DeviceName,
   d.F_DeviceNo,
   d.F_DeviceModel,
   d.F_Manufact,
@@ -541,22 +544,22 @@ select
   d.F_VerifyRule,
   d.F_DeviceValidDate,
   d.F_CertValidDate,
-  d.F_RuleValidDate   
-		from 
-			T_Flow_Verify_Record rec 
-		 left join 
-			T_Verify_Device_Info d,
-      T_Meter_Model mod,
-       T_meter_standard std,   
-       T_Meter_PickCode tp,   
-       T_manufacture_dept manu,   
-       T_verify_dept vdpt
-		 on   
-		 rec.F_DeviceInfoID=d.[F_ID] and
-     rec.[F_Standard]=std.[F_ID] and
-     rec.[F_PickCode]=tp.[F_ID] and
-     rec.[F_ManufactDept]=manu.[F_ID] and
-     rec.[F_VerifyDept]=vdpt.[F_ID] and   
-     rec.[F_Model]=mod.[F_ID]
- order by rec.f_meterno, rec.f_timestamp
- ;
+  d.F_RuleValidDate
+	from
+		T_Flow_Verify_Record rec
+	left join
+		T_Verify_Device_Info d,
+		T_Meter_Model mod,
+		T_meter_standard std,
+		T_Meter_PickCode tp,
+		T_manufacture_dept manu,
+		T_verify_dept vdpt
+	on
+		rec.F_DeviceInfoID=d.[F_ID] and
+		rec.[F_Standard]=std.[F_ID] and
+		rec.[F_PickCode]=tp.[F_ID] and
+		rec.[F_ManufactDept]=manu.[F_ID] and
+		rec.[F_VerifyDept]=vdpt.[F_ID] and
+		rec.[F_Model]=mod.[F_ID]
+	order by rec.f_meterno, rec.f_timestamp
+;
