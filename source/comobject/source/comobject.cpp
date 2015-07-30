@@ -77,11 +77,11 @@ TempComObject::~TempComObject()
 {
 	if(m_tempCom != NULL)
 	{
-		if(m_tempCom->isOpen())
-		{
+// 		if(m_tempCom->isOpen())
+// 		{
 			m_tempCom->close();
 			qDebug()<<"m_tempCom :"<<m_tempCom->portName()<<" closed";
-		}
+// 		}
 		delete m_tempCom;
 	}
 
@@ -189,11 +189,11 @@ ControlComObject::~ControlComObject()
 {
 	if (m_controlCom != NULL)
 	{
-		if (m_controlCom->isOpen())
-		{
+// 		if (m_controlCom->isOpen())
+// 		{
 			m_controlCom->close();
 			qDebug()<<"m_controlCom :"<<m_controlCom->portName()<<" closed";
-		}
+// 		}
 		delete m_controlCom;
 	}
 
@@ -422,11 +422,11 @@ BalanceComObject::~BalanceComObject()
 {
 	if(m_balanceCom != NULL)
 	{
-		if(m_balanceCom->isOpen())
-		{
+// 		if(m_balanceCom->isOpen())
+// 		{
 			m_balanceCom->close();
 			qDebug()<<"m_balanceCom :"<<m_balanceCom->portName()<<" closed";
-		}
+// 		}
 		delete m_balanceCom;
 	}
 
@@ -520,21 +520,18 @@ MeterComObject::MeterComObject(QObject* parent) : ComObject(parent)
 	m_meterTmp="";
 	m_portName = "";
 
-	connect(this, SIGNAL(signalReadMeter()), this, SLOT(askReadMeter()));
-	connect(this, SIGNAL(signalSetVerifyStatus()), this, SLOT(askSetVerifyStatus()));
-
 	setProtocolVersion(PROTOCOL_VER_DELU); //默认是德鲁热量表
 }
 
 MeterComObject::~MeterComObject()
 {
-	if(m_meterCom != NULL)
+	if (m_meterCom != NULL)
 	{
-		if(m_meterCom->isOpen())
-		{
+// 		if (m_meterCom->isOpen())
+// 		{
 			m_meterCom->close();
 			qDebug()<<"m_meterCom :"<<m_meterCom->portName()<<" closed";
-		}
+// 		}
 		delete m_meterCom;
 	}
 
@@ -543,16 +540,6 @@ MeterComObject::~MeterComObject()
 		delete m_meterProtocol;
 		m_meterProtocol = NULL;
 	}
-}
-
-void MeterComObject::readMeter()
-{
-	emit signalReadMeter();
-}
-
-void MeterComObject::setVerifyStatus()
-{
-	emit signalSetVerifyStatus();
 }
 
 void MeterComObject::setProtocolVersion(int version)

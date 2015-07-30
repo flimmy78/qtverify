@@ -116,7 +116,7 @@ int main(int argc, char *argv[])
 // 	{
 		g_mainform->resize(1280, 800);  
 		g_mainform->move((app.desktop()->width()-g_mainform->width())/2, (app.desktop()->height()-g_mainform->height())/2);  
-		g_mainform->show();
+		g_mainform->showMaximized();
 		splash->finish(g_mainform);
 		delete splash;
 		app.exec();
