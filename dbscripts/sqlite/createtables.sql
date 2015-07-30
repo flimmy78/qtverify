@@ -461,27 +461,6 @@ F_Bak4 varchar(24)                     --备用域4
 create unique index uk_T_Verify_Device_Info on T_Verify_Device_Info (F_DeviceNo);
 insert into T_Verify_Device_Info values(0, '航天德鲁检定装置', 'ADE201580037', 'RJZ15-25Z/B', '航天德鲁', '0.1% k=2', '0.12-40.0(m3/h)', 1234567890, 'JJG225-2001', '2020-7-1', '2020-7-1', '2020-7-1', '', '', '', '');
 
-
-
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
------------------------------------------------------------------
---                    检定结果视图中的rowID                   ----
-------------------------------------------------------------------
-drop view if exists "v_flow_verify_meterno_rowid";
-create view v_flow_verify_meterno_rowid as
-select 
-distinct (
-           select 
-                  count(distinct f_meterno) + 1
-           from t_flow_verify_record v1 
-           where v1.[f_meterno] < v2.[F_MeterNo] 
-         ) rowid, 
-           v2.f_meterno  
-from t_flow_verify_record v2;
-
-
 -----------------------------------------------------------------
 --                    检定结果视图                           ----
 -----------------------------------------------------------------
