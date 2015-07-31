@@ -118,6 +118,7 @@ enum table_columns
 	COLUMN_DENSITY,		    //密度列
 	COLUMN_STD_VALUE,	    //标准值
 	COLUMN_DISP_ERROR,		//示值误差列
+	COLUMN_STD_ERROR,		//标准误差列(误差要求)
 	COLUMN_READ_METER,		//读表数据列
 	COLUMN_VERIFY_STATUS,	//设置检定状态列
 	COLUMN_TOTAL_COUNT,     //总量检定的表格列数

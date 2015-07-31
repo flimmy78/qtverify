@@ -765,6 +765,11 @@ g</string>
      </column>
      <column>
       <property name="text">
+       <string>StdError(%)</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
        <string>ReadMeter</string>
       </property>
      </column>
