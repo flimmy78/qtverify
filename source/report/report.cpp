@@ -169,9 +169,9 @@ void CReport::mergeBody()
 
 		QStringList cur_merge_info = m_rpt_config->value("mergeInfo/" + need_merge[i]).toStringList();
 
-		if (need_merge[i].toLower() == "valid")
+		if (need_merge[i].toLower() == "valid_en")
 		{
-			mergeBool(need_merge[i], cur_merge_info[1]);
+			mergeBool(need_merge[i], cur_merge_info);
 		}
 		else if (need_merge[i].toLower() == "rowid")
 		{
@@ -221,7 +221,7 @@ void CReport::mergeSingleCol(QString colName)
 	mergeSingleCol(colName, colNum);
 }
 
-void CReport::mergeBool(QString colName, QString father)
+void CReport::mergeBool(QString colName, QStringList fatherList)
 {
 	int colNum = m_rpt_config->value(QString("tablebody/%1").arg(colName)).toInt();//当前列的列号
 	int start_with = m_rpt_config->value("otherbodyInfo/startwith").toInt();//表体开始行号
@@ -230,42 +230,78 @@ void CReport::mergeBool(QString colName, QString father)
 	int current_row_num;//表体的当前行号
 	int end_with_row = start_with + m_totalRecords-1;//表体的结束行号
 	QString current_value, pre_value;//当前值和先前值
-	bool invalid_value;
-	QString sql = QString("select %1, %2 from %3").arg(father).arg(colName).arg(TEMP_QUERY_VIEW_NAME);
+	QStringList currentVList, previousVList;
+	bool valid_value;
+
+	QString sql;
+	sql  = "select ";
+	for (int i = 1; i < fatherList.length();i++)//fatherList的项从1开始, 0是关键字"father"
+	{
+		sql += QString(" %1, ").arg(fatherList.at(i));
+	}
+	sql += QString(" %1 from %2").arg(colName).arg(TEMP_QUERY_VIEW_NAME);
 
 	//设置字体, 用到的资源会在m_book->release()时被销毁
-	Font *bool_font = m_book->addFont();
-	Format* bool_format = m_book->addFormat();
-	bool_format->setAlignH(ALIGNH_CENTER);
-	bool_format->setAlignV(ALIGNV_CENTER);
-	bool_format->setBorder(BORDERSTYLE_THIN);
-	bool_font->setSize(10);
-	bool_font->setName("宋体");
-	bool_format->setFont(bool_font);
+	Font *valid_font = m_book->addFont();
+	Font *invalid_font = m_book->addFont();
+	Format* valid_format = m_book->addFormat();
+	Format* invalid_format = m_book->addFormat();
+
+	valid_format->setAlignH(ALIGNH_CENTER);
+	valid_format->setAlignV(ALIGNV_CENTER);
+	valid_format->setBorder(BORDERSTYLE_THIN);
+	invalid_format->setAlignH(ALIGNH_CENTER);
+	invalid_format->setAlignV(ALIGNV_CENTER);
+	invalid_format->setBorder(BORDERSTYLE_THIN);
+
+	valid_font->setSize(10);
+	valid_font->setName("宋体");
+	valid_font->setColor(COLOR_GREEN);
+	invalid_font->setSize(10);
+	invalid_font->setName("宋体");
+	invalid_font->setColor(COLOR_RED);
+	valid_format->setFont(valid_font);
+	invalid_format->setFont(invalid_font);
+
 
 	m_query->exec(sql);
 	m_query->seek(0);
 
-	current_value = pre_value = m_query->value(0).toString().toLocal8Bit();
-	invalid_value = (m_query->value(1).toString().toLocal8Bit().toLower() == "valid");
-	current_row_num = start_with;
-	do 
+	int valid_col = fatherList.length();
+	int valueLen = valid_col-1;
+	for (int i = 1; i < valid_col;i++)
 	{
-		current_value = m_query->value(0).toString().toLocal8Bit();
-		invalid_value = (invalid_value && (m_query->value(1).toString().toLocal8Bit().toLower() == "valid"));
-		if (current_value != pre_value)
+		currentVList.append(m_query->value(i-1).toString().toLocal8Bit());
+		previousVList.append(m_query->value(i-1).toString().toLocal8Bit());
+	}
+	valid_value = (m_query->value(valid_col-1).toString().toLocal8Bit().toLower() == "valid");
+	current_row_num = start_with;
+
+	bool fatherChanged = false;
+	do
+	{
+		for(int i=0; i < valueLen;i++)
+		{
+			currentVList[i] = m_query->value(i).toString().toLocal8Bit();
+			fatherChanged = ( fatherChanged || !(currentVList.at(i)==previousVList.at(i)));
+		}
+		if (fatherChanged)
 		{
 			end_row = current_row_num-1;
-			invalid_value ? bool_font->setColor(COLOR_GREEN):bool_font->setColor(COLOR_RED);		
-			m_sheet->writeStr(start_row, colNum, QString(invalid_value?"合格":"不合格").toStdString().data(), bool_format);
+			m_sheet->writeStr(start_row, colNum, QString(valid_value?"合格":"不合格").toStdString().data(), valid_value?valid_format:invalid_format);
 			m_sheet->setMerge(start_row, end_row, colNum, colNum);
 			start_row = current_row_num;
-			pre_value = current_value;
-			invalid_value = true;
+			for (int i=0; i < valueLen;i++)
+			{
+				previousVList[i]=currentVList.at(i);
+			}
+			valid_value = true;
+			fatherChanged = false;
 		}
+		valid_value = (valid_value && (m_query->value(valid_col-1).toString().toLocal8Bit().toLower() == "valid"));
 		current_row_num++;
 	} while (m_query->next());
-	m_sheet->writeStr(start_row, colNum, QString(invalid_value?"合格":"不合格").toStdString().data(), bool_format);//设置最后一个bool值
+	m_sheet->writeStr(start_row, colNum, QString(valid_value?"合格":"不合格").toStdString().data(), valid_value?valid_format:invalid_format);//设置最后一个bool值
 	m_sheet->setMerge(start_row, end_with_row, colNum, colNum);//合并最后一个值
 }
 

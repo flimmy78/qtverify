@@ -16,10 +16,10 @@
 #include <QtCore/QDebug>
 #include <QtCore/QTimer>
 #include <QtCore/QThread>
-#include <QTest>
 #include <QtSql/QSqlTableModel>
 #include <QtGui/QFileDialog>
 #include <QtCore/QSignalMapper>
+#include <QCloseEvent>
 #include <math.h>
 
 #include "flowstandard.h"
@@ -1171,14 +1171,16 @@ int FlowStandardDlg::startVerifyFlowPoint(int order)
 
 	//判断初值是否全部读取成功
 	bool ok;
+	int row = 0;
 	for (int p=0; p<m_validMeterNum; p++)
 	{
-		ui.tableWidget->item(m_meterPosMap[p]-1, COLUMN_METER_START)->text().toFloat(&ok);
-		if (!ok || ui.tableWidget->item(m_meterPosMap[p]-1, COLUMN_METER_START)->text().isEmpty())
+		row = m_meterPosMap[p]-1;
+		ui.tableWidget->item(row, COLUMN_METER_START)->text().toFloat(&ok);
+		if (!ok || ui.tableWidget->item(row, COLUMN_METER_START)->text().isEmpty())
 		{
-// 			QMessageBox::information(this, tr("Hint"), tr("please input init value of heat meter"));//请输入热量表初值！
+// 			QMessageBox::information(this, tr("Hint"), tr("please input start value of heat meter"));//请输入热量表初值！
 			ui.labelHintProcess->setText(tr("please input start value of heat meter"));
-			ui.tableWidget->setCurrentCell(m_meterPosMap[p]-1, COLUMN_METER_START); //定位到需要输入初值的地方
+			ui.tableWidget->setCurrentCell(row, COLUMN_METER_START); //定位到需要输入初值的地方
 			return false;
 		}
 	}
@@ -1235,7 +1237,7 @@ int FlowStandardDlg::startVerifyFlowPoint(int order)
 				m_meterDensity[m] = m_chkAlg->getDensityByQuery(m_meterTemper[m]);//计算每个被检表的密度
 				m_meterStdValue[m] = m_chkAlg->getStdVolByPos((m_StdEndMass-m_StdStartMass), m_pipeInTemper, m_pipeOutTemper, m_meterPosMap[m]); //计算每个被检表的体积标准值
 
-				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_FLOW_POINT)->setText(QString::number(m_realFlow, 'f', 2));//流量点
+				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_FLOW_POINT)->setText(QString::number(m_realFlow, 'f', 3));//流量点
 				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_METER_END)->setText("");//表终值
 				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_BAL_START)->setText(QString::number(m_StdStartMass, 'f', 3));//初值
 				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_BAL_END)->setText(QString::number(m_StdEndMass, 'f', 3));    //终值
@@ -1276,6 +1278,7 @@ int FlowStandardDlg::calcMeterError(int idx)
 	ui.tableWidget->item(row, COLUMN_METER_END)->text().toFloat(&ok);
 	if (/*m_meterEndValue[idx] <= 0 ||*/ ui.tableWidget->item(row, COLUMN_METER_END)->text().isEmpty() || !ok)
 	{
+		ui.tableWidget->setCurrentCell(row, COLUMN_METER_END);
 		return 0;
 	}
 	m_meterError[idx] = 100*(m_meterEndValue[idx] - m_meterStartValue[idx] - m_meterStdValue[idx])/m_meterStdValue[idx];//计算某个表的误差
@@ -1342,7 +1345,6 @@ int FlowStandardDlg::calcVerifyResult()
 		if (m_nowOrder>=m_flowPointNum) //最后一个流量点
 		{
 			stopVerify(); //停止检定
-			ui.labelHintProcess->setText(tr("verifying has finished"));
 			if (m_adjErr) //选择调整误差
 			{
 				ui.btnAllAdjError->setEnabled(true);
@@ -1381,10 +1383,9 @@ int FlowStandardDlg::calcVerifyResult()
 	else //有读表流量失败的（终值）
 	{
 		ui.labelHintProcess->setText(tr("please input end value of heat meter"));
-		ui.tableWidget->setCurrentCell(m_meterPosMap[0]-1, COLUMN_METER_END); //定位到第一个需要输入终值的地方
 	}
 
-	return true;
+	return ret;
 }
 
 //打开阀门
@@ -1537,18 +1538,10 @@ void FlowStandardDlg::slotSetMeterFlow(const QString& comName, const float& flow
 
 	if (m_state == STATE_START_VALUE) //初值
 	{
-		if (m_meterStartValue!=NULL)
-		{
-			m_meterStartValue[idx] = flow;
-		}
 		ui.tableWidget->item(meterPos - 1, COLUMN_METER_START)->setText(QString::number(flow));
 	}
 	else if (m_state == STATE_END_VALUE) //终值
-	{	
-		if (m_meterEndValue!=NULL)
-		{
-			m_meterEndValue[idx] = flow;
-		}
+	{
 		ui.tableWidget->item(meterPos - 1, COLUMN_METER_END)->setText(QString::number(flow));
 	}
 }
@@ -1829,7 +1822,7 @@ int FlowStandardDlg::getMeterEndValue()
 	if (m_autopick) //自动采集
 	{
 		readAllMeter();
-		sleep(BALANCE_STABLE_TIME); //等待串口返回数据
+		//sleep(WAIT_COM_TIME); //等待串口返回数据
 	}
 	else //手动输入
 	{
@@ -1883,14 +1876,10 @@ void FlowStandardDlg::on_tableWidget_cellChanged(int row, int column)
 		m_meterStartValue[idx] = ui.tableWidget->item(row, column)->text().toFloat(&ok);
 		if (!ok)
 		{
-// 			QMessageBox::warning(this, tr("Warning"), tr("Error: please input digits"));//输入错误！请输入数字
+// 			QMessageBox::warning(this, tr("Warning"), tr("Error: please input right digits"));//输入错误！请输入正确的数字
 			return;
 		}
 		startVerifyFlowPoint(m_nowOrder);
-		if (!m_autopick && meterPos<m_meterPosMap[m_validMeterNum-1])//手动输入、不是最后一个表初值,自动定位到下一个
-		{
-			ui.tableWidget->setCurrentCell(m_meterPosMap[idx+1]-1, column);
-		}
 	}
 
 	if (column==COLUMN_METER_END && m_state==STATE_END_VALUE) //表终值列 且 允许输入终值
@@ -1901,8 +1890,8 @@ void FlowStandardDlg::on_tableWidget_cellChanged(int row, int column)
 // 			QMessageBox::warning(this, tr("Warning"), tr("Error: please input digits"));//输入错误！请输入数字
 			return;
 		}
-		calcVerifyResult();
-		if (!m_autopick && meterPos<m_meterPosMap[m_validMeterNum-1])//手动输入、不是最后一个表终值,自动定位到下一个
+// 		calcVerifyResult();
+		if (/*!m_autopick &&*/calcVerifyResult()==0 && meterPos<m_meterPosMap[m_validMeterNum-1])//手动输入、不是最后一个表终值,自动定位到下一个
 		{
 			ui.tableWidget->setCurrentCell(m_meterPosMap[idx+1]-1, column);
 		}
@@ -1942,21 +1931,16 @@ void FlowStandardDlg::on_btnAllReadMeter_clicked()
 				m_meterEndValue[idx] = 0;
 			}
 		}
-
-		m_meterObj[j].askReadMeter();
+		slotReadMeter(j);
 	}
 }
 
 //设置检定状态（所有表）
 void FlowStandardDlg::on_btnAllVerifyStatus_clicked()
 {
-	if (NULL==m_meterObj)
-	{
-		return;
-	}
 	for (int i=0; i<m_maxMeterNum; i++)
 	{
-		m_meterObj[i].askSetVerifyStatus();
+		slotVerifyStatus(i);
 	}
 }
 

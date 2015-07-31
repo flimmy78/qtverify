@@ -327,5 +327,3 @@ void FlowResultDlg::on_btnExit_clicked()
 {
 	this->close();
 }
-
-
