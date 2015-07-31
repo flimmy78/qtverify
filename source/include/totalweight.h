@@ -103,8 +103,11 @@ public:
 	int *m_meterResult;       //检表结果 1:合格；0:不合格
 	float m_stdInTemper;      //标准入口温度
 	float m_stdOutTemper;     //标准出口温度
-	int m_unit;                       //能量单位(0:MJ； 1:kWh)
-	QButtonGroup *btnGroupEnergyUnit; //能量单位 0:MJ;1:kwh
+	int m_unit;                       //能量单位(0:UNIT_MJ; 1:UNIT_KWH)
+	QButtonGroup *btnGroupEnergyUnit; //能量单位(0:UNIT_MJ; 1:UNIT_KWH)
+	int m_installPos;                 //安装位置(0:INSTALLPOS_IN; 1:INSTALLPOS_OUT)
+	QButtonGroup *btnGroupInstallPos; //安装位置(0:INSTALLPOS_IN; 1:INSTALLPOS_OUT)
+	float m_minDeltaT;   //最小温差，单位℃
 
 	Total_Verify_Record_PTR m_recPtr; //有效的检定记录
 	QString m_timeStamp; //时间戳 秒数
@@ -226,6 +229,7 @@ public slots:
 	void on_btnStdTempCollect_clicked(); //采集标准温度
 	void on_btnStdTempStop_clicked(); //停止采集标准温度
 	void slot_btnGroupEnergyUnit_clicked(int id);
+	void slot_btnGroupInstallPos_clicked(int id);
 
 	void slotAskStdTemperature();
 

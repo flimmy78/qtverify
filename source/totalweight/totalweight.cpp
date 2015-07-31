@@ -36,9 +36,9 @@ TotalWeightDlg::TotalWeightDlg(QWidget *parent, Qt::WFlags flags)
 	ui.setupUi(this);
 	
 	//不同等级的热量表对应的标准误差,单位%
-	m_gradeErrA[1] = 1.00f;
-	m_gradeErrA[2] = 2.00f;
-	m_gradeErrA[3] = 3.00f;
+	m_gradeErrA[1] = 2.00f;
+	m_gradeErrA[2] = 3.00f;
+	m_gradeErrA[3] = 4.00f;
 
 	m_gradeErrB[1] = 0.01f;
 	m_gradeErrB[2] = 0.02f;
@@ -85,11 +85,21 @@ void TotalWeightDlg::showEvent(QShowEvent * event)
 	m_recPtr = NULL;        //流量检测结果
 
 	btnGroupEnergyUnit = new QButtonGroup(ui.groupBoxEnergyUnit); //能量单位
-	btnGroupEnergyUnit->addButton(ui.radioButtonMJ, 0);
-	btnGroupEnergyUnit->addButton(ui.radioButtonKwh, 1);
+	btnGroupEnergyUnit->addButton(ui.radioButtonMJ, UNIT_MJ);
+	btnGroupEnergyUnit->addButton(ui.radioButtonKwh, UNIT_KWH);
 	connect(btnGroupEnergyUnit, SIGNAL(buttonClicked(int)), this, SLOT(slot_btnGroupEnergyUnit_clicked(int)));
 	ui.radioButtonKwh->setChecked(true); //默认单位:kWh
 	m_unit = UNIT_KWH;
+
+	btnGroupInstallPos = new QButtonGroup(ui.groupBoxInstallPos); //安装位置
+	btnGroupInstallPos->addButton(ui.radioButtonPosIn, INSTALLPOS_IN);
+	btnGroupInstallPos->addButton(ui.radioButtonPosOut, INSTALLPOS_OUT);
+	connect(btnGroupInstallPos, SIGNAL(buttonClicked(int)), this, SLOT(slot_btnGroupInstallPos_clicked(int)));
+	ui.radioButtonPosIn->setChecked(true); //默认入口安装
+	m_installPos = INSTALLPOS_IN;
+
+	m_minDeltaT = 3.0; //最小温差
+	ui.lnEditMinDeltaT->setText(QString::number(m_minDeltaT));
 
 	//计算流速用
 	m_totalcount = 0;
@@ -537,6 +547,23 @@ void TotalWeightDlg::on_btnStdTempStop_clicked()
 void TotalWeightDlg::slot_btnGroupEnergyUnit_clicked(int id)
 {
 	m_unit = btnGroupEnergyUnit->checkedId();
+	if (m_unit==UNIT_KWH) 
+	{
+		ui.tableWidget->setHorizontalHeaderItem(COLUMN_METER_START, new QTableWidgetItem(QObject::tr("MeterValue0(kWh)")));
+		ui.tableWidget->setHorizontalHeaderItem(COLUMN_METER_END, new QTableWidgetItem(QObject::tr("MeterValue1(kWh)")));
+		ui.tableWidget->setHorizontalHeaderItem(COLUMN_STD_VALUE, new QTableWidgetItem(QObject::tr("StdValue(kWh)")));
+	}
+	else
+	{
+		ui.tableWidget->setHorizontalHeaderItem(COLUMN_METER_START, new QTableWidgetItem(QObject::tr("MeterValue0(MJ)")));
+		ui.tableWidget->setHorizontalHeaderItem(COLUMN_METER_END, new QTableWidgetItem(QObject::tr("MeterValue1(MJ)")));
+		ui.tableWidget->setHorizontalHeaderItem(COLUMN_STD_VALUE, new QTableWidgetItem(QObject::tr("StdValue(MJ)")));
+	}
+}
+
+void TotalWeightDlg::slot_btnGroupInstallPos_clicked(int id)
+{
+	m_installPos = btnGroupInstallPos->checkedId();
 }
 
 /*
@@ -984,10 +1011,23 @@ void TotalWeightDlg::clearTableContents()
 //点击"开始"按钮
 void TotalWeightDlg::on_btnStart_clicked()
 {
+	//判断是否输入了最小温差
+	bool ok;
+	m_minDeltaT = ui.lnEditMinDeltaT->text().toFloat(&ok);
+	if (!ok || ui.lnEditMinDeltaT->text().isEmpty())
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("please input minimum delta temperature!"));
+		ui.lnEditMinDeltaT->setFocus();
+		return;
+	}
+
 	ui.btnStart->setEnabled(false);
 	ui.btnGoOn->hide();
 	ui.labelHintPoint->clear();
 	ui.labelHintProcess->clear();
+	ui.tableWidget->setEnabled(true);
+	ui.btnAllReadMeter->setEnabled(true);
+	ui.btnAllVerifyStatus->setEnabled(true);
 	
 	m_stopFlag = false;
 	m_state = STATE_INIT;
@@ -1406,7 +1446,7 @@ int TotalWeightDlg::startVerifyFlowPoint(int order)
 			{
 				m_meterTemper[m] = m_chkAlg->getMeterTempByPos(m_pipeInTemper, m_pipeOutTemper, m_meterPosMap[m]);//计算每个被检表的温度
 				m_meterDensity[m] = m_chkAlg->getDensityByQuery(m_meterTemper[m]);//计算每个被检表的密度
-				m_meterStdValue[m] = m_chkAlg->getStdVolByPos((m_balEndV-m_balStartV), m_pipeInTemper, m_pipeOutTemper, m_meterPosMap[m]); //计算每个被检表的体积标准值
+				m_meterStdValue[m] = m_chkAlg->calcStdEnergyByEnthalpy(m_stdInTemper, m_stdOutTemper, m_balEndV-m_balStartV, m_unit); //计算每个被检表的体积标准值
 
 				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_FLOW_POINT)->setText(QString::number(m_realFlow, 'f', 3));//流量点
 				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_METER_END)->setText("");//表终值
@@ -1414,7 +1454,7 @@ int TotalWeightDlg::startVerifyFlowPoint(int order)
 				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_BAL_END)->setText(QString::number(m_balEndV, 'f', 3));    //天平终值
 				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_TEMPER)->setText(QString::number(m_meterTemper[m], 'f', 2));  //温度
 				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_DENSITY)->setText(QString::number(m_meterDensity[m], 'f', 3));//密度
-				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_STD_VALUE)->setText(QString::number(m_meterStdValue[m], 'f', 3));//标准值
+				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_STD_VALUE)->setText(QString::number(m_meterStdValue[m], 'f', 5));//标准值
 				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_DISP_ERROR)->setText("");//示值误差
 				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_DISP_ERROR)->setForeground(QBrush());//示值误差
 			}
@@ -1458,8 +1498,9 @@ int TotalWeightDlg::calcMeterError(int idx)
 	m_meterError[idx] = 100*(m_meterEndValue[idx] - m_meterStartValue[idx] - m_meterStdValue[idx])/m_meterStdValue[idx];//计算某个表的误差
 	int valveIdx = m_paraSetReader->getFpBySeq(m_nowOrder).fp_valve_idx; //0:大 1:中二 2:中一 3:小
 	m_meterErr[idx][valveIdx] = m_meterError[idx];
-	ui.tableWidget->item(row, COLUMN_DISP_ERROR)->setText(QString::number(m_meterError[idx], 'f', 4)); //误差
-	float stdError = m_totalSC*(m_gradeErrA[m_nowParams->m_grade] + m_gradeErrB[m_nowParams->m_grade]*m_mapNormalFlow[m_standard]/m_realFlow); //标准误差=规程要求误差*流量安全系数
+	ui.tableWidget->item(row, COLUMN_DISP_ERROR)->setText(QString::number(m_meterError[idx], 'f', 4)); //示值误差
+	float stdError = m_totalSC*(m_gradeErrA[m_nowParams->m_grade] + 4*m_minDeltaT/(m_stdInTemper-m_stdOutTemper) + m_gradeErrB[m_nowParams->m_grade]*m_mapNormalFlow[m_standard]/m_realFlow); //标准误差=规程要求误差*总量安全系数
+	ui.tableWidget->item(row, COLUMN_STD_ERROR)->setText(QString::number(stdError, 'f', 4)); //标准误差
 	if (fabs(m_meterError[idx]) > stdError)
 	{
 		ui.tableWidget->item(row, COLUMN_DISP_ERROR)->setForeground(QBrush(Qt::red));
