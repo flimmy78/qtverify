@@ -756,6 +756,8 @@ int FlowStandardDlg::openWaterOutValve()
 int FlowStandardDlg::judgeTartgetVolAndCalcAvgTemperAndFlow(float initV, float verifyV)
 {
 	float targetV       = initV + verifyV;
+	ui.btnAllReadMeter->setEnabled(false);
+	ui.btnAllVerifyStatus->setEnabled(false);
 	QDateTime startTime = QDateTime::currentDateTime();
 	int second          = 0;
 	float nowFlow       = m_paraSetReader->getFpBySeq(m_nowOrder).fp_verify;
@@ -820,6 +822,9 @@ void FlowStandardDlg::on_btnStart_clicked()
 	ui.btnGoOn->hide();
 	ui.labelHintPoint->clear();
 	ui.labelHintProcess->clear();
+	ui.tableWidget->setEnabled(true);
+	ui.btnAllReadMeter->setEnabled(true);
+	ui.btnAllVerifyStatus->setEnabled(true);
 
 	m_stopFlag = false;
 	m_state = STATE_INIT;
@@ -841,7 +846,6 @@ void FlowStandardDlg::on_btnStart_clicked()
 		return;
 	}
 
-
 	if (m_autopick) //自动读表
 	{
 		readAllMeter();
@@ -854,7 +858,7 @@ void FlowStandardDlg::on_btnStart_clicked()
 		ui.labelHintPoint->setText(tr("Please input meter number!"));
 		ui.tableWidget->setCurrentCell(0, COLUMN_METER_NUMBER);
 	}
-	
+
 	return;
 }
 
@@ -1149,7 +1153,6 @@ int FlowStandardDlg::prepareVerifyFlowPoint(int order)
 			sleep(CYCLE_TIME); 
 		}
 	}
-	sleep(WATCH_DATA_TIME); //等3秒，供操作人员看上一次的检定结果
 	getMeterStartValue(); //获取表初值
 
 	return true;
@@ -1245,6 +1248,7 @@ int FlowStandardDlg::startVerifyFlowPoint(int order)
 				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_DENSITY)->setText(QString::number(m_meterDensity[m], 'f', 3));//密度
 				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_STD_VALUE)->setText(QString::number(m_meterStdValue[m], 'f', 3));//标准值
 				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_DISP_ERROR)->setText("");//示值误差
+				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_DISP_ERROR)->setForeground(QBrush());//示值误差
 			}
 			getMeterEndValue();
 			}//跑完检定量
@@ -1284,8 +1288,9 @@ int FlowStandardDlg::calcMeterError(int idx)
 	m_meterError[idx] = 100*(m_meterEndValue[idx] - m_meterStartValue[idx] - m_meterStdValue[idx])/m_meterStdValue[idx];//计算某个表的误差
 	int valveIdx = m_paraSetReader->getFpBySeq(m_nowOrder).fp_valve_idx; //0:大 1:中二 2:中一 3:小
 	m_meterErr[idx][valveIdx] = m_meterError[idx];
-	ui.tableWidget->item(row, COLUMN_DISP_ERROR)->setText(QString::number(m_meterError[idx], 'f', 4)); //误差
+	ui.tableWidget->item(row, COLUMN_DISP_ERROR)->setText(QString::number(m_meterError[idx], 'f', 4)); //示值误差
 	float stdError = m_flowSC*(m_gradeErrA[m_nowParams->m_grade] + m_gradeErrB[m_nowParams->m_grade]*m_mapNormalFlow[m_standard]/m_realFlow); //标准误差=规程要求误差*流量安全系数
+	ui.tableWidget->item(row, COLUMN_STD_ERROR)->setText(QString::number(stdError, 'f', 4)); //标准误差
 	if (fabs(m_meterError[idx]) > stdError)
 	{
 		ui.tableWidget->item(row, COLUMN_DISP_ERROR)->setForeground(QBrush(Qt::red));
