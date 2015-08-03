@@ -3,7 +3,7 @@
 ######################################################################
 
 TEMPLATE = app
-CONFIG  += qt warn_on debug qaxcontainer qtestlib
+CONFIG  += qt warn_on debug qaxcontainer
 TARGET = qtverify
 RC_FILE = qtverify.rc
 

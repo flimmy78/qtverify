@@ -1,7 +1,7 @@
 
 TEMPLATE	= lib
 TARGET    = calcverify
-CONFIG += qt dll debug thread qtestlib
+CONFIG += qt dll debug thread
 QT += sql
 
 DEFINES	+= CALCVERIFY_DLL QT_THREAD_SUPPORT

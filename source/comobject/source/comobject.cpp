@@ -14,7 +14,7 @@
 ***********************************************/
 
 #include <QtCore/QDebug>
-#include <QtTest/QTest>
+#include <QtCore/QDateTime>
 
 #include "comobject.h"
 #include "commondefine.h"
@@ -138,6 +138,12 @@ void TempComObject::writeTemperatureComBuffer()
 	}
 	m_tempProtocol->makeSendBuf();
 	QByteArray buf = m_tempProtocol->getSendBuf();
+// 	int size = buf.size();
+// 	for (int i=0; i<size; i++)
+// 	{
+// 		printf("0x%.2x\n", (UINT8)buf.at(i));
+// 	}
+// 	printf("\n");
 	m_tempCom->write(buf);
 }
 

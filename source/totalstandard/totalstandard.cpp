@@ -16,7 +16,6 @@
 #include <QtCore/QDebug>
 #include <QtCore/QTimer>
 #include <QtCore/QThread>
-#include <QTest>
 #include <QtSql/QSqlTableModel>
 #include <QtGui/QFileDialog>
 #include <QtCore/QSignalMapper>
@@ -666,7 +665,7 @@ int TotalStandardDlg::judgeBalanceInitValue(float v)
 	while (!m_stopFlag && (ui.lcdBigBalance->value() < v))
 	{
 		qDebug()<<"天平重量 ="<<ui.lcdBigBalance->value()<<", 小于要求的重量 "<<v;
-		QTest::qWait(1000);
+		sleep(1000);
 	}
 
 	return true;
@@ -686,7 +685,7 @@ int TotalStandardDlg::judgeBalanceAndCalcAvgTemper(float targetV)
 		second = 3.6*(targetV - ui.lcdBigBalance->value())/nowFlow;
 		ui.labelHintPoint->setText(tr("NO. %1 flow point: %2 m3/h").arg(m_nowOrder).arg(nowFlow));
 		ui.labelHintProcess->setText(tr("Verifying...\nPlease wait for about %1 second").arg(second));
-		QTest::qWait(1000);
+		sleep(1000);
 	}
 
 	m_pipeInTemper = m_pipeInTemper/m_tempCount;   //入口平均温度
@@ -821,10 +820,10 @@ void TotalStandardDlg::startVerify()
 			openWaterOutValve();
 			while (!judgeBalanceCapacity())
 			{ 
-				QTest::qWait(1000);
+				sleep(1000);
 			}
 			closeWaterOutValve(); //若满足检定用量，则关闭放水阀
-			QTest::qWait(3000); //等待3秒钟(等待水流稳定)
+			sleep(3000); //等待3秒钟(等待水流稳定)
 		}
 	}
 
@@ -920,10 +919,10 @@ int TotalStandardDlg::prepareVerifyFlowPoint(int order)
 
 			while (!judgeBalanceCapacitySingle(order)) //等待天平放水，直至满足本次检定用量
 			{ 
-				QTest::qWait(1000);
+				sleep(1000);
 			}
 			closeWaterOutValve(); //若满足检定用量，则关闭放水阀
-			QTest::qWait(3000);   //等待3秒钟，等待水流稳定
+			sleep(3000);   //等待3秒钟，等待水流稳定
 		}
 	}
 
@@ -937,7 +936,7 @@ int TotalStandardDlg::prepareVerifyFlowPoint(int order)
 			{
 				ui.labelHintProcess->setText(tr("please wait %1 seconds for reset zero").arg(RESET_ZERO_TIME-i));
 				i++;
-				QTest::qWait(1000); 
+				sleep(1000); 
 			}
 		}
 		memset(m_meterStartValue, 0, sizeof(float)*m_validMeterNum);
@@ -952,7 +951,7 @@ int TotalStandardDlg::prepareVerifyFlowPoint(int order)
 		{
 			if (m_autopick)
 			{
-				QTest::qWait(2000); //等2秒，供操作人员看上一次的检定结果
+				sleep(2000); //等2秒，供操作人员看上一次的检定结果
 				clearTableContents();
 			}
 			makeStartValueByLastEndValue(); //上一次的终值作为本次的初值
@@ -986,7 +985,7 @@ int TotalStandardDlg::startVerifyFlowPoint(int order)
 		if (judgeBalanceAndCalcAvgTemper(m_balStartV + verifyQuantity)) //跑完检定量并计算此过程的平均温度
 		{
 			closeValve(portNo); //关闭order对应的阀门
-			QTest::qWait(3000); //等待3秒钟，让天平数值稳定
+			sleep(3000); //等待3秒钟，让天平数值稳定
 			m_balEndV = ui.lcdBigBalance->value(); //记录天平终值
 
 			for (int m=0; m<m_validMeterNum; m++) //
@@ -1325,7 +1324,7 @@ int TotalStandardDlg::getMeterStartValue()
 	{
 		m_startValueFlag = true;
 		readMeter();
-		QTest::qWait(2000); //等待串口返回数据
+		sleep(2000); //等待串口返回数据
 		return true;
 	}
 	else //手动输入
@@ -1356,7 +1355,7 @@ int TotalStandardDlg::getMeterEndValue()
 	{
 		m_startValueFlag = false;
 		readMeter();
-		QTest::qWait(2000); //等待串口返回数据
+		sleep(2000); //等待串口返回数据
 		return true;
 	}
 	else //手动输入

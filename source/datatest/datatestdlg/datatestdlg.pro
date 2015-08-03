@@ -1,7 +1,7 @@
 
 TEMPLATE	= lib
 TARGET    = datatestdlg
-CONFIG += qt dll debug qtestlib thread
+CONFIG += qt dll debug thread
 
 DEFINES	+= DATATESTDLG_DLL QT_THREAD_SUPPORT
 

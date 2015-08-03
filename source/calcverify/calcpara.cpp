@@ -16,7 +16,6 @@
 #include <QtCore/QDebug>
 #include <QtCore/QTimer>
 #include <QtCore/QThread>
-#include <QTest>
 #include <QtSql/QSqlTableModel>
 #include <QtSql/QSqlRelationalTableModel>
 #include <QtGui/QFileDialog>

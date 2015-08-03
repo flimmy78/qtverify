@@ -1,7 +1,7 @@
 DEFINES	+= TVERCOMP_DLL
 TEMPLATE = lib
 TARGET   = tvercomp
-CONFIG += qt dll debug thread qtestlib
+CONFIG += qt dll debug thread
 QT += sql
 
 QMAKE_LIBDIR +=  ./           \

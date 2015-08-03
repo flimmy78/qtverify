@@ -1,7 +1,7 @@
 
 TEMPLATE	= lib
 TARGET    = comobject
-CONFIG += qt dll debug qtestlib thread
+CONFIG += qt dll debug thread
 
 DEFINES	+= COMOBJECT_DLL QT_THREAD_SUPPORT
 

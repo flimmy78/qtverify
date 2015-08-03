@@ -1,7 +1,7 @@
 DEFINES	+= TVERPARAM_DLL
 TEMPLATE	= lib
 TARGET    = tverparam
-CONFIG += qt dll debug thread qtestlib
+CONFIG += qt dll debug thread
 QT += sql
 
 

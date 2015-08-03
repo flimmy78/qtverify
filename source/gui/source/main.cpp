@@ -3,7 +3,6 @@
 #include <QtCore/QTranslator>
 #include <QtCore/QDebug>
 #include <QtGui/QSplashScreen>
-#include <QtTest/QTest>
 #include <QtCore/QThread>
 #include <QtGui/QDesktopWidget>
 
@@ -104,11 +103,11 @@ int main(int argc, char *argv[])
 	qDebug()<<"qtverify main thread:"<<QThread::currentThreadId();
 
 	splash->showMessage(QObject::tr("connect database ..."), align, Qt::blue);
-	QTest::qSleep(200);
+	sleep(200);
 	startdb(); //连接数据库
 
 	splash->showMessage(QObject::tr("setting up the mainwindow ..."), align, Qt::blue);
-	QTest::qSleep(200);
+	sleep(200);
 	g_mainform = new MainForm;
 	
 // 	LoginDialog login;

@@ -15,7 +15,6 @@
 #include <QtGui/QMessageBox>
 #include <QtCore/QDebug>
 #include <QThread>
-#include <QTest>
 #include <QtCore/QSettings>
 #include <QTextCodec>
 #include <QtGui/QMessageBox>
@@ -447,7 +446,7 @@ void ParaSetDlg::on_btnSave_clicked()
 //	QMessageBox::information(this, tr("OK"), tr("Saving configurations successfully!"));
 	emit saveSuccessSignal();
 	ui.labelHintInfo->setText(tr("Saving configurations successfully!"));
-	QTest::qWait(800);
+	sleep(800);
 	ui.labelHintInfo->clear();
 }
 

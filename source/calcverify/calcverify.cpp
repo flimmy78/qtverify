@@ -16,11 +16,11 @@
 #include <QtCore/QDebug>
 #include <QtCore/QTimer>
 #include <QtCore/QThread>
-#include <QTest>
 #include <QtSql/QSqlTableModel>
 #include <QtGui/QFileDialog>
 #include <QtCore/QSignalMapper>
 #include <QtCore/QSettings>
+#include <QtCore/QDateTime>
 #include <math.h>
 
 #include "calcverify.h"

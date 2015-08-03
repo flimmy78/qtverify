@@ -1,7 +1,7 @@
 
 TEMPLATE	= lib
 TARGET    = flowstandard
-CONFIG += qt dll debug thread qtestlib
+CONFIG += qt dll debug thread
 QT += sql
 
 DEFINES	+= FLOWSTANDARD_DLL QT_THREAD_SUPPORT
@@ -10,7 +10,7 @@ QMAKE_LIBDIR +=  ./           \
         	     $(ADEHOME)/lib \
 	             $(ADEHOME)/bin 
 	            
-LIBS +=	-lprotocol -lsystemsetdlg -lcomobject -lqtexdb -lalgorithm -ldatatestdlg
+LIBS +=	-lprotocol -lsystemsetdlg -lcomobject -lqtexdb -lalgorithm
 
 DESTDIR = $(ADEHOME)\tmp\flowstandard
 #MOC_DIR = $(ADEHOME)/tmp/flowstandard/moc
