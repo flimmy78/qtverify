@@ -335,19 +335,20 @@ drop table if exists "T_Meter_PickCode"
 create table T_Meter_PickCode
 (
 F_ID integer not null primary key,
-F_Desc varchar(60)
+F_Desc varchar(60),
+F_NumPrefix varchar(6)
 );
-insert into T_Meter_PickCode(F_ID, F_Desc) values(0, '通用');
-insert into T_Meter_PickCode(F_ID, F_Desc) values(1, '德鲁超声波表');
-insert into T_Meter_PickCode(F_ID, F_Desc) values(2, '天罡超声波表');
-insert into T_Meter_PickCode(F_ID, F_Desc) values(3, '力创超声波表');
-insert into T_Meter_PickCode(F_ID, F_Desc) values(4, '力创机械表');
-insert into T_Meter_PickCode(F_ID, F_Desc) values(5, '汇中超声波表');
-insert into T_Meter_PickCode(F_ID, F_Desc) values(6, '迈拓超声波表');
-insert into T_Meter_PickCode(F_ID, F_Desc) values(7, '瑞纳超声波表');
-insert into T_Meter_PickCode(F_ID, F_Desc) values(8, '光大');
-insert into T_Meter_PickCode(F_ID, F_Desc) values(9, '荷德鲁美特');
-insert into T_Meter_PickCode(F_ID, F_Desc) values(10, '航天德鲁热量表');
+insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(0, '通用', '111100');
+insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(1, '德鲁超声波表', '111100');
+insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(2, '天罡超声波表', '111100');
+insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(3, '力创超声波表', '111100');
+insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(4, '力创机械表', '111100');
+insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(5, '汇中超声波表', '111100');
+insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(6, '迈拓超声波表', '111100');
+insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(7, '瑞纳超声波表', '111100');
+insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(8, '光大', '111100');
+insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(9, '荷德鲁美特', '111100');
+insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(10, '航天德鲁热量表', '111100');
 
 
 ---------------------------------
@@ -359,12 +360,11 @@ create table T_Manufacture_Dept
 (
 F_ID integer not null primary key,
 F_Name varchar(24),
-F_Desc varchar(60),
-F_NumPrefix varchar(6)
+F_Desc varchar(60)
 );
-insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc,F_NumPrefix) values(0, 'SDM', '山东德鲁','111100');
-insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc,F_NumPrefix) values(1, 'SDJG', '烟台晶格','111111');
-insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc,F_NumPrefix) values(2, 'HYLY', '华仪乐业','222222');
+insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc) values(0, 'SDM', '山东德鲁');
+insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc) values(1, 'SDJG', '烟台晶格');
+insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc) values(2, 'HYLY', '华仪乐业');
 
 
 ---------------------------------
