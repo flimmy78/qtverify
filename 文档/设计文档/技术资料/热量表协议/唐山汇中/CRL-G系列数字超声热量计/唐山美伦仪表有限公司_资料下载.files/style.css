@@ -1,0 +1,555 @@
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; BACKGROUND-IMAGE: url(../images/bg.jpg); PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; BACKGROUND-REPEAT: repeat-x; FONT-FAMILY: arial; BACKGROUND-COLOR: #ffffff
+}
+TD {
+	FONT-SIZE: 12px; COLOR: #555555; LINE-HEIGHT: 150%
+}
+SELECT {
+	FONT-SIZE: 12px; COLOR: #555555; HEIGHT: 20px
+}
+A {
+	TEXT-DECORATION: none
+}
+A:link {
+	COLOR: #555555
+}
+A:visited {
+	COLOR: #555555
+}
+A:active {
+	COLOR: #555555
+}
+A:hover {
+	COLOR: #ff6611
+}
+LI {
+	LINE-HEIGHT: 150%
+}
+LI.fang {
+	LIST-STYLE-TYPE: square
+}
+LI.img {
+	LIST-STYLE-IMAGE: url(li.gif)
+}
+UL {
+	MARGIN: 0px 5px 0px 25px
+}
+UL.fang {
+	LIST-STYLE-TYPE: square
+}
+UL.img {
+	LIST-STYLE-IMAGE: url(li.gif)
+}
+.INPUT {
+	BORDER-RIGHT: #a2a2a2 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #a2a2a2 1px solid; PADDING-LEFT: 1px; FONT-SIZE: 12px; BACKGROUND-IMAGE: url(../images/inputbg.gif); PADDING-BOTTOM: 1px; BORDER-LEFT: #a2a2a2 1px solid; COLOR: #555555; PADDING-TOP: 1px; BORDER-BOTTOM: #a2a2a2 1px solid; HEIGHT: 18px
+}
+.TEXTAREA {
+	BORDER-RIGHT: #a2a2a2 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #a2a2a2 1px solid; PADDING-LEFT: 3px; FONT-SIZE: 12px; PADDING-BOTTOM: 3px; BORDER-LEFT: #a2a2a2 1px solid; COLOR: #555555; PADDING-TOP: 3px; BORDER-BOTTOM: #a2a2a2 1px solid
+}
+.pa A:link {
+	COLOR: #555555; TEXT-DECORATION: none
+}
+.pa A:visited {
+	COLOR: #555555; TEXT-DECORATION: none
+}
+.pa A:hover {
+	BACKGROUND: url(line_bg.gif) repeat-y; WIDTH: 200px; COLOR: #ffffff; LINE-HEIGHT: 30px; HEIGHT: 30px; TEXT-DECORATION: none
+}
+.pa A:active {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.baa A:link {
+	TEXT-DECORATION: none
+}
+.baa A:visited {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.baa A:hover {
+	BACKGROUND: url(magigidd.gif); WIDTH: 95px; COLOR: #ffffff; HEIGHT: 23px; TEXT-DECORATION: none
+}
+.baa A:active {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.button {
+	BORDER-RIGHT: 1px outset; BORDER-TOP: 1px outset; FONT-SIZE: 12px; BORDER-LEFT: 1px outset; COLOR: #333333; BORDER-BOTTOM: 1px outset
+}
+.menu {
+	WIDTH: 70px; PADDING-TOP: 3px; WHITE-SPACE: nowrap
+}
+A.menu {
+	FONT-SIZE: 13px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.menu:link {
+	COLOR: #ffffff
+}
+A.menu:visited {
+	COLOR: #ffffff
+}
+A.menu:active {
+	COLOR: #ffffff
+}
+A.menu:hover {
+	FONT-SIZE: 14px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+.menunow {
+	WIDTH: 70px; PADDING-TOP: 3px; WHITE-SPACE: nowrap
+}
+A.menunow {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.menunow:link {
+	COLOR: #ffffff
+}
+A.menunow:visited {
+	COLOR: #ffffff
+}
+A.menunow:active {
+	COLOR: #ffffff
+}
+A.menunow:hover {
+	COLOR: #ffffff
+}
+.nav1_font {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; FILTER: progid:DXImageTransform.Microsoft.DropShadow(color=#000000,offX=1,offY=1,positive=true); COLOR: #ffffff; LETTER-SPACING: 1px
+}
+A.nav1_link:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ffffff; LETTER-SPACING: 1px; TEXT-DECORATION: none
+}
+A.nav1_link:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ffffff; LETTER-SPACING: 1px; TEXT-DECORATION: none
+}
+A.nav1_link:active {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ffffff; LETTER-SPACING: 1px; TEXT-DECORATION: none
+}
+A.nav1_link:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ffffff; LETTER-SPACING: 1px; TEXT-DECORATION: underline
+}
+.nav2_font {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #000000; LETTER-SPACING: 1px
+}
+A.nav2_link:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #000000; LETTER-SPACING: 1px; TEXT-DECORATION: none
+}
+A.nav2_link:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #000000; LETTER-SPACING: 1px; TEXT-DECORATION: none
+}
+A.nav2_link:active {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #000000; LETTER-SPACING: 1px; TEXT-DECORATION: none
+}
+A.nav2_link:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #000000; LETTER-SPACING: 1px; TEXT-DECORATION: underline
+}
+A.nav_link:link {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.nav_link:visited {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.nav_link:active {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.nav_link:hover {
+	FONT-SIZE: 12px; COLOR: #eaf803; TEXT-DECORATION: underline
+}
+.dh_font {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #ffffff; LETTER-SPACING: 1px
+}
+A.dh_link:link {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.dh_link:visited {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.dh_link:active {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.dh_link:hover {
+	FONT-SIZE: 12px; COLOR: #eaf803; TEXT-DECORATION: underline
+}
+.btmenu {
+	FONT-SIZE: 12px; COLOR: #000000; LINE-HEIGHT: 150%; TEXT-DECORATION: none
+}
+A.btmenu:link {
+	COLOR: #000000
+}
+A.btmenu:visited {
+	COLOR: #000000
+}
+A.btmenu:active {
+	COLOR: #000000
+}
+A.btmenu:hover {
+	COLOR: #ff9933
+}
+.smenu {
+	FONT-SIZE: 12px; COLOR: #ffffff; LINE-HEIGHT: 150%; TEXT-DECORATION: none
+}
+A.smenu:link {
+	COLOR: #ffffff
+}
+A.smenu:visited {
+	COLOR: #ffffff
+}
+A.smenu:active {
+	COLOR: #ffffff
+}
+A.smenu:hover {
+	COLOR: #ffffff
+}
+.smenuv {
+	FONT-SIZE: 12px; COLOR: #555555; LINE-HEIGHT: 150%; TEXT-DECORATION: none
+}
+TD.smenuv {
+	BORDER-RIGHT: #555555 0px solid; BORDER-TOP: #555555 0px solid; BORDER-LEFT: #555555 0px solid; BORDER-BOTTOM: #555555 0px solid
+}
+A.smenuv:link {
+	COLOR: #555555
+}
+A.smenuv:visited {
+	COLOR: #555555
+}
+A.smenuv:active {
+	COLOR: #555555
+}
+A.smenuv:hover {
+	COLOR: #238f06
+}
+.nav {
+	FONT-SIZE: 12px; COLOR: #777777
+}
+TD.nav {
+	PADDING-LEFT: 5px
+}
+TD.title {
+	BACKGROUND: #eeeeee
+}
+TD.con {
+	BACKGROUND: #ffffff
+}
+.table {
+	BORDER-RIGHT: #dddddd 1px solid; BORDER-TOP: #dddddd 1px solid; BORDER-LEFT: #dddddd 1px solid; BORDER-BOTTOM: #dddddd 1px solid
+}
+.tablemenu {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; BACKGROUND: #eeeeee; BORDER-LEFT: #cccccc 1px solid; COLOR: #555555
+}
+.line {
+	BACKGROUND: #dddddd
+}
+.list {
+	FONT-SIZE: 14px; ; BACKGROUND-COLOR: expression((this.sectionRowIndex%2==0)?'#f5f5f5':'#ffffff')
+}
+.tList {
+	FONT-SIZE: 12px; COLOR: #333333; LINE-HEIGHT: 22px
+}
+.tList1 {
+	FONT-SIZE: 12px; COLOR: #b0b0b0; LINE-HEIGHT: 150%
+}
+A.tList {
+	FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+A.tList:link {
+	COLOR: #333333
+}
+A.tList:visited {
+	COLOR: #333333
+}
+A.tList:active {
+	COLOR: #333333
+}
+A.tList:hover {
+	COLOR: #ff6611
+}
+TD.piclist {
+	BACKGROUND: #ffffff
+}
+DIV.piclist {
+	BORDER-RIGHT: #dddddd 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #dddddd 1px solid; PADDING-LEFT: 1px; BACKGROUND: #ffffff; PADDING-BOTTOM: 1px; BORDER-LEFT: #dddddd 1px solid; WIDTH: 50px; PADDING-TOP: 1px; BORDER-BOTTOM: #dddddd 1px solid; HEIGHT: 50px
+}
+A.pictitle {
+	FONT-SIZE: 12px; COLOR: #777777; LINE-HEIGHT: 26px
+}
+DIV.pictitle {
+	BORDER-RIGHT: #dddddd 0px solid; PADDING-RIGHT: 1px; BORDER-TOP: #dddddd 0px solid; PADDING-LEFT: 1px; BACKGROUND: #ffffff; PADDING-BOTTOM: 1px; BORDER-LEFT: #dddddd 0px solid; PADDING-TOP: 1px; BORDER-BOTTOM: #dddddd 0px solid
+}
+A.more {
+	FONT-SIZE: 12px; TEXT-DECORATION: underline
+}
+A.more:link {
+	COLOR: #555555
+}
+A.more:visited {
+	COLOR: #555555
+}
+A.more:active {
+	COLOR: #555555
+}
+A.more:hover {
+	COLOR: #ff6611
+}
+.dtree {
+	FONT-SIZE: 12px; COLOR: #555555; WHITE-SPACE: nowrap
+}
+.dtree IMG {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; VERTICAL-ALIGN: middle; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px
+}
+.dtree A {
+	FONT-SIZE: 12px; COLOR: #555555; TEXT-DECORATION: none
+}
+.dtree A.node {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 1px; COLOR: #555555; PADDING-TOP: 1px; WHITE-SPACE: nowrap; TEXT-DECORATION: none
+}
+.dtree A.nodeSel {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; FONT-SIZE: 12px; PADDING-BOTTOM: 1px; COLOR: #555555; PADDING-TOP: 1px; WHITE-SPACE: nowrap; TEXT-DECORATION: none
+}
+.dtree A.node:hover {
+	FONT-SIZE: 12px; COLOR: #555555; TEXT-DECORATION: none
+}
+.dtree A.nodeSel:hover {
+	FONT-SIZE: 12px; COLOR: #555555; TEXT-DECORATION: none
+}
+.dtree A.nodeSel {
+	FONT-SIZE: 12px; BACKGROUND-COLOR: #cfdfef
+}
+.dtree .clip {
+	OVERFLOW: hidden
+}
+.pagesinfo {
+	FONT-SIZE: 12px; COLOR: #555555
+}
+.pagesnow {
+	FONT-SIZE: 14px; COLOR: #d07e36; TEXT-DECORATION: none
+}
+.pages {
+	FONT-SIZE: 14px; COLOR: #777777; TEXT-DECORATION: none
+}
+TD.newsquery {
+	HEIGHT: 23px
+}
+.newsquery {
+	FONT-SIZE: 12px; COLOR: #777777; LINE-HEIGHT: 150%
+}
+A.newsquery {
+	FONT-SIZE: 12px; COLOR: #777777; LINE-HEIGHT: 150%; TEXT-DECORATION: none
+}
+A.newsquery:link {
+	COLOR: #777777
+}
+A.newsquery:active {
+	COLOR: #777777
+}
+A.newsquery:visited {
+	COLOR: #777777
+}
+A.newsquery:hover {
+	COLOR: #ff6611
+}
+.newsquerytitle {
+	BORDER-RIGHT: #eeeeee 1px solid; BORDER-TOP: #eeeeee 1px solid; BACKGROUND: #f0f0f0; BORDER-LEFT: #eeeeee 1px solid; BORDER-BOTTOM: #eeeeee 1px solid
+}
+.newsquerytime {
+	FONT-SIZE: 12px; COLOR: #555555
+}
+.newstitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 18px; COLOR: #333333
+}
+.newsinfo {
+	FONT-SIZE: 12px; BACKGROUND: #f0f0f0; COLOR: #555555
+}
+.newscon {
+	PADDING-RIGHT: 15px; PADDING-LEFT: 15px; FONT-SIZE: 14px; PADDING-BOTTOM: 15px; COLOR: #777777; LINE-HEIGHT: 160%; PADDING-TOP: 15px
+}
+.class {
+	FONT-SIZE: 12px; COLOR: #777777
+}
+A.class {
+	COLOR: #777777; TEXT-DECORATION: none
+}
+A.class:link {
+	COLOR: #777777
+}
+A.class:visited {
+	COLOR: #777777
+}
+A.class:hover {
+	COLOR: #ff6611
+}
+TABLE.class {
+	BORDER-RIGHT: #dddddd 1px solid; BORDER-TOP: #dddddd 1px solid; BORDER-LEFT: #dddddd 1px solid; BORDER-BOTTOM: #dddddd 1px solid
+}
+TD.class {
+	PADDING-LEFT: 10px
+}
+TABLE.bigclass {
+	BORDER-RIGHT: #dddddd 1px solid; BORDER-TOP: #dddddd 1px solid; BORDER-LEFT: #dddddd 1px solid; BORDER-BOTTOM: #dddddd 1px solid
+}
+TD.bigclass {
+	PADDING-LEFT: 10px; BACKGROUND: #eeeeee; HEIGHT: 25px
+}
+.bigclass {
+	FONT-SIZE: 12px; COLOR: #777777; LINE-HEIGHT: 150%
+}
+A.bigclass {
+	FONT-WEIGHT: bold; COLOR: #777777; LINE-HEIGHT: 150%; TEXT-DECORATION: none
+}
+A.bigclass:link {
+	COLOR: #777777
+}
+A.bigclass:visited {
+	COLOR: #777777
+}
+A.bigclass:unknown {
+	COLOR: #777777
+}
+A.bigclass:hover {
+	COLOR: #ff6611
+}
+TABLE.smallclass {
+	BORDER-RIGHT: #dddddd 0px solid; BORDER-TOP: #dddddd 0px solid; BORDER-LEFT: #dddddd 0px solid; BORDER-BOTTOM: #dddddd 0px solid
+}
+TD.smallclass {
+	PADDING-LEFT: 10px; BACKGROUND: #f7f7f7; HEIGHT: 18px
+}
+.smallclass {
+	FONT-SIZE: 12px; COLOR: #555555; LINE-HEIGHT: 150%
+}
+A.smallclass {
+	COLOR: #555555; LINE-HEIGHT: 150%; TEXT-DECORATION: none
+}
+A.smallclass:link {
+	COLOR: #555555
+}
+A.smallclass:visited {
+	COLOR: #555555
+}
+A.smallclass:unknown {
+	COLOR: #555555
+}
+A.smallclass:hover {
+	COLOR: #ff6611
+}
+TD.downquery {
+	HEIGHT: 22px
+}
+.downquery {
+	FONT-SIZE: 12px; COLOR: #777777; LINE-HEIGHT: 150%
+}
+A.downquery {
+	FONT-SIZE: 12px; COLOR: #777777; LINE-HEIGHT: 150%; TEXT-DECORATION: none
+}
+A.downquery:link {
+	COLOR: #777777
+}
+A.downquery:active {
+	COLOR: #777777
+}
+A.downquery:visited {
+	COLOR: #777777
+}
+A.downquery:hover {
+	COLOR: #ff6611
+}
+.downquerytitle {
+	BORDER-RIGHT: #eeeeee 1px solid; BORDER-TOP: #eeeeee 1px solid; BACKGROUND: #f0f0f0; BORDER-LEFT: #eeeeee 1px solid; BORDER-BOTTOM: #eeeeee 1px solid
+}
+.downquerytime {
+	FONT-SIZE: 12px; COLOR: #555555
+}
+.downpropname {
+	FONT-SIZE: 12px; BACKGROUND: #dddddd; COLOR: #555555
+}
+.downprop {
+	PADDING-LEFT: 10px; FONT-SIZE: 12px; BACKGROUND: #f0f0f0; COLOR: #555555
+}
+.downintro {
+	FONT-SIZE: 12px; COLOR: #777777; LINE-HEIGHT: 150%
+}
+.cpline {
+	BACKGROUND: #dddddd
+}
+TD.cpquery {
+	BACKGROUND: #ffffff
+}
+DIV.cpquery {
+	BORDER-RIGHT: #eeeeee 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #eeeeee 1px solid; PADDING-LEFT: 5px; BACKGROUND: #ffffff; PADDING-BOTTOM: 5px; BORDER-LEFT: #eeeeee 1px solid; PADDING-TOP: 5px; BORDER-BOTTOM: #eeeeee 1px solid
+}
+A.cpquerytitle {
+	FONT-SIZE: 12px; COLOR: #777777; LINE-HEIGHT: 26px
+}
+DIV.cpquerytitle {
+	BORDER-RIGHT: #eeeeee 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #eeeeee 1px solid; PADDING-LEFT: 2px; BACKGROUND: #f7f7f7; PADDING-BOTTOM: 2px; BORDER-LEFT: #eeeeee 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #eeeeee 1px solid
+}
+.cppropname {
+	FONT-SIZE: 12px; BACKGROUND: #dddddd; COLOR: #555555
+}
+.cpprop {
+	PADDING-LEFT: 10px; FONT-SIZE: 12px; BACKGROUND: #f0f0f0; COLOR: #555555
+}
+.cpintro {
+	FONT-SIZE: 12px; COLOR: #777777; LINE-HEIGHT: 150%
+}
+.notic {
+	FONT-SIZE: 12px; COLOR: #777777
+}
+.noticerr {
+	FONT-SIZE: 12px; COLOR: #ff6600
+}
+.noticlink {
+	FONT-SIZE: 12px; COLOR: #ff6600
+}
+.mustfill {
+	FONT-SIZE: 14px; COLOR: #ff0000
+}
+.memberinfo {
+	COLOR: #555555
+}
+TD.bbsquery {
+	HEIGHT: 23px
+}
+.bbsquery {
+	FONT-SIZE: 12px; COLOR: #777777; LINE-HEIGHT: 150%
+}
+A.bbsquery {
+	FONT-SIZE: 12px; COLOR: #777777; LINE-HEIGHT: 150%; TEXT-DECORATION: none
+}
+A.bbsquery:link {
+	COLOR: #777777
+}
+A.bbsquery:active {
+	COLOR: #777777
+}
+A.bbsquery:visited {
+	COLOR: #777777
+}
+A.bbsquery:hover {
+	COLOR: #ff6611
+}
+.bbsquerytitle {
+	BORDER-RIGHT: #eeeeee 1px solid; BORDER-TOP: #eeeeee 1px solid; BACKGROUND: #f0f0f0; BORDER-LEFT: #eeeeee 1px solid; BORDER-BOTTOM: #eeeeee 1px solid
+}
+.bbsquerytime {
+	FONT-SIZE: 12px; COLOR: #555555
+}
+.bbstitle {
+	BACKGROUND: #eeeeee
+}
+.bbscon {
+	BACKGROUND: #ffffff
+}
+.bbstable {
+	BACKGROUND: #dddddd
+}
+.bbsline {
+	BACKGROUND: #dddddd
+}
+.searchtitle {
+	FONT-SIZE: 14px; COLOR: #777777; LINE-HEIGHT: 32px
+}
+A.searchtitle {
+	FONT-SIZE: 14px; COLOR: #777777; LINE-HEIGHT: 32px
+}
+.searchbody {
+	FONT-SIZE: 13px; COLOR: #333333; LINE-HEIGHT: 18px; HEIGHT: 60px
+}
+.searchtime {
+	FONT-SIZE: 12px; COLOR: #555555
+}
