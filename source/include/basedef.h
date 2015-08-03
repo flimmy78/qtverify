@@ -148,6 +148,7 @@ enum table_columns
 #define IMITATION_FLOW_RATE 2.88 //模拟流量时的流速, m3/h
 
 //热量表通讯协议版本号(采集代码)
+#define PROTOCOL_VER_COMMON	    0   //通用
 #define PROTOCOL_VER_DELU	    1   //德鲁超声波表
 #define PROTOCOL_VER_TIANGANG   2   //天罡超声波表
 #define PROTOCOL_VER_LICHSONIC 	3   //力创超声波表

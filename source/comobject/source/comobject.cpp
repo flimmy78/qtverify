@@ -558,11 +558,13 @@ void MeterComObject::setProtocolVersion(int version)
 	}
 	switch (m_protocolVersion)
 	{
-	case PROTOCOL_VER_DELU:	//德鲁热量表
+	case PROTOCOL_VER_COMMON:	//通用协议
+	case PROTOCOL_VER_DELU:	    //德鲁热量表
+	case PROTOCOL_VER_TIANGANG: //天罡热量表
 		m_meterProtocol = new DeluMeterProtocol();
 		break;
-	case PROTOCOL_VER_TIANGANG: //天罡热量表
-		m_meterProtocol = new TgMeterProtocol();
+	case PROTOCOL_VER_LICHSONIC: //力创超声波表
+		m_meterProtocol = new LiChMeterProtocol();
 		break;
 	default: 
 		m_meterProtocol =  new DeluMeterProtocol();
@@ -735,6 +737,7 @@ void MeterComObject::askSetVerifyStatus()
 void MeterComObject::askModifyMeterNO(QString oldMeterNo, QString newMeterNo)
 {
 	qDebug()<<"111 MeterComObject askModifyMeterNO thread:"<<QThread::currentThreadId();
+	qDebug()<<"oldMeterNo:"<<oldMeterNo<<", newMeterNo:"<<newMeterNo;
 	if (NULL==m_meterProtocol)
 	{
 		return;

@@ -344,12 +344,12 @@ private:
 
 };
 
-//天罡热量表通讯协议类
-class PROTOCOL_EXPORT TgMeterProtocol : public MeterProtocol
+//力创热量表通讯协议类
+class PROTOCOL_EXPORT LiChMeterProtocol : public MeterProtocol
 {
 public:
-	TgMeterProtocol();
-	~TgMeterProtocol();
+	LiChMeterProtocol();
+	~LiChMeterProtocol();
 
 public slots:
 	virtual UINT8 CountCheck(DeluMeter_Frame_Struct *pFrame);

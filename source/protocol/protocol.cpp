@@ -1346,50 +1346,50 @@ void DeluMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, 
 类名：TgMeterProtocol
 功能：热量表通讯协议-天罡热量表
 ************************************************/
-TgMeterProtocol::TgMeterProtocol()
+LiChMeterProtocol::LiChMeterProtocol()
 {
 }
 
-TgMeterProtocol::~TgMeterProtocol()
+LiChMeterProtocol::~LiChMeterProtocol()
 {
 }
 
-UINT8 TgMeterProtocol::CountCheck(DeluMeter_Frame_Struct *pFrame)
-{
-	return 0;
-}
-
-UINT8 TgMeterProtocol::readMeterComBuffer(QByteArray tmp)
+UINT8 LiChMeterProtocol::CountCheck(DeluMeter_Frame_Struct *pFrame)
 {
 	return 0;
 }
 
-void TgMeterProtocol::analyseFrame()
+UINT8 LiChMeterProtocol::readMeterComBuffer(QByteArray tmp)
+{
+	return 0;
+}
+
+void LiChMeterProtocol::analyseFrame()
 {
 
 }
 
-void TgMeterProtocol::makeFrameOfReadMeter()
+void LiChMeterProtocol::makeFrameOfReadMeter()
 {
 
 }
 
-void TgMeterProtocol::makeFrameOfSetVerifyStatus()
+void LiChMeterProtocol::makeFrameOfSetVerifyStatus()
 {
 
 }
 
-void TgMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo)
+void LiChMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo)
 {
 
 }
 
-void TgMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr)
+void LiChMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr)
 {
 
 }
 
-void TgMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe)
+void LiChMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe)
 {
 
 }

@@ -468,7 +468,7 @@ QString getNumPrefixOfManufac(int idx)
 	}
 
 	QString str, sqlstr;
-	sqlstr = QString("select f_id,f_numprefix from t_manufacture_dept where f_id=%1").arg(idx);
+	sqlstr = QString("select f_id,f_numprefix from t_meter_pickcode where f_id=%1").arg(idx);
 	QSqlQuery query; // 新建一个查询的实例
 	if(query.exec(sqlstr))
 	{
