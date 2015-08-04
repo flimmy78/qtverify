@@ -310,7 +310,7 @@ bool BalanceProtocol::readBalanceComBuffer(QByteArray tmp)
 					ret = true;
 					break;
 				}
-				if (fabs(m_balValue-m_lastValue) <= 5.0) //过滤突变数据
+				if (fabs(m_balValue-m_lastValue) <= 100.0) //过滤突变数据
 				{
 					m_lastValue = m_balValue;
 					ret = true;

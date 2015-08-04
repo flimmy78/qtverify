@@ -512,7 +512,7 @@ void TotalWeightDlg::slotFreshComTempValue(const QString& tempStr)
 //刷新标准温度
 void TotalWeightDlg::slotFreshStdTempValue(const QString& stdTempStr)
 {
-	// 	qDebug()<<"stdTempStr ="<<stdTempStr<<"; m_stdTempCommand ="<<m_stdTempCommand;
+// 	qDebug()<<"stdTempStr ="<<stdTempStr<<"; m_stdTempCommand ="<<m_stdTempCommand;
 	switch (m_stdTempCommand)
 	{
 	case sti1062aT1: 
@@ -535,6 +535,10 @@ void TotalWeightDlg::slotFreshStdTempValue(const QString& stdTempStr)
 //采集标准温度
 void TotalWeightDlg::on_btnStdTempCollect_clicked()
 {
+	ui.lnEditInStdResist->clear();
+	ui.lnEditOutStdResist->clear();
+	ui.lnEditInStdTemp->clear();
+	ui.lnEditOutStdTemp->clear();
 	m_stdTempTimer->start(TIMEOUT_STD_TEMPER);
 }
 
@@ -637,9 +641,10 @@ int TotalWeightDlg::readNowParaConfig()
 	m_flowPointNum = m_nowParams->total_fp;  //有效流量点的个数 
 	m_exaustSecond = m_nowParams->ex_time;   //排气时间
 	m_standard = m_nowParams->m_stand;       //表规格
-	m_model = m_nowParams->m_model;   //表型号
+	m_model = m_nowParams->m_model;          //表型号
 	m_maxMeterNum = m_nowParams->m_maxMeters;//不同表规格对应的最大检表数量
 	m_pickcode = m_nowParams->m_pickcode; //采集代码
+	m_numPrefix = getNumPrefixOfManufac(m_pickcode); //表号前缀
 	m_totalSC = m_nowParams->sc_thermal;  //总量安全系数
 
 	initTableWidget();
@@ -680,6 +685,7 @@ void TotalWeightDlg::initTableWidget()
 		ui.tableWidget->item(i, COLUMN_DENSITY)->setFlags(Qt::NoItemFlags);
 		ui.tableWidget->item(i, COLUMN_STD_VALUE)->setFlags(Qt::NoItemFlags);
 		ui.tableWidget->item(i, COLUMN_DISP_ERROR)->setFlags(Qt::NoItemFlags);
+		ui.tableWidget->item(i, COLUMN_STD_ERROR)->setFlags(Qt::NoItemFlags);
 
 		//设置按钮
 		QPushButton *btnReadMeter = new QPushButton(QObject::tr("\(%1\)").arg(i+1) + tr("ReadMeter"));
@@ -1018,6 +1024,14 @@ void TotalWeightDlg::on_btnStart_clicked()
 	{
 		QMessageBox::warning(this, tr("Warning"), tr("please input minimum delta temperature!"));
 		ui.lnEditMinDeltaT->setFocus();
+		return;
+	}
+	bool ok1, ok2;
+	float stdInTemp = ui.lnEditInStdTemp->text().toFloat(&ok1);
+	float stdOutTemp = ui.lnEditOutStdTemp->text().toFloat(&ok2);
+	if ( !ok1 || !ok2 || (stdInTemp-stdOutTemp)<=0 )
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("std temperature is error, please check!"));
 		return;
 	}
 
@@ -1500,14 +1514,13 @@ int TotalWeightDlg::calcMeterError(int idx)
 	m_meterErr[idx][valveIdx] = m_meterError[idx];
 	ui.tableWidget->item(row, COLUMN_DISP_ERROR)->setText(QString::number(m_meterError[idx], 'f', 4)); //示值误差
 	float stdError = m_totalSC*(m_gradeErrA[m_nowParams->m_grade] + 4*m_minDeltaT/(m_stdInTemper-m_stdOutTemper) + m_gradeErrB[m_nowParams->m_grade]*m_mapNormalFlow[m_standard]/m_realFlow); //标准误差=规程要求误差*总量安全系数
-	ui.tableWidget->item(row, COLUMN_STD_ERROR)->setText(QString::number(stdError, 'f', 4)); //标准误差
+	ui.tableWidget->item(row, COLUMN_STD_ERROR)->setText("±" + QString::number(stdError, 'f', 4)); //标准误差
 	if (fabs(m_meterError[idx]) > stdError)
 	{
 		ui.tableWidget->item(row, COLUMN_DISP_ERROR)->setForeground(QBrush(Qt::red));
 		ui.tableWidget->item(row, COLUMN_METER_NUMBER)->setForeground(QBrush(Qt::red));
 	}
-	QString meterNoPrefix = getNumPrefixOfManufac(m_nowParams->m_manufac);
-	QString meterNoStr = meterNoPrefix + QString("%1").arg(ui.tableWidget->item(row, 0)->text(), 8, '0');
+	QString meterNoStr = m_numPrefix + QString("%1").arg(ui.tableWidget->item(row, 0)->text(), 8, '0');
 
 	strncpy_s(m_recPtr[idx].timestamp, m_timeStamp.toAscii(), TIMESTAMP_LEN);
 	m_recPtr[idx].flowPoint = m_realFlow;
@@ -1701,7 +1714,8 @@ void TotalWeightDlg::slotSetMeterEnergy(const QString& comName, const QString& e
 	else if (m_state == STATE_END_VALUE) //终值
 	{
   	ui.tableWidget->item(meterPos - 1, COLUMN_METER_END)->setText(energy);
-	}
+
+	}
 }
 
 //设置阀门按钮背景色

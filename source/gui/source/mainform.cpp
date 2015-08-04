@@ -471,12 +471,6 @@ void MainForm::on_actionTotalWeight_triggered()
 	{
 		m_totalWeightDlg = new TotalWeightDlg();
 	}
-	else //目的是执行TotalWeightDlg的构造函数
-	{
-		delete m_totalWeightDlg;
-		m_totalWeightDlg = NULL;
-		m_totalWeightDlg = new TotalWeightDlg();
-	}
 	m_totalWeightDlg->showMaximized();
 }
 

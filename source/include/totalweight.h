@@ -76,6 +76,7 @@ public:
 	int m_standard;           //表规格
 	int m_model;              //表型号
 	int m_pickcode;			  //采集代码(热表通讯协议版本号)
+	QString m_numPrefix;      //表号前缀(14位表号的前6位）
 	float m_totalSC;          //总量检定安全系数
 	//检定过程相关的控制参数 end
 
