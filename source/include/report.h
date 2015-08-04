@@ -29,8 +29,9 @@
 #include "qexcel.h"
 
 #define TEMP_QUERY_VIEW_NAME	QString("V_Temp_Query_Result")//临时查询结果视图
-#define DROP_VIEW_STMT			QString("drop view if exists ").append(TEMP_QUERY_VIEW_NAME).append(";")
-#define CREATE_TEMP_VIEW_STMT	QString("\nCREATE view V_Temp_Query_Result as ").append(m_query_Sql).append(";")
+#define DROP_TBL_STMT			QString("drop view if exists ").append(TEMP_QUERY_VIEW_NAME).append(";")
+#define CREATE_TEMP_TBL_STMT	QString("\nCREATE view %1 as ").arg(TEMP_QUERY_VIEW_NAME).append(m_query_Sql).append(";")
+#define QUERY_TEMP_TBL_STMT		QString("select * from %1").arg(TEMP_QUERY_VIEW_NAME)
 
 using namespace libxl;
 
@@ -56,7 +57,6 @@ private:
 	QStringList m_bodyList;//表体字段列表
 	QString		m_table_name;//报表对应的表名或视图名
 	QString		m_condition;//报表查询条件
-	int			m_totalRecords;//查询到的记录数
 	QSqlQuery*	m_query;//查询
 	Book*		m_book;//报表
 	Sheet*		m_sheet;//表单
