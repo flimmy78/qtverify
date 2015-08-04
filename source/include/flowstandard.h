@@ -28,10 +28,6 @@ class ParaSetDlg;
 class ParaSetReader;
 class ReadComConfig;
 
-
-#define TIMEOUT_STD_INST			500//请求标准表瞬时流量周期
-#define TIMEOUT_STD_ACCUM			200//请求标准表累积流量周期
-
 class FLOWSTANDARD_EXPORT FlowStandardDlg : public QWidget
 {
 	Q_OBJECT
@@ -43,7 +39,6 @@ public:
 	QDataWidgetMapper *m_meterStdMapper;
 
 	QTimer *m_exaustTimer; //排气定时器
-
 
 	ComThread m_tempThread;  //温度采集线程
 	TempComObject *m_tempObj;
@@ -232,6 +227,7 @@ private:
 
 	uchar m_accumDevAddress;//当前累积流量采集所使用的力创模块设备地址, 默认为0x01
 	uchar m_instDevAddress;//当前瞬时流量采集所使用的力创模块设备地址, 默认为0x01
+
 	lcModRtuComObject *m_instantFlowCom;//瞬时流量串口对象
 	ComThread m_instantFlowThread;//瞬时流量采集线程
 	QTimer* m_instSTDMeterTimer;//瞬时流量计时器
@@ -240,8 +236,6 @@ private:
 	lcModRtuComObject *m_accumulateFlowCom;//累积流量串口对象
 	ComThread m_accumFlowThread;//累积流量采集线程
 	QTimer* m_accumSTDMeterTimer;//累积流量计时器
-	QTimer* m_accumModifyStdMeterTimer;//修改累积流量脉冲数计时器
-	int m_writeAccumCnt;//写累积流量的累加计数器
 	QByteArray m_accumStdPulse;//16路累积流量脉冲值, 需二次加工
 
 	QList<int> m_instRouteIsRead;//瞬时流量的通道号是否被采集过

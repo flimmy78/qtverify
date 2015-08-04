@@ -342,8 +342,6 @@ void FlowStandardDlg::initAccumStdCom()
 
 	connect(m_accumSTDMeterTimer, SIGNAL(timeout()), this, SLOT(slotAskAccumPulse()));
 	m_accumSTDMeterTimer->start(TIMEOUT_STD_ACCUM);
-	
-	m_writeAccumCnt = 0;
 }
 
 void FlowStandardDlg::slotAskInstPulse()
@@ -1087,7 +1085,11 @@ void FlowStandardDlg::startVerify()
 //获取有效检表个数,并生成映射关系（被检表下标-表位号）
 int FlowStandardDlg::getValidMeterNum()
 {
-	QRegExp rx("\\d+");//匹配表号是否为数字
+
+	//匹配表号是否为数字; 
+	//前一个'\'是转义字符, "\\"就相当于'\', "\\d"相当于'\d', 匹配一个数字, '+'是数字的正闭包;
+	//本模式也可以写成 "[1-9]+"
+	QRegExp rx("\\d+");
 
 	m_validMeterNum = 0; //先清零
 	QString meterNum;//表号
@@ -1439,14 +1441,7 @@ int FlowStandardDlg::closeValve(UINT8 portno)
 //操作阀门：打开或者关闭
 int FlowStandardDlg::operateValve(UINT8 portno)
 {
-	if (m_valveStatus[portno]==VALVE_OPEN) //阀门原来是打开状态
-	{
-		closeValve(portno);
-	}
-	else //阀门原来是关闭状态
-	{
-		openValve(portno);
-	}
+	m_valveStatus[portno] ? closeValve(portno) : openValve(portno);
 	return true;
 }
 

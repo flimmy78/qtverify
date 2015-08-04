@@ -62,31 +62,7 @@ void ParaSetDlg::on_btnExit_clicked()
 
 void ParaSetDlg::showEvent(QShowEvent * event)
 {
-// 	QMessageBox::warning(this, tr("Warning"), tr("showEvent"));
-	//slot_setStandWdg();
 }
-
-//void ParaSetDlg::slot_setStandWdg()
-//{
-//	ui.gBox_lcModDevNo->setVisible(m_standVerify);
-//
-//	ui.label_instRoute->setEnabled(m_standVerify);
-//	ui.cBox_instroute_1->setEnabled(m_standVerify);
-//	ui.cBox_instroute_2->setEnabled(m_standVerify);
-//	ui.cBox_instroute_3->setEnabled(m_standVerify);
-//	ui.cBox_instroute_4->setEnabled(m_standVerify);
-//
-//	ui.label_accumRoute->setEnabled(m_standVerify);
-//	ui.cBox_accumroute_1->setEnabled(m_standVerify);
-//	ui.cBox_accumroute_2->setEnabled(m_standVerify);
-//	ui.cBox_accumroute_3->setEnabled(m_standVerify);
-//	ui.cBox_accumroute_4->setEnabled(m_standVerify);
-//}
-
-//void ParaSetDlg::setStandMethod(bool method)
-//{
-//	m_standVerify = method;
-//}
 
 void ParaSetDlg::closeEvent(QCloseEvent * event)
 {
@@ -296,12 +272,6 @@ void ParaSetDlg::installHead()
 	/********************************************************************/
 }
 
-//void ParaSetDlg::installStdDevNo()
-//{
-//	ui.lineEdit_instDevNo->setText(lastParams->m_params->m_instStdDevNo);
-//	ui.lineEdit_accumDevNo->setText(lastParams->m_params->m_accumStdDevNo);
-//}
-
 void ParaSetDlg::installFlowPoint()
 {
 	// 第i流量点
@@ -313,9 +283,6 @@ void ParaSetDlg::installFlowPoint()
 		cBox_valves[i]->setCurrentIndex(lastParams->m_params->fp_info[i].fp_valve_idx);
 		lineEdit_freqs[i]->setText(QString::number(lastParams->m_params->fp_info[i].fp_freq));
 		cBox_seqs[i]->setCurrentIndex(lastParams->m_params->fp_info[i].fp_seq);
-
-		//cBox_instRoutes[i]->setCurrentIndex(lastParams->m_params->fp_info[i].fp_instStdRoute+1);
-		//cBox_accumRoutes[i]->setCurrentIndex(lastParams->m_params->fp_info[i].fp_accumStdRoute+1);
 	}
 }
 
@@ -397,16 +364,6 @@ void ParaSetDlg::flowPointVector()
 	cBox_seqs.append((ui.cBox_seq_2));
 	cBox_seqs.append((ui.cBox_seq_3));
 	cBox_seqs.append((ui.cBox_seq_4));
-	//瞬时标准表通道号控件数组.
-	//cBox_instRoutes.append(ui.cBox_instroute_1);
-	//cBox_instRoutes.append(ui.cBox_instroute_2);
-	//cBox_instRoutes.append(ui.cBox_instroute_3);
-	//cBox_instRoutes.append(ui.cBox_instroute_4);
-	//累积检定次序控件数组.
-	//cBox_accumRoutes.append(ui.cBox_accumroute_1);
-	//cBox_accumRoutes.append(ui.cBox_accumroute_2);
-	//cBox_accumRoutes.append(ui.cBox_accumroute_3);
-	//cBox_accumRoutes.append(ui.cBox_accumroute_4);
 }
 
 void ParaSetDlg::on_btnSave_clicked()
@@ -419,10 +376,6 @@ void ParaSetDlg::on_btnSave_clicked()
 	}
 
 	SaveHead();
-	//if (m_standVerify)
-	//{
-	//	SaveStdMeter();
-	//}
 	SaveFlowPoint();
 	SaveBool();
 	SaveOther();
@@ -452,8 +405,7 @@ void ParaSetDlg::on_btnSave_clicked()
 
 /*
 ** 检查被用户选定的检定序列号是否合法
-   检定序列里必须要有1, 
-   且是以1起始, 中间不间断的自然数序列
+   检定序列里必须是以1起始, 中间不间断的自然数序列
    比如: [1]; [1, 2]; [1, 2, 3]; 依此类推.
    假设有一正整数序列
    设n为其最大元素值

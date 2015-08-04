@@ -53,6 +53,8 @@
 
 #define MAX_ERROR              30 //修表时的最大允许误差，单位%。超过此误差代表异常，不允许修表
 
+#define TIMEOUT_STD_INST			500//请求标准表瞬时流量周期
+#define TIMEOUT_STD_ACCUM			200//请求标准表累积流量周期
 /*
 ** 被检表类型枚举            
 */
