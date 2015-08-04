@@ -483,7 +483,7 @@ void DataTestDlg::on_btnRegulate1_clicked() //调节阀1
 {
 	m_nowRegNo = m_portsetinfo.regflow1No;
 	setRegBtnBackColor(m_regBtn[m_nowRegNo], false); //初始化调节阀背景色
-	m_controlObj->askControlRegulate(m_nowRegNo, ui.spinBoxFreq->value());
+	m_controlObj->askControlRegulate(m_nowRegNo, ui.spinBoxValveOpening->value());
 }
 
 //参数设置
@@ -587,7 +587,7 @@ void DataTestDlg::setValveBtnBackColor(QPushButton *btn, bool status)
 	}
 	if (status) //阀门打开 绿色
 	{
-		btn->setStyleSheet("background:green;border:0px;border-image: url(:/datatestdlg/images/open.png);"); 
+		btn->setStyleSheet("background-color:rgb(0,255,0);border:0px;border-image: url(:/datatestdlg/images/open.png);"); 
 	}
 	else //阀门关闭 红色
 	{

@@ -297,9 +297,15 @@ void ControlComObject::askControlRegulate(UINT8 portno, int degree)
 	{
 		return;
 	}
+	qDebug()<<"ControlComObject::askControlRegulate portno ="<<portno<<", degree ="<<degree;
 	QByteArray buf;
 	m_controlProtocol->makeFrameOfCtrlRegulate(portno, degree);
 	buf = m_controlProtocol->getSendBuf();
+	int size = buf.size();
+	for (int i=0; i<size; i++)
+	{
+		printf("0x%.2X\n",(UINT8)buf.at(i));
+	}
 	m_controlCom->write(buf);
 }
 
