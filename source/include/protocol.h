@@ -207,6 +207,7 @@ public:
 
 	QMap <int, UINT8> portCloseMap; //闭合继电器
 	QMap <int, UINT8> portOpenMap;  //断开继电器
+	QMap <UINT8, UINT8> regPortMap; //调节阀端口号
 
 	public slots:
 	//pure virtual

@@ -675,6 +675,10 @@ OldCtrlProtocol::OldCtrlProtocol()
 	portOpenMap.insert(6, 0xEA);
 	portOpenMap.insert(7, 0xEC);
 	portOpenMap.insert(8, 0xEE);
+
+	regPortMap.insert(1, 0xF2);
+	regPortMap.insert(2, 0xF3);
+	regPortMap.insert(3, 0xF4);
 }
 
 OldCtrlProtocol::~OldCtrlProtocol()
@@ -706,7 +710,12 @@ void OldCtrlProtocol::makeFrameOfCtrlRelay(UINT8 portno, bool status)
 //控制调节阀 同时只控制一路
 void OldCtrlProtocol::makeFrameOfCtrlRegulate(UINT8 portno, UINT16 degree)
 {
-
+	int data = int(degree*4095/100);//0~100%对应0~4095
+	UINT8 dataH = data/256;
+	UINT8 dataL = data%256;
+	UINT8 port = regPortMap[portno];
+	m_sendBuf = "";
+	m_sendBuf.append(0xFF).append(port).append(dataH).append(dataL).append(0xFE);
 }
 
 //查询从机状态
