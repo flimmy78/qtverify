@@ -34,7 +34,7 @@ TotalStandardDlg::TotalStandardDlg(QWidget *parent, Qt::WFlags flags)
 {
 	qDebug()<<"TotalStandardDlg thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
-	
+	m_stdParam = new QSettings(getFullIniFileName("stdmtrparaset.ini"), QSettings::IniFormat);
 	//不同等级的热量表对应的标准误差,单位%
 	m_gradeErrA[1] = 2.00f;
 	m_gradeErrA[2] = 3.00f;
@@ -285,16 +285,6 @@ void TotalStandardDlg::closeEvent(QCloseEvent * event)
 		}
 		delete m_exaustTimer;
 		m_exaustTimer = NULL;
-	}
-
-	if (m_flowRateTimer) //计算流速计时器
-	{
-		if (m_flowRateTimer->isActive())
-		{
-			m_flowRateTimer->stop();
-		}
-		delete m_flowRateTimer;
-		m_flowRateTimer = NULL;
 	}
 
 	if (m_instSTDMeterTimer)

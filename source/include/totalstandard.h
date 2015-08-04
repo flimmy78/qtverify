@@ -124,13 +124,6 @@ public:
 	ReadComConfig *m_readComConfig; //读串口设置
 	PortSet_Ini_STR m_portsetinfo;  //端口配置
 
-	//计算流速用
-	uint m_totalcount;  //计数器
-	float m_startWeight;//天平初值
-	float m_endWeight;  //天平终值
-	float m_deltaWeight[FLOW_SAMPLE_NUM];
-	QTimer *m_flowRateTimer;  //计时器:用于计算流速
-
 	//天平最大容量和回水底量
 	float m_balMaxWht;
 	float m_balBottomWht;
