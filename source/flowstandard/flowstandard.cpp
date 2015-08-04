@@ -304,7 +304,7 @@ void FlowStandardDlg::resizeEvent(QResizeEvent * event)
 	int hh = 20;// ui.tableWidget->horizontalHeader()->size().height();
 	int vw = 50;//ui.tableWidget->verticalHeader()->size().width();
 	int vSize = (int)((th-hh-10)/(m_maxMeterNum<=0 ? 12 : m_maxMeterNum));
-	int hSize = (int)((tw-vw-20)/COLUMN__FLOW_COUNT);
+	int hSize = (int)((tw-vw)/COLUMN__FLOW_COUNT);
 	ui.tableWidget->verticalHeader()->setDefaultSectionSize(vSize);
 	ui.tableWidget->horizontalHeader()->setDefaultSectionSize(hSize);
 }
@@ -554,6 +554,7 @@ void FlowStandardDlg::initTableWidget()
 		ui.tableWidget->item(i, COLUMN_DENSITY)->setFlags(Qt::NoItemFlags);
 		ui.tableWidget->item(i, COLUMN_STD_VALUE)->setFlags(Qt::NoItemFlags);
 		ui.tableWidget->item(i, COLUMN_DISP_ERROR)->setFlags(Qt::NoItemFlags);
+		ui.tableWidget->item(i, COLUMN_STD_ERROR)->setFlags(Qt::NoItemFlags);
 
 		//设置按钮
 		QPushButton *btnModNo = new QPushButton(QObject::tr("(%1)").arg(i+1) + tr("ModifyNO"));
@@ -1292,7 +1293,7 @@ int FlowStandardDlg::calcMeterError(int idx)
 	m_meterErr[idx][valveIdx] = m_meterError[idx];
 	ui.tableWidget->item(row, COLUMN_DISP_ERROR)->setText(QString::number(m_meterError[idx], 'f', 4)); //示值误差
 	float stdError = m_flowSC*(m_gradeErrA[m_nowParams->m_grade] + m_gradeErrB[m_nowParams->m_grade]*m_mapNormalFlow[m_standard]/m_realFlow); //标准误差=规程要求误差*流量安全系数
-	ui.tableWidget->item(row, COLUMN_STD_ERROR)->setText(QString::number(stdError, 'f', 4)); //标准误差
+	ui.tableWidget->item(row, COLUMN_STD_ERROR)->setText("±" + QString::number(stdError, 'f', 4)); //标准误差
 	if (fabs(m_meterError[idx]) > stdError)
 	{
 		ui.tableWidget->item(row, COLUMN_DISP_ERROR)->setForeground(QBrush(Qt::red));

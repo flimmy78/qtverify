@@ -320,7 +320,7 @@ void TotalWeightDlg::resizeEvent(QResizeEvent * event)
 	int hh = 20;// ui.tableWidget->horizontalHeader()->size().height();
 	int vw = 50;//ui.tableWidget->verticalHeader()->size().width();
 	int vSize = (int)((th-hh-10)/(m_maxMeterNum<=0 ? 12 : m_maxMeterNum));
-	int hSize = (int)((tw-vw-20)/COLUMN_TOTAL_COUNT);
+	int hSize = (int)((tw-vw)/COLUMN_TOTAL_COUNT);
 	ui.tableWidget->verticalHeader()->setDefaultSectionSize(vSize);
 	ui.tableWidget->horizontalHeader()->setDefaultSectionSize(hSize);
 }

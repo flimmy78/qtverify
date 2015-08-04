@@ -88,6 +88,11 @@
      </column>
      <column>
       <property name="text">
+       <string>StdError(%)</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
        <string>ReadMeter</string>
       </property>
      </column>
@@ -1463,6 +1468,9 @@ t</string>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="styleSheet">
+         <string notr="true">font: 75 12pt &quot;Aharoni&quot;;</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -1497,6 +1505,9 @@ t</string>
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 75 12pt &quot;Aharoni&quot;;</string>
         </property>
         <property name="text">
          <string/>

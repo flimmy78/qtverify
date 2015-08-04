@@ -334,7 +334,7 @@ void TotalStandardDlg::resizeEvent(QResizeEvent * event)
 	int hh = 20;// ui.tableWidget->horizontalHeader()->size().height();
 	int vw = 50;//ui.tableWidget->verticalHeader()->size().width();
 	int vSize = (int)((th-hh-10)/(m_maxMeterNum<=0 ? 12 : m_maxMeterNum));
-	int hSize = (int)((tw-vw-20)/COLUMN_TOTAL_COUNT);
+	int hSize = (int)((tw-vw)/COLUMN_TOTAL_COUNT);
 	ui.tableWidget->verticalHeader()->setDefaultSectionSize(vSize);
 	ui.tableWidget->horizontalHeader()->setDefaultSectionSize(hSize);
 }
@@ -1364,7 +1364,7 @@ int TotalStandardDlg::calcMeterError(int idx)
 	m_meterErr[idx][valveIdx] = m_meterError[idx];
 	ui.tableWidget->item(row, COLUMN_DISP_ERROR)->setText(QString::number(m_meterError[idx], 'f', 4)); //示值误差
 	float stdError = m_totalSC*(m_gradeErrA[m_nowParams->m_grade] + 4*m_minDeltaT/(m_stdInTemper-m_stdOutTemper) + m_gradeErrB[m_nowParams->m_grade]*m_mapNormalFlow[m_standard]/m_realFlow); //标准误差=规程要求误差*总量安全系数
-	ui.tableWidget->item(row, COLUMN_STD_ERROR)->setText(QString::number(stdError, 'f', 4)); //标准误差
+	ui.tableWidget->item(row, COLUMN_STD_ERROR)->setText("±" + QString::number(stdError, 'f', 4)); //标准误差
 	if (fabs(m_meterError[idx]) > stdError)
 	{
 		ui.tableWidget->item(row, COLUMN_DISP_ERROR)->setForeground(QBrush(Qt::red));
@@ -1580,7 +1580,8 @@ void TotalStandardDlg::slotSetMeterEnergy(const QString& comName, const QString&
 	}
 	else if (m_state == STATE_END_VALUE) //终值
 	{
-  		ui.tableWidget->item(meterPos - 1, COLUMN_METER_END)->setText(energy);	}
+  		ui.tableWidget->item(meterPos - 1, COLUMN_METER_END)->setText(energy);
+	}
 }
 
 //设置阀门按钮背景色
