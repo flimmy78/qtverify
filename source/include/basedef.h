@@ -225,7 +225,6 @@ public:
     int     id;                       //
 	char    name[ASCNAME_LEN];
     char    desc[DESC_LEN];			  //
-	char    numprefix[NUMPREFIX_LEN]; //该厂家的表号前缀
 };
 typedef Manufacture_STR* Manufacture_PTR;
 

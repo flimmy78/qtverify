@@ -603,9 +603,7 @@ void tvercompDlg::insertData()
 	memset(m_PlaVerifyRecPtr, 0, sizeof(T_Platinium_Verify_Record_STR)*m_rec_num);
 	readConfig();
 	readChkResult();
-	startdb();
 	insertPlatinumVerifyRec(m_PlaVerifyRecPtr, m_rec_num);
-	closedb();
 }
 
 void tvercompDlg::readConfig()

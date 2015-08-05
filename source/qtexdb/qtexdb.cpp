@@ -158,14 +158,13 @@ int getManufacture(int& num, Manufacture_PTR &ptr)
 		memset(ptr, 0, sizeof(Manufacture_STR)*num);
 	}
 
-	if(query.exec("select f_id,f_name,f_desc,f_numprefix from t_manufacture_dept order by f_id"))
+	if(query.exec("select f_id,f_name,f_desc from t_manufacture_dept order by f_id"))
 	{
 		while(query.next())
 		{
 			ptr[i].id = query.value(0).toInt();
 			strncpy_s(ptr[i].name, query.value(1).toString().toAscii(), ASCNAME_LEN);
 			strncpy_s(ptr[i].desc, query.value(2).toString().toLocal8Bit(), DESC_LEN); //ºº×Ö±àÂë
-			strncpy(ptr[i].numprefix, query.value(3).toString().toLocal8Bit(), NUMPREFIX_LEN);
 			i++;
 		}
 	}

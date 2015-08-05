@@ -643,13 +643,11 @@ float* tverparamDlg::getTmpPntBasicErr(int tmp_idx, QString sn)
 	sql.append(QString("F_PlaSerial = \'%1\' and ").arg(sn, 0, 10));//F_PlaSerial
 	sql.append(QString("F_TmpIndex = %1").arg(tmp_idx, 0, 10));//F_TmpIndex
 	
-	startdb();
 	QSqlQuery query;
 	query.exec(sql);
 	query.first();
 	basicErr[0] = query.value(0).toFloat();
 	basicErr[1] = query.value(1).toFloat();
-	closedb();
 	return basicErr;
 }
 
@@ -668,9 +666,7 @@ void tverparamDlg::insertData()
 	memset(m_PlaVerifyRecPtr, 0, sizeof(T_Platinium_Verify_Record_STR)*VERIFY_NUMBER);
 	readConfig();
 	readChkResult();
-	startdb();
 	insertPlatinumVerifyRec(m_PlaVerifyRecPtr, VERIFY_NUMBER);
-	closedb();
 }
 
 void tverparamDlg::readConfig()

@@ -454,7 +454,6 @@ void CmbVerifyDlg::on_btnStart_clicked()
 
 void CmbVerifyDlg::on_btnSave_clicked()
 {
-	startdb();
 	if (saveVerifyRecords())
 	{
 		QMessageBox::information(this, tr("Hint"), tr("save database successful !"));
@@ -463,7 +462,6 @@ void CmbVerifyDlg::on_btnSave_clicked()
 	{
 		QMessageBox::information(this, tr("Hint"), tr("save database failed !"));
 	}
-	closedb();
 }
 
 int CmbVerifyDlg::saveVerifyRecords()

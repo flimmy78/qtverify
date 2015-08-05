@@ -28,7 +28,6 @@ void tvercompparamDlg::on_btn_exit_clicked()
 
 void tvercompparamDlg::initCmbBox()
 {
-	startdb();
 	//表规格
 	getMeterStandard(m_meterStdNum, m_meterStdPtr);
 	for (int i=0; i<m_meterStdNum; i++)
@@ -82,7 +81,7 @@ void tvercompparamDlg::initCmbBox()
 	QSqlTableModel *relationModel3 = model2->relationModel(col_id3);   
 	ui.cBox_model->setModel(relationModel3);  
 	ui.cBox_model->setModelColumn(relationModel3->fieldIndex("F_Desc")); 
-	closedb();
+
 	cBoxData_inited = true;//下拉条已初始化完毕
 }
 void tvercompparamDlg::showEvent(QShowEvent * event)
