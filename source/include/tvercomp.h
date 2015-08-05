@@ -27,6 +27,7 @@ signals:
 public slots:
 	void closeEvent(QCloseEvent * event);
 	void showEvent(QShowEvent * event);
+	void setTblColWidth(QTableWidget*);
 	/******采集标准温度计数值*********/
 	void on_btn_read_1_clicked();
 	void on_btn_read_2_clicked();

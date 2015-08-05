@@ -28,6 +28,20 @@ void tvercompDlg::showEvent(QShowEvent * event)
 
 	m_min_delta_tmp = m_tvercomp_config->value("theoinfo/mintmphead").toFloat();
 	m_timeStamp = "";
+
+	//优化界面显示，设置列宽，以使数字能完全显示
+	setTblColWidth(ui.tbl_std_1);
+	setTblColWidth(ui.tbl_std_2);
+	setTblColWidth(ui.tbl_std_3);
+	setTblColWidth(ui.tbl_in_1);
+	setTblColWidth(ui.tbl_in_2);
+	setTblColWidth(ui.tbl_in_3);
+	setTblColWidth(ui.tbl_stderror_1);
+	setTblColWidth(ui.tbl_stderror_2);
+	setTblColWidth(ui.tbl_stderror_3);
+	setTblColWidth(ui.tbl_chkerror_1);
+	setTblColWidth(ui.tbl_chkerror_2);
+	setTblColWidth(ui.tbl_chkerror_3);
 }
 
 void tvercompDlg::closeEvent(QCloseEvent * event)
@@ -63,6 +77,13 @@ void tvercompDlg::closeEvent(QCloseEvent * event)
 	}
 
 	clearComObjs();
+}
+
+//优化界面显示，设置列宽，以使数字能完全显示
+void tvercompDlg::setTblColWidth(QTableWidget* tbl)
+{
+	int colWidth = (tbl->size().width() - tbl->verticalHeader()->size().width() - 5)/tbl->columnCount();
+	tbl->horizontalHeader()->setDefaultSectionSize(colWidth);
 }
 
 void tvercompDlg::on_btn_param_clicked()

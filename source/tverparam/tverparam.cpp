@@ -46,6 +46,16 @@ void tverparamDlg::showEvent(QShowEvent * event)
 void tverparamDlg::initTbls()
 {
 	initTbl(ui.tbl_result);
+
+	//优化界面显示，设置列宽，以使数字能完全显示
+	setTblColWidth(ui.tbl_std_1);
+	setTblColWidth(ui.tbl_std_2);
+	setTblColWidth(ui.tbl_std_3);
+	setTblColWidth(ui.tbl_in_1);
+	setTblColWidth(ui.tbl_in_2);
+	setTblColWidth(ui.tbl_in_3);
+	setTblColWidth(ui.tbl_result);
+	setTblColWidth(ui.tbl_maxerr);
 }
 
 void tverparamDlg::initTbl(QTableWidget* tbl)
@@ -61,6 +71,13 @@ void tverparamDlg::initTbl(QTableWidget* tbl)
 			tbl_wdg_tem->setFlags(Qt::ItemIsSelectable|Qt::ItemIsDragEnabled|Qt::ItemIsUserCheckable);
 		}
 	}
+}
+
+//优化界面显示，设置列宽，以使数字能完全显示
+void tverparamDlg::setTblColWidth(QTableWidget* tbl)
+{
+	int colWidth = (tbl->size().width() - tbl->verticalHeader()->size().width() - 5)/tbl->columnCount();
+	tbl->horizontalHeader()->setDefaultSectionSize(colWidth);
 }
 
 void tverparamDlg::closeEvent(QCloseEvent * event)
@@ -438,18 +455,18 @@ void tverparamDlg::on_tbl_in_1_cellChanged(int i, int j)
 		std_t = ui.tbl_std_1->item(1, 0)->text().trimmed().toFloat();
 		in_r = ui.tbl_in_1->item(i, j)->text().trimmed().toFloat();
 		in_t = getPlaTr(pla_r0, pla_a, pla_b, in_r);
-		ui.tbl_result->item(i, 4*0 + j-1)->setText(QString::number(in_t));//写入计算出的被检铂电阻的温度值
+		ui.tbl_result->item(i, 4*0 + j-1)->setText(QString::number(in_t, 'f', 3));//写入计算出的被检铂电阻的温度值
 		err = qAbs(in_t - std_t);
-		ui.tbl_result->item(i, 4*0 + j)->setText(QString::number(err));//写入计算出的与标准温度计的温度差
+		ui.tbl_result->item(i, 4*0 + j)->setText(QString::number(err, 'f', 3));//写入计算出的与标准温度计的温度差
 	}
 	else if (j==2)//温度计进口阻值
 	{
 		std_t = ui.tbl_std_1->item(1, 0)->text().trimmed().toFloat();
 		in_r = ui.tbl_in_1->item(i, j)->text().trimmed().toFloat();
 		in_t = getPlaTr(pla_r0, pla_a, pla_b, in_r);
-		ui.tbl_result->item(i, 4*0 + j)->setText(QString::number(in_t));//写入计算出的被检铂电阻的温度值
+		ui.tbl_result->item(i, 4*0 + j)->setText(QString::number(in_t, 'f', 3));//写入计算出的被检铂电阻的温度值
 		err = qAbs(in_t - std_t);
-		ui.tbl_result->item(i, 4*0 + j+1)->setText(QString::number(err));//写入计算出的与标准温度计的温度差
+		ui.tbl_result->item(i, 4*0 + j+1)->setText(QString::number(err, 'f', 3));//写入计算出的与标准温度计的温度差
 	}
 }
 
@@ -481,18 +498,18 @@ void tverparamDlg::on_tbl_in_2_cellChanged(int i, int j)
 		std_t = ui.tbl_std_2->item(1, 0)->text().trimmed().toFloat();
 		in_r = ui.tbl_in_2->item(i, j)->text().trimmed().toFloat();
 		in_t = getPlaTr(pla_r0, pla_a, pla_b, in_r);
-		ui.tbl_result->item(i, 4*1 + j-1)->setText(QString::number(in_t));//写入计算出的被检铂电阻的温度值
+		ui.tbl_result->item(i, 4*1 + j-1)->setText(QString::number(in_t, 'f', 3));//写入计算出的被检铂电阻的温度值
 		err = qAbs(in_t - std_t);
-		ui.tbl_result->item(i, 4*1 + j)->setText(QString::number(err));//写入计算出的与标准温度计的温度差
+		ui.tbl_result->item(i, 4*1 + j)->setText(QString::number(err, 'f', 3));//写入计算出的与标准温度计的温度差
 	}
 	else if (j==2)//温度计进口阻值
 	{
 		std_t = ui.tbl_std_2->item(1, 0)->text().trimmed().toFloat();
 		in_r = ui.tbl_in_2->item(i, j)->text().trimmed().toFloat();
 		in_t = getPlaTr(pla_r0, pla_a, pla_b, in_r);
-		ui.tbl_result->item(i, 4*1 + j)->setText(QString::number(in_t));//写入计算出的被检铂电阻的温度值
+		ui.tbl_result->item(i, 4*1 + j)->setText(QString::number(in_t, 'f', 3));//写入计算出的被检铂电阻的温度值
 		err = qAbs(in_t - std_t);
-		ui.tbl_result->item(i, 4*1 + j+1)->setText(QString::number(err));//写入计算出的与标准温度计的温度差
+		ui.tbl_result->item(i, 4*1 + j+1)->setText(QString::number(err, 'f', 3));//写入计算出的与标准温度计的温度差
 	}
 }
 
@@ -524,18 +541,18 @@ void tverparamDlg::on_tbl_in_3_cellChanged(int i, int j)
 		std_t = ui.tbl_std_3->item(1, 0)->text().trimmed().toFloat();
 		in_r = ui.tbl_in_3->item(i, j)->text().trimmed().toFloat();
 		in_t = getPlaTr(pla_r0, pla_a, pla_b, in_r);
-		ui.tbl_result->item(i, 4*2 + j-1)->setText(QString::number(in_t));//写入计算出的被检铂电阻的温度值
+		ui.tbl_result->item(i, 4*2 + j-1)->setText(QString::number(in_t, 'f', 3));//写入计算出的被检铂电阻的温度值
 		err = qAbs(in_t - std_t);
-		ui.tbl_result->item(i, 4*2 + j)->setText(QString::number(err));//写入计算出的与标准温度计的温度差
+		ui.tbl_result->item(i, 4*2 + j)->setText(QString::number(err, 'f', 3));//写入计算出的与标准温度计的温度差
 	}
 	else if (j==2)//温度计进口阻值
 	{
 		std_t = ui.tbl_std_3->item(1, 0)->text().trimmed().toFloat();
 		in_r = ui.tbl_in_3->item(i, j)->text().trimmed().toFloat();
 		in_t = getPlaTr(pla_r0, pla_a, pla_b, in_r);
-		ui.tbl_result->item(i, 4*2 + j)->setText(QString::number(in_t));//写入计算出的被检铂电阻的温度值
+		ui.tbl_result->item(i, 4*2 + j)->setText(QString::number(in_t, 'f', 3));//写入计算出的被检铂电阻的温度值
 		err = qAbs(in_t - std_t);
-		ui.tbl_result->item(i, 4*2 + j+1)->setText(QString::number(err));//写入计算出的与标准温度计的温度差
+		ui.tbl_result->item(i, 4*2 + j+1)->setText(QString::number(err, 'f', 3));//写入计算出的与标准温度计的温度差
 	}
 }
 
@@ -569,6 +586,8 @@ void tverparamDlg::on_tbl_result_cellChanged(int i, int j)
 		ui.tbl_result->item(i, j)->setTextColor((pla_err>err) ? QColor(250,0,0) : QColor(0,0,0));
 		ui.tbl_result->item(i, j-1)->setTextColor((pla_err>err) ? QColor(250,0,0) : QColor(0,0,0));	
 	}
+
+// 	ui.tbl_result->resizeColumnToContents(j);
 }
 
 void tverparamDlg::on_btn_param_clicked()
