@@ -331,10 +331,10 @@ void TotalStandardDlg::resizeEvent(QResizeEvent * event)
 
 	int th = ui.tableWidget->size().height();
 	int tw = ui.tableWidget->size().width();
-	int hh = 20;// ui.tableWidget->horizontalHeader()->size().height();
-	int vw = 50;//ui.tableWidget->verticalHeader()->size().width();
+	int hh = ui.tableWidget->horizontalHeader()->size().height();
+	int vw = ui.tableWidget->verticalHeader()->size().width();
 	int vSize = (int)((th-hh-10)/(m_maxMeterNum<=0 ? 12 : m_maxMeterNum));
-	int hSize = (int)((tw-vw)/COLUMN_TOTAL_COUNT);
+	int hSize = (int)((tw-vw-10)/COLUMN_TOTAL_COUNT);
 	ui.tableWidget->verticalHeader()->setDefaultSectionSize(vSize);
 	ui.tableWidget->horizontalHeader()->setDefaultSectionSize(hSize);
 }
