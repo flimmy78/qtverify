@@ -77,11 +77,13 @@ public slots:
 	void on_lineEdit_min_theta_textChanged(const QString & text);
 	void on_lineEdit_std_in_t_textChanged(const QString & text);
 	void on_lineEdit_std_out_t_textChanged(const QString & text);
+	void on_countdown_timerout();
+	void on_btnGroup_unit_clicked(int);
+	void on_btnGroup_pos_clicked(int);
+
 private slots:
 	void freshCmbParam(void);
 	void startVerifySlot(void);
-	void on_btnGroup_unit_clicked(int);
-	void on_btnGroup_pos_clicked(int);
 
 	void sendCommands();
 	void clearTempComObjs();
@@ -93,9 +95,11 @@ private slots:
 	void slotSetMeterFlow(const QString& comName, const float& flow);//获取体积流量
 	void slotSetMeterHeat(const QString& portName, const QString& heat);//获取热值
 	void slotSetMeterTemp(const QString& portName, const QString& tempIn, const QString& tempOut);//获取进出口温度
+
 signals:
 	void verifyCanStart(void);//可以开始检测
 	void tempDiffAchived(void);//恒温槽达到设定的温差
+
 private:
 	Ui::CmbVerifyClass ui;
 	CmbParamDlg* m_CmbParamDlg;//参数设置窗体
@@ -150,6 +154,9 @@ private:
 
 	//void addNewTblRow(QSignalMapper *);//添加一个表位
 	int saveVerifyRecords(); //统计有效的检定结果数量
+
+	QTimer *m_timer;
+	int m_countdown;
 };
 
 #endif //CMBVERIFY_H

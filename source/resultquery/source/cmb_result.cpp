@@ -220,7 +220,6 @@ void CmbResultDlg::queryData()
 	ui.tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);  //使其不可编辑
 
 	ui.tableView->hideColumn(0);
-	ui.tableView->hideColumn(1);
 	ui.tableView->hideColumn(27);
 	ui.tableView->hideColumn(28);
 	ui.tableView->hideColumn(29);
