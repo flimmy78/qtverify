@@ -89,12 +89,12 @@
     <addaction name="actionTemperResult"/>
     <addaction name="actionCalculatorResult"/>
     <addaction name="actionCombineResult"/>
-    <addaction name="actionQueryExcel"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
      <string>About(&amp;A)</string>
     </property>
+    <addaction name="actionUserManage"/>
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuStyle">
@@ -165,6 +165,7 @@
    <addaction name="actionClassic"/>
    <addaction name="actionFashion"/>
    <addaction name="separator"/>
+   <addaction name="actionUserManage"/>
    <addaction name="actionExit"/>
    <addaction name="separator"/>
   </widget>
@@ -524,6 +525,18 @@
    </property>
    <property name="toolTip">
     <string>Contact Us</string>
+   </property>
+  </action>
+  <action name="actionUserManage">
+   <property name="icon">
+    <iconset resource="../qtverify.qrc">
+     <normaloff>:/qtverify/images/usermanage.png</normaloff>:/qtverify/images/usermanage.png</iconset>
+   </property>
+   <property name="text">
+    <string>UserManage</string>
+   </property>
+   <property name="toolTip">
+    <string>UserManage</string>
    </property>
   </action>
  </widget>
