@@ -25,32 +25,32 @@
 #include "algorithm.h"
 #include "cmbparam.h"
 
-#define COL_NUM			12//列数量
+enum cmb_table_columns
+{
+	COL_SN = 0,     //热表序列号
+	COL_V0,		    //初始体积流量
+	COL_E0,		    //初始热值
+	COL_V1,		    //最终体积流量
+	COL_E1,		    //最终热值
+	COL_DELTA_V,	//模拟体积
+	COL_DELTA_E,	//模拟热值
+	COL_STD_E,	    //标准热值
+	COL_ERR,        //示值误差
+	COL_READ_DATA,  //读表数据
+	COL_COUNT       //列数量
+};
+
 #define COL_BTN_NUM		3//读取表数据的按钮数量
-#define COL_SN			0//热表序列号
-#define COL_E0			1//初始热值
-#define COL_V0			2//初始体积流量
-#define COL_V1			3//最终体积流量
-#define COL_E1			4//最终热值
-#define COL_IN_T		5//进口温度值
-#define COL_OUT_T		6//出口温度值
-#define COL_DELTA_E		7//模拟热值
-#define COL_DELTA_V		8//模拟体积
-#define COL_STD_E		9//标准热值
-#define COL_ERR			10//示值误差
-#define COL_READ_DATA	11//读表数据
 
 #define HEAHER_E0_KWH	"E0(kWh)"
 #define HEAHER_E1_KWH	"E1(kWh)"
 #define HEAHER_DELTAE_KWH	"\316\224E(kWh)"
-#define HEAHER_STDE_KWH	"E0(kWh)"
 
 #define HEAHER_E0_MJ	"E0(MJ)"
 #define HEAHER_E1_MJ	"E1(MJ)"
 #define HEAHER_DELTAE_MJ	"\316\224E(MJ)"
-#define HEAHER_STDE_MJ	"E0(MJ)"
 
-#define MAX_METER_NUM	20//最大检表数
+#define MAX_METER_COUNT	 12 //最大检表数
 
 class CMBVERIFY_EXPORT CmbVerifyDlg : public QWidget
 {
@@ -62,8 +62,9 @@ public:
 
 
 public slots:
-	void closeEvent(QCloseEvent * event);
 	void showEvent(QShowEvent *);
+	void closeEvent(QCloseEvent * event);
+	void resizeEvent(QResizeEvent * event);
 
 	void on_btn_collection_clicked();//采集标准温度计数据
 	void on_btn_stop_clicked();//停止采集标准温度计
@@ -73,12 +74,12 @@ public slots:
 	void on_btnStart_clicked();
 	void on_btnSave_clicked();
 	void on_btnExit_clicked();
-	void on_lineEdit_min_theta_textEdited(const QString & text);
+	void on_lineEdit_min_theta_textChanged(const QString & text);
 	void on_lineEdit_std_in_t_textChanged(const QString & text);
 	void on_lineEdit_std_out_t_textChanged(const QString & text);
 private slots:
 	void freshCmbParam(void);
-	void startVefifySlot(void);
+	void startVerifySlot(void);
 	void on_btnGroup_unit_clicked(int);
 	void on_btnGroup_pos_clicked(int);
 
@@ -93,7 +94,7 @@ private slots:
 	void slotSetMeterHeat(const QString& portName, const QString& heat);//获取热值
 	void slotSetMeterTemp(const QString& portName, const QString& tempIn, const QString& tempOut);//获取进出口温度
 signals:
-	void vefifyCanStart(void);//可以开始检测
+	void verifyCanStart(void);//可以开始检测
 	void tempDiffAchived(void);//恒温槽达到设定的温差
 private:
 	Ui::CmbVerifyClass ui;
@@ -142,8 +143,8 @@ private:
 	MeterComObject *m_meterObj;
 	ComThread *m_meterThread;	//热量表通讯线程
 	void initMeterCom();       //热量表串口
-	bool m_vol0_is_read[MAX_METER_NUM];//流量初值已被读取
-	bool m_eng0_is_read[MAX_METER_NUM];//热量初值已被读取
+	bool m_vol0_is_read[MAX_METER_COUNT];//流量初值已被读取
+	bool m_eng0_is_read[MAX_METER_COUNT];//热量初值已被读取
 
 	/*--------------------------------*/
 

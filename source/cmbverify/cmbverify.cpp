@@ -38,7 +38,7 @@ void CmbVerifyDlg::showEvent(QShowEvent *)
 	m_CmbParamDlg = NULL;
 	m_sendTimer = NULL;
 	m_tempObj = NULL;
-	
+
 	m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
 	m_param_config = new QSettings(getFullIniFileName("cmbparam.ini"), QSettings::IniFormat);
 	m_algo = new CAlgorithm;
@@ -50,10 +50,10 @@ void CmbVerifyDlg::showEvent(QShowEvent *)
 	m_delta_temp_achieved = false;
 
 	initUi();
-	connect(this, SIGNAL(vefifyCanStart(void)), this, SLOT(startVefifySlot(void)));
+	connect(this, SIGNAL(verifyCanStart(void)), this, SLOT(startVerifySlot(void)));
 
 	m_meterObj = NULL;
-	for (int i=0;i<MAX_METER_NUM;i++)
+	for (int i=0;i<MAX_METER_COUNT;i++)
 	{
 		m_vol0_is_read[i] = false;
 		m_eng0_is_read[i] = false;
@@ -92,7 +92,7 @@ void CmbVerifyDlg::closeEvent( QCloseEvent * event)
 		delete []m_meterObj;
 		m_meterObj = NULL;
 
-		for (int i=0; i<MAX_METER_NUM; i++)
+		for (int i=0; i<MAX_METER_COUNT; i++)
 		{
 			m_meterThread[i].exit();
 		}
@@ -100,9 +100,22 @@ void CmbVerifyDlg::closeEvent( QCloseEvent * event)
 	clearTempComObjs();
 }
 
+void CmbVerifyDlg::resizeEvent(QResizeEvent * event)
+{
+	qDebug()<<"resizeEvent...";
+
+	int th = ui.tableWidget->size().height();
+	int tw = ui.tableWidget->size().width();
+	int hh = ui.tableWidget->horizontalHeader()->size().height();
+	int vw = ui.tableWidget->verticalHeader()->size().width();
+	int vSize = (int)((th-hh-10)/MAX_METER_COUNT);
+	int hSize = (int)((tw-vw-20)/COL_COUNT);
+	ui.tableWidget->verticalHeader()->setDefaultSectionSize(vSize);
+	ui.tableWidget->horizontalHeader()->setDefaultSectionSize(hSize);
+}
+
 void CmbVerifyDlg::initUi()
 {
-	
 	m_btnGroup_unit = new QButtonGroup(ui.gbox_unit); //计量单位
 	m_btnGroup_unit->addButton(ui.rbtn_unit_kwh, UNIT_KWH);
 	m_btnGroup_unit->addButton(ui.rbtn_unit_mj, UNIT_MJ);
@@ -122,40 +135,33 @@ void CmbVerifyDlg::initUi()
 
 void CmbVerifyDlg::initTbl()
 {
-	ui.tableWidget->setRowCount(MAX_METER_NUM);
+	ui.tableWidget->setRowCount(MAX_METER_COUNT);
 	QSignalMapper *m_signalMapper = new QSignalMapper();
 	disconnect(ui.tableWidget, SIGNAL(cellChanged(int, int)), this, SLOT(on_tableWidget_cellChanged(int, int)));
-	for(int row=0;row<MAX_METER_NUM;row++)
+	for(int row=0; row<ui.tableWidget->rowCount(); row++)
 	{
-		for (int col=0; col < COL_NUM; col++)
+		for (int col=0; col < ui.tableWidget->columnCount(); col++)
 		{
-
-			if( (col==COL_IN_T) || (col==COL_OUT_T) || (col==COL_DELTA_E) || (col==COL_DELTA_V) || (col==COL_STD_E) || (col==COL_ERR) )
+			ui.tableWidget->setItem(row, col, new QTableWidgetItem(QString("")));
+			if( (col==COL_DELTA_E) || (col==COL_DELTA_V) || (col==COL_STD_E) || (col==COL_ERR) )
 			{
-				QTableWidgetItem* item = new QTableWidgetItem();
-				item->setFlags(Qt::NoItemFlags);
-				ui.tableWidget->setItem(row, col, item);
+				ui.tableWidget->item(row, col)->setFlags(Qt::NoItemFlags);
 			}
-			else if( (col==COL_SN) || (col==COL_E0) || (col==COL_V0) || (col==COL_V1) || (col==COL_E1) )
-			{
-				QTableWidgetItem* item = new QTableWidgetItem();
-				item->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEditable|Qt::ItemIsDragEnabled|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled);
-				ui.tableWidget->setItem(row, col, item);
-			}
-			else if (col==COL_READ_DATA)
-			{
-				QPushButton *btn_read_data = new QPushButton(tr("Read Data"));
-				ui.tableWidget->setCellWidget(row, COL_READ_DATA, btn_read_data);
-				m_signalMapper->setMapping(btn_read_data, row);
-				connect(btn_read_data, SIGNAL(clicked()), m_signalMapper, SLOT(map()));
-			}
+// 			else if( (col==COL_SN) || (col==COL_E0) || (col==COL_V0) || (col==COL_V1) || (col==COL_E1) )
+// 			{
+// 				ui.tableWidget->item(row, col)->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEditable|Qt::ItemIsDragEnabled|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled);
+// 			}
 		}
+		QPushButton *btn_read_data = new QPushButton(tr("Read Data"));
+		ui.tableWidget->setCellWidget(row, COL_READ_DATA, btn_read_data);
+		m_signalMapper->setMapping(btn_read_data, row);
+		connect(btn_read_data, SIGNAL(clicked()), m_signalMapper, SLOT(map()));
 	}
-	connect(ui.tableWidget, SIGNAL(cellChanged(int, int)), this, SLOT(on_tableWidget_cellChanged(int, int)));
 
+	connect(ui.tableWidget, SIGNAL(cellChanged(int, int)), this, SLOT(on_tableWidget_cellChanged(int, int)));
 	connect(m_signalMapper, SIGNAL(mapped(const int &)), this, SLOT(slotReadData(const int &)));
 
-	//ui.tableWidget->resizeColumnsToContents();
+// 	ui.tableWidget->resizeColumnsToContents();
 }
 
 void CmbVerifyDlg::slotReadData(const int &row)
@@ -171,7 +177,7 @@ void CmbVerifyDlg::slotSetMeterNumber(const QString& comName, const QString& met
 	{
 		return;
 	}
-	ui.tableWidget->setItem(meterPos-1, COL_SN, new QTableWidgetItem(meterNo.right(8))); //表号
+	ui.tableWidget->item(meterPos-1, COL_SN)->setText(meterNo.right(8)); //表号
 }
 
 void CmbVerifyDlg::slotSetMeterFlow(const QString& comName, const float& flow)
@@ -183,11 +189,11 @@ void CmbVerifyDlg::slotSetMeterFlow(const QString& comName, const float& flow)
 	}
 	if (!m_vol0_is_read[meterPos-1]) //初值
 	{
-		ui.tableWidget->setItem(meterPos - 1, COL_V0, new QTableWidgetItem(QString::number(flow)));
+		ui.tableWidget->item(meterPos - 1, COL_V0)->setText(QString::number(flow));
 	}
 	else //终值
 	{
-		ui.tableWidget->setItem(meterPos - 1, COL_V1, new QTableWidgetItem(QString::number(flow)));
+		ui.tableWidget->item(meterPos - 1, COL_V1)->setText(QString::number(flow));
 	}
 }
 
@@ -199,13 +205,13 @@ void CmbVerifyDlg::slotSetMeterHeat(const QString& portName, const QString& heat
 		return;
 	}
 
-	if (!m_eng0_is_read[meterPos-1]) //初值
+	if (!m_eng0_is_read[meterPos - 1]) //初值
 	{
-		ui.tableWidget->setItem(meterPos - 1, COL_E0, new QTableWidgetItem(heat));
+		ui.tableWidget->item(meterPos - 1, COL_E0)->setText(heat);
 	}
 	else //终值
 	{
-		ui.tableWidget->setItem(meterPos - 1, COL_E1, new QTableWidgetItem(heat));
+		ui.tableWidget->item(meterPos - 1, COL_E1)->setText(heat);
 	}
 }
 
@@ -216,9 +222,6 @@ void CmbVerifyDlg::slotSetMeterTemp(const QString& portName, const QString& temp
 	{
 		return;
 	}
-
-	ui.tableWidget->setItem(meterPos - 1, COL_IN_T, new QTableWidgetItem(tempIn));
-	ui.tableWidget->setItem(meterPos - 1, COL_OUT_T, new QTableWidgetItem(tempOut));
 }
 
 void CmbVerifyDlg::initMeterCom()
@@ -228,16 +231,16 @@ void CmbVerifyDlg::initMeterCom()
 		delete []m_meterObj;
 		m_meterObj = NULL;
 
-		for (int i=0; i < MAX_METER_NUM; i++)
+		for (int i=0; i < MAX_METER_COUNT; i++)
 		{
 			m_meterThread[i].exit();
 		}
 	}
 
-	m_meterThread = new ComThread[MAX_METER_NUM];
-	m_meterObj = new MeterComObject[MAX_METER_NUM];
+	m_meterThread = new ComThread[MAX_METER_COUNT];
+	m_meterObj = new MeterComObject[MAX_METER_COUNT];
 	int meter_type = m_param_config->value("common/manu").toInt();
-	for (int i=0; i<MAX_METER_NUM; i++)
+	for (int i=0; i<MAX_METER_COUNT; i++)
 	{
 		m_meterObj[i].moveToThread(&m_meterThread[i]);
 		m_meterObj[i].setProtocolVersion(meter_type); //设置表协议类型
@@ -246,7 +249,6 @@ void CmbVerifyDlg::initMeterCom()
 
 		connect(&m_meterObj[i], SIGNAL(readMeterNoIsOK(const QString&, const QString&)), this, SLOT(slotSetMeterNumber(const QString&, const QString&)));
 		connect(&m_meterObj[i], SIGNAL(readMeterFlowIsOK(const QString&, const float&)), this, SLOT(slotSetMeterFlow(const QString&, const float&)));
-
 		connect(&m_meterObj[i], SIGNAL(readMeterHeatIsOK(const QString&, const QString&)), this, SLOT(slotSetMeterHeat(const QString&, const QString&)));
 		connect(&m_meterObj[i], SIGNAL(readMeterTemperIsOK(const QString&, const QString&, const QString&)), this, SLOT(slotSetMeterTemp(const QString&, const QString&, const QString&)));
 	}
@@ -263,36 +265,26 @@ void CmbVerifyDlg::on_tableWidget_cellChanged(int row, int col)
 	//	connect(ui.tableWidget, SIGNAL(cellChanged(int, int)), this, SLOT(on_tableWidget_cellChanged(int, int)));
 	//}
 
-	ui.tableWidget->setCurrentCell(row, col+1);
-	QString sn;
+// 	QString sn;
 	float v0, v1, e0, e1, stdE, deltaE, err, vol, energy;
-	float in_t, out_t;
+	float in_t, out_t, disp_err;
 	bool deltaE_OK = false;
 	bool stdE_OK = false;
+	bool is_valid = false;
 	switch(col)
 	{
-		case COL_SN:
-
-			//ui.tableWidget->setCurrentCell(row+1, COL_SN);
-			break;
 		case COL_E0:
 			m_eng0_is_read[row] = true;
-			//ui.tableWidget->setCurrentCell(row, COL_V0);
 			break;
 		case COL_V0:
 			m_vol0_is_read[row] = true;
-			sn = ui.tableWidget->item(row+1, COL_SN)->text();
-			//if (row < ui.tableWidget->rowCount() && !sn.isEmpty() && !sn.isNull())
-			//{
-			//	//ui.tableWidget->setCurrentCell(row+1, COL_V1);
-			//}
+// 			sn = ui.tableWidget->item(row+1, COL_SN)->text();
 			break;
 		case COL_V1:
 			//calcDeltaV
 			v0 = ui.tableWidget->item(row, COL_V0)->text().trimmed().toFloat();
 			v1 = ui.tableWidget->item(row, COL_V1)->text().trimmed().toFloat();
 			ui.tableWidget->item(row, COL_DELTA_V)->setText(QString::number(v1-v0));
-			//ui.tableWidget->setCurrentCell(row, COL_E1);
 			break;
 		case COL_E1:
 			//calcDeltaE
@@ -329,11 +321,14 @@ void CmbVerifyDlg::on_tableWidget_cellChanged(int row, int col)
 			ui.tableWidget->item(row, COL_ERR)->setText(QString::number(err*100));
 			break;
 		case COL_ERR:
-			float disp_err = qAbs(ui.tableWidget->item(row, COL_ERR)->text().toFloat());
-			bool is_valid = disp_err <= m_stdErrLmtByGrade;//检测合格
+			disp_err = qAbs(ui.tableWidget->item(row, COL_ERR)->text().toFloat());
+			is_valid = disp_err <= m_stdErrLmtByGrade;//检测合格
 			ui.tableWidget->item(row, COL_ERR)->setTextColor(is_valid ? QColor(0,0,0) : QColor(250,0,0));//合格显示黑色，不合格显示红色
 			break;
+		default:
+			break;
 	}
+	ui.tableWidget->setCurrentCell(row+1, col);
 }
 //
 //void CmbVerifyDlg::addNewTblRow(QSignalMapper *m_signalMapper)
@@ -397,14 +392,14 @@ void CmbVerifyDlg::on_btnGroup_unit_clicked(int id)
 		ui.tableWidget->horizontalHeaderItem(COL_E0)->setText(tr(HEAHER_E0_KWH));
 		ui.tableWidget->horizontalHeaderItem(COL_E1)->setText(tr(HEAHER_E1_KWH));
 		ui.tableWidget->horizontalHeaderItem(COL_DELTA_E)->setText(QApplication::translate("CmbVerifyClass", HEAHER_DELTAE_KWH, 0, QApplication::UnicodeUTF8));
-		ui.tableWidget->horizontalHeaderItem(COL_STD_E)->setText(tr(HEAHER_STDE_KWH));
+		ui.tableWidget->horizontalHeaderItem(COL_STD_E)->setText(tr("StdE(kWh)"));
 	}
 	else if (m_current_unit == UNIT_MJ)
 	{
 		ui.tableWidget->horizontalHeaderItem(COL_E0)->setText(tr(HEAHER_E0_MJ));
 		ui.tableWidget->horizontalHeaderItem(COL_E1)->setText(tr(HEAHER_E1_MJ));
 		ui.tableWidget->horizontalHeaderItem(COL_DELTA_E)->setText(QApplication::translate("CmbVerifyClass", HEAHER_DELTAE_MJ, 0, QApplication::UnicodeUTF8));
-		ui.tableWidget->horizontalHeaderItem(COL_STD_E)->setText(tr(HEAHER_STDE_MJ));
+		ui.tableWidget->horizontalHeaderItem(COL_STD_E)->setText(tr("StdE(MJ)"));
 	}
 	
 	chkIfCanStartVerify();
@@ -439,10 +434,14 @@ void CmbVerifyDlg::freshCmbParam(void)
 
 void CmbVerifyDlg::on_btnStart_clicked()
 {
-	ui.tableWidget->setEnabled(true);
-	ui.btn_collection->setEnabled(true);
-	ui.btn_stop->setEnabled(true);
 	ui.btnSave->setEnabled(true);
+
+	//初值回零
+	for (int i=0; i<ui.tableWidget->rowCount(); i++)
+	{
+		ui.tableWidget->item(i, COL_E0)->setText("0");
+		ui.tableWidget->item(i, COL_V0)->setText("0");
+	}
 
 	int grade = m_param_config->value("common/grade").toInt();
 	float min_temp_diff = ui.lineEdit_min_theta->text().toFloat();
@@ -450,6 +449,18 @@ void CmbVerifyDlg::on_btnStart_clicked()
 	float flow_rate = IMITATION_FLOW_RATE;
 	float dn_flow_rate = m_param_config->value("common/dnflow").toFloat();
 	m_stdErrLmtByGrade = qAbs(getMeterGradeErrLmt(grade, min_temp_diff, set_tem_diff, dn_flow_rate, flow_rate));
+
+	int quantity = m_param_config->value("diff/quantity").toFloat();
+	int countdown = 3.6*quantity/flow_rate;
+	while (countdown)
+	{
+		ui.label_hint->setText(tr("analog flow %1 m3/h, please wait for about %2 seconds").arg(flow_rate).arg(countdown));
+		countdown--;
+		sleep(1000);
+	}
+
+	ui.label_hint->setText(tr("please input meter V1 and E1"));
+	ui.tableWidget->setCurrentCell(0, COL_V1);
 }
 
 void CmbVerifyDlg::on_btnSave_clicked()
@@ -510,7 +521,7 @@ int CmbVerifyDlg::saveVerifyRecords()
 			m_recPtr->F_MeterE1 = ui.tableWidget->item(i, COL_E1)->text().toFloat();
 			m_recPtr->F_DispError = ui.tableWidget->item(i, COL_ERR)->text().toFloat();
 			m_recPtr->F_StdError = m_stdErrLmtByGrade;
-			m_recPtr->F_Result = m_recPtr->F_StdError <= m_recPtr->F_DispError ? 1 : 0;
+			m_recPtr->F_Result = m_recPtr->F_DispError <= m_recPtr->F_StdError ? 1 : 0;
 
 			ret += insertCmbVerifyRec(m_recPtr, 1);
 		}
@@ -524,7 +535,7 @@ void CmbVerifyDlg::on_btnExit_clicked()
 	this->close();
 }
 
-void CmbVerifyDlg::on_lineEdit_min_theta_textEdited(const QString & text)
+void CmbVerifyDlg::on_lineEdit_min_theta_textChanged(const QString & text)
 {
 	m_min_tempdiff = text.toFloat();
 	m_min_tempdiff_set = true;
@@ -538,7 +549,7 @@ void CmbVerifyDlg::stdTempChanged()
 	float delta_t = in_t - out_t;
 	float set_temp_diff = m_param_config->value("diff/temp_deff").toFloat();
 	m_delta_temp_achieved = (qAbs(delta_t) >= qAbs(set_temp_diff));
-	chkIfCanStartVerify();
+// 	chkIfCanStartVerify();
 }
 
 void CmbVerifyDlg::on_lineEdit_std_in_t_textChanged(const QString & text)
@@ -555,14 +566,16 @@ void CmbVerifyDlg::chkIfCanStartVerify()
 {
 	if (m_min_tempdiff_set && m_pos_selected && m_unit_selected && m_delta_temp_achieved)
 	{
-		emit vefifyCanStart();
+		emit verifyCanStart();
 	}
 }
 
-void CmbVerifyDlg::startVefifySlot(void)
+void CmbVerifyDlg::startVerifySlot(void)
 {
 	ui.btnStart->setEnabled(true);
-	
+	ui.tableWidget->setEnabled(true);
+	ui.label_hint->setText(tr("please input meter number, then click \"Start\" button!"));
+	ui.tableWidget->setCurrentCell(0, COL_SN);
 }
 
 void CmbVerifyDlg::on_btn_collection_clicked()
