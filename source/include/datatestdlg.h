@@ -148,8 +148,14 @@ public slots:
 private:
 	Ui::DataTestDlgClass ui;
 
-private slots:
+	QTimer *m_setRegularTimer;
+	float m_maxRate;
+	int m_degree;
+	float m_currentRate;
+	void setRegulate(float currentRate, float targetRate);
 
+private slots:
+	void slotSetRegulate();
 };
 
 #endif // DATATESTDLG_H

@@ -109,7 +109,7 @@ void TotalStandardDlg::showEvent(QShowEvent * event)
 	m_chkAlg = new CAlgorithm();
 
 	//映射关系；初始化阀门状态	
-	initValveStatus();      
+	initValveStatus();
 
 	m_exaustTimer = new QTimer(this); //排气定时器
 	connect(m_exaustTimer, SIGNAL(timeout()), this, SLOT(slotExaustFinished()));

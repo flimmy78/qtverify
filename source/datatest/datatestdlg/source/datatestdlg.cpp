@@ -129,6 +129,12 @@ void DataTestDlg::closeEvent( QCloseEvent * event)
 		delete m_oldCoe;
 		m_oldCoe = NULL;
 	}
+
+	if (m_setRegularTimer)
+	{
+		delete m_setRegularTimer;
+		m_setRegularTimer = NULL;
+	}
 }
 
 void DataTestDlg::showEvent(QShowEvent *event)
@@ -158,6 +164,10 @@ void DataTestDlg::showEvent(QShowEvent *event)
 	initStdTemperatureCom(); //初始化标准温度采集串口
 
 	m_controlObj = NULL;
+	m_setRegularTimer = NULL;
+	m_maxRate = 7.5f;	
+	m_currentRate = 3.5f;
+	m_degree = (m_currentRate/m_maxRate)*100;
 	initControlCom();		//初始化控制串口
 
 	m_balanceObj = NULL;
@@ -267,8 +277,37 @@ void DataTestDlg::initControlCom()
 
 	connect(m_controlObj, SIGNAL(controlRelayIsOk(const UINT8 &, const bool &)), this, SLOT(slotSetValveBtnStatus(const UINT8 &, const bool &)));
 	connect(m_controlObj, SIGNAL(controlRegulateIsOk()), this, SLOT(slotSetRegulateOk()));
+
+	m_setRegularTimer = new QTimer;
+	connect(m_setRegularTimer, SIGNAL(timeout()), this, SLOT(slotSetRegulate()));
+	m_setRegularTimer->start(2000);
 	//天平数值从控制板获取
 // 	connect(m_controlObj, SIGNAL(controlGetBalanceValueIsOk(const float&)), this, SLOT(slotFreshBalanceValue(const float &)));
+}
+
+void DataTestDlg::slotSetRegulate()
+{
+	//m_currentRate = ui.lnEditFlowRate->text().toFloat();
+	this->setRegulate(m_currentRate, 2.5f);
+	m_currentRate = (m_degree/100.0)*m_maxRate;
+}
+
+void DataTestDlg::setRegulate(float currentRate, float targetRate)
+{
+	float deltaV = qAbs(targetRate - currentRate);
+	float precision = 0.03*targetRate;
+	if (deltaV > precision)
+	{
+		m_degree = (targetRate/currentRate)*m_degree;
+		m_controlObj->askControlRegulate(m_nowRegNo, m_degree);
+		qDebug() << "current degree: " << m_degree;
+	}
+	else
+		if (m_setRegularTimer->isActive())
+		{
+			m_setRegularTimer->stop();
+			qDebug() << "m_setRegularTimer stoped";
+		}
 }
 
 //热量表串口通讯
@@ -900,3 +939,4 @@ void DataTestDlg::setMeterOperBtnEnabled(bool flag)
 	ui.btnModifyFlowCoe->setEnabled(flag);
 	ui.btn2ModifyFlowCoe->setEnabled(flag);
 }
+
