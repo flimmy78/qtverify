@@ -35,6 +35,7 @@ enum cmb_table_columns
 	COL_DELTA_V,	//模拟体积
 	COL_DELTA_E,	//模拟热值
 	COL_STD_E,	    //标准热值
+	COL_STD_ERR,	//标准误差
 	COL_ERR,        //示值误差
 	COL_READ_DATA,  //读表数据
 	COL_COUNT       //列数量
@@ -50,7 +51,6 @@ enum cmb_table_columns
 #define HEAHER_E1_MJ	"E1(MJ)"
 #define HEAHER_DELTAE_MJ	"\316\224E(MJ)"
 
-#define MAX_METER_COUNT	 12 //最大检表数
 
 class CMBVERIFY_EXPORT CmbVerifyDlg : public QWidget
 {
@@ -147,8 +147,8 @@ private:
 	MeterComObject *m_meterObj;
 	ComThread *m_meterThread;	//热量表通讯线程
 	void initMeterCom();       //热量表串口
-	bool m_vol0_is_read[MAX_METER_COUNT];//流量初值已被读取
-	bool m_eng0_is_read[MAX_METER_COUNT];//热量初值已被读取
+	bool *m_vol0_is_read;//流量初值已被读取
+	bool *m_eng0_is_read;//热量初值已被读取
 
 	/*--------------------------------*/
 
@@ -157,6 +157,8 @@ private:
 
 	QTimer *m_timer;
 	int m_countdown;
+
+	int m_metercount;
 };
 
 #endif //CMBVERIFY_H

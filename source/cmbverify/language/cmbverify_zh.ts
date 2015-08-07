@@ -41,12 +41,12 @@
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;检定员&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../cmbparam.ui" line="290"/>
+        <location filename="../cmbparam.ui" line="275"/>
         <source>Quantity</source>
         <translation>检定量</translation>
     </message>
     <message>
-        <location filename="../cmbparam.ui" line="243"/>
+        <location filename="../cmbparam.ui" line="306"/>
         <source>Temp diff</source>
         <translation>温差</translation>
     </message>
@@ -106,12 +106,12 @@
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;检测员:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../cmbparam.ui" line="263"/>
+        <location filename="../cmbparam.ui" line="326"/>
         <source>K</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cmbparam.ui" line="310"/>
+        <location filename="../cmbparam.ui" line="295"/>
         <source>L</source>
         <translation></translation>
     </message>
@@ -154,32 +154,42 @@
         <translation>标准值(kWh)</translation>
     </message>
     <message>
-        <location filename="../cmbverify.ui" line="392"/>
+        <location filename="../cmbverify.ui" line="379"/>
+        <source>StdErr(%)</source>
+        <translation>误差要求(%)</translation>
+    </message>
+    <message>
+        <location filename="../cmbverify.ui" line="384"/>
+        <source>DispErr(%)</source>
+        <translation>示值误差(%)</translation>
+    </message>
+    <message>
+        <location filename="../cmbverify.ui" line="397"/>
         <source>HintInfo</source>
         <translation>提示信息</translation>
     </message>
     <message>
-        <location filename="../cmbverify.ui" line="407"/>
+        <location filename="../cmbverify.ui" line="412"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0000ff;&quot;&gt;Please set the Unit, Install position and minimum temperature difference corectly&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0000ff;&quot;&gt;请正确设置计量单位、安装位置及最小温差&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../cmbverify.ui" line="425"/>
+        <location filename="../cmbverify.ui" line="430"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../cmbverify.ui" line="450"/>
+        <location filename="../cmbverify.ui" line="455"/>
         <source>Para</source>
         <translation>参数</translation>
     </message>
     <message>
-        <location filename="../cmbverify.ui" line="537"/>
+        <location filename="../cmbverify.ui" line="542"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../cmbverify.ui" line="482"/>
+        <location filename="../cmbverify.ui" line="487"/>
         <source>Start</source>
         <translation>开始</translation>
     </message>
@@ -228,12 +238,11 @@
         <translation type="obsolete">标准值(kWH)</translation>
     </message>
     <message>
-        <location filename="../cmbverify.ui" line="379"/>
         <source>Err(%)</source>
-        <translation>误差(%)</translation>
+        <translation type="obsolete">示值误差(%)</translation>
     </message>
     <message>
-        <location filename="../cmbverify.ui" line="384"/>
+        <location filename="../cmbverify.ui" line="389"/>
         <source>Read Data</source>
         <translation>读取数据</translation>
     </message>
@@ -242,7 +251,7 @@
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0000ff;&quot;&gt;请正确设置计量单位, 安装位置及最小温差&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../cmbverify.ui" line="508"/>
+        <location filename="../cmbverify.ui" line="513"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
@@ -269,7 +278,7 @@
     <message>
         <location filename="../cmbverify.ui" line="81"/>
         <source>Unit</source>
-        <translation>单位</translation>
+        <translation>计量单位</translation>
     </message>
     <message>
         <location filename="../cmbverify.ui" line="87"/>
@@ -284,7 +293,7 @@
     <message utf8="true">
         <location filename="../cmbverify.ui" line="110"/>
         <source>Min Θ</source>
-        <translation></translation>
+        <translation>最小温差</translation>
     </message>
     <message utf8="true">
         <location filename="../cmbverify.ui" line="128"/>
@@ -337,17 +346,17 @@
 <context>
     <name>CmbVerifyDlg</name>
     <message>
-        <location filename="../cmbverify.cpp" line="169"/>
+        <location filename="../cmbverify.cpp" line="178"/>
         <source>Read Data</source>
         <translation>读取数据</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="419"/>
+        <location filename="../cmbverify.cpp" line="433"/>
         <source>StdE(kWh)</source>
         <translation>标准值(kWh)</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="426"/>
+        <location filename="../cmbverify.cpp" line="440"/>
         <source>StdE(MJ)</source>
         <translation>标准值(MJ)</translation>
     </message>
@@ -360,44 +369,49 @@
         <translation type="obsolete">请输入热量表的体积终值V1和能量终值E1</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="405"/>
+        <location filename="../cmbverify.cpp" line="419"/>
         <source>analog flow &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; m3/h, please wait for about &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; seconds</source>
         <translation>模拟流量 &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; m3/h, 请等待约 &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; 秒</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="402"/>
+        <location filename="../cmbverify.cpp" line="415"/>
         <source>please input meter V1 and E1, then click &quot;Save&quot; button!</source>
-        <translation>请输入热量表的体积终值V1和能量终值E1,然后点击&quot;保存&quot;按钮！</translation>
+        <translation>请输入V1和E1，然后点击&quot;保存&quot;按钮！</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="43"/>
         <source>Please set the Unit, Install position and minimum temperature difference corectly</source>
-        <translation>请正确设置计量单位、安装位置及最小温差</translation>
+        <translation type="obsolete">请正确设置计量单位、安装位置及最小温差</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="495"/>
-        <location filename="../cmbverify.cpp" line="499"/>
-        <location filename="../cmbverify.cpp" line="691"/>
+        <location filename="../cmbverify.cpp" line="44"/>
+        <source>Please set the Install position, Unit, and minimum temperature difference corectly</source>
+        <translation>请正确设置安装位置、计量单位及最小温差</translation>
+    </message>
+    <message>
+        <location filename="../cmbverify.cpp" line="507"/>
+        <location filename="../cmbverify.cpp" line="512"/>
+        <location filename="../cmbverify.cpp" line="704"/>
         <source>Hint</source>
         <translation>提示</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="495"/>
+        <location filename="../cmbverify.cpp" line="507"/>
+        <location filename="../cmbverify.cpp" line="508"/>
         <source>save database successful !</source>
         <translation>保存数据成功!</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="499"/>
+        <location filename="../cmbverify.cpp" line="512"/>
         <source>save database failed !</source>
         <translation>保存数据失败!</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="602"/>
+        <location filename="../cmbverify.cpp" line="615"/>
         <source>please input meter number, then click &quot;Start&quot; button!</source>
         <translation>请输入表号，然后点击&quot;开始&quot;按钮！</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="691"/>
+        <location filename="../cmbverify.cpp" line="704"/>
         <source>current temperature different is less than min ¦¤¦È!</source>
         <translation>当前恒温槽温差小于您设置的最小温差!</translation>
     </message>

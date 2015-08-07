@@ -461,7 +461,7 @@ void MainForm::on_actionCombine_triggered()
 		m_cmbVerifyDlg = NULL;
 		m_cmbVerifyDlg = new CmbVerifyDlg();
 	}
-	m_cmbVerifyDlg->show();
+	m_cmbVerifyDlg->showMaximized();
 }
 
 //总量检定（质量法）

@@ -376,7 +376,12 @@
      </column>
      <column>
       <property name="text">
-       <string>Err(%)</string>
+       <string>StdErr(%)</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>DispErr(%)</string>
       </property>
      </column>
      <column>

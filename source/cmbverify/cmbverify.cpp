@@ -27,6 +27,7 @@ CmbVerifyDlg::CmbVerifyDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
 	ui.setupUi(this);
+	m_metercount = 0;
 }
 
 CmbVerifyDlg::~CmbVerifyDlg()
@@ -40,10 +41,19 @@ void CmbVerifyDlg::showEvent(QShowEvent *)
 	m_timer = new QTimer();
 	m_countdown = 0;
 	m_tempObj = NULL;
-	ui.label_hint->setText(tr("Please set the Unit, Install position and minimum temperature difference corectly"));
+	ui.label_hint->setText(tr("Please set the Install position, Unit, and minimum temperature difference corectly"));
 
-	m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
 	m_param_config = new QSettings(getFullIniFileName("cmbparam.ini"), QSettings::IniFormat);
+	
+	m_metercount = m_param_config->value("diff/metercount").toUInt();
+	m_vol0_is_read = new bool[m_metercount];
+	m_eng0_is_read = new bool[m_metercount];
+	for (int i=0;i<m_metercount;i++)
+	{
+		m_vol0_is_read[i] = false;
+		m_eng0_is_read[i] = false;
+	}
+
 	m_algo = new CAlgorithm;
 	m_readComConfig = new ReadComConfig();
 
@@ -58,11 +68,6 @@ void CmbVerifyDlg::showEvent(QShowEvent *)
 	connect(m_timer, SIGNAL(timeout()), this, SLOT(on_countdown_timerout()));
 
 	m_meterObj = NULL;
-	for (int i=0;i<MAX_METER_COUNT;i++)
-	{
-		m_vol0_is_read[i] = false;
-		m_eng0_is_read[i] = false;
-	}
 	initMeterCom();
 }
 
@@ -98,7 +103,7 @@ void CmbVerifyDlg::closeEvent( QCloseEvent * event)
 		delete []m_meterObj;
 		m_meterObj = NULL;
 
-		for (int i=0; i<MAX_METER_COUNT; i++)
+		for (int i=0; i<m_metercount; i++)
 		{
 			m_meterThread[i].exit();
 		}
@@ -126,7 +131,7 @@ void CmbVerifyDlg::resizeEvent(QResizeEvent * event)
 	int tw = ui.tableWidget->size().width();
 	int hh = ui.tableWidget->horizontalHeader()->size().height();
 	int vw = ui.tableWidget->verticalHeader()->size().width();
-	int vSize = (int)((th-hh-10)/MAX_METER_COUNT);
+	int vSize = (int)((th-hh-10)/(m_metercount<=0 ? 12 : m_metercount));
 	int hSize = (int)((tw-vw-20)/COL_COUNT);
 	ui.tableWidget->verticalHeader()->setDefaultSectionSize(vSize);
 	ui.tableWidget->horizontalHeader()->setDefaultSectionSize(hSize);
@@ -153,7 +158,7 @@ void CmbVerifyDlg::initUi()
 
 void CmbVerifyDlg::initTbl()
 {
-	ui.tableWidget->setRowCount(MAX_METER_COUNT);
+	ui.tableWidget->setRowCount(m_metercount);
 	QSignalMapper *signalMapper = new QSignalMapper();
 	disconnect(ui.tableWidget, SIGNAL(cellChanged(int, int)), this, SLOT(on_tableWidget_cellChanged(int, int)));
 	for(int row=0; row<ui.tableWidget->rowCount(); row++)
@@ -161,11 +166,15 @@ void CmbVerifyDlg::initTbl()
 		for (int col=0; col < ui.tableWidget->columnCount(); col++)
 		{
 			ui.tableWidget->setItem(row, col, new QTableWidgetItem(QString("")));
-			if( (col==COL_DELTA_V) || (col==COL_DELTA_E) || (col==COL_STD_E) || (col==COL_ERR) )
+			if( (col==COL_DELTA_V) || (col==COL_DELTA_E) || (col==COL_STD_E) || (col==COL_ERR) || (col==COL_STD_ERR) )
 			{
 				ui.tableWidget->item(row, col)->setFlags(Qt::NoItemFlags);
 			}
 		}
+
+		ui.tableWidget->item(row, COL_E0)->setText("0");
+		ui.tableWidget->item(row, COL_V0)->setText("0");
+
 		QPushButton *btn_read_data = new QPushButton(tr("Read Data"));
 		ui.tableWidget->setCellWidget(row, COL_READ_DATA, btn_read_data);
 		signalMapper->setMapping(btn_read_data, row);
@@ -245,16 +254,16 @@ void CmbVerifyDlg::initMeterCom()
 		delete []m_meterObj;
 		m_meterObj = NULL;
 
-		for (int i=0; i < MAX_METER_COUNT; i++)
+		for (int i=0; i < m_metercount; i++)
 		{
 			m_meterThread[i].exit();
 		}
 	}
 
-	m_meterThread = new ComThread[MAX_METER_COUNT];
-	m_meterObj = new MeterComObject[MAX_METER_COUNT];
+	m_meterThread = new ComThread[m_metercount];
+	m_meterObj = new MeterComObject[m_metercount];
 	int meter_type = m_param_config->value("common/manu").toInt();
-	for (int i=0; i<MAX_METER_COUNT; i++)
+	for (int i=0; i<m_metercount; i++)
 	{
 		m_meterObj[i].moveToThread(&m_meterThread[i]);
 		m_meterObj[i].setProtocolVersion(meter_type); //设置表协议类型
@@ -309,6 +318,7 @@ void CmbVerifyDlg::on_tableWidget_cellChanged(int row, int col)
 			vol = ui.tableWidget->item(row, COL_DELTA_V)->text().trimmed().toFloat();
 			energy = getStdEnergy(vol);
 			ui.tableWidget->item(row, COL_STD_E)->setText(QString::number(energy));
+			ui.tableWidget->item(row, COL_STD_ERR)->setText("±" + QString::number(m_stdErrLmtByGrade));
 			break;
 		case COL_DELTA_E:
 			//calcErr
@@ -318,7 +328,8 @@ void CmbVerifyDlg::on_tableWidget_cellChanged(int row, int col)
 				return;
 			}
 			deltaE = ui.tableWidget->item(row, COL_DELTA_E)->text().trimmed().toFloat();
-			err = qAbs(deltaE - stdE)/stdE;
+// 			err = qAbs(deltaE - stdE)/stdE;
+			err = (deltaE - stdE)/stdE;
 			ui.tableWidget->item(row, COL_ERR)->setText(QString::number(err*100));
 			break;
 		case COL_STD_E:
@@ -399,8 +410,11 @@ void CmbVerifyDlg::on_countdown_timerout()
 	if (m_countdown <= 0)
 	{
 		m_timer->stop();
+		ui.btnStart->setEnabled(true);
+		ui.btnSave->setEnabled(true);
 		ui.label_hint->setText(tr("please input meter V1 and E1, then click \"Save\" button!"));
 		ui.tableWidget->setCurrentCell(0, COL_V1);
+		return;
 	}
 	ui.label_hint->setText(tr("analog flow <font color=DarkGreen size=6><b>%1</b></font> m3/h, please wait for about <font color=DarkGreen size=6><b>%2</b></font> seconds")\
 		.arg(IMITATION_FLOW_RATE).arg(m_countdown--));
@@ -458,13 +472,19 @@ void CmbVerifyDlg::freshCmbParam(void)
 
 void CmbVerifyDlg::on_btnStart_clicked()
 {
-	ui.btnSave->setEnabled(true);
+	ui.btnStart->setEnabled(false);
+	ui.btnSave->setEnabled(false);
+	m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
 
 	//if 初值回零
 	for (int i=0; i<ui.tableWidget->rowCount(); i++)
 	{
-		ui.tableWidget->item(i, COL_E0)->setText("0");
-		ui.tableWidget->item(i, COL_V0)->setText("0");
+		ui.tableWidget->item(i, COL_V1)->setText("");
+		ui.tableWidget->item(i, COL_E1)->setText("");
+		ui.tableWidget->item(i, COL_DELTA_V)->setText("");
+		ui.tableWidget->item(i, COL_DELTA_E)->setText("");
+		ui.tableWidget->item(i, COL_STD_E)->setText("");
+		ui.tableWidget->item(i, COL_ERR)->setText("");
 	}
 
 	int grade = m_param_config->value("common/grade").toInt();
@@ -485,6 +505,7 @@ void CmbVerifyDlg::on_btnSave_clicked()
 	if (saveVerifyRecords())
 	{
 		QMessageBox::information(this, tr("Hint"), tr("save database successful !"));
+		ui.label_hint->setText(tr("save database successful !"));
 	}
 	else
 	{
@@ -538,7 +559,7 @@ int CmbVerifyDlg::saveVerifyRecords()
 			m_recPtr->F_MeterE1 = ui.tableWidget->item(i, COL_E1)->text().toFloat();
 			m_recPtr->F_DispError = ui.tableWidget->item(i, COL_ERR)->text().toFloat();
 			m_recPtr->F_StdError = m_stdErrLmtByGrade;
-			m_recPtr->F_Result = m_recPtr->F_DispError <= m_recPtr->F_StdError ? 1 : 0;
+			m_recPtr->F_Result = qAbs(m_recPtr->F_DispError) <= qAbs(m_recPtr->F_StdError) ? 1 : 0;
 
 			ret += insertCmbVerifyRec(m_recPtr, 1);
 		}
