@@ -28,10 +28,11 @@
 #include "qtexdb.h"
 #include "qexcel.h"
 
-#define TEMP_QUERY_VIEW_NAME	QString("V_Temp_Query_Result")//临时查询结果视图
-#define DROP_TBL_STMT			QString("drop view if exists ").append(TEMP_QUERY_VIEW_NAME).append(";")
-#define CREATE_TEMP_TBL_STMT	QString("\nCREATE view %1 as ").arg(TEMP_QUERY_VIEW_NAME).append(m_query_Sql).append(";")
-#define QUERY_TEMP_TBL_STMT		QString("select * from %1").arg(TEMP_QUERY_VIEW_NAME)
+#define TEMP_QUERY_TBL_NAME		QString("T_Temp_Flow_Query_Result")//查询结果临时表
+#define DROP_TBL_STMT			QString("drop table if exists ").append(TEMP_QUERY_TBL_NAME).append(";")
+#define CREATE_TEMP_TBL_STMT	QString("CREATE table %1 as select * from %2 where ").arg(TEMP_QUERY_TBL_NAME).arg(m_table).append(m_condition).append(";")
+#define QUERY_CREATE_VIEW_STMT	QString("select F_STMT from T_Create_flow_Query_View_Stmt where F_id=1")
+#define DROP_TEMP_VIEW_STMT		QString("drop view if exists %1 ;").arg(m_view)
 
 using namespace libxl;
 
@@ -48,14 +49,15 @@ private:
 	QString		m_rptIniName;//报表的配置文件名
 	QSettings*	m_rpt_config;//报表配置
 	QString		m_template_file;//模板文件路径
-	QString		m_rpt_file;//报告文件路径
 	QString		m_temp_file;//临时文件路径
 	QString		m_query_Sql;//查询数据的sql语句
 	QString		m_query_condition;//sql语句的查询条件
 
 	QStringList m_headList;//表头字段列表
 	QStringList m_bodyList;//表体字段列表
-	QString		m_table_name;//报表对应的表名或视图名
+	QString		m_table;//报表对应的主表名
+	QString		m_view;//报表对应的视图名
+
 	QString		m_condition;//报表查询条件
 	QSqlQuery*	m_query;//查询
 	Book*		m_book;//报表

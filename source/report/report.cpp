@@ -4,39 +4,8 @@
 
 CReport::CReport(const QString& condition)
 {
-	    m_temp_file = QProcessEnvironment::systemEnvironment().value("TEMP");
-	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
-	QString current_time = QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss");
-#ifdef Q_OS_LINUX
-	m_template_file   = adehome + "\/doc\/rpt-template.xls";
-	m_temp_file		  = m_temp_file+"\/" + current_time + ".xls";
-	m_rpt_file        = adehome + "\/report\/report-" + current_time + ".xls";
-#elif defined (Q_OS_WIN)
-	m_template_file   = adehome + "\\doc\\rpt-template.xls";
-	m_temp_file		  = m_temp_file+"\\" + current_time + ".xls";
-	m_rpt_file        = adehome + "\\report\\report-" + current_time + ".xls";
-#endif
-
 	m_rpt_config= NULL;
-
 	m_query = new QSqlQuery();
-
-	QFile::copy(m_template_file,m_temp_file);
-	m_book = xlCreateBook();
-	m_book->load(m_temp_file.toStdString().data());
-	m_sheet = m_book->getSheet(0);
-	m_format = m_book->addFormat();
-	m_font = m_book->addFont();
-
-	//set cell format
-	m_format->setBorder(BORDERSTYLE_THIN);
-	m_font->setSize(10);
-	m_font->setColor(COLOR_BLACK);
-	m_font->setName("宋体");
-	m_format->setFont(m_font);
-	m_format->setAlignH(ALIGNH_CENTER);
-	m_format->setAlignV(ALIGNV_CENTER);
-
 	m_condition = condition;
 }
 
@@ -80,6 +49,35 @@ void CReport::setIniName(QString ini)
 		delete m_rpt_config;
 	}
 	m_rpt_config = new QSettings(getFullIniFileName(ini), QSettings::IniFormat);
+
+
+	m_temp_file = QProcessEnvironment::systemEnvironment().value("TEMP");
+	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
+	QString current_time = QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss");
+#ifdef Q_OS_LINUX
+	m_template_file   = adehome + "\/doc\/";
+	m_temp_file		  = m_temp_file+"\/" + current_time + ".xls";
+#elif defined (Q_OS_WIN)
+	m_template_file   = adehome + "\\doc\\";
+	m_temp_file		  = m_temp_file+"\\" + current_time + ".xls";
+#endif
+	m_template_file.append(m_rpt_config->value("template/name").toString());
+	QFile::copy(m_template_file,m_temp_file);
+
+	m_book = xlCreateBook();
+	m_book->load(m_temp_file.toStdString().data());
+	m_sheet = m_book->getSheet(0);
+	m_format = m_book->addFormat();
+	m_font = m_book->addFont();
+
+	//set cell format
+	m_format->setBorder(BORDERSTYLE_THIN);
+	m_font->setSize(10);
+	m_font->setColor(COLOR_BLACK);
+	m_font->setName("宋体");
+	m_format->setFont(m_font);
+	m_format->setAlignH(ALIGNH_CENTER);
+	m_format->setAlignV(ALIGNV_CENTER);
 }
 
 void CReport::writeRpt()
@@ -316,7 +314,7 @@ void CReport::mergeRowId(QString colName, QString father)
 	current_value = pre_value = m_query->value(idx).toString().toLocal8Bit();
 	seq = 1;
 	current_row_num = start_with;
-	do 
+	do
 	{
 		current_value = m_query->value(idx).toString().toLocal8Bit();
 		if (current_value != pre_value)
@@ -350,7 +348,8 @@ void CReport::readConfigTBody()
 
 void CReport::readTblName()
 {
-	 m_table_name = m_rpt_config->value("tableview/name").toString();
+	 m_view	 = m_rpt_config->value("tableview/view").toString();
+	 m_table = m_rpt_config->value("tableview/table").toString();
 }
 
 void CReport::getRptSQL()
@@ -363,19 +362,31 @@ void CReport::getRptSQL()
 		m_query_Sql.append(", ");
 	}
 	m_query_Sql.append(fields[fields.count()-1] + " ");
-	m_query_Sql.append("from " + m_table_name);
-	m_query_Sql.append(" ");
+	m_query_Sql.append("from " + m_view);
+	m_query_Sql.append(" where ");
 	m_query_Sql.append(m_condition);
 }
 
+/*
+* 为加快查询速度, 先从主表查找符合
+* 查询条件的数据, 并生成临时表;
+* 然后再以临时表为基础生成对应的视图
+*/
 void CReport::getDbData()
 {
-	m_query->exec(m_query_Sql);
+	m_query->exec(DROP_TBL_STMT);//删除临时表
+	m_query->exec(CREATE_TEMP_TBL_STMT);//按查询条件, 创建临时表
+	m_query->exec(DROP_TEMP_VIEW_STMT);//删除临时视图
+	m_query->exec(QUERY_CREATE_VIEW_STMT);//查询创建临时视图的语句
+	m_query->seek(0);
+	QString createViewSql = m_query->value(0).toString();
+	m_query->exec(createViewSql);//以临时表为主表, 创建临时视图
+	m_query->exec(m_query_Sql);//按条件查询数据
 }
 
+//删除版权信息
 void CReport::deleteLog()
 {
-	//删除版权信息
 	QExcel j(m_temp_file);
 	j.selectSheet("Sheet1");
 	QString copyright = j.getCellValue(1,1).toString();
@@ -385,8 +396,6 @@ void CReport::deleteLog()
 	}
 	j.save();
 	j.close();
-	//保存临时报表到指定文件夹
-	//QFile::copy(m_temp_file, m_rpt_file);
 }
 
 void CReport::saveTo(QString file_path)

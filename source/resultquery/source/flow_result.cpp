@@ -315,8 +315,8 @@ void FlowResultDlg::on_btnExport_clicked()
 	if (!file.isEmpty())
 	{
 		getConditon();
-		CReport rpt(" where " + m_conStr);
-		rpt.setIniName("rptconfig_common.ini");
+		CReport rpt(m_conStr);
+		rpt.setIniName("rptconfig_flow.ini");
 		rpt.writeRpt();
 		rpt.saveTo(file);
 		QMessageBox::information(this, tr("OK"), tr("export excel file successful!"));

@@ -462,10 +462,21 @@ create unique index uk_T_Verify_Device_Info on T_Verify_Device_Info (F_DeviceNo)
 insert into T_Verify_Device_Info values(0, '航天德鲁检定装置', 'ADE201580037', 'RJZ15-25Z/B', '航天德鲁', '0.1% k=2', '0.12-40.0(m3/h)', 1234567890, 'JJG225-2001', '2020-7-1', '2020-7-1', '2020-7-1', '', '', '', '');
 
 -----------------------------------------------------------------
---                    检定结果视图                           ----
+--                    流量检定结果视图                       ----
 -----------------------------------------------------------------
-drop view if exists "V_Flow_Verify_Record";
-CREATE view V_Flow_Verify_Record as
+drop table if exists T_Create_flow_Query_View_Stmt;
+create table T_Create_flow_Query_View_Stmt
+(
+  F_ID integer not null primary key autoincrement,
+  F_DESC varchar(50),  
+  F_STMT varchar(5000)
+);
+
+INSERT INTO T_Create_flow_Query_View_Stmt
+(F_DESC, F_STMT) values
+(
+ 'temp flow_verify query result view', 
+ 'CREATE view V_Temp_Flow_Query_Result as
 select
   rec.F_ID,
   rec.F_TimeStamp,
@@ -485,11 +496,11 @@ select
   rec.F_StandValue,
   rec.F_DispError,
   rec.F_StdError,
-  (case when F_Result=1 then '合格'
-        else '不合格'
+  (case when F_Result=1 then ''合格''
+        else ''不合格\''
    end) valid,
-  (case when F_Result=1 then 'valid'
-        else 'invalid'
+  (case when F_Result=1 then ''valid''
+        else ''invalid''
    end) valid_en,
   rec.F_Result,
   rec.F_MeterPosNo,
@@ -525,7 +536,7 @@ select
   d.F_CertValidDate,
   d.F_RuleValidDate
 	from
-		T_Flow_Verify_Record rec
+		T_Temp_Flow_Query_Result rec
 	left join
 		T_Verify_Device_Info d,
 		T_Meter_Model mod,
@@ -541,4 +552,5 @@ select
 		rec.[F_VerifyDept]=vdpt.[F_ID] and
 		rec.[F_Model]=mod.[F_ID]
 	order by rec.f_meterno, rec.f_timestamp
-;
+;'
+);
