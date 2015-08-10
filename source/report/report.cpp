@@ -50,7 +50,6 @@ void CReport::setIniName(QString ini)
 	}
 	m_rpt_config = new QSettings(getFullIniFileName(ini), QSettings::IniFormat);
 
-
 	m_temp_file = QProcessEnvironment::systemEnvironment().value("TEMP");
 	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
 	QString current_time = QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss");
@@ -225,7 +224,8 @@ void CReport::mergeBool(QString colName, QStringList fatherList)
 	QStringList currentVList, previousVList;
 	QList<int> fatherColNumList;
 	bool valid_value;
-	
+	QString validStr = ("合格");
+	QString invalidStr = ("不合格");
 	//设置字体, 用到的资源会在m_book->release()时被销毁
 	Font *valid_font = m_book->addFont();
 	Font *invalid_font = m_book->addFont();
@@ -265,7 +265,7 @@ void CReport::mergeBool(QString colName, QStringList fatherList)
 		previousVList.append(m_query->value(fatherColNumList.at(i)).toString().toLocal8Bit());
 	}
 	int idx = rec.indexOf(colName);
-	valid_value = (m_query->value(idx).toString().toLocal8Bit().toLower() == "valid");
+	valid_value = (m_query->value(idx).toString().toLocal8Bit().toLower() == "yes");
 	current_row_num = start_with;
 
 	bool fatherChanged = false;
@@ -279,7 +279,7 @@ void CReport::mergeBool(QString colName, QStringList fatherList)
 		if (fatherChanged)
 		{
 			end_row = current_row_num-1;
-			m_sheet->writeStr(start_row, colNum, QString(valid_value?"合格":"不合格").toStdString().data(), valid_value?valid_format:invalid_format);
+			m_sheet->writeStr(start_row, colNum, QString(valid_value?validStr:invalidStr).toStdString().data(), valid_value?valid_format:invalid_format);
 			m_sheet->setMerge(start_row, end_row, colNum, colNum);
 			start_row = current_row_num;
 			for (int i=0; i < valueLen;i++)
@@ -289,10 +289,10 @@ void CReport::mergeBool(QString colName, QStringList fatherList)
 			valid_value = true;
 			fatherChanged = false;
 		}
-		valid_value = (valid_value && (m_query->value(idx).toString().toLocal8Bit().toLower() == "valid"));
+		valid_value = (valid_value && (m_query->value(idx).toString().toLocal8Bit().toLower() == "yes"));
 		current_row_num++;
 	} while (m_query->next());
-	m_sheet->writeStr(start_row, colNum, QString(valid_value?"合格":"不合格").toStdString().data(), valid_value?valid_format:invalid_format);//设置最后一个bool值
+	m_sheet->writeStr(start_row, colNum, QString(valid_value?validStr:invalidStr).toStdString().data(), valid_value?valid_format:invalid_format);//设置最后一个bool值
 	m_sheet->setMerge(start_row, current_row_num-1, colNum, colNum);//合并最后一个值
 }
 
@@ -377,6 +377,8 @@ void CReport::getDbData()
 	m_query->exec(DROP_TBL_STMT);//删除临时表
 	m_query->exec(CREATE_TEMP_TBL_STMT);//按查询条件, 创建临时表
 	m_query->exec(DROP_TEMP_VIEW_STMT);//删除临时视图
+	m_queryStmtId = m_rpt_config->value("tableview/stmtId").toString();
+	QString str = QUERY_CREATE_VIEW_STMT;
 	m_query->exec(QUERY_CREATE_VIEW_STMT);//查询创建临时视图的语句
 	m_query->seek(0);
 	QString createViewSql = m_query->value(0).toString();

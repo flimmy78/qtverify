@@ -464,15 +464,15 @@ insert into T_Verify_Device_Info values(0, '航天德鲁检定装置', 'ADE20158
 -----------------------------------------------------------------
 --                    流量检定结果视图                       ----
 -----------------------------------------------------------------
-drop table if exists T_Create_flow_Query_View_Stmt;
-create table T_Create_flow_Query_View_Stmt
+drop table if exists T_Create_Query_View_Stmt;
+create table T_Create_Query_View_Stmt
 (
   F_ID integer not null primary key autoincrement,
   F_DESC varchar(50),  
   F_STMT varchar(5000)
 );
 
-INSERT INTO T_Create_flow_Query_View_Stmt
+INSERT INTO T_Create_Query_View_Stmt
 (F_DESC, F_STMT) values
 (
  'temp flow_verify query result view', 
@@ -496,12 +496,8 @@ select
   rec.F_StandValue,
   rec.F_DispError,
   rec.F_StdError,
-  (case when F_Result=1 then ''合格''
-        else ''不合格\''
-   end) valid,
-  (case when F_Result=1 then ''valid''
-        else ''invalid''
-   end) valid_en,
+  yesno.F_Name valid_en, 
+  yesno.F_Desc valid,
   rec.F_Result,
   rec.F_MeterPosNo,
   rec.F_Model,
@@ -536,21 +532,23 @@ select
   d.F_CertValidDate,
   d.F_RuleValidDate
 	from
-		T_Temp_Flow_Query_Result rec
+		T_Temp_Query_Result rec
 	left join
 		T_Verify_Device_Info d,
 		T_Meter_Model mod,
 		T_meter_standard std,
 		T_Meter_PickCode tp,
 		T_manufacture_dept manu,
-		T_verify_dept vdpt
+		T_verify_dept vdpt,
+		T_Yes_No_Tab  yesno
 	on
 		rec.F_DeviceInfoID=d.[F_ID] and
 		rec.[F_Standard]=std.[F_ID] and
 		rec.[F_PickCode]=tp.[F_ID] and
 		rec.[F_ManufactDept]=manu.[F_ID] and
 		rec.[F_VerifyDept]=vdpt.[F_ID] and
-		rec.[F_Model]=mod.[F_ID]
+		rec.[F_Model]=mod.[F_ID] and
+		rec.[F_Result]=yesno.F_ID
 	order by rec.f_meterno, rec.f_timestamp
 ;'
 );
