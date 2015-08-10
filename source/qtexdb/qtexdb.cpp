@@ -829,6 +829,7 @@ int insertCmbVerifyRec(Cmb_Verify_Record_PTR ptr, int num)
 		sql.append("F_DispError,");
 		sql.append("F_StdError,");
 		sql.append("F_Result,");
+		sql.append("F_PickCode,");
 		sql.append("F_Bak2,");
 		sql.append("F_Bak3,");
 		sql.append("F_Bak4");
@@ -861,6 +862,7 @@ int insertCmbVerifyRec(Cmb_Verify_Record_PTR ptr, int num)
 		sql.append(QString("%1, ").arg(ptr[i].F_DispError, 6, 'g', 6));
 		sql.append(QString("%1, ").arg(ptr[i].F_StdError,  6, 'g', 6));
 		sql.append(QString("%1, ").arg(ptr[i].F_Result, 0, 10));
+		sql.append(QString("%1, ").arg(ptr[i].F_PickCode, 0, 10));
 		sql.append(QString("\'%1\', ").arg(ptr[i].F_Bak2, 0, 10));//F_Bak2
 		sql.append(QString("\'%1\', ").arg(ptr[i].F_Bak3, 0, 10));//F_Bak3
 		sql.append(QString("\'%1\'").arg(ptr[i].F_Bak4, 0, 10));//F_Bak4

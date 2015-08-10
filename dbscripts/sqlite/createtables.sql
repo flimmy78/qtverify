@@ -226,10 +226,12 @@ F_TimeStamp timestamp not null,     --时间戳（'yyyy-MM-dd HH:mm:ss.zzz')
 F_MeterNo varchar(16) not null,     --表号(14位数字: 6 + 8)
 F_Standard integer,                 --表规格(DN15/DN20/DN25)，外键(T_Meter_Standard.F_ID)
 F_Model integer,                    --表型号，外键(T_Meter_Model.F_ID)
+F_PickCode integer,					--采集代码, 外键(T_Meter_PickCode)
 F_Grade smallint,                   --计量等级（1,2,3）
 F_ManufactDept integer,             --制造单位，外键(T_Manufacture_Dept.F_ID)
 F_VerifyDept integer,               --送检单位，外键(T_Verify_Dept.F_ID)
 F_VerifyPerson integer,             --检定员，外键(T_User_Def_Tab.F_ID)
+--F_CheckPerson  integer,             --核检员，外键(T_User_Def_Tab.F_ID)
 F_DeltaTemp float,                  --温差(K)
 F_VerifyVolume float,               --检定量(L)
 F_DeltaTempMin float,               --最小温差(K)
@@ -255,7 +257,8 @@ constraint F_Model_fk foreign key(F_Model) references T_Meter_Model(F_ID),
 constraint F_Standard_fk foreign key(F_Standard) references T_Meter_Standard(F_ID),
 constraint F_ManufactDept_fk foreign key(F_ManufactDept) references T_Manufacture_Dept(F_ID),
 constraint F_VerifyDept_fk foreign key(F_VerifyDept) references T_Verify_Dept(F_ID),
-constraint F_VerifyPerson_fk foreign key(F_VerifyPerson) references T_User_Def_Tab(F_ID)
+constraint F_VerifyPerson_fk foreign key(F_VerifyPerson) references T_User_Def_Tab(F_ID),
+constraint F_PickCode_fk foreign key(F_PickCode) references T_Meter_PickCode(F_ID)
 );
 create unique index uk_T_Combined_Verify_Record on T_Combined_Verify_Record (F_MeterNo, F_TimeStamp);
 
@@ -278,7 +281,18 @@ create table T_Meter_Default_Params
 	F_Seq_i smallint,                       -- 检测序列号
   constraint F_StandardID_fk foreign key(F_StandardID) references T_Meter_Standard(F_ID)
 );
-
+insert into T_Meter_Default_Params values(0, 0, 1.5, 1.6, 1.5, 40, 34, 0, 1);
+insert into T_Meter_Default_Params values(1, 0, 1.5, 0.5, 0.45, 20, 33, 1, 2);
+insert into T_Meter_Default_Params values(2, 0, 1.5, 0.16, 0.15, 10, 33, 2, 3);
+insert into T_Meter_Default_Params values(3, 0, 1.5, 0.035, 0.03, 5, 33, 3, 4);
+insert into T_Meter_Default_Params values(4, 1, 2.5, 2.6, 2.5, 50, 34, 0, 1);
+insert into T_Meter_Default_Params values(5, 1, 2.5, 0.8, 0.75, 20, 33, 1, 2);
+insert into T_Meter_Default_Params values(6, 1, 2.5, 0.3, 0.25, 10, 33, 2, 3);
+insert into T_Meter_Default_Params values(7, 1, 2.5, 0.06, 0.05, 5, 33, 3, 4);
+insert into T_Meter_Default_Params values(8, 2, 3.5, 3.6, 3.5, 50, 34, 0, 1);
+insert into T_Meter_Default_Params values(9, 2, 3.5, 1.1, 1.05, 20, 33, 1, 2);
+insert into T_Meter_Default_Params values(10, 2, 3.5, 0.4, 0.35, 10, 33, 2, 3);
+insert into T_Meter_Default_Params values(11, 2, 3.5, 0.08, 0.07, 5, 33, 3, 4);
 ---------------------------------
 --表规格
 ---------------------------------
@@ -293,23 +307,6 @@ F_Meter_Quantity smallint           -- 被检表的数量(2014.07.31 修改By So
 insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(0, 'DN15', 12);
 insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(1, 'DN20', 12);
 insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(2, 'DN25', 10);
-
----------------------------------
---热表各规格的默认参数表
----------------------------------
-insert into T_Meter_Default_Params values(0, 0, 1.5, 1.6, 1.5, 40, 34, 0, 1);
-insert into T_Meter_Default_Params values(1, 0, 1.5, 0.5, 0.45, 20, 33, 1, 2);
-insert into T_Meter_Default_Params values(2, 0, 1.5, 0.16, 0.15, 10, 33, 2, 3);
-insert into T_Meter_Default_Params values(3, 0, 1.5, 0.035, 0.03, 5, 33, 3, 4);
-insert into T_Meter_Default_Params values(4, 1, 2.5, 2.6, 2.5, 50, 34, 0, 1);
-insert into T_Meter_Default_Params values(5, 1, 2.5, 0.8, 0.75, 20, 33, 1, 2);
-insert into T_Meter_Default_Params values(6, 1, 2.5, 0.3, 0.25, 10, 33, 2, 3);
-insert into T_Meter_Default_Params values(7, 1, 2.5, 0.06, 0.05, 5, 33, 3, 4);
-insert into T_Meter_Default_Params values(8, 2, 3.5, 3.6, 3.5, 50, 34, 0, 1);
-insert into T_Meter_Default_Params values(9, 2, 3.5, 1.1, 1.05, 20, 33, 1, 2);
-insert into T_Meter_Default_Params values(10, 2, 3.5, 0.4, 0.35, 10, 33, 2, 3);
-insert into T_Meter_Default_Params values(11, 2, 3.5, 0.08, 0.07, 5, 33, 3, 4);
-
 
 ---------------------------------
 --表型号
@@ -550,5 +547,69 @@ select
 		rec.[F_Model]=mod.[F_ID] and
 		rec.[F_Result]=yesno.F_ID
 	order by rec.f_meterno, rec.f_timestamp
+;'
+);
+
+
+INSERT INTO T_Create_Query_View_Stmt
+(F_DESC, F_STMT) values
+(
+ 'temp combined_verify query result view', 
+ 'CREATE view V_Temp_Cmb_Query_Result as
+select
+	rec.F_ID,
+	rec.F_TimeStamp,
+	rec.F_MeterNo,
+	rec.F_Grade,
+	rec.F_DeltaTemp,
+	rec.F_VerifyVolume,
+	rec.F_DeltaTempMin,
+	rec.F_InstallPos,
+	rec.F_HeatUnit,
+	rec.F_StdTempIn,
+	rec.F_StdTempOut,
+	rec.F_StdResistIn,
+	rec.F_StdResistOut,
+	rec.F_Kcoe,
+	rec.F_StdValue,
+	rec.F_MeterV0,
+	rec.F_MeterV1,
+	rec.F_MeterE0,
+	rec.F_MeterE1,
+	rec.F_DispError,
+	rec.F_StdError,
+  date(rec.F_TimeStamp) F_VerifyDate,
+  yesno.[F_Desc] F_Result,  
+  yesno.[F_Name] F_result_en,
+  usert.F_Desc F_VerifyPerson,
+  yesno.F_Name valid_en, 
+  yesno.F_Desc valid,
+  mod.[F_Name] F_Model,
+  mod.[F_Desc] F_Model_zh,
+  std.f_name F_Standard,
+  tp.[F_Desc] F_PickCode,
+  manu.[F_Name] F_ManufactDept_en,
+  manu.[F_Desc] F_ManufactDept,
+  vdpt.[F_Name] F_VerifyDept_en,
+  vdpt.[F_Desc] F_VerifyDept
+	from
+   V_Temp_Cmb_Query_Result rec
+	left join
+		T_Meter_Model mod,
+		T_Meter_Standard std,
+		T_Meter_PickCode tp,
+		T_Manufacture_Dept manu,
+		T_Verify_Dept vdpt,
+		T_Yes_No_Tab  yesno,
+    T_User_Def_Tab usert
+	on
+		rec.[F_Standard]=std.[F_ID] and
+		rec.[F_ManufactDept]=manu.[F_ID] and
+		rec.[F_VerifyDept]=vdpt.[F_ID] and
+		rec.[F_Model]=mod.[F_ID] and
+		rec.[F_Result]=yesno.F_ID and
+		rec.[F_VerifyPerson]=usert.[F_ID] and    
+		rec.[F_PickCode]=tp.[F_ID]
+	order by rec.F_Meterno, rec.F_TimesTamp
 ;'
 );

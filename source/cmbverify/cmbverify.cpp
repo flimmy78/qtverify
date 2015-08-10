@@ -540,6 +540,7 @@ int CmbVerifyDlg::saveVerifyRecords()
 			m_recPtr->F_ManufactDept = m_param_config->value("common/manu").toInt();
 			m_recPtr->F_VerifyDept = m_param_config->value("common/inst").toInt();
 			m_recPtr->F_VerifyPerson = m_param_config->value("common/chk").toInt();
+			m_recPtr->F_PickCode = m_param_config->value("common/collcode").toInt();
 			
 			m_recPtr->F_VerifyVolume = ui.tableWidget->item(i, COL_DELTA_V)->text().toFloat();
 			m_recPtr->F_DeltaTempMin = m_min_tempdiff;
@@ -547,7 +548,7 @@ int CmbVerifyDlg::saveVerifyRecords()
 			m_recPtr->F_HeatUnit = m_current_unit;
 			m_recPtr->F_StdTempIn = ui.lineEdit_std_in_t->text().toFloat();
 			m_recPtr->F_StdTempOut = ui.lineEdit_std_out_t->text().toFloat();
-			m_recPtr->F_DeltaTemp = m_recPtr->F_StdTempIn - m_recPtr->F_StdTempOut;
+			m_recPtr->F_DeltaTemp = m_param_config->value("diff/temp_deff").toFloat();
 
 			m_recPtr->F_StdResistIn = ui.lineEdit_std_in_r->text().toFloat();
 			m_recPtr->F_StdResistOut = ui.lineEdit_std_out_r->text().toFloat();

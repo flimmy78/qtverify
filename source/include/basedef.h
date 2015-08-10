@@ -565,6 +565,7 @@ public:
 	char F_MeterNo[METERNO_LEN];//表号(14位数字: 6 + 8)
 	int F_Standard;//表规格(DN15/DN20/DN25)，外键(T_Meter_Standard.F_ID)
 	int F_Model;//表型号，外键(T_Meter_Model.F_ID)
+	int F_PickCode;//采集代码,外键
 	int F_Grade;//计量等级（1,2,3）
 	int F_ManufactDept;//制造单位，外键(T_Manufacture_Dept.F_ID)
 	int F_VerifyDept;//送检单位，外键(T_Verify_Dept.F_ID)
