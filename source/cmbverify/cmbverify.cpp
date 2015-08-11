@@ -587,7 +587,7 @@ void CmbVerifyDlg::stdTempChanged()
 	float out_t = ui.lineEdit_std_out_t->text().toFloat();
 	float delta_t = in_t - out_t;
 	float set_temp_diff = m_param_config->value("diff/temp_deff").toFloat();
-	m_delta_temp_achieved = (qAbs(delta_t) >= qAbs(set_temp_diff));
+	m_delta_temp_achieved = (qAbs(delta_t) >= qAbs(set_temp_diff)) && (qAbs(delta_t) >= qAbs(m_min_tempdiff));
 // 	chkIfCanStartVerify();
 }
 

@@ -25,6 +25,7 @@ public:
 
 		void on_btnQuery_clicked();
 		void on_btnExit_clicked();
+		void on_btnExport_clicked();
 private:
 	Ui::CmbResultClass ui;
 	QSqlRelationalTableModel *model;

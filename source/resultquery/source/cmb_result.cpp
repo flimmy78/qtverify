@@ -1,6 +1,10 @@
 #include <QtSql/QSqlRelationalDelegate>
 #include <QtCore/QDebug>
+#include <QtGui/QMessageBox>
+#include <QtGui/QFileDialog>
 #include "cmb_result.h"
+#include "report.h"
+#include "algorithm.h"
 
 CmbResultDlg::CmbResultDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
@@ -99,6 +103,27 @@ void CmbResultDlg::on_btnQuery_clicked()
 {
 	getCondition();
 	queryData();
+}
+
+void CmbResultDlg::on_btnExport_clicked()
+{
+	if (NULL==model)
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("no data need to be exported!"));
+		return;
+	}
+
+	QString defaultPath = QProcessEnvironment::systemEnvironment().value("ADEHOME") + "//report//" + QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss");
+	QString file = QFileDialog::getSaveFileName(this, tr("Save File"), defaultPath, tr("Microsoft Excel (*.xls)"));//获取保存路径
+	if (!file.isEmpty())
+	{
+		getCondition();
+		CReport rpt(m_conStr);
+		rpt.setIniName("rptconfig_cmb.ini");
+		rpt.writeRpt();
+		rpt.saveTo(file);
+		QMessageBox::information(this, tr("OK"), tr("export excel file successful!"));
+	}
 }
 
 void CmbResultDlg::getCondition()

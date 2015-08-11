@@ -36,7 +36,7 @@ private slots:
 	void on_btnExport_clicked();
 	void on_btnExit_clicked();
 private:
-	void getConditon();
+	void getCondition();
 	void queryData();
 };
 

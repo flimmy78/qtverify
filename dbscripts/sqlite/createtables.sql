@@ -576,6 +576,7 @@ select
 	rec.F_MeterV1,
 	rec.F_MeterE0,
 	rec.F_MeterE1,
+	(rec.F_MeterE1-rec.F_MeterE0) F_MeterDispV,
 	rec.F_DispError,
 	rec.F_StdError,
   date(rec.F_TimeStamp) F_VerifyDate,
@@ -593,7 +594,7 @@ select
   vdpt.[F_Name] F_VerifyDept_en,
   vdpt.[F_Desc] F_VerifyDept
 	from
-   V_Temp_Cmb_Query_Result rec
+   T_Temp_Query_Result rec
 	left join
 		T_Meter_Model mod,
 		T_Meter_Standard std,

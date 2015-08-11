@@ -129,7 +129,7 @@ void FlowResultDlg::initUiData()
 //查询检定结果
 void FlowResultDlg::on_btnQuery_clicked()
 {
-	getConditon();
+	getCondition();
 	queryData();
 /*	QString tbname = model->tableName();
 	QString fdname1 = model->record(0).fieldName(0);
@@ -142,7 +142,7 @@ void FlowResultDlg::on_btnQuery_clicked()
 */
 }
 
-void FlowResultDlg::getConditon()
+void FlowResultDlg::getCondition()
 {
 	m_conStr.clear();
 	m_conStr = QString("F_TimeStamp>=\'%1\' and F_TimeStamp<=\'%2\'").arg(ui.startDateTime->dateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"))\
@@ -314,7 +314,7 @@ void FlowResultDlg::on_btnExport_clicked()
 	QString file = QFileDialog::getSaveFileName(this, tr("Save File"), defaultPath, tr("Microsoft Excel (*.xls)"));//获取保存路径
 	if (!file.isEmpty())
 	{
-		getConditon();
+		getCondition();
 		CReport rpt(m_conStr);
 		rpt.setIniName("rptconfig_flow.ini");
 		rpt.writeRpt();
