@@ -1,6 +1,9 @@
 #include <QtSql/QSqlRelationalDelegate>
 #include <QtCore/QDebug>
+#include <QtGui/QFileDialog>
+#include <QtGui/QMessageBox>
 #include "total_result.h"
+#include "report.h"
 
 TotalResultDlg::TotalResultDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
@@ -255,6 +258,27 @@ void TotalResultDlg::queryData()
 	ui.tableView->hideColumn(37);
 	ui.tableView->hideColumn(38);
 	ui.tableView->hideColumn(39);
+}
+
+void TotalResultDlg::on_btnExport_clicked()
+{
+	if (NULL==model)
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("no data need to be exported!"));
+		return;
+	}
+
+	QString defaultPath = QProcessEnvironment::systemEnvironment().value("ADEHOME") + "//report//" + QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss");
+	QString file = QFileDialog::getSaveFileName(this, tr("Save File"), defaultPath, tr("Microsoft Excel (*.xls)"));//获取保存路径
+	if (!file.isEmpty())
+	{
+		getCondition();
+		CReport rpt(m_conStr);
+		rpt.setIniName("rptconfig_total.ini");
+		rpt.writeRpt();
+		rpt.saveTo(file);
+		QMessageBox::information(this, tr("OK"), tr("export excel file successful!"));
+	}
 }
 
 void TotalResultDlg::on_btnExit_clicked()

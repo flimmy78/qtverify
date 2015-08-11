@@ -550,7 +550,6 @@ select
 ;'
 );
 
-
 INSERT INTO T_Create_Query_View_Stmt
 (F_DESC, F_STMT) values
 (
@@ -614,3 +613,95 @@ select
 	order by rec.F_Meterno, rec.F_TimesTamp
 ;'
 );
+
+INSERT INTO T_Create_Query_View_Stmt
+(F_DESC, F_STMT) values
+(
+ 'temp total_verify query result view', 
+'CREATE view V_Temp_Total_Query_Result as
+select
+  rec.F_ID,
+  rec.F_TimeStamp,
+  rec.F_MeterNo,
+  rec.F_FlowPointIdx,
+  rec.F_FlowPoint,
+  rec.F_MethodFlag,
+  rec.F_MeterValue0,
+  rec.F_MeterValue1,
+  rec.F_BalWeight0,
+  rec.F_BalWeight1,
+  rec.F_StdMeterV0,
+  rec.F_StdMeterV1,
+  rec.F_InSlotTemper,
+  rec.F_OutSlotTemper,
+  rec.F_PipeTemper,
+  rec.F_Density,
+  rec.F_StandValue,
+  rec.F_DispError,
+  rec.F_StdError,
+  rec.F_Result,
+  rec.F_MeterPosNo,
+  rec.F_Model,
+  rec.F_Standard,
+  rec.F_PickCode,
+  rec.F_ManufactDept,
+  rec.F_VerifyDept,
+  rec.F_Grade,
+  rec.F_DeviceInfoID,
+  rec.F_VerifyDate,
+  rec.F_ValidDate,
+  rec.F_EnvTemper,
+  rec.F_EnvHumidity,
+  rec.F_AirPressure,
+  rec.F_CertNO,
+  rec.F_TotalCoe,
+  rec.F_InSlotTemper,
+  rec.F_OutSlotTemper,
+  (rec.F_InSlotTemper||''/''||rec.F_OutSlotTemper) F_SlotInOutTemp,
+  (rec.F_InSlotTemper-rec.F_OutSlotTemper) F_SlotTempDiff,
+  (rec.F_MeterValue1-rec.F_MeterValue0) F_MeterDispValue,
+  d.F_CertNO,
+  d.F_DeviceName,
+  d.F_DeviceNo,
+  d.F_DeviceModel,
+  d.F_Manufact,
+  d.F_DeviceGrade,
+  d.F_MeasureRange,
+  d.F_CertNo,
+  d.F_VerifyRule,
+  d.F_DeviceValidDate,
+  d.F_CertValidDate,
+  d.F_RuleValidDate,  
+  (select F_Desc from T_User_Def_Tab u where u.F_id = rec.[F_VerifyPerson])  F_VerifyPerson,
+  (select F_Desc from T_User_Def_Tab u where u.F_id = rec.[F_CheckPerson])  F_CheckPerson,  
+  mod.[F_Name] F_Model_en,
+  mod.[F_Desc] F_Model_zh,
+  std.f_name F_Standard,
+  tp.[F_Desc] F_PickCode_zh,
+  manu.[F_Name] F_ManufactDept_en,
+  manu.[F_Desc] F_ManufactDept_zh,
+  vdpt.[F_Name] F_VerifyDept_en,
+  vdpt.[F_Desc] F_VerifyDept_zh,  
+  yesno.F_Name valid_en, 
+  yesno.F_Desc valid
+from
+  T_Temp_Query_Result rec
+left join
+  T_Verify_Device_Info d,
+  T_Meter_Model mod,
+  T_meter_standard std,
+  T_Meter_PickCode tp,
+  T_manufacture_dept manu,
+  T_verify_dept vdpt,
+  T_Yes_No_Tab  yesno  
+on
+  rec.F_DeviceInfoID=d.[F_ID] and
+  rec.[F_Standard]=std.[F_ID] and
+  rec.[F_PickCode]=tp.[F_ID] and
+  rec.[F_ManufactDept]=manu.[F_ID] and
+  rec.[F_VerifyDept]=vdpt.[F_ID] and
+  rec.[F_Model]=mod.[F_ID] and
+  rec.[F_Result]=yesno.F_ID
+	order by rec.f_meterno, rec.f_timestamp
+;'
+)
