@@ -1,4 +1,5 @@
 #include <QDebug>
+#include <intsafe.h>
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -593,4 +594,80 @@ void MainWindow::saveComDefaultConfig()
 		m_comset->setValue("ComSettings/Parity", ui->parityComboBox->currentIndex());
 		m_comset->setValue("ComSettings/StopBit", ui->stopBitsComboBox->currentIndex());
 	}	
+}
+
+void MainWindow::on_btn1BytesCS_clicked()
+{
+	ui->lineEdit1BytesCS->clear();
+	UINT8 cs = 0x00;
+	if (ui->chradioButton2->isChecked()) //十六进制
+	{
+		QString str;
+		bool ok;
+		UINT8 data;
+		QStringList list;
+		str = ui->textEditSend->toPlainText();
+		list = str.split(" "); //以空格符分割
+		for (int i = 0; i < list.count(); i++)
+		{
+			if (list.at(i) == " ")
+				continue;
+			if (list.at(i).isEmpty())
+				continue;
+			data = list.at(i).toUInt(&ok, 16);
+			if (!ok)
+			{
+				QMessageBox::information(this, tr("Hint"), tr("data format error！"), QMessageBox::Ok);
+				if(obotimer != NULL)
+					obotimer->stop();
+				ui->sendmsgBtn->setText(tr("send"));
+				ui->sendmsgBtn->setIcon(QIcon(":new/prefix1/src/send.png"));
+				return;
+			}
+			cs += data;
+		}
+	}
+	else //十进制
+	{
+
+	}
+	ui->lineEdit1BytesCS->setText("0x" + QString::number(cs, 16).rightJustified(2, '0').toUpper());
+}
+
+void MainWindow::on_btn2BytesCS_clicked()
+{
+	ui->lineEdit2BytesCS->clear();
+	UINT16 cs = 0x0000;
+	if (ui->chradioButton2->isChecked()) //十六进制
+	{
+		QString str;
+		bool ok;
+		UINT8 data;
+		QStringList list;
+		str = ui->textEditSend->toPlainText();
+		list = str.split(" "); //以空格符分割
+		for (int i = 0; i < list.count(); i++)
+		{
+			if (list.at(i) == " ")
+				continue;
+			if (list.at(i).isEmpty())
+				continue;
+			data = list.at(i).toUInt(&ok, 16);
+			if (!ok)
+			{
+				QMessageBox::information(this, tr("Hint"), tr("data format error！"), QMessageBox::Ok);
+				if(obotimer != NULL)
+					obotimer->stop();
+				ui->sendmsgBtn->setText(tr("send"));
+				ui->sendmsgBtn->setIcon(QIcon(":new/prefix1/src/send.png"));
+				return;
+			}
+			cs += data;
+		}
+	}
+	else //十进制
+	{
+
+	}
+	ui->lineEdit2BytesCS->setText("0x" + QString::number(cs,16).rightJustified(4, '0').toUpper());
 }

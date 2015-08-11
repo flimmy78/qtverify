@@ -73,6 +73,8 @@ private slots:
 	void readMyCom();
 	void sendMsg();
 	void saveComDefaultConfig();
+	void on_btn1BytesCS_clicked();
+	void on_btn2BytesCS_clicked();
 	//end by
 
 };
