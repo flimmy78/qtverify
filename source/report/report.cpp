@@ -374,16 +374,24 @@ void CReport::getRptSQL()
 */
 void CReport::getDbData()
 {
-	m_query->exec(DROP_TBL_STMT);//删除临时表
-	m_query->exec(CREATE_TEMP_TBL_STMT);//按查询条件, 创建临时表
-	m_query->exec(DROP_TEMP_VIEW_STMT);//删除临时视图
+	QString str;
+	str = DROP_TBL_STMT;
+	qDebug() << str;
+	qDebug() << "drop temp table stmt: " << m_query->exec(DROP_TBL_STMT);//删除临时表
+	str = CREATE_TEMP_TBL_STMT;
+	qDebug() << str;
+	qDebug() << "create temp table stmt: " << m_query->exec(CREATE_TEMP_TBL_STMT);//按查询条件, 创建临时表
+	str = DROP_TEMP_VIEW_STMT;
+	qDebug() << str;
+	qDebug() << "drop temp view stmt: " << m_query->exec(DROP_TEMP_VIEW_STMT);//删除临时视图
+
 	m_queryStmtId = m_rpt_config->value("tableview/stmtId").toString();
-	QString str = QUERY_CREATE_VIEW_STMT;
-	m_query->exec(QUERY_CREATE_VIEW_STMT);//查询创建临时视图的语句
+	str = QUERY_CREATE_VIEW_STMT;
+	qDebug() << "query temp view stmt: " << m_query->exec(QUERY_CREATE_VIEW_STMT);//查询创建临时视图的语句
 	m_query->seek(0);
 	QString createViewSql = m_query->value(0).toString();
-	m_query->exec(createViewSql);//以临时表为主表, 创建临时视图
-	m_query->exec(m_query_Sql);//按条件查询数据
+	qDebug() << "create temp view stmt: " << m_query->exec(createViewSql);//以临时表为主表, 创建临时视图
+	qDebug() << "query temp view stmt: " << m_query->exec(m_query_Sql);//按条件查询数据
 }
 
 //删除版权信息
