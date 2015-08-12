@@ -1426,6 +1426,54 @@ void HuiZhongMeterProtocol::analyseFrame()
 	{
 		m_fullMeterNo.append(QString("%1").arg(m_CJ188DataFrame->addr[i], 2, 16)).replace(' ', '0');
 	}
+
+	UINT8 ctrlCode = m_CJ188DataFrame->ctrlCode;
+	UINT8 DI0 = m_CJ188DataFrame->dataID[0];
+	UINT8 DI1 = m_CJ188DataFrame->dataID[1];
+
+	switch (ctrlCode)
+	{
+	case 0x83: //读表号
+		break;
+	case 0xBA: //读高精度流量和热量、读流量系数
+		if (DI0==0x2A && DI1==0x49) //读高精度流量和热量
+		{
+			//流量
+			m_flow = "";
+			m_flow.append(QString("%1.%2%3%4").arg(m_CJ188DataFrame->data[4], 2, 16)\
+				.arg(m_CJ188DataFrame->data[5], 2, 16).arg(m_CJ188DataFrame->data[6], 2, 16)\
+				.arg(m_CJ188DataFrame->data[7], 2, 16));
+			m_flow.replace(' ', '0');
+
+			//热量
+			m_heat = "";
+			m_heat.append(QString("%1%2.%3%4").arg(m_CJ188DataFrame->data[0], 2, 16)\
+				.arg(m_CJ188DataFrame->data[1], 2, 16).arg(m_CJ188DataFrame->data[2], 2, 16)\
+				.arg(m_CJ188DataFrame->data[3], 2, 16));
+			m_heat.replace(' ', '0');
+		}
+		else if (DI0==0x2A && DI1==0x43) //读流量系数
+		{
+			m_Coe = "";
+			//需要计算流量系数 ？？？
+		}
+		break;
+	case 0x81: //读表数据
+		break;
+	case 0xBB: //检定状态进入和退出、写流量系数
+		if (DI0==0xB2 || DI1==0x6C) //热量检定
+		{
+		}
+		else if (DI0==0xB2 || DI1==0x6D) //流量检定
+		{
+		}
+		else if (DI0==0xB2 || DI1==0x63) //写流量系数
+		{
+		}
+		break;
+	default:
+		break;
+	} //end of 	switch (ctrlCode)
 }
 
 void HuiZhongMeterProtocol::makeFrameOfReadMeterNO()
@@ -1435,12 +1483,32 @@ void HuiZhongMeterProtocol::makeFrameOfReadMeterNO()
 
 void HuiZhongMeterProtocol::makeFrameOfReadMeterFlowCoe()
 {
+	qDebug()<<"HuiZhongMeterProtocol::makeFrameOfReadMeterFlowCoe thread:"<<QThread::currentThreadId();
 
+	m_sendBuf = "";
+	m_sendBuf.append(METER_START_CODE);//起始符
+	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
+	for (int m=0; m<CJ188_ADDR_LEN; m++)
+	{
+		m_sendBuf.append(METER_ADDR_CODE); //广播地址
+	}
+	m_sendBuf.append(0x3A).append(0x03).append(0x2A).append(0x43).append(0x01);
+	m_sendBuf.append(0xD9).append(0x16);
 }
 
 void HuiZhongMeterProtocol::makeFrameOfReadMeterData(int vType)
 {
+	qDebug()<<"HuiZhongMeterProtocol::makeFrameOfReadMeterData thread:"<<QThread::currentThreadId();
 
+	m_sendBuf = "";
+	m_sendBuf.append(METER_START_CODE);//起始符
+	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
+	for (int m=0; m<CJ188_ADDR_LEN; m++)
+	{
+		m_sendBuf.append(METER_ADDR_CODE); //广播地址
+	}
+	m_sendBuf.append(0x3A).append(0x03).append(0x2A).append(0x49).append(0x06);
+	m_sendBuf.append(0xE4).append(0x16);
 }
 
 void HuiZhongMeterProtocol::makeFrameOfSetVerifyStatus(int vType)

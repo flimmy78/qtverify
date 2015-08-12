@@ -736,7 +736,14 @@ void MeterComObject::askReadMeterNO()
 */
 void MeterComObject::askReadMeterFlowCoe()
 {
-
+	qDebug()<<"111 MeterComObject askReadMeterFlowCoe thread:"<<QThread::currentThreadId();
+	if (NULL==m_meterProtocol)
+	{
+		return;
+	}
+	m_meterProtocol->makeFrameOfReadMeterFlowCoe();
+	QByteArray buf = m_meterProtocol->getSendFrame();
+	m_meterCom->write(buf);
 }
 
 /*
