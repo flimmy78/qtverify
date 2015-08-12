@@ -1,0 +1,12 @@
+在模块中引用如下过程：
+Public Declare Function GetPrivateProfileString Lib "kernel32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As Any, ByVal lpDefault As String, ByVal lpReturnedString As String, ByVal nSize As Long, ByVal lpFileName As String) As Long
+Public Declare Function WritePrivateProfileString Lib "kernel32" Alias "WritePrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As Any, ByVal lpString As Any, ByVal lpFileName As String) As Long
+Public Declare Function GetSystemMetrics Lib "user32" (ByVal nIndex As Long) As Long
+Public Declare Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" (Destination As Any, Source As Any, ByVal Length As Long)
+
+程序中的调用方法：
+Call CopyMemory(ZXHQD, IData(0), 4)
+	ZXHQD为某一Single型变量
+	IData为Byte型数组，(0)表示从该数组的第0个元素开始转换
+	4表示转换的字节数
+执行这一语句后，IData(0)~IData(3) 四个字节的内码即转换为单精度浮点型并存储在ZXHQD变量中
