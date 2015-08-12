@@ -674,11 +674,44 @@ void FlowStandardDlg::slotExaustFinished()
 }
 
 /*
-** 读取热表
+** 读取所有热表数据
 */
 int FlowStandardDlg::readAllMeter()
 {
 	on_btnAllReadMeter_clicked();
+	return true;
+}
+
+/*
+** 读取所有热表流量系数
+*/
+int FlowStandardDlg::readAllMeterFlowCoe()
+{
+	qDebug()<<"readAllMeterFlowCoe ...";
+	int idx = -1;
+	for (int j=0; j<m_maxMeterNum; j++)
+	{
+		idx = isMeterPosValid(j+1);
+		if (m_state == STATE_START_VALUE)
+		{
+			ui.tableWidget->item(j, COLUMN_METER_START)->setText("");
+			if (idx >= 0)
+			{
+				m_meterStartValue[idx] = 0;
+			}
+		}
+		else if (m_state == STATE_END_VALUE)
+		{
+			ui.tableWidget->item(j, COLUMN_METER_END)->setText("");
+			if (idx >= 0)
+			{
+				m_meterEndValue[idx] = 0;
+			}
+		}
+		m_meterObj[j].askReadMeterFlowCoe();
+// 		slotReadMeter(j);
+	}
+
 	return true;
 }
 
@@ -1069,7 +1102,7 @@ void FlowStandardDlg::startVerify()
 	{
 		ui.labelHintPoint->setText(tr("read meter now coe ..."));
 		m_state = STATE_READ_COE;
-		readAllMeter();
+		readAllMeterFlowCoe();
 		sleep(WAIT_COM_TIME);
 		m_state = STATE_INIT;
 	}
