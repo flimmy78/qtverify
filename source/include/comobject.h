@@ -187,8 +187,10 @@ public slots:
 	void closeMeterCom();
 	void readMeterComBuffer(); //解析串口返回数据
 
-	void askReadMeter();       //请求读表（广播地址读表）
-	void askSetVerifyStatus(); //请求设置进入检定状态
+	void askReadMeterNO();      //请求读表号
+	void askReadMeterFlowCoe(); //请求读表流量系数
+	void askReadMeterData(int vType=VTYPE_FLOW);   //请求读表数据（广播地址读表数据）
+	void askSetVerifyStatus(int vType=VTYPE_FLOW); //请求设置进入检定状态
 	void askModifyMeterNO(QString oldMeterNo, QString newMeterNo);   //请求修改表号(14位表号)
 	void askModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr);  //请求修改流量系数
 	void askModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe);

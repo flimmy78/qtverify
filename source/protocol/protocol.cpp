@@ -782,10 +782,148 @@ void OldCtrlProtocol::makeFrameOfCtrlPressPump(bool status)
 MeterProtocol::MeterProtocol()
 {
 	m_sendBuf = "";
+	
+	m_CJ188DataFrame = new CJ188_Frame_Struct();
+	memset(m_CJ188DataFrame, 0, sizeof(CJ188_Frame_Struct));
 }
 
 MeterProtocol::~MeterProtocol()
 {
+	if (m_CJ188DataFrame)
+	{
+		delete m_CJ188DataFrame;
+		m_CJ188DataFrame = NULL;
+	}
+}
+
+//解帧
+UINT8 MeterProtocol::readMeterComBuffer(QByteArray tmp)
+{
+	qDebug()<<"MeterProtocol::readMeterComBuffer thread:"<<QThread::currentThreadId();
+
+	UINT8 ret = 0x00;
+	int state = STATE_METER_START;
+	UINT8 ch = 0; //无符号8位数字
+	int number = tmp.size();
+
+	int m=0;
+	int addr_num=0, dataID_num=0, data_num=0;
+	UINT8 ck=0; //程序计算的检验码
+	for (m=0; m<number; m++)
+	{
+		ch = (UINT8)tmp.at(m);
+// 		qDebug()<<"read data is:"<<ch;
+		if (ch == METER_PREFIX_CODE)
+		{
+			continue;
+		}
+		switch(state)
+		{
+		case STATE_METER_START: //
+			if (ch == METER_START_CODE)
+			{
+				m_CJ188DataFrame->startCode = METER_START_CODE;
+				state = STATE_METER_TYPE;
+			}
+			break;
+		case STATE_METER_TYPE: //
+			m_CJ188DataFrame->typeCode = ch;
+			state = STATE_METER_ADDR;
+			break;
+		case STATE_METER_ADDR: //
+			m_CJ188DataFrame->addr[addr_num++] = ch;
+			if (addr_num == CJ188_ADDR_LEN)
+			{
+				state = STATE_METER_CTRL;
+				addr_num = 0;
+			}
+			break;
+		case STATE_METER_CTRL: //
+			m_CJ188DataFrame->ctrlCode = ch;
+			state = STATE_METER_DATALEN;
+			break;
+		case STATE_METER_DATALEN: //
+			m_CJ188DataFrame->dataLen = ch;
+			state = STATE_METER_DATAID;
+			break;
+		case STATE_METER_DATAID: //
+			m_CJ188DataFrame->dataID[dataID_num++] = ch;
+			if (dataID_num == CJ188_DATAID_LEN)
+			{
+				state = STATE_METER_SN;
+				dataID_num = 0;
+			}
+			break;
+		case STATE_METER_SN: //序列号
+			m_CJ188DataFrame->sn = ch;
+			if (m_CJ188DataFrame->dataLen <= 3)
+			{
+				state = STATE_METER_CS;
+			}
+			else
+			{
+				state = STATE_METER_DATA;
+			}
+			break;
+		case STATE_METER_DATA: //
+			m_CJ188DataFrame->data[data_num++] = ch;
+			if (data_num == m_CJ188DataFrame->dataLen-3)
+			{
+				state = STATE_METER_CS;
+				data_num = 0;
+			}
+			break;
+		case STATE_METER_CS: //
+			m_CJ188DataFrame->cs = ch;
+			state = STATE_METER_END;
+			break;
+		case STATE_METER_END: //
+			m_CJ188DataFrame->endCode = ch;
+			state = STATE_METER_START;
+			ck = CountCheck(m_CJ188DataFrame);
+			if (ck == m_CJ188DataFrame->cs) //校验通过
+			{
+				analyseFrame();
+				ret = 1; //
+				qDebug()<<"check is ok 校验通过";
+			}
+			break;
+		default :
+			state = STATE_METER_START;
+			break;
+		} //END OF switch(state)        
+	} //END OF for (m=0; m<number; m++)
+
+	return ret;
+}
+
+//计算"校验码"
+UINT8 MeterProtocol::CountCheck(CJ188_Frame_Struct *pFrame)
+{
+	if (NULL == pFrame)
+	{
+		return 0;
+	}
+
+	UINT8 cs = 0;
+	cs = pFrame->startCode + pFrame->typeCode;
+	for (int i=0; i<CJ188_ADDR_LEN; i++)
+	{
+		cs += pFrame->addr[i];
+	}
+	cs += pFrame->ctrlCode;
+	cs += pFrame->dataLen;
+	for (int j=0; j<CJ188_DATAID_LEN; j++)
+	{
+		cs += pFrame->dataID[j];
+	}
+	cs += pFrame->sn;
+	for (int m=0; m<CJ188_DATA_MAX_LEN; m++)
+	{
+		cs += pFrame->data[m];
+	}
+
+	return cs; 
 }
 
 //获取组帧结果
@@ -793,7 +931,6 @@ QByteArray MeterProtocol::getSendFrame()
 {
 	return m_sendBuf;
 }
-
 
 QString MeterProtocol::getFullMeterNo()
 {
@@ -845,6 +982,11 @@ QString MeterProtocol::getSmallCoe()
 	return m_smallCoe;
 }
 
+QString MeterProtocol::getCoe()
+{
+	return m_Coe;
+}
+
 
 /***********************************************
 类名：DeluMeterProtocol
@@ -852,243 +994,99 @@ QString MeterProtocol::getSmallCoe()
 ************************************************/
 DeluMeterProtocol::DeluMeterProtocol()
 {
-	m_deluMeterFrame = new DeluMeter_Frame_Struct();
-	memset(m_deluMeterFrame, 0, sizeof(DeluMeter_Frame_Struct));
 }
 
 DeluMeterProtocol::~DeluMeterProtocol()
 {
-	if (m_deluMeterFrame)
-	{
-		delete m_deluMeterFrame;
-		m_deluMeterFrame = NULL;
-	}
-}
-
-//计算"校验码"
-UINT8 DeluMeterProtocol::CountCheck(DeluMeter_Frame_Struct *pFrame)
-{
-	if (NULL == pFrame)
-	{
-		return 0;
-	}
-
-	UINT8 cs = 0;
-	cs = pFrame->startCode + pFrame->typeCode;
-	for (int i=0; i<METER_ADDR_LEN; i++)
-	{
-		cs += pFrame->addr[i];
-	}
-	cs += pFrame->ctrlCode;
-	cs += pFrame->dataLen;
-	for (int j=0; j<METER_DATAID_LEN; j++)
-	{
-		cs += pFrame->dataID[j];
-	}
-	cs += pFrame->sn;
-	for (int m=0; m<METER_DATA_LEN; m++)
-	{
-		cs += pFrame->data[m];
-	}
-
-	return cs; 
-}
-
-//解帧
-UINT8 DeluMeterProtocol::readMeterComBuffer(QByteArray tmp)
-{
-	qDebug()<<"DeluMeterProtocol::readMeterComBuffer thread:"<<QThread::currentThreadId();
-
-	UINT8 ret = 0x00;
-	int state = METER_START_STATE;
-	UINT8 ch = 0; //无符号8位数字
-	int number = tmp.size();
-
-	int m=0;
-	int addr_num=0, dataID_num=0, data_num=0;
-	UINT8 ck=0; //程序计算的检验码
-	for (m=0; m<number; m++)
-	{
-		ch = (UINT8)tmp.at(m);
-		// 		qDebug()<<"read data is:"<<ch;
-		if (ch == METER_PREFIX_CODE)
-		{
-			continue;
-		}
-		switch(state)
-		{
-		case METER_START_STATE: //
-			{
-				if (ch == METER_START_CODE)
-				{
-					m_deluMeterFrame->startCode = METER_START_CODE;
-					state = METER_TYPE_STATE;
-				}
-				break;
-			}
-		case METER_TYPE_STATE: //
-			{   
-				if (ch == METER_TYPE_ANSWER_CODE) //响应
-				{
-					m_deluMeterFrame->typeCode = ch;
-					state = METER_ADDR_STATE;
-				}
-				break;
-			}
-
-		case METER_ADDR_STATE: //
-			{
-				m_deluMeterFrame->addr[addr_num++] = ch;
-				if (addr_num == METER_ADDR_LEN)
-				{
-					state = METER_CTRL_STATE;
-					addr_num = 0;
-				}
-				break;
-			}    
-		case METER_CTRL_STATE: //
-			{
-				m_deluMeterFrame->ctrlCode = ch;
-				state = METER_DATALEN_STATE;
-				break;
-			} 
-		case METER_DATALEN_STATE: //
-			{
-				m_deluMeterFrame->dataLen = ch;
-				state = METER_DATAID_STATE;
-				break;
-			} 
-		case METER_DATAID_STATE: //
-			{
-				m_deluMeterFrame->dataID[dataID_num++] = ch;
-				if (dataID_num == METER_DATAID_LEN)
-				{
-					state = METER_SN_STATE;
-					dataID_num = 0;
-				}
-				break;
-			} 
-		case METER_SN_STATE: //序列号
-			{
-				m_deluMeterFrame->sn = ch;
-				state = METER_DATA_STATE;
-				break;
-			} 
-		case METER_DATA_STATE: //
-			{
-				m_deluMeterFrame->data[data_num++] = ch;
-				if (data_num == METER_DATA_LEN)
-				{
-					state = METER_CS_STATE;
-					data_num = 0;
-				}
-				break;
-			} 
-		case METER_CS_STATE: //
-			{
-				m_deluMeterFrame->cs = ch;
-				state = METER_END_STATE;
-				break;
-			} 
-		case METER_END_STATE: //
-			{
-				m_deluMeterFrame->endCode = ch;
-				state = METER_START_STATE;
-				ck = CountCheck(m_deluMeterFrame);
-				if (ck == m_deluMeterFrame->cs) //校验通过
-				{
-					analyseFrame();
-					ret = 1; //
-					qDebug()<<"check is ok 校验通过";
-				}
-				break;
-			} 
-		default :
-			{
-				state = METER_START_STATE;
-				break;
-			}
-		} //END OF switch(state)        
-	} //END OF for (m=0; m<number; m++)
-
-	return ret;
 }
 
 void DeluMeterProtocol::analyseFrame()
 {
-	if (NULL == m_deluMeterFrame)
+	if (NULL == m_CJ188DataFrame)
 	{
 		return;
 	}
 
 	//表号
 	m_fullMeterNo = "";
-	for (int i=METER_ADDR_LEN-1; i>=0; i--)
+	for (int i=CJ188_ADDR_LEN-1; i>=0; i--)
 	{
-		m_fullMeterNo.append(QString("%1").arg(m_deluMeterFrame->addr[i], 2, 16)).replace(' ', '0');
+		m_fullMeterNo.append(QString("%1").arg(m_CJ188DataFrame->addr[i], 2, 16)).replace(' ', '0');
 	}
 
 	//供水温度
 	m_inTemper = "";
-	m_inTemper.append(QString("%1%2.%3").arg(m_deluMeterFrame->data[2], 2, 16)\
-		.arg(m_deluMeterFrame->data[1], 2, 16).arg(m_deluMeterFrame->data[0], 2, 16));
+	m_inTemper.append(QString("%1%2.%3").arg(m_CJ188DataFrame->data[2], 2, 16)\
+		.arg(m_CJ188DataFrame->data[1], 2, 16).arg(m_CJ188DataFrame->data[0], 2, 16));
 	m_inTemper.replace(' ', '0');
 
 	//流量
 	m_flow = "";
-	m_flow.append(QString("%1.%2%3%4").arg(m_deluMeterFrame->data[9], 2, 16)\
-		.arg(m_deluMeterFrame->data[8], 2, 16).arg(m_deluMeterFrame->data[7], 2, 16)\
-		.arg(m_deluMeterFrame->data[6], 2, 16));
+	m_flow.append(QString("%1.%2%3%4").arg(m_CJ188DataFrame->data[9], 2, 16)\
+		.arg(m_CJ188DataFrame->data[8], 2, 16).arg(m_CJ188DataFrame->data[7], 2, 16)\
+		.arg(m_CJ188DataFrame->data[6], 2, 16));
 	m_flow.replace(' ', '0');
 
 	//热量
 	m_heat = "";
-	m_heat.append(QString("%1%2.%3%4").arg(m_deluMeterFrame->data[14], 2, 16)\
-		.arg(m_deluMeterFrame->data[13], 2, 16).arg(m_deluMeterFrame->data[12], 2, 16)\
-		.arg(m_deluMeterFrame->data[11], 2, 16));
+	m_heat.append(QString("%1%2.%3%4").arg(m_CJ188DataFrame->data[14], 2, 16)\
+		.arg(m_CJ188DataFrame->data[13], 2, 16).arg(m_CJ188DataFrame->data[12], 2, 16)\
+		.arg(m_CJ188DataFrame->data[11], 2, 16));
 	m_heat.replace(' ', '0');
 
 	//大流量点流量系数
 	m_bigCoe = "";
-	m_bigCoe.append(QString("%1%2").arg(m_deluMeterFrame->data[33], 2, 16)\
-		.arg(m_deluMeterFrame->data[32], 2, 16));
+	m_bigCoe.append(QString("%1%2").arg(m_CJ188DataFrame->data[33], 2, 16)\
+		.arg(m_CJ188DataFrame->data[32], 2, 16));
 	m_bigCoe.replace(' ', '0');
 
 	//中流二流量系数
 	m_mid2Coe = "";
-	m_mid2Coe.append(QString("%1%2").arg(m_deluMeterFrame->data[35], 2, 16)\
-		.arg(m_deluMeterFrame->data[34], 2, 16));
+	m_mid2Coe.append(QString("%1%2").arg(m_CJ188DataFrame->data[35], 2, 16)\
+		.arg(m_CJ188DataFrame->data[34], 2, 16));
 	m_mid2Coe.replace(' ', '0');
 
 	//中流一流量系数
 	m_mid1Coe = "";
-	m_mid1Coe.append(QString("%1%2").arg(m_deluMeterFrame->data[37], 2, 16)\
-		.arg(m_deluMeterFrame->data[36], 2, 16));
+	m_mid1Coe.append(QString("%1%2").arg(m_CJ188DataFrame->data[37], 2, 16)\
+		.arg(m_CJ188DataFrame->data[36], 2, 16));
 	m_mid1Coe.replace(' ', '0');
 
 	//小流量点流量系数
 	m_smallCoe = "";
-	m_smallCoe.append(QString("%1%2").arg(m_deluMeterFrame->data[39], 2, 16)\
-		.arg(m_deluMeterFrame->data[38], 2, 16));
+	m_smallCoe.append(QString("%1%2").arg(m_CJ188DataFrame->data[39], 2, 16)\
+		.arg(m_CJ188DataFrame->data[38], 2, 16));
 	m_smallCoe.replace(' ', '0');
 
 	//回水温度
 	m_outTemper = "";
-	m_outTemper.append(QString("%1%2.%3").arg(m_deluMeterFrame->data[48], 2, 16)\
-		.arg(m_deluMeterFrame->data[47], 2, 16).arg(m_deluMeterFrame->data[46], 2, 16));
+	m_outTemper.append(QString("%1%2.%3").arg(m_CJ188DataFrame->data[48], 2, 16)\
+		.arg(m_CJ188DataFrame->data[47], 2, 16).arg(m_CJ188DataFrame->data[46], 2, 16));
 	m_outTemper.replace(' ', '0');
 
 	//日期
 	m_date = "";
-	m_date.append(QString("%1%2%3%4").arg(m_deluMeterFrame->data[52], 2, 16)\
-		.arg(m_deluMeterFrame->data[51], 2, 16).arg(m_deluMeterFrame->data[50], 2, 16).\
-		arg(m_deluMeterFrame->data[49], 2, 16));
+	m_date.append(QString("%1%2%3%4").arg(m_CJ188DataFrame->data[52], 2, 16)\
+		.arg(m_CJ188DataFrame->data[51], 2, 16).arg(m_CJ188DataFrame->data[50], 2, 16).\
+		arg(m_CJ188DataFrame->data[49], 2, 16));
 	m_date.replace(' ', '0');
 
 }
 
-// 组帧：广播地址读表
-void DeluMeterProtocol::makeFrameOfReadMeter()
+// 组帧：广播地址读表号
+void DeluMeterProtocol::makeFrameOfReadMeterNO()
+{
+	makeFrameOfReadMeterData(); //与读表数据一样
+}
+
+// 组帧：广播地址读表流量系数
+void DeluMeterProtocol::makeFrameOfReadMeterFlowCoe()
+{
+	makeFrameOfReadMeterData(); //与读表数据一样
+}
+
+// 组帧：广播地址读表数据
+void DeluMeterProtocol::makeFrameOfReadMeterData(int vType)
 {
 	qDebug()<<"DeluMeterProtocol::makeFrameOfReadMeter thread:"<<QThread::currentThreadId();
 
@@ -1106,7 +1104,7 @@ void DeluMeterProtocol::makeFrameOfReadMeter()
 
 	m_sendBuf.append(METER_START_CODE);//起始符
 	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
-	for (int m=0; m<METER_ADDR_LEN; m++)
+	for (int m=0; m<CJ188_ADDR_LEN; m++)
 	{
 		m_sendBuf.append(METER_ADDR_CODE); //广播地址
 	}
@@ -1114,14 +1112,14 @@ void DeluMeterProtocol::makeFrameOfReadMeter()
 	m_sendBuf.append(0x03);//数据长度
 	m_sendBuf.append(0x3F).append(0x90); //数据标识
 	m_sendBuf.append(0x03);//序列号
-	UINT8 cs = METER_START_CODE + METER_TYPE_ASK_CODE + METER_ADDR_CODE*METER_ADDR_LEN + METER_CTRL_CODE\
+	UINT8 cs = METER_START_CODE + METER_TYPE_ASK_CODE + METER_ADDR_CODE*CJ188_ADDR_LEN + METER_CTRL_CODE\
 		+ 0x03 + 0x3F + 0x90 + 0x03;
 	m_sendBuf.append(cs);//校验码
 	m_sendBuf.append(METER_END_CODE);//结束符
 }
 
 // 组帧：设置进入检定状态
-void DeluMeterProtocol::makeFrameOfSetVerifyStatus()
+void DeluMeterProtocol::makeFrameOfSetVerifyStatus(int vType)
 {
 	qDebug()<<"DeluMeterProtocol::makeFrameOfSetVerifyStatus thread:"<<QThread::currentThreadId();
 
@@ -1139,7 +1137,7 @@ void DeluMeterProtocol::makeFrameOfSetVerifyStatus()
 
 	m_sendBuf.append(METER_START_CODE);//起始符
 	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
-	for (int m=0; m<METER_ADDR_LEN; m++)
+	for (int m=0; m<CJ188_ADDR_LEN; m++)
 	{
 		m_sendBuf.append(METER_ADDR_CODE); //广播地址
 	}
@@ -1168,7 +1166,7 @@ void DeluMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString new
 	UINT8 cs = METER_START_CODE + METER_TYPE_ASK_CODE;
 	UINT8 oldNo;
 	bool ok;
-	for (int m=METER_ADDR_LEN-1; m>=0; m--)
+	for (int m=CJ188_ADDR_LEN-1; m>=0; m--)
 	{
 		oldNo = oldMeterNo.mid(2*m, 2).toUInt(&ok, 16);
 		m_sendBuf.append(oldNo); //旧表号
@@ -1185,7 +1183,7 @@ void DeluMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString new
 	cs += code1 + code2 + code3 + code4 + code5;
 
 	UINT8 newNo;
-	for (int n=METER_ADDR_LEN-1; n>=0; n--)
+	for (int n=CJ188_ADDR_LEN-1; n>=0; n--)
 	{
 		newNo = newMeterNo.mid(2*n, 2).toUInt(&ok, 16);
 		m_sendBuf.append(newNo); //新表号
@@ -1232,7 +1230,7 @@ void DeluMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, 
 	UINT8 cs = METER_START_CODE + METER_TYPE_ASK_CODE;
 	UINT8 oldNo;
 	bool ok;
-	for (int m=METER_ADDR_LEN-1; m>=0; m--)
+	for (int m=CJ188_ADDR_LEN-1; m>=0; m--)
 	{
 		oldNo = meterNO.mid(2*m, 2).toUInt(&ok, 16);
 		m_sendBuf.append(oldNo); //表号
@@ -1306,7 +1304,7 @@ void DeluMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, 
 	UINT8 cs = METER_START_CODE + METER_TYPE_ASK_CODE;
 	UINT8 oldNo;
 	bool ok;
-	for (int m=METER_ADDR_LEN-1; m>=0; m--)
+	for (int m=CJ188_ADDR_LEN-1; m>=0; m--)
 	{
 		oldNo = meterNO.mid(2*m, 2).toUInt(&ok, 16);
 		m_sendBuf.append(oldNo); //表号
@@ -1352,8 +1350,8 @@ void DeluMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, 
 }
 
 /***********************************************
-类名：TgMeterProtocol
-功能：热量表通讯协议-天罡热量表
+类名：LiChMeterProtocol
+功能：热量表通讯协议-力创热量表
 ************************************************/
 LiChMeterProtocol::LiChMeterProtocol()
 {
@@ -1363,27 +1361,27 @@ LiChMeterProtocol::~LiChMeterProtocol()
 {
 }
 
-UINT8 LiChMeterProtocol::CountCheck(DeluMeter_Frame_Struct *pFrame)
-{
-	return 0;
-}
-
-UINT8 LiChMeterProtocol::readMeterComBuffer(QByteArray tmp)
-{
-	return 0;
-}
-
 void LiChMeterProtocol::analyseFrame()
 {
 
 }
 
-void LiChMeterProtocol::makeFrameOfReadMeter()
+void LiChMeterProtocol::makeFrameOfReadMeterNO()
 {
 
 }
 
-void LiChMeterProtocol::makeFrameOfSetVerifyStatus()
+void LiChMeterProtocol::makeFrameOfReadMeterFlowCoe()
+{
+
+}
+
+void LiChMeterProtocol::makeFrameOfReadMeterData(int vType)
+{
+
+}
+
+void LiChMeterProtocol::makeFrameOfSetVerifyStatus(int vType)
 {
 
 }
@@ -1399,6 +1397,85 @@ void LiChMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, 
 }
 
 void LiChMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe)
+{
+
+}
+
+/***********************************************
+类名：HuiZhongMeterProtocol
+功能：热量表通讯协议-唐山汇中热量表
+************************************************/
+HuiZhongMeterProtocol::HuiZhongMeterProtocol()
+{
+}
+
+HuiZhongMeterProtocol::~HuiZhongMeterProtocol()
+{
+}
+
+void HuiZhongMeterProtocol::analyseFrame()
+{
+	if (NULL == m_CJ188DataFrame)
+	{
+		return;
+	}
+
+	//表号
+	m_fullMeterNo = "";
+	for (int i=0; i<CJ188_ADDR_LEN; i++)
+	{
+		m_fullMeterNo.append(QString("%1").arg(m_CJ188DataFrame->addr[i], 2, 16)).replace(' ', '0');
+	}
+}
+
+void HuiZhongMeterProtocol::makeFrameOfReadMeterNO()
+{
+
+}
+
+void HuiZhongMeterProtocol::makeFrameOfReadMeterFlowCoe()
+{
+
+}
+
+void HuiZhongMeterProtocol::makeFrameOfReadMeterData(int vType)
+{
+
+}
+
+void HuiZhongMeterProtocol::makeFrameOfSetVerifyStatus(int vType)
+{
+	qDebug()<<"HuiZhongMeterProtocol::makeFrameOfSetVerifyStatus thread:"<<QThread::currentThreadId();
+
+	m_sendBuf = "";
+	m_sendBuf.append(METER_START_CODE);//起始符
+	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
+	for (int m=0; m<CJ188_ADDR_LEN; m++)
+	{
+		m_sendBuf.append(METER_ADDR_CODE); //广播地址
+	}
+	m_sendBuf.append(0x3B).append(0x04).append(0xB2);
+	if (vType==VTYPE_FLOW) //进入流量检定
+	{
+		m_sendBuf.append(0x6D).append(0x01).append(0x01).append(0x8E).append(0x16);
+	}
+	else if (vType==VTYPE_HEAT) //进入热量检定
+	{
+		m_sendBuf.append(0x6C).append(0x01).append(0x01).append(0x8D).append(0x16);
+	}
+}
+
+void HuiZhongMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo)
+{
+
+}
+
+void HuiZhongMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr)
+{
+
+}
+
+void HuiZhongMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe)
 {
 
 }

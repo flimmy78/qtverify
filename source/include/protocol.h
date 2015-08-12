@@ -238,34 +238,34 @@ public:
 #define     METER_CTRL_CODE		        0x01	//控制码
 #define     METER_END_CODE		        0x16	//结束符
 
-#define		METER_START_STATE		0x00
-#define		METER_TYPE_STATE		0x01
-#define		METER_ADDR_STATE		0x02
-#define		METER_CTRL_STATE		0x03
-#define		METER_DATALEN_STATE		0x04
-#define		METER_DATAID_STATE		0x05
-#define		METER_SN_STATE			0x06
-#define		METER_DATA_STATE		0x07
-#define		METER_CS_STATE			0x08
-#define		METER_END_STATE			0x09
+#define		STATE_METER_START		0x00
+#define		STATE_METER_TYPE		0x01
+#define		STATE_METER_ADDR		0x02
+#define		STATE_METER_CTRL		0x03
+#define		STATE_METER_DATALEN		0x04
+#define		STATE_METER_DATAID		0x05
+#define		STATE_METER_SN			0x06
+#define		STATE_METER_DATA		0x07
+#define		STATE_METER_CS			0x08
+#define		STATE_METER_END			0x09
 
-#define     METER_ADDR_LEN		7
-#define     METER_DATAID_LEN	2
-#define     METER_DATA_LEN		55
+#define     CJ188_ADDR_LEN			7
+#define     CJ188_DATAID_LEN		2
+#define     CJ188_DATA_MAX_LEN		97
 
 typedef struct  
 {
 	UINT8 startCode;	//起始符
 	UINT8 typeCode;		//仪表类型
-	UINT8 addr[METER_ADDR_LEN];		//地址
+	UINT8 addr[CJ188_ADDR_LEN];		//地址
 	UINT8 ctrlCode;		//控制码
 	UINT8 dataLen;		//数据长度
-	UINT8 dataID[METER_DATAID_LEN];	//数据标识
+	UINT8 dataID[CJ188_DATAID_LEN];	//数据标识
 	UINT8 sn;			//序列号
-	UINT8 data[METER_DATA_LEN];		//数据域
-	UINT8 cs;	    //校验码
+	UINT8 data[CJ188_DATA_MAX_LEN];	//数据域
+	UINT8 cs;	        //校验码
 	UINT8 endCode;      //结束符
-}DeluMeter_Frame_Struct;
+}CJ188_Frame_Struct;
 
 //四个流量点的系数结构
 struct MeterCoe_STR
@@ -285,23 +285,28 @@ public:
 	~MeterProtocol();
 
 	QByteArray m_sendBuf;
-	QString m_fullMeterNo;  //完整表号 7个字节
+	CJ188_Frame_Struct *m_CJ188DataFrame;
+	QString m_fullMeterNo; //完整表号 7个字节
 	QString m_inTemper; //进水温度
 	QString m_outTemper;//回水温度
 	QString m_flow; //流量 
 	QString m_heat; //热量
 	QString m_date; //当前日期
-	QString m_bigCoe; //大流量点流量系数
+	QString m_bigCoe;  //大流量点流量系数
 	QString m_mid2Coe; //中流二流量系数
 	QString m_mid1Coe; //中流一流量系数
-	QString m_smallCoe; //小流量点流量系数
+	QString m_smallCoe;//小流量点流量系数
+	QString m_Coe; //总系数
 
 public slots:
-	virtual UINT8 readMeterComBuffer(QByteArray tmp){return 0;};
+	virtual UINT8 readMeterComBuffer(QByteArray tmp);
+	virtual UINT8 CountCheck(CJ188_Frame_Struct *pFrame);
 	virtual void analyseFrame(){};
 
-	virtual void makeFrameOfReadMeter(){};        //读表（广播地址读表）
-	virtual void makeFrameOfSetVerifyStatus(){};	//设置进入检定状态
+	virtual void makeFrameOfReadMeterNO(){};        //读表号（广播地址读表）
+	virtual void makeFrameOfReadMeterFlowCoe(){};   //读表流量系数（广播地址读表）
+	virtual void makeFrameOfReadMeterData(int vType=VTYPE_FLOW){};   //读表数据（广播地址读表）
+	virtual void makeFrameOfSetVerifyStatus(int vType=VTYPE_FLOW){}; //设置进入检定状态
 	virtual void makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo){};	//修改表号
 	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr){};	//修改流量参数
 	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe){};	//修改流量参数
@@ -317,6 +322,7 @@ public slots:
 	virtual QString getMid2Coe();
 	virtual QString getMid1Coe();
 	virtual QString getSmallCoe();
+	virtual QString getCoe();
 
 private:
 
@@ -330,18 +336,17 @@ public:
 	~DeluMeterProtocol();
 
 public slots:
-	virtual UINT8 CountCheck(DeluMeter_Frame_Struct *pFrame);
-	virtual UINT8 readMeterComBuffer(QByteArray tmp);
 	virtual void analyseFrame();
 
-	virtual void makeFrameOfReadMeter();        //读表（广播地址读表）
-	virtual void makeFrameOfSetVerifyStatus();	//设置进入检定状态
+	virtual void makeFrameOfReadMeterNO();        //读表号（广播地址读表）
+	virtual void makeFrameOfReadMeterFlowCoe();   //读表流量系数（广播地址读表）
+	virtual void makeFrameOfReadMeterData(int vType=VTYPE_FLOW);    //读表数据（广播地址读表）
+	virtual void makeFrameOfSetVerifyStatus(int vType=VTYPE_FLOW);	//设置进入检定状态
 	virtual void makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo);	//修改表号(14位表号)
 	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr);	//修改流量参数
 	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe);	//修改流量参数
 
 private:
-	DeluMeter_Frame_Struct *m_deluMeterFrame;
 
 };
 
@@ -353,20 +358,43 @@ public:
 	~LiChMeterProtocol();
 
 public slots:
-	virtual UINT8 CountCheck(DeluMeter_Frame_Struct *pFrame);
-	virtual UINT8 readMeterComBuffer(QByteArray tmp);
 	virtual void analyseFrame();
 
-	virtual void makeFrameOfReadMeter();        //读表（广播地址读表）
-	virtual void makeFrameOfSetVerifyStatus();	//设置进入检定状态
+	virtual void makeFrameOfReadMeterNO();        //读表号（广播地址读表）
+	virtual void makeFrameOfReadMeterFlowCoe();   //读表流量系数（广播地址读表）
+	virtual void makeFrameOfReadMeterData(int vType=VTYPE_FLOW);    //读表数据（广播地址读表）
+	virtual void makeFrameOfSetVerifyStatus(int vType=VTYPE_FLOW);	//设置进入检定状态
 	virtual void makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo);	//修改表号
 	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr);	//修改流量参数
 	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe);	//修改流量参数
 
 private:
-	DeluMeter_Frame_Struct *m_deluMeterFrame;
 
 };
+
+//汇中热量表通讯协议类
+class PROTOCOL_EXPORT HuiZhongMeterProtocol : public MeterProtocol
+{
+public:
+	HuiZhongMeterProtocol();
+	~HuiZhongMeterProtocol();
+
+public slots:
+	virtual void analyseFrame();
+
+	virtual void makeFrameOfReadMeterNO();        //读表号（广播地址读表）
+	virtual void makeFrameOfReadMeterFlowCoe();   //读表流量系数（广播地址读表）
+	virtual void makeFrameOfReadMeterData(int vType=VTYPE_FLOW);    //读表数据（广播地址读表）
+	virtual void makeFrameOfSetVerifyStatus(int vType=VTYPE_FLOW);	//设置进入检定状态
+	virtual void makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo);	//修改表号
+	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr);	//修改流量参数
+	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe); //修改流量参数
+
+private:
+
+};
+
+
 //热量表通讯协议 end
 
 //标准温度计-STI-1062A串口协议类

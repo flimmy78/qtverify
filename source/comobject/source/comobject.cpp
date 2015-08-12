@@ -565,12 +565,16 @@ void MeterComObject::setProtocolVersion(int version)
 	switch (m_protocolVersion)
 	{
 	case PROTOCOL_VER_COMMON:	//通用协议
-	case PROTOCOL_VER_DELU:	    //德鲁热量表
-	case PROTOCOL_VER_TIANGANG: //天罡热量表
+	case PROTOCOL_VER_DELU:	    //德鲁超声波表
+	case PROTOCOL_VER_TIANGANG: //天罡超声波表
+	case PROTOCOL_VER_RUINA:    //瑞纳超声波表
 		m_meterProtocol = new DeluMeterProtocol();
 		break;
 	case PROTOCOL_VER_LICHSONIC: //力创超声波表
 		m_meterProtocol = new LiChMeterProtocol();
+		break;
+	case PROTOCOL_VER_HUIZH: //汇中超声波表
+		m_meterProtocol = new HuiZhongMeterProtocol();
 		break;
 	default: 
 		m_meterProtocol =  new DeluMeterProtocol();
@@ -626,15 +630,20 @@ void MeterComObject::readMeterComBuffer()
 	{
 		return;
 	}
-// 	qDebug()<<"Read"<<m_meterCom->bytesAvailable()<<"bytes!";
 	m_meterTmp.append(m_meterCom->readAll());
-	int num = m_meterTmp.size();
-	if (num < 84) //一帧84个字节
+	int idx = m_meterTmp.indexOf(METER_START_CODE); //起始符
+	if (idx < 0)
 	{
-//		qDebug()<<"串口返回字节个数 ="<<num;
 		return;
 	}
-	if (m_meterTmp.at(num-1) !=  METER_END_CODE) //一帧接收完毕
+	int num = m_meterTmp.size();
+	if (num <= idx + 10)
+	{
+		return;
+	}
+	UINT8 datalen = (UINT8)m_meterTmp.at(10+idx);
+	int framelen = idx + 13 + datalen;
+	if (num < framelen || m_meterTmp.at(num-1) !=  METER_END_CODE) //一帧接收完毕
 	{
 		return;
 	}
@@ -708,31 +717,60 @@ void MeterComObject::readMeterComBuffer()
 }
 
 /*
-** 请求读表（广播地址读表）
+** 请求读表号
 */
-void MeterComObject::askReadMeter()
+void MeterComObject::askReadMeterNO()
 {
-	qDebug()<<"111 MeterComObject askReadMeter thread:"<<QThread::currentThreadId();
+	qDebug()<<"111 MeterComObject askReadMeterNo thread:"<<QThread::currentThreadId();
 	if (NULL==m_meterProtocol)
 	{
 		return;
 	}
-	m_meterProtocol->makeFrameOfReadMeter();
+	m_meterProtocol->makeFrameOfReadMeterNO();
+	QByteArray buf = m_meterProtocol->getSendFrame();
+	m_meterCom->write(buf);
+}
+
+/*
+** 请求读表流量系数
+*/
+void MeterComObject::askReadMeterFlowCoe()
+{
+
+}
+
+/*
+** 请求读表（广播地址读表）
+** 输入参数 vType: 检定类型
+				0：流量检定
+				1：热量检定
+*/
+void MeterComObject::askReadMeterData(int vType)
+{
+	qDebug()<<"111 MeterComObject askReadMeterData thread:"<<QThread::currentThreadId();
+	if (NULL==m_meterProtocol)
+	{
+		return;
+	}
+	m_meterProtocol->makeFrameOfReadMeterData();
 	QByteArray buf = m_meterProtocol->getSendFrame();
 	m_meterCom->write(buf);
 }
 
 /*
 ** 请求设置进入检定状态
+** 输入参数 vType: 检定类型
+				0：流量检定
+				1：热量检定
 */
-void MeterComObject::askSetVerifyStatus()
+void MeterComObject::askSetVerifyStatus(int vType)
 {
 	qDebug()<<"111 MeterComObject askSetVerifyStatus thread:"<<QThread::currentThreadId();
 	if (NULL==m_meterProtocol)
 	{
 		return;
 	}
-	m_meterProtocol->makeFrameOfSetVerifyStatus();
+	m_meterProtocol->makeFrameOfSetVerifyStatus(vType);
 	QByteArray buf = m_meterProtocol->getSendFrame();
 	m_meterCom->write(buf);
 }

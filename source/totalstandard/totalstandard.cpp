@@ -1887,7 +1887,7 @@ void TotalStandardDlg::on_btnAllVerifyStatus_clicked()
 void TotalStandardDlg::slotReadMeter(const int &row)
 {
 	qDebug()<<"slotReadMeter row ="<<row;
-	m_meterObj[row].askReadMeter();
+	m_meterObj[row].askReadMeterData();
 }
 
 /*
@@ -1898,7 +1898,7 @@ void TotalStandardDlg::slotReadMeter(const int &row)
 void TotalStandardDlg::slotVerifyStatus(const int &row)
 {
 	qDebug()<<"slotVerifyStatus row ="<<row;
-	m_meterObj[row].askSetVerifyStatus();
+	m_meterObj[row].askSetVerifyStatus(VTYPE_HEAT);
 }
 
 

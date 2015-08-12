@@ -106,6 +106,15 @@ enum Verify_Method
 };
 
 /*
+** 进入检定状态的类型 0:流量检定；1:热量检定
+*/
+enum Verify_Type
+{
+	VTYPE_FLOW = 0, //进入流量检定状态
+	VTYPE_HEAT      //进入热量检定状态
+};
+
+/*
 ** 表格列
 */
 enum table_columns

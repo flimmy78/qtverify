@@ -724,7 +724,7 @@ void DataTestDlg::on_btnReadMeterData_clicked()
 {
 	clearMeterDispInfo();
 	qDebug()<<"读表 开始...";
- 	m_meterObj->askReadMeter(); //请求读表
+ 	m_meterObj->askReadMeterData(); //请求读表
 }
 
 //修改表号
@@ -737,7 +737,7 @@ void DataTestDlg::on_btnModifyMeterNo_clicked()
 		QMessageBox::warning(this, tr("Warning"), tr("MeterNO. is empty! please read meter first!"));
 		return;
 	}
-	if (newMeterNo.isEmpty() || newMeterNo.size()!=2*METER_ADDR_LEN)
+	if (newMeterNo.isEmpty() || newMeterNo.size()!=2*CJ188_ADDR_LEN)
 	{
 		QMessageBox::warning(this, tr("Warning"), tr("new NO. is error!\nplease input 14 bits meter number!"));
 		ui.lnEditNewMeterNo->setFocus();

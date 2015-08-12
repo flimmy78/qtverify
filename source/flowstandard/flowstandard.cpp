@@ -2026,7 +2026,7 @@ row:行号，由row可以知道当前热表对应的串口、表号、误差等等
 void FlowStandardDlg::slotReadMeter(const int &row)
 {
 	qDebug()<<"slotReadMeter row ="<<row;
-	m_meterObj[row].askReadMeter();
+	m_meterObj[row].askReadMeterData();
 }
 
 /*
@@ -2037,7 +2037,7 @@ row:行号，由row可以知道当前热表对应的串口、表号、误差等等
 void FlowStandardDlg::slotVerifyStatus(const int &row)
 {
 	qDebug()<<"slotVerifyStatus row ="<<row;
-	m_meterObj[row].askSetVerifyStatus();
+	m_meterObj[row].askSetVerifyStatus(VTYPE_FLOW);
 }
 
 /*

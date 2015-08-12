@@ -2021,7 +2021,7 @@ void TotalWeightDlg::on_btnAllVerifyStatus_clicked()
 void TotalWeightDlg::slotReadMeter(const int &row)
 {
 	qDebug()<<"slotReadMeter row ="<<row;
-	m_meterObj[row].askReadMeter();
+	m_meterObj[row].askReadMeterData();
 }
 
 /*
@@ -2032,5 +2032,5 @@ void TotalWeightDlg::slotReadMeter(const int &row)
 void TotalWeightDlg::slotVerifyStatus(const int &row)
 {
 	qDebug()<<"slotVerifyStatus row ="<<row;
-	m_meterObj[row].askSetVerifyStatus();
+	m_meterObj[row].askSetVerifyStatus(VTYPE_HEAT);
 }

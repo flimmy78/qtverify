@@ -189,7 +189,7 @@ void CmbVerifyDlg::initTbl()
 
 void CmbVerifyDlg::slotReadData(const int &row)
 {
-	m_meterObj[row].askReadMeter();
+	m_meterObj[row].askReadMeterData();
 }
 
 //自动读取表号成功 显示表号
