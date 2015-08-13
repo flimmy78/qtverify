@@ -534,6 +534,7 @@ void FlowStandardDlg::initTableWidget()
 	QSignalMapper *signalMapper2 = new QSignalMapper();
 	QSignalMapper *signalMapper3 = new QSignalMapper();
 	QSignalMapper *signalMapper4 = new QSignalMapper();
+	QSignalMapper *signalMapper5 = new QSignalMapper();
 
 	QStringList vLabels;
 	for (int i=0; i< ui.tableWidget->rowCount(); i++)
@@ -569,20 +570,26 @@ void FlowStandardDlg::initTableWidget()
 		connect(btnAdjErr, SIGNAL(clicked()), signalMapper2, SLOT(map()));
 		btnAdjErr->setEnabled(false);
 
-		QPushButton *btnReadMeter = new QPushButton(QObject::tr("(%1)").arg(i+1) + tr("ReadMeter"));
-		ui.tableWidget->setCellWidget(i, COLUMN_READ_DATA, btnReadMeter);
-		signalMapper3->setMapping(btnReadMeter, i);
-		connect(btnReadMeter, SIGNAL(clicked()), signalMapper3, SLOT(map()));
+		QPushButton *btnReadData = new QPushButton(QObject::tr("(%1)").arg(i+1) + tr("ReadData"));
+		ui.tableWidget->setCellWidget(i, COLUMN_READ_DATA, btnReadData);
+		signalMapper3->setMapping(btnReadData, i);
+		connect(btnReadData, SIGNAL(clicked()), signalMapper3, SLOT(map()));
 
 		QPushButton *btnVerifySt = new QPushButton(QObject::tr("(%1)").arg(i+1) + tr("VerifySt"));
 		ui.tableWidget->setCellWidget(i, COLUMN_VERIFY_STATUS, btnVerifySt);
 		signalMapper4->setMapping(btnVerifySt, i);
 		connect(btnVerifySt, SIGNAL(clicked()), signalMapper4, SLOT(map()));
+
+		QPushButton *btnReadN0 = new QPushButton(QObject::tr("(%1)").arg(i+1) + tr("ReadNO"));
+		ui.tableWidget->setCellWidget(i, COLUMN_READ_NO, btnReadN0);
+		signalMapper5->setMapping(btnReadN0, i);
+		connect(btnReadN0, SIGNAL(clicked()), signalMapper5, SLOT(map()));
 	}
 	connect(signalMapper1, SIGNAL(mapped(const int &)),this, SLOT(slotModifyMeterNO(const int &)));
 	connect(signalMapper2, SIGNAL(mapped(const int &)),this, SLOT(slotAdjustError(const int &)));
-	connect(signalMapper3, SIGNAL(mapped(const int &)),this, SLOT(slotReadMeter(const int &)));
+	connect(signalMapper3, SIGNAL(mapped(const int &)),this, SLOT(slotReadData(const int &)));
 	connect(signalMapper4, SIGNAL(mapped(const int &)),this, SLOT(slotVerifyStatus(const int &)));
+	connect(signalMapper5, SIGNAL(mapped(const int &)),this, SLOT(slotReadNO(const int &)));
 
 	ui.tableWidget->setVerticalHeaderLabels(vLabels);
 	ui.tableWidget->setFont(QFont("Times", 15, QFont::DemiBold, true));
@@ -671,15 +678,6 @@ void FlowStandardDlg::slotExaustFinished()
 	{
 		startVerify();
 	}
-}
-
-/*
-** 读取所有热表数据
-*/
-int FlowStandardDlg::readAllMeter()
-{
-	on_btnAllReadMeter_clicked();
-	return true;
 }
 
 /*
@@ -788,7 +786,7 @@ int FlowStandardDlg::openWaterOutValve()
 int FlowStandardDlg::judgeTartgetVolAndCalcAvgTemperAndFlow(float initV, float verifyV)
 {
 	float targetV       = initV + verifyV;
-	ui.btnAllReadMeter->setEnabled(false);
+	ui.btnAllReadData->setEnabled(false);
 	ui.btnAllVerifyStatus->setEnabled(false);
 	QDateTime startTime = QDateTime::currentDateTime();
 	int second          = 0;
@@ -855,7 +853,7 @@ void FlowStandardDlg::on_btnStart_clicked()
 	ui.labelHintPoint->clear();
 	ui.labelHintProcess->clear();
 	ui.tableWidget->setEnabled(true);
-	ui.btnAllReadMeter->setEnabled(true);
+	ui.btnAllReadData->setEnabled(true);
 	ui.btnAllVerifyStatus->setEnabled(true);
 
 	m_stopFlag = false;
@@ -880,7 +878,7 @@ void FlowStandardDlg::on_btnStart_clicked()
 
 	if (m_autopick) //自动读表
 	{
-		readAllMeter();
+		on_btnAllReadNO_clicked();
 		sleep(m_exaustSecond*1000/2);
 		setAllMeterVerifyStatus();
 	}
@@ -1823,7 +1821,7 @@ int FlowStandardDlg::getMeterStartValue()
 			{
 				ui.labelHintProcess->setText(tr("read start value of heat meter..."));
 				sleep(WAIT_COM_TIME); //需要等待，否则热表来不及响应通讯
-				readAllMeter();
+				on_btnAllReadData_clicked();
 //	 			sleep(500); //等待串口返回数据
 			}
 			else //手动输入
@@ -1855,7 +1853,7 @@ int FlowStandardDlg::getMeterEndValue()
 
 	if (m_autopick) //自动采集
 	{
-		readAllMeter();
+		on_btnAllReadData_clicked();
 		//sleep(WAIT_COM_TIME); //等待串口返回数据
 	}
 	else //手动输入
@@ -1941,10 +1939,10 @@ int FlowStandardDlg::saveAllVerifyRecords()
 	return true;
 }
 
-//请求读表（所有表、广播地址读表）
-void FlowStandardDlg::on_btnAllReadMeter_clicked()
+//请求读表号（所有表、广播地址读表）
+void FlowStandardDlg::on_btnAllReadNO_clicked()
 {
-	qDebug()<<"on_btnAllReadMeter_clicked...";
+	qDebug()<<"on_btnAllReadNO_clicked...";
 	int idx = -1;
 	for (int j=0; j<m_maxMeterNum; j++)
 	{
@@ -1965,7 +1963,35 @@ void FlowStandardDlg::on_btnAllReadMeter_clicked()
 				m_meterEndValue[idx] = 0;
 			}
 		}
-		slotReadMeter(j);
+		slotReadNO(j);
+	}
+}
+
+//请求读表数据（所有表、广播地址读表）
+void FlowStandardDlg::on_btnAllReadData_clicked()
+{
+	qDebug()<<"on_btnAllReadData_clicked...";
+	int idx = -1;
+	for (int j=0; j<m_maxMeterNum; j++)
+	{
+		idx = isMeterPosValid(j+1);
+		if (m_state == STATE_START_VALUE)
+		{
+			ui.tableWidget->item(j, COLUMN_METER_START)->setText("");
+			if (idx >= 0)
+			{
+				m_meterStartValue[idx] = 0;
+			}
+		}
+		else if (m_state == STATE_END_VALUE)
+		{
+			ui.tableWidget->item(j, COLUMN_METER_END)->setText("");
+			if (idx >= 0)
+			{
+				m_meterEndValue[idx] = 0;
+			}
+		}
+		slotReadData(j);
 	}
 }
 
@@ -2056,9 +2082,20 @@ void FlowStandardDlg::slotAdjustError(const int &row)
 ** 输入参数：
 row:行号，由row可以知道当前热表对应的串口、表号、误差等等
 */
-void FlowStandardDlg::slotReadMeter(const int &row)
+void FlowStandardDlg::slotReadNO(const int &row)
 {
-	qDebug()<<"slotReadMeter row ="<<row;
+	qDebug()<<"slotReadNO row ="<<row;
+	m_meterObj[row].askReadMeterNO();
+}
+
+/*
+** 读表数据
+** 输入参数：
+row:行号，由row可以知道当前热表对应的串口、表号、误差等等
+*/
+void FlowStandardDlg::slotReadData(const int &row)
+{
+	qDebug()<<"slotReadData row ="<<row;
 	m_meterObj[row].askReadMeterData();
 }
 
