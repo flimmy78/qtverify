@@ -4,43 +4,44 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../totalweight.cpp" line="551"/>
+        <location filename="../totalweight.cpp" line="556"/>
         <source>MeterValue0(kWh)</source>
         <translation>MeterValue0(kWh)</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="552"/>
+        <location filename="../totalweight.cpp" line="557"/>
         <source>MeterValue1(kWh)</source>
         <translation>MeterValue1(kWh)</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="553"/>
+        <location filename="../totalweight.cpp" line="558"/>
         <source>StdValue(kWh)</source>
         <translation>StdValue(kWh)</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="557"/>
+        <location filename="../totalweight.cpp" line="562"/>
         <source>MeterValue0(MJ)</source>
         <translation>MeterValue0(MJ)</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="558"/>
+        <location filename="../totalweight.cpp" line="563"/>
         <source>MeterValue1(MJ)</source>
         <translation>MeterValue1(MJ)</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="559"/>
+        <location filename="../totalweight.cpp" line="564"/>
         <source>StdValue(MJ)</source>
         <translation>StdValue(MJ)</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="666"/>
+        <location filename="../totalweight.cpp" line="673"/>
         <source>meterPosNo%1</source>
         <translation>meterPosNo%1</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="684"/>
-        <location filename="../totalweight.cpp" line="689"/>
+        <location filename="../totalweight.cpp" line="692"/>
+        <location filename="../totalweight.cpp" line="697"/>
+        <location filename="../totalweight.cpp" line="702"/>
         <source>(%1)</source>
         <translation>(%1)</translation>
     </message>
@@ -87,12 +88,12 @@
         <translation>Min ΔT</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="124"/>
+        <location filename="../totalweight.ui" line="127"/>
         <source>K</source>
         <translation>K</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="147"/>
+        <location filename="../totalweight.ui" line="150"/>
         <source>Std Temper</source>
         <translation>Std Temper</translation>
     </message>
@@ -101,28 +102,28 @@
         <translation type="obsolete">Acquisite</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="181"/>
+        <location filename="../totalweight.ui" line="182"/>
         <source>In:</source>
         <translation>In:</translation>
     </message>
     <message utf8="true">
-        <location filename="../totalweight.ui" line="198"/>
-        <location filename="../totalweight.ui" line="256"/>
+        <location filename="../totalweight.ui" line="206"/>
+        <location filename="../totalweight.ui" line="297"/>
         <source>Ω</source>
         <translation>Ω</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="239"/>
+        <location filename="../totalweight.ui" line="273"/>
         <source>Out:</source>
         <translation>Out:</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="836"/>
+        <location filename="../totalweight.ui" line="361"/>
         <source>MeterNo</source>
         <translation>MeterNo</translation>
     </message>
     <message utf8="true">
-        <location filename="../totalweight.ui" line="841"/>
+        <location filename="../totalweight.ui" line="366"/>
         <source>FlowPoint(m³/h)</source>
         <translation>FlowPoint(m³/h)</translation>
     </message>
@@ -135,22 +136,22 @@
         <translation type="obsolete">MeterValue1(kwh)</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="856"/>
+        <location filename="../totalweight.ui" line="381"/>
         <source>BalWeight0(kg)</source>
         <translation>BalWeight0(kg)</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="861"/>
+        <location filename="../totalweight.ui" line="386"/>
         <source>BalWeight1(kg)</source>
         <translation>BalWeight1(kg)</translation>
     </message>
     <message utf8="true">
-        <location filename="../totalweight.ui" line="866"/>
+        <location filename="../totalweight.ui" line="391"/>
         <source>Temp(℃)</source>
         <translation>Temp(℃)</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="871"/>
+        <location filename="../totalweight.ui" line="396"/>
         <source>Density(kg/L)</source>
         <translation>Density(kg/L)</translation>
     </message>
@@ -159,7 +160,7 @@
         <translation type="obsolete">StdValue(kwh)</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="881"/>
+        <location filename="../totalweight.ui" line="406"/>
         <source>DsipError(%)</source>
         <translation>DsipError(%)</translation>
     </message>
@@ -172,15 +173,13 @@
         <translation type="obsolete">AdjustError</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="929"/>
+        <location filename="../totalweight.ui" line="459"/>
         <source>ParaSet</source>
         <translation>ParaSet</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="898"/>
-        <location filename="../totalweight.ui" line="956"/>
         <source>ReadMeter</source>
-        <translation>ReadMeter</translation>
+        <translation type="obsolete">ReadMeter</translation>
     </message>
     <message>
         <location filename="../totalweight.ui" line="85"/>
@@ -188,85 +187,97 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="159"/>
+        <location filename="../totalweight.ui" line="162"/>
         <source>Collect</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="846"/>
+        <location filename="../totalweight.ui" line="371"/>
         <source>MeterValue0(kWh)</source>
         <translation>MeterValue0(kWh)</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="851"/>
+        <location filename="../totalweight.ui" line="376"/>
         <source>MeterValue1(kWh)</source>
         <translation>MeterValue1(kWh)</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="876"/>
+        <location filename="../totalweight.ui" line="401"/>
         <source>StdValue(kWh)</source>
         <translation>StdValue(kWh)</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="893"/>
+        <location filename="../totalweight.ui" line="418"/>
         <source>StdError(%)</source>
         <translation>StdError(%)</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="903"/>
-        <location filename="../totalweight.ui" line="981"/>
+        <location filename="../totalweight.ui" line="423"/>
+        <location filename="../totalweight.ui" line="486"/>
+        <source>ReadNO</source>
+        <translation>ReadNO</translation>
+    </message>
+    <message>
+        <location filename="../totalweight.ui" line="428"/>
+        <location filename="../totalweight.ui" line="511"/>
+        <source>ReadData</source>
+        <translation>ReadData</translation>
+    </message>
+    <message>
+        <location filename="../totalweight.ui" line="433"/>
+        <location filename="../totalweight.ui" line="536"/>
         <source>VerifySt</source>
         <translation>VerifySt</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="1586"/>
+        <location filename="../totalweight.ui" line="563"/>
         <source>ReCalc</source>
         <translation>ReCalc</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="401"/>
+        <location filename="../totalweight.ui" line="708"/>
         <source>NowPara(KeyInfo)</source>
         <translation>NowPara(KeyInfo)</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="413"/>
+        <location filename="../totalweight.ui" line="720"/>
         <source>Standard:</source>
         <translation>Standard:</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="439"/>
+        <location filename="../totalweight.ui" line="746"/>
         <source>DA Mode:</source>
         <translation>DA Mode:</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="456"/>
+        <location filename="../totalweight.ui" line="763"/>
         <source>Manual</source>
         <translation>Manual</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="461"/>
+        <location filename="../totalweight.ui" line="768"/>
         <source>Auto</source>
         <translation>Auto</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="475"/>
+        <location filename="../totalweight.ui" line="782"/>
         <source>ResetZero:</source>
         <translation>ResetZero:</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="492"/>
-        <location filename="../totalweight.ui" line="528"/>
+        <location filename="../totalweight.ui" line="799"/>
+        <location filename="../totalweight.ui" line="835"/>
         <source>No</source>
         <translation>No</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="497"/>
-        <location filename="../totalweight.ui" line="533"/>
+        <location filename="../totalweight.ui" line="804"/>
+        <location filename="../totalweight.ui" line="840"/>
         <source>Yes</source>
         <translation>Yes</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="511"/>
+        <location filename="../totalweight.ui" line="818"/>
         <source>Continuous:</source>
         <translation>Continuous:</translation>
     </message>
@@ -279,17 +290,17 @@
         <translation type="obsolete">Continuous</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="550"/>
+        <location filename="../totalweight.ui" line="857"/>
         <source>Controller</source>
         <translation>Controller</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="601"/>
+        <location filename="../totalweight.ui" line="911"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="628"/>
+        <location filename="../totalweight.ui" line="938"/>
         <source>i
 n
 </source>
@@ -298,7 +309,7 @@ n
 </translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="740"/>
+        <location filename="../totalweight.ui" line="1050"/>
         <source>b
 i
 g</source>
@@ -307,7 +318,7 @@ i
 g</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="684"/>
+        <location filename="../totalweight.ui" line="994"/>
         <source>m
 i
 d
@@ -318,7 +329,7 @@ d
 1</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="712"/>
+        <location filename="../totalweight.ui" line="1022"/>
         <source>m
 i
 d
@@ -329,7 +340,7 @@ d
 2</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="655"/>
+        <location filename="../totalweight.ui" line="965"/>
         <source>s
 m
 a
@@ -342,7 +353,7 @@ l
 l</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="767"/>
+        <location filename="../totalweight.ui" line="1077"/>
         <source>o
 u
 t</source>
@@ -351,7 +362,7 @@ u
 t</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="794"/>
+        <location filename="../totalweight.ui" line="1104"/>
         <source>Set Freq</source>
         <translation>Set Freq</translation>
     </message>
@@ -360,17 +371,17 @@ t</translation>
         <translation type="obsolete">Start Pump</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="1127"/>
+        <location filename="../totalweight.ui" line="1151"/>
         <source>DataAcquisition</source>
         <translation>DataAcquisition</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="1141"/>
+        <location filename="../totalweight.ui" line="1165"/>
         <source>Big Bal:</source>
         <translation>Big Bal:</translation>
     </message>
     <message utf8="true">
-        <location filename="../totalweight.ui" line="1182"/>
+        <location filename="../totalweight.ui" line="1206"/>
         <source>㎏</source>
         <translation>㎏</translation>
     </message>
@@ -379,25 +390,25 @@ t</translation>
         <translation type="obsolete">Small Bal:</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="1195"/>
+        <location filename="../totalweight.ui" line="1219"/>
         <source>FlowRate:</source>
         <translation>FlowRate:</translation>
     </message>
     <message utf8="true">
-        <location filename="../totalweight.ui" line="1227"/>
+        <location filename="../totalweight.ui" line="1251"/>
         <source>m³/h</source>
         <translation>m³/h</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="1240"/>
+        <location filename="../totalweight.ui" line="1264"/>
         <source>In Temp:</source>
         <translation>In Temp:</translation>
     </message>
     <message utf8="true">
-        <location filename="../totalweight.ui" line="215"/>
-        <location filename="../totalweight.ui" line="273"/>
-        <location filename="../totalweight.ui" line="1390"/>
-        <location filename="../totalweight.ui" line="1556"/>
+        <location filename="../totalweight.ui" line="246"/>
+        <location filename="../totalweight.ui" line="337"/>
+        <location filename="../totalweight.ui" line="1414"/>
+        <location filename="../totalweight.ui" line="1580"/>
         <source>℃</source>
         <translation>℃</translation>
     </message>
@@ -407,12 +418,12 @@ t</translation>
         <translation>Total Verify Data</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="1403"/>
+        <location filename="../totalweight.ui" line="1427"/>
         <source>Out Temp:</source>
         <translation>Out Temp:</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="294"/>
+        <location filename="../totalweight.ui" line="576"/>
         <source>Process Hint</source>
         <translation>Process Hint</translation>
     </message>
@@ -425,22 +436,22 @@ t</translation>
         <translation type="obsolete">Process:</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="819"/>
+        <location filename="../totalweight.ui" line="1129"/>
         <source>Pump</source>
         <translation>Pump</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="1033"/>
+        <location filename="../totalweight.ui" line="1610"/>
         <source>Exhaust</source>
         <translation>Exhaust</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="1008"/>
+        <location filename="../totalweight.ui" line="683"/>
         <source>Start</source>
         <translation>Start</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="1058"/>
+        <location filename="../totalweight.ui" line="1635"/>
         <source>GoOn</source>
         <translation>GoOn</translation>
     </message>
@@ -449,13 +460,13 @@ t</translation>
         <translation type="obsolete">Next</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="172"/>
-        <location filename="../totalweight.ui" line="1083"/>
+        <location filename="../totalweight.ui" line="175"/>
+        <location filename="../totalweight.ui" line="1660"/>
         <source>Stop</source>
         <translation>Stop</translation>
     </message>
     <message>
-        <location filename="../totalweight.ui" line="1108"/>
+        <location filename="../totalweight.ui" line="1685"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
@@ -464,9 +475,10 @@ t</translation>
     <name>TotalWeightDlg</name>
     <message>
         <location filename="../totalweight.cpp" line="64"/>
-        <location filename="../totalweight.cpp" line="731"/>
-        <location filename="../totalweight.cpp" line="738"/>
-        <location filename="../totalweight.cpp" line="1018"/>
+        <location filename="../totalweight.cpp" line="745"/>
+        <location filename="../totalweight.cpp" line="752"/>
+        <location filename="../totalweight.cpp" line="1023"/>
+        <location filename="../totalweight.cpp" line="1032"/>
         <source>Warning</source>
         <translation>Warning</translation>
     </message>
@@ -488,12 +500,12 @@ t</translation>
         <translation type="obsolete">Exhaust countdown: %1 second</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1057"/>
+        <location filename="../totalweight.cpp" line="1070"/>
         <source>Please input meter number!</source>
         <translation>Please input meter number!</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="770"/>
+        <location filename="../totalweight.cpp" line="784"/>
         <source>Exhaust countdown finished!</source>
         <translation>Exhaust countdown finished!</translation>
     </message>
@@ -520,7 +532,7 @@ Please wait for about %1 second</translation>
         <translation type="obsolete">All flow points has verified!</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1111"/>
+        <location filename="../totalweight.cpp" line="1124"/>
         <source>Verify has Stoped!</source>
         <translation>Verify has Stoped!</translation>
     </message>
@@ -529,126 +541,140 @@ Please wait for about %1 second</translation>
         <translation type="obsolete">please input meter number, then click &quot;start&quot; button!</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="195"/>
+        <location filename="../totalweight.cpp" line="196"/>
         <source>release pipe pressure...</source>
         <translation>release pipe pressure...</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="684"/>
         <source>ReadMeter</source>
-        <translation>ReadMeter</translation>
+        <translation type="obsolete">ReadMeter</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="689"/>
+        <location filename="../totalweight.cpp" line="697"/>
         <source>VerifySt</source>
         <translation>VerifySt</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="797"/>
+        <location filename="../totalweight.cpp" line="811"/>
         <source>prepare balance init weight ...</source>
         <translation>prepare balance init weight ...</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="731"/>
+        <location filename="../totalweight.cpp" line="745"/>
         <source>data acquisition error, please check!</source>
         <translation>data acquisition error, please check!</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="738"/>
+        <location filename="../totalweight.cpp" line="752"/>
         <source>exhaust air failed!</source>
         <translation>exhaust air failed!</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="176"/>
-        <location filename="../totalweight.cpp" line="1086"/>
-        <location filename="../totalweight.cpp" line="1141"/>
+        <location filename="../totalweight.cpp" line="177"/>
+        <location filename="../totalweight.cpp" line="1099"/>
+        <location filename="../totalweight.cpp" line="1154"/>
         <source>Question</source>
         <translation>Question</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="176"/>
+        <location filename="../totalweight.cpp" line="177"/>
         <source>Exit Really ?</source>
         <translation>Exit Really ?</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="744"/>
-        <location filename="../totalweight.cpp" line="762"/>
+        <location filename="../totalweight.cpp" line="692"/>
+        <source>ReadData</source>
+        <translation>ReadData</translation>
+    </message>
+    <message>
+        <location filename="../totalweight.cpp" line="702"/>
+        <source>ReadNO</source>
+        <translation>ReadNO</translation>
+    </message>
+    <message>
+        <location filename="../totalweight.cpp" line="758"/>
+        <location filename="../totalweight.cpp" line="776"/>
         <source>Exhaust countdown: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; second</source>
         <translation>Exhaust countdown: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; second</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="959"/>
-        <location filename="../totalweight.cpp" line="981"/>
-        <location filename="../totalweight.cpp" line="1831"/>
+        <location filename="../totalweight.cpp" line="964"/>
+        <location filename="../totalweight.cpp" line="986"/>
+        <location filename="../totalweight.cpp" line="1843"/>
         <source>NO. &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; flow point: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; m3/h</source>
         <translation>NO. &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; flow point: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; m3/h</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="961"/>
+        <location filename="../totalweight.cpp" line="966"/>
         <source>Verifying...Please wait for about &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; second</source>
         <translation>Verifying...Please wait for about &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; second</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="983"/>
+        <location filename="../totalweight.cpp" line="988"/>
         <source>NO. &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; flow point: Verify Finished!</source>
         <translation>NO. &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; flow point: Verify Finished!</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1018"/>
+        <location filename="../totalweight.cpp" line="1023"/>
         <source>please input minimum delta temperature!</source>
         <translation>please input minimum delta temperature!</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1086"/>
+        <location filename="../totalweight.cpp" line="1032"/>
+        <source>std temperature is error, please check!</source>
+        <translation>std temperature is error, please check!</translation>
+    </message>
+    <message>
+        <location filename="../totalweight.cpp" line="1099"/>
         <source>Stop Really ?</source>
         <translation>Stop Really ?</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1132"/>
-        <location filename="../totalweight.cpp" line="1150"/>
+        <location filename="../totalweight.cpp" line="1145"/>
+        <location filename="../totalweight.cpp" line="1163"/>
         <source>Please input meter number!
  then click &quot;GoOn&quot; button!</source>
         <translation>Please input meter number!
  then click &quot;GoOn&quot; button!</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1133"/>
+        <location filename="../totalweight.cpp" line="1146"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1133"/>
+        <location filename="../totalweight.cpp" line="1146"/>
         <source>Error: meter count is zero !
 Please input meter number, then click &quot;GoOn&quot; button!</source>
         <translation>Error: meter count is zero !
 Please input meter number, then click &quot;GoOn&quot; button!</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1142"/>
+        <location filename="../totalweight.cpp" line="1155"/>
         <source>meter count maybe error ! read meter number again?
 click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue verify</source>
         <translation>meter count maybe error ! read meter number again?
 click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue verify</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1248"/>
-        <location filename="../totalweight.cpp" line="1353"/>
+        <location filename="../totalweight.cpp" line="1261"/>
+        <location filename="../totalweight.cpp" line="1366"/>
         <source>prepare balance capacity ...</source>
         <translation>prepare balance capacity ...</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1372"/>
+        <location filename="../totalweight.cpp" line="1385"/>
         <source>please wait &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; seconds for reset zero</source>
         <translation>please wait &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; seconds for reset zero</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1410"/>
-        <location filename="../totalweight.cpp" line="1857"/>
+        <location filename="../totalweight.cpp" line="1423"/>
+        <location filename="../totalweight.cpp" line="1869"/>
         <source>please input start value of heat meter</source>
         <translation>please input start value of heat meter</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1849"/>
+        <location filename="../totalweight.cpp" line="1861"/>
         <source>read start value of heat meter...</source>
         <translation>read start value of heat meter...</translation>
     </message>
@@ -657,7 +683,7 @@ click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue ve
         <translation type="obsolete">please input meter number</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1369"/>
+        <location filename="../totalweight.cpp" line="1382"/>
         <source>Reset Zero</source>
         <translation>Reset Zero</translation>
     </message>
@@ -666,7 +692,7 @@ click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue ve
         <translation type="obsolete">please wait %1 seconds for reset zero</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1557"/>
+        <location filename="../totalweight.cpp" line="1569"/>
         <source>save database successfully!</source>
         <translation>save database successfully!</translation>
     </message>
@@ -679,8 +705,8 @@ click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue ve
         <translation type="obsolete">please input init value of heat meter</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1569"/>
-        <location filename="../totalweight.cpp" line="1889"/>
+        <location filename="../totalweight.cpp" line="1581"/>
+        <location filename="../totalweight.cpp" line="1901"/>
         <source>please input end value of heat meter</source>
         <translation>please input end value of heat meter</translation>
     </message>

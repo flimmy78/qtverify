@@ -34,13 +34,14 @@
         <translation>StdValue(MJ)</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="656"/>
+        <location filename="../totalstandard.cpp" line="657"/>
         <source>meterPosNo%1</source>
         <translation>meterPosNo%1</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="674"/>
-        <location filename="../totalstandard.cpp" line="679"/>
+        <location filename="../totalstandard.cpp" line="675"/>
+        <location filename="../totalstandard.cpp" line="680"/>
+        <location filename="../totalstandard.cpp" line="685"/>
         <source>(%1)</source>
         <translation>(%1)</translation>
     </message>
@@ -121,17 +122,17 @@
         <translation>Out:</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1658"/>
+        <location filename="../totalstandard.ui" line="1924"/>
         <source>GoOn</source>
         <translation>GoOn</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1747"/>
+        <location filename="../totalstandard.ui" line="361"/>
         <source>MeterNo</source>
         <translation>MeterNo</translation>
     </message>
     <message utf8="true">
-        <location filename="../totalstandard.ui" line="1752"/>
+        <location filename="../totalstandard.ui" line="366"/>
         <source>FlowPoint(m³/h)</source>
         <translation>FlowPoint(m³/h)</translation>
     </message>
@@ -152,12 +153,12 @@
         <translation type="obsolete">StdValue1(kwh)</translation>
     </message>
     <message utf8="true">
-        <location filename="../totalstandard.ui" line="1777"/>
+        <location filename="../totalstandard.ui" line="391"/>
         <source>Temp(℃)</source>
         <translation>Temp(℃)</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1782"/>
+        <location filename="../totalstandard.ui" line="396"/>
         <source>Density(kg/L)</source>
         <translation>Density(kg/L)</translation>
     </message>
@@ -166,7 +167,7 @@
         <translation type="obsolete">StdValue(kwh)</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1792"/>
+        <location filename="../totalstandard.ui" line="406"/>
         <source>DsipError(%)</source>
         <translation>DsipError(%)</translation>
     </message>
@@ -175,48 +176,46 @@
         <translation type="obsolete">AdjustError</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1683"/>
+        <location filename="../totalstandard.ui" line="459"/>
         <source>ParaSet</source>
         <translation>ParaSet</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1757"/>
+        <location filename="../totalstandard.ui" line="371"/>
         <source>MeterValue0(kWh)</source>
         <translation>MeterValue0(kWh)</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1762"/>
+        <location filename="../totalstandard.ui" line="376"/>
         <source>MeterValue1(kWh)</source>
         <translation>MeterValue1(kWh)</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1767"/>
+        <location filename="../totalstandard.ui" line="381"/>
         <source>BalWeight0(kg)</source>
         <translation>BalWeight0(kg)</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1772"/>
+        <location filename="../totalstandard.ui" line="386"/>
         <source>BalWeight1(kg)</source>
         <translation>BalWeight1(kg)</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1787"/>
+        <location filename="../totalstandard.ui" line="401"/>
         <source>StdValue(kWh)</source>
         <translation>StdValue(kWh)</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1804"/>
+        <location filename="../totalstandard.ui" line="418"/>
         <source>StdError(%)</source>
         <translation>StdError(%)</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1809"/>
-        <location filename="../totalstandard.ui" line="1867"/>
         <source>ReadMeter</source>
-        <translation>ReadMeter</translation>
+        <translation type="obsolete">ReadMeter</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1497"/>
+        <location filename="../totalstandard.ui" line="997"/>
         <source>NowPara(KeyInfo)</source>
         <translation>NowPara(KeyInfo)</translation>
     </message>
@@ -236,83 +235,95 @@
         <translation>Collect</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="356"/>
+        <location filename="../totalstandard.ui" line="423"/>
+        <location filename="../totalstandard.ui" line="486"/>
+        <source>ReadNO</source>
+        <translation>读取表号</translation>
+    </message>
+    <message>
+        <location filename="../totalstandard.ui" line="428"/>
+        <location filename="../totalstandard.ui" line="511"/>
+        <source>ReadData</source>
+        <translation>读表数据</translation>
+    </message>
+    <message>
+        <location filename="../totalstandard.ui" line="572"/>
         <source>DN3</source>
         <translation>DN3</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="374"/>
-        <location filename="../totalstandard.ui" line="465"/>
-        <location filename="../totalstandard.ui" line="560"/>
+        <location filename="../totalstandard.ui" line="590"/>
+        <location filename="../totalstandard.ui" line="681"/>
+        <location filename="../totalstandard.ui" line="776"/>
         <source>Inst</source>
         <translation>Inst</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="415"/>
-        <location filename="../totalstandard.ui" line="506"/>
-        <location filename="../totalstandard.ui" line="579"/>
+        <location filename="../totalstandard.ui" line="631"/>
+        <location filename="../totalstandard.ui" line="722"/>
+        <location filename="../totalstandard.ui" line="795"/>
         <source>Accum</source>
         <translation>Accum</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="447"/>
+        <location filename="../totalstandard.ui" line="663"/>
         <source>DN25</source>
         <translation>DN25</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="542"/>
+        <location filename="../totalstandard.ui" line="758"/>
         <source>DN10</source>
         <translation>DN10</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="921"/>
+        <location filename="../totalstandard.ui" line="1418"/>
         <source>Pump</source>
         <translation>Pump</translation>
     </message>
     <message utf8="true">
-        <location filename="../totalstandard.ui" line="998"/>
+        <location filename="../totalstandard.ui" line="1495"/>
         <source>㎏</source>
         <translation>㎏</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1509"/>
+        <location filename="../totalstandard.ui" line="1009"/>
         <source>Standard:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1535"/>
+        <location filename="../totalstandard.ui" line="1035"/>
         <source>DA Mode:</source>
         <translation>DA Mode:</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1552"/>
+        <location filename="../totalstandard.ui" line="1052"/>
         <source>Manual</source>
         <translation>Manual</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1557"/>
+        <location filename="../totalstandard.ui" line="1057"/>
         <source>Auto</source>
         <translation>Auto</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1571"/>
+        <location filename="../totalstandard.ui" line="1071"/>
         <source>ResetZero:</source>
         <translation>ResetZero:</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1588"/>
-        <location filename="../totalstandard.ui" line="1624"/>
+        <location filename="../totalstandard.ui" line="1088"/>
+        <location filename="../totalstandard.ui" line="1124"/>
         <source>No</source>
         <translation>No</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1593"/>
-        <location filename="../totalstandard.ui" line="1629"/>
+        <location filename="../totalstandard.ui" line="1093"/>
+        <location filename="../totalstandard.ui" line="1129"/>
         <source>Yes</source>
         <translation>Yes</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1607"/>
+        <location filename="../totalstandard.ui" line="1107"/>
         <source>Continuous:</source>
         <translation>Continuous:</translation>
     </message>
@@ -325,17 +336,17 @@
         <translation type="obsolete">Continuous</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="649"/>
+        <location filename="../totalstandard.ui" line="1146"/>
         <source>Controller</source>
         <translation>Controller</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="703"/>
+        <location filename="../totalstandard.ui" line="1200"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="730"/>
+        <location filename="../totalstandard.ui" line="1227"/>
         <source>i
 n
 </source>
@@ -344,14 +355,14 @@ n
 </translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="842"/>
+        <location filename="../totalstandard.ui" line="1339"/>
         <source>b
 i
 g</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="786"/>
+        <location filename="../totalstandard.ui" line="1283"/>
         <source>m
 i
 d
@@ -362,7 +373,7 @@ d
 1</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="814"/>
+        <location filename="../totalstandard.ui" line="1311"/>
         <source>m
 i
 d
@@ -373,7 +384,7 @@ d
 2</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="757"/>
+        <location filename="../totalstandard.ui" line="1254"/>
         <source>s
 m
 a
@@ -386,14 +397,14 @@ l
 l</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="869"/>
+        <location filename="../totalstandard.ui" line="1366"/>
         <source>o
 u
 t</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="896"/>
+        <location filename="../totalstandard.ui" line="1393"/>
         <source>Set Freq</source>
         <translation>Set Freq</translation>
     </message>
@@ -402,12 +413,12 @@ t</source>
         <translation type="obsolete">Start Pump</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="943"/>
+        <location filename="../totalstandard.ui" line="1440"/>
         <source>DataAcquisition</source>
         <translation>DataAcquisition</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="957"/>
+        <location filename="../totalstandard.ui" line="1454"/>
         <source>Std Meter:</source>
         <translation>Std Meter:</translation>
     </message>
@@ -416,35 +427,35 @@ t</source>
         <translation type="obsolete">kwh</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1011"/>
+        <location filename="../totalstandard.ui" line="1508"/>
         <source>FlowRate:</source>
         <translation>FlowRate:</translation>
     </message>
     <message utf8="true">
-        <location filename="../totalstandard.ui" line="1043"/>
+        <location filename="../totalstandard.ui" line="1540"/>
         <source>m³/h</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1056"/>
+        <location filename="../totalstandard.ui" line="1553"/>
         <source>In Temp:</source>
         <translation>In Temp:</translation>
     </message>
     <message utf8="true">
         <location filename="../totalstandard.ui" line="246"/>
         <location filename="../totalstandard.ui" line="337"/>
-        <location filename="../totalstandard.ui" line="1206"/>
-        <location filename="../totalstandard.ui" line="1372"/>
+        <location filename="../totalstandard.ui" line="1703"/>
+        <location filename="../totalstandard.ui" line="1869"/>
         <source>℃</source>
         <translation>℃</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1219"/>
+        <location filename="../totalstandard.ui" line="1716"/>
         <source>Out Temp:</source>
         <translation>Out Temp:</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1390"/>
+        <location filename="../totalstandard.ui" line="865"/>
         <source>Process Hint</source>
         <translation>Process Hint</translation>
     </message>
@@ -457,12 +468,12 @@ t</source>
         <translation type="obsolete">Process:</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1708"/>
+        <location filename="../totalstandard.ui" line="1899"/>
         <source>Exhaust</source>
         <translation>Exhaust</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1733"/>
+        <location filename="../totalstandard.ui" line="972"/>
         <source>Start</source>
         <translation>Start</translation>
     </message>
@@ -472,23 +483,23 @@ t</source>
     </message>
     <message>
         <location filename="../totalstandard.ui" line="175"/>
-        <location filename="../totalstandard.ui" line="1840"/>
+        <location filename="../totalstandard.ui" line="1949"/>
         <source>Stop</source>
         <translation>Stop</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1814"/>
-        <location filename="../totalstandard.ui" line="1892"/>
+        <location filename="../totalstandard.ui" line="433"/>
+        <location filename="../totalstandard.ui" line="536"/>
         <source>VerifySt</source>
         <translation>VerifySt</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1919"/>
+        <location filename="../totalstandard.ui" line="563"/>
         <source>ReCalc</source>
         <translation>ReCalc</translation>
     </message>
     <message>
-        <location filename="../totalstandard.ui" line="1944"/>
+        <location filename="../totalstandard.ui" line="1974"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
@@ -497,9 +508,9 @@ t</source>
     <name>TotalStandardDlg</name>
     <message>
         <location filename="../totalstandard.cpp" line="64"/>
-        <location filename="../totalstandard.cpp" line="721"/>
         <location filename="../totalstandard.cpp" line="728"/>
-        <location filename="../totalstandard.cpp" line="926"/>
+        <location filename="../totalstandard.cpp" line="735"/>
+        <location filename="../totalstandard.cpp" line="924"/>
         <source>Warning</source>
         <translation>Warning</translation>
     </message>
@@ -510,8 +521,8 @@ t</source>
     </message>
     <message>
         <location filename="../totalstandard.cpp" line="174"/>
-        <location filename="../totalstandard.cpp" line="995"/>
-        <location filename="../totalstandard.cpp" line="1050"/>
+        <location filename="../totalstandard.cpp" line="993"/>
+        <location filename="../totalstandard.cpp" line="1048"/>
         <source>Question</source>
         <translation>Question</translation>
     </message>
@@ -526,103 +537,108 @@ t</source>
         <translation>release pipe pressure...</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="674"/>
+        <location filename="../totalstandard.cpp" line="675"/>
         <source>ReadMeter</source>
         <translation>ReadMeter</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="679"/>
+        <location filename="../totalstandard.cpp" line="680"/>
         <source>VerifySt</source>
         <translation>VerifySt</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="721"/>
+        <location filename="../totalstandard.cpp" line="685"/>
+        <source>ReadNO</source>
+        <translation>读取表号</translation>
+    </message>
+    <message>
+        <location filename="../totalstandard.cpp" line="728"/>
         <source>data acquisition error, please check!</source>
         <translation>data acquisition error, please check!</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="728"/>
+        <location filename="../totalstandard.cpp" line="735"/>
         <source>exhaust air failed!</source>
         <translation>exhaust air failed!</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="734"/>
-        <location filename="../totalstandard.cpp" line="752"/>
+        <location filename="../totalstandard.cpp" line="741"/>
+        <location filename="../totalstandard.cpp" line="759"/>
         <source>Exhaust countdown: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; second</source>
         <translation>Exhaust countdown: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; second</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="872"/>
-        <location filename="../totalstandard.cpp" line="889"/>
-        <location filename="../totalstandard.cpp" line="1711"/>
+        <location filename="../totalstandard.cpp" line="870"/>
+        <location filename="../totalstandard.cpp" line="887"/>
+        <location filename="../totalstandard.cpp" line="1709"/>
         <source>NO. &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; flow point: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; m3/h</source>
         <translation>NO. &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; flow point: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; m3/h</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="874"/>
+        <location filename="../totalstandard.cpp" line="872"/>
         <source>Verifying...Please wait for about &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; second</source>
         <translation>Verifying...Please wait for about &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; second</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="891"/>
+        <location filename="../totalstandard.cpp" line="889"/>
         <source>NO. &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; flow point: Verify Finished!</source>
         <translation>NO. &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; flow point: Verify Finished!</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="926"/>
+        <location filename="../totalstandard.cpp" line="924"/>
         <source>please input minimum delta temperature!</source>
         <translation>please input minimum delta temperature!</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="995"/>
+        <location filename="../totalstandard.cpp" line="993"/>
         <source>Stop Really ?</source>
         <translation>Stop Really ?</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1041"/>
-        <location filename="../totalstandard.cpp" line="1059"/>
+        <location filename="../totalstandard.cpp" line="1039"/>
+        <location filename="../totalstandard.cpp" line="1057"/>
         <source>Please input meter number!
  then click &quot;GoOn&quot; button!</source>
         <translation>Please input meter number!
  then click &quot;GoOn&quot; button!</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1042"/>
+        <location filename="../totalstandard.cpp" line="1040"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1042"/>
+        <location filename="../totalstandard.cpp" line="1040"/>
         <source>Error: meter count is zero !
 Please input meter number, then click &quot;GoOn&quot; button!</source>
         <translation>Error: meter count is zero !
 Please input meter number, then click &quot;GoOn&quot; button!</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1051"/>
+        <location filename="../totalstandard.cpp" line="1049"/>
         <source>meter count maybe error ! read meter number again?
 click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue verify</source>
         <translation>meter count maybe error ! read meter number again?
 click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue verify</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1229"/>
+        <location filename="../totalstandard.cpp" line="1227"/>
         <source>please wait &lt;font color=DarkGreen size=4&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; seconds for reset zero</source>
         <translation>please wait &lt;font color=DarkGreen size=4&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; seconds for reset zero</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1257"/>
-        <location filename="../totalstandard.cpp" line="1737"/>
+        <location filename="../totalstandard.cpp" line="1255"/>
+        <location filename="../totalstandard.cpp" line="1735"/>
         <source>please input start value of heat meter</source>
         <translation>please input start value of heat meter</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1424"/>
+        <location filename="../totalstandard.cpp" line="1422"/>
         <source>save database successfully!</source>
         <translation>save database successfully!</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1729"/>
+        <location filename="../totalstandard.cpp" line="1727"/>
         <source>read start value of heat meter...</source>
         <translation>read start value of heat meter...</translation>
     </message>
@@ -635,12 +651,12 @@ click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue ve
         <translation type="obsolete">Adjust Err</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="965"/>
+        <location filename="../totalstandard.cpp" line="963"/>
         <source>Please input meter number!</source>
         <translation>Please input meter number!</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="760"/>
+        <location filename="../totalstandard.cpp" line="767"/>
         <source>Exhaust countdown finished!</source>
         <translation>Exhaust countdown finished!</translation>
     </message>
@@ -667,7 +683,7 @@ Please wait for about %1 second</translation>
         <translation type="obsolete">All flow points has verified!</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1020"/>
+        <location filename="../totalstandard.cpp" line="1018"/>
         <source>Verify has Stoped!</source>
         <translation>Verify has Stoped!</translation>
     </message>
@@ -680,7 +696,7 @@ Please wait for about %1 second</translation>
         <translation type="obsolete">please input meter number</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1226"/>
+        <location filename="../totalstandard.cpp" line="1224"/>
         <source>Reset Zero</source>
         <translation>Reset Zero</translation>
     </message>
@@ -697,8 +713,8 @@ Please wait for about %1 second</translation>
         <translation type="obsolete">please input init value of heat meter</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1436"/>
-        <location filename="../totalstandard.cpp" line="1769"/>
+        <location filename="../totalstandard.cpp" line="1434"/>
+        <location filename="../totalstandard.cpp" line="1767"/>
         <source>please input end value of heat meter</source>
         <translation>please input end value of heat meter</translation>
     </message>

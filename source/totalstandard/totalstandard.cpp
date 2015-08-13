@@ -649,6 +649,7 @@ void TotalStandardDlg::initTableWidget()
 
 	QSignalMapper *signalMapper3 = new QSignalMapper();
 	QSignalMapper *signalMapper4 = new QSignalMapper();
+	QSignalMapper *signalMapper5 = new QSignalMapper();
 
 	QStringList vLabels;
 	for (int i=0; i< ui.tableWidget->rowCount(); i++)
@@ -680,9 +681,15 @@ void TotalStandardDlg::initTableWidget()
 		ui.tableWidget->setCellWidget(i, COLUMN_VERIFY_STATUS, btnVerifySt);
 		signalMapper4->setMapping(btnVerifySt, i);
 		connect(btnVerifySt, SIGNAL(clicked()), signalMapper4, SLOT(map()));
+
+		QPushButton *btnReadNO = new QPushButton(QObject::tr("(%1)").arg(i+1) + tr("ReadNO"));
+		ui.tableWidget->setCellWidget(i, COLUMN_READ_NO, btnReadNO);
+		signalMapper5->setMapping(btnReadNO, i);
+		connect(btnReadNO, SIGNAL(clicked()), signalMapper5, SLOT(map()));
 	}
-	connect(signalMapper3, SIGNAL(mapped(const int &)),this, SLOT(slotReadMeter(const int &)));
+	connect(signalMapper3, SIGNAL(mapped(const int &)),this, SLOT(slotReadData(const int &)));
 	connect(signalMapper4, SIGNAL(mapped(const int &)),this, SLOT(slotVerifyStatus(const int &)));
+	connect(signalMapper5, SIGNAL(mapped(const int &)),this, SLOT(slotReadNO(const int &)));
 
 	ui.tableWidget->setVerticalHeaderLabels(vLabels);
 	ui.tableWidget->setFont(QFont("Times", 15, QFont::DemiBold, true));
@@ -774,15 +781,6 @@ void TotalStandardDlg::slotExaustFinished()
 	}
 }
 
-/*
-** 读取热表
-*/
-int TotalStandardDlg::readAllMeter()
-{
-	on_btnAllReadMeter_clicked();
-	return true;
-}
-
 //设置所有热量表进入检定状态
 int TotalStandardDlg::setAllMeterVerifyStatus()
 {
@@ -856,7 +854,7 @@ int TotalStandardDlg::judgeTartgetVolAndCalcAvgTemperAndFlow(float initV, float 
 {
 
 	float targetV       = initV + verifyV;
-	ui.btnAllReadMeter->setEnabled(false);
+	ui.btnAllReadData->setEnabled(false);
 	ui.btnAllVerifyStatus->setEnabled(false);
 	QDateTime startTime = QDateTime::currentDateTime();
 	int second          = 0;
@@ -933,7 +931,7 @@ void TotalStandardDlg::on_btnStart_clicked()
 	ui.labelHintPoint->clear();
 	ui.labelHintProcess->clear();
 	ui.tableWidget->setEnabled(true);
-	ui.btnAllReadMeter->setEnabled(true);
+	ui.btnAllReadData->setEnabled(true);
 	ui.btnAllVerifyStatus->setEnabled(true);
 	
 	m_stopFlag = false;
@@ -955,7 +953,7 @@ void TotalStandardDlg::on_btnStart_clicked()
 	
 	if (m_autopick) //自动读表
 	{
-		readAllMeter();
+		on_btnAllReadNO_clicked();
 		sleep(m_exaustSecond*1000/2);
 		setAllMeterVerifyStatus();
 	}
@@ -1728,7 +1726,7 @@ int TotalStandardDlg::getMeterStartValue()
 			{
 				ui.labelHintProcess->setText(tr("read start value of heat meter..."));
 				sleep(WAIT_COM_TIME); //需要等待，否则热表来不及响应通讯
-				readAllMeter();
+				on_btnAllReadData_clicked();
 //	 			sleep(500); //等待串口返回数据
 			}
 			else //手动输入
@@ -1760,7 +1758,7 @@ int TotalStandardDlg::getMeterEndValue()
 
 	if (m_autopick) //自动采集
 	{
-		readAllMeter();
+		on_btnAllReadData_clicked();
 		//sleep(BALANCE_STABLE_TIME); //等待串口返回数据
 	}
 	else //手动输入
@@ -1842,10 +1840,10 @@ int TotalStandardDlg::saveAllVerifyRecords()
 	return true;
 }
 
-//请求读表（所有表、广播地址读表）
-void TotalStandardDlg::on_btnAllReadMeter_clicked()
+//请求读表号（所有表、广播地址读表）
+void TotalStandardDlg::on_btnAllReadNO_clicked()
 {
-	qDebug()<<"on_btnAllReadMeter_clicked...";
+	qDebug()<<"on_btnAllReadNO_clicked...";
 	int idx = -1;
 	for (int j=0; j<m_maxMeterNum; j++)
 	{
@@ -1866,7 +1864,35 @@ void TotalStandardDlg::on_btnAllReadMeter_clicked()
 				m_meterEndValue[idx] = 0;
 			}
 		}
-		slotReadMeter(j);
+		slotReadNO(j);
+	}
+}
+
+//请求读表数据（所有表、广播地址读表）
+void TotalStandardDlg::on_btnAllReadData_clicked()
+{
+	qDebug()<<"on_btnAllReadData_clicked...";
+	int idx = -1;
+	for (int j=0; j<m_maxMeterNum; j++)
+	{
+		idx = isMeterPosValid(j+1);
+		if (m_state == STATE_START_VALUE)
+		{
+			ui.tableWidget->item(j, COLUMN_METER_START)->setText("");
+			if (idx >= 0)
+			{
+				m_meterStartValue[idx] = 0;
+			}
+		}
+		else if (m_state == STATE_END_VALUE)
+		{
+			ui.tableWidget->item(j, COLUMN_METER_END)->setText("");
+			if (idx >= 0)
+			{
+				m_meterEndValue[idx] = 0;
+			}
+		}
+		slotReadData(j);
 	}
 }
 
@@ -1884,9 +1910,20 @@ void TotalStandardDlg::on_btnAllVerifyStatus_clicked()
 ** 输入参数：
 	row:行号，由row可以知道当前热表对应的串口、表号、误差等等
 */
-void TotalStandardDlg::slotReadMeter(const int &row)
+void TotalStandardDlg::slotReadNO(const int &row)
 {
-	qDebug()<<"slotReadMeter row ="<<row;
+	qDebug()<<"slotReadNO row ="<<row;
+	m_meterObj[row].askReadMeterNO();
+}
+
+/*
+** 读表数据
+** 输入参数：
+	row:行号，由row可以知道当前热表对应的串口、表号、误差等等
+*/
+void TotalStandardDlg::slotReadData(const int &row)
+{
+	qDebug()<<"slotReadData row ="<<row;
 	m_meterObj[row].askReadMeterData();
 }
 

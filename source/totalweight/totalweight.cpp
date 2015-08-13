@@ -665,6 +665,7 @@ void TotalWeightDlg::initTableWidget()
 
 	QSignalMapper *signalMapper3 = new QSignalMapper();
 	QSignalMapper *signalMapper4 = new QSignalMapper();
+	QSignalMapper *signalMapper5 = new QSignalMapper();
 
 	QStringList vLabels;
 	for (int i=0; i< ui.tableWidget->rowCount(); i++)
@@ -688,7 +689,7 @@ void TotalWeightDlg::initTableWidget()
 		ui.tableWidget->item(i, COLUMN_STD_ERROR)->setFlags(Qt::NoItemFlags);
 
 		//设置按钮
-		QPushButton *btnReadData = new QPushButton(QObject::tr("\(%1\)").arg(i+1) + tr("ReadMeter"));
+		QPushButton *btnReadData = new QPushButton(QObject::tr("\(%1\)").arg(i+1) + tr("ReadData"));
 		ui.tableWidget->setCellWidget(i, COLUMN_READ_DATA, btnReadData);
 		signalMapper3->setMapping(btnReadData, i);
 		connect(btnReadData, SIGNAL(clicked()), signalMapper3, SLOT(map()));
@@ -697,9 +698,15 @@ void TotalWeightDlg::initTableWidget()
 		ui.tableWidget->setCellWidget(i, COLUMN_VERIFY_STATUS, btnVerifySt);
 		signalMapper4->setMapping(btnVerifySt, i);
 		connect(btnVerifySt, SIGNAL(clicked()), signalMapper4, SLOT(map()));
+
+		QPushButton *btnReadNO = new QPushButton(QObject::tr("\(%1\)").arg(i+1) + tr("ReadNO"));
+		ui.tableWidget->setCellWidget(i, COLUMN_READ_NO, btnReadNO);
+		signalMapper5->setMapping(btnReadNO, i);
+		connect(btnReadNO, SIGNAL(clicked()), signalMapper5, SLOT(map()));
 	}
-	connect(signalMapper3, SIGNAL(mapped(const int &)),this, SLOT(slotReadMeter(const int &)));
+	connect(signalMapper3, SIGNAL(mapped(const int &)),this, SLOT(slotReadData(const int &)));
 	connect(signalMapper4, SIGNAL(mapped(const int &)),this, SLOT(slotVerifyStatus(const int &)));
+	connect(signalMapper5, SIGNAL(mapped(const int &)),this, SLOT(slotReadNO(const int &)));
 
 	ui.tableWidget->setVerticalHeaderLabels(vLabels);
 	ui.tableWidget->setFont(QFont("Times", 15, QFont::DemiBold, true));
@@ -833,15 +840,6 @@ int TotalWeightDlg::prepareInitBalance()
 	return ret;
 }
 
-/*
-** 读取热表
-*/
-int TotalWeightDlg::readAllMeter()
-{
-	on_btnAllReadMeter_clicked();
-	return true;
-}
-
 //设置所有热量表进入检定状态
 int TotalWeightDlg::setAllMeterVerifyStatus()
 {
@@ -945,7 +943,7 @@ int TotalWeightDlg::isBalanceValueBigger(float targetV, bool flg)
 int TotalWeightDlg::judgeBalanceAndCalcAvgTemperAndFlow(float targetV)
 {
 	ui.tableWidget->setEnabled(false);
-	ui.btnAllReadMeter->setEnabled(false);
+	ui.btnAllReadData->setEnabled(false);
 	ui.btnAllVerifyStatus->setEnabled(false);
 	QDateTime startTime = QDateTime::currentDateTime();
 	int second = 0;
@@ -1040,7 +1038,7 @@ void TotalWeightDlg::on_btnStart_clicked()
 	ui.labelHintPoint->clear();
 	ui.labelHintProcess->clear();
 	ui.tableWidget->setEnabled(true);
-	ui.btnAllReadMeter->setEnabled(true);
+	ui.btnAllReadData->setEnabled(true);
 	ui.btnAllVerifyStatus->setEnabled(true);
 	
 	m_stopFlag = false;
@@ -1062,7 +1060,7 @@ void TotalWeightDlg::on_btnStart_clicked()
 	
 	if (m_autopick) //自动读表
 	{
-		readAllMeter();
+		on_btnAllReadNO_clicked();
 		sleep(m_exaustSecond*1000/2);
 		setAllMeterVerifyStatus();
 	}
@@ -1445,7 +1443,7 @@ int TotalWeightDlg::startVerifyFlowPoint(int order)
 		if (judgeBalanceAndCalcAvgTemperAndFlow(m_balStartV + verifyQuantity)) //跑完检定量并计算此过程的平均温度和平均流量
 		{
 			ui.tableWidget->setEnabled(true);
-			ui.btnAllReadMeter->setEnabled(true);
+			ui.btnAllReadData->setEnabled(true);
 			ui.btnAllVerifyStatus->setEnabled(true);
 			closeValve(portNo); //关闭order对应的阀门
 			sleep(BALANCE_STABLE_TIME); //等待3秒钟，让天平数值稳定
@@ -1862,7 +1860,7 @@ int TotalWeightDlg::getMeterStartValue()
 			{
 				ui.labelHintProcess->setText(tr("read start value of heat meter..."));
 				sleep(WAIT_COM_TIME); //需要等待，否则热表来不及响应通讯
-				readAllMeter();
+				on_btnAllReadData_clicked();
 //	 			sleep(500); //等待串口返回数据
 			}
 			else //手动输入
@@ -1894,7 +1892,7 @@ int TotalWeightDlg::getMeterEndValue()
 
 	if (m_autopick) //自动采集
 	{
-		readAllMeter();
+		on_btnAllReadData_clicked();
 		sleep(BALANCE_STABLE_TIME); //等待串口返回数据
 	}
 	else //手动输入
@@ -1976,10 +1974,10 @@ int TotalWeightDlg::saveAllVerifyRecords()
 	return true;
 }
 
-//请求读表（所有表、广播地址读表）
-void TotalWeightDlg::on_btnAllReadMeter_clicked()
+//请求读表号（所有表、广播地址读表）
+void TotalWeightDlg::on_btnAllReadNO_clicked()
 {
-	qDebug()<<"on_btnAllReadMeter_clicked...";
+	qDebug()<<"on_btnAllReadNO_clicked...";
 	int idx = -1;
 	for (int j=0; j<m_maxMeterNum; j++)
 	{
@@ -2000,7 +1998,35 @@ void TotalWeightDlg::on_btnAllReadMeter_clicked()
 				m_meterEndValue[idx] = 0;
 			}
 		}
-		slotReadMeter(j);
+		slotReadNO(j);
+	}
+}
+
+//请求读表数据（所有表、广播地址读表）
+void TotalWeightDlg::on_btnAllReadData_clicked()
+{
+	qDebug()<<"on_btnAllReadData_clicked...";
+	int idx = -1;
+	for (int j=0; j<m_maxMeterNum; j++)
+	{
+		idx = isMeterPosValid(j+1);
+		if (m_state == STATE_START_VALUE)
+		{
+			ui.tableWidget->item(j, COLUMN_METER_START)->setText("");
+			if (idx >= 0)
+			{
+				m_meterStartValue[idx] = 0;
+			}
+		}
+		else if (m_state == STATE_END_VALUE)
+		{
+			ui.tableWidget->item(j, COLUMN_METER_END)->setText("");
+			if (idx >= 0)
+			{
+				m_meterEndValue[idx] = 0;
+			}
+		}
+		slotReadData(j);
 	}
 }
 
@@ -2018,9 +2044,20 @@ void TotalWeightDlg::on_btnAllVerifyStatus_clicked()
 ** 输入参数：
 	row:行号，由row可以知道当前热表对应的串口、表号、误差等等
 */
-void TotalWeightDlg::slotReadMeter(const int &row)
+void TotalWeightDlg::slotReadNO(const int &row)
 {
-	qDebug()<<"slotReadMeter row ="<<row;
+	qDebug()<<"slotReadNO row ="<<row;
+	m_meterObj[row].askReadMeterNO();
+}
+
+/*
+** 读取表数据
+** 输入参数：
+	row:行号，由row可以知道当前热表对应的串口、表号、误差等等
+*/
+void TotalWeightDlg::slotReadData(const int &row)
+{
+	qDebug()<<"slotReadData row ="<<row;
 	m_meterObj[row].askReadMeterData();
 }
 

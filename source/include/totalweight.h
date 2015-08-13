@@ -165,7 +165,6 @@ public slots:
 	int startExhaustCountDown();  //开始排气倒计时
 	void slotExaustFinished();    //排气时间结束
 	int prepareInitBalance();     //开始检定前，准备天平初始重量
-	int readAllMeter();           //读取所有被检表
 	int setAllMeterVerifyStatus();//设置热量表进入检定状态
 	int openAllValveAndPump();    //打开所有阀门和水泵
 	int closeAllValveAndPumpOpenOutValve(); //关闭所有阀门和水泵、打开防水阀
@@ -221,10 +220,12 @@ public slots:
 	int saveAllVerifyRecords(); //保存所有被检表的检定记录
 	void clearTableContents();
 
-	void on_btnAllReadMeter_clicked();   //读表(所有表）
+	void on_btnAllReadNO_clicked();      //读表号(所有表）
+	void on_btnAllReadData_clicked();    //读表数据(所有表）
 	void on_btnAllVerifyStatus_clicked();//设置检定状态(所有表）
 
-	void slotReadMeter(const int &row);     //读表(单个表)
+	void slotReadNO(const int &row);        //读表号(单个表)
+	void slotReadData(const int &row);      //读表数据(单个表)
 	void slotVerifyStatus(const int &row);  //检定状态
 
 	void on_btnStdTempCollect_clicked(); //采集标准温度

@@ -93,46 +93,46 @@
         <translation>Quit Really ?</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="590"/>
+        <location filename="../source/mainform.cpp" line="572"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="590"/>
+        <location filename="../source/mainform.cpp" line="572"/>
         <source>Excel object lose!</source>
         <translation>Excel object lose!</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="714"/>
-        <location filename="../source/mainform.cpp" line="720"/>
-        <location filename="../source/mainform.cpp" line="723"/>
-        <location filename="../source/mainform.cpp" line="726"/>
-        <location filename="../source/mainform.cpp" line="729"/>
+        <location filename="../source/mainform.cpp" line="696"/>
+        <location filename="../source/mainform.cpp" line="702"/>
+        <location filename="../source/mainform.cpp" line="705"/>
+        <location filename="../source/mainform.cpp" line="708"/>
+        <location filename="../source/mainform.cpp" line="711"/>
         <source>Hint</source>
         <translation>Hint</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="714"/>
+        <location filename="../source/mainform.cpp" line="696"/>
         <source>Failed To Start</source>
         <translation>Failed To Start</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="720"/>
+        <location filename="../source/mainform.cpp" line="702"/>
         <source>Timed Out</source>
         <translation>Timed Out</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="723"/>
+        <location filename="../source/mainform.cpp" line="705"/>
         <source>Write Error</source>
         <translation>Write Error</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="726"/>
+        <location filename="../source/mainform.cpp" line="708"/>
         <source>Read Error</source>
         <translation>Read Error</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="729"/>
+        <location filename="../source/mainform.cpp" line="711"/>
         <source>Unknown Error</source>
         <translation>Unknown Error</translation>
     </message>
@@ -148,12 +148,12 @@
         <translation type="obsolete">no translator files ...</translation>
     </message>
     <message>
-        <location filename="../source/main.cpp" line="106"/>
+        <location filename="../source/main.cpp" line="105"/>
         <source>connect database ...</source>
         <translation>connect database ...</translation>
     </message>
     <message>
-        <location filename="../source/main.cpp" line="110"/>
+        <location filename="../source/main.cpp" line="109"/>
         <source>setting up the mainwindow ...</source>
         <translation>setting up the mainwindow ...</translation>
     </message>
@@ -302,37 +302,37 @@
         <translation>TotalVerify(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="208"/>
+        <location filename="../ui/mainform.ui" line="209"/>
         <source>FlowResult</source>
         <translation>FlowResult</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="217"/>
-        <location filename="../ui/mainform.ui" line="220"/>
+        <location filename="../ui/mainform.ui" line="218"/>
+        <location filename="../ui/mainform.ui" line="221"/>
         <source>FlowWeight</source>
         <translation>FlowWeight</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="229"/>
-        <location filename="../ui/mainform.ui" line="232"/>
+        <location filename="../ui/mainform.ui" line="230"/>
+        <location filename="../ui/mainform.ui" line="233"/>
         <source>TotalWeight</source>
         <translation>TotalWeight</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="241"/>
-        <location filename="../ui/mainform.ui" line="244"/>
+        <location filename="../ui/mainform.ui" line="242"/>
+        <location filename="../ui/mainform.ui" line="245"/>
         <source>FlowStandard</source>
         <translation>FlowStandard</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="253"/>
-        <location filename="../ui/mainform.ui" line="256"/>
+        <location filename="../ui/mainform.ui" line="254"/>
+        <location filename="../ui/mainform.ui" line="257"/>
         <source>TotalStandard</source>
         <translation>TotalStandard</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="286"/>
-        <location filename="../ui/mainform.ui" line="289"/>
+        <location filename="../ui/mainform.ui" line="287"/>
+        <location filename="../ui/mainform.ui" line="290"/>
         <source>MasterSlaveSet</source>
         <translation>MasterSlaveSet</translation>
     </message>
@@ -341,93 +341,99 @@
         <translation type="obsolete">Exit</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="355"/>
+        <location filename="../ui/mainform.ui" line="356"/>
         <source>Calculator</source>
         <translation>Calculator</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="364"/>
-        <location filename="../ui/mainform.ui" line="367"/>
+        <location filename="../ui/mainform.ui" line="365"/>
+        <location filename="../ui/mainform.ui" line="368"/>
         <source>TemperCompare</source>
         <translation>TemperCompare</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="376"/>
-        <location filename="../ui/mainform.ui" line="379"/>
+        <location filename="../ui/mainform.ui" line="377"/>
+        <location filename="../ui/mainform.ui" line="380"/>
         <source>TemperPara</source>
         <translation>TemperPara</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="388"/>
-        <location filename="../ui/mainform.ui" line="391"/>
+        <location filename="../ui/mainform.ui" line="389"/>
+        <location filename="../ui/mainform.ui" line="392"/>
         <source>Combine</source>
         <translation>Combine</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="423"/>
+        <location filename="../ui/mainform.ui" line="424"/>
         <source>TemperResult</source>
         <translation>TemperResult</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="432"/>
-        <location filename="../ui/mainform.ui" line="435"/>
+        <location filename="../ui/mainform.ui" line="433"/>
+        <location filename="../ui/mainform.ui" line="436"/>
         <source>CalculatorResult</source>
         <translation>CalculatorResult</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="444"/>
-        <location filename="../ui/mainform.ui" line="447"/>
+        <location filename="../ui/mainform.ui" line="445"/>
+        <location filename="../ui/mainform.ui" line="448"/>
         <source>CombineResult</source>
         <translation>CombineResult</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="456"/>
+        <location filename="../ui/mainform.ui" line="457"/>
         <source>TotalResult</source>
         <translation>TotalResult</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="465"/>
-        <location filename="../ui/mainform.ui" line="468"/>
+        <location filename="../ui/mainform.ui" line="466"/>
+        <location filename="../ui/mainform.ui" line="469"/>
         <source>StdMtrParaSet</source>
         <translation>StdMtrParaSet</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="477"/>
-        <location filename="../ui/mainform.ui" line="480"/>
+        <location filename="../ui/mainform.ui" line="478"/>
+        <location filename="../ui/mainform.ui" line="481"/>
         <source>StdMtrCoeCorrect</source>
         <translation>StdMtrCoeCorrect</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="489"/>
-        <location filename="../ui/mainform.ui" line="492"/>
+        <location filename="../ui/mainform.ui" line="490"/>
+        <location filename="../ui/mainform.ui" line="493"/>
         <source>StdPtParaSet</source>
         <translation>StdPtParaSet</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="501"/>
-        <location filename="../ui/mainform.ui" line="504"/>
+        <location filename="../ui/mainform.ui" line="502"/>
+        <location filename="../ui/mainform.ui" line="505"/>
         <source>PtParaSet</source>
         <translation>PtParaSet</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="509"/>
+        <location filename="../ui/mainform.ui" line="510"/>
         <source>PlaVerifyResult</source>
         <translation>PlaVerifyResult</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="514"/>
+        <location filename="../ui/mainform.ui" line="515"/>
         <source>PlaVerify-Parameter</source>
         <translation>PlaVerify-Parameter</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="523"/>
+        <location filename="../ui/mainform.ui" line="524"/>
         <source>Contacts</source>
         <translation>Contacts</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="526"/>
+        <location filename="../ui/mainform.ui" line="527"/>
         <source>Contact Us</source>
         <translation>Contact Us</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainform.ui" line="536"/>
+        <location filename="../ui/mainform.ui" line="539"/>
+        <source>UserManage</source>
+        <translation>UserManage</translation>
     </message>
     <message>
         <location filename="../ui/mainform.ui" line="41"/>
@@ -443,7 +449,7 @@
         <translation type="obsolete">DataQuery</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="319"/>
+        <location filename="../ui/mainform.ui" line="320"/>
         <source>About</source>
         <translation>About</translation>
     </message>
@@ -456,47 +462,47 @@
         <translation type="obsolete">Language</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="178"/>
+        <location filename="../ui/mainform.ui" line="179"/>
         <source>ComDebugger</source>
         <translation>ComDebugger</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="187"/>
+        <location filename="../ui/mainform.ui" line="188"/>
         <source>Query Excel</source>
         <translation>Query Excel</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="196"/>
+        <location filename="../ui/mainform.ui" line="197"/>
         <source>MySql</source>
         <translation>MySql</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="301"/>
+        <location filename="../ui/mainform.ui" line="302"/>
         <source>Exit(&amp;X)</source>
         <translation>Exit(&amp;X)</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="310"/>
+        <location filename="../ui/mainform.ui" line="311"/>
         <source>DataTest</source>
         <translation>DataTest</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="396"/>
+        <location filename="../ui/mainform.ui" line="397"/>
         <source>Pressure Tight</source>
         <translation>Pressure Tight</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="405"/>
+        <location filename="../ui/mainform.ui" line="406"/>
         <source>English</source>
         <translation>English</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="414"/>
+        <location filename="../ui/mainform.ui" line="415"/>
         <source>Chinese</source>
         <translation>Chinese</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="265"/>
+        <location filename="../ui/mainform.ui" line="266"/>
         <source>ComSet</source>
         <translation>ComSet</translation>
     </message>
@@ -506,7 +512,7 @@
         <translation>CompVerify(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="96"/>
+        <location filename="../ui/mainform.ui" line="95"/>
         <source>About(&amp;A)</source>
         <translation>About(&amp;A)</translation>
     </message>
@@ -515,7 +521,7 @@
         <translation type="obsolete">DispStyle(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="277"/>
+        <location filename="../ui/mainform.ui" line="278"/>
         <source>PortSet</source>
         <translation>PortSet</translation>
     </message>
@@ -524,17 +530,17 @@
         <translation type="obsolete">Exit(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="328"/>
+        <location filename="../ui/mainform.ui" line="329"/>
         <source>Default</source>
         <translation>Default</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="337"/>
+        <location filename="../ui/mainform.ui" line="338"/>
         <source>Classic</source>
         <translation>Classic</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="346"/>
+        <location filename="../ui/mainform.ui" line="347"/>
         <source>Fashion</source>
         <translation>Fashion</translation>
     </message>
