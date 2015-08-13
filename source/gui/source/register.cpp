@@ -31,7 +31,7 @@ void RegisterDlg::on_btnRegister_clicked()
 	QString encode = QString::fromStdString(md5(diskCode.toStdString()));
 	if (license == encode)
 	{
-		QString filename = QProcessEnvironment::systemEnvironment().value("ADEHOME") + "\\bin\\license";
+		QString filename = QProcessEnvironment::systemEnvironment().value("ADEHOME") + "\\ini\\license";
 		QFile file(filename);
 		if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
 		{

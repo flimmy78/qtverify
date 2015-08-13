@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
 	}
 
 	//判断是否授权用户
-	QFile license(adehome + "\\bin\\license");
+	QFile license(adehome + "\\ini\\license");
 	license.open(QIODevice::ReadOnly | QIODevice::Text);
 	QTextStream in(&license);
 	QString regCode = in.readLine();
