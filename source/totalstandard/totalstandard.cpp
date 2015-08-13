@@ -852,8 +852,9 @@ int TotalStandardDlg::openWaterOutValve()
 */
 int TotalStandardDlg::judgeTartgetVolAndCalcAvgTemperAndFlow(float initV, float verifyV)
 {
-
-	float targetV       = initV + verifyV;
+	float targetV = initV + verifyV;
+	ui.tableWidget->setEnabled(false);
+	ui.btnAllReadNO->setEnabled(false);
 	ui.btnAllReadData->setEnabled(false);
 	ui.btnAllVerifyStatus->setEnabled(false);
 	QDateTime startTime = QDateTime::currentDateTime();
@@ -931,6 +932,7 @@ void TotalStandardDlg::on_btnStart_clicked()
 	ui.labelHintPoint->clear();
 	ui.labelHintProcess->clear();
 	ui.tableWidget->setEnabled(true);
+	ui.btnAllReadNO->setEnabled(true);
 	ui.btnAllReadData->setEnabled(true);
 	ui.btnAllVerifyStatus->setEnabled(true);
 	
@@ -1286,6 +1288,10 @@ int TotalStandardDlg::startVerifyFlowPoint(int order)
 	{
 		if (judgeTartgetVolAndCalcAvgTemperAndFlow(m_stdStartVol, verifyQuantity)) //跑完检定量并计算此过程的平均温度和平均流量
 		{
+			ui.tableWidget->setEnabled(true);
+			ui.btnAllReadNO->setEnabled(true);
+			ui.btnAllReadData->setEnabled(true);
+			ui.btnAllVerifyStatus->setEnabled(true);
 			closeValve(portNo); //关闭order对应的阀门
 			sleep(BALANCE_STABLE_TIME); //等待3秒钟，让天平数值稳定
 

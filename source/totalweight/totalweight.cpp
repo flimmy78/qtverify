@@ -943,6 +943,7 @@ int TotalWeightDlg::isBalanceValueBigger(float targetV, bool flg)
 int TotalWeightDlg::judgeBalanceAndCalcAvgTemperAndFlow(float targetV)
 {
 	ui.tableWidget->setEnabled(false);
+	ui.btnAllReadNO->setEnabled(false);
 	ui.btnAllReadData->setEnabled(false);
 	ui.btnAllVerifyStatus->setEnabled(false);
 	QDateTime startTime = QDateTime::currentDateTime();
@@ -1038,6 +1039,7 @@ void TotalWeightDlg::on_btnStart_clicked()
 	ui.labelHintPoint->clear();
 	ui.labelHintProcess->clear();
 	ui.tableWidget->setEnabled(true);
+	ui.btnAllReadNO->setEnabled(true);
 	ui.btnAllReadData->setEnabled(true);
 	ui.btnAllVerifyStatus->setEnabled(true);
 	
@@ -1443,6 +1445,7 @@ int TotalWeightDlg::startVerifyFlowPoint(int order)
 		if (judgeBalanceAndCalcAvgTemperAndFlow(m_balStartV + verifyQuantity)) //跑完检定量并计算此过程的平均温度和平均流量
 		{
 			ui.tableWidget->setEnabled(true);
+			ui.btnAllReadNO->setEnabled(true);
 			ui.btnAllReadData->setEnabled(true);
 			ui.btnAllVerifyStatus->setEnabled(true);
 			closeValve(portNo); //关闭order对应的阀门
