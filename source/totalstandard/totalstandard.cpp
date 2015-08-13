@@ -672,7 +672,7 @@ void TotalStandardDlg::initTableWidget()
 
 		//ÉèÖÃ°´Å¥
 		QPushButton *btnReadMeter = new QPushButton(QObject::tr("(%1)").arg(i+1) + tr("ReadMeter"));
-		ui.tableWidget->setCellWidget(i, COLUMN_READ_METER, btnReadMeter);
+		ui.tableWidget->setCellWidget(i, COLUMN_READ_DATA, btnReadMeter);
 		signalMapper3->setMapping(btnReadMeter, i);
 		connect(btnReadMeter, SIGNAL(clicked()), signalMapper3, SLOT(map()));
 

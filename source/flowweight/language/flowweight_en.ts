@@ -4,130 +4,140 @@
 <context>
     <name>FlowWeightClass</name>
     <message>
-        <location filename="../flowweight.ui" line="711"/>
+        <location filename="../flowweight.ui" line="31"/>
         <source>MeterNo</source>
         <translation>MeterNo</translation>
     </message>
     <message utf8="true">
-        <location filename="../flowweight.ui" line="716"/>
+        <location filename="../flowweight.ui" line="36"/>
         <source>FlowPoint(m³/h)</source>
         <translation>FlowPoint(m³/h)</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="721"/>
+        <location filename="../flowweight.ui" line="41"/>
         <source>MeterValue0(L)</source>
         <translation>MeterValue0(L)</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="726"/>
+        <location filename="../flowweight.ui" line="46"/>
         <source>MeterValue1(L)</source>
         <translation>MeterValue0(L)</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="731"/>
+        <location filename="../flowweight.ui" line="51"/>
         <source>BalWeight0(kg)</source>
         <translation>BalWeight0(kg)</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="736"/>
+        <location filename="../flowweight.ui" line="56"/>
         <source>BalWeight1(kg)</source>
         <translation>BalWeight1(kg)</translation>
     </message>
     <message utf8="true">
-        <location filename="../flowweight.ui" line="741"/>
+        <location filename="../flowweight.ui" line="61"/>
         <source>Temp(℃)</source>
         <translation>Temp(℃)</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="746"/>
+        <location filename="../flowweight.ui" line="66"/>
         <source>Density(kg/L)</source>
         <translation>Density(kg/L)</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="751"/>
+        <location filename="../flowweight.ui" line="71"/>
         <source>StdValue(L)</source>
         <translation>StdValue(L)</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="756"/>
+        <location filename="../flowweight.ui" line="76"/>
         <source>DsipError(%)</source>
         <translation>DsipError(%)</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="768"/>
+        <location filename="../flowweight.ui" line="88"/>
         <source>StdError(%)</source>
         <translation>StdError(%)</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="814"/>
+        <location filename="../flowweight.ui" line="93"/>
+        <location filename="../flowweight.ui" line="166"/>
+        <source>ReadNO</source>
+        <translation>ReadNO</translation>
+    </message>
+    <message>
+        <location filename="../flowweight.ui" line="98"/>
+        <location filename="../flowweight.ui" line="191"/>
+        <source>ReadData</source>
+        <translation>ReadData</translation>
+    </message>
+    <message>
+        <location filename="../flowweight.ui" line="139"/>
         <source>ParaSet</source>
         <translation>ParaSet</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="408"/>
-        <location filename="../flowweight.ui" line="773"/>
         <source>ReadMeter</source>
-        <translation>ReadMeter</translation>
+        <translation type="obsolete">ReadMeter</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="304"/>
+        <location filename="../flowweight.ui" line="293"/>
         <source>ReCalc</source>
         <translation>ReCalc</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="143"/>
+        <location filename="../flowweight.ui" line="444"/>
         <source>NowPara(KeyInfo)</source>
         <translation>NowPara(KeyInfo)</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="155"/>
+        <location filename="../flowweight.ui" line="456"/>
         <source>Standard:</source>
         <translation>Standard:</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="181"/>
+        <location filename="../flowweight.ui" line="482"/>
         <source>DA Mode:</source>
         <translation>DA Mode:</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="198"/>
+        <location filename="../flowweight.ui" line="499"/>
         <source>Manual</source>
         <translation>Manual</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="203"/>
+        <location filename="../flowweight.ui" line="504"/>
         <source>Auto</source>
         <translation>Auto</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="217"/>
+        <location filename="../flowweight.ui" line="518"/>
         <source>ResetZero:</source>
         <translation>ResetZero:</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="234"/>
-        <location filename="../flowweight.ui" line="270"/>
+        <location filename="../flowweight.ui" line="535"/>
+        <location filename="../flowweight.ui" line="571"/>
         <source>No</source>
         <translation>No</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="239"/>
-        <location filename="../flowweight.ui" line="275"/>
+        <location filename="../flowweight.ui" line="540"/>
+        <location filename="../flowweight.ui" line="576"/>
         <source>Yes</source>
         <translation>Yes</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="253"/>
+        <location filename="../flowweight.ui" line="554"/>
         <source>Continuous:</source>
         <translation>Continuous:</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="692"/>
+        <location filename="../flowweight.ui" line="862"/>
         <source>Pump</source>
         <translation>Pump</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="36"/>
+        <location filename="../flowweight.ui" line="312"/>
         <source>Process Hint</source>
         <translation>Process Hint</translation>
     </message>
@@ -136,7 +146,7 @@
         <translation type="obsolete">Process:</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="958"/>
+        <location filename="../flowweight.ui" line="884"/>
         <source>DataAcquisition</source>
         <translation>DataAcquisition</translation>
     </message>
@@ -146,20 +156,20 @@
         <translation>Flow Verify(Weight Method)</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="383"/>
-        <location filename="../flowweight.ui" line="778"/>
+        <location filename="../flowweight.ui" line="103"/>
+        <location filename="../flowweight.ui" line="216"/>
         <source>VerifySt</source>
         <translation>VerifySt</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="358"/>
-        <location filename="../flowweight.ui" line="783"/>
+        <location filename="../flowweight.ui" line="108"/>
+        <location filename="../flowweight.ui" line="241"/>
         <source>AdjustErr</source>
         <translation>AdjustErr</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="333"/>
-        <location filename="../flowweight.ui" line="788"/>
+        <location filename="../flowweight.ui" line="113"/>
+        <location filename="../flowweight.ui" line="266"/>
         <source>ModifyNO</source>
         <translation>ModifyNO</translation>
     </message>
@@ -176,53 +186,53 @@
         <translation type="obsolete">Small Bal:</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="1014"/>
+        <location filename="../flowweight.ui" line="940"/>
         <source>FlowRate:</source>
         <translation>FlowRate:</translation>
     </message>
     <message utf8="true">
-        <location filename="../flowweight.ui" line="1046"/>
+        <location filename="../flowweight.ui" line="972"/>
         <source>m³/h</source>
         <translation>m³/h</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="1059"/>
+        <location filename="../flowweight.ui" line="985"/>
         <source>In Temp:</source>
         <translation>In Temp:</translation>
     </message>
     <message utf8="true">
-        <location filename="../flowweight.ui" line="1209"/>
-        <location filename="../flowweight.ui" line="1375"/>
+        <location filename="../flowweight.ui" line="1135"/>
+        <location filename="../flowweight.ui" line="1301"/>
         <source>℃</source>
         <translation>℃</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="1222"/>
+        <location filename="../flowweight.ui" line="1148"/>
         <source>Out Temp:</source>
         <translation>Out Temp:</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="864"/>
+        <location filename="../flowweight.ui" line="1331"/>
         <source>Exhaust</source>
         <translation>Exhaust</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="839"/>
+        <location filename="../flowweight.ui" line="419"/>
         <source>Start</source>
         <translation>Start</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="970"/>
+        <location filename="../flowweight.ui" line="896"/>
         <source>Balance: </source>
         <translation>Balance: </translation>
     </message>
     <message utf8="true">
-        <location filename="../flowweight.ui" line="999"/>
+        <location filename="../flowweight.ui" line="925"/>
         <source>㎏  </source>
         <translation>kg </translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="889"/>
+        <location filename="../flowweight.ui" line="1356"/>
         <source>GoOn</source>
         <translation>GoOn</translation>
     </message>
@@ -231,27 +241,27 @@
         <translation type="obsolete">Next</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="914"/>
+        <location filename="../flowweight.ui" line="1381"/>
         <source>Stop</source>
         <translation>Stop</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="939"/>
+        <location filename="../flowweight.ui" line="1406"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="423"/>
+        <location filename="../flowweight.ui" line="593"/>
         <source>Controller</source>
         <translation>Controller</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="613"/>
+        <location filename="../flowweight.ui" line="783"/>
         <source>Set Freq</source>
         <translation>Set Freq</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="556"/>
+        <location filename="../flowweight.ui" line="726"/>
         <source>s
 m
 a
@@ -264,12 +274,12 @@ l
 l</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="474"/>
+        <location filename="../flowweight.ui" line="644"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="501"/>
+        <location filename="../flowweight.ui" line="671"/>
         <source>i
 n
 </source>
@@ -277,7 +287,7 @@ n
 n</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="665"/>
+        <location filename="../flowweight.ui" line="835"/>
         <source>b
 i
 g</source>
@@ -286,7 +296,7 @@ i
 g</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="528"/>
+        <location filename="../flowweight.ui" line="698"/>
         <source>m
 i
 d
@@ -297,7 +307,7 @@ d
 1</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="585"/>
+        <location filename="../flowweight.ui" line="755"/>
         <source>m
 i
 d
@@ -308,7 +318,7 @@ d
 2</translation>
     </message>
     <message>
-        <location filename="../flowweight.ui" line="638"/>
+        <location filename="../flowweight.ui" line="808"/>
         <source>o
 u
 t</source>
@@ -321,8 +331,8 @@ t</translation>
     <name>FlowWeightDlg</name>
     <message>
         <location filename="../flowweight.cpp" line="66"/>
-        <location filename="../flowweight.cpp" line="628"/>
-        <location filename="../flowweight.cpp" line="635"/>
+        <location filename="../flowweight.cpp" line="637"/>
+        <location filename="../flowweight.cpp" line="644"/>
         <source>Warning</source>
         <translation>Warning</translation>
     </message>
@@ -342,35 +352,34 @@ t</translation>
         <translation>release pipe pressure...</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="567"/>
+        <location filename="../flowweight.cpp" line="570"/>
         <source>ModifyNO</source>
         <translation>ModifyNO</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="573"/>
+        <location filename="../flowweight.cpp" line="576"/>
         <source>AdjustErr</source>
         <translation>AdjustErr</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="579"/>
         <source>ReadMeter</source>
-        <translation>ReadMeter</translation>
+        <translation type="obsolete">ReadMeter</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="584"/>
+        <location filename="../flowweight.cpp" line="587"/>
         <source>VerifySt</source>
         <translation>VerifySt</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1024"/>
-        <location filename="../flowweight.cpp" line="1042"/>
+        <location filename="../flowweight.cpp" line="1060"/>
+        <location filename="../flowweight.cpp" line="1078"/>
         <source>Please input meter number!
  then click &quot;GoOn&quot; button!</source>
         <translation>Please input meter number!
  then click &quot;GoOn&quot; button!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1285"/>
+        <location filename="../flowweight.cpp" line="1321"/>
         <source>please wait &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; seconds for reset zero</source>
         <translation>please wait &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; seconds for reset zero</translation>
     </message>
@@ -387,13 +396,13 @@ t</translation>
         <translation type="obsolete">please wait &lt;font color=DarkGreen size=4&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; seconds for reset zero</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1323"/>
-        <location filename="../flowweight.cpp" line="1906"/>
+        <location filename="../flowweight.cpp" line="1359"/>
+        <location filename="../flowweight.cpp" line="1941"/>
         <source>please input start value of heat meter</source>
         <translation>please input start value of heat meter</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1898"/>
+        <location filename="../flowweight.cpp" line="1933"/>
         <source>read start value of heat meter...</source>
         <translation>read start value of heat meter...</translation>
     </message>
@@ -402,7 +411,7 @@ t</translation>
         <translation type="obsolete">Exhaust countdown: %1 second</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="694"/>
+        <location filename="../flowweight.cpp" line="703"/>
         <source>prepare balance init weight ...</source>
         <translation>prepare balance init weight ...</translation>
     </message>
@@ -415,7 +424,7 @@ t</translation>
         <translation type="obsolete">NO. %1 flow point: Verify Finished!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="939"/>
+        <location filename="../flowweight.cpp" line="975"/>
         <source>Please input meter number!</source>
         <translation>Please input meter number!</translation>
     </message>
@@ -424,32 +433,32 @@ t</translation>
         <translation type="obsolete">Please input meter number, then click &quot;GoOn&quot; button!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1025"/>
+        <location filename="../flowweight.cpp" line="1061"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1025"/>
+        <location filename="../flowweight.cpp" line="1061"/>
         <source>Error: meter count is zero !
 Please input meter number, then click &quot;GoOn&quot; button!</source>
         <translation>Error: meter count is zero !
 Please input meter number, then click &quot;GoOn&quot; button!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1034"/>
+        <location filename="../flowweight.cpp" line="1070"/>
         <source>meter count maybe error ! read meter number again?
 click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue verify</source>
         <translation>meter count maybe error ! read meter number again?
 click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue verify</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1150"/>
+        <location filename="../flowweight.cpp" line="1186"/>
         <source>read meter now coe ...</source>
         <translation>read meter now coe ...</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1161"/>
-        <location filename="../flowweight.cpp" line="1266"/>
+        <location filename="../flowweight.cpp" line="1197"/>
+        <location filename="../flowweight.cpp" line="1302"/>
         <source>prepare balance capacity ...</source>
         <translation>prepare balance capacity ...</translation>
     </message>
@@ -462,7 +471,7 @@ click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue ve
         <translation type="obsolete">please click &quot;Next&quot; button to verify next flow point</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="667"/>
+        <location filename="../flowweight.cpp" line="676"/>
         <source>Exhaust countdown finished!</source>
         <translation>Exhaust countdown finished!</translation>
     </message>
@@ -493,52 +502,62 @@ Please wait for about %1 second</translation>
         <translation type="obsolete">&lt;font color=red size=4&gt;&lt;b&gt;Please input meter number!&lt;/b&gt;&lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="628"/>
+        <location filename="../flowweight.cpp" line="637"/>
         <source>data acquisition error, please check!</source>
         <translation>data acquisition error, please check!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="635"/>
+        <location filename="../flowweight.cpp" line="644"/>
         <source>exhaust air failed!</source>
         <translation>exhaust air failed!</translation>
     </message>
     <message>
         <location filename="../flowweight.cpp" line="161"/>
-        <location filename="../flowweight.cpp" line="969"/>
-        <location filename="../flowweight.cpp" line="1033"/>
+        <location filename="../flowweight.cpp" line="1005"/>
+        <location filename="../flowweight.cpp" line="1069"/>
         <source>Question</source>
         <translation>Question</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="641"/>
-        <location filename="../flowweight.cpp" line="659"/>
+        <location filename="../flowweight.cpp" line="582"/>
+        <source>ReadData</source>
+        <translation>ReadData</translation>
+    </message>
+    <message>
+        <location filename="../flowweight.cpp" line="592"/>
+        <source>ReadNO</source>
+        <translation>ReadNO</translation>
+    </message>
+    <message>
+        <location filename="../flowweight.cpp" line="650"/>
+        <location filename="../flowweight.cpp" line="668"/>
         <source>Exhaust countdown: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; second</source>
         <translation>Exhaust countdown: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; second</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="854"/>
-        <location filename="../flowweight.cpp" line="873"/>
-        <location filename="../flowweight.cpp" line="1880"/>
+        <location filename="../flowweight.cpp" line="887"/>
+        <location filename="../flowweight.cpp" line="906"/>
+        <location filename="../flowweight.cpp" line="1915"/>
         <source>NO. &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; flow point: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; m3/h</source>
         <translation>NO. &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; flow point: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; m3/h</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="856"/>
+        <location filename="../flowweight.cpp" line="889"/>
         <source>Verifying...Please wait for about &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; second</source>
         <translation>Verifying...Please wait for about &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; second</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="875"/>
+        <location filename="../flowweight.cpp" line="908"/>
         <source>NO. &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; flow point: Verify Finished!</source>
         <translation>NO. &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; flow point: Verify Finished!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="969"/>
+        <location filename="../flowweight.cpp" line="1005"/>
         <source>Stop Really ?</source>
         <translation>Stop Really ?</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="994"/>
+        <location filename="../flowweight.cpp" line="1030"/>
         <source>Verify has Stoped!</source>
         <translation>Verify has Stoped!</translation>
     </message>
@@ -551,7 +570,7 @@ Please wait for about %1 second</translation>
         <translation type="obsolete">please input meter number</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1282"/>
+        <location filename="../flowweight.cpp" line="1318"/>
         <source>Reset Zero</source>
         <translation>Reset Zero</translation>
     </message>
@@ -560,17 +579,17 @@ Please wait for about %1 second</translation>
         <translation type="obsolete">please wait %1 seconds for reset zero</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1465"/>
+        <location filename="../flowweight.cpp" line="1500"/>
         <source>save database successfully!</source>
         <translation>save database successfully!</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1485"/>
+        <location filename="../flowweight.cpp" line="1520"/>
         <source>Hint</source>
         <translation>Hint</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1485"/>
+        <location filename="../flowweight.cpp" line="1520"/>
         <source>if it isn&apos;t new meter , please change meter to &quot;deltaT&quot; status !</source>
         <translation>if it isn&apos;t new meter , please change meter to &quot;deltaT&quot; status !</translation>
     </message>
@@ -579,8 +598,8 @@ Please wait for about %1 second</translation>
         <translation type="obsolete">please input init value of heat meter</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="1506"/>
-        <location filename="../flowweight.cpp" line="1944"/>
+        <location filename="../flowweight.cpp" line="1541"/>
+        <location filename="../flowweight.cpp" line="1979"/>
         <source>please input end value of heat meter</source>
         <translation>please input end value of heat meter</translation>
     </message>
@@ -592,15 +611,16 @@ Please wait for about %1 second</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../flowweight.cpp" line="549"/>
+        <location filename="../flowweight.cpp" line="551"/>
         <source>meterPosNo%1</source>
         <translation>meterPosNo%1</translation>
     </message>
     <message>
-        <location filename="../flowweight.cpp" line="567"/>
-        <location filename="../flowweight.cpp" line="573"/>
-        <location filename="../flowweight.cpp" line="579"/>
-        <location filename="../flowweight.cpp" line="584"/>
+        <location filename="../flowweight.cpp" line="570"/>
+        <location filename="../flowweight.cpp" line="576"/>
+        <location filename="../flowweight.cpp" line="582"/>
+        <location filename="../flowweight.cpp" line="587"/>
+        <location filename="../flowweight.cpp" line="592"/>
         <source>(%1)</source>
         <translation>(%1)</translation>
     </message>

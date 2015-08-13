@@ -688,10 +688,10 @@ void TotalWeightDlg::initTableWidget()
 		ui.tableWidget->item(i, COLUMN_STD_ERROR)->setFlags(Qt::NoItemFlags);
 
 		//ÉèÖÃ°´Å¥
-		QPushButton *btnReadMeter = new QPushButton(QObject::tr("\(%1\)").arg(i+1) + tr("ReadMeter"));
-		ui.tableWidget->setCellWidget(i, COLUMN_READ_METER, btnReadMeter);
-		signalMapper3->setMapping(btnReadMeter, i);
-		connect(btnReadMeter, SIGNAL(clicked()), signalMapper3, SLOT(map()));
+		QPushButton *btnReadData = new QPushButton(QObject::tr("\(%1\)").arg(i+1) + tr("ReadMeter"));
+		ui.tableWidget->setCellWidget(i, COLUMN_READ_DATA, btnReadData);
+		signalMapper3->setMapping(btnReadData, i);
+		connect(btnReadData, SIGNAL(clicked()), signalMapper3, SLOT(map()));
 
 		QPushButton *btnVerifySt = new QPushButton(QObject::tr("\(%1\)").arg(i+1) + tr("VerifySt"));
 		ui.tableWidget->setCellWidget(i, COLUMN_VERIFY_STATUS, btnVerifySt);
