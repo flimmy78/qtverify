@@ -61,6 +61,12 @@ void CReport::setIniName(QString ini)
 	m_temp_file		  = m_temp_file+"\\" + current_time + ".xls";
 #endif
 	m_template_file.append(m_rpt_config->value("template/name").toString());
+	if (!QFile::exists(m_template_file))
+	{
+		qCritical() << "template file::"<< m_template_file <<"not exists !";
+		throw QString("template file: ").append(m_template_file).append(" not exists !");
+		return;
+	}
 	QFile::copy(m_template_file,m_temp_file);
 
 	m_book = xlCreateBook();

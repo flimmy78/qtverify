@@ -113,16 +113,23 @@ void CmbResultDlg::on_btnExport_clicked()
 		return;
 	}
 
-	QString defaultPath = QProcessEnvironment::systemEnvironment().value("ADEHOME") + "//report//" + QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss");
+	QString defaultPath = QProcessEnvironment::systemEnvironment().value("ADEHOME") + "//report//cmb//" + QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss");
 	QString file = QFileDialog::getSaveFileName(this, tr("Save File"), defaultPath, tr("Microsoft Excel (*.xls)"));//获取保存路径
 	if (!file.isEmpty())
 	{
-		getCondition();
-		CReport rpt(m_conStr);
-		rpt.setIniName("rptconfig_cmb.ini");
-		rpt.writeRpt();
-		rpt.saveTo(file);
-		QMessageBox::information(this, tr("OK"), tr("export excel file successful!"));
+		try
+		{
+			getCondition();
+			CReport rpt(m_conStr);
+			rpt.setIniName("rptconfig_cmb.ini");
+			rpt.writeRpt();
+			rpt.saveTo(file);
+			QMessageBox::information(this, tr("OK"), tr("export excel file successful!"));
+		}
+		catch (QString e)
+		{
+			QMessageBox::warning(this, tr("Error"), e);
+		}
 	}
 }
 
