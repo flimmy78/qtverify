@@ -320,7 +320,7 @@ void DataTestDlg::initComOfHeatMeter()
 	m_meterThread.start();
 
 	connect(m_meterObj, SIGNAL(readMeterNoIsOK(const QString&, const QString&)), this, SLOT(slotFreshMeterNo(const QString&, const QString&)));
-	connect(m_meterObj, SIGNAL(readMeterFlowIsOK(const QString&, const float&)), this, SLOT(slotFreshMeterFlow(const QString&, const float&)));
+	connect(m_meterObj, SIGNAL(readMeterFlowIsOK(const QString&, const QString&)), this, SLOT(slotFreshMeterFlow(const QString&, const QString&)));
 	connect(m_meterObj, SIGNAL(readMeterHeatIsOK(const QString&, const QString&)), this, SLOT(slotFreshMeterHeat(const QString&, const QString&)));
 	connect(m_meterObj, SIGNAL(readMeterDateIsOK(const QString&, const QString&)), this, SLOT(slotFreshMeterDate(const QString&, const QString&)));
 	connect(m_meterObj, SIGNAL(readMeterTemperIsOK(const QString&, const QString&, const QString&)), \
@@ -854,9 +854,9 @@ void DataTestDlg::slotFreshMeterNo(const QString& comName, const QString& meterN
 }
 
 //响应读取表流量成功
-void DataTestDlg::slotFreshMeterFlow(const QString& comName, const float& flow)
+void DataTestDlg::slotFreshMeterFlow(const QString& comName, const QString& flow)
 {
-	ui.lnEditMeterTotalFlow->setText(QString::number(flow));
+	ui.lnEditMeterTotalFlow->setText(flow);
 	qDebug()<<"读取表流量 成功...";
 }
 

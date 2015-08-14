@@ -178,7 +178,7 @@ public slots:
 	void slotSetRegulateOk();     //调节阀返回成功对应的槽函数
 
 	void slotSetMeterNumber(const QString& comName, const QString& meterNumber);
-	void slotSetMeterFlow(const QString& comName, const float& flow);
+	void slotSetMeterFlow(const QString& comName, const QString& flow);
 	void slotFreshBigCoe(const QString& comName, const QString& bigCoe); //刷新大流量系数
 	void slotFreshMid2Coe(const QString& comName, const QString& mid2Coe); //刷新中流2流量系数
 	void slotFreshMid1Coe(const QString& comName, const QString& mid1Coe); //刷新中流1流量系数

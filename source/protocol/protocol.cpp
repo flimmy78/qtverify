@@ -1007,6 +1007,7 @@ void DeluMeterProtocol::analyseFrame()
 		return;
 	}
 
+	float flow = 0.0;
 	//表号
 	m_fullMeterNo = "";
 	for (int i=CJ188_ADDR_LEN-1; i>=0; i--)
@@ -1026,6 +1027,8 @@ void DeluMeterProtocol::analyseFrame()
 		.arg(m_CJ188DataFrame->data[8], 2, 16).arg(m_CJ188DataFrame->data[7], 2, 16)\
 		.arg(m_CJ188DataFrame->data[6], 2, 16));
 	m_flow.replace(' ', '0');
+	flow = m_flow.toFloat()*1000; //m3 -> L
+	m_flow = QString::number(flow);
 
 	//热量
 	m_heat = "";
@@ -1424,6 +1427,10 @@ void HuiZhongMeterProtocol::analyseFrame()
 	UINT8 DI0 = m_CJ188DataFrame->dataID[0];
 	UINT8 DI1 = m_CJ188DataFrame->dataID[1];
 
+	float *flow = new float[4];
+	float *heat = new float[4];
+	float *coe = new float[4];
+
 	switch (ctrlCode)
 	{
 	case 0x83: //读表号
@@ -1437,26 +1444,20 @@ void HuiZhongMeterProtocol::analyseFrame()
 		if (DI0==0x2A && DI1==0x49) //读高精度流量和热量
 		{
 			//流量
-			m_flow = "";
-			m_flow.append(QString("%1.%2%3%4").arg(m_CJ188DataFrame->data[4], 2, 16)\
-				.arg(m_CJ188DataFrame->data[5], 2, 16).arg(m_CJ188DataFrame->data[6], 2, 16)\
-				.arg(m_CJ188DataFrame->data[7], 2, 16));
-			m_flow.replace(' ', '0');
+			memcpy(flow, &m_CJ188DataFrame->data[4], 4);
+			m_flow = QString::number(*flow, 'f', 4);
 
 			//热量
-			m_heat = "";
-			m_heat.append(QString("%1%2.%3%4").arg(m_CJ188DataFrame->data[0], 2, 16)\
-				.arg(m_CJ188DataFrame->data[1], 2, 16).arg(m_CJ188DataFrame->data[2], 2, 16)\
-				.arg(m_CJ188DataFrame->data[3], 2, 16));
-			m_heat.replace(' ', '0');
+			memcpy(heat, &m_CJ188DataFrame->data[0], 4);
+			m_heat = QString::number(*heat, 'f', 4);
 		}
 		else if (DI0==0x2A && DI1==0x43) //读流量系数
 		{
-			m_Coe = "";
-			//需要计算流量系数 ？？？
+ 			memcpy(coe, &m_CJ188DataFrame->data[0], 4);	//计算流量系数方法是否正确 ？？？
+			m_Coe = QString::number(*coe);
 		}
 		break;
-	case 0x81: //读表数据
+	case 0x81: //读表数据(抄表数据)
 		break;
 	case 0xBB: //检定状态进入和退出、写流量系数
 		if (DI0==0xB2 || DI1==0x6C) //热量检定

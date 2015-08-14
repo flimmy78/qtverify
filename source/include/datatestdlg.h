@@ -109,7 +109,7 @@ public slots:
 	void slotFreshBalanceValue(const float& balValue);     //刷新天平数值
 	
 	void slotFreshMeterNo(const QString& comName, const QString& meterNo);//刷新表号
-	void slotFreshMeterFlow(const QString& comName, const float& flow); //刷新表流量
+	void slotFreshMeterFlow(const QString& comName, const QString& flow); //刷新表流量
 	void slotFreshMeterHeat(const QString& comName, const QString& heat); //刷新表热量
 	void slotFreshMeterDate(const QString& comName, const QString& date); //刷新表日期
 	void slotFreshMeterTemper(const QString& comName, const QString& tempIn, const QString& tempOut); //刷新表进出水温度

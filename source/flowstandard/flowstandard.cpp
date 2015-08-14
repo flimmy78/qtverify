@@ -422,7 +422,7 @@ void FlowStandardDlg::initMeterCom()
 		m_meterObj[i].openMeterCom(&m_readComConfig->ReadMeterConfigByNum(i+1));
 
 		connect(&m_meterObj[i], SIGNAL(readMeterNoIsOK(const QString&, const QString&)), this, SLOT(slotSetMeterNumber(const QString&, const QString&)));
-		connect(&m_meterObj[i], SIGNAL(readMeterFlowIsOK(const QString&, const float&)), this, SLOT(slotSetMeterFlow(const QString&, const float&)));
+		connect(&m_meterObj[i], SIGNAL(readMeterFlowIsOK(const QString&, const QString&)), this, SLOT(slotSetMeterFlow(const QString&, const QString&)));
 		connect(&m_meterObj[i], SIGNAL(readMeterBigCoeIsOK(const QString&, const QString&)), \
 			this, SLOT(slotFreshBigCoe(const QString&, const QString&)));
 		connect(&m_meterObj[i], SIGNAL(readMeterMid2CoeIsOK(const QString&, const QString&)), \
@@ -1561,7 +1561,7 @@ void FlowStandardDlg::slotSetMeterNumber(const QString& comName, const QString& 
 /*
 ** 自动读取表流量成功 显示表流量
 */
-void FlowStandardDlg::slotSetMeterFlow(const QString& comName, const float& flow)
+void FlowStandardDlg::slotSetMeterFlow(const QString& comName, const QString& flow)
 {
 	int meterPos = m_readComConfig->getMeterPosByComName(comName);
 	if (meterPos < 1)
@@ -1577,11 +1577,11 @@ void FlowStandardDlg::slotSetMeterFlow(const QString& comName, const float& flow
 
 	if (m_state == STATE_START_VALUE) //初值
 	{
-		ui.tableWidget->item(meterPos - 1, COLUMN_METER_START)->setText(QString::number(flow));
+		ui.tableWidget->item(meterPos - 1, COLUMN_METER_START)->setText(flow);
 	}
 	else if (m_state == STATE_END_VALUE) //终值
 	{
-		ui.tableWidget->item(meterPos - 1, COLUMN_METER_END)->setText(QString::number(flow));
+		ui.tableWidget->item(meterPos - 1, COLUMN_METER_END)->setText(flow);
 	}
 }
 

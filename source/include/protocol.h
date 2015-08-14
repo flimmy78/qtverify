@@ -287,10 +287,10 @@ public:
 	QByteArray m_sendBuf;
 	CJ188_Frame_Struct *m_CJ188DataFrame;
 	QString m_fullMeterNo; //完整表号 7个字节
-	QString m_inTemper; //进水温度
-	QString m_outTemper;//回水温度
-	QString m_flow; //流量 
-	QString m_heat; //热量
+	QString m_inTemper; //进水温度 ℃
+	QString m_outTemper;//回水温度 ℃
+	QString m_flow; //流量 L
+	QString m_heat; //热量 kWh
 	QString m_date; //当前日期
 	QString m_bigCoe;  //大流量点流量系数
 	QString m_mid2Coe; //中流二流量系数

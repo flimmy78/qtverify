@@ -660,10 +660,8 @@ void MeterComObject::readMeterComBuffer()
 	ret = m_meterProtocol->readMeterComBuffer(m_meterTmp);
 	m_meterTmp.clear(); //清零
 
-	bool ok;
 	QString meterNo;
-	float flow;
-	QString heat;
+	QString flow, heat;
 	QString tempIn, tempOut, date;
 	QString bigCoe,mid2Coe,mid1Coe,smallCoe;
 	if (ret == 1) //解帧成功
@@ -673,12 +671,8 @@ void MeterComObject::readMeterComBuffer()
 		emit readMeterNoIsOK(m_portName, meterNo);
 
 		//流量、热量
-		flow = m_meterProtocol->getFlow().toFloat(&ok);
-		if (ok)
-		{
-			flow *= 1000; //单位转换 m3->L
-			emit readMeterFlowIsOK(m_portName, flow);
-		}
+		flow = m_meterProtocol->getFlow();
+		emit readMeterFlowIsOK(m_portName, flow);
 
 		//热量
 		heat = m_meterProtocol->getHeat();

@@ -203,7 +203,7 @@ void CmbVerifyDlg::slotSetMeterNumber(const QString& comName, const QString& met
 	ui.tableWidget->item(meterPos-1, COL_SN)->setText(meterNo.right(8)); //±íºÅ
 }
 
-void CmbVerifyDlg::slotSetMeterFlow(const QString& comName, const float& flow)
+void CmbVerifyDlg::slotSetMeterFlow(const QString& comName, const QString& flow)
 {
 	int meterPos = m_readComConfig->getMeterPosByComName(comName);
 	if (meterPos < 1)
@@ -212,11 +212,11 @@ void CmbVerifyDlg::slotSetMeterFlow(const QString& comName, const float& flow)
 	}
 	if (!m_vol0_is_read[meterPos-1]) //³õÖµ
 	{
-		ui.tableWidget->item(meterPos - 1, COL_V0)->setText(QString::number(flow));
+		ui.tableWidget->item(meterPos - 1, COL_V0)->setText(flow);
 	}
 	else //ÖÕÖµ
 	{
-		ui.tableWidget->item(meterPos - 1, COL_V1)->setText(QString::number(flow));
+		ui.tableWidget->item(meterPos - 1, COL_V1)->setText(flow);
 	}
 }
 
@@ -271,7 +271,7 @@ void CmbVerifyDlg::initMeterCom()
 		m_meterObj[i].openMeterCom(&m_readComConfig->ReadMeterConfigByNum(i+1));
 
 		connect(&m_meterObj[i], SIGNAL(readMeterNoIsOK(const QString&, const QString&)), this, SLOT(slotSetMeterNumber(const QString&, const QString&)));
-		connect(&m_meterObj[i], SIGNAL(readMeterFlowIsOK(const QString&, const float&)), this, SLOT(slotSetMeterFlow(const QString&, const float&)));
+		connect(&m_meterObj[i], SIGNAL(readMeterFlowIsOK(const QString&, const QString&)), this, SLOT(slotSetMeterFlow(const QString&, const QString&)));
 		connect(&m_meterObj[i], SIGNAL(readMeterHeatIsOK(const QString&, const QString&)), this, SLOT(slotSetMeterHeat(const QString&, const QString&)));
 		connect(&m_meterObj[i], SIGNAL(readMeterTemperIsOK(const QString&, const QString&, const QString&)), this, SLOT(slotSetMeterTemp(const QString&, const QString&, const QString&)));
 	}

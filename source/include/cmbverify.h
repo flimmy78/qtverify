@@ -92,7 +92,7 @@ private slots:
 	void slotReadData(const int &);//读取表数据
 
 	void slotSetMeterNumber(const QString& comName, const QString& meterNumber);//获取表号
-	void slotSetMeterFlow(const QString& comName, const float& flow);//获取体积流量
+	void slotSetMeterFlow(const QString& comName, const QString& flow);//获取体积流量
 	void slotSetMeterHeat(const QString& portName, const QString& heat);//获取热值
 	void slotSetMeterTemp(const QString& portName, const QString& tempIn, const QString& tempOut);//获取进出口温度
 
