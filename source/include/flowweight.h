@@ -236,7 +236,7 @@ signals:
 
 private:
 	Ui::FlowWeightClass ui;
-
+	void exportReport();//导出报告
 };
 
 #endif //FLOWWEIGHT_H
