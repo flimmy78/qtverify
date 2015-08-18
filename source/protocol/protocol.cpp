@@ -327,6 +327,79 @@ float BalanceProtocol::getBalanceValue()
 	return m_balValue;
 }
 
+/***********************************************
+类名：BalBizerbaProtocol
+功能：天平协议
+************************************************/
+BalBizerbaProtocol::BalBizerbaProtocol()
+{
+	m_balValue = 0.0;
+	m_lastValue = 0.0;
+	m_count = 0;
+}
+
+BalBizerbaProtocol::~BalBizerbaProtocol()
+{
+}
+
+//解析赛多利斯天平串口数据
+bool BalBizerbaProtocol::readBalanceComBuffer(QByteArray tmp)
+{
+	// 	qDebug()<<"BalanceProtocol::readBalanceComBuffer thread:"<<QThread::currentThreadId();
+	bool ret = false;
+	int number = tmp.size();
+	if (number < BAL_DATA_LENGTH) //一帧通常是22字节；
+	{
+		return ret;
+	}
+
+	if (m_count>=10000)
+	{
+		m_count = 1;
+	}
+	QByteArray whtArray;
+	m_balValue = 0.0;
+
+	int m=0;
+	char ch;
+	UINT8 ch1, ch2;
+	bool ok;
+	for (int i=number; i>0; i--)
+	{
+		ch1 = (UINT8)tmp.at(i-1);
+		if (ch1==ASCII_LF && i>=15) //0x0A换行（帧尾0x0D 0x0A）
+		{
+			for (m=i-13; m<i-4; m++)//一帧长度15字节, 头两个字节是'S', 'T', 最后四个字节是'k','g',0x0D 0x0A
+			{
+				ch = tmp.at(m);
+				whtArray.append(ch);
+			}
+			m_balValue = whtArray.replace(" ", 0).toFloat(&ok);
+			if (ok)  //数字转换成功
+			{
+				m_count++;
+				if (m_count<=1)
+				{
+					m_lastValue = m_balValue;
+					ret = true;
+					break;
+				}
+				if (fabs(m_balValue-m_lastValue) <= 100.0) //过滤突变数据
+				{
+					m_lastValue = m_balValue;
+					ret = true;
+					break;
+				}
+			}
+		}
+	}
+	return ret;
+}
+
+float BalBizerbaProtocol::getBalanceValue()
+{
+	return m_balValue;
+}
 
 /***********************************************
 类名：ControlProtocol

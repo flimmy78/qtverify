@@ -112,6 +112,27 @@ private:
 };
 //天平协议 end
 
+//碧彩天平协议 begin
+
+class PROTOCOL_EXPORT BalBizerbaProtocol : public CProtocol
+{
+
+public:
+	BalBizerbaProtocol();
+	~BalBizerbaProtocol();
+
+	float m_balValue;
+	float m_lastValue;
+	unsigned int m_count;
+
+	public slots:
+		bool readBalanceComBuffer(QByteArray tmp);
+		float getBalanceValue();
+
+private:
+};
+//碧彩天平协议 end
+
 //下位机控制协议 begin
 #define		CTRL_START_CODE		0x69		//起始码
 #define		CTRL_END_CODE		0x16		//结束码
@@ -511,5 +532,6 @@ private:
 	
 	lcModAnswerState m_state;
 };//lcModbusRTUProtocol END
+
 
 #endif // PROTOCOL_H
