@@ -851,6 +851,10 @@ void FlowStandardDlg::clearTableContents()
 //点击"开始"按钮
 void FlowStandardDlg::on_btnStart_clicked()
 {
+	m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
+	m_nowDate = QDateTime::currentDateTime().toString("yyyy-MM-dd"); //当前日期'2014-08-07'
+	m_validDate = QDateTime::currentDateTime().addYears(VALID_YEAR).addDays(-1).toString("yyyy-MM-dd"); //有效期
+
 	ui.btnStart->setEnabled(false);
 	ui.btnGoOn->hide();
 	ui.labelHintPoint->clear();
@@ -1008,9 +1012,9 @@ void FlowStandardDlg::startVerify()
 	m_recPtr = new Flow_Verify_Record_STR[m_validMeterNum];
 	memset(m_recPtr, 0, sizeof(Flow_Verify_Record_STR)*m_validMeterNum);
 
-	m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
-	m_nowDate = QDateTime::currentDateTime().toString("yyyy-MM-dd"); //当前日期'2014-08-07'
-	m_validDate = QDateTime::currentDateTime().addYears(VALID_YEAR).addDays(-1).toString("yyyy-MM-dd"); //有效期
+	//m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
+	//m_nowDate = QDateTime::currentDateTime().toString("yyyy-MM-dd"); //当前日期'2014-08-07'
+	//m_validDate = QDateTime::currentDateTime().addYears(VALID_YEAR).addDays(-1).toString("yyyy-MM-dd"); //有效期
 
 	m_state = STATE_INIT; //初始状态
 
