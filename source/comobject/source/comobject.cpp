@@ -510,7 +510,11 @@ void BalanceComObject::readBalanceComBuffer()
 	QByteArray balBuffer = m_balanceCom->readAll();
 // 	qDebug()<<"balBuffer.size() ="<<balBuffer.size();
 // 	qDebug()<<"read data is:"<<balBuffer;
-
+// 	for (int i=0;i<balBuffer.size();i++)
+// 	{
+// 		printf("0x%02X ", (uchar)balBuffer.at(i));
+// 	}
+// 	printf("\n");
 	bool ret = false;
 	ret = m_balanceProtocol->readBalanceComBuffer(balBuffer);//通讯协议接口
 	if (ret)
