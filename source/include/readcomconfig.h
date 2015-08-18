@@ -26,6 +26,7 @@ public:
 	ComInfoStruct ReadMeterConfigByNum(QString MeterNum);
 	int getMeterPosByComName(QString comName);//根据串口名返回对应的表位号
 	void getBalancePara(float &maxWht, float &bottomWht);
+	int getBalanceType();
 	/***************************************************/
 private:
 	QSettings* m_com_settings;

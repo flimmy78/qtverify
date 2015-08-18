@@ -255,7 +255,7 @@ QByteArray TempProtocol::getSendBuf()
 
 /***********************************************
 类名：BalanceProtocol
-功能：天平协议
+功能：天平协议基类
 ************************************************/
 BalanceProtocol::BalanceProtocol()
 {
@@ -268,10 +268,27 @@ BalanceProtocol::~BalanceProtocol()
 {
 }
 
-//解析赛多利斯天平串口数据
-bool BalanceProtocol::readBalanceComBuffer(QByteArray tmp)
+float BalanceProtocol::getBalanceValue()
 {
-// 	qDebug()<<"BalanceProtocol::readBalanceComBuffer thread:"<<QThread::currentThreadId();
+	return m_balValue;
+}
+
+/***********************************************
+类名：BalSatoriusProtocol
+功能：Satorius(赛多利斯)天平协议
+************************************************/
+BalSatoriusProtocol::BalSatoriusProtocol()
+{
+}
+
+BalSatoriusProtocol::~BalSatoriusProtocol()
+{
+}
+
+//解析赛多利斯天平串口数据
+bool BalSatoriusProtocol::readBalanceComBuffer(QByteArray tmp)
+{
+// 	qDebug()<<"BalSatoriusProtocol::readBalanceComBuffer thread:"<<QThread::currentThreadId();
 	bool ret = false;
 	int number = tmp.size();
 	if (number < BAL_DATA_LENGTH) //一帧通常是22字节；
@@ -322,30 +339,58 @@ bool BalanceProtocol::readBalanceComBuffer(QByteArray tmp)
 	return ret;
 }
 
-float BalanceProtocol::getBalanceValue()
+/***********************************************
+类名：BalSatoriusHProtocol
+功能：SatoriusH(赛多利斯H)天平协议
+************************************************/
+BalSatoriusHProtocol::BalSatoriusHProtocol()
 {
-	return m_balValue;
+}
+
+BalSatoriusHProtocol::~BalSatoriusHProtocol()
+{
+}
+
+//解析赛多利斯H天平串口数据
+bool BalSatoriusHProtocol::readBalanceComBuffer(QByteArray tmp)
+{
+	return true;
+}
+
+/***********************************************
+类名：BalMettlerProtocol
+功能：Metteler Toledo天平协议
+************************************************/
+BalMettlerProtocol::BalMettlerProtocol()
+{
+}
+
+BalMettlerProtocol::~BalMettlerProtocol()
+{
+}
+
+//解析Metteler Toledo天平串口数据
+bool BalMettlerProtocol::readBalanceComBuffer(QByteArray tmp)
+{
+	return true;
 }
 
 /***********************************************
 类名：BalBizerbaProtocol
-功能：天平协议
+功能：Bizerba(碧彩)天平协议
 ************************************************/
 BalBizerbaProtocol::BalBizerbaProtocol()
 {
-	m_balValue = 0.0;
-	m_lastValue = 0.0;
-	m_count = 0;
 }
 
 BalBizerbaProtocol::~BalBizerbaProtocol()
 {
 }
 
-//解析赛多利斯天平串口数据
+//解析碧彩天平串口数据
 bool BalBizerbaProtocol::readBalanceComBuffer(QByteArray tmp)
 {
-	// 	qDebug()<<"BalanceProtocol::readBalanceComBuffer thread:"<<QThread::currentThreadId();
+// 	qDebug()<<"BalBizerbaProtocol::readBalanceComBuffer thread:"<<QThread::currentThreadId();
 	bool ret = false;
 	int number = tmp.size();
 	if (number < BAL_DATA_LENGTH) //一帧通常是22字节；
@@ -394,11 +439,6 @@ bool BalBizerbaProtocol::readBalanceComBuffer(QByteArray tmp)
 		}
 	}
 	return ret;
-}
-
-float BalBizerbaProtocol::getBalanceValue()
-{
-	return m_balValue;
 }
 
 /***********************************************

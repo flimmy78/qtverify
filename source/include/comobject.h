@@ -151,6 +151,8 @@ signals:
 public slots:
 	bool openBalanceCom(ComInfoStruct *comStruct);
 	void readBalanceComBuffer();
+
+	void setBalanceType(int balType);
 };
 
 /*

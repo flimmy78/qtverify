@@ -171,6 +171,12 @@ enum table_columns
 #define PROTOCOL_VER_GUADA  	8   //光大
 #define PROTOCOL_VER_HDLMT  	9   //荷德鲁美特
 
+//天平类型
+#define BALANCE_TYPE_Satorius   0   //赛多利斯
+#define BALANCE_TYPE_SatoriusH  1   //赛多利斯H
+#define BALANCE_TYPE_Bizerba    2   //Bizerba(碧彩)
+#define BALANCE_TYPE_Mettler    3   //Mettler Toledo
+
 #define POLY	0xA001//CRC16校验中的生成多项式
 #define WORDLEN 8
 #define LC_EDA_REG_BYTES		2//力创EDA9150A和EDA9017模块中, 每个寄存器的字节数

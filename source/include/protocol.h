@@ -89,11 +89,11 @@ private:
 //温度采集协议 end
 
 
-//天平协议 begin
+//天平协议基类 begin
 #define    ASCII_CR				0x0D	//回车键
 #define    ASCII_LF				0x0A	//换行键
 
-class PROTOCOL_EXPORT BalanceProtocol : public CProtocol
+class PROTOCOL_EXPORT BalanceProtocol
 {
 
 public:
@@ -105,33 +105,68 @@ public:
 	unsigned int m_count;
 
 public slots:
-	bool readBalanceComBuffer(QByteArray tmp);
-	float getBalanceValue();
+	virtual bool readBalanceComBuffer(QByteArray tmp){return true;};
+	virtual float getBalanceValue();
 
 private:
-};
-//天平协议 end
+};//天平协议基类 end
 
-//碧彩天平协议 begin
 
-class PROTOCOL_EXPORT BalBizerbaProtocol : public CProtocol
+//Satorius(赛多利斯)天平协议 begin
+class PROTOCOL_EXPORT BalSatoriusProtocol : public BalanceProtocol
+{
+
+public:
+	BalSatoriusProtocol();
+	~BalSatoriusProtocol();
+
+public slots:
+	virtual bool readBalanceComBuffer(QByteArray tmp);
+
+private:
+};//Satorius(赛多利斯)天平协议 end
+
+//SatoriusH(赛多利斯H)天平协议 begin
+class PROTOCOL_EXPORT BalSatoriusHProtocol : public BalanceProtocol
+{
+
+public:
+	BalSatoriusHProtocol();
+	~BalSatoriusHProtocol();
+
+public slots:
+	virtual bool readBalanceComBuffer(QByteArray tmp);
+
+private:
+};//SatoriusH(赛多利斯H)天平协议 end
+
+//Bizerba(碧彩)天平协议 begin
+class PROTOCOL_EXPORT BalBizerbaProtocol : public BalanceProtocol
 {
 
 public:
 	BalBizerbaProtocol();
 	~BalBizerbaProtocol();
 
-	float m_balValue;
-	float m_lastValue;
-	unsigned int m_count;
-
 	public slots:
-		bool readBalanceComBuffer(QByteArray tmp);
-		float getBalanceValue();
+		virtual bool readBalanceComBuffer(QByteArray tmp);
 
 private:
-};
-//碧彩天平协议 end
+};//Bizerba(碧彩)天平协议 end
+
+//Mettler Toledo天平协议 begin
+class PROTOCOL_EXPORT BalMettlerProtocol : public BalanceProtocol
+{
+
+public:
+	BalMettlerProtocol();
+	~BalMettlerProtocol();
+
+public slots:
+	virtual bool readBalanceComBuffer(QByteArray tmp);
+
+private:
+};//Mettler Toledo天平协议 end
 
 //下位机控制协议 begin
 #define		CTRL_START_CODE		0x69		//起始码

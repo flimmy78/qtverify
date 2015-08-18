@@ -173,3 +173,12 @@ void ReadComConfig::getBalancePara(float &maxWht, float &bottomWht)
 	maxWht = m_com_settings->value("BalanceType/maxweight").toFloat();
 	bottomWht = m_com_settings->value("BalanceType/bottomwht").toFloat();
 }
+
+/*
+** 获取天平类型
+*/
+int ReadComConfig::getBalanceType()
+{
+	int type = m_com_settings->value("BalanceType/type").toInt();
+	return type;
+}

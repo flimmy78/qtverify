@@ -524,6 +524,36 @@ void BalanceComObject::readBalanceComBuffer()
 	}
 }
 
+/*
+** 设置天平类型
+*/
+void BalanceComObject::setBalanceType(int balType)
+{
+	if (m_balanceProtocol != NULL)
+	{
+		delete m_balanceProtocol;
+		m_balanceProtocol = NULL;
+	}
+	switch (balType)
+	{
+	case BALANCE_TYPE_Satorius:	//赛多利斯
+		m_balanceProtocol = new BalSatoriusProtocol();
+		break;
+	case BALANCE_TYPE_SatoriusH: //赛多利斯H
+		m_balanceProtocol = new BalSatoriusHProtocol();
+		break;
+	case BALANCE_TYPE_Bizerba: //碧彩
+		m_balanceProtocol = new BalBizerbaProtocol();
+		break;
+	case BALANCE_TYPE_Mettler: //Mettler Toledo
+		m_balanceProtocol = new BalMettlerProtocol();
+		break;
+	default: 
+		m_balanceProtocol =  new BalSatoriusProtocol();
+		break;
+	}
+}
+
 
 /*
 ** 类名：MeterComObject
