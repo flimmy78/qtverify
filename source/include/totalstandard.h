@@ -261,6 +261,8 @@ private:
 
 	void freshInstStdMeter();//刷新瞬时读数
 	void freshAccumStdMeter();//刷新累积读数
+
+	void exportReport();
 };
 
 #endif //TOTALSTANDARD_H

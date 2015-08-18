@@ -280,7 +280,7 @@ void DataTestDlg::initControlCom()
 
 	m_setRegularTimer = new QTimer;
 	connect(m_setRegularTimer, SIGNAL(timeout()), this, SLOT(slotSetRegulate()));
-	m_setRegularTimer->start(2000);
+	m_setRegularTimer->start(10000);
 	//天平数值从控制板获取
 // 	connect(m_controlObj, SIGNAL(controlGetBalanceValueIsOk(const float&)), this, SLOT(slotFreshBalanceValue(const float &)));
 }

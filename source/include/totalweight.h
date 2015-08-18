@@ -242,7 +242,7 @@ signals:
 
 private:
 	Ui::TotalWeightClass ui;
-
+	void exportReport();
 };
 
 #endif //TOTALWEIGHT_H

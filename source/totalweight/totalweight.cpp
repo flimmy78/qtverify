@@ -28,6 +28,7 @@
 #include "qtexdb.h"
 #include "parasetdlg.h"
 #include "readcomconfig.h"
+#include "report.h"
 
 TotalWeightDlg::TotalWeightDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
@@ -1573,6 +1574,7 @@ int TotalWeightDlg::calcVerifyResult()
 		if (m_nowOrder>=m_flowPointNum) //最后一个流量点
 		{
 			stopVerify(); //停止检定
+			exportReport();
 		}
 		else //不是最后一个流量点
 		{
@@ -1586,6 +1588,25 @@ int TotalWeightDlg::calcVerifyResult()
 	}
 
 	return true;
+}
+
+void TotalWeightDlg::exportReport()
+{
+	QString sqlCondition = QString("F_TimeStamp=\'%1\' and F_MethodFlag = 0").arg(m_timeStamp);
+	QString xlsname = QDateTime::fromString(m_timeStamp, "yyyy-MM-dd HH:mm:ss.zzz").toString("yyyy-MM-dd_hh-mm-ss") + ".xls";
+	try
+	{
+		QString defaultPath = QProcessEnvironment::systemEnvironment().value("ADEHOME") + "\\report\\total\\";
+		CReport rpt(sqlCondition);
+		rpt.setIniName("rptconfig_total.ini");
+		rpt.writeRpt();
+		rpt.saveTo(defaultPath + xlsname);
+		ui.labelHintProcess->setText(tr("Verify has Stoped!") + "\n" + tr("export excel file successful!"));
+	}
+	catch (QString e)
+	{
+		QMessageBox::warning(this, tr("Error"), e);
+	}
 }
 
 //打开阀门
