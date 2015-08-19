@@ -320,21 +320,25 @@ void DataTestDlg::setRegulate(float currentRate, float targetRate)
 	float precision = 0.03*targetRate;
 	if (deltaV > precision)
 	{
-		if (m_degree <= 99.0f)
+		if (0 < m_degree && m_degree <= 99)
 		{
-			m_degree = (targetRate/currentRate)*m_degree;
+			m_degree = (targetRate/currentRate)*m_degree;//假定流速与开度呈线性关系
 			m_controlObj->askControlRegulate(m_nowRegNo, m_degree);
 			qDebug() << "current degree: " << m_degree;
 		}
-		else
+		else if (m_degree > 99)//如果开度开到99%, 当前速度还是小于目标速度, 提示用户增大手动阀开度和水泵频率
 		{
 			QMessageBox::warning(this, tr("Increase"), tr("please increase manual Valve or Pump freq"));
+			stopSetRegularTimer();
+		}
+		else if (m_degree == 0)//如果开度关到0, 而当前速度还是大于目标速度, 那么提示用户检查管路和相关设备
+		{
+			QMessageBox::warning(this, tr("Error"), tr("please your pipe and device sensor, they may be error!"));
 			stopSetRegularTimer();
 		}
 	}
 	else
 		stopSetRegularTimer();
-	}
 }
 
 void DataTestDlg::stopSetRegularTimer()
@@ -559,6 +563,13 @@ void DataTestDlg::on_btnRegulate1_clicked() //调节阀1
 	m_nowRegNo = m_portsetinfo.regflow1No;
 	setRegBtnBackColor(m_regBtn[m_nowRegNo], false); //初始化调节阀背景色
 	m_controlObj->askControlRegulate(m_nowRegNo, ui.spinBoxValveOpening->value());
+}
+
+void DataTestDlg::on_btnRegulate2_clicked() //调节阀1
+{
+	m_nowRegNo = m_portsetinfo.regflow2No;
+	setRegBtnBackColor(m_regBtn[m_nowRegNo], false); //初始化调节阀背景色
+	m_controlObj->askControlRegulate(m_nowRegNo, ui.spinBoxValveOpening2->value());
 }
 
 //参数设置
