@@ -167,7 +167,8 @@ void DataTestDlg::showEvent(QShowEvent *event)
 	m_setRegularTimer = NULL;
 	m_maxRate = 7.5f;	
 	m_currentRate = 3.5f;
-	m_degree = (m_currentRate/m_maxRate)*100;
+	m_degree = (m_currentRate/m_maxRate)*100.0f;
+	m_openRegulateTimes = 0;
 	initControlCom();		//初始化控制串口
 
 	m_balanceObj = NULL;
@@ -278,38 +279,70 @@ void DataTestDlg::initControlCom()
 
 	connect(m_controlObj, SIGNAL(controlRelayIsOk(const UINT8 &, const bool &)), this, SLOT(slotSetValveBtnStatus(const UINT8 &, const bool &)));
 	connect(m_controlObj, SIGNAL(controlRegulateIsOk()), this, SLOT(slotSetRegulateOk()));
-
+	 
 	m_setRegularTimer = new QTimer;
 	connect(m_setRegularTimer, SIGNAL(timeout()), this, SLOT(slotSetRegulate()));
-	m_setRegularTimer->start(10000);
+	m_setRegularTimer->start(2000);
 	//天平数值从控制板获取
 // 	connect(m_controlObj, SIGNAL(controlGetBalanceValueIsOk(const float&)), this, SLOT(slotFreshBalanceValue(const float &)));
 }
 
 void DataTestDlg::slotSetRegulate()
 {
-	//m_currentRate = ui.lnEditFlowRate->text().toFloat();
-	this->setRegulate(m_currentRate, 2.5f);
-	m_currentRate = (m_degree/100.0)*m_maxRate;
+	bool ok;
+	m_currentRate = ui.lnEditFlowRate->text().toFloat(&ok);
+	m_currentRate = ui.lineEdit->text().toFloat(&ok);
+	if (ok)
+	{
+		this->setRegulate(m_currentRate, 2.5f);
+	}
 }
 
 void DataTestDlg::setRegulate(float currentRate, float targetRate)
 {
+	qDebug() << "current Rate : " << currentRate;
+	qDebug() << "target Rate : " << targetRate;
+	//如果currentRate是0, 那么开启电动阀到m_degree
+	//如果开了5次, currentRate还是0, 那么提示用户打开手动球阀
+	if (currentRate <=0.0f)
+	{
+		if (m_openRegulateTimes >= 5)
+		{
+			QMessageBox::warning(this, tr("Open Valve"), tr("please open Manual Ball Valve"));
+			stopSetRegularTimer();
+			return;
+		}
+		m_controlObj->askControlRegulate(m_nowRegNo, m_degree);
+		m_openRegulateTimes++;
+		return;
+	}
 	float deltaV = qAbs(targetRate - currentRate);
 	float precision = 0.03*targetRate;
 	if (deltaV > precision)
 	{
-		m_degree = (targetRate/currentRate)*m_degree;
-		m_controlObj->askControlRegulate(m_nowRegNo, m_degree);
-		qDebug() << "current degree: " << m_degree;
+		if (m_degree <= 99.0f)
+		{
+			m_degree = (targetRate/currentRate)*m_degree;
+			m_controlObj->askControlRegulate(m_nowRegNo, m_degree);
+			qDebug() << "current degree: " << m_degree;
+		}
+		else
+		{
+			QMessageBox::warning(this, tr("Increase"), tr("please increase manual Valve or Pump freq"));
+			stopSetRegularTimer();
+		}
 	}
 	else
+		stopSetRegularTimer();
+	}
+}
+
+void DataTestDlg::stopSetRegularTimer()
+{
+	if (m_setRegularTimer->isActive())
 	{
-		if (m_setRegularTimer->isActive())
-		{
-			m_setRegularTimer->stop();
-			qDebug() << "m_setRegularTimer stoped";
-		}
+		m_setRegularTimer->stop();
+		qDebug() << "m_setRegularTimer stoped";
 	}
 }
 

@@ -151,9 +151,10 @@ private:
 	QTimer *m_setRegularTimer;
 	float m_maxRate;
 	int m_degree;
+	int m_openRegulateTimes;
 	float m_currentRate;
 	void setRegulate(float currentRate, float targetRate);
-
+	void stopSetRegularTimer();
 private slots:
 	void slotSetRegulate();
 };
