@@ -152,7 +152,7 @@ public slots:
 	bool openBalanceCom(ComInfoStruct *comStruct);
 	void readBalanceComBuffer();
 
-	void setBalanceType(int balType);
+	void setBalanceType(int balType=BALANCE_TYPE_Satorius);
 };
 
 /*

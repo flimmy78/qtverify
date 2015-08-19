@@ -35,8 +35,8 @@ private:
 
 
 //温度采集协议 begin
-#define DATA_WIDTH			4  //温度值字符串长度 4 
-#define DATA_PRECISION		1  //温度值精度，一位小数
+#define TEMPER_DATA_WIDTH			4  //温度值字符串长度 4 
+#define TEMPER_DATA_PRECISION		1  //温度值精度，一位小数
 
 #define ADDR_FIX			0x80
 #define ADDR_FIRST			0x01

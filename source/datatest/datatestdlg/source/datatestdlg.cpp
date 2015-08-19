@@ -255,6 +255,7 @@ void DataTestDlg::initBalanceCom()
 {
 	ComInfoStruct balanceStruct = m_readComConfig->ReadBalanceConfig();
 	m_balanceObj = new BalanceComObject();
+	m_balanceObj->setBalanceType(m_readComConfig->getBalanceType());
 	m_balanceObj->moveToThread(&m_balanceThread);
 	m_balanceThread.start();
 	m_balanceObj->openBalanceCom(&balanceStruct);
@@ -303,11 +304,13 @@ void DataTestDlg::setRegulate(float currentRate, float targetRate)
 		qDebug() << "current degree: " << m_degree;
 	}
 	else
+	{
 		if (m_setRegularTimer->isActive())
 		{
 			m_setRegularTimer->stop();
 			qDebug() << "m_setRegularTimer stoped";
 		}
+	}
 }
 
 //热量表串口通讯
@@ -560,8 +563,8 @@ void DataTestDlg::on_btnStdTempStop_clicked()
 //刷新温度
 void DataTestDlg::slotFreshComTempValue(const QString& tempStr)
 {
-	ui.lnEditTempIn->setText(tempStr.left(DATA_WIDTH));   //入口温度 PV
-	ui.lnEditTempOut->setText(tempStr.right(DATA_WIDTH)); //出口温度 SV
+	ui.lnEditTempIn->setText(tempStr.left(TEMPER_DATA_WIDTH));   //入口温度 PV
+	ui.lnEditTempOut->setText(tempStr.right(TEMPER_DATA_WIDTH)); //出口温度 SV
 }
 
 //刷新标准温度
@@ -626,7 +629,8 @@ void DataTestDlg::setValveBtnBackColor(QPushButton *btn, bool status)
 	}
 	if (status) //阀门打开 绿色
 	{
-		btn->setStyleSheet("background-color:rgb(0,255,0);border:0px;border-image: url(:/datatestdlg/images/open.png);"); 
+// 		btn->setStyleSheet("background-color:rgb(0,255,0);border:0px;border-image: url(:/datatestdlg/images/open.png);"); 
+		btn->setStyleSheet("background-color:rgb(0,255,0);"); 
 	}
 	else //阀门关闭 红色
 	{

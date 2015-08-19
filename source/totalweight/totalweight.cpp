@@ -506,8 +506,8 @@ void TotalWeightDlg::slotFreshBalanceValue(const float& balValue)
 //在界面刷新入口温度和出口温度值
 void TotalWeightDlg::slotFreshComTempValue(const QString& tempStr)
 {
-	ui.lcdInTemper->display(tempStr.left(DATA_WIDTH));   //入口温度 PV
-	ui.lcdOutTemper->display(tempStr.right(DATA_WIDTH)); //出口温度 SV
+	ui.lcdInTemper->display(tempStr.left(TEMPER_DATA_WIDTH));   //入口温度 PV
+	ui.lcdOutTemper->display(tempStr.right(TEMPER_DATA_WIDTH)); //出口温度 SV
 }
 
 //刷新标准温度

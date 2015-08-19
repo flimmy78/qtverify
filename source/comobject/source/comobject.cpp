@@ -166,9 +166,9 @@ void TempComObject::readTemperatureComBuffer()
 	if (ret)
 	{
 		QString tempStr = m_tempProtocol->getTempStr();
-		m_buf.clear();
 		emit temperatureIsReady(tempStr);
 	}
+	m_buf.clear();
 }
 
 /*

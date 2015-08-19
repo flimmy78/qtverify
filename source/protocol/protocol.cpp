@@ -48,8 +48,8 @@ TempProtocol::TempProtocol()
 	m_tempFrame = new Temp_Frame_Struct();
 	memset(m_tempFrame, 0, sizeof(Temp_Frame_Struct));
 
-	m_tempStr = "";
-	m_sendBuf = "";
+	m_tempStr.clear();
+	m_sendBuf.clear();
 }
 
 TempProtocol::~TempProtocol()
@@ -65,7 +65,7 @@ TempProtocol::~TempProtocol()
 void TempProtocol::makeSendBuf()
 {
 // 	qDebug()<<"TempProtocol::makeSendBuf thread:"<<QThread::currentThreadId();
-	m_sendBuf = "";
+	m_sendBuf.clear();
 // 	printf("111111 file %s, line %d\n", __FILE__, __LINE__);
 	m_sendBuf.append(ADDR_CODE_FIRST).append(ADDR_CODE_FIRST);//地址代号
 // 	printf("222222 file %s, line %d\n", __FILE__, __LINE__);
@@ -108,103 +108,88 @@ bool TempProtocol::readTemperComBuffer(QByteArray tmp)
 		switch(state)
 		{
 		case PV_STATE: //16位有符号
+			if (pv_i == 0) //低字节
 			{
-				if (pv_i == 0) //低字节
-				{
-					uch = (UINT8)tmp.at(m);
-					m_tempFrame->pv = uch;
-					pv_i++;
-					break;
-				}
-				if (pv_i == 1) //高字节
-				{
-					ch = (INT8)tmp.at(m);
-					state = SV_STATE;
-					m_tempFrame->pv = ch*256 + m_tempFrame->pv;
-					pv_i = 0;
-				}
+				uch = (UINT8)tmp.at(m);
+				m_tempFrame->pv = uch;
+				pv_i++;
 				break;
 			}
+			if (pv_i == 1) //高字节
+			{
+				ch = (INT8)tmp.at(m);
+				state = SV_STATE;
+				m_tempFrame->pv = ch*256 + m_tempFrame->pv;
+				pv_i = 0;
+			}
+			break;
 		case SV_STATE: //16位有符号
-			{   
-				if (sv_i == 0) //低字节
-				{
-					uch = (UINT8)tmp.at(m);
-					m_tempFrame->sv = uch;
-					sv_i++;
-					break;
-				}
-				if (sv_i == 1) //高字节
-				{
-					ch = (INT8)tmp.at(m);
-					state = MV_STATE;
-					m_tempFrame->sv = ch*256 + m_tempFrame->sv;
-					sv_i = 0;
-				}
+			if (sv_i == 0) //低字节
+			{
+				uch = (UINT8)tmp.at(m);
+				m_tempFrame->sv = uch;
+				sv_i++;
 				break;
 			}
-
+			if (sv_i == 1) //高字节
+			{
+				ch = (INT8)tmp.at(m);
+				state = MV_STATE;
+				m_tempFrame->sv = ch*256 + m_tempFrame->sv;
+				sv_i = 0;
+			}
+			break;
 		case MV_STATE: //8位有符号
-			{
-				ch = (INT8)tmp.at(m);
-				m_tempFrame->mv = ch;
-				state = WARN_STATE;
-				break;
-			}    
+			ch = (INT8)tmp.at(m);
+			m_tempFrame->mv = ch;
+			state = WARN_STATE;
+			break;
 		case WARN_STATE: //8位无符号
+			ch = (INT8)tmp.at(m);
+			m_tempFrame->warn = ch;
+			state = PARA_STATE;
+			break;
+		case PARA_STATE: //16位有符号
+			if (para_i == 0) //低字节 无符号
+			{
+				uch = (UINT8)tmp.at(m);
+				m_tempFrame->para = uch;
+				para_i++;
+				break;
+			}
+			if (para_i == 1) //高字节 有符号
 			{
 				ch = (INT8)tmp.at(m);
-				m_tempFrame->warn = ch;
-				state = PARA_STATE;
-				break;
-			} 
-		case PARA_STATE: //16位有符号
-			{
-				if (para_i == 0) //低字节 无符号
-				{
-					uch = (UINT8)tmp.at(m);
-					m_tempFrame->para = uch;
-					para_i++;
-					break;
-				}
-				if (para_i == 1) //高字节 有符号
-				{
-					ch = (INT8)tmp.at(m);
-					state = CHECK_STATE;
-					m_tempFrame->para = ch*256 + m_tempFrame->para;
-					para_i = 0;
-				}
-				break;
-			} 
+				state = CHECK_STATE;
+				m_tempFrame->para = ch*256 + m_tempFrame->para;
+				para_i = 0;
+			}
+			break;
 		case CHECK_STATE: //16位
+			if (check_i == 0) //低字节
 			{
-				if (check_i == 0) //低字节
-				{
-					uch = (UINT8)tmp.at(m);
-					m_tempFrame->cs = uch;
-					check_i++;
-					break;
-				}
-				if (check_i == 1) //高字节
-				{
-					ch = (INT8)tmp.at(m);
-					m_tempFrame->cs = ch*256 + m_tempFrame->cs;
-					check_i = 0;
-					state = PV_STATE;
-					ck = CountCheck(m_tempFrame);
-					if (ck == m_tempFrame->cs) //校验通过
-					{
-						analyseFrame();
-						ret = true;
-					}
-				}
+				uch = (UINT8)tmp.at(m);
+				m_tempFrame->cs = uch;
+				check_i++;
 				break;
 			}
-		default :
+			if (check_i == 1) //高字节
 			{
+				ch = (INT8)tmp.at(m);
+				m_tempFrame->cs = ch*256 + m_tempFrame->cs;
+				check_i = 0;
 				state = PV_STATE;
-				break;
+				ck = CountCheck(m_tempFrame);
+				if (ck == m_tempFrame->cs) //校验通过
+				{
+					analyseFrame();
+					ret = true;
+				}
 			}
+			break;
+		default :
+			state = PV_STATE;
+			break;
 		} //END OF switch(state)        
 	} //END OF for (m=0; m<number; m++)
 
@@ -234,8 +219,8 @@ void TempProtocol::analyseFrame()
 	}
 	float PV = ((float)m_tempFrame->pv)/10;
 	float SV = ((float)m_tempFrame->sv)/10;
-	QString pvStr = QString("%1").arg(PV, DATA_WIDTH, 'f', DATA_PRECISION);
-	QString svStr = QString("%1").arg(SV, DATA_WIDTH, 'f', DATA_PRECISION);
+	QString pvStr = QString("%1").arg(PV, TEMPER_DATA_WIDTH, 'f', TEMPER_DATA_PRECISION);
+	QString svStr = QString("%1").arg(SV, TEMPER_DATA_WIDTH, 'f', TEMPER_DATA_PRECISION);
 	m_tempStr = pvStr + svStr;
 // 	qDebug()<<"TempProtocol::analyseFrame thread:"<<QThread::currentThreadId();
 }
@@ -447,7 +432,7 @@ bool BalBizerbaProtocol::readBalanceComBuffer(QByteArray tmp)
 ************************************************/
 CtrlProtocol::CtrlProtocol()
 {
-	m_sendBuf = "";
+	m_sendBuf.clear();
 }
 
 CtrlProtocol::~CtrlProtocol()
@@ -488,7 +473,7 @@ void NewCtrlProtocol::makeFrameOfCtrlRelay(UINT8 portno, bool status)
 {
 	qDebug()<<"NewCtrlProtocol::makeFrameOfCtrlRelay thread:"<<QThread::currentThreadId();
 	Q_ASSERT(portno >= 0);
-	m_sendBuf = "";
+	m_sendBuf.clear();
 	m_sendBuf.append(CTRL_START_CODE).append(CTRL_FUNC_RELAY);
 	UINT8 relay_num = 0x01; //控制的继电器数量 1路
 	m_sendBuf.append(relay_num);
@@ -521,7 +506,7 @@ void NewCtrlProtocol::makeFrameOfCtrlRelay(UINT8 portno, bool status)
 void NewCtrlProtocol::makeFrameOfCtrlRegulate(UINT8 portno, UINT16 degree)
 {
 	Q_ASSERT(portno >= 0);
-	m_sendBuf = "";
+	m_sendBuf.clear();
 	m_sendBuf.append(CTRL_START_CODE).append(CTRL_FUNC_REGULATE);
 	float a = 2;
 	UINT8 regulate_num = (UINT8)pow(a, (portno-1)); //控制的调节阀数量 只控制1路
@@ -540,7 +525,7 @@ void NewCtrlProtocol::makeFrameOfCtrlRegulate(UINT8 portno, UINT16 degree)
 //查询从机状态
 void NewCtrlProtocol::makeFrameOfCtrlQuery()
 {
-	m_sendBuf = "";
+	m_sendBuf.clear();
 	m_sendBuf.append(CTRL_START_CODE).append(CTRL_FUNC_QUERY);
 	UINT8 code0 = 0x00;
 	m_sendBuf.append(code0).append(code0).append(code0).append(code0);
@@ -579,108 +564,94 @@ UINT8 NewCtrlProtocol::readCtrlComBuffer(QByteArray tmp)
 		switch(state)
 		{
 		case CTRL_START_STATE: //8位无符号
+			if (ch == CTRL_START_CODE)
 			{
-				if (ch == CTRL_START_CODE)
-				{
-					m_ctrlFrame->startCode = CTRL_START_CODE;
-					state = CTRL_FUNC_STATE;
-				}
-				break;
+				m_ctrlFrame->startCode = CTRL_START_CODE;
+				state = CTRL_FUNC_STATE;
 			}
+			break;
 		case CTRL_FUNC_STATE: //8位无符号
-			{   
-				if (ch == CTRL_FUNC_RELAY) //功能码-继电器控制
-				{
-					m_ctrlFrame->funcCode = CTRL_FUNC_RELAY;
-					state = CTRL_DATA_STATE;
-					break;
-				}
-				if (ch == CTRL_FUNC_REGULATE) //功能码-调节阀控制
-				{
-					m_ctrlFrame->funcCode = CTRL_FUNC_REGULATE;
-					state = CTRL_DATA_STATE;
-					break;
-				}
-				if (ch == CTRL_FUNC_QUERY) //功能码-查询
-				{
-					m_ctrlFrame->funcCode = CTRL_FUNC_QUERY;
-					state = CTRL_DATA_STATE;
-					break;
-				}
-				if (ch == CTRL_FUNC_BALANCE) //功能码-天平采集
-				{
-					m_ctrlFrame->funcCode = CTRL_FUNC_BALANCE;
-					state = CTRL_DATA_STATE;
-					break;
-				}
+			if (ch == CTRL_FUNC_RELAY) //功能码-继电器控制
+			{
+				m_ctrlFrame->funcCode = CTRL_FUNC_RELAY;
+				state = CTRL_DATA_STATE;
 				break;
 			}
-
+			if (ch == CTRL_FUNC_REGULATE) //功能码-调节阀控制
+			{
+				m_ctrlFrame->funcCode = CTRL_FUNC_REGULATE;
+				state = CTRL_DATA_STATE;
+				break;
+			}
+			if (ch == CTRL_FUNC_QUERY) //功能码-查询
+			{
+				m_ctrlFrame->funcCode = CTRL_FUNC_QUERY;
+				state = CTRL_DATA_STATE;
+				break;
+			}
+			if (ch == CTRL_FUNC_BALANCE) //功能码-天平采集
+			{
+				m_ctrlFrame->funcCode = CTRL_FUNC_BALANCE;
+				state = CTRL_DATA_STATE;
+				break;
+			}
+			break;
 		case CTRL_DATA_STATE: //8位无符号
+			if (m_ctrlFrame->funcCode == CTRL_FUNC_RELAY) //继电器
 			{
-				if (m_ctrlFrame->funcCode == CTRL_FUNC_RELAY) //继电器
+				m_ctrlFrame->data[num_i++] = ch;
+				if (num_i == RELAY_DATA_LENGTH)
 				{
-					m_ctrlFrame->data[num_i++] = ch;
-					if (num_i == RELAY_DATA_LENGTH)
-					{
-						state = CTRL_CS_STATE;
-						num_i = 0;
-					}
+					state = CTRL_CS_STATE;
+					num_i = 0;
 				}
-				if (m_ctrlFrame->funcCode == CTRL_FUNC_REGULATE) //调节阀
-				{
-					m_ctrlFrame->data[num_i++] = ch;
-					if (num_i == REGU_DATA_LENGTH)
-					{
-						state = CTRL_CS_STATE;
-						num_i = 0;
-					}
-				}
-				if (m_ctrlFrame->funcCode == CTRL_FUNC_QUERY)  //查询
-				{
-					m_ctrlFrame->data[num_i++] = ch;
-					if (num_i == DATA_LENGTH)
-					{
-						state = CTRL_CS_STATE;
-						num_i = 0;
-					}
-				}
-				if (m_ctrlFrame->funcCode == CTRL_FUNC_BALANCE)  //天平
-				{
-					m_ctrlFrame->data[num_i++] = ch;
-					if (num_i == BAL_DATA_LENGTH)
-					{
-						state = CTRL_CS_STATE;
-						num_i = 0;
-					}
-				}
-
-				break;
-			}    
-		case CTRL_CS_STATE: //8位无符号
-			{
-				m_ctrlFrame->cs = ch;
-				state = CTRL_END_STATE;
-				break;
-			} 
-		case CTRL_END_STATE: //8位无符号
-			{
-				m_ctrlFrame->endCode = CTRL_END_CODE;
-				state = CTRL_START_STATE;
-				ck = CountCheck(m_ctrlFrame);
-				if (ck == m_ctrlFrame->cs) //校验通过
-				{
-					analyseFrame();
-// 					qDebug()<<"check is ok 校验通过";
-					ret = m_ctrlFrame->funcCode; //以功能码返回，便于区分
-				}
-				break;
-			} 
-		default :
-			{
-				state = CTRL_START_STATE;
-				break;
 			}
+			if (m_ctrlFrame->funcCode == CTRL_FUNC_REGULATE) //调节阀
+			{
+				m_ctrlFrame->data[num_i++] = ch;
+				if (num_i == REGU_DATA_LENGTH)
+				{
+					state = CTRL_CS_STATE;
+					num_i = 0;
+				}
+			}
+			if (m_ctrlFrame->funcCode == CTRL_FUNC_QUERY)  //查询
+			{
+				m_ctrlFrame->data[num_i++] = ch;
+				if (num_i == DATA_LENGTH)
+				{
+					state = CTRL_CS_STATE;
+					num_i = 0;
+				}
+			}
+			if (m_ctrlFrame->funcCode == CTRL_FUNC_BALANCE)  //天平
+			{
+				m_ctrlFrame->data[num_i++] = ch;
+				if (num_i == BAL_DATA_LENGTH)
+				{
+					state = CTRL_CS_STATE;
+					num_i = 0;
+				}
+			}
+			break;
+		case CTRL_CS_STATE: //8位无符号
+			m_ctrlFrame->cs = ch;
+			state = CTRL_END_STATE;
+			break;
+		case CTRL_END_STATE: //8位无符号
+			m_ctrlFrame->endCode = CTRL_END_CODE;
+			state = CTRL_START_STATE;
+			ck = CountCheck(m_ctrlFrame);
+			if (ck == m_ctrlFrame->cs) //校验通过
+			{
+				analyseFrame();
+// 				qDebug()<<"check is ok 校验通过";
+				ret = m_ctrlFrame->funcCode; //以功能码返回，便于区分
+			}
+			break;
+		default :
+			state = CTRL_START_STATE;
+			break;
 		} //END OF switch(state)        
 	} //END OF for (m=0; m<number; m++)
 
@@ -807,7 +778,7 @@ void OldCtrlProtocol::makeFrameOfCtrlRelay(UINT8 portno, bool status)
 {
 	qDebug()<<"OldCtrlProtocol::makeFrameOfCtrlRelay thread:"<<QThread::currentThreadId();
 	UINT8 zeroCode = 0x00;
-	m_sendBuf = "";
+	m_sendBuf.clear();
 	if (status) //true(阀门打开,闭合继电器)
 	{
 		m_sendBuf.append(0xFF).append(portCloseMap[portno]).append(zeroCode)\
@@ -827,7 +798,7 @@ void OldCtrlProtocol::makeFrameOfCtrlRegulate(UINT8 portno, UINT16 degree)
 	UINT8 dataH = data/256;
 	UINT8 dataL = data%256;
 	UINT8 port = regPortMap[portno];
-	m_sendBuf = "";
+	m_sendBuf.clear();
 	m_sendBuf.append(0xFF).append(port).append(dataH).append(dataL).append(0xFE);
 }
 
@@ -840,7 +811,7 @@ void OldCtrlProtocol::makeFrameOfCtrlQuery()
 void OldCtrlProtocol::makeFrameOfCtrlWaterPump(UINT8 portno, bool status)
 {
 	UINT8 zeroCode = 0x00;
-	m_sendBuf = "";
+	m_sendBuf.clear();
 	if (status) //true 开水泵
 	{
 		m_sendBuf.append(0xFF).append(0xF9).append(zeroCode).append(zeroCode).append(0xFE);
@@ -857,7 +828,7 @@ void OldCtrlProtocol::makeFrameOfSetDriverFreq(int freq)
 	int data = int(freq*4095/50);//0~50Hz对应0~4095
 	UINT8 dataH = data/256;
 	UINT8 dataL = data%256;
-	m_sendBuf = "";
+	m_sendBuf.clear();
 	m_sendBuf.append(0xFF).append(0xF8).append(dataH).append(dataL).append(0xFE);
 }
 
@@ -876,7 +847,7 @@ void OldCtrlProtocol::analyseFrame()
 void OldCtrlProtocol::makeFrameOfCtrlPressPump(bool status)
 {
 	UINT8 zeroCode = 0x00;
-	m_sendBuf = "";
+	m_sendBuf.clear();
 	if (status) //开打压泵
 	{
 		m_sendBuf.append(0xFF).append(0xFB).append(zeroCode).append(zeroCode).append(0xFE);
@@ -894,7 +865,7 @@ void OldCtrlProtocol::makeFrameOfCtrlPressPump(bool status)
 ************************************************/
 MeterProtocol::MeterProtocol()
 {
-	m_sendBuf = "";
+	m_sendBuf.clear();
 	
 	m_CJ188DataFrame = new CJ188_Frame_Struct();
 	memset(m_CJ188DataFrame, 0, sizeof(CJ188_Frame_Struct));
@@ -1122,20 +1093,20 @@ void DeluMeterProtocol::analyseFrame()
 
 	float flow = 0.0;
 	//表号
-	m_fullMeterNo = "";
+	m_fullMeterNo.clear();
 	for (int i=CJ188_ADDR_LEN-1; i>=0; i--)
 	{
 		m_fullMeterNo.append(QString("%1").arg(m_CJ188DataFrame->addr[i], 2, 16)).replace(' ', '0');
 	}
 
 	//供水温度
-	m_inTemper = "";
+	m_inTemper.clear();
 	m_inTemper.append(QString("%1%2.%3").arg(m_CJ188DataFrame->data[2], 2, 16)\
 		.arg(m_CJ188DataFrame->data[1], 2, 16).arg(m_CJ188DataFrame->data[0], 2, 16));
 	m_inTemper.replace(' ', '0');
 
 	//流量
-	m_flow = "";
+	m_flow.clear();
 	m_flow.append(QString("%1.%2%3%4").arg(m_CJ188DataFrame->data[9], 2, 16)\
 		.arg(m_CJ188DataFrame->data[8], 2, 16).arg(m_CJ188DataFrame->data[7], 2, 16)\
 		.arg(m_CJ188DataFrame->data[6], 2, 16));
@@ -1144,44 +1115,44 @@ void DeluMeterProtocol::analyseFrame()
 	m_flow = QString::number(flow);
 
 	//热量
-	m_heat = "";
+	m_heat.clear();
 	m_heat.append(QString("%1%2.%3%4").arg(m_CJ188DataFrame->data[14], 2, 16)\
 		.arg(m_CJ188DataFrame->data[13], 2, 16).arg(m_CJ188DataFrame->data[12], 2, 16)\
 		.arg(m_CJ188DataFrame->data[11], 2, 16));
 	m_heat.replace(' ', '0');
 
 	//大流量点流量系数
-	m_bigCoe = "";
+	m_bigCoe.clear();
 	m_bigCoe.append(QString("%1%2").arg(m_CJ188DataFrame->data[33], 2, 16)\
 		.arg(m_CJ188DataFrame->data[32], 2, 16));
 	m_bigCoe.replace(' ', '0');
 
 	//中流二流量系数
-	m_mid2Coe = "";
+	m_mid2Coe.clear();
 	m_mid2Coe.append(QString("%1%2").arg(m_CJ188DataFrame->data[35], 2, 16)\
 		.arg(m_CJ188DataFrame->data[34], 2, 16));
 	m_mid2Coe.replace(' ', '0');
 
 	//中流一流量系数
-	m_mid1Coe = "";
+	m_mid1Coe.clear();
 	m_mid1Coe.append(QString("%1%2").arg(m_CJ188DataFrame->data[37], 2, 16)\
 		.arg(m_CJ188DataFrame->data[36], 2, 16));
 	m_mid1Coe.replace(' ', '0');
 
 	//小流量点流量系数
-	m_smallCoe = "";
+	m_smallCoe.clear();
 	m_smallCoe.append(QString("%1%2").arg(m_CJ188DataFrame->data[39], 2, 16)\
 		.arg(m_CJ188DataFrame->data[38], 2, 16));
 	m_smallCoe.replace(' ', '0');
 
 	//回水温度
-	m_outTemper = "";
+	m_outTemper.clear();
 	m_outTemper.append(QString("%1%2.%3").arg(m_CJ188DataFrame->data[48], 2, 16)\
 		.arg(m_CJ188DataFrame->data[47], 2, 16).arg(m_CJ188DataFrame->data[46], 2, 16));
 	m_outTemper.replace(' ', '0');
 
 	//日期
-	m_date = "";
+	m_date.clear();
 	m_date.append(QString("%1%2%3%4").arg(m_CJ188DataFrame->data[52], 2, 16)\
 		.arg(m_CJ188DataFrame->data[51], 2, 16).arg(m_CJ188DataFrame->data[50], 2, 16).\
 		arg(m_CJ188DataFrame->data[49], 2, 16));
@@ -1206,7 +1177,7 @@ void DeluMeterProtocol::makeFrameOfReadMeterData(int vType)
 {
 	qDebug()<<"DeluMeterProtocol::makeFrameOfReadMeter thread:"<<QThread::currentThreadId();
 
-	m_sendBuf = "";
+	m_sendBuf.clear();
 
 	for (int i=0; i<METER_WAKEUP_CODE_NUM; i++)
 	{
@@ -1239,7 +1210,7 @@ void DeluMeterProtocol::makeFrameOfSetVerifyStatus(int vType)
 {
 	qDebug()<<"DeluMeterProtocol::makeFrameOfSetVerifyStatus thread:"<<QThread::currentThreadId();
 
-	m_sendBuf = "";
+	m_sendBuf.clear();
 
 	for (int i=0; i<METER_WAKEUP_CODE_NUM; i++)
 	{
@@ -1265,7 +1236,7 @@ void DeluMeterProtocol::makeFrameOfSetVerifyStatus(int vType)
 // 组帧：修改表号(14位表号)
 void DeluMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo)
 {
-	m_sendBuf = "";
+	m_sendBuf.clear();
 
 	for (int i=0; i<METER_WAKEUP_CODE_NUM; i++)
 	{
@@ -1329,7 +1300,7 @@ void DeluMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString new
 */
 void DeluMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr)
 {
-	m_sendBuf = "";
+	m_sendBuf.clear();
 
 	for (int i=0; i<METER_WAKEUP_CODE_NUM; i++)
 	{
@@ -1403,7 +1374,7 @@ void DeluMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, 
 */
 void DeluMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe)
 {
-	m_sendBuf = "";
+	m_sendBuf.clear();
 
 	for (int i=0; i<METER_WAKEUP_CODE_NUM; i++)
 	{
@@ -1547,7 +1518,7 @@ void HuiZhongMeterProtocol::analyseFrame()
 	switch (ctrlCode)
 	{
 	case 0x83: //读表号
-		m_fullMeterNo = "";
+		m_fullMeterNo.clear();
 		for (int i=0; i<CJ188_ADDR_LEN; i++)
 		{
 			m_fullMeterNo.append(QString("%1").arg(m_CJ188DataFrame->addr[i], 2, 16)).replace(' ', '0');
@@ -1592,7 +1563,7 @@ void HuiZhongMeterProtocol::makeFrameOfReadMeterNO()
 {
 	qDebug()<<"HuiZhongMeterProtocol::makeFrameOfReadMeterNO thread:"<<QThread::currentThreadId();
 
-	m_sendBuf = "";
+	m_sendBuf.clear();
 	m_sendBuf.append(METER_START_CODE);//起始符
 	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
 	for (int m=0; m<CJ188_ADDR_LEN; m++)
@@ -1607,7 +1578,7 @@ void HuiZhongMeterProtocol::makeFrameOfReadMeterFlowCoe()
 {
 	qDebug()<<"HuiZhongMeterProtocol::makeFrameOfReadMeterFlowCoe thread:"<<QThread::currentThreadId();
 
-	m_sendBuf = "";
+	m_sendBuf.clear();
 	m_sendBuf.append(METER_START_CODE);//起始符
 	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
 	for (int m=0; m<CJ188_ADDR_LEN; m++)
@@ -1622,7 +1593,7 @@ void HuiZhongMeterProtocol::makeFrameOfReadMeterData(int vType)
 {
 	qDebug()<<"HuiZhongMeterProtocol::makeFrameOfReadMeterData thread:"<<QThread::currentThreadId();
 
-	m_sendBuf = "";
+	m_sendBuf.clear();
 	m_sendBuf.append(METER_START_CODE);//起始符
 	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
 	for (int m=0; m<CJ188_ADDR_LEN; m++)
@@ -1637,7 +1608,7 @@ void HuiZhongMeterProtocol::makeFrameOfSetVerifyStatus(int vType)
 {
 	qDebug()<<"HuiZhongMeterProtocol::makeFrameOfSetVerifyStatus thread:"<<QThread::currentThreadId();
 
-	m_sendBuf = "";
+	m_sendBuf.clear();
 	m_sendBuf.append(METER_START_CODE);//起始符
 	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
 	for (int m=0; m<CJ188_ADDR_LEN; m++)
@@ -1688,27 +1659,27 @@ void sti1062ATempProtocol::makeSendBuf(sti1062Acommand command)
 {
 	switch(command)
 	{
-		case sti1062aT12:
-			m_sendBuf = CHNT12;
-			break;
-		case sti1062aR12:
-			m_sendBuf = CHNR12;
-			break;
-		case sti1062aT1:
-			m_sendBuf = CHNT1;
-			break;
-		case sti1062aT2:
-			m_sendBuf = CHNT2;
-			break;
-		case sti1062aR1:
-			m_sendBuf = CHNR1;
-			break;
-		case sti1062aR2:
-			m_sendBuf = CHNR2;
-			break;
-		default:
-			m_sendBuf = CHNT12;
-			break;
+	case sti1062aT12:
+		m_sendBuf = CHNT12;
+		break;
+	case sti1062aR12:
+		m_sendBuf = CHNR12;
+		break;
+	case sti1062aT1:
+		m_sendBuf = CHNT1;
+		break;
+	case sti1062aT2:
+		m_sendBuf = CHNT2;
+		break;
+	case sti1062aR1:
+		m_sendBuf = CHNR1;
+		break;
+	case sti1062aR2:
+		m_sendBuf = CHNR2;
+		break;
+	default:
+		m_sendBuf = CHNT12;
+		break;
 	}
 }
 
@@ -1729,34 +1700,34 @@ bool sti1062ATempProtocol::readTemperComBuffer(QByteArray tmp)
 		b = tmp[i];
 		switch(m_state)
 		{
-			case DATA_STATE:
-				switch(b)
-				{
-					case ASCII_CR:
-							m_state = END_STATE;
-						break;
-					default:
-						ret = false;
-						m_readBuf.append(b);
-						break;
-				}
-				break;
-			case END_STATE:
-				switch(b)
-				{
-					case ASCII_LF:
-						m_readBuf.append(b);
-						ret = true;
-						break;
-					default:
-						m_state = DATA_STATE;
-						ret = false;
-						m_readBuf.append(b);
-						break;
-				}
+		case DATA_STATE:
+			switch(b)
+			{
+			case ASCII_CR:
+				m_state = END_STATE;
 				break;
 			default:
+				ret = false;
+				m_readBuf.append(b);
 				break;
+			}
+			break;
+		case END_STATE:
+			switch(b)
+			{
+			case ASCII_LF:
+				m_readBuf.append(b);
+				ret = true;
+				break;
+			default:
+				m_state = DATA_STATE;
+				ret = false;
+				m_readBuf.append(b);
+				break;
+			}
+			break;
+		default:
+			break;
 		}
 	}
 
