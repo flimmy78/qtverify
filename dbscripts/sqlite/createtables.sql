@@ -459,7 +459,7 @@ create unique index uk_T_Verify_Device_Info on T_Verify_Device_Info (F_DeviceNo)
 insert into T_Verify_Device_Info values(0, '航天德鲁检定装置', 'ADE201580037', 'RJZ15-25Z/B', '航天德鲁', '0.1% k=2', '0.12-40.0(m3/h)', 1234567890, 'JJG225-2001', '2020-7-1', '2020-7-1', '2020-7-1', '', '', '', '');
 
 -----------------------------------------------------------------
---                    流量检定结果视图                       ----
+--                    临时视图创建语句表                     ----
 -----------------------------------------------------------------
 drop table if exists T_Create_Query_View_Stmt;
 create table T_Create_Query_View_Stmt
@@ -470,8 +470,9 @@ create table T_Create_Query_View_Stmt
 );
 
 INSERT INTO T_Create_Query_View_Stmt
-(F_DESC, F_STMT) values
+(F_ID, F_DESC, F_STMT) values
 (
+1,
  'temp flow_verify query result view', 
  'CREATE view V_Temp_Flow_Query_Result as
 select
@@ -483,7 +484,7 @@ select
   rec.F_MethodFlag,
   rec.F_MeterValue0,
   rec.F_MeterValue1,
-  (rec.F_MeterValue1 - rec.F_MeterValue0) F_MeterDispValue,
+  round((rec.F_MeterValue1 - rec.F_MeterValue0), 2) F_MeterDispValue,
   rec.F_BalWeight0,
   rec.F_BalWeight1,
   rec.F_StdMeterV0,
@@ -551,8 +552,9 @@ select
 );
 
 INSERT INTO T_Create_Query_View_Stmt
-(F_DESC, F_STMT) values
+(F_ID, F_DESC, F_STMT) values
 (
+2,
  'temp combined_verify query result view', 
  'CREATE view V_Temp_Cmb_Query_Result as
 select
@@ -575,7 +577,7 @@ select
 	rec.F_MeterV1,
 	rec.F_MeterE0,
 	rec.F_MeterE1,
-	(rec.F_MeterE1-rec.F_MeterE0) F_MeterDispV,
+	round((rec.F_MeterE1-rec.F_MeterE0), 2) F_MeterDispV,
 	rec.F_DispError,
 	rec.F_StdError,
   date(rec.F_TimeStamp) F_VerifyDate,
@@ -615,8 +617,9 @@ select
 );
 
 INSERT INTO T_Create_Query_View_Stmt
-(F_DESC, F_STMT) values
+(F_ID, F_DESC, F_STMT) values
 (
+3,
  'temp total_verify query result view', 
 'CREATE view V_Temp_Total_Query_Result as
 select
