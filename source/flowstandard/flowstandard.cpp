@@ -82,6 +82,7 @@ void FlowStandardDlg::showEvent(QShowEvent * event)
 	initTemperatureCom();	//初始化温度采集串口
 
 	m_controlObj = NULL;
+	m_setRegularTimer = NULL;
 	initControlCom();		//初始化控制串口
 
 	m_meterObj = NULL;      //热量表通讯
@@ -390,7 +391,76 @@ void FlowStandardDlg::initControlCom()
 
 	connect(m_controlObj, SIGNAL(controlRelayIsOk(const UINT8 &, const bool &)), this, SLOT(slotSetValveBtnStatus(const UINT8 &, const bool &)));
 	connect(m_controlObj, SIGNAL(controlRegulateIsOk()), this, SLOT(slotSetRegulateOk()));
+
+/*----------------------------------------------------------------------------------*/
+	m_degree = (2.5/3.36)*100;//大流量
+	//m_degree = (0.75/1.02)*100;//中流量
+	m_setRegularTimer = new QTimer;
+	connect(m_setRegularTimer, SIGNAL(timeout()), this, SLOT(slotSetRegulate()));
+	m_setRegularTimer->start(50000);
 }
+
+
+void FlowStandardDlg::slotSetRegulate()
+{
+	this->setRegulate(ui.lcdFlowRate->value(), 2.5f);
+	//this->setRegulate(ui.lcdFlowRate->value(), 0.75f);
+}
+
+void FlowStandardDlg::setRegulate(float currentRate, float targetRate)
+{
+	qDebug() << "current Rate : " << currentRate;
+	qDebug() << "target Rate : " << targetRate;
+	//如果currentRate是0, 那么开启电动阀到m_degree
+	//如果开了5次, currentRate还是0, 那么提示用户打开手动球阀
+	if (currentRate <=0.0f)
+	{
+		if (m_openRegulateTimes >= 5)
+		{
+			QMessageBox::warning(this, tr("Open Valve"), tr("please open Manual Ball Valve"));
+			stopSetRegularTimer();
+			return;
+		}
+		m_controlObj->askControlRegulate(m_portsetinfo.regflow1No, m_degree);
+		//m_controlObj->askControlRegulate(m_portsetinfo.regflow2No, m_degree);
+		m_openRegulateTimes++;
+		return;
+	}
+	float deltaV = qAbs(targetRate - currentRate);
+	float precision = 0.003*targetRate;
+	if (deltaV > precision)
+	{
+		if (0 < m_degree && m_degree <= 99)
+		{
+			m_degree = (targetRate/currentRate)*m_degree;//假定流速与开度呈线性关系
+			m_controlObj->askControlRegulate(m_portsetinfo.regflow1No, m_degree);
+			//m_controlObj->askControlRegulate(m_portsetinfo.regflow2No, m_degree);
+			qDebug() << "current degree: " << m_degree;
+		}
+		else if (m_degree > 99)//如果开度开到99%, 当前速度还是小于目标速度, 提示用户增大手动阀开度和水泵频率
+		{
+			//QMessageBox::warning(this, tr("Increase"), tr("please increase manual Valve or Pump freq"));
+			//stopSetRegularTimer();
+		}
+		else if (m_degree == 0)//如果开度关到0, 而当前速度还是大于目标速度, 那么提示用户检查管路和相关设备
+		{
+			//QMessageBox::warning(this, tr("Error"), tr("please your pipe and device sensor, they may be error!"));
+			//stopSetRegularTimer();
+		}
+	}
+	else
+		stopSetRegularTimer();
+}
+
+void FlowStandardDlg::stopSetRegularTimer()
+{
+	if (m_setRegularTimer->isActive())
+	{
+		m_setRegularTimer->stop();
+		qDebug() << "m_setRegularTimer stoped";
+	}
+}
+
 
 //热量表通讯串口
 void FlowStandardDlg::initMeterCom()
@@ -2195,9 +2265,15 @@ float FlowStandardDlg::getFlowValueByValve(flow_rate_wdg wdgIdx, flow_type fType
 		else
 			m_instRouteIsRead.append(route);//如果前面没有读取过此通道, 则加入队列
 
+
 		count = get9017RouteI(route, m_instStdPulse);
 		upperFlow = getStdUpperFlow(wdgIdx);
 		retValue = getInstStdValue(count, upperFlow);
+
+		//qDebug() <<"瞬时通道号："<<route;
+		//qDebug() <<"电流信号："<<count;
+		//qDebug() <<"上限流量："<<upperFlow;
+		//qDebug() <<"瞬时流量："<<retValue;
 		break;
 	case ACCUM_FLOW_VALUE:
 		if (m_accumRouteIsRead.contains(route))//如果前面已经读取过此通道, 则直接返回0	
