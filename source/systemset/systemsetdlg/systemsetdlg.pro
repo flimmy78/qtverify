@@ -17,52 +17,41 @@ DESTDIR = $(ADEHOME)\tmp\systemset\systemsetdlg\obj
 OBJECTS_DIR = $(ADEHOME)/tmp/systemset/systemsetdlg/obj
 UI_DIR = $(ADEHOME_INC)/include
 
-INCLUDEPATH  	=    ./      \
-									 include \ 
-									 $$(ADEHOME_INC)/include \
-									 $$(ADEHOME_INC)/include/qextserial
+INCLUDEPATH = ./         \
+              include    \ 
+              $$(ADEHOME_INC)/include \
 
 
-HEADERS	+= $$(ADEHOME_INC)/include/qextserial/qextserialport_global.h  \
-        	 $$(ADEHOME_INC)/include/qextserial/qextserialport.h \
-					 $$(ADEHOME_INC)/include/systemsetdlg_global.h   \
-					 $$(ADEHOME_INC)/include/setcomdlg.h   \
-		   		 $$(ADEHOME_INC)/include/setportfrm.h  \
-		   		 $$(ADEHOME_INC)/include/readcomconfig.h \
+HEADERS += $$(ADEHOME_INC)/include/systemsetdlg_global.h   \
+           $$(ADEHOME_INC)/include/setcomdlg.h   \
+           $$(ADEHOME_INC)/include/setportfrm.h  \
+           $$(ADEHOME_INC)/include/readcomconfig.h \
            $$(ADEHOME_INC)/include/stdmtrparaset.h \
            $$(ADEHOME_INC)/include/stdmtrcoecorrect.h \
            $$(ADEHOME_INC)/include/parasetdlg.h \
-		   $$(ADEHOME_INC)/include/stdplasensor.h \
-		   $$(ADEHOME_INC)/include/chkplasensor.h 
+           $$(ADEHOME_INC)/include/stdplasensor.h \
+           $$(ADEHOME_INC)/include/chkplasensor.h 
 
 	
-SOURCES	+= $$(ADEHOME_INC)/include/qextserial/qextserialport.cpp \
-					 source/setcomdlg.cpp \
-			     source/setportfrm.cpp \
-			     source/readcomconfig.cpp \
-      		 source/stdmtrparaset.cpp \
-      		 source/stdmtrcoecorrect.cpp \
-      		 source/parasetdlg.cpp \
-			 source/stdplasensor.cpp \
-			 source/chkplasensor.cpp 
+SOURCES += source/setcomdlg.cpp \
+           source/setportfrm.cpp \
+           source/readcomconfig.cpp \
+           source/stdmtrparaset.cpp \
+           source/stdmtrcoecorrect.cpp \
+           source/parasetdlg.cpp \
+           source/stdplasensor.cpp \
+           source/chkplasensor.cpp 
 		
 RESOURCES += systemsetdlg.qrc			 
 
-win32 {
-     SOURCES += $$(ADEHOME_INC)/include/qextserial/qextserialport_win.cpp
-}
-
-unix {
-     SOURCES += $$(ADEHOME_INC)/include/qextserial/qextserialport_unix.cpp
-}
 					 
 FORMS	+= ui/setcomdlg.ui  \
-		     ui/setportfrm.ui \
+         ui/setportfrm.ui \
          ui/stdmtrparaset.ui \
          ui/stdmtrcoecorrect.ui \
          ui/parasetdlg.ui \
-		 ui/stdplasensor.ui \
-		 ui/chkplasensor.ui
+         ui/stdplasensor.ui \
+         ui/chkplasensor.ui
 
 
 win32{
