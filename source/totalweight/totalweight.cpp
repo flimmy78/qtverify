@@ -331,6 +331,8 @@ void TotalWeightDlg::initBalanceCom()
 {
 	ComInfoStruct balanceStruct = m_readComConfig->ReadBalanceConfig();
 	m_balanceObj = new BalanceComObject();
+	int type = m_readComConfig->getBalanceType();
+	m_balanceObj->setBalanceType(type);
 	m_balanceObj->moveToThread(&m_balanceThread);
 	m_balanceThread.start();
 	m_balanceObj->openBalanceCom(&balanceStruct);
@@ -798,6 +800,7 @@ void TotalWeightDlg::slotExaustFinished()
 		return;
 	}
 
+	sleep(BALANCE_STABLE_TIME); //等待天平数值稳定
 	if (setAllMeterVerifyStatus()) //设置检定状态成功
 	{
 		startVerify();
@@ -844,6 +847,9 @@ int TotalWeightDlg::prepareInitBalance()
 //设置所有热量表进入检定状态
 int TotalWeightDlg::setAllMeterVerifyStatus()
 {
+	ui.labelHintPoint->setText(tr("setting verify status ..."));
+	on_btnAllVerifyStatus_clicked();
+	sleep(1000);
 	on_btnAllVerifyStatus_clicked();
 	return true;
 }
@@ -980,7 +986,7 @@ int TotalWeightDlg::judgeBalanceAndCalcAvgTemperAndFlow(float targetV)
 // 	}
 	QDateTime endTime = QDateTime::currentDateTime();
 	int tt = startTime.secsTo(endTime);
-	if (NULL==m_paraSetReader)
+	if (NULL==m_paraSetReader || m_stopFlag)
 	{
 		return false;
 	}
@@ -1035,6 +1041,10 @@ void TotalWeightDlg::on_btnStart_clicked()
 		return;
 	}
 
+	m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
+	m_nowDate = QDateTime::currentDateTime().toString("yyyy-MM-dd"); //当前日期'2014-08-07'
+	m_validDate = QDateTime::currentDateTime().addYears(VALID_YEAR).addDays(-1).toString("yyyy-MM-dd"); //有效期
+
 	ui.btnStart->setEnabled(false);
 	ui.btnGoOn->hide();
 	ui.labelHintPoint->clear();
@@ -1064,12 +1074,9 @@ void TotalWeightDlg::on_btnStart_clicked()
 	if (m_autopick) //自动读表
 	{
 		on_btnAllReadNO_clicked();
-		sleep(m_exaustSecond*1000/2);
-		setAllMeterVerifyStatus();
 	}
 	else //手动读表
 	{
-// 		ui.labelHintPoint->setText(tr("<font color=red size=4><b>Please input meter number!</b></font>"));
 		ui.labelHintPoint->setText(tr("Please input meter number!"));
 		ui.tableWidget->setCurrentCell(0, COLUMN_METER_NUMBER);
 	}
@@ -1117,14 +1124,21 @@ void TotalWeightDlg::on_btnExit_clicked()
 //停止检定
 void TotalWeightDlg::stopVerify()
 {
+	ui.labelHintPoint->clear();
 	if (!m_stopFlag)
 	{
+		ui.labelHintProcess->setText(tr("stopping verify...please wait a minute"));
 		m_stopFlag = true; //不再检查天平质量
 		m_exaustTimer->stop();//停止排气定时器
 		closeAllValveAndPumpOpenOutValve();
 	}
-	ui.labelHintPoint->clear();
 	ui.labelHintProcess->setText(tr("Verify has Stoped!"));
+	m_state = STATE_INIT; //重置初始状态
+
+	ui.tableWidget->setEnabled(true);
+	ui.btnAllReadNO->setEnabled(true);
+	ui.btnAllReadData->setEnabled(true);
+	ui.btnAllVerifyStatus->setEnabled(true);
 	ui.btnStart->setEnabled(true);
 }
 
@@ -1176,10 +1190,6 @@ void TotalWeightDlg::startVerify()
 	}
 	m_recPtr = new Total_Verify_Record_STR[m_validMeterNum];
 	memset(m_recPtr, 0, sizeof(Total_Verify_Record_STR)*m_validMeterNum);
-
-	m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
-	m_nowDate = QDateTime::currentDateTime().toString("yyyy-MM-dd"); //当前日期'2014-08-07'
-	m_validDate = QDateTime::currentDateTime().addYears(VALID_YEAR).addDays(-1).toString("yyyy-MM-dd"); //有效期
 
 	m_state = STATE_INIT; //初始状态
 
@@ -1882,14 +1892,13 @@ int TotalWeightDlg::getMeterStartValue()
 		{
 			if (m_autopick) //自动采集
 			{
-				ui.labelHintProcess->setText(tr("read start value of heat meter..."));
 				sleep(WAIT_COM_TIME); //需要等待，否则热表来不及响应通讯
+				ui.labelHintProcess->setText(tr("please input start value of heat meter"));
 				on_btnAllReadData_clicked();
-//	 			sleep(500); //等待串口返回数据
+//	 			sleep(WAIT_COM_TIME); //等待串口返回数据
 			}
 			else //手动输入
 			{
-//	 			QMessageBox::information(this, tr("Hint"), tr("please input init value of heat meter"));//请输入热量表初值！
 				ui.labelHintProcess->setText(tr("please input start value of heat meter"));
 				ui.tableWidget->setCurrentCell(m_meterPosMap[0]-1, COLUMN_METER_START); //定位到第一个需要输入初值的地方
 				return false;
@@ -1911,18 +1920,23 @@ int TotalWeightDlg::getMeterEndValue()
 	{
 		return false;
 	}
-		
+
+	ui.labelHintProcess->setText(tr("please input end value of heat meter"));	
 	m_state = STATE_END_VALUE;
 
 	if (m_autopick) //自动采集
 	{
 		on_btnAllReadData_clicked();
-		sleep(BALANCE_STABLE_TIME); //等待串口返回数据
+		/*
+		下面一行必须封掉，否则若有自动读表失败的，手动输入数据后，下一流量点跑完后，会出bug：
+		QObject.cpp
+		void QObject::installEventFilter(QObject *obj)
+		qWarning("QObject::installEventFilter(): Cannot filter events for objects in a different thread.");
+		*/
+// 		sleep(WAIT_COM_TIME); //等待串口返回数据
 	}
 	else //手动输入
 	{
-// 		QMessageBox::information(this, tr("Hint"), tr("please input end value of heat meter"));//请输入热量表终值！
-		ui.labelHintProcess->setText(tr("please input end value of heat meter"));
 		ui.tableWidget->setCurrentCell(m_meterPosMap[0]-1, COLUMN_METER_END); //定位到第一个需要输入终值的地方
 		return false;
 	}
