@@ -776,7 +776,8 @@ OldCtrlProtocol::~OldCtrlProtocol()
 ************************************************************************/
 void OldCtrlProtocol::makeFrameOfCtrlRelay(UINT8 portno, bool status)
 {
-	qDebug()<<"OldCtrlProtocol::makeFrameOfCtrlRelay thread:"<<QThread::currentThreadId();
+// 	qDebug()<<"OldCtrlProtocol::makeFrameOfCtrlRelay thread:"<<QThread::currentThreadId();
+	qDebug()<<"OldCtrlProtocol::makeFrameOfCtrlRelay portno ="<<portno<<", status ="<<status;
 	UINT8 zeroCode = 0x00;
 	m_sendBuf.clear();
 	if (status) //true(阀门打开,闭合继电器)
@@ -794,6 +795,8 @@ void OldCtrlProtocol::makeFrameOfCtrlRelay(UINT8 portno, bool status)
 //控制调节阀 同时只控制一路
 void OldCtrlProtocol::makeFrameOfCtrlRegulate(UINT8 portno, UINT16 degree)
 {
+// 	qDebug()<<"OldCtrlProtocol::makeFrameOfCtrlRegulate thread:"<<QThread::currentThreadId();
+	qDebug()<<"OldCtrlProtocol::makeFrameOfCtrlRegulate portno ="<<portno<<", degree ="<<degree;
 	int data = int(degree*4095/100);//0~100%对应0~4095
 	UINT8 dataH = data/256;
 	UINT8 dataL = data%256;
@@ -810,6 +813,8 @@ void OldCtrlProtocol::makeFrameOfCtrlQuery()
 //控制水泵开关
 void OldCtrlProtocol::makeFrameOfCtrlWaterPump(UINT8 portno, bool status)
 {
+// 	qDebug()<<"OldCtrlProtocol::makeFrameOfCtrlWaterPump thread:"<<QThread::currentThreadId();
+	qDebug()<<"OldCtrlProtocol::makeFrameOfCtrlWaterPump portno ="<<portno<<", status ="<<status;
 	UINT8 zeroCode = 0x00;
 	m_sendBuf.clear();
 	if (status) //true 开水泵
@@ -825,6 +830,8 @@ void OldCtrlProtocol::makeFrameOfCtrlWaterPump(UINT8 portno, bool status)
 //设置变频器频率
 void OldCtrlProtocol::makeFrameOfSetDriverFreq(int freq)
 {
+// 	qDebug()<<"OldCtrlProtocol::makeFrameOfSetDriverFreq thread:"<<QThread::currentThreadId();
+	qDebug()<<"OldCtrlProtocol::makeFrameOfSetDriverFreq freq ="<<freq;
 	int data = int(freq*4095/50);//0~50Hz对应0~4095
 	UINT8 dataH = data/256;
 	UINT8 dataL = data%256;
@@ -1086,6 +1093,7 @@ DeluMeterProtocol::~DeluMeterProtocol()
 
 void DeluMeterProtocol::analyseFrame()
 {
+	qDebug()<<"DeluMeterProtocol::analyseFrame thread:"<<QThread::currentThreadId();
 	if (NULL == m_CJ188DataFrame)
 	{
 		return;
@@ -1236,6 +1244,9 @@ void DeluMeterProtocol::makeFrameOfSetVerifyStatus(int vType)
 // 组帧：修改表号(14位表号)
 void DeluMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo)
 {
+// 	qDebug()<<"DeluMeterProtocol::makeFrameOfReadMeter thread:"<<QThread::currentThreadId();
+	qDebug()<<"DeluMeterProtocol::makeFrameOfModifyMeterNo oldMeterNo ="<<oldMeterNo<<", newMeterNo ="<<newMeterNo;
+
 	m_sendBuf.clear();
 
 	for (int i=0; i<METER_WAKEUP_CODE_NUM; i++)
@@ -1300,6 +1311,10 @@ void DeluMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString new
 */
 void DeluMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr)
 {
+// 	qDebug()<<"DeluMeterProtocol::makeFrameOfModifyFlowCoe thread:"<<QThread::currentThreadId();
+	qDebug()<<"DeluMeterProtocol::makeFrameOfModifyFlowCoe meterNO ="<<meterNO;
+	qDebug()<<"bigErr ="<<bigErr<<", mid2Err ="<<mid2Err<<", mid1Err ="<<mid1Err<<", smallErr ="<<smallErr;
+
 	m_sendBuf.clear();
 
 	for (int i=0; i<METER_WAKEUP_CODE_NUM; i++)
@@ -1374,6 +1389,11 @@ void DeluMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, 
 */
 void DeluMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe)
 {
+// 	qDebug()<<"DeluMeterProtocol::makeFrameOfModifyFlowCoe thread:"<<QThread::currentThreadId();
+	qDebug()<<"DeluMeterProtocol::makeFrameOfModifyFlowCoe meterNO ="<<meterNO;
+	qDebug()<<"bigErr ="<<bigErr<<", mid2Err ="<<mid2Err<<", mid1Err ="<<mid1Err<<", smallErr ="<<smallErr;
+	qDebug()<<"oldCoe1 ="<<oldCoe->bigCoe<<", oldCoe2 ="<<oldCoe->mid2Coe<<", oldCoe3 ="<<oldCoe->mid1Coe<<", oldCoe4 ="<<oldCoe->smallCoe;
+
 	m_sendBuf.clear();
 
 	for (int i=0; i<METER_WAKEUP_CODE_NUM; i++)
@@ -1502,6 +1522,7 @@ HuiZhongMeterProtocol::~HuiZhongMeterProtocol()
 
 void HuiZhongMeterProtocol::analyseFrame()
 {
+	qDebug()<<"HuiZhongMeterProtocol::analyseFrame thread:"<<QThread::currentThreadId();
 	if (NULL == m_CJ188DataFrame)
 	{
 		return;

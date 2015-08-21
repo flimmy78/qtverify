@@ -294,6 +294,17 @@ void FlowStandardDlg::closeEvent( QCloseEvent * event)
 		delete m_accumulateFlowCom;
 		m_accumulateFlowCom = NULL;
 	}
+
+	if (m_setRegularTimer) //自动调整流量计时器
+	{
+		if (m_setRegularTimer->isActive())
+		{
+			m_setRegularTimer->stop();
+		}
+		delete m_setRegularTimer;
+		m_setRegularTimer = NULL;
+	}
+	
 	emit signalClosed();
 }
 
