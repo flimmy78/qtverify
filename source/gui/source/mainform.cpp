@@ -13,6 +13,7 @@
 ***********************************************/
 
 #include <QtGui/QMessageBox>
+#include <QDesktopWidget>
 #include <QAxObject>
 #include <QProcess>
 #include <QtCore>
@@ -301,6 +302,8 @@ void MainForm::on_actionStdMtrParaSet_triggered()
 		m_stdParaSet = NULL;
 		m_stdParaSet = new StdMtrParaSet();
 	}
+	m_stdParaSet->move((QApplication::desktop()->availableGeometry().width()-m_stdParaSet->width())/2, \
+		(QApplication::desktop()->availableGeometry().height()-m_stdParaSet->height()-100)/2);  
 	m_stdParaSet->show();
 }
 

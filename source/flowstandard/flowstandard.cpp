@@ -961,12 +961,11 @@ void FlowStandardDlg::on_btnStart_clicked()
 	if (m_autopick) //自动读表
 	{
 		on_btnAllReadNO_clicked();
-		//sleep(m_exaustSecond*1000/2);
-		//setAllMeterVerifyStatus();
+// 		sleep(m_exaustSecond*1000/2);
+// 		setAllMeterVerifyStatus();
 	}
 	else //手动读表
 	{
-		//ui.labelHintPoint->setText(tr("<font color=red size=4><b>Please input meter number!</b></font>"));
 		ui.labelHintPoint->setText(tr("Please input meter number!"));
 		ui.tableWidget->setCurrentCell(0, COLUMN_METER_NUMBER);
 	}
@@ -1931,15 +1930,13 @@ int FlowStandardDlg::getMeterStartValue()
 		{
 			if (m_autopick) //自动采集
 			{
-				ui.labelHintProcess->setText(tr("read start value of heat meter..."));
 				sleep(WAIT_COM_TIME); //需要等待，否则热表来不及响应通讯
 				ui.labelHintProcess->setText(tr("please input start value of heat meter"));
 				on_btnAllReadData_clicked();
-//	 			sleep(500); //等待串口返回数据
+//	 			sleep(WAIT_COM_TIME); //等待串口返回数据
 			}
 			else //手动输入
 			{
-//	 			QMessageBox::information(this, tr("Hint"), tr("please input init value of heat meter"));//请输入热量表初值！
 				ui.labelHintProcess->setText(tr("please input start value of heat meter"));
 				ui.tableWidget->setCurrentCell(m_meterPosMap[0]-1, COLUMN_METER_START); //定位到第一个需要输入初值的地方
 				return false;
@@ -1947,7 +1944,7 @@ int FlowStandardDlg::getMeterStartValue()
 		}
 		else //m_nowOrder >= 2
 		{
-			// 			makeStartValueByLastEndValue();
+// 			makeStartValueByLastEndValue();
 			startVerifyFlowPoint(m_nowOrder);
 		}
 	}
@@ -1961,18 +1958,24 @@ int FlowStandardDlg::getMeterEndValue()
 	{
 		return false;
 	}
+
 	ui.labelHintProcess->setText(tr("please input end value of heat meter"));
 	m_state = STATE_END_VALUE;
 
 	if (m_autopick) //自动采集
 	{
 		on_btnAllReadData_clicked();
-		//sleep(WAIT_COM_TIME); //等待串口返回数据
+		/*
+		下面一行必须封掉，否则若有自动读表失败的，手动输入数据后，下一流量点跑完后，会出bug：
+		QObject.cpp
+		void QObject::installEventFilter(QObject *obj)
+		qWarning("QObject::installEventFilter(): Cannot filter events for objects in a different thread.");
+		*/
+// 		sleep(WAIT_COM_TIME); //等待串口返回数据
 	}
 	else //手动输入
 	{
 // 		QMessageBox::information(this, tr("Hint"), tr("please input end value of heat meter"));//请输入热量表终值！
-		ui.labelHintProcess->setText(tr("please input end value of heat meter"));
 		ui.tableWidget->setCurrentCell(m_meterPosMap[0]-1, COLUMN_METER_END); //定位到第一个需要输入终值的地方
 		return false;
 	}
