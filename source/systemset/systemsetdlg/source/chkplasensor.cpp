@@ -17,6 +17,11 @@ void chkplasensorDlg::showEvent(QShowEvent *)
 	m_config = new QSettings(getFullIniFileName("chkplasensor.ini"), QSettings::IniFormat);
 	readConfig();
 	initTbl(ui.tbl_t_r);
+
+	int tw = ui.tbl_t_r->size().width();
+	int vw = ui.tbl_t_r->verticalHeader()->size().width();
+	int hSize = (int)((tw-vw-5)/ui.tbl_t_r->columnCount());
+	ui.tbl_t_r->horizontalHeader()->setDefaultSectionSize(hSize);
 }
 
 void chkplasensorDlg::initTbl(QTableWidget *tbl)
