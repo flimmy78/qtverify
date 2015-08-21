@@ -567,6 +567,10 @@ void TotalStandardDlg::slotFreshStdTempValue(const QString& stdTempStr)
 //采集标准温度
 void TotalStandardDlg::on_btnStdTempCollect_clicked()
 {
+	ui.lnEditInStdResist->clear();
+	ui.lnEditOutStdResist->clear();
+	ui.lnEditInStdTemp->clear();
+	ui.lnEditOutStdTemp->clear();
 	m_stdTempTimer->start(TIMEOUT_STD_TEMPER);
 }
 
@@ -630,6 +634,7 @@ int TotalStandardDlg::readNowParaConfig()
 	m_model = m_nowParams->m_model;   //表型号
 	m_maxMeterNum = m_nowParams->m_maxMeters;//不同表规格对应的最大检表数量
 	m_pickcode = m_nowParams->m_pickcode; //采集代码
+	m_numPrefix = getNumPrefixOfManufac(m_pickcode); //表号前缀
 	m_totalSC = m_nowParams->sc_thermal;  //总量安全系数
 
 	initTableWidget();
@@ -671,6 +676,7 @@ void TotalStandardDlg::initTableWidget()
 		ui.tableWidget->item(i, COLUMN_DENSITY)->setFlags(Qt::NoItemFlags);
 		ui.tableWidget->item(i, COLUMN_STD_VALUE)->setFlags(Qt::NoItemFlags);
 		ui.tableWidget->item(i, COLUMN_DISP_ERROR)->setFlags(Qt::NoItemFlags);
+		ui.tableWidget->item(i, COLUMN_STD_ERROR)->setFlags(Qt::NoItemFlags);
 
 		//设置按钮
 		QPushButton *btnReadMeter = new QPushButton(QObject::tr("(%1)").arg(i+1) + tr("ReadMeter"));
@@ -868,6 +874,8 @@ int TotalStandardDlg::judgeTartgetVolAndCalcAvgTemperAndFlow(float initV, float 
 		m_avgTFCount++;
 		m_pipeInTemper += ui.lcdInTemper->value();
 		m_pipeOutTemper += ui.lcdOutTemper->value();
+		m_stdInTemper += ui.lnEditInStdTemp->text().toFloat();
+		m_stdOutTemper += ui.lnEditOutStdTemp->text().toFloat();
 		second = 3.6*(targetV - nowVol)/nowFlow;
 		ui.labelHintPoint->setText(tr("NO. <font color=DarkGreen size=6><b>%1</b></font> flow point: <font color=DarkGreen size=6><b>%2</b></font> m3/h")\
 			.arg(m_nowOrder).arg(nowFlow));
@@ -878,10 +886,12 @@ int TotalStandardDlg::judgeTartgetVolAndCalcAvgTemperAndFlow(float initV, float 
 
 	m_pipeInTemper = m_pipeInTemper/m_avgTFCount;   //入口平均温度
 	m_pipeOutTemper = m_pipeOutTemper/m_avgTFCount; //出口平均温度
+	m_stdInTemper = m_stdInTemper/m_avgTFCount;     //入口标准温度平均值
+	m_stdOutTemper = m_stdOutTemper/m_avgTFCount;   //出口标准温度平均值
 
 	QDateTime endTime = QDateTime::currentDateTime();
 	int tt = startTime.secsTo(endTime);
-	if (NULL==m_paraSetReader)
+	if (NULL==m_paraSetReader || m_stopFlag)
 	{
 		return false;
 	}
@@ -927,6 +937,18 @@ void TotalStandardDlg::on_btnStart_clicked()
 		ui.lnEditMinDeltaT->setFocus();
 		return;
 	}
+	bool ok1, ok2;
+	float stdInTemp = ui.lnEditInStdTemp->text().toFloat(&ok1);
+	float stdOutTemp = ui.lnEditOutStdTemp->text().toFloat(&ok2);
+	if ( !ok1 || !ok2 || (stdInTemp-stdOutTemp)<=0 )
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("std temperature is error, please check!"));
+		return;
+	}
+
+	m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
+	m_nowDate = QDateTime::currentDateTime().toString("yyyy-MM-dd"); //当前日期'2014-08-07'
+	m_validDate = QDateTime::currentDateTime().addYears(VALID_YEAR).addDays(-1).toString("yyyy-MM-dd"); //有效期
 
 	ui.btnStart->setEnabled(false);
 	ui.btnGoOn->hide();
@@ -957,12 +979,9 @@ void TotalStandardDlg::on_btnStart_clicked()
 	if (m_autopick) //自动读表
 	{
 		on_btnAllReadNO_clicked();
-		sleep(m_exaustSecond*1000/2);
-		setAllMeterVerifyStatus();
 	}
 	else //手动读表
 	{
-// 		ui.labelHintPoint->setText(tr("<font color=red size=4><b>Please input meter number!</b></font>"));
 		ui.labelHintPoint->setText(tr("Please input meter number!"));
 		ui.tableWidget->setCurrentCell(0, COLUMN_METER_NUMBER);
 	}
@@ -1011,14 +1030,21 @@ void TotalStandardDlg::on_btnExit_clicked()
 //停止检定
 void TotalStandardDlg::stopVerify()
 {
+	ui.labelHintPoint->clear();
 	if (!m_stopFlag)
 	{
+		ui.labelHintProcess->setText(tr("stopping verify...please wait a minute"));
 		m_stopFlag = true; //不再检查天平质量
 		m_exaustTimer->stop();//停止排气定时器
 		closeAllValveAndPumpOpenOutValve();
 	}
-	ui.labelHintPoint->clear();
 	ui.labelHintProcess->setText(tr("Verify has Stoped!"));
+	m_state = STATE_INIT; //重置初始状态
+
+	ui.tableWidget->setEnabled(true);
+	ui.btnAllReadNO->setEnabled(true);
+	ui.btnAllReadData->setEnabled(true);
+	ui.btnAllVerifyStatus->setEnabled(true);
 	ui.btnStart->setEnabled(true);
 }
 
@@ -1070,10 +1096,6 @@ void TotalStandardDlg::startVerify()
 	}
 	m_recPtr = new Total_Verify_Record_STR[m_validMeterNum];
 	memset(m_recPtr, 0, sizeof(Total_Verify_Record_STR)*m_validMeterNum);
-
-	m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
-	m_nowDate = QDateTime::currentDateTime().toString("yyyy-MM-dd"); //当前日期'2014-08-07'
-	m_validDate = QDateTime::currentDateTime().addYears(VALID_YEAR).addDays(-1).toString("yyyy-MM-dd"); //有效期
 
 	m_state = STATE_INIT; //初始状态
 
@@ -1165,7 +1187,7 @@ int TotalStandardDlg::getValidMeterNum()
 {
 	//匹配表号是否为数字; 
 	//前一个'\'是转义字符, "\\"就相当于'\', "\\d"相当于'\d', 匹配一个数字, '+'是数字的正闭包;
-	//本模式也可以写成 "[1-9]+"
+	//本模式也可以写成 "[0-9]+"
 	QRegExp rx("\\d+");
 
 	m_validMeterNum = 0; //先清零
@@ -1375,8 +1397,7 @@ int TotalStandardDlg::calcMeterError(int idx)
 		ui.tableWidget->item(row, COLUMN_DISP_ERROR)->setForeground(QBrush(Qt::red));
 		ui.tableWidget->item(row, COLUMN_METER_NUMBER)->setForeground(QBrush(Qt::red));
 	}
-	QString meterNoPrefix = getNumPrefixOfManufac(m_nowParams->m_manufac);
-	QString meterNoStr = meterNoPrefix + QString("%1").arg(ui.tableWidget->item(row, 0)->text(), 8, '0');
+	QString meterNoStr = m_numPrefix + QString("%1").arg(ui.tableWidget->item(row, 0)->text(), 8, '0');
 
 	strncpy_s(m_recPtr[idx].timestamp, m_timeStamp.toAscii(), TIMESTAMP_LEN);
 	m_recPtr[idx].flowPoint = m_realFlow;
@@ -1473,12 +1494,7 @@ int TotalStandardDlg::openValve(UINT8 portno)
 	{
 		return false;
 	}
-	if (portno == m_portsetinfo.waterOutNo)
-	{
-		m_controlObj->askControlRelay(portno, VALVE_CLOSE);//当操作出水阀时, VALVE_CLOSE信号才是打开信号(接反)
-	}
-	else
-		m_controlObj->askControlRelay(portno, VALVE_OPEN);
+	m_controlObj->askControlRelay(portno, VALVE_OPEN);
 
 	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
 	{
@@ -1494,13 +1510,7 @@ int TotalStandardDlg::closeValve(UINT8 portno)
 	{
 		return false;
 	}
-
-	if (portno == m_portsetinfo.waterOutNo)
-	{
-		m_controlObj->askControlRelay(portno, VALVE_OPEN);//当操作出水阀时, VALVE_OPEN信号才是关闭信号(接反)
-	}
-	else
-		m_controlObj->askControlRelay(portno, VALVE_CLOSE);
+	m_controlObj->askControlRelay(portno, VALVE_CLOSE);
 
 	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
 	{
@@ -1607,6 +1617,7 @@ void TotalStandardDlg::slotSetMeterEnergy(const QString& comName, const QString&
 	else if (m_state == STATE_END_VALUE) //终值
 	{
   		ui.tableWidget->item(meterPos - 1, COLUMN_METER_END)->setText(energy);
+
 	}
 }
 
@@ -1752,14 +1763,13 @@ int TotalStandardDlg::getMeterStartValue()
 		{
 			if (m_autopick) //自动采集
 			{
-				ui.labelHintProcess->setText(tr("read start value of heat meter..."));
 				sleep(WAIT_COM_TIME); //需要等待，否则热表来不及响应通讯
+				ui.labelHintProcess->setText(tr("please input start value of heat meter"));
 				on_btnAllReadData_clicked();
 //	 			sleep(500); //等待串口返回数据
 			}
 			else //手动输入
 			{
-//	 			QMessageBox::information(this, tr("Hint"), tr("please input init value of heat meter"));//请输入热量表初值！
 				ui.labelHintProcess->setText(tr("please input start value of heat meter"));
 				ui.tableWidget->setCurrentCell(m_meterPosMap[0]-1, COLUMN_METER_START); //定位到第一个需要输入初值的地方
 				return false;
@@ -1782,6 +1792,7 @@ int TotalStandardDlg::getMeterEndValue()
 		return false;
 	}
 		
+	ui.labelHintProcess->setText(tr("please input end value of heat meter"));
 	m_state = STATE_END_VALUE;
 
 	if (m_autopick) //自动采集
@@ -1791,8 +1802,6 @@ int TotalStandardDlg::getMeterEndValue()
 	}
 	else //手动输入
 	{
-// 		QMessageBox::information(this, tr("Hint"), tr("please input end value of heat meter"));//请输入热量表终值！
-		ui.labelHintProcess->setText(tr("please input end value of heat meter"));
 		ui.tableWidget->setCurrentCell(m_meterPosMap[0]-1, COLUMN_METER_END); //定位到第一个需要输入终值的地方
 		return false;
 	}
@@ -1964,18 +1973,6 @@ void TotalStandardDlg::slotVerifyStatus(const int &row)
 {
 	qDebug()<<"slotVerifyStatus row ="<<row;
 	m_meterObj[row].askSetVerifyStatus(VTYPE_HEAT);
-}
-
-
-/*
-** 保存起始表号
-*/
-void TotalStandardDlg::saveStartMeterNO()
-{
-	QString filename = getFullIniFileName("verifyparaset.ini");//配置文件的文件名
-	QSettings settings(filename, QSettings::IniFormat);
-	settings.setIniCodec("GB2312");//解决向ini文件中写汉字乱码
-	settings.setValue("Other/meternumber", m_newMeterNO);
 }
 
 void TotalStandardDlg::slotGetInstStdMeterPulse(const QByteArray & valueArray)

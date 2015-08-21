@@ -115,6 +115,7 @@ public:
 	QString m_nowDate;  
 	QString m_validDate;
 	UINT32 m_newMeterNO;   //新表号
+	QMap<int, UINT32> m_mapMeterPosAndNewNO; //检表结果合格的表位与新表号映射关系
 
 	int m_nowOrder;				//当前检定次序
 

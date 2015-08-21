@@ -1556,12 +1556,7 @@ int FlowStandardDlg::openValve(UINT8 portno)
 	{
 		return false;
 	}
-	if (portno == m_portsetinfo.waterOutNo)
-	{
-		m_controlObj->askControlRelay(portno, VALVE_CLOSE);//当操作出水阀时, VALVE_CLOSE信号才是打开信号(接反)
-	}
-	else
-		m_controlObj->askControlRelay(portno, VALVE_OPEN);
+	m_controlObj->askControlRelay(portno, VALVE_OPEN);
 
 	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
 	{
@@ -1577,13 +1572,7 @@ int FlowStandardDlg::closeValve(UINT8 portno)
 	{
 		return false;
 	}
-
-	if (portno == m_portsetinfo.waterOutNo)
-	{
-		m_controlObj->askControlRelay(portno, VALVE_OPEN);//当操作出水阀时, VALVE_OPEN信号才是关闭信号(接反)
-	}
-	else
-		m_controlObj->askControlRelay(portno, VALVE_CLOSE);
+	m_controlObj->askControlRelay(portno, VALVE_CLOSE);
 
 	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
 	{
