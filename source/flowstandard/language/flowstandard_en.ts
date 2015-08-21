@@ -130,7 +130,7 @@
     <message>
         <location filename="../flowstandard.ui" line="305"/>
         <source>DN3</source>
-        <translation></translation>
+        <translation>DN3</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="323"/>
@@ -149,12 +149,12 @@
     <message>
         <location filename="../flowstandard.ui" line="396"/>
         <source>DN25</source>
-        <translation></translation>
+        <translation>DN25</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="491"/>
         <source>DN10</source>
-        <translation></translation>
+        <translation>DN10</translation>
     </message>
     <message>
         <location filename="../flowstandard.ui" line="1132"/>
@@ -388,14 +388,14 @@ t</translation>
 <context>
     <name>FlowStandardDlg</name>
     <message>
-        <location filename="../flowstandard.cpp" line="66"/>
-        <location filename="../flowstandard.cpp" line="627"/>
-        <location filename="../flowstandard.cpp" line="634"/>
+        <location filename="../flowstandard.cpp" line="67"/>
+        <location filename="../flowstandard.cpp" line="698"/>
+        <location filename="../flowstandard.cpp" line="705"/>
         <source>Warning</source>
         <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="66"/>
+        <location filename="../flowstandard.cpp" line="67"/>
         <source>Warning:get port set info failed!</source>
         <translation>警告:获取端口设置信息失败!</translation>
     </message>
@@ -412,12 +412,12 @@ t</translation>
         <translation type="obsolete">排气倒计时: %1 秒</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="888"/>
+        <location filename="../flowstandard.cpp" line="966"/>
         <source>Please input meter number!</source>
         <translation>Please input meter number!</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="666"/>
+        <location filename="../flowstandard.cpp" line="737"/>
         <source>Exhaust countdown finished!</source>
         <translation>排气结束!</translation>
     </message>
@@ -448,7 +448,8 @@ Please wait for about %1 second</source>
         <translation type="obsolete">All flow points has verified!</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="944"/>
+        <location filename="../flowstandard.cpp" line="1022"/>
+        <location filename="../flowstandard.cpp" line="1524"/>
         <source>Verify has Stoped!</source>
         <translation>Verify has Stoped!</translation>
     </message>
@@ -461,7 +462,7 @@ Please wait for about %1 second</source>
         <translation type="obsolete">please input meter number</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="1182"/>
+        <location filename="../flowstandard.cpp" line="1260"/>
         <source>Reset Zero</source>
         <translation>Reset Zero</translation>
     </message>
@@ -470,29 +471,39 @@ Please wait for about %1 second</source>
         <translation type="obsolete">please wait %1 seconds for reset zero</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="158"/>
-        <location filename="../flowstandard.cpp" line="918"/>
-        <location filename="../flowstandard.cpp" line="984"/>
+        <location filename="../flowstandard.cpp" line="160"/>
+        <location filename="../flowstandard.cpp" line="996"/>
+        <location filename="../flowstandard.cpp" line="1062"/>
         <source>Question</source>
         <translation>Question</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="158"/>
+        <location filename="../flowstandard.cpp" line="160"/>
         <source>Exit Really ?</source>
         <translation>Exit Really ?</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="177"/>
+        <location filename="../flowstandard.cpp" line="179"/>
         <source>release pipe pressure...</source>
         <translation>release pipe pressure...</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="561"/>
+        <location filename="../flowstandard.cpp" line="420"/>
+        <source>Open Valve</source>
+        <translation>Open Valve</translation>
+    </message>
+    <message>
+        <location filename="../flowstandard.cpp" line="420"/>
+        <source>please open Manual Ball Valve</source>
+        <translation>please open Manual Ball Valve</translation>
+    </message>
+    <message>
+        <location filename="../flowstandard.cpp" line="632"/>
         <source>ModifyNO</source>
         <translation>ModifyNO</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="567"/>
+        <location filename="../flowstandard.cpp" line="638"/>
         <source>AdjustErr</source>
         <translation>AdjustErr</translation>
     </message>
@@ -501,17 +512,17 @@ Please wait for about %1 second</source>
         <translation type="obsolete">ReadMeter</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="578"/>
+        <location filename="../flowstandard.cpp" line="649"/>
         <source>VerifySt</source>
         <translation>VerifySt</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="627"/>
+        <location filename="../flowstandard.cpp" line="698"/>
         <source>data acquisition error, please check!</source>
         <translation>data acquisition error, please check!</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="634"/>
+        <location filename="../flowstandard.cpp" line="705"/>
         <source>exhaust air failed!</source>
         <translation>exhaust air failed!</translation>
     </message>
@@ -520,48 +531,53 @@ Please wait for about %1 second</source>
         <translation type="obsolete">Exhaust countdown: &lt;font color=DarkGreen size=4&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; second</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="573"/>
+        <location filename="../flowstandard.cpp" line="644"/>
         <source>ReadData</source>
         <translation>ReadData</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="583"/>
+        <location filename="../flowstandard.cpp" line="654"/>
         <source>ReadNO</source>
         <translation>ReadNO</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="640"/>
-        <location filename="../flowstandard.cpp" line="658"/>
+        <location filename="../flowstandard.cpp" line="711"/>
+        <location filename="../flowstandard.cpp" line="729"/>
         <source>Exhaust countdown: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; second</source>
         <translation>Exhaust countdown: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; second</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="802"/>
-        <location filename="../flowstandard.cpp" line="819"/>
-        <location filename="../flowstandard.cpp" line="1804"/>
+        <location filename="../flowstandard.cpp" line="875"/>
+        <location filename="../flowstandard.cpp" line="892"/>
+        <location filename="../flowstandard.cpp" line="1906"/>
         <source>NO. &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; flow point: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; m3/h</source>
         <translation>NO. &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; flow point: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; m3/h</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="804"/>
+        <location filename="../flowstandard.cpp" line="877"/>
         <source>Verifying...Please wait for about &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; second</source>
         <translation>Verifying...Please wait for about &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; second</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="821"/>
+        <location filename="../flowstandard.cpp" line="894"/>
         <source>NO. &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; flow point: Verify Finished!</source>
         <translation>NO. &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; flow point: Verify Finished!</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="975"/>
-        <location filename="../flowstandard.cpp" line="993"/>
+        <location filename="../flowstandard.cpp" line="1053"/>
+        <location filename="../flowstandard.cpp" line="1071"/>
         <source>Please input meter number!
  then click &quot;GoOn&quot; button!</source>
         <translation>Please input meter number!
  then click &quot;GoOn&quot; button!</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="1822"/>
+        <location filename="../flowstandard.cpp" line="1524"/>
+        <source>export excel file successful!</source>
+        <translation>export excel file successful!</translation>
+    </message>
+    <message>
+        <location filename="../flowstandard.cpp" line="1924"/>
         <source>read start value of heat meter...</source>
         <translation>read start value of heat meter...</translation>
     </message>
@@ -574,7 +590,7 @@ Please wait for about %1 second</source>
         <translation type="obsolete">&lt;font color=red size=4&gt;&lt;b&gt;Please input meter number!&lt;/b&gt;&lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="918"/>
+        <location filename="../flowstandard.cpp" line="996"/>
         <source>Stop Really ?</source>
         <translation>Stop Really ?</translation>
     </message>
@@ -583,19 +599,20 @@ Please wait for about %1 second</source>
         <translation type="obsolete">&lt;font color=red size=4&gt;&lt;b&gt;Please input meter number, then click &quot;GoOn&quot; button!&lt;/b&gt;&lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="976"/>
+        <location filename="../flowstandard.cpp" line="1054"/>
+        <location filename="../flowstandard.cpp" line="1528"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="976"/>
+        <location filename="../flowstandard.cpp" line="1054"/>
         <source>Error: meter count is zero !
 Please input meter number, then click &quot;GoOn&quot; button!</source>
         <translation>Error: meter count is zero !
 Please input meter number, then click &quot;GoOn&quot; button!</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="985"/>
+        <location filename="../flowstandard.cpp" line="1063"/>
         <source>meter count maybe error ! read meter number again?
 click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue verify</source>
         <translation>meter count maybe error ! read meter number again?
@@ -606,23 +623,23 @@ click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue ve
         <translation type="obsolete">Please input meter number, then click &quot;GoOn&quot; button!</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="1101"/>
+        <location filename="../flowstandard.cpp" line="1179"/>
         <source>read meter now coe ...</source>
         <translation>read meter now coe ...</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="1185"/>
+        <location filename="../flowstandard.cpp" line="1263"/>
         <source>please wait &lt;font color=DarkGreen size=4&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; seconds for reset zero</source>
         <translation>please wait &lt;font color=DarkGreen size=4&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; seconds for reset zero</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="1219"/>
-        <location filename="../flowstandard.cpp" line="1830"/>
+        <location filename="../flowstandard.cpp" line="1297"/>
+        <location filename="../flowstandard.cpp" line="1932"/>
         <source>please input start value of heat meter</source>
         <translation>please input start value of heat meter</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="1383"/>
+        <location filename="../flowstandard.cpp" line="1465"/>
         <source>save database successfully!</source>
         <translation>save database successfully!</translation>
     </message>
@@ -631,12 +648,12 @@ click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue ve
         <translation type="obsolete">verifying has finished</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="1403"/>
+        <location filename="../flowstandard.cpp" line="1485"/>
         <source>Hint</source>
         <translation>Hint</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="1403"/>
+        <location filename="../flowstandard.cpp" line="1485"/>
         <source>if it isn&apos;t new meter , please change meter to &quot;deltaT&quot; status !</source>
         <translation>if it isn&apos;t new meter , please change meter to &quot;deltaT&quot; status !</translation>
     </message>
@@ -649,8 +666,8 @@ click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue ve
         <translation type="obsolete">please input init value of heat meter</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="1424"/>
-        <location filename="../flowstandard.cpp" line="1862"/>
+        <location filename="../flowstandard.cpp" line="1507"/>
+        <location filename="../flowstandard.cpp" line="1964"/>
         <source>please input end value of heat meter</source>
         <translation>please input end value of heat meter</translation>
     </message>
@@ -666,16 +683,16 @@ click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue ve
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../flowstandard.cpp" line="542"/>
+        <location filename="../flowstandard.cpp" line="613"/>
         <source>meterPosNo%1</source>
         <translation>meterPosNo%1</translation>
     </message>
     <message>
-        <location filename="../flowstandard.cpp" line="561"/>
-        <location filename="../flowstandard.cpp" line="567"/>
-        <location filename="../flowstandard.cpp" line="573"/>
-        <location filename="../flowstandard.cpp" line="578"/>
-        <location filename="../flowstandard.cpp" line="583"/>
+        <location filename="../flowstandard.cpp" line="632"/>
+        <location filename="../flowstandard.cpp" line="638"/>
+        <location filename="../flowstandard.cpp" line="644"/>
+        <location filename="../flowstandard.cpp" line="649"/>
+        <location filename="../flowstandard.cpp" line="654"/>
         <source>(%1)</source>
         <translation>(%1)</translation>
     </message>

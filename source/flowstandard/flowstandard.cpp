@@ -787,6 +787,9 @@ int FlowStandardDlg::readAllMeterFlowCoe()
 //设置所有热量表进入检定状态
 int FlowStandardDlg::setAllMeterVerifyStatus()
 {
+	ui.labelHintPoint->setText(tr("setting verify status ..."));
+	on_btnAllVerifyStatus_clicked();
+	sleep(1000);
 	on_btnAllVerifyStatus_clicked();
 	return true;
 }
@@ -884,7 +887,7 @@ int FlowStandardDlg::judgeTartgetVolAndCalcAvgTemperAndFlow(float initV, float v
 
 	QDateTime endTime = QDateTime::currentDateTime();
 	int tt = startTime.secsTo(endTime);
-	if (NULL==m_paraSetReader)
+	if (NULL==m_paraSetReader || m_stopFlag)
 	{
 		return false;
 	}
@@ -933,7 +936,8 @@ void FlowStandardDlg::on_btnStart_clicked()
 	ui.btnAllReadNO->setEnabled(true);
 	ui.btnAllReadData->setEnabled(true);
 	ui.btnAllVerifyStatus->setEnabled(true);
-
+	ui.btnAllAdjError->setEnabled(false);
+	ui.btnAllModifyNO->setEnabled(false);
 	m_stopFlag = false;
 	m_state = STATE_INIT;
 	m_validMeterNum = 0;
@@ -957,8 +961,8 @@ void FlowStandardDlg::on_btnStart_clicked()
 	if (m_autopick) //自动读表
 	{
 		on_btnAllReadNO_clicked();
-		sleep(m_exaustSecond*1000/2);
-		setAllMeterVerifyStatus();
+		//sleep(m_exaustSecond*1000/2);
+		//setAllMeterVerifyStatus();
 	}
 	else //手动读表
 	{
@@ -1012,16 +1016,22 @@ void FlowStandardDlg::on_btnExit_clicked()
 //停止检定
 void FlowStandardDlg::stopVerify()
 {
+	ui.labelHintPoint->clear();
 	if (!m_stopFlag)
 	{
+		ui.labelHintProcess->setText(tr("stopping verify...please wait a minute"));
 		m_stopFlag = true; //不再检查天平质量
 		m_exaustTimer->stop();//停止排气定时器
 		closeAllValveAndPumpOpenOutValve();
 	}
-	ui.labelHintPoint->clear();
 	ui.labelHintProcess->setText(tr("Verify has Stoped!"));
+	m_state = STATE_INIT; //重置初始状态
+
+	ui.tableWidget->setEnabled(true);
+	ui.btnAllReadNO->setEnabled(true);
+	ui.btnAllReadData->setEnabled(true);
+	ui.btnAllVerifyStatus->setEnabled(true);
 	ui.btnStart->setEnabled(true);
-	m_state = STATE_INIT;
 }
 
 //开始检定
@@ -1923,6 +1933,7 @@ int FlowStandardDlg::getMeterStartValue()
 			{
 				ui.labelHintProcess->setText(tr("read start value of heat meter..."));
 				sleep(WAIT_COM_TIME); //需要等待，否则热表来不及响应通讯
+				ui.labelHintProcess->setText(tr("please input start value of heat meter"));
 				on_btnAllReadData_clicked();
 //	 			sleep(500); //等待串口返回数据
 			}
@@ -1950,7 +1961,7 @@ int FlowStandardDlg::getMeterEndValue()
 	{
 		return false;
 	}
-
+	ui.labelHintProcess->setText(tr("please input end value of heat meter"));
 	m_state = STATE_END_VALUE;
 
 	if (m_autopick) //自动采集
@@ -2228,24 +2239,24 @@ void FlowStandardDlg::slotGetInstStdMeterPulse(const QByteArray & valueArray)
 	m_instStdPulse = valueArray;
 	freshInstStdMeter();
 	float instValue = 0.0;//瞬时流量
-	m_instRouteIsRead.clear();//每次采集前, 清空通道队列
-	if (m_valveStatus[m_portsetinfo.bigNo])
-	{
-		instValue += getFlowValueByValve(FLOW_RATE_BIG, INST_FLOW_VALUE);
-	}
-	if (m_valveStatus[m_portsetinfo.middle2No])
-	{
-		instValue += getFlowValueByValve(FLOW_RATE_MID_2, INST_FLOW_VALUE);
-	}
-	if (m_valveStatus[m_portsetinfo.middle1No])
-	{
-		instValue += getFlowValueByValve(FLOW_RATE_MID_1, INST_FLOW_VALUE);
-	}
-	if (m_valveStatus[m_portsetinfo.smallNo])
-	{
-		instValue += getFlowValueByValve(FLOW_RATE_SMALL, INST_FLOW_VALUE);
-	}
-
+	//m_instRouteIsRead.clear();//每次采集前, 清空通道队列
+	//if (m_valveStatus[m_portsetinfo.bigNo])
+	//{
+	//	instValue += getFlowValueByValve(FLOW_RATE_BIG, INST_FLOW_VALUE);
+	//}
+	//if (m_valveStatus[m_portsetinfo.middle2No])
+	//{
+	//	instValue += getFlowValueByValve(FLOW_RATE_MID_2, INST_FLOW_VALUE);
+	//}
+	//if (m_valveStatus[m_portsetinfo.middle1No])
+	//{
+	//	instValue += getFlowValueByValve(FLOW_RATE_MID_1, INST_FLOW_VALUE);
+	//}
+	//if (m_valveStatus[m_portsetinfo.smallNo])
+	//{
+	//	instValue += getFlowValueByValve(FLOW_RATE_SMALL, INST_FLOW_VALUE);
+	//}
+	instValue = ui.lcdInstStdMeter_3->value()+ui.lcdInstStdMeter_10->value()+ui.lcdInstStdMeter_25->value();
 	ui.lcdFlowRate->display(instValue);
 }
 
@@ -2347,23 +2358,25 @@ void FlowStandardDlg::slotGetAccumStdMeterPulse(const QByteArray & valueArray)
 	m_accumStdPulse = valueArray;
 	freshAccumStdMeter();
 	float accumValue = 0.0;//累积流量
-	m_accumRouteIsRead.clear();//每次采集前, 清空通道队列
-	if (m_valveStatus[m_portsetinfo.bigNo])
-	{
-		accumValue += getFlowValueByValve(FLOW_RATE_BIG, ACCUM_FLOW_VALUE);
-	}
-	if (m_valveStatus[m_portsetinfo.middle2No])
-	{
-		accumValue += getFlowValueByValve(FLOW_RATE_MID_2, ACCUM_FLOW_VALUE);
-	}
-	if (m_valveStatus[m_portsetinfo.middle1No])
-	{
-		accumValue += getFlowValueByValve(FLOW_RATE_MID_1, ACCUM_FLOW_VALUE);
-	}
-	if (m_valveStatus[m_portsetinfo.smallNo])
-	{
-		accumValue += getFlowValueByValve(FLOW_RATE_SMALL, ACCUM_FLOW_VALUE);
-	}
+	//m_accumRouteIsRead.clear();//每次采集前, 清空通道队列
+	//if (m_valveStatus[m_portsetinfo.bigNo])
+	//{
+	//	accumValue += getFlowValueByValve(FLOW_RATE_BIG, ACCUM_FLOW_VALUE);
+	//}
+	//if (m_valveStatus[m_portsetinfo.middle2No])
+	//{
+	//	accumValue += getFlowValueByValve(FLOW_RATE_MID_2, ACCUM_FLOW_VALUE);
+	//}
+	//if (m_valveStatus[m_portsetinfo.middle1No])
+	//{
+	//	accumValue += getFlowValueByValve(FLOW_RATE_MID_1, ACCUM_FLOW_VALUE);
+	//}
+	//if (m_valveStatus[m_portsetinfo.smallNo])
+	//{
+	//	accumValue += getFlowValueByValve(FLOW_RATE_SMALL, ACCUM_FLOW_VALUE);
+	//}
+
+	accumValue = ui.lcdAccumStdMeter_3->value()+ui.lcdAccumStdMeter_10->value()+ui.lcdAccumStdMeter_25->value();
 	ui.lcdAccumStdMeter->display(accumValue);	
 }
 
