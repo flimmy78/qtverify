@@ -144,6 +144,7 @@ void TempComObject::writeTemperatureComBuffer()
 // 		printf("0x%.2x\n", (UINT8)buf.at(i));
 // 	}
 // 	printf("\n");
+	m_tempCom->flush();
 	m_tempCom->write(buf);
 }
 
@@ -169,6 +170,7 @@ void TempComObject::readTemperatureComBuffer()
 		emit temperatureIsReady(tempStr);
 	}
 	m_buf.clear();
+	m_tempCom->flush();
 }
 
 /*
