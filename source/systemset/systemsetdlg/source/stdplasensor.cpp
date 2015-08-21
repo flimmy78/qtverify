@@ -5,7 +5,6 @@ stdplasensorDlg::stdplasensorDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
 	ui.setupUi(this);
-
 }
 
 stdplasensorDlg::~stdplasensorDlg()
@@ -23,6 +22,16 @@ void stdplasensorDlg::showEvent(QShowEvent *)
 	initTbls();
 	ui.tbl_pt100_in->setEnabled(true);
 	ui.tbl_pt100_out->setEnabled(true);
+
+	int tw = ui.tbl_pt100_in->size().width();
+	int vw = ui.tbl_pt100_in->verticalHeader()->size().width();
+	int hSize = (int)((tw-vw-5)/ui.tbl_pt100_in->columnCount());
+	ui.tbl_pt100_in->horizontalHeader()->setDefaultSectionSize(hSize);
+
+	int tw2 = ui.tbl_pt100_out->size().width();
+	int vw2 = ui.tbl_pt100_out->verticalHeader()->size().width();
+	int hSize2 = (int)((tw2-vw2-5)/ui.tbl_pt100_out->columnCount());
+	ui.tbl_pt100_out->horizontalHeader()->setDefaultSectionSize(hSize2);
 }
 
 void stdplasensorDlg::initTbls()
