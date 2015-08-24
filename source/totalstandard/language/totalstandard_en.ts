@@ -549,7 +549,7 @@ t</source>
     <message>
         <location filename="../totalstandard.cpp" line="685"/>
         <source>ReadNO</source>
-        <translation>读取表号</translation>
+        <translation>ReadNO</translation>
     </message>
     <message>
         <location filename="../totalstandard.cpp" line="728"/>

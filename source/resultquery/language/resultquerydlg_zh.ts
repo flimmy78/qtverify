@@ -127,47 +127,47 @@
     <message>
         <location filename="../ui/cmb_result.ui" line="194"/>
         <source>Standard</source>
-        <translation type="unfinished">规格</translation>
+        <translation>规格</translation>
     </message>
     <message>
         <location filename="../ui/cmb_result.ui" line="217"/>
         <source>InstallPos:</source>
-        <translation type="unfinished">安装位置:</translation>
+        <translation>安装位置:</translation>
     </message>
     <message>
         <location filename="../ui/cmb_result.ui" line="240"/>
         <source>In</source>
-        <translation type="unfinished">入口</translation>
+        <translation>入口</translation>
     </message>
     <message>
         <location filename="../ui/cmb_result.ui" line="245"/>
         <source>Out</source>
-        <translation type="unfinished">出口</translation>
+        <translation>出口</translation>
     </message>
     <message>
         <location filename="../ui/cmb_result.ui" line="268"/>
         <source>Is Valid</source>
-        <translation type="unfinished">是否合格</translation>
+        <translation>是否合格</translation>
     </message>
     <message>
         <location filename="../ui/cmb_result.ui" line="276"/>
         <source>not valid</source>
-        <translation type="unfinished">不合格</translation>
+        <translation>不合格</translation>
     </message>
     <message>
         <location filename="../ui/cmb_result.ui" line="281"/>
         <source>valid</source>
-        <translation type="unfinished">合格</translation>
+        <translation>合格</translation>
     </message>
     <message>
         <location filename="../ui/cmb_result.ui" line="306"/>
         <source>Model</source>
-        <translation type="unfinished">型号</translation>
+        <translation>型号</translation>
     </message>
     <message>
         <location filename="../ui/cmb_result.ui" line="328"/>
         <source>Grade</source>
-        <translation type="unfinished">等级</translation>
+        <translation>等级</translation>
     </message>
     <message>
         <source>Method:</source>
@@ -346,42 +346,42 @@
     <message>
         <location filename="../ui/flowresult.ui" line="397"/>
         <source>5</source>
-        <translation type="unfinished">5</translation>
+        <translation>5</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="402"/>
         <source>6</source>
-        <translation type="unfinished">6</translation>
+        <translation>6</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="407"/>
         <source>7</source>
-        <translation type="unfinished">7</translation>
+        <translation>7</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="412"/>
         <source>8</source>
-        <translation type="unfinished">8</translation>
+        <translation>8</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="417"/>
         <source>9</source>
-        <translation type="unfinished">9</translation>
+        <translation>9</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="422"/>
         <source>10</source>
-        <translation type="unfinished">10</translation>
+        <translation>10</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="427"/>
         <source>11</source>
-        <translation type="unfinished">11</translation>
+        <translation>11</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="432"/>
         <source>12</source>
-        <translation type="unfinished">12</translation>
+        <translation>12</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="469"/>
@@ -1117,17 +1117,17 @@
     <message>
         <location filename="../ui/total_result.ui" line="184"/>
         <source>Method:</source>
-        <translation type="unfinished">检定方法:</translation>
+        <translation>检定方法:</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="198"/>
         <source>Weight</source>
-        <translation type="unfinished">质量法</translation>
+        <translation>质量法</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="203"/>
         <source>StdMeter</source>
-        <translation type="unfinished">标准表法</translation>
+        <translation>标准表法</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="223"/>
@@ -1137,52 +1137,52 @@
     <message>
         <location filename="../ui/total_result.ui" line="242"/>
         <source>1</source>
-        <translation type="unfinished">1</translation>
+        <translation>1</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="247"/>
         <source>2</source>
-        <translation type="unfinished">2</translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="252"/>
         <source>3</source>
-        <translation type="unfinished">3</translation>
+        <translation>3</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="257"/>
         <source>4</source>
-        <translation type="unfinished">4</translation>
+        <translation>4</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="281"/>
         <source>Is Valid</source>
-        <translation type="unfinished">是否合格</translation>
+        <translation>是否合格</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="295"/>
         <source>not valid</source>
-        <translation type="unfinished">不合格</translation>
+        <translation>不合格</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="300"/>
         <source>valid</source>
-        <translation type="unfinished">合格</translation>
+        <translation>合格</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="325"/>
         <source>Model</source>
-        <translation type="unfinished">型号</translation>
+        <translation>型号</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="354"/>
         <source>Grade</source>
-        <translation type="unfinished">等级</translation>
+        <translation>等级</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="397"/>
         <source>Standard</source>
-        <translation type="unfinished">规格</translation>
+        <translation>规格</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="436"/>

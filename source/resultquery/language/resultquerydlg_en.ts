@@ -127,47 +127,47 @@
     <message>
         <location filename="../ui/cmb_result.ui" line="194"/>
         <source>Standard</source>
-        <translation type="unfinished">Standard</translation>
+        <translation>Standard</translation>
     </message>
     <message>
         <location filename="../ui/cmb_result.ui" line="217"/>
         <source>InstallPos:</source>
-        <translation type="unfinished">InstallPos:</translation>
+        <translation>InstallPos:</translation>
     </message>
     <message>
         <location filename="../ui/cmb_result.ui" line="240"/>
         <source>In</source>
-        <translation type="unfinished">In</translation>
+        <translation>In</translation>
     </message>
     <message>
         <location filename="../ui/cmb_result.ui" line="245"/>
         <source>Out</source>
-        <translation type="unfinished">Out</translation>
+        <translation>Out</translation>
     </message>
     <message>
         <location filename="../ui/cmb_result.ui" line="268"/>
         <source>Is Valid</source>
-        <translation type="unfinished"></translation>
+        <translation>Is Valid</translation>
     </message>
     <message>
         <location filename="../ui/cmb_result.ui" line="276"/>
         <source>not valid</source>
-        <translation type="unfinished">invalid</translation>
+        <translation>invalid</translation>
     </message>
     <message>
         <location filename="../ui/cmb_result.ui" line="281"/>
         <source>valid</source>
-        <translation type="unfinished"></translation>
+        <translation>valid</translation>
     </message>
     <message>
         <location filename="../ui/cmb_result.ui" line="306"/>
         <source>Model</source>
-        <translation type="unfinished">Model</translation>
+        <translation>Model</translation>
     </message>
     <message>
         <location filename="../ui/cmb_result.ui" line="328"/>
         <source>Grade</source>
-        <translation type="unfinished">Grade</translation>
+        <translation>Grade</translation>
     </message>
     <message>
         <source>Method:</source>
@@ -331,12 +331,12 @@
     <message>
         <location filename="../ui/flowresult.ui" line="328"/>
         <source>Grade:</source>
-        <translation type="unfinished"></translation>
+        <translation>Grade:</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="348"/>
         <source>Standard:</source>
-        <translation type="unfinished"></translation>
+        <translation>Standard:</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="364"/>
@@ -346,42 +346,42 @@
     <message>
         <location filename="../ui/flowresult.ui" line="397"/>
         <source>5</source>
-        <translation type="unfinished"></translation>
+        <translation>5</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="402"/>
         <source>6</source>
-        <translation type="unfinished"></translation>
+        <translation>6</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="407"/>
         <source>7</source>
-        <translation type="unfinished"></translation>
+        <translation>7</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="412"/>
         <source>8</source>
-        <translation type="unfinished"></translation>
+        <translation>8</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="417"/>
         <source>9</source>
-        <translation type="unfinished"></translation>
+        <translation>9</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="422"/>
         <source>10</source>
-        <translation type="unfinished"></translation>
+        <translation>10</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="427"/>
         <source>11</source>
-        <translation type="unfinished"></translation>
+        <translation>11</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="432"/>
         <source>12</source>
-        <translation type="unfinished"></translation>
+        <translation>12</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="469"/>
@@ -1117,72 +1117,72 @@
     <message>
         <location filename="../ui/total_result.ui" line="184"/>
         <source>Method:</source>
-        <translation type="unfinished">Method:</translation>
+        <translation>Method:</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="198"/>
         <source>Weight</source>
-        <translation type="unfinished">Weight</translation>
+        <translation>Weight</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="203"/>
         <source>StdMeter</source>
-        <translation type="unfinished">StdMeter</translation>
+        <translation>StdMeter</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="223"/>
         <source>FlowPoint:</source>
-        <translation type="unfinished"></translation>
+        <translation>FlowPoint:</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="242"/>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation>1</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="247"/>
         <source>2</source>
-        <translation type="unfinished"></translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="252"/>
         <source>3</source>
-        <translation type="unfinished"></translation>
+        <translation>3</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="257"/>
         <source>4</source>
-        <translation type="unfinished"></translation>
+        <translation>4</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="281"/>
         <source>Is Valid</source>
-        <translation type="unfinished"></translation>
+        <translation>Is Valid</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="295"/>
         <source>not valid</source>
-        <translation type="unfinished">invalid</translation>
+        <translation>invalid</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="300"/>
         <source>valid</source>
-        <translation type="unfinished"></translation>
+        <translation>valid</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="325"/>
         <source>Model</source>
-        <translation type="unfinished">Model</translation>
+        <translation>Model</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="354"/>
         <source>Grade</source>
-        <translation type="unfinished">Grade</translation>
+        <translation>Grade</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="397"/>
         <source>Standard</source>
-        <translation type="unfinished">Standard</translation>
+        <translation>Standard</translation>
     </message>
     <message>
         <location filename="../ui/total_result.ui" line="436"/>

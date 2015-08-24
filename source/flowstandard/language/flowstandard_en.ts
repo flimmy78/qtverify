@@ -397,7 +397,7 @@ t</translation>
     <message>
         <location filename="../flowstandard.cpp" line="67"/>
         <source>Warning:get port set info failed!</source>
-        <translation>警告:获取端口设置信息失败!</translation>
+        <translation>Warning:get port set info failed!</translation>
     </message>
     <message>
         <source>Modify NO.</source>
@@ -419,7 +419,7 @@ t</translation>
     <message>
         <location filename="../flowstandard.cpp" line="737"/>
         <source>Exhaust countdown finished!</source>
-        <translation>排气结束!</translation>
+        <translation>Exhaust countdown finished!</translation>
     </message>
     <message>
         <source>prepare balance ...</source>

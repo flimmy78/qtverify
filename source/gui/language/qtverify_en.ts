@@ -229,12 +229,12 @@
         <location filename="../ui/register.ui" line="14"/>
         <location filename="../ui/register.ui" line="102"/>
         <source>Register</source>
-        <translation></translation>
+        <translation>Register</translation>
     </message>
     <message>
         <location filename="../ui/register.ui" line="20"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Please send &amp;quot;Code&amp;quot; to &lt;span style=&quot; font-weight:600;&quot;&gt;Author&lt;/span&gt; to get the license !&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Author&lt;/span&gt; QQ:&lt;span style=&quot; color:#ff557f;&quot;&gt;157764165 &lt;/span&gt;Tel:&lt;span style=&quot; color:#ff5500;&quot;&gt;15065761605&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Please send &amp;quot;Code&amp;quot; to &lt;span style=&quot; font-weight:600;&quot;&gt;Author&lt;/span&gt; to get the license !&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Author&lt;/span&gt; QQ:&lt;span style=&quot; color:#ff557f;&quot;&gt;157764165 &lt;/span&gt;Tel:&lt;span style=&quot; color:#ff5500;&quot;&gt;15065761605&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../ui/register.ui" line="45"/>
