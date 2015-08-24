@@ -55,14 +55,14 @@
     </property>
     <widget class="QMenu" name="menuTemper">
      <property name="title">
-      <string>Temper</string>
+      <string>Pt</string>
      </property>
      <property name="icon">
       <iconset resource="../qtverify.qrc">
        <normaloff>:/qtverify/images/temper.png</normaloff>:/qtverify/images/temper.png</iconset>
      </property>
-     <addaction name="actionTemperCompare"/>
-     <addaction name="actionTemperPara"/>
+     <addaction name="actionPtCompare"/>
+     <addaction name="actionPtPara"/>
     </widget>
     <widget class="QMenu" name="menuFlow">
      <property name="title">
@@ -86,7 +86,7 @@
     </property>
     <addaction name="actionFlowResult"/>
     <addaction name="actionTotalResult"/>
-    <addaction name="actionTemperResult"/>
+    <addaction name="actionPtResult"/>
     <addaction name="actionCalculatorResult"/>
     <addaction name="actionCombineResult"/>
    </widget>
@@ -147,14 +147,14 @@
    <addaction name="actionFlowStandard"/>
    <addaction name="actionTotalWeight"/>
    <addaction name="actionTotalStandard"/>
-   <addaction name="actionTemperCompare"/>
-   <addaction name="actionTemperPara"/>
+   <addaction name="actionPtCompare"/>
+   <addaction name="actionPtPara"/>
    <addaction name="actionCalculator"/>
    <addaction name="actionCombine"/>
    <addaction name="separator"/>
    <addaction name="actionFlowResult"/>
    <addaction name="actionTotalResult"/>
-   <addaction name="actionTemperResult"/>
+   <addaction name="actionPtResult"/>
    <addaction name="actionCalculatorResult"/>
    <addaction name="actionCombineResult"/>
    <addaction name="separator"/>
@@ -356,28 +356,28 @@
     <string>Calculator</string>
    </property>
   </action>
-  <action name="actionTemperCompare">
+  <action name="actionPtCompare">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
      <normaloff>:/qtverify/images/tempercompare.png</normaloff>:/qtverify/images/tempercompare.png</iconset>
    </property>
    <property name="text">
-    <string>TemperCompare</string>
+    <string>PtCompare</string>
    </property>
    <property name="toolTip">
-    <string>TemperCompare</string>
+    <string>PtCompare</string>
    </property>
   </action>
-  <action name="actionTemperPara">
+  <action name="actionPtPara">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
      <normaloff>:/qtverify/images/temperpara.png</normaloff>:/qtverify/images/temperpara.png</iconset>
    </property>
    <property name="text">
-    <string>TemperPara</string>
+    <string>PtPara</string>
    </property>
    <property name="toolTip">
-    <string>TemperPara</string>
+    <string>PtPara</string>
    </property>
   </action>
   <action name="actionCombine">
@@ -415,13 +415,13 @@
     <string>Chinese</string>
    </property>
   </action>
-  <action name="actionTemperResult">
+  <action name="actionPtResult">
    <property name="icon">
     <iconset resource="../qtverify.qrc">
      <normaloff>:/qtverify/images/temperresult.png</normaloff>:/qtverify/images/temperresult.png</iconset>
    </property>
    <property name="text">
-    <string>TemperResult</string>
+    <string>PtResult</string>
    </property>
   </action>
   <action name="actionCalculatorResult">
@@ -503,16 +503,6 @@
    </property>
    <property name="toolTip">
     <string>PtParaSet</string>
-   </property>
-  </action>
-  <action name="actionPlaVerifyResult">
-   <property name="text">
-    <string>PlaVerifyResult</string>
-   </property>
-  </action>
-  <action name="actionPlaVerify_Parameter">
-   <property name="text">
-    <string>PlaVerify-Parameter</string>
    </property>
   </action>
   <action name="actionContacts">

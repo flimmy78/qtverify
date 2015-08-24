@@ -90,8 +90,8 @@ public slots:
 	//Component Verify
 	void on_actionFlowWeight_triggered();
 	void on_actionFlowStandard_triggered();
-	void on_actionTemperCompare_triggered();
-	void on_actionTemperPara_triggered();
+	void on_actionPtCompare_triggered();
+	void on_actionPtPara_triggered();
 	void on_actionCalculator_triggered();
 	void on_actionCombine_triggered();
 
@@ -102,7 +102,7 @@ public slots:
 	//Data Query
 	void on_actionFlowResult_triggered();
 	void on_actionTotalResult_triggered();
-	void on_actionTemperResult_triggered();
+	void on_actionPtResult_triggered();
 	void on_actionCalculatorResult_triggered();
 	void on_actionCombineResult_triggered();
 	void on_actionQueryExcel_triggered();

@@ -403,8 +403,8 @@ void MainForm::on_actionFlowStandard_triggered()
 	m_flowStandardDlg->showMaximized();
 }
 
-//温度检定(比较法)
-void MainForm::on_actionTemperCompare_triggered()
+//铂电阻检定(比较法)
+void MainForm::on_actionPtCompare_triggered()
 {
 	if (NULL == m_tvercompDlg)
 	{
@@ -419,8 +419,8 @@ void MainForm::on_actionTemperCompare_triggered()
 	m_tvercompDlg->show();
 }
 
-//温度检定(参数法)
-void MainForm::on_actionTemperPara_triggered()
+//铂电阻检定(参数法)
+void MainForm::on_actionPtPara_triggered()
 {
 	if (NULL == m_tverparaDlg)
 	{
@@ -521,7 +521,7 @@ void MainForm::on_actionTotalResult_triggered()
 }
 
 //查询温度传感器检定结果
-void MainForm::on_actionTemperResult_triggered()
+void MainForm::on_actionPtResult_triggered()
 {
 	if (NULL == m_PlaResultDlg)
 	{

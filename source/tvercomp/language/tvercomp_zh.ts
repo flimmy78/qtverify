@@ -6,7 +6,7 @@
     <message>
         <location filename="../ui/tvercomp.ui" line="26"/>
         <source>Comparing method of platinum resistance checking</source>
-        <translation>铂电阻检测比较法</translation>
+        <translation>铂电阻检定(比较法)</translation>
     </message>
     <message>
         <location filename="../ui/tvercomp.ui" line="48"/>
@@ -198,7 +198,7 @@ T
     <message>
         <location filename="../ui/tvercomp_param.ui" line="97"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Model&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;型 号&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;型 号&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Manufactory&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>

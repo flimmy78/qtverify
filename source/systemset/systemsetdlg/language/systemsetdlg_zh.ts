@@ -6,7 +6,7 @@
     <message>
         <location filename="../ui/chkplasensor.ui" line="29"/>
         <source>Checked Platinum Sensor</source>
-        <translation>被检铂电阻</translation>
+        <translation>被检铂电阻参数设置</translation>
     </message>
     <message utf8="true">
         <location filename="../ui/chkplasensor.ui" line="61"/>
@@ -4058,7 +4058,7 @@
     <message>
         <location filename="../ui/stdplasensor.ui" line="29"/>
         <source>Standard Platinium Sensor</source>
-        <translation>标准铂电阻</translation>
+        <translation>标准铂电阻参数设置</translation>
     </message>
     <message>
         <location filename="../ui/stdplasensor.ui" line="45"/>

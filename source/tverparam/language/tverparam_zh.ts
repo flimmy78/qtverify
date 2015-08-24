@@ -6,7 +6,7 @@
     <message>
         <location filename="../ui/tverparam.ui" line="26"/>
         <source>Parameter method of platinum resistance checking</source>
-        <translation>铂电阻检测参数法</translation>
+        <translation>铂电阻检定(参数法)</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;Calculation&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
