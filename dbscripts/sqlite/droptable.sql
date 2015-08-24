@@ -1,12 +1,3 @@
---------------------------------------
---视图
---------------------------------------
-drop view if exists "V_Flow_Verify_Record";
-
-drop view if exists "v_flow_verify_meterno_rowid";
-
-
-
 ---------------------------------
 --流量检定结果记录表（包括质量法和标准表法）
 ---------------------------------
@@ -97,3 +88,8 @@ drop table if exists "T_Yes_No_Tab"
 drop table if exists "T_Verify_Device_Info"
 ;
 
+---------------------------------
+--
+---------------------------------
+drop table if exists "T_Create_Query_View_Stmt"
+;

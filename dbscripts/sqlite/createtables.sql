@@ -226,7 +226,7 @@ F_TimeStamp timestamp not null,     --时间戳（'yyyy-MM-dd HH:mm:ss.zzz')
 F_MeterNo varchar(16) not null,     --表号(14位数字: 6 + 8)
 F_Standard integer,                 --表规格(DN15/DN20/DN25)，外键(T_Meter_Standard.F_ID)
 F_Model integer,                    --表型号，外键(T_Meter_Model.F_ID)
-F_PickCode integer,					--采集代码, 外键(T_Meter_PickCode)
+F_PickCode integer,                 --采集代码, 外键(T_Meter_PickCode)
 F_Grade smallint,                   --计量等级（1,2,3）
 F_ManufactDept integer,             --制造单位，外键(T_Manufacture_Dept.F_ID)
 F_VerifyDept integer,               --送检单位，外键(T_Verify_Dept.F_ID)
@@ -262,6 +262,20 @@ constraint F_PickCode_fk foreign key(F_PickCode) references T_Meter_PickCode(F_I
 );
 create unique index uk_T_Combined_Verify_Record on T_Combined_Verify_Record (F_MeterNo, F_TimeStamp);
 
+---------------------------------
+--表规格
+---------------------------------
+drop table if exists "T_Meter_Standard"
+;
+create table T_Meter_Standard
+(
+F_ID integer not null primary key,  --规格ID
+F_Name varchar(24),                 --规格代码
+F_Meter_Quantity smallint           -- 被检表的数量(2014.07.31 修改By Song baoshan)
+);
+insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(0, 'DN15', 12);
+insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(1, 'DN20', 12);
+insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(2, 'DN25', 10);
 
 ---------------------------------
 --热表各规格的默认参数表
@@ -293,20 +307,6 @@ insert into T_Meter_Default_Params values(8, 2, 3.5, 3.6, 3.5, 50, 34, 0, 1);
 insert into T_Meter_Default_Params values(9, 2, 3.5, 1.1, 1.05, 20, 33, 1, 2);
 insert into T_Meter_Default_Params values(10, 2, 3.5, 0.4, 0.35, 10, 33, 2, 3);
 insert into T_Meter_Default_Params values(11, 2, 3.5, 0.08, 0.07, 5, 33, 3, 4);
----------------------------------
---表规格
----------------------------------
-drop table if exists "T_Meter_Standard"
-;
-create table T_Meter_Standard
-(
-F_ID integer not null primary key,  --规格ID
-F_Name varchar(24),                 --规格代码
-F_Meter_Quantity smallint           -- 被检表的数量(2014.07.31 修改By Song baoshan)
-);
-insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(0, 'DN15', 12);
-insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(1, 'DN20', 12);
-insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(2, 'DN25', 10);
 
 ---------------------------------
 --表型号
@@ -360,8 +360,9 @@ F_Name varchar(24),
 F_Desc varchar(60)
 );
 insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc) values(0, 'SDM', '山东德鲁');
-insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc) values(1, 'SDJG', '烟台晶格');
-insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc) values(2, 'HYLY', '华仪乐业');
+insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc) values(1, 'ADE', '航天德鲁');
+insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc) values(2, 'SDJG', '烟台晶格');
+insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc) values(3, 'HYLY', '华仪乐业');
 
 
 ---------------------------------
