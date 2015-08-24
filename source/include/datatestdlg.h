@@ -144,7 +144,7 @@ public slots:
 	void on_btnStdTempCollect_clicked(); //采集标准温度
 	void on_btnStdTempStop_clicked(); //停止采集标准温度
 
-	void on_lnEditTargetRate_textChanged();//设定目标流量
+	void on_lnEditTargetRate_returnPressed();//设定目标流量
 
 	void slotAskStdTemperature();
 	void clearMeterDispInfo();
@@ -192,6 +192,7 @@ private:
 	int m_degree;
 	int m_openRegulateTimes;
 	float m_currentRate;
+	bool m_maxRateGetted;//是否已获取过最大流量值
 	void setRegulate(float currentRate, float targetRate);
 	void stopSetRegularTimer();
 	/******************电动调节阀end***************************/

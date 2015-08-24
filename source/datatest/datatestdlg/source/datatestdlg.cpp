@@ -380,9 +380,7 @@ void DataTestDlg::initControlCom()
 	connect(m_controlObj, SIGNAL(controlRegulateIsOk()), this, SLOT(slotSetRegulateOk()));
 	 
 	/*****************************************************************************************************/
-	m_degree = (2.5/3.36)*100;//大流量
-	//m_degree = (0.75/1.02)*100;//中流量
-
+	m_maxRateGetted = false;
 	ui.lnEditTargetRate->setReadOnly(false);
 	m_setRegularTimer = new QTimer;
 	connect(m_setRegularTimer, SIGNAL(timeout()), this, SLOT(slotSetRegulate()));
@@ -391,20 +389,32 @@ void DataTestDlg::initControlCom()
 // 	connect(m_controlObj, SIGNAL(controlGetBalanceValueIsOk(const float&)), this, SLOT(slotFreshBalanceValue(const float &)));
 }
 
-void DataTestDlg::on_lnEditTargetRate_textChanged()
+void DataTestDlg::on_lnEditTargetRate_returnPressed()
 {
+	if (!m_maxRateGetted)
+	{
+		m_degree = 99;//先调节到大流量, 得出最大流量
+		sleep(WAIT_REG_TIME);//等待调节阀调节到最大开度
+		m_maxRate = ui.lcdStdMeterFlowRate->value();//采集最大开度时的流量
+		m_maxRateGetted = true;
+	}	
+
 	QString str = ui.lnEditTargetRate->text();
 	QRegExp rx("\\d+.\\d*");//匹配整数或小数
 	if (rx.exactMatch(str))
 	{
 		float target = str.toFloat();
-		m_setRegularTimer->start(WAIT_REG_TIME);
+		m_degree = target/m_maxRate;
+		if (!m_setRegularTimer->isActive())
+		{
+			m_setRegularTimer->start(WAIT_REG_TIME);
+		}		
 	}
 }
 
 void DataTestDlg::slotSetRegulate()
 {
-	this->setRegulate(ui.lcdStdMeterFlowRate->value(), 2.5f);
+	this->setRegulate(ui.lcdStdMeterFlowRate->value(), ui.lnEditTargetRate->text().toFloat());
 }
 
 void DataTestDlg::setRegulate(float currentRate, float targetRate)
@@ -613,6 +623,7 @@ void DataTestDlg::on_btnValveBig_clicked() //大流量阀
 	{
 		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
 	}
+	m_maxRateGetted = false;
 }
 
 void DataTestDlg::on_btnValveMiddle1_clicked() //中流一阀
@@ -624,6 +635,7 @@ void DataTestDlg::on_btnValveMiddle1_clicked() //中流一阀
 	{
 		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
 	}
+	m_maxRateGetted = false;
 }
 
 void DataTestDlg::on_btnValveMiddle2_clicked() //中流二阀
@@ -635,6 +647,7 @@ void DataTestDlg::on_btnValveMiddle2_clicked() //中流二阀
 	{
 		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
 	}
+	m_maxRateGetted = false;
 }
 
 void DataTestDlg::on_btnValveSmall_clicked() //小流量阀
@@ -646,6 +659,7 @@ void DataTestDlg::on_btnValveSmall_clicked() //小流量阀
 	{
 		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
 	}
+	m_maxRateGetted = false;
 }
 
 /*
