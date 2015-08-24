@@ -26,6 +26,7 @@ DataTestDlg::DataTestDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
 	ui.setupUi(this);
+	m_stdParam = new QSettings(getFullIniFileName("stdmtrparaset.ini"), QSettings::IniFormat);
 }
 
 DataTestDlg::~DataTestDlg()
@@ -165,8 +166,12 @@ void DataTestDlg::closeEvent( QCloseEvent * event)
 		m_accumulateFlowCom = NULL;
 	}
 /*****************************************************/
-	if (m_setRegularTimer)
+	if (m_setRegularTimer) //自动调整流量计时器
 	{
+		if (m_setRegularTimer->isActive())
+		{
+			m_setRegularTimer->stop();
+		}
 		delete m_setRegularTimer;
 		m_setRegularTimer = NULL;
 	}
@@ -201,9 +206,6 @@ void DataTestDlg::showEvent(QShowEvent *event)
 
 	m_controlObj = NULL;
 	m_setRegularTimer = NULL;
-	m_maxRate = 7.5f;	
-	m_currentRate = 3.5f;
-	m_degree = (m_currentRate/m_maxRate)*100.0f;
 	m_openRegulateTimes = 0;
 	initControlCom();		//初始化控制串口
 
@@ -377,22 +379,32 @@ void DataTestDlg::initControlCom()
 	connect(m_controlObj, SIGNAL(controlRelayIsOk(const UINT8 &, const bool &)), this, SLOT(slotSetValveBtnStatus(const UINT8 &, const bool &)));
 	connect(m_controlObj, SIGNAL(controlRegulateIsOk()), this, SLOT(slotSetRegulateOk()));
 	 
+	/*****************************************************************************************************/
+	m_degree = (2.5/3.36)*100;//大流量
+	//m_degree = (0.75/1.02)*100;//中流量
+
+	ui.lnEditTargetRate->setReadOnly(false);
 	m_setRegularTimer = new QTimer;
 	connect(m_setRegularTimer, SIGNAL(timeout()), this, SLOT(slotSetRegulate()));
-	//m_setRegularTimer->start(2000);
+	/*****************************************************************************************************/
 	//天平数值从控制板获取
 // 	connect(m_controlObj, SIGNAL(controlGetBalanceValueIsOk(const float&)), this, SLOT(slotFreshBalanceValue(const float &)));
 }
 
+void DataTestDlg::on_lnEditTargetRate_textChanged()
+{
+	QString str = ui.lnEditTargetRate->text();
+	QRegExp rx("\\d+.\\d*");//匹配整数或小数
+	if (rx.exactMatch(str))
+	{
+		float target = str.toFloat();
+		m_setRegularTimer->start(WAIT_REG_TIME);
+	}
+}
+
 void DataTestDlg::slotSetRegulate()
 {
-	bool ok;
-	m_currentRate = ui.lnEditFlowRate->text().toFloat(&ok);
-	m_currentRate = ui.lineEdit->text().toFloat(&ok);
-	if (ok)
-	{
-		this->setRegulate(m_currentRate, 2.5f);
-	}
+	this->setRegulate(ui.lcdStdMeterFlowRate->value(), 2.5f);
 }
 
 void DataTestDlg::setRegulate(float currentRate, float targetRate)
@@ -409,29 +421,31 @@ void DataTestDlg::setRegulate(float currentRate, float targetRate)
 			stopSetRegularTimer();
 			return;
 		}
-		m_controlObj->askControlRegulate(m_nowRegNo, m_degree);
+		m_controlObj->askControlRegulate(m_portsetinfo.regflow1No, m_degree);
+		//m_controlObj->askControlRegulate(m_portsetinfo.regflow2No, m_degree);
 		m_openRegulateTimes++;
 		return;
 	}
 	float deltaV = qAbs(targetRate - currentRate);
-	float precision = 0.03*targetRate;
+	float precision = 0.003*targetRate;
 	if (deltaV > precision)
 	{
 		if (0 < m_degree && m_degree <= 99)
 		{
 			m_degree = (targetRate/currentRate)*m_degree;//假定流速与开度呈线性关系
-			m_controlObj->askControlRegulate(m_nowRegNo, m_degree);
+			m_controlObj->askControlRegulate(m_portsetinfo.regflow1No, m_degree);
+			//m_controlObj->askControlRegulate(m_portsetinfo.regflow2No, m_degree);
 			qDebug() << "current degree: " << m_degree;
 		}
 		else if (m_degree > 99)//如果开度开到99%, 当前速度还是小于目标速度, 提示用户增大手动阀开度和水泵频率
 		{
-			QMessageBox::warning(this, tr("Increase"), tr("please increase manual Valve or Pump freq"));
-			stopSetRegularTimer();
+			//QMessageBox::warning(this, tr("Increase"), tr("please increase manual Valve or Pump freq"));
+			//stopSetRegularTimer();
 		}
 		else if (m_degree == 0)//如果开度关到0, 而当前速度还是大于目标速度, 那么提示用户检查管路和相关设备
 		{
-			QMessageBox::warning(this, tr("Error"), tr("please your pipe and device sensor, they may be error!"));
-			stopSetRegularTimer();
+			//QMessageBox::warning(this, tr("Error"), tr("please your pipe and device sensor, they may be error!"));
+			//stopSetRegularTimer();
 		}
 	}
 	else

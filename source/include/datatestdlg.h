@@ -28,6 +28,9 @@ class ReadComConfig;
 ** 类名：DataTestDlg
 ** 功能：数据采集与测试
 */
+
+#define WAIT_REG_TIME 50000//等待调节阀到位并水流稳定时间
+
 class DATATESTDLG_EXPORT DataTestDlg : public QWidget
 {
 	Q_OBJECT
@@ -140,6 +143,8 @@ public slots:
 
 	void on_btnStdTempCollect_clicked(); //采集标准温度
 	void on_btnStdTempStop_clicked(); //停止采集标准温度
+
+	void on_lnEditTargetRate_textChanged();//设定目标流量
 
 	void slotAskStdTemperature();
 	void clearMeterDispInfo();

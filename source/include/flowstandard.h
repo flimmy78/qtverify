@@ -221,9 +221,6 @@ private slots:
 
 	void slotGetInstStdMeterPulse(const QByteArray &);//瞬时流量槽函数
 	void slotGetAccumStdMeterPulse(const QByteArray &);//累积流量槽函数
-	/*----------------------------------------------------------*/
-	void slotSetRegulate();
-	/*----------------------------------------------------------*/
 signals:
 	void signalClosed();
 
@@ -259,15 +256,6 @@ private:
 
 	float getInstFlowRate(flow_rate_wdg idx);
 	float getAccumFLowVolume(flow_rate_wdg idx);
-	/*----------------------------------------------------------*/
-	QTimer *m_setRegularTimer;
-	float m_maxRate;
-	int m_degree;
-	int m_openRegulateTimes;
-	float m_currentRate;
-	void setRegulate(float currentRate, float targetRate);
-	void stopSetRegularTimer();
-	/*----------------------------------------------------------*/
 };
 
 #endif //FLOWSTANDARD_H
