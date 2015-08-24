@@ -1296,10 +1296,7 @@ int TotalStandardDlg::startVerifyFlowPoint(int order)
 	float frequence = m_paraSetReader->getFpBySeq(order).fp_freq; //order对应的频率
 	m_controlObj->askSetDriverFreq(frequence);
 
-	int route = getRouteByWdg(wdgIdx, INST_FLOW_VALUE);
-	int count = get9150ARouteI(route, m_accumStdPulse);
-	float pulse = getStdPulse(wdgIdx);
-	m_stdStartVol = count*pulse;//记录标准表初始体积(L)
+	m_stdStartVol = getAccumFLowVolume(wdgIdx);//记录标准表初始体积(L)
 	qDebug() << "start volumn: " << m_stdStartVol;
 	float stdStartT = m_pipeOutTemper;//标准表初始温度, 现采集管路出口的平均温度.(不准确需要更精确的修正)
 	float stdStartDen = m_chkAlg->getDensityByQuery(stdStartT);//标准表初始平均密度(kg/L)
@@ -1320,8 +1317,7 @@ int TotalStandardDlg::startVerifyFlowPoint(int order)
 			closeValve(portNo); //关闭order对应的阀门
 			sleep(BALANCE_STABLE_TIME); //等待3秒钟，让天平数值稳定
 
-			count = get9150ARouteI(route, m_accumStdPulse);
-			m_stdEndVol = count*pulse;//记录标准表最终体积(L)
+			m_stdEndVol = getAccumFLowVolume(wdgIdx);//记录标准表最终体积(L)
 			float stdEndT = m_pipeOutTemper;//标准表最终温度, 现采集管路出口的平均温度.(不准确需要更精确的修正)
 			float stdEndDen = m_chkAlg->getDensityByQuery(stdEndT);//标准表最终平均密度(kg/L)
 			qDebug() << "end volumn: " << m_stdEndVol;
@@ -2117,36 +2113,30 @@ void TotalStandardDlg::slotGetAccumStdMeterPulse(const QByteArray & valueArray)
 
 void TotalStandardDlg::freshInstStdMeter()
 {
-	int route = getRouteByWdg(FLOW_RATE_BIG, INST_FLOW_VALUE);
-	int count = get9017RouteI(route, m_instStdPulse);
-	float upperFlow = getStdUpperFlow(FLOW_RATE_BIG);
-	ui.lcdInstStdMeter_25->display(getInstStdValue(count, upperFlow));
-
-	route = getRouteByWdg(FLOW_RATE_MID_2, INST_FLOW_VALUE);
-	count = get9017RouteI(route, m_instStdPulse);
-	upperFlow = getStdUpperFlow(FLOW_RATE_MID_2);
-	ui.lcdInstStdMeter_10->display(getInstStdValue(count, upperFlow));
-
-	route = getRouteByWdg(FLOW_RATE_SMALL, INST_FLOW_VALUE);
-	count = get9017RouteI(route, m_instStdPulse);
-	upperFlow = getStdUpperFlow(FLOW_RATE_SMALL);
-	ui.lcdInstStdMeter_3->display(getInstStdValue(count, upperFlow));
+	ui.lcdInstStdMeter_25->display(getInstFlowRate(FLOW_RATE_BIG));
+	ui.lcdInstStdMeter_10->display(getInstFlowRate(FLOW_RATE_MID_2));
+	ui.lcdInstStdMeter_3->display(getInstFlowRate(FLOW_RATE_SMALL));
 }
 
 void TotalStandardDlg::freshAccumStdMeter()
 {
-	int route = getRouteByWdg(FLOW_RATE_BIG, INST_FLOW_VALUE);
+	ui.lcdAccumStdMeter_25->display(getAccumFLowVolume(FLOW_RATE_BIG));
+	ui.lcdAccumStdMeter_10->display(getAccumFLowVolume(FLOW_RATE_MID_2));
+	ui.lcdAccumStdMeter_3->display(getAccumFLowVolume(FLOW_RATE_SMALL));
+}
+
+float TotalStandardDlg::getInstFlowRate(flow_rate_wdg idx)
+{
+	int route = getRouteByWdg(idx, INST_FLOW_VALUE);
+	int count = get9017RouteI(route, m_instStdPulse);
+	float upperFlow = getStdUpperFlow(idx);
+	return getInstStdValue(count, upperFlow);
+}
+
+float TotalStandardDlg::getAccumFLowVolume(flow_rate_wdg idx)
+{
+	int route = getRouteByWdg(idx, ACCUM_FLOW_VALUE);
 	int count = get9150ARouteI(route, m_accumStdPulse);
-	float pulse = getStdPulse(FLOW_RATE_BIG);
-	ui.lcdAccumStdMeter_25->display(count*pulse);
-
-	route = getRouteByWdg(FLOW_RATE_MID_2, INST_FLOW_VALUE);
-	count = get9150ARouteI(route, m_accumStdPulse);
-	pulse = getStdPulse(FLOW_RATE_MID_2);
-	ui.lcdAccumStdMeter_10->display(count*pulse);
-
-	route = getRouteByWdg(FLOW_RATE_SMALL, INST_FLOW_VALUE);
-	count = get9150ARouteI(route, m_accumStdPulse);
-	pulse = getStdPulse(FLOW_RATE_SMALL);
-	ui.lcdAccumStdMeter_3->display(count*pulse);
+	float pulse = getStdPulse(idx);
+	return count*pulse;
 }

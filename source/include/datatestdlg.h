@@ -16,7 +16,7 @@
 #endif
 
 #include <QtGui/QWidget>
-
+#include <QSettings>
 #include "ui_datatestdlg.h"
 #include "comobject.h"
 
@@ -148,7 +148,40 @@ public slots:
 
 private:
 	Ui::DataTestDlgClass ui;
+	/*******************标准流量计******************************/
+	void initInstStdCom();//瞬时流量串口初始化
+	void initAccumStdCom();//累积流量串口初始化
 
+	uchar m_accumDevAddress;//当前累积流量采集所使用的力创模块设备地址, 默认为0x01
+	uchar m_instDevAddress;//当前瞬时流量采集所使用的力创模块设备地址, 默认为0x01
+
+	lcModRtuComObject *m_instantFlowCom;//瞬时流量串口对象
+	ComThread m_instantFlowThread;//瞬时流量采集线程
+	QTimer* m_instSTDMeterTimer;//瞬时流量计时器
+	QByteArray m_instStdPulse;//瞬时流量脉冲值, 需二次加工
+
+	lcModRtuComObject *m_accumulateFlowCom;//累积流量串口对象
+	ComThread m_accumFlowThread;//累积流量采集线程
+	QTimer* m_accumSTDMeterTimer;//累积流量计时器
+	QByteArray m_accumStdPulse;//16路累积流量脉冲值, 需二次加工
+
+	QList<int> m_instRouteIsRead;//瞬时流量的通道号是否被采集过
+	QList<int> m_accumRouteIsRead;//累积流量的通道号是否被采集过
+	QSettings *m_stdParam;//读取标准表设置
+
+	int getRouteByWdg(flow_rate_wdg, flow_type);//根据部件号读取标准表的通道号
+	float getStdUpperFlow(flow_rate_wdg wdgIdx);//根据部件号读取相应标准表的上限流量值
+	float getStdPulse(flow_rate_wdg wdgIdx);//根据部件号读取相应标准表的脉冲值
+
+	void freshInstStdMeter();//刷新瞬时读数
+	void freshAccumStdMeter();//刷新累积读数
+
+	float getInstFlowRate(flow_rate_wdg idx);
+	float getAccumFLowVolume(flow_rate_wdg idx);
+
+	/******************标准流量计end***************************/
+
+	/*******************电动调节阀******************************/
 	QTimer *m_setRegularTimer;
 	float m_maxRate;
 	int m_degree;
@@ -156,8 +189,19 @@ private:
 	float m_currentRate;
 	void setRegulate(float currentRate, float targetRate);
 	void stopSetRegularTimer();
+	/******************电动调节阀end***************************/
 private slots:
+	/*******************标准流量计******************************/
+	void slotAskInstPulse();//请求瞬时流量
+	void slotAskAccumPulse();//请求累积流量
+
+	void slotGetInstStdMeterPulse(const QByteArray &);//瞬时流量槽函数
+	void slotGetAccumStdMeterPulse(const QByteArray &);//累积流量槽函数
+	/******************标准流量计end***************************/
+
+	/*******************电动调节阀******************************/
 	void slotSetRegulate();
+	/******************电动调节阀end***************************/
 };
 
 #endif // DATATESTDLG_H

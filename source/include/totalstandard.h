@@ -264,6 +264,9 @@ private:
 	void freshAccumStdMeter();//Ë¢ÐÂÀÛ»ý¶ÁÊý
 
 	void exportReport();
+
+	float getInstFlowRate(flow_rate_wdg idx);
+	float getAccumFLowVolume(flow_rate_wdg idx);
 };
 
 #endif //TOTALSTANDARD_H

@@ -129,12 +129,48 @@ void DataTestDlg::closeEvent( QCloseEvent * event)
 		delete m_oldCoe;
 		m_oldCoe = NULL;
 	}
+/*****************************************************/
+	if (m_instSTDMeterTimer)
+	{
+		if (m_instSTDMeterTimer->isActive())
+		{
+			m_instSTDMeterTimer->stop();
+		}
 
+		delete m_instSTDMeterTimer;
+		m_instSTDMeterTimer = NULL;
+	}
+
+	if (m_instantFlowCom)
+	{
+		m_instantFlowThread.exit();
+		delete m_instantFlowCom;
+		m_instantFlowCom = NULL;
+	}
+
+	if (m_accumSTDMeterTimer)
+	{
+		if (m_accumSTDMeterTimer->isActive())
+		{
+			m_accumSTDMeterTimer->stop();
+		}
+		delete m_accumSTDMeterTimer;
+		m_accumSTDMeterTimer = NULL;
+	}
+
+	if (m_accumulateFlowCom)
+	{
+		m_accumFlowThread.exit();
+		delete m_accumulateFlowCom;
+		m_accumulateFlowCom = NULL;
+	}
+/*****************************************************/
 	if (m_setRegularTimer)
 	{
 		delete m_setRegularTimer;
 		m_setRegularTimer = NULL;
 	}
+/*****************************************************/
 }
 
 void DataTestDlg::showEvent(QShowEvent *event)
@@ -188,6 +224,65 @@ void DataTestDlg::showEvent(QShowEvent *event)
 
 	m_oldCoe = new MeterCoe_STR;
 	memset(m_oldCoe, 0, sizeof(MeterCoe_STR));
+
+	/********************************************/
+	m_instantFlowCom = NULL;
+	m_instSTDMeterTimer = NULL;
+	initInstStdCom();//初始化瞬时流量串口
+
+	m_accumulateFlowCom = NULL;
+	m_accumSTDMeterTimer = NULL;
+	initAccumStdCom();//初始化累积流量串口
+	/*********************************************/
+}
+
+//瞬时流量采集串口, 上位机直接采集
+void DataTestDlg::initInstStdCom()
+{
+	ComInfoStruct InstStdCom = m_readComConfig->ReadInstStdConfig();
+	m_instantFlowCom = new lcModRtuComObject();
+	m_instantFlowCom->moveToThread(&m_instantFlowThread);
+	m_instantFlowThread.start();
+	m_instantFlowCom->openLcModCom(&InstStdCom);
+
+	connect(m_instantFlowCom, SIGNAL(lcModValueIsReady(const QByteArray &)), this, SLOT(slotGetInstStdMeterPulse(const QByteArray &)));
+
+	if (m_instSTDMeterTimer == NULL)
+		m_instSTDMeterTimer = new QTimer();
+
+	connect(m_instSTDMeterTimer, SIGNAL(timeout()), this, SLOT(slotAskInstPulse()));
+	m_instSTDMeterTimer->start(TIMEOUT_STD_INST);
+}
+//累计流量采集串口, 上位机直接采集
+void DataTestDlg::initAccumStdCom()
+{
+	ComInfoStruct AccumStdCom = m_readComConfig->ReadAccumStdConfig();
+	m_accumulateFlowCom = new lcModRtuComObject();
+	m_accumulateFlowCom->moveToThread(&m_accumFlowThread);
+	m_accumFlowThread.start();
+	m_accumulateFlowCom->openLcModCom(&AccumStdCom);
+
+	connect(m_accumulateFlowCom, SIGNAL(lcModValueIsReady(const QByteArray &)), this, SLOT(slotGetAccumStdMeterPulse(const QByteArray &)));
+
+	if (m_accumSTDMeterTimer == NULL)
+		m_accumSTDMeterTimer = new QTimer();
+
+	connect(m_accumSTDMeterTimer, SIGNAL(timeout()), this, SLOT(slotAskAccumPulse()));
+	m_accumSTDMeterTimer->start(TIMEOUT_STD_ACCUM);
+}
+
+void DataTestDlg::slotAskInstPulse()
+{
+	bool ok;
+	uchar address = (uchar)m_stdParam->value("DevNo./InstDevNo").toString().toInt(&ok, 16);
+	m_instantFlowCom->ask901712RoutesCmd(address);
+}
+
+void DataTestDlg::slotAskAccumPulse()
+{
+	bool ok;
+	uchar address = (uchar)m_stdParam->value("DevNo./AccumDevNo").toString().toInt(&ok, 16);
+	m_accumulateFlowCom->ask9150A16RoutesCmd(address);
 }
 
 /*
@@ -990,3 +1085,102 @@ void DataTestDlg::setMeterOperBtnEnabled(bool flag)
 	ui.btn2ModifyFlowCoe->setEnabled(flag);
 }
 
+
+void DataTestDlg::slotGetInstStdMeterPulse(const QByteArray & valueArray)
+{
+	m_instStdPulse = valueArray;
+	freshInstStdMeter();
+	float instValue = 0.0;//瞬时流量	
+	instValue = ui.lcdInstStdMeter_3->value()+ui.lcdInstStdMeter_10->value()+ui.lcdInstStdMeter_25->value();
+	ui.lcdStdMeterFlowRate->display(instValue);
+}
+
+int DataTestDlg::getRouteByWdg(flow_rate_wdg wdgIdx, flow_type fType)
+{
+	int route = -1;
+	m_stdParam->beginReadArray("Route");
+	m_stdParam->setArrayIndex(wdgIdx);
+	switch(fType)
+	{
+	case INST_FLOW_VALUE:
+		route = m_stdParam->value("InstRoute").toInt();
+		break;
+	case ACCUM_FLOW_VALUE:
+		route = m_stdParam->value("AccumRoute").toInt();
+		break;
+	default:
+		break;
+	}	
+	m_stdParam->endArray();
+	return route;
+}
+
+float DataTestDlg::getStdUpperFlow(flow_rate_wdg wdgIdx)
+{
+	float upperFlow = 0.0f;
+
+	m_stdParam->beginReadArray("Route");
+	m_stdParam->setArrayIndex(wdgIdx);
+	int diamWdg = m_stdParam->value("Diameter").toInt();//读取管径的部件号
+	m_stdParam->endArray();
+
+	m_stdParam->beginReadArray("FlowRate");
+	m_stdParam->setArrayIndex(diamWdg);
+	upperFlow = m_stdParam->value("UpperFlow").toFloat();
+	m_stdParam->endArray();
+	return upperFlow;
+}
+
+float DataTestDlg::getStdPulse(flow_rate_wdg wdgIdx)
+{
+	float pulse = 0.0f;
+	m_stdParam->beginReadArray("Route");
+	m_stdParam->setArrayIndex(wdgIdx);
+	int diamWdg = m_stdParam->value("Diameter").toInt();//读取管径的部件号
+	m_stdParam->endArray();
+
+	m_stdParam->beginReadArray("Pulse");
+	m_stdParam->setArrayIndex(diamWdg);
+	pulse = m_stdParam->value("Pulse").toFloat();
+	m_stdParam->endArray();
+	return pulse;
+}
+
+void DataTestDlg::slotGetAccumStdMeterPulse(const QByteArray & valueArray)
+{
+	m_accumStdPulse = valueArray;
+	freshAccumStdMeter();
+	float accumValue = 0.0;//累积流量	
+	accumValue = ui.lcdAccumStdMeter_3->value()+ui.lcdAccumStdMeter_10->value()+ui.lcdAccumStdMeter_25->value();
+	ui.lcdAccumStdMeter->display(accumValue);	
+}
+
+void DataTestDlg::freshInstStdMeter()
+{
+	ui.lcdInstStdMeter_25->display(getInstFlowRate(FLOW_RATE_BIG));
+	ui.lcdInstStdMeter_10->display(getInstFlowRate(FLOW_RATE_MID_2));
+	ui.lcdInstStdMeter_3->display(getInstFlowRate(FLOW_RATE_SMALL));
+}
+
+void DataTestDlg::freshAccumStdMeter()
+{
+	ui.lcdAccumStdMeter_25->display(getAccumFLowVolume(FLOW_RATE_BIG));
+	ui.lcdAccumStdMeter_10->display(getAccumFLowVolume(FLOW_RATE_MID_2));
+	ui.lcdAccumStdMeter_3->display(getAccumFLowVolume(FLOW_RATE_SMALL));
+}
+
+float DataTestDlg::getInstFlowRate(flow_rate_wdg idx)
+{
+	int route = getRouteByWdg(idx, INST_FLOW_VALUE);
+	int count = get9017RouteI(route, m_instStdPulse);
+	float upperFlow = getStdUpperFlow(idx);
+	return getInstStdValue(count, upperFlow);
+}
+
+float DataTestDlg::getAccumFLowVolume(flow_rate_wdg idx)
+{
+	int route = getRouteByWdg(idx, ACCUM_FLOW_VALUE);
+	int count = get9150ARouteI(route, m_accumStdPulse);
+	float pulse = getStdPulse(idx);
+	return count*pulse;
+}

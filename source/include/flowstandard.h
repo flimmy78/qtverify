@@ -257,7 +257,8 @@ private:
 
 	void exportReport();
 
-
+	float getInstFlowRate(flow_rate_wdg idx);
+	float getAccumFLowVolume(flow_rate_wdg idx);
 	/*----------------------------------------------------------*/
 	QTimer *m_setRegularTimer;
 	float m_maxRate;
