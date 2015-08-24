@@ -504,8 +504,6 @@ public:
 public slots:
 	virtual bool readTemperComBuffer(QByteArray tmp);
 	virtual void makeSendBuf(stdTempCommand);
-	virtual QByteArray getSendBuf();
-	virtual QString getReadStr();
 
 };//sti1062ATempProtocol END
 
@@ -516,11 +514,9 @@ public:
 	instituteTempProtocol();
 	~instituteTempProtocol();
 
-	public slots:
-		virtual bool readTemperComBuffer(QByteArray tmp);
-		virtual void makeSendBuf(stdTempCommand);
-		virtual QByteArray getSendBuf();
-		virtual QString getReadStr();
+public slots:
+	virtual bool readTemperComBuffer(QByteArray tmp);
+	virtual void makeSendBuf(stdTempCommand);
 
 };//计量院温度计 END
 
@@ -531,11 +527,9 @@ public:
 	huayiTempProtocol();
 	~huayiTempProtocol();
 
-	public slots:
-		virtual bool readTemperComBuffer(QByteArray tmp);
-		virtual void makeSendBuf(stdTempCommand);
-		virtual QByteArray getSendBuf();
-		virtual QString getReadStr();
+public slots:
+	virtual bool readTemperComBuffer(QByteArray tmp);
+	virtual void makeSendBuf(stdTempCommand);
 
 };//华仪温度计 END
 

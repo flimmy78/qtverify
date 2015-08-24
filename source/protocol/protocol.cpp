@@ -1787,15 +1787,6 @@ bool sti1062ATempProtocol::readTemperComBuffer(QByteArray tmp)
 	return ret;
 }
 
-QByteArray sti1062ATempProtocol::getSendBuf()
-{
-	return m_sendBuf;
-}
-
-QString	sti1062ATempProtocol::getReadStr()
-{
-	return m_valueStr;
-}
 /***********************************************
 类名：sti1062ATempProtocol END
 ************************************************/
@@ -1829,22 +1820,13 @@ bool instituteTempProtocol::readTemperComBuffer(QByteArray tmp)
 	return ret;
 }
 
-QByteArray instituteTempProtocol::getSendBuf()
-{
-	return m_sendBuf;
-}
-
-QString	instituteTempProtocol::getReadStr()
-{
-	return m_valueStr;
-}
 /***********************************************
 类名：instituteTempProtocol END
 ************************************************/
 
 /***********************************************
-类名：instituteTempProtocol
-功能：标准温度计-计量院串口协议
+类名：huayiTempProtocol
+功能：标准温度计-华仪协议
 ************************************************/
 huayiTempProtocol::huayiTempProtocol()
 {
@@ -1871,15 +1853,6 @@ bool huayiTempProtocol::readTemperComBuffer(QByteArray tmp)
 	return ret;
 }
 
-QByteArray huayiTempProtocol::getSendBuf()
-{
-	return m_sendBuf;
-}
-
-QString	huayiTempProtocol::getReadStr()
-{
-	return m_valueStr;
-}
 /***********************************************
 类名：huayiTempProtocol END
 ************************************************/
