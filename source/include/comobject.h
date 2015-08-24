@@ -213,7 +213,7 @@ public:
 	~StdTempComObject();
 
 	QextSerialPort *m_tempCom;      //温度采集串口
-	sti1062ATempProtocol *m_stdTempProtocol;   //温度采集通讯协议类对象
+	StdTempProtocol *m_stdTempProtocol;   //温度采集通讯协议类对象
 signals:
 	void temperatureIsReady(const QString &tempStr); //成功获取仪器返回值
 

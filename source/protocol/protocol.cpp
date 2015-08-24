@@ -1801,6 +1801,90 @@ QString	sti1062ATempProtocol::getReadStr()
 ************************************************/
 
 /***********************************************
+类名：instituteTempProtocol
+功能：标准温度计-计量院串口协议
+************************************************/
+instituteTempProtocol::instituteTempProtocol()
+{
+}
+
+instituteTempProtocol::~instituteTempProtocol()
+{
+
+}
+
+void instituteTempProtocol::makeSendBuf(stdTempCommand command)
+{
+	
+}
+
+bool instituteTempProtocol::readTemperComBuffer(QByteArray tmp)
+{
+	int number = tmp.size();
+	//Q_ASSERT(number > 0);
+
+	bool ret = false;
+	char b = '\0';
+	
+	return ret;
+}
+
+QByteArray instituteTempProtocol::getSendBuf()
+{
+	return m_sendBuf;
+}
+
+QString	instituteTempProtocol::getReadStr()
+{
+	return m_valueStr;
+}
+/***********************************************
+类名：instituteTempProtocol END
+************************************************/
+
+/***********************************************
+类名：instituteTempProtocol
+功能：标准温度计-计量院串口协议
+************************************************/
+huayiTempProtocol::huayiTempProtocol()
+{
+}
+
+huayiTempProtocol::~huayiTempProtocol()
+{
+
+}
+
+void huayiTempProtocol::makeSendBuf(stdTempCommand command)
+{
+	
+}
+
+bool huayiTempProtocol::readTemperComBuffer(QByteArray tmp)
+{
+	int number = tmp.size();
+	//Q_ASSERT(number > 0);
+
+	bool ret = false;
+	char b = '\0';
+	
+	return ret;
+}
+
+QByteArray huayiTempProtocol::getSendBuf()
+{
+	return m_sendBuf;
+}
+
+QString	huayiTempProtocol::getReadStr()
+{
+	return m_valueStr;
+}
+/***********************************************
+类名：huayiTempProtocol END
+************************************************/
+
+/***********************************************
 类名：lcModbusRTUFunc
 功能：力创EDA9150A/9017产品, ModbusRTU通讯协议类
 ************************************************/

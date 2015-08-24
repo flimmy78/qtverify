@@ -909,11 +909,13 @@ void StdTempComObject::setStdTempVersion(int version)
 	switch (version)
 	{
 	case TEMPERATURE_TYPE_METROLOGY:
+		m_stdTempProtocol = new instituteTempProtocol();
 		break;
 	case TEMPERATURE_TYPE_WEILI:
 		m_stdTempProtocol = new sti1062ATempProtocol();
 		break;
 	case TEMPERATURE_TYPE_HUAYI:
+		m_stdTempProtocol = new huayiTempProtocol();
 		break;
 	default:
 		m_stdTempProtocol = new sti1062ATempProtocol();

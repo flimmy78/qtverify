@@ -491,6 +491,7 @@ public slots:
 #define CHNT2	QString("FETC? (@2)").toLatin1().append(ASCII_CR).append(ASCII_LF)//读取通道2的温度值
 #define CHNR2	QString("FETC?R (@2)").toLatin1().append(ASCII_CR).append(ASCII_LF)//读取通道2的电阻值
 
+
 #define DATA_STATE	0x00
 #define END_STATE	0x01
 
@@ -507,6 +508,36 @@ public slots:
 	virtual QString getReadStr();
 
 };//sti1062ATempProtocol END
+
+//计量院温度计
+class PROTOCOL_EXPORT instituteTempProtocol : public StdTempProtocol
+{
+public:
+	instituteTempProtocol();
+	~instituteTempProtocol();
+
+	public slots:
+		virtual bool readTemperComBuffer(QByteArray tmp);
+		virtual void makeSendBuf(stdTempCommand);
+		virtual QByteArray getSendBuf();
+		virtual QString getReadStr();
+
+};//计量院温度计 END
+
+//华仪温度计
+class PROTOCOL_EXPORT huayiTempProtocol : public StdTempProtocol
+{
+public:
+	huayiTempProtocol();
+	~huayiTempProtocol();
+
+	public slots:
+		virtual bool readTemperComBuffer(QByteArray tmp);
+		virtual void makeSendBuf(stdTempCommand);
+		virtual QByteArray getSendBuf();
+		virtual QString getReadStr();
+
+};//华仪温度计 END
 
 //力创EDA9150A/9017产品, ModbusRTU通讯协议
 //主要用于读取西门子电磁流量计的脉冲数
