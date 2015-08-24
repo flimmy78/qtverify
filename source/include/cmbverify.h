@@ -138,9 +138,9 @@ private:
 	/*----------读取标准温度计-----------*/
 	QTimer* m_sendTimer;//定时发送命令
 	ComThread m_tempThread; //标准温度计采集线程
-	sti1062Acommand m_StdCommand;//读取标准温度计的命令
+	stdTempCommand m_StdCommand;//读取标准温度计的命令
 	ReadComConfig* m_readComConfig;//串口设置
-	Sti1062aComObject* m_tempObj;//标准温度计串口对象
+	StdTempComObject* m_tempObj;//标准温度计串口对象
 	/*----------读取标准温度计end--------*/
 
 	/*-------------读取表数据----------*/

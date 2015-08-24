@@ -174,12 +174,14 @@ void tverparamDlg::on_btn_read_1_clicked()
 	m_temp_index = 0;
 	clearComObjs();
 	m_sendTimer = new QTimer();
-	m_tempObj = new Sti1062aComObject();
+	m_tempObj = new StdTempComObject();
+	QSettings stdconfig(getFullIniFileName("stdplasensor.ini"), QSettings::IniFormat);
+	m_tempObj->setStdTempVersion(stdconfig.value("in_use/model").toInt());
 	m_tempObj->openTemperatureCom(&tempStruct);
 	connect(m_tempObj,SIGNAL(temperatureIsReady(const QString&)), this, SLOT(setTblStd1(const QString&)));
 
 	m_chanel = m_tverparam_config->value("chkinfo/chanel").toInt();
-	m_readCommand = (m_chanel ==0) ? sti1062aT1:sti1062aT2;
+	m_readCommand = (m_chanel ==0) ? stdTempT1:stdTempT2;
 	connect(m_sendTimer, SIGNAL(timeout()), this, SLOT(sendCommands()));
 	//connect(this, SIGNAL(commandSendComplete()), m_sendTimer, SLOT(stop()));
 	m_sendTimer->start(TIMEOUT_STD_TEMPER);
@@ -194,22 +196,22 @@ void tverparamDlg::setTblStd1(const QString &tempStr)
 {
 	switch(m_readCommand)
 	{
-	case sti1062aT1:
+	case stdTempT1:
 		ui.tbl_std_1->item(1, 0)->setText(tempStr);
-		m_readCommand = sti1062aR1;
+		m_readCommand = stdTempR1;
 		break;
-	case sti1062aT2:
+	case stdTempT2:
 		ui.tbl_std_1->item(1, 0)->setText(tempStr);
-		m_readCommand = sti1062aR2;
+		m_readCommand = stdTempR2;
 		break;
-	case sti1062aR1:
+	case stdTempR1:
 		ui.tbl_std_1->item(0, 0)->setText(tempStr);
-		m_readCommand = sti1062aT1;
+		m_readCommand = stdTempT1;
 		emit commandSendComplete();
 		break;
-	case sti1062aR2:
+	case stdTempR2:
 		ui.tbl_std_1->item(0, 0)->setText(tempStr);
-		m_readCommand = sti1062aT2;
+		m_readCommand = stdTempT2;
 		emit commandSendComplete();
 		break;
 	}
@@ -243,12 +245,14 @@ void tverparamDlg::on_btn_read_2_clicked()
 	m_temp_index = 1;
 	clearComObjs();
 	m_sendTimer = new QTimer();
-	m_tempObj = new Sti1062aComObject();
+	m_tempObj = new StdTempComObject();
+	QSettings stdconfig(getFullIniFileName("stdplasensor.ini"), QSettings::IniFormat);
+	m_tempObj->setStdTempVersion(stdconfig.value("in_use/model").toInt());
 	m_tempObj->openTemperatureCom(&tempStruct);
 	connect(m_tempObj,SIGNAL(temperatureIsReady(const QString&)), this, SLOT(setTblStd2(const QString&)));
 
 	m_chanel = m_tverparam_config->value("chkinfo/chanel").toInt();
-	m_readCommand = (m_chanel ==0) ? sti1062aT1:sti1062aT2;
+	m_readCommand = (m_chanel ==0) ? stdTempT1:stdTempT2;
 	connect(m_sendTimer, SIGNAL(timeout()), this, SLOT(sendCommands()));
 	//connect(this, SIGNAL(commandSendComplete()), m_sendTimer, SLOT(stop()));
 	m_sendTimer->start(TIMEOUT_STD_TEMPER);
@@ -258,22 +262,22 @@ void tverparamDlg::setTblStd2(const QString& tempStr)
 {
 	switch(m_readCommand)
 	{
-	case sti1062aT1:
+	case stdTempT1:
 		ui.tbl_std_2->item(1, 0)->setText(tempStr);
-		m_readCommand = sti1062aR1;
+		m_readCommand = stdTempR1;
 		break;
-	case sti1062aT2:
+	case stdTempT2:
 		ui.tbl_std_2->item(1, 0)->setText(tempStr);
-		m_readCommand = sti1062aR2;
+		m_readCommand = stdTempR2;
 		break;
-	case sti1062aR1:
+	case stdTempR1:
 		ui.tbl_std_2->item(0, 0)->setText(tempStr);
-		m_readCommand = sti1062aT1;
+		m_readCommand = stdTempT1;
 		emit commandSendComplete();
 		break;
-	case sti1062aR2:
+	case stdTempR2:
 		ui.tbl_std_2->item(0, 0)->setText(tempStr);
-		m_readCommand = sti1062aT2;
+		m_readCommand = stdTempT2;
 		emit commandSendComplete();
 		break;
 	}
@@ -286,12 +290,14 @@ void tverparamDlg::on_btn_read_3_clicked()
 	m_temp_index = 2;
 	clearComObjs();
 	m_sendTimer = new QTimer();
-	m_tempObj = new Sti1062aComObject();
+	m_tempObj = new StdTempComObject();
+	QSettings stdconfig(getFullIniFileName("stdplasensor.ini"), QSettings::IniFormat);
+	m_tempObj->setStdTempVersion(stdconfig.value("in_use/model").toInt());
 	m_tempObj->openTemperatureCom(&tempStruct);
 	connect(m_tempObj,SIGNAL(temperatureIsReady(const QString&)), this, SLOT(setTblStd3(const QString&)));
 
 	m_chanel = m_tverparam_config->value("chkinfo/chanel").toInt();
-	m_readCommand = (m_chanel ==0) ? sti1062aT1:sti1062aT2;
+	m_readCommand = (m_chanel ==0) ? stdTempT1:stdTempT2;
 	connect(m_sendTimer, SIGNAL(timeout()), this, SLOT(sendCommands()));
 	//connect(this, SIGNAL(commandSendComplete()), m_sendTimer, SLOT(stop()));
 	m_sendTimer->start(TIMEOUT_STD_TEMPER);
@@ -301,22 +307,22 @@ void tverparamDlg::setTblStd3(const QString& tempStr)
 {
 	switch(m_readCommand)
 	{
-	case sti1062aT1:
+	case stdTempT1:
 		ui.tbl_std_3->item(1, 0)->setText(tempStr);
-		m_readCommand = sti1062aR1;
+		m_readCommand = stdTempR1;
 		break;
-	case sti1062aT2:
+	case stdTempT2:
 		ui.tbl_std_3->item(1, 0)->setText(tempStr);
-		m_readCommand = sti1062aR2;
+		m_readCommand = stdTempR2;
 		break;
-	case sti1062aR1:
+	case stdTempR1:
 		ui.tbl_std_3->item(0, 0)->setText(tempStr);
-		m_readCommand = sti1062aT1;
+		m_readCommand = stdTempT1;
 		emit commandSendComplete();
 		break;
-	case sti1062aR2:
+	case stdTempR2:
 		ui.tbl_std_3->item(0, 0)->setText(tempStr);
-		m_readCommand = sti1062aT2;
+		m_readCommand = stdTempT2;
 		emit commandSendComplete();
 		break;
 	}

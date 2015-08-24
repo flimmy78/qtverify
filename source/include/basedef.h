@@ -177,8 +177,13 @@ enum table_columns
 #define BALANCE_TYPE_Bizerba    2   //Bizerba(碧彩)
 #define BALANCE_TYPE_Mettler    3   //Mettler Toledo
 
+//温度计类型
+#define TEMPERATURE_TYPE_METROLOGY  0//计量院
+#define TEMPERATURE_TYPE_WEILI		1//唯立
+#define TEMPERATURE_TYPE_HUAYI		2//华仪
+
 #define POLY	0xA001//CRC16校验中的生成多项式
-#define WORDLEN 8
+#define WORDLEN 8	  //一个字节的比特数
 #define LC_EDA_REG_BYTES		2//力创EDA9150A和EDA9017模块中, 每个寄存器的字节数
 #define EDA9150A_ROUTE_BYTES	4//力创EDA9150A模块中, 每个通道对应的字节数
 #define EDA9017_ROUTE_BYTES		2//力创EDA9017模块中, 每个通道对应的字节数

@@ -414,13 +414,15 @@ void TotalStandardDlg::initTemperatureCom()
 void TotalStandardDlg::initStdTemperatureCom()
 {
 	ComInfoStruct tempStruct = m_readComConfig->ReadStdTempConfig();
-	m_stdTempObj = new Sti1062aComObject();
+	m_stdTempObj = new StdTempComObject();
+	QSettings stdconfig(getFullIniFileName("stdplasensor.ini"), QSettings::IniFormat);
+	m_stdTempObj->setStdTempVersion(stdconfig.value("in_use/model").toInt());
 	m_stdTempObj->moveToThread(&m_stdTempThread);
 	m_stdTempThread.start();
 	m_stdTempObj->openTemperatureCom(&tempStruct);
 	connect(m_stdTempObj, SIGNAL(temperatureIsReady(const QString &)), this, SLOT(slotFreshStdTempValue(const QString &)));
 
-	m_stdTempCommand = sti1062aT1;
+	m_stdTempCommand = stdTempT1;
 	m_stdTempTimer = new QTimer();
 	connect(m_stdTempTimer, SIGNAL(timeout()), this, SLOT(slotAskStdTemperature()));
 	
@@ -432,20 +434,20 @@ void TotalStandardDlg::slotAskStdTemperature()
 	m_stdTempObj->writeStdTempComBuffer(m_stdTempCommand);
 	switch (m_stdTempCommand)
 	{
-	case sti1062aT1:
-		m_stdTempCommand = sti1062aT2;
+	case stdTempT1:
+		m_stdTempCommand = stdTempT2;
 		break;
-	case sti1062aT2:
-		m_stdTempCommand = sti1062aR1;
+	case stdTempT2:
+		m_stdTempCommand = stdTempR1;
 		break;
-	case sti1062aR1:
-		m_stdTempCommand = sti1062aR2;
+	case stdTempR1:
+		m_stdTempCommand = stdTempR2;
 		break;
-	case sti1062aR2:
-		m_stdTempCommand = sti1062aT1;
+	case stdTempR2:
+		m_stdTempCommand = stdTempT1;
 		break;
 	default:
-		m_stdTempCommand = sti1062aT1;
+		m_stdTempCommand = stdTempT1;
 		break;
 	}
 }
@@ -547,16 +549,16 @@ void TotalStandardDlg::slotFreshStdTempValue(const QString& stdTempStr)
 	// 	qDebug()<<"stdTempStr ="<<stdTempStr<<"; m_stdTempCommand ="<<m_stdTempCommand;
 	switch (m_stdTempCommand)
 	{
-	case sti1062aT1: 
+	case stdTempT1: 
 		ui.lnEditOutStdResist->setText(stdTempStr);
 		break;
-	case sti1062aT2: 
+	case stdTempT2: 
 		ui.lnEditInStdTemp->setText(stdTempStr);
 		break;
-	case sti1062aR1: 
+	case stdTempR1: 
 		ui.lnEditOutStdTemp->setText(stdTempStr);
 		break;
-	case sti1062aR2: 
+	case stdTempR2: 
 		ui.lnEditInStdResist->setText(stdTempStr);
 		break;
 	default:

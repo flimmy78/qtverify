@@ -67,13 +67,13 @@ private:
 	tvercompparamDlg *m_PlaCompParamDlg;
 
 	QTimer* m_sendTimer;//定时发送命令
-	sti1062Acommand m_readCommand;
+	stdTempCommand m_readCommand;
 
 	QSettings* m_tvercomp_config;//温度计比较法参数设置
 	QSettings* m_std_pla_config;//标准温度计参数
 	QSettings* m_chk_pla_config;//被检温度计参数
 	ReadComConfig* m_readComConfig;//串口设置
-	Sti1062aComObject* m_tempObj;//标准温度计串口对象
+	StdTempComObject* m_tempObj;//标准温度计串口对象
 
 	T_Platinum_Verify_Record_PTR m_PlaVerifyRecPtr;//检测结果记录
 	QString m_timeStamp; //时间戳

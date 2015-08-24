@@ -128,10 +128,28 @@ void stdplasensorDlg::on_btn_model_save_clicked()
 		QString class_name = QString::fromAscii( obj->metaObject()->className() );
 		if (class_name == "QRadioButton")
 		{
-			if (((QRadioButton*)obj)->isChecked())
+			QRadioButton *rBtn = (QRadioButton*)obj;
+			if (rBtn->isChecked())
 			{
 				m_config->beginGroup("in_use");
-				m_config->setValue("model", ((QRadioButton*)obj)->text());
+				QString str = rBtn->objectName().toLower();
+
+				if (str == "rbtn_inst")
+				{
+					m_config->setValue("model", TEMPERATURE_TYPE_METROLOGY);
+				}
+				else if (str == "rbtn_weili")
+				{
+					m_config->setValue("model", TEMPERATURE_TYPE_WEILI);
+				}
+				else if (str == "rbtn_huayi")
+				{
+					m_config->setValue("model", TEMPERATURE_TYPE_HUAYI);
+				}
+				else
+				{
+					m_config->setValue("model", -1);
+				}
 				m_config->endGroup();
 				return;
 			}
@@ -181,19 +199,21 @@ void stdplasensorDlg::readpt100config()
 
 void stdplasensorDlg::readmodelconfig()
 {
-	const QObjectList list=ui.gBox_model->children();
-	foreach(QObject *obj, list)
+	int model = m_config->value("in_use/model").toInt();
+	switch(model)
 	{
-		QString class_name = QString::fromAscii( obj->metaObject()->className() );
-		if (class_name == "QRadioButton")
-		{
-			if (((QRadioButton*)obj)->text() == m_config->value("in_use/model").toString())
-			{
-				((QRadioButton*)obj)->setChecked(true);
-				return;
-			}			
-		}
-	}
+	case TEMPERATURE_TYPE_METROLOGY:
+		ui.rbtn_inst->setChecked(true);
+		break;
+	case TEMPERATURE_TYPE_WEILI:
+		ui.rbtn_weili->setChecked(true);
+		break;
+	case TEMPERATURE_TYPE_HUAYI:
+		ui.rbtn_huayi->setChecked(true);
+		break;
+	default:
+		break;
+	}	
 }
 
 void stdplasensorDlg::readInUse()

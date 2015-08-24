@@ -46,9 +46,9 @@ public:
 	QTimer *m_tempTimer;  //计时器:用于请求管路温度
 
 	ComThread m_stdTempThread;  //标准温度采集线程
-	Sti1062aComObject *m_stdTempObj;
+	StdTempComObject *m_stdTempObj;
 	QTimer *m_stdTempTimer;  //计时器:用于请求标准温度
-	sti1062Acommand m_stdTempCommand;
+	stdTempCommand m_stdTempCommand;
 
 	ComThread m_valveThread;   //阀门控制线程
 	ControlComObject *m_controlObj;

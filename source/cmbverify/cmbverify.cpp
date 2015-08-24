@@ -623,13 +623,15 @@ void CmbVerifyDlg::on_btn_collection_clicked()
 
 	clearTempComObjs();
 	m_sendTimer = new QTimer();
-	m_tempObj = new Sti1062aComObject();
+	m_tempObj = new StdTempComObject();
+	QSettings stdconfig(getFullIniFileName("stdplasensor.ini"), QSettings::IniFormat);
+	m_tempObj->setStdTempVersion(stdconfig.value("in_use/model").toInt());
 	m_tempObj->moveToThread(&m_tempThread);
 	m_tempThread.start();
 	m_tempObj->openTemperatureCom(&tempStruct);
 	connect(m_tempObj,SIGNAL(temperatureIsReady(const QString&)), this, SLOT(setStdTempUi(const QString&)));
 
-	m_StdCommand = sti1062aT1;
+	m_StdCommand = stdTempT1;
 	connect(m_sendTimer, SIGNAL(timeout()), this, SLOT(sendCommands()));
 	m_sendTimer->start(TIMEOUT_STD_TEMPER);
 }
@@ -652,21 +654,21 @@ void CmbVerifyDlg::setStdTempUi(const QString &tempStr)
 {
 	switch(m_StdCommand)
 	{
-		case sti1062aT1:
+		case stdTempT1:
 			ui.lineEdit_std_in_t->setText(tempStr);
-			m_StdCommand = sti1062aT2;
+			m_StdCommand = stdTempT2;
 			break;
-		case sti1062aT2:
+		case stdTempT2:
 			ui.lineEdit_std_out_t->setText(tempStr);
-			m_StdCommand = sti1062aR1;
+			m_StdCommand = stdTempR1;
 			break;
-		case sti1062aR1:
+		case stdTempR1:
 			ui.lineEdit_std_in_r->setText(tempStr);
-			m_StdCommand = sti1062aR2;
+			m_StdCommand = stdTempR2;
 			break;
-		case sti1062aR2:
+		case stdTempR2:
 			ui.lineEdit_std_out_r->setText(tempStr);
-			m_StdCommand = sti1062aT1;
+			m_StdCommand = stdTempT1;
 			break;
 	}
 }

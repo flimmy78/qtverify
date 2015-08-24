@@ -1663,6 +1663,38 @@ void HuiZhongMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigE
 }
 
 /***********************************************
+父类：StdTempProtocol
+功能：标准温度计协议父类
+************************************************/
+StdTempProtocol::StdTempProtocol()
+{
+}
+
+StdTempProtocol::~StdTempProtocol()
+{
+}
+
+bool StdTempProtocol::readTemperComBuffer(QByteArray tmp)
+{
+	return true;
+}
+
+void StdTempProtocol::makeSendBuf(stdTempCommand)
+{
+
+}
+
+QByteArray StdTempProtocol::getSendBuf()
+{
+	return m_sendBuf;
+}
+
+QString	StdTempProtocol::getReadStr()
+{
+	return m_valueStr;
+}
+
+/***********************************************
 类名：sti1062ATempProtocol
 功能：标准温度计-STI-1062A串口协议
 ************************************************/
@@ -1676,37 +1708,32 @@ sti1062ATempProtocol::~sti1062ATempProtocol()
 
 }
 
-void sti1062ATempProtocol::makeSendBuf(sti1062Acommand command)
+void sti1062ATempProtocol::makeSendBuf(stdTempCommand command)
 {
 	switch(command)
 	{
-	case sti1062aT12:
+	case stdTempT12:
 		m_sendBuf = CHNT12;
 		break;
-	case sti1062aR12:
+	case stdTempR12:
 		m_sendBuf = CHNR12;
 		break;
-	case sti1062aT1:
+	case stdTempT1:
 		m_sendBuf = CHNT1;
 		break;
-	case sti1062aT2:
+	case stdTempT2:
 		m_sendBuf = CHNT2;
 		break;
-	case sti1062aR1:
+	case stdTempR1:
 		m_sendBuf = CHNR1;
 		break;
-	case sti1062aR2:
+	case stdTempR2:
 		m_sendBuf = CHNR2;
 		break;
 	default:
 		m_sendBuf = CHNT12;
 		break;
 	}
-}
-
-QByteArray sti1062ATempProtocol::getSendBuf()
-{
-	return m_sendBuf;
 }
 
 bool sti1062ATempProtocol::readTemperComBuffer(QByteArray tmp)
@@ -1760,7 +1787,12 @@ bool sti1062ATempProtocol::readTemperComBuffer(QByteArray tmp)
 	return ret;
 }
 
-QString sti1062ATempProtocol::getReadStr()
+QByteArray sti1062ATempProtocol::getSendBuf()
+{
+	return m_sendBuf;
+}
+
+QString	sti1062ATempProtocol::getReadStr()
 {
 	return m_valueStr;
 }
