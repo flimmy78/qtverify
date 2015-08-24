@@ -189,7 +189,7 @@
     <message>
         <location filename="../totalweight.ui" line="162"/>
         <source>Collect</source>
-        <translation></translation>
+        <translation>Collect</translation>
     </message>
     <message>
         <location filename="../totalweight.ui" line="371"/>

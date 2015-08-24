@@ -44,12 +44,12 @@
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;R&lt;span style=&quot; vertical-align:sub;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/chkplasensor.ui" line="174"/>
+        <location filename="../ui/chkplasensor.ui" line="189"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;a&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;a&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/chkplasensor.ui" line="218"/>
+        <location filename="../ui/chkplasensor.ui" line="249"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;b&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;b&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -62,22 +62,22 @@
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;bx10&lt;span style=&quot; vertical-align:super;&quot;&gt;-7&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/chkplasensor.ui" line="250"/>
+        <location filename="../ui/chkplasensor.ui" line="309"/>
         <source>Calc</source>
         <translation>计算</translation>
     </message>
     <message>
-        <location filename="../ui/chkplasensor.ui" line="270"/>
+        <location filename="../ui/chkplasensor.ui" line="341"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../ui/chkplasensor.ui" line="290"/>
+        <location filename="../ui/chkplasensor.ui" line="373"/>
         <source>Default</source>
         <translation>默认</translation>
     </message>
     <message>
-        <location filename="../ui/chkplasensor.ui" line="310"/>
+        <location filename="../ui/chkplasensor.ui" line="411"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
@@ -85,24 +85,27 @@
 <context>
     <name>ParaSetDlg</name>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="417"/>
+        <location filename="../source/parasetdlg.cpp" line="374"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="417"/>
+        <location filename="../source/parasetdlg.cpp" line="374"/>
         <source>verify sequence is invalid!</source>
         <translation>检定顺序设置有误！</translation>
     </message>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="446"/>
-        <source>OK</source>
-        <translation>OK</translation>
+        <location filename="../source/parasetdlg.cpp" line="401"/>
+        <source>Save successfully!</source>
+        <translation>保存成功!</translation>
     </message>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="446"/>
+        <source>OK</source>
+        <translation type="obsolete">OK</translation>
+    </message>
+    <message>
         <source>Saving configurations successfully!</source>
-        <translation>保存设置成功！</translation>
+        <translation type="obsolete">保存设置成功！</translation>
     </message>
 </context>
 <context>
@@ -483,12 +486,12 @@
         <translation>s</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1724"/>
+        <location filename="../ui/parasetdlg.ui" line="1731"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1737"/>
+        <location filename="../ui/parasetdlg.ui" line="1744"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
@@ -509,99 +512,80 @@
 <context>
     <name>QextSerialPort</name>
     <message>
-        <location filename="../../../include/qextserial/qextserialport.cpp" line="723"/>
         <source>No Error has occurred</source>
-        <translation>无错误</translation>
+        <translation type="obsolete">无错误</translation>
     </message>
     <message>
-        <location filename="../../../include/qextserial/qextserialport.cpp" line="725"/>
         <source>Invalid file descriptor (port was not opened correctly)</source>
-        <translation>无效的文件标识符(端口没有正确打开)</translation>
+        <translation type="obsolete">无效的文件标识符(端口没有正确打开)</translation>
     </message>
     <message>
-        <location filename="../../../include/qextserial/qextserialport.cpp" line="727"/>
         <source>Unable to allocate memory tables (POSIX)</source>
-        <translation>内存申请失败(POSIX)</translation>
+        <translation type="obsolete">内存申请失败(POSIX)</translation>
     </message>
     <message>
-        <location filename="../../../include/qextserial/qextserialport.cpp" line="729"/>
         <source>Caught a non-blocked signal (POSIX)</source>
-        <translation>捕获非块信号(POSIX)</translation>
+        <translation type="obsolete">捕获非块信号(POSIX)</translation>
     </message>
     <message>
-        <location filename="../../../include/qextserial/qextserialport.cpp" line="731"/>
         <source>Operation timed out (POSIX)</source>
-        <translation>操作超时(POSIX)</translation>
+        <translation type="obsolete">操作超时(POSIX)</translation>
     </message>
     <message>
-        <location filename="../../../include/qextserial/qextserialport.cpp" line="733"/>
         <source>The file opened by the port is not a valid device</source>
-        <translation>被打开的设备无效</translation>
+        <translation type="obsolete">被打开的设备无效</translation>
     </message>
     <message>
-        <location filename="../../../include/qextserial/qextserialport.cpp" line="735"/>
         <source>The port detected a break condition</source>
-        <translation>端口探测到一个中断</translation>
+        <translation type="obsolete">端口探测到一个中断</translation>
     </message>
     <message>
-        <location filename="../../../include/qextserial/qextserialport.cpp" line="737"/>
         <source>The port detected a framing error (usually caused by incorrect baud rate settings)</source>
-        <translation>端口捕获一个帧错误(一般为波特率设置有误造成)</translation>
+        <translation type="obsolete">端口捕获一个帧错误(一般为波特率设置有误造成)</translation>
     </message>
     <message>
-        <location filename="../../../include/qextserial/qextserialport.cpp" line="739"/>
         <source>There was an I/O error while communicating with the port</source>
-        <translation>输入输出错误</translation>
+        <translation type="obsolete">输入输出错误</translation>
     </message>
     <message>
-        <location filename="../../../include/qextserial/qextserialport.cpp" line="741"/>
         <source>Character buffer overrun</source>
-        <translation>缓冲区溢出</translation>
+        <translation type="obsolete">缓冲区溢出</translation>
     </message>
     <message>
-        <location filename="../../../include/qextserial/qextserialport.cpp" line="743"/>
         <source>Receive buffer overflow</source>
-        <translation>接收缓冲区溢出</translation>
+        <translation type="obsolete">接收缓冲区溢出</translation>
     </message>
     <message>
-        <location filename="../../../include/qextserial/qextserialport.cpp" line="745"/>
         <source>The port detected a parity error in the received data</source>
-        <translation>接收到的数据校验错误</translation>
+        <translation type="obsolete">接收到的数据校验错误</translation>
     </message>
     <message>
-        <location filename="../../../include/qextserial/qextserialport.cpp" line="747"/>
         <source>Transmit buffer overflow</source>
-        <translation>发送缓冲区溢出</translation>
+        <translation type="obsolete">发送缓冲区溢出</translation>
     </message>
     <message>
-        <location filename="../../../include/qextserial/qextserialport.cpp" line="749"/>
         <source>General read operation failure</source>
-        <translation>读操作失败</translation>
+        <translation type="obsolete">读操作失败</translation>
     </message>
     <message>
-        <location filename="../../../include/qextserial/qextserialport.cpp" line="751"/>
         <source>General write operation failure</source>
-        <translation>写操作失败</translation>
+        <translation type="obsolete">写操作失败</translation>
     </message>
     <message>
-        <location filename="../../../include/qextserial/qextserialport.cpp" line="753"/>
         <source>The %1 file doesn&apos;t exists</source>
-        <translation>文件 %1不存在</translation>
+        <translation type="obsolete">文件 %1不存在</translation>
     </message>
     <message>
-        <location filename="../../../include/qextserial/qextserialport.cpp" line="755"/>
         <source>Permission denied</source>
-        <translation>无权限</translation>
+        <translation type="obsolete">无权限</translation>
     </message>
     <message>
-        <location filename="../../../include/qextserial/qextserialport.cpp" line="757"/>
         <source>Device is already locked</source>
-        <translation>设备被锁定</translation>
+        <translation type="obsolete">设备被锁定</translation>
     </message>
     <message>
-        <location filename="../../../include/qextserial/qextserialport.cpp" line="759"/>
         <source>Unknown error: %1</source>
-        <translation>未知错误:  %1</translation>
+        <translation type="obsolete">未知错误:  %1</translation>
     </message>
 </context>
 <context>
@@ -634,32 +618,32 @@
         <location filename="../ui/setcomdlg.ui" line="344"/>
         <location filename="../ui/setcomdlg.ui" line="649"/>
         <location filename="../ui/setcomdlg.ui" line="954"/>
-        <location filename="../ui/setcomdlg.ui" line="1392"/>
-        <location filename="../ui/setcomdlg.ui" line="1697"/>
-        <location filename="../ui/setcomdlg.ui" line="2026"/>
-        <location filename="../ui/setcomdlg.ui" line="2337"/>
-        <location filename="../ui/setcomdlg.ui" line="2648"/>
-        <location filename="../ui/setcomdlg.ui" line="2959"/>
-        <location filename="../ui/setcomdlg.ui" line="3270"/>
-        <location filename="../ui/setcomdlg.ui" line="3581"/>
-        <location filename="../ui/setcomdlg.ui" line="3892"/>
-        <location filename="../ui/setcomdlg.ui" line="4203"/>
-        <location filename="../ui/setcomdlg.ui" line="4514"/>
-        <location filename="../ui/setcomdlg.ui" line="4825"/>
-        <location filename="../ui/setcomdlg.ui" line="5136"/>
-        <location filename="../ui/setcomdlg.ui" line="5447"/>
-        <location filename="../ui/setcomdlg.ui" line="5758"/>
-        <location filename="../ui/setcomdlg.ui" line="6069"/>
-        <location filename="../ui/setcomdlg.ui" line="6380"/>
-        <location filename="../ui/setcomdlg.ui" line="6691"/>
-        <location filename="../ui/setcomdlg.ui" line="7002"/>
-        <location filename="../ui/setcomdlg.ui" line="7313"/>
-        <location filename="../ui/setcomdlg.ui" line="7624"/>
-        <location filename="../ui/setcomdlg.ui" line="7935"/>
-        <location filename="../ui/setcomdlg.ui" line="8246"/>
-        <location filename="../ui/setcomdlg.ui" line="8557"/>
-        <location filename="../ui/setcomdlg.ui" line="8868"/>
-        <location filename="../ui/setcomdlg.ui" line="9179"/>
+        <location filename="../ui/setcomdlg.ui" line="1396"/>
+        <location filename="../ui/setcomdlg.ui" line="1701"/>
+        <location filename="../ui/setcomdlg.ui" line="2030"/>
+        <location filename="../ui/setcomdlg.ui" line="2341"/>
+        <location filename="../ui/setcomdlg.ui" line="2652"/>
+        <location filename="../ui/setcomdlg.ui" line="2963"/>
+        <location filename="../ui/setcomdlg.ui" line="3274"/>
+        <location filename="../ui/setcomdlg.ui" line="3585"/>
+        <location filename="../ui/setcomdlg.ui" line="3896"/>
+        <location filename="../ui/setcomdlg.ui" line="4207"/>
+        <location filename="../ui/setcomdlg.ui" line="4518"/>
+        <location filename="../ui/setcomdlg.ui" line="4829"/>
+        <location filename="../ui/setcomdlg.ui" line="5140"/>
+        <location filename="../ui/setcomdlg.ui" line="5451"/>
+        <location filename="../ui/setcomdlg.ui" line="5762"/>
+        <location filename="../ui/setcomdlg.ui" line="6073"/>
+        <location filename="../ui/setcomdlg.ui" line="6384"/>
+        <location filename="../ui/setcomdlg.ui" line="6695"/>
+        <location filename="../ui/setcomdlg.ui" line="7006"/>
+        <location filename="../ui/setcomdlg.ui" line="7317"/>
+        <location filename="../ui/setcomdlg.ui" line="7628"/>
+        <location filename="../ui/setcomdlg.ui" line="7939"/>
+        <location filename="../ui/setcomdlg.ui" line="8250"/>
+        <location filename="../ui/setcomdlg.ui" line="8561"/>
+        <location filename="../ui/setcomdlg.ui" line="8872"/>
+        <location filename="../ui/setcomdlg.ui" line="9183"/>
         <source>Com</source>
         <translation>串口</translation>
     </message>
@@ -668,32 +652,32 @@
         <location filename="../ui/setcomdlg.ui" line="352"/>
         <location filename="../ui/setcomdlg.ui" line="657"/>
         <location filename="../ui/setcomdlg.ui" line="962"/>
-        <location filename="../ui/setcomdlg.ui" line="1400"/>
-        <location filename="../ui/setcomdlg.ui" line="1705"/>
-        <location filename="../ui/setcomdlg.ui" line="2034"/>
-        <location filename="../ui/setcomdlg.ui" line="2345"/>
-        <location filename="../ui/setcomdlg.ui" line="2656"/>
-        <location filename="../ui/setcomdlg.ui" line="2967"/>
-        <location filename="../ui/setcomdlg.ui" line="3278"/>
-        <location filename="../ui/setcomdlg.ui" line="3589"/>
-        <location filename="../ui/setcomdlg.ui" line="3900"/>
-        <location filename="../ui/setcomdlg.ui" line="4211"/>
-        <location filename="../ui/setcomdlg.ui" line="4522"/>
-        <location filename="../ui/setcomdlg.ui" line="4833"/>
-        <location filename="../ui/setcomdlg.ui" line="5144"/>
-        <location filename="../ui/setcomdlg.ui" line="5455"/>
-        <location filename="../ui/setcomdlg.ui" line="5766"/>
-        <location filename="../ui/setcomdlg.ui" line="6077"/>
-        <location filename="../ui/setcomdlg.ui" line="6388"/>
-        <location filename="../ui/setcomdlg.ui" line="6699"/>
-        <location filename="../ui/setcomdlg.ui" line="7010"/>
-        <location filename="../ui/setcomdlg.ui" line="7321"/>
-        <location filename="../ui/setcomdlg.ui" line="7632"/>
-        <location filename="../ui/setcomdlg.ui" line="7943"/>
-        <location filename="../ui/setcomdlg.ui" line="8254"/>
-        <location filename="../ui/setcomdlg.ui" line="8565"/>
-        <location filename="../ui/setcomdlg.ui" line="8876"/>
-        <location filename="../ui/setcomdlg.ui" line="9187"/>
+        <location filename="../ui/setcomdlg.ui" line="1404"/>
+        <location filename="../ui/setcomdlg.ui" line="1709"/>
+        <location filename="../ui/setcomdlg.ui" line="2038"/>
+        <location filename="../ui/setcomdlg.ui" line="2349"/>
+        <location filename="../ui/setcomdlg.ui" line="2660"/>
+        <location filename="../ui/setcomdlg.ui" line="2971"/>
+        <location filename="../ui/setcomdlg.ui" line="3282"/>
+        <location filename="../ui/setcomdlg.ui" line="3593"/>
+        <location filename="../ui/setcomdlg.ui" line="3904"/>
+        <location filename="../ui/setcomdlg.ui" line="4215"/>
+        <location filename="../ui/setcomdlg.ui" line="4526"/>
+        <location filename="../ui/setcomdlg.ui" line="4837"/>
+        <location filename="../ui/setcomdlg.ui" line="5148"/>
+        <location filename="../ui/setcomdlg.ui" line="5459"/>
+        <location filename="../ui/setcomdlg.ui" line="5770"/>
+        <location filename="../ui/setcomdlg.ui" line="6081"/>
+        <location filename="../ui/setcomdlg.ui" line="6392"/>
+        <location filename="../ui/setcomdlg.ui" line="6703"/>
+        <location filename="../ui/setcomdlg.ui" line="7014"/>
+        <location filename="../ui/setcomdlg.ui" line="7325"/>
+        <location filename="../ui/setcomdlg.ui" line="7636"/>
+        <location filename="../ui/setcomdlg.ui" line="7947"/>
+        <location filename="../ui/setcomdlg.ui" line="8258"/>
+        <location filename="../ui/setcomdlg.ui" line="8569"/>
+        <location filename="../ui/setcomdlg.ui" line="8880"/>
+        <location filename="../ui/setcomdlg.ui" line="9191"/>
         <source>COM1</source>
         <translation>COM1</translation>
     </message>
@@ -702,32 +686,32 @@
         <location filename="../ui/setcomdlg.ui" line="357"/>
         <location filename="../ui/setcomdlg.ui" line="662"/>
         <location filename="../ui/setcomdlg.ui" line="967"/>
-        <location filename="../ui/setcomdlg.ui" line="1405"/>
-        <location filename="../ui/setcomdlg.ui" line="1710"/>
-        <location filename="../ui/setcomdlg.ui" line="2039"/>
-        <location filename="../ui/setcomdlg.ui" line="2350"/>
-        <location filename="../ui/setcomdlg.ui" line="2661"/>
-        <location filename="../ui/setcomdlg.ui" line="2972"/>
-        <location filename="../ui/setcomdlg.ui" line="3283"/>
-        <location filename="../ui/setcomdlg.ui" line="3594"/>
-        <location filename="../ui/setcomdlg.ui" line="3905"/>
-        <location filename="../ui/setcomdlg.ui" line="4216"/>
-        <location filename="../ui/setcomdlg.ui" line="4527"/>
-        <location filename="../ui/setcomdlg.ui" line="4838"/>
-        <location filename="../ui/setcomdlg.ui" line="5149"/>
-        <location filename="../ui/setcomdlg.ui" line="5460"/>
-        <location filename="../ui/setcomdlg.ui" line="5771"/>
-        <location filename="../ui/setcomdlg.ui" line="6082"/>
-        <location filename="../ui/setcomdlg.ui" line="6393"/>
-        <location filename="../ui/setcomdlg.ui" line="6704"/>
-        <location filename="../ui/setcomdlg.ui" line="7015"/>
-        <location filename="../ui/setcomdlg.ui" line="7326"/>
-        <location filename="../ui/setcomdlg.ui" line="7637"/>
-        <location filename="../ui/setcomdlg.ui" line="7948"/>
-        <location filename="../ui/setcomdlg.ui" line="8259"/>
-        <location filename="../ui/setcomdlg.ui" line="8570"/>
-        <location filename="../ui/setcomdlg.ui" line="8881"/>
-        <location filename="../ui/setcomdlg.ui" line="9192"/>
+        <location filename="../ui/setcomdlg.ui" line="1409"/>
+        <location filename="../ui/setcomdlg.ui" line="1714"/>
+        <location filename="../ui/setcomdlg.ui" line="2043"/>
+        <location filename="../ui/setcomdlg.ui" line="2354"/>
+        <location filename="../ui/setcomdlg.ui" line="2665"/>
+        <location filename="../ui/setcomdlg.ui" line="2976"/>
+        <location filename="../ui/setcomdlg.ui" line="3287"/>
+        <location filename="../ui/setcomdlg.ui" line="3598"/>
+        <location filename="../ui/setcomdlg.ui" line="3909"/>
+        <location filename="../ui/setcomdlg.ui" line="4220"/>
+        <location filename="../ui/setcomdlg.ui" line="4531"/>
+        <location filename="../ui/setcomdlg.ui" line="4842"/>
+        <location filename="../ui/setcomdlg.ui" line="5153"/>
+        <location filename="../ui/setcomdlg.ui" line="5464"/>
+        <location filename="../ui/setcomdlg.ui" line="5775"/>
+        <location filename="../ui/setcomdlg.ui" line="6086"/>
+        <location filename="../ui/setcomdlg.ui" line="6397"/>
+        <location filename="../ui/setcomdlg.ui" line="6708"/>
+        <location filename="../ui/setcomdlg.ui" line="7019"/>
+        <location filename="../ui/setcomdlg.ui" line="7330"/>
+        <location filename="../ui/setcomdlg.ui" line="7641"/>
+        <location filename="../ui/setcomdlg.ui" line="7952"/>
+        <location filename="../ui/setcomdlg.ui" line="8263"/>
+        <location filename="../ui/setcomdlg.ui" line="8574"/>
+        <location filename="../ui/setcomdlg.ui" line="8885"/>
+        <location filename="../ui/setcomdlg.ui" line="9196"/>
         <source>COM2</source>
         <translation>COM2</translation>
     </message>
@@ -736,32 +720,32 @@
         <location filename="../ui/setcomdlg.ui" line="362"/>
         <location filename="../ui/setcomdlg.ui" line="667"/>
         <location filename="../ui/setcomdlg.ui" line="972"/>
-        <location filename="../ui/setcomdlg.ui" line="1410"/>
-        <location filename="../ui/setcomdlg.ui" line="1715"/>
-        <location filename="../ui/setcomdlg.ui" line="2044"/>
-        <location filename="../ui/setcomdlg.ui" line="2355"/>
-        <location filename="../ui/setcomdlg.ui" line="2666"/>
-        <location filename="../ui/setcomdlg.ui" line="2977"/>
-        <location filename="../ui/setcomdlg.ui" line="3288"/>
-        <location filename="../ui/setcomdlg.ui" line="3599"/>
-        <location filename="../ui/setcomdlg.ui" line="3910"/>
-        <location filename="../ui/setcomdlg.ui" line="4221"/>
-        <location filename="../ui/setcomdlg.ui" line="4532"/>
-        <location filename="../ui/setcomdlg.ui" line="4843"/>
-        <location filename="../ui/setcomdlg.ui" line="5154"/>
-        <location filename="../ui/setcomdlg.ui" line="5465"/>
-        <location filename="../ui/setcomdlg.ui" line="5776"/>
-        <location filename="../ui/setcomdlg.ui" line="6087"/>
-        <location filename="../ui/setcomdlg.ui" line="6398"/>
-        <location filename="../ui/setcomdlg.ui" line="6709"/>
-        <location filename="../ui/setcomdlg.ui" line="7020"/>
-        <location filename="../ui/setcomdlg.ui" line="7331"/>
-        <location filename="../ui/setcomdlg.ui" line="7642"/>
-        <location filename="../ui/setcomdlg.ui" line="7953"/>
-        <location filename="../ui/setcomdlg.ui" line="8264"/>
-        <location filename="../ui/setcomdlg.ui" line="8575"/>
-        <location filename="../ui/setcomdlg.ui" line="8886"/>
-        <location filename="../ui/setcomdlg.ui" line="9197"/>
+        <location filename="../ui/setcomdlg.ui" line="1414"/>
+        <location filename="../ui/setcomdlg.ui" line="1719"/>
+        <location filename="../ui/setcomdlg.ui" line="2048"/>
+        <location filename="../ui/setcomdlg.ui" line="2359"/>
+        <location filename="../ui/setcomdlg.ui" line="2670"/>
+        <location filename="../ui/setcomdlg.ui" line="2981"/>
+        <location filename="../ui/setcomdlg.ui" line="3292"/>
+        <location filename="../ui/setcomdlg.ui" line="3603"/>
+        <location filename="../ui/setcomdlg.ui" line="3914"/>
+        <location filename="../ui/setcomdlg.ui" line="4225"/>
+        <location filename="../ui/setcomdlg.ui" line="4536"/>
+        <location filename="../ui/setcomdlg.ui" line="4847"/>
+        <location filename="../ui/setcomdlg.ui" line="5158"/>
+        <location filename="../ui/setcomdlg.ui" line="5469"/>
+        <location filename="../ui/setcomdlg.ui" line="5780"/>
+        <location filename="../ui/setcomdlg.ui" line="6091"/>
+        <location filename="../ui/setcomdlg.ui" line="6402"/>
+        <location filename="../ui/setcomdlg.ui" line="6713"/>
+        <location filename="../ui/setcomdlg.ui" line="7024"/>
+        <location filename="../ui/setcomdlg.ui" line="7335"/>
+        <location filename="../ui/setcomdlg.ui" line="7646"/>
+        <location filename="../ui/setcomdlg.ui" line="7957"/>
+        <location filename="../ui/setcomdlg.ui" line="8268"/>
+        <location filename="../ui/setcomdlg.ui" line="8579"/>
+        <location filename="../ui/setcomdlg.ui" line="8890"/>
+        <location filename="../ui/setcomdlg.ui" line="9201"/>
         <source>COM3</source>
         <translation>COM3</translation>
     </message>
@@ -770,32 +754,32 @@
         <location filename="../ui/setcomdlg.ui" line="367"/>
         <location filename="../ui/setcomdlg.ui" line="672"/>
         <location filename="../ui/setcomdlg.ui" line="977"/>
-        <location filename="../ui/setcomdlg.ui" line="1415"/>
-        <location filename="../ui/setcomdlg.ui" line="1720"/>
-        <location filename="../ui/setcomdlg.ui" line="2049"/>
-        <location filename="../ui/setcomdlg.ui" line="2360"/>
-        <location filename="../ui/setcomdlg.ui" line="2671"/>
-        <location filename="../ui/setcomdlg.ui" line="2982"/>
-        <location filename="../ui/setcomdlg.ui" line="3293"/>
-        <location filename="../ui/setcomdlg.ui" line="3604"/>
-        <location filename="../ui/setcomdlg.ui" line="3915"/>
-        <location filename="../ui/setcomdlg.ui" line="4226"/>
-        <location filename="../ui/setcomdlg.ui" line="4537"/>
-        <location filename="../ui/setcomdlg.ui" line="4848"/>
-        <location filename="../ui/setcomdlg.ui" line="5159"/>
-        <location filename="../ui/setcomdlg.ui" line="5470"/>
-        <location filename="../ui/setcomdlg.ui" line="5781"/>
-        <location filename="../ui/setcomdlg.ui" line="6092"/>
-        <location filename="../ui/setcomdlg.ui" line="6403"/>
-        <location filename="../ui/setcomdlg.ui" line="6714"/>
-        <location filename="../ui/setcomdlg.ui" line="7025"/>
-        <location filename="../ui/setcomdlg.ui" line="7336"/>
-        <location filename="../ui/setcomdlg.ui" line="7647"/>
-        <location filename="../ui/setcomdlg.ui" line="7958"/>
-        <location filename="../ui/setcomdlg.ui" line="8269"/>
-        <location filename="../ui/setcomdlg.ui" line="8580"/>
-        <location filename="../ui/setcomdlg.ui" line="8891"/>
-        <location filename="../ui/setcomdlg.ui" line="9202"/>
+        <location filename="../ui/setcomdlg.ui" line="1419"/>
+        <location filename="../ui/setcomdlg.ui" line="1724"/>
+        <location filename="../ui/setcomdlg.ui" line="2053"/>
+        <location filename="../ui/setcomdlg.ui" line="2364"/>
+        <location filename="../ui/setcomdlg.ui" line="2675"/>
+        <location filename="../ui/setcomdlg.ui" line="2986"/>
+        <location filename="../ui/setcomdlg.ui" line="3297"/>
+        <location filename="../ui/setcomdlg.ui" line="3608"/>
+        <location filename="../ui/setcomdlg.ui" line="3919"/>
+        <location filename="../ui/setcomdlg.ui" line="4230"/>
+        <location filename="../ui/setcomdlg.ui" line="4541"/>
+        <location filename="../ui/setcomdlg.ui" line="4852"/>
+        <location filename="../ui/setcomdlg.ui" line="5163"/>
+        <location filename="../ui/setcomdlg.ui" line="5474"/>
+        <location filename="../ui/setcomdlg.ui" line="5785"/>
+        <location filename="../ui/setcomdlg.ui" line="6096"/>
+        <location filename="../ui/setcomdlg.ui" line="6407"/>
+        <location filename="../ui/setcomdlg.ui" line="6718"/>
+        <location filename="../ui/setcomdlg.ui" line="7029"/>
+        <location filename="../ui/setcomdlg.ui" line="7340"/>
+        <location filename="../ui/setcomdlg.ui" line="7651"/>
+        <location filename="../ui/setcomdlg.ui" line="7962"/>
+        <location filename="../ui/setcomdlg.ui" line="8273"/>
+        <location filename="../ui/setcomdlg.ui" line="8584"/>
+        <location filename="../ui/setcomdlg.ui" line="8895"/>
+        <location filename="../ui/setcomdlg.ui" line="9206"/>
         <source>COM4</source>
         <translation>COM4</translation>
     </message>
@@ -804,32 +788,32 @@
         <location filename="../ui/setcomdlg.ui" line="372"/>
         <location filename="../ui/setcomdlg.ui" line="677"/>
         <location filename="../ui/setcomdlg.ui" line="982"/>
-        <location filename="../ui/setcomdlg.ui" line="1420"/>
-        <location filename="../ui/setcomdlg.ui" line="1725"/>
-        <location filename="../ui/setcomdlg.ui" line="2054"/>
-        <location filename="../ui/setcomdlg.ui" line="2365"/>
-        <location filename="../ui/setcomdlg.ui" line="2676"/>
-        <location filename="../ui/setcomdlg.ui" line="2987"/>
-        <location filename="../ui/setcomdlg.ui" line="3298"/>
-        <location filename="../ui/setcomdlg.ui" line="3609"/>
-        <location filename="../ui/setcomdlg.ui" line="3920"/>
-        <location filename="../ui/setcomdlg.ui" line="4231"/>
-        <location filename="../ui/setcomdlg.ui" line="4542"/>
-        <location filename="../ui/setcomdlg.ui" line="4853"/>
-        <location filename="../ui/setcomdlg.ui" line="5164"/>
-        <location filename="../ui/setcomdlg.ui" line="5475"/>
-        <location filename="../ui/setcomdlg.ui" line="5786"/>
-        <location filename="../ui/setcomdlg.ui" line="6097"/>
-        <location filename="../ui/setcomdlg.ui" line="6408"/>
-        <location filename="../ui/setcomdlg.ui" line="6719"/>
-        <location filename="../ui/setcomdlg.ui" line="7030"/>
-        <location filename="../ui/setcomdlg.ui" line="7341"/>
-        <location filename="../ui/setcomdlg.ui" line="7652"/>
-        <location filename="../ui/setcomdlg.ui" line="7963"/>
-        <location filename="../ui/setcomdlg.ui" line="8274"/>
-        <location filename="../ui/setcomdlg.ui" line="8585"/>
-        <location filename="../ui/setcomdlg.ui" line="8896"/>
-        <location filename="../ui/setcomdlg.ui" line="9207"/>
+        <location filename="../ui/setcomdlg.ui" line="1424"/>
+        <location filename="../ui/setcomdlg.ui" line="1729"/>
+        <location filename="../ui/setcomdlg.ui" line="2058"/>
+        <location filename="../ui/setcomdlg.ui" line="2369"/>
+        <location filename="../ui/setcomdlg.ui" line="2680"/>
+        <location filename="../ui/setcomdlg.ui" line="2991"/>
+        <location filename="../ui/setcomdlg.ui" line="3302"/>
+        <location filename="../ui/setcomdlg.ui" line="3613"/>
+        <location filename="../ui/setcomdlg.ui" line="3924"/>
+        <location filename="../ui/setcomdlg.ui" line="4235"/>
+        <location filename="../ui/setcomdlg.ui" line="4546"/>
+        <location filename="../ui/setcomdlg.ui" line="4857"/>
+        <location filename="../ui/setcomdlg.ui" line="5168"/>
+        <location filename="../ui/setcomdlg.ui" line="5479"/>
+        <location filename="../ui/setcomdlg.ui" line="5790"/>
+        <location filename="../ui/setcomdlg.ui" line="6101"/>
+        <location filename="../ui/setcomdlg.ui" line="6412"/>
+        <location filename="../ui/setcomdlg.ui" line="6723"/>
+        <location filename="../ui/setcomdlg.ui" line="7034"/>
+        <location filename="../ui/setcomdlg.ui" line="7345"/>
+        <location filename="../ui/setcomdlg.ui" line="7656"/>
+        <location filename="../ui/setcomdlg.ui" line="7967"/>
+        <location filename="../ui/setcomdlg.ui" line="8278"/>
+        <location filename="../ui/setcomdlg.ui" line="8589"/>
+        <location filename="../ui/setcomdlg.ui" line="8900"/>
+        <location filename="../ui/setcomdlg.ui" line="9211"/>
         <source>COM5</source>
         <translation>COM5</translation>
     </message>
@@ -838,32 +822,32 @@
         <location filename="../ui/setcomdlg.ui" line="377"/>
         <location filename="../ui/setcomdlg.ui" line="682"/>
         <location filename="../ui/setcomdlg.ui" line="987"/>
-        <location filename="../ui/setcomdlg.ui" line="1425"/>
-        <location filename="../ui/setcomdlg.ui" line="1730"/>
-        <location filename="../ui/setcomdlg.ui" line="2059"/>
-        <location filename="../ui/setcomdlg.ui" line="2370"/>
-        <location filename="../ui/setcomdlg.ui" line="2681"/>
-        <location filename="../ui/setcomdlg.ui" line="2992"/>
-        <location filename="../ui/setcomdlg.ui" line="3303"/>
-        <location filename="../ui/setcomdlg.ui" line="3614"/>
-        <location filename="../ui/setcomdlg.ui" line="3925"/>
-        <location filename="../ui/setcomdlg.ui" line="4236"/>
-        <location filename="../ui/setcomdlg.ui" line="4547"/>
-        <location filename="../ui/setcomdlg.ui" line="4858"/>
-        <location filename="../ui/setcomdlg.ui" line="5169"/>
-        <location filename="../ui/setcomdlg.ui" line="5480"/>
-        <location filename="../ui/setcomdlg.ui" line="5791"/>
-        <location filename="../ui/setcomdlg.ui" line="6102"/>
-        <location filename="../ui/setcomdlg.ui" line="6413"/>
-        <location filename="../ui/setcomdlg.ui" line="6724"/>
-        <location filename="../ui/setcomdlg.ui" line="7035"/>
-        <location filename="../ui/setcomdlg.ui" line="7346"/>
-        <location filename="../ui/setcomdlg.ui" line="7657"/>
-        <location filename="../ui/setcomdlg.ui" line="7968"/>
-        <location filename="../ui/setcomdlg.ui" line="8279"/>
-        <location filename="../ui/setcomdlg.ui" line="8590"/>
-        <location filename="../ui/setcomdlg.ui" line="8901"/>
-        <location filename="../ui/setcomdlg.ui" line="9212"/>
+        <location filename="../ui/setcomdlg.ui" line="1429"/>
+        <location filename="../ui/setcomdlg.ui" line="1734"/>
+        <location filename="../ui/setcomdlg.ui" line="2063"/>
+        <location filename="../ui/setcomdlg.ui" line="2374"/>
+        <location filename="../ui/setcomdlg.ui" line="2685"/>
+        <location filename="../ui/setcomdlg.ui" line="2996"/>
+        <location filename="../ui/setcomdlg.ui" line="3307"/>
+        <location filename="../ui/setcomdlg.ui" line="3618"/>
+        <location filename="../ui/setcomdlg.ui" line="3929"/>
+        <location filename="../ui/setcomdlg.ui" line="4240"/>
+        <location filename="../ui/setcomdlg.ui" line="4551"/>
+        <location filename="../ui/setcomdlg.ui" line="4862"/>
+        <location filename="../ui/setcomdlg.ui" line="5173"/>
+        <location filename="../ui/setcomdlg.ui" line="5484"/>
+        <location filename="../ui/setcomdlg.ui" line="5795"/>
+        <location filename="../ui/setcomdlg.ui" line="6106"/>
+        <location filename="../ui/setcomdlg.ui" line="6417"/>
+        <location filename="../ui/setcomdlg.ui" line="6728"/>
+        <location filename="../ui/setcomdlg.ui" line="7039"/>
+        <location filename="../ui/setcomdlg.ui" line="7350"/>
+        <location filename="../ui/setcomdlg.ui" line="7661"/>
+        <location filename="../ui/setcomdlg.ui" line="7972"/>
+        <location filename="../ui/setcomdlg.ui" line="8283"/>
+        <location filename="../ui/setcomdlg.ui" line="8594"/>
+        <location filename="../ui/setcomdlg.ui" line="8905"/>
+        <location filename="../ui/setcomdlg.ui" line="9216"/>
         <source>COM6</source>
         <translation>COM6</translation>
     </message>
@@ -872,32 +856,32 @@
         <location filename="../ui/setcomdlg.ui" line="382"/>
         <location filename="../ui/setcomdlg.ui" line="687"/>
         <location filename="../ui/setcomdlg.ui" line="992"/>
-        <location filename="../ui/setcomdlg.ui" line="1430"/>
-        <location filename="../ui/setcomdlg.ui" line="1735"/>
-        <location filename="../ui/setcomdlg.ui" line="2064"/>
-        <location filename="../ui/setcomdlg.ui" line="2375"/>
-        <location filename="../ui/setcomdlg.ui" line="2686"/>
-        <location filename="../ui/setcomdlg.ui" line="2997"/>
-        <location filename="../ui/setcomdlg.ui" line="3308"/>
-        <location filename="../ui/setcomdlg.ui" line="3619"/>
-        <location filename="../ui/setcomdlg.ui" line="3930"/>
-        <location filename="../ui/setcomdlg.ui" line="4241"/>
-        <location filename="../ui/setcomdlg.ui" line="4552"/>
-        <location filename="../ui/setcomdlg.ui" line="4863"/>
-        <location filename="../ui/setcomdlg.ui" line="5174"/>
-        <location filename="../ui/setcomdlg.ui" line="5485"/>
-        <location filename="../ui/setcomdlg.ui" line="5796"/>
-        <location filename="../ui/setcomdlg.ui" line="6107"/>
-        <location filename="../ui/setcomdlg.ui" line="6418"/>
-        <location filename="../ui/setcomdlg.ui" line="6729"/>
-        <location filename="../ui/setcomdlg.ui" line="7040"/>
-        <location filename="../ui/setcomdlg.ui" line="7351"/>
-        <location filename="../ui/setcomdlg.ui" line="7662"/>
-        <location filename="../ui/setcomdlg.ui" line="7973"/>
-        <location filename="../ui/setcomdlg.ui" line="8284"/>
-        <location filename="../ui/setcomdlg.ui" line="8595"/>
-        <location filename="../ui/setcomdlg.ui" line="8906"/>
-        <location filename="../ui/setcomdlg.ui" line="9217"/>
+        <location filename="../ui/setcomdlg.ui" line="1434"/>
+        <location filename="../ui/setcomdlg.ui" line="1739"/>
+        <location filename="../ui/setcomdlg.ui" line="2068"/>
+        <location filename="../ui/setcomdlg.ui" line="2379"/>
+        <location filename="../ui/setcomdlg.ui" line="2690"/>
+        <location filename="../ui/setcomdlg.ui" line="3001"/>
+        <location filename="../ui/setcomdlg.ui" line="3312"/>
+        <location filename="../ui/setcomdlg.ui" line="3623"/>
+        <location filename="../ui/setcomdlg.ui" line="3934"/>
+        <location filename="../ui/setcomdlg.ui" line="4245"/>
+        <location filename="../ui/setcomdlg.ui" line="4556"/>
+        <location filename="../ui/setcomdlg.ui" line="4867"/>
+        <location filename="../ui/setcomdlg.ui" line="5178"/>
+        <location filename="../ui/setcomdlg.ui" line="5489"/>
+        <location filename="../ui/setcomdlg.ui" line="5800"/>
+        <location filename="../ui/setcomdlg.ui" line="6111"/>
+        <location filename="../ui/setcomdlg.ui" line="6422"/>
+        <location filename="../ui/setcomdlg.ui" line="6733"/>
+        <location filename="../ui/setcomdlg.ui" line="7044"/>
+        <location filename="../ui/setcomdlg.ui" line="7355"/>
+        <location filename="../ui/setcomdlg.ui" line="7666"/>
+        <location filename="../ui/setcomdlg.ui" line="7977"/>
+        <location filename="../ui/setcomdlg.ui" line="8288"/>
+        <location filename="../ui/setcomdlg.ui" line="8599"/>
+        <location filename="../ui/setcomdlg.ui" line="8910"/>
+        <location filename="../ui/setcomdlg.ui" line="9221"/>
         <source>COM7</source>
         <translation>COM7</translation>
     </message>
@@ -906,32 +890,32 @@
         <location filename="../ui/setcomdlg.ui" line="387"/>
         <location filename="../ui/setcomdlg.ui" line="692"/>
         <location filename="../ui/setcomdlg.ui" line="997"/>
-        <location filename="../ui/setcomdlg.ui" line="1435"/>
-        <location filename="../ui/setcomdlg.ui" line="1740"/>
-        <location filename="../ui/setcomdlg.ui" line="2069"/>
-        <location filename="../ui/setcomdlg.ui" line="2380"/>
-        <location filename="../ui/setcomdlg.ui" line="2691"/>
-        <location filename="../ui/setcomdlg.ui" line="3002"/>
-        <location filename="../ui/setcomdlg.ui" line="3313"/>
-        <location filename="../ui/setcomdlg.ui" line="3624"/>
-        <location filename="../ui/setcomdlg.ui" line="3935"/>
-        <location filename="../ui/setcomdlg.ui" line="4246"/>
-        <location filename="../ui/setcomdlg.ui" line="4557"/>
-        <location filename="../ui/setcomdlg.ui" line="4868"/>
-        <location filename="../ui/setcomdlg.ui" line="5179"/>
-        <location filename="../ui/setcomdlg.ui" line="5490"/>
-        <location filename="../ui/setcomdlg.ui" line="5801"/>
-        <location filename="../ui/setcomdlg.ui" line="6112"/>
-        <location filename="../ui/setcomdlg.ui" line="6423"/>
-        <location filename="../ui/setcomdlg.ui" line="6734"/>
-        <location filename="../ui/setcomdlg.ui" line="7045"/>
-        <location filename="../ui/setcomdlg.ui" line="7356"/>
-        <location filename="../ui/setcomdlg.ui" line="7667"/>
-        <location filename="../ui/setcomdlg.ui" line="7978"/>
-        <location filename="../ui/setcomdlg.ui" line="8289"/>
-        <location filename="../ui/setcomdlg.ui" line="8600"/>
-        <location filename="../ui/setcomdlg.ui" line="8911"/>
-        <location filename="../ui/setcomdlg.ui" line="9222"/>
+        <location filename="../ui/setcomdlg.ui" line="1439"/>
+        <location filename="../ui/setcomdlg.ui" line="1744"/>
+        <location filename="../ui/setcomdlg.ui" line="2073"/>
+        <location filename="../ui/setcomdlg.ui" line="2384"/>
+        <location filename="../ui/setcomdlg.ui" line="2695"/>
+        <location filename="../ui/setcomdlg.ui" line="3006"/>
+        <location filename="../ui/setcomdlg.ui" line="3317"/>
+        <location filename="../ui/setcomdlg.ui" line="3628"/>
+        <location filename="../ui/setcomdlg.ui" line="3939"/>
+        <location filename="../ui/setcomdlg.ui" line="4250"/>
+        <location filename="../ui/setcomdlg.ui" line="4561"/>
+        <location filename="../ui/setcomdlg.ui" line="4872"/>
+        <location filename="../ui/setcomdlg.ui" line="5183"/>
+        <location filename="../ui/setcomdlg.ui" line="5494"/>
+        <location filename="../ui/setcomdlg.ui" line="5805"/>
+        <location filename="../ui/setcomdlg.ui" line="6116"/>
+        <location filename="../ui/setcomdlg.ui" line="6427"/>
+        <location filename="../ui/setcomdlg.ui" line="6738"/>
+        <location filename="../ui/setcomdlg.ui" line="7049"/>
+        <location filename="../ui/setcomdlg.ui" line="7360"/>
+        <location filename="../ui/setcomdlg.ui" line="7671"/>
+        <location filename="../ui/setcomdlg.ui" line="7982"/>
+        <location filename="../ui/setcomdlg.ui" line="8293"/>
+        <location filename="../ui/setcomdlg.ui" line="8604"/>
+        <location filename="../ui/setcomdlg.ui" line="8915"/>
+        <location filename="../ui/setcomdlg.ui" line="9226"/>
         <source>COM8</source>
         <translation>COM8</translation>
     </message>
@@ -940,32 +924,32 @@
         <location filename="../ui/setcomdlg.ui" line="392"/>
         <location filename="../ui/setcomdlg.ui" line="697"/>
         <location filename="../ui/setcomdlg.ui" line="1002"/>
-        <location filename="../ui/setcomdlg.ui" line="1440"/>
-        <location filename="../ui/setcomdlg.ui" line="1745"/>
-        <location filename="../ui/setcomdlg.ui" line="2074"/>
-        <location filename="../ui/setcomdlg.ui" line="2385"/>
-        <location filename="../ui/setcomdlg.ui" line="2696"/>
-        <location filename="../ui/setcomdlg.ui" line="3007"/>
-        <location filename="../ui/setcomdlg.ui" line="3318"/>
-        <location filename="../ui/setcomdlg.ui" line="3629"/>
-        <location filename="../ui/setcomdlg.ui" line="3940"/>
-        <location filename="../ui/setcomdlg.ui" line="4251"/>
-        <location filename="../ui/setcomdlg.ui" line="4562"/>
-        <location filename="../ui/setcomdlg.ui" line="4873"/>
-        <location filename="../ui/setcomdlg.ui" line="5184"/>
-        <location filename="../ui/setcomdlg.ui" line="5495"/>
-        <location filename="../ui/setcomdlg.ui" line="5806"/>
-        <location filename="../ui/setcomdlg.ui" line="6117"/>
-        <location filename="../ui/setcomdlg.ui" line="6428"/>
-        <location filename="../ui/setcomdlg.ui" line="6739"/>
-        <location filename="../ui/setcomdlg.ui" line="7050"/>
-        <location filename="../ui/setcomdlg.ui" line="7361"/>
-        <location filename="../ui/setcomdlg.ui" line="7672"/>
-        <location filename="../ui/setcomdlg.ui" line="7983"/>
-        <location filename="../ui/setcomdlg.ui" line="8294"/>
-        <location filename="../ui/setcomdlg.ui" line="8605"/>
-        <location filename="../ui/setcomdlg.ui" line="8916"/>
-        <location filename="../ui/setcomdlg.ui" line="9227"/>
+        <location filename="../ui/setcomdlg.ui" line="1444"/>
+        <location filename="../ui/setcomdlg.ui" line="1749"/>
+        <location filename="../ui/setcomdlg.ui" line="2078"/>
+        <location filename="../ui/setcomdlg.ui" line="2389"/>
+        <location filename="../ui/setcomdlg.ui" line="2700"/>
+        <location filename="../ui/setcomdlg.ui" line="3011"/>
+        <location filename="../ui/setcomdlg.ui" line="3322"/>
+        <location filename="../ui/setcomdlg.ui" line="3633"/>
+        <location filename="../ui/setcomdlg.ui" line="3944"/>
+        <location filename="../ui/setcomdlg.ui" line="4255"/>
+        <location filename="../ui/setcomdlg.ui" line="4566"/>
+        <location filename="../ui/setcomdlg.ui" line="4877"/>
+        <location filename="../ui/setcomdlg.ui" line="5188"/>
+        <location filename="../ui/setcomdlg.ui" line="5499"/>
+        <location filename="../ui/setcomdlg.ui" line="5810"/>
+        <location filename="../ui/setcomdlg.ui" line="6121"/>
+        <location filename="../ui/setcomdlg.ui" line="6432"/>
+        <location filename="../ui/setcomdlg.ui" line="6743"/>
+        <location filename="../ui/setcomdlg.ui" line="7054"/>
+        <location filename="../ui/setcomdlg.ui" line="7365"/>
+        <location filename="../ui/setcomdlg.ui" line="7676"/>
+        <location filename="../ui/setcomdlg.ui" line="7987"/>
+        <location filename="../ui/setcomdlg.ui" line="8298"/>
+        <location filename="../ui/setcomdlg.ui" line="8609"/>
+        <location filename="../ui/setcomdlg.ui" line="8920"/>
+        <location filename="../ui/setcomdlg.ui" line="9231"/>
         <source>COM9</source>
         <translation>COM9</translation>
     </message>
@@ -974,32 +958,32 @@
         <location filename="../ui/setcomdlg.ui" line="397"/>
         <location filename="../ui/setcomdlg.ui" line="702"/>
         <location filename="../ui/setcomdlg.ui" line="1007"/>
-        <location filename="../ui/setcomdlg.ui" line="1445"/>
-        <location filename="../ui/setcomdlg.ui" line="1750"/>
-        <location filename="../ui/setcomdlg.ui" line="2079"/>
-        <location filename="../ui/setcomdlg.ui" line="2390"/>
-        <location filename="../ui/setcomdlg.ui" line="2701"/>
-        <location filename="../ui/setcomdlg.ui" line="3012"/>
-        <location filename="../ui/setcomdlg.ui" line="3323"/>
-        <location filename="../ui/setcomdlg.ui" line="3634"/>
-        <location filename="../ui/setcomdlg.ui" line="3945"/>
-        <location filename="../ui/setcomdlg.ui" line="4256"/>
-        <location filename="../ui/setcomdlg.ui" line="4567"/>
-        <location filename="../ui/setcomdlg.ui" line="4878"/>
-        <location filename="../ui/setcomdlg.ui" line="5189"/>
-        <location filename="../ui/setcomdlg.ui" line="5500"/>
-        <location filename="../ui/setcomdlg.ui" line="5811"/>
-        <location filename="../ui/setcomdlg.ui" line="6122"/>
-        <location filename="../ui/setcomdlg.ui" line="6433"/>
-        <location filename="../ui/setcomdlg.ui" line="6744"/>
-        <location filename="../ui/setcomdlg.ui" line="7055"/>
-        <location filename="../ui/setcomdlg.ui" line="7366"/>
-        <location filename="../ui/setcomdlg.ui" line="7677"/>
-        <location filename="../ui/setcomdlg.ui" line="7988"/>
-        <location filename="../ui/setcomdlg.ui" line="8299"/>
-        <location filename="../ui/setcomdlg.ui" line="8610"/>
-        <location filename="../ui/setcomdlg.ui" line="8921"/>
-        <location filename="../ui/setcomdlg.ui" line="9232"/>
+        <location filename="../ui/setcomdlg.ui" line="1449"/>
+        <location filename="../ui/setcomdlg.ui" line="1754"/>
+        <location filename="../ui/setcomdlg.ui" line="2083"/>
+        <location filename="../ui/setcomdlg.ui" line="2394"/>
+        <location filename="../ui/setcomdlg.ui" line="2705"/>
+        <location filename="../ui/setcomdlg.ui" line="3016"/>
+        <location filename="../ui/setcomdlg.ui" line="3327"/>
+        <location filename="../ui/setcomdlg.ui" line="3638"/>
+        <location filename="../ui/setcomdlg.ui" line="3949"/>
+        <location filename="../ui/setcomdlg.ui" line="4260"/>
+        <location filename="../ui/setcomdlg.ui" line="4571"/>
+        <location filename="../ui/setcomdlg.ui" line="4882"/>
+        <location filename="../ui/setcomdlg.ui" line="5193"/>
+        <location filename="../ui/setcomdlg.ui" line="5504"/>
+        <location filename="../ui/setcomdlg.ui" line="5815"/>
+        <location filename="../ui/setcomdlg.ui" line="6126"/>
+        <location filename="../ui/setcomdlg.ui" line="6437"/>
+        <location filename="../ui/setcomdlg.ui" line="6748"/>
+        <location filename="../ui/setcomdlg.ui" line="7059"/>
+        <location filename="../ui/setcomdlg.ui" line="7370"/>
+        <location filename="../ui/setcomdlg.ui" line="7681"/>
+        <location filename="../ui/setcomdlg.ui" line="7992"/>
+        <location filename="../ui/setcomdlg.ui" line="8303"/>
+        <location filename="../ui/setcomdlg.ui" line="8614"/>
+        <location filename="../ui/setcomdlg.ui" line="8925"/>
+        <location filename="../ui/setcomdlg.ui" line="9236"/>
         <source>COM10</source>
         <translation>COM10</translation>
     </message>
@@ -1008,32 +992,32 @@
         <location filename="../ui/setcomdlg.ui" line="402"/>
         <location filename="../ui/setcomdlg.ui" line="707"/>
         <location filename="../ui/setcomdlg.ui" line="1012"/>
-        <location filename="../ui/setcomdlg.ui" line="1450"/>
-        <location filename="../ui/setcomdlg.ui" line="1755"/>
-        <location filename="../ui/setcomdlg.ui" line="2084"/>
-        <location filename="../ui/setcomdlg.ui" line="2395"/>
-        <location filename="../ui/setcomdlg.ui" line="2706"/>
-        <location filename="../ui/setcomdlg.ui" line="3017"/>
-        <location filename="../ui/setcomdlg.ui" line="3328"/>
-        <location filename="../ui/setcomdlg.ui" line="3639"/>
-        <location filename="../ui/setcomdlg.ui" line="3950"/>
-        <location filename="../ui/setcomdlg.ui" line="4261"/>
-        <location filename="../ui/setcomdlg.ui" line="4572"/>
-        <location filename="../ui/setcomdlg.ui" line="4883"/>
-        <location filename="../ui/setcomdlg.ui" line="5194"/>
-        <location filename="../ui/setcomdlg.ui" line="5505"/>
-        <location filename="../ui/setcomdlg.ui" line="5816"/>
-        <location filename="../ui/setcomdlg.ui" line="6127"/>
-        <location filename="../ui/setcomdlg.ui" line="6438"/>
-        <location filename="../ui/setcomdlg.ui" line="6749"/>
-        <location filename="../ui/setcomdlg.ui" line="7060"/>
-        <location filename="../ui/setcomdlg.ui" line="7371"/>
-        <location filename="../ui/setcomdlg.ui" line="7682"/>
-        <location filename="../ui/setcomdlg.ui" line="7993"/>
-        <location filename="../ui/setcomdlg.ui" line="8304"/>
-        <location filename="../ui/setcomdlg.ui" line="8615"/>
-        <location filename="../ui/setcomdlg.ui" line="8926"/>
-        <location filename="../ui/setcomdlg.ui" line="9237"/>
+        <location filename="../ui/setcomdlg.ui" line="1454"/>
+        <location filename="../ui/setcomdlg.ui" line="1759"/>
+        <location filename="../ui/setcomdlg.ui" line="2088"/>
+        <location filename="../ui/setcomdlg.ui" line="2399"/>
+        <location filename="../ui/setcomdlg.ui" line="2710"/>
+        <location filename="../ui/setcomdlg.ui" line="3021"/>
+        <location filename="../ui/setcomdlg.ui" line="3332"/>
+        <location filename="../ui/setcomdlg.ui" line="3643"/>
+        <location filename="../ui/setcomdlg.ui" line="3954"/>
+        <location filename="../ui/setcomdlg.ui" line="4265"/>
+        <location filename="../ui/setcomdlg.ui" line="4576"/>
+        <location filename="../ui/setcomdlg.ui" line="4887"/>
+        <location filename="../ui/setcomdlg.ui" line="5198"/>
+        <location filename="../ui/setcomdlg.ui" line="5509"/>
+        <location filename="../ui/setcomdlg.ui" line="5820"/>
+        <location filename="../ui/setcomdlg.ui" line="6131"/>
+        <location filename="../ui/setcomdlg.ui" line="6442"/>
+        <location filename="../ui/setcomdlg.ui" line="6753"/>
+        <location filename="../ui/setcomdlg.ui" line="7064"/>
+        <location filename="../ui/setcomdlg.ui" line="7375"/>
+        <location filename="../ui/setcomdlg.ui" line="7686"/>
+        <location filename="../ui/setcomdlg.ui" line="7997"/>
+        <location filename="../ui/setcomdlg.ui" line="8308"/>
+        <location filename="../ui/setcomdlg.ui" line="8619"/>
+        <location filename="../ui/setcomdlg.ui" line="8930"/>
+        <location filename="../ui/setcomdlg.ui" line="9241"/>
         <source>COM11</source>
         <translation>COM11</translation>
     </message>
@@ -1042,32 +1026,32 @@
         <location filename="../ui/setcomdlg.ui" line="407"/>
         <location filename="../ui/setcomdlg.ui" line="712"/>
         <location filename="../ui/setcomdlg.ui" line="1017"/>
-        <location filename="../ui/setcomdlg.ui" line="1455"/>
-        <location filename="../ui/setcomdlg.ui" line="1760"/>
-        <location filename="../ui/setcomdlg.ui" line="2089"/>
-        <location filename="../ui/setcomdlg.ui" line="2400"/>
-        <location filename="../ui/setcomdlg.ui" line="2711"/>
-        <location filename="../ui/setcomdlg.ui" line="3022"/>
-        <location filename="../ui/setcomdlg.ui" line="3333"/>
-        <location filename="../ui/setcomdlg.ui" line="3644"/>
-        <location filename="../ui/setcomdlg.ui" line="3955"/>
-        <location filename="../ui/setcomdlg.ui" line="4266"/>
-        <location filename="../ui/setcomdlg.ui" line="4577"/>
-        <location filename="../ui/setcomdlg.ui" line="4888"/>
-        <location filename="../ui/setcomdlg.ui" line="5199"/>
-        <location filename="../ui/setcomdlg.ui" line="5510"/>
-        <location filename="../ui/setcomdlg.ui" line="5821"/>
-        <location filename="../ui/setcomdlg.ui" line="6132"/>
-        <location filename="../ui/setcomdlg.ui" line="6443"/>
-        <location filename="../ui/setcomdlg.ui" line="6754"/>
-        <location filename="../ui/setcomdlg.ui" line="7065"/>
-        <location filename="../ui/setcomdlg.ui" line="7376"/>
-        <location filename="../ui/setcomdlg.ui" line="7687"/>
-        <location filename="../ui/setcomdlg.ui" line="7998"/>
-        <location filename="../ui/setcomdlg.ui" line="8309"/>
-        <location filename="../ui/setcomdlg.ui" line="8620"/>
-        <location filename="../ui/setcomdlg.ui" line="8931"/>
-        <location filename="../ui/setcomdlg.ui" line="9242"/>
+        <location filename="../ui/setcomdlg.ui" line="1459"/>
+        <location filename="../ui/setcomdlg.ui" line="1764"/>
+        <location filename="../ui/setcomdlg.ui" line="2093"/>
+        <location filename="../ui/setcomdlg.ui" line="2404"/>
+        <location filename="../ui/setcomdlg.ui" line="2715"/>
+        <location filename="../ui/setcomdlg.ui" line="3026"/>
+        <location filename="../ui/setcomdlg.ui" line="3337"/>
+        <location filename="../ui/setcomdlg.ui" line="3648"/>
+        <location filename="../ui/setcomdlg.ui" line="3959"/>
+        <location filename="../ui/setcomdlg.ui" line="4270"/>
+        <location filename="../ui/setcomdlg.ui" line="4581"/>
+        <location filename="../ui/setcomdlg.ui" line="4892"/>
+        <location filename="../ui/setcomdlg.ui" line="5203"/>
+        <location filename="../ui/setcomdlg.ui" line="5514"/>
+        <location filename="../ui/setcomdlg.ui" line="5825"/>
+        <location filename="../ui/setcomdlg.ui" line="6136"/>
+        <location filename="../ui/setcomdlg.ui" line="6447"/>
+        <location filename="../ui/setcomdlg.ui" line="6758"/>
+        <location filename="../ui/setcomdlg.ui" line="7069"/>
+        <location filename="../ui/setcomdlg.ui" line="7380"/>
+        <location filename="../ui/setcomdlg.ui" line="7691"/>
+        <location filename="../ui/setcomdlg.ui" line="8002"/>
+        <location filename="../ui/setcomdlg.ui" line="8313"/>
+        <location filename="../ui/setcomdlg.ui" line="8624"/>
+        <location filename="../ui/setcomdlg.ui" line="8935"/>
+        <location filename="../ui/setcomdlg.ui" line="9246"/>
         <source>COM12</source>
         <translation>COM12</translation>
     </message>
@@ -1076,32 +1060,32 @@
         <location filename="../ui/setcomdlg.ui" line="412"/>
         <location filename="../ui/setcomdlg.ui" line="717"/>
         <location filename="../ui/setcomdlg.ui" line="1022"/>
-        <location filename="../ui/setcomdlg.ui" line="1460"/>
-        <location filename="../ui/setcomdlg.ui" line="1765"/>
-        <location filename="../ui/setcomdlg.ui" line="2094"/>
-        <location filename="../ui/setcomdlg.ui" line="2405"/>
-        <location filename="../ui/setcomdlg.ui" line="2716"/>
-        <location filename="../ui/setcomdlg.ui" line="3027"/>
-        <location filename="../ui/setcomdlg.ui" line="3338"/>
-        <location filename="../ui/setcomdlg.ui" line="3649"/>
-        <location filename="../ui/setcomdlg.ui" line="3960"/>
-        <location filename="../ui/setcomdlg.ui" line="4271"/>
-        <location filename="../ui/setcomdlg.ui" line="4582"/>
-        <location filename="../ui/setcomdlg.ui" line="4893"/>
-        <location filename="../ui/setcomdlg.ui" line="5204"/>
-        <location filename="../ui/setcomdlg.ui" line="5515"/>
-        <location filename="../ui/setcomdlg.ui" line="5826"/>
-        <location filename="../ui/setcomdlg.ui" line="6137"/>
-        <location filename="../ui/setcomdlg.ui" line="6448"/>
-        <location filename="../ui/setcomdlg.ui" line="6759"/>
-        <location filename="../ui/setcomdlg.ui" line="7070"/>
-        <location filename="../ui/setcomdlg.ui" line="7381"/>
-        <location filename="../ui/setcomdlg.ui" line="7692"/>
-        <location filename="../ui/setcomdlg.ui" line="8003"/>
-        <location filename="../ui/setcomdlg.ui" line="8314"/>
-        <location filename="../ui/setcomdlg.ui" line="8625"/>
-        <location filename="../ui/setcomdlg.ui" line="8936"/>
-        <location filename="../ui/setcomdlg.ui" line="9247"/>
+        <location filename="../ui/setcomdlg.ui" line="1464"/>
+        <location filename="../ui/setcomdlg.ui" line="1769"/>
+        <location filename="../ui/setcomdlg.ui" line="2098"/>
+        <location filename="../ui/setcomdlg.ui" line="2409"/>
+        <location filename="../ui/setcomdlg.ui" line="2720"/>
+        <location filename="../ui/setcomdlg.ui" line="3031"/>
+        <location filename="../ui/setcomdlg.ui" line="3342"/>
+        <location filename="../ui/setcomdlg.ui" line="3653"/>
+        <location filename="../ui/setcomdlg.ui" line="3964"/>
+        <location filename="../ui/setcomdlg.ui" line="4275"/>
+        <location filename="../ui/setcomdlg.ui" line="4586"/>
+        <location filename="../ui/setcomdlg.ui" line="4897"/>
+        <location filename="../ui/setcomdlg.ui" line="5208"/>
+        <location filename="../ui/setcomdlg.ui" line="5519"/>
+        <location filename="../ui/setcomdlg.ui" line="5830"/>
+        <location filename="../ui/setcomdlg.ui" line="6141"/>
+        <location filename="../ui/setcomdlg.ui" line="6452"/>
+        <location filename="../ui/setcomdlg.ui" line="6763"/>
+        <location filename="../ui/setcomdlg.ui" line="7074"/>
+        <location filename="../ui/setcomdlg.ui" line="7385"/>
+        <location filename="../ui/setcomdlg.ui" line="7696"/>
+        <location filename="../ui/setcomdlg.ui" line="8007"/>
+        <location filename="../ui/setcomdlg.ui" line="8318"/>
+        <location filename="../ui/setcomdlg.ui" line="8629"/>
+        <location filename="../ui/setcomdlg.ui" line="8940"/>
+        <location filename="../ui/setcomdlg.ui" line="9251"/>
         <source>COM13</source>
         <translation>COM13</translation>
     </message>
@@ -1110,32 +1094,32 @@
         <location filename="../ui/setcomdlg.ui" line="417"/>
         <location filename="../ui/setcomdlg.ui" line="722"/>
         <location filename="../ui/setcomdlg.ui" line="1027"/>
-        <location filename="../ui/setcomdlg.ui" line="1465"/>
-        <location filename="../ui/setcomdlg.ui" line="1770"/>
-        <location filename="../ui/setcomdlg.ui" line="2099"/>
-        <location filename="../ui/setcomdlg.ui" line="2410"/>
-        <location filename="../ui/setcomdlg.ui" line="2721"/>
-        <location filename="../ui/setcomdlg.ui" line="3032"/>
-        <location filename="../ui/setcomdlg.ui" line="3343"/>
-        <location filename="../ui/setcomdlg.ui" line="3654"/>
-        <location filename="../ui/setcomdlg.ui" line="3965"/>
-        <location filename="../ui/setcomdlg.ui" line="4276"/>
-        <location filename="../ui/setcomdlg.ui" line="4587"/>
-        <location filename="../ui/setcomdlg.ui" line="4898"/>
-        <location filename="../ui/setcomdlg.ui" line="5209"/>
-        <location filename="../ui/setcomdlg.ui" line="5520"/>
-        <location filename="../ui/setcomdlg.ui" line="5831"/>
-        <location filename="../ui/setcomdlg.ui" line="6142"/>
-        <location filename="../ui/setcomdlg.ui" line="6453"/>
-        <location filename="../ui/setcomdlg.ui" line="6764"/>
-        <location filename="../ui/setcomdlg.ui" line="7075"/>
-        <location filename="../ui/setcomdlg.ui" line="7386"/>
-        <location filename="../ui/setcomdlg.ui" line="7697"/>
-        <location filename="../ui/setcomdlg.ui" line="8008"/>
-        <location filename="../ui/setcomdlg.ui" line="8319"/>
-        <location filename="../ui/setcomdlg.ui" line="8630"/>
-        <location filename="../ui/setcomdlg.ui" line="8941"/>
-        <location filename="../ui/setcomdlg.ui" line="9252"/>
+        <location filename="../ui/setcomdlg.ui" line="1469"/>
+        <location filename="../ui/setcomdlg.ui" line="1774"/>
+        <location filename="../ui/setcomdlg.ui" line="2103"/>
+        <location filename="../ui/setcomdlg.ui" line="2414"/>
+        <location filename="../ui/setcomdlg.ui" line="2725"/>
+        <location filename="../ui/setcomdlg.ui" line="3036"/>
+        <location filename="../ui/setcomdlg.ui" line="3347"/>
+        <location filename="../ui/setcomdlg.ui" line="3658"/>
+        <location filename="../ui/setcomdlg.ui" line="3969"/>
+        <location filename="../ui/setcomdlg.ui" line="4280"/>
+        <location filename="../ui/setcomdlg.ui" line="4591"/>
+        <location filename="../ui/setcomdlg.ui" line="4902"/>
+        <location filename="../ui/setcomdlg.ui" line="5213"/>
+        <location filename="../ui/setcomdlg.ui" line="5524"/>
+        <location filename="../ui/setcomdlg.ui" line="5835"/>
+        <location filename="../ui/setcomdlg.ui" line="6146"/>
+        <location filename="../ui/setcomdlg.ui" line="6457"/>
+        <location filename="../ui/setcomdlg.ui" line="6768"/>
+        <location filename="../ui/setcomdlg.ui" line="7079"/>
+        <location filename="../ui/setcomdlg.ui" line="7390"/>
+        <location filename="../ui/setcomdlg.ui" line="7701"/>
+        <location filename="../ui/setcomdlg.ui" line="8012"/>
+        <location filename="../ui/setcomdlg.ui" line="8323"/>
+        <location filename="../ui/setcomdlg.ui" line="8634"/>
+        <location filename="../ui/setcomdlg.ui" line="8945"/>
+        <location filename="../ui/setcomdlg.ui" line="9256"/>
         <source>COM14</source>
         <translation>COM14</translation>
     </message>
@@ -1144,32 +1128,32 @@
         <location filename="../ui/setcomdlg.ui" line="422"/>
         <location filename="../ui/setcomdlg.ui" line="727"/>
         <location filename="../ui/setcomdlg.ui" line="1032"/>
-        <location filename="../ui/setcomdlg.ui" line="1470"/>
-        <location filename="../ui/setcomdlg.ui" line="1775"/>
-        <location filename="../ui/setcomdlg.ui" line="2104"/>
-        <location filename="../ui/setcomdlg.ui" line="2415"/>
-        <location filename="../ui/setcomdlg.ui" line="2726"/>
-        <location filename="../ui/setcomdlg.ui" line="3037"/>
-        <location filename="../ui/setcomdlg.ui" line="3348"/>
-        <location filename="../ui/setcomdlg.ui" line="3659"/>
-        <location filename="../ui/setcomdlg.ui" line="3970"/>
-        <location filename="../ui/setcomdlg.ui" line="4281"/>
-        <location filename="../ui/setcomdlg.ui" line="4592"/>
-        <location filename="../ui/setcomdlg.ui" line="4903"/>
-        <location filename="../ui/setcomdlg.ui" line="5214"/>
-        <location filename="../ui/setcomdlg.ui" line="5525"/>
-        <location filename="../ui/setcomdlg.ui" line="5836"/>
-        <location filename="../ui/setcomdlg.ui" line="6147"/>
-        <location filename="../ui/setcomdlg.ui" line="6458"/>
-        <location filename="../ui/setcomdlg.ui" line="6769"/>
-        <location filename="../ui/setcomdlg.ui" line="7080"/>
-        <location filename="../ui/setcomdlg.ui" line="7391"/>
-        <location filename="../ui/setcomdlg.ui" line="7702"/>
-        <location filename="../ui/setcomdlg.ui" line="8013"/>
-        <location filename="../ui/setcomdlg.ui" line="8324"/>
-        <location filename="../ui/setcomdlg.ui" line="8635"/>
-        <location filename="../ui/setcomdlg.ui" line="8946"/>
-        <location filename="../ui/setcomdlg.ui" line="9257"/>
+        <location filename="../ui/setcomdlg.ui" line="1474"/>
+        <location filename="../ui/setcomdlg.ui" line="1779"/>
+        <location filename="../ui/setcomdlg.ui" line="2108"/>
+        <location filename="../ui/setcomdlg.ui" line="2419"/>
+        <location filename="../ui/setcomdlg.ui" line="2730"/>
+        <location filename="../ui/setcomdlg.ui" line="3041"/>
+        <location filename="../ui/setcomdlg.ui" line="3352"/>
+        <location filename="../ui/setcomdlg.ui" line="3663"/>
+        <location filename="../ui/setcomdlg.ui" line="3974"/>
+        <location filename="../ui/setcomdlg.ui" line="4285"/>
+        <location filename="../ui/setcomdlg.ui" line="4596"/>
+        <location filename="../ui/setcomdlg.ui" line="4907"/>
+        <location filename="../ui/setcomdlg.ui" line="5218"/>
+        <location filename="../ui/setcomdlg.ui" line="5529"/>
+        <location filename="../ui/setcomdlg.ui" line="5840"/>
+        <location filename="../ui/setcomdlg.ui" line="6151"/>
+        <location filename="../ui/setcomdlg.ui" line="6462"/>
+        <location filename="../ui/setcomdlg.ui" line="6773"/>
+        <location filename="../ui/setcomdlg.ui" line="7084"/>
+        <location filename="../ui/setcomdlg.ui" line="7395"/>
+        <location filename="../ui/setcomdlg.ui" line="7706"/>
+        <location filename="../ui/setcomdlg.ui" line="8017"/>
+        <location filename="../ui/setcomdlg.ui" line="8328"/>
+        <location filename="../ui/setcomdlg.ui" line="8639"/>
+        <location filename="../ui/setcomdlg.ui" line="8950"/>
+        <location filename="../ui/setcomdlg.ui" line="9261"/>
         <source>COM15</source>
         <translation>COM15</translation>
     </message>
@@ -1178,32 +1162,32 @@
         <location filename="../ui/setcomdlg.ui" line="427"/>
         <location filename="../ui/setcomdlg.ui" line="732"/>
         <location filename="../ui/setcomdlg.ui" line="1037"/>
-        <location filename="../ui/setcomdlg.ui" line="1475"/>
-        <location filename="../ui/setcomdlg.ui" line="1780"/>
-        <location filename="../ui/setcomdlg.ui" line="2109"/>
-        <location filename="../ui/setcomdlg.ui" line="2420"/>
-        <location filename="../ui/setcomdlg.ui" line="2731"/>
-        <location filename="../ui/setcomdlg.ui" line="3042"/>
-        <location filename="../ui/setcomdlg.ui" line="3353"/>
-        <location filename="../ui/setcomdlg.ui" line="3664"/>
-        <location filename="../ui/setcomdlg.ui" line="3975"/>
-        <location filename="../ui/setcomdlg.ui" line="4286"/>
-        <location filename="../ui/setcomdlg.ui" line="4597"/>
-        <location filename="../ui/setcomdlg.ui" line="4908"/>
-        <location filename="../ui/setcomdlg.ui" line="5219"/>
-        <location filename="../ui/setcomdlg.ui" line="5530"/>
-        <location filename="../ui/setcomdlg.ui" line="5841"/>
-        <location filename="../ui/setcomdlg.ui" line="6152"/>
-        <location filename="../ui/setcomdlg.ui" line="6463"/>
-        <location filename="../ui/setcomdlg.ui" line="6774"/>
-        <location filename="../ui/setcomdlg.ui" line="7085"/>
-        <location filename="../ui/setcomdlg.ui" line="7396"/>
-        <location filename="../ui/setcomdlg.ui" line="7707"/>
-        <location filename="../ui/setcomdlg.ui" line="8018"/>
-        <location filename="../ui/setcomdlg.ui" line="8329"/>
-        <location filename="../ui/setcomdlg.ui" line="8640"/>
-        <location filename="../ui/setcomdlg.ui" line="8951"/>
-        <location filename="../ui/setcomdlg.ui" line="9262"/>
+        <location filename="../ui/setcomdlg.ui" line="1479"/>
+        <location filename="../ui/setcomdlg.ui" line="1784"/>
+        <location filename="../ui/setcomdlg.ui" line="2113"/>
+        <location filename="../ui/setcomdlg.ui" line="2424"/>
+        <location filename="../ui/setcomdlg.ui" line="2735"/>
+        <location filename="../ui/setcomdlg.ui" line="3046"/>
+        <location filename="../ui/setcomdlg.ui" line="3357"/>
+        <location filename="../ui/setcomdlg.ui" line="3668"/>
+        <location filename="../ui/setcomdlg.ui" line="3979"/>
+        <location filename="../ui/setcomdlg.ui" line="4290"/>
+        <location filename="../ui/setcomdlg.ui" line="4601"/>
+        <location filename="../ui/setcomdlg.ui" line="4912"/>
+        <location filename="../ui/setcomdlg.ui" line="5223"/>
+        <location filename="../ui/setcomdlg.ui" line="5534"/>
+        <location filename="../ui/setcomdlg.ui" line="5845"/>
+        <location filename="../ui/setcomdlg.ui" line="6156"/>
+        <location filename="../ui/setcomdlg.ui" line="6467"/>
+        <location filename="../ui/setcomdlg.ui" line="6778"/>
+        <location filename="../ui/setcomdlg.ui" line="7089"/>
+        <location filename="../ui/setcomdlg.ui" line="7400"/>
+        <location filename="../ui/setcomdlg.ui" line="7711"/>
+        <location filename="../ui/setcomdlg.ui" line="8022"/>
+        <location filename="../ui/setcomdlg.ui" line="8333"/>
+        <location filename="../ui/setcomdlg.ui" line="8644"/>
+        <location filename="../ui/setcomdlg.ui" line="8955"/>
+        <location filename="../ui/setcomdlg.ui" line="9266"/>
         <source>COM16</source>
         <translation>COM16</translation>
     </message>
@@ -1212,32 +1196,32 @@
         <location filename="../ui/setcomdlg.ui" line="432"/>
         <location filename="../ui/setcomdlg.ui" line="737"/>
         <location filename="../ui/setcomdlg.ui" line="1042"/>
-        <location filename="../ui/setcomdlg.ui" line="1480"/>
-        <location filename="../ui/setcomdlg.ui" line="1785"/>
-        <location filename="../ui/setcomdlg.ui" line="2114"/>
-        <location filename="../ui/setcomdlg.ui" line="2425"/>
-        <location filename="../ui/setcomdlg.ui" line="2736"/>
-        <location filename="../ui/setcomdlg.ui" line="3047"/>
-        <location filename="../ui/setcomdlg.ui" line="3358"/>
-        <location filename="../ui/setcomdlg.ui" line="3669"/>
-        <location filename="../ui/setcomdlg.ui" line="3980"/>
-        <location filename="../ui/setcomdlg.ui" line="4291"/>
-        <location filename="../ui/setcomdlg.ui" line="4602"/>
-        <location filename="../ui/setcomdlg.ui" line="4913"/>
-        <location filename="../ui/setcomdlg.ui" line="5224"/>
-        <location filename="../ui/setcomdlg.ui" line="5535"/>
-        <location filename="../ui/setcomdlg.ui" line="5846"/>
-        <location filename="../ui/setcomdlg.ui" line="6157"/>
-        <location filename="../ui/setcomdlg.ui" line="6468"/>
-        <location filename="../ui/setcomdlg.ui" line="6779"/>
-        <location filename="../ui/setcomdlg.ui" line="7090"/>
-        <location filename="../ui/setcomdlg.ui" line="7401"/>
-        <location filename="../ui/setcomdlg.ui" line="7712"/>
-        <location filename="../ui/setcomdlg.ui" line="8023"/>
-        <location filename="../ui/setcomdlg.ui" line="8334"/>
-        <location filename="../ui/setcomdlg.ui" line="8645"/>
-        <location filename="../ui/setcomdlg.ui" line="8956"/>
-        <location filename="../ui/setcomdlg.ui" line="9267"/>
+        <location filename="../ui/setcomdlg.ui" line="1484"/>
+        <location filename="../ui/setcomdlg.ui" line="1789"/>
+        <location filename="../ui/setcomdlg.ui" line="2118"/>
+        <location filename="../ui/setcomdlg.ui" line="2429"/>
+        <location filename="../ui/setcomdlg.ui" line="2740"/>
+        <location filename="../ui/setcomdlg.ui" line="3051"/>
+        <location filename="../ui/setcomdlg.ui" line="3362"/>
+        <location filename="../ui/setcomdlg.ui" line="3673"/>
+        <location filename="../ui/setcomdlg.ui" line="3984"/>
+        <location filename="../ui/setcomdlg.ui" line="4295"/>
+        <location filename="../ui/setcomdlg.ui" line="4606"/>
+        <location filename="../ui/setcomdlg.ui" line="4917"/>
+        <location filename="../ui/setcomdlg.ui" line="5228"/>
+        <location filename="../ui/setcomdlg.ui" line="5539"/>
+        <location filename="../ui/setcomdlg.ui" line="5850"/>
+        <location filename="../ui/setcomdlg.ui" line="6161"/>
+        <location filename="../ui/setcomdlg.ui" line="6472"/>
+        <location filename="../ui/setcomdlg.ui" line="6783"/>
+        <location filename="../ui/setcomdlg.ui" line="7094"/>
+        <location filename="../ui/setcomdlg.ui" line="7405"/>
+        <location filename="../ui/setcomdlg.ui" line="7716"/>
+        <location filename="../ui/setcomdlg.ui" line="8027"/>
+        <location filename="../ui/setcomdlg.ui" line="8338"/>
+        <location filename="../ui/setcomdlg.ui" line="8649"/>
+        <location filename="../ui/setcomdlg.ui" line="8960"/>
+        <location filename="../ui/setcomdlg.ui" line="9271"/>
         <source>COM17</source>
         <translation>COM17</translation>
     </message>
@@ -1246,32 +1230,32 @@
         <location filename="../ui/setcomdlg.ui" line="437"/>
         <location filename="../ui/setcomdlg.ui" line="742"/>
         <location filename="../ui/setcomdlg.ui" line="1047"/>
-        <location filename="../ui/setcomdlg.ui" line="1485"/>
-        <location filename="../ui/setcomdlg.ui" line="1790"/>
-        <location filename="../ui/setcomdlg.ui" line="2119"/>
-        <location filename="../ui/setcomdlg.ui" line="2430"/>
-        <location filename="../ui/setcomdlg.ui" line="2741"/>
-        <location filename="../ui/setcomdlg.ui" line="3052"/>
-        <location filename="../ui/setcomdlg.ui" line="3363"/>
-        <location filename="../ui/setcomdlg.ui" line="3674"/>
-        <location filename="../ui/setcomdlg.ui" line="3985"/>
-        <location filename="../ui/setcomdlg.ui" line="4296"/>
-        <location filename="../ui/setcomdlg.ui" line="4607"/>
-        <location filename="../ui/setcomdlg.ui" line="4918"/>
-        <location filename="../ui/setcomdlg.ui" line="5229"/>
-        <location filename="../ui/setcomdlg.ui" line="5540"/>
-        <location filename="../ui/setcomdlg.ui" line="5851"/>
-        <location filename="../ui/setcomdlg.ui" line="6162"/>
-        <location filename="../ui/setcomdlg.ui" line="6473"/>
-        <location filename="../ui/setcomdlg.ui" line="6784"/>
-        <location filename="../ui/setcomdlg.ui" line="7095"/>
-        <location filename="../ui/setcomdlg.ui" line="7406"/>
-        <location filename="../ui/setcomdlg.ui" line="7717"/>
-        <location filename="../ui/setcomdlg.ui" line="8028"/>
-        <location filename="../ui/setcomdlg.ui" line="8339"/>
-        <location filename="../ui/setcomdlg.ui" line="8650"/>
-        <location filename="../ui/setcomdlg.ui" line="8961"/>
-        <location filename="../ui/setcomdlg.ui" line="9272"/>
+        <location filename="../ui/setcomdlg.ui" line="1489"/>
+        <location filename="../ui/setcomdlg.ui" line="1794"/>
+        <location filename="../ui/setcomdlg.ui" line="2123"/>
+        <location filename="../ui/setcomdlg.ui" line="2434"/>
+        <location filename="../ui/setcomdlg.ui" line="2745"/>
+        <location filename="../ui/setcomdlg.ui" line="3056"/>
+        <location filename="../ui/setcomdlg.ui" line="3367"/>
+        <location filename="../ui/setcomdlg.ui" line="3678"/>
+        <location filename="../ui/setcomdlg.ui" line="3989"/>
+        <location filename="../ui/setcomdlg.ui" line="4300"/>
+        <location filename="../ui/setcomdlg.ui" line="4611"/>
+        <location filename="../ui/setcomdlg.ui" line="4922"/>
+        <location filename="../ui/setcomdlg.ui" line="5233"/>
+        <location filename="../ui/setcomdlg.ui" line="5544"/>
+        <location filename="../ui/setcomdlg.ui" line="5855"/>
+        <location filename="../ui/setcomdlg.ui" line="6166"/>
+        <location filename="../ui/setcomdlg.ui" line="6477"/>
+        <location filename="../ui/setcomdlg.ui" line="6788"/>
+        <location filename="../ui/setcomdlg.ui" line="7099"/>
+        <location filename="../ui/setcomdlg.ui" line="7410"/>
+        <location filename="../ui/setcomdlg.ui" line="7721"/>
+        <location filename="../ui/setcomdlg.ui" line="8032"/>
+        <location filename="../ui/setcomdlg.ui" line="8343"/>
+        <location filename="../ui/setcomdlg.ui" line="8654"/>
+        <location filename="../ui/setcomdlg.ui" line="8965"/>
+        <location filename="../ui/setcomdlg.ui" line="9276"/>
         <source>COM18</source>
         <translation>COM18</translation>
     </message>
@@ -1280,32 +1264,32 @@
         <location filename="../ui/setcomdlg.ui" line="442"/>
         <location filename="../ui/setcomdlg.ui" line="747"/>
         <location filename="../ui/setcomdlg.ui" line="1052"/>
-        <location filename="../ui/setcomdlg.ui" line="1490"/>
-        <location filename="../ui/setcomdlg.ui" line="1795"/>
-        <location filename="../ui/setcomdlg.ui" line="2124"/>
-        <location filename="../ui/setcomdlg.ui" line="2435"/>
-        <location filename="../ui/setcomdlg.ui" line="2746"/>
-        <location filename="../ui/setcomdlg.ui" line="3057"/>
-        <location filename="../ui/setcomdlg.ui" line="3368"/>
-        <location filename="../ui/setcomdlg.ui" line="3679"/>
-        <location filename="../ui/setcomdlg.ui" line="3990"/>
-        <location filename="../ui/setcomdlg.ui" line="4301"/>
-        <location filename="../ui/setcomdlg.ui" line="4612"/>
-        <location filename="../ui/setcomdlg.ui" line="4923"/>
-        <location filename="../ui/setcomdlg.ui" line="5234"/>
-        <location filename="../ui/setcomdlg.ui" line="5545"/>
-        <location filename="../ui/setcomdlg.ui" line="5856"/>
-        <location filename="../ui/setcomdlg.ui" line="6167"/>
-        <location filename="../ui/setcomdlg.ui" line="6478"/>
-        <location filename="../ui/setcomdlg.ui" line="6789"/>
-        <location filename="../ui/setcomdlg.ui" line="7100"/>
-        <location filename="../ui/setcomdlg.ui" line="7411"/>
-        <location filename="../ui/setcomdlg.ui" line="7722"/>
-        <location filename="../ui/setcomdlg.ui" line="8033"/>
-        <location filename="../ui/setcomdlg.ui" line="8344"/>
-        <location filename="../ui/setcomdlg.ui" line="8655"/>
-        <location filename="../ui/setcomdlg.ui" line="8966"/>
-        <location filename="../ui/setcomdlg.ui" line="9277"/>
+        <location filename="../ui/setcomdlg.ui" line="1494"/>
+        <location filename="../ui/setcomdlg.ui" line="1799"/>
+        <location filename="../ui/setcomdlg.ui" line="2128"/>
+        <location filename="../ui/setcomdlg.ui" line="2439"/>
+        <location filename="../ui/setcomdlg.ui" line="2750"/>
+        <location filename="../ui/setcomdlg.ui" line="3061"/>
+        <location filename="../ui/setcomdlg.ui" line="3372"/>
+        <location filename="../ui/setcomdlg.ui" line="3683"/>
+        <location filename="../ui/setcomdlg.ui" line="3994"/>
+        <location filename="../ui/setcomdlg.ui" line="4305"/>
+        <location filename="../ui/setcomdlg.ui" line="4616"/>
+        <location filename="../ui/setcomdlg.ui" line="4927"/>
+        <location filename="../ui/setcomdlg.ui" line="5238"/>
+        <location filename="../ui/setcomdlg.ui" line="5549"/>
+        <location filename="../ui/setcomdlg.ui" line="5860"/>
+        <location filename="../ui/setcomdlg.ui" line="6171"/>
+        <location filename="../ui/setcomdlg.ui" line="6482"/>
+        <location filename="../ui/setcomdlg.ui" line="6793"/>
+        <location filename="../ui/setcomdlg.ui" line="7104"/>
+        <location filename="../ui/setcomdlg.ui" line="7415"/>
+        <location filename="../ui/setcomdlg.ui" line="7726"/>
+        <location filename="../ui/setcomdlg.ui" line="8037"/>
+        <location filename="../ui/setcomdlg.ui" line="8348"/>
+        <location filename="../ui/setcomdlg.ui" line="8659"/>
+        <location filename="../ui/setcomdlg.ui" line="8970"/>
+        <location filename="../ui/setcomdlg.ui" line="9281"/>
         <source>COM19</source>
         <translation>COM19</translation>
     </message>
@@ -1314,32 +1298,32 @@
         <location filename="../ui/setcomdlg.ui" line="447"/>
         <location filename="../ui/setcomdlg.ui" line="752"/>
         <location filename="../ui/setcomdlg.ui" line="1057"/>
-        <location filename="../ui/setcomdlg.ui" line="1495"/>
-        <location filename="../ui/setcomdlg.ui" line="1800"/>
-        <location filename="../ui/setcomdlg.ui" line="2129"/>
-        <location filename="../ui/setcomdlg.ui" line="2440"/>
-        <location filename="../ui/setcomdlg.ui" line="2751"/>
-        <location filename="../ui/setcomdlg.ui" line="3062"/>
-        <location filename="../ui/setcomdlg.ui" line="3373"/>
-        <location filename="../ui/setcomdlg.ui" line="3684"/>
-        <location filename="../ui/setcomdlg.ui" line="3995"/>
-        <location filename="../ui/setcomdlg.ui" line="4306"/>
-        <location filename="../ui/setcomdlg.ui" line="4617"/>
-        <location filename="../ui/setcomdlg.ui" line="4928"/>
-        <location filename="../ui/setcomdlg.ui" line="5239"/>
-        <location filename="../ui/setcomdlg.ui" line="5550"/>
-        <location filename="../ui/setcomdlg.ui" line="5861"/>
-        <location filename="../ui/setcomdlg.ui" line="6172"/>
-        <location filename="../ui/setcomdlg.ui" line="6483"/>
-        <location filename="../ui/setcomdlg.ui" line="6794"/>
-        <location filename="../ui/setcomdlg.ui" line="7105"/>
-        <location filename="../ui/setcomdlg.ui" line="7416"/>
-        <location filename="../ui/setcomdlg.ui" line="7727"/>
-        <location filename="../ui/setcomdlg.ui" line="8038"/>
-        <location filename="../ui/setcomdlg.ui" line="8349"/>
-        <location filename="../ui/setcomdlg.ui" line="8660"/>
-        <location filename="../ui/setcomdlg.ui" line="8971"/>
-        <location filename="../ui/setcomdlg.ui" line="9282"/>
+        <location filename="../ui/setcomdlg.ui" line="1499"/>
+        <location filename="../ui/setcomdlg.ui" line="1804"/>
+        <location filename="../ui/setcomdlg.ui" line="2133"/>
+        <location filename="../ui/setcomdlg.ui" line="2444"/>
+        <location filename="../ui/setcomdlg.ui" line="2755"/>
+        <location filename="../ui/setcomdlg.ui" line="3066"/>
+        <location filename="../ui/setcomdlg.ui" line="3377"/>
+        <location filename="../ui/setcomdlg.ui" line="3688"/>
+        <location filename="../ui/setcomdlg.ui" line="3999"/>
+        <location filename="../ui/setcomdlg.ui" line="4310"/>
+        <location filename="../ui/setcomdlg.ui" line="4621"/>
+        <location filename="../ui/setcomdlg.ui" line="4932"/>
+        <location filename="../ui/setcomdlg.ui" line="5243"/>
+        <location filename="../ui/setcomdlg.ui" line="5554"/>
+        <location filename="../ui/setcomdlg.ui" line="5865"/>
+        <location filename="../ui/setcomdlg.ui" line="6176"/>
+        <location filename="../ui/setcomdlg.ui" line="6487"/>
+        <location filename="../ui/setcomdlg.ui" line="6798"/>
+        <location filename="../ui/setcomdlg.ui" line="7109"/>
+        <location filename="../ui/setcomdlg.ui" line="7420"/>
+        <location filename="../ui/setcomdlg.ui" line="7731"/>
+        <location filename="../ui/setcomdlg.ui" line="8042"/>
+        <location filename="../ui/setcomdlg.ui" line="8353"/>
+        <location filename="../ui/setcomdlg.ui" line="8664"/>
+        <location filename="../ui/setcomdlg.ui" line="8975"/>
+        <location filename="../ui/setcomdlg.ui" line="9286"/>
         <source>COM20</source>
         <translation>COM20</translation>
     </message>
@@ -1348,32 +1332,32 @@
         <location filename="../ui/setcomdlg.ui" line="452"/>
         <location filename="../ui/setcomdlg.ui" line="757"/>
         <location filename="../ui/setcomdlg.ui" line="1062"/>
-        <location filename="../ui/setcomdlg.ui" line="1500"/>
-        <location filename="../ui/setcomdlg.ui" line="1805"/>
-        <location filename="../ui/setcomdlg.ui" line="2134"/>
-        <location filename="../ui/setcomdlg.ui" line="2445"/>
-        <location filename="../ui/setcomdlg.ui" line="2756"/>
-        <location filename="../ui/setcomdlg.ui" line="3067"/>
-        <location filename="../ui/setcomdlg.ui" line="3378"/>
-        <location filename="../ui/setcomdlg.ui" line="3689"/>
-        <location filename="../ui/setcomdlg.ui" line="4000"/>
-        <location filename="../ui/setcomdlg.ui" line="4311"/>
-        <location filename="../ui/setcomdlg.ui" line="4622"/>
-        <location filename="../ui/setcomdlg.ui" line="4933"/>
-        <location filename="../ui/setcomdlg.ui" line="5244"/>
-        <location filename="../ui/setcomdlg.ui" line="5555"/>
-        <location filename="../ui/setcomdlg.ui" line="5866"/>
-        <location filename="../ui/setcomdlg.ui" line="6177"/>
-        <location filename="../ui/setcomdlg.ui" line="6488"/>
-        <location filename="../ui/setcomdlg.ui" line="6799"/>
-        <location filename="../ui/setcomdlg.ui" line="7110"/>
-        <location filename="../ui/setcomdlg.ui" line="7421"/>
-        <location filename="../ui/setcomdlg.ui" line="7732"/>
-        <location filename="../ui/setcomdlg.ui" line="8043"/>
-        <location filename="../ui/setcomdlg.ui" line="8354"/>
-        <location filename="../ui/setcomdlg.ui" line="8665"/>
-        <location filename="../ui/setcomdlg.ui" line="8976"/>
-        <location filename="../ui/setcomdlg.ui" line="9287"/>
+        <location filename="../ui/setcomdlg.ui" line="1504"/>
+        <location filename="../ui/setcomdlg.ui" line="1809"/>
+        <location filename="../ui/setcomdlg.ui" line="2138"/>
+        <location filename="../ui/setcomdlg.ui" line="2449"/>
+        <location filename="../ui/setcomdlg.ui" line="2760"/>
+        <location filename="../ui/setcomdlg.ui" line="3071"/>
+        <location filename="../ui/setcomdlg.ui" line="3382"/>
+        <location filename="../ui/setcomdlg.ui" line="3693"/>
+        <location filename="../ui/setcomdlg.ui" line="4004"/>
+        <location filename="../ui/setcomdlg.ui" line="4315"/>
+        <location filename="../ui/setcomdlg.ui" line="4626"/>
+        <location filename="../ui/setcomdlg.ui" line="4937"/>
+        <location filename="../ui/setcomdlg.ui" line="5248"/>
+        <location filename="../ui/setcomdlg.ui" line="5559"/>
+        <location filename="../ui/setcomdlg.ui" line="5870"/>
+        <location filename="../ui/setcomdlg.ui" line="6181"/>
+        <location filename="../ui/setcomdlg.ui" line="6492"/>
+        <location filename="../ui/setcomdlg.ui" line="6803"/>
+        <location filename="../ui/setcomdlg.ui" line="7114"/>
+        <location filename="../ui/setcomdlg.ui" line="7425"/>
+        <location filename="../ui/setcomdlg.ui" line="7736"/>
+        <location filename="../ui/setcomdlg.ui" line="8047"/>
+        <location filename="../ui/setcomdlg.ui" line="8358"/>
+        <location filename="../ui/setcomdlg.ui" line="8669"/>
+        <location filename="../ui/setcomdlg.ui" line="8980"/>
+        <location filename="../ui/setcomdlg.ui" line="9291"/>
         <source>COM21</source>
         <translation>COM21</translation>
     </message>
@@ -1382,32 +1366,32 @@
         <location filename="../ui/setcomdlg.ui" line="457"/>
         <location filename="../ui/setcomdlg.ui" line="762"/>
         <location filename="../ui/setcomdlg.ui" line="1067"/>
-        <location filename="../ui/setcomdlg.ui" line="1505"/>
-        <location filename="../ui/setcomdlg.ui" line="1810"/>
-        <location filename="../ui/setcomdlg.ui" line="2139"/>
-        <location filename="../ui/setcomdlg.ui" line="2450"/>
-        <location filename="../ui/setcomdlg.ui" line="2761"/>
-        <location filename="../ui/setcomdlg.ui" line="3072"/>
-        <location filename="../ui/setcomdlg.ui" line="3383"/>
-        <location filename="../ui/setcomdlg.ui" line="3694"/>
-        <location filename="../ui/setcomdlg.ui" line="4005"/>
-        <location filename="../ui/setcomdlg.ui" line="4316"/>
-        <location filename="../ui/setcomdlg.ui" line="4627"/>
-        <location filename="../ui/setcomdlg.ui" line="4938"/>
-        <location filename="../ui/setcomdlg.ui" line="5249"/>
-        <location filename="../ui/setcomdlg.ui" line="5560"/>
-        <location filename="../ui/setcomdlg.ui" line="5871"/>
-        <location filename="../ui/setcomdlg.ui" line="6182"/>
-        <location filename="../ui/setcomdlg.ui" line="6493"/>
-        <location filename="../ui/setcomdlg.ui" line="6804"/>
-        <location filename="../ui/setcomdlg.ui" line="7115"/>
-        <location filename="../ui/setcomdlg.ui" line="7426"/>
-        <location filename="../ui/setcomdlg.ui" line="7737"/>
-        <location filename="../ui/setcomdlg.ui" line="8048"/>
-        <location filename="../ui/setcomdlg.ui" line="8359"/>
-        <location filename="../ui/setcomdlg.ui" line="8670"/>
-        <location filename="../ui/setcomdlg.ui" line="8981"/>
-        <location filename="../ui/setcomdlg.ui" line="9292"/>
+        <location filename="../ui/setcomdlg.ui" line="1509"/>
+        <location filename="../ui/setcomdlg.ui" line="1814"/>
+        <location filename="../ui/setcomdlg.ui" line="2143"/>
+        <location filename="../ui/setcomdlg.ui" line="2454"/>
+        <location filename="../ui/setcomdlg.ui" line="2765"/>
+        <location filename="../ui/setcomdlg.ui" line="3076"/>
+        <location filename="../ui/setcomdlg.ui" line="3387"/>
+        <location filename="../ui/setcomdlg.ui" line="3698"/>
+        <location filename="../ui/setcomdlg.ui" line="4009"/>
+        <location filename="../ui/setcomdlg.ui" line="4320"/>
+        <location filename="../ui/setcomdlg.ui" line="4631"/>
+        <location filename="../ui/setcomdlg.ui" line="4942"/>
+        <location filename="../ui/setcomdlg.ui" line="5253"/>
+        <location filename="../ui/setcomdlg.ui" line="5564"/>
+        <location filename="../ui/setcomdlg.ui" line="5875"/>
+        <location filename="../ui/setcomdlg.ui" line="6186"/>
+        <location filename="../ui/setcomdlg.ui" line="6497"/>
+        <location filename="../ui/setcomdlg.ui" line="6808"/>
+        <location filename="../ui/setcomdlg.ui" line="7119"/>
+        <location filename="../ui/setcomdlg.ui" line="7430"/>
+        <location filename="../ui/setcomdlg.ui" line="7741"/>
+        <location filename="../ui/setcomdlg.ui" line="8052"/>
+        <location filename="../ui/setcomdlg.ui" line="8363"/>
+        <location filename="../ui/setcomdlg.ui" line="8674"/>
+        <location filename="../ui/setcomdlg.ui" line="8985"/>
+        <location filename="../ui/setcomdlg.ui" line="9296"/>
         <source>COM22</source>
         <translation>COM22</translation>
     </message>
@@ -1416,32 +1400,32 @@
         <location filename="../ui/setcomdlg.ui" line="462"/>
         <location filename="../ui/setcomdlg.ui" line="767"/>
         <location filename="../ui/setcomdlg.ui" line="1072"/>
-        <location filename="../ui/setcomdlg.ui" line="1510"/>
-        <location filename="../ui/setcomdlg.ui" line="1815"/>
-        <location filename="../ui/setcomdlg.ui" line="2144"/>
-        <location filename="../ui/setcomdlg.ui" line="2455"/>
-        <location filename="../ui/setcomdlg.ui" line="2766"/>
-        <location filename="../ui/setcomdlg.ui" line="3077"/>
-        <location filename="../ui/setcomdlg.ui" line="3388"/>
-        <location filename="../ui/setcomdlg.ui" line="3699"/>
-        <location filename="../ui/setcomdlg.ui" line="4010"/>
-        <location filename="../ui/setcomdlg.ui" line="4321"/>
-        <location filename="../ui/setcomdlg.ui" line="4632"/>
-        <location filename="../ui/setcomdlg.ui" line="4943"/>
-        <location filename="../ui/setcomdlg.ui" line="5254"/>
-        <location filename="../ui/setcomdlg.ui" line="5565"/>
-        <location filename="../ui/setcomdlg.ui" line="5876"/>
-        <location filename="../ui/setcomdlg.ui" line="6187"/>
-        <location filename="../ui/setcomdlg.ui" line="6498"/>
-        <location filename="../ui/setcomdlg.ui" line="6809"/>
-        <location filename="../ui/setcomdlg.ui" line="7120"/>
-        <location filename="../ui/setcomdlg.ui" line="7431"/>
-        <location filename="../ui/setcomdlg.ui" line="7742"/>
-        <location filename="../ui/setcomdlg.ui" line="8053"/>
-        <location filename="../ui/setcomdlg.ui" line="8364"/>
-        <location filename="../ui/setcomdlg.ui" line="8675"/>
-        <location filename="../ui/setcomdlg.ui" line="8986"/>
-        <location filename="../ui/setcomdlg.ui" line="9297"/>
+        <location filename="../ui/setcomdlg.ui" line="1514"/>
+        <location filename="../ui/setcomdlg.ui" line="1819"/>
+        <location filename="../ui/setcomdlg.ui" line="2148"/>
+        <location filename="../ui/setcomdlg.ui" line="2459"/>
+        <location filename="../ui/setcomdlg.ui" line="2770"/>
+        <location filename="../ui/setcomdlg.ui" line="3081"/>
+        <location filename="../ui/setcomdlg.ui" line="3392"/>
+        <location filename="../ui/setcomdlg.ui" line="3703"/>
+        <location filename="../ui/setcomdlg.ui" line="4014"/>
+        <location filename="../ui/setcomdlg.ui" line="4325"/>
+        <location filename="../ui/setcomdlg.ui" line="4636"/>
+        <location filename="../ui/setcomdlg.ui" line="4947"/>
+        <location filename="../ui/setcomdlg.ui" line="5258"/>
+        <location filename="../ui/setcomdlg.ui" line="5569"/>
+        <location filename="../ui/setcomdlg.ui" line="5880"/>
+        <location filename="../ui/setcomdlg.ui" line="6191"/>
+        <location filename="../ui/setcomdlg.ui" line="6502"/>
+        <location filename="../ui/setcomdlg.ui" line="6813"/>
+        <location filename="../ui/setcomdlg.ui" line="7124"/>
+        <location filename="../ui/setcomdlg.ui" line="7435"/>
+        <location filename="../ui/setcomdlg.ui" line="7746"/>
+        <location filename="../ui/setcomdlg.ui" line="8057"/>
+        <location filename="../ui/setcomdlg.ui" line="8368"/>
+        <location filename="../ui/setcomdlg.ui" line="8679"/>
+        <location filename="../ui/setcomdlg.ui" line="8990"/>
+        <location filename="../ui/setcomdlg.ui" line="9301"/>
         <source>COM23</source>
         <translation>COM23</translation>
     </message>
@@ -1450,32 +1434,32 @@
         <location filename="../ui/setcomdlg.ui" line="467"/>
         <location filename="../ui/setcomdlg.ui" line="772"/>
         <location filename="../ui/setcomdlg.ui" line="1077"/>
-        <location filename="../ui/setcomdlg.ui" line="1515"/>
-        <location filename="../ui/setcomdlg.ui" line="1820"/>
-        <location filename="../ui/setcomdlg.ui" line="2149"/>
-        <location filename="../ui/setcomdlg.ui" line="2460"/>
-        <location filename="../ui/setcomdlg.ui" line="2771"/>
-        <location filename="../ui/setcomdlg.ui" line="3082"/>
-        <location filename="../ui/setcomdlg.ui" line="3393"/>
-        <location filename="../ui/setcomdlg.ui" line="3704"/>
-        <location filename="../ui/setcomdlg.ui" line="4015"/>
-        <location filename="../ui/setcomdlg.ui" line="4326"/>
-        <location filename="../ui/setcomdlg.ui" line="4637"/>
-        <location filename="../ui/setcomdlg.ui" line="4948"/>
-        <location filename="../ui/setcomdlg.ui" line="5259"/>
-        <location filename="../ui/setcomdlg.ui" line="5570"/>
-        <location filename="../ui/setcomdlg.ui" line="5881"/>
-        <location filename="../ui/setcomdlg.ui" line="6192"/>
-        <location filename="../ui/setcomdlg.ui" line="6503"/>
-        <location filename="../ui/setcomdlg.ui" line="6814"/>
-        <location filename="../ui/setcomdlg.ui" line="7125"/>
-        <location filename="../ui/setcomdlg.ui" line="7436"/>
-        <location filename="../ui/setcomdlg.ui" line="7747"/>
-        <location filename="../ui/setcomdlg.ui" line="8058"/>
-        <location filename="../ui/setcomdlg.ui" line="8369"/>
-        <location filename="../ui/setcomdlg.ui" line="8680"/>
-        <location filename="../ui/setcomdlg.ui" line="8991"/>
-        <location filename="../ui/setcomdlg.ui" line="9302"/>
+        <location filename="../ui/setcomdlg.ui" line="1519"/>
+        <location filename="../ui/setcomdlg.ui" line="1824"/>
+        <location filename="../ui/setcomdlg.ui" line="2153"/>
+        <location filename="../ui/setcomdlg.ui" line="2464"/>
+        <location filename="../ui/setcomdlg.ui" line="2775"/>
+        <location filename="../ui/setcomdlg.ui" line="3086"/>
+        <location filename="../ui/setcomdlg.ui" line="3397"/>
+        <location filename="../ui/setcomdlg.ui" line="3708"/>
+        <location filename="../ui/setcomdlg.ui" line="4019"/>
+        <location filename="../ui/setcomdlg.ui" line="4330"/>
+        <location filename="../ui/setcomdlg.ui" line="4641"/>
+        <location filename="../ui/setcomdlg.ui" line="4952"/>
+        <location filename="../ui/setcomdlg.ui" line="5263"/>
+        <location filename="../ui/setcomdlg.ui" line="5574"/>
+        <location filename="../ui/setcomdlg.ui" line="5885"/>
+        <location filename="../ui/setcomdlg.ui" line="6196"/>
+        <location filename="../ui/setcomdlg.ui" line="6507"/>
+        <location filename="../ui/setcomdlg.ui" line="6818"/>
+        <location filename="../ui/setcomdlg.ui" line="7129"/>
+        <location filename="../ui/setcomdlg.ui" line="7440"/>
+        <location filename="../ui/setcomdlg.ui" line="7751"/>
+        <location filename="../ui/setcomdlg.ui" line="8062"/>
+        <location filename="../ui/setcomdlg.ui" line="8373"/>
+        <location filename="../ui/setcomdlg.ui" line="8684"/>
+        <location filename="../ui/setcomdlg.ui" line="8995"/>
+        <location filename="../ui/setcomdlg.ui" line="9306"/>
         <source>COM24</source>
         <translation>COM24</translation>
     </message>
@@ -1484,32 +1468,32 @@
         <location filename="../ui/setcomdlg.ui" line="472"/>
         <location filename="../ui/setcomdlg.ui" line="777"/>
         <location filename="../ui/setcomdlg.ui" line="1082"/>
-        <location filename="../ui/setcomdlg.ui" line="1520"/>
-        <location filename="../ui/setcomdlg.ui" line="1825"/>
-        <location filename="../ui/setcomdlg.ui" line="2154"/>
-        <location filename="../ui/setcomdlg.ui" line="2465"/>
-        <location filename="../ui/setcomdlg.ui" line="2776"/>
-        <location filename="../ui/setcomdlg.ui" line="3087"/>
-        <location filename="../ui/setcomdlg.ui" line="3398"/>
-        <location filename="../ui/setcomdlg.ui" line="3709"/>
-        <location filename="../ui/setcomdlg.ui" line="4020"/>
-        <location filename="../ui/setcomdlg.ui" line="4331"/>
-        <location filename="../ui/setcomdlg.ui" line="4642"/>
-        <location filename="../ui/setcomdlg.ui" line="4953"/>
-        <location filename="../ui/setcomdlg.ui" line="5264"/>
-        <location filename="../ui/setcomdlg.ui" line="5575"/>
-        <location filename="../ui/setcomdlg.ui" line="5886"/>
-        <location filename="../ui/setcomdlg.ui" line="6197"/>
-        <location filename="../ui/setcomdlg.ui" line="6508"/>
-        <location filename="../ui/setcomdlg.ui" line="6819"/>
-        <location filename="../ui/setcomdlg.ui" line="7130"/>
-        <location filename="../ui/setcomdlg.ui" line="7441"/>
-        <location filename="../ui/setcomdlg.ui" line="7752"/>
-        <location filename="../ui/setcomdlg.ui" line="8063"/>
-        <location filename="../ui/setcomdlg.ui" line="8374"/>
-        <location filename="../ui/setcomdlg.ui" line="8685"/>
-        <location filename="../ui/setcomdlg.ui" line="8996"/>
-        <location filename="../ui/setcomdlg.ui" line="9307"/>
+        <location filename="../ui/setcomdlg.ui" line="1524"/>
+        <location filename="../ui/setcomdlg.ui" line="1829"/>
+        <location filename="../ui/setcomdlg.ui" line="2158"/>
+        <location filename="../ui/setcomdlg.ui" line="2469"/>
+        <location filename="../ui/setcomdlg.ui" line="2780"/>
+        <location filename="../ui/setcomdlg.ui" line="3091"/>
+        <location filename="../ui/setcomdlg.ui" line="3402"/>
+        <location filename="../ui/setcomdlg.ui" line="3713"/>
+        <location filename="../ui/setcomdlg.ui" line="4024"/>
+        <location filename="../ui/setcomdlg.ui" line="4335"/>
+        <location filename="../ui/setcomdlg.ui" line="4646"/>
+        <location filename="../ui/setcomdlg.ui" line="4957"/>
+        <location filename="../ui/setcomdlg.ui" line="5268"/>
+        <location filename="../ui/setcomdlg.ui" line="5579"/>
+        <location filename="../ui/setcomdlg.ui" line="5890"/>
+        <location filename="../ui/setcomdlg.ui" line="6201"/>
+        <location filename="../ui/setcomdlg.ui" line="6512"/>
+        <location filename="../ui/setcomdlg.ui" line="6823"/>
+        <location filename="../ui/setcomdlg.ui" line="7134"/>
+        <location filename="../ui/setcomdlg.ui" line="7445"/>
+        <location filename="../ui/setcomdlg.ui" line="7756"/>
+        <location filename="../ui/setcomdlg.ui" line="8067"/>
+        <location filename="../ui/setcomdlg.ui" line="8378"/>
+        <location filename="../ui/setcomdlg.ui" line="8689"/>
+        <location filename="../ui/setcomdlg.ui" line="9000"/>
+        <location filename="../ui/setcomdlg.ui" line="9311"/>
         <source>COM25</source>
         <translation>COM25</translation>
     </message>
@@ -1518,32 +1502,32 @@
         <location filename="../ui/setcomdlg.ui" line="477"/>
         <location filename="../ui/setcomdlg.ui" line="782"/>
         <location filename="../ui/setcomdlg.ui" line="1087"/>
-        <location filename="../ui/setcomdlg.ui" line="1525"/>
-        <location filename="../ui/setcomdlg.ui" line="1830"/>
-        <location filename="../ui/setcomdlg.ui" line="2159"/>
-        <location filename="../ui/setcomdlg.ui" line="2470"/>
-        <location filename="../ui/setcomdlg.ui" line="2781"/>
-        <location filename="../ui/setcomdlg.ui" line="3092"/>
-        <location filename="../ui/setcomdlg.ui" line="3403"/>
-        <location filename="../ui/setcomdlg.ui" line="3714"/>
-        <location filename="../ui/setcomdlg.ui" line="4025"/>
-        <location filename="../ui/setcomdlg.ui" line="4336"/>
-        <location filename="../ui/setcomdlg.ui" line="4647"/>
-        <location filename="../ui/setcomdlg.ui" line="4958"/>
-        <location filename="../ui/setcomdlg.ui" line="5269"/>
-        <location filename="../ui/setcomdlg.ui" line="5580"/>
-        <location filename="../ui/setcomdlg.ui" line="5891"/>
-        <location filename="../ui/setcomdlg.ui" line="6202"/>
-        <location filename="../ui/setcomdlg.ui" line="6513"/>
-        <location filename="../ui/setcomdlg.ui" line="6824"/>
-        <location filename="../ui/setcomdlg.ui" line="7135"/>
-        <location filename="../ui/setcomdlg.ui" line="7446"/>
-        <location filename="../ui/setcomdlg.ui" line="7757"/>
-        <location filename="../ui/setcomdlg.ui" line="8068"/>
-        <location filename="../ui/setcomdlg.ui" line="8379"/>
-        <location filename="../ui/setcomdlg.ui" line="8690"/>
-        <location filename="../ui/setcomdlg.ui" line="9001"/>
-        <location filename="../ui/setcomdlg.ui" line="9312"/>
+        <location filename="../ui/setcomdlg.ui" line="1529"/>
+        <location filename="../ui/setcomdlg.ui" line="1834"/>
+        <location filename="../ui/setcomdlg.ui" line="2163"/>
+        <location filename="../ui/setcomdlg.ui" line="2474"/>
+        <location filename="../ui/setcomdlg.ui" line="2785"/>
+        <location filename="../ui/setcomdlg.ui" line="3096"/>
+        <location filename="../ui/setcomdlg.ui" line="3407"/>
+        <location filename="../ui/setcomdlg.ui" line="3718"/>
+        <location filename="../ui/setcomdlg.ui" line="4029"/>
+        <location filename="../ui/setcomdlg.ui" line="4340"/>
+        <location filename="../ui/setcomdlg.ui" line="4651"/>
+        <location filename="../ui/setcomdlg.ui" line="4962"/>
+        <location filename="../ui/setcomdlg.ui" line="5273"/>
+        <location filename="../ui/setcomdlg.ui" line="5584"/>
+        <location filename="../ui/setcomdlg.ui" line="5895"/>
+        <location filename="../ui/setcomdlg.ui" line="6206"/>
+        <location filename="../ui/setcomdlg.ui" line="6517"/>
+        <location filename="../ui/setcomdlg.ui" line="6828"/>
+        <location filename="../ui/setcomdlg.ui" line="7139"/>
+        <location filename="../ui/setcomdlg.ui" line="7450"/>
+        <location filename="../ui/setcomdlg.ui" line="7761"/>
+        <location filename="../ui/setcomdlg.ui" line="8072"/>
+        <location filename="../ui/setcomdlg.ui" line="8383"/>
+        <location filename="../ui/setcomdlg.ui" line="8694"/>
+        <location filename="../ui/setcomdlg.ui" line="9005"/>
+        <location filename="../ui/setcomdlg.ui" line="9316"/>
         <source>COM26</source>
         <translation>COM26</translation>
     </message>
@@ -1552,32 +1536,32 @@
         <location filename="../ui/setcomdlg.ui" line="482"/>
         <location filename="../ui/setcomdlg.ui" line="787"/>
         <location filename="../ui/setcomdlg.ui" line="1092"/>
-        <location filename="../ui/setcomdlg.ui" line="1530"/>
-        <location filename="../ui/setcomdlg.ui" line="1835"/>
-        <location filename="../ui/setcomdlg.ui" line="2164"/>
-        <location filename="../ui/setcomdlg.ui" line="2475"/>
-        <location filename="../ui/setcomdlg.ui" line="2786"/>
-        <location filename="../ui/setcomdlg.ui" line="3097"/>
-        <location filename="../ui/setcomdlg.ui" line="3408"/>
-        <location filename="../ui/setcomdlg.ui" line="3719"/>
-        <location filename="../ui/setcomdlg.ui" line="4030"/>
-        <location filename="../ui/setcomdlg.ui" line="4341"/>
-        <location filename="../ui/setcomdlg.ui" line="4652"/>
-        <location filename="../ui/setcomdlg.ui" line="4963"/>
-        <location filename="../ui/setcomdlg.ui" line="5274"/>
-        <location filename="../ui/setcomdlg.ui" line="5585"/>
-        <location filename="../ui/setcomdlg.ui" line="5896"/>
-        <location filename="../ui/setcomdlg.ui" line="6207"/>
-        <location filename="../ui/setcomdlg.ui" line="6518"/>
-        <location filename="../ui/setcomdlg.ui" line="6829"/>
-        <location filename="../ui/setcomdlg.ui" line="7140"/>
-        <location filename="../ui/setcomdlg.ui" line="7451"/>
-        <location filename="../ui/setcomdlg.ui" line="7762"/>
-        <location filename="../ui/setcomdlg.ui" line="8073"/>
-        <location filename="../ui/setcomdlg.ui" line="8384"/>
-        <location filename="../ui/setcomdlg.ui" line="8695"/>
-        <location filename="../ui/setcomdlg.ui" line="9006"/>
-        <location filename="../ui/setcomdlg.ui" line="9317"/>
+        <location filename="../ui/setcomdlg.ui" line="1534"/>
+        <location filename="../ui/setcomdlg.ui" line="1839"/>
+        <location filename="../ui/setcomdlg.ui" line="2168"/>
+        <location filename="../ui/setcomdlg.ui" line="2479"/>
+        <location filename="../ui/setcomdlg.ui" line="2790"/>
+        <location filename="../ui/setcomdlg.ui" line="3101"/>
+        <location filename="../ui/setcomdlg.ui" line="3412"/>
+        <location filename="../ui/setcomdlg.ui" line="3723"/>
+        <location filename="../ui/setcomdlg.ui" line="4034"/>
+        <location filename="../ui/setcomdlg.ui" line="4345"/>
+        <location filename="../ui/setcomdlg.ui" line="4656"/>
+        <location filename="../ui/setcomdlg.ui" line="4967"/>
+        <location filename="../ui/setcomdlg.ui" line="5278"/>
+        <location filename="../ui/setcomdlg.ui" line="5589"/>
+        <location filename="../ui/setcomdlg.ui" line="5900"/>
+        <location filename="../ui/setcomdlg.ui" line="6211"/>
+        <location filename="../ui/setcomdlg.ui" line="6522"/>
+        <location filename="../ui/setcomdlg.ui" line="6833"/>
+        <location filename="../ui/setcomdlg.ui" line="7144"/>
+        <location filename="../ui/setcomdlg.ui" line="7455"/>
+        <location filename="../ui/setcomdlg.ui" line="7766"/>
+        <location filename="../ui/setcomdlg.ui" line="8077"/>
+        <location filename="../ui/setcomdlg.ui" line="8388"/>
+        <location filename="../ui/setcomdlg.ui" line="8699"/>
+        <location filename="../ui/setcomdlg.ui" line="9010"/>
+        <location filename="../ui/setcomdlg.ui" line="9321"/>
         <source>COM27</source>
         <translation>COM27</translation>
     </message>
@@ -1586,32 +1570,32 @@
         <location filename="../ui/setcomdlg.ui" line="487"/>
         <location filename="../ui/setcomdlg.ui" line="792"/>
         <location filename="../ui/setcomdlg.ui" line="1097"/>
-        <location filename="../ui/setcomdlg.ui" line="1535"/>
-        <location filename="../ui/setcomdlg.ui" line="1840"/>
-        <location filename="../ui/setcomdlg.ui" line="2169"/>
-        <location filename="../ui/setcomdlg.ui" line="2480"/>
-        <location filename="../ui/setcomdlg.ui" line="2791"/>
-        <location filename="../ui/setcomdlg.ui" line="3102"/>
-        <location filename="../ui/setcomdlg.ui" line="3413"/>
-        <location filename="../ui/setcomdlg.ui" line="3724"/>
-        <location filename="../ui/setcomdlg.ui" line="4035"/>
-        <location filename="../ui/setcomdlg.ui" line="4346"/>
-        <location filename="../ui/setcomdlg.ui" line="4657"/>
-        <location filename="../ui/setcomdlg.ui" line="4968"/>
-        <location filename="../ui/setcomdlg.ui" line="5279"/>
-        <location filename="../ui/setcomdlg.ui" line="5590"/>
-        <location filename="../ui/setcomdlg.ui" line="5901"/>
-        <location filename="../ui/setcomdlg.ui" line="6212"/>
-        <location filename="../ui/setcomdlg.ui" line="6523"/>
-        <location filename="../ui/setcomdlg.ui" line="6834"/>
-        <location filename="../ui/setcomdlg.ui" line="7145"/>
-        <location filename="../ui/setcomdlg.ui" line="7456"/>
-        <location filename="../ui/setcomdlg.ui" line="7767"/>
-        <location filename="../ui/setcomdlg.ui" line="8078"/>
-        <location filename="../ui/setcomdlg.ui" line="8389"/>
-        <location filename="../ui/setcomdlg.ui" line="8700"/>
-        <location filename="../ui/setcomdlg.ui" line="9011"/>
-        <location filename="../ui/setcomdlg.ui" line="9322"/>
+        <location filename="../ui/setcomdlg.ui" line="1539"/>
+        <location filename="../ui/setcomdlg.ui" line="1844"/>
+        <location filename="../ui/setcomdlg.ui" line="2173"/>
+        <location filename="../ui/setcomdlg.ui" line="2484"/>
+        <location filename="../ui/setcomdlg.ui" line="2795"/>
+        <location filename="../ui/setcomdlg.ui" line="3106"/>
+        <location filename="../ui/setcomdlg.ui" line="3417"/>
+        <location filename="../ui/setcomdlg.ui" line="3728"/>
+        <location filename="../ui/setcomdlg.ui" line="4039"/>
+        <location filename="../ui/setcomdlg.ui" line="4350"/>
+        <location filename="../ui/setcomdlg.ui" line="4661"/>
+        <location filename="../ui/setcomdlg.ui" line="4972"/>
+        <location filename="../ui/setcomdlg.ui" line="5283"/>
+        <location filename="../ui/setcomdlg.ui" line="5594"/>
+        <location filename="../ui/setcomdlg.ui" line="5905"/>
+        <location filename="../ui/setcomdlg.ui" line="6216"/>
+        <location filename="../ui/setcomdlg.ui" line="6527"/>
+        <location filename="../ui/setcomdlg.ui" line="6838"/>
+        <location filename="../ui/setcomdlg.ui" line="7149"/>
+        <location filename="../ui/setcomdlg.ui" line="7460"/>
+        <location filename="../ui/setcomdlg.ui" line="7771"/>
+        <location filename="../ui/setcomdlg.ui" line="8082"/>
+        <location filename="../ui/setcomdlg.ui" line="8393"/>
+        <location filename="../ui/setcomdlg.ui" line="8704"/>
+        <location filename="../ui/setcomdlg.ui" line="9015"/>
+        <location filename="../ui/setcomdlg.ui" line="9326"/>
         <source>COM28</source>
         <translation>COM28</translation>
     </message>
@@ -1620,32 +1604,32 @@
         <location filename="../ui/setcomdlg.ui" line="492"/>
         <location filename="../ui/setcomdlg.ui" line="797"/>
         <location filename="../ui/setcomdlg.ui" line="1102"/>
-        <location filename="../ui/setcomdlg.ui" line="1540"/>
-        <location filename="../ui/setcomdlg.ui" line="1845"/>
-        <location filename="../ui/setcomdlg.ui" line="2174"/>
-        <location filename="../ui/setcomdlg.ui" line="2485"/>
-        <location filename="../ui/setcomdlg.ui" line="2796"/>
-        <location filename="../ui/setcomdlg.ui" line="3107"/>
-        <location filename="../ui/setcomdlg.ui" line="3418"/>
-        <location filename="../ui/setcomdlg.ui" line="3729"/>
-        <location filename="../ui/setcomdlg.ui" line="4040"/>
-        <location filename="../ui/setcomdlg.ui" line="4351"/>
-        <location filename="../ui/setcomdlg.ui" line="4662"/>
-        <location filename="../ui/setcomdlg.ui" line="4973"/>
-        <location filename="../ui/setcomdlg.ui" line="5284"/>
-        <location filename="../ui/setcomdlg.ui" line="5595"/>
-        <location filename="../ui/setcomdlg.ui" line="5906"/>
-        <location filename="../ui/setcomdlg.ui" line="6217"/>
-        <location filename="../ui/setcomdlg.ui" line="6528"/>
-        <location filename="../ui/setcomdlg.ui" line="6839"/>
-        <location filename="../ui/setcomdlg.ui" line="7150"/>
-        <location filename="../ui/setcomdlg.ui" line="7461"/>
-        <location filename="../ui/setcomdlg.ui" line="7772"/>
-        <location filename="../ui/setcomdlg.ui" line="8083"/>
-        <location filename="../ui/setcomdlg.ui" line="8394"/>
-        <location filename="../ui/setcomdlg.ui" line="8705"/>
-        <location filename="../ui/setcomdlg.ui" line="9016"/>
-        <location filename="../ui/setcomdlg.ui" line="9327"/>
+        <location filename="../ui/setcomdlg.ui" line="1544"/>
+        <location filename="../ui/setcomdlg.ui" line="1849"/>
+        <location filename="../ui/setcomdlg.ui" line="2178"/>
+        <location filename="../ui/setcomdlg.ui" line="2489"/>
+        <location filename="../ui/setcomdlg.ui" line="2800"/>
+        <location filename="../ui/setcomdlg.ui" line="3111"/>
+        <location filename="../ui/setcomdlg.ui" line="3422"/>
+        <location filename="../ui/setcomdlg.ui" line="3733"/>
+        <location filename="../ui/setcomdlg.ui" line="4044"/>
+        <location filename="../ui/setcomdlg.ui" line="4355"/>
+        <location filename="../ui/setcomdlg.ui" line="4666"/>
+        <location filename="../ui/setcomdlg.ui" line="4977"/>
+        <location filename="../ui/setcomdlg.ui" line="5288"/>
+        <location filename="../ui/setcomdlg.ui" line="5599"/>
+        <location filename="../ui/setcomdlg.ui" line="5910"/>
+        <location filename="../ui/setcomdlg.ui" line="6221"/>
+        <location filename="../ui/setcomdlg.ui" line="6532"/>
+        <location filename="../ui/setcomdlg.ui" line="6843"/>
+        <location filename="../ui/setcomdlg.ui" line="7154"/>
+        <location filename="../ui/setcomdlg.ui" line="7465"/>
+        <location filename="../ui/setcomdlg.ui" line="7776"/>
+        <location filename="../ui/setcomdlg.ui" line="8087"/>
+        <location filename="../ui/setcomdlg.ui" line="8398"/>
+        <location filename="../ui/setcomdlg.ui" line="8709"/>
+        <location filename="../ui/setcomdlg.ui" line="9020"/>
+        <location filename="../ui/setcomdlg.ui" line="9331"/>
         <source>COM29</source>
         <translation>COM29</translation>
     </message>
@@ -1654,32 +1638,32 @@
         <location filename="../ui/setcomdlg.ui" line="497"/>
         <location filename="../ui/setcomdlg.ui" line="802"/>
         <location filename="../ui/setcomdlg.ui" line="1107"/>
-        <location filename="../ui/setcomdlg.ui" line="1545"/>
-        <location filename="../ui/setcomdlg.ui" line="1850"/>
-        <location filename="../ui/setcomdlg.ui" line="2179"/>
-        <location filename="../ui/setcomdlg.ui" line="2490"/>
-        <location filename="../ui/setcomdlg.ui" line="2801"/>
-        <location filename="../ui/setcomdlg.ui" line="3112"/>
-        <location filename="../ui/setcomdlg.ui" line="3423"/>
-        <location filename="../ui/setcomdlg.ui" line="3734"/>
-        <location filename="../ui/setcomdlg.ui" line="4045"/>
-        <location filename="../ui/setcomdlg.ui" line="4356"/>
-        <location filename="../ui/setcomdlg.ui" line="4667"/>
-        <location filename="../ui/setcomdlg.ui" line="4978"/>
-        <location filename="../ui/setcomdlg.ui" line="5289"/>
-        <location filename="../ui/setcomdlg.ui" line="5600"/>
-        <location filename="../ui/setcomdlg.ui" line="5911"/>
-        <location filename="../ui/setcomdlg.ui" line="6222"/>
-        <location filename="../ui/setcomdlg.ui" line="6533"/>
-        <location filename="../ui/setcomdlg.ui" line="6844"/>
-        <location filename="../ui/setcomdlg.ui" line="7155"/>
-        <location filename="../ui/setcomdlg.ui" line="7466"/>
-        <location filename="../ui/setcomdlg.ui" line="7777"/>
-        <location filename="../ui/setcomdlg.ui" line="8088"/>
-        <location filename="../ui/setcomdlg.ui" line="8399"/>
-        <location filename="../ui/setcomdlg.ui" line="8710"/>
-        <location filename="../ui/setcomdlg.ui" line="9021"/>
-        <location filename="../ui/setcomdlg.ui" line="9332"/>
+        <location filename="../ui/setcomdlg.ui" line="1549"/>
+        <location filename="../ui/setcomdlg.ui" line="1854"/>
+        <location filename="../ui/setcomdlg.ui" line="2183"/>
+        <location filename="../ui/setcomdlg.ui" line="2494"/>
+        <location filename="../ui/setcomdlg.ui" line="2805"/>
+        <location filename="../ui/setcomdlg.ui" line="3116"/>
+        <location filename="../ui/setcomdlg.ui" line="3427"/>
+        <location filename="../ui/setcomdlg.ui" line="3738"/>
+        <location filename="../ui/setcomdlg.ui" line="4049"/>
+        <location filename="../ui/setcomdlg.ui" line="4360"/>
+        <location filename="../ui/setcomdlg.ui" line="4671"/>
+        <location filename="../ui/setcomdlg.ui" line="4982"/>
+        <location filename="../ui/setcomdlg.ui" line="5293"/>
+        <location filename="../ui/setcomdlg.ui" line="5604"/>
+        <location filename="../ui/setcomdlg.ui" line="5915"/>
+        <location filename="../ui/setcomdlg.ui" line="6226"/>
+        <location filename="../ui/setcomdlg.ui" line="6537"/>
+        <location filename="../ui/setcomdlg.ui" line="6848"/>
+        <location filename="../ui/setcomdlg.ui" line="7159"/>
+        <location filename="../ui/setcomdlg.ui" line="7470"/>
+        <location filename="../ui/setcomdlg.ui" line="7781"/>
+        <location filename="../ui/setcomdlg.ui" line="8092"/>
+        <location filename="../ui/setcomdlg.ui" line="8403"/>
+        <location filename="../ui/setcomdlg.ui" line="8714"/>
+        <location filename="../ui/setcomdlg.ui" line="9025"/>
+        <location filename="../ui/setcomdlg.ui" line="9336"/>
         <source>COM30</source>
         <translation>COM30</translation>
     </message>
@@ -1688,32 +1672,32 @@
         <location filename="../ui/setcomdlg.ui" line="505"/>
         <location filename="../ui/setcomdlg.ui" line="810"/>
         <location filename="../ui/setcomdlg.ui" line="1115"/>
-        <location filename="../ui/setcomdlg.ui" line="1553"/>
-        <location filename="../ui/setcomdlg.ui" line="1858"/>
-        <location filename="../ui/setcomdlg.ui" line="2187"/>
-        <location filename="../ui/setcomdlg.ui" line="2498"/>
-        <location filename="../ui/setcomdlg.ui" line="2809"/>
-        <location filename="../ui/setcomdlg.ui" line="3120"/>
-        <location filename="../ui/setcomdlg.ui" line="3431"/>
-        <location filename="../ui/setcomdlg.ui" line="3742"/>
-        <location filename="../ui/setcomdlg.ui" line="4053"/>
-        <location filename="../ui/setcomdlg.ui" line="4364"/>
-        <location filename="../ui/setcomdlg.ui" line="4675"/>
-        <location filename="../ui/setcomdlg.ui" line="4986"/>
-        <location filename="../ui/setcomdlg.ui" line="5297"/>
-        <location filename="../ui/setcomdlg.ui" line="5608"/>
-        <location filename="../ui/setcomdlg.ui" line="5919"/>
-        <location filename="../ui/setcomdlg.ui" line="6230"/>
-        <location filename="../ui/setcomdlg.ui" line="6541"/>
-        <location filename="../ui/setcomdlg.ui" line="6852"/>
-        <location filename="../ui/setcomdlg.ui" line="7163"/>
-        <location filename="../ui/setcomdlg.ui" line="7474"/>
-        <location filename="../ui/setcomdlg.ui" line="7785"/>
-        <location filename="../ui/setcomdlg.ui" line="8096"/>
-        <location filename="../ui/setcomdlg.ui" line="8407"/>
-        <location filename="../ui/setcomdlg.ui" line="8718"/>
-        <location filename="../ui/setcomdlg.ui" line="9029"/>
-        <location filename="../ui/setcomdlg.ui" line="9340"/>
+        <location filename="../ui/setcomdlg.ui" line="1557"/>
+        <location filename="../ui/setcomdlg.ui" line="1862"/>
+        <location filename="../ui/setcomdlg.ui" line="2191"/>
+        <location filename="../ui/setcomdlg.ui" line="2502"/>
+        <location filename="../ui/setcomdlg.ui" line="2813"/>
+        <location filename="../ui/setcomdlg.ui" line="3124"/>
+        <location filename="../ui/setcomdlg.ui" line="3435"/>
+        <location filename="../ui/setcomdlg.ui" line="3746"/>
+        <location filename="../ui/setcomdlg.ui" line="4057"/>
+        <location filename="../ui/setcomdlg.ui" line="4368"/>
+        <location filename="../ui/setcomdlg.ui" line="4679"/>
+        <location filename="../ui/setcomdlg.ui" line="4990"/>
+        <location filename="../ui/setcomdlg.ui" line="5301"/>
+        <location filename="../ui/setcomdlg.ui" line="5612"/>
+        <location filename="../ui/setcomdlg.ui" line="5923"/>
+        <location filename="../ui/setcomdlg.ui" line="6234"/>
+        <location filename="../ui/setcomdlg.ui" line="6545"/>
+        <location filename="../ui/setcomdlg.ui" line="6856"/>
+        <location filename="../ui/setcomdlg.ui" line="7167"/>
+        <location filename="../ui/setcomdlg.ui" line="7478"/>
+        <location filename="../ui/setcomdlg.ui" line="7789"/>
+        <location filename="../ui/setcomdlg.ui" line="8100"/>
+        <location filename="../ui/setcomdlg.ui" line="8411"/>
+        <location filename="../ui/setcomdlg.ui" line="8722"/>
+        <location filename="../ui/setcomdlg.ui" line="9033"/>
+        <location filename="../ui/setcomdlg.ui" line="9344"/>
         <source>BaudRate</source>
         <translation>波特率</translation>
     </message>
@@ -1722,32 +1706,32 @@
         <location filename="../ui/setcomdlg.ui" line="513"/>
         <location filename="../ui/setcomdlg.ui" line="818"/>
         <location filename="../ui/setcomdlg.ui" line="1123"/>
-        <location filename="../ui/setcomdlg.ui" line="1561"/>
-        <location filename="../ui/setcomdlg.ui" line="1866"/>
-        <location filename="../ui/setcomdlg.ui" line="2195"/>
-        <location filename="../ui/setcomdlg.ui" line="2506"/>
-        <location filename="../ui/setcomdlg.ui" line="2817"/>
-        <location filename="../ui/setcomdlg.ui" line="3128"/>
-        <location filename="../ui/setcomdlg.ui" line="3439"/>
-        <location filename="../ui/setcomdlg.ui" line="3750"/>
-        <location filename="../ui/setcomdlg.ui" line="4061"/>
-        <location filename="../ui/setcomdlg.ui" line="4372"/>
-        <location filename="../ui/setcomdlg.ui" line="4683"/>
-        <location filename="../ui/setcomdlg.ui" line="4994"/>
-        <location filename="../ui/setcomdlg.ui" line="5305"/>
-        <location filename="../ui/setcomdlg.ui" line="5616"/>
-        <location filename="../ui/setcomdlg.ui" line="5927"/>
-        <location filename="../ui/setcomdlg.ui" line="6238"/>
-        <location filename="../ui/setcomdlg.ui" line="6549"/>
-        <location filename="../ui/setcomdlg.ui" line="6860"/>
-        <location filename="../ui/setcomdlg.ui" line="7171"/>
-        <location filename="../ui/setcomdlg.ui" line="7482"/>
-        <location filename="../ui/setcomdlg.ui" line="7793"/>
-        <location filename="../ui/setcomdlg.ui" line="8104"/>
-        <location filename="../ui/setcomdlg.ui" line="8415"/>
-        <location filename="../ui/setcomdlg.ui" line="8726"/>
-        <location filename="../ui/setcomdlg.ui" line="9037"/>
-        <location filename="../ui/setcomdlg.ui" line="9348"/>
+        <location filename="../ui/setcomdlg.ui" line="1565"/>
+        <location filename="../ui/setcomdlg.ui" line="1870"/>
+        <location filename="../ui/setcomdlg.ui" line="2199"/>
+        <location filename="../ui/setcomdlg.ui" line="2510"/>
+        <location filename="../ui/setcomdlg.ui" line="2821"/>
+        <location filename="../ui/setcomdlg.ui" line="3132"/>
+        <location filename="../ui/setcomdlg.ui" line="3443"/>
+        <location filename="../ui/setcomdlg.ui" line="3754"/>
+        <location filename="../ui/setcomdlg.ui" line="4065"/>
+        <location filename="../ui/setcomdlg.ui" line="4376"/>
+        <location filename="../ui/setcomdlg.ui" line="4687"/>
+        <location filename="../ui/setcomdlg.ui" line="4998"/>
+        <location filename="../ui/setcomdlg.ui" line="5309"/>
+        <location filename="../ui/setcomdlg.ui" line="5620"/>
+        <location filename="../ui/setcomdlg.ui" line="5931"/>
+        <location filename="../ui/setcomdlg.ui" line="6242"/>
+        <location filename="../ui/setcomdlg.ui" line="6553"/>
+        <location filename="../ui/setcomdlg.ui" line="6864"/>
+        <location filename="../ui/setcomdlg.ui" line="7175"/>
+        <location filename="../ui/setcomdlg.ui" line="7486"/>
+        <location filename="../ui/setcomdlg.ui" line="7797"/>
+        <location filename="../ui/setcomdlg.ui" line="8108"/>
+        <location filename="../ui/setcomdlg.ui" line="8419"/>
+        <location filename="../ui/setcomdlg.ui" line="8730"/>
+        <location filename="../ui/setcomdlg.ui" line="9041"/>
+        <location filename="../ui/setcomdlg.ui" line="9352"/>
         <source>2400</source>
         <translation>2400</translation>
     </message>
@@ -1756,32 +1740,32 @@
         <location filename="../ui/setcomdlg.ui" line="518"/>
         <location filename="../ui/setcomdlg.ui" line="823"/>
         <location filename="../ui/setcomdlg.ui" line="1128"/>
-        <location filename="../ui/setcomdlg.ui" line="1566"/>
-        <location filename="../ui/setcomdlg.ui" line="1871"/>
-        <location filename="../ui/setcomdlg.ui" line="2200"/>
-        <location filename="../ui/setcomdlg.ui" line="2511"/>
-        <location filename="../ui/setcomdlg.ui" line="2822"/>
-        <location filename="../ui/setcomdlg.ui" line="3133"/>
-        <location filename="../ui/setcomdlg.ui" line="3444"/>
-        <location filename="../ui/setcomdlg.ui" line="3755"/>
-        <location filename="../ui/setcomdlg.ui" line="4066"/>
-        <location filename="../ui/setcomdlg.ui" line="4377"/>
-        <location filename="../ui/setcomdlg.ui" line="4688"/>
-        <location filename="../ui/setcomdlg.ui" line="4999"/>
-        <location filename="../ui/setcomdlg.ui" line="5310"/>
-        <location filename="../ui/setcomdlg.ui" line="5621"/>
-        <location filename="../ui/setcomdlg.ui" line="5932"/>
-        <location filename="../ui/setcomdlg.ui" line="6243"/>
-        <location filename="../ui/setcomdlg.ui" line="6554"/>
-        <location filename="../ui/setcomdlg.ui" line="6865"/>
-        <location filename="../ui/setcomdlg.ui" line="7176"/>
-        <location filename="../ui/setcomdlg.ui" line="7487"/>
-        <location filename="../ui/setcomdlg.ui" line="7798"/>
-        <location filename="../ui/setcomdlg.ui" line="8109"/>
-        <location filename="../ui/setcomdlg.ui" line="8420"/>
-        <location filename="../ui/setcomdlg.ui" line="8731"/>
-        <location filename="../ui/setcomdlg.ui" line="9042"/>
-        <location filename="../ui/setcomdlg.ui" line="9353"/>
+        <location filename="../ui/setcomdlg.ui" line="1570"/>
+        <location filename="../ui/setcomdlg.ui" line="1875"/>
+        <location filename="../ui/setcomdlg.ui" line="2204"/>
+        <location filename="../ui/setcomdlg.ui" line="2515"/>
+        <location filename="../ui/setcomdlg.ui" line="2826"/>
+        <location filename="../ui/setcomdlg.ui" line="3137"/>
+        <location filename="../ui/setcomdlg.ui" line="3448"/>
+        <location filename="../ui/setcomdlg.ui" line="3759"/>
+        <location filename="../ui/setcomdlg.ui" line="4070"/>
+        <location filename="../ui/setcomdlg.ui" line="4381"/>
+        <location filename="../ui/setcomdlg.ui" line="4692"/>
+        <location filename="../ui/setcomdlg.ui" line="5003"/>
+        <location filename="../ui/setcomdlg.ui" line="5314"/>
+        <location filename="../ui/setcomdlg.ui" line="5625"/>
+        <location filename="../ui/setcomdlg.ui" line="5936"/>
+        <location filename="../ui/setcomdlg.ui" line="6247"/>
+        <location filename="../ui/setcomdlg.ui" line="6558"/>
+        <location filename="../ui/setcomdlg.ui" line="6869"/>
+        <location filename="../ui/setcomdlg.ui" line="7180"/>
+        <location filename="../ui/setcomdlg.ui" line="7491"/>
+        <location filename="../ui/setcomdlg.ui" line="7802"/>
+        <location filename="../ui/setcomdlg.ui" line="8113"/>
+        <location filename="../ui/setcomdlg.ui" line="8424"/>
+        <location filename="../ui/setcomdlg.ui" line="8735"/>
+        <location filename="../ui/setcomdlg.ui" line="9046"/>
+        <location filename="../ui/setcomdlg.ui" line="9357"/>
         <source>4800</source>
         <translation>4800</translation>
     </message>
@@ -1790,32 +1774,32 @@
         <location filename="../ui/setcomdlg.ui" line="523"/>
         <location filename="../ui/setcomdlg.ui" line="828"/>
         <location filename="../ui/setcomdlg.ui" line="1133"/>
-        <location filename="../ui/setcomdlg.ui" line="1571"/>
-        <location filename="../ui/setcomdlg.ui" line="1876"/>
-        <location filename="../ui/setcomdlg.ui" line="2205"/>
-        <location filename="../ui/setcomdlg.ui" line="2516"/>
-        <location filename="../ui/setcomdlg.ui" line="2827"/>
-        <location filename="../ui/setcomdlg.ui" line="3138"/>
-        <location filename="../ui/setcomdlg.ui" line="3449"/>
-        <location filename="../ui/setcomdlg.ui" line="3760"/>
-        <location filename="../ui/setcomdlg.ui" line="4071"/>
-        <location filename="../ui/setcomdlg.ui" line="4382"/>
-        <location filename="../ui/setcomdlg.ui" line="4693"/>
-        <location filename="../ui/setcomdlg.ui" line="5004"/>
-        <location filename="../ui/setcomdlg.ui" line="5315"/>
-        <location filename="../ui/setcomdlg.ui" line="5626"/>
-        <location filename="../ui/setcomdlg.ui" line="5937"/>
-        <location filename="../ui/setcomdlg.ui" line="6248"/>
-        <location filename="../ui/setcomdlg.ui" line="6559"/>
-        <location filename="../ui/setcomdlg.ui" line="6870"/>
-        <location filename="../ui/setcomdlg.ui" line="7181"/>
-        <location filename="../ui/setcomdlg.ui" line="7492"/>
-        <location filename="../ui/setcomdlg.ui" line="7803"/>
-        <location filename="../ui/setcomdlg.ui" line="8114"/>
-        <location filename="../ui/setcomdlg.ui" line="8425"/>
-        <location filename="../ui/setcomdlg.ui" line="8736"/>
-        <location filename="../ui/setcomdlg.ui" line="9047"/>
-        <location filename="../ui/setcomdlg.ui" line="9358"/>
+        <location filename="../ui/setcomdlg.ui" line="1575"/>
+        <location filename="../ui/setcomdlg.ui" line="1880"/>
+        <location filename="../ui/setcomdlg.ui" line="2209"/>
+        <location filename="../ui/setcomdlg.ui" line="2520"/>
+        <location filename="../ui/setcomdlg.ui" line="2831"/>
+        <location filename="../ui/setcomdlg.ui" line="3142"/>
+        <location filename="../ui/setcomdlg.ui" line="3453"/>
+        <location filename="../ui/setcomdlg.ui" line="3764"/>
+        <location filename="../ui/setcomdlg.ui" line="4075"/>
+        <location filename="../ui/setcomdlg.ui" line="4386"/>
+        <location filename="../ui/setcomdlg.ui" line="4697"/>
+        <location filename="../ui/setcomdlg.ui" line="5008"/>
+        <location filename="../ui/setcomdlg.ui" line="5319"/>
+        <location filename="../ui/setcomdlg.ui" line="5630"/>
+        <location filename="../ui/setcomdlg.ui" line="5941"/>
+        <location filename="../ui/setcomdlg.ui" line="6252"/>
+        <location filename="../ui/setcomdlg.ui" line="6563"/>
+        <location filename="../ui/setcomdlg.ui" line="6874"/>
+        <location filename="../ui/setcomdlg.ui" line="7185"/>
+        <location filename="../ui/setcomdlg.ui" line="7496"/>
+        <location filename="../ui/setcomdlg.ui" line="7807"/>
+        <location filename="../ui/setcomdlg.ui" line="8118"/>
+        <location filename="../ui/setcomdlg.ui" line="8429"/>
+        <location filename="../ui/setcomdlg.ui" line="8740"/>
+        <location filename="../ui/setcomdlg.ui" line="9051"/>
+        <location filename="../ui/setcomdlg.ui" line="9362"/>
         <source>9600</source>
         <translation>9600</translation>
     </message>
@@ -1824,32 +1808,32 @@
         <location filename="../ui/setcomdlg.ui" line="528"/>
         <location filename="../ui/setcomdlg.ui" line="833"/>
         <location filename="../ui/setcomdlg.ui" line="1138"/>
-        <location filename="../ui/setcomdlg.ui" line="1576"/>
-        <location filename="../ui/setcomdlg.ui" line="1881"/>
-        <location filename="../ui/setcomdlg.ui" line="2210"/>
-        <location filename="../ui/setcomdlg.ui" line="2521"/>
-        <location filename="../ui/setcomdlg.ui" line="2832"/>
-        <location filename="../ui/setcomdlg.ui" line="3143"/>
-        <location filename="../ui/setcomdlg.ui" line="3454"/>
-        <location filename="../ui/setcomdlg.ui" line="3765"/>
-        <location filename="../ui/setcomdlg.ui" line="4076"/>
-        <location filename="../ui/setcomdlg.ui" line="4387"/>
-        <location filename="../ui/setcomdlg.ui" line="4698"/>
-        <location filename="../ui/setcomdlg.ui" line="5009"/>
-        <location filename="../ui/setcomdlg.ui" line="5320"/>
-        <location filename="../ui/setcomdlg.ui" line="5631"/>
-        <location filename="../ui/setcomdlg.ui" line="5942"/>
-        <location filename="../ui/setcomdlg.ui" line="6253"/>
-        <location filename="../ui/setcomdlg.ui" line="6564"/>
-        <location filename="../ui/setcomdlg.ui" line="6875"/>
-        <location filename="../ui/setcomdlg.ui" line="7186"/>
-        <location filename="../ui/setcomdlg.ui" line="7497"/>
-        <location filename="../ui/setcomdlg.ui" line="7808"/>
-        <location filename="../ui/setcomdlg.ui" line="8119"/>
-        <location filename="../ui/setcomdlg.ui" line="8430"/>
-        <location filename="../ui/setcomdlg.ui" line="8741"/>
-        <location filename="../ui/setcomdlg.ui" line="9052"/>
-        <location filename="../ui/setcomdlg.ui" line="9363"/>
+        <location filename="../ui/setcomdlg.ui" line="1580"/>
+        <location filename="../ui/setcomdlg.ui" line="1885"/>
+        <location filename="../ui/setcomdlg.ui" line="2214"/>
+        <location filename="../ui/setcomdlg.ui" line="2525"/>
+        <location filename="../ui/setcomdlg.ui" line="2836"/>
+        <location filename="../ui/setcomdlg.ui" line="3147"/>
+        <location filename="../ui/setcomdlg.ui" line="3458"/>
+        <location filename="../ui/setcomdlg.ui" line="3769"/>
+        <location filename="../ui/setcomdlg.ui" line="4080"/>
+        <location filename="../ui/setcomdlg.ui" line="4391"/>
+        <location filename="../ui/setcomdlg.ui" line="4702"/>
+        <location filename="../ui/setcomdlg.ui" line="5013"/>
+        <location filename="../ui/setcomdlg.ui" line="5324"/>
+        <location filename="../ui/setcomdlg.ui" line="5635"/>
+        <location filename="../ui/setcomdlg.ui" line="5946"/>
+        <location filename="../ui/setcomdlg.ui" line="6257"/>
+        <location filename="../ui/setcomdlg.ui" line="6568"/>
+        <location filename="../ui/setcomdlg.ui" line="6879"/>
+        <location filename="../ui/setcomdlg.ui" line="7190"/>
+        <location filename="../ui/setcomdlg.ui" line="7501"/>
+        <location filename="../ui/setcomdlg.ui" line="7812"/>
+        <location filename="../ui/setcomdlg.ui" line="8123"/>
+        <location filename="../ui/setcomdlg.ui" line="8434"/>
+        <location filename="../ui/setcomdlg.ui" line="8745"/>
+        <location filename="../ui/setcomdlg.ui" line="9056"/>
+        <location filename="../ui/setcomdlg.ui" line="9367"/>
         <source>14400</source>
         <translation>14400</translation>
     </message>
@@ -1858,32 +1842,32 @@
         <location filename="../ui/setcomdlg.ui" line="533"/>
         <location filename="../ui/setcomdlg.ui" line="838"/>
         <location filename="../ui/setcomdlg.ui" line="1143"/>
-        <location filename="../ui/setcomdlg.ui" line="1581"/>
-        <location filename="../ui/setcomdlg.ui" line="1886"/>
-        <location filename="../ui/setcomdlg.ui" line="2215"/>
-        <location filename="../ui/setcomdlg.ui" line="2526"/>
-        <location filename="../ui/setcomdlg.ui" line="2837"/>
-        <location filename="../ui/setcomdlg.ui" line="3148"/>
-        <location filename="../ui/setcomdlg.ui" line="3459"/>
-        <location filename="../ui/setcomdlg.ui" line="3770"/>
-        <location filename="../ui/setcomdlg.ui" line="4081"/>
-        <location filename="../ui/setcomdlg.ui" line="4392"/>
-        <location filename="../ui/setcomdlg.ui" line="4703"/>
-        <location filename="../ui/setcomdlg.ui" line="5014"/>
-        <location filename="../ui/setcomdlg.ui" line="5325"/>
-        <location filename="../ui/setcomdlg.ui" line="5636"/>
-        <location filename="../ui/setcomdlg.ui" line="5947"/>
-        <location filename="../ui/setcomdlg.ui" line="6258"/>
-        <location filename="../ui/setcomdlg.ui" line="6569"/>
-        <location filename="../ui/setcomdlg.ui" line="6880"/>
-        <location filename="../ui/setcomdlg.ui" line="7191"/>
-        <location filename="../ui/setcomdlg.ui" line="7502"/>
-        <location filename="../ui/setcomdlg.ui" line="7813"/>
-        <location filename="../ui/setcomdlg.ui" line="8124"/>
-        <location filename="../ui/setcomdlg.ui" line="8435"/>
-        <location filename="../ui/setcomdlg.ui" line="8746"/>
-        <location filename="../ui/setcomdlg.ui" line="9057"/>
-        <location filename="../ui/setcomdlg.ui" line="9368"/>
+        <location filename="../ui/setcomdlg.ui" line="1585"/>
+        <location filename="../ui/setcomdlg.ui" line="1890"/>
+        <location filename="../ui/setcomdlg.ui" line="2219"/>
+        <location filename="../ui/setcomdlg.ui" line="2530"/>
+        <location filename="../ui/setcomdlg.ui" line="2841"/>
+        <location filename="../ui/setcomdlg.ui" line="3152"/>
+        <location filename="../ui/setcomdlg.ui" line="3463"/>
+        <location filename="../ui/setcomdlg.ui" line="3774"/>
+        <location filename="../ui/setcomdlg.ui" line="4085"/>
+        <location filename="../ui/setcomdlg.ui" line="4396"/>
+        <location filename="../ui/setcomdlg.ui" line="4707"/>
+        <location filename="../ui/setcomdlg.ui" line="5018"/>
+        <location filename="../ui/setcomdlg.ui" line="5329"/>
+        <location filename="../ui/setcomdlg.ui" line="5640"/>
+        <location filename="../ui/setcomdlg.ui" line="5951"/>
+        <location filename="../ui/setcomdlg.ui" line="6262"/>
+        <location filename="../ui/setcomdlg.ui" line="6573"/>
+        <location filename="../ui/setcomdlg.ui" line="6884"/>
+        <location filename="../ui/setcomdlg.ui" line="7195"/>
+        <location filename="../ui/setcomdlg.ui" line="7506"/>
+        <location filename="../ui/setcomdlg.ui" line="7817"/>
+        <location filename="../ui/setcomdlg.ui" line="8128"/>
+        <location filename="../ui/setcomdlg.ui" line="8439"/>
+        <location filename="../ui/setcomdlg.ui" line="8750"/>
+        <location filename="../ui/setcomdlg.ui" line="9061"/>
+        <location filename="../ui/setcomdlg.ui" line="9372"/>
         <source>19200</source>
         <translation>19200</translation>
     </message>
@@ -1892,32 +1876,32 @@
         <location filename="../ui/setcomdlg.ui" line="538"/>
         <location filename="../ui/setcomdlg.ui" line="843"/>
         <location filename="../ui/setcomdlg.ui" line="1148"/>
-        <location filename="../ui/setcomdlg.ui" line="1586"/>
-        <location filename="../ui/setcomdlg.ui" line="1891"/>
-        <location filename="../ui/setcomdlg.ui" line="2220"/>
-        <location filename="../ui/setcomdlg.ui" line="2531"/>
-        <location filename="../ui/setcomdlg.ui" line="2842"/>
-        <location filename="../ui/setcomdlg.ui" line="3153"/>
-        <location filename="../ui/setcomdlg.ui" line="3464"/>
-        <location filename="../ui/setcomdlg.ui" line="3775"/>
-        <location filename="../ui/setcomdlg.ui" line="4086"/>
-        <location filename="../ui/setcomdlg.ui" line="4397"/>
-        <location filename="../ui/setcomdlg.ui" line="4708"/>
-        <location filename="../ui/setcomdlg.ui" line="5019"/>
-        <location filename="../ui/setcomdlg.ui" line="5330"/>
-        <location filename="../ui/setcomdlg.ui" line="5641"/>
-        <location filename="../ui/setcomdlg.ui" line="5952"/>
-        <location filename="../ui/setcomdlg.ui" line="6263"/>
-        <location filename="../ui/setcomdlg.ui" line="6574"/>
-        <location filename="../ui/setcomdlg.ui" line="6885"/>
-        <location filename="../ui/setcomdlg.ui" line="7196"/>
-        <location filename="../ui/setcomdlg.ui" line="7507"/>
-        <location filename="../ui/setcomdlg.ui" line="7818"/>
-        <location filename="../ui/setcomdlg.ui" line="8129"/>
-        <location filename="../ui/setcomdlg.ui" line="8440"/>
-        <location filename="../ui/setcomdlg.ui" line="8751"/>
-        <location filename="../ui/setcomdlg.ui" line="9062"/>
-        <location filename="../ui/setcomdlg.ui" line="9373"/>
+        <location filename="../ui/setcomdlg.ui" line="1590"/>
+        <location filename="../ui/setcomdlg.ui" line="1895"/>
+        <location filename="../ui/setcomdlg.ui" line="2224"/>
+        <location filename="../ui/setcomdlg.ui" line="2535"/>
+        <location filename="../ui/setcomdlg.ui" line="2846"/>
+        <location filename="../ui/setcomdlg.ui" line="3157"/>
+        <location filename="../ui/setcomdlg.ui" line="3468"/>
+        <location filename="../ui/setcomdlg.ui" line="3779"/>
+        <location filename="../ui/setcomdlg.ui" line="4090"/>
+        <location filename="../ui/setcomdlg.ui" line="4401"/>
+        <location filename="../ui/setcomdlg.ui" line="4712"/>
+        <location filename="../ui/setcomdlg.ui" line="5023"/>
+        <location filename="../ui/setcomdlg.ui" line="5334"/>
+        <location filename="../ui/setcomdlg.ui" line="5645"/>
+        <location filename="../ui/setcomdlg.ui" line="5956"/>
+        <location filename="../ui/setcomdlg.ui" line="6267"/>
+        <location filename="../ui/setcomdlg.ui" line="6578"/>
+        <location filename="../ui/setcomdlg.ui" line="6889"/>
+        <location filename="../ui/setcomdlg.ui" line="7200"/>
+        <location filename="../ui/setcomdlg.ui" line="7511"/>
+        <location filename="../ui/setcomdlg.ui" line="7822"/>
+        <location filename="../ui/setcomdlg.ui" line="8133"/>
+        <location filename="../ui/setcomdlg.ui" line="8444"/>
+        <location filename="../ui/setcomdlg.ui" line="8755"/>
+        <location filename="../ui/setcomdlg.ui" line="9066"/>
+        <location filename="../ui/setcomdlg.ui" line="9377"/>
         <source>38400</source>
         <translation>38400</translation>
     </message>
@@ -1926,32 +1910,32 @@
         <location filename="../ui/setcomdlg.ui" line="543"/>
         <location filename="../ui/setcomdlg.ui" line="848"/>
         <location filename="../ui/setcomdlg.ui" line="1153"/>
-        <location filename="../ui/setcomdlg.ui" line="1591"/>
-        <location filename="../ui/setcomdlg.ui" line="1896"/>
-        <location filename="../ui/setcomdlg.ui" line="2225"/>
-        <location filename="../ui/setcomdlg.ui" line="2536"/>
-        <location filename="../ui/setcomdlg.ui" line="2847"/>
-        <location filename="../ui/setcomdlg.ui" line="3158"/>
-        <location filename="../ui/setcomdlg.ui" line="3469"/>
-        <location filename="../ui/setcomdlg.ui" line="3780"/>
-        <location filename="../ui/setcomdlg.ui" line="4091"/>
-        <location filename="../ui/setcomdlg.ui" line="4402"/>
-        <location filename="../ui/setcomdlg.ui" line="4713"/>
-        <location filename="../ui/setcomdlg.ui" line="5024"/>
-        <location filename="../ui/setcomdlg.ui" line="5335"/>
-        <location filename="../ui/setcomdlg.ui" line="5646"/>
-        <location filename="../ui/setcomdlg.ui" line="5957"/>
-        <location filename="../ui/setcomdlg.ui" line="6268"/>
-        <location filename="../ui/setcomdlg.ui" line="6579"/>
-        <location filename="../ui/setcomdlg.ui" line="6890"/>
-        <location filename="../ui/setcomdlg.ui" line="7201"/>
-        <location filename="../ui/setcomdlg.ui" line="7512"/>
-        <location filename="../ui/setcomdlg.ui" line="7823"/>
-        <location filename="../ui/setcomdlg.ui" line="8134"/>
-        <location filename="../ui/setcomdlg.ui" line="8445"/>
-        <location filename="../ui/setcomdlg.ui" line="8756"/>
-        <location filename="../ui/setcomdlg.ui" line="9067"/>
-        <location filename="../ui/setcomdlg.ui" line="9378"/>
+        <location filename="../ui/setcomdlg.ui" line="1595"/>
+        <location filename="../ui/setcomdlg.ui" line="1900"/>
+        <location filename="../ui/setcomdlg.ui" line="2229"/>
+        <location filename="../ui/setcomdlg.ui" line="2540"/>
+        <location filename="../ui/setcomdlg.ui" line="2851"/>
+        <location filename="../ui/setcomdlg.ui" line="3162"/>
+        <location filename="../ui/setcomdlg.ui" line="3473"/>
+        <location filename="../ui/setcomdlg.ui" line="3784"/>
+        <location filename="../ui/setcomdlg.ui" line="4095"/>
+        <location filename="../ui/setcomdlg.ui" line="4406"/>
+        <location filename="../ui/setcomdlg.ui" line="4717"/>
+        <location filename="../ui/setcomdlg.ui" line="5028"/>
+        <location filename="../ui/setcomdlg.ui" line="5339"/>
+        <location filename="../ui/setcomdlg.ui" line="5650"/>
+        <location filename="../ui/setcomdlg.ui" line="5961"/>
+        <location filename="../ui/setcomdlg.ui" line="6272"/>
+        <location filename="../ui/setcomdlg.ui" line="6583"/>
+        <location filename="../ui/setcomdlg.ui" line="6894"/>
+        <location filename="../ui/setcomdlg.ui" line="7205"/>
+        <location filename="../ui/setcomdlg.ui" line="7516"/>
+        <location filename="../ui/setcomdlg.ui" line="7827"/>
+        <location filename="../ui/setcomdlg.ui" line="8138"/>
+        <location filename="../ui/setcomdlg.ui" line="8449"/>
+        <location filename="../ui/setcomdlg.ui" line="8760"/>
+        <location filename="../ui/setcomdlg.ui" line="9071"/>
+        <location filename="../ui/setcomdlg.ui" line="9382"/>
         <source>56000</source>
         <translation>56000</translation>
     </message>
@@ -1960,32 +1944,32 @@
         <location filename="../ui/setcomdlg.ui" line="551"/>
         <location filename="../ui/setcomdlg.ui" line="856"/>
         <location filename="../ui/setcomdlg.ui" line="1161"/>
-        <location filename="../ui/setcomdlg.ui" line="1599"/>
-        <location filename="../ui/setcomdlg.ui" line="1904"/>
-        <location filename="../ui/setcomdlg.ui" line="2233"/>
-        <location filename="../ui/setcomdlg.ui" line="2544"/>
-        <location filename="../ui/setcomdlg.ui" line="2855"/>
-        <location filename="../ui/setcomdlg.ui" line="3166"/>
-        <location filename="../ui/setcomdlg.ui" line="3477"/>
-        <location filename="../ui/setcomdlg.ui" line="3788"/>
-        <location filename="../ui/setcomdlg.ui" line="4099"/>
-        <location filename="../ui/setcomdlg.ui" line="4410"/>
-        <location filename="../ui/setcomdlg.ui" line="4721"/>
-        <location filename="../ui/setcomdlg.ui" line="5032"/>
-        <location filename="../ui/setcomdlg.ui" line="5343"/>
-        <location filename="../ui/setcomdlg.ui" line="5654"/>
-        <location filename="../ui/setcomdlg.ui" line="5965"/>
-        <location filename="../ui/setcomdlg.ui" line="6276"/>
-        <location filename="../ui/setcomdlg.ui" line="6587"/>
-        <location filename="../ui/setcomdlg.ui" line="6898"/>
-        <location filename="../ui/setcomdlg.ui" line="7209"/>
-        <location filename="../ui/setcomdlg.ui" line="7520"/>
-        <location filename="../ui/setcomdlg.ui" line="7831"/>
-        <location filename="../ui/setcomdlg.ui" line="8142"/>
-        <location filename="../ui/setcomdlg.ui" line="8453"/>
-        <location filename="../ui/setcomdlg.ui" line="8764"/>
-        <location filename="../ui/setcomdlg.ui" line="9075"/>
-        <location filename="../ui/setcomdlg.ui" line="9386"/>
+        <location filename="../ui/setcomdlg.ui" line="1603"/>
+        <location filename="../ui/setcomdlg.ui" line="1908"/>
+        <location filename="../ui/setcomdlg.ui" line="2237"/>
+        <location filename="../ui/setcomdlg.ui" line="2548"/>
+        <location filename="../ui/setcomdlg.ui" line="2859"/>
+        <location filename="../ui/setcomdlg.ui" line="3170"/>
+        <location filename="../ui/setcomdlg.ui" line="3481"/>
+        <location filename="../ui/setcomdlg.ui" line="3792"/>
+        <location filename="../ui/setcomdlg.ui" line="4103"/>
+        <location filename="../ui/setcomdlg.ui" line="4414"/>
+        <location filename="../ui/setcomdlg.ui" line="4725"/>
+        <location filename="../ui/setcomdlg.ui" line="5036"/>
+        <location filename="../ui/setcomdlg.ui" line="5347"/>
+        <location filename="../ui/setcomdlg.ui" line="5658"/>
+        <location filename="../ui/setcomdlg.ui" line="5969"/>
+        <location filename="../ui/setcomdlg.ui" line="6280"/>
+        <location filename="../ui/setcomdlg.ui" line="6591"/>
+        <location filename="../ui/setcomdlg.ui" line="6902"/>
+        <location filename="../ui/setcomdlg.ui" line="7213"/>
+        <location filename="../ui/setcomdlg.ui" line="7524"/>
+        <location filename="../ui/setcomdlg.ui" line="7835"/>
+        <location filename="../ui/setcomdlg.ui" line="8146"/>
+        <location filename="../ui/setcomdlg.ui" line="8457"/>
+        <location filename="../ui/setcomdlg.ui" line="8768"/>
+        <location filename="../ui/setcomdlg.ui" line="9079"/>
+        <location filename="../ui/setcomdlg.ui" line="9390"/>
         <source>DataBits</source>
         <translation>数据位</translation>
     </message>
@@ -1994,33 +1978,33 @@
         <location filename="../ui/setcomdlg.ui" line="559"/>
         <location filename="../ui/setcomdlg.ui" line="864"/>
         <location filename="../ui/setcomdlg.ui" line="1169"/>
-        <location filename="../ui/setcomdlg.ui" line="1607"/>
-        <location filename="../ui/setcomdlg.ui" line="1912"/>
-        <location filename="../ui/setcomdlg.ui" line="2241"/>
-        <location filename="../ui/setcomdlg.ui" line="2552"/>
-        <location filename="../ui/setcomdlg.ui" line="2863"/>
-        <location filename="../ui/setcomdlg.ui" line="3174"/>
-        <location filename="../ui/setcomdlg.ui" line="3258"/>
-        <location filename="../ui/setcomdlg.ui" line="3485"/>
-        <location filename="../ui/setcomdlg.ui" line="3796"/>
-        <location filename="../ui/setcomdlg.ui" line="4107"/>
-        <location filename="../ui/setcomdlg.ui" line="4418"/>
-        <location filename="../ui/setcomdlg.ui" line="4729"/>
-        <location filename="../ui/setcomdlg.ui" line="5040"/>
-        <location filename="../ui/setcomdlg.ui" line="5351"/>
-        <location filename="../ui/setcomdlg.ui" line="5662"/>
-        <location filename="../ui/setcomdlg.ui" line="5973"/>
-        <location filename="../ui/setcomdlg.ui" line="6284"/>
-        <location filename="../ui/setcomdlg.ui" line="6595"/>
-        <location filename="../ui/setcomdlg.ui" line="6906"/>
-        <location filename="../ui/setcomdlg.ui" line="7217"/>
-        <location filename="../ui/setcomdlg.ui" line="7528"/>
-        <location filename="../ui/setcomdlg.ui" line="7839"/>
-        <location filename="../ui/setcomdlg.ui" line="8150"/>
-        <location filename="../ui/setcomdlg.ui" line="8461"/>
-        <location filename="../ui/setcomdlg.ui" line="8772"/>
-        <location filename="../ui/setcomdlg.ui" line="9083"/>
-        <location filename="../ui/setcomdlg.ui" line="9394"/>
+        <location filename="../ui/setcomdlg.ui" line="1611"/>
+        <location filename="../ui/setcomdlg.ui" line="1916"/>
+        <location filename="../ui/setcomdlg.ui" line="2245"/>
+        <location filename="../ui/setcomdlg.ui" line="2556"/>
+        <location filename="../ui/setcomdlg.ui" line="2867"/>
+        <location filename="../ui/setcomdlg.ui" line="3178"/>
+        <location filename="../ui/setcomdlg.ui" line="3262"/>
+        <location filename="../ui/setcomdlg.ui" line="3489"/>
+        <location filename="../ui/setcomdlg.ui" line="3800"/>
+        <location filename="../ui/setcomdlg.ui" line="4111"/>
+        <location filename="../ui/setcomdlg.ui" line="4422"/>
+        <location filename="../ui/setcomdlg.ui" line="4733"/>
+        <location filename="../ui/setcomdlg.ui" line="5044"/>
+        <location filename="../ui/setcomdlg.ui" line="5355"/>
+        <location filename="../ui/setcomdlg.ui" line="5666"/>
+        <location filename="../ui/setcomdlg.ui" line="5977"/>
+        <location filename="../ui/setcomdlg.ui" line="6288"/>
+        <location filename="../ui/setcomdlg.ui" line="6599"/>
+        <location filename="../ui/setcomdlg.ui" line="6910"/>
+        <location filename="../ui/setcomdlg.ui" line="7221"/>
+        <location filename="../ui/setcomdlg.ui" line="7532"/>
+        <location filename="../ui/setcomdlg.ui" line="7843"/>
+        <location filename="../ui/setcomdlg.ui" line="8154"/>
+        <location filename="../ui/setcomdlg.ui" line="8465"/>
+        <location filename="../ui/setcomdlg.ui" line="8776"/>
+        <location filename="../ui/setcomdlg.ui" line="9087"/>
+        <location filename="../ui/setcomdlg.ui" line="9398"/>
         <source>5</source>
         <translation>5</translation>
     </message>
@@ -2029,33 +2013,33 @@
         <location filename="../ui/setcomdlg.ui" line="564"/>
         <location filename="../ui/setcomdlg.ui" line="869"/>
         <location filename="../ui/setcomdlg.ui" line="1174"/>
-        <location filename="../ui/setcomdlg.ui" line="1612"/>
-        <location filename="../ui/setcomdlg.ui" line="1917"/>
-        <location filename="../ui/setcomdlg.ui" line="2246"/>
-        <location filename="../ui/setcomdlg.ui" line="2557"/>
-        <location filename="../ui/setcomdlg.ui" line="2868"/>
-        <location filename="../ui/setcomdlg.ui" line="3179"/>
-        <location filename="../ui/setcomdlg.ui" line="3490"/>
-        <location filename="../ui/setcomdlg.ui" line="3569"/>
-        <location filename="../ui/setcomdlg.ui" line="3801"/>
-        <location filename="../ui/setcomdlg.ui" line="4112"/>
-        <location filename="../ui/setcomdlg.ui" line="4423"/>
-        <location filename="../ui/setcomdlg.ui" line="4734"/>
-        <location filename="../ui/setcomdlg.ui" line="5045"/>
-        <location filename="../ui/setcomdlg.ui" line="5356"/>
-        <location filename="../ui/setcomdlg.ui" line="5667"/>
-        <location filename="../ui/setcomdlg.ui" line="5978"/>
-        <location filename="../ui/setcomdlg.ui" line="6289"/>
-        <location filename="../ui/setcomdlg.ui" line="6600"/>
-        <location filename="../ui/setcomdlg.ui" line="6911"/>
-        <location filename="../ui/setcomdlg.ui" line="7222"/>
-        <location filename="../ui/setcomdlg.ui" line="7533"/>
-        <location filename="../ui/setcomdlg.ui" line="7844"/>
-        <location filename="../ui/setcomdlg.ui" line="8155"/>
-        <location filename="../ui/setcomdlg.ui" line="8466"/>
-        <location filename="../ui/setcomdlg.ui" line="8777"/>
-        <location filename="../ui/setcomdlg.ui" line="9088"/>
-        <location filename="../ui/setcomdlg.ui" line="9399"/>
+        <location filename="../ui/setcomdlg.ui" line="1616"/>
+        <location filename="../ui/setcomdlg.ui" line="1921"/>
+        <location filename="../ui/setcomdlg.ui" line="2250"/>
+        <location filename="../ui/setcomdlg.ui" line="2561"/>
+        <location filename="../ui/setcomdlg.ui" line="2872"/>
+        <location filename="../ui/setcomdlg.ui" line="3183"/>
+        <location filename="../ui/setcomdlg.ui" line="3494"/>
+        <location filename="../ui/setcomdlg.ui" line="3573"/>
+        <location filename="../ui/setcomdlg.ui" line="3805"/>
+        <location filename="../ui/setcomdlg.ui" line="4116"/>
+        <location filename="../ui/setcomdlg.ui" line="4427"/>
+        <location filename="../ui/setcomdlg.ui" line="4738"/>
+        <location filename="../ui/setcomdlg.ui" line="5049"/>
+        <location filename="../ui/setcomdlg.ui" line="5360"/>
+        <location filename="../ui/setcomdlg.ui" line="5671"/>
+        <location filename="../ui/setcomdlg.ui" line="5982"/>
+        <location filename="../ui/setcomdlg.ui" line="6293"/>
+        <location filename="../ui/setcomdlg.ui" line="6604"/>
+        <location filename="../ui/setcomdlg.ui" line="6915"/>
+        <location filename="../ui/setcomdlg.ui" line="7226"/>
+        <location filename="../ui/setcomdlg.ui" line="7537"/>
+        <location filename="../ui/setcomdlg.ui" line="7848"/>
+        <location filename="../ui/setcomdlg.ui" line="8159"/>
+        <location filename="../ui/setcomdlg.ui" line="8470"/>
+        <location filename="../ui/setcomdlg.ui" line="8781"/>
+        <location filename="../ui/setcomdlg.ui" line="9092"/>
+        <location filename="../ui/setcomdlg.ui" line="9403"/>
         <source>6</source>
         <translation>6</translation>
     </message>
@@ -2064,33 +2048,33 @@
         <location filename="../ui/setcomdlg.ui" line="569"/>
         <location filename="../ui/setcomdlg.ui" line="874"/>
         <location filename="../ui/setcomdlg.ui" line="1179"/>
-        <location filename="../ui/setcomdlg.ui" line="1617"/>
-        <location filename="../ui/setcomdlg.ui" line="1922"/>
-        <location filename="../ui/setcomdlg.ui" line="2251"/>
-        <location filename="../ui/setcomdlg.ui" line="2562"/>
-        <location filename="../ui/setcomdlg.ui" line="2873"/>
-        <location filename="../ui/setcomdlg.ui" line="3184"/>
-        <location filename="../ui/setcomdlg.ui" line="3495"/>
-        <location filename="../ui/setcomdlg.ui" line="3806"/>
-        <location filename="../ui/setcomdlg.ui" line="3880"/>
-        <location filename="../ui/setcomdlg.ui" line="4117"/>
-        <location filename="../ui/setcomdlg.ui" line="4428"/>
-        <location filename="../ui/setcomdlg.ui" line="4739"/>
-        <location filename="../ui/setcomdlg.ui" line="5050"/>
-        <location filename="../ui/setcomdlg.ui" line="5361"/>
-        <location filename="../ui/setcomdlg.ui" line="5672"/>
-        <location filename="../ui/setcomdlg.ui" line="5983"/>
-        <location filename="../ui/setcomdlg.ui" line="6294"/>
-        <location filename="../ui/setcomdlg.ui" line="6605"/>
-        <location filename="../ui/setcomdlg.ui" line="6916"/>
-        <location filename="../ui/setcomdlg.ui" line="7227"/>
-        <location filename="../ui/setcomdlg.ui" line="7538"/>
-        <location filename="../ui/setcomdlg.ui" line="7849"/>
-        <location filename="../ui/setcomdlg.ui" line="8160"/>
-        <location filename="../ui/setcomdlg.ui" line="8471"/>
-        <location filename="../ui/setcomdlg.ui" line="8782"/>
-        <location filename="../ui/setcomdlg.ui" line="9093"/>
-        <location filename="../ui/setcomdlg.ui" line="9404"/>
+        <location filename="../ui/setcomdlg.ui" line="1621"/>
+        <location filename="../ui/setcomdlg.ui" line="1926"/>
+        <location filename="../ui/setcomdlg.ui" line="2255"/>
+        <location filename="../ui/setcomdlg.ui" line="2566"/>
+        <location filename="../ui/setcomdlg.ui" line="2877"/>
+        <location filename="../ui/setcomdlg.ui" line="3188"/>
+        <location filename="../ui/setcomdlg.ui" line="3499"/>
+        <location filename="../ui/setcomdlg.ui" line="3810"/>
+        <location filename="../ui/setcomdlg.ui" line="3884"/>
+        <location filename="../ui/setcomdlg.ui" line="4121"/>
+        <location filename="../ui/setcomdlg.ui" line="4432"/>
+        <location filename="../ui/setcomdlg.ui" line="4743"/>
+        <location filename="../ui/setcomdlg.ui" line="5054"/>
+        <location filename="../ui/setcomdlg.ui" line="5365"/>
+        <location filename="../ui/setcomdlg.ui" line="5676"/>
+        <location filename="../ui/setcomdlg.ui" line="5987"/>
+        <location filename="../ui/setcomdlg.ui" line="6298"/>
+        <location filename="../ui/setcomdlg.ui" line="6609"/>
+        <location filename="../ui/setcomdlg.ui" line="6920"/>
+        <location filename="../ui/setcomdlg.ui" line="7231"/>
+        <location filename="../ui/setcomdlg.ui" line="7542"/>
+        <location filename="../ui/setcomdlg.ui" line="7853"/>
+        <location filename="../ui/setcomdlg.ui" line="8164"/>
+        <location filename="../ui/setcomdlg.ui" line="8475"/>
+        <location filename="../ui/setcomdlg.ui" line="8786"/>
+        <location filename="../ui/setcomdlg.ui" line="9097"/>
+        <location filename="../ui/setcomdlg.ui" line="9408"/>
         <source>7</source>
         <translation>7</translation>
     </message>
@@ -2099,33 +2083,33 @@
         <location filename="../ui/setcomdlg.ui" line="574"/>
         <location filename="../ui/setcomdlg.ui" line="879"/>
         <location filename="../ui/setcomdlg.ui" line="1184"/>
-        <location filename="../ui/setcomdlg.ui" line="1622"/>
-        <location filename="../ui/setcomdlg.ui" line="1927"/>
-        <location filename="../ui/setcomdlg.ui" line="2256"/>
-        <location filename="../ui/setcomdlg.ui" line="2567"/>
-        <location filename="../ui/setcomdlg.ui" line="2878"/>
-        <location filename="../ui/setcomdlg.ui" line="3189"/>
-        <location filename="../ui/setcomdlg.ui" line="3500"/>
-        <location filename="../ui/setcomdlg.ui" line="3811"/>
-        <location filename="../ui/setcomdlg.ui" line="4122"/>
-        <location filename="../ui/setcomdlg.ui" line="4191"/>
-        <location filename="../ui/setcomdlg.ui" line="4433"/>
-        <location filename="../ui/setcomdlg.ui" line="4744"/>
-        <location filename="../ui/setcomdlg.ui" line="5055"/>
-        <location filename="../ui/setcomdlg.ui" line="5366"/>
-        <location filename="../ui/setcomdlg.ui" line="5677"/>
-        <location filename="../ui/setcomdlg.ui" line="5988"/>
-        <location filename="../ui/setcomdlg.ui" line="6299"/>
-        <location filename="../ui/setcomdlg.ui" line="6610"/>
-        <location filename="../ui/setcomdlg.ui" line="6921"/>
-        <location filename="../ui/setcomdlg.ui" line="7232"/>
-        <location filename="../ui/setcomdlg.ui" line="7543"/>
-        <location filename="../ui/setcomdlg.ui" line="7854"/>
-        <location filename="../ui/setcomdlg.ui" line="8165"/>
-        <location filename="../ui/setcomdlg.ui" line="8476"/>
-        <location filename="../ui/setcomdlg.ui" line="8787"/>
-        <location filename="../ui/setcomdlg.ui" line="9098"/>
-        <location filename="../ui/setcomdlg.ui" line="9409"/>
+        <location filename="../ui/setcomdlg.ui" line="1626"/>
+        <location filename="../ui/setcomdlg.ui" line="1931"/>
+        <location filename="../ui/setcomdlg.ui" line="2260"/>
+        <location filename="../ui/setcomdlg.ui" line="2571"/>
+        <location filename="../ui/setcomdlg.ui" line="2882"/>
+        <location filename="../ui/setcomdlg.ui" line="3193"/>
+        <location filename="../ui/setcomdlg.ui" line="3504"/>
+        <location filename="../ui/setcomdlg.ui" line="3815"/>
+        <location filename="../ui/setcomdlg.ui" line="4126"/>
+        <location filename="../ui/setcomdlg.ui" line="4195"/>
+        <location filename="../ui/setcomdlg.ui" line="4437"/>
+        <location filename="../ui/setcomdlg.ui" line="4748"/>
+        <location filename="../ui/setcomdlg.ui" line="5059"/>
+        <location filename="../ui/setcomdlg.ui" line="5370"/>
+        <location filename="../ui/setcomdlg.ui" line="5681"/>
+        <location filename="../ui/setcomdlg.ui" line="5992"/>
+        <location filename="../ui/setcomdlg.ui" line="6303"/>
+        <location filename="../ui/setcomdlg.ui" line="6614"/>
+        <location filename="../ui/setcomdlg.ui" line="6925"/>
+        <location filename="../ui/setcomdlg.ui" line="7236"/>
+        <location filename="../ui/setcomdlg.ui" line="7547"/>
+        <location filename="../ui/setcomdlg.ui" line="7858"/>
+        <location filename="../ui/setcomdlg.ui" line="8169"/>
+        <location filename="../ui/setcomdlg.ui" line="8480"/>
+        <location filename="../ui/setcomdlg.ui" line="8791"/>
+        <location filename="../ui/setcomdlg.ui" line="9102"/>
+        <location filename="../ui/setcomdlg.ui" line="9413"/>
         <source>8</source>
         <translation>8</translation>
     </message>
@@ -2134,32 +2118,32 @@
         <location filename="../ui/setcomdlg.ui" line="582"/>
         <location filename="../ui/setcomdlg.ui" line="887"/>
         <location filename="../ui/setcomdlg.ui" line="1192"/>
-        <location filename="../ui/setcomdlg.ui" line="1630"/>
-        <location filename="../ui/setcomdlg.ui" line="1935"/>
-        <location filename="../ui/setcomdlg.ui" line="2264"/>
-        <location filename="../ui/setcomdlg.ui" line="2575"/>
-        <location filename="../ui/setcomdlg.ui" line="2886"/>
-        <location filename="../ui/setcomdlg.ui" line="3197"/>
-        <location filename="../ui/setcomdlg.ui" line="3508"/>
-        <location filename="../ui/setcomdlg.ui" line="3819"/>
-        <location filename="../ui/setcomdlg.ui" line="4130"/>
-        <location filename="../ui/setcomdlg.ui" line="4441"/>
-        <location filename="../ui/setcomdlg.ui" line="4752"/>
-        <location filename="../ui/setcomdlg.ui" line="5063"/>
-        <location filename="../ui/setcomdlg.ui" line="5374"/>
-        <location filename="../ui/setcomdlg.ui" line="5685"/>
-        <location filename="../ui/setcomdlg.ui" line="5996"/>
-        <location filename="../ui/setcomdlg.ui" line="6307"/>
-        <location filename="../ui/setcomdlg.ui" line="6618"/>
-        <location filename="../ui/setcomdlg.ui" line="6929"/>
-        <location filename="../ui/setcomdlg.ui" line="7240"/>
-        <location filename="../ui/setcomdlg.ui" line="7551"/>
-        <location filename="../ui/setcomdlg.ui" line="7862"/>
-        <location filename="../ui/setcomdlg.ui" line="8173"/>
-        <location filename="../ui/setcomdlg.ui" line="8484"/>
-        <location filename="../ui/setcomdlg.ui" line="8795"/>
-        <location filename="../ui/setcomdlg.ui" line="9106"/>
-        <location filename="../ui/setcomdlg.ui" line="9417"/>
+        <location filename="../ui/setcomdlg.ui" line="1634"/>
+        <location filename="../ui/setcomdlg.ui" line="1939"/>
+        <location filename="../ui/setcomdlg.ui" line="2268"/>
+        <location filename="../ui/setcomdlg.ui" line="2579"/>
+        <location filename="../ui/setcomdlg.ui" line="2890"/>
+        <location filename="../ui/setcomdlg.ui" line="3201"/>
+        <location filename="../ui/setcomdlg.ui" line="3512"/>
+        <location filename="../ui/setcomdlg.ui" line="3823"/>
+        <location filename="../ui/setcomdlg.ui" line="4134"/>
+        <location filename="../ui/setcomdlg.ui" line="4445"/>
+        <location filename="../ui/setcomdlg.ui" line="4756"/>
+        <location filename="../ui/setcomdlg.ui" line="5067"/>
+        <location filename="../ui/setcomdlg.ui" line="5378"/>
+        <location filename="../ui/setcomdlg.ui" line="5689"/>
+        <location filename="../ui/setcomdlg.ui" line="6000"/>
+        <location filename="../ui/setcomdlg.ui" line="6311"/>
+        <location filename="../ui/setcomdlg.ui" line="6622"/>
+        <location filename="../ui/setcomdlg.ui" line="6933"/>
+        <location filename="../ui/setcomdlg.ui" line="7244"/>
+        <location filename="../ui/setcomdlg.ui" line="7555"/>
+        <location filename="../ui/setcomdlg.ui" line="7866"/>
+        <location filename="../ui/setcomdlg.ui" line="8177"/>
+        <location filename="../ui/setcomdlg.ui" line="8488"/>
+        <location filename="../ui/setcomdlg.ui" line="8799"/>
+        <location filename="../ui/setcomdlg.ui" line="9110"/>
+        <location filename="../ui/setcomdlg.ui" line="9421"/>
         <source>Parity</source>
         <translation>校验位</translation>
     </message>
@@ -2168,32 +2152,32 @@
         <location filename="../ui/setcomdlg.ui" line="590"/>
         <location filename="../ui/setcomdlg.ui" line="895"/>
         <location filename="../ui/setcomdlg.ui" line="1200"/>
-        <location filename="../ui/setcomdlg.ui" line="1638"/>
-        <location filename="../ui/setcomdlg.ui" line="1943"/>
-        <location filename="../ui/setcomdlg.ui" line="2272"/>
-        <location filename="../ui/setcomdlg.ui" line="2583"/>
-        <location filename="../ui/setcomdlg.ui" line="2894"/>
-        <location filename="../ui/setcomdlg.ui" line="3205"/>
-        <location filename="../ui/setcomdlg.ui" line="3516"/>
-        <location filename="../ui/setcomdlg.ui" line="3827"/>
-        <location filename="../ui/setcomdlg.ui" line="4138"/>
-        <location filename="../ui/setcomdlg.ui" line="4449"/>
-        <location filename="../ui/setcomdlg.ui" line="4760"/>
-        <location filename="../ui/setcomdlg.ui" line="5071"/>
-        <location filename="../ui/setcomdlg.ui" line="5382"/>
-        <location filename="../ui/setcomdlg.ui" line="5693"/>
-        <location filename="../ui/setcomdlg.ui" line="6004"/>
-        <location filename="../ui/setcomdlg.ui" line="6315"/>
-        <location filename="../ui/setcomdlg.ui" line="6626"/>
-        <location filename="../ui/setcomdlg.ui" line="6937"/>
-        <location filename="../ui/setcomdlg.ui" line="7248"/>
-        <location filename="../ui/setcomdlg.ui" line="7559"/>
-        <location filename="../ui/setcomdlg.ui" line="7870"/>
-        <location filename="../ui/setcomdlg.ui" line="8181"/>
-        <location filename="../ui/setcomdlg.ui" line="8492"/>
-        <location filename="../ui/setcomdlg.ui" line="8803"/>
-        <location filename="../ui/setcomdlg.ui" line="9114"/>
-        <location filename="../ui/setcomdlg.ui" line="9425"/>
+        <location filename="../ui/setcomdlg.ui" line="1642"/>
+        <location filename="../ui/setcomdlg.ui" line="1947"/>
+        <location filename="../ui/setcomdlg.ui" line="2276"/>
+        <location filename="../ui/setcomdlg.ui" line="2587"/>
+        <location filename="../ui/setcomdlg.ui" line="2898"/>
+        <location filename="../ui/setcomdlg.ui" line="3209"/>
+        <location filename="../ui/setcomdlg.ui" line="3520"/>
+        <location filename="../ui/setcomdlg.ui" line="3831"/>
+        <location filename="../ui/setcomdlg.ui" line="4142"/>
+        <location filename="../ui/setcomdlg.ui" line="4453"/>
+        <location filename="../ui/setcomdlg.ui" line="4764"/>
+        <location filename="../ui/setcomdlg.ui" line="5075"/>
+        <location filename="../ui/setcomdlg.ui" line="5386"/>
+        <location filename="../ui/setcomdlg.ui" line="5697"/>
+        <location filename="../ui/setcomdlg.ui" line="6008"/>
+        <location filename="../ui/setcomdlg.ui" line="6319"/>
+        <location filename="../ui/setcomdlg.ui" line="6630"/>
+        <location filename="../ui/setcomdlg.ui" line="6941"/>
+        <location filename="../ui/setcomdlg.ui" line="7252"/>
+        <location filename="../ui/setcomdlg.ui" line="7563"/>
+        <location filename="../ui/setcomdlg.ui" line="7874"/>
+        <location filename="../ui/setcomdlg.ui" line="8185"/>
+        <location filename="../ui/setcomdlg.ui" line="8496"/>
+        <location filename="../ui/setcomdlg.ui" line="8807"/>
+        <location filename="../ui/setcomdlg.ui" line="9118"/>
+        <location filename="../ui/setcomdlg.ui" line="9429"/>
         <source>None</source>
         <translation>无</translation>
     </message>
@@ -2202,32 +2186,32 @@
         <location filename="../ui/setcomdlg.ui" line="595"/>
         <location filename="../ui/setcomdlg.ui" line="900"/>
         <location filename="../ui/setcomdlg.ui" line="1205"/>
-        <location filename="../ui/setcomdlg.ui" line="1643"/>
-        <location filename="../ui/setcomdlg.ui" line="1948"/>
-        <location filename="../ui/setcomdlg.ui" line="2277"/>
-        <location filename="../ui/setcomdlg.ui" line="2588"/>
-        <location filename="../ui/setcomdlg.ui" line="2899"/>
-        <location filename="../ui/setcomdlg.ui" line="3210"/>
-        <location filename="../ui/setcomdlg.ui" line="3521"/>
-        <location filename="../ui/setcomdlg.ui" line="3832"/>
-        <location filename="../ui/setcomdlg.ui" line="4143"/>
-        <location filename="../ui/setcomdlg.ui" line="4454"/>
-        <location filename="../ui/setcomdlg.ui" line="4765"/>
-        <location filename="../ui/setcomdlg.ui" line="5076"/>
-        <location filename="../ui/setcomdlg.ui" line="5387"/>
-        <location filename="../ui/setcomdlg.ui" line="5698"/>
-        <location filename="../ui/setcomdlg.ui" line="6009"/>
-        <location filename="../ui/setcomdlg.ui" line="6320"/>
-        <location filename="../ui/setcomdlg.ui" line="6631"/>
-        <location filename="../ui/setcomdlg.ui" line="6942"/>
-        <location filename="../ui/setcomdlg.ui" line="7253"/>
-        <location filename="../ui/setcomdlg.ui" line="7564"/>
-        <location filename="../ui/setcomdlg.ui" line="7875"/>
-        <location filename="../ui/setcomdlg.ui" line="8186"/>
-        <location filename="../ui/setcomdlg.ui" line="8497"/>
-        <location filename="../ui/setcomdlg.ui" line="8808"/>
-        <location filename="../ui/setcomdlg.ui" line="9119"/>
-        <location filename="../ui/setcomdlg.ui" line="9430"/>
+        <location filename="../ui/setcomdlg.ui" line="1647"/>
+        <location filename="../ui/setcomdlg.ui" line="1952"/>
+        <location filename="../ui/setcomdlg.ui" line="2281"/>
+        <location filename="../ui/setcomdlg.ui" line="2592"/>
+        <location filename="../ui/setcomdlg.ui" line="2903"/>
+        <location filename="../ui/setcomdlg.ui" line="3214"/>
+        <location filename="../ui/setcomdlg.ui" line="3525"/>
+        <location filename="../ui/setcomdlg.ui" line="3836"/>
+        <location filename="../ui/setcomdlg.ui" line="4147"/>
+        <location filename="../ui/setcomdlg.ui" line="4458"/>
+        <location filename="../ui/setcomdlg.ui" line="4769"/>
+        <location filename="../ui/setcomdlg.ui" line="5080"/>
+        <location filename="../ui/setcomdlg.ui" line="5391"/>
+        <location filename="../ui/setcomdlg.ui" line="5702"/>
+        <location filename="../ui/setcomdlg.ui" line="6013"/>
+        <location filename="../ui/setcomdlg.ui" line="6324"/>
+        <location filename="../ui/setcomdlg.ui" line="6635"/>
+        <location filename="../ui/setcomdlg.ui" line="6946"/>
+        <location filename="../ui/setcomdlg.ui" line="7257"/>
+        <location filename="../ui/setcomdlg.ui" line="7568"/>
+        <location filename="../ui/setcomdlg.ui" line="7879"/>
+        <location filename="../ui/setcomdlg.ui" line="8190"/>
+        <location filename="../ui/setcomdlg.ui" line="8501"/>
+        <location filename="../ui/setcomdlg.ui" line="8812"/>
+        <location filename="../ui/setcomdlg.ui" line="9123"/>
+        <location filename="../ui/setcomdlg.ui" line="9434"/>
         <source>Odd</source>
         <translation>奇</translation>
     </message>
@@ -2236,32 +2220,32 @@
         <location filename="../ui/setcomdlg.ui" line="600"/>
         <location filename="../ui/setcomdlg.ui" line="905"/>
         <location filename="../ui/setcomdlg.ui" line="1210"/>
-        <location filename="../ui/setcomdlg.ui" line="1648"/>
-        <location filename="../ui/setcomdlg.ui" line="1953"/>
-        <location filename="../ui/setcomdlg.ui" line="2282"/>
-        <location filename="../ui/setcomdlg.ui" line="2593"/>
-        <location filename="../ui/setcomdlg.ui" line="2904"/>
-        <location filename="../ui/setcomdlg.ui" line="3215"/>
-        <location filename="../ui/setcomdlg.ui" line="3526"/>
-        <location filename="../ui/setcomdlg.ui" line="3837"/>
-        <location filename="../ui/setcomdlg.ui" line="4148"/>
-        <location filename="../ui/setcomdlg.ui" line="4459"/>
-        <location filename="../ui/setcomdlg.ui" line="4770"/>
-        <location filename="../ui/setcomdlg.ui" line="5081"/>
-        <location filename="../ui/setcomdlg.ui" line="5392"/>
-        <location filename="../ui/setcomdlg.ui" line="5703"/>
-        <location filename="../ui/setcomdlg.ui" line="6014"/>
-        <location filename="../ui/setcomdlg.ui" line="6325"/>
-        <location filename="../ui/setcomdlg.ui" line="6636"/>
-        <location filename="../ui/setcomdlg.ui" line="6947"/>
-        <location filename="../ui/setcomdlg.ui" line="7258"/>
-        <location filename="../ui/setcomdlg.ui" line="7569"/>
-        <location filename="../ui/setcomdlg.ui" line="7880"/>
-        <location filename="../ui/setcomdlg.ui" line="8191"/>
-        <location filename="../ui/setcomdlg.ui" line="8502"/>
-        <location filename="../ui/setcomdlg.ui" line="8813"/>
-        <location filename="../ui/setcomdlg.ui" line="9124"/>
-        <location filename="../ui/setcomdlg.ui" line="9435"/>
+        <location filename="../ui/setcomdlg.ui" line="1652"/>
+        <location filename="../ui/setcomdlg.ui" line="1957"/>
+        <location filename="../ui/setcomdlg.ui" line="2286"/>
+        <location filename="../ui/setcomdlg.ui" line="2597"/>
+        <location filename="../ui/setcomdlg.ui" line="2908"/>
+        <location filename="../ui/setcomdlg.ui" line="3219"/>
+        <location filename="../ui/setcomdlg.ui" line="3530"/>
+        <location filename="../ui/setcomdlg.ui" line="3841"/>
+        <location filename="../ui/setcomdlg.ui" line="4152"/>
+        <location filename="../ui/setcomdlg.ui" line="4463"/>
+        <location filename="../ui/setcomdlg.ui" line="4774"/>
+        <location filename="../ui/setcomdlg.ui" line="5085"/>
+        <location filename="../ui/setcomdlg.ui" line="5396"/>
+        <location filename="../ui/setcomdlg.ui" line="5707"/>
+        <location filename="../ui/setcomdlg.ui" line="6018"/>
+        <location filename="../ui/setcomdlg.ui" line="6329"/>
+        <location filename="../ui/setcomdlg.ui" line="6640"/>
+        <location filename="../ui/setcomdlg.ui" line="6951"/>
+        <location filename="../ui/setcomdlg.ui" line="7262"/>
+        <location filename="../ui/setcomdlg.ui" line="7573"/>
+        <location filename="../ui/setcomdlg.ui" line="7884"/>
+        <location filename="../ui/setcomdlg.ui" line="8195"/>
+        <location filename="../ui/setcomdlg.ui" line="8506"/>
+        <location filename="../ui/setcomdlg.ui" line="8817"/>
+        <location filename="../ui/setcomdlg.ui" line="9128"/>
+        <location filename="../ui/setcomdlg.ui" line="9439"/>
         <source>Even</source>
         <translation>偶</translation>
     </message>
@@ -2270,32 +2254,32 @@
         <location filename="../ui/setcomdlg.ui" line="608"/>
         <location filename="../ui/setcomdlg.ui" line="913"/>
         <location filename="../ui/setcomdlg.ui" line="1218"/>
-        <location filename="../ui/setcomdlg.ui" line="1656"/>
-        <location filename="../ui/setcomdlg.ui" line="1961"/>
-        <location filename="../ui/setcomdlg.ui" line="2290"/>
-        <location filename="../ui/setcomdlg.ui" line="2601"/>
-        <location filename="../ui/setcomdlg.ui" line="2912"/>
-        <location filename="../ui/setcomdlg.ui" line="3223"/>
-        <location filename="../ui/setcomdlg.ui" line="3534"/>
-        <location filename="../ui/setcomdlg.ui" line="3845"/>
-        <location filename="../ui/setcomdlg.ui" line="4156"/>
-        <location filename="../ui/setcomdlg.ui" line="4467"/>
-        <location filename="../ui/setcomdlg.ui" line="4778"/>
-        <location filename="../ui/setcomdlg.ui" line="5089"/>
-        <location filename="../ui/setcomdlg.ui" line="5400"/>
-        <location filename="../ui/setcomdlg.ui" line="5711"/>
-        <location filename="../ui/setcomdlg.ui" line="6022"/>
-        <location filename="../ui/setcomdlg.ui" line="6333"/>
-        <location filename="../ui/setcomdlg.ui" line="6644"/>
-        <location filename="../ui/setcomdlg.ui" line="6955"/>
-        <location filename="../ui/setcomdlg.ui" line="7266"/>
-        <location filename="../ui/setcomdlg.ui" line="7577"/>
-        <location filename="../ui/setcomdlg.ui" line="7888"/>
-        <location filename="../ui/setcomdlg.ui" line="8199"/>
-        <location filename="../ui/setcomdlg.ui" line="8510"/>
-        <location filename="../ui/setcomdlg.ui" line="8821"/>
-        <location filename="../ui/setcomdlg.ui" line="9132"/>
-        <location filename="../ui/setcomdlg.ui" line="9443"/>
+        <location filename="../ui/setcomdlg.ui" line="1660"/>
+        <location filename="../ui/setcomdlg.ui" line="1965"/>
+        <location filename="../ui/setcomdlg.ui" line="2294"/>
+        <location filename="../ui/setcomdlg.ui" line="2605"/>
+        <location filename="../ui/setcomdlg.ui" line="2916"/>
+        <location filename="../ui/setcomdlg.ui" line="3227"/>
+        <location filename="../ui/setcomdlg.ui" line="3538"/>
+        <location filename="../ui/setcomdlg.ui" line="3849"/>
+        <location filename="../ui/setcomdlg.ui" line="4160"/>
+        <location filename="../ui/setcomdlg.ui" line="4471"/>
+        <location filename="../ui/setcomdlg.ui" line="4782"/>
+        <location filename="../ui/setcomdlg.ui" line="5093"/>
+        <location filename="../ui/setcomdlg.ui" line="5404"/>
+        <location filename="../ui/setcomdlg.ui" line="5715"/>
+        <location filename="../ui/setcomdlg.ui" line="6026"/>
+        <location filename="../ui/setcomdlg.ui" line="6337"/>
+        <location filename="../ui/setcomdlg.ui" line="6648"/>
+        <location filename="../ui/setcomdlg.ui" line="6959"/>
+        <location filename="../ui/setcomdlg.ui" line="7270"/>
+        <location filename="../ui/setcomdlg.ui" line="7581"/>
+        <location filename="../ui/setcomdlg.ui" line="7892"/>
+        <location filename="../ui/setcomdlg.ui" line="8203"/>
+        <location filename="../ui/setcomdlg.ui" line="8514"/>
+        <location filename="../ui/setcomdlg.ui" line="8825"/>
+        <location filename="../ui/setcomdlg.ui" line="9136"/>
+        <location filename="../ui/setcomdlg.ui" line="9447"/>
         <source>StopBits</source>
         <translation>停止位</translation>
     </message>
@@ -2304,33 +2288,33 @@
         <location filename="../ui/setcomdlg.ui" line="616"/>
         <location filename="../ui/setcomdlg.ui" line="921"/>
         <location filename="../ui/setcomdlg.ui" line="1226"/>
-        <location filename="../ui/setcomdlg.ui" line="1664"/>
-        <location filename="../ui/setcomdlg.ui" line="1969"/>
-        <location filename="../ui/setcomdlg.ui" line="2014"/>
-        <location filename="../ui/setcomdlg.ui" line="2298"/>
-        <location filename="../ui/setcomdlg.ui" line="2609"/>
-        <location filename="../ui/setcomdlg.ui" line="2920"/>
-        <location filename="../ui/setcomdlg.ui" line="3231"/>
-        <location filename="../ui/setcomdlg.ui" line="3542"/>
-        <location filename="../ui/setcomdlg.ui" line="3853"/>
-        <location filename="../ui/setcomdlg.ui" line="4164"/>
-        <location filename="../ui/setcomdlg.ui" line="4475"/>
-        <location filename="../ui/setcomdlg.ui" line="4786"/>
-        <location filename="../ui/setcomdlg.ui" line="5097"/>
-        <location filename="../ui/setcomdlg.ui" line="5408"/>
-        <location filename="../ui/setcomdlg.ui" line="5719"/>
-        <location filename="../ui/setcomdlg.ui" line="6030"/>
-        <location filename="../ui/setcomdlg.ui" line="6341"/>
-        <location filename="../ui/setcomdlg.ui" line="6652"/>
-        <location filename="../ui/setcomdlg.ui" line="6963"/>
-        <location filename="../ui/setcomdlg.ui" line="7274"/>
-        <location filename="../ui/setcomdlg.ui" line="7585"/>
-        <location filename="../ui/setcomdlg.ui" line="7896"/>
-        <location filename="../ui/setcomdlg.ui" line="8207"/>
-        <location filename="../ui/setcomdlg.ui" line="8518"/>
-        <location filename="../ui/setcomdlg.ui" line="8829"/>
-        <location filename="../ui/setcomdlg.ui" line="9140"/>
-        <location filename="../ui/setcomdlg.ui" line="9451"/>
+        <location filename="../ui/setcomdlg.ui" line="1668"/>
+        <location filename="../ui/setcomdlg.ui" line="1973"/>
+        <location filename="../ui/setcomdlg.ui" line="2018"/>
+        <location filename="../ui/setcomdlg.ui" line="2302"/>
+        <location filename="../ui/setcomdlg.ui" line="2613"/>
+        <location filename="../ui/setcomdlg.ui" line="2924"/>
+        <location filename="../ui/setcomdlg.ui" line="3235"/>
+        <location filename="../ui/setcomdlg.ui" line="3546"/>
+        <location filename="../ui/setcomdlg.ui" line="3857"/>
+        <location filename="../ui/setcomdlg.ui" line="4168"/>
+        <location filename="../ui/setcomdlg.ui" line="4479"/>
+        <location filename="../ui/setcomdlg.ui" line="4790"/>
+        <location filename="../ui/setcomdlg.ui" line="5101"/>
+        <location filename="../ui/setcomdlg.ui" line="5412"/>
+        <location filename="../ui/setcomdlg.ui" line="5723"/>
+        <location filename="../ui/setcomdlg.ui" line="6034"/>
+        <location filename="../ui/setcomdlg.ui" line="6345"/>
+        <location filename="../ui/setcomdlg.ui" line="6656"/>
+        <location filename="../ui/setcomdlg.ui" line="6967"/>
+        <location filename="../ui/setcomdlg.ui" line="7278"/>
+        <location filename="../ui/setcomdlg.ui" line="7589"/>
+        <location filename="../ui/setcomdlg.ui" line="7900"/>
+        <location filename="../ui/setcomdlg.ui" line="8211"/>
+        <location filename="../ui/setcomdlg.ui" line="8522"/>
+        <location filename="../ui/setcomdlg.ui" line="8833"/>
+        <location filename="../ui/setcomdlg.ui" line="9144"/>
+        <location filename="../ui/setcomdlg.ui" line="9455"/>
         <source>1</source>
         <translation>1</translation>
     </message>
@@ -2339,32 +2323,32 @@
         <location filename="../ui/setcomdlg.ui" line="621"/>
         <location filename="../ui/setcomdlg.ui" line="926"/>
         <location filename="../ui/setcomdlg.ui" line="1231"/>
-        <location filename="../ui/setcomdlg.ui" line="1669"/>
-        <location filename="../ui/setcomdlg.ui" line="1974"/>
-        <location filename="../ui/setcomdlg.ui" line="2303"/>
-        <location filename="../ui/setcomdlg.ui" line="2614"/>
-        <location filename="../ui/setcomdlg.ui" line="2925"/>
-        <location filename="../ui/setcomdlg.ui" line="3236"/>
-        <location filename="../ui/setcomdlg.ui" line="3547"/>
-        <location filename="../ui/setcomdlg.ui" line="3858"/>
-        <location filename="../ui/setcomdlg.ui" line="4169"/>
-        <location filename="../ui/setcomdlg.ui" line="4480"/>
-        <location filename="../ui/setcomdlg.ui" line="4791"/>
-        <location filename="../ui/setcomdlg.ui" line="5102"/>
-        <location filename="../ui/setcomdlg.ui" line="5413"/>
-        <location filename="../ui/setcomdlg.ui" line="5724"/>
-        <location filename="../ui/setcomdlg.ui" line="6035"/>
-        <location filename="../ui/setcomdlg.ui" line="6346"/>
-        <location filename="../ui/setcomdlg.ui" line="6657"/>
-        <location filename="../ui/setcomdlg.ui" line="6968"/>
-        <location filename="../ui/setcomdlg.ui" line="7279"/>
-        <location filename="../ui/setcomdlg.ui" line="7590"/>
-        <location filename="../ui/setcomdlg.ui" line="7901"/>
-        <location filename="../ui/setcomdlg.ui" line="8212"/>
-        <location filename="../ui/setcomdlg.ui" line="8523"/>
-        <location filename="../ui/setcomdlg.ui" line="8834"/>
-        <location filename="../ui/setcomdlg.ui" line="9145"/>
-        <location filename="../ui/setcomdlg.ui" line="9456"/>
+        <location filename="../ui/setcomdlg.ui" line="1673"/>
+        <location filename="../ui/setcomdlg.ui" line="1978"/>
+        <location filename="../ui/setcomdlg.ui" line="2307"/>
+        <location filename="../ui/setcomdlg.ui" line="2618"/>
+        <location filename="../ui/setcomdlg.ui" line="2929"/>
+        <location filename="../ui/setcomdlg.ui" line="3240"/>
+        <location filename="../ui/setcomdlg.ui" line="3551"/>
+        <location filename="../ui/setcomdlg.ui" line="3862"/>
+        <location filename="../ui/setcomdlg.ui" line="4173"/>
+        <location filename="../ui/setcomdlg.ui" line="4484"/>
+        <location filename="../ui/setcomdlg.ui" line="4795"/>
+        <location filename="../ui/setcomdlg.ui" line="5106"/>
+        <location filename="../ui/setcomdlg.ui" line="5417"/>
+        <location filename="../ui/setcomdlg.ui" line="5728"/>
+        <location filename="../ui/setcomdlg.ui" line="6039"/>
+        <location filename="../ui/setcomdlg.ui" line="6350"/>
+        <location filename="../ui/setcomdlg.ui" line="6661"/>
+        <location filename="../ui/setcomdlg.ui" line="6972"/>
+        <location filename="../ui/setcomdlg.ui" line="7283"/>
+        <location filename="../ui/setcomdlg.ui" line="7594"/>
+        <location filename="../ui/setcomdlg.ui" line="7905"/>
+        <location filename="../ui/setcomdlg.ui" line="8216"/>
+        <location filename="../ui/setcomdlg.ui" line="8527"/>
+        <location filename="../ui/setcomdlg.ui" line="8838"/>
+        <location filename="../ui/setcomdlg.ui" line="9149"/>
+        <location filename="../ui/setcomdlg.ui" line="9460"/>
         <source>1.5</source>
         <translation>1.5</translation>
     </message>
@@ -2373,33 +2357,33 @@
         <location filename="../ui/setcomdlg.ui" line="626"/>
         <location filename="../ui/setcomdlg.ui" line="931"/>
         <location filename="../ui/setcomdlg.ui" line="1236"/>
-        <location filename="../ui/setcomdlg.ui" line="1674"/>
-        <location filename="../ui/setcomdlg.ui" line="1979"/>
-        <location filename="../ui/setcomdlg.ui" line="2308"/>
-        <location filename="../ui/setcomdlg.ui" line="2325"/>
-        <location filename="../ui/setcomdlg.ui" line="2619"/>
-        <location filename="../ui/setcomdlg.ui" line="2930"/>
-        <location filename="../ui/setcomdlg.ui" line="3241"/>
-        <location filename="../ui/setcomdlg.ui" line="3552"/>
-        <location filename="../ui/setcomdlg.ui" line="3863"/>
-        <location filename="../ui/setcomdlg.ui" line="4174"/>
-        <location filename="../ui/setcomdlg.ui" line="4485"/>
-        <location filename="../ui/setcomdlg.ui" line="4796"/>
-        <location filename="../ui/setcomdlg.ui" line="5107"/>
-        <location filename="../ui/setcomdlg.ui" line="5418"/>
-        <location filename="../ui/setcomdlg.ui" line="5729"/>
-        <location filename="../ui/setcomdlg.ui" line="6040"/>
-        <location filename="../ui/setcomdlg.ui" line="6351"/>
-        <location filename="../ui/setcomdlg.ui" line="6662"/>
-        <location filename="../ui/setcomdlg.ui" line="6973"/>
-        <location filename="../ui/setcomdlg.ui" line="7284"/>
-        <location filename="../ui/setcomdlg.ui" line="7595"/>
-        <location filename="../ui/setcomdlg.ui" line="7906"/>
-        <location filename="../ui/setcomdlg.ui" line="8217"/>
-        <location filename="../ui/setcomdlg.ui" line="8528"/>
-        <location filename="../ui/setcomdlg.ui" line="8839"/>
-        <location filename="../ui/setcomdlg.ui" line="9150"/>
-        <location filename="../ui/setcomdlg.ui" line="9461"/>
+        <location filename="../ui/setcomdlg.ui" line="1678"/>
+        <location filename="../ui/setcomdlg.ui" line="1983"/>
+        <location filename="../ui/setcomdlg.ui" line="2312"/>
+        <location filename="../ui/setcomdlg.ui" line="2329"/>
+        <location filename="../ui/setcomdlg.ui" line="2623"/>
+        <location filename="../ui/setcomdlg.ui" line="2934"/>
+        <location filename="../ui/setcomdlg.ui" line="3245"/>
+        <location filename="../ui/setcomdlg.ui" line="3556"/>
+        <location filename="../ui/setcomdlg.ui" line="3867"/>
+        <location filename="../ui/setcomdlg.ui" line="4178"/>
+        <location filename="../ui/setcomdlg.ui" line="4489"/>
+        <location filename="../ui/setcomdlg.ui" line="4800"/>
+        <location filename="../ui/setcomdlg.ui" line="5111"/>
+        <location filename="../ui/setcomdlg.ui" line="5422"/>
+        <location filename="../ui/setcomdlg.ui" line="5733"/>
+        <location filename="../ui/setcomdlg.ui" line="6044"/>
+        <location filename="../ui/setcomdlg.ui" line="6355"/>
+        <location filename="../ui/setcomdlg.ui" line="6666"/>
+        <location filename="../ui/setcomdlg.ui" line="6977"/>
+        <location filename="../ui/setcomdlg.ui" line="7288"/>
+        <location filename="../ui/setcomdlg.ui" line="7599"/>
+        <location filename="../ui/setcomdlg.ui" line="7910"/>
+        <location filename="../ui/setcomdlg.ui" line="8221"/>
+        <location filename="../ui/setcomdlg.ui" line="8532"/>
+        <location filename="../ui/setcomdlg.ui" line="8843"/>
+        <location filename="../ui/setcomdlg.ui" line="9154"/>
+        <location filename="../ui/setcomdlg.ui" line="9465"/>
         <source>2</source>
         <translation>2</translation>
     </message>
@@ -2407,6 +2391,11 @@
         <location filename="../ui/setcomdlg.ui" line="942"/>
         <source>Balance</source>
         <translation>天平</translation>
+    </message>
+    <message>
+        <location filename="../ui/setcomdlg.ui" line="1298"/>
+        <source>Mettler Toledo</source>
+        <translation>Mettler Toledo</translation>
     </message>
     <message>
         <location filename="../ui/setcomdlg.ui" line="332"/>
@@ -2439,143 +2428,138 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="1298"/>
-        <source>Mettler</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../ui/setcomdlg.ui" line="1305"/>
+        <location filename="../ui/setcomdlg.ui" line="1307"/>
         <source>MaxWeight:</source>
         <translation>最大称量:</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="1334"/>
-        <location filename="../ui/setcomdlg.ui" line="1370"/>
+        <location filename="../ui/setcomdlg.ui" line="1336"/>
+        <location filename="../ui/setcomdlg.ui" line="1372"/>
         <source>kg</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="1341"/>
+        <location filename="../ui/setcomdlg.ui" line="1343"/>
         <source>BottomWht:</source>
         <translation>回水底量:</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="1380"/>
+        <location filename="../ui/setcomdlg.ui" line="1384"/>
         <source>Inst Std Meter</source>
         <translation>瞬时流量</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="1685"/>
+        <location filename="../ui/setcomdlg.ui" line="1689"/>
         <source>Accum Std Meter</source>
         <translation>累积流量</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="1990"/>
+        <location filename="../ui/setcomdlg.ui" line="1994"/>
         <source>Meter Quantity</source>
         <translation>最大检表数量</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2002"/>
+        <location filename="../ui/setcomdlg.ui" line="2006"/>
         <source>Meter</source>
         <translation>被检表</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2636"/>
+        <location filename="../ui/setcomdlg.ui" line="2640"/>
         <source>3</source>
         <translation>3</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2947"/>
+        <location filename="../ui/setcomdlg.ui" line="2951"/>
         <source>4</source>
         <translation>4</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="4502"/>
+        <location filename="../ui/setcomdlg.ui" line="4506"/>
         <source>9</source>
         <translation>9</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="4813"/>
+        <location filename="../ui/setcomdlg.ui" line="4817"/>
         <source>10</source>
         <translation>10</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="5124"/>
+        <location filename="../ui/setcomdlg.ui" line="5128"/>
         <source>11</source>
         <translation>11</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="5435"/>
+        <location filename="../ui/setcomdlg.ui" line="5439"/>
         <source>12</source>
         <translation>12</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="5746"/>
+        <location filename="../ui/setcomdlg.ui" line="5750"/>
         <source>13</source>
         <translation>13</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="6057"/>
+        <location filename="../ui/setcomdlg.ui" line="6061"/>
         <source>14</source>
         <translation>14</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="6368"/>
+        <location filename="../ui/setcomdlg.ui" line="6372"/>
         <source>15</source>
         <translation>15</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="6679"/>
+        <location filename="../ui/setcomdlg.ui" line="6683"/>
         <source>16</source>
         <translation>16</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="6990"/>
+        <location filename="../ui/setcomdlg.ui" line="6994"/>
         <source>17</source>
         <translation>17</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="7301"/>
+        <location filename="../ui/setcomdlg.ui" line="7305"/>
         <source>18</source>
         <translation>18</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="7612"/>
+        <location filename="../ui/setcomdlg.ui" line="7616"/>
         <source>19</source>
         <translation>19</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="7923"/>
+        <location filename="../ui/setcomdlg.ui" line="7927"/>
         <source>20</source>
         <translation>20</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="8234"/>
+        <location filename="../ui/setcomdlg.ui" line="8238"/>
         <source>21</source>
         <translation>21</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="8545"/>
+        <location filename="../ui/setcomdlg.ui" line="8549"/>
         <source>22</source>
         <translation>22</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="8856"/>
+        <location filename="../ui/setcomdlg.ui" line="8860"/>
         <source>23</source>
         <translation>23</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="9167"/>
+        <location filename="../ui/setcomdlg.ui" line="9171"/>
         <source>24</source>
         <translation>24</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="9499"/>
+        <location filename="../ui/setcomdlg.ui" line="9503"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="9528"/>
+        <location filename="../ui/setcomdlg.ui" line="9532"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
@@ -4061,125 +4045,125 @@
         <translation>标准铂电阻参数设置</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="45"/>
+        <location filename="../ui/stdplasensor.ui" line="39"/>
         <source>Pt25 standard Platinum Resistance</source>
         <translation>Pt25 标准铂电阻</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="56"/>
-        <location filename="../ui/stdplasensor.ui" line="221"/>
+        <location filename="../ui/stdplasensor.ui" line="50"/>
+        <location filename="../ui/stdplasensor.ui" line="343"/>
         <source>In Sensor Param</source>
         <translation>进口参数</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="65"/>
-        <location filename="../ui/stdplasensor.ui" line="117"/>
-        <location filename="../ui/stdplasensor.ui" line="236"/>
-        <location filename="../ui/stdplasensor.ui" line="320"/>
+        <location filename="../ui/stdplasensor.ui" line="59"/>
+        <location filename="../ui/stdplasensor.ui" line="146"/>
+        <location filename="../ui/stdplasensor.ui" line="358"/>
+        <location filename="../ui/stdplasensor.ui" line="535"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Rtp&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Rtp&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="111"/>
-        <location filename="../ui/stdplasensor.ui" line="308"/>
+        <location filename="../ui/stdplasensor.ui" line="140"/>
+        <location filename="../ui/stdplasensor.ui" line="523"/>
         <source>Out Sensor Param</source>
         <translation>出口铂电阻</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="185"/>
-        <location filename="../ui/stdplasensor.ui" line="459"/>
-        <location filename="../ui/stdplasensor.ui" line="571"/>
+        <location filename="../ui/stdplasensor.ui" line="262"/>
+        <location filename="../ui/stdplasensor.ui" line="701"/>
+        <location filename="../ui/stdplasensor.ui" line="783"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="609"/>
+        <location filename="../ui/stdplasensor.ui" line="826"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="203"/>
+        <location filename="../ui/stdplasensor.ui" line="274"/>
         <source>Pt100 standard Platinum Resistance</source>
         <translation>Pt100 标准铂电阻</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="72"/>
-        <location filename="../ui/stdplasensor.ui" line="140"/>
-        <location filename="../ui/stdplasensor.ui" line="249"/>
-        <location filename="../ui/stdplasensor.ui" line="333"/>
+        <location filename="../ui/stdplasensor.ui" line="66"/>
+        <location filename="../ui/stdplasensor.ui" line="217"/>
+        <location filename="../ui/stdplasensor.ui" line="371"/>
+        <location filename="../ui/stdplasensor.ui" line="548"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;a&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="79"/>
-        <location filename="../ui/stdplasensor.ui" line="124"/>
-        <location filename="../ui/stdplasensor.ui" line="262"/>
-        <location filename="../ui/stdplasensor.ui" line="346"/>
+        <location filename="../ui/stdplasensor.ui" line="73"/>
+        <location filename="../ui/stdplasensor.ui" line="153"/>
+        <location filename="../ui/stdplasensor.ui" line="384"/>
+        <location filename="../ui/stdplasensor.ui" line="561"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;b&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdplasensor.ui" line="405"/>
-        <location filename="../ui/stdplasensor.ui" line="495"/>
+        <location filename="../ui/stdplasensor.ui" line="313"/>
+        <location filename="../ui/stdplasensor.ui" line="486"/>
         <source>T(℃)</source>
         <translation>温度(℃)</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdplasensor.ui" line="410"/>
-        <location filename="../ui/stdplasensor.ui" line="500"/>
+        <location filename="../ui/stdplasensor.ui" line="318"/>
+        <location filename="../ui/stdplasensor.ui" line="491"/>
         <source>R(Ω)</source>
         <translation>电阻</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="415"/>
-        <location filename="../ui/stdplasensor.ui" line="505"/>
+        <location filename="../ui/stdplasensor.ui" line="323"/>
+        <location filename="../ui/stdplasensor.ui" line="496"/>
         <source>1st</source>
         <translation>第一</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="420"/>
-        <location filename="../ui/stdplasensor.ui" line="510"/>
+        <location filename="../ui/stdplasensor.ui" line="328"/>
+        <location filename="../ui/stdplasensor.ui" line="501"/>
         <source>2nd</source>
         <translation>第二</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="425"/>
-        <location filename="../ui/stdplasensor.ui" line="515"/>
+        <location filename="../ui/stdplasensor.ui" line="333"/>
+        <location filename="../ui/stdplasensor.ui" line="506"/>
         <source>3rd</source>
         <translation>第三</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="478"/>
+        <location filename="../ui/stdplasensor.ui" line="290"/>
         <source>In</source>
         <translation>进口</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="433"/>
+        <location filename="../ui/stdplasensor.ui" line="514"/>
         <source>Out</source>
         <translation>出口</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="452"/>
+        <location filename="../ui/stdplasensor.ui" line="676"/>
         <source>Calc</source>
         <translation>计算</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="538"/>
+        <location filename="../ui/stdplasensor.ui" line="714"/>
         <source>Model</source>
         <translation>型号</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="544"/>
+        <location filename="../ui/stdplasensor.ui" line="726"/>
         <source>Institute of Metrology</source>
         <translation>计量院</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="551"/>
+        <location filename="../ui/stdplasensor.ui" line="739"/>
         <source>WeiLi</source>
         <translation>唯力</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="564"/>
+        <location filename="../ui/stdplasensor.ui" line="758"/>
         <source>HuaYi</source>
         <translation>华仪</translation>
     </message>

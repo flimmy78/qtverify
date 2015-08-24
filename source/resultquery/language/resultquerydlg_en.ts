@@ -264,36 +264,36 @@
     <message>
         <location filename="../ui/flowresult.ui" line="231"/>
         <source>FlowPoint:</source>
-        <translation></translation>
+        <translation>FlowPoint:</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="244"/>
         <location filename="../ui/flowresult.ui" line="377"/>
         <source>1</source>
-        <translation></translation>
+        <translation>1</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="249"/>
         <location filename="../ui/flowresult.ui" line="382"/>
         <source>2</source>
-        <translation></translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="254"/>
         <location filename="../ui/flowresult.ui" line="387"/>
         <source>3</source>
-        <translation></translation>
+        <translation>3</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="259"/>
         <location filename="../ui/flowresult.ui" line="392"/>
         <source>4</source>
-        <translation></translation>
+        <translation>4</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="277"/>
         <source>Is Valid</source>
-        <translation></translation>
+        <translation>Is Valid</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="285"/>
@@ -303,7 +303,7 @@
     <message>
         <location filename="../ui/flowresult.ui" line="290"/>
         <source>valid</source>
-        <translation></translation>
+        <translation>valid</translation>
     </message>
     <message>
         <source>Model</source>

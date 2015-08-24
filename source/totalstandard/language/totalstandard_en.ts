@@ -238,13 +238,13 @@
         <location filename="../totalstandard.ui" line="423"/>
         <location filename="../totalstandard.ui" line="486"/>
         <source>ReadNO</source>
-        <translation>读取表号</translation>
+        <translation>ReadNO</translation>
     </message>
     <message>
         <location filename="../totalstandard.ui" line="428"/>
         <location filename="../totalstandard.ui" line="511"/>
         <source>ReadData</source>
-        <translation>读表数据</translation>
+        <translation>ReadData</translation>
     </message>
     <message>
         <location filename="../totalstandard.ui" line="572"/>
@@ -288,7 +288,7 @@
     <message>
         <location filename="../totalstandard.ui" line="1009"/>
         <source>Standard:</source>
-        <translation></translation>
+        <translation>Standard:</translation>
     </message>
     <message>
         <location filename="../totalstandard.ui" line="1035"/>
@@ -359,7 +359,9 @@ n
         <source>b
 i
 g</source>
-        <translation></translation>
+        <translation>b
+i
+g</translation>
     </message>
     <message>
         <location filename="../totalstandard.ui" line="1283"/>
@@ -401,7 +403,9 @@ l</translation>
         <source>o
 u
 t</source>
-        <translation></translation>
+        <translation>o
+u
+t</translation>
     </message>
     <message>
         <location filename="../totalstandard.ui" line="1393"/>
@@ -434,7 +438,7 @@ t</source>
     <message utf8="true">
         <location filename="../totalstandard.ui" line="1540"/>
         <source>m³/h</source>
-        <translation></translation>
+        <translation>m³/h</translation>
     </message>
     <message>
         <location filename="../totalstandard.ui" line="1553"/>
