@@ -204,51 +204,39 @@ void SetComDlg::InstallAccumStdConfig()
 
 void SetComDlg::InstallMetersConfig()
 {
-	const QObjectList list=gui.gBoxMeters->children();
-	foreach(QObject *obj, list)
-	{
-		QString class_name = QString::fromAscii( obj->metaObject()->className() );
-		if (class_name == "QGroupBox")
-		{
-			InstallMeterConfigByNum((QGroupBox*)obj);
-		}
-	}
-}
+	m_com_settings->beginGroup("MetersProperty");
+	gui.comboMeterBaudRate->setCurrentIndex(m_com_settings->value("baud").toString().split(SEP)[1].toInt());	
+	gui.comboMeterBits->setCurrentIndex(m_com_settings->value("bits").toString().split(SEP)[1].toInt());	
+	gui.comboMeterChkBit->setCurrentIndex(m_com_settings->value("chkbit").toString().split(SEP)[1].toInt());	
+	gui.comboMeterEndBit->setCurrentIndex(m_com_settings->value("endbit").toString().split(SEP)[1].toInt());
+	m_com_settings->endGroup();
 
-void SetComDlg::InstallMeterConfigByNum(QGroupBox *gBox)
-{
-	const QObjectList list=gBox->children();
-	QStringList configs = m_config->ReadIndexByName(gBox->objectName());
-	foreach(QObject* obj, list)
-	{
-		QString class_name = QString::fromAscii( obj->metaObject()->className() );
-		if(class_name=="QComboBox")
-		{
-			QComboBox *CBox=(QComboBox*)obj;
-			QString object_name = CBox->objectName();
-
-			if (object_name.contains("SerialNum",Qt::CaseSensitive))
-			{
-				CBox->setCurrentIndex(configs[0].toInt());
-			}
-			else if (object_name.contains("BaudRate",Qt::CaseSensitive))
-			{
-				CBox->setCurrentIndex(configs[1].toInt());
-			}
-			else if (object_name.contains("Bits",Qt::CaseSensitive))
-			{
-				CBox->setCurrentIndex(configs[2].toInt());
-			}
-			else if (object_name.contains("ChkBit",Qt::CaseSensitive))
-			{
-				CBox->setCurrentIndex(configs[3].toInt());
-			}
-			else if (object_name.contains("EndBit",Qt::CaseSensitive))
-			{
-				CBox->setCurrentIndex(configs[4].toInt());
-			}
-		}
-	}
+	m_com_settings->beginGroup("MetersCom");
+	gui.spinBox_Meter_1->setValue(m_com_settings->value(meter(1)).toInt());
+	gui.spinBox_Meter_2->setValue(m_com_settings->value(meter(2)).toInt());
+	gui.spinBox_Meter_3->setValue(m_com_settings->value(meter(3)).toInt());
+	gui.spinBox_Meter_4->setValue(m_com_settings->value(meter(4)).toInt());
+	gui.spinBox_Meter_5->setValue(m_com_settings->value(meter(5)).toInt());
+	gui.spinBox_Meter_6->setValue(m_com_settings->value(meter(6)).toInt());
+	gui.spinBox_Meter_7->setValue(m_com_settings->value(meter(7)).toInt());
+	gui.spinBox_Meter_8->setValue(m_com_settings->value(meter(8)).toInt());
+	gui.spinBox_Meter_9->setValue(m_com_settings->value(meter(9)).toInt());
+	gui.spinBox_Meter_10->setValue(m_com_settings->value(meter(10)).toInt());
+	gui.spinBox_Meter_11->setValue(m_com_settings->value(meter(11)).toInt());
+	gui.spinBox_Meter_12->setValue(m_com_settings->value(meter(12)).toInt());
+	gui.spinBox_Meter_13->setValue(m_com_settings->value(meter(13)).toInt());
+	gui.spinBox_Meter_14->setValue(m_com_settings->value(meter(14)).toInt());
+	gui.spinBox_Meter_15->setValue(m_com_settings->value(meter(15)).toInt());
+	gui.spinBox_Meter_16->setValue(m_com_settings->value(meter(16)).toInt());
+	gui.spinBox_Meter_17->setValue(m_com_settings->value(meter(17)).toInt());
+	gui.spinBox_Meter_18->setValue(m_com_settings->value(meter(18)).toInt());
+	gui.spinBox_Meter_19->setValue(m_com_settings->value(meter(19)).toInt());
+	gui.spinBox_Meter_20->setValue(m_com_settings->value(meter(20)).toInt());
+	gui.spinBox_Meter_21->setValue(m_com_settings->value(meter(21)).toInt());
+	gui.spinBox_Meter_22->setValue(m_com_settings->value(meter(22)).toInt());
+	gui.spinBox_Meter_23->setValue(m_com_settings->value(meter(23)).toInt());
+	gui.spinBox_Meter_24->setValue(m_com_settings->value(meter(24)).toInt());
+	m_com_settings->endGroup();
 }
 
 //写入阀门设置
@@ -314,34 +302,44 @@ void SetComDlg::WriteAccumStdConfig()
 //写入被检表设置
 void SetComDlg::WriteMetersConfig()
 {
-	m_com_settings->beginWriteArray("Meters");
-	for (int MeterNum=0; MeterNum< METER_QUANTITY; MeterNum++)
-	{
-		m_com_settings->setArrayIndex(MeterNum);
-		WriteMeterConfigByNum(MeterNum+1);
-	}
-	m_com_settings->endArray();
-}
+	QString baud_rate = gui.comboMeterBaudRate->currentText()+ SEP + QString::number(gui.comboMeterBaudRate->currentIndex(), 10);	
+	QString data_bits = gui.comboMeterBits->currentText()+ SEP + QString::number(gui.comboMeterBits->currentIndex(), 10);	
+	QString chk_bit = QString::number(gui.comboMeterChkBit->currentIndex(), 10)+ SEP + QString::number(gui.comboMeterChkBit->currentIndex(), 10);	
+	QString stop_bit = QString::number(gui.comboMeterEndBit->currentIndex(), 10)+ SEP + QString::number(gui.comboMeterEndBit->currentIndex(), 10);
 
-void SetComDlg::WriteMeterConfigByNum(int MeterNum)
-{
-	const QString sep=SEP;//分隔符，用于分隔界面值和索引值
-	const QObjectList list=gui.gBoxMeters->children();
-	foreach(QObject* obj, list)
-	{
-		QString class_name = QString::fromAscii( obj->metaObject()->className() );
-		if(class_name=="QGroupBox")
-		{
-			QGroupBox *gBox=(QGroupBox*)obj;
-			QString object_name = gBox->objectName();
+	m_com_settings->beginGroup("MetersProperty");
+	m_com_settings->setValue("baud", baud_rate);
+	m_com_settings->setValue("bits", data_bits);
+	m_com_settings->setValue("chkbit", chk_bit);
+	m_com_settings->setValue("endbit", stop_bit);
+	m_com_settings->endGroup();
 
-			QStringList words = object_name.split("_");//获取控件名的后缀
-			if (words[1].toInt() == MeterNum)
-			{
-				WriteConfigById(gBox);
-			}
-		}
-	}
+	m_com_settings->beginGroup("MetersCom");
+	m_com_settings->setValue(meter(1),gui.spinBox_Meter_1->value());
+	m_com_settings->setValue(meter(2),gui.spinBox_Meter_2->value());
+	m_com_settings->setValue(meter(3),gui.spinBox_Meter_3->value());
+	m_com_settings->setValue(meter(4),gui.spinBox_Meter_4->value());
+	m_com_settings->setValue(meter(5),gui.spinBox_Meter_5->value());
+	m_com_settings->setValue(meter(6),gui.spinBox_Meter_6->value());
+	m_com_settings->setValue(meter(7),gui.spinBox_Meter_7->value());
+	m_com_settings->setValue(meter(8),gui.spinBox_Meter_8->value());
+	m_com_settings->setValue(meter(9),gui.spinBox_Meter_9->value());
+	m_com_settings->setValue(meter(10),gui.spinBox_Meter_10->value());
+	m_com_settings->setValue(meter(11),gui.spinBox_Meter_11->value());
+	m_com_settings->setValue(meter(12),gui.spinBox_Meter_12->value());
+	m_com_settings->setValue(meter(13),gui.spinBox_Meter_13->value());
+	m_com_settings->setValue(meter(14),gui.spinBox_Meter_14->value());
+	m_com_settings->setValue(meter(15),gui.spinBox_Meter_15->value());
+	m_com_settings->setValue(meter(16),gui.spinBox_Meter_16->value());
+	m_com_settings->setValue(meter(17),gui.spinBox_Meter_17->value());
+	m_com_settings->setValue(meter(18),gui.spinBox_Meter_18->value());
+	m_com_settings->setValue(meter(19),gui.spinBox_Meter_19->value());
+	m_com_settings->setValue(meter(20),gui.spinBox_Meter_20->value());
+	m_com_settings->setValue(meter(21),gui.spinBox_Meter_21->value());
+	m_com_settings->setValue(meter(22),gui.spinBox_Meter_22->value());
+	m_com_settings->setValue(meter(23),gui.spinBox_Meter_23->value());
+	m_com_settings->setValue(meter(24),gui.spinBox_Meter_24->value());
+	m_com_settings->endGroup();
 }
 
 void SetComDlg::WriteConfigById(QGroupBox *gBox)
@@ -352,7 +350,6 @@ void SetComDlg::WriteConfigById(QGroupBox *gBox)
 	QString data_bits ;
 	QString chk_bit ;
 	QString stop_bit ;
-	const QString sep=SEP;//分隔符，用于分隔界面值和索引值
 	const QObjectList list=gBox->children();
 	foreach(QObject* obj, list)
 	{
@@ -364,23 +361,23 @@ void SetComDlg::WriteConfigById(QGroupBox *gBox)
 
 			if (bool occur = object_name.contains("SerialNum",Qt::CaseSensitive))
 			{
-				com_name = CBox->currentText() + sep + QString::number(CBox->currentIndex(), 10);
+				com_name = CBox->currentText() + SEP + QString::number(CBox->currentIndex(), 10);
 			}
 			else if (occur = object_name.contains("BaudRate",Qt::CaseSensitive))
 			{
-				baud_rate = CBox->currentText()+ sep + QString::number(CBox->currentIndex(), 10);
+				baud_rate = CBox->currentText()+ SEP + QString::number(CBox->currentIndex(), 10);
 			}
 			else if (occur = object_name.contains("Bits",Qt::CaseSensitive))
 			{
-				data_bits = CBox->currentText()+ sep + QString::number(CBox->currentIndex(), 10);
+				data_bits = CBox->currentText()+ SEP + QString::number(CBox->currentIndex(), 10);
 			}
 			else if (occur = object_name.contains("ChkBit",Qt::CaseSensitive))
 			{
-				chk_bit = QString::number(CBox->currentIndex(), 10)+ sep + QString::number(CBox->currentIndex(), 10);
+				chk_bit = QString::number(CBox->currentIndex(), 10)+ SEP + QString::number(CBox->currentIndex(), 10);
 			}
 			else if (occur = object_name.contains("EndBit",Qt::CaseSensitive))
 			{
-				stop_bit = QString::number(CBox->currentIndex(), 10)+ sep + QString::number(CBox->currentIndex(), 10);
+				stop_bit = QString::number(CBox->currentIndex(), 10)+ SEP + QString::number(CBox->currentIndex(), 10);
 			}
 		}
 	}

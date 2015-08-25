@@ -71,17 +71,6 @@ ComInfoStruct ReadComConfig::ReadAccumStdConfig()
 	return ReadConfigByName("AccumStd");
 }
 
-//标准表模块还在使用, 待标准表模块可以正确编译, 即可删除此函数
-ComInfoStruct ReadComConfig::ReadMeterConfigByNum(QString MeterNum)
-{
-	QRegExp rx("[0-9]{1,2}");
-	if (!rx.exactMatch(MeterNum))
-	{
-		throw QString("Please input an integer!");
-	}
-	return ReadMeterConfigByNum(MeterNum.toInt());
-}
-
 ComInfoStruct ReadComConfig::ReadMeterConfigByNum(int MeterNum)
 {
 	return ReadConfigByName(meter(MeterNum));
@@ -92,27 +81,30 @@ ComInfoStruct ReadComConfig::ReadConfigByName(QString ConfigId)
 {
 	ComInfoStruct com_info;
 
-	int meterNum;
 	//判断是否读取被检表配置
 	if (ConfigId.contains(METER_STR))
 	{
-		m_com_settings->beginReadArray("Meters");
-		meterNum = ConfigId.split('_')[1].toInt();
-		m_com_settings->setArrayIndex(meterNum-1);
+		m_com_settings->beginGroup("MetersProperty");
+		com_info.baudRate = m_com_settings->value("baud").toString().split(SEP)[0].toInt();
+		com_info.dataBit  = m_com_settings->value("bits").toString().split(SEP)[0].toInt();
+		com_info.parity   = m_com_settings->value("chkbit").toString().split(SEP)[0].toInt();
+		com_info.stopBit  = m_com_settings->value("endbit").toString().split(SEP)[0].toInt();
+		m_com_settings->endGroup();
+
+		m_com_settings->beginGroup("MetersCom");
+		com_info.portName = "COM" + m_com_settings->value(ConfigId).toString();
+		m_com_settings->endGroup();
 	}
 	else
+	{
 		m_com_settings->beginGroup(ConfigId);
-
-	com_info.portName = m_com_settings->value("com_name").toString().split(SEP)[0];
-	com_info.baudRate = m_com_settings->value("baud").toString().split(SEP)[0].toInt();
-	com_info.dataBit  = m_com_settings->value("bits").toString().split(SEP)[0].toInt();
-	com_info.parity   = m_com_settings->value("chkbit").toString().split(SEP)[0].toInt();
-	com_info.stopBit  = m_com_settings->value("endbit").toString().split(SEP)[0].toInt();
-
-	if (ConfigId.contains(METER_STR))
-		m_com_settings->endArray();
-	else
+		com_info.portName = m_com_settings->value("com_name").toString().split(SEP)[0];
+		com_info.baudRate = m_com_settings->value("baud").toString().split(SEP)[0].toInt();
+		com_info.dataBit  = m_com_settings->value("bits").toString().split(SEP)[0].toInt();
+		com_info.parity   = m_com_settings->value("chkbit").toString().split(SEP)[0].toInt();
+		com_info.stopBit  = m_com_settings->value("endbit").toString().split(SEP)[0].toInt();
 		m_com_settings->endGroup();
+	}
 
 	return com_info;
 }
@@ -120,27 +112,14 @@ ComInfoStruct ReadComConfig::ReadConfigByName(QString ConfigId)
 QStringList ReadComConfig::ReadIndexByName(QString ConfigId)
 {
 	QStringList com_info;
-	int meterNum;
-	//判断是否读取被检表配置
-	if (ConfigId.contains(METER_STR))
-	{
-		m_com_settings->beginReadArray("Meters");
-		meterNum = ConfigId.split('_')[1].toInt();
-		m_com_settings->setArrayIndex(meterNum-1);
-	}
-	else
-		m_com_settings->beginGroup(ConfigId);
 
+	m_com_settings->beginGroup(ConfigId);
 	com_info.append(m_com_settings->value("com_name").toString().split(SEP)[1]);
 	com_info.append(m_com_settings->value("baud").toString().split(SEP)[1]);
 	com_info.append(m_com_settings->value("bits").toString().split(SEP)[1]);
 	com_info.append(m_com_settings->value("chkbit").toString().split(SEP)[1]);
 	com_info.append(m_com_settings->value("endbit").toString().split(SEP)[1]);
-
-	if (ConfigId.contains(METER_STR))
-		m_com_settings->endArray();
-	else
-		m_com_settings->endGroup();
+	m_com_settings->endGroup();
 
 	return com_info;
 }
