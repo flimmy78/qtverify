@@ -94,7 +94,6 @@
     <property name="title">
      <string>About(&amp;A)</string>
     </property>
-    <addaction name="actionUserManage"/>
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuStyle">
@@ -165,7 +164,6 @@
    <addaction name="actionClassic"/>
    <addaction name="actionFashion"/>
    <addaction name="separator"/>
-   <addaction name="actionUserManage"/>
    <addaction name="actionExit"/>
    <addaction name="separator"/>
   </widget>
