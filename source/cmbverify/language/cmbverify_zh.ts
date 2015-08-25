@@ -169,9 +169,8 @@
         <translation>提示信息</translation>
     </message>
     <message>
-        <location filename="../cmbverify.ui" line="412"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0000ff;&quot;&gt;Please set the Unit, Install position and minimum temperature difference corectly&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0000ff;&quot;&gt;请正确设置计量单位、安装位置及最小温差&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0000ff;&quot;&gt;请正确设置计量单位、安装位置及最小温差&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../cmbverify.ui" line="430"/>
@@ -322,6 +321,11 @@
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ω&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
+        <location filename="../cmbverify.ui" line="412"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0000ff;&quot;&gt;Please set the Unit, Install position and minimum temperature difference correctly&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0000ff;&quot;&gt;请正确设置热量单位, 安装位置, 最小温差&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
         <location filename="../cmbverify.ui" line="179"/>
         <source>collect</source>
         <translation>采集</translation>
@@ -390,7 +394,7 @@
     <message>
         <location filename="../cmbverify.cpp" line="507"/>
         <location filename="../cmbverify.cpp" line="512"/>
-        <location filename="../cmbverify.cpp" line="704"/>
+        <location filename="../cmbverify.cpp" line="707"/>
         <source>Hint</source>
         <translation>提示</translation>
     </message>
@@ -406,12 +410,12 @@
         <translation>保存数据失败!</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="615"/>
+        <location filename="../cmbverify.cpp" line="616"/>
         <source>please input meter number, then click &quot;Start&quot; button!</source>
         <translation>请输入表号，然后点击&quot;开始&quot;按钮！</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="704"/>
+        <location filename="../cmbverify.cpp" line="707"/>
         <source>current temperature different is less than min ¦¤¦È!</source>
         <translation>当前恒温槽温差小于您设置的最小温差!</translation>
     </message>

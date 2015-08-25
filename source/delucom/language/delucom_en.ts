@@ -24,241 +24,241 @@
     <message>
         <location filename="../mainwindow.ui" line="72"/>
         <source>ComPara</source>
-        <translation type="unfinished"></translation>
+        <translation>ComPara</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="89"/>
         <source>Com:</source>
-        <translation type="unfinished"></translation>
+        <translation>Com:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="105"/>
         <source>BaudRate:</source>
-        <translation type="unfinished"></translation>
+        <translation>BaudRate:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="116"/>
         <source>50</source>
-        <translation type="unfinished"></translation>
+        <translation>50</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="121"/>
         <source>75</source>
-        <translation type="unfinished"></translation>
+        <translation>75</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="126"/>
         <source>110</source>
-        <translation type="unfinished"></translation>
+        <translation>110</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="131"/>
         <source>134</source>
-        <translation type="unfinished"></translation>
+        <translation>134</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="136"/>
         <source>150</source>
-        <translation type="unfinished"></translation>
+        <translation>150</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="141"/>
         <source>200</source>
-        <translation type="unfinished"></translation>
+        <translation>200</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="146"/>
         <source>300</source>
-        <translation type="unfinished"></translation>
+        <translation>300</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="151"/>
         <source>600</source>
-        <translation type="unfinished"></translation>
+        <translation>600</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="156"/>
         <source>1200</source>
-        <translation type="unfinished"></translation>
+        <translation>1200</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="161"/>
         <source>1800</source>
-        <translation type="unfinished"></translation>
+        <translation>1800</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="166"/>
         <source>2400</source>
-        <translation type="unfinished"></translation>
+        <translation>2400</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="171"/>
         <source>4800</source>
-        <translation type="unfinished"></translation>
+        <translation>4800</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="176"/>
         <source>9600</source>
-        <translation type="unfinished"></translation>
+        <translation>9600</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="181"/>
         <source>14400</source>
-        <translation type="unfinished"></translation>
+        <translation>14400</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="186"/>
         <source>19200</source>
-        <translation type="unfinished"></translation>
+        <translation>19200</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="191"/>
         <source>38400</source>
-        <translation type="unfinished"></translation>
+        <translation>38400</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="196"/>
         <source>56000</source>
-        <translation type="unfinished"></translation>
+        <translation>56000</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="201"/>
         <source>57600</source>
-        <translation type="unfinished"></translation>
+        <translation>57600</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="206"/>
         <source>76800</source>
-        <translation type="unfinished"></translation>
+        <translation>76800</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="211"/>
         <source>115200</source>
-        <translation type="unfinished"></translation>
+        <translation>115200</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="216"/>
         <source>128000</source>
-        <translation type="unfinished"></translation>
+        <translation>128000</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="221"/>
         <source>256000</source>
-        <translation type="unfinished"></translation>
+        <translation>256000</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="235"/>
         <source>DataBits:</source>
-        <translation type="unfinished"></translation>
+        <translation>DataBits:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="275"/>
         <source>Parity:</source>
-        <translation type="unfinished"></translation>
+        <translation>Parity:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="283"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>None</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="288"/>
         <source>Odd</source>
-        <translation type="unfinished"></translation>
+        <translation>Odd</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="293"/>
         <source>Even</source>
-        <translation type="unfinished"></translation>
+        <translation>Even</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="307"/>
         <source>StopBits:</source>
-        <translation type="unfinished"></translation>
+        <translation>StopBits:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="351"/>
         <source>Continuous</source>
-        <translation type="unfinished"></translation>
+        <translation>Continuous</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="366"/>
         <source>Interval(ms)</source>
-        <translation type="unfinished"></translation>
+        <translation>Interval(ms)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="406"/>
         <source>Received Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Received Data</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="415"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;disp data as hex &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;disp data as hex &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="428"/>
         <location filename="../mainwindow.ui" line="607"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;disp data as ascii&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;disp data as ascii&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="487"/>
         <location filename="../mainwindow.ui" line="667"/>
         <source>ClearUp</source>
-        <translation type="unfinished"></translation>
+        <translation>ClearUp</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="504"/>
         <source>Bytes number of received data</source>
-        <translation type="unfinished"></translation>
+        <translation>Bytes number of received data</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="526"/>
         <location filename="../mainwindow.ui" line="706"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Reset</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="578"/>
         <source>Send Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Send Data</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="594"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;disp data as hex&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;disp data as hex&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="638"/>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation>Send</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="684"/>
         <source>Bytes number of send data</source>
-        <translation type="unfinished"></translation>
+        <translation>Bytes number of send data</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="730"/>
         <source>Operate(&amp;C)</source>
-        <translation type="unfinished"></translation>
+        <translation>Operate(&amp;C)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="748"/>
         <source>About(&amp;A)</source>
-        <translation type="unfinished"></translation>
+        <translation>About(&amp;A)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="828"/>
         <source>OpenCom</source>
-        <translation type="unfinished"></translation>
+        <translation>OpenCom</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="831"/>
         <location filename="../mainwindow.ui" line="834"/>
         <source>Open Com</source>
-        <translation type="unfinished"></translation>
+        <translation>Open Com</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="873"/>
@@ -279,51 +279,51 @@
     <message>
         <location filename="../mainwindow.ui" line="888"/>
         <source>SaveData</source>
-        <translation type="unfinished"></translation>
+        <translation>SaveData</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="891"/>
         <location filename="../mainwindow.ui" line="894"/>
         <source>Save Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Save Data</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="903"/>
         <source>ClearRecv</source>
-        <translation type="unfinished"></translation>
+        <translation>ClearRecv</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="906"/>
         <location filename="../mainwindow.ui" line="909"/>
         <source>Clear Received Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Clear Received Data</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="918"/>
         <source>ReadFile</source>
-        <translation type="unfinished"></translation>
+        <translation>ReadFile</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="921"/>
         <location filename="../mainwindow.ui" line="924"/>
         <source>Load file as data to be send</source>
-        <translation type="unfinished"></translation>
+        <translation>Load file as data to be send</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="933"/>
         <source>ClearCom</source>
-        <translation type="unfinished"></translation>
+        <translation>ClearCom</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="936"/>
         <location filename="../mainwindow.ui" line="939"/>
         <source>Clear Data of Com I/O </source>
-        <translation type="unfinished"></translation>
+        <translation>Clear Data of Com I/O </translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="951"/>
         <source>WriteFile</source>
-        <translation type="unfinished"></translation>
+        <translation>WriteFile</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="954"/>
@@ -331,103 +331,103 @@
         <location filename="../mainwindow.cpp" line="294"/>
         <location filename="../mainwindow.cpp" line="567"/>
         <source>Write File</source>
-        <translation type="unfinished"></translation>
+        <translation>Write File</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="966"/>
         <source>ClearSend</source>
-        <translation type="unfinished"></translation>
+        <translation>ClearSend</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="969"/>
         <location filename="../mainwindow.ui" line="972"/>
         <source>Clear Send Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Clear Send Data</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="246"/>
         <source>5</source>
-        <translation type="unfinished"></translation>
+        <translation>5</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="35"/>
         <source>DeluCom Debugger V1.0</source>
-        <translation type="unfinished"></translation>
+        <translation>DeluCom Debugger V1.0</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="251"/>
         <source>6</source>
-        <translation type="unfinished"></translation>
+        <translation>6</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="256"/>
         <source>7</source>
-        <translation type="unfinished"></translation>
+        <translation>7</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="261"/>
         <source>8</source>
-        <translation type="unfinished"></translation>
+        <translation>8</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="315"/>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation>1</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="320"/>
         <source>1.5</source>
-        <translation type="unfinished"></translation>
+        <translation>1.5</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="325"/>
         <source>2</source>
-        <translation type="unfinished"></translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="418"/>
         <location filename="../mainwindow.ui" line="597"/>
         <source>Hex</source>
-        <translation type="unfinished"></translation>
+        <translation>Hex</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="431"/>
         <location filename="../mainwindow.ui" line="610"/>
         <source>Ascii</source>
-        <translation type="unfinished"></translation>
+        <translation>Ascii</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="843"/>
         <source>CloseCom</source>
-        <translation type="unfinished"></translation>
+        <translation>CloseCom</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="846"/>
         <location filename="../mainwindow.ui" line="849"/>
         <source>Close Com</source>
-        <translation type="unfinished"></translation>
+        <translation>Close Com</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="858"/>
         <location filename="../mainwindow.ui" line="861"/>
         <location filename="../mainwindow.ui" line="864"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Exit</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="226"/>
         <source>Open Com Success</source>
-        <translation type="unfinished"></translation>
+        <translation>Open Com Success</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="249"/>
         <source>Com is closed</source>
-        <translation type="unfinished"></translation>
+        <translation>Com is closed</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="308"/>
         <source>read %1 bytes data success</source>
-        <translation type="unfinished"></translation>
+        <translation>read %1 bytes data success</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="333"/>
@@ -437,12 +437,12 @@
         <location filename="../mainwindow.cpp" line="470"/>
         <location filename="../mainwindow.cpp" line="537"/>
         <source>Hint</source>
-        <translation type="unfinished"></translation>
+        <translation>Hint</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="221"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="62"/>
@@ -452,163 +452,166 @@
     <message>
         <location filename="../mainwindow.cpp" line="221"/>
         <source>can&apos;t open </source>
-        <translation type="unfinished"></translation>
+        <translation>can&apos;t open </translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="221"/>
         <source>
 device is occupied or isn&apos;t exist!</source>
-        <translation type="unfinished"></translation>
+        <translation>
+device is occupied or isn&apos;t exist!</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="294"/>
         <source>open file %1 failed, can&apos;t write
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>open file %1 failed, can&apos;t write
+%2</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="333"/>
         <source>data format error£¡</source>
-        <translation type="unfinished"></translation>
+        <translation>data format error£¡</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="336"/>
         <location filename="../mainwindow.cpp" line="366"/>
         <source>send</source>
-        <translation type="unfinished"></translation>
+        <translation>send</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="354"/>
         <source>send data success</source>
-        <translation type="unfinished"></translation>
+        <translation>send data success</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="363"/>
         <location filename="../mainwindow.cpp" line="387"/>
         <source>pause</source>
-        <translation type="unfinished"></translation>
+        <translation>pause</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="373"/>
         <source>no data need to send</source>
-        <translation type="unfinished"></translation>
+        <translation>no data need to send</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="395"/>
         <source>receive record is cleared</source>
-        <translation type="unfinished"></translation>
+        <translation>receive record is cleared</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="403"/>
         <source>send record is cleared</source>
-        <translation type="unfinished"></translation>
+        <translation>send record is cleared</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="411"/>
         <location filename="../mainwindow.cpp" line="425"/>
         <source>already cleared</source>
-        <translation type="unfinished"></translation>
+        <translation>already cleared</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="416"/>
         <source>receive LCD already cleared</source>
-        <translation type="unfinished"></translation>
+        <translation>receive LCD already cleared</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="430"/>
         <source>send LCD already cleared</source>
-        <translation type="unfinished"></translation>
+        <translation>send LCD already cleared</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="455"/>
         <source>start send continuously</source>
-        <translation type="unfinished"></translation>
+        <translation>start send continuously</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="461"/>
         <source>stop send continuously</source>
-        <translation type="unfinished"></translation>
+        <translation>stop send continuously</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="470"/>
         <source>no data need save! please input data in the sending area</source>
-        <translation type="unfinished"></translation>
+        <translation>no data need save! please input data in the sending area</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="474"/>
         <source>Save As</source>
-        <translation type="unfinished"></translation>
+        <translation>Save As</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="474"/>
         <source>noname.txt</source>
-        <translation type="unfinished"></translation>
+        <translation>noname.txt</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="484"/>
         <source>Save File</source>
-        <translation type="unfinished"></translation>
+        <translation>Save File</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="484"/>
         <source>open file %1 failed, can&apos;t save
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>open file %1 failed, can&apos;t save
+%2</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="510"/>
         <source>Read File</source>
-        <translation type="unfinished"></translation>
+        <translation>Read File</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="510"/>
         <source>save as (*.txt *.log)</source>
-        <translation type="unfinished"></translation>
+        <translation>save as (*.txt *.log)</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="522"/>
         <source>Open Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Open Failed</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="523"/>
         <source>Sorry! DeluCom can&apos;t open this file, maybe no right. you can try chmod to modify right.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sorry! DeluCom can&apos;t open this file, maybe no right. you can try chmod to modify right.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="531"/>
         <source>Load Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Load Failed</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="531"/>
         <source>file size is %1 bytes, the limit is 10000 bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>file size is %1 bytes, the limit is 10000 bytes</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="537"/>
         <source>the file is too large, it will use more time, open continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>the file is too large, it will use more time, open continue?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="553"/>
         <source>read data of the file successfully!</source>
-        <translation type="unfinished"></translation>
+        <translation>read data of the file successfully!</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="567"/>
         <source>save as (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation>save as (*.*)</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="575"/>
         <source>stop write file</source>
-        <translation type="unfinished"></translation>
+        <translation>stop write file</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="581"/>
         <source>write the reading data to file</source>
-        <translation type="unfinished"></translation>
+        <translation>write the reading data to file</translation>
     </message>
 </context>
 <context>
@@ -616,7 +619,7 @@ device is occupied or isn&apos;t exist!</source>
     <message>
         <location filename="../mainwindow.cpp" line="66"/>
         <source>Welcome Using DeluCom!</source>
-        <translation type="unfinished"></translation>
+        <translation>Welcome Using DeluCom!</translation>
     </message>
 </context>
 <context>
@@ -624,97 +627,97 @@ device is occupied or isn&apos;t exist!</source>
     <message>
         <location filename="../../include/qextserial/qextserialport.cpp" line="723"/>
         <source>No Error has occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>No Error has occurred</translation>
     </message>
     <message>
         <location filename="../../include/qextserial/qextserialport.cpp" line="725"/>
         <source>Invalid file descriptor (port was not opened correctly)</source>
-        <translation type="unfinished"></translation>
+        <translation>Invalid file descriptor (port was not opened correctly)</translation>
     </message>
     <message>
         <location filename="../../include/qextserial/qextserialport.cpp" line="727"/>
         <source>Unable to allocate memory tables (POSIX)</source>
-        <translation type="unfinished"></translation>
+        <translation>Unable to allocate memory tables (POSIX)</translation>
     </message>
     <message>
         <location filename="../../include/qextserial/qextserialport.cpp" line="729"/>
         <source>Caught a non-blocked signal (POSIX)</source>
-        <translation type="unfinished"></translation>
+        <translation>Caught a non-blocked signal (POSIX)</translation>
     </message>
     <message>
         <location filename="../../include/qextserial/qextserialport.cpp" line="731"/>
         <source>Operation timed out (POSIX)</source>
-        <translation type="unfinished"></translation>
+        <translation>Operation timed out (POSIX)</translation>
     </message>
     <message>
         <location filename="../../include/qextserial/qextserialport.cpp" line="733"/>
         <source>The file opened by the port is not a valid device</source>
-        <translation type="unfinished"></translation>
+        <translation>The file opened by the port is not a valid device</translation>
     </message>
     <message>
         <location filename="../../include/qextserial/qextserialport.cpp" line="735"/>
         <source>The port detected a break condition</source>
-        <translation type="unfinished"></translation>
+        <translation>The port detected a break condition</translation>
     </message>
     <message>
         <location filename="../../include/qextserial/qextserialport.cpp" line="737"/>
         <source>The port detected a framing error (usually caused by incorrect baud rate settings)</source>
-        <translation type="unfinished"></translation>
+        <translation>The port detected a framing error (usually caused by incorrect baud rate settings)</translation>
     </message>
     <message>
         <location filename="../../include/qextserial/qextserialport.cpp" line="739"/>
         <source>There was an I/O error while communicating with the port</source>
-        <translation type="unfinished"></translation>
+        <translation>There was an I/O error while communicating with the port</translation>
     </message>
     <message>
         <location filename="../../include/qextserial/qextserialport.cpp" line="741"/>
         <source>Character buffer overrun</source>
-        <translation type="unfinished"></translation>
+        <translation>Character buffer overrun</translation>
     </message>
     <message>
         <location filename="../../include/qextserial/qextserialport.cpp" line="743"/>
         <source>Receive buffer overflow</source>
-        <translation type="unfinished"></translation>
+        <translation>Receive buffer overflow</translation>
     </message>
     <message>
         <location filename="../../include/qextserial/qextserialport.cpp" line="745"/>
         <source>The port detected a parity error in the received data</source>
-        <translation type="unfinished"></translation>
+        <translation>The port detected a parity error in the received data</translation>
     </message>
     <message>
         <location filename="../../include/qextserial/qextserialport.cpp" line="747"/>
         <source>Transmit buffer overflow</source>
-        <translation type="unfinished"></translation>
+        <translation>Transmit buffer overflow</translation>
     </message>
     <message>
         <location filename="../../include/qextserial/qextserialport.cpp" line="749"/>
         <source>General read operation failure</source>
-        <translation type="unfinished"></translation>
+        <translation>General read operation failure</translation>
     </message>
     <message>
         <location filename="../../include/qextserial/qextserialport.cpp" line="751"/>
         <source>General write operation failure</source>
-        <translation type="unfinished"></translation>
+        <translation>General write operation failure</translation>
     </message>
     <message>
         <location filename="../../include/qextserial/qextserialport.cpp" line="753"/>
         <source>The %1 file doesn&apos;t exists</source>
-        <translation type="unfinished"></translation>
+        <translation>The %1 file doesn&apos;t exists</translation>
     </message>
     <message>
         <location filename="../../include/qextserial/qextserialport.cpp" line="755"/>
         <source>Permission denied</source>
-        <translation type="unfinished"></translation>
+        <translation>Permission denied</translation>
     </message>
     <message>
         <location filename="../../include/qextserial/qextserialport.cpp" line="757"/>
         <source>Device is already locked</source>
-        <translation type="unfinished"></translation>
+        <translation>Device is already locked</translation>
     </message>
     <message>
         <location filename="../../include/qextserial/qextserialport.cpp" line="759"/>
         <source>Unknown error: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Unknown error: %1</translation>
     </message>
 </context>
 </TS>

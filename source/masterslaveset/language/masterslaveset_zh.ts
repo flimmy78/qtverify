@@ -4,12 +4,12 @@
 <context>
     <name>CMasterSlave</name>
     <message>
-        <location filename="../source/masterslaveset.cpp" line="86"/>
+        <location filename="../source/masterslaveset.cpp" line="93"/>
         <source>Hint</source>
         <translation>提示</translation>
     </message>
     <message>
-        <location filename="../source/masterslaveset.cpp" line="86"/>
+        <location filename="../source/masterslaveset.cpp" line="93"/>
         <source>Save Settings Successfully</source>
         <translation>保存设置成功</translation>
     </message>
@@ -37,60 +37,60 @@
         <translation>网络模式</translation>
     </message>
     <message>
-        <location filename="../ui/masterslaveset.ui" line="71"/>
+        <location filename="../ui/masterslaveset.ui" line="266"/>
         <source>master</source>
         <translation>主控机</translation>
     </message>
     <message>
-        <location filename="../ui/masterslaveset.ui" line="91"/>
+        <location filename="../ui/masterslaveset.ui" line="286"/>
         <source>slave</source>
         <translation>从属机</translation>
     </message>
     <message>
-        <location filename="../ui/masterslaveset.ui" line="107"/>
+        <location filename="../ui/masterslaveset.ui" line="65"/>
         <source>Slave:</source>
         <translation>从机:</translation>
     </message>
     <message>
-        <location filename="../ui/masterslaveset.ui" line="113"/>
+        <location filename="../ui/masterslaveset.ui" line="71"/>
         <source>Slave1 IP:</source>
         <translation>从机1 IP:</translation>
     </message>
     <message>
-        <location filename="../ui/masterslaveset.ui" line="136"/>
-        <location filename="../ui/masterslaveset.ui" line="169"/>
-        <location filename="../ui/masterslaveset.ui" line="202"/>
-        <location filename="../ui/masterslaveset.ui" line="235"/>
+        <location filename="../ui/masterslaveset.ui" line="94"/>
+        <location filename="../ui/masterslaveset.ui" line="127"/>
+        <location filename="../ui/masterslaveset.ui" line="160"/>
+        <location filename="../ui/masterslaveset.ui" line="193"/>
         <source>hostname:</source>
         <translation>主机名:</translation>
     </message>
     <message>
-        <location filename="../ui/masterslaveset.ui" line="146"/>
+        <location filename="../ui/masterslaveset.ui" line="104"/>
         <source>Slave2 IP:</source>
         <translation>从机2 IP:</translation>
     </message>
     <message>
-        <location filename="../ui/masterslaveset.ui" line="179"/>
+        <location filename="../ui/masterslaveset.ui" line="137"/>
         <source>Slave3 IP:</source>
         <translation>从机3 IP:</translation>
     </message>
     <message>
-        <location filename="../ui/masterslaveset.ui" line="212"/>
+        <location filename="../ui/masterslaveset.ui" line="170"/>
         <source>Slave4 IP:</source>
         <translation>从机4 IP:</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/masterslaveset.ui" line="254"/>
+        <location filename="../ui/masterslaveset.ui" line="212"/>
         <source>Master：</source>
         <translation>主控机:</translation>
     </message>
     <message>
-        <location filename="../ui/masterslaveset.ui" line="260"/>
+        <location filename="../ui/masterslaveset.ui" line="218"/>
         <source>Master IP:</source>
         <translation>主控机 IP:</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/masterslaveset.ui" line="283"/>
+        <location filename="../ui/masterslaveset.ui" line="241"/>
         <source>hostname：</source>
         <translation>主机名:</translation>
     </message>

@@ -4018,17 +4018,17 @@
     <message>
         <location filename="../ui/stdmtrparaset.ui" line="3012"/>
         <source>Standard Meter DevNo.</source>
-        <translation></translation>
+        <translation>Standard Meter DevNo.</translation>
     </message>
     <message>
         <location filename="../ui/stdmtrparaset.ui" line="3024"/>
         <source>Instant DevNo.</source>
-        <translation></translation>
+        <translation>Instant DevNo.</translation>
     </message>
     <message>
         <location filename="../ui/stdmtrparaset.ui" line="3063"/>
         <source>Accumulate DevNo.</source>
-        <translation></translation>
+        <translation>Accumulate DevNo.</translation>
     </message>
     <message utf8="true">
         <location filename="../ui/stdmtrparaset.ui" line="3106"/>

@@ -247,23 +247,23 @@
         <translation type="obsolete">Calc Verify</translation>
     </message>
     <message>
-        <location filename="../calcverify.ui" line="73"/>
+        <location filename="../calcverify.ui" line="77"/>
         <source>MJ</source>
         <translation>MJ</translation>
     </message>
     <message>
-        <location filename="../calcverify.ui" line="80"/>
+        <location filename="../calcverify.ui" line="84"/>
         <source>kWh</source>
         <translation>kWh</translation>
     </message>
     <message utf8="true">
-        <location filename="../calcverify.ui" line="235"/>
-        <location filename="../calcverify.ui" line="260"/>
+        <location filename="../calcverify.ui" line="239"/>
+        <location filename="../calcverify.ui" line="264"/>
         <source>Δθmin</source>
         <translation>Δθmin</translation>
     </message>
     <message>
-        <location filename="../calcverify.ui" line="22"/>
+        <location filename="../calcverify.ui" line="26"/>
         <source>InstallPos</source>
         <translation>InstallPos</translation>
     </message>
@@ -273,120 +273,120 @@
         <translation>Calculator Verify</translation>
     </message>
     <message>
-        <location filename="../calcverify.ui" line="28"/>
+        <location filename="../calcverify.ui" line="32"/>
         <source>In</source>
         <translation>In</translation>
     </message>
     <message>
-        <location filename="../calcverify.ui" line="38"/>
+        <location filename="../calcverify.ui" line="42"/>
         <source>Out</source>
         <translation>Out</translation>
     </message>
     <message>
-        <location filename="../calcverify.ui" line="67"/>
+        <location filename="../calcverify.ui" line="71"/>
         <source>EnergyUnit</source>
         <translation>EnergyUnit</translation>
     </message>
     <message>
-        <location filename="../calcverify.ui" line="109"/>
+        <location filename="../calcverify.ui" line="113"/>
         <source>Algorithm</source>
         <translation>Algorithm</translation>
     </message>
     <message>
-        <location filename="../calcverify.ui" line="115"/>
+        <location filename="../calcverify.ui" line="119"/>
         <source>EnthalpyDiff</source>
         <translation>EnthalpyDiff</translation>
     </message>
     <message>
-        <location filename="../calcverify.ui" line="122"/>
+        <location filename="../calcverify.ui" line="126"/>
         <source>KCoe</source>
         <translation>KCoe</translation>
     </message>
     <message>
-        <location filename="../calcverify.ui" line="151"/>
+        <location filename="../calcverify.ui" line="155"/>
         <source>MinDeltaT</source>
         <translation>MinDeltaT</translation>
     </message>
     <message utf8="true">
-        <location filename="../calcverify.ui" line="157"/>
+        <location filename="../calcverify.ui" line="161"/>
         <source>Δθmin:</source>
         <translation>Δθmin:</translation>
     </message>
     <message>
-        <location filename="../calcverify.ui" line="183"/>
+        <location filename="../calcverify.ui" line="187"/>
         <source>K</source>
         <translation>K</translation>
     </message>
     <message>
-        <location filename="../calcverify.ui" line="220"/>
+        <location filename="../calcverify.ui" line="224"/>
         <source>1</source>
         <translation>1</translation>
     </message>
     <message>
-        <location filename="../calcverify.ui" line="225"/>
+        <location filename="../calcverify.ui" line="229"/>
         <source>2</source>
         <translation>2</translation>
     </message>
     <message>
-        <location filename="../calcverify.ui" line="230"/>
+        <location filename="../calcverify.ui" line="234"/>
         <source>3</source>
         <translation>3</translation>
     </message>
     <message>
-        <location filename="../calcverify.ui" line="240"/>
-        <location filename="../calcverify.ui" line="265"/>
+        <location filename="../calcverify.ui" line="244"/>
+        <location filename="../calcverify.ui" line="269"/>
         <source>5</source>
         <translation>5</translation>
     </message>
     <message>
-        <location filename="../calcverify.ui" line="245"/>
-        <location filename="../calcverify.ui" line="270"/>
-        <location filename="../calcverify.ui" line="280"/>
+        <location filename="../calcverify.ui" line="249"/>
+        <location filename="../calcverify.ui" line="274"/>
+        <location filename="../calcverify.ui" line="284"/>
         <source>20</source>
         <translation>20</translation>
     </message>
     <message utf8="true">
-        <location filename="../calcverify.ui" line="250"/>
+        <location filename="../calcverify.ui" line="254"/>
         <source>Δθref    </source>
         <translation>Δθref    </translation>
     </message>
     <message utf8="true">
-        <location filename="../calcverify.ui" line="285"/>
+        <location filename="../calcverify.ui" line="289"/>
         <source>Δθref</source>
         <translation>Δθref</translation>
     </message>
     <message>
-        <location filename="../calcverify.ui" line="529"/>
+        <location filename="../calcverify.ui" line="533"/>
         <source>HintInfo</source>
         <translation>HintInfo</translation>
     </message>
     <message>
-        <location filename="../calcverify.ui" line="547"/>
+        <location filename="../calcverify.ui" line="551"/>
         <source>Hint: Please set para first!</source>
         <translation>Hint: Please set para first!</translation>
     </message>
     <message>
-        <location filename="../calcverify.ui" line="578"/>
+        <location filename="../calcverify.ui" line="582"/>
         <source>Para</source>
         <translation>Para</translation>
     </message>
     <message>
-        <location filename="../calcverify.ui" line="608"/>
+        <location filename="../calcverify.ui" line="612"/>
         <source>Start</source>
         <translation>Start</translation>
     </message>
     <message>
-        <location filename="../calcverify.ui" line="638"/>
+        <location filename="../calcverify.ui" line="642"/>
         <source>Save</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="../calcverify.ui" line="668"/>
+        <location filename="../calcverify.ui" line="672"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
     <message utf8="true">
-        <location filename="../calcverify.ui" line="290"/>
+        <location filename="../calcverify.ui" line="294"/>
         <source>Δθmax-5</source>
         <translation>Δθmax-5</translation>
     </message>
@@ -399,102 +399,102 @@
         <translation>ParaSet</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="23"/>
+        <location filename="../calcpara.ui" line="27"/>
         <source>Verify Para</source>
         <translation>Verify Para</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="31"/>
+        <location filename="../calcpara.ui" line="35"/>
         <source>MeterNO(14bit):</source>
         <translation>MeterNO(14bit):</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="41"/>
+        <location filename="../calcpara.ui" line="52"/>
         <source>Model:</source>
         <translation>Model:</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="55"/>
+        <location filename="../calcpara.ui" line="66"/>
         <source>ManuFact:</source>
         <translation>ManuFact:</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="69"/>
+        <location filename="../calcpara.ui" line="80"/>
         <source>VerifyDept:</source>
         <translation>VerifyDept:</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="87"/>
+        <location filename="../calcpara.ui" line="126"/>
         <source>Standard:</source>
         <translation>Standard:</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="97"/>
+        <location filename="../calcpara.ui" line="136"/>
         <source>Grade:</source>
         <translation>Grade:</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="105"/>
+        <location filename="../calcpara.ui" line="144"/>
         <source>1</source>
         <translation>1</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="110"/>
+        <location filename="../calcpara.ui" line="149"/>
         <source>2</source>
         <translation>2</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="115"/>
+        <location filename="../calcpara.ui" line="154"/>
         <source>3</source>
         <translation>3</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="123"/>
+        <location filename="../calcpara.ui" line="162"/>
         <source>VerifyPerson:</source>
         <translation>VerifyPerson:</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="157"/>
+        <location filename="../calcpara.ui" line="209"/>
         <source>Heat Para</source>
         <translation>Heat Para</translation>
     </message>
     <message utf8="true">
-        <location filename="../calcpara.ui" line="165"/>
+        <location filename="../calcpara.ui" line="215"/>
         <source>θmax</source>
         <translation>θmax</translation>
     </message>
     <message utf8="true">
-        <location filename="../calcpara.ui" line="179"/>
+        <location filename="../calcpara.ui" line="235"/>
         <source>θmin</source>
         <translation>θmin</translation>
     </message>
     <message utf8="true">
-        <location filename="../calcpara.ui" line="193"/>
+        <location filename="../calcpara.ui" line="255"/>
         <source>℃</source>
         <translation>℃</translation>
     </message>
     <message utf8="true">
-        <location filename="../calcpara.ui" line="200"/>
+        <location filename="../calcpara.ui" line="262"/>
         <source>Δθmax</source>
         <translation>Δθmax</translation>
     </message>
     <message utf8="true">
-        <location filename="../calcpara.ui" line="214"/>
+        <location filename="../calcpara.ui" line="282"/>
         <source>Δθmin</source>
         <translation>Δθmin</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="228"/>
+        <location filename="../calcpara.ui" line="302"/>
         <source>K</source>
         <translation>K</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="242"/>
+        <location filename="../calcpara.ui" line="320"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../calcpara.ui" line="249"/>
+        <location filename="../calcpara.ui" line="333"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>

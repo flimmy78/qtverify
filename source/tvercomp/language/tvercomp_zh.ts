@@ -248,17 +248,17 @@ T
         <translation>3</translation>
     </message>
     <message>
-        <location filename="../ui/tvercomp_param.ui" line="198"/>
+        <location filename="../ui/tvercomp_param.ui" line="201"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;K&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;K&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/tvercomp_param.ui" line="242"/>
+        <location filename="../ui/tvercomp_param.ui" line="245"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../ui/tvercomp_param.ui" line="265"/>
+        <location filename="../ui/tvercomp_param.ui" line="268"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>

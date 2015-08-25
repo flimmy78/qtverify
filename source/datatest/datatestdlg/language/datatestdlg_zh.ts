@@ -4,92 +4,88 @@
 <context>
     <name>DataTestDlg</name>
     <message>
-        <location filename="../source/datatestdlg.cpp" line="146"/>
-        <location filename="../source/datatestdlg.cpp" line="785"/>
-        <location filename="../source/datatestdlg.cpp" line="790"/>
-        <location filename="../source/datatestdlg.cpp" line="804"/>
-        <location filename="../source/datatestdlg.cpp" line="811"/>
-        <location filename="../source/datatestdlg.cpp" line="817"/>
-        <location filename="../source/datatestdlg.cpp" line="823"/>
-        <location filename="../source/datatestdlg.cpp" line="829"/>
-        <location filename="../source/datatestdlg.cpp" line="841"/>
-        <location filename="../source/datatestdlg.cpp" line="848"/>
-        <location filename="../source/datatestdlg.cpp" line="854"/>
-        <location filename="../source/datatestdlg.cpp" line="860"/>
-        <location filename="../source/datatestdlg.cpp" line="866"/>
-        <location filename="../source/datatestdlg.cpp" line="873"/>
-        <location filename="../source/datatestdlg.cpp" line="879"/>
-        <location filename="../source/datatestdlg.cpp" line="885"/>
-        <location filename="../source/datatestdlg.cpp" line="891"/>
+        <location filename="../source/datatestdlg.cpp" line="187"/>
+        <location filename="../source/datatestdlg.cpp" line="910"/>
+        <location filename="../source/datatestdlg.cpp" line="915"/>
+        <location filename="../source/datatestdlg.cpp" line="929"/>
+        <location filename="../source/datatestdlg.cpp" line="936"/>
+        <location filename="../source/datatestdlg.cpp" line="942"/>
+        <location filename="../source/datatestdlg.cpp" line="948"/>
+        <location filename="../source/datatestdlg.cpp" line="954"/>
+        <location filename="../source/datatestdlg.cpp" line="966"/>
+        <location filename="../source/datatestdlg.cpp" line="973"/>
+        <location filename="../source/datatestdlg.cpp" line="979"/>
+        <location filename="../source/datatestdlg.cpp" line="985"/>
+        <location filename="../source/datatestdlg.cpp" line="991"/>
+        <location filename="../source/datatestdlg.cpp" line="998"/>
+        <location filename="../source/datatestdlg.cpp" line="1004"/>
+        <location filename="../source/datatestdlg.cpp" line="1010"/>
+        <location filename="../source/datatestdlg.cpp" line="1016"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../source/datatestdlg.cpp" line="146"/>
+        <location filename="../source/datatestdlg.cpp" line="187"/>
         <source>get port set info failed!</source>
         <translation>获取端口设置信息失败!</translation>
     </message>
     <message>
-        <location filename="../source/datatestdlg.cpp" line="311"/>
+        <location filename="../source/datatestdlg.cpp" line="430"/>
         <source>Open Valve</source>
         <translation>打开阀门</translation>
     </message>
     <message>
-        <location filename="../source/datatestdlg.cpp" line="311"/>
+        <location filename="../source/datatestdlg.cpp" line="430"/>
         <source>please open Manual Ball Valve</source>
         <translation>请打开手动球阀</translation>
     </message>
     <message>
-        <location filename="../source/datatestdlg.cpp" line="331"/>
         <source>Increase</source>
-        <translation>调节</translation>
+        <translation type="obsolete">调节</translation>
     </message>
     <message>
-        <location filename="../source/datatestdlg.cpp" line="331"/>
         <source>please increase manual Valve or Pump freq</source>
-        <translation>请调大手动球阀开度或水泵频率</translation>
+        <translation type="obsolete">请调大手动球阀开度或水泵频率</translation>
     </message>
     <message>
-        <location filename="../source/datatestdlg.cpp" line="336"/>
         <source>Error</source>
-        <translation>错误</translation>
+        <translation type="obsolete">错误</translation>
     </message>
     <message>
-        <location filename="../source/datatestdlg.cpp" line="336"/>
         <source>please your pipe and device sensor, they may be error!</source>
-        <translation>请检查管路和设备传感器, 可能存在问题!</translation>
+        <translation type="obsolete">请检查管路和设备传感器, 可能存在问题!</translation>
     </message>
     <message>
-        <location filename="../source/datatestdlg.cpp" line="785"/>
-        <location filename="../source/datatestdlg.cpp" line="804"/>
-        <location filename="../source/datatestdlg.cpp" line="841"/>
+        <location filename="../source/datatestdlg.cpp" line="910"/>
+        <location filename="../source/datatestdlg.cpp" line="929"/>
+        <location filename="../source/datatestdlg.cpp" line="966"/>
         <source>MeterNO. is empty! please read meter first!</source>
         <translation>表号为空！请先读表数据！</translation>
     </message>
     <message>
-        <location filename="../source/datatestdlg.cpp" line="790"/>
+        <location filename="../source/datatestdlg.cpp" line="915"/>
         <source>new NO. is error!
 please input 14 bits meter number!</source>
         <translation>新表号错误！请输入14位新表号！</translation>
     </message>
     <message>
-        <location filename="../source/datatestdlg.cpp" line="811"/>
-        <location filename="../source/datatestdlg.cpp" line="817"/>
-        <location filename="../source/datatestdlg.cpp" line="823"/>
-        <location filename="../source/datatestdlg.cpp" line="829"/>
-        <location filename="../source/datatestdlg.cpp" line="848"/>
-        <location filename="../source/datatestdlg.cpp" line="854"/>
-        <location filename="../source/datatestdlg.cpp" line="860"/>
-        <location filename="../source/datatestdlg.cpp" line="866"/>
+        <location filename="../source/datatestdlg.cpp" line="936"/>
+        <location filename="../source/datatestdlg.cpp" line="942"/>
+        <location filename="../source/datatestdlg.cpp" line="948"/>
+        <location filename="../source/datatestdlg.cpp" line="954"/>
+        <location filename="../source/datatestdlg.cpp" line="973"/>
+        <location filename="../source/datatestdlg.cpp" line="979"/>
+        <location filename="../source/datatestdlg.cpp" line="985"/>
+        <location filename="../source/datatestdlg.cpp" line="991"/>
         <source>err is error! please input err first!</source>
         <translatorcomment>误差输入有误！请先输入误差！</translatorcomment>
         <translation>误差输入有误！请先输入误差！</translation>
     </message>
     <message>
-        <location filename="../source/datatestdlg.cpp" line="873"/>
-        <location filename="../source/datatestdlg.cpp" line="879"/>
-        <location filename="../source/datatestdlg.cpp" line="885"/>
-        <location filename="../source/datatestdlg.cpp" line="891"/>
+        <location filename="../source/datatestdlg.cpp" line="998"/>
+        <location filename="../source/datatestdlg.cpp" line="1004"/>
+        <location filename="../source/datatestdlg.cpp" line="1010"/>
+        <location filename="../source/datatestdlg.cpp" line="1016"/>
         <source>oldCoe is empty! please read meter first!</source>
         <translation>原系数为空！请先读表数据！</translation>
     </message>
@@ -196,18 +192,18 @@ please input 14 bits meter number!</source>
     <message utf8="true">
         <location filename="../ui/datatestdlg.ui" line="265"/>
         <location filename="../ui/datatestdlg.ui" line="336"/>
-        <location filename="../ui/datatestdlg.ui" line="788"/>
-        <location filename="../ui/datatestdlg.ui" line="815"/>
+        <location filename="../ui/datatestdlg.ui" line="1099"/>
+        <location filename="../ui/datatestdlg.ui" line="1126"/>
         <source>℃</source>
         <translation>℃</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1048"/>
+        <location filename="../ui/datatestdlg.ui" line="1545"/>
         <source>Heat Meter</source>
         <translation>热量表</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1457"/>
+        <location filename="../ui/datatestdlg.ui" line="1954"/>
         <source>1</source>
         <translation>1</translation>
     </message>
@@ -222,28 +218,28 @@ MeterNo</source>
 表号</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="2064"/>
+        <location filename="../ui/datatestdlg.ui" line="2561"/>
         <source>Read
 Data</source>
         <translation>读表
 数据</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="2122"/>
+        <location filename="../ui/datatestdlg.ui" line="2619"/>
         <source>Modify
 MeterNo</source>
         <translation>修改
 表号</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="2090"/>
+        <location filename="../ui/datatestdlg.ui" line="2587"/>
         <source>Verify
 Status</source>
         <translation>检定
 状态</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="470"/>
+        <location filename="../ui/datatestdlg.ui" line="474"/>
         <source>i
 n</source>
         <translation>进
@@ -251,7 +247,7 @@ n</source>
 阀</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="641"/>
+        <location filename="../ui/datatestdlg.ui" line="645"/>
         <source>b
 i
 g</source>
@@ -261,7 +257,7 @@ g</source>
 阀</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="511"/>
+        <location filename="../ui/datatestdlg.ui" line="515"/>
         <source>m
 i
 d
@@ -272,7 +268,7 @@ d
 阀</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="597"/>
+        <location filename="../ui/datatestdlg.ui" line="601"/>
         <source>s
 m
 a
@@ -284,7 +280,7 @@ l</source>
 阀</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="554"/>
+        <location filename="../ui/datatestdlg.ui" line="558"/>
         <source>m
 i
 d
@@ -300,7 +296,7 @@ d
         <translation>采集</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1527"/>
+        <location filename="../ui/datatestdlg.ui" line="2024"/>
         <source>MeterInfo:</source>
         <translation>表信息:</translation>
     </message>
@@ -311,17 +307,17 @@ Para</source>
 参数</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1539"/>
+        <location filename="../ui/datatestdlg.ui" line="2036"/>
         <source>MeterNO.</source>
         <translation>表号</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/datatestdlg.ui" line="1562"/>
+        <location filename="../ui/datatestdlg.ui" line="2059"/>
         <source>T In(℃)</source>
         <translation>进水温度(℃)</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/datatestdlg.ui" line="1585"/>
+        <location filename="../ui/datatestdlg.ui" line="2082"/>
         <source>T Out(℃)</source>
         <translation>出水温度(℃)</translation>
     </message>
@@ -330,122 +326,122 @@ Para</source>
         <translation type="obsolete">流量(m³)</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1631"/>
+        <location filename="../ui/datatestdlg.ui" line="2128"/>
         <source>Heat(kwh)</source>
         <translation>热量(kwh)</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1654"/>
+        <location filename="../ui/datatestdlg.ui" line="2151"/>
         <source>Date</source>
         <translation>日期</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1671"/>
+        <location filename="../ui/datatestdlg.ui" line="2168"/>
         <source>New NO.</source>
         <translation>新表号</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1407"/>
+        <location filename="../ui/datatestdlg.ui" line="1904"/>
         <source>None</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1412"/>
+        <location filename="../ui/datatestdlg.ui" line="1909"/>
         <source>Odd</source>
         <translation>奇校验</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1417"/>
+        <location filename="../ui/datatestdlg.ui" line="1914"/>
         <source>Even</source>
         <translation>偶校验</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1431"/>
+        <location filename="../ui/datatestdlg.ui" line="1928"/>
         <source>StopBits:</source>
         <translation>停止位:</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1323"/>
+        <location filename="../ui/datatestdlg.ui" line="1820"/>
         <source>DataBits:</source>
         <translation>数据位:</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1279"/>
+        <location filename="../ui/datatestdlg.ui" line="1776"/>
         <source>2400</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1284"/>
+        <location filename="../ui/datatestdlg.ui" line="1781"/>
         <source>4800</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1289"/>
+        <location filename="../ui/datatestdlg.ui" line="1786"/>
         <source>9600</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1294"/>
+        <location filename="../ui/datatestdlg.ui" line="1791"/>
         <source>14400</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1299"/>
+        <location filename="../ui/datatestdlg.ui" line="1796"/>
         <source>19200</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1304"/>
+        <location filename="../ui/datatestdlg.ui" line="1801"/>
         <source>38400</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1309"/>
+        <location filename="../ui/datatestdlg.ui" line="1806"/>
         <source>56000</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1352"/>
+        <location filename="../ui/datatestdlg.ui" line="1849"/>
         <source>5</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1357"/>
+        <location filename="../ui/datatestdlg.ui" line="1854"/>
         <source>6</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1362"/>
+        <location filename="../ui/datatestdlg.ui" line="1859"/>
         <source>7</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1367"/>
+        <location filename="../ui/datatestdlg.ui" line="1864"/>
         <source>8</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1462"/>
+        <location filename="../ui/datatestdlg.ui" line="1959"/>
         <source>1.5</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1467"/>
+        <location filename="../ui/datatestdlg.ui" line="1964"/>
         <source>2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1065"/>
+        <location filename="../ui/datatestdlg.ui" line="1562"/>
         <source>Com:</source>
         <translation>串口号:</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1381"/>
+        <location filename="../ui/datatestdlg.ui" line="1878"/>
         <source>Parity:</source>
         <translation>校验位:</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1250"/>
+        <location filename="../ui/datatestdlg.ui" line="1747"/>
         <source>BaudRate:</source>
         <translation>波特率:</translation>
     </message>
@@ -455,202 +451,257 @@ Para</source>
         <translation>热量单位</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="933"/>
+        <location filename="../ui/datatestdlg.ui" line="774"/>
+        <location filename="../ui/datatestdlg.ui" line="912"/>
         <source>Open(%):</source>
         <translation>开度(%):</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="983"/>
+        <location filename="../ui/datatestdlg.ui" line="824"/>
         <source>Regulate1</source>
         <translation>调节阀1</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1008"/>
+        <location filename="../ui/datatestdlg.ui" line="849"/>
+        <source>Target Rate:</source>
+        <translation>目标流速:</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="962"/>
         <source>Regulate2</source>
         <translation>调节阀2</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1091"/>
+        <location filename="../ui/datatestdlg.ui" line="1142"/>
+        <source>DN25</source>
+        <translation>DN25</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1160"/>
+        <location filename="../ui/datatestdlg.ui" line="1255"/>
+        <location filename="../ui/datatestdlg.ui" line="1346"/>
+        <source>Inst</source>
+        <translation>瞬时</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1201"/>
+        <location filename="../ui/datatestdlg.ui" line="1274"/>
+        <location filename="../ui/datatestdlg.ui" line="1387"/>
+        <source>Accum</source>
+        <translation>累积</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1237"/>
+        <source>DN10</source>
+        <translation>DN10</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1328"/>
+        <source>DN3</source>
+        <translation>DN3</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1421"/>
+        <source>StdMeterValue</source>
+        <translation>标准表流量</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1439"/>
+        <source>Std Meter:</source>
+        <translation>累积流量:</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1474"/>
+        <source>L</source>
+        <translation>L</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1487"/>
+        <source>FlowRate:</source>
+        <translation>瞬时流量:</translation>
+    </message>
+    <message>
+        <location filename="../ui/datatestdlg.ui" line="1588"/>
         <source>COM1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1096"/>
+        <location filename="../ui/datatestdlg.ui" line="1593"/>
         <source>COM2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1101"/>
+        <location filename="../ui/datatestdlg.ui" line="1598"/>
         <source>COM3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1106"/>
+        <location filename="../ui/datatestdlg.ui" line="1603"/>
         <source>COM4</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1111"/>
+        <location filename="../ui/datatestdlg.ui" line="1608"/>
         <source>COM5</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1116"/>
+        <location filename="../ui/datatestdlg.ui" line="1613"/>
         <source>COM6</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1121"/>
+        <location filename="../ui/datatestdlg.ui" line="1618"/>
         <source>COM7</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1126"/>
+        <location filename="../ui/datatestdlg.ui" line="1623"/>
         <source>COM8</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1131"/>
+        <location filename="../ui/datatestdlg.ui" line="1628"/>
         <source>COM9</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1136"/>
+        <location filename="../ui/datatestdlg.ui" line="1633"/>
         <source>COM10</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1141"/>
+        <location filename="../ui/datatestdlg.ui" line="1638"/>
         <source>COM11</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1146"/>
+        <location filename="../ui/datatestdlg.ui" line="1643"/>
         <source>COM12</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1151"/>
+        <location filename="../ui/datatestdlg.ui" line="1648"/>
         <source>COM13</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1156"/>
+        <location filename="../ui/datatestdlg.ui" line="1653"/>
         <source>COM14</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1161"/>
+        <location filename="../ui/datatestdlg.ui" line="1658"/>
         <source>COM15</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1166"/>
+        <location filename="../ui/datatestdlg.ui" line="1663"/>
         <source>COM16</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1171"/>
+        <location filename="../ui/datatestdlg.ui" line="1668"/>
         <source>COM17</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1176"/>
+        <location filename="../ui/datatestdlg.ui" line="1673"/>
         <source>COM18</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1181"/>
+        <location filename="../ui/datatestdlg.ui" line="1678"/>
         <source>COM19</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1186"/>
+        <location filename="../ui/datatestdlg.ui" line="1683"/>
         <source>COM20</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1191"/>
+        <location filename="../ui/datatestdlg.ui" line="1688"/>
         <source>COM21</source>
         <translation>COM21</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1196"/>
+        <location filename="../ui/datatestdlg.ui" line="1693"/>
         <source>COM22</source>
         <translation>COM22</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1201"/>
+        <location filename="../ui/datatestdlg.ui" line="1698"/>
         <source>COM23</source>
         <translation>COM23</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1206"/>
+        <location filename="../ui/datatestdlg.ui" line="1703"/>
         <source>COM24</source>
         <translation>COM24</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1211"/>
+        <location filename="../ui/datatestdlg.ui" line="1708"/>
         <source>COM25</source>
         <translation>COM25</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1216"/>
+        <location filename="../ui/datatestdlg.ui" line="1713"/>
         <source>COM26</source>
         <translation>COM26</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1221"/>
+        <location filename="../ui/datatestdlg.ui" line="1718"/>
         <source>COM27</source>
         <translation>COM27</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1226"/>
+        <location filename="../ui/datatestdlg.ui" line="1723"/>
         <source>COM28</source>
         <translation>COM28</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1231"/>
+        <location filename="../ui/datatestdlg.ui" line="1728"/>
         <source>COM29</source>
         <translation>COM29</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1236"/>
+        <location filename="../ui/datatestdlg.ui" line="1733"/>
         <source>COM30</source>
         <translation>COM30</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1518"/>
+        <location filename="../ui/datatestdlg.ui" line="2015"/>
         <source>CloseCom</source>
         <translation>关闭串口</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1608"/>
+        <location filename="../ui/datatestdlg.ui" line="2105"/>
         <source>Flow(L)</source>
         <translation>流量(L)</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1702"/>
+        <location filename="../ui/datatestdlg.ui" line="2199"/>
         <source>err(%)</source>
         <translation>误差(%)</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1715"/>
+        <location filename="../ui/datatestdlg.ui" line="2212"/>
         <source>olderr(%)</source>
         <translation>原误差(%)</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1728"/>
+        <location filename="../ui/datatestdlg.ui" line="2225"/>
         <source>oldCoe</source>
         <translation>原系数</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1741"/>
+        <location filename="../ui/datatestdlg.ui" line="2238"/>
         <source>orgCoe</source>
         <translation>原始系数</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="2174"/>
+        <location filename="../ui/datatestdlg.ui" line="2671"/>
         <source>2Modify
 Coe</source>
         <translation>二次
@@ -661,44 +712,44 @@ Coe</source>
         <translation type="obsolete">误差系数(%)</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1748"/>
+        <location filename="../ui/datatestdlg.ui" line="2245"/>
         <source>big</source>
         <translation>大</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1816"/>
+        <location filename="../ui/datatestdlg.ui" line="2313"/>
         <source>mid2</source>
         <translation>中二</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1896"/>
+        <location filename="../ui/datatestdlg.ui" line="2393"/>
         <source>mid1</source>
         <translation>中一</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1964"/>
+        <location filename="../ui/datatestdlg.ui" line="2461"/>
         <source>small</source>
         <translation>小</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="2148"/>
+        <location filename="../ui/datatestdlg.ui" line="2645"/>
         <source>Modify
 Coe</source>
         <translation>修改
 系数</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="1493"/>
+        <location filename="../ui/datatestdlg.ui" line="1990"/>
         <source>OpenCom</source>
         <translation>打开串口</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="355"/>
+        <location filename="../ui/datatestdlg.ui" line="359"/>
         <source>Valve Control</source>
         <translation>阀门控制</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="428"/>
+        <location filename="../ui/datatestdlg.ui" line="432"/>
         <source>o
 u
 t</source>
@@ -707,7 +758,7 @@ t</source>
 阀</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="385"/>
+        <location filename="../ui/datatestdlg.ui" line="389"/>
         <source>p
 u
 m
@@ -716,12 +767,12 @@ p</source>
 泵</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="845"/>
+        <location filename="../ui/datatestdlg.ui" line="686"/>
         <source>Freq:</source>
         <translation>频率:</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="895"/>
+        <location filename="../ui/datatestdlg.ui" line="736"/>
         <source>SetFreq</source>
         <translation>设置频率</translation>
     </message>
@@ -734,43 +785,44 @@ p</source>
         <translation type="obsolete">查询状态</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="681"/>
+        <location filename="../ui/datatestdlg.ui" line="992"/>
         <source>Data Acquisition</source>
         <translation>数据采集</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="687"/>
+        <location filename="../ui/datatestdlg.ui" line="998"/>
         <source>Big Balance:</source>
         <translation>大天平:</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="707"/>
-        <location filename="../ui/datatestdlg.ui" line="734"/>
+        <location filename="../ui/datatestdlg.ui" line="1018"/>
+        <location filename="../ui/datatestdlg.ui" line="1045"/>
         <source>kg</source>
         <translation>kg</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="714"/>
+        <location filename="../ui/datatestdlg.ui" line="1025"/>
         <source>Small Balance:</source>
         <translation>小天平:</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="741"/>
+        <location filename="../ui/datatestdlg.ui" line="1052"/>
         <source>Flow Rate:</source>
         <translation>流速:</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/datatestdlg.ui" line="761"/>
+        <location filename="../ui/datatestdlg.ui" line="1072"/>
+        <location filename="../ui/datatestdlg.ui" line="1519"/>
         <source>m³/h</source>
         <translation>㎥/h</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="768"/>
+        <location filename="../ui/datatestdlg.ui" line="1079"/>
         <source>In Temp:</source>
         <translation>入口温度:</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="795"/>
+        <location filename="../ui/datatestdlg.ui" line="1106"/>
         <source>Out Temp:</source>
         <translation>出口温度:</translation>
     </message>
@@ -779,7 +831,7 @@ p</source>
         <translation type="obsolete">进程</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="2221"/>
+        <location filename="../ui/datatestdlg.ui" line="2720"/>
         <source>ParaSet</source>
         <translation>参数设置</translation>
     </message>
@@ -792,7 +844,7 @@ p</source>
         <translation type="obsolete">开始</translation>
     </message>
     <message>
-        <location filename="../ui/datatestdlg.ui" line="2246"/>
+        <location filename="../ui/datatestdlg.ui" line="2745"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>

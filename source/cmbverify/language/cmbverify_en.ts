@@ -181,9 +181,8 @@
         <translation>HintInfo</translation>
     </message>
     <message>
-        <location filename="../cmbverify.ui" line="412"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0000ff;&quot;&gt;Please set the Unit, Install position and minimum temperature difference corectly&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0000ff;&quot;&gt;Please set the Unit, Install position and minimum temperature difference corectly&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0000ff;&quot;&gt;Please set the Unit, Install position and minimum temperature difference corectly&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../cmbverify.ui" line="430"/>
@@ -334,6 +333,11 @@
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ω&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
+        <location filename="../cmbverify.ui" line="412"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0000ff;&quot;&gt;Please set the Unit, Install position and minimum temperature difference correctly&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0000ff;&quot;&gt;Please set the Unit, Install position and minimum temperature difference correctly&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
         <location filename="../cmbverify.ui" line="179"/>
         <source>collect</source>
         <translation>collect</translation>
@@ -402,7 +406,7 @@
     <message>
         <location filename="../cmbverify.cpp" line="507"/>
         <location filename="../cmbverify.cpp" line="512"/>
-        <location filename="../cmbverify.cpp" line="704"/>
+        <location filename="../cmbverify.cpp" line="707"/>
         <source>Hint</source>
         <translation>Hint</translation>
     </message>
@@ -418,12 +422,12 @@
         <translation>save database failed !</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="615"/>
+        <location filename="../cmbverify.cpp" line="616"/>
         <source>please input meter number, then click &quot;Start&quot; button!</source>
         <translation>please input meter number, then click &quot;Start&quot; button!</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="704"/>
+        <location filename="../cmbverify.cpp" line="707"/>
         <source>current temperature different is less than min ¦¤¦È!</source>
         <translation>current temperature different is less than min ¦¤¦È!</translation>
     </message>

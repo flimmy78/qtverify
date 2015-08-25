@@ -55,7 +55,7 @@
     <message>
         <location filename="../mainwindow.ui" line="116"/>
         <source>50</source>
-        <translation></translation>
+        <translation>50</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="121"/>
@@ -667,17 +667,17 @@ device is occupied or isn&apos;t exist!</source>
     <message>
         <location filename="../../include/qextserial/qextserialport.cpp" line="723"/>
         <source>No Error has occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>没有检测到错误</translation>
     </message>
     <message>
         <location filename="../../include/qextserial/qextserialport.cpp" line="725"/>
         <source>Invalid file descriptor (port was not opened correctly)</source>
-        <translation type="unfinished"></translation>
+        <translation>错误的文件描述符(端口打开不正确)</translation>
     </message>
     <message>
         <location filename="../../include/qextserial/qextserialport.cpp" line="727"/>
         <source>Unable to allocate memory tables (POSIX)</source>
-        <translation type="unfinished"></translation>
+        <translation>不能申请内存表(POSIX)</translation>
     </message>
     <message>
         <location filename="../../include/qextserial/qextserialport.cpp" line="729"/>
