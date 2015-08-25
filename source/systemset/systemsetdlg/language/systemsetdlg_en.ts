@@ -3501,7 +3501,7 @@
     <message utf8="true">
         <location filename="../ui/stdmtrcoecorrect.ui" line="33"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;提示：如果要进行K系数标定，请选择无修正状态；&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;如果要验证标准表修正后示值准确度，请选择修正状态&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;hint：if set K Coe，please select &apos;Don&apos;t Amend State&apos;；&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;如果要验证标准表修正后示值准确度，请选择修正状态&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;hint：if set K Coe，please select &apos;Don&apos;t Amend State&apos;；&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;If you want to verify the accuracy of the correctted meter, please choose the verify state&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../ui/stdmtrcoecorrect.ui" line="83"/>
