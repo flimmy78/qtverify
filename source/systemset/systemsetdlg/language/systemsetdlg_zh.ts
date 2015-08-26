@@ -1170,117 +1170,117 @@
         <translation>表1</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2184"/>
+        <location filename="../ui/setcomdlg.ui" line="2188"/>
         <source>Meter2</source>
         <translation>表2</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2200"/>
+        <location filename="../ui/setcomdlg.ui" line="2208"/>
         <source>Meter3</source>
         <translation>表3</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2216"/>
+        <location filename="../ui/setcomdlg.ui" line="2228"/>
         <source>Meter4</source>
         <translation>表4</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2232"/>
+        <location filename="../ui/setcomdlg.ui" line="2248"/>
         <source>Meter5</source>
         <translation>表5</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2248"/>
+        <location filename="../ui/setcomdlg.ui" line="2268"/>
         <source>Meter6</source>
         <translation>表6</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2268"/>
+        <location filename="../ui/setcomdlg.ui" line="2292"/>
         <source>Meter7</source>
         <translation>表7</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2284"/>
+        <location filename="../ui/setcomdlg.ui" line="2312"/>
         <source>Meter8</source>
         <translation>表8</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2300"/>
+        <location filename="../ui/setcomdlg.ui" line="2332"/>
         <source>Meter9</source>
         <translation>表9</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2316"/>
+        <location filename="../ui/setcomdlg.ui" line="2352"/>
         <source>Meter10</source>
         <translation>表10</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2332"/>
+        <location filename="../ui/setcomdlg.ui" line="2372"/>
         <source>Meter11</source>
         <translation>表11</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2348"/>
+        <location filename="../ui/setcomdlg.ui" line="2392"/>
         <source>Meter12</source>
         <translation>表12</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2368"/>
+        <location filename="../ui/setcomdlg.ui" line="2416"/>
         <source>Meter13</source>
         <translation>表13</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2384"/>
+        <location filename="../ui/setcomdlg.ui" line="2436"/>
         <source>Meter14</source>
         <translation>表14</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2400"/>
+        <location filename="../ui/setcomdlg.ui" line="2456"/>
         <source>Meter15</source>
         <translation>表15</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2416"/>
+        <location filename="../ui/setcomdlg.ui" line="2476"/>
         <source>Meter16</source>
         <translation>表16</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2432"/>
+        <location filename="../ui/setcomdlg.ui" line="2496"/>
         <source>Meter17</source>
         <translation>表17</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2448"/>
+        <location filename="../ui/setcomdlg.ui" line="2516"/>
         <source>Meter18</source>
         <translation>表18</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2468"/>
+        <location filename="../ui/setcomdlg.ui" line="2540"/>
         <source>Meter19</source>
         <translation>表19</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2484"/>
+        <location filename="../ui/setcomdlg.ui" line="2560"/>
         <source>Meter20</source>
         <translation>表20</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2500"/>
+        <location filename="../ui/setcomdlg.ui" line="2580"/>
         <source>Meter21</source>
         <translation>表21</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2516"/>
+        <location filename="../ui/setcomdlg.ui" line="2600"/>
         <source>Meter22</source>
         <translation>表22</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2532"/>
+        <location filename="../ui/setcomdlg.ui" line="2620"/>
         <source>Meter23</source>
         <translation>表23</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2548"/>
+        <location filename="../ui/setcomdlg.ui" line="2640"/>
         <source>Meter24</source>
         <translation>表24</translation>
     </message>
@@ -1423,12 +1423,12 @@
         <translation type="obsolete">24</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2587"/>
+        <location filename="../ui/setcomdlg.ui" line="2683"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2616"/>
+        <location filename="../ui/setcomdlg.ui" line="2712"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
@@ -2359,31 +2359,24 @@
 <context>
     <name>StdMtrCoeCorrectClass</name>
     <message utf8="true">
-        <location filename="../ui/stdmtrcoecorrect.ui" line="17"/>
         <source>标准表系数标定</source>
-        <translation>标准表系数标定</translation>
+        <translation type="obsolete">标准表系数标定</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrcoecorrect.ui" line="33"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;提示：如果要进行K系数标定，请选择无修正状态；&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;如果要验证标准表修正后示值准确度，请选择修正状态&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;提示：如果要进行K系数标定，请选择无修正状态；&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;如果要验证标准表修正后示值准确度，请选择修正状态&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;提示：如果要进行K系数标定，请选择无修正状态；&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;如果要验证标准表修正后示值准确度，请选择修正状态&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrcoecorrect.ui" line="83"/>
         <source>标准表显示值计算</source>
-        <translation>标准表显示值计算</translation>
+        <translation type="obsolete">标准表显示值计算</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrcoecorrect.ui" line="101"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="173"/>
         <source>初值</source>
-        <translation>初值</translation>
+        <translation type="obsolete">初值</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrcoecorrect.ui" line="120"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="283"/>
         <source>末值</source>
-        <translation>末值</translation>
+        <translation type="obsolete">末值</translation>
     </message>
     <message>
         <location filename="../ui/stdmtrcoecorrect.ui" line="227"/>
@@ -2393,28 +2386,75 @@
         <translation>L</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrcoecorrect.ui" line="393"/>
         <source>示值</source>
+        <translation type="obsolete">示值</translation>
+    </message>
+    <message utf8="true">
+        <source>状态选择</source>
+        <translation type="obsolete">状态选择</translation>
+    </message>
+    <message utf8="true">
+        <source>修正</source>
+        <translation type="obsolete">修正</translation>
+    </message>
+    <message utf8="true">
+        <source>无修正</source>
+        <translation type="obsolete">无修正</translation>
+    </message>
+    <message utf8="true">
+        <source>标准表选择</source>
+        <translation type="obsolete">标准表选择</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="17"/>
+        <source>stand meter coe set</source>
+        <translation>标准表系数标定</translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrcoecorrect.ui" line="33"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;hint：if set K Coe，please select &apos;Don&apos;t Amend State&apos;；&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;If you want to verify the accuracy of the correctted meter, please choose the verify state&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;提示：如果要进行K系数标定，请选择无修正状态；&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;如果要验证标准表修正后示值准确度，请选择修正状态&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="83"/>
+        <source>calc stand meter value</source>
+        <translation>计算标准表示值</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="101"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="173"/>
+        <source>V0</source>
+        <translation>初值</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="120"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="283"/>
+        <source>V1</source>
+        <translation>终值</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="393"/>
+        <source>value</source>
         <translation>示值</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/stdmtrcoecorrect.ui" line="501"/>
-        <source>状态选择</source>
+        <source>choose state</source>
         <translation>状态选择</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/stdmtrcoecorrect.ui" line="544"/>
-        <source>修正</source>
-        <translation>修正</translation>
+        <source>adjust</source>
+        <translation>调整误差</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/stdmtrcoecorrect.ui" line="588"/>
-        <source>无修正</source>
-        <translation>无修正</translation>
+        <source>not adjust</source>
+        <translation>不调整误差</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/stdmtrcoecorrect.ui" line="641"/>
-        <source>标准表选择</source>
+        <source>choose stand meter</source>
         <translation>标准表选择</translation>
     </message>
     <message>
@@ -2427,104 +2467,174 @@
         <source>DN25</source>
         <translation>DN25</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/stdmtrcoecorrect.ui" line="772"/>
-        <source>流量点
+        <source>Flow Point
  (kg)</source>
         <translation>流量点
  (kg)</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/stdmtrcoecorrect.ui" line="778"/>
-        <source>天平初值
+        <source>balance V0
  (kg)</source>
-        <translation>天平初值
+        <translation>天平初值 V0
  (kg)</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/stdmtrcoecorrect.ui" line="784"/>
-        <source>天平末值
-（kg)</source>
-        <translation>天平末值
-（kg)</translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/stdmtrcoecorrect.ui" line="790"/>
-        <source>天平示值
+        <source>balance V1
  (kg)</source>
-        <translation>天平示值
+        <translation>天平终值 V1
  (kg)</translation>
     </message>
-    <message utf8="true">
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="790"/>
+        <source>balance value
+ (kg)</source>
+        <translation>天平终值
+ (kg)</translation>
+    </message>
+    <message>
         <location filename="../ui/stdmtrcoecorrect.ui" line="796"/>
-        <source>密度值
+        <source>density
 (kg/L)</source>
-        <translation>密度值
+        <translation>密度
 (kg/L)</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/stdmtrcoecorrect.ui" line="802"/>
-        <source>实际值
+        <source>Actual Value
  (L)</source>
         <translation>实际值
  (L)</translation>
     </message>
     <message utf8="true">
         <location filename="../ui/stdmtrcoecorrect.ui" line="808"/>
-        <source>标准表值
+        <source>Stand Meter Value
  （L)</source>
-        <translation>标准表值
+        <translation>标准表示值
  （L)</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/stdmtrcoecorrect.ui" line="814"/>
-        <source>仪表系数</source>
-        <translation>仪表系数</translation>
+        <source>Meter Coe</source>
+        <translation>标准表系数</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/stdmtrcoecorrect.ui" line="819"/>
-        <source>平均仪表系数</source>
-        <translation>平均仪表系数</translation>
+        <source>AVG Meter Coe</source>
+        <translation>标准表平均系数</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/stdmtrcoecorrect.ui" line="824"/>
-        <source>重复性
+        <source>repetitiveness
  (%)</source>
         <translation>重复性
  (%)</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/stdmtrcoecorrect.ui" line="848"/>
-        <source>清零</source>
-        <translation>清零</translation>
+        <source>Clear</source>
+        <translation>清空</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/stdmtrcoecorrect.ui" line="861"/>
-        <source>生成表格</source>
-        <translation>生成表格</translation>
+        <source>Report</source>
+        <translation>报表导出</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/stdmtrcoecorrect.ui" line="874"/>
-        <source>保存</source>
+        <source>Save</source>
         <translation>保存</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/stdmtrcoecorrect.ui" line="887"/>
-        <source>退出</source>
+        <source>Exit</source>
         <translation>退出</translation>
+    </message>
+    <message utf8="true">
+        <source>流量点
+ (kg)</source>
+        <translation type="obsolete">流量点
+ (kg)</translation>
+    </message>
+    <message utf8="true">
+        <source>天平初值
+ (kg)</source>
+        <translation type="obsolete">天平初值
+ (kg)</translation>
+    </message>
+    <message utf8="true">
+        <source>天平末值
+（kg)</source>
+        <translation type="obsolete">天平末值
+（kg)</translation>
+    </message>
+    <message utf8="true">
+        <source>天平示值
+ (kg)</source>
+        <translation type="obsolete">天平示值
+ (kg)</translation>
+    </message>
+    <message utf8="true">
+        <source>密度值
+(kg/L)</source>
+        <translation type="obsolete">密度值
+(kg/L)</translation>
+    </message>
+    <message utf8="true">
+        <source>实际值
+ (L)</source>
+        <translation type="obsolete">实际值
+ (L)</translation>
+    </message>
+    <message utf8="true">
+        <source>标准表值
+ （L)</source>
+        <translation type="obsolete">标准表值
+ （L)</translation>
+    </message>
+    <message utf8="true">
+        <source>仪表系数</source>
+        <translation type="obsolete">仪表系数</translation>
+    </message>
+    <message utf8="true">
+        <source>平均仪表系数</source>
+        <translation type="obsolete">平均仪表系数</translation>
+    </message>
+    <message utf8="true">
+        <source>重复性
+ (%)</source>
+        <translation type="obsolete">重复性
+ (%)</translation>
+    </message>
+    <message utf8="true">
+        <source>清零</source>
+        <translation type="obsolete">清零</translation>
+    </message>
+    <message utf8="true">
+        <source>生成表格</source>
+        <translation type="obsolete">生成表格</translation>
+    </message>
+    <message utf8="true">
+        <source>保存</source>
+        <translation type="obsolete">保存</translation>
+    </message>
+    <message utf8="true">
+        <source>退出</source>
+        <translation type="obsolete">退出</translation>
     </message>
 </context>
 <context>
     <name>StdMtrParaSetClass</name>
     <message utf8="true">
-        <location filename="../ui/stdmtrparaset.ui" line="17"/>
         <source>标准表参数设定</source>
-        <translation>标准表参数设定</translation>
+        <translation type="obsolete">标准表参数设定</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrparaset.ui" line="974"/>
         <source>DN10表体积仪表系数</source>
-        <translation>DN10表体积仪表系数</translation>
+        <translation type="obsolete">DN10表体积仪表系数</translation>
     </message>
     <message utf8="true">
         <source>流量点(m³/h)</source>
@@ -2535,375 +2645,483 @@
         <translation type="obsolete">K系数</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrparaset.ui" line="301"/>
-        <location filename="../ui/stdmtrparaset.ui" line="752"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1203"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1654"/>
         <source>脉冲当量(升/脉冲):</source>
-        <translation>脉冲当量(升/脉冲):</translation>
+        <translation type="obsolete">脉冲当量(升/脉冲):</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrparaset.ui" line="1425"/>
         <source>DN25表体积仪表系数</source>
-        <translation>DN25表体积仪表系数</translation>
+        <translation type="obsolete">DN25表体积仪表系数</translation>
     </message>
     <message utf8="true">
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;注:流量从小到大输入，最大流量可与上限流量相同。两个流量点之间不能有空格！&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;K系数为：标准值/显示值&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;注:流量从小到大输入，最大流量可与上限流量相同。两个流量点之间不能有空格！&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;K系数为：标准值/显示值&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrparaset.ui" line="1255"/>
         <source>DN10表流速参数</source>
-        <translation>DN10表流速参数</translation>
+        <translation type="obsolete">DN10表流速参数</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrparaset.ui" line="410"/>
-        <location filename="../ui/stdmtrparaset.ui" line="861"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1312"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1763"/>
         <source>上限流量(m³/h)</source>
-        <translation>上限流量(m³/h)</translation>
+        <translation type="obsolete">上限流量(m³/h)</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrparaset.ui" line="27"/>
         <source>标准表</source>
+        <translation type="obsolete">标准表</translation>
+    </message>
+    <message utf8="true">
+        <source>DN3表体积仪表系数</source>
+        <translation type="obsolete">DN3表体积仪表系数</translation>
+    </message>
+    <message utf8="true">
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;流量点(m³/h)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;流量点(m³/h)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message utf8="true">
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;K系数&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;K系数&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message utf8="true">
+        <source>DN3表流速参数</source>
+        <translation type="obsolete">DN3表流速参数</translation>
+    </message>
+    <message utf8="true">
+        <source>修正系数</source>
+        <translation type="obsolete">修正系数</translation>
+    </message>
+    <message utf8="true">
+        <source>DN5表体积仪表系数</source>
+        <translation type="obsolete">DN5表体积仪表系数</translation>
+    </message>
+    <message utf8="true">
+        <source>DN5表流速参数</source>
+        <translation type="obsolete">DN5表流速参数</translation>
+    </message>
+    <message utf8="true">
+        <source>DN25表流速参数</source>
+        <translation type="obsolete">DN25表流速参数</translation>
+    </message>
+    <message utf8="true">
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;注:流量从小到大输入，最大流量可与上限流量相同。两个流量点之间不能有空格！K系数为：标准值/显示值&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;注:流量从小到大输入，最大流量可与上限流量相同。两个流量点之间不能有空格！K系数为：标准值/显示值&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message utf8="true">
+        <source>管路</source>
+        <translation type="obsolete">管路</translation>
+    </message>
+    <message utf8="true">
+        <source>大流量</source>
+        <translation type="obsolete">大流量</translation>
+    </message>
+    <message utf8="true">
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;口径&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;口径&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="1875"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2165"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2455"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2745"/>
+        <source>DN3</source>
+        <translation>DN3</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="1880"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2170"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2460"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2750"/>
+        <source>DN5</source>
+        <translation>DN5</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="1885"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2175"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2465"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2755"/>
+        <source>DN10</source>
+        <translation>DN10</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="1890"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2180"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2470"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2760"/>
+        <source>DN25</source>
+        <translation>DN25</translation>
+    </message>
+    <message utf8="true">
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;瞬时通道&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;瞬时通道&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="17"/>
+        <source>Params of Stand Meter</source>
+        <translation>标准表参数</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="27"/>
+        <source>Stand Meter</source>
         <translation>标准表</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/stdmtrparaset.ui" line="72"/>
-        <source>DN3表体积仪表系数</source>
-        <translation>DN3表体积仪表系数</translation>
+        <source>DN3 Meter Coe</source>
+        <translation>DN3标准表系数</translation>
     </message>
     <message utf8="true">
         <location filename="../ui/stdmtrparaset.ui" line="131"/>
         <location filename="../ui/stdmtrparaset.ui" line="582"/>
         <location filename="../ui/stdmtrparaset.ui" line="1033"/>
         <location filename="../ui/stdmtrparaset.ui" line="1484"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;流量点(m³/h)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Flow Point(m³/h)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;流量点(m³/h)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/stdmtrparaset.ui" line="221"/>
         <location filename="../ui/stdmtrparaset.ui" line="672"/>
         <location filename="../ui/stdmtrparaset.ui" line="1123"/>
         <location filename="../ui/stdmtrparaset.ui" line="1574"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;K系数&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;K Coe&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;K系数&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="301"/>
+        <location filename="../ui/stdmtrparaset.ui" line="752"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1203"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1654"/>
+        <source>impulse equivalency(L/imp):</source>
+        <translation>脉冲当量(L/imp):</translation>
+    </message>
+    <message>
         <location filename="../ui/stdmtrparaset.ui" line="353"/>
-        <source>DN3表流速参数</source>
-        <translation>DN3表流速参数</translation>
+        <source>DN3 Param of Flow Rate</source>
+        <translation>DN3流量系数</translation>
     </message>
     <message utf8="true">
+        <location filename="../ui/stdmtrparaset.ui" line="410"/>
+        <location filename="../ui/stdmtrparaset.ui" line="861"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1312"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1763"/>
+        <source>Upper FLow(m³/h)</source>
+        <translation>上限流量(m³/h)</translation>
+    </message>
+    <message>
         <location filename="../ui/stdmtrparaset.ui" line="467"/>
         <location filename="../ui/stdmtrparaset.ui" line="918"/>
         <location filename="../ui/stdmtrparaset.ui" line="1369"/>
         <location filename="../ui/stdmtrparaset.ui" line="1820"/>
-        <source>修正系数</source>
-        <translation>修正系数</translation>
+        <source>adjust coe</source>
+        <translation>调整系数</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/stdmtrparaset.ui" line="523"/>
-        <source>DN5表体积仪表系数</source>
-        <translation>DN5表体积仪表系数</translation>
+        <source>DN5 Meter Coe</source>
+        <translation>DN5表系数</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/stdmtrparaset.ui" line="804"/>
-        <source>DN5表流速参数</source>
-        <translation>DN5表流速参数</translation>
+        <source>DN5 Param of Flow Rate</source>
+        <translation>DN5流量参数</translation>
     </message>
-    <message utf8="true">
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="974"/>
+        <source>DN10 Meter Coe</source>
+        <translation>DN10标准表系数</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="1255"/>
+        <source>DN10 Param of Flow Rate</source>
+        <translation>DN10流量参数</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="1425"/>
+        <source>DN25 Meter Coe</source>
+        <translation>DN25表系数</translation>
+    </message>
+    <message>
         <location filename="../ui/stdmtrparaset.ui" line="1706"/>
-        <source>DN25表流速参数</source>
-        <translation>DN25表流速参数</translation>
+        <source>DN25 Param of Flow Rate</source>
+        <translation>DN25流量参数</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/stdmtrparaset.ui" line="1840"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;注:流量从小到大输入，最大流量可与上限流量相同。两个流量点之间不能有空格！K系数为：标准值/显示值&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;注:流量从小到大输入，最大流量可与上限流量相同。两个流量点之间不能有空格！K系数为：标准值/显示值&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Hint:Input FLowRate from big to small, the max flow and upper flow can be the same.
+There should not be space between tow flow points! K Coe: (Stand Value)/(Meter Value)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;提示：如果要进行K系数标定，请选择无修正状态；&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;
+如果要验证标准表修正后示值准确度，请选择修正状态&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
-        <location filename="../ui/stdmtrparaset.ui" line="1847"/>
-        <source>管路</source>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="1848"/>
+        <source>Routines</source>
         <translation>管路</translation>
     </message>
-    <message utf8="true">
-        <location filename="../ui/stdmtrparaset.ui" line="1855"/>
-        <source>大流量</source>
-        <translation>大流量</translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/stdmtrparaset.ui" line="1861"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2151"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2441"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2731"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;口径&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;口径&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="1856"/>
+        <source>Big</source>
+        <translation>大</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1874"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2164"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2454"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2744"/>
-        <source>DN3</source>
-        <translation>DN3</translation>
+        <location filename="../ui/stdmtrparaset.ui" line="1862"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2152"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2442"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2732"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Diam&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;管径&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1879"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2169"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2459"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2749"/>
-        <source>DN5</source>
-        <translation>DN5</translation>
+        <location filename="../ui/stdmtrparaset.ui" line="1898"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2188"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2478"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2768"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Inst&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;瞬时流量&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1884"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2174"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2464"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2754"/>
-        <source>DN10</source>
-        <translation>DN10</translation>
-    </message>
-    <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1889"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2179"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2469"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2759"/>
-        <source>DN25</source>
-        <translation>DN25</translation>
-    </message>
-    <message utf8="true">
-        <location filename="../ui/stdmtrparaset.ui" line="1897"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2187"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2477"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2767"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;瞬时通道&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;瞬时通道&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1940"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2046"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2230"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2336"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2520"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2626"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2810"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2916"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1941"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2047"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2231"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2337"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2521"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2627"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2811"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2917"/>
         <source>       0</source>
         <translation>       0</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1945"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2051"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2235"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2341"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2525"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2631"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2815"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2921"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1946"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2052"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2236"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2342"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2526"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2632"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2816"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2922"/>
         <source>       1</source>
         <translation>       1</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1950"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2056"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2240"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2346"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2530"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2636"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2820"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2926"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1951"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2057"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2241"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2347"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2531"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2637"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2821"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2927"/>
         <source>       2</source>
         <translation>       2</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1955"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2061"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2245"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2351"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2535"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2641"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2825"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2931"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1956"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2062"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2246"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2352"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2536"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2642"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2826"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2932"/>
         <source>       3</source>
         <translation>       3</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1960"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2066"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2250"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2356"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2540"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2646"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2830"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2936"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1961"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2067"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2251"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2357"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2541"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2647"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2831"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2937"/>
         <source>       4</source>
         <translation>       4</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1965"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2071"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2255"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2361"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2545"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2651"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2835"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2941"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1966"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2072"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2256"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2362"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2546"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2652"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2836"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2942"/>
         <source>       5</source>
         <translation>       5</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1970"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2076"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2260"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2366"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2550"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2656"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2840"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2946"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1971"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2077"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2261"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2367"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2551"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2657"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2841"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2947"/>
         <source>       6</source>
         <translation>       6</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1975"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2081"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2265"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2371"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2555"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2661"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2845"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2951"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1976"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2082"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2266"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2372"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2556"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2662"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2846"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2952"/>
         <source>       7</source>
         <translation>       7</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1980"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2086"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2270"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2376"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2560"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2666"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2850"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2956"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1981"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2087"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2271"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2377"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2561"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2667"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2851"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2957"/>
         <source>       8</source>
         <translation>       8</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1985"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2091"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2275"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2381"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2565"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2671"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2855"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2961"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1986"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2092"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2276"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2382"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2566"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2672"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2856"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2962"/>
         <source>       9</source>
         <translation>       9</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1990"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2096"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2280"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2386"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2570"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2676"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2860"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2966"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1991"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2097"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2281"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2387"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2571"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2677"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2861"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2967"/>
         <source>       10</source>
         <translation>       10</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1995"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2101"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2285"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2391"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2575"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2681"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2865"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2971"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1996"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2102"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2286"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2392"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2576"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2682"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2866"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2972"/>
         <source>       11</source>
         <translation>       11</translation>
     </message>
-    <message utf8="true">
-        <location filename="../ui/stdmtrparaset.ui" line="2003"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2293"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2583"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2873"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;累积通道&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;累积通道&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="2004"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2294"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2584"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2874"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Accum&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;累积流量&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2106"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2396"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2686"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2976"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2146"/>
+        <source>Mid2</source>
+        <translation>中二</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="2436"/>
+        <source>Mid1</source>
+        <translation>中一</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="2726"/>
+        <source>Small</source>
+        <translation>小</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="3107"/>
+        <source>Save</source>
+        <translation>保存</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="3127"/>
+        <source>Exit</source>
+        <translation>退出</translation>
+    </message>
+    <message utf8="true">
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;累积通道&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;累积通道&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="2107"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2397"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2687"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2977"/>
         <source>       12</source>
         <translation>       12</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2111"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2401"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2691"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2981"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2112"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2402"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2692"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2982"/>
         <source>       13</source>
         <translation>       13</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2116"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2406"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2696"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2986"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2117"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2407"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2697"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2987"/>
         <source>       14</source>
         <translation>       14</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2121"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2411"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2701"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2991"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2122"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2412"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2702"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2992"/>
         <source>       15</source>
         <translation>       15</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrparaset.ui" line="2145"/>
         <source>中二流量</source>
-        <translation>中二流量</translation>
+        <translation type="obsolete">中二流量</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrparaset.ui" line="2435"/>
         <source>中一流量</source>
-        <translation>中一流量</translation>
+        <translation type="obsolete">中一流量</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrparaset.ui" line="2725"/>
         <source>小流量</source>
-        <translation>小流量</translation>
+        <translation type="obsolete">小流量</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="3012"/>
+        <location filename="../ui/stdmtrparaset.ui" line="3013"/>
         <source>Standard Meter DevNo.</source>
         <translation>标准表设备号</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="3024"/>
+        <location filename="../ui/stdmtrparaset.ui" line="3025"/>
         <source>Instant DevNo.</source>
         <translation>瞬时设备号</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="3063"/>
+        <location filename="../ui/stdmtrparaset.ui" line="3064"/>
         <source>Accumulate DevNo.</source>
         <translation>累积设备号</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrparaset.ui" line="3106"/>
         <source>保存</source>
-        <translation>保存</translation>
+        <translation type="obsolete">保存</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrparaset.ui" line="3126"/>
         <source>退出</source>
-        <translation>退出</translation>
+        <translation type="obsolete">退出</translation>
     </message>
 </context>
 <context>
