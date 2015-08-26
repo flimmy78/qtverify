@@ -112,14 +112,29 @@ ComInfoStruct ReadComConfig::ReadConfigByName(QString ConfigId)
 QStringList ReadComConfig::ReadIndexByName(QString ConfigId)
 {
 	QStringList com_info;
+	if (ConfigId.contains(METER_STR))
+	{
+		m_com_settings->beginGroup("MetersCom");
+		com_info.append( QString::number(m_com_settings->value(ConfigId).toInt()-1));
+		m_com_settings->endGroup();
 
-	m_com_settings->beginGroup(ConfigId);
-	com_info.append(m_com_settings->value("com_name").toString().split(SEP)[1]);
-	com_info.append(m_com_settings->value("baud").toString().split(SEP)[1]);
-	com_info.append(m_com_settings->value("bits").toString().split(SEP)[1]);
-	com_info.append(m_com_settings->value("chkbit").toString().split(SEP)[1]);
-	com_info.append(m_com_settings->value("endbit").toString().split(SEP)[1]);
-	m_com_settings->endGroup();
+		m_com_settings->beginGroup("MetersProperty");
+		com_info.append(m_com_settings->value("baud").toString().split(SEP)[1]);
+		com_info.append(m_com_settings->value("bits").toString().split(SEP)[1]);
+		com_info.append(m_com_settings->value("chkbit").toString().split(SEP)[1]);
+		com_info.append(m_com_settings->value("endbit").toString().split(SEP)[1]);
+		m_com_settings->endGroup();
+	}
+	else
+	{
+		m_com_settings->beginGroup(ConfigId);
+		com_info.append(m_com_settings->value("com_name").toString().split(SEP)[1]);
+		com_info.append(m_com_settings->value("baud").toString().split(SEP)[1]);
+		com_info.append(m_com_settings->value("bits").toString().split(SEP)[1]);
+		com_info.append(m_com_settings->value("chkbit").toString().split(SEP)[1]);
+		com_info.append(m_com_settings->value("endbit").toString().split(SEP)[1]);
+		m_com_settings->endGroup();
+	}
 
 	return com_info;
 }
