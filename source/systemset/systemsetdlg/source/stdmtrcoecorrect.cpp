@@ -47,3 +47,17 @@ void StdMtrCoeCorrect::on_btnExit_clicked()
 {
 	this->close();
 }
+
+void StdMtrCoeCorrect::resizeEvent(QResizeEvent * event)
+{
+	qDebug()<<"StdMtrCoeCorrect::resizeEvent...";
+
+	int th = ui.tableWidget->size().height();
+	int tw = ui.tableWidget->size().width();
+	int hh = ui.tableWidget->horizontalHeader()->size().height();
+	int vw = ui.tableWidget->verticalHeader()->size().width();
+	int vSize = (int)((th-hh-10)/ui.tableWidget->rowCount());
+	int hSize = (int)((tw-vw-10)/ui.tableWidget->columnCount());
+	ui.tableWidget->verticalHeader()->setDefaultSectionSize(vSize);
+	ui.tableWidget->horizontalHeader()->setDefaultSectionSize(hSize);
+}

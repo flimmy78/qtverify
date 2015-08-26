@@ -21,7 +21,7 @@ signals:
 
 public slots:
 	void on_btnExit_clicked();
-
+	void resizeEvent(QResizeEvent * event);
 
 private:
 	Ui::StdMtrCoeCorrectClass ui;
