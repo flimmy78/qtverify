@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1017</width>
-    <height>200</height>
+    <width>600</width>
+    <height>318</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -32,8 +32,8 @@
    <iconset resource="../systemsetdlg.qrc">
     <normaloff>:/systemsetdlg/images/ptparaset.png</normaloff>:/systemsetdlg/images/ptparaset.png</iconset>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2">
-   <item row="0" column="0">
+  <layout class="QVBoxLayout" name="verticalLayout_4">
+   <item>
     <widget class="QTableWidget" name="tbl_t_r">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -43,8 +43,8 @@
      </property>
      <property name="minimumSize">
       <size>
-       <width>400</width>
-       <height>121</height>
+       <width>411</width>
+       <height>120</height>
       </size>
      </property>
      <property name="maximumSize">
@@ -88,7 +88,7 @@
      </item>
     </widget>
    </item>
-   <item row="0" column="1">
+   <item>
     <widget class="QGroupBox" name="groupBox_6">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -96,14 +96,20 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="minimumSize">
+      <size>
+       <width>400</width>
+       <height>101</height>
+      </size>
+     </property>
      <property name="title">
       <string>Platinum Param</string>
      </property>
      <property name="checkable">
       <bool>false</bool>
      </property>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -166,7 +172,7 @@
         </item>
        </layout>
       </item>
-      <item row="0" column="1">
+      <item>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -226,7 +232,7 @@
         </item>
        </layout>
       </item>
-      <item row="0" column="2">
+      <item>
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -289,9 +295,9 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="0" colspan="2">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
+   <item>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
       <widget class="QPushButton" name="btn_calc">
        <property name="minimumSize">
         <size>
@@ -310,39 +316,7 @@
        </property>
       </widget>
      </item>
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btn_save">
-       <property name="maximumSize">
-        <size>
-         <width>120</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="sizeIncrement">
-        <size>
-         <width>150</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>Save</string>
-       </property>
-      </widget>
-     </item>
-     <item>
+     <item row="0" column="1">
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -355,7 +329,7 @@
        </property>
       </spacer>
      </item>
-     <item>
+     <item row="0" column="2">
       <widget class="QPushButton" name="btn_default">
        <property name="minimumSize">
         <size>
@@ -374,7 +348,26 @@
        </property>
       </widget>
      </item>
-     <item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="btn_save">
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>150</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Save</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
       <spacer name="horizontalSpacer_3">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -387,7 +380,7 @@
        </property>
       </spacer>
      </item>
-     <item>
+     <item row="1" column="2">
       <widget class="QPushButton" name="btn_exit">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">

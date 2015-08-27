@@ -234,15 +234,7 @@ void TotalStandardDlg::closeEvent(QCloseEvent * event)
 		m_tempTimer = NULL;
 	}
 
-	if (m_stdTempObj)  // 标准温度采集
-	{
-		delete m_stdTempObj;
-		m_stdTempObj = NULL;
-
-		m_stdTempThread.exit();
-	}
-
-	if (m_stdTempTimer) //标准温度采集计时器
+	if (m_stdTempTimer) //标准温度采集计时器, 必须先于串口对象停掉
 	{
 		if (m_stdTempTimer->isActive())
 		{
@@ -251,6 +243,14 @@ void TotalStandardDlg::closeEvent(QCloseEvent * event)
 		delete m_stdTempTimer;
 		m_stdTempTimer = NULL;
 	}
+
+	if (m_stdTempObj)  // 标准温度采集
+	{
+		delete m_stdTempObj;
+		m_stdTempObj = NULL;
+
+		m_stdTempThread.exit();
+	}	
 
 	if (m_controlObj)  //阀门控制
 	{

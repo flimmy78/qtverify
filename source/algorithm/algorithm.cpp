@@ -260,7 +260,6 @@ UINT16 calcModRtuCRC(uchar *buf, int len)
 	return crc;
 }
 
-
 /* 将CRC计算结果转换为QByteArray
  * 返回值QByteArray sendbuf;
  * sendbuf.at(0) 是低位;  sendbuf.at(1) 是高位
