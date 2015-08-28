@@ -152,8 +152,6 @@ void CmbVerifyDlg::initUi()
 
 	initTbl();
 
-	connect(m_CmbParamDlg, SIGNAL(saveSuccessfully()), this, SLOT(freshCmbParam()));
-
 	on_btn_collection_clicked();
 }
 
@@ -412,6 +410,7 @@ void CmbVerifyDlg::on_btnPara_clicked()
 		m_CmbParamDlg = new CmbParamDlg();
 	}
 	m_CmbParamDlg->show();
+	connect(m_CmbParamDlg, SIGNAL(saveSuccessfully()), this, SLOT(freshCmbParam()));
 }
 
 void CmbVerifyDlg::freshCmbParam()
