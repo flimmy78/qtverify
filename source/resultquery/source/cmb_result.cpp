@@ -212,38 +212,39 @@ void CmbResultDlg::queryData()
 	////设置外键
 	model->setRelation(3, QSqlRelation("T_Meter_Standard","F_ID","F_Name"));
 	model->setRelation(4, QSqlRelation("T_Meter_Model","F_ID","F_Name"));
-	model->setRelation(6, QSqlRelation("T_Manufacture_Dept","F_ID","F_Desc"));
-	model->setRelation(7, QSqlRelation("T_Verify_Dept","F_ID","F_Desc"));
-	model->setRelation(8, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));
-	model->setRelation(26, QSqlRelation("T_Yes_No_Tab","F_ID","F_Desc"));
+	model->setRelation(7, QSqlRelation("T_Manufacture_Dept","F_ID","F_Desc"));
+	model->setRelation(8, QSqlRelation("T_Verify_Dept","F_ID","F_Desc"));
+	model->setRelation(9, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));
+	model->setRelation(27, QSqlRelation("T_Yes_No_Tab","F_ID","F_Desc"));
 
 	////设置水平标题
 	model->setHeaderData(1, Qt::Horizontal, QObject::tr("TimeStamp"));//时间戳（'yyyy-MM-dd HH:mm:ss.zzz')
 	model->setHeaderData(2, Qt::Horizontal, QObject::tr("MeterNo"));//表号(14位数字: 6 + 8)
 	model->setHeaderData(3, Qt::Horizontal, QObject::tr("Standard"));//表规格(DN15/DN20/DN25)，外键(T_Meter_Standard.F_ID)
 	model->setHeaderData(4, Qt::Horizontal, QObject::tr("Model"));//表型号，外键(T_Meter_Model.F_ID)
-	model->setHeaderData(5, Qt::Horizontal, QObject::tr("Grade"));//计量等级（1,2,3）
-	model->setHeaderData(6, Qt::Horizontal, QObject::tr("ManufactDept"));//制造单位，外键(T_Manufacture_Dept.F_ID)
-	model->setHeaderData(7, Qt::Horizontal, QObject::tr("VerifyDept"));//送检单位，外键(T_Verify_Dept.F_ID)
-	model->setHeaderData(8, Qt::Horizontal, QObject::tr("VerifyPerson"));//检定员，外键(T_User_Def_Tab.F_ID)
-	model->setHeaderData(9, Qt::Horizontal, QObject::tr("DeltaTemp "));//温差(K)
-	model->setHeaderData(10, Qt::Horizontal, QObject::tr("VerifyVolume "));//检定量(L)
-	model->setHeaderData(11, Qt::Horizontal, QObject::tr("DeltaTempMin "));//最小温差(K)
-	model->setHeaderData(12, Qt::Horizontal, QObject::tr("InstallPos"));//安装位置(0:进口；1:出口)
-	model->setHeaderData(13, Qt::Horizontal, QObject::tr("HeatUnit"));//热量单位(1:kWh; 0:MJ)
-	model->setHeaderData(14, Qt::Horizontal, QObject::tr("StdTempIn"));//入口温度-标准温度计(℃)
-	model->setHeaderData(15, Qt::Horizontal, QObject::tr("StdTempOut"));//出口温度-标准温度计(℃)
-	model->setHeaderData(16, Qt::Horizontal, QObject::tr("StdResistIn"));//入口电阻-标准温度计(Ω)
-	model->setHeaderData(17, Qt::Horizontal, QObject::tr("StdResistOut"));//出口电阻-标准温度计(Ω)
-	model->setHeaderData(18, Qt::Horizontal, QObject::tr("Kcoe"));//K系数
-	model->setHeaderData(19, Qt::Horizontal, QObject::tr("StdValue"));//理论值(热量，kwh)
-	model->setHeaderData(20, Qt::Horizontal, QObject::tr("MeterV0"));//热量表初值(体积)，单位L
-	model->setHeaderData(21, Qt::Horizontal, QObject::tr("MeterV1"));//热量表终值(体积)，单位L
-	model->setHeaderData(22, Qt::Horizontal, QObject::tr("MeterE0"));//热量表初值(热量)，单位kWh
-	model->setHeaderData(23, Qt::Horizontal, QObject::tr("MeterE1"));//热量表终值(热量)，单位kWh
-	model->setHeaderData(24, Qt::Horizontal, QObject::tr("DispError"));//示值误差，单位%
-	model->setHeaderData(25, Qt::Horizontal, QObject::tr("StdError"));//要求误差(合格标准),单位%
-	model->setHeaderData(26, Qt::Horizontal, QObject::tr("Result"));//检定结果(1：合格，0：不合格)
+	model->setHeaderData(5, Qt::Horizontal, QObject::tr("PickCode"));//采集代码（1,2,3）
+	model->setHeaderData(6, Qt::Horizontal, QObject::tr("Grade"));//计量等级（1,2,3）
+	model->setHeaderData(7, Qt::Horizontal, QObject::tr("ManufactDept"));//制造单位，外键(T_Manufacture_Dept.F_ID)
+	model->setHeaderData(8, Qt::Horizontal, QObject::tr("VerifyDept"));//送检单位，外键(T_Verify_Dept.F_ID)
+	model->setHeaderData(9, Qt::Horizontal, QObject::tr("VerifyPerson"));//检定员，外键(T_User_Def_Tab.F_ID)
+	model->setHeaderData(10, Qt::Horizontal, QObject::tr("DeltaTemp "));//温差(K)
+	model->setHeaderData(11, Qt::Horizontal, QObject::tr("VerifyVolume "));//检定量(L)
+	model->setHeaderData(12, Qt::Horizontal, QObject::tr("DeltaTempMin "));//最小温差(K)
+	model->setHeaderData(13, Qt::Horizontal, QObject::tr("InstallPos"));//安装位置(0:进口；1:出口)
+	model->setHeaderData(14, Qt::Horizontal, QObject::tr("HeatUnit"));//热量单位(1:kWh; 0:MJ)
+	model->setHeaderData(15, Qt::Horizontal, QObject::tr("StdTempIn"));//入口温度-标准温度计(℃)
+	model->setHeaderData(16, Qt::Horizontal, QObject::tr("StdTempOut"));//出口温度-标准温度计(℃)
+	model->setHeaderData(17, Qt::Horizontal, QObject::tr("StdResistIn"));//入口电阻-标准温度计(Ω)
+	model->setHeaderData(18, Qt::Horizontal, QObject::tr("StdResistOut"));//出口电阻-标准温度计(Ω)
+	model->setHeaderData(19, Qt::Horizontal, QObject::tr("Kcoe"));//K系数
+	model->setHeaderData(20, Qt::Horizontal, QObject::tr("StdValue"));//理论值(热量，kwh)
+	model->setHeaderData(21, Qt::Horizontal, QObject::tr("MeterV0"));//热量表初值(体积)，单位L
+	model->setHeaderData(22, Qt::Horizontal, QObject::tr("MeterV1"));//热量表终值(体积)，单位L
+	model->setHeaderData(23, Qt::Horizontal, QObject::tr("MeterE0"));//热量表初值(热量)，单位kWh
+	model->setHeaderData(24, Qt::Horizontal, QObject::tr("MeterE1"));//热量表终值(热量)，单位kWh
+	model->setHeaderData(25, Qt::Horizontal, QObject::tr("DispError"));//示值误差，单位%
+	model->setHeaderData(26, Qt::Horizontal, QObject::tr("StdError"));//要求误差(合格标准),单位%
+	model->setHeaderData(27, Qt::Horizontal, QObject::tr("Result"));//检定结果(1：合格，0：不合格)
 
 	model->select();
 	ui.tableView->setModel(model);
@@ -252,9 +253,9 @@ void CmbResultDlg::queryData()
 	ui.tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);  //使其不可编辑
 
 	ui.tableView->hideColumn(0);
-	ui.tableView->hideColumn(27);
 	ui.tableView->hideColumn(28);
 	ui.tableView->hideColumn(29);
+	ui.tableView->hideColumn(30);
 }
 
 void CmbResultDlg::on_btnExit_clicked()
