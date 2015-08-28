@@ -350,19 +350,29 @@
 <context>
     <name>CmbVerifyDlg</name>
     <message>
-        <location filename="../cmbverify.cpp" line="180"/>
+        <location filename="../cmbverify.cpp" line="179"/>
         <source>Read Data</source>
         <translation>读取数据</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="435"/>
+        <location filename="../cmbverify.cpp" line="383"/>
         <source>StdE(kWh)</source>
         <translation>标准值(kWh)</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="442"/>
+        <location filename="../cmbverify.cpp" line="390"/>
         <source>StdE(MJ)</source>
         <translation>标准值(MJ)</translation>
+    </message>
+    <message>
+        <location filename="../cmbverify.cpp" line="461"/>
+        <source>save database failed!</source>
+        <translation>保存到数据库失败!</translation>
+    </message>
+    <message>
+        <location filename="../cmbverify.cpp" line="479"/>
+        <source>Error</source>
+        <translation>错误</translation>
     </message>
     <message>
         <source>analog flow %1 m3/h, please wait for about %2 seconds</source>
@@ -373,12 +383,12 @@
         <translation type="obsolete">请输入热量表的体积终值V1和能量终值E1</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="421"/>
+        <location filename="../cmbverify.cpp" line="369"/>
         <source>analog flow &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; m3/h, please wait for about &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; seconds</source>
         <translation>模拟流量 &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; m3/h, 请等待约 &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; 秒</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="417"/>
+        <location filename="../cmbverify.cpp" line="365"/>
         <source>please input meter V1 and E1, then click &quot;Save&quot; button!</source>
         <translation>请输入V1和E1，然后点击&quot;保存&quot;按钮！</translation>
     </message>
@@ -391,35 +401,36 @@
         <translation type="obsolete">请正确设置安装位置、计量单位及最小温差</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="44"/>
+        <location filename="../cmbverify.cpp" line="45"/>
         <source>Please set the Install position, Unit, and minimum temperature difference correctly</source>
         <translation>请正确设置安装位置、计量单位及最小温差</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="508"/>
-        <location filename="../cmbverify.cpp" line="513"/>
-        <location filename="../cmbverify.cpp" line="743"/>
+        <location filename="../cmbverify.cpp" line="457"/>
+        <source>save database and Excel successfully!</source>
+        <translation>保存到数据库和导出报告成功!</translation>
+    </message>
+    <message>
+        <location filename="../cmbverify.cpp" line="461"/>
+        <location filename="../cmbverify.cpp" line="689"/>
         <source>Hint</source>
         <translation>提示</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="508"/>
-        <location filename="../cmbverify.cpp" line="509"/>
         <source>save database successful !</source>
-        <translation>保存数据成功!</translation>
+        <translation type="obsolete">保存数据成功!</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="513"/>
         <source>save database failed !</source>
-        <translation>保存数据失败!</translation>
+        <translation type="obsolete">保存数据失败!</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="639"/>
+        <location filename="../cmbverify.cpp" line="597"/>
         <source>please input meter number, then click &quot;Start&quot; button!</source>
         <translation>请输入表号，然后点击&quot;开始&quot;按钮！</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="743"/>
+        <location filename="../cmbverify.cpp" line="689"/>
         <source>current temperature different is less than min ¦¤¦È!</source>
         <translation>当前恒温槽温差小于您设置的最小温差!</translation>
     </message>
