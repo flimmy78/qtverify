@@ -103,11 +103,11 @@ int main(int argc, char *argv[])
 	qDebug()<<"qtverify main thread:"<<QThread::currentThreadId();
 
 	splash->showMessage(QObject::tr("connect database ..."), align, Qt::blue);
-	sleep(200);
+	wait(200);
 	startdb(); //连接数据库
 
 	splash->showMessage(QObject::tr("setting up the mainwindow ..."), align, Qt::blue);
-	sleep(200);
+	wait(200);
 	g_mainform = new MainForm;
 	
 // 	LoginDialog login;

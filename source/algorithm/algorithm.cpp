@@ -24,7 +24,7 @@
 #include "commondefine.h"
 #include "qtexdb.h"
 
-void wait(unsigned int msec)
+void sleep(unsigned int msec)
 {
 	QTime n = QTime::currentTime();
 	QTime now;
@@ -33,7 +33,8 @@ void wait(unsigned int msec)
 		now = QTime::currentTime();
 	} while(n.msecsTo(now) <= msec); 
 }
-void sleep(unsigned int msec)
+
+void wait(unsigned int msec)
 {
 	QTime dieTime = QTime::currentTime().addMSecs(msec);
 	while( QTime::currentTime() < dieTime )

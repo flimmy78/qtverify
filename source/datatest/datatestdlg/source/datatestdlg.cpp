@@ -377,7 +377,7 @@ void DataTestDlg::on_lnEditTargetRate_returnPressed()
 	if (!m_maxRateGetted)
 	{
 		m_degree = 99;//先调节到大流量, 得出最大流量
-		sleep(WAIT_REG_TIME);//等待调节阀调节到最大开度
+		wait(WAIT_REG_TIME);//等待调节阀调节到最大开度
 		m_maxRate = ui.lcdStdMeterFlowRate->value();//采集最大开度时的流量
 		m_maxRateGetted = true;
 	}	

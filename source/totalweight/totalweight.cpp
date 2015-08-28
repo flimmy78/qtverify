@@ -190,13 +190,13 @@ void TotalWeightDlg::closeEvent(QCloseEvent * event)
 	{
 		m_stopFlag = true;
 		closeAllValveAndPumpOpenOutValve();
-	 	sleep(CYCLE_TIME);
+	 	wait(CYCLE_TIME);
 	}
 	openWaterOutValve();
 	ui.labelHintPoint->clear();
 	ui.labelHintProcess->setText(tr("release pipe pressure..."));
 	openValve(m_portsetinfo.bigNo); //打开大流量点阀门，释放管路压力
- 	sleep(RELEASE_PRESS_TIME); //等待2秒，释放管路压力
+ 	wait(RELEASE_PRESS_TIME); //等待2秒，释放管路压力
 	closeValve(m_portsetinfo.bigNo);
 	ui.labelHintProcess->clear();
 	ui.btnStart->setEnabled(true);
@@ -800,7 +800,7 @@ void TotalWeightDlg::slotExaustFinished()
 		return;
 	}
 
-	sleep(BALANCE_STABLE_TIME); //等待天平数值稳定
+	wait(BALANCE_STABLE_TIME); //等待天平数值稳定
 	if (setAllMeterVerifyStatus()) //设置检定状态成功
 	{
 		startVerify();
@@ -849,7 +849,7 @@ int TotalWeightDlg::setAllMeterVerifyStatus()
 {
 	ui.labelHintPoint->setText(tr("setting verify status ..."));
 	on_btnAllVerifyStatus_clicked();
-	sleep(1000);
+	wait(CYCLE_TIME);
 	on_btnAllVerifyStatus_clicked();
 	return true;
 }
@@ -860,13 +860,13 @@ int TotalWeightDlg::openAllValveAndPump()
 	openWaterOutValve();
 	openValve(m_portsetinfo.waterInNo);
 	openWaterPump();//打开水泵
-	sleep(CYCLE_TIME);
+	wait(CYCLE_TIME);
 	openValve(m_portsetinfo.smallNo);
-	sleep(CYCLE_TIME);
+	wait(CYCLE_TIME);
 	openValve(m_portsetinfo.middle1No);
-	sleep(CYCLE_TIME);
+	wait(CYCLE_TIME);
 	openValve(m_portsetinfo.middle2No);
-	sleep(CYCLE_TIME);
+	wait(CYCLE_TIME);
 	openValve(m_portsetinfo.bigNo);
 
 	return true;
@@ -876,10 +876,10 @@ int TotalWeightDlg::openAllValveAndPump()
 int TotalWeightDlg::closeAllValveAndPumpOpenOutValve()
 {
 	openWaterOutValve(); //退出时打开放水阀
-	sleep(CYCLE_TIME);
+	wait(CYCLE_TIME);
 	closeWaterPump();    //退出时关闭水泵
 	closeAllFlowPointValves();//关闭所有流量点阀门
-	sleep(CYCLE_TIME);
+	wait(CYCLE_TIME);
 	closeValve(m_portsetinfo.waterInNo);//关闭进水阀
 
 	return true;
@@ -889,11 +889,11 @@ int TotalWeightDlg::closeAllValveAndPumpOpenOutValve()
 int TotalWeightDlg::closeAllFlowPointValves()
 {
 	closeValve(m_portsetinfo.bigNo);
-	sleep(CYCLE_TIME);
+	wait(CYCLE_TIME);
 	closeValve(m_portsetinfo.middle2No);
-	sleep(CYCLE_TIME);
+	wait(CYCLE_TIME);
 	closeValve(m_portsetinfo.middle1No);
-	sleep(CYCLE_TIME);
+	wait(CYCLE_TIME);
 	closeValve(m_portsetinfo.smallNo);
 
 	return true;
@@ -927,7 +927,7 @@ int TotalWeightDlg::isBalanceValueBigger(float targetV, bool flg)
 		while (!m_stopFlag && (ui.lcdBigBalance->value() < targetV))
 		{
 			qDebug()<<"天平重量 ="<<ui.lcdBigBalance->value()<<", 小于要求的重量 "<<targetV;
-			sleep(CYCLE_TIME);
+			wait(CYCLE_TIME);
 		}
 		ret = !m_stopFlag && (ui.lcdBigBalance->value() >= targetV);
 	}
@@ -936,7 +936,7 @@ int TotalWeightDlg::isBalanceValueBigger(float targetV, bool flg)
 		while (!m_stopFlag && (ui.lcdBigBalance->value() > targetV))
 		{
 			qDebug()<<"天平重量 ="<<ui.lcdBigBalance->value()<<", 大于要求的重量 "<<targetV;
-			sleep(CYCLE_TIME);
+			wait(CYCLE_TIME);
 		}
 		ret = !m_stopFlag && (ui.lcdBigBalance->value() <= targetV);
 	}
@@ -972,7 +972,7 @@ int TotalWeightDlg::judgeBalanceAndCalcAvgTemperAndFlow(float targetV)
 		ui.labelHintPoint->setText(tr("NO. <font color=DarkGreen size=6><b>%1</b></font> flow point: <font color=DarkGreen size=6><b>%2</b></font> m3/h")\
 			.arg(m_nowOrder).arg(nowFlow));
 		ui.labelHintProcess->setText(tr("Verifying...Please wait for about <font color=DarkGreen size=6><b>%1</b></font> second").arg(second));
-		sleep(CYCLE_TIME);
+		wait(CYCLE_TIME);
 	}
 
 	m_pipeInTemper = m_pipeInTemper/m_avgTFCount;   //入口平均温度
@@ -1275,10 +1275,10 @@ void TotalWeightDlg::startVerify()
 			openWaterOutValve();
 			while (!judgeBalanceCapacity())
 			{ 
-				sleep(CYCLE_TIME);
+				wait(CYCLE_TIME);
 			}
 			closeWaterOutValve(); //若满足检定用量，则关闭放水阀
-			sleep(BALANCE_STABLE_TIME); //等待3秒钟(等待水流稳定)
+			wait(BALANCE_STABLE_TIME); //等待3秒钟(等待水流稳定)
 		}
 	}
 
@@ -1380,10 +1380,10 @@ int TotalWeightDlg::prepareVerifyFlowPoint(int order)
 			openWaterOutValve(); //打开放水阀，天平放水
 			while (!judgeBalanceCapacitySingle(order)) //等待天平放水，直至满足本次检定用量
 			{ 
-				sleep(CYCLE_TIME);
+				wait(CYCLE_TIME);
 			}
 			closeWaterOutValve(); //若满足检定用量，则关闭放水阀
-			sleep(BALANCE_STABLE_TIME);   //等待3秒钟，等待水流稳定
+			wait(BALANCE_STABLE_TIME);   //等待3秒钟，等待水流稳定
 		}
 	}
 
@@ -1397,7 +1397,7 @@ int TotalWeightDlg::prepareVerifyFlowPoint(int order)
 			{
 				ui.labelHintProcess->setText(tr("please wait <font color=DarkGreen size=6><b>%1</b></font> seconds for reset zero").arg(RESET_ZERO_TIME-i));
 				i++;
-				sleep(CYCLE_TIME); 
+				wait(CYCLE_TIME); 
 			}
 // 		}
 	}
@@ -1460,7 +1460,7 @@ int TotalWeightDlg::startVerifyFlowPoint(int order)
 			ui.btnAllReadData->setEnabled(true);
 			ui.btnAllVerifyStatus->setEnabled(true);
 			closeValve(portNo); //关闭order对应的阀门
-			sleep(BALANCE_STABLE_TIME); //等待3秒钟，让天平数值稳定
+			wait(BALANCE_STABLE_TIME); //等待3秒钟，让天平数值稳定
 			m_balEndV = ui.lcdBigBalance->value(); //记录天平终值
 
 			if (!m_resetZero && m_nowOrder>=2)
@@ -1892,7 +1892,7 @@ int TotalWeightDlg::getMeterStartValue()
 		{
 			if (m_autopick) //自动采集
 			{
-				sleep(WAIT_COM_TIME); //需要等待，否则热表来不及响应通讯
+				wait(WAIT_COM_TIME); //需要等待，否则热表来不及响应通讯
 				ui.labelHintProcess->setText(tr("please input start value of heat meter"));
 				on_btnAllReadData_clicked();
 //	 			sleep(WAIT_COM_TIME); //等待串口返回数据

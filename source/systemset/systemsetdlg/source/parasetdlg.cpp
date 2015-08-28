@@ -399,7 +399,7 @@ void ParaSetDlg::on_btnSave_clicked()
 //	QMessageBox::information(this, tr("OK"), tr("Save successfully!"));
 	emit saveSuccessSignal();
 	ui.labelHintInfo->setText(tr("Save successfully!"));
-	sleep(800);
+	wait(CYCLE_TIME);
 	ui.labelHintInfo->clear();
 }
 
