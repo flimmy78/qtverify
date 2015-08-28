@@ -21,6 +21,7 @@
 #include <QtCore/QSignalMapper>
 #include <math.h>
 #include "qtexdb.h"
+#include "report.h"
 #include "cmbverify.h"
 
 CmbVerifyDlg::CmbVerifyDlg(QWidget *parent, Qt::WFlags flags)
@@ -353,57 +354,6 @@ void CmbVerifyDlg::on_tableWidget_cellChanged(int row, int col)
 	}
 	ui.tableWidget->setCurrentCell(row+1, col);
 }
-//
-//void CmbVerifyDlg::addNewTblRow(QSignalMapper *m_signalMapper)
-//{
-//	int old_rows = ui.tableWidget->rowCount();
-//	int new_rows =  old_rows + 1;
-//	if (new_rows > MAX_METER_NUM)
-//	{
-//		return;
-//	}
-//
-//	ui.tableWidget->setRowCount(new_rows);
-//	
-//	for (int col=0; col < COL_NUM; col++)
-//	{
-//		
-//		if( (col==COL_IN_T) || (col==COL_OUT_T) || (col==COL_DELTA_E) || (col==COL_DELTA_V) || (col==COL_STD_E) || (col==COL_ERR) )
-//		{
-//			QTableWidgetItem* item = new QTableWidgetItem();
-//			item->setFlags(Qt::NoItemFlags);
-//			ui.tableWidget->setItem(old_rows, col, item);
-//		}
-//		else if( (col==COL_SN) || (col==COL_E0) || (col==COL_V0) || (col==COL_V1) || (col==COL_E1) )
-//		{
-//			QTableWidgetItem* item = new QTableWidgetItem();
-//			item->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEditable|Qt::ItemIsDragEnabled|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled);
-//			ui.tableWidget->setItem(old_rows, col, item);
-//		}
-//		else if (col==COL_READ_SN)
-//		{
-//			QPushButton *btn_read_sn = new QPushButton(tr("Read Serial"));
-//			ui.tableWidget->setCellWidget(old_rows, COL_READ_SN, btn_read_sn);
-//			m_signalMapper[0].setMapping(btn_read_sn, old_rows);
-//			connect(btn_read_sn, SIGNAL(clicked()), &m_signalMapper[0], SLOT(map()));
-//		}
-//		else if (col==COL_READ_DATA)
-//		{
-//			QPushButton *btn_read_data = new QPushButton(tr("Read Data"));
-//			ui.tableWidget->setCellWidget(old_rows, COL_READ_DATA, btn_read_data);
-//			m_signalMapper[1].setMapping(btn_read_data, old_rows);
-//			connect(btn_read_data, SIGNAL(clicked()), &m_signalMapper[1], SLOT(map()));
-//		}
-//		else if (col==COL_READ_TEMP)
-//		{
-//			QPushButton *btn_read_temp = new QPushButton(tr("Read Temp"));
-//			ui.tableWidget->setCellWidget(old_rows, COL_READ_TEMP, btn_read_temp);
-//			m_signalMapper[2].setMapping(btn_read_temp, old_rows);
-//			connect(btn_read_temp, SIGNAL(clicked()), &m_signalMapper[2], SLOT(map()));
-//		}
-//		
-//	}
-//}
 
 void CmbVerifyDlg::slot_countdown_timerout()
 {
@@ -503,12 +453,30 @@ void CmbVerifyDlg::on_btnSave_clicked()
 {
 	if (saveVerifyRecords())
 	{
-		QMessageBox::information(this, tr("Hint"), tr("save database successful !"));
-		ui.label_hint->setText(tr("save database successful !"));
+		exportReport();//保存数据成功后立即导出报告
+		ui.label_hint->setText(tr("save database and Excel successfully!"));
 	}
 	else
 	{
-		QMessageBox::information(this, tr("Hint"), tr("save database failed !"));
+		QMessageBox::information(this, tr("Hint"), tr("save database failed!"));
+	}
+}
+
+void CmbVerifyDlg::exportReport()
+{
+	QString sqlCondition = QString("F_TimeStamp=\'%1\' and F_MethodFlag = 0").arg(m_timeStamp);
+	QString xlsname = QDateTime::fromString(m_timeStamp, "yyyy-MM-dd HH:mm:ss.zzz").toString("yyyy-MM-dd_hh-mm-ss") + ".xls";
+	try
+	{
+		QString defaultPath = QProcessEnvironment::systemEnvironment().value("ADEHOME") + "\\report\\cmb\\";
+		CReport rpt(sqlCondition);
+		rpt.setIniName("rptconfig_cmb.ini");
+		rpt.writeRpt();
+		rpt.saveTo(defaultPath + xlsname);
+	}
+	catch (QString e)
+	{
+		QMessageBox::warning(this, tr("Error"), e);
 	}
 }
 

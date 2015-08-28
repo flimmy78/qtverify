@@ -8,7 +8,7 @@ QMAKE_LIBDIR +=  ./           \
         	     $(ADEHOME)/lib \
 	             $(ADEHOME)/bin 
 	            
-LIBS +=	-lprotocol -lcomobject -lqtexdb -lalgorithm -lsystemsetdlg
+LIBS +=	-lprotocol -lcomobject -lqtexdb -lalgorithm -lsystemsetdlg -lreport
 
 DESTDIR = $(ADEHOME)\tmp\cmbverify
 #MOC_DIR = $(ADEHOME)/tmp/cmbverify/moc

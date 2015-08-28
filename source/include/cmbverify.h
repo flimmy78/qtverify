@@ -155,7 +155,7 @@ private:
 
 	//void addNewTblRow(QSignalMapper *);//添加一个表位
 	int saveVerifyRecords(); //统计有效的检定结果数量
-
+	void exportReport();
 	QTimer *m_timer;
 	int m_countdown;
 
