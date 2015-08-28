@@ -416,13 +416,13 @@ void TotalStandardDlg::initStdTemperatureCom()
 	ComInfoStruct tempStruct = m_readComConfig->ReadStdTempConfig();
 	m_stdTempObj = new StdTempComObject();
 	QSettings stdconfig(getFullIniFileName("stdplasensor.ini"), QSettings::IniFormat);
-	m_stdTempObj->setStdTempVersion(stdconfig.value("in_use/model").toInt());
 	m_stdTempObj->moveToThread(&m_stdTempThread);
 	m_stdTempThread.start();
 	m_stdTempObj->openTemperatureCom(&tempStruct);
+	m_stdTempObj->setStdTempVersion(stdconfig.value("in_use/model").toInt());
 	connect(m_stdTempObj, SIGNAL(temperatureIsReady(const QString &)), this, SLOT(slotFreshStdTempValue(const QString &)));
 
-	m_stdTempCommand = stdTempT1;
+	m_stdTempCommand = stdTempR1;
 	m_stdTempTimer = new QTimer();
 	connect(m_stdTempTimer, SIGNAL(timeout()), this, SLOT(slotAskStdTemperature()));
 	
@@ -432,24 +432,6 @@ void TotalStandardDlg::initStdTemperatureCom()
 void TotalStandardDlg::slotAskStdTemperature()
 {
 	m_stdTempObj->writeStdTempComBuffer(m_stdTempCommand);
-	switch (m_stdTempCommand)
-	{
-	case stdTempT1:
-		m_stdTempCommand = stdTempT2;
-		break;
-	case stdTempT2:
-		m_stdTempCommand = stdTempR1;
-		break;
-	case stdTempR1:
-		m_stdTempCommand = stdTempR2;
-		break;
-	case stdTempR2:
-		m_stdTempCommand = stdTempT1;
-		break;
-	default:
-		m_stdTempCommand = stdTempT1;
-		break;
-	}
 }
 
 //控制板通讯串口
@@ -546,20 +528,22 @@ void TotalStandardDlg::slotFreshComTempValue(const QString& tempStr)
 //刷新标准温度
 void TotalStandardDlg::slotFreshStdTempValue(const QString& stdTempStr)
 {
-	// 	qDebug()<<"stdTempStr ="<<stdTempStr<<"; m_stdTempCommand ="<<m_stdTempCommand;
+// 	qDebug()<<"stdTempStr ="<<stdTempStr<<"; m_stdTempCommand ="<<m_stdTempCommand;
 	switch (m_stdTempCommand)
 	{
-	case stdTempT1: 
-		ui.lnEditOutStdResist->setText(stdTempStr);
-		break;
-	case stdTempT2: 
-		ui.lnEditInStdTemp->setText(stdTempStr);
-		break;
+// 	case stdTempT1: 
+// 		ui.lnEditOutStdResist->setText(stdTempStr);
+// 		break;
+// 	case stdTempT2: 
+// 		ui.lnEditInStdTemp->setText(stdTempStr);
+// 		break;
 	case stdTempR1: 
-		ui.lnEditOutStdTemp->setText(stdTempStr);
+		ui.lnEditInStdResist->setText(stdTempStr);
+		m_stdTempCommand = stdTempR2;
 		break;
 	case stdTempR2: 
-		ui.lnEditInStdResist->setText(stdTempStr);
+		ui.lnEditOutStdResist->setText(stdTempStr);
+		m_stdTempCommand = stdTempR1;
 		break;
 	default:
 		break;
@@ -580,6 +564,20 @@ void TotalStandardDlg::on_btnStdTempCollect_clicked()
 void TotalStandardDlg::on_btnStdTempStop_clicked()
 {
 	m_stdTempTimer->stop();
+}
+
+void TotalStandardDlg::on_lnEditInStdResist_textChanged(const QString & text)
+{
+	float resis = text.toFloat();
+	float temp = calcTemperByResis(resis);
+	ui.lnEditInStdTemp->setText(QString::number(temp));
+}
+
+void TotalStandardDlg::on_lnEditOutStdResist_textChanged(const QString & text)
+{
+	float resis = text.toFloat();
+	float temp = calcTemperByResis(resis);
+	ui.lnEditOutStdTemp->setText(QString::number(temp));
 }
 
 void TotalStandardDlg::slot_btnGroupEnergyUnit_clicked(int id)

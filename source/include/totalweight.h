@@ -230,7 +230,10 @@ public slots:
 	void slotVerifyStatus(const int &row);  //检定状态
 
 	void on_btnStdTempCollect_clicked(); //采集标准温度
-	void on_btnStdTempStop_clicked(); //停止采集标准温度
+	void on_btnStdTempStop_clicked();    //停止采集标准温度
+	void on_lnEditInStdResist_textChanged(const QString & text);
+	void on_lnEditOutStdResist_textChanged(const QString & text);
+
 	void slot_btnGroupEnergyUnit_clicked(int id);
 	void slot_btnGroupInstallPos_clicked(int id);
 
