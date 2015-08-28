@@ -978,11 +978,8 @@ void StdTempComObject::writeStdTempComBuffer(stdTempCommand command)
 		default:
 			break;
 		}
-		if (this != NULL)
-		{
-			sleep(3000);
-			m_tempCom->write("M");
-		}
+		wait(2000);
+		m_tempCom->write("M");
 		break;
 	default:
 		break;

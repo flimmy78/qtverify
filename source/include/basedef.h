@@ -33,8 +33,7 @@
 #endif
 
 #define TIMEOUT_PIPE_TEMPER    1000    //请求管路温度周期(毫秒)
-#define TIMEOUT_STD_TEMPER	   1000    //请求标准温度周期
-#define TIMEOUT_STD_TEMPER_HUAYI	   8000    //请求标准温度周期(华易)
+#define TIMEOUT_STD_TEMPER	   5000    //请求标准温度周期
 
 #define FLOW_SAMPLE_NUM		    10     //计算流速 采样点个数
 #define TIMEOUT_FLOW_SAMPLE	    1000   //计算流速 每1秒采样一次天平数值
