@@ -791,6 +791,9 @@ void TotalStandardDlg::slotExaustFinished()
 //设置所有热量表进入检定状态
 int TotalStandardDlg::setAllMeterVerifyStatus()
 {
+	ui.labelHintPoint->setText(tr("setting verify status ..."));
+	on_btnAllVerifyStatus_clicked();
+	wait(CYCLE_TIME);
 	on_btnAllVerifyStatus_clicked();
 	return true;
 }
