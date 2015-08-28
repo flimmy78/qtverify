@@ -510,6 +510,7 @@ int FlowStandardDlg::readNowParaConfig()
 	m_model = m_nowParams->m_model;   //表型号
 	m_maxMeterNum = m_nowParams->m_maxMeters;//不同表规格对应的最大检表数量
 	m_pickcode = m_nowParams->m_pickcode; //采集代码
+	m_numPrefix = getNumPrefixOfManufac(m_pickcode); //表号前缀
 	m_flowSC = m_nowParams->sc_flow; //流量安全系数
 	m_adjErr = m_nowParams->bo_adjerror; //是否调整误差
 	m_writeNO = m_nowParams->bo_writenum;//是否写表号
@@ -583,10 +584,10 @@ void FlowStandardDlg::initTableWidget()
 		signalMapper4->setMapping(btnVerifySt, i);
 		connect(btnVerifySt, SIGNAL(clicked()), signalMapper4, SLOT(map()));
 
-		QPushButton *btnReadN0 = new QPushButton(QObject::tr("(%1)").arg(i+1) + tr("ReadNO"));
-		ui.tableWidget->setCellWidget(i, COLUMN_READ_NO, btnReadN0);
-		signalMapper5->setMapping(btnReadN0, i);
-		connect(btnReadN0, SIGNAL(clicked()), signalMapper5, SLOT(map()));
+		QPushButton *btnReadNO = new QPushButton(QObject::tr("\(%1\)").arg(i+1) + tr("ReadNO"));
+		ui.tableWidget->setCellWidget(i, COLUMN_READ_NO, btnReadNO);
+		signalMapper5->setMapping(btnReadNO, i);
+		connect(btnReadNO, SIGNAL(clicked()), signalMapper5, SLOT(map()));
 	}
 	connect(signalMapper1, SIGNAL(mapped(const int &)),this, SLOT(slotModifyMeterNO(const int &)));
 	connect(signalMapper2, SIGNAL(mapped(const int &)),this, SLOT(slotAdjustError(const int &)));
@@ -710,7 +711,6 @@ int FlowStandardDlg::readAllMeterFlowCoe()
 			}
 		}
 		m_meterObj[j].askReadMeterFlowCoe();
-// 		slotReadMeter(j);
 	}
 
 	return true;
@@ -870,6 +870,7 @@ void FlowStandardDlg::on_btnStart_clicked()
 	ui.btnAllVerifyStatus->setEnabled(true);
 	ui.btnAllAdjError->setEnabled(false);
 	ui.btnAllModifyNO->setEnabled(false);
+
 	m_stopFlag = false;
 	m_state = STATE_INIT;
 	m_validMeterNum = 0;
@@ -1022,10 +1023,6 @@ void FlowStandardDlg::startVerify()
 	}
 	m_recPtr = new Flow_Verify_Record_STR[m_validMeterNum];
 	memset(m_recPtr, 0, sizeof(Flow_Verify_Record_STR)*m_validMeterNum);
-
-	//m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
-	//m_nowDate = QDateTime::currentDateTime().toString("yyyy-MM-dd"); //当前日期'2014-08-07'
-	//m_validDate = QDateTime::currentDateTime().addYears(VALID_YEAR).addDays(-1).toString("yyyy-MM-dd"); //有效期
 
 	m_state = STATE_INIT; //初始状态
 
@@ -1335,7 +1332,7 @@ int FlowStandardDlg::calcMeterError(int idx)
 	ui.tableWidget->item(row, COLUMN_METER_END)->text().toFloat(&ok);
 	if (/*m_meterEndValue[idx] <= 0 ||*/ ui.tableWidget->item(row, COLUMN_METER_END)->text().isEmpty() || !ok)
 	{
-		ui.tableWidget->setCurrentCell(row, COLUMN_METER_END);
+//		ui.tableWidget->setCurrentCell(row, COLUMN_METER_END);
 		return 0;
 	}
 	m_meterError[idx] = 100*(m_meterEndValue[idx] - m_meterStartValue[idx] - m_meterStdValue[idx])/m_meterStdValue[idx];//计算某个表的误差
@@ -1350,8 +1347,7 @@ int FlowStandardDlg::calcMeterError(int idx)
 		ui.tableWidget->item(row, COLUMN_METER_NUMBER)->setForeground(QBrush(Qt::red));
 		ui.tableWidget->cellWidget(row, COLUMN_ADJUST_ERROR)->setStyleSheet("color: rgb(255, 0, 0);");
 	}
-	QString meterNoPrefix = getNumPrefixOfManufac(m_nowParams->m_manufac);
-	QString meterNoStr = meterNoPrefix + QString("%1").arg(ui.tableWidget->item(row, 0)->text(), 8, '0');
+	QString meterNoStr = m_numPrefix + QString("%1").arg(ui.tableWidget->item(row, 0)->text(), 8, '0');
 
 	strncpy_s(m_recPtr[idx].timestamp, m_timeStamp.toAscii(), TIMESTAMP_LEN);
 	m_recPtr[idx].flowPoint = m_realFlow;
@@ -1426,7 +1422,7 @@ int FlowStandardDlg::calcVerifyResult()
 					{
 						m_mapMeterPosAndNewNO[m_meterPosMap[j]] = m_newMeterNO;
 						slotModifyMeterNO(m_meterPosMap[j]-1);
-						modifyFlowVerifyRec_MeterNO(getNumPrefixOfManufac(m_nowParams->m_manufac)+QString::number(m_newMeterNO), m_timeStamp, m_meterPosMap[j]);
+						modifyFlowVerifyRec_MeterNO(m_numPrefix + QString::number(m_newMeterNO), m_timeStamp, m_meterPosMap[j]);
 						m_newMeterNO++;
 					}
 				}
@@ -2078,8 +2074,7 @@ void FlowStandardDlg::slotModifyMeterNO(const int &row)
 	}
 
 	QString meterNo = m_recPtr[idx].meterNo;
-	QString meterNoPrefix = getNumPrefixOfManufac(m_nowParams->m_manufac);
-	QString newMeterNo = meterNoPrefix + QString("%1").arg(m_mapMeterPosAndNewNO[meterPos]);
+	QString newMeterNo = m_numPrefix + QString("%1").arg(m_mapMeterPosAndNewNO[meterPos]);
 	m_meterObj[row].askModifyMeterNO(meterNo, newMeterNo);
 	qDebug()<<"slotModifyMeterNO: "<<meterNo<<", "<<newMeterNo;
 	ui.tableWidget->item(row, COLUMN_METER_NUMBER)->setText(newMeterNo.right(8));
@@ -2104,9 +2099,7 @@ void FlowStandardDlg::slotAdjustError(const int &row)
 		qDebug()<<"slotAdjustError idx ="<<idx<<", 误差过大，不能修正";
 		return;
 	}
-	QString meterNO = ui.tableWidget->item(row, COLUMN_METER_NUMBER)->text();
-	QString meterNoPrefix = getNumPrefixOfManufac(m_nowParams->m_manufac);
-	meterNO = meterNoPrefix + meterNO;
+	QString meterNO = m_numPrefix + ui.tableWidget->item(row, COLUMN_METER_NUMBER)->text();
 	m_meterObj[row].askModifyFlowCoe(meterNO, m_meterErr[idx][0], m_meterErr[idx][1], m_meterErr[idx][2], m_meterErr[idx][3], m_oldMeterCoe[idx]);
 }
 
@@ -2122,13 +2115,13 @@ void FlowStandardDlg::slotReadNO(const int &row)
 }
 
 /*
-** 读表数据
+** 读取表号
 ** 输入参数：
 row:行号，由row可以知道当前热表对应的串口、表号、误差等等
 */
 void FlowStandardDlg::slotReadData(const int &row)
 {
-	qDebug()<<"slotReadData row ="<<row;
+	qDebug()<<"slotReadMeter row ="<<row;
 	m_meterObj[row].askReadMeterData();
 }
 

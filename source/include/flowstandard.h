@@ -69,6 +69,7 @@ public:
 	int m_standard;           //表规格
 	int m_model;              //表型号
 	int m_pickcode;			  //采集代码(热表通讯协议版本号)
+	QString m_numPrefix;      //表号前缀(14位表号的前6位）
 	float m_flowSC;           //流量检定安全系数
 	bool m_adjErr;            //是否调整误差
 	bool m_writeNO;          //是否修改表号
@@ -201,8 +202,8 @@ public slots:
 	int saveAllVerifyRecords(); //保存所有被检表的检定记录
 	void clearTableContents();
 
-	void on_btnAllReadNO_clicked();      //读表号(所有表）
 	void on_btnAllReadData_clicked();    //读表数据(所有表）
+	void on_btnAllReadNO_clicked();      //读表号(所有表）
 	void on_btnAllVerifyStatus_clicked();//设置检定状态(所有表）
 	void on_btnAllAdjError_clicked(); //调整误差(所有表)
 	void on_btnAllModifyNO_clicked(); //修改表号(所有表）
