@@ -129,7 +129,6 @@ private:
 	QString m_timeStamp; //记录时间戳
 
 	QSettings *m_param_config;//操作参数配置文件
-	QSettings *stdconfig; //标准铂电阻参数配置文件
 
 	void initUi();//初始化Ui设置
 	void initTbl();

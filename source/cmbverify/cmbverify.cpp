@@ -62,8 +62,6 @@ void CmbVerifyDlg::showEvent(QShowEvent *)
 	m_min_tempdiff_set = false;
 	m_delta_temp_achieved = false;
 
-	stdconfig = new QSettings(getFullIniFileName("stdplasensor.ini"), QSettings::IniFormat);
-
 	initUi();
 	connect(this, SIGNAL(verifyCanStart(void)), this, SLOT(startVerifySlot(void)));
 
@@ -604,23 +602,15 @@ void CmbVerifyDlg::on_lineEdit_std_out_t_textChanged(const QString & text)
 
 void CmbVerifyDlg::on_lineEdit_std_in_r_textChanged(const QString & text)
 {
-	QString pt = stdconfig->value("in_use/pt").toString();
-	float rtp = stdconfig->value(pt+"/in_rtp").toFloat();
-	float a = stdconfig->value(pt+"/in_a").toFloat();
-	float b = stdconfig->value(pt+"/in_b").toFloat();
 	float resis = text.toFloat();
-	float temp = getPlaTr(rtp, a, b, resis);
+	float temp = calcTemperByResis(resis);
 	ui.lineEdit_std_in_t->setText(QString::number(temp));
 }
 
 void CmbVerifyDlg::on_lineEdit_std_out_r_textChanged(const QString & text)
 {
-	QString pt = stdconfig->value("in_use/pt").toString();
-	float rtp = stdconfig->value(pt+"/out_rtp").toFloat();
-	float a = stdconfig->value(pt+"/out_a").toFloat();
-	float b = stdconfig->value(pt+"/out_b").toFloat();
 	float resis = text.toFloat();
-	float temp = getPlaTr(rtp, a, b, resis);
+	float temp = calcTemperByResis(resis);
 	ui.lineEdit_std_out_t->setText(QString::number(temp));
 }
 
@@ -647,7 +637,8 @@ void CmbVerifyDlg::on_btn_collection_clicked()
 	clearTempComObjs();
 	m_sendTimer = new QTimer();
 	m_tempObj = new StdTempComObject();
-	int ver = stdconfig->value("in_use/model").toInt();
+	QSettings stdconfig(getFullIniFileName("stdplasensor.ini"), QSettings::IniFormat);
+	int ver = stdconfig.value("in_use/model").toInt();
 	m_tempObj->moveToThread(&m_tempThread);
 	m_tempThread.start();
 	m_tempObj->openTemperatureCom(&tempStruct);
@@ -657,19 +648,7 @@ void CmbVerifyDlg::on_btn_collection_clicked()
 	m_StdCommand = stdTempR1;
 
 	connect(m_sendTimer, SIGNAL(timeout()), this, SLOT(sendCommands()));
-	switch (ver)
-	{
-	case TEMPERATURE_TYPE_METROLOGY:
-	case TEMPERATURE_TYPE_WEILI:
-		m_sendTimer->start(TIMEOUT_STD_TEMPER);
-		break;
-	case TEMPERATURE_TYPE_HUAYI:
-		m_sendTimer->start(TIMEOUT_STD_TEMPER_HUAYI);
-		break;
-	default:
-		m_sendTimer->start(TIMEOUT_STD_TEMPER);
-		break;
-	}
+	m_sendTimer->start(TIMEOUT_STD_TEMPER);
 }
 
 void CmbVerifyDlg::on_btn_stop_clicked()
@@ -711,7 +690,7 @@ void CmbVerifyDlg::setStdTempUi(const QString &tempStr)
 
 void CmbVerifyDlg::clearTempComObjs()
 {
-	if (NULL != m_sendTimer)
+	if (m_sendTimer != NULL)
 	{
 		if (m_sendTimer->isActive())
 		{
@@ -722,9 +701,8 @@ void CmbVerifyDlg::clearTempComObjs()
 		m_sendTimer = NULL;
 	}
 
-	if (NULL != m_tempObj)
+	if (m_tempObj != NULL)
 	{
-		m_tempObj->close();
 		delete m_tempObj;
 		m_tempObj = NULL;
 
