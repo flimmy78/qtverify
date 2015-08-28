@@ -78,13 +78,10 @@ void TempProtocol::makeSendBuf()
 	m_sendBuf.append(datacode).append(datacode);
 // 	printf("555555 file %s, line %d\n", __FILE__, __LINE__);
 	UINT16 checkcode = paracode*256 + READ_CODE + ADDR_FIRST;
-	QString checkstr;
-	checkstr = QString("%1").arg(checkcode, 4, 16).replace(" ", "0");
-	bool ok;
-	UINT8 lownum = checkstr.right(2).toUInt(&ok, 16);
-	UINT8 hightnum = checkstr.left(2).toUInt(&ok, 16);
+	UINT8 highnum = (UINT8)(checkcode>>8);//(UINT8)(checkcode/256)
+	UINT8 lownum = (UINT8)checkcode;
 // 	printf("666666 file %s, line %d\n", __FILE__, __LINE__);
-	m_sendBuf.append(lownum).append(hightnum);
+	m_sendBuf.append(lownum).append(highnum);
 // 	printf("777777 file %s, line %d\n", __FILE__, __LINE__);
 }
 
