@@ -1339,7 +1339,7 @@ bool TotalWeightDlg::judgeBalanceCapacity()
 	{
 		totalQuantity += m_nowParams->fp_info[i].fp_quantity;
 	}
-	ret = (ui.lcdBigBalance->value() + totalQuantity) < (m_balMaxWht - 2);
+	ret = (ui.lcdBigBalance->value() + totalQuantity) < (m_balMaxWht - m_balBottomWht);
 	return ret;
 }
 
