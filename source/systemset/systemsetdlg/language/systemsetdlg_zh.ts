@@ -2379,9 +2379,9 @@
         <translation type="obsolete">末值</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="227"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="337"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="447"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="297"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="399"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="501"/>
         <source>L</source>
         <translation>L</translation>
     </message>
@@ -2411,145 +2411,145 @@
         <translation>标准表系数标定</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrcoecorrect.ui" line="33"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="762"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;hint：if set K Coe，please select &apos;Don&apos;t Amend State&apos;；&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;If you want to verify the accuracy of the correctted meter, please choose the verify state&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;提示：如果要进行K系数标定，请选择无修正状态；&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;如果要验证标准表修正后示值准确度，请选择修正状态&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="83"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="198"/>
         <source>calc stand meter value</source>
         <translation>计算标准表示值</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="101"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="173"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="243"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="516"/>
         <source>V0</source>
         <translation>初值</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="120"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="283"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="345"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="529"/>
         <source>V1</source>
         <translation>终值</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="393"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="447"/>
         <source>value</source>
         <translation>示值</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="501"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="665"/>
         <source>choose state</source>
         <translation>状态选择</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="544"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="708"/>
         <source>adjust</source>
         <translation>调整误差</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="588"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="752"/>
         <source>not adjust</source>
         <translation>不调整误差</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="641"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="64"/>
         <source>choose stand meter</source>
         <translation>标准表选择</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="684"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="107"/>
         <source>DN10</source>
         <translation>DN10</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="728"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="151"/>
         <source>DN25</source>
         <translation>DN25</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="772"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="567"/>
         <source>Flow Point
  (kg)</source>
         <translation>流量点
  (kg)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="778"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="573"/>
         <source>balance V0
  (kg)</source>
         <translation>天平初值 V0
  (kg)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="784"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="579"/>
         <source>balance V1
  (kg)</source>
         <translation>天平终值 V1
  (kg)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="790"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="585"/>
         <source>balance value
  (kg)</source>
         <translation>天平终值
  (kg)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="796"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="591"/>
         <source>density
 (kg/L)</source>
         <translation>密度
 (kg/L)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="802"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="597"/>
         <source>Actual Value
  (L)</source>
         <translation>实际值
  (L)</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrcoecorrect.ui" line="808"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="603"/>
         <source>Stand Meter Value
  （L)</source>
         <translation>标准表示值
  （L)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="814"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="609"/>
         <source>Meter Coe</source>
         <translation>标准表系数</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="819"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="614"/>
         <source>AVG Meter Coe</source>
         <translation>标准表平均系数</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="824"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="619"/>
         <source>repetitiveness
  (%)</source>
         <translation>重复性
  (%)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="848"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="777"/>
         <source>Clear</source>
         <translation>清空</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="861"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="790"/>
         <source>Report</source>
         <translation>报表导出</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="874"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="803"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="887"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="816"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
@@ -3252,7 +3252,7 @@ There should not be space between tow flow points! K Coe: (Stand Value)/(Meter V
     <message>
         <location filename="../ui/stdplasensor.ui" line="758"/>
         <source>HuaYi</source>
-        <translation>华仪</translation>
+        <translation>华易</translation>
     </message>
 </context>
 </TS>

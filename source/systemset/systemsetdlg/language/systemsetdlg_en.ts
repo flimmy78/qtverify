@@ -2383,9 +2383,9 @@
         <translation type="obsolete">V1</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="227"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="337"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="447"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="297"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="399"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="501"/>
         <source>L</source>
         <translation>L</translation>
     </message>
@@ -2415,145 +2415,145 @@
         <translation>stand meter coe set</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrcoecorrect.ui" line="33"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="762"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;hint：if set K Coe，please select &apos;Don&apos;t Amend State&apos;；&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;If you want to verify the accuracy of the correctted meter, please choose the verify state&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;hint：if set K Coe，please select &apos;Don&apos;t Amend State&apos;；&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;If you want to verify the accuracy of the correctted meter, please choose the verify state&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="83"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="198"/>
         <source>calc stand meter value</source>
         <translation>calc stand meter value</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="101"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="173"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="243"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="516"/>
         <source>V0</source>
         <translation>V0</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="120"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="283"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="345"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="529"/>
         <source>V1</source>
         <translation>V1</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="393"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="447"/>
         <source>value</source>
         <translation>value</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="501"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="665"/>
         <source>choose state</source>
         <translation>choose state</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="544"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="708"/>
         <source>adjust</source>
         <translation>adjust</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="588"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="752"/>
         <source>not adjust</source>
         <translation>not adjust</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="641"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="64"/>
         <source>choose stand meter</source>
         <translation>choose stand meter</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="684"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="107"/>
         <source>DN10</source>
         <translation>DN10</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="728"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="151"/>
         <source>DN25</source>
         <translation>DN25</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="772"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="567"/>
         <source>Flow Point
  (kg)</source>
         <translation>Flow Point
  (kg)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="778"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="573"/>
         <source>balance V0
  (kg)</source>
         <translation>balance V0
  (kg)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="784"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="579"/>
         <source>balance V1
  (kg)</source>
         <translation>balance V1
  (kg)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="790"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="585"/>
         <source>balance value
  (kg)</source>
         <translation>balance value
  (kg)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="796"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="591"/>
         <source>density
 (kg/L)</source>
         <translation>density
 (kg/L)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="802"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="597"/>
         <source>Actual Value
  (L)</source>
         <translation>Actual Value
  (L)</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrcoecorrect.ui" line="808"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="603"/>
         <source>Stand Meter Value
  （L)</source>
         <translation>Stand Meter Value
  （L)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="814"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="609"/>
         <source>Meter Coe</source>
         <translation>Meter Coe</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="819"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="614"/>
         <source>AVG Meter Coe</source>
         <translation>AVG Meter Coe</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="824"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="619"/>
         <source>repetitiveness
  (%)</source>
         <translation>repetitiveness
  (%)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="848"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="777"/>
         <source>Clear</source>
         <translation>Clear</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="861"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="790"/>
         <source>Report</source>
         <translation>Report</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="874"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="803"/>
         <source>Save</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="887"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="816"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>

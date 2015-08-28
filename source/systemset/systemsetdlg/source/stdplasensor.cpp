@@ -73,6 +73,9 @@ void stdplasensorDlg::on_btn_pt25_save_clicked()
 	m_config->setValue("out_a", ui.lineEdit_pt25_out_a->text());
 	m_config->setValue("out_b", ui.lineEdit_pt25_out_b->text());
 	m_config->endGroup();
+	m_config->beginGroup("in_use");
+	m_config->setValue("pt", "pt25");
+	m_config->endGroup();
 }
 
 void stdplasensorDlg::on_btn_pt100_calc_clicked()
@@ -112,6 +115,9 @@ void stdplasensorDlg::on_btn_pt100_save_clicked()
 	m_config->setValue("out_rtp", ui.lineEdit_pt100_out_rtp->text());
 	m_config->setValue("out_a", ui.lineEdit_pt100_out_a->text());
 	m_config->setValue("out_b", ui.lineEdit_pt100_out_b->text());
+	m_config->endGroup();
+	m_config->beginGroup("in_use");
+	m_config->setValue("pt", "pt100");
 	m_config->endGroup();
 }
 
