@@ -63,14 +63,6 @@ void DataTestDlg::closeEvent( QCloseEvent * event)
 		m_tempThread.exit(); //否则日志中会有警告"QThread: Destroyed while thread is still running"
 	}
 
-	if (m_stdTempObj)  // 标准温度采集
-	{
-		delete m_stdTempObj;
-		m_stdTempObj = NULL;
-
-		m_stdTempThread.exit();
-	}
-
 	if (m_controlObj)  //阀门控制
 	{
 		delete m_controlObj;
@@ -113,6 +105,14 @@ void DataTestDlg::closeEvent( QCloseEvent * event)
 		}
 		delete m_stdTempTimer;
 		m_stdTempTimer = NULL;
+	}
+
+	if (m_stdTempObj)  // 标准温度采集
+	{
+		delete m_stdTempObj;
+		m_stdTempObj = NULL;
+
+		m_stdTempThread.exit();
 	}
 
 	if (m_flowRateTimer) //计算流量计时器
@@ -195,6 +195,7 @@ void DataTestDlg::showEvent(QShowEvent *event)
 
 	m_readComConfig = NULL;
 	m_readComConfig = new ReadComConfig();
+	m_readComConfig->getBalancePara(m_balMaxWht, m_balBottomWht); //获取天平最大容量和回水底量
 
 	m_tempObj = NULL;
 	m_tempTimer = NULL;
@@ -314,13 +315,13 @@ void DataTestDlg::initStdTemperatureCom()
 	ComInfoStruct tempStruct = m_readComConfig->ReadStdTempConfig();
 	m_stdTempObj = new StdTempComObject();
 	QSettings stdconfig(getFullIniFileName("stdplasensor.ini"), QSettings::IniFormat);
-	m_stdTempObj->setStdTempVersion(stdconfig.value("in_use/model").toInt());
 	m_stdTempObj->moveToThread(&m_stdTempThread);
 	m_stdTempThread.start();
-	m_stdTempObj->openTemperatureCom(&tempStruct);
+	m_stdTempObj->openTemperatureCom(&tempStruct); //先打开串口，然后再设置标准温度计的协议版本
+	m_stdTempObj->setStdTempVersion(stdconfig.value("in_use/model").toInt());
 	connect(m_stdTempObj, SIGNAL(temperatureIsReady(const QString &)), this, SLOT(slotFreshStdTempValue(const QString &)));
 
-	m_stdTempCommand = stdTempT1;
+	m_stdTempCommand = stdTempR1;
 	m_stdTempTimer = new QTimer();
 	connect(m_stdTempTimer, SIGNAL(timeout()), this, SLOT(slotAskStdTemperature()));
 	
@@ -330,24 +331,6 @@ void DataTestDlg::initStdTemperatureCom()
 void DataTestDlg::slotAskStdTemperature()
 {
 	m_stdTempObj->writeStdTempComBuffer(m_stdTempCommand);
-	switch (m_stdTempCommand)
-	{
-	case stdTempT1:
-		m_stdTempCommand = stdTempT2;
-		break;
-	case stdTempT2:
-		m_stdTempCommand = stdTempR1;
-		break;
-	case stdTempR1:
-		m_stdTempCommand = stdTempR2;
-		break;
-	case stdTempR2:
-		m_stdTempCommand = stdTempT1;
-		break;
-	default:
-		m_stdTempCommand = stdTempT1;
-		break;
-	}
 }
 
 //天平采集串口 上位机直接采集
@@ -730,6 +713,20 @@ void DataTestDlg::on_btnStdTempStop_clicked()
 	m_stdTempTimer->stop();
 }
 
+void DataTestDlg::on_lnEditInStdResist_textChanged(const QString & text)
+{
+	float resis = text.toFloat();
+	float temp = calcTemperByResis(resis);
+	ui.lnEditInStdTemp->setText(QString::number(temp));
+}
+
+void DataTestDlg::on_lnEditOutStdResist_textChanged(const QString & text)
+{
+	float resis = text.toFloat();
+	float temp = calcTemperByResis(resis);
+	ui.lnEditOutStdTemp->setText(QString::number(temp));
+}
+
 //刷新温度
 void DataTestDlg::slotFreshComTempValue(const QString& tempStr)
 {
@@ -743,17 +740,19 @@ void DataTestDlg::slotFreshStdTempValue(const QString& stdTempStr)
 // 	qDebug()<<"stdTempStr ="<<stdTempStr<<"; m_stdTempCommand ="<<m_stdTempCommand;
 	switch (m_stdTempCommand)
 	{
-	case stdTempT1: 
-		ui.lnEditOutStdResist->setText(stdTempStr);
-		break;
-	case stdTempT2: 
-		ui.lnEditInStdTemp->setText(stdTempStr);
-		break;
+// 	case stdTempT1: 
+// 		ui.lnEditOutStdResist->setText(stdTempStr);
+// 		break;
+// 	case stdTempT2: 
+// 		ui.lnEditInStdTemp->setText(stdTempStr);
+// 		break;
 	case stdTempR1: 
-		ui.lnEditOutStdTemp->setText(stdTempStr);
+		ui.lnEditInStdResist->setText(stdTempStr);
+		m_stdTempCommand = stdTempR2;
 		break;
 	case stdTempR2: 
-		ui.lnEditInStdResist->setText(stdTempStr);
+		ui.lnEditOutStdResist->setText(stdTempStr);
+		m_stdTempCommand = stdTempR1;
 		break;
 	default:
 		break;
@@ -765,7 +764,7 @@ void DataTestDlg::slotFreshBalanceValue(const float& balValue)
 {
 	ui.lnEditBigBalance->setText(QString::number(balValue, 'f', 3));
 	
-	if (balValue > 100) //防止天平溢出 暂设天平容量为100kg
+	if (balValue > m_balMaxWht) //防止天平溢出
 	{
 		m_controlObj->askControlRelay(m_portsetinfo.waterOutNo, VALVE_OPEN);// 打开放水阀	
 		m_controlObj->askControlRelay(m_portsetinfo.waterInNo, VALVE_CLOSE);// 关闭进水阀

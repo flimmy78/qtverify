@@ -70,6 +70,10 @@ public:
 	ComThread m_meterThread;  //热量表线程
 	MeterComObject *m_meterObj;
 
+	//天平最大容量和回水底量
+	float m_balMaxWht;
+	float m_balBottomWht;
+
 	//计算流速用
 	uint m_totalcount;  //计数器
 	float m_startWeight;//天平初值
@@ -83,11 +87,11 @@ public:
 
 	void closeEvent(QCloseEvent * event);
 	void showEvent(QShowEvent *event);
-	void initTemperatureCom(); //温度采集串口
+	void initTemperatureCom();    //温度采集串口
 	void initStdTemperatureCom(); //标准温度采集串口
-	void initBalanceCom();     //天平串口
-	void initControlCom();     //阀门控制串口
-	void initComOfHeatMeter();  //热量表1串口
+	void initBalanceCom();        //天平串口
+	void initControlCom();        //阀门控制串口
+	void initComOfHeatMeter();    //热量表1串口
 
 	void initValveStatus();	   //初始化阀门状态
 	void initRegulateStatus(); //初始化调节阀状态
@@ -142,7 +146,9 @@ public slots:
 	void on_btnCloseCom_clicked();//关闭串口
 
 	void on_btnStdTempCollect_clicked(); //采集标准温度
-	void on_btnStdTempStop_clicked(); //停止采集标准温度
+	void on_btnStdTempStop_clicked();    //停止采集标准温度
+	void on_lnEditInStdResist_textChanged(const QString & text);
+	void on_lnEditOutStdResist_textChanged(const QString & text);
 
 	void on_lnEditTargetRate_returnPressed();//设定目标流量
 
