@@ -350,17 +350,17 @@
 <context>
     <name>CmbVerifyDlg</name>
     <message>
-        <location filename="../cmbverify.cpp" line="178"/>
+        <location filename="../cmbverify.cpp" line="180"/>
         <source>Read Data</source>
         <translation>读取数据</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="433"/>
+        <location filename="../cmbverify.cpp" line="435"/>
         <source>StdE(kWh)</source>
         <translation>标准值(kWh)</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="440"/>
+        <location filename="../cmbverify.cpp" line="442"/>
         <source>StdE(MJ)</source>
         <translation>标准值(MJ)</translation>
     </message>
@@ -373,12 +373,12 @@
         <translation type="obsolete">请输入热量表的体积终值V1和能量终值E1</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="419"/>
+        <location filename="../cmbverify.cpp" line="421"/>
         <source>analog flow &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; m3/h, please wait for about &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; seconds</source>
         <translation>模拟流量 &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; m3/h, 请等待约 &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; 秒</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="415"/>
+        <location filename="../cmbverify.cpp" line="417"/>
         <source>please input meter V1 and E1, then click &quot;Save&quot; button!</source>
         <translation>请输入V1和E1，然后点击&quot;保存&quot;按钮！</translation>
     </message>
@@ -387,35 +387,39 @@
         <translation type="obsolete">请正确设置计量单位、安装位置及最小温差</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="44"/>
         <source>Please set the Install position, Unit, and minimum temperature difference corectly</source>
+        <translation type="obsolete">请正确设置安装位置、计量单位及最小温差</translation>
+    </message>
+    <message>
+        <location filename="../cmbverify.cpp" line="44"/>
+        <source>Please set the Install position, Unit, and minimum temperature difference correctly</source>
         <translation>请正确设置安装位置、计量单位及最小温差</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="507"/>
-        <location filename="../cmbverify.cpp" line="512"/>
-        <location filename="../cmbverify.cpp" line="707"/>
+        <location filename="../cmbverify.cpp" line="508"/>
+        <location filename="../cmbverify.cpp" line="513"/>
+        <location filename="../cmbverify.cpp" line="743"/>
         <source>Hint</source>
         <translation>提示</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="507"/>
         <location filename="../cmbverify.cpp" line="508"/>
+        <location filename="../cmbverify.cpp" line="509"/>
         <source>save database successful !</source>
         <translation>保存数据成功!</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="512"/>
+        <location filename="../cmbverify.cpp" line="513"/>
         <source>save database failed !</source>
         <translation>保存数据失败!</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="616"/>
+        <location filename="../cmbverify.cpp" line="639"/>
         <source>please input meter number, then click &quot;Start&quot; button!</source>
         <translation>请输入表号，然后点击&quot;开始&quot;按钮！</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="707"/>
+        <location filename="../cmbverify.cpp" line="743"/>
         <source>current temperature different is less than min ¦¤¦È!</source>
         <translation>当前恒温槽温差小于您设置的最小温差!</translation>
     </message>

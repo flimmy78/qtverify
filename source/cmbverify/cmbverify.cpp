@@ -41,7 +41,7 @@ void CmbVerifyDlg::showEvent(QShowEvent *)
 	m_timer = new QTimer();
 	m_countdown = 0;
 	m_tempObj = NULL;
-	ui.label_hint->setText(tr("Please set the Install position, Unit, and minimum temperature difference corectly"));
+	ui.label_hint->setText(tr("Please set the Install position, Unit, and minimum temperature difference correctly"));
 
 	m_param_config = new QSettings(getFullIniFileName("cmbparam.ini"), QSettings::IniFormat);
 	
@@ -62,10 +62,12 @@ void CmbVerifyDlg::showEvent(QShowEvent *)
 	m_min_tempdiff_set = false;
 	m_delta_temp_achieved = false;
 
+	stdconfig = new QSettings(getFullIniFileName("stdplasensor.ini"), QSettings::IniFormat);
+
 	initUi();
 	connect(this, SIGNAL(verifyCanStart(void)), this, SLOT(startVerifySlot(void)));
 
-	connect(m_timer, SIGNAL(timeout()), this, SLOT(on_countdown_timerout()));
+	connect(m_timer, SIGNAL(timeout()), this, SLOT(slot_countdown_timerout()));
 
 	m_meterObj = NULL;
 	initMeterCom();
@@ -142,16 +144,16 @@ void CmbVerifyDlg::initUi()
 	m_btnGroup_unit = new QButtonGroup(ui.gbox_unit); //计量单位
 	m_btnGroup_unit->addButton(ui.rbtn_unit_kwh, UNIT_KWH);
 	m_btnGroup_unit->addButton(ui.rbtn_unit_mj, UNIT_MJ);
-	connect(m_btnGroup_unit, SIGNAL(buttonClicked(int)), this, SLOT(on_btnGroup_unit_clicked(int)));
+	connect(m_btnGroup_unit, SIGNAL(buttonClicked(int)), this, SLOT(slot_btnGroup_unit_clicked(int)));
 
 	m_btnGroup_pos = new QButtonGroup(ui.gbox_install_pos);//安装位置
 	m_btnGroup_pos->addButton(ui.rbtn_pos_in, INSTALLPOS_IN);
 	m_btnGroup_pos->addButton(ui.rbtn_pos_out, INSTALLPOS_OUT);
-	connect(m_btnGroup_pos, SIGNAL(buttonClicked(int)), this, SLOT(on_btnGroup_pos_clicked(int)));
+	connect(m_btnGroup_pos, SIGNAL(buttonClicked(int)), this, SLOT(slot_btnGroup_pos_clicked(int)));
 
 	initTbl();
 
-	connect(m_CmbParamDlg, SIGNAL(saveSuccessfully(void)), this, SLOT(freshCmbParam(void)));
+	connect(m_CmbParamDlg, SIGNAL(saveSuccessfully()), this, SLOT(freshCmbParam()));
 
 	on_btn_collection_clicked();
 }
@@ -405,7 +407,7 @@ void CmbVerifyDlg::on_tableWidget_cellChanged(int row, int col)
 //	}
 //}
 
-void CmbVerifyDlg::on_countdown_timerout()
+void CmbVerifyDlg::slot_countdown_timerout()
 {
 	if (m_countdown <= 0)
 	{
@@ -420,7 +422,7 @@ void CmbVerifyDlg::on_countdown_timerout()
 		.arg(IMITATION_FLOW_RATE).arg(m_countdown--));
 }
 
-void CmbVerifyDlg::on_btnGroup_unit_clicked(int id)
+void CmbVerifyDlg::slot_btnGroup_unit_clicked(int id)
 {
 	m_current_unit = id;
 	m_unit_selected = true;
@@ -443,7 +445,7 @@ void CmbVerifyDlg::on_btnGroup_unit_clicked(int id)
 	chkIfCanStartVerify();
 }
 
-void CmbVerifyDlg::on_btnGroup_pos_clicked(int id)
+void CmbVerifyDlg::slot_btnGroup_pos_clicked(int id)
 {
 	m_current_pos = id;
 	m_pos_selected = true;
@@ -461,11 +463,10 @@ void CmbVerifyDlg::on_btnPara_clicked()
 		delete m_CmbParamDlg;
 		m_CmbParamDlg = new CmbParamDlg();
 	}
-	connect(m_CmbParamDlg, SIGNAL(saveSuccessfully()), this, SLOT(freshCmbParam()));
 	m_CmbParamDlg->show();
 }
 
-void CmbVerifyDlg::freshCmbParam(void)
+void CmbVerifyDlg::freshCmbParam()
 {
 	
 }
@@ -601,6 +602,28 @@ void CmbVerifyDlg::on_lineEdit_std_out_t_textChanged(const QString & text)
 	stdTempChanged();
 }
 
+void CmbVerifyDlg::on_lineEdit_std_in_r_textChanged(const QString & text)
+{
+	QString pt = stdconfig->value("in_use/pt").toString();
+	float rtp = stdconfig->value(pt+"/in_rtp").toFloat();
+	float a = stdconfig->value(pt+"/in_a").toFloat();
+	float b = stdconfig->value(pt+"/in_b").toFloat();
+	float resis = text.toFloat();
+	float temp = getPlaTr(rtp, a, b, resis);
+	ui.lineEdit_std_in_t->setText(QString::number(temp));
+}
+
+void CmbVerifyDlg::on_lineEdit_std_out_r_textChanged(const QString & text)
+{
+	QString pt = stdconfig->value("in_use/pt").toString();
+	float rtp = stdconfig->value(pt+"/out_rtp").toFloat();
+	float a = stdconfig->value(pt+"/out_a").toFloat();
+	float b = stdconfig->value(pt+"/out_b").toFloat();
+	float resis = text.toFloat();
+	float temp = getPlaTr(rtp, a, b, resis);
+	ui.lineEdit_std_out_t->setText(QString::number(temp));
+}
+
 void CmbVerifyDlg::chkIfCanStartVerify()
 {
 	if (m_min_tempdiff_set && m_pos_selected && m_unit_selected && m_delta_temp_achieved)
@@ -624,16 +647,29 @@ void CmbVerifyDlg::on_btn_collection_clicked()
 	clearTempComObjs();
 	m_sendTimer = new QTimer();
 	m_tempObj = new StdTempComObject();
-	QSettings stdconfig(getFullIniFileName("stdplasensor.ini"), QSettings::IniFormat);
-	m_tempObj->setStdTempVersion(stdconfig.value("in_use/model").toInt());
+	int ver = stdconfig->value("in_use/model").toInt();
 	m_tempObj->moveToThread(&m_tempThread);
 	m_tempThread.start();
 	m_tempObj->openTemperatureCom(&tempStruct);
+	m_tempObj->setStdTempVersion(ver);
 	connect(m_tempObj,SIGNAL(temperatureIsReady(const QString&)), this, SLOT(setStdTempUi(const QString&)));
 
-	m_StdCommand = stdTempT1;
+	m_StdCommand = stdTempR1;
+
 	connect(m_sendTimer, SIGNAL(timeout()), this, SLOT(sendCommands()));
-	m_sendTimer->start(TIMEOUT_STD_TEMPER);
+	switch (ver)
+	{
+	case TEMPERATURE_TYPE_METROLOGY:
+	case TEMPERATURE_TYPE_WEILI:
+		m_sendTimer->start(TIMEOUT_STD_TEMPER);
+		break;
+	case TEMPERATURE_TYPE_HUAYI:
+		m_sendTimer->start(TIMEOUT_STD_TEMPER_HUAYI);
+		break;
+	default:
+		m_sendTimer->start(TIMEOUT_STD_TEMPER);
+		break;
+	}
 }
 
 void CmbVerifyDlg::on_btn_stop_clicked()
@@ -654,21 +690,21 @@ void CmbVerifyDlg::setStdTempUi(const QString &tempStr)
 {
 	switch(m_StdCommand)
 	{
-		case stdTempT1:
-			ui.lineEdit_std_in_t->setText(tempStr);
-			m_StdCommand = stdTempT2;
-			break;
-		case stdTempT2:
-			ui.lineEdit_std_out_t->setText(tempStr);
-			m_StdCommand = stdTempR1;
-			break;
+// 		case stdTempT1:
+// 			ui.lineEdit_std_in_t->setText(tempStr);
+// 			m_StdCommand = stdTempT2;
+// 			break;
+// 		case stdTempT2:
+// 			ui.lineEdit_std_out_t->setText(tempStr);
+// 			m_StdCommand = stdTempR1;
+// 			break;
 		case stdTempR1:
 			ui.lineEdit_std_in_r->setText(tempStr);
 			m_StdCommand = stdTempR2;
 			break;
 		case stdTempR2:
 			ui.lineEdit_std_out_r->setText(tempStr);
-			m_StdCommand = stdTempT1;
+			m_StdCommand = stdTempR1;
 			break;
 	}
 }

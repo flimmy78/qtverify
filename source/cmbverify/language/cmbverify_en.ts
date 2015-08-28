@@ -362,17 +362,17 @@
 <context>
     <name>CmbVerifyDlg</name>
     <message>
-        <location filename="../cmbverify.cpp" line="178"/>
+        <location filename="../cmbverify.cpp" line="180"/>
         <source>Read Data</source>
         <translation>Read Data</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="433"/>
+        <location filename="../cmbverify.cpp" line="435"/>
         <source>StdE(kWh)</source>
         <translation>StdE(kWh)</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="440"/>
+        <location filename="../cmbverify.cpp" line="442"/>
         <source>StdE(MJ)</source>
         <translation>StdE(MJ)</translation>
     </message>
@@ -385,12 +385,12 @@
         <translation type="obsolete">please input meter V1 and E1</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="419"/>
+        <location filename="../cmbverify.cpp" line="421"/>
         <source>analog flow &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; m3/h, please wait for about &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; seconds</source>
         <translation>analog flow &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; m3/h, please wait for about &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; seconds</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="415"/>
+        <location filename="../cmbverify.cpp" line="417"/>
         <source>please input meter V1 and E1, then click &quot;Save&quot; button!</source>
         <translation>please input meter V1 and E1, then click &quot;Save&quot; button!</translation>
     </message>
@@ -399,35 +399,39 @@
         <translation type="obsolete">Please set the Unit, Install position and minimum temperature difference corectly</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="44"/>
         <source>Please set the Install position, Unit, and minimum temperature difference corectly</source>
-        <translation>Please set the Install position, Unit, and minimum temperature difference corectly</translation>
+        <translation type="obsolete">Please set the Install position, Unit, and minimum temperature difference corectly</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="507"/>
-        <location filename="../cmbverify.cpp" line="512"/>
-        <location filename="../cmbverify.cpp" line="707"/>
+        <location filename="../cmbverify.cpp" line="44"/>
+        <source>Please set the Install position, Unit, and minimum temperature difference correctly</source>
+        <translation>Please set the Install position, Unit, and minimum temperature difference correctly</translation>
+    </message>
+    <message>
+        <location filename="../cmbverify.cpp" line="508"/>
+        <location filename="../cmbverify.cpp" line="513"/>
+        <location filename="../cmbverify.cpp" line="743"/>
         <source>Hint</source>
         <translation>Hint</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="507"/>
         <location filename="../cmbverify.cpp" line="508"/>
+        <location filename="../cmbverify.cpp" line="509"/>
         <source>save database successful !</source>
         <translation>save database successful !</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="512"/>
+        <location filename="../cmbverify.cpp" line="513"/>
         <source>save database failed !</source>
         <translation>save database failed !</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="616"/>
+        <location filename="../cmbverify.cpp" line="639"/>
         <source>please input meter number, then click &quot;Start&quot; button!</source>
         <translation>please input meter number, then click &quot;Start&quot; button!</translation>
     </message>
     <message>
-        <location filename="../cmbverify.cpp" line="707"/>
+        <location filename="../cmbverify.cpp" line="743"/>
         <source>current temperature different is less than min ¦¤¦È!</source>
         <translation>current temperature different is less than min ¦¤¦È!</translation>
     </message>
