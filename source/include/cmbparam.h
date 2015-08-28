@@ -42,7 +42,8 @@ public slots:
 private slots:
 
 signals:
-	void saveSuccessfully(void);
+	void saveSuccessfully();
+
 private:
 	Ui::CmbParamDlgClass ui;
 	

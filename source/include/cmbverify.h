@@ -77,12 +77,14 @@ public slots:
 	void on_lineEdit_min_theta_textChanged(const QString & text);
 	void on_lineEdit_std_in_t_textChanged(const QString & text);
 	void on_lineEdit_std_out_t_textChanged(const QString & text);
-	void on_countdown_timerout();
-	void on_btnGroup_unit_clicked(int);
-	void on_btnGroup_pos_clicked(int);
+	void on_lineEdit_std_in_r_textChanged(const QString & text);
+	void on_lineEdit_std_out_r_textChanged(const QString & text);
+	void slot_countdown_timerout();
+	void slot_btnGroup_unit_clicked(int);
+	void slot_btnGroup_pos_clicked(int);
 
 private slots:
-	void freshCmbParam(void);
+	void freshCmbParam();
 	void startVerifySlot(void);
 
 	void sendCommands();
@@ -126,8 +128,8 @@ private:
 	Cmb_Verify_Record_PTR m_recPtr; //有效的检定记录
 	QString m_timeStamp; //记录时间戳
 
-	QSettings* m_param_config;//操作参数配置文件
-
+	QSettings *m_param_config;//操作参数配置文件
+	QSettings *stdconfig; //标准铂电阻参数配置文件
 
 	void initUi();//初始化Ui设置
 	void initTbl();

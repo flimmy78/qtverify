@@ -871,7 +871,7 @@ void MeterComObject::askModifyFlowCoe(QString meterNO, float bigErr, float mid2E
 
 /*
 ** 类名：StdTempComObject
-** 功能：Sti1062a温度串口类-打开串口;设置串口参数；关闭串口；
+** 功能：标准温度计串口类-打开串口;设置串口参数；关闭串口；
 */
 StdTempComObject::StdTempComObject(QObject* parent) : ComObject(parent)
 {
@@ -881,14 +881,15 @@ StdTempComObject::StdTempComObject(QObject* parent) : ComObject(parent)
 
 StdTempComObject::~StdTempComObject()
 {
-	if(m_tempCom != NULL)
+	if (m_tempCom != NULL)
 	{
-		if(m_tempCom->isOpen())
+		if (m_tempCom->isOpen())
 		{
 			m_tempCom->close();
 			qDebug()<<"m_tempCom closed";
 		}
 		delete m_tempCom;
+		m_tempCom = NULL;
 	}
 
 	if (m_stdTempProtocol != NULL)
@@ -916,16 +917,17 @@ void StdTempComObject::setStdTempVersion(int version)
 		break;
 	case TEMPERATURE_TYPE_HUAYI:
 		m_stdTempProtocol = new huayiTempProtocol();
+		m_tempCom->write("R"); //切换到测量电阻状态
 		break;
 	default:
-		m_stdTempProtocol = new sti1062ATempProtocol();
+		m_stdTempProtocol = new huayiTempProtocol();
 		break;
 	}
 }
 
 bool StdTempComObject::openTemperatureCom(ComInfoStruct *comStruct)
 {
-// 	qDebug()<<"&&& open Sti1062aTemperatureCom thread:"<<QThread::currentThreadId();
+// 	qDebug()<<"&&& StdTempComObject::openTemperatureCom thread:"<<QThread::currentThreadId();
 	QString portName = comStruct->portName;// "COM2", 获取串口名
 #ifdef Q_OS_LINUX
 	m_tempCom = new QextSerialPort("/dev/" + portName);
@@ -942,12 +944,12 @@ bool StdTempComObject::openTemperatureCom(ComInfoStruct *comStruct)
 
 	if(m_tempCom->open(QIODevice::ReadWrite))
 	{
-		qDebug()<<"&&& Open Sti1062aTemperatureCom:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
+		qDebug()<<"&&& StdTempComObject::openTemperatureCom:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
 		return true;
 	}
 	else
 	{
-		qDebug()<<"&&& Open Sti1062aTemperatureCom:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
+		qDebug()<<"&&& StdTempComObject::openTemperatureCom:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
 		return false;
 	}
 }
@@ -955,11 +957,40 @@ bool StdTempComObject::openTemperatureCom(ComInfoStruct *comStruct)
 //请求温度
 void StdTempComObject::writeStdTempComBuffer(stdTempCommand command)
 {
-	m_stdTempProtocol->makeSendBuf(command);
-	m_tempCom->write(m_stdTempProtocol->getSendBuf());
+	int version = m_stdTempProtocol->getProtocolVersion();
+	switch (version)
+	{
+	case TEMPERATURE_TYPE_METROLOGY:
+		break;
+	case TEMPERATURE_TYPE_WEILI:
+		m_stdTempProtocol->makeSendBuf(command);
+		m_tempCom->write(m_stdTempProtocol->getSendBuf());
+		break;
+	case TEMPERATURE_TYPE_HUAYI:
+		switch (command)
+		{
+		case stdTempR1:
+			m_tempCom->write("A");
+			break;
+		case stdTempR2:
+			m_tempCom->write("B");
+			break;
+		default:
+			break;
+		}
+		if (this != NULL)
+		{
+			sleep(3000);
+			m_tempCom->write("M");
+		}
+		break;
+	default:
+		break;
+	}
 }
 
-//读温度串口缓冲区
+
+//读标准温度串口缓冲区
 void StdTempComObject::readTemperatureComBuffer()
 {
 	QByteArray tmp = m_tempCom->readAll();
@@ -972,11 +1003,6 @@ void StdTempComObject::readTemperatureComBuffer()
 		QString tempStr = m_stdTempProtocol->getReadStr();
 		emit temperatureIsReady(tempStr);
 	}
-	//if (m_sti1062aProtocol->readTemperComBuffer(m_tempCom->readAll()))
-	//{
-	//	m_tempCom->flush();
-	//	emit temperatureIsReady(m_sti1062aProtocol->getReadStr());
-	//}
 }
 
 void StdTempComObject::close()

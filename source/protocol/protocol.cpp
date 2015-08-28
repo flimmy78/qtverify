@@ -1846,11 +1846,13 @@ bool huayiTempProtocol::readTemperComBuffer(QByteArray tmp)
 {
 	int number = tmp.size();
 	//Q_ASSERT(number > 0);
+	if (number != 11)
+	{
+		return false;
+	}
 
-	bool ret = false;
-	char b = '\0';
-	
-	return ret;
+	m_valueStr = tmp.mid(2);
+	return true;
 }
 
 /***********************************************

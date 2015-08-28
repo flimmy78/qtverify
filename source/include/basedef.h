@@ -22,10 +22,10 @@
 #define EN_NAME_LEN			24      //英文名字长度
 #define ZH_NAME_LEN			50      //中文名字长度
 
-#define METER_QUANTITY		24	   //本检定台可以检表的最大数量
+#define METER_QUANTITY		24	    //本检定台可以检表的最大数量
 
 #ifndef VERIFY_POINTS
-#define VERIFY_POINTS		4  //检定流量点的数量, 一般为4个(大, 中一, 中二, 小), 但客户也可能需要更多
+#define VERIFY_POINTS		4       //检定流量点的数量, 一般为4个(大, 中一, 中二, 小), 但客户也可能需要更多
 #endif
 
 #ifndef SEP
@@ -33,7 +33,8 @@
 #endif
 
 #define TIMEOUT_PIPE_TEMPER    1000    //请求管路温度周期(毫秒)
-#define TIMEOUT_STD_TEMPER	   200     //请求标准温度周期
+#define TIMEOUT_STD_TEMPER	   1000    //请求标准温度周期
+#define TIMEOUT_STD_TEMPER_HUAYI	   8000    //请求标准温度周期(华易)
 
 #define FLOW_SAMPLE_NUM		    10     //计算流速 采样点个数
 #define TIMEOUT_FLOW_SAMPLE	    1000   //计算流速 每1秒采样一次天平数值

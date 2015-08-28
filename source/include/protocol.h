@@ -479,6 +479,7 @@ public:
 public slots:
 	virtual bool readTemperComBuffer(QByteArray tmp);
 	virtual void makeSendBuf(stdTempCommand);
+	virtual int getProtocolVersion(){return TEMPERATURE_TYPE_HUAYI;};
 	virtual QByteArray getSendBuf();
 	virtual QString getReadStr();
 };
@@ -504,6 +505,7 @@ public:
 public slots:
 	virtual bool readTemperComBuffer(QByteArray tmp);
 	virtual void makeSendBuf(stdTempCommand);
+	virtual int getProtocolVersion(){return TEMPERATURE_TYPE_WEILI;};
 
 };//sti1062ATempProtocol END
 
@@ -517,10 +519,11 @@ public:
 public slots:
 	virtual bool readTemperComBuffer(QByteArray tmp);
 	virtual void makeSendBuf(stdTempCommand);
+	virtual int getProtocolVersion(){return TEMPERATURE_TYPE_METROLOGY;};
 
 };//计量院温度计 END
 
-//华仪温度计
+//华易温度计
 class PROTOCOL_EXPORT huayiTempProtocol : public StdTempProtocol
 {
 public:
@@ -530,8 +533,9 @@ public:
 public slots:
 	virtual bool readTemperComBuffer(QByteArray tmp);
 	virtual void makeSendBuf(stdTempCommand);
+	virtual int getProtocolVersion(){return TEMPERATURE_TYPE_HUAYI;};
 
-};//华仪温度计 END
+};//华易温度计 END
 
 //力创EDA9150A/9017产品, ModbusRTU通讯协议
 //主要用于读取西门子电磁流量计的脉冲数

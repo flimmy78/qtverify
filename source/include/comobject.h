@@ -217,13 +217,13 @@ public:
 signals:
 	void temperatureIsReady(const QString &tempStr); //成功获取仪器返回值
 
-	public slots:
-		bool openTemperatureCom(ComInfoStruct *comStruct);
-		void writeStdTempComBuffer(stdTempCommand);
-		void readTemperatureComBuffer();
-		void close();
+public slots:
+	bool openTemperatureCom(ComInfoStruct *comStruct);
+	void writeStdTempComBuffer(stdTempCommand);
+	void readTemperatureComBuffer();
+	void close();
 
-		void setStdTempVersion(int version = TEMPERATURE_TYPE_WEILI);
+	void setStdTempVersion(int version = TEMPERATURE_TYPE_HUAYI);
 };
 
 /*
