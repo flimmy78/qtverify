@@ -24,6 +24,15 @@
 #include "commondefine.h"
 #include "qtexdb.h"
 
+void wait(unsigned int msec)
+{
+	QTime n = QTime::currentTime();
+	QTime now;
+	do
+	{
+		now = QTime::currentTime();
+	} while(n.msecsTo(now) <= msec); 
+}
 void sleep(unsigned int msec)
 {
 	QTime dieTime = QTime::currentTime().addMSecs(msec);
@@ -166,6 +175,18 @@ float getPlaTr(float r0, float a, float b, float resis)
 
 	float ret = (qSqrt(a*a + 4*b*(resis/r0 - 1)) - a)/(2*b);
 	return ret;
+}
+
+float calcTemperByResis(float resis)
+{
+	QString filename = getFullIniFileName("stdplasensor.ini");
+	QSettings settings(filename, QSettings::IniFormat);
+	QString pt = settings.value("in_use/pt").toString();
+	float rtp = settings.value(pt+"/in_rtp").toFloat();
+	float a = settings.value(pt+"/in_a").toFloat();
+	float b = settings.value(pt+"/in_b").toFloat();
+	float temp = getPlaTr(rtp, a, b, resis);
+	return temp;
 }
 
 float getDeltaTmpErr(float std_delta_t, float min_delta_t)
