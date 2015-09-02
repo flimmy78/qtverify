@@ -35,6 +35,7 @@ ALGORITHM_EXPORT float getSingleTmpErr(float std_delta_t);//¸ù¾İjjg225-2001¼ÆËãµ
 ALGORITHM_EXPORT float getMeterGradeErrLmt(int grade, float delta_t_min, float delta_t, float dn_flow_rate, float flow_rate);//¸ù¾İ±íµÄµÈ¼¶, ¼ÆËã±íµÄÊ¾ÖµÎó²îÏŞ(%), ÒÔ¸¡µãÊı·µ»Ø
 ALGORITHM_EXPORT float calcFloatValueOfCoe(QString coe);//¸ù¾İÈÈÁ¿±íÍ¨Ñ¶·µ»ØµÄÁ½×Ö½ÚÊı¾İ£¬¼ÆËã³ö¶ÔÓ¦µÄ¸¡µãĞÍÊıÖµ
 ALGORITHM_EXPORT float calcErrorValueOfCoe(QString coe);//¸ù¾İÈÈÁ¿±íÍ¨Ñ¶·µ»ØµÄÁ½×Ö½ÚÊı¾İ£¬¼ÆËã³ö¶ÔÓ¦µÄÎó²îÖµ
+ALGORITHM_EXPORT UINT16 CRC16ModRTU_Table_Driven (const uchar *nData, UINT16 wLength);//²é±í·¨¼ÆËãmodbus-RTUĞ­ÒéµÄCRCĞ£ÑéÖµ
 ALGORITHM_EXPORT UINT16 calcModRtuCRC(uchar *, int);//¼ÆËãmodbus-RTUĞ­ÒéµÄCRCĞ£ÑéÖµ
 ALGORITHM_EXPORT QByteArray getCRCArray(UINT16);//½«CRC¼ÆËã½á¹û×ª»»ÎªQByteArray
 ALGORITHM_EXPORT int get9150ARouteI(int i, QByteArray valueArray);//»ñÈ¡Á¦´´Ä£¿éÖĞÍ¨µÀiµÄÂö³åÖµ
