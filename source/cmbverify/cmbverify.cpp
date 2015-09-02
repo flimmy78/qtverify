@@ -668,13 +668,16 @@ void CmbVerifyDlg::clearTempComObjs()
 		m_sendTimer = NULL;
 	}
 
-	if (m_tempObj != NULL)
+	if (m_tempThread.isRunning())
 	{
-		delete m_tempObj;
-		m_tempObj = NULL;
-
 		m_tempThread.exit();
-	}
+		if (m_tempObj != NULL)
+		{
+			delete m_tempObj;
+			m_tempObj = NULL;
+
+		}
+	}	
 }
 
 float CmbVerifyDlg::getStdEnergy(float analogV)
