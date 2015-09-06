@@ -382,8 +382,14 @@ void MainForm::on_actionFlowWeight_triggered()
 	{
 		m_flowWeightDlg = new FlowWeightDlg();
 	}
+	else //目的是执行FlowWeightDlg的构造函数
+	{
+		delete m_flowWeightDlg;
+		m_flowWeightDlg = NULL;
+		m_flowWeightDlg = new FlowWeightDlg();
+	}
 	m_flowWeightDlg->showMaximized();
-	
+
 	connect(m_flowWeightDlg, SIGNAL(signalClosed()), this, SLOT(slotFlowWeightClosed()));
 }
 
@@ -474,6 +480,12 @@ void MainForm::on_actionTotalWeight_triggered()
 	{
 		m_totalWeightDlg = new TotalWeightDlg();
 	}
+	else //目的是执行TotalWeightDlg的构造函数
+	{
+		delete m_totalWeightDlg;
+		m_totalWeightDlg = NULL;
+		m_totalWeightDlg = new TotalWeightDlg();
+	}
 	m_totalWeightDlg->showMaximized();
 }
 
@@ -496,15 +508,12 @@ void MainForm::on_actionTotalStandard_triggered()
 //查询流量检定结果（包括质量法和标准表法）
 void MainForm::on_actionFlowResult_triggered()
 {
-	if (NULL == m_flowResultDlg)
-	{
-		m_flowResultDlg = new FlowResultDlg();
-	}
-	else
-	{
+	if (NULL != m_flowResultDlg)
+	{	
 		delete m_flowResultDlg;
-		m_flowResultDlg = new FlowResultDlg();
+		m_flowResultDlg = NULL;
 	}
+	m_flowResultDlg = new FlowResultDlg();
 	m_flowResultDlg->show();
 }
 
@@ -523,34 +532,24 @@ void MainForm::on_actionTotalResult_triggered()
 //查询温度传感器检定结果
 void MainForm::on_actionPtResult_triggered()
 {
-	if (NULL == m_PlaResultDlg)
-	{
-		m_PlaResultDlg = new PlaResultDlg();
-	}
-	else if (NULL != m_PlaResultDlg)
+	if (NULL != m_PlaResultDlg)
 	{	
 		delete m_PlaResultDlg;
 		m_PlaResultDlg = NULL;
-		m_PlaResultDlg = new PlaResultDlg();
 	}
-
+	m_PlaResultDlg = new PlaResultDlg();
 	m_PlaResultDlg->show();
 }
 
 //查询计算器检定结果
 void MainForm::on_actionCalculatorResult_triggered()
 {
-	if (NULL == m_CalcResultDlg)
-	{
-		m_CalcResultDlg = new CalcResultDlg();
-	}
-	else if (NULL != m_CalcResultDlg)
+	if (NULL != m_CalcResultDlg)
 	{	
 		delete m_CalcResultDlg;
 		m_CalcResultDlg = NULL;
-		m_CalcResultDlg = new CalcResultDlg();
 	}
-
+	m_CalcResultDlg = new CalcResultDlg();
 	m_CalcResultDlg->show();
 }
 

@@ -48,14 +48,9 @@ TotalWeightDlg::TotalWeightDlg(QWidget *parent, Qt::WFlags flags)
 	m_mapNormalFlow[0] = 1.5f; //DN15常用流量 1.5
 	m_mapNormalFlow[1] = 2.5f; //DN20常用流量 2.5
 	m_mapNormalFlow[2] = 3.5f; //DN25常用流量 3.5
-}
 
-TotalWeightDlg::~TotalWeightDlg()
-{
-}
-
-void TotalWeightDlg::showEvent(QShowEvent * event)
-{
+	///////////////////////////////// 原showEvent()函数的内容 begin 
+	//否则每次最小化再显示时，会调用showEvent函数，导致内容清空等现象
 	ui.btnReCalc->hide();
 	ui.btnExhaust->hide();
 	ui.btnGoOn->hide();
@@ -170,6 +165,17 @@ void TotalWeightDlg::showEvent(QShowEvent * event)
 	{
 		qWarning()<<"串口、端口设置错误!";
 	}
+
+	///////////////////////////////// 原showEvent()函数的内容 end
+}
+
+TotalWeightDlg::~TotalWeightDlg()
+{
+	qDebug()<<"TotalWeightDlg::showEvent";
+}
+
+void TotalWeightDlg::showEvent(QShowEvent * event)
+{
 }
 
 void TotalWeightDlg::closeEvent(QCloseEvent * event)
