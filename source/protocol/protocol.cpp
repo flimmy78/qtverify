@@ -1891,9 +1891,9 @@ void lcModbusRTUProtocol::makeSendBuf(uchar address, lcModbusRTUFunc func, UINT1
 	m_sendBuf.clear();
 	m_sendBuf.append(address);
 	m_sendBuf.append((uchar)(func));
-	m_sendBuf.append((uchar)(start>>WORDLEN));
+	m_sendBuf.append((uchar)(start>>BYTE_LENGTH));
 	m_sendBuf.append((uchar)(start));
-	m_sendBuf.append((uchar)(regCount>>WORDLEN));
+	m_sendBuf.append((uchar)(regCount>>BYTE_LENGTH));
 	m_sendBuf.append((uchar)(regCount));
 	m_sendBuf.append(getCRCArray(calcModRtuCRC((uchar *)m_sendBuf.data(), m_sendBuf.length())));
 
@@ -1916,9 +1916,9 @@ void lcModbusRTUProtocol::makeWriteBuf(lcMod9150AWriteCmd cmd)
 	m_writeBuf.clear();
 	m_writeBuf.append(cmd.address);
 	m_writeBuf.append((uchar)(cmd.func));
-	m_writeBuf.append((uchar)(cmd.start>>WORDLEN));
+	m_writeBuf.append((uchar)(cmd.start>>BYTE_LENGTH));
 	m_writeBuf.append((uchar)(cmd.start));
-	m_writeBuf.append((uchar)(cmd.regCount>>WORDLEN));
+	m_writeBuf.append((uchar)(cmd.regCount>>BYTE_LENGTH));
 	m_writeBuf.append((uchar)(cmd.regCount));
 	m_writeBuf.append((uchar)(cmd.ByteCount));
 	for(int i=0;i<EDA_9150A_ROUTE_CNT/2;i++)
@@ -1926,7 +1926,7 @@ void lcModbusRTUProtocol::makeWriteBuf(lcMod9150AWriteCmd cmd)
 		int diValue = cmd.pData[i];//通道号; 从DI[0]~DI[7], DI[8]~DI[15]
 		for (int j=EDA9150A_ROUTE_BYTES-1;j>=0;j--)
 		{			
-			uchar b= (uchar)(diValue>>(j*WORDLEN));
+			uchar b= (uchar)(diValue>>(j*BYTE_LENGTH));
 			m_writeBuf.append(b);
 		}
 	}
@@ -2088,7 +2088,7 @@ bool lcModbusRTUProtocol::readMeterComBuffer(QByteArray tmp)
 			break;
 		case crc_state:
 			m_crcValue.append(b);//crc校验值的高位
-			crc  = ( (((uchar)m_crcValue.at(1))<<WORDLEN) | (uchar)m_crcValue.at(0) );
+			crc  = ( (((uchar)m_crcValue.at(1))<<BYTE_LENGTH) | (uchar)m_crcValue.at(0) );
 			calc_crc = calcModRtuCRC((uchar *)m_readBuf.data(), m_readBuf.length());
 			if (crc == calc_crc)//crc校验通过
 			{
@@ -2184,7 +2184,7 @@ int lcModbusRTUProtocol::getIntData(int i)
 	int value = 0;	
 	for (int k=0;k<EDA9150A_ROUTE_BYTES;k++)
 	{
-		value |= ( ((uchar)data.at(k)) << ((EDA9150A_ROUTE_BYTES-1-k)*WORDLEN) );
+		value |= ( ((uchar)data.at(k)) << ((EDA9150A_ROUTE_BYTES-1-k)*BYTE_LENGTH) );
 	}
 	return value;
 }
