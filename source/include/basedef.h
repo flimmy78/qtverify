@@ -183,7 +183,7 @@ enum table_columns
 #define TEMPERATURE_TYPE_HUAYI		2//华仪
 
 #define POLY	0xA001//CRC16校验中的生成多项式
-#define WORDLEN 8	  //一个字节的比特数
+#define BYTE_LENGTH 8	  //一个字节的比特数
 #define LC_EDA_REG_BYTES		2//力创EDA9150A和EDA9017模块中, 每个寄存器的字节数
 #define EDA9150A_ROUTE_BYTES	4//力创EDA9150A模块中, 每个通道对应的字节数
 #define EDA9017_ROUTE_BYTES		2//力创EDA9017模块中, 每个通道对应的字节数
