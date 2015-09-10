@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="scancodedlg">
+    <file>images/scancode.png</file>
+  </qresource>
+</RCC>
