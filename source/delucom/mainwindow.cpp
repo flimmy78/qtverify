@@ -2,6 +2,7 @@
 #include <intsafe.h>
 
 #include "mainwindow.h"
+#include "algorithm.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -149,31 +150,33 @@ void MainWindow::on_actionOpen_triggered()
 #ifdef Q_OS_LINUX
 	myCom = new QextSerialPort("/dev/" + portName);
 #elif defined (Q_OS_WIN)
-	myCom = new QextSerialPort(portName);
+	myCom = new QSerialPort();
 #endif
 	connect(myCom, SIGNAL(readyRead()), this, SLOT(readMyCom()));
 
+	//设置串口名
+	myCom->setPortName(portName);
 	//设置波特率
-	myCom->setBaudRate((BaudRateType)ui->baudRateComboBox->currentText().toInt());
+	myCom->setBaudRate((QSerialPort::BaudRate)(ui->baudRateComboBox->currentText().toInt()));
 
 	//设置数据位
-	myCom->setDataBits((DataBitsType)ui->dataBitsComboBox->currentText().toInt());
+	myCom->setDataBits((QSerialPort::DataBits)(ui->dataBitsComboBox->currentText().toInt()));
 
 	//设置校验
 	switch(ui->parityComboBox->currentIndex())
 	{
 	case 0:
-		myCom->setParity(PAR_NONE);
+		myCom->setParity(QSerialPort::NoParity);
 		break;
 	case 1:
-		myCom->setParity(PAR_ODD);
+		myCom->setParity(QSerialPort::OddParity);
 		break;
 	case 2:
-		myCom->setParity(PAR_EVEN);
+		myCom->setParity(QSerialPort::EvenParity);
 		break;
 	default:
-		myCom->setParity(PAR_NONE);
-		qDebug("set to default : PAR_NONE");
+		myCom->setParity(QSerialPort::NoParity);
+		qDebug("set to default : NoParity");
 		break;
 	}
 
@@ -181,26 +184,24 @@ void MainWindow::on_actionOpen_triggered()
 	switch(ui->stopBitsComboBox->currentIndex())
 	{
 	case 0:
-		myCom->setStopBits(STOP_1);
+		myCom->setStopBits(QSerialPort::OneStop);
 		break;
 	case 1:
 #ifdef Q_OS_WIN
-		myCom->setStopBits(STOP_1_5);
+		myCom->setStopBits(QSerialPort::OneAndHalfStop);
 #endif
 		break;
 	case 2:
-		myCom->setStopBits(STOP_2);
+		myCom->setStopBits(QSerialPort::TwoStop);
 		break;
 	default:
-		myCom->setStopBits(STOP_1);
-		qDebug("set to default : STOP_1");
+		myCom->setStopBits(QSerialPort::OneStop);
+		qDebug("set to default : OneStop");
 		break;
-	}    
+	}
 
 	//设置数据流控制
-	myCom->setFlowControl(FLOW_OFF);
-	//设置延时
-	myCom->setTimeout(TIME_OUT);
+	myCom->setFlowControl(QSerialPort::NoFlowControl);
 
 	if (myCom->open(QIODevice::ReadWrite))
 	{
@@ -670,4 +671,39 @@ void MainWindow::on_btn2BytesCS_clicked()
 
 	}
 	ui->lineEdit2BytesCS->setText("0x" + QString::number(cs,16).rightJustified(4, '0').toUpper());
+}
+
+void MainWindow::on_btnCRC_clicked()
+{
+	ui->lineEditCRCResult->clear();
+	QString input = ui->lineEditCRCInput->text();
+	QByteArray buf;
+	QStringList list;
+	UINT16 calc_crc;
+	QString s, output;
+	if (!input.isEmpty())
+	{
+		bool ok;
+		char data;
+		list = input.split(" "); //以空格符分割
+		for (int i = 0; i < list.count(); i++)
+		{
+			if (list.at(i) == " ")
+				continue;
+			if (list.at(i).isEmpty())
+				continue;
+			data = (char)list.at(i).toInt(&ok, 16);
+			if (!ok)
+			{
+				QMessageBox::information(this, tr("Hint"), tr("data format error！"), QMessageBox::Ok);
+				return;
+			}
+			buf.append(data);
+		}
+		calc_crc = calcModRtuCRC((uchar *)buf.data(), buf.length());
+		output.append(s.sprintf("%02X", (uchar)calc_crc));
+		output.append(" ");
+		output.append(s.sprintf("%02X", (uchar)(calc_crc>>BYTE_LENGTH)));
+		ui->lineEditCRCResult->setText(output);
+	}
 }

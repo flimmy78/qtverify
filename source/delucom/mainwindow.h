@@ -8,8 +8,9 @@
 #include <QInputDialog>
 #include <QFileDialog>
 #include <QTextStream>
+#include "QtSerialPort/QSerialPort"
+#include "QtSerialPort/QSerialPortInfo"
 
-#include "qextserialport.h"
 #include "aboutdialog.h"
 
 
@@ -43,7 +44,7 @@ protected:
 private:
 	Ui::MainWindow *ui;
 	AboutDialog aboutdlg;
-	QextSerialPort *myCom;
+	QSerialPort *myCom;
 	QTimer *obotimer;
 	unsigned int timerdly;
 	unsigned int obotimerdly;
@@ -75,6 +76,7 @@ private slots:
 	void saveComDefaultConfig();
 	void on_btn1BytesCS_clicked();
 	void on_btn2BytesCS_clicked();
+	void on_btnCRC_clicked();
 	//end by
 
 };

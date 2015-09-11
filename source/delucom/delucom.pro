@@ -1,15 +1,11 @@
-#if QT_VERSION >= 0x050000
-QT += core gui widgets
-#else
-QT += core gui
-#endif
-
+CONFIG  += serialport
+CONFIG  += qt warn_on debug
 TARGET = delucom
 TEMPLATE = app
-CONFIG  += qt warn_on debug
 
-INCLUDEPATH += $$(ADEHOME_INC)/include/qextserial
-
+INCLUDEPATH += $$(ADEHOME_INC)/include/qextserial\
+				$$(ADEHOME_INC)/include
+				
 SOURCES += main.cpp\
         mainwindow.cpp \
         aboutdialog.cpp \
@@ -19,6 +15,12 @@ HEADERS += mainwindow.h \
         aboutdialog.h \
         $$(ADEHOME_INC)/include/qextserial/qextserialport_global.h \
         $$(ADEHOME_INC)/include/qextserial/qextserialport.h
+
+QMAKE_LIBDIR +=  ./           \
+		 $(ADEHOME)/lib \
+		 $(ADEHOME)/bin
+
+LIBS += -lalgorithm
 
 win32:debug{
 	CONFIG += console
