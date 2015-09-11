@@ -126,61 +126,61 @@
         <translation type="obsolete">&lt;a href=&quot;http://www.sdm.com.cn&quot;&gt;山东德鲁计量科技有限公司&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="86"/>
+        <location filename="../source/mainform.cpp" line="88"/>
         <source>&lt;a href=&quot;http://www.sdm.com.cn&quot;&gt;Yantai Aerospace Delu Energy-saving technology Co.,Ltd&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;http://www.sdm.com.cn&quot;&gt;烟台航天德鲁节能科技有限公司&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="98"/>
+        <location filename="../source/mainform.cpp" line="100"/>
         <source>Question</source>
         <translation>询问</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="98"/>
+        <location filename="../source/mainform.cpp" line="100"/>
         <source>Quit Really ?</source>
         <translation>确认退出吗?</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="575"/>
+        <location filename="../source/mainform.cpp" line="597"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="575"/>
+        <location filename="../source/mainform.cpp" line="597"/>
         <source>Excel object lose!</source>
         <translation>找不到Excel组件!</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="699"/>
-        <location filename="../source/mainform.cpp" line="705"/>
-        <location filename="../source/mainform.cpp" line="708"/>
-        <location filename="../source/mainform.cpp" line="711"/>
-        <location filename="../source/mainform.cpp" line="714"/>
+        <location filename="../source/mainform.cpp" line="721"/>
+        <location filename="../source/mainform.cpp" line="727"/>
+        <location filename="../source/mainform.cpp" line="730"/>
+        <location filename="../source/mainform.cpp" line="733"/>
+        <location filename="../source/mainform.cpp" line="736"/>
         <source>Hint</source>
         <translation>Hint</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="699"/>
+        <location filename="../source/mainform.cpp" line="721"/>
         <source>Failed To Start</source>
         <translation>Failed To Start</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="705"/>
+        <location filename="../source/mainform.cpp" line="727"/>
         <source>Timed Out</source>
         <translation>Timed Out</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="708"/>
+        <location filename="../source/mainform.cpp" line="730"/>
         <source>Write Error</source>
         <translation>Write Error</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="711"/>
+        <location filename="../source/mainform.cpp" line="733"/>
         <source>Read Error</source>
         <translation>Read Error</translation>
     </message>
     <message>
-        <location filename="../source/mainform.cpp" line="714"/>
+        <location filename="../source/mainform.cpp" line="736"/>
         <source>Unknown Error</source>
         <translation>Unknown Error</translation>
     </message>
@@ -468,7 +468,7 @@
         <translation type="obsolete">铂电阻检定</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="69"/>
+        <location filename="../ui/mainform.ui" line="70"/>
         <source>Flow</source>
         <translation>流量检定</translation>
     </message>
@@ -477,12 +477,12 @@
         <translation type="obsolete">总量检定</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="58"/>
+        <location filename="../ui/mainform.ui" line="59"/>
         <source>Pt</source>
         <translation>铂电阻检定</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="85"/>
+        <location filename="../ui/mainform.ui" line="86"/>
         <source>DataQuery(&amp;Q)</source>
         <translation>数据查询(&amp;Q)</translation>
     </message>
@@ -540,6 +540,12 @@
         <location filename="../ui/mainform.ui" line="424"/>
         <source>PtResult</source>
         <translation>铂电阻检定结果</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainform.ui" line="538"/>
+        <location filename="../ui/mainform.ui" line="541"/>
+        <source>ScanCode</source>
+        <translation>扫码写表号</translation>
     </message>
     <message>
         <source>Exit</source>
@@ -724,7 +730,7 @@
         <translation>串口参数设置</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="54"/>
+        <location filename="../ui/mainform.ui" line="55"/>
         <source>CompVerify(&amp;C)</source>
         <translation>分量检定(&amp;C)</translation>
     </message>
@@ -733,7 +739,7 @@
         <translation type="obsolete">数据查询(</translation>
     </message>
     <message>
-        <location filename="../ui/mainform.ui" line="95"/>
+        <location filename="../ui/mainform.ui" line="96"/>
         <source>About(&amp;A)</source>
         <translation>关于(&amp;A)</translation>
     </message>
