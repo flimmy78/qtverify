@@ -595,7 +595,6 @@ void ParaSetReader::initValveMap()
 void ParaSetReader::readParamValues()
 {
 	readHead();
-	//readStdDevNo();
 	readBool();
 	readOther();
 	readFlowPoints();
@@ -623,12 +622,6 @@ void ParaSetReader::readHead()
 	/************************************************************************/
 }
 
-//void ParaSetReader::readStdDevNo()
-//{
-//	m_params->m_instStdDevNo = m_settings->value("lcModDevNo/InstStdDevNo").toString();
-//	m_params->m_accumStdDevNo = m_settings->value("lcModDevNo/AccumStdDevNo").toString();
-//}
-
 void ParaSetReader::readFlowPoints()
 {
 	m_params->total_fp = 0;//将流量点数目置为零
@@ -649,9 +642,6 @@ void ParaSetReader::readFlowPoints()
 		{
 			m_params->total_fp++;
 		}
-
-		//m_params->fp_info[i].fp_instStdRoute = m_settings->value("instStdRoute").toInt();
-		//m_params->fp_info[i].fp_accumStdRoute = m_settings->value("accumStdRoute").toInt();
 	}
 	m_settings->endArray();
 }
