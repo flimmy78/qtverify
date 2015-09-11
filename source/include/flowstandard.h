@@ -155,7 +155,7 @@ public slots:
 	int closeAllFlowPointValves();//关闭所有流量点阀门
 	int closeWaterOutValve();     //关闭放水阀
 	int openWaterOutValve();      //打开放水阀
-	int judgeTartgetVolAndCalcAvgTemperAndFlow(float initV, float verifyV); //判断是否完成检定量检定量，并累加进出口温度，每秒累加一次，用于计算进出口平均温度
+	int judgeTartgetVolAndCalcAvgTemperAndFlow(double initV, double verifyV); //判断是否完成检定量检定量，并累加进出口温度，每秒累加一次，用于计算进出口平均温度
 	void stopVerify();            //停止检定
 	void startVerify();           //开始检定
 	int prepareVerifyFlowPoint(int order);     //准备单个流量点的检定
@@ -173,6 +173,7 @@ public slots:
 	int calcMeterError(int idx); //计算某个表的误差
 	int calcVerifyResult();       //计算检定结果
 
+	void slotAskPipeTemperature();//请求管路温度
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
 
 	void slotSetValveBtnStatus(const UINT8 &portno, const bool &status); //继电器返回成功对应的槽函数

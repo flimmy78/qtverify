@@ -194,6 +194,7 @@ public slots:
 	int calcVerifyResult();       //计算检定结果
 
 	void slotFreshBalanceValue(const float& balValue);  //刷新天平数值
+	void slotAskPipeTemperature();//请求管路温度
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
 	void slotFreshStdTempValue(const QString& stdTempStr); //刷新标准温度值
 	void slotFreshFlowRate(); //计算流速

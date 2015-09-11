@@ -409,9 +409,14 @@ void TotalStandardDlg::initTemperatureCom()
 	connect(m_tempObj, SIGNAL(temperatureIsReady(const QString &)), this, SLOT(slotFreshComTempValue(const QString &)));
 
 	m_tempTimer = new QTimer();
-	connect(m_tempTimer, SIGNAL(timeout()), m_tempObj, SLOT(writeTemperatureComBuffer()));
+	connect(m_tempTimer, SIGNAL(timeout()), this, SLOT(slotAskPipeTemperature()));
 	
 	m_tempTimer->start(TIMEOUT_PIPE_TEMPER); //周期请求温度
+}
+
+void TotalStandardDlg::slotAskPipeTemperature()
+{
+	m_tempObj->writeTemperatureComBuffer();
 }
 
 /*
@@ -685,10 +690,10 @@ void TotalStandardDlg::initTableWidget()
 		ui.tableWidget->item(i, COLUMN_STD_ERROR)->setFlags(Qt::NoItemFlags);
 
 		//设置按钮
-		QPushButton *btnReadMeter = new QPushButton(QObject::tr("(%1)").arg(i+1) + tr("ReadMeter"));
-		ui.tableWidget->setCellWidget(i, COLUMN_READ_DATA, btnReadMeter);
-		signalMapper3->setMapping(btnReadMeter, i);
-		connect(btnReadMeter, SIGNAL(clicked()), signalMapper3, SLOT(map()));
+		QPushButton *btnReadData = new QPushButton(QObject::tr("(%1)").arg(i+1) + tr("ReadData"));
+		ui.tableWidget->setCellWidget(i, COLUMN_READ_DATA, btnReadData);
+		signalMapper3->setMapping(btnReadData, i);
+		connect(btnReadData, SIGNAL(clicked()), signalMapper3, SLOT(map()));
 
 		QPushButton *btnVerifySt = new QPushButton(QObject::tr("(%1)").arg(i+1) + tr("VerifySt"));
 		ui.tableWidget->setCellWidget(i, COLUMN_VERIFY_STATUS, btnVerifySt);
@@ -1292,10 +1297,12 @@ int TotalStandardDlg::startVerifyFlowPoint(int order)
 		}
 	}
 
-	m_pipeInTemper = ui.lcdInTemper->value();
-	m_pipeOutTemper = ui.lcdOutTemper->value();
 	m_realFlow = ui.lcdFlowRate->value();
 	m_avgTFCount = 1;
+
+	//直接使用标准温度计的温度即可， 因为恒温槽的温度波动很小，不必要使用平均温度
+	m_stdInTemper = ui.lnEditInStdTemp->text().toFloat();
+	m_stdOutTemper = ui.lnEditOutStdTemp->text().toFloat();
 
 	int portNo = m_paraSetReader->getFpBySeq(order).fp_valve;  //order对应的阀门端口号
 	flow_rate_wdg wdgIdx = (flow_rate_wdg)m_paraSetReader->getBigSmallBySeq(order);//获取大流量还是小流量点 
@@ -1305,13 +1312,12 @@ int TotalStandardDlg::startVerifyFlowPoint(int order)
 
 	m_stdStartVol = getAccumFLowVolume(wdgIdx);//记录标准表初始体积(L)
 	qDebug() << "start volumn: " << m_stdStartVol;
-	float stdStartT = m_pipeOutTemper;//标准表初始温度, 现采集管路出口的平均温度.(不准确需要更精确的修正)
-	float stdStartDen = m_chkAlg->getDensityByQuery(stdStartT);//标准表初始平均密度(kg/L)
+	float stdStartDen = m_chkAlg->getDensityByQuery(m_stdInTemper);//体积参数为检定管路中的，温度参数为恒温槽的
 	if (stdStartDen<0)
 	{
 		return -1;
 	}
-	m_StdStartMass = stdStartDen*m_stdStartVol;
+	m_StdStartMass = stdStartDen*m_stdStartVol;//质量为虚拟的，不是检定管路中真实的
 
 	if (openValve(portNo)) //打开阀门，开始跑流量
 	{
@@ -1325,8 +1331,7 @@ int TotalStandardDlg::startVerifyFlowPoint(int order)
 			wait(BALANCE_STABLE_TIME); //等待3秒钟，让天平数值稳定
 
 			m_stdEndVol = getAccumFLowVolume(wdgIdx);//记录标准表最终体积(L)
-			float stdEndT = m_pipeOutTemper;//标准表最终温度, 现采集管路出口的平均温度.(不准确需要更精确的修正)
-			float stdEndDen = m_chkAlg->getDensityByQuery(stdEndT);//标准表最终平均密度(kg/L)
+			float stdEndDen = m_chkAlg->getDensityByQuery(m_stdOutTemper);//标准表最终平均密度(kg/L)
 			qDebug() << "end volumn: " << m_stdEndVol;
 			if(stdEndDen<0)
 			{
@@ -1342,7 +1347,9 @@ int TotalStandardDlg::startVerifyFlowPoint(int order)
 			{
 				m_meterTemper[m] = m_chkAlg->getMeterTempByPos(m_pipeInTemper, m_pipeOutTemper, m_meterPosMap[m]);//计算每个被检表的温度
 				m_meterDensity[m] = m_chkAlg->getDensityByQuery(m_meterTemper[m]);//计算每个被检表的密度
-				m_meterStdValue[m] = m_chkAlg->getStdVolByPos((m_StdEndMass-m_StdStartMass), m_pipeInTemper, m_pipeOutTemper, m_meterPosMap[m]); //计算每个被检表的体积标准值
+
+				//计算每个被检表的热量标准值, 如果按照jjg-2010, 需要用质量守恒法将标准表的质量计算到表位上。如果按照jjg-2001则直接计算即可
+				m_meterStdValue[m] = m_chkAlg->calcStdEnergyByEnthalpy(m_stdInTemper, m_stdOutTemper, m_StdEndMass-m_StdStartMass, m_unit); 
 
 				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_FLOW_POINT)->setText(QString::number(m_realFlow, 'f', 3));//流量点
 				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_METER_END)->setText("");//表终值
@@ -1408,7 +1415,7 @@ int TotalStandardDlg::calcMeterError(int idx)
 	m_recPtr[idx].flowPoint = m_realFlow;
 	strcpy_s(m_recPtr[idx].meterNo, meterNoStr.toAscii());
 	m_recPtr[idx].flowPointIdx = m_nowOrder; //
-	m_recPtr[idx].methodFlag = STANDARD_METHOD; //质量法
+	m_recPtr[idx].methodFlag = STANDARD_METHOD; //标准表法
 	m_recPtr[idx].meterValue0 = m_meterStartValue[idx];
 	m_recPtr[idx].meterValue1 = m_meterEndValue[idx];
 	m_recPtr[idx].balWeight0 = m_StdStartMass;

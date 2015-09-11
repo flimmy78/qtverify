@@ -361,9 +361,14 @@ void TotalWeightDlg::initTemperatureCom()
 	connect(m_tempObj, SIGNAL(temperatureIsReady(const QString &)), this, SLOT(slotFreshComTempValue(const QString &)));
 
 	m_tempTimer = new QTimer();
-	connect(m_tempTimer, SIGNAL(timeout()), m_tempObj, SLOT(writeTemperatureComBuffer()));
+	connect(m_tempTimer, SIGNAL(timeout()), this, SLOT(slotAskPipeTemperature()));
 	
 	m_tempTimer->start(TIMEOUT_PIPE_TEMPER); //周期请求温度
+}
+
+void TotalWeightDlg::slotAskPipeTemperature()
+{
+	m_tempObj->writeTemperatureComBuffer();
 }
 
 /*

@@ -86,7 +86,7 @@ FlowStandardDlg::FlowStandardDlg(QWidget *parent, Qt::WFlags flags)
 	m_chkAlg = new CAlgorithm();
 
 	//映射关系；初始化阀门状态	
-	initValveStatus();      
+	initValveStatus();
 
 	m_exaustTimer = new QTimer(this); //排气定时器
 	connect(m_exaustTimer, SIGNAL(timeout()), this, SLOT(slotExaustFinished()));
@@ -211,13 +211,6 @@ void FlowStandardDlg::closeEvent( QCloseEvent * event)
 		m_readComConfig = NULL;
 	}
 
-	if (m_tempObj)  // 温度采集
-	{
-		delete m_tempObj;
-		m_tempObj = NULL;
-
-		m_tempThread.exit(); //否则日志中会有警告"QThread: Destroyed while thread is still running"
-	}
 
 	if (m_tempTimer) //采集温度计时器
 	{
@@ -228,6 +221,16 @@ void FlowStandardDlg::closeEvent( QCloseEvent * event)
 		delete m_tempTimer;
 		m_tempTimer = NULL;
 	}
+
+	if (m_tempThread.isRunning())  // 温度采集
+	{
+		m_tempThread.exit(); //否则日志中会有警告"QThread: Destroyed while thread is still running"
+		if (m_tempObj)
+		{
+			delete m_tempObj;
+			m_tempObj = NULL; 
+		}	 		 		
+	}	   
 
 	if (m_controlObj)  //阀门控制
 	{
@@ -380,9 +383,14 @@ void FlowStandardDlg::initTemperatureCom()
 	connect(m_tempObj, SIGNAL(temperatureIsReady(const QString &)), this, SLOT(slotFreshComTempValue(const QString &)));
 
 	m_tempTimer = new QTimer();
-	connect(m_tempTimer, SIGNAL(timeout()), m_tempObj, SLOT(writeTemperatureComBuffer()));
+	connect(m_tempTimer, SIGNAL(timeout()), this, SLOT(slotAskPipeTemperature()));
 
 	m_tempTimer->start(TIMEOUT_PIPE_TEMPER); //周期请求温度
+}
+
+void FlowStandardDlg::slotAskPipeTemperature()
+{
+	m_tempObj->writeTemperatureComBuffer();
 }
 
 //控制板通讯串口
@@ -794,18 +802,20 @@ int FlowStandardDlg::openWaterOutValve()
 
 /*
 ** 功能：判断天平重量是否达到要求的检定量；计算检定过程的平均温度和平均流量(m3/h)
+** 脉冲数会很大，超出float的范围，所以要用double
 */
-int FlowStandardDlg::judgeTartgetVolAndCalcAvgTemperAndFlow(float initV, float verifyV)
+int FlowStandardDlg::judgeTartgetVolAndCalcAvgTemperAndFlow(double initV, double verifyV)
 {
-	float targetV       = initV + verifyV;
+	double targetV       = initV + verifyV;
 	ui.tableWidget->setEnabled(false);
 	ui.btnAllReadNO->setEnabled(false);
 	ui.btnAllReadData->setEnabled(false);
 	ui.btnAllVerifyStatus->setEnabled(false);
 	QDateTime startTime = QDateTime::currentDateTime();
 	int second          = 0;
-	float nowFlow       = m_paraSetReader->getFpBySeq(m_nowOrder).fp_verify;
-	float nowVol        = initV;
+	double nowFlow       = m_paraSetReader->getFpBySeq(m_nowOrder).fp_verify;
+	double nowVol        = initV;
+	flow_rate_wdg wdgIdx = (flow_rate_wdg)m_paraSetReader->getBigSmallBySeq(m_nowOrder);//获取大流量还是小流量点 
 	while (!m_stopFlag && (nowVol < targetV))
 	{
 		qDebug()<<"当前流水量 ="<<nowVol<<", 小于目标体积 "<<targetV;
@@ -816,8 +826,8 @@ int FlowStandardDlg::judgeTartgetVolAndCalcAvgTemperAndFlow(float initV, float v
 		ui.labelHintPoint->setText(tr("NO. <font color=DarkGreen size=6><b>%1</b></font> flow point: <font color=DarkGreen size=6><b>%2</b></font> m3/h")\
 			.arg(m_nowOrder).arg(nowFlow));
 		ui.labelHintProcess->setText(tr("Verifying...Please wait for about <font color=DarkGreen size=6><b>%1</b></font> second").arg(second));
-		wait(CYCLE_TIME);
-		nowVol = ui.lcdAccumStdMeter->value();
+		wait(CYCLE_TIME);		
+		nowVol = getAccumFLowVolume(wdgIdx);//记录标准表体积(L)
 	}
 
 	m_pipeInTemper = m_pipeInTemper/m_avgTFCount;   //入口平均温度
@@ -1249,13 +1259,14 @@ int FlowStandardDlg::startVerifyFlowPoint(int order)
 	m_realFlow = ui.lcdFlowRate->value();
 	m_avgTFCount = 1;
 
-	int portNo = m_paraSetReader->getFpBySeq(order).fp_valve;  //order对应的阀门端口号
-	flow_rate_wdg wdgIdx = (flow_rate_wdg)m_paraSetReader->getBigSmallBySeq(order);//获取大流量还是小流量点 
+	int portNo = m_paraSetReader->getFpBySeq(order).fp_valve;  //order对应的阀门端口号	
 	float verifyQuantity = m_paraSetReader->getFpBySeq(order).fp_quantity; //第order次检定对应的检定量
 	float frequence = m_paraSetReader->getFpBySeq(order).fp_freq; //order对应的频率
 	m_controlObj->askSetDriverFreq(frequence);
 
+	flow_rate_wdg wdgIdx = (flow_rate_wdg)m_paraSetReader->getBigSmallBySeq(order);//获取大流量还是小流量点 
 	m_stdStartVol = getAccumFLowVolume(wdgIdx);//记录标准表初始体积(L)
+	//m_stdStartVol = ui.lcdAccumStdMeter->value();
 	qDebug() << "start volumn: " << m_stdStartVol;
 	float stdStartT = m_pipeOutTemper;//标准表初始温度, 现采集管路出口的平均温度.(不准确需要更精确的修正)
 	float stdStartDen = m_chkAlg->getDensityByQuery(stdStartT);//标准表初始平均密度(kg/L)
@@ -1277,6 +1288,7 @@ int FlowStandardDlg::startVerifyFlowPoint(int order)
 			wait(BALANCE_STABLE_TIME); //等待3秒钟，让天平数值稳定
 
 			m_stdEndVol = getAccumFLowVolume(wdgIdx);//记录标准表最终体积(L)
+			//m_stdEndVol = ui.lcdAccumStdMeter->value();
 			float stdEndT = m_pipeOutTemper;//标准表最终温度, 现采集管路出口的平均温度.(不准确需要更精确的修正)
 			float stdEndDen = m_chkAlg->getDensityByQuery(stdEndT);//标准表最终平均密度(kg/L)
 			qDebug() << "end volumn: " << m_stdEndVol;
