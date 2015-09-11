@@ -42,6 +42,7 @@
 #include "calculator_result.h"
 #include "cmb_result.h"
 #include "total_result.h"
+#include "scancodedlg.h"
 
 MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
@@ -57,6 +58,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_flowResultDlg = NULL;
 	m_alg = new CAlgorithm();
 
+	m_scanCodeDlg = NULL;
 	m_setcom = NULL;
 	m_datatestdlg = NULL;
 	m_portSet = NULL;
@@ -122,6 +124,12 @@ void MainForm::closeEvent( QCloseEvent * event)
 		{
 			delete m_alg;
 			m_alg = NULL;
+		}
+
+		if (m_scanCodeDlg)
+		{
+			delete m_scanCodeDlg;
+			m_scanCodeDlg = NULL;
 		}
 
 		if (m_setcom)
@@ -251,6 +259,21 @@ void MainForm::closeEvent( QCloseEvent * event)
 			m_TotalResultDlg = NULL;
 		}
 	}
+}
+
+void MainForm::on_actionScanCode_triggered()
+{
+	if (NULL == m_scanCodeDlg)
+	{
+		m_scanCodeDlg = new ScanCodeDlg();
+	}
+	else //目的是执行ScanCodeDlg的构造函数
+	{
+		delete m_scanCodeDlg;
+		m_scanCodeDlg = NULL;
+		m_scanCodeDlg = new ScanCodeDlg();
+	}
+	m_scanCodeDlg->show();
 }
 
 void MainForm::on_actionComSet_triggered()

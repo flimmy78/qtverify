@@ -30,6 +30,7 @@ class PlaResultDlg;
 class CalcResultDlg;
 class CmbResultDlg;
 class TotalResultDlg;
+class ScanCodeDlg;
 
 class MainForm : public QMainWindow
 {
@@ -42,6 +43,7 @@ public:
 	DbMySql *m_mySql;
 	
 	CAlgorithm *m_alg;
+	ScanCodeDlg *m_scanCodeDlg; //扫码写表号
 	SetComDlg *m_setcom; //串口参数设置
 	DataTestDlg *m_datatestdlg; //采集与控制测试程序
 	SetPortFrm *m_portSet; //端口模块设置
@@ -75,6 +77,7 @@ public:
 
 public slots:
 	//SystemSet
+	void on_actionScanCode_triggered();
 	void on_actionComSet_triggered();
 	void on_actionPortSet_triggered();
 	void on_actionComDebuger_triggered();

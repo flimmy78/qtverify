@@ -40,6 +40,7 @@
     <property name="title">
      <string>SystemSet(&amp;S)</string>
     </property>
+    <addaction name="actionScanCode"/>
     <addaction name="actionComSet"/>
     <addaction name="actionPortSet"/>
     <addaction name="actionComDebuger"/>
@@ -133,6 +134,7 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionScanCode"/>
    <addaction name="actionComSet"/>
    <addaction name="actionPortSet"/>
    <addaction name="actionComDebuger"/>
@@ -525,6 +527,18 @@
    </property>
    <property name="toolTip">
     <string>UserManage</string>
+   </property>
+  </action>
+  <action name="actionScanCode">
+   <property name="icon">
+    <iconset resource="../qtverify.qrc">
+     <normaloff>:/qtverify/images/scancode.png</normaloff>:/qtverify/images/scancode.png</iconset>
+   </property>
+   <property name="text">
+    <string>ScanCode</string>
+   </property>
+   <property name="toolTip">
+    <string>ScanCode</string>
    </property>
   </action>
  </widget>
