@@ -29,7 +29,13 @@ class ReadComConfig;
 ** 功能：数据采集与测试
 */
 
+#define MAX_RATE_TIME 40000//调节获得最大流量所需时间
 #define WAIT_REG_TIME 50000//等待调节阀到位并水流稳定时间
+#define WAIT_SECOND (WAIT_REG_TIME/1000)//等待调节阀到位并水流稳定时间(second)
+#define PRECISION (0.03*targetRate)//流速设定误差限
+#define Kp	(1/m_maxRate)
+#define Ki	(0.77)
+#define Kd	(0.18)
 
 class DATATESTDLG_EXPORT DataTestDlg : public QWidget
 {
@@ -112,6 +118,7 @@ public slots:
 	void on_btnParaSet_clicked();
 	void on_btnExit_clicked();
 
+	void slotAskPipeTemperature();
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
 	void slotFreshStdTempValue(const QString& stdTempStr); //刷新标准温度值
 	void slotFreshBalanceValue(const float& balValue);     //刷新天平数值
@@ -151,6 +158,7 @@ public slots:
 	void on_lnEditOutStdResist_textChanged(const QString & text);
 
 	void on_lnEditTargetRate_returnPressed();//设定目标流量
+	void on_lnEditMaxRate_returnPressed();//设定最大流速
 
 	void slotAskStdTemperature();
 	void clearMeterDispInfo();
@@ -182,7 +190,7 @@ private:
 
 	int getRouteByWdg(flow_rate_wdg, flow_type);//根据部件号读取标准表的通道号
 	float getStdUpperFlow(flow_rate_wdg wdgIdx);//根据部件号读取相应标准表的上限流量值
-	float getStdPulse(flow_rate_wdg wdgIdx);//根据部件号读取相应标准表的脉冲值
+	double getStdPulse(flow_rate_wdg wdgIdx);//根据部件号读取相应标准表的脉冲值
 
 	void freshInstStdMeter();//刷新瞬时读数
 	void freshAccumStdMeter();//刷新累积读数
@@ -195,11 +203,15 @@ private:
 	/*******************电动调节阀******************************/
 	QTimer *m_setRegularTimer;
 	float m_maxRate;
+	float m_pre_error;
+	float m_curr_error;
+	float m_integral;
 	int m_degree;
 	int m_openRegulateTimes;
 	float m_currentRate;
 	bool m_maxRateGetted;//是否已获取过最大流量值
 	void setRegulate(float currentRate, float targetRate);
+	int degreeGet(float currentRate, float targetRate);
 	void stopSetRegularTimer();
 	/******************电动调节阀end***************************/
 private slots:

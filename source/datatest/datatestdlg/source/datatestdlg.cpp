@@ -36,7 +36,7 @@ DataTestDlg::~DataTestDlg()
 void DataTestDlg::closeEvent( QCloseEvent * event)
 {
 	qDebug()<<"^^^^^DataTestDlg::closeEvent";
-
+	
 	if (m_paraSetReader) //读检定参数
 	{
 		delete m_paraSetReader;
@@ -55,14 +55,16 @@ void DataTestDlg::closeEvent( QCloseEvent * event)
 		m_readComConfig = NULL;
 	}
 
-	if (m_tempObj)  // 温度采集
+	if (m_tempThread.isRunning())
 	{
-		delete m_tempObj;
-		m_tempObj = NULL;
-
-		m_tempThread.exit(); //否则日志中会有警告"QThread: Destroyed while thread is still running"
+		m_tempThread.exit();
+		if (m_tempObj)  // 温度采集
+		{
+			delete m_tempObj;
+			m_tempObj = NULL;
+		}
 	}
-
+	
 	if (m_controlObj)  //阀门控制
 	{
 		delete m_controlObj;
@@ -301,10 +303,16 @@ void DataTestDlg::initTemperatureCom()
 	connect(m_tempObj, SIGNAL(temperatureIsReady(const QString &)), this, SLOT(slotFreshComTempValue(const QString &)));
 
 	m_tempTimer = new QTimer();
-	connect(m_tempTimer, SIGNAL(timeout()), m_tempObj, SLOT(writeTemperatureComBuffer()));
+	//connect(m_tempTimer, SIGNAL(timeout()), m_tempObj, SLOT(writeTemperatureComBuffer()));
+	connect(m_tempTimer, SIGNAL(timeout()), this, SLOT(slotAskPipeTemperature()));
 // 	connect(m_tempTimer, SIGNAL(timeout()), this, SLOT(slotFreshFlow()));
 	
 	m_tempTimer->start(TIMEOUT_PIPE_TEMPER); //周期请求温度
+}
+
+void DataTestDlg::slotAskPipeTemperature()
+{
+	m_tempObj->writeTemperatureComBuffer();
 }
 
 /*
@@ -372,26 +380,50 @@ void DataTestDlg::initControlCom()
 // 	connect(m_controlObj, SIGNAL(controlGetBalanceValueIsOk(const float&)), this, SLOT(slotFreshBalanceValue(const float &)));
 }
 
-void DataTestDlg::on_lnEditTargetRate_returnPressed()
+void DataTestDlg::on_lnEditMaxRate_returnPressed()
 {
+	QString str = ui.lnEditMaxRate->text();
+	QRegExp rx("\\d+.\\d*");//匹配整数或小数
+	if (rx.exactMatch(str))
+	{
+		m_maxRate = str.toFloat();
+		m_maxRateGetted = true;
+		qDebug()<<"max flow rate setted: " << m_maxRate;
+		if (m_setRegularTimer->isActive())
+			m_setRegularTimer->stop();
+	}
+}
+
+void DataTestDlg::on_lnEditTargetRate_returnPressed()
+{						   
 	if (!m_maxRateGetted)
 	{
-		m_degree = 99;//先调节到大流量, 得出最大流量
-		wait(WAIT_REG_TIME);//等待调节阀调节到最大开度
-		m_maxRate = ui.lcdStdMeterFlowRate->value();//采集最大开度时的流量
-		m_maxRateGetted = true;
-	}	
-
+		QMessageBox::warning(this, tr("MaxRate"), tr("please set maxRate first!"));
+		return;
+	}
+	if (!m_nowRegNo)
+	{
+		m_nowRegNo = m_portsetinfo.regflow1No;
+	}
+	m_pre_error = 0.0;
+	m_integral = 0.0;
 	QString str = ui.lnEditTargetRate->text();
 	QRegExp rx("\\d+.\\d*");//匹配整数或小数
 	if (rx.exactMatch(str))
 	{
 		float target = str.toFloat();
-		m_degree = target/m_maxRate;
-		if (!m_setRegularTimer->isActive())
+		if (target > m_maxRate)
 		{
-			m_setRegularTimer->start(WAIT_REG_TIME);
-		}		
+			QMessageBox::warning(this, tr("Too Large"), tr("setted rate is greater than maxRate, exit!"));
+			qDebug() <<"setted rate is greater than maxRate, exit!";
+			return;
+		}
+
+		if (m_setRegularTimer->isActive())
+			m_setRegularTimer->stop();
+
+		qDebug() <<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ starting m_setRegularTimer $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$";
+		m_setRegularTimer->start(WAIT_REG_TIME);
 	}
 }
 
@@ -404,45 +436,49 @@ void DataTestDlg::setRegulate(float currentRate, float targetRate)
 {
 	qDebug() << "current Rate : " << currentRate;
 	qDebug() << "target Rate : " << targetRate;
+	qDebug() << "current regular number: " << m_nowRegNo;
+	qDebug() << "current waitting time: "  << WAIT_REG_TIME;
 	//如果currentRate是0, 那么开启电动阀到m_degree
 	//如果开了5次, currentRate还是0, 那么提示用户打开手动球阀
 	if (currentRate <=0.0f)
 	{
+		qDebug() << "current m_openRegulateTimes: " <<m_openRegulateTimes;
 		if (m_openRegulateTimes >= 5)
 		{
 			QMessageBox::warning(this, tr("Open Valve"), tr("please open Manual Ball Valve"));
 			stopSetRegularTimer();
 			return;
 		}
-		m_controlObj->askControlRegulate(m_portsetinfo.regflow1No, m_degree);
-		//m_controlObj->askControlRegulate(m_portsetinfo.regflow2No, m_degree);
+		m_controlObj->askControlRegulate(m_nowRegNo, m_degree);
 		m_openRegulateTimes++;
 		return;
 	}
+	
 	float deltaV = qAbs(targetRate - currentRate);
-	float precision = 0.003*targetRate;
-	if (deltaV > precision)
+	if (deltaV > PRECISION)
 	{
-		if (0 < m_degree && m_degree <= 99)
-		{
-			m_degree = (targetRate/currentRate)*m_degree;//假定流速与开度呈线性关系
-			m_controlObj->askControlRegulate(m_portsetinfo.regflow1No, m_degree);
-			//m_controlObj->askControlRegulate(m_portsetinfo.regflow2No, m_degree);
-			qDebug() << "current degree: " << m_degree;
-		}
-		else if (m_degree > 99)//如果开度开到99%, 当前速度还是小于目标速度, 提示用户增大手动阀开度和水泵频率
-		{
-			//QMessageBox::warning(this, tr("Increase"), tr("please increase manual Valve or Pump freq"));
-			//stopSetRegularTimer();
-		}
-		else if (m_degree == 0)//如果开度关到0, 而当前速度还是大于目标速度, 那么提示用户检查管路和相关设备
-		{
-			//QMessageBox::warning(this, tr("Error"), tr("please your pipe and device sensor, they may be error!"));
-			//stopSetRegularTimer();
-		}
+		m_degree = degreeGet(currentRate, targetRate);
+		qDebug() << "current degree: " << m_degree;
+		m_controlObj->askControlRegulate(m_nowRegNo, m_degree);
+		qDebug() << "%%%%%%% regular setted %%%%%%%";
 	}
 	else
+	{
 		stopSetRegularTimer();
+		qDebug() << "\n######################################gain target rate.######################################\n";
+	}
+}
+
+int DataTestDlg::degreeGet(float currentRate, float targetRate)
+{
+	m_curr_error = targetRate - currentRate;
+	m_integral += m_curr_error*WAIT_SECOND;
+	float derivative = (m_curr_error - m_pre_error)/WAIT_SECOND;
+	float output = Kp*m_curr_error + Ki*m_integral + Kd*derivative;
+	qDebug() << "Kp:--" <<Kp<<" Ki:--"<<Ki<<" Kd:--"<<Kd<<" maxRate:--"<<m_maxRate;
+	qDebug() << "oooooutput: " << output;
+	m_pre_error = m_curr_error;
+	return (int)output;
 }
 
 void DataTestDlg::stopSetRegularTimer()
@@ -478,9 +514,6 @@ void DataTestDlg::initComOfHeatMeter()
 	connect(m_meterObj, SIGNAL(readMeterSmallCoeIsOK(const QString&, const QString&)), \
 		this, SLOT(slotFreshSmallCoe(const QString&, const QString&)));
 
-// 	ComInfoStruct comStruct = m_readComConfig->ReadMeterConfigByNum("1");
-// 	ui.parityComboBox->setCurrentIndex(comStruct.parity);
-// 	ui.stopBitsComboBox->setCurrentIndex(comStruct.stopBit);
 	QStringList cfgList = m_readComConfig->ReadIndexByName(meter(1));
 	ui.portNameComboBox->setCurrentIndex(cfgList.at(0).toInt());
 	ui.baudRateComboBox->setCurrentIndex(cfgList.at(1).toInt());
@@ -545,7 +578,7 @@ void DataTestDlg::initRegulateStatus()
 //打开热量表通讯串口
 void DataTestDlg::on_btnOpenCom_clicked()
 {
-	ComInfoStruct comStruct;// = m_readComConfig->ReadMeterConfigByNum("0");
+	ComInfoStruct comStruct;
 	comStruct.portName = ui.portNameComboBox->currentText();
 	comStruct.baudRate = ui.baudRateComboBox->currentText().toInt();
 	comStruct.dataBit = ui.dataBitsComboBox->currentText().toInt();
@@ -674,7 +707,7 @@ void DataTestDlg::on_btnRegulate1_clicked() //调节阀1
 	m_controlObj->askControlRegulate(m_nowRegNo, ui.spinBoxValveOpening->value());
 }
 
-void DataTestDlg::on_btnRegulate2_clicked() //调节阀1
+void DataTestDlg::on_btnRegulate2_clicked() //调节阀2
 {
 	m_nowRegNo = m_portsetinfo.regflow2No;
 	setRegBtnBackColor(m_regBtn[m_nowRegNo], false); //初始化调节阀背景色
@@ -740,12 +773,6 @@ void DataTestDlg::slotFreshStdTempValue(const QString& stdTempStr)
 // 	qDebug()<<"stdTempStr ="<<stdTempStr<<"; m_stdTempCommand ="<<m_stdTempCommand;
 	switch (m_stdTempCommand)
 	{
-// 	case stdTempT1: 
-// 		ui.lnEditOutStdResist->setText(stdTempStr);
-// 		break;
-// 	case stdTempT2: 
-// 		ui.lnEditInStdTemp->setText(stdTempStr);
-// 		break;
 	case stdTempR1: 
 		ui.lnEditInStdResist->setText(stdTempStr);
 		m_stdTempCommand = stdTempR2;
@@ -798,7 +825,6 @@ void DataTestDlg::setValveBtnBackColor(QPushButton *btn, bool status)
 	}
 	if (status) //阀门打开 绿色
 	{
-// 		btn->setStyleSheet("background-color:rgb(0,255,0);border:0px;border-image: url(:/datatestdlg/images/open.png);"); 
 		btn->setStyleSheet("background-color:rgb(0,255,0);"); 
 	}
 	else //阀门关闭 红色
@@ -1159,9 +1185,9 @@ float DataTestDlg::getStdUpperFlow(flow_rate_wdg wdgIdx)
 	return upperFlow;
 }
 
-float DataTestDlg::getStdPulse(flow_rate_wdg wdgIdx)
+double DataTestDlg::getStdPulse(flow_rate_wdg wdgIdx)
 {
-	float pulse = 0.0f;
+	double pulse = 0.0f;
 	m_stdParam->beginReadArray("Route");
 	m_stdParam->setArrayIndex(wdgIdx);
 	int diamWdg = m_stdParam->value("Diameter").toInt();//读取管径的部件号
@@ -1169,7 +1195,7 @@ float DataTestDlg::getStdPulse(flow_rate_wdg wdgIdx)
 
 	m_stdParam->beginReadArray("Pulse");
 	m_stdParam->setArrayIndex(diamWdg);
-	pulse = m_stdParam->value("Pulse").toFloat();
+	pulse = m_stdParam->value("Pulse").toDouble();
 	m_stdParam->endArray();
 	return pulse;
 }
@@ -1186,14 +1212,14 @@ void DataTestDlg::slotGetAccumStdMeterPulse(const QByteArray & valueArray)
 void DataTestDlg::freshInstStdMeter()
 {
 	ui.lcdInstStdMeter_25->display(getInstFlowRate(FLOW_RATE_BIG));
-	ui.lcdInstStdMeter_10->display(getInstFlowRate(FLOW_RATE_MID_2));
+	ui.lcdInstStdMeter_10->display(getInstFlowRate(FLOW_RATE_MID_1));
 	ui.lcdInstStdMeter_3->display(getInstFlowRate(FLOW_RATE_SMALL));
 }
 
 void DataTestDlg::freshAccumStdMeter()
 {
 	ui.lcdAccumStdMeter_25->display(getAccumFLowVolume(FLOW_RATE_BIG));
-	ui.lcdAccumStdMeter_10->display(getAccumFLowVolume(FLOW_RATE_MID_2));
+	ui.lcdAccumStdMeter_10->display(getAccumFLowVolume(FLOW_RATE_MID_1));
 	ui.lcdAccumStdMeter_3->display(getAccumFLowVolume(FLOW_RATE_SMALL));
 }
 
@@ -1202,6 +1228,7 @@ float DataTestDlg::getInstFlowRate(flow_rate_wdg idx)
 	int route = getRouteByWdg(idx, INST_FLOW_VALUE);
 	int count = get9017RouteI(route, m_instStdPulse);
 	float upperFlow = getStdUpperFlow(idx);
+	//qDebug() <<"valve:--"<<idx<<" count:--"<<count<<" upperFlow:--"<<upperFlow;
 	return getInstStdValue(count, upperFlow);
 }
 
@@ -1209,6 +1236,7 @@ float DataTestDlg::getAccumFLowVolume(flow_rate_wdg idx)
 {
 	int route = getRouteByWdg(idx, ACCUM_FLOW_VALUE);
 	int count = get9150ARouteI(route, m_accumStdPulse);
-	float pulse = getStdPulse(idx);
+	double pulse = getStdPulse(idx);
+	//qDebug() <<"valve:--"<<idx<<" count:--"<<count<<" pulse:--"<<pulse;
 	return count*pulse;
 }
