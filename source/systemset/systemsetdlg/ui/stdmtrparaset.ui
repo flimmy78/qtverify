@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
+    <width>1032</width>
     <height>846</height>
    </rect>
   </property>
@@ -520,7 +520,7 @@
            </palette>
           </property>
           <property name="title">
-           <string>DN5 Meter Coe</string>
+           <string>DN6 Meter Coe</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_8">
            <item>
@@ -1877,7 +1877,7 @@ There should not be space between tow flow points! K Coe: (Stand Value)/(Meter V
              </item>
              <item>
               <property name="text">
-               <string>DN5</string>
+               <string>DN6</string>
               </property>
              </item>
              <item>
@@ -2167,7 +2167,7 @@ There should not be space between tow flow points! K Coe: (Stand Value)/(Meter V
              </item>
              <item>
               <property name="text">
-               <string>DN5</string>
+               <string>DN6</string>
               </property>
              </item>
              <item>
@@ -2457,7 +2457,7 @@ There should not be space between tow flow points! K Coe: (Stand Value)/(Meter V
              </item>
              <item>
               <property name="text">
-               <string>DN5</string>
+               <string>DN6</string>
               </property>
              </item>
              <item>
@@ -2747,7 +2747,7 @@ There should not be space between tow flow points! K Coe: (Stand Value)/(Meter V
              </item>
              <item>
               <property name="text">
-               <string>DN5</string>
+               <string>DN6</string>
               </property>
              </item>
              <item>
