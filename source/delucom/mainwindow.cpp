@@ -13,51 +13,13 @@ QMainWindow(parent),
 	startInit();
 	myCom = NULL;
 
-// 	ui->qter->setText(tr("<a href=\"http://www.sdm.com.cn\">www.shm.com.cn</a>"));
-#ifdef Q_OS_LINUX
-	ui->portNameComboBox->addItem( "ttyUSB0");
-	ui->portNameComboBox->addItem( "ttyUSB1");
-	ui->portNameComboBox->addItem( "ttyUSB2");
-	ui->portNameComboBox->addItem( "ttyUSB3");
-	ui->portNameComboBox->addItem( "ttyS0");
-	ui->portNameComboBox->addItem( "ttyS1");
-	ui->portNameComboBox->addItem( "ttyS2");
-	ui->portNameComboBox->addItem( "ttyS3");
-	ui->portNameComboBox->addItem( "ttyS4");
-	ui->portNameComboBox->addItem( "ttyS5");
-	ui->portNameComboBox->addItem( "ttyS6");
-#elif defined (Q_OS_WIN)
-	ui->portNameComboBox->addItem("COM1");
-	ui->portNameComboBox->addItem("COM2");
-	ui->portNameComboBox->addItem("COM3");
-	ui->portNameComboBox->addItem("COM4");
-	ui->portNameComboBox->addItem("COM5");
-	ui->portNameComboBox->addItem("COM6");
-	ui->portNameComboBox->addItem("COM7");
-	ui->portNameComboBox->addItem("COM8");
-	ui->portNameComboBox->addItem("COM9");
-	ui->portNameComboBox->addItem("COM10");
-	ui->portNameComboBox->addItem("COM11");
-	ui->portNameComboBox->addItem("COM12");
-	ui->portNameComboBox->addItem("COM13");
-	ui->portNameComboBox->addItem("COM14");
-	ui->portNameComboBox->addItem("COM15");
-	ui->portNameComboBox->addItem("COM16");
-	ui->portNameComboBox->addItem("COM17");
-	ui->portNameComboBox->addItem("COM18");
-	ui->portNameComboBox->addItem("COM19");
-	ui->portNameComboBox->addItem("COM20");
-	ui->portNameComboBox->addItem("COM21");
-	ui->portNameComboBox->addItem("COM22");
-	ui->portNameComboBox->addItem("COM23");
-	ui->portNameComboBox->addItem("COM24");
-	ui->portNameComboBox->addItem("COM25");
-	ui->portNameComboBox->addItem("COM26");
-	ui->portNameComboBox->addItem("COM27");
-	ui->portNameComboBox->addItem("COM28");
-	ui->portNameComboBox->addItem("COM29");
-	ui->portNameComboBox->addItem("COM30");
-#endif
+	foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts()) 
+	{  
+		qDebug() << "Name        : " << info.portName();
+		qDebug() << "Description : " << info.description();
+		qDebug() << "Manufacturer: " << info.manufacturer();
+		ui->portNameComboBox->addItem(info.portName());
+	}
 
 	QLabel *permanent = new QLabel(this);
 //	permanent->setFrameStyle(QFrame::NoFrame | QFrame::Sunken);

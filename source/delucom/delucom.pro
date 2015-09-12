@@ -1,4 +1,4 @@
-CONFIG  += serialport
+#CONFIG  += serialport
 CONFIG  += qt warn_on debug
 TARGET = delucom
 TEMPLATE = app
@@ -20,7 +20,7 @@ QMAKE_LIBDIR +=  ./           \
 		 $(ADEHOME)/lib \
 		 $(ADEHOME)/bin
 
-LIBS += -lalgorithm
+LIBS += -lalgorithm -lQtSerialPortd
 
 win32:debug{
 	CONFIG += console
