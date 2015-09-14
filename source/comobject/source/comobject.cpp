@@ -566,7 +566,7 @@ bool BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
 // 	qDebug()<<"$$$ openBalanceCom thread:"<<QThread::currentThreadId();
 	QString portName = comStruct->portName; //获取串口名
 	m_balanceCom = new QSerialPort();
-	connect(m_balanceCom, SIGNAL(readyRead()), this, SLOT(readBalanceComBuffer()));
+	connect(m_balTimer, SIGNAL(timeout()), this, SLOT(readBalanceComBuffer()));
 	SET_COM_PROPERTY(m_balanceCom)
 
 	if(m_balanceCom->open(QIODevice::ReadWrite)) 
