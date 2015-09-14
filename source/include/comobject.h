@@ -18,12 +18,11 @@
 #include <QtCore/QThread>  
 #include <QtCore/QObject> 
 #include <QtCore/QTimer>
-#include "QtSerialPort/QSerialPort"
-#include "QtSerialPort/QSerialPortInfo"
 
 #include "basedef.h"
 #include "protocol.h"
-//#include "qextserialport.h"
+#include "qextserialport.h"
+
 
 #define VALVE_OPEN		true	//阀门打开状态
 #define VALVE_CLOSE		false   //阀门关闭状态
@@ -32,15 +31,6 @@
 #define REG_FAILED	 false  //调节阀调节失败
 
 #define TIME_OUT	10		//延时，TIME_OUT是串口读写的延时
-#define USE_QT4
-//设置串口属性, 要求调用者使用comStruct(ComInfoStruct *)这个名字来描述串口的属性
-#define SET_COM_PROPERTY(comObj)	comObj->setPortName(comStruct->portName);\
-									comObj->setBaudRate((QSerialPort::BaudRate)comStruct->baudRate);\
-									comObj->setDataBits((QSerialPort::DataBits)comStruct->dataBit); \
-									comObj->setParity(serialParity[comStruct->parity]);\
-									comObj->setStopBits(serialStopBits[comStruct->stopBit]);\
-									comObj->setFlowControl(QSerialPort::NoFlowControl);
-
 
 class COMOBJECT_EXPORT ComThread : public QThread 
 {      
@@ -66,8 +56,7 @@ public:
 	ComObject(QObject* parent=0);
 	~ComObject();
 
-	QMap<int, QSerialPort::Parity> serialParity;
-	QMap<int, QSerialPort::StopBits> serialStopBits;
+
 signals:
 
 public slots:
@@ -86,8 +75,7 @@ public:
 	TempComObject(QObject* parent=0);
 	~TempComObject();
 
-	//QextSerialPort *m_tempCom;      //温度采集串口
-	QSerialPort *m_tempCom;      //温度采集串口
+	QextSerialPort *m_tempCom;      //温度采集串口
 	Temp_Frame_Struct *m_tempFrame; //温度采集通讯帧结构
 	TempProtocol *m_tempProtocol;   //温度采集通讯协议类对象
 	QByteArray m_buf; //串口缓冲区数据
@@ -113,8 +101,7 @@ public:
 	ControlComObject(QObject* parent=0);
 	~ControlComObject();
 
-	//QextSerialPort *m_controlCom;
-	QSerialPort *m_controlCom;
+	QextSerialPort *m_controlCom;
 	CtrlProtocol *m_controlProtocol;   //下位机控制通讯协议类对象
 	QByteArray m_conTmp;
 	float m_balValue;
@@ -154,8 +141,7 @@ public:
 	BalanceComObject(QObject* parent=0);
 	~BalanceComObject();
 
-	//QextSerialPort *m_balanceCom;
-	QSerialPort* m_balanceCom;
+	QextSerialPort *m_balanceCom;
 	BalanceProtocol *m_balanceProtocol;   //天平通讯协议类对象
 	QTimer *m_balTimer; //定时器 (轮询天平数据)
 
@@ -181,8 +167,7 @@ public:
 	MeterComObject(QObject* parent=0);
 	~MeterComObject();
 
-	//QextSerialPort *m_meterCom;
-	QSerialPort *m_meterCom;
+	QextSerialPort *m_meterCom;
 	MeterProtocol *m_meterProtocol;
 	QByteArray m_meterTmp;
 	QString m_portName;
@@ -227,8 +212,7 @@ public:
 	StdTempComObject(QObject* parent=0);
 	~StdTempComObject();
 
-	//QextSerialPort *m_tempCom;      //温度采集串口
-	QSerialPort* m_tempCom;
+	QextSerialPort *m_tempCom;      //温度采集串口
 	StdTempProtocol *m_stdTempProtocol;   //温度采集通讯协议类对象
 signals:
 	void temperatureIsReady(const QString &tempStr); //成功获取仪器返回值
@@ -270,10 +254,12 @@ signals:
 		void readLcModComBuffer();
 		void close();
 
+		//void sendCmd();
 private:
-	//QextSerialPort *m_lcModCom;      //电磁流量计采集串口
-	QSerialPort *m_lcModCom;      //电磁流量计采集串口
+	QextSerialPort *m_lcModCom;      //电磁流量计采集串口
 	lcModbusRTUProtocol *m_lcModProtocol;   //电磁流量计采集通讯协议类对象
+
+	//int m_int;
 };
 
 #endif //COMOBJECT_H
