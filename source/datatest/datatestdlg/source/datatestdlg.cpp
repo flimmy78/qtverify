@@ -371,6 +371,8 @@ void DataTestDlg::initControlCom()
 	connect(m_controlObj, SIGNAL(controlRegulateIsOk()), this, SLOT(slotSetRegulateOk()));
 	 
 	/*****************************************************************************************************/
+	m_pre_error = 0.0;
+	m_integral = 0.0;
 	m_maxRateGetted = false;
 	ui.lnEditTargetRate->setReadOnly(false);
 	m_setRegularTimer = new QTimer;
@@ -401,14 +403,14 @@ void DataTestDlg::on_lnEditTargetRate_returnPressed()
 		QMessageBox::warning(this, tr("MaxRate"), tr("please set maxRate first!"));
 		return;
 	}
+
 	if (!m_nowRegNo)
 	{
 		m_nowRegNo = m_portsetinfo.regflow1No;
 	}
-	m_pre_error = 0.0;
-	m_integral = 0.0;
+
 	QString str = ui.lnEditTargetRate->text();
-	QRegExp rx("\\d+.\\d*");//匹配整数或小数
+	QRegExp rx("\\d+(\\.\\d+)?");//匹配整数或小数
 	if (rx.exactMatch(str))
 	{
 		float target = str.toFloat();
