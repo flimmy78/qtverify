@@ -30,10 +30,10 @@ class ReadComConfig;
 */
 
 #define MAX_RATE_TIME 40000//调节获得最大流量所需时间
-#define WAIT_REG_TIME 50000//等待调节阀到位并水流稳定时间
+#define WAIT_REG_TIME 15000//等待调节阀到位并水流稳定时间
 #define WAIT_SECOND (WAIT_REG_TIME/1000)//等待调节阀到位并水流稳定时间(second)
 #define PRECISION (0.03*targetRate)//流速设定误差限
-#define Kp	(1/m_maxRate)
+#define Kp	(1.1)
 #define Ki	(0.77)
 #define Kd	(0.18)
 

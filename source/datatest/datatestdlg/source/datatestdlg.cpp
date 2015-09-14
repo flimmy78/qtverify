@@ -388,7 +388,7 @@ void DataTestDlg::on_lnEditMaxRate_returnPressed()
 	{
 		m_maxRate = str.toFloat();
 		m_maxRateGetted = true;
-		qDebug()<<"max flow rate setted: " << m_maxRate;
+		qCritical()<<"max flow rate setted: " << m_maxRate;
 		if (m_setRegularTimer->isActive())
 			m_setRegularTimer->stop();
 	}
@@ -415,14 +415,16 @@ void DataTestDlg::on_lnEditTargetRate_returnPressed()
 		if (target > m_maxRate)
 		{
 			QMessageBox::warning(this, tr("Too Large"), tr("setted rate is greater than maxRate, exit!"));
-			qDebug() <<"setted rate is greater than maxRate, exit!";
+			qCritical() <<"setted rate is greater than maxRate, exit!";
 			return;
 		}
 
 		if (m_setRegularTimer->isActive())
 			m_setRegularTimer->stop();
 
-		qDebug() <<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ starting m_setRegularTimer $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$";
+		qCritical() <<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ starting m_setRegularTimer $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$";
+		m_controlObj->askControlRegulate(m_nowRegNo, 99);
+		m_controlObj->askControlWaterPump(m_portsetinfo.pumpNo, true);//设定目标流量, 打开水泵
 		m_setRegularTimer->start(WAIT_REG_TIME);
 	}
 }
@@ -434,15 +436,15 @@ void DataTestDlg::slotSetRegulate()
 
 void DataTestDlg::setRegulate(float currentRate, float targetRate)
 {
-	qDebug() << "current Rate : " << currentRate;
-	qDebug() << "target Rate : " << targetRate;
-	qDebug() << "current regular number: " << m_nowRegNo;
-	qDebug() << "current waitting time: "  << WAIT_REG_TIME;
+	qCritical() << "current Rate : " << currentRate;
+	qCritical() << "target Rate : " << targetRate;
+	qCritical() << "current regular number: " << m_nowRegNo;
+	qCritical() << "current waitting time: "  << WAIT_REG_TIME;
 	//如果currentRate是0, 那么开启电动阀到m_degree
 	//如果开了5次, currentRate还是0, 那么提示用户打开手动球阀
 	if (currentRate <=0.0f)
 	{
-		qDebug() << "current m_openRegulateTimes: " <<m_openRegulateTimes;
+		qCritical() << "current m_openRegulateTimes: " <<m_openRegulateTimes;
 		if (m_openRegulateTimes >= 5)
 		{
 			QMessageBox::warning(this, tr("Open Valve"), tr("please open Manual Ball Valve"));
@@ -455,17 +457,16 @@ void DataTestDlg::setRegulate(float currentRate, float targetRate)
 	}
 	
 	float deltaV = qAbs(targetRate - currentRate);
-	if (deltaV > PRECISION)
+	m_degree = degreeGet(currentRate, targetRate);
+	qCritical() << "current degree: " << m_degree;
+	m_controlObj->askControlRegulate(m_nowRegNo, m_degree);
+	qCritical() << "%%%%%%% regular setted %%%%%%%";
+	if (deltaV <= PRECISION)
 	{
-		m_degree = degreeGet(currentRate, targetRate);
-		qDebug() << "current degree: " << m_degree;
-		m_controlObj->askControlRegulate(m_nowRegNo, m_degree);
-		qDebug() << "%%%%%%% regular setted %%%%%%%";
-	}
-	else
-	{
-		stopSetRegularTimer();
-		qDebug() << "\n######################################gain target rate.######################################\n";
+		//stopSetRegularTimer();
+		//m_controlObj->askControlWaterPump(m_portsetinfo.pumpNo, false);//到达目标流量, 关闭水泵
+		qCritical() << "\n######################################gain target rate.######################################\n";
+		
 	}
 }
 
@@ -475,10 +476,18 @@ int DataTestDlg::degreeGet(float currentRate, float targetRate)
 	m_integral += m_curr_error*WAIT_SECOND;
 	float derivative = (m_curr_error - m_pre_error)/WAIT_SECOND;
 	float output = Kp*m_curr_error + Ki*m_integral + Kd*derivative;
-	qDebug() << "Kp:--" <<Kp<<" Ki:--"<<Ki<<" Kd:--"<<Kd<<" maxRate:--"<<m_maxRate;
-	qDebug() << "oooooutput: " << output;
+	qCritical() << "Kp:--" <<Kp<<" Ki:--"<<Ki<<" Kd:--"<<Kd<<" maxRate:--"<<m_maxRate;
+	qCritical() << "P:--" <<Kp*m_curr_error<<" I:--"<<Ki*m_integral<<" D:--"<<Kd*derivative;
+	qCritical() <<"m_pre_error:--"<<m_pre_error<< "m_curr_error:--" <<m_curr_error<<" m_integral:--"<<m_integral<<" derivative:--"<<derivative;
+	qCritical() << "oooooutput: " << output;
 	m_pre_error = m_curr_error;
-	return (int)output;
+	int outdegree =  (int)(output>0 ? output: 0);
+	if (outdegree > 99)
+	{
+		outdegree = 99;
+	}
+
+	return outdegree;
 }
 
 void DataTestDlg::stopSetRegularTimer()

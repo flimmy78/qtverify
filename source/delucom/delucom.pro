@@ -5,7 +5,7 @@ TEMPLATE = app
 
 INCLUDEPATH += $$(ADEHOME_INC)/include/qextserial\
 				$$(ADEHOME_INC)/include
-				
+
 SOURCES += main.cpp\
         mainwindow.cpp \
         aboutdialog.cpp \
