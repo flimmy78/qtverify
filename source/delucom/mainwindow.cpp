@@ -42,7 +42,6 @@ QMainWindow(parent),
 		ui->parityComboBox->setCurrentIndex(m_comset->value("ComSettings/Parity").toInt());
 		ui->stopBitsComboBox->setCurrentIndex(m_comset->value("ComSettings/StopBit").toInt());
 	}
-	
 }
 
 MainWindow::~MainWindow()
