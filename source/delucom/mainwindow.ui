@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>849</width>
-    <height>580</height>
+    <width>1011</width>
+    <height>701</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -920,8 +920,8 @@ QLCDNumber{background:url(:/images/lcd.bmp)}
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>849</width>
-     <height>23</height>
+     <width>1011</width>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">

@@ -5,6 +5,7 @@
 #include <QtGui/QSplashScreen>
 #include <QtCore/QThread>
 #include <QtGui/QDesktopWidget>
+#include <QDir>
 
 #include "mainform.h"
 #include "logger.h"
@@ -104,6 +105,8 @@ int main(int argc, char *argv[])
 
 	splash->showMessage(QObject::tr("connect database ..."), align, Qt::blue);
 	wait(200);
+	QString strLibPath(adehome + QDir::separator()+ "bin");   
+	app.addLibraryPath(strLibPath); 
 	startdb(); //连接数据库
 
 	splash->showMessage(QObject::tr("setting up the mainwindow ..."), align, Qt::blue);
