@@ -501,17 +501,14 @@ bool QSerialPortPrivate::_q_completeAsyncCommunication()
     return startAsyncRead();
 }
 
-#include "commondefine.h"
 bool QSerialPortPrivate::_q_completeAsyncRead()
 {
     const qint64 bytesTransferred = overlappedResult(readCompletionOverlapped);
-	qCritical() << "bytesTransferred = " <<bytesTransferred;
     if (bytesTransferred == qint64(-1)) {
         readStarted = false;
         return false;
     }
 ////////////////////////////bug found here////////////////////////////////////
-	qCritical() << "readChunkBuffer.length = " << readChunkBuffer.length();
     if (bytesTransferred > 0 && (bytesTransferred < readChunkBuffer.length()) )
         readBuffer.append(readChunkBuffer.left(bytesTransferred));
 /////////////////////////////////////////////////////////////////////////
