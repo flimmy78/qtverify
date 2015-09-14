@@ -11,8 +11,8 @@ mac:QMAKE_FRAMEWORK_BUNDLE_NAME = $$TARGET
 
 PRECOMPILED_HEADER =
 
-DESTDIR = $$(ADEHOME)\tmp\qserialport
-MOC_DIR = $$(ADEHOME)/tmp/qserialport/moc
+DESTDIR = $(ADEHOME)\tmp\qserialport
+#MOC_DIR = $(ADEHOME)/tmp/qserialport/moc
 OBJECTS_DIR = $(ADEHOME)/tmp/qserialport/obj
 
 win32{
