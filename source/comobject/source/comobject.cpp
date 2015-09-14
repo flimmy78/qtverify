@@ -50,6 +50,14 @@ void ComThread::run()
 */
 ComObject::ComObject(QObject* parent) : QObject(parent)
 {
+	
+	serialParity.insert(0, QSerialPort::NoParity);
+	serialParity.insert(1, QSerialPort::OddParity);
+	serialParity.insert(2, QSerialPort::EvenParity);
+
+	serialStopBits.insert(0, QSerialPort::OneStop);
+	serialStopBits.insert(1, QSerialPort::OneAndHalfStop);
+	serialStopBits.insert(2, QSerialPort::TwoStop);
 }
 
 ComObject::~ComObject()
@@ -98,24 +106,44 @@ TempComObject::~TempComObject()
 	}
 }
 
+//bool TempComObject::openTemperatureCom(ComInfoStruct *comStruct)
+//{
+//// 	qDebug()<<"### openTemperatureCom thread:"<<QThread::currentThreadId();
+//	QString portName = comStruct->portName;// "COM2";//获取串口名
+//#ifdef Q_OS_LINUX
+//	m_tempCom = new QextSerialPort("/dev/" + portName);
+//#elif defined (Q_OS_WIN)
+//	m_tempCom = new QextSerialPort(portName, QextSerialPort::EventDriven);
+//#endif
+//	connect(m_tempCom, SIGNAL(readyRead()), this, SLOT(readTemperatureComBuffer()));
+//
+//	m_tempCom->setBaudRate((BaudRateType)comStruct->baudRate);// BAUD9600); //设置波特率  
+//	m_tempCom->setDataBits((DataBitsType)comStruct->dataBit); //DATA_8);    //设置数据位
+//	m_tempCom->setParity((ParityType)comStruct->parity);	  //PAR_EVEN);  //设置校验位
+//	m_tempCom->setStopBits((StopBitsType)comStruct->stopBit); //STOP_1);    //设置停止位
+//	m_tempCom->setFlowControl(FLOW_OFF); //设置数据流控制  
+//	m_tempCom->setTimeout(TIME_OUT);     //设置延时
+//
+//	if(m_tempCom->open(QIODevice::ReadWrite))
+//	{
+//		qDebug()<<"### OpenTemperatureCom:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
+//		return true;
+//	}
+//	else
+//	{
+//		qDebug()<<"### OpenTemperatureCom:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
+//		return false;
+//	}
+//}
+
 bool TempComObject::openTemperatureCom(ComInfoStruct *comStruct)
 {
-// 	qDebug()<<"### openTemperatureCom thread:"<<QThread::currentThreadId();
-	QString portName = comStruct->portName;// "COM2";//获取串口名
-#ifdef Q_OS_LINUX
-	m_tempCom = new QextSerialPort("/dev/" + portName);
-#elif defined (Q_OS_WIN)
-	m_tempCom = new QextSerialPort(portName, QextSerialPort::EventDriven);
-#endif
+	// 	qDebug()<<"### openTemperatureCom thread:"<<QThread::currentThreadId();
+	QString portName = comStruct->portName; //获取串口名
+	m_tempCom = new QSerialPort();
 	connect(m_tempCom, SIGNAL(readyRead()), this, SLOT(readTemperatureComBuffer()));
-
-	m_tempCom->setBaudRate((BaudRateType)comStruct->baudRate);// BAUD9600); //设置波特率  
-	m_tempCom->setDataBits((DataBitsType)comStruct->dataBit); //DATA_8);    //设置数据位
-	m_tempCom->setParity((ParityType)comStruct->parity);	  //PAR_EVEN);  //设置校验位
-	m_tempCom->setStopBits((StopBitsType)comStruct->stopBit); //STOP_1);    //设置停止位
-	m_tempCom->setFlowControl(FLOW_OFF); //设置数据流控制  
-	m_tempCom->setTimeout(TIME_OUT);     //设置延时
-
+	SET_COM_PROPERTY(m_tempCom)
+	
 	if(m_tempCom->open(QIODevice::ReadWrite))
 	{
 		qDebug()<<"### OpenTemperatureCom:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
@@ -128,10 +156,11 @@ bool TempComObject::openTemperatureCom(ComInfoStruct *comStruct)
 	}
 }
 
+
 //请求温度
 void TempComObject::writeTemperatureComBuffer()
 {
-// 	qDebug()<<"TempComObject::writeTemperatureComBuffer thread:"<<QThread::currentThreadId();
+ 	//qDebug()<<"TempComObject::writeTemperatureComBuffer thread:"<<QThread::currentThreadId();
 	if (NULL==m_tempProtocol || !m_tempCom->isOpen())
 	{
 		return;
@@ -139,11 +168,11 @@ void TempComObject::writeTemperatureComBuffer()
 	m_tempProtocol->makeSendBuf();
 	QByteArray buf = m_tempProtocol->getSendBuf();
 	int size = buf.size();
-	for (int i=0; i<size; i++)
-	{
-		printf("请求读温度：0x%.2x\n", (UINT8)buf.at(i));
-	}
-	printf("\n\n");
+	//for (int i=0; i<size; i++)
+	//{
+	//	printf("请求读温度：0x%.2x\n", (UINT8)buf.at(i));
+	//}
+	//printf("\n\n");
 	m_tempCom->flush();
 	m_tempCom->write(buf);
 }
@@ -253,23 +282,43 @@ void ControlComObject::setProtocolVersion(int version)
 
 }
 
+//bool ControlComObject::openControlCom(ComInfoStruct *comStruct)
+//{
+////	qDebug()<<"*** openControlCom thread:"<<QThread::currentThreadId();
+//	QString portName = comStruct->portName; //获取串口名
+//#ifdef Q_OS_LINUX
+//	m_controlCom = new QextSerialPort("/dev/" + portName);
+//#elif defined (Q_OS_WIN)
+//	m_controlCom = new QextSerialPort(portName, QextSerialPort::EventDriven);
+//#endif
+//	connect(m_controlCom, SIGNAL(readyRead()), this, SLOT(readControlComBuffer()));
+//
+//	m_controlCom->setBaudRate((BaudRateType)comStruct->baudRate); //设置波特率  
+//	m_controlCom->setDataBits((DataBitsType)comStruct->dataBit);  //设置数据位
+//	m_controlCom->setParity((ParityType)comStruct->parity);       //设置校验位
+//	m_controlCom->setStopBits((StopBitsType)comStruct->stopBit);  //设置停止位
+//	m_controlCom->setFlowControl(FLOW_OFF); //设置数据流控制  
+//	m_controlCom->setTimeout(TIME_OUT);     //设置延时
+//
+//	if(m_controlCom->open(QIODevice::ReadWrite))
+//	{
+//		qDebug()<<"*** OpenControlCom:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
+//		return true;
+//	}
+//	else
+//	{
+//		qDebug()<<"*** OpenControlCom:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
+//		return false;
+//	}
+//}
 bool ControlComObject::openControlCom(ComInfoStruct *comStruct)
 {
-//	qDebug()<<"*** openControlCom thread:"<<QThread::currentThreadId();
-	QString portName = comStruct->portName; //获取串口名
-#ifdef Q_OS_LINUX
-	m_controlCom = new QextSerialPort("/dev/" + portName);
-#elif defined (Q_OS_WIN)
-	m_controlCom = new QextSerialPort(portName, QextSerialPort::EventDriven);
-#endif
-	connect(m_controlCom, SIGNAL(readyRead()), this, SLOT(readControlComBuffer()));
+	//	qDebug()<<"*** openControlCom thread:"<<QThread::currentThreadId();
 
-	m_controlCom->setBaudRate((BaudRateType)comStruct->baudRate); //设置波特率  
-	m_controlCom->setDataBits((DataBitsType)comStruct->dataBit);  //设置数据位
-	m_controlCom->setParity((ParityType)comStruct->parity);       //设置校验位
-	m_controlCom->setStopBits((StopBitsType)comStruct->stopBit);  //设置停止位
-	m_controlCom->setFlowControl(FLOW_OFF); //设置数据流控制  
-	m_controlCom->setTimeout(TIME_OUT);     //设置延时
+	QString portName = comStruct->portName; //获取串口名
+	m_controlCom = new QSerialPort();
+	connect(m_controlCom, SIGNAL(readyRead()), this, SLOT(readControlComBuffer()));
+	SET_COM_PROPERTY(m_controlCom)
 
 	if(m_controlCom->open(QIODevice::ReadWrite))
 	{
@@ -438,7 +487,7 @@ BalanceComObject::BalanceComObject(QObject* parent) : ComObject(parent)
 {
 	m_balanceCom = NULL;
 
-	m_balanceProtocol = new BalanceProtocol;
+	m_balanceProtocol = NULL;
 
 	m_balTimer = new QTimer();
 }
@@ -472,36 +521,57 @@ BalanceComObject::~BalanceComObject()
 	}
 }
 
+//bool BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
+//{
+//// 	qDebug()<<"$$$ openBalanceCom thread:"<<QThread::currentThreadId();
+//	QString portName = comStruct->portName;// "COM2";//获取串口名
+//#ifdef Q_OS_LINUX
+//	m_balanceCom = new QextSerialPort("/dev/" + portName);
+//#elif defined (Q_OS_WIN)
+//// 	m_balanceCom = new QextSerialPort(portName, QextSerialPort::EventDriven); //事件驱动方式
+//	m_balanceCom = new QextSerialPort(portName, QextSerialPort::Polling); //查询方式
+//#endif
+//// 	connect(m_balanceCom, SIGNAL(readyRead()), this, SLOT(readBalanceComBuffer()));
+//	connect(m_balTimer, SIGNAL(timeout()), this, SLOT(readBalanceComBuffer()));
+//
+//	m_balanceCom->setBaudRate((BaudRateType)comStruct->baudRate);// BAUD9600); //设置波特率  
+//	m_balanceCom->setDataBits((DataBitsType)comStruct->dataBit);//DATA_8);   //设置数据位
+//	m_balanceCom->setParity((ParityType)comStruct->parity);//PAR_EVEN);   //设置校验位
+//	m_balanceCom->setStopBits((StopBitsType)comStruct->stopBit);//STOP_1);   //设置停止位
+//	m_balanceCom->setFlowControl(FLOW_OFF); //设置数据流控制  
+//	m_balanceCom->setTimeout(TIME_OUT);     //设置延时
+//
+//	if(m_balanceCom->open(QIODevice::ReadWrite)) 
+//	{
+//		qDebug()<<"$$$ OpenBalanceCom:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
+///*
+//		QByteArray buf;
+//		buf.append(0x4E).append(0x20).append(0x20).append(0x20).append(0x20).append(0x20);
+//		buf.append(0x2D).append(0x31).append(0x32).append(0x33).append(0x34).append(0x2E).append(0x35).append(0x36).append(0x37).append(0x38);
+//		buf.append(0x20).append(0x6B).append(0x67).append(0x20).append(0x0D).append(0x0A);
+//		m_balanceCom->write(buf);
+//*/
+//		m_balTimer->start(TIMEOUT_BALANCE); //每200毫秒查询一次天平数据
+//		return true;
+//	}
+//	else
+//	{
+//		qDebug()<<"$$$ OpenBalanceCom:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
+//		return false;
+//	}
+//}
+
 bool BalanceComObject::openBalanceCom(ComInfoStruct *comStruct)
 {
 // 	qDebug()<<"$$$ openBalanceCom thread:"<<QThread::currentThreadId();
-	QString portName = comStruct->portName;// "COM2";//获取串口名
-#ifdef Q_OS_LINUX
-	m_balanceCom = new QextSerialPort("/dev/" + portName);
-#elif defined (Q_OS_WIN)
-// 	m_balanceCom = new QextSerialPort(portName, QextSerialPort::EventDriven); //事件驱动方式
-	m_balanceCom = new QextSerialPort(portName, QextSerialPort::Polling); //查询方式
-#endif
-// 	connect(m_balanceCom, SIGNAL(readyRead()), this, SLOT(readBalanceComBuffer()));
-	connect(m_balTimer, SIGNAL(timeout()), this, SLOT(readBalanceComBuffer()));
-
-	m_balanceCom->setBaudRate((BaudRateType)comStruct->baudRate);// BAUD9600); //设置波特率  
-	m_balanceCom->setDataBits((DataBitsType)comStruct->dataBit);//DATA_8);   //设置数据位
-	m_balanceCom->setParity((ParityType)comStruct->parity);//PAR_EVEN);   //设置校验位
-	m_balanceCom->setStopBits((StopBitsType)comStruct->stopBit);//STOP_1);   //设置停止位
-	m_balanceCom->setFlowControl(FLOW_OFF); //设置数据流控制  
-	m_balanceCom->setTimeout(TIME_OUT);     //设置延时
+	QString portName = comStruct->portName; //获取串口名
+	m_balanceCom = new QSerialPort();
+	connect(m_balanceCom, SIGNAL(readyRead()), this, SLOT(readBalanceComBuffer()));
+	SET_COM_PROPERTY(m_balanceCom)
 
 	if(m_balanceCom->open(QIODevice::ReadWrite)) 
 	{
 		qDebug()<<"$$$ OpenBalanceCom:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
-/*
-		QByteArray buf;
-		buf.append(0x4E).append(0x20).append(0x20).append(0x20).append(0x20).append(0x20);
-		buf.append(0x2D).append(0x31).append(0x32).append(0x33).append(0x34).append(0x2E).append(0x35).append(0x36).append(0x37).append(0x38);
-		buf.append(0x20).append(0x6B).append(0x67).append(0x20).append(0x0D).append(0x0A);
-		m_balanceCom->write(buf);
-*/
 		m_balTimer->start(TIMEOUT_BALANCE); //每200毫秒查询一次天平数据
 		return true;
 	}
@@ -634,27 +704,49 @@ void MeterComObject::setProtocolVersion(int version)
 	}
 }
 
+///*
+//** 打开串口，初始化串口参数等
+//*/
+//bool MeterComObject::openMeterCom(ComInfoStruct *comStruct)
+//{
+//// 	qDebug()<<"!!! openMeterCom:"<<m_portName<<"thread:"<<QThread::currentThreadId();
+//	m_portName = comStruct->portName; //获取串口名
+//#ifdef Q_OS_LINUX
+//	m_meterCom = new QextSerialPort("/dev/" + m_portName);
+//#elif defined (Q_OS_WIN)
+//	m_meterCom = new QextSerialPort(m_portName, QextSerialPort::EventDriven);
+//#endif
+//	connect(m_meterCom, SIGNAL(readyRead()), this, SLOT(readMeterComBuffer()));
+//
+//	m_meterCom->setBaudRate((BaudRateType)comStruct->baudRate);  //设置波特率  
+//	m_meterCom->setDataBits((DataBitsType)comStruct->dataBit);   //设置数据位
+//	m_meterCom->setParity((ParityType)comStruct->parity);        //设置校验位
+//	m_meterCom->setStopBits((StopBitsType)comStruct->stopBit);   //设置停止位
+//	m_meterCom->setFlowControl(FLOW_OFF); //设置数据流控制  
+//	m_meterCom->setTimeout(TIME_OUT);     //设置延时
+//
+//	if(m_meterCom->open(QIODevice::ReadWrite)) 
+//	{
+//		qDebug()<<"!!! openMeterCom:"<<m_portName<<"Success!"<<" thread id:"<<QThread::currentThreadId();
+//		return true;
+//	}
+//	else
+//	{
+//		qDebug()<<"!!! openMeterCom:"<<m_portName<<"Failed!"<<" thread id:"<<QThread::currentThreadId();
+//		return false;
+//	}
+//}
+
 /*
 ** 打开串口，初始化串口参数等
 */
 bool MeterComObject::openMeterCom(ComInfoStruct *comStruct)
 {
-// 	qDebug()<<"!!! openMeterCom:"<<m_portName<<"thread:"<<QThread::currentThreadId();
+	// 	qDebug()<<"!!! openMeterCom:"<<m_portName<<"thread:"<<QThread::currentThreadId();
 	m_portName = comStruct->portName; //获取串口名
-#ifdef Q_OS_LINUX
-	m_meterCom = new QextSerialPort("/dev/" + m_portName);
-#elif defined (Q_OS_WIN)
-	m_meterCom = new QextSerialPort(m_portName, QextSerialPort::EventDriven);
-#endif
+	m_meterCom = new QSerialPort();
 	connect(m_meterCom, SIGNAL(readyRead()), this, SLOT(readMeterComBuffer()));
-
-	m_meterCom->setBaudRate((BaudRateType)comStruct->baudRate);  //设置波特率  
-	m_meterCom->setDataBits((DataBitsType)comStruct->dataBit);   //设置数据位
-	m_meterCom->setParity((ParityType)comStruct->parity);        //设置校验位
-	m_meterCom->setStopBits((StopBitsType)comStruct->stopBit);   //设置停止位
-	m_meterCom->setFlowControl(FLOW_OFF); //设置数据流控制  
-	m_meterCom->setTimeout(TIME_OUT);     //设置延时
-
+	SET_COM_PROPERTY(m_meterCom)
 	if(m_meterCom->open(QIODevice::ReadWrite)) 
 	{
 		qDebug()<<"!!! openMeterCom:"<<m_portName<<"Success!"<<" thread id:"<<QThread::currentThreadId();
@@ -941,22 +1033,42 @@ void StdTempComObject::setStdTempVersion(int version)
 	}
 }
 
+//bool StdTempComObject::openTemperatureCom(ComInfoStruct *comStruct)
+//{
+//// 	qDebug()<<"&&& StdTempComObject::openTemperatureCom thread:"<<QThread::currentThreadId();
+//	QString portName = comStruct->portName;// "COM2", 获取串口名
+//#ifdef Q_OS_LINUX
+//	m_tempCom = new QextSerialPort("/dev/" + portName);
+//#elif defined (Q_OS_WIN)
+//	m_tempCom = new QextSerialPort(portName, QextSerialPort::EventDriven);
+//#endif
+//	connect(m_tempCom, SIGNAL(readyRead()), this, SLOT(readTemperatureComBuffer()));
+//	m_tempCom->setBaudRate((BaudRateType)comStruct->baudRate);// BAUD9600); //设置波特率  
+//	m_tempCom->setDataBits((DataBitsType)comStruct->dataBit); //DATA_8);    //设置数据位
+//	m_tempCom->setParity((ParityType)comStruct->parity);	  //PAR_EVEN);  //设置校验位
+//	m_tempCom->setStopBits((StopBitsType)comStruct->stopBit); //STOP_1);    //设置停止位
+//	m_tempCom->setFlowControl(FLOW_OFF); //设置数据流控制  
+//	m_tempCom->setTimeout(TIME_OUT);     //设置延时
+//
+//	if(m_tempCom->open(QIODevice::ReadWrite))
+//	{
+//		qDebug()<<"&&& StdTempComObject::openTemperatureCom:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
+//		return true;
+//	}
+//	else
+//	{
+//		qDebug()<<"&&& StdTempComObject::openTemperatureCom:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
+//		return false;
+//	}
+//}
+
 bool StdTempComObject::openTemperatureCom(ComInfoStruct *comStruct)
 {
-// 	qDebug()<<"&&& StdTempComObject::openTemperatureCom thread:"<<QThread::currentThreadId();
-	QString portName = comStruct->portName;// "COM2", 获取串口名
-#ifdef Q_OS_LINUX
-	m_tempCom = new QextSerialPort("/dev/" + portName);
-#elif defined (Q_OS_WIN)
-	m_tempCom = new QextSerialPort(portName, QextSerialPort::EventDriven);
-#endif
+	// 	qDebug()<<"&&& StdTempComObject::openTemperatureCom thread:"<<QThread::currentThreadId();
+	QString portName = comStruct->portName; //获取串口名
+	m_tempCom = new QSerialPort();
 	connect(m_tempCom, SIGNAL(readyRead()), this, SLOT(readTemperatureComBuffer()));
-	m_tempCom->setBaudRate((BaudRateType)comStruct->baudRate);// BAUD9600); //设置波特率  
-	m_tempCom->setDataBits((DataBitsType)comStruct->dataBit); //DATA_8);    //设置数据位
-	m_tempCom->setParity((ParityType)comStruct->parity);	  //PAR_EVEN);  //设置校验位
-	m_tempCom->setStopBits((StopBitsType)comStruct->stopBit); //STOP_1);    //设置停止位
-	m_tempCom->setFlowControl(FLOW_OFF); //设置数据流控制  
-	m_tempCom->setTimeout(TIME_OUT);     //设置延时
+	SET_COM_PROPERTY(m_tempCom)
 
 	if(m_tempCom->open(QIODevice::ReadWrite))
 	{
@@ -1058,24 +1170,46 @@ lcModRtuComObject::~lcModRtuComObject()
 	}
 }
 
+//bool lcModRtuComObject::openLcModCom(ComInfoStruct *comStruct)
+//{
+//	qDebug()<<"open lcModRtu thread:"<<QThread::currentThreadId();
+//
+//	QString portName = comStruct->portName;// "COM2", 获取串口名
+//#ifdef Q_OS_LINUX
+//	m_lcModCom = new QextSerialPort("/dev/" + portName);
+//#elif defined (Q_OS_WIN)
+//	m_lcModCom = new QextSerialPort(portName, QextSerialPort::EventDriven);
+//#endif
+//	connect(m_lcModCom, SIGNAL(readyRead()), this, SLOT(readLcModComBuffer()));
+//
+//	m_lcModCom->setBaudRate((BaudRateType)comStruct->baudRate);// BAUD9600); //设置波特率  
+//	m_lcModCom->setDataBits((DataBitsType)comStruct->dataBit); //DATA_8);    //设置数据位
+//	m_lcModCom->setParity((ParityType)comStruct->parity);	  //PAR_EVEN);  //设置校验位
+//	m_lcModCom->setStopBits((StopBitsType)comStruct->stopBit); //STOP_1);    //设置停止位
+//	m_lcModCom->setFlowControl(FLOW_OFF); //设置数据流控制  
+//	m_lcModCom->setTimeout(TIME_OUT);     //设置延时
+//
+//	if(m_lcModCom->open(QIODevice::ReadWrite))
+//	{
+//		qDebug()<<"Open lcModRtu Com:"<<portName<<"Success!"<<" thread id;"<<QThread::currentThreadId();
+//		return true;
+//	}
+//	else
+//	{
+//		qDebug()<<"Open lcModRtu Com:"<<portName<<"Failed!"<<" thread id;"<<QThread::currentThreadId();
+//		return false;
+//	}
+//}
+
+
 bool lcModRtuComObject::openLcModCom(ComInfoStruct *comStruct)
 {
-	qDebug()<<"open lcModRtu thread:"<<QThread::currentThreadId();
+	//qDebug()<<"open lcModRtu thread:"<<QThread::currentThreadId();
 
 	QString portName = comStruct->portName;// "COM2", 获取串口名
-#ifdef Q_OS_LINUX
-	m_lcModCom = new QextSerialPort("/dev/" + portName);
-#elif defined (Q_OS_WIN)
-	m_lcModCom = new QextSerialPort(portName, QextSerialPort::EventDriven);
-#endif
+	m_lcModCom = new QSerialPort();
 	connect(m_lcModCom, SIGNAL(readyRead()), this, SLOT(readLcModComBuffer()));
-
-	m_lcModCom->setBaudRate((BaudRateType)comStruct->baudRate);// BAUD9600); //设置波特率  
-	m_lcModCom->setDataBits((DataBitsType)comStruct->dataBit); //DATA_8);    //设置数据位
-	m_lcModCom->setParity((ParityType)comStruct->parity);	  //PAR_EVEN);  //设置校验位
-	m_lcModCom->setStopBits((StopBitsType)comStruct->stopBit); //STOP_1);    //设置停止位
-	m_lcModCom->setFlowControl(FLOW_OFF); //设置数据流控制  
-	m_lcModCom->setTimeout(TIME_OUT);     //设置延时
+	SET_COM_PROPERTY(m_lcModCom)
 
 	if(m_lcModCom->open(QIODevice::ReadWrite))
 	{
