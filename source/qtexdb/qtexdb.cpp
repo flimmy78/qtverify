@@ -881,3 +881,62 @@ int insertCmbVerifyRec(Cmb_Verify_Record_PTR ptr, int num)
 
 	return ret;
 }
+
+
+
+int insertPidRec(PIDDataPtr pidPtr)
+{
+	int ret = 0;
+
+	QSqlQuery query(g_db); // 新建一个查询的实例
+	QString sql = "insert into T_PID_Setting_Record";
+	sql.append(" (");
+	sql.append("pid_timestamp, ");
+	sql.append("pid_maxRate, ");
+	sql.append("pid_targetRate, ");
+	sql.append("pid_currentRate, ");
+	sql.append("pid_currentError, ");
+	sql.append("pid_regularNo, ");
+	sql.append("pid_waitTime, ");
+	sql.append("pid_currentDegree, ");
+	sql.append("pid_gainTargetRate, ");
+	sql.append("pid_nowErrorPercent, ");
+	sql.append("pid_Kp, ");
+	sql.append("pid_Ki, ");
+	sql.append("pid_Kd, ");
+	sql.append("pid_P, ");
+	sql.append("pid_I, ");
+	sql.append("pid_D");
+	sql.append(") ");
+	sql.append("values");
+	sql.append("(");//start
+	sql.append(QString("\'%1\', ").arg(pidPtr->pid_timestamp, 0, 10));
+	sql.append(QString("%1, ").arg(pidPtr->pid_maxRate, 6, 'g', 6));
+	sql.append(QString("%1, ").arg(pidPtr->pid_targetRate, 6, 'g', 6));
+	sql.append(QString("%1, ").arg(pidPtr->pid_currentRate, 6, 'g', 6));
+	sql.append(QString("%1, ").arg(pidPtr->pid_currentError, 6, 'g', 6));
+	sql.append(QString("%1, ").arg(pidPtr->pid_regularNo, 0, 10));
+	sql.append(QString("%1, ").arg(pidPtr->pid_waitTime, 0, 10));
+	sql.append(QString("%1, ").arg(pidPtr->pid_currentDegree, 0, 10));
+	sql.append(QString("%1, ").arg(pidPtr->pid_gainTargetRate, 0, 10));
+	sql.append(QString("%1, ").arg(pidPtr->pid_nowErrorPercent, 6, 'g', 6));
+	sql.append(QString("%1, ").arg(pidPtr->pid_Kp, 6, 'g', 6));
+	sql.append(QString("%1, ").arg(pidPtr->pid_Ki, 6, 'g', 6));
+	sql.append(QString("%1, ").arg(pidPtr->pid_Kd, 6, 'g', 6));
+	sql.append(QString("%1, ").arg(pidPtr->pid_P, 6, 'g', 6));
+	sql.append(QString("%1, ").arg(pidPtr->pid_I, 6, 'g', 6));
+	sql.append(QString("%1").arg(pidPtr->pid_D, 6, 'g', 6));
+	sql.append(")");//end
+
+	if (query.exec(sql))
+	{
+		qDebug()<<"insert PIDDataPtr succeed";
+		return 1;
+	}
+	else
+	{
+		QSqlError error = query.lastError();
+		qWarning()<<error.text();
+		return 0;
+	}
+}

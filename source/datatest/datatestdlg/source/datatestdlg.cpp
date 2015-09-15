@@ -168,6 +168,12 @@ void DataTestDlg::closeEvent( QCloseEvent * event)
 		m_accumulateFlowCom = NULL;
 	}
 /*****************************************************/
+	if (m_pidDataPtr)
+	{
+		delete m_pidDataPtr;
+		m_pidDataPtr = NULL;
+	}
+
 	if (m_setRegularTimer) //自动调整流量计时器
 	{
 		if (m_setRegularTimer->isActive())
@@ -208,8 +214,6 @@ void DataTestDlg::showEvent(QShowEvent *event)
 	initStdTemperatureCom(); //初始化标准温度采集串口
 
 	m_controlObj = NULL;
-	m_setRegularTimer = NULL;
-	m_openRegulateTimes = 0;
 	initControlCom();		//初始化控制串口
 
 	m_balanceObj = NULL;
@@ -371,6 +375,8 @@ void DataTestDlg::initControlCom()
 	connect(m_controlObj, SIGNAL(controlRegulateIsOk()), this, SLOT(slotSetRegulateOk()));
 	 
 	/*****************************************************************************************************/
+	m_openRegulateTimes = 0;
+	m_pidDataPtr = new PIDDataStr;
 	m_pre_error = 0.0;
 	m_integral = 0.0;
 	m_maxRateGetted = false;
@@ -385,7 +391,7 @@ void DataTestDlg::initControlCom()
 void DataTestDlg::on_lnEditMaxRate_returnPressed()
 {
 	QString str = ui.lnEditMaxRate->text();
-	QRegExp rx("\\d+.\\d*");//匹配整数或小数
+	QRegExp rx("\\d+(\\.\\d+)?");//匹配整数或小数
 	if (rx.exactMatch(str))
 	{
 		m_maxRate = str.toFloat();
@@ -417,7 +423,6 @@ void DataTestDlg::on_lnEditTargetRate_returnPressed()
 		if (target > m_maxRate)
 		{
 			QMessageBox::warning(this, tr("Too Large"), tr("setted rate is greater than maxRate, exit!"));
-			qCritical() <<"setted rate is greater than maxRate, exit!";
 			return;
 		}
 
@@ -425,7 +430,7 @@ void DataTestDlg::on_lnEditTargetRate_returnPressed()
 			m_setRegularTimer->stop();
 
 		qCritical() <<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ starting m_setRegularTimer $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$";
-		m_controlObj->askControlRegulate(m_nowRegNo, 99);
+		m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
 		m_controlObj->askControlWaterPump(m_portsetinfo.pumpNo, true);//设定目标流量, 打开水泵
 		m_setRegularTimer->start(WAIT_REG_TIME);
 	}
@@ -440,6 +445,7 @@ void DataTestDlg::setRegulate(float currentRate, float targetRate)
 {
 	qCritical() << "current Rate : " << currentRate;
 	qCritical() << "target Rate : " << targetRate;
+	qCritical() << "current error : " << currentRate - targetRate;
 	qCritical() << "current regular number: " << m_nowRegNo;
 	qCritical() << "current waitting time: "  << WAIT_REG_TIME;
 	//如果currentRate是0, 那么开启电动阀到m_degree
@@ -463,13 +469,25 @@ void DataTestDlg::setRegulate(float currentRate, float targetRate)
 	qCritical() << "current degree: " << m_degree;
 	m_controlObj->askControlRegulate(m_nowRegNo, m_degree);
 	qCritical() << "%%%%%%% regular setted %%%%%%%";
+	m_ifGainTargetRate = false;
 	if (deltaV <= PRECISION)
 	{
 		//stopSetRegularTimer();
 		//m_controlObj->askControlWaterPump(m_portsetinfo.pumpNo, false);//到达目标流量, 关闭水泵
 		qCritical() << "\n######################################gain target rate.######################################\n";
-		
+		qCritical() << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Now Error : %" << ((currentRate - targetRate)/targetRate)*100 << " @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n";	
+		m_ifGainTargetRate = true;
 	}
+	m_pidDataPtr->pid_timestamp    = m_timeStamp;
+	m_pidDataPtr->pid_maxRate	   = m_maxRate;
+	m_pidDataPtr->pid_currentRate  = currentRate;
+	m_pidDataPtr->pid_targetRate   = targetRate;
+	m_pidDataPtr->pid_currentError = currentRate - targetRate;
+	m_pidDataPtr->pid_regularNo	   = m_nowRegNo;
+	m_pidDataPtr->pid_waitTime	   = WAIT_REG_TIME;
+	m_pidDataPtr->pid_currentDegree= m_degree;
+	m_pidDataPtr->pid_nowErrorPercent = m_ifGainTargetRate ? (((currentRate - targetRate)/targetRate)*100) : 1000.0;
+	insertPidRec(m_pidDataPtr);
 }
 
 int DataTestDlg::degreeGet(float currentRate, float targetRate)
@@ -480,7 +498,7 @@ int DataTestDlg::degreeGet(float currentRate, float targetRate)
 	float output = Kp*m_curr_error + Ki*m_integral + Kd*derivative;
 	qCritical() << "Kp:--" <<Kp<<" Ki:--"<<Ki<<" Kd:--"<<Kd<<" maxRate:--"<<m_maxRate;
 	qCritical() << "P:--" <<Kp*m_curr_error<<" I:--"<<Ki*m_integral<<" D:--"<<Kd*derivative;
-	qCritical() <<"m_pre_error:--"<<m_pre_error<< "m_curr_error:--" <<m_curr_error<<" m_integral:--"<<m_integral<<" derivative:--"<<derivative;
+	qCritical() <<"m_pre_error:--"<<m_pre_error<< "m_curr_error:--" <<m_curr_error<<" m_integral:--"<<m_curr_error*WAIT_SECOND<<" derivative:--"<<derivative;
 	qCritical() << "oooooutput: " << output;
 	m_pre_error = m_curr_error;
 	int outdegree =  (int)(output>0 ? output: 0);
@@ -488,6 +506,13 @@ int DataTestDlg::degreeGet(float currentRate, float targetRate)
 	{
 		outdegree = 99;
 	}
+
+	m_pidDataPtr->pid_Kp = Kp;
+	m_pidDataPtr->pid_Ki = Ki;
+	m_pidDataPtr->pid_Kd = Kd;
+	m_pidDataPtr->pid_P = Kp*m_curr_error;
+	m_pidDataPtr->pid_I = Ki*m_integral;
+	m_pidDataPtr->pid_D = Kd*derivative;
 
 	return outdegree;
 }
@@ -652,6 +677,7 @@ void DataTestDlg::on_btnValveBig_clicked() //大流量阀
 		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
 	}
 	m_maxRateGetted = false;
+	m_nowRegNo = m_portsetinfo.regflow1No;
 }
 
 void DataTestDlg::on_btnValveMiddle1_clicked() //中流一阀
@@ -664,6 +690,7 @@ void DataTestDlg::on_btnValveMiddle1_clicked() //中流一阀
 		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
 	}
 	m_maxRateGetted = false;
+	m_nowRegNo = m_portsetinfo.regflow2No;
 }
 
 void DataTestDlg::on_btnValveMiddle2_clicked() //中流二阀
@@ -675,7 +702,6 @@ void DataTestDlg::on_btnValveMiddle2_clicked() //中流二阀
 	{
 		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
 	}
-	m_maxRateGetted = false;
 }
 
 void DataTestDlg::on_btnValveSmall_clicked() //小流量阀
@@ -687,7 +713,6 @@ void DataTestDlg::on_btnValveSmall_clicked() //小流量阀
 	{
 		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
 	}
-	m_maxRateGetted = false;
 }
 
 /*
@@ -713,6 +738,7 @@ void DataTestDlg::on_btnSetFreq_clicked()
 //调节阀
 void DataTestDlg::on_btnRegulate1_clicked() //调节阀1
 {
+	stopSetRegularTimer();
 	m_nowRegNo = m_portsetinfo.regflow1No;
 	setRegBtnBackColor(m_regBtn[m_nowRegNo], false); //初始化调节阀背景色
 	m_controlObj->askControlRegulate(m_nowRegNo, ui.spinBoxValveOpening->value());
@@ -720,6 +746,7 @@ void DataTestDlg::on_btnRegulate1_clicked() //调节阀1
 
 void DataTestDlg::on_btnRegulate2_clicked() //调节阀2
 {
+	stopSetRegularTimer();
 	m_nowRegNo = m_portsetinfo.regflow2No;
 	setRegBtnBackColor(m_regBtn[m_nowRegNo], false); //初始化调节阀背景色
 	m_controlObj->askControlRegulate(m_nowRegNo, ui.spinBoxValveOpening2->value());

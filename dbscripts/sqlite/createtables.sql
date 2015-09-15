@@ -708,4 +708,28 @@ on
   rec.[F_Result]=yesno.F_ID
 	order by rec.f_meterno, rec.f_timestamp
 ;'
-)
+);
+
+-----------------------------------------------------------------
+--                    PID创建语句表                     ----
+-----------------------------------------------------------------
+drop table if exists T_PID_Setting_Record;
+CREATE TABLE T_PID_Setting_Record (
+	F_ID integer PRIMARY KEY AUTOINCREMENT,
+	pid_timestamp timestamp,
+	pid_maxRate float,
+	pid_targetRate float,
+	pid_currentRate float,
+	pid_currentError float,
+	pid_regularNo integer,
+	pid_waitTime integer,
+	pid_currentDegree float,
+	pid_gainTargetRate integer,
+	pid_nowErrorPercent float,
+	pid_Kp float,
+	pid_Ki float,
+	pid_Kd float,
+	pid_P float,
+	pid_I float,
+	pid_D float
+);

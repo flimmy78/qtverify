@@ -614,4 +614,25 @@ public:
 	char F_Bak4[ASCNAME_LEN];//备用域4
 };
 typedef Cmb_Verify_Record_STR* Cmb_Verify_Record_PTR;
+
+typedef struct PIDData
+{
+	QString pid_timestamp;
+	float   pid_maxRate;
+	float   pid_targetRate;
+	float   pid_currentRate;
+	float   pid_currentError;
+	int		pid_regularNo;
+	int		pid_waitTime;
+	int     pid_currentDegree;
+	bool    pid_gainTargetRate;
+	float   pid_nowErrorPercent;
+	float   pid_Kp;
+	float   pid_Ki;
+	float	pid_Kd;
+	float   pid_P;
+	float   pid_I;
+	float	pid_D;
+}PIDDataStr;
+typedef PIDDataStr* PIDDataPtr;
 #endif	//BASEDEF_H

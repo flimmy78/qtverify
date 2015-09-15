@@ -58,7 +58,7 @@ QTEXDB_EXPORT	QString getTblDdl(QString tbl_name);
 QTEXDB_EXPORT	QString removeComment(QString s);
 QTEXDB_EXPORT	QMap<QString, QString> getColInfo(QString ddl);
 QTEXDB_EXPORT   int getDatabaseParaIni(DatabasePara_PTR info); //获取数据库配置信息
-
+QTEXDB_EXPORT	int insertPidRec(PIDDataPtr pidStr);//插入pid设定时的相关数据
 
 
 

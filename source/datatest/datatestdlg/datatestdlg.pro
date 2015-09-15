@@ -9,7 +9,7 @@ QMAKE_LIBDIR +=  ./           \
         	     $(ADEHOME)/lib \
 	             $(ADEHOME)/bin 
 	            
-LIBS += -lsystemsetdlg -lprotocol -lcomobject -lalgorithm
+LIBS += -lsystemsetdlg -lprotocol -lcomobject -lalgorithm -lqtexdb
 
 DESTDIR = $(ADEHOME)\tmp\datatest\datatestdlg\obj
 #MOC_DIR = $(ADEHOME)/tmp/datatest/datatestdlg/moc

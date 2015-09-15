@@ -19,6 +19,8 @@
 #include <QSettings>
 #include "ui_datatestdlg.h"
 #include "comobject.h"
+#include "qtexdb.h"
+#include "basedef.h"
 
 class ParaSetReader;
 class ParaSetDlg;
@@ -30,12 +32,21 @@ class ReadComConfig;
 */
 
 #define MAX_RATE_TIME 40000//调节获得最大流量所需时间
-#define WAIT_REG_TIME 15000//等待调节阀到位并水流稳定时间
-#define WAIT_SECOND (WAIT_REG_TIME/1000)//等待调节阀到位并水流稳定时间(second)
+//#define WAIT_REG_TIME 15000//大流量等待调节阀到位并水流稳定时间
+#define WAIT_REG_TIME 20000//中一流量等待调节阀到位并水流稳定时间
+
+#define WAIT_SECOND (WAIT_REG_TIME/1000)//等待调节阀到位并水流稳定时间(单位秒)
 #define PRECISION (0.03*targetRate)//流速设定误差限
-#define Kp	(1.1)
-#define Ki	(0.77)
-#define Kd	(0.18)
+
+////////////////////大流量参数//////////////
+//#define Kp	(1.1) //大流量时，P的系数要小；而小流量时，系数要适当增大，否则变化的速度太慢了
+//#define Ki	(0.77)
+//#define Kd	(0.18)
+////////////////////中流量参数//////////////
+#define Kp	(2)
+#define Ki	(1)
+#define Kd	(1.8)
+///////////////////////////////////////////
 
 class DATATESTDLG_EXPORT DataTestDlg : public QWidget
 {
@@ -209,7 +220,10 @@ private:
 	int m_degree;
 	int m_openRegulateTimes;
 	float m_currentRate;
+	QString m_timeStamp;
 	bool m_maxRateGetted;//是否已获取过最大流量值
+	bool m_ifGainTargetRate;//是否已达到目标流量值
+	PIDDataPtr m_pidDataPtr;
 	void setRegulate(float currentRate, float targetRate);
 	int degreeGet(float currentRate, float targetRate);
 	void stopSetRegularTimer();
