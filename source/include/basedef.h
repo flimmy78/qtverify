@@ -43,7 +43,7 @@
 #define RESET_ZERO_TIME		24    //等待热表初值回零的时间，单位：秒
 
 #define BALANCE_STABLE_TIME    3000   //等待天平数值稳定时间(水流稳定)，单位：毫秒
-#define WAIT_COM_TIME          3000   //热量表串口通讯,等待串口数据的时间，单位：毫秒
+#define WAIT_COM_TIME          4000   //热量表串口通讯,等待串口数据的时间，单位：毫秒
 #define WATCH_DATA_TIME        3000   //留给操作人员查看界面数据的时间，单位：毫秒
 #define RELEASE_PRESS_TIME     2000   //释放管路压力的时间，单位：毫秒
 #define CYCLE_TIME             1000   //周期循环时间，单位：毫秒
