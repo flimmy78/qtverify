@@ -36,7 +36,7 @@ DataTestDlg::~DataTestDlg()
 void DataTestDlg::closeEvent( QCloseEvent * event)
 {
 	qDebug()<<"^^^^^DataTestDlg::closeEvent";
-	
+
 	if (m_paraSetReader) //读检定参数
 	{
 		delete m_paraSetReader;
@@ -377,6 +377,9 @@ void DataTestDlg::initControlCom()
 	/*****************************************************************************************************/
 	m_openRegulateTimes = 0;
 	m_pidDataPtr = new PIDDataStr;
+	m_pidDataPtr->pid_Kp = Kp;
+	m_pidDataPtr->pid_Ki = Ki;
+	m_pidDataPtr->pid_Kd = Kd;
 	m_pre_error = 0.0;
 	m_integral = 0.0;
 	m_maxRateGetted = false;
@@ -450,20 +453,20 @@ void DataTestDlg::setRegulate(float currentRate, float targetRate)
 	qCritical() << "current waitting time: "  << WAIT_REG_TIME;
 	//如果currentRate是0, 那么开启电动阀到m_degree
 	//如果开了5次, currentRate还是0, 那么提示用户打开手动球阀
-	if (currentRate <=0.0f)
-	{
-		qCritical() << "current m_openRegulateTimes: " <<m_openRegulateTimes;
-		if (m_openRegulateTimes >= 5)
-		{
-			QMessageBox::warning(this, tr("Open Valve"), tr("please open Manual Ball Valve"));
-			stopSetRegularTimer();
-			return;
-		}
-		m_controlObj->askControlRegulate(m_nowRegNo, m_degree);
-		m_openRegulateTimes++;
-		return;
-	}
-	
+	//if (currentRate <=0.0f)
+	//{
+	//	qCritical() << "current m_openRegulateTimes: " <<m_openRegulateTimes;
+	//	if (m_openRegulateTimes >= 5)
+	//	{
+	//		QMessageBox::warning(this, tr("Open Valve"), tr("please open Manual Ball Valve"));
+	//		stopSetRegularTimer();
+	//		return;
+	//	}
+	//	m_controlObj->askControlRegulate(m_nowRegNo, m_degree);
+	//	m_openRegulateTimes++;
+	//	return;
+	//}
+	//
 	float deltaV = qAbs(targetRate - currentRate);
 	m_degree = degreeGet(currentRate, targetRate);
 	qCritical() << "current degree: " << m_degree;
@@ -472,8 +475,6 @@ void DataTestDlg::setRegulate(float currentRate, float targetRate)
 	m_ifGainTargetRate = false;
 	if (deltaV <= PRECISION)
 	{
-		//stopSetRegularTimer();
-		//m_controlObj->askControlWaterPump(m_portsetinfo.pumpNo, false);//到达目标流量, 关闭水泵
 		qCritical() << "\n######################################gain target rate.######################################\n";
 		qCritical() << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Now Error : %" << ((currentRate - targetRate)/targetRate)*100 << " @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n";	
 		m_ifGainTargetRate = true;
@@ -486,7 +487,8 @@ void DataTestDlg::setRegulate(float currentRate, float targetRate)
 	m_pidDataPtr->pid_regularNo	   = m_nowRegNo;
 	m_pidDataPtr->pid_waitTime	   = WAIT_REG_TIME;
 	m_pidDataPtr->pid_currentDegree= m_degree;
-	m_pidDataPtr->pid_nowErrorPercent = m_ifGainTargetRate ? (((currentRate - targetRate)/targetRate)*100) : 1000.0;
+	m_pidDataPtr->pid_gainTargetRate = 	m_ifGainTargetRate;
+	m_pidDataPtr->pid_nowErrorPercent = ((currentRate - targetRate)/targetRate)*100;
 	insertPidRec(m_pidDataPtr);
 }
 
@@ -498,7 +500,6 @@ int DataTestDlg::degreeGet(float currentRate, float targetRate)
 	float output = Kp*m_curr_error + Ki*m_integral + Kd*derivative;
 	qCritical() << "Kp:--" <<Kp<<" Ki:--"<<Ki<<" Kd:--"<<Kd<<" maxRate:--"<<m_maxRate;
 	qCritical() << "P:--" <<Kp*m_curr_error<<" I:--"<<Ki*m_integral<<" D:--"<<Kd*derivative;
-	qCritical() <<"m_pre_error:--"<<m_pre_error<< "m_curr_error:--" <<m_curr_error<<" m_integral:--"<<m_curr_error*WAIT_SECOND<<" derivative:--"<<derivative;
 	qCritical() << "oooooutput: " << output;
 	m_pre_error = m_curr_error;
 	int outdegree =  (int)(output>0 ? output: 0);
@@ -507,9 +508,6 @@ int DataTestDlg::degreeGet(float currentRate, float targetRate)
 		outdegree = 99;
 	}
 
-	m_pidDataPtr->pid_Kp = Kp;
-	m_pidDataPtr->pid_Ki = Ki;
-	m_pidDataPtr->pid_Kd = Kd;
 	m_pidDataPtr->pid_P = Kp*m_curr_error;
 	m_pidDataPtr->pid_I = Ki*m_integral;
 	m_pidDataPtr->pid_D = Kd*derivative;
