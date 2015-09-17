@@ -1,0 +1,2 @@
+13:52:55 周三 QMetaObject::connectSlotsByName: No matching signal for on_actionAbout_triggered()
+13:54:23 周三 QMetaObject::connectSlotsByName: No matching signal for on_actionAbout_triggered()

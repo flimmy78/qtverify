@@ -1,0 +1,2 @@
+12:58:38 周一 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_autopick_clicked(int)
+13:18:29 周一 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_autopick_clicked(int)

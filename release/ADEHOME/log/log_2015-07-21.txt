@@ -1,0 +1,6 @@
+10:24:24 周二 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_unit_clicked(int)
+10:24:24 周二 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_pos_clicked(int)
+10:24:24 周二 QObject::connect: Cannot connect (null)::saveSuccessfully(void) to CmbVerifyDlg::freshCmbParam(void)
+16:06:14 周二 QLayout: Attempting to add QLayout "" to DataTestDlg "DataTestDlgClass", which already has a layout
+16:17:22 周二 QLayout: Attempting to add QLayout "" to DataTestDlg "DataTestDlgClass", which already has a layout
+16:20:20 周二 QLayout: Attempting to add QLayout "" to DataTestDlg "DataTestDlgClass", which already has a layout

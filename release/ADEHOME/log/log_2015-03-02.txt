@@ -1,0 +1,7 @@
+10:06:37 周一 QObject::killTimers: timers cannot be stopped from another thread
+15:56:47 周一 Warning: file< qtexdb.cpp >, line< 432 >: "near ")": syntax error Unable to execute statement" 
+15:56:49 周一 Warning: file< qtexdb.cpp >, line< 432 >: "near ")": syntax error Unable to execute statement" 
+15:56:50 周一 Warning: file< qtexdb.cpp >, line< 432 >: "near ")": syntax error Unable to execute statement" 
+16:02:20 周一 Warning: file< qtexdb.cpp >, line< 432 >: "near ")": syntax error Unable to execute statement" 
+16:06:15 周一 Warning: file< qtexdb.cpp >, line< 432 >: "near ")": syntax error Unable to execute statement" 
+16:10:36 周一 Warning: file< qtexdb.cpp >, line< 432 >: "33 values for 37 columns Unable to execute statement" 

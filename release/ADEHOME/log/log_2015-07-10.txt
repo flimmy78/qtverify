@@ -1,0 +1,31 @@
+10:38:50 周五 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_unit_clicked(int)
+10:38:50 周五 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_pos_clicked(int)
+10:38:50 周五 QObject::connect: Cannot connect (null)::saveSuccessfully(void) to CmbVerifyDlg::freshCmbParam(void)
+10:48:04 周五 QSqlQuery::value: not positioned on a valid record
+10:48:13 周五 QSqlQuery::value: not positioned on a valid record
+10:48:33 周五 QSqlQuery::value: not positioned on a valid record
+10:55:14 周五 QSqlQuery::value: not positioned on a valid record
+10:55:17 周五 QSqlQuery::value: not positioned on a valid record
+10:57:48 周五 QSqlQuery::value: not positioned on a valid record
+14:10:07 周五 QProcess::start: Process is already running
+14:10:08 周五 QProcess::start: Process is already running
+14:10:08 周五 QProcess::start: Process is already running
+14:10:08 周五 QProcess::start: Process is already running
+14:10:09 周五 QProcess::start: Process is already running
+14:10:11 周五 QProcess::start: Process is already running
+14:10:11 周五 QProcess::start: Process is already running
+14:10:11 周五 QProcess::start: Process is already running
+14:10:12 周五 QProcess::start: Process is already running
+14:10:12 周五 QProcess::start: Process is already running
+14:10:12 周五 QProcess::start: Process is already running
+14:10:12 周五 QProcess::start: Process is already running
+14:10:12 周五 QProcess::start: Process is already running
+14:10:12 周五 QProcess::start: Process is already running
+14:10:15 周五 QProcess::start: Process is already running
+14:10:24 周五 QProcess::start: Process is already running
+14:10:24 周五 QProcess::start: Process is already running
+14:10:24 周五 QProcess::start: Process is already running
+14:10:24 周五 QProcess::start: Process is already running
+14:10:24 周五 QProcess::start: Process is already running
+14:10:24 周五 QProcess::start: Process is already running
+14:10:25 周五 QProcess::start: Process is already running

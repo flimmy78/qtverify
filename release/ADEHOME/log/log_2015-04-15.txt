@@ -1,0 +1,10 @@
+10:31:38 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+10:38:06 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+10:38:53 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+10:41:01 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+10:42:03 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+10:50:38 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+10:53:46 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+10:58:06 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+11:06:39 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+11:28:10 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 

@@ -1,0 +1,8 @@
+08:03:33 周二 Object::connect: No such signal BalanceComObject::balanceValueIsReady(const QString &) in source\datatestdlg.cpp:243
+08:03:33 周二 Object::connect:  (receiver name: 'DataTestDlgClass')
+08:06:43 周二 Object::connect: No such slot DataTestDlg::slotFreshBalanceValue(const QString &) in source\datatestdlg.cpp:183
+08:06:43 周二 Object::connect:  (receiver name: 'DataTestDlgClass')
+14:40:58 周二 Warning: file< qtexdb.cpp >, line< 354 >: "columns F_MeterNo, F_TimeStamp, F_FlowPointIdx are not unique Unable to fetch row" 
+14:40:59 周二 Warning: file< qtexdb.cpp >, line< 354 >: "columns F_MeterNo, F_TimeStamp, F_FlowPointIdx are not unique Unable to fetch row" 
+14:40:59 周二 Warning: file< qtexdb.cpp >, line< 354 >: "columns F_MeterNo, F_TimeStamp, F_FlowPointIdx are not unique Unable to fetch row" 
+14:41:00 周二 Warning: file< qtexdb.cpp >, line< 354 >: "columns F_MeterNo, F_TimeStamp, F_FlowPointIdx are not unique Unable to fetch row" 

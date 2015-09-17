@@ -1,0 +1,7 @@
+10:23:33 周三 QAxBase: Error calling IDispatch member Visible: Exception thrown by server
+10:23:33 周三              Code       : 50290
+10:23:33 周三              Source     : 
+10:23:33 周三              Description: 
+10:23:33 周三              Help       : 
+10:23:33 周三          Connect to the exception(int,QString,QString,QString) signal to catch this exception
+10:23:33 周三 QAxBase: Error calling IDispatch member Open: Unknown error

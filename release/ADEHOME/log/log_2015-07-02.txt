@@ -1,0 +1,51 @@
+09:15:29 周四 QSqlQuery::exec: database not open
+09:15:29 周四 Warning: file< qtexdb.cpp >, line< 138 >: " " 
+09:15:29 周四 QSqlQuery::exec: database not open
+09:15:29 周四 Warning: file< qtexdb.cpp >, line< 138 >: " " 
+09:15:31 周四 QSqlQuery::exec: database not open
+09:15:31 周四 QSqlQuery::exec: database not open
+09:15:31 周四 Warning: file< qtexdb.cpp >, line< 114 >: " " 
+15:50:07 周四 QThread: Destroyed while thread is still running
+15:50:07 周四 QThread: Destroyed while thread is still running
+15:50:07 周四 QThread: Destroyed while thread is still running
+15:50:07 周四 QThread: Destroyed while thread is still running
+15:50:07 周四 QThread: Destroyed while thread is still running
+15:51:42 周四 QProcess: Destroyed while process is still running.
+15:53:26 周四 QProcess::start: Process is already running
+15:53:28 周四 QProcess::start: Process is already running
+15:53:28 周四 QProcess::start: Process is already running
+15:53:31 周四 QProcess::start: Process is already running
+15:53:31 周四 QProcess::start: Process is already running
+15:53:32 周四 QProcess::start: Process is already running
+15:53:32 周四 QProcess::start: Process is already running
+15:53:32 周四 QProcess::start: Process is already running
+15:53:32 周四 QProcess::start: Process is already running
+15:53:33 周四 QProcess::start: Process is already running
+15:53:33 周四 QProcess::start: Process is already running
+15:53:33 周四 QProcess::start: Process is already running
+15:53:33 周四 QProcess::start: Process is already running
+15:53:33 周四 QProcess::start: Process is already running
+15:53:33 周四 QProcess::start: Process is already running
+15:53:33 周四 QProcess::start: Process is already running
+15:55:55 周四 QProcess::start: Process is already running
+15:55:57 周四 QProcess::start: Process is already running
+15:55:57 周四 QProcess::start: Process is already running
+15:55:58 周四 QProcess::start: Process is already running
+15:55:58 周四 QProcess::start: Process is already running
+15:55:58 周四 QProcess::start: Process is already running
+15:55:58 周四 QProcess::start: Process is already running
+15:55:58 周四 QProcess::start: Process is already running
+15:55:59 周四 QProcess::start: Process is already running
+15:56:02 周四 QProcess::start: Process is already running
+15:56:02 周四 QProcess::start: Process is already running
+15:56:02 周四 QProcess::start: Process is already running
+15:56:02 周四 QProcess::start: Process is already running
+15:56:03 周四 QProcess::start: Process is already running
+15:56:03 周四 QProcess::start: Process is already running
+15:56:03 周四 QProcess::start: Process is already running
+16:48:41 周四 QThread: Destroyed while thread is still running
+16:48:42 周四 QThread: Destroyed while thread is still running
+16:48:42 周四 QThread: Destroyed while thread is still running
+17:02:59 周四 QThread: Destroyed while thread is still running
+17:02:59 周四 QThread: Destroyed while thread is still running
+17:02:59 周四 QThread: Destroyed while thread is still running

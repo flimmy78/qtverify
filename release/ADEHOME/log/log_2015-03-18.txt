@@ -1,0 +1,43 @@
+08:14:34 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+08:15:05 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+08:42:22 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+08:54:30 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+08:57:17 周三 QSqlQuery::value: not positioned on a valid record
+08:59:42 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:02:19 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:04:37 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:05:48 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:06:30 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:12:13 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:12:34 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:13:42 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:13:49 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:13:57 周三 Qt has caught an exception thrown from an event handler. Throwing
+exceptions from an event handler is not supported in Qt. You must
+reimplement QApplication::notify() and catch all exceptions there.
+
+09:15:46 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:15:53 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:16:41 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:16:42 周三 Qt has caught an exception thrown from an event handler. Throwing
+exceptions from an event handler is not supported in Qt. You must
+reimplement QApplication::notify() and catch all exceptions there.
+
+09:17:59 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:18:42 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:20:30 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:20:50 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:20:58 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:21:35 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:23:07 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:23:10 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:24:07 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:26:46 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:26:57 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:28:12 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:32:12 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:38:22 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+09:48:42 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+10:24:18 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+10:27:36 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+10:43:06 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 

@@ -1,0 +1,4 @@
+08:09:21 周五 QMetaObject::connectSlotsByName: No matching signal for on_btn_pt25_exit_clicked()
+08:09:50 周五 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_unit_clicked(int)
+08:09:50 周五 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_pos_clicked(int)
+08:09:50 周五 QObject::connect: Cannot connect (null)::saveSuccessfully(void) to CmbVerifyDlg::freshCmbParam(void)

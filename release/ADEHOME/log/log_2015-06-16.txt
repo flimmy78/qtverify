@@ -1,0 +1,7 @@
+15:03:13 周二 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_autopick_clicked(int)
+15:09:11 周二 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_autopick_clicked(int)
+15:09:11 周二 Object::connect: No such slot ParaSetDlg::on_m_btnGroup_autopick_clicked(int) in source\parasetdlg.cpp:225
+15:09:11 周二 Object::connect:  (receiver name: 'ParaSetDlgClass')
+15:10:54 周二 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_autopick_clicked(int)
+15:10:54 周二 Object::connect: No such slot ParaSetDlg::slot_btnGroup_autopick_clicked(int) in source\parasetdlg.cpp:225
+15:10:54 周二 Object::connect:  (receiver name: 'ParaSetDlgClass')

@@ -1,0 +1,5 @@
+09:52:21 周二 Warning: file< qtexdb.cpp >, line< 257 >: "no such column: F_Flow_idx Unable to execute statement" 
+09:57:11 周二 Warning: file< qtexdb.cpp >, line< 257 >: "no such column: F_Flow_idx Unable to execute statement" 
+13:38:35 周二 QThread: Destroyed while thread is still running
+13:38:35 周二 QThread: Destroyed while thread is still running
+13:38:35 周二 QThread: Destroyed while thread is still running

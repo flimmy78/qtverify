@@ -1,0 +1,8 @@
+10:12:09 周二 Qt has caught an exception thrown from an event handler. Throwing
+exceptions from an event handler is not supported in Qt. You must
+reimplement QApplication::notify() and catch all exceptions there.
+
+10:53:32 周二 Qt has caught an exception thrown from an event handler. Throwing
+exceptions from an event handler is not supported in Qt. You must
+reimplement QApplication::notify() and catch all exceptions there.
+

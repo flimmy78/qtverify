@@ -1,0 +1,1 @@
+10:23:03 ÖÜËÄ QObject::killTimers: timers cannot be stopped from another thread

@@ -1,0 +1,11 @@
+16:11:47 周二 QObject::moveToThread: Current thread (0x2687b58) is not the object's thread (0x1fbef40).
+Cannot move to target thread (0x40f788)
+
+16:47:06 周二 QSqlQuery::exec: database not open
+16:47:06 周二 Warning: file< qtexdb.cpp >, line< 141 >: "Driver not loaded Driver not loaded" 
+16:47:06 周二 QSqlQuery::exec: database not open
+16:47:06 周二 Warning: file< qtexdb.cpp >, line< 141 >: "Driver not loaded Driver not loaded" 
+16:47:19 周二 QSqlQuery::exec: database not open
+16:47:19 周二 Warning: file< qtexdb.cpp >, line< 141 >: "Driver not loaded Driver not loaded" 
+16:47:19 周二 QSqlQuery::exec: database not open
+16:47:19 周二 Warning: file< qtexdb.cpp >, line< 141 >: "Driver not loaded Driver not loaded" 

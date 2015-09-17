@@ -1,0 +1,19 @@
+09:03:58 周五 Warning: file< source\main.cpp >, line< 24 >: This is a warning message 
+09:03:58 周五 Critical: file< source\main.cpp >, line< 25 >: This is a critical message 
+09:21:10 周五 Warning: file< source\main.cpp >, line< 24 >: This is a warning message 
+09:21:10 周五 Critical: file< source\main.cpp >, line< 25 >: This is a critical message 
+09:21:22 周五 QThread: Destroyed while thread is still running
+09:21:22 周五 QThread: Destroyed while thread is still running
+09:21:22 周五 QThread: Destroyed while thread is still running
+09:21:51 周五 QThread: Destroyed while thread is still running
+09:21:51 周五 QThread: Destroyed while thread is still running
+09:21:51 周五 QThread: Destroyed while thread is still running
+14:25:22 周五 QThread: Destroyed while thread is still running
+14:25:22 周五 QThread: Destroyed while thread is still running
+14:25:22 周五 QThread: Destroyed while thread is still running
+14:27:29 周五 QThread: Destroyed while thread is still running
+14:27:29 周五 QThread: Destroyed while thread is still running
+14:27:29 周五 QThread: Destroyed while thread is still running
+14:29:08 周五 QThread: Destroyed while thread is still running
+14:29:08 周五 QThread: Destroyed while thread is still running
+14:29:08 周五 QThread: Destroyed while thread is still running

@@ -1,0 +1,3 @@
+10:16:18 ÖÜÁù QThread: Destroyed while thread is still running
+10:16:18 ÖÜÁù QThread: Destroyed while thread is still running
+10:16:18 ÖÜÁù QThread: Destroyed while thread is still running

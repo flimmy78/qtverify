@@ -1,0 +1,53 @@
+07:57:52 周五 QMetaObject::connectSlotsByName: No matching signal for on_actionStdParaSet_triggered()
+07:57:52 周五 QMetaObject::connectSlotsByName: No matching signal for on_actionStdCoeCorrect_triggered()
+09:21:59 周五 QMetaObject::connectSlotsByName: No matching signal for on_actionStdParaSet_triggered()
+09:21:59 周五 QMetaObject::connectSlotsByName: No matching signal for on_actionStdCoeCorrect_triggered()
+09:36:57 周五 QThread: Destroyed while thread is still running
+09:36:57 周五 QThread: Destroyed while thread is still running
+09:36:57 周五 QThread: Destroyed while thread is still running
+09:57:44 周五 QMetaObject::connectSlotsByName: No matching signal for on_actionStdParaSet_triggered()
+09:57:44 周五 QMetaObject::connectSlotsByName: No matching signal for on_actionStdCoeCorrect_triggered()
+10:26:42 周五 QMetaObject::connectSlotsByName: No matching signal for on_actionStdParaSet_triggered()
+10:26:42 周五 QMetaObject::connectSlotsByName: No matching signal for on_actionStdCoeCorrect_triggered()
+10:53:03 周五 QMetaObject::connectSlotsByName: No matching signal for on_actionStdParaSet_triggered()
+10:53:03 周五 QMetaObject::connectSlotsByName: No matching signal for on_actionStdCoeCorrect_triggered()
+10:53:43 周五 QMetaObject::connectSlotsByName: No matching signal for on_actionStdParaSet_triggered()
+10:53:43 周五 QMetaObject::connectSlotsByName: No matching signal for on_actionStdCoeCorrect_triggered()
+10:56:19 周五 QMetaObject::connectSlotsByName: No matching signal for on_actionStdMtParaSet_triggered()
+10:56:19 周五 QMetaObject::connectSlotsByName: No matching signal for on_actionStdMtCoeCorrect_triggered()
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 
+10:57:36 周五 QTableView::setSpan: span cannot overlap 

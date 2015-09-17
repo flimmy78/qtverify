@@ -1,0 +1,1 @@
+09:47:44 ÖÜËÄ QTextHtmlParser::applyAttributes: Unknown color name 'red,'

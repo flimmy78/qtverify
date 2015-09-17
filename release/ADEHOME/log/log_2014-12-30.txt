@@ -1,0 +1,22 @@
+14:47:03 周二 QObject::killTimers: timers cannot be stopped from another thread
+16:04:30 周二 QMetaObject::connectSlotsByName: No matching signal for on_actionPlugin_triggered()
+16:04:30 周二 QMetaObject::connectSlotsByName: No matching signal for on_actionQualityComp_triggered()
+16:04:30 周二 QMetaObject::connectSlotsByName: No matching signal for on_actionQualityTotal_triggered()
+16:05:52 周二 QSqlDatabasePrivate::removeDatabase: connection 'qt_sql_default_connection' is still in use, all queries will cease to work.
+16:05:52 周二 QSqlDatabasePrivate::addDatabase: duplicate connection name 'qt_sql_default_connection', old connection removed.
+16:23:42 周二 QAxBase: Error calling IDispatch member Open: Exception thrown by server
+16:23:42 周二              Code       : 1004
+16:23:42 周二              Source     : Microsoft Office Excel
+16:23:42 周二              Description: ????F:\delusoft\trunk\qtverify\release\RUNHOME\dat\test.xlsx????????????????????????
+
+?????????????????????????????????????????
+16:23:42 周二              Help       : C:\Program Files (x86)\Microsoft Office\Office12\2052\XLMAIN11.CHM
+16:23:42 周二          Connect to the exception(int,QString,QString,QString) signal to catch this exception
+16:25:29 周二 QAxBase: Error calling IDispatch member Open: Exception thrown by server
+16:25:29 周二              Code       : 1004
+16:25:29 周二              Source     : Microsoft Office Excel
+16:25:29 周二              Description: ????F:\delusoft\trunk\qtverify\release\RUNHOME\dat\test.xlsx????????????????????????
+
+?????????????????????????????????????????
+16:25:29 周二              Help       : C:\Program Files (x86)\Microsoft Office\Office12\2052\XLMAIN11.CHM
+16:25:29 周二          Connect to the exception(int,QString,QString,QString) signal to catch this exception

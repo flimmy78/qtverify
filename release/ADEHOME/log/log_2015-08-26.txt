@@ -1,0 +1,8 @@
+08:44:02 周三 Warning: file< qtexdb.cpp >, line< 481 >: "no such column: f_numprefix Unable to execute statement" 
+08:44:36 周三 Warning: file< qtexdb.cpp >, line< 481 >: "no such column: f_numprefix Unable to execute statement" 
+08:49:21 周三 Fatal: ASSERT failure in QList<T>::operator[]: "index out of range", file c:\qt\4.8.5\include\qtcore\../../src/corelib/tools/qlist.h, line 477
+08:51:04 周三 Fatal: ASSERT failure in QList<T>::operator[]: "index out of range", file c:\qt\4.8.5\include\qtcore\../../src/corelib/tools/qlist.h, line 477
+08:51:59 周三 Fatal: ASSERT failure in QList<T>::operator[]: "index out of range", file c:\qt\4.8.5\include\qtcore\../../src/corelib/tools/qlist.h, line 477
+08:52:44 周三 Warning: file< qtexdb.cpp >, line< 481 >: "no such column: f_numprefix Unable to execute statement" 
+09:12:18 周三 Warning: file< qtexdb.cpp >, line< 481 >: "no such column: f_numprefix Unable to execute statement" 
+17:46:14 周三 Warning: file< qtexdb.cpp >, line< 481 >: "no such column: f_numprefix Unable to execute statement" 

@@ -1,0 +1,11 @@
+11:10:08 周一 Qt has caught an exception thrown from an event handler. Throwing
+exceptions from an event handler is not supported in Qt. You must
+reimplement QApplication::notify() and catch all exceptions there.
+
+11:11:35 周一 Qt has caught an exception thrown from an event handler. Throwing
+exceptions from an event handler is not supported in Qt. You must
+reimplement QApplication::notify() and catch all exceptions there.
+
+14:49:27 周一 QThread: Destroyed while thread is still running
+14:49:27 周一 QThread: Destroyed while thread is still running
+14:49:27 周一 QThread: Destroyed while thread is still running

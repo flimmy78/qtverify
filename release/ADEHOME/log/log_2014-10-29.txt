@@ -1,0 +1,60 @@
+15:46:01 周三 QAxBase: Error calling IDispatch member Cells: Exception thrown by server
+15:46:01 周三              Code       : 1004
+15:46:01 周三              Source     : 
+15:46:01 周三              Description: 
+15:46:01 周三              Help       : 
+15:46:01 周三          Connect to the exception(int,QString,QString,QString) signal to catch this exception
+15:46:36 周三 QAxBase: Error calling IDispatch member Cells: Exception thrown by server
+15:46:36 周三              Code       : 1004
+15:46:36 周三              Source     : 
+15:46:36 周三              Description: 
+15:46:36 周三              Help       : 
+15:46:36 周三          Connect to the exception(int,QString,QString,QString) signal to catch this exception
+15:47:28 周三 QAxBase: Error calling IDispatch member Cells: Exception thrown by server
+15:47:28 周三              Code       : 1004
+15:47:28 周三              Source     : 
+15:47:28 周三              Description: 
+15:47:28 周三              Help       : 
+15:47:28 周三          Connect to the exception(int,QString,QString,QString) signal to catch this exception
+15:49:31 周三 QAxBase: Error calling IDispatch member Cells: Exception thrown by server
+15:49:31 周三              Code       : 1004
+15:49:31 周三              Source     : 
+15:49:31 周三              Description: 
+15:49:31 周三              Help       : 
+15:49:31 周三          Connect to the exception(int,QString,QString,QString) signal to catch this exception
+15:50:23 周三 QAxBase: Error calling IDispatch member Cells: Exception thrown by server
+15:50:23 周三              Code       : 1004
+15:50:23 周三              Source     : 
+15:50:23 周三              Description: 
+15:50:23 周三              Help       : 
+15:50:23 周三          Connect to the exception(int,QString,QString,QString) signal to catch this exception
+15:53:03 周三 QAxBase: Error calling IDispatch member Cells: Exception thrown by server
+15:53:03 周三              Code       : 1004
+15:53:03 周三              Source     : 
+15:53:03 周三              Description: 
+15:53:03 周三              Help       : 
+15:53:03 周三          Connect to the exception(int,QString,QString,QString) signal to catch this exception
+15:55:08 周三 QAxBase: Error calling IDispatch member Cells: Exception thrown by server
+15:55:08 周三              Code       : 1004
+15:55:08 周三              Source     : 
+15:55:08 周三              Description: 
+15:55:08 周三              Help       : 
+15:55:08 周三          Connect to the exception(int,QString,QString,QString) signal to catch this exception
+16:22:43 周三 QAxBase: Error calling IDispatch member Cells: Exception thrown by server
+16:22:43 周三              Code       : 1004
+16:22:43 周三              Source     : 
+16:22:43 周三              Description: 
+16:22:43 周三              Help       : 
+16:22:43 周三          Connect to the exception(int,QString,QString,QString) signal to catch this exception
+16:24:18 周三 QAxBase: Error calling IDispatch member Cells: Exception thrown by server
+16:24:18 周三              Code       : 1004
+16:24:18 周三              Source     : 
+16:24:18 周三              Description: 
+16:24:18 周三              Help       : 
+16:24:18 周三          Connect to the exception(int,QString,QString,QString) signal to catch this exception
+16:59:46 周三 QAxBase: Error calling IDispatch member Cells: Exception thrown by server
+16:59:46 周三              Code       : 1004
+16:59:46 周三              Source     : 
+16:59:46 周三              Description: 
+16:59:46 周三              Help       : 
+16:59:46 周三          Connect to the exception(int,QString,QString,QString) signal to catch this exception

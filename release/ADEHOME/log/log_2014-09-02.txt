@@ -1,0 +1,3 @@
+16:09:35 周二 QSqlQuery::value: not positioned on a valid record
+16:12:28 周二 QSqlQuery::value: not positioned on a valid record
+16:14:57 周二 QSqlQuery::value: not positioned on a valid record

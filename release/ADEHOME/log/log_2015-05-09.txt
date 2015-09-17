@@ -1,0 +1,10 @@
+09:21:41 周六 QMetaObject::connectSlotsByName: No matching signal for on_btn_pt25_exit_clicked()
+09:22:03 周六 QMetaObject::connectSlotsByName: No matching signal for on_btn_pt25_exit_clicked()
+09:23:18 周六 QMetaObject::connectSlotsByName: No matching signal for on_btn_pt25_exit_clicked()
+09:24:16 周六 QMetaObject::connectSlotsByName: No matching signal for on_btn_pt25_exit_clicked()
+09:25:24 周六 QMetaObject::connectSlotsByName: No matching signal for on_btn_pt25_exit_clicked()
+09:33:17 周六 QMetaObject::connectSlotsByName: No matching signal for on_btn_pt25_exit_clicked()
+10:22:02 周六 QextSerialPort Portability Warning: POSIX does not support baudRate: 14400 
+10:22:25 周六 QMetaObject::connectSlotsByName: No matching signal for on_btn_pt25_exit_clicked()
+10:26:23 周六 QMetaObject::connectSlotsByName: No matching signal for on_btn_pt25_exit_clicked()
+11:03:05 周六 QMetaObject::connectSlotsByName: No matching signal for on_btn_pt25_exit_clicked()

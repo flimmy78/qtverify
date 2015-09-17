@@ -1,0 +1,52 @@
+09:16:36 周三 Object::connect: No such signal MeterComObject::readMeterDataIsOK(const QString&, const QString&, const QString&) in weightmethod.cpp:306
+09:16:36 周三 Object::connect:  (receiver name: 'WeightMethodClass')
+09:16:36 周三 Object::connect: No such signal MeterComObject::readMeterDataIsOK(const QString&, const QString&, const QString&) in weightmethod.cpp:306
+09:16:36 周三 Object::connect:  (receiver name: 'WeightMethodClass')
+09:16:36 周三 Object::connect: No such signal MeterComObject::readMeterDataIsOK(const QString&, const QString&, const QString&) in weightmethod.cpp:306
+09:16:36 周三 Object::connect:  (receiver name: 'WeightMethodClass')
+09:16:36 周三 Object::connect: No such signal MeterComObject::readMeterDataIsOK(const QString&, const QString&, const QString&) in weightmethod.cpp:306
+09:16:36 周三 Object::connect:  (receiver name: 'WeightMethodClass')
+09:16:36 周三 Object::connect: No such signal MeterComObject::readMeterDataIsOK(const QString&, const QString&, const QString&) in weightmethod.cpp:306
+09:16:36 周三 Object::connect:  (receiver name: 'WeightMethodClass')
+09:16:36 周三 Object::connect: No such signal MeterComObject::readMeterDataIsOK(const QString&, const QString&, const QString&) in weightmethod.cpp:306
+09:16:36 周三 Object::connect:  (receiver name: 'WeightMethodClass')
+09:16:36 周三 Object::connect: No such signal MeterComObject::readMeterDataIsOK(const QString&, const QString&, const QString&) in weightmethod.cpp:306
+09:16:36 周三 Object::connect:  (receiver name: 'WeightMethodClass')
+09:16:36 周三 Object::connect: No such signal MeterComObject::readMeterDataIsOK(const QString&, const QString&, const QString&) in weightmethod.cpp:306
+09:16:36 周三 Object::connect:  (receiver name: 'WeightMethodClass')
+09:16:36 周三 Object::connect: No such signal MeterComObject::readMeterDataIsOK(const QString&, const QString&, const QString&) in weightmethod.cpp:306
+09:16:36 周三 Object::connect:  (receiver name: 'WeightMethodClass')
+09:16:36 周三 Object::connect: No such signal MeterComObject::readMeterDataIsOK(const QString&, const QString&, const QString&) in weightmethod.cpp:306
+09:16:36 周三 Object::connect:  (receiver name: 'WeightMethodClass')
+09:16:36 周三 Object::connect: No such signal MeterComObject::readMeterDataIsOK(const QString&, const QString&, const QString&) in weightmethod.cpp:306
+09:16:36 周三 Object::connect:  (receiver name: 'WeightMethodClass')
+09:16:36 周三 Object::connect: No such signal MeterComObject::readMeterDataIsOK(const QString&, const QString&, const QString&) in weightmethod.cpp:306
+09:16:36 周三 Object::connect:  (receiver name: 'WeightMethodClass')
+09:16:36 周三 Object::connect: No such signal MeterComObject::readMeterDataIsOK(const QString&, const QString&, const QString&) in weightmethod.cpp:306
+09:16:36 周三 Object::connect:  (receiver name: 'WeightMethodClass')
+09:16:36 周三 Object::connect: No such signal MeterComObject::readMeterDataIsOK(const QString&, const QString&, const QString&) in weightmethod.cpp:306
+09:16:36 周三 Object::connect:  (receiver name: 'WeightMethodClass')
+09:16:36 周三 Object::connect: No such signal MeterComObject::readMeterDataIsOK(const QString&, const QString&, const QString&) in weightmethod.cpp:306
+09:16:36 周三 Object::connect:  (receiver name: 'WeightMethodClass')
+09:16:36 周三 Object::connect: No such signal MeterComObject::readMeterDataIsOK(const QString&, const QString&, const QString&) in weightmethod.cpp:306
+09:16:36 周三 Object::connect:  (receiver name: 'WeightMethodClass')
+10:23:15 周三 libpng warning: Incorrect sBIT chunk length
+10:23:34 周三 QThread: Destroyed while thread is still running
+10:23:34 周三 QThread: Destroyed while thread is still running
+10:23:34 周三 QThread: Destroyed while thread is still running
+10:26:58 周三 libpng warning: Incorrect sBIT chunk length
+10:27:04 周三 libpng warning: Incorrect sBIT chunk length
+10:28:47 周三 libpng warning: Incorrect sBIT chunk length
+10:28:48 周三 libpng warning: Incorrect sBIT chunk length
+10:30:33 周三 libpng warning: Incorrect sBIT chunk length
+10:30:34 周三 libpng warning: Incorrect sBIT chunk length
+10:31:05 周三 libpng warning: Incorrect sBIT chunk length
+10:31:06 周三 libpng warning: Incorrect sBIT chunk length
+10:36:04 周三 libpng warning: Incorrect sBIT chunk length
+10:36:08 周三 libpng warning: Incorrect sBIT chunk length
+10:49:58 周三 libpng warning: Incorrect sBIT chunk length
+10:50:02 周三 libpng warning: Incorrect sBIT chunk length
+13:38:52 周三 QObject::killTimers: timers cannot be stopped from another thread
+15:48:13 周三 Warning: file< qtexdb.cpp >, line< 354 >: "no such column: nan Unable to execute statement" 
+15:48:15 周三 Warning: file< qtexdb.cpp >, line< 354 >: "no such column: nan Unable to execute statement" 
+15:48:17 周三 Warning: file< qtexdb.cpp >, line< 354 >: "no such column: nan Unable to execute statement" 

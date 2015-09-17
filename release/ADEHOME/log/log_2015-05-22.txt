@@ -1,0 +1,92 @@
+09:23:33 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+09:23:33 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+09:31:49 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+09:31:49 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+10:00:58 周五 Fatal: ASSERT: "d->ref == 1" in file tools\qlist.cpp, line 233
+10:08:46 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+10:08:46 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+10:09:18 周五 Fatal: ASSERT: "d->ref == 1" in file tools\qlist.cpp, line 233
+10:20:29 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+10:20:29 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+10:20:47 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+10:20:47 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+10:29:47 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+10:29:47 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+10:30:03 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+10:30:03 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+10:30:26 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+10:30:26 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+10:32:08 周五 Fatal: ASSERT: "d->ref == 1" in file tools\qlist.cpp, line 233
+10:41:35 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+10:41:35 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+12:56:49 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+12:56:49 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+12:57:20 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+12:57:20 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+13:27:46 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+13:27:46 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+13:29:23 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+13:29:23 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+13:31:49 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+13:31:49 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+13:31:58 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+13:31:58 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+13:32:16 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+13:32:16 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+13:58:20 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+13:58:20 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+13:59:07 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+13:59:07 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+13:59:39 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+13:59:39 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+13:59:59 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+13:59:59 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+14:00:15 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+14:00:15 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+14:15:44 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+14:15:44 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+14:16:41 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+14:16:41 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+14:16:49 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+14:16:49 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+14:19:01 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+14:19:01 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+14:26:13 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+14:26:13 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+14:26:26 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+14:26:26 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+14:26:44 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+14:26:44 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+14:34:45 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+14:34:45 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+14:41:58 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+14:41:58 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+14:46:14 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+14:46:14 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+15:07:49 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+15:07:49 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+15:09:05 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+15:09:05 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+15:09:15 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+15:09:15 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+15:31:28 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+15:31:28 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+15:32:36 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+15:32:36 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+15:56:14 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+15:56:14 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+16:03:09 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+16:03:09 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+16:05:03 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+16:05:03 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+16:20:42 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+16:20:42 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+17:03:19 周五 Object::connect: No such slot Sti1062aComObject::writeTemperatureComBuffer(sti1062aT1) in source\datatestdlg.cpp:206
+17:03:58 周五 Object::connect: No such slot Sti1062aComObject::writeTemperatureComBuffer(sti1062aT1) in source\datatestdlg.cpp:206
+17:07:06 周五 Object::connect: Parentheses expected, slot DataTestDlg::slotAskStdTemperature in source\datatestdlg.cpp:206
+17:07:06 周五 Object::connect:  (receiver name: 'DataTestDlgClass')
+17:08:48 周五 Object::connect: Parentheses expected, slot DataTestDlg::slotAskStdTemperature in source\datatestdlg.cpp:206
+17:08:48 周五 Object::connect:  (receiver name: 'DataTestDlgClass')
+17:10:53 周五 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+17:10:53 周五 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+17:39:50 周五 Fatal: ASSERT: "d->ref == 1" in file tools\qlist.cpp, line 233

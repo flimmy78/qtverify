@@ -1,0 +1,7 @@
+12:59:03 周五 QMetaObject::connectSlotsByName: No matching signal for on_countdown_timerout()
+12:59:03 周五 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_unit_clicked(int)
+12:59:03 周五 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_pos_clicked(int)
+12:59:03 周五 QObject::connect: Cannot connect (null)::saveSuccessfully(void) to CmbVerifyDlg::freshCmbParam(void)
+13:00:35 周五 Warning: file< qtexdb.cpp >, line< 481 >: "no such column: f_numprefix Unable to execute statement" 
+14:00:47 周五 Fatal: ASSERT: "i >= 0 && i < size()" in file c:\iwmake\build_vs2010_opensource_________________padding_________________\include\qtcore\../../src/corelib/tools/qbytearray.h, line 407
+14:00:49 周五 QObject::killTimers: timers cannot be stopped from another thread

@@ -1,0 +1,7 @@
+08:03:56 周四 Warning: file< source\main.cpp >, line< 24 >: This is a warning message 
+08:03:56 周四 Critical: file< source\main.cpp >, line< 25 >: This is a critical message 
+08:04:45 周四 QThread: Destroyed while thread is still running
+08:04:45 周四 QThread: Destroyed while thread is still running
+08:04:45 周四 QThread: Destroyed while thread is still running
+09:04:32 周四 Warning: file< source\main.cpp >, line< 24 >: This is a warning message 
+09:04:32 周四 Critical: file< source\main.cpp >, line< 25 >: This is a critical message 

@@ -1,0 +1,13 @@
+09:26:35 周五 Warning: file< qtexdb.cpp >, line< 118 >: "no such table: t_meter_standard Unable to execute statement" 
+09:26:35 周五 Warning: file< qtexdb.cpp >, line< 118 >: "no such table: t_meter_standard Unable to execute statement" 
+09:26:37 周五 Warning: file< qtexdb.cpp >, line< 94 >: "no such table: t_meter_standard Unable to execute statement" 
+09:26:37 周五 Warning: file< qtexdb.cpp >, line< 152 >: "no such table: t_meter_type Unable to execute statement" 
+09:26:37 周五 Warning: file< qtexdb.cpp >, line< 188 >: "no such table: t_manufacture_dept Unable to execute statement" 
+09:26:37 周五 Warning: file< qtexdb.cpp >, line< 118 >: "no such table: t_meter_standard Unable to execute statement" 
+10:32:26 周五 Could not parse stylesheet of widget 0x28758f8
+13:33:16 周五 Could not parse stylesheet of widget 0x25f60c8
+13:33:17 周五 Could not parse stylesheet of widget 0x25f60c8
+13:33:19 周五 Could not parse stylesheet of widget 0x25f60c8
+13:34:38 周五 Could not parse stylesheet of widget 0x25c95b0
+13:34:40 周五 Could not parse stylesheet of widget 0x25c95b0
+13:34:46 周五 Could not parse stylesheet of widget 0x25c95b0

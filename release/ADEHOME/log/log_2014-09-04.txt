@@ -1,0 +1,4 @@
+08:30:06 周四 Fatal: ASSERT: "idx >= 0 && idx < s" in file c:\iwmake\build_vs2010_opensource_________________padding_________________\include\qtcore\../../src/corelib/tools/qvarlengtharray.h, line 110
+08:34:23 周四 Fatal: ASSERT: "idx >= 0 && idx < s" in file c:\iwmake\build_vs2010_opensource_________________padding_________________\include\qtcore\../../src/corelib/tools/qvarlengtharray.h, line 110
+13:52:51 周四 Fatal: ASSERT: "idx >= 0 && idx < s" in file c:\iwmake\build_vs2010_opensource_________________padding_________________\include\qtcore\../../src/corelib/tools/qvarlengtharray.h, line 110
+13:52:51 周四 Fatal: ASSERT: "idx >= 0 && idx < s" in file c:\iwmake\build_vs2010_opensource_________________padding_________________\include\qtcore\../../src/corelib/tools/qvarlengtharray.h, line 110

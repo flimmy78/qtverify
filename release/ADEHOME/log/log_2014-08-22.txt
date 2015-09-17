@@ -1,0 +1,15 @@
+09:44:16 周五 QThread: Destroyed while thread is still running
+09:44:16 周五 QThread: Destroyed while thread is still running
+09:44:16 周五 QThread: Destroyed while thread is still running
+15:52:43 周五 QAxBase: Error calling IDispatch member Visible: Exception thrown by server
+15:52:43 周五              Code       : 50290
+15:52:43 周五              Source     : 
+15:52:43 周五              Description: 
+15:52:43 周五              Help       : 
+15:52:43 周五          Connect to the exception(int,QString,QString,QString) signal to catch this exception
+15:55:08 周五 QAxBase: Error calling IDispatch member Open: Exception thrown by server
+15:55:08 周五              Code       : 1004
+15:55:08 周五              Source     : Microsoft Office Excel
+15:55:08 周五              Description: Excel ???????Export.xlsx??????????????????????????????????????????
+15:55:08 周五              Help       : C:\Program Files (x86)\Microsoft Office\Office12\2052\XLMAIN11.CHM
+15:55:08 周五          Connect to the exception(int,QString,QString,QString) signal to catch this exception

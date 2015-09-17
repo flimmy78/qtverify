@@ -1,0 +1,4 @@
+08:13:22 周二 Warning: file< qtexdb.cpp >, line< 481 >: "no such column: f_numprefix Unable to execute statement" 
+08:14:00 周二 Warning: file< qtexdb.cpp >, line< 481 >: "no such column: f_numprefix Unable to execute statement" 
+14:38:29 周二 Warning: file< qtexdb.cpp >, line< 481 >: "no such column: f_numprefix Unable to execute statement" 
+19:02:17 周二 Warning: file< qtexdb.cpp >, line< 481 >: "no such column: f_numprefix Unable to execute statement" 

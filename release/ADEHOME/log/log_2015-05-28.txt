@@ -1,0 +1,41 @@
+10:26:59 周四 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_unit_clicked(int)
+10:26:59 周四 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_pos_clicked(int)
+10:26:59 周四 QObject::connect: Cannot connect (null)::saveSuccessfully(void) to CmbVerifyDlg::freshCmbParam(void)
+10:37:05 周四 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_unit_clicked(int)
+10:37:05 周四 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_pos_clicked(int)
+10:37:05 周四 QObject::connect: Cannot connect (null)::saveSuccessfully(void) to CmbVerifyDlg::freshCmbParam(void)
+10:37:44 周四 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_unit_clicked(int)
+10:37:44 周四 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_pos_clicked(int)
+10:37:44 周四 QObject::connect: Cannot connect (null)::saveSuccessfully(void) to CmbVerifyDlg::freshCmbParam(void)
+10:42:26 周四 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_unit_clicked(int)
+10:42:26 周四 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_pos_clicked(int)
+10:42:26 周四 QObject::connect: Cannot connect (null)::saveSuccessfully(void) to CmbVerifyDlg::freshCmbParam(void)
+10:45:46 周四 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_unit_clicked(int)
+10:45:46 周四 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_pos_clicked(int)
+10:45:46 周四 QObject::connect: Cannot connect (null)::saveSuccessfully(void) to CmbVerifyDlg::freshCmbParam(void)
+10:48:40 周四 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_unit_clicked(int)
+10:48:40 周四 QMetaObject::connectSlotsByName: No matching signal for on_btnGroup_pos_clicked(int)
+10:48:40 周四 QObject::connect: Cannot connect (null)::saveSuccessfully(void) to CmbVerifyDlg::freshCmbParam(void)
+11:05:57 周四 Warning: file< qtexdb.cpp >, line< 358 >: "no such column: inf Unable to execute statement" 
+11:05:57 周四 Warning: file< qtexdb.cpp >, line< 358 >: "no such column: inf Unable to execute statement" 
+11:05:57 周四 Warning: file< qtexdb.cpp >, line< 358 >: "no such column: inf Unable to execute statement" 
+11:05:57 周四 Warning: file< qtexdb.cpp >, line< 358 >: "no such column: inf Unable to execute statement" 
+11:05:57 周四 Warning: file< qtexdb.cpp >, line< 358 >: "no such column: inf Unable to execute statement" 
+11:05:57 周四 Warning: file< qtexdb.cpp >, line< 358 >: "no such column: inf Unable to execute statement" 
+11:05:57 周四 Warning: file< qtexdb.cpp >, line< 358 >: "no such column: inf Unable to execute statement" 
+11:05:57 周四 Warning: file< qtexdb.cpp >, line< 358 >: "no such column: inf Unable to execute statement" 
+17:57:43 周四 Warning: file< qtexdb.cpp >, line< 322 >: "near ",": syntax error Unable to execute statement" 
+17:57:43 周四 Warning: file< qtexdb.cpp >, line< 322 >: "near ",": syntax error Unable to execute statement" 
+17:57:43 周四 Warning: file< qtexdb.cpp >, line< 322 >: "columns F_MeterNo, F_TimeStamp, F_FlowPointIdx, F_MeterPosNo are not unique Unable to fetch row" 
+17:57:43 周四 Warning: file< qtexdb.cpp >, line< 322 >: "columns F_MeterNo, F_TimeStamp, F_FlowPointIdx, F_MeterPosNo are not unique Unable to fetch row" 
+17:57:43 周四 Warning: file< qtexdb.cpp >, line< 322 >: "columns F_MeterNo, F_TimeStamp, F_FlowPointIdx, F_MeterPosNo are not unique Unable to fetch row" 
+17:57:43 周四 Warning: file< qtexdb.cpp >, line< 322 >: "columns F_MeterNo, F_TimeStamp, F_FlowPointIdx, F_MeterPosNo are not unique Unable to fetch row" 
+17:57:43 周四 Warning: file< qtexdb.cpp >, line< 322 >: "columns F_MeterNo, F_TimeStamp, F_FlowPointIdx, F_MeterPosNo are not unique Unable to fetch row" 
+18:01:30 周四 Warning: file< qtexdb.cpp >, line< 322 >: "columns F_MeterNo, F_TimeStamp, F_FlowPointIdx, F_MeterPosNo are not unique Unable to fetch row" 
+18:01:30 周四 Warning: file< qtexdb.cpp >, line< 322 >: "columns F_MeterNo, F_TimeStamp, F_FlowPointIdx, F_MeterPosNo are not unique Unable to fetch row" 
+18:01:30 周四 Warning: file< qtexdb.cpp >, line< 322 >: "columns F_MeterNo, F_TimeStamp, F_FlowPointIdx, F_MeterPosNo are not unique Unable to fetch row" 
+18:01:30 周四 Warning: file< qtexdb.cpp >, line< 322 >: "columns F_MeterNo, F_TimeStamp, F_FlowPointIdx, F_MeterPosNo are not unique Unable to fetch row" 
+18:01:30 周四 Warning: file< qtexdb.cpp >, line< 322 >: "columns F_MeterNo, F_TimeStamp, F_FlowPointIdx, F_MeterPosNo are not unique Unable to fetch row" 
+18:01:30 周四 Warning: file< qtexdb.cpp >, line< 322 >: "columns F_MeterNo, F_TimeStamp, F_FlowPointIdx, F_MeterPosNo are not unique Unable to fetch row" 
+18:01:30 周四 Warning: file< qtexdb.cpp >, line< 322 >: "columns F_MeterNo, F_TimeStamp, F_FlowPointIdx, F_MeterPosNo are not unique Unable to fetch row" 
+18:01:30 周四 Warning: file< qtexdb.cpp >, line< 322 >: "columns F_MeterNo, F_TimeStamp, F_FlowPointIdx, F_MeterPosNo are not unique Unable to fetch row" 

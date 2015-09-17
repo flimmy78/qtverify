@@ -1,0 +1,131 @@
+12:33:34 周六 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+12:33:34 周六 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+12:46:43 周六 QextSerialPort does not support Data bits: 0 
+12:46:43 周六 QextSerialPort does not support Data bits: 0 
+12:46:43 周六 QextSerialPort does not support Data bits: 0 
+12:46:43 周六 QextSerialPort does not support Data bits: 0 
+12:46:43 周六 Fatal: ASSERT failure in QList<T>::operator[]: "index out of range", file c:\qt\4.8.5\include\qtcore\../../src/corelib/tools/qlist.h, line 477
+12:46:55 周六 QextSerialPort does not support Data bits: 0 
+12:46:55 周六 QextSerialPort does not support Data bits: 0 
+12:46:55 周六 QextSerialPort does not support Data bits: 0 
+12:46:55 周六 QextSerialPort does not support Data bits: 0 
+12:46:55 周六 Fatal: ASSERT failure in QList<T>::operator[]: "index out of range", file c:\qt\4.8.5\include\qtcore\../../src/corelib/tools/qlist.h, line 477
+12:47:56 周六 Fatal: ASSERT failure in QList<T>::operator[]: "index out of range", file c:\qt\4.8.5\include\qtcore\../../src/corelib/tools/qlist.h, line 477
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:50:22 周六 QSettings::endGroup: Expected endArray() instead
+12:52:12 周六 Fatal: ASSERT failure in QList<T>::operator[]: "index out of range", file c:\qt\4.8.5\include\qtcore\../../src/corelib/tools/qlist.h, line 477
+12:52:56 周六 QSettings::endGroup: Expected endArray() instead
+12:52:56 周六 QSettings::endGroup: Expected endArray() instead
+12:52:56 周六 QSettings::endGroup: Expected endArray() instead
+12:52:56 周六 QSettings::endGroup: Expected endArray() instead
+12:52:56 周六 QSettings::endGroup: Expected endArray() instead
+12:52:56 周六 QSettings::endGroup: Expected endArray() instead
+12:52:56 周六 QSettings::endGroup: Expected endArray() instead
+12:52:56 周六 QSettings::endGroup: Expected endArray() instead
+12:52:56 周六 QSettings::endGroup: Expected endArray() instead
+12:52:56 周六 QSettings::endGroup: Expected endArray() instead
+12:52:57 周六 QSettings::endGroup: Expected endArray() instead
+12:52:57 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:01 周六 QSettings::endGroup: Expected endArray() instead
+12:53:18 周六 Fatal: ASSERT failure in QList<T>::operator[]: "index out of range", file c:\qt\4.8.5\include\qtcore\../../src/corelib/tools/qlist.h, line 477
+12:56:19 周六 Fatal: ASSERT failure in QList<T>::operator[]: "index out of range", file c:\qt\4.8.5\include\qtcore\../../src/corelib/tools/qlist.h, line 477
+13:13:58 周六 Fatal: ASSERT failure in QList<T>::operator[]: "index out of range", file c:\qt\4.8.5\include\qtcore\../../src/corelib/tools/qlist.h, line 477
+13:18:24 周六 QSettings::endGroup: Expected endArray() instead
+13:20:01 周六 QSettings::endGroup: Expected endArray() instead
+13:31:41 周六 QSettings::endGroup: Expected endArray() instead
+13:39:26 周六 QSettings::endGroup: Expected endArray() instead
+13:39:56 周六 QSettings::endGroup: Expected endArray() instead
+13:43:06 周六 QSettings::endGroup: Expected endArray() instead

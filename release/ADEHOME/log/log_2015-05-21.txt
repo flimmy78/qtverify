@@ -1,0 +1,29 @@
+14:32:51 周四 QMetaObject::connectSlotsByName: No matching signal for on_btnQueryStatus_clicked()
+14:43:31 周四 QMetaObject::connectSlotsByName: No matching signal for on_btnQueryStatus_clicked()
+14:44:30 周四 QMetaObject::connectSlotsByName: No matching signal for on_btnQueryStatus_clicked()
+14:47:06 周四 QMetaObject::connectSlotsByName: No matching signal for on_btnQueryStatus_clicked()
+14:47:47 周四 QMetaObject::connectSlotsByName: No matching signal for on_btnQueryStatus_clicked()
+14:48:44 周四 QMetaObject::connectSlotsByName: No matching signal for on_btnQueryStatus_clicked()
+14:50:16 周四 QMetaObject::connectSlotsByName: No matching signal for on_btnQueryStatus_clicked()
+14:54:32 周四 QMetaObject::connectSlotsByName: No matching signal for on_btnQueryStatus_clicked()
+14:55:33 周四 QMetaObject::connectSlotsByName: No matching signal for on_btnQueryStatus_clicked()
+14:56:04 周四 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+14:56:04 周四 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+14:57:19 周四 QMetaObject::connectSlotsByName: No matching signal for on_btnQueryStatus_clicked()
+14:57:30 周四 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+14:57:30 周四 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+14:58:16 周四 QMetaObject::connectSlotsByName: No matching signal for on_btnQueryStatus_clicked()
+15:00:22 周四 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+15:00:22 周四 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+15:03:55 周四 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+15:03:55 周四 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+15:04:19 周四 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+15:04:19 周四 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+15:14:21 周四 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+15:14:21 周四 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+15:57:02 周四 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+15:57:02 周四 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+15:59:31 周四 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+15:59:31 周四 QextSerialPort: 1.5 stop bits can only be used with 5 data bits
+16:25:32 周四 QextSerialPort Portability Warning: 1.5 stop bit operation is not supported by POSIX.
+16:25:32 周四 QextSerialPort: 1.5 stop bits can only be used with 5 data bits

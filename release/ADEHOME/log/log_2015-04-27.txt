@@ -1,0 +1,9 @@
+14:57:05 周一 QThread: Destroyed while thread is still running
+14:57:05 周一 QThread: Destroyed while thread is still running
+14:57:05 周一 QThread: Destroyed while thread is still running
+15:16:23 周一 Could not parse stylesheet of widget 0x29eb620
+15:23:27 周一 Could not parse stylesheet of widget 0x292ad68
+15:23:54 周一 Could not parse stylesheet of widget 0x2b5b620
+15:31:22 周一 Could not parse stylesheet of widget 0x299b620
+16:56:32 周一 QextSerialPort Portability Warning: POSIX does not support baudRate: 14400 
+16:56:33 周一 QextSerialPort Portability Warning: POSIX does not support baudRate: 14400 

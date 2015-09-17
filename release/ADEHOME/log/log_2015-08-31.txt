@@ -1,0 +1,4 @@
+14:30:24 周一 QextSerialPort write error: 22 
+14:30:24 周一 QextSerialPort: couldn't cancel IO
+14:30:26 周一 QextSerialPort write error: 22 
+14:30:26 周一 QextSerialPort: couldn't cancel IO

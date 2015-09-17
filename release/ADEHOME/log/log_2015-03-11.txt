@@ -1,0 +1,7 @@
+08:18:04 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+08:34:24 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+10:40:44 周三 QMetaObject::connectSlotsByName: No matching signal for on_btnModifyFlowPara_clicked()
+10:42:12 周三 QMetaObject::connectSlotsByName: No matching signal for on_btnModifyFlowPara_clicked()
+10:47:21 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 
+14:26:24 周三 QMetaObject::connectSlotsByName: No matching signal for on_btnStart_clicked()
+15:53:37 周三 QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 

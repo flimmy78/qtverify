@@ -1,0 +1,7 @@
+16:29:08 周二 QObject::connect: Cannot connect (null)::saveSuccessSignal() to WeightMethodDlg::showNowKeyParaConfig()
+16:29:49 周二 QObject::connect: Cannot connect (null)::saveSuccessSignal() to WeightMethodDlg::showNowKeyParaConfig()
+16:30:27 周二 QObject::connect: Cannot connect (null)::saveSuccessSignal() to WeightMethodDlg::showNowKeyParaConfig()
+16:31:51 周二 QObject::connect: Cannot connect (null)::saveSuccessSignal() to WeightMethodDlg::showNowKeyParaConfig()
+16:37:02 周二 QObject::connect: Cannot connect (null)::saveSuccessSignal() to WeightMethodDlg::showNowKeyParaConfig()
+16:46:06 周二 QObject::connect: Cannot connect (null)::saveSuccessSignal() to WeightMethodDlg::showNowKeyParaConfig()
+17:28:16 周二 QObject::connect: Cannot connect (null)::saveSuccessSignal() to WeightMethodDlg::showNowKeyParaConfig()

@@ -1,0 +1,11 @@
+09:41:04 周三 Warning: file< qtexdb.cpp >, line< 330 >: "no such column: inf Unable to execute statement" 
+09:41:04 周三 Warning: file< qtexdb.cpp >, line< 330 >: "no such column: inf Unable to execute statement" 
+09:41:04 周三 Warning: file< qtexdb.cpp >, line< 330 >: "no such column: inf Unable to execute statement" 
+09:41:04 周三 Warning: file< qtexdb.cpp >, line< 330 >: "no such column: inf Unable to execute statement" 
+11:27:19 周三 Fatal: ASSERT: "d->ref == 1" in file tools\qlist.cpp, line 233
+15:38:21 周三 Object::connect: No such signal MeterComObject::readMeterFlowIsOK(const QString&, const QString&) in source\datatestdlg.cpp:259
+15:38:21 周三 Object::connect:  (receiver name: 'DataTestDlgClass')
+15:52:13 周三 Object::connect: No such signal MeterComObject::readMeterFlowIsOK(const QString&, const QString&) in source\datatestdlg.cpp:259
+15:52:13 周三 Object::connect:  (receiver name: 'DataTestDlgClass')
+15:57:53 周三 Object::connect: No such signal MeterComObject::readMeterFlowIsOK(const QString&, const QString&) in source\datatestdlg.cpp:259
+15:57:53 周三 Object::connect:  (receiver name: 'DataTestDlgClass')

@@ -1,0 +1,5 @@
+13:29:05 周三 Warning: file< source\main.cpp >, line< 39 >: This is a warning message 
+14:07:16 周三 Warning: file< source\main.cpp >, line< 39 >: This is a warning message 
+14:26:50 周三 Warning: file< source\main.cpp >, line< 39 >: This is a warning message 
+16:33:33 周三 Warning: file< source\main.cpp >, line< 39 >: This is a warning message 
+16:34:22 周三 Warning: file< source\main.cpp >, line< 39 >: This is a warning message 

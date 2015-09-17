@@ -1,0 +1,2 @@
+04:43:36 周二 Fatal: ASSERT: "d->ref == 1" in file tools\qlist.cpp, line 233
+13:14:53 周二 QObject::killTimers: timers cannot be stopped from another thread
