@@ -53,7 +53,7 @@
     <message>
         <location filename="../scancodedlg.ui" line="36"/>
         <source>NewMeterNO</source>
-        <translation>新表号</translation>
+        <translation>新表号(扫描码)</translation>
     </message>
     <message>
         <location filename="../scancodedlg.ui" line="41"/>
