@@ -1,4 +1,0 @@
-17:21:35 周三 Warning: file< source\main.cpp >, line< 24 >: This is a warning message 
-17:21:35 周三 Critical: file< source\main.cpp >, line< 25 >: This is a critical message 
-17:21:41 周三 Warning: file< source\main.cpp >, line< 24 >: This is a warning message 
-17:21:41 周三 Critical: file< source\main.cpp >, line< 25 >: This is a critical message 

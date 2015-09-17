@@ -1,4 +1,0 @@
-10:32:27 周五 QSqlDatabasePrivate::removeDatabase: connection 'qt_sql_default_connection' is still in use, all queries will cease to work.
-10:32:27 周五 QSqlDatabasePrivate::addDatabase: duplicate connection name 'qt_sql_default_connection', old connection removed.
-10:32:35 周五 Warning: file< qtexdb.cpp >, line< 117 >: "Table 'dbs1.t_meter_standard' doesn't exist QMYSQL: Unable to execute query" 
-10:32:35 周五 Warning: file< qtexdb.cpp >, line< 117 >: "Table 'dbs1.t_meter_standard' doesn't exist QMYSQL: Unable to execute query" 

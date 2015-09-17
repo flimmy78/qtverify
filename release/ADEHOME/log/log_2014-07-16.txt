@@ -1,9 +1,0 @@
-13:41:57 周三 QThread: Destroyed while thread is still running
-13:41:57 周三 QThread: Destroyed while thread is still running
-13:41:57 周三 QThread: Destroyed while thread is still running
-16:19:14 周三 QMetaObject::connectSlotsByName: No matching signal for on_btnExit_clicked()
-16:34:05 周三 QMetaObject::connectSlotsByName: No matching signal for on_btnExit_clicked()
-16:34:55 周三 QMetaObject::connectSlotsByName: No matching signal for on_btnExit_clicked()
-16:37:41 周三 QMetaObject::connectSlotsByName: No matching signal for on_btnExit_clicked()
-16:39:41 周三 QMetaObject::connectSlotsByName: No matching signal for on_btnExit_clicked()
-16:45:10 周三 QMetaObject::connectSlotsByName: No matching signal for on_btnExit_clicked()

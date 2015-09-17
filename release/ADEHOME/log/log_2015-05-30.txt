@@ -1,3 +1,0 @@
-16:16:26 ÖÜÁù Warning: file< qtexdb.cpp >, line< 322 >: "near ",": syntax error Unable to execute statement" 
-16:16:26 ÖÜÁù Warning: file< qtexdb.cpp >, line< 322 >: "near ",": syntax error Unable to execute statement" 
-16:16:26 ÖÜÁù Warning: file< qtexdb.cpp >, line< 322 >: "near ",": syntax error Unable to execute statement" 

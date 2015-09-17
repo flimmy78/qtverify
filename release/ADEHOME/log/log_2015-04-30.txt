@@ -1,8 +1,0 @@
-11:15:06 周四 Warning: file< qtexdb.cpp >, line< 681 >: "T_Calc_Verify_Record.F_DeltaTIdx may not be NULL Unable to fetch row" 
-11:15:07 周四 Warning: file< qtexdb.cpp >, line< 681 >: "T_Calc_Verify_Record.F_DeltaTIdx may not be NULL Unable to fetch row" 
-11:15:08 周四 Warning: file< qtexdb.cpp >, line< 681 >: "T_Calc_Verify_Record.F_DeltaTIdx may not be NULL Unable to fetch row" 
-17:23:15 周四 Warning: file< qtexdb.cpp >, line< 687 >: "near ",": syntax error Unable to execute statement" 
-17:23:32 周四 Warning: file< qtexdb.cpp >, line< 687 >: "near ",": syntax error Unable to execute statement" 
-17:25:33 周四 Warning: file< qtexdb.cpp >, line< 684 >: "near ",": syntax error Unable to execute statement" 
-17:25:42 周四 Warning: file< qtexdb.cpp >, line< 684 >: "near ",": syntax error Unable to execute statement" 
-17:28:05 周四 Warning: file< qtexdb.cpp >, line< 684 >: "near ",": syntax error Unable to execute statement" 

@@ -1,6 +1,0 @@
-10:00:31 周五 QThread: Destroyed while thread is still running
-10:00:31 周五 QThread: Destroyed while thread is still running
-10:00:31 周五 QThread: Destroyed while thread is still running
-10:00:33 周五 QThread: Destroyed while thread is still running
-10:00:33 周五 QThread: Destroyed while thread is still running
-10:00:33 周五 QThread: Destroyed while thread is still running

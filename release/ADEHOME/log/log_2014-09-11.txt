@@ -1,6 +1,0 @@
-09:03:24 周四 QextSerialPort write error: 22 
-09:03:24 周四 QextSerialPort: couldn't cancel IO
-09:03:33 周四 QextSerialPort write error: 22 
-09:03:33 周四 QextSerialPort: couldn't cancel IO
-09:03:34 周四 QextSerialPort write error: 22 
-09:03:34 周四 QextSerialPort: couldn't cancel IO

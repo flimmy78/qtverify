@@ -1,1 +1,0 @@
-12:47:50 ÖÜËÄ QextSerialPort Portability Warning: POSIX does not support baudRate: 56000 

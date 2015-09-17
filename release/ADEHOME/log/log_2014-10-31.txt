@@ -1,6 +1,0 @@
-08:49:01 周五 QAxBase: Error calling IDispatch member Columns: Exception thrown by server
-08:49:01 周五              Code       : 5
-08:49:01 周五              Source     : 
-08:49:01 周五              Description: 
-08:49:01 周五              Help       : 
-08:49:01 周五          Connect to the exception(int,QString,QString,QString) signal to catch this exception

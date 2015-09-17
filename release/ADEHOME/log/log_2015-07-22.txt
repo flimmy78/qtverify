@@ -1,1 +1,0 @@
-10:31:16 ÖÜÈı QMetaObject::connectSlotsByName: No matching signal for on_tableWidget_resizeEvent()

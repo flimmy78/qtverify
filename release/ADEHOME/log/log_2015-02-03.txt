@@ -1,4 +1,0 @@
-11:43:48 周二 Fatal: ASSERT: "d->ref == 1" in file tools\qlist.cpp, line 233
-16:36:10 周二 QThread: Destroyed while thread is still running
-16:36:10 周二 QThread: Destroyed while thread is still running
-16:36:10 周二 QThread: Destroyed while thread is still running

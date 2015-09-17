@@ -1,4 +1,0 @@
-16:52:04 周五 Object::connect: No such signal ControlComObject::controlRelayIsOk(const UINT8 &, const &bool) in weightmethod.cpp:261
-16:52:04 周五 Object::connect:  (receiver name: 'WeightMethodClass')
-16:52:14 周五 Object::connect: No such signal ControlComObject::controlRelayIsOk(const UINT8 &, const &bool) in source\qualitydlg.cpp:232
-16:52:14 周五 Object::connect:  (receiver name: 'QualityDlgClass')

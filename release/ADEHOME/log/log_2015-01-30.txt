@@ -1,6 +1,0 @@
-09:10:55 周五 Warning: file< qtexdb.cpp >, line< 330 >: "columns F_MeterNo, F_TimeStamp, F_FlowPointIdx are not unique Unable to fetch row" 
-09:11:00 周五 Warning: file< qtexdb.cpp >, line< 330 >: "columns F_MeterNo, F_TimeStamp, F_FlowPointIdx are not unique Unable to fetch row" 
-10:17:53 周五 Warning: file< qtexdb.cpp >, line< 330 >: "columns F_MeterNo, F_TimeStamp, F_FlowPointIdx are not unique Unable to fetch row" 
-10:22:22 周五 Fatal: ASSERT: "d->ref == 1" in file tools\qlist.cpp, line 233
-12:09:21 周五 Fatal: ASSERT: "d->ref == 1" in file tools\qlist.cpp, line 233
-13:33:02 周五 Fatal: ASSERT: "d->ref == 1" in file tools\qlist.cpp, line 233

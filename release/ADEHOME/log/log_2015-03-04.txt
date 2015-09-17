@@ -1,1 +1,0 @@
-09:38:54 ÖÜÈı Warning: file< algorithm.cpp >, line< 87 >: Get $(RUNHOME) Failed! 

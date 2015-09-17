@@ -1,8 +1,0 @@
-08:54:13 周一 QThread: Destroyed while thread is still running
-08:54:13 周一 QThread: Destroyed while thread is still running
-08:54:13 周一 QThread: Destroyed while thread is still running
-
-
-sql = "insert into T_Verify_Record(F_TimeStamp,F_MeterNo,F_FlowPointIdx,F_FlowPoint,F_TotalFlag,F_MeterValue0,F_MeterValue1,F_MeterDeltaV,F_BalWeight0,F_BalWeight1,F_BalDeltaW,F_InSlotTemper,F_OutSlotTemper,F_PipeTemper,F_Density,F_StandValue,F_DispError,F_StdErr...
-
-array = 0x03ecf8da "insert into T_Verify_Record(F_TimeStamp,F_MeterNo,F_FlowPointIdx,F_FlowPoint,F_TotalFlag,F_MeterValue0,F_MeterValue1,F_MeterDeltaV,F_BalWeight0,F_BalWeight1,F_BalDeltaW,F_InSlotTemper,F_OutSlotTemper,F_PipeTemper,F_Density,F_StandValue,F_DispErr...

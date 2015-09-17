@@ -1,6 +1,0 @@
-11:21:31 周三 Fatal: ASSERT: "i >= 0 && i < size()" in file c:\iwmake\build_vs2010_opensource_________________padding_________________\include\qtcore\../../src/corelib/tools/qbytearray.h, line 407
-11:22:07 周三 QObject::killTimers: timers cannot be stopped from another thread
-14:35:35 周三 Fatal: ASSERT: "i >= 0 && i < size()" in file c:\iwmake\build_vs2010_opensource_________________padding_________________\include\qtcore\../../src/corelib/tools/qbytearray.h, line 407
-15:29:01 周三 Fatal: ASSERT: "i >= 0 && i < size()" in file c:\iwmake\build_vs2010_opensource_________________padding_________________\include\qtcore\../../src/corelib/tools/qbytearray.h, line 407
-15:29:06 周三 QObject::killTimers: timers cannot be stopped from another thread
-15:31:25 周三 Fatal: ASSERT: "i >= 0 && i < size()" in file c:\iwmake\build_vs2010_opensource_________________padding_________________\include\qtcore\../../src/corelib/tools/qbytearray.h, line 407
