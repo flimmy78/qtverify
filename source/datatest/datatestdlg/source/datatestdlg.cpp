@@ -55,19 +55,9 @@ void DataTestDlg::closeEvent( QCloseEvent * event)
 		m_readComConfig = NULL;
 	}
 
-	if (m_tempThread.isRunning())
-	{
-		m_tempThread.exit();
-		if (m_tempObj)  // 温度采集
-		{
-			delete m_tempObj;
-			m_tempObj = NULL;
-		}
-	}
-
 	if (m_controlObj)  //阀门控制
 	{
-		m_controlObj->askControlWaterPump(m_portsetinfo.pumpNo, false);//退出时, 关闭水泵
+		closePump();//退出时, 关闭水泵
 		delete m_controlObj;
 		m_controlObj = NULL;
 
@@ -89,7 +79,7 @@ void DataTestDlg::closeEvent( QCloseEvent * event)
 
 		m_meterThread.exit();
 	}
-
+/*--------------------------------------------------------------*/
 	if (m_tempTimer) //读温度计时器
 	{
 		if (m_tempTimer->isActive())
@@ -100,6 +90,16 @@ void DataTestDlg::closeEvent( QCloseEvent * event)
 		m_tempTimer = NULL;
 	}
 
+	if (m_tempThread.isRunning())
+	{
+		m_tempThread.exit();
+		if (m_tempObj)  // 温度采集
+		{
+			delete m_tempObj;
+			m_tempObj = NULL;
+		}
+	}
+/*--------------------------------------------------------------*/
 	if (m_stdTempTimer) //读标准温度计时器
 	{
 		if (m_stdTempTimer->isActive())
@@ -109,15 +109,18 @@ void DataTestDlg::closeEvent( QCloseEvent * event)
 		delete m_stdTempTimer;
 		m_stdTempTimer = NULL;
 	}
-
-	if (m_stdTempObj)  // 标准温度采集
+	if (m_stdTempThread.isRunning())
 	{
-		delete m_stdTempObj;
-		m_stdTempObj = NULL;
-
 		m_stdTempThread.exit();
-	}
+		if (m_stdTempObj)  // 标准温度采集
+		{
+			delete m_stdTempObj;
+			m_stdTempObj = NULL;
 
+			m_stdTempThread.exit();
+		}
+	}	
+/*--------------------------------------------------------------*/
 	if (m_flowRateTimer) //计算流量计时器
 	{
 		if (m_flowRateTimer->isActive())
@@ -145,12 +148,15 @@ void DataTestDlg::closeEvent( QCloseEvent * event)
 		m_instSTDMeterTimer = NULL;
 	}
 
-	if (m_instantFlowCom)
+	if (m_instantFlowThread.isRunning())
 	{
 		m_instantFlowThread.exit();
-		delete m_instantFlowCom;
-		m_instantFlowCom = NULL;
-	}
+		if (m_instantFlowCom)
+		{
+			delete m_instantFlowCom;
+			m_instantFlowCom = NULL;
+		}
+	}	
 
 	if (m_accumSTDMeterTimer)
 	{
@@ -162,11 +168,14 @@ void DataTestDlg::closeEvent( QCloseEvent * event)
 		m_accumSTDMeterTimer = NULL;
 	}
 
-	if (m_accumulateFlowCom)
+	if (m_accumFlowThread.isRunning())
 	{
 		m_accumFlowThread.exit();
-		delete m_accumulateFlowCom;
-		m_accumulateFlowCom = NULL;
+		if (m_accumulateFlowCom)
+		{
+			delete m_accumulateFlowCom;
+			m_accumulateFlowCom = NULL;
+		}
 	}
 /*****************************************************/
 	if (m_pidDataPtr)
@@ -184,6 +193,7 @@ void DataTestDlg::closeEvent( QCloseEvent * event)
 		delete m_setRegularTimer;
 		m_setRegularTimer = NULL;
 	}
+	savePidParams();
 /*****************************************************/
 }
 
@@ -378,18 +388,106 @@ void DataTestDlg::initControlCom()
 	/*****************************************************************************************************/
 	m_openRegulateTimes = 0;
 	m_pidDataPtr = new PIDDataStr;
-	m_pidDataPtr->pid_Kp = Kp;
-	m_pidDataPtr->pid_Ki = Ki;
-	m_pidDataPtr->pid_Kd = Kd;
 	m_pre_error = 0.0;
 	m_integral = 0.0;
 	m_maxRateGetted = false;
 	ui.lnEditTargetRate->setReadOnly(false);
+	installPidParams();
 	m_setRegularTimer = new QTimer;
 	connect(m_setRegularTimer, SIGNAL(timeout()), this, SLOT(slotSetRegulate()));
 	/*****************************************************************************************************/
 	//天平数值从控制板获取
 // 	connect(m_controlObj, SIGNAL(controlGetBalanceValueIsOk(const float&)), this, SLOT(slotFreshBalanceValue(const float &)));
+}
+
+void DataTestDlg::on_lnEditKp_returnPressed()
+{
+	QRegExp rx("\\d+(\\.\\d+)?");
+	QString str = ui.lnEditKp->text();
+	if (rx.exactMatch(str))
+	{
+		m_Kp = str.toFloat();
+		if (m_setRegularTimer->isActive())
+			m_setRegularTimer->stop();
+
+		m_setRegularTimer->start(m_pickCycleTime);
+		m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
+		qDebug()<<"m_Kp setted: " << m_Kp;
+	}						 
+}
+
+void DataTestDlg::on_lnEditKi_returnPressed()
+{
+	QRegExp rx("\\d+(\\.\\d+)?");
+	QString str = ui.lnEditKi->text();
+	if (rx.exactMatch(str))
+	{
+		m_Ki = str.toFloat();
+		if (m_setRegularTimer->isActive())
+			m_setRegularTimer->stop();
+
+		m_setRegularTimer->start(m_pickCycleTime);
+		m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
+		qDebug()<<"m_Ki setted: " << m_Ki;
+	}
+}
+
+void DataTestDlg::on_lnEditKd_returnPressed()
+{
+	QRegExp rx("\\d+(\\.\\d+)?");
+	QString str = ui.lnEditKd->text();
+	if (rx.exactMatch(str))
+	{
+		m_Kd = str.toFloat();
+		if (m_setRegularTimer->isActive())
+			m_setRegularTimer->stop();
+
+		m_setRegularTimer->start(m_pickCycleTime);
+		m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
+		qDebug()<<"m_Kd setted: " << m_Kd;
+	}
+}
+
+void DataTestDlg::on_lnEditCycleTime_returnPressed()
+{
+	QRegExp rx("\\d+(\\.\\d+)?");
+	QString str = ui.lnEditCycleTime->text();
+	if (rx.exactMatch(str))
+	{
+		m_pickCycleTime = str.toInt();
+		qDebug()<<"m_pickCycleTime setted: " << m_pickCycleTime;
+		if (m_setRegularTimer->isActive())
+			m_setRegularTimer->stop();
+
+		m_setRegularTimer->start(m_pickCycleTime);
+		m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
+		qDebug()<<"m_setRegularTimer's Interval setted: " << m_pickCycleTime;
+	}
+}
+
+void DataTestDlg::savePidParams()
+{
+	QSettings pidConfig(getFullIniFileName("pidParameter.ini"), QSettings::IniFormat);
+
+	pidConfig.setValue("Kp",ui.lnEditKp->text());
+	pidConfig.setValue("Ki",ui.lnEditKi->text());
+	pidConfig.setValue("Kd",ui.lnEditKd->text());
+	pidConfig.setValue("CycleTime",ui.lnEditCycleTime->text());
+}
+
+void DataTestDlg::installPidParams()
+{
+   QSettings pidConfig(getFullIniFileName("pidParameter.ini"), QSettings::IniFormat);
+
+	ui.lnEditKp->setText(pidConfig.value("Kp").toString());
+	ui.lnEditKi->setText(pidConfig.value("Ki").toString());
+	ui.lnEditKd->setText(pidConfig.value("Kd").toString());
+	ui.lnEditCycleTime->setText(pidConfig.value("CycleTime").toString());
+
+	m_Kp = pidConfig.value("Kp").toFloat();
+	m_Ki = pidConfig.value("Ki").toFloat();
+	m_Kd = pidConfig.value("Kd").toFloat();
+	m_pickCycleTime = pidConfig.value("CycleTime").toInt();
 }
 
 void DataTestDlg::on_lnEditMaxRate_returnPressed()
@@ -400,7 +498,7 @@ void DataTestDlg::on_lnEditMaxRate_returnPressed()
 	{
 		m_maxRate = str.toFloat();
 		m_maxRateGetted = true;
-		qCritical()<<"max flow rate setted: " << m_maxRate;
+		qDebug()<<"max flow rate setted: " << m_maxRate;
 		if (m_setRegularTimer->isActive())
 			m_setRegularTimer->stop();
 	}
@@ -433,11 +531,11 @@ void DataTestDlg::on_lnEditTargetRate_returnPressed()
 		if (m_setRegularTimer->isActive())
 			m_setRegularTimer->stop();
 
-		qDebug() <<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ starting m_setRegularTimer $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$";
+		qDebug() <<"$$$$$$$$$$$$$$$$$$$ starting m_setRegularTimer $$$$$$$$$$$$$$$$$$$";
 		m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
-		m_controlObj->askControlWaterPump(m_portsetinfo.pumpNo, true);//设定目标流量, 打开水泵
+		openPump();//设定目标流量, 打开水泵
 		slotSetRegulate();//设定后立即调整一次
-		m_setRegularTimer->start(WAIT_REG_TIME);
+		m_setRegularTimer->start(m_pickCycleTime);
 	}
 }
 
@@ -448,11 +546,12 @@ void DataTestDlg::slotSetRegulate()
 
 void DataTestDlg::setRegulate(float currentRate, float targetRate)
 {
+	qDebug() << "+++++++++++++++++++++++++++++++++++++++++++++++++++";
 	qDebug() << "current Rate : " << currentRate;
 	qDebug() << "target Rate : " << targetRate;
 	qDebug() << "current error : " << currentRate - targetRate;
 	qDebug() << "current regular number: " << m_nowRegNo;
-	qDebug() << "current waitting time: "  << WAIT_REG_TIME;
+	qDebug() << "current waitting time: "  << m_pickCycleTime;
 
 	float deltaV = qAbs(targetRate - currentRate);
 	m_degree = degreeGet(currentRate, targetRate);
@@ -471,7 +570,7 @@ void DataTestDlg::setRegulate(float currentRate, float targetRate)
 	m_pidDataPtr->pid_targetRate   = targetRate;
 	m_pidDataPtr->pid_currentError = currentRate - targetRate;
 	m_pidDataPtr->pid_regularNo	   = m_nowRegNo;
-	m_pidDataPtr->pid_waitTime	   = WAIT_REG_TIME;
+	m_pidDataPtr->pid_waitTime	   = m_pickCycleTime;
 	m_pidDataPtr->pid_currentDegree= m_degree;
 	m_pidDataPtr->pid_gainTargetRate = 	m_ifGainTargetRate;
 	m_pidDataPtr->pid_nowErrorPercent = ((currentRate - targetRate)/targetRate)*100;
@@ -484,9 +583,9 @@ int DataTestDlg::degreeGet(float currentRate, float targetRate)
 	m_curr_error = targetRate - currentRate;
 	m_integral += m_curr_error*WAIT_SECOND;
 	float derivative = (m_curr_error - m_pre_error)/WAIT_SECOND;
-	float output = Kp*m_curr_error + Ki*m_integral + Kd*derivative;
-	qDebug() << "Kp:--" <<Kp<<" Ki:--"<<Ki<<" Kd:--"<<Kd<<" maxRate:--"<<m_maxRate;
-	qDebug() << "P:--" <<Kp*m_curr_error<<" I:--"<<Ki*m_integral<<" D:--"<<Kd*derivative;
+	float output = m_Kp*m_curr_error + m_Ki*m_integral + m_Kd*derivative;
+	qDebug() << "Kp:--" <<m_Kp<<" Ki:--"<<m_Ki<<" Kd:--"<<m_Kd<<" maxRate:--"<<m_maxRate;
+	qDebug() << "P:--" <<m_Kp*m_curr_error<<" I:--"<<m_Ki*m_integral<<" D:--"<<m_Kd*derivative;
 	qDebug() << "oooooutput: " << output;
 	m_pre_error = m_curr_error;
 	int outdegree =  (int)(output>0 ? output: 0);
@@ -494,10 +593,12 @@ int DataTestDlg::degreeGet(float currentRate, float targetRate)
 	{
 		outdegree = 99;
 	}
-
-	m_pidDataPtr->pid_P = Kp*m_curr_error;
-	m_pidDataPtr->pid_I = Ki*m_integral;
-	m_pidDataPtr->pid_D = Kd*derivative;
+	m_pidDataPtr->pid_Kp = m_Kp;
+	m_pidDataPtr->pid_Ki = m_Ki;
+	m_pidDataPtr->pid_Kd = m_Kd;
+	m_pidDataPtr->pid_P = m_Kp*m_curr_error;
+	m_pidDataPtr->pid_I = m_Ki*m_integral;
+	m_pidDataPtr->pid_D = m_Kd*derivative;
 
 	return outdegree;
 }
@@ -644,7 +745,7 @@ void DataTestDlg::on_btnWaterIn_clicked() //进水阀
 void DataTestDlg::on_btnWaterOut_clicked() //出水阀
 {
 	m_nowPortNo = m_portsetinfo.waterOutNo;
-	m_controlObj->askControlRelay(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	m_controlObj->askControlRelay(m_nowPortNo, m_valveStatus[m_nowPortNo]);
 
 	if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
 	{
@@ -711,6 +812,28 @@ void DataTestDlg::on_btnWaterPump_clicked() //水泵
 	if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
 	{
 		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
+	}
+}
+
+void DataTestDlg::openPump()
+{
+	m_nowPortNo = m_portsetinfo.pumpNo;
+	m_controlObj->askControlWaterPump(m_nowPortNo, true);
+
+	if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
+	{
+		slotSetValveBtnStatus(m_nowPortNo, true);
+	}
+}
+
+void DataTestDlg::closePump()
+{
+	m_nowPortNo = m_portsetinfo.pumpNo;
+	m_controlObj->askControlWaterPump(m_nowPortNo, false);
+
+	if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
+	{
+		slotSetValveBtnStatus(m_nowPortNo, false);
 	}
 }
 

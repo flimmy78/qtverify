@@ -31,22 +31,8 @@ class ReadComConfig;
 ** 功能：数据采集与测试
 */
 
-#define WAIT_SECOND (WAIT_REG_TIME/1000)//等待调节阀到位并水流稳定时间(单位秒)
+#define WAIT_SECOND (m_pickCycleTime/1000)//等待调节阀到位并水流稳定时间(单位秒)
 #define PRECISION (0.03*targetRate)//流速设定误差限
-
-////////////////////大流量的参数//////////////
-//#define Kp	(8) //大流量时，P的系数要小；而小流量时，系数要适当增大，否则变化的速度太慢了
-//#define Ki	(0.55)
-//#define Kd	(0)
-//#define WAIT_REG_TIME 10000//大流量等待调节阀到位并水流稳定时间
-////////////////////大流量的参数//////////////
-
-////////////////////中流量的参数//////////////
-#define Kp	(10) //大流量时，P的系数要小；而小流量时，系数要适当增大，否则变化的速度太慢了
-#define Ki	(1)
-#define Kd	(0)
-#define WAIT_REG_TIME 10000//大流量等待调节阀到位并水流稳定时间
-////////////////////中流量的参数//////////////
 
 ////////////////////增量式参数//////////////
 //#define PID_A
@@ -176,6 +162,10 @@ public slots:
 
 	void on_lnEditTargetRate_returnPressed();//设定目标流量
 	void on_lnEditMaxRate_returnPressed();//设定最大流速
+	void on_lnEditKp_returnPressed();
+	void on_lnEditKi_returnPressed();
+	void on_lnEditKd_returnPressed();
+	void on_lnEditCycleTime_returnPressed();
 
 	void slotAskStdTemperature();
 	void clearMeterDispInfo();
@@ -229,6 +219,12 @@ private:
 	int m_openRegulateTimes;
 	float m_targetRate;
 	float m_currentRate;
+
+	float m_Kp;
+	float m_Ki;
+	float m_Kd;
+	int m_pickCycleTime;//设定周期
+
 	QString m_timeStamp;
 	bool m_maxRateGetted;//是否已获取过最大流量值
 	bool m_ifGainTargetRate;//是否已达到目标流量值
@@ -242,6 +238,8 @@ private:
 	void setRegulate(float currentRate, float targetRate);
 	int degreeGet(float currentRate, float targetRate);
 	void stopSetRegularTimer();
+	void savePidParams();
+	void installPidParams();
 	/******************电动调节阀end***************************/
 private slots:
 	/*******************标准流量计******************************/
@@ -254,6 +252,8 @@ private slots:
 
 	/*******************电动调节阀******************************/
 	void slotSetRegulate();
+	void openPump();
+	void closePump();
 	/******************电动调节阀end***************************/
 };
 

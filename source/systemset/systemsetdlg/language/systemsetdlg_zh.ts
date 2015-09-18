@@ -34,22 +34,22 @@
         <translation>第3温度点</translation>
     </message>
     <message>
-        <location filename="../ui/chkplasensor.ui" line="100"/>
+        <location filename="../ui/chkplasensor.ui" line="106"/>
         <source>Platinum Param</source>
         <translation>铂电阻参数</translation>
     </message>
     <message>
-        <location filename="../ui/chkplasensor.ui" line="126"/>
+        <location filename="../ui/chkplasensor.ui" line="132"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;R&lt;span style=&quot; vertical-align:sub;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;R&lt;span style=&quot; vertical-align:sub;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/chkplasensor.ui" line="189"/>
+        <location filename="../ui/chkplasensor.ui" line="195"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;a&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;a&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/chkplasensor.ui" line="249"/>
+        <location filename="../ui/chkplasensor.ui" line="255"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;b&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;b&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -62,22 +62,22 @@
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;bx10&lt;span style=&quot; vertical-align:super;&quot;&gt;-7&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/chkplasensor.ui" line="309"/>
+        <location filename="../ui/chkplasensor.ui" line="315"/>
         <source>Calc</source>
         <translation>计算</translation>
     </message>
     <message>
-        <location filename="../ui/chkplasensor.ui" line="341"/>
+        <location filename="../ui/chkplasensor.ui" line="366"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../ui/chkplasensor.ui" line="373"/>
+        <location filename="../ui/chkplasensor.ui" line="347"/>
         <source>Default</source>
         <translation>默认</translation>
     </message>
     <message>
-        <location filename="../ui/chkplasensor.ui" line="411"/>
+        <location filename="../ui/chkplasensor.ui" line="404"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
@@ -86,6 +86,7 @@
     <name>ParaSetDlg</name>
     <message>
         <location filename="../source/parasetdlg.cpp" line="374"/>
+        <location filename="../source/parasetdlg.cpp" line="381"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
@@ -95,7 +96,13 @@
         <translation>检定顺序设置有误！</translation>
     </message>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="401"/>
+        <location filename="../source/parasetdlg.cpp" line="381"/>
+        <source>verify QUANTITY is invalid!
+Please check each flow point&apos;s quantity</source>
+        <translation>检定量设定不正确! 请检查检定量设置</translation>
+    </message>
+    <message>
+        <location filename="../source/parasetdlg.cpp" line="408"/>
         <source>Save successfully!</source>
         <translation>保存成功!</translation>
     </message>
@@ -2725,12 +2732,8 @@
         <translation>DN3</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1880"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2170"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2460"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2750"/>
         <source>DN5</source>
-        <translation>DN5</translation>
+        <translation type="obsolete">DN5</translation>
     </message>
     <message>
         <location filename="../ui/stdmtrparaset.ui" line="1885"/>
@@ -2813,9 +2816,13 @@
         <translation>调整系数</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="523"/>
         <source>DN5 Meter Coe</source>
-        <translation>DN5表系数</translation>
+        <translation type="obsolete">DN5表系数</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="523"/>
+        <source>DN6 Meter Coe</source>
+        <translation>DN25表系数 {6 ?}</translation>
     </message>
     <message>
         <location filename="../ui/stdmtrparaset.ui" line="804"/>
@@ -2866,6 +2873,14 @@ There should not be space between tow flow points! K Coe: (Stand Value)/(Meter V
         <location filename="../ui/stdmtrparaset.ui" line="2732"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Diam&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;管径&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="1880"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2170"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2460"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2750"/>
+        <source>DN6</source>
+        <translation>DN6</translation>
     </message>
     <message>
         <location filename="../ui/stdmtrparaset.ui" line="1898"/>
