@@ -125,6 +125,7 @@ private:
 	void installDftDBinfo();//加载数据库中默认的参数
 
 	bool chkSeq();//检查选定的检定次序是否满足要求
+	bool chkTotalQuantity();//检查设定的检定量之和是否超出天平的最大范围
 	void SaveHead();//保存基本信息
 	void SaveFlowPoint();//保存流量点信息
 	void SaveBool();//保存布尔值

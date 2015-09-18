@@ -375,6 +375,13 @@ void ParaSetDlg::on_btnSave_clicked()
 		return;
 	}
 
+	//如果序列设置正确, 再检查各序列设置的检定量和是否合理
+	if (!chkTotalQuantity())
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("verify QUANTITY is invalid!\nPlease check each flow point's quantity"));
+		return;
+	}
+
 	SaveHead();
 	SaveFlowPoint();
 	SaveBool();
@@ -452,6 +459,24 @@ bool ParaSetDlg::chkSeq()
 	return (max_seq == total_seqs);
 }
 
+bool ParaSetDlg::chkTotalQuantity()
+{
+	QSettings com_config(getFullIniFileName("comconfig.ini"), QSettings::IniFormat);
+	float maxWht = com_config.value("BalanceType/maxweight").toFloat();
+	float bottomWht = com_config.value("BalanceType/bottomwht").toFloat();
+
+	float totalQuantity = 0.0;
+	for (int i=0; i<lineEdit_quantites.count(); i++)
+	{
+		if (cBox_seqs[i]->currentIndex()>0)
+		{
+			totalQuantity += lineEdit_quantites[i]->text().toFloat();
+		}
+	}
+
+	return (totalQuantity<(maxWht-bottomWht));
+}
+
 void ParaSetDlg::SaveHead()
 {
 	settings->beginGroup("Head");
@@ -479,14 +504,6 @@ void ParaSetDlg::SaveHead()
 	settings->endGroup();
 }
 
-//void ParaSetDlg::SaveStdMeter()
-//{
-//	settings->beginGroup("lcModDevNo");
-//	settings->setValue("InstStdDevNo",ui.lineEdit_instDevNo->text());
-//	settings->setValue("AccumStdDevNo",ui.lineEdit_accumDevNo->text());
-//	settings->endGroup();
-//}
-
 /*
 ** 保存第i流量点参数
 ** i: 界面上的第i个流量点, 而不是检定顺序 
@@ -503,9 +520,6 @@ void ParaSetDlg::SaveFlowPoint()
 		settings->setValue("pumpfrequencey", lineEdit_freqs[i]->text());//变频器频率
 		settings->setValue("valve", cBox_valves[i]->currentIndex());//对应的阀门
 		settings->setValue("seq", cBox_seqs[i]->currentIndex());//检定顺序
-
-		//settings->setValue("instStdRoute", cBox_instRoutes[i]->currentIndex()-1);//瞬时流量采集通道
-		//settings->setValue("accumStdRoute", cBox_accumRoutes[i]->currentIndex()-1);//累积流量采集通道
 	}
 	settings->endArray();
 }
