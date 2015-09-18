@@ -633,6 +633,7 @@ typedef struct PIDData
 	float   pid_P;
 	float   pid_I;
 	float	pid_D;
+	int		pid_pumpFreq;
 }PIDDataStr;
 typedef PIDDataStr* PIDDataPtr;
 #endif	//BASEDEF_H
