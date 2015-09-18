@@ -64,9 +64,10 @@ void DataTestDlg::closeEvent( QCloseEvent * event)
 			m_tempObj = NULL;
 		}
 	}
-	
+
 	if (m_controlObj)  //阀门控制
 	{
+		m_controlObj->askControlWaterPump(m_portsetinfo.pumpNo, false);//退出时, 关闭水泵
 		delete m_controlObj;
 		m_controlObj = NULL;
 
@@ -422,8 +423,8 @@ void DataTestDlg::on_lnEditTargetRate_returnPressed()
 	QRegExp rx("\\d+(\\.\\d+)?");//匹配整数或小数
 	if (rx.exactMatch(str))
 	{
-		float target = str.toFloat();
-		if (target > m_maxRate)
+		m_targetRate = str.toFloat();
+		if (m_targetRate > m_maxRate)
 		{
 			QMessageBox::warning(this, tr("Too Large"), tr("setted rate is greater than maxRate, exit!"));
 			return;
@@ -432,51 +433,36 @@ void DataTestDlg::on_lnEditTargetRate_returnPressed()
 		if (m_setRegularTimer->isActive())
 			m_setRegularTimer->stop();
 
-		qCritical() <<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ starting m_setRegularTimer $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$";
+		qDebug() <<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ starting m_setRegularTimer $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$";
 		m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
 		m_controlObj->askControlWaterPump(m_portsetinfo.pumpNo, true);//设定目标流量, 打开水泵
+		slotSetRegulate();//设定后立即调整一次
 		m_setRegularTimer->start(WAIT_REG_TIME);
 	}
 }
 
 void DataTestDlg::slotSetRegulate()
 {
-	this->setRegulate(ui.lcdStdMeterFlowRate->value(), ui.lnEditTargetRate->text().toFloat());
+	this->setRegulate(ui.lcdStdMeterFlowRate->value(), m_targetRate);
 }
 
 void DataTestDlg::setRegulate(float currentRate, float targetRate)
 {
-	qCritical() << "current Rate : " << currentRate;
-	qCritical() << "target Rate : " << targetRate;
-	qCritical() << "current error : " << currentRate - targetRate;
-	qCritical() << "current regular number: " << m_nowRegNo;
-	qCritical() << "current waitting time: "  << WAIT_REG_TIME;
-	//如果currentRate是0, 那么开启电动阀到m_degree
-	//如果开了5次, currentRate还是0, 那么提示用户打开手动球阀
-	//if (currentRate <=0.0f)
-	//{
-	//	qCritical() << "current m_openRegulateTimes: " <<m_openRegulateTimes;
-	//	if (m_openRegulateTimes >= 5)
-	//	{
-	//		QMessageBox::warning(this, tr("Open Valve"), tr("please open Manual Ball Valve"));
-	//		stopSetRegularTimer();
-	//		return;
-	//	}
-	//	m_controlObj->askControlRegulate(m_nowRegNo, m_degree);
-	//	m_openRegulateTimes++;
-	//	return;
-	//}
-	//
+	qDebug() << "current Rate : " << currentRate;
+	qDebug() << "target Rate : " << targetRate;
+	qDebug() << "current error : " << currentRate - targetRate;
+	qDebug() << "current regular number: " << m_nowRegNo;
+	qDebug() << "current waitting time: "  << WAIT_REG_TIME;
+
 	float deltaV = qAbs(targetRate - currentRate);
 	m_degree = degreeGet(currentRate, targetRate);
-	qCritical() << "current degree: " << m_degree;
+	qDebug() << "current degree: " << m_degree;
 	m_controlObj->askControlRegulate(m_nowRegNo, m_degree);
-	qCritical() << "%%%%%%% regular setted %%%%%%%";
+	qDebug() << "%%%%%%% regular setted %%%%%%%";
 	m_ifGainTargetRate = false;
 	if (deltaV <= PRECISION)
 	{
-		qCritical() << "\n######################################gain target rate.######################################\n";
-		qCritical() << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Now Error : %" << ((currentRate - targetRate)/targetRate)*100 << " @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n";	
+		qDebug() << "\n######################gain target rate######################n";
 		m_ifGainTargetRate = true;
 	}
 	m_pidDataPtr->pid_timestamp    = m_timeStamp;
@@ -489,6 +475,7 @@ void DataTestDlg::setRegulate(float currentRate, float targetRate)
 	m_pidDataPtr->pid_currentDegree= m_degree;
 	m_pidDataPtr->pid_gainTargetRate = 	m_ifGainTargetRate;
 	m_pidDataPtr->pid_nowErrorPercent = ((currentRate - targetRate)/targetRate)*100;
+	m_pidDataPtr->pid_pumpFreq = m_pumpFreq;
 	insertPidRec(m_pidDataPtr);
 }
 
@@ -498,9 +485,9 @@ int DataTestDlg::degreeGet(float currentRate, float targetRate)
 	m_integral += m_curr_error*WAIT_SECOND;
 	float derivative = (m_curr_error - m_pre_error)/WAIT_SECOND;
 	float output = Kp*m_curr_error + Ki*m_integral + Kd*derivative;
-	qCritical() << "Kp:--" <<Kp<<" Ki:--"<<Ki<<" Kd:--"<<Kd<<" maxRate:--"<<m_maxRate;
-	qCritical() << "P:--" <<Kp*m_curr_error<<" I:--"<<Ki*m_integral<<" D:--"<<Kd*derivative;
-	qCritical() << "oooooutput: " << output;
+	qDebug() << "Kp:--" <<Kp<<" Ki:--"<<Ki<<" Kd:--"<<Kd<<" maxRate:--"<<m_maxRate;
+	qDebug() << "P:--" <<Kp*m_curr_error<<" I:--"<<Ki*m_integral<<" D:--"<<Kd*derivative;
+	qDebug() << "oooooutput: " << output;
 	m_pre_error = m_curr_error;
 	int outdegree =  (int)(output>0 ? output: 0);
 	if (outdegree > 99)
@@ -730,6 +717,7 @@ void DataTestDlg::on_btnWaterPump_clicked() //水泵
 //设置频率
 void DataTestDlg::on_btnSetFreq_clicked()
 {
+	m_pumpFreq = ui.spinBoxFreq->value();
 	m_controlObj->askSetDriverFreq(ui.spinBoxFreq->value());
 }
 

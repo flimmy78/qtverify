@@ -31,21 +31,39 @@ class ReadComConfig;
 ** 功能：数据采集与测试
 */
 
-#define MAX_RATE_TIME 40000//调节获得最大流量所需时间
-//#define WAIT_REG_TIME 15000//大流量等待调节阀到位并水流稳定时间
-#define WAIT_REG_TIME 20000//中一流量等待调节阀到位并水流稳定时间
-
 #define WAIT_SECOND (WAIT_REG_TIME/1000)//等待调节阀到位并水流稳定时间(单位秒)
 #define PRECISION (0.03*targetRate)//流速设定误差限
 
 ////////////////////大流量参数//////////////
 //#define Kp	(1.1) //大流量时，P的系数要小；而小流量时，系数要适当增大，否则变化的速度太慢了
-//#define Ki	(0.77)
-//#define Kd	(0.18)
+//#define Ki	(0.55)
+//#define Kd	(0.28)
 ////////////////////中流量参数//////////////
-#define Kp	(2)
+//#define Kp	(2)
+//#define Ki	(1)
+//#define Kd	(1.8)
+///////////////////////////////////////////
+
+////////////////////仅P调整时大流量的参数//////////////
+//#define Kp	(1.1) //大流量时，P的系数要小；而小流量时，系数要适当增大，否则变化的速度太慢了
+//#define Ki	(0.55)
+//#define Kd	(0)
+//#define WAIT_REG_TIME 25000//大流量等待调节阀到位并水流稳定时间
+////////////////////仅P调整时的参数//////////////
+
+////////////////////仅P调整时中流量的参数//////////////
+#define Kp	(10) //大流量时，P的系数要小；而小流量时，系数要适当增大，否则变化的速度太慢了
 #define Ki	(1)
-#define Kd	(1.8)
+#define Kd	(0)
+#define WAIT_REG_TIME 10000//大流量等待调节阀到位并水流稳定时间
+////////////////////仅P调整时的参数//////////////
+
+
+
+////////////////////增量式参数//////////////
+//#define PID_A
+//#define PID_B
+//#define PID_C
 ///////////////////////////////////////////
 
 class DATATESTDLG_EXPORT DataTestDlg : public QWidget
@@ -213,17 +231,26 @@ private:
 
 	/*******************电动调节阀******************************/
 	QTimer *m_setRegularTimer;
+	QTimer *m_recCurrentRateTimer;//记录当前流速计时器
 	float m_maxRate;
 	float m_pre_error;
 	float m_curr_error;
 	float m_integral;
 	int m_degree;
+	int m_pumpFreq;
 	int m_openRegulateTimes;
+	float m_targetRate;
 	float m_currentRate;
 	QString m_timeStamp;
 	bool m_maxRateGetted;//是否已获取过最大流量值
 	bool m_ifGainTargetRate;//是否已达到目标流量值
 	PIDDataPtr m_pidDataPtr;
+	//-------增量式-------//
+	//int m_pickErrTimes;//从开始到现在的偏差采集次数
+	//int m_mostNearlyErr;
+	//int m_preNearlyErr;
+	//int m_mostNearlyErr;
+	//-------------------//
 	void setRegulate(float currentRate, float targetRate);
 	int degreeGet(float currentRate, float targetRate);
 	void stopSetRegularTimer();
