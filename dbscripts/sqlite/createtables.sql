@@ -731,5 +731,6 @@ CREATE TABLE T_PID_Setting_Record (
 	pid_Kd float,
 	pid_P float,
 	pid_I float,
-	pid_D float
+	pid_D float,
+	pid_pumpFreq int
 );
