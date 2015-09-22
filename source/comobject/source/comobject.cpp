@@ -1145,6 +1145,10 @@ void lcModRtuComObject::ask901712RoutesCmd(uchar address)
 void lcModRtuComObject::readLcModComBuffer()
 {
 	QByteArray tmp = m_lcModCom->readAll();
+	if (tmp.length() == 0)
+	{
+		return;
+	}
 	bool ret = m_lcModProtocol->readMeterComBuffer(tmp); //通讯协议接口
 	if (ret)
 	{
