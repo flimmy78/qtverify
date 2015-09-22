@@ -1795,397 +1795,437 @@ Please check each flow point&apos;s quantity</source>
         <translation>端口设置</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="27"/>
+        <location filename="../ui/setportfrm.ui" line="35"/>
+        <source>Port 1</source>
+        <translation>端口 1</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="48"/>
+        <source>Port 2</source>
+        <translation>端口 2</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="61"/>
+        <source>Port 3</source>
+        <translation>端口 3</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="74"/>
+        <source>Port 4</source>
+        <translation>端口 4</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="87"/>
+        <source>Port 8</source>
+        <translation>端口 8</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="100"/>
+        <source>Port 7</source>
+        <translation>端口 7</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="113"/>
+        <source>Port 6</source>
+        <translation>端口 6</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="126"/>
+        <source>Port 5</source>
+        <translation>端口 5</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="137"/>
         <source>Valve</source>
         <translation>阀门</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="33"/>
+        <location filename="../ui/setportfrm.ui" line="143"/>
         <source>Valve In</source>
         <translation>进水阀</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="41"/>
-        <location filename="../ui/setportfrm.ui" line="152"/>
-        <location filename="../ui/setportfrm.ui" line="263"/>
-        <location filename="../ui/setportfrm.ui" line="374"/>
-        <location filename="../ui/setportfrm.ui" line="485"/>
-        <location filename="../ui/setportfrm.ui" line="596"/>
-        <location filename="../ui/setportfrm.ui" line="729"/>
-        <location filename="../ui/setportfrm.ui" line="840"/>
-        <location filename="../ui/setportfrm.ui" line="951"/>
-        <location filename="../ui/setportfrm.ui" line="1062"/>
-        <location filename="../ui/setportfrm.ui" line="1173"/>
+        <location filename="../ui/setportfrm.ui" line="151"/>
+        <location filename="../ui/setportfrm.ui" line="262"/>
+        <location filename="../ui/setportfrm.ui" line="373"/>
+        <location filename="../ui/setportfrm.ui" line="484"/>
+        <location filename="../ui/setportfrm.ui" line="595"/>
+        <location filename="../ui/setportfrm.ui" line="706"/>
+        <location filename="../ui/setportfrm.ui" line="841"/>
+        <location filename="../ui/setportfrm.ui" line="952"/>
+        <location filename="../ui/setportfrm.ui" line="1063"/>
+        <location filename="../ui/setportfrm.ui" line="1174"/>
+        <location filename="../ui/setportfrm.ui" line="1285"/>
         <source>port1</source>
         <translation>端口1</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="46"/>
-        <location filename="../ui/setportfrm.ui" line="157"/>
-        <location filename="../ui/setportfrm.ui" line="268"/>
-        <location filename="../ui/setportfrm.ui" line="379"/>
-        <location filename="../ui/setportfrm.ui" line="490"/>
-        <location filename="../ui/setportfrm.ui" line="601"/>
-        <location filename="../ui/setportfrm.ui" line="734"/>
-        <location filename="../ui/setportfrm.ui" line="845"/>
-        <location filename="../ui/setportfrm.ui" line="956"/>
-        <location filename="../ui/setportfrm.ui" line="1067"/>
-        <location filename="../ui/setportfrm.ui" line="1178"/>
+        <location filename="../ui/setportfrm.ui" line="156"/>
+        <location filename="../ui/setportfrm.ui" line="267"/>
+        <location filename="../ui/setportfrm.ui" line="378"/>
+        <location filename="../ui/setportfrm.ui" line="489"/>
+        <location filename="../ui/setportfrm.ui" line="600"/>
+        <location filename="../ui/setportfrm.ui" line="711"/>
+        <location filename="../ui/setportfrm.ui" line="846"/>
+        <location filename="../ui/setportfrm.ui" line="957"/>
+        <location filename="../ui/setportfrm.ui" line="1068"/>
+        <location filename="../ui/setportfrm.ui" line="1179"/>
+        <location filename="../ui/setportfrm.ui" line="1290"/>
         <source>port2</source>
         <translation>端口2</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="51"/>
-        <location filename="../ui/setportfrm.ui" line="162"/>
-        <location filename="../ui/setportfrm.ui" line="273"/>
-        <location filename="../ui/setportfrm.ui" line="384"/>
-        <location filename="../ui/setportfrm.ui" line="495"/>
-        <location filename="../ui/setportfrm.ui" line="606"/>
-        <location filename="../ui/setportfrm.ui" line="739"/>
-        <location filename="../ui/setportfrm.ui" line="850"/>
-        <location filename="../ui/setportfrm.ui" line="961"/>
-        <location filename="../ui/setportfrm.ui" line="1072"/>
-        <location filename="../ui/setportfrm.ui" line="1183"/>
+        <location filename="../ui/setportfrm.ui" line="161"/>
+        <location filename="../ui/setportfrm.ui" line="272"/>
+        <location filename="../ui/setportfrm.ui" line="383"/>
+        <location filename="../ui/setportfrm.ui" line="494"/>
+        <location filename="../ui/setportfrm.ui" line="605"/>
+        <location filename="../ui/setportfrm.ui" line="716"/>
+        <location filename="../ui/setportfrm.ui" line="851"/>
+        <location filename="../ui/setportfrm.ui" line="962"/>
+        <location filename="../ui/setportfrm.ui" line="1073"/>
+        <location filename="../ui/setportfrm.ui" line="1184"/>
+        <location filename="../ui/setportfrm.ui" line="1295"/>
         <source>port3</source>
         <translation>端口3</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="56"/>
-        <location filename="../ui/setportfrm.ui" line="167"/>
-        <location filename="../ui/setportfrm.ui" line="278"/>
-        <location filename="../ui/setportfrm.ui" line="389"/>
-        <location filename="../ui/setportfrm.ui" line="500"/>
-        <location filename="../ui/setportfrm.ui" line="611"/>
-        <location filename="../ui/setportfrm.ui" line="744"/>
-        <location filename="../ui/setportfrm.ui" line="855"/>
-        <location filename="../ui/setportfrm.ui" line="966"/>
-        <location filename="../ui/setportfrm.ui" line="1077"/>
-        <location filename="../ui/setportfrm.ui" line="1188"/>
+        <location filename="../ui/setportfrm.ui" line="166"/>
+        <location filename="../ui/setportfrm.ui" line="277"/>
+        <location filename="../ui/setportfrm.ui" line="388"/>
+        <location filename="../ui/setportfrm.ui" line="499"/>
+        <location filename="../ui/setportfrm.ui" line="610"/>
+        <location filename="../ui/setportfrm.ui" line="721"/>
+        <location filename="../ui/setportfrm.ui" line="856"/>
+        <location filename="../ui/setportfrm.ui" line="967"/>
+        <location filename="../ui/setportfrm.ui" line="1078"/>
+        <location filename="../ui/setportfrm.ui" line="1189"/>
+        <location filename="../ui/setportfrm.ui" line="1300"/>
         <source>port4</source>
         <translation>端口4</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="61"/>
-        <location filename="../ui/setportfrm.ui" line="172"/>
-        <location filename="../ui/setportfrm.ui" line="283"/>
-        <location filename="../ui/setportfrm.ui" line="394"/>
-        <location filename="../ui/setportfrm.ui" line="505"/>
-        <location filename="../ui/setportfrm.ui" line="616"/>
-        <location filename="../ui/setportfrm.ui" line="749"/>
-        <location filename="../ui/setportfrm.ui" line="860"/>
-        <location filename="../ui/setportfrm.ui" line="971"/>
-        <location filename="../ui/setportfrm.ui" line="1082"/>
-        <location filename="../ui/setportfrm.ui" line="1193"/>
+        <location filename="../ui/setportfrm.ui" line="171"/>
+        <location filename="../ui/setportfrm.ui" line="282"/>
+        <location filename="../ui/setportfrm.ui" line="393"/>
+        <location filename="../ui/setportfrm.ui" line="504"/>
+        <location filename="../ui/setportfrm.ui" line="615"/>
+        <location filename="../ui/setportfrm.ui" line="726"/>
+        <location filename="../ui/setportfrm.ui" line="861"/>
+        <location filename="../ui/setportfrm.ui" line="972"/>
+        <location filename="../ui/setportfrm.ui" line="1083"/>
+        <location filename="../ui/setportfrm.ui" line="1194"/>
+        <location filename="../ui/setportfrm.ui" line="1305"/>
         <source>port5</source>
         <translation>端口5</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="66"/>
-        <location filename="../ui/setportfrm.ui" line="177"/>
-        <location filename="../ui/setportfrm.ui" line="288"/>
-        <location filename="../ui/setportfrm.ui" line="399"/>
-        <location filename="../ui/setportfrm.ui" line="510"/>
-        <location filename="../ui/setportfrm.ui" line="621"/>
-        <location filename="../ui/setportfrm.ui" line="754"/>
-        <location filename="../ui/setportfrm.ui" line="865"/>
-        <location filename="../ui/setportfrm.ui" line="976"/>
-        <location filename="../ui/setportfrm.ui" line="1087"/>
-        <location filename="../ui/setportfrm.ui" line="1198"/>
+        <location filename="../ui/setportfrm.ui" line="176"/>
+        <location filename="../ui/setportfrm.ui" line="287"/>
+        <location filename="../ui/setportfrm.ui" line="398"/>
+        <location filename="../ui/setportfrm.ui" line="509"/>
+        <location filename="../ui/setportfrm.ui" line="620"/>
+        <location filename="../ui/setportfrm.ui" line="731"/>
+        <location filename="../ui/setportfrm.ui" line="866"/>
+        <location filename="../ui/setportfrm.ui" line="977"/>
+        <location filename="../ui/setportfrm.ui" line="1088"/>
+        <location filename="../ui/setportfrm.ui" line="1199"/>
+        <location filename="../ui/setportfrm.ui" line="1310"/>
         <source>port6</source>
         <translation>端口6</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="71"/>
-        <location filename="../ui/setportfrm.ui" line="182"/>
-        <location filename="../ui/setportfrm.ui" line="293"/>
-        <location filename="../ui/setportfrm.ui" line="404"/>
-        <location filename="../ui/setportfrm.ui" line="515"/>
-        <location filename="../ui/setportfrm.ui" line="626"/>
-        <location filename="../ui/setportfrm.ui" line="759"/>
-        <location filename="../ui/setportfrm.ui" line="870"/>
-        <location filename="../ui/setportfrm.ui" line="981"/>
-        <location filename="../ui/setportfrm.ui" line="1092"/>
-        <location filename="../ui/setportfrm.ui" line="1203"/>
+        <location filename="../ui/setportfrm.ui" line="181"/>
+        <location filename="../ui/setportfrm.ui" line="292"/>
+        <location filename="../ui/setportfrm.ui" line="403"/>
+        <location filename="../ui/setportfrm.ui" line="514"/>
+        <location filename="../ui/setportfrm.ui" line="625"/>
+        <location filename="../ui/setportfrm.ui" line="736"/>
+        <location filename="../ui/setportfrm.ui" line="871"/>
+        <location filename="../ui/setportfrm.ui" line="982"/>
+        <location filename="../ui/setportfrm.ui" line="1093"/>
+        <location filename="../ui/setportfrm.ui" line="1204"/>
+        <location filename="../ui/setportfrm.ui" line="1315"/>
         <source>port7</source>
         <translation>端口7</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="76"/>
-        <location filename="../ui/setportfrm.ui" line="187"/>
-        <location filename="../ui/setportfrm.ui" line="298"/>
-        <location filename="../ui/setportfrm.ui" line="409"/>
-        <location filename="../ui/setportfrm.ui" line="520"/>
-        <location filename="../ui/setportfrm.ui" line="631"/>
-        <location filename="../ui/setportfrm.ui" line="764"/>
-        <location filename="../ui/setportfrm.ui" line="875"/>
-        <location filename="../ui/setportfrm.ui" line="986"/>
-        <location filename="../ui/setportfrm.ui" line="1097"/>
-        <location filename="../ui/setportfrm.ui" line="1208"/>
+        <location filename="../ui/setportfrm.ui" line="186"/>
+        <location filename="../ui/setportfrm.ui" line="297"/>
+        <location filename="../ui/setportfrm.ui" line="408"/>
+        <location filename="../ui/setportfrm.ui" line="519"/>
+        <location filename="../ui/setportfrm.ui" line="630"/>
+        <location filename="../ui/setportfrm.ui" line="741"/>
+        <location filename="../ui/setportfrm.ui" line="876"/>
+        <location filename="../ui/setportfrm.ui" line="987"/>
+        <location filename="../ui/setportfrm.ui" line="1098"/>
+        <location filename="../ui/setportfrm.ui" line="1209"/>
+        <location filename="../ui/setportfrm.ui" line="1320"/>
         <source>port8</source>
         <translation>端口8</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="81"/>
-        <location filename="../ui/setportfrm.ui" line="192"/>
-        <location filename="../ui/setportfrm.ui" line="303"/>
-        <location filename="../ui/setportfrm.ui" line="414"/>
-        <location filename="../ui/setportfrm.ui" line="525"/>
-        <location filename="../ui/setportfrm.ui" line="636"/>
-        <location filename="../ui/setportfrm.ui" line="769"/>
-        <location filename="../ui/setportfrm.ui" line="880"/>
-        <location filename="../ui/setportfrm.ui" line="991"/>
-        <location filename="../ui/setportfrm.ui" line="1102"/>
-        <location filename="../ui/setportfrm.ui" line="1213"/>
+        <location filename="../ui/setportfrm.ui" line="191"/>
+        <location filename="../ui/setportfrm.ui" line="302"/>
+        <location filename="../ui/setportfrm.ui" line="413"/>
+        <location filename="../ui/setportfrm.ui" line="524"/>
+        <location filename="../ui/setportfrm.ui" line="635"/>
+        <location filename="../ui/setportfrm.ui" line="746"/>
+        <location filename="../ui/setportfrm.ui" line="881"/>
+        <location filename="../ui/setportfrm.ui" line="992"/>
+        <location filename="../ui/setportfrm.ui" line="1103"/>
+        <location filename="../ui/setportfrm.ui" line="1214"/>
+        <location filename="../ui/setportfrm.ui" line="1325"/>
         <source>port9</source>
         <translation>端口9</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="86"/>
-        <location filename="../ui/setportfrm.ui" line="197"/>
-        <location filename="../ui/setportfrm.ui" line="308"/>
-        <location filename="../ui/setportfrm.ui" line="419"/>
-        <location filename="../ui/setportfrm.ui" line="530"/>
-        <location filename="../ui/setportfrm.ui" line="641"/>
-        <location filename="../ui/setportfrm.ui" line="774"/>
-        <location filename="../ui/setportfrm.ui" line="885"/>
-        <location filename="../ui/setportfrm.ui" line="996"/>
-        <location filename="../ui/setportfrm.ui" line="1107"/>
-        <location filename="../ui/setportfrm.ui" line="1218"/>
+        <location filename="../ui/setportfrm.ui" line="196"/>
+        <location filename="../ui/setportfrm.ui" line="307"/>
+        <location filename="../ui/setportfrm.ui" line="418"/>
+        <location filename="../ui/setportfrm.ui" line="529"/>
+        <location filename="../ui/setportfrm.ui" line="640"/>
+        <location filename="../ui/setportfrm.ui" line="751"/>
+        <location filename="../ui/setportfrm.ui" line="886"/>
+        <location filename="../ui/setportfrm.ui" line="997"/>
+        <location filename="../ui/setportfrm.ui" line="1108"/>
+        <location filename="../ui/setportfrm.ui" line="1219"/>
+        <location filename="../ui/setportfrm.ui" line="1330"/>
         <source>port10</source>
         <translation>端口10</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="91"/>
-        <location filename="../ui/setportfrm.ui" line="202"/>
-        <location filename="../ui/setportfrm.ui" line="313"/>
-        <location filename="../ui/setportfrm.ui" line="424"/>
-        <location filename="../ui/setportfrm.ui" line="535"/>
-        <location filename="../ui/setportfrm.ui" line="646"/>
-        <location filename="../ui/setportfrm.ui" line="779"/>
-        <location filename="../ui/setportfrm.ui" line="890"/>
-        <location filename="../ui/setportfrm.ui" line="1001"/>
-        <location filename="../ui/setportfrm.ui" line="1112"/>
-        <location filename="../ui/setportfrm.ui" line="1223"/>
+        <location filename="../ui/setportfrm.ui" line="201"/>
+        <location filename="../ui/setportfrm.ui" line="312"/>
+        <location filename="../ui/setportfrm.ui" line="423"/>
+        <location filename="../ui/setportfrm.ui" line="534"/>
+        <location filename="../ui/setportfrm.ui" line="645"/>
+        <location filename="../ui/setportfrm.ui" line="756"/>
+        <location filename="../ui/setportfrm.ui" line="891"/>
+        <location filename="../ui/setportfrm.ui" line="1002"/>
+        <location filename="../ui/setportfrm.ui" line="1113"/>
+        <location filename="../ui/setportfrm.ui" line="1224"/>
+        <location filename="../ui/setportfrm.ui" line="1335"/>
         <source>port11</source>
         <translation>端口11</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="96"/>
-        <location filename="../ui/setportfrm.ui" line="207"/>
-        <location filename="../ui/setportfrm.ui" line="318"/>
-        <location filename="../ui/setportfrm.ui" line="429"/>
-        <location filename="../ui/setportfrm.ui" line="540"/>
-        <location filename="../ui/setportfrm.ui" line="651"/>
-        <location filename="../ui/setportfrm.ui" line="784"/>
-        <location filename="../ui/setportfrm.ui" line="895"/>
-        <location filename="../ui/setportfrm.ui" line="1006"/>
-        <location filename="../ui/setportfrm.ui" line="1117"/>
-        <location filename="../ui/setportfrm.ui" line="1228"/>
+        <location filename="../ui/setportfrm.ui" line="206"/>
+        <location filename="../ui/setportfrm.ui" line="317"/>
+        <location filename="../ui/setportfrm.ui" line="428"/>
+        <location filename="../ui/setportfrm.ui" line="539"/>
+        <location filename="../ui/setportfrm.ui" line="650"/>
+        <location filename="../ui/setportfrm.ui" line="761"/>
+        <location filename="../ui/setportfrm.ui" line="896"/>
+        <location filename="../ui/setportfrm.ui" line="1007"/>
+        <location filename="../ui/setportfrm.ui" line="1118"/>
+        <location filename="../ui/setportfrm.ui" line="1229"/>
+        <location filename="../ui/setportfrm.ui" line="1340"/>
         <source>port12</source>
         <translation>端口12</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="101"/>
-        <location filename="../ui/setportfrm.ui" line="212"/>
-        <location filename="../ui/setportfrm.ui" line="323"/>
-        <location filename="../ui/setportfrm.ui" line="434"/>
-        <location filename="../ui/setportfrm.ui" line="545"/>
-        <location filename="../ui/setportfrm.ui" line="656"/>
-        <location filename="../ui/setportfrm.ui" line="789"/>
-        <location filename="../ui/setportfrm.ui" line="900"/>
-        <location filename="../ui/setportfrm.ui" line="1011"/>
-        <location filename="../ui/setportfrm.ui" line="1122"/>
-        <location filename="../ui/setportfrm.ui" line="1233"/>
+        <location filename="../ui/setportfrm.ui" line="211"/>
+        <location filename="../ui/setportfrm.ui" line="322"/>
+        <location filename="../ui/setportfrm.ui" line="433"/>
+        <location filename="../ui/setportfrm.ui" line="544"/>
+        <location filename="../ui/setportfrm.ui" line="655"/>
+        <location filename="../ui/setportfrm.ui" line="766"/>
+        <location filename="../ui/setportfrm.ui" line="901"/>
+        <location filename="../ui/setportfrm.ui" line="1012"/>
+        <location filename="../ui/setportfrm.ui" line="1123"/>
+        <location filename="../ui/setportfrm.ui" line="1234"/>
+        <location filename="../ui/setportfrm.ui" line="1345"/>
         <source>port13</source>
         <translation>端口13</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="106"/>
-        <location filename="../ui/setportfrm.ui" line="217"/>
-        <location filename="../ui/setportfrm.ui" line="328"/>
-        <location filename="../ui/setportfrm.ui" line="439"/>
-        <location filename="../ui/setportfrm.ui" line="550"/>
-        <location filename="../ui/setportfrm.ui" line="661"/>
-        <location filename="../ui/setportfrm.ui" line="794"/>
-        <location filename="../ui/setportfrm.ui" line="905"/>
-        <location filename="../ui/setportfrm.ui" line="1016"/>
-        <location filename="../ui/setportfrm.ui" line="1127"/>
-        <location filename="../ui/setportfrm.ui" line="1238"/>
+        <location filename="../ui/setportfrm.ui" line="216"/>
+        <location filename="../ui/setportfrm.ui" line="327"/>
+        <location filename="../ui/setportfrm.ui" line="438"/>
+        <location filename="../ui/setportfrm.ui" line="549"/>
+        <location filename="../ui/setportfrm.ui" line="660"/>
+        <location filename="../ui/setportfrm.ui" line="771"/>
+        <location filename="../ui/setportfrm.ui" line="906"/>
+        <location filename="../ui/setportfrm.ui" line="1017"/>
+        <location filename="../ui/setportfrm.ui" line="1128"/>
+        <location filename="../ui/setportfrm.ui" line="1239"/>
+        <location filename="../ui/setportfrm.ui" line="1350"/>
         <source>port14</source>
         <translation>端口14</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="111"/>
-        <location filename="../ui/setportfrm.ui" line="222"/>
-        <location filename="../ui/setportfrm.ui" line="333"/>
-        <location filename="../ui/setportfrm.ui" line="444"/>
-        <location filename="../ui/setportfrm.ui" line="555"/>
-        <location filename="../ui/setportfrm.ui" line="666"/>
-        <location filename="../ui/setportfrm.ui" line="799"/>
-        <location filename="../ui/setportfrm.ui" line="910"/>
-        <location filename="../ui/setportfrm.ui" line="1021"/>
-        <location filename="../ui/setportfrm.ui" line="1132"/>
-        <location filename="../ui/setportfrm.ui" line="1243"/>
+        <location filename="../ui/setportfrm.ui" line="221"/>
+        <location filename="../ui/setportfrm.ui" line="332"/>
+        <location filename="../ui/setportfrm.ui" line="443"/>
+        <location filename="../ui/setportfrm.ui" line="554"/>
+        <location filename="../ui/setportfrm.ui" line="665"/>
+        <location filename="../ui/setportfrm.ui" line="776"/>
+        <location filename="../ui/setportfrm.ui" line="911"/>
+        <location filename="../ui/setportfrm.ui" line="1022"/>
+        <location filename="../ui/setportfrm.ui" line="1133"/>
+        <location filename="../ui/setportfrm.ui" line="1244"/>
+        <location filename="../ui/setportfrm.ui" line="1355"/>
         <source>port15</source>
         <translation>端口15</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="116"/>
-        <location filename="../ui/setportfrm.ui" line="227"/>
-        <location filename="../ui/setportfrm.ui" line="338"/>
-        <location filename="../ui/setportfrm.ui" line="449"/>
-        <location filename="../ui/setportfrm.ui" line="560"/>
-        <location filename="../ui/setportfrm.ui" line="671"/>
-        <location filename="../ui/setportfrm.ui" line="804"/>
-        <location filename="../ui/setportfrm.ui" line="915"/>
-        <location filename="../ui/setportfrm.ui" line="1026"/>
-        <location filename="../ui/setportfrm.ui" line="1137"/>
-        <location filename="../ui/setportfrm.ui" line="1248"/>
+        <location filename="../ui/setportfrm.ui" line="226"/>
+        <location filename="../ui/setportfrm.ui" line="337"/>
+        <location filename="../ui/setportfrm.ui" line="448"/>
+        <location filename="../ui/setportfrm.ui" line="559"/>
+        <location filename="../ui/setportfrm.ui" line="670"/>
+        <location filename="../ui/setportfrm.ui" line="781"/>
+        <location filename="../ui/setportfrm.ui" line="916"/>
+        <location filename="../ui/setportfrm.ui" line="1027"/>
+        <location filename="../ui/setportfrm.ui" line="1138"/>
+        <location filename="../ui/setportfrm.ui" line="1249"/>
+        <location filename="../ui/setportfrm.ui" line="1360"/>
         <source>port16</source>
         <translation>端口16</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="121"/>
-        <location filename="../ui/setportfrm.ui" line="232"/>
-        <location filename="../ui/setportfrm.ui" line="343"/>
-        <location filename="../ui/setportfrm.ui" line="454"/>
-        <location filename="../ui/setportfrm.ui" line="565"/>
-        <location filename="../ui/setportfrm.ui" line="676"/>
-        <location filename="../ui/setportfrm.ui" line="809"/>
-        <location filename="../ui/setportfrm.ui" line="920"/>
-        <location filename="../ui/setportfrm.ui" line="1031"/>
-        <location filename="../ui/setportfrm.ui" line="1142"/>
-        <location filename="../ui/setportfrm.ui" line="1253"/>
+        <location filename="../ui/setportfrm.ui" line="231"/>
+        <location filename="../ui/setportfrm.ui" line="342"/>
+        <location filename="../ui/setportfrm.ui" line="453"/>
+        <location filename="../ui/setportfrm.ui" line="564"/>
+        <location filename="../ui/setportfrm.ui" line="675"/>
+        <location filename="../ui/setportfrm.ui" line="786"/>
+        <location filename="../ui/setportfrm.ui" line="921"/>
+        <location filename="../ui/setportfrm.ui" line="1032"/>
+        <location filename="../ui/setportfrm.ui" line="1143"/>
+        <location filename="../ui/setportfrm.ui" line="1254"/>
+        <location filename="../ui/setportfrm.ui" line="1365"/>
         <source>port17</source>
         <translation>端口17</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="126"/>
-        <location filename="../ui/setportfrm.ui" line="237"/>
-        <location filename="../ui/setportfrm.ui" line="348"/>
-        <location filename="../ui/setportfrm.ui" line="459"/>
-        <location filename="../ui/setportfrm.ui" line="570"/>
-        <location filename="../ui/setportfrm.ui" line="681"/>
-        <location filename="../ui/setportfrm.ui" line="814"/>
-        <location filename="../ui/setportfrm.ui" line="925"/>
-        <location filename="../ui/setportfrm.ui" line="1036"/>
-        <location filename="../ui/setportfrm.ui" line="1147"/>
-        <location filename="../ui/setportfrm.ui" line="1258"/>
+        <location filename="../ui/setportfrm.ui" line="236"/>
+        <location filename="../ui/setportfrm.ui" line="347"/>
+        <location filename="../ui/setportfrm.ui" line="458"/>
+        <location filename="../ui/setportfrm.ui" line="569"/>
+        <location filename="../ui/setportfrm.ui" line="680"/>
+        <location filename="../ui/setportfrm.ui" line="791"/>
+        <location filename="../ui/setportfrm.ui" line="926"/>
+        <location filename="../ui/setportfrm.ui" line="1037"/>
+        <location filename="../ui/setportfrm.ui" line="1148"/>
+        <location filename="../ui/setportfrm.ui" line="1259"/>
+        <location filename="../ui/setportfrm.ui" line="1370"/>
         <source>port18</source>
         <translation>端口18</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="131"/>
-        <location filename="../ui/setportfrm.ui" line="242"/>
-        <location filename="../ui/setportfrm.ui" line="353"/>
-        <location filename="../ui/setportfrm.ui" line="464"/>
-        <location filename="../ui/setportfrm.ui" line="575"/>
-        <location filename="../ui/setportfrm.ui" line="686"/>
-        <location filename="../ui/setportfrm.ui" line="819"/>
-        <location filename="../ui/setportfrm.ui" line="930"/>
-        <location filename="../ui/setportfrm.ui" line="1041"/>
-        <location filename="../ui/setportfrm.ui" line="1152"/>
-        <location filename="../ui/setportfrm.ui" line="1263"/>
+        <location filename="../ui/setportfrm.ui" line="241"/>
+        <location filename="../ui/setportfrm.ui" line="352"/>
+        <location filename="../ui/setportfrm.ui" line="463"/>
+        <location filename="../ui/setportfrm.ui" line="574"/>
+        <location filename="../ui/setportfrm.ui" line="685"/>
+        <location filename="../ui/setportfrm.ui" line="796"/>
+        <location filename="../ui/setportfrm.ui" line="931"/>
+        <location filename="../ui/setportfrm.ui" line="1042"/>
+        <location filename="../ui/setportfrm.ui" line="1153"/>
+        <location filename="../ui/setportfrm.ui" line="1264"/>
+        <location filename="../ui/setportfrm.ui" line="1375"/>
         <source>port19</source>
         <translation>端口19</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="136"/>
-        <location filename="../ui/setportfrm.ui" line="247"/>
-        <location filename="../ui/setportfrm.ui" line="358"/>
-        <location filename="../ui/setportfrm.ui" line="469"/>
-        <location filename="../ui/setportfrm.ui" line="580"/>
-        <location filename="../ui/setportfrm.ui" line="691"/>
-        <location filename="../ui/setportfrm.ui" line="824"/>
-        <location filename="../ui/setportfrm.ui" line="935"/>
-        <location filename="../ui/setportfrm.ui" line="1046"/>
-        <location filename="../ui/setportfrm.ui" line="1157"/>
-        <location filename="../ui/setportfrm.ui" line="1268"/>
+        <location filename="../ui/setportfrm.ui" line="246"/>
+        <location filename="../ui/setportfrm.ui" line="357"/>
+        <location filename="../ui/setportfrm.ui" line="468"/>
+        <location filename="../ui/setportfrm.ui" line="579"/>
+        <location filename="../ui/setportfrm.ui" line="690"/>
+        <location filename="../ui/setportfrm.ui" line="801"/>
+        <location filename="../ui/setportfrm.ui" line="936"/>
+        <location filename="../ui/setportfrm.ui" line="1047"/>
+        <location filename="../ui/setportfrm.ui" line="1158"/>
+        <location filename="../ui/setportfrm.ui" line="1269"/>
+        <location filename="../ui/setportfrm.ui" line="1380"/>
         <source>port20</source>
         <translation>端口20</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="144"/>
+        <location filename="../ui/setportfrm.ui" line="254"/>
         <source>Valve Out</source>
         <translation>放水阀</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="255"/>
+        <location filename="../ui/setportfrm.ui" line="365"/>
         <source>Valve Big</source>
         <translation>大流量阀</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="366"/>
+        <location filename="../ui/setportfrm.ui" line="476"/>
         <source>Valve Mid2</source>
         <translation>中二阀</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="477"/>
+        <location filename="../ui/setportfrm.ui" line="587"/>
         <source>Valve Mid1</source>
         <translation>中一阀</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="588"/>
+        <location filename="../ui/setportfrm.ui" line="698"/>
         <source>Valve Small</source>
         <translation>小流量阀</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="715"/>
+        <location filename="../ui/setportfrm.ui" line="827"/>
         <source>Device</source>
         <translation>设备</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="721"/>
+        <location filename="../ui/setportfrm.ui" line="833"/>
         <source>Pump</source>
         <translation>泵</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="832"/>
+        <location filename="../ui/setportfrm.ui" line="944"/>
         <source>Regulator1</source>
         <translation>调节阀1</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="943"/>
+        <location filename="../ui/setportfrm.ui" line="1055"/>
         <source>Regulator2</source>
         <translation>调节阀2</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="1054"/>
+        <location filename="../ui/setportfrm.ui" line="1166"/>
         <source>Regulator3</source>
         <translation>调节阀3</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="1165"/>
+        <location filename="../ui/setportfrm.ui" line="1277"/>
         <source>Regulator4</source>
         <translation>调节阀4</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="1281"/>
+        <location filename="../ui/setportfrm.ui" line="1393"/>
         <source>ProtVersion:</source>
         <translation>控制板版本:</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="1289"/>
+        <location filename="../ui/setportfrm.ui" line="1401"/>
         <source>NewCtrlBoard</source>
         <translation>新板子</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="1294"/>
+        <location filename="../ui/setportfrm.ui" line="1406"/>
         <source>OldCtrlBoard</source>
         <translation>老板子</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="1299"/>
+        <location filename="../ui/setportfrm.ui" line="1411"/>
         <source>LichCtrlBoard</source>
         <translation>力创</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="1333"/>
+        <location filename="../ui/setportfrm.ui" line="1449"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="1362"/>
+        <location filename="../ui/setportfrm.ui" line="1478"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
@@ -2353,12 +2393,12 @@ Please check each flow point&apos;s quantity</source>
         <translation type="obsolete">退出</translation>
     </message>
     <message>
-        <location filename="../source/setportfrm.cpp" line="51"/>
+        <location filename="../source/setportfrm.cpp" line="67"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../source/setportfrm.cpp" line="51"/>
+        <location filename="../source/setportfrm.cpp" line="67"/>
         <source>Save Successful !</source>
         <translation>保存成功!</translation>
     </message>

@@ -4,32 +4,40 @@
 <context>
     <name>AdjustRateDlg</name>
     <message>
-        <location filename="../source/adjustratedlg.cpp" line="42"/>
+        <location filename="../source/adjustratedlg.cpp" line="43"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../source/adjustratedlg.cpp" line="42"/>
+        <location filename="../source/adjustratedlg.cpp" line="43"/>
         <source>get port set info failed!</source>
         <translation>获取端口信息失败!</translation>
     </message>
     <message>
-        <location filename="../source/adjustratedlg.cpp" line="347"/>
+        <location filename="../source/adjustratedlg.cpp" line="356"/>
+        <location filename="../source/adjustratedlg.cpp" line="488"/>
         <source>MaxRate</source>
         <translation>最大流量</translation>
     </message>
     <message>
-        <location filename="../source/adjustratedlg.cpp" line="347"/>
-        <source>please set maxRate first!</source>
-        <translation>请先设置最大流量!</translation>
+        <location filename="../source/adjustratedlg.cpp" line="356"/>
+        <location filename="../source/adjustratedlg.cpp" line="488"/>
+        <source>please set big maxRate first!</source>
+        <translation>请先设置大流量管路的最大流速!</translation>
     </message>
     <message>
-        <location filename="../source/adjustratedlg.cpp" line="363"/>
+        <source>please set maxRate first!</source>
+        <translation type="obsolete">请先设置最大流量!</translation>
+    </message>
+    <message>
+        <location filename="../source/adjustratedlg.cpp" line="368"/>
+        <location filename="../source/adjustratedlg.cpp" line="500"/>
         <source>Too Large</source>
         <translation>太大</translation>
     </message>
     <message>
-        <location filename="../source/adjustratedlg.cpp" line="363"/>
+        <location filename="../source/adjustratedlg.cpp" line="368"/>
+        <location filename="../source/adjustratedlg.cpp" line="500"/>
         <source>setted rate is greater than maxRate, exit!</source>
         <translation>目标流量大于最大流量!</translation>
     </message>
@@ -42,12 +50,12 @@
         <translation>调整流量</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="37"/>
+        <location filename="../ui/adjustratedlg.ui" line="35"/>
         <source>Valve Control</source>
         <translation>阀门控制</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="67"/>
+        <location filename="../ui/adjustratedlg.ui" line="65"/>
         <source>m
 i
 d
@@ -56,7 +64,7 @@ d
 一</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="110"/>
+        <location filename="../ui/adjustratedlg.ui" line="108"/>
         <source>p
 u
 m
@@ -65,7 +73,7 @@ p</source>
 泵</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="153"/>
+        <location filename="../ui/adjustratedlg.ui" line="151"/>
         <source>o
 u
 t</source>
@@ -74,7 +82,7 @@ t</source>
 阀</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="195"/>
+        <location filename="../ui/adjustratedlg.ui" line="193"/>
         <source>i
 n</source>
         <translation>进
@@ -82,7 +90,7 @@ n</source>
 阀</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="236"/>
+        <location filename="../ui/adjustratedlg.ui" line="234"/>
         <source>m
 i
 d
@@ -91,7 +99,7 @@ d
 二</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="279"/>
+        <location filename="../ui/adjustratedlg.ui" line="277"/>
         <source>s
 m
 a
@@ -102,7 +110,7 @@ l</source>
 量</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="323"/>
+        <location filename="../ui/adjustratedlg.ui" line="321"/>
         <source>b
 i
 g</source>
@@ -111,166 +119,167 @@ g</source>
 量</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="344"/>
+        <location filename="../ui/adjustratedlg.ui" line="342"/>
         <source>Set Freq</source>
         <translation>设置频率</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="368"/>
+        <location filename="../ui/adjustratedlg.ui" line="366"/>
         <source>Freq:</source>
         <translation>频率:</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="418"/>
+        <location filename="../ui/adjustratedlg.ui" line="416"/>
         <source>SetFreq</source>
         <translation>设置频率</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="432"/>
+        <location filename="../ui/adjustratedlg.ui" line="766"/>
         <source>Set Degree Manual</source>
         <translation>手动设置开度</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="456"/>
-        <location filename="../ui/adjustratedlg.ui" line="531"/>
+        <location filename="../ui/adjustratedlg.ui" line="790"/>
+        <location filename="../ui/adjustratedlg.ui" line="865"/>
         <source>Open(%):</source>
         <translation>开度(%):</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="506"/>
+        <location filename="../ui/adjustratedlg.ui" line="840"/>
         <source>Regulate1</source>
         <translation>调节阀1</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="581"/>
+        <location filename="../ui/adjustratedlg.ui" line="915"/>
         <source>Regulate2</source>
         <translation>调节阀2</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="591"/>
+        <location filename="../ui/adjustratedlg.ui" line="927"/>
+        <source>Stop Adjusting</source>
+        <translation>停止调整流速</translation>
+    </message>
+    <message>
+        <location filename="../ui/adjustratedlg.ui" line="752"/>
         <source>DN20</source>
         <translation>DN20</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="598"/>
-        <location filename="../ui/adjustratedlg.ui" line="1278"/>
+        <location filename="../ui/adjustratedlg.ui" line="759"/>
+        <location filename="../ui/adjustratedlg.ui" line="1259"/>
         <source>DN25</source>
         <translation>DN25</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="609"/>
+        <location filename="../ui/adjustratedlg.ui" line="430"/>
         <source>Big Vale</source>
         <translation>大流量阀</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="635"/>
-        <location filename="../ui/adjustratedlg.ui" line="969"/>
+        <location filename="../ui/adjustratedlg.ui" line="456"/>
+        <location filename="../ui/adjustratedlg.ui" line="962"/>
         <source>Kp:</source>
         <translation>Kp:</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="685"/>
-        <location filename="../ui/adjustratedlg.ui" line="1019"/>
+        <location filename="../ui/adjustratedlg.ui" line="506"/>
+        <location filename="../ui/adjustratedlg.ui" line="1012"/>
         <source>Kd:</source>
         <translation>Kd:</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="735"/>
-        <location filename="../ui/adjustratedlg.ui" line="1069"/>
+        <location filename="../ui/adjustratedlg.ui" line="556"/>
+        <location filename="../ui/adjustratedlg.ui" line="1062"/>
         <source>Ki:</source>
         <translation>Ki:</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="785"/>
-        <location filename="../ui/adjustratedlg.ui" line="1119"/>
+        <location filename="../ui/adjustratedlg.ui" line="606"/>
+        <location filename="../ui/adjustratedlg.ui" line="1112"/>
         <source>T:</source>
         <translation>T:</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="839"/>
-        <location filename="../ui/adjustratedlg.ui" line="1173"/>
+        <location filename="../ui/adjustratedlg.ui" line="660"/>
+        <location filename="../ui/adjustratedlg.ui" line="1166"/>
         <source>Max Rate:</source>
         <translation>最大流量:</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="889"/>
-        <location filename="../ui/adjustratedlg.ui" line="1223"/>
+        <location filename="../ui/adjustratedlg.ui" line="710"/>
+        <location filename="../ui/adjustratedlg.ui" line="1216"/>
         <source>Set Rate:</source>
         <translation>设定流量:</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="923"/>
-        <location filename="../ui/adjustratedlg.ui" line="1257"/>
         <source>Start</source>
-        <translation>开始</translation>
+        <translation type="obsolete">开始</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="930"/>
-        <location filename="../ui/adjustratedlg.ui" line="1264"/>
         <source>Stop</source>
-        <translation>停止</translation>
+        <translation type="obsolete">停止</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="943"/>
+        <location filename="../ui/adjustratedlg.ui" line="936"/>
         <source>Mid Vale</source>
         <translation>中流量阀</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="1296"/>
-        <location filename="../ui/adjustratedlg.ui" line="1391"/>
-        <location filename="../ui/adjustratedlg.ui" line="1482"/>
+        <location filename="../ui/adjustratedlg.ui" line="1277"/>
+        <location filename="../ui/adjustratedlg.ui" line="1372"/>
+        <location filename="../ui/adjustratedlg.ui" line="1463"/>
         <source>Inst</source>
         <translation>瞬时</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="1337"/>
-        <location filename="../ui/adjustratedlg.ui" line="1410"/>
-        <location filename="../ui/adjustratedlg.ui" line="1523"/>
+        <location filename="../ui/adjustratedlg.ui" line="1318"/>
+        <location filename="../ui/adjustratedlg.ui" line="1391"/>
+        <location filename="../ui/adjustratedlg.ui" line="1504"/>
         <source>Accum</source>
         <translation>累积</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="1373"/>
+        <location filename="../ui/adjustratedlg.ui" line="1354"/>
         <source>DN10</source>
         <translation>DN10</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="1464"/>
+        <location filename="../ui/adjustratedlg.ui" line="1445"/>
         <source>DN3</source>
         <translation>DN3</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="1557"/>
+        <location filename="../ui/adjustratedlg.ui" line="1538"/>
         <source>StdMeterValue</source>
         <translation>标准表</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="1569"/>
+        <location filename="../ui/adjustratedlg.ui" line="1550"/>
         <source>FlowRate:</source>
         <translation>瞬时流量:</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="1591"/>
+        <location filename="../ui/adjustratedlg.ui" line="1572"/>
         <source>Std Meter:</source>
         <translation>累积流量:</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="1642"/>
+        <location filename="../ui/adjustratedlg.ui" line="1623"/>
         <source>L</source>
         <translation>L</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/adjustratedlg.ui" line="1655"/>
+        <location filename="../ui/adjustratedlg.ui" line="1636"/>
         <source>m³/h</source>
         <translation>m³/h</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="1705"/>
+        <location filename="../ui/adjustratedlg.ui" line="1686"/>
         <source>ParaSet</source>
         <translation>参数设置</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="1730"/>
+        <location filename="../ui/adjustratedlg.ui" line="1711"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>

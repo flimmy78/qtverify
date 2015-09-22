@@ -924,7 +924,7 @@ g</string>
        <item>
         <widget class="QPushButton" name="btnSopSet">
          <property name="text">
-          <string>Stop</string>
+          <string>Stop Adjusting</string>
          </property>
         </widget>
        </item>

@@ -90,7 +90,7 @@ void AdjustRateDlg::closeEvent( QCloseEvent * event)
 
 	if (m_controlObj)  //阀门控制
 	{
-		closePump();//退出时, 关闭水泵
+		on_btnSopSet_clicked();//退出时, 关闭水泵
 		delete m_controlObj;
 		m_controlObj = NULL;
 
@@ -309,6 +309,8 @@ void AdjustRateDlg::savePidParams()
 	pidConfig.setValue("Ki_mid",ui.lnEditKi_mid->text());
 	pidConfig.setValue("Kd_mid",ui.lnEditKd_mid->text());
 	pidConfig.setValue("CycleTime_mid",ui.lnEditCycleTime_mid->text());
+
+	pidConfig.setValue("pumpFreq", ui.spinBoxFreq->value());
 }
 
 void AdjustRateDlg::installPidParams()
@@ -334,6 +336,9 @@ void AdjustRateDlg::installPidParams()
 	m_Ki_mid = pidConfig.value("Ki_mid").toFloat();
 	m_Kd_mid = pidConfig.value("Kd_mid").toFloat();
 	m_pickCycleTime_mid = pidConfig.value("CycleTime_mid").toInt();
+
+	m_pumpFreq = pidConfig.value("pumpFreq").toInt();
+	ui.spinBoxFreq->setValue(m_pumpFreq);
 }
 
 void AdjustRateDlg::on_lnEditMaxRate_big_returnPressed()
@@ -391,7 +396,7 @@ void AdjustRateDlg::setRegulate(float currentRate, float targetRate)
 	qDebug() << "target Rate : " << targetRate;
 	qDebug() << "current error : " << currentRate - targetRate;
 	qDebug() << "current regular number: " << m_nowRegNo;
-	qDebug() << "current waitting time: "  << m_pickCycleTime_big;
+	qDebug() << "current waitting time: "  << ((m_nowRegNo==1)?m_pickCycleTime_big:m_pickCycleTime_mid);
 
 	float deltaV = qAbs(targetRate - currentRate);
 	m_degree = (m_nowRegNo==1)?degreeGetBig(currentRate, targetRate):degreeGetMid(currentRate, targetRate);
@@ -571,7 +576,7 @@ void AdjustRateDlg::on_lnEditKd_mid_returnPressed()
 
 void AdjustRateDlg::on_lnEditCycleTime_mid_returnPressed()
 {
-	QString str = ui.lnEditCycleTime_big->text();
+	QString str = ui.lnEditCycleTime_mid->text();
 	if (m_rx.exactMatch(str))
 	{
 		m_pickCycleTime_mid = str.toInt();
@@ -720,6 +725,7 @@ void AdjustRateDlg::on_btnWaterPump_clicked() //水泵
 void AdjustRateDlg::openPump()
 {
 	m_nowPortNo = m_portsetinfo.pumpNo;
+	m_controlObj->askSetDriverFreq(m_pumpFreq);
 	m_controlObj->askControlWaterPump(m_nowPortNo, true);
 
 	if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈

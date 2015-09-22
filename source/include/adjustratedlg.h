@@ -105,7 +105,6 @@ public slots:
 	void on_lnEditCycleTime_mid_returnPressed();
 
 	void on_btnSopSet_clicked();
-
 private:
 	Ui::AdjustVelocityDlgClass ui;
 	/*******************标准流量计******************************/
