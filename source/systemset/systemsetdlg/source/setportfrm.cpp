@@ -27,8 +27,12 @@ SetPortFrm::SetPortFrm(QWidget *parent, Qt::WFlags flags)
 
 	QString filename = getFullIniFileName("portset.ini");
 	PortSet = new QSettings(filename, QSettings::IniFormat);
-
 	InstallIni();
+
+	m_readComConfig = NULL;
+	m_controlObj = NULL;
+	initControlCom();
+	initValveStatus();
 }
 
 SetPortFrm::~SetPortFrm()
@@ -37,6 +41,18 @@ SetPortFrm::~SetPortFrm()
 	{
 		delete PortSet;
 		PortSet = NULL;
+	}
+
+	if (m_readComConfig)
+	{
+		delete m_readComConfig;
+		m_readComConfig = NULL;
+	}
+
+	if (m_controlObj)
+	{
+		delete m_controlObj;
+		m_controlObj = NULL;
 	}
 }
 
@@ -50,6 +66,77 @@ void SetPortFrm::on_btn_Save_clicked()
 	WriteIni();
 	QMessageBox::information(this, tr("OK"), tr("Save Successful !"));
 }
+
+void SetPortFrm::initControlCom()
+{
+	m_readComConfig = new ReadComConfig();
+	ComInfoStruct valveStruct = m_readComConfig->ReadValveConfig();
+	m_controlObj = new ControlComObject();
+	m_controlObj->setProtocolVersion(gui.cBox_Version->currentIndex()); //设置协议版本
+	m_controlObj->openControlCom(&valveStruct);
+}
+
+void SetPortFrm::on_btnRoutine_1_clicked()
+{
+	m_valveStatus[0] = !m_valveStatus[0];
+	m_controlObj->askControlRelay(1, m_valveStatus[0]);
+}
+
+void SetPortFrm::on_btnRoutine_2_clicked()
+{
+	m_valveStatus[1] = !m_valveStatus[1];
+	m_controlObj->askControlRelay(2, m_valveStatus[1]);
+}
+
+void SetPortFrm::on_btnRoutine_3_clicked()
+{
+	m_valveStatus[2] = !m_valveStatus[2];
+	m_controlObj->askControlRelay(3, m_valveStatus[2]);
+}
+
+void SetPortFrm::on_btnRoutine_4_clicked()
+{
+	m_valveStatus[3] = !m_valveStatus[3];
+	m_controlObj->askControlRelay(4, m_valveStatus[3]);
+}
+
+void SetPortFrm::on_btnRoutine_5_clicked()
+{
+	m_valveStatus[4] = !m_valveStatus[4];
+	m_controlObj->askControlRelay(5, m_valveStatus[4]);
+}
+
+void SetPortFrm::on_btnRoutine_6_clicked()
+{
+	m_valveStatus[5] = !m_valveStatus[5];
+	m_controlObj->askControlRelay(6, m_valveStatus[5]);
+}
+
+void SetPortFrm::on_btnRoutine_7_clicked()
+{
+	m_valveStatus[6] = !m_valveStatus[6];
+	m_controlObj->askControlRelay(7, m_valveStatus[6]);
+}
+
+void SetPortFrm::on_btnRoutine_8_clicked()
+{
+	m_valveStatus[7] = !m_valveStatus[7];
+	m_controlObj->askControlRelay(8, m_valveStatus[7]);
+}
+
+void SetPortFrm::initValveStatus()
+{
+	//端口号-阀门状态 全部阀门状态为关闭
+	m_valveStatus[0] = VALVE_CLOSE;
+	m_valveStatus[1] = VALVE_CLOSE;
+	m_valveStatus[2] = VALVE_CLOSE;
+	m_valveStatus[3] = VALVE_CLOSE;
+	m_valveStatus[4] = VALVE_CLOSE;
+	m_valveStatus[5] = VALVE_CLOSE;
+	m_valveStatus[6] = VALVE_CLOSE;
+	m_valveStatus[7] = VALVE_CLOSE;
+}
+
 /*
 ** 读取上次的端口配置
 */

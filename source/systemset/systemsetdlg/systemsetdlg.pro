@@ -10,7 +10,7 @@ QMAKE_LIBDIR +=  ./           \
         	     $(ADEHOME)/lib \
 	             $(ADEHOME)/bin
 	             
-LIBS += -lqtexdb -lalgorithm	           
+LIBS += -lqtexdb -lalgorithm -lcomobject           
 
 DESTDIR = $(ADEHOME)\tmp\systemset\systemsetdlg\obj
 #MOC_DIR = $(ADEHOME)/tmp/systemset/systemsetdlg/moc
@@ -19,7 +19,8 @@ UI_DIR = $(ADEHOME_INC)/include
 
 INCLUDEPATH = ./         \
               include    \ 
-              $$(ADEHOME_INC)/include \
+              $$(ADEHOME_INC)/include	\
+			  $$(ADEHOME_INC)/include/qextserial
 
 
 HEADERS += $$(ADEHOME_INC)/include/systemsetdlg_global.h   \
