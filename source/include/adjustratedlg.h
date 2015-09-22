@@ -31,7 +31,6 @@ class ReadComConfig;
 ** 功能：调节流速
 */
 
-#define WAIT_SECOND (m_pickCycleTime/1000)//等待调节阀到位并水流稳定时间(单位秒)
 #define PRECISION (0.03*targetRate)//流速设定误差限
 
 class ADJUSTRATEDLG_EXPORT AdjustRateDlg : public QWidget
@@ -198,6 +197,10 @@ private slots:
 	void slotSetRegulate();
 	void openPump();
 	void closePump();
+	int openValve(UINT8 portno);
+	int closeValve(UINT8 portno);
+	void operateBigPidVales();
+	void operateMidPidVales();
 	/******************电动调节阀end***************************/
 };
 

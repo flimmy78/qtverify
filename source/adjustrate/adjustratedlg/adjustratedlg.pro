@@ -11,10 +11,10 @@ QMAKE_LIBDIR +=  ./           \
 
 LIBS += -lsystemsetdlg -lprotocol -lcomobject -lalgorithm -lqtexdb
 
-DESTDIR = $$(ADEHOME)\tmp\adjustrate\adjustratedlg\obj
+DESTDIR = $(ADEHOME)\tmp\adjustrate\adjustratedlg\obj
 #MOC_DIR = $(ADEHOME)/tmp/adjustrate/adjustratedlg/moc
-OBJECTS_DIR = $$(ADEHOME)/tmp/adjustrate/adjustratedlg/obj
-UI_DIR = $$(ADEHOME_INC)/include
+OBJECTS_DIR = $(ADEHOME)/tmp/adjustrate/adjustratedlg/obj
+UI_DIR = $(ADEHOME_INC)/include
 
 INCLUDEPATH  	=    ./      \
 									 include \ 

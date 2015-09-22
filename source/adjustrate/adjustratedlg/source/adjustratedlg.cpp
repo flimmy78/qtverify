@@ -370,9 +370,10 @@ void AdjustRateDlg::on_lnEditTargetRate_big_returnPressed()
 		}
 
 		stopSetRegularTimer();
-		qDebug() <<"$$$$$$$$$$$$$$$$$$$ starting m_setRegularTimer $$$$$$$$$$$$$$$$$$$";
 		m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
+		operateBigPidVales();
 		openPump();//设定目标流量, 打开水泵
+		qDebug() <<"$$$$$$$$$$$$$$$$$$$ starting m_setRegularTimer $$$$$$$$$$$$$$$$$$$";
 		slotSetRegulate();//设定后立即调整一次
 		m_setRegularTimer->start(m_pickCycleTime_big);
 	}
@@ -447,13 +448,13 @@ int AdjustRateDlg::degreeGetBig(float currentRate, float targetRate)
 
 int AdjustRateDlg::degreeGetMid(float currentRate, float targetRate)
 {
-	int watSencond = (m_pickCycleTime_big/1000);
+	int watSencond = (m_pickCycleTime_mid/1000);
 	m_curr_error = targetRate - currentRate;
 	m_integral += m_curr_error*watSencond;
 	float derivative = (m_curr_error - m_pre_error)/watSencond;
-	float output = m_Kp_big*m_curr_error + m_Ki_big*m_integral + m_Kd_big*derivative;
-	qDebug() << "Kp:--" <<m_Kp_big<<" Ki:--"<<m_Ki_big<<" Kd:--"<<m_Kd_big;
-	qDebug() << "P:--" <<m_Kp_big*m_curr_error<<" I:--"<<m_Ki_big*m_integral<<" D:--"<<m_Kd_big*derivative;
+	float output = m_Kp_mid*m_curr_error + m_Ki_mid*m_integral + m_Kd_mid*derivative;
+	qDebug() << "Kp:--" <<m_Kp_mid<<" Ki:--"<<m_Ki_mid<<" Kd:--"<<m_Kd_mid;
+	qDebug() << "P:--" <<m_Kp_mid*m_curr_error<<" I:--"<<m_Ki_mid*m_integral<<" D:--"<<m_Kd_mid*derivative;
 	qDebug() << "oooooutput: " << output;
 	m_pre_error = m_curr_error;
 	int outdegree =  (int)(output>0 ? output: 0);
@@ -461,12 +462,12 @@ int AdjustRateDlg::degreeGetMid(float currentRate, float targetRate)
 	{
 		outdegree = 99;
 	}
-	m_pidDataPtr->pid_Kp = m_Kp_big;
-	m_pidDataPtr->pid_Ki = m_Ki_big;
-	m_pidDataPtr->pid_Kd = m_Kd_big;
-	m_pidDataPtr->pid_P = m_Kp_big*m_curr_error;
-	m_pidDataPtr->pid_I = m_Ki_big*m_integral;
-	m_pidDataPtr->pid_D = m_Kd_big*derivative;
+	m_pidDataPtr->pid_Kp = m_Kp_mid;
+	m_pidDataPtr->pid_Ki = m_Ki_mid;
+	m_pidDataPtr->pid_Kd = m_Kd_mid;
+	m_pidDataPtr->pid_P = m_Kp_mid*m_curr_error;
+	m_pidDataPtr->pid_I = m_Ki_mid*m_integral;
+	m_pidDataPtr->pid_D = m_Kd_mid*derivative;
 
 	return outdegree;
 }
@@ -501,9 +502,10 @@ void AdjustRateDlg::on_lnEditTargetRate_mid_returnPressed()
 		}
 
 		stopSetRegularTimer();
-		qDebug() <<"$$$$$$$$$$$$$$$$$$$ starting m_setRegularTimer $$$$$$$$$$$$$$$$$$$";
 		m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
+		operateMidPidVales();
 		openPump();//设定目标流量, 打开水泵
+		qDebug() <<"$$$$$$$$$$$$$$$$$$$ starting m_setRegularTimer $$$$$$$$$$$$$$$$$$$";
 		slotSetRegulate();//设定后立即调整一次
 		m_setRegularTimer->start(m_pickCycleTime_mid);
 	}
@@ -539,7 +541,7 @@ void AdjustRateDlg::on_lnEditKp_mid_returnPressed()
 
 void AdjustRateDlg::on_lnEditKi_mid_returnPressed()
 {
-	QString str = ui.lnEditKp_mid->text();
+	QString str = ui.lnEditKi_mid->text();
 	if (m_rx.exactMatch(str))
 	{
 		m_Ki_mid = str.toFloat();
@@ -554,7 +556,7 @@ void AdjustRateDlg::on_lnEditKi_mid_returnPressed()
 
 void AdjustRateDlg::on_lnEditKd_mid_returnPressed()
 {
-	QString str = ui.lnEditKp_mid->text();
+	QString str = ui.lnEditKd_mid->text();
 	if (m_rx.exactMatch(str))
 	{
 		m_Kd_mid = str.toFloat();
@@ -737,9 +739,94 @@ void AdjustRateDlg::closePump()
 	}
 }
 
+void AdjustRateDlg::operateBigPidVales()
+{
+	openValve(m_portsetinfo.waterInNo);
+	wait(CYCLE_TIME);
+	openValve(m_portsetinfo.waterOutNo);//防水阀接反, 反向调用
+	wait(CYCLE_TIME);
+	openValve(m_portsetinfo.bigNo);
+	wait(CYCLE_TIME);
+	closeValve(m_portsetinfo.smallNo);
+	wait(CYCLE_TIME);
+	closeValve(m_portsetinfo.middle1No);
+	wait(CYCLE_TIME);
+	closeValve(m_portsetinfo.middle2No);
+}
+
+void AdjustRateDlg::operateMidPidVales()
+{
+	openValve(m_portsetinfo.waterInNo);
+	wait(CYCLE_TIME);
+	openValve(m_portsetinfo.waterOutNo);//防水阀接反, 反向调用
+	wait(CYCLE_TIME);
+	openValve(m_portsetinfo.middle1No);
+	wait(CYCLE_TIME);
+	closeValve(m_portsetinfo.smallNo);
+	wait(CYCLE_TIME);
+	closeValve(m_portsetinfo.middle2No);
+	wait(CYCLE_TIME);
+	closeValve(m_portsetinfo.bigNo);
+}
+
+//打开阀门
+int AdjustRateDlg::openValve(UINT8 portno)
+{
+	if (NULL == m_controlObj)
+	{
+		return false;
+	}
+	if (portno == m_portsetinfo.waterOutNo)
+	{
+		m_controlObj->askControlRelay(portno, VALVE_CLOSE);
+	}
+	else
+		m_controlObj->askControlRelay(portno, VALVE_OPEN);
+
+	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
+	{
+		slotSetValveBtnStatus(portno, VALVE_OPEN);
+	}
+	return true;
+}
+
+//关闭阀门
+int AdjustRateDlg::closeValve(UINT8 portno)
+{
+	if (NULL == m_controlObj)
+	{
+		return false;
+	}
+	if (portno == m_portsetinfo.waterOutNo)
+	{
+		 m_controlObj->askControlRelay(portno, VALVE_OPEN);
+	}
+	else
+		m_controlObj->askControlRelay(portno, VALVE_CLOSE);
+	
+	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
+	{
+		slotSetValveBtnStatus(portno, VALVE_CLOSE);
+	}
+	return true;
+}
+
 void AdjustRateDlg::on_btnSopSet_clicked()
 {
 	stopSetRegularTimer();
+	closePump();
+	wait(CYCLE_TIME);
+	closeValve(m_portsetinfo.waterInNo);
+	wait(CYCLE_TIME);
+	closeValve(m_portsetinfo.smallNo);
+	wait(CYCLE_TIME);
+	closeValve(m_portsetinfo.middle1No);
+	wait(CYCLE_TIME);
+	closeValve(m_portsetinfo.middle2No);
+	wait(CYCLE_TIME);
+	closeValve(m_portsetinfo.bigNo);
+	wait(CYCLE_TIME);
+	closeValve(m_portsetinfo.waterOutNo);
 }
 
 //设置频率

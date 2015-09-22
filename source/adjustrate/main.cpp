@@ -42,7 +42,7 @@ int main( int argc, char ** argv )
 	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
 	if (!adehome.isEmpty()) 
 	{
-		QString filename = adehome + "\\uif\\i18n\\" + lang + "\\datatestdlg_" + lang + ".qm";
+		QString filename = adehome + "\\uif\\i18n\\" + lang + "\\adjustratedlg_" + lang + ".qm";
 		bool loadok = translator.load(filename, "");
 		if (!loadok)
 		{

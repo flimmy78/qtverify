@@ -213,7 +213,7 @@ g</source>
     <message>
         <location filename="../ui/adjustratedlg.ui" line="943"/>
         <source>Mid Vale</source>
-        <translation>中流量</translation>
+        <translation>中流量阀</translation>
     </message>
     <message>
         <location filename="../ui/adjustratedlg.ui" line="1296"/>
