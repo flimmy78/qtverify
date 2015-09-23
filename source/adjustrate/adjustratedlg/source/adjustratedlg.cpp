@@ -358,6 +358,7 @@ void AdjustRateDlg::on_btnStartSet_clicked()
 	openPump();//打开水泵
 	qDebug() <<"$$$$$$$$$$$$$$$$$$$ starting m_setRegularTimer $$$$$$$$$$$$$$$$$$$";
 	slotSetRegulate();//设定后立即调整一次
+	m_elapsetime.start();//开启调速计时
 	m_setRegularTimer->start(m_pickCycleTime);
 }
 

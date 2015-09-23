@@ -34,6 +34,7 @@ class ReadComConfig;
 #define PRECISION (0.03*targetRate)//流速设定误差限
 #define BIG_RBTN 0
 #define MID_RBTN 1
+#define GAIN_TARGET_TIMES 10//如果达到目标误差限的次数大于此数, 则认为调整成功, 停止调整流速
 
 class ADJUSTRATEDLG_EXPORT AdjustRateDlg : public QWidget
 {
@@ -132,6 +133,9 @@ private:
 
 	QRegExp m_rx;
 	QTimer *m_setRegularTimer;
+	
+	QTime m_elapsetime;//计时器, 记录从设定开始到当前的运行时间
+	int m_gainPreciseTimes;//达到目标流量的次数
 
 	float m_pre_error;
 	float m_curr_error;
@@ -159,7 +163,14 @@ private:
 	void installPidParams();
 	void initLineEdits();
 	void initBtnGroup();
-	/******************电动调节阀end***************************/
+	/******************电动调节阀end************************/
+
+	/******************调节水泵***************************/
+	QTimer *m_setPumpTimer;
+	
+	/******************调节水泵end************************/
+
+
 private slots:
 	/*******************标准流量计******************************/
 	void slotAskInstPulse();//请求瞬时流量
@@ -179,6 +190,8 @@ private slots:
 	void operateMidPidVales();
 	void slotValveClicked(int);
 	/******************电动调节阀end***************************/
+
+
 };
 
 #endif // ADJUSTRATEDLG_H
