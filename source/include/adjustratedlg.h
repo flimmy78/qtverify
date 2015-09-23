@@ -32,6 +32,8 @@ class ReadComConfig;
 */
 
 #define PRECISION (0.03*targetRate)//流速设定误差限
+#define BIG_RBTN 0
+#define MID_RBTN 1
 
 class ADJUSTRATEDLG_EXPORT AdjustRateDlg : public QWidget
 {
@@ -88,22 +90,7 @@ public slots:
 	void setValveBtnBackColor(QPushButton *btn, bool status); //设置阀门按钮背景色
 	void setRegBtnBackColor(QPushButton *btn, bool status);	//设置调节阀按钮背景色
 
-	/*******************大流量*******************/
-	void on_lnEditTargetRate_big_returnPressed();//设定目标流量
-	void on_lnEditMaxRate_big_returnPressed();//设定最大流速
-	void on_lnEditKp_big_returnPressed();
-	void on_lnEditKi_big_returnPressed();
-	void on_lnEditKd_big_returnPressed();
-	void on_lnEditCycleTime_big_returnPressed();
-
-	/*******************中流量*******************/
-	void on_lnEditTargetRate_mid_returnPressed();//设定目标流量
-	void on_lnEditMaxRate_mid_returnPressed();//设定最大流速
-	void on_lnEditKp_mid_returnPressed();
-	void on_lnEditKi_mid_returnPressed();
-	void on_lnEditKd_mid_returnPressed();
-	void on_lnEditCycleTime_mid_returnPressed();
-
+	void on_btnStartSet_clicked();
 	void on_btnSopSet_clicked();
 private:
 	Ui::AdjustVelocityDlgClass ui;
@@ -141,6 +128,8 @@ private:
 	/******************标准流量计end***************************/
 
 	/*******************电动调节阀******************************/
+	QButtonGroup *m_btnGroupValve;
+
 	QRegExp m_rx;
 	QTimer *m_setRegularTimer;
 
@@ -150,38 +139,26 @@ private:
 	int m_degree;
 	int m_pumpFreq;
 	int m_openRegulateTimes;
-	/*-------------------大流量--------------------*/
-	float m_maxRate_big;
-	float m_targetRate_big;
-	bool m_maxRateGetted_big;//是否已获取过最大流量值
-	bool m_ifGainTargetRate_big;//是否已达到目标流量值
-	float m_Kp_big;
-	float m_Ki_big;
-	float m_Kd_big;
-	int m_pickCycleTime_big;//设定周期
 
-	/*-------------------中流量--------------------*/
-	float m_maxRate_mid;
-	float m_targetRate_mid;
-
-	bool m_maxRateGetted_mid;//是否已获取过最大流量值
-	bool m_ifGainTargetRate_mid;//是否已达到目标流量值
-	float m_Kp_mid;
-	float m_Ki_mid;
-	float m_Kd_mid;
-	int m_pickCycleTime_mid;//设定周期
-	/*--------------------------------------------*/
+	float m_Kp;
+	float m_Ki;
+	float m_Kd;
+	int m_pickCycleTime;//设定周期
+	bool m_ifGainTargetRate;//是否已达到目标流量值
 	QString m_timeStamp;
-	float m_currentRate;	
+	float m_currentRate;
+	float m_targetRate;
+	float m_maxRate;
 
 	PIDDataPtr m_pidDataPtr;
 
 	void setRegulate(float currentRate, float targetRate);
-	int degreeGetBig(float currentRate, float targetRate);
-	int degreeGetMid(float currentRate, float targetRate);
+	int degreeGet(float currentRate, float targetRate);
 	void stopSetRegularTimer();
 	void savePidParams();
 	void installPidParams();
+	void initLineEdits();
+	void initBtnGroup();
 	/******************电动调节阀end***************************/
 private slots:
 	/*******************标准流量计******************************/
@@ -200,6 +177,7 @@ private slots:
 	int closeValve(UINT8 portno);
 	void operateBigPidVales();
 	void operateMidPidVales();
+	void slotValveClicked(int);
 	/******************电动调节阀end***************************/
 };
 

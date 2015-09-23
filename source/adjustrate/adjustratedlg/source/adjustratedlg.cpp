@@ -154,6 +154,12 @@ void AdjustRateDlg::closeEvent( QCloseEvent * event)
 		m_setRegularTimer = NULL;
 	}
 	savePidParams();
+
+	if (m_btnGroupValve)
+	{
+		delete m_btnGroupValve;
+		m_btnGroupValve = NULL;
+	}
 	/*****************************************************/
 }
 
@@ -226,74 +232,33 @@ void AdjustRateDlg::initControlCom()
 	m_pidDataPtr = new PIDDataStr;
 	m_pre_error = 0.0;
 	m_integral = 0.0;
-	m_maxRateGetted_big = false;
-	m_maxRateGetted_mid = false;
 	ui.lnEditTargetRate_big->setReadOnly(false);
 	ui.lnEditTargetRate_mid->setReadOnly(false);
 	installPidParams();
+	initLineEdits();
+	m_btnGroupValve = NULL;
+	initBtnGroup();
 	m_setRegularTimer = new QTimer;
 	connect(m_setRegularTimer, SIGNAL(timeout()), this, SLOT(slotSetRegulate()));
 	/*****************************************************************************************************/
 }
 
-void AdjustRateDlg::on_lnEditKp_big_returnPressed()
+void AdjustRateDlg::initLineEdits()
 {
-	QString str = ui.lnEditKp_big->text();
-	if (m_rx.exactMatch(str))
-	{
-		m_Kp_big = str.toFloat();
-		if (m_setRegularTimer->isActive())
-			m_setRegularTimer->stop();
+	QValidator *validator = new QRegExpValidator(m_rx);
+	ui.lnEditKp_big->setValidator(validator);
+	ui.lnEditKi_big->setValidator(validator);
+	ui.lnEditKd_big->setValidator(validator);
+	ui.lnEditCycleTime_big->setValidator(validator);
+	ui.lnEditMaxRate_big->setValidator(validator);
+	ui.lnEditTargetRate_big->setValidator(validator);
 
-		m_setRegularTimer->start(m_pickCycleTime_big);
-		m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
-		qDebug()<<"m_Kp_big setted: " << m_Kp_big;
-	}						 
-}
-
-void AdjustRateDlg::on_lnEditKi_big_returnPressed()
-{
-	QString str = ui.lnEditKi_big->text();
-	if (m_rx.exactMatch(str))
-	{
-		m_Ki_big = str.toFloat();
-		if (m_setRegularTimer->isActive())
-			m_setRegularTimer->stop();
-
-		m_setRegularTimer->start(m_pickCycleTime_big);
-		m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
-		qDebug()<<"m_Ki_big setted: " << m_Ki_big;
-	}
-}
-
-void AdjustRateDlg::on_lnEditKd_big_returnPressed()
-{
-	QString str = ui.lnEditKd_big->text();
-	if (m_rx.exactMatch(str))
-	{
-		m_Kd_big = str.toFloat();
-		if (m_setRegularTimer->isActive())
-			m_setRegularTimer->stop();
-
-		m_setRegularTimer->start(m_pickCycleTime_big);
-		m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
-		qDebug()<<"m_Kd_big setted: " << m_Kd_big;
-	}
-}
-
-void AdjustRateDlg::on_lnEditCycleTime_big_returnPressed()
-{
-	QString str = ui.lnEditCycleTime_big->text();
-	if (m_rx.exactMatch(str))
-	{
-		m_pickCycleTime_big = str.toInt();
-		qDebug()<<"m_pickCycleTime_big setted: " << m_pickCycleTime_big;
-		
-		stopSetRegularTimer();
-		m_setRegularTimer->start(m_pickCycleTime_big);
-		m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
-		qDebug()<<"m_setRegularTimer's Interval setted: " << m_pickCycleTime_big;
-	}
+	ui.lnEditKp_mid->setValidator(validator);
+	ui.lnEditKi_mid->setValidator(validator);
+	ui.lnEditKd_mid->setValidator(validator);
+	ui.lnEditCycleTime_mid->setValidator(validator);
+	ui.lnEditMaxRate_mid->setValidator(validator);
+	ui.lnEditTargetRate_mid->setValidator(validator);
 }
 
 void AdjustRateDlg::savePidParams()
@@ -304,13 +269,21 @@ void AdjustRateDlg::savePidParams()
 	pidConfig.setValue("Ki_big",ui.lnEditKi_big->text());
 	pidConfig.setValue("Kd_big",ui.lnEditKd_big->text());
 	pidConfig.setValue("CycleTime_big",ui.lnEditCycleTime_big->text());
+	pidConfig.setValue("maxrate_big", ui.lnEditMaxRate_big->text());
+	pidConfig.setValue("targetrate_big", ui.lnEditTargetRate_big->text());
 
 	pidConfig.setValue("Kp_mid",ui.lnEditKp_mid->text());
 	pidConfig.setValue("Ki_mid",ui.lnEditKi_mid->text());
 	pidConfig.setValue("Kd_mid",ui.lnEditKd_mid->text());
 	pidConfig.setValue("CycleTime_mid",ui.lnEditCycleTime_mid->text());
+	pidConfig.setValue("maxrate_mid", ui.lnEditMaxRate_mid->text());
+	pidConfig.setValue("targetrate_mid", ui.lnEditTargetRate_mid->text());
 
 	pidConfig.setValue("pumpFreq", ui.spinBoxFreq->value());
+
+	pidConfig.setValue("nowRegNo", m_nowRegNo);
+	pidConfig.setValue("valve_big", ui.rBtn_big->isChecked());
+	pidConfig.setValue("valve_mid", ui.rBtn_mid->isChecked());
 }
 
 void AdjustRateDlg::installPidParams()
@@ -321,119 +294,115 @@ void AdjustRateDlg::installPidParams()
 	ui.lnEditKi_big->setText(pidConfig.value("Ki_big").toString());
 	ui.lnEditKd_big->setText(pidConfig.value("Kd_big").toString());
 	ui.lnEditCycleTime_big->setText(pidConfig.value("CycleTime_big").toString());
-
-	m_Kp_big = pidConfig.value("Kp_big").toFloat();
-	m_Ki_big = pidConfig.value("Ki_big").toFloat();
-	m_Kd_big = pidConfig.value("Kd_big").toFloat();
-	m_pickCycleTime_big = pidConfig.value("CycleTime_big").toInt();
+	ui.lnEditMaxRate_big->setText(pidConfig.value("maxrate_big").toString());
+	ui.lnEditTargetRate_big->setText(pidConfig.value("targetrate_big").toString());
 
 	ui.lnEditKp_mid->setText(pidConfig.value("Kp_mid").toString());
 	ui.lnEditKi_mid->setText(pidConfig.value("Ki_mid").toString());
 	ui.lnEditKd_mid->setText(pidConfig.value("Kd_mid").toString());
 	ui.lnEditCycleTime_mid->setText(pidConfig.value("CycleTime_mid").toString());
-
-	m_Kp_mid = pidConfig.value("Kp_mid").toFloat();
-	m_Ki_mid = pidConfig.value("Ki_mid").toFloat();
-	m_Kd_mid = pidConfig.value("Kd_mid").toFloat();
-	m_pickCycleTime_mid = pidConfig.value("CycleTime_mid").toInt();
+	ui.lnEditMaxRate_mid->setText(pidConfig.value("maxrate_mid").toString());
+	ui.lnEditTargetRate_mid->setText(pidConfig.value("targetrate_mid").toString());
 
 	m_pumpFreq = pidConfig.value("pumpFreq").toInt();
 	ui.spinBoxFreq->setValue(m_pumpFreq);
+
+	m_nowRegNo = pidConfig.value("nowRegNo").toInt();
+	ui.rBtn_big->setChecked(pidConfig.value("valve_big").toBool());
+	ui.rBtn_mid->setChecked(pidConfig.value("valve_mid").toBool());
 }
 
-void AdjustRateDlg::on_lnEditMaxRate_big_returnPressed()
+void AdjustRateDlg::initBtnGroup()
 {
-	QString str = ui.lnEditMaxRate_big->text();
-	//匹配整数或小数
-	if (m_rx.exactMatch(str))
+	m_btnGroupValve = new QButtonGroup(this); //计量单位
+	m_btnGroupValve->addButton(ui.rBtn_big, BIG_RBTN);
+	m_btnGroupValve->addButton(ui.rBtn_mid, MID_RBTN);
+	connect(m_btnGroupValve, SIGNAL(buttonClicked(int)), this, SLOT(slotValveClicked(int)));
+}
+void AdjustRateDlg::slotValveClicked(int idx)
+{
+	switch(idx)
 	{
-		m_maxRate_big = str.toFloat();
-		m_maxRateGetted_big = true;
-		qDebug()<<"big valve max flow rate setted: " << m_maxRate_big;
-		stopSetRegularTimer();
+	case BIG_RBTN:
+		m_nowRegNo = m_portsetinfo.regflow1No;
+		m_Kp = ui.lnEditKp_big->text().toFloat();
+		m_Ki = ui.lnEditKi_big->text().toFloat();
+		m_Kd = ui.lnEditKd_big->text().toFloat();
+		m_pickCycleTime = ui.lnEditCycleTime_big->text().toInt();
+		m_maxRate = ui.lnEditMaxRate_big->text().toFloat();
+		m_targetRate = ui.lnEditTargetRate_big->text().toFloat();
+		break;
+	case MID_RBTN:
+		m_nowRegNo = m_portsetinfo.regflow2No;
+		m_Kp = ui.lnEditKp_mid->text().toFloat();
+		m_Ki = ui.lnEditKi_mid->text().toFloat();
+		m_Kd = ui.lnEditKd_mid->text().toFloat();
+		m_pickCycleTime = ui.lnEditCycleTime_mid->text().toInt();
+		m_maxRate = ui.lnEditMaxRate_mid->text().toFloat();
+		m_targetRate = ui.lnEditTargetRate_mid->text().toFloat();
+		break;
+	default:
+		break;
 	}
 }
 
-void AdjustRateDlg::on_lnEditTargetRate_big_returnPressed()
-{						   
-	if (!m_maxRateGetted_big)
-	{
-		QMessageBox::warning(this, tr("MaxRate"), tr("please set big maxRate first!"));
-		return;
-	}
-
-	m_nowRegNo = m_portsetinfo.regflow1No;
-	QString str = ui.lnEditTargetRate_big->text();
-	//匹配整数或小数
-	if (m_rx.exactMatch(str))
-	{
-		m_targetRate_big = str.toFloat();
-		if (m_targetRate_big > m_maxRate_big)
-		{
-			QMessageBox::warning(this, tr("Too Large"), tr("setted rate is greater than maxRate, exit!"));
-			return;
-		}
-
-		stopSetRegularTimer();
-		m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
+void AdjustRateDlg::on_btnStartSet_clicked()
+{
+	stopSetRegularTimer();
+	m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
+	if(m_nowRegNo == m_portsetinfo.regflow1No)
 		operateBigPidVales();
-		openPump();//设定目标流量, 打开水泵
-		qDebug() <<"$$$$$$$$$$$$$$$$$$$ starting m_setRegularTimer $$$$$$$$$$$$$$$$$$$";
-		slotSetRegulate();//设定后立即调整一次
-		m_setRegularTimer->start(m_pickCycleTime_big);
-	}
+	else if( m_nowRegNo == m_portsetinfo.regflow2No)
+		operateMidPidVales();
+
+	openPump();//打开水泵
+	qDebug() <<"$$$$$$$$$$$$$$$$$$$ starting m_setRegularTimer $$$$$$$$$$$$$$$$$$$";
+	slotSetRegulate();//设定后立即调整一次
+	m_setRegularTimer->start(m_pickCycleTime);
 }
 
 void AdjustRateDlg::slotSetRegulate()
 {
-	this->setRegulate(ui.lcdStdMeterFlowRate->value(), (m_nowRegNo==1)?m_targetRate_big:m_targetRate_mid);
+	this->setRegulate(ui.lcdStdMeterFlowRate->value(), m_targetRate);
 }
 
 void AdjustRateDlg::setRegulate(float currentRate, float targetRate)
 {
-	qDebug() << "+++++++++++++++++++++++++++++++++++++++++++++++++++";
-	qDebug() << "current Rate : " << currentRate;
-	qDebug() << "target Rate : " << targetRate;
-	qDebug() << "current error : " << currentRate - targetRate;
-	qDebug() << "current regular number: " << m_nowRegNo;
-	qDebug() << "current waitting time: "  << ((m_nowRegNo==1)?m_pickCycleTime_big:m_pickCycleTime_mid);
-
+	qDebug() << "+++++++++++++++++new set+++++++++++++++++";
 	float deltaV = qAbs(targetRate - currentRate);
-	m_degree = (m_nowRegNo==1)?degreeGetBig(currentRate, targetRate):degreeGetMid(currentRate, targetRate);
+	m_degree =degreeGet(currentRate, targetRate);
 	qDebug() << "current degree: " << m_degree;
 	m_controlObj->askControlRegulate(m_nowRegNo, m_degree);
-	qDebug() << "%%%%%%% regular setted %%%%%%%";
-	m_ifGainTargetRate_big = false;
-	m_ifGainTargetRate_mid = false;
+	m_ifGainTargetRate = false;
 	if (deltaV <= PRECISION)
 	{
-		qDebug() << "\n######################gain target rate######################n";
-		(m_nowRegNo==1)?(m_ifGainTargetRate_big = true):(m_ifGainTargetRate_mid = true);
+		qDebug() << "######################gain target rate######################";
+		m_ifGainTargetRate = true;
 	}
 
 	m_pidDataPtr->pid_timestamp    = m_timeStamp;
-	m_pidDataPtr->pid_maxRate	   = (m_nowRegNo==1)?m_maxRate_big:m_maxRate_mid;
+	m_pidDataPtr->pid_maxRate	   = m_maxRate;
 	m_pidDataPtr->pid_currentRate  = currentRate;
 	m_pidDataPtr->pid_targetRate   = targetRate;
 	m_pidDataPtr->pid_currentError = currentRate - targetRate;
 	m_pidDataPtr->pid_regularNo	   = m_nowRegNo;
-	m_pidDataPtr->pid_waitTime	   = (m_nowRegNo==1)?m_pickCycleTime_big:m_pickCycleTime_mid;
+	m_pidDataPtr->pid_waitTime	   = m_pickCycleTime;
 	m_pidDataPtr->pid_currentDegree= m_degree;
-	m_pidDataPtr->pid_gainTargetRate = 	(m_nowRegNo==1)?m_ifGainTargetRate_big:m_ifGainTargetRate_mid;
+	m_pidDataPtr->pid_gainTargetRate = 	m_ifGainTargetRate;
 	m_pidDataPtr->pid_nowErrorPercent = ((currentRate - targetRate)/targetRate)*100;
 	m_pidDataPtr->pid_pumpFreq = m_pumpFreq;
 	insertPidRec(m_pidDataPtr);
+	qDebug() << "+++++++++++++++++new set end+++++++++++++++++";
 }
 
-int AdjustRateDlg::degreeGetBig(float currentRate, float targetRate)
+int AdjustRateDlg::degreeGet(float currentRate, float targetRate)
 {
-	int watSencond = (m_pickCycleTime_big/1000);
+	int watSencond = (m_pickCycleTime/1000);
 	m_curr_error = targetRate - currentRate;
 	m_integral += m_curr_error*watSencond;
 	float derivative = (m_curr_error - m_pre_error)/watSencond;
-	float output = m_Kp_big*m_curr_error + m_Ki_big*m_integral + m_Kd_big*derivative;
-	qDebug() << "Kp:--" <<m_Kp_big<<" Ki:--"<<m_Ki_big<<" Kd:--"<<m_Kd_big;
-	qDebug() << "P:--" <<m_Kp_big*m_curr_error<<" I:--"<<m_Ki_big*m_integral<<" D:--"<<m_Kd_big*derivative;
+	float output = m_Kp*m_curr_error + m_Ki*m_integral + m_Kd*derivative;
+	qDebug() << "P:--" <<m_Kp*m_curr_error<<" I:--"<<m_Ki*m_integral<<" D:--"<<m_Kd*derivative;
 	qDebug() << "oooooutput: " << output;
 	m_pre_error = m_curr_error;
 	int outdegree =  (int)(output>0 ? output: 0);
@@ -441,38 +410,12 @@ int AdjustRateDlg::degreeGetBig(float currentRate, float targetRate)
 	{
 		outdegree = 99;
 	}
-	m_pidDataPtr->pid_Kp = m_Kp_big;
-	m_pidDataPtr->pid_Ki = m_Ki_big;
-	m_pidDataPtr->pid_Kd = m_Kd_big;
-	m_pidDataPtr->pid_P = m_Kp_big*m_curr_error;
-	m_pidDataPtr->pid_I = m_Ki_big*m_integral;
-	m_pidDataPtr->pid_D = m_Kd_big*derivative;
-
-	return outdegree;
-}
-
-int AdjustRateDlg::degreeGetMid(float currentRate, float targetRate)
-{
-	int watSencond = (m_pickCycleTime_mid/1000);
-	m_curr_error = targetRate - currentRate;
-	m_integral += m_curr_error*watSencond;
-	float derivative = (m_curr_error - m_pre_error)/watSencond;
-	float output = m_Kp_mid*m_curr_error + m_Ki_mid*m_integral + m_Kd_mid*derivative;
-	qDebug() << "Kp:--" <<m_Kp_mid<<" Ki:--"<<m_Ki_mid<<" Kd:--"<<m_Kd_mid;
-	qDebug() << "P:--" <<m_Kp_mid*m_curr_error<<" I:--"<<m_Ki_mid*m_integral<<" D:--"<<m_Kd_mid*derivative;
-	qDebug() << "oooooutput: " << output;
-	m_pre_error = m_curr_error;
-	int outdegree =  (int)(output>0 ? output: 0);
-	if (outdegree > 99)
-	{
-		outdegree = 99;
-	}
-	m_pidDataPtr->pid_Kp = m_Kp_mid;
-	m_pidDataPtr->pid_Ki = m_Ki_mid;
-	m_pidDataPtr->pid_Kd = m_Kd_mid;
-	m_pidDataPtr->pid_P = m_Kp_mid*m_curr_error;
-	m_pidDataPtr->pid_I = m_Ki_mid*m_integral;
-	m_pidDataPtr->pid_D = m_Kd_mid*derivative;
+	m_pidDataPtr->pid_Kp = m_Kp;
+	m_pidDataPtr->pid_Ki = m_Ki;
+	m_pidDataPtr->pid_Kd = m_Kd;
+	m_pidDataPtr->pid_P = m_Kp*m_curr_error;
+	m_pidDataPtr->pid_I = m_Ki*m_integral;
+	m_pidDataPtr->pid_D = m_Kd*derivative;
 
 	return outdegree;
 }
@@ -483,108 +426,6 @@ void AdjustRateDlg::stopSetRegularTimer()
 	{
 		m_setRegularTimer->stop();
 		qDebug() << "m_setRegularTimer stoped";
-	}
-}
-
-void AdjustRateDlg::on_lnEditTargetRate_mid_returnPressed()
-{
-	if (!m_maxRateGetted_mid)
-	{
-		QMessageBox::warning(this, tr("MaxRate"), tr("please set big maxRate first!"));
-		return;
-	}
-
-	m_nowRegNo = m_portsetinfo.regflow2No;
-	QString str = ui.lnEditTargetRate_mid->text();
-	//匹配整数或小数
-	if (m_rx.exactMatch(str))
-	{
-		m_targetRate_mid = str.toFloat();
-		if (m_targetRate_mid > m_maxRate_mid)
-		{
-			QMessageBox::warning(this, tr("Too Large"), tr("setted rate is greater than maxRate, exit!"));
-			return;
-		}
-
-		stopSetRegularTimer();
-		m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
-		operateMidPidVales();
-		openPump();//设定目标流量, 打开水泵
-		qDebug() <<"$$$$$$$$$$$$$$$$$$$ starting m_setRegularTimer $$$$$$$$$$$$$$$$$$$";
-		slotSetRegulate();//设定后立即调整一次
-		m_setRegularTimer->start(m_pickCycleTime_mid);
-	}
-}
-
-void AdjustRateDlg::on_lnEditMaxRate_mid_returnPressed()
-{
-	QString str = ui.lnEditMaxRate_mid->text();
-	//匹配整数或小数
-	if (m_rx.exactMatch(str))
-	{
-		m_maxRate_mid = str.toFloat();
-		m_maxRateGetted_mid = true;
-		qDebug()<<"mid valve max flow rate setted: " << m_maxRate_mid;
-		stopSetRegularTimer();
-	}
-}
-
-void AdjustRateDlg::on_lnEditKp_mid_returnPressed()
-{
-	QString str = ui.lnEditKp_mid->text();
-	if (m_rx.exactMatch(str))
-	{
-		m_Kp_mid = str.toFloat();
-		if (m_setRegularTimer->isActive())
-			m_setRegularTimer->stop();
-
-		m_setRegularTimer->start(m_pickCycleTime_mid);
-		m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
-		qDebug()<<"m_Kp_mid setted: " << m_Kp_mid;
-	}
-}
-
-void AdjustRateDlg::on_lnEditKi_mid_returnPressed()
-{
-	QString str = ui.lnEditKi_mid->text();
-	if (m_rx.exactMatch(str))
-	{
-		m_Ki_mid = str.toFloat();
-		if (m_setRegularTimer->isActive())
-			m_setRegularTimer->stop();
-
-		m_setRegularTimer->start(m_pickCycleTime_mid);
-		m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
-		qDebug()<<"m_Ki_mid setted: " << m_Ki_mid;
-	}
-}
-
-void AdjustRateDlg::on_lnEditKd_mid_returnPressed()
-{
-	QString str = ui.lnEditKd_mid->text();
-	if (m_rx.exactMatch(str))
-	{
-		m_Kd_mid = str.toFloat();
-		if (m_setRegularTimer->isActive())
-			m_setRegularTimer->stop();
-
-		m_setRegularTimer->start(m_pickCycleTime_mid);
-		m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
-		qDebug()<<"m_Kd_mid setted: " << m_Kd_mid;
-	}
-}
-
-void AdjustRateDlg::on_lnEditCycleTime_mid_returnPressed()
-{
-	QString str = ui.lnEditCycleTime_mid->text();
-	if (m_rx.exactMatch(str))
-	{
-		m_pickCycleTime_mid = str.toInt();
-		qDebug()<<"m_pickCycleTime_mid setted: " << m_pickCycleTime_mid;
-		stopSetRegularTimer();
-		m_setRegularTimer->start(m_pickCycleTime_mid);
-		m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
-		qDebug()<<"m_setRegularTimer's Interval setted: " << m_pickCycleTime_mid;
 	}
 }
 
@@ -669,7 +510,6 @@ void AdjustRateDlg::on_btnValveBig_clicked() //大流量阀
 	{
 		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
 	}
-	m_maxRateGetted_big = false;
 	m_nowRegNo = m_portsetinfo.regflow1No;
 }
 
@@ -682,7 +522,6 @@ void AdjustRateDlg::on_btnValveMiddle1_clicked() //中流一阀
 	{
 		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
 	}
-	m_maxRateGetted_mid = false;
 	m_nowRegNo = m_portsetinfo.regflow2No;
 }
 
@@ -915,14 +754,6 @@ void AdjustRateDlg::setRegBtnBackColor(QPushButton *btn, bool status)
 	if (NULL == btn)
 	{
 		return;
-	}
-	if (status) //调节成功
-	{
-// 		btn->setStyleSheet("background:rgb(0,255,0);border-image: url(:/datatestdlg/images/success.png);");
-	}
-	else //调节失败
-	{
-// 		btn->setStyleSheet("background:rgb(255,0,0);border-image: url(:/datatestdlg/images/failed.png);");
 	}
 }
 
