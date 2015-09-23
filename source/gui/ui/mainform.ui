@@ -95,6 +95,7 @@
     <property name="title">
      <string>About(&amp;A)</string>
     </property>
+    <addaction name="actionRegister"/>
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuStyle">
@@ -539,6 +540,18 @@
    </property>
    <property name="toolTip">
     <string>ScanCode</string>
+   </property>
+  </action>
+  <action name="actionRegister">
+   <property name="icon">
+    <iconset resource="../qtverify.qrc">
+     <normaloff>:/qtverify/images/register.png</normaloff>:/qtverify/images/register.png</iconset>
+   </property>
+   <property name="text">
+    <string>Register</string>
+   </property>
+   <property name="toolTip">
+    <string>Register</string>
    </property>
   </action>
  </widget>

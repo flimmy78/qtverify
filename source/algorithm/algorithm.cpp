@@ -24,6 +24,25 @@
 #include "commondefine.h"
 #include "qtexdb.h"
 
+QDateTime getProbationStartDate()
+{
+	QString filename = getFullIniFileName("verifyparaset.ini");//配置文件的文件名
+	QSettings settings(filename, QSettings::IniFormat);
+	settings.setIniCodec("GB2312");//解决向ini文件中写汉字乱码
+	QString probation = settings.value("Other/probation").toString();
+	QDateTime regDate = QDateTime::fromString(probation, "yyyyMMddhhmmss");
+	return regDate;
+}
+
+void setProbationStartDate()
+{
+	QString filename = getFullIniFileName("verifyparaset.ini");//配置文件的文件名
+	QSettings settings(filename, QSettings::IniFormat);
+	settings.setIniCodec("GB2312");//解决向ini文件中写汉字乱码
+	QString probation = QDateTime::currentDateTime().toString("yyyyMMddhhmmss");
+	settings.setValue("Other/probation", probation);
+}
+
 void sleep(unsigned int msec)
 {
 	QTime n = QTime::currentTime();

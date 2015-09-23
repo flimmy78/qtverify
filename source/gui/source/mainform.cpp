@@ -43,8 +43,10 @@
 #include "cmb_result.h"
 #include "total_result.h"
 #include "scancodedlg.h"
+#include "register.h"
+#include "md5encode.h"
 
-MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
+MainForm::MainForm(bool licenseOK, int validDays, QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
 {
 	qDebug()<<"MainForm thread:"<<QThread::currentThreadId();
@@ -58,6 +60,7 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	m_flowResultDlg = NULL;
 	m_alg = new CAlgorithm();
 
+	m_registerDlg = NULL;
 	m_scanCodeDlg = NULL;
 	m_setcom = NULL;
 	m_datatestdlg = NULL;
@@ -89,6 +92,22 @@ MainForm::MainForm(QWidget *parent, Qt::WFlags flags)
 	permanent->setTextFormat(Qt::RichText);
 	permanent->setOpenExternalLinks(true);
 	ui.statusBar->addPermanentWidget(permanent);
+
+	m_probationinfo = new QLabel(this);
+	m_probationinfo->setFrameStyle(QFrame::NoFrame | QFrame::Sunken);
+	m_probationinfo->setAlignment(Qt::AlignLeft);
+	if (licenseOK) //正式版
+	{
+		m_probationinfo->setText(tr("Official Version"));
+	}
+	else //试用版
+	{
+		m_probationinfo->setText(tr("Trial Version! Probation period is %1 days").arg(validDays));
+	}
+	m_probationinfo->setTextFormat(Qt::RichText);
+	m_probationinfo->setOpenExternalLinks(true);
+	ui.statusBar->addPermanentWidget(m_probationinfo);
+
 }
 
 MainForm::~MainForm()
@@ -124,6 +143,12 @@ void MainForm::closeEvent( QCloseEvent * event)
 		{
 			delete m_alg;
 			m_alg = NULL;
+		}
+
+		if (m_registerDlg)
+		{
+			delete m_registerDlg;
+			m_registerDlg = NULL;
 		}
 
 		if (m_scanCodeDlg)
@@ -637,6 +662,22 @@ void MainForm::on_actionAbout_triggered()
 	QMessageBox::aboutQt(this);
 }
 
+void MainForm::on_actionRegister_triggered()
+{
+	if (NULL == m_registerDlg)
+	{
+		m_registerDlg = new RegisterDlg(qGetVolumeInfo());
+	}
+	else //目的是执行RegisterDlg的构造函数
+	{
+		delete m_registerDlg;
+		m_registerDlg = NULL;
+		m_registerDlg = new RegisterDlg(qGetVolumeInfo());
+	}
+	connect(m_registerDlg, SIGNAL(signalRegisterSuccess()), this, SLOT(slotRegisterSuccess()));
+	m_registerDlg->show();
+}
+
 //显示风格
 void MainForm::on_actionDefault_triggered()
 {
@@ -739,4 +780,10 @@ void MainForm::processError(QProcess::ProcessError error)
 // 		QMessageBox::information(0, tr("default"), tr("default"));
 		break;
 	}
+}
+
+void MainForm::slotRegisterSuccess()
+{
+	qDebug()<<ui.statusBar->currentMessage();
+	m_probationinfo->setText(tr("Official Version"));
 }

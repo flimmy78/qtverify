@@ -21,7 +21,7 @@
 #include "ui_scancodedlg.h"
 #include "comobject.h"
 
-#define COL_NOW_METER_NO	0
+#define COL_OLD_METER_NO	0
 #define COL_NEW_METER_NO	1
 #define COL_READ_METER_NO	2
 #define COL_MODIFY_METER_NO	3

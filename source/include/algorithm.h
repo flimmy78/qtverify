@@ -17,8 +17,11 @@
 
 #include <QString>
 #include <QByteArray>
+#include <QDateTime>
 #include "basedef.h"
 
+ALGORITHM_EXPORT QDateTime getProbationStartDate();
+ALGORITHM_EXPORT void setProbationStartDate();
 ALGORITHM_EXPORT void sleep(unsigned int msec);
 ALGORITHM_EXPORT void wait(unsigned int msec);
 ALGORITHM_EXPORT int getPortSetIni(PortSet_Ini_PTR info); //获取控制板的端口号配置信息

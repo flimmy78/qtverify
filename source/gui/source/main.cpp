@@ -5,6 +5,7 @@
 #include <QtGui/QSplashScreen>
 #include <QtCore/QThread>
 #include <QtGui/QDesktopWidget>
+#include <QSettings>
 #include <QDir>
 
 #include "mainform.h"
@@ -65,12 +66,21 @@ int main(int argc, char *argv[])
 	QTextStream in(&license);
 	QString regCode = in.readLine();
 	license.close();
-	if (!isLicenseOK(regCode))
+	bool licensOK = isLicenseOK(regCode);
+	int validDays = 0;
+	if (!licensOK) //非授权用户
 	{
-		RegisterDlg *reg = new RegisterDlg(qGetVolumeInfo());
-		reg->show();
-		qDebug()<<"please register first";
-		return app.exec();
+		//判断是否是试用期
+		QDateTime regDate = getProbationStartDate();
+		validDays = PROBATION_DAYS - regDate.daysTo(QDateTime::currentDateTime());
+		if (!regDate.isValid() || validDays <= 0) //非授权用户或者试用期已过期
+		{
+			RegisterDlg *reg = new RegisterDlg(qGetVolumeInfo());
+			reg->show();
+			qDebug()<<"please register first";
+// 			QObject::connect(reg, SIGNAL(signalRegisterSuccess()), app, SLOT(exec()));
+			return app.exec();
+		}
 	}
 
 	//加载样式表
@@ -111,7 +121,7 @@ int main(int argc, char *argv[])
 
 	splash->showMessage(QObject::tr("setting up the mainwindow ..."), align, Qt::blue);
 	wait(200);
-	g_mainform = new MainForm;
+	g_mainform = new MainForm(licensOK, validDays);
 	
 // 	LoginDialog login;
 // 	if (login.exec() == QDialog::Accepted)

@@ -31,18 +31,20 @@ class CalcResultDlg;
 class CmbResultDlg;
 class TotalResultDlg;
 class ScanCodeDlg;
+class RegisterDlg;
 
 class MainForm : public QMainWindow
 {
 	Q_OBJECT
 
 public:
-	MainForm(QWidget *parent = 0, Qt::WFlags flags = 0);
+	MainForm( bool licenseOK = true, int validDays = 0, QWidget *parent = 0, Qt::WFlags flags = 0);
 	~MainForm();
 
 	DbMySql *m_mySql;
-	
+	QLabel *m_probationinfo;
 	CAlgorithm *m_alg;
+	RegisterDlg *m_registerDlg; //注册管理
 	ScanCodeDlg *m_scanCodeDlg; //扫码写表号
 	SetComDlg *m_setcom; //串口参数设置
 	DataTestDlg *m_datatestdlg; //采集与控制测试程序
@@ -113,6 +115,7 @@ public slots:
 	//About
 	void on_actionExit_triggered();
 	void on_actionAbout_triggered();
+	void on_actionRegister_triggered();
 
 	//Style
 	void on_actionDefault_triggered();
@@ -127,6 +130,7 @@ public slots:
 	//
 	void slotFlowWeightClosed();
 	void processError(QProcess::ProcessError error);
+	void slotRegisterSuccess();
 
 private:
 	Ui::qMainFormClass ui;
