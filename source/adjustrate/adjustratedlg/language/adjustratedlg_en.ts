@@ -4,42 +4,34 @@
 <context>
     <name>AdjustRateDlg</name>
     <message>
-        <location filename="../source/adjustratedlg.cpp" line="43"/>
+        <location filename="../source/adjustratedlg.cpp" line="45"/>
         <source>Warning</source>
         <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../source/adjustratedlg.cpp" line="43"/>
+        <location filename="../source/adjustratedlg.cpp" line="45"/>
         <source>get port set info failed!</source>
         <translation>get port set info failed!</translation>
     </message>
     <message>
-        <location filename="../source/adjustratedlg.cpp" line="356"/>
-        <location filename="../source/adjustratedlg.cpp" line="488"/>
         <source>MaxRate</source>
-        <translation>MaxRate</translation>
+        <translation type="obsolete">MaxRate</translation>
     </message>
     <message>
-        <location filename="../source/adjustratedlg.cpp" line="356"/>
-        <location filename="../source/adjustratedlg.cpp" line="488"/>
         <source>please set big maxRate first!</source>
-        <translation>please set big maxRate first!</translation>
+        <translation type="obsolete">please set big maxRate first!</translation>
     </message>
     <message>
         <source>please set maxRate first!</source>
         <translation type="obsolete">please set maxRate first!</translation>
     </message>
     <message>
-        <location filename="../source/adjustratedlg.cpp" line="368"/>
-        <location filename="../source/adjustratedlg.cpp" line="500"/>
         <source>Too Large</source>
-        <translation>Too Large</translation>
+        <translation type="obsolete">Too Large</translation>
     </message>
     <message>
-        <location filename="../source/adjustratedlg.cpp" line="368"/>
-        <location filename="../source/adjustratedlg.cpp" line="500"/>
         <source>setted rate is greater than maxRate, exit!</source>
-        <translation>setted rate is greater than maxRate, exit!</translation>
+        <translation type="obsolete">setted rate is greater than maxRate, exit!</translation>
     </message>
 </context>
 <context>
@@ -50,12 +42,12 @@
         <translation>adjust Velocity</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="35"/>
+        <location filename="../ui/adjustratedlg.ui" line="1266"/>
         <source>Valve Control</source>
         <translation>Valve Control</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="65"/>
+        <location filename="../ui/adjustratedlg.ui" line="1507"/>
         <source>m
 i
 d
@@ -66,7 +58,7 @@ d
 1</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="108"/>
+        <location filename="../ui/adjustratedlg.ui" line="1464"/>
         <source>p
 u
 m
@@ -77,7 +69,7 @@ m
 p</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="151"/>
+        <location filename="../ui/adjustratedlg.ui" line="1422"/>
         <source>o
 u
 t</source>
@@ -86,14 +78,14 @@ u
 t</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="193"/>
+        <location filename="../ui/adjustratedlg.ui" line="1339"/>
         <source>i
 n</source>
         <translation>i
 n</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="234"/>
+        <location filename="../ui/adjustratedlg.ui" line="1296"/>
         <source>m
 i
 d
@@ -104,7 +96,7 @@ d
 2</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="277"/>
+        <location filename="../ui/adjustratedlg.ui" line="1550"/>
         <source>s
 m
 a
@@ -117,7 +109,7 @@ l
 l</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="321"/>
+        <location filename="../ui/adjustratedlg.ui" line="1380"/>
         <source>b
 i
 g</source>
@@ -126,95 +118,95 @@ i
 g</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="342"/>
         <source>Set Freq</source>
-        <translation>Set Freq</translation>
+        <translation type="obsolete">Set Freq</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="366"/>
         <source>Freq:</source>
-        <translation>Freq:</translation>
+        <translation type="obsolete">Freq:</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="416"/>
+        <location filename="../ui/adjustratedlg.ui" line="1802"/>
         <source>SetFreq</source>
         <translation>SetFreq</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="766"/>
+        <location filename="../ui/adjustratedlg.ui" line="686"/>
         <source>Set Degree Manual</source>
         <translation>Set Degree Manual</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="790"/>
-        <location filename="../ui/adjustratedlg.ui" line="865"/>
+        <location filename="../ui/adjustratedlg.ui" line="710"/>
+        <location filename="../ui/adjustratedlg.ui" line="785"/>
         <source>Open(%):</source>
         <translation>Open(%):</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="840"/>
+        <location filename="../ui/adjustratedlg.ui" line="760"/>
         <source>Regulate1</source>
         <translation>Regulate1</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="915"/>
+        <location filename="../ui/adjustratedlg.ui" line="835"/>
         <source>Regulate2</source>
         <translation>Regulate2</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="927"/>
+        <location filename="../ui/adjustratedlg.ui" line="854"/>
         <source>Stop Adjusting</source>
         <translation>Stop Adjusting</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="752"/>
         <source>DN20</source>
-        <translation>DN20</translation>
+        <translation type="obsolete">DN20</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="759"/>
-        <location filename="../ui/adjustratedlg.ui" line="1259"/>
+        <location filename="../ui/adjustratedlg.ui" line="869"/>
         <source>DN25</source>
         <translation>DN25</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="430"/>
+        <location filename="../ui/adjustratedlg.ui" line="31"/>
         <source>Big Vale</source>
         <translation>Big Vale</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="456"/>
-        <location filename="../ui/adjustratedlg.ui" line="962"/>
+        <location filename="../ui/adjustratedlg.ui" line="57"/>
+        <location filename="../ui/adjustratedlg.ui" line="375"/>
+        <location filename="../ui/adjustratedlg.ui" line="1599"/>
         <source>Kp:</source>
         <translation>Kp:</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="506"/>
-        <location filename="../ui/adjustratedlg.ui" line="1012"/>
+        <location filename="../ui/adjustratedlg.ui" line="107"/>
+        <location filename="../ui/adjustratedlg.ui" line="425"/>
+        <location filename="../ui/adjustratedlg.ui" line="1649"/>
         <source>Kd:</source>
         <translation>Kd:</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="556"/>
-        <location filename="../ui/adjustratedlg.ui" line="1062"/>
+        <location filename="../ui/adjustratedlg.ui" line="157"/>
+        <location filename="../ui/adjustratedlg.ui" line="475"/>
+        <location filename="../ui/adjustratedlg.ui" line="1699"/>
         <source>Ki:</source>
         <translation>Ki:</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="606"/>
-        <location filename="../ui/adjustratedlg.ui" line="1112"/>
+        <location filename="../ui/adjustratedlg.ui" line="207"/>
+        <location filename="../ui/adjustratedlg.ui" line="525"/>
+        <location filename="../ui/adjustratedlg.ui" line="1749"/>
         <source>T:</source>
         <translation>T:</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="660"/>
-        <location filename="../ui/adjustratedlg.ui" line="1166"/>
+        <location filename="../ui/adjustratedlg.ui" line="261"/>
+        <location filename="../ui/adjustratedlg.ui" line="579"/>
         <source>Max Rate:</source>
         <translation>Max Rate:</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="710"/>
-        <location filename="../ui/adjustratedlg.ui" line="1216"/>
+        <location filename="../ui/adjustratedlg.ui" line="311"/>
+        <location filename="../ui/adjustratedlg.ui" line="629"/>
         <source>Set Rate:</source>
         <translation>Set Rate:</translation>
     </message>
@@ -227,66 +219,86 @@ g</translation>
         <translation type="obsolete">Stop</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="936"/>
+        <location filename="../ui/adjustratedlg.ui" line="349"/>
         <source>Mid Vale</source>
         <translation>Mid Vale</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="1277"/>
-        <location filename="../ui/adjustratedlg.ui" line="1372"/>
-        <location filename="../ui/adjustratedlg.ui" line="1463"/>
+        <location filename="../ui/adjustratedlg.ui" line="672"/>
+        <source>Big</source>
+        <translation>Big</translation>
+    </message>
+    <message>
+        <location filename="../ui/adjustratedlg.ui" line="679"/>
+        <source>Mid</source>
+        <translation>Mid</translation>
+    </message>
+    <message>
+        <location filename="../ui/adjustratedlg.ui" line="847"/>
+        <source>Start Adjusting</source>
+        <translation>Start Adjusting</translation>
+    </message>
+    <message>
+        <location filename="../ui/adjustratedlg.ui" line="887"/>
+        <location filename="../ui/adjustratedlg.ui" line="982"/>
+        <location filename="../ui/adjustratedlg.ui" line="1073"/>
         <source>Inst</source>
         <translation>Inst</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="1318"/>
-        <location filename="../ui/adjustratedlg.ui" line="1391"/>
-        <location filename="../ui/adjustratedlg.ui" line="1504"/>
+        <location filename="../ui/adjustratedlg.ui" line="928"/>
+        <location filename="../ui/adjustratedlg.ui" line="1001"/>
+        <location filename="../ui/adjustratedlg.ui" line="1114"/>
         <source>Accum</source>
         <translation>Accum</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="1354"/>
+        <location filename="../ui/adjustratedlg.ui" line="964"/>
         <source>DN10</source>
         <translation>DN10</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="1445"/>
+        <location filename="../ui/adjustratedlg.ui" line="1055"/>
         <source>DN3</source>
         <translation>DN3</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="1538"/>
+        <location filename="../ui/adjustratedlg.ui" line="1148"/>
         <source>StdMeterValue</source>
         <translation>StdMeterValue</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="1550"/>
+        <location filename="../ui/adjustratedlg.ui" line="1160"/>
         <source>FlowRate:</source>
         <translation>FlowRate:</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="1572"/>
+        <location filename="../ui/adjustratedlg.ui" line="1182"/>
         <source>Std Meter:</source>
         <translation>Std Meter:</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="1623"/>
+        <location filename="../ui/adjustratedlg.ui" line="1233"/>
         <source>L</source>
         <translation>L</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/adjustratedlg.ui" line="1636"/>
+        <location filename="../ui/adjustratedlg.ui" line="1246"/>
         <source>m³/h</source>
         <translation>m³/h</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="1686"/>
+        <location filename="../ui/adjustratedlg.ui" line="1575"/>
+        <source>Pump Pid Params</source>
+        <translation>Pump Pid Params</translation>
+    </message>
+    <message>
+        <location filename="../ui/adjustratedlg.ui" line="1872"/>
         <source>ParaSet</source>
         <translation>ParaSet</translation>
     </message>
     <message>
-        <location filename="../ui/adjustratedlg.ui" line="1711"/>
+        <location filename="../ui/adjustratedlg.ui" line="1897"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>

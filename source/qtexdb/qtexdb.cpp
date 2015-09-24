@@ -907,6 +907,15 @@ int insertPidRec(PIDDataPtr pidPtr)
 	sql.append("pid_P, ");
 	sql.append("pid_I, ");
 	sql.append("pid_D, ");
+	sql.append("pid_adjust_valve, ");
+	sql.append("pid_adjust_pump, ");
+	sql.append("pid_pump_Kp, ");
+	sql.append("pid_pump_Ki, ");
+	sql.append("pid_pump_Kd, ");
+	sql.append("pid_pump_waitTime, ");
+	sql.append("pid_pump_P, ");
+	sql.append("pid_pump_I, ");
+	sql.append("pid_pump_D, ");
 	sql.append("pid_pumpFreq");
 	sql.append(") ");
 	sql.append("values");
@@ -927,6 +936,15 @@ int insertPidRec(PIDDataPtr pidPtr)
 	sql.append(QString("%1, ").arg(pidPtr->pid_P, 6, 'g', 6));
 	sql.append(QString("%1, ").arg(pidPtr->pid_I, 6, 'g', 6));
 	sql.append(QString("%1, ").arg(pidPtr->pid_D, 6, 'g', 6));
+	sql.append(QString("%1, ").arg(pidPtr->pid_adjust_valve, 0, 10));
+	sql.append(QString("%1, ").arg(pidPtr->pid_adjust_pump, 0, 10));
+	sql.append(QString("%1, ").arg(pidPtr->pid_pump_Kp, 6, 'g', 6));
+	sql.append(QString("%1, ").arg(pidPtr->pid_pump_Ki, 6, 'g', 6));
+	sql.append(QString("%1, ").arg(pidPtr->pid_pump_Kd, 6, 'g', 6));
+	sql.append(QString("%1, ").arg(pidPtr->pid_pump_waitTime, 0, 10));
+	sql.append(QString("%1, ").arg(pidPtr->pid_pump_P, 6, 'g', 6));
+	sql.append(QString("%1, ").arg(pidPtr->pid_pump_I, 6, 'g', 6));
+	sql.append(QString("%1, ").arg(pidPtr->pid_pump_D, 6, 'g', 6));
 	sql.append(QString("%1").arg(pidPtr->pid_pumpFreq, 0, 10));
 	sql.append(")");//end
 

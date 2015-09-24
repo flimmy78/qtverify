@@ -633,6 +633,17 @@ typedef struct PIDData
 	float   pid_P;
 	float   pid_I;
 	float	pid_D;
+
+	int pid_adjust_valve;//当前正在调节电动阀门(0, 没有; 1, 有)
+	int pid_adjust_pump ;//当前正在调节水泵频率(0, 没有; 1, 有)
+	float   pid_pump_Kp;
+	float   pid_pump_Ki;
+	float	pid_pump_Kd;
+	float   pid_pump_P;
+	float   pid_pump_I;
+	float	pid_pump_D;
+	int		pid_pump_waitTime;
+
 	int		pid_pumpFreq;
 }PIDDataStr;
 typedef PIDDataStr* PIDDataPtr;

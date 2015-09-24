@@ -243,7 +243,6 @@ void AdjustRateDlg::initControlCom()
 	/*****************************************************************************************************/
 	m_openRegulateTimes = 0;
 	m_pidDataPtr = new PIDDataStr;
-	memset(m_pidDataPtr, 0, sizeof(PIDDataStr));
 	m_pre_error = 0.0;
 	m_integral = 0.0;
 	ui.lnEditTargetRate_big->setReadOnly(false);
@@ -274,6 +273,11 @@ void AdjustRateDlg::initLineEdits()
 	ui.lnEditCycleTime_mid->setValidator(validator);
 	ui.lnEditMaxRate_mid->setValidator(validator);
 	ui.lnEditTargetRate_mid->setValidator(validator);
+
+	ui.lnEditKp_pump->setValidator(validator);
+	ui.lnEditKi_pump->setValidator(validator);
+	ui.lnEditKd_pump->setValidator(validator);
+	ui.lnEditCycleTime_pump->setValidator(validator);
 }
 
 void AdjustRateDlg::savePidParams()
@@ -296,6 +300,11 @@ void AdjustRateDlg::savePidParams()
 	m_pidConfig->setValue("nowRegNo", m_nowRegNo);
 	m_pidConfig->setValue("valve_big", ui.rBtn_big->isChecked());
 	m_pidConfig->setValue("valve_mid", ui.rBtn_mid->isChecked());
+
+	m_pidConfig->setValue("Kp_pump",ui.lnEditKp_pump->text());
+	m_pidConfig->setValue("Ki_pump",ui.lnEditKi_pump->text());
+	m_pidConfig->setValue("Kd_pump",ui.lnEditKd_pump->text());
+	m_pidConfig->setValue("CycleTime_pump",ui.lnEditCycleTime_pump->text());
 }
 
 void AdjustRateDlg::installPidParams()
@@ -313,6 +322,16 @@ void AdjustRateDlg::installPidParams()
 	ui.lnEditCycleTime_mid->setText(m_pidConfig->value("CycleTime_mid").toString());
 	ui.lnEditMaxRate_mid->setText(m_pidConfig->value("maxrate_mid").toString());
 	ui.lnEditTargetRate_mid->setText(m_pidConfig->value("targetrate_mid").toString());
+
+	ui.lnEditKp_pump->setText(m_pidConfig->value("Kp_pump").toString());
+	ui.lnEditKi_pump->setText(m_pidConfig->value("Ki_pump").toString());
+	ui.lnEditKd_pump->setText(m_pidConfig->value("Kd_pump").toString());
+	ui.lnEditCycleTime_pump->setText(m_pidConfig->value("CycleTime_pump").toString());
+
+	m_pumpKp = m_pidConfig->value("Kp_pump").toFloat();
+	m_pumpKi = m_pidConfig->value("Ki_pump").toFloat();
+	m_pumpKd = m_pidConfig->value("Kd_pump").toFloat();
+	m_pumpCycleTime = m_pidConfig->value("CycleTime_pump").toInt();
 
 	m_pumpFreq = m_pidConfig->value("pumpFreq").toInt();
 	ui.spinBoxFreq->setValue(m_pumpFreq);
@@ -388,6 +407,20 @@ void AdjustRateDlg::on_btnStartSet_clicked()
 	openPump();//打开水泵
 	qDebug() <<"$$$$$$$$$$$$$$$$$$$ starting m_setRegularTimer $$$$$$$$$$$$$$$$$$$";
 	m_gainPreciseTimes = 0;
+
+	memset(m_pidDataPtr, 0, sizeof(PIDDataStr));
+	m_pidDataPtr->pid_Kp			   = m_Kp;
+	m_pidDataPtr->pid_Ki			   = m_Ki;
+	m_pidDataPtr->pid_Kd			   = m_Kd;
+	m_pidDataPtr->pid_waitTime	   = m_pickCycleTime;
+	m_pidDataPtr->pid_targetRate   = m_targetRate;
+	m_pidDataPtr->pid_timestamp    = m_timeStamp;
+	m_pidDataPtr->pid_maxRate	   = m_maxRate;
+	m_pidDataPtr->pid_regularNo	   = m_nowRegNo;
+	m_pidDataPtr->pid_pumpFreq = m_pumpFreq;
+	m_pidDataPtr->pid_adjust_valve = true;
+	m_pidDataPtr->pid_adjust_pump  = false;
+
 	slotSetRegulate();//设定后立即调整一次
 	m_elapsetime.start();//开启调速计时
 	m_setRegularTimer->start(m_pickCycleTime);
@@ -409,6 +442,11 @@ void AdjustRateDlg::forbidInputParams()
 	ui.lnEditCycleTime_mid->setEnabled(false);
 	ui.lnEditMaxRate_mid->setEnabled(false);
 	ui.lnEditTargetRate_mid->setEnabled(false);
+
+	ui.lnEditKp_pump->setEnabled(false);
+	ui.lnEditKi_pump->setEnabled(false);
+	ui.lnEditKd_pump->setEnabled(false);
+	ui.lnEditCycleTime_pump->setEnabled(false);
 }
 
 void AdjustRateDlg::slotSetRegulate()
@@ -429,22 +467,18 @@ void AdjustRateDlg::slotSetRegulate()
 		if (m_gainPreciseTimes>GAIN_TARGET_TIMES)
 		{
 			stopSetRegularTimer();
+			ui.btnStartSet->setEnabled(true);
 		}
 	}
 	else
 		m_gainPreciseTimes = 0;//只要有一次未达到目标流速, 就认为当前设定还不稳定, 清空计数器
 
-	m_pidDataPtr->pid_timestamp    = m_timeStamp;
-	m_pidDataPtr->pid_maxRate	   = m_maxRate;
+
 	m_pidDataPtr->pid_currentRate  = currentRate;
-	m_pidDataPtr->pid_targetRate   = m_targetRate;
 	m_pidDataPtr->pid_currentError = currentRate - m_targetRate;
-	m_pidDataPtr->pid_regularNo	   = m_nowRegNo;
-	m_pidDataPtr->pid_waitTime	   = m_pickCycleTime;
 	m_pidDataPtr->pid_currentDegree= m_degree;
 	m_pidDataPtr->pid_gainTargetRate = 	m_ifGainTargetRate;
 	m_pidDataPtr->pid_nowErrorPercent = ((currentRate - m_targetRate)/m_targetRate)*100;
-	m_pidDataPtr->pid_pumpFreq = m_pumpFreq;
 	insertPidRec(m_pidDataPtr);
 	qDebug() << "+++++++++++++++++regular set end+++++++++++++++++";
 
@@ -452,19 +486,21 @@ void AdjustRateDlg::slotSetRegulate()
 	if (elapMinutes>ADJUST_MINUTES)//如果十分钟还没调节好流速, 则停止调节阀门, 改为调节频率
 	{
 		stopSetRegularTimer();
-		m_pumpKp        = 0.77;
-		m_pumpKi        = 0.55;
-		m_pumpKd        = 0.0;
-		m_pumpCycleTime = 2000;
 
 		m_prePumpErr       = 0.0;
 		m_pumpIntegral     = 0.0;
 		m_gainPreciseTimes = 0;
 
+		m_pidDataPtr->pid_adjust_valve = false;
+		m_pidDataPtr->pid_adjust_pump  = true;
+		m_pidDataPtr->pid_pump_Kp = m_pumpKp;
+		m_pidDataPtr->pid_pump_Ki = m_pumpKi;
+		m_pidDataPtr->pid_pump_Kd = m_pumpKd;
+		m_pidDataPtr->pid_pump_waitTime = m_pumpCycleTime;
+
 		m_setPumpTimer = new QTimer();
 		connect(m_setPumpTimer, SIGNAL(timeout()), this, SLOT(slotSetPumpFreq()));
 
-		m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz");
 		m_setPumpTimer->start(m_pumpCycleTime);
 	}
 }
@@ -484,9 +520,7 @@ int AdjustRateDlg::degreeGet(float currentRate, float targetRate)
 	{
 		outdegree = 99;
 	}
-	m_pidDataPtr->pid_Kp = m_Kp;
-	m_pidDataPtr->pid_Ki = m_Ki;
-	m_pidDataPtr->pid_Kd = m_Kd;
+
 	m_pidDataPtr->pid_P = m_Kp*m_curr_error;
 	m_pidDataPtr->pid_I = m_Ki*m_integral;
 	m_pidDataPtr->pid_D = m_Kd*derivative;
@@ -512,6 +546,7 @@ void AdjustRateDlg::slotSetPumpFreq()
 		if (m_gainPreciseTimes>GAIN_TARGET_TIMES)
 		{
 			m_setPumpTimer->stop();
+			ui.btnStartSet->setEnabled(true);
 			qDebug() << "pump setting is stopped";
 		}
 	}
@@ -555,12 +590,9 @@ void AdjustRateDlg::freqGet(float currentRate, float targetRate)
 	m_pumpFreq =  (int)(output > 15 ? output: 15);
 	m_pumpFreq = (m_pumpFreq <= 45) ? m_pumpFreq : 45;
 
-	m_pidDataPtr->pid_Kp = m_Kp;
-	m_pidDataPtr->pid_Ki = m_Ki;
-	m_pidDataPtr->pid_Kd = m_Kd;
-	m_pidDataPtr->pid_P  = m_Kp*m_curr_error;
-	m_pidDataPtr->pid_I  = m_Ki*m_integral;
-	m_pidDataPtr->pid_D  = m_Kd*derivative;
+	m_pidDataPtr->pid_pump_P = pumpP;
+	m_pidDataPtr->pid_pump_I = pumpI;
+	m_pidDataPtr->pid_pump_D = pumpD;
 }
 
 void AdjustRateDlg::stopSetRegularTimer()
@@ -817,7 +849,7 @@ void AdjustRateDlg::on_btnSopSet_clicked()
 	closeValve(m_portsetinfo.waterOutNo);
 
 	enableInputParams();
-	ui.btnStartSet->setEnabled(false);
+	ui.btnStartSet->setEnabled(true);
 }
 
 void AdjustRateDlg::enableInputParams()
@@ -835,6 +867,11 @@ void AdjustRateDlg::enableInputParams()
 	ui.lnEditCycleTime_mid->setEnabled(true);
 	ui.lnEditMaxRate_mid->setEnabled(true);
 	ui.lnEditTargetRate_mid->setEnabled(true);
+
+	ui.lnEditKp_pump->setEnabled(true);
+	ui.lnEditKi_pump->setEnabled(true);
+	ui.lnEditKd_pump->setEnabled(true);
+	ui.lnEditCycleTime_pump->setEnabled(true);
 }
 
 //设置频率
