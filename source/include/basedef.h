@@ -618,6 +618,36 @@ typedef Cmb_Verify_Record_STR* Cmb_Verify_Record_PTR;
 class PIDDataStr
 {
 public:
+	PIDDataStr()
+	{
+		pid_timestamp.clear();
+		pid_maxRate = 0;
+		pid_targetRate = 0;
+		pid_currentRate = 0;
+		pid_currentError = 0;
+		pid_regularNo = 0;
+		pid_waitTime = 0;
+		pid_currentDegree = 0;
+		pid_gainTargetRate = false;
+		pid_nowErrorPercent = 0;
+		pid_Kp = 0;
+		pid_Ki = 0;
+		pid_Kd = 0;
+		pid_P = 0;
+		pid_I = 0;
+		pid_D = 0;
+		pid_adjust_valve = false;//当前正在调节电动阀门(0, 没有 = 0; 1, 有)
+		pid_adjust_pump  = false;//当前正在调节水泵频率(0, 没有 = 0; 1, 有)
+		pid_pump_Kp = 0;
+		pid_pump_Ki = 0;
+		pid_pump_Kd = 0;
+		pid_pump_P = 0;
+		pid_pump_I = 0;
+		pid_pump_D = 0;
+		pid_pump_waitTime = 0;
+		pid_pumpFreq = 0;	
+	};
+
 	QString pid_timestamp;
 	float   pid_maxRate;
 	float   pid_targetRate;
@@ -635,8 +665,8 @@ public:
 	float   pid_I;
 	float	pid_D;
 
-	int pid_adjust_valve;//当前正在调节电动阀门(0, 没有; 1, 有)
-	int pid_adjust_pump ;//当前正在调节水泵频率(0, 没有; 1, 有)
+	bool pid_adjust_valve;//当前正在调节电动阀门
+	bool pid_adjust_pump ;//当前正在调节水泵频率
 	float   pid_pump_Kp;
 	float   pid_pump_Ki;
 	float	pid_pump_Kd;

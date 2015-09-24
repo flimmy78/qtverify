@@ -256,7 +256,7 @@ void AdjustRateDlg::initAdjustParams()
 	initLineEdits();
 	 
 	m_pidDataPtr = NULL;
-	m_pidDataPtr = new PIDDataStr;
+	m_pidDataPtr = new PIDDataStr();
 
 	m_btnGroupValve = NULL;
 	initBtnGroup();
@@ -421,7 +421,6 @@ void AdjustRateDlg::on_btnStartSet_clicked()
 	qDebug() <<"$$$$$$$$$$$$$$$$$$$ starting m_setRegularTimer $$$$$$$$$$$$$$$$$$$";
 	m_gainPreciseTimes = 0;
 
-	//memset(m_pidDataPtr, 0, sizeof(PIDDataStr));
 	m_pidDataPtr->pid_Kp			   = m_Kp;
 	m_pidDataPtr->pid_Ki			   = m_Ki;
 	m_pidDataPtr->pid_Kd			   = m_Kd;
