@@ -31,10 +31,11 @@ class ReadComConfig;
 ** 功能：调节流速
 */
 
-#define PRECISION (0.03*targetRate)//流速设定误差限
+#define PRECISION (0.03*m_targetRate)//流速设定误差限
 #define BIG_RBTN 0
 #define MID_RBTN 1
 #define GAIN_TARGET_TIMES 10//如果达到目标误差限的次数大于此数, 则认为调整成功, 停止调整流速
+#define ADJUST_MINUTES 10//调节流速用掉的时间
 
 class ADJUSTRATEDLG_EXPORT AdjustRateDlg : public QWidget
 {
@@ -129,6 +130,7 @@ private:
 	/******************标准流量计end***************************/
 
 	/*******************电动调节阀******************************/
+	QSettings *m_pidConfig;
 	QButtonGroup *m_btnGroupValve;
 
 	QRegExp m_rx;
@@ -141,7 +143,6 @@ private:
 	float m_curr_error;
 	float m_integral;
 	int m_degree;
-	int m_pumpFreq;
 	int m_openRegulateTimes;
 
 	float m_Kp;
@@ -163,11 +164,24 @@ private:
 	void installPidParams();
 	void initLineEdits();
 	void initBtnGroup();
+	void forbidInputParams();
+	void enableInputParams();
 	/******************电动调节阀end************************/
 
 	/******************调节水泵***************************/
 	QTimer *m_setPumpTimer;
-	
+	float m_pumpKp;
+	float m_pumpKi;
+	float m_pumpKd;
+	int m_pumpCycleTime;
+
+	int m_pumpFreq;
+
+	float m_prePumpErr;
+	float m_curPumpErr;
+	float m_pumpIntegral;
+
+	void freqGet(float, float);
 	/******************调节水泵end************************/
 
 
@@ -182,6 +196,8 @@ private slots:
 
 	/*******************电动调节阀******************************/
 	void slotSetRegulate();
+	void slotSetPumpFreq();
+
 	void openPump();
 	void closePump();
 	int openValve(UINT8 portno);

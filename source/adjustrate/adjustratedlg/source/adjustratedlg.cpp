@@ -28,6 +28,8 @@ AdjustRateDlg::AdjustRateDlg(QWidget *parent, Qt::WFlags flags)
 	ui.setupUi(this);
 	m_stdParam = new QSettings(getFullIniFileName("stdmtrparaset.ini"), QSettings::IniFormat);
 	m_rx.setPattern("\\d+(\\.\\d+)?");
+	m_pidConfig = NULL;
+	m_pidConfig = new QSettings(getFullIniFileName("pidParameter.ini"), QSettings::IniFormat);
 }
 
 AdjustRateDlg::~AdjustRateDlg()
@@ -54,7 +56,6 @@ void AdjustRateDlg::showEvent(QShowEvent *event)
 
 	m_controlObj = NULL;
 	initControlCom();		//初始化控制串口
-
 	/********************************************/
 	m_instantFlowCom = NULL;
 	m_instSTDMeterTimer = NULL;
@@ -160,6 +161,18 @@ void AdjustRateDlg::closeEvent( QCloseEvent * event)
 		delete m_btnGroupValve;
 		m_btnGroupValve = NULL;
 	}
+
+	if (m_pidConfig)
+	{
+		delete m_pidConfig;
+		m_pidConfig = NULL;
+	}
+
+	if (m_setPumpTimer)
+	{
+		delete m_setPumpTimer;
+		m_setPumpTimer = NULL;
+	}
 	/*****************************************************/
 }
 
@@ -230,6 +243,7 @@ void AdjustRateDlg::initControlCom()
 	/*****************************************************************************************************/
 	m_openRegulateTimes = 0;
 	m_pidDataPtr = new PIDDataStr;
+	memset(m_pidDataPtr, 0, sizeof(PIDDataStr));
 	m_pre_error = 0.0;
 	m_integral = 0.0;
 	ui.lnEditTargetRate_big->setReadOnly(false);
@@ -238,6 +252,7 @@ void AdjustRateDlg::initControlCom()
 	initLineEdits();
 	m_btnGroupValve = NULL;
 	initBtnGroup();
+	m_setPumpTimer = NULL;
 	m_setRegularTimer = new QTimer;
 	connect(m_setRegularTimer, SIGNAL(timeout()), this, SLOT(slotSetRegulate()));
 	/*****************************************************************************************************/
@@ -263,53 +278,67 @@ void AdjustRateDlg::initLineEdits()
 
 void AdjustRateDlg::savePidParams()
 {
-	QSettings pidConfig(getFullIniFileName("pidParameter.ini"), QSettings::IniFormat);
+	m_pidConfig->setValue("Kp_big",ui.lnEditKp_big->text());
+	m_pidConfig->setValue("Ki_big",ui.lnEditKi_big->text());
+	m_pidConfig->setValue("Kd_big",ui.lnEditKd_big->text());
+	m_pidConfig->setValue("CycleTime_big",ui.lnEditCycleTime_big->text());
+	m_pidConfig->setValue("maxrate_big", ui.lnEditMaxRate_big->text());
+	m_pidConfig->setValue("targetrate_big", ui.lnEditTargetRate_big->text());
 
-	pidConfig.setValue("Kp_big",ui.lnEditKp_big->text());
-	pidConfig.setValue("Ki_big",ui.lnEditKi_big->text());
-	pidConfig.setValue("Kd_big",ui.lnEditKd_big->text());
-	pidConfig.setValue("CycleTime_big",ui.lnEditCycleTime_big->text());
-	pidConfig.setValue("maxrate_big", ui.lnEditMaxRate_big->text());
-	pidConfig.setValue("targetrate_big", ui.lnEditTargetRate_big->text());
+	m_pidConfig->setValue("Kp_mid",ui.lnEditKp_mid->text());
+	m_pidConfig->setValue("Ki_mid",ui.lnEditKi_mid->text());
+	m_pidConfig->setValue("Kd_mid",ui.lnEditKd_mid->text());
+	m_pidConfig->setValue("CycleTime_mid",ui.lnEditCycleTime_mid->text());
+	m_pidConfig->setValue("maxrate_mid", ui.lnEditMaxRate_mid->text());
+	m_pidConfig->setValue("targetrate_mid", ui.lnEditTargetRate_mid->text());
 
-	pidConfig.setValue("Kp_mid",ui.lnEditKp_mid->text());
-	pidConfig.setValue("Ki_mid",ui.lnEditKi_mid->text());
-	pidConfig.setValue("Kd_mid",ui.lnEditKd_mid->text());
-	pidConfig.setValue("CycleTime_mid",ui.lnEditCycleTime_mid->text());
-	pidConfig.setValue("maxrate_mid", ui.lnEditMaxRate_mid->text());
-	pidConfig.setValue("targetrate_mid", ui.lnEditTargetRate_mid->text());
-
-	pidConfig.setValue("pumpFreq", ui.spinBoxFreq->value());
-
-	pidConfig.setValue("nowRegNo", m_nowRegNo);
-	pidConfig.setValue("valve_big", ui.rBtn_big->isChecked());
-	pidConfig.setValue("valve_mid", ui.rBtn_mid->isChecked());
+	m_pidConfig->setValue("pumpFreq", ui.spinBoxFreq->value());
+	m_pidConfig->setValue("nowRegNo", m_nowRegNo);
+	m_pidConfig->setValue("valve_big", ui.rBtn_big->isChecked());
+	m_pidConfig->setValue("valve_mid", ui.rBtn_mid->isChecked());
 }
 
 void AdjustRateDlg::installPidParams()
 {
-   QSettings pidConfig(getFullIniFileName("pidParameter.ini"), QSettings::IniFormat);
+	ui.lnEditKp_big->setText(m_pidConfig->value("Kp_big").toString());
+	ui.lnEditKi_big->setText(m_pidConfig->value("Ki_big").toString());
+	ui.lnEditKd_big->setText(m_pidConfig->value("Kd_big").toString());
+	ui.lnEditCycleTime_big->setText(m_pidConfig->value("CycleTime_big").toString());
+	ui.lnEditMaxRate_big->setText(m_pidConfig->value("maxrate_big").toString());
+	ui.lnEditTargetRate_big->setText(m_pidConfig->value("targetrate_big").toString());
 
-	ui.lnEditKp_big->setText(pidConfig.value("Kp_big").toString());
-	ui.lnEditKi_big->setText(pidConfig.value("Ki_big").toString());
-	ui.lnEditKd_big->setText(pidConfig.value("Kd_big").toString());
-	ui.lnEditCycleTime_big->setText(pidConfig.value("CycleTime_big").toString());
-	ui.lnEditMaxRate_big->setText(pidConfig.value("maxrate_big").toString());
-	ui.lnEditTargetRate_big->setText(pidConfig.value("targetrate_big").toString());
+	ui.lnEditKp_mid->setText(m_pidConfig->value("Kp_mid").toString());
+	ui.lnEditKi_mid->setText(m_pidConfig->value("Ki_mid").toString());
+	ui.lnEditKd_mid->setText(m_pidConfig->value("Kd_mid").toString());
+	ui.lnEditCycleTime_mid->setText(m_pidConfig->value("CycleTime_mid").toString());
+	ui.lnEditMaxRate_mid->setText(m_pidConfig->value("maxrate_mid").toString());
+	ui.lnEditTargetRate_mid->setText(m_pidConfig->value("targetrate_mid").toString());
 
-	ui.lnEditKp_mid->setText(pidConfig.value("Kp_mid").toString());
-	ui.lnEditKi_mid->setText(pidConfig.value("Ki_mid").toString());
-	ui.lnEditKd_mid->setText(pidConfig.value("Kd_mid").toString());
-	ui.lnEditCycleTime_mid->setText(pidConfig.value("CycleTime_mid").toString());
-	ui.lnEditMaxRate_mid->setText(pidConfig.value("maxrate_mid").toString());
-	ui.lnEditTargetRate_mid->setText(pidConfig.value("targetrate_mid").toString());
-
-	m_pumpFreq = pidConfig.value("pumpFreq").toInt();
+	m_pumpFreq = m_pidConfig->value("pumpFreq").toInt();
 	ui.spinBoxFreq->setValue(m_pumpFreq);
 
-	m_nowRegNo = pidConfig.value("nowRegNo").toInt();
-	ui.rBtn_big->setChecked(pidConfig.value("valve_big").toBool());
-	ui.rBtn_mid->setChecked(pidConfig.value("valve_mid").toBool());
+	m_nowRegNo = m_pidConfig->value("nowRegNo").toInt();
+	ui.rBtn_big->setChecked(m_pidConfig->value("valve_big").toBool());
+	ui.rBtn_mid->setChecked(m_pidConfig->value("valve_mid").toBool());
+
+	if (m_pidConfig->value("valve_big").toBool())
+	{
+		m_Kp = m_pidConfig->value("Kp_big").toFloat();
+		m_Ki = m_pidConfig->value("Ki_big").toFloat();
+		m_Kd = m_pidConfig->value("Kd_big").toFloat();
+		m_pickCycleTime = m_pidConfig->value("CycleTime_big").toInt();
+		m_maxRate = m_pidConfig->value("maxrate_big").toFloat();
+		m_targetRate = m_pidConfig->value("targetrate_big").toFloat();
+	}
+	else
+	{
+		m_Kp = m_pidConfig->value("Kp_mid").toFloat();
+		m_Ki = m_pidConfig->value("Ki_mid").toFloat();
+		m_Kd = m_pidConfig->value("Kd_mid").toFloat();
+		m_pickCycleTime = m_pidConfig->value("CycleTime_mid").toInt();
+		m_maxRate = m_pidConfig->value("maxrate_mid").toFloat();
+		m_targetRate = m_pidConfig->value("targetrate_mid").toFloat();
+	}
 }
 
 void AdjustRateDlg::initBtnGroup()
@@ -348,6 +377,7 @@ void AdjustRateDlg::slotValveClicked(int idx)
 
 void AdjustRateDlg::on_btnStartSet_clicked()
 {
+	forbidInputParams();
 	stopSetRegularTimer();
 	m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
 	if(m_nowRegNo == m_portsetinfo.regflow1No)
@@ -357,21 +387,36 @@ void AdjustRateDlg::on_btnStartSet_clicked()
 
 	openPump();//打开水泵
 	qDebug() <<"$$$$$$$$$$$$$$$$$$$ starting m_setRegularTimer $$$$$$$$$$$$$$$$$$$";
+	m_gainPreciseTimes = 0;
 	slotSetRegulate();//设定后立即调整一次
 	m_elapsetime.start();//开启调速计时
 	m_setRegularTimer->start(m_pickCycleTime);
+	ui.btnStartSet->setEnabled(false);
+}
+
+void AdjustRateDlg::forbidInputParams()
+{
+	ui.lnEditKp_big->setEnabled(false);
+	ui.lnEditKi_big->setEnabled(false);
+	ui.lnEditKd_big->setEnabled(false);
+	ui.lnEditCycleTime_big->setEnabled(false);
+	ui.lnEditMaxRate_big->setEnabled(false);
+	ui.lnEditTargetRate_big->setEnabled(false);
+
+	ui.lnEditKp_mid->setEnabled(false);
+	ui.lnEditKi_mid->setEnabled(false);
+	ui.lnEditKd_mid->setEnabled(false);
+	ui.lnEditCycleTime_mid->setEnabled(false);
+	ui.lnEditMaxRate_mid->setEnabled(false);
+	ui.lnEditTargetRate_mid->setEnabled(false);
 }
 
 void AdjustRateDlg::slotSetRegulate()
 {
-	this->setRegulate(ui.lcdStdMeterFlowRate->value(), m_targetRate);
-}
-
-void AdjustRateDlg::setRegulate(float currentRate, float targetRate)
-{
-	qDebug() << "+++++++++++++++++new set+++++++++++++++++";
-	float deltaV = qAbs(targetRate - currentRate);
-	m_degree =degreeGet(currentRate, targetRate);
+	qDebug() << "+++++++++++++++++set regular+++++++++++++++++";
+	float currentRate = ui.lcdStdMeterFlowRate->value();
+	float deltaV = qAbs(m_targetRate - currentRate);
+	m_degree =degreeGet(currentRate, m_targetRate);
 	qDebug() << "current degree: " << m_degree;
 	m_controlObj->askControlRegulate(m_nowRegNo, m_degree);
 	m_ifGainTargetRate = false;
@@ -379,21 +424,49 @@ void AdjustRateDlg::setRegulate(float currentRate, float targetRate)
 	{
 		qDebug() << "######################gain target rate######################";
 		m_ifGainTargetRate = true;
+		m_gainPreciseTimes++;
+		//如果*连续*达到目标流速的次数大于设定的次数, 则停止调整流速
+		if (m_gainPreciseTimes>GAIN_TARGET_TIMES)
+		{
+			stopSetRegularTimer();
+		}
 	}
+	else
+		m_gainPreciseTimes = 0;//只要有一次未达到目标流速, 就认为当前设定还不稳定, 清空计数器
 
 	m_pidDataPtr->pid_timestamp    = m_timeStamp;
 	m_pidDataPtr->pid_maxRate	   = m_maxRate;
 	m_pidDataPtr->pid_currentRate  = currentRate;
-	m_pidDataPtr->pid_targetRate   = targetRate;
-	m_pidDataPtr->pid_currentError = currentRate - targetRate;
+	m_pidDataPtr->pid_targetRate   = m_targetRate;
+	m_pidDataPtr->pid_currentError = currentRate - m_targetRate;
 	m_pidDataPtr->pid_regularNo	   = m_nowRegNo;
 	m_pidDataPtr->pid_waitTime	   = m_pickCycleTime;
 	m_pidDataPtr->pid_currentDegree= m_degree;
 	m_pidDataPtr->pid_gainTargetRate = 	m_ifGainTargetRate;
-	m_pidDataPtr->pid_nowErrorPercent = ((currentRate - targetRate)/targetRate)*100;
+	m_pidDataPtr->pid_nowErrorPercent = ((currentRate - m_targetRate)/m_targetRate)*100;
 	m_pidDataPtr->pid_pumpFreq = m_pumpFreq;
 	insertPidRec(m_pidDataPtr);
-	qDebug() << "+++++++++++++++++new set end+++++++++++++++++";
+	qDebug() << "+++++++++++++++++regular set end+++++++++++++++++";
+
+	int elapMinutes = m_elapsetime.elapsed()/60000;
+	if (elapMinutes>ADJUST_MINUTES)//如果十分钟还没调节好流速, 则停止调节阀门, 改为调节频率
+	{
+		stopSetRegularTimer();
+		m_pumpKp        = 0.77;
+		m_pumpKi        = 0.55;
+		m_pumpKd        = 0.0;
+		m_pumpCycleTime = 2000;
+
+		m_prePumpErr       = 0.0;
+		m_pumpIntegral     = 0.0;
+		m_gainPreciseTimes = 0;
+
+		m_setPumpTimer = new QTimer();
+		connect(m_setPumpTimer, SIGNAL(timeout()), this, SLOT(slotSetPumpFreq()));
+
+		m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz");
+		m_setPumpTimer->start(m_pumpCycleTime);
+	}
 }
 
 int AdjustRateDlg::degreeGet(float currentRate, float targetRate)
@@ -419,6 +492,75 @@ int AdjustRateDlg::degreeGet(float currentRate, float targetRate)
 	m_pidDataPtr->pid_D = m_Kd*derivative;
 
 	return outdegree;
+}
+
+void AdjustRateDlg::slotSetPumpFreq()
+{
+	qDebug() << "+++++++++++++++++set pump+++++++++++++++++";
+	float currentRate = ui.lcdStdMeterFlowRate->value();
+	float deltaV = qAbs(m_targetRate - currentRate);
+	freqGet(currentRate, m_targetRate);
+	qDebug() << "current pumpFreq: " << m_pumpFreq;
+	m_controlObj->askSetDriverFreq(m_pumpFreq);
+	m_ifGainTargetRate = false;
+	if (deltaV <= PRECISION)
+	{
+		qDebug() << "######################gain target rate######################";
+		m_ifGainTargetRate = true;
+		m_gainPreciseTimes++;
+		//如果*连续*达到目标流速的次数大于设定的次数, 则停止调整流速
+		if (m_gainPreciseTimes>GAIN_TARGET_TIMES)
+		{
+			m_setPumpTimer->stop();
+			qDebug() << "pump setting is stopped";
+		}
+	}
+	else
+		m_gainPreciseTimes = 0;//只要有一次未达到目标流速, 就认为当前设定还不稳定, 清空计数器
+
+	m_pidDataPtr->pid_timestamp       = m_timeStamp;
+	m_pidDataPtr->pid_maxRate	      = m_maxRate;
+	m_pidDataPtr->pid_currentRate     = currentRate;
+	m_pidDataPtr->pid_targetRate      = m_targetRate;
+	m_pidDataPtr->pid_currentError    = currentRate - m_targetRate;
+	m_pidDataPtr->pid_regularNo	      = m_nowRegNo;
+	m_pidDataPtr->pid_waitTime	      = m_pickCycleTime;
+	m_pidDataPtr->pid_currentDegree   = m_degree;
+	m_pidDataPtr->pid_gainTargetRate  = 	m_ifGainTargetRate;
+	m_pidDataPtr->pid_nowErrorPercent = ((currentRate - m_targetRate)/m_targetRate)*100;
+	m_pidDataPtr->pid_pumpFreq = m_pumpFreq;
+	insertPidRec(m_pidDataPtr);
+	qDebug() << "+++++++++++++++++pump set end+++++++++++++++++";
+}
+
+void AdjustRateDlg::freqGet(float currentRate, float targetRate)
+{
+	int watSencond = (m_pumpCycleTime/1000);
+
+	m_curPumpErr = targetRate - currentRate;
+	m_pumpIntegral += m_curPumpErr*watSencond;
+	float derivative = (m_curPumpErr - m_prePumpErr)/watSencond;
+
+	float pumpP = m_pumpKp*m_curPumpErr;
+	float pumpI = m_pumpKi*m_pumpIntegral;
+	float pumpD = m_pumpKd*derivative;
+
+	float output = pumpP + pumpI + pumpD;
+	qDebug() << "P:--" <<pumpP<<" I:--"<<pumpI<<" D:--"<<pumpD;
+	qDebug() << "oooooutput: " << output;
+
+	m_prePumpErr = m_curPumpErr;
+
+	//水泵频率最好在15至45之间
+	m_pumpFreq =  (int)(output > 15 ? output: 15);
+	m_pumpFreq = (m_pumpFreq <= 45) ? m_pumpFreq : 45;
+
+	m_pidDataPtr->pid_Kp = m_Kp;
+	m_pidDataPtr->pid_Ki = m_Ki;
+	m_pidDataPtr->pid_Kd = m_Kd;
+	m_pidDataPtr->pid_P  = m_Kp*m_curr_error;
+	m_pidDataPtr->pid_I  = m_Ki*m_integral;
+	m_pidDataPtr->pid_D  = m_Kd*derivative;
 }
 
 void AdjustRateDlg::stopSetRegularTimer()
@@ -673,6 +815,26 @@ void AdjustRateDlg::on_btnSopSet_clicked()
 	closeValve(m_portsetinfo.bigNo);
 	wait(CYCLE_TIME);
 	closeValve(m_portsetinfo.waterOutNo);
+
+	enableInputParams();
+	ui.btnStartSet->setEnabled(false);
+}
+
+void AdjustRateDlg::enableInputParams()
+{
+	ui.lnEditKp_big->setEnabled(true);
+	ui.lnEditKi_big->setEnabled(true);
+	ui.lnEditKd_big->setEnabled(true);
+	ui.lnEditCycleTime_big->setEnabled(true);
+	ui.lnEditMaxRate_big->setEnabled(true);
+	ui.lnEditTargetRate_big->setEnabled(true);
+
+	ui.lnEditKp_mid->setEnabled(true);
+	ui.lnEditKi_mid->setEnabled(true);
+	ui.lnEditKd_mid->setEnabled(true);
+	ui.lnEditCycleTime_mid->setEnabled(true);
+	ui.lnEditMaxRate_mid->setEnabled(true);
+	ui.lnEditTargetRate_mid->setEnabled(true);
 }
 
 //设置频率
