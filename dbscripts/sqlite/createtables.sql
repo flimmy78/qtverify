@@ -722,15 +722,27 @@ CREATE TABLE T_PID_Setting_Record (
 	pid_currentRate float,
 	pid_currentError float,
 	pid_regularNo integer,
-	pid_waitTime integer,
+	
 	pid_currentDegree float,
 	pid_gainTargetRate integer,
 	pid_nowErrorPercent float,
+	pid_waitTime integer,
 	pid_Kp float,
 	pid_Ki float,
 	pid_Kd float,
 	pid_P float,
 	pid_I float,
 	pid_D float,
+	
+	pid_adjust_valve integer, --当前正在调节电动阀门(0, 没有; 1, 有)
+	pid_adjust_pump  integer, --当前正在调节水泵频率(0, 没有; 1, 有)
+	pid_pump_Kp float,
+	pid_pump_Ki float,
+	pid_pump_Kd float,
+	pid_pump_waitTime integer,
+	pid_pump_P float,
+	pid_pump_I float,
+	pid_pump_D float,
+	
 	pid_pumpFreq int
 );
