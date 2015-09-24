@@ -34,8 +34,11 @@ class ReadComConfig;
 #define PRECISION (0.03*m_targetRate)//流速设定误差限
 #define BIG_RBTN 0
 #define MID_RBTN 1
-#define GAIN_TARGET_TIMES 10//如果达到目标误差限的次数大于此数, 则认为调整成功, 停止调整流速
+#define GAIN_TARGET_TIMES (10)//如果达到目标误差限的次数大于此数, 则认为调整成功, 停止调整流速
+#define ONE_MINUTES	(60000)
 #define ADJUST_MINUTES 10//调节流速用掉的时间
+#define PUMP_FREQ_MIN 20
+#define PUMP_FREQ_MAX 49
 
 class ADJUSTRATEDLG_EXPORT AdjustRateDlg : public QWidget
 {
@@ -94,6 +97,26 @@ public slots:
 
 	void on_btnStartSet_clicked();
 	void on_btnSopSet_clicked();
+
+	void on_lnEditKp_big_returnPressed();
+	void on_lnEditKi_big_returnPressed();
+	void on_lnEditKd_big_returnPressed();
+	void on_lnEditCycleTime_big_returnPressed();
+	void on_lnEditMaxRate_big_returnPressed();
+	void on_lnEditTargetRate_big_returnPressed();
+
+	void on_lnEditKp_mid_returnPressed();
+	void on_lnEditKi_mid_returnPressed();
+	void on_lnEditKd_mid_returnPressed();
+	void on_lnEditCycleTime_mid_returnPressed();
+	void on_lnEditMaxRate_mid_returnPressed();
+	void on_lnEditTargetRate_mid_returnPressed();
+
+	void on_lnEditKp_pump_returnPressed();
+	void on_lnEditKi_pump_returnPressed();
+	void on_lnEditKd_pump_returnPressed();
+	void on_lnEditCycleTime_pump_returnPressed();
+
 private:
 	Ui::AdjustVelocityDlgClass ui;
 	/*******************标准流量计******************************/
@@ -130,6 +153,7 @@ private:
 	/******************标准流量计end***************************/
 
 	/*******************电动调节阀******************************/
+	void initAdjustParams();
 	QSettings *m_pidConfig;
 	QButtonGroup *m_btnGroupValve;
 

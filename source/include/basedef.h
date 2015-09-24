@@ -615,8 +615,9 @@ public:
 };
 typedef Cmb_Verify_Record_STR* Cmb_Verify_Record_PTR;
 
-typedef struct PIDData
+class PIDDataStr
 {
+public:
 	QString pid_timestamp;
 	float   pid_maxRate;
 	float   pid_targetRate;
@@ -645,6 +646,6 @@ typedef struct PIDData
 	int		pid_pump_waitTime;
 
 	int		pid_pumpFreq;
-}PIDDataStr;
+};
 typedef PIDDataStr* PIDDataPtr;
 #endif	//BASEDEF_H

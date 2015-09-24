@@ -293,7 +293,7 @@ g</source>
     <message>
         <location filename="../ui/adjustratedlg.ui" line="1897"/>
         <source>Exit</source>
-        <translation>Exit</translation>
+        <translation>退出</translation>
     </message>
 </context>
 </TS>

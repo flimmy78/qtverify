@@ -12,7 +12,7 @@ QMAKE_LIBDIR += \
               $$(ADEHOME)/lib \
               $$(ADEHOME)/bin
            
-LIBS	+= -ladjustratedlg -lqtexdb
+LIBS	+= -ladjustratedlg -lqtexdb -lalgorithm
 
 SOURCES	+= main.cpp
 

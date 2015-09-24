@@ -26,10 +26,6 @@ AdjustRateDlg::AdjustRateDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
 	ui.setupUi(this);
-	m_stdParam = new QSettings(getFullIniFileName("stdmtrparaset.ini"), QSettings::IniFormat);
-	m_rx.setPattern("\\d+(\\.\\d+)?");
-	m_pidConfig = NULL;
-	m_pidConfig = new QSettings(getFullIniFileName("pidParameter.ini"), QSettings::IniFormat);
 }
 
 AdjustRateDlg::~AdjustRateDlg()
@@ -64,6 +60,8 @@ void AdjustRateDlg::showEvent(QShowEvent *event)
 	m_accumulateFlowCom = NULL;
 	m_accumSTDMeterTimer = NULL;
 	initAccumStdCom();//初始化累积流量串口
+	/*********************************************/
+	initAdjustParams();
 	/*********************************************/
 }
 
@@ -239,22 +237,37 @@ void AdjustRateDlg::initControlCom()
 
 	connect(m_controlObj, SIGNAL(controlRelayIsOk(const UINT8 &, const bool &)), this, SLOT(slotSetValveBtnStatus(const UINT8 &, const bool &)));
 	connect(m_controlObj, SIGNAL(controlRegulateIsOk()), this, SLOT(slotSetRegulateOk()));
-	 
-	/*****************************************************************************************************/
+}
+
+void AdjustRateDlg::initAdjustParams()
+{
+	m_stdParam = new QSettings(getFullIniFileName("stdmtrparaset.ini"), QSettings::IniFormat);
+	m_rx.setPattern("\\d+(\\.\\d+)?");
+	m_pidConfig = NULL;
+	m_pidConfig = new QSettings(getFullIniFileName("pidParameter.ini"), QSettings::IniFormat);
+
 	m_openRegulateTimes = 0;
-	m_pidDataPtr = new PIDDataStr;
+
 	m_pre_error = 0.0;
 	m_integral = 0.0;
 	ui.lnEditTargetRate_big->setReadOnly(false);
 	ui.lnEditTargetRate_mid->setReadOnly(false);
 	installPidParams();
 	initLineEdits();
+	 
+	m_pidDataPtr = NULL;
+	m_pidDataPtr = new PIDDataStr;
+
 	m_btnGroupValve = NULL;
 	initBtnGroup();
+
 	m_setPumpTimer = NULL;
+	m_setPumpTimer = new QTimer();
+	connect(m_setPumpTimer, SIGNAL(timeout()), this, SLOT(slotSetPumpFreq()));
+	
+	m_setRegularTimer = NULL;
 	m_setRegularTimer = new QTimer;
 	connect(m_setRegularTimer, SIGNAL(timeout()), this, SLOT(slotSetRegulate()));
-	/*****************************************************************************************************/
 }
 
 void AdjustRateDlg::initLineEdits()
@@ -408,7 +421,7 @@ void AdjustRateDlg::on_btnStartSet_clicked()
 	qDebug() <<"$$$$$$$$$$$$$$$$$$$ starting m_setRegularTimer $$$$$$$$$$$$$$$$$$$";
 	m_gainPreciseTimes = 0;
 
-	memset(m_pidDataPtr, 0, sizeof(PIDDataStr));
+	//memset(m_pidDataPtr, 0, sizeof(PIDDataStr));
 	m_pidDataPtr->pid_Kp			   = m_Kp;
 	m_pidDataPtr->pid_Ki			   = m_Ki;
 	m_pidDataPtr->pid_Kd			   = m_Kd;
@@ -421,8 +434,9 @@ void AdjustRateDlg::on_btnStartSet_clicked()
 	m_pidDataPtr->pid_adjust_valve = true;
 	m_pidDataPtr->pid_adjust_pump  = false;
 
+	m_elapsetime.start();
+	wait(50);//先等待计时器归零, 否则第一次的m_elapsetime.elapsed()会很大
 	slotSetRegulate();//设定后立即调整一次
-	m_elapsetime.start();//开启调速计时
 	m_setRegularTimer->start(m_pickCycleTime);
 	ui.btnStartSet->setEnabled(false);
 }
@@ -463,16 +477,17 @@ void AdjustRateDlg::slotSetRegulate()
 		qDebug() << "######################gain target rate######################";
 		m_ifGainTargetRate = true;
 		m_gainPreciseTimes++;
+		qDebug() << "######################gain target times: "<<m_gainPreciseTimes<<"######################";
 		//如果*连续*达到目标流速的次数大于设定的次数, 则停止调整流速
 		if (m_gainPreciseTimes>GAIN_TARGET_TIMES)
 		{
 			stopSetRegularTimer();
+			enableInputParams();
 			ui.btnStartSet->setEnabled(true);
 		}
 	}
 	else
 		m_gainPreciseTimes = 0;//只要有一次未达到目标流速, 就认为当前设定还不稳定, 清空计数器
-
 
 	m_pidDataPtr->pid_currentRate  = currentRate;
 	m_pidDataPtr->pid_currentError = currentRate - m_targetRate;
@@ -482,13 +497,16 @@ void AdjustRateDlg::slotSetRegulate()
 	insertPidRec(m_pidDataPtr);
 	qDebug() << "+++++++++++++++++regular set end+++++++++++++++++";
 
-	int elapMinutes = m_elapsetime.elapsed()/60000;
-	if (elapMinutes>ADJUST_MINUTES)//如果十分钟还没调节好流速, 则停止调节阀门, 改为调节频率
+
+	int elapMinutes = m_elapsetime.elapsed();
+	qDebug() << "time elapsed: " << m_elapsetime.elapsed();
+
+	if ( elapMinutes > ADJUST_MINUTES*ONE_MINUTES)//如果超过预期时间还没调节好流速, 则停止调节阀门, 改为调节频率
 	{
 		stopSetRegularTimer();
 
 		m_prePumpErr       = 0.0;
-		m_pumpIntegral     = 0.0;
+		m_pumpIntegral     = 20.0;//一开始就把频率设为最小值
 		m_gainPreciseTimes = 0;
 
 		m_pidDataPtr->pid_adjust_valve = false;
@@ -498,9 +516,6 @@ void AdjustRateDlg::slotSetRegulate()
 		m_pidDataPtr->pid_pump_Kd = m_pumpKd;
 		m_pidDataPtr->pid_pump_waitTime = m_pumpCycleTime;
 
-		m_setPumpTimer = new QTimer();
-		connect(m_setPumpTimer, SIGNAL(timeout()), this, SLOT(slotSetPumpFreq()));
-
 		m_setPumpTimer->start(m_pumpCycleTime);
 	}
 }
@@ -509,7 +524,18 @@ int AdjustRateDlg::degreeGet(float currentRate, float targetRate)
 {
 	int watSencond = (m_pickCycleTime/1000);
 	m_curr_error = targetRate - currentRate;
+
 	m_integral += m_curr_error*watSencond;
+	if (m_integral<0)//开度不可能为负数
+	{
+		m_integral = 0;
+	}
+
+	if (m_integral > 99)
+	{
+		m_integral = 99;
+	}
+
 	float derivative = (m_curr_error - m_pre_error)/watSencond;
 	float output = m_Kp*m_curr_error + m_Ki*m_integral + m_Kd*derivative;
 	qDebug() << "P:--" <<m_Kp*m_curr_error<<" I:--"<<m_Ki*m_integral<<" D:--"<<m_Kd*derivative;
@@ -535,6 +561,7 @@ void AdjustRateDlg::slotSetPumpFreq()
 	float deltaV = qAbs(m_targetRate - currentRate);
 	freqGet(currentRate, m_targetRate);
 	qDebug() << "current pumpFreq: " << m_pumpFreq;
+	ui.spinBoxFreq->setValue(m_pumpFreq);
 	m_controlObj->askSetDriverFreq(m_pumpFreq);
 	m_ifGainTargetRate = false;
 	if (deltaV <= PRECISION)
@@ -547,6 +574,7 @@ void AdjustRateDlg::slotSetPumpFreq()
 		{
 			m_setPumpTimer->stop();
 			ui.btnStartSet->setEnabled(true);
+			enableInputParams();
 			qDebug() << "pump setting is stopped";
 		}
 	}
@@ -587,8 +615,8 @@ void AdjustRateDlg::freqGet(float currentRate, float targetRate)
 	m_prePumpErr = m_curPumpErr;
 
 	//水泵频率最好在15至45之间
-	m_pumpFreq =  (int)(output > 15 ? output: 15);
-	m_pumpFreq = (m_pumpFreq <= 45) ? m_pumpFreq : 45;
+	m_pumpFreq =  (int)(output > PUMP_FREQ_MIN ? output: PUMP_FREQ_MIN);
+	m_pumpFreq = (m_pumpFreq <= PUMP_FREQ_MAX) ? m_pumpFreq : PUMP_FREQ_MAX;
 
 	m_pidDataPtr->pid_pump_P = pumpP;
 	m_pidDataPtr->pid_pump_I = pumpI;
@@ -834,6 +862,8 @@ int AdjustRateDlg::closeValve(UINT8 portno)
 void AdjustRateDlg::on_btnSopSet_clicked()
 {
 	stopSetRegularTimer();
+	m_setPumpTimer->stop();
+	
 	closePump();
 	wait(CYCLE_TIME);
 	closeValve(m_portsetinfo.waterInNo);
@@ -1056,4 +1086,120 @@ float AdjustRateDlg::getAccumFLowVolume(flow_rate_wdg idx)
 	double pulse = getStdPulse(idx);
 	//qDebug() <<"valve:--"<<idx<<" count:--"<<count<<" pulse:--"<<pulse;
 	return count*pulse;
+}
+
+void AdjustRateDlg::on_lnEditKp_big_returnPressed()
+{
+	  if (m_nowRegNo == m_portsetinfo.regflow1No)
+	  {
+		  m_Kp = ui.lnEditKp_big->text().toFloat();
+	  }
+}
+
+void AdjustRateDlg::on_lnEditKi_big_returnPressed()
+{
+	if (m_nowRegNo == m_portsetinfo.regflow1No)
+	{
+		m_Ki = ui.lnEditKi_big->text().toFloat();
+	}
+}
+
+void AdjustRateDlg::on_lnEditKd_big_returnPressed()
+{
+	if (m_nowRegNo == m_portsetinfo.regflow1No)
+	{
+		m_Kd = ui.lnEditKd_big->text().toFloat();
+	}
+}
+
+void AdjustRateDlg::on_lnEditCycleTime_big_returnPressed()
+{
+	if (m_nowRegNo == m_portsetinfo.regflow1No)
+	{
+		m_pickCycleTime = ui.lnEditCycleTime_big->text().toFloat();
+	}
+}
+
+void AdjustRateDlg::on_lnEditMaxRate_big_returnPressed()
+{
+	if (m_nowRegNo == m_portsetinfo.regflow1No)
+	{
+		m_maxRate = ui.lnEditMaxRate_big->text().toFloat();
+	}
+}
+
+void AdjustRateDlg::on_lnEditTargetRate_big_returnPressed()
+{
+	if (m_nowRegNo == m_portsetinfo.regflow1No)
+	{
+		m_targetRate = ui.lnEditTargetRate_big->text().toFloat();
+	}
+}
+
+void AdjustRateDlg::on_lnEditKp_mid_returnPressed()
+{
+	if (m_nowRegNo == m_portsetinfo.regflow2No)
+	{
+		m_Kp = ui.lnEditKp_mid->text().toFloat();
+	}
+}
+
+void AdjustRateDlg::on_lnEditKi_mid_returnPressed()
+{
+	if (m_nowRegNo == m_portsetinfo.regflow2No)
+	{
+		m_Ki = ui.lnEditKi_mid->text().toFloat();
+	}
+}
+
+void AdjustRateDlg::on_lnEditKd_mid_returnPressed()
+{
+	if (m_nowRegNo == m_portsetinfo.regflow2No)
+	{
+		m_Kd = ui.lnEditKd_mid->text().toFloat();
+	}
+}
+
+void AdjustRateDlg::on_lnEditCycleTime_mid_returnPressed()
+{
+	if (m_nowRegNo == m_portsetinfo.regflow2No)
+	{
+		m_pickCycleTime = ui.lnEditCycleTime_mid->text().toFloat();
+	}
+}
+
+void AdjustRateDlg::on_lnEditMaxRate_mid_returnPressed()
+{
+	if (m_nowRegNo == m_portsetinfo.regflow2No)
+	{
+		m_maxRate = ui.lnEditMaxRate_mid->text().toFloat();
+	}
+}
+
+void AdjustRateDlg::on_lnEditTargetRate_mid_returnPressed()
+{
+	if (m_nowRegNo == m_portsetinfo.regflow2No)
+	{
+		m_targetRate = ui.lnEditTargetRate_mid->text().toFloat();
+	}
+}
+
+void AdjustRateDlg::on_lnEditKp_pump_returnPressed()
+{
+	m_pumpKd = ui.lnEditKp_pump->text().toFloat();
+}
+
+void AdjustRateDlg::on_lnEditKi_pump_returnPressed()
+{
+	m_pumpKi = ui.lnEditKi_pump->text().toFloat();
+}
+
+void AdjustRateDlg::on_lnEditKd_pump_returnPressed()
+{
+	m_pumpKd = ui.lnEditKd_pump->text().toFloat();
+}
+
+void AdjustRateDlg::on_lnEditCycleTime_pump_returnPressed()
+{
+	m_pumpCycleTime = ui.lnEditCycleTime_pump->text().toFloat();
 }
