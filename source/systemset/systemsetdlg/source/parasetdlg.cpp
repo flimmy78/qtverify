@@ -552,8 +552,8 @@ ParaSetReader::ParaSetReader()
 {
 	initValveMap();
 	readIniFile();
-	m_params =new Verify_Params_STR;
-	memset(m_params, 0, sizeof(Verify_Params_PTR));
+	m_params = NULL;
+	m_params = new Verify_Params_STR;
 	readParamValues();
 }
 
