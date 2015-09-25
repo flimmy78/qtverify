@@ -436,7 +436,7 @@ void AdjustRateDlg::on_btnStartSet_clicked()
 	m_elapsetime.start();
 	m_degree = m_integral = (m_targetRate/m_maxRate)*100.0;//刚开始时, 按最大流速和目标流速的比例给积分一个初始值
 	m_controlObj->askControlRegulate(m_nowRegNo, m_degree);
-	wait(20000);//先等待计时器归零, 否则第一次的m_elapsetime.elapsed()会很大
+	wait(30000);//先等待计时器归零, 否则第一次的m_elapsetime.elapsed()会很大
 	m_setRegularTimer->start(m_pickCycleTime);
 	ui.btnStartSet->setEnabled(false);
 }

@@ -32,6 +32,7 @@ class CmbResultDlg;
 class TotalResultDlg;
 class ScanCodeDlg;
 class RegisterDlg;
+class AdjustRateDlg;
 
 class MainForm : public QMainWindow
 {

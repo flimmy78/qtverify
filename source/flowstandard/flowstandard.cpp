@@ -96,8 +96,7 @@ FlowStandardDlg::FlowStandardDlg(QWidget *parent, Qt::WFlags flags)
 	m_avgTFCount = 1; //计算平均温度用的累加计数器
 	m_nowOrder = 0;  //当前进行的检定序号
 
-	m_nowParams = new Verify_Params_STR;
-	memset(m_nowParams, 0, sizeof(Verify_Params_STR));
+	m_nowParams = NULL;
 	m_continueVerify = true; //连续检定
 	m_resetZero = false;     //初值回零
 	m_autopick = false;      //自动采集
@@ -173,12 +172,9 @@ void FlowStandardDlg::closeEvent( QCloseEvent * event)
 		event->accept();
 	}
 
-	if (!m_stopFlag)
-	{
-		m_stopFlag = true;
-		closeAllValveAndPumpOpenOutValve();
-	 	wait(CYCLE_TIME);
-	}
+	m_stopFlag = true;
+	closeAllValveAndPumpOpenOutValve();
+	wait(CYCLE_TIME);
 	openWaterOutValve();
 	ui.labelHintPoint->clear();
 	ui.labelHintProcess->setText(tr("release pipe pressure..."));
@@ -187,11 +183,6 @@ void FlowStandardDlg::closeEvent( QCloseEvent * event)
 	closeValve(m_portsetinfo.bigNo);
 	ui.labelHintProcess->clear();
 	ui.btnStart->setEnabled(true);
-	if (m_stdParam)
-	{
-		delete m_stdParam;
-		m_stdParam = NULL;
-	}
 
 	if (m_paraSetReader) //读检定参数
 	{
@@ -303,6 +294,12 @@ void FlowStandardDlg::closeEvent( QCloseEvent * event)
 		m_accumulateFlowCom = NULL;
 	}
 	
+	if (m_stdParam)//停掉瞬时和累积流量的timer后才能销毁配置文件对象
+	{
+		delete m_stdParam;
+		m_stdParam = NULL;
+	}
+
 	emit signalClosed();
 }
 
@@ -819,6 +816,7 @@ int FlowStandardDlg::judgeTartgetVolAndCalcAvgTemperAndFlow(double initV, double
 	while (!m_stopFlag && (nowVol < targetV))
 	{
 		qDebug()<<"当前流水量 ="<<nowVol<<", 小于目标体积 "<<targetV;
+		qDebug()<<"m_stopFlag: "<<m_stopFlag;
 		m_avgTFCount++;
 		m_pipeInTemper += ui.lcdInTemper->value();
 		m_pipeOutTemper += ui.lcdOutTemper->value();
@@ -968,10 +966,10 @@ void FlowStandardDlg::stopVerify()
 	if (!m_stopFlag)
 	{
 		ui.labelHintProcess->setText(tr("stopping verify...please wait a minute"));
-		m_stopFlag = true; //不再检查天平质量
 		m_exaustTimer->stop();//停止排气定时器
 		closeAllValveAndPumpOpenOutValve();
 	}
+	m_stopFlag = true; //不再检查天平质量
 	ui.labelHintProcess->setText(tr("Verify has Stoped!"));
 	m_state = STATE_INIT; //重置初始状态
 
@@ -1487,7 +1485,13 @@ int FlowStandardDlg::openValve(UINT8 portno)
 	{
 		return false;
 	}
-	m_controlObj->askControlRelay(portno, VALVE_OPEN);
+
+	if (portno == m_portsetinfo.waterOutNo)
+	{
+		m_controlObj->askControlRelay(portno, VALVE_CLOSE);
+	}
+	else
+		m_controlObj->askControlRelay(portno, VALVE_OPEN);
 
 	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
 	{
@@ -1503,7 +1507,12 @@ int FlowStandardDlg::closeValve(UINT8 portno)
 	{
 		return false;
 	}
-	m_controlObj->askControlRelay(portno, VALVE_CLOSE);
+	if (portno == m_portsetinfo.waterOutNo)
+	{
+		m_controlObj->askControlRelay(portno, VALVE_OPEN);
+	}
+	else
+		m_controlObj->askControlRelay(portno, VALVE_CLOSE);
 
 	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
 	{
@@ -2226,6 +2235,10 @@ float FlowStandardDlg::getFlowValueByValve(flow_rate_wdg wdgIdx, flow_type fType
 int FlowStandardDlg::getRouteByWdg(flow_rate_wdg wdgIdx, flow_type fType)
 {
 	int route = -1;
+	if (m_stdParam == NULL)
+	{
+		return route;
+	}
 	m_stdParam->beginReadArray("Route");
 	m_stdParam->setArrayIndex(wdgIdx);
 	switch(fType)
@@ -2304,20 +2317,24 @@ void FlowStandardDlg::slotGetAccumStdMeterPulse(const QByteArray & valueArray)
 void FlowStandardDlg::freshInstStdMeter()
 {
 	ui.lcdInstStdMeter_25->display(getInstFlowRate(FLOW_RATE_BIG));
-	ui.lcdInstStdMeter_10->display(getInstFlowRate(FLOW_RATE_MID_2));
+	ui.lcdInstStdMeter_10->display(getInstFlowRate(FLOW_RATE_MID_1));
 	ui.lcdInstStdMeter_3->display(getInstFlowRate(FLOW_RATE_SMALL));
 }
 
 void FlowStandardDlg::freshAccumStdMeter()
 {
 	ui.lcdAccumStdMeter_25->display(getAccumFLowVolume(FLOW_RATE_BIG));
-	ui.lcdAccumStdMeter_10->display(getAccumFLowVolume(FLOW_RATE_MID_2));
+	ui.lcdAccumStdMeter_10->display(getAccumFLowVolume(FLOW_RATE_MID_1));
 	ui.lcdAccumStdMeter_3->display(getAccumFLowVolume(FLOW_RATE_SMALL));
 }
 
 float FlowStandardDlg::getInstFlowRate(flow_rate_wdg idx)
 {
 	int route = getRouteByWdg(idx, INST_FLOW_VALUE);
+	if (route < 0)
+	{
+		return 0.0;
+	}
 	int count = get9017RouteI(route, m_instStdPulse);
 	float upperFlow = getStdUpperFlow(idx);
 	return getInstStdValue(count, upperFlow);
@@ -2326,6 +2343,10 @@ float FlowStandardDlg::getInstFlowRate(flow_rate_wdg idx)
 float FlowStandardDlg::getAccumFLowVolume(flow_rate_wdg idx)
 {
 	int route = getRouteByWdg(idx, ACCUM_FLOW_VALUE);
+	if (route < 0)
+	{
+		return 0.0;
+	}
 	int count = get9150ARouteI(route, m_accumStdPulse);
 	float pulse = getStdPulse(idx);
 	return count*pulse;

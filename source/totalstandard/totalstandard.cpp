@@ -115,8 +115,7 @@ TotalStandardDlg::TotalStandardDlg(QWidget *parent, Qt::WFlags flags)
 	m_avgTFCount = 1; //计算平均温度用的累加计数器
 	m_nowOrder = 0;  //当前进行的检定序号
 
-	m_nowParams = new Verify_Params_STR;
-	memset(m_nowParams, 0, sizeof(Verify_Params_STR));
+	m_nowParams = NULL;
 	m_continueVerify = true; //连续检定
 	m_resetZero = false;     //初值回零
 	m_autopick = false;      //自动采集
