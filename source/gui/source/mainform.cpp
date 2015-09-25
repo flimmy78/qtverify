@@ -45,6 +45,7 @@
 #include "scancodedlg.h"
 #include "register.h"
 #include "md5encode.h"
+#include "adjustratedlg.h"
 
 MainForm::MainForm(bool licenseOK, int validDays, QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
@@ -64,6 +65,7 @@ MainForm::MainForm(bool licenseOK, int validDays, QWidget *parent, Qt::WFlags fl
 	m_scanCodeDlg = NULL;
 	m_setcom = NULL;
 	m_datatestdlg = NULL;
+	m_adjustRateDlg = NULL;
 	m_portSet = NULL;
 	m_masterslave = NULL;
 	m_flowWeightDlg = NULL;
@@ -173,6 +175,12 @@ void MainForm::closeEvent( QCloseEvent * event)
 		{
 			delete m_datatestdlg;
 			m_datatestdlg = NULL;
+		}
+
+		if (m_adjustRateDlg)
+		{
+			delete m_adjustRateDlg;
+			m_adjustRateDlg = NULL;
 		}
 
 		if (m_masterslave)
@@ -327,6 +335,15 @@ void MainForm::on_actionDataTest_triggered()
 		m_datatestdlg = new DataTestDlg();
 	}
 	m_datatestdlg->show();
+}
+
+void MainForm::on_actionAdjustFlowRate_triggered()
+{
+	if (NULL == m_adjustRateDlg)
+	{
+		m_adjustRateDlg = new AdjustRateDlg();
+	}
+	m_adjustRateDlg->show();
 }
 
 //调用串口调试工具

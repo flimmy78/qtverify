@@ -49,6 +49,7 @@ public:
 	ScanCodeDlg *m_scanCodeDlg; //扫码写表号
 	SetComDlg *m_setcom; //串口参数设置
 	DataTestDlg *m_datatestdlg; //采集与控制测试程序
+	AdjustRateDlg *m_adjustRateDlg;//自动调整流速
 	SetPortFrm *m_portSet; //端口模块设置
 	CMasterSlave *m_masterslave; //主机-从机设置
 	QProcess *m_comProcess; //调用外部串口调试工具
@@ -85,6 +86,7 @@ public slots:
 	void on_actionPortSet_triggered();
 	void on_actionComDebuger_triggered();
 	void on_actionDataTest_triggered();
+	void on_actionAdjustFlowRate_triggered();
 	void on_actionStdMtrParaSet_triggered();
 	void on_actionStdMtrCoeCorrect_triggered();
 	void on_actionStdPtParaSet_triggered();
