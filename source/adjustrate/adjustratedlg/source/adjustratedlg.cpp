@@ -254,7 +254,7 @@ void AdjustRateDlg::initAdjustParams()
 	ui.lnEditTargetRate_mid->setReadOnly(false);
 	installPidParams();
 	initLineEdits();
-	 
+
 	m_pidDataPtr = NULL;
 	m_pidDataPtr = new PIDDataStr();
 
@@ -264,7 +264,7 @@ void AdjustRateDlg::initAdjustParams()
 	m_setPumpTimer = NULL;
 	m_setPumpTimer = new QTimer();
 	connect(m_setPumpTimer, SIGNAL(timeout()), this, SLOT(slotSetPumpFreq()));
-	
+
 	m_setRegularTimer = NULL;
 	m_setRegularTimer = new QTimer;
 	connect(m_setRegularTimer, SIGNAL(timeout()), this, SLOT(slotSetRegulate()));
@@ -429,13 +429,14 @@ void AdjustRateDlg::on_btnStartSet_clicked()
 	m_pidDataPtr->pid_timestamp    = m_timeStamp;
 	m_pidDataPtr->pid_maxRate	   = m_maxRate;
 	m_pidDataPtr->pid_regularNo	   = m_nowRegNo;
-	m_pidDataPtr->pid_pumpFreq = m_pumpFreq;
+	m_pidDataPtr->pid_pumpFreq	   = m_pumpFreq;
 	m_pidDataPtr->pid_adjust_valve = true;
 	m_pidDataPtr->pid_adjust_pump  = false;
 
 	m_elapsetime.start();
-	wait(50);//先等待计时器归零, 否则第一次的m_elapsetime.elapsed()会很大
-	slotSetRegulate();//设定后立即调整一次
+	m_degree = m_integral = (m_targetRate/m_maxRate)*100.0;//刚开始时, 按最大流速和目标流速的比例给积分一个初始值
+	m_controlObj->askControlRegulate(m_nowRegNo, m_degree);
+	wait(20000);//先等待计时器归零, 否则第一次的m_elapsetime.elapsed()会很大
 	m_setRegularTimer->start(m_pickCycleTime);
 	ui.btnStartSet->setEnabled(false);
 }
@@ -467,7 +468,7 @@ void AdjustRateDlg::slotSetRegulate()
 	qDebug() << "+++++++++++++++++set regular+++++++++++++++++";
 	float currentRate = ui.lcdStdMeterFlowRate->value();
 	float deltaV = qAbs(m_targetRate - currentRate);
-	m_degree =degreeGet(currentRate, m_targetRate);
+	degreeGet(currentRate, m_targetRate);
 	qDebug() << "current degree: " << m_degree;
 	m_controlObj->askControlRegulate(m_nowRegNo, m_degree);
 	m_ifGainTargetRate = false;
@@ -496,7 +497,6 @@ void AdjustRateDlg::slotSetRegulate()
 	insertPidRec(m_pidDataPtr);
 	qDebug() << "+++++++++++++++++regular set end+++++++++++++++++";
 
-
 	int elapMinutes = m_elapsetime.elapsed();
 	qDebug() << "time elapsed: " << m_elapsetime.elapsed();
 
@@ -505,7 +505,7 @@ void AdjustRateDlg::slotSetRegulate()
 		stopSetRegularTimer();
 
 		m_prePumpErr       = 0.0;
-		m_pumpIntegral     = 20.0;//一开始就把频率设为最小值
+		m_pumpIntegral     = m_pumpFreq;//一开始把频率积分值设为当前值
 		m_gainPreciseTimes = 0;
 
 		m_pidDataPtr->pid_adjust_valve = false;
@@ -514,43 +514,43 @@ void AdjustRateDlg::slotSetRegulate()
 		m_pidDataPtr->pid_pump_Ki = m_pumpKi;
 		m_pidDataPtr->pid_pump_Kd = m_pumpKd;
 		m_pidDataPtr->pid_pump_waitTime = m_pumpCycleTime;
-
 		m_setPumpTimer->start(m_pumpCycleTime);
 	}
 }
 
-int AdjustRateDlg::degreeGet(float currentRate, float targetRate)
+void AdjustRateDlg::degreeGet(float currentRate, float targetRate)
 {
 	int watSencond = (m_pickCycleTime/1000);
 	m_curr_error = targetRate - currentRate;
 
 	m_integral += m_curr_error*watSencond;
-	if (m_integral<0)//开度不可能为负数
+	if (m_integral < 0) //阻止积分项向负数方向累积, 因为开度不可能为负数
 	{
 		m_integral = 0;
 	}
 
-	if (m_integral > 99)
+	if (m_integral > 99)//阻止积分项向99以上累积, 因为开度不可能大于99
 	{
 		m_integral = 99;
 	}
 
 	float derivative = (m_curr_error - m_pre_error)/watSencond;
-	float output = m_Kp*m_curr_error + m_Ki*m_integral + m_Kd*derivative;
-	qDebug() << "P:--" <<m_Kp*m_curr_error<<" I:--"<<m_Ki*m_integral<<" D:--"<<m_Kd*derivative;
+	float P = m_Kp*m_curr_error;
+	float I = m_Ki*m_integral;
+	float D = m_Kd*derivative;
+	float output = P + I + D;
+	qDebug() << "P:--" <<P<<" I:--"<<I<<" D:--"<<D;
 	qDebug() << "oooooutput: " << output;
 	m_pre_error = m_curr_error;
-	int outdegree =  (int)(output>0 ? output: 0);
-	if (outdegree > 99)
+	m_degree =  (int)(output>0 ? output: 0);
+	if (m_degree > 99)
 	{
-		outdegree = 99;
+		m_degree = 99;
 	}
 
 	m_pidDataPtr->pid_P = m_Kp*m_curr_error;
 	m_pidDataPtr->pid_I = m_Ki*m_integral;
 	m_pidDataPtr->pid_D = m_Kd*derivative;
-
-	return outdegree;
 }
 
 void AdjustRateDlg::slotSetPumpFreq()
@@ -601,6 +601,16 @@ void AdjustRateDlg::freqGet(float currentRate, float targetRate)
 
 	m_curPumpErr = targetRate - currentRate;
 	m_pumpIntegral += m_curPumpErr*watSencond;
+	if (m_pumpIntegral < PUMP_FREQ_MIN)//阻止积分项向PUMP_FREQ_MIN以下累积, 频率最好大于PUMP_FREQ_MIN
+	{
+		m_pumpIntegral = PUMP_FREQ_MIN;
+	}
+
+	if (m_pumpIntegral > PUMP_FREQ_MAX)//阻止积分项向PUMP_FREQ_MAX以上累积, 频率最好大于PUMP_FREQ_MAX
+	{
+		m_pumpIntegral = PUMP_FREQ_MAX;
+	}
+
 	float derivative = (m_curPumpErr - m_prePumpErr)/watSencond;
 
 	float pumpP = m_pumpKp*m_curPumpErr;

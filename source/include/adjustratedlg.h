@@ -37,8 +37,8 @@ class ReadComConfig;
 #define GAIN_TARGET_TIMES (10)//如果达到目标误差限的次数大于此数, 则认为调整成功, 停止调整流速
 #define ONE_MINUTES	(60000)
 #define ADJUST_MINUTES 10//调节流速用掉的时间
-#define PUMP_FREQ_MIN 20
-#define PUMP_FREQ_MAX 49
+#define PUMP_FREQ_MIN 20 //水泵正常工作时的最小频率
+#define PUMP_FREQ_MAX 49 //水泵正常工作时的最大频率
 
 class ADJUSTRATEDLG_EXPORT AdjustRateDlg : public QWidget
 {
@@ -182,7 +182,7 @@ private:
 	PIDDataPtr m_pidDataPtr;
 
 	void setRegulate(float currentRate, float targetRate);
-	int degreeGet(float currentRate, float targetRate);
+	void degreeGet(float currentRate, float targetRate);
 	void stopSetRegularTimer();
 	void savePidParams();
 	void installPidParams();

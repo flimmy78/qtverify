@@ -636,8 +636,8 @@ public:
 		pid_P = 0;
 		pid_I = 0;
 		pid_D = 0;
-		pid_adjust_valve = false;//当前正在调节电动阀门(0, 没有 = 0; 1, 有)
-		pid_adjust_pump  = false;//当前正在调节水泵频率(0, 没有 = 0; 1, 有)
+		pid_adjust_valve = false;//当前正在调节电动阀门
+		pid_adjust_pump  = false;//当前正在调节水泵频率
 		pid_pump_Kp = 0;
 		pid_pump_Ki = 0;
 		pid_pump_Kd = 0;
