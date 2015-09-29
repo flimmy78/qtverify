@@ -1,4 +1,10 @@
-cd algorithm
+cd adjustrate\adjustratedlg
+qmake -t vclib
+
+cd ..
+qmake -t vcapp
+
+cd ../algorithm
 qmake -t vclib
 
 cd ../qtexdb

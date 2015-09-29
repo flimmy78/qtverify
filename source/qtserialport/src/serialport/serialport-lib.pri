@@ -1,4 +1,5 @@
-INCLUDEPATH += $$PWD
+INCLUDEPATH += $$PWD \
+			   $$ADEHOME_INC/include \
 
 PUBLIC_HEADERS += \
     $$PWD/qserialportglobal.h \
