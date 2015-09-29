@@ -219,7 +219,7 @@ void TempProtocol::analyseFrame()
 	QString svStr = QString("%1").arg(SV, TEMPER_DATA_WIDTH, 'f', TEMPER_DATA_PRECISION);
 	m_tempStr = pvStr + svStr;
 // 	qDebug()<<"TempProtocol::analyseFrame thread:"<<QThread::currentThreadId();
-	qDebug()<<"TempProtocol::analyseFrame, PV ="<<pvStr<<", SV ="<<svStr;
+// 	qDebug()<<"TempProtocol::analyseFrame, PV ="<<pvStr<<", SV ="<<svStr;
 }
 
 QString TempProtocol::getTempStr()

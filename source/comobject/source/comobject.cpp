@@ -138,12 +138,12 @@ void TempComObject::writeTemperatureComBuffer()
 	}
 	m_tempProtocol->makeSendBuf();
 	QByteArray buf = m_tempProtocol->getSendBuf();
-	int size = buf.size();
-	for (int i=0; i<size; i++)
-	{
-		printf("请求读温度：0x%.2x\n", (UINT8)buf.at(i));
-	}
-	printf("\n\n");
+// 	int size = buf.size();
+// 	for (int i=0; i<size; i++)
+// 	{
+// 		printf("请求读温度：0x%.2x\n", (UINT8)buf.at(i));
+// 	}
+// 	printf("\n\n");
 	m_tempCom->flush();
 	m_tempCom->write(buf);
 }
@@ -164,12 +164,12 @@ void TempComObject::readTemperatureComBuffer()
 	}
 	m_buf += tmp;
 	int num = m_buf.size();
-	qDebug()<<m_tempCom->portName()<<": receive"<<num<<"bytes !";
-	for (int i=0; i<num; i++)
-	{
-		printf("返回温度：0x%.2x\n", (UINT8)m_buf.at(i));
-	}
-	printf("\n\n");
+// 	qDebug()<<m_tempCom->portName()<<": receive"<<num<<"bytes !";
+// 	for (int i=0; i<num; i++)
+// 	{
+// 		printf("返回温度：0x%.2x\n", (UINT8)m_buf.at(i));
+// 	}
+// 	printf("\n\n");
 	if (num < 10)
 	{
 		return;

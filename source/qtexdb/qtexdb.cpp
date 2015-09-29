@@ -257,6 +257,7 @@ int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id)
 */
 int insertFlowVerifyRec(Flow_Verify_Record_PTR ptr, int num)
 {
+	int ret = 1;
 	for (int i=0; i<num; i++)
 	{
 		QSqlQuery query(g_defaultdb); // 新建一个查询的实例
@@ -348,10 +349,26 @@ int insertFlowVerifyRec(Flow_Verify_Record_PTR ptr, int num)
 		{
  			QSqlError error = query.lastError();
 			qWarning()<<error.text();
+			ret = 0;
+		}
+		//同时写入MySQL数据库
+		if (g_dbtype==T_BOTH)
+		{
+			QSqlQuery query2(g_mysqldb); // 新建一个查询的实例
+			if (query2.exec(sql))
+			{
+				qDebug()<<"insert MySQL database succeed";
+			}
+			else
+			{
+				QSqlError error2 = query2.lastError();
+				qWarning()<<error2.text();
+				ret = 0;
+			}
 		}
 	}
 	
-	return true;
+	return ret;
 }
 
 /*
@@ -384,6 +401,7 @@ int modifyFlowVerifyRec_MeterNO(QString newMeterNO, QString timeStamp, int meter
 */
 int insertTotalVerifyRec(Total_Verify_Record_PTR ptr, int num)
 {
+	int ret = 1;
 	for (int i=0; i<num; i++)
 	{
 		QSqlQuery query(g_defaultdb); // 新建一个查询的实例
@@ -479,10 +497,26 @@ int insertTotalVerifyRec(Total_Verify_Record_PTR ptr, int num)
 		{
  			QSqlError error = query.lastError();
 			qWarning()<<error.text();
+			ret = 0;
+		}
+		//同时写入MySQL数据库
+		if (g_dbtype==T_BOTH)
+		{
+			QSqlQuery query2(g_mysqldb); // 新建一个查询的实例
+			if (query2.exec(sql))
+			{
+				qDebug()<<"insert MySQL database succeed";
+			}
+			else
+			{
+				QSqlError error2 = query2.lastError();
+				qWarning()<<error2.text();
+				ret = 0;
+			}
 		}
 	}
 	
-	return true;
+	return ret;
 }
 
 QString getNumPrefixOfManufac(int idx)
@@ -631,7 +665,7 @@ int getDatabaseParaIni(DatabasePara_PTR info)
 
 int insertPlatinumVerifyRec(T_Platinum_Verify_Record_PTR ptr, int num)
 {
-	int ret = 0;
+	int ret = 1;
 	for (int i=0; i<num; i++)
 	{
 		QSqlQuery query(g_defaultdb); // 新建一个查询的实例
@@ -717,10 +751,26 @@ int insertPlatinumVerifyRec(T_Platinum_Verify_Record_PTR ptr, int num)
 		{
 			QSqlError error = query.lastError();
 			qWarning()<<error.text();
+			ret = 0;
+		}
+		//同时写入MySQL数据库
+		if (g_dbtype==T_BOTH)
+		{
+			QSqlQuery query2(g_mysqldb); // 新建一个查询的实例
+			if (query2.exec(sql))
+			{
+				qDebug()<<"insert MySQL database succeed";
+			}
+			else
+			{
+				QSqlError error2 = query2.lastError();
+				qWarning()<<error2.text();
+				ret = 0;
+			}
 		}
 	}
 
-	return true;
+	return ret;
 }
 
 /*
@@ -812,7 +862,7 @@ int insertCalcVerifyRec(Calc_Verify_Record_PTR ptr, int num)
 			qWarning()<<error.text();
 			ret = 0;
 		}
-
+		//同时写入MySQL数据库
 		if (g_dbtype==T_BOTH)
 		{
 			QSqlQuery query2(g_mysqldb); // 新建一个查询的实例
@@ -918,6 +968,21 @@ int insertCmbVerifyRec(Cmb_Verify_Record_PTR ptr, int num)
 			qWarning()<<error.text();
 			ret = 0;
 		}
+		//同时写入MySQL数据库
+		if (g_dbtype==T_BOTH)
+		{
+			QSqlQuery query2(g_mysqldb); // 新建一个查询的实例
+			if (query2.exec(sql))
+			{
+				qDebug()<<"insert MySQL database succeed";
+			}
+			else
+			{
+				QSqlError error2 = query2.lastError();
+				qWarning()<<error2.text();
+				ret = 0;
+			}
+		}
 	}
 
 	return ret;
@@ -927,7 +992,7 @@ int insertCmbVerifyRec(Cmb_Verify_Record_PTR ptr, int num)
 
 int insertPidRec(PIDDataPtr pidPtr)
 {
-	int ret = 0;
+	int ret = 1;
 
 	QSqlQuery query(g_defaultdb); // 新建一个查询的实例
 	QString sql = "insert into T_PID_Setting_Record";
@@ -992,12 +1057,28 @@ int insertPidRec(PIDDataPtr pidPtr)
 	if (query.exec(sql))
 	{
 		qDebug()<<"insert PIDDataPtr succeed";
-		return 1;
 	}
 	else
 	{
 		QSqlError error = query.lastError();
 		qWarning()<<error.text();
-		return 0;
+		ret = 0;
 	}
+	//同时写入MySQL数据库
+	if (g_dbtype==T_BOTH)
+	{
+		QSqlQuery query2(g_mysqldb); // 新建一个查询的实例
+		if (query2.exec(sql))
+		{
+			qDebug()<<"insert MySQL database succeed";
+		}
+		else
+		{
+			QSqlError error2 = query2.lastError();
+			qWarning()<<error2.text();
+			ret = 0;
+		}
+	}
+
+	return ret;
 }
