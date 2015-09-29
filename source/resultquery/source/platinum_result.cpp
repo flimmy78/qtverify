@@ -1,12 +1,14 @@
 #include <QtSql/QSqlRelationalDelegate>
 #include <QtCore/QDebug>
+
 #include "platinum_result.h"
+#include "qtexdb.h"
 
 PlaResultDlg::PlaResultDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
 	ui.setupUi(this);
-	model = new QSqlRelationalTableModel(this);
+	model = new QSqlRelationalTableModel(this, g_defaultdb);
 }
 
 PlaResultDlg::~PlaResultDlg()
@@ -28,7 +30,7 @@ void PlaResultDlg::initCmb()
 {
 	//制造单位
 	int col_id1 = 0;
-	QSqlRelationalTableModel *model1 = new QSqlRelationalTableModel(this);  
+	QSqlRelationalTableModel *model1 = new QSqlRelationalTableModel(this, g_defaultdb);  
 	model1->setTable("T_Manufacture_Dept");  
 	model1->setRelation(col_id1, QSqlRelation("T_Manufacture_Dept","F_ID","F_Desc"));  
 	QSqlTableModel *relationModel1 = model1->relationModel(col_id1);   
@@ -39,7 +41,7 @@ void PlaResultDlg::initCmb()
 
 	//送检单位
 	int col_id2 = 0;
-	QSqlRelationalTableModel *model2 = new QSqlRelationalTableModel(this);  
+	QSqlRelationalTableModel *model2 = new QSqlRelationalTableModel(this, g_defaultdb);  
 	model2->setTable("T_Verify_Dept");  
 	model2->setRelation(col_id2, QSqlRelation("T_Verify_Dept","F_ID","F_Desc"));  
 	QSqlTableModel *relationModel2 = model2->relationModel(col_id2);   
@@ -50,7 +52,7 @@ void PlaResultDlg::initCmb()
 
 	//检定员
 	int col_id3 = 0;
-	QSqlRelationalTableModel *model3 = new QSqlRelationalTableModel(this);  
+	QSqlRelationalTableModel *model3 = new QSqlRelationalTableModel(this, g_defaultdb);  
 	model3->setTable("T_User_Def_Tab");  
 	model3->setRelation(col_id3, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));  
 	QSqlTableModel *relationModel3 = model3->relationModel(col_id3);   

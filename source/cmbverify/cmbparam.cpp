@@ -1,8 +1,10 @@
 #include <QtGui/QMessageBox>
 #include <QtSql/QSqlTableModel>
 #include <QtSql/QSqlRelationalTableModel>
+
 #include "algorithm.h"
 #include "cmbparam.h"
+#include "qtexdb.h"
 
 CmbParamDlg::CmbParamDlg(QWidget *parent /* = 0 */, Qt::WFlags flags /* = 0 */)
 	: QWidget(parent, flags)
@@ -52,7 +54,7 @@ void CmbParamDlg::initCmbBox()
 
 void CmbParamDlg::initStand()
 {
-	QSqlTableModel *model = new QSqlTableModel(this);
+	QSqlTableModel *model = new QSqlTableModel(this, g_defaultdb);
 	model->setTable("T_Meter_Standard");
 	model->select();
 	ui.cBox_stand->setModel(model);
@@ -62,7 +64,7 @@ void CmbParamDlg::initStand()
 
 void CmbParamDlg::initModel()
 {
-	QSqlTableModel *model = new QSqlTableModel(this);  
+	QSqlTableModel *model = new QSqlTableModel(this, g_defaultdb);  
 	model->setTable("T_Meter_Model");  
 	model->select();
 	ui.cBox_model->setModel(model);  
@@ -72,7 +74,7 @@ void CmbParamDlg::initModel()
 
 void CmbParamDlg::initCollCode()
 {
-	QSqlTableModel *model = new QSqlTableModel(this);  
+	QSqlTableModel *model = new QSqlTableModel(this, g_defaultdb);  
 	model->setTable("T_Meter_PickCode");
 	model->select();
 	ui.cBox_collcode->setModel(model);  
@@ -82,7 +84,7 @@ void CmbParamDlg::initCollCode()
 
 void CmbParamDlg::initManufac()
 {
-	QSqlTableModel *model = new QSqlTableModel(this);  
+	QSqlTableModel *model = new QSqlTableModel(this, g_defaultdb);  
 	model->setTable("T_Manufacture_Dept");  
 	model->select();
 	ui.cBox_manu->setModel(model);  
@@ -92,7 +94,7 @@ void CmbParamDlg::initManufac()
 
 void CmbParamDlg::initInst()
 {
-	QSqlTableModel *model = new QSqlTableModel(this);  
+	QSqlTableModel *model = new QSqlTableModel(this, g_defaultdb);  
 	model->setTable("T_Verify_Dept");  
 	model->select();
 	ui.cBox_inst->setModel(model);  
@@ -102,7 +104,7 @@ void CmbParamDlg::initInst()
 
 void CmbParamDlg::initChker()
 {
-	QSqlTableModel *model = new QSqlTableModel(this);  
+	QSqlTableModel *model = new QSqlTableModel(this, g_defaultdb);  
 	model->setTable("T_User_Def_Tab");  
 	model->select();  
 	ui.cBox_chk->setModel(model);  

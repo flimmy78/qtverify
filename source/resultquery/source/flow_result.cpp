@@ -35,7 +35,7 @@ FlowResultDlg::FlowResultDlg(QWidget *parent, Qt::WFlags flags)
 
 	m_count = 0;
 
-	model = new QSqlRelationalTableModel(this);
+	model = new QSqlRelationalTableModel(this, g_defaultdb);
 /*
 	QStringList drivers = QSqlDatabase::drivers();
 	foreach(QString driver, drivers)
@@ -59,7 +59,7 @@ void FlowResultDlg::initUiData()
 {
 	//制造单位
 	int col_id1 = 0;
-	QSqlRelationalTableModel *model1 = new QSqlRelationalTableModel(this);  
+	QSqlRelationalTableModel *model1 = new QSqlRelationalTableModel(this, g_defaultdb);  
 	model1->setTable("T_Manufacture_Dept");  
 	model1->setRelation(col_id1, QSqlRelation("T_Manufacture_Dept","F_ID","F_Desc"));  
 	QSqlTableModel *relationModel1 = model1->relationModel(col_id1);   
@@ -70,7 +70,7 @@ void FlowResultDlg::initUiData()
 
 	//送检单位
 	int col_id2 = 0;
-	QSqlRelationalTableModel *model2 = new QSqlRelationalTableModel(this);  
+	QSqlRelationalTableModel *model2 = new QSqlRelationalTableModel(this, g_defaultdb);  
 	model2->setTable("T_Verify_Dept");  
 	model2->setRelation(col_id2, QSqlRelation("T_Verify_Dept","F_ID","F_Desc"));  
 	QSqlTableModel *relationModel2 = model2->relationModel(col_id2);   
@@ -81,7 +81,7 @@ void FlowResultDlg::initUiData()
 
 	//检定员
 	int col_id3 = 0;
-	QSqlRelationalTableModel *model3 = new QSqlRelationalTableModel(this);  
+	QSqlRelationalTableModel *model3 = new QSqlRelationalTableModel(this, g_defaultdb);  
 	model3->setTable("T_User_Def_Tab");  
 	model3->setRelation(col_id3, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));  
 	QSqlTableModel *relationModel3 = model3->relationModel(col_id3);   
@@ -92,7 +92,7 @@ void FlowResultDlg::initUiData()
 
 	//表型号
 	int col_id4 = 0;
-	QSqlRelationalTableModel *model4 = new QSqlRelationalTableModel(this);  
+	QSqlRelationalTableModel *model4 = new QSqlRelationalTableModel(this, g_defaultdb);  
 	model4->setTable("T_Meter_Model");  
 	model4->setRelation(col_id4, QSqlRelation("T_Meter_Model","F_ID","F_Name"));  
 	QSqlTableModel *relationModel4 = model4->relationModel(col_id4);   
@@ -103,7 +103,7 @@ void FlowResultDlg::initUiData()
 
 	//表规格
 	int col_id5 = 0;
-	QSqlRelationalTableModel *model5 = new QSqlRelationalTableModel(this);  
+	QSqlRelationalTableModel *model5 = new QSqlRelationalTableModel(this, g_defaultdb);  
 	model5->setTable("T_Meter_Standard");  
 	model5->setRelation(col_id5, QSqlRelation("T_Meter_Standard","F_ID","F_Name"));  
 	QSqlTableModel *relationModel5 = model5->relationModel(col_id5);   

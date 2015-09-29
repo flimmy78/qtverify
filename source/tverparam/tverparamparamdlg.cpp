@@ -45,7 +45,7 @@ void tverparamparamDlg::initCmbBox()
 
 	//送检单位
 	int col_id = 0;
-	QSqlRelationalTableModel *model = new QSqlRelationalTableModel(this);  
+	QSqlRelationalTableModel *model = new QSqlRelationalTableModel(this, g_defaultdb);  
 	model->setTable("T_Verify_Dept");  
 	model->setRelation(col_id, QSqlRelation("T_Verify_Dept","F_ID","F_Desc"));  
 	//QComboBox与QListWidget很相拟,因为它有一个内部模型去保存它的数据条目,所以我们用自己建的模型代替那个自带的模型。
@@ -56,7 +56,7 @@ void tverparamparamDlg::initCmbBox()
 
 	//核验员
 	int col_id1 = 0;
-	QSqlRelationalTableModel *model1 = new QSqlRelationalTableModel(this);  
+	QSqlRelationalTableModel *model1 = new QSqlRelationalTableModel(this, g_defaultdb);  
 	model1->setTable("T_User_Def_Tab");  
 	model1->setRelation(col_id1, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));  
 	QSqlTableModel *relationModel1 = model1->relationModel(col_id1);   
@@ -65,7 +65,7 @@ void tverparamparamDlg::initCmbBox()
 
 	//检测员
 	int col_id2 = 0;
-	QSqlRelationalTableModel *model3 = new QSqlRelationalTableModel(this);  
+	QSqlRelationalTableModel *model3 = new QSqlRelationalTableModel(this, g_defaultdb);  
 	model3->setTable("T_User_Def_Tab");  
 	model3->setRelation(col_id2, QSqlRelation("T_User_Def_Tab","F_ID","F_Desc"));  
 	QSqlTableModel *relationModel2 = model3->relationModel(col_id2);   
@@ -74,7 +74,7 @@ void tverparamparamDlg::initCmbBox()
 
 	//型号
 	int col_id3 = 0;
-	QSqlRelationalTableModel *model2 = new QSqlRelationalTableModel(this);  
+	QSqlRelationalTableModel *model2 = new QSqlRelationalTableModel(this, g_defaultdb);  
 	model2->setTable("T_Meter_Model");  
 	model2->setRelation(col_id3, QSqlRelation("T_Meter_Model","F_ID","F_Desc"));  
 	QSqlTableModel *relationModel3 = model2->relationModel(col_id3);   

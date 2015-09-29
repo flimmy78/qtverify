@@ -34,45 +34,63 @@ void hello()
 	qDebug()<<"hello world!";  
 }  
 
-
-QSqlDatabase g_db;
+// QSqlDatabase g_defaultdb;
+// QSqlDatabase g_mysqldb;
+int g_dbtype = 0;
 
 int startdb()
 {
 	if (QSqlDatabase::contains("qt_sql_default_connection"))
 	{
-		g_db = QSqlDatabase::database("qt_sql_default_connection");
+		g_defaultdb = QSqlDatabase::database("qt_sql_default_connection");
 	}
 	else
 	{
 		QString dbname;
 		DatabasePara_STR dbpara;
 		getDatabaseParaIni(&dbpara);
-		switch (dbpara.type)
+		g_dbtype = dbpara.type;
+		switch (g_dbtype)
 		{
-		case T_MYSQL:
-			g_db = QSqlDatabase::addDatabase("QMYSQL"); // 使用mysql数据库驱动 
-			g_db.setHostName(dbpara.hostname);   //数据库服务器主机名或IP地址
-			g_db.setDatabaseName(dbpara.dbname); // 我们之前建立的数据库
-			g_db.setUserName(dbpara.username);   // 我们创建的 xopens 用户名
-			g_db.setPassword(dbpara.password);   // xopens 用户的密码
-			break;
 		case T_SQLITE:
-			g_db = QSqlDatabase::addDatabase("QSQLITE");
+			g_defaultdb = QSqlDatabase::addDatabase("QSQLITE");// 使用SQLite数据库驱动 
 			dbname = QProcessEnvironment::systemEnvironment().value("ADEHOME") + "\\database\\" + QString::fromAscii(dbpara.dbname) + ".db";
-			g_db.setDatabaseName(dbname);
+			g_defaultdb.setDatabaseName(dbname);
+			break;
+		case T_MYSQL:
+			g_defaultdb = QSqlDatabase::addDatabase("QMYSQL"); // 使用MySQL数据库驱动 
+			g_defaultdb.setHostName(dbpara.hostname);   //数据库服务器主机名或IP地址
+			g_defaultdb.setDatabaseName(dbpara.dbname); // 我们之前建立的数据库
+			g_defaultdb.setUserName(dbpara.username);   // 我们创建的 xopens 用户名
+			g_defaultdb.setPassword(dbpara.password);   // xopens 用户的密码
+			break;
+		case T_BOTH: //同时操作SQLite和MySQL数据库
+			g_mysqldb = QSqlDatabase::addDatabase("QMYSQL", "mysqldb"); // 使用MySQL数据库驱动 
+			g_mysqldb.setHostName(dbpara.hostname);   //数据库服务器主机名或IP地址
+			g_mysqldb.setDatabaseName(dbpara.dbname); // 我们之前建立的数据库
+			g_mysqldb.setUserName(dbpara.username);   // 我们创建的 xopens 用户名
+			g_mysqldb.setPassword(dbpara.password);   // xopens 用户的密码
+			if (!g_mysqldb.open())
+			{
+				QMessageBox::critical(0, QObject::tr("MySQL Database Error"), g_mysqldb.lastError().text());
+			}	
+
+			g_defaultdb = QSqlDatabase::addDatabase("QSQLITE", "sqlitedb");// 使用SQLite数据库驱动 
+			dbname = QProcessEnvironment::systemEnvironment().value("ADEHOME") + "\\database\\" + QString::fromAscii(dbpara.dbname) + ".db";
+			g_defaultdb.setDatabaseName(dbname);
+
 			break;
 		default:
-			g_db = QSqlDatabase::addDatabase("QSQLITE");
+			g_defaultdb = QSqlDatabase::addDatabase("QSQLITE");
 			dbname = QProcessEnvironment::systemEnvironment().value("ADEHOME") + "\\database\\" + QString::fromAscii(dbpara.dbname) + ".db";
-			g_db.setDatabaseName(dbname);
+			g_defaultdb.setDatabaseName(dbname);
 			break;
 		}
 	}
 
-	if (!g_db.open())// 尝试连接数据库
+	if (!g_defaultdb.open())// 尝试连接数据库
 	{
-		QMessageBox::critical(0, QObject::tr("Database Error"), g_db.lastError().text());
+		QMessageBox::critical(0, QObject::tr("Default Database Error"), g_defaultdb.lastError().text());
 		return false;
 	}
 	return true;
@@ -80,9 +98,17 @@ int startdb()
 
 void closedb()
 {
-	if (g_db.isOpen())
+	if (g_defaultdb.isOpen())
 	{
-		g_db.close();
+		g_defaultdb.close();
+	}
+
+	if (g_dbtype == T_BOTH)
+	{
+		if (g_mysqldb.isOpen())
+		{
+			g_mysqldb.close();
+		}
 	}
 }
 
@@ -90,7 +116,7 @@ void closedb()
 int getMeterStandard(int& num, MeterStandard_PTR &ptr)
 {
 	int i = 0;
-	QSqlQuery query; // 新建一个查询的实例
+	QSqlQuery query(g_defaultdb); // 新建一个查询的实例
 // 	bool a = query.driver()->hasFeature(QSqlDriver::Transactions);
 	if(query.exec("select count(*) from t_meter_standard")) // t_meter_standard 表的记录数
 	{
@@ -126,7 +152,7 @@ int getMeterStandard(int& num, MeterStandard_PTR &ptr)
 */
 int getMaxMeterByIdx(int idx)
 {
-	QSqlQuery query; // 新建一个查询的实例
+	QSqlQuery query(g_defaultdb); // 新建一个查询的实例
 	QString sql = "select F_Meter_Quantity from t_meter_standard where f_id = "+ QString::number(idx);
 	if(query.exec(sql))
 	{
@@ -148,7 +174,7 @@ int getMaxMeterByIdx(int idx)
 int getManufacture(int& num, Manufacture_PTR &ptr)
 {
 	int i = 0;
-	QSqlQuery query; // 新建一个查询的实例
+	QSqlQuery query(g_defaultdb); // 新建一个查询的实例
 	if(query.exec("select count(*) from t_manufacture_dept")) // t_manufacture_dept 表的记录数
 	{
 		// 本次查询成功
@@ -187,7 +213,7 @@ int getManufacture(int& num, Manufacture_PTR &ptr)
 int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id)
 {
 	int i = 0;
-	QSqlQuery query; // 新建一个查询的实例
+	QSqlQuery query(g_defaultdb); // 新建一个查询的实例
 	QString sql = "select count(*) from t_meter_default_params where F_StandardID = " + QString::number(stand_id);
 	if(query.exec(sql)) // t_meter_standard 表的记录数
 	{
@@ -233,7 +259,7 @@ int insertFlowVerifyRec(Flow_Verify_Record_PTR ptr, int num)
 {
 	for (int i=0; i<num; i++)
 	{
-		QSqlQuery query(g_db); // 新建一个查询的实例
+		QSqlQuery query(g_defaultdb); // 新建一个查询的实例
 		QString sql = "insert into T_Flow_Verify_Record";
 		sql.append(" (");
 		sql.append("F_TimeStamp,");
@@ -333,7 +359,7 @@ int insertFlowVerifyRec(Flow_Verify_Record_PTR ptr, int num)
 */
 int modifyFlowVerifyRec_MeterNO(QString newMeterNO, QString timeStamp, int meterPos)
 {
-	QSqlQuery query(g_db); // 新建一个查询的实例
+	QSqlQuery query(g_defaultdb); // 新建一个查询的实例
 	QString sql = "update T_Flow_Verify_Record set F_MeterNo=";
 	sql.append(newMeterNO);
 	sql.append(" where F_TimeStamp=\"");
@@ -360,7 +386,7 @@ int insertTotalVerifyRec(Total_Verify_Record_PTR ptr, int num)
 {
 	for (int i=0; i<num; i++)
 	{
-		QSqlQuery query(g_db); // 新建一个查询的实例
+		QSqlQuery query(g_defaultdb); // 新建一个查询的实例
 		QString sql = "insert into T_Total_Verify_Record";
 		sql.append(" (");
 		sql.append("F_TimeStamp,");
@@ -468,7 +494,7 @@ QString getNumPrefixOfManufac(int idx)
 
 	QString str, sqlstr;
 	sqlstr = QString("select f_id,f_numprefix from t_meter_pickcode where f_id=%1").arg(idx);
-	QSqlQuery query; // 新建一个查询的实例
+	QSqlQuery query(g_defaultdb); // 新建一个查询的实例
 	if(query.exec(sqlstr))
 	{
 		query.next();
@@ -493,14 +519,14 @@ QString getTblDdl(QString tbl_name)
 	QString sql = QString("SELECT sql FROM sqlite_master WHERE upper(tbl_name) = upper('%1') AND type = 'table'").arg(tbl_name);//查询语句
 	QString ddl;//表的定义语句
 
-	QStringList tbls = g_db.tables();
+	QStringList tbls = g_defaultdb.tables();
 	//如果表名不存在, 抛出异常
 	if (!tbls.contains(tbl_name, Qt::CaseInsensitive))
 	{
 		throw QString("no this table: %1").arg(tbl_name);
 	}
 	//开始查询
-	QSqlQuery query(g_db);
+	QSqlQuery query(g_defaultdb);
 	if (query.exec(sql))
 	{
 		query.first();
@@ -608,7 +634,7 @@ int insertPlatinumVerifyRec(T_Platinum_Verify_Record_PTR ptr, int num)
 	int ret = 0;
 	for (int i=0; i<num; i++)
 	{
-		QSqlQuery query(g_db); // 新建一个查询的实例
+		QSqlQuery query(g_defaultdb); // 新建一个查询的实例
 		QString sql = "insert into T_Platinum_Verify_Record";
 		sql.append(" (");
 		sql.append("F_TimeStamp, ");
@@ -705,7 +731,7 @@ int insertCalcVerifyRec(Calc_Verify_Record_PTR ptr, int num)
 	int ret = 1;
 	for (int i=0; i<num; i++)
 	{
-		QSqlQuery query(g_db); // 新建一个查询的实例
+		QSqlQuery query(g_defaultdb); // 新建一个查询的实例
 		QString sql = "insert into T_Calc_Verify_Record";
 		sql.append(" (");
 		sql.append("F_TimeStamp,");
@@ -778,13 +804,28 @@ int insertCalcVerifyRec(Calc_Verify_Record_PTR ptr, int num)
 		sql.append(")");//end
 		if (query.exec(sql))
 		{
-			qDebug()<<"insert succeed";
+			qDebug()<<"insert default database succeed";
 		}
 		else
 		{
- 			QSqlError error = query.lastError();
+			QSqlError error = query.lastError();
 			qWarning()<<error.text();
 			ret = 0;
+		}
+
+		if (g_dbtype==T_BOTH)
+		{
+			QSqlQuery query2(g_mysqldb); // 新建一个查询的实例
+			if (query2.exec(sql))
+			{
+				qDebug()<<"insert MySQL database succeed";
+			}
+			else
+			{
+				QSqlError error2 = query2.lastError();
+				qWarning()<<error2.text();
+				ret = 0;
+			}
 		}
 	}
 	
@@ -799,7 +840,7 @@ int insertCmbVerifyRec(Cmb_Verify_Record_PTR ptr, int num)
 	int ret = 1;
 	for (int i=0; i<num; i++)
 	{
-		QSqlQuery query(g_db); // 新建一个查询的实例
+		QSqlQuery query(g_defaultdb); // 新建一个查询的实例
 		QString sql = "insert into T_Combined_Verify_Record";
 		sql.append(" (");
 		sql.append("F_TimeStamp,");
@@ -888,7 +929,7 @@ int insertPidRec(PIDDataPtr pidPtr)
 {
 	int ret = 0;
 
-	QSqlQuery query(g_db); // 新建一个查询的实例
+	QSqlQuery query(g_defaultdb); // 新建一个查询的实例
 	QString sql = "insert into T_PID_Setting_Record";
 	sql.append(" (");
 	sql.append("pid_timestamp, ");

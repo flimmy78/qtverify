@@ -21,11 +21,13 @@
 #include <QtSql/QSqlTableModel>
 #include <QtSql/QSqlRelationalTableModel>
 #include <QtCore/QProcessEnvironment>
+#include <QSqlDatabase>
 
 #include "parasetdlg.h"
 #include "commondefine.h"
 #include "qtexdb.h"
 #include "algorithm.h"
+
 
 ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
@@ -158,7 +160,7 @@ void ParaSetDlg::initUiData()
 //映射采集代码
 void ParaSetDlg::mapPickCodeModel()
 {
-	m_pickCodeModel = new QSqlTableModel(this);  
+	m_pickCodeModel = new QSqlTableModel(this, g_defaultdb);  
 	m_pickCodeModel->setTable("T_Meter_PickCode");  
 	m_pickCodeModel->select();
 	ui.cmbPickCode->setModel(m_pickCodeModel);  
@@ -169,7 +171,7 @@ void ParaSetDlg::mapPickCodeModel()
 //映射制造单位
 void ParaSetDlg::mapManuDeptModel()
 {
-	m_manuDeptModel = new QSqlTableModel(this);  
+	m_manuDeptModel = new QSqlTableModel(this, g_defaultdb);  
 	m_manuDeptModel->setTable("T_Manufacture_Dept");  
 	m_manuDeptModel->select();
 	ui.cmbManufacture->setModel(m_manuDeptModel);  
@@ -180,7 +182,14 @@ void ParaSetDlg::mapManuDeptModel()
 //映射送检单位
 void ParaSetDlg::mapVfDeptModel()
 {
-	QSqlRelationalTableModel *model = new QSqlRelationalTableModel(this);  
+	m_vfDeptModel = new QSqlTableModel(this, g_defaultdb);  
+	m_vfDeptModel->setTable("T_Verify_Dept");  
+	m_vfDeptModel->select();
+	ui.cmbVerifyCompany->setModel(m_vfDeptModel);  
+	ui.cmbVerifyCompany->setModelColumn(m_vfDeptModel->fieldIndex("F_Desc")); // 使用字段名得到正确的标题索引,以使组合框显示部门名  
+	m_vfDeptModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
+
+/*	QSqlRelationalTableModel *model = new QSqlRelationalTableModel(this, g_defaultdb);  
 	model->setTable("T_Verify_Dept");  
 	int col_id = model->fieldIndex("F_ID");
 	model->setRelation(col_id, QSqlRelation("T_Verify_Dept","F_ID","F_Desc"));  
@@ -190,12 +199,13 @@ void ParaSetDlg::mapVfDeptModel()
 	ui.cmbVerifyCompany->setModel(m_vfDeptModel);  
 	ui.cmbVerifyCompany->setModelColumn(m_vfDeptModel->fieldIndex("F_Desc")); // 使用字段名得到正确的标题索引,以使组合框显示部门名  
 	m_vfDeptModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
+*/
 }
 
 //映射送检员和核验员
 void ParaSetDlg::mapUserModel()
 {
-	m_userModel = new QSqlTableModel(this);  
+	m_userModel = new QSqlTableModel(this, g_defaultdb);  
 	m_userModel->setTable("T_User_Def_Tab");  
 	m_userModel->select();  
 	ui.cmbVerifyPerson->setModel(m_userModel);  
@@ -209,7 +219,7 @@ void ParaSetDlg::mapUserModel()
 //映射表型号
 void ParaSetDlg::mapMeterModelModel()
 {
-	m_modelModel = new QSqlTableModel(this);  
+	m_modelModel = new QSqlTableModel(this, g_defaultdb);  
 	m_modelModel->setTable("T_Meter_Model");  
 	m_modelModel->select();
 	ui.cmbModel->setModel(m_modelModel);  

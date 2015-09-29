@@ -24,12 +24,14 @@
 
 #include "basedef.h"
 
-#define DB_TYPE  T_SQLITE
+QTEXDB_EXPORT QSqlDatabase g_defaultdb;
+QTEXDB_EXPORT QSqlDatabase g_mysqldb;
 
 enum dbtype
 {
 	T_SQLITE = 0, 
-	T_MYSQL
+	T_MYSQL,
+	T_BOTH       //同时操作SQLite和MySQL
 };
 
 extern "C" {  // only need to export C interface if	used by C++ source code

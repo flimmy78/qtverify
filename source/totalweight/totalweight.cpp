@@ -145,7 +145,7 @@ TotalWeightDlg::TotalWeightDlg(QWidget *parent, Qt::WFlags flags)
 	m_nowDate = "";
 	m_validDate = "";
 
-	QSqlTableModel *model = new QSqlTableModel(this);  
+	QSqlTableModel *model = new QSqlTableModel(this, g_defaultdb);  
 	model->setTable("T_Meter_Standard");  
 	model->select();  
 	m_meterStdMapper = new QDataWidgetMapper(this);

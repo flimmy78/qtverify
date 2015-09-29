@@ -26,6 +26,7 @@
 
 #include "calcpara.h"
 #include "algorithm.h"
+#include "qtexdb.h"
 
 CalcParaDlg::CalcParaDlg(QWidget *parent, Qt::WFlags flags)
 	: QDialog(parent, flags)
@@ -65,7 +66,7 @@ void CalcParaDlg::closeEvent( QCloseEvent * event)
 //映射送检单位
 void CalcParaDlg::mapVfDeptModel()
 {
-	QSqlTableModel *model = new QSqlTableModel(this);  
+	QSqlTableModel *model = new QSqlTableModel(this, g_defaultdb);  
 	model->setTable("T_Verify_Dept");  
 	model->select();
 	ui.cmbVerifyDept->setModel(model);  
@@ -76,7 +77,7 @@ void CalcParaDlg::mapVfDeptModel()
 //映射制造单位
 void CalcParaDlg::mapManuDeptModel()
 {
-	QSqlTableModel *model = new QSqlTableModel(this);  
+	QSqlTableModel *model = new QSqlTableModel(this, g_defaultdb);  
 	model->setTable("T_Manufacture_Dept");  
 	model->select();
 	ui.cmbManufact->setModel(model);  
@@ -87,7 +88,7 @@ void CalcParaDlg::mapManuDeptModel()
 //映射送检员
 void CalcParaDlg::mapUserModel()
 {
-	QSqlTableModel *m_userModel = new QSqlTableModel(this);  
+	QSqlTableModel *m_userModel = new QSqlTableModel(this, g_defaultdb);  
 	m_userModel->setTable("T_User_Def_Tab");  
 	m_userModel->select();  
 	ui.cmbVerifyPerson->setModel(m_userModel);  
@@ -98,7 +99,7 @@ void CalcParaDlg::mapUserModel()
 //映射表型号
 void CalcParaDlg::mapMeterModelModel()
 {
-	QSqlTableModel *m_modelModel = new QSqlTableModel(this);  
+	QSqlTableModel *m_modelModel = new QSqlTableModel(this, g_defaultdb);  
 	m_modelModel->setTable("T_Meter_Model");  
 	m_modelModel->select();
 	ui.cmbModel->setModel(m_modelModel);  
@@ -109,7 +110,7 @@ void CalcParaDlg::mapMeterModelModel()
 //映射表规格
 void CalcParaDlg::mapMeterStandardModel()
 {
-	QSqlTableModel *model = new QSqlTableModel(this);  
+	QSqlTableModel *model = new QSqlTableModel(this, g_defaultdb);  
 	model->setTable("T_Meter_Standard");  
 	model->select();
 	ui.cmbStandard->setModel(model);  
