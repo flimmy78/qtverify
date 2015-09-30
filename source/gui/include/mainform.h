@@ -33,6 +33,7 @@ class TotalResultDlg;
 class ScanCodeDlg;
 class RegisterDlg;
 class AdjustRateDlg;
+class UserManageDlg;
 
 class MainForm : public QMainWindow
 {
@@ -45,6 +46,7 @@ public:
 	DbMySql *m_mySql;
 	QLabel *m_probationinfo;
 	CAlgorithm *m_alg;
+	UserManageDlg *m_userManageDlg;//用户权限管理
 	RegisterDlg *m_registerDlg; //注册管理
 	ScanCodeDlg *m_scanCodeDlg; //扫码写表号
 	SetComDlg *m_setcom; //串口参数设置
@@ -117,6 +119,7 @@ public slots:
 
 	//About
 	void on_actionExit_triggered();
+	void on_actionUserManage_triggered();
 	void on_actionAbout_triggered();
 	void on_actionRegister_triggered();
 

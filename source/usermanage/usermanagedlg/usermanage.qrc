@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="usermanage">
+ 		<file>images/usermanage.png</file>
+  </qresource>
+</RCC>

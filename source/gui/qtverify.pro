@@ -18,7 +18,7 @@ QMAKE_LIBDIR = 	$(ADEHOME)/lib \
 LIBS += -lalgorithm -lsystemsetdlg -ldatatestdlg -lqaxserver -lmasterslaveset -llogindialog \
 				-lqtexdb -lflowweight -lflowstandard -ltotalweight -ltotalstandard -lcalcverify \
 				-lreport -ltvercomp -ltverparam -lcmbverify -lresultquerydlg -lmd5encode -lscancodedlg \
-				-ladjustratedlg
+				-ladjustratedlg -lusermanagedlg
 
 # Input
 HEADERS += include/mainform.h	\

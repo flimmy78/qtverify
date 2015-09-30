@@ -46,6 +46,7 @@
 #include "register.h"
 #include "md5encode.h"
 #include "adjustratedlg.h"
+#include "usermanagedlg.h"
 
 MainForm::MainForm(bool licenseOK, int validDays, QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
@@ -61,6 +62,7 @@ MainForm::MainForm(bool licenseOK, int validDays, QWidget *parent, Qt::WFlags fl
 	m_flowResultDlg = NULL;
 	m_alg = new CAlgorithm();
 
+	m_userManageDlg = NULL;
 	m_registerDlg = NULL;
 	m_scanCodeDlg = NULL;
 	m_setcom = NULL;
@@ -145,6 +147,12 @@ void MainForm::closeEvent( QCloseEvent * event)
 		{
 			delete m_alg;
 			m_alg = NULL;
+		}
+
+		if (m_userManageDlg)
+		{
+			delete m_userManageDlg;
+			m_userManageDlg = NULL;
 		}
 
 		if (m_registerDlg)
@@ -672,6 +680,21 @@ void MainForm::on_actionQueryExcel_triggered()
 void MainForm::on_actionExit_triggered()
 {
 	this->close();
+}
+
+void MainForm::on_actionUserManage_triggered()
+{
+	if (NULL == m_userManageDlg)
+	{
+		m_userManageDlg = new UserManageDlg();
+	}
+	else //目的是执行UserManageDlg的构造函数
+	{
+		delete m_userManageDlg;
+		m_userManageDlg = NULL;
+		m_userManageDlg = new UserManageDlg();
+	}
+	m_userManageDlg->show();
 }
 
 void MainForm::on_actionAbout_triggered()
