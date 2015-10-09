@@ -18,6 +18,7 @@
 
 
 #include <QtGui/QWidget>
+#include <QSqlRelationalTableModel>
 
 #include "ui_usermanagedlg.h"
 
@@ -29,10 +30,18 @@ public:
 	explicit UserManageDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~UserManageDlg();
 
+	QSqlRelationalTableModel *m_userModel;
+
+	void initUserList();
 
 private slots:
-	void on_btnSave_clicked();
+	void on_btnSubmit_clicked();
+	void on_btnRevert_clicked();
+	void on_btnAdd_clicked();
+	void on_btnDelete_clicked();
 	void on_btnExit_clicked();
+
+	void on_userTableView_clicked(const QModelIndex &);
 
 private:
 	Ui::UserManageDlgClass ui;	

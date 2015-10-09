@@ -161,7 +161,7 @@ Please check each flow point&apos;s quantity</source>
     <message>
         <location filename="../ui/parasetdlg.ui" line="113"/>
         <source>VerifyPerson:</source>
-        <translation>检测员:</translation>
+        <translation>检定员:</translation>
     </message>
     <message>
         <location filename="../ui/parasetdlg.ui" line="1418"/>
