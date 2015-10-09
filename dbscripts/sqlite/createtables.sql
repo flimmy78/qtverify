@@ -410,10 +410,12 @@ F_ID integer not null primary key,
 F_Name varchar(24),
 F_Desc varchar(60),
 F_Password varchar(24),
-F_RoleID integer          --角色ID，外键(T_Role_Def_Tab)
+F_RoleID integer not null,       --角色ID，外键(T_Role_Def_Tab)
+constraint F_RoleID_fk foreign key(F_RoleID) references T_Role_Def_Tab(F_ID)
 );
-insert into T_User_Def_Tab(F_ID, F_Name, F_Desc, F_Password, F_RoleID) values(0, 'admin', '管理员', 'admin', 1);
-insert into T_User_Def_Tab(F_ID, F_Name, F_Desc, F_Password, F_RoleID) values(1, 'oper', '操作员', '1234', 2);
+insert into T_User_Def_Tab(F_ID, F_Name, F_Desc, F_Password, F_RoleID) values(0, 'admin', '管理员', 'admin', 0);
+insert into T_User_Def_Tab(F_ID, F_Name, F_Desc, F_Password, F_RoleID) values(1, 'verifier', '检定员', '1234', 1);
+insert into T_User_Def_Tab(F_ID, F_Name, F_Desc, F_Password, F_RoleID) values(2, 'checker', '核验员', '1234', 1);
 
 
 ---------------------------------
