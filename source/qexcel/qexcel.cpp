@@ -299,6 +299,13 @@ void QExcel::deleteRow(int startRow, int endRow)
 	range->dynamicCall("Delete()");
 }
 
+void QExcel::insertRow(int startRow, int endRow)
+{
+	QString rowIndex = QString::number(startRow).append(":").append(QString::number(endRow));
+	QAxObject *range = sheet->querySubObject("Range(const QString&)", rowIndex);
+	range->dynamicCall("Insert()");
+}
+
 int QExcel::getUsedRowsCount()
 {
 	QAxObject *usedRange = sheet->querySubObject("UsedRange");

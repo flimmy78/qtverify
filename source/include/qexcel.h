@@ -63,6 +63,7 @@ public:
 	QVariant getCellValue(int row, int column);
 	void clearCell(int row, int column);
 	void clearCell(const QString& cell);
+	void insertRow(int startRow, int endRow);
 	void deleteRow(int startRow, int endRow);
 	/**************************************************************************/
 	/* 布局格式                                                               */
