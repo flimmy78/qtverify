@@ -550,7 +550,7 @@ select
 		rec.[F_VerifyDept]=vdpt.[F_ID] and
 		rec.[F_Model]=mod.[F_ID] and
 		rec.[F_Result]=yesno.F_ID
-	order by rec.f_meterno, rec.f_timestamp
+	order by rec.F_MeterPosNo, rec.f_timestamp, rec.f_meterno
 ;'
 );
 
@@ -708,7 +708,7 @@ on
   rec.[F_VerifyDept]=vdpt.[F_ID] and
   rec.[F_Model]=mod.[F_ID] and
   rec.[F_Result]=yesno.F_ID
-	order by rec.f_meterno, rec.f_timestamp
+	order by rec.F_MeterPosNo, rec.f_timestamp, rec.f_meterno
 ;'
 );
 
