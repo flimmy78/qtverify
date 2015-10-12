@@ -5,7 +5,7 @@
 CReport::CReport(const QString& condition)
 {
 	m_rpt_config= NULL;
-	m_query = new QSqlQuery();
+	m_query = new QSqlQuery(g_defaultdb);
 	m_condition = condition;
 }
 
@@ -389,6 +389,7 @@ void CReport::getDbData()
 	m_query->exec(QUERY_CREATE_VIEW_STMT);//查询创建临时视图的语句
 	m_query->seek(0);
 	QString createViewSql = m_query->value(0).toString();
+	qDebug() << createViewSql;
 	m_query->exec(createViewSql);//以临时表为主表, 创建临时视图
 	m_query->exec(m_query_Sql);//查询临时视图
 }
