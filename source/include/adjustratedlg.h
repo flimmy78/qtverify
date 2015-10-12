@@ -39,6 +39,11 @@ class ReadComConfig;
 #define ADJUST_MINUTES 10//调节流速用掉的时间
 #define PUMP_FREQ_MIN 20 //水泵正常工作时的最小频率
 #define PUMP_FREQ_MAX 49 //水泵正常工作时的最大频率
+#define DELETE_RESOURCE(Pointer)	if (NULL != Pointer)\
+									{\
+										delete Pointer;\
+										Pointer = NULL;\
+									}
 
 class ADJUSTRATEDLG_EXPORT AdjustRateDlg : public QWidget
 {

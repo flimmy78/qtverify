@@ -69,23 +69,9 @@ void AdjustRateDlg::closeEvent( QCloseEvent * event)
 {
 	qDebug()<<"^^^^^AdjustRateDlg::closeEvent";
 
-	if (m_paraSetReader) //读检定参数
-	{
-		delete m_paraSetReader;
-		m_paraSetReader = NULL;
-	}
-
-	if (m_paraSetDlg) //参数设置对话框
-	{
-		delete m_paraSetDlg;
-		m_paraSetDlg = NULL;
-	}
-
-	if (m_readComConfig)  //读串口设置
-	{
-		delete m_readComConfig;
-		m_readComConfig = NULL;
-	}
+	DELETE_RESOURCE(m_paraSetReader)//读检定参数
+	DELETE_RESOURCE(m_paraSetDlg) //参数设置对话框
+	DELETE_RESOURCE(m_readComConfig)  //读串口设置
 
 	if (m_controlObj)  //阀门控制
 	{
@@ -137,11 +123,7 @@ void AdjustRateDlg::closeEvent( QCloseEvent * event)
 		}
 	}
 	/*****************************************************/
-	if (m_pidDataPtr)
-	{
-		delete m_pidDataPtr;
-		m_pidDataPtr = NULL;
-	}
+	DELETE_RESOURCE(m_pidDataPtr)
 
 	if (m_setRegularTimer) //自动调整流量计时器
 	{
@@ -154,13 +136,9 @@ void AdjustRateDlg::closeEvent( QCloseEvent * event)
 	}
 	savePidParams();
 
-	if (m_btnGroupValve)
-	{
-		delete m_btnGroupValve;
-		m_btnGroupValve = NULL;
-	}
+	DELETE_RESOURCE(m_btnGroupValve)
 
-	if (m_pidConfig)
+	DELETE_RESOURCE(m_pidConfig)
 	{
 		delete m_pidConfig;
 		m_pidConfig = NULL;
@@ -168,6 +146,10 @@ void AdjustRateDlg::closeEvent( QCloseEvent * event)
 
 	if (m_setPumpTimer)
 	{
+		if (m_setPumpTimer->isActive())
+		{
+			m_setPumpTimer->stop();
+		}
 		delete m_setPumpTimer;
 		m_setPumpTimer = NULL;
 	}
