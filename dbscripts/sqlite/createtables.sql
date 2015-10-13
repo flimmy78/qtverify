@@ -52,7 +52,7 @@ constraint F_VerifyPerson_fk foreign key(F_VerifyPerson) references T_User_Def_T
 constraint F_CheckPerson_fk foreign key(F_CheckPerson) references T_User_Def_Tab(F_ID),
 constraint F_DeviceInfoID_fk foreign key(F_DeviceInfoID) references T_Verify_Device_Info(F_ID)
 );
-create unique index uk_T_Flow_Verify_Record on T_Flow_Verify_Record (F_MeterNo, F_TimeStamp, F_FlowPointIdx, F_MeterPosNo);
+create unique index uk_T_Flow_Verify_Record on T_Flow_Verify_Record (F_MeterNo, F_TimeStamp, F_FlowPointIdx, F_MeterPosNo, F_DeviceInfoID);
 
 
 ---------------------------------
@@ -111,7 +111,7 @@ constraint F_VerifyPerson_fk foreign key(F_VerifyPerson) references T_User_Def_T
 constraint F_CheckPerson_fk foreign key(F_CheckPerson) references T_User_Def_Tab(F_ID),
 constraint F_DeviceInfoID_fk foreign key(F_DeviceInfoID) references T_Verify_Device_Info(F_ID)
 );
-create unique index uk_T_Total_Verify_Record on T_Total_Verify_Record (F_MeterNo, F_TimeStamp, F_FlowPointIdx, F_MeterPosNo);
+create unique index uk_T_Total_Verify_Record on T_Total_Verify_Record (F_MeterNo, F_TimeStamp, F_FlowPointIdx, F_MeterPosNo, F_DeviceInfoID);
 
 
 ---------------------------------
@@ -408,7 +408,7 @@ create table T_User_Def_Tab
 (
 F_ID integer not null primary key,
 F_Name varchar(24),
-F_Desc varchar(60),
+F_Desc varchar(60) not null,
 F_Password varchar(24),
 F_RoleID integer not null,       --角色ID，外键(T_Role_Def_Tab)
 constraint F_RoleID_fk foreign key(F_RoleID) references T_Role_Def_Tab(F_ID)
