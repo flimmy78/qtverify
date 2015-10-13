@@ -176,3 +176,12 @@ int ReadComConfig::getBalanceType()
 	int type = m_com_settings->value("BalanceType/type").toInt();
 	return type;
 }
+
+/*
+** »ñÈ¡×°ÖÃID
+*/
+int ReadComConfig::getDeviceInfoID()
+{
+	int deviceID = m_com_settings->value("deviceInfo/deviceInfoID").toInt();
+	return deviceID;
+}

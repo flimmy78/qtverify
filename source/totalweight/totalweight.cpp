@@ -1577,6 +1577,7 @@ int TotalWeightDlg::calcMeterError(int idx)
 	m_recPtr[idx].totalcoe = m_nowParams->sc_thermal;
 	m_recPtr[idx].inSlotTemper = ui.lnEditInStdTemp->text().toFloat();
 	m_recPtr[idx].outSlotTemper = ui.lnEditOutStdTemp->text().toFloat();
+	m_recPtr[idx].deviceInfoId = m_readComConfig->getDeviceInfoID();
 
 	return 1; 
 }

@@ -1398,6 +1398,7 @@ int FlowStandardDlg::calcMeterError(int idx)
 	m_recPtr[idx].envTemper = m_nowParams->m_temper.toFloat();
 	m_recPtr[idx].envHumidity = m_nowParams->m_humidity.toFloat();
 	m_recPtr[idx].flowcoe = m_nowParams->sc_flow;
+	m_recPtr[idx].deviceInfoId = m_readComConfig->getDeviceInfoID();
 
 	return 1; 
 }

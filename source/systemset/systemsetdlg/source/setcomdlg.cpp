@@ -249,7 +249,7 @@ void SetComDlg::WriteValveConfig()
 }
 
 //写入天平设置
-void  SetComDlg::WriteBalanceConfig()
+void SetComDlg::WriteBalanceConfig()
 {
 	m_com_settings->beginGroup(gui.gBoxBalance->objectName().split("gBox")[1]);
 	WriteConfigById(gui.gBoxBalance);
@@ -257,7 +257,7 @@ void  SetComDlg::WriteBalanceConfig()
 }
 
 //写入天平类型设置
-void  SetComDlg::WriteBalanceTypeConfig()
+void SetComDlg::WriteBalanceTypeConfig()
 {
 	int type = btnGroupBalanceType->checkedId();
 	QString maxWht = gui.lnEditMaxWht->text();
@@ -269,7 +269,7 @@ void  SetComDlg::WriteBalanceTypeConfig()
 }
 
 //写入温度采集设置
-void  SetComDlg::WriteTempConfig()
+void SetComDlg::WriteTempConfig()
 {
 	m_com_settings->beginGroup(gui.gBoxTempSenor->objectName().split("gBox")[1]);
 	WriteConfigById(gui.gBoxTempSenor);
@@ -277,7 +277,7 @@ void  SetComDlg::WriteTempConfig()
 }
 
 //写入标准温度计设置
-void  SetComDlg::WriteStdTempConfig()
+void SetComDlg::WriteStdTempConfig()
 {
 	m_com_settings->beginGroup(gui.gBoxStdTmpSensor->objectName().split("gBox")[1]);
 	WriteConfigById(gui.gBoxStdTmpSensor);
