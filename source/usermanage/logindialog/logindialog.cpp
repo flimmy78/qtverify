@@ -19,11 +19,14 @@
 
 #include "logindialog.h"
 #include "commondefine.h"
+#include "qtexdb.h"
 
 LoginDialog::LoginDialog(QWidget *parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
+	m_curUserID = -1;
+	m_curRoleID = -1;
 
 	ui.passwordEdit->setFocus();
 	ui.passwordEdit->setEchoMode(QLineEdit::Password);
@@ -40,7 +43,7 @@ LoginDialog::~LoginDialog()
 void LoginDialog::initUserComboBox()
 {
 	int idx=0;
-	QSqlQuery query;
+	QSqlQuery query(g_defaultdb);
 	if (query.exec("select F_Desc from T_User_Def_Tab order by F_ID"))
 	{
 		while(query.next())
@@ -48,6 +51,16 @@ void LoginDialog::initUserComboBox()
 			ui.userComboBox->insertItem(idx++, query.value(0).toString());
 		}
 	}
+}
+
+int LoginDialog::getCurUserID()
+{
+	return m_curUserID;
+}
+
+int LoginDialog::getCurRoleID()
+{
+	return m_curRoleID;
 }
 
 void LoginDialog::on_loginButton_clicked()
@@ -59,11 +72,13 @@ void LoginDialog::on_loginButton_clicked()
 // 	}
 // 	else
 // 	{
-		QSqlQuery query;
-		query.exec(QString("select F_Password from T_User_Def_Tab where F_ID=%1").arg(ui.userComboBox->currentIndex()));
+		QSqlQuery query(g_defaultdb);
+		query.exec(QString("select F_Password,F_RoleID from T_User_Def_Tab where F_ID=%1").arg(ui.userComboBox->currentIndex()));
 		query.next();
 		if (query.value(0).toString() == ui.passwordEdit->text())
 		{
+			m_curUserID = ui.userComboBox->currentIndex();
+			m_curRoleID = query.value(1).toInt();
 			QDialog::accept();
 		}
 		else

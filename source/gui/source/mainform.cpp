@@ -47,6 +47,7 @@
 #include "md5encode.h"
 #include "adjustratedlg.h"
 #include "usermanagedlg.h"
+#include "logindialog.h"
 
 MainForm::MainForm(bool licenseOK, int validDays, QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
@@ -342,6 +343,23 @@ void MainForm::on_actionDataTest_triggered()
 	{
 		m_datatestdlg = new DataTestDlg();
 	}
+	else //目的是执行DataTestDlg的构造函数
+	{
+		delete m_datatestdlg;
+		m_datatestdlg = NULL;
+		m_datatestdlg = new DataTestDlg();
+	}
+	int ah = QApplication::desktop()->availableGeometry().height();
+	int aw = QApplication::desktop()->availableGeometry().width();
+// 	int sh = QApplication::desktop()->screenGeometry().height();
+// 	int sw = QApplication::desktop()->screenGeometry().width();
+// 	m_datatestdlg->resize(800, 800);
+	int wh = m_datatestdlg->height();
+	int ww = m_datatestdlg->width();
+	int x = (aw - ww)/2;
+	int y = (ah - wh - 100)/2;
+	m_datatestdlg->move(x, y);  
+//	m_datatestdlg->move((QApplication::desktop()->width()-m_datatestdlg->width())/2, (QApplication::desktop()->height()-m_datatestdlg->height())/2);  
 	m_datatestdlg->show();
 }
 
@@ -684,6 +702,16 @@ void MainForm::on_actionExit_triggered()
 
 void MainForm::on_actionUserManage_triggered()
 {
+	LoginDialog login;
+	if (login.exec() != QDialog::Accepted)
+	{
+		return;
+	}
+	if (login.getCurRoleID() != 0) //非超级用户
+	{
+		QMessageBox::warning(this, tr("Error"), tr("No right for user manage!"));
+		return;
+	}
 	if (NULL == m_userManageDlg)
 	{
 		m_userManageDlg = new UserManageDlg();

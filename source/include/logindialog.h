@@ -30,6 +30,8 @@ public:
 	~LoginDialog();
 
 	void initUserComboBox();
+	int getCurUserID();
+	int getCurRoleID();
 
 private slots:
 	void on_loginButton_clicked();
@@ -37,6 +39,8 @@ private slots:
 
 private:
 	Ui::LoginDialogClass ui;	
+	int m_curUserID;
+	int m_curRoleID;
 };
 
 #endif // LOGINDIALOGDLG_H
