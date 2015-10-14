@@ -174,13 +174,13 @@ void CReport::mergeBody()
 		{
 			mergeBool(need_merge[i], cur_merge_info);
 		}
-		else if (need_merge[i].toLower() == "rowid")
-		{
-			mergeRowId(need_merge[i], cur_merge_info[1]);
-		}
 		else if (cur_merge_info[0].toLower() == "this")//"this", 只在本列查找相关合并信息即可
 		{
 			mergeSingleCol(need_merge[i]);
+		}
+		else if (cur_merge_info[0].toLower() == "father")//"this", 只在本列查找相关合并信息即可
+		{
+			mergeColByFather(need_merge[i], cur_merge_info);
 		}
 	}
 }
@@ -200,7 +200,7 @@ void CReport::mergeSingleCol(QString colName, int colNum)
 	int idx = rec.indexOf(colName);
 	current_value = pre_value = m_query->value(idx).toString().toLocal8Bit();
 	current_row_num = start_with;
-	do 
+	do
 	{
 		current_value = m_query->value(idx).toString().toLocal8Bit();
 		if (current_value != pre_value)
@@ -304,7 +304,7 @@ void CReport::mergeBool(QString colName, QStringList fatherList)
 	m_sheet->setMerge(start_row, current_row_num-1, colNum, colNum);//合并最后一个值
 }
 
-void CReport::mergeRowId(QString colName, QString father)
+void CReport::mergeColByFather(QString colName, QStringList fatherList)
 {
 	int colNum = m_rpt_config->value(QString("tablebody/%1").arg(colName)).toInt();//当前列的列号
 	int start_with = m_rpt_config->value("otherbodyInfo/startwith").toInt();//表体开始行号
@@ -312,31 +312,52 @@ void CReport::mergeRowId(QString colName, QString father)
 	start_row = end_row = start_with;
 	int current_row_num;//表体的当前行号
 	QString current_value, pre_value;//当前值和先前值
-	int seq;//序号
+	QStringList currentVList, previousVList;
+	QList<int> fatherColNumList;
+	bool valid_value;
 
 	m_query->seek(0);
 	QSqlRecord rec;
 	rec = m_query->record();
-	int idx = rec.indexOf(father);
+	for (int i = 1; i < fatherList.length();i++)//fatherList的项从1开始, 0是关键字"father"
+	{
+		fatherColNumList.append(rec.indexOf(fatherList.at(i)));
+	}
 
-	current_value = pre_value = m_query->value(idx).toString().toLocal8Bit();
-	seq = 1;
+	int valid_col = fatherList.length();
+	int valueLen = valid_col-1;
+	for (int i = 0; i < valueLen;i++)
+	{
+		currentVList.append(m_query->value(fatherColNumList.at(i)).toString().toLocal8Bit());
+		previousVList.append(m_query->value(fatherColNumList.at(i)).toString().toLocal8Bit());
+	}
+	int idx = rec.indexOf(colName);
+	valid_value = (m_query->value(idx).toString().toLocal8Bit().toLower() == "yes");
 	current_row_num = start_with;
+
+	bool fatherChanged = false;
 	do
 	{
-		current_value = m_query->value(idx).toString().toLocal8Bit();
-		if (current_value != pre_value)
+		for(int i=0; i < valueLen;i++)
+		{
+			currentVList[i] = m_query->value(fatherColNumList.at(i)).toString().toLocal8Bit();
+			fatherChanged = ( fatherChanged || !(currentVList.at(i)==previousVList.at(i)));
+		}
+		if (fatherChanged)
 		{
 			end_row = current_row_num-1;
-			m_sheet->writeStr(start_row, colNum, QString::number(seq).toStdString().data(), m_format);
 			m_sheet->setMerge(start_row, end_row, colNum, colNum);
 			start_row = current_row_num;
-			pre_value = current_value;
-			seq++;//父列的值变化, 序号增1
+			for (int i=0; i < valueLen;i++)
+			{
+				previousVList[i]=currentVList.at(i);
+			}
+			valid_value = true;
+			fatherChanged = false;
 		}
+		valid_value = (valid_value && (m_query->value(idx).toString().toLocal8Bit().toLower() == "yes"));
 		current_row_num++;
 	} while (m_query->next());
-	m_sheet->writeStr(start_row, colNum, QString::number(seq).toStdString().data(), m_format);//设置最后一个序号
 	m_sheet->setMerge(start_row, current_row_num-1, colNum, colNum);//合并最后一个值
 }
 
