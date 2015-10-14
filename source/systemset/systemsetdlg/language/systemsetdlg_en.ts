@@ -85,25 +85,25 @@
 <context>
     <name>ParaSetDlg</name>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="374"/>
-        <location filename="../source/parasetdlg.cpp" line="381"/>
+        <location filename="../source/parasetdlg.cpp" line="388"/>
+        <location filename="../source/parasetdlg.cpp" line="395"/>
         <source>Warning</source>
         <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="374"/>
+        <location filename="../source/parasetdlg.cpp" line="388"/>
         <source>verify sequence is invalid!</source>
         <translation>verify sequence is invalid!</translation>
     </message>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="381"/>
+        <location filename="../source/parasetdlg.cpp" line="395"/>
         <source>verify QUANTITY is invalid!
 Please check each flow point&apos;s quantity</source>
         <translation>verify QUANTITY is invalid!
 Please check each flow point&apos;s quantity</translation>
     </message>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="408"/>
+        <location filename="../source/parasetdlg.cpp" line="422"/>
         <source>Save successfully!</source>
         <translation>Save successfully!</translation>
     </message>
@@ -174,7 +174,7 @@ Please check each flow point&apos;s quantity</translation>
         <translation type="obsolete">Total Verify</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1554"/>
+        <location filename="../ui/parasetdlg.ui" line="1561"/>
         <source>Flow:</source>
         <translation>Flow:</translation>
     </message>
@@ -429,7 +429,7 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/parasetdlg.ui" line="1382"/>
         <location filename="../ui/parasetdlg.ui" line="1431"/>
         <location filename="../ui/parasetdlg.ui" line="1466"/>
-        <location filename="../ui/parasetdlg.ui" line="1496"/>
+        <location filename="../ui/parasetdlg.ui" line="1503"/>
         <source>Yes</source>
         <translation>Yes</translation>
     </message>
@@ -447,12 +447,17 @@ Please check each flow point&apos;s quantity</translation>
     </message>
     <message>
         <location filename="../ui/parasetdlg.ui" line="1476"/>
-        <location filename="../ui/parasetdlg.ui" line="1506"/>
+        <location filename="../ui/parasetdlg.ui" line="1513"/>
         <source>NO</source>
         <translation>NO</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1490"/>
+        <location filename="../ui/parasetdlg.ui" line="1486"/>
+        <source>Repeat</source>
+        <translation>Repeat</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="1497"/>
         <source>Write MeterNo</source>
         <translation>Write MeterNo</translation>
     </message>
@@ -474,32 +479,32 @@ Please check each flow point&apos;s quantity</translation>
         <translation type="obsolete">Independent</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1548"/>
+        <location filename="../ui/parasetdlg.ui" line="1555"/>
         <source>Coefficient of Safety</source>
         <translation>Coefficient of Safety</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1587"/>
+        <location filename="../ui/parasetdlg.ui" line="1594"/>
         <source>Total:</source>
         <translation>Total:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1626"/>
+        <location filename="../ui/parasetdlg.ui" line="1633"/>
         <source>Exhaust Time</source>
         <translation>Exhaust Time</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1688"/>
+        <location filename="../ui/parasetdlg.ui" line="1695"/>
         <source>s</source>
         <translation>s</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1731"/>
+        <location filename="../ui/parasetdlg.ui" line="1738"/>
         <source>Save</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1744"/>
+        <location filename="../ui/parasetdlg.ui" line="1751"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
@@ -507,12 +512,12 @@ Please check each flow point&apos;s quantity</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../source/setcomdlg.cpp" line="58"/>
+        <location filename="../source/setcomdlg.cpp" line="59"/>
         <source>Standard</source>
         <translation>Standard</translation>
     </message>
     <message>
-        <location filename="../source/setcomdlg.cpp" line="59"/>
+        <location filename="../source/setcomdlg.cpp" line="60"/>
         <source>Quantity</source>
         <translation>Quantity</translation>
     </message>
@@ -599,12 +604,12 @@ Please check each flow point&apos;s quantity</translation>
 <context>
     <name>SetComDlg</name>
     <message>
-        <location filename="../source/setcomdlg.cpp" line="102"/>
+        <location filename="../source/setcomdlg.cpp" line="103"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../source/setcomdlg.cpp" line="102"/>
+        <location filename="../source/setcomdlg.cpp" line="103"/>
         <source>Save Settings Successfully !</source>
         <translation>Save Settings Successfully !</translation>
     </message>

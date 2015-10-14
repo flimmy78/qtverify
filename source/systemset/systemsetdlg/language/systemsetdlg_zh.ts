@@ -85,24 +85,24 @@
 <context>
     <name>ParaSetDlg</name>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="374"/>
-        <location filename="../source/parasetdlg.cpp" line="381"/>
+        <location filename="../source/parasetdlg.cpp" line="388"/>
+        <location filename="../source/parasetdlg.cpp" line="395"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="374"/>
+        <location filename="../source/parasetdlg.cpp" line="388"/>
         <source>verify sequence is invalid!</source>
         <translation>检定顺序设置有误！</translation>
     </message>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="381"/>
+        <location filename="../source/parasetdlg.cpp" line="395"/>
         <source>verify QUANTITY is invalid!
 Please check each flow point&apos;s quantity</source>
         <translation>检定量设定不正确! 请检查检定量设置</translation>
     </message>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="408"/>
+        <location filename="../source/parasetdlg.cpp" line="422"/>
         <source>Save successfully!</source>
         <translation>保存成功!</translation>
     </message>
@@ -173,7 +173,7 @@ Please check each flow point&apos;s quantity</source>
         <translation type="obsolete">总量检定</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1554"/>
+        <location filename="../ui/parasetdlg.ui" line="1561"/>
         <source>Flow:</source>
         <translation>流量:</translation>
     </message>
@@ -428,7 +428,7 @@ Please check each flow point&apos;s quantity</source>
         <location filename="../ui/parasetdlg.ui" line="1382"/>
         <location filename="../ui/parasetdlg.ui" line="1431"/>
         <location filename="../ui/parasetdlg.ui" line="1466"/>
-        <location filename="../ui/parasetdlg.ui" line="1496"/>
+        <location filename="../ui/parasetdlg.ui" line="1503"/>
         <source>Yes</source>
         <translation>是</translation>
     </message>
@@ -446,12 +446,17 @@ Please check each flow point&apos;s quantity</source>
     </message>
     <message>
         <location filename="../ui/parasetdlg.ui" line="1476"/>
-        <location filename="../ui/parasetdlg.ui" line="1506"/>
+        <location filename="../ui/parasetdlg.ui" line="1513"/>
         <source>NO</source>
         <translation>否</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1490"/>
+        <location filename="../ui/parasetdlg.ui" line="1486"/>
+        <source>Repeat</source>
+        <translation>重复检测</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="1497"/>
         <source>Write MeterNo</source>
         <translation>写表号</translation>
     </message>
@@ -473,32 +478,32 @@ Please check each flow point&apos;s quantity</source>
         <translation type="obsolete">各点独立</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1548"/>
+        <location filename="../ui/parasetdlg.ui" line="1555"/>
         <source>Coefficient of Safety</source>
         <translation>安全系数</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1587"/>
+        <location filename="../ui/parasetdlg.ui" line="1594"/>
         <source>Total:</source>
         <translation>总量:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1626"/>
+        <location filename="../ui/parasetdlg.ui" line="1633"/>
         <source>Exhaust Time</source>
         <translation>排气时间</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1688"/>
+        <location filename="../ui/parasetdlg.ui" line="1695"/>
         <source>s</source>
         <translation>s</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1731"/>
+        <location filename="../ui/parasetdlg.ui" line="1738"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1744"/>
+        <location filename="../ui/parasetdlg.ui" line="1751"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
@@ -506,12 +511,12 @@ Please check each flow point&apos;s quantity</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../source/setcomdlg.cpp" line="58"/>
+        <location filename="../source/setcomdlg.cpp" line="59"/>
         <source>Standard</source>
         <translation>规格</translation>
     </message>
     <message>
-        <location filename="../source/setcomdlg.cpp" line="59"/>
+        <location filename="../source/setcomdlg.cpp" line="60"/>
         <source>Quantity</source>
         <translation>最大检表数量</translation>
     </message>
@@ -598,12 +603,12 @@ Please check each flow point&apos;s quantity</source>
 <context>
     <name>SetComDlg</name>
     <message>
-        <location filename="../source/setcomdlg.cpp" line="102"/>
+        <location filename="../source/setcomdlg.cpp" line="103"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../source/setcomdlg.cpp" line="102"/>
+        <location filename="../source/setcomdlg.cpp" line="103"/>
         <source>Save Settings Successfully !</source>
         <translation>保存成功!</translation>
     </message>

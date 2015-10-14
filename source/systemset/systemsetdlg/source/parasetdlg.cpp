@@ -324,9 +324,13 @@ void ParaSetDlg::installBool()
 	//连续检定
 	ui.tBtn_continuous_true->setChecked(lastParams->m_params->bo_converify) ;
 	ui.tBtn_continuous_false->setChecked(!(lastParams->m_params->bo_converify)) ;
+	
 	//初值回零
 	ui.tBtn_resetzero_true->setChecked(lastParams->m_params->bo_resetzero);
 	ui.tBtn_resetzero_false->setChecked(!(lastParams->m_params->bo_resetzero));
+
+	//重复检测
+	ui.chkBoxRepeatVerify->setChecked(lastParams->m_params->bo_repeatverify);
 }
 
 void ParaSetDlg::installOther()
@@ -542,6 +546,7 @@ void ParaSetDlg::SaveBool()
 	settings->setValue("writemeternumber", ui.tBtn_writeNum_true->isChecked() );//是否写表号
 	settings->setValue("continuouscheck", ui.tBtn_continuous_true->isChecked() );//是否连续检定
 	settings->setValue("resetzero", ui.tBtn_resetzero_true->isChecked() );//是否初值回零
+	settings->setValue("repeatverify", ui.chkBoxRepeatVerify->isChecked() );//是否重复检测
 	settings->endGroup();
 }
 
@@ -677,7 +682,7 @@ void ParaSetReader::readBool()
 	m_params->bo_converify = m_settings->value("Bool/continuouscheck").toBool();
 	m_params->bo_writenum = m_settings->value("Bool/writemeternumber").toBool();
 	m_params->bo_resetzero = m_settings->value("Bool/resetzero").toBool();
-	
+	m_params->bo_repeatverify = m_settings->value("Bool/repeatverify").toBool();	
 }
 
 void ParaSetReader::readOther()

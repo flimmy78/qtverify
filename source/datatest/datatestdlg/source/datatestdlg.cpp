@@ -1232,9 +1232,9 @@ void DataTestDlg::slotFreshBigCoe(const QString& comName, const QString& bigCoe)
 {
 	ui.lnEditBigOrgCoe->setText(bigCoe);
 	float bigCoeV = calcFloatValueOfCoe(bigCoe);
-	ui.lnEditBigOldCoe->setText(QString::number(bigCoeV, 'f', ERR_PRECISION));
+	ui.lnEditBigOldCoe->setText(QString::number(bigCoeV, 'f', COE_PRECISION));
 	float bigErr = calcErrorValueOfCoe(bigCoe);
-	ui.lnEditBigOldError->setText(QString::number(bigErr, 'f', ERR_PRECISION));
+	ui.lnEditBigOldError->setText(QString::number(bigErr, 'f', COE_PRECISION));
 	qDebug()<<"读取大流量系数 成功...";
 }
 
@@ -1242,9 +1242,9 @@ void DataTestDlg::slotFreshMid2Coe(const QString& comName, const QString& mid2Co
 {
 	ui.lnEditMid2OrgCoe->setText(mid2Coe);
 	float mid2CoeV = calcFloatValueOfCoe(mid2Coe);
-	ui.lnEditMid2OldCoe->setText(QString::number(mid2CoeV, 'f', ERR_PRECISION));
+	ui.lnEditMid2OldCoe->setText(QString::number(mid2CoeV, 'f', COE_PRECISION));
 	float mid2Err = calcErrorValueOfCoe(mid2Coe);
-	ui.lnEditMid2OldError->setText(QString::number(mid2Err, 'f', ERR_PRECISION));
+	ui.lnEditMid2OldError->setText(QString::number(mid2Err, 'f', COE_PRECISION));
 	qDebug()<<"读取中流2流量系数 成功...";
 }
 
@@ -1252,9 +1252,9 @@ void DataTestDlg::slotFreshMid1Coe(const QString& comName, const QString& mid1Co
 {
 	ui.lnEditMid1OrgCoe->setText(mid1Coe);
 	float mid1CoeV = calcFloatValueOfCoe(mid1Coe);
-	ui.lnEditMid1OldCoe->setText(QString::number(mid1CoeV, 'f', ERR_PRECISION));
+	ui.lnEditMid1OldCoe->setText(QString::number(mid1CoeV, 'f', COE_PRECISION));
 	float mid1Err = calcErrorValueOfCoe(mid1Coe);
-	ui.lnEditMid1OldError->setText(QString::number(mid1Err, 'f', ERR_PRECISION));
+	ui.lnEditMid1OldError->setText(QString::number(mid1Err, 'f', COE_PRECISION));
 	qDebug()<<"读取中流1流量系数 成功...";
 }
 
@@ -1262,9 +1262,9 @@ void DataTestDlg::slotFreshSmallCoe(const QString& comName, const QString& small
 {
 	ui.lnEditSmallOrgCoe->setText(smallCoe);
 	float smallCoeV = calcFloatValueOfCoe(smallCoe);
-	ui.lnEditSmallOldCoe->setText(QString::number(smallCoeV, 'f', ERR_PRECISION));
+	ui.lnEditSmallOldCoe->setText(QString::number(smallCoeV, 'f', COE_PRECISION));
 	float smallErr = calcErrorValueOfCoe(smallCoe);
-	ui.lnEditSmallOldError->setText(QString::number(smallErr, 'f', ERR_PRECISION));
+	ui.lnEditSmallOldError->setText(QString::number(smallErr, 'f', COE_PRECISION));
 	qDebug()<<"读取小流量系数 成功...";
 }
 

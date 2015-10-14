@@ -74,7 +74,8 @@ public:
 	QString m_numPrefix;      //表号前缀(14位表号的前6位）
 	float m_flowSC;           //流量检定安全系数
 	bool m_adjErr;            //是否调整误差
-	bool m_writeNO;          //是否修改表号
+	bool m_writeNO;           //是否修改表号
+	bool m_repeatverify;      //是否重复检测
 	//检定过程相关的控制参数 end
 
 	int m_avgTFCount;		  //计算平均温度和平均流量用的累加计数器

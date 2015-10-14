@@ -20,7 +20,7 @@
    <iconset resource="../systemsetdlg.qrc">
     <normaloff>:/systemsetdlg/images/setting.png</normaloff>:/systemsetdlg/images/setting.png</iconset>
   </property>
-  <layout class="QGridLayout" name="gridLayout_10">
+  <layout class="QGridLayout" name="gridLayout_13">
    <item row="0" column="0">
     <widget class="QGroupBox" name="gBox_Head">
      <property name="title">
@@ -1327,7 +1327,7 @@
     </widget>
    </item>
    <item row="3" column="0">
-    <layout class="QGridLayout" name="gridLayout_21">
+    <layout class="QGridLayout" name="gridLayout_10">
      <item row="0" column="0">
       <widget class="QGroupBox" name="gBox_resetzero">
        <property name="title">
@@ -1478,6 +1478,13 @@
          </widget>
         </item>
        </layout>
+      </widget>
+     </item>
+     <item row="0" column="7">
+      <widget class="QCheckBox" name="chkBoxRepeatVerify">
+       <property name="text">
+        <string>Repeat</string>
+       </property>
       </widget>
      </item>
     </layout>
@@ -1751,7 +1758,7 @@
   <zorder>gBox_UpperFlowLmt</zorder>
   <zorder>gBox_FlowPnt</zorder>
   <zorder>gBox_Head</zorder>
-  <zorder>labelHintInfo</zorder>
+  <zorder>chkBoxRepeatVerify</zorder>
  </widget>
  <resources>
   <include location="../systemsetdlg.qrc"/>

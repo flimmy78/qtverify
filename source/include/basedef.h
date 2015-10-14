@@ -7,7 +7,8 @@
 ** 热表检定相关宏定义
 */
 #define VALID_YEAR				2 //检表有效期 2年
-#define ERR_PRECISION			3 //各流量点流量系数(误差)显示到小数点后3位
+#define COE_PRECISION			3 //各流量点流量系数(误差)显示到小数点后3位
+#define ERR_PRECISION			3 //误差精度保留小数点后3位
 
 /*
 ** 变量长度宏定义                                                       
@@ -48,13 +49,13 @@
 #define RELEASE_PRESS_TIME     2000   //释放管路压力的时间，单位：毫秒
 #define CYCLE_TIME             1000   //周期循环时间，单位：毫秒
 
-#define ELEC_ZERO			   4000//标准表瞬时流量为0时的电流, mA
-#define ELEC_UPPER			   20000//标准表瞬时流量为最大时的电流, mA
+#define ELEC_ZERO			   4000   //标准表瞬时流量为0时的电流, mA
+#define ELEC_UPPER			   20000  //标准表瞬时流量为最大时的电流, mA
 
-#define MAX_ERROR              30 //修表时的最大允许误差，单位%。超过此误差代表异常，不允许修表
+#define MAX_ERROR              30     //修表时的最大允许误差，单位%。超过此误差代表异常，不允许修表
 
-#define TIMEOUT_STD_INST			500//请求标准表瞬时流量周期
-#define TIMEOUT_STD_ACCUM			200//请求标准表累积流量周期
+#define TIMEOUT_STD_INST			500 //请求标准表瞬时流量周期
+#define TIMEOUT_STD_ACCUM			200 //请求标准表累积流量周期
 /*
 ** 被检表类型枚举            
 */
@@ -338,6 +339,7 @@ public:
 	bool bo_writenum;//是否写表号
 	bool bo_converify;//是否连续检定
 	bool bo_resetzero;//是否初值回零
+	bool bo_repeatverify;//是否重复检测
 	//其他参数
 	float sc_flow;//流量安全系数,sc为safe coefficient头字母
 	float sc_thermal;//热量安全系数
