@@ -65,15 +65,15 @@ drop table if exists "T_Verify_Dept"
 ;
 
 ---------------------------------
---角色定义表
----------------------------------
-drop table if exists "T_Role_Def_Tab"
-;
-
----------------------------------
 --用户定义表
 ---------------------------------
 drop table if exists "T_User_Def_Tab"
+;
+
+---------------------------------
+--角色定义表
+---------------------------------
+drop table if exists "T_Role_Def_Tab"
 ;
 
 ---------------------------------
@@ -92,4 +92,10 @@ drop table if exists "T_Verify_Device_Info"
 --
 ---------------------------------
 drop table if exists "T_Create_Query_View_Stmt"
+;
+
+---------------------------------
+--
+---------------------------------
+drop table if exists "T_PID_Setting_Record"
 ;
