@@ -5,6 +5,11 @@
 CReport::CReport(const QString& condition)
 {
 	m_rpt_config= NULL;
+	m_query = NULL;
+	m_book = NULL;
+	m_sheet = NULL;
+	m_format = NULL;
+	m_font = NULL;
 	m_query = new QSqlQuery(g_defaultdb);
 	m_condition = condition;
 }
@@ -48,6 +53,7 @@ void CReport::setIniName(QString ini)
 	{
 		delete m_rpt_config;
 	}
+	QString ininame = getFullIniFileName(ini);
 	m_rpt_config = new QSettings(getFullIniFileName(ini), QSettings::IniFormat);
 
 	m_temp_file = QProcessEnvironment::systemEnvironment().value("TEMP");
@@ -61,6 +67,8 @@ void CReport::setIniName(QString ini)
 	m_temp_file		  = m_temp_file+"\\" + current_time + ".xls";
 #endif
 	m_template_file.append(m_rpt_config->value("template/name").toString());
+	qDebug() << "m_template_file Name :" << m_template_file;
+
 	if (!QFile::exists(m_template_file))
 	{
 		qCritical() << "template file::"<< m_template_file <<"not exists !";
@@ -108,8 +116,10 @@ void CReport::writeHead()
 	int idx;//current field's column index
 	QString field_name;//current field's name
 	QString field_value;//current field's value
-
-	m_query->first();
+	if (!m_query->first())
+	{
+		throw QString("no record");
+	}
 	QSqlRecord rec = m_query->record();
 	for (int i=0; i < m_headList.count(); i++)
 	{
@@ -137,7 +147,10 @@ void CReport::writeBody()
 	QString field_value;//current field's value
 	
 	//write cells value
-	m_query->seek(0);
+	if (!m_query->first())
+	{
+		throw QString("no record");
+	}
 	QSqlRecord rec = m_query->record();
 	int offset = 0;
 	do
@@ -174,11 +187,15 @@ void CReport::mergeBody()
 		{
 			mergeBool(need_merge[i], cur_merge_info);
 		}
+		else if (need_merge[i].toLower() == "f_rowid")
+		{
+			mergeRowId(need_merge[i], cur_merge_info[1]);
+		}
 		else if (cur_merge_info[0].toLower() == "this")//"this", 只在本列查找相关合并信息即可
 		{
 			mergeSingleCol(need_merge[i]);
 		}
-		else if (cur_merge_info[0].toLower() == "father")//"this", 只在本列查找相关合并信息即可
+		else if (cur_merge_info[0].toLower() == "father")
 		{
 			mergeColByFather(need_merge[i], cur_merge_info);
 		}
@@ -221,6 +238,45 @@ void CReport::mergeSingleCol(QString colName)
 	mergeSingleCol(colName, colNum);
 }
 
+void CReport::mergeRowId(QString colName, QString father)
+{
+	int colNum = m_rpt_config->value(QString("tablebody/%1").arg(colName)).toInt();//当前列的列号
+	int start_with = m_rpt_config->value("otherbodyInfo/startwith").toInt();//表体开始行号
+	int start_row, end_row;//合并时的开始结束行号
+	start_row = end_row = start_with;
+	int current_row_num;//表体的当前行号
+	QString current_value, pre_value;//当前值和先前值
+	
+	if (!m_query->first())
+	{
+		throw QString("mergeRowId no record");
+	}
+	qDebug() << "mergeRowId seek first"<< m_query->first();
+	QSqlRecord rec;
+	rec = m_query->record();
+	int idx = rec.indexOf(father);//父字段在查询中所处的列号
+
+	current_value = pre_value = m_query->value(idx).toString().toLocal8Bit();
+	int seq = 1;//序号
+	current_row_num = start_with;
+	do
+	{
+		current_value = m_query->value(idx).toString().toLocal8Bit();
+		if (current_value != pre_value)
+		{
+			end_row = current_row_num-1;
+			m_sheet->writeStr(start_row, colNum, QString::number(seq).toStdString().data(), m_format);
+			m_sheet->setMerge(start_row, end_row, colNum, colNum);
+			start_row = current_row_num;
+			pre_value = current_value;
+			seq++;//父列的值变化, 序号增1
+		}
+		current_row_num++;
+	} while (m_query->next());
+	m_sheet->writeStr(start_row, colNum, QString::number(seq).toStdString().data(), m_format);//设置最后一个序号
+	m_sheet->setMerge(start_row, current_row_num-1, colNum, colNum);//合并最后一个值
+}
+
 void CReport::mergeBool(QString colName, QStringList fatherList)
 {
 	int colNum = m_rpt_config->value(QString("tablebody/%1").arg(colName)).toInt();//当前列的列号
@@ -230,7 +286,8 @@ void CReport::mergeBool(QString colName, QStringList fatherList)
 	int current_row_num;//表体的当前行号
 	QString current_value, pre_value;//当前值和先前值
 	QStringList currentVList, previousVList;
-	QList<int> fatherColNumList;
+	QList<int> fatherColNumList;//父字段的列编号列表
+
 	bool valid_value;
 	QString validStr = ("合格");
 	QString invalidStr = ("不合格");
@@ -332,7 +389,6 @@ void CReport::mergeColByFather(QString colName, QStringList fatherList)
 		previousVList.append(m_query->value(fatherColNumList.at(i)).toString().toLocal8Bit());
 	}
 	int idx = rec.indexOf(colName);
-	valid_value = (m_query->value(idx).toString().toLocal8Bit().toLower() == "yes");
 	current_row_num = start_with;
 
 	bool fatherChanged = false;
@@ -341,8 +397,10 @@ void CReport::mergeColByFather(QString colName, QStringList fatherList)
 		for(int i=0; i < valueLen;i++)
 		{
 			currentVList[i] = m_query->value(fatherColNumList.at(i)).toString().toLocal8Bit();
+
 			fatherChanged = ( fatherChanged || !(currentVList.at(i)==previousVList.at(i)));
 		}
+		qDebug() << "currentVList: " << currentVList;
 		if (fatherChanged)
 		{
 			end_row = current_row_num-1;
@@ -352,10 +410,8 @@ void CReport::mergeColByFather(QString colName, QStringList fatherList)
 			{
 				previousVList[i]=currentVList.at(i);
 			}
-			valid_value = true;
 			fatherChanged = false;
 		}
-		valid_value = (valid_value && (m_query->value(idx).toString().toLocal8Bit().toLower() == "yes"));
 		current_row_num++;
 	} while (m_query->next());
 	m_sheet->setMerge(start_row, current_row_num-1, colNum, colNum);//合并最后一个值
@@ -410,7 +466,7 @@ void CReport::getDbData()
 	m_query->exec(QUERY_CREATE_VIEW_STMT);//查询创建临时视图的语句
 	m_query->seek(0);
 	QString createViewSql = m_query->value(0).toString();
-	qDebug() << createViewSql;
+	//qDebug() << createViewSql;
 	m_query->exec(createViewSql);//以临时表为主表, 创建临时视图
 	m_query->exec(m_query_Sql);//查询临时视图
 }

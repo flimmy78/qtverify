@@ -318,7 +318,8 @@ void FlowResultDlg::on_btnExport_clicked()
 		{
 			getCondition();
 			CReport rpt(m_conStr);
-			rpt.setIniName("rptconfig_flow.ini");
+			QString iniFileName = ui.cmbMethod->currentIndex() ? "rptconfig_flow_std.ini":"rptconfig_flow_mass.ini";
+			rpt.setIniName(iniFileName);
 			rpt.writeRpt();
 			rpt.saveTo(file);
 			QMessageBox::information(this, tr("OK"), tr("export excel file successful!"));

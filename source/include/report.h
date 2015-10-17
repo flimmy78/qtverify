@@ -71,6 +71,7 @@ private:
 	void mergeBody();//写入合并
 	void mergeSingleCol(QString);//合并列中的相似值
 	void mergeSingleCol(QString, int);//合并列中的相似值
+	void mergeRowId(QString colName, QString father);
 	void mergeBool(QString, QStringList);//合并合格与不合格
 	void mergeColByFather(QString, QStringList);
 	void readTblName();//读表或视图名
