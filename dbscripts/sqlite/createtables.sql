@@ -479,7 +479,7 @@ INSERT INTO T_Create_Query_View_Stmt
  'temp flow_verify query result view', 
  'CREATE view V_Temp_Flow_Query_Result as
 select
-  rec.F_ID,
+  rec.F_ID F_RowId,
   rec.F_TimeStamp,
   rec.F_MeterNo,
   rec.F_FlowPointIdx,
@@ -490,8 +490,10 @@ select
   round((rec.F_MeterValue1 - rec.F_MeterValue0), 2) F_MeterDispValue,
   rec.F_BalWeight0,
   rec.F_BalWeight1,
+  round((rec.F_BalWeight1 - rec.F_BalWeight0), 2) F_BalDisp,
   rec.F_StdMeterV0,
   rec.F_StdMeterV1,
+  round((rec.F_StdMeterV1 - rec.F_StdMeterV0), 2) F_StdDisp,
   rec.F_PipeTemper,
   rec.F_Density,
   rec.F_StandValue,
@@ -550,7 +552,7 @@ select
 		rec.[F_VerifyDept]=vdpt.[F_ID] and
 		rec.[F_Model]=mod.[F_ID] and
 		rec.[F_Result]=yesno.F_ID
-	order by rec.F_MeterPosNo, rec.f_timestamp, rec.f_meterno
+	order by rec.F_MeterPosNo, rec.f_meterno, rec.f_timestamp
 ;'
 );
 
@@ -626,7 +628,7 @@ INSERT INTO T_Create_Query_View_Stmt
  'temp total_verify query result view', 
 'CREATE view V_Temp_Total_Query_Result as
 select
-  rec.F_ID,
+  rec.F_ID F_RowId,
   rec.F_TimeStamp,
   rec.F_MeterNo,
   rec.F_FlowPointIdx,
@@ -636,8 +638,10 @@ select
   rec.F_MeterValue1,
   rec.F_BalWeight0,
   rec.F_BalWeight1,
+  round((rec.F_BalWeight1 - rec.F_BalWeight0), 2) F_BalDisp,
   rec.F_StdMeterV0,
   rec.F_StdMeterV1,
+  round((rec.F_StdMeterV1 - rec.F_StdMeterV0), 2) F_StdDisp,
   rec.F_InSlotTemper,
   rec.F_OutSlotTemper,
   rec.F_PipeTemper,
@@ -708,7 +712,7 @@ on
   rec.[F_VerifyDept]=vdpt.[F_ID] and
   rec.[F_Model]=mod.[F_ID] and
   rec.[F_Result]=yesno.F_ID
-	order by rec.F_MeterPosNo, rec.f_timestamp, rec.f_meterno
+  order by rec.F_MeterPosNo, rec.f_meterno, rec.f_timestamp
 ;'
 );
 
