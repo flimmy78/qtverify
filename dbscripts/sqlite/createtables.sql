@@ -504,17 +504,17 @@ select
   rec.F_Result,
   rec.F_MeterPosNo,
   rec.F_Model,
-  mod.[F_Name] F_Model_en,
-  mod.[F_Desc] F_Model_zh,
+  mod.F_Name F_Model_en,
+  mod.F_Desc F_Model_zh,
   std.f_name F_Standard,
-  tp.[F_Desc] F_PickCode_zh,
-  manu.[F_Name] F_ManufactDept_en,
-  manu.[F_Desc] F_ManufactDept_zh,
-  vdpt.[F_Name] F_VerifyDept_en,
-  vdpt.[F_Desc] F_VerifyDept_zh,
+  tp.F_Desc F_PickCode_zh,
+  manu.F_Name F_ManufactDept_en,
+  manu.F_Desc F_ManufactDept_zh,
+  vdpt.F_Name F_VerifyDept_en,
+  vdpt.F_Desc F_VerifyDept_zh,
   rec.F_Grade,
-  (select F_Desc from T_User_Def_Tab u where u.F_id = rec.[F_VerifyPerson])  F_VerifyPerson,
-  (select F_Desc from T_User_Def_Tab u where u.F_id = rec.[F_CheckPerson])  F_CheckPerson,
+  (select F_Desc from T_User_Def_Tab u where u.F_id = rec.F_VerifyPerson)  F_VerifyPerson,
+  (select F_Desc from T_User_Def_Tab u where u.F_id = rec.F_CheckPerson)  F_CheckPerson,
   rec.F_DeviceInfoID,
   rec.F_VerifyDate,
   rec.F_ValidDate,
@@ -545,13 +545,13 @@ select
 		T_verify_dept vdpt,
 		T_Yes_No_Tab  yesno
 	on
-		rec.F_DeviceInfoID=d.[F_ID] and
-		rec.[F_Standard]=std.[F_ID] and
-		rec.[F_PickCode]=tp.[F_ID] and
-		rec.[F_ManufactDept]=manu.[F_ID] and
-		rec.[F_VerifyDept]=vdpt.[F_ID] and
-		rec.[F_Model]=mod.[F_ID] and
-		rec.[F_Result]=yesno.F_ID
+		rec.F_DeviceInfoID=d.F_ID and
+		rec.F_Standard=std.F_ID and
+		rec.F_PickCode=tp.F_ID and
+		rec.F_ManufactDept=manu.F_ID and
+		rec.F_VerifyDept=vdpt.F_ID and
+		rec.F_Model=mod.F_ID and
+		rec.F_Result=yesno.F_ID
 	order by rec.F_MeterPosNo, rec.f_meterno, rec.f_timestamp
 ;'
 );
@@ -586,19 +586,19 @@ select
 	rec.F_DispError,
 	rec.F_StdError,
   date(rec.F_TimeStamp) F_VerifyDate,
-  yesno.[F_Desc] F_Result,  
-  yesno.[F_Name] F_result_en,
+  yesno.F_Desc F_Result,  
+  yesno.F_Name F_result_en,
   usert.F_Desc F_VerifyPerson,
   yesno.F_Name valid_en, 
   yesno.F_Desc valid,
-  mod.[F_Name] F_Model,
-  mod.[F_Desc] F_Model_zh,
+  mod.F_Name F_Model,
+  mod.F_Desc F_Model_zh,
   std.f_name F_Standard,
-  tp.[F_Desc] F_PickCode,
-  manu.[F_Name] F_ManufactDept_en,
-  manu.[F_Desc] F_ManufactDept,
-  vdpt.[F_Name] F_VerifyDept_en,
-  vdpt.[F_Desc] F_VerifyDept
+  tp.F_Desc F_PickCode,
+  manu.F_Name F_ManufactDept_en,
+  manu.F_Desc F_ManufactDept,
+  vdpt.F_Name F_VerifyDept_en,
+  vdpt.F_Desc F_VerifyDept
 	from
    T_Temp_Query_Result rec
 	left join
@@ -610,13 +610,13 @@ select
 		T_Yes_No_Tab  yesno,
     T_User_Def_Tab usert
 	on
-		rec.[F_Standard]=std.[F_ID] and
-		rec.[F_ManufactDept]=manu.[F_ID] and
-		rec.[F_VerifyDept]=vdpt.[F_ID] and
-		rec.[F_Model]=mod.[F_ID] and
-		rec.[F_Result]=yesno.F_ID and
-		rec.[F_VerifyPerson]=usert.[F_ID] and    
-		rec.[F_PickCode]=tp.[F_ID]
+		rec.F_Standard=std.F_ID and
+		rec.F_ManufactDept=manu.F_ID and
+		rec.F_VerifyDept=vdpt.F_ID and
+		rec.F_Model=mod.F_ID and
+		rec.F_Result=yesno.F_ID and
+		rec.F_VerifyPerson=usert.F_ID and    
+		rec.F_PickCode=tp.F_ID
 	order by rec.F_Meterno, rec.F_TimesTamp
 ;'
 );
@@ -682,16 +682,16 @@ select
   d.F_DeviceValidDate,
   d.F_CertValidDate,
   d.F_RuleValidDate,  
-  (select F_Desc from T_User_Def_Tab u where u.F_id = rec.[F_VerifyPerson])  F_VerifyPerson,
-  (select F_Desc from T_User_Def_Tab u where u.F_id = rec.[F_CheckPerson])  F_CheckPerson,  
-  mod.[F_Name] F_Model_en,
-  mod.[F_Desc] F_Model_zh,
+  (select F_Desc from T_User_Def_Tab u where u.F_id = rec.F_VerifyPerson)  F_VerifyPerson,
+  (select F_Desc from T_User_Def_Tab u where u.F_id = rec.F_CheckPerson)  F_CheckPerson,  
+  mod.F_Name F_Model_en,
+  mod.F_Desc F_Model_zh,
   std.f_name F_Standard,
-  tp.[F_Desc] F_PickCode_zh,
-  manu.[F_Name] F_ManufactDept_en,
-  manu.[F_Desc] F_ManufactDept_zh,
-  vdpt.[F_Name] F_VerifyDept_en,
-  vdpt.[F_Desc] F_VerifyDept_zh,  
+  tp.F_Desc F_PickCode_zh,
+  manu.F_Name F_ManufactDept_en,
+  manu.F_Desc F_ManufactDept_zh,
+  vdpt.F_Name F_VerifyDept_en,
+  vdpt.F_Desc F_VerifyDept_zh,  
   yesno.F_Name valid_en, 
   yesno.F_Desc valid
 from
@@ -705,13 +705,13 @@ left join
   T_verify_dept vdpt,
   T_Yes_No_Tab  yesno  
 on
-  rec.F_DeviceInfoID=d.[F_ID] and
-  rec.[F_Standard]=std.[F_ID] and
-  rec.[F_PickCode]=tp.[F_ID] and
-  rec.[F_ManufactDept]=manu.[F_ID] and
-  rec.[F_VerifyDept]=vdpt.[F_ID] and
-  rec.[F_Model]=mod.[F_ID] and
-  rec.[F_Result]=yesno.F_ID
+  rec.F_DeviceInfoID=d.F_ID and
+  rec.F_Standard=std.F_ID and
+  rec.F_PickCode=tp.F_ID and
+  rec.F_ManufactDept=manu.F_ID and
+  rec.F_VerifyDept=vdpt.F_ID and
+  rec.F_Model=mod.F_ID and
+  rec.F_Result=yesno.F_ID
   order by rec.F_MeterPosNo, rec.f_meterno, rec.f_timestamp
 ;'
 );
