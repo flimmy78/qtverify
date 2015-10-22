@@ -480,10 +480,10 @@ INSERT INTO T_Create_Query_View_Stmt
  'CREATE view V_Temp_Flow_Query_Result as
 select
   rec.F_ID F_RowId,
-  rec.F_TimeStamp,
-  rec.F_MeterNo,
+  substr(rec.F_TimeStamp,1,16) F_TimeStamp,
+  substr(rec.F_MeterNo,7,8) F_MeterNo,
   rec.F_FlowPointIdx,
-  rec.F_FlowPoint,
+  round(rec.F_FlowPoint,3) F_FlowPoint,
   rec.F_MethodFlag,
   rec.F_MeterValue0,
   rec.F_MeterValue1,
@@ -564,8 +564,8 @@ INSERT INTO T_Create_Query_View_Stmt
  'CREATE view V_Temp_Cmb_Query_Result as
 select
 	rec.F_ID,
-	rec.F_TimeStamp,
-	rec.F_MeterNo,
+	substr(rec.F_TimeStamp,1,16) F_TimeStamp,
+	substr(rec.F_MeterNo,7,8) F_MeterNo,
 	rec.F_Grade,
 	rec.F_DeltaTemp,
 	rec.F_VerifyVolume,
@@ -629,10 +629,10 @@ INSERT INTO T_Create_Query_View_Stmt
 'CREATE view V_Temp_Total_Query_Result as
 select
   rec.F_ID F_RowId,
-  rec.F_TimeStamp,
-  rec.F_MeterNo,
+  substr(rec.F_TimeStamp,1,16) F_TimeStamp,
+  substr(rec.F_MeterNo,7,8) F_MeterNo,
   rec.F_FlowPointIdx,
-  rec.F_FlowPoint,
+  round(rec.F_FlowPoint,3) F_FlowPoint,
   rec.F_MethodFlag,
   rec.F_MeterValue0,
   rec.F_MeterValue1,
