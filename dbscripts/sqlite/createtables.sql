@@ -500,19 +500,6 @@ select
   rec.F_StandValue,
   rec.F_DispError,
   rec.F_StdError,
-  yesno.F_Name valid_en, 
-  yesno.F_Desc valid,
-  rec.F_Result,
-  rec.F_MeterPosNo,
-  rec.F_Model,
-  mod.F_Name F_Model_en,
-  mod.F_Desc F_Model_zh,
-  std.f_name F_Standard,
-  tp.F_Desc F_PickCode_zh,
-  manu.F_Name F_ManufactDept_en,
-  manu.F_Desc F_ManufactDept_zh,
-  vdpt.F_Name F_VerifyDept_en,
-  vdpt.F_Desc F_VerifyDept_zh,
   rec.F_Grade,
   (select F_Desc from T_User_Def_Tab u where u.F_id = rec.F_VerifyPerson)  F_VerifyPerson,
   (select F_Desc from T_User_Def_Tab u where u.F_id = rec.F_CheckPerson)  F_CheckPerson,
@@ -523,6 +510,19 @@ select
   rec.F_EnvHumidity,
   rec.F_AirPressure,
   rec.F_FlowCoe,
+  rec.F_Result,
+  rec.F_MeterPosNo,
+  rec.F_Model,
+  mo.F_Name F_Model_en,
+  mo.F_Desc F_Model_zh,
+  st.f_name F_Standard,
+  tp.F_Desc F_PickCode_zh,
+  manu.F_Name F_ManufactDept_en,
+  manu.F_Desc F_ManufactDept_zh,
+  vdpt.F_Name F_VerifyDept_en,
+  vdpt.F_Desc F_VerifyDept_zh,
+  yesno.F_Name valid_en, 
+  yesno.F_Desc valid,
   d.F_CertNO,
   d.F_DeviceName,
   d.F_DeviceNo,
@@ -536,23 +536,15 @@ select
   d.F_CertValidDate,
   d.F_RuleValidDate
 	from
-		T_Temp_Query_Result rec
-	left join
-		T_Verify_Device_Info d,
-		T_Meter_Model mod,
-		T_meter_standard std,
-		T_Meter_PickCode tp,
-		T_manufacture_dept manu,
-		T_verify_dept vdpt,
-		T_Yes_No_Tab  yesno
-	on
-		rec.F_DeviceInfoID=d.F_ID and
-		rec.F_Standard=std.F_ID and
-		rec.F_PickCode=tp.F_ID and
-		rec.F_ManufactDept=manu.F_ID and
-		rec.F_VerifyDept=vdpt.F_ID and
-		rec.F_Model=mod.F_ID and
-		rec.F_Result=yesno.F_ID
+	T_Temp_Query_Result rec left join
+	T_Meter_Model mo on rec.F_Model=mo.F_ID left join
+    T_Meter_Standard st on rec.F_Standard=st.F_ID left join
+	T_Meter_PickCode tp on rec.F_PickCode=tp.F_ID left join
+	T_Manufacture_Dept manu on rec.F_ManufactDept=manu.F_ID left join
+	T_Verify_Dept vdpt on rec.F_VerifyDept=vdpt.F_ID left join
+	T_Yes_No_Tab  yesno on rec.F_Result=yesno.F_ID left join
+    T_User_Def_Tab usert on rec.F_VerifyPerson=usert.F_ID left join
+	T_Verify_Device_Info d on rec.F_DeviceInfoID=d.F_ID
 	order by rec.F_MeterPosNo, rec.f_meterno, rec.f_timestamp
 ;'
 );
@@ -565,8 +557,8 @@ INSERT INTO T_Create_Query_View_Stmt
  'CREATE view V_Temp_Cmb_Query_Result as
 select
 	rec.F_ID,
-  rec.F_TimeStamp,
-  substr(rec.F_TimeStamp,1,16) F_TimeStamp_short,
+    rec.F_TimeStamp,
+    substr(rec.F_TimeStamp,1,16) F_TimeStamp_short,
 	substr(rec.F_MeterNo,7,8) F_MeterNo,
 	rec.F_Grade,
 	rec.F_DeltaTemp,
@@ -587,38 +579,29 @@ select
 	round((rec.F_MeterE1-rec.F_MeterE0), 2) F_MeterDispV,
 	rec.F_DispError,
 	rec.F_StdError,
-  date(rec.F_TimeStamp) F_VerifyDate,
-  yesno.F_Desc F_Result,  
-  yesno.F_Name F_result_en,
-  usert.F_Desc F_VerifyPerson,
-  yesno.F_Name valid_en, 
-  yesno.F_Desc valid,
-  mod.F_Name F_Model,
-  mod.F_Desc F_Model_zh,
-  std.f_name F_Standard,
-  tp.F_Desc F_PickCode,
-  manu.F_Name F_ManufactDept_en,
-  manu.F_Desc F_ManufactDept,
-  vdpt.F_Name F_VerifyDept_en,
-  vdpt.F_Desc F_VerifyDept
-	from
-   T_Temp_Query_Result rec
-	left join
-		T_Meter_Model mod,
-		T_Meter_Standard std,
-		T_Meter_PickCode tp,
-		T_Manufacture_Dept manu,
-		T_Verify_Dept vdpt,
-		T_Yes_No_Tab  yesno,
-    T_User_Def_Tab usert
-	on
-		rec.F_Standard=std.F_ID and
-		rec.F_ManufactDept=manu.F_ID and
-		rec.F_VerifyDept=vdpt.F_ID and
-		rec.F_Model=mod.F_ID and
-		rec.F_Result=yesno.F_ID and
-		rec.F_VerifyPerson=usert.F_ID and    
-		rec.F_PickCode=tp.F_ID
+	date(rec.F_TimeStamp) F_VerifyDate,
+	yesno.F_Desc F_Result,  
+	yesno.F_Name F_result_en,
+	usert.F_Desc F_VerifyPerson,
+	yesno.F_Name valid_en, 
+	yesno.F_Desc valid,
+	mo.F_Name F_Model,
+	mo.F_Desc F_Model_zh,
+	st.f_name F_Standard,
+	tp.F_Desc F_PickCode,
+	manu.F_Name F_ManufactDept_en,
+	manu.F_Desc F_ManufactDept,
+	vdpt.F_Name F_VerifyDept_en,
+	vdpt.F_Desc F_VerifyDept
+from
+	T_Temp_Query_Result rec left join
+	T_Meter_Model mo on rec.F_Model=mo.F_ID left join
+	T_Meter_Standard st on rec.F_Standard=st.F_ID left join
+	T_Meter_PickCode tp on rec.F_PickCode=tp.F_ID left join
+	T_Manufacture_Dept manu on rec.F_ManufactDept=manu.F_ID left join
+	T_Verify_Dept vdpt on rec.F_VerifyDept=vdpt.F_ID left join
+	T_Yes_No_Tab  yesno on rec.F_Result=yesno.F_ID left join
+    T_User_Def_Tab usert on rec.F_VerifyPerson=usert.F_ID
 	order by rec.F_Meterno, rec.F_TimesTamp
 ;'
 );
@@ -630,92 +613,83 @@ INSERT INTO T_Create_Query_View_Stmt
  'temp total_verify query result view', 
 'CREATE view V_Temp_Total_Query_Result as
 select
-  rec.F_ID F_RowId,
-  rec.F_TimeStamp,
-  substr(rec.F_TimeStamp,1,16) F_TimeStamp_short,
-  substr(rec.F_MeterNo,7,8) F_MeterNo,
-  rec.F_FlowPointIdx,
-  round(rec.F_FlowPoint,3) F_FlowPoint,
-  rec.F_MethodFlag,
-  rec.F_MeterValue0,
-  rec.F_MeterValue1,
-  rec.F_BalWeight0,
-  rec.F_BalWeight1,
-  round((rec.F_BalWeight1 - rec.F_BalWeight0), 2) F_BalDisp,
-  rec.F_StdMeterV0,
-  rec.F_StdMeterV1,
-  round((rec.F_StdMeterV1 - rec.F_StdMeterV0), 2) F_StdDisp,
-  rec.F_InSlotTemper,
-  rec.F_OutSlotTemper,
-  rec.F_PipeTemper,
-  rec.F_Density,
-  rec.F_StandValue,
-  rec.F_DispError,
-  rec.F_StdError,
-  rec.F_Result,
-  rec.F_MeterPosNo,
-  rec.F_Model,
-  rec.F_Standard,
-  rec.F_PickCode,
-  rec.F_ManufactDept,
-  rec.F_VerifyDept,
-  rec.F_Grade,
-  rec.F_DeviceInfoID,
-  rec.F_VerifyDate,
-  rec.F_ValidDate,
-  rec.F_EnvTemper,
-  rec.F_EnvHumidity,
-  rec.F_AirPressure,
-  rec.F_CertNO,
-  rec.F_TotalCoe,
-  rec.F_InSlotTemper,
-  rec.F_OutSlotTemper,
-  (rec.F_InSlotTemper||''/''||rec.F_OutSlotTemper) F_SlotInOutTemp,
-  (rec.F_InSlotTemper-rec.F_OutSlotTemper) F_SlotTempDiff,
-  (rec.F_MeterValue1-rec.F_MeterValue0) F_MeterDispValue,
-  d.F_CertNO,
-  d.F_DeviceName,
-  d.F_DeviceNo,
-  d.F_DeviceModel,
-  d.F_Manufact,
-  d.F_DeviceGrade,
-  d.F_MeasureRange,
-  d.F_CertNo,
-  d.F_VerifyRule,
-  d.F_DeviceValidDate,
-  d.F_CertValidDate,
-  d.F_RuleValidDate,  
-  (select F_Desc from T_User_Def_Tab u where u.F_id = rec.F_VerifyPerson)  F_VerifyPerson,
-  (select F_Desc from T_User_Def_Tab u where u.F_id = rec.F_CheckPerson)  F_CheckPerson,  
-  mod.F_Name F_Model_en,
-  mod.F_Desc F_Model_zh,
-  std.f_name F_Standard,
-  tp.F_Desc F_PickCode_zh,
-  manu.F_Name F_ManufactDept_en,
-  manu.F_Desc F_ManufactDept_zh,
-  vdpt.F_Name F_VerifyDept_en,
-  vdpt.F_Desc F_VerifyDept_zh,  
-  yesno.F_Name valid_en, 
-  yesno.F_Desc valid
+	rec.F_ID,
+    rec.F_TimeStamp,
+    substr(rec.F_TimeStamp,1,16) F_TimeStamp_short,
+	substr(rec.F_MeterNo,7,8) F_MeterNo,
+	rec.F_FlowPointIdx,
+	round(rec.F_FlowPoint,3) F_FlowPoint,
+	rec.F_MethodFlag,
+	rec.F_MeterValue0,
+	rec.F_MeterValue1,
+	rec.F_BalWeight0,
+    rec.F_BalWeight1,
+    round((rec.F_BalWeight1 - rec.F_BalWeight0), 2) F_BalDisp,
+    rec.F_StdMeterV0,
+    rec.F_StdMeterV1,
+    round((rec.F_StdMeterV1 - rec.F_StdMeterV0), 2) F_StdDisp,
+	rec.F_InSlotTemper,
+	rec.F_OutSlotTemper,
+	rec.F_PipeTemper,
+	rec.F_Density,
+	rec.F_StandValue,
+	rec.F_DispError,
+	rec.F_StdError,
+	rec.F_Result,
+	rec.F_MeterPosNo,
+	rec.F_Model,
+	rec.F_Standard,
+	rec.F_PickCode,
+	rec.F_ManufactDept,
+	rec.F_VerifyDept,
+	rec.F_Grade,
+	rec.F_DeviceInfoID,
+	rec.F_VerifyDate,
+	rec.F_ValidDate,
+	rec.F_EnvTemper,
+	rec.F_EnvHumidity,
+	rec.F_AirPressure,
+	rec.F_CertNO,
+	rec.F_TotalCoe,
+	rec.F_InSlotTemper,
+	rec.F_OutSlotTemper,
+	(rec.F_InSlotTemper||''/''||rec.F_OutSlotTemper) F_SlotInOutTemp,
+	(rec.F_InSlotTemper-rec.F_OutSlotTemper) F_SlotTempDiff,
+	(rec.F_MeterValue1-rec.F_MeterValue0) F_MeterDispValue,
+	d.F_CertNO,
+	d.F_DeviceName,
+	d.F_DeviceNo,
+	d.F_DeviceModel,
+	d.F_Manufact,
+	d.F_DeviceGrade,
+	d.F_MeasureRange,
+	d.F_CertNo,
+	d.F_VerifyRule,
+	d.F_DeviceValidDate,
+	d.F_CertValidDate,
+	d.F_RuleValidDate,  
+	(select F_Desc from T_User_Def_Tab u where u.F_id = rec.F_VerifyPerson)  F_VerifyPerson,
+	(select F_Desc from T_User_Def_Tab u where u.F_id = rec.F_CheckPerson)  F_CheckPerson,  
+	mo.F_Name F_Model_en,
+	mo.F_Desc F_Model_zh,
+	st.f_name F_Standard,
+	tp.F_Desc F_PickCode_zh,
+	manu.F_Name F_ManufactDept_en,
+	manu.F_Desc F_ManufactDept_zh,
+	vdpt.F_Name F_VerifyDept_en,
+	vdpt.F_Desc F_VerifyDept_zh,  
+	yesno.F_Name valid_en, 
+	yesno.F_Desc valid
 from
-  T_Temp_Query_Result rec
-left join
-  T_Verify_Device_Info d,
-  T_Meter_Model mod,
-  T_meter_standard std,
-  T_Meter_PickCode tp,
-  T_manufacture_dept manu,
-  T_verify_dept vdpt,
-  T_Yes_No_Tab  yesno  
-on
-  rec.F_DeviceInfoID=d.F_ID and
-  rec.F_Standard=std.F_ID and
-  rec.F_PickCode=tp.F_ID and
-  rec.F_ManufactDept=manu.F_ID and
-  rec.F_VerifyDept=vdpt.F_ID and
-  rec.F_Model=mod.F_ID and
-  rec.F_Result=yesno.F_ID
-  order by rec.F_MeterPosNo, rec.f_meterno, rec.f_timestamp
+	T_Temp_Query_Result rec left join
+	T_Verify_Device_Info d on rec.F_DeviceInfoID=d.F_ID left join
+	T_Meter_Model mo on rec.F_Model=mo.F_ID left join
+	T_meter_standard st on rec.F_Standard=st.F_ID left join
+	T_Meter_PickCode tp on rec.F_PickCode=tp.F_ID left join
+	T_manufacture_dept manu on rec.F_ManufactDept=manu.F_ID left join
+	T_verify_dept vdpt on rec.F_VerifyDept=vdpt.F_ID left join
+	T_Yes_No_Tab  yesno on rec.F_Result=yesno.F_ID
+	order by rec.F_MeterPosNo, rec.f_meterno, rec.f_timestamp
 ;'
 );
 
