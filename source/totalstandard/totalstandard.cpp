@@ -1885,8 +1885,12 @@ void TotalStandardDlg::on_tableWidget_cellChanged(int row, int column)
 */
 int TotalStandardDlg::saveAllVerifyRecords()
 {
- 	insertTotalVerifyRec(m_recPtr, m_validMeterNum);
-	return true;
+ 	int ret = insertTotalVerifyRec(m_recPtr, m_validMeterNum);
+	if (ret != OPERATE_DB_OK)
+	{
+		QMessageBox::warning(this, tr("Error"), tr("Error:insert database failed!\n") + tr("Maybe network error!"));
+	}
+	return ret;
 }
 
 //请求读表号（所有表、广播地址读表）

@@ -4,44 +4,44 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../totalweight.cpp" line="561"/>
+        <location filename="../totalweight.cpp" line="569"/>
         <source>MeterValue0(kWh)</source>
         <translation>表初值(kwh)</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="562"/>
+        <location filename="../totalweight.cpp" line="570"/>
         <source>MeterValue1(kWh)</source>
         <translation>表终值(kwh)</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="563"/>
+        <location filename="../totalweight.cpp" line="571"/>
         <source>StdValue(kWh)</source>
         <translation>标准值(kwh)</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="567"/>
+        <location filename="../totalweight.cpp" line="575"/>
         <source>MeterValue0(MJ)</source>
         <translation>表初值(MJ)</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="568"/>
+        <location filename="../totalweight.cpp" line="576"/>
         <source>MeterValue1(MJ)</source>
         <translation>表终值(MJ)</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="569"/>
+        <location filename="../totalweight.cpp" line="577"/>
         <source>StdValue(MJ)</source>
         <translation>标准值(MJ)</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="678"/>
+        <location filename="../totalweight.cpp" line="686"/>
         <source>meterPosNo%1</source>
         <translation>表位%1</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="697"/>
-        <location filename="../totalweight.cpp" line="702"/>
-        <location filename="../totalweight.cpp" line="707"/>
+        <location filename="../totalweight.cpp" line="705"/>
+        <location filename="../totalweight.cpp" line="710"/>
+        <location filename="../totalweight.cpp" line="715"/>
         <source>(%1)</source>
         <translation></translation>
     </message>
@@ -478,16 +478,16 @@ t</source>
 <context>
     <name>TotalWeightDlg</name>
     <message>
-        <location filename="../totalweight.cpp" line="65"/>
-        <location filename="../totalweight.cpp" line="750"/>
-        <location filename="../totalweight.cpp" line="757"/>
-        <location filename="../totalweight.cpp" line="1033"/>
-        <location filename="../totalweight.cpp" line="1042"/>
+        <location filename="../totalweight.cpp" line="60"/>
+        <location filename="../totalweight.cpp" line="758"/>
+        <location filename="../totalweight.cpp" line="765"/>
+        <location filename="../totalweight.cpp" line="1041"/>
+        <location filename="../totalweight.cpp" line="1050"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="65"/>
+        <location filename="../totalweight.cpp" line="60"/>
         <source>Warning:get port set info failed!</source>
         <translation>警告: 获取端口信息失败!</translation>
     </message>
@@ -504,12 +504,12 @@ t</source>
         <translation type="obsolete">排气倒计时: %1 秒</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1082"/>
+        <location filename="../totalweight.cpp" line="1090"/>
         <source>Please input meter number!</source>
         <translation>请输入表号!</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="789"/>
+        <location filename="../totalweight.cpp" line="797"/>
         <source>Exhaust countdown finished!</source>
         <translation>排气结束!</translation>
     </message>
@@ -536,8 +536,8 @@ Please wait for about %1 second</source>
         <translation type="obsolete">所有流量点检定完毕!</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1137"/>
-        <location filename="../totalweight.cpp" line="1616"/>
+        <location filename="../totalweight.cpp" line="1145"/>
+        <location filename="../totalweight.cpp" line="1625"/>
         <source>Verify has Stoped!</source>
         <translation>检定终止!</translation>
     </message>
@@ -546,7 +546,7 @@ Please wait for about %1 second</source>
         <translation type="obsolete">请输入表号, 再点击&quot;开始&quot; 按钮!</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="197"/>
+        <location filename="../totalweight.cpp" line="202"/>
         <source>release pipe pressure...</source>
         <translation>正在释放管路压力...</translation>
     </message>
@@ -563,12 +563,12 @@ Please wait for about %1 second</source>
         <translation type="obsolete">读表数据</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="702"/>
+        <location filename="../totalweight.cpp" line="710"/>
         <source>VerifySt</source>
         <translation>检定状态</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="817"/>
+        <location filename="../totalweight.cpp" line="825"/>
         <source>prepare balance init weight ...</source>
         <translation>准备天平初始重量 ...</translation>
     </message>
@@ -577,135 +577,147 @@ Please wait for about %1 second</source>
         <translation type="obsolete">第 %1 流量点: 检定完毕!</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="750"/>
+        <location filename="../totalweight.cpp" line="758"/>
         <source>data acquisition error, please check!</source>
         <translation>数据采集错误，请检查!</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="757"/>
+        <location filename="../totalweight.cpp" line="765"/>
         <source>exhaust air failed!</source>
         <translation>排气失败!</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="178"/>
-        <location filename="../totalweight.cpp" line="1111"/>
-        <location filename="../totalweight.cpp" line="1173"/>
+        <location filename="../totalweight.cpp" line="183"/>
+        <location filename="../totalweight.cpp" line="1119"/>
+        <location filename="../totalweight.cpp" line="1181"/>
         <source>Question</source>
         <translation>提问</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="178"/>
+        <location filename="../totalweight.cpp" line="183"/>
         <source>Exit Really ?</source>
         <translation>确认退出 ?</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="697"/>
+        <location filename="../totalweight.cpp" line="705"/>
         <source>ReadData</source>
         <translation>读表数据</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="707"/>
+        <location filename="../totalweight.cpp" line="715"/>
         <source>ReadNO</source>
         <translation>读取表号</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="763"/>
-        <location filename="../totalweight.cpp" line="781"/>
+        <location filename="../totalweight.cpp" line="771"/>
+        <location filename="../totalweight.cpp" line="789"/>
         <source>Exhaust countdown: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; second</source>
         <translation>排气倒计时: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; 秒</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="852"/>
+        <location filename="../totalweight.cpp" line="860"/>
         <source>setting verify status ...</source>
         <translation>正在进入检定状态 ...</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="974"/>
-        <location filename="../totalweight.cpp" line="996"/>
-        <location filename="../totalweight.cpp" line="1879"/>
+        <location filename="../totalweight.cpp" line="982"/>
+        <location filename="../totalweight.cpp" line="1004"/>
+        <location filename="../totalweight.cpp" line="1888"/>
         <source>NO. &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; flow point: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; m3/h</source>
         <translation>第 &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; 流量点: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; m3/h </translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="976"/>
+        <location filename="../totalweight.cpp" line="984"/>
         <source>Verifying...Please wait for about &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; second</source>
         <translation>检定中...请等待约 &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; 秒</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="998"/>
+        <location filename="../totalweight.cpp" line="1006"/>
         <source>NO. &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; flow point: Verify Finished!</source>
         <translation>第 &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; 流量点: 通水结束!</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1033"/>
+        <location filename="../totalweight.cpp" line="1041"/>
         <source>please input minimum delta temperature!</source>
         <translation>请输入最小温差！</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1042"/>
+        <location filename="../totalweight.cpp" line="1050"/>
         <source>std temperature is error, please check!</source>
         <translation>标准温度数据有误，请检查！</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1111"/>
+        <location filename="../totalweight.cpp" line="1119"/>
         <source>Stop Really ?</source>
         <translation>确定要停止检测?</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1132"/>
+        <location filename="../totalweight.cpp" line="1140"/>
         <source>stopping verify...please wait a minute</source>
         <translation>正在停止检定...请稍候</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1164"/>
-        <location filename="../totalweight.cpp" line="1182"/>
+        <location filename="../totalweight.cpp" line="1172"/>
+        <location filename="../totalweight.cpp" line="1190"/>
         <source>Please input meter number!
  then click &quot;GoOn&quot; button!</source>
         <translation>请输入表号！
 然后点击“继续”按钮！</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1165"/>
-        <location filename="../totalweight.cpp" line="1620"/>
+        <location filename="../totalweight.cpp" line="1173"/>
+        <location filename="../totalweight.cpp" line="1629"/>
+        <location filename="../totalweight.cpp" line="2025"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1165"/>
+        <location filename="../totalweight.cpp" line="1173"/>
         <source>Error: meter count is zero !
 Please input meter number, then click &quot;GoOn&quot; button!</source>
         <translation>错误：被检表个数为零！
 请输入表号，然后点击“继续”按钮！</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1174"/>
+        <location filename="../totalweight.cpp" line="1182"/>
         <source>meter count maybe error ! read meter number again?
 click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue verify</source>
         <translation>读取表号可能有误！ 是否重新读取表号?
 点击 &quot;Yes&quot;重新读取表号；点击&quot;No&quot;继续检定</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1276"/>
-        <location filename="../totalweight.cpp" line="1381"/>
+        <location filename="../totalweight.cpp" line="1284"/>
+        <location filename="../totalweight.cpp" line="1389"/>
         <source>prepare balance capacity ...</source>
         <translation>准备天平容量 ...</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1400"/>
+        <location filename="../totalweight.cpp" line="1408"/>
         <source>please wait &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; seconds for reset zero</source>
         <translation>初值回零，请等待 &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; 秒</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1438"/>
-        <location filename="../totalweight.cpp" line="1898"/>
-        <location filename="../totalweight.cpp" line="1904"/>
+        <location filename="../totalweight.cpp" line="1446"/>
+        <location filename="../totalweight.cpp" line="1907"/>
+        <location filename="../totalweight.cpp" line="1913"/>
         <source>please input start value of heat meter</source>
         <translation>请输入表初值</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1616"/>
+        <location filename="../totalweight.cpp" line="1625"/>
         <source>export excel file successful!</source>
         <translation>导出Excel报表成功!</translation>
+    </message>
+    <message>
+        <location filename="../totalweight.cpp" line="2025"/>
+        <source>Error:insert database failed!
+</source>
+        <translation>错误：插入数据库失败！</translation>
+    </message>
+    <message>
+        <location filename="../totalweight.cpp" line="2025"/>
+        <source>Maybe network error!</source>
+        <translation>可能网络故障！</translation>
     </message>
     <message>
         <source>read start value of heat meter...</source>
@@ -716,7 +728,7 @@ click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue ve
         <translation type="obsolete">请输入表号</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1397"/>
+        <location filename="../totalweight.cpp" line="1405"/>
         <source>Reset Zero</source>
         <translation>初值回零</translation>
     </message>
@@ -725,7 +737,7 @@ click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue ve
         <translation type="obsolete">初值回零, 请等待 %1 秒</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1585"/>
+        <location filename="../totalweight.cpp" line="1594"/>
         <source>save database successfully!</source>
         <translation>保存检定数据成功!</translation>
     </message>
@@ -746,8 +758,8 @@ click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue ve
         <translation type="obsolete">请输入被检表初值</translation>
     </message>
     <message>
-        <location filename="../totalweight.cpp" line="1598"/>
-        <location filename="../totalweight.cpp" line="1926"/>
+        <location filename="../totalweight.cpp" line="1607"/>
+        <location filename="../totalweight.cpp" line="1935"/>
         <source>please input end value of heat meter</source>
         <translation>请输入被检表终值</translation>
     </message>

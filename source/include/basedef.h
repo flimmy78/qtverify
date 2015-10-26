@@ -4,6 +4,13 @@
 #include <intsafe.h>
 
 /*
+** 插入数据库记录成功或失败
+*/
+#define OPERATE_DB_OK		1	//操作数据库成功
+#define OPERATE_DB_FAIL		0	//操作默认数据库失败
+#define OPERATE_MYSQL_FAIL	-1	//同时操作SQLite和MySQL时，操作MySQL失败
+
+/*
 ** 热表检定相关宏定义
 */
 #define VALID_YEAR				2 //检表有效期 2年

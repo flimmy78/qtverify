@@ -4,44 +4,44 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../totalstandard.cpp" line="588"/>
+        <location filename="../totalstandard.cpp" line="598"/>
         <source>MeterValue0(kWh)</source>
         <translation>表初值(kWh)</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="589"/>
+        <location filename="../totalstandard.cpp" line="599"/>
         <source>MeterValue1(kWh)</source>
         <translation>表终值(kWh)</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="590"/>
+        <location filename="../totalstandard.cpp" line="600"/>
         <source>StdValue(kWh)</source>
         <translation>标准值(kWh)</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="594"/>
+        <location filename="../totalstandard.cpp" line="604"/>
         <source>MeterValue0(MJ)</source>
         <translation>表初值(MJ)</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="595"/>
+        <location filename="../totalstandard.cpp" line="605"/>
         <source>MeterValue1(MJ)</source>
         <translation>表终值(MJ)</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="596"/>
+        <location filename="../totalstandard.cpp" line="606"/>
         <source>StdValue(MJ)</source>
         <translation>标准值(MJ)</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="663"/>
+        <location filename="../totalstandard.cpp" line="673"/>
         <source>meterPosNo%1</source>
         <translation>表位%1</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="682"/>
-        <location filename="../totalstandard.cpp" line="687"/>
         <location filename="../totalstandard.cpp" line="692"/>
+        <location filename="../totalstandard.cpp" line="697"/>
+        <location filename="../totalstandard.cpp" line="702"/>
         <source>(%1)</source>
         <translation>(%1)</translation>
     </message>
@@ -515,158 +515,174 @@ t</source>
 <context>
     <name>TotalStandardDlg</name>
     <message>
-        <location filename="../totalstandard.cpp" line="65"/>
-        <location filename="../totalstandard.cpp" line="735"/>
-        <location filename="../totalstandard.cpp" line="742"/>
-        <location filename="../totalstandard.cpp" line="939"/>
-        <location filename="../totalstandard.cpp" line="948"/>
+        <location filename="../totalstandard.cpp" line="60"/>
+        <location filename="../totalstandard.cpp" line="745"/>
+        <location filename="../totalstandard.cpp" line="752"/>
+        <location filename="../totalstandard.cpp" line="949"/>
+        <location filename="../totalstandard.cpp" line="958"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="65"/>
+        <location filename="../totalstandard.cpp" line="60"/>
         <source>Warning:get port set info failed!</source>
         <translation>警告:获取端口设置信息失败!</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="175"/>
-        <location filename="../totalstandard.cpp" line="1018"/>
-        <location filename="../totalstandard.cpp" line="1080"/>
+        <location filename="../totalstandard.cpp" line="180"/>
+        <location filename="../totalstandard.cpp" line="1028"/>
+        <location filename="../totalstandard.cpp" line="1090"/>
         <source>Question</source>
         <translation>问题</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="175"/>
+        <location filename="../totalstandard.cpp" line="180"/>
         <source>Exit Really ?</source>
         <translation>确定退出?</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="194"/>
+        <location filename="../totalstandard.cpp" line="199"/>
         <source>release pipe pressure...</source>
         <translation>释放管路压力...</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="682"/>
         <source>ReadMeter</source>
-        <translation>读取表号</translation>
+        <translation type="obsolete">读取表号</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="687"/>
+        <location filename="../totalstandard.cpp" line="692"/>
+        <source>ReadData</source>
+        <translation>读表数据</translation>
+    </message>
+    <message>
+        <location filename="../totalstandard.cpp" line="697"/>
         <source>VerifySt</source>
         <translation>检定状态</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="692"/>
+        <location filename="../totalstandard.cpp" line="702"/>
         <source>ReadNO</source>
         <translation>读取表号</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="735"/>
+        <location filename="../totalstandard.cpp" line="745"/>
         <source>data acquisition error, please check!</source>
         <translation>数据采集错误, 请检查!</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="742"/>
+        <location filename="../totalstandard.cpp" line="752"/>
         <source>exhaust air failed!</source>
         <translation>排气失败!</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="748"/>
-        <location filename="../totalstandard.cpp" line="766"/>
+        <location filename="../totalstandard.cpp" line="758"/>
+        <location filename="../totalstandard.cpp" line="776"/>
         <source>Exhaust countdown: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; second</source>
         <translation>排气倒计时: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; 秒</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="794"/>
+        <location filename="../totalstandard.cpp" line="804"/>
         <source>setting verify status ...</source>
         <translation>正在进入检定状态 ...</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="883"/>
-        <location filename="../totalstandard.cpp" line="902"/>
-        <location filename="../totalstandard.cpp" line="1747"/>
+        <location filename="../totalstandard.cpp" line="893"/>
+        <location filename="../totalstandard.cpp" line="912"/>
+        <location filename="../totalstandard.cpp" line="1760"/>
         <source>NO. &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; flow point: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; m3/h</source>
         <translation>第 &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; 流量点: &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%2&lt;/b&gt;&lt;/font&gt; m3/h</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="885"/>
+        <location filename="../totalstandard.cpp" line="895"/>
         <source>Verifying...Please wait for about &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; second</source>
         <translation>检定中...请等待约 &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; 秒</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="904"/>
+        <location filename="../totalstandard.cpp" line="914"/>
         <source>NO. &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; flow point: Verify Finished!</source>
         <translation>第 &lt;font color=DarkGreen size=6&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; 流量点: 检定完毕!</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="939"/>
+        <location filename="../totalstandard.cpp" line="949"/>
         <source>please input minimum delta temperature!</source>
         <translation>请输入最小温差!</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="948"/>
+        <location filename="../totalstandard.cpp" line="958"/>
         <source>std temperature is error, please check!</source>
         <translation>标准温度计采集错误, 请检查!</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1018"/>
+        <location filename="../totalstandard.cpp" line="1028"/>
         <source>Stop Really ?</source>
         <translation>确定停止?</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1039"/>
+        <location filename="../totalstandard.cpp" line="1049"/>
         <source>stopping verify...please wait a minute</source>
         <translation>停止检定...请等待</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1071"/>
-        <location filename="../totalstandard.cpp" line="1089"/>
+        <location filename="../totalstandard.cpp" line="1081"/>
+        <location filename="../totalstandard.cpp" line="1099"/>
         <source>Please input meter number!
  then click &quot;GoOn&quot; button!</source>
         <translation>请输入表号!
  然后点击 &quot;继续&quot;按钮!</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1072"/>
-        <location filename="../totalstandard.cpp" line="1485"/>
+        <location filename="../totalstandard.cpp" line="1082"/>
+        <location filename="../totalstandard.cpp" line="1498"/>
+        <location filename="../totalstandard.cpp" line="1891"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1072"/>
+        <location filename="../totalstandard.cpp" line="1082"/>
         <source>Error: meter count is zero !
 Please input meter number, then click &quot;GoOn&quot; button!</source>
         <translation>错误: 被检表数量为零 !
 请输入表号, 然后点击&quot;继续&quot;按钮!</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1081"/>
+        <location filename="../totalstandard.cpp" line="1091"/>
         <source>meter count maybe error ! read meter number again?
 click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue verify</source>
         <translation>被检表数量可能有错!需要重新读表吗?
 点击&quot;Yes&quot;重新读表, 否则点击&quot;NO&quot;继续检表</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1255"/>
+        <location filename="../totalstandard.cpp" line="1265"/>
         <source>please wait &lt;font color=DarkGreen size=4&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; seconds for reset zero</source>
         <translation>请等待&lt;font color=DarkGreen size=4&gt;&lt;b&gt;%1&lt;/b&gt;&lt;/font&gt; 秒, 热表初值归零</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1283"/>
-        <location filename="../totalstandard.cpp" line="1766"/>
-        <location filename="../totalstandard.cpp" line="1772"/>
+        <location filename="../totalstandard.cpp" line="1293"/>
+        <location filename="../totalstandard.cpp" line="1779"/>
+        <location filename="../totalstandard.cpp" line="1785"/>
         <source>please input start value of heat meter</source>
         <translation>请输入被检表初值</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1449"/>
+        <location filename="../totalstandard.cpp" line="1462"/>
         <source>save database successfully!</source>
         <translation>保持成功!</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1481"/>
+        <location filename="../totalstandard.cpp" line="1494"/>
         <source>export excel file successful!</source>
         <translation>导出报告成功!</translation>
+    </message>
+    <message>
+        <location filename="../totalstandard.cpp" line="1891"/>
+        <source>Error:insert database failed!
+</source>
+        <translation>错误：插入数据库失败！</translation>
+    </message>
+    <message>
+        <location filename="../totalstandard.cpp" line="1891"/>
+        <source>Maybe network error!</source>
+        <translation>可能网络故障！</translation>
     </message>
     <message>
         <source>read start value of heat meter...</source>
@@ -685,12 +701,12 @@ click &apos;Yes&apos; to read meter again;or click &apos;No&apos; to continue ve
         <translation type="obsolete">排气倒计时: %1 秒</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="988"/>
+        <location filename="../totalstandard.cpp" line="998"/>
         <source>Please input meter number!</source>
         <translation>请输入表号!</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="774"/>
+        <location filename="../totalstandard.cpp" line="784"/>
         <source>Exhaust countdown finished!</source>
         <translation>排气结束!</translation>
     </message>
@@ -725,8 +741,8 @@ Please wait for about %1 second</source>
         <translation type="obsolete">所有流量点检定完毕!</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1044"/>
-        <location filename="../totalstandard.cpp" line="1481"/>
+        <location filename="../totalstandard.cpp" line="1054"/>
+        <location filename="../totalstandard.cpp" line="1494"/>
         <source>Verify has Stoped!</source>
         <translation>检定已停止!</translation>
     </message>
@@ -739,7 +755,7 @@ Please wait for about %1 second</source>
         <translation type="obsolete">请输入表号</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1252"/>
+        <location filename="../totalstandard.cpp" line="1262"/>
         <source>Reset Zero</source>
         <translation>初值回零</translation>
     </message>
@@ -756,8 +772,8 @@ Please wait for about %1 second</source>
         <translation type="obsolete">请输入表初值</translation>
     </message>
     <message>
-        <location filename="../totalstandard.cpp" line="1462"/>
-        <location filename="../totalstandard.cpp" line="1794"/>
+        <location filename="../totalstandard.cpp" line="1475"/>
+        <location filename="../totalstandard.cpp" line="1807"/>
         <source>please input end value of heat meter</source>
         <translation>请输入表终值</translation>
     </message>

@@ -257,7 +257,7 @@ int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id)
 */
 int insertFlowVerifyRec(Flow_Verify_Record_PTR ptr, int num)
 {
-	int ret = 1;
+	int ret = OPERATE_DB_OK;
 	for (int i=0; i<num; i++)
 	{
 		QSqlQuery query(g_defaultdb); // 新建一个查询的实例
@@ -349,7 +349,7 @@ int insertFlowVerifyRec(Flow_Verify_Record_PTR ptr, int num)
 		{
  			QSqlError error = query.lastError();
 			qWarning()<<error.text();
-			ret = 0;
+			ret = OPERATE_DB_FAIL;
 		}
 		//同时写入MySQL数据库
 		if (g_dbtype==T_BOTH)
@@ -363,7 +363,7 @@ int insertFlowVerifyRec(Flow_Verify_Record_PTR ptr, int num)
 			{
 				QSqlError error2 = query2.lastError();
 				qWarning()<<error2.text();
-				ret = 0;
+				ret = OPERATE_MYSQL_FAIL;
 			}
 		}
 	}
@@ -376,6 +376,8 @@ int insertFlowVerifyRec(Flow_Verify_Record_PTR ptr, int num)
 */
 int modifyFlowVerifyRec_MeterNO(QString newMeterNO, QString timeStamp, int meterPos)
 {
+	int ret = OPERATE_DB_OK;
+
 	QSqlQuery query(g_defaultdb); // 新建一个查询的实例
 	QString sql = "update T_Flow_Verify_Record set F_MeterNo=";
 	sql.append(newMeterNO);
@@ -391,9 +393,25 @@ int modifyFlowVerifyRec_MeterNO(QString newMeterNO, QString timeStamp, int meter
 	{
 		QSqlError error = query.lastError();
 		qWarning()<<error.text();
+		ret = OPERATE_DB_FAIL;
+	}
+	//同时写入MySQL数据库
+	if (g_dbtype==T_BOTH)
+	{
+		QSqlQuery query2(g_mysqldb); // 新建一个查询的实例
+		if (query2.exec(sql))
+		{
+			qDebug()<<"update MySQL database succeed";
+		}
+		else
+		{
+			QSqlError error2 = query2.lastError();
+			qWarning()<<error2.text();
+			ret = OPERATE_MYSQL_FAIL;
+		}
 	}
 
-	return true;
+	return ret;
 }
 
 /*
@@ -401,7 +419,7 @@ int modifyFlowVerifyRec_MeterNO(QString newMeterNO, QString timeStamp, int meter
 */
 int insertTotalVerifyRec(Total_Verify_Record_PTR ptr, int num)
 {
-	int ret = 1;
+	int ret = OPERATE_DB_OK;
 	for (int i=0; i<num; i++)
 	{
 		QSqlQuery query(g_defaultdb); // 新建一个查询的实例
@@ -497,7 +515,7 @@ int insertTotalVerifyRec(Total_Verify_Record_PTR ptr, int num)
 		{
  			QSqlError error = query.lastError();
 			qWarning()<<error.text();
-			ret = 0;
+			ret = OPERATE_DB_FAIL;
 		}
 		//同时写入MySQL数据库
 		if (g_dbtype==T_BOTH)
@@ -511,7 +529,7 @@ int insertTotalVerifyRec(Total_Verify_Record_PTR ptr, int num)
 			{
 				QSqlError error2 = query2.lastError();
 				qWarning()<<error2.text();
-				ret = 0;
+				ret = OPERATE_MYSQL_FAIL;
 			}
 		}
 	}
@@ -665,7 +683,7 @@ int getDatabaseParaIni(DatabasePara_PTR info)
 
 int insertPlatinumVerifyRec(T_Platinum_Verify_Record_PTR ptr, int num)
 {
-	int ret = 1;
+	int ret = OPERATE_DB_OK;
 	for (int i=0; i<num; i++)
 	{
 		QSqlQuery query(g_defaultdb); // 新建一个查询的实例
@@ -751,7 +769,7 @@ int insertPlatinumVerifyRec(T_Platinum_Verify_Record_PTR ptr, int num)
 		{
 			QSqlError error = query.lastError();
 			qWarning()<<error.text();
-			ret = 0;
+			ret = OPERATE_DB_FAIL;
 		}
 		//同时写入MySQL数据库
 		if (g_dbtype==T_BOTH)
@@ -765,7 +783,7 @@ int insertPlatinumVerifyRec(T_Platinum_Verify_Record_PTR ptr, int num)
 			{
 				QSqlError error2 = query2.lastError();
 				qWarning()<<error2.text();
-				ret = 0;
+				ret = OPERATE_MYSQL_FAIL;
 			}
 		}
 	}
@@ -778,7 +796,7 @@ int insertPlatinumVerifyRec(T_Platinum_Verify_Record_PTR ptr, int num)
 */
 int insertCalcVerifyRec(Calc_Verify_Record_PTR ptr, int num)
 {
-	int ret = 1;
+	int ret = OPERATE_DB_OK;
 	for (int i=0; i<num; i++)
 	{
 		QSqlQuery query(g_defaultdb); // 新建一个查询的实例
@@ -860,7 +878,7 @@ int insertCalcVerifyRec(Calc_Verify_Record_PTR ptr, int num)
 		{
 			QSqlError error = query.lastError();
 			qWarning()<<error.text();
-			ret = 0;
+			ret = OPERATE_DB_FAIL;
 		}
 		//同时写入MySQL数据库
 		if (g_dbtype==T_BOTH)
@@ -874,7 +892,7 @@ int insertCalcVerifyRec(Calc_Verify_Record_PTR ptr, int num)
 			{
 				QSqlError error2 = query2.lastError();
 				qWarning()<<error2.text();
-				ret = 0;
+				ret = OPERATE_MYSQL_FAIL;
 			}
 		}
 	}
@@ -887,7 +905,7 @@ int insertCalcVerifyRec(Calc_Verify_Record_PTR ptr, int num)
 */
 int insertCmbVerifyRec(Cmb_Verify_Record_PTR ptr, int num)
 {
-	int ret = 1;
+	int ret = OPERATE_DB_OK;
 	for (int i=0; i<num; i++)
 	{
 		QSqlQuery query(g_defaultdb); // 新建一个查询的实例
@@ -966,7 +984,7 @@ int insertCmbVerifyRec(Cmb_Verify_Record_PTR ptr, int num)
 		{
 			QSqlError error = query.lastError();
 			qWarning()<<error.text();
-			ret = 0;
+			ret = OPERATE_DB_FAIL;
 		}
 		//同时写入MySQL数据库
 		if (g_dbtype==T_BOTH)
@@ -980,7 +998,7 @@ int insertCmbVerifyRec(Cmb_Verify_Record_PTR ptr, int num)
 			{
 				QSqlError error2 = query2.lastError();
 				qWarning()<<error2.text();
-				ret = 0;
+				ret = OPERATE_MYSQL_FAIL;
 			}
 		}
 	}
@@ -992,7 +1010,7 @@ int insertCmbVerifyRec(Cmb_Verify_Record_PTR ptr, int num)
 
 int insertPidRec(PIDDataPtr pidPtr)
 {
-	int ret = 1;
+	int ret = OPERATE_DB_OK;
 
 	QSqlQuery query(g_defaultdb); // 新建一个查询的实例
 	QString sql = "insert into T_PID_Setting_Record";
@@ -1062,7 +1080,7 @@ int insertPidRec(PIDDataPtr pidPtr)
 	{
 		QSqlError error = query.lastError();
 		qWarning()<<error.text();
-		ret = 0;
+		ret = OPERATE_DB_FAIL;
 	}
 	//同时写入MySQL数据库
 	if (g_dbtype==T_BOTH)
@@ -1076,7 +1094,7 @@ int insertPidRec(PIDDataPtr pidPtr)
 		{
 			QSqlError error2 = query2.lastError();
 			qWarning()<<error2.text();
-			ret = 0;
+			ret = OPERATE_MYSQL_FAIL;
 		}
 	}
 
