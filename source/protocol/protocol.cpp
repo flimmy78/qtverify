@@ -745,7 +745,7 @@ OldCtrlProtocol::OldCtrlProtocol()
 	portCloseMap.insert(4, 0xE7);
 	portCloseMap.insert(5, 0xE9);
 	portCloseMap.insert(6, 0xEB);
-	portCloseMap.insert(7, 0xED);
+	portCloseMap.insert(7, 0xEC); //注意：7#端口必须接放水阀（此处与协议文档里的开关状态相反）
 	portCloseMap.insert(8, 0xEF);
 
 	portOpenMap.insert(1, 0xE0);
@@ -754,7 +754,7 @@ OldCtrlProtocol::OldCtrlProtocol()
 	portOpenMap.insert(4, 0xE6);
 	portOpenMap.insert(5, 0xE8);
 	portOpenMap.insert(6, 0xEA);
-	portOpenMap.insert(7, 0xEC);
+	portOpenMap.insert(7, 0xED); //注意：7#端口必须接放水阀（此处与协议文档里的开关状态相反）
 	portOpenMap.insert(8, 0xEE);
 
 	regPortMap.insert(1, 0xF2);
