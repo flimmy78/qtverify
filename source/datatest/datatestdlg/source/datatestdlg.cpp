@@ -37,6 +37,8 @@ void DataTestDlg::closeEvent( QCloseEvent * event)
 {
 	qDebug()<<"^^^^^DataTestDlg::closeEvent";
 
+// 	m_controlObj->askControlRelay(m_portsetinfo.waterOutNo, VALVE_OPEN); //退出时自动打开放水阀
+
 	if (m_paraSetReader) //读检定参数
 	{
 		delete m_paraSetReader;
@@ -670,7 +672,7 @@ void DataTestDlg::initValveStatus()
 	m_valveStatus[m_portsetinfo.middle1No] = VALVE_CLOSE;
 	m_valveStatus[m_portsetinfo.middle2No] = VALVE_CLOSE;
 	m_valveStatus[m_portsetinfo.waterInNo] = VALVE_CLOSE;
-	m_valveStatus[m_portsetinfo.waterOutNo] = VALVE_CLOSE;
+	m_valveStatus[m_portsetinfo.waterOutNo] = VALVE_OPEN;
 	//端口号-水泵状态 初始为关闭
 	m_valveStatus[m_portsetinfo.pumpNo] = VALVE_CLOSE;
 
@@ -745,7 +747,7 @@ void DataTestDlg::on_btnWaterIn_clicked() //进水阀
 void DataTestDlg::on_btnWaterOut_clicked() //出水阀
 {
 	m_nowPortNo = m_portsetinfo.waterOutNo;
-	m_controlObj->askControlRelay(m_nowPortNo, m_valveStatus[m_nowPortNo]);
+	m_controlObj->askControlRelay(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
 
 	if (m_portsetinfo.version == OLD_CTRL_VERSION) //老控制板 无反馈
 	{
