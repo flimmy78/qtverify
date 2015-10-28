@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1035</width>
+    <width>1147</width>
     <height>770</height>
    </rect>
   </property>
@@ -17,7 +17,7 @@
    <iconset resource="../resultquery.qrc">
     <normaloff>:/resultquery/images/flowresult.png</normaloff>:/resultquery/images/flowresult.png</iconset>
   </property>
-  <layout class="QGridLayout" name="gridLayout_8">
+  <layout class="QGridLayout" name="gridLayout_9">
    <item row="0" column="0">
     <layout class="QGridLayout" name="gridLayout_6">
      <item row="0" column="0">
@@ -453,8 +453,8 @@
     <widget class="QTableView" name="tableView"/>
    </item>
    <item row="2" column="0" colspan="5">
-    <layout class="QHBoxLayout" name="horizontalLayout_5">
-     <item>
+    <layout class="QGridLayout" name="gridLayout_8">
+     <item row="0" column="0">
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="QSpinBox" name="spinBoxNums">
@@ -479,20 +479,39 @@
        </item>
       </layout>
      </item>
-     <item>
+     <item row="0" column="1">
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>231</width>
+         <width>358</width>
          <height>20</height>
         </size>
        </property>
       </spacer>
      </item>
-     <item>
+     <item row="0" column="2">
+      <widget class="QPushButton" name="btnImport">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>200</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Import</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
       <widget class="QPushButton" name="btnExit">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">

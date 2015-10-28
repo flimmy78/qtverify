@@ -30,11 +30,14 @@ private:
 	Ui::FlowResultClass ui;
 	QSqlRelationalTableModel *model;
 	QString m_conStr;//²éÑ¯Ìõ¼þ
+
 private slots:
 	void on_btnQuery_clicked();
 	void on_btnStop_clicked();
 	void on_btnExport_clicked();
 	void on_btnExit_clicked();
+	void on_btnImport_clicked();
+
 private:
 	void getCondition();
 	void queryData();

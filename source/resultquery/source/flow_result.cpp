@@ -17,6 +17,7 @@
 #include <QtGui/QTextEdit>
 #include <QtCore/QDebug>
 #include <QtSql/QSqlRecord>
+#include <QtSql/QSqlField>
 #include <QtSql/QSqlIndex>
 #include <QtSql/QSqlRelationalDelegate>
 #include <QtGui/QFileDialog>
@@ -334,3 +335,84 @@ void FlowResultDlg::on_btnExit_clicked()
 {
 	this->close();
 }
+
+void FlowResultDlg::on_btnImport_clicked()
+{
+	//从本地SQLite数据库查询数据
+	QSqlQuery query1(g_defaultdb);
+	QString sql1 = "select * from T_Flow_Verify_Record where " + m_conStr;
+	bool ok1 = query1.exec(sql1);
+	if (!ok1) //查询失败
+	{
+		QSqlError error = query1.lastError();
+		QString err = error.databaseText();
+		return; //返回
+	}
+	int rowNum = 0; //查询到的记录个数
+	if (g_defaultdb.driver()->hasFeature(QSqlDriver::QuerySize))
+	{
+		rowNum = query1.size();
+	}
+	else
+	{
+		query1.last();
+		rowNum = query1.at() + 1;
+	}
+	QSqlRecord rec = query1.record();
+	int colNum = rec.count(); //表列数
+
+	//远程MySQL数据库
+	QSqlQuery query2(g_mysqldb);
+	QString sql2 = "insert into T_Flow_Verify_Record values(";
+	int i = 0, j = 0;
+	for (i = 0; i < colNum; i++)
+	{
+		sql2.append("?, ");
+	}
+	sql2.replace(sql2.size()-2, 1, ")");
+	query2.prepare(sql2);
+
+	QVariantList vals2;
+	for (int m=0; m<rowNum; m++)
+	{
+		vals2<<QVariant(QVariant::Int);
+	}
+	query2.addBindValue(vals2); //F_ID
+
+	for (j = 1; j < colNum; j++) //从第二列"F_TimeStamp"开始逐列遍历
+	{
+		QVariantList vals;
+		if (query1.first())
+		{
+			do 
+			{
+/*				switch (rec.field(j).type())
+				{
+				case QVariant::String:
+					vals<<query1.value(j).toString();
+					break;
+				case QVariant::Int:
+					vals<<query1.value(j).toInt();
+					break;
+				default:
+					vals<<query1.value(j);
+					break;
+				}*/
+				vals<<query1.value(j);
+			} while (query1.next());
+			query2.addBindValue(vals);
+		}
+	}
+	if (query2.execBatch())
+	{
+
+		qDebug()<<"Import from SQLite to MySQL success :"<<rowNum<<"records!";
+		QMessageBox::information(this, tr("Import Success"), QString("Import from SQLite to MySQL : %1 records!").arg(rowNum));
+	}
+	else
+	{
+		qDebug()<<query2.lastError();
+		QMessageBox::information(this, tr("Import Failed"), query2.lastError().databaseText());
+	}
+}
+
