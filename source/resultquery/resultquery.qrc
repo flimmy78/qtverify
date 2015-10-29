@@ -7,5 +7,6 @@
     <file>images/totalresult.png</file>
     <file>images/queryresult.png</file>
     <file>images/queryexcel.png</file>
+    <file>images/wait.png</file>
   </qresource>
 </RCC>

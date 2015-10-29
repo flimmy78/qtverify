@@ -15,12 +15,14 @@
 #include <QtGui/QMessageBox>
 #include <QtGui/QDateTimeEdit>
 #include <QtGui/QTextEdit>
+#include <QtGui/QMovie>
 #include <QtCore/QDebug>
 #include <QtSql/QSqlRecord>
 #include <QtSql/QSqlField>
 #include <QtSql/QSqlIndex>
 #include <QtSql/QSqlRelationalDelegate>
 #include <QtGui/QFileDialog>
+#include <QtGui/QProgressDialog>
 #include <QtCore/QProcessEnvironment>
 #include <QAxObject>
 
@@ -28,6 +30,7 @@
 #include "qexcel.h"
 #include "qtexdb.h"
 #include "report.h"
+#include "algorithm.h"
 
 FlowResultDlg::FlowResultDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
@@ -49,6 +52,14 @@ FlowResultDlg::FlowResultDlg(QWidget *parent, Qt::WFlags flags)
 	ui.btnInsert->hide();
 	ui.btnStop->hide();
 	ui.spinBoxNums->hide();
+
+// 	ui.labelProgress->hide();
+/*	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
+	QString waitgif = adehome.replace("\\", "\/") + "\/uif\/pixmap\/loading.gif";
+	QMovie *movie = new QMovie(waitgif);
+	ui.labelProgress->setMovie(movie);
+	movie->start();*/
+// 	ui.labelProgress->show();
 }
 
 FlowResultDlg::~FlowResultDlg()
@@ -338,6 +349,27 @@ void FlowResultDlg::on_btnExit_clicked()
 
 void FlowResultDlg::on_btnImport_clicked()
 {
+/*	QProgressDialog *dlg = new QProgressDialog(this);
+	QFont font("ZYSong18030",12);
+	dlg->setFont(font);
+	dlg->setWindowModality(Qt::WindowModal);
+	dlg->setMinimumDuration(5);
+	dlg->setWindowTitle(tr("Please Waiting"));
+	dlg->setWindowIcon(QIcon(":/resultquery/images/wait.png"));
+	dlg->setLabelText(tr("Importing..."));
+	dlg->setCancelButtonText(tr("Cancel"));
+	dlg->setRange(0, 10);
+	for (int i=0; i<=10; i++)
+	{
+		dlg->setValue(i);
+		qApp->processEvents();
+		wait(1000);
+		if (dlg->wasCanceled())
+		{
+			return;
+		}
+	}*/
+
 	//从本地SQLite数据库查询数据
 	QSqlQuery query1(g_defaultdb);
 	QString sql1 = "select * from T_Flow_Verify_Record where " + m_conStr;
@@ -362,10 +394,14 @@ void FlowResultDlg::on_btnImport_clicked()
 	int colNum = rec.count(); //表列数
 
 	//远程MySQL数据库
+// 	if (g_mysqldb.driver()->hasFeature(QSqlDriver::Transactions))
+// 	{
+// 		g_mysqldb.transaction();
+// 	}
+	g_mysqldb.transaction();
 	QSqlQuery query2(g_mysqldb);
 	QString sql2 = "insert into T_Flow_Verify_Record values(";
-	int i = 0, j = 0;
-	for (i = 0; i < colNum; i++)
+	for (int i = 0; i < colNum; i++)
 	{
 		sql2.append("?, ");
 	}
@@ -378,8 +414,7 @@ void FlowResultDlg::on_btnImport_clicked()
 		vals2<<QVariant(QVariant::Int);
 	}
 	query2.addBindValue(vals2); //F_ID
-
-	for (j = 1; j < colNum; j++) //从第二列"F_TimeStamp"开始逐列遍历
+	for (int j = 1; j < colNum; j++) //从第二列"F_TimeStamp"开始逐列遍历
 	{
 		QVariantList vals;
 		if (query1.first())
@@ -403,16 +438,17 @@ void FlowResultDlg::on_btnImport_clicked()
 			query2.addBindValue(vals);
 		}
 	}
-	if (query2.execBatch())
+	bool ok2 = query2.execBatch();
+	g_mysqldb.commit();
+	if (ok2)
 	{
-
 		qDebug()<<"Import from SQLite to MySQL success :"<<rowNum<<"records!";
 		QMessageBox::information(this, tr("Import Success"), QString("Import from SQLite to MySQL : %1 records!").arg(rowNum));
 	}
 	else
 	{
 		qDebug()<<query2.lastError();
-		QMessageBox::information(this, tr("Import Failed"), query2.lastError().databaseText());
-	}
+		QMessageBox::warning(this, tr("Import Failed"), query2.lastError().databaseText());
+	}	
 }
 
