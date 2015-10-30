@@ -628,6 +628,9 @@ void MeterComObject::setProtocolVersion(int version)
 	case PROTOCOL_VER_HUIZH: //汇中超声波表
 		m_meterProtocol = new HuiZhongMeterProtocol();
 		break;
+	case PROTOCOL_VER_ADE:   //航天德鲁超声波表
+		m_meterProtocol = new AdeMeterProtocol();
+		break;
 	default: 
 		m_meterProtocol =  new DeluMeterProtocol();
 		break;
@@ -682,25 +685,26 @@ void MeterComObject::readMeterComBuffer()
 	{
 		return;
 	}
+	wait(500);
 	m_meterTmp.append(m_meterCom->readAll());
-	int idx = m_meterTmp.indexOf(METER_START_CODE); //起始符
-	if (idx < 0)
-	{
-		return;
-	}
-	int num = m_meterTmp.size();
-	if (num <= idx + 10)
-	{
-		return;
-	}
-	UINT8 datalen = (UINT8)m_meterTmp.at(10+idx);
-	int framelen = idx + 13 + datalen;
-	if (num < framelen || m_meterTmp.at(num-1) !=  METER_END_CODE) //一帧接收完毕
-	{
-		return;
-	}
+// 	int idx = m_meterTmp.indexOf(METER_START_CODE); //起始符
+// 	if (idx < 0)
+// 	{
+// 		return;
+// 	}
+// 	int num = m_meterTmp.size();
+// 	if (num <= idx + 10)
+// 	{
+// 		return;
+// 	}
+// 	UINT8 datalen = (UINT8)m_meterTmp.at(10+idx);
+// 	int framelen = idx + 13 + datalen;
+// 	if (num < framelen || m_meterTmp.at(num-1) !=  METER_END_CODE) //一帧接收完毕
+// 	{
+// 		return;
+// 	}
 
-	qDebug()<<m_meterCom->portName()<<"readMeterComBuffer MeterComObject thread:"<<QThread::currentThreadId();
+// 	qDebug()<<m_meterCom->portName()<<"readMeterComBuffer MeterComObject thread:"<<QThread::currentThreadId();
 	qDebug()<<m_meterCom->portName()<<"read"<<m_meterTmp.size()<<"bytes!";
 	QDateTime begintime = QDateTime::currentDateTime();
 	qDebug()<<"begintime:"<<begintime.toString("yyyy-MM-dd HH:mm:ss.zzz");
@@ -829,6 +833,24 @@ void MeterComObject::askSetVerifyStatus(int vType)
 }
 
 /*
+** 请求退出检定状态
+** 输入参数 vType: 检定类型
+				0：流量检定
+				1：热量检定
+*/
+void MeterComObject::askExitVerifyStatus(int vType)
+{
+	qDebug()<<"111 MeterComObject askExitVerifyStatus thread:"<<QThread::currentThreadId();
+	if (NULL==m_meterProtocol)
+	{
+		return;
+	}
+	m_meterProtocol->makeFrameOfExitVerifyStatus(vType);
+	QByteArray buf = m_meterProtocol->getSendFrame();
+	m_meterCom->write(buf);
+}
+
+/*
 ** 请求修改表号(14位表号)
 */
 void MeterComObject::askModifyMeterNO(QString oldMeterNo, QString newMeterNo)
@@ -884,6 +906,67 @@ void MeterComObject::askModifyFlowCoe(QString meterNO, float bigErr, float mid2E
 	QByteArray buf = m_meterProtocol->getSendFrame();
 	m_meterCom->write(buf);
 }
+
+/*
+** 设置口径-航天德鲁热量表
+*/
+void MeterComObject::askSetStandard(UINT8 std)
+{
+	qDebug()<<"222 MeterComObject askSetStandard thread:"<<QThread::currentThreadId();
+	if (NULL==m_meterProtocol)
+	{
+		return;
+	}
+	m_meterProtocol->makeFrameOfSetStandard(std);
+	QByteArray buf = m_meterProtocol->getSendFrame();
+	m_meterCom->write(buf);
+}
+
+/*
+** 设置系统时间-航天德鲁热量表
+*/
+void MeterComObject::askSetSystemTime()
+{
+	qDebug()<<"222 MeterComObject askSetSystemTime thread:"<<QThread::currentThreadId();
+	if (NULL==m_meterProtocol)
+	{
+		return;
+	}
+	m_meterProtocol->makeFrameOfSetSystemTime();
+	QByteArray buf = m_meterProtocol->getSendFrame();
+	m_meterCom->write(buf);
+}
+
+/*
+** 设置一级地址-航天德鲁热量表
+*/
+void MeterComObject::askSetAddress1(QString curAddr1, QString newAddr2)
+{
+	qDebug()<<"222 MeterComObject askSetAddress1 thread:"<<QThread::currentThreadId();
+	if (NULL==m_meterProtocol)
+	{
+		return;
+	}
+	m_meterProtocol->makeFrameOfSetAddress1(curAddr1, newAddr2);
+	QByteArray buf = m_meterProtocol->getSendFrame();
+	m_meterCom->write(buf);
+}
+
+/*
+** 设置二级地址-航天德鲁热量表
+*/
+void MeterComObject::askSetAddress2(QString curAddr1, QString newAddr2)
+{
+	qDebug()<<"222 MeterComObject askSetAddress2 thread:"<<QThread::currentThreadId();
+	if (NULL==m_meterProtocol)
+	{
+		return;
+	}
+	m_meterProtocol->makeFrameOfSetAddress2(curAddr1, newAddr2);
+	QByteArray buf = m_meterProtocol->getSendFrame();
+	m_meterCom->write(buf);
+}
+
 
 /*
 ** 类名：StdTempComObject

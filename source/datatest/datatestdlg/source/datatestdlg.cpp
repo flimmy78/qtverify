@@ -1063,8 +1063,15 @@ void DataTestDlg::clearMeterDispInfo()
 //设置检定状态
 void DataTestDlg::on_btnSetVerifyStatus_clicked()
 {
-	qDebug()<<"设置进入检定状态...";
+	qDebug()<<"进入检定状态...";
 	m_meterObj->askSetVerifyStatus(); //设置进入检定状态
+}
+
+//退出检定状态
+void DataTestDlg::on_btnExitVerifyStatus_clicked()
+{
+	qDebug()<<"退出检定状态...";
+	m_meterObj->askExitVerifyStatus(); //设置退出检定状态
 }
 
 //读表数据
@@ -1194,6 +1201,39 @@ void DataTestDlg::on_btn2ModifyFlowCoe_clicked()
 	m_meterObj->askModifyFlowCoe(meterNO, bigErr, mid2Err, mid1Err, smallErr, m_oldCoe);
 }
 
+//设置口径
+void DataTestDlg::on_btnSetStandard_clicked()
+{
+	qDebug()<<"设置口径 ...";
+	UINT8 std = ui.cmbStandard->currentIndex() + 1;
+	m_meterObj->askSetStandard(std); //设置口径
+}
+
+//设置系统时间
+void DataTestDlg::on_btnSetTime_clicked()
+{
+	qDebug()<<"设置系统时间 ...";
+	m_meterObj->askSetSystemTime(); //设置系统时间
+}
+
+//设置一级地址
+void DataTestDlg::on_btnSetAddr1_clicked()
+{
+	qDebug()<<"设置一级地址 ...";
+	QString curAddr1 = ui.lnEditCurAddr1->text();
+	QString newAddr1 = ui.lnEditAddress1->text();
+	m_meterObj->askSetAddress1(curAddr1, newAddr1); //设置一级地址
+}
+
+//设置二级地址
+void DataTestDlg::on_btnSetAddr2_clicked()
+{
+	qDebug()<<"设置二级地址 ...";
+	QString curAddr1 = ui.lnEditCurAddr1->text();
+	QString newAddr2 = ui.lnEditAddress2->text();
+	m_meterObj->askSetAddress2(curAddr1, newAddr2); //设置二级地址
+}
+
 //响应读取表号成功
 void DataTestDlg::slotFreshMeterNo(const QString& comName, const QString& meterNo)
 {
@@ -1282,10 +1322,13 @@ void DataTestDlg::setMeterComboxEnabled(bool flag)
 void DataTestDlg::setMeterOperBtnEnabled(bool flag)
 {
 	ui.btnSetVerifyStatus->setEnabled(flag);
+	ui.btnExitVerifyStatus->setEnabled(flag);
 	ui.btnReadMeterData->setEnabled(flag);
 	ui.btnModifyMeterNo->setEnabled(flag);
 	ui.btnModifyFlowCoe->setEnabled(flag);
 	ui.btn2ModifyFlowCoe->setEnabled(flag);
+	ui.btnSetStandard->setEnabled(flag);
+	ui.cmbStandard->setEnabled(flag);
 }
 
 

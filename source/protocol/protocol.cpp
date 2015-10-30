@@ -873,6 +873,9 @@ MeterProtocol::MeterProtocol()
 	
 	m_CJ188DataFrame = new CJ188_Frame_Struct();
 	memset(m_CJ188DataFrame, 0, sizeof(CJ188_Frame_Struct));
+
+	m_GB26831DataFrame = new GB26831_Frame_Struct();
+	memset(m_GB26831DataFrame, 0, sizeof(GB26831_Frame_Struct));
 }
 
 MeterProtocol::~MeterProtocol()
@@ -881,6 +884,12 @@ MeterProtocol::~MeterProtocol()
 	{
 		delete m_CJ188DataFrame;
 		m_CJ188DataFrame = NULL;
+	}
+
+	if (m_GB26831DataFrame)
+	{
+		delete m_GB26831DataFrame;
+		m_GB26831DataFrame = NULL;
 	}
 }
 
@@ -1658,6 +1667,621 @@ void HuiZhongMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigE
 {
 
 }
+
+/***********************************************
+类名：ADEMeterProtocol
+功能：热量表通讯协议-航天德鲁热量表
+************************************************/
+AdeMeterProtocol::AdeMeterProtocol()
+{
+}
+
+AdeMeterProtocol::~AdeMeterProtocol()
+{
+}
+
+//解帧
+UINT8 AdeMeterProtocol::readMeterComBuffer(QByteArray tmp)
+{
+	qDebug()<<"AdeMeterProtocol::readMeterComBuffer thread:"<<QThread::currentThreadId();
+
+	UINT8 ret = 0x00;
+/*	int state = STATE_METER_START;
+	UINT8 ch = 0; //无符号8位数字
+	int number = tmp.size();
+
+	int m=0;
+	int addr_num=0, dataID_num=0, data_num=0;
+	UINT8 ck=0; //程序计算的检验码
+	for (m=0; m<number; m++)
+	{
+		ch = (UINT8)tmp.at(m);
+		// 		qDebug()<<"read data is:"<<ch;
+		if (ch == METER_PREFIX_CODE)
+		{
+			continue;
+		}
+		switch(state)
+		{
+		case STATE_METER_START: //
+			if (ch == METER_START_CODE)
+			{
+				m_CJ188DataFrame->startCode = METER_START_CODE;
+				state = STATE_METER_TYPE;
+			}
+			break;
+		case STATE_METER_TYPE: //
+			m_CJ188DataFrame->typeCode = ch;
+			state = STATE_METER_ADDR;
+			break;
+		case STATE_METER_ADDR: //
+			m_CJ188DataFrame->addr[addr_num++] = ch;
+			if (addr_num == CJ188_ADDR_LEN)
+			{
+				state = STATE_METER_CTRL;
+				addr_num = 0;
+			}
+			break;
+		case STATE_METER_CTRL: //
+			m_CJ188DataFrame->ctrlCode = ch;
+			state = STATE_METER_DATALEN;
+			break;
+		case STATE_METER_DATALEN: //
+			m_CJ188DataFrame->dataLen = ch;
+			state = STATE_METER_DATAID;
+			break;
+		case STATE_METER_DATAID: //
+			m_CJ188DataFrame->dataID[dataID_num++] = ch;
+			if (dataID_num == CJ188_DATAID_LEN)
+			{
+				state = STATE_METER_SN;
+				dataID_num = 0;
+			}
+			break;
+		case STATE_METER_SN: //序列号
+			m_CJ188DataFrame->sn = ch;
+			if (m_CJ188DataFrame->dataLen <= 3)
+			{
+				state = STATE_METER_CS;
+			}
+			else
+			{
+				state = STATE_METER_DATA;
+			}
+			break;
+		case STATE_METER_DATA: //
+			m_CJ188DataFrame->data[data_num++] = ch;
+			if (data_num == m_CJ188DataFrame->dataLen-3)
+			{
+				state = STATE_METER_CS;
+				data_num = 0;
+			}
+			break;
+		case STATE_METER_CS: //
+			m_CJ188DataFrame->cs = ch;
+			state = STATE_METER_END;
+			break;
+		case STATE_METER_END: //
+			m_CJ188DataFrame->endCode = ch;
+			state = STATE_METER_START;
+			ck = CountCheck(m_CJ188DataFrame);
+			if (ck == m_CJ188DataFrame->cs) //校验通过
+			{
+				analyseFrame();
+				ret = 1; //
+				qDebug()<<"check is ok 校验通过";
+			}
+			break;
+		default :
+			state = STATE_METER_START;
+			break;
+		} //END OF switch(state)        
+	} //END OF for (m=0; m<number; m++)
+*/
+	return ret;
+}
+
+void AdeMeterProtocol::analyseFrame()
+{
+	qDebug()<<"AdeMeterProtocol::analyseFrame thread:"<<QThread::currentThreadId();
+/*	if (NULL == m_CJ188DataFrame)
+	{
+		return;
+	}
+
+	float flow = 0.0;
+	//表号
+	m_fullMeterNo.clear();
+	for (int i=CJ188_ADDR_LEN-1; i>=0; i--)
+	{
+		m_fullMeterNo.append(QString("%1").arg(m_CJ188DataFrame->addr[i], 2, 16)).replace(' ', '0');
+	}
+
+	//供水温度
+	m_inTemper.clear();
+	m_inTemper.append(QString("%1%2.%3").arg(m_CJ188DataFrame->data[2], 2, 16)\
+		.arg(m_CJ188DataFrame->data[1], 2, 16).arg(m_CJ188DataFrame->data[0], 2, 16));
+	m_inTemper.replace(' ', '0');
+
+	//流量
+	m_flow.clear();
+	m_flow.append(QString("%1.%2%3%4").arg(m_CJ188DataFrame->data[9], 2, 16)\
+		.arg(m_CJ188DataFrame->data[8], 2, 16).arg(m_CJ188DataFrame->data[7], 2, 16)\
+		.arg(m_CJ188DataFrame->data[6], 2, 16));
+	m_flow.replace(' ', '0');
+	flow = m_flow.toFloat()*1000; //m3 -> L
+	m_flow = QString::number(flow);
+
+	//热量
+	m_heat.clear();
+	m_heat.append(QString("%1%2.%3%4").arg(m_CJ188DataFrame->data[14], 2, 16)\
+		.arg(m_CJ188DataFrame->data[13], 2, 16).arg(m_CJ188DataFrame->data[12], 2, 16)\
+		.arg(m_CJ188DataFrame->data[11], 2, 16));
+	m_heat.replace(' ', '0');
+
+	//大流量点流量系数
+	m_bigCoe.clear();
+	m_bigCoe.append(QString("%1%2").arg(m_CJ188DataFrame->data[33], 2, 16)\
+		.arg(m_CJ188DataFrame->data[32], 2, 16));
+	m_bigCoe.replace(' ', '0');
+
+	//中流二流量系数
+	m_mid2Coe.clear();
+	m_mid2Coe.append(QString("%1%2").arg(m_CJ188DataFrame->data[35], 2, 16)\
+		.arg(m_CJ188DataFrame->data[34], 2, 16));
+	m_mid2Coe.replace(' ', '0');
+
+	//中流一流量系数
+	m_mid1Coe.clear();
+	m_mid1Coe.append(QString("%1%2").arg(m_CJ188DataFrame->data[37], 2, 16)\
+		.arg(m_CJ188DataFrame->data[36], 2, 16));
+	m_mid1Coe.replace(' ', '0');
+
+	//小流量点流量系数
+	m_smallCoe.clear();
+	m_smallCoe.append(QString("%1%2").arg(m_CJ188DataFrame->data[39], 2, 16)\
+		.arg(m_CJ188DataFrame->data[38], 2, 16));
+	m_smallCoe.replace(' ', '0');
+
+	//回水温度
+	m_outTemper.clear();
+	m_outTemper.append(QString("%1%2.%3").arg(m_CJ188DataFrame->data[48], 2, 16)\
+		.arg(m_CJ188DataFrame->data[47], 2, 16).arg(m_CJ188DataFrame->data[46], 2, 16));
+	m_outTemper.replace(' ', '0');
+
+	//日期
+	m_date.clear();
+	m_date.append(QString("%1%2%3%4").arg(m_CJ188DataFrame->data[52], 2, 16)\
+		.arg(m_CJ188DataFrame->data[51], 2, 16).arg(m_CJ188DataFrame->data[50], 2, 16).\
+		arg(m_CJ188DataFrame->data[49], 2, 16));
+	m_date.replace(' ', '0');
+*/
+}
+
+// 组帧：广播地址读表号
+void AdeMeterProtocol::makeFrameOfReadMeterNO()
+{
+	makeFrameOfReadMeterData(); //与读表数据一样
+}
+
+// 组帧：广播地址读表流量系数
+void AdeMeterProtocol::makeFrameOfReadMeterFlowCoe()
+{
+	makeFrameOfReadMeterData(); //与读表数据一样
+}
+
+// 组帧：广播地址读表数据
+void AdeMeterProtocol::makeFrameOfReadMeterData(int vType)
+{
+	qDebug()<<"AdeMeterProtocol::makeFrameOfReadMeter thread:"<<QThread::currentThreadId();
+
+	m_sendBuf.clear();
+
+	for (int i=0; i<ADE_WAKEUP_CODE_NUM; i++)
+	{
+		m_sendBuf.append(ADE_WAKEUP_CODE);//唤醒红外
+	}
+
+	for (int j=0; j<ADE_PREFIX_CODE_NUM; j++)
+	{
+		m_sendBuf.append(ADE_PREFIX_CODE); //前导字节
+	}
+
+	m_sendBuf.append(0X10).append(0x5B).append(0xFE);
+	UINT8 cs = 0x10 + 0x5B + 0xFE;
+	m_sendBuf.append(cs);//校验码
+	m_sendBuf.append(METER_END_CODE);//结束符
+}
+
+// 组帧：设置进入检定状态
+void AdeMeterProtocol::makeFrameOfSetVerifyStatus(int vType)
+{
+	qDebug()<<"ADEMeterProtocol::makeFrameOfSetVerifyStatus thread:"<<QThread::currentThreadId();
+
+	m_sendBuf.clear();
+
+	for (int i=0; i<ADE_WAKEUP_CODE_NUM; i++)
+	{
+		m_sendBuf.append(ADE_WAKEUP_CODE);//唤醒红外
+	}
+
+	for (int j=0; j<ADE_PREFIX_CODE_NUM; j++)
+	{
+		m_sendBuf.append(ADE_PREFIX_CODE); //前导字节
+	}
+
+	m_sendBuf.append(0x68).append(0x04).append(0x04).append(0x68);
+	m_sendBuf.append(0x53).append(0xFE).append(0x50).append(0x90);
+	UINT8 cs = 0x53 + 0xFE + 0x50 + 0x90;
+	m_sendBuf.append(cs);//校验码
+	m_sendBuf.append(METER_END_CODE);//结束符
+}
+
+// 组帧：设置退出检定状态
+void AdeMeterProtocol::makeFrameOfExitVerifyStatus(int vType)
+{
+	qDebug()<<"AdeMeterProtocol::makeFrameOfExitVerifyStatus thread:"<<QThread::currentThreadId();
+
+	m_sendBuf.clear();
+
+	for (int i=0; i<ADE_WAKEUP_CODE_NUM; i++)
+	{
+		m_sendBuf.append(ADE_WAKEUP_CODE);//唤醒红外
+	}
+
+	for (int j=0; j<ADE_PREFIX_CODE_NUM; j++)
+	{
+		m_sendBuf.append(ADE_PREFIX_CODE); //前导字节
+	}
+
+	UINT code0 = 0x00;
+	m_sendBuf.append(0x68).append(0x04).append(0x04).append(0x68);
+	m_sendBuf.append(0x53).append(0xFE).append(0x50).append(code0);
+	UINT8 cs = 0x53 + 0xFE + 0x50 + code0;
+	m_sendBuf.append(cs);//校验码
+	m_sendBuf.append(METER_END_CODE);//结束符
+}
+
+// 组帧：修改表号(14位表号)
+void AdeMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo)
+{
+// 	qDebug()<<"DeluMeterProtocol::makeFrameOfReadMeter thread:"<<QThread::currentThreadId();
+	qDebug()<<"DeluMeterProtocol::makeFrameOfModifyMeterNo oldMeterNo ="<<oldMeterNo<<", newMeterNo ="<<newMeterNo;
+
+	m_sendBuf.clear();
+
+	for (int i=0; i<METER_WAKEUP_CODE_NUM; i++)
+	{
+		m_sendBuf.append(METER_WAKEUP_CODE);//唤醒红外
+	}
+
+	for (int j=0; j<METER_PREFIX_CODE_NUM; j++)
+	{
+		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
+	}
+
+	m_sendBuf.append(METER_START_CODE);//起始符
+	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
+	UINT8 cs = METER_START_CODE + METER_TYPE_ASK_CODE;
+	UINT8 oldNo;
+	bool ok;
+	for (int m=CJ188_ADDR_LEN-1; m>=0; m--)
+	{
+		oldNo = oldMeterNo.mid(2*m, 2).toUInt(&ok, 16);
+		m_sendBuf.append(oldNo); //旧表号
+		cs += oldNo;
+	}
+
+	UINT8 code1 = 0x39;
+	UINT8 code2 = 0x11;
+	UINT8 code3 = 0x18;
+	UINT8 code4 = 0xA0;
+	UINT8 code5 = 0xAA;
+
+	m_sendBuf.append(code1).append(code2).append(code3).append(code4).append(code5);
+	cs += code1 + code2 + code3 + code4 + code5;
+
+	UINT8 newNo;
+	for (int n=CJ188_ADDR_LEN-1; n>=0; n--)
+	{
+		newNo = newMeterNo.mid(2*n, 2).toUInt(&ok, 16);
+		m_sendBuf.append(newNo); //新表号
+		cs += newNo;
+	}
+
+	UINT8 timeCode;
+	QString currentTime = QDateTime::currentDateTime().toString("yyyyMMddHHmmss");//"20150107125930"
+	for (int p=6; p>=0; p--)
+	{
+		timeCode = currentTime.mid(2*p, 2).toUInt(&ok, 16);
+		m_sendBuf.append(timeCode); //当前时间
+		cs += timeCode;
+	}
+
+	m_sendBuf.append(cs).append(0x16);
+}
+
+/*
+** 组帧：修改流量系数
+** 输入参数：
+	meterNO:表号，14位
+	bigErr:大流量点误差，单位%
+	mid2Err:中流二误差，单位%
+	mid1Err:中流一误差，单位%
+	smallErr:小流量点误差，单位%
+*/
+void AdeMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr)
+{
+// 	qDebug()<<"ADEMeterProtocol::makeFrameOfModifyFlowCoe thread:"<<QThread::currentThreadId();
+	qDebug()<<"ADEMeterProtocol::makeFrameOfModifyFlowCoe meterNO ="<<meterNO;
+	qDebug()<<"bigErr ="<<bigErr<<", mid2Err ="<<mid2Err<<", mid1Err ="<<mid1Err<<", smallErr ="<<smallErr;
+
+	m_sendBuf.clear();
+
+	for (int i=0; i<METER_WAKEUP_CODE_NUM; i++)
+	{
+		m_sendBuf.append(METER_WAKEUP_CODE);//唤醒红外
+	}
+
+	for (int j=0; j<METER_PREFIX_CODE_NUM; j++)
+	{
+		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
+	}
+
+	m_sendBuf.append(METER_START_CODE);//起始符
+	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
+	UINT8 cs = METER_START_CODE + METER_TYPE_ASK_CODE;
+	UINT8 oldNo;
+	bool ok;
+	for (int m=CJ188_ADDR_LEN-1; m>=0; m--)
+	{
+		oldNo = meterNO.mid(2*m, 2).toUInt(&ok, 16);
+		m_sendBuf.append(oldNo); //表号
+		cs += oldNo;
+	}
+
+	UINT8 code1 = 0x36;
+	UINT8 code2 = 0x0C;
+	UINT8 code3 = 0xA0;
+	UINT8 code4 = 0x19;
+	UINT8 code5 = 0x06;
+	UINT8 code6 = 0x00;
+	m_sendBuf.append(code1).append(code2).append(code3).append(code4).append(code5).append(code6);
+	cs += code1 + code2 + code3 + code4 + code5 + code6;
+
+	QString bigCoe = QString::number(1/(1+bigErr/100), 'f', 3); //保留3位小数，四舍五入
+	QString mid2Coe = QString::number(1/(1+mid2Err/100), 'f', 3);
+	QString mid1Coe = QString::number(1/(1+mid1Err/100), 'f', 3);
+	QString smallCoe = QString::number(1/(1+smallErr/100), 'f', 3);
+
+	int bigDec = bigCoe.section(".", 1).toUInt()*4096.0/1000.0; //只取整数部分，不再进行四舍五入
+	int mid2Dec = mid2Coe.section(".", 1).toUInt()*4096.0/1000.0;
+	int mid1Dec = mid1Coe.section(".", 1).toUInt()*4096.0/1000.0;
+	int smallDec = smallCoe.section(".", 1).toUInt()*4096.0/1000.0;
+
+	QString big = QString::number(bigDec, 16).rightJustified(3, '0');
+	QString mid2 = QString::number(mid2Dec, 16).rightJustified(3, '0');
+	QString mid1 = QString::number(mid1Dec, 16).rightJustified(3, '0');
+	QString small = QString::number(smallDec, 16).rightJustified(3, '0');
+	UINT8 A7 = big.right(2).toUInt(&ok, 16);
+	UINT8 A6 = (bigCoe.left(1) + big.left(1)).toUInt(&ok, 16);
+	UINT8 A5 = mid2.right(2).toUInt(&ok, 16);
+	UINT8 A4 = (mid2Coe.left(1) + mid2.left(1)).toUInt(&ok, 16);
+	UINT8 A3 = mid1.right(2).toUInt(&ok, 16);
+	UINT8 A2 = (mid1Coe.left(1) + mid1.left(1)).toUInt(&ok, 16);
+	UINT8 A1 = small.right(2).toUInt(&ok, 16);
+	UINT8 A0 = (smallCoe.left(1) + small.left(1)).toUInt(&ok, 16);
+
+	m_sendBuf.append(A7).append(A6).append(A5).append(A4).append(A3).append(A2).append(A1).append(A0);
+	cs += A7 + A6 + A5 + A4 + A3 + A2 + A1 + A0;
+
+	m_sendBuf.append(cs).append(0x16);
+}
+
+/*
+** 组帧：修改流量系数
+** 输入参数：
+	meterNO:表号，14位
+	bigErr:大流量点误差，单位%
+	mid2Err:中流二误差，单位%
+	mid1Err:中流一误差，单位%
+	smallErr:小流量点误差，单位%
+	oldCoe:热量表各流量点的原系数，无单位
+*/
+void AdeMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe)
+{
+// 	qDebug()<<"AdeMeterProtocol::makeFrameOfModifyFlowCoe thread:"<<QThread::currentThreadId();
+	qDebug()<<"AdeMeterProtocol::makeFrameOfModifyFlowCoe meterNO ="<<meterNO;
+	qDebug()<<"bigErr ="<<bigErr<<", mid2Err ="<<mid2Err<<", mid1Err ="<<mid1Err<<", smallErr ="<<smallErr;
+	qDebug()<<"oldCoe1 ="<<oldCoe->bigCoe<<", oldCoe2 ="<<oldCoe->mid2Coe<<", oldCoe3 ="<<oldCoe->mid1Coe<<", oldCoe4 ="<<oldCoe->smallCoe;
+
+	m_sendBuf.clear();
+
+	for (int i=0; i<METER_WAKEUP_CODE_NUM; i++)
+	{
+		m_sendBuf.append(METER_WAKEUP_CODE);//唤醒红外
+	}
+
+	for (int j=0; j<METER_PREFIX_CODE_NUM; j++)
+	{
+		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
+	}
+
+	m_sendBuf.append(METER_START_CODE);//起始符
+	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
+	UINT8 cs = METER_START_CODE + METER_TYPE_ASK_CODE;
+	UINT8 oldNo;
+	bool ok;
+	for (int m=CJ188_ADDR_LEN-1; m>=0; m--)
+	{
+		oldNo = meterNO.mid(2*m, 2).toUInt(&ok, 16);
+		m_sendBuf.append(oldNo); //表号
+		cs += oldNo;
+	}
+
+	UINT8 code1 = 0x36;
+	UINT8 code2 = 0x0C;
+	UINT8 code3 = 0xA0;
+	UINT8 code4 = 0x19;
+	UINT8 code5 = 0x06;
+	UINT8 code6 = 0x00;
+	m_sendBuf.append(code1).append(code2).append(code3).append(code4).append(code5).append(code6);
+	cs += code1 + code2 + code3 + code4 + code5 + code6;
+
+	QString bigCoe = QString::number(oldCoe->bigCoe/(1+bigErr/100), 'f', 3); //保留3位小数，四舍五入
+	QString mid2Coe = QString::number(oldCoe->mid2Coe/(1+mid2Err/100), 'f', 3);
+	QString mid1Coe = QString::number(oldCoe->mid1Coe/(1+mid1Err/100), 'f', 3);
+	QString smallCoe = QString::number(oldCoe->smallCoe/(1+smallErr/100), 'f', 3);
+
+	int bigDec = bigCoe.section(".", 1).toUInt()*4096.0/1000.0; //只取整数部分，不再进行四舍五入
+	int mid2Dec = mid2Coe.section(".", 1).toUInt()*4096.0/1000.0;
+	int mid1Dec = mid1Coe.section(".", 1).toUInt()*4096.0/1000.0;
+	int smallDec = smallCoe.section(".", 1).toUInt()*4096.0/1000.0;
+
+	QString big = QString::number(bigDec, 16).rightJustified(3, '0');
+	QString mid2 = QString::number(mid2Dec, 16).rightJustified(3, '0');
+	QString mid1 = QString::number(mid1Dec, 16).rightJustified(3, '0');
+	QString small = QString::number(smallDec, 16).rightJustified(3, '0');
+	UINT8 A7 = big.right(2).toUInt(&ok, 16);
+	UINT8 A6 = (bigCoe.left(1) + big.left(1)).toUInt(&ok, 16);
+	UINT8 A5 = mid2.right(2).toUInt(&ok, 16);
+	UINT8 A4 = (mid2Coe.left(1) + mid2.left(1)).toUInt(&ok, 16);
+	UINT8 A3 = mid1.right(2).toUInt(&ok, 16);
+	UINT8 A2 = (mid1Coe.left(1) + mid1.left(1)).toUInt(&ok, 16);
+	UINT8 A1 = small.right(2).toUInt(&ok, 16);
+	UINT8 A0 = (smallCoe.left(1) + small.left(1)).toUInt(&ok, 16);
+
+	m_sendBuf.append(A7).append(A6).append(A5).append(A4).append(A3).append(A2).append(A1).append(A0);
+	cs += A7 + A6 + A5 + A4 + A3 + A2 + A1 + A0;
+
+	m_sendBuf.append(cs).append(0x16);
+}
+
+/*
+** 组帧：修改口径
+** 输入参数：
+	std:口径 1-DN15; 2-DN20；3-DN25，以此类推
+*/
+void AdeMeterProtocol::makeFrameOfSetStandard(UINT8 std)
+{
+// 	qDebug()<<"ADEMeterProtocol::makeFrameOfSetStandard thread:"<<QThread::currentThreadId();
+
+	m_sendBuf.clear();
+
+	for (int i=0; i<ADE_WAKEUP_CODE_NUM; i++)
+	{
+		m_sendBuf.append(ADE_WAKEUP_CODE);//唤醒红外
+	}
+
+	for (int j=0; j<ADE_PREFIX_CODE_NUM; j++)
+	{
+		m_sendBuf.append(ADE_PREFIX_CODE); //前导字节
+	}
+	UINT8 code0 = 0x00;
+	m_sendBuf.append(0x68).append(0x07).append(0x07).append(0x68);
+	m_sendBuf.append(0x53).append(0xFE).append(0x51).append(0x0F).append(0x04).append(code0).append(std);
+	UINT8 cs = 0x53 + 0xFE + 0x51 + 0x0F + 0x04 + code0 + std;
+	m_sendBuf.append(cs);//校验码
+	m_sendBuf.append(METER_END_CODE);//结束符
+}
+
+/*
+** 组帧：设置系统时间
+** 输入参数：	
+*/
+void AdeMeterProtocol::makeFrameOfSetSystemTime()
+{
+// 	qDebug()<<"ADEMeterProtocol::makeFrameOfSetSystemTime thread:"<<QThread::currentThreadId();
+
+	m_sendBuf.clear();
+
+	for (int i=0; i<ADE_WAKEUP_CODE_NUM; i++)
+	{
+		m_sendBuf.append(ADE_WAKEUP_CODE);//唤醒红外
+	}
+
+	for (int j=0; j<ADE_PREFIX_CODE_NUM; j++)
+	{
+		m_sendBuf.append(ADE_PREFIX_CODE); //前导字节
+	}
+/*	UINT8 code0 = 0x00;
+	m_sendBuf.append(0x68).append(0x07).append(0x07).append(0x68);
+	m_sendBuf.append(0x53).append(0xFE).append(0x51).append(0x0F).append(0x04).append(code0).append(std);
+	UINT8 cs = 0x53 + 0xFE + 0x51 + 0x0F + 0x04 + code0 + std;
+	m_sendBuf.append(cs);//校验码
+*/
+	m_sendBuf.append(METER_END_CODE);//结束符
+}
+
+/*
+** 组帧：修改一级地址
+** 输入参数：
+	curAddr1:当前一级地址，一个字节
+	newAddr1:新的一级地址，一个字节
+*/
+void AdeMeterProtocol::makeFrameOfSetAddress1(QString curAddr1, QString newAddr1)
+{
+// 	qDebug()<<"ADEMeterProtocol::makeFrameOfSetAddress1 thread:"<<QThread::currentThreadId();
+
+	m_sendBuf.clear();
+
+	for (int i=0; i<ADE_WAKEUP_CODE_NUM; i++)
+	{
+		m_sendBuf.append(ADE_WAKEUP_CODE);//唤醒红外
+	}
+
+	for (int j=0; j<ADE_PREFIX_CODE_NUM; j++)
+	{
+		m_sendBuf.append(ADE_PREFIX_CODE); //前导字节
+	}
+	bool ok;
+	UINT8 curAddr = curAddr1.toUInt(&ok, 16);
+	UINT8 newAddr = newAddr1.toUInt(&ok, 16);
+	m_sendBuf.append(0x68).append(0x06).append(0x06).append(0x68);
+	m_sendBuf.append(0x53).append(curAddr).append(0x51).append(0x01).append(0x7A).append(newAddr);
+	UINT8 cs = 0x53 + curAddr + 0x51 + 0x01 + 0x7A + newAddr;
+	m_sendBuf.append(cs);//校验码
+	m_sendBuf.append(METER_END_CODE);//结束符
+}
+
+/*
+** 组帧：修改二级地址
+** 输入参数：
+	curAddr1:当前一级地址，一个字节
+	newAddr2:新的二级地址，4个字节
+*/
+void AdeMeterProtocol::makeFrameOfSetAddress2(QString curAddr1, QString newAddr2)
+{
+// 	qDebug()<<"ADEMeterProtocol::makeFrameOfSetAddress2 thread:"<<QThread::currentThreadId();
+
+	m_sendBuf.clear();
+
+	for (int i=0; i<ADE_WAKEUP_CODE_NUM; i++)
+	{
+		m_sendBuf.append(ADE_WAKEUP_CODE);//唤醒红外
+	}
+
+	for (int j=0; j<ADE_PREFIX_CODE_NUM; j++)
+	{
+		m_sendBuf.append(ADE_PREFIX_CODE); //前导字节
+	}
+	bool ok;
+	UINT8 curAddr = curAddr1.toUInt(&ok, 16);
+	UINT8 newAddr_ID0 = newAddr2.right(2).toUInt(&ok, 16);
+	UINT8 newAddr_ID1 = newAddr2.mid(4,2).toUInt(&ok, 16);
+	UINT8 newAddr_ID2 = newAddr2.mid(2,2).toUInt(&ok, 16);
+	UINT8 newAddr_ID3 = newAddr2.left(2).toUInt(&ok, 16);
+	m_sendBuf.append(0x68).append(0x09).append(0x09).append(0x68);
+	m_sendBuf.append(0x53).append(curAddr).append(0x51).append(0x0C).append(0x79);
+	m_sendBuf.append(newAddr_ID0).append(newAddr_ID1).append(newAddr_ID2).append(newAddr_ID3);
+	UINT8 cs = 0x53 + curAddr + 0x51 + 0x0C + 0x79 + newAddr_ID0 + newAddr_ID1 + newAddr_ID2 + newAddr_ID3;
+	m_sendBuf.append(cs);//校验码
+	m_sendBuf.append(METER_END_CODE);//结束符
+}
+
+
+
+
 
 /***********************************************
 父类：StdTempProtocol

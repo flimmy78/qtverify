@@ -284,15 +284,20 @@ public:
 //热量表通讯协议 begin
 #define     METER_WAKEUP_CODE_NUM		200     //唤醒码个数
 #define     METER_PREFIX_CODE_NUM		4       //前导字节个数
-
 #define		METER_WAKEUP_CODE	        0xFF	//唤醒码
-#define		METER_PREFIX_CODE	        0xFE	//前导字节
+#define		METER_PREFIX_CODE	        0xFE	//前导码
 #define		METER_START_CODE	        0x68	//起始符
 #define		METER_TYPE_ASK_CODE		    0x20	//仪表类型 超声表 请求
 #define		METER_TYPE_ANSWER_CODE	    0x25	//仪表类型 超声表 响应
 #define     METER_ADDR_CODE		        0xAA	//广播地址
 #define     METER_CTRL_CODE		        0x01	//控制码
 #define     METER_END_CODE		        0x16	//结束符
+
+#define     ADE_WAKEUP_CODE_NUM			200     //唤醒码个数(航天德鲁新热量表)
+#define		ADE_WAKEUP_CODE				0x55	//唤醒码    (航天德鲁新热量表)
+#define     ADE_PREFIX_CODE_NUM			10      //前导码个数(航天德鲁新热量表)
+#define		ADE_PREFIX_CODE				0xFE	//前导码    (航天德鲁新热量表)
+
 
 #define		STATE_METER_START		0x00
 #define		STATE_METER_TYPE		0x01
@@ -309,6 +314,8 @@ public:
 #define     CJ188_DATAID_LEN		2
 #define     CJ188_DATA_MAX_LEN		97
 
+#define     GB26831_DATA_MAX_LEN	80
+
 typedef struct  
 {
 	UINT8 startCode;	//起始符
@@ -322,6 +329,16 @@ typedef struct
 	UINT8 cs;	        //校验码
 	UINT8 endCode;      //结束符
 }CJ188_Frame_Struct;
+
+typedef struct  
+{
+	UINT8 startCode;	//起始符
+	UINT8 dataLen[2];	//数据长度
+	UINT8 seperator;	//分隔符
+	UINT8 data[GB26831_DATA_MAX_LEN]; //数据域
+	UINT8 cs;	        //校验码
+	UINT8 endCode;      //结束符
+}GB26831_Frame_Struct;
 
 //四个流量点的系数结构
 struct MeterCoe_STR
@@ -342,6 +359,7 @@ public:
 
 	QByteArray m_sendBuf;
 	CJ188_Frame_Struct *m_CJ188DataFrame;
+	GB26831_Frame_Struct *m_GB26831DataFrame;
 	QString m_fullMeterNo; //完整表号 7个字节
 	QString m_inTemper; //进水温度 ℃
 	QString m_outTemper;//回水温度 ℃
@@ -363,9 +381,14 @@ public slots:
 	virtual void makeFrameOfReadMeterFlowCoe(){};   //读表流量系数（广播地址读表）
 	virtual void makeFrameOfReadMeterData(int vType=VTYPE_FLOW){};   //读表数据（广播地址读表）
 	virtual void makeFrameOfSetVerifyStatus(int vType=VTYPE_FLOW){}; //设置进入检定状态
+	virtual void makeFrameOfExitVerifyStatus(int vType=VTYPE_FLOW){};//设置退出检定状态
 	virtual void makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo){};	//修改表号
 	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr){};	//修改流量参数
 	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe){};	//修改流量参数
+	virtual void makeFrameOfSetStandard(UINT8 std){}; //设置口径-航天德鲁热量表
+	virtual void makeFrameOfSetSystemTime(){}; //设置系统时间-航天德鲁热量表
+	virtual void makeFrameOfSetAddress1(QString curAddr1, QString newAddr1){}; //设置一级地址-航天德鲁热量表
+	virtual void makeFrameOfSetAddress2(QString curAddr1, QString newAddr2){}; //设置二级地址-航天德鲁热量表
 
 	virtual QByteArray getSendFrame();
 	virtual QString getFullMeterNo();
@@ -445,6 +468,35 @@ public slots:
 	virtual void makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo);	//修改表号
 	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr);	//修改流量参数
 	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe); //修改流量参数
+
+private:
+
+};
+
+//航天德鲁热量表通讯协议类
+class PROTOCOL_EXPORT AdeMeterProtocol : public MeterProtocol
+{
+public:
+	AdeMeterProtocol();
+	~AdeMeterProtocol();
+
+public slots:
+	virtual UINT8 readMeterComBuffer(QByteArray tmp);
+	virtual void analyseFrame();
+
+	virtual void makeFrameOfReadMeterNO();        //读表号（广播地址读表）
+	virtual void makeFrameOfReadMeterFlowCoe();   //读表流量系数（广播地址读表）
+	virtual void makeFrameOfReadMeterData(int vType=VTYPE_FLOW);    //读表数据（广播地址读表）
+	virtual void makeFrameOfSetVerifyStatus(int vType=VTYPE_FLOW);	//设置进入检定状态
+	virtual void makeFrameOfExitVerifyStatus(int vType=VTYPE_FLOW);	//设置退出检定状态
+	virtual void makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo);	//修改表号
+	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr);	//修改流量参数
+	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe); //修改流量参数
+	virtual void makeFrameOfSetStandard(UINT8 std); //设置口径
+	virtual void makeFrameOfSetSystemTime(); //设置系统时间
+	virtual void makeFrameOfSetAddress1(QString curAddr1, QString newAddr1); //设置一级地址
+	virtual void makeFrameOfSetAddress2(QString curAddr1, QString newAddr2); //设置二级地址
+
 
 private:
 

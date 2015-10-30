@@ -193,9 +193,14 @@ public slots:
 	void askReadMeterFlowCoe(); //请求读表流量系数
 	void askReadMeterData(int vType=VTYPE_FLOW);   //请求读表数据（广播地址读表数据）
 	void askSetVerifyStatus(int vType=VTYPE_FLOW); //请求设置进入检定状态
+	void askExitVerifyStatus(int vType=VTYPE_FLOW);//请求退出进入检定状态
 	void askModifyMeterNO(QString oldMeterNo, QString newMeterNo);   //请求修改表号(14位表号)
 	void askModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr);  //请求修改流量系数
 	void askModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe);
+	void askSetStandard(UINT8 std); //设置口径（航天德鲁热量表）
+	void askSetSystemTime(); //设置系统时间（航天德鲁热量表）
+	void askSetAddress1(QString curAddr1, QString newAddr1); //设置一级地址（航天德鲁热量表）
+	void askSetAddress2(QString curAddr1, QString newAddr2); //设置二级地址（航天德鲁热量表）
 
 	void setProtocolVersion(int version);
 };

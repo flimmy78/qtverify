@@ -145,11 +145,16 @@ public slots:
 
 	void slotFreshFlowRate();//计算流速
 
-	void on_btnSetVerifyStatus_clicked();//设置检定状态
+	void on_btnSetVerifyStatus_clicked(); //设置检定状态
+	void on_btnExitVerifyStatus_clicked();//退出检定状态
 	void on_btnReadMeterData_clicked(); //读表数据
 	void on_btnModifyMeterNo_clicked(); //修改表号
 	void on_btnModifyFlowCoe_clicked(); //修改流量系数
 	void on_btn2ModifyFlowCoe_clicked();//二次修改流量系数
+	void on_btnSetStandard_clicked();//设置口径
+	void on_btnSetTime_clicked();//设置系统时间
+	void on_btnSetAddr1_clicked();//设置一级地址
+	void on_btnSetAddr2_clicked();//设置二级地址
 	
 
 	void on_btnOpenCom_clicked(); //打开串口
