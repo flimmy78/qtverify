@@ -2179,8 +2179,8 @@ void AdeMeterProtocol::makeFrameOfSetAddress1(QString curAddr1, QString newAddr1
 		m_sendBuf.append(ADE_PREFIX_CODE); //前导字节
 	}
 	bool ok;
-	UINT8 curAddr = curAddr1.toUInt(&ok, 16);
-	UINT8 newAddr = newAddr1.toUInt(&ok, 16);
+	UINT8 curAddr = curAddr1.toUInt(&ok, 10);
+	UINT8 newAddr = newAddr1.toUInt(&ok, 10);
 	m_sendBuf.append(0x68).append(0x06).append(0x06).append(0x68);
 	m_sendBuf.append(0x53).append(curAddr).append(0x51).append(0x01).append(0x7A).append(newAddr);
 	UINT8 cs = 0x53 + curAddr + 0x51 + 0x01 + 0x7A + newAddr;
@@ -2210,7 +2210,7 @@ void AdeMeterProtocol::makeFrameOfSetAddress2(QString curAddr1, QString newAddr2
 		m_sendBuf.append(ADE_PREFIX_CODE); //前导字节
 	}
 	bool ok;
-	UINT8 curAddr = curAddr1.toUInt(&ok, 16);
+	UINT8 curAddr = curAddr1.toUInt(&ok, 10);
 	UINT8 newAddr_ID0 = newAddr2.right(2).toUInt(&ok, 16);
 	UINT8 newAddr_ID1 = newAddr2.mid(4,2).toUInt(&ok, 16);
 	UINT8 newAddr_ID2 = newAddr2.mid(2,2).toUInt(&ok, 16);
