@@ -1222,6 +1222,24 @@ void DataTestDlg::on_btnSetAddr1_clicked()
 	qDebug()<<"设置一级地址 ...";
 	QString curAddr1 = ui.lnEditCurAddr1->text();
 	QString newAddr1 = ui.lnEditAddress1->text();
+	bool ok1;
+	bool ok2;
+	UINT8 curAddr = curAddr1.toUInt(&ok1, 10);
+	UINT8 newAddr = newAddr1.toUInt(&ok2, 10);
+
+	if (curAddr1.isEmpty() || !ok1)
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("curAddr1 is error! please input 0-255!"));
+		ui.lnEditCurAddr1->setFocus();
+		return;
+	}
+	if (newAddr1.isEmpty() || !ok2)
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("newAddr1 is error! please input 0-255!"));
+		ui.lnEditAddress1->setFocus();
+		return;
+	}
+
 	m_meterObj->askSetAddress1(curAddr1, newAddr1); //设置一级地址
 }
 
@@ -1231,6 +1249,16 @@ void DataTestDlg::on_btnSetAddr2_clicked()
 	qDebug()<<"设置二级地址 ...";
 	QString curAddr1 = ui.lnEditCurAddr1->text();
 	QString newAddr2 = ui.lnEditAddress2->text();
+
+	bool ok1;
+	UINT8 curAddr = curAddr1.toUInt(&ok1, 10);
+	if (curAddr1.isEmpty() || !ok1)
+	{
+		QMessageBox::warning(this, tr("Warning"), tr("curAddr1 is error! please input 0-255!"));
+		ui.lnEditCurAddr1->setFocus();
+		return;
+	}
+
 	m_meterObj->askSetAddress2(curAddr1, newAddr2); //设置二级地址
 }
 
@@ -1329,6 +1357,9 @@ void DataTestDlg::setMeterOperBtnEnabled(bool flag)
 	ui.btn2ModifyFlowCoe->setEnabled(flag);
 	ui.btnSetStandard->setEnabled(flag);
 	ui.cmbStandard->setEnabled(flag);
+	ui.btnSetAddr1->setEnabled(flag);
+	ui.btnSetAddr2->setEnabled(flag);
+	ui.btnSetTime->setEnabled(flag);
 }
 
 

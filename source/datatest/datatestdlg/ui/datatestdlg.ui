@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>845</width>
-    <height>892</height>
+    <width>867</width>
+    <height>894</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -2288,7 +2288,7 @@ g</string>
         </layout>
        </widget>
       </item>
-      <item row="0" column="2" rowspan="2" colspan="2">
+      <item row="0" column="2" rowspan="2">
        <layout class="QGridLayout" name="gridLayout_21">
         <item row="0" column="0" colspan="5">
          <layout class="QGridLayout" name="gridLayout_8">
@@ -2946,14 +2946,14 @@ Time</string>
         <item row="0" column="0">
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>CurAddr1:</string>
+           <string>CurAddr1(1bit):</string>
           </property>
          </widget>
         </item>
         <item row="0" column="1">
          <widget class="QLineEdit" name="lnEditCurAddr1">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -2963,30 +2963,30 @@ Time</string>
           </property>
           <property name="maximumSize">
            <size>
-            <width>80</width>
+            <width>120</width>
             <height>16777215</height>
            </size>
           </property>
           <property name="readOnly">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
          </widget>
         </item>
        </layout>
       </item>
-      <item row="2" column="1" colspan="2">
+      <item row="2" column="1">
        <layout class="QGridLayout" name="gridLayout_19">
         <item row="0" column="0">
          <widget class="QLabel" name="label_58">
           <property name="text">
-           <string>NewAddr1:</string>
+           <string>NewAddr1(1bit):</string>
           </property>
          </widget>
         </item>
         <item row="0" column="1">
          <widget class="QLineEdit" name="lnEditAddress1">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -2994,8 +2994,14 @@ Time</string>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="maximumSize">
+           <size>
+            <width>120</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="readOnly">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
          </widget>
         </item>
@@ -3009,13 +3015,13 @@ Time</string>
           </property>
           <property name="minimumSize">
            <size>
-            <width>80</width>
+            <width>100</width>
             <height>25</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>80</width>
+            <width>120</width>
             <height>25</height>
            </size>
           </property>
@@ -3026,19 +3032,19 @@ Time</string>
         </item>
        </layout>
       </item>
-      <item row="2" column="3">
+      <item row="2" column="2">
        <layout class="QGridLayout" name="gridLayout_18">
         <item row="0" column="0">
          <widget class="QLabel" name="label_59">
           <property name="text">
-           <string>NewAddr2:</string>
+           <string>NewAddr2(8bit):</string>
           </property>
          </widget>
         </item>
         <item row="0" column="1">
          <widget class="QLineEdit" name="lnEditAddress2">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -3046,8 +3052,14 @@ Time</string>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="readOnly">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
          </widget>
         </item>
@@ -3061,13 +3073,13 @@ Time</string>
           </property>
           <property name="minimumSize">
            <size>
-            <width>80</width>
+            <width>100</width>
             <height>25</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>80</width>
+            <width>120</width>
             <height>25</height>
            </size>
           </property>
