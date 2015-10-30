@@ -1789,7 +1789,7 @@ void AdeMeterProtocol::analyseFrame()
 		m_flow.append(QString("%1").arg(m_GB26831DataFrame->data[i], 2, 16)).replace(' ', '0');
 	}
 	flow = m_flow.toDouble()/100;
-	m_flow = QString::number(flow, 'g', 6);
+	m_flow = QString::number(flow, 'g', 8);
 
 	//热量
 	double heat = 0.0;
@@ -1799,7 +1799,7 @@ void AdeMeterProtocol::analyseFrame()
 		m_heat.append(QString("%1").arg(m_GB26831DataFrame->data[i], 2, 16)).replace(' ', '0');
 	}
 	heat = m_heat.toDouble()/1000;
-	m_heat = QString::number(heat, 'g', 6);
+	m_heat = QString::number(heat, 'g', 8);
 }
 
 // 组帧：广播地址读表号
