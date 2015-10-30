@@ -1686,86 +1686,59 @@ UINT8 AdeMeterProtocol::readMeterComBuffer(QByteArray tmp)
 	qDebug()<<"AdeMeterProtocol::readMeterComBuffer thread:"<<QThread::currentThreadId();
 
 	UINT8 ret = 0x00;
-/*	int state = STATE_METER_START;
+	int state = STATE_METER_START;
 	UINT8 ch = 0; //无符号8位数字
 	int number = tmp.size();
 
 	int m=0;
-	int addr_num=0, dataID_num=0, data_num=0;
+	int dataLen_num=0, data_num=0;
 	UINT8 ck=0; //程序计算的检验码
 	for (m=0; m<number; m++)
 	{
 		ch = (UINT8)tmp.at(m);
-		// 		qDebug()<<"read data is:"<<ch;
-		if (ch == METER_PREFIX_CODE)
+// 		qDebug()<<"read data is:"<<ch;
+		if (ch == ADE_PREFIX_CODE)
 		{
 			continue;
 		}
 		switch(state)
 		{
-		case STATE_METER_START: //
+		case STATE_METER_START: //起始符
 			if (ch == METER_START_CODE)
 			{
-				m_CJ188DataFrame->startCode = METER_START_CODE;
-				state = STATE_METER_TYPE;
+				m_GB26831DataFrame->startCode = ch;
+				state = STATE_METER_ADDR; //数据长度
 			}
 			break;
-		case STATE_METER_TYPE: //
-			m_CJ188DataFrame->typeCode = ch;
-			state = STATE_METER_ADDR;
-			break;
-		case STATE_METER_ADDR: //
-			m_CJ188DataFrame->addr[addr_num++] = ch;
-			if (addr_num == CJ188_ADDR_LEN)
+		case STATE_METER_ADDR: //数据长度
+			m_GB26831DataFrame->dataLen[dataLen_num++] = ch;
+			if (dataLen_num == 2)
 			{
-				state = STATE_METER_CTRL;
-				addr_num = 0;
+				state = STATE_METER_CTRL; //分隔符
+				dataLen_num = 0;
 			}
 			break;
-		case STATE_METER_CTRL: //
-			m_CJ188DataFrame->ctrlCode = ch;
-			state = STATE_METER_DATALEN;
+		case STATE_METER_CTRL: //分隔符
+			m_GB26831DataFrame->seperator = ch;
+			state = STATE_METER_DATA; //数据
 			break;
-		case STATE_METER_DATALEN: //
-			m_CJ188DataFrame->dataLen = ch;
-			state = STATE_METER_DATAID;
-			break;
-		case STATE_METER_DATAID: //
-			m_CJ188DataFrame->dataID[dataID_num++] = ch;
-			if (dataID_num == CJ188_DATAID_LEN)
-			{
-				state = STATE_METER_SN;
-				dataID_num = 0;
-			}
-			break;
-		case STATE_METER_SN: //序列号
-			m_CJ188DataFrame->sn = ch;
-			if (m_CJ188DataFrame->dataLen <= 3)
-			{
-				state = STATE_METER_CS;
-			}
-			else
-			{
-				state = STATE_METER_DATA;
-			}
-			break;
-		case STATE_METER_DATA: //
-			m_CJ188DataFrame->data[data_num++] = ch;
-			if (data_num == m_CJ188DataFrame->dataLen-3)
+		case STATE_METER_DATA: //数据
+			m_GB26831DataFrame->data[data_num++] = ch;
+			ck += ch;
+			if (data_num == m_GB26831DataFrame->dataLen[0])
 			{
 				state = STATE_METER_CS;
 				data_num = 0;
 			}
 			break;
-		case STATE_METER_CS: //
-			m_CJ188DataFrame->cs = ch;
+		case STATE_METER_CS: //校验和
+			m_GB26831DataFrame->cs = ch;
 			state = STATE_METER_END;
 			break;
 		case STATE_METER_END: //
-			m_CJ188DataFrame->endCode = ch;
+			m_GB26831DataFrame->endCode = ch;
 			state = STATE_METER_START;
-			ck = CountCheck(m_CJ188DataFrame);
-			if (ck == m_CJ188DataFrame->cs) //校验通过
+			if (ck == m_GB26831DataFrame->cs) //校验通过
 			{
 				analyseFrame();
 				ret = 1; //
@@ -1777,85 +1750,56 @@ UINT8 AdeMeterProtocol::readMeterComBuffer(QByteArray tmp)
 			break;
 		} //END OF switch(state)        
 	} //END OF for (m=0; m<number; m++)
-*/
+
 	return ret;
 }
 
 void AdeMeterProtocol::analyseFrame()
 {
 	qDebug()<<"AdeMeterProtocol::analyseFrame thread:"<<QThread::currentThreadId();
-/*	if (NULL == m_CJ188DataFrame)
+	if (NULL == m_GB26831DataFrame)
 	{
 		return;
 	}
 
-	float flow = 0.0;
 	//表号
 	m_fullMeterNo.clear();
-	for (int i=CJ188_ADDR_LEN-1; i>=0; i--)
+	for (int i=6; i>=3; i--)
 	{
-		m_fullMeterNo.append(QString("%1").arg(m_CJ188DataFrame->addr[i], 2, 16)).replace(' ', '0');
+		m_fullMeterNo.append(QString("%1").arg(m_GB26831DataFrame->data[i], 2, 16)).replace(' ', '0');
 	}
 
 	//供水温度
 	m_inTemper.clear();
-	m_inTemper.append(QString("%1%2.%3").arg(m_CJ188DataFrame->data[2], 2, 16)\
-		.arg(m_CJ188DataFrame->data[1], 2, 16).arg(m_CJ188DataFrame->data[0], 2, 16));
+	m_inTemper.append(QString("%1%2.%3").arg(m_GB26831DataFrame->data[31], 2, 16)\
+		.arg(m_GB26831DataFrame->data[30], 2, 16).arg(m_GB26831DataFrame->data[29], 2, 16));
 	m_inTemper.replace(' ', '0');
-
-	//流量
-	m_flow.clear();
-	m_flow.append(QString("%1.%2%3%4").arg(m_CJ188DataFrame->data[9], 2, 16)\
-		.arg(m_CJ188DataFrame->data[8], 2, 16).arg(m_CJ188DataFrame->data[7], 2, 16)\
-		.arg(m_CJ188DataFrame->data[6], 2, 16));
-	m_flow.replace(' ', '0');
-	flow = m_flow.toFloat()*1000; //m3 -> L
-	m_flow = QString::number(flow);
-
-	//热量
-	m_heat.clear();
-	m_heat.append(QString("%1%2.%3%4").arg(m_CJ188DataFrame->data[14], 2, 16)\
-		.arg(m_CJ188DataFrame->data[13], 2, 16).arg(m_CJ188DataFrame->data[12], 2, 16)\
-		.arg(m_CJ188DataFrame->data[11], 2, 16));
-	m_heat.replace(' ', '0');
-
-	//大流量点流量系数
-	m_bigCoe.clear();
-	m_bigCoe.append(QString("%1%2").arg(m_CJ188DataFrame->data[33], 2, 16)\
-		.arg(m_CJ188DataFrame->data[32], 2, 16));
-	m_bigCoe.replace(' ', '0');
-
-	//中流二流量系数
-	m_mid2Coe.clear();
-	m_mid2Coe.append(QString("%1%2").arg(m_CJ188DataFrame->data[35], 2, 16)\
-		.arg(m_CJ188DataFrame->data[34], 2, 16));
-	m_mid2Coe.replace(' ', '0');
-
-	//中流一流量系数
-	m_mid1Coe.clear();
-	m_mid1Coe.append(QString("%1%2").arg(m_CJ188DataFrame->data[37], 2, 16)\
-		.arg(m_CJ188DataFrame->data[36], 2, 16));
-	m_mid1Coe.replace(' ', '0');
-
-	//小流量点流量系数
-	m_smallCoe.clear();
-	m_smallCoe.append(QString("%1%2").arg(m_CJ188DataFrame->data[39], 2, 16)\
-		.arg(m_CJ188DataFrame->data[38], 2, 16));
-	m_smallCoe.replace(' ', '0');
 
 	//回水温度
 	m_outTemper.clear();
-	m_outTemper.append(QString("%1%2.%3").arg(m_CJ188DataFrame->data[48], 2, 16)\
-		.arg(m_CJ188DataFrame->data[47], 2, 16).arg(m_CJ188DataFrame->data[46], 2, 16));
+	m_outTemper.append(QString("%1%2.%3").arg(m_GB26831DataFrame->data[36], 2, 16)\
+		.arg(m_GB26831DataFrame->data[35], 2, 16).arg(m_GB26831DataFrame->data[34], 2, 16));
 	m_outTemper.replace(' ', '0');
 
-	//日期
-	m_date.clear();
-	m_date.append(QString("%1%2%3%4").arg(m_CJ188DataFrame->data[52], 2, 16)\
-		.arg(m_CJ188DataFrame->data[51], 2, 16).arg(m_CJ188DataFrame->data[50], 2, 16).\
-		arg(m_CJ188DataFrame->data[49], 2, 16));
-	m_date.replace(' ', '0');
-*/
+	//流量
+	double flow = 0.0;
+	m_flow.clear();
+	for (int i=26; i>=23; i--)
+	{
+		m_flow.append(QString("%1").arg(m_GB26831DataFrame->data[i], 2, 16)).replace(' ', '0');
+	}
+	flow = m_flow.toDouble()/100;
+	m_flow = QString::number(flow, 'g', 6);
+
+	//热量
+	double heat = 0.0;
+	m_heat.clear();
+	for (int i=20; i>=17; i--)
+	{
+		m_heat.append(QString("%1").arg(m_GB26831DataFrame->data[i], 2, 16)).replace(' ', '0');
+	}
+	heat = m_heat.toDouble()/1000;
+	m_heat = QString::number(heat, 'g', 6);
 }
 
 // 组帧：广播地址读表号
@@ -1887,8 +1831,8 @@ void AdeMeterProtocol::makeFrameOfReadMeterData(int vType)
 		m_sendBuf.append(ADE_PREFIX_CODE); //前导字节
 	}
 
-	m_sendBuf.append(0X10).append(0x5B).append(0xFE);
-	UINT8 cs = 0x10 + 0x5B + 0xFE;
+	m_sendBuf.append(0x10).append(0x5B).append(0xFE);
+	UINT8 cs = 0x5B + 0xFE;
 	m_sendBuf.append(cs);//校验码
 	m_sendBuf.append(METER_END_CODE);//结束符
 }
