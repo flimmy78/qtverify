@@ -1962,36 +1962,21 @@ void AdeMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, f
 
 	m_sendBuf.clear();
 
-	for (int i=0; i<METER_WAKEUP_CODE_NUM; i++)
+	for (int i=0; i<ADE_WAKEUP_CODE_NUM; i++)
 	{
-		m_sendBuf.append(METER_WAKEUP_CODE);//唤醒红外
+		m_sendBuf.append(ADE_WAKEUP_CODE);//唤醒红外
 	}
 
-	for (int j=0; j<METER_PREFIX_CODE_NUM; j++)
+	for (int j=0; j<ADE_PREFIX_CODE_NUM; j++)
 	{
-		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
+		m_sendBuf.append(ADE_PREFIX_CODE); //前导字节
 	}
-
-	m_sendBuf.append(METER_START_CODE);//起始符
-	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
-	UINT8 cs = METER_START_CODE + METER_TYPE_ASK_CODE;
-	UINT8 oldNo;
+	UINT8 addr = 0xFE;
+	UINT8 code0 = 0x00;
+	m_sendBuf.append(0x68).append(0x0E).append(0x0E).append(0x68);
+	m_sendBuf.append(0x53).append(addr).append(0x51).append(0x0F).append(0x02).append(code0);
+	UINT8 cs = 0x53 + addr + 0x51 + 0x0F + 0x02 + code0;
 	bool ok;
-	for (int m=CJ188_ADDR_LEN-1; m>=0; m--)
-	{
-		oldNo = meterNO.mid(2*m, 2).toUInt(&ok, 16);
-		m_sendBuf.append(oldNo); //表号
-		cs += oldNo;
-	}
-
-	UINT8 code1 = 0x36;
-	UINT8 code2 = 0x0C;
-	UINT8 code3 = 0xA0;
-	UINT8 code4 = 0x19;
-	UINT8 code5 = 0x06;
-	UINT8 code6 = 0x00;
-	m_sendBuf.append(code1).append(code2).append(code3).append(code4).append(code5).append(code6);
-	cs += code1 + code2 + code3 + code4 + code5 + code6;
 
 	QString bigCoe = QString::number(1/(1+bigErr/100), 'f', 3); //保留3位小数，四舍五入
 	QString mid2Coe = QString::number(1/(1+mid2Err/100), 'f', 3);
@@ -2148,12 +2133,32 @@ void AdeMeterProtocol::makeFrameOfSetSystemTime()
 	{
 		m_sendBuf.append(ADE_PREFIX_CODE); //前导字节
 	}
-/*	UINT8 code0 = 0x00;
-	m_sendBuf.append(0x68).append(0x07).append(0x07).append(0x68);
-	m_sendBuf.append(0x53).append(0xFE).append(0x51).append(0x0F).append(0x04).append(code0).append(std);
-	UINT8 cs = 0x53 + 0xFE + 0x51 + 0x0F + 0x04 + code0 + std;
+	UINT8 code0 = 0x00;
+	UINT8 addr = 0x05;
+	m_sendBuf.append(0x68).append(0x09).append(0x09).append(0x68);
+	m_sendBuf.append(0x53).append(addr).append(0x51).append(0x04).append(0x6D);
+	UINT8 cs = 0x53 + addr + 0x51 + 0x04 + 0x6D;
+	UINT8 ID0, ID1, ID2, ID3;
+	bool ok;
+	QString currentTime = QDateTime::currentDateTime().toString("yyyyMMddHHmm");//"201501071259" 到分钟
+	UINT8 minute = currentTime.right(2).toUInt(&ok, 10);
+	UINT8 hour = currentTime.mid(8,2).toUInt(&ok, 10);
+	UINT8 day = currentTime.mid(6, 2).toUInt(&ok, 10);
+	UINT8 month = currentTime.mid(4, 2).toUInt(&ok, 10);
+	UINT16 year = currentTime.left(4).toUInt(&ok, 10);
+
+	ID0 = minute;
+	UINT8 bainian = (year-1900)/100; //2bit，范围 0-3
+	ID1 = hour + 32*bainian;
+	UINT8 nian = (year-1900)%100;
+	UINT8 lownian = nian%8; 
+	UINT8 highnian = nian/8;  //
+	ID2 = day + lownian*32;
+	ID3 = month + highnian*16;
+	m_sendBuf.append(ID0).append(ID1).append(ID2).append(ID3);
+	cs += ID0 + ID1 +ID2 + ID3;
 	m_sendBuf.append(cs);//校验码
-*/
+
 	m_sendBuf.append(METER_END_CODE);//结束符
 }
 
