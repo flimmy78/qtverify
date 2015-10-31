@@ -2134,7 +2134,7 @@ void AdeMeterProtocol::makeFrameOfSetSystemTime()
 		m_sendBuf.append(ADE_PREFIX_CODE); //Ç°µ¼×Ö½Ú
 	}
 	UINT8 code0 = 0x00;
-	UINT8 addr = 0x05;
+	UINT8 addr = 0xFE;
 	m_sendBuf.append(0x68).append(0x09).append(0x09).append(0x68);
 	m_sendBuf.append(0x53).append(addr).append(0x51).append(0x04).append(0x6D);
 	UINT8 cs = 0x53 + addr + 0x51 + 0x04 + 0x6D;
