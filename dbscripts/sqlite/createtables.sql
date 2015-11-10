@@ -397,6 +397,7 @@ F_Func3 smallint
 );
 insert into T_Role_Def_Tab(F_ID, F_Name, F_Desc) values(0, 'root', '超级用户');
 insert into T_Role_Def_Tab(F_ID, F_Name, F_Desc) values(1, 'common', '普通用户');
+insert into T_Role_Def_Tab(F_ID, F_Name, F_Desc) values(2, 'repair', '维修人员');
 
 
 ---------------------------------
