@@ -378,6 +378,7 @@ void FlowResultDlg::on_btnImport_clicked()
 	{
 		QSqlError error = query1.lastError();
 		QString err = error.databaseText();
+		QMessageBox::warning(this, tr("Database Query Error"), err);
 		return; //返回
 	}
 	int rowNum = 0; //查询到的记录个数
@@ -389,6 +390,11 @@ void FlowResultDlg::on_btnImport_clicked()
 	{
 		query1.last();
 		rowNum = query1.at() + 1;
+	}
+	if (rowNum <= 0)
+	{
+		QMessageBox::warning(this, tr("hint"), tr("no record need to import"));
+		return;
 	}
 	QSqlRecord rec = query1.record();
 	int colNum = rec.count(); //表列数
