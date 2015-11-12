@@ -58,9 +58,6 @@ void CmbVerifyDlg::showEvent(QShowEvent *)
 	m_algo = new CAlgorithm;
 	m_readComConfig = new ReadComConfig();
 
-	m_pos_selected = false;
-	m_unit_selected = false;
-	m_min_tempdiff_set = false;
 	m_delta_temp_achieved = false;
 
 	initUi();
@@ -143,12 +140,18 @@ void CmbVerifyDlg::initUi()
 	m_btnGroup_unit = new QButtonGroup(ui.gbox_unit); //计量单位
 	m_btnGroup_unit->addButton(ui.rbtn_unit_kwh, UNIT_KWH);
 	m_btnGroup_unit->addButton(ui.rbtn_unit_mj, UNIT_MJ);
+	ui.rbtn_unit_kwh->setChecked(true);//默认计量单位：kWh
 	connect(m_btnGroup_unit, SIGNAL(buttonClicked(int)), this, SLOT(slot_btnGroup_unit_clicked(int)));
 
 	m_btnGroup_pos = new QButtonGroup(ui.gbox_install_pos);//安装位置
 	m_btnGroup_pos->addButton(ui.rbtn_pos_in, INSTALLPOS_IN);
 	m_btnGroup_pos->addButton(ui.rbtn_pos_out, INSTALLPOS_OUT);
+	ui.rbtn_pos_in->setChecked(true);//默认安装位置：入口
 	connect(m_btnGroup_pos, SIGNAL(buttonClicked(int)), this, SLOT(slot_btnGroup_pos_clicked(int)));
+
+	m_min_tempdiff = ui.lineEdit_min_theta->text().toFloat(); //最小温差
+	m_current_pos = m_btnGroup_pos->checkedId(); //安装位置
+	m_current_unit = m_btnGroup_unit->checkedId(); //计量单位
 
 	initTbl();
 
@@ -371,7 +374,6 @@ void CmbVerifyDlg::slot_countdown_timerout()
 void CmbVerifyDlg::slot_btnGroup_unit_clicked(int id)
 {
 	m_current_unit = id;
-	m_unit_selected = true;
 	QTableWidgetItem *item;
 	if (m_current_unit == UNIT_KWH)
 	{
@@ -394,7 +396,6 @@ void CmbVerifyDlg::slot_btnGroup_unit_clicked(int id)
 void CmbVerifyDlg::slot_btnGroup_pos_clicked(int id)
 {
 	m_current_pos = id;
-	m_pos_selected = true;
 	chkIfCanStartVerify();
 }
 
@@ -413,9 +414,23 @@ void CmbVerifyDlg::on_btnPara_clicked()
 	connect(m_CmbParamDlg, SIGNAL(saveSuccessfully()), this, SLOT(freshCmbParam()));
 }
 
+//计算标准误差
+void CmbVerifyDlg::calcStdError()
+{
+	int grade = m_param_config->value("common/grade").toInt();
+	float min_temp_diff = ui.lineEdit_min_theta->text().toFloat();
+	float set_tem_diff = m_param_config->value("diff/temp_deff").toFloat(); //参数设置中设置的温差
+//	float set_tem_diff = ui.lineEdit_std_in_t->text().toFloat() - ui.lineEdit_std_out_t->text().toFloat(); //标准温度计测量的温差
+	float flow_rate = IMITATION_FLOW_RATE;
+	float dn_flow_rate = m_param_config->value("common/dnflow").toFloat();
+	m_stdErrLmtByGrade = qAbs(getMeterGradeErrLmt(grade, min_temp_diff, set_tem_diff, dn_flow_rate, flow_rate));
+}
+
 void CmbVerifyDlg::freshCmbParam()
 {
-	
+	calcStdError(); //计算标准误差
+
+	chkIfCanStartVerify(); //检查是否满足开始检测条件
 }
 
 void CmbVerifyDlg::on_btnStart_clicked()
@@ -432,17 +447,12 @@ void CmbVerifyDlg::on_btnStart_clicked()
 		ui.tableWidget->item(i, COL_DELTA_V)->setText("");
 		ui.tableWidget->item(i, COL_DELTA_E)->setText("");
 		ui.tableWidget->item(i, COL_STD_E)->setText("");
+		ui.tableWidget->item(i, COL_STD_ERR)->setText("");
 		ui.tableWidget->item(i, COL_ERR)->setText("");
 	}
 
-	int grade = m_param_config->value("common/grade").toInt();
-	float min_temp_diff = ui.lineEdit_min_theta->text().toFloat();
-	float set_tem_diff = m_param_config->value("diff/temp_deff").toFloat();
-	float flow_rate = IMITATION_FLOW_RATE;
-	float dn_flow_rate = m_param_config->value("common/dnflow").toFloat();
-	m_stdErrLmtByGrade = qAbs(getMeterGradeErrLmt(grade, min_temp_diff, set_tem_diff, dn_flow_rate, flow_rate));
-
 	int quantity = m_param_config->value("diff/quantity").toFloat();
+	float flow_rate = IMITATION_FLOW_RATE;
 	m_countdown = 3.6*quantity/flow_rate;
 
 	m_timer->start(1000);
@@ -543,7 +553,6 @@ void CmbVerifyDlg::on_btnExit_clicked()
 void CmbVerifyDlg::on_lineEdit_min_theta_textChanged(const QString & text)
 {
 	m_min_tempdiff = text.toFloat();
-	m_min_tempdiff_set = true;
 	chkIfCanStartVerify();
 }
 
@@ -583,10 +592,10 @@ void CmbVerifyDlg::on_lineEdit_std_out_r_textChanged(const QString & text)
 
 void CmbVerifyDlg::chkIfCanStartVerify()
 {
-	if (m_min_tempdiff_set && m_pos_selected && m_unit_selected && m_delta_temp_achieved)
-	{
+// 	if (m_delta_temp_achieved)
+// 	{
 		emit verifyCanStart();
-	}
+//	}
 }
 
 void CmbVerifyDlg::startVerifySlot(void)
@@ -684,13 +693,13 @@ float CmbVerifyDlg::getStdEnergy(float analogV)
 {
 	float in_t = ui.lineEdit_std_in_t->text().toFloat();
 	float out_t = ui.lineEdit_std_out_t->text().toFloat();
-	float delta_t = qAbs(in_t-out_t);
-	float min_delta_t = qAbs(ui.lineEdit_min_theta->text().trimmed().toFloat());
-	if (delta_t<min_delta_t)
-	{
-		QMessageBox::information(this, tr("Hint"), tr("current temperature different is less than min Δθ!"));
-		return -1;
-	}
+// 	float delta_t = qAbs(in_t - out_t);
+// 	float min_delta_t = qAbs(ui.lineEdit_min_theta->text().trimmed().toFloat());
+// 	if (delta_t < min_delta_t)
+// 	{
+// 		QMessageBox::information(this, tr("Hint"), tr("current temperature different is less than min Δθ!"));
+// 		return -1;
+// 	}
 	return m_algo->calcEnergyByEnthalpy(in_t, out_t, analogV, m_current_pos, m_current_unit);
 }
 

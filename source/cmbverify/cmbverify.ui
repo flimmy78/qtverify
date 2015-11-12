@@ -143,6 +143,9 @@
              <height>30</height>
             </size>
            </property>
+           <property name="text">
+            <string>3</string>
+           </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
            </property>

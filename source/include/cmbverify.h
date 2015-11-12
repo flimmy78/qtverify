@@ -84,6 +84,7 @@ public slots:
 	void slot_btnGroup_pos_clicked(int);
 
 private slots:
+	void calcStdError();
 	void freshCmbParam();
 	void startVerifySlot(void);
 
@@ -111,15 +112,12 @@ private:
 
 	/*----------计算中用到的关键参数-----------*/
 	int m_current_pos;//安装位置
-	bool m_pos_selected;//安装位置已选择
 	int m_current_unit;//热量单位
-	bool m_unit_selected;//计量单位已选则
 
 	float m_std_temperate_in;//标准温度计进口温度
 	float m_std_temperate_out;//标准温度计出口温度
 
 	float m_min_tempdiff;//最小温差
-	bool m_min_tempdiff_set;//最小温差已设置
 
 	bool m_delta_temp_achieved;//当前恒温槽达到检定温差
 
