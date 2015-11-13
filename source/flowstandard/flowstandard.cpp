@@ -2115,7 +2115,7 @@ void FlowStandardDlg::slotModifyMeterNO(const int &row)
 /*
 ** 调整误差
 ** 输入参数：
-row:行号，由row可以知道当前热表对应的串口、表号、误差等等
+	row:行号，由row可以知道当前热表对应的串口、表号、误差等等
 */
 void FlowStandardDlg::slotAdjustError(const int &row)
 {
@@ -2126,7 +2126,7 @@ void FlowStandardDlg::slotAdjustError(const int &row)
 		return;
 	}
 	qDebug()<<"slotAdjustError idx ="<<idx;
-	if (m_meterErr[idx][0]>MAX_ERROR || m_meterErr[idx][1]>MAX_ERROR || m_meterErr[idx][2]>MAX_ERROR ||m_meterErr[idx][3]>MAX_ERROR)
+	if (qAbs(m_meterErr[idx][0])>MAX_ERROR || qAbs(m_meterErr[idx][1])>MAX_ERROR || qAbs(m_meterErr[idx][2])>MAX_ERROR || qAbs(m_meterErr[idx][3])>MAX_ERROR)
 	{
 		qDebug()<<"slotAdjustError idx ="<<idx<<", 误差过大，不能修正";
 		return;
