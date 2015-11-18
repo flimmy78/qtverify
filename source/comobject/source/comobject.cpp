@@ -685,6 +685,19 @@ void MeterComObject::readMeterComBuffer()
 	{
 		return;
 	}
+	//处理光电头故障：将发送数据原封不动返回接收端，会包含大量唤醒码
+	QByteArray tmp = m_meterCom->readAll();
+	bool flg = true;
+	for (int i=0; i<tmp.size(); i++)
+	{
+		flg *= ((UINT8)tmp.at(i) == ADE_WAKEUP_CODE);
+	}
+	if (flg)
+	{
+		return;
+	}
+	//处理光电头故障结束
+	m_meterTmp.append(tmp);
 	wait(500);
 	m_meterTmp.append(m_meterCom->readAll());
 // 	int idx = m_meterTmp.indexOf(METER_START_CODE); //起始符
