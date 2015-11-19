@@ -359,8 +359,8 @@ F_ID integer not null primary key,
 F_Name varchar(24),
 F_Desc varchar(60)
 );
-insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc) values(0, 'SDM', '山东德鲁');
-insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc) values(1, 'ADE', '航天德鲁');
+insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc) values(0, 'SDM', '山东德鲁计量');
+insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc) values(1, 'ADE', '烟台航天德鲁');
 insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc) values(2, 'SDJG', '烟台晶格');
 insert into T_Manufacture_Dept(F_ID, F_Name, F_Desc) values(3, 'HYLY', '华仪乐业');
 
@@ -379,6 +379,8 @@ F_Desc varchar(60)
 insert into T_Verify_Dept(F_ID, F_Name, F_Desc) values(0, 'SDJL', '山东计量院');
 insert into T_Verify_Dept(F_ID, F_Name, F_Desc) values(1, 'QDJL', '青岛计量所');
 insert into T_Verify_Dept(F_ID, F_Name, F_Desc) values(2, 'YTJL', '烟台计量所');
+insert into T_Verify_Dept(F_ID, F_Name, F_Desc) values(3, 'SDM', '山东德鲁计量');
+insert into T_Verify_Dept(F_ID, F_Name, F_Desc) values(4, 'ADE', '烟台航天德鲁');
 
 
 ---------------------------------
