@@ -307,24 +307,28 @@
     <message>
         <location filename="../ui/flowresult.ui" line="244"/>
         <location filename="../ui/flowresult.ui" line="377"/>
+        <location filename="../ui/flowresult.ui" line="459"/>
         <source>1</source>
         <translation>1</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="249"/>
         <location filename="../ui/flowresult.ui" line="382"/>
+        <location filename="../ui/flowresult.ui" line="464"/>
         <source>2</source>
         <translation>2</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="254"/>
         <location filename="../ui/flowresult.ui" line="387"/>
+        <location filename="../ui/flowresult.ui" line="469"/>
         <source>3</source>
         <translation>3</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="259"/>
         <location filename="../ui/flowresult.ui" line="392"/>
+        <location filename="../ui/flowresult.ui" line="474"/>
         <source>4</source>
         <translation>4</translation>
     </message>
@@ -383,61 +387,79 @@
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="397"/>
+        <location filename="../ui/flowresult.ui" line="479"/>
         <source>5</source>
         <translation>5</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="402"/>
+        <location filename="../ui/flowresult.ui" line="484"/>
         <source>6</source>
         <translation>6</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="407"/>
+        <location filename="../ui/flowresult.ui" line="489"/>
         <source>7</source>
         <translation>7</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="412"/>
+        <location filename="../ui/flowresult.ui" line="494"/>
         <source>8</source>
         <translation>8</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="417"/>
+        <location filename="../ui/flowresult.ui" line="499"/>
         <source>9</source>
         <translation>9</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="422"/>
+        <location filename="../ui/flowresult.ui" line="504"/>
         <source>10</source>
         <translation>10</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="427"/>
+        <location filename="../ui/flowresult.ui" line="509"/>
         <source>11</source>
         <translation>11</translation>
     </message>
     <message>
         <location filename="../ui/flowresult.ui" line="432"/>
+        <location filename="../ui/flowresult.ui" line="514"/>
         <source>12</source>
         <translation>12</translation>
     </message>
     <message>
-        <location filename="../ui/flowresult.ui" line="469"/>
+        <location filename="../ui/flowresult.ui" line="446"/>
+        <source>DeviceID:</source>
+        <translation>DeviceID:</translation>
+    </message>
+    <message>
+        <location filename="../ui/flowresult.ui" line="531"/>
+        <source>RecordNums:</source>
+        <translation>RecordNums:</translation>
+    </message>
+    <message>
+        <location filename="../ui/flowresult.ui" line="547"/>
         <source>Insert</source>
         <translation>Insert</translation>
     </message>
     <message>
-        <location filename="../ui/flowresult.ui" line="476"/>
+        <location filename="../ui/flowresult.ui" line="554"/>
         <source>Stop</source>
         <translation>Stop</translation>
     </message>
     <message>
-        <location filename="../ui/flowresult.ui" line="523"/>
+        <location filename="../ui/flowresult.ui" line="599"/>
         <source>Import</source>
         <translation>Import</translation>
     </message>
     <message>
-        <location filename="../ui/flowresult.ui" line="542"/>
+        <location filename="../ui/flowresult.ui" line="618"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
@@ -445,62 +467,62 @@
 <context>
     <name>FlowResultDlg</name>
     <message>
-        <location filename="../source/flow_result.cpp" line="321"/>
+        <location filename="../source/flow_result.cpp" line="343"/>
         <source>Warning</source>
         <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="321"/>
+        <location filename="../source/flow_result.cpp" line="343"/>
         <source>no data need to be exported!</source>
         <translation>no data need to be exported!</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="325"/>
+        <location filename="../source/flow_result.cpp" line="347"/>
         <source>Save File</source>
         <translation>Save File</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="325"/>
+        <location filename="../source/flow_result.cpp" line="347"/>
         <source>Microsoft Excel (*.xls)</source>
         <translation>Microsoft Excel (*.xls)</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="336"/>
+        <location filename="../source/flow_result.cpp" line="358"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="336"/>
+        <location filename="../source/flow_result.cpp" line="358"/>
         <source>export excel file successful!</source>
         <translation>export excel file successful!</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="340"/>
+        <location filename="../source/flow_result.cpp" line="362"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="381"/>
+        <location filename="../source/flow_result.cpp" line="403"/>
         <source>Database Query Error</source>
         <translation>Database Query Error</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="396"/>
+        <location filename="../source/flow_result.cpp" line="418"/>
         <source>hint</source>
         <translation>hint</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="396"/>
+        <location filename="../source/flow_result.cpp" line="418"/>
         <source>no record need to import</source>
         <translation>no record need to import</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="452"/>
+        <location filename="../source/flow_result.cpp" line="474"/>
         <source>Import Success</source>
         <translation>Import Success</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="457"/>
+        <location filename="../source/flow_result.cpp" line="479"/>
         <source>Import Failed</source>
         <translation>Import Failed</translation>
     </message>
@@ -571,83 +593,83 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../source/flow_result.cpp" line="252"/>
+        <location filename="../source/flow_result.cpp" line="273"/>
         <source>time</source>
         <translation>time</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="253"/>
+        <location filename="../source/flow_result.cpp" line="274"/>
         <source>MeterNO.</source>
         <translation>MeterNO.</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="254"/>
+        <location filename="../source/flow_result.cpp" line="275"/>
         <location filename="../source/total_result.cpp" line="205"/>
         <source>FlowPoint</source>
         <translation>FlowPoint</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="255"/>
+        <location filename="../source/flow_result.cpp" line="276"/>
         <source>Flow</source>
         <translation>Flow</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="256"/>
+        <location filename="../source/flow_result.cpp" line="277"/>
         <source>Method</source>
         <translation>Method</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="257"/>
+        <location filename="../source/flow_result.cpp" line="278"/>
         <location filename="../source/total_result.cpp" line="207"/>
         <source>MeterValue0</source>
         <translation>MeterValue0</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="258"/>
+        <location filename="../source/flow_result.cpp" line="279"/>
         <location filename="../source/total_result.cpp" line="208"/>
         <source>MeterValue1</source>
         <translation>MeterValue1</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="259"/>
+        <location filename="../source/flow_result.cpp" line="280"/>
         <source>BalValue0</source>
         <translation>BalValue0</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="260"/>
+        <location filename="../source/flow_result.cpp" line="281"/>
         <source>BalValue1</source>
         <translation>BalValue1</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="261"/>
+        <location filename="../source/flow_result.cpp" line="282"/>
         <source>F_StdMeterV0</source>
         <translation>F_StdMeterV0</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="262"/>
+        <location filename="../source/flow_result.cpp" line="283"/>
         <source>F_StdMeterV1</source>
         <translation>F_StdMeterV1</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="263"/>
+        <location filename="../source/flow_result.cpp" line="284"/>
         <source>PipeTemp</source>
         <translation>PipeTemp</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="264"/>
+        <location filename="../source/flow_result.cpp" line="285"/>
         <location filename="../source/total_result.cpp" line="216"/>
         <source>Density</source>
         <translation>Density</translation>
     </message>
     <message>
         <location filename="../source/cmb_result.cpp" line="226"/>
-        <location filename="../source/flow_result.cpp" line="272"/>
+        <location filename="../source/flow_result.cpp" line="293"/>
         <location filename="../source/total_result.cpp" line="224"/>
         <source>PickCode</source>
         <translation>PickCode</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="285"/>
+        <location filename="../source/flow_result.cpp" line="306"/>
         <source>FlowCoe</source>
         <translation>FlowCoe</translation>
     </message>
@@ -685,7 +707,7 @@
     </message>
     <message>
         <location filename="../source/cmb_result.cpp" line="241"/>
-        <location filename="../source/flow_result.cpp" line="265"/>
+        <location filename="../source/flow_result.cpp" line="286"/>
         <source>StdValue</source>
         <translation>StdValue</translation>
     </message>
@@ -700,14 +722,14 @@
         <translation>MeterV1</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="266"/>
+        <location filename="../source/flow_result.cpp" line="287"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="165"/>
         <location filename="../source/cmb_result.cpp" line="247"/>
-        <location filename="../source/flow_result.cpp" line="267"/>
+        <location filename="../source/flow_result.cpp" line="288"/>
         <location filename="../source/total_result.cpp" line="219"/>
         <source>StdError</source>
         <translation>StdError</translation>
@@ -715,20 +737,20 @@
     <message>
         <location filename="../source/calculator_result.cpp" line="166"/>
         <location filename="../source/cmb_result.cpp" line="248"/>
-        <location filename="../source/flow_result.cpp" line="268"/>
+        <location filename="../source/flow_result.cpp" line="289"/>
         <location filename="../source/total_result.cpp" line="220"/>
         <source>Result</source>
         <translation>Result</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="269"/>
+        <location filename="../source/flow_result.cpp" line="290"/>
         <source>MeterPosNO.</source>
         <translation>MeterPosNO.</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="142"/>
         <location filename="../source/cmb_result.cpp" line="225"/>
-        <location filename="../source/flow_result.cpp" line="270"/>
+        <location filename="../source/flow_result.cpp" line="291"/>
         <location filename="../source/platinum_result.cpp" line="126"/>
         <location filename="../source/total_result.cpp" line="222"/>
         <source>Model</source>
@@ -737,7 +759,7 @@
     <message>
         <location filename="../source/calculator_result.cpp" line="141"/>
         <location filename="../source/cmb_result.cpp" line="224"/>
-        <location filename="../source/flow_result.cpp" line="271"/>
+        <location filename="../source/flow_result.cpp" line="292"/>
         <location filename="../source/platinum_result.cpp" line="125"/>
         <location filename="../source/total_result.cpp" line="223"/>
         <source>Standard</source>
@@ -750,7 +772,7 @@
     <message>
         <location filename="../source/calculator_result.cpp" line="144"/>
         <location filename="../source/cmb_result.cpp" line="228"/>
-        <location filename="../source/flow_result.cpp" line="273"/>
+        <location filename="../source/flow_result.cpp" line="294"/>
         <location filename="../source/platinum_result.cpp" line="127"/>
         <location filename="../source/total_result.cpp" line="225"/>
         <source>ManufactDept</source>
@@ -759,7 +781,7 @@
     <message>
         <location filename="../source/calculator_result.cpp" line="145"/>
         <location filename="../source/cmb_result.cpp" line="229"/>
-        <location filename="../source/flow_result.cpp" line="274"/>
+        <location filename="../source/flow_result.cpp" line="295"/>
         <location filename="../source/platinum_result.cpp" line="128"/>
         <location filename="../source/total_result.cpp" line="226"/>
         <source>VerifyDept</source>
@@ -768,7 +790,7 @@
     <message>
         <location filename="../source/calculator_result.cpp" line="143"/>
         <location filename="../source/cmb_result.cpp" line="227"/>
-        <location filename="../source/flow_result.cpp" line="275"/>
+        <location filename="../source/flow_result.cpp" line="296"/>
         <location filename="../source/total_result.cpp" line="227"/>
         <source>Grade</source>
         <translation>Grade</translation>
@@ -792,7 +814,7 @@
     <message>
         <location filename="../source/calculator_result.cpp" line="146"/>
         <location filename="../source/cmb_result.cpp" line="230"/>
-        <location filename="../source/flow_result.cpp" line="276"/>
+        <location filename="../source/flow_result.cpp" line="297"/>
         <location filename="../source/platinum_result.cpp" line="130"/>
         <location filename="../source/total_result.cpp" line="228"/>
         <source>VerifyPerson</source>
@@ -904,48 +926,48 @@
         <translation>DispError</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="277"/>
+        <location filename="../source/flow_result.cpp" line="298"/>
         <location filename="../source/platinum_result.cpp" line="129"/>
         <location filename="../source/total_result.cpp" line="229"/>
         <source>CheckPerson</source>
         <translation>CheckPerson</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="278"/>
+        <location filename="../source/flow_result.cpp" line="299"/>
         <source>DeviceInfoId</source>
         <translation>DeviceInfoId</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="279"/>
+        <location filename="../source/flow_result.cpp" line="300"/>
         <location filename="../source/total_result.cpp" line="231"/>
         <source>VerifyDate</source>
         <translation>VerifyDate</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="280"/>
+        <location filename="../source/flow_result.cpp" line="301"/>
         <location filename="../source/total_result.cpp" line="232"/>
         <source>ValidDate</source>
         <translation>ValidDate</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="281"/>
+        <location filename="../source/flow_result.cpp" line="302"/>
         <source>EnvTemp</source>
         <translation>EnvTemp</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="282"/>
+        <location filename="../source/flow_result.cpp" line="303"/>
         <location filename="../source/total_result.cpp" line="234"/>
         <source>EnvHumidity</source>
         <translation>EnvHumidity</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="283"/>
+        <location filename="../source/flow_result.cpp" line="304"/>
         <location filename="../source/total_result.cpp" line="235"/>
         <source>AirPressure</source>
         <translation>AirPressure</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="284"/>
+        <location filename="../source/flow_result.cpp" line="305"/>
         <location filename="../source/total_result.cpp" line="236"/>
         <source>CertNO</source>
         <translation>CertNO</translation>

@@ -25,6 +25,7 @@
 #include <QtGui/QProgressDialog>
 #include <QtCore/QProcessEnvironment>
 #include <QAxObject>
+#include <QtGui/QDataWidgetMapper>
 
 #include "flow_result.h"
 #include "qexcel.h"
@@ -51,7 +52,6 @@ FlowResultDlg::FlowResultDlg(QWidget *parent, Qt::WFlags flags)
 
 	ui.btnInsert->hide();
 	ui.btnStop->hide();
-	ui.spinBoxNums->hide();
 
 // 	ui.labelProgress->hide();
 /*	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
@@ -124,6 +124,17 @@ void FlowResultDlg::initUiData()
 	ui.cmbStandard->insertItem(ui.cmbStandard->count(), "");
 	ui.cmbStandard->setCurrentIndex(ui.cmbStandard->count()-1);
 
+	//检定装置设备ID
+	int col_id6 = 0;
+	QSqlRelationalTableModel *model6 = new QSqlRelationalTableModel(this, g_defaultdb);  
+	model6->setTable("T_Verify_Device_Info");  
+	model6->setRelation(col_id6, QSqlRelation("T_Verify_Device_Info","F_ID","F_DeviceName"));  
+	QSqlTableModel *relationModel6 = model6->relationModel(col_id6);   
+	ui.cmbDeviceID->setModel(relationModel6);  
+	ui.cmbDeviceID->setModelColumn(relationModel6->fieldIndex("F_ID")); 
+	ui.cmbDeviceID->insertItem(ui.cmbDeviceID->count(), "");
+	ui.cmbDeviceID->setCurrentIndex(ui.cmbDeviceID->count()-1);
+
 	//表等级
 	ui.cmbGrade->insertItem(ui.cmbGrade->count(), "1");
 	ui.cmbGrade->insertItem(ui.cmbGrade->count(), "2");
@@ -173,12 +184,14 @@ void FlowResultDlg::getCondition()
 	{
 		m_conStr.append(QString(" and F_ManufactDept=%1").arg(ui.cmbManufactDept->currentIndex()));
 	}
+
 	idx = ui.cmbVerifyDept->currentIndex();
 	count = ui.cmbVerifyDept->count();
 	if (idx != (count-1))//送检单位
 	{
 		m_conStr.append(QString(" and F_VerifyDept=%1").arg(ui.cmbVerifyDept->currentIndex()));
 	}
+
 	idx = ui.cmbVerifyPerson->currentIndex();
 	count = ui.cmbVerifyPerson->count();
 	if (idx != (count-1))//检定员
@@ -212,6 +225,13 @@ void FlowResultDlg::getCondition()
 		m_conStr.append(QString(" and F_Standard=%1").arg(ui.cmbStandard->currentIndex()));
 	}
 
+	idx = ui.cmbDeviceID->currentIndex();
+	count = ui.cmbDeviceID->count();
+	if (idx != (count-1))//检定装置设备ID
+	{
+		m_conStr.append(QString(" and F_DeviceInfoID=%1").arg(ui.cmbDeviceID->currentText().toUInt()));
+	}
+
 	idx = ui.cmbGrade->currentIndex();
 	count = ui.cmbGrade->count();
 	if (idx != (count-1))//表等级
@@ -237,6 +257,7 @@ void FlowResultDlg::queryData()
 	//model->setEditStrategy(QSqlTableModel::OnFieldChange); //属性变化时写入数据库
 	model->setTable("T_Flow_Verify_Record");
 	model->setFilter(m_conStr); //设置查询条件
+	model->setSort(0, Qt::AscendingOrder);
 	
 	//设置外键
 	model->setRelation(17, QSqlRelation("T_Yes_No_Tab","F_ID","F_Desc"));
@@ -289,6 +310,7 @@ void FlowResultDlg::queryData()
 	ui.tableView->resizeColumnsToContents(); //列宽度自适应
 	ui.tableView->setItemDelegate(new QSqlRelationalDelegate(ui.tableView)); //外键字段只能在已有的数据中编辑
 	ui.tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);  //使其不可编辑
+	ui.spinBoxNums->setValue(model->rowCount());
 
 	ui.tableView->hideColumn(0);
 
