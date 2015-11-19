@@ -687,40 +687,45 @@ void MeterComObject::readMeterComBuffer()
 	}
 	//处理光电头故障：将发送数据原封不动返回接收端，会包含大量唤醒码
 	QByteArray tmp = m_meterCom->readAll();
+	if (tmp.isEmpty())
+	{
+		return;
+	}
 	bool flg = true;
 	for (int i=0; i<tmp.size(); i++)
 	{
 		flg *= ((UINT8)tmp.at(i) == ADE_WAKEUP_CODE);
 	}
-	if (flg)
+	if (flg) //全都是唤醒码
 	{
 		return;
 	}
 	//处理光电头故障结束
 	m_meterTmp.append(tmp);
-	wait(500);
+	sleep(500);
 	m_meterTmp.append(m_meterCom->readAll());
-// 	int idx = m_meterTmp.indexOf(METER_START_CODE); //起始符
-// 	if (idx < 0)
-// 	{
-// 		return;
-// 	}
-// 	int num = m_meterTmp.size();
-// 	if (num <= idx + 10)
-// 	{
-// 		return;
-// 	}
-// 	UINT8 datalen = (UINT8)m_meterTmp.at(10+idx);
-// 	int framelen = idx + 13 + datalen;
-// 	if (num < framelen || m_meterTmp.at(num-1) !=  METER_END_CODE) //一帧接收完毕
-// 	{
-// 		return;
-// 	}
-
+/***********************************************************
+	int idx = m_meterTmp.indexOf(METER_START_CODE); //起始符
+	if (idx < 0)
+	{
+		return;
+	}
+	int num = m_meterTmp.size();
+	if (num <= idx + 10)
+	{
+		return;
+	}
+	UINT8 datalen = (UINT8)m_meterTmp.at(10+idx);
+	int framelen = idx + 13 + datalen;
+	if (num < framelen || m_meterTmp.at(num-1) !=  METER_END_CODE) //一帧接收完毕
+	{
+		return;
+	}
+**************************************************************/
 // 	qDebug()<<m_meterCom->portName()<<"readMeterComBuffer MeterComObject thread:"<<QThread::currentThreadId();
-	qDebug()<<m_meterCom->portName()<<"read"<<m_meterTmp.size()<<"bytes!";
-	QDateTime begintime = QDateTime::currentDateTime();
-	qDebug()<<"begintime:"<<begintime.toString("yyyy-MM-dd HH:mm:ss.zzz");
+	qDebug()<<"MeterComObject::readMeterComBuffer"<<m_meterCom->portName()<<"read"<<m_meterTmp.size()<<"bytes!";
+// 	QDateTime begintime = QDateTime::currentDateTime();
+// 	qDebug()<<"begintime:"<<begintime.toString("yyyy-MM-dd HH:mm:ss.zzz");
 	UINT8 ret = 0x00;
 	if (NULL==m_meterProtocol)
 	{
@@ -772,10 +777,11 @@ void MeterComObject::readMeterComBuffer()
 		smallCoe = m_meterProtocol->getSmallCoe();
 		emit readMeterSmallCoeIsOK(m_portName, smallCoe);
 
-		QDateTime endtime = QDateTime::currentDateTime();
-		qDebug()<<"endtime:  "<<endtime.toString("yyyy-MM-dd HH:mm:ss.zzz");
-		UINT32 usedSec = begintime.msecsTo(endtime);
-		qDebug()<<"解析热量表数据，用时"<<usedSec<<"毫秒";
+// 		QDateTime endtime = QDateTime::currentDateTime();
+// 		qDebug()<<"endtime:  "<<endtime.toString("yyyy-MM-dd HH:mm:ss.zzz");
+// 		UINT32 usedSec = begintime.msecsTo(endtime);
+//		qDebug()<<"解析热量表数据，用时"<<usedSec<<"毫秒";
+		qDebug()<<"解析热量表数据，成功";
 	}
 }
 
@@ -784,7 +790,7 @@ void MeterComObject::readMeterComBuffer()
 */
 void MeterComObject::askReadMeterNO()
 {
-	qDebug()<<"111 MeterComObject askReadMeterNo thread:"<<QThread::currentThreadId();
+	qDebug()<<m_meterCom->portName()<<"111 MeterComObject askReadMeterNo thread:"<<QThread::currentThreadId();
 	if (NULL==m_meterProtocol)
 	{
 		return;
@@ -799,7 +805,7 @@ void MeterComObject::askReadMeterNO()
 */
 void MeterComObject::askReadMeterFlowCoe()
 {
-	qDebug()<<"111 MeterComObject askReadMeterFlowCoe thread:"<<QThread::currentThreadId();
+	qDebug()<<m_meterCom->portName()<<"111 MeterComObject askReadMeterFlowCoe thread:"<<QThread::currentThreadId();
 	if (NULL==m_meterProtocol)
 	{
 		return;
@@ -817,7 +823,7 @@ void MeterComObject::askReadMeterFlowCoe()
 */
 void MeterComObject::askReadMeterData(int vType)
 {
-	qDebug()<<"111 MeterComObject askReadMeterData thread:"<<QThread::currentThreadId();
+	qDebug()<<m_meterCom->portName()<<"111 MeterComObject askReadMeterData thread:"<<QThread::currentThreadId();
 	if (NULL==m_meterProtocol)
 	{
 		return;
@@ -835,7 +841,7 @@ void MeterComObject::askReadMeterData(int vType)
 */
 void MeterComObject::askSetVerifyStatus(int vType)
 {
-	qDebug()<<"111 MeterComObject askSetVerifyStatus thread:"<<QThread::currentThreadId();
+	qDebug()<<m_meterCom->portName()<<"111 MeterComObject askSetVerifyStatus thread:"<<QThread::currentThreadId();
 	if (NULL==m_meterProtocol)
 	{
 		return;
@@ -853,7 +859,7 @@ void MeterComObject::askSetVerifyStatus(int vType)
 */
 void MeterComObject::askExitVerifyStatus(int vType)
 {
-	qDebug()<<"111 MeterComObject askExitVerifyStatus thread:"<<QThread::currentThreadId();
+	qDebug()<<m_meterCom->portName()<<"111 MeterComObject askExitVerifyStatus thread:"<<QThread::currentThreadId();
 	if (NULL==m_meterProtocol)
 	{
 		return;
@@ -868,7 +874,7 @@ void MeterComObject::askExitVerifyStatus(int vType)
 */
 void MeterComObject::askModifyMeterNO(QString oldMeterNo, QString newMeterNo)
 {
-	qDebug()<<"111 MeterComObject askModifyMeterNO thread:"<<QThread::currentThreadId();
+	qDebug()<<m_meterCom->portName()<<"111 MeterComObject askModifyMeterNO thread:"<<QThread::currentThreadId();
 	qDebug()<<"oldMeterNo:"<<oldMeterNo<<", newMeterNo:"<<newMeterNo;
 	if (NULL==m_meterProtocol)
 	{
@@ -892,7 +898,7 @@ void MeterComObject::askModifyMeterNO(QString oldMeterNo, QString newMeterNo)
 */
 void MeterComObject::askModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr)
 {
-	qDebug()<<"111 MeterComObject askModifyFlowCoe thread:"<<QThread::currentThreadId();
+	qDebug()<<m_meterCom->portName()<<"111 MeterComObject askModifyFlowCoe thread:"<<QThread::currentThreadId();
 	if (NULL==m_meterProtocol)
 	{
 		return;
@@ -908,7 +914,7 @@ void MeterComObject::askModifyFlowCoe(QString meterNO, float bigErr, float mid2E
 */
 void MeterComObject::askModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe)
 {
-	qDebug()<<"222 MeterComObject askModifyFlowCoe thread:"<<QThread::currentThreadId();
+	qDebug()<<m_meterCom->portName()<<"222 MeterComObject askModifyFlowCoe thread:"<<QThread::currentThreadId();
 	if (NULL==m_meterProtocol)
 	{
 		return;
@@ -925,7 +931,7 @@ void MeterComObject::askModifyFlowCoe(QString meterNO, float bigErr, float mid2E
 */
 void MeterComObject::askSetStandard(UINT8 std)
 {
-	qDebug()<<"222 MeterComObject askSetStandard thread:"<<QThread::currentThreadId();
+	qDebug()<<m_meterCom->portName()<<"222 MeterComObject askSetStandard thread:"<<QThread::currentThreadId();
 	if (NULL==m_meterProtocol)
 	{
 		return;
@@ -940,7 +946,7 @@ void MeterComObject::askSetStandard(UINT8 std)
 */
 void MeterComObject::askSetSystemTime()
 {
-	qDebug()<<"222 MeterComObject askSetSystemTime thread:"<<QThread::currentThreadId();
+	qDebug()<<m_meterCom->portName()<<"222 MeterComObject askSetSystemTime thread:"<<QThread::currentThreadId();
 	if (NULL==m_meterProtocol)
 	{
 		return;
@@ -955,7 +961,7 @@ void MeterComObject::askSetSystemTime()
 */
 void MeterComObject::askSetAddress1(QString curAddr1, QString newAddr2)
 {
-	qDebug()<<"222 MeterComObject askSetAddress1 thread:"<<QThread::currentThreadId();
+	qDebug()<<m_meterCom->portName()<<"222 MeterComObject askSetAddress1 thread:"<<QThread::currentThreadId();
 	if (NULL==m_meterProtocol)
 	{
 		return;
@@ -970,7 +976,7 @@ void MeterComObject::askSetAddress1(QString curAddr1, QString newAddr2)
 */
 void MeterComObject::askSetAddress2(QString curAddr1, QString newAddr2)
 {
-	qDebug()<<"222 MeterComObject askSetAddress2 thread:"<<QThread::currentThreadId();
+	qDebug()<<m_meterCom->portName()<<"222 MeterComObject askSetAddress2 thread:"<<QThread::currentThreadId();
 	if (NULL==m_meterProtocol)
 	{
 		return;
