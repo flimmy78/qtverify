@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>374</width>
-    <height>297</height>
+    <width>532</width>
+    <height>445</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
    <iconset resource="../systemsetdlg.qrc">
     <normaloff>:/systemsetdlg/images/portset.png</normaloff>:/systemsetdlg/images/portset.png</iconset>
   </property>
-  <layout class="QGridLayout" name="gridLayout_5">
+  <layout class="QGridLayout" name="gridLayout_8">
    <item row="0" column="0">
     <layout class="QGridLayout" name="gridLayout_4">
      <item row="0" column="0">
@@ -130,13 +130,13 @@
     </layout>
    </item>
    <item row="1" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
+    <layout class="QGridLayout" name="gridLayout_6">
+     <item row="0" column="0">
       <widget class="QGroupBox" name="gBox_Valve">
        <property name="title">
         <string>Valve</string>
        </property>
-       <layout class="QGridLayout" name="gridLayout">
+       <layout class="QGridLayout" name="gridLayout_3">
         <item row="0" column="0">
          <widget class="QLabel" name="label">
           <property name="text">
@@ -803,10 +803,454 @@
           </item>
          </widget>
         </item>
+        <item row="6" column="0">
+         <widget class="QLabel" name="label_13">
+          <property name="text">
+           <string>Big In</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="1">
+         <widget class="QComboBox" name="cBox_BigInlet">
+          <item>
+           <property name="text">
+            <string>port1</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port2</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port3</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port4</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port5</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port6</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port7</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port8</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port9</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port10</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port11</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port12</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port13</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port14</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port15</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port16</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port17</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port18</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port19</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port20</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="7" column="0">
+         <widget class="QLabel" name="label_14">
+          <property name="text">
+           <string>Big Out</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="1">
+         <widget class="QComboBox" name="cBox_BigOutlet">
+          <item>
+           <property name="text">
+            <string>port1</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port2</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port3</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port4</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port5</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port6</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port7</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port8</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port9</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port10</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port11</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port12</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port13</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port14</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port15</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port16</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port17</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port18</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port19</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port20</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="8" column="0">
+         <widget class="QLabel" name="label_15">
+          <property name="text">
+           <string>Small In</string>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="1">
+         <widget class="QComboBox" name="cBox_SmallInlet">
+          <item>
+           <property name="text">
+            <string>port1</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port2</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port3</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port4</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port5</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port6</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port7</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port8</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port9</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port10</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port11</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port12</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port13</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port14</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port15</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port16</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port17</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port18</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port19</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port20</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="9" column="0">
+         <widget class="QLabel" name="label_16">
+          <property name="text">
+           <string>Small Out</string>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="1">
+         <widget class="QComboBox" name="cBox_SmallOutlet">
+          <item>
+           <property name="text">
+            <string>port1</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port2</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port3</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port4</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port5</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port6</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port7</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port8</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port9</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port10</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port11</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port12</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port13</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port14</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port15</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port16</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port17</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port18</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port19</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>port20</string>
+           </property>
+          </item>
+         </widget>
+        </item>
        </layout>
       </widget>
      </item>
-     <item>
+     <item row="0" column="1">
       <spacer name="horizontalSpacer_4">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -819,9 +1263,9 @@
        </property>
       </spacer>
      </item>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
+     <item row="0" column="2">
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="0" column="0">
         <widget class="QGroupBox" name="gBox_Dev">
          <property name="title">
           <string>Device</string>
@@ -1385,8 +1829,8 @@
          </layout>
         </widget>
        </item>
-       <item>
-        <layout class="QGridLayout" name="gridLayout_3">
+       <item row="1" column="0">
+        <layout class="QGridLayout" name="gridLayout">
          <item row="0" column="0">
           <widget class="QLabel" name="label_12">
            <property name="text">
@@ -1420,8 +1864,8 @@
     </layout>
    </item>
    <item row="2" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
+    <layout class="QGridLayout" name="gridLayout_7">
+     <item row="0" column="0">
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -1437,7 +1881,7 @@
        </property>
       </spacer>
      </item>
-     <item>
+     <item row="0" column="1">
       <widget class="QPushButton" name="btn_Save">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -1450,7 +1894,7 @@
        </property>
       </widget>
      </item>
-     <item>
+     <item row="0" column="2">
       <spacer name="horizontalSpacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -1466,7 +1910,7 @@
        </property>
       </spacer>
      </item>
-     <item>
+     <item row="0" column="3">
       <widget class="QPushButton" name="btn_Exit">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -1479,7 +1923,7 @@
        </property>
       </widget>
      </item>
-     <item>
+     <item row="0" column="4">
       <spacer name="horizontalSpacer_3">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>

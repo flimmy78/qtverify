@@ -10,7 +10,7 @@
 **  版本历史:   2014/06 第一版
 **  内容包含:
 **  说明:
-**  更新记录:
+**  更新记录:	2015/11/21 增加设置双天平情况下的大、小天平进水阀、放水阀端口号-杨深
 ***********************************************/
 
 #include <QSettings>
@@ -148,6 +148,10 @@ void SetPortFrm::InstallIni()
 	gui.cBox_Rate_2->setCurrentIndex(PortSet->value("Relay/middle2No").toInt() - 1);
 	gui.cBox_Rate_3->setCurrentIndex(PortSet->value("Relay/middle1No").toInt() - 1);
 	gui.cBox_Rate_4->setCurrentIndex(PortSet->value("Relay/smallNo").toInt() - 1);
+	gui.cBox_BigInlet->setCurrentIndex(PortSet->value("Relay/bigWaterInNo").toInt() - 1);
+	gui.cBox_BigOutlet->setCurrentIndex(PortSet->value("Relay/bigWaterOutNo").toInt() - 1);
+	gui.cBox_SmallInlet->setCurrentIndex(PortSet->value("Relay/smallWaterInNo").toInt() - 1);
+	gui.cBox_SmallOutlet->setCurrentIndex(PortSet->value("Relay/smallWaterOutNo").toInt() - 1);
 
 	gui.cBox_Pump->setCurrentIndex(PortSet->value("Regulate/pumpNo").toInt() - 1);
 	gui.cBox_Regulate_1->setCurrentIndex(PortSet->value("Regulate/regflow1No").toInt() - 1);
@@ -169,6 +173,10 @@ void SetPortFrm::WriteIni()
 	PortSet->setValue("Relay/middle2No",gui.cBox_Rate_2->currentIndex() + 1);
 	PortSet->setValue("Relay/middle1No",gui.cBox_Rate_3->currentIndex() + 1);
 	PortSet->setValue("Relay/smallNo",gui.cBox_Rate_4->currentIndex() + 1);
+	PortSet->setValue("Relay/bigWaterInNo",gui.cBox_BigInlet->currentIndex() + 1);
+	PortSet->setValue("Relay/bigWaterOutNo",gui.cBox_BigOutlet->currentIndex() + 1);
+	PortSet->setValue("Relay/smallWaterInNo",gui.cBox_SmallInlet->currentIndex() + 1);
+	PortSet->setValue("Relay/smallWaterOutNo",gui.cBox_SmallOutlet->currentIndex() + 1);
 
 	PortSet->setValue("Regulate/pumpNo",gui.cBox_Pump->currentIndex() + 1);
 	PortSet->setValue("Regulate/regflow1No",gui.cBox_Regulate_1->currentIndex() + 1);
