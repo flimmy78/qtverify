@@ -208,6 +208,10 @@ public:
     int     middle2No;  //
     int     smallNo;    //
     int     waterOutNo; //
+	int		bigWaterInNo;	//大天平进水阀
+	int		smallWaterInNo;	//小天平进水阀
+	int		bigWaterOutNo;	//大天平放水阀
+	int		smallWaterOutNo;//小天平放水阀
 	int		regflow1No;
 	int		regflow2No;
 	int		regflow3No;
