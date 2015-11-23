@@ -42,12 +42,19 @@ public:
 	ComThread m_balanceThread; //天平采集线程
 	BalanceComObject *m_balanceObj;
 
+	ComThread m_balanceThread2; //天平采集线程2
+	BalanceComObject *m_balanceObj2;
+
 	ComThread m_tempThread;  //温度采集线程
 	TempComObject *m_tempObj;
 	QTimer *m_tempTimer;
 
 	ComThread m_valveThread;   //阀门控制线程
 	ControlComObject *m_controlObj;
+
+	ComThread m_valveThread2;   //阀门控制线程
+	ControlComObject *m_controlObj2;
+
 	QMap<int, bool> m_valveStatus; //阀门号与阀门状态的映射关系
 	QMap<int, QToolButton*> m_valveBtn;	//阀门号与阀门按钮的映射关系
 	int m_nowPortNo;	//当前控制阀门端口号
@@ -128,8 +135,10 @@ public:
 	float m_balBottomWht;
 
 	void initBalanceCom();     //天平串口
+	void initBalanceCom2();    //天平串口2
 	void initTemperatureCom(); //温度采集串口
 	void initControlCom();     //阀门控制串口
+	void initControlCom2();    //阀门控制串口2
 	void initMeterCom();       //热量表串口
 	void initValveStatus();	   //初始化阀门状态
 
@@ -185,7 +194,8 @@ public slots:
 	int calcMeterError(int idx);  //计算某个表的误差
 	int calcVerifyResult();       //计算检定结果
 
-	void slotFreshBalanceValue(const float& balValue);  //刷新天平数值
+	void slotFreshBigBalanceValue(const float& balValue);  //刷新大天平数值
+	void slotFreshSmallBalanceValue(const float& balValue);//刷新小天平数值
 	void slotAskPipeTemperature();//请求管路温度
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
 	void slotFreshFlowRate(); //计算流速
