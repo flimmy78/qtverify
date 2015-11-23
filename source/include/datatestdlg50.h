@@ -85,9 +85,13 @@ public:
 	ComThread m_meterThread;  //热量表线程
 	MeterComObject *m_meterObj;
 
-	//天平最大容量和回水底量
+	//大天平最大容量和回水底量
 	float m_balMaxWht;
 	float m_balBottomWht;
+
+	//小天平最大容量和回水底量
+	float m_balMaxWht2;
+	float m_balBottomWht2;
 
 	//计算流速用
 	uint m_totalcount;  //计数器

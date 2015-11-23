@@ -27,6 +27,7 @@ private:
 	Ui::SetComDlgClass gui;
 	QSettings *m_com_settings;
 	QButtonGroup *btnGroupBalanceType; //天平类型
+	QButtonGroup *btnGroupBalanceType2;//天平类型2
 	ReadComConfig *m_config;//读取配置信息
 	QSqlTableModel *m_model;
 
@@ -37,6 +38,7 @@ private:
 	void InstallBalanceConfig();
 	void InstallBalanceConfig2();
 	void InstallBalanceTypeConfig();
+	void InstallBalanceTypeConfig2();
 	void InstallTempConfig();
 	void InstallStdtmpConfig();
 	void InstallInstStdConfig();
@@ -50,6 +52,7 @@ private:
 	void WriteBalanceConfig();//写入天平配置
 	void WriteBalanceConfig2();//写入天平配置
 	void WriteBalanceTypeConfig();//写入天平类型配置
+	void WriteBalanceTypeConfig2();//写入天平类型配置2
 	void WriteTempConfig();//写入温度采集配置
 	void WriteStdTempConfig();//写入标准温度计配置
 	void WriteInstStdConfig();//写入采集瞬时流量模块配置

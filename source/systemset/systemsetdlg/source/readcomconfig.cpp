@@ -190,6 +190,27 @@ int ReadComConfig::getBalanceType()
 }
 
 /*
+** 获取天平参数2
+** 出口参数：
+    maxWht: 天平最大称量 （kg）
+	bottomWht：天平回水底量 (kg）
+*/
+void ReadComConfig::getBalancePara2(float &maxWht, float &bottomWht)
+{
+	maxWht = m_com_settings->value("BalanceType_2/maxweight").toFloat();
+	bottomWht = m_com_settings->value("BalanceType_2/bottomwht").toFloat();
+}
+
+/*
+** 获取天平类型
+*/
+int ReadComConfig::getBalanceType2()
+{
+	int type = m_com_settings->value("BalanceType_2/type").toInt();
+	return type;
+}
+
+/*
 ** 获取装置ID
 */
 int ReadComConfig::getDeviceInfoID()

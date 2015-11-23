@@ -30,11 +30,18 @@ SetComDlg::SetComDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
 	gui.setupUi(this);
+
 	btnGroupBalanceType = new QButtonGroup(gui.grpBoxBalanceType); //天平类型
 	btnGroupBalanceType->addButton(gui.radioBtnSatorius, 0);
 	btnGroupBalanceType->addButton(gui.radioBtnSatoriusH, 1);
 	btnGroupBalanceType->addButton(gui.radioBtnBizerba, 2);
 	btnGroupBalanceType->addButton(gui.radioBtnMettler, 3);
+
+	btnGroupBalanceType2 = new QButtonGroup(gui.grpBoxBalanceType_2); //天平类型2
+	btnGroupBalanceType2->addButton(gui.radioBtnSatorius_2, 0);
+	btnGroupBalanceType2->addButton(gui.radioBtnSatoriusH_2, 1);
+	btnGroupBalanceType2->addButton(gui.radioBtnBizerba_2, 2);
+	btnGroupBalanceType2->addButton(gui.radioBtnMettler_2, 3);
 }
 
 SetComDlg::~SetComDlg()
@@ -97,6 +104,7 @@ void SetComDlg::on_btnSave_clicked()
 	WriteBalanceConfig();
 	WriteBalanceConfig2();
 	WriteBalanceTypeConfig();
+	WriteBalanceTypeConfig2();
 	WriteTempConfig();
 	WriteStdTempConfig();
 	WriteInstStdConfig();
@@ -112,6 +120,7 @@ void SetComDlg::InstallConfigs()
 	InstallBalanceConfig();
 	InstallBalanceConfig2();
 	InstallBalanceTypeConfig();
+	InstallBalanceTypeConfig2();
 	InstallTempConfig();
 	InstallStdtmpConfig();
 	InstallInstStdConfig();
@@ -185,6 +194,34 @@ void SetComDlg::InstallBalanceTypeConfig()
 	}
 	gui.lnEditMaxWht->setText(maxWht);
 	gui.lnEditBottomWht->setText(bottomWht);
+}
+
+void SetComDlg::InstallBalanceTypeConfig2()
+{
+	int type = m_com_settings->value("BalanceType_2/type").toInt();
+	QString maxWht = m_com_settings->value("BalanceType_2/maxweight").toString();
+	QString bottomWht = m_com_settings->value("BalanceType_2/bottomwht").toString();
+
+	switch (type)
+	{
+	case 0:
+		gui.radioBtnSatorius_2->setChecked(true);
+		break;
+	case 1:
+		gui.radioBtnSatoriusH_2->setChecked(true);
+		break;
+	case 2:
+		gui.radioBtnBizerba_2->setChecked(true);
+		break;
+	case 3:
+		gui.radioBtnMettler_2->setChecked(true);
+		break;
+	default:
+		gui.radioBtnSatorius_2->setChecked(true);
+		break;
+	}
+	gui.lnEditMaxWht_2->setText(maxWht);
+	gui.lnEditBottomWht_2->setText(bottomWht);
 }
 
 void SetComDlg::InstallTempConfig()
@@ -306,6 +343,18 @@ void SetComDlg::WriteBalanceTypeConfig()
 	m_com_settings->setValue("BalanceType/type", type);
 	m_com_settings->setValue("BalanceType/maxweight", maxWht);
 	m_com_settings->setValue("BalanceType/bottomwht", bottomWht);
+}
+
+//写入天平类型设置2
+void SetComDlg::WriteBalanceTypeConfig2()
+{
+	int type = btnGroupBalanceType2->checkedId();
+	QString maxWht = gui.lnEditMaxWht_2->text();
+	QString bottomWht = gui.lnEditBottomWht_2->text();
+
+	m_com_settings->setValue("BalanceType_2/type", type);
+	m_com_settings->setValue("BalanceType_2/maxweight", maxWht);
+	m_com_settings->setValue("BalanceType_2/bottomwht", bottomWht);
 }
 
 //写入温度采集设置
