@@ -93,7 +93,9 @@ void SetComDlg::on_btnExit_clicked()
 void SetComDlg::on_btnSave_clicked()
 {
 	WriteValveConfig();
+	WriteValveConfig2();
 	WriteBalanceConfig();
+	WriteBalanceConfig2();
 	WriteBalanceTypeConfig();
 	WriteTempConfig();
 	WriteStdTempConfig();
@@ -106,7 +108,9 @@ void SetComDlg::on_btnSave_clicked()
 void SetComDlg::InstallConfigs()
 {
 	InstallValeConfig();
+	InstallValeConfig2();
 	InstallBalanceConfig();
+	InstallBalanceConfig2();
 	InstallBalanceTypeConfig();
 	InstallTempConfig();
 	InstallStdtmpConfig();
@@ -125,6 +129,16 @@ void SetComDlg::InstallValeConfig()
 	gui.comboValveEndBit->setCurrentIndex(valve_index[4].toInt());
 }
 
+void SetComDlg::InstallValeConfig2()
+{
+	QStringList valve_index_2 = m_config->ReadIndexByName("Valve_2");
+	gui.comboValveSerialNum_2->setCurrentIndex(valve_index_2[0].toInt());
+	gui.comboValveBaudRate_2->setCurrentIndex(valve_index_2[1].toInt());
+	gui.comboValveBits_2->setCurrentIndex(valve_index_2[2].toInt());
+	gui.comboValveChkBit_2->setCurrentIndex(valve_index_2[3].toInt());
+	gui.comboValveEndBit_2->setCurrentIndex(valve_index_2[4].toInt());
+}
+
 void SetComDlg::InstallBalanceConfig()
 {
 	QStringList valve_index = m_config->ReadIndexByName("Balance");
@@ -133,6 +147,16 @@ void SetComDlg::InstallBalanceConfig()
 	gui.comboBalBits->setCurrentIndex(valve_index[2].toInt());
 	gui.comboBalChkBit->setCurrentIndex(valve_index[3].toInt());
 	gui.comboBalEndBit->setCurrentIndex(valve_index[4].toInt());
+}
+
+void SetComDlg::InstallBalanceConfig2()
+{
+	QStringList valve_index_2 = m_config->ReadIndexByName("Balance_2");
+	gui.comboBalSerialNum_2->setCurrentIndex(valve_index_2[0].toInt());
+	gui.comboBalBaudRate_2->setCurrentIndex(valve_index_2[1].toInt());
+	gui.comboBalBits_2->setCurrentIndex(valve_index_2[2].toInt());
+	gui.comboBalChkBit_2->setCurrentIndex(valve_index_2[3].toInt());
+	gui.comboBalEndBit_2->setCurrentIndex(valve_index_2[4].toInt());
 }
 
 void SetComDlg::InstallBalanceTypeConfig()
@@ -248,11 +272,27 @@ void SetComDlg::WriteValveConfig()
 	m_com_settings->endGroup();
 }
 
+//写入阀门设置-第二块
+void SetComDlg::WriteValveConfig2()
+{
+	m_com_settings->beginGroup(gui.gBoxValve_2->objectName().split("gBox")[1]);
+	WriteConfigById(gui.gBoxValve_2);
+	m_com_settings->endGroup();
+}
+
 //写入天平设置
 void SetComDlg::WriteBalanceConfig()
 {
 	m_com_settings->beginGroup(gui.gBoxBalance->objectName().split("gBox")[1]);
 	WriteConfigById(gui.gBoxBalance);
+	m_com_settings->endGroup();
+}
+
+//写入天平设置-第二个天平（小天平）
+void SetComDlg::WriteBalanceConfig2()
+{
+	m_com_settings->beginGroup(gui.gBoxBalance_2->objectName().split("gBox")[1]);
+	WriteConfigById(gui.gBoxBalance_2);
 	m_com_settings->endGroup();
 }
 

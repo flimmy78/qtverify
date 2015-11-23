@@ -215,6 +215,9 @@ public:
 	int		regflow1No;
 	int		regflow2No;
 	int		regflow3No;
+	int		regflow4No;
+	int		regflow5No;
+	int		regflow6No;
 	int     pumpNo;
 	int     version;
 };

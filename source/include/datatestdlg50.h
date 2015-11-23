@@ -65,6 +65,9 @@ public:
 	ComThread m_valveThread;   //阀门控制线程
 	ControlComObject *m_controlObj;
 
+	ComThread m_valveThread2;   //阀门控制线程2
+	ControlComObject *m_controlObj2;
+
 	QMap<int, bool> m_valveStatus;//<阀门端口号，阀门状态>
 	QMap<int, QPushButton*> m_valveBtn;	//<阀门端口号，阀门按钮>
 	int m_nowPortNo;	//当前控制阀门端口号
@@ -100,12 +103,14 @@ public:
 	void initStdTemperatureCom(); //标准温度采集串口
 	void initBalanceCom();        //天平串口
 	void initControlCom();        //阀门控制串口
+	void initControlCom2();       //阀门控制串口2
 	void initComOfHeatMeter();    //热量表1串口
 
 	void initValveStatus();	   //初始化阀门状态
 	void initRegulateStatus(); //初始化调节阀状态
 
 public slots:
+	void operateRelay();
 	void on_btnWaterIn_clicked(); //进水阀
 	void on_btnBigWaterIn_clicked(); //大天平进水阀
 	void on_btnBigWaterOut_clicked();//大天平放水阀

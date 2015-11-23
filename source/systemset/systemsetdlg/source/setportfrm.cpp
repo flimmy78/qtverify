@@ -29,9 +29,10 @@ SetPortFrm::SetPortFrm(QWidget *parent, Qt::WFlags flags)
 	PortSet = new QSettings(filename, QSettings::IniFormat);
 	InstallIni();
 
-	m_readComConfig = NULL;
 	m_controlObj = NULL;
+	m_controlObj2 = NULL;
 	initControlCom();
+	initControlCom2();
 	initValveStatus();
 }
 
@@ -43,16 +44,16 @@ SetPortFrm::~SetPortFrm()
 		PortSet = NULL;
 	}
 
-	if (m_readComConfig)
-	{
-		delete m_readComConfig;
-		m_readComConfig = NULL;
-	}
-
 	if (m_controlObj)
 	{
 		delete m_controlObj;
 		m_controlObj = NULL;
+	}
+
+	if (m_controlObj2)
+	{
+		delete m_controlObj2;
+		m_controlObj2 = NULL;
 	}
 }
 
@@ -69,65 +70,119 @@ void SetPortFrm::on_btn_Save_clicked()
 
 void SetPortFrm::initControlCom()
 {
-	m_readComConfig = new ReadComConfig();
-	ComInfoStruct valveStruct = m_readComConfig->ReadValveConfig();
+	ComInfoStruct valveStruct = m_readComConfig.ReadValveConfig();
 	m_controlObj = new ControlComObject();
 	m_controlObj->setProtocolVersion(gui.cBox_Version->currentIndex()); //设置协议版本
 	m_controlObj->openControlCom(&valveStruct);
 }
 
+void SetPortFrm::initControlCom2()
+{
+	ComInfoStruct valveStruct2 = m_readComConfig.ReadValveConfig2();
+	m_controlObj2 = new ControlComObject();
+	m_controlObj2->setProtocolVersion(gui.cBox_Version->currentIndex()); //设置协议版本
+	m_controlObj2->openControlCom(&valveStruct2);
+}
+
 void SetPortFrm::on_btnRoutine_1_clicked()
 {
-	m_valveStatus[0] = !m_valveStatus[0];
-	m_controlObj->askControlRelay(1, m_valveStatus[0]);
+	m_valveStatus[1] = !m_valveStatus[1];
+	m_controlObj->askControlRelay(1, m_valveStatus[1]);
 }
 
 void SetPortFrm::on_btnRoutine_2_clicked()
 {
-	m_valveStatus[1] = !m_valveStatus[1];
-	m_controlObj->askControlRelay(2, m_valveStatus[1]);
+	m_valveStatus[2] = !m_valveStatus[2];
+	m_controlObj->askControlRelay(2, m_valveStatus[2]);
 }
 
 void SetPortFrm::on_btnRoutine_3_clicked()
 {
-	m_valveStatus[2] = !m_valveStatus[2];
-	m_controlObj->askControlRelay(3, m_valveStatus[2]);
+	m_valveStatus[3] = !m_valveStatus[3];
+	m_controlObj->askControlRelay(3, m_valveStatus[3]);
 }
 
 void SetPortFrm::on_btnRoutine_4_clicked()
 {
-	m_valveStatus[3] = !m_valveStatus[3];
-	m_controlObj->askControlRelay(4, m_valveStatus[3]);
+	m_valveStatus[4] = !m_valveStatus[4];
+	m_controlObj->askControlRelay(4, m_valveStatus[4]);
 }
 
 void SetPortFrm::on_btnRoutine_5_clicked()
 {
-	m_valveStatus[4] = !m_valveStatus[4];
-	m_controlObj->askControlRelay(5, m_valveStatus[4]);
+	m_valveStatus[5] = !m_valveStatus[5];
+	m_controlObj->askControlRelay(5, m_valveStatus[5]);
 }
 
 void SetPortFrm::on_btnRoutine_6_clicked()
 {
-	m_valveStatus[5] = !m_valveStatus[5];
-	m_controlObj->askControlRelay(6, m_valveStatus[5]);
+	m_valveStatus[6] = !m_valveStatus[6];
+	m_controlObj->askControlRelay(6, m_valveStatus[6]);
 }
 
 void SetPortFrm::on_btnRoutine_7_clicked()
 {
-	m_valveStatus[6] = !m_valveStatus[6];
-	m_controlObj->askControlRelay(7, m_valveStatus[6]);
+	m_valveStatus[7] = !m_valveStatus[7];
+	m_controlObj->askControlRelay(7, m_valveStatus[7]);
 }
 
 void SetPortFrm::on_btnRoutine_8_clicked()
 {
-	m_valveStatus[7] = !m_valveStatus[7];
-	m_controlObj->askControlRelay(8, m_valveStatus[7]);
+	m_valveStatus[8] = !m_valveStatus[8];
+	m_controlObj->askControlRelay(8, m_valveStatus[8]);
+}
+
+void SetPortFrm::on_btnRoutine_9_clicked()
+{
+	m_valveStatus[9] = !m_valveStatus[9];
+	m_controlObj2->askControlRelay(1, m_valveStatus[9]);
+}
+
+void SetPortFrm::on_btnRoutine_10_clicked()
+{
+	m_valveStatus[10] = !m_valveStatus[10];
+	m_controlObj2->askControlRelay(2, m_valveStatus[10]);
+}
+
+void SetPortFrm::on_btnRoutine_11_clicked()
+{
+	m_valveStatus[11] = !m_valveStatus[11];
+	m_controlObj2->askControlRelay(3, m_valveStatus[11]);
+}
+
+void SetPortFrm::on_btnRoutine_12_clicked()
+{
+	m_valveStatus[12] = !m_valveStatus[12];
+	m_controlObj2->askControlRelay(4, m_valveStatus[12]);
+}
+
+void SetPortFrm::on_btnRoutine_13_clicked()
+{
+	m_valveStatus[13] = !m_valveStatus[13];
+	m_controlObj2->askControlRelay(5, m_valveStatus[13]);
+}
+
+void SetPortFrm::on_btnRoutine_14_clicked()
+{
+	m_valveStatus[14] = !m_valveStatus[14];
+	m_controlObj2->askControlRelay(6, m_valveStatus[14]);
+}
+
+void SetPortFrm::on_btnRoutine_15_clicked()
+{
+	m_valveStatus[15] = !m_valveStatus[15];
+	m_controlObj2->askControlRelay(7, m_valveStatus[15]);
+}
+
+void SetPortFrm::on_btnRoutine_16_clicked()
+{
+	m_valveStatus[16] = !m_valveStatus[16];
+	m_controlObj->askControlRelay(8, m_valveStatus[16]);
 }
 
 void SetPortFrm::initValveStatus()
 {
 	//端口号-阀门状态 全部阀门状态为关闭
-	m_valveStatus[0] = VALVE_CLOSE;
 	m_valveStatus[1] = VALVE_CLOSE;
 	m_valveStatus[2] = VALVE_CLOSE;
 	m_valveStatus[3] = VALVE_CLOSE;
@@ -135,6 +190,16 @@ void SetPortFrm::initValveStatus()
 	m_valveStatus[5] = VALVE_CLOSE;
 	m_valveStatus[6] = VALVE_CLOSE;
 	m_valveStatus[7] = VALVE_CLOSE;
+	m_valveStatus[8] = VALVE_CLOSE;
+
+	m_valveStatus[9] = VALVE_CLOSE;
+	m_valveStatus[10] = VALVE_CLOSE;
+	m_valveStatus[11] = VALVE_CLOSE;
+	m_valveStatus[12] = VALVE_CLOSE;
+	m_valveStatus[13] = VALVE_CLOSE;
+	m_valveStatus[14] = VALVE_CLOSE;
+	m_valveStatus[15] = VALVE_CLOSE;
+	m_valveStatus[16] = VALVE_CLOSE;
 }
 
 /*

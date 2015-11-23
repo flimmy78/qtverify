@@ -33,7 +33,9 @@ private:
 	/**************读取配置文件*****************/
 	void InstallConfigs();
 	void InstallValeConfig();
+	void InstallValeConfig2();
 	void InstallBalanceConfig();
+	void InstallBalanceConfig2();
 	void InstallBalanceTypeConfig();
 	void InstallTempConfig();
 	void InstallStdtmpConfig();
@@ -44,7 +46,9 @@ private:
 
 	/**************写入配置文件*****************/
 	void WriteValveConfig();//写入阀门配置
+	void WriteValveConfig2();//写入阀门配置
 	void WriteBalanceConfig();//写入天平配置
+	void WriteBalanceConfig2();//写入天平配置
 	void WriteBalanceTypeConfig();//写入天平类型配置
 	void WriteTempConfig();//写入温度采集配置
 	void WriteStdTempConfig();//写入标准温度计配置

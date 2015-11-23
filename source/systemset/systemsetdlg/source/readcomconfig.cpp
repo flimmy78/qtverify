@@ -9,7 +9,7 @@
 **  版本历史:   2014/06 第一版
 **  内容包含:
 **  说明:
-**  更新记录:
+**  更新记录:   2015/11针对双天平、双控制板配置
 ***********************************************/
 #include <QtGui/QMessageBox>
 #include <QtCore/QDebug>
@@ -41,10 +41,22 @@ ComInfoStruct ReadComConfig::ReadValveConfig()
 	return ReadConfigByName("Valve");
 }
 
+//读取阀门设置2
+ComInfoStruct ReadComConfig::ReadValveConfig2()
+{
+	return ReadConfigByName("Valve_2");
+}
+
 //读取天平设置
 ComInfoStruct ReadComConfig::ReadBalanceConfig()
 {
 	return ReadConfigByName("Balance");
+}
+
+//读取天平设置2
+ComInfoStruct ReadComConfig::ReadBalanceConfig2()
+{
+	return ReadConfigByName("Balance_2");
 }
 
 //读取温度采集设置
