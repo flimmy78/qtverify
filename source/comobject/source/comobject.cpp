@@ -364,7 +364,7 @@ void ControlComObject::askSetDriverFreq(int freq)
 //读取控制板返回数据
 void ControlComObject::readControlComBuffer()
 {
-	qDebug()<<"readControlComBuffer ControlComObject thread:"<<QThread::currentThreadId();
+// 	qDebug()<<"readControlComBuffer ControlComObject thread:"<<QThread::currentThreadId();
 	
 	switch (m_protocolVersion)
 	{

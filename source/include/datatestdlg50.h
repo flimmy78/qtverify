@@ -79,6 +79,9 @@ public:
 	ComThread m_balanceThread; //天平采集线程
 	BalanceComObject *m_balanceObj;
 
+	ComThread m_balanceThread2; //天平采集线程2
+	BalanceComObject *m_balanceObj2;
+
 	ComThread m_meterThread;  //热量表线程
 	MeterComObject *m_meterObj;
 
@@ -102,6 +105,7 @@ public:
 	void initTemperatureCom();    //温度采集串口
 	void initStdTemperatureCom(); //标准温度采集串口
 	void initBalanceCom();        //天平串口
+	void initBalanceCom2();       //天平串口2
 	void initControlCom();        //阀门控制串口
 	void initControlCom2();       //阀门控制串口2
 	void initComOfHeatMeter();    //热量表1串口
@@ -132,7 +136,8 @@ public slots:
 	void slotAskPipeTemperature();
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
 	void slotFreshStdTempValue(const QString& stdTempStr); //刷新标准温度值
-	void slotFreshBalanceValue(const float& balValue);     //刷新天平数值
+	void slotFreshBigBalanceValue(const float& balValue);   //刷新大天平数值
+	void slotFreshSmallBalanceValue(const float& balValue); //刷新小天平数值
 	
 	void slotFreshMeterNo(const QString& comName, const QString& meterNo);//刷新表号
 	void slotFreshMeterFlow(const QString& comName, const QString& flow); //刷新表流量

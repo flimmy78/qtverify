@@ -324,6 +324,12 @@ void MainForm::on_actionComSet_triggered()
 	{
 		m_setcom = new SetComDlg();
 	}
+	else //目的是执行SetComDlg的构造函数
+	{
+		delete m_setcom;
+		m_setcom = NULL;
+		m_setcom = new SetComDlg();
+	}
 	m_setcom->show();
 }
 
@@ -331,6 +337,12 @@ void MainForm::on_actionPortSet_triggered()
 {
 	if (NULL == m_portSet)
 	{
+		m_portSet = new SetPortFrm();
+	}
+	else //目的是执行SetPortFrm的构造函数
+	{
+		delete m_portSet;
+		m_portSet = NULL;
 		m_portSet = new SetPortFrm();
 	}
 	m_portSet->show();
