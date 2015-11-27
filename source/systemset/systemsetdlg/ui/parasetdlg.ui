@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>788</width>
-    <height>621</height>
+    <width>808</width>
+    <height>651</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -1012,12 +1012,12 @@
       <item row="3" column="0">
        <widget class="QLabel" name="label_18">
         <property name="text">
-         <string>Frequency:</string>
+         <string>Open(%):</string>
         </property>
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QLineEdit" name="lineEdit_freq_1">
+       <widget class="QLineEdit" name="lineEdit_Opening_1">
         <property name="text">
          <string>35</string>
         </property>
@@ -1040,7 +1040,7 @@
        </spacer>
       </item>
       <item row="3" column="3">
-       <widget class="QLineEdit" name="lineEdit_freq_2">
+       <widget class="QLineEdit" name="lineEdit_Opening_2">
         <property name="text">
          <string>33</string>
         </property>
@@ -1063,7 +1063,7 @@
        </spacer>
       </item>
       <item row="3" column="5">
-       <widget class="QLineEdit" name="lineEdit_freq_3">
+       <widget class="QLineEdit" name="lineEdit_Opening_3">
         <property name="text">
          <string>33</string>
         </property>
@@ -1086,7 +1086,7 @@
        </spacer>
       </item>
       <item row="3" column="7">
-       <widget class="QLineEdit" name="lineEdit_freq_4">
+       <widget class="QLineEdit" name="lineEdit_Opening_4">
         <property name="text">
          <string>33</string>
         </property>
@@ -1096,13 +1096,99 @@
        </widget>
       </item>
       <item row="4" column="0">
+       <widget class="QLabel" name="label_29">
+        <property name="text">
+         <string>Frequency:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="lineEdit_freq_1">
+        <property name="text">
+         <string>35</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <spacer name="horizontalSpacer_28">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>0</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="4" column="3">
+       <widget class="QLineEdit" name="lineEdit_freq_2">
+        <property name="text">
+         <string>33</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="4">
+       <spacer name="horizontalSpacer_27">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>0</width>
+          <height>17</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="4" column="5">
+       <widget class="QLineEdit" name="lineEdit_freq_3">
+        <property name="text">
+         <string>33</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="6">
+       <spacer name="horizontalSpacer_22">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>0</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="4" column="7">
+       <widget class="QLineEdit" name="lineEdit_freq_4">
+        <property name="text">
+         <string>33</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
        <widget class="QLabel" name="label_15">
         <property name="text">
          <string>Order:</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="1">
+      <item row="5" column="1">
        <widget class="QComboBox" name="cBox_seq_1">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -1161,7 +1247,7 @@
         </item>
        </widget>
       </item>
-      <item row="4" column="2">
+      <item row="5" column="2">
        <spacer name="horizontalSpacer_9">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -1174,7 +1260,7 @@
         </property>
        </spacer>
       </item>
-      <item row="4" column="3">
+      <item row="5" column="3">
        <widget class="QComboBox" name="cBox_seq_2">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -1216,7 +1302,7 @@
         </item>
        </widget>
       </item>
-      <item row="4" column="4">
+      <item row="5" column="4">
        <spacer name="horizontalSpacer_16">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -1229,7 +1315,7 @@
         </property>
        </spacer>
       </item>
-      <item row="4" column="5">
+      <item row="5" column="5">
        <widget class="QComboBox" name="cBox_seq_3">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -1271,7 +1357,7 @@
         </item>
        </widget>
       </item>
-      <item row="4" column="6">
+      <item row="5" column="6">
        <spacer name="horizontalSpacer_17">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -1284,7 +1370,7 @@
         </property>
        </spacer>
       </item>
-      <item row="4" column="7">
+      <item row="5" column="7">
        <widget class="QComboBox" name="cBox_seq_4">
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
@@ -1758,7 +1844,6 @@
   <zorder>gBox_UpperFlowLmt</zorder>
   <zorder>gBox_FlowPnt</zorder>
   <zorder>gBox_Head</zorder>
-  <zorder>chkBoxRepeatVerify</zorder>
  </widget>
  <resources>
   <include location="../systemsetdlg.qrc"/>

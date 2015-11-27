@@ -292,6 +292,7 @@ void ParaSetDlg::installFlowPoint()
 		lineEdit_quantites[i]->setText(QString::number(lastParams->m_params->fp_info[i].fp_quantity));
 		cBox_valves[i]->setCurrentIndex(lastParams->m_params->fp_info[i].fp_valve_idx);
 		lineEdit_freqs[i]->setText(QString::number(lastParams->m_params->fp_info[i].fp_freq));
+		lineEdit_Openings[i]->setText(QString::number(lastParams->m_params->fp_info[i].fp_opening));
 		cBox_seqs[i]->setCurrentIndex(lastParams->m_params->fp_info[i].fp_seq);
 	}
 }
@@ -378,6 +379,11 @@ void ParaSetDlg::flowPointVector()
 	cBox_seqs.append((ui.cBox_seq_2));
 	cBox_seqs.append((ui.cBox_seq_3));
 	cBox_seqs.append((ui.cBox_seq_4));
+	//调节阀开度
+	lineEdit_Openings.append(ui.lineEdit_Opening_1);
+	lineEdit_Openings.append(ui.lineEdit_Opening_2);
+	lineEdit_Openings.append(ui.lineEdit_Opening_3);
+	lineEdit_Openings.append(ui.lineEdit_Opening_4);
 }
 
 void ParaSetDlg::on_btnSave_clicked()
@@ -532,6 +538,7 @@ void ParaSetDlg::SaveFlowPoint()
 		settings->setValue("verifyflow", lineEdit_flows[i]->text());//流量点
 		settings->setValue("flowquantity", lineEdit_quantites[i]->text());//检定水量
 		settings->setValue("pumpfrequencey", lineEdit_freqs[i]->text());//变频器频率
+		settings->setValue("opening", lineEdit_Openings[i]->text());//调节阀开度
 		settings->setValue("valve", cBox_valves[i]->currentIndex());//对应的阀门
 		settings->setValue("seq", cBox_seqs[i]->currentIndex());//检定顺序
 	}
@@ -667,6 +674,7 @@ void ParaSetReader::readFlowPoints()
 		m_params->fp_info[i].fp_valve =  m_port_config->value("Relay/" + m_valvePortMap[m_params->fp_info[i].fp_valve_idx]).toInt();
 
 		m_params->fp_info[i].fp_seq =  m_settings->value("seq").toInt();
+		m_params->fp_info[i].fp_opening =  m_settings->value("opening").toInt();
 		if (m_params->fp_info[i].fp_seq)
 		{
 			m_params->total_fp++;

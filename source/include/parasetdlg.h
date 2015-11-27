@@ -110,6 +110,7 @@ private:
 	QVector<QComboBox*> cBox_valves;//流量点对应的阀门控件数组
 	QVector<QLineEdit*> lineEdit_freqs;//水泵频率控件数组
 	QVector<QComboBox*> cBox_seqs;//检定次序控件数组
+	QVector<QLineEdit*> lineEdit_Openings;//流量点对应的调节阀开度控制数组
 
 	QButtonGroup *m_btnGroup_autopick; //自动采集
 	QButtonGroup *m_btnGroup_adjustError; //修正误差
