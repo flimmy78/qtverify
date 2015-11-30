@@ -155,6 +155,21 @@
             <string>3.5</string>
            </property>
           </item>
+          <item>
+           <property name="text">
+            <string>6.0</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>10</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>15</string>
+           </property>
+          </item>
          </widget>
         </item>
         <item row="1" column="0">
