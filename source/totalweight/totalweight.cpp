@@ -489,7 +489,7 @@ void TotalWeightDlg::initValveStatus()
 void TotalWeightDlg::slotFreshBalanceValue(const float& balValue)
 {
 	QString wht = QString::number(balValue, 'f', 3);
-	ui.lcdBigBalance->display(wht);
+	ui.lcdBigBalance->setText(wht);
 	if (balValue > m_balMaxWht) //防止天平溢出
 	{
 		closeValve(m_portsetinfo.waterInNo); //关闭进水阀
@@ -598,14 +598,14 @@ void TotalWeightDlg::slotFreshFlowRate()
 	}
 	if (m_totalcount == 0) //记录天平初始重量
 	{
-		m_startWeight = ui.lcdBigBalance->value();
+		m_startWeight = ui.lcdBigBalance->text().toFloat();
 		m_totalcount ++;
 		return;
 	}
 
 	float flowValue = 0.0;
 	float totalWeight = 0.0;
-	m_endWeight = ui.lcdBigBalance->value();//取当前天平值, 作为当前运算的终值
+	m_endWeight = ui.lcdBigBalance->text().toFloat();//取当前天平值, 作为当前运算的终值
 	float delta_weight = m_endWeight - m_startWeight;
 	m_deltaWeight[m_totalcount%FLOW_SAMPLE_NUM] = delta_weight;
 // 	qWarning()<<"m_totalcount ="<<m_totalcount;
@@ -825,7 +825,7 @@ int TotalWeightDlg::prepareInitBalance()
 	ui.labelHintPoint->setText(tr("prepare balance init weight ...")); //准备天平初始重量(回水底量)
 	int ret = 0;
 	//判断天平重量,如果小于要求的回水底量(5kg)，则关闭放水阀，打开大流量阀
-	if (ui.lcdBigBalance->value() < m_balBottomWht)
+	if (ui.lcdBigBalance->text().toFloat() < m_balBottomWht)
 	{
 		if (!closeWaterOutValve()) 
 		{
@@ -934,21 +934,21 @@ int TotalWeightDlg::isBalanceValueBigger(float targetV, bool flg)
 	int ret = 0;
 	if (flg) //要求大于目标重量
 	{
-		while (!m_stopFlag && (ui.lcdBigBalance->value() < targetV))
+		while (!m_stopFlag && (ui.lcdBigBalance->text().toFloat() < targetV))
 		{
-			qDebug()<<"天平重量 ="<<ui.lcdBigBalance->value()<<", 小于要求的重量 "<<targetV;
+			qDebug()<<"天平重量 ="<<ui.lcdBigBalance->text().toFloat()<<", 小于要求的重量 "<<targetV;
 			wait(CYCLE_TIME);
 		}
-		ret = !m_stopFlag && (ui.lcdBigBalance->value() >= targetV);
+		ret = !m_stopFlag && (ui.lcdBigBalance->text().toFloat() >= targetV);
 	}
 	else //要求小于目标重量
 	{
-		while (!m_stopFlag && (ui.lcdBigBalance->value() > targetV))
+		while (!m_stopFlag && (ui.lcdBigBalance->text().toFloat() > targetV))
 		{
-			qDebug()<<"天平重量 ="<<ui.lcdBigBalance->value()<<", 大于要求的重量 "<<targetV;
+			qDebug()<<"天平重量 ="<<ui.lcdBigBalance->text().toFloat()<<", 大于要求的重量 "<<targetV;
 			wait(CYCLE_TIME);
 		}
-		ret = !m_stopFlag && (ui.lcdBigBalance->value() <= targetV);
+		ret = !m_stopFlag && (ui.lcdBigBalance->text().toFloat() <= targetV);
 	}
 
 	return ret;
@@ -966,9 +966,9 @@ int TotalWeightDlg::judgeBalanceAndCalcAvgTemperAndFlow(float targetV)
 	QDateTime startTime = QDateTime::currentDateTime();
 	int second = 0;
 	float nowFlow = m_paraSetReader->getFpBySeq(m_nowOrder).fp_verify;
-	while (!m_stopFlag && (ui.lcdBigBalance->value() < targetV))
+	while (!m_stopFlag && (ui.lcdBigBalance->text().toFloat() < targetV))
 	{
-		qDebug()<<"天平重量 ="<<ui.lcdBigBalance->value()<<", 小于要求的重量 "<<targetV;
+		qDebug()<<"天平重量 ="<<ui.lcdBigBalance->text().toFloat()<<", 小于要求的重量 "<<targetV;
 		m_avgTFCount++;
 		m_pipeInTemper += ui.lcdInTemper->value();
 		m_pipeOutTemper += ui.lcdOutTemper->value();
@@ -978,7 +978,7 @@ int TotalWeightDlg::judgeBalanceAndCalcAvgTemperAndFlow(float targetV)
 // 		{
 // 			m_realFlow += ui.lcdFlowRate->value();
 // 		}
-		second = 3.6*(targetV - ui.lcdBigBalance->value())/nowFlow;
+		second = 3.6*(targetV - ui.lcdBigBalance->text().toFloat())/nowFlow;
 		ui.labelHintPoint->setText(tr("NO. <font color=DarkGreen size=6><b>%1</b></font> flow point: <font color=DarkGreen size=6><b>%2</b></font> m3/h")\
 			.arg(m_nowOrder).arg(nowFlow));
 		ui.labelHintProcess->setText(tr("Verifying...Please wait for about <font color=DarkGreen size=6><b>%1</b></font> second").arg(second));
@@ -1000,7 +1000,7 @@ int TotalWeightDlg::judgeBalanceAndCalcAvgTemperAndFlow(float targetV)
 	{
 		return false;
 	}
-	m_realFlow = 3.6*(m_paraSetReader->getFpBySeq(m_nowOrder).fp_quantity + ui.lcdBigBalance->value() - targetV)/tt;
+	m_realFlow = 3.6*(m_paraSetReader->getFpBySeq(m_nowOrder).fp_quantity + ui.lcdBigBalance->text().toFloat() - targetV)/tt;
 	ui.labelHintPoint->setText(tr("NO. <font color=DarkGreen size=6><b>%1</b></font> flow point: <font color=DarkGreen size=6><b>%2</b></font> m3/h")\
 		.arg(m_nowOrder).arg(nowFlow));
 	ui.labelHintProcess->setText(tr("NO. <font color=DarkGreen size=6><b>%1</b></font> flow point: Verify Finished!").arg(m_nowOrder));
@@ -1009,7 +1009,7 @@ int TotalWeightDlg::judgeBalanceAndCalcAvgTemperAndFlow(float targetV)
 // 		ui.labelHintProcess->setText(tr("All flow points has verified!"));
 // 		ui.btnNext->hide();
 // 	}
-	int ret = !m_stopFlag && (ui.lcdBigBalance->value() >= targetV);
+	int ret = !m_stopFlag && (ui.lcdBigBalance->text().toFloat() >= targetV);
 	return ret;
 }
 
@@ -1349,7 +1349,7 @@ bool TotalWeightDlg::judgeBalanceCapacity()
 	{
 		totalQuantity += m_nowParams->fp_info[i].fp_quantity;
 	}
-	ret = (ui.lcdBigBalance->value() + totalQuantity) < (m_balMaxWht - m_balBottomWht);
+	ret = (ui.lcdBigBalance->text().toFloat() + totalQuantity) < (m_balMaxWht - m_balBottomWht);
 	return ret;
 }
 
@@ -1367,7 +1367,7 @@ int TotalWeightDlg::judgeBalanceCapacitySingle(int order)
 	bool ret = false;
 	float quantity = 0;
 	quantity += m_nowParams->fp_info[order-1].fp_quantity;
-	ret = (ui.lcdBigBalance->value() + quantity) < (m_balMaxWht - 2);
+	ret = (ui.lcdBigBalance->text().toFloat() + quantity) < (m_balMaxWht - 2);
 	return ret;
 }
 
@@ -1449,7 +1449,7 @@ int TotalWeightDlg::startVerifyFlowPoint(int order)
 		}
 	}
 
-	m_balStartV = ui.lcdBigBalance->value(); //记录天平初值
+	m_balStartV = ui.lcdBigBalance->text().toFloat(); //记录天平初值
 	m_pipeInTemper = ui.lcdInTemper->value();
 	m_pipeOutTemper = ui.lcdOutTemper->value();
 	m_realFlow = ui.lcdFlowRate->value();
@@ -1471,7 +1471,7 @@ int TotalWeightDlg::startVerifyFlowPoint(int order)
 			ui.btnAllVerifyStatus->setEnabled(true);
 			closeValve(portNo); //关闭order对应的阀门
 			wait(BALANCE_STABLE_TIME); //等待3秒钟，让天平数值稳定
-			m_balEndV = ui.lcdBigBalance->value(); //记录天平终值
+			m_balEndV = ui.lcdBigBalance->text().toFloat(); //记录天平终值
 
 			if (!m_resetZero && m_nowOrder>=2)
 			{
@@ -1506,14 +1506,12 @@ int TotalWeightDlg::startVerifyFlowPoint(int order)
 */
 int TotalWeightDlg::calcAllMeterError()
 {
+	int ret = 1;
 	for (int i=0; i<m_validMeterNum; i++)
 	{
-		if (calcMeterError(i) == 0)
-		{
-			return 0;
-		}
+		ret *= calcMeterError(i);
 	}
-	return 1; 
+	return ret; 
 }
 
 /*
@@ -1605,10 +1603,9 @@ int TotalWeightDlg::calcVerifyResult()
 	else //有读表流量失败的（终值）
 	{
 		ui.labelHintProcess->setText(tr("please input end value of heat meter"));
-		ui.tableWidget->setCurrentCell(m_meterPosMap[0]-1, COLUMN_METER_END); //定位到第一个需要输入终值的地方
 	}
 
-	return true;
+	return ret;
 }
 
 void TotalWeightDlg::exportReport()
@@ -2007,10 +2004,15 @@ void TotalWeightDlg::on_tableWidget_cellChanged(int row, int column)
 		m_meterEndValue[idx] = ui.tableWidget->item(row, column)->text().toFloat(&ok);
 		if (!ok)
 		{
-// 			QMessageBox::warning(this, tr("Warning"), tr("Error: please input digits"));//输入错误！请输入数字
+// 			QMessageBox::warning(this, tr("Warning"), tr("Error: please input right digits"));//输入错误！请输入正确的数字
+// 			ui.tableWidget->setCurrentCell(row, COLUMN_METER_END);
 			return;
 		}
-		calcVerifyResult();
+// 		calcVerifyResult();
+		if (calcVerifyResult()==0 && meterPos<m_meterPosMap[m_validMeterNum-1])//不是最后一个表终值,自动定位到下一个
+		{
+			ui.tableWidget->setCurrentCell(m_meterPosMap[idx+1]-1, column);
+		}
 	}
 }
 
