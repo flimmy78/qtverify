@@ -19,6 +19,8 @@ public:
 	SetPortFrm(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~SetPortFrm();
 
+	void closeEvent(QCloseEvent * event);
+
 private:
 	Ui::SetPortDlgClass gui;
 	QSettings *PortSet;

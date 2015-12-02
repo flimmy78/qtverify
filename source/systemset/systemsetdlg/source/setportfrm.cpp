@@ -38,6 +38,10 @@ SetPortFrm::SetPortFrm(QWidget *parent, Qt::WFlags flags)
 
 SetPortFrm::~SetPortFrm()
 {
+}
+
+void SetPortFrm::closeEvent(QCloseEvent * event)
+{
 	if (PortSet)
 	{
 		delete PortSet;
