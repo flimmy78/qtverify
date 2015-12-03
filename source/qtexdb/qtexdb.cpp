@@ -415,6 +415,133 @@ int modifyFlowVerifyRec_MeterNO(QString newMeterNO, QString timeStamp, int meter
 }
 
 /*
+** 向数据库插入水表检定结果。调用者负责提前打开数据库startdb()
+*/
+int insertWaterVerifyRec(Water_Verify_Record_PTR ptr, int num)
+{
+	int ret = OPERATE_DB_OK;
+	for (int i=0; i<num; i++)
+	{
+		QSqlQuery query(g_defaultdb); // 新建一个查询的实例
+		QString sql = "insert into T_Water_Verify_Record";
+		sql.append(" (");
+		sql.append("F_TimeStamp,");
+		sql.append("F_MeterNo,");
+		sql.append("F_FlowPointIdx,");
+		sql.append("F_FlowPoint,");
+		sql.append("F_MethodFlag,");
+		sql.append("F_MeterValue0,");
+		sql.append("F_MeterValue1,");
+		sql.append("F_BalWeight0,");
+		sql.append("F_BalWeight1,");
+		sql.append("F_StdMeterV0,");
+		sql.append("F_StdMeterV1,");
+		sql.append("F_PipeTemper,");
+		sql.append("F_Density,");
+		sql.append("F_StandValue,");
+		sql.append("F_DispError,");
+		sql.append("F_StdError,");
+		sql.append("F_Result,");
+		sql.append("F_MeterPosNo,");
+		sql.append("F_Model,");
+		sql.append("F_Standard ,");
+		sql.append("F_PickCode,");
+		sql.append("F_ManufactDept,");
+		sql.append("F_VerifyDept,");
+		sql.append("F_Grade,");
+		sql.append("F_VerifyPerson,");
+		sql.append("F_CheckPerson,");
+		sql.append("F_DeviceInfoID,");
+		sql.append("F_VerifyDate,");
+		sql.append("F_ValidDate,");
+		sql.append("F_EnvTemper,");
+		sql.append("F_EnvHumidity,");
+		sql.append("F_AirPressure,");
+		sql.append("F_CertNO,");
+		sql.append("F_FlowCoe,");
+		sql.append("F_WaterPress,");
+		sql.append("F_Q3BiQ1,");
+		sql.append("F_Q3,");
+		sql.append("F_Q2BiQ1,");
+		sql.append("F_Bak1,");
+		sql.append("F_Bak2,");
+		sql.append("F_Bak3");
+		sql.append(") ");
+		sql.append("values");
+		sql.append("(");//start
+		sql.append(QString("\'%1\', ").arg(ptr[i].timestamp, 0, 10));//F_TimeStamp
+		sql.append(QString("%1, ").arg(ptr[i].meterNo,0, 10));//F_MeterNo
+		sql.append(QString("%1, ").arg(ptr[i].flowPointIdx, 0, 10));//F_FlowPointIdx
+		sql.append(QString("%1, ").arg(ptr[i].flowPoint, 6, 'g', 6));//F_FlowPoint
+		sql.append(QString("%1, ").arg(ptr[i].methodFlag, 0, 10));//F_TotalFlag
+		sql.append(QString("%1, ").arg(ptr[i].meterValue0, 6, 'g', 6));//F_MeterValue0
+		sql.append(QString("%1, ").arg(ptr[i].meterValue1, 6, 'g', 6));//F_MeterValue1
+		sql.append(QString("%1, ").arg(ptr[i].balWeight0, 6, 'g', 6));//F_BalWeight0
+		sql.append(QString("%1, ").arg(ptr[i].balWeight1, 6, 'g', 6));//F_BalWeight1
+		sql.append(QString("%1, ").arg(ptr[i].stdMeterV0, 6, 'g', 6));//F_BalDeltaW
+		sql.append(QString("%1, ").arg(ptr[i].stdMeterV1, 6, 'g', 6));//F_InSlotTemper
+		sql.append(QString("%1, ").arg(ptr[i].pipeTemper, 6, 'g', 6));//F_PipeTemper
+		sql.append(QString("%1, ").arg(ptr[i].density, 6, 'g', 6));//F_Density
+		sql.append(QString("%1, ").arg(ptr[i].stdValue, 6, 'g', 6));//F_StandValue
+		sql.append(QString("%1, ").arg(ptr[i].dispError, 6, 'g', 6));//F_DispError
+		sql.append(QString("%1, ").arg(ptr[i].stdError, 6, 'g', 6));//F_StdError
+		sql.append(QString("%1, ").arg(ptr[i].result, 0, 10));//F_Result
+		sql.append(QString("%1, ").arg(ptr[i].meterPosNo, 0, 10));//F_MeterPosNo
+		sql.append(QString("%1, ").arg(ptr[i].model, 0, 10));//F_Model
+		sql.append(QString("%1, ").arg(ptr[i].standard, 0, 10));//F_Standard
+		sql.append(QString("%1, ").arg(ptr[i].pickcode, 0, 10));//F_PickCode
+		sql.append(QString("%1, ").arg(ptr[i].manufactDept, 0, 10));//F_ManufactDept
+		sql.append(QString("%1, ").arg(ptr[i].verifyDept, 0, 10));//F_VerifyDept
+		sql.append(QString("%1, ").arg(ptr[i].grade, 0, 10));//F_Grade
+		sql.append(QString("%1, ").arg(ptr[i].verifyPerson, 0, 10));//F_VerifyPerson
+		sql.append(QString("%1, ").arg(ptr[i].checkPerson, 0, 10));//F_CheckPerson
+		sql.append(QString("%1, ").arg(ptr[i].deviceInfoId, 0, 10));//F_DeviceInfoID
+		sql.append(QString("\'%1\', ").arg(ptr[i].verifyDate));//F_VerifyDate
+		sql.append(QString("\'%1\', ").arg(ptr[i].validDate));//F_ValidDate
+		sql.append(QString("%1, ").arg(ptr[i].envTemper, 6, 'g', 6));//F_EnvTemper
+		sql.append(QString("%1, ").arg(ptr[i].envHumidity, 6, 'g', 6));//F_EnvHumidity
+		sql.append(QString("%1, ").arg(ptr[i].airPress, 6, 'g', 6));//F_AirPressure
+		sql.append(QString("\'%1\', ").arg(ptr[i].certNo, 0, 10));//F_CertNO
+		sql.append(QString("%1, ").arg(ptr[i].flowcoe, 6, 'g', 6));//F_FlowCoe
+		sql.append(QString("%1, ").arg(ptr[i].waterPress, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].Q3BiQ1, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].Q3, 6, 'g', 6));
+		sql.append(QString("%1, ").arg(ptr[i].Q2BiQ1, 6, 'g', 6));
+		sql.append(QString("\'%1\', ").arg(ptr[i].bak1, 0, 10));//F_Bak1
+		sql.append(QString("\'%1\', ").arg(ptr[i].bak2, 0, 10));//F_Bak2
+		sql.append(QString("\'%1\'").arg(ptr[i].bak3, 0, 10));//F_Bak3
+		sql.append(")");//end
+		if (query.exec(sql))
+		{
+			qDebug()<<"insert succeed";
+		}
+		else
+		{
+ 			QSqlError error = query.lastError();
+			qWarning()<<error.text();
+			ret = OPERATE_DB_FAIL;
+		}
+		//同时写入MySQL数据库
+		if (g_dbtype==T_BOTH)
+		{
+			QSqlQuery query2(g_mysqldb); // 新建一个查询的实例
+			if (query2.exec(sql))
+			{
+				qDebug()<<"insert MySQL database succeed";
+			}
+			else
+			{
+				QSqlError error2 = query2.lastError();
+				qWarning()<<error2.text();
+				ret = OPERATE_MYSQL_FAIL;
+			}
+		}
+	}
+	
+	return ret;
+}
+
+/*
 ** 向数据库插入总量检定结果。调用者负责提前打开数据库startdb()
 */
 int insertTotalVerifyRec(Total_Verify_Record_PTR ptr, int num)
