@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>808</width>
-    <height>651</height>
+    <width>823</width>
+    <height>718</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
    <iconset resource="../systemsetdlg.qrc">
     <normaloff>:/systemsetdlg/images/setting.png</normaloff>:/systemsetdlg/images/setting.png</iconset>
   </property>
-  <layout class="QGridLayout" name="gridLayout_13">
+  <layout class="QGridLayout" name="gridLayout_25">
    <item row="0" column="0">
     <widget class="QGroupBox" name="gBox_Head">
      <property name="title">
@@ -328,6 +328,200 @@
     </widget>
    </item>
    <item row="1" column="0">
+    <widget class="QGroupBox" name="gBoxWaterPara">
+     <property name="title">
+      <string>WaterPara</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_24">
+      <item row="0" column="0">
+       <layout class="QGridLayout" name="gridLayout_13">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_30">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Q3/Q1:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="cmbQ3BiQ1">
+          <item>
+           <property name="text">
+            <string>40</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>50</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>63</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>80</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>100</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>125</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="1">
+       <spacer name="horizontalSpacer_29">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>30</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="2">
+       <layout class="QGridLayout" name="gridLayout_21">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_31">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Q3:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="cmbQ3">
+          <item>
+           <property name="text">
+            <string>1</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>1.6</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>2.5</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>4</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>6.3</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>10</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>16</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>25</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="3">
+       <spacer name="horizontalSpacer_30">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>30</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="4">
+       <layout class="QGridLayout" name="gridLayout_23">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_32">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Q2/Q1:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="cmbQ2BiQ1">
+          <item>
+           <property name="text">
+            <string>1.6</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>2.5</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>4</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>6.3</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0">
     <widget class="QGroupBox" name="gBox_UpperFlowLmt">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -563,7 +757,7 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="0">
+   <item row="3" column="0">
     <widget class="QGroupBox" name="gBox_FlowPnt">
      <property name="title">
       <string>ParaSet</string>
@@ -1427,7 +1621,7 @@
      </layout>
     </widget>
    </item>
-   <item row="3" column="0">
+   <item row="4" column="0">
     <layout class="QGridLayout" name="gridLayout_10">
      <item row="0" column="0">
       <widget class="QGroupBox" name="gBox_resetzero">
@@ -1590,7 +1784,7 @@
      </item>
     </layout>
    </item>
-   <item row="4" column="0">
+   <item row="5" column="0">
     <layout class="QGridLayout" name="gridLayout_22">
      <item row="0" column="0">
       <widget class="QGroupBox" name="gBox_writenum">
@@ -1802,7 +1996,7 @@
      </item>
     </layout>
    </item>
-   <item row="5" column="0">
+   <item row="6" column="0">
     <layout class="QGridLayout" name="gridLayout_6">
      <item row="0" column="0">
       <widget class="QLabel" name="labelHintInfo">
@@ -1859,6 +2053,7 @@
   <zorder>gBox_UpperFlowLmt</zorder>
   <zorder>gBox_FlowPnt</zorder>
   <zorder>gBox_Head</zorder>
+  <zorder>gBoxWaterPara</zorder>
  </widget>
  <resources>
   <include location="../systemsetdlg.qrc"/>

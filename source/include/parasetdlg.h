@@ -34,7 +34,6 @@ private:
 	QSettings *m_settings;
 	QSettings *m_port_config;//阀门端口配置文件
 
-
 	void initValveMap();
 	void readParamValues();//读取配置文件所有的信息
 
@@ -42,8 +41,8 @@ private:
 	void readFlowPoints();//读取配置文件的[FlowPoints]组的信息
 	void readBool();//读取配置文件的[Bool]组的信息
 	void readOther();//读取配置文件的[Other]组的信息
+	void readWaterPara();
 };
-
 
 class SYSTEMSETDLG_EXPORT ParaSetDlg : public QWidget
 {
@@ -83,6 +82,7 @@ public:
 	QSqlTableModel *m_modelModel;
 	int m_curModelIdx; //当前表型号的索引
 
+	void showWaterPara();
 
 signals:
 	void saveSuccessSignal();
@@ -122,6 +122,7 @@ private:
 	void installFlowPoint();//加载配置文件的[FlowPoint_i]组的信息
 	void installBool();//加载配置文件的[Bool]组的信息
 	void installOther();//加载配置文件的[Other]组的信息
+	void installWaterPara();
 
 	void installDftDBinfo();//加载数据库中默认的参数
 
@@ -131,6 +132,7 @@ private:
 	void SaveFlowPoint();//保存流量点信息
 	void SaveBool();//保存布尔值
 	void SaveOther();//保存其他信息
+	void SaveWaterPara();//保存水表参数
 
 private slots:
 

@@ -28,12 +28,12 @@
 #include "qtexdb.h"
 #include "algorithm.h"
 
-
 ParaSetDlg::ParaSetDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
 	qDebug()<<"ParaSetDlg thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
+	ui.gBoxWaterPara->hide(); //默认不显示水表检测参数
 	cBoxData_inited = false;
 	
 	m_meterStdNum = 0;
@@ -90,6 +90,11 @@ void ParaSetDlg::closeEvent(QCloseEvent * event)
 		lastParams=NULL;
 	}
 
+}
+
+void ParaSetDlg::showWaterPara()
+{
+	ui.gBoxWaterPara->show();
 }
 
 void ParaSetDlg::on_cmbStandard_currentIndexChanged()
@@ -262,6 +267,7 @@ void ParaSetDlg::installLastParams()
 	installFlowPoint();
 	installBool();
 	installOther();
+	installWaterPara();
 }
 
 void ParaSetDlg::installHead()
@@ -342,6 +348,36 @@ void ParaSetDlg::installOther()
 	ui.lineEditMeterNO->setText(QString::number(lastParams->m_params->meterNo));
 }
 
+void ParaSetDlg::installWaterPara()
+{
+	for (int i=0; i<ui.cmbQ3BiQ1->count(); i++)
+	{
+		if (ui.cmbQ3BiQ1->itemText(i).toFloat()==lastParams->m_params->Q3BiQ1)
+		{
+			ui.cmbQ3BiQ1->setCurrentIndex(i);
+			break;;
+		}
+	}
+
+	for (int j=0; j<ui.cmbQ3->count(); j++)
+	{
+		if (ui.cmbQ3->itemText(j).toFloat()==lastParams->m_params->Q3)
+		{
+			ui.cmbQ3->setCurrentIndex(j);
+			break;;
+		}
+	}
+
+	for (int m=0; m<ui.cmbQ2BiQ1->count(); m++)
+	{
+		if (ui.cmbQ2BiQ1->itemText(m).toFloat()==lastParams->m_params->Q2BiQ1)
+		{
+			ui.cmbQ2BiQ1->setCurrentIndex(m);
+			break;;
+		}
+	}
+}
+
 /*
 ** 将各流量点中, 相似功能的控件加入数组, 便于使用; 
    这就好比界面上的一组控件代表一个关系表(关系型数据库)中的一条记录, 
@@ -406,6 +442,7 @@ void ParaSetDlg::on_btnSave_clicked()
 	SaveFlowPoint();
 	SaveBool();
 	SaveOther();
+	SaveWaterPara();
 
  	m_vfDeptModel->submitAll();
 	ui.cmbVerifyCompany->setCurrentIndex(m_curVfDeptIdx);
@@ -567,6 +604,15 @@ void ParaSetDlg::SaveOther()
 	settings->endGroup();
 }
 
+void ParaSetDlg::SaveWaterPara()
+{
+	settings->beginGroup("WaterPara");
+	settings->setValue("Q3BiQ1", ui.cmbQ3BiQ1->currentText());
+	settings->setValue("Q3", ui.cmbQ3->currentText());
+	settings->setValue("Q2BiQ1", ui.cmbQ2BiQ1->currentText());
+	settings->endGroup();
+}
+
 /*************************************************************************
 ************************ParaSetReader Start*************************
 **************************************************************************/
@@ -634,6 +680,7 @@ void ParaSetReader::readParamValues()
 	readBool();
 	readOther();
 	readFlowPoints();
+	readWaterPara();
 }
 
 void ParaSetReader::readHead()
@@ -699,6 +746,13 @@ void ParaSetReader::readOther()
 	m_params->sc_thermal =  m_settings->value("Other/thermalsafecoefficient").toFloat();
 	m_params->ex_time =  m_settings->value("Other/exhausttime").toFloat();
 	m_params->meterNo =  m_settings->value("Other/meternumber").toUInt();
+}
+
+void ParaSetReader::readWaterPara()
+{
+	m_params->Q3BiQ1 =  m_settings->value("WaterPara/Q3BiQ1").toFloat();
+	m_params->Q3 =  m_settings->value("WaterPara/Q3").toFloat();
+	m_params->Q2BiQ1 =  m_settings->value("WaterPara/Q2BiQ1").toFloat();
 }
 
 /*
