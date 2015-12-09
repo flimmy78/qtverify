@@ -224,7 +224,7 @@ int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id)
 		memset(ptr, 0, sizeof(DftDbInfo_STR)*num);
 	}
 	sql = "select F_ID, F_StandardID, F_NormalFlow, F_UpperFlow, F_VerifyFlow, F_FlowQuantity, F_PumpFrequencey, F_Valve_i, \
-		  F_Seq_i from T_Meter_Default_Params where F_StandardID = " + QString::number(stand_id) + " order by F_ID";
+		  F_Seq_i, F_Opening from T_Meter_Default_Params where F_StandardID = " + QString::number(stand_id) + " order by F_ID";
 	if(query.exec(sql))
 	{
 		while(query.next())
@@ -238,6 +238,7 @@ int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id)
 			ptr[i].pump_freq = query.value(6).toFloat();
 			ptr[i].vale_num = query.value(7).toInt();
 			ptr[i].seq = query.value(8).toInt();
+			ptr[i].opening = query.value(9).toInt();
 			i++;
 		}
 	}
@@ -251,6 +252,37 @@ int getDftDBinfo(int &num, DftDbInfo_PTR &ptr, int stand_id)
 	return true;
 }
 
+/*
+**  更新各规格热表的默认检定参数
+**  ptr: 与数据表t_meter_default_params对应的结构
+**  stand_id: 表规格的主键值, 用于索引界面上的comboBox
+*/
+int updateDftDBinfo(DftDbInfo_PTR ptr, int stand_id)
+{
+	QSqlQuery query(g_defaultdb); // 新建一个查询的实例
+	QString sql;
+	for (int i=0; i<VERIFY_POINTS; i++)
+	{
+		sql = "update T_Meter_Default_Params set";
+		sql += " F_UpperFlow=" + QString::number(ptr[i].upper_flow);
+		sql += ", F_VerifyFlow=" + QString::number(ptr[i].v_flow);
+		sql += ", F_FlowQuantity=" + QString::number(ptr[i].v_quan);
+		sql += ", F_PumpFrequencey=" + QString::number(ptr[i].pump_freq);
+		sql += ", F_Opening=" + QString::number(ptr[i].opening);
+		sql += " where F_ID=" + QString::number(stand_id*VERIFY_POINTS + i);
+		if (query.exec(sql))
+		{
+			qDebug()<<"update T_Meter_Default_Params succeed!";
+		}
+		else
+		{
+			QSqlError error = query.lastError();
+			qWarning()<<error.text();
+		}
+	}
+
+	return true;
+}
 
 /*
 ** 向数据库插入流量检定结果。调用者负责提前打开数据库startdb()

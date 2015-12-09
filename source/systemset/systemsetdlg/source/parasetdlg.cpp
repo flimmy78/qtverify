@@ -122,6 +122,7 @@ void ParaSetDlg::installDftDBinfo()
 			lineEdit_freqs[i]->setText(QString::number(dbinfo_ptr[i].pump_freq));
 			cBox_valves[i]->setCurrentIndex(dbinfo_ptr[i].vale_num);
 			cBox_seqs[i]->setCurrentIndex(dbinfo_ptr[i].seq);
+			lineEdit_Openings[i]->setText(QString::number(dbinfo_ptr[i].opening));
 		}
 	}
 }
@@ -460,6 +461,9 @@ void ParaSetDlg::on_btnSave_clicked()
 	m_pickCodeModel->submitAll();
 	ui.cmbPickCode->setCurrentIndex(m_curPickCodeIdx);
 
+	//保存数据库表T_Meter_Default_Params
+	Update_T_Meter_Default_Params();
+
 //	QMessageBox::information(this, tr("OK"), tr("Save successfully!"));
 	emit saveSuccessSignal();
 	ui.labelHintInfo->setText(tr("Save successfully!"));
@@ -611,6 +615,23 @@ void ParaSetDlg::SaveWaterPara()
 	settings->setValue("Q3", ui.cmbQ3->currentText());
 	settings->setValue("Q2BiQ1", ui.cmbQ2BiQ1->currentText());
 	settings->endGroup();
+}
+
+void ParaSetDlg::Update_T_Meter_Default_Params()
+{
+	DftDbInfo_STR dbinfo_ptr[VERIFY_POINTS];
+	memset(dbinfo_ptr, 0, sizeof(DftDbInfo_STR)*VERIFY_POINTS);
+	
+	for(int i=0; i<VERIFY_POINTS; i++)
+	{
+		dbinfo_ptr[i].upper_flow = lineEdit_uppers[i]->text().toFloat();
+		dbinfo_ptr[i].v_flow = lineEdit_flows[i]->text().toFloat();
+		dbinfo_ptr[i].v_quan = lineEdit_quantites[i]->text().toFloat();
+		dbinfo_ptr[i].pump_freq = lineEdit_freqs[i]->text().toFloat();
+		dbinfo_ptr[i].opening = lineEdit_Openings[i]->text().toFloat();
+	}
+
+	updateDftDBinfo(dbinfo_ptr, ui.cmbStandard->currentIndex());
 }
 
 /*************************************************************************

@@ -134,6 +134,8 @@ private:
 	void SaveOther();//保存其他信息
 	void SaveWaterPara();//保存水表参数
 
+	void Update_T_Meter_Default_Params();
+
 private slots:
 
 };

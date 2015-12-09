@@ -283,6 +283,7 @@ public:
 	float pump_freq;//水泵频率
 	int vale_num;//阀门编号
 	int seq;//检测序列号
+	int opening; //电动调节阀开度
 };
 typedef DftDbInfo_STR* DftDbInfo_PTR;
 
