@@ -80,6 +80,7 @@ int getPortSetIni(PortSet_Ini_PTR info)
 	info->regflow1No = settings.value("Regulate/regflow1No").toInt();
 	info->regflow2No = settings.value("Regulate/regflow2No").toInt();
 	info->regflow3No = settings.value("Regulate/regflow3No").toInt();
+	info->regflow4No = settings.value("Regulate/regflow4No").toInt();
 	info->pumpNo = settings.value("Regulate/pumpNo").toInt();
 
 	info->version = settings.value("CtrlBoard/version").toInt();
