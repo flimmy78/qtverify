@@ -137,12 +137,7 @@ void AdjustRateDlg::closeEvent( QCloseEvent * event)
 	savePidParams();
 
 	DELETE_RESOURCE(m_btnGroupValve)
-
 	DELETE_RESOURCE(m_pidConfig)
-	{
-		delete m_pidConfig;
-		m_pidConfig = NULL;
-	}
 
 	if (m_setPumpTimer)
 	{
