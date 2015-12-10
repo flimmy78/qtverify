@@ -778,6 +778,11 @@ void ParaSetReader::initValveMap()
 	m_valvePortMap.insert(1,"middle2No");
 	m_valvePortMap.insert(2,"middle1No");	
 	m_valvePortMap.insert(3,"smallNo");
+
+	m_regPortMap.insert(0,"bigNo");
+	m_regPortMap.insert(1,"middle2No");
+	m_regPortMap.insert(2,"middle1No");	
+	m_regPortMap.insert(3,"smallNo");
 }
 
 /*
@@ -828,7 +833,7 @@ void ParaSetReader::readFlowPoints()
 		m_params->fp_info[i].fp_quantity =  m_settings->value("flowquantity").toFloat();
 		m_params->fp_info[i].fp_valve_idx =  m_settings->value("valve").toInt();
 		m_params->fp_info[i].fp_valve =  m_port_config->value("Relay/" + m_valvePortMap[m_params->fp_info[i].fp_valve_idx]).toInt();
-
+		m_params->fp_info[i].fp_regno =  m_port_config->value("Regulate/" + m_regPortMap[m_params->fp_info[i].fp_valve_idx]).toInt();
 		m_params->fp_info[i].fp_seq =  m_settings->value("seq").toInt();
 		m_params->fp_info[i].fp_opening =  m_settings->value("opening").toInt();
 		if (m_params->fp_info[i].fp_seq)

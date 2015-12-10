@@ -321,6 +321,7 @@ struct Flow_Point_Info_STR
 	int fp_valve;//第i流量点的控制阀(大)对应的端口号
 	int fp_seq;//第i流量点的检定次序(3)
 	int fp_opening; //第i流量点的开度
+	int fp_regno; //第i流量点的调节阀对应的端口号
 	//int fp_instStdRoute;//第i流量点的瞬时采集设备的通道号
 	//int fp_accumStdRoute;//第i流量点的累积采集设备的通道号
 };

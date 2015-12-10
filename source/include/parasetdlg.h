@@ -19,6 +19,7 @@ class SYSTEMSETDLG_EXPORT ParaSetReader
 public:
 		
 	QMap<int,QString> m_valvePortMap;//建立阀门的字面值与其端口号的双射关系
+	QMap<int,QString> m_regPortMap;//建立调节阀的字面值与其端口号的双射关系
 	ParaSetReader();
 	~ParaSetReader();
 

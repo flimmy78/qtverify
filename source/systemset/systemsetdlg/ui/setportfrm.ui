@@ -1522,12 +1522,12 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_8">
           <property name="text">
-           <string>Regulator1</string>
+           <string>Reg Big</string>
           </property>
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QComboBox" name="cBox_Regulate_1">
+         <widget class="QComboBox" name="cBox_Regulate_Big">
           <item>
            <property name="text">
             <string>port1</string>
@@ -1633,12 +1633,12 @@
         <item row="2" column="0">
          <widget class="QLabel" name="label_9">
           <property name="text">
-           <string>Regulator2</string>
+           <string>Reg Mid2</string>
           </property>
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QComboBox" name="cBox_Regulate_2">
+         <widget class="QComboBox" name="cBox_Regulate_Mid2">
           <item>
            <property name="text">
             <string>port1</string>
@@ -1744,12 +1744,12 @@
         <item row="3" column="0">
          <widget class="QLabel" name="label_10">
           <property name="text">
-           <string>Regulator3</string>
+           <string>Reg Mid1</string>
           </property>
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QComboBox" name="cBox_Regulate_3">
+         <widget class="QComboBox" name="cBox_Regulate_Mid1">
           <item>
            <property name="text">
             <string>port1</string>
@@ -1855,12 +1855,12 @@
         <item row="4" column="0">
          <widget class="QLabel" name="label_11">
           <property name="text">
-           <string>Regulator4</string>
+           <string>Reg Small</string>
           </property>
          </widget>
         </item>
         <item row="4" column="1">
-         <widget class="QComboBox" name="cBox_Regulate_4">
+         <widget class="QComboBox" name="cBox_Regulate_Small">
           <item>
            <property name="text">
             <string>port1</string>
@@ -1995,11 +1995,6 @@
     </widget>
    </item>
   </layout>
-  <zorder>label_17</zorder>
-  <zorder>layoutWidget</zorder>
-  <zorder>gBox_Dev</zorder>
-  <zorder>btn_Save</zorder>
-  <zorder>btn_Exit</zorder>
  </widget>
  <resources>
   <include location="../systemsetdlg.qrc"/>
