@@ -78,3 +78,21 @@ cd ../gui
 qmake -t vcapp
 
 cd ..
+cd usermanage\usermanagedlg
+qmake -t vclib
+
+cd ../..
+cd scancode\scancodedlg
+qmake -t vclib
+
+cd ../..
+cd testQt
+qmake -t vcapp
+
+cd ../
+cd pseudodata
+qmake -t vcapp
+
+cd ../
+cd qtserialport/src/serialport
+qmake -t vclib
