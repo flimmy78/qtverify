@@ -116,11 +116,11 @@ void ParaSetDlg::installDftDBinfo()
 		ui.cmbFlow->setCurrentIndex(dbinfo_ptr[0].stand_id);
 		for(int i=0; i < VERIFY_POINTS; i++)
 		{
+			cBox_valves[i]->setCurrentIndex(dbinfo_ptr[i].vale_num);
 			lineEdit_uppers[i]->setText(QString::number(dbinfo_ptr[i].upper_flow));
 			lineEdit_flows[i]->setText(QString::number(dbinfo_ptr[i].v_flow));
 			lineEdit_quantites[i]->setText(QString::number(dbinfo_ptr[i].v_quan));
 			lineEdit_freqs[i]->setText(QString::number(dbinfo_ptr[i].pump_freq));
-			cBox_valves[i]->setCurrentIndex(dbinfo_ptr[i].vale_num);
 			cBox_seqs[i]->setCurrentIndex(dbinfo_ptr[i].seq);
 			lineEdit_Openings[i]->setText(QString::number(dbinfo_ptr[i].opening));
 		}
@@ -259,6 +259,94 @@ void ParaSetDlg::slot_autopick_clicked(int id)
 		ui.tBtn_writeNum_true->setChecked(false);
 		ui.tBtn_writeNum_false->setChecked(true);
 	}	
+}
+
+/*
+** 检定流量点变化后，根据上限流量点、各管路的上限流量自动选择对应管路
+** num: 0-大管路；1-中二管路； 2-中一管路； 3-小管路 
+*/
+void ParaSetDlg::onVerifyFlowChanged(QString vFlow, int num)
+{
+	bool ok;
+	float flow = vFlow.toFloat(&ok);
+	if (!ok)
+	{
+		return;
+	}
+
+	float bigUpperFlow = ui.lineEdit_Upper_1->text().toFloat();
+	float mid2UpperFlow = ui.lineEdit_Upper_2->text().toFloat();
+	float mid1UpperFlow = ui.lineEdit_Upper_3->text().toFloat();
+	float smallUpperFlow = ui.lineEdit_Upper_4->text().toFloat();
+
+	if (flow <= bigUpperFlow && flow > mid2UpperFlow)
+	{
+		cBox_valves[num]->setCurrentIndex(0);
+	}
+	else if (flow <= mid2UpperFlow && flow > mid1UpperFlow)
+	{
+		cBox_valves[num]->setCurrentIndex(1);
+	}
+	else if (flow <= mid1UpperFlow && flow > smallUpperFlow)
+	{
+		cBox_valves[num]->setCurrentIndex(2);
+	}
+	else if (flow <= smallUpperFlow)
+	{
+		cBox_valves[num]->setCurrentIndex(3);
+	}
+}
+
+void ParaSetDlg::on_lnEdit_Flow1_textChanged(const QString & text)
+{
+	onVerifyFlowChanged(text, 0);
+}
+
+void ParaSetDlg::on_lnEdit_Flow2_textChanged(const QString & text)
+{
+	onVerifyFlowChanged(text, 1);
+}
+
+void ParaSetDlg::on_lnEdit_Flow3_textChanged(const QString & text)
+{
+	onVerifyFlowChanged(text, 2);
+}
+
+void ParaSetDlg::on_lnEdit_Flow4_textChanged(const QString & text)
+{
+	onVerifyFlowChanged(text, 3);
+}
+
+/*
+** 检定流量点变化后，根据上限流量点、各管路的上限流量自动选择对应管路
+** num: 0-大管路；1-中二管路； 2-中一管路； 3-小管路 
+*/
+void ParaSetDlg::onUpperFlowChanged()
+{
+	on_lnEdit_Flow1_textChanged(ui.lnEdit_Flow1->text());
+	on_lnEdit_Flow2_textChanged(ui.lnEdit_Flow2->text());
+	on_lnEdit_Flow3_textChanged(ui.lnEdit_Flow3->text());
+	on_lnEdit_Flow4_textChanged(ui.lnEdit_Flow4->text());
+}
+
+void ParaSetDlg::on_lineEdit_Upper_1_textChanged(const QString & text)
+{
+	onUpperFlowChanged();
+}
+
+void ParaSetDlg::on_lineEdit_Upper_2_textChanged(const QString & text)
+{
+	onUpperFlowChanged();
+}
+
+void ParaSetDlg::on_lineEdit_Upper_3_textChanged(const QString & text)
+{
+	onUpperFlowChanged();
+}
+
+void ParaSetDlg::on_lineEdit_Upper_4_textChanged(const QString & text)
+{
+	onUpperFlowChanged();
 }
 
 void ParaSetDlg::installLastParams()

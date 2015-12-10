@@ -95,6 +95,18 @@ public slots:
 	void on_cmbStandard_currentIndexChanged();
 	void slot_autopick_clicked(int);
 
+	void onVerifyFlowChanged(QString vFlow, int num);
+	void on_lnEdit_Flow1_textChanged(const QString & text);
+	void on_lnEdit_Flow2_textChanged(const QString & text);
+	void on_lnEdit_Flow3_textChanged(const QString & text);
+	void on_lnEdit_Flow4_textChanged(const QString & text);
+
+	void onUpperFlowChanged();
+	void on_lineEdit_Upper_1_textChanged(const QString & text);
+	void on_lineEdit_Upper_2_textChanged(const QString & text);
+	void on_lineEdit_Upper_3_textChanged(const QString & text);
+	void on_lineEdit_Upper_4_textChanged(const QString & text);
+
 private:
 	Ui::ParaSetDlgClass ui;
 	bool cBoxData_inited;//标记, 界面的下拉条已经从数据库中读取了数据
