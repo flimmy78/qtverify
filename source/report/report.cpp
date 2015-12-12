@@ -67,7 +67,6 @@ void CReport::setIniName(QString ini)
 	m_temp_file		  = m_temp_file+"\\" + current_time + ".xls";
 #endif
 	m_template_file.append(m_rpt_config->value("template/name").toString());
-	qDebug() << "m_template_file Name :" << m_template_file;
 
 	if (!QFile::exists(m_template_file))
 	{
@@ -105,8 +104,6 @@ void CReport::writeRpt()
 	mergeBody();
 	m_book->save(m_temp_file.toStdString().data());
 	deleteLog();
-	m_query->exec(DROP_TEMP_VIEW_STMT);//先删除临时视图
-	m_query->exec(DROP_TBL_STMT);//后删除临时表
 }
 
 void CReport::writeHead()
@@ -371,7 +368,6 @@ void CReport::mergeColByFather(QString colName, QStringList fatherList)
 	QString current_value, pre_value;//当前值和先前值
 	QStringList currentVList, previousVList;
 	QList<int> fatherColNumList;
-	bool valid_value;
 
 	m_query->seek(0);
 	QSqlRecord rec;
@@ -388,7 +384,6 @@ void CReport::mergeColByFather(QString colName, QStringList fatherList)
 		currentVList.append(m_query->value(fatherColNumList.at(i)).toString().toLocal8Bit());
 		previousVList.append(m_query->value(fatherColNumList.at(i)).toString().toLocal8Bit());
 	}
-	int idx = rec.indexOf(colName);
 	current_row_num = start_with;
 
 	bool fatherChanged = false;
@@ -459,16 +454,25 @@ void CReport::getRptSQL()
 */
 void CReport::getDbData()
 {
+	qDebug() << "database file path: " << g_defaultdb.hostName();
 	m_query->exec(DROP_TBL_STMT);//删除临时表
-	m_query->exec(CREATE_TEMP_TBL_STMT);//按查询条件, 创建临时表
-	m_query->exec(DROP_TEMP_VIEW_STMT);//删除临时视图
+
+	qDebug() << "create temp table statment: " << CREATE_TEMP_TBL_STMT;
+	qDebug() << "EXECUTED CREATE_TEMP_TBL_STMT: " << m_query->exec(CREATE_TEMP_TBL_STMT);//按查询条件, 创建临时表
+	
+	qDebug() << "EXECUTED DROP_TEMP_VIEW_STMT: " << m_query->exec(DROP_TEMP_VIEW_STMT);//删除临时视图
 	m_queryStmtId = m_rpt_config->value("tableview/stmtId").toString();
-	m_query->exec(QUERY_CREATE_VIEW_STMT);//查询创建临时视图的语句
+	qDebug() << "EXECUTED QUERY_CREATE_VIEW_STMT: " << m_query->exec(QUERY_CREATE_VIEW_STMT);//查询创建临时视图的语句
+	qDebug() << "QUERY VIEW statment: " << QUERY_CREATE_VIEW_STMT;
 	m_query->seek(0);
 	QString createViewSql = m_query->value(0).toString();
-	//qDebug() << createViewSql;
-	m_query->exec(createViewSql);//以临时表为主表, 创建临时视图
-	m_query->exec(m_query_Sql);//查询临时视图
+	qDebug() << "createViewSql: " << createViewSql;
+	qDebug() << "EXECUTED createViewSql: " << m_query->exec(createViewSql);//以临时表为主表, 创建临时视图
+	
+	qDebug()  << "m_query_Sql: " << m_query_Sql;
+	qDebug() << "EXECUTED m_query_Sql: " << m_query->exec(m_query_Sql);//查询临时视图
+
+	qDebug() << "number of rows returned: " << m_query->numRowsAffected();
 }
 
 //删除版权信息
