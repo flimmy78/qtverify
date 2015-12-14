@@ -4,6 +4,7 @@
 #include <QtGui/QWidget>
 #include <QSettings>
 #include <QDateTime>
+#include <QMap>
 
 #include "ui_stdmtrparaset.h"
 #include "systemsetdlg_global.h"
@@ -12,13 +13,6 @@
 #define FLOW_K_NUM 10//流量-K系数点的个数
 #define DIAMETER_NUM 4//一共设置了几个管径的标准表
 
-enum diam_seq//口径与序列号对应
-{
-	DN3_STD = 0,
-	DN5_STD,
-	DN10_STD,
-	DN25_STD
-};
 class SYSTEMSETDLG_EXPORT StdMtrParaSet : public QWidget
 {
 	Q_OBJECT
@@ -38,33 +32,31 @@ public slots:
 
 private:
 	Ui::StdMtrParaSetClass ui;
-	//各流量点控件序列
-	QVector<QLineEdit*> m_vecflowPointDN3;
-	QVector<QLineEdit*> m_vecflowPointDN5;
-	QVector<QLineEdit*> m_vecflowPointDN10;
-	QVector<QLineEdit*> m_vecflowPointDN25;
-	//各K系数控件序列	
-	QVector<QLineEdit*> m_vecKCoeDN3;
-	QVector<QLineEdit*> m_vecKCoeDN5;
-	QVector<QLineEdit*> m_vecKCoeDN10;
-	QVector<QLineEdit*> m_vecKCoeDN25;
-	//各口径表的其他参数控件序列
-	QVector<QLineEdit*> m_vecPulse;
-	QVector<QLineEdit*> m_vecUpperFlow;
-	QVector<QLineEdit*> m_vecAdjust;
-	//各检测流量点的控件序列
-	QVector<QComboBox*> m_vecRouteDN;
-	QVector<QComboBox*> m_vecInstRoute;
-	QVector<QComboBox*> m_vecAccumRoute;
-
 	QSettings* m_stdParam;
+	//各流量点控件序列
+	QVector<QLineEdit*> m_vecflowPointSmall;
+	QVector<QLineEdit*> m_vecflowPointMid1;
+	QVector<QLineEdit*> m_vecflowPointMid2;
+	QVector<QLineEdit*> m_vecflowPointBig;
+	//各K系数控件序列	
+	QVector<QLineEdit*> m_vecKCoeSmall;
+	QVector<QLineEdit*> m_vecKCoeMid1;
+	QVector<QLineEdit*> m_vecKCoeMid2;
+	QVector<QLineEdit*> m_vecKCoeBig;
+	//各口径表的其他参数控件序列
+	QMap<flow_rate_wdg, QLineEdit*> m_mapPulseWdg;
+	QMap<flow_rate_wdg, QLineEdit*> m_mapUpperFlowWdg;
+	QMap<flow_rate_wdg, QLineEdit*> m_mapAdjustWdg;
+	QMap<flow_rate_wdg, QComboBox*> m_mapInstRouteWdg;
+	QMap<flow_rate_wdg, QComboBox*> m_mapAccumRouteWdg;
+
 private slots:
 	void initWdgVec();
 
 	void writeStdMeter();
 	void writeFlowKCoe();
 	void writePulse();
-	void writeFlowRate();
+	void writeUpperFlow();
 	void writeRoute();
 
 	void installStdMeter();

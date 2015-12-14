@@ -27,7 +27,8 @@ StdMtrParaSet::StdMtrParaSet(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
 	qDebug()<<"StdParaSet thread:"<<QThread::currentThreadId();
-	ui.setupUi(this);	
+	ui.setupUi(this);
+	m_stdParam = NULL;
 }
 
 void StdMtrParaSet::showEvent(QShowEvent *)
@@ -53,124 +54,119 @@ void StdMtrParaSet::closeEvent(QCloseEvent *)
 }
 
 void StdMtrParaSet::initWdgVec()
-{
-	m_vecflowPointDN3.append(ui.lineEdit_DN3_FLowPoint_1);
-	m_vecflowPointDN3.append(ui.lineEdit_DN3_FLowPoint_2);
-	m_vecflowPointDN3.append(ui.lineEdit_DN3_FLowPoint_3);
-	m_vecflowPointDN3.append(ui.lineEdit_DN3_FLowPoint_4);
-	m_vecflowPointDN3.append(ui.lineEdit_DN3_FLowPoint_5);
-	m_vecflowPointDN3.append(ui.lineEdit_DN3_FLowPoint_6);
-	m_vecflowPointDN3.append(ui.lineEdit_DN3_FLowPoint_7);
-	m_vecflowPointDN3.append(ui.lineEdit_DN3_FLowPoint_8);
-	m_vecflowPointDN3.append(ui.lineEdit_DN3_FLowPoint_9);
-	m_vecflowPointDN3.append(ui.lineEdit_DN3_FLowPoint_10);
-	   
-	m_vecflowPointDN5.append(ui.lineEdit_DN5_FLowPoint_1);
-	m_vecflowPointDN5.append(ui.lineEdit_DN5_FLowPoint_2);
-	m_vecflowPointDN5.append(ui.lineEdit_DN5_FLowPoint_3);
-	m_vecflowPointDN5.append(ui.lineEdit_DN5_FLowPoint_4);
-	m_vecflowPointDN5.append(ui.lineEdit_DN5_FLowPoint_5);
-	m_vecflowPointDN5.append(ui.lineEdit_DN5_FLowPoint_6);
-	m_vecflowPointDN5.append(ui.lineEdit_DN5_FLowPoint_7);
-	m_vecflowPointDN5.append(ui.lineEdit_DN5_FLowPoint_8);
-	m_vecflowPointDN5.append(ui.lineEdit_DN5_FLowPoint_9);
-	m_vecflowPointDN5.append(ui.lineEdit_DN5_FLowPoint_10);
-	   
-	m_vecflowPointDN10.append(ui.lineEdit_DN10_FLowPoint_1);
-	m_vecflowPointDN10.append(ui.lineEdit_DN10_FLowPoint_2);
-	m_vecflowPointDN10.append(ui.lineEdit_DN10_FLowPoint_3);
-	m_vecflowPointDN10.append(ui.lineEdit_DN10_FLowPoint_4);
-	m_vecflowPointDN10.append(ui.lineEdit_DN10_FLowPoint_5);
-	m_vecflowPointDN10.append(ui.lineEdit_DN10_FLowPoint_6);
-	m_vecflowPointDN10.append(ui.lineEdit_DN10_FLowPoint_7);
-	m_vecflowPointDN10.append(ui.lineEdit_DN10_FLowPoint_8);
-	m_vecflowPointDN10.append(ui.lineEdit_DN10_FLowPoint_9);
-	m_vecflowPointDN10.append(ui.lineEdit_DN10_FLowPoint_10);
-	   
-	m_vecflowPointDN25.append(ui.lineEdit_DN25_FLowPoint_1);
-	m_vecflowPointDN25.append(ui.lineEdit_DN25_FLowPoint_2);
-	m_vecflowPointDN25.append(ui.lineEdit_DN25_FLowPoint_3);
-	m_vecflowPointDN25.append(ui.lineEdit_DN25_FLowPoint_4);
-	m_vecflowPointDN25.append(ui.lineEdit_DN25_FLowPoint_5);
-	m_vecflowPointDN25.append(ui.lineEdit_DN25_FLowPoint_6);
-	m_vecflowPointDN25.append(ui.lineEdit_DN25_FLowPoint_7);
-	m_vecflowPointDN25.append(ui.lineEdit_DN25_FLowPoint_8);
-	m_vecflowPointDN25.append(ui.lineEdit_DN25_FLowPoint_9);
-	m_vecflowPointDN25.append(ui.lineEdit_DN25_FLowPoint_10);
-	
-	m_vecKCoeDN3.append(ui.lineEdit_DN3_KCoe_1);
-	m_vecKCoeDN3.append(ui.lineEdit_DN3_KCoe_2);
-	m_vecKCoeDN3.append(ui.lineEdit_DN3_KCoe_3);
-	m_vecKCoeDN3.append(ui.lineEdit_DN3_KCoe_4);
-	m_vecKCoeDN3.append(ui.lineEdit_DN3_KCoe_5);
-	m_vecKCoeDN3.append(ui.lineEdit_DN3_KCoe_6);
-	m_vecKCoeDN3.append(ui.lineEdit_DN3_KCoe_7);
-	m_vecKCoeDN3.append(ui.lineEdit_DN3_KCoe_8);
-	m_vecKCoeDN3.append(ui.lineEdit_DN3_KCoe_9);
-	m_vecKCoeDN3.append(ui.lineEdit_DN3_KCoe_10);
-	   								  
-	m_vecKCoeDN5.append(ui.lineEdit_DN5_KCoe_1);
-	m_vecKCoeDN5.append(ui.lineEdit_DN5_KCoe_2);
-	m_vecKCoeDN5.append(ui.lineEdit_DN5_KCoe_3);
-	m_vecKCoeDN5.append(ui.lineEdit_DN5_KCoe_4);
-	m_vecKCoeDN5.append(ui.lineEdit_DN5_KCoe_5);
-	m_vecKCoeDN5.append(ui.lineEdit_DN5_KCoe_6);
-	m_vecKCoeDN5.append(ui.lineEdit_DN5_KCoe_7);
-	m_vecKCoeDN5.append(ui.lineEdit_DN5_KCoe_8);
-	m_vecKCoeDN5.append(ui.lineEdit_DN5_KCoe_9);
-	m_vecKCoeDN5.append(ui.lineEdit_DN5_KCoe_10);
-	   
-	m_vecKCoeDN10.append(ui.lineEdit_DN10_KCoe_1);
-	m_vecKCoeDN10.append(ui.lineEdit_DN10_KCoe_2);
-	m_vecKCoeDN10.append(ui.lineEdit_DN10_KCoe_3);
-	m_vecKCoeDN10.append(ui.lineEdit_DN10_KCoe_4);
-	m_vecKCoeDN10.append(ui.lineEdit_DN10_KCoe_5);
-	m_vecKCoeDN10.append(ui.lineEdit_DN10_KCoe_6);
-	m_vecKCoeDN10.append(ui.lineEdit_DN10_KCoe_7);
-	m_vecKCoeDN10.append(ui.lineEdit_DN10_KCoe_8);
-	m_vecKCoeDN10.append(ui.lineEdit_DN10_KCoe_9);
-	m_vecKCoeDN10.append(ui.lineEdit_DN10_KCoe_10);
-	   									
-	m_vecKCoeDN25.append(ui.lineEdit_DN25_KCoe_1);
-	m_vecKCoeDN25.append(ui.lineEdit_DN25_KCoe_2);
-	m_vecKCoeDN25.append(ui.lineEdit_DN25_KCoe_3);
-	m_vecKCoeDN25.append(ui.lineEdit_DN25_KCoe_4);
-	m_vecKCoeDN25.append(ui.lineEdit_DN25_KCoe_5);
-	m_vecKCoeDN25.append(ui.lineEdit_DN25_KCoe_6);
-	m_vecKCoeDN25.append(ui.lineEdit_DN25_KCoe_7);
-	m_vecKCoeDN25.append(ui.lineEdit_DN25_KCoe_8);
-	m_vecKCoeDN25.append(ui.lineEdit_DN25_KCoe_9);
-	m_vecKCoeDN25.append(ui.lineEdit_DN25_KCoe_10);
-	
-	m_vecPulse.append(ui.lineEdit_DN3_Pulse);
-	m_vecPulse.append(ui.lineEdit_DN5_Pulse);
-	m_vecPulse.append(ui.lineEdit_DN10_Pulse);
-	m_vecPulse.append(ui.lineEdit_DN25_Pulse);
-	
-	m_vecUpperFlow.append(ui.lineEdit_DN3_UpperFlow);
-	m_vecUpperFlow.append(ui.lineEdit_DN5_UpperFlow);
-	m_vecUpperFlow.append(ui.lineEdit_DN10_UpperFlow);
-	m_vecUpperFlow.append(ui.lineEdit_DN25_UpperFlow);
-	
-	m_vecAdjust.append(ui.lineEdit_DN3_adjust);
-	m_vecAdjust.append(ui.lineEdit_DN5_adjust);
-	m_vecAdjust.append(ui.lineEdit_DN10_adjust);
-	m_vecAdjust.append(ui.lineEdit_DN25_adjust);
-	
-	m_vecRouteDN.append(ui.comboBox_diam_0);
-	m_vecRouteDN.append(ui.comboBox_diam_1);
-	m_vecRouteDN.append(ui.comboBox_diam_2);
-	m_vecRouteDN.append(ui.comboBox_diam_3);
-	
-	m_vecInstRoute.append(ui.cBox_instroute_0);
-	m_vecInstRoute.append(ui.cBox_instroute_1);
-	m_vecInstRoute.append(ui.cBox_instroute_2);
-	m_vecInstRoute.append(ui.cBox_instroute_3);
-	
-	m_vecAccumRoute.append(ui.cBox_accumroute_0);
-	m_vecAccumRoute.append(ui.cBox_accumroute_1);
-	m_vecAccumRoute.append(ui.cBox_accumroute_2);
-	m_vecAccumRoute.append(ui.cBox_accumroute_3);
+{	
+	m_vecflowPointBig.append(ui.lineEdit_FLowPoint_0_0);
+	m_vecflowPointBig.append(ui.lineEdit_FLowPoint_1_0);
+	m_vecflowPointBig.append(ui.lineEdit_FLowPoint_2_0);
+	m_vecflowPointBig.append(ui.lineEdit_FLowPoint_3_0);
+	m_vecflowPointBig.append(ui.lineEdit_FLowPoint_4_0);
+	m_vecflowPointBig.append(ui.lineEdit_FLowPoint_5_0);
+	m_vecflowPointBig.append(ui.lineEdit_FLowPoint_6_0);
+	m_vecflowPointBig.append(ui.lineEdit_FLowPoint_7_0);
+	m_vecflowPointBig.append(ui.lineEdit_FLowPoint_8_0);
+	m_vecflowPointBig.append(ui.lineEdit_FLowPoint_9_0);
+
+	m_vecflowPointMid2.append(ui.lineEdit_FLowPoint_0_1);
+	m_vecflowPointMid2.append(ui.lineEdit_FLowPoint_1_1);
+	m_vecflowPointMid2.append(ui.lineEdit_FLowPoint_2_1);
+	m_vecflowPointMid2.append(ui.lineEdit_FLowPoint_3_1);
+	m_vecflowPointMid2.append(ui.lineEdit_FLowPoint_4_1);
+	m_vecflowPointMid2.append(ui.lineEdit_FLowPoint_5_1);
+	m_vecflowPointMid2.append(ui.lineEdit_FLowPoint_6_1);
+	m_vecflowPointMid2.append(ui.lineEdit_FLowPoint_7_1);
+	m_vecflowPointMid2.append(ui.lineEdit_FLowPoint_8_1);
+	m_vecflowPointMid2.append(ui.lineEdit_FLowPoint_9_1);
+
+	m_vecflowPointMid1.append(ui.lineEdit_FLowPoint_0_2);	   
+	m_vecflowPointMid1.append(ui.lineEdit_FLowPoint_1_2);
+	m_vecflowPointMid1.append(ui.lineEdit_FLowPoint_2_2);
+	m_vecflowPointMid1.append(ui.lineEdit_FLowPoint_3_2);
+	m_vecflowPointMid1.append(ui.lineEdit_FLowPoint_4_2);
+	m_vecflowPointMid1.append(ui.lineEdit_FLowPoint_5_2);
+	m_vecflowPointMid1.append(ui.lineEdit_FLowPoint_6_2);
+	m_vecflowPointMid1.append(ui.lineEdit_FLowPoint_7_2);
+	m_vecflowPointMid1.append(ui.lineEdit_FLowPoint_8_2);
+	m_vecflowPointMid1.append(ui.lineEdit_FLowPoint_9_2);
+
+	m_vecflowPointSmall.append(ui.lineEdit_FLowPoint_0_3);
+	m_vecflowPointSmall.append(ui.lineEdit_FLowPoint_1_3);
+	m_vecflowPointSmall.append(ui.lineEdit_FLowPoint_2_3);
+	m_vecflowPointSmall.append(ui.lineEdit_FLowPoint_3_3);
+	m_vecflowPointSmall.append(ui.lineEdit_FLowPoint_4_3);
+	m_vecflowPointSmall.append(ui.lineEdit_FLowPoint_5_3);
+	m_vecflowPointSmall.append(ui.lineEdit_FLowPoint_6_3);
+	m_vecflowPointSmall.append(ui.lineEdit_FLowPoint_7_3);
+	m_vecflowPointSmall.append(ui.lineEdit_FLowPoint_8_3);
+	m_vecflowPointSmall.append(ui.lineEdit_FLowPoint_9_3);
+
+	m_vecKCoeBig.append(ui.lineEdit_KCoe_0_0);
+	m_vecKCoeBig.append(ui.lineEdit_KCoe_1_0);
+	m_vecKCoeBig.append(ui.lineEdit_KCoe_2_0);
+	m_vecKCoeBig.append(ui.lineEdit_KCoe_3_0);
+	m_vecKCoeBig.append(ui.lineEdit_KCoe_4_0);
+	m_vecKCoeBig.append(ui.lineEdit_KCoe_5_0);
+	m_vecKCoeBig.append(ui.lineEdit_KCoe_6_0);
+	m_vecKCoeBig.append(ui.lineEdit_KCoe_7_0);
+	m_vecKCoeBig.append(ui.lineEdit_KCoe_8_0);
+	m_vecKCoeBig.append(ui.lineEdit_KCoe_9_0);
+
+	m_vecKCoeMid2.append(ui.lineEdit_KCoe_0_1);
+	m_vecKCoeMid2.append(ui.lineEdit_KCoe_1_1);
+	m_vecKCoeMid2.append(ui.lineEdit_KCoe_2_1);
+	m_vecKCoeMid2.append(ui.lineEdit_KCoe_3_1);
+	m_vecKCoeMid2.append(ui.lineEdit_KCoe_4_1);
+	m_vecKCoeMid2.append(ui.lineEdit_KCoe_5_1);
+	m_vecKCoeMid2.append(ui.lineEdit_KCoe_6_1);
+	m_vecKCoeMid2.append(ui.lineEdit_KCoe_7_1);
+	m_vecKCoeMid2.append(ui.lineEdit_KCoe_8_1);
+	m_vecKCoeMid2.append(ui.lineEdit_KCoe_9_1);
+
+	m_vecKCoeMid1.append(ui.lineEdit_KCoe_0_2);	
+	m_vecKCoeMid1.append(ui.lineEdit_KCoe_1_2);
+	m_vecKCoeMid1.append(ui.lineEdit_KCoe_2_2);
+	m_vecKCoeMid1.append(ui.lineEdit_KCoe_3_2);
+	m_vecKCoeMid1.append(ui.lineEdit_KCoe_4_2);
+	m_vecKCoeMid1.append(ui.lineEdit_KCoe_5_2);
+	m_vecKCoeMid1.append(ui.lineEdit_KCoe_6_2);
+	m_vecKCoeMid1.append(ui.lineEdit_KCoe_7_2);
+	m_vecKCoeMid1.append(ui.lineEdit_KCoe_8_2);
+	m_vecKCoeMid1.append(ui.lineEdit_KCoe_9_2);
+
+	m_vecKCoeSmall.append(ui.lineEdit_KCoe_0_2);
+	m_vecKCoeSmall.append(ui.lineEdit_KCoe_1_2);
+	m_vecKCoeSmall.append(ui.lineEdit_KCoe_2_2);
+	m_vecKCoeSmall.append(ui.lineEdit_KCoe_3_2);
+	m_vecKCoeSmall.append(ui.lineEdit_KCoe_4_2);
+	m_vecKCoeSmall.append(ui.lineEdit_KCoe_5_2);
+	m_vecKCoeSmall.append(ui.lineEdit_KCoe_6_2);
+	m_vecKCoeSmall.append(ui.lineEdit_KCoe_7_2);
+	m_vecKCoeSmall.append(ui.lineEdit_KCoe_8_2);
+	m_vecKCoeSmall.append(ui.lineEdit_KCoe_9_2);
+
+	m_mapPulseWdg[FLOW_RATE_BIG]   = ui.lineEdit_Pulse_0;
+	m_mapPulseWdg[FLOW_RATE_MID_2] = ui.lineEdit_Pulse_1;
+	m_mapPulseWdg[FLOW_RATE_MID_1] = ui.lineEdit_Pulse_2;
+	m_mapPulseWdg[FLOW_RATE_SMALL] = ui.lineEdit_Pulse_3;
+
+	m_mapUpperFlowWdg[FLOW_RATE_BIG]   = ui.lineEdit_UpperFlow_0;
+	m_mapUpperFlowWdg[FLOW_RATE_MID_2] = ui.lineEdit_UpperFlow_1;
+	m_mapUpperFlowWdg[FLOW_RATE_MID_1] = ui.lineEdit_UpperFlow_2;
+	m_mapUpperFlowWdg[FLOW_RATE_SMALL] = ui.lineEdit_UpperFlow_3;
+
+	m_mapAdjustWdg[FLOW_RATE_BIG]   = ui.lineEdit_adjust_0;
+	m_mapAdjustWdg[FLOW_RATE_MID_2] = ui.lineEdit_adjust_1;
+	m_mapAdjustWdg[FLOW_RATE_MID_1] = ui.lineEdit_adjust_2;
+	m_mapAdjustWdg[FLOW_RATE_SMALL] = ui.lineEdit_adjust_3;
+
+	m_mapInstRouteWdg[FLOW_RATE_BIG]    = ui.cBox_instroute_0;
+	m_mapInstRouteWdg[FLOW_RATE_MID_2]  = ui.cBox_instroute_1;
+	m_mapInstRouteWdg[FLOW_RATE_MID_1]  = ui.cBox_instroute_2;
+	m_mapInstRouteWdg[FLOW_RATE_SMALL]  = ui.cBox_instroute_3;
+
+	m_mapAccumRouteWdg[FLOW_RATE_BIG]    = ui.cBox_accumroute_0;
+	m_mapAccumRouteWdg[FLOW_RATE_MID_2]  = ui.cBox_accumroute_1;
+	m_mapAccumRouteWdg[FLOW_RATE_MID_1]  = ui.cBox_accumroute_2;
+	m_mapAccumRouteWdg[FLOW_RATE_SMALL]  = ui.cBox_accumroute_3;
 }
 
 void StdMtrParaSet::installStdMeter()
@@ -186,9 +182,8 @@ void StdMtrParaSet::installRoute()
 	for (int i=0;i<DIAMETER_NUM;i++)
 	{
 		m_stdParam->setArrayIndex(i);
-		m_vecRouteDN.at(i)->setCurrentIndex(m_stdParam->value("Diameter").toInt()+1);
-		m_vecInstRoute.at(i)->setCurrentIndex(m_stdParam->value("InstRoute").toInt()+1);
-		m_vecAccumRoute.at(i)->setCurrentIndex(m_stdParam->value("AccumRoute").toInt()+1);
+		m_mapInstRouteWdg[(flow_rate_wdg)i]->setCurrentIndex(m_stdParam->value("InstRoute").toInt()+1);
+		m_mapAccumRouteWdg[(flow_rate_wdg)i]->setCurrentIndex(m_stdParam->value("AccumRoute").toInt()+1);
 	}
 	m_stdParam->endArray();
 
@@ -198,14 +193,14 @@ void StdMtrParaSet::installRoute()
 	m_stdParam->endGroup();
 }
 
-void StdMtrParaSet::installFlowKCoe()
+void StdMtrParaSet::installFlowRate()
 {
 	m_stdParam->beginReadArray("FlowRate");
 	for (int i=0;i<DIAMETER_NUM;i++)
 	{
 		m_stdParam->setArrayIndex(i);
-		m_vecUpperFlow.at(i)->setText(m_stdParam->value("UpperFlow").toString());
-		m_vecAdjust.at(i)->setText(m_stdParam->value("Adjust").toString());
+		m_mapUpperFlowWdg[(flow_rate_wdg)i]->setText(m_stdParam->value("UpperFlow").toString());
+		m_mapAdjustWdg[(flow_rate_wdg)i]->setText(m_stdParam->value("Adjust").toString());
 	}
 	m_stdParam->endArray();
 }
@@ -216,46 +211,46 @@ void StdMtrParaSet::installPulse()
 	for (int i=0;i<DIAMETER_NUM;i++)
 	{
 		m_stdParam->setArrayIndex(i);
-		m_vecPulse.at(i)->setText(m_stdParam->value("Pulse").toString());
+		m_mapPulseWdg[(flow_rate_wdg)i]->setText(m_stdParam->value("Pulse").toString());
 	}
 	m_stdParam->endArray();
 }
 
-void StdMtrParaSet::installFlowRate()
+void StdMtrParaSet::installFlowKCoe()
 {
-	m_stdParam->beginReadArray("DN3FlowK");
+	m_stdParam->beginReadArray("BigFlowK");
 	for (int i=0;i<FLOW_K_NUM;i++)
 	{
 		m_stdParam->setArrayIndex(i);
-		m_vecflowPointDN3.at(i)->setText(m_stdParam->value("flowPoint").toString());
-		m_vecKCoeDN3.at(i)->setText(m_stdParam->value("KCoe").toString());
+		m_vecflowPointBig.at(i)->setText(m_stdParam->value("flowPoint").toString());
+		m_vecKCoeBig.at(i)->setText(m_stdParam->value("KCoe").toString());
 	}
 	m_stdParam->endArray();
 
-	m_stdParam->beginReadArray("DN5FlowK");
+	m_stdParam->beginReadArray("Mid2FlowK");
 	for (int i=0;i<FLOW_K_NUM;i++)
 	{
 		m_stdParam->setArrayIndex(i);
-		m_vecflowPointDN5.at(i)->setText(m_stdParam->value("flowPoint").toString());
-		m_vecKCoeDN5.at(i)->setText(m_stdParam->value("KCoe").toString());
+		m_vecflowPointMid2.at(i)->setText(m_stdParam->value("flowPoint").toString());
+		m_vecKCoeMid2.at(i)->setText(m_stdParam->value("KCoe").toString());
 	}
 	m_stdParam->endArray();
 
-	m_stdParam->beginReadArray("DN10FlowK");
+	m_stdParam->beginReadArray("Mid1FlowK");
 	for (int i=0;i<FLOW_K_NUM;i++)
 	{
 		m_stdParam->setArrayIndex(i);
-		m_vecflowPointDN10.at(i)->setText(m_stdParam->value("flowPoint").toString());
-		m_vecKCoeDN10.at(i)->setText(m_stdParam->value("KCoe").toString());
+		m_vecflowPointMid1.at(i)->setText(m_stdParam->value("flowPoint").toString());
+		m_vecKCoeMid1.at(i)->setText(m_stdParam->value("KCoe").toString());
 	}
 	m_stdParam->endArray();
 
-	m_stdParam->beginReadArray("DN25FlowK");
+	m_stdParam->beginReadArray("SmallFlowK");
 	for (int i=0;i<FLOW_K_NUM;i++)
 	{
 		m_stdParam->setArrayIndex(i);
-		m_vecflowPointDN25.at(i)->setText(m_stdParam->value("flowPoint").toString());
-		m_vecKCoeDN25.at(i)->setText(m_stdParam->value("KCoe").toString());
+		m_vecflowPointSmall.at(i)->setText(m_stdParam->value("flowPoint").toString());
+		m_vecKCoeSmall.at(i)->setText(m_stdParam->value("KCoe").toString());
 	}
 	m_stdParam->endArray();
 }
@@ -264,44 +259,44 @@ void StdMtrParaSet::writeStdMeter()
 {
 	writeFlowKCoe();
 	writePulse();
-	writeFlowRate();
+	writeUpperFlow();
 }
 
 void StdMtrParaSet::writeFlowKCoe()
 {
-	m_stdParam->beginWriteArray("DN3FlowK");
+	m_stdParam->beginWriteArray("BigFlowK");
 	for (int i=0;i<FLOW_K_NUM;i++)
 	{
 		m_stdParam->setArrayIndex(i);
-		m_stdParam->setValue("flowPoint",m_vecflowPointDN3.at(i)->text());
-		m_stdParam->setValue("KCoe",m_vecKCoeDN3.at(i)->text());
+		m_stdParam->setValue("flowPoint",m_vecflowPointBig.at(i)->text());
+		m_stdParam->setValue("KCoe",m_vecKCoeBig.at(i)->text());
 	}
 	m_stdParam->endArray();
 
-	m_stdParam->beginWriteArray("DN5FlowK");
+	m_stdParam->beginWriteArray("Mid2FlowK");
 	for (int i=0;i<FLOW_K_NUM;i++)
 	{
 		m_stdParam->setArrayIndex(i);
-		m_stdParam->setValue("flowPoint",m_vecflowPointDN5.at(i)->text());
-		m_stdParam->setValue("KCoe",m_vecKCoeDN5.at(i)->text());
+		m_stdParam->setValue("flowPoint",m_vecflowPointMid2.at(i)->text());
+		m_stdParam->setValue("KCoe",m_vecKCoeMid2.at(i)->text());
 	}
 	m_stdParam->endArray();
 
-	m_stdParam->beginWriteArray("DN10FlowK");
+	m_stdParam->beginWriteArray("Mid1FlowK");
 	for (int i=0;i<FLOW_K_NUM;i++)
 	{
 		m_stdParam->setArrayIndex(i);
-		m_stdParam->setValue("flowPoint",m_vecflowPointDN10.at(i)->text());
-		m_stdParam->setValue("KCoe",m_vecKCoeDN10.at(i)->text());
+		m_stdParam->setValue("flowPoint",m_vecflowPointMid1.at(i)->text());
+		m_stdParam->setValue("KCoe",m_vecKCoeMid1.at(i)->text());
 	}
 	m_stdParam->endArray();
 
-	m_stdParam->beginWriteArray("DN25FlowK");
+	m_stdParam->beginWriteArray("SmallFlowK");
 	for (int i=0;i<FLOW_K_NUM;i++)
 	{
 		m_stdParam->setArrayIndex(i);
-		m_stdParam->setValue("flowPoint",m_vecflowPointDN25.at(i)->text());
-		m_stdParam->setValue("KCoe",m_vecKCoeDN25.at(i)->text());
+		m_stdParam->setValue("flowPoint",m_vecflowPointSmall.at(i)->text());
+		m_stdParam->setValue("KCoe",m_vecKCoeSmall.at(i)->text());
 	}
 	m_stdParam->endArray();
 }
@@ -312,19 +307,19 @@ void StdMtrParaSet::writePulse()
 	for (int i=0;i<DIAMETER_NUM;i++)
 	{
 		m_stdParam->setArrayIndex(i);
-		m_stdParam->setValue("Pulse", m_vecPulse.at(i)->text());		
+		m_stdParam->setValue("Pulse", m_mapPulseWdg[(flow_rate_wdg)i]->text());		
 	}
 	m_stdParam->endArray();
 }
 
-void StdMtrParaSet::writeFlowRate()
+void StdMtrParaSet::writeUpperFlow()
 {
 	m_stdParam->beginWriteArray("FlowRate");
 	for (int i=0;i<DIAMETER_NUM;i++)
 	{
 		m_stdParam->setArrayIndex(i);
-		m_stdParam->setValue(QString("UpperFlow"), m_vecUpperFlow.at(i)->text());
-		m_stdParam->setValue(QString("Adjust"), m_vecAdjust.at(i)->text());
+		m_stdParam->setValue(QString("UpperFlow"), m_mapUpperFlowWdg[(flow_rate_wdg)i]->text());
+		m_stdParam->setValue(QString("Adjust"), m_mapAdjustWdg[(flow_rate_wdg)i]->text());
 	}
 	m_stdParam->endArray();
 }
@@ -335,9 +330,8 @@ void StdMtrParaSet::writeRoute()
 	for (int i=0;i<DIAMETER_NUM;i++)
 	{
 		m_stdParam->setArrayIndex(i);
-		m_stdParam->setValue(QString("Diameter"), m_vecRouteDN.at(i)->currentIndex()-1);
-		m_stdParam->setValue(QString("InstRoute"), m_vecInstRoute.at(i)->currentIndex()-1);
-		m_stdParam->setValue(QString("AccumRoute"), m_vecAccumRoute.at(i)->currentIndex()-1);
+		m_stdParam->setValue(QString("InstRoute"), m_mapInstRouteWdg[(flow_rate_wdg)i]->currentIndex()-1);
+		m_stdParam->setValue(QString("AccumRoute"), m_mapAccumRouteWdg[(flow_rate_wdg)i]->currentIndex()-1);
 	}
 	m_stdParam->endArray();
 
