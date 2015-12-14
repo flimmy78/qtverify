@@ -77,10 +77,10 @@ int getPortSetIni(PortSet_Ini_PTR info)
 	info->smallWaterInNo = settings.value("Relay/smallWaterInNo").toInt();
 	info->smallWaterOutNo = settings.value("Relay/smallWaterOutNo").toInt();
 	
-	info->regflow1No = settings.value("Regulate/regflow1No").toInt();
-	info->regflow2No = settings.value("Regulate/regflow2No").toInt();
-	info->regflow3No = settings.value("Regulate/regflow3No").toInt();
-	info->regflow4No = settings.value("Regulate/regflow4No").toInt();
+	info->regSmallNo = settings.value("Regulate/regSmallNo").toInt();
+	info->regMid1No = settings.value("Regulate/regMid1No").toInt();
+	info->regMid2No = settings.value("Regulate/regMid2No").toInt();
+	info->regBigNo = settings.value("Regulate/regBigNo").toInt();
 	info->pumpNo = settings.value("Regulate/pumpNo").toInt();
 
 	info->version = settings.value("CtrlBoard/version").toInt();

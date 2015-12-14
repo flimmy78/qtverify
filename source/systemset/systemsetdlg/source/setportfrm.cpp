@@ -223,10 +223,10 @@ void SetPortFrm::InstallIni()
 	gui.cBox_SmallOutlet->setCurrentIndex(PortSet->value("Relay/smallWaterOutNo").toInt() - 1);
 
 	gui.cBox_Pump->setCurrentIndex(PortSet->value("Regulate/pumpNo").toInt() - 1);
-	gui.cBox_Regulate_Big->setCurrentIndex(PortSet->value("Regulate/bigNo").toInt() - 1);
-	gui.cBox_Regulate_Mid2->setCurrentIndex(PortSet->value("Regulate/middle2No").toInt() - 1);
-	gui.cBox_Regulate_Mid1->setCurrentIndex(PortSet->value("Regulate/middle1No").toInt() - 1);
-	gui.cBox_Regulate_Small->setCurrentIndex(PortSet->value("Regulate/smallNo").toInt() - 1);
+	gui.cBox_Regulate_Big->setCurrentIndex(PortSet->value("Regulate/regBigNo").toInt() - 1);
+	gui.cBox_Regulate_Mid2->setCurrentIndex(PortSet->value("Regulate/regMid2No").toInt() - 1);
+	gui.cBox_Regulate_Mid1->setCurrentIndex(PortSet->value("Regulate/regMid1No").toInt() - 1);
+	gui.cBox_Regulate_Small->setCurrentIndex(PortSet->value("Regulate/regSmallNo").toInt() - 1);
 
 	gui.cBox_Version->setCurrentIndex(PortSet->value("CtrlBoard/version").toInt());
 }
@@ -248,10 +248,10 @@ void SetPortFrm::WriteIni()
 	PortSet->setValue("Relay/smallWaterOutNo",gui.cBox_SmallOutlet->currentIndex() + 1);
 
 	PortSet->setValue("Regulate/pumpNo",gui.cBox_Pump->currentIndex() + 1);
-	PortSet->setValue("Regulate/bigNo",gui.cBox_Regulate_Big->currentIndex() + 1);
-	PortSet->setValue("Regulate/middle2No",gui.cBox_Regulate_Mid2->currentIndex() + 1);
-	PortSet->setValue("Regulate/middle1No",gui.cBox_Regulate_Mid1->currentIndex() + 1);
-	PortSet->setValue("Regulate/smallNo",gui.cBox_Regulate_Small->currentIndex() + 1);
+	PortSet->setValue("Regulate/regBigNo",gui.cBox_Regulate_Big->currentIndex() + 1);
+	PortSet->setValue("Regulate/regMid2No",gui.cBox_Regulate_Mid2->currentIndex() + 1);
+	PortSet->setValue("Regulate/regMid1No",gui.cBox_Regulate_Mid1->currentIndex() + 1);
+	PortSet->setValue("Regulate/regSmallNo",gui.cBox_Regulate_Small->currentIndex() + 1);
 	
 	PortSet->setValue("CtrlBoard/version",gui.cBox_Version->currentIndex());
 }

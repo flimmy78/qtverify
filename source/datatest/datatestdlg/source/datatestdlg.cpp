@@ -449,12 +449,12 @@ void DataTestDlg::initRegulateStatus()
 	m_nowRegNo = 0;
 
 	//端口号-调节阀按钮 映射关系
-	m_regBtn[m_portsetinfo.regflow1No] = ui.btnRegulate1;
+	m_regBtn[m_portsetinfo.regSmallNo] = ui.btnRegulate1;
 
 	//调节阀初始状态
-	m_regStatus[m_portsetinfo.regflow1No] = REG_SUCCESS;
+	m_regStatus[m_portsetinfo.regSmallNo] = REG_SUCCESS;
 
-	setRegBtnBackColor(m_regBtn[m_portsetinfo.regflow1No], m_regStatus[m_portsetinfo.regflow1No]);
+	setRegBtnBackColor(m_regBtn[m_portsetinfo.regSmallNo], m_regStatus[m_portsetinfo.regSmallNo]);
 }
 
 //打开热量表通讯串口
@@ -522,7 +522,7 @@ void DataTestDlg::on_btnValveBig_clicked() //大流量阀
 	{
 		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
 	}
-	m_nowRegNo = m_portsetinfo.regflow1No;
+	m_nowRegNo = m_portsetinfo.regSmallNo;
 }
 
 void DataTestDlg::on_btnValveMiddle1_clicked() //中流一阀
@@ -534,7 +534,7 @@ void DataTestDlg::on_btnValveMiddle1_clicked() //中流一阀
 	{
 		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
 	}
-	m_nowRegNo = m_portsetinfo.regflow2No;
+	m_nowRegNo = m_portsetinfo.regMid1No;
 }
 
 void DataTestDlg::on_btnValveMiddle2_clicked() //中流二阀
@@ -604,14 +604,14 @@ void DataTestDlg::on_btnSetFreq_clicked()
 //调节阀
 void DataTestDlg::on_btnRegulate1_clicked() //调节阀1
 {
-	m_nowRegNo = m_portsetinfo.regflow1No;
+	m_nowRegNo = m_portsetinfo.regSmallNo;
 	setRegBtnBackColor(m_regBtn[m_nowRegNo], false); //初始化调节阀背景色
 	m_controlObj->askControlRegulate(m_nowRegNo, ui.spinBoxValveOpening->value());
 }
 
 void DataTestDlg::on_btnRegulate2_clicked() //调节阀2
 {
-	m_nowRegNo = m_portsetinfo.regflow2No;
+	m_nowRegNo = m_portsetinfo.regMid1No;
 	setRegBtnBackColor(m_regBtn[m_nowRegNo], false); //初始化调节阀背景色
 	m_controlObj->askControlRegulate(m_nowRegNo, ui.spinBoxValveOpening2->value());
 }
