@@ -199,6 +199,7 @@ enum table_columns
 
 #define REGULATE_OPEN_TIME	100  //电动调节阀打开（开度从0至100）所需要的时间，单位：秒
 #define REGULATE_CLOSE_TIME	50   //电动调节阀关闭（开度从100至0）所需要的时间，单位：秒
+#define REGULATE_FRESH_TIME 1000 //电动调节阀开度界面刷新周期，单位：毫秒
 
 /*
 ** FUNCTION -- 获取下位机端口设置信息(portset.ini文件)
