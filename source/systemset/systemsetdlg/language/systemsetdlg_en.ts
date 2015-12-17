@@ -85,25 +85,25 @@
 <context>
     <name>ParaSetDlg</name>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="388"/>
-        <location filename="../source/parasetdlg.cpp" line="395"/>
+        <location filename="../source/parasetdlg.cpp" line="519"/>
+        <location filename="../source/parasetdlg.cpp" line="526"/>
         <source>Warning</source>
         <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="388"/>
+        <location filename="../source/parasetdlg.cpp" line="519"/>
         <source>verify sequence is invalid!</source>
         <translation>verify sequence is invalid!</translation>
     </message>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="395"/>
+        <location filename="../source/parasetdlg.cpp" line="526"/>
         <source>verify QUANTITY is invalid!
 Please check each flow point&apos;s quantity</source>
         <translation>verify QUANTITY is invalid!
 Please check each flow point&apos;s quantity</translation>
     </message>
     <message>
-        <location filename="../source/parasetdlg.cpp" line="422"/>
+        <location filename="../source/parasetdlg.cpp" line="557"/>
         <source>Save successfully!</source>
         <translation>Save successfully!</translation>
     </message>
@@ -120,7 +120,7 @@ Please check each flow point&apos;s quantity</translation>
     <name>ParaSetDlgClass</name>
     <message>
         <location filename="../ui/parasetdlg.ui" line="17"/>
-        <location filename="../ui/parasetdlg.ui" line="554"/>
+        <location filename="../ui/parasetdlg.ui" line="763"/>
         <source>ParaSet</source>
         <translation>ParaSet</translation>
     </message>
@@ -146,6 +146,7 @@ Please check each flow point&apos;s quantity</translation>
     </message>
     <message>
         <location filename="../ui/parasetdlg.ui" line="89"/>
+        <location filename="../ui/parasetdlg.ui" line="422"/>
         <source>1</source>
         <translation>1</translation>
     </message>
@@ -165,7 +166,95 @@ Please check each flow point&apos;s quantity</translation>
         <translation>VerifyPerson:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1418"/>
+        <location filename="../ui/parasetdlg.ui" line="160"/>
+        <source>6.0</source>
+        <translation type="unfinished">6.0</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="170"/>
+        <source>15</source>
+        <translation type="unfinished">15</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="333"/>
+        <source>WaterPara</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="347"/>
+        <source>Q3/Q1:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="355"/>
+        <source>40</source>
+        <translation type="unfinished">40</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="365"/>
+        <source>63</source>
+        <translation type="unfinished">63</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="370"/>
+        <source>80</source>
+        <translation type="unfinished">80</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="375"/>
+        <source>100</source>
+        <translation type="unfinished">100</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="380"/>
+        <source>125</source>
+        <translation type="unfinished">125</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="414"/>
+        <source>Q3:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="427"/>
+        <location filename="../ui/parasetdlg.ui" line="499"/>
+        <source>1.6</source>
+        <translation type="unfinished">1.6</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="437"/>
+        <location filename="../ui/parasetdlg.ui" line="509"/>
+        <source>4</source>
+        <translation type="unfinished">4</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="442"/>
+        <location filename="../ui/parasetdlg.ui" line="514"/>
+        <source>6.3</source>
+        <translation type="unfinished">6.3</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="452"/>
+        <source>16</source>
+        <translation type="unfinished">16</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="457"/>
+        <source>25</source>
+        <translation type="unfinished">25</translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="491"/>
+        <source>Q2/Q1:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="1224"/>
+        <source>Open(%):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/parasetdlg.ui" line="1713"/>
         <source>Continuous Verify</source>
         <translation>Continuous Verify</translation>
     </message>
@@ -174,7 +263,7 @@ Please check each flow point&apos;s quantity</translation>
         <translation type="obsolete">Total Verify</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1561"/>
+        <location filename="../ui/parasetdlg.ui" line="1872"/>
         <source>Flow:</source>
         <translation>Flow:</translation>
     </message>
@@ -185,7 +274,9 @@ Please check each flow point&apos;s quantity</translation>
     </message>
     <message>
         <location filename="../ui/parasetdlg.ui" line="150"/>
-        <location filename="../ui/parasetdlg.ui" line="567"/>
+        <location filename="../ui/parasetdlg.ui" line="432"/>
+        <location filename="../ui/parasetdlg.ui" line="504"/>
+        <location filename="../ui/parasetdlg.ui" line="776"/>
         <source>2.5</source>
         <translation>2.5</translation>
     </message>
@@ -195,17 +286,17 @@ Please check each flow point&apos;s quantity</translation>
         <translation>3.5</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="169"/>
+        <location filename="../ui/parasetdlg.ui" line="184"/>
         <source>ColCode:</source>
         <translation>ColCode:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="189"/>
+        <location filename="../ui/parasetdlg.ui" line="204"/>
         <source>ManuFact:</source>
         <translation>ManuFact:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="209"/>
+        <location filename="../ui/parasetdlg.ui" line="224"/>
         <source>VerifyDept:</source>
         <translation>VerifyDept:</translation>
     </message>
@@ -214,126 +305,129 @@ Please check each flow point&apos;s quantity</translation>
         <translation type="obsolete">Version:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="234"/>
+        <location filename="../ui/parasetdlg.ui" line="249"/>
         <source>Temper:</source>
         <translation>Temper:</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/parasetdlg.ui" line="251"/>
+        <location filename="../ui/parasetdlg.ui" line="266"/>
         <source>℃</source>
         <translation>℃</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="258"/>
+        <location filename="../ui/parasetdlg.ui" line="273"/>
         <source>Humidity:</source>
         <translation>Humidity:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="275"/>
+        <location filename="../ui/parasetdlg.ui" line="290"/>
         <source>%</source>
         <translation>%</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="282"/>
+        <location filename="../ui/parasetdlg.ui" line="297"/>
         <source>AirPress:</source>
         <translation>AirPress:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="299"/>
+        <location filename="../ui/parasetdlg.ui" line="314"/>
         <source>kPa</source>
         <translation>kPa</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="324"/>
+        <location filename="../ui/parasetdlg.ui" line="533"/>
         <source>Control Valve Set</source>
         <translation>Control Valve Set</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/parasetdlg.ui" line="336"/>
+        <location filename="../ui/parasetdlg.ui" line="545"/>
         <source>UpLimit(m³/h): </source>
         <translation>UpLimit(m³/h):</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="351"/>
+        <location filename="../ui/parasetdlg.ui" line="560"/>
         <source>Big</source>
         <translation>Big</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="480"/>
+        <location filename="../ui/parasetdlg.ui" line="689"/>
         <source>Middle1</source>
         <translation>Middle1</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="397"/>
+        <location filename="../ui/parasetdlg.ui" line="606"/>
         <source>Middle2</source>
         <translation>Middle2</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="526"/>
+        <location filename="../ui/parasetdlg.ui" line="735"/>
         <source>Small</source>
         <translation>Small</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/parasetdlg.ui" line="560"/>
+        <location filename="../ui/parasetdlg.ui" line="769"/>
         <source>Flow(m³/h):</source>
         <translation>Flow(m³/h):</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="590"/>
+        <location filename="../ui/parasetdlg.ui" line="799"/>
         <source>0.75</source>
         <translation>0.75</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="613"/>
+        <location filename="../ui/parasetdlg.ui" line="822"/>
         <source>0.25</source>
         <translation>0.25</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="636"/>
+        <location filename="../ui/parasetdlg.ui" line="845"/>
         <source>0.05</source>
         <translation>0.05</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="653"/>
+        <location filename="../ui/parasetdlg.ui" line="360"/>
+        <location filename="../ui/parasetdlg.ui" line="862"/>
         <source>50</source>
         <translation>50</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="676"/>
+        <location filename="../ui/parasetdlg.ui" line="885"/>
         <source>20</source>
         <translation>20</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="699"/>
+        <location filename="../ui/parasetdlg.ui" line="165"/>
+        <location filename="../ui/parasetdlg.ui" line="447"/>
+        <location filename="../ui/parasetdlg.ui" line="908"/>
         <source>10</source>
         <translation>10</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="722"/>
+        <location filename="../ui/parasetdlg.ui" line="931"/>
         <source>5</source>
         <translation>5</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="769"/>
-        <location filename="../ui/parasetdlg.ui" line="842"/>
-        <location filename="../ui/parasetdlg.ui" line="915"/>
-        <location filename="../ui/parasetdlg.ui" line="988"/>
+        <location filename="../ui/parasetdlg.ui" line="978"/>
+        <location filename="../ui/parasetdlg.ui" line="1051"/>
+        <location filename="../ui/parasetdlg.ui" line="1124"/>
+        <location filename="../ui/parasetdlg.ui" line="1197"/>
         <source>   Big</source>
         <translation>   Big</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="783"/>
-        <location filename="../ui/parasetdlg.ui" line="856"/>
-        <location filename="../ui/parasetdlg.ui" line="929"/>
-        <location filename="../ui/parasetdlg.ui" line="1002"/>
+        <location filename="../ui/parasetdlg.ui" line="992"/>
+        <location filename="../ui/parasetdlg.ui" line="1065"/>
+        <location filename="../ui/parasetdlg.ui" line="1138"/>
+        <location filename="../ui/parasetdlg.ui" line="1211"/>
         <source>   Middle1</source>
         <translation>   Middle1</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="778"/>
-        <location filename="../ui/parasetdlg.ui" line="851"/>
-        <location filename="../ui/parasetdlg.ui" line="924"/>
-        <location filename="../ui/parasetdlg.ui" line="997"/>
+        <location filename="../ui/parasetdlg.ui" line="987"/>
+        <location filename="../ui/parasetdlg.ui" line="1060"/>
+        <location filename="../ui/parasetdlg.ui" line="1133"/>
+        <location filename="../ui/parasetdlg.ui" line="1206"/>
         <source>   Middle2</source>
         <translation>   Middle2</translation>
     </message>
@@ -343,126 +437,130 @@ Please check each flow point&apos;s quantity</translation>
         <translation>Normal Flow:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="227"/>
+        <location filename="../ui/parasetdlg.ui" line="242"/>
         <source>CheckPerson:</source>
         <translation>CheckPerson:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="788"/>
-        <location filename="../ui/parasetdlg.ui" line="861"/>
-        <location filename="../ui/parasetdlg.ui" line="934"/>
-        <location filename="../ui/parasetdlg.ui" line="1007"/>
+        <location filename="../ui/parasetdlg.ui" line="997"/>
+        <location filename="../ui/parasetdlg.ui" line="1070"/>
+        <location filename="../ui/parasetdlg.ui" line="1143"/>
+        <location filename="../ui/parasetdlg.ui" line="1216"/>
         <source>   Small</source>
         <translation>   Small</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1022"/>
+        <location filename="../ui/parasetdlg.ui" line="1231"/>
+        <location filename="../ui/parasetdlg.ui" line="1317"/>
         <source>35</source>
         <translation>35</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1045"/>
-        <location filename="../ui/parasetdlg.ui" line="1068"/>
-        <location filename="../ui/parasetdlg.ui" line="1091"/>
+        <location filename="../ui/parasetdlg.ui" line="1254"/>
+        <location filename="../ui/parasetdlg.ui" line="1277"/>
+        <location filename="../ui/parasetdlg.ui" line="1300"/>
+        <location filename="../ui/parasetdlg.ui" line="1340"/>
+        <location filename="../ui/parasetdlg.ui" line="1363"/>
+        <location filename="../ui/parasetdlg.ui" line="1386"/>
         <source>33</source>
         <translation>33</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1144"/>
-        <location filename="../ui/parasetdlg.ui" line="1199"/>
-        <location filename="../ui/parasetdlg.ui" line="1254"/>
-        <location filename="../ui/parasetdlg.ui" line="1306"/>
+        <location filename="../ui/parasetdlg.ui" line="1439"/>
+        <location filename="../ui/parasetdlg.ui" line="1494"/>
+        <location filename="../ui/parasetdlg.ui" line="1549"/>
+        <location filename="../ui/parasetdlg.ui" line="1601"/>
         <source>       1</source>
         <translation>       1</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1149"/>
-        <location filename="../ui/parasetdlg.ui" line="1204"/>
-        <location filename="../ui/parasetdlg.ui" line="1259"/>
-        <location filename="../ui/parasetdlg.ui" line="1311"/>
+        <location filename="../ui/parasetdlg.ui" line="1444"/>
+        <location filename="../ui/parasetdlg.ui" line="1499"/>
+        <location filename="../ui/parasetdlg.ui" line="1554"/>
+        <location filename="../ui/parasetdlg.ui" line="1606"/>
         <source>       2</source>
         <translation>       2</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1154"/>
-        <location filename="../ui/parasetdlg.ui" line="1209"/>
-        <location filename="../ui/parasetdlg.ui" line="1264"/>
-        <location filename="../ui/parasetdlg.ui" line="1316"/>
+        <location filename="../ui/parasetdlg.ui" line="1449"/>
+        <location filename="../ui/parasetdlg.ui" line="1504"/>
+        <location filename="../ui/parasetdlg.ui" line="1559"/>
+        <location filename="../ui/parasetdlg.ui" line="1611"/>
         <source>       3</source>
         <translation>       3</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1159"/>
-        <location filename="../ui/parasetdlg.ui" line="1214"/>
-        <location filename="../ui/parasetdlg.ui" line="1269"/>
-        <location filename="../ui/parasetdlg.ui" line="1321"/>
+        <location filename="../ui/parasetdlg.ui" line="1454"/>
+        <location filename="../ui/parasetdlg.ui" line="1509"/>
+        <location filename="../ui/parasetdlg.ui" line="1564"/>
+        <location filename="../ui/parasetdlg.ui" line="1616"/>
         <source>       4</source>
         <translation>       4</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="646"/>
+        <location filename="../ui/parasetdlg.ui" line="855"/>
         <source>Quantity(L):</source>
         <translation>Quantity(L):</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="732"/>
+        <location filename="../ui/parasetdlg.ui" line="941"/>
         <source>Valve:</source>
         <translation>Valve:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1015"/>
+        <location filename="../ui/parasetdlg.ui" line="1310"/>
         <source>Frequency:</source>
         <translation>Frequency:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1101"/>
+        <location filename="../ui/parasetdlg.ui" line="1396"/>
         <source>Order:</source>
         <translation>Frequency:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1376"/>
+        <location filename="../ui/parasetdlg.ui" line="1671"/>
         <source>Auto DA</source>
         <translation>Auto DA</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1340"/>
-        <location filename="../ui/parasetdlg.ui" line="1382"/>
-        <location filename="../ui/parasetdlg.ui" line="1431"/>
-        <location filename="../ui/parasetdlg.ui" line="1466"/>
-        <location filename="../ui/parasetdlg.ui" line="1503"/>
+        <location filename="../ui/parasetdlg.ui" line="1635"/>
+        <location filename="../ui/parasetdlg.ui" line="1677"/>
+        <location filename="../ui/parasetdlg.ui" line="1726"/>
+        <location filename="../ui/parasetdlg.ui" line="1761"/>
+        <location filename="../ui/parasetdlg.ui" line="1814"/>
         <source>Yes</source>
         <translation>Yes</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1350"/>
-        <location filename="../ui/parasetdlg.ui" line="1392"/>
-        <location filename="../ui/parasetdlg.ui" line="1424"/>
+        <location filename="../ui/parasetdlg.ui" line="1645"/>
+        <location filename="../ui/parasetdlg.ui" line="1687"/>
+        <location filename="../ui/parasetdlg.ui" line="1719"/>
         <source>No</source>
         <translation>No</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1460"/>
+        <location filename="../ui/parasetdlg.ui" line="1755"/>
         <source>Adjust Error</source>
         <translation>Adjust Error</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1476"/>
-        <location filename="../ui/parasetdlg.ui" line="1513"/>
+        <location filename="../ui/parasetdlg.ui" line="1771"/>
+        <location filename="../ui/parasetdlg.ui" line="1824"/>
         <source>NO</source>
         <translation>NO</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1486"/>
+        <location filename="../ui/parasetdlg.ui" line="1797"/>
         <source>Repeat</source>
         <translation>Repeat</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1497"/>
+        <location filename="../ui/parasetdlg.ui" line="1808"/>
         <source>Write MeterNo</source>
         <translation>Write MeterNo</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1334"/>
+        <location filename="../ui/parasetdlg.ui" line="1629"/>
         <source>Reset Zero</source>
         <translation>Reset Zero</translation>
     </message>
@@ -479,32 +577,32 @@ Please check each flow point&apos;s quantity</translation>
         <translation type="obsolete">Independent</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1555"/>
+        <location filename="../ui/parasetdlg.ui" line="1866"/>
         <source>Coefficient of Safety</source>
         <translation>Coefficient of Safety</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1594"/>
+        <location filename="../ui/parasetdlg.ui" line="1905"/>
         <source>Total:</source>
         <translation>Total:</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1633"/>
+        <location filename="../ui/parasetdlg.ui" line="1944"/>
         <source>Exhaust Time</source>
         <translation>Exhaust Time</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1695"/>
+        <location filename="../ui/parasetdlg.ui" line="2006"/>
         <source>s</source>
         <translation>s</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1738"/>
+        <location filename="../ui/parasetdlg.ui" line="2061"/>
         <source>Save</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="../ui/parasetdlg.ui" line="1751"/>
+        <location filename="../ui/parasetdlg.ui" line="2074"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
@@ -512,12 +610,12 @@ Please check each flow point&apos;s quantity</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../source/setcomdlg.cpp" line="59"/>
+        <location filename="../source/setcomdlg.cpp" line="66"/>
         <source>Standard</source>
         <translation>Standard</translation>
     </message>
     <message>
-        <location filename="../source/setcomdlg.cpp" line="60"/>
+        <location filename="../source/setcomdlg.cpp" line="67"/>
         <source>Quantity</source>
         <translation>Quantity</translation>
     </message>
@@ -604,12 +702,12 @@ Please check each flow point&apos;s quantity</translation>
 <context>
     <name>SetComDlg</name>
     <message>
-        <location filename="../source/setcomdlg.cpp" line="103"/>
+        <location filename="../source/setcomdlg.cpp" line="113"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../source/setcomdlg.cpp" line="103"/>
+        <location filename="../source/setcomdlg.cpp" line="113"/>
         <source>Save Settings Successfully !</source>
         <translation>Save Settings Successfully !</translation>
     </message>
@@ -630,9 +728,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="39"/>
         <location filename="../ui/setcomdlg.ui" line="344"/>
         <location filename="../ui/setcomdlg.ui" line="649"/>
-        <location filename="../ui/setcomdlg.ui" line="1091"/>
+        <location filename="../ui/setcomdlg.ui" line="954"/>
         <location filename="../ui/setcomdlg.ui" line="1396"/>
         <location filename="../ui/setcomdlg.ui" line="1701"/>
+        <location filename="../ui/setcomdlg.ui" line="2006"/>
+        <location filename="../ui/setcomdlg.ui" line="2311"/>
         <source>Com</source>
         <translation>Com</translation>
     </message>
@@ -640,9 +740,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="47"/>
         <location filename="../ui/setcomdlg.ui" line="352"/>
         <location filename="../ui/setcomdlg.ui" line="657"/>
-        <location filename="../ui/setcomdlg.ui" line="1099"/>
+        <location filename="../ui/setcomdlg.ui" line="962"/>
         <location filename="../ui/setcomdlg.ui" line="1404"/>
         <location filename="../ui/setcomdlg.ui" line="1709"/>
+        <location filename="../ui/setcomdlg.ui" line="2014"/>
+        <location filename="../ui/setcomdlg.ui" line="2319"/>
         <source>COM1</source>
         <translation>COM1</translation>
     </message>
@@ -650,9 +752,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="52"/>
         <location filename="../ui/setcomdlg.ui" line="357"/>
         <location filename="../ui/setcomdlg.ui" line="662"/>
-        <location filename="../ui/setcomdlg.ui" line="1104"/>
+        <location filename="../ui/setcomdlg.ui" line="967"/>
         <location filename="../ui/setcomdlg.ui" line="1409"/>
         <location filename="../ui/setcomdlg.ui" line="1714"/>
+        <location filename="../ui/setcomdlg.ui" line="2019"/>
+        <location filename="../ui/setcomdlg.ui" line="2324"/>
         <source>COM2</source>
         <translation>COM2</translation>
     </message>
@@ -660,9 +764,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="57"/>
         <location filename="../ui/setcomdlg.ui" line="362"/>
         <location filename="../ui/setcomdlg.ui" line="667"/>
-        <location filename="../ui/setcomdlg.ui" line="1109"/>
+        <location filename="../ui/setcomdlg.ui" line="972"/>
         <location filename="../ui/setcomdlg.ui" line="1414"/>
         <location filename="../ui/setcomdlg.ui" line="1719"/>
+        <location filename="../ui/setcomdlg.ui" line="2024"/>
+        <location filename="../ui/setcomdlg.ui" line="2329"/>
         <source>COM3</source>
         <translation>COM3</translation>
     </message>
@@ -670,9 +776,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="62"/>
         <location filename="../ui/setcomdlg.ui" line="367"/>
         <location filename="../ui/setcomdlg.ui" line="672"/>
-        <location filename="../ui/setcomdlg.ui" line="1114"/>
+        <location filename="../ui/setcomdlg.ui" line="977"/>
         <location filename="../ui/setcomdlg.ui" line="1419"/>
         <location filename="../ui/setcomdlg.ui" line="1724"/>
+        <location filename="../ui/setcomdlg.ui" line="2029"/>
+        <location filename="../ui/setcomdlg.ui" line="2334"/>
         <source>COM4</source>
         <translation>COM4</translation>
     </message>
@@ -680,9 +788,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="67"/>
         <location filename="../ui/setcomdlg.ui" line="372"/>
         <location filename="../ui/setcomdlg.ui" line="677"/>
-        <location filename="../ui/setcomdlg.ui" line="1119"/>
+        <location filename="../ui/setcomdlg.ui" line="982"/>
         <location filename="../ui/setcomdlg.ui" line="1424"/>
         <location filename="../ui/setcomdlg.ui" line="1729"/>
+        <location filename="../ui/setcomdlg.ui" line="2034"/>
+        <location filename="../ui/setcomdlg.ui" line="2339"/>
         <source>COM5</source>
         <translation>COM5</translation>
     </message>
@@ -690,9 +800,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="72"/>
         <location filename="../ui/setcomdlg.ui" line="377"/>
         <location filename="../ui/setcomdlg.ui" line="682"/>
-        <location filename="../ui/setcomdlg.ui" line="1124"/>
+        <location filename="../ui/setcomdlg.ui" line="987"/>
         <location filename="../ui/setcomdlg.ui" line="1429"/>
         <location filename="../ui/setcomdlg.ui" line="1734"/>
+        <location filename="../ui/setcomdlg.ui" line="2039"/>
+        <location filename="../ui/setcomdlg.ui" line="2344"/>
         <source>COM6</source>
         <translation>COM6</translation>
     </message>
@@ -700,9 +812,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="77"/>
         <location filename="../ui/setcomdlg.ui" line="382"/>
         <location filename="../ui/setcomdlg.ui" line="687"/>
-        <location filename="../ui/setcomdlg.ui" line="1129"/>
+        <location filename="../ui/setcomdlg.ui" line="992"/>
         <location filename="../ui/setcomdlg.ui" line="1434"/>
         <location filename="../ui/setcomdlg.ui" line="1739"/>
+        <location filename="../ui/setcomdlg.ui" line="2044"/>
+        <location filename="../ui/setcomdlg.ui" line="2349"/>
         <source>COM7</source>
         <translation>COM7</translation>
     </message>
@@ -710,9 +824,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="82"/>
         <location filename="../ui/setcomdlg.ui" line="387"/>
         <location filename="../ui/setcomdlg.ui" line="692"/>
-        <location filename="../ui/setcomdlg.ui" line="1134"/>
+        <location filename="../ui/setcomdlg.ui" line="997"/>
         <location filename="../ui/setcomdlg.ui" line="1439"/>
         <location filename="../ui/setcomdlg.ui" line="1744"/>
+        <location filename="../ui/setcomdlg.ui" line="2049"/>
+        <location filename="../ui/setcomdlg.ui" line="2354"/>
         <source>COM8</source>
         <translation>COM8</translation>
     </message>
@@ -720,9 +836,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="87"/>
         <location filename="../ui/setcomdlg.ui" line="392"/>
         <location filename="../ui/setcomdlg.ui" line="697"/>
-        <location filename="../ui/setcomdlg.ui" line="1139"/>
+        <location filename="../ui/setcomdlg.ui" line="1002"/>
         <location filename="../ui/setcomdlg.ui" line="1444"/>
         <location filename="../ui/setcomdlg.ui" line="1749"/>
+        <location filename="../ui/setcomdlg.ui" line="2054"/>
+        <location filename="../ui/setcomdlg.ui" line="2359"/>
         <source>COM9</source>
         <translation>COM9</translation>
     </message>
@@ -730,9 +848,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="92"/>
         <location filename="../ui/setcomdlg.ui" line="397"/>
         <location filename="../ui/setcomdlg.ui" line="702"/>
-        <location filename="../ui/setcomdlg.ui" line="1144"/>
+        <location filename="../ui/setcomdlg.ui" line="1007"/>
         <location filename="../ui/setcomdlg.ui" line="1449"/>
         <location filename="../ui/setcomdlg.ui" line="1754"/>
+        <location filename="../ui/setcomdlg.ui" line="2059"/>
+        <location filename="../ui/setcomdlg.ui" line="2364"/>
         <source>COM10</source>
         <translation>COM10</translation>
     </message>
@@ -740,9 +860,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="97"/>
         <location filename="../ui/setcomdlg.ui" line="402"/>
         <location filename="../ui/setcomdlg.ui" line="707"/>
-        <location filename="../ui/setcomdlg.ui" line="1149"/>
+        <location filename="../ui/setcomdlg.ui" line="1012"/>
         <location filename="../ui/setcomdlg.ui" line="1454"/>
         <location filename="../ui/setcomdlg.ui" line="1759"/>
+        <location filename="../ui/setcomdlg.ui" line="2064"/>
+        <location filename="../ui/setcomdlg.ui" line="2369"/>
         <source>COM11</source>
         <translation>COM11</translation>
     </message>
@@ -750,9 +872,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="102"/>
         <location filename="../ui/setcomdlg.ui" line="407"/>
         <location filename="../ui/setcomdlg.ui" line="712"/>
-        <location filename="../ui/setcomdlg.ui" line="1154"/>
+        <location filename="../ui/setcomdlg.ui" line="1017"/>
         <location filename="../ui/setcomdlg.ui" line="1459"/>
         <location filename="../ui/setcomdlg.ui" line="1764"/>
+        <location filename="../ui/setcomdlg.ui" line="2069"/>
+        <location filename="../ui/setcomdlg.ui" line="2374"/>
         <source>COM12</source>
         <translation>COM12</translation>
     </message>
@@ -760,9 +884,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="107"/>
         <location filename="../ui/setcomdlg.ui" line="412"/>
         <location filename="../ui/setcomdlg.ui" line="717"/>
-        <location filename="../ui/setcomdlg.ui" line="1159"/>
+        <location filename="../ui/setcomdlg.ui" line="1022"/>
         <location filename="../ui/setcomdlg.ui" line="1464"/>
         <location filename="../ui/setcomdlg.ui" line="1769"/>
+        <location filename="../ui/setcomdlg.ui" line="2074"/>
+        <location filename="../ui/setcomdlg.ui" line="2379"/>
         <source>COM13</source>
         <translation>COM13</translation>
     </message>
@@ -770,9 +896,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="112"/>
         <location filename="../ui/setcomdlg.ui" line="417"/>
         <location filename="../ui/setcomdlg.ui" line="722"/>
-        <location filename="../ui/setcomdlg.ui" line="1164"/>
+        <location filename="../ui/setcomdlg.ui" line="1027"/>
         <location filename="../ui/setcomdlg.ui" line="1469"/>
         <location filename="../ui/setcomdlg.ui" line="1774"/>
+        <location filename="../ui/setcomdlg.ui" line="2079"/>
+        <location filename="../ui/setcomdlg.ui" line="2384"/>
         <source>COM14</source>
         <translation>COM14</translation>
     </message>
@@ -780,9 +908,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="117"/>
         <location filename="../ui/setcomdlg.ui" line="422"/>
         <location filename="../ui/setcomdlg.ui" line="727"/>
-        <location filename="../ui/setcomdlg.ui" line="1169"/>
+        <location filename="../ui/setcomdlg.ui" line="1032"/>
         <location filename="../ui/setcomdlg.ui" line="1474"/>
         <location filename="../ui/setcomdlg.ui" line="1779"/>
+        <location filename="../ui/setcomdlg.ui" line="2084"/>
+        <location filename="../ui/setcomdlg.ui" line="2389"/>
         <source>COM15</source>
         <translation>COM15</translation>
     </message>
@@ -790,9 +920,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="122"/>
         <location filename="../ui/setcomdlg.ui" line="427"/>
         <location filename="../ui/setcomdlg.ui" line="732"/>
-        <location filename="../ui/setcomdlg.ui" line="1174"/>
+        <location filename="../ui/setcomdlg.ui" line="1037"/>
         <location filename="../ui/setcomdlg.ui" line="1479"/>
         <location filename="../ui/setcomdlg.ui" line="1784"/>
+        <location filename="../ui/setcomdlg.ui" line="2089"/>
+        <location filename="../ui/setcomdlg.ui" line="2394"/>
         <source>COM16</source>
         <translation>COM16</translation>
     </message>
@@ -800,9 +932,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="127"/>
         <location filename="../ui/setcomdlg.ui" line="432"/>
         <location filename="../ui/setcomdlg.ui" line="737"/>
-        <location filename="../ui/setcomdlg.ui" line="1179"/>
+        <location filename="../ui/setcomdlg.ui" line="1042"/>
         <location filename="../ui/setcomdlg.ui" line="1484"/>
         <location filename="../ui/setcomdlg.ui" line="1789"/>
+        <location filename="../ui/setcomdlg.ui" line="2094"/>
+        <location filename="../ui/setcomdlg.ui" line="2399"/>
         <source>COM17</source>
         <translation>COM17</translation>
     </message>
@@ -810,9 +944,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="132"/>
         <location filename="../ui/setcomdlg.ui" line="437"/>
         <location filename="../ui/setcomdlg.ui" line="742"/>
-        <location filename="../ui/setcomdlg.ui" line="1184"/>
+        <location filename="../ui/setcomdlg.ui" line="1047"/>
         <location filename="../ui/setcomdlg.ui" line="1489"/>
         <location filename="../ui/setcomdlg.ui" line="1794"/>
+        <location filename="../ui/setcomdlg.ui" line="2099"/>
+        <location filename="../ui/setcomdlg.ui" line="2404"/>
         <source>COM18</source>
         <translation>COM18</translation>
     </message>
@@ -820,9 +956,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="137"/>
         <location filename="../ui/setcomdlg.ui" line="442"/>
         <location filename="../ui/setcomdlg.ui" line="747"/>
-        <location filename="../ui/setcomdlg.ui" line="1189"/>
+        <location filename="../ui/setcomdlg.ui" line="1052"/>
         <location filename="../ui/setcomdlg.ui" line="1494"/>
         <location filename="../ui/setcomdlg.ui" line="1799"/>
+        <location filename="../ui/setcomdlg.ui" line="2104"/>
+        <location filename="../ui/setcomdlg.ui" line="2409"/>
         <source>COM19</source>
         <translation>COM19</translation>
     </message>
@@ -830,9 +968,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="142"/>
         <location filename="../ui/setcomdlg.ui" line="447"/>
         <location filename="../ui/setcomdlg.ui" line="752"/>
-        <location filename="../ui/setcomdlg.ui" line="1194"/>
+        <location filename="../ui/setcomdlg.ui" line="1057"/>
         <location filename="../ui/setcomdlg.ui" line="1499"/>
         <location filename="../ui/setcomdlg.ui" line="1804"/>
+        <location filename="../ui/setcomdlg.ui" line="2109"/>
+        <location filename="../ui/setcomdlg.ui" line="2414"/>
         <source>COM20</source>
         <translation>COM20</translation>
     </message>
@@ -840,9 +980,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="147"/>
         <location filename="../ui/setcomdlg.ui" line="452"/>
         <location filename="../ui/setcomdlg.ui" line="757"/>
-        <location filename="../ui/setcomdlg.ui" line="1199"/>
+        <location filename="../ui/setcomdlg.ui" line="1062"/>
         <location filename="../ui/setcomdlg.ui" line="1504"/>
         <location filename="../ui/setcomdlg.ui" line="1809"/>
+        <location filename="../ui/setcomdlg.ui" line="2114"/>
+        <location filename="../ui/setcomdlg.ui" line="2419"/>
         <source>COM21</source>
         <translation>COM21</translation>
     </message>
@@ -850,9 +992,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="152"/>
         <location filename="../ui/setcomdlg.ui" line="457"/>
         <location filename="../ui/setcomdlg.ui" line="762"/>
-        <location filename="../ui/setcomdlg.ui" line="1204"/>
+        <location filename="../ui/setcomdlg.ui" line="1067"/>
         <location filename="../ui/setcomdlg.ui" line="1509"/>
         <location filename="../ui/setcomdlg.ui" line="1814"/>
+        <location filename="../ui/setcomdlg.ui" line="2119"/>
+        <location filename="../ui/setcomdlg.ui" line="2424"/>
         <source>COM22</source>
         <translation>COM22</translation>
     </message>
@@ -860,9 +1004,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="157"/>
         <location filename="../ui/setcomdlg.ui" line="462"/>
         <location filename="../ui/setcomdlg.ui" line="767"/>
-        <location filename="../ui/setcomdlg.ui" line="1209"/>
+        <location filename="../ui/setcomdlg.ui" line="1072"/>
         <location filename="../ui/setcomdlg.ui" line="1514"/>
         <location filename="../ui/setcomdlg.ui" line="1819"/>
+        <location filename="../ui/setcomdlg.ui" line="2124"/>
+        <location filename="../ui/setcomdlg.ui" line="2429"/>
         <source>COM23</source>
         <translation>COM23</translation>
     </message>
@@ -870,9 +1016,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="162"/>
         <location filename="../ui/setcomdlg.ui" line="467"/>
         <location filename="../ui/setcomdlg.ui" line="772"/>
-        <location filename="../ui/setcomdlg.ui" line="1214"/>
+        <location filename="../ui/setcomdlg.ui" line="1077"/>
         <location filename="../ui/setcomdlg.ui" line="1519"/>
         <location filename="../ui/setcomdlg.ui" line="1824"/>
+        <location filename="../ui/setcomdlg.ui" line="2129"/>
+        <location filename="../ui/setcomdlg.ui" line="2434"/>
         <source>COM24</source>
         <translation>COM24</translation>
     </message>
@@ -880,9 +1028,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="167"/>
         <location filename="../ui/setcomdlg.ui" line="472"/>
         <location filename="../ui/setcomdlg.ui" line="777"/>
-        <location filename="../ui/setcomdlg.ui" line="1219"/>
+        <location filename="../ui/setcomdlg.ui" line="1082"/>
         <location filename="../ui/setcomdlg.ui" line="1524"/>
         <location filename="../ui/setcomdlg.ui" line="1829"/>
+        <location filename="../ui/setcomdlg.ui" line="2134"/>
+        <location filename="../ui/setcomdlg.ui" line="2439"/>
         <source>COM25</source>
         <translation>COM25</translation>
     </message>
@@ -890,9 +1040,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="172"/>
         <location filename="../ui/setcomdlg.ui" line="477"/>
         <location filename="../ui/setcomdlg.ui" line="782"/>
-        <location filename="../ui/setcomdlg.ui" line="1224"/>
+        <location filename="../ui/setcomdlg.ui" line="1087"/>
         <location filename="../ui/setcomdlg.ui" line="1529"/>
         <location filename="../ui/setcomdlg.ui" line="1834"/>
+        <location filename="../ui/setcomdlg.ui" line="2139"/>
+        <location filename="../ui/setcomdlg.ui" line="2444"/>
         <source>COM26</source>
         <translation>COM26</translation>
     </message>
@@ -900,9 +1052,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="177"/>
         <location filename="../ui/setcomdlg.ui" line="482"/>
         <location filename="../ui/setcomdlg.ui" line="787"/>
-        <location filename="../ui/setcomdlg.ui" line="1229"/>
+        <location filename="../ui/setcomdlg.ui" line="1092"/>
         <location filename="../ui/setcomdlg.ui" line="1534"/>
         <location filename="../ui/setcomdlg.ui" line="1839"/>
+        <location filename="../ui/setcomdlg.ui" line="2144"/>
+        <location filename="../ui/setcomdlg.ui" line="2449"/>
         <source>COM27</source>
         <translation>COM27</translation>
     </message>
@@ -910,9 +1064,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="182"/>
         <location filename="../ui/setcomdlg.ui" line="487"/>
         <location filename="../ui/setcomdlg.ui" line="792"/>
-        <location filename="../ui/setcomdlg.ui" line="1234"/>
+        <location filename="../ui/setcomdlg.ui" line="1097"/>
         <location filename="../ui/setcomdlg.ui" line="1539"/>
         <location filename="../ui/setcomdlg.ui" line="1844"/>
+        <location filename="../ui/setcomdlg.ui" line="2149"/>
+        <location filename="../ui/setcomdlg.ui" line="2454"/>
         <source>COM28</source>
         <translation>COM28</translation>
     </message>
@@ -920,9 +1076,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="187"/>
         <location filename="../ui/setcomdlg.ui" line="492"/>
         <location filename="../ui/setcomdlg.ui" line="797"/>
-        <location filename="../ui/setcomdlg.ui" line="1239"/>
+        <location filename="../ui/setcomdlg.ui" line="1102"/>
         <location filename="../ui/setcomdlg.ui" line="1544"/>
         <location filename="../ui/setcomdlg.ui" line="1849"/>
+        <location filename="../ui/setcomdlg.ui" line="2154"/>
+        <location filename="../ui/setcomdlg.ui" line="2459"/>
         <source>COM29</source>
         <translation>COM29</translation>
     </message>
@@ -930,9 +1088,11 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="192"/>
         <location filename="../ui/setcomdlg.ui" line="497"/>
         <location filename="../ui/setcomdlg.ui" line="802"/>
-        <location filename="../ui/setcomdlg.ui" line="1244"/>
+        <location filename="../ui/setcomdlg.ui" line="1107"/>
         <location filename="../ui/setcomdlg.ui" line="1549"/>
         <location filename="../ui/setcomdlg.ui" line="1854"/>
+        <location filename="../ui/setcomdlg.ui" line="2159"/>
+        <location filename="../ui/setcomdlg.ui" line="2464"/>
         <source>COM30</source>
         <translation>COM30</translation>
     </message>
@@ -940,10 +1100,12 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="200"/>
         <location filename="../ui/setcomdlg.ui" line="505"/>
         <location filename="../ui/setcomdlg.ui" line="810"/>
-        <location filename="../ui/setcomdlg.ui" line="1252"/>
+        <location filename="../ui/setcomdlg.ui" line="1115"/>
         <location filename="../ui/setcomdlg.ui" line="1557"/>
         <location filename="../ui/setcomdlg.ui" line="1862"/>
-        <location filename="../ui/setcomdlg.ui" line="2026"/>
+        <location filename="../ui/setcomdlg.ui" line="2167"/>
+        <location filename="../ui/setcomdlg.ui" line="2472"/>
+        <location filename="../ui/setcomdlg.ui" line="2761"/>
         <source>BaudRate</source>
         <translation>BaudRate</translation>
     </message>
@@ -951,10 +1113,12 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="208"/>
         <location filename="../ui/setcomdlg.ui" line="513"/>
         <location filename="../ui/setcomdlg.ui" line="818"/>
-        <location filename="../ui/setcomdlg.ui" line="1260"/>
+        <location filename="../ui/setcomdlg.ui" line="1123"/>
         <location filename="../ui/setcomdlg.ui" line="1565"/>
         <location filename="../ui/setcomdlg.ui" line="1870"/>
-        <location filename="../ui/setcomdlg.ui" line="2034"/>
+        <location filename="../ui/setcomdlg.ui" line="2175"/>
+        <location filename="../ui/setcomdlg.ui" line="2480"/>
+        <location filename="../ui/setcomdlg.ui" line="2769"/>
         <source>2400</source>
         <translation>2400</translation>
     </message>
@@ -962,10 +1126,12 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="213"/>
         <location filename="../ui/setcomdlg.ui" line="518"/>
         <location filename="../ui/setcomdlg.ui" line="823"/>
-        <location filename="../ui/setcomdlg.ui" line="1265"/>
+        <location filename="../ui/setcomdlg.ui" line="1128"/>
         <location filename="../ui/setcomdlg.ui" line="1570"/>
         <location filename="../ui/setcomdlg.ui" line="1875"/>
-        <location filename="../ui/setcomdlg.ui" line="2039"/>
+        <location filename="../ui/setcomdlg.ui" line="2180"/>
+        <location filename="../ui/setcomdlg.ui" line="2485"/>
+        <location filename="../ui/setcomdlg.ui" line="2774"/>
         <source>4800</source>
         <translation>4800</translation>
     </message>
@@ -973,10 +1139,12 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="218"/>
         <location filename="../ui/setcomdlg.ui" line="523"/>
         <location filename="../ui/setcomdlg.ui" line="828"/>
-        <location filename="../ui/setcomdlg.ui" line="1270"/>
+        <location filename="../ui/setcomdlg.ui" line="1133"/>
         <location filename="../ui/setcomdlg.ui" line="1575"/>
         <location filename="../ui/setcomdlg.ui" line="1880"/>
-        <location filename="../ui/setcomdlg.ui" line="2044"/>
+        <location filename="../ui/setcomdlg.ui" line="2185"/>
+        <location filename="../ui/setcomdlg.ui" line="2490"/>
+        <location filename="../ui/setcomdlg.ui" line="2779"/>
         <source>9600</source>
         <translation>9600</translation>
     </message>
@@ -984,10 +1152,12 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="223"/>
         <location filename="../ui/setcomdlg.ui" line="528"/>
         <location filename="../ui/setcomdlg.ui" line="833"/>
-        <location filename="../ui/setcomdlg.ui" line="1275"/>
+        <location filename="../ui/setcomdlg.ui" line="1138"/>
         <location filename="../ui/setcomdlg.ui" line="1580"/>
         <location filename="../ui/setcomdlg.ui" line="1885"/>
-        <location filename="../ui/setcomdlg.ui" line="2049"/>
+        <location filename="../ui/setcomdlg.ui" line="2190"/>
+        <location filename="../ui/setcomdlg.ui" line="2495"/>
+        <location filename="../ui/setcomdlg.ui" line="2784"/>
         <source>14400</source>
         <translation>14400</translation>
     </message>
@@ -995,10 +1165,12 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="228"/>
         <location filename="../ui/setcomdlg.ui" line="533"/>
         <location filename="../ui/setcomdlg.ui" line="838"/>
-        <location filename="../ui/setcomdlg.ui" line="1280"/>
+        <location filename="../ui/setcomdlg.ui" line="1143"/>
         <location filename="../ui/setcomdlg.ui" line="1585"/>
         <location filename="../ui/setcomdlg.ui" line="1890"/>
-        <location filename="../ui/setcomdlg.ui" line="2054"/>
+        <location filename="../ui/setcomdlg.ui" line="2195"/>
+        <location filename="../ui/setcomdlg.ui" line="2500"/>
+        <location filename="../ui/setcomdlg.ui" line="2789"/>
         <source>19200</source>
         <translation>19200</translation>
     </message>
@@ -1006,10 +1178,12 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="233"/>
         <location filename="../ui/setcomdlg.ui" line="538"/>
         <location filename="../ui/setcomdlg.ui" line="843"/>
-        <location filename="../ui/setcomdlg.ui" line="1285"/>
+        <location filename="../ui/setcomdlg.ui" line="1148"/>
         <location filename="../ui/setcomdlg.ui" line="1590"/>
         <location filename="../ui/setcomdlg.ui" line="1895"/>
-        <location filename="../ui/setcomdlg.ui" line="2059"/>
+        <location filename="../ui/setcomdlg.ui" line="2200"/>
+        <location filename="../ui/setcomdlg.ui" line="2505"/>
+        <location filename="../ui/setcomdlg.ui" line="2794"/>
         <source>38400</source>
         <translation>38400</translation>
     </message>
@@ -1017,10 +1191,12 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="238"/>
         <location filename="../ui/setcomdlg.ui" line="543"/>
         <location filename="../ui/setcomdlg.ui" line="848"/>
-        <location filename="../ui/setcomdlg.ui" line="1290"/>
+        <location filename="../ui/setcomdlg.ui" line="1153"/>
         <location filename="../ui/setcomdlg.ui" line="1595"/>
         <location filename="../ui/setcomdlg.ui" line="1900"/>
-        <location filename="../ui/setcomdlg.ui" line="2064"/>
+        <location filename="../ui/setcomdlg.ui" line="2205"/>
+        <location filename="../ui/setcomdlg.ui" line="2510"/>
+        <location filename="../ui/setcomdlg.ui" line="2799"/>
         <source>56000</source>
         <translation>56000</translation>
     </message>
@@ -1028,10 +1204,12 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="246"/>
         <location filename="../ui/setcomdlg.ui" line="551"/>
         <location filename="../ui/setcomdlg.ui" line="856"/>
-        <location filename="../ui/setcomdlg.ui" line="1298"/>
+        <location filename="../ui/setcomdlg.ui" line="1161"/>
         <location filename="../ui/setcomdlg.ui" line="1603"/>
         <location filename="../ui/setcomdlg.ui" line="1908"/>
-        <location filename="../ui/setcomdlg.ui" line="2072"/>
+        <location filename="../ui/setcomdlg.ui" line="2213"/>
+        <location filename="../ui/setcomdlg.ui" line="2518"/>
+        <location filename="../ui/setcomdlg.ui" line="2807"/>
         <source>DataBits</source>
         <translation>DataBits</translation>
     </message>
@@ -1039,10 +1217,12 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="254"/>
         <location filename="../ui/setcomdlg.ui" line="559"/>
         <location filename="../ui/setcomdlg.ui" line="864"/>
-        <location filename="../ui/setcomdlg.ui" line="1306"/>
+        <location filename="../ui/setcomdlg.ui" line="1169"/>
         <location filename="../ui/setcomdlg.ui" line="1611"/>
         <location filename="../ui/setcomdlg.ui" line="1916"/>
-        <location filename="../ui/setcomdlg.ui" line="2080"/>
+        <location filename="../ui/setcomdlg.ui" line="2221"/>
+        <location filename="../ui/setcomdlg.ui" line="2526"/>
+        <location filename="../ui/setcomdlg.ui" line="2815"/>
         <source>5</source>
         <translation>5</translation>
     </message>
@@ -1050,10 +1230,12 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="259"/>
         <location filename="../ui/setcomdlg.ui" line="564"/>
         <location filename="../ui/setcomdlg.ui" line="869"/>
-        <location filename="../ui/setcomdlg.ui" line="1311"/>
+        <location filename="../ui/setcomdlg.ui" line="1174"/>
         <location filename="../ui/setcomdlg.ui" line="1616"/>
         <location filename="../ui/setcomdlg.ui" line="1921"/>
-        <location filename="../ui/setcomdlg.ui" line="2085"/>
+        <location filename="../ui/setcomdlg.ui" line="2226"/>
+        <location filename="../ui/setcomdlg.ui" line="2531"/>
+        <location filename="../ui/setcomdlg.ui" line="2820"/>
         <source>6</source>
         <translation>6</translation>
     </message>
@@ -1061,10 +1243,12 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="264"/>
         <location filename="../ui/setcomdlg.ui" line="569"/>
         <location filename="../ui/setcomdlg.ui" line="874"/>
-        <location filename="../ui/setcomdlg.ui" line="1316"/>
+        <location filename="../ui/setcomdlg.ui" line="1179"/>
         <location filename="../ui/setcomdlg.ui" line="1621"/>
         <location filename="../ui/setcomdlg.ui" line="1926"/>
-        <location filename="../ui/setcomdlg.ui" line="2090"/>
+        <location filename="../ui/setcomdlg.ui" line="2231"/>
+        <location filename="../ui/setcomdlg.ui" line="2536"/>
+        <location filename="../ui/setcomdlg.ui" line="2825"/>
         <source>7</source>
         <translation>7</translation>
     </message>
@@ -1072,10 +1256,12 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="269"/>
         <location filename="../ui/setcomdlg.ui" line="574"/>
         <location filename="../ui/setcomdlg.ui" line="879"/>
-        <location filename="../ui/setcomdlg.ui" line="1321"/>
+        <location filename="../ui/setcomdlg.ui" line="1184"/>
         <location filename="../ui/setcomdlg.ui" line="1626"/>
         <location filename="../ui/setcomdlg.ui" line="1931"/>
-        <location filename="../ui/setcomdlg.ui" line="2095"/>
+        <location filename="../ui/setcomdlg.ui" line="2236"/>
+        <location filename="../ui/setcomdlg.ui" line="2541"/>
+        <location filename="../ui/setcomdlg.ui" line="2830"/>
         <source>8</source>
         <translation>8</translation>
     </message>
@@ -1083,10 +1269,12 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="277"/>
         <location filename="../ui/setcomdlg.ui" line="582"/>
         <location filename="../ui/setcomdlg.ui" line="887"/>
-        <location filename="../ui/setcomdlg.ui" line="1329"/>
+        <location filename="../ui/setcomdlg.ui" line="1192"/>
         <location filename="../ui/setcomdlg.ui" line="1634"/>
         <location filename="../ui/setcomdlg.ui" line="1939"/>
-        <location filename="../ui/setcomdlg.ui" line="2103"/>
+        <location filename="../ui/setcomdlg.ui" line="2244"/>
+        <location filename="../ui/setcomdlg.ui" line="2549"/>
+        <location filename="../ui/setcomdlg.ui" line="2838"/>
         <source>Parity</source>
         <translation>Parity</translation>
     </message>
@@ -1094,10 +1282,12 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="285"/>
         <location filename="../ui/setcomdlg.ui" line="590"/>
         <location filename="../ui/setcomdlg.ui" line="895"/>
-        <location filename="../ui/setcomdlg.ui" line="1337"/>
+        <location filename="../ui/setcomdlg.ui" line="1200"/>
         <location filename="../ui/setcomdlg.ui" line="1642"/>
         <location filename="../ui/setcomdlg.ui" line="1947"/>
-        <location filename="../ui/setcomdlg.ui" line="2111"/>
+        <location filename="../ui/setcomdlg.ui" line="2252"/>
+        <location filename="../ui/setcomdlg.ui" line="2557"/>
+        <location filename="../ui/setcomdlg.ui" line="2846"/>
         <source>None</source>
         <translation>None</translation>
     </message>
@@ -1105,10 +1295,12 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="290"/>
         <location filename="../ui/setcomdlg.ui" line="595"/>
         <location filename="../ui/setcomdlg.ui" line="900"/>
-        <location filename="../ui/setcomdlg.ui" line="1342"/>
+        <location filename="../ui/setcomdlg.ui" line="1205"/>
         <location filename="../ui/setcomdlg.ui" line="1647"/>
         <location filename="../ui/setcomdlg.ui" line="1952"/>
-        <location filename="../ui/setcomdlg.ui" line="2116"/>
+        <location filename="../ui/setcomdlg.ui" line="2257"/>
+        <location filename="../ui/setcomdlg.ui" line="2562"/>
+        <location filename="../ui/setcomdlg.ui" line="2851"/>
         <source>Odd</source>
         <translation>Odd</translation>
     </message>
@@ -1116,10 +1308,12 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="295"/>
         <location filename="../ui/setcomdlg.ui" line="600"/>
         <location filename="../ui/setcomdlg.ui" line="905"/>
-        <location filename="../ui/setcomdlg.ui" line="1347"/>
+        <location filename="../ui/setcomdlg.ui" line="1210"/>
         <location filename="../ui/setcomdlg.ui" line="1652"/>
         <location filename="../ui/setcomdlg.ui" line="1957"/>
-        <location filename="../ui/setcomdlg.ui" line="2121"/>
+        <location filename="../ui/setcomdlg.ui" line="2262"/>
+        <location filename="../ui/setcomdlg.ui" line="2567"/>
+        <location filename="../ui/setcomdlg.ui" line="2856"/>
         <source>Even</source>
         <translation>Even</translation>
     </message>
@@ -1127,10 +1321,12 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="303"/>
         <location filename="../ui/setcomdlg.ui" line="608"/>
         <location filename="../ui/setcomdlg.ui" line="913"/>
-        <location filename="../ui/setcomdlg.ui" line="1355"/>
+        <location filename="../ui/setcomdlg.ui" line="1218"/>
         <location filename="../ui/setcomdlg.ui" line="1660"/>
         <location filename="../ui/setcomdlg.ui" line="1965"/>
-        <location filename="../ui/setcomdlg.ui" line="2129"/>
+        <location filename="../ui/setcomdlg.ui" line="2270"/>
+        <location filename="../ui/setcomdlg.ui" line="2575"/>
+        <location filename="../ui/setcomdlg.ui" line="2864"/>
         <source>StopBits</source>
         <translation>StopBits</translation>
     </message>
@@ -1138,10 +1334,12 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="311"/>
         <location filename="../ui/setcomdlg.ui" line="616"/>
         <location filename="../ui/setcomdlg.ui" line="921"/>
-        <location filename="../ui/setcomdlg.ui" line="1363"/>
+        <location filename="../ui/setcomdlg.ui" line="1226"/>
         <location filename="../ui/setcomdlg.ui" line="1668"/>
         <location filename="../ui/setcomdlg.ui" line="1973"/>
-        <location filename="../ui/setcomdlg.ui" line="2137"/>
+        <location filename="../ui/setcomdlg.ui" line="2278"/>
+        <location filename="../ui/setcomdlg.ui" line="2583"/>
+        <location filename="../ui/setcomdlg.ui" line="2872"/>
         <source>1</source>
         <translation>1</translation>
     </message>
@@ -1149,10 +1347,12 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="316"/>
         <location filename="../ui/setcomdlg.ui" line="621"/>
         <location filename="../ui/setcomdlg.ui" line="926"/>
-        <location filename="../ui/setcomdlg.ui" line="1368"/>
+        <location filename="../ui/setcomdlg.ui" line="1231"/>
         <location filename="../ui/setcomdlg.ui" line="1673"/>
         <location filename="../ui/setcomdlg.ui" line="1978"/>
-        <location filename="../ui/setcomdlg.ui" line="2142"/>
+        <location filename="../ui/setcomdlg.ui" line="2283"/>
+        <location filename="../ui/setcomdlg.ui" line="2588"/>
+        <location filename="../ui/setcomdlg.ui" line="2877"/>
         <source>1.5</source>
         <translation>1.5</translation>
     </message>
@@ -1160,12 +1360,19 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/setcomdlg.ui" line="321"/>
         <location filename="../ui/setcomdlg.ui" line="626"/>
         <location filename="../ui/setcomdlg.ui" line="931"/>
-        <location filename="../ui/setcomdlg.ui" line="1373"/>
+        <location filename="../ui/setcomdlg.ui" line="1236"/>
         <location filename="../ui/setcomdlg.ui" line="1678"/>
         <location filename="../ui/setcomdlg.ui" line="1983"/>
-        <location filename="../ui/setcomdlg.ui" line="2147"/>
+        <location filename="../ui/setcomdlg.ui" line="2288"/>
+        <location filename="../ui/setcomdlg.ui" line="2593"/>
+        <location filename="../ui/setcomdlg.ui" line="2882"/>
         <source>2</source>
         <translation>2</translation>
+    </message>
+    <message>
+        <location filename="../ui/setcomdlg.ui" line="332"/>
+        <source>Valve Control2</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/setcomdlg.ui" line="637"/>
@@ -1173,193 +1380,211 @@ Please check each flow point&apos;s quantity</translation>
         <translation>Balance</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="993"/>
+        <location filename="../ui/setcomdlg.ui" line="942"/>
+        <source>Balance2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/setcomdlg.ui" line="1298"/>
+        <location filename="../ui/setcomdlg.ui" line="2655"/>
         <source>Mettler Toledo</source>
         <translation>Mettler Toledo</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2168"/>
+        <location filename="../ui/setcomdlg.ui" line="2604"/>
+        <source>BalanceType2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/setcomdlg.ui" line="2903"/>
         <source>Meter1</source>
         <translation>Meter1</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2188"/>
+        <location filename="../ui/setcomdlg.ui" line="2923"/>
         <source>Meter2</source>
         <translation>Meter2</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2208"/>
+        <location filename="../ui/setcomdlg.ui" line="2943"/>
         <source>Meter3</source>
         <translation>Meter3</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2228"/>
+        <location filename="../ui/setcomdlg.ui" line="2963"/>
         <source>Meter4</source>
         <translation>Meter4</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2248"/>
+        <location filename="../ui/setcomdlg.ui" line="2983"/>
         <source>Meter5</source>
         <translation>Meter5</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2268"/>
+        <location filename="../ui/setcomdlg.ui" line="3003"/>
         <source>Meter6</source>
         <translation>Meter6</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2292"/>
+        <location filename="../ui/setcomdlg.ui" line="3027"/>
         <source>Meter7</source>
         <translation>Meter7</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2312"/>
+        <location filename="../ui/setcomdlg.ui" line="3047"/>
         <source>Meter8</source>
         <translation>Meter8</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2332"/>
+        <location filename="../ui/setcomdlg.ui" line="3067"/>
         <source>Meter9</source>
         <translation>Meter9</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2352"/>
+        <location filename="../ui/setcomdlg.ui" line="3087"/>
         <source>Meter10</source>
         <translation>Meter10</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2372"/>
+        <location filename="../ui/setcomdlg.ui" line="3107"/>
         <source>Meter11</source>
         <translation>Meter11</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2392"/>
+        <location filename="../ui/setcomdlg.ui" line="3127"/>
         <source>Meter12</source>
         <translation>Meter12</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2416"/>
+        <location filename="../ui/setcomdlg.ui" line="3151"/>
         <source>Meter13</source>
         <translation>Meter13</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2436"/>
+        <location filename="../ui/setcomdlg.ui" line="3171"/>
         <source>Meter14</source>
         <translation>Meter14</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2456"/>
+        <location filename="../ui/setcomdlg.ui" line="3191"/>
         <source>Meter15</source>
         <translation>Meter15</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2476"/>
+        <location filename="../ui/setcomdlg.ui" line="3211"/>
         <source>Meter16</source>
         <translation>Meter16</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2496"/>
+        <location filename="../ui/setcomdlg.ui" line="3231"/>
         <source>Meter17</source>
         <translation>Meter17</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2516"/>
+        <location filename="../ui/setcomdlg.ui" line="3251"/>
         <source>Meter18</source>
         <translation>Meter18</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2540"/>
+        <location filename="../ui/setcomdlg.ui" line="3275"/>
         <source>Meter19</source>
         <translation>Meter19</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2560"/>
+        <location filename="../ui/setcomdlg.ui" line="3295"/>
         <source>Meter20</source>
         <translation>Meter20</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2580"/>
+        <location filename="../ui/setcomdlg.ui" line="3315"/>
         <source>Meter21</source>
         <translation>Meter21</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2600"/>
+        <location filename="../ui/setcomdlg.ui" line="3335"/>
         <source>Meter22</source>
         <translation>Meter22</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2620"/>
+        <location filename="../ui/setcomdlg.ui" line="3355"/>
         <source>Meter23</source>
         <translation>Meter23</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2640"/>
+        <location filename="../ui/setcomdlg.ui" line="3375"/>
         <source>Meter24</source>
         <translation>Meter24</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="332"/>
+        <location filename="../ui/setcomdlg.ui" line="1384"/>
         <source>Temp Acquisition</source>
         <translation>Temp Acquisition</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="1079"/>
+        <location filename="../ui/setcomdlg.ui" line="1689"/>
         <source>Standard Temp</source>
         <translation>Standard Temp</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="942"/>
+        <location filename="../ui/setcomdlg.ui" line="1247"/>
         <source>BalanceType</source>
         <translation>BalanceType</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="954"/>
+        <location filename="../ui/setcomdlg.ui" line="1259"/>
+        <location filename="../ui/setcomdlg.ui" line="2616"/>
         <source>Satorius</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="967"/>
+        <location filename="../ui/setcomdlg.ui" line="1272"/>
+        <location filename="../ui/setcomdlg.ui" line="2629"/>
         <source>SatoriusH</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="980"/>
+        <location filename="../ui/setcomdlg.ui" line="1285"/>
+        <location filename="../ui/setcomdlg.ui" line="2642"/>
         <source>Bizerba</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="1002"/>
+        <location filename="../ui/setcomdlg.ui" line="1307"/>
+        <location filename="../ui/setcomdlg.ui" line="2664"/>
         <source>MaxWeight:</source>
         <translation>MaxWeight:</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="1031"/>
-        <location filename="../ui/setcomdlg.ui" line="1067"/>
+        <location filename="../ui/setcomdlg.ui" line="1336"/>
+        <location filename="../ui/setcomdlg.ui" line="1372"/>
+        <location filename="../ui/setcomdlg.ui" line="2693"/>
+        <location filename="../ui/setcomdlg.ui" line="2729"/>
         <source>kg</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="1038"/>
+        <location filename="../ui/setcomdlg.ui" line="1343"/>
+        <location filename="../ui/setcomdlg.ui" line="2700"/>
         <source>BottomWht:</source>
         <translation>BottomWht:</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="1384"/>
+        <location filename="../ui/setcomdlg.ui" line="1994"/>
         <source>Inst Std Meter</source>
         <translation>Inst Std Meter</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="1689"/>
+        <location filename="../ui/setcomdlg.ui" line="2299"/>
         <source>Accum Std Meter</source>
         <translation>Accum Std Meter</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="1994"/>
+        <location filename="../ui/setcomdlg.ui" line="3394"/>
         <source>Meter Quantity</source>
         <translation>Meter Quantity</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2006"/>
+        <location filename="../ui/setcomdlg.ui" line="2741"/>
         <source>Meter</source>
         <translation>Meter</translation>
     </message>
@@ -1436,12 +1661,12 @@ Please check each flow point&apos;s quantity</translation>
         <translation type="obsolete">24</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2683"/>
+        <location filename="../ui/setcomdlg.ui" line="3430"/>
         <source>Save</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="../ui/setcomdlg.ui" line="2712"/>
+        <location filename="../ui/setcomdlg.ui" line="3459"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
@@ -1805,437 +2030,603 @@ Please check each flow point&apos;s quantity</translation>
         <translation>SetPortFrm</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="35"/>
+        <location filename="../ui/setportfrm.ui" line="42"/>
         <source>Port 1</source>
         <translation>Port 1</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="48"/>
+        <location filename="../ui/setportfrm.ui" line="55"/>
         <source>Port 2</source>
         <translation>Port 2</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="61"/>
+        <location filename="../ui/setportfrm.ui" line="68"/>
         <source>Port 3</source>
         <translation>Port 3</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="74"/>
+        <location filename="../ui/setportfrm.ui" line="81"/>
         <source>Port 4</source>
         <translation>Port 4</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="87"/>
+        <location filename="../ui/setportfrm.ui" line="133"/>
         <source>Port 8</source>
         <translation>Port 8</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="100"/>
+        <location filename="../ui/setportfrm.ui" line="120"/>
         <source>Port 7</source>
         <translation>Port 7</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="113"/>
+        <location filename="../ui/setportfrm.ui" line="107"/>
         <source>Port 6</source>
         <translation>Port 6</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="126"/>
+        <location filename="../ui/setportfrm.ui" line="94"/>
         <source>Port 5</source>
         <translation>Port 5</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="137"/>
+        <location filename="../ui/setportfrm.ui" line="29"/>
+        <source>1#</source>
+        <translation type="unfinished">1#</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="144"/>
+        <source>2#</source>
+        <translation type="unfinished">2#</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="157"/>
+        <source>Port 9</source>
+        <translation type="unfinished">Port 9</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="170"/>
+        <source>Port 10</source>
+        <translation type="unfinished">Port 10</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="183"/>
+        <source>Port 11</source>
+        <translation type="unfinished">Port 11</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="196"/>
+        <source>Port 12</source>
+        <translation type="unfinished">Port 12</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="209"/>
+        <source>Port 13</source>
+        <translation type="unfinished">Port 13</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="222"/>
+        <source>Port 14</source>
+        <translation type="unfinished">Port 14</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="235"/>
+        <source>Port 15</source>
+        <translation type="unfinished">Port 15</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="248"/>
+        <source>Port 16</source>
+        <translation type="unfinished">Port 16</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="257"/>
         <source>Valve</source>
         <translation>Valve</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="143"/>
+        <location filename="../ui/setportfrm.ui" line="263"/>
         <source>Valve In</source>
         <translation>Valve In</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="151"/>
-        <location filename="../ui/setportfrm.ui" line="262"/>
-        <location filename="../ui/setportfrm.ui" line="373"/>
-        <location filename="../ui/setportfrm.ui" line="484"/>
-        <location filename="../ui/setportfrm.ui" line="595"/>
-        <location filename="../ui/setportfrm.ui" line="706"/>
+        <location filename="../ui/setportfrm.ui" line="271"/>
+        <location filename="../ui/setportfrm.ui" line="382"/>
+        <location filename="../ui/setportfrm.ui" line="493"/>
+        <location filename="../ui/setportfrm.ui" line="604"/>
+        <location filename="../ui/setportfrm.ui" line="715"/>
+        <location filename="../ui/setportfrm.ui" line="826"/>
+        <location filename="../ui/setportfrm.ui" line="937"/>
+        <location filename="../ui/setportfrm.ui" line="1048"/>
+        <location filename="../ui/setportfrm.ui" line="1159"/>
+        <location filename="../ui/setportfrm.ui" line="1270"/>
+        <location filename="../ui/setportfrm.ui" line="1422"/>
+        <location filename="../ui/setportfrm.ui" line="1533"/>
+        <location filename="../ui/setportfrm.ui" line="1644"/>
+        <location filename="../ui/setportfrm.ui" line="1755"/>
+        <location filename="../ui/setportfrm.ui" line="1866"/>
+        <source>port1</source>
+        <translation>port1</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="276"/>
+        <location filename="../ui/setportfrm.ui" line="387"/>
+        <location filename="../ui/setportfrm.ui" line="498"/>
+        <location filename="../ui/setportfrm.ui" line="609"/>
+        <location filename="../ui/setportfrm.ui" line="720"/>
+        <location filename="../ui/setportfrm.ui" line="831"/>
+        <location filename="../ui/setportfrm.ui" line="942"/>
+        <location filename="../ui/setportfrm.ui" line="1053"/>
+        <location filename="../ui/setportfrm.ui" line="1164"/>
+        <location filename="../ui/setportfrm.ui" line="1275"/>
+        <location filename="../ui/setportfrm.ui" line="1427"/>
+        <location filename="../ui/setportfrm.ui" line="1538"/>
+        <location filename="../ui/setportfrm.ui" line="1649"/>
+        <location filename="../ui/setportfrm.ui" line="1760"/>
+        <location filename="../ui/setportfrm.ui" line="1871"/>
+        <source>port2</source>
+        <translation>port2</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="281"/>
+        <location filename="../ui/setportfrm.ui" line="392"/>
+        <location filename="../ui/setportfrm.ui" line="503"/>
+        <location filename="../ui/setportfrm.ui" line="614"/>
+        <location filename="../ui/setportfrm.ui" line="725"/>
+        <location filename="../ui/setportfrm.ui" line="836"/>
+        <location filename="../ui/setportfrm.ui" line="947"/>
+        <location filename="../ui/setportfrm.ui" line="1058"/>
+        <location filename="../ui/setportfrm.ui" line="1169"/>
+        <location filename="../ui/setportfrm.ui" line="1280"/>
+        <location filename="../ui/setportfrm.ui" line="1432"/>
+        <location filename="../ui/setportfrm.ui" line="1543"/>
+        <location filename="../ui/setportfrm.ui" line="1654"/>
+        <location filename="../ui/setportfrm.ui" line="1765"/>
+        <location filename="../ui/setportfrm.ui" line="1876"/>
+        <source>port3</source>
+        <translation>port3</translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="286"/>
+        <location filename="../ui/setportfrm.ui" line="397"/>
+        <location filename="../ui/setportfrm.ui" line="508"/>
+        <location filename="../ui/setportfrm.ui" line="619"/>
+        <location filename="../ui/setportfrm.ui" line="730"/>
         <location filename="../ui/setportfrm.ui" line="841"/>
         <location filename="../ui/setportfrm.ui" line="952"/>
         <location filename="../ui/setportfrm.ui" line="1063"/>
         <location filename="../ui/setportfrm.ui" line="1174"/>
         <location filename="../ui/setportfrm.ui" line="1285"/>
-        <source>port1</source>
-        <translation>port1</translation>
+        <location filename="../ui/setportfrm.ui" line="1437"/>
+        <location filename="../ui/setportfrm.ui" line="1548"/>
+        <location filename="../ui/setportfrm.ui" line="1659"/>
+        <location filename="../ui/setportfrm.ui" line="1770"/>
+        <location filename="../ui/setportfrm.ui" line="1881"/>
+        <source>port4</source>
+        <translation>port4</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="156"/>
-        <location filename="../ui/setportfrm.ui" line="267"/>
-        <location filename="../ui/setportfrm.ui" line="378"/>
-        <location filename="../ui/setportfrm.ui" line="489"/>
-        <location filename="../ui/setportfrm.ui" line="600"/>
-        <location filename="../ui/setportfrm.ui" line="711"/>
+        <location filename="../ui/setportfrm.ui" line="291"/>
+        <location filename="../ui/setportfrm.ui" line="402"/>
+        <location filename="../ui/setportfrm.ui" line="513"/>
+        <location filename="../ui/setportfrm.ui" line="624"/>
+        <location filename="../ui/setportfrm.ui" line="735"/>
         <location filename="../ui/setportfrm.ui" line="846"/>
         <location filename="../ui/setportfrm.ui" line="957"/>
         <location filename="../ui/setportfrm.ui" line="1068"/>
         <location filename="../ui/setportfrm.ui" line="1179"/>
         <location filename="../ui/setportfrm.ui" line="1290"/>
-        <source>port2</source>
-        <translation>port2</translation>
+        <location filename="../ui/setportfrm.ui" line="1442"/>
+        <location filename="../ui/setportfrm.ui" line="1553"/>
+        <location filename="../ui/setportfrm.ui" line="1664"/>
+        <location filename="../ui/setportfrm.ui" line="1775"/>
+        <location filename="../ui/setportfrm.ui" line="1886"/>
+        <source>port5</source>
+        <translation>port5</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="161"/>
-        <location filename="../ui/setportfrm.ui" line="272"/>
-        <location filename="../ui/setportfrm.ui" line="383"/>
-        <location filename="../ui/setportfrm.ui" line="494"/>
-        <location filename="../ui/setportfrm.ui" line="605"/>
-        <location filename="../ui/setportfrm.ui" line="716"/>
+        <location filename="../ui/setportfrm.ui" line="296"/>
+        <location filename="../ui/setportfrm.ui" line="407"/>
+        <location filename="../ui/setportfrm.ui" line="518"/>
+        <location filename="../ui/setportfrm.ui" line="629"/>
+        <location filename="../ui/setportfrm.ui" line="740"/>
         <location filename="../ui/setportfrm.ui" line="851"/>
         <location filename="../ui/setportfrm.ui" line="962"/>
         <location filename="../ui/setportfrm.ui" line="1073"/>
         <location filename="../ui/setportfrm.ui" line="1184"/>
         <location filename="../ui/setportfrm.ui" line="1295"/>
-        <source>port3</source>
-        <translation>port3</translation>
+        <location filename="../ui/setportfrm.ui" line="1447"/>
+        <location filename="../ui/setportfrm.ui" line="1558"/>
+        <location filename="../ui/setportfrm.ui" line="1669"/>
+        <location filename="../ui/setportfrm.ui" line="1780"/>
+        <location filename="../ui/setportfrm.ui" line="1891"/>
+        <source>port6</source>
+        <translation>port6</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="166"/>
-        <location filename="../ui/setportfrm.ui" line="277"/>
-        <location filename="../ui/setportfrm.ui" line="388"/>
-        <location filename="../ui/setportfrm.ui" line="499"/>
-        <location filename="../ui/setportfrm.ui" line="610"/>
-        <location filename="../ui/setportfrm.ui" line="721"/>
+        <location filename="../ui/setportfrm.ui" line="301"/>
+        <location filename="../ui/setportfrm.ui" line="412"/>
+        <location filename="../ui/setportfrm.ui" line="523"/>
+        <location filename="../ui/setportfrm.ui" line="634"/>
+        <location filename="../ui/setportfrm.ui" line="745"/>
         <location filename="../ui/setportfrm.ui" line="856"/>
         <location filename="../ui/setportfrm.ui" line="967"/>
         <location filename="../ui/setportfrm.ui" line="1078"/>
         <location filename="../ui/setportfrm.ui" line="1189"/>
         <location filename="../ui/setportfrm.ui" line="1300"/>
-        <source>port4</source>
-        <translation>port4</translation>
+        <location filename="../ui/setportfrm.ui" line="1452"/>
+        <location filename="../ui/setportfrm.ui" line="1563"/>
+        <location filename="../ui/setportfrm.ui" line="1674"/>
+        <location filename="../ui/setportfrm.ui" line="1785"/>
+        <location filename="../ui/setportfrm.ui" line="1896"/>
+        <source>port7</source>
+        <translation>port7</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="171"/>
-        <location filename="../ui/setportfrm.ui" line="282"/>
-        <location filename="../ui/setportfrm.ui" line="393"/>
-        <location filename="../ui/setportfrm.ui" line="504"/>
-        <location filename="../ui/setportfrm.ui" line="615"/>
-        <location filename="../ui/setportfrm.ui" line="726"/>
+        <location filename="../ui/setportfrm.ui" line="306"/>
+        <location filename="../ui/setportfrm.ui" line="417"/>
+        <location filename="../ui/setportfrm.ui" line="528"/>
+        <location filename="../ui/setportfrm.ui" line="639"/>
+        <location filename="../ui/setportfrm.ui" line="750"/>
         <location filename="../ui/setportfrm.ui" line="861"/>
         <location filename="../ui/setportfrm.ui" line="972"/>
         <location filename="../ui/setportfrm.ui" line="1083"/>
         <location filename="../ui/setportfrm.ui" line="1194"/>
         <location filename="../ui/setportfrm.ui" line="1305"/>
-        <source>port5</source>
-        <translation>port5</translation>
+        <location filename="../ui/setportfrm.ui" line="1457"/>
+        <location filename="../ui/setportfrm.ui" line="1568"/>
+        <location filename="../ui/setportfrm.ui" line="1679"/>
+        <location filename="../ui/setportfrm.ui" line="1790"/>
+        <location filename="../ui/setportfrm.ui" line="1901"/>
+        <source>port8</source>
+        <translation>port8</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="176"/>
-        <location filename="../ui/setportfrm.ui" line="287"/>
-        <location filename="../ui/setportfrm.ui" line="398"/>
-        <location filename="../ui/setportfrm.ui" line="509"/>
-        <location filename="../ui/setportfrm.ui" line="620"/>
-        <location filename="../ui/setportfrm.ui" line="731"/>
+        <location filename="../ui/setportfrm.ui" line="311"/>
+        <location filename="../ui/setportfrm.ui" line="422"/>
+        <location filename="../ui/setportfrm.ui" line="533"/>
+        <location filename="../ui/setportfrm.ui" line="644"/>
+        <location filename="../ui/setportfrm.ui" line="755"/>
         <location filename="../ui/setportfrm.ui" line="866"/>
         <location filename="../ui/setportfrm.ui" line="977"/>
         <location filename="../ui/setportfrm.ui" line="1088"/>
         <location filename="../ui/setportfrm.ui" line="1199"/>
         <location filename="../ui/setportfrm.ui" line="1310"/>
-        <source>port6</source>
-        <translation>port6</translation>
+        <location filename="../ui/setportfrm.ui" line="1462"/>
+        <location filename="../ui/setportfrm.ui" line="1573"/>
+        <location filename="../ui/setportfrm.ui" line="1684"/>
+        <location filename="../ui/setportfrm.ui" line="1795"/>
+        <location filename="../ui/setportfrm.ui" line="1906"/>
+        <source>port9</source>
+        <translation>port9</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="181"/>
-        <location filename="../ui/setportfrm.ui" line="292"/>
-        <location filename="../ui/setportfrm.ui" line="403"/>
-        <location filename="../ui/setportfrm.ui" line="514"/>
-        <location filename="../ui/setportfrm.ui" line="625"/>
-        <location filename="../ui/setportfrm.ui" line="736"/>
+        <location filename="../ui/setportfrm.ui" line="316"/>
+        <location filename="../ui/setportfrm.ui" line="427"/>
+        <location filename="../ui/setportfrm.ui" line="538"/>
+        <location filename="../ui/setportfrm.ui" line="649"/>
+        <location filename="../ui/setportfrm.ui" line="760"/>
         <location filename="../ui/setportfrm.ui" line="871"/>
         <location filename="../ui/setportfrm.ui" line="982"/>
         <location filename="../ui/setportfrm.ui" line="1093"/>
         <location filename="../ui/setportfrm.ui" line="1204"/>
         <location filename="../ui/setportfrm.ui" line="1315"/>
-        <source>port7</source>
-        <translation>port7</translation>
+        <location filename="../ui/setportfrm.ui" line="1467"/>
+        <location filename="../ui/setportfrm.ui" line="1578"/>
+        <location filename="../ui/setportfrm.ui" line="1689"/>
+        <location filename="../ui/setportfrm.ui" line="1800"/>
+        <location filename="../ui/setportfrm.ui" line="1911"/>
+        <source>port10</source>
+        <translation>port10</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="186"/>
-        <location filename="../ui/setportfrm.ui" line="297"/>
-        <location filename="../ui/setportfrm.ui" line="408"/>
-        <location filename="../ui/setportfrm.ui" line="519"/>
-        <location filename="../ui/setportfrm.ui" line="630"/>
-        <location filename="../ui/setportfrm.ui" line="741"/>
+        <location filename="../ui/setportfrm.ui" line="321"/>
+        <location filename="../ui/setportfrm.ui" line="432"/>
+        <location filename="../ui/setportfrm.ui" line="543"/>
+        <location filename="../ui/setportfrm.ui" line="654"/>
+        <location filename="../ui/setportfrm.ui" line="765"/>
         <location filename="../ui/setportfrm.ui" line="876"/>
         <location filename="../ui/setportfrm.ui" line="987"/>
         <location filename="../ui/setportfrm.ui" line="1098"/>
         <location filename="../ui/setportfrm.ui" line="1209"/>
         <location filename="../ui/setportfrm.ui" line="1320"/>
-        <source>port8</source>
-        <translation>port8</translation>
+        <location filename="../ui/setportfrm.ui" line="1472"/>
+        <location filename="../ui/setportfrm.ui" line="1583"/>
+        <location filename="../ui/setportfrm.ui" line="1694"/>
+        <location filename="../ui/setportfrm.ui" line="1805"/>
+        <location filename="../ui/setportfrm.ui" line="1916"/>
+        <source>port11</source>
+        <translation>port11</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="191"/>
-        <location filename="../ui/setportfrm.ui" line="302"/>
-        <location filename="../ui/setportfrm.ui" line="413"/>
-        <location filename="../ui/setportfrm.ui" line="524"/>
-        <location filename="../ui/setportfrm.ui" line="635"/>
-        <location filename="../ui/setportfrm.ui" line="746"/>
+        <location filename="../ui/setportfrm.ui" line="326"/>
+        <location filename="../ui/setportfrm.ui" line="437"/>
+        <location filename="../ui/setportfrm.ui" line="548"/>
+        <location filename="../ui/setportfrm.ui" line="659"/>
+        <location filename="../ui/setportfrm.ui" line="770"/>
         <location filename="../ui/setportfrm.ui" line="881"/>
         <location filename="../ui/setportfrm.ui" line="992"/>
         <location filename="../ui/setportfrm.ui" line="1103"/>
         <location filename="../ui/setportfrm.ui" line="1214"/>
         <location filename="../ui/setportfrm.ui" line="1325"/>
-        <source>port9</source>
-        <translation>port9</translation>
+        <location filename="../ui/setportfrm.ui" line="1477"/>
+        <location filename="../ui/setportfrm.ui" line="1588"/>
+        <location filename="../ui/setportfrm.ui" line="1699"/>
+        <location filename="../ui/setportfrm.ui" line="1810"/>
+        <location filename="../ui/setportfrm.ui" line="1921"/>
+        <source>port12</source>
+        <translation>port12</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="196"/>
-        <location filename="../ui/setportfrm.ui" line="307"/>
-        <location filename="../ui/setportfrm.ui" line="418"/>
-        <location filename="../ui/setportfrm.ui" line="529"/>
-        <location filename="../ui/setportfrm.ui" line="640"/>
-        <location filename="../ui/setportfrm.ui" line="751"/>
+        <location filename="../ui/setportfrm.ui" line="331"/>
+        <location filename="../ui/setportfrm.ui" line="442"/>
+        <location filename="../ui/setportfrm.ui" line="553"/>
+        <location filename="../ui/setportfrm.ui" line="664"/>
+        <location filename="../ui/setportfrm.ui" line="775"/>
         <location filename="../ui/setportfrm.ui" line="886"/>
         <location filename="../ui/setportfrm.ui" line="997"/>
         <location filename="../ui/setportfrm.ui" line="1108"/>
         <location filename="../ui/setportfrm.ui" line="1219"/>
         <location filename="../ui/setportfrm.ui" line="1330"/>
-        <source>port10</source>
-        <translation>port10</translation>
+        <location filename="../ui/setportfrm.ui" line="1482"/>
+        <location filename="../ui/setportfrm.ui" line="1593"/>
+        <location filename="../ui/setportfrm.ui" line="1704"/>
+        <location filename="../ui/setportfrm.ui" line="1815"/>
+        <location filename="../ui/setportfrm.ui" line="1926"/>
+        <source>port13</source>
+        <translation>port13</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="201"/>
-        <location filename="../ui/setportfrm.ui" line="312"/>
-        <location filename="../ui/setportfrm.ui" line="423"/>
-        <location filename="../ui/setportfrm.ui" line="534"/>
-        <location filename="../ui/setportfrm.ui" line="645"/>
-        <location filename="../ui/setportfrm.ui" line="756"/>
+        <location filename="../ui/setportfrm.ui" line="336"/>
+        <location filename="../ui/setportfrm.ui" line="447"/>
+        <location filename="../ui/setportfrm.ui" line="558"/>
+        <location filename="../ui/setportfrm.ui" line="669"/>
+        <location filename="../ui/setportfrm.ui" line="780"/>
         <location filename="../ui/setportfrm.ui" line="891"/>
         <location filename="../ui/setportfrm.ui" line="1002"/>
         <location filename="../ui/setportfrm.ui" line="1113"/>
         <location filename="../ui/setportfrm.ui" line="1224"/>
         <location filename="../ui/setportfrm.ui" line="1335"/>
-        <source>port11</source>
-        <translation>port11</translation>
+        <location filename="../ui/setportfrm.ui" line="1487"/>
+        <location filename="../ui/setportfrm.ui" line="1598"/>
+        <location filename="../ui/setportfrm.ui" line="1709"/>
+        <location filename="../ui/setportfrm.ui" line="1820"/>
+        <location filename="../ui/setportfrm.ui" line="1931"/>
+        <source>port14</source>
+        <translation>port14</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="206"/>
-        <location filename="../ui/setportfrm.ui" line="317"/>
-        <location filename="../ui/setportfrm.ui" line="428"/>
-        <location filename="../ui/setportfrm.ui" line="539"/>
-        <location filename="../ui/setportfrm.ui" line="650"/>
-        <location filename="../ui/setportfrm.ui" line="761"/>
+        <location filename="../ui/setportfrm.ui" line="341"/>
+        <location filename="../ui/setportfrm.ui" line="452"/>
+        <location filename="../ui/setportfrm.ui" line="563"/>
+        <location filename="../ui/setportfrm.ui" line="674"/>
+        <location filename="../ui/setportfrm.ui" line="785"/>
         <location filename="../ui/setportfrm.ui" line="896"/>
         <location filename="../ui/setportfrm.ui" line="1007"/>
         <location filename="../ui/setportfrm.ui" line="1118"/>
         <location filename="../ui/setportfrm.ui" line="1229"/>
         <location filename="../ui/setportfrm.ui" line="1340"/>
-        <source>port12</source>
-        <translation>port12</translation>
+        <location filename="../ui/setportfrm.ui" line="1492"/>
+        <location filename="../ui/setportfrm.ui" line="1603"/>
+        <location filename="../ui/setportfrm.ui" line="1714"/>
+        <location filename="../ui/setportfrm.ui" line="1825"/>
+        <location filename="../ui/setportfrm.ui" line="1936"/>
+        <source>port15</source>
+        <translation>port15</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="211"/>
-        <location filename="../ui/setportfrm.ui" line="322"/>
-        <location filename="../ui/setportfrm.ui" line="433"/>
-        <location filename="../ui/setportfrm.ui" line="544"/>
-        <location filename="../ui/setportfrm.ui" line="655"/>
-        <location filename="../ui/setportfrm.ui" line="766"/>
+        <location filename="../ui/setportfrm.ui" line="346"/>
+        <location filename="../ui/setportfrm.ui" line="457"/>
+        <location filename="../ui/setportfrm.ui" line="568"/>
+        <location filename="../ui/setportfrm.ui" line="679"/>
+        <location filename="../ui/setportfrm.ui" line="790"/>
         <location filename="../ui/setportfrm.ui" line="901"/>
         <location filename="../ui/setportfrm.ui" line="1012"/>
         <location filename="../ui/setportfrm.ui" line="1123"/>
         <location filename="../ui/setportfrm.ui" line="1234"/>
         <location filename="../ui/setportfrm.ui" line="1345"/>
-        <source>port13</source>
-        <translation>port13</translation>
+        <location filename="../ui/setportfrm.ui" line="1497"/>
+        <location filename="../ui/setportfrm.ui" line="1608"/>
+        <location filename="../ui/setportfrm.ui" line="1719"/>
+        <location filename="../ui/setportfrm.ui" line="1830"/>
+        <location filename="../ui/setportfrm.ui" line="1941"/>
+        <source>port16</source>
+        <translation>port16</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="216"/>
-        <location filename="../ui/setportfrm.ui" line="327"/>
-        <location filename="../ui/setportfrm.ui" line="438"/>
-        <location filename="../ui/setportfrm.ui" line="549"/>
-        <location filename="../ui/setportfrm.ui" line="660"/>
-        <location filename="../ui/setportfrm.ui" line="771"/>
+        <location filename="../ui/setportfrm.ui" line="351"/>
+        <location filename="../ui/setportfrm.ui" line="462"/>
+        <location filename="../ui/setportfrm.ui" line="573"/>
+        <location filename="../ui/setportfrm.ui" line="684"/>
+        <location filename="../ui/setportfrm.ui" line="795"/>
         <location filename="../ui/setportfrm.ui" line="906"/>
         <location filename="../ui/setportfrm.ui" line="1017"/>
         <location filename="../ui/setportfrm.ui" line="1128"/>
         <location filename="../ui/setportfrm.ui" line="1239"/>
         <location filename="../ui/setportfrm.ui" line="1350"/>
-        <source>port14</source>
-        <translation>port14</translation>
+        <location filename="../ui/setportfrm.ui" line="1502"/>
+        <location filename="../ui/setportfrm.ui" line="1613"/>
+        <location filename="../ui/setportfrm.ui" line="1724"/>
+        <location filename="../ui/setportfrm.ui" line="1835"/>
+        <location filename="../ui/setportfrm.ui" line="1946"/>
+        <source>port17</source>
+        <translation>port17</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="221"/>
-        <location filename="../ui/setportfrm.ui" line="332"/>
-        <location filename="../ui/setportfrm.ui" line="443"/>
-        <location filename="../ui/setportfrm.ui" line="554"/>
-        <location filename="../ui/setportfrm.ui" line="665"/>
-        <location filename="../ui/setportfrm.ui" line="776"/>
+        <location filename="../ui/setportfrm.ui" line="356"/>
+        <location filename="../ui/setportfrm.ui" line="467"/>
+        <location filename="../ui/setportfrm.ui" line="578"/>
+        <location filename="../ui/setportfrm.ui" line="689"/>
+        <location filename="../ui/setportfrm.ui" line="800"/>
         <location filename="../ui/setportfrm.ui" line="911"/>
         <location filename="../ui/setportfrm.ui" line="1022"/>
         <location filename="../ui/setportfrm.ui" line="1133"/>
         <location filename="../ui/setportfrm.ui" line="1244"/>
         <location filename="../ui/setportfrm.ui" line="1355"/>
-        <source>port15</source>
-        <translation>port15</translation>
+        <location filename="../ui/setportfrm.ui" line="1507"/>
+        <location filename="../ui/setportfrm.ui" line="1618"/>
+        <location filename="../ui/setportfrm.ui" line="1729"/>
+        <location filename="../ui/setportfrm.ui" line="1840"/>
+        <location filename="../ui/setportfrm.ui" line="1951"/>
+        <source>port18</source>
+        <translation>port18</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="226"/>
-        <location filename="../ui/setportfrm.ui" line="337"/>
-        <location filename="../ui/setportfrm.ui" line="448"/>
-        <location filename="../ui/setportfrm.ui" line="559"/>
-        <location filename="../ui/setportfrm.ui" line="670"/>
-        <location filename="../ui/setportfrm.ui" line="781"/>
+        <location filename="../ui/setportfrm.ui" line="361"/>
+        <location filename="../ui/setportfrm.ui" line="472"/>
+        <location filename="../ui/setportfrm.ui" line="583"/>
+        <location filename="../ui/setportfrm.ui" line="694"/>
+        <location filename="../ui/setportfrm.ui" line="805"/>
         <location filename="../ui/setportfrm.ui" line="916"/>
         <location filename="../ui/setportfrm.ui" line="1027"/>
         <location filename="../ui/setportfrm.ui" line="1138"/>
         <location filename="../ui/setportfrm.ui" line="1249"/>
         <location filename="../ui/setportfrm.ui" line="1360"/>
-        <source>port16</source>
-        <translation>port16</translation>
+        <location filename="../ui/setportfrm.ui" line="1512"/>
+        <location filename="../ui/setportfrm.ui" line="1623"/>
+        <location filename="../ui/setportfrm.ui" line="1734"/>
+        <location filename="../ui/setportfrm.ui" line="1845"/>
+        <location filename="../ui/setportfrm.ui" line="1956"/>
+        <source>port19</source>
+        <translation>port19</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="231"/>
-        <location filename="../ui/setportfrm.ui" line="342"/>
-        <location filename="../ui/setportfrm.ui" line="453"/>
-        <location filename="../ui/setportfrm.ui" line="564"/>
-        <location filename="../ui/setportfrm.ui" line="675"/>
-        <location filename="../ui/setportfrm.ui" line="786"/>
+        <location filename="../ui/setportfrm.ui" line="366"/>
+        <location filename="../ui/setportfrm.ui" line="477"/>
+        <location filename="../ui/setportfrm.ui" line="588"/>
+        <location filename="../ui/setportfrm.ui" line="699"/>
+        <location filename="../ui/setportfrm.ui" line="810"/>
         <location filename="../ui/setportfrm.ui" line="921"/>
         <location filename="../ui/setportfrm.ui" line="1032"/>
         <location filename="../ui/setportfrm.ui" line="1143"/>
         <location filename="../ui/setportfrm.ui" line="1254"/>
         <location filename="../ui/setportfrm.ui" line="1365"/>
-        <source>port17</source>
-        <translation>port17</translation>
-    </message>
-    <message>
-        <location filename="../ui/setportfrm.ui" line="236"/>
-        <location filename="../ui/setportfrm.ui" line="347"/>
-        <location filename="../ui/setportfrm.ui" line="458"/>
-        <location filename="../ui/setportfrm.ui" line="569"/>
-        <location filename="../ui/setportfrm.ui" line="680"/>
-        <location filename="../ui/setportfrm.ui" line="791"/>
-        <location filename="../ui/setportfrm.ui" line="926"/>
-        <location filename="../ui/setportfrm.ui" line="1037"/>
-        <location filename="../ui/setportfrm.ui" line="1148"/>
-        <location filename="../ui/setportfrm.ui" line="1259"/>
-        <location filename="../ui/setportfrm.ui" line="1370"/>
-        <source>port18</source>
-        <translation>port18</translation>
-    </message>
-    <message>
-        <location filename="../ui/setportfrm.ui" line="241"/>
-        <location filename="../ui/setportfrm.ui" line="352"/>
-        <location filename="../ui/setportfrm.ui" line="463"/>
-        <location filename="../ui/setportfrm.ui" line="574"/>
-        <location filename="../ui/setportfrm.ui" line="685"/>
-        <location filename="../ui/setportfrm.ui" line="796"/>
-        <location filename="../ui/setportfrm.ui" line="931"/>
-        <location filename="../ui/setportfrm.ui" line="1042"/>
-        <location filename="../ui/setportfrm.ui" line="1153"/>
-        <location filename="../ui/setportfrm.ui" line="1264"/>
-        <location filename="../ui/setportfrm.ui" line="1375"/>
-        <source>port19</source>
-        <translation>port19</translation>
-    </message>
-    <message>
-        <location filename="../ui/setportfrm.ui" line="246"/>
-        <location filename="../ui/setportfrm.ui" line="357"/>
-        <location filename="../ui/setportfrm.ui" line="468"/>
-        <location filename="../ui/setportfrm.ui" line="579"/>
-        <location filename="../ui/setportfrm.ui" line="690"/>
-        <location filename="../ui/setportfrm.ui" line="801"/>
-        <location filename="../ui/setportfrm.ui" line="936"/>
-        <location filename="../ui/setportfrm.ui" line="1047"/>
-        <location filename="../ui/setportfrm.ui" line="1158"/>
-        <location filename="../ui/setportfrm.ui" line="1269"/>
-        <location filename="../ui/setportfrm.ui" line="1380"/>
+        <location filename="../ui/setportfrm.ui" line="1517"/>
+        <location filename="../ui/setportfrm.ui" line="1628"/>
+        <location filename="../ui/setportfrm.ui" line="1739"/>
+        <location filename="../ui/setportfrm.ui" line="1850"/>
+        <location filename="../ui/setportfrm.ui" line="1961"/>
         <source>port20</source>
         <translation>port20</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="254"/>
+        <location filename="../ui/setportfrm.ui" line="374"/>
         <source>Valve Out</source>
         <translation>Valve Out</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="365"/>
+        <location filename="../ui/setportfrm.ui" line="485"/>
         <source>Valve Big</source>
         <translation>Valve Big</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="476"/>
+        <location filename="../ui/setportfrm.ui" line="596"/>
         <source>Valve Mid2</source>
         <translation>Valve Mid2</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="587"/>
+        <location filename="../ui/setportfrm.ui" line="707"/>
         <source>Valve Mid1</source>
         <translation>Valve Mid1</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="698"/>
+        <location filename="../ui/setportfrm.ui" line="818"/>
         <source>Valve Small</source>
         <translation>Valve Small</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="827"/>
+        <location filename="../ui/setportfrm.ui" line="929"/>
+        <source>Big In</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="1040"/>
+        <source>Big Out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="1151"/>
+        <source>Small In</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="1262"/>
+        <source>Small Out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="1408"/>
         <source>Device</source>
         <translation>Device</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="833"/>
+        <location filename="../ui/setportfrm.ui" line="1414"/>
         <source>Pump</source>
         <translation>Pump</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="944"/>
         <source>Regulator1</source>
-        <translation>Regulator1</translation>
+        <translation type="obsolete">Regulator1</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="1055"/>
         <source>Regulator2</source>
-        <translation>Regulator2</translation>
+        <translation type="obsolete">Regulator2</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="1166"/>
         <source>Regulator3</source>
-        <translation>Regulator3</translation>
+        <translation type="obsolete">Regulator3</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="1277"/>
         <source>Regulator4</source>
-        <translation>Regulator4</translation>
+        <translation type="obsolete">Regulator4</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="1393"/>
+        <location filename="../ui/setportfrm.ui" line="1380"/>
         <source>ProtVersion:</source>
         <translation>ProtVersion:</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="1401"/>
+        <location filename="../ui/setportfrm.ui" line="1388"/>
         <source>NewCtrlBoard</source>
         <translation>NewCtrlBoard</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="1406"/>
+        <location filename="../ui/setportfrm.ui" line="1393"/>
         <source>OldCtrlBoard</source>
         <translation>OldCtrlBoard</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="1411"/>
+        <location filename="../ui/setportfrm.ui" line="1398"/>
         <source>LichCtrlBoard</source>
         <translation>LichCtrlBoard</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="1449"/>
+        <location filename="../ui/setportfrm.ui" line="1525"/>
+        <source>Reg Big</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="1636"/>
+        <source>Reg Mid2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="1747"/>
+        <source>Reg Mid1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="1858"/>
+        <source>Reg Small</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/setportfrm.ui" line="1980"/>
         <source>Save</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="../ui/setportfrm.ui" line="1478"/>
+        <location filename="../ui/setportfrm.ui" line="1993"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
@@ -2403,12 +2794,12 @@ Please check each flow point&apos;s quantity</translation>
         <translation type="obsolete">Exit</translation>
     </message>
     <message>
-        <location filename="../source/setportfrm.cpp" line="67"/>
+        <location filename="../source/setportfrm.cpp" line="72"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../source/setportfrm.cpp" line="67"/>
+        <location filename="../source/setportfrm.cpp" line="72"/>
         <source>Save Successful !</source>
         <translation>Save Successful !</translation>
     </message>
@@ -2774,32 +3165,20 @@ Please check each flow point&apos;s quantity</translation>
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Diam&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1875"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2165"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2455"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2745"/>
         <source>DN3</source>
-        <translation>DN3</translation>
+        <translation type="obsolete">DN3</translation>
     </message>
     <message>
         <source>DN5</source>
         <translation type="obsolete">DN5</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1885"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2175"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2465"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2755"/>
         <source>DN10</source>
-        <translation>DN10</translation>
+        <translation type="obsolete">DN10</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1890"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2180"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2470"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2760"/>
         <source>DN25</source>
-        <translation>DN25</translation>
+        <translation type="obsolete">DN25</translation>
     </message>
     <message utf8="true">
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;瞬时通道&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -2816,52 +3195,50 @@ Please check each flow point&apos;s quantity</translation>
         <translation>Stand Meter</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="72"/>
         <source>DN3 Meter Coe</source>
-        <translation>DN3 Meter Coe</translation>
+        <translation type="obsolete">DN3 Meter Coe</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrparaset.ui" line="131"/>
-        <location filename="../ui/stdmtrparaset.ui" line="582"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1033"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1484"/>
+        <location filename="../ui/stdmtrparaset.ui" line="127"/>
+        <location filename="../ui/stdmtrparaset.ui" line="760"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1393"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2026"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Flow Point(m³/h)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Flow Point(m³/h)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="221"/>
-        <location filename="../ui/stdmtrparaset.ui" line="672"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1123"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1574"/>
+        <location filename="../ui/stdmtrparaset.ui" line="183"/>
+        <location filename="../ui/stdmtrparaset.ui" line="816"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1449"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2082"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;K Coe&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;K Coe&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="301"/>
-        <location filename="../ui/stdmtrparaset.ui" line="752"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1203"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1654"/>
+        <location filename="../ui/stdmtrparaset.ui" line="291"/>
+        <location filename="../ui/stdmtrparaset.ui" line="924"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1557"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2190"/>
         <source>impulse equivalency(L/imp):</source>
         <translation>impulse equivalency(L/imp):</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="353"/>
         <source>DN3 Param of Flow Rate</source>
-        <translation>DN3 Param of Flow Rate</translation>
+        <translation type="obsolete">DN3 Param of Flow Rate</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrparaset.ui" line="410"/>
-        <location filename="../ui/stdmtrparaset.ui" line="861"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1312"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1763"/>
+        <location filename="../ui/stdmtrparaset.ui" line="354"/>
+        <location filename="../ui/stdmtrparaset.ui" line="987"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1620"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2253"/>
         <source>Upper FLow(m³/h)</source>
         <translation>Upper FLow(m³/h)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="467"/>
-        <location filename="../ui/stdmtrparaset.ui" line="918"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1369"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1820"/>
+        <location filename="../ui/stdmtrparaset.ui" line="411"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1044"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1677"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2310"/>
         <source>adjust coe</source>
         <translation>adjust coe</translation>
     </message>
@@ -2870,250 +3247,235 @@ Please check each flow point&apos;s quantity</translation>
         <translation type="obsolete">DN5 Meter Coe</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="523"/>
         <source>DN6 Meter Coe</source>
-        <translation>DN25 Meter Coe {6 ?}</translation>
+        <translation type="obsolete">DN25 Meter Coe {6 ?}</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="804"/>
         <source>DN5 Param of Flow Rate</source>
-        <translation>DN5 Param of Flow Rate</translation>
+        <translation type="obsolete">DN5 Param of Flow Rate</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="974"/>
         <source>DN10 Meter Coe</source>
-        <translation>DN10 Meter Coe</translation>
+        <translation type="obsolete">DN10 Meter Coe</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1255"/>
         <source>DN10 Param of Flow Rate</source>
-        <translation>DN10 Param of Flow Rate</translation>
+        <translation type="obsolete">DN10 Param of Flow Rate</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1425"/>
         <source>DN25 Meter Coe</source>
-        <translation>DN25 Meter Coe</translation>
+        <translation type="obsolete">DN25 Meter Coe</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1706"/>
         <source>DN25 Param of Flow Rate</source>
-        <translation>DN25 Param of Flow Rate</translation>
+        <translation type="obsolete">DN25 Param of Flow Rate</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1840"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2665"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Hint:Input FLowRate from big to small, the max flow and upper flow can be the same.
 There should not be space between tow flow points! K Coe: (Stand Value)/(Meter Value)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Hint:Input FLowRate from big to small, the max flow and upper flow can be the same.
 There should not be space between tow flow points! K Coe: (Stand Value)/(Meter Value)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1848"/>
         <source>Routines</source>
-        <translation>Routines</translation>
+        <translation type="obsolete">Routines</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1856"/>
+        <location filename="../ui/stdmtrparaset.ui" line="70"/>
         <source>Big</source>
         <translation>Big</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1862"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2152"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2442"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2732"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Diam&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Diam&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Diam&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1880"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2170"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2460"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2750"/>
         <source>DN6</source>
-        <translation>DN6</translation>
+        <translation type="obsolete">DN6</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1898"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2188"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2478"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2768"/>
+        <location filename="../ui/stdmtrparaset.ui" line="425"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1058"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1691"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2324"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Inst&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Inst&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1941"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2047"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2231"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2337"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2521"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2627"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2811"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2917"/>
+        <location filename="../ui/stdmtrparaset.ui" line="468"/>
+        <location filename="../ui/stdmtrparaset.ui" line="578"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1101"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1211"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1734"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1844"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2367"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2477"/>
         <source>       0</source>
         <translation>       0</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1946"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2052"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2236"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2342"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2526"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2632"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2816"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2922"/>
+        <location filename="../ui/stdmtrparaset.ui" line="473"/>
+        <location filename="../ui/stdmtrparaset.ui" line="583"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1106"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1216"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1739"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1849"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2372"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2482"/>
         <source>       1</source>
         <translation>       1</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1951"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2057"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2241"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2347"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2531"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2637"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2821"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2927"/>
+        <location filename="../ui/stdmtrparaset.ui" line="478"/>
+        <location filename="../ui/stdmtrparaset.ui" line="588"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1111"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1221"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1744"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1854"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2377"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2487"/>
         <source>       2</source>
         <translation>       2</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1956"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2062"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2246"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2352"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2536"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2642"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2826"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2932"/>
+        <location filename="../ui/stdmtrparaset.ui" line="483"/>
+        <location filename="../ui/stdmtrparaset.ui" line="593"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1116"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1226"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1749"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1859"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2382"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2492"/>
         <source>       3</source>
         <translation>       3</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1961"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2067"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2251"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2357"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2541"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2647"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2831"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2937"/>
+        <location filename="../ui/stdmtrparaset.ui" line="488"/>
+        <location filename="../ui/stdmtrparaset.ui" line="598"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1121"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1231"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1754"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1864"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2387"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2497"/>
         <source>       4</source>
         <translation>       4</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1966"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2072"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2256"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2362"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2546"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2652"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2836"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2942"/>
+        <location filename="../ui/stdmtrparaset.ui" line="493"/>
+        <location filename="../ui/stdmtrparaset.ui" line="603"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1126"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1236"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1759"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1869"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2392"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2502"/>
         <source>       5</source>
         <translation>       5</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1971"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2077"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2261"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2367"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2551"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2657"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2841"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2947"/>
+        <location filename="../ui/stdmtrparaset.ui" line="498"/>
+        <location filename="../ui/stdmtrparaset.ui" line="608"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1131"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1241"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1764"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1874"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2397"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2507"/>
         <source>       6</source>
         <translation>       6</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1976"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2082"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2266"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2372"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2556"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2662"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2846"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2952"/>
+        <location filename="../ui/stdmtrparaset.ui" line="503"/>
+        <location filename="../ui/stdmtrparaset.ui" line="613"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1136"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1246"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1769"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1879"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2402"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2512"/>
         <source>       7</source>
         <translation>       7</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1981"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2087"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2271"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2377"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2561"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2667"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2851"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2957"/>
+        <location filename="../ui/stdmtrparaset.ui" line="508"/>
+        <location filename="../ui/stdmtrparaset.ui" line="618"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1141"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1251"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1774"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1884"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2407"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2517"/>
         <source>       8</source>
         <translation>       8</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1986"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2092"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2276"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2382"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2566"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2672"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2856"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2962"/>
+        <location filename="../ui/stdmtrparaset.ui" line="513"/>
+        <location filename="../ui/stdmtrparaset.ui" line="623"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1146"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1256"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1779"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1889"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2412"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2522"/>
         <source>       9</source>
         <translation>       9</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1991"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2097"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2281"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2387"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2571"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2677"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2861"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2967"/>
+        <location filename="../ui/stdmtrparaset.ui" line="518"/>
+        <location filename="../ui/stdmtrparaset.ui" line="628"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1151"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1261"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1784"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1894"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2417"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2527"/>
         <source>       10</source>
         <translation>       10</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1996"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2102"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2286"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2392"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2576"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2682"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2866"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2972"/>
+        <location filename="../ui/stdmtrparaset.ui" line="523"/>
+        <location filename="../ui/stdmtrparaset.ui" line="633"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1156"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1266"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1789"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1899"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2422"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2532"/>
         <source>       11</source>
         <translation>       11</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2004"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2294"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2584"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2874"/>
+        <location filename="../ui/stdmtrparaset.ui" line="535"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1168"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1801"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2434"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Accum&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Accum&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2146"/>
+        <location filename="../ui/stdmtrparaset.ui" line="703"/>
         <source>Mid2</source>
         <translation>Mid2</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2436"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1336"/>
         <source>Mid1</source>
         <translation>Mid1</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2726"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1969"/>
         <source>Small</source>
         <translation>Small</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="3107"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2688"/>
         <source>Save</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="3127"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2695"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
@@ -3122,34 +3484,34 @@ There should not be space between tow flow points! K Coe: (Stand Value)/(Meter V
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Accum Route&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2107"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2397"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2687"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2977"/>
+        <location filename="../ui/stdmtrparaset.ui" line="638"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1271"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1904"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2537"/>
         <source>       12</source>
         <translation>       12</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2112"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2402"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2692"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2982"/>
+        <location filename="../ui/stdmtrparaset.ui" line="643"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1276"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1909"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2542"/>
         <source>       13</source>
         <translation>       13</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2117"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2407"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2697"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2987"/>
+        <location filename="../ui/stdmtrparaset.ui" line="648"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1281"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1914"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2547"/>
         <source>       14</source>
         <translation>       14</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2122"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2412"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2702"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2992"/>
+        <location filename="../ui/stdmtrparaset.ui" line="653"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1286"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1919"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2552"/>
         <source>       15</source>
         <translation>       15</translation>
     </message>
@@ -3166,17 +3528,17 @@ There should not be space between tow flow points! K Coe: (Stand Value)/(Meter V
         <translation type="obsolete">Small</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="3013"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2574"/>
         <source>Standard Meter DevNo.</source>
         <translation>Standard Meter DevNo.</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="3025"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2588"/>
         <source>Instant DevNo.</source>
         <translation>Instant DevNo.</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="3064"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2627"/>
         <source>Accumulate DevNo.</source>
         <translation>Accumulate DevNo.</translation>
     </message>

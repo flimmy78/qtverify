@@ -69,6 +69,7 @@ void SetComDlg::showEvent(QShowEvent *)
 	gui.tableView->setModel(m_model);
 	gui.tableView->setEditTriggers(QAbstractItemView::DoubleClicked);
 	gui.tableView->hideColumn(0);
+	gui.tableView->setColumnWidth(1, 80);
 }
 
 void SetComDlg::closeEvent(QCloseEvent *)
