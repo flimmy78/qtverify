@@ -779,10 +779,10 @@ void ParaSetReader::initValveMap()
 	m_valvePortMap.insert(2,"middle1No");	
 	m_valvePortMap.insert(3,"smallNo");
 
-	m_regPortMap.insert(0,"bigNo");
-	m_regPortMap.insert(1,"middle2No");
-	m_regPortMap.insert(2,"middle1No");	
-	m_regPortMap.insert(3,"smallNo");
+	m_regPortMap.insert(0,"regBigNo");
+	m_regPortMap.insert(1,"regMid2No");
+	m_regPortMap.insert(2,"regMid1No");	
+	m_regPortMap.insert(3,"regSmallNo");
 }
 
 /*
