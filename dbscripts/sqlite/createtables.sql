@@ -276,6 +276,9 @@ F_Meter_Quantity smallint           -- 被检表的数量(2014.07.31 修改By So
 insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(0, 'DN15', 12);
 insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(1, 'DN20', 12);
 insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(2, 'DN25', 10);
+insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(3, 'DN32', 6);
+insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(4, 'DN40', 4);
+insert into T_Meter_Standard(F_ID, F_Name, F_Meter_Quantity) values(5, 'DN50', 4);
 
 ---------------------------------
 --热表各规格的默认参数表
@@ -293,20 +296,34 @@ create table T_Meter_Default_Params
 	F_PumpFrequencey float,                 -- 水泵频率
 	F_Valve_i smallint,                     -- 阀门编号	
 	F_Seq_i smallint,                       -- 检测序列号
+	F_Opening smallint,                     -- 调节阀开度
   constraint F_StandardID_fk foreign key(F_StandardID) references T_Meter_Standard(F_ID)
 );
-insert into T_Meter_Default_Params values(0, 0, 1.5, 1.6, 1.5, 40, 34, 0, 1);
-insert into T_Meter_Default_Params values(1, 0, 1.5, 0.5, 0.45, 20, 33, 1, 2);
-insert into T_Meter_Default_Params values(2, 0, 1.5, 0.16, 0.15, 10, 33, 2, 3);
-insert into T_Meter_Default_Params values(3, 0, 1.5, 0.035, 0.03, 5, 33, 3, 4);
-insert into T_Meter_Default_Params values(4, 1, 2.5, 2.6, 2.5, 50, 34, 0, 1);
-insert into T_Meter_Default_Params values(5, 1, 2.5, 0.8, 0.75, 20, 33, 1, 2);
-insert into T_Meter_Default_Params values(6, 1, 2.5, 0.3, 0.25, 10, 33, 2, 3);
-insert into T_Meter_Default_Params values(7, 1, 2.5, 0.06, 0.05, 5, 33, 3, 4);
-insert into T_Meter_Default_Params values(8, 2, 3.5, 3.6, 3.5, 50, 34, 0, 1);
-insert into T_Meter_Default_Params values(9, 2, 3.5, 1.1, 1.05, 20, 33, 1, 2);
-insert into T_Meter_Default_Params values(10, 2, 3.5, 0.4, 0.35, 10, 33, 2, 3);
-insert into T_Meter_Default_Params values(11, 2, 3.5, 0.08, 0.07, 5, 33, 3, 4);
+insert into T_Meter_Default_Params values(0,  0, 1.5, 30,   1.5,  40, 34, 0, 1, 50);
+insert into T_Meter_Default_Params values(1,  0, 1.5, 7,    0.45, 20, 33, 1, 2, 50);
+insert into T_Meter_Default_Params values(2,  0, 1.5, 1.05, 0.15, 10, 33, 2, 3, 50);
+insert into T_Meter_Default_Params values(3,  0, 1.5, 0.15, 0.03, 5,  33, 3, 4, 50);
+insert into T_Meter_Default_Params values(4,  1, 2.5, 30,   2.5,  50, 34, 0, 1, 50);
+insert into T_Meter_Default_Params values(5,  1, 2.5, 7,    0.75, 20, 33, 1, 2, 50);
+insert into T_Meter_Default_Params values(6,  1, 2.5, 1.05, 0.25, 10, 33, 2, 3, 50);
+insert into T_Meter_Default_Params values(7,  1, 2.5, 0.15, 0.05, 5,  33, 3, 4, 50);
+insert into T_Meter_Default_Params values(8,  2, 3.5, 30,   3.5,  50, 34, 0, 1, 50);
+insert into T_Meter_Default_Params values(9,  2, 3.5, 7,    1.05, 20, 33, 1, 2, 50);
+insert into T_Meter_Default_Params values(10, 2, 3.5, 1.05, 0.35, 10, 33, 2, 3, 50);
+insert into T_Meter_Default_Params values(11, 2, 3.5, 0.15, 0.07, 5,  33, 3, 4, 50);
+
+insert into T_Meter_Default_Params values(12, 3, 6.0, 30,    6.0,  150, 34, 0, 1, 50);
+insert into T_Meter_Default_Params values(13, 3, 6.0, 7,     1.8,  30,  33, 1, 2, 50);
+insert into T_Meter_Default_Params values(14, 3, 6.0, 1.05,  0.6,  20,  33, 2, 3, 50);
+insert into T_Meter_Default_Params values(15, 3, 6.0, 0.15,  0.12, 10,  33, 3, 4, 50);
+insert into T_Meter_Default_Params values(16, 4, 10,  30,    10,   350, 34, 0, 1, 50);
+insert into T_Meter_Default_Params values(17, 4, 10,  7,     3,    35,  33, 1, 2, 50);
+insert into T_Meter_Default_Params values(18, 4, 10,  1.05,  1,    25,  33, 2, 3, 50);
+insert into T_Meter_Default_Params values(19, 4, 10,  0.15,  0.2,  15,  33, 3, 4, 50);
+insert into T_Meter_Default_Params values(20, 5, 15,  30,    15,   450, 34, 0, 1, 50);
+insert into T_Meter_Default_Params values(21, 5, 15,  7,     4.5,  40,  33, 1, 2, 50);
+insert into T_Meter_Default_Params values(22, 5, 15,  1.05,  1.5,  30,  33, 2, 3, 50);
+insert into T_Meter_Default_Params values(23, 5, 15,  0.15,  0.3,  20,  33, 3, 4, 50);
 
 ---------------------------------
 --表型号
@@ -699,6 +716,85 @@ from
 ;'
 );
 
+INSERT INTO T_Create_Query_View_Stmt
+(F_ID, F_DESC, F_STMT) values
+(
+4,
+ 'temp water_verify query result view', 
+ 'CREATE view V_Temp_Water_Query_Result as
+select
+  rec.F_ID F_RowId,
+  rec.F_TimeStamp,
+  substr(rec.F_TimeStamp,1,16) F_TimeStamp_short,
+  substr(rec.F_MeterNo,7,8) F_MeterNo,
+  rec.F_FlowPointIdx,
+  round(rec.F_FlowPoint,3) F_FlowPoint,
+  rec.F_MethodFlag,
+  rec.F_MeterValue0,
+  rec.F_MeterValue1,
+  round((rec.F_MeterValue1 - rec.F_MeterValue0), 2) F_MeterDispValue,
+  rec.F_BalWeight0,
+  rec.F_BalWeight1,
+  round((rec.F_BalWeight1 - rec.F_BalWeight0), 2) F_BalDisp,
+  rec.F_StdMeterV0,
+  rec.F_StdMeterV1,
+  round((rec.F_StdMeterV1 - rec.F_StdMeterV0), 2) F_StdDisp,
+  rec.F_PipeTemper,
+  rec.F_Density,
+  rec.F_StandValue,
+  rec.F_DispError,
+  rec.F_StdError,
+  rec.F_Grade,
+  (select F_Desc from T_User_Def_Tab u where u.F_id = rec.F_VerifyPerson)  F_VerifyPerson,
+  (select F_Desc from T_User_Def_Tab u where u.F_id = rec.F_CheckPerson)  F_CheckPerson,
+  rec.F_DeviceInfoID,
+  rec.F_VerifyDate,
+  rec.F_ValidDate,
+  rec.F_EnvTemper,
+  rec.F_EnvHumidity,
+  rec.F_AirPressure,
+  rec.F_FlowCoe,
+  rec.F_Result,
+  rec.F_MeterPosNo,
+  rec.F_Model,
+  rec.F_WaterPress,
+  rec.F_Q3,
+  rec.F_Q3BiQ1,
+  rec.F_Q2BiQ1,
+  mo.F_Name F_Model_en,
+  mo.F_Desc F_Model_zh,
+  st.f_name F_Standard,
+  tp.F_Desc F_PickCode_zh,
+  manu.F_Name F_ManufactDept_en,
+  manu.F_Desc F_ManufactDept_zh,
+  vdpt.F_Name F_VerifyDept_en,
+  vdpt.F_Desc F_VerifyDept_zh,
+  yesno.F_Name valid_en, 
+  yesno.F_Desc valid,
+  d.F_CertNO,
+  d.F_DeviceName,
+  d.F_DeviceNo,
+  d.F_DeviceModel,
+  d.F_Manufact,
+  d.F_DeviceGrade,
+  d.F_MeasureRange,
+  d.F_VerifyRule,
+  d.F_DeviceValidDate,
+  d.F_CertValidDate,
+  d.F_RuleValidDate
+	from
+	T_Temp_Query_Result rec left join
+	T_Meter_Model mo on rec.F_Model=mo.F_ID left join
+    T_Meter_Standard st on rec.F_Standard=st.F_ID left join
+	T_Meter_PickCode tp on rec.F_PickCode=tp.F_ID left join
+	T_Manufacture_Dept manu on rec.F_ManufactDept=manu.F_ID left join
+	T_Verify_Dept vdpt on rec.F_VerifyDept=vdpt.F_ID left join
+	T_Yes_No_Tab  yesno on rec.F_Result=yesno.F_ID left join
+    T_User_Def_Tab usert on rec.F_VerifyPerson=usert.F_ID left join
+	T_Verify_Device_Info d on rec.F_DeviceInfoID=d.F_ID
+	order by rec.F_MeterPosNo, rec.f_meterno, rec.f_timestamp
+;'
+);
 -----------------------------------------------------------------
 --                    PID创建语句表                     ----
 -----------------------------------------------------------------
