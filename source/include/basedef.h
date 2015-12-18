@@ -197,7 +197,7 @@ enum table_columns
 #define EDA9150A_ROUTE_BYTES	4//力创EDA9150A模块中, 每个通道对应的字节数
 #define EDA9017_ROUTE_BYTES		2//力创EDA9017模块中, 每个通道对应的字节数
 
-#define REGULATE_OPEN_TIME	100  //电动调节阀打开（开度从0至100）所需要的时间，单位：秒
+#define REGULATE_OPEN_TIME	160  //电动调节阀打开（开度从0至100）所需要的时间，单位：秒
 #define REGULATE_CLOSE_TIME	50   //电动调节阀关闭（开度从100至0）所需要的时间，单位：秒
 #define REGULATE_FRESH_TIME (REGULATE_OPEN_TIME*10) //电动调节阀开度界面刷新周期，单位：毫秒
 
