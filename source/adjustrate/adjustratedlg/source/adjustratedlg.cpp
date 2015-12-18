@@ -362,7 +362,7 @@ void AdjustRateDlg::slotValveClicked(int idx)
 	switch(idx)
 	{
 	case BIG_RBTN:
-		m_nowRegNo = m_portsetinfo.regflow1No;
+		m_nowRegNo = m_portsetinfo.regBigNo;
 		m_Kp = ui.lnEditKp_big->text().toFloat();
 		m_Ki = ui.lnEditKi_big->text().toFloat();
 		m_Kd = ui.lnEditKd_big->text().toFloat();
@@ -371,7 +371,7 @@ void AdjustRateDlg::slotValveClicked(int idx)
 		m_targetRate = ui.lnEditTargetRate_big->text().toFloat();
 		break;
 	case MID_RBTN:
-		m_nowRegNo = m_portsetinfo.regflow2No;
+		m_nowRegNo = m_portsetinfo.regSmallNo;
 		m_Kp = ui.lnEditKp_mid->text().toFloat();
 		m_Ki = ui.lnEditKi_mid->text().toFloat();
 		m_Kd = ui.lnEditKd_mid->text().toFloat();
@@ -389,9 +389,9 @@ void AdjustRateDlg::on_btnStartSet_clicked()
 	forbidInputParams();
 	stopSetRegularTimer();
 	m_timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz"); //记录时间戳
-	if(m_nowRegNo == m_portsetinfo.regflow1No)
+	if(m_nowRegNo == m_portsetinfo.regBigNo)
 		operateBigPidVales();
-	else if( m_nowRegNo == m_portsetinfo.regflow2No)
+	else if( m_nowRegNo == m_portsetinfo.regSmallNo)
 		operateMidPidVales();
 
 	openPump();//打开水泵
@@ -657,12 +657,12 @@ void AdjustRateDlg::initRegulateStatus()
 	m_nowRegNo = 0;
 
 	//端口号-调节阀按钮 映射关系
-	m_regBtn[m_portsetinfo.regflow1No] = ui.btnRegulate1;
+	m_regBtn[m_portsetinfo.regBigNo] = ui.btnRegulate1;
 
 	//调节阀初始状态
-	m_regStatus[m_portsetinfo.regflow1No] = REG_SUCCESS;
+	m_regStatus[m_portsetinfo.regBigNo] = REG_SUCCESS;
 
-	setRegBtnBackColor(m_regBtn[m_portsetinfo.regflow1No], m_regStatus[m_portsetinfo.regflow1No]);
+	setRegBtnBackColor(m_regBtn[m_portsetinfo.regBigNo], m_regStatus[m_portsetinfo.regBigNo]);
 }
 
 /*
@@ -699,7 +699,7 @@ void AdjustRateDlg::on_btnValveBig_clicked() //大流量阀
 	{
 		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
 	}
-	m_nowRegNo = m_portsetinfo.regflow1No;
+	m_nowRegNo = m_portsetinfo.regBigNo;
 }
 
 void AdjustRateDlg::on_btnValveMiddle1_clicked() //中流一阀
@@ -711,7 +711,7 @@ void AdjustRateDlg::on_btnValveMiddle1_clicked() //中流一阀
 	{
 		slotSetValveBtnStatus(m_nowPortNo, !m_valveStatus[m_nowPortNo]);
 	}
-	m_nowRegNo = m_portsetinfo.regflow2No;
+	m_nowRegNo = m_portsetinfo.regSmallNo;
 }
 
 void AdjustRateDlg::on_btnValveMiddle2_clicked() //中流二阀
@@ -901,7 +901,7 @@ void AdjustRateDlg::on_btnSetFreq_clicked()
 void AdjustRateDlg::on_btnRegulate1_clicked() //调节阀1
 {
 	stopSetRegularTimer();
-	m_nowRegNo = m_portsetinfo.regflow1No;
+	m_nowRegNo = m_portsetinfo.regBigNo;
 	setRegBtnBackColor(m_regBtn[m_nowRegNo], false); //初始化调节阀背景色
 	m_controlObj->askControlRegulate(m_nowRegNo, ui.spinBoxValveOpening->value());
 }
@@ -909,7 +909,7 @@ void AdjustRateDlg::on_btnRegulate1_clicked() //调节阀1
 void AdjustRateDlg::on_btnRegulate2_clicked() //调节阀2
 {
 	stopSetRegularTimer();
-	m_nowRegNo = m_portsetinfo.regflow2No;
+	m_nowRegNo = m_portsetinfo.regSmallNo;
 	setRegBtnBackColor(m_regBtn[m_nowRegNo], false); //初始化调节阀背景色
 	m_controlObj->askControlRegulate(m_nowRegNo, ui.spinBoxValveOpening2->value());
 }
@@ -1076,7 +1076,7 @@ float AdjustRateDlg::getAccumFLowVolume(flow_rate_wdg idx)
 
 void AdjustRateDlg::on_lnEditKp_big_returnPressed()
 {
-	  if (m_nowRegNo == m_portsetinfo.regflow1No)
+	  if (m_nowRegNo == m_portsetinfo.regBigNo)
 	  {
 		  m_Kp = ui.lnEditKp_big->text().toFloat();
 	  }
@@ -1084,7 +1084,7 @@ void AdjustRateDlg::on_lnEditKp_big_returnPressed()
 
 void AdjustRateDlg::on_lnEditKi_big_returnPressed()
 {
-	if (m_nowRegNo == m_portsetinfo.regflow1No)
+	if (m_nowRegNo == m_portsetinfo.regBigNo)
 	{
 		m_Ki = ui.lnEditKi_big->text().toFloat();
 	}
@@ -1092,7 +1092,7 @@ void AdjustRateDlg::on_lnEditKi_big_returnPressed()
 
 void AdjustRateDlg::on_lnEditKd_big_returnPressed()
 {
-	if (m_nowRegNo == m_portsetinfo.regflow1No)
+	if (m_nowRegNo == m_portsetinfo.regBigNo)
 	{
 		m_Kd = ui.lnEditKd_big->text().toFloat();
 	}
@@ -1100,7 +1100,7 @@ void AdjustRateDlg::on_lnEditKd_big_returnPressed()
 
 void AdjustRateDlg::on_lnEditCycleTime_big_returnPressed()
 {
-	if (m_nowRegNo == m_portsetinfo.regflow1No)
+	if (m_nowRegNo == m_portsetinfo.regBigNo)
 	{
 		m_pickCycleTime = ui.lnEditCycleTime_big->text().toFloat();
 	}
@@ -1108,7 +1108,7 @@ void AdjustRateDlg::on_lnEditCycleTime_big_returnPressed()
 
 void AdjustRateDlg::on_lnEditMaxRate_big_returnPressed()
 {
-	if (m_nowRegNo == m_portsetinfo.regflow1No)
+	if (m_nowRegNo == m_portsetinfo.regBigNo)
 	{
 		m_maxRate = ui.lnEditMaxRate_big->text().toFloat();
 	}
@@ -1116,7 +1116,7 @@ void AdjustRateDlg::on_lnEditMaxRate_big_returnPressed()
 
 void AdjustRateDlg::on_lnEditTargetRate_big_returnPressed()
 {
-	if (m_nowRegNo == m_portsetinfo.regflow1No)
+	if (m_nowRegNo == m_portsetinfo.regBigNo)
 	{
 		m_targetRate = ui.lnEditTargetRate_big->text().toFloat();
 	}
@@ -1124,7 +1124,7 @@ void AdjustRateDlg::on_lnEditTargetRate_big_returnPressed()
 
 void AdjustRateDlg::on_lnEditKp_mid_returnPressed()
 {
-	if (m_nowRegNo == m_portsetinfo.regflow2No)
+	if (m_nowRegNo == m_portsetinfo.regSmallNo)
 	{
 		m_Kp = ui.lnEditKp_mid->text().toFloat();
 	}
@@ -1132,7 +1132,7 @@ void AdjustRateDlg::on_lnEditKp_mid_returnPressed()
 
 void AdjustRateDlg::on_lnEditKi_mid_returnPressed()
 {
-	if (m_nowRegNo == m_portsetinfo.regflow2No)
+	if (m_nowRegNo == m_portsetinfo.regSmallNo)
 	{
 		m_Ki = ui.lnEditKi_mid->text().toFloat();
 	}
@@ -1140,7 +1140,7 @@ void AdjustRateDlg::on_lnEditKi_mid_returnPressed()
 
 void AdjustRateDlg::on_lnEditKd_mid_returnPressed()
 {
-	if (m_nowRegNo == m_portsetinfo.regflow2No)
+	if (m_nowRegNo == m_portsetinfo.regSmallNo)
 	{
 		m_Kd = ui.lnEditKd_mid->text().toFloat();
 	}
@@ -1148,7 +1148,7 @@ void AdjustRateDlg::on_lnEditKd_mid_returnPressed()
 
 void AdjustRateDlg::on_lnEditCycleTime_mid_returnPressed()
 {
-	if (m_nowRegNo == m_portsetinfo.regflow2No)
+	if (m_nowRegNo == m_portsetinfo.regSmallNo)
 	{
 		m_pickCycleTime = ui.lnEditCycleTime_mid->text().toFloat();
 	}
@@ -1156,7 +1156,7 @@ void AdjustRateDlg::on_lnEditCycleTime_mid_returnPressed()
 
 void AdjustRateDlg::on_lnEditMaxRate_mid_returnPressed()
 {
-	if (m_nowRegNo == m_portsetinfo.regflow2No)
+	if (m_nowRegNo == m_portsetinfo.regSmallNo)
 	{
 		m_maxRate = ui.lnEditMaxRate_mid->text().toFloat();
 	}
@@ -1164,7 +1164,7 @@ void AdjustRateDlg::on_lnEditMaxRate_mid_returnPressed()
 
 void AdjustRateDlg::on_lnEditTargetRate_mid_returnPressed()
 {
-	if (m_nowRegNo == m_portsetinfo.regflow2No)
+	if (m_nowRegNo == m_portsetinfo.regSmallNo)
 	{
 		m_targetRate = ui.lnEditTargetRate_mid->text().toFloat();
 	}
