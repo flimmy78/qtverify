@@ -142,11 +142,6 @@ void CStdMeterReader::slotGetAccumStdMeterPulse(const QByteArray & valueArray)
 
 void CStdMeterReader::freshInstStdMeter()
 {
-	//m_mapInstWdg->value(FLOW_RATE_BIG)->display(getInstFlowRate(FLOW_RATE_BIG));
-	//m_mapInstWdg->value(FLOW_RATE_MID_2)->display(getInstFlowRate(FLOW_RATE_MID_2));
-	//m_mapInstWdg->value(FLOW_RATE_MID_1)->display(getInstFlowRate(FLOW_RATE_MID_1));
-	//m_mapInstWdg->value(FLOW_RATE_SMALL)->display(getInstFlowRate(FLOW_RATE_SMALL));
-
 	for (int i=FLOW_RATE_BIG; i<=FLOW_RATE_SMALL; i++)
 	{
 		if (m_mapInstWdg->keys().contains((flow_rate_wdg)i))
@@ -158,16 +153,11 @@ void CStdMeterReader::freshInstStdMeter()
 
 void CStdMeterReader::freshAccumStdMeter()
 {
-	//m_mapAccumWdg->value(FLOW_RATE_BIG)->display(getInstFlowRate(FLOW_RATE_BIG));
-	//m_mapAccumWdg->value(FLOW_RATE_MID_2)->display(getInstFlowRate(FLOW_RATE_MID_2));
-	//m_mapAccumWdg->value(FLOW_RATE_MID_1)->display(getInstFlowRate(FLOW_RATE_MID_1));
-	//m_mapAccumWdg->value(FLOW_RATE_SMALL)->display(getInstFlowRate(FLOW_RATE_SMALL));
-	
 	for (int i=FLOW_RATE_BIG; i<=FLOW_RATE_SMALL; i++)
 	{
 		if (m_mapAccumWdg->keys().contains((flow_rate_wdg)i))
 		{
-			m_mapAccumWdg->value((flow_rate_wdg)i)->display(getInstFlowRate((flow_rate_wdg)i));
+			m_mapAccumWdg->value((flow_rate_wdg)i)->display(getAccumFLowVolume((flow_rate_wdg)i));
 		}
 	}
 }
@@ -217,7 +207,7 @@ float CStdMeterReader::getInstFlowRate(flow_rate_wdg idx)
 	int route = getRouteByWdg(idx, INST_FLOW_VALUE);
 	int count = get9017RouteI(route, m_instStdPulse);
 	float upperFlow = getStdUpperFlow(idx);
-	//qDebug() <<"valve:--"<<idx<<" count:--"<<count<<" upperFlow:--"<<upperFlow;
+	qDebug() <<"wdg_idx:--"<<idx<<" InstCurrent:--"<<count<<" upperFlow:--"<<upperFlow;
 	return getInstStdValue(count, upperFlow);
 }
 
@@ -226,6 +216,6 @@ float CStdMeterReader::getAccumFLowVolume(flow_rate_wdg idx)
 	int route = getRouteByWdg(idx, ACCUM_FLOW_VALUE);
 	int count = get9150ARouteI(route, m_accumStdPulse);
 	double pulse = getStdPulse(idx);
-	//qDebug() <<"valve:--"<<idx<<" count:--"<<count<<" pulse:--"<<pulse;
+	qDebug() <<"wdg_idx:--"<<idx<<" AccumValue:--"<<count<<" pulse:--"<<pulse;
 	return count*pulse;
 }
