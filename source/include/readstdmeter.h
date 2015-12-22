@@ -55,18 +55,22 @@ public:
 	CStdMeterReader();
 	~CStdMeterReader();
 
-	void mapInstWdg(QMap<flow_rate_wdg, QLCDNumber *>*, QLCDNumber *);
-	void mapAccumWdg(QMap<flow_rate_wdg, QLCDNumber *>*, QLCDNumber *);
+	void mapInstWdg(QMap<flow_rate_wdg, QLCDNumber *>*, QLCDNumber*, bool onlyDispTotal=false);
+	void mapAccumWdg(QMap<flow_rate_wdg, QLCDNumber *>*, QLCDNumber*, bool onlyDispTotal=false);
 	void startReadMeter();
+	void startReadInstMeter();
+	void startReadAccumMeter();
 	void stopReadMeter();
+	void stopReadInstMeter();
+	void stopReadAccumMeter();
 private:
 	/*-------------------------瞬时流量---------------------------------*/
 	lcModRtuComObject *m_instantFlowCom;//瞬时流量串口对象
 	ComThread m_instantFlowThread;//瞬时流量采集线程
 	QTimer* m_instSTDMeterTimer;//瞬时流量计时器
-	QByteArray m_instStdPulse;//瞬时流量脉冲值, 需二次加工
+	QByteArray m_instStdCurrent;//瞬时流量电流值, 需二次加工
 	QLCDNumber* m_totalInstLcd;
-	QMap<flow_rate_wdg, QLCDNumber *>* m_mapInstWdg;
+	QMap<flow_rate_wdg, QLCDNumber *> *m_mapInstWdg;
 	/*-------------------------瞬时流量end------------------------------*/
 
 	/*-------------------------累积流量------------------------------------*/
@@ -77,8 +81,11 @@ private:
 	QLCDNumber* m_totalAccumLcd;
 	QMap<flow_rate_wdg, QLCDNumber *>* m_mapAccumWdg;
 	/*-------------------------累积流量end-----------------------------------*/
+
 	ReadComConfig *m_readComConfig;
 	QSettings *m_stdParam;//读取标准表设置
+	bool m_InstOnlyDispTotal;//是否只需显示总流速即可
+	bool m_AccumOnlyDispTotal;//是否只需显示总流量即可
 
 	void initObj();
 	void initInstStdCom();//瞬时流量串口初始化
