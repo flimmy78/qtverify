@@ -41,8 +41,6 @@ void CStdMeterReader::initObj()
 {
 	m_stdParam = new QSettings(getFullIniFileName("stdmtrparaset.ini"), QSettings::IniFormat);
 	m_readComConfig = new ReadComConfig;
-	initInstStdCom();
-	initAccumStdCom();
 }
 
 void CStdMeterReader::initInstStdCom()
@@ -76,6 +74,7 @@ void CStdMeterReader::mapInstWdg(QMap<flow_rate_wdg, QLCDNumber *> *mapWdg, QLCD
 	m_mapInstWdg = mapWdg;
 	m_totalInstLcd = totalInstWdg;
 	m_InstOnlyDispTotal = onlyDispTotal;
+	initInstStdCom();
 }
 
 void CStdMeterReader::mapAccumWdg(QMap<flow_rate_wdg, QLCDNumber *> *mapWdg, QLCDNumber *totalAccumWdg, bool onlyDispTotal)
@@ -83,6 +82,7 @@ void CStdMeterReader::mapAccumWdg(QMap<flow_rate_wdg, QLCDNumber *> *mapWdg, QLC
 	m_mapAccumWdg = mapWdg;
 	m_totalAccumLcd = totalAccumWdg;
 	m_AccumOnlyDispTotal = onlyDispTotal;
+	initAccumStdCom();
 }
 
 void CStdMeterReader::startReadMeter()
