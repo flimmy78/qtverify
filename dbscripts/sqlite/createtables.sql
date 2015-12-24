@@ -637,7 +637,7 @@ INSERT INTO T_Create_Query_View_Stmt
  'temp total_verify query result view', 
 'CREATE view V_Temp_Total_Query_Result as
 select
-	rec.F_ID,
+	rec.F_ID F_RowId,
     rec.F_TimeStamp,
     substr(rec.F_TimeStamp,1,16) F_TimeStamp_short,
 	substr(rec.F_MeterNo,7,8) F_MeterNo,
