@@ -594,70 +594,83 @@
     <name>QObject</name>
     <message>
         <location filename="../source/flow_result.cpp" line="273"/>
+        <location filename="../source/water_result.cpp" line="273"/>
         <source>time</source>
         <translation>time</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="274"/>
+        <location filename="../source/water_result.cpp" line="274"/>
         <source>MeterNO.</source>
         <translation>MeterNO.</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="275"/>
         <location filename="../source/total_result.cpp" line="205"/>
+        <location filename="../source/water_result.cpp" line="275"/>
         <source>FlowPoint</source>
         <translation>FlowPoint</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="276"/>
+        <location filename="../source/water_result.cpp" line="276"/>
         <source>Flow</source>
         <translation>Flow</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="277"/>
+        <location filename="../source/water_result.cpp" line="277"/>
         <source>Method</source>
         <translation>Method</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="278"/>
         <location filename="../source/total_result.cpp" line="207"/>
+        <location filename="../source/water_result.cpp" line="278"/>
         <source>MeterValue0</source>
         <translation>MeterValue0</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="279"/>
         <location filename="../source/total_result.cpp" line="208"/>
+        <location filename="../source/water_result.cpp" line="279"/>
         <source>MeterValue1</source>
         <translation>MeterValue1</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="280"/>
+        <location filename="../source/water_result.cpp" line="280"/>
         <source>BalValue0</source>
         <translation>BalValue0</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="281"/>
+        <location filename="../source/water_result.cpp" line="281"/>
         <source>BalValue1</source>
         <translation>BalValue1</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="282"/>
+        <location filename="../source/water_result.cpp" line="282"/>
         <source>F_StdMeterV0</source>
         <translation>F_StdMeterV0</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="283"/>
+        <location filename="../source/water_result.cpp" line="283"/>
         <source>F_StdMeterV1</source>
         <translation>F_StdMeterV1</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="284"/>
+        <location filename="../source/water_result.cpp" line="284"/>
         <source>PipeTemp</source>
         <translation>PipeTemp</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="285"/>
         <location filename="../source/total_result.cpp" line="216"/>
+        <location filename="../source/water_result.cpp" line="285"/>
         <source>Density</source>
         <translation>Density</translation>
     </message>
@@ -665,11 +678,13 @@
         <location filename="../source/cmb_result.cpp" line="226"/>
         <location filename="../source/flow_result.cpp" line="293"/>
         <location filename="../source/total_result.cpp" line="224"/>
+        <location filename="../source/water_result.cpp" line="293"/>
         <source>PickCode</source>
         <translation>PickCode</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="306"/>
+        <location filename="../source/water_result.cpp" line="306"/>
         <source>FlowCoe</source>
         <translation>FlowCoe</translation>
     </message>
@@ -708,6 +723,7 @@
     <message>
         <location filename="../source/cmb_result.cpp" line="241"/>
         <location filename="../source/flow_result.cpp" line="286"/>
+        <location filename="../source/water_result.cpp" line="286"/>
         <source>StdValue</source>
         <translation>StdValue</translation>
     </message>
@@ -723,6 +739,7 @@
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="287"/>
+        <location filename="../source/water_result.cpp" line="287"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
@@ -731,6 +748,7 @@
         <location filename="../source/cmb_result.cpp" line="247"/>
         <location filename="../source/flow_result.cpp" line="288"/>
         <location filename="../source/total_result.cpp" line="219"/>
+        <location filename="../source/water_result.cpp" line="288"/>
         <source>StdError</source>
         <translation>StdError</translation>
     </message>
@@ -739,11 +757,13 @@
         <location filename="../source/cmb_result.cpp" line="248"/>
         <location filename="../source/flow_result.cpp" line="289"/>
         <location filename="../source/total_result.cpp" line="220"/>
+        <location filename="../source/water_result.cpp" line="289"/>
         <source>Result</source>
         <translation>Result</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="290"/>
+        <location filename="../source/water_result.cpp" line="290"/>
         <source>MeterPosNO.</source>
         <translation>MeterPosNO.</translation>
     </message>
@@ -753,6 +773,7 @@
         <location filename="../source/flow_result.cpp" line="291"/>
         <location filename="../source/platinum_result.cpp" line="126"/>
         <location filename="../source/total_result.cpp" line="222"/>
+        <location filename="../source/water_result.cpp" line="291"/>
         <source>Model</source>
         <translation>Model</translation>
     </message>
@@ -762,6 +783,7 @@
         <location filename="../source/flow_result.cpp" line="292"/>
         <location filename="../source/platinum_result.cpp" line="125"/>
         <location filename="../source/total_result.cpp" line="223"/>
+        <location filename="../source/water_result.cpp" line="292"/>
         <source>Standard</source>
         <translation>Standard</translation>
     </message>
@@ -775,6 +797,7 @@
         <location filename="../source/flow_result.cpp" line="294"/>
         <location filename="../source/platinum_result.cpp" line="127"/>
         <location filename="../source/total_result.cpp" line="225"/>
+        <location filename="../source/water_result.cpp" line="294"/>
         <source>ManufactDept</source>
         <translation>ManufactDept</translation>
     </message>
@@ -784,6 +807,7 @@
         <location filename="../source/flow_result.cpp" line="295"/>
         <location filename="../source/platinum_result.cpp" line="128"/>
         <location filename="../source/total_result.cpp" line="226"/>
+        <location filename="../source/water_result.cpp" line="295"/>
         <source>VerifyDept</source>
         <translation>VerifyDept</translation>
     </message>
@@ -792,6 +816,7 @@
         <location filename="../source/cmb_result.cpp" line="227"/>
         <location filename="../source/flow_result.cpp" line="296"/>
         <location filename="../source/total_result.cpp" line="227"/>
+        <location filename="../source/water_result.cpp" line="296"/>
         <source>Grade</source>
         <translation>Grade</translation>
     </message>
@@ -817,6 +842,7 @@
         <location filename="../source/flow_result.cpp" line="297"/>
         <location filename="../source/platinum_result.cpp" line="130"/>
         <location filename="../source/total_result.cpp" line="228"/>
+        <location filename="../source/water_result.cpp" line="297"/>
         <source>VerifyPerson</source>
         <translation>VerifyPerson</translation>
     </message>
@@ -929,46 +955,54 @@
         <location filename="../source/flow_result.cpp" line="298"/>
         <location filename="../source/platinum_result.cpp" line="129"/>
         <location filename="../source/total_result.cpp" line="229"/>
+        <location filename="../source/water_result.cpp" line="298"/>
         <source>CheckPerson</source>
         <translation>CheckPerson</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="299"/>
+        <location filename="../source/water_result.cpp" line="299"/>
         <source>DeviceInfoId</source>
         <translation>DeviceInfoId</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="300"/>
         <location filename="../source/total_result.cpp" line="231"/>
+        <location filename="../source/water_result.cpp" line="300"/>
         <source>VerifyDate</source>
         <translation>VerifyDate</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="301"/>
         <location filename="../source/total_result.cpp" line="232"/>
+        <location filename="../source/water_result.cpp" line="301"/>
         <source>ValidDate</source>
         <translation>ValidDate</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="302"/>
+        <location filename="../source/water_result.cpp" line="302"/>
         <source>EnvTemp</source>
         <translation>EnvTemp</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="303"/>
         <location filename="../source/total_result.cpp" line="234"/>
+        <location filename="../source/water_result.cpp" line="303"/>
         <source>EnvHumidity</source>
         <translation>EnvHumidity</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="304"/>
         <location filename="../source/total_result.cpp" line="235"/>
+        <location filename="../source/water_result.cpp" line="304"/>
         <source>AirPressure</source>
         <translation>AirPressure</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="305"/>
         <location filename="../source/total_result.cpp" line="236"/>
+        <location filename="../source/water_result.cpp" line="305"/>
         <source>CertNO</source>
         <translation>CertNO</translation>
     </message>
@@ -1172,6 +1206,11 @@
         <source>TotalCoe</source>
         <translation></translation>
     </message>
+    <message>
+        <location filename="../source/water_result.cpp" line="307"/>
+        <source>WaterPress</source>
+        <translation>WaterPress</translation>
+    </message>
 </context>
 <context>
     <name>TotalResultClass</name>
@@ -1340,6 +1379,294 @@
         <location filename="../source/total_result.cpp" line="287"/>
         <source>Error</source>
         <translation>Error</translation>
+    </message>
+</context>
+<context>
+    <name>WaterResultClass</name>
+    <message>
+        <source>Flow Verify Result</source>
+        <translation type="obsolete">Flow Verify Result</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="34"/>
+        <source>Start Time:</source>
+        <translation>Start Time:</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="50"/>
+        <source>End Time:</source>
+        <translation>End Time:</translation>
+    </message>
+    <message>
+        <source>Standard</source>
+        <translation type="obsolete">Standard</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="108"/>
+        <source>ManuFacturer:</source>
+        <translation>ManuFacturer:</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="131"/>
+        <source>VerifyDept:</source>
+        <translation>VerifyDept:</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="154"/>
+        <source>VerifyPerson:</source>
+        <translation>VerifyPerson:</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="181"/>
+        <source>MeterNO:</source>
+        <translation>MeterNO:</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="204"/>
+        <source>Method:</source>
+        <translation>Method:</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="212"/>
+        <source>Weight</source>
+        <translation>Weight</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="217"/>
+        <source>StdMeter</source>
+        <translation>StdMeter</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="231"/>
+        <source>FlowPoint:</source>
+        <translation>FlowPoint:</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="244"/>
+        <location filename="../ui/water_result.ui" line="377"/>
+        <location filename="../ui/water_result.ui" line="459"/>
+        <source>1</source>
+        <translation>1</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="249"/>
+        <location filename="../ui/water_result.ui" line="382"/>
+        <location filename="../ui/water_result.ui" line="464"/>
+        <source>2</source>
+        <translation>2</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="254"/>
+        <location filename="../ui/water_result.ui" line="387"/>
+        <location filename="../ui/water_result.ui" line="469"/>
+        <source>3</source>
+        <translation>3</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="259"/>
+        <location filename="../ui/water_result.ui" line="392"/>
+        <location filename="../ui/water_result.ui" line="474"/>
+        <source>4</source>
+        <translation>4</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="277"/>
+        <source>Is Valid</source>
+        <translation>Is Valid</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="285"/>
+        <source>not valid</source>
+        <translation>invalid</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="290"/>
+        <source>valid</source>
+        <translation>valid</translation>
+    </message>
+    <message>
+        <source>Model</source>
+        <translation type="obsolete">Model</translation>
+    </message>
+    <message>
+        <source>Grade</source>
+        <translation type="obsolete">Grade</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="14"/>
+        <source>Water Verify Result</source>
+        <translation>Water Verify Result</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="76"/>
+        <source>Query</source>
+        <translation>Query</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="89"/>
+        <source>Export Excel</source>
+        <translation>Export Excel</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="309"/>
+        <source>Model:</source>
+        <translation>Model:</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="328"/>
+        <source>Grade:</source>
+        <translation>Grade:</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="348"/>
+        <source>Standard:</source>
+        <translation>Standard:</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="364"/>
+        <source>MeterPos:</source>
+        <translation>MeterPos:</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="397"/>
+        <location filename="../ui/water_result.ui" line="479"/>
+        <source>5</source>
+        <translation>5</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="402"/>
+        <location filename="../ui/water_result.ui" line="484"/>
+        <source>6</source>
+        <translation>6</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="407"/>
+        <location filename="../ui/water_result.ui" line="489"/>
+        <source>7</source>
+        <translation>7</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="412"/>
+        <location filename="../ui/water_result.ui" line="494"/>
+        <source>8</source>
+        <translation>8</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="417"/>
+        <location filename="../ui/water_result.ui" line="499"/>
+        <source>9</source>
+        <translation>9</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="422"/>
+        <location filename="../ui/water_result.ui" line="504"/>
+        <source>10</source>
+        <translation>10</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="427"/>
+        <location filename="../ui/water_result.ui" line="509"/>
+        <source>11</source>
+        <translation>11</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="432"/>
+        <location filename="../ui/water_result.ui" line="514"/>
+        <source>12</source>
+        <translation>12</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="446"/>
+        <source>DeviceID:</source>
+        <translation>DeviceID:</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="531"/>
+        <source>RecordNums:</source>
+        <translation>RecordNums:</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="547"/>
+        <source>Insert</source>
+        <translation>Insert</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="554"/>
+        <source>Stop</source>
+        <translation>Stop</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="599"/>
+        <source>Import</source>
+        <translation>Import</translation>
+    </message>
+    <message>
+        <location filename="../ui/water_result.ui" line="618"/>
+        <source>Exit</source>
+        <translation>Exit</translation>
+    </message>
+</context>
+<context>
+    <name>WaterResultDlg</name>
+    <message>
+        <location filename="../source/water_result.cpp" line="344"/>
+        <source>Warning</source>
+        <translation>Warning</translation>
+    </message>
+    <message>
+        <location filename="../source/water_result.cpp" line="344"/>
+        <source>no data need to be exported!</source>
+        <translation>no data need to be exported!</translation>
+    </message>
+    <message>
+        <location filename="../source/water_result.cpp" line="348"/>
+        <source>Save File</source>
+        <translation>Save File</translation>
+    </message>
+    <message>
+        <location filename="../source/water_result.cpp" line="348"/>
+        <source>Microsoft Excel (*.xls)</source>
+        <translation>Microsoft Excel (*.xls)</translation>
+    </message>
+    <message>
+        <location filename="../source/water_result.cpp" line="359"/>
+        <source>OK</source>
+        <translation>OK</translation>
+    </message>
+    <message>
+        <location filename="../source/water_result.cpp" line="359"/>
+        <source>export excel file successful!</source>
+        <translation>export excel file successful!</translation>
+    </message>
+    <message>
+        <location filename="../source/water_result.cpp" line="363"/>
+        <source>Error</source>
+        <translation>Error</translation>
+    </message>
+    <message>
+        <location filename="../source/water_result.cpp" line="404"/>
+        <source>Database Query Error</source>
+        <translation>Database Query Error</translation>
+    </message>
+    <message>
+        <location filename="../source/water_result.cpp" line="419"/>
+        <source>hint</source>
+        <translation>hint</translation>
+    </message>
+    <message>
+        <location filename="../source/water_result.cpp" line="419"/>
+        <source>no record need to import</source>
+        <translation>no record need to import</translation>
+    </message>
+    <message>
+        <location filename="../source/water_result.cpp" line="475"/>
+        <source>Import Success</source>
+        <translation>Import Success</translation>
+    </message>
+    <message>
+        <location filename="../source/water_result.cpp" line="480"/>
+        <source>Import Failed</source>
+        <translation>Import Failed</translation>
     </message>
 </context>
 </TS>
