@@ -154,7 +154,8 @@ void CStdMeterReader::slotGetInstStdMeterPulse(const QByteArray & valueArray)
 	for (int i=FLOW_RATE_BIG; i<=FLOW_RATE_SMALL; i++)
 		instValue += getInstFlowRate((flow_rate_wdg)i);
 
-	m_totalInstLcd->display(instValue);
+	if(m_totalInstLcd)
+		m_totalInstLcd->display(instValue);
 }
 
 void CStdMeterReader::slotGetAccumStdMeterPulse(const QByteArray & valueArray)
@@ -168,7 +169,8 @@ void CStdMeterReader::slotGetAccumStdMeterPulse(const QByteArray & valueArray)
 	for (int i=FLOW_RATE_BIG; i<=FLOW_RATE_SMALL; i++)
 		accumValue += getAccumFLowVolume((flow_rate_wdg)i);
 
-	m_totalAccumLcd->display(accumValue);	
+	if(m_totalAccumLcd)
+		m_totalAccumLcd->display(accumValue);	
 }
 
 void CStdMeterReader::freshInstStdMeter()
