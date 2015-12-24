@@ -1376,12 +1376,12 @@ Please check each flow point&apos;s quantity</source>
     <message>
         <location filename="../ui/setcomdlg.ui" line="637"/>
         <source>Balance</source>
-        <translation>天平</translation>
+        <translation>大天平</translation>
     </message>
     <message>
         <location filename="../ui/setcomdlg.ui" line="942"/>
         <source>Balance2</source>
-        <translation>2#天平</translation>
+        <translation>小天平</translation>
     </message>
     <message>
         <location filename="../ui/setcomdlg.ui" line="1298"/>
@@ -1392,7 +1392,7 @@ Please check each flow point&apos;s quantity</source>
     <message>
         <location filename="../ui/setcomdlg.ui" line="2604"/>
         <source>BalanceType2</source>
-        <translation>2#天平参数</translation>
+        <translation>小天平参数</translation>
     </message>
     <message>
         <location filename="../ui/setcomdlg.ui" line="2903"/>
@@ -1527,7 +1527,7 @@ Please check each flow point&apos;s quantity</source>
     <message>
         <location filename="../ui/setcomdlg.ui" line="1247"/>
         <source>BalanceType</source>
-        <translation>天平参数</translation>
+        <translation>大天平参数</translation>
     </message>
     <message>
         <location filename="../ui/setcomdlg.ui" line="1259"/>
