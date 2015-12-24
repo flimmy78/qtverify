@@ -17,6 +17,27 @@ class ParaSetReader;
 class ReadComConfig;
 class CStdMeterReader;
 
+#define RELEASE_PTR(ptr)		if (ptr != NULL)\
+								{\
+									delete ptr;\
+									ptr = NULL;\
+								}
+
+#define RELEASE_TIMER(timerptr)		if (timerptr != NULL)\
+									{\
+										if (timerptr->isActive())\
+										{\
+											timerptr->stop();\
+										}\
+										delete timerptr;\
+										timerptr = NULL;\
+									}
+
+#define EXIT_THREAD(th)		if (th.isRunning())\
+							{\
+								th.exit();\
+							}
+
 class SYSTEMSETDLG_EXPORT StdMtrCoeCorrect : public QWidget
 {
 	Q_OBJECT
@@ -55,6 +76,8 @@ public slots:
 	void on_lineEditOpeningMid1_textChanged(const QString & text);
 	void on_lineEditOpeningMid2_textChanged(const QString & text);
 	void on_lineEditOpeningBig_textChanged(const QString & text);
+	void on_btnStdMeterV0_clicked();//读取标准表初值
+	void on_btnStdMeterV1_clicked();//读取标准表终值
 
 private slots:
 	void slotExaustFinished();    //排气时间结束
@@ -171,6 +194,7 @@ private:
 	void initControlCom2();    //阀门控制串口2
 	void initValveStatus();	   //初始化阀门状态
 	void initRegulateStatus(); //初始化电动调节阀状态
+	void initTableWdg();	   //初始化表格画面
 	int readNowParaConfig();	 //获取当前检定参数
 	int startExhaustCountDown();  //开始排气倒计时
 	int openAllValveAndPump();    //打开所有阀门和水泵

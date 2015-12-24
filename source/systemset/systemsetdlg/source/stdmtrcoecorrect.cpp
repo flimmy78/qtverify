@@ -72,7 +72,7 @@ StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 	//映射关系；初始化阀门状态	
 	initValveStatus();      
 	initRegulateStatus();
-
+	initTableWdg();//初始化表格
 	m_exaustTimer = NULL;
 	m_exaustTimer = new QTimer(this); //排气定时器
 	connect(m_exaustTimer, SIGNAL(timeout()), this, SLOT(slotExaustFinished()));
@@ -100,6 +100,7 @@ StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 	model->select();  
 
 	m_paraSetDlg = NULL;    //参数设置对话框
+	m_paraSetReader = NULL;
 	m_paraSetReader = new ParaSetReader(); //读参数设置接口
 	if (!readNowParaConfig()) //获取当前检定参数
 	{
@@ -134,15 +135,6 @@ StdMtrCoeCorrect::~StdMtrCoeCorrect()
 void StdMtrCoeCorrect::showEvent(QShowEvent * event)
 {
 	qDebug()<<"StdMtrCoeCorrect::showEvent";
-
-	ui.tableWidget->setRowCount(18);
-	ui.tableWidget->verticalHeader()->setVisible(false);
-	for (int i=0; i<ui.tableWidget->rowCount(); i+=3)
-	{
-		ui.tableWidget->setSpan(i,0,3,1);
-		ui.tableWidget->setSpan(i,8,3,1);
-		ui.tableWidget->setSpan(i,9,3,1);
-	}
 }
 
 void StdMtrCoeCorrect::closeEvent( QCloseEvent * event)
@@ -172,123 +164,36 @@ void StdMtrCoeCorrect::closeEvent( QCloseEvent * event)
 	ui.labelHintProcess->clear();
 	ui.btnStart->setEnabled(true);
 
-	if (m_paraSetReader) //读检定参数
-	{
-		delete m_paraSetReader;
-		m_paraSetReader = NULL;
-	}
+	RELEASE_PTR(m_paraSetReader) //读检定参数
+	RELEASE_PTR(m_paraSetDlg)//参数设置对话框
+	RELEASE_PTR(m_readComConfig)//读串口设置
+	RELEASE_PTR(m_chkAlg)//计算类
 
-	if (m_paraSetDlg)    //参数设置对话框
-	{
-		delete m_paraSetDlg;
-		m_paraSetDlg = NULL;
-	}
+	EXIT_THREAD(m_tempThread)// 温度采集
+	RELEASE_PTR(m_tempObj)
+	
+	//天平采集
+	EXIT_THREAD(m_balanceThread)
+	RELEASE_PTR(m_balanceObj)
+	EXIT_THREAD(m_balanceThread2)
+	RELEASE_PTR(m_balanceObj2)
 
-	if (m_readComConfig) //读串口设置
-	{
-		delete m_readComConfig;
-		m_readComConfig = NULL;
-	}
+	RELEASE_TIMER(m_tempTimer)//采集温度计时器
+	EXIT_THREAD(m_tempThread) //温度采集线程
+	RELEASE_PTR(m_tempObj)
 
-	if (m_tempThread.isRunning())  // 温度采集
-	{
-		m_tempThread.exit(); //否则日志中会有警告"QThread: Destroyed while thread is still running"
-		if (m_tempObj)
-		{
-			delete m_tempObj;
-			m_tempObj = NULL; 
-		}	 		 		
-	}	   
-
-	if (m_tempTimer) //采集温度计时器
-	{
-		if (m_tempTimer->isActive())
-		{
-			m_tempTimer->stop();
-		}
-		delete m_tempTimer;
-		m_tempTimer = NULL;
-	}
-
-
-	if (m_controlObj)  //阀门控制
-	{
-		delete m_controlObj;
-		m_controlObj = NULL;
-
-		m_valveThread.exit();
-	}
-
-	if (m_controlObj2)  //阀门控制2
-	{
-		delete m_controlObj2;
-		m_controlObj2 = NULL;
-
-		m_valveThread2.exit();
-	}
-
-	if (m_chkAlg)//计算类
-	{
-		delete m_chkAlg;
-		m_chkAlg = NULL;
-	}
-
-	if (m_exaustTimer) //排气计时器
-	{
-		if (m_exaustTimer->isActive())
-		{
-			m_exaustTimer->stop();
-		}
-		delete m_exaustTimer;
-		m_exaustTimer = NULL;
-	}
-
+	EXIT_THREAD(m_valveThread);
+	RELEASE_PTR(m_controlObj)  //阀门控制
+	EXIT_THREAD(m_valveThread2);	
+	RELEASE_PTR(m_controlObj2)  //阀门控制2
+	RELEASE_TIMER(m_exaustTimer) //排气计时器
 	//计时器，用于动态显示调节阀开度
-	if (m_regSmallTimer)
-	{
-		if (m_regSmallTimer->isActive())
-		{
-			m_regSmallTimer->stop();
-		}
-		delete m_regSmallTimer;
-		m_regSmallTimer = NULL;
-	}
+	RELEASE_TIMER(m_regSmallTimer)
+	RELEASE_TIMER(m_regMid1Timer)
+	RELEASE_TIMER(m_regMid2Timer)
+	RELEASE_TIMER(m_regBigTimer)
 
-	if (m_regMid1Timer)
-	{
-		if (m_regMid1Timer->isActive())
-		{
-			m_regMid1Timer->stop();
-		}
-		delete m_regMid1Timer;
-		m_regMid1Timer = NULL;
-	}
-
-	if (m_regMid2Timer)
-	{
-		if (m_regMid2Timer->isActive())
-		{
-			m_regMid2Timer->stop();
-		}
-		delete m_regMid2Timer;
-		m_regMid2Timer = NULL;
-	}
-
-	if (m_regBigTimer)
-	{
-		if (m_regBigTimer->isActive())
-		{
-			m_regBigTimer->stop();
-		}
-		delete m_regBigTimer;
-		m_regBigTimer = NULL;
-	}
-
-	if (m_stdMeterReader)
-	{
-		delete m_stdMeterReader;
-		m_stdMeterReader = NULL;
-	}
+	RELEASE_PTR(m_stdMeterReader)//标准表读取
 
 	emit signalClosed();
 }
@@ -305,6 +210,18 @@ void StdMtrCoeCorrect::resizeEvent(QResizeEvent * event)
 	int hSize = (int)((tw-vw-10)/ui.tableWidget->columnCount());
 	ui.tableWidget->verticalHeader()->setDefaultSectionSize(vSize);
 	ui.tableWidget->horizontalHeader()->setDefaultSectionSize(hSize);
+}
+
+void StdMtrCoeCorrect::initTableWdg()
+{
+	ui.tableWidget->setRowCount(18);
+	ui.tableWidget->verticalHeader()->setVisible(false);
+	for (int i=0; i<ui.tableWidget->rowCount(); i+=3)
+	{
+		ui.tableWidget->setSpan(i,0,3,1);
+		ui.tableWidget->setSpan(i,8,3,1);
+		ui.tableWidget->setSpan(i,9,3,1);
+	}
 }
 
 //天平采集串口 上位机直接采集
@@ -448,18 +365,22 @@ void StdMtrCoeCorrect::initRegulateStatus()
 
 	//计时器，动态显示调节阀开度
 	m_smallOpening = 0;
+	m_regSmallTimer = NULL;
 	m_regSmallTimer = new QTimer();
 	connect(m_regSmallTimer, SIGNAL(timeout()), this, SLOT(slotFreshSmallRegOpening()));
 
 	m_mid1Opening = 0;
+	m_regMid1Timer = NULL;
 	m_regMid1Timer = new QTimer();
 	connect(m_regMid1Timer, SIGNAL(timeout()), this, SLOT(slotFreshMid1RegOpening()));
 
 	m_mid2Opening = 0;
+	m_regMid2Timer = NULL;
 	m_regMid2Timer = new QTimer();
 	connect(m_regMid2Timer, SIGNAL(timeout()), this, SLOT(slotFreshMid2RegOpening()));
 
 	m_bigOpening = 0;
+	m_regBigTimer = NULL;
 	m_regBigTimer = new QTimer();
 	connect(m_regBigTimer, SIGNAL(timeout()), this, SLOT(slotFreshBigRegOpening()));
 }
@@ -800,17 +721,19 @@ int StdMtrCoeCorrect::calcMeterError(int idx)
 //打开阀门
 int StdMtrCoeCorrect::openValve(UINT8 portno)
 {	
-	if (NULL == m_controlObj)
-	{
-		return false;
-	}
 	if (portno <= 8)
 	{
-		m_controlObj->askControlRelay(portno, VALVE_OPEN);
+		if (m_controlObj)
+			m_controlObj->askControlRelay(portno, VALVE_OPEN);
+		else
+			return false;
 	}
 	else
 	{
-		m_controlObj2->askControlRelay(portno-8, VALVE_OPEN);
+		if (m_controlObj2)
+			m_controlObj2->askControlRelay(portno-8, VALVE_OPEN);
+		else
+			return false;
 	}
 	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
 	{
@@ -822,17 +745,19 @@ int StdMtrCoeCorrect::openValve(UINT8 portno)
 //关闭阀门
 int StdMtrCoeCorrect::closeValve(UINT8 portno)
 {
-	if (NULL == m_controlObj)
-	{
-		return false;
-	}
 	if (portno <= 8)
 	{
-		m_controlObj->askControlRelay(portno, VALVE_CLOSE);
+		if (m_controlObj)
+			m_controlObj->askControlRelay(portno, VALVE_CLOSE);
+		else
+			return false;
 	}
 	else
 	{
-		m_controlObj2->askControlRelay(portno-8, VALVE_CLOSE);
+		if (m_controlObj2)
+			m_controlObj2->askControlRelay(portno-8, VALVE_CLOSE);
+		else
+			return false;
 	}
 	if (m_portsetinfo.version==OLD_CTRL_VERSION) //老控制板 无反馈
 	{
@@ -950,15 +875,10 @@ void StdMtrCoeCorrect::setRegBtnBackColor(QPushButton *btn, bool status)
 //参数设置
 void StdMtrCoeCorrect::on_btnParaSet_clicked()
 {
-	if (NULL == m_paraSetDlg)
-	{
-		m_paraSetDlg = new ParaSetDlg();
-	}
-	else
-	{
+	if (NULL != m_paraSetDlg)
 		delete m_paraSetDlg;
-		m_paraSetDlg = new ParaSetDlg();
-	}
+
+	m_paraSetDlg = new ParaSetDlg();	
 	connect(m_paraSetDlg, SIGNAL(saveSuccessSignal()), this, SLOT(readNowParaConfig()));
 	m_paraSetDlg->show();
 }
@@ -1034,11 +954,18 @@ void StdMtrCoeCorrect::on_btnWaterPump_clicked()
 */
 void StdMtrCoeCorrect::on_btnSetFreq_clicked()
 {
-	if (NULL == m_controlObj)
-	{
-		return;
-	}
-	m_controlObj->askSetDriverFreq(ui.spinBoxFreq->value());
+	if (m_controlObj)
+		m_controlObj->askSetDriverFreq(ui.spinBoxFreq->value());
+}
+
+void StdMtrCoeCorrect::on_btnStdMeterV0_clicked()
+{
+
+}
+
+void StdMtrCoeCorrect::on_btnStdMeterV1_clicked()
+{
+
 }
 
 //获取表初值
