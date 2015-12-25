@@ -1096,7 +1096,7 @@ void StdTempComObject::writeStdTempComBuffer(stdTempCommand command)
 		default:
 			break;
 		}
-		sleep(2000);
+		wait(2000);
 		m_tempCom->write("M");
 		break;
 	default:
