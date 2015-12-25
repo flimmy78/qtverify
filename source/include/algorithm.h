@@ -44,6 +44,8 @@ ALGORITHM_EXPORT QByteArray getCRCArray(UINT16);//将CRC计算结果转换为QByteArray
 ALGORITHM_EXPORT int get9150ARouteI(int i, QByteArray valueArray);//获取力创模块中通道i的脉冲值
 ALGORITHM_EXPORT int get9017RouteI(int i, QByteArray valueArray);//获取力创模块中通道i的脉冲值
 ALGORITHM_EXPORT float getInstStdValue(float, float);//计算当前电流值对应的标准表瞬时流速
+ALGORITHM_EXPORT float getWaterMeterStdError(float Q2, int grade, float temper, float flow); //计算水表的标准误差
+
 const float density[150] = { //压力<=0.6MPa
 	1000.2f,
 	1000.2f,

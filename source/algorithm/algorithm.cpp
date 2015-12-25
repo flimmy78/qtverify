@@ -423,6 +423,71 @@ float getInstStdValue(float elecValue, float upperValue)
 
 	return 0.0f;	
 }
+
+
+/*
+** 计算水表的标准误差
+*/
+float getWaterMeterStdError(float Q2, int grade, float temper, float flow)
+{
+	float stdErr = 0.02;
+	switch (grade)
+	{
+	case 1: //一级水表
+		if (temper>=0.1 && temper<=30)
+		{
+			if (flow >= Q2) //高区
+			{
+				stdErr = 0.01;
+			}
+			else //低区
+			{
+				stdErr = 0.03;
+			}
+		}
+		else
+		{
+			if (flow >= Q2) //高区
+			{
+				stdErr = 0.02;
+			}
+			else //低区
+			{
+				stdErr = 0.03;
+			}
+		}
+		break;
+	case 2: //二级水表
+		if (temper>=0.1 && temper<=30)
+		{
+			if (flow >= Q2) //高区
+			{
+				stdErr = 0.02;
+			}
+			else //低区
+			{
+				stdErr = 0.05;
+			}
+		}
+		else
+		{
+			if (flow >= Q2) //高区
+			{
+				stdErr = 0.03;
+			}
+			else //低区
+			{
+				stdErr = 0.05;
+			}
+		}
+		break;
+	default:
+		break;
+	}
+
+	return stdErr*100;
+}
+
 /**********************************************************
 类名：CAlgorithm
 功能：检定算法类
