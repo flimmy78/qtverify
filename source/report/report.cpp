@@ -179,7 +179,10 @@ void CReport::mergeBody()
 		start_col = end_col = m_rpt_config->value("tablebody/" + need_merge[i]).toInt();
 
 		QStringList cur_merge_info = m_rpt_config->value("mergeInfo/" + need_merge[i]).toStringList();
-
+		if (cur_merge_info.count() == 0)
+		{//如果needMerge中的合并字段名在下面的详细信息中找不到, 就抛出异常
+			throw QString("can not find the detail info for %1 below!").arg(need_merge[i]);
+		}
 		if (need_merge[i].toLower() == "valid_en")
 		{
 			mergeBool(need_merge[i], cur_merge_info);
