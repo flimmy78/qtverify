@@ -344,7 +344,7 @@ void WaterResultDlg::on_btnExport_clicked()
 		QMessageBox::warning(this, tr("Warning"), tr("no data need to be exported!"));
 		return;
 	}
-	QString defaultPath = QProcessEnvironment::systemEnvironment().value("ADEHOME") + "\\report\\flow\\"+(ui.cmbMethod->currentIndex() ? "std\\":"mass\\") + QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss");
+	QString defaultPath = QProcessEnvironment::systemEnvironment().value("ADEHOME") + "\\report\\water\\"+(ui.cmbMethod->currentIndex() ? "std\\":"mass\\") + QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss");
 	QString file = QFileDialog::getSaveFileName(this, tr("Save File"), defaultPath, tr("Microsoft Excel (*.xls)"));//获取保存路径
 	if (!file.isEmpty())
 	{
