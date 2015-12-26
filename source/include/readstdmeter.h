@@ -52,7 +52,7 @@ class READSTDMETER_EXPORT CStdMeterReader : public QObject
 	Q_OBJECT
 
 public:
-	CStdMeterReader();
+	CStdMeterReader(QObject* parent=0);
 	~CStdMeterReader();
 
 	void mapInstWdg(QMap<flow_rate_wdg, QLCDNumber *>*, QLCDNumber*, bool onlyDispTotal=false);

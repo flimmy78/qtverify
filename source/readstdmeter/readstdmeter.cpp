@@ -1,6 +1,6 @@
 #include "readstdmeter.h"
 
-CStdMeterReader::CStdMeterReader()
+CStdMeterReader::CStdMeterReader(QObject* parent) : QObject(parent)
 {
 	m_instantFlowCom		= NULL;
 	m_instSTDMeterTimer		= NULL;
