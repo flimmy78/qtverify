@@ -701,12 +701,12 @@ Please check each flow point&apos;s quantity</source>
 <context>
     <name>SetComDlg</name>
     <message>
-        <location filename="../source/setcomdlg.cpp" line="113"/>
+        <location filename="../source/setcomdlg.cpp" line="114"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../source/setcomdlg.cpp" line="113"/>
+        <location filename="../source/setcomdlg.cpp" line="114"/>
         <source>Save Settings Successfully !</source>
         <translation>保存成功!</translation>
     </message>
@@ -2800,6 +2800,109 @@ Please check each flow point&apos;s quantity</source>
     </message>
 </context>
 <context>
+    <name>StdMtrCoeCorrect</name>
+    <message>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="43"/>
+        <source>Warning</source>
+        <translation>警告</translation>
+    </message>
+    <message>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="43"/>
+        <source>Warning:get port set info failed!</source>
+        <translation>警告: 端口设置信息获取失败!</translation>
+    </message>
+    <message>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="117"/>
+        <source>Question</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="117"/>
+        <source>Exit Really ?</source>
+        <translation>确定关闭?</translation>
+    </message>
+    <message>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="186"/>
+        <source>Flow Point
+(m3/h)</source>
+        <translation>流量点
+ (m³/h)</translation>
+    </message>
+    <message>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="187"/>
+        <source>balance V0
+(kg)</source>
+        <translation>天平初值
+(kg)</translation>
+    </message>
+    <message>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="188"/>
+        <source>balance V1
+(kg)</source>
+        <translation>天平终值
+(kg)</translation>
+    </message>
+    <message>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="189"/>
+        <source>balance value
+(kg)</source>
+        <translation>天平示值
+(kg)</translation>
+    </message>
+    <message>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="190"/>
+        <source>density
+(kg/L)</source>
+        <translation>密度
+(kg/L)</translation>
+    </message>
+    <message>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="191"/>
+        <source>Actual Value
+(L)</source>
+        <translation>实际值
+(L)</translation>
+    </message>
+    <message>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="192"/>
+        <source>Stand Meter Value0
+(L)</source>
+        <translation>标准表初值
+(L)</translation>
+    </message>
+    <message>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="193"/>
+        <source>Stand Meter Value1
+(L)</source>
+        <translation>标准表终值
+(L)</translation>
+    </message>
+    <message>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="194"/>
+        <source>Stand Meter DispValue
+(L)</source>
+        <translation>标准表示值
+(L)</translation>
+    </message>
+    <message>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="195"/>
+        <source>Meter Coe</source>
+        <translation>标准表系数</translation>
+    </message>
+    <message>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="196"/>
+        <source>AVG Meter Coe</source>
+        <translation>标准表平均系数</translation>
+    </message>
+    <message>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="197"/>
+        <source>repetitiveness
+(%)</source>
+        <translation>重复性
+(%)</translation>
+    </message>
+</context>
+<context>
     <name>StdMtrCoeCorrectClass</name>
     <message utf8="true">
         <source>标准表系数标定</source>
@@ -2822,9 +2925,10 @@ Please check each flow point&apos;s quantity</source>
         <translation type="obsolete">末值</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="297"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="399"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="501"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="391"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="493"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="595"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1872"/>
         <source>L</source>
         <translation>L</translation>
     </message>
@@ -2854,145 +2958,353 @@ Please check each flow point&apos;s quantity</source>
         <translation>标准表系数标定</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrcoecorrect.ui" line="762"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;hint：if set K Coe，please select &apos;Don&apos;t Amend State&apos;；&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;If you want to verify the accuracy of the correctted meter, please choose the verify state&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;提示：如果要进行K系数标定，请选择无修正状态；&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;如果要验证标准表修正后示值准确度，请选择修正状态&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;提示：如果要进行K系数标定，请选择无修正状态；&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;如果要验证标准表修正后示值准确度，请选择修正状态&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="198"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="201"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1308"/>
+        <source>DN50</source>
+        <translation>DN50</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="245"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1031"/>
+        <source>DN3</source>
+        <translation>DN3</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="292"/>
         <source>calc stand meter value</source>
         <translation>计算标准表示值</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="243"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="516"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="337"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="610"/>
         <source>V0</source>
         <translation>初值</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="345"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="529"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="439"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="623"/>
         <source>V1</source>
         <translation>终值</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="447"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="541"/>
         <source>value</source>
         <translation>示值</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="665"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="656"/>
+        <source>Regulator</source>
+        <translation>调节阀</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="727"/>
+        <source>Small</source>
+        <translation>小</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="817"/>
+        <source>Mid1</source>
+        <translation>中一</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="923"/>
+        <source>Mid2</source>
+        <translation>中二</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1013"/>
+        <source>Big</source>
+        <translation>大</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1049"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1140"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1231"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1326"/>
+        <source>Inst</source>
+        <translation>瞬时</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1090"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1159"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1272"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1367"/>
+        <source>Accum</source>
+        <translation>累积</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1415"/>
+        <source>DataAcquisition</source>
+        <translation>数据采集</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1427"/>
+        <source>Big Balance: </source>
+        <translation>大天平:</translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1443"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1472"/>
+        <source>㎏  </source>
+        <translation>㎏  </translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1456"/>
+        <source>Small Balance: </source>
+        <translation>小天平:</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1485"/>
+        <source>FlowRate:</source>
+        <translation>流速:</translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1501"/>
+        <source>m³/h</source>
+        <translation>m³/h</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1514"/>
+        <source>In Temp:</source>
+        <translation>进口温度:</translation>
+    </message>
+    <message utf8="true">
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1530"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1543"/>
+        <source>℃</source>
+        <translation>℃</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1556"/>
+        <source>Out Temp:</source>
+        <translation>出口温度:</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1856"/>
+        <source>volume:</source>
+        <translation>体积:</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1950"/>
+        <source>Controller</source>
+        <translation>控制</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1996"/>
+        <source>Hz</source>
+        <translation>Hz</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2021"/>
+        <source>i
+n</source>
+        <translation>进
+水
+阀</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2047"/>
+        <source>s
+m
+a
+l
+l</source>
+        <translation>小
+阀</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2076"/>
+        <source>m
+i
+d
+1</source>
+        <translation>中
+一</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2104"/>
+        <source>m
+i
+d
+2</source>
+        <translation>中
+二</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2132"/>
+        <source>b
+i
+g</source>
+        <translation>大
+阀</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2159"/>
+        <source>b
+i
+g
+i
+n</source>
+        <translation>大
+天
+平
+进
+口
+阀</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2188"/>
+        <source>b
+i
+g
+o
+u
+t</source>
+        <translation>大
+天
+平
+出
+口
+阀</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2218"/>
+        <source>s
+i
+n</source>
+        <translation>小
+天
+平
+进
+口
+阀</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2245"/>
+        <source>s
+o
+u
+t</source>
+        <translation>小
+天
+平
+出
+口
+阀</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2273"/>
+        <source>Set Freq</source>
+        <translation>设置频率</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2298"/>
+        <source>Pump</source>
+        <translation>水泵</translation>
+    </message>
+    <message>
         <source>choose state</source>
-        <translation>状态选择</translation>
+        <translation type="obsolete">状态选择</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="708"/>
         <source>adjust</source>
-        <translation>调整误差</translation>
+        <translation type="obsolete">调整误差</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="752"/>
         <source>not adjust</source>
-        <translation>不调整误差</translation>
+        <translation type="obsolete">不调整误差</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="64"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="70"/>
         <source>choose stand meter</source>
         <translation>标准表选择</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="107"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="113"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1122"/>
         <source>DN10</source>
         <translation>DN10</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="151"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="157"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1213"/>
         <source>DN25</source>
         <translation>DN25</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="567"/>
         <source>Flow Point
  (kg)</source>
-        <translation>流量点
+        <translation type="obsolete">流量点
  (kg)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="573"/>
         <source>balance V0
  (kg)</source>
-        <translation>天平初值 V0
+        <translation type="obsolete">天平初值 V0
  (kg)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="579"/>
         <source>balance V1
  (kg)</source>
-        <translation>天平终值 V1
+        <translation type="obsolete">天平终值 V1
  (kg)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="585"/>
         <source>balance value
  (kg)</source>
-        <translation>天平终值
+        <translation type="obsolete">天平终值
  (kg)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="591"/>
         <source>density
 (kg/L)</source>
-        <translation>密度
+        <translation type="obsolete">密度
 (kg/L)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="597"/>
         <source>Actual Value
  (L)</source>
-        <translation>实际值
+        <translation type="obsolete">实际值
  (L)</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrcoecorrect.ui" line="603"/>
         <source>Stand Meter Value
  （L)</source>
-        <translation>标准表示值
+        <translation type="obsolete">标准表示值
  （L)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="609"/>
         <source>Meter Coe</source>
-        <translation>标准表系数</translation>
+        <translation type="obsolete">标准表系数</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="614"/>
         <source>AVG Meter Coe</source>
-        <translation>标准表平均系数</translation>
+        <translation type="obsolete">标准表平均系数</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="619"/>
         <source>repetitiveness
  (%)</source>
-        <translation>重复性
+        <translation type="obsolete">重复性
  (%)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="777"/>
         <source>Clear</source>
-        <translation>清空</translation>
+        <translation type="obsolete">清空</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="790"/>
         <source>Report</source>
-        <translation>报表导出</translation>
+        <translation type="obsolete">报表导出</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="803"/>
         <source>Save</source>
-        <translation>保存</translation>
+        <translation type="obsolete">保存</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="816"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1923"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
