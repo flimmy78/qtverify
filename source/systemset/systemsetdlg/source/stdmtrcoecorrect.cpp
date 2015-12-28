@@ -719,6 +719,8 @@ void StdMtrCoeCorrect::on_tableWidget_cellChanged(int row, int column)
 	float density=0.0;
 	float balDisp=0.0;
 	int notEmpty = 0;
+	int startRow = 0;
+	int endRow   = 0;
 
 	switch (column)
 	{
@@ -783,34 +785,37 @@ void StdMtrCoeCorrect::on_tableWidget_cellChanged(int row, int column)
 		{
 			value1 = ui.tableWidget->item(row,COL_STDVD)->text().toFloat(&ok);
 			value0 = ui.tableWidget->item(row,COL_BALVC)->text().toFloat(&ok);
-			ui.tableWidget->item(row,COL_STDERR)->setText(QString::number(value1/value0));
+			ui.tableWidget->item(row,COL_STDERR)->setText(QString::number(value0/value1));
 		}
 		break;
 	case COL_STDERR:
 		notEmpty = 0;
 		value0 = 0.0;
-		for (int i=getStartRow(row); i<=getStartRow(row)+CHK_CNTS-1; i++)
+		startRow = getStartRow(row);
+		endRow   = startRow + CHK_CNTS - 1;
+		for (int i=startRow; i<=endRow; i++)
 		{
 			if (!ui.tableWidget->item(i,COL_STDERR)->text().isEmpty())
 			{
 				notEmpty++;
-				value0 += ui.tableWidget->item(i,COL_STDERR)->text().toFloat(&ok);
+				value0 += ui.tableWidget->item(i, COL_STDERR)->text().toFloat(&ok);
 			}
 		}
 
 		if (notEmpty > 0)
 		{
 			avr = value0/notEmpty;
-			ui.tableWidget->item(getStartRow(row),COL_STDERR_AVR)->setText(QString::number(avr));
+			ui.tableWidget->item(startRow, COL_STDERR_AVR)->setText(QString::number(avr));
 
 			if (notEmpty == CHK_CNTS)
 			{
-				for (int i=getStartRow(row); i<=getStartRow(row)+CHK_CNTS-1; i++)
+				//重复性 = SQRT(SUM(SQUARE(误差i-算术平均误差),0...N-1)/(N-1))x100%
+				for (int i=startRow; i<=endRow; i++)
 				{
-					value0 = ui.tableWidget->item(i,COL_STDERR)->text().toFloat(&ok);
+					value0 = ui.tableWidget->item(i, COL_STDERR)->text().toFloat(&ok);
 					rep += (value0-avr)*(value0-avr);
 				}
-				ui.tableWidget->item(row,COL_STDREP)->setText(QString::number(qSqrt(rep/(CHK_CNTS-1))));
+				ui.tableWidget->item(startRow, COL_STDREP)->setText(QString::number(100*qSqrt(rep/(CHK_CNTS-1))));
 			}
 		}
 		break;
