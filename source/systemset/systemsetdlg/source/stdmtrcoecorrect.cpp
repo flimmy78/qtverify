@@ -1,15 +1,15 @@
-/***********************************************
-**  ÎÄ¼şÃû:     flowstandard50.cpp
-**  ¹¦ÄÜ:       Á÷Á¿¼ì¶¨(±ê×¼±í·¨£©Ö÷½çÃæ-DN50£¬Ë«ÌìÆ½¡¢Ë«¿ØÖÆ°å
-**  ²Ù×÷ÏµÍ³:   »ùÓÚTrolltech Qt4.8.5µÄ¿çÆ½Ì¨ÏµÍ³
-**  Éú³ÉÊ±¼ä:   2015/11/27
-**  ×¨Òµ×é:     µÂÂ³¼ÆÁ¿Èí¼ş×é
-**  ³ÌĞòÉè¼ÆÕß: YS
-**  ³ÌĞòÔ±:     YS
-**  °æ±¾ÀúÊ·:   2015/11 µÚÒ»°æ
-**  ÄÚÈİ°üº¬:
-**  ËµÃ÷:		
-**  ¸üĞÂ¼ÇÂ¼:   
+ï»¿/***********************************************
+**  æ–‡ä»¶å:     flowstandard50.cpp
+**  åŠŸèƒ½:       æµé‡æ£€å®š(æ ‡å‡†è¡¨æ³•ï¼‰ä¸»ç•Œé¢-DN50ï¼ŒåŒå¤©å¹³ã€åŒæ§åˆ¶æ¿
+**  æ“ä½œç³»ç»Ÿ:   åŸºäºTrolltech Qt4.8.5çš„è·¨å¹³å°ç³»ç»Ÿ
+**  ç”Ÿæˆæ—¶é—´:   2015/11/27
+**  ä¸“ä¸šç»„:     å¾·é²è®¡é‡è½¯ä»¶ç»„
+**  ç¨‹åºè®¾è®¡è€…: YS
+**  ç¨‹åºå‘˜:     YS
+**  ç‰ˆæœ¬å†å²:   2015/11 ç¬¬ä¸€ç‰ˆ
+**  å†…å®¹åŒ…å«:
+**  è¯´æ˜:		
+**  æ›´æ–°è®°å½•:   
 
 ***********************************************/
 
@@ -38,79 +38,53 @@ StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 	qDebug()<<"StdMtrCoeCorrect thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
 
-	ui.btnExhaust->hide();
-	ui.btnGoOn->hide();
-
-	if (!getPortSetIni(&m_portsetinfo)) //»ñÈ¡ÏÂÎ»»ú¶Ë¿ÚºÅÅäÖÃĞÅÏ¢
+	if (!getPortSetIni(&m_portsetinfo)) //è·å–ä¸‹ä½æœºç«¯å£å·é…ç½®ä¿¡æ¯
 	{
 		QMessageBox::warning(this, tr("Warning"), tr("Warning:get port set info failed!"));
 	}
 
 	m_readComConfig = NULL;
-	m_readComConfig = new ReadComConfig(); //¶Á´®¿ÚÉèÖÃ½Ó¿Ú£¨±ØĞëÔÚinitBalanceComÇ°µ÷ÓÃ£©
+	m_readComConfig = new ReadComConfig(); //è¯»ä¸²å£è®¾ç½®æ¥å£ï¼ˆå¿…é¡»åœ¨initBalanceComå‰è°ƒç”¨ï¼‰
 
 	m_balanceObj = NULL;
-	initBalanceCom();		//³õÊ¼»¯ÌìÆ½´®¿Ú
+	initBalanceCom();		//åˆå§‹åŒ–å¤©å¹³ä¸²å£
 
 	m_balanceObj2 = NULL;
-	initBalanceCom2();		//³õÊ¼»¯ÌìÆ½´®¿Ú2
+	initBalanceCom2();		//åˆå§‹åŒ–å¤©å¹³ä¸²å£2
 
 	m_tempObj = NULL;
 	m_tempTimer = NULL;
-	initTemperatureCom();	//³õÊ¼»¯ÎÂ¶È²É¼¯´®¿Ú
+	m_avgTFCount = 0;
+	m_tempPipeOut = 0.0;
+	initTemperatureCom();	//åˆå§‹åŒ–æ¸©åº¦é‡‡é›†ä¸²å£
 
 	m_controlObj = NULL;
-	initControlCom();		//³õÊ¼»¯¿ØÖÆ´®¿Ú
+	initControlCom();		//åˆå§‹åŒ–æ§åˆ¶ä¸²å£
 
 	m_controlObj2 = NULL;
-	initControlCom2();		//³õÊ¼»¯¿ØÖÆ´®¿Ú2
+	initControlCom2();		//åˆå§‹åŒ–æ§åˆ¶ä¸²å£2
 
-	//¼ÆËãÀà½Ó¿Ú
+	//è®¡ç®—ç±»æ¥å£
 	m_chkAlg = NULL;
 	m_chkAlg = new CAlgorithm();
 
-	//Ó³Éä¹ØÏµ£»³õÊ¼»¯·§ÃÅ×´Ì¬	
+	//æ˜ å°„å…³ç³»ï¼›åˆå§‹åŒ–é˜€é—¨çŠ¶æ€	
 	initValveStatus();      
 	initRegulateStatus();
-	initTableWdg();//³õÊ¼»¯±í¸ñ
+	initTableWdg();//åˆå§‹åŒ–è¡¨æ ¼
 	m_exaustTimer = NULL;
-	m_exaustTimer = new QTimer(this); //ÅÅÆø¶¨Ê±Æ÷
+	m_exaustTimer = new QTimer(this); //æ’æ°”å®šæ—¶å™¨
 	connect(m_exaustTimer, SIGNAL(timeout()), this, SLOT(slotExaustFinished()));
-
-	m_stopFlag = true; //Í£Ö¹¼ì²â±êÖ¾£¨ÍË³ö½çÃæºó£¬²»ÔÙ¼ì²éÌìÆ½ÈİÁ¿£©
-
-	m_avgTFCount = 1; //¼ÆËãÆ½¾ùÎÂ¶ÈÓÃµÄÀÛ¼Ó¼ÆÊıÆ÷
-
-	m_nowParams = NULL;
-	m_exaustSecond = 45;     //Ä¬ÈÏÅÅÆøÊ±¼ä45Ãë
-	m_meterStartValue = 0.0;
-	m_meterEndValue = 0.0;
-	m_meterStdValue = 0.0;
-	m_meterError = 0.0;
-	m_stdStartVol = 0.0;
-	m_stdEndVol = 0.0;
-	m_StdStartMass = 0.0;
-	m_StdEndMass = 0.0;
-	m_timeStamp = "";
-	m_nowDate = "";
-	m_validDate = "";
 
 	QSqlTableModel *model = new QSqlTableModel(this, g_defaultdb);  
 	model->setTable("T_Meter_Standard");  
 	model->select();  
 
-	m_paraSetDlg = NULL;    //²ÎÊıÉèÖÃ¶Ô»°¿ò
-	m_paraSetReader = NULL;
-	m_paraSetReader = new ParaSetReader(); //¶Á²ÎÊıÉèÖÃ½Ó¿Ú
-	if (!readNowParaConfig()) //»ñÈ¡µ±Ç°¼ì¶¨²ÎÊı
-	{
-		qWarning()<<"¶ÁÈ¡²ÎÊıÅäÖÃÎÄ¼şÊ§°Ü!";
-	}
-
 	ui.lcdInTemper->display(50);
 	ui.lcdOutTemper->display(50);
 
-	/***************±ê×¼Á÷Á¿¼Æ***********************/
+	m_curStdMeter = -1;//åˆå§‹åŒ–, ç”¨æˆ·æœªé€‰ä¸­ä»»ä½•æ ‡å‡†è¡¨
+	/***************æ ‡å‡†æµé‡è®¡***********************/
 	m_mapInstWdg[FLOW_RATE_BIG]   = ui.lcdInstStdMeter_50;
 	m_mapInstWdg[FLOW_RATE_MID_2] = ui.lcdInstStdMeter_25;
 	m_mapInstWdg[FLOW_RATE_MID_1] = ui.lcdInstStdMeter_10;
@@ -125,7 +99,7 @@ StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 	m_stdMeterReader->mapInstWdg(&m_mapInstWdg, ui.lcdFlowRate);
 	m_stdMeterReader->mapAccumWdg(&m_mapAccumWdg, ui.lcdVolume);
 	m_stdMeterReader->startReadMeter();
-	/***************±ê×¼Á÷Á¿¼Æend********************/
+	/***************æ ‡å‡†æµé‡è®¡end********************/
 }
 
 StdMtrCoeCorrect::~StdMtrCoeCorrect()
@@ -151,50 +125,40 @@ void StdMtrCoeCorrect::closeEvent( QCloseEvent * event)
 		event->accept();
 	}
 
-	if (!m_stopFlag)
-	{
-		stopVerify();
-	}
 	openValve(m_portsetinfo.bigWaterOutNo);
-	ui.labelHintPoint->clear();
-	ui.labelHintProcess->setText(tr("release pipe pressure..."));
-	openValve(m_portsetinfo.bigNo); //´ò¿ª´óÁ÷Á¿µã·§ÃÅ£¬ÊÍ·Å¹ÜÂ·Ñ¹Á¦
- 	wait(RELEASE_PRESS_TIME); //µÈ´ı2Ãë£¬ÊÍ·Å¹ÜÂ·Ñ¹Á¦
+	openValve(m_portsetinfo.bigNo); //æ‰“å¼€å¤§æµé‡ç‚¹é˜€é—¨ï¼Œé‡Šæ”¾ç®¡è·¯å‹åŠ›
+ 	wait(RELEASE_PRESS_TIME); //ç­‰å¾…2ç§’ï¼Œé‡Šæ”¾ç®¡è·¯å‹åŠ›
 	closeValve(m_portsetinfo.bigNo);
-	ui.labelHintProcess->clear();
-	ui.btnStart->setEnabled(true);
 
-	RELEASE_PTR(m_paraSetReader) //¶Á¼ì¶¨²ÎÊı
-	RELEASE_PTR(m_paraSetDlg)//²ÎÊıÉèÖÃ¶Ô»°¿ò
-	RELEASE_PTR(m_readComConfig)//¶Á´®¿ÚÉèÖÃ
-	RELEASE_PTR(m_chkAlg)//¼ÆËãÀà
+	RELEASE_PTR(m_readComConfig)//è¯»ä¸²å£è®¾ç½®
+	RELEASE_PTR(m_chkAlg)//è®¡ç®—ç±»
 
-	EXIT_THREAD(m_tempThread)// ÎÂ¶È²É¼¯
+	EXIT_THREAD(m_tempThread)// æ¸©åº¦é‡‡é›†
 	RELEASE_PTR(m_tempObj)
 	
-	//ÌìÆ½²É¼¯
+	//å¤©å¹³é‡‡é›†
 	EXIT_THREAD(m_balanceThread)
 	RELEASE_PTR(m_balanceObj)
 	EXIT_THREAD(m_balanceThread2)
 	RELEASE_PTR(m_balanceObj2)
 
-	RELEASE_TIMER(m_tempTimer)//²É¼¯ÎÂ¶È¼ÆÊ±Æ÷
-	EXIT_THREAD(m_tempThread) //ÎÂ¶È²É¼¯Ïß³Ì
+	RELEASE_TIMER(m_tempTimer)//é‡‡é›†æ¸©åº¦è®¡æ—¶å™¨
+	EXIT_THREAD(m_tempThread) //æ¸©åº¦é‡‡é›†çº¿ç¨‹
 	RELEASE_PTR(m_tempObj)
 
 	EXIT_THREAD(m_valveThread);
-	RELEASE_PTR(m_controlObj)  //·§ÃÅ¿ØÖÆ
+	RELEASE_PTR(m_controlObj)  //é˜€é—¨æ§åˆ¶
 	EXIT_THREAD(m_valveThread2);	
-	RELEASE_PTR(m_controlObj2)  //·§ÃÅ¿ØÖÆ2
-	RELEASE_TIMER(m_exaustTimer) //ÅÅÆø¼ÆÊ±Æ÷
-	//¼ÆÊ±Æ÷£¬ÓÃÓÚ¶¯Ì¬ÏÔÊ¾µ÷½Ú·§¿ª¶È
+	RELEASE_PTR(m_controlObj2)  //é˜€é—¨æ§åˆ¶2
+	RELEASE_TIMER(m_exaustTimer) //æ’æ°”è®¡æ—¶å™¨
+	//è®¡æ—¶å™¨ï¼Œç”¨äºåŠ¨æ€æ˜¾ç¤ºè°ƒèŠ‚é˜€å¼€åº¦
 	RELEASE_TIMER(m_regSmallTimer)
 	RELEASE_TIMER(m_regMid1Timer)
 	RELEASE_TIMER(m_regMid2Timer)
 	RELEASE_TIMER(m_regBigTimer)
 
-	RELEASE_PTR(m_stdMeterReader)//±ê×¼±í¶ÁÈ¡
-
+	RELEASE_PTR(m_stdMeterReader)//æ ‡å‡†è¡¨è¯»å–
+	m_curStdMeter = -1;
 	emit signalClosed();
 }
 
@@ -214,17 +178,43 @@ void StdMtrCoeCorrect::resizeEvent(QResizeEvent * event)
 
 void StdMtrCoeCorrect::initTableWdg()
 {
-	ui.tableWidget->setRowCount(18);
+	disconnect(ui.tableWidget, SIGNAL(cellChanged(int, int)), this, SLOT(on_tableWidget_cellChanged(int, int)));
+	ui.tableWidget->setRowCount(FLOW_POINTS*CHK_CNTS);
+	ui.tableWidget->setColumnCount(COL_CNTS);
 	ui.tableWidget->verticalHeader()->setVisible(false);
-	for (int i=0; i<ui.tableWidget->rowCount(); i+=3)
+	QStringList header;
+	header<<tr("Flow Point\n(m3/h)")
+		  <<tr("balance V0\n(kg)")
+		  <<tr("balance V1\n(kg)")
+		  <<tr("balance value\n(kg)")
+		  <<tr("density\n(kg/L)")
+		  <<tr("Actual Value\n(L)")
+		  <<tr("Stand Meter Value0\n(L)")
+		  <<tr("Stand Meter Value1\n(L)")
+		  <<tr("Stand Meter DispValue\n(L)")
+		  <<tr("Meter Coe")
+		  <<tr("AVG Meter Coe")
+		  <<tr("repetitiveness\n(%)");
+	ui.tableWidget->setHorizontalHeaderLabels(header);
+
+	for (int i=0; i<ui.tableWidget->rowCount(); i++)
 	{
-		ui.tableWidget->setSpan(i,0,3,1);
-		ui.tableWidget->setSpan(i,8,3,1);
-		ui.tableWidget->setSpan(i,9,3,1);
+		for (int j=0; j<ui.tableWidget->columnCount(); j++)
+		{
+			ui.tableWidget->setItem(i, j, new QTableWidgetItem(QString("")));
+		}
 	}
+
+	for (int i=0; i<ui.tableWidget->rowCount(); i+=CHK_CNTS)
+	{
+		ui.tableWidget->setSpan(i, COL_FLOW_POINT, CHK_CNTS, 1);
+		ui.tableWidget->setSpan(i, COL_STDERR_AVR, CHK_CNTS, 1);
+		ui.tableWidget->setSpan(i, COL_STDREP, CHK_CNTS, 1);
+	}
+	connect(ui.tableWidget, SIGNAL(cellChanged(int, int)), this, SLOT(on_tableWidget_cellChanged(int, int)));
 }
 
-//ÌìÆ½²É¼¯´®¿Ú ÉÏÎ»»úÖ±½Ó²É¼¯
+//å¤©å¹³é‡‡é›†ä¸²å£ ä¸Šä½æœºç›´æ¥é‡‡é›†
 void StdMtrCoeCorrect::initBalanceCom()
 {
 	ComInfoStruct balanceStruct = m_readComConfig->ReadBalanceConfig();
@@ -235,11 +225,11 @@ void StdMtrCoeCorrect::initBalanceCom()
 	m_balanceThread.start();
 	m_balanceObj->openBalanceCom(&balanceStruct);
 
-	//ÌìÆ½ÊıÖµÓÉÉÏÎ»»úÖ±½ÓÍ¨¹ıÌìÆ½´®¿Ú²É¼¯
+	//å¤©å¹³æ•°å€¼ç”±ä¸Šä½æœºç›´æ¥é€šè¿‡å¤©å¹³ä¸²å£é‡‡é›†
 	connect(m_balanceObj, SIGNAL(balanceValueIsReady(const float &)), this, SLOT(slotFreshBigBalanceValue(const float &)));
 }
 
-//ÌìÆ½²É¼¯´®¿Ú2 ÉÏÎ»»úÖ±½Ó²É¼¯
+//å¤©å¹³é‡‡é›†ä¸²å£2 ä¸Šä½æœºç›´æ¥é‡‡é›†
 void StdMtrCoeCorrect::initBalanceCom2()
 {
 	ComInfoStruct balanceStruct2 = m_readComConfig->ReadBalanceConfig2();
@@ -250,13 +240,13 @@ void StdMtrCoeCorrect::initBalanceCom2()
 	m_balanceThread2.start();
 	m_balanceObj2->openBalanceCom(&balanceStruct2);
 
-	//ÌìÆ½ÊıÖµÓÉÉÏÎ»»úÖ±½ÓÍ¨¹ıÌìÆ½´®¿Ú²É¼¯
+	//å¤©å¹³æ•°å€¼ç”±ä¸Šä½æœºç›´æ¥é€šè¿‡å¤©å¹³ä¸²å£é‡‡é›†
 	connect(m_balanceObj2, SIGNAL(balanceValueIsReady(const float &)), this, SLOT(slotFreshSmallBalanceValue(const float &)));
 }
 
 /*
-** ÎÂ¶È²É¼¯´®¿Ú ÉÏÎ»»úÖ±½Ó²É¼¯
-** ÖÜÆÚÇëÇó
+** æ¸©åº¦é‡‡é›†ä¸²å£ ä¸Šä½æœºç›´æ¥é‡‡é›†
+** å‘¨æœŸè¯·æ±‚
 */
 void StdMtrCoeCorrect::initTemperatureCom()
 {
@@ -270,7 +260,7 @@ void StdMtrCoeCorrect::initTemperatureCom()
 	m_tempTimer = new QTimer();
 	connect(m_tempTimer, SIGNAL(timeout()), this, SLOT(slotAskPipeTemperature()));
 
-	m_tempTimer->start(TIMEOUT_PIPE_TEMPER); //ÖÜÆÚÇëÇóÎÂ¶È
+	m_tempTimer->start(TIMEOUT_PIPE_TEMPER); //å‘¨æœŸè¯·æ±‚æ¸©åº¦
 }
 
 void StdMtrCoeCorrect::slotAskPipeTemperature()
@@ -278,7 +268,7 @@ void StdMtrCoeCorrect::slotAskPipeTemperature()
 	m_tempObj->writeTemperatureComBuffer();
 }
 
-//¿ØÖÆ°åÍ¨Ñ¶´®¿Ú
+//æ§åˆ¶æ¿é€šè®¯ä¸²å£
 void StdMtrCoeCorrect::initControlCom()
 {
 	ComInfoStruct valveStruct = m_readComConfig->ReadValveConfig();
@@ -292,7 +282,7 @@ void StdMtrCoeCorrect::initControlCom()
 	connect(m_controlObj, SIGNAL(controlRegulateIsOk()), this, SLOT(slotSetRegulateOk()));
 }
 
-//¿ØÖÆ°åÍ¨Ñ¶´®¿Ú2
+//æ§åˆ¶æ¿é€šè®¯ä¸²å£2
 void StdMtrCoeCorrect::initControlCom2()
 {
 	ComInfoStruct valveStruct2 = m_readComConfig->ReadValveConfig2();
@@ -307,14 +297,14 @@ void StdMtrCoeCorrect::initControlCom2()
 }
 
 /*
-** ¶Ë¿ÚºÅ-·§ÃÅÓ³Éä¹ØÏµ£»³õÊ¼»¯·§ÃÅ×´Ì¬£¨Ä¬ÈÏ·§ÃÅ³õÊ¼×´Ì¬È«²¿Îª¹Ø±Õ,Ë®±Ã³õÊ¼×´Ì¬Îª¹Ø±Õ£©
-** ĞèÒª¸Ä½øµÃ¸ü¼ÓÁé»î
+** ç«¯å£å·-é˜€é—¨æ˜ å°„å…³ç³»ï¼›åˆå§‹åŒ–é˜€é—¨çŠ¶æ€ï¼ˆé»˜è®¤é˜€é—¨åˆå§‹çŠ¶æ€å…¨éƒ¨ä¸ºå…³é—­,æ°´æ³µåˆå§‹çŠ¶æ€ä¸ºå…³é—­ï¼‰
+** éœ€è¦æ”¹è¿›å¾—æ›´åŠ çµæ´»
 */
 void StdMtrCoeCorrect::initValveStatus()
 {
 	m_nowPortNo = 0;
 
-	//¶Ë¿ÚºÅ-·§ÃÅ°´Å¥ Ó³Éä¹ØÏµ
+	//ç«¯å£å·-é˜€é—¨æŒ‰é’® æ˜ å°„å…³ç³»
 	m_valveBtn[m_portsetinfo.bigNo] = ui.btnValveBig;
 	m_valveBtn[m_portsetinfo.smallNo] = ui.btnValveSmall;
 	m_valveBtn[m_portsetinfo.middle1No] = ui.btnValveMiddle1;
@@ -324,9 +314,9 @@ void StdMtrCoeCorrect::initValveStatus()
 	m_valveBtn[m_portsetinfo.bigWaterOutNo] = ui.btnBigWaterOut;
 	m_valveBtn[m_portsetinfo.smallWaterInNo] = ui.btnSmallWaterIn;
 	m_valveBtn[m_portsetinfo.smallWaterOutNo] = ui.btnSmallWaterOut;
-	m_valveBtn[m_portsetinfo.pumpNo] = ui.btnWaterPump; //Ë®±Ã
+	m_valveBtn[m_portsetinfo.pumpNo] = ui.btnWaterPump; //æ°´æ³µ
 
-	//³õÊ¼»¯£º·ÅË®·§Îª´ò¿ª£¬ÆäËû·§ÃÅÎª¹Ø±Õ×´Ì¬
+	//åˆå§‹åŒ–ï¼šæ”¾æ°´é˜€ä¸ºæ‰“å¼€ï¼Œå…¶ä»–é˜€é—¨ä¸ºå…³é—­çŠ¶æ€
 	m_valveStatus[m_portsetinfo.bigNo] = VALVE_CLOSE;
 	m_valveStatus[m_portsetinfo.smallNo] = VALVE_CLOSE;
 	m_valveStatus[m_portsetinfo.middle1No] = VALVE_CLOSE;
@@ -336,7 +326,7 @@ void StdMtrCoeCorrect::initValveStatus()
 	m_valveStatus[m_portsetinfo.bigWaterOutNo] = VALVE_OPEN;
 	m_valveStatus[m_portsetinfo.smallWaterInNo] = VALVE_CLOSE;
 	m_valveStatus[m_portsetinfo.smallWaterOutNo] = VALVE_OPEN;
-	m_valveStatus[m_portsetinfo.pumpNo] = VALVE_CLOSE; //Ë®±Ã
+	m_valveStatus[m_portsetinfo.pumpNo] = VALVE_CLOSE; //æ°´æ³µ
 
 	setValveBtnBackColor(m_valveBtn[m_portsetinfo.bigNo], m_valveStatus[m_portsetinfo.bigNo]);
 	setValveBtnBackColor(m_valveBtn[m_portsetinfo.smallNo], m_valveStatus[m_portsetinfo.smallNo]);
@@ -352,7 +342,7 @@ void StdMtrCoeCorrect::initValveStatus()
 
 void StdMtrCoeCorrect::initRegulateStatus()
 {
-	//¶Ë¿ÚºÅ-·§ÃÅ°´Å¥ Ó³Éä¹ØÏµ
+	//ç«¯å£å·-é˜€é—¨æŒ‰é’® æ˜ å°„å…³ç³»
 	m_RegLineEdit[m_portsetinfo.regSmallNo] = ui.lineEditOpeningSmall;
 	m_RegLineEdit[m_portsetinfo.regMid1No] = ui.lineEditOpeningMid1;
 	m_RegLineEdit[m_portsetinfo.regMid2No] = ui.lineEditOpeningMid2;
@@ -363,7 +353,7 @@ void StdMtrCoeCorrect::initRegulateStatus()
 	m_RegSpinBox[m_portsetinfo.regMid2No] = ui.spinBoxOpeningMid2;
 	m_RegSpinBox[m_portsetinfo.regBigNo] = ui.spinBoxOpeningBig;
 
-	//¼ÆÊ±Æ÷£¬¶¯Ì¬ÏÔÊ¾µ÷½Ú·§¿ª¶È
+	//è®¡æ—¶å™¨ï¼ŒåŠ¨æ€æ˜¾ç¤ºè°ƒèŠ‚é˜€å¼€åº¦
 	m_smallOpening = 0;
 	m_regSmallTimer = NULL;
 	m_regSmallTimer = new QTimer();
@@ -385,101 +375,22 @@ void StdMtrCoeCorrect::initRegulateStatus()
 	connect(m_regBigTimer, SIGNAL(timeout()), this, SLOT(slotFreshBigRegOpening()));
 }
 
-//ÔÚ½çÃæË¢ĞÂÈë¿ÚÎÂ¶ÈºÍ³ö¿ÚÎÂ¶ÈÖµ
+//åœ¨ç•Œé¢åˆ·æ–°å…¥å£æ¸©åº¦å’Œå‡ºå£æ¸©åº¦å€¼
 void StdMtrCoeCorrect::slotFreshComTempValue(const QString& tempStr)
 {
-	ui.lcdInTemper->display(tempStr.left(TEMPER_DATA_WIDTH));   //Èë¿ÚÎÂ¶È PV
-	ui.lcdOutTemper->display(tempStr.right(TEMPER_DATA_WIDTH)); //³ö¿ÚÎÂ¶È SV
-}
-
-//»ñÈ¡µ±Ç°¼ì¶¨²ÎÊı;³õÊ¼»¯±í¸ñ¿Ø¼ş£»ÏÔÊ¾¹Ø¼ü²ÎÊı£»³õÊ¼»¯ÈÈÁ¿±íÍ¨Ñ¶´®¿Ú
-int StdMtrCoeCorrect::readNowParaConfig()
-{
-	if (NULL == m_paraSetReader)
-	{
-		return false;
-	}
-
-	if (!m_stopFlag)
-	{
-		return false;
-	}
-
-	m_state = STATE_INIT;
-
-	m_nowParams = m_paraSetReader->getParams();
-	m_flowPointNum = m_nowParams->total_fp;  //ÓĞĞ§Á÷Á¿µãµÄ¸öÊı 
-	m_exaustSecond = m_nowParams->ex_time;   //ÅÅÆøÊ±¼ä
-	return true;
+	ui.lcdInTemper->display(tempStr.left(TEMPER_DATA_WIDTH));   //å…¥å£æ¸©åº¦ PV
+	ui.lcdOutTemper->display(tempStr.right(TEMPER_DATA_WIDTH)); //å‡ºå£æ¸©åº¦ SV
+	m_avgTFCount++;
+	m_tempPipeOut += ui.lcdOutTemper->value();
+	m_tempPipeOut /= m_avgTFCount;
 }
 
 /*
-** ¿ªÊ¼ÅÅÆøµ¹¼ÆÊ±
-*/
-int StdMtrCoeCorrect::startExhaustCountDown()
-{
-	//´ò¿ª4Â·µç¶¯µ÷½Ú·§
-	openAllRegulator();
-	ui.labelHintProcess->setText(tr("regulator is opening, please wait..."));
-	ui.labelHintPoint->clear();
- 	wait(5000); //µÈ´ıµç¶¯µ÷½Ú·§µ÷Õûµ½Ò»¶¨¿ª¶È£¬ÓÃÓÚÅÅÆø
-
-	m_controlObj->askSetDriverFreq(m_nowParams->fp_info[0].fp_freq);
-	if (!openAllValveAndPump())
-	{
-		qWarning()<<"´ò¿ªËùÓĞ·§ÃÅºÍË®±Ã Ê§°Ü!";
-		QMessageBox::warning(this, tr("Warning"), tr("exhaust air failed!"));
-		return false;
-	}
-	m_stopFlag = false;
-	m_exaustSecond = m_nowParams->ex_time;
-	m_exaustTimer->start(CYCLE_TIME);//¿ªÊ¼ÅÅÆøµ¹¼ÆÊ±
-	ui.labelHintProcess->setText(tr("Exhaust countdown: <font color=DarkGreen size=6><b>%1</b></font> second").arg(m_exaustSecond));
-	ui.labelHintPoint->clear();
-	qDebug()<<"ÅÅÆøµ¹¼ÆÊ±:"<<m_exaustSecond<<"Ãë";
-
-	return true;
-}
-
-/*
-** ÅÅÆø¶¨Ê±Æ÷ÏìÓ¦º¯Êı
-*/
-void StdMtrCoeCorrect::slotExaustFinished()
-{
-	if (m_stopFlag)
-	{
-		return;
-	}
-
-	m_exaustSecond --;
-	ui.labelHintProcess->setText(tr("Exhaust countdown: <font color=DarkGreen size=6><b>%1</b></font> second").arg(m_exaustSecond));
-	qDebug()<<"ÅÅÆøµ¹¼ÆÊ±:"<<m_exaustSecond<<"Ãë";
-	if (m_exaustSecond > 1)
-	{
-		return;
-	}
-
-	m_exaustTimer->stop(); //Í£Ö¹ÅÅÆø¼ÆÊ±
-	ui.labelHintProcess->setText(tr("Exhaust countdown finished!"));
-	ui.labelHintProcess->clear();
-	if (!closeAllFlowPointValves()) //¹Ø±ÕËùÓĞÁ÷Á¿µã·§ÃÅ Ê§°Ü
-	{
-		if (!closeAllFlowPointValves()) //ÔÙ³¢ÊÔ¹Ø±ÕÒ»´Î
-		{
-			qWarning()<<"¹Ø±ÕËùÓĞÁ÷Á¿µã·§ÃÅÊ§°Ü£¬¼ì¶¨½áÊø";
-			return;
-		}
-	}
-
-	startVerify();
-}
-
-/*
-** ´ò¿ªËùÓĞ·§ÃÅºÍË®±Ã£¨¹Ø±Õ´ó¡¢Ğ¡ÌìÆ½½øË®·§£¬ÒòÎª±ê×¼±í·¨²»ĞèÒªÊ¹ÓÃÌìÆ½£©
+** æ‰“å¼€æ‰€æœ‰é˜€é—¨å’Œæ°´æ³µï¼ˆå…³é—­å¤§ã€å°å¤©å¹³è¿›æ°´é˜€ï¼Œå› ä¸ºæ ‡å‡†è¡¨æ³•ä¸éœ€è¦ä½¿ç”¨å¤©å¹³ï¼‰
 */
 int StdMtrCoeCorrect::openAllValveAndPump()
 {
-	openValve(m_portsetinfo.bigWaterOutNo); //´óÌìÆ½·ÅË®·§
+	openValve(m_portsetinfo.bigWaterOutNo); //å¤§å¤©å¹³æ”¾æ°´é˜€
 	wait(CYCLE_TIME);
 	openValve(m_portsetinfo.smallWaterOutNo);
 	wait(CYCLE_TIME);
@@ -488,7 +399,7 @@ int StdMtrCoeCorrect::openAllValveAndPump()
 	closeValve(m_portsetinfo.smallWaterInNo);
 	wait(CYCLE_TIME);
 	openValve(m_portsetinfo.waterInNo);
-	openWaterPump();//´ò¿ªË®±Ã
+	openWaterPump();//æ‰“å¼€æ°´æ³µ
 	wait(CYCLE_TIME);
 	openValve(m_portsetinfo.smallNo);
 	wait(CYCLE_TIME);
@@ -501,26 +412,26 @@ int StdMtrCoeCorrect::openAllValveAndPump()
 	return true;
 }
 
-//¹Ø±ÕËùÓĞ·§ÃÅºÍË®±Ã
+//å…³é—­æ‰€æœ‰é˜€é—¨å’Œæ°´æ³µ
 int StdMtrCoeCorrect::closeAllValveAndPumpOpenOutValve()
 {
-	openValve(m_portsetinfo.bigWaterOutNo); //´ò¿ª´óÌìÆ½·ÅË®·§
+	openValve(m_portsetinfo.bigWaterOutNo); //æ‰“å¼€å¤§å¤©å¹³æ”¾æ°´é˜€
 	wait(CYCLE_TIME);
-	closeValve(m_portsetinfo.bigWaterInNo);  //¹Ø±Õ´óÌìÆ½½øË®·§
+	closeValve(m_portsetinfo.bigWaterInNo);  //å…³é—­å¤§å¤©å¹³è¿›æ°´é˜€
 	wait(CYCLE_TIME);
-	openValve(m_portsetinfo.smallWaterOutNo);//´ò¿ªĞ¡ÌìÆ½·ÅË®·§
+	openValve(m_portsetinfo.smallWaterOutNo);//æ‰“å¼€å°å¤©å¹³æ”¾æ°´é˜€
 	wait(CYCLE_TIME);
-	closeValve(m_portsetinfo.smallWaterInNo);//¹Ø±ÕĞ¡ÌìÆ½½øË®·§
+	closeValve(m_portsetinfo.smallWaterInNo);//å…³é—­å°å¤©å¹³è¿›æ°´é˜€
 	wait(CYCLE_TIME);
-	closeWaterPump();    //ÍË³öÊ±¹Ø±ÕË®±Ã
-	closeAllFlowPointValves();//¹Ø±ÕËùÓĞÁ÷Á¿µã·§ÃÅ
+	closeWaterPump();    //é€€å‡ºæ—¶å…³é—­æ°´æ³µ
+	closeAllFlowPointValves();//å…³é—­æ‰€æœ‰æµé‡ç‚¹é˜€é—¨
 	wait(CYCLE_TIME);
-	closeValve(m_portsetinfo.waterInNo);//¹Ø±Õ½øË®·§
+	closeValve(m_portsetinfo.waterInNo);//å…³é—­è¿›æ°´é˜€
 
 	return true;
 }
 
-//¹Ø±ÕËùÓĞÁ÷Á¿µã·§ÃÅ
+//å…³é—­æ‰€æœ‰æµé‡ç‚¹é˜€é—¨
 int StdMtrCoeCorrect::closeAllFlowPointValves()
 {
 	closeValve(m_portsetinfo.bigNo);
@@ -534,97 +445,12 @@ int StdMtrCoeCorrect::closeAllFlowPointValves()
 	return true;
 }
 
-/*
-** ¹¦ÄÜ£ºÅĞ¶ÏÌìÆ½ÖØÁ¿ÊÇ·ñ´ïµ½ÒªÇóµÄ¼ì¶¨Á¿£»¼ÆËã¼ì¶¨¹ı³ÌµÄÆ½¾ùÎÂ¶ÈºÍÆ½¾ùÁ÷Á¿(m3/h)
-** Âö³åÊı»áºÜ´ó£¬³¬³öfloatµÄ·¶Î§£¬ËùÒÔÒªÓÃdouble
-*/
-int StdMtrCoeCorrect::judgeTartgetVolAndCalcAvgTemperAndFlow(double initV, double verifyV)
-{
-	double targetV       = initV + verifyV;
-	ui.tableWidget->setEnabled(false);
-	QDateTime startTime = QDateTime::currentDateTime();
-	int second          = 0;
-	double nowFlow;
-	/************************************************************************/
-	/* 
-	double nowFlow       = m_paraSetReader->getFpBySeq(m_nowOrder).fp_verify;
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	/************************************************************************/
-	double nowVol        = initV;
-	while (!m_stopFlag && (nowVol < targetV))
-	{
-		qDebug()<<"µ±Ç°Á÷Ë®Á¿ ="<<nowVol<<", Ğ¡ÓÚÄ¿±êÌå»ı "<<targetV;
-		qDebug()<<"m_stopFlag: "<<m_stopFlag;
-		m_avgTFCount++;
-		m_pipeInTemper += ui.lcdInTemper->value();
-		m_pipeOutTemper += ui.lcdOutTemper->value();
-		second = 3.6*(targetV - nowVol)/nowFlow;
-
-		ui.labelHintProcess->setText(tr("Verifying...Please wait for about <font color=DarkGreen size=6><b>%1</b></font> second").arg(second));
-		wait(CYCLE_TIME);		
-		nowVol = ui.lcdVolume->value();//¼ÇÂ¼±ê×¼±íÌå»ı(L)
-	}
-
-	m_pipeInTemper = m_pipeInTemper/m_avgTFCount;   //Èë¿ÚÆ½¾ùÎÂ¶È
-	m_pipeOutTemper = m_pipeOutTemper/m_avgTFCount; //³ö¿ÚÆ½¾ùÎÂ¶È
-
-	QDateTime endTime = QDateTime::currentDateTime();
-	int tt = startTime.secsTo(endTime);
-	if (NULL==m_paraSetReader || m_stopFlag)
-	{
-		return false;
-	}
-	/************************************************************************/
-	/* 
-	 * 
-	 * 
-	 * 	ui.labelHintPoint->setText(tr("NO. <font color=DarkGreen size=6><b>%1</b></font> flow point: <font color=DarkGreen size=6><b>%2</b></font> m3/h")\
-	 .arg(m_nowOrder).arg(nowFlow));
-	 ui.labelHintProcess->setText(tr("NO. <font color=DarkGreen size=6><b>%1</b></font> flow point: Verify Finished!").arg(m_nowOrder));
-
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	/************************************************************************/
-
-	int ret = !m_stopFlag && (ui.lcdVolume->value() >= targetV);
-	return ret;
-}
-
-//Çå¿Õ±í¸ñ£¬µÚÒ»ÁĞ³ıÍâ("Á÷Á¿µã"ÁĞ)
+//æ¸…ç©ºè¡¨æ ¼ï¼Œç¬¬ä¸€åˆ—é™¤å¤–("æµé‡ç‚¹"åˆ—)
 void StdMtrCoeCorrect::clearTableContents()
 {
 	for (int i=0; i<18; i++)
 	{
-		for (int j=1; j<ui.tableWidget->columnCount(); j++) //´ÓµÚ¶şÁĞ¿ªÊ¼
+		for (int j=1; j<ui.tableWidget->columnCount(); j++) //ä»ç¬¬äºŒåˆ—å¼€å§‹
 		{
 			if (ui.tableWidget->item(i,j) == NULL)
 				continue;
@@ -634,91 +460,12 @@ void StdMtrCoeCorrect::clearTableContents()
 	}
 }
 
-//µã»÷"¿ªÊ¼"°´Å¥
-void StdMtrCoeCorrect::on_btnStart_clicked()
-{
-	
-}
-
-//µã»÷"¼ÌĞø"°´Å¥
-void StdMtrCoeCorrect::on_btnGoOn_clicked()
-{
-	ui.btnGoOn->hide();
-	startVerify();
-}
-
-//µã»÷"ÖÕÖ¹¼ì²â"°´Å¥
-void StdMtrCoeCorrect::on_btnStop_clicked()
-{
-	int button = QMessageBox::question(this, tr("Question"), tr("Stop Really ?"), \
-		QMessageBox::Yes|QMessageBox::Default, QMessageBox::No|QMessageBox::Escape);
-
-	if (button == QMessageBox::No)
-		return;
-
-	stopVerify();
-}
-
 void StdMtrCoeCorrect::on_btnExit_clicked()
 {
-	stopVerify();
 	this->close();
 }
 
-//Í£Ö¹¼ì¶¨
-void StdMtrCoeCorrect::stopVerify()
-{
-	ui.labelHintPoint->clear();
-	if (!m_stopFlag)
-	{
-		ui.labelHintProcess->setText(tr("stopping verify...please wait a minute"));
-		m_stopFlag = true;
-		m_exaustTimer->stop();//Í£Ö¹ÅÅÆø¶¨Ê±Æ÷
-		closeAllValveAndPumpOpenOutValve();
-	}
-	closeAllRegulator();
-
-	ui.labelHintProcess->setText(tr("Verify has Stoped!"));
-	m_state = STATE_INIT; //ÖØÖÃ³õÊ¼×´Ì¬
-
-	ui.tableWidget->setEnabled(true);
-	ui.btnStart->setEnabled(true);
-}
-
-//¿ªÊ¼¼ì¶¨
-void StdMtrCoeCorrect::startVerify()
-{
-	m_state = STATE_INIT; //³õÊ¼×´Ì¬
-	m_meterStartValue = 0.0;//±í³õÖµ
-	m_meterEndValue = 0.0;//±íÖÕÖµ
-	m_meterStdValue = 0.0;//±»¼ì±íµÄ±ê×¼Öµ
-	m_meterError = 0.0;//±»¼ì±íµÄÎó²î
-}
-
-/************************************************************************/
-/* ½øĞĞµ¥¸öÁ÷Á¿µãµÄ¼ì¶¨                                                               
-/* Ö®ËùÒÔÊ¹ÓÃÖÊÁ¿·¨, ¾ÍÊÇÀûÓÃ¹ÜµÀÖĞµÄ¶¨³£Á÷µÄÖÊÁ¿ÊØºãÔ­Àí, 
-/* ¼´´¦ÓÚ¹ÜµÀÖĞµÄ¶¨³£Á÷¶¯×´Ì¬µÄÒºÌå,ÔÚÈÎÒâ¹ÜµÀ½ØÃæÉÏ, ËüµÄÁ÷½øºÍÁ÷³öÒºÌåÖÊÁ¿ÏàµÈ.
-/* ËùÒÔÔÚ½øĞĞ±ê×¼±í¼ì¶¨Ê±, ±ØĞë½«±ê×¼±íµÄÌå»ı»»ËãÎª¶ÔÓ¦ÎÂ¶ÈÏÂµÄÖÊÁ¿.
-/************************************************************************/
-int StdMtrCoeCorrect::startVerifyFlowPoint(int order)
-{
-	
-	return true;
-}
-
-/*
-** ¼ÆËãÄ³¸ö±»¼ì±íµÄÎó²î
-** ÊäÈë²ÎÊı£º
-**     idx:±»¼ì±íÊı×éµÄË÷Òı
-*/
-int StdMtrCoeCorrect::calcMeterError(int idx)
-{
-
-	return 1; 
-}
-
-//´ò¿ª·§ÃÅ
+//æ‰“å¼€é˜€é—¨
 int StdMtrCoeCorrect::openValve(UINT8 portno)
 {	
 	if (portno <= 8)
@@ -735,14 +482,14 @@ int StdMtrCoeCorrect::openValve(UINT8 portno)
 		else
 			return false;
 	}
-	if (m_portsetinfo.version==OLD_CTRL_VERSION) //ÀÏ¿ØÖÆ°å ÎŞ·´À¡
+	if (m_portsetinfo.version==OLD_CTRL_VERSION) //è€æ§åˆ¶æ¿ æ— åé¦ˆ
 	{
 		slotSetValveBtnStatus(portno, VALVE_OPEN);
 	}
 	return true;
 }
 
-//¹Ø±Õ·§ÃÅ
+//å…³é—­é˜€é—¨
 int StdMtrCoeCorrect::closeValve(UINT8 portno)
 {
 	if (portno <= 8)
@@ -759,28 +506,28 @@ int StdMtrCoeCorrect::closeValve(UINT8 portno)
 		else
 			return false;
 	}
-	if (m_portsetinfo.version==OLD_CTRL_VERSION) //ÀÏ¿ØÖÆ°å ÎŞ·´À¡
+	if (m_portsetinfo.version==OLD_CTRL_VERSION) //è€æ§åˆ¶æ¿ æ— åé¦ˆ
 	{
 		slotSetValveBtnStatus(portno, VALVE_CLOSE);
 	}
 	return true;
 }
 
-//²Ù×÷·§ÃÅ£º´ò¿ª»òÕß¹Ø±Õ
+//æ“ä½œé˜€é—¨ï¼šæ‰“å¼€æˆ–è€…å…³é—­
 int StdMtrCoeCorrect::operateValve(UINT8 portno)
 {
-	if (m_valveStatus[portno]==VALVE_OPEN) //·§ÃÅÔ­À´ÊÇ´ò¿ª×´Ì¬
+	if (m_valveStatus[portno]==VALVE_OPEN) //é˜€é—¨åŸæ¥æ˜¯æ‰“å¼€çŠ¶æ€
 	{
 		closeValve(portno);
 	}
-	else //·§ÃÅÔ­À´ÊÇ¹Ø±Õ×´Ì¬
+	else //é˜€é—¨åŸæ¥æ˜¯å…³é—­çŠ¶æ€
 	{
 		openValve(portno);
 	}
 	return true;
 }
 
-//´ò¿ªË®±Ã
+//æ‰“å¼€æ°´æ³µ
 int StdMtrCoeCorrect::openWaterPump()
 {
 	if (NULL == m_controlObj)
@@ -789,14 +536,14 @@ int StdMtrCoeCorrect::openWaterPump()
 	}
 	m_nowPortNo = m_portsetinfo.pumpNo;
 	m_controlObj->askControlWaterPump(m_nowPortNo, VALVE_OPEN);
-	if (m_portsetinfo.version == OLD_CTRL_VERSION) //ÀÏ¿ØÖÆ°å ÎŞ·´À¡
+	if (m_portsetinfo.version == OLD_CTRL_VERSION) //è€æ§åˆ¶æ¿ æ— åé¦ˆ
 	{
 		slotSetValveBtnStatus(m_nowPortNo, VALVE_OPEN);
 	}
 	return true;
 }
 
-//¹Ø±ÕË®±Ã
+//å…³é—­æ°´æ³µ
 int StdMtrCoeCorrect::closeWaterPump()
 {
 	if (NULL == m_controlObj)
@@ -805,143 +552,132 @@ int StdMtrCoeCorrect::closeWaterPump()
 	}
 	m_nowPortNo = m_portsetinfo.pumpNo;
 	m_controlObj->askControlWaterPump(m_nowPortNo, VALVE_CLOSE);
-	if (m_portsetinfo.version == OLD_CTRL_VERSION) //ÀÏ¿ØÖÆ°å ÎŞ·´À¡
+	if (m_portsetinfo.version == OLD_CTRL_VERSION) //è€æ§åˆ¶æ¿ æ— åé¦ˆ
 	{
 		slotSetValveBtnStatus(m_nowPortNo, VALVE_CLOSE);
 	}
 	return true;
 }
 
-//²Ù×÷Ë®±Ã ´ò¿ª»òÕß¹Ø±Õ
+//æ“ä½œæ°´æ³µ æ‰“å¼€æˆ–è€…å…³é—­
 int StdMtrCoeCorrect::operateWaterPump()
 {
-	if (m_valveStatus[m_portsetinfo.pumpNo]==VALVE_OPEN) //Ë®±ÃÔ­À´ÊÇ´ò¿ª×´Ì¬
+	if (m_valveStatus[m_portsetinfo.pumpNo]==VALVE_OPEN) //æ°´æ³µåŸæ¥æ˜¯æ‰“å¼€çŠ¶æ€
 	{
 		closeWaterPump();
 	}
-	else //Ë®±ÃÔ­À´ÊÇ¹Ø±Õ×´Ì¬
+	else //æ°´æ³µåŸæ¥æ˜¯å…³é—­çŠ¶æ€
 	{
 		openWaterPump();
 	}
 	return true;
 }
 
-//ÏìÓ¦·§ÃÅ×´Ì¬ÉèÖÃ³É¹¦
+//å“åº”é˜€é—¨çŠ¶æ€è®¾ç½®æˆåŠŸ
 void StdMtrCoeCorrect::slotSetValveBtnStatus(const UINT8 &portno, const bool &status)
 {
 	m_valveStatus[portno] = status;
 	setValveBtnBackColor(m_valveBtn[portno], m_valveStatus[portno]);
 }
 
-//ÏìÓ¦µ÷½Ú·§µ÷½Ú³É¹¦
+//å“åº”è°ƒèŠ‚é˜€è°ƒèŠ‚æˆåŠŸ
 void StdMtrCoeCorrect::slotSetRegulateOk()
 {
 }
 
-//ÉèÖÃ·§ÃÅ°´Å¥±³¾°É«
+//è®¾ç½®é˜€é—¨æŒ‰é’®èƒŒæ™¯è‰²
 void StdMtrCoeCorrect::setValveBtnBackColor(QToolButton *btn, bool status)
 {
 	if (NULL == btn)
 	{
 		return;
 	}
-	if (status) //·§ÃÅ´ò¿ª ÂÌÉ«
+	if (status) //é˜€é—¨æ‰“å¼€ ç»¿è‰²
 	{
 		btn->setStyleSheet("background-color:rgb(0,255,0);border:0px;border-radius:10px;");
 	}
-	else //·§ÃÅ¹Ø±Õ ºìÉ«
+	else //é˜€é—¨å…³é—­ çº¢è‰²
 	{
 		btn->setStyleSheet("background-color:rgb(255,0,0);border:0px;border-radius:10px;");
 	}
 }
 
-//ÉèÖÃµ÷½Ú·§°´Å¥±³¾°É«
+//è®¾ç½®è°ƒèŠ‚é˜€æŒ‰é’®èƒŒæ™¯è‰²
 void StdMtrCoeCorrect::setRegBtnBackColor(QPushButton *btn, bool status)
 {
 	if (NULL == btn)
 	{
 		return;
 	}
-	if (status) //µ÷½Ú³É¹¦
+	if (status) //è°ƒèŠ‚æˆåŠŸ
 	{
 		btn->setStyleSheet("background:blue;border:0px;");
 	}
-	else //µ÷½ÚÊ§°Ü
+	else //è°ƒèŠ‚å¤±è´¥
 	{
 		btn->setStyleSheet("");
 	}
 }
 
-//²ÎÊıÉèÖÃ
-void StdMtrCoeCorrect::on_btnParaSet_clicked()
-{
-	if (NULL != m_paraSetDlg)
-		delete m_paraSetDlg;
-
-	m_paraSetDlg = new ParaSetDlg();	
-	connect(m_paraSetDlg, SIGNAL(saveSuccessSignal()), this, SLOT(readNowParaConfig()));
-	m_paraSetDlg->show();
-}
-
 /*
-** ¿ØÖÆ¼ÌµçÆ÷¿ª¶Ï
+** æ§åˆ¶ç»§ç”µå™¨å¼€æ–­
 */
-void StdMtrCoeCorrect::on_btnWaterIn_clicked() //½øË®·§
+void StdMtrCoeCorrect::on_btnWaterIn_clicked() //è¿›æ°´é˜€
 {
 	m_nowPortNo = m_portsetinfo.waterInNo;
 	operateValve(m_nowPortNo);
 }
 
-void StdMtrCoeCorrect::on_btnBigWaterIn_clicked() //´óÌìÆ½½øË®·§
+void StdMtrCoeCorrect::on_btnBigWaterIn_clicked() //å¤§å¤©å¹³è¿›æ°´é˜€
 {
 	m_nowPortNo = m_portsetinfo.bigWaterInNo;
 	operateValve(m_nowPortNo);
 }
 
-void StdMtrCoeCorrect::on_btnBigWaterOut_clicked() //´óÌìÆ½·ÅË®·§
+void StdMtrCoeCorrect::on_btnBigWaterOut_clicked() //å¤§å¤©å¹³æ”¾æ°´é˜€
 {
 	m_nowPortNo = m_portsetinfo.bigWaterOutNo;
 	operateValve(m_nowPortNo);
 }
 
-void StdMtrCoeCorrect::on_btnSmallWaterIn_clicked() //Ğ¡ÌìÆ½½øË®·§
+void StdMtrCoeCorrect::on_btnSmallWaterIn_clicked() //å°å¤©å¹³è¿›æ°´é˜€
 {
 	m_nowPortNo = m_portsetinfo.smallWaterInNo;
 	operateValve(m_nowPortNo);
 }
 
-void StdMtrCoeCorrect::on_btnSmallWaterOut_clicked() //Ğ¡ÌìÆ½·ÅË®·§
+void StdMtrCoeCorrect::on_btnSmallWaterOut_clicked() //å°å¤©å¹³æ”¾æ°´é˜€
 {
 	m_nowPortNo = m_portsetinfo.smallWaterOutNo;
 	operateValve(m_nowPortNo);
 }
 
-void StdMtrCoeCorrect::on_btnValveBig_clicked() //´óÁ÷Á¿·§
+void StdMtrCoeCorrect::on_btnValveBig_clicked() //å¤§æµé‡é˜€
 {
 	m_nowPortNo = m_portsetinfo.bigNo;
 	operateValve(m_nowPortNo);
 }
 
-void StdMtrCoeCorrect::on_btnValveMiddle1_clicked() //ÖĞÁ÷Ò»·§
+void StdMtrCoeCorrect::on_btnValveMiddle1_clicked() //ä¸­æµä¸€é˜€
 {
 	m_nowPortNo = m_portsetinfo.middle1No;
 	operateValve(m_nowPortNo);
 }
 
-void StdMtrCoeCorrect::on_btnValveMiddle2_clicked() //ÖĞÁ÷¶ş·§
+void StdMtrCoeCorrect::on_btnValveMiddle2_clicked() //ä¸­æµäºŒé˜€
 {
 	m_nowPortNo = m_portsetinfo.middle2No;
 	operateValve(m_nowPortNo);
 }
 
-void StdMtrCoeCorrect::on_btnValveSmall_clicked() //Ğ¡Á÷Á¿·§
+void StdMtrCoeCorrect::on_btnValveSmall_clicked() //å°æµé‡é˜€
 {
 	m_nowPortNo = m_portsetinfo.smallNo;
 	operateValve(m_nowPortNo);
 }
 
 /*
-** ¿ØÖÆË®±Ã¿ª¹Ø
+** æ§åˆ¶æ°´æ³µå¼€å…³
 */
 void StdMtrCoeCorrect::on_btnWaterPump_clicked()
 {
@@ -950,7 +686,7 @@ void StdMtrCoeCorrect::on_btnWaterPump_clicked()
 }
 
 /*
-** ÉèÖÃ±äÆµÆ÷ÆµÂÊ
+** è®¾ç½®å˜é¢‘å™¨é¢‘ç‡
 */
 void StdMtrCoeCorrect::on_btnSetFreq_clicked()
 {
@@ -968,184 +704,173 @@ void StdMtrCoeCorrect::on_btnStdMeterV1_clicked()
 
 }
 
-//»ñÈ¡±í³õÖµ
-int StdMtrCoeCorrect::getMeterStartValue()
-{
-	
-	return true;
-}
-
-//»ñÈ¡±íÖÕÖµ
-int StdMtrCoeCorrect::getMeterEndValue()
-{
-	if (m_stopFlag)
-	{
-		return false;
-	}
-
-	return true;
-}
-
 /*
-** ÏìÓ¦´¦ÀíÓÃ»§ÊäÈëÍê±í³õÖµ¡¢±íÖÕÖµ
-   ÊäÈë²ÎÊı£º
-      row£ºĞĞÊı£¬´Ó0¿ªÊ¼
-	  column£ºÁĞÊı£¬´Ó0¿ªÊ¼
+** å“åº”å¤„ç†ç”¨æˆ·è¾“å…¥å®Œè¡¨åˆå€¼ã€è¡¨ç»ˆå€¼
+   è¾“å…¥å‚æ•°ï¼š
+      rowï¼šè¡Œæ•°ï¼Œä»0å¼€å§‹
+	  columnï¼šåˆ—æ•°ï¼Œä»0å¼€å§‹
 */
 void StdMtrCoeCorrect::on_tableWidget_cellChanged(int row, int column)
 {
-	
+	bool ok;
+	float value0=0.0, value1=0.0;
+	float avr = 0.0;
+	float rep = 0.0;
+	float density=0.0;
+	float balDisp=0.0;
+	int notEmpty = 0;
+
+	switch (column)
+	{
+	case COL_BALV0:
+		if (!ui.tableWidget->item(row,COL_BALV1)->text().isEmpty())
+		{
+			value0 = ui.tableWidget->item(row,COL_BALV0)->text().toFloat(&ok);
+			if (ok)
+			{
+				value1 = ui.tableWidget->item(row,COL_BALV1)->text().toFloat(&ok);
+				if (ok)
+					ui.tableWidget->item(row,COL_BALVD)->setText(QString::number(value1-value0));
+			}
+		}
+	case COL_BALV1:
+		if (!ui.tableWidget->item(row,COL_BALV0)->text().isEmpty())
+		{
+			value1 = ui.tableWidget->item(row,COL_BALV1)->text().toFloat(&ok);
+			if (ok)
+			{
+				value0 = ui.tableWidget->item(row,COL_BALV0)->text().toFloat(&ok);
+				if (ok)
+					ui.tableWidget->item(row,COL_BALVD)->setText(QString::number(value1-value0));
+			}
+		}
+		break;
+	case COL_BALVD:
+		density = m_chkAlg->getDensityByQuery(m_tempPipeOut);
+		ui.tableWidget->item(row,COL_DEN)->setText(QString::number(density));
+		break;
+	case COL_DEN:
+		balDisp = ui.tableWidget->item(row, COL_BALVD)->text().toFloat(&ok);	
+		density = ui.tableWidget->item(row, COL_DEN)->text().toFloat(&ok);	
+		ui.tableWidget->item(row,COL_BALVC)->setText(QString::number(balDisp/density));
+		break;
+	case COL_STDV0:
+		if (!ui.tableWidget->item(row,COL_STDV1)->text().isEmpty())
+		{
+			value0 = ui.tableWidget->item(row,COL_STDV0)->text().toFloat(&ok);
+			if (ok)
+			{
+				value1 = ui.tableWidget->item(row,COL_STDV1)->text().toFloat(&ok);
+				if (ok)
+					ui.tableWidget->item(row,COL_STDVD)->setText(QString::number(value1-value0));		
+			}
+		}
+		break;
+	case COL_STDV1:
+		if (!ui.tableWidget->item(row,COL_STDV0)->text().isEmpty())
+		{
+			value1 = ui.tableWidget->item(row,COL_STDV1)->text().toFloat(&ok);
+			if (ok)
+			{
+				value0 = ui.tableWidget->item(row,COL_STDV0)->text().toFloat(&ok);
+				if (ok)
+					ui.tableWidget->item(row,COL_STDVD)->setText(QString::number(value1-value0));		
+			}
+		}
+		break;
+	case COL_STDVD:
+		if (!ui.tableWidget->item(row,COL_BALVC)->text().isEmpty())
+		{
+			value1 = ui.tableWidget->item(row,COL_STDVD)->text().toFloat(&ok);
+			value0 = ui.tableWidget->item(row,COL_BALVC)->text().toFloat(&ok);
+			ui.tableWidget->item(row,COL_STDERR)->setText(QString::number(value1/value0));
+		}
+		break;
+	case COL_STDERR:
+		notEmpty = 0;
+		value0 = 0.0;
+		for (int i=getStartRow(row); i<=getStartRow(row)+CHK_CNTS-1; i++)
+		{
+			if (!ui.tableWidget->item(i,COL_STDERR)->text().isEmpty())
+			{
+				notEmpty++;
+				value0 += ui.tableWidget->item(i,COL_STDERR)->text().toFloat(&ok);
+			}
+		}
+
+		if (notEmpty > 0)
+		{
+			avr = value0/notEmpty;
+			ui.tableWidget->item(getStartRow(row),COL_STDERR_AVR)->setText(QString::number(avr));
+
+			if (notEmpty == CHK_CNTS)
+			{
+				for (int i=getStartRow(row); i<=getStartRow(row)+CHK_CNTS-1; i++)
+				{
+					value0 = ui.tableWidget->item(i,COL_STDERR)->text().toFloat(&ok);
+					rep += (value0-avr)*(value0-avr);
+				}
+				ui.tableWidget->item(row,COL_STDREP)->setText(QString::number(qSqrt(rep/(CHK_CNTS-1))));
+			}
+		}
+		break;
+	default:
+		break;
+	}
 }
 
-/*
-** ±£´æËùÓĞ±»¼ì±íµÄ¼ì¶¨¼ÇÂ¼
-*/
-int StdMtrCoeCorrect::saveAllVerifyRecords()
+int StdMtrCoeCorrect::getStartRow(int row)
 {
-
-	return 1;
-}
-/*
-** ´ò¿ª4Â·µç¶¯µ÷½Ú·§ÖÁÉè¶¨µÄ¿ª¶È
-** ×¢Òâ£ºÑ¡ÖĞµÄ¹ÜÂ·£¬½«µ÷½Ú·§¿ª¶Èµ÷Õûµ½Éè¶¨¿ª¶È£»
-         Î´Ñ¡ÖĞµÄ¹ÜÂ·£¬½«½«µ÷½Ú·§¿ª¶Èµ÷Õûµ½50%£¬ÓÃÓÚÅÅÆø
-*/
-void StdMtrCoeCorrect::openAllRegulator()
-{
-	int regNO = 0;
-	float opening = 0;
-	int valve_idx = 0;
-	QString last_valve_idx;
-	for (int i=1; i<=m_flowPointNum; i++) //Ñ¡ÖĞµÄ¹ÜÂ·£¬½«µ÷½Ú·§¿ª¶Èµ÷Õûµ½Éè¶¨¿ª¶È
-	{
-		regNO = m_paraSetReader->getFpBySeq(i).fp_regno;
-		opening = m_paraSetReader->getFpBySeq(i).fp_opening;
-		valve_idx = m_paraSetReader->getFpBySeq(i).fp_valve_idx;
-		if (last_valve_idx.contains(QString("%1").arg(valve_idx))) //Í¬Ò»¹ÜÂ·ÅÜ¶à¸öÁ÷Á¿µã
-		{
-			continue;
-		}
-		switch (valve_idx)
-		{
-		case 0: //´óÁ÷Á¿µã
-			ui.spinBoxOpeningBig->setValue(opening);
-			on_btnRegulateBig_clicked();
-			break;
-		case 1: //ÖĞ¶şÁ÷Á¿µã
-			ui.spinBoxOpeningMid2->setValue(opening);
-			on_btnRegulateMid2_clicked();
-			break;
-		case 2: //ÖĞÒ»Á÷Á¿µã
-			ui.spinBoxOpeningMid1->setValue(opening);
-			on_btnRegulateMid1_clicked();
-			break;
-		case 3: //Ğ¡Á÷Á¿µã
-			ui.spinBoxOpeningSmall->setValue(opening);
-			on_btnRegulateSmall_clicked();
-			break;
-		default:
-			break;
-		}
-		last_valve_idx += QString("%1").arg(valve_idx);
-	}
-
-	//Î´Ñ¡ÖĞµÄ¹ÜÂ·£¬½«µ÷½Ú·§¿ª¶Èµ÷Õûµ½50%£¬ÓÃÓÚÅÅÆø
-	if (ui.spinBoxOpeningSmall->value()==0)
-	{
-		ui.spinBoxOpeningSmall->setValue(50);
-		on_btnRegulateSmall_clicked();
-	}
-	if (ui.spinBoxOpeningMid1->value()==0)
-	{
-		ui.spinBoxOpeningMid1->setValue(50);
-		on_btnRegulateMid1_clicked();
-	}
-	if (ui.spinBoxOpeningMid2->value()==0)
-	{
-		ui.spinBoxOpeningMid2->setValue(50);
-		on_btnRegulateMid2_clicked();
-	}
-	if (ui.spinBoxOpeningBig->value()==0)
-	{
-		ui.spinBoxOpeningBig->setValue(50);
-		on_btnRegulateBig_clicked();
-	}
-}
-
-/*
-** ¹Ø±Õ4Â·µç¶¯µ÷½Ú·§
-*/
-void StdMtrCoeCorrect::closeAllRegulator()
-{
-	if (ui.spinBoxOpeningSmall->value()!=0)
-	{
-		ui.spinBoxOpeningSmall->setValue(0);
-		on_btnRegulateSmall_clicked();
-	}
-	if (ui.spinBoxOpeningMid1->value()!=0)
-	{
-		ui.spinBoxOpeningMid1->setValue(0);
-		on_btnRegulateMid1_clicked();
-	}
-	if (ui.spinBoxOpeningMid2->value()!=0)
-	{
-		ui.spinBoxOpeningMid2->setValue(0);
-		on_btnRegulateMid2_clicked();
-	}
-	if (ui.spinBoxOpeningBig->value()!=0)
-	{
-		ui.spinBoxOpeningBig->setValue(0);
-		on_btnRegulateBig_clicked();
-	}
+	return (row/CHK_CNTS)*CHK_CNTS;
 }
 
 void StdMtrCoeCorrect::setRegulatorOpening(int regNO, int opening)
 {
-	if (regNO == m_portsetinfo.regSmallNo) //Ğ¡µ÷½Ú·§
+	if (regNO == m_portsetinfo.regSmallNo) //å°è°ƒèŠ‚é˜€
 	{
 		ui.spinBoxOpeningSmall->setValue(opening);
 		on_btnRegulateSmall_clicked();
 	}
-	else if (regNO == m_portsetinfo.regMid1No) //ÖĞÒ»µ÷½Ú·§
+	else if (regNO == m_portsetinfo.regMid1No) //ä¸­ä¸€è°ƒèŠ‚é˜€
 	{
 		ui.spinBoxOpeningMid1->setValue(opening);
 		on_btnRegulateMid1_clicked();
 	}
-	else if (regNO == m_portsetinfo.regMid2No) //ÖĞ¶şµ÷½Ú·§
+	else if (regNO == m_portsetinfo.regMid2No) //ä¸­äºŒè°ƒèŠ‚é˜€
 	{
 		ui.spinBoxOpeningMid2->setValue(opening);
 		on_btnRegulateMid2_clicked();
 	}
-	else if (regNO == m_portsetinfo.regBigNo) //´óµ÷½Ú·§
+	else if (regNO == m_portsetinfo.regBigNo) //å¤§è°ƒèŠ‚é˜€
 	{
 		ui.spinBoxOpeningBig->setValue(opening);
 		on_btnRegulateBig_clicked();
 	}
 }
 
-//µç¶¯µ÷½Ú·§
-void StdMtrCoeCorrect::on_btnRegulateSmall_clicked() //µ÷½Ú·§1-DN3
+//ç”µåŠ¨è°ƒèŠ‚é˜€
+void StdMtrCoeCorrect::on_btnRegulateSmall_clicked() //è°ƒèŠ‚é˜€1-DN3
 {
 	m_smallOpening = ui.ThermoSmall->value();
 	askControlRegulate(m_portsetinfo.regSmallNo, ui.spinBoxOpeningSmall->value());
 	m_regSmallTimer->start(REGULATE_FRESH_TIME);
 }
 
-void StdMtrCoeCorrect::on_btnRegulateMid1_clicked() //µ÷½Ú·§2-DN10
+void StdMtrCoeCorrect::on_btnRegulateMid1_clicked() //è°ƒèŠ‚é˜€2-DN10
 {
 	m_mid1Opening = ui.ThermoMid1->value();
 	askControlRegulate(m_portsetinfo.regMid1No, ui.spinBoxOpeningMid1->value());
 	m_regMid1Timer->start(REGULATE_FRESH_TIME);
 }
 
-void StdMtrCoeCorrect::on_btnRegulateMid2_clicked() //µ÷½Ú·§3-DN25
+void StdMtrCoeCorrect::on_btnRegulateMid2_clicked() //è°ƒèŠ‚é˜€3-DN25
 {
 	m_mid2Opening = ui.ThermoMid2->value();
 	askControlRegulate(m_portsetinfo.regMid2No, ui.spinBoxOpeningMid2->value());
 	m_regMid2Timer->start(REGULATE_FRESH_TIME);
 }
 
-void StdMtrCoeCorrect::on_btnRegulateBig_clicked() //µ÷½Ú·§4-DN50
+void StdMtrCoeCorrect::on_btnRegulateBig_clicked() //è°ƒèŠ‚é˜€4-DN50
 {
 	m_bigOpening = ui.ThermoBig->value();
 	askControlRegulate(m_portsetinfo.regBigNo, ui.spinBoxOpeningBig->value());
@@ -1250,4 +975,33 @@ void StdMtrCoeCorrect::slotFreshBigRegOpening()
 	{
 		m_regBigTimer->stop();
 	}
+}
+
+void StdMtrCoeCorrect::on_rBtn_DN3_toggled()
+{
+	if (ui.rBtn_DN3->isChecked())
+		m_curStdMeter = FLOW_RATE_SMALL;
+}
+
+void StdMtrCoeCorrect::on_rBtn_DN10_toggled()
+{
+	if (ui.rBtn_DN10->isChecked())
+		m_curStdMeter = FLOW_RATE_MID_1;
+}
+
+void StdMtrCoeCorrect::on_rBtn_DN25_toggled()
+{
+	if (ui.rBtn_DN25->isChecked())
+		m_curStdMeter = FLOW_RATE_MID_2;
+}
+
+void StdMtrCoeCorrect::on_rBtn_DN50_toggled()
+{
+	if (ui.rBtn_DN50->isChecked())
+		m_curStdMeter = FLOW_RATE_BIG;
+}
+
+void StdMtrCoeCorrect::on_btnSave_clicked()
+{
+	
 }
