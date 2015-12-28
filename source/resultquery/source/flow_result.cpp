@@ -52,6 +52,7 @@ FlowResultDlg::FlowResultDlg(QWidget *parent, Qt::WFlags flags)
 
 	ui.btnInsert->hide();
 	ui.btnStop->hide();
+	ui.btnImport->hide();
 
 // 	ui.labelProgress->hide();
 /*	QString adehome = QProcessEnvironment::systemEnvironment().value("ADEHOME");
