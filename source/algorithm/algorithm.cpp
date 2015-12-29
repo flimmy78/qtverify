@@ -755,9 +755,9 @@ double CAlgorithm::getStdVolByPos(float mass, float inlet, float outlet, int num
 #endif
 
 	float stdVol = 0.0;
-	if (method = WEIGHT_METHOD)
+	if (method == WEIGHT_METHOD)
 	{
-		if (balCap==BALANCE_CAP150)
+		if (balCap == BALANCE_CAP150)
 		{
 			stdVol = mass*0.9971 / den; //标准体积(质量法需要考虑天平进水管的浮力修正：150kg天平修正系数0.9971)
 		}
