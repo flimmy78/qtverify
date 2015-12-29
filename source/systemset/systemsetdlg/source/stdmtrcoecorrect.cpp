@@ -88,19 +88,9 @@ StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 
 	m_curStdMeter = -1;//初始化, 用户未选中任何标准表
 	/***************标准流量计***********************/
-	m_mapInstWdg[FLOW_RATE_BIG]   = ui.lcdInstStdMeter_50;
-	m_mapInstWdg[FLOW_RATE_MID_2] = ui.lcdInstStdMeter_25;
-	m_mapInstWdg[FLOW_RATE_MID_1] = ui.lcdInstStdMeter_10;
-	m_mapInstWdg[FLOW_RATE_SMALL] = ui.lcdInstStdMeter_3;
-
-	m_mapAccumWdg[FLOW_RATE_BIG]   = ui.lcdAccumStdMeter_50;
-	m_mapAccumWdg[FLOW_RATE_MID_2] = ui.lcdAccumStdMeter_25;
-	m_mapAccumWdg[FLOW_RATE_MID_1] = ui.lcdAccumStdMeter_10;
-	m_mapAccumWdg[FLOW_RATE_SMALL] = ui.lcdAccumStdMeter_3;
 	m_stdMeterReader = NULL;
 	m_stdMeterReader = new CStdMeterReader;
-	m_stdMeterReader->mapInstWdg(&m_mapInstWdg, ui.lcdFlowRate);
-	m_stdMeterReader->mapAccumWdg(&m_mapAccumWdg, ui.lcdVolume);
+
 	m_stdMeterReader->startReadMeter();
 	/***************标准流量计end********************/
 }
@@ -178,6 +168,26 @@ void StdMtrCoeCorrect::resizeEvent(QResizeEvent * event)
 	int hSize = (int)((tw-vw-10)/ui.tableWidget->columnCount());
 	ui.tableWidget->verticalHeader()->setDefaultSectionSize(vSize);
 	ui.tableWidget->horizontalHeader()->setDefaultSectionSize(hSize);
+}
+
+void StdMtrCoeCorrect::slotFreshInstFlow(const flow_rate_wdg& idx, const float& value)
+{
+
+}
+
+void StdMtrCoeCorrect::slotFreshAccumFlow(const flow_rate_wdg& idx, const float& value)
+{
+
+}
+
+void StdMtrCoeCorrect::slotFreshTolInst(const float& value)
+{
+
+}
+
+void StdMtrCoeCorrect::slotFreshTolAccum(const float& value)
+{
+
 }
 
 void StdMtrCoeCorrect::initTableWdg()

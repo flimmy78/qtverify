@@ -5,13 +5,8 @@ CStdMeterReader::CStdMeterReader(QObject* parent) : QObject(parent)
 {
 	m_instantFlowCom		= NULL;
 	m_instSTDMeterTimer		= NULL;
-	m_totalInstLcd			= NULL;
-	m_mapInstWdg			= NULL;
-
 	m_accumulateFlowCom		= NULL;
 	m_accumSTDMeterTimer	= NULL;
-	m_totalAccumLcd			= NULL;
-	m_mapAccumWdg			= NULL;
 
 	m_stdParam				= NULL;
 	m_readComConfig			= NULL;
@@ -21,11 +16,6 @@ CStdMeterReader::CStdMeterReader(QObject* parent) : QObject(parent)
 
 CStdMeterReader::~CStdMeterReader()
 {
-	m_totalInstLcd			= NULL;
-	m_mapInstWdg			= NULL;
-	m_totalAccumLcd			= NULL;
-	m_mapAccumWdg			= NULL;
-
 	RELEASE_TIMER(m_instSTDMeterTimer)
 	EXIT_THREAD(m_instantFlowThread)
 	RELEASE_PTR(m_instantFlowCom)
@@ -70,22 +60,6 @@ void CStdMeterReader::initAccumStdCom()
 
 	m_accumSTDMeterTimer = new QTimer();
 	connect(m_accumSTDMeterTimer, SIGNAL(timeout()), this, SLOT(slotAskAccumBytes()));
-}
-
-void CStdMeterReader::mapInstWdg(QMap<flow_rate_wdg, QLCDNumber *> *mapWdg, QLCDNumber *totalInstWdg, bool onlyDispTotal)
-{
-	m_mapInstWdg = mapWdg;
-	m_totalInstLcd = totalInstWdg;
-	m_InstOnlyDispTotal = onlyDispTotal;
-	initInstStdCom();
-}
-
-void CStdMeterReader::mapAccumWdg(QMap<flow_rate_wdg, QLCDNumber *> *mapWdg, QLCDNumber *totalAccumWdg, bool onlyDispTotal)
-{
-	m_mapAccumWdg = mapWdg;
-	m_totalAccumLcd = totalAccumWdg;
-	m_AccumOnlyDispTotal = onlyDispTotal;
-	initAccumStdCom();
 }
 
 void CStdMeterReader::startReadMeter()
@@ -150,52 +124,30 @@ void CStdMeterReader::slotGetInstStdMeterPulse(const QByteArray & valueArray)
 {
 	m_instStdCurrent = valueArray;
 	float instValue = 0.0;//瞬时流量	
-
-	if (!m_InstOnlyDispTotal)
-		freshInstStdMeter();
-
 	for (int i=FLOW_RATE_BIG; i<=FLOW_RATE_SMALL; i++)
 		instValue += getInstFlowRate((flow_rate_wdg)i);
-
-	if(m_totalInstLcd)
-		m_totalInstLcd->display(instValue);
+	emit signalReadTolInstReady(instValue);
 }
 
 void CStdMeterReader::slotGetAccumStdMeterPulse(const QByteArray & valueArray)
 {
 	m_accumStdPulse = valueArray;
 	float accumValue = 0.0;//累积流量
-
-	if (!m_AccumOnlyDispTotal)
-		freshAccumStdMeter();
-		
 	for (int i=FLOW_RATE_BIG; i<=FLOW_RATE_SMALL; i++)
 		accumValue += getAccumFLowVolume((flow_rate_wdg)i);
-
-	if(m_totalAccumLcd)
-		m_totalAccumLcd->display(accumValue);	
+	emit signalReadTolAccumReady(accumValue);
 }
 
 void CStdMeterReader::freshInstStdMeter()
 {
 	for (int i=FLOW_RATE_BIG; i<=FLOW_RATE_SMALL; i++)
-	{
-		if (m_mapInstWdg->keys().contains((flow_rate_wdg)i))
-		{
-			m_mapInstWdg->value((flow_rate_wdg)i)->display(getInstFlowRate((flow_rate_wdg)i));
-		}
-	}
+		getInstFlowRate((flow_rate_wdg)i);
 }
 
 void CStdMeterReader::freshAccumStdMeter()
 {
 	for (int i=FLOW_RATE_BIG; i<=FLOW_RATE_SMALL; i++)
-	{
-		if (m_mapAccumWdg->keys().contains((flow_rate_wdg)i))
-		{
-			m_mapAccumWdg->value((flow_rate_wdg)i)->display(getAccumFLowVolume((flow_rate_wdg)i));
-		}
-	}
+		getAccumFLowVolume((flow_rate_wdg)i);
 }
 
 int CStdMeterReader::getRouteByWdg(flow_rate_wdg wdgIdx, flow_type fType)
@@ -244,7 +196,9 @@ float CStdMeterReader::getInstFlowRate(flow_rate_wdg idx)
 	int count = get9017RouteI(route, m_instStdCurrent);
 	float upperFlow = getStdUpperFlow(idx);
 	//qDebug() <<"wdg_idx:--"<<idx<<" InstCurrent:--"<<count<<" upperFlow:--"<<upperFlow;
-	return getInstStdValue(count, upperFlow);
+	float inst = getInstStdValue(count, upperFlow);
+	emit signalReadInstReady(idx, inst);
+	return inst;
 }
 
 float CStdMeterReader::getAccumFLowVolume(flow_rate_wdg idx)
@@ -253,7 +207,9 @@ float CStdMeterReader::getAccumFLowVolume(flow_rate_wdg idx)
 	int count = get9150ARouteI(route, m_accumStdPulse);
 	double pulse = getStdPulse(idx);
 	//qDebug() <<"wdg_idx:--"<<idx<<" AccumValue:--"<<count<<" pulse:--"<<pulse;
-	return count*pulse;
+	float accum = count*pulse;
+	emit signalReadAccumReady(idx, accum);
+	return accum;
 }
 
 void CStdMeterReader::slotClearLcMod()

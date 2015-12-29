@@ -96,6 +96,12 @@ public slots:
 	void on_rBtn_DN25_toggled();
 	void on_rBtn_DN50_toggled();
 
+	/*******************标准流量计******************************/
+	void slotFreshInstFlow(const flow_rate_wdg&, const float&);
+	void slotFreshAccumFlow(const flow_rate_wdg&, const float&);
+	void slotFreshTolInst(const float&);
+	void slotFreshTolAccum(const float&);
+	/******************标准流量计end****************************/
 private slots:
 	void slotAskPipeTemperature();//请求管路温度
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
@@ -170,8 +176,6 @@ private:
 
 	/*******************标准流量计******************************/
 	CStdMeterReader* m_stdMeterReader;
-	QMap<flow_rate_wdg, QLCDNumber *> m_mapInstWdg;
-	QMap<flow_rate_wdg, QLCDNumber *> m_mapAccumWdg;
 	/******************标准流量计end***************************/
 
 	void initBalanceCom();     //天平串口
