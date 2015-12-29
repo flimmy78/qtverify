@@ -394,9 +394,7 @@ void StdMtrCoeCorrect::slotFreshComTempValue(const QString& tempStr)
 {
 	ui.lcdInTemper->display(tempStr.left(TEMPER_DATA_WIDTH));   //入口温度 PV
 	ui.lcdOutTemper->display(tempStr.right(TEMPER_DATA_WIDTH)); //出口温度 SV
-	m_avgTFCount++;
-	m_tempPipeOut += ui.lcdOutTemper->value();
-	m_tempPipeOut /= m_avgTFCount;
+	m_tempPipeOut = ui.lcdOutTemper->value();
 }
 
 /*

@@ -87,8 +87,12 @@ private:
 
 	ReadComConfig *m_readComConfig;
 	QSettings *m_stdParam;//读取标准表设置
+	QMap<flow_rate_wdg, int> m_accumCount;//记录当前脉冲值, 用于计算下一次采集时的脉冲增量, 以计算体积增量
+	QMap<flow_rate_wdg, float> m_accumVol;//记录当前算出的体积值, 用于计算下一次采集时的体积增量
+	QMap<flow_rate_wdg, QMap<float, float>> m_mapFlowK;//各流量点的流量-K系数表
 
 	void initObj();
+	void readFlowK();//读取各流量点的流量-K系数表
 	void initInstStdCom();//瞬时流量串口初始化
 	void initAccumStdCom();//累积流量串口初始化
 
@@ -96,11 +100,12 @@ private:
 	float getStdUpperFlow(flow_rate_wdg wdgIdx);//根据部件号读取相应标准表的上限流量值
 	double getStdPulse(flow_rate_wdg wdgIdx);//根据部件号读取相应标准表的脉冲值
 
-	void freshInstStdMeter();//刷新瞬时读数
-	void freshAccumStdMeter();//刷新累积读数
-
 	float getInstFlowRate(flow_rate_wdg idx);
 	float getAccumFLowVolume(flow_rate_wdg idx);
+
+	float getKCoe(flow_rate_wdg idx);//计算当前流量点的K系数(现行插值)
+	void getBound(flow_rate_wdg idx, float currentFlow, float& inf, float& sup);//根据当前流量, 查找其在表中的最小上限和最大下限
+
 private slots:
 	void slotAskInstBytes();//请求瞬时流量
 	void slotAskAccumBytes();//请求累积流量

@@ -10,9 +10,6 @@
 #include "systemsetdlg_global.h"
 #include "basedef.h"
 
-#define FLOW_K_NUM 10//流量-K系数点的个数
-#define DIAMETER_NUM 4//一共设置了几个管径的标准表
-
 class SYSTEMSETDLG_EXPORT StdMtrParaSet : public QWidget
 {
 	Q_OBJECT

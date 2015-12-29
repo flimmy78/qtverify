@@ -99,6 +99,9 @@ enum flow_rate_wdg
 	FLOW_RATE_SMALL     //小流量
 };
 
+#define FLOW_K_NUM 10//标准表标定时的流量-K系数点的个数
+#define DIAMETER_NUM 4//一共设置了几个管径的标准表
+
 /*
 ** 流量的类型
 */
