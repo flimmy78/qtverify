@@ -738,7 +738,7 @@ float CAlgorithm::getDecimal(float p)
 
 /************************************************************************
 * 按表位号获取对应表位的标准体积流量 (单位升, L)                       
-* mass:  质量(单位千克, kg)
+* mass:  质量(单位千克, kg，天平质量或标准表折算后的质量),未修正
 * inlet: 进水口温度
 * outlet: 出水口温度
 * num: 表位号(从1开始至最大检表数量)
@@ -761,7 +761,7 @@ double CAlgorithm::getStdVolByPos(float mass, float inlet, float outlet, int num
 		{
 			stdVol = mass*0.9971 / den; //标准体积(质量法需要考虑天平进水管的浮力修正：150kg天平修正系数0.9971)
 		}
-		else
+		else //BALANCE_CAP600
 		{
 			stdVol = mass*0.9939 / den; //标准体积(质量法需要考虑天平进水管的浮力修正：600kg天平修正系数0.9939）
 		}
@@ -780,8 +780,11 @@ double CAlgorithm::getStdVolByPos(float mass, float inlet, float outlet, int num
 ** outTemper 出口标准温度, ℃
 ** mass 质量, kg
 ** unit 使用的热值单位, 0:MJ ; 1:kWh
+** method 检定方法，0:质量法；1:标准表法
+** balCap:天平容量，对应不同的系数（0：150kg天平，系数0.9971； 1：600kg天平，系数0.9939
+** pressure:气压
 */
-double CAlgorithm::calcStdEnergyByEnthalpy(float inTemper, float outTemper, float mass, int unit, float pressure)
+double CAlgorithm::calcStdEnergyByEnthalpy(float inTemper, float outTemper, float mass, int unit, int method, int balCap, float pressure)
 {
 	float inEnthalpy, outEnthalpy, energy;
 
@@ -789,7 +792,24 @@ double CAlgorithm::calcStdEnergyByEnthalpy(float inTemper, float outTemper, floa
 // 	outEnthalpy = calcEnthalpyOfWater(outTemper, pressure);//KJ/kg
 	inEnthalpy = getEnthalpyByQuery(inTemper);//KJ/kg
 	outEnthalpy = getEnthalpyByQuery(outTemper);//KJ/kg
-	energy = mass*(inEnthalpy-outEnthalpy);//KJ
+
+	float massA = 0.0;
+	if (method == WEIGHT_METHOD)
+	{
+		if (balCap == BALANCE_CAP150)
+		{
+			massA = mass * 0.9971;
+		}
+		else //BALANCE_CAP600
+		{
+			massA = mass * 0.9939;
+		}
+	}
+	else //STANDARD_METHOD
+	{
+		massA = mass;
+	}
+	energy = massA*(inEnthalpy-outEnthalpy);//KJ
 	if (unit == UNIT_KWH)
 	{
 		energy /= 3600.0;

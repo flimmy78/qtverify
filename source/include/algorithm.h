@@ -428,7 +428,8 @@ public:
 	double getGamaTao(float pai, float tao);//用于水的比焓值计算的γ
 	double calcEnthalpyOfWater(float temp, float pressure);//计算水的比焓值, 温度范围0℃~350℃
 	double calcEnergyByEnthalpy(float inTemper, float outTemper, float vol,  int installPos, int unit, float pressure=NORMAL_PRESSURE);//焓差法计算热值（组合检定）
-	double calcStdEnergyByEnthalpy(float inTemper, float outTemper, float mass, int unit, float pressure=NORMAL_PRESSURE); //焓差法计算热值(质量法总量检定)
+	 //焓差法计算热值(质量法总量检定)
+	double calcStdEnergyByEnthalpy(float inTemper, float outTemper, float mass, int unit, int method=WEIGHT_METHOD, int balCap=BALANCE_CAP150, float pressure=NORMAL_PRESSURE);
 private:
 	int getInt(float p);
 	float getDecimal(float p);
