@@ -421,7 +421,7 @@ float getInstStdValue(float elecValue, float upperValue)
 		return (deltaCur/deltaStd)*upperValue;
 	}
 
-	return 0.0f;	
+	return -1.0f;//如果超出正常电流值的范围, 返回异常流速
 }
 
 
