@@ -118,6 +118,15 @@ enum Verify_Method
 };
 
 /*
+** 天平容量枚举，用于区分天平进水管相应的修正系数
+*/
+enum Balance_Capacity
+{
+	BALANCE_CAP150 = 0, //150kg天平
+	BALANCE_CAP600      //600kg天平
+};
+
+/*
 ** 进入检定状态的类型 0:流量检定；1:热量检定
 */
 enum Verify_Type

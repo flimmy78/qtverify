@@ -421,7 +421,7 @@ public:
 	float getMeterTempByPos(float inlet, float oulet, int num);//按表位号计算其温度
 	double getDensityByFit(float temp);//根据水的温度值计算密度值(拟合法)
 	double getDensityByQuery(float temp);//根据水的温度值查找密度值(查表法)
-	double getStdVolByPos(float mass, float inlet, float outlet, int num);//获取对应表位的标准体积流量
+	double getStdVolByPos(float mass, float inlet, float outlet, int num, int method=WEIGHT_METHOD, int balCap=BALANCE_CAP150);//获取对应表位的标准体积流量
 	double getEnthalpyByQuery(float temp);//根据水的温度值查找焓值(查表法)
 	double calcKCoeOfWater(float inTemper, float outTemper,  int installPos, float pressure=0.6); //根据进水温度、出水温度、安装位置计算K系数
 	double getGamaPai(float pai, float tao);//用于水的热量K系数计算的γ

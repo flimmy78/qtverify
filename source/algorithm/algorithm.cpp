@@ -738,12 +738,14 @@ float CAlgorithm::getDecimal(float p)
 
 /************************************************************************
 * 按表位号获取对应表位的标准体积流量 (单位升, L)                       
-* mass: 天平的质量差(单位千克, kg)
+* mass:  质量(单位千克, kg)
 * inlet: 进水口温度
 * outlet: 出水口温度
 * num: 表位号(从1开始至最大检表数量)
+* method：检定方法 （0：质量法；1：标准表法）
+* balCap:天平容量，对应不同的系数（0：150kg天平，系数0.9971； 1：600kg天平，系数0.9939
 ************************************************************************/
-double CAlgorithm::getStdVolByPos(float mass, float inlet, float outlet, int num)
+double CAlgorithm::getStdVolByPos(float mass, float inlet, float outlet, int num, int method, int balCap)
 {	
 	float temp = getMeterTempByPos(inlet, outlet, num);//获取温度
 #ifdef FIT
@@ -752,7 +754,23 @@ double CAlgorithm::getStdVolByPos(float mass, float inlet, float outlet, int num
 	float den = getDensityByQuery(temp);//获取密度
 #endif
 
-	return (mass*0.997 / den);//返回标准体积(考虑负千分之三的浮力修正)
+	float stdVol = 0.0;
+	if (method = WEIGHT_METHOD)
+	{
+		if (balCap==BALANCE_CAP150)
+		{
+			stdVol = mass*0.9971 / den; //标准体积(质量法需要考虑天平进水管的浮力修正：150kg天平修正系数0.9971)
+		}
+		else
+		{
+			stdVol = mass*0.9939 / den; //标准体积(质量法需要考虑天平进水管的浮力修正：600kg天平修正系数0.9939）
+		}
+	}
+	else //STANDARD_METHOD
+	{
+		stdVol = mass / den;
+	}
+	return stdVol;
 }
 
 /*
