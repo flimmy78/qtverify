@@ -23,6 +23,7 @@
 
 ReadComConfig::ReadComConfig()
 {
+	m_com_settings = NULL;
 	m_com_settings = new QSettings(getFullIniFileName("comconfig.ini"), QSettings::IniFormat);
 }
 

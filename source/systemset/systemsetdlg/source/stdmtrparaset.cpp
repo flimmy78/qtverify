@@ -132,16 +132,16 @@ void StdMtrParaSet::initWdgVec()
 	m_vecKCoeMid1.append(ui.lineEdit_KCoe_8_2);
 	m_vecKCoeMid1.append(ui.lineEdit_KCoe_9_2);
 
-	m_vecKCoeSmall.append(ui.lineEdit_KCoe_0_2);
-	m_vecKCoeSmall.append(ui.lineEdit_KCoe_1_2);
-	m_vecKCoeSmall.append(ui.lineEdit_KCoe_2_2);
-	m_vecKCoeSmall.append(ui.lineEdit_KCoe_3_2);
-	m_vecKCoeSmall.append(ui.lineEdit_KCoe_4_2);
-	m_vecKCoeSmall.append(ui.lineEdit_KCoe_5_2);
-	m_vecKCoeSmall.append(ui.lineEdit_KCoe_6_2);
-	m_vecKCoeSmall.append(ui.lineEdit_KCoe_7_2);
-	m_vecKCoeSmall.append(ui.lineEdit_KCoe_8_2);
-	m_vecKCoeSmall.append(ui.lineEdit_KCoe_9_2);
+	m_vecKCoeSmall.append(ui.lineEdit_KCoe_0_3);
+	m_vecKCoeSmall.append(ui.lineEdit_KCoe_1_3);
+	m_vecKCoeSmall.append(ui.lineEdit_KCoe_2_3);
+	m_vecKCoeSmall.append(ui.lineEdit_KCoe_3_3);
+	m_vecKCoeSmall.append(ui.lineEdit_KCoe_4_3);
+	m_vecKCoeSmall.append(ui.lineEdit_KCoe_5_3);
+	m_vecKCoeSmall.append(ui.lineEdit_KCoe_6_3);
+	m_vecKCoeSmall.append(ui.lineEdit_KCoe_7_3);
+	m_vecKCoeSmall.append(ui.lineEdit_KCoe_8_3);
+	m_vecKCoeSmall.append(ui.lineEdit_KCoe_9_3);
 
 	m_mapPulseWdg[FLOW_RATE_BIG]   = ui.lineEdit_Pulse_0;
 	m_mapPulseWdg[FLOW_RATE_MID_2] = ui.lineEdit_Pulse_1;

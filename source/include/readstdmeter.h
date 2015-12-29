@@ -63,6 +63,8 @@ public:
 	void stopReadMeter();
 	void stopReadInstMeter();
 	void stopReadAccumMeter();
+public slots:
+	void slotClearLcMod();//把力创模块的累计流量清零
 private:
 	/*-------------------------瞬时流量---------------------------------*/
 	lcModRtuComObject *m_instantFlowCom;//瞬时流量串口对象

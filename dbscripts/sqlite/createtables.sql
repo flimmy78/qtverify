@@ -656,7 +656,7 @@ select
 	round(rec.F_InSlotTemper, 2) F_InSlotTemper,
 	round(rec.F_OutSlotTemper, 2) F_OutSlotTemper,
 	round((rec.F_InSlotTemper-rec.F_OutSlotTemper),2) F_SlotTempDiff,
-	CAST(round(rec.F_InSlotTemper, 2) AS varchar)||''/''||CAST(round(rec.F_OutSlotTemper, 2) as varchar(6)) F_SlotInOutTemp,
+	CAST(round(rec.F_InSlotTemper, 2) AS varchar)||''/''||CAST(round(rec.F_OutSlotTemper, 2) as varchar) F_SlotInOutTemp,
 	round(rec.F_PipeTemper, 2) F_PipeTemper,
 	round(rec.F_Density, 5) F_Density,
 	round(rec.F_StandValue, 4) F_StandValue,

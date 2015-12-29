@@ -67,6 +67,9 @@ StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 	//计算类接口
 	m_chkAlg = NULL;
 	m_chkAlg = new CAlgorithm();
+	//标准表的配置文件
+	m_stdMeterConfig = NULL;
+	m_stdMeterConfig = new QSettings(getFullIniFileName("stdmtrparaset.ini"), QSettings::IniFormat);
 
 	//映射关系；初始化阀门状态	
 	initValveStatus();      
@@ -159,6 +162,7 @@ void StdMtrCoeCorrect::closeEvent( QCloseEvent * event)
 
 	RELEASE_PTR(m_stdMeterReader)//标准表读取
 	m_curStdMeter = -1;
+	RELEASE_PTR(m_stdMeterConfig)//标准表的配置文件
 	emit signalClosed();
 }
 
@@ -1008,5 +1012,35 @@ void StdMtrCoeCorrect::on_rBtn_DN50_toggled()
 
 void StdMtrCoeCorrect::on_btnSave_clicked()
 {
-	
+	if (m_curStdMeter != -1)
+		saveMeterConfig((flow_rate_wdg)m_curStdMeter);
+}
+
+void StdMtrCoeCorrect::saveMeterConfig(flow_rate_wdg wdg)
+{
+	switch(m_curStdMeter)
+	{
+	case FLOW_RATE_BIG:
+		m_stdMeterConfig->beginWriteArray("BigFlowK");
+		break;
+	case FLOW_RATE_MID_2:
+		m_stdMeterConfig->beginWriteArray("Mid2FlowK");
+		break;
+	case FLOW_RATE_MID_1:
+		m_stdMeterConfig->beginWriteArray("Mid1FlowK");
+		break;
+	case FLOW_RATE_SMALL:
+		m_stdMeterConfig->beginWriteArray("SmallFlowK");
+		break;
+	default:
+		break;
+	}
+
+	for (int i=0; i<FLOW_POINTS; i++)
+	{
+		m_stdMeterConfig->setArrayIndex(i);
+		m_stdMeterConfig->setValue("flowPoint", ui.tableWidget->item(i*CHK_CNTS, COL_FLOW_POINT)->text());
+		m_stdMeterConfig->setValue("KCoe", ui.tableWidget->item(i*CHK_CNTS, COL_STDERR_AVR)->text());
+	}
+	m_stdMeterConfig->endArray();
 }

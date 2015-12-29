@@ -162,6 +162,7 @@ private:
 	int m_bigOpening;
 
 	CAlgorithm *m_chkAlg;//检定过程用到的计算方法
+	QSettings* m_stdMeterConfig;//标准表的配置文件
 
 	QMap<int, QLineEdit*> m_RegLineEdit; //调节阀端口号与调节阀开度显示控件的映射关系
 	QMap<int, QSpinBox*> m_RegSpinBox; //调节阀端口号与调节阀目标开度控件的映射关系
@@ -200,6 +201,7 @@ private:
 	void setValveBtnBackColor(QToolButton *btn, bool status); //设置阀门按钮背景色
 	void setRegBtnBackColor(QPushButton *btn, bool status);	  //设置调节阀按钮背景色
 	int getStartRow(int row);//获取当前行对应流量点的起始行
+	void saveMeterConfig(flow_rate_wdg wdg);
 };
 
 #endif //STDCOECORRECT_H

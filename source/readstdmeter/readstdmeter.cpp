@@ -1,3 +1,4 @@
+#include <QThread>
 #include "readstdmeter.h"
 
 CStdMeterReader::CStdMeterReader(QObject* parent) : QObject(parent)
@@ -40,7 +41,7 @@ CStdMeterReader::~CStdMeterReader()
 void CStdMeterReader::initObj()
 {
 	m_stdParam = new QSettings(getFullIniFileName("stdmtrparaset.ini"), QSettings::IniFormat);
-	m_readComConfig = new ReadComConfig;
+	m_readComConfig = new ReadComConfig();
 }
 
 void CStdMeterReader::initInstStdCom()
@@ -48,7 +49,9 @@ void CStdMeterReader::initInstStdCom()
 	ComInfoStruct InstStdCom = m_readComConfig->ReadInstStdConfig();
 	m_instantFlowCom = new lcModRtuComObject();
 	m_instantFlowCom->moveToThread(&m_instantFlowThread);
+
 	m_instantFlowThread.start();
+	qDebug() << "CStdMeterReader::initInstStdCom() running";
 	m_instantFlowCom->openLcModCom(&InstStdCom);
 	connect(m_instantFlowCom, SIGNAL(lcModValueIsReady(const QByteArray &)), this, SLOT(slotGetInstStdMeterPulse(const QByteArray &)));
 
@@ -210,7 +213,7 @@ int CStdMeterReader::getRouteByWdg(flow_rate_wdg wdgIdx, flow_type fType)
 		break;
 	default:
 		break;
-	}	
+	}
 	m_stdParam->endArray();
 	return route;
 }
@@ -251,4 +254,9 @@ float CStdMeterReader::getAccumFLowVolume(flow_rate_wdg idx)
 	double pulse = getStdPulse(idx);
 	//qDebug() <<"wdg_idx:--"<<idx<<" AccumValue:--"<<count<<" pulse:--"<<pulse;
 	return count*pulse;
+}
+
+void CStdMeterReader::slotClearLcMod()
+{
+
 }
