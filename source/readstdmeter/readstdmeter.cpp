@@ -43,6 +43,8 @@ void CStdMeterReader::initObj()
 	m_accumVol[FLOW_RATE_MID_1] = 0.0;
 	m_accumVol[FLOW_RATE_SMALL] = 0.0;
 	readFlowK();
+	initInstStdCom();
+	initAccumStdCom();
 }
 
 void CStdMeterReader::readFlowK()
