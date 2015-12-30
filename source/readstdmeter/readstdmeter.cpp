@@ -296,7 +296,7 @@ float CStdMeterReader::getKCoe(flow_rate_wdg idx)
 	getBound(idx, currentFlow, inf, sup);
 	float infK = m_mapFlowK[idx][inf];
 	float supK = m_mapFlowK[idx][sup];
-	float KCoe =  infK + (supK - infK)*(currentFlow-infK)/(sup-inf);
+	float KCoe =  infK + (supK - infK)*(currentFlow-inf)/(sup-inf);
 	return KCoe;
 }
 
@@ -304,12 +304,13 @@ void CStdMeterReader::getBound(flow_rate_wdg idx, float currentFlow, float& inf,
 {
 	QList<float> keyList = m_mapFlowK[idx].keys();
 	//顺序查找键列表, 返回第一次出现的比currentFlow大的键及其前导键
-	for (int i=0; i<keyList.count(); i++)
+	for (int i=0; i<keyList.count()-1; i++)
 	{
 		if (currentFlow<keyList.at(i+1))
 		{
 			inf = keyList.at(i);
 			sup = keyList.at(i+1);
+			return;
 		}
 	}
 }

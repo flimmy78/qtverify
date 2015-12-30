@@ -1145,12 +1145,10 @@ lcModRtuComObject::~lcModRtuComObject()
 {
 	if (m_lcModCom != NULL)
 	{
-		if(m_lcModCom->isOpen())
-		{
-			m_lcModCom->close();
-			qDebug()<<m_lcModCom->portName()<<" m_lcModCom closed";
-		}
+		m_lcModCom->close();
+		qDebug()<<m_lcModCom->portName()<<" m_lcModCom closed";
 		delete m_lcModCom;
+		m_lcModCom = NULL;
 	}
 
 	if (m_lcModProtocol != NULL)
