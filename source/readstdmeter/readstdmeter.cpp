@@ -69,7 +69,6 @@ void CStdMeterReader::readFlowK()
 		m_stdParam->setArrayIndex(i);
 		flow = m_stdParam->value("flowPoint").toString();
 		kcoe = m_stdParam->value("KCoe").toString();
-		//当流量和k系数字串长度都大于0, 才将其添加到流量-K系数表
 		if (flow.length()*kcoe.length() > 0)
 			m_mapFlowK[FLOW_RATE_MID_2][flow.toFloat()] = kcoe.toFloat();
 	}
@@ -81,7 +80,6 @@ void CStdMeterReader::readFlowK()
 		m_stdParam->setArrayIndex(i);
 		flow = m_stdParam->value("flowPoint").toString();
 		kcoe = m_stdParam->value("KCoe").toString();
-		//当流量和k系数字串长度都大于0, 才将其添加到流量-K系数表
 		if (flow.length()*kcoe.length() > 0)
 			m_mapFlowK[FLOW_RATE_MID_1][flow.toFloat()] = kcoe.toFloat();
 	}
@@ -93,7 +91,6 @@ void CStdMeterReader::readFlowK()
 		m_stdParam->setArrayIndex(i);
 		flow = m_stdParam->value("flowPoint").toString();
 		kcoe = m_stdParam->value("KCoe").toString();
-		//当流量和k系数字串长度都大于0, 才将其添加到流量-K系数表
 		if (flow.length()*kcoe.length() > 0)
 			m_mapFlowK[FLOW_RATE_SMALL][flow.toFloat()] = kcoe.toFloat();
 	}
@@ -300,8 +297,7 @@ float CStdMeterReader::getKCoe(flow_rate_wdg idx)
 	float infK = m_mapFlowK[idx][inf];
 	float supK = m_mapFlowK[idx][sup];
 	float KCoe =  infK + (supK - infK)*(currentFlow-infK)/(sup-inf);
-	
-	return 0.0;
+	return KCoe;
 }
 
 void CStdMeterReader::getBound(flow_rate_wdg idx, float currentFlow, float& inf, float& sup)
