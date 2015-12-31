@@ -229,6 +229,7 @@ public slots:
 	void close();
 
 	void setStdTempVersion(int version = TEMPERATURE_TYPE_HUAYI);
+	void writeComByteM();
 };
 
 /*

@@ -1075,6 +1075,7 @@ bool StdTempComObject::openTemperatureCom(ComInfoStruct *comStruct)
 //请求温度
 void StdTempComObject::writeStdTempComBuffer(stdTempCommand command)
 {
+	qDebug()<<"StdTempComObject::writeStdTempComBuffer"<<QThread::currentThreadId();
 	int version = m_stdTempProtocol->getProtocolVersion();
 	switch (version)
 	{
@@ -1096,18 +1097,26 @@ void StdTempComObject::writeStdTempComBuffer(stdTempCommand command)
 		default:
 			break;
 		}
-		wait(2000);
-		m_tempCom->write("M");
+		QTimer::singleShot(2000, this, SLOT(writeComByteM()));
+// 		wait(2000);
+// 		m_tempCom->write("M");
 		break;
 	default:
 		break;
 	}
 }
 
+//只针对华易标准温度计
+void StdTempComObject::writeComByteM()
+{
+	qDebug()<<"StdTempComObject::writeComByteM"<<QThread::currentThreadId();
+	m_tempCom->write("M");
+}
 
 //读标准温度串口缓冲区
 void StdTempComObject::readTemperatureComBuffer()
 {
+	qDebug()<<"StdTempComObject::readTemperatureComBuffer"<<QThread::currentThreadId();
 	QByteArray tmp = m_tempCom->readAll();
 
 	bool ret = false;
