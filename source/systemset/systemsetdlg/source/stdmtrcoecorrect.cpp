@@ -88,15 +88,29 @@ StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 
 	m_curStdMeter = -1;//初始化, 用户未选中任何标准表
 	/***************标准流量计***********************/
-	m_stdMeterReader = NULL;
-	m_stdMeterReader = new CStdMeterReader;
+	m_mapInstWdg[FLOW_RATE_BIG]   = ui.lcdInstStdMeter_50;
+	m_mapInstWdg[FLOW_RATE_MID_2] = ui.lcdInstStdMeter_25;
+	m_mapInstWdg[FLOW_RATE_MID_1] = ui.lcdInstStdMeter_10;
+	m_mapInstWdg[FLOW_RATE_SMALL] = ui.lcdInstStdMeter_3;
 
+	m_mapAccumWdg[FLOW_RATE_BIG]   = ui.lcdAccumStdMeter_50;
+	m_mapAccumWdg[FLOW_RATE_MID_2] = ui.lcdAccumStdMeter_25;
+	m_mapAccumWdg[FLOW_RATE_MID_1] = ui.lcdAccumStdMeter_10;
+	m_mapAccumWdg[FLOW_RATE_SMALL] = ui.lcdAccumStdMeter_3;
+
+	m_stdMeterReader = NULL;
+	m_stdMeterReader = new CStdMeterReader();
+	connect(m_stdMeterReader, SIGNAL(signalReadInstReady(const flow_rate_wdg&, const float&)), this, SLOT(slotFreshInstFlow(const flow_rate_wdg&, const float&)));
+	connect(m_stdMeterReader, SIGNAL(signalReadAccumReady(const flow_rate_wdg&, const float&)), this, SLOT(slotFreshAccumFlow(const flow_rate_wdg&, const float&)));
+	connect(m_stdMeterReader, SIGNAL(signalReadTolInstReady(const float&)), this, SLOT(slotFreshTolInst(const float&)));
+	connect(m_stdMeterReader, SIGNAL(signalReadTolAccumReady(const float&)), this, SLOT(slotFreshTolAccum(const float&)));
 	m_stdMeterReader->startReadMeter();
 	/***************标准流量计end********************/
 }
 
 StdMtrCoeCorrect::~StdMtrCoeCorrect()
 {
+	this->close();
 }
 
 void StdMtrCoeCorrect::showEvent(QShowEvent * event)
@@ -135,7 +149,7 @@ void StdMtrCoeCorrect::closeEvent( QCloseEvent * event)
 	EXIT_THREAD(m_balanceThread2)
 	RELEASE_PTR(m_balanceObj2)
 
-	RELEASE_TIMER(m_tempTimer)//采集温度计时器
+	RELEASE_PTR(m_tempTimer)//采集温度计时器
 	EXIT_THREAD(m_tempThread) //温度采集线程
 	RELEASE_PTR(m_tempObj)
 
@@ -143,12 +157,12 @@ void StdMtrCoeCorrect::closeEvent( QCloseEvent * event)
 	RELEASE_PTR(m_controlObj)  //阀门控制
 	EXIT_THREAD(m_valveThread2);	
 	RELEASE_PTR(m_controlObj2)  //阀门控制2
-	RELEASE_TIMER(m_exaustTimer) //排气计时器
+	RELEASE_PTR(m_exaustTimer) //排气计时器
 	//计时器，用于动态显示调节阀开度
-	RELEASE_TIMER(m_regSmallTimer)
-	RELEASE_TIMER(m_regMid1Timer)
-	RELEASE_TIMER(m_regMid2Timer)
-	RELEASE_TIMER(m_regBigTimer)
+	RELEASE_PTR(m_regSmallTimer)
+	RELEASE_PTR(m_regMid1Timer)
+	RELEASE_PTR(m_regMid2Timer)
+	RELEASE_PTR(m_regBigTimer)
 
 	RELEASE_PTR(m_stdMeterReader)//标准表读取
 	m_curStdMeter = -1;
@@ -172,22 +186,22 @@ void StdMtrCoeCorrect::resizeEvent(QResizeEvent * event)
 
 void StdMtrCoeCorrect::slotFreshInstFlow(const flow_rate_wdg& idx, const float& value)
 {
-
+	m_mapInstWdg[idx]->display(value);
 }
 
 void StdMtrCoeCorrect::slotFreshAccumFlow(const flow_rate_wdg& idx, const float& value)
 {
-
+	m_mapAccumWdg[idx]->display(value);
 }
 
 void StdMtrCoeCorrect::slotFreshTolInst(const float& value)
 {
-
+	ui.lcdInstStdMeter->display(value);
 }
 
 void StdMtrCoeCorrect::slotFreshTolAccum(const float& value)
 {
-
+	ui.lcdAccumStdMeter->display(value);
 }
 
 void StdMtrCoeCorrect::initTableWdg()

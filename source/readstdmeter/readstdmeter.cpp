@@ -16,11 +16,11 @@ CStdMeterReader::CStdMeterReader(QObject* parent) : QObject(parent)
 
 CStdMeterReader::~CStdMeterReader()
 {
-	RELEASE_TIMER(m_instSTDMeterTimer)
+	RELEASE_PTR(m_instSTDMeterTimer)
 	EXIT_THREAD(m_instantFlowThread)
 	RELEASE_PTR(m_instantFlowCom)
 
-	RELEASE_TIMER(m_accumSTDMeterTimer)
+	RELEASE_PTR(m_accumSTDMeterTimer)
 	EXIT_THREAD(m_accumFlowThread)
 	RELEASE_PTR(m_accumulateFlowCom)
 
@@ -170,14 +170,16 @@ void CStdMeterReader::slotAskInstBytes()
 {
 	bool ok;
 	uchar address = (uchar)m_stdParam->value("DevNo./InstDevNo").toString().toInt(&ok, 16);
-	m_instantFlowCom->ask901712RoutesCmd(address);
+	if(m_instantFlowCom)
+		m_instantFlowCom->ask901712RoutesCmd(address);
 }
 
 void CStdMeterReader::slotAskAccumBytes()
 {
 	bool ok;
 	uchar address = (uchar)m_stdParam->value("DevNo./AccumDevNo").toString().toInt(&ok, 16);
-	m_accumulateFlowCom->ask9150A16RoutesCmd(address);
+	if(m_accumulateFlowCom)
+		m_accumulateFlowCom->ask9150A16RoutesCmd(address);
 }
 
 void CStdMeterReader::slotGetInstStdMeterPulse(const QByteArray & valueArray)

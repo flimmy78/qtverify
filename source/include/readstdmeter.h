@@ -32,16 +32,6 @@
 									ptr = NULL;\
 								}
 
-#define RELEASE_TIMER(timerptr)		if (timerptr != NULL)\
-									{\
-										if (timerptr->isActive())\
-										{\
-											timerptr->stop();\
-										}\
-										delete timerptr;\
-										timerptr = NULL;\
-									}
-
 #define EXIT_THREAD(th)		if (th.isRunning())\
 							{\
 								th.exit();\

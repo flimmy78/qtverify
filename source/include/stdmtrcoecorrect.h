@@ -23,20 +23,11 @@ class CStdMeterReader;
 									ptr = NULL;\
 								}
 
-#define RELEASE_TIMER(timerptr)		if (timerptr != NULL)\
-									{\
-										if (timerptr->isActive())\
-										{\
-											timerptr->stop();\
-										}\
-										delete timerptr;\
-										timerptr = NULL;\
-									}
-
 #define EXIT_THREAD(th)		if (th.isRunning())\
 							{\
 								th.exit();\
 							}
+
 #define FLOW_POINTS	(8)//每个标准表需要标定的最多流量点个数
 #define CHK_CNTS	(3)//每个流量点需要重复检测的次数
 #define COL_CNTS   (12)//表格的列数
@@ -176,6 +167,8 @@ private:
 
 	/*******************标准流量计******************************/
 	CStdMeterReader* m_stdMeterReader;
+	QMap<flow_rate_wdg, QLCDNumber *> m_mapInstWdg;
+	QMap<flow_rate_wdg, QLCDNumber *> m_mapAccumWdg;
 	/******************标准流量计end***************************/
 
 	void initBalanceCom();     //天平串口
