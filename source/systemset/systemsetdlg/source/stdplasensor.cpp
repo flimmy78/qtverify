@@ -61,6 +61,7 @@ void stdplasensorDlg::closeEvent(QCloseEvent * event)
 		delete m_config;
 		m_config = NULL;
 	}
+	emit signalClosed();
 }
 
 void stdplasensorDlg::on_btn_pt25_save_clicked()

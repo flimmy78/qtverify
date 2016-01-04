@@ -23,7 +23,7 @@ void CalcResultDlg::showEvent(QShowEvent *)
 
 void CalcResultDlg::closeEvent(QCloseEvent *)
 {
-
+	emit signalClosed();
 }
 
 void CalcResultDlg::initCmb()

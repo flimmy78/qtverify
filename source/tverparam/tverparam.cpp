@@ -113,6 +113,8 @@ void tverparamDlg::closeEvent(QCloseEvent * event)
 	}
 
 	clearComObjs();
+
+	emit signalClosed();
 }
 void tverparamDlg::disableConfigBtn()
 {

@@ -119,6 +119,8 @@ void CmbVerifyDlg::closeEvent( QCloseEvent * event)
 		delete m_timer;
 		m_timer = NULL;
 	}
+
+	emit signalClosed();
 }
 
 void CmbVerifyDlg::resizeEvent(QResizeEvent * event)

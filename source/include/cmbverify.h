@@ -100,6 +100,7 @@ private slots:
 	void slotSetMeterTemp(const QString& portName, const QString& tempIn, const QString& tempOut);//获取进出口温度
 
 signals:
+	void signalClosed();
 	void verifyCanStart(void);//可以开始检测
 	void tempDiffAchived(void);//恒温槽达到设定的温差
 

@@ -59,6 +59,7 @@ void SetPortFrm::closeEvent(QCloseEvent * event)
 		delete m_controlObj2;
 		m_controlObj2 = NULL;
 	}
+	emit signalClosed();
 }
 
 void SetPortFrm::on_btn_Exit_clicked()

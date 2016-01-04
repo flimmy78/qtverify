@@ -149,6 +149,7 @@ void AdjustRateDlg::closeEvent( QCloseEvent * event)
 		m_setPumpTimer = NULL;
 	}
 	/*****************************************************/
+	emit signalClosed();
 }
 
 //瞬时流量采集串口, 上位机直接采集

@@ -41,7 +41,10 @@ public:
 	void initVerifyDept();
 	void initMeterModel();
 	void initDeviceInfo();
-
+public slots:
+	void closeEvent(QCloseEvent *);
+signals:
+	void signalClosed();
 private slots:
 	void on_btnExit_clicked();
 

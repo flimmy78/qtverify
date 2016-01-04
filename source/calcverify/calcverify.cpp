@@ -100,7 +100,7 @@ void CalcDlg::closeEvent( QCloseEvent * event)
 		delete m_algo;
 		m_algo = NULL;
 	}
-
+	signalClosed();
 }
 
 void CalcDlg::on_btnPara_clicked()

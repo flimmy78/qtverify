@@ -26,7 +26,7 @@ public:
 		void on_gBox_pt25_clicked();
 		void on_gBox_pt100_clicked();
 signals:
-
+		void signalClosed();
 private:
 	Ui::StdPlaSensorDlgClass ui;
 	QSettings* m_config;//标准温度计参数

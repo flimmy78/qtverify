@@ -43,6 +43,7 @@ void chkplasensorDlg::closeEvent(QCloseEvent *event)
 		delete m_config;
 		m_config = NULL;
 	}
+	emit signalClosed();
 }
 
 void chkplasensorDlg::on_btn_calc_clicked()

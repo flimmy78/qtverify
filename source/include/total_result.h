@@ -19,13 +19,15 @@ public:
 	TotalResultDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~TotalResultDlg();
 
-	public slots:
-		void showEvent(QShowEvent *);
-		void closeEvent(QCloseEvent *);
+public slots:
+	void showEvent(QShowEvent *);
+	void closeEvent(QCloseEvent *);
 
-		void on_btnQuery_clicked();
-		void on_btnExit_clicked();
-		void on_btnExport_clicked();
+	void on_btnQuery_clicked();
+	void on_btnExit_clicked();
+	void on_btnExport_clicked();
+signals:
+	void signalClosed();
 private:
 	Ui::TotalResultClass ui;
 	QSqlRelationalTableModel *model;

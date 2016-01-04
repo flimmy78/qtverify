@@ -26,7 +26,7 @@ void CmbResultDlg::showEvent(QShowEvent *)
 
 void CmbResultDlg::closeEvent(QCloseEvent *)
 {
-
+	emit signalClosed();
 }
 
 void CmbResultDlg::initCmb()

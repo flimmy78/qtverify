@@ -23,7 +23,7 @@ void PlaResultDlg::showEvent(QShowEvent *)
 
 void PlaResultDlg::closeEvent(QCloseEvent *)
 {
-
+	emit signalClosed();
 }
 
 void PlaResultDlg::initCmb()

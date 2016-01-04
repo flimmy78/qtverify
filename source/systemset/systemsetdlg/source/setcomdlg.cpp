@@ -91,6 +91,7 @@ void SetComDlg::closeEvent(QCloseEvent *)
 		delete m_model;
 		m_model = NULL;
 	}
+	emit signalClosed();
 }
 
 void SetComDlg::on_btnExit_clicked()

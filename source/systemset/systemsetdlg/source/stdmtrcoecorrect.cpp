@@ -110,7 +110,7 @@ StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 
 StdMtrCoeCorrect::~StdMtrCoeCorrect()
 {
-	this->close();
+
 }
 
 void StdMtrCoeCorrect::showEvent(QShowEvent * event)

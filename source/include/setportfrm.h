@@ -15,6 +15,8 @@ class SYSTEMSETDLG_EXPORT SetPortFrm : public QWidget
 
 public slots:
 
+signals:
+	void signalClosed();
 public:
 	SetPortFrm(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~SetPortFrm();

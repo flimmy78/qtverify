@@ -121,7 +121,8 @@ public slots:
 	void on_lnEditKi_pump_returnPressed();
 	void on_lnEditKd_pump_returnPressed();
 	void on_lnEditCycleTime_pump_returnPressed();
-
+signals:
+	void signalClosed();
 private:
 	Ui::AdjustVelocityDlgClass ui;
 	/*******************标准流量计******************************/
@@ -235,8 +236,6 @@ private slots:
 	void operateMidPidVales();
 	void slotValveClicked(int);
 	/******************电动调节阀end***************************/
-
-
 };
 
 #endif // ADJUSTRATEDLG_H

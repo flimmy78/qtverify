@@ -18,7 +18,8 @@ class SYSTEMSETDLG_EXPORT SetComDlg : public QWidget
 public slots:
 	void showEvent(QShowEvent *);
 	void closeEvent(QCloseEvent *);
-
+signals:
+	void signalClosed();
 public:
 	SetComDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~SetComDlg();

@@ -26,11 +26,30 @@ CMasterSlave::CMasterSlave(QWidget *parent, Qt::WFlags flags)
 
 CMasterSlave::~CMasterSlave()
 {
+	
+}
+
+void CMasterSlave::closeEvent(QCloseEvent * event)
+{
+	qDebug()<<"^^^^^CMasterSlave::closeEvent";
+	int button = QMessageBox::question(this, tr("Question"), tr("Exit Really ?"), \
+		QMessageBox::Yes|QMessageBox::Default, QMessageBox::No|QMessageBox::Escape);
+	if (button == QMessageBox::No)
+	{
+		return event->ignore();
+	}
+	else
+	{
+		event->accept();
+	}
+
 	if (m_settings)
 	{
 		delete m_settings;
 		m_settings = NULL;
 	}
+
+	emit signalClosed();
 }
 
 void CMasterSlave::initSettingsInfo()

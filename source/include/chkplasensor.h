@@ -24,7 +24,8 @@ public slots:
 		void on_btn_save_clicked();
 		void on_btn_default_clicked();
 		void on_btn_exit_clicked();
-
+signals:
+		void signalClosed();
 private:
 	Ui::ChkPlaSensorClass ui;
 

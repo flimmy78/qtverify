@@ -44,6 +44,10 @@ UserManageDlg::UserManageDlg(QWidget *parent, Qt::WFlags flags)
 UserManageDlg::~UserManageDlg()
 {
 	qDebug()<<"!!! UserManageDlg destructor";
+}
+
+void UserManageDlg::closeEvent(QCloseEvent *)
+{
 
 	if (m_userModel)
 	{
@@ -75,6 +79,7 @@ UserManageDlg::~UserManageDlg()
 		m_deviceModel = NULL;
 	}
 
+	emit signalClosed();
 }
 
 void UserManageDlg::on_btnExit_clicked()

@@ -17,6 +17,7 @@
 
 
 #include <QtGui/QWidget>
+#include <QCloseEvent>
 #include <QtCore/QSettings>
 #include <QtGui/QButtonGroup>
 
@@ -36,7 +37,9 @@ public:
 	QButtonGroup *btnGrpHostFlag;
 
 public slots:
-
+	void closeEvent(QCloseEvent* event);
+signals:
+	void signalClosed();
 private:
 	Ui::MasterSlaveClass ui;
 

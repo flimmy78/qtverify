@@ -24,7 +24,9 @@ public:
 	void initUiData();
 
 public slots:
-
+	void closeEvent(QCloseEvent *);
+signals:
+	void signalClosed();
 
 private:
 	Ui::WaterResultClass ui;

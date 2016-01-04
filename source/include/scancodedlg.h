@@ -25,6 +25,7 @@
 #define COL_NEW_METER_NO	1
 #define COL_READ_METER_NO	2
 #define COL_MODIFY_METER_NO	3
+#define COL_COUNT			4
 
 class CAlgorithm;
 class ParaSetDlg;
@@ -71,9 +72,10 @@ public slots:
 	void slotReadNO(const int &row);        //¶Á±íºÅ
 	void slotSetMeterNumber(const QString& comName, const QString& meterNumber);
 
-private slots:
-
 signals:
+	void signalClosed();
+
+private slots:
 
 private:
 	Ui::ScanCodeDlgClass ui;

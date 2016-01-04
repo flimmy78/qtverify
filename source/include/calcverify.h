@@ -105,7 +105,7 @@ public slots:
 private slots:
 
 signals:
-
+	void signalClosed();
 private:
 	Ui::CalcDlgClass ui;
 

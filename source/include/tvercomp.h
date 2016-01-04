@@ -23,7 +23,7 @@ public:
 
 signals:
 	void commandSendComplete(void);//读取温度命令已发送完毕
-
+	void signalClosed();
 public slots:
 	void closeEvent(QCloseEvent * event);
 	void showEvent(QShowEvent * event);

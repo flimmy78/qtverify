@@ -41,7 +41,6 @@ void StdMtrParaSet::showEvent(QShowEvent *)
 
 StdMtrParaSet::~StdMtrParaSet()
 {
-	qDebug()<<"!!! StdParaSet destructor";
 }
 
 void StdMtrParaSet::closeEvent(QCloseEvent *)
@@ -51,6 +50,7 @@ void StdMtrParaSet::closeEvent(QCloseEvent *)
 		delete m_stdParam;
 		m_stdParam = NULL;
 	}
+	emit signalClosed();
 }
 
 void StdMtrParaSet::initWdgVec()

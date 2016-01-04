@@ -24,8 +24,9 @@ public:
 	void initUiData();
 
 public slots:
-
-
+		void closeEvent(QCloseEvent * event);
+signals:
+		void signalClosed();
 private:
 	Ui::FlowResultClass ui;
 	QSqlRelationalTableModel *model;

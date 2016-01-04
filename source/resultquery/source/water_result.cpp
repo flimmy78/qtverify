@@ -68,6 +68,11 @@ WaterResultDlg::~WaterResultDlg()
 
 }
 
+void WaterResultDlg::closeEvent(QCloseEvent *)
+{
+	emit signalClosed();
+}
+
 void WaterResultDlg::initUiData()
 {
 	//制造单位

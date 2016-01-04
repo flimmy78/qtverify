@@ -68,6 +68,11 @@ FlowResultDlg::~FlowResultDlg()
 
 }
 
+void FlowResultDlg::closeEvent(QCloseEvent * event)
+{
+	emit signalClosed();
+}
+
 void FlowResultDlg::initUiData()
 {
 	//制造单位

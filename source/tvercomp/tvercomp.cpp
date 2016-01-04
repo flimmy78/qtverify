@@ -75,8 +75,8 @@ void tvercompDlg::closeEvent(QCloseEvent * event)
 		delete []m_PlaVerifyRecPtr;
 		m_PlaVerifyRecPtr = NULL;
 	}
-
 	clearComObjs();
+	emit signalClosed();
 }
 
 //优化界面显示，设置列宽，以使数字能完全显示

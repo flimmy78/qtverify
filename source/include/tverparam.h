@@ -35,8 +35,8 @@ signals:
 	void thirdTmpVerOk(void);//第三温度点检测完毕
 
 	void allTmpVerOk(void);//所有的温度点都检测完毕
-
-	public slots:
+	void signalClosed();
+public slots:
 		void closeEvent(QCloseEvent * event);
 		void showEvent(QShowEvent * event);
 

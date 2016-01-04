@@ -25,6 +25,8 @@ public slots:
 
 	void on_btnQuery_clicked();
 	void on_btnExit_clicked();
+signals:
+	void signalClosed();
 private:
 	Ui::PlaResultDlgClass ui;
 	QSqlRelationalTableModel *model;

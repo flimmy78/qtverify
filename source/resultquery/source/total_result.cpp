@@ -25,7 +25,7 @@ void TotalResultDlg::showEvent(QShowEvent *)
 
 void TotalResultDlg::closeEvent(QCloseEvent *)
 {
-
+	emit signalClosed();
 }
 
 void TotalResultDlg::initCmb()

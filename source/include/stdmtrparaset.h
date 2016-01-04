@@ -19,7 +19,7 @@ public:
 	~StdMtrParaSet();
 
 signals:
-
+	void signalClosed();
 public slots:
 	void showEvent(QShowEvent *);
 	void closeEvent(QCloseEvent *);
