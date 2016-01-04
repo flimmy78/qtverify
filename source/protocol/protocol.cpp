@@ -2506,12 +2506,6 @@ void lcModbusRTUProtocol::makeWriteBuf(lcMod9150AWriteCmd cmd)
 		}
 	}
 	m_writeBuf.append(getCRCArray(calcModRtuCRC((uchar *)m_writeBuf.data(), m_writeBuf.length())));
-	printf("\m_writeBuf:\n");
-	for (int i=0;i<m_writeBuf.length();i++)
-	{
-		printf("%02X ", (uchar)m_writeBuf.at(i));
-	}
-	printf("\m_writeBuf end:\n");
 }
 
 QByteArray lcModbusRTUProtocol::getWriteBuf()

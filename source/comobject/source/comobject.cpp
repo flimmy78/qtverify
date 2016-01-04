@@ -1283,7 +1283,7 @@ void lcModRtuComObject::clearLcModAccum(uchar address, bool backward)
 	lcMod9150AWriteCmd cmd;
 	cmd.address = address;
 	cmd.func = write_multi_switch;
-	cmd.start = EDA_9150A_START_REG+backward*0x0020;
+	cmd.start = EDA_9150A_START_REG+backward*0x0010;
 	cmd.regCount = (EDA_9150A_ROUTE_CNT/2)*LC_EDA_REG_BYTES;//8路通道对应的寄存器数量
 	cmd.ByteCount = cmd.regCount*2;
 	cmd.pData = new uint[cmd.regCount/LC_EDA_REG_BYTES];
