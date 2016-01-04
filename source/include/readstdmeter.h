@@ -51,8 +51,9 @@ public:
 	void stopReadMeter();
 	void stopReadInstMeter();
 	void stopReadAccumMeter();
+	void setAdjust(bool needAdjust=true);
 public slots:
-	void slotClearLcMod();//把力创模块的累计流量清零
+	void slotClearAccum();//把力创模块的累计流量清零
 
 signals:
 	void signalReadInstReady(const flow_rate_wdg&, const float&);
@@ -77,6 +78,7 @@ private:
 
 	ReadComConfig *m_readComConfig;
 	QSettings *m_stdParam;//读取标准表设置
+	bool m_needAdjust;//是否需要修正标准表的累计流量
 	QMap<flow_rate_wdg, int> m_accumCount;//记录当前脉冲值, 用于计算下一次采集时的脉冲增量, 以计算体积增量
 	QMap<flow_rate_wdg, float> m_accumVol;//记录当前算出的体积值, 用于计算下一次采集时的体积增量
 	QMap<flow_rate_wdg, QMap<float, float>> m_mapFlowK;//各流量点的流量-K系数表

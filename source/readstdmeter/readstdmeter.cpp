@@ -267,13 +267,25 @@ float CStdMeterReader::getAccumFLowVolume(flow_rate_wdg idx)
 	float KCoe = getKCoe(idx);
 	float deltaVol = deltaCount*pulse*KCoe;
 	m_accumVol[idx] += deltaVol;
-	emit signalReadAccumReady(idx, m_accumVol[idx]);
-	return m_accumVol[idx];
+	if (m_needAdjust)
+	{
+		emit signalReadAccumReady(idx, m_accumVol[idx]);
+		return m_accumVol[idx];
+	}
+	else
+	{
+		emit signalReadAccumReady(idx, count*pulse);
+		return count*pulse;
+	}
 }
 
-void CStdMeterReader::slotClearLcMod()
+void CStdMeterReader::slotClearAccum()
 {
-
+	bool ok;
+	uchar address = (uchar)m_stdParam->value("DevNo./AccumDevNo").toString().toInt(&ok, 16);
+	m_accumulateFlowCom->clearLcModAccum(address);
+	wait(TIMEOUT_STD_ACCUM);
+	m_accumulateFlowCom->clearLcModAccum(address, true);
 }
 
 float CStdMeterReader::getKCoe(flow_rate_wdg idx)
@@ -315,4 +327,9 @@ void CStdMeterReader::getBound(flow_rate_wdg idx, float currentFlow, float& inf,
 			return;
 		}
 	}
+}
+
+void CStdMeterReader::setAdjust(bool needAdjust)
+{
+	m_needAdjust = needAdjust;
 }

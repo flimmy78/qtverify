@@ -2494,16 +2494,24 @@ void lcModbusRTUProtocol::makeWriteBuf(lcMod9150AWriteCmd cmd)
 	m_writeBuf.append((uchar)(cmd.regCount>>BYTE_LENGTH));
 	m_writeBuf.append((uchar)(cmd.regCount));
 	m_writeBuf.append((uchar)(cmd.ByteCount));
-	for(int i=0;i<EDA_9150A_ROUTE_CNT/2;i++)
+
+	//按通道迭代, 每个通道对应4字节, int类型也是4字节
+	for(int i=0;i<cmd.regCount/LC_EDA_REG_BYTES;i++)
 	{
-		int diValue = cmd.pData[i];//通道号; 从DI[0]~DI[7], DI[8]~DI[15]
+		uint diValue = cmd.pData[i];//通道号; 从DI[0]~DI[7], DI[8]~DI[15]
 		for (int j=EDA9150A_ROUTE_BYTES-1;j>=0;j--)
-		{			
+		{
 			uchar b= (uchar)(diValue>>(j*BYTE_LENGTH));
 			m_writeBuf.append(b);
 		}
 	}
 	m_writeBuf.append(getCRCArray(calcModRtuCRC((uchar *)m_writeBuf.data(), m_writeBuf.length())));
+	printf("\m_writeBuf:\n");
+	for (int i=0;i<m_writeBuf.length();i++)
+	{
+		printf("%02X ", (uchar)m_writeBuf.at(i));
+	}
+	printf("\m_writeBuf end:\n");
 }
 
 QByteArray lcModbusRTUProtocol::getWriteBuf()

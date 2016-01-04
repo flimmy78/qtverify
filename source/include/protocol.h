@@ -602,7 +602,7 @@ public slots:
 enum lcModbusRTUFunc//力创ModbusRTU, 功能码
 {
 	read_multi_switch_out = 0x01,//读 1 路或多路开关量输入状态 DI
-	read_multi_switch_in = 0x02,//读 1 路或多路开关量输入状态 DI
+	read_multi_switch_in = 0x02,//读 1 路或多路开关量输入状态
 	read_multi_reg = 0x03,//读多路寄存器
 	write_multi_switch = 0x10//写多路寄存器的数值; 
 };
@@ -619,18 +619,16 @@ enum lcModAnswerState
 
 struct lcModSendCmd
 {
-	uchar address;
-	lcModbusRTUFunc func; 
-	UINT16 start;
-	UINT16 regCount;
+	uchar address;//模块地址号
+	lcModbusRTUFunc func;//功能码
+	UINT16 start;//起始寄存器地址
+	UINT16 regCount;//寄存器数量
 };
 
 struct lcMod9150AWriteCmd : public lcModSendCmd
 {
-	uchar ByteCount;
-	int *pData;
-	uchar crc_low;
-	uchar crc_high;
+	uchar ByteCount;//字节数
+	uint *pData;//数据域
 };
 
 class PROTOCOL_EXPORT lcModbusRTUProtocol : public CProtocol

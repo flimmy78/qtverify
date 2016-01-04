@@ -1271,6 +1271,26 @@ void lcModRtuComObject::close()
 {
 	m_lcModCom->close();
 }
+
+/************************************************************************/
+/* 清空力创9510A模块的通道值
+ * uchar address, 力创模块的地址号
+ * bool backward, 是否是清空前8路通道数值
+/************************************************************************/
+void lcModRtuComObject::clearLcModAccum(uchar address, bool backward)
+{
+	//清空前8路通道数值
+	lcMod9150AWriteCmd cmd;
+	cmd.address = address;
+	cmd.func = write_multi_switch;
+	cmd.start = EDA_9150A_START_REG+backward*0x0020;
+	cmd.regCount = (EDA_9150A_ROUTE_CNT/2)*LC_EDA_REG_BYTES;//8路通道对应的寄存器数量
+	cmd.ByteCount = cmd.regCount*2;
+	cmd.pData = new uint[cmd.regCount/LC_EDA_REG_BYTES];
+	memset(cmd.pData, 0, sizeof(uint)*cmd.regCount/LC_EDA_REG_BYTES);
+	m_lcModProtocol->makeWriteBuf(cmd);
+	m_lcModCom->write(m_lcModProtocol->getWriteBuf());
+}
 /*
 ** lcModRtuComObject END
 */
