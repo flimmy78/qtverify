@@ -198,7 +198,8 @@ float getPlaTr(float r0, float a, float b, float resis)
 		return -1;
 	}
 
-	float ret = (qSqrt(a*a + 4*b*(resis/r0 - 1)) - a)/(2*b);
+// 	float ret = (qSqrt(a*a + 4*b*(resis/r0 - 1)) - a)/(2*b);
+	float ret = qSqrt(resis/r0/b - 1/b + a*a/(4*b*b)) - (0.5*a/b);
 	return ret;
 }
 
