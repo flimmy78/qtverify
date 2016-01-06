@@ -16,6 +16,7 @@ class ParaSetDlg;
 class ParaSetReader;
 class ReadComConfig;
 class CStdMeterReader;
+class StdMtrCorrectPra;
 
 #define RELEASE_PTR(ptr)		if (ptr != NULL)\
 								{\
@@ -58,6 +59,7 @@ public slots:
 	void closeEvent(QCloseEvent * event);
 	void resizeEvent(QResizeEvent * event);
 
+	void on_btnPra_clicked();
 	void on_btnSave_clicked();
 	void on_btnExit_clicked();    //点击"退出"按钮
 	void on_btnWaterIn_clicked();      //进水阀
@@ -87,6 +89,7 @@ public slots:
 	void on_rBtn_DN25_toggled();
 	void on_rBtn_DN50_toggled();
 
+	void slotOnStdMtrCorrectPraClosed();
 	/*******************标准流量计******************************/
 	void slotFreshInstFlow(const flow_rate_wdg&, const float&);
 	void slotFreshAccumFlow(const flow_rate_wdg&, const float&);
@@ -113,6 +116,8 @@ signals:
 
 private:
 	Ui::StdMtrCoeCorrectClass ui;
+	StdMtrCorrectPra* m_StdMtrCorrectPra;
+
 	int m_curStdMeter;//当前被选中的标准表
 
 	QTimer *m_exaustTimer; //排气定时器
@@ -160,6 +165,7 @@ private:
 
 	CAlgorithm *m_chkAlg;//检定过程用到的计算方法
 	QSettings* m_stdMeterConfig;//标准表的配置文件
+	QSettings* m_stdCorrectConfig;//标定过程中的参数
 
 	QMap<int, QLineEdit*> m_RegLineEdit; //调节阀端口号与调节阀开度显示控件的映射关系
 	QMap<int, QSpinBox*> m_RegSpinBox; //调节阀端口号与调节阀目标开度控件的映射关系

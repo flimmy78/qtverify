@@ -4,8 +4,6 @@ QT         += xml sql
 TARGET    = systemsetdlg
 CONFIG += qt dll debug
 
-DEFINES	+= SYSTEMSETDLG_DLL
-
 QMAKE_LIBDIR +=  ./           \
         	     $(ADEHOME)/lib \
 	             $(ADEHOME)/bin
@@ -30,9 +28,9 @@ HEADERS += $$(ADEHOME_INC)/include/systemsetdlg_global.h   \
            $$(ADEHOME_INC)/include/stdmtrcoecorrect.h \
            $$(ADEHOME_INC)/include/parasetdlg.h \
            $$(ADEHOME_INC)/include/stdplasensor.h \
-           $$(ADEHOME_INC)/include/chkplasensor.h 
+           $$(ADEHOME_INC)/include/chkplasensor.h \
+		   $$(ADEHOME_INC)/include/stdcorrectpra.h
 
-	
 SOURCES += source/setcomdlg.cpp \
            source/setportfrm.cpp \
            source/readcomconfig.cpp \
@@ -40,19 +38,19 @@ SOURCES += source/setcomdlg.cpp \
            source/stdmtrcoecorrect.cpp \
            source/parasetdlg.cpp \
            source/stdplasensor.cpp \
-           source/chkplasensor.cpp 
-		
+           source/chkplasensor.cpp \
+		   source/stdcorrectpra.cpp
+
 RESOURCES += systemsetdlg.qrc			 
 
-					 
 FORMS	+= ui/setcomdlg.ui  \
          ui/setportfrm.ui \
          ui/stdmtrparaset.ui \
          ui/stdmtrcoecorrect.ui \
          ui/parasetdlg.ui \
          ui/stdplasensor.ui \
-         ui/chkplasensor.ui
-
+         ui/chkplasensor.ui \
+		 ui/stdcorrectpra.ui
 
 win32{
 	MY_DEST_LIB_VAR = $${DESTDIR} $${TARGET}.lib
@@ -68,4 +66,3 @@ win32{
 
 TRANSLATIONS =  \
 		language/systemsetdlg_zh.ts language/systemsetdlg_en.ts
-		

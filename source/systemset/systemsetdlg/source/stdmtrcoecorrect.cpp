@@ -31,6 +31,7 @@
 #include "readcomconfig.h"
 #include "report.h"
 #include "readstdmeter.h"
+#include "stdcorrectpra.h"
 
 StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
@@ -70,7 +71,8 @@ StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 	//标准表的配置文件
 	m_stdMeterConfig = NULL;
 	m_stdMeterConfig = new QSettings(getFullIniFileName("stdmtrparaset.ini"), QSettings::IniFormat);
-
+	m_stdCorrectConfig= NULL;
+	m_stdCorrectConfig = new QSettings(getFullIniFileName("stdCorrectpra.ini"), QSettings::IniFormat);
 	//映射关系；初始化阀门状态	
 	initValveStatus();      
 	initRegulateStatus();
@@ -87,6 +89,8 @@ StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 	ui.lcdOutTemper->display(50);
 
 	m_curStdMeter = -1;//初始化, 用户未选中任何标准表
+	m_StdMtrCorrectPra = NULL;
+
 	/***************标准流量计***********************/
 	m_mapInstWdg[FLOW_RATE_BIG]   = ui.lcdInstStdMeter_50;
 	m_mapInstWdg[FLOW_RATE_MID_2] = ui.lcdInstStdMeter_25;
@@ -167,6 +171,8 @@ void StdMtrCoeCorrect::closeEvent( QCloseEvent * event)
 	RELEASE_PTR(m_stdMeterReader)//标准表读取
 	m_curStdMeter = -1;
 	RELEASE_PTR(m_stdMeterConfig)//标准表的配置文件
+	RELEASE_PTR(m_StdMtrCorrectPra)
+	RELEASE_PTR(m_stdCorrectConfig)
 	emit signalClosed();
 }
 
@@ -1012,6 +1018,26 @@ void StdMtrCoeCorrect::on_rBtn_DN3_toggled()
 {
 	if (ui.rBtn_DN3->isChecked())
 		m_curStdMeter = FLOW_RATE_SMALL;
+
+	disconnect(ui.tableWidget, SIGNAL(cellChanged(int, int)), this, SLOT(on_tableWidget_cellChanged(int, int)));
+	ui.tableWidget->clear();
+	int flowpoints=0;
+	int chkCount = 0;
+	m_stdCorrectConfig->beginReadArray("smallflow");
+	for (int i=0;i<FLOW_POINTS;i++)
+	{
+		m_stdCorrectConfig->setArrayIndex(i);
+		if (!m_stdCorrectConfig->value("flowPoint").toString().isEmpty())
+			flowpoints++;
+	}
+	m_stdCorrectConfig->endArray();
+
+	m_stdCorrectConfig->beginGroup("times");
+	chkCount = m_stdCorrectConfig->value("time").toInt();
+	m_stdCorrectConfig->endGroup();
+	ui.tableWidget->setRowCount(flowpoints*chkCount);
+
+	connect(ui.tableWidget, SIGNAL(cellChanged(int, int)), this, SLOT(on_tableWidget_cellChanged(int, int)));
 }
 
 void StdMtrCoeCorrect::on_rBtn_DN10_toggled()
@@ -1065,4 +1091,23 @@ void StdMtrCoeCorrect::saveMeterConfig(flow_rate_wdg wdg)
 		m_stdMeterConfig->setValue("KCoe", ui.tableWidget->item(i*CHK_CNTS, COL_STDERR_AVR)->text());
 	}
 	m_stdMeterConfig->endArray();
+}
+
+void StdMtrCoeCorrect::on_btnPra_clicked()
+{
+	if (NULL == m_StdMtrCorrectPra)
+	{
+		m_StdMtrCorrectPra = new StdMtrCorrectPra();
+		connect(m_StdMtrCorrectPra,SIGNAL(signalClosed()), this, SLOT(slotOnStdMtrCorrectPraClosed()));
+		m_StdMtrCorrectPra->show();
+	}
+}
+
+void StdMtrCoeCorrect::slotOnStdMtrCorrectPraClosed()
+{
+	if (m_StdMtrCorrectPra)
+	{
+		delete m_StdMtrCorrectPra;
+		m_StdMtrCorrectPra = NULL;
+	}
 }
