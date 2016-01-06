@@ -60,6 +60,7 @@ public slots:
 	void resizeEvent(QResizeEvent * event);
 
 	void on_btnPra_clicked();
+	void on_btnClearTbl_clicked();
 	void on_btnSave_clicked();
 	void on_btnExit_clicked();    //点击"退出"按钮
 	void on_btnWaterIn_clicked();      //进水阀
@@ -73,7 +74,6 @@ public slots:
 	void on_btnValveSmall_clicked();   //小流量阀
 	void on_btnWaterPump_clicked(); //水泵
 	void on_btnSetFreq_clicked();   //设置变频器频率
-	void on_tableWidget_cellChanged(int row, int column);
 	void on_btnRegulateSmall_clicked();
 	void on_btnRegulateMid1_clicked();
 	void on_btnRegulateMid2_clicked();
@@ -84,6 +84,7 @@ public slots:
 	void on_lineEditOpeningBig_textChanged(const QString & text);
 	void on_btnStdMeterV0_clicked();//读取标准表初值
 	void on_btnStdMeterV1_clicked();//读取标准表终值
+	void on_tableWidget_cellChanged(int row, int column);
 	void on_rBtn_DN3_toggled();
 	void on_rBtn_DN10_toggled();
 	void on_rBtn_DN25_toggled();
@@ -165,7 +166,7 @@ private:
 
 	CAlgorithm *m_chkAlg;//检定过程用到的计算方法
 	QSettings* m_stdMeterConfig;//标准表的配置文件
-	QSettings* m_stdCorrectConfig;//标定过程中的参数
+	QSettings* m_stdCorrectParas;//标定过程中的参数
 
 	QMap<int, QLineEdit*> m_RegLineEdit; //调节阀端口号与调节阀开度显示控件的映射关系
 	QMap<int, QSpinBox*> m_RegSpinBox; //调节阀端口号与调节阀目标开度控件的映射关系

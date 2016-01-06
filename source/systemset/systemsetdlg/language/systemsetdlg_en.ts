@@ -704,12 +704,12 @@ Please check each flow point&apos;s quantity</translation>
 <context>
     <name>SetComDlg</name>
     <message>
-        <location filename="../source/setcomdlg.cpp" line="114"/>
+        <location filename="../source/setcomdlg.cpp" line="115"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../source/setcomdlg.cpp" line="114"/>
+        <location filename="../source/setcomdlg.cpp" line="115"/>
         <source>Save Settings Successfully !</source>
         <translation>Save Settings Successfully !</translation>
     </message>
@@ -2796,113 +2796,191 @@ Please check each flow point&apos;s quantity</translation>
         <translation type="obsolete">Exit</translation>
     </message>
     <message>
-        <location filename="../source/setportfrm.cpp" line="72"/>
+        <location filename="../source/setportfrm.cpp" line="73"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../source/setportfrm.cpp" line="72"/>
+        <location filename="../source/setportfrm.cpp" line="73"/>
         <source>Save Successful !</source>
         <translation>Save Successful !</translation>
     </message>
 </context>
 <context>
+    <name>StdCorrectPraClass</name>
+    <message>
+        <location filename="../ui/stdcorrectpra.ui" line="17"/>
+        <source>Params of Stand Meter Correction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/stdcorrectpra.ui" line="27"/>
+        <source>FlowPoints</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/stdcorrectpra.ui" line="70"/>
+        <source>Big</source>
+        <translation type="unfinished">Big</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdcorrectpra.ui" line="119"/>
+        <source>Mid2</source>
+        <translation type="unfinished">Mid2</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdcorrectpra.ui" line="168"/>
+        <source>Mid1</source>
+        <translation type="unfinished">Mid1</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdcorrectpra.ui" line="217"/>
+        <source>Small</source>
+        <translation type="unfinished">Small</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdcorrectpra.ui" line="234"/>
+        <source>Times per flow point:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/stdcorrectpra.ui" line="242"/>
+        <source>0</source>
+        <translation type="unfinished">2# {0?}</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdcorrectpra.ui" line="247"/>
+        <source>1</source>
+        <translation type="unfinished">1</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdcorrectpra.ui" line="252"/>
+        <source>2</source>
+        <translation type="unfinished">2</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdcorrectpra.ui" line="257"/>
+        <source>3</source>
+        <translation type="unfinished">3</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdcorrectpra.ui" line="262"/>
+        <source>4</source>
+        <translation type="unfinished">4</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdcorrectpra.ui" line="267"/>
+        <source>5</source>
+        <translation type="unfinished">5</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdcorrectpra.ui" line="288"/>
+        <source>Save</source>
+        <translation type="unfinished">Save</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdcorrectpra.ui" line="295"/>
+        <source>Exit</source>
+        <translation type="unfinished">Exit</translation>
+    </message>
+</context>
+<context>
     <name>StdMtrCoeCorrect</name>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="43"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="44"/>
         <source>Warning</source>
         <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="43"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="44"/>
         <source>Warning:get port set info failed!</source>
         <translation>Warning:get port set info failed!</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="117"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="127"/>
         <source>Question</source>
         <translation>Question</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="117"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="127"/>
         <source>Exit Really ?</source>
         <translation>Exit Really ?</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="186"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1023"/>
         <source>Flow Point
 (m3/h)</source>
         <translation>Flow Point
  (m³/h)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="187"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1024"/>
         <source>balance V0
 (kg)</source>
         <translation>balance V0
 (kg)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="188"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1025"/>
         <source>balance V1
 (kg)</source>
         <translation>balance V1
 (kg)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="189"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1026"/>
         <source>balance value
 (kg)</source>
         <translation>balance value
 (kg)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="190"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1027"/>
         <source>density
 (kg/L)</source>
         <translation>density
 (kg/L)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="191"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1028"/>
         <source>Actual Value
 (L)</source>
         <translation>Actual Value
 (L)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="192"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1029"/>
         <source>Stand Meter Value0
 (L)</source>
         <translation>Stand Meter Value0
 (L)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="193"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1030"/>
         <source>Stand Meter Value1
 (L)</source>
         <translation>Stand Meter Value1
 (L)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="194"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1031"/>
         <source>Stand Meter DispValue
 (L)</source>
         <translation>Stand Meter DispValue
 (L)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="195"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1032"/>
         <source>Meter Coe</source>
         <translation>Meter Coe</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="196"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1033"/>
         <source>AVG Meter Coe</source>
         <translation>AVG Meter Coe</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="197"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1034"/>
         <source>repetitiveness
 (%)</source>
         <translation>repetitiveness
@@ -2935,7 +3013,7 @@ Please check each flow point&apos;s quantity</translation>
         <location filename="../ui/stdmtrcoecorrect.ui" line="391"/>
         <location filename="../ui/stdmtrcoecorrect.ui" line="493"/>
         <location filename="../ui/stdmtrcoecorrect.ui" line="595"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1872"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1904"/>
         <source>L</source>
         <translation>L</translation>
     </message>
@@ -3044,76 +3122,81 @@ Please check each flow point&apos;s quantity</translation>
         <translation>Accum</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1415"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1447"/>
         <source>DataAcquisition</source>
         <translation>DataAcquisition</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1427"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1459"/>
         <source>Big Balance: </source>
         <translation>Big Balance: </translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1443"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1472"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1475"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1504"/>
         <source>㎏  </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1456"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1488"/>
         <source>Small Balance: </source>
         <translation>Small Balance: </translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1485"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1517"/>
         <source>FlowRate:</source>
         <translation>FlowRate:</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1501"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1533"/>
         <source>m³/h</source>
         <translation>m³/h</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1514"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1546"/>
         <source>In Temp:</source>
         <translation>In Temp:</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1530"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1543"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1562"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1575"/>
         <source>℃</source>
         <translation>℃</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1556"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1588"/>
         <source>Out Temp:</source>
         <translation>Out Temp:</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1856"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1888"/>
         <source>volume:</source>
         <translation>volume:</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1950"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1980"/>
+        <source>Parameter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2007"/>
         <source>Controller</source>
         <translation>Controller</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1996"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2053"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="2021"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2078"/>
         <source>i
 n</source>
         <translation>i
 n</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="2047"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2104"/>
         <source>s
 m
 a
@@ -3126,7 +3209,7 @@ l
 l</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="2076"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2133"/>
         <source>m
 i
 d
@@ -3137,7 +3220,7 @@ d
 1</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="2104"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2161"/>
         <source>m
 i
 d
@@ -3148,7 +3231,7 @@ d
 2</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="2132"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2189"/>
         <source>b
 i
 g</source>
@@ -3157,7 +3240,7 @@ i
 g</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="2159"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2216"/>
         <source>b
 i
 g
@@ -3166,35 +3249,35 @@ n</source>
         <translation>b
 i
 g
-i
-n</translation>
-    </message>
-    <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="2188"/>
-        <source>b
-i
-g
-o
-u
-t</source>
-        <translation>b
-i
-g
-o
-u
-t</translation>
-    </message>
-    <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="2218"/>
-        <source>s
-i
-n</source>
-        <translation>s
 i
 n</translation>
     </message>
     <message>
         <location filename="../ui/stdmtrcoecorrect.ui" line="2245"/>
+        <source>b
+i
+g
+o
+u
+t</source>
+        <translation>b
+i
+g
+o
+u
+t</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2275"/>
+        <source>s
+i
+n</source>
+        <translation>s
+i
+n</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2302"/>
         <source>s
 o
 u
@@ -3205,12 +3288,12 @@ u
 t</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="2273"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2330"/>
         <source>Set Freq</source>
         <translation>Set Freq</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="2298"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2355"/>
         <source>Pump</source>
         <translation>Pump</translation>
     </message>
@@ -3300,19 +3383,21 @@ t</translation>
  (%)</translation>
     </message>
     <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1961"/>
         <source>Clear</source>
-        <translation type="obsolete">Clear</translation>
+        <translation type="unfinished">Clear</translation>
     </message>
     <message>
         <source>Report</source>
         <translation type="obsolete">Report</translation>
     </message>
     <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1428"/>
         <source>Save</source>
-        <translation type="obsolete">Save</translation>
+        <translation type="unfinished">Save</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1923"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1942"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
@@ -3387,6 +3472,22 @@ t</translation>
     <message utf8="true">
         <source>退出</source>
         <translation type="obsolete">Exit</translation>
+    </message>
+</context>
+<context>
+    <name>StdMtrCorrectPra</name>
+    <message>
+        <location filename="../source/stdcorrectpra.cpp" line="39"/>
+        <source>Flow Point
+(m3/h)</source>
+        <translation type="unfinished">Flow Point
+ (m³/h)</translation>
+    </message>
+    <message>
+        <location filename="../source/stdcorrectpra.cpp" line="39"/>
+        <source>Check Quantity
+(kg)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

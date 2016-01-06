@@ -71,12 +71,12 @@ StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 	//标准表的配置文件
 	m_stdMeterConfig = NULL;
 	m_stdMeterConfig = new QSettings(getFullIniFileName("stdmtrparaset.ini"), QSettings::IniFormat);
-	m_stdCorrectConfig= NULL;
-	m_stdCorrectConfig = new QSettings(getFullIniFileName("stdCorrectpra.ini"), QSettings::IniFormat);
+	m_stdCorrectParas= NULL;
+	m_stdCorrectParas = new QSettings(getFullIniFileName("stdCorrectpra.ini"), QSettings::IniFormat);
 	//映射关系；初始化阀门状态	
 	initValveStatus();      
 	initRegulateStatus();
-	initTableWdg();//初始化表格
+	//initTableWdg();//初始化表格
 	m_exaustTimer = NULL;
 	m_exaustTimer = new QTimer(this); //排气定时器
 	connect(m_exaustTimer, SIGNAL(timeout()), this, SLOT(slotExaustFinished()));
@@ -90,7 +90,6 @@ StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 
 	m_curStdMeter = -1;//初始化, 用户未选中任何标准表
 	m_StdMtrCorrectPra = NULL;
-
 	/***************标准流量计***********************/
 	m_mapInstWdg[FLOW_RATE_BIG]   = ui.lcdInstStdMeter_50;
 	m_mapInstWdg[FLOW_RATE_MID_2] = ui.lcdInstStdMeter_25;
@@ -172,13 +171,15 @@ void StdMtrCoeCorrect::closeEvent( QCloseEvent * event)
 	m_curStdMeter = -1;
 	RELEASE_PTR(m_stdMeterConfig)//标准表的配置文件
 	RELEASE_PTR(m_StdMtrCorrectPra)
-	RELEASE_PTR(m_stdCorrectConfig)
+	RELEASE_PTR(m_stdCorrectParas)
 	emit signalClosed();
 }
 
 void StdMtrCoeCorrect::resizeEvent(QResizeEvent * event)
 {
 	qDebug()<<"StdMtrCoeCorrect::resizeEvent...";
+	if (m_curStdMeter < 0)
+		return;
 
 	int th = ui.tableWidget->size().height();
 	int tw = ui.tableWidget->size().width();
@@ -210,43 +211,6 @@ void StdMtrCoeCorrect::slotFreshTolAccum(const float& value)
 	ui.lcdAccumStdMeter->display(value);
 }
 
-void StdMtrCoeCorrect::initTableWdg()
-{
-	disconnect(ui.tableWidget, SIGNAL(cellChanged(int, int)), this, SLOT(on_tableWidget_cellChanged(int, int)));
-	ui.tableWidget->setRowCount(FLOW_POINTS*CHK_CNTS);
-	ui.tableWidget->setColumnCount(COL_CNTS);
-	ui.tableWidget->verticalHeader()->setVisible(false);
-	QStringList header;
-	header<<tr("Flow Point\n(m3/h)")
-		  <<tr("balance V0\n(kg)")
-		  <<tr("balance V1\n(kg)")
-		  <<tr("balance value\n(kg)")
-		  <<tr("density\n(kg/L)")
-		  <<tr("Actual Value\n(L)")
-		  <<tr("Stand Meter Value0\n(L)")
-		  <<tr("Stand Meter Value1\n(L)")
-		  <<tr("Stand Meter DispValue\n(L)")
-		  <<tr("Meter Coe")
-		  <<tr("AVG Meter Coe")
-		  <<tr("repetitiveness\n(%)");
-	ui.tableWidget->setHorizontalHeaderLabels(header);
-
-	for (int i=0; i<ui.tableWidget->rowCount(); i++)
-	{
-		for (int j=0; j<ui.tableWidget->columnCount(); j++)
-		{
-			ui.tableWidget->setItem(i, j, new QTableWidgetItem(QString("")));
-		}
-	}
-
-	for (int i=0; i<ui.tableWidget->rowCount(); i+=CHK_CNTS)
-	{
-		ui.tableWidget->setSpan(i, COL_FLOW_POINT, CHK_CNTS, 1);
-		ui.tableWidget->setSpan(i, COL_STDERR_AVR, CHK_CNTS, 1);
-		ui.tableWidget->setSpan(i, COL_STDREP, CHK_CNTS, 1);
-	}
-	connect(ui.tableWidget, SIGNAL(cellChanged(int, int)), this, SLOT(on_tableWidget_cellChanged(int, int)));
-}
 
 //天平采集串口 上位机直接采集
 void StdMtrCoeCorrect::initBalanceCom()
@@ -480,7 +444,7 @@ int StdMtrCoeCorrect::closeAllFlowPointValves()
 //清空表格，第一列除外("流量点"列)
 void StdMtrCoeCorrect::clearTableContents()
 {
-	for (int i=0; i<18; i++)
+	for (int i=0; i<ui.tableWidget->rowCount(); i++)
 	{
 		for (int j=1; j<ui.tableWidget->columnCount(); j++) //从第二列开始
 		{
@@ -1014,48 +978,125 @@ void StdMtrCoeCorrect::slotFreshBigRegOpening()
 	}
 }
 
-void StdMtrCoeCorrect::on_rBtn_DN3_toggled()
+void StdMtrCoeCorrect::initTableWdg()
 {
-	if (ui.rBtn_DN3->isChecked())
-		m_curStdMeter = FLOW_RATE_SMALL;
-
 	disconnect(ui.tableWidget, SIGNAL(cellChanged(int, int)), this, SLOT(on_tableWidget_cellChanged(int, int)));
 	ui.tableWidget->clear();
 	int flowpoints=0;
 	int chkCount = 0;
-	m_stdCorrectConfig->beginReadArray("smallflow");
+	switch(m_curStdMeter)
+	{
+	case FLOW_RATE_BIG:
+		m_stdCorrectParas->beginReadArray("bigflow");
+		break;
+	case FLOW_RATE_MID_2:
+		m_stdCorrectParas->beginReadArray("mid2flow");
+		break;
+	case FLOW_RATE_MID_1:
+		m_stdCorrectParas->beginReadArray("mid1flow");
+		break;
+	case FLOW_RATE_SMALL:
+		m_stdCorrectParas->beginReadArray("smallflow");
+		break;
+	default:
+		break;
+	}
+	
 	for (int i=0;i<FLOW_POINTS;i++)
 	{
-		m_stdCorrectConfig->setArrayIndex(i);
-		if (!m_stdCorrectConfig->value("flowPoint").toString().isEmpty())
+		m_stdCorrectParas->setArrayIndex(i);
+		QString str = m_stdCorrectParas->value("flowPoint").toString();
+		qDebug() << "str: " << str << "str.length(): " << str.length();
+		if (str.length() > 0)
 			flowpoints++;
 	}
-	m_stdCorrectConfig->endArray();
+	m_stdCorrectParas->endArray();
 
-	m_stdCorrectConfig->beginGroup("times");
-	chkCount = m_stdCorrectConfig->value("time").toInt();
-	m_stdCorrectConfig->endGroup();
+	m_stdCorrectParas->beginGroup("times");
+	chkCount = m_stdCorrectParas->value("time").toInt();
+	m_stdCorrectParas->endGroup();
+
 	ui.tableWidget->setRowCount(flowpoints*chkCount);
+	ui.tableWidget->setColumnCount(COL_CNTS);
+	ui.tableWidget->verticalHeader()->setVisible(false);
+	QStringList header;
+	header<<tr("Flow Point\n(m3/h)")
+		  <<tr("balance V0\n(kg)")
+		  <<tr("balance V1\n(kg)")
+		  <<tr("balance value\n(kg)")
+		  <<tr("density\n(kg/L)")
+		  <<tr("Actual Value\n(L)")
+		  <<tr("Stand Meter Value0\n(L)")
+		  <<tr("Stand Meter Value1\n(L)")
+		  <<tr("Stand Meter DispValue\n(L)")
+		  <<tr("Meter Coe")
+		  <<tr("AVG Meter Coe")
+		  <<tr("repetitiveness\n(%)");
+	ui.tableWidget->setHorizontalHeaderLabels(header);
+
+	for (int i=0; i<ui.tableWidget->rowCount(); i++)
+	{
+		for (int j=0; j<ui.tableWidget->columnCount(); j++)
+		{
+			ui.tableWidget->setItem(i, j, new QTableWidgetItem(QString("")));
+		}
+	}
+	switch(m_curStdMeter)
+	{
+	case FLOW_RATE_BIG:
+		m_stdCorrectParas->beginReadArray("bigflow");
+		break;
+	case FLOW_RATE_MID_2:
+		m_stdCorrectParas->beginReadArray("mid2flow");
+		break;
+	case FLOW_RATE_MID_1:
+		m_stdCorrectParas->beginReadArray("mid1flow");
+		break;
+	case FLOW_RATE_SMALL:
+		m_stdCorrectParas->beginReadArray("smallflow");
+		break;
+	default:
+		break;
+	}
+	for (int i=0; i<ui.tableWidget->rowCount(); i+=chkCount)
+	{
+		m_stdCorrectParas->setArrayIndex(i/chkCount);
+		ui.tableWidget->item(i, COL_FLOW_POINT)->setText(m_stdCorrectParas->value("flowPoint").toString());
+		ui.tableWidget->setSpan(i, COL_FLOW_POINT, chkCount, 1);
+		ui.tableWidget->setSpan(i, COL_STDERR_AVR, chkCount, 1);
+		ui.tableWidget->setSpan(i, COL_STDREP, chkCount, 1);
+	}
+	m_stdCorrectParas->endArray();
 
 	connect(ui.tableWidget, SIGNAL(cellChanged(int, int)), this, SLOT(on_tableWidget_cellChanged(int, int)));
+}
+
+void StdMtrCoeCorrect::on_rBtn_DN3_toggled()
+{
+	if (ui.rBtn_DN3->isChecked())
+		m_curStdMeter = FLOW_RATE_SMALL;
+	initTableWdg();
 }
 
 void StdMtrCoeCorrect::on_rBtn_DN10_toggled()
 {
 	if (ui.rBtn_DN10->isChecked())
 		m_curStdMeter = FLOW_RATE_MID_1;
+	initTableWdg();
 }
 
 void StdMtrCoeCorrect::on_rBtn_DN25_toggled()
 {
 	if (ui.rBtn_DN25->isChecked())
 		m_curStdMeter = FLOW_RATE_MID_2;
+	initTableWdg();
 }
 
 void StdMtrCoeCorrect::on_rBtn_DN50_toggled()
 {
 	if (ui.rBtn_DN50->isChecked())
 		m_curStdMeter = FLOW_RATE_BIG;
+	initTableWdg();
 }
 
 void StdMtrCoeCorrect::on_btnSave_clicked()
@@ -1110,4 +1151,9 @@ void StdMtrCoeCorrect::slotOnStdMtrCorrectPraClosed()
 		delete m_StdMtrCorrectPra;
 		m_StdMtrCorrectPra = NULL;
 	}
+}
+
+void StdMtrCoeCorrect::on_btnClearTbl_clicked()
+{
+	clearTableContents();
 }
