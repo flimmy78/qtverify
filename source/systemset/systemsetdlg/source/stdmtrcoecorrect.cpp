@@ -382,12 +382,28 @@ void StdMtrCoeCorrect::slotFreshComTempValue(const QString& tempStr)
 }
 void StdMtrCoeCorrect::slotFreshBigBalanceValue(const float& balValue)
 {
-	ui.lcdBigBalance->setText(QString::number(balValue));
+	QString wht = QString::number(balValue, 'f', 3);
+	ui.lcdBigBalance->setText(wht);
+	if (balValue > m_balMaxWht) //防止天平溢出
+	{
+		closeWaterPump(); //关闭水泵
+		closeValve(m_portsetinfo.waterInNo); //关闭进水阀
+		openValve(m_portsetinfo.bigWaterOutNo); //打开大天平放水阀
+		openValve(m_portsetinfo.bigWaterInNo);  //打开大天平进水阀
+	}
 }
 
 void StdMtrCoeCorrect::slotFreshSmallBalanceValue(const float& balValue)
 {
-	ui.lcdSmallBalance->setText(QString::number(balValue));
+	QString wht = QString::number(balValue, 'f', 3);
+	ui.lcdSmallBalance->setText(wht);
+	if (balValue > m_balMaxWht2) //防止天平溢出
+	{
+		closeWaterPump(); //关闭水泵
+		closeValve(m_portsetinfo.waterInNo); //关闭进水阀
+		openValve(m_portsetinfo.smallWaterOutNo); //打开小天平放水阀
+		openValve(m_portsetinfo.smallWaterInNo);  //打开小天平进水阀
+	}
 }
 
 /*
