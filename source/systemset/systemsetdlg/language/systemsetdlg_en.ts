@@ -4026,12 +4026,27 @@ There should not be space between tow flow points! K Coe: (Stand Value)/(Meter V
     <message>
         <location filename="../ui/stdplasensor.ui" line="262"/>
         <location filename="../ui/stdplasensor.ui" line="701"/>
-        <location filename="../ui/stdplasensor.ui" line="783"/>
+        <location filename="../ui/stdplasensor.ui" line="811"/>
         <source>Save</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="826"/>
+        <location filename="../ui/stdplasensor.ui" line="770"/>
+        <source>ValueType</source>
+        <translation>ValueType</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="777"/>
+        <source>Resist</source>
+        <translation>Resist</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="782"/>
+        <source>Temper</source>
+        <translation>Temper</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="853"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
@@ -4102,22 +4117,22 @@ There should not be space between tow flow points! K Coe: (Stand Value)/(Meter V
         <translation>Calc</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="714"/>
+        <location filename="../ui/stdplasensor.ui" line="716"/>
         <source>Model</source>
         <translation>Model</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="726"/>
+        <location filename="../ui/stdplasensor.ui" line="728"/>
         <source>Institute of Metrology</source>
         <translation>Institute of Metrology</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="739"/>
+        <location filename="../ui/stdplasensor.ui" line="741"/>
         <source>WeiLi</source>
         <translation>WeiLi</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="758"/>
+        <location filename="../ui/stdplasensor.ui" line="760"/>
         <source>HuaYi</source>
         <translation>HuaYi</translation>
     </message>

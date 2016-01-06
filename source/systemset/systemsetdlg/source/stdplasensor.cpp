@@ -158,10 +158,14 @@ void stdplasensorDlg::on_btn_model_save_clicked()
 					m_config->setValue("model", -1);
 				}
 				m_config->endGroup();
-				return;
 			}
 		}
 	}
+
+	m_config->beginGroup("in_use");
+	m_config->setValue("valueType", ui.cmbValueType->currentIndex());
+	m_config->endGroup();
+
 }
 
 void stdplasensorDlg::on_gBox_pt25_clicked()
@@ -220,7 +224,10 @@ void stdplasensorDlg::readmodelconfig()
 		break;
 	default:
 		break;
-	}	
+	}
+
+	int valueType = m_config->value("in_use/valueType").toInt();
+	ui.cmbValueType->setCurrentIndex(valueType);
 }
 
 void stdplasensorDlg::readInUse()

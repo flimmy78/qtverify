@@ -4010,12 +4010,27 @@ There should not be space between tow flow points! K Coe: (Stand Value)/(Meter V
     <message>
         <location filename="../ui/stdplasensor.ui" line="262"/>
         <location filename="../ui/stdplasensor.ui" line="701"/>
-        <location filename="../ui/stdplasensor.ui" line="783"/>
+        <location filename="../ui/stdplasensor.ui" line="811"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="826"/>
+        <location filename="../ui/stdplasensor.ui" line="770"/>
+        <source>ValueType</source>
+        <translation>数值类型</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="777"/>
+        <source>Resist</source>
+        <translation>电阻</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="782"/>
+        <source>Temper</source>
+        <translation>温度</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdplasensor.ui" line="853"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
@@ -4086,22 +4101,22 @@ There should not be space between tow flow points! K Coe: (Stand Value)/(Meter V
         <translation>计算</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="714"/>
+        <location filename="../ui/stdplasensor.ui" line="716"/>
         <source>Model</source>
         <translation>型号</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="726"/>
+        <location filename="../ui/stdplasensor.ui" line="728"/>
         <source>Institute of Metrology</source>
         <translation>计量院</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="739"/>
+        <location filename="../ui/stdplasensor.ui" line="741"/>
         <source>WeiLi</source>
         <translation>唯力</translation>
     </message>
     <message>
-        <location filename="../ui/stdplasensor.ui" line="758"/>
+        <location filename="../ui/stdplasensor.ui" line="760"/>
         <source>HuaYi</source>
         <translation>华易</translation>
     </message>
