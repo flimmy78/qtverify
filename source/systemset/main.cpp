@@ -28,7 +28,7 @@ int main( int argc, char ** argv )
 		}
 		app.installTranslator(&translator);
 	}
-	StdMtrCorrectPra w;
+	StdMtrCoeCorrect w;
 	w.show();
 	 
 	return app.exec();

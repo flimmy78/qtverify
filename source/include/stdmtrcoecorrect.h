@@ -89,6 +89,8 @@ public slots:
 	void on_rBtn_DN10_toggled();
 	void on_rBtn_DN25_toggled();
 	void on_rBtn_DN50_toggled();
+	void slotFreshBigBalanceValue(const float& balValue);  //刷新大天平数值
+	void slotFreshSmallBalanceValue(const float& balValue);//刷新小天平数值
 
 	void slotOnStdMtrCorrectPraClosed();
 	/*******************标准流量计******************************/

@@ -380,6 +380,15 @@ void StdMtrCoeCorrect::slotFreshComTempValue(const QString& tempStr)
 	ui.lcdOutTemper->display(tempStr.right(TEMPER_DATA_WIDTH)); //出口温度 SV
 	m_tempPipeOut = ui.lcdOutTemper->value();
 }
+void StdMtrCoeCorrect::slotFreshBigBalanceValue(const float& balValue)
+{
+	ui.lcdBigBalance->setText(QString::number(balValue));
+}
+
+void StdMtrCoeCorrect::slotFreshSmallBalanceValue(const float& balValue)
+{
+	ui.lcdSmallBalance->setText(QString::number(balValue));
+}
 
 /*
 ** 打开所有阀门和水泵（关闭大、小天平进水阀，因为标准表法不需要使用天平）
