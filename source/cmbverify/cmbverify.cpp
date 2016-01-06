@@ -617,13 +617,21 @@ void CmbVerifyDlg::on_btn_collection_clicked()
 	m_tempObj = new StdTempComObject();
 	QSettings stdconfig(getFullIniFileName("stdplasensor.ini"), QSettings::IniFormat);
 	int ver = stdconfig.value("in_use/model").toInt();
+	int valueType = stdconfig.value("in_use/valueType").toInt();
 	m_tempObj->moveToThread(&m_tempThread);
 	m_tempThread.start();
 	m_tempObj->openTemperatureCom(&tempStruct);
-	m_tempObj->setStdTempVersion(ver);
+	m_tempObj->setStdTempVersion(ver, valueType);
 	connect(m_tempObj,SIGNAL(temperatureIsReady(const QString&)), this, SLOT(setStdTempUi(const QString&)));
 
-	m_StdCommand = stdTempR1;
+	if (valueType == STD_RESIST)
+	{
+		m_StdCommand = stdTempR1;
+	}
+	else
+	{
+		m_StdCommand = stdTempT1;
+	}
 
 	connect(m_sendTimer, SIGNAL(timeout()), this, SLOT(sendCommands()));
 	m_sendTimer->start(TIMEOUT_STD_TEMPER);
@@ -647,22 +655,24 @@ void CmbVerifyDlg::setStdTempUi(const QString &tempStr)
 {
 	switch(m_StdCommand)
 	{
-// 		case stdTempT1:
-// 			ui.lineEdit_std_in_t->setText(tempStr);
-// 			m_StdCommand = stdTempT2;
-// 			break;
-// 		case stdTempT2:
-// 			ui.lineEdit_std_out_t->setText(tempStr);
-// 			m_StdCommand = stdTempR1;
-// 			break;
-		case stdTempR1:
-			ui.lineEdit_std_in_r->setText(tempStr);
-			m_StdCommand = stdTempR2;
-			break;
-		case stdTempR2:
-			ui.lineEdit_std_out_r->setText(tempStr);
-			m_StdCommand = stdTempR1;
-			break;
+	case stdTempT1: 
+		ui.lineEdit_std_in_t->setText(tempStr);
+		m_StdCommand = stdTempT2;
+		break;
+	case stdTempT2: 
+		ui.lineEdit_std_out_t->setText(tempStr);
+		m_StdCommand = stdTempT1;
+		break;
+	case stdTempR1:
+		ui.lineEdit_std_in_r->setText(tempStr);
+		m_StdCommand = stdTempR2;
+		break;
+	case stdTempR2:
+		ui.lineEdit_std_out_r->setText(tempStr);
+		m_StdCommand = stdTempR1;
+		break;
+	default:
+		break;
 	}
 }
 
