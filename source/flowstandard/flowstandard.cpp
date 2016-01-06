@@ -1304,7 +1304,7 @@ int FlowStandardDlg::startVerifyFlowPoint(int order)
 			{
 				m_meterTemper[m] = m_chkAlg->getMeterTempByPos(m_pipeInTemper, m_pipeOutTemper, m_meterPosMap[m]);//计算每个被检表的温度
 				m_meterDensity[m] = m_chkAlg->getDensityByQuery(m_meterTemper[m]);//计算每个被检表的密度
-				m_meterStdValue[m] = m_chkAlg->getStdVolByPos((m_StdEndMass-m_StdStartMass), m_pipeInTemper, m_pipeOutTemper, m_meterPosMap[m]); //计算每个被检表的体积标准值
+				m_meterStdValue[m] = m_chkAlg->getStdVolByPos((m_StdEndMass-m_StdStartMass), m_pipeInTemper, m_pipeOutTemper, m_meterPosMap[m], STANDARD_METHOD); //计算每个被检表的体积标准值
 
 				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_FLOW_POINT)->setText(QString::number(m_realFlow, 'f', 3));//流量点
 				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_METER_END)->setText("");//表终值

@@ -381,10 +381,18 @@ void TotalWeightDlg::initStdTemperatureCom()
 	m_stdTempObj->moveToThread(&m_stdTempThread);
 	m_stdTempThread.start();
 	m_stdTempObj->openTemperatureCom(&tempStruct);
-	m_stdTempObj->setStdTempVersion(stdconfig.value("in_use/model").toInt());
+	int valueType = stdconfig.value("in_use/valueType").toInt();
+	m_stdTempObj->setStdTempVersion(stdconfig.value("in_use/model").toInt(), valueType);
 	connect(m_stdTempObj, SIGNAL(temperatureIsReady(const QString &)), this, SLOT(slotFreshStdTempValue(const QString &)));
 
-	m_stdTempCommand = stdTempR1;
+	if (valueType == STD_RESIST)
+	{
+		m_stdTempCommand = stdTempR1;
+	}
+	else
+	{
+		m_stdTempCommand = stdTempT1;
+	}
 	m_stdTempTimer = new QTimer();
 	connect(m_stdTempTimer, SIGNAL(timeout()), this, SLOT(slotAskStdTemperature()));
 	
@@ -512,12 +520,14 @@ void TotalWeightDlg::slotFreshStdTempValue(const QString& stdTempStr)
 // 	qDebug()<<"stdTempStr ="<<stdTempStr<<"; m_stdTempCommand ="<<m_stdTempCommand;
 	switch (m_stdTempCommand)
 	{
-// 	case stdTempT1: 
-// 		ui.lnEditOutStdResist->setText(stdTempStr);
-// 		break;
-// 	case stdTempT2: 
-// 		ui.lnEditInStdTemp->setText(stdTempStr);
-// 		break;
+	case stdTempT1: 
+		ui.lnEditInStdTemp->setText(stdTempStr);
+		m_stdTempCommand = stdTempT2;
+		break;
+	case stdTempT2: 
+		ui.lnEditOutStdTemp->setText(stdTempStr);
+		m_stdTempCommand = stdTempT1;
+		break;
 	case stdTempR1: 
 		ui.lnEditInStdResist->setText(stdTempStr);
 		m_stdTempCommand = stdTempR2;
@@ -1482,7 +1492,7 @@ int TotalWeightDlg::startVerifyFlowPoint(int order)
 			{
 				m_meterTemper[m] = m_chkAlg->getMeterTempByPos(m_pipeInTemper, m_pipeOutTemper, m_meterPosMap[m]);//计算每个被检表的温度
 				m_meterDensity[m] = m_chkAlg->getDensityByQuery(m_meterTemper[m]);//计算每个被检表的密度
-				m_meterStdValue[m] = m_chkAlg->calcStdEnergyByEnthalpy(m_stdInTemper, m_stdOutTemper, m_balEndV-m_balStartV, m_unit); //计算每个被检表的体积标准值
+				m_meterStdValue[m] = m_chkAlg->calcStdEnergyByEnthalpy(m_stdInTemper, m_stdOutTemper, m_balEndV-m_balStartV, m_unit); //计算每个被检表的热量标准值
 
 				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_FLOW_POINT)->setText(QString::number(m_realFlow, 'f', 3));//流量点
 				ui.tableWidget->item(m_meterPosMap[m]-1, COLUMN_METER_END)->setText("");//表终值
