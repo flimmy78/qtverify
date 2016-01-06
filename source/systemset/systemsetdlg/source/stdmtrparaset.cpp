@@ -29,28 +29,55 @@ StdMtrParaSet::StdMtrParaSet(QWidget *parent, Qt::WFlags flags)
 	qDebug()<<"StdParaSet thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
 	m_stdParam = NULL;
+	m_stdParam = new QSettings(getFullIniFileName("stdmtrparaset.ini"),QSettings::IniFormat);
+	m_needCorrection = false;
 }
 
 void StdMtrParaSet::showEvent(QShowEvent *)
 {
 	initWdgVec();
-	m_stdParam = new QSettings(getFullIniFileName("stdmtrparaset.ini"),QSettings::IniFormat);
+	initBtnGroup();
 	installStdMeter();
 	installRoute();
 }
 
 StdMtrParaSet::~StdMtrParaSet()
 {
+	releaseSource();
 }
 
 void StdMtrParaSet::closeEvent(QCloseEvent *)
+{
+	releaseSource();
+	emit signalClosed();
+}
+
+void StdMtrParaSet::releaseSource()
 {
 	if (m_stdParam)
 	{
 		delete m_stdParam;
 		m_stdParam = NULL;
 	}
-	emit signalClosed();
+
+	if (m_btnGroupCorrection)
+	{
+		delete m_btnGroupCorrection;
+		m_btnGroupCorrection = NULL;
+	}
+}
+
+void StdMtrParaSet::initBtnGroup()
+{
+	m_btnGroupCorrection = new QButtonGroup(ui.gBox_Correction); //计量单位
+	m_btnGroupCorrection->addButton(ui.rBtnCorrection, true);
+	m_btnGroupCorrection->addButton(ui.rBtnNotCorrection, false);
+	connect(m_btnGroupCorrection, SIGNAL(buttonClicked(int)), this, SLOT(slotCorrectionclicked(int)));
+}
+
+void StdMtrParaSet::slotCorrectionclicked(int idx)
+{
+	m_needCorrection = idx;
 }
 
 void StdMtrParaSet::initWdgVec()
@@ -190,6 +217,12 @@ void StdMtrParaSet::installRoute()
 	m_stdParam->beginGroup("DevNo.");
 	ui.lineEdit_instDevNo->setText(m_stdParam->value("InstDevNo").toString());
 	ui.lineEdit_accumDevNo->setText(m_stdParam->value("AccumDevNo").toString());
+	m_stdParam->endGroup();
+
+	m_stdParam->beginGroup("NeedCorrection");
+	m_needCorrection = m_stdParam->value("NeedCorrection").toBool();
+	ui.rBtnCorrection->setChecked(m_needCorrection);
+	ui.rBtnNotCorrection->setChecked(!m_needCorrection);
 	m_stdParam->endGroup();
 }
 
@@ -338,6 +371,10 @@ void StdMtrParaSet::writeRoute()
 	m_stdParam->beginGroup("DevNo.");
 	m_stdParam->setValue("InstDevNo", ui.lineEdit_instDevNo->text());
 	m_stdParam->setValue("AccumDevNo", ui.lineEdit_accumDevNo->text());
+	m_stdParam->endGroup();
+
+	m_stdParam->beginGroup("NeedCorrection");
+	m_stdParam->setValue("NeedCorrection", m_needCorrection);
 	m_stdParam->endGroup();
 }
 

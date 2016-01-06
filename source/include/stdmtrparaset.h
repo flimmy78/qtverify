@@ -30,6 +30,9 @@ public slots:
 private:
 	Ui::StdMtrParaSetClass ui;
 	QSettings* m_stdParam;
+	QButtonGroup *m_btnGroupCorrection;
+	bool m_needCorrection;
+
 	//各流量点控件序列
 	QVector<QLineEdit*> m_vecflowPointSmall;
 	QVector<QLineEdit*> m_vecflowPointMid1;
@@ -47,8 +50,8 @@ private:
 	QMap<flow_rate_wdg, QComboBox*> m_mapInstRouteWdg;
 	QMap<flow_rate_wdg, QComboBox*> m_mapAccumRouteWdg;
 
-private slots:
 	void initWdgVec();
+	void initBtnGroup();
 
 	void writeStdMeter();
 	void writeFlowKCoe();
@@ -61,6 +64,9 @@ private slots:
 	void installPulse();
 	void installFlowRate();
 	void installRoute();
+	void releaseSource();
+private slots:
+	void slotCorrectionclicked(int);
 };
 
 #endif // STDPARASET_H

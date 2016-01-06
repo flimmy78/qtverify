@@ -31,6 +31,9 @@ CStdMeterReader::~CStdMeterReader()
 void CStdMeterReader::initObj()
 {
 	m_stdParam = new QSettings(getFullIniFileName("stdmtrparaset.ini"), QSettings::IniFormat);
+	m_stdParam->beginGroup("NeedCorrection");
+	setAdjust(m_stdParam->value("NeedCorrection").toBool());
+	m_stdParam->endGroup();
 	m_readComConfig = new ReadComConfig();
 
 	m_accumCount[FLOW_RATE_BIG]   = 0;

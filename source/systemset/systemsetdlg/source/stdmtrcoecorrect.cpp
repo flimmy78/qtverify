@@ -1065,6 +1065,14 @@ void StdMtrCoeCorrect::initTableWdg()
 		{
 			ui.tableWidget->setItem(i, j, new QTableWidgetItem(QString("")));
 		}
+		ui.tableWidget->item(i, COL_FLOW_POINT)->setFlags(Qt::ItemIsEditable);
+		ui.tableWidget->item(i, COL_BALVD)->setFlags(Qt::ItemIsEditable);
+		ui.tableWidget->item(i, COL_DEN)->setFlags(Qt::ItemIsEditable);
+		ui.tableWidget->item(i, COL_BALVC)->setFlags(Qt::ItemIsEditable);
+		ui.tableWidget->item(i, COL_STDVD)->setFlags(Qt::ItemIsEditable);
+		ui.tableWidget->item(i, COL_STDERR)->setFlags(Qt::ItemIsEditable);
+		ui.tableWidget->item(i, COL_STDERR_AVR)->setFlags(Qt::ItemIsEditable);
+		ui.tableWidget->item(i, COL_STDREP)->setFlags(Qt::ItemIsEditable);
 	}
 	switch(m_curStdMeter)
 	{

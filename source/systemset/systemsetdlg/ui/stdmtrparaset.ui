@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>1080</width>
-    <height>597</height>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -2563,18 +2563,41 @@
     </widget>
    </item>
    <item>
-    <widget class="QGroupBox" name="gBox_lcModDevNo">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="title">
-      <string>Standard Meter DevNo.</string>
-     </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_7">
-      <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_8">
+     <item>
+      <widget class="QGroupBox" name="gBox_Correction">
+       <property name="title">
+        <string>Need Correction</string>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_7">
+        <item>
+         <widget class="QRadioButton" name="rBtnCorrection">
+          <property name="text">
+           <string>Correction</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="rBtnNotCorrection">
+          <property name="text">
+           <string>Not Correction</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="gBox_lcModDevNo">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="title">
+        <string>Standard Meter DevNo.</string>
+       </property>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
          <widget class="QLabel" name="label_37">
@@ -2642,22 +2665,22 @@
          </widget>
         </item>
        </layout>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_5">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>515</width>
-          <height>17</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-     </layout>
-    </widget>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_5">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>228</width>
+         <height>17</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
    </item>
    <item>
     <widget class="QLabel" name="label">

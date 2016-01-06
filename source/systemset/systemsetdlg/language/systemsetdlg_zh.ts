@@ -2900,80 +2900,80 @@ Please check each flow point&apos;s quantity</source>
         <translation>确定关闭?</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1023"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1048"/>
         <source>Flow Point
 (m3/h)</source>
         <translation>流量点
  (m³/h)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1024"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1049"/>
         <source>balance V0
 (kg)</source>
         <translation>天平初值
 (kg)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1025"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1050"/>
         <source>balance V1
 (kg)</source>
         <translation>天平终值
 (kg)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1026"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1051"/>
         <source>balance value
 (kg)</source>
         <translation>天平示值
 (kg)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1027"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1052"/>
         <source>density
 (kg/L)</source>
         <translation>密度
 (kg/L)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1028"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1053"/>
         <source>Actual Value
 (L)</source>
         <translation>实际值
 (L)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1029"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1054"/>
         <source>Stand Meter Value0
 (L)</source>
         <translation>标准表初值
 (L)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1030"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1055"/>
         <source>Stand Meter Value1
 (L)</source>
         <translation>标准表终值
 (L)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1031"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1056"/>
         <source>Stand Meter DispValue
 (L)</source>
         <translation>标准表示值
 (L)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1032"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1057"/>
         <source>Meter Coe</source>
         <translation>标准表系数</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1033"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1058"/>
         <source>AVG Meter Coe</source>
         <translation>标准表平均系数</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1034"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1059"/>
         <source>repetitiveness
 (%)</source>
         <translation>重复性
@@ -3680,7 +3680,7 @@ t</source>
         <translation type="obsolete">DN25流量参数</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2665"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2688"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Hint:Input FLowRate from big to small, the max flow and upper flow can be the same.
 There should not be space between tow flow points! K Coe: (Stand Value)/(Meter Value)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;提示：如果要进行K系数标定，请选择无修正状态；&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;
@@ -3879,12 +3879,27 @@ There should not be space between tow flow points! K Coe: (Stand Value)/(Meter V
         <translation>小</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2688"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2570"/>
+        <source>Need Correction</source>
+        <translation>调整误差</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="2576"/>
+        <source>Correction</source>
+        <translation>调整</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="2583"/>
+        <source>Not Correction</source>
+        <translation>不调整</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="2711"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2695"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2718"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
@@ -3937,17 +3952,17 @@ There should not be space between tow flow points! K Coe: (Stand Value)/(Meter V
         <translation type="obsolete">小流量</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2574"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2599"/>
         <source>Standard Meter DevNo.</source>
         <translation>标准表设备号</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2588"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2611"/>
         <source>Instant DevNo.</source>
         <translation>瞬时设备号</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2627"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2650"/>
         <source>Accumulate DevNo.</source>
         <translation>累积设备号</translation>
     </message>

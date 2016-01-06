@@ -2811,77 +2811,77 @@ Please check each flow point&apos;s quantity</translation>
     <message>
         <location filename="../ui/stdcorrectpra.ui" line="17"/>
         <source>Params of Stand Meter Correction</source>
-        <translation type="unfinished"></translation>
+        <translation>Params of Stand Meter Correction</translation>
     </message>
     <message>
         <location filename="../ui/stdcorrectpra.ui" line="27"/>
         <source>FlowPoints</source>
-        <translation type="unfinished"></translation>
+        <translation>FlowPoints</translation>
     </message>
     <message>
         <location filename="../ui/stdcorrectpra.ui" line="70"/>
         <source>Big</source>
-        <translation type="unfinished">Big</translation>
+        <translation>Big</translation>
     </message>
     <message>
         <location filename="../ui/stdcorrectpra.ui" line="119"/>
         <source>Mid2</source>
-        <translation type="unfinished">Mid2</translation>
+        <translation>Mid2</translation>
     </message>
     <message>
         <location filename="../ui/stdcorrectpra.ui" line="168"/>
         <source>Mid1</source>
-        <translation type="unfinished">Mid1</translation>
+        <translation>Mid1</translation>
     </message>
     <message>
         <location filename="../ui/stdcorrectpra.ui" line="217"/>
         <source>Small</source>
-        <translation type="unfinished">Small</translation>
+        <translation>Small</translation>
     </message>
     <message>
         <location filename="../ui/stdcorrectpra.ui" line="234"/>
         <source>Times per flow point:</source>
-        <translation type="unfinished"></translation>
+        <translation>Times per flow point:</translation>
     </message>
     <message>
         <location filename="../ui/stdcorrectpra.ui" line="242"/>
         <source>0</source>
-        <translation type="unfinished">2# {0?}</translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../ui/stdcorrectpra.ui" line="247"/>
         <source>1</source>
-        <translation type="unfinished">1</translation>
+        <translation>1</translation>
     </message>
     <message>
         <location filename="../ui/stdcorrectpra.ui" line="252"/>
         <source>2</source>
-        <translation type="unfinished">2</translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../ui/stdcorrectpra.ui" line="257"/>
         <source>3</source>
-        <translation type="unfinished">3</translation>
+        <translation>3</translation>
     </message>
     <message>
         <location filename="../ui/stdcorrectpra.ui" line="262"/>
         <source>4</source>
-        <translation type="unfinished">4</translation>
+        <translation>4</translation>
     </message>
     <message>
         <location filename="../ui/stdcorrectpra.ui" line="267"/>
         <source>5</source>
-        <translation type="unfinished">5</translation>
+        <translation>5</translation>
     </message>
     <message>
         <location filename="../ui/stdcorrectpra.ui" line="288"/>
         <source>Save</source>
-        <translation type="unfinished">Save</translation>
+        <translation>Save</translation>
     </message>
     <message>
         <location filename="../ui/stdcorrectpra.ui" line="295"/>
         <source>Exit</source>
-        <translation type="unfinished">Exit</translation>
+        <translation>Exit</translation>
     </message>
 </context>
 <context>
@@ -2907,80 +2907,80 @@ Please check each flow point&apos;s quantity</translation>
         <translation>Exit Really ?</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1023"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1048"/>
         <source>Flow Point
 (m3/h)</source>
         <translation>Flow Point
  (m³/h)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1024"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1049"/>
         <source>balance V0
 (kg)</source>
         <translation>balance V0
 (kg)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1025"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1050"/>
         <source>balance V1
 (kg)</source>
         <translation>balance V1
 (kg)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1026"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1051"/>
         <source>balance value
 (kg)</source>
         <translation>balance value
 (kg)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1027"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1052"/>
         <source>density
 (kg/L)</source>
         <translation>density
 (kg/L)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1028"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1053"/>
         <source>Actual Value
 (L)</source>
         <translation>Actual Value
 (L)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1029"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1054"/>
         <source>Stand Meter Value0
 (L)</source>
         <translation>Stand Meter Value0
 (L)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1030"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1055"/>
         <source>Stand Meter Value1
 (L)</source>
         <translation>Stand Meter Value1
 (L)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1031"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1056"/>
         <source>Stand Meter DispValue
 (L)</source>
         <translation>Stand Meter DispValue
 (L)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1032"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1057"/>
         <source>Meter Coe</source>
         <translation>Meter Coe</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1033"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1058"/>
         <source>AVG Meter Coe</source>
         <translation>AVG Meter Coe</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1034"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1059"/>
         <source>repetitiveness
 (%)</source>
         <translation>repetitiveness
@@ -3176,7 +3176,7 @@ Please check each flow point&apos;s quantity</translation>
     <message>
         <location filename="../ui/stdmtrcoecorrect.ui" line="1980"/>
         <source>Parameter</source>
-        <translation type="unfinished"></translation>
+        <translation>Parameter</translation>
     </message>
     <message>
         <location filename="../ui/stdmtrcoecorrect.ui" line="2007"/>
@@ -3385,7 +3385,7 @@ t</translation>
     <message>
         <location filename="../ui/stdmtrcoecorrect.ui" line="1961"/>
         <source>Clear</source>
-        <translation type="unfinished">Clear</translation>
+        <translation>Clear</translation>
     </message>
     <message>
         <source>Report</source>
@@ -3394,7 +3394,7 @@ t</translation>
     <message>
         <location filename="../ui/stdmtrcoecorrect.ui" line="1428"/>
         <source>Save</source>
-        <translation type="unfinished">Save</translation>
+        <translation>Save</translation>
     </message>
     <message>
         <location filename="../ui/stdmtrcoecorrect.ui" line="1942"/>
@@ -3480,14 +3480,15 @@ t</translation>
         <location filename="../source/stdcorrectpra.cpp" line="39"/>
         <source>Flow Point
 (m3/h)</source>
-        <translation type="unfinished">Flow Point
+        <translation>Flow Point
  (m³/h)</translation>
     </message>
     <message>
         <location filename="../source/stdcorrectpra.cpp" line="39"/>
         <source>Check Quantity
 (kg)</source>
-        <translation type="unfinished"></translation>
+        <translation>Check Quantity
+(kg)</translation>
     </message>
 </context>
 <context>
@@ -3687,7 +3688,7 @@ t</translation>
         <translation type="obsolete">DN25 Param of Flow Rate</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2665"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2688"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Hint:Input FLowRate from big to small, the max flow and upper flow can be the same.
 There should not be space between tow flow points! K Coe: (Stand Value)/(Meter Value)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Hint:Input FLowRate from big to small, the max flow and upper flow can be the same.
@@ -3886,12 +3887,27 @@ There should not be space between tow flow points! K Coe: (Stand Value)/(Meter V
         <translation>Small</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2688"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2570"/>
+        <source>Need Correction</source>
+        <translation>Need Correction</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="2576"/>
+        <source>Correction</source>
+        <translation>Correction</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="2583"/>
+        <source>Not Correction</source>
+        <translation>Not Correction</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="2711"/>
         <source>Save</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2695"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2718"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
@@ -3944,17 +3960,17 @@ There should not be space between tow flow points! K Coe: (Stand Value)/(Meter V
         <translation type="obsolete">Small</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2574"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2599"/>
         <source>Standard Meter DevNo.</source>
         <translation>Standard Meter DevNo.</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2588"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2611"/>
         <source>Instant DevNo.</source>
         <translation>Instant DevNo.</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2627"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2650"/>
         <source>Accumulate DevNo.</source>
         <translation>Accumulate DevNo.</translation>
     </message>
