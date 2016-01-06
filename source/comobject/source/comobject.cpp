@@ -1095,6 +1095,12 @@ void StdTempComObject::writeStdTempComBuffer(stdTempCommand command)
 	case TEMPERATURE_TYPE_HUAYI:
 		switch (command)
 		{
+		case stdTempT1:
+			m_tempCom->write("A");
+			break;
+		case stdTempT2:
+			m_tempCom->write("B");
+			break;
 		case stdTempR1:
 			m_tempCom->write("A");
 			break;
