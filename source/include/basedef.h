@@ -202,10 +202,14 @@ enum table_columns
 #define BALANCE_TYPE_Bizerba    2   //Bizerba(碧彩)
 #define BALANCE_TYPE_Mettler    3   //Mettler Toledo
 
-//温度计类型
+//数字测温仪类型
 #define TEMPERATURE_TYPE_METROLOGY  0//计量院
 #define TEMPERATURE_TYPE_WEILI		1//唯立
 #define TEMPERATURE_TYPE_HUAYI		2//华仪
+
+//数字测温仪采集数值类型
+#define STD_RESIST	0	//采集电阻值
+#define STD_TEMPER	1	//采集温度值
 
 #define POLY	0xA001//CRC16校验中的生成多项式
 #define BYTE_LENGTH 8	  //一个字节的比特数

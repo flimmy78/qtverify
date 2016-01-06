@@ -1017,7 +1017,7 @@ StdTempComObject::~StdTempComObject()
 	}
 }
 
-void StdTempComObject::setStdTempVersion(int version)
+void StdTempComObject::setStdTempVersion(int version, int valueType)
 {
 	if (m_stdTempProtocol)
 	{
@@ -1035,7 +1035,14 @@ void StdTempComObject::setStdTempVersion(int version)
 		break;
 	case TEMPERATURE_TYPE_HUAYI:
 		m_stdTempProtocol = new huayiTempProtocol();
-		m_tempCom->write("R"); //切换到测量电阻状态
+		if (valueType == STD_RESIST)
+		{
+			m_tempCom->write("R"); //切换到测量电阻状态
+		}
+		else //if (valueType == STD_TEMPER)
+		{
+			m_tempCom->write("T"); //切换到测量温度状态
+		}
 		break;
 	default:
 		m_stdTempProtocol = new huayiTempProtocol();

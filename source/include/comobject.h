@@ -228,7 +228,7 @@ public slots:
 	void readTemperatureComBuffer();
 	void close();
 
-	void setStdTempVersion(int version = TEMPERATURE_TYPE_HUAYI);
+	void setStdTempVersion(int version = TEMPERATURE_TYPE_HUAYI, int valueType = STD_TEMPER);
 	void writeComByteM();
 };
 
