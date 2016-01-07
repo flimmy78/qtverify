@@ -194,23 +194,55 @@ void StdMtrCoeCorrect::resizeEvent(QResizeEvent * event)
 void StdMtrCoeCorrect::slotFreshInstFlow(const flow_rate_wdg& idx, const float& value)
 {
 	m_mapInstWdg[idx]->display(value);
+	switch (idx)
+	{
+	case FLOW_RATE_BIG:
+		m_mapInstWdg[idx]->display(QString::number(value, 'f', 2));
+		break;
+	case FLOW_RATE_MID_2:
+		m_mapInstWdg[idx]->display(QString::number(value, 'f', 2));
+		break;
+	case FLOW_RATE_MID_1:
+		m_mapInstWdg[idx]->display(QString::number(value, 'f', 3));
+		break;
+	case FLOW_RATE_SMALL:
+		m_mapInstWdg[idx]->display(QString::number(value, 'f', 4));
+		break;
+	default:
+		break;
+	}
 }
 
 void StdMtrCoeCorrect::slotFreshAccumFlow(const flow_rate_wdg& idx, const float& value)
 {
-	m_mapAccumWdg[idx]->display(value);
+	switch (idx)
+	{
+	case FLOW_RATE_BIG:
+		m_mapAccumWdg[idx]->display(QString::number(value, 'f', 2));
+		break;
+	case FLOW_RATE_MID_2:
+		m_mapAccumWdg[idx]->display(QString::number(value, 'f', 2));
+		break;
+	case FLOW_RATE_MID_1:
+		m_mapAccumWdg[idx]->display(QString::number(value, 'f', 3));
+		break;
+	case FLOW_RATE_SMALL:
+		m_mapAccumWdg[idx]->display(QString::number(value, 'f', 4));
+		break;
+	default:
+		break;
+	}
 }
 
 void StdMtrCoeCorrect::slotFreshTolInst(const float& value)
 {
-	ui.lcdInstStdMeter->display(value);
+	ui.lcdInstStdMeter->display(QString::number(value, 'f', 4));
 }
 
 void StdMtrCoeCorrect::slotFreshTolAccum(const float& value)
 {
-	ui.lcdAccumStdMeter->display(value);
+	ui.lcdAccumStdMeter->display(QString::number(value, 'f', 4));
 }
-
 
 //天平采集串口 上位机直接采集
 void StdMtrCoeCorrect::initBalanceCom()
