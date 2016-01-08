@@ -72,7 +72,8 @@ StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 	m_stdMeterConfig = NULL;
 	m_stdMeterConfig = new QSettings(getFullIniFileName("stdmtrparaset.ini"), QSettings::IniFormat);
 	m_stdCorrectParas= NULL;
-	m_stdCorrectParas = new QSettings(getFullIniFileName("stdCorrectpra.ini"), QSettings::IniFormat);
+	m_stdCorrectParas = new QSettings(getFullIniFileName("stdcorrectpra.ini"), QSettings::IniFormat);
+	slotReadCorrectParas();
 	//映射关系；初始化阀门状态	
 	initValveStatus();      
 	initRegulateStatus();
@@ -89,7 +90,7 @@ StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 	ui.lcdOutTemper->display(50);
 
 	m_curStdMeter = -1;//初始化, 用户未选中任何标准表
-	m_StdMtrCorrectPra = NULL;
+	m_StdMtrCorrectPraDlg = NULL;
 	/***************标准流量计***********************/
 	m_mapInstWdg[FLOW_RATE_BIG]   = ui.lcdInstStdMeter_50;
 	m_mapInstWdg[FLOW_RATE_MID_2] = ui.lcdInstStdMeter_25;
@@ -113,7 +114,7 @@ StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 
 StdMtrCoeCorrect::~StdMtrCoeCorrect()
 {
-
+	releaseSource();
 }
 
 void StdMtrCoeCorrect::showEvent(QShowEvent * event)
@@ -140,12 +141,18 @@ void StdMtrCoeCorrect::closeEvent( QCloseEvent * event)
  	wait(RELEASE_PRESS_TIME); //等待2秒，释放管路压力
 	closeValve(m_portsetinfo.bigNo);
 
+	releaseSource();
+	emit signalClosed();
+}
+
+void StdMtrCoeCorrect::releaseSource()
+{
 	RELEASE_PTR(m_readComConfig)//读串口设置
 	RELEASE_PTR(m_chkAlg)//计算类
 
 	EXIT_THREAD(m_tempThread)// 温度采集
 	RELEASE_PTR(m_tempObj)
-	
+
 	//天平采集
 	EXIT_THREAD(m_balanceThread)
 	RELEASE_PTR(m_balanceObj)
@@ -170,9 +177,9 @@ void StdMtrCoeCorrect::closeEvent( QCloseEvent * event)
 	RELEASE_PTR(m_stdMeterReader)//标准表读取
 	m_curStdMeter = -1;
 	RELEASE_PTR(m_stdMeterConfig)//标准表的配置文件
-	RELEASE_PTR(m_StdMtrCorrectPra)
+	RELEASE_PTR(m_StdMtrCorrectPraDlg)
 	RELEASE_PTR(m_stdCorrectParas)
-	emit signalClosed();
+	clearMapFlowPoint();
 }
 
 void StdMtrCoeCorrect::resizeEvent(QResizeEvent * event)
@@ -185,10 +192,103 @@ void StdMtrCoeCorrect::resizeEvent(QResizeEvent * event)
 	int tw = ui.tableWidget->size().width();
 	int hh = ui.tableWidget->horizontalHeader()->size().height();
 	int vw = ui.tableWidget->verticalHeader()->size().width();
-	int vSize = (int)((th-hh-10)/ui.tableWidget->rowCount());
-	int hSize = (int)((tw-vw-10)/ui.tableWidget->columnCount());
+	int vSize = (int)((th-hh-5)/ui.tableWidget->rowCount());
+	int hSize = (int)((tw-vw-5)/ui.tableWidget->columnCount());
 	ui.tableWidget->verticalHeader()->setDefaultSectionSize(vSize);
 	ui.tableWidget->horizontalHeader()->setDefaultSectionSize(hSize);
+}
+
+void StdMtrCoeCorrect::clearMapFlowPoint()
+{
+	if (m_mapFlowPoint.count() == 0)
+		return;
+
+	QList<StdCorrectPara_PTR> paraList;
+	for (int wdg=FLOW_RATE_BIG;wdg<=FLOW_RATE_SMALL;wdg++)
+	{
+		paraList = m_mapFlowPoint[(flow_rate_wdg)wdg];
+		for (int i=0;i<paraList.length();i++)
+			delete paraList.at(i);
+		paraList.clear();
+	}
+	m_mapFlowPoint.clear();
+}
+
+void StdMtrCoeCorrect::slotReadCorrectParas()
+{
+	clearMapFlowPoint();
+	
+	StdCorrectPara_PTR paraPtr = NULL;
+	QString flowpoint;
+	QString quantity;
+	QString degree;
+	QString freq;
+	
+	for (int wdg=FLOW_RATE_BIG;wdg<=FLOW_RATE_SMALL;wdg++)
+	{
+		switch(wdg)
+		{
+		case FLOW_RATE_BIG:
+			m_stdCorrectParas->beginReadArray("bigflow");
+			break;
+		case FLOW_RATE_MID_2:
+			m_stdCorrectParas->beginReadArray("mid2flow");
+			break;
+		case FLOW_RATE_MID_1:
+			m_stdCorrectParas->beginReadArray("mid1flow");
+			break;
+		case FLOW_RATE_SMALL:
+			m_stdCorrectParas->beginReadArray("smallflow");
+			break;
+		default:
+			break;
+		}
+		QList<StdCorrectPara_PTR> paraList;
+		for (int i=0; i<FLOW_POINTS;i++)
+		{
+			m_stdCorrectParas->setArrayIndex(i);
+			flowpoint = m_stdCorrectParas->value("flowPoint").toString();
+			quantity  = m_stdCorrectParas->value("quantity").toString();
+			degree	  = m_stdCorrectParas->value("degree").toString();
+			freq	  = m_stdCorrectParas->value("freq").toString();
+
+			if (flowpoint.length()*quantity.length()*degree.length()*freq.length())
+			{
+				paraPtr = new StdCorrectPara_STR;
+				paraPtr->flowpoint = flowpoint.toFloat();
+				paraPtr->quantity  = quantity.toFloat();
+				paraPtr->degree    = degree.toInt();
+				paraPtr->freq      = freq.toInt();
+				paraList.append(paraPtr);
+			}
+		}
+		m_mapFlowPoint[(flow_rate_wdg)wdg] = paraList;
+		m_stdCorrectParas->endArray();
+	}
+
+	for (int wdg=FLOW_RATE_BIG; wdg<FLOW_RATE_SMALL;wdg++)
+	{
+		if (!m_mapFlowPoint.keys().contains((flow_rate_wdg)wdg))
+			continue;
+		QList<StdCorrectPara_PTR> paraList;
+		paraList = m_mapFlowPoint[(flow_rate_wdg)wdg];
+		qDebug() << (flow_rate_wdg)wdg << ":";
+		for (int j=0;j<paraList.length();j++)
+		{
+			paraPtr = paraList.at(j);
+			qDebug() <<paraPtr->flowpoint << ", " << paraPtr->quantity  << ", " 
+				     <<paraPtr->degree    << ", " << paraPtr->freq;
+		}
+	}
+
+	m_stdCorrectParas->beginGroup("times");
+	m_chkTimes = m_stdCorrectParas->value("time").toInt();
+	m_stdCorrectParas->endGroup();
+
+	m_stdCorrectParas->beginGroup("extime");
+	m_exaustSecond = m_stdCorrectParas->value("extime").toInt();
+	m_stdCorrectParas->endGroup();
+
 }
 
 void StdMtrCoeCorrect::slotFreshInstFlow(const flow_rate_wdg& idx, const float& value)
@@ -747,16 +847,6 @@ void StdMtrCoeCorrect::on_btnSetFreq_clicked()
 		m_controlObj->askSetDriverFreq(ui.spinBoxFreq->value());
 }
 
-void StdMtrCoeCorrect::on_btnStdMeterV0_clicked()
-{
-
-}
-
-void StdMtrCoeCorrect::on_btnStdMeterV1_clicked()
-{
-
-}
-
 /*
 ** 响应处理用户输入完表初值、表终值
    输入参数：
@@ -1037,43 +1127,15 @@ void StdMtrCoeCorrect::slotFreshBigRegOpening()
 
 void StdMtrCoeCorrect::initTableWdg()
 {
+	if (m_curStdMeter == -1)
+		return;
+
 	disconnect(ui.tableWidget, SIGNAL(cellChanged(int, int)), this, SLOT(on_tableWidget_cellChanged(int, int)));
 	ui.tableWidget->clear();
-	int flowpoints=0;
-	int chkCount = 0;
-	switch(m_curStdMeter)
-	{
-	case FLOW_RATE_BIG:
-		m_stdCorrectParas->beginReadArray("bigflow");
-		break;
-	case FLOW_RATE_MID_2:
-		m_stdCorrectParas->beginReadArray("mid2flow");
-		break;
-	case FLOW_RATE_MID_1:
-		m_stdCorrectParas->beginReadArray("mid1flow");
-		break;
-	case FLOW_RATE_SMALL:
-		m_stdCorrectParas->beginReadArray("smallflow");
-		break;
-	default:
-		break;
-	}
-	
-	for (int i=0;i<FLOW_POINTS;i++)
-	{
-		m_stdCorrectParas->setArrayIndex(i);
-		QString str = m_stdCorrectParas->value("flowPoint").toString();
-		qDebug() << "str: " << str << "str.length(): " << str.length();
-		if (str.length() > 0)
-			flowpoints++;
-	}
-	m_stdCorrectParas->endArray();
+	QList<StdCorrectPara_PTR> flowpointList = m_mapFlowPoint[(flow_rate_wdg)m_curStdMeter];
+	int flowpoints = flowpointList.length();
 
-	m_stdCorrectParas->beginGroup("times");
-	chkCount = m_stdCorrectParas->value("time").toInt();
-	m_stdCorrectParas->endGroup();
-
-	ui.tableWidget->setRowCount(flowpoints*chkCount);
+	ui.tableWidget->setRowCount(flowpoints*m_chkTimes);
 	ui.tableWidget->setColumnCount(COL_CNTS);
 	ui.tableWidget->verticalHeader()->setVisible(false);
 	QStringList header;
@@ -1096,6 +1158,7 @@ void StdMtrCoeCorrect::initTableWdg()
 		for (int j=0; j<ui.tableWidget->columnCount(); j++)
 		{
 			ui.tableWidget->setItem(i, j, new QTableWidgetItem(QString("")));
+			ui.tableWidget->item(i, j)->setTextAlignment(Qt::AlignCenter);
 		}
 		ui.tableWidget->item(i, COL_FLOW_POINT)->setFlags(Qt::ItemIsEditable);
 		ui.tableWidget->item(i, COL_BALVD)->setFlags(Qt::ItemIsEditable);
@@ -1106,32 +1169,14 @@ void StdMtrCoeCorrect::initTableWdg()
 		ui.tableWidget->item(i, COL_STDERR_AVR)->setFlags(Qt::ItemIsEditable);
 		ui.tableWidget->item(i, COL_STDREP)->setFlags(Qt::ItemIsEditable);
 	}
-	switch(m_curStdMeter)
+	
+	for (int i=0; i<flowpoints; i++)
 	{
-	case FLOW_RATE_BIG:
-		m_stdCorrectParas->beginReadArray("bigflow");
-		break;
-	case FLOW_RATE_MID_2:
-		m_stdCorrectParas->beginReadArray("mid2flow");
-		break;
-	case FLOW_RATE_MID_1:
-		m_stdCorrectParas->beginReadArray("mid1flow");
-		break;
-	case FLOW_RATE_SMALL:
-		m_stdCorrectParas->beginReadArray("smallflow");
-		break;
-	default:
-		break;
+		ui.tableWidget->item(i*m_chkTimes, COL_FLOW_POINT)->setText(QString::number(flowpointList.at(i)->flowpoint));
+		ui.tableWidget->setSpan(i*m_chkTimes, COL_FLOW_POINT, m_chkTimes, 1);
+		ui.tableWidget->setSpan(i*m_chkTimes, COL_STDERR_AVR, m_chkTimes, 1);
+		ui.tableWidget->setSpan(i*m_chkTimes, COL_STDREP, m_chkTimes, 1);
 	}
-	for (int i=0; i<ui.tableWidget->rowCount(); i+=chkCount)
-	{
-		m_stdCorrectParas->setArrayIndex(i/chkCount);
-		ui.tableWidget->item(i, COL_FLOW_POINT)->setText(m_stdCorrectParas->value("flowPoint").toString());
-		ui.tableWidget->setSpan(i, COL_FLOW_POINT, chkCount, 1);
-		ui.tableWidget->setSpan(i, COL_STDERR_AVR, chkCount, 1);
-		ui.tableWidget->setSpan(i, COL_STDREP, chkCount, 1);
-	}
-	m_stdCorrectParas->endArray();
 
 	connect(ui.tableWidget, SIGNAL(cellChanged(int, int)), this, SLOT(on_tableWidget_cellChanged(int, int)));
 }
@@ -1201,24 +1246,214 @@ void StdMtrCoeCorrect::saveMeterConfig(flow_rate_wdg wdg)
 
 void StdMtrCoeCorrect::on_btnPra_clicked()
 {
-	if (NULL == m_StdMtrCorrectPra)
+	if (NULL == m_StdMtrCorrectPraDlg)
 	{
-		m_StdMtrCorrectPra = new StdMtrCorrectPra();
-		connect(m_StdMtrCorrectPra,SIGNAL(signalClosed()), this, SLOT(slotOnStdMtrCorrectPraClosed()));
-		m_StdMtrCorrectPra->show();
+		m_StdMtrCorrectPraDlg = new StdMtrCorrectPraDlg();
+		connect(m_StdMtrCorrectPraDlg,SIGNAL(signalClosed()), this, SLOT(slotOnStdMtrCorrectPraClosed()));
+		m_StdMtrCorrectPraDlg->show();
 	}
 }
 
 void StdMtrCoeCorrect::slotOnStdMtrCorrectPraClosed()
 {
-	if (m_StdMtrCorrectPra)
+	if (m_StdMtrCorrectPraDlg)
 	{
-		delete m_StdMtrCorrectPra;
-		m_StdMtrCorrectPra = NULL;
+		delete m_StdMtrCorrectPraDlg;
+		m_StdMtrCorrectPraDlg = NULL;
+		slotReadCorrectParas();
+		initTableWdg();
 	}
 }
 
 void StdMtrCoeCorrect::on_btnClearTbl_clicked()
 {
 	clearTableContents();
+}
+
+void StdMtrCoeCorrect::startVerify()
+{
+	if (m_curStdMeter<0)
+	{
+		return;
+	}
+	/* 	exhaustAir();
+	 * 	waitUntilUserPressGoOn();
+	 *  waitWaterToSteady();
+	 *  startVerifySeq(seq);
+	 */
+	QList<StdCorrectPara_PTR> flowPoints = m_mapFlowPoint[(flow_rate_wdg)m_curStdMeter];
+	for (int i=0;i<flowPoints.length();i++)
+	{
+		startVerifyFlowPoint(flowPoints.at(i)->flowpoint);
+	}
+}
+
+void StdMtrCoeCorrect::startVerifyFlowPoint(float flowrate)
+{
+	/* 	waitWhileRegulateFlowrate();
+	 *  WaitUntileUserPressGoOn();
+	 *  waitWaterToSteady();
+	 *  startVerifySeq(seq);
+	 */
+
+}
+
+void StdMtrCoeCorrect::startVerifySeq(int i)
+{
+	/* 	openWaterInValve();
+	 *	openCurrentValve();
+	 *	prepareBalanceWeight();
+	 *	openBalanceInValve();
+	 *	waitUntilBalanceReachTargetQuantity();
+	 *	closeValves();
+	 *	waitWaterToSteady();
+	 *	CalculateMeterError();
+	 */
+}
+
+void StdMtrCoeCorrect::on_btnStart_clicked()
+{
+
+}
+
+void StdMtrCoeCorrect::on_btnGoOn_clicked()
+{
+
+}
+
+void StdMtrCoeCorrect::slotExaustFinished()
+{
+	if (m_stopFlag)
+	{
+		return;
+	}
+
+	m_exaustSecond --;
+	//ui.labelHintProcess->setText(tr("Exhaust countdown: <font color=DarkGreen size=6><b>%1</b></font> second").arg(m_exaustSecond));
+	qDebug()<<"排气倒计时:"<<m_exaustSecond<<"秒";
+	if (m_exaustSecond > 1)
+	{
+		return;
+	}
+
+	m_exaustTimer->stop(); //停止排气计时
+	//ui.labelHintProcess->setText(tr("Exhaust countdown finished!"));
+	//ui.labelHintProcess->clear();
+	if (!closeAllFlowPointValves()) //关闭所有流量点阀门 失败 
+	{
+		if (!closeAllFlowPointValves()) //再尝试关闭一次
+		{
+			m_stopFlag = false;
+			qWarning()<<"关闭所有流量点阀门失败，检定结束";
+			return;
+		}
+	}
+
+	////准备天平初始重量 begin
+	//bool hasBigBalance = false; //是否需要准备大天平
+	//bool hasSmallBalance = false; //是否需要准备小天平
+	//for (int i=1; i<=m_flowPointNum; i++)
+	//{
+	//	if (m_paraSetReader->getFpBySeq(i).fp_valve_idx == 0)
+	//	{
+	//		hasBigBalance = true;
+	//	}
+	//	if (m_paraSetReader->getFpBySeq(i).fp_valve_idx >= 1)
+	//	{
+	//		hasSmallBalance = true;
+	//	}
+	//}
+	//if (hasBigBalance) //需要准备大天平
+	//{
+	//	if (!prepareBigBalanceInitWeight())//准备大天平初始重量
+	//	{
+	//		return;
+	//	}
+	//}
+	//if (hasSmallBalance) //需要准备小天平
+	//{
+	//	if (!prepareSmallBalanceInitWeight())//准备小天平初始重量
+	//	{
+	//		return;
+	//	}
+	//}
+	////准备天平初始重量 end
+	//wait(BALANCE_STABLE_TIME); //等待天平数值稳定
+
+	//if (setAllMeterVerifyStatus()) //设置检定状态成功
+	//{
+	//	startVerify();
+	//}
+}
+
+int StdMtrCoeCorrect::startExhaustCountDown()
+{
+	//if (!isDataCollectNormal())
+	//{
+	//	qWarning()<<"数据采集错误，请检查";
+	//	QMessageBox::warning(this, tr("Warning"), tr("data acquisition error, please check!"));
+	//	return false;
+	//}
+
+	//打开4路电动调节阀
+	openAllRegulator();
+	//ui.labelHintProcess->setText(tr("regulator is opening, please wait..."));
+	//ui.labelHintPoint->clear();
+	//wait(5000); //等待电动调节阀调整到一定开度，用于排气
+
+	//m_controlObj->askSetDriverFreq(m_nowParams->fp_info[0].fp_freq);
+	//if (!openAllValveAndPump())
+	//{
+	//	qWarning()<<"打开所有阀门和水泵 失败!";
+	//	QMessageBox::warning(this, tr("Warning"), tr("exhaust air failed!"));
+	//	return false;
+	//}
+	//m_stopFlag = false;
+	//m_exaustSecond = m_nowParams->ex_time;
+	//m_exaustTimer->start(CYCLE_TIME);//开始排气倒计时
+	//ui.labelHintProcess->setText(tr("Exhaust countdown: <font color=DarkGreen size=6><b>%1</b></font> second").arg(m_exaustSecond));
+	//ui.labelHintPoint->clear();
+	//qDebug()<<"排气倒计时:"<<m_exaustSecond<<"秒";
+
+	return true;
+}
+
+bool StdMtrCoeCorrect::judgeBalanceCapacity(int &bigOK, int &smallOK)
+{
+	return 0;
+}
+
+int StdMtrCoeCorrect::judgeBalanceCapacitySingle(int order, int &bigBalance)
+{
+	return 0;
+}
+
+int StdMtrCoeCorrect::prepareVerifyFlowPoint(int order)
+{
+	return 0;
+}
+
+int StdMtrCoeCorrect::startVerifyFlowPoint(int order)
+{
+	return 0;
+}
+
+int StdMtrCoeCorrect::judgeBalanceAndCalcAvgTemperAndFlow(float targetV, bool bigFlag)
+{
+	return 0;
+}
+
+/*
+** 打开4路电动调节阀至设定的开度
+** 注意：选中的管路，将调节阀开度调整到设定开度；
+         未选中的管路，将将调节阀开度调整到50%，用于排气
+*/
+void StdMtrCoeCorrect::openAllRegulator()
+{
+	
+}
+
+void StdMtrCoeCorrect::closeAllRegulator()
+{
+
 }

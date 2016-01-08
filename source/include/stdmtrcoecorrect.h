@@ -16,7 +16,7 @@ class ParaSetDlg;
 class ParaSetReader;
 class ReadComConfig;
 class CStdMeterReader;
-class StdMtrCorrectPra;
+class StdMtrCorrectPraDlg;
 
 #define RELEASE_PTR(ptr)		if (ptr != NULL)\
 								{\
@@ -46,6 +46,14 @@ class StdMtrCorrectPra;
 #define COL_STDERR_AVR	10//标准表平均误差列
 #define COL_STDREP		11//可重复列
 
+typedef struct{
+	float flowpoint;//当前检定的流量点 m3/h
+	int	  degree;//调节阀开度
+	int	  freq;//水泵频率
+	float quantity;//检定量
+}StdCorrectPara_STR;
+typedef StdCorrectPara_STR* StdCorrectPara_PTR;
+
 class SYSTEMSETDLG_EXPORT StdMtrCoeCorrect : public QWidget
 {
 	Q_OBJECT
@@ -59,9 +67,9 @@ public slots:
 	void closeEvent(QCloseEvent * event);
 	void resizeEvent(QResizeEvent * event);
 
-	void on_btnPra_clicked();
-	void on_btnClearTbl_clicked();
-	void on_btnSave_clicked();
+	void on_btnPra_clicked();//参数设置按钮
+	void on_btnClearTbl_clicked();//清空表格按钮
+	void on_btnSave_clicked();//保存标定误差按钮
 	void on_btnExit_clicked();    //点击"退出"按钮
 	void on_btnWaterIn_clicked();      //进水阀
 	void on_btnBigWaterIn_clicked();   //大天平进水阀
@@ -74,44 +82,48 @@ public slots:
 	void on_btnValveSmall_clicked();   //小流量阀
 	void on_btnWaterPump_clicked(); //水泵
 	void on_btnSetFreq_clicked();   //设置变频器频率
-	void on_btnRegulateSmall_clicked();
-	void on_btnRegulateMid1_clicked();
-	void on_btnRegulateMid2_clicked();
-	void on_btnRegulateBig_clicked();
-	void on_lineEditOpeningSmall_textChanged(const QString & text);
-	void on_lineEditOpeningMid1_textChanged(const QString & text);
-	void on_lineEditOpeningMid2_textChanged(const QString & text);
-	void on_lineEditOpeningBig_textChanged(const QString & text);
-	void on_btnStdMeterV0_clicked();//读取标准表初值
-	void on_btnStdMeterV1_clicked();//读取标准表终值
-	void on_tableWidget_cellChanged(int row, int column);
-	void on_rBtn_DN3_toggled();
-	void on_rBtn_DN10_toggled();
-	void on_rBtn_DN25_toggled();
-	void on_rBtn_DN50_toggled();
+	void on_btnRegulateSmall_clicked();//调节小调节阀
+	void on_btnRegulateMid1_clicked();//调节中一调节阀
+	void on_btnRegulateMid2_clicked();//调节中二调节阀
+	void on_btnRegulateBig_clicked();//调节大调节阀
+	void on_btnStart_clicked();//点击开始
+	void on_btnGoOn_clicked();//点击继续
+
+	void on_lineEditOpeningSmall_textChanged(const QString & text);//响应小调节阀开度变化
+	void on_lineEditOpeningMid1_textChanged(const QString & text);//响应中一调节阀开度变化
+	void on_lineEditOpeningMid2_textChanged(const QString & text);//响应中二调节阀开度变化
+	void on_lineEditOpeningBig_textChanged(const QString & text);//响应大调节阀开度变化
+	void on_tableWidget_cellChanged(int row, int column);//响应表格内容变化
+	void on_rBtn_DN3_toggled();//选取DN3标准表
+	void on_rBtn_DN10_toggled();//选取DN10标准表
+	void on_rBtn_DN25_toggled();//选取DN25标准表
+	void on_rBtn_DN50_toggled();//选取DN50标准表
+
 	void slotFreshBigBalanceValue(const float& balValue);  //刷新大天平数值
 	void slotFreshSmallBalanceValue(const float& balValue);//刷新小天平数值
-
-	void slotOnStdMtrCorrectPraClosed();
+	void slotOnStdMtrCorrectPraClosed();//响应参数设置窗口关闭
+	void slotExaustFinished();//响应排气完成
 	/*******************标准流量计******************************/
-	void slotFreshInstFlow(const flow_rate_wdg&, const float&);
-	void slotFreshAccumFlow(const flow_rate_wdg&, const float&);
-	void slotFreshTolInst(const float&);
-	void slotFreshTolAccum(const float&);
+	void slotFreshInstFlow(const flow_rate_wdg&, const float&);//刷新瞬时流量
+	void slotFreshAccumFlow(const flow_rate_wdg&, const float&);//刷新累积流量
+	void slotFreshTolInst(const float&);//刷新瞬时流量和
+	void slotFreshTolAccum(const float&);//刷新累积流量和
 	/******************标准流量计end****************************/
 private slots:
 	void slotAskPipeTemperature();//请求管路温度
 	void slotFreshComTempValue(const QString& tempStr); //刷新温度值
 	void slotSetValveBtnStatus(const UINT8 &portno, const bool &status); //继电器返回成功对应的槽函数
 	void slotSetRegulateOk();     //调节阀返回成功对应的槽函数
-
+	void slotReadCorrectParas();   //读取参数设定
 	/*******************电动调节阀******************************/
+	void openAllRegulator();  //打开所有调节阀至设定的开度
+	void closeAllRegulator(); //关闭所有调节阀
 	void setRegulatorOpening(int regNO, int opening); //设置单个调节阀开度，并在界面显示
 	void askControlRegulate(int retNO, int opening); //发送控制调节阀开度命令
-	void slotFreshSmallRegOpening();
-	void slotFreshMid1RegOpening();
-	void slotFreshMid2RegOpening();
-	void slotFreshBigRegOpening();
+	void slotFreshSmallRegOpening();//刷新小调节阀开度值
+	void slotFreshMid1RegOpening();//刷新中一调节阀开度值
+	void slotFreshMid2RegOpening();//刷新中二调节阀开度值
+	void slotFreshBigRegOpening();//刷新大调节阀开度值
 	/******************电动调节阀end***************************/
 
 signals:
@@ -119,11 +131,16 @@ signals:
 
 private:
 	Ui::StdMtrCoeCorrectClass ui;
-	StdMtrCorrectPra* m_StdMtrCorrectPra;
+	StdMtrCorrectPraDlg* m_StdMtrCorrectPraDlg;//参数设定窗口
+	bool m_stopFlag;//当前是否为停止检定状态
+	int m_exaustSecond;//排气时间
 
 	int m_curStdMeter;//当前被选中的标准表
+	QMap<flow_rate_wdg, QList<StdCorrectPara_PTR>> m_mapFlowPoint;//管路-<流量点, 检定量, 调节阀开度, 水泵频率>配置表
+	int m_chkTimes;//每个流量点的检定次数
 
 	QTimer *m_exaustTimer; //排气定时器
+
 
 	ComThread m_balanceThread; //天平采集线程
 	BalanceComObject *m_balanceObj;
@@ -172,12 +189,12 @@ private:
 
 	QMap<int, QLineEdit*> m_RegLineEdit; //调节阀端口号与调节阀开度显示控件的映射关系
 	QMap<int, QSpinBox*> m_RegSpinBox; //调节阀端口号与调节阀目标开度控件的映射关系
-	int m_lastPortNO; //记录上一个流量点的阀门端口号（一条管路跑多个流量点时使用）
+	int m_lastPortNO; //记录上一个流量点的阀门端口号(一条管路跑多个流量点时使用)
 
 	/*******************标准流量计******************************/
-	CStdMeterReader* m_stdMeterReader;
-	QMap<flow_rate_wdg, QLCDNumber *> m_mapInstWdg;
-	QMap<flow_rate_wdg, QLCDNumber *> m_mapAccumWdg;
+	CStdMeterReader* m_stdMeterReader;//标准流量计读取模块
+	QMap<flow_rate_wdg, QLCDNumber *> m_mapInstWdg;//管路-显示部件对应表, 瞬时流量
+	QMap<flow_rate_wdg, QLCDNumber *> m_mapAccumWdg;//管路-显示部件对应表, 累积流量
 	/******************标准流量计end***************************/
 
 	void initBalanceCom();     //天平串口
@@ -193,6 +210,9 @@ private:
 	void initValveStatus();	   //初始化阀门状态
 	void initRegulateStatus(); //初始化电动调节阀状态
 	void initTableWdg();	   //初始化表格画面
+
+	void clearMapFlowPoint();
+	void releaseSource();	   //释放资源
 	int openAllValveAndPump();    //打开所有阀门和水泵
 	int closeAllValveAndPumpOpenOutValve(); //关闭所有阀门和水泵、打开防水阀
 	int closeAllFlowPointValves();//关闭所有流量点阀门
@@ -203,11 +223,23 @@ private:
 	int openWaterPump();			//打开水泵
 	int closeWaterPump();			//关闭水泵
 	int operateWaterPump();			//操作水泵：打开或者关闭
+
 	void clearTableContents();		//清空表格
 	void setValveBtnBackColor(QToolButton *btn, bool status); //设置阀门按钮背景色
 	void setRegBtnBackColor(QPushButton *btn, bool status);	  //设置调节阀按钮背景色
 	int getStartRow(int row);//获取当前行对应流量点的起始行
-	void saveMeterConfig(flow_rate_wdg wdg);
+	void saveMeterConfig(flow_rate_wdg wdg);//保存标定误差
+
+	void startVerify();//开始总检定
+	void startVerifyFlowPoint(float flowrate);//开始流量点检定
+	void startVerifySeq(int i);//开始流量点的第i次检定
+	void stopVerify();//停止检定
+
+	bool judgeBalanceCapacity(int &bigOK, int &smallOK);//判断天平容量是否能够满足检定用量 连续检定
+	int judgeBalanceCapacitySingle(int order, int &bigBalance);//判断天平容量是否能够满足检定用量 不连续检定
+	int prepareVerifyFlowPoint(int order);//准备单个流量点的检定
+	int judgeBalanceAndCalcAvgTemperAndFlow(float targetV, bool bigFlag); //判断大天平质量，并累加进出口温度，每秒累加一次，用于计算进出口平均温度
+	int startExhaustCountDown();  //开始排气倒计时
 };
 
 #endif //STDCOECORRECT_H

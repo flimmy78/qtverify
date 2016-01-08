@@ -12,6 +12,8 @@
 
 #define COL_FP		0
 #define COL_QUAN	1
+#define COL_DEGREE	2
+#define COL_FREQ	3
 
 #define RELEASE_PTR(ptr)		if (ptr != NULL)\
 								{\
@@ -20,24 +22,26 @@
 								}
 
 #define INIT_TABLE(tablewdg)	ui->tablewdg->setRowCount(FLOW_POINTS);\
-								ui->tablewdg->setColumnCount(2);\
+								ui->tablewdg->setColumnCount(4);\
 								ui->tablewdg->verticalHeader()->setVisible(false);\
 								ui->tablewdg->setHorizontalHeaderLabels(header);\
 								for (int i=0; i<ui->tablewdg->rowCount(); i++)\
 								{\
 									ui->tablewdg->setItem(i, COL_FP, new QTableWidgetItem(QString("")));\
 									ui->tablewdg->setItem(i, COL_QUAN, new QTableWidgetItem(QString("")));\
+									ui->tablewdg->setItem(i, COL_DEGREE, new QTableWidgetItem(QString("")));\
+									ui->tablewdg->setItem(i, COL_FREQ, new QTableWidgetItem(QString("")));\
 								}\
 								ui->tablewdg->resize(200, 400);
 
 
-class SYSTEMSETDLG_EXPORT StdMtrCorrectPra : public QWidget
+class SYSTEMSETDLG_EXPORT StdMtrCorrectPraDlg : public QWidget
 {
 	Q_OBJECT
 
 public:
-	StdMtrCorrectPra(QWidget *parent = 0, Qt::WFlags flags = 0);
-	~StdMtrCorrectPra();
+	StdMtrCorrectPraDlg(QWidget *parent = 0, Qt::WFlags flags = 0);
+	~StdMtrCorrectPraDlg();
 
 public slots:
 	void showEvent(QShowEvent * event);
@@ -60,7 +64,7 @@ private:
 	QRegExp m_rx;
 	QSettings* m_stdCorrectConfig;
 
-	void initTables();
+	void initUi();
 	void installParas();
 	void writeParas();
 	void releaseSource();

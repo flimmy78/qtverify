@@ -7,7 +7,7 @@
 #include "algorithm.h"
 #include "stdcorrectpra.h"
 
-StdMtrCorrectPra::StdMtrCorrectPra(QWidget *parent, Qt::WFlags flags)
+StdMtrCorrectPraDlg::StdMtrCorrectPraDlg(QWidget *parent, Qt::WFlags flags)
 	: QWidget(parent, flags)
 {
 	qDebug()<<"StdMtrCorrectPra thread:"<<QThread::currentThreadId();
@@ -17,45 +17,49 @@ StdMtrCorrectPra::StdMtrCorrectPra(QWidget *parent, Qt::WFlags flags)
 	ui->setupUi(this);
 
 	m_stdCorrectConfig = NULL;
-	m_stdCorrectConfig = new QSettings(getFullIniFileName("stdCorrectpra.ini"), QSettings::IniFormat);
+	m_stdCorrectConfig = new QSettings(getFullIniFileName("stdcorrectpra.ini"), QSettings::IniFormat);
 	m_rx.setPattern("\\d+(\\.\\d+)?");
-	initTables();
+	initUi();
 	installParas();
 }
 
-StdMtrCorrectPra::~StdMtrCorrectPra()
+StdMtrCorrectPraDlg::~StdMtrCorrectPraDlg()
 {
 	releaseSource();
 }
 
-void StdMtrCorrectPra::showEvent(QShowEvent * event)
+void StdMtrCorrectPraDlg::showEvent(QShowEvent * event)
 {
 	qDebug()<<"StdMtrCorrectPra::showEvent";
 }
 
-void StdMtrCorrectPra::initTables()
+void StdMtrCorrectPraDlg::initUi()
 {
 	QStringList header;
-	header<<tr("Flow Point\n(m3/h)")<<tr("Check Quantity\n(kg)");
+	header<<tr("Flow Point\n(m3/h)")<<tr("Check Quantity\n(kg)")
+		  <<tr("Degree")<<tr("Freq");
 	INIT_TABLE(tableWidget_0)
 	INIT_TABLE(tableWidget_1)
 	INIT_TABLE(tableWidget_2)
 	INIT_TABLE(tableWidget_3)
+
+	QValidator *validator = new QRegExpValidator(m_rx);
+	ui->lineEdit_exTime->setValidator(validator);
 }
 
-void StdMtrCorrectPra::closeEvent(QCloseEvent * event)
+void StdMtrCorrectPraDlg::closeEvent(QCloseEvent * event)
 {
 	releaseSource();
 	emit signalClosed();
 }
 
-void StdMtrCorrectPra::releaseSource()
+void StdMtrCorrectPraDlg::releaseSource()
 {
 	RELEASE_PTR(ui)
 	RELEASE_PTR(m_stdCorrectConfig)
 }
 
-void StdMtrCorrectPra::resizeEvent(QResizeEvent * event)
+void StdMtrCorrectPraDlg::resizeEvent(QResizeEvent * event)
 {
 	qDebug()<<"StdMtrCoeCorrect::resizeEvent...";
 	int th = ui->tableWidget_0->size().height();
@@ -75,41 +79,41 @@ void StdMtrCorrectPra::resizeEvent(QResizeEvent * event)
 	ui->tableWidget_3->horizontalHeader()->setDefaultSectionSize(hSize);
 }
 
-void StdMtrCorrectPra::on_btnSave_clicked()
+void StdMtrCorrectPraDlg::on_btnSave_clicked()
 {
 	writeParas();
 }
 
-void StdMtrCorrectPra::on_btnExit_clicked()
+void StdMtrCorrectPraDlg::on_btnExit_clicked()
 {
 	this->close();
 }
 
-void StdMtrCorrectPra::on_tableWidget_0_cellChanged(int row, int column)
+void StdMtrCorrectPraDlg::on_tableWidget_0_cellChanged(int row, int column)
 {
 	 if (!m_rx.exactMatch(ui->tableWidget_0->item(row, column)->text()))
 		 ui->tableWidget_0->item(row, column)->setText("");
 }
 
-void StdMtrCorrectPra::on_tableWidget_1_cellChanged(int row, int column)
+void StdMtrCorrectPraDlg::on_tableWidget_1_cellChanged(int row, int column)
 {
 	if (!m_rx.exactMatch(ui->tableWidget_1->item(row, column)->text()))
 		ui->tableWidget_0->item(row, column)->setText("");
 }
 
-void StdMtrCorrectPra::on_tableWidget_2_cellChanged(int row, int column)
+void StdMtrCorrectPraDlg::on_tableWidget_2_cellChanged(int row, int column)
 {
 	if (!m_rx.exactMatch(ui->tableWidget_2->item(row, column)->text()))
 		ui->tableWidget_0->item(row, column)->setText("");
 }
 
-void StdMtrCorrectPra::on_tableWidget_3_cellChanged(int row, int column)
+void StdMtrCorrectPraDlg::on_tableWidget_3_cellChanged(int row, int column)
 {
 	if (!m_rx.exactMatch(ui->tableWidget_3->item(row, column)->text()))
 		ui->tableWidget_0->item(row, column)->setText("");
 }
 
-void StdMtrCorrectPra::installParas()
+void StdMtrCorrectPraDlg::installParas()
 {
 	m_stdCorrectConfig->beginReadArray("bigflow");
 	for (int i=0;i<ui->tableWidget_0->rowCount();i++)
@@ -117,6 +121,8 @@ void StdMtrCorrectPra::installParas()
 		m_stdCorrectConfig->setArrayIndex(i);
 		ui->tableWidget_0->item(i, COL_FP)->setText(m_stdCorrectConfig->value("flowPoint").toString());
 		ui->tableWidget_0->item(i, COL_QUAN)->setText(m_stdCorrectConfig->value("quantity").toString());
+		ui->tableWidget_0->item(i, COL_DEGREE)->setText(m_stdCorrectConfig->value("degree").toString());
+		ui->tableWidget_0->item(i, COL_FREQ)->setText(m_stdCorrectConfig->value("freq").toString());
 	}
 	m_stdCorrectConfig->endArray();
 
@@ -126,6 +132,8 @@ void StdMtrCorrectPra::installParas()
 		m_stdCorrectConfig->setArrayIndex(i);
 		ui->tableWidget_1->item(i, COL_FP)->setText(m_stdCorrectConfig->value("flowPoint").toString());
 		ui->tableWidget_1->item(i, COL_QUAN)->setText(m_stdCorrectConfig->value("quantity").toString());
+		ui->tableWidget_1->item(i, COL_DEGREE)->setText(m_stdCorrectConfig->value("degree").toString());
+		ui->tableWidget_1->item(i, COL_FREQ)->setText(m_stdCorrectConfig->value("freq").toString());
 	}
 	m_stdCorrectConfig->endArray();
 
@@ -135,6 +143,8 @@ void StdMtrCorrectPra::installParas()
 		m_stdCorrectConfig->setArrayIndex(i);
 		ui->tableWidget_2->item(i, COL_FP)->setText(m_stdCorrectConfig->value("flowPoint").toString());
 		ui->tableWidget_2->item(i, COL_QUAN)->setText(m_stdCorrectConfig->value("quantity").toString());
+		ui->tableWidget_2->item(i, COL_DEGREE)->setText(m_stdCorrectConfig->value("degree").toString());
+		ui->tableWidget_2->item(i, COL_FREQ)->setText(m_stdCorrectConfig->value("freq").toString());
 	}
 	m_stdCorrectConfig->endArray();
 
@@ -144,15 +154,21 @@ void StdMtrCorrectPra::installParas()
 		m_stdCorrectConfig->setArrayIndex(i);
 		ui->tableWidget_3->item(i, COL_FP)->setText(m_stdCorrectConfig->value("flowPoint").toString());
 		ui->tableWidget_3->item(i, COL_QUAN)->setText(m_stdCorrectConfig->value("quantity").toString());
+		ui->tableWidget_3->item(i, COL_DEGREE)->setText(m_stdCorrectConfig->value("degree").toString());
+		ui->tableWidget_3->item(i, COL_FREQ)->setText(m_stdCorrectConfig->value("freq").toString());
 	}
 	m_stdCorrectConfig->endArray();
 
 	m_stdCorrectConfig->beginGroup("times");
 	ui->comboBox->setCurrentIndex(m_stdCorrectConfig->value("time").toInt());
 	m_stdCorrectConfig->endGroup();
+
+	m_stdCorrectConfig->beginGroup("extime");
+	ui->lineEdit_exTime->setText(m_stdCorrectConfig->value("extime").toString());
+	m_stdCorrectConfig->endGroup();
 }
 
-void StdMtrCorrectPra::writeParas()
+void StdMtrCorrectPraDlg::writeParas()
 {
 	m_stdCorrectConfig->beginWriteArray("bigflow");
 	for (int i=0;i<ui->tableWidget_0->rowCount();i++)
@@ -160,6 +176,8 @@ void StdMtrCorrectPra::writeParas()
 		m_stdCorrectConfig->setArrayIndex(i);
 		m_stdCorrectConfig->setValue("flowPoint", ui->tableWidget_0->item(i, COL_FP)->text());
 		m_stdCorrectConfig->setValue("quantity", ui->tableWidget_0->item(i, COL_QUAN)->text());
+		m_stdCorrectConfig->setValue("degree", ui->tableWidget_0->item(i, COL_DEGREE)->text());
+		m_stdCorrectConfig->setValue("freq", ui->tableWidget_0->item(i, COL_FREQ)->text());
 	}
 	m_stdCorrectConfig->endArray();
 
@@ -169,6 +187,8 @@ void StdMtrCorrectPra::writeParas()
 		m_stdCorrectConfig->setArrayIndex(i);
 		m_stdCorrectConfig->setValue("flowPoint", ui->tableWidget_1->item(i, COL_FP)->text());
 		m_stdCorrectConfig->setValue("quantity", ui->tableWidget_1->item(i, COL_QUAN)->text());
+		m_stdCorrectConfig->setValue("degree", ui->tableWidget_1->item(i, COL_DEGREE)->text());
+		m_stdCorrectConfig->setValue("freq", ui->tableWidget_1->item(i, COL_FREQ)->text());
 	}
 	m_stdCorrectConfig->endArray();
 
@@ -178,6 +198,8 @@ void StdMtrCorrectPra::writeParas()
 		m_stdCorrectConfig->setArrayIndex(i);
 		m_stdCorrectConfig->setValue("flowPoint", ui->tableWidget_2->item(i, COL_FP)->text());
 		m_stdCorrectConfig->setValue("quantity", ui->tableWidget_2->item(i, COL_QUAN)->text());
+		m_stdCorrectConfig->setValue("degree", ui->tableWidget_2->item(i, COL_DEGREE)->text());
+		m_stdCorrectConfig->setValue("freq", ui->tableWidget_2->item(i, COL_FREQ)->text());
 	}
 	m_stdCorrectConfig->endArray();
 
@@ -187,10 +209,16 @@ void StdMtrCorrectPra::writeParas()
 		m_stdCorrectConfig->setArrayIndex(i);
 		m_stdCorrectConfig->setValue("flowPoint", ui->tableWidget_3->item(i, COL_FP)->text());
 		m_stdCorrectConfig->setValue("quantity", ui->tableWidget_3->item(i, COL_QUAN)->text());
+		m_stdCorrectConfig->setValue("degree", ui->tableWidget_3->item(i, COL_DEGREE)->text());
+		m_stdCorrectConfig->setValue("freq", ui->tableWidget_3->item(i, COL_FREQ)->text());
 	}
 	m_stdCorrectConfig->endArray();
 
 	m_stdCorrectConfig->beginGroup("times");
 	m_stdCorrectConfig->setValue("time", ui->comboBox->currentIndex());
+	m_stdCorrectConfig->endGroup();
+
+	m_stdCorrectConfig->beginGroup("extime");
+	m_stdCorrectConfig->setValue("extime",ui->lineEdit_exTime->text());
 	m_stdCorrectConfig->endGroup();
 }
