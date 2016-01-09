@@ -1184,11 +1184,6 @@ void TotalStandardDlg::startVerify()
 		m_meterResult[p] = 1;
 	}
 
-	if (m_continueVerify) //连续检定
-	{
-		wait(BALANCE_STABLE_TIME); //等待3秒钟(等待水流稳定)
-	}
-
 	m_nowOrder = 1;
 	prepareVerifyFlowPoint(m_nowOrder); //第一个流量点检定
 }

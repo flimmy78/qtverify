@@ -80,9 +80,6 @@ public:
 	int m_oldMaxMeterNum;     //上次被检表的最大个数
 	int m_validMeterNum;          //实际被检表的个数
 	QMap<int, int> m_meterPosMap; //被检表下标与表位号的映射关系
-	QMap<int, float> m_gradeErrA;  //不同等级热表对应的标准误差参数A
-	QMap<int, float> m_gradeErrB;  //不同等级热表对应的标准误差参数B
-	QMap<int, float> m_mapNormalFlow;  //不同规格热表对应的常用流量
 
 	float *m_meterStartValue; //被检表的初值
 	float *m_meterEndValue;   //被检表的终值
@@ -138,14 +135,12 @@ public slots:
 	void showNowKeyParaConfig(); //显示当前关键参数设置信息
 	void initTableWidget();     //设置表格行数
 
-
 	void on_btnStart_clicked();   //点击"开始"按钮
 	void on_btnExhaust_clicked();  //点击"排气"按钮
 	void on_btnGoOn_clicked();    //点击"继续"按钮
 		
 	void on_btnStop_clicked();    //点击"终止检测"按钮
 	void on_btnExit_clicked();    //退出按钮
-	void on_btnReCalc_clicked();  //点击"重新计算"按钮
 	int startExhaustCountDown();  //开始排气倒计时
 	void slotExaustFinished();    //排气时间结束
 	int readAllMeterFlowCoe();    //读取所有被检表的流量系数
@@ -216,6 +211,8 @@ public slots:
 	void slotReadNO(const int &row);        //读表号(单个表)
 
 	void saveStartMeterNO(); //保存起始表号
+
+	void on_lineEditStdMeter_textChanged(const QString &text);
 
 private slots:
 	void slotAskInstPulse();//请求瞬时流量
