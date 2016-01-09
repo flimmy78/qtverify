@@ -38,6 +38,7 @@ StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 {
 	qDebug()<<"StdMtrCoeCorrect thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
+	m_stopFlag = false;
 
 	if (!getPortSetIni(&m_portsetinfo)) //获取下位机端口号配置信息
 	{
@@ -46,8 +47,8 @@ StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 
 	m_readComConfig = NULL;
 	m_readComConfig = new ReadComConfig(); //读串口设置接口（必须在initBalanceCom前调用）
-	m_readComConfig->getBalancePara(m_balMaxWht, m_balBottomWht); //获取大天平最大容量和回水底量
-	m_readComConfig->getBalancePara2(m_balMaxWht2, m_balBottomWht2); //获取小天平最大容量和回水底量
+	m_readComConfig->getBalancePara(m_balMaxWhtBig, m_balBottomWhtBig); //获取大天平最大容量和回水底量
+	m_readComConfig->getBalancePara2(m_balMaxWhtSmall, m_balBottomWhtSmall); //获取小天平最大容量和回水底量
 
 	m_balanceObj = NULL;
 	initBalanceCom();		//初始化天平串口
@@ -79,17 +80,10 @@ StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 	//映射关系；初始化阀门状态	
 	initValveStatus();      
 	initRegulateStatus();
-	//initTableWdg();//初始化表格
+
 	m_exhaustTimer = NULL;
 	m_exhaustTimer = new QTimer(this); //排气定时器
 	connect(m_exhaustTimer, SIGNAL(timeout()), this, SLOT(slotExaustFinished()));
-
-	QSqlTableModel *model = new QSqlTableModel(this, g_defaultdb);  
-	model->setTable("T_Meter_Standard");  
-	model->select();  
-
-	ui.lcdInTemper->display(50);
-	ui.lcdOutTemper->display(50);
 
 	m_curStdMeter = -1;//初始化, 用户未选中任何标准表
 	m_StdMtrCorrectPraDlg = NULL;
@@ -137,7 +131,7 @@ void StdMtrCoeCorrect::closeEvent( QCloseEvent * event)
 	{
 		event->accept();
 	}
-
+	m_stopFlag = true;
 	openValve(m_portsetinfo.bigWaterOutNo);
 	openValve(m_portsetinfo.bigNo); //打开大流量点阀门，释放管路压力
  	wait(RELEASE_PRESS_TIME); //等待2秒，释放管路压力
@@ -225,7 +219,7 @@ void StdMtrCoeCorrect::slotReadCorrectParas()
 	QString quantity;
 	QString degree;
 	QString freq;
-	
+
 	for (int wdg=FLOW_RATE_BIG;wdg<=FLOW_RATE_SMALL;wdg++)
 	{
 		switch(wdg)
@@ -513,11 +507,12 @@ void StdMtrCoeCorrect::slotFreshComTempValue(const QString& tempStr)
 	ui.lcdOutTemper->display(tempStr.right(TEMPER_DATA_WIDTH)); //出口温度 SV
 	m_tempPipeOut = ui.lcdOutTemper->value();
 }
+
 void StdMtrCoeCorrect::slotFreshBigBalanceValue(const float& balValue)
 {
 	QString wht = QString::number(balValue, 'f', 3);
 	ui.lcdBigBalance->setText(wht);
-	if (balValue > m_balMaxWht) //防止天平溢出
+	if (balValue > m_balMaxWhtBig) //防止天平溢出
 	{
 		closeWaterPump(); //关闭水泵
 		closeValve(m_portsetinfo.waterInNo); //关闭进水阀
@@ -530,7 +525,7 @@ void StdMtrCoeCorrect::slotFreshSmallBalanceValue(const float& balValue)
 {
 	QString wht = QString::number(balValue, 'f', 3);
 	ui.lcdSmallBalance->setText(wht);
-	if (balValue > m_balMaxWht2) //防止天平溢出
+	if (balValue > m_balMaxWhtSmall) //防止天平溢出
 	{
 		closeWaterPump(); //关闭水泵
 		closeValve(m_portsetinfo.waterInNo); //关闭进水阀
@@ -1232,8 +1227,10 @@ void StdMtrCoeCorrect::on_rBtn_DN50_toggled()
 
 void StdMtrCoeCorrect::on_btnSave_clicked()
 {
-	if (m_curStdMeter != -1)
-		saveMeterConfig((flow_rate_wdg)m_curStdMeter);
+	if (m_curStdMeter == -1)
+		return;
+
+	saveMeterConfig((flow_rate_wdg)m_curStdMeter);
 }
 
 void StdMtrCoeCorrect::saveMeterConfig(flow_rate_wdg wdg)
@@ -1296,36 +1293,125 @@ void StdMtrCoeCorrect::startVerify()
 	if (m_curStdMeter<0)
 		return;
 
-	startExhaustCountDown();
-	wait(BALANCE_STABLE_TIME);//等待水流稳定
+	startExhaustCountDown();//排气
+
 	QList<StdCorrectPara_PTR> flowPoints = m_mapFlowPoint[(flow_rate_wdg)m_curStdMeter];
-	for (int i=0;i<flowPoints.length();i++)
+	for (int seq=0;seq<flowPoints.length();seq++)
 	{
-		startVerifyFlowPoint(flowPoints.at(i));
+		m_flowSeq = seq;
+		m_curFlowPoint = flowPoints.at(seq);
+		startVerifyFlowPoint();
 	}
+	m_stopFlag = true;
 }
 
-int StdMtrCoeCorrect::startVerifyFlowPoint(StdCorrectPara_PTR flowpoint)
+int StdMtrCoeCorrect::startVerifyFlowPoint()
 {
-	/* 	waitWhileRegulateFlowrate();
-	 *  WaitUntileUserPressGoOn();
-	 *  waitWaterToSteady();
-	 *  startVerifySeq(seq);
-	 */
-	return FLAG_SUCCESS;
+	m_reachTargetRate = false;
+	//将调节阀打开到设定的开度
+	switch(m_curStdMeter)
+	{
+	case FLOW_RATE_BIG:
+		ui.lineEditOpeningBig->setText(QString::number(m_curFlowPoint->degree));
+		on_btnRegulateBig_clicked();
+		m_nowPortNo = m_portsetinfo.bigNo;
+		break;
+	case FLOW_RATE_MID_2:
+		ui.lineEditOpeningMid2->setText(QString::number(m_curFlowPoint->degree));
+		on_btnRegulateMid2_clicked();
+		m_nowPortNo = m_portsetinfo.middle2No;
+		break;
+	case FLOW_RATE_MID_1:
+		ui.lineEditOpeningMid1->setText(QString::number(m_curFlowPoint->degree));
+		on_btnRegulateMid1_clicked();
+		m_nowPortNo = m_portsetinfo.middle1No;
+		break;
+	case FLOW_RATE_SMALL:
+		ui.lineEditOpeningSmall->setText(QString::number(m_curFlowPoint->degree));
+		on_btnRegulateSmall_clicked();
+		m_nowPortNo = m_portsetinfo.smallNo;
+		break;
+	default:
+		break;
+	}
+
+	if (m_controlObj)//设置水泵至设定的频率
+		m_controlObj->askSetDriverFreq(m_curFlowPoint->freq);
+	while (!m_reachTargetRate)//设定流速, 等待用户确认当前流速已到达目标流速
+	{
+		if (m_stopFlag)
+			return false;
+		qDebug() << "Not reached the target flowrate";
+		wait(CYCLE_TIME);
+	}
+
+	qDebug() << "reached the target flowrate";
+
+	openValve(m_portsetinfo.waterInNo);//打开进水阀
+	wait(CYCLE_TIME);
+	closeAllFlowPointValves();//关闭所有流量点阀门
+
+	//关闭天平放水阀, 并打开天平进水阀
+	bool curIsBigBalance = (m_curBalance == BALANCE_CAP600);
+	int waterInNo = (curIsBigBalance ? m_portsetinfo.bigWaterInNo:m_portsetinfo.smallWaterInNo);//当前天平的进水阀
+	int waterOutNo = (curIsBigBalance ? m_portsetinfo.bigWaterOutNo:m_portsetinfo.smallWaterOutNo);//当前天平的放水阀
+	closeValve(waterOutNo);
+	wait(CYCLE_TIME);
+	openValve(waterInNo);
+	//开始当前流量点的检定
+	for (int times=0; times<m_chkTimes;times++)
+	{
+		m_chkTime = times;
+		startVerifyTime();
+	}
+
+	return true;
 }
 
-void StdMtrCoeCorrect::startVerifySeq(int i)
+int StdMtrCoeCorrect::startVerifyTime()
 {
-	/* 	openWaterInValve();
-	 *	openCurrentValve();
-	 *	prepareBalanceWeight();
-	 *	openBalanceInValve();
-	 *	waitUntilBalanceReachTargetQuantity();
-	 *	closeValves();
-	 *	waitWaterToSteady();
-	 *	CalculateMeterError();
-	 */
+	//当前天平满足设定的检定量时, 继续检定过程
+	//反之, 放水至天平回水底量
+	bool curIsBigBalance = (m_curBalance == BALANCE_CAP600);
+	float curQuan = m_curFlowPoint->quantity;//当前检定量
+	float curBalBottom = (curIsBigBalance ? m_balBottomWhtBig:m_balBottomWhtSmall);//当前天平的回水底量
+	float curMaxQuan = (curIsBigBalance ? m_balMaxWhtBig:m_balMaxWhtSmall);//当前天平的最大容量
+	int waterInNo = (curIsBigBalance ? m_portsetinfo.bigWaterInNo:m_portsetinfo.smallWaterInNo);//当前天平的进水阀
+	int waterOutNo = (curIsBigBalance ? m_portsetinfo.bigWaterOutNo:m_portsetinfo.smallWaterOutNo);//当前天平的放水阀
+	QLineEdit *curBalLEdit = (curIsBigBalance ? ui.lcdBigBalance:ui.lcdSmallBalance);//当前天平的示值部件
+	float curBalValue = curBalLEdit->text().toFloat();//当前天平的示值
+	if ((curBalValue+curQuan) >= curMaxQuan)
+	{
+		openValve(waterOutNo);
+		if (isBalanceValueBigger(curBalBottom, false))
+			closeValve(waterOutNo);
+	}
+
+	wait(BALANCE_STABLE_TIME);//等待天平数值和水体稳定
+
+	int curRow = m_flowSeq*m_chkTimes + m_chkTime;
+	QString stdValue;
+
+	//读取天平和标准表初值
+	stdValue = QString::number(m_mapAccumWdg[(flow_rate_wdg)m_curStdMeter]->value());
+	ui.tableWidget->item(curRow, COL_BALV0)->setText(curBalLEdit->text());
+	ui.tableWidget->item(curRow, COL_STDV0)->setText(stdValue);
+
+	float targetV = curBalLEdit->text().toFloat() + m_curFlowPoint->quantity;
+	m_avgTFCount = 1;
+
+	//等待天平达到设定的检定量
+	openValve(m_nowPortNo);//打开当前管路的阀门
+	if (judgeBalanceAndCalcAvgTemperAndFlow(targetV, m_curBalance == BALANCE_CAP600))
+	{
+		closeValve(m_nowPortNo);//关闭当前管路的阀门
+		wait(BALANCE_STABLE_TIME);//等待天平数值和水体稳定
+		//读取天平和标准表终值
+		stdValue = QString::number(m_mapAccumWdg[(flow_rate_wdg)m_curStdMeter]->value());
+		ui.tableWidget->item(curRow, COL_BALV1)->setText(curBalLEdit->text());
+		ui.tableWidget->item(curRow, COL_STDV1)->setText(stdValue);
+	}
+	return true;
 }
 
 void StdMtrCoeCorrect::on_btnStart_clicked()
@@ -1335,7 +1421,7 @@ void StdMtrCoeCorrect::on_btnStart_clicked()
 
 void StdMtrCoeCorrect::on_btnGoOn_clicked()
 {
-
+	m_reachTargetRate = true;
 }
 
 void StdMtrCoeCorrect::slotExaustFinished()
@@ -1375,6 +1461,7 @@ void StdMtrCoeCorrect::slotExaustFinished()
 		if (!prepareBigBalanceInitWeight())//准备大天平初始重量
 			return;
 	}
+
 	if (m_curBalance == BALANCE_CAP150) //需要准备小天平
 	{
 		if (!prepareSmallBalanceInitWeight())//准备小天平初始重量
@@ -1387,9 +1474,9 @@ void StdMtrCoeCorrect::slotExaustFinished()
 int StdMtrCoeCorrect::prepareBigBalanceInitWeight()
 {
 	//ui.labelHintPoint->setText(tr("prepare big balance init weight ...")); //准备大天平初始重量(回水底量)
-	int ret = FLAG_FAIL;
+	int ret = false;
 	//判断大天平重量,如果小于要求的回水底量(5kg)，则关闭大天平放水阀，打开大流量阀
-	if (ui.lcdBigBalance->text().toFloat() < m_balBottomWht)
+	if (ui.lcdBigBalance->text().toFloat() < m_balBottomWhtBig)
 	{
 		if (!closeValve(m_portsetinfo.bigWaterOutNo)) 
 		{
@@ -1400,19 +1487,19 @@ int StdMtrCoeCorrect::prepareBigBalanceInitWeight()
 			qWarning()<<"打开大流量阀失败";
 		}
 		//判断并等待天平重量，大于回水底量(5kg)
-		if (isBigBalanceValueBigger(m_balBottomWht, true))
+		if (isBigBalanceValueBigger(m_balBottomWhtBig, true))
 		{
 			if (!closeValve(m_portsetinfo.bigNo))
 			{
 				qWarning()<<"关闭大流量阀失败";
 			}
-			ret = FLAG_SUCCESS;
+			ret = true;
 		}
 	}
 	else //大于回水底量
 	{
 		closeValve(m_portsetinfo.bigWaterOutNo); //关闭大天平放水阀
-		ret = FLAG_SUCCESS;
+		ret = true;
 	}
 
 	return ret;
@@ -1421,9 +1508,9 @@ int StdMtrCoeCorrect::prepareBigBalanceInitWeight()
 int StdMtrCoeCorrect::prepareSmallBalanceInitWeight()
 {
 	//ui.labelHintPoint->setText(tr("prepare small balance init weight ...")); //准备小天平初始重量(回水底量)
-	int ret = FLAG_FAIL;
+	int ret = false;
 	//判断小天平重量,如果小于要求的回水底量(5kg)，则关闭小天平放水阀，打开中二流量阀
-	if (ui.lcdSmallBalance->text().toFloat() < m_balBottomWht2)
+	if (ui.lcdSmallBalance->text().toFloat() < m_balBottomWhtSmall)
 	{
 		if (!closeValve(m_portsetinfo.smallWaterOutNo)) 
 		{
@@ -1434,22 +1521,31 @@ int StdMtrCoeCorrect::prepareSmallBalanceInitWeight()
 			qWarning()<<"打开中二流量阀失败";
 		}
 		//判断并等待天平重量，大于回水底量(5kg)
-		if (isSmallBalanceValueBigger(m_balBottomWht2, true))
+		if (isSmallBalanceValueBigger(m_balBottomWhtSmall, true))
 		{
 			if (!closeValve(m_portsetinfo.middle2No))
 			{
 				qWarning()<<"关闭中二流量阀失败";
 			}
-			ret = FLAG_SUCCESS;
+			ret = true;
 		}
 	}
 	else
 	{
 		closeValve(m_portsetinfo.smallWaterOutNo); //关闭小天平放水阀
-		ret = FLAG_SUCCESS;
+		ret = true;
 	}
 
 	return ret;
+}
+
+int StdMtrCoeCorrect::isBalanceValueBigger(float targetV, bool flg)
+{
+	if (m_curBalance == BALANCE_CAP600)
+		return isBigBalanceValueBigger(targetV, flg);
+
+	if (m_curBalance == BALANCE_CAP150)
+		return isSmallBalanceValueBigger(targetV, flg);
 }
 
 int StdMtrCoeCorrect::isBigBalanceValueBigger(float targetV, bool flg)
@@ -1479,7 +1575,7 @@ int StdMtrCoeCorrect::isBigBalanceValueBigger(float targetV, bool flg)
 
 int StdMtrCoeCorrect::isSmallBalanceValueBigger(float targetV, bool flg)
 {
-	int ret = 0;
+	int ret = false;
 	if (flg) //要求大于目标重量
 	{
 		while (!m_stopFlag && (ui.lcdSmallBalance->text().toFloat() < targetV))
@@ -1517,31 +1613,66 @@ int StdMtrCoeCorrect::startExhaustCountDown()
 		QMessageBox::warning(this, tr("Warning"), tr("exhaust air failed!"));
 		return false;
 	}
-	m_stopFlag = false;
 	m_exhaustTimer->start(CYCLE_TIME);//开始排气倒计时
 	//ui.labelHintProcess->setText(tr("Exhaust countdown: <font color=DarkGreen size=6><b>%1</b></font> second").arg(m_exaustSecond));
 	//ui.labelHintPoint->clear();
-	return FLAG_SUCCESS;
-}
-
-bool StdMtrCoeCorrect::judgeBalanceCapacity(int &bigOK, int &smallOK)
-{
-	return FLAG_SUCCESS;
-}
-
-int StdMtrCoeCorrect::judgeBalanceCapacitySingle(int order, int &bigBalance)
-{
-	return FLAG_SUCCESS;
-}
-
-int StdMtrCoeCorrect::prepareVerifyFlowPoint(int order)
-{
-	return FLAG_SUCCESS;
+	return true;
 }
 
 int StdMtrCoeCorrect::judgeBalanceAndCalcAvgTemperAndFlow(float targetV, bool bigFlag)
 {
-	return FLAG_SUCCESS;
+	QDateTime startTime = QDateTime::currentDateTime();
+	if (bigFlag)
+	{
+		while (!m_stopFlag && (ui.lcdBigBalance->text().toFloat() < targetV))
+		{
+			qDebug()<<"大天平重量 ="<<ui.lcdBigBalance->text()<<", 小于要求的重量 "<<targetV;
+			m_avgTFCount++;
+			m_tempPipeOut += ui.lcdOutTemper->value();
+			//second = 3.6*(targetV - ui.lcdBigBalance->text().toFloat())/m_curFlowPoint->flowpoint;
+			//ui.labelHintPoint->setText(tr("NO. <font color=DarkGreen size=6><b>%1</b></font> flow point: <font color=DarkGreen size=6><b>%2</b></font> m3/h")\
+			//	.arg(m_nowOrder).arg(nowFlow));
+			//ui.labelHintProcess->setText(tr("Verifying...Please wait for about <font color=DarkGreen size=6><b>%1</b></font> second").arg(second));
+			wait(CYCLE_TIME);
+		}	
+	}
+	else
+	{
+		while (!m_stopFlag && (ui.lcdSmallBalance->text().toFloat() < targetV))
+		{
+			qDebug()<<"小天平重量 ="<<ui.lcdSmallBalance->text()<<", 小于要求的重量 "<<targetV;
+			m_avgTFCount++;
+			m_tempPipeOut += ui.lcdOutTemper->value();
+			//second = 3.6*(targetV - ui.lcdSmallBalance->text().toFloat())/m_curFlowPoint->flowpoint;
+			//ui.labelHintPoint->setText(tr("NO. <font color=DarkGreen size=6><b>%1</b></font> flow point: <font color=DarkGreen size=6><b>%2</b></font> m3/h")\
+			//	.arg(m_nowOrder).arg(nowFlow));
+			//ui.labelHintProcess->setText(tr("Verifying...Please wait for about <font color=DarkGreen size=6><b>%1</b></font> second").arg(second));
+			wait(CYCLE_TIME);
+		}	
+	}
+
+	m_tempPipeOut = m_tempPipeOut/m_avgTFCount; //出口平均温度
+	QDateTime endTime = QDateTime::currentDateTime();
+	int tt = startTime.secsTo(endTime);
+	if (m_stopFlag)
+	{
+		return false;
+	}
+
+	//ui.labelHintPoint->setText(tr("NO. <font color=DarkGreen size=6><b>%1</b></font> flow point: <font color=DarkGreen size=6><b>%2</b></font> m3/h")\
+	//	.arg(m_nowOrder).arg(nowFlow));
+	//ui.labelHintProcess->setText(tr("NO. <font color=DarkGreen size=6><b>%1</b></font> flow point: Verify Finished!").arg(m_nowOrder));
+
+	int ret = false;
+	if (bigFlag)
+	{
+		ret = !m_stopFlag && (ui.lcdBigBalance->text().toFloat() >= targetV);
+	}
+	else
+	{
+		ret = !m_stopFlag && (ui.lcdSmallBalance->text().toFloat() >= targetV);
+	}
+	return ret;
 }
 
 /*

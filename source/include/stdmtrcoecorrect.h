@@ -50,9 +50,6 @@ class StdMtrCorrectPraDlg;
 #define REG_DEGREE_ZERO	0//用于排气时的调节阀开度
 #define EX_GREQ			25//用于排气时的水泵频率
 
-#define FLAG_SUCCESS 0
-#define FLAG_FAIL    1
-
 typedef struct{
 	float flowpoint;//当前检定的流量点 m3/h
 	int	  degree;//调节阀开度
@@ -143,11 +140,15 @@ private:
 	int m_exhaustSecond;//排气时间
 	Balance_Capacity m_curBalance;//当前标准表所在管路所使用的天平
 	int m_curStdMeter;//当前被选中的标准表
-	QMap<flow_rate_wdg, QList<StdCorrectPara_PTR>> m_mapFlowPoint;//管路-<流量点, 检定量, 调节阀开度, 水泵频率>配置表
 	int m_chkTimes;//每个流量点的检定次数
+	bool m_reachTargetRate;//用户是否已设定好流速
+	int m_flowSeq;//当前标准表的第几个流量点
+	int m_chkTime;//当前流量点的第几次检定
+	StdCorrectPara_PTR m_curFlowPoint;//当前检定流量点的参数
+
+	QMap<flow_rate_wdg, QList<StdCorrectPara_PTR>> m_mapFlowPoint;//管路-<流量点, 检定量, 调节阀开度, 水泵频率>配置表
 
 	QTimer *m_exhaustTimer; //排气定时器
-
 
 	ComThread m_balanceThread; //天平采集线程
 	BalanceComObject *m_balanceObj;
@@ -155,12 +156,12 @@ private:
 	ComThread m_balanceThread2; //天平采集线程2
 	BalanceComObject *m_balanceObj2;
 	//大天平最大容量和回水底量
-	float m_balMaxWht;
-	float m_balBottomWht;
+	float m_balMaxWhtBig;
+	float m_balBottomWhtBig;
 
 	//小天平最大容量和回水底量
-	float m_balMaxWht2;
-	float m_balBottomWht2;
+	float m_balMaxWhtSmall;
+	float m_balBottomWhtSmall;
 
 	float m_tempPipeOut;
 	int m_avgTFCount;//用于计算出口的平均温度
@@ -208,6 +209,7 @@ private:
 	void initBalanceCom2();    //天平串口2
 	int prepareBigBalanceInitWeight(); //开始检定前，准备大天平初始重量
 	int prepareSmallBalanceInitWeight(); //开始检定前，准备小天平初始重量
+	int isBalanceValueBigger(float targetV, bool flg=true);//判断天平质量, flg: true-要求大于目标重量(默认)；false-要求小于目标重量
 	int isBigBalanceValueBigger(float targetV, bool flg=true);   //判断大天平质量,flg: true-要求大于目标重量(默认)；false-要求小于目标重量
 	int isSmallBalanceValueBigger(float targetV, bool flg=true); //判断小天平质量,flg: true-要求大于目标重量(默认)；false-要求小于目标重量
 
@@ -237,13 +239,10 @@ private:
 	void saveMeterConfig(flow_rate_wdg wdg);//保存标定误差
 
 	void startVerify();//开始总检定
-	int  startVerifyFlowPoint(StdCorrectPara_PTR flowpoint);//开始单个流量点的检定
-	void startVerifySeq(int i);//开始流量点的第i次检定
+	int  startVerifyFlowPoint();//开始单个流量点的检定
+	int  startVerifyTime();//开始流量点的第i次检定
 	void stopVerify();//停止检定
 
-	bool judgeBalanceCapacity(int &bigOK, int &smallOK);//判断天平容量是否能够满足检定用量 连续检定
-	int judgeBalanceCapacitySingle(int order, int &bigBalance);//判断天平容量是否能够满足检定用量 不连续检定
-	int prepareVerifyFlowPoint(int order);//准备单个流量点的检定
 	int judgeBalanceAndCalcAvgTemperAndFlow(float targetV, bool bigFlag); //判断大天平质量，并累加进出口温度，每秒累加一次，用于计算进出口平均温度
 	int startExhaustCountDown();  //开始排气倒计时
 };

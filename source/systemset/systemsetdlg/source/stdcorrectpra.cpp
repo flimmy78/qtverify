@@ -98,19 +98,19 @@ void StdMtrCorrectPraDlg::on_tableWidget_0_cellChanged(int row, int column)
 void StdMtrCorrectPraDlg::on_tableWidget_1_cellChanged(int row, int column)
 {
 	if (!m_rx.exactMatch(ui->tableWidget_1->item(row, column)->text()))
-		ui->tableWidget_0->item(row, column)->setText("");
+		ui->tableWidget_1->item(row, column)->setText("");
 }
 
 void StdMtrCorrectPraDlg::on_tableWidget_2_cellChanged(int row, int column)
 {
 	if (!m_rx.exactMatch(ui->tableWidget_2->item(row, column)->text()))
-		ui->tableWidget_0->item(row, column)->setText("");
+		ui->tableWidget_2->item(row, column)->setText("");
 }
 
 void StdMtrCorrectPraDlg::on_tableWidget_3_cellChanged(int row, int column)
 {
 	if (!m_rx.exactMatch(ui->tableWidget_3->item(row, column)->text()))
-		ui->tableWidget_0->item(row, column)->setText("");
+		ui->tableWidget_3->item(row, column)->setText("");
 }
 
 void StdMtrCorrectPraDlg::installParas()
