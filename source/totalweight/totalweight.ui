@@ -1165,7 +1165,11 @@ t</string>
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLineEdit" name="lcdBigBalance"/>
+       <widget class="QLineEdit" name="lcdBigBalance">
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
       </item>
       <item row="0" column="2">
        <widget class="QLabel" name="label_11">
@@ -1373,6 +1377,9 @@ t</string>
         <property name="segmentStyle">
          <enum>QLCDNumber::Flat</enum>
         </property>
+        <property name="value" stdset="0">
+         <double>50.000000000000000</double>
+        </property>
        </widget>
       </item>
       <item row="2" column="2">
@@ -1538,6 +1545,9 @@ t</string>
         </property>
         <property name="segmentStyle">
          <enum>QLCDNumber::Flat</enum>
+        </property>
+        <property name="value" stdset="0">
+         <double>45.000000000000000</double>
         </property>
        </widget>
       </item>

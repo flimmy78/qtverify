@@ -261,6 +261,37 @@ float calcMeterHeatErrLmt(int grade, float delta_t_min, float delta_t, float dn_
 	return ret;
 }
 
+//根据热表规格计算其常用流量
+float getNormalFlowByStandard(int standard)
+{
+	float normalFlow = 0.0;
+	switch (standard)
+	{
+	case DN15:
+		normalFlow = 1.5f;
+		break;
+	case DN20:
+		normalFlow = 2.5f;
+		break;
+	case DN25:
+		normalFlow = 3.5f;
+		break;
+	case DN32:
+		normalFlow = 6.0f;
+		break;
+	case DN40:
+		normalFlow = 10.0f;
+		break;
+	case DN50:
+		normalFlow = 15.0f;
+		break;
+	default:
+		break;
+	}
+
+	return normalFlow;
+}
+
 //根据热量表通讯返回的两字节数据，计算出对应的浮点型数值
 float calcFloatValueOfCoe(QString coe)
 {

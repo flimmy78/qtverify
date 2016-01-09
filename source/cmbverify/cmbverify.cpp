@@ -425,7 +425,7 @@ void CmbVerifyDlg::calcStdError()
 //	float set_tem_diff = ui.lineEdit_std_in_t->text().toFloat() - ui.lineEdit_std_out_t->text().toFloat(); //标准温度计测量的温差
 	float flow_rate = IMITATION_FLOW_RATE;
 	float dn_flow_rate = m_param_config->value("common/dnflow").toFloat();
-	m_stdErrLmtByGrade = qAbs(getMeterGradeErrLmt(grade, min_temp_diff, set_tem_diff, dn_flow_rate, flow_rate));
+	m_stdErrLmtByGrade = calcMeterHeatErrLmt(grade, min_temp_diff, set_tem_diff, dn_flow_rate, flow_rate);
 }
 
 void CmbVerifyDlg::freshCmbParam()
