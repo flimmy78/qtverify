@@ -39,6 +39,9 @@ ALGORITHM_EXPORT float getSingleTmpErr(float std_delta_t);//¸ù¾İjjg225-2001¼ÆËãµ
 //¼ÆËãÈÈÁ¿±íÈÈÁ¿µÄÎó²îÏŞ(%), ÒÔ¸¡µãÊı·µ»Ø
 ALGORITHM_EXPORT float calcMeterHeatErrLmt(int grade, float delta_t_min, float delta_t, float dn_flow_rate, float flow_rate);
 
+//¼ÆËãÈÈÁ¿±íÁ÷Á¿µÄÎó²îÏŞ(%), ÒÔ¸¡µãÊı·µ»Ø
+ALGORITHM_EXPORT float calcMeterFlowErrLmt(int grade, float dn_flow_rate, float flow_rate);
+
 //¸ù¾İÈÈ±í¹æ¸ñ¼ÆËãÆä³£ÓÃÁ÷Á¿
 ALGORITHM_EXPORT float getNormalFlowByStandard(int standard);
 

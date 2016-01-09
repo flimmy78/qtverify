@@ -239,25 +239,61 @@ float calcMeterHeatErrLmt(int grade, float delta_t_min, float delta_t, float dn_
 	float coe_a, coe_b, coe_c;
 	switch(grade)
 	{
-		case GRADE_ONE:
-			coe_a = 2.0f;
-			coe_b = 4.0f;
-			coe_c = 0.01f;
-			break;
-		case GRADE_TWO:
-			coe_a = 3.0f;
-			coe_b = 4.0f;
-			coe_c = 0.02f;
-			break;
-		case GRADE_THREE:
-			coe_a = 4.0f;
-			coe_b = 4.0f;
-			coe_c = 0.05f;
-			break;
-		default:
-			break;
+	case GRADE_ONE:
+		coe_a = 2.0f;
+		coe_b = 4.0f;
+		coe_c = 0.01f;
+		break;
+	case GRADE_TWO:
+		coe_a = 3.0f;
+		coe_b = 4.0f;
+		coe_c = 0.02f;
+		break;
+	case GRADE_THREE:
+		coe_a = 4.0f;
+		coe_b = 4.0f;
+		coe_c = 0.05f;
+		break;
+	default:
+		break;
 	}
 	ret = qAbs(coe_a + coe_b*(delta_t_min/delta_t) + coe_c*(dn_flow_rate/flow_rate));
+	return ret;
+}
+
+/************************************************************************/
+/*根据JJG-2001 Page4, 表2（流量传感器的误差限Eq）
+/*grade, 表的等级, 1级, 2级, 3级等
+/*dn_flow_rate, 表的常用(额定)流量, 计量单位与flow_rate相同
+/*flow_rate, 实际检测时表的流量
+/************************************************************************/
+float calcMeterFlowErrLmt(int grade, float dn_flow_rate, float flow_rate)
+{
+	float ret;
+	float coe_a, coe_b;
+	switch(grade)
+	{
+	case GRADE_ONE:
+		coe_a = 1.0f;
+		coe_b = 0.01f;
+		break;
+	case GRADE_TWO:
+		coe_a = 2.0f;
+		coe_b = 0.02f;
+		break;
+	case GRADE_THREE:
+		coe_a = 3.0f;
+		coe_b = 0.05f;
+		break;
+	default:
+		break;
+	}
+	ret = qAbs(coe_a + coe_b*(dn_flow_rate/flow_rate));
+	if (ret > 5.0)
+	{
+		ret = 5.0;
+	}
+
 	return ret;
 }
 
