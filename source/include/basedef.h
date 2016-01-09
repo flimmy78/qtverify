@@ -68,13 +68,16 @@
 #define TIMEOUT_STD_INST			500 //请求标准表瞬时流量周期
 #define TIMEOUT_STD_ACCUM			200 //请求标准表累积流量周期
 /*
-** 被检表类型枚举            
+** 被检表规格枚举            
 */
-enum metertype
+enum meterstandard
 {
-	DN15=0,
+	DN15 = 0,
 	DN20,
-	DN25
+	DN25,
+	DN32,
+	DN40,
+	DN50
 };
 
 /*
@@ -177,9 +180,9 @@ enum table_columns
 
 #define ENTHALPY_R	461.526 //水的比焓常数, 个人理解为单位质量的水, 其温度变化1K, 所交换的热值(见IAPWS-IF97-Re 水和水蒸气特性v.pdf P5 及http://en.wikipedia.org/wiki/Gas_constant)
 
-#define GRADE_ONE	    0  //1级表
-#define GRADE_TWO	    1  //2级表
-#define GRADE_THREE 	2  //3级表
+#define GRADE_ONE	    1  //1级表
+#define GRADE_TWO	    2  //2级表
+#define GRADE_THREE 	3  //3级表
 
 #define IMITATION_FLOW_RATE 2.88 //模拟流量时的流速, m3/h
 

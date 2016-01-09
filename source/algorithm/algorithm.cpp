@@ -226,14 +226,14 @@ float getSingleTmpErr(float std_delta_t)
 }
 
 /************************************************************************/
-/*根据JJG-2001 Page4, 表1
-/*grade, 表的等级, 1级, 2级等
+/*根据JJG-2001 Page4, 表1（热能表热量的误差限）
+/*grade, 表的等级, 1级, 2级, 3级等
 /*delta_t_min, 表的最小温差
 /*deta_t, 实际检测时的温差
 /*dn_flow_rate, 表的常用(额定)流量, 计量单位与flow_rate相同
 /*flow_rate, 实际检测时表的流量
 /************************************************************************/
-float getMeterGradeErrLmt(int grade, float delta_t_min, float delta_t, float dn_flow_rate, float flow_rate)
+float calcMeterHeatErrLmt(int grade, float delta_t_min, float delta_t, float dn_flow_rate, float flow_rate)
 {
 	float ret;
 	float coe_a, coe_b, coe_c;

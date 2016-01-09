@@ -35,7 +35,10 @@ ALGORITHM_EXPORT float getPlaTr(float r0, float a, float b, float resis);//¼ÆËã²
 ALGORITHM_EXPORT float calcTemperByResis(float resis);//¸ù¾İ±ê×¼²¬µç×èµÄ×èÖµºÍÊÂÏÈÉè¶¨µÄ²ÎÊı£¬¼ÆËã±ê×¼²¬µç×èµÄÎÂ¶ÈÖµ
 ALGORITHM_EXPORT float getDeltaTmpErr(float std_delta_t, float min_delta_t);//¸ù¾İjjg225-2001¼ÆËãÎÂ²îÎó²îÏŞÏŞ(%), ÒÔ¸¡µãÊı·µ»Ø
 ALGORITHM_EXPORT float getSingleTmpErr(float std_delta_t);//¸ù¾İjjg225-2001¼ÆËãµ¥Ö§²¬µç×èÎÂ¶ÈÎó²îÏŞ(%), ÒÔ¸¡µãÊı·µ»Ø
-ALGORITHM_EXPORT float getMeterGradeErrLmt(int grade, float delta_t_min, float delta_t, float dn_flow_rate, float flow_rate);//¸ù¾İ±íµÄµÈ¼¶, ¼ÆËã±íµÄÊ¾ÖµÎó²îÏŞ(%), ÒÔ¸¡µãÊı·µ»Ø
+				 
+//¼ÆËãÈÈÁ¿±íÈÈÁ¿µÄÎó²îÏŞ(%), ÒÔ¸¡µãÊı·µ»Ø
+ALGORITHM_EXPORT float calcMeterHeatErrLmt(int grade, float delta_t_min, float delta_t, float dn_flow_rate, float flow_rate);
+
 ALGORITHM_EXPORT float calcFloatValueOfCoe(QString coe);//¸ù¾İÈÈÁ¿±íÍ¨Ñ¶·µ»ØµÄÁ½×Ö½ÚÊı¾İ£¬¼ÆËã³ö¶ÔÓ¦µÄ¸¡µãĞÍÊıÖµ
 ALGORITHM_EXPORT float calcErrorValueOfCoe(QString coe);//¸ù¾İÈÈÁ¿±íÍ¨Ñ¶·µ»ØµÄÁ½×Ö½ÚÊı¾İ£¬¼ÆËã³ö¶ÔÓ¦µÄÎó²îÖµ
 ALGORITHM_EXPORT UINT16 CRC16ModRTU_Table_Driven (const uchar *nData, UINT16 wLength);//²é±í·¨¼ÆËãmodbus-RTUĞ­ÒéµÄCRCĞ£ÑéÖµ
