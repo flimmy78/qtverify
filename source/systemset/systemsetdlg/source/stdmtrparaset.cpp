@@ -194,6 +194,11 @@ void StdMtrParaSet::initWdgVec()
 	m_mapAccumRouteWdg[FLOW_RATE_MID_2]  = ui.cBox_accumroute_1;
 	m_mapAccumRouteWdg[FLOW_RATE_MID_1]  = ui.cBox_accumroute_2;
 	m_mapAccumRouteWdg[FLOW_RATE_SMALL]  = ui.cBox_accumroute_3;
+
+	m_mapBalanceRouteWdg[FLOW_RATE_BIG]    = ui.cBox_Bal_0;
+	m_mapBalanceRouteWdg[FLOW_RATE_MID_2]  = ui.cBox_Bal_1;
+	m_mapBalanceRouteWdg[FLOW_RATE_MID_1]  = ui.cBox_Bal_2;
+	m_mapBalanceRouteWdg[FLOW_RATE_SMALL]  = ui.cBox_Bal_3;
 }
 
 void StdMtrParaSet::installStdMeter()
@@ -211,6 +216,7 @@ void StdMtrParaSet::installRoute()
 		m_stdParam->setArrayIndex(i);
 		m_mapInstRouteWdg[(flow_rate_wdg)i]->setCurrentIndex(m_stdParam->value("InstRoute").toInt()+1);
 		m_mapAccumRouteWdg[(flow_rate_wdg)i]->setCurrentIndex(m_stdParam->value("AccumRoute").toInt()+1);
+		m_mapBalanceRouteWdg[(flow_rate_wdg)i]->setCurrentIndex(m_stdParam->value("Balance").toInt());
 	}
 	m_stdParam->endArray();
 
@@ -365,6 +371,7 @@ void StdMtrParaSet::writeRoute()
 		m_stdParam->setArrayIndex(i);
 		m_stdParam->setValue(QString("InstRoute"), m_mapInstRouteWdg[(flow_rate_wdg)i]->currentIndex()-1);
 		m_stdParam->setValue(QString("AccumRoute"), m_mapAccumRouteWdg[(flow_rate_wdg)i]->currentIndex()-1);
+		m_stdParam->setValue(QString("Balance"), m_mapBalanceRouteWdg[(flow_rate_wdg)i]->currentIndex());
 	}
 	m_stdParam->endArray();
 

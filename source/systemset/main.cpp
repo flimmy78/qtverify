@@ -30,6 +30,5 @@ int main( int argc, char ** argv )
 	}
 	StdMtrCoeCorrect w;
 	w.show();
-	 
 	return app.exec();
 }

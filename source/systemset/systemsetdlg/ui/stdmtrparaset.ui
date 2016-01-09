@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1080</width>
-    <height>600</height>
+    <width>1104</width>
+    <height>617</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -69,593 +69,616 @@
         <property name="title">
          <string>Big</string>
         </property>
-        <layout class="QGridLayout" name="gridLayout_4">
+        <layout class="QGridLayout" name="gridLayout">
          <item row="0" column="0" colspan="2">
-          <layout class="QGridLayout" name="gridLayout_2">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_17">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>60</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="palette">
-              <palette>
-               <active>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </active>
-               <inactive>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </inactive>
-               <disabled>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>120</red>
-                   <green>120</green>
-                   <blue>120</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </disabled>
-              </palette>
-             </property>
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Flow Point(m³/h)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QLabel" name="label_18">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="palette">
-              <palette>
-               <active>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </active>
-               <inactive>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </inactive>
-               <disabled>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>120</red>
-                   <green>120</green>
-                   <blue>120</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </disabled>
-              </palette>
-             </property>
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;K Coe&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_0_0"/>
-           </item>
-           <item row="1" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_0_0"/>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_1_0"/>
-           </item>
-           <item row="2" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_1_0"/>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_2_0"/>
-           </item>
-           <item row="3" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_2_0"/>
-           </item>
-           <item row="4" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_3_0"/>
-           </item>
-           <item row="4" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_3_0"/>
-           </item>
-           <item row="5" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_4_0"/>
-           </item>
-           <item row="5" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_4_0"/>
-           </item>
-           <item row="6" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_5_0"/>
-           </item>
-           <item row="6" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_5_0"/>
-           </item>
-           <item row="7" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_6_0"/>
-           </item>
-           <item row="7" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_6_0"/>
-           </item>
-           <item row="8" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_7_0"/>
-           </item>
-           <item row="8" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_7_0"/>
-           </item>
-           <item row="9" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_8_0"/>
-           </item>
-           <item row="9" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_8_0"/>
-           </item>
-           <item row="10" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_9_0"/>
-           </item>
-           <item row="10" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_9_0"/>
-           </item>
-          </layout>
+          <widget class="QLabel" name="label_17">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>120</red>
+                 <green>120</green>
+                 <blue>120</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Flow Point(m³/h)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2" colspan="3">
+          <widget class="QLabel" name="label_18">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>50</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>120</red>
+                 <green>120</green>
+                 <blue>120</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;K Coe&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
          </item>
          <item row="1" column="0" colspan="2">
-          <layout class="QHBoxLayout" name="horizontalLayout_3">
-           <item>
-            <widget class="QLabel" name="label_19">
-             <property name="palette">
-              <palette>
-               <active>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </active>
-               <inactive>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </inactive>
-               <disabled>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>120</red>
-                   <green>120</green>
-                   <blue>120</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </disabled>
-              </palette>
-             </property>
-             <property name="text">
-              <string>impulse equivalency(L/imp):</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEdit_Pulse_0"/>
-           </item>
-          </layout>
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_0_0"/>
          </item>
-         <item row="2" column="0">
-          <layout class="QVBoxLayout" name="verticalLayout">
-           <item>
-            <widget class="QLabel" name="label_20">
-             <property name="minimumSize">
-              <size>
-               <width>90</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>40</height>
-              </size>
-             </property>
-             <property name="palette">
-              <palette>
-               <active>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </active>
-               <inactive>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </inactive>
-               <disabled>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>120</red>
-                   <green>120</green>
-                   <blue>120</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </disabled>
-              </palette>
-             </property>
-             <property name="text">
-              <string>Upper FLow(m³/h)</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEdit_UpperFlow_0"/>
-           </item>
-          </layout>
+         <item row="1" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_0_0"/>
          </item>
-         <item row="2" column="1">
-          <layout class="QVBoxLayout" name="verticalLayout_2">
-           <item>
-            <widget class="QLabel" name="label_21">
-             <property name="minimumSize">
-              <size>
-               <width>55</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="palette">
-              <palette>
-               <active>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </active>
-               <inactive>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </inactive>
-               <disabled>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>120</red>
-                   <green>120</green>
-                   <blue>120</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </disabled>
-              </palette>
-             </property>
-             <property name="text">
-              <string>adjust coe</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEdit_adjust_0"/>
-           </item>
-          </layout>
+         <item row="2" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_1_0"/>
          </item>
-         <item row="3" column="0">
-          <layout class="QGridLayout" name="gridLayout">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_9">
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Inst&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QComboBox" name="cBox_instroute_0">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="font">
-              <font>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-               <kerning>false</kerning>
-              </font>
-             </property>
-             <property name="acceptDrops">
-              <bool>false</bool>
-             </property>
-             <property name="layoutDirection">
-              <enum>Qt::LeftToRight</enum>
-             </property>
-             <property name="autoFillBackground">
-              <bool>false</bool>
-             </property>
-             <property name="frame">
-              <bool>true</bool>
-             </property>
-             <item>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>C:/Users/Administrator/none.ico</normaloff>C:/Users/Administrator/none.ico</iconset>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       0</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       1</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       2</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       3</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       4</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       5</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       6</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       7</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       8</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       9</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       10</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       11</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-          </layout>
+         <item row="2" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_1_0"/>
          </item>
-         <item row="3" column="1">
-          <layout class="QGridLayout" name="gridLayout_3">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_10">
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Accum&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
+         <item row="3" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_2_0"/>
+         </item>
+         <item row="3" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_2_0"/>
+         </item>
+         <item row="4" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_3_0"/>
+         </item>
+         <item row="4" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_3_0"/>
+         </item>
+         <item row="5" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_4_0"/>
+         </item>
+         <item row="5" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_4_0"/>
+         </item>
+         <item row="6" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_5_0"/>
+         </item>
+         <item row="6" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_5_0"/>
+         </item>
+         <item row="7" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_6_0"/>
+         </item>
+         <item row="7" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_6_0"/>
+         </item>
+         <item row="8" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_7_0"/>
+         </item>
+         <item row="8" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_7_0"/>
+         </item>
+         <item row="9" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_8_0"/>
+         </item>
+         <item row="9" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_8_0"/>
+         </item>
+         <item row="10" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_9_0"/>
+         </item>
+         <item row="10" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_9_0"/>
+         </item>
+         <item row="11" column="0" colspan="4">
+          <widget class="QLabel" name="label_19">
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>120</red>
+                 <green>120</green>
+                 <blue>120</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="text">
+            <string>impulse equivalency(L/imp):</string>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="4">
+          <widget class="QLineEdit" name="lineEdit_Pulse_0"/>
+         </item>
+         <item row="12" column="0" colspan="2">
+          <widget class="QLabel" name="label_20">
+           <property name="minimumSize">
+            <size>
+             <width>90</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>120</red>
+                 <green>120</green>
+                 <blue>120</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="text">
+            <string>Upper FLow(m³/h)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="12" column="2" colspan="3">
+          <widget class="QLabel" name="label_21">
+           <property name="minimumSize">
+            <size>
+             <width>55</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>120</red>
+                 <green>120</green>
+                 <blue>120</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="text">
+            <string>adjust coe</string>
+           </property>
+          </widget>
+         </item>
+         <item row="13" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_UpperFlow_0"/>
+         </item>
+         <item row="13" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_adjust_0"/>
+         </item>
+         <item row="14" column="0">
+          <widget class="QLabel" name="label_9">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Inst&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="14" column="1">
+          <widget class="QComboBox" name="cBox_instroute_0">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+             <kerning>false</kerning>
+            </font>
+           </property>
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="frame">
+            <bool>true</bool>
+           </property>
+           <item>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>C:/Users/Administrator/none.ico</normaloff>C:/Users/Administrator/none.ico</iconset>
+            </property>
            </item>
-           <item row="0" column="1">
-            <widget class="QComboBox" name="cBox_accumroute_0">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="font">
-              <font>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-               <kerning>false</kerning>
-              </font>
-             </property>
-             <property name="acceptDrops">
-              <bool>false</bool>
-             </property>
-             <property name="layoutDirection">
-              <enum>Qt::LeftToRight</enum>
-             </property>
-             <property name="autoFillBackground">
-              <bool>false</bool>
-             </property>
-             <property name="frame">
-              <bool>true</bool>
-             </property>
-             <item>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>C:/Users/Administrator/none.ico</normaloff>C:/Users/Administrator/none.ico</iconset>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       0</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       1</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       2</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       3</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       4</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       5</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       6</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       7</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       8</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       9</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       10</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       11</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       12</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       13</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       14</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       15</string>
-              </property>
-             </item>
-            </widget>
+           <item>
+            <property name="text">
+             <string>       0</string>
+            </property>
            </item>
-          </layout>
+           <item>
+            <property name="text">
+             <string>       1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       8</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       9</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       10</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       11</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="14" column="2">
+          <widget class="QLabel" name="label_10">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Accum&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="14" column="3" colspan="2">
+          <widget class="QComboBox" name="cBox_accumroute_0">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+             <kerning>false</kerning>
+            </font>
+           </property>
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="frame">
+            <bool>true</bool>
+           </property>
+           <item>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>C:/Users/Administrator/none.ico</normaloff>C:/Users/Administrator/none.ico</iconset>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       0</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       8</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       9</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       10</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       11</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       12</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       13</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       14</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       15</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="15" column="0" colspan="2">
+          <widget class="QLabel" name="label_11">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Balance:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="15" column="2" colspan="3">
+          <widget class="QComboBox" name="cBox_Bal_0">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+             <kerning>false</kerning>
+            </font>
+           </property>
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="frame">
+            <bool>true</bool>
+           </property>
+           <item>
+            <property name="text">
+             <string>SmallBalance</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BigBalance</string>
+            </property>
+           </item>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -702,593 +725,616 @@
         <property name="title">
          <string>Mid2</string>
         </property>
-        <layout class="QGridLayout" name="gridLayout_10">
+        <layout class="QGridLayout" name="gridLayout_4">
          <item row="0" column="0" colspan="2">
-          <layout class="QGridLayout" name="gridLayout_5">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_22">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>60</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="palette">
-              <palette>
-               <active>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </active>
-               <inactive>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </inactive>
-               <disabled>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>120</red>
-                   <green>120</green>
-                   <blue>120</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </disabled>
-              </palette>
-             </property>
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Flow Point(m³/h)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QLabel" name="label_23">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="palette">
-              <palette>
-               <active>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </active>
-               <inactive>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </inactive>
-               <disabled>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>120</red>
-                   <green>120</green>
-                   <blue>120</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </disabled>
-              </palette>
-             </property>
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;K Coe&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_0_1"/>
-           </item>
-           <item row="1" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_0_1"/>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_1_1"/>
-           </item>
-           <item row="2" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_1_1"/>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_2_1"/>
-           </item>
-           <item row="3" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_2_1"/>
-           </item>
-           <item row="4" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_3_1"/>
-           </item>
-           <item row="4" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_3_1"/>
-           </item>
-           <item row="5" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_4_1"/>
-           </item>
-           <item row="5" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_4_1"/>
-           </item>
-           <item row="6" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_5_1"/>
-           </item>
-           <item row="6" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_5_1"/>
-           </item>
-           <item row="7" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_6_1"/>
-           </item>
-           <item row="7" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_6_1"/>
-           </item>
-           <item row="8" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_7_1"/>
-           </item>
-           <item row="8" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_7_1"/>
-           </item>
-           <item row="9" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_8_1"/>
-           </item>
-           <item row="9" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_8_1"/>
-           </item>
-           <item row="10" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_9_1"/>
-           </item>
-           <item row="10" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_9_1"/>
-           </item>
-          </layout>
+          <widget class="QLabel" name="label_22">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>120</red>
+                 <green>120</green>
+                 <blue>120</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Flow Point(m³/h)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2" colspan="3">
+          <widget class="QLabel" name="label_23">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>50</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>120</red>
+                 <green>120</green>
+                 <blue>120</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;K Coe&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
          </item>
          <item row="1" column="0" colspan="2">
-          <layout class="QHBoxLayout" name="horizontalLayout_4">
-           <item>
-            <widget class="QLabel" name="label_24">
-             <property name="palette">
-              <palette>
-               <active>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </active>
-               <inactive>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </inactive>
-               <disabled>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>120</red>
-                   <green>120</green>
-                   <blue>120</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </disabled>
-              </palette>
-             </property>
-             <property name="text">
-              <string>impulse equivalency(L/imp):</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEdit_Pulse_1"/>
-           </item>
-          </layout>
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_0_1"/>
          </item>
-         <item row="2" column="0">
-          <layout class="QVBoxLayout" name="verticalLayout_3">
-           <item>
-            <widget class="QLabel" name="label_25">
-             <property name="minimumSize">
-              <size>
-               <width>90</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>40</height>
-              </size>
-             </property>
-             <property name="palette">
-              <palette>
-               <active>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </active>
-               <inactive>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </inactive>
-               <disabled>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>120</red>
-                   <green>120</green>
-                   <blue>120</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </disabled>
-              </palette>
-             </property>
-             <property name="text">
-              <string>Upper FLow(m³/h)</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEdit_UpperFlow_1"/>
-           </item>
-          </layout>
+         <item row="1" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_0_1"/>
          </item>
-         <item row="2" column="1">
-          <layout class="QVBoxLayout" name="verticalLayout_4">
-           <item>
-            <widget class="QLabel" name="label_26">
-             <property name="minimumSize">
-              <size>
-               <width>55</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="palette">
-              <palette>
-               <active>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </active>
-               <inactive>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </inactive>
-               <disabled>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>120</red>
-                   <green>120</green>
-                   <blue>120</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </disabled>
-              </palette>
-             </property>
-             <property name="text">
-              <string>adjust coe</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEdit_adjust_1"/>
-           </item>
-          </layout>
+         <item row="2" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_1_1"/>
          </item>
-         <item row="3" column="0">
-          <layout class="QGridLayout" name="gridLayout_6">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_12">
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Inst&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QComboBox" name="cBox_instroute_1">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="font">
-              <font>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-               <kerning>false</kerning>
-              </font>
-             </property>
-             <property name="acceptDrops">
-              <bool>false</bool>
-             </property>
-             <property name="layoutDirection">
-              <enum>Qt::LeftToRight</enum>
-             </property>
-             <property name="autoFillBackground">
-              <bool>false</bool>
-             </property>
-             <property name="frame">
-              <bool>true</bool>
-             </property>
-             <item>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>C:/Users/Administrator/none.ico</normaloff>C:/Users/Administrator/none.ico</iconset>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       0</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       1</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       2</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       3</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       4</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       5</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       6</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       7</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       8</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       9</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       10</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       11</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-          </layout>
+         <item row="2" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_1_1"/>
          </item>
-         <item row="3" column="1">
-          <layout class="QGridLayout" name="gridLayout_7">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_13">
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Accum&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
+         <item row="3" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_2_1"/>
+         </item>
+         <item row="3" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_2_1"/>
+         </item>
+         <item row="4" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_3_1"/>
+         </item>
+         <item row="4" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_3_1"/>
+         </item>
+         <item row="5" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_4_1"/>
+         </item>
+         <item row="5" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_4_1"/>
+         </item>
+         <item row="6" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_5_1"/>
+         </item>
+         <item row="6" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_5_1"/>
+         </item>
+         <item row="7" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_6_1"/>
+         </item>
+         <item row="7" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_6_1"/>
+         </item>
+         <item row="8" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_7_1"/>
+         </item>
+         <item row="8" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_7_1"/>
+         </item>
+         <item row="9" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_8_1"/>
+         </item>
+         <item row="9" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_8_1"/>
+         </item>
+         <item row="10" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_9_1"/>
+         </item>
+         <item row="10" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_9_1"/>
+         </item>
+         <item row="11" column="0" colspan="4">
+          <widget class="QLabel" name="label_24">
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>120</red>
+                 <green>120</green>
+                 <blue>120</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="text">
+            <string>impulse equivalency(L/imp):</string>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="4">
+          <widget class="QLineEdit" name="lineEdit_Pulse_1"/>
+         </item>
+         <item row="12" column="0" colspan="2">
+          <widget class="QLabel" name="label_25">
+           <property name="minimumSize">
+            <size>
+             <width>90</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>120</red>
+                 <green>120</green>
+                 <blue>120</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="text">
+            <string>Upper FLow(m³/h)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="12" column="2" colspan="3">
+          <widget class="QLabel" name="label_26">
+           <property name="minimumSize">
+            <size>
+             <width>55</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>120</red>
+                 <green>120</green>
+                 <blue>120</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="text">
+            <string>adjust coe</string>
+           </property>
+          </widget>
+         </item>
+         <item row="13" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_UpperFlow_1"/>
+         </item>
+         <item row="13" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_adjust_1"/>
+         </item>
+         <item row="14" column="0">
+          <widget class="QLabel" name="label_12">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Inst&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="14" column="1">
+          <widget class="QComboBox" name="cBox_instroute_1">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+             <kerning>false</kerning>
+            </font>
+           </property>
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="frame">
+            <bool>true</bool>
+           </property>
+           <item>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>C:/Users/Administrator/none.ico</normaloff>C:/Users/Administrator/none.ico</iconset>
+            </property>
            </item>
-           <item row="0" column="1">
-            <widget class="QComboBox" name="cBox_accumroute_1">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="font">
-              <font>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-               <kerning>false</kerning>
-              </font>
-             </property>
-             <property name="acceptDrops">
-              <bool>false</bool>
-             </property>
-             <property name="layoutDirection">
-              <enum>Qt::LeftToRight</enum>
-             </property>
-             <property name="autoFillBackground">
-              <bool>false</bool>
-             </property>
-             <property name="frame">
-              <bool>true</bool>
-             </property>
-             <item>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>C:/Users/Administrator/none.ico</normaloff>C:/Users/Administrator/none.ico</iconset>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       0</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       1</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       2</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       3</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       4</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       5</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       6</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       7</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       8</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       9</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       10</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       11</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       12</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       13</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       14</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       15</string>
-              </property>
-             </item>
-            </widget>
+           <item>
+            <property name="text">
+             <string>       0</string>
+            </property>
            </item>
-          </layout>
+           <item>
+            <property name="text">
+             <string>       1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       8</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       9</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       10</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       11</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="14" column="2">
+          <widget class="QLabel" name="label_13">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Accum&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="14" column="3" colspan="2">
+          <widget class="QComboBox" name="cBox_accumroute_1">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+             <kerning>false</kerning>
+            </font>
+           </property>
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="frame">
+            <bool>true</bool>
+           </property>
+           <item>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>C:/Users/Administrator/none.ico</normaloff>C:/Users/Administrator/none.ico</iconset>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       0</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       8</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       9</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       10</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       11</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       12</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       13</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       14</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       15</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="15" column="0" colspan="2">
+          <widget class="QLabel" name="label_14">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Balance:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="15" column="2" colspan="3">
+          <widget class="QComboBox" name="cBox_Bal_1">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+             <kerning>false</kerning>
+            </font>
+           </property>
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="frame">
+            <bool>true</bool>
+           </property>
+           <item>
+            <property name="text">
+             <string>SmallBalance</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BigBalance</string>
+            </property>
+           </item>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -1335,593 +1381,616 @@
         <property name="title">
          <string>Mid1</string>
         </property>
-        <layout class="QGridLayout" name="gridLayout_14">
+        <layout class="QGridLayout" name="gridLayout_3">
          <item row="0" column="0" colspan="2">
-          <layout class="QGridLayout" name="gridLayout_8">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_27">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>60</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="palette">
-              <palette>
-               <active>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </active>
-               <inactive>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </inactive>
-               <disabled>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>120</red>
-                   <green>120</green>
-                   <blue>120</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </disabled>
-              </palette>
-             </property>
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Flow Point(m³/h)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QLabel" name="label_28">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="palette">
-              <palette>
-               <active>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </active>
-               <inactive>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </inactive>
-               <disabled>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>120</red>
-                   <green>120</green>
-                   <blue>120</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </disabled>
-              </palette>
-             </property>
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;K Coe&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_0_2"/>
-           </item>
-           <item row="1" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_0_2"/>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_1_2"/>
-           </item>
-           <item row="2" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_1_2"/>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_2_2"/>
-           </item>
-           <item row="3" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_2_2"/>
-           </item>
-           <item row="4" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_3_2"/>
-           </item>
-           <item row="4" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_3_2"/>
-           </item>
-           <item row="5" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_4_2"/>
-           </item>
-           <item row="5" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_4_2"/>
-           </item>
-           <item row="6" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_5_2"/>
-           </item>
-           <item row="6" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_5_2"/>
-           </item>
-           <item row="7" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_6_2"/>
-           </item>
-           <item row="7" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_6_2"/>
-           </item>
-           <item row="8" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_7_2"/>
-           </item>
-           <item row="8" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_7_2"/>
-           </item>
-           <item row="9" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_8_2"/>
-           </item>
-           <item row="9" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_8_2"/>
-           </item>
-           <item row="10" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_9_2"/>
-           </item>
-           <item row="10" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_9_2"/>
-           </item>
-          </layout>
+          <widget class="QLabel" name="label_27">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>120</red>
+                 <green>120</green>
+                 <blue>120</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Flow Point(m³/h)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2" colspan="3">
+          <widget class="QLabel" name="label_28">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>50</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>120</red>
+                 <green>120</green>
+                 <blue>120</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;K Coe&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
          </item>
          <item row="1" column="0" colspan="2">
-          <layout class="QHBoxLayout" name="horizontalLayout_5">
-           <item>
-            <widget class="QLabel" name="label_29">
-             <property name="palette">
-              <palette>
-               <active>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </active>
-               <inactive>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </inactive>
-               <disabled>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>120</red>
-                   <green>120</green>
-                   <blue>120</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </disabled>
-              </palette>
-             </property>
-             <property name="text">
-              <string>impulse equivalency(L/imp):</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEdit_Pulse_2"/>
-           </item>
-          </layout>
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_0_2"/>
          </item>
-         <item row="2" column="0">
-          <layout class="QVBoxLayout" name="verticalLayout_5">
-           <item>
-            <widget class="QLabel" name="label_30">
-             <property name="minimumSize">
-              <size>
-               <width>90</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>40</height>
-              </size>
-             </property>
-             <property name="palette">
-              <palette>
-               <active>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </active>
-               <inactive>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </inactive>
-               <disabled>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>120</red>
-                   <green>120</green>
-                   <blue>120</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </disabled>
-              </palette>
-             </property>
-             <property name="text">
-              <string>Upper FLow(m³/h)</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEdit_UpperFlow_2"/>
-           </item>
-          </layout>
+         <item row="1" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_0_2"/>
          </item>
-         <item row="2" column="1">
-          <layout class="QVBoxLayout" name="verticalLayout_6">
-           <item>
-            <widget class="QLabel" name="label_31">
-             <property name="minimumSize">
-              <size>
-               <width>55</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="palette">
-              <palette>
-               <active>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </active>
-               <inactive>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </inactive>
-               <disabled>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>120</red>
-                   <green>120</green>
-                   <blue>120</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </disabled>
-              </palette>
-             </property>
-             <property name="text">
-              <string>adjust coe</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEdit_adjust_2"/>
-           </item>
-          </layout>
+         <item row="2" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_1_2"/>
          </item>
-         <item row="3" column="0">
-          <layout class="QGridLayout" name="gridLayout_9">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_15">
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Inst&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QComboBox" name="cBox_instroute_2">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="font">
-              <font>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-               <kerning>false</kerning>
-              </font>
-             </property>
-             <property name="acceptDrops">
-              <bool>false</bool>
-             </property>
-             <property name="layoutDirection">
-              <enum>Qt::LeftToRight</enum>
-             </property>
-             <property name="autoFillBackground">
-              <bool>false</bool>
-             </property>
-             <property name="frame">
-              <bool>true</bool>
-             </property>
-             <item>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>C:/Users/Administrator/none.ico</normaloff>C:/Users/Administrator/none.ico</iconset>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       0</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       1</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       2</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       3</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       4</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       5</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       6</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       7</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       8</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       9</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       10</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       11</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-          </layout>
+         <item row="2" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_1_2"/>
          </item>
-         <item row="3" column="1">
-          <layout class="QGridLayout" name="gridLayout_13">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_16">
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Accum&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
+         <item row="3" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_2_2"/>
+         </item>
+         <item row="3" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_2_2"/>
+         </item>
+         <item row="4" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_3_2"/>
+         </item>
+         <item row="4" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_3_2"/>
+         </item>
+         <item row="5" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_4_2"/>
+         </item>
+         <item row="5" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_4_2"/>
+         </item>
+         <item row="6" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_5_2"/>
+         </item>
+         <item row="6" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_5_2"/>
+         </item>
+         <item row="7" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_6_2"/>
+         </item>
+         <item row="7" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_6_2"/>
+         </item>
+         <item row="8" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_7_2"/>
+         </item>
+         <item row="8" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_7_2"/>
+         </item>
+         <item row="9" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_8_2"/>
+         </item>
+         <item row="9" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_8_2"/>
+         </item>
+         <item row="10" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_9_2"/>
+         </item>
+         <item row="10" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_9_2"/>
+         </item>
+         <item row="11" column="0" colspan="4">
+          <widget class="QLabel" name="label_29">
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>120</red>
+                 <green>120</green>
+                 <blue>120</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="text">
+            <string>impulse equivalency(L/imp):</string>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="4">
+          <widget class="QLineEdit" name="lineEdit_Pulse_2"/>
+         </item>
+         <item row="12" column="0" colspan="2">
+          <widget class="QLabel" name="label_30">
+           <property name="minimumSize">
+            <size>
+             <width>90</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>120</red>
+                 <green>120</green>
+                 <blue>120</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="text">
+            <string>Upper FLow(m³/h)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="12" column="2" colspan="3">
+          <widget class="QLabel" name="label_31">
+           <property name="minimumSize">
+            <size>
+             <width>55</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>120</red>
+                 <green>120</green>
+                 <blue>120</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="text">
+            <string>adjust coe</string>
+           </property>
+          </widget>
+         </item>
+         <item row="13" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_UpperFlow_2"/>
+         </item>
+         <item row="13" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_adjust_2"/>
+         </item>
+         <item row="14" column="0">
+          <widget class="QLabel" name="label_15">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Inst&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="14" column="1">
+          <widget class="QComboBox" name="cBox_instroute_2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+             <kerning>false</kerning>
+            </font>
+           </property>
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="frame">
+            <bool>true</bool>
+           </property>
+           <item>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>C:/Users/Administrator/none.ico</normaloff>C:/Users/Administrator/none.ico</iconset>
+            </property>
            </item>
-           <item row="0" column="1">
-            <widget class="QComboBox" name="cBox_accumroute_2">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="font">
-              <font>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-               <kerning>false</kerning>
-              </font>
-             </property>
-             <property name="acceptDrops">
-              <bool>false</bool>
-             </property>
-             <property name="layoutDirection">
-              <enum>Qt::LeftToRight</enum>
-             </property>
-             <property name="autoFillBackground">
-              <bool>false</bool>
-             </property>
-             <property name="frame">
-              <bool>true</bool>
-             </property>
-             <item>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>C:/Users/Administrator/none.ico</normaloff>C:/Users/Administrator/none.ico</iconset>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       0</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       1</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       2</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       3</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       4</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       5</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       6</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       7</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       8</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       9</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       10</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       11</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       12</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       13</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       14</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       15</string>
-              </property>
-             </item>
-            </widget>
+           <item>
+            <property name="text">
+             <string>       0</string>
+            </property>
            </item>
-          </layout>
+           <item>
+            <property name="text">
+             <string>       1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       8</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       9</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       10</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       11</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="14" column="2">
+          <widget class="QLabel" name="label_16">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Accum&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="14" column="3" colspan="2">
+          <widget class="QComboBox" name="cBox_accumroute_2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+             <kerning>false</kerning>
+            </font>
+           </property>
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="frame">
+            <bool>true</bool>
+           </property>
+           <item>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>C:/Users/Administrator/none.ico</normaloff>C:/Users/Administrator/none.ico</iconset>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       0</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       8</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       9</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       10</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       11</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       12</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       13</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       14</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       15</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="15" column="0" colspan="2">
+          <widget class="QLabel" name="label_39">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Balance:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="15" column="2" colspan="3">
+          <widget class="QComboBox" name="cBox_Bal_2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+             <kerning>false</kerning>
+            </font>
+           </property>
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="frame">
+            <bool>true</bool>
+           </property>
+           <item>
+            <property name="text">
+             <string>SmallBalance</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BigBalance</string>
+            </property>
+           </item>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -1968,593 +2037,616 @@
         <property name="title">
          <string>Small</string>
         </property>
-        <layout class="QGridLayout" name="gridLayout_16">
+        <layout class="QGridLayout" name="gridLayout_2">
          <item row="0" column="0" colspan="2">
-          <layout class="QGridLayout" name="gridLayout_11">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_32">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>60</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="palette">
-              <palette>
-               <active>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </active>
-               <inactive>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </inactive>
-               <disabled>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>120</red>
-                   <green>120</green>
-                   <blue>120</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </disabled>
-              </palette>
-             </property>
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Flow Point(m³/h)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QLabel" name="label_33">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="palette">
-              <palette>
-               <active>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </active>
-               <inactive>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </inactive>
-               <disabled>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>120</red>
-                   <green>120</green>
-                   <blue>120</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </disabled>
-              </palette>
-             </property>
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;K Coe&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_0_3"/>
-           </item>
-           <item row="1" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_0_3"/>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_1_3"/>
-           </item>
-           <item row="2" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_1_3"/>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_2_3"/>
-           </item>
-           <item row="3" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_2_3"/>
-           </item>
-           <item row="4" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_3_3"/>
-           </item>
-           <item row="4" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_3_3"/>
-           </item>
-           <item row="5" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_4_3"/>
-           </item>
-           <item row="5" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_4_3"/>
-           </item>
-           <item row="6" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_5_3"/>
-           </item>
-           <item row="6" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_5_3"/>
-           </item>
-           <item row="7" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_6_3"/>
-           </item>
-           <item row="7" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_6_3"/>
-           </item>
-           <item row="8" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_7_3"/>
-           </item>
-           <item row="8" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_7_3"/>
-           </item>
-           <item row="9" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_8_3"/>
-           </item>
-           <item row="9" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_8_3"/>
-           </item>
-           <item row="10" column="0">
-            <widget class="QLineEdit" name="lineEdit_FLowPoint_9_3"/>
-           </item>
-           <item row="10" column="1">
-            <widget class="QLineEdit" name="lineEdit_KCoe_9_3"/>
-           </item>
-          </layout>
+          <widget class="QLabel" name="label_32">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>120</red>
+                 <green>120</green>
+                 <blue>120</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Flow Point(m³/h)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2" colspan="3">
+          <widget class="QLabel" name="label_33">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>50</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>120</red>
+                 <green>120</green>
+                 <blue>120</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;K Coe&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
          </item>
          <item row="1" column="0" colspan="2">
-          <layout class="QHBoxLayout" name="horizontalLayout_6">
-           <item>
-            <widget class="QLabel" name="label_34">
-             <property name="palette">
-              <palette>
-               <active>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </active>
-               <inactive>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </inactive>
-               <disabled>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>120</red>
-                   <green>120</green>
-                   <blue>120</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </disabled>
-              </palette>
-             </property>
-             <property name="text">
-              <string>impulse equivalency(L/imp):</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEdit_Pulse_3"/>
-           </item>
-          </layout>
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_0_3"/>
          </item>
-         <item row="2" column="0">
-          <layout class="QVBoxLayout" name="verticalLayout_7">
-           <item>
-            <widget class="QLabel" name="label_35">
-             <property name="minimumSize">
-              <size>
-               <width>90</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>40</height>
-              </size>
-             </property>
-             <property name="palette">
-              <palette>
-               <active>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </active>
-               <inactive>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </inactive>
-               <disabled>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>120</red>
-                   <green>120</green>
-                   <blue>120</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </disabled>
-              </palette>
-             </property>
-             <property name="text">
-              <string>Upper FLow(m³/h)</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEdit_UpperFlow_3"/>
-           </item>
-          </layout>
+         <item row="1" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_0_3"/>
          </item>
-         <item row="2" column="1">
-          <layout class="QVBoxLayout" name="verticalLayout_8">
-           <item>
-            <widget class="QLabel" name="label_36">
-             <property name="minimumSize">
-              <size>
-               <width>55</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="palette">
-              <palette>
-               <active>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </active>
-               <inactive>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </inactive>
-               <disabled>
-                <colorrole role="WindowText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>120</red>
-                   <green>120</green>
-                   <blue>120</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </disabled>
-              </palette>
-             </property>
-             <property name="text">
-              <string>adjust coe</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEdit_adjust_3"/>
-           </item>
-          </layout>
+         <item row="2" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_1_3"/>
          </item>
-         <item row="3" column="0">
-          <layout class="QGridLayout" name="gridLayout_12">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_40">
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Inst&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QComboBox" name="cBox_instroute_3">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="font">
-              <font>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-               <kerning>false</kerning>
-              </font>
-             </property>
-             <property name="acceptDrops">
-              <bool>false</bool>
-             </property>
-             <property name="layoutDirection">
-              <enum>Qt::LeftToRight</enum>
-             </property>
-             <property name="autoFillBackground">
-              <bool>false</bool>
-             </property>
-             <property name="frame">
-              <bool>true</bool>
-             </property>
-             <item>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>C:/Users/Administrator/none.ico</normaloff>C:/Users/Administrator/none.ico</iconset>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       0</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       1</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       2</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       3</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       4</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       5</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       6</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       7</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       8</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       9</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       10</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       11</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-          </layout>
+         <item row="2" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_1_3"/>
          </item>
-         <item row="3" column="1">
-          <layout class="QGridLayout" name="gridLayout_15">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_41">
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Accum&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
+         <item row="3" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_2_3"/>
+         </item>
+         <item row="3" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_2_3"/>
+         </item>
+         <item row="4" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_3_3"/>
+         </item>
+         <item row="4" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_3_3"/>
+         </item>
+         <item row="5" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_4_3"/>
+         </item>
+         <item row="5" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_4_3"/>
+         </item>
+         <item row="6" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_5_3"/>
+         </item>
+         <item row="6" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_5_3"/>
+         </item>
+         <item row="7" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_6_3"/>
+         </item>
+         <item row="7" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_6_3"/>
+         </item>
+         <item row="8" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_7_3"/>
+         </item>
+         <item row="8" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_7_3"/>
+         </item>
+         <item row="9" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_8_3"/>
+         </item>
+         <item row="9" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_8_3"/>
+         </item>
+         <item row="10" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_FLowPoint_9_3"/>
+         </item>
+         <item row="10" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_KCoe_9_3"/>
+         </item>
+         <item row="11" column="0" colspan="4">
+          <widget class="QLabel" name="label_34">
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>120</red>
+                 <green>120</green>
+                 <blue>120</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="text">
+            <string>impulse equivalency(L/imp):</string>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="4">
+          <widget class="QLineEdit" name="lineEdit_Pulse_3"/>
+         </item>
+         <item row="12" column="0" colspan="2">
+          <widget class="QLabel" name="label_35">
+           <property name="minimumSize">
+            <size>
+             <width>90</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>120</red>
+                 <green>120</green>
+                 <blue>120</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="text">
+            <string>Upper FLow(m³/h)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="12" column="2" colspan="3">
+          <widget class="QLabel" name="label_36">
+           <property name="minimumSize">
+            <size>
+             <width>55</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>0</red>
+                 <green>0</green>
+                 <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>120</red>
+                 <green>120</green>
+                 <blue>120</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="text">
+            <string>adjust coe</string>
+           </property>
+          </widget>
+         </item>
+         <item row="13" column="0" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_UpperFlow_3"/>
+         </item>
+         <item row="13" column="2" colspan="3">
+          <widget class="QLineEdit" name="lineEdit_adjust_3"/>
+         </item>
+         <item row="14" column="0">
+          <widget class="QLabel" name="label_40">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Inst&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="14" column="1">
+          <widget class="QComboBox" name="cBox_instroute_3">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+             <kerning>false</kerning>
+            </font>
+           </property>
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="frame">
+            <bool>true</bool>
+           </property>
+           <item>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>C:/Users/Administrator/none.ico</normaloff>C:/Users/Administrator/none.ico</iconset>
+            </property>
            </item>
-           <item row="0" column="1">
-            <widget class="QComboBox" name="cBox_accumroute_3">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="font">
-              <font>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-               <kerning>false</kerning>
-              </font>
-             </property>
-             <property name="acceptDrops">
-              <bool>false</bool>
-             </property>
-             <property name="layoutDirection">
-              <enum>Qt::LeftToRight</enum>
-             </property>
-             <property name="autoFillBackground">
-              <bool>false</bool>
-             </property>
-             <property name="frame">
-              <bool>true</bool>
-             </property>
-             <item>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>C:/Users/Administrator/none.ico</normaloff>C:/Users/Administrator/none.ico</iconset>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       0</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       1</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       2</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       3</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       4</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       5</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       6</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       7</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       8</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       9</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       10</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       11</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       12</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       13</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       14</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>       15</string>
-              </property>
-             </item>
-            </widget>
+           <item>
+            <property name="text">
+             <string>       0</string>
+            </property>
            </item>
-          </layout>
+           <item>
+            <property name="text">
+             <string>       1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       8</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       9</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       10</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       11</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="14" column="2">
+          <widget class="QLabel" name="label_41">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Accum&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="14" column="3" colspan="2">
+          <widget class="QComboBox" name="cBox_accumroute_3">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+             <kerning>false</kerning>
+            </font>
+           </property>
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="frame">
+            <bool>true</bool>
+           </property>
+           <item>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>C:/Users/Administrator/none.ico</normaloff>C:/Users/Administrator/none.ico</iconset>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       0</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       8</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       9</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       10</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       11</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       12</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       13</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       14</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>       15</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="15" column="0" colspan="2">
+          <widget class="QLabel" name="label_42">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Balance:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="15" column="2" colspan="3">
+          <widget class="QComboBox" name="cBox_Bal_3">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+             <kerning>false</kerning>
+            </font>
+           </property>
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="frame">
+            <bool>true</bool>
+           </property>
+           <item>
+            <property name="text">
+             <string>SmallBalance</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BigBalance</string>
+            </property>
+           </item>
+          </widget>
          </item>
         </layout>
        </widget>

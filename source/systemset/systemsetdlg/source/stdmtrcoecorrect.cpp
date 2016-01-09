@@ -46,6 +46,8 @@ StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 
 	m_readComConfig = NULL;
 	m_readComConfig = new ReadComConfig(); //读串口设置接口（必须在initBalanceCom前调用）
+	m_readComConfig->getBalancePara(m_balMaxWht, m_balBottomWht); //获取大天平最大容量和回水底量
+	m_readComConfig->getBalancePara2(m_balMaxWht2, m_balBottomWht2); //获取小天平最大容量和回水底量
 
 	m_balanceObj = NULL;
 	initBalanceCom();		//初始化天平串口
@@ -78,9 +80,9 @@ StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 	initValveStatus();      
 	initRegulateStatus();
 	//initTableWdg();//初始化表格
-	m_exaustTimer = NULL;
-	m_exaustTimer = new QTimer(this); //排气定时器
-	connect(m_exaustTimer, SIGNAL(timeout()), this, SLOT(slotExaustFinished()));
+	m_exhaustTimer = NULL;
+	m_exhaustTimer = new QTimer(this); //排气定时器
+	connect(m_exhaustTimer, SIGNAL(timeout()), this, SLOT(slotExaustFinished()));
 
 	QSqlTableModel *model = new QSqlTableModel(this, g_defaultdb);  
 	model->setTable("T_Meter_Standard");  
@@ -167,7 +169,7 @@ void StdMtrCoeCorrect::releaseSource()
 	RELEASE_PTR(m_controlObj)  //阀门控制
 	EXIT_THREAD(m_valveThread2);	
 	RELEASE_PTR(m_controlObj2)  //阀门控制2
-	RELEASE_PTR(m_exaustTimer) //排气计时器
+	RELEASE_PTR(m_exhaustTimer) //排气计时器
 	//计时器，用于动态显示调节阀开度
 	RELEASE_PTR(m_regSmallTimer)
 	RELEASE_PTR(m_regMid1Timer)
@@ -266,7 +268,7 @@ void StdMtrCoeCorrect::slotReadCorrectParas()
 		m_stdCorrectParas->endArray();
 	}
 
-	for (int wdg=FLOW_RATE_BIG; wdg<FLOW_RATE_SMALL;wdg++)
+	for (int wdg=FLOW_RATE_BIG; wdg<=FLOW_RATE_SMALL;wdg++)
 	{
 		if (!m_mapFlowPoint.keys().contains((flow_rate_wdg)wdg))
 			continue;
@@ -286,9 +288,8 @@ void StdMtrCoeCorrect::slotReadCorrectParas()
 	m_stdCorrectParas->endGroup();
 
 	m_stdCorrectParas->beginGroup("extime");
-	m_exaustSecond = m_stdCorrectParas->value("extime").toInt();
+	m_exhaustSecond = m_stdCorrectParas->value("extime").toInt();
 	m_stdCorrectParas->endGroup();
-
 }
 
 void StdMtrCoeCorrect::slotFreshInstFlow(const flow_rate_wdg& idx, const float& value)
@@ -1169,7 +1170,7 @@ void StdMtrCoeCorrect::initTableWdg()
 		ui.tableWidget->item(i, COL_STDERR_AVR)->setFlags(Qt::ItemIsEditable);
 		ui.tableWidget->item(i, COL_STDREP)->setFlags(Qt::ItemIsEditable);
 	}
-	
+
 	for (int i=0; i<flowpoints; i++)
 	{
 		ui.tableWidget->item(i*m_chkTimes, COL_FLOW_POINT)->setText(QString::number(flowpointList.at(i)->flowpoint));
@@ -1185,6 +1186,11 @@ void StdMtrCoeCorrect::on_rBtn_DN3_toggled()
 {
 	if (ui.rBtn_DN3->isChecked())
 		m_curStdMeter = FLOW_RATE_SMALL;
+
+	m_stdMeterConfig->beginReadArray("Route");
+	m_stdMeterConfig->setArrayIndex(m_curStdMeter);
+	m_curBalance = (Balance_Capacity)m_stdMeterConfig->value("Balance").toInt();
+	m_stdMeterConfig->endArray();
 	initTableWdg();
 }
 
@@ -1192,6 +1198,11 @@ void StdMtrCoeCorrect::on_rBtn_DN10_toggled()
 {
 	if (ui.rBtn_DN10->isChecked())
 		m_curStdMeter = FLOW_RATE_MID_1;
+
+	m_stdMeterConfig->beginReadArray("Route");
+	m_stdMeterConfig->setArrayIndex(m_curStdMeter);
+	m_curBalance = (Balance_Capacity)m_stdMeterConfig->value("Balance").toInt();
+	m_stdMeterConfig->endArray();
 	initTableWdg();
 }
 
@@ -1199,6 +1210,11 @@ void StdMtrCoeCorrect::on_rBtn_DN25_toggled()
 {
 	if (ui.rBtn_DN25->isChecked())
 		m_curStdMeter = FLOW_RATE_MID_2;
+
+	m_stdMeterConfig->beginReadArray("Route");
+	m_stdMeterConfig->setArrayIndex(m_curStdMeter);
+	m_curBalance = (Balance_Capacity)m_stdMeterConfig->value("Balance").toInt();
+	m_stdMeterConfig->endArray();
 	initTableWdg();
 }
 
@@ -1206,6 +1222,11 @@ void StdMtrCoeCorrect::on_rBtn_DN50_toggled()
 {
 	if (ui.rBtn_DN50->isChecked())
 		m_curStdMeter = FLOW_RATE_BIG;
+
+	m_stdMeterConfig->beginReadArray("Route");
+	m_stdMeterConfig->setArrayIndex(m_curStdMeter);
+	m_curBalance = (Balance_Capacity)m_stdMeterConfig->value("Balance").toInt();
+	m_stdMeterConfig->endArray();
 	initTableWdg();
 }
 
@@ -1273,29 +1294,25 @@ void StdMtrCoeCorrect::on_btnClearTbl_clicked()
 void StdMtrCoeCorrect::startVerify()
 {
 	if (m_curStdMeter<0)
-	{
 		return;
-	}
-	/* 	exhaustAir();
-	 * 	waitUntilUserPressGoOn();
-	 *  waitWaterToSteady();
-	 *  startVerifySeq(seq);
-	 */
+
+	startExhaustCountDown();
+	wait(BALANCE_STABLE_TIME);//等待水流稳定
 	QList<StdCorrectPara_PTR> flowPoints = m_mapFlowPoint[(flow_rate_wdg)m_curStdMeter];
 	for (int i=0;i<flowPoints.length();i++)
 	{
-		startVerifyFlowPoint(flowPoints.at(i)->flowpoint);
+		startVerifyFlowPoint(flowPoints.at(i));
 	}
 }
 
-void StdMtrCoeCorrect::startVerifyFlowPoint(float flowrate)
+int StdMtrCoeCorrect::startVerifyFlowPoint(StdCorrectPara_PTR flowpoint)
 {
 	/* 	waitWhileRegulateFlowrate();
 	 *  WaitUntileUserPressGoOn();
 	 *  waitWaterToSteady();
 	 *  startVerifySeq(seq);
 	 */
-
+	return FLAG_SUCCESS;
 }
 
 void StdMtrCoeCorrect::startVerifySeq(int i)
@@ -1313,7 +1330,7 @@ void StdMtrCoeCorrect::startVerifySeq(int i)
 
 void StdMtrCoeCorrect::on_btnStart_clicked()
 {
-
+	startVerify();
 }
 
 void StdMtrCoeCorrect::on_btnGoOn_clicked()
@@ -1328,15 +1345,15 @@ void StdMtrCoeCorrect::slotExaustFinished()
 		return;
 	}
 
-	m_exaustSecond --;
+	m_exhaustSecond --;
 	//ui.labelHintProcess->setText(tr("Exhaust countdown: <font color=DarkGreen size=6><b>%1</b></font> second").arg(m_exaustSecond));
-	qDebug()<<"排气倒计时:"<<m_exaustSecond<<"秒";
-	if (m_exaustSecond > 1)
+	qDebug()<<"排气倒计时:"<<m_exhaustSecond<<"秒";
+	if (m_exhaustSecond > 1)
 	{
 		return;
 	}
 
-	m_exaustTimer->stop(); //停止排气计时
+	m_exhaustTimer->stop(); //停止排气计时
 	//ui.labelHintProcess->setText(tr("Exhaust countdown finished!"));
 	//ui.labelHintProcess->clear();
 	if (!closeAllFlowPointValves()) //关闭所有流量点阀门 失败 
@@ -1349,111 +1366,207 @@ void StdMtrCoeCorrect::slotExaustFinished()
 		}
 	}
 
-	////准备天平初始重量 begin
-	//bool hasBigBalance = false; //是否需要准备大天平
-	//bool hasSmallBalance = false; //是否需要准备小天平
-	//for (int i=1; i<=m_flowPointNum; i++)
-	//{
-	//	if (m_paraSetReader->getFpBySeq(i).fp_valve_idx == 0)
-	//	{
-	//		hasBigBalance = true;
-	//	}
-	//	if (m_paraSetReader->getFpBySeq(i).fp_valve_idx >= 1)
-	//	{
-	//		hasSmallBalance = true;
-	//	}
-	//}
-	//if (hasBigBalance) //需要准备大天平
-	//{
-	//	if (!prepareBigBalanceInitWeight())//准备大天平初始重量
-	//	{
-	//		return;
-	//	}
-	//}
-	//if (hasSmallBalance) //需要准备小天平
-	//{
-	//	if (!prepareSmallBalanceInitWeight())//准备小天平初始重量
-	//	{
-	//		return;
-	//	}
-	//}
-	////准备天平初始重量 end
-	//wait(BALANCE_STABLE_TIME); //等待天平数值稳定
+	//准备天平初始重量 begin
+	if (m_curStdMeter == -1)//用户没选择表规格时, 不准备容量
+		return;
 
-	//if (setAllMeterVerifyStatus()) //设置检定状态成功
-	//{
-	//	startVerify();
-	//}
+	if (m_curBalance == BALANCE_CAP600) //需要准备大天平
+	{
+		if (!prepareBigBalanceInitWeight())//准备大天平初始重量
+			return;
+	}
+	if (m_curBalance == BALANCE_CAP150) //需要准备小天平
+	{
+		if (!prepareSmallBalanceInitWeight())//准备小天平初始重量
+			return;
+	}
+	//准备天平初始重量 end
+	wait(BALANCE_STABLE_TIME); //等待天平数值稳定
+}
+
+int StdMtrCoeCorrect::prepareBigBalanceInitWeight()
+{
+	//ui.labelHintPoint->setText(tr("prepare big balance init weight ...")); //准备大天平初始重量(回水底量)
+	int ret = FLAG_FAIL;
+	//判断大天平重量,如果小于要求的回水底量(5kg)，则关闭大天平放水阀，打开大流量阀
+	if (ui.lcdBigBalance->text().toFloat() < m_balBottomWht)
+	{
+		if (!closeValve(m_portsetinfo.bigWaterOutNo)) 
+		{
+			qWarning()<<"关闭大天平放水阀失败";
+		}
+		if (!openValve(m_portsetinfo.bigNo))
+		{
+			qWarning()<<"打开大流量阀失败";
+		}
+		//判断并等待天平重量，大于回水底量(5kg)
+		if (isBigBalanceValueBigger(m_balBottomWht, true))
+		{
+			if (!closeValve(m_portsetinfo.bigNo))
+			{
+				qWarning()<<"关闭大流量阀失败";
+			}
+			ret = FLAG_SUCCESS;
+		}
+	}
+	else //大于回水底量
+	{
+		closeValve(m_portsetinfo.bigWaterOutNo); //关闭大天平放水阀
+		ret = FLAG_SUCCESS;
+	}
+
+	return ret;
+}
+
+int StdMtrCoeCorrect::prepareSmallBalanceInitWeight()
+{
+	//ui.labelHintPoint->setText(tr("prepare small balance init weight ...")); //准备小天平初始重量(回水底量)
+	int ret = FLAG_FAIL;
+	//判断小天平重量,如果小于要求的回水底量(5kg)，则关闭小天平放水阀，打开中二流量阀
+	if (ui.lcdSmallBalance->text().toFloat() < m_balBottomWht2)
+	{
+		if (!closeValve(m_portsetinfo.smallWaterOutNo)) 
+		{
+			qWarning()<<"关闭小天平放水阀失败";
+		}
+		if (!openValve(m_portsetinfo.middle2No))
+		{
+			qWarning()<<"打开中二流量阀失败";
+		}
+		//判断并等待天平重量，大于回水底量(5kg)
+		if (isSmallBalanceValueBigger(m_balBottomWht2, true))
+		{
+			if (!closeValve(m_portsetinfo.middle2No))
+			{
+				qWarning()<<"关闭中二流量阀失败";
+			}
+			ret = FLAG_SUCCESS;
+		}
+	}
+	else
+	{
+		closeValve(m_portsetinfo.smallWaterOutNo); //关闭小天平放水阀
+		ret = FLAG_SUCCESS;
+	}
+
+	return ret;
+}
+
+int StdMtrCoeCorrect::isBigBalanceValueBigger(float targetV, bool flg)
+{
+	int ret = 0;
+	if (flg) //要求大于目标重量
+	{
+		while (!m_stopFlag && (ui.lcdBigBalance->text().toFloat() < targetV))
+		{
+			qDebug()<<"大天平重量 ="<<ui.lcdBigBalance->text()<<", 小于要求的重量 "<<targetV;
+			wait(CYCLE_TIME);
+		}
+		ret = !m_stopFlag && (ui.lcdBigBalance->text().toFloat() >= targetV);
+	}
+	else //要求小于目标重量
+	{
+		while (!m_stopFlag && (ui.lcdBigBalance->text().toFloat() > targetV))
+		{
+			qDebug()<<"大天平重量 ="<<ui.lcdBigBalance->text()<<", 大于要求的重量 "<<targetV;
+			wait(CYCLE_TIME);
+		}
+		ret = !m_stopFlag && (ui.lcdBigBalance->text().toFloat() <= targetV);
+	}
+
+	return ret;
+}
+
+int StdMtrCoeCorrect::isSmallBalanceValueBigger(float targetV, bool flg)
+{
+	int ret = 0;
+	if (flg) //要求大于目标重量
+	{
+		while (!m_stopFlag && (ui.lcdSmallBalance->text().toFloat() < targetV))
+		{
+			qDebug()<<"小天平重量 ="<<ui.lcdSmallBalance->text()<<", 小于要求的重量 "<<targetV;
+			wait(CYCLE_TIME);
+		}
+		ret = !m_stopFlag && (ui.lcdSmallBalance->text().toFloat() >= targetV);
+	}
+	else //要求小于目标重量
+	{
+		while (!m_stopFlag && (ui.lcdSmallBalance->text().toFloat() > targetV))
+		{
+			qDebug()<<"小天平重量 ="<<ui.lcdSmallBalance->text()<<", 大于要求的重量 "<<targetV;
+			wait(CYCLE_TIME);
+		}
+		ret = !m_stopFlag && (ui.lcdSmallBalance->text().toFloat() <= targetV);
+	}
+
+	return ret;
 }
 
 int StdMtrCoeCorrect::startExhaustCountDown()
 {
-	//if (!isDataCollectNormal())
-	//{
-	//	qWarning()<<"数据采集错误，请检查";
-	//	QMessageBox::warning(this, tr("Warning"), tr("data acquisition error, please check!"));
-	//	return false;
-	//}
-
 	//打开4路电动调节阀
 	openAllRegulator();
 	//ui.labelHintProcess->setText(tr("regulator is opening, please wait..."));
 	//ui.labelHintPoint->clear();
-	//wait(5000); //等待电动调节阀调整到一定开度，用于排气
+	wait(5000); //等待电动调节阀调整到一定开度，用于排气
 
-	//m_controlObj->askSetDriverFreq(m_nowParams->fp_info[0].fp_freq);
-	//if (!openAllValveAndPump())
-	//{
-	//	qWarning()<<"打开所有阀门和水泵 失败!";
-	//	QMessageBox::warning(this, tr("Warning"), tr("exhaust air failed!"));
-	//	return false;
-	//}
-	//m_stopFlag = false;
-	//m_exaustSecond = m_nowParams->ex_time;
-	//m_exaustTimer->start(CYCLE_TIME);//开始排气倒计时
+	m_controlObj->askSetDriverFreq(EX_GREQ);
+	if (!openAllValveAndPump())
+	{
+		qWarning()<<"打开所有阀门和水泵 失败!";
+		QMessageBox::warning(this, tr("Warning"), tr("exhaust air failed!"));
+		return false;
+	}
+	m_stopFlag = false;
+	m_exhaustTimer->start(CYCLE_TIME);//开始排气倒计时
 	//ui.labelHintProcess->setText(tr("Exhaust countdown: <font color=DarkGreen size=6><b>%1</b></font> second").arg(m_exaustSecond));
 	//ui.labelHintPoint->clear();
-	//qDebug()<<"排气倒计时:"<<m_exaustSecond<<"秒";
-
-	return true;
+	return FLAG_SUCCESS;
 }
 
 bool StdMtrCoeCorrect::judgeBalanceCapacity(int &bigOK, int &smallOK)
 {
-	return 0;
+	return FLAG_SUCCESS;
 }
 
 int StdMtrCoeCorrect::judgeBalanceCapacitySingle(int order, int &bigBalance)
 {
-	return 0;
+	return FLAG_SUCCESS;
 }
 
 int StdMtrCoeCorrect::prepareVerifyFlowPoint(int order)
 {
-	return 0;
-}
-
-int StdMtrCoeCorrect::startVerifyFlowPoint(int order)
-{
-	return 0;
+	return FLAG_SUCCESS;
 }
 
 int StdMtrCoeCorrect::judgeBalanceAndCalcAvgTemperAndFlow(float targetV, bool bigFlag)
 {
-	return 0;
+	return FLAG_SUCCESS;
 }
 
 /*
-** 打开4路电动调节阀至设定的开度
-** 注意：选中的管路，将调节阀开度调整到设定开度；
-         未选中的管路，将将调节阀开度调整到50%，用于排气
+** 打开4路电动调节阀至设定50%的开度
 */
 void StdMtrCoeCorrect::openAllRegulator()
 {
-	
+	ui.spinBoxOpeningSmall->setValue(EX_DEGREE);
+	on_btnRegulateSmall_clicked();
+	ui.spinBoxOpeningMid1->setValue(EX_DEGREE);
+	on_btnRegulateMid1_clicked();
+	ui.spinBoxOpeningMid2->setValue(EX_DEGREE);
+	on_btnRegulateMid2_clicked();
+	ui.spinBoxOpeningBig->setValue(EX_DEGREE);
+	on_btnRegulateBig_clicked();
 }
 
 void StdMtrCoeCorrect::closeAllRegulator()
 {
-
+	ui.spinBoxOpeningSmall->setValue(REG_DEGREE_ZERO);
+	on_btnRegulateSmall_clicked();
+	ui.spinBoxOpeningMid1->setValue(REG_DEGREE_ZERO);
+	on_btnRegulateMid1_clicked();
+	ui.spinBoxOpeningMid2->setValue(REG_DEGREE_ZERO);
+	on_btnRegulateMid2_clicked();
+	ui.spinBoxOpeningBig->setValue(REG_DEGREE_ZERO);
+	on_btnRegulateBig_clicked();
 }

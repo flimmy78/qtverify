@@ -49,6 +49,7 @@ private:
 	QMap<flow_rate_wdg, QLineEdit*> m_mapAdjustWdg;
 	QMap<flow_rate_wdg, QComboBox*> m_mapInstRouteWdg;
 	QMap<flow_rate_wdg, QComboBox*> m_mapAccumRouteWdg;
+	QMap<flow_rate_wdg, QComboBox*> m_mapBalanceRouteWdg;
 
 	void initWdgVec();
 	void initBtnGroup();

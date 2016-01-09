@@ -46,6 +46,13 @@ class StdMtrCorrectPraDlg;
 #define COL_STDERR_AVR	10//标准表平均误差列
 #define COL_STDREP		11//可重复列
 
+#define EX_DEGREE		80//用于排气时的调节阀开度
+#define REG_DEGREE_ZERO	0//用于排气时的调节阀开度
+#define EX_GREQ			25//用于排气时的水泵频率
+
+#define FLAG_SUCCESS 0
+#define FLAG_FAIL    1
+
 typedef struct{
 	float flowpoint;//当前检定的流量点 m3/h
 	int	  degree;//调节阀开度
@@ -133,13 +140,13 @@ private:
 	Ui::StdMtrCoeCorrectClass ui;
 	StdMtrCorrectPraDlg* m_StdMtrCorrectPraDlg;//参数设定窗口
 	bool m_stopFlag;//当前是否为停止检定状态
-	int m_exaustSecond;//排气时间
-
+	int m_exhaustSecond;//排气时间
+	Balance_Capacity m_curBalance;//当前标准表所在管路所使用的天平
 	int m_curStdMeter;//当前被选中的标准表
 	QMap<flow_rate_wdg, QList<StdCorrectPara_PTR>> m_mapFlowPoint;//管路-<流量点, 检定量, 调节阀开度, 水泵频率>配置表
 	int m_chkTimes;//每个流量点的检定次数
 
-	QTimer *m_exaustTimer; //排气定时器
+	QTimer *m_exhaustTimer; //排气定时器
 
 
 	ComThread m_balanceThread; //天平采集线程
@@ -216,7 +223,6 @@ private:
 	int openAllValveAndPump();    //打开所有阀门和水泵
 	int closeAllValveAndPumpOpenOutValve(); //关闭所有阀门和水泵、打开防水阀
 	int closeAllFlowPointValves();//关闭所有流量点阀门
-	int startVerifyFlowPoint(int order);//开始单个流量点的检定
 	int openValve(UINT8 portno);    //打开控制阀
 	int closeValve(UINT8 portno);   //关闭控制阀
 	int operateValve(UINT8 portno); //操作控制阀：打开或者关闭
@@ -231,7 +237,7 @@ private:
 	void saveMeterConfig(flow_rate_wdg wdg);//保存标定误差
 
 	void startVerify();//开始总检定
-	void startVerifyFlowPoint(float flowrate);//开始流量点检定
+	int  startVerifyFlowPoint(StdCorrectPara_PTR flowpoint);//开始单个流量点的检定
 	void startVerifySeq(int i);//开始流量点的第i次检定
 	void stopVerify();//停止检定
 
