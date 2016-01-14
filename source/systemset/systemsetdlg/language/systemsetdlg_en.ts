@@ -2874,12 +2874,17 @@ Please check each flow point&apos;s quantity</translation>
         <translation>5</translation>
     </message>
     <message>
-        <location filename="../ui/stdcorrectpra.ui" line="288"/>
+        <location filename="../ui/stdcorrectpra.ui" line="275"/>
+        <source>Exhaust time:</source>
+        <translation>Exhaust time:</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdcorrectpra.ui" line="311"/>
         <source>Save</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="../ui/stdcorrectpra.ui" line="295"/>
+        <location filename="../ui/stdcorrectpra.ui" line="318"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
@@ -2887,104 +2892,110 @@ Please check each flow point&apos;s quantity</translation>
 <context>
     <name>StdMtrCoeCorrect</name>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="44"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="45"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1630"/>
         <source>Warning</source>
         <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="44"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="45"/>
         <source>Warning:get port set info failed!</source>
         <translation>Warning:get port set info failed!</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="127"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="124"/>
         <source>Question</source>
         <translation>Question</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="127"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="124"/>
         <source>Exit Really ?</source>
         <translation>Exit Really ?</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1048"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1138"/>
         <source>Flow Point
 (m3/h)</source>
         <translation>Flow Point
  (m³/h)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1049"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1139"/>
         <source>balance V0
 (kg)</source>
         <translation>balance V0
 (kg)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1050"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1140"/>
         <source>balance V1
 (kg)</source>
         <translation>balance V1
 (kg)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1051"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1141"/>
         <source>balance value
 (kg)</source>
         <translation>balance value
 (kg)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1052"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1142"/>
         <source>density
 (kg/L)</source>
         <translation>density
 (kg/L)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1053"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1143"/>
         <source>Actual Value
 (L)</source>
         <translation>Actual Value
 (L)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1054"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1144"/>
         <source>Stand Meter Value0
 (L)</source>
         <translation>Stand Meter Value0
 (L)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1055"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1145"/>
         <source>Stand Meter Value1
 (L)</source>
         <translation>Stand Meter Value1
 (L)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1056"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1146"/>
         <source>Stand Meter DispValue
 (L)</source>
         <translation>Stand Meter DispValue
 (L)</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1057"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1147"/>
         <source>Meter Coe</source>
         <translation>Meter Coe</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1058"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1148"/>
         <source>AVG Meter Coe</source>
         <translation>AVG Meter Coe</translation>
     </message>
     <message>
-        <location filename="../source/stdmtrcoecorrect.cpp" line="1059"/>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1149"/>
         <source>repetitiveness
 (%)</source>
         <translation>repetitiveness
 (%)</translation>
+    </message>
+    <message>
+        <location filename="../source/stdmtrcoecorrect.cpp" line="1630"/>
+        <source>exhaust air failed!</source>
+        <translation>exhaust air failed!</translation>
     </message>
 </context>
 <context>
@@ -3010,10 +3021,7 @@ Please check each flow point&apos;s quantity</translation>
         <translation type="obsolete">V1</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="391"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="493"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="595"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1904"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1906"/>
         <source>L</source>
         <translation>L</translation>
     </message>
@@ -3047,156 +3055,160 @@ Please check each flow point&apos;s quantity</translation>
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;hint：if set K Coe，please select &apos;Don&apos;t Amend State&apos;；&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;If you want to verify the accuracy of the correctted meter, please choose the verify state&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="201"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1308"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="157"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="966"/>
         <source>DN50</source>
         <translation>DN50</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="245"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1031"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="113"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="689"/>
         <source>DN3</source>
         <translation>DN3</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="292"/>
         <source>calc stand meter value</source>
-        <translation>calc stand meter value</translation>
+        <translation type="obsolete">calc stand meter value</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="337"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="610"/>
         <source>V0</source>
-        <translation>V0</translation>
+        <translation type="obsolete">V0</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="439"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="623"/>
         <source>V1</source>
-        <translation>V1</translation>
+        <translation type="obsolete">V1</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="541"/>
         <source>value</source>
-        <translation>value</translation>
+        <translation type="obsolete">value</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="656"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="310"/>
         <source>Regulator</source>
         <translation>Regulator</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="727"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="381"/>
         <source>Small</source>
         <translation>Small</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="817"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="471"/>
         <source>Mid1</source>
         <translation>Mid1</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="923"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="577"/>
         <source>Mid2</source>
         <translation>Mid2</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1013"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="667"/>
         <source>Big</source>
         <translation>Big</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1049"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1140"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1231"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1326"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="707"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="798"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="889"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="984"/>
         <source>Inst</source>
         <translation>Inst</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1090"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1159"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1272"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1367"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="748"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="817"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="930"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1025"/>
         <source>Accum</source>
         <translation>Accum</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1447"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1449"/>
         <source>DataAcquisition</source>
         <translation>DataAcquisition</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1459"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1461"/>
         <source>Big Balance: </source>
         <translation>Big Balance: </translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1475"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1504"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1477"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1506"/>
         <source>㎏  </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1488"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1490"/>
         <source>Small Balance: </source>
         <translation>Small Balance: </translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1517"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1519"/>
         <source>FlowRate:</source>
         <translation>FlowRate:</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1533"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1535"/>
         <source>m³/h</source>
         <translation>m³/h</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1546"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1548"/>
         <source>In Temp:</source>
         <translation>In Temp:</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1562"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1575"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1564"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1577"/>
         <source>℃</source>
         <translation>℃</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1588"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1590"/>
         <source>Out Temp:</source>
         <translation>Out Temp:</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1888"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1890"/>
         <source>volume:</source>
         <translation>volume:</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1980"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1948"/>
         <source>Parameter</source>
         <translation>Parameter</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="2007"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1967"/>
+        <source>Start</source>
+        <translation>Start</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1986"/>
+        <source>Go On</source>
+        <translation>Go On</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1077"/>
         <source>Controller</source>
         <translation>Controller</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="2053"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1123"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="2078"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1148"/>
         <source>i
 n</source>
         <translation>i
 n</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="2104"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1174"/>
         <source>s
 m
 a
@@ -3209,7 +3221,7 @@ l
 l</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="2133"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1203"/>
         <source>m
 i
 d
@@ -3220,7 +3232,7 @@ d
 1</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="2161"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1231"/>
         <source>m
 i
 d
@@ -3231,7 +3243,7 @@ d
 2</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="2189"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1259"/>
         <source>b
 i
 g</source>
@@ -3240,7 +3252,7 @@ i
 g</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="2216"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1286"/>
         <source>b
 i
 g
@@ -3253,7 +3265,7 @@ i
 n</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="2245"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1315"/>
         <source>b
 i
 g
@@ -3268,7 +3280,7 @@ u
 t</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="2275"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1345"/>
         <source>s
 i
 n</source>
@@ -3277,7 +3289,7 @@ i
 n</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="2302"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1372"/>
         <source>s
 o
 u
@@ -3288,12 +3300,12 @@ u
 t</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="2330"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1400"/>
         <source>Set Freq</source>
         <translation>Set Freq</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="2355"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="1425"/>
         <source>Pump</source>
         <translation>Pump</translation>
     </message>
@@ -3315,14 +3327,14 @@ t</translation>
         <translation>choose stand meter</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="113"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1122"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="201"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="780"/>
         <source>DN10</source>
         <translation>DN10</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="157"/>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1213"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="245"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="871"/>
         <source>DN25</source>
         <translation>DN25</translation>
     </message>
@@ -3383,7 +3395,7 @@ t</translation>
  (%)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1961"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="264"/>
         <source>Clear</source>
         <translation>Clear</translation>
     </message>
@@ -3392,12 +3404,12 @@ t</translation>
         <translation type="obsolete">Report</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1428"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2005"/>
         <source>Save</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrcoecorrect.ui" line="1942"/>
+        <location filename="../ui/stdmtrcoecorrect.ui" line="2024"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
@@ -3477,6 +3489,21 @@ t</translation>
 <context>
     <name>StdMtrCorrectPra</name>
     <message>
+        <source>Flow Point
+(m3/h)</source>
+        <translation type="obsolete">Flow Point
+ (m³/h)</translation>
+    </message>
+    <message>
+        <source>Check Quantity
+(kg)</source>
+        <translation type="obsolete">Check Quantity
+(kg)</translation>
+    </message>
+</context>
+<context>
+    <name>StdMtrCorrectPraDlg</name>
+    <message>
         <location filename="../source/stdcorrectpra.cpp" line="39"/>
         <source>Flow Point
 (m3/h)</source>
@@ -3489,6 +3516,16 @@ t</translation>
 (kg)</source>
         <translation>Check Quantity
 (kg)</translation>
+    </message>
+    <message>
+        <location filename="../source/stdcorrectpra.cpp" line="40"/>
+        <source>Degree</source>
+        <translation>Degree</translation>
+    </message>
+    <message>
+        <location filename="../source/stdcorrectpra.cpp" line="40"/>
+        <source>Freq</source>
+        <translation>Freq</translation>
     </message>
 </context>
 <context>
@@ -3616,26 +3653,26 @@ t</translation>
         <translation type="obsolete">DN3 Meter Coe</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrparaset.ui" line="127"/>
-        <location filename="../ui/stdmtrparaset.ui" line="760"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1393"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2026"/>
+        <location filename="../ui/stdmtrparaset.ui" line="125"/>
+        <location filename="../ui/stdmtrparaset.ui" line="781"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1437"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2093"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Flow Point(m³/h)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Flow Point(m³/h)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="183"/>
-        <location filename="../ui/stdmtrparaset.ui" line="816"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1449"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2082"/>
+        <location filename="../ui/stdmtrparaset.ui" line="181"/>
+        <location filename="../ui/stdmtrparaset.ui" line="837"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1493"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2149"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;K Coe&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;K Coe&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="291"/>
-        <location filename="../ui/stdmtrparaset.ui" line="924"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1557"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2190"/>
+        <location filename="../ui/stdmtrparaset.ui" line="285"/>
+        <location filename="../ui/stdmtrparaset.ui" line="941"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1597"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2253"/>
         <source>impulse equivalency(L/imp):</source>
         <translation>impulse equivalency(L/imp):</translation>
     </message>
@@ -3644,18 +3681,18 @@ t</translation>
         <translation type="obsolete">DN3 Param of Flow Rate</translation>
     </message>
     <message utf8="true">
-        <location filename="../ui/stdmtrparaset.ui" line="354"/>
-        <location filename="../ui/stdmtrparaset.ui" line="987"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1620"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2253"/>
+        <location filename="../ui/stdmtrparaset.ui" line="344"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1000"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1656"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2312"/>
         <source>Upper FLow(m³/h)</source>
         <translation>Upper FLow(m³/h)</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="411"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1044"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1677"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2310"/>
+        <location filename="../ui/stdmtrparaset.ui" line="394"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1050"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1706"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2362"/>
         <source>adjust coe</source>
         <translation>adjust coe</translation>
     </message>
@@ -3688,7 +3725,7 @@ t</translation>
         <translation type="obsolete">DN25 Param of Flow Rate</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2688"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2780"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Hint:Input FLowRate from big to small, the max flow and upper flow can be the same.
 There should not be space between tow flow points! K Coe: (Stand Value)/(Meter Value)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Hint:Input FLowRate from big to small, the max flow and upper flow can be the same.
@@ -3712,202 +3749,226 @@ There should not be space between tow flow points! K Coe: (Stand Value)/(Meter V
         <translation type="obsolete">DN6</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="425"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1058"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1691"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2324"/>
+        <location filename="../ui/stdmtrparaset.ui" line="407"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1063"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1719"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2375"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Inst&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Inst&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="468"/>
-        <location filename="../ui/stdmtrparaset.ui" line="578"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1101"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1211"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1734"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1844"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2367"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2477"/>
+        <location filename="../ui/stdmtrparaset.ui" line="450"/>
+        <location filename="../ui/stdmtrparaset.ui" line="556"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1106"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1212"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1762"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1868"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2418"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2524"/>
         <source>       0</source>
         <translation>       0</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="473"/>
-        <location filename="../ui/stdmtrparaset.ui" line="583"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1106"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1216"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1739"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1849"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2372"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2482"/>
+        <location filename="../ui/stdmtrparaset.ui" line="455"/>
+        <location filename="../ui/stdmtrparaset.ui" line="561"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1111"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1217"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1767"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1873"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2423"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2529"/>
         <source>       1</source>
         <translation>       1</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="478"/>
-        <location filename="../ui/stdmtrparaset.ui" line="588"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1111"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1221"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1744"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1854"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2377"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2487"/>
+        <location filename="../ui/stdmtrparaset.ui" line="460"/>
+        <location filename="../ui/stdmtrparaset.ui" line="566"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1116"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1222"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1772"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1878"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2428"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2534"/>
         <source>       2</source>
         <translation>       2</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="483"/>
-        <location filename="../ui/stdmtrparaset.ui" line="593"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1116"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1226"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1749"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1859"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2382"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2492"/>
+        <location filename="../ui/stdmtrparaset.ui" line="465"/>
+        <location filename="../ui/stdmtrparaset.ui" line="571"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1121"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1227"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1777"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1883"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2433"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2539"/>
         <source>       3</source>
         <translation>       3</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="488"/>
-        <location filename="../ui/stdmtrparaset.ui" line="598"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1121"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1231"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1754"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1864"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2387"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2497"/>
+        <location filename="../ui/stdmtrparaset.ui" line="470"/>
+        <location filename="../ui/stdmtrparaset.ui" line="576"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1126"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1232"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1782"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1888"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2438"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2544"/>
         <source>       4</source>
         <translation>       4</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="493"/>
-        <location filename="../ui/stdmtrparaset.ui" line="603"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1126"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1236"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1759"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1869"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2392"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2502"/>
+        <location filename="../ui/stdmtrparaset.ui" line="475"/>
+        <location filename="../ui/stdmtrparaset.ui" line="581"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1131"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1237"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1787"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1893"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2443"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2549"/>
         <source>       5</source>
         <translation>       5</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="498"/>
-        <location filename="../ui/stdmtrparaset.ui" line="608"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1131"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1241"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1764"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1874"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2397"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2507"/>
+        <location filename="../ui/stdmtrparaset.ui" line="480"/>
+        <location filename="../ui/stdmtrparaset.ui" line="586"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1136"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1242"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1792"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1898"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2448"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2554"/>
         <source>       6</source>
         <translation>       6</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="503"/>
-        <location filename="../ui/stdmtrparaset.ui" line="613"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1136"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1246"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1769"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1879"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2402"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2512"/>
+        <location filename="../ui/stdmtrparaset.ui" line="485"/>
+        <location filename="../ui/stdmtrparaset.ui" line="591"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1141"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1247"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1797"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1903"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2453"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2559"/>
         <source>       7</source>
         <translation>       7</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="508"/>
-        <location filename="../ui/stdmtrparaset.ui" line="618"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1141"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1251"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1774"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1884"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2407"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2517"/>
+        <location filename="../ui/stdmtrparaset.ui" line="490"/>
+        <location filename="../ui/stdmtrparaset.ui" line="596"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1146"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1252"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1802"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1908"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2458"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2564"/>
         <source>       8</source>
         <translation>       8</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="513"/>
-        <location filename="../ui/stdmtrparaset.ui" line="623"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1146"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1256"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1779"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1889"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2412"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2522"/>
+        <location filename="../ui/stdmtrparaset.ui" line="495"/>
+        <location filename="../ui/stdmtrparaset.ui" line="601"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1151"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1257"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1807"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1913"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2463"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2569"/>
         <source>       9</source>
         <translation>       9</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="518"/>
-        <location filename="../ui/stdmtrparaset.ui" line="628"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1151"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1261"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1784"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1894"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2417"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2527"/>
+        <location filename="../ui/stdmtrparaset.ui" line="500"/>
+        <location filename="../ui/stdmtrparaset.ui" line="606"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1156"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1262"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1812"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1918"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2468"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2574"/>
         <source>       10</source>
         <translation>       10</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="523"/>
-        <location filename="../ui/stdmtrparaset.ui" line="633"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1156"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1266"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1789"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1899"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2422"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2532"/>
+        <location filename="../ui/stdmtrparaset.ui" line="505"/>
+        <location filename="../ui/stdmtrparaset.ui" line="611"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1161"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1267"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1817"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1923"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2473"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2579"/>
         <source>       11</source>
         <translation>       11</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="535"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1168"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1801"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2434"/>
+        <location filename="../ui/stdmtrparaset.ui" line="513"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1169"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1825"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2481"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Accum&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Accum&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="703"/>
+        <location filename="../ui/stdmtrparaset.ui" line="639"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1295"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1951"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2607"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Balance:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Balance:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="673"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1329"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1985"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2641"/>
+        <source>SmallBalance</source>
+        <translation>SmallBalance</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="678"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1334"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1990"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2646"/>
+        <source>BigBalance</source>
+        <translation>BigBalance</translation>
+    </message>
+    <message>
+        <location filename="../ui/stdmtrparaset.ui" line="726"/>
         <source>Mid2</source>
         <translation>Mid2</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1336"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1382"/>
         <source>Mid1</source>
         <translation>Mid1</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="1969"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2038"/>
         <source>Small</source>
         <translation>Small</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2570"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2662"/>
         <source>Need Correction</source>
         <translation>Need Correction</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2576"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2668"/>
         <source>Correction</source>
         <translation>Correction</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2583"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2675"/>
         <source>Not Correction</source>
         <translation>Not Correction</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2711"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2803"/>
         <source>Save</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2718"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2810"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
@@ -3916,34 +3977,34 @@ There should not be space between tow flow points! K Coe: (Stand Value)/(Meter V
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Accum Route&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="638"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1271"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1904"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2537"/>
+        <location filename="../ui/stdmtrparaset.ui" line="616"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1272"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1928"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2584"/>
         <source>       12</source>
         <translation>       12</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="643"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1276"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1909"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2542"/>
+        <location filename="../ui/stdmtrparaset.ui" line="621"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1277"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1933"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2589"/>
         <source>       13</source>
         <translation>       13</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="648"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1281"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1914"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2547"/>
+        <location filename="../ui/stdmtrparaset.ui" line="626"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1282"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1938"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2594"/>
         <source>       14</source>
         <translation>       14</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="653"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1286"/>
-        <location filename="../ui/stdmtrparaset.ui" line="1919"/>
-        <location filename="../ui/stdmtrparaset.ui" line="2552"/>
+        <location filename="../ui/stdmtrparaset.ui" line="631"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1287"/>
+        <location filename="../ui/stdmtrparaset.ui" line="1943"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2599"/>
         <source>       15</source>
         <translation>       15</translation>
     </message>
@@ -3960,17 +4021,17 @@ There should not be space between tow flow points! K Coe: (Stand Value)/(Meter V
         <translation type="obsolete">Small</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2599"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2691"/>
         <source>Standard Meter DevNo.</source>
         <translation>Standard Meter DevNo.</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2611"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2703"/>
         <source>Instant DevNo.</source>
         <translation>Instant DevNo.</translation>
     </message>
     <message>
-        <location filename="../ui/stdmtrparaset.ui" line="2650"/>
+        <location filename="../ui/stdmtrparaset.ui" line="2742"/>
         <source>Accumulate DevNo.</source>
         <translation>Accumulate DevNo.</translation>
     </message>
