@@ -577,7 +577,7 @@ Please wait for about %1 second</source>
         <source>Please input meter number!
  then click &quot;GoOn&quot; button!</source>
         <translation>请输入表号!
- 然后点击&quot;确定&quot;按钮!</translation>
+ 然后点击&quot;继续&quot;按钮!</translation>
     </message>
     <message>
         <location filename="../flowstandard.cpp" line="1474"/>
