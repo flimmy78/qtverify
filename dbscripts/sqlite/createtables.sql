@@ -502,7 +502,7 @@ INSERT INTO "main"."T_Create_Query_View_Stmt" VALUES (1, 'temp flow_verify query
 select
   rec.F_ID F_RowId,
   rec.F_TimeStamp,
-  substr(rec.F_TimeStamp,1,16) F_TimeStamp_short,
+  substr(rec.F_TimeStamp,1,19) F_TimeStamp_short,
   substr(rec.F_MeterNo,7,8) F_MeterNo,
   rec.F_FlowPointIdx,
   round(rec.F_FlowPoint,3) F_FlowPoint,
@@ -571,7 +571,7 @@ INSERT INTO "main"."T_Create_Query_View_Stmt" VALUES (2, 'temp combined_verify q
 select
 	rec.F_ID,
     rec.F_TimeStamp,
-    substr(rec.F_TimeStamp,1,16) F_TimeStamp_short,
+    substr(rec.F_TimeStamp,1,19) F_TimeStamp_short,
 	substr(rec.F_MeterNo,7,8) F_MeterNo,
 	rec.F_Grade,
 	rec.F_DeltaTemp,
@@ -621,7 +621,7 @@ INSERT INTO "main"."T_Create_Query_View_Stmt" VALUES (3, 'temp total_verify quer
 select
 	rec.F_ID F_RowId,
     rec.F_TimeStamp,
-    substr(rec.F_TimeStamp,1,16) F_TimeStamp_short,
+    substr(rec.F_TimeStamp,1,19) F_TimeStamp_short,
 	substr(rec.F_MeterNo,7,8) F_MeterNo,
 	rec.F_FlowPointIdx,
 	round(rec.F_FlowPoint,3) F_FlowPoint,
@@ -697,7 +697,7 @@ INSERT INTO "main"."T_Create_Query_View_Stmt" VALUES (4, 'temp water_verify quer
 select
   rec.F_ID F_RowId,
   rec.F_TimeStamp,
-  substr(rec.F_TimeStamp,1,16) F_TimeStamp_short,
+  substr(rec.F_TimeStamp,1,19) F_TimeStamp_short,
   substr(rec.F_MeterNo,7,8) F_MeterNo,
   rec.F_FlowPointIdx,
   round(rec.F_FlowPoint,3) F_FlowPoint,
