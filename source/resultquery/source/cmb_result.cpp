@@ -238,7 +238,7 @@ void CmbResultDlg::queryData()
 	model->setHeaderData(17, Qt::Horizontal, QObject::tr("StdResistIn"));//入口电阻-标准温度计(Ω)
 	model->setHeaderData(18, Qt::Horizontal, QObject::tr("StdResistOut"));//出口电阻-标准温度计(Ω)
 	model->setHeaderData(19, Qt::Horizontal, QObject::tr("Kcoe"));//K系数
-	model->setHeaderData(20, Qt::Horizontal, QObject::tr("StdValue"));//理论值(热量，kwh)
+	model->setHeaderData(20, Qt::Horizontal, QObject::tr("StdValueE"));//理论值(热量，kwh)
 	model->setHeaderData(21, Qt::Horizontal, QObject::tr("MeterV0"));//热量表初值(体积)，单位L
 	model->setHeaderData(22, Qt::Horizontal, QObject::tr("MeterV1"));//热量表终值(体积)，单位L
 	model->setHeaderData(23, Qt::Horizontal, QObject::tr("MeterE0"));//热量表初值(热量)，单位kWh

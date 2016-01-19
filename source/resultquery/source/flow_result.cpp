@@ -278,18 +278,18 @@ void FlowResultDlg::queryData()
 	//设置水平标题
 	model->setHeaderData(1, Qt::Horizontal, QObject::tr("time"));//时间
 	model->setHeaderData(2, Qt::Horizontal, QObject::tr("MeterNO."));//表号
-	model->setHeaderData(3, Qt::Horizontal, QObject::tr("FlowPoint"));//流量点
-	model->setHeaderData(4, Qt::Horizontal, QObject::tr("Flow"));//流量
+	model->setHeaderData(3, Qt::Horizontal, QObject::tr("FlowPointIdx"));//流量点索引，例如1、2、3、4
+	model->setHeaderData(4, Qt::Horizontal, QObject::tr("FlowPoint"));//流量点(m3/h)
 	model->setHeaderData(5, Qt::Horizontal, QObject::tr("Method"));//检定方法 0:质量法；1:标准表法
-	model->setHeaderData(6, Qt::Horizontal, QObject::tr("MeterValue0"));//热表初值
-	model->setHeaderData(7, Qt::Horizontal, QObject::tr("MeterValue1"));//热表终值
+	model->setHeaderData(6, Qt::Horizontal, QObject::tr("MeterV0"));//热表初值
+	model->setHeaderData(7, Qt::Horizontal, QObject::tr("MeterV1"));//热表终值
 	model->setHeaderData(8, Qt::Horizontal, QObject::tr("BalValue0"));//天平初值
 	model->setHeaderData(9, Qt::Horizontal, QObject::tr("BalValue1"));//天平终值
 	model->setHeaderData(10, Qt::Horizontal, QObject::tr("F_StdMeterV0"));//标准表初值
 	model->setHeaderData(11, Qt::Horizontal, QObject::tr("F_StdMeterV1"));//标准表终值
 	model->setHeaderData(12, Qt::Horizontal, QObject::tr("PipeTemp"));//管路温度
 	model->setHeaderData(13, Qt::Horizontal, QObject::tr("Density"));//密度
-	model->setHeaderData(14, Qt::Horizontal, QObject::tr("StdValue"));//标准值
+	model->setHeaderData(14, Qt::Horizontal, QObject::tr("StdValueVol"));//标准值
 	model->setHeaderData(15, Qt::Horizontal, QObject::tr("Error"));//误差
 	model->setHeaderData(16, Qt::Horizontal, QObject::tr("StdError"));//合格标准
 	model->setHeaderData(17, Qt::Horizontal, QObject::tr("Result"));//合格标志

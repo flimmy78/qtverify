@@ -204,8 +204,8 @@ void TotalResultDlg::queryData()
 	model->setHeaderData(3, Qt::Horizontal, QObject::tr("FlowPointIdx"));//流量点索引，例如1,2,3,4...
 	model->setHeaderData(4, Qt::Horizontal, QObject::tr("FlowPoint"));//流量点数值，单位m3/h
 	//model->setHeaderData(5, Qt::Horizontal, QObject::tr("MethodFlag"));//方法标志：0(质量法)；1(标准表法)
-	model->setHeaderData(6, Qt::Horizontal, QObject::tr("MeterValue0"));//热量表初值（热量），单位kwh
-	model->setHeaderData(7, Qt::Horizontal, QObject::tr("MeterValue1"));//热量表终值（热量），单位kwh
+	model->setHeaderData(6, Qt::Horizontal, QObject::tr("MeterE0"));//热量表初值（热量），单位kwh
+	model->setHeaderData(7, Qt::Horizontal, QObject::tr("MeterE1"));//热量表终值（热量），单位kwh
 	model->setHeaderData(8, Qt::Horizontal, QObject::tr("BalWeight0"));//天平初值（重量），单位kg（质量法使用）
 	model->setHeaderData(9, Qt::Horizontal, QObject::tr("BalWeight1"));//天平终值（重量），单位kg（质量法使用）
 	model->setHeaderData(10, Qt::Horizontal, QObject::tr("StdMeterV0"));//标准表初值（体积），单位L（标准表法使用）
@@ -214,7 +214,7 @@ void TotalResultDlg::queryData()
 	model->setHeaderData(13, Qt::Horizontal, QObject::tr("OutSlotTemper"));//恒温槽出口温度，单位℃
 	model->setHeaderData(14, Qt::Horizontal, QObject::tr("PipeTemper"));//分配到每个表位的温度，单位℃
 	model->setHeaderData(15, Qt::Horizontal, QObject::tr("Density"));//分配到每个表位的密度，单位kg/L
-	model->setHeaderData(16, Qt::Horizontal, QObject::tr("StandValue"));//经过修正的标准值，单位kwh
+	model->setHeaderData(16, Qt::Horizontal, QObject::tr("StdValueE"));//经过修正的标准值，单位kwh
 	model->setHeaderData(17, Qt::Horizontal, QObject::tr("DispError"));//示值误差，单位%
 	model->setHeaderData(18, Qt::Horizontal, QObject::tr("StdError"));//要求误差(合格标准),单位%
 	model->setHeaderData(19, Qt::Horizontal, QObject::tr("Result"));//检定结果（1：合格，0：不合格）----------

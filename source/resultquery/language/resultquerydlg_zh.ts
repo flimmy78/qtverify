@@ -467,62 +467,62 @@
 <context>
     <name>FlowResultDlg</name>
     <message>
-        <location filename="../source/flow_result.cpp" line="343"/>
+        <location filename="../source/flow_result.cpp" line="349"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="343"/>
+        <location filename="../source/flow_result.cpp" line="349"/>
         <source>no data need to be exported!</source>
         <translation>无数据导出!</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="347"/>
+        <location filename="../source/flow_result.cpp" line="353"/>
         <source>Save File</source>
         <translation>保存文件</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="347"/>
+        <location filename="../source/flow_result.cpp" line="353"/>
         <source>Microsoft Excel (*.xls)</source>
         <translation>Microsoft Excel (*.xls)</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="358"/>
+        <location filename="../source/flow_result.cpp" line="364"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="358"/>
+        <location filename="../source/flow_result.cpp" line="364"/>
         <source>export excel file successful!</source>
         <translation>导出报告成功!</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="362"/>
+        <location filename="../source/flow_result.cpp" line="368"/>
         <source>Error</source>
         <translation>示值误差</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="403"/>
+        <location filename="../source/flow_result.cpp" line="409"/>
         <source>Database Query Error</source>
         <translation>数据库查询错误</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="418"/>
+        <location filename="../source/flow_result.cpp" line="424"/>
         <source>hint</source>
         <translation>提示</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="418"/>
+        <location filename="../source/flow_result.cpp" line="424"/>
         <source>no record need to import</source>
         <translation>没有数据！请先查询数据！</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="474"/>
+        <location filename="../source/flow_result.cpp" line="480"/>
         <source>Import Success</source>
         <translation>导入成功！</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="479"/>
+        <location filename="../source/flow_result.cpp" line="485"/>
         <source>Import Failed</source>
         <translation>导入失败！</translation>
     </message>
@@ -593,98 +593,90 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../source/flow_result.cpp" line="273"/>
-        <location filename="../source/water_result.cpp" line="273"/>
+        <location filename="../source/flow_result.cpp" line="279"/>
+        <location filename="../source/water_result.cpp" line="279"/>
         <source>time</source>
         <translation>时间</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="274"/>
-        <location filename="../source/water_result.cpp" line="274"/>
+        <location filename="../source/flow_result.cpp" line="280"/>
+        <location filename="../source/water_result.cpp" line="280"/>
         <source>MeterNO.</source>
         <translation>表号</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="275"/>
-        <location filename="../source/total_result.cpp" line="205"/>
-        <location filename="../source/water_result.cpp" line="275"/>
-        <source>FlowPoint</source>
-        <translation>流量点</translation>
-    </message>
-    <message>
-        <location filename="../source/flow_result.cpp" line="276"/>
-        <location filename="../source/water_result.cpp" line="276"/>
-        <source>Flow</source>
-        <translation>流量</translation>
-    </message>
-    <message>
-        <location filename="../source/flow_result.cpp" line="277"/>
-        <location filename="../source/water_result.cpp" line="277"/>
-        <source>Method</source>
-        <translation>检定方法</translation>
-    </message>
-    <message>
-        <location filename="../source/flow_result.cpp" line="278"/>
-        <location filename="../source/total_result.cpp" line="207"/>
-        <location filename="../source/water_result.cpp" line="278"/>
-        <source>MeterValue0</source>
-        <translation>初值</translation>
-    </message>
-    <message>
-        <location filename="../source/flow_result.cpp" line="279"/>
-        <location filename="../source/total_result.cpp" line="208"/>
-        <location filename="../source/water_result.cpp" line="279"/>
-        <source>MeterValue1</source>
-        <translation>终值</translation>
-    </message>
-    <message>
-        <location filename="../source/flow_result.cpp" line="280"/>
-        <location filename="../source/water_result.cpp" line="280"/>
-        <source>BalValue0</source>
-        <translation>天平初值</translation>
-    </message>
-    <message>
-        <location filename="../source/flow_result.cpp" line="281"/>
-        <location filename="../source/water_result.cpp" line="281"/>
-        <source>BalValue1</source>
-        <translation>天平终值</translation>
-    </message>
-    <message>
         <location filename="../source/flow_result.cpp" line="282"/>
+        <location filename="../source/total_result.cpp" line="205"/>
         <location filename="../source/water_result.cpp" line="282"/>
-        <source>F_StdMeterV0</source>
-        <translation>标准表初值</translation>
+        <source>FlowPoint</source>
+        <translation>流量点(m³/h)</translation>
+    </message>
+    <message>
+        <source>Flow</source>
+        <translation type="obsolete">流量(m³/h)</translation>
     </message>
     <message>
         <location filename="../source/flow_result.cpp" line="283"/>
         <location filename="../source/water_result.cpp" line="283"/>
+        <source>Method</source>
+        <translation>检定方法</translation>
+    </message>
+    <message>
+        <source>MeterValue0</source>
+        <translation type="obsolete">表初值(L)</translation>
+    </message>
+    <message>
+        <source>MeterValue1</source>
+        <translation type="obsolete">表终值(L)</translation>
+    </message>
+    <message>
+        <location filename="../source/flow_result.cpp" line="286"/>
+        <location filename="../source/water_result.cpp" line="286"/>
+        <source>BalValue0</source>
+        <translation>天平初值(kg)</translation>
+    </message>
+    <message>
+        <location filename="../source/flow_result.cpp" line="287"/>
+        <location filename="../source/water_result.cpp" line="287"/>
+        <source>BalValue1</source>
+        <translation>天平终值(kg)</translation>
+    </message>
+    <message>
+        <location filename="../source/flow_result.cpp" line="288"/>
+        <location filename="../source/water_result.cpp" line="288"/>
+        <source>F_StdMeterV0</source>
+        <translation>标准表初值(L)</translation>
+    </message>
+    <message>
+        <location filename="../source/flow_result.cpp" line="289"/>
+        <location filename="../source/water_result.cpp" line="289"/>
         <source>F_StdMeterV1</source>
-        <translation>标准表终值</translation>
+        <translation>标准表终值(L)</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="284"/>
-        <location filename="../source/water_result.cpp" line="284"/>
+        <location filename="../source/flow_result.cpp" line="290"/>
+        <location filename="../source/water_result.cpp" line="290"/>
         <source>PipeTemp</source>
-        <translation>管路温度</translation>
+        <translation>管路温度(℃)</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="285"/>
+        <location filename="../source/flow_result.cpp" line="291"/>
         <location filename="../source/total_result.cpp" line="216"/>
-        <location filename="../source/water_result.cpp" line="285"/>
+        <location filename="../source/water_result.cpp" line="291"/>
         <source>Density</source>
-        <translation>水的密度</translation>
+        <translation>水的密度(kg/m³)</translation>
     </message>
     <message>
         <location filename="../source/cmb_result.cpp" line="226"/>
-        <location filename="../source/flow_result.cpp" line="293"/>
+        <location filename="../source/flow_result.cpp" line="299"/>
         <location filename="../source/total_result.cpp" line="224"/>
-        <location filename="../source/water_result.cpp" line="293"/>
+        <location filename="../source/water_result.cpp" line="299"/>
         <source>PickCode</source>
         <translation>采集代码</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="306"/>
-        <location filename="../source/water_result.cpp" line="306"/>
+        <location filename="../source/flow_result.cpp" line="312"/>
+        <location filename="../source/water_result.cpp" line="312"/>
         <source>FlowCoe</source>
         <translation>流量系数</translation>
     </message>
@@ -708,82 +700,89 @@
     <message>
         <location filename="../source/cmb_result.cpp" line="231"/>
         <source>DeltaTemp </source>
-        <translation>温差</translation>
+        <translation>温差(℃)</translation>
     </message>
     <message>
         <location filename="../source/cmb_result.cpp" line="232"/>
         <source>VerifyVolume </source>
-        <translation>检定量</translation>
+        <translation>检定量(L)</translation>
     </message>
     <message>
         <location filename="../source/cmb_result.cpp" line="233"/>
         <source>DeltaTempMin </source>
-        <translation>最小温差</translation>
+        <translation>最小温差(℃)</translation>
     </message>
     <message>
         <location filename="../source/cmb_result.cpp" line="241"/>
-        <location filename="../source/flow_result.cpp" line="286"/>
-        <location filename="../source/water_result.cpp" line="286"/>
+        <location filename="../source/total_result.cpp" line="217"/>
+        <source>StdValueE</source>
+        <translation>标准值(kwh)</translation>
+    </message>
+    <message>
         <source>StdValue</source>
-        <translation>标准值</translation>
+        <translation type="obsolete">标准值</translation>
     </message>
     <message>
         <location filename="../source/cmb_result.cpp" line="242"/>
+        <location filename="../source/flow_result.cpp" line="284"/>
+        <location filename="../source/water_result.cpp" line="284"/>
         <source>MeterV0</source>
-        <translation>初始体积</translation>
+        <translation>表初值(L)</translation>
     </message>
     <message>
         <location filename="../source/cmb_result.cpp" line="243"/>
+        <location filename="../source/flow_result.cpp" line="285"/>
+        <location filename="../source/water_result.cpp" line="285"/>
         <source>MeterV1</source>
-        <translation>终止体积</translation>
+        <translation>表终值(L)</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="287"/>
-        <location filename="../source/water_result.cpp" line="287"/>
+        <location filename="../source/flow_result.cpp" line="293"/>
+        <location filename="../source/water_result.cpp" line="293"/>
         <source>Error</source>
-        <translation>示值误差</translation>
+        <translation>示值误差(%)</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="165"/>
         <location filename="../source/cmb_result.cpp" line="247"/>
-        <location filename="../source/flow_result.cpp" line="288"/>
+        <location filename="../source/flow_result.cpp" line="294"/>
         <location filename="../source/total_result.cpp" line="219"/>
-        <location filename="../source/water_result.cpp" line="288"/>
+        <location filename="../source/water_result.cpp" line="294"/>
         <source>StdError</source>
-        <translation>标准误差</translation>
+        <translation>标准误差（%）</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="166"/>
         <location filename="../source/cmb_result.cpp" line="248"/>
-        <location filename="../source/flow_result.cpp" line="289"/>
+        <location filename="../source/flow_result.cpp" line="295"/>
         <location filename="../source/total_result.cpp" line="220"/>
-        <location filename="../source/water_result.cpp" line="289"/>
+        <location filename="../source/water_result.cpp" line="295"/>
         <source>Result</source>
         <translation>检定结果</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="290"/>
-        <location filename="../source/water_result.cpp" line="290"/>
+        <location filename="../source/flow_result.cpp" line="296"/>
+        <location filename="../source/water_result.cpp" line="296"/>
         <source>MeterPosNO.</source>
         <translation>表位号</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="142"/>
         <location filename="../source/cmb_result.cpp" line="225"/>
-        <location filename="../source/flow_result.cpp" line="291"/>
+        <location filename="../source/flow_result.cpp" line="297"/>
         <location filename="../source/platinum_result.cpp" line="126"/>
         <location filename="../source/total_result.cpp" line="222"/>
-        <location filename="../source/water_result.cpp" line="291"/>
+        <location filename="../source/water_result.cpp" line="297"/>
         <source>Model</source>
         <translation>型号</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="141"/>
         <location filename="../source/cmb_result.cpp" line="224"/>
-        <location filename="../source/flow_result.cpp" line="292"/>
+        <location filename="../source/flow_result.cpp" line="298"/>
         <location filename="../source/platinum_result.cpp" line="125"/>
         <location filename="../source/total_result.cpp" line="223"/>
-        <location filename="../source/water_result.cpp" line="292"/>
+        <location filename="../source/water_result.cpp" line="298"/>
         <source>Standard</source>
         <translation>规格</translation>
     </message>
@@ -794,29 +793,29 @@
     <message>
         <location filename="../source/calculator_result.cpp" line="144"/>
         <location filename="../source/cmb_result.cpp" line="228"/>
-        <location filename="../source/flow_result.cpp" line="294"/>
+        <location filename="../source/flow_result.cpp" line="300"/>
         <location filename="../source/platinum_result.cpp" line="127"/>
         <location filename="../source/total_result.cpp" line="225"/>
-        <location filename="../source/water_result.cpp" line="294"/>
+        <location filename="../source/water_result.cpp" line="300"/>
         <source>ManufactDept</source>
         <translation>制造厂商</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="145"/>
         <location filename="../source/cmb_result.cpp" line="229"/>
-        <location filename="../source/flow_result.cpp" line="295"/>
+        <location filename="../source/flow_result.cpp" line="301"/>
         <location filename="../source/platinum_result.cpp" line="128"/>
         <location filename="../source/total_result.cpp" line="226"/>
-        <location filename="../source/water_result.cpp" line="295"/>
+        <location filename="../source/water_result.cpp" line="301"/>
         <source>VerifyDept</source>
         <translation>送检机构</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="143"/>
         <location filename="../source/cmb_result.cpp" line="227"/>
-        <location filename="../source/flow_result.cpp" line="296"/>
+        <location filename="../source/flow_result.cpp" line="302"/>
         <location filename="../source/total_result.cpp" line="227"/>
-        <location filename="../source/water_result.cpp" line="296"/>
+        <location filename="../source/water_result.cpp" line="302"/>
         <source>Grade</source>
         <translation>等级</translation>
     </message>
@@ -839,32 +838,32 @@
     <message>
         <location filename="../source/calculator_result.cpp" line="146"/>
         <location filename="../source/cmb_result.cpp" line="230"/>
-        <location filename="../source/flow_result.cpp" line="297"/>
+        <location filename="../source/flow_result.cpp" line="303"/>
         <location filename="../source/platinum_result.cpp" line="130"/>
         <location filename="../source/total_result.cpp" line="228"/>
-        <location filename="../source/water_result.cpp" line="297"/>
+        <location filename="../source/water_result.cpp" line="303"/>
         <source>VerifyPerson</source>
         <translation>检定员</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="147"/>
         <source>TempMax</source>
-        <translation>最大温度</translation>
+        <translation>最大温度(℃)</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="148"/>
         <source>TempMin</source>
-        <translation>最小温度</translation>
+        <translation>最小温度(℃)</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="149"/>
         <source>DeltaTempMax</source>
-        <translation>最大温差</translation>
+        <translation>最大温差(℃)</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="150"/>
         <source>DeltaTempMin</source>
-        <translation>最小温差</translation>
+        <translation>最小温差(℃)</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="151"/>
@@ -887,30 +886,30 @@
         <location filename="../source/calculator_result.cpp" line="154"/>
         <location filename="../source/cmb_result.cpp" line="236"/>
         <source>StdTempIn</source>
-        <translation>进口标准温度</translation>
+        <translation>进口标准温度(℃)</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="155"/>
         <location filename="../source/cmb_result.cpp" line="237"/>
         <source>StdTempOut</source>
-        <translation>出口标准温度</translation>
+        <translation>出口标准温度(℃)</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="156"/>
         <location filename="../source/cmb_result.cpp" line="238"/>
         <source>StdResistIn</source>
-        <translation>进口标准电阻</translation>
+        <translation>进口标准电阻(Ω)</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="157"/>
         <location filename="../source/cmb_result.cpp" line="239"/>
         <source>StdResistOut</source>
-        <translation>出口标准电阻</translation>
+        <translation>出口标准电阻(Ω)</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="158"/>
         <source>RecomVolume</source>
-        <translation>推荐流量</translation>
+        <translation>建议检定量(L)</translation>
     </message>
     <message>
         <source>ProposedVolume</source>
@@ -919,7 +918,7 @@
     <message>
         <location filename="../source/calculator_result.cpp" line="159"/>
         <source>SimulateVolume</source>
-        <translation>模拟流量</translation>
+        <translation>模拟检定量(L)</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="160"/>
@@ -935,74 +934,82 @@
     <message>
         <location filename="../source/calculator_result.cpp" line="162"/>
         <location filename="../source/cmb_result.cpp" line="244"/>
+        <location filename="../source/total_result.cpp" line="207"/>
         <source>MeterE0</source>
-        <translation>热表初值</translation>
+        <translation>表初值(kwh)</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="163"/>
         <location filename="../source/cmb_result.cpp" line="245"/>
+        <location filename="../source/total_result.cpp" line="208"/>
         <source>MeterE1</source>
-        <translation>热表终值</translation>
+        <translation>表终值(kwh)</translation>
     </message>
     <message>
         <location filename="../source/calculator_result.cpp" line="164"/>
         <location filename="../source/cmb_result.cpp" line="246"/>
         <location filename="../source/total_result.cpp" line="218"/>
         <source>DispError</source>
-        <translation>示值误差</translation>
+        <translation>示值误差(%)</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="298"/>
+        <location filename="../source/flow_result.cpp" line="292"/>
+        <location filename="../source/water_result.cpp" line="292"/>
+        <source>StdValueVol</source>
+        <translation>标准值(L)</translation>
+    </message>
+    <message>
+        <location filename="../source/flow_result.cpp" line="304"/>
         <location filename="../source/platinum_result.cpp" line="129"/>
         <location filename="../source/total_result.cpp" line="229"/>
-        <location filename="../source/water_result.cpp" line="298"/>
+        <location filename="../source/water_result.cpp" line="304"/>
         <source>CheckPerson</source>
         <translation>核验员</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="299"/>
-        <location filename="../source/water_result.cpp" line="299"/>
+        <location filename="../source/flow_result.cpp" line="305"/>
+        <location filename="../source/water_result.cpp" line="305"/>
         <source>DeviceInfoId</source>
         <translation>设备信息号</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="300"/>
+        <location filename="../source/flow_result.cpp" line="306"/>
         <location filename="../source/total_result.cpp" line="231"/>
-        <location filename="../source/water_result.cpp" line="300"/>
+        <location filename="../source/water_result.cpp" line="306"/>
         <source>VerifyDate</source>
         <translation>检定日期</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="301"/>
+        <location filename="../source/flow_result.cpp" line="307"/>
         <location filename="../source/total_result.cpp" line="232"/>
-        <location filename="../source/water_result.cpp" line="301"/>
+        <location filename="../source/water_result.cpp" line="307"/>
         <source>ValidDate</source>
         <translation>有效日期</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="302"/>
-        <location filename="../source/water_result.cpp" line="302"/>
+        <location filename="../source/flow_result.cpp" line="308"/>
+        <location filename="../source/water_result.cpp" line="308"/>
         <source>EnvTemp</source>
-        <translation>环境温度</translation>
+        <translation>环境温度(℃)</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="303"/>
+        <location filename="../source/flow_result.cpp" line="309"/>
         <location filename="../source/total_result.cpp" line="234"/>
-        <location filename="../source/water_result.cpp" line="303"/>
+        <location filename="../source/water_result.cpp" line="309"/>
         <source>EnvHumidity</source>
-        <translation>环境湿度</translation>
+        <translation>环境湿度(%)</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="304"/>
+        <location filename="../source/flow_result.cpp" line="310"/>
         <location filename="../source/total_result.cpp" line="235"/>
-        <location filename="../source/water_result.cpp" line="304"/>
+        <location filename="../source/water_result.cpp" line="310"/>
         <source>AirPressure</source>
-        <translation>大气压力</translation>
+        <translation>大气压力(kPa)</translation>
     </message>
     <message>
-        <location filename="../source/flow_result.cpp" line="305"/>
+        <location filename="../source/flow_result.cpp" line="311"/>
         <location filename="../source/total_result.cpp" line="236"/>
-        <location filename="../source/water_result.cpp" line="305"/>
+        <location filename="../source/water_result.cpp" line="311"/>
         <source>CertNO</source>
         <translation>证书编号</translation>
     </message>
@@ -1014,12 +1021,12 @@
     <message>
         <location filename="../source/platinum_result.cpp" line="131"/>
         <source>MinTmpDiff</source>
-        <translation>最小温差</translation>
+        <translation>最小温差(℃）</translation>
     </message>
     <message>
         <location filename="../source/platinum_result.cpp" line="132"/>
         <source>TmpDiff</source>
-        <translation>实际温差</translation>
+        <translation>实际温差(℃）</translation>
     </message>
     <message>
         <location filename="../source/platinum_result.cpp" line="133"/>
@@ -1029,22 +1036,22 @@
     <message>
         <location filename="../source/platinum_result.cpp" line="134"/>
         <source>StdInRresis</source>
-        <translation>进口标准电阻</translation>
+        <translation>进口标准电阻(Ω）</translation>
     </message>
     <message>
         <location filename="../source/platinum_result.cpp" line="135"/>
         <source>StdOutRresis</source>
-        <translation>出口标准电阻</translation>
+        <translation>出口标准电阻(Ω)</translation>
     </message>
     <message>
         <location filename="../source/platinum_result.cpp" line="136"/>
         <source>StdInTmp</source>
-        <translation>进口标准温度</translation>
+        <translation>进口标准温度(℃)</translation>
     </message>
     <message>
         <location filename="../source/platinum_result.cpp" line="137"/>
         <source>StdOutTmp</source>
-        <translation>出口标准温度</translation>
+        <translation>出口标准温度(℃)</translation>
     </message>
     <message>
         <location filename="../source/platinum_result.cpp" line="138"/>
@@ -1054,22 +1061,22 @@
     <message>
         <location filename="../source/platinum_result.cpp" line="139"/>
         <source>PlaInRresis</source>
-        <translation>进口电阻</translation>
+        <translation>进口电阻(Ω)</translation>
     </message>
     <message>
         <location filename="../source/platinum_result.cpp" line="140"/>
         <source>PlaOutRresis</source>
-        <translation>出口电阻</translation>
+        <translation>出口电阻(Ω)</translation>
     </message>
     <message>
         <location filename="../source/platinum_result.cpp" line="141"/>
         <source>PlaInTmp</source>
-        <translation>进口温度</translation>
+        <translation>进口温度(℃)</translation>
     </message>
     <message>
         <location filename="../source/platinum_result.cpp" line="142"/>
         <source>PlaOutTmp</source>
-        <translation>出口温度</translation>
+        <translation>出口温度(℃)</translation>
     </message>
     <message>
         <location filename="../source/platinum_result.cpp" line="143"/>
@@ -1142,49 +1149,50 @@
         <translation>表号</translation>
     </message>
     <message>
+        <location filename="../source/flow_result.cpp" line="281"/>
         <location filename="../source/total_result.cpp" line="204"/>
+        <location filename="../source/water_result.cpp" line="281"/>
         <source>FlowPointIdx</source>
         <translation>流量点索引</translation>
     </message>
     <message>
         <location filename="../source/total_result.cpp" line="209"/>
         <source>BalWeight0</source>
-        <translation>天平初值</translation>
+        <translation>天平初值(kg)</translation>
     </message>
     <message>
         <location filename="../source/total_result.cpp" line="210"/>
         <source>BalWeight1</source>
-        <translation>天平终值</translation>
+        <translation>天平终值(kg)</translation>
     </message>
     <message>
         <location filename="../source/total_result.cpp" line="211"/>
         <source>StdMeterV0</source>
-        <translation>标准表初值</translation>
+        <translation>标准表初值(L)</translation>
     </message>
     <message>
         <location filename="../source/total_result.cpp" line="212"/>
         <source>StdMeterV1</source>
-        <translation>标准表终值</translation>
+        <translation>标准表终值(L)</translation>
     </message>
     <message>
         <location filename="../source/total_result.cpp" line="213"/>
         <source>InSlotTemper</source>
-        <translation>恒温槽进口温度</translation>
+        <translation>恒温槽进口温度(℃)</translation>
     </message>
     <message>
         <location filename="../source/total_result.cpp" line="214"/>
         <source>OutSlotTemper</source>
-        <translation>恒温槽出口温度</translation>
+        <translation>恒温槽出口温度(℃)</translation>
     </message>
     <message>
         <location filename="../source/total_result.cpp" line="215"/>
         <source>PipeTemper</source>
-        <translation>表位温度</translation>
+        <translation>表位温度(℃)</translation>
     </message>
     <message>
-        <location filename="../source/total_result.cpp" line="217"/>
         <source>StandValue</source>
-        <translation>标准值</translation>
+        <translation type="obsolete">标准值</translation>
     </message>
     <message>
         <location filename="../source/total_result.cpp" line="221"/>
@@ -1199,7 +1207,7 @@
     <message>
         <location filename="../source/total_result.cpp" line="233"/>
         <source>EnvTemper</source>
-        <translation>环境温度</translation>
+        <translation>环境温度(℃）</translation>
     </message>
     <message>
         <location filename="../source/total_result.cpp" line="237"/>
@@ -1207,9 +1215,9 @@
         <translation>总量系数</translation>
     </message>
     <message>
-        <location filename="../source/water_result.cpp" line="307"/>
+        <location filename="../source/water_result.cpp" line="313"/>
         <source>WaterPress</source>
-        <translation>水压</translation>
+        <translation>水压（MPa)</translation>
     </message>
 </context>
 <context>
@@ -1366,17 +1374,17 @@
         <translation>Microsoft Excel (*.xls)</translation>
     </message>
     <message>
-        <location filename="../source/total_result.cpp" line="283"/>
+        <location filename="../source/total_result.cpp" line="284"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../source/total_result.cpp" line="283"/>
+        <location filename="../source/total_result.cpp" line="284"/>
         <source>export excel file successful!</source>
         <translation>导出报告成功!</translation>
     </message>
     <message>
-        <location filename="../source/total_result.cpp" line="287"/>
+        <location filename="../source/total_result.cpp" line="288"/>
         <source>Error</source>
         <translation>示值误差</translation>
     </message>
@@ -1609,62 +1617,62 @@
 <context>
     <name>WaterResultDlg</name>
     <message>
-        <location filename="../source/water_result.cpp" line="344"/>
+        <location filename="../source/water_result.cpp" line="350"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../source/water_result.cpp" line="344"/>
+        <location filename="../source/water_result.cpp" line="350"/>
         <source>no data need to be exported!</source>
         <translation>无数据导出!</translation>
     </message>
     <message>
-        <location filename="../source/water_result.cpp" line="348"/>
+        <location filename="../source/water_result.cpp" line="354"/>
         <source>Save File</source>
         <translation>保存文件</translation>
     </message>
     <message>
-        <location filename="../source/water_result.cpp" line="348"/>
+        <location filename="../source/water_result.cpp" line="354"/>
         <source>Microsoft Excel (*.xls)</source>
         <translation>Microsoft Excel (*.xls)</translation>
     </message>
     <message>
-        <location filename="../source/water_result.cpp" line="359"/>
+        <location filename="../source/water_result.cpp" line="365"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../source/water_result.cpp" line="359"/>
+        <location filename="../source/water_result.cpp" line="365"/>
         <source>export excel file successful!</source>
         <translation>导出报告成功!</translation>
     </message>
     <message>
-        <location filename="../source/water_result.cpp" line="363"/>
+        <location filename="../source/water_result.cpp" line="369"/>
         <source>Error</source>
         <translation>示值误差</translation>
     </message>
     <message>
-        <location filename="../source/water_result.cpp" line="404"/>
+        <location filename="../source/water_result.cpp" line="410"/>
         <source>Database Query Error</source>
         <translation>数据库查询错误</translation>
     </message>
     <message>
-        <location filename="../source/water_result.cpp" line="419"/>
+        <location filename="../source/water_result.cpp" line="425"/>
         <source>hint</source>
         <translation>提示</translation>
     </message>
     <message>
-        <location filename="../source/water_result.cpp" line="419"/>
+        <location filename="../source/water_result.cpp" line="425"/>
         <source>no record need to import</source>
         <translation>没有数据！请先查询数据！</translation>
     </message>
     <message>
-        <location filename="../source/water_result.cpp" line="475"/>
+        <location filename="../source/water_result.cpp" line="481"/>
         <source>Import Success</source>
         <translation>导入成功！</translation>
     </message>
     <message>
-        <location filename="../source/water_result.cpp" line="480"/>
+        <location filename="../source/water_result.cpp" line="486"/>
         <source>Import Failed</source>
         <translation>导入失败！</translation>
     </message>
