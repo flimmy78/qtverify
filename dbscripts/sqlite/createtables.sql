@@ -489,20 +489,16 @@ insert into T_Verify_Device_Info values(6, '航天德鲁检定装置', 'ADE20158
 -----------------------------------------------------------------
 --                    临时视图创建语句表                     ----
 -----------------------------------------------------------------
-drop table if exists T_Create_Query_View_Stmt;
-create table T_Create_Query_View_Stmt
+
+DROP TABLE IF EXISTS "main"."T_Create_Query_View_Stmt";
+CREATE TABLE T_Create_Query_View_Stmt
 (
   F_ID integer not null primary key autoincrement,
   F_DESC varchar(50),  
   F_STMT varchar(5000)
 );
 
-INSERT INTO T_Create_Query_View_Stmt
-(F_ID, F_DESC, F_STMT) values
-(
-1,
- 'temp flow_verify query result view', 
- 'CREATE view V_Temp_Flow_Query_Result as
+INSERT INTO "main"."T_Create_Query_View_Stmt" VALUES (1, 'temp flow_verify query result view', 'CREATE view V_Temp_Flow_Query_Result as
 select
   rec.F_ID F_RowId,
   rec.F_TimeStamp,
@@ -569,16 +565,9 @@ select
 	T_Yes_No_Tab  yesno on rec.F_Result=yesno.F_ID left join
     T_User_Def_Tab usert on rec.F_VerifyPerson=usert.F_ID left join
 	T_Verify_Device_Info d on rec.F_DeviceInfoID=d.F_ID
-	order by rec.F_MeterPosNo, rec.f_meterno, rec.f_timestamp
-;'
-);
-
-INSERT INTO T_Create_Query_View_Stmt
-(F_ID, F_DESC, F_STMT) values
-(
-2,
- 'temp combined_verify query result view', 
- 'CREATE view V_Temp_Cmb_Query_Result as
+	order by  rec.f_timestamp, rec.F_MeterPosNo, rec.f_meterno
+;');
+INSERT INTO "main"."T_Create_Query_View_Stmt" VALUES (2, 'temp combined_verify query result view', 'CREATE view V_Temp_Cmb_Query_Result as
 select
 	rec.F_ID,
     rec.F_TimeStamp,
@@ -626,16 +615,9 @@ from
 	T_Verify_Dept vdpt on rec.F_VerifyDept=vdpt.F_ID left join
 	T_Yes_No_Tab  yesno on rec.F_Result=yesno.F_ID left join
     T_User_Def_Tab usert on rec.F_VerifyPerson=usert.F_ID
-	order by rec.F_Meterno, rec.F_TimesTamp
-;'
-);
-
-INSERT INTO T_Create_Query_View_Stmt
-(F_ID, F_DESC, F_STMT) values
-(
-3,
- 'temp total_verify query result view', 
-'CREATE view V_Temp_Total_Query_Result as
+	order by rec.F_TimesTamp, rec.F_Meterno
+;');
+INSERT INTO "main"."T_Create_Query_View_Stmt" VALUES (3, 'temp total_verify query result view', 'CREATE view V_Temp_Total_Query_Result as
 select
 	rec.F_ID F_RowId,
     rec.F_TimeStamp,
@@ -656,7 +638,7 @@ select
 	round(rec.F_InSlotTemper, 2) F_InSlotTemper,
 	round(rec.F_OutSlotTemper, 2) F_OutSlotTemper,
 	round((rec.F_InSlotTemper-rec.F_OutSlotTemper),2) F_SlotTempDiff,
-	CAST(round(rec.F_InSlotTemper, 2) AS varchar)||''/''||CAST(round(rec.F_OutSlotTemper, 2) as varchar) F_SlotInOutTemp,
+	CAST(round(rec.F_InSlotTemper, 2) AS varchar)||''/''||CAST(round(rec.F_OutSlotTemper, 2) as varchar(6)) F_SlotInOutTemp,
 	round(rec.F_PipeTemper, 2) F_PipeTemper,
 	round(rec.F_Density, 5) F_Density,
 	round(rec.F_StandValue, 4) F_StandValue,
@@ -709,16 +691,9 @@ from
 	T_manufacture_dept manu on rec.F_ManufactDept=manu.F_ID left join
 	T_verify_dept vdpt on rec.F_VerifyDept=vdpt.F_ID left join
 	T_Yes_No_Tab  yesno on rec.F_Result=yesno.F_ID
-	order by rec.F_MeterPosNo, rec.f_meterno, rec.f_timestamp
-;'
-);
-
-INSERT INTO T_Create_Query_View_Stmt
-(F_ID, F_DESC, F_STMT) values
-(
-4,
- 'temp water_verify query result view', 
- 'CREATE view V_Temp_Water_Query_Result as
+	order by rec.f_timestamp, rec.F_MeterPosNo, rec.f_meterno
+;');
+INSERT INTO "main"."T_Create_Query_View_Stmt" VALUES (4, 'temp water_verify query result view', 'CREATE view V_Temp_Water_Query_Result as
 select
   rec.F_ID F_RowId,
   rec.F_TimeStamp,
@@ -789,9 +764,9 @@ select
 	T_Yes_No_Tab  yesno on rec.F_Result=yesno.F_ID left join
     T_User_Def_Tab usert on rec.F_VerifyPerson=usert.F_ID left join
 	T_Verify_Device_Info d on rec.F_DeviceInfoID=d.F_ID
-	order by rec.F_MeterPosNo, rec.f_meterno, rec.f_timestamp
-;'
-);
+	order by rec.f_timestamp, rec.F_MeterPosNo, rec.f_meterno
+;');
+
 -----------------------------------------------------------------
 --                    PID创建语句表                     ----
 -----------------------------------------------------------------
