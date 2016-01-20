@@ -38,8 +38,8 @@ TotalWeightDlg::TotalWeightDlg(QWidget *parent, Qt::WFlags flags)
 	
 	///////////////////////////////// 原showEvent()函数的内容 begin 
 	//否则每次最小化再显示时，会调用showEvent函数，导致内容清空等现象
-	ui.btnReCalc->hide();
-	ui.btnExhaust->hide();
+	ui.btnNext->hide();
+	m_nextFlag = false; //
 	ui.btnGoOn->hide();
 
 	if (!getPortSetIni(&m_portsetinfo)) //获取下位机端口号配置信息
@@ -1092,10 +1092,12 @@ void TotalWeightDlg::on_btnStart_clicked()
 }
 
 /*
-** 点击"排气"按钮
+** 点击"下一步"按钮
 */
-void TotalWeightDlg::on_btnExhaust_clicked()
+void TotalWeightDlg::on_btnNext_clicked()
 {
+	m_nextFlag = false;
+	ui.btnNext->hide();
 }
 
 //点击"继续"按钮 处理表号获取异常
@@ -1103,11 +1105,6 @@ void TotalWeightDlg::on_btnGoOn_clicked()
 {
 	ui.btnGoOn->hide();
 	startVerify();
-}
-
-//点击"重新计算"按钮
-void TotalWeightDlg::on_btnReCalc_clicked()
-{
 }
 
 //点击"终止检测"按钮
@@ -1379,6 +1376,19 @@ int TotalWeightDlg::prepareVerifyFlowPoint(int order)
 		return false;
 	}
 
+	if (order >= 2 && order <= m_flowPointNum) //第二个流量点(含）之后，等待人工调整温差点，然后点击下一步按钮
+	{
+		m_nextFlag = true;
+		ui.btnNext->show();
+		while (!m_stopFlag && m_nextFlag)
+		{
+			qDebug()<<"请调整温差点，然后点击‘下一步’按钮";
+			ui.labelHintPoint->clear();
+			ui.labelHintProcess->setText(tr("please change delta temperature, then click \"Next\" button"));
+			wait(1000);
+		}
+	}
+
 	if (!m_continueVerify) //非连续检定，每次检定开始之前都要判断天平容量
 	{
 		if (!judgeBalanceCapacitySingle(order)) //天平容量不满足本次检定用量
@@ -1614,7 +1624,7 @@ void TotalWeightDlg::exportReport()
 	{
 		QString defaultPath = QProcessEnvironment::systemEnvironment().value("ADEHOME") + "\\report\\total\\mass\\";
 		CReport rpt(sqlCondition);
-		rpt.setIniName("rptconfig_total.ini");
+		rpt.setIniName("rptconfig_total_mass.ini");
 		rpt.writeRpt();
 		rpt.saveTo(defaultPath + xlsname);
 		ui.labelHintProcess->setText(tr("Verify has Stoped!") + "\n" + tr("export excel file successful!"));

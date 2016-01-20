@@ -62,7 +62,8 @@ public:
 
 	CAlgorithm *m_chkAlg;//检定过程用到的计算方法
 
-	bool m_stopFlag;     //关闭界面后退出
+	bool m_stopFlag;     //停止检定标志，true:检定停止；false:正在检定
+	bool m_nextFlag;     //下一步标志，true:显示下一步按钮，等待人工确认；false:隐藏下一步按钮
 
 	//检定过程相关的控制参数 begin
 	ParaSetReader *m_paraSetReader;
@@ -155,11 +156,10 @@ public slots:
 	void initTableWidget();     //设置表格行数
 
 	void on_btnStart_clicked();   //点击"开始"按钮
-	void on_btnExhaust_clicked(); //点击"排气"按钮
+	void on_btnNext_clicked();    //点击"下一步"按钮
 	void on_btnGoOn_clicked();    //点击"继续"按钮
 	void on_btnStop_clicked();    //点击"终止检测"按钮
 	void on_btnExit_clicked();    //点击"退出"按钮
-	void on_btnReCalc_clicked();  //点击"重新计算"按钮
 	int startExhaustCountDown();  //开始排气倒计时
 	void slotExaustFinished();    //排气时间结束
 	int prepareInitBalance();     //开始检定前，准备天平初始重量
