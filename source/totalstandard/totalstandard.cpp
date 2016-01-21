@@ -1482,7 +1482,7 @@ void TotalStandardDlg::exportReport()
 	{
 		QString defaultPath = QProcessEnvironment::systemEnvironment().value("ADEHOME") + "\\report\\total\\std\\";
 		CReport rpt(sqlCondition);
-		rpt.setIniName("rptconfig_total.ini");
+		rpt.setIniName("rptconfig_total_std.ini");
 		rpt.writeRpt();
 		rpt.saveTo(defaultPath + xlsname);
 		ui.labelHintProcess->setText(tr("Verify has Stoped!") + "\n" + tr("export excel file successful!"));
