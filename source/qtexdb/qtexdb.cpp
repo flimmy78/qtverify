@@ -336,7 +336,7 @@ int insertFlowVerifyRec(Flow_Verify_Record_PTR ptr, int num)
 		sql.append("values");
 		sql.append("(");//start
 		sql.append(QString("\'%1\', ").arg(ptr[i].timestamp, 0, 10));//F_TimeStamp
-		sql.append(QString("%1, ").arg(ptr[i].meterNo,0, 10));//F_MeterNo
+		sql.append(QString("\'%1\', ").arg(ptr[i].meterNo, 0, 10));//F_MeterNo
 		sql.append(QString("%1, ").arg(ptr[i].flowPointIdx, 0, 10));//F_FlowPointIdx
 		sql.append(QString("%1, ").arg(ptr[i].flowPoint, 6, 'g', 6));//F_FlowPoint
 		sql.append(QString("%1, ").arg(ptr[i].methodFlag, 0, 10));//F_TotalFlag
@@ -411,9 +411,9 @@ int modifyFlowVerifyRec_MeterNO(QString newMeterNO, QString timeStamp, int meter
 	int ret = OPERATE_DB_OK;
 
 	QSqlQuery query(g_defaultdb); // 新建一个查询的实例
-	QString sql = "update T_Flow_Verify_Record set F_MeterNo=";
+	QString sql = "update T_Flow_Verify_Record set F_MeterNo=\"";
 	sql.append(newMeterNO);
-	sql.append(" where F_TimeStamp=\"");
+	sql.append("\" where F_TimeStamp=\"");
 	sql.append(timeStamp.toAscii());
 	sql.append("\" and F_MeterPosNo=");
 	sql.append(QString("%1").arg(meterPos, 0, 10));
@@ -502,7 +502,7 @@ int insertWaterVerifyRec(Water_Verify_Record_PTR ptr, int num)
 		sql.append("values");
 		sql.append("(");//start
 		sql.append(QString("\'%1\', ").arg(ptr[i].timestamp, 0, 10));//F_TimeStamp
-		sql.append(QString("%1, ").arg(ptr[i].meterNo,0, 10));//F_MeterNo
+		sql.append(QString("\'%1\', ").arg(ptr[i].meterNo, 0, 10));//F_MeterNo
 		sql.append(QString("%1, ").arg(ptr[i].flowPointIdx, 0, 10));//F_FlowPointIdx
 		sql.append(QString("%1, ").arg(ptr[i].flowPoint, 6, 'g', 6));//F_FlowPoint
 		sql.append(QString("%1, ").arg(ptr[i].methodFlag, 0, 10));//F_TotalFlag
@@ -627,7 +627,7 @@ int insertTotalVerifyRec(Total_Verify_Record_PTR ptr, int num)
 		sql.append("values");
 		sql.append("(");//start
 		sql.append(QString("\'%1\', ").arg(ptr[i].timestamp, 0, 10));//F_TimeStamp
-		sql.append(QString("%1, ").arg(ptr[i].meterNo,0, 10));//F_MeterNo
+		sql.append(QString("\'%1\', ").arg(ptr[i].meterNo, 0, 10));//F_MeterNo
 		sql.append(QString("%1, ").arg(ptr[i].flowPointIdx, 0, 10));//F_FlowPointIdx
 		sql.append(QString("%1, ").arg(ptr[i].flowPoint, 6, 'g', 6));//F_FlowPoint
 		sql.append(QString("%1, ").arg(ptr[i].methodFlag, 0, 10));//F_TotalFlag
@@ -997,7 +997,7 @@ int insertCalcVerifyRec(Calc_Verify_Record_PTR ptr, int num)
 		sql.append("values");
 		sql.append("(");//start
 		sql.append(QString("\'%1\', ").arg(ptr[i].timestamp, 0, 10));//F_TimeStamp
-		sql.append(QString("%1, ").arg(ptr[i].meterNo,0, 10));//F_MeterNo
+		sql.append(QString("\'%1\', ").arg(ptr[i].meterNo, 0, 10));//F_MeterNo
 		sql.append(QString("%1, ").arg(ptr[i].deltaTidx, 0, 10));
 		sql.append(QString("%1, ").arg(ptr[i].standard, 0, 10));
 		sql.append(QString("%1, ").arg(ptr[i].model, 0, 10));
