@@ -298,6 +298,7 @@ public:
 #define     ADE_PREFIX_CODE_NUM			10      //前导码个数(航天德鲁新热量表)
 #define		ADE_PREFIX_CODE				0xFE	//前导码    (航天德鲁新热量表)
 
+#define     PLOU_WAKEUP_CODE_NUM		400     //唤醒码个数(天罡新热量表)
 
 #define		STATE_METER_START		0x00
 #define		STATE_METER_TYPE		0x01
@@ -479,6 +480,35 @@ class PROTOCOL_EXPORT AdeMeterProtocol : public MeterProtocol
 public:
 	AdeMeterProtocol();
 	~AdeMeterProtocol();
+
+public slots:
+	virtual UINT8 readMeterComBuffer(QByteArray tmp);
+	virtual void analyseFrame();
+
+	virtual void makeFrameOfReadMeterNO();        //读表号（广播地址读表）
+	virtual void makeFrameOfReadMeterFlowCoe();   //读表流量系数（广播地址读表）
+	virtual void makeFrameOfReadMeterData(int vType=VTYPE_FLOW);    //读表数据（广播地址读表）
+	virtual void makeFrameOfSetVerifyStatus(int vType=VTYPE_FLOW);	//设置进入检定状态
+	virtual void makeFrameOfExitVerifyStatus(int vType=VTYPE_FLOW);	//设置退出检定状态
+	virtual void makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo);	//修改表号
+	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr);	//修改流量参数
+	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe); //修改流量参数
+	virtual void makeFrameOfSetStandard(UINT8 std); //设置口径
+	virtual void makeFrameOfSetSystemTime(); //设置系统时间
+	virtual void makeFrameOfSetAddress1(QString curAddr1, QString newAddr1); //设置一级地址
+	virtual void makeFrameOfSetAddress2(QString curAddr1, QString newAddr2); //设置二级地址
+
+
+private:
+
+};
+
+//天罡超声波新表（26831协议）通讯协议类
+class PROTOCOL_EXPORT PlouMeterProtocol : public MeterProtocol
+{
+public:
+	PlouMeterProtocol();
+	~PlouMeterProtocol();
 
 public slots:
 	virtual UINT8 readMeterComBuffer(QByteArray tmp);

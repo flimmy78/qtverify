@@ -2229,6 +2229,281 @@ void AdeMeterProtocol::makeFrameOfSetAddress2(QString curAddr1, QString newAddr2
 }
 
 
+/***********************************************
+类名：PlouMeterProtocol
+功能：热量表通讯协议-天罡超声波新表（26831协议）
+************************************************/
+PlouMeterProtocol::PlouMeterProtocol()
+{
+}
+
+PlouMeterProtocol::~PlouMeterProtocol()
+{
+}
+
+//解帧
+UINT8 PlouMeterProtocol::readMeterComBuffer(QByteArray tmp)
+{
+	qDebug()<<"PlouMeterProtocol::readMeterComBuffer thread:"<<QThread::currentThreadId();
+
+	UINT8 ret = 0x00;
+	int state = STATE_METER_START;
+	UINT8 ch = 0; //无符号8位数字
+	int number = tmp.size();
+
+	int m=0;
+	int dataLen_num=0, data_num=0;
+	UINT8 ck=0; //程序计算的检验码
+	for (m=0; m<number; m++)
+	{
+		ch = (UINT8)tmp.at(m);
+// 		qDebug()<<"read data is:"<<ch;
+		if (ch == ADE_PREFIX_CODE)
+		{
+			continue;
+		}
+		switch(state)
+		{
+		case STATE_METER_START: //起始符
+			if (ch == METER_START_CODE)
+			{
+				m_GB26831DataFrame->startCode = ch;
+				state = STATE_METER_ADDR; //数据长度
+			}
+			break;
+		case STATE_METER_ADDR: //数据长度
+			m_GB26831DataFrame->dataLen[dataLen_num++] = ch;
+			if (dataLen_num == 2)
+			{
+				state = STATE_METER_CTRL; //分隔符
+				dataLen_num = 0;
+			}
+			break;
+		case STATE_METER_CTRL: //分隔符
+			m_GB26831DataFrame->seperator = ch;
+			state = STATE_METER_DATA; //数据
+			break;
+		case STATE_METER_DATA: //数据
+			m_GB26831DataFrame->data[data_num++] = ch;
+			ck += ch;
+			if (data_num == m_GB26831DataFrame->dataLen[0])
+			{
+				state = STATE_METER_CS;
+				data_num = 0;
+			}
+			break;
+		case STATE_METER_CS: //校验和
+			m_GB26831DataFrame->cs = ch;
+			state = STATE_METER_END;
+			break;
+		case STATE_METER_END: //
+			m_GB26831DataFrame->endCode = ch;
+			state = STATE_METER_START;
+			if (ck == m_GB26831DataFrame->cs) //校验通过
+			{
+				analyseFrame();
+				ret = 1; //
+				qDebug()<<"check is ok 校验通过";
+			}
+			break;
+		default :
+			state = STATE_METER_START;
+			break;
+		} //END OF switch(state)        
+	} //END OF for (m=0; m<number; m++)
+
+	return ret;
+}
+
+void PlouMeterProtocol::analyseFrame()
+{
+	qDebug()<<"PlouMeterProtocol::analyseFrame thread:"<<QThread::currentThreadId();
+	if (NULL == m_GB26831DataFrame)
+	{
+		return;
+	}
+
+	//表号
+	m_fullMeterNo.clear();
+	for (int i=8; i>=5; i--)
+	{
+		m_fullMeterNo.append(QString("%1").arg(m_GB26831DataFrame->data[i], 2, 16)).replace(' ', '0');
+	}
+
+	//供水温度
+	m_inTemper.clear();
+	m_inTemper.append(QString("%1%2.%3").arg(m_GB26831DataFrame->data[25], 2, 16)\
+		.arg(m_GB26831DataFrame->data[24], 2, 16).arg(m_GB26831DataFrame->data[23], 2, 16));
+	m_inTemper.replace(' ', '0');
+
+	//回水温度
+	m_outTemper.clear();
+	m_outTemper.append(QString("%1%2.%3").arg(m_GB26831DataFrame->data[30], 2, 16)\
+		.arg(m_GB26831DataFrame->data[29], 2, 16).arg(m_GB26831DataFrame->data[28], 2, 16));
+	m_outTemper.replace(' ', '0');
+
+	//流量
+	double flow = 0.0;
+	m_flow.clear();
+	for (int i=20; i>=17; i--)
+	{
+		m_flow.append(QString("%1").arg(m_GB26831DataFrame->data[i], 2, 16)).replace(' ', '0');
+	}
+	flow = m_flow.toDouble()/100;
+	m_flow = QString::number(flow, 'g', 8);
+
+	//热量
+	double heat = 0.0;
+	m_heat.clear();
+	for (int i=14; i>=11; i--)
+	{
+		m_heat.append(QString("%1").arg(m_GB26831DataFrame->data[i], 2, 16)).replace(' ', '0');
+	}
+	heat = m_heat.toDouble()/1000;
+	m_heat = QString::number(heat, 'g', 8);
+}
+
+// 组帧：广播地址读表号
+void PlouMeterProtocol::makeFrameOfReadMeterNO()
+{
+	makeFrameOfReadMeterData(); //与读表数据一样
+}
+
+// 组帧：广播地址读表流量系数
+void PlouMeterProtocol::makeFrameOfReadMeterFlowCoe()
+{
+	makeFrameOfReadMeterData(); //与读表数据一样
+}
+
+// 组帧：广播地址读表数据
+void PlouMeterProtocol::makeFrameOfReadMeterData(int vType)
+{
+	qDebug()<<"PlouMeterProtocol::makeFrameOfReadMeter thread:"<<QThread::currentThreadId();
+
+	m_sendBuf.clear();
+
+	UINT8 code0 = 0x00;
+	for (int i=0; i<PLOU_WAKEUP_CODE_NUM; i++)
+	{
+		m_sendBuf.append(code0);//唤醒红外
+	}
+
+	m_sendBuf.append(0x68).append(0x07).append(0x07).append(0x68);
+	m_sendBuf.append(0x53).append(0xFE).append(0x51);
+	m_sendBuf.append(0x0F);
+	m_sendBuf.append(0x09).append(code0).append(0x04);
+	UINT8 cs = 0x53 + 0xFE + 0x51 + 0x0F + 0x09 + code0 + 0x04;
+	m_sendBuf.append(cs);//校验码
+	m_sendBuf.append(METER_END_CODE);//结束符
+}
+
+// 组帧：设置进入检定状态
+void PlouMeterProtocol::makeFrameOfSetVerifyStatus(int vType)
+{
+	qDebug()<<"PlouMeterProtocol::makeFrameOfSetVerifyStatus thread:"<<QThread::currentThreadId();
+
+	m_sendBuf.clear();
+
+	UINT8 code0 = 0x00;
+	for (int i=0; i<PLOU_WAKEUP_CODE_NUM; i++)
+	{
+		m_sendBuf.append(code0);//唤醒红外
+	}
+
+	m_sendBuf.append(0x68).append(0x04).append(0x04).append(0x68);
+	m_sendBuf.append(0x53).append(0xFE).append(0x50).append(0x90);
+	UINT8 cs = 0x53 + 0xFE + 0x50 + 0x90;
+	m_sendBuf.append(cs);//校验码
+	m_sendBuf.append(METER_END_CODE);//结束符
+}
+
+// 组帧：设置退出检定状态
+void PlouMeterProtocol::makeFrameOfExitVerifyStatus(int vType)
+{
+	qDebug()<<"PlouMeterProtocol::makeFrameOfExitVerifyStatus thread:"<<QThread::currentThreadId();
+}
+
+// 组帧：修改表号(14位表号)
+void PlouMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo)
+{
+// 	qDebug()<<"PlouMeterProtocol::makeFrameOfReadMeter thread:"<<QThread::currentThreadId();
+	qDebug()<<"PlouMeterProtocol::makeFrameOfModifyMeterNo oldMeterNo ="<<oldMeterNo<<", newMeterNo ="<<newMeterNo;
+}
+
+/*
+** 组帧：修改流量系数
+** 输入参数：
+	meterNO:表号，14位
+	bigErr:大流量点误差，单位%
+	mid2Err:中流二误差，单位%
+	mid1Err:中流一误差，单位%
+	smallErr:小流量点误差，单位%
+*/
+void PlouMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr)
+{
+// 	qDebug()<<"PlouMeterProtocol::makeFrameOfModifyFlowCoe thread:"<<QThread::currentThreadId();
+	qDebug()<<"PlouMeterProtocol::makeFrameOfModifyFlowCoe meterNO ="<<meterNO;
+	qDebug()<<"bigErr ="<<bigErr<<", mid2Err ="<<mid2Err<<", mid1Err ="<<mid1Err<<", smallErr ="<<smallErr;
+}
+
+/*
+** 组帧：修改流量系数
+** 输入参数：
+	meterNO:表号，14位
+	bigErr:大流量点误差，单位%
+	mid2Err:中流二误差，单位%
+	mid1Err:中流一误差，单位%
+	smallErr:小流量点误差，单位%
+	oldCoe:热量表各流量点的原系数，无单位
+*/
+void PlouMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe)
+{
+// 	qDebug()<<"PlouMeterProtocol::makeFrameOfModifyFlowCoe thread:"<<QThread::currentThreadId();
+	qDebug()<<"PlouMeterProtocol::makeFrameOfModifyFlowCoe meterNO ="<<meterNO;
+	qDebug()<<"bigErr ="<<bigErr<<", mid2Err ="<<mid2Err<<", mid1Err ="<<mid1Err<<", smallErr ="<<smallErr;
+	qDebug()<<"oldCoe1 ="<<oldCoe->bigCoe<<", oldCoe2 ="<<oldCoe->mid2Coe<<", oldCoe3 ="<<oldCoe->mid1Coe<<", oldCoe4 ="<<oldCoe->smallCoe;
+}
+
+/*
+** 组帧：修改口径
+** 输入参数：
+	std:口径 1-DN15; 2-DN20；3-DN25，以此类推
+*/
+void PlouMeterProtocol::makeFrameOfSetStandard(UINT8 std)
+{
+	qDebug()<<"PlouMeterProtocol::makeFrameOfSetStandard thread:"<<QThread::currentThreadId();
+}
+
+/*
+** 组帧：设置系统时间
+** 输入参数：	
+*/
+void PlouMeterProtocol::makeFrameOfSetSystemTime()
+{
+	qDebug()<<"PlouMeterProtocol::makeFrameOfSetSystemTime thread:"<<QThread::currentThreadId();
+}
+
+/*
+** 组帧：修改一级地址
+** 输入参数：
+	curAddr1:当前一级地址，一个字节
+	newAddr1:新的一级地址，一个字节
+*/
+void PlouMeterProtocol::makeFrameOfSetAddress1(QString curAddr1, QString newAddr1)
+{
+	qDebug()<<"PlouMeterProtocol::makeFrameOfSetAddress1 thread:"<<QThread::currentThreadId();
+}
+
+/*
+** 组帧：修改二级地址
+** 输入参数：
+	curAddr1:当前一级地址，一个字节
+	newAddr2:新的二级地址，4个字节
+*/
+void PlouMeterProtocol::makeFrameOfSetAddress2(QString curAddr1, QString newAddr2)
+{
+ 	qDebug()<<"PlouMeterProtocol::makeFrameOfSetAddress2 thread:"<<QThread::currentThreadId();
+}
 
 
 

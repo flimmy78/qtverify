@@ -189,7 +189,7 @@ enum table_columns
 //热量表通讯协议版本号(采集代码)。必须与T_Meter_PickCode的F_ID对应
 #define PROTOCOL_VER_COMMON	    0   //通用
 #define PROTOCOL_VER_DELU	    1   //德鲁超声波表
-#define PROTOCOL_VER_TIANGANG   2   //天罡超声波表
+#define PROTOCOL_VER_TIANGANG   2   //天罡超声波老表（CJ188协议）
 #define PROTOCOL_VER_LICHSONIC 	3   //力创超声波表
 #define PROTOCOL_VER_LICHMACH  	4   //力创机械表
 #define PROTOCOL_VER_HUIZH  	5   //汇中超声波表
@@ -198,6 +198,8 @@ enum table_columns
 #define PROTOCOL_VER_GUADA  	8   //光大
 #define PROTOCOL_VER_HDLMT  	9   //荷德鲁美特
 #define PROTOCOL_VER_ADE	  	10  //航天德鲁
+#define PROTOCOL_VER_HIWITS	  	11  //海威茨
+#define PROTOCOL_VER_PLOU	  	12  //天罡超声波新表（26831协议）
 
 //天平类型
 #define BALANCE_TYPE_Satorius   0   //赛多利斯

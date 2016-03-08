@@ -618,7 +618,7 @@ void MeterComObject::setProtocolVersion(int version)
 	{
 	case PROTOCOL_VER_COMMON:	//通用协议
 	case PROTOCOL_VER_DELU:	    //德鲁超声波表
-	case PROTOCOL_VER_TIANGANG: //天罡超声波表
+	case PROTOCOL_VER_TIANGANG: //天罡超声波老表
 	case PROTOCOL_VER_RUINA:    //瑞纳超声波表
 		m_meterProtocol = new DeluMeterProtocol();
 		break;
@@ -630,6 +630,12 @@ void MeterComObject::setProtocolVersion(int version)
 		break;
 	case PROTOCOL_VER_ADE:   //航天德鲁超声波表
 		m_meterProtocol = new AdeMeterProtocol();
+		break;
+// 	case PROTOCOL_VER_HIWITS: //海威茨
+// 		m_meterProtocol = new HiwitsMeterProtocol();
+// 		break;
+	case PROTOCOL_VER_PLOU:   //天罡超声波新表
+		m_meterProtocol = new PlouMeterProtocol();
 		break;
 	default: 
 		m_meterProtocol =  new DeluMeterProtocol();
