@@ -354,7 +354,7 @@ F_NumPrefix varchar(6)
 );
 insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(0, '通用', '111100');
 insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(1, '德鲁超声波表', '111100');
-insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(2, '天罡超声波表', '111100');
+insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(2, '天罡超声波老表', '418F00');
 insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(3, '力创超声波表', '111100');
 insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(4, '力创机械表', '111100');
 insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(5, '汇中超声波表', '111100');
@@ -363,6 +363,8 @@ insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(7, '瑞纳超声�
 insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(8, '光大', '111100');
 insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(9, '荷德鲁美特', '111100');
 insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(10, '航天德鲁热量表', '111100');
+insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(11, '海威茨URT', '555500');
+insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(12, '天罡超声波新表', '418F00');
 
 
 ---------------------------------
