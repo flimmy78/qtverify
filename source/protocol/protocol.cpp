@@ -2230,6 +2230,199 @@ void AdeMeterProtocol::makeFrameOfSetAddress2(QString curAddr1, QString newAddr2
 
 
 /***********************************************
+类名：HiwitsMeterProtocol
+功能：热量表通讯协议-海威茨URT型超声波热量表
+************************************************/
+HiwitsURTMeterProtocol::HiwitsURTMeterProtocol()
+{
+}
+
+HiwitsURTMeterProtocol::~HiwitsURTMeterProtocol()
+{
+}
+
+void HiwitsURTMeterProtocol::analyseFrame()
+{
+	qDebug()<<"HiwitsURTMeterProtocol::analyseFrame thread:"<<QThread::currentThreadId();
+	if (NULL == m_CJ188DataFrame)
+	{
+		return;
+	}
+
+	float flow = 0.0;
+	//表号
+	m_fullMeterNo.clear();
+	for (int i=CJ188_ADDR_LEN-1; i>=0; i--)
+	{
+		m_fullMeterNo.append(QString("%1").arg(m_CJ188DataFrame->addr[i], 2, 16)).replace(' ', '0');
+	}
+
+	//供水温度
+	m_inTemper.clear();
+	m_inTemper.append(QString("%1.%2").arg(m_CJ188DataFrame->data[1], 2, 16)\
+		.arg(m_CJ188DataFrame->data[0], 2, 16));
+	m_inTemper.replace(' ', '0');
+
+	//流量
+	m_flow.clear();
+	m_flow.append(QString("%1.%2%3%4").arg(m_CJ188DataFrame->data[9], 2, 16)\
+		.arg(m_CJ188DataFrame->data[8], 2, 16).arg(m_CJ188DataFrame->data[7], 2, 16)\
+		.arg(m_CJ188DataFrame->data[6], 2, 16));
+	m_flow.replace(' ', '0');
+	flow = m_flow.toFloat()*1000; //m3 -> L
+	m_flow = QString::number(flow);
+
+	//热量
+	m_heat.clear();
+	m_heat.append(QString("%1%2.%3%4").arg(m_CJ188DataFrame->data[14], 2, 16)\
+		.arg(m_CJ188DataFrame->data[13], 2, 16).arg(m_CJ188DataFrame->data[12], 2, 16)\
+		.arg(m_CJ188DataFrame->data[11], 2, 16));
+	m_heat.replace(' ', '0');
+
+	//大流量点流量系数
+	m_bigCoe.clear();
+	m_bigCoe.append(QString("%1%2").arg(m_CJ188DataFrame->data[33], 2, 16)\
+		.arg(m_CJ188DataFrame->data[32], 2, 16));
+	m_bigCoe.replace(' ', '0');
+
+	//中流二流量系数
+	m_mid2Coe.clear();
+	m_mid2Coe.append(QString("%1%2").arg(m_CJ188DataFrame->data[35], 2, 16)\
+		.arg(m_CJ188DataFrame->data[34], 2, 16));
+	m_mid2Coe.replace(' ', '0');
+
+	//中流一流量系数
+	m_mid1Coe.clear();
+	m_mid1Coe.append(QString("%1%2").arg(m_CJ188DataFrame->data[37], 2, 16)\
+		.arg(m_CJ188DataFrame->data[36], 2, 16));
+	m_mid1Coe.replace(' ', '0');
+
+	//小流量点流量系数
+	m_smallCoe.clear();
+	m_smallCoe.append(QString("%1%2").arg(m_CJ188DataFrame->data[39], 2, 16)\
+		.arg(m_CJ188DataFrame->data[38], 2, 16));
+	m_smallCoe.replace(' ', '0');
+
+	//回水温度
+	m_outTemper.clear();
+	m_outTemper.append(QString("%1.%2").arg(m_CJ188DataFrame->data[47], 2, 16)\
+		.arg(m_CJ188DataFrame->data[46], 2, 16));
+	m_outTemper.replace(' ', '0');
+
+	//日期
+	m_date.clear();
+	m_date.append(QString("%1%2%3%4").arg(m_CJ188DataFrame->data[52], 2, 16)\
+		.arg(m_CJ188DataFrame->data[51], 2, 16).arg(m_CJ188DataFrame->data[50], 2, 16).\
+		arg(m_CJ188DataFrame->data[49], 2, 16));
+	m_date.replace(' ', '0');
+
+}
+
+// 组帧：广播地址读表号
+void HiwitsURTMeterProtocol::makeFrameOfReadMeterNO()
+{
+	makeFrameOfReadMeterData(); //与读表数据一样
+}
+
+// 组帧：广播地址读表流量系数
+void HiwitsURTMeterProtocol::makeFrameOfReadMeterFlowCoe()
+{
+	makeFrameOfReadMeterData(); //与读表数据一样
+}
+
+// 组帧：广播地址读表数据
+void HiwitsURTMeterProtocol::makeFrameOfReadMeterData(int vType)
+{
+	qDebug()<<"HiwitsURTMeterProtocol::makeFrameOfReadMeter thread:"<<QThread::currentThreadId();
+
+	m_sendBuf.clear();
+
+	for (int j=0; j<6; j++)
+	{
+		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
+	}
+
+	m_sendBuf.append(METER_START_CODE);//起始符
+	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
+	for (int m=0; m<CJ188_ADDR_LEN; m++)
+	{
+		m_sendBuf.append(METER_ADDR_CODE); //广播地址
+	}
+	m_sendBuf.append(METER_CTRL_CODE);//控制码
+	m_sendBuf.append(0x03);//数据长度
+	m_sendBuf.append(0x3F).append(0x90); //数据标识
+	m_sendBuf.append(0x12);//序列号
+	UINT8 cs = METER_START_CODE + METER_TYPE_ASK_CODE + METER_ADDR_CODE*CJ188_ADDR_LEN + METER_CTRL_CODE\
+		+ 0x03 + 0x3F + 0x90 + 0x12;
+	m_sendBuf.append(cs);//校验码
+	m_sendBuf.append(METER_END_CODE);//结束符
+}
+
+// 组帧：设置进入检定状态
+void HiwitsURTMeterProtocol::makeFrameOfSetVerifyStatus(int vType)
+{
+	qDebug()<<"HiwitsURTMeterProtocol::makeFrameOfSetVerifyStatus thread:"<<QThread::currentThreadId();
+
+	m_sendBuf.clear();
+
+	for (int j=0; j<2; j++)
+	{
+		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
+	}
+
+	m_sendBuf.append(METER_START_CODE);//起始符
+	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
+	for (int m=0; m<CJ188_ADDR_LEN; m++)
+	{
+		m_sendBuf.append(METER_ADDR_CODE); //广播地址
+	}
+
+	UINT8 code0 = 0x00;
+	m_sendBuf.append(0x33).append(code0).append(0x61).append(0x16);
+}
+
+// 组帧：修改表号(14位表号)
+void HiwitsURTMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo)
+{
+// 	qDebug()<<"HiwitsURTMeterProtocol::makeFrameOfReadMeter thread:"<<QThread::currentThreadId();
+	qDebug()<<"HiwitsURTMeterProtocol::makeFrameOfModifyMeterNo oldMeterNo ="<<oldMeterNo<<", newMeterNo ="<<newMeterNo;
+}
+
+/*
+** 组帧：修改流量系数
+** 输入参数：
+	meterNO:表号，14位
+	bigErr:大流量点误差，单位%
+	mid2Err:中流二误差，单位%
+	mid1Err:中流一误差，单位%
+	smallErr:小流量点误差，单位%
+*/
+void HiwitsURTMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr)
+{
+// 	qDebug()<<"HiwitsURTMeterProtocol::makeFrameOfModifyFlowCoe thread:"<<QThread::currentThreadId();
+	qDebug()<<"HiwitsURTMeterProtocol::makeFrameOfModifyFlowCoe meterNO ="<<meterNO;
+}
+
+/*
+** 组帧：修改流量系数
+** 输入参数：
+	meterNO:表号，14位
+	bigErr:大流量点误差，单位%
+	mid2Err:中流二误差，单位%
+	mid1Err:中流一误差，单位%
+	smallErr:小流量点误差，单位%
+	oldCoe:热量表各流量点的原系数，无单位
+*/
+void HiwitsURTMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe)
+{
+// 	qDebug()<<"HiwitsURTMeterProtocol::makeFrameOfModifyFlowCoe thread:"<<QThread::currentThreadId();
+	qDebug()<<"HiwitsURTMeterProtocol::makeFrameOfModifyFlowCoe meterNO ="<<meterNO;
+	qDebug()<<"bigErr ="<<bigErr<<", mid2Err ="<<mid2Err<<", mid1Err ="<<mid1Err<<", smallErr ="<<smallErr;
+	qDebug()<<"oldCoe1 ="<<oldCoe->bigCoe<<", oldCoe2 ="<<oldCoe->mid2Coe<<", oldCoe3 ="<<oldCoe->mid1Coe<<", oldCoe4 ="<<oldCoe->smallCoe;
+}
+
+
+/***********************************************
 类名：PlouMeterProtocol
 功能：热量表通讯协议-天罡超声波新表（26831协议）
 ************************************************/

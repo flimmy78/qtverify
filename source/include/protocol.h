@@ -503,6 +503,28 @@ private:
 
 };
 
+//海威茨热量表通讯协议类
+class PROTOCOL_EXPORT HiwitsURTMeterProtocol : public MeterProtocol
+{
+public:
+	HiwitsURTMeterProtocol();
+	~HiwitsURTMeterProtocol();
+
+public slots:
+	virtual void analyseFrame();
+
+	virtual void makeFrameOfReadMeterNO();        //读表号（广播地址读表）
+	virtual void makeFrameOfReadMeterFlowCoe();   //读表流量系数（广播地址读表）
+	virtual void makeFrameOfReadMeterData(int vType=VTYPE_FLOW);    //读表数据（广播地址读表）
+	virtual void makeFrameOfSetVerifyStatus(int vType=VTYPE_FLOW);	//设置进入检定状态
+	virtual void makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo);	//修改表号(14位表号)
+	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr);	//修改流量参数
+	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe);	//修改流量参数
+
+private:
+
+};
+
 //天罡超声波新表（26831协议）通讯协议类
 class PROTOCOL_EXPORT PlouMeterProtocol : public MeterProtocol
 {

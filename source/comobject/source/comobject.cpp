@@ -631,9 +631,9 @@ void MeterComObject::setProtocolVersion(int version)
 	case PROTOCOL_VER_ADE:   //航天德鲁超声波表
 		m_meterProtocol = new AdeMeterProtocol();
 		break;
-// 	case PROTOCOL_VER_HIWITS: //海威茨
-// 		m_meterProtocol = new HiwitsMeterProtocol();
-// 		break;
+	case PROTOCOL_VER_HIWITS_URT: //海威茨URT型超声波表
+		m_meterProtocol = new HiwitsURTMeterProtocol();
+		break;
 	case PROTOCOL_VER_PLOU:   //天罡超声波新表
 		m_meterProtocol = new PlouMeterProtocol();
 		break;

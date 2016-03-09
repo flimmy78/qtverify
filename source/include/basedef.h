@@ -187,19 +187,19 @@ enum table_columns
 #define IMITATION_FLOW_RATE 2.88 //模拟流量时的流速, m3/h
 
 //热量表通讯协议版本号(采集代码)。必须与T_Meter_PickCode的F_ID对应
-#define PROTOCOL_VER_COMMON	    0   //通用
-#define PROTOCOL_VER_DELU	    1   //德鲁超声波表
-#define PROTOCOL_VER_TIANGANG   2   //天罡超声波老表（CJ188协议）
-#define PROTOCOL_VER_LICHSONIC 	3   //力创超声波表
-#define PROTOCOL_VER_LICHMACH  	4   //力创机械表
-#define PROTOCOL_VER_HUIZH  	5   //汇中超声波表
-#define PROTOCOL_VER_MAITUO  	6   //迈拓超声波表
-#define PROTOCOL_VER_RUINA  	7   //瑞纳超声波表
-#define PROTOCOL_VER_GUADA  	8   //光大
-#define PROTOCOL_VER_HDLMT  	9   //荷德鲁美特
-#define PROTOCOL_VER_ADE	  	10  //航天德鲁
-#define PROTOCOL_VER_HIWITS	  	11  //海威茨
-#define PROTOCOL_VER_PLOU	  	12  //天罡超声波新表（26831协议）
+#define PROTOCOL_VER_COMMON	       0   //通用
+#define PROTOCOL_VER_DELU	       1   //德鲁超声波表
+#define PROTOCOL_VER_TIANGANG      2   //天罡超声波老表（CJ188协议）
+#define PROTOCOL_VER_LICHSONIC 	   3   //力创超声波表
+#define PROTOCOL_VER_LICHMACH  	   4   //力创机械表
+#define PROTOCOL_VER_HUIZH  	   5   //汇中超声波表
+#define PROTOCOL_VER_MAITUO  	   6   //迈拓超声波表
+#define PROTOCOL_VER_RUINA  	   7   //瑞纳超声波表
+#define PROTOCOL_VER_GUADA  	   8   //光大
+#define PROTOCOL_VER_HDLMT  	   9   //荷德鲁美特
+#define PROTOCOL_VER_ADE	  	   10  //航天德鲁
+#define PROTOCOL_VER_HIWITS_URT	   11  //海威茨URT型超声波表
+#define PROTOCOL_VER_PLOU	  	   12  //天罡超声波新表（26831协议）
 
 //天平类型
 #define BALANCE_TYPE_Satorius   0   //赛多利斯
