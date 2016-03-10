@@ -430,12 +430,12 @@ private:
 
 };
 
-//力创热量表通讯协议类
-class PROTOCOL_EXPORT LiChMeterProtocol : public MeterProtocol
+//力创LCR-U型热量表通讯协议类
+class PROTOCOL_EXPORT LiChLCRMeterProtocol : public MeterProtocol
 {
 public:
-	LiChMeterProtocol();
-	~LiChMeterProtocol();
+	LiChLCRMeterProtocol();
+	~LiChLCRMeterProtocol();
 
 public slots:
 	virtual void analyseFrame();

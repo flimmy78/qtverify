@@ -623,7 +623,7 @@ void MeterComObject::setProtocolVersion(int version)
 		m_meterProtocol = new DeluMeterProtocol();
 		break;
 	case PROTOCOL_VER_LICHSONIC: //力创超声波表
-		m_meterProtocol = new LiChMeterProtocol();
+		m_meterProtocol = new LiChLCRMeterProtocol();
 		break;
 	case PROTOCOL_VER_HUIZH: //汇中超声波表
 		m_meterProtocol = new HuiZhongMeterProtocol();

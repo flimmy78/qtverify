@@ -1463,55 +1463,175 @@ void DeluMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, 
 }
 
 /***********************************************
-类名：LiChMeterProtocol
-功能：热量表通讯协议-力创热量表
+类名：LiChLCRMeterProtocol
+功能：热量表通讯协议-力创LCR-U型热量表
 ************************************************/
-LiChMeterProtocol::LiChMeterProtocol()
+LiChLCRMeterProtocol::LiChLCRMeterProtocol()
 {
 }
 
-LiChMeterProtocol::~LiChMeterProtocol()
+LiChLCRMeterProtocol::~LiChLCRMeterProtocol()
 {
 }
 
-void LiChMeterProtocol::analyseFrame()
+void LiChLCRMeterProtocol::analyseFrame()
+{
+	qDebug()<<"LiChLCRMeterProtocol::analyseFrame thread:"<<QThread::currentThreadId();
+	if (NULL == m_CJ188DataFrame)
+	{
+		return;
+	}
+
+	float flow = 0.0;
+	//表号
+	m_fullMeterNo.clear();
+	for (int i=CJ188_ADDR_LEN-1; i>=0; i--)
+	{
+		m_fullMeterNo.append(QString("%1").arg(m_CJ188DataFrame->addr[i], 2, 16)).replace(' ', '0');
+	}
+
+	//供水温度
+	m_inTemper.clear();
+
+	//流量
+	m_flow.clear();
+	for (int j=7; j>=0; j--)
+	{
+		m_flow.append(QString("%1").arg(m_CJ188DataFrame->data[j], 2, 16));
+	}
+// 	m_flow.append(QString("%1.%2%3%4").arg(m_CJ188DataFrame->data[9], 2, 16)\
+// 		.arg(m_CJ188DataFrame->data[8], 2, 16).arg(m_CJ188DataFrame->data[7], 2, 16)\
+// 		.arg(m_CJ188DataFrame->data[6], 2, 16));
+	m_flow.replace(' ', '0');
+	bool ok;
+	flow = m_flow.toFloat(&ok); //m3 -> L
+	m_flow = QString::number(flow);
+
+	//热量
+	m_heat.clear();
+	m_heat.append(QString("%1%2.%3%4").arg(m_CJ188DataFrame->data[14], 2, 16)\
+		.arg(m_CJ188DataFrame->data[13], 2, 16).arg(m_CJ188DataFrame->data[12], 2, 16)\
+		.arg(m_CJ188DataFrame->data[11], 2, 16));
+	m_heat.replace(' ', '0');
+
+	//大流量点流量系数
+	m_bigCoe.clear();
+
+	//中流二流量系数
+	m_mid2Coe.clear();
+
+	//中流一流量系数
+	m_mid1Coe.clear();
+
+	//小流量点流量系数
+	m_smallCoe.clear();
+
+	//回水温度
+	m_outTemper.clear();
+
+	//日期
+	m_date.clear();
+
+}
+
+// 组帧：广播地址读表号
+void LiChLCRMeterProtocol::makeFrameOfReadMeterNO()
+{
+	makeFrameOfReadMeterData(); //与读表数据一样
+}
+
+// 组帧：广播地址读表流量系数
+void LiChLCRMeterProtocol::makeFrameOfReadMeterFlowCoe()
 {
 
 }
 
-void LiChMeterProtocol::makeFrameOfReadMeterNO()
+// 组帧：广播地址读表数据
+void LiChLCRMeterProtocol::makeFrameOfReadMeterData(int vType)
 {
+	qDebug()<<"LiChLCRMeterProtocol::makeFrameOfReadMeter thread:"<<QThread::currentThreadId();
 
+	m_sendBuf.clear();
+
+	for (int j=0; j<2; j++)
+	{
+		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
+	}
+
+	m_sendBuf.append(METER_START_CODE);//起始符
+	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
+	for (int m=0; m<CJ188_ADDR_LEN; m++)
+	{
+		m_sendBuf.append(METER_ADDR_CODE); //广播地址
+	}
+	m_sendBuf.append(0x21);//控制码
+	m_sendBuf.append(0x03);//数据长度
+	m_sendBuf.append(0x61).append(0x0A); //数据标识
+	UINT8 code0 = 0x00;
+	m_sendBuf.append(code0);//序列号
+	UINT8 cs = METER_START_CODE + METER_TYPE_ASK_CODE + METER_ADDR_CODE*CJ188_ADDR_LEN + 0x21 + 0x03 + 0x61 + 0x0A + code0;
+	m_sendBuf.append(cs);//校验码
+	m_sendBuf.append(METER_END_CODE);//结束符
 }
 
-void LiChMeterProtocol::makeFrameOfReadMeterFlowCoe()
+// 组帧：设置进入检定状态
+void LiChLCRMeterProtocol::makeFrameOfSetVerifyStatus(int vType)
 {
+	qDebug()<<"LiChLCRMeterProtocol::makeFrameOfSetVerifyStatus thread:"<<QThread::currentThreadId();
 
+	m_sendBuf.clear();
+
+	for (int j=0; j<2; j++)
+	{
+		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
+	}
+
+	m_sendBuf.append(METER_START_CODE);//起始符
+	m_sendBuf.append(0x04).append(0x04); 
+	m_sendBuf.append(METER_START_CODE);//起始符
+	m_sendBuf.append(0x53).append(0xFE).append(0x50).append(0x90);
+	m_sendBuf.append(0x31).append(0x16);
 }
 
-void LiChMeterProtocol::makeFrameOfReadMeterData(int vType)
+// 组帧：修改表号(14位表号)
+void LiChLCRMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo)
 {
-
+// 	qDebug()<<"LiChLCRMeterProtocol::makeFrameOfReadMeter thread:"<<QThread::currentThreadId();
+	qDebug()<<"LiChLCRMeterProtocol::makeFrameOfModifyMeterNo oldMeterNo ="<<oldMeterNo<<", newMeterNo ="<<newMeterNo;
 }
 
-void LiChMeterProtocol::makeFrameOfSetVerifyStatus(int vType)
+/*
+** 组帧：修改流量系数
+** 输入参数：
+	meterNO:表号，14位
+	bigErr:大流量点误差，单位%
+	mid2Err:中流二误差，单位%
+	mid1Err:中流一误差，单位%
+	smallErr:小流量点误差，单位%
+*/
+void LiChLCRMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr)
 {
-
+// 	qDebug()<<"LiChLCRMeterProtocol::makeFrameOfModifyFlowCoe thread:"<<QThread::currentThreadId();
+	qDebug()<<"LiChLCRMeterProtocol::makeFrameOfModifyFlowCoe meterNO ="<<meterNO;
+	qDebug()<<"bigErr ="<<bigErr<<", mid2Err ="<<mid2Err<<", mid1Err ="<<mid1Err<<", smallErr ="<<smallErr;
 }
 
-void LiChMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo)
+/*
+** 组帧：修改流量系数
+** 输入参数：
+	meterNO:表号，14位
+	bigErr:大流量点误差，单位%
+	mid2Err:中流二误差，单位%
+	mid1Err:中流一误差，单位%
+	smallErr:小流量点误差，单位%
+	oldCoe:热量表各流量点的原系数，无单位
+*/
+void LiChLCRMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe)
 {
-
-}
-
-void LiChMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr)
-{
-
-}
-
-void LiChMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe)
-{
-
+// 	qDebug()<<"LiChLCRMeterProtocol::makeFrameOfModifyFlowCoe thread:"<<QThread::currentThreadId();
+	qDebug()<<"LiChLCRMeterProtocol::makeFrameOfModifyFlowCoe meterNO ="<<meterNO;
+	qDebug()<<"bigErr ="<<bigErr<<", mid2Err ="<<mid2Err<<", mid1Err ="<<mid1Err<<", smallErr ="<<smallErr;
+	qDebug()<<"oldCoe1 ="<<oldCoe->bigCoe<<", oldCoe2 ="<<oldCoe->mid2Coe<<", oldCoe3 ="<<oldCoe->mid1Coe<<", oldCoe4 ="<<oldCoe->smallCoe;
 }
 
 /***********************************************
