@@ -1482,7 +1482,6 @@ void LiChLCRMeterProtocol::analyseFrame()
 		return;
 	}
 
-	float flow = 0.0;
 	//表号
 	m_fullMeterNo.clear();
 	for (int i=CJ188_ADDR_LEN-1; i>=0; i--)
@@ -1494,25 +1493,24 @@ void LiChLCRMeterProtocol::analyseFrame()
 	m_inTemper.clear();
 
 	//流量
+	UINT64 iFlow = 0;
 	m_flow.clear();
-	for (int j=7; j>=0; j--)
+	for (int j=8; j<=15; j++)
 	{
-		m_flow.append(QString("%1").arg(m_CJ188DataFrame->data[j], 2, 16));
+		iFlow += m_CJ188DataFrame->data[j]*pow((float)256, j-8);
 	}
-// 	m_flow.append(QString("%1.%2%3%4").arg(m_CJ188DataFrame->data[9], 2, 16)\
-// 		.arg(m_CJ188DataFrame->data[8], 2, 16).arg(m_CJ188DataFrame->data[7], 2, 16)\
-// 		.arg(m_CJ188DataFrame->data[6], 2, 16));
-	m_flow.replace(' ', '0');
-	bool ok;
-	flow = m_flow.toFloat(&ok); //m3 -> L
-	m_flow = QString::number(flow);
+	double dflow = (double)iFlow/100000000;//m3
+	m_flow = QString::number(dflow*1000); //m3->L
 
 	//热量
+	UINT64 iHeat = 0;
 	m_heat.clear();
-	m_heat.append(QString("%1%2.%3%4").arg(m_CJ188DataFrame->data[14], 2, 16)\
-		.arg(m_CJ188DataFrame->data[13], 2, 16).arg(m_CJ188DataFrame->data[12], 2, 16)\
-		.arg(m_CJ188DataFrame->data[11], 2, 16));
-	m_heat.replace(' ', '0');
+	for (int j=0; j<=7; j++)
+	{
+		iHeat += m_CJ188DataFrame->data[j]*pow((float)256, j);
+	}
+	double dheat = (double)iHeat/100000000; //kWh
+	m_heat = QString::number(dheat);
 
 	//大流量点流量系数
 	m_bigCoe.clear();
