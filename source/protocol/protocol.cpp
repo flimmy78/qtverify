@@ -2943,43 +2943,47 @@ void XinTianMeterProtocol::analyseFrame()
 		m_fullMeterNo.append(QString("%1").arg(m_CJ188DataFrame->data[i], 2, 16)).replace(' ', '0');
 	}
 
-	//供水温度
+	bool ok;
+	//供水温度，代表新天热量表的分量检定状态（1状态）下的热量,kWh
 	m_inTemper.clear();
+	double inTemper = 0.0;
+	for (int i=10; i>=7; i--)
+	{
+		m_inTemper.append(QString("%1").arg(m_CJ188DataFrame->data[i], 2, 16)).replace(' ', '0');
+	}
+	inTemper = (double)m_inTemper.toUInt(&ok,16)/1000;
+	m_inTemper = QString::number(inTemper, 'g', 8);
 
-	//流量
+	//流量，代表新天热量表的分量检定状态（1状态）下的流量,L
 	double flow = 0.0;
 	m_flow.clear();
-	for (int i=14; i>=11; i--)
+	for (int j=14; j>=11; j--)
 	{
-		m_flow.append(QString("%1").arg(m_GB26831DataFrame->data[i], 2, 16)).replace(' ', '0');
+		m_flow.append(QString("%1").arg(m_CJ188DataFrame->data[j], 2, 16)).replace(' ', '0');
 	}
-	flow = m_flow.toDouble()/100;
+	flow = ((double)m_flow.toUInt(&ok,16))/100;
 	m_flow = QString::number(flow, 'g', 8);
 
-	//热量
+	//热量，代表新天热量表的总量检定状态下（2状态）的热量,kWh
 	double heat = 0.0;
 	m_heat.clear();
-	for (int i=18; i>=15; i--)
+	for (int m=18; m>=15; m--)
 	{
-		m_heat.append(QString("%1").arg(m_GB26831DataFrame->data[i], 2, 16)).replace(' ', '0');
+		m_heat.append(QString("%1").arg(m_CJ188DataFrame->data[m], 2, 16)).replace(' ', '0');
 	}
-	heat = m_heat.toDouble()/1000;
+	heat = (double)m_heat.toUInt(&ok,16)/1000;
 	m_heat = QString::number(heat, 'g', 8);
 
-	//大流量点流量系数
-	m_bigCoe.clear();
-
-	//中流二流量系数
-	m_mid2Coe.clear();
-
-	//中流一流量系数
-	m_mid1Coe.clear();
-
-	//小流量点流量系数
-	m_smallCoe.clear();
-
-	//回水温度
+	//回水温度，代表新天热量表的总量检定状态（2状态）下的流量,L
 	m_outTemper.clear();
+	double outTemper = 0.0;
+	m_outTemper.clear();
+	for (int n=22; n>=19; n--)
+	{
+		m_outTemper.append(QString("%1").arg(m_CJ188DataFrame->data[n], 2, 16)).replace(' ', '0');
+	}
+	outTemper = (double)m_outTemper.toUInt(&ok,16)/100;
+	m_outTemper = QString::number(outTemper, 'g', 8);
 
 	//日期
 	m_date.clear();
