@@ -365,6 +365,7 @@ insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(9, '荷德鲁美�
 insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(10, '航天德鲁热量表', '111100');
 insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(11, '海威茨URT', '555500');
 insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(12, '天罡超声波新表', '418F00');
+insert into T_Meter_PickCode(F_ID, F_Desc, F_NumPrefix) values(13, '新天超声波表', '002015');
 
 
 ---------------------------------
