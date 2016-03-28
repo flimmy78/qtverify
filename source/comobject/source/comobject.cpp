@@ -637,6 +637,9 @@ void MeterComObject::setProtocolVersion(int version)
 	case PROTOCOL_VER_PLOU:   //天罡超声波新表
 		m_meterProtocol = new PlouMeterProtocol();
 		break;
+	case PROTOCOL_VER_XINTIAN: //新天超声波表
+		m_meterProtocol = new XinTianMeterProtocol();
+		break;
 	default: 
 		m_meterProtocol =  new DeluMeterProtocol();
 		break;

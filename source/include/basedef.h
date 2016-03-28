@@ -200,6 +200,7 @@ enum table_columns
 #define PROTOCOL_VER_ADE	  	   10  //航天德鲁
 #define PROTOCOL_VER_HIWITS_URT	   11  //海威茨URT型超声波表
 #define PROTOCOL_VER_PLOU	  	   12  //天罡超声波新表（26831协议）
+#define PROTOCOL_VER_XINTIAN	   13  //新天超声波表
 
 //天平类型
 #define BALANCE_TYPE_Satorius   0   //赛多利斯

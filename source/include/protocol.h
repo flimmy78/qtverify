@@ -549,10 +549,34 @@ public slots:
 	virtual void makeFrameOfSetAddress1(QString curAddr1, QString newAddr1); //设置一级地址
 	virtual void makeFrameOfSetAddress2(QString curAddr1, QString newAddr2); //设置二级地址
 
+private:
+
+};
+
+//新天超声波表通讯协议类
+class PROTOCOL_EXPORT XinTianMeterProtocol : public MeterProtocol
+{
+public:
+	XinTianMeterProtocol();
+	~XinTianMeterProtocol();
+
+public slots:
+	virtual UINT8 readMeterComBuffer(QByteArray tmp);
+	virtual UINT8 XinTianCountCheck(CJ188_Frame_Struct *pFrame);
+	virtual void analyseFrame();
+
+	virtual void makeFrameOfReadMeterNO();        //读表号（广播地址读表）
+	virtual void makeFrameOfReadMeterFlowCoe();   //读表流量系数（广播地址读表）
+	virtual void makeFrameOfReadMeterData(int vType=VTYPE_FLOW);    //读表数据（广播地址读表）
+	virtual void makeFrameOfSetVerifyStatus(int vType=VTYPE_FLOW);	//设置进入检定状态
+	virtual void makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo);	//修改表号(14位表号)
+	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr);	//修改流量参数
+	virtual void makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe);	//修改流量参数
 
 private:
 
 };
+
 
 
 //热量表通讯协议 end

@@ -2817,6 +2817,245 @@ void PlouMeterProtocol::makeFrameOfSetAddress2(QString curAddr1, QString newAddr
 }
 
 
+/***********************************************
+类名：XinTianMeterProtocol
+功能：热量表通讯协议-新天超声波热量表
+************************************************/
+XinTianMeterProtocol::XinTianMeterProtocol()
+{
+}
+
+XinTianMeterProtocol::~XinTianMeterProtocol()
+{
+}
+
+UINT8 XinTianMeterProtocol::readMeterComBuffer(QByteArray tmp)
+{
+	qDebug()<<"XinTianMeterProtocol::readMeterComBuffer thread:"<<QThread::currentThreadId();
+
+	UINT8 ret = 0x00;
+	int state = STATE_METER_START;
+	UINT8 ch = 0; //无符号8位数字
+	int number = tmp.size();
+
+	int m=0;
+	int addr_num=0, dataID_num=0, data_num=0;
+	UINT8 ck=0; //程序计算的检验码
+	for (m=0; m<number; m++)
+	{
+		ch = (UINT8)tmp.at(m);
+// 		qDebug()<<"read data is:"<<ch;
+		if (ch == METER_PREFIX_CODE)
+		{
+			continue;
+		}
+		switch(state)
+		{
+		case STATE_METER_START: //
+			if (ch == METER_START_CODE)
+			{
+				m_CJ188DataFrame->startCode = METER_START_CODE;
+				state = STATE_METER_TYPE;
+			}
+			break;
+		case STATE_METER_TYPE: //
+			m_CJ188DataFrame->typeCode = ch;
+			state = STATE_METER_ADDR;
+			break;
+		case STATE_METER_ADDR: //
+			m_CJ188DataFrame->addr[addr_num++] = ch;
+			if (addr_num == 6) //新天热量表 固定码 11 11 11 22 22 22
+			{
+				state = STATE_METER_DATALEN;
+				addr_num = 0;
+			}
+			break;
+		case STATE_METER_DATALEN: //
+			m_CJ188DataFrame->dataLen = ch;
+			state = STATE_METER_DATA;
+			break;
+		case STATE_METER_DATA: //
+			m_CJ188DataFrame->data[data_num++] = ch;
+			if (data_num == m_CJ188DataFrame->dataLen)
+			{
+				state = STATE_METER_CS;
+				data_num = 0;
+			}
+			break;
+		case STATE_METER_CS: //
+			m_CJ188DataFrame->cs = ch;
+			state = STATE_METER_END;
+			break;
+		case STATE_METER_END: //
+			m_CJ188DataFrame->endCode = ch;
+			state = STATE_METER_START;
+			ck = XinTianCountCheck(m_CJ188DataFrame);
+			if (ck == m_CJ188DataFrame->cs) //校验通过
+			{
+				analyseFrame();
+				ret = 1; //
+				qDebug()<<"check is ok 校验通过";
+			}
+			break;
+		default :
+			state = STATE_METER_START;
+			break;
+		} //END OF switch(state)        
+	} //END OF for (m=0; m<number; m++)
+
+	return ret;
+}
+
+UINT8 XinTianMeterProtocol::XinTianCountCheck(CJ188_Frame_Struct *pFrame)
+{
+	if (NULL == pFrame)
+	{
+		return 0;
+	}
+
+	UINT8 cs = 0;
+	cs = pFrame->typeCode;
+	for (int i=0; i<6; i++)
+	{
+		cs += pFrame->addr[i];
+	}
+	cs += pFrame->dataLen;
+	for (int m=0; m<pFrame->dataLen; m++)
+	{
+		cs += pFrame->data[m];
+	}
+
+	return cs; 
+}
+
+void XinTianMeterProtocol::analyseFrame()
+{
+	qDebug()<<"XinTianMeterProtocol::analyseFrame thread:"<<QThread::currentThreadId();
+	if (NULL == m_CJ188DataFrame)
+	{
+		return;
+	}
+
+	//表号
+	m_fullMeterNo.clear();
+	for (int i=CJ188_ADDR_LEN-1; i>=0; i--)
+	{
+		m_fullMeterNo.append(QString("%1").arg(m_CJ188DataFrame->data[i], 2, 16)).replace(' ', '0');
+	}
+
+	//供水温度
+	m_inTemper.clear();
+
+	//流量
+	double flow = 0.0;
+	m_flow.clear();
+	for (int i=14; i>=11; i--)
+	{
+		m_flow.append(QString("%1").arg(m_GB26831DataFrame->data[i], 2, 16)).replace(' ', '0');
+	}
+	flow = m_flow.toDouble()/100;
+	m_flow = QString::number(flow, 'g', 8);
+
+	//热量
+	double heat = 0.0;
+	m_heat.clear();
+	for (int i=18; i>=15; i--)
+	{
+		m_heat.append(QString("%1").arg(m_GB26831DataFrame->data[i], 2, 16)).replace(' ', '0');
+	}
+	heat = m_heat.toDouble()/1000;
+	m_heat = QString::number(heat, 'g', 8);
+
+	//大流量点流量系数
+	m_bigCoe.clear();
+
+	//中流二流量系数
+	m_mid2Coe.clear();
+
+	//中流一流量系数
+	m_mid1Coe.clear();
+
+	//小流量点流量系数
+	m_smallCoe.clear();
+
+	//回水温度
+	m_outTemper.clear();
+
+	//日期
+	m_date.clear();
+
+}
+
+// 组帧：广播地址读表号
+void XinTianMeterProtocol::makeFrameOfReadMeterNO()
+{
+	makeFrameOfReadMeterData(); //与读表数据一样
+}
+
+// 组帧：广播地址读表流量系数
+void XinTianMeterProtocol::makeFrameOfReadMeterFlowCoe()
+{
+	
+}
+
+// 组帧：广播地址读表数据
+void XinTianMeterProtocol::makeFrameOfReadMeterData(int vType)
+{
+	qDebug()<<"XinTianMeterProtocol::makeFrameOfReadMeter thread:"<<QThread::currentThreadId();
+
+	m_sendBuf.clear();
+
+	for (int j=0; j<2; j++)
+	{
+		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
+	}
+
+	m_sendBuf.append(METER_START_CODE);//起始符
+	m_sendBuf.append(0x59);
+	m_sendBuf.append(0x22).append(0x22).append(0x22);
+	m_sendBuf.append(0x11).append(0x11).append(0x11);
+	m_sendBuf.append(0xF2);
+	m_sendBuf.append(METER_END_CODE);//结束符
+}
+
+// 组帧：设置进入检定状态
+void XinTianMeterProtocol::makeFrameOfSetVerifyStatus(int vType)
+{
+	makeFrameOfReadMeterData();
+}
+
+// 组帧：修改表号(14位表号)
+void XinTianMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo)
+{
+}
+
+/*
+** 组帧：修改流量系数
+** 输入参数：
+	meterNO:表号，14位
+	bigErr:大流量点误差，单位%
+	mid2Err:中流二误差，单位%
+	mid1Err:中流一误差，单位%
+	smallErr:小流量点误差，单位%
+*/
+void XinTianMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr)
+{
+}
+
+/*
+** 组帧：修改流量系数
+** 输入参数：
+	meterNO:表号，14位
+	bigErr:大流量点误差，单位%
+	mid2Err:中流二误差，单位%
+	mid1Err:中流一误差，单位%
+	smallErr:小流量点误差，单位%
+	oldCoe:热量表各流量点的原系数，无单位
+*/
+void XinTianMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe)
+{
+}
+
 
 /***********************************************
 父类：StdTempProtocol
