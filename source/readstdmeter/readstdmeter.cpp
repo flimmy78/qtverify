@@ -249,9 +249,30 @@ float CStdMeterReader::getInstFlowRate(flow_rate_wdg idx)
 	int count = get9017RouteI(route, m_instStdCurrent);
 	float upperFlow = getStdUpperFlow(idx);
 	//qDebug() <<"wdg_idx:--"<<idx<<" InstCurrent:--"<<count<<" upperFlow:--"<<upperFlow;
-	float inst = getInstStdValue(count, upperFlow);
+	float inst = getInstStdMeterValue(count, upperFlow, idx);
 	emit signalReadInstReady(idx, inst);
 	return inst;
+}
+
+float CStdMeterReader::getInstStdMeterValue(float elecValue, float upperValue, flow_rate_wdg wdgIdx)
+{
+
+	int lowerCurrent;
+	int upperCurrent;
+	m_stdParam->beginReadArray("CurrentLimit");
+	m_stdParam->setArrayIndex(wdgIdx);
+	lowerCurrent = m_stdParam->value("lowerCurrent").toDouble();
+	upperCurrent = m_stdParam->value("upperCurrent").toDouble();
+	m_stdParam->endArray();
+
+	if (lowerCurrent<=elecValue && elecValue <= upperCurrent)
+	{
+		float deltaStd = upperCurrent - lowerCurrent;
+		float deltaCur = elecValue - lowerCurrent;
+		return (deltaCur/deltaStd)*upperValue;
+	}
+
+	return 0.0f;//如果超出正常电流值的范围, 返回异常流速
 }
 
 /************************************************************************/

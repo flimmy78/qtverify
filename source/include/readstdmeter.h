@@ -95,9 +95,9 @@ private:
 	float getInstFlowRate(flow_rate_wdg idx);
 	float getAccumFLowVolume(flow_rate_wdg idx);
 
-	float getKCoe(flow_rate_wdg idx);//计算当前流量点的K系数(现行插值)
+	float getKCoe(flow_rate_wdg idx);//计算当前流量点的K系数(线性插值)
 	void getBound(flow_rate_wdg idx, float currentFlow, float& inf, float& sup);//根据当前流量, 查找其在表中的最小上限和最大下限
-
+	float getInstStdMeterValue(float elecValue, float upperValue, flow_rate_wdg idx);//计算瞬时流量
 private slots:
 	void slotAskInstBytes();//请求瞬时流量
 	void slotAskAccumBytes();//请求累积流量
