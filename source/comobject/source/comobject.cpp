@@ -1003,6 +1003,7 @@ void MeterComObject::askSetAddress2(QString curAddr1, QString newAddr2)
 StdTempComObject::StdTempComObject(QObject* parent) : ComObject(parent)
 {
 	m_tempCom = NULL;
+	m_tempCom = new QextSerialPort();
 	m_stdTempProtocol = NULL;
 }
 
@@ -1064,9 +1065,10 @@ bool StdTempComObject::openTemperatureCom(ComInfoStruct *comStruct)
 // 	qDebug()<<"&&& StdTempComObject::openTemperatureCom thread:"<<QThread::currentThreadId();
 	QString portName = comStruct->portName;// "COM2", 获取串口名
 #ifdef Q_OS_LINUX
-	m_tempCom = new QextSerialPort("/dev/" + portName);
+	m_tempCom->setPortName("/dev/" + portName);
 #elif defined (Q_OS_WIN)
-	m_tempCom = new QextSerialPort(portName, QextSerialPort::EventDriven);
+	m_tempCom->setPortName(portName);
+	m_tempCom->setQueryMode(QextSerialPort::EventDriven);
 #endif
 	connect(m_tempCom, SIGNAL(readyRead()), this, SLOT(readTemperatureComBuffer()));
 	m_tempCom->setBaudRate((BaudRateType)comStruct->baudRate);// BAUD9600); //设置波特率  
