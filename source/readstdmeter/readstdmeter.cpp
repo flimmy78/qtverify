@@ -246,6 +246,10 @@ double CStdMeterReader::getStdPulse(flow_rate_wdg wdgIdx)
 float CStdMeterReader::getInstFlowRate(flow_rate_wdg idx)
 {
 	int route = getRouteByWdg(idx, INST_FLOW_VALUE);
+	if (route<0)
+	{
+		return 0.0;//return 0.0 if it is not selected
+	}
 	int count = get9017RouteI(route, m_instStdCurrent);
 	float upperFlow = getStdUpperFlow(idx);
 	//qDebug() <<"wdg_idx:--"<<idx<<" InstCurrent:--"<<count<<" upperFlow:--"<<upperFlow;
@@ -283,6 +287,10 @@ float CStdMeterReader::getInstStdMeterValue(float elecValue, float upperValue, f
 float CStdMeterReader::getAccumFLowVolume(flow_rate_wdg idx)
 {
 	int route = getRouteByWdg(idx, ACCUM_FLOW_VALUE);
+	if (route<0)
+	{
+		return 0.0;//return 0.0 if it is not selected
+	}
 	int count = get9150ARouteI(route, m_accumStdPulse);
 	int deltaCount = count - m_accumCount[idx];
 	m_accumCount[idx] = count;

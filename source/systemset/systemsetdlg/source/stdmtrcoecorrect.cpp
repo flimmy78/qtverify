@@ -38,6 +38,7 @@ StdMtrCoeCorrect::StdMtrCoeCorrect(QWidget *parent, Qt::WFlags flags)
 {
 	qDebug()<<"StdMtrCoeCorrect thread:"<<QThread::currentThreadId();
 	ui.setupUi(this);
+	ui.btnStart->setEnabled(false);
 	m_stopFlag = false;
 
 	if (!getPortSetIni(&m_portsetinfo)) //获取下位机端口号配置信息
@@ -1181,7 +1182,7 @@ void StdMtrCoeCorrect::on_rBtn_DN3_toggled()
 {
 	if (ui.rBtn_DN3->isChecked())
 		m_curStdMeter = FLOW_RATE_SMALL;
-
+	ui.btnStart->setEnabled(true);
 	m_stdMeterConfig->beginReadArray("Route");
 	m_stdMeterConfig->setArrayIndex(m_curStdMeter);
 	m_curBalance = (Balance_Capacity)m_stdMeterConfig->value("Balance").toInt();
@@ -1193,7 +1194,7 @@ void StdMtrCoeCorrect::on_rBtn_DN10_toggled()
 {
 	if (ui.rBtn_DN10->isChecked())
 		m_curStdMeter = FLOW_RATE_MID_1;
-
+	ui.btnStart->setEnabled(true);
 	m_stdMeterConfig->beginReadArray("Route");
 	m_stdMeterConfig->setArrayIndex(m_curStdMeter);
 	m_curBalance = (Balance_Capacity)m_stdMeterConfig->value("Balance").toInt();
@@ -1205,7 +1206,7 @@ void StdMtrCoeCorrect::on_rBtn_DN25_toggled()
 {
 	if (ui.rBtn_DN25->isChecked())
 		m_curStdMeter = FLOW_RATE_MID_2;
-
+	ui.btnStart->setEnabled(true);
 	m_stdMeterConfig->beginReadArray("Route");
 	m_stdMeterConfig->setArrayIndex(m_curStdMeter);
 	m_curBalance = (Balance_Capacity)m_stdMeterConfig->value("Balance").toInt();
@@ -1217,7 +1218,7 @@ void StdMtrCoeCorrect::on_rBtn_DN50_toggled()
 {
 	if (ui.rBtn_DN50->isChecked())
 		m_curStdMeter = FLOW_RATE_BIG;
-
+	ui.btnStart->setEnabled(true);
 	m_stdMeterConfig->beginReadArray("Route");
 	m_stdMeterConfig->setArrayIndex(m_curStdMeter);
 	m_curBalance = (Balance_Capacity)m_stdMeterConfig->value("Balance").toInt();
