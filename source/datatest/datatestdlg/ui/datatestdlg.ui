@@ -585,7 +585,7 @@ g</string>
              </size>
             </property>
             <property name="maximum">
-             <number>9999</number>
+             <number>50</number>
             </property>
            </widget>
           </item>
