@@ -500,7 +500,7 @@ void NewCtrlProtocol::makeFrameOfCtrlRelay(UINT8 portno, bool status)
 }
 
 //控制调节阀 同时只控制一路
-void NewCtrlProtocol::makeFrameOfCtrlRegulate(UINT8 portno, UINT16 degree)
+void NewCtrlProtocol::makeFrameOfCtrlRegulate(UINT8 portno, float degree)
 {
 	Q_ASSERT(portno >= 0);
 	m_sendBuf.clear();
@@ -508,7 +508,7 @@ void NewCtrlProtocol::makeFrameOfCtrlRegulate(UINT8 portno, UINT16 degree)
 	float a = 2;
 	UINT8 regulate_num = (UINT8)pow(a, (portno-1)); //控制的调节阀数量 只控制1路
 	m_sendBuf.append(regulate_num);
-	QString degStr = QString("%1").arg(degree, 4, 16).replace(" ", "0");
+	QString degStr = QString("%1").arg((int)degree, 4, 16).replace(" ", "0");
 	bool ok;
 	UINT8 dataL = degStr.right(2).toUInt(&ok, 16);//开度 低字节 需要实验和计算得到
 	UINT8 dataH = degStr.left(2).toUInt(&ok, 16); //开度 高字节
@@ -790,10 +790,14 @@ void OldCtrlProtocol::makeFrameOfCtrlRelay(UINT8 portno, bool status)
 }
 
 //控制调节阀 同时只控制一路
-void OldCtrlProtocol::makeFrameOfCtrlRegulate(UINT8 portno, UINT16 degree)
+void OldCtrlProtocol::makeFrameOfCtrlRegulate(UINT8 portno, float degree)
 {
 // 	qDebug()<<"OldCtrlProtocol::makeFrameOfCtrlRegulate thread:"<<QThread::currentThreadId();
 	qDebug()<<"OldCtrlProtocol::makeFrameOfCtrlRegulate portno ="<<portno<<", degree ="<<degree;
+	if (degree>49.9999 && degree<50.0001 && portno==1) //老控制板bug:1号端口设置50%开度时，会导致故障
+	{
+		degree = 49.96;
+	}
 	int data = int(degree*4095/100);//0~100%对应0~4095
 	UINT8 dataH = data/256;
 	UINT8 dataL = data%256;

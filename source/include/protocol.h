@@ -214,7 +214,7 @@ public:
 public slots:
 	//pure virtual
 	virtual void makeFrameOfCtrlRelay(UINT8 portno, bool status) = 0;
-	virtual void makeFrameOfCtrlRegulate(UINT8 portno, UINT16 degree) = 0;
+	virtual void makeFrameOfCtrlRegulate(UINT8 portno, float degree) = 0;
 	virtual void makeFrameOfCtrlQuery() = 0;
 	virtual void makeFrameOfCtrlWaterPump(UINT8 portno, bool status) = 0;
 	virtual void makeFrameOfSetDriverFreq(int freq) = 0;
@@ -238,9 +238,9 @@ public:
 	~NewCtrlProtocol();
 
 public slots:
-	//pure virtual
+	//virtual
 	virtual void makeFrameOfCtrlRelay(UINT8 portno, bool status);
-	virtual void makeFrameOfCtrlRegulate(UINT8 portno, UINT16 degree);
+	virtual void makeFrameOfCtrlRegulate(UINT8 portno, float degree);
 	virtual void makeFrameOfCtrlQuery();
 	virtual void makeFrameOfCtrlWaterPump(UINT8 portno, bool status);
 	virtual void makeFrameOfSetDriverFreq(int freq);
@@ -266,9 +266,9 @@ public:
 	QMap <UINT8, UINT8> regPortMap; //µ÷½Ú·§¶Ë¿ÚºÅ
 
 	public slots:
-	//pure virtual
+	//virtual
 	virtual void makeFrameOfCtrlRelay(UINT8 portno, bool status);
-	virtual void makeFrameOfCtrlRegulate(UINT8 portno, UINT16 degree);
+	virtual void makeFrameOfCtrlRegulate(UINT8 portno, float degree);
 	virtual void makeFrameOfCtrlQuery();
 	virtual void makeFrameOfCtrlWaterPump(UINT8 portno, bool status);
 	virtual void makeFrameOfSetDriverFreq(int freq);

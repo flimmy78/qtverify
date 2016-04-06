@@ -312,7 +312,7 @@ void ControlComObject::askControlRegulate(UINT8 portno, int degree)
 	}
 	qDebug()<<"ControlComObject::askControlRegulate portno ="<<portno<<", degree ="<<degree;
 	QByteArray buf;
-	m_controlProtocol->makeFrameOfCtrlRegulate(portno, degree);
+	m_controlProtocol->makeFrameOfCtrlRegulate(portno, (float)degree);
 	buf = m_controlProtocol->getSendBuf();
 	int size = buf.size();
 	for (int i=0; i<size; i++)
