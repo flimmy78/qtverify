@@ -568,7 +568,7 @@ select
 	T_Yes_No_Tab  yesno on rec.F_Result=yesno.F_ID left join
     T_User_Def_Tab usert on rec.F_VerifyPerson=usert.F_ID left join
 	T_Verify_Device_Info d on rec.F_DeviceInfoID=d.F_ID
-	order by  rec.f_timestamp, rec.F_MeterPosNo, rec.f_meterno
+	order by  rec.f_timestamp, rec.F_MeterPosNo, rec.f_meterno, rec.F_FlowPointIdx
 ;');
 INSERT INTO "main"."T_Create_Query_View_Stmt" VALUES (2, 'temp combined_verify query result view', 'CREATE view V_Temp_Cmb_Query_Result as
 select
@@ -694,7 +694,7 @@ from
 	T_manufacture_dept manu on rec.F_ManufactDept=manu.F_ID left join
 	T_verify_dept vdpt on rec.F_VerifyDept=vdpt.F_ID left join
 	T_Yes_No_Tab  yesno on rec.F_Result=yesno.F_ID
-	order by rec.f_timestamp, rec.F_MeterPosNo, rec.f_meterno
+	order by rec.f_timestamp, rec.F_MeterPosNo, rec.f_meterno, rec.F_FlowPointIdx
 ;');
 INSERT INTO "main"."T_Create_Query_View_Stmt" VALUES (4, 'temp water_verify query result view', 'CREATE view V_Temp_Water_Query_Result as
 select
@@ -767,7 +767,7 @@ select
 	T_Yes_No_Tab  yesno on rec.F_Result=yesno.F_ID left join
     T_User_Def_Tab usert on rec.F_VerifyPerson=usert.F_ID left join
 	T_Verify_Device_Info d on rec.F_DeviceInfoID=d.F_ID
-	order by rec.f_timestamp, rec.F_MeterPosNo, rec.f_meterno
+	order by rec.f_timestamp, rec.F_MeterPosNo, rec.f_meterno, rec.F_FlowPointIdx
 ;');
 
 -----------------------------------------------------------------
