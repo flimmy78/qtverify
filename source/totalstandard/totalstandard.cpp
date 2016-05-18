@@ -39,7 +39,6 @@ TotalStandardDlg::TotalStandardDlg(QWidget *parent, Qt::WFlags flags)
 
 	///////////////////////////////// 原showEvent()函数的内容 begin 
 	//否则每次最小化再显示时，会调用showEvent函数，导致内容清空等现象
-	ui.btnReCalc->hide();
 	ui.btnExhaust->hide();
 	ui.btnGoOn->hide();
 
@@ -1013,11 +1012,6 @@ void TotalStandardDlg::on_btnGoOn_clicked()
 {
 	ui.btnGoOn->hide();
 	startVerify();
-}
-
-//点击"重新计算"按钮
-void TotalStandardDlg::on_btnReCalc_clicked()
-{
 }
 
 //点击"终止检测"按钮
