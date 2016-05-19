@@ -991,17 +991,17 @@ void DataTestDlg::on_btnSetAddr1_clicked()
 	qDebug()<<"设置一级地址 ...";
 	QString curAddr1 = ui.lnEditCurAddr1->text();
 	QString newAddr1 = ui.lnEditAddress1->text();
-	bool ok1;
+// 	bool ok1;
 	bool ok2;
-	UINT8 curAddr = curAddr1.toUInt(&ok1, 10);
+// 	UINT8 curAddr = curAddr1.toUInt(&ok1, 10);
 	UINT8 newAddr = newAddr1.toUInt(&ok2, 10);
 
-	if (curAddr1.isEmpty() || !ok1)
-	{
-		QMessageBox::warning(this, tr("Warning"), tr("curAddr1 is error! please input 0-255!"));
-		ui.lnEditCurAddr1->setFocus();
-		return;
-	}
+// 	if (curAddr1.isEmpty() || !ok1)
+// 	{
+// 		QMessageBox::warning(this, tr("Warning"), tr("curAddr1 is error! please input 0-255!"));
+// 		ui.lnEditCurAddr1->setFocus();
+// 		return;
+// 	}
 	if (newAddr1.isEmpty() || !ok2)
 	{
 		QMessageBox::warning(this, tr("Warning"), tr("newAddr1 is error! please input 0-255!"));
@@ -1019,16 +1019,44 @@ void DataTestDlg::on_btnSetAddr2_clicked()
 	QString curAddr1 = ui.lnEditCurAddr1->text();
 	QString newAddr2 = ui.lnEditAddress2->text();
 
-	bool ok1;
-	UINT8 curAddr = curAddr1.toUInt(&ok1, 10);
-	if (curAddr1.isEmpty() || !ok1)
+// 	bool ok1;
+// 	UINT8 curAddr1 = curAddr1.toUInt(&ok1, 10);
+// 	if (curAddr1.isEmpty() || !ok1)
+// 	{
+// 		QMessageBox::warning(this, tr("Warning"), tr("curAddr1 is error! please input 0-255!"));
+// 		ui.lnEditCurAddr1->setFocus();
+// 		return;
+// 	}
+
+	bool ok2;
+	UINT8 curAddr2 = newAddr2.toUInt(&ok2, 10);
+	if (newAddr2.isEmpty() || !ok2 || newAddr2.length()!=8)
 	{
-		QMessageBox::warning(this, tr("Warning"), tr("curAddr1 is error! please input 0-255!"));
-		ui.lnEditCurAddr1->setFocus();
+		QMessageBox::warning(this, tr("Warning"), tr("curAddr2 is error! please input 8 bit meter number"));
+		ui.lnEditAddress2->setFocus();
 		return;
 	}
 
 	m_meterObj->askSetAddress2(curAddr1, newAddr2); //设置二级地址
+}
+
+//下发流量修正开始命令
+void DataTestDlg::on_btnStartModifyCoe_clicked()
+{
+	qDebug()<<"下发流量修正开始命令 ...";
+	m_meterObj->askStartModifyCoe();
+}
+
+//下发流量修正开始命令
+void DataTestDlg::on_btnModifyData_clicked()
+{
+	qDebug()<<"修改表数据 ...";
+
+	float flow = ui.lineEditMeterFlow->text().toFloat();
+	float heat = ui.lineEditMeterHeat->text().toFloat();
+	float cold = ui.lineEditMeterCold->text().toFloat();
+
+	m_meterObj->askModifyMeterData(flow, heat, cold);
 }
 
 //响应读取表号成功

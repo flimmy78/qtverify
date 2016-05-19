@@ -2257,28 +2257,22 @@ void AdeMeterProtocol::makeFrameOfSetSystemTime()
 	}
 	UINT8 code0 = 0x00;
 	UINT8 addr = 0xFE;
-	m_sendBuf.append(0x68).append(0x09).append(0x09).append(0x68);
-	m_sendBuf.append(0x53).append(addr).append(0x51).append(0x04).append(0x6D);
-	UINT8 cs = 0x53 + addr + 0x51 + 0x04 + 0x6D;
-	UINT8 ID0, ID1, ID2, ID3;
-	bool ok;
-	QString currentTime = QDateTime::currentDateTime().toString("yyyyMMddHHmm");//"201501071259" 到分钟
-	UINT8 minute = currentTime.right(2).toUInt(&ok, 10);
-	UINT8 hour = currentTime.mid(8,2).toUInt(&ok, 10);
-	UINT8 day = currentTime.mid(6, 2).toUInt(&ok, 10);
-	UINT8 month = currentTime.mid(4, 2).toUInt(&ok, 10);
-	UINT16 year = currentTime.left(4).toUInt(&ok, 10);
+	m_sendBuf.append(0x68).append(0x0D).append(0x0D).append(0x68);
+	m_sendBuf.append(0x53).append(addr).append(0x51).append(0x0F).append(code0).append(code0);
+	UINT8 cs = 0x53 + addr + 0x51 + 0x0F + code0 + code0;
 
-	ID0 = minute;
-	UINT8 bainian = (year-1900)/100; //2bit，范围 0-3
-	ID1 = hour + 32*bainian;
-	UINT8 nian = (year-1900)%100;
-	UINT8 lownian = nian%8; 
-	UINT8 highnian = nian/8;  //
-	ID2 = day + lownian*32;
-	ID3 = month + highnian*16;
-	m_sendBuf.append(ID0).append(ID1).append(ID2).append(ID3);
-	cs += ID0 + ID1 +ID2 + ID3;
+	bool ok;
+	QString currentTime = QDateTime::currentDateTime().toString("yyyyMMddHHmmss");//"201501071259" 到秒
+	UINT8 second = currentTime.right(2).toUInt(&ok, 16);
+	UINT8 minute = currentTime.mid(10, 2).toUInt(&ok, 16);
+	UINT8 hour = currentTime.mid(8,2).toUInt(&ok, 16);
+	UINT8 day = currentTime.mid(6, 2).toUInt(&ok, 16);
+	UINT8 month = currentTime.mid(4, 2).toUInt(&ok, 16);
+	UINT8 nian = currentTime.mid(2, 2).toUInt(&ok, 16);
+	UINT8 bainian = currentTime.left(2).toUInt(&ok, 16);
+
+	m_sendBuf.append(second).append(minute).append(hour).append(day).append(month).append(nian).append(bainian);
+	cs += second + minute + hour + day + month + nian + bainian;
 	m_sendBuf.append(cs);//校验码
 
 	m_sendBuf.append(METER_END_CODE);//结束符
@@ -2306,7 +2300,7 @@ void AdeMeterProtocol::makeFrameOfSetAddress1(QString curAddr1, QString newAddr1
 		m_sendBuf.append(ADE_PREFIX_CODE); //前导字节
 	}
 	bool ok;
-	UINT8 curAddr = curAddr1.toUInt(&ok, 10);
+	UINT8 curAddr = 0xFE;//curAddr1.toUInt(&ok, 10);
 	UINT8 newAddr = newAddr1.toUInt(&ok, 10);
 	m_sendBuf.append(0x68).append(0x06).append(0x06).append(0x68);
 	m_sendBuf.append(0x53).append(curAddr).append(0x51).append(0x01).append(0x7A).append(newAddr);
@@ -2337,7 +2331,7 @@ void AdeMeterProtocol::makeFrameOfSetAddress2(QString curAddr1, QString newAddr2
 		m_sendBuf.append(ADE_PREFIX_CODE); //前导字节
 	}
 	bool ok;
-	UINT8 curAddr = curAddr1.toUInt(&ok, 10);
+	UINT8 curAddr = 0xFE;//curAddr1.toUInt(&ok, 10);
 	UINT8 newAddr_ID0 = newAddr2.right(2).toUInt(&ok, 16);
 	UINT8 newAddr_ID1 = newAddr2.mid(4,2).toUInt(&ok, 16);
 	UINT8 newAddr_ID2 = newAddr2.mid(2,2).toUInt(&ok, 16);
@@ -2346,6 +2340,107 @@ void AdeMeterProtocol::makeFrameOfSetAddress2(QString curAddr1, QString newAddr2
 	m_sendBuf.append(0x53).append(curAddr).append(0x51).append(0x0C).append(0x79);
 	m_sendBuf.append(newAddr_ID0).append(newAddr_ID1).append(newAddr_ID2).append(newAddr_ID3);
 	UINT8 cs = 0x53 + curAddr + 0x51 + 0x0C + 0x79 + newAddr_ID0 + newAddr_ID1 + newAddr_ID2 + newAddr_ID3;
+	m_sendBuf.append(cs);//校验码
+	m_sendBuf.append(METER_END_CODE);//结束符
+}
+
+/*
+** 组帧：下发流量修正开始命令
+*/
+void AdeMeterProtocol::makeFrameOfStartModifyCoe()
+{
+// 	qDebug()<<"ADEMeterProtocol::makeFrameOfStartModifyCoe thread:"<<QThread::currentThreadId();
+
+	m_sendBuf.clear();
+
+	for (int i=0; i<ADE_WAKEUP_CODE_NUM; i++)
+	{
+		m_sendBuf.append(ADE_WAKEUP_CODE);//唤醒红外
+	}
+
+	for (int j=0; j<ADE_PREFIX_CODE_NUM; j++)
+	{
+		m_sendBuf.append(ADE_PREFIX_CODE); //前导字节
+	}
+
+	UINT8 code0 = 0x00;
+	UINT8 addr = 0xFE;
+	m_sendBuf.append(0x68).append(0x07).append(0x07).append(0x68);
+	m_sendBuf.append(0x53).append(addr).append(0x51).append(0x0F).append(0x21).append(code0).append(0x01);
+	UINT8 cs = 0x53 + addr + 0x51 + 0x0F + 0x21 + code0 + 0x01;
+
+	m_sendBuf.append(cs);//校验码
+	m_sendBuf.append(METER_END_CODE);//结束符
+}
+
+/*
+** 组帧：修改表数据
+** 输入参数：
+	flow：累计流量，单位m3
+	heat：累计热量，单位kWh
+	cold：累计冷量，单位kWh
+	注：每个参数都是6字节，16进制格式定点小数，低字节在前，高字节在后。DATA0：小数字节，DATA1~DATA5：整数字节
+*/
+void AdeMeterProtocol::makeFrameOfModifyData(float flow, float heat, float cold)
+{
+// 	qDebug()<<"ADEMeterProtocol::makeFrameOfModifyData thread:"<<QThread::currentThreadId();
+
+	m_sendBuf.clear();
+
+	for (int i=0; i<ADE_WAKEUP_CODE_NUM; i++)
+	{
+		m_sendBuf.append(ADE_WAKEUP_CODE);//唤醒红外
+	}
+
+	for (int j=0; j<ADE_PREFIX_CODE_NUM; j++)
+	{
+		m_sendBuf.append(ADE_PREFIX_CODE); //前导字节
+	}
+
+	UINT8 code0 = 0x00;
+	UINT8 addr = 0xFE;
+	m_sendBuf.append(0x68).append(0x18).append(0x18).append(0x68);
+	m_sendBuf.append(0x53).append(addr).append(0x51).append(0x0F).append(0x20).append(code0);
+	UINT8 cs = 0x53 + addr + 0x51 + 0x0F + 0x20 + code0;
+
+	bool ok;
+
+	int flowInt = (int)flow;
+	float flowDec = flow - flowInt;
+	UINT8 DATA0 = flowDec*256 + 0.5;
+	QString flowIntStr = QString::number(flowInt, 16).rightJustified(10, '0');
+	UINT8 DATA1 = flowIntStr.right(2).toUInt(&ok, 16);
+	UINT8 DATA2 = flowIntStr.mid(6, 2).toUInt(&ok, 16);
+	UINT8 DATA3 = flowIntStr.mid(4, 2).toUInt(&ok, 16);
+	UINT8 DATA4 = flowIntStr.mid(2, 2).toUInt(&ok, 16);
+	UINT8 DATA5 = flowIntStr.left(2).toUInt(&ok, 16);
+	m_sendBuf.append(DATA0).append(DATA1).append(DATA2).append(DATA3).append(DATA4).append(DATA5);
+	cs += DATA0 + DATA1 + DATA2 + DATA3 + DATA4 + DATA5;
+
+	int heatInt = (int)heat;
+	float heatDec = heat - heatInt;
+	UINT8 DATA6 = heatDec*256 + 0.5;
+	QString heatIntStr = QString::number(heatInt, 16).rightJustified(10, '0');
+	UINT8 DATA7 = heatIntStr.right(2).toUInt(&ok, 16);
+	UINT8 DATA8 = heatIntStr.mid(6, 2).toUInt(&ok, 16);
+	UINT8 DATA9 = heatIntStr.mid(4, 2).toUInt(&ok, 16);
+	UINT8 DATA10 = heatIntStr.mid(2, 2).toUInt(&ok, 16);
+	UINT8 DATA11 = heatIntStr.left(2).toUInt(&ok, 16);
+	m_sendBuf.append(DATA6).append(DATA7).append(DATA8).append(DATA9).append(DATA10).append(DATA11);
+	cs += DATA6 + DATA7 + DATA8 + DATA9 + DATA10 + DATA11;
+
+	int coldInt = (int)cold;
+	float coldDec = cold - coldInt;
+	UINT8 DATA12 = coldDec*256 + 0.5;
+	QString coldIntStr = QString::number(coldInt, 16).rightJustified(10, '0');
+	UINT8 DATA13 = coldIntStr.right(2).toUInt(&ok, 16);
+	UINT8 DATA14 = coldIntStr.mid(6, 2).toUInt(&ok, 16);
+	UINT8 DATA15 = coldIntStr.mid(4, 2).toUInt(&ok, 16);
+	UINT8 DATA16 = coldIntStr.mid(2, 2).toUInt(&ok, 16);
+	UINT8 DATA17 = coldIntStr.left(2).toUInt(&ok, 16);
+	m_sendBuf.append(DATA12).append(DATA13).append(DATA14).append(DATA15).append(DATA16).append(DATA17);
+	cs += DATA12 + DATA13 + DATA14 + DATA15 + DATA16 + DATA17;
+
 	m_sendBuf.append(cs);//校验码
 	m_sendBuf.append(METER_END_CODE);//结束符
 }

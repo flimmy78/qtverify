@@ -201,6 +201,8 @@ public slots:
 	void askSetSystemTime(); //设置系统时间（航天德鲁热量表）
 	void askSetAddress1(QString curAddr1, QString newAddr1); //设置一级地址（航天德鲁热量表）
 	void askSetAddress2(QString curAddr1, QString newAddr2); //设置二级地址（航天德鲁热量表）
+	void askStartModifyCoe(); //下发流量修正开始命令（航天德鲁热量表）
+	void askModifyMeterData(float flow, float heat, float cold); //修改表数据-历史数据（航天德鲁热量表）
 
 	void setProtocolVersion(int version);
 };

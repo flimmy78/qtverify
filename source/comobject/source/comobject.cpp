@@ -995,6 +995,36 @@ void MeterComObject::askSetAddress2(QString curAddr1, QString newAddr2)
 	m_meterCom->write(buf);
 }
 
+/*
+** 下发流量修正开始命令-航天德鲁热量表
+*/
+void MeterComObject::askStartModifyCoe()
+{
+	qDebug()<<m_meterCom->portName()<<"222 MeterComObject askStartModifyCoe thread:"<<QThread::currentThreadId();
+	if (NULL==m_meterProtocol)
+	{
+		return;
+	}
+	m_meterProtocol->makeFrameOfStartModifyCoe();
+	QByteArray buf = m_meterProtocol->getSendFrame();
+	m_meterCom->write(buf);
+}
+
+/*
+** 修改表数据-历史数据-航天德鲁热量表
+*/
+void MeterComObject::askModifyMeterData(float flow, float heat, float cold)
+{
+	qDebug()<<m_meterCom->portName()<<"222 MeterComObject askModifyMeterData thread:"<<QThread::currentThreadId();
+	if (NULL==m_meterProtocol)
+	{
+		return;
+	}
+	m_meterProtocol->makeFrameOfModifyData(flow, heat, cold);
+	QByteArray buf = m_meterProtocol->getSendFrame();
+	m_meterCom->write(buf);
+}
+
 
 /*
 ** 类名：StdTempComObject

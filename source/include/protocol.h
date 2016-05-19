@@ -296,7 +296,8 @@ public:
 #define     ADE_WAKEUP_CODE_NUM			200     //唤醒码个数(航天德鲁新热量表)
 #define		ADE_WAKEUP_CODE				0x55	//唤醒码    (航天德鲁新热量表)
 #define     ADE_PREFIX_CODE_NUM			10      //前导码个数(航天德鲁新热量表)
-#define		ADE_PREFIX_CODE				0xFE	//前导码    (航天德鲁新热量表)
+#define		ADE_PREFIX_CODE				0xFF	//前导码    (航天德鲁新热量表)
+#define		ADE_RESPONSE_CODE			0xE5	//从机响应码(航天德鲁新热量表)
 
 #define     PLOU_WAKEUP_CODE_NUM		400     //唤醒码个数(天罡新热量表)
 
@@ -390,6 +391,8 @@ public slots:
 	virtual void makeFrameOfSetSystemTime(){}; //设置系统时间-航天德鲁热量表
 	virtual void makeFrameOfSetAddress1(QString curAddr1, QString newAddr1){}; //设置一级地址-航天德鲁热量表
 	virtual void makeFrameOfSetAddress2(QString curAddr1, QString newAddr2){}; //设置二级地址-航天德鲁热量表
+	virtual void makeFrameOfStartModifyCoe(){};//下发流量修正开始命令-航天德鲁热量表
+	virtual void makeFrameOfModifyData(float flow, float heat, float cold){};//修改表数据-航天德鲁热量表
 
 	virtual QByteArray getSendFrame();
 	virtual QString getFullMeterNo();
@@ -497,6 +500,8 @@ public slots:
 	virtual void makeFrameOfSetSystemTime(); //设置系统时间
 	virtual void makeFrameOfSetAddress1(QString curAddr1, QString newAddr1); //设置一级地址
 	virtual void makeFrameOfSetAddress2(QString curAddr1, QString newAddr2); //设置二级地址
+	virtual void makeFrameOfStartModifyCoe();
+	virtual void makeFrameOfModifyData(float flow, float heat, float cold);
 
 
 private:

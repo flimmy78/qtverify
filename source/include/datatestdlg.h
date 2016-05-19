@@ -146,6 +146,8 @@ public slots:
 	void on_btnSetTime_clicked();//设置系统时间
 	void on_btnSetAddr1_clicked();//设置一级地址
 	void on_btnSetAddr2_clicked();//设置二级地址
+	void on_btnStartModifyCoe_clicked(); //下发流量修正开始命令
+	void on_btnModifyData_clicked(); //修改表数据-历史数据
 	
 
 	void on_btnOpenCom_clicked(); //打开串口
