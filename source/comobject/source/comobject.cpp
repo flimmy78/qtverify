@@ -735,7 +735,7 @@ void MeterComObject::readMeterComBuffer()
 	qDebug()<<"MeterComObject::readMeterComBuffer"<<m_meterCom->portName()<<"read"<<m_meterTmp.size()<<"bytes!";
 // 	QDateTime begintime = QDateTime::currentDateTime();
 // 	qDebug()<<"begintime:"<<begintime.toString("yyyy-MM-dd HH:mm:ss.zzz");
-	UINT8 ret = 0x00;
+	UINT8 ret = 0;
 	if (NULL==m_meterProtocol)
 	{
 		return;
@@ -747,8 +747,13 @@ void MeterComObject::readMeterComBuffer()
 	QString flow, heat;
 	QString tempIn, tempOut, date;
 	QString bigCoe,mid2Coe,mid1Coe,smallCoe;
-	if (ret == 1) //解帧成功
+
+	switch (ret)
 	{
+	case METER_RESPONSE_FAILED:
+		qDebug()<<m_portName<<": 解析热量表数据，失败";
+		break;
+	case METER_ANALYSE_SUCCESS: //解析热表返回数据成功
 		//表号
 		meterNo = m_meterProtocol->getFullMeterNo();
 		emit readMeterNoIsOK(m_portName, meterNo);
@@ -790,7 +795,14 @@ void MeterComObject::readMeterComBuffer()
 // 		qDebug()<<"endtime:  "<<endtime.toString("yyyy-MM-dd HH:mm:ss.zzz");
 // 		UINT32 usedSec = begintime.msecsTo(endtime);
 //		qDebug()<<"解析热量表数据，用时"<<usedSec<<"毫秒";
-		qDebug()<<"解析热量表数据，成功";
+		qDebug()<<m_portName<<": 解析热量表数据，成功";
+		break;
+	case METER_RESPONSE_SUCCESS:
+		emit signalMeterCommunicateIsOK(m_portName);
+		qDebug()<<m_portName<<": 热量表响应成功";
+		break;
+	default:
+		break;
 	}
 }
 

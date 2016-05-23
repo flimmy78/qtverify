@@ -1807,7 +1807,7 @@ UINT8 AdeMeterProtocol::readMeterComBuffer(QByteArray tmp)
 {
 	qDebug()<<"AdeMeterProtocol::readMeterComBuffer thread:"<<QThread::currentThreadId();
 
-	UINT8 ret = 0x00;
+	UINT8 ret = METER_RESPONSE_FAILED;
 	int state = STATE_METER_START;
 	UINT8 ch = 0; //无符号8位数字
 	int number = tmp.size();
@@ -1830,6 +1830,11 @@ UINT8 AdeMeterProtocol::readMeterComBuffer(QByteArray tmp)
 			{
 				m_GB26831DataFrame->startCode = ch;
 				state = STATE_METER_ADDR; //数据长度
+			}
+			else if (ch == ADE_RESPONSE_CODE) //从机响应码
+			{
+				ret = METER_RESPONSE_SUCCESS;
+				return ret; //从机响应，代码
 			}
 			break;
 		case STATE_METER_ADDR: //数据长度
@@ -1863,7 +1868,7 @@ UINT8 AdeMeterProtocol::readMeterComBuffer(QByteArray tmp)
 			if (ck == m_GB26831DataFrame->cs) //校验通过
 			{
 				analyseFrame();
-				ret = 1; //
+				ret = METER_ANALYSE_SUCCESS; //
 				qDebug()<<"check is ok 校验通过";
 			}
 			break;
@@ -2011,60 +2016,7 @@ void AdeMeterProtocol::makeFrameOfExitVerifyStatus(int vType)
 // 组帧：修改表号(14位表号)
 void AdeMeterProtocol::makeFrameOfModifyMeterNo(QString oldMeterNo, QString newMeterNo)
 {
-// 	qDebug()<<"DeluMeterProtocol::makeFrameOfReadMeter thread:"<<QThread::currentThreadId();
-	qDebug()<<"DeluMeterProtocol::makeFrameOfModifyMeterNo oldMeterNo ="<<oldMeterNo<<", newMeterNo ="<<newMeterNo;
-
-	m_sendBuf.clear();
-
-	for (int i=0; i<METER_WAKEUP_CODE_NUM; i++)
-	{
-		m_sendBuf.append(METER_WAKEUP_CODE);//唤醒红外
-	}
-
-	for (int j=0; j<METER_PREFIX_CODE_NUM; j++)
-	{
-		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
-	}
-
-	m_sendBuf.append(METER_START_CODE);//起始符
-	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
-	UINT8 cs = METER_START_CODE + METER_TYPE_ASK_CODE;
-	UINT8 oldNo;
-	bool ok;
-	for (int m=CJ188_ADDR_LEN-1; m>=0; m--)
-	{
-		oldNo = oldMeterNo.mid(2*m, 2).toUInt(&ok, 16);
-		m_sendBuf.append(oldNo); //旧表号
-		cs += oldNo;
-	}
-
-	UINT8 code1 = 0x39;
-	UINT8 code2 = 0x11;
-	UINT8 code3 = 0x18;
-	UINT8 code4 = 0xA0;
-	UINT8 code5 = 0xAA;
-
-	m_sendBuf.append(code1).append(code2).append(code3).append(code4).append(code5);
-	cs += code1 + code2 + code3 + code4 + code5;
-
-	UINT8 newNo;
-	for (int n=CJ188_ADDR_LEN-1; n>=0; n--)
-	{
-		newNo = newMeterNo.mid(2*n, 2).toUInt(&ok, 16);
-		m_sendBuf.append(newNo); //新表号
-		cs += newNo;
-	}
-
-	UINT8 timeCode;
-	QString currentTime = QDateTime::currentDateTime().toString("yyyyMMddHHmmss");//"20150107125930"
-	for (int p=6; p>=0; p--)
-	{
-		timeCode = currentTime.mid(2*p, 2).toUInt(&ok, 16);
-		m_sendBuf.append(timeCode); //当前时间
-		cs += timeCode;
-	}
-
-	m_sendBuf.append(cs).append(0x16);
+	makeFrameOfSetAddress2(oldMeterNo, newMeterNo.right(8));
 }
 
 /*
@@ -2383,7 +2335,7 @@ void AdeMeterProtocol::makeFrameOfStartModifyCoe()
 */
 void AdeMeterProtocol::makeFrameOfModifyData(float flow, float heat, float cold)
 {
-// 	qDebug()<<"ADEMeterProtocol::makeFrameOfModifyData thread:"<<QThread::currentThreadId();
+	qDebug()<<"ADEMeterProtocol::makeFrameOfModifyData thread:"<<QThread::currentThreadId();
 
 	m_sendBuf.clear();
 

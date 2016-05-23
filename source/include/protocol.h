@@ -301,6 +301,14 @@ public:
 
 #define     PLOU_WAKEUP_CODE_NUM		400     //唤醒码个数(天罡新热量表)
 
+enum meterResponseCode //热量表响应码
+{
+	METER_RESPONSE_FAILED = 0,	//热量表响应失败
+	METER_ANALYSE_SUCCESS = 1,	//解析热量表返回数据成功
+	METER_RESPONSE_SUCCESS =2	//热量表响应成功
+};
+
+
 #define		STATE_METER_START		0x00
 #define		STATE_METER_TYPE		0x01
 #define		STATE_METER_ADDR		0x02

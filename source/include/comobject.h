@@ -183,6 +183,7 @@ signals:
 	void readMeterMid2CoeIsOK(const QString& portName, const QString& mid2Coe); //获取中流2流量系数成功
 	void readMeterMid1CoeIsOK(const QString& portName, const QString& mid1Coe); //获取中流1流量系数成功
 	void readMeterSmallCoeIsOK(const QString& portName, const QString& smallCoe); //获取小流量系数成功
+	void signalMeterCommunicateIsOK(const QString& portName); //表通讯成功
 
 public slots:
 	bool openMeterCom(ComInfoStruct *comStruct);
