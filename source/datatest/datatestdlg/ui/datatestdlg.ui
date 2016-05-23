@@ -2935,17 +2935,7 @@ Data</string>
       </widget>
      </item>
      <item row="0" column="1">
-      <spacer name="horizontalSpacer_3">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>158</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
+      <widget class="QTextBrowser" name="textBrowser"/>
      </item>
      <item row="0" column="2">
       <layout class="QGridLayout" name="gridLayout_9">

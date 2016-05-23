@@ -109,6 +109,7 @@ public:
 	int m_nowOrder;				//当前检定次序
 
 	now_state m_state; //当前运行状态（初始态、读初值态、读终值态）
+	table_columns m_now_column; //当前点击列
 
 	ReadComConfig *m_readComConfig; //读串口设置
 	PortSet_Ini_STR m_portsetinfo;  //端口配置
@@ -195,6 +196,7 @@ public slots:
 	void slotFreshMid2Coe(const QString& comName, const QString& mid2Coe); //刷新中流2流量系数
 	void slotFreshMid1Coe(const QString& comName, const QString& mid1Coe); //刷新中流1流量系数
 	void slotFreshSmallCoe(const QString& comName, const QString& smallCoe); //刷新小流量系数
+	void slotMeterCommunicateSuccess(const QString& comName); //热量表通讯成功
 	void setValveBtnBackColor(QToolButton *btn, bool status); //设置阀门按钮背景色
 	void setRegBtnBackColor(QPushButton *btn, bool status);	  //设置调节阀按钮背景色
 
@@ -218,12 +220,14 @@ public slots:
 	void on_btnAllVerifyStatus_clicked();//设置检定状态(所有表）
 	void on_btnAllAdjError_clicked(); //调整误差(所有表)
 	void on_btnAllModifyNO_clicked(); //修改表号(所有表）
+	void on_btnAllStartModifyCoe_clicked(); //下发流量修正开始命令(所有表）-只针对航天德鲁新表GB26831协议
 
 	void slotModifyMeterNO(const int &row); //修改表号
 	void slotAdjustError(const int &row);   //调整误差
 	void slotReadData(const int &row);      //读表数据(单个表)
 	void slotVerifyStatus(const int &row);  //检定状态
 	void slotReadNO(const int &row);        //读表号
+	void slotStartModifyCoe(const int &row);//下发流量修正开始命令
 
 	void saveStartMeterNO(); //保存起始表号
 

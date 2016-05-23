@@ -113,6 +113,11 @@
        <string>ModifyNO</string>
       </property>
      </column>
+     <column>
+      <property name="text">
+       <string>StartModCoe</string>
+      </property>
+     </column>
     </widget>
    </item>
    <item row="1" column="0" rowspan="5">
@@ -217,7 +222,7 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="4">
+     <item row="0" column="5">
       <widget class="QPushButton" name="btnAllAdjError">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -242,7 +247,7 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="5">
+     <item row="0" column="6">
       <widget class="QPushButton" name="btnAllModifyNO">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -428,7 +433,7 @@
        </layout>
       </widget>
      </item>
-     <item row="1" column="1" colspan="5">
+     <item row="1" column="1" colspan="6">
       <widget class="QGroupBox" name="groupBox_2">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -711,6 +716,31 @@ g</string>
          </widget>
         </item>
        </layout>
+      </widget>
+     </item>
+     <item row="0" column="4">
+      <widget class="QPushButton" name="btnAllStartModifyCoe">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>80</width>
+         <height>35</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>110</width>
+         <height>35</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>StartModCoe</string>
+       </property>
       </widget>
      </item>
     </layout>

@@ -796,6 +796,7 @@ void MeterComObject::readMeterComBuffer()
 // 		UINT32 usedSec = begintime.msecsTo(endtime);
 //		qDebug()<<"解析热量表数据，用时"<<usedSec<<"毫秒";
 		qDebug()<<m_portName<<": 解析热量表数据，成功";
+		emit signalMeterCommunicateIsOK(m_portName);
 		break;
 	case METER_RESPONSE_SUCCESS:
 		emit signalMeterCommunicateIsOK(m_portName);
