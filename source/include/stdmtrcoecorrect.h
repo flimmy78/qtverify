@@ -48,12 +48,12 @@ class StdMtrCorrectPraDlg;
 
 #define EX_DEGREE		80//用于排气时的调节阀开度
 #define REG_DEGREE_ZERO	0//用于排气时的调节阀开度
-#define EX_GREQ			25//用于排气时的水泵频率
+#define EX_GREQ			25.0//用于排气时的水泵频率
 
 typedef struct{
 	float flowpoint;//当前检定的流量点 m3/h
 	int	  degree;//调节阀开度
-	int	  freq;//水泵频率
+	float freq;//水泵频率
 	float quantity;//检定量
 }StdCorrectPara_STR;
 typedef StdCorrectPara_STR* StdCorrectPara_PTR;

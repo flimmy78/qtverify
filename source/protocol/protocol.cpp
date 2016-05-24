@@ -537,7 +537,7 @@ void NewCtrlProtocol::makeFrameOfCtrlWaterPump(UINT8 portno, bool status)
 }
 
 //设置变频器频率
-void NewCtrlProtocol::makeFrameOfSetDriverFreq(int freq)
+void NewCtrlProtocol::makeFrameOfSetDriverFreq(float freq)
 {
 
 }
@@ -829,12 +829,16 @@ void OldCtrlProtocol::makeFrameOfCtrlWaterPump(UINT8 portno, bool status)
 }
 
 //设置变频器频率
-void OldCtrlProtocol::makeFrameOfSetDriverFreq(int freq)
+void OldCtrlProtocol::makeFrameOfSetDriverFreq(float freq)
 {
 // 	qDebug()<<"OldCtrlProtocol::makeFrameOfSetDriverFreq thread:"<<QThread::currentThreadId();
 	qDebug()<<"OldCtrlProtocol::makeFrameOfSetDriverFreq freq ="<<freq;
-	float dataF = ((float)freq)*4095.0/50.0;
-	int data = int(dataF);//0~50Hz对应0~4095
+	if (freq >= 24.9999 && freq <= 25.0001) //老控制板存在bug，不能设置频率25Hz
+	{
+		freq = 24.9;
+	}
+	float dataF = freq*4095.0/50.0;
+	int data = int(dataF) > 4095 ? 4095 : int(dataF);//0~50Hz对应0~4095
 	qDebug()<<"dataF ="<<dataF<<", data ="<<data;
 	UINT8 dataH = data/256;
 	UINT8 dataL = data%256;
@@ -2339,6 +2343,20 @@ void AdeMeterProtocol::makeFrameOfModifyData(float flow, float heat, float cold)
 	m_sendBuf.append(METER_END_CODE);//结束符
 }
 
+/*
+** 组帧：唤醒命令
+*/
+void AdeMeterProtocol::makeFrameOfWakeUp()
+{
+	qDebug()<<"ADEMeterProtocol::makeFrameOfWakeUp thread:"<<QThread::currentThreadId();
+
+	m_sendBuf.clear();
+
+	for (int i=0; i<ADE_WAKEUP_CODE_NUM; i++)
+	{
+		m_sendBuf.append(ADE_WAKEUP_CODE);//唤醒红外
+	}
+}
 
 /***********************************************
 类名：HiwitsMeterProtocol

@@ -838,7 +838,7 @@
          <enum>QLayout::SetDefaultConstraint</enum>
         </property>
         <item>
-         <widget class="QSpinBox" name="spinBoxFreq">
+         <widget class="QDoubleSpinBox" name="spinBoxFreq">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -859,6 +859,9 @@
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
+          </property>
+          <property name="singleStep">
+           <double>0.010000000000000</double>
           </property>
          </widget>
         </item>

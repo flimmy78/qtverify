@@ -217,7 +217,7 @@ public slots:
 	virtual void makeFrameOfCtrlRegulate(UINT8 portno, float degree) = 0;
 	virtual void makeFrameOfCtrlQuery() = 0;
 	virtual void makeFrameOfCtrlWaterPump(UINT8 portno, bool status) = 0;
-	virtual void makeFrameOfSetDriverFreq(int freq) = 0;
+	virtual void makeFrameOfSetDriverFreq(float freq) = 0;
 	virtual UINT8 readCtrlComBuffer(QByteArray tmp) = 0;
 	virtual void analyseFrame() = 0;
 
@@ -243,7 +243,7 @@ public slots:
 	virtual void makeFrameOfCtrlRegulate(UINT8 portno, float degree);
 	virtual void makeFrameOfCtrlQuery();
 	virtual void makeFrameOfCtrlWaterPump(UINT8 portno, bool status);
-	virtual void makeFrameOfSetDriverFreq(int freq);
+	virtual void makeFrameOfSetDriverFreq(float freq);
 	virtual UINT8 readCtrlComBuffer(QByteArray tmp);
 	virtual void analyseFrame();
 
@@ -271,7 +271,7 @@ public:
 	virtual void makeFrameOfCtrlRegulate(UINT8 portno, float degree);
 	virtual void makeFrameOfCtrlQuery();
 	virtual void makeFrameOfCtrlWaterPump(UINT8 portno, bool status);
-	virtual void makeFrameOfSetDriverFreq(int freq);
+	virtual void makeFrameOfSetDriverFreq(float freq);
 	virtual UINT8 readCtrlComBuffer(QByteArray tmp);
 	virtual void analyseFrame();
 
@@ -298,6 +298,7 @@ public:
 #define     ADE_PREFIX_CODE_NUM			10      //前导码个数(航天德鲁新热量表)
 #define		ADE_PREFIX_CODE				0xFF	//前导码    (航天德鲁新热量表)
 #define		ADE_RESPONSE_CODE			0xE5	//从机响应码(航天德鲁新热量表)
+#define		ADE_WAKEUP_WAIT_TIME		1500	//唤醒命令后等待时间（毫秒） (航天德鲁新热量表)
 
 #define     PLOU_WAKEUP_CODE_NUM		400     //唤醒码个数(天罡新热量表)
 
@@ -401,6 +402,7 @@ public slots:
 	virtual void makeFrameOfSetAddress2(QString curAddr1, QString newAddr2){}; //设置二级地址-航天德鲁热量表
 	virtual void makeFrameOfStartModifyCoe(){};//下发流量修正开始命令-航天德鲁热量表
 	virtual void makeFrameOfModifyData(float flow, float heat, float cold){};//修改表数据-航天德鲁热量表
+	virtual void makeFrameOfWakeUp(){}; //唤醒指令
 
 	virtual QByteArray getSendFrame();
 	virtual QString getFullMeterNo();
@@ -510,6 +512,7 @@ public slots:
 	virtual void makeFrameOfSetAddress2(QString curAddr1, QString newAddr2); //设置二级地址
 	virtual void makeFrameOfStartModifyCoe();
 	virtual void makeFrameOfModifyData(float flow, float heat, float cold);
+	virtual void makeFrameOfWakeUp();
 
 
 private:

@@ -121,6 +121,8 @@ public slots:
 	void askControlQuery();
 	void askControlWaterPump(UINT8 portno, bool status);
 	void askSetDriverFreq(int freq);
+	void askSetDriverFreq(double freq);
+	void askSetDriverFreq(float freq);
 	void readControlComBuffer();
 	void readNewControlComBuffer();
 

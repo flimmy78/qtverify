@@ -349,7 +349,7 @@ void ControlComObject::askControlWaterPump(UINT8 portno, bool status)
 }
 
 //设置变频器频率
-void ControlComObject::askSetDriverFreq(int freq)
+void ControlComObject::askSetDriverFreq(float freq)
 {
 	if (NULL==m_controlProtocol)
 	{
@@ -359,6 +359,18 @@ void ControlComObject::askSetDriverFreq(int freq)
 	m_controlProtocol->makeFrameOfSetDriverFreq(freq);
 	buf = m_controlProtocol->getSendBuf();
 	m_controlCom->write(buf);
+}
+
+//设置变频器频率
+void ControlComObject::askSetDriverFreq(double freq)
+{
+	askSetDriverFreq((float)freq);
+}
+
+//设置变频器频率
+void ControlComObject::askSetDriverFreq(int freq)
+{
+	askSetDriverFreq((float)freq);
 }
 
 //读取控制板返回数据

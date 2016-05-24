@@ -1337,7 +1337,7 @@ int StdMtrCoeCorrect::startVerifyFlowPoint()
 	}
 
 	if (m_controlObj)//设置水泵至设定的频率
-		m_controlObj->askSetDriverFreq(m_curFlowPoint->freq);
+		m_controlObj->askSetDriverFreq((float)m_curFlowPoint->freq);
 
 	if (m_stopFlag)
 	{
@@ -1624,7 +1624,7 @@ int StdMtrCoeCorrect::startExhaustCountDown()
 
 	if (!m_stopFlag)
 	{
-		m_controlObj->askSetDriverFreq(EX_GREQ);
+		m_controlObj->askSetDriverFreq((float)EX_GREQ);
 		if (!openAllValveAndPump())
 		{
 			qWarning()<<"打开所有阀门和水泵 失败!";
