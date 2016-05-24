@@ -833,7 +833,9 @@ void OldCtrlProtocol::makeFrameOfSetDriverFreq(int freq)
 {
 // 	qDebug()<<"OldCtrlProtocol::makeFrameOfSetDriverFreq thread:"<<QThread::currentThreadId();
 	qDebug()<<"OldCtrlProtocol::makeFrameOfSetDriverFreq freq ="<<freq;
-	int data = int(freq*4095/50);//0~50Hz对应0~4095
+	float dataF = ((float)freq)*4095.0/50.0;
+	int data = int(dataF);//0~50Hz对应0~4095
+	qDebug()<<"dataF ="<<dataF<<", data ="<<data;
 	UINT8 dataH = data/256;
 	UINT8 dataL = data%256;
 	m_sendBuf.clear();
@@ -1915,8 +1917,11 @@ void AdeMeterProtocol::analyseFrame()
 	{
 		m_flow.append(QString("%1").arg(m_GB26831DataFrame->data[i], 2, 16)).replace(' ', '0');
 	}
+	qDebug()<<"m_flow ="<<m_flow;
 	flow = m_flow.toDouble()/100;
+	qDebug()<<"flow ="<<flow;
 	m_flow = QString::number(flow, 'g', 8);
+	qDebug()<<"m_flow ="<<m_flow;
 
 	//热量
 	double heat = 0.0;
@@ -2093,71 +2098,7 @@ void AdeMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, f
 */
 void AdeMeterProtocol::makeFrameOfModifyFlowCoe(QString meterNO, float bigErr, float mid2Err, float mid1Err, float smallErr, MeterCoe_PTR oldCoe)
 {
-// 	qDebug()<<"AdeMeterProtocol::makeFrameOfModifyFlowCoe thread:"<<QThread::currentThreadId();
-	qDebug()<<"AdeMeterProtocol::makeFrameOfModifyFlowCoe meterNO ="<<meterNO;
-	qDebug()<<"bigErr ="<<bigErr<<", mid2Err ="<<mid2Err<<", mid1Err ="<<mid1Err<<", smallErr ="<<smallErr;
-	qDebug()<<"oldCoe1 ="<<oldCoe->bigCoe<<", oldCoe2 ="<<oldCoe->mid2Coe<<", oldCoe3 ="<<oldCoe->mid1Coe<<", oldCoe4 ="<<oldCoe->smallCoe;
-
-	m_sendBuf.clear();
-
-	for (int i=0; i<METER_WAKEUP_CODE_NUM; i++)
-	{
-		m_sendBuf.append(METER_WAKEUP_CODE);//唤醒红外
-	}
-
-	for (int j=0; j<METER_PREFIX_CODE_NUM; j++)
-	{
-		m_sendBuf.append(METER_PREFIX_CODE); //前导字节
-	}
-
-	m_sendBuf.append(METER_START_CODE);//起始符
-	m_sendBuf.append(METER_TYPE_ASK_CODE); //仪表类型 请求
-	UINT8 cs = METER_START_CODE + METER_TYPE_ASK_CODE;
-	UINT8 oldNo;
-	bool ok;
-	for (int m=CJ188_ADDR_LEN-1; m>=0; m--)
-	{
-		oldNo = meterNO.mid(2*m, 2).toUInt(&ok, 16);
-		m_sendBuf.append(oldNo); //表号
-		cs += oldNo;
-	}
-
-	UINT8 code1 = 0x36;
-	UINT8 code2 = 0x0C;
-	UINT8 code3 = 0xA0;
-	UINT8 code4 = 0x19;
-	UINT8 code5 = 0x06;
-	UINT8 code6 = 0x00;
-	m_sendBuf.append(code1).append(code2).append(code3).append(code4).append(code5).append(code6);
-	cs += code1 + code2 + code3 + code4 + code5 + code6;
-
-	QString bigCoe = QString::number(oldCoe->bigCoe/(1+bigErr/100), 'f', 3); //保留3位小数，四舍五入
-	QString mid2Coe = QString::number(oldCoe->mid2Coe/(1+mid2Err/100), 'f', 3);
-	QString mid1Coe = QString::number(oldCoe->mid1Coe/(1+mid1Err/100), 'f', 3);
-	QString smallCoe = QString::number(oldCoe->smallCoe/(1+smallErr/100), 'f', 3);
-
-	int bigDec = bigCoe.section(".", 1).toUInt()*4096.0/1000.0; //只取整数部分，不再进行四舍五入
-	int mid2Dec = mid2Coe.section(".", 1).toUInt()*4096.0/1000.0;
-	int mid1Dec = mid1Coe.section(".", 1).toUInt()*4096.0/1000.0;
-	int smallDec = smallCoe.section(".", 1).toUInt()*4096.0/1000.0;
-
-	QString big = QString::number(bigDec, 16).rightJustified(3, '0');
-	QString mid2 = QString::number(mid2Dec, 16).rightJustified(3, '0');
-	QString mid1 = QString::number(mid1Dec, 16).rightJustified(3, '0');
-	QString small = QString::number(smallDec, 16).rightJustified(3, '0');
-	UINT8 A7 = big.right(2).toUInt(&ok, 16);
-	UINT8 A6 = (bigCoe.left(1) + big.left(1)).toUInt(&ok, 16);
-	UINT8 A5 = mid2.right(2).toUInt(&ok, 16);
-	UINT8 A4 = (mid2Coe.left(1) + mid2.left(1)).toUInt(&ok, 16);
-	UINT8 A3 = mid1.right(2).toUInt(&ok, 16);
-	UINT8 A2 = (mid1Coe.left(1) + mid1.left(1)).toUInt(&ok, 16);
-	UINT8 A1 = small.right(2).toUInt(&ok, 16);
-	UINT8 A0 = (smallCoe.left(1) + small.left(1)).toUInt(&ok, 16);
-
-	m_sendBuf.append(A7).append(A6).append(A5).append(A4).append(A3).append(A2).append(A1).append(A0);
-	cs += A7 + A6 + A5 + A4 + A3 + A2 + A1 + A0;
-
-	m_sendBuf.append(cs).append(0x16);
+	makeFrameOfModifyFlowCoe(meterNO, bigErr, mid2Err, mid1Err, smallErr);
 }
 
 /*
@@ -2269,7 +2210,8 @@ void AdeMeterProtocol::makeFrameOfSetAddress1(QString curAddr1, QString newAddr1
 */
 void AdeMeterProtocol::makeFrameOfSetAddress2(QString curAddr1, QString newAddr2)
 {
-// 	qDebug()<<"ADEMeterProtocol::makeFrameOfSetAddress2 thread:"<<QThread::currentThreadId();
+	qDebug()<<"ADEMeterProtocol::makeFrameOfSetAddress2 thread:"<<QThread::currentThreadId();
+	qDebug()<<"ADEMeterProtocol : curAddr1 ="<<curAddr1<<" , newAddr2 ="<<newAddr2;
 
 	m_sendBuf.clear();
 

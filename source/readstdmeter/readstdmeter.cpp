@@ -268,11 +268,14 @@ float CStdMeterReader::getInstStdMeterValue(float elecValue, float upperValue, f
 	lowerCurrent = m_stdParam->value("lowerCurrent").toDouble();
 	upperCurrent = m_stdParam->value("upperCurrent").toDouble();
 	m_stdParam->endArray();
-
+	qDebug()<<"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@";
+	qDebug()<<"elecValue ="<<elecValue<<", upperValue ="<<upperValue<<"flow_rate_wdg ="<<wdgIdx;
+	qDebug()<<"lowerCurrent ="<<lowerCurrent<<", upperCurrent ="<<upperCurrent;
 	if (lowerCurrent<=elecValue && elecValue <= upperCurrent)
 	{
 		float deltaStd = upperCurrent - lowerCurrent;
 		float deltaCur = elecValue - lowerCurrent;
+		qDebug()<<"return value ="<<(deltaCur/deltaStd)*upperValue;
 		return (deltaCur/deltaStd)*upperValue;
 	}
 
