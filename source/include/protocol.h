@@ -298,7 +298,7 @@ public:
 #define     ADE_PREFIX_CODE_NUM			10      //前导码个数(航天德鲁新热量表)
 #define		ADE_PREFIX_CODE				0xFF	//前导码    (航天德鲁新热量表)
 #define		ADE_RESPONSE_CODE			0xE5	//从机响应码(航天德鲁新热量表)
-#define		ADE_WAKEUP_WAIT_TIME		1500	//唤醒命令后等待时间（毫秒） (航天德鲁新热量表)
+#define		ADE_WAKEUP_WAIT_TIME		1300	//唤醒命令后等待时间（毫秒） (航天德鲁新热量表)
 
 #define     PLOU_WAKEUP_CODE_NUM		400     //唤醒码个数(天罡新热量表)
 
