@@ -82,6 +82,7 @@ public:
 	int m_maxMeterNum;        //被检表的最大个数
 	int m_oldMaxMeterNum;     //上次被检表的最大个数
 	int m_validMeterNum;          //实际被检表的个数
+	int m_oldValidMeterNum;		  //上次实际被检表的个数
 	QMap<int, int> m_meterPosMap; //被检表下标与表位号的映射关系
 
 	float *m_meterStartValue; //被检表的初值
@@ -230,6 +231,11 @@ public slots:
 	void slotStartModifyCoe(const int &row);//下发流量修正开始命令
 
 	void saveStartMeterNO(); //保存起始表号
+
+	int isAllMeterInVerifyStatus(); //是否所有表已进入检定状态
+	int isAllMeterHasStartModifyCoe(); //是否所有表已下发流量修正开始命令
+	int isAllMeterHasReadStartValue(); //是否所有表已读取到初值
+	int isAllMeterHasReadEndValue(); //是否所有表已读取到终值
 
 private slots:
 
