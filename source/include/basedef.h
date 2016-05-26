@@ -164,7 +164,7 @@ enum table_columns
 	COLUMN_ADJUST_ERROR=COLUMN_TOTAL_COUNT,	//调整误差列
 	COLUMN_MODIFY_METERNO,	//修改表号列
 	COLUMN_START_MOD_COE,	//下发流量修正开始命令
-	COLUMN__FLOW_COUNT      //流量检定的表格列数         
+	COLUMN__FLOW_COUNT=COLUMN_START_MOD_COE     //流量检定的表格列数         
 };
 
 #define ALGO_ENTHALPY		0 //焓差法
