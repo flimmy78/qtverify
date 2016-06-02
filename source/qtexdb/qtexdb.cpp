@@ -406,7 +406,7 @@ int insertFlowVerifyRec(Flow_Verify_Record_PTR ptr, int num)
 /*
 ** 修改数据库中流量检定结果的表号。调用者负责提前打开数据库startdb()
 */
-int modifyFlowVerifyRec_MeterNO(QString newMeterNO, QString timeStamp, int meterPos)
+int modifyFlowVerifyRec_MeterNO(QString newMeterNO, QString timeStamp, int meterPos, int deviceID)
 {
 	int ret = OPERATE_DB_OK;
 
@@ -417,6 +417,8 @@ int modifyFlowVerifyRec_MeterNO(QString newMeterNO, QString timeStamp, int meter
 	sql.append(timeStamp.toAscii());
 	sql.append("\" and F_MeterPosNo=");
 	sql.append(QString("%1").arg(meterPos, 0, 10));
+	sql.append(" and F_DeviceInfoID=");
+	sql.append(QString("%1").arg(deviceID, 0, 10));
 	if (query.exec(sql))
 	{
 		qDebug()<<"update succeed"<<timeStamp<<meterPos<<newMeterNO;

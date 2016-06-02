@@ -1416,7 +1416,7 @@ int FlowStandardDlg::calcVerifyResult()
 					{
 						m_mapMeterPosAndNewNO[m_meterPosMap[j]] = m_newMeterNO;
 						slotModifyMeterNO(m_meterPosMap[j]-1);
-						modifyFlowVerifyRec_MeterNO(m_numPrefix + QString::number(m_newMeterNO), m_timeStamp, m_meterPosMap[j]);
+						modifyFlowVerifyRec_MeterNO(m_numPrefix + QString::number(m_newMeterNO), m_timeStamp, m_meterPosMap[j], m_readComConfig->getDeviceInfoID());
 						m_newMeterNO++;
 					}
 				}
