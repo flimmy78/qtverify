@@ -27,9 +27,10 @@ HEADERS += $$(ADEHOME_INC)/include/systemsetdlg_global.h   \
            $$(ADEHOME_INC)/include/stdmtrparaset.h \
            $$(ADEHOME_INC)/include/stdmtrcoecorrect.h \
            $$(ADEHOME_INC)/include/parasetdlg.h \
+           $$(ADEHOME_INC)/include/parasetdlg100.h \
            $$(ADEHOME_INC)/include/stdplasensor.h \
            $$(ADEHOME_INC)/include/chkplasensor.h \
-		   $$(ADEHOME_INC)/include/stdcorrectpra.h
+		       $$(ADEHOME_INC)/include/stdcorrectpra.h
 
 SOURCES += source/setcomdlg.cpp \
            source/setportfrm.cpp \
@@ -37,9 +38,10 @@ SOURCES += source/setcomdlg.cpp \
            source/stdmtrparaset.cpp \
            source/stdmtrcoecorrect.cpp \
            source/parasetdlg.cpp \
+           source/parasetdlg100.cpp \
            source/stdplasensor.cpp \
            source/chkplasensor.cpp \
-		   source/stdcorrectpra.cpp
+		       source/stdcorrectpra.cpp
 
 RESOURCES += systemsetdlg.qrc			 
 
@@ -48,9 +50,10 @@ FORMS	+= ui/setcomdlg.ui  \
          ui/stdmtrparaset.ui \
          ui/stdmtrcoecorrect.ui \
          ui/parasetdlg.ui \
+         ui/parasetdlg100.ui \
          ui/stdplasensor.ui \
          ui/chkplasensor.ui \
-		 ui/stdcorrectpra.ui
+		     ui/stdcorrectpra.ui
 
 win32{
 	MY_DEST_LIB_VAR = $${DESTDIR} $${TARGET}.lib

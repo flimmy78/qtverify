@@ -55,6 +55,7 @@
 #define WATCH_DATA_TIME        3000   //留给操作人员查看界面数据的时间，单位：毫秒
 #define RELEASE_PRESS_TIME     2000   //释放管路压力的时间，单位：毫秒
 #define CYCLE_TIME             1000   //周期循环时间，单位：毫秒
+#define READ_METER_RETRY_TIMES   1	  //自动读表失败后重试次数1+1=2次 
 
 /* 力创模块发送的电流值不是4000微安,
 ** 而是1006, 4007, 4008, 4009, 4010等不规则的值, 取折中4008
