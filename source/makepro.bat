@@ -1,98 +1,92 @@
-cd adjustrate\adjustratedlg
+cd %ADEHOME_INC%\adjustrate\adjustratedlg
 qmake -t vclib
 
-cd ..
+cd %ADEHOME_INC%\adjustrate
 qmake -t vcapp
 
-cd ../algorithm
+cd %ADEHOME_INC%\algorithm
 qmake -t vclib
 
-cd ../qtexdb
+cd %ADEHOME_INC%\qtexdb
 qmake -t vclib
 
-cd ../protocol
+cd %ADEHOME_INC%\protocol
 qmake -t vclib
 
-cd ../comobject
+cd %ADEHOME_INC%\comobject
 qmake -t vclib
 
-cd ../logger
+cd %ADEHOME_INC%\logger
 qmake -t vclib
 
-cd ../usermanage/logindialog
-qmake -t vclib
-cd ../
-
-cd ../systemset/systemsetdlg
+cd %ADEHOME_INC%\usermanage\logindialog
 qmake -t vclib
 
-cd ..
+cd %ADEHOME_INC%\systemset\systemsetdlg
+qmake -t vclib
+
+cd %ADEHOME_INC%\systemset
 qmake -t vcapp
 
-cd ../resultquery
+cd %ADEHOME_INC%\resultquery
 qmake -t vclib
 
-cd ../datatest/datatestdlg
+cd %ADEHOME_INC%\datatest\datatestdlg
 qmake -t vclib
 
-cd ..
+cd %ADEHOME_INC%\datatest
 qmake -t vcapp
 
-cd ../delucom
+cd %ADEHOME_INC%\delucom
 qmake -t vcapp
 
-cd ../report
+cd %ADEHOME_INC%\report
 qmake -t vclib
 
-cd ../qexcel
+cd %ADEHOME_INC%\qexcel
 qmake -t vclib
 
-cd ../calcverify
+cd %ADEHOME_INC%\calcverify
 qmake -t vclib
 
-cd ../cmbverify
+cd %ADEHOME_INC%\cmbverify
 qmake -t vclib
 
-cd ../flowweight
+cd %ADEHOME_INC%\flowweight
 qmake -t vclib
 
-cd ../masterslaveset
+cd %ADEHOME_INC%\masterslaveset
 qmake -t vclib
 
-cd ../flowstandard
+cd %ADEHOME_INC%\flowstandard
 qmake -t vclib
 
-cd ../totalweight
+cd %ADEHOME_INC%\totalweight
 qmake -t vclib
 
-cd ../totalstandard
+cd %ADEHOME_INC%\totalstandard
 qmake -t vclib
 
-cd ../tvercomp
+cd %ADEHOME_INC%\tvercomp
 qmake -t vclib
 
-cd ../tverparam
+cd %ADEHOME_INC%\tverparam
 qmake -t vclib
 
-cd ../gui
+cd %ADEHOME_INC%\gui
 qmake -t vcapp
 
-cd ..
-cd usermanage\usermanagedlg
+cd %ADEHOME_INC%\usermanage\usermanagedlg
 qmake -t vclib
 
-cd ../..
-cd scancode\scancodedlg
+cd %ADEHOME_INC%\scancode\scancodedlg
 qmake -t vclib
 
-cd ../..
-cd testQt
+cd %ADEHOME_INC%\testQt
 qmake -t vcapp
 
-cd ../
-cd pseudodata
+cd %ADEHOME_INC%\pseudodata
 qmake -t vcapp
 
-cd ../
-cd qtserialport/src/serialport
+cd %ADEHOME_INC%\qtserialport\src\serialport
 qmake -t vclib
